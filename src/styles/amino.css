@@ -1,0 +1,82 @@
+:root {
+  /* Colors */
+  --amino-gray-lightest: #f1f3f5;
+  --amino-gray-light: #dee2e6;
+  --amino-gray-base: #868e96;
+  --amino-gray-dark: #212529;
+
+  --amino-red-lightest: #ffe3e3;
+  --amino-red-light: #ffa8a8;
+  --amino-red-base: #fa5252;
+  --amino-red-dark: #c92a2a;
+
+  --amino-blue-lightest: #d0ebff;
+  --amino-blue-light: #74c0fc;
+  --amino-blue-base: #228be6;
+  --amino-blue-dark: #1864ab;
+
+  --amino-orange-lightest: #ffe8cc;
+  --amino-orange-light: #ffc078;
+  --amino-orange-base: #fd7e14;
+  --amino-orange-dark: #d9480f;
+
+  --amino-green-lightest: #d3f9d8;
+  --amino-green-light: #8ce99a;
+  --amino-green-base: #40c057;
+  --amino-green-dark: #2b8a3e;
+
+  /* Helpers */
+  --amino-primary: var(--amino-blue-base);
+  --amino-success: var(--amino-green-base);
+  --amino-warning: var(--amino-orange-base);
+  --amino-error: var(--amino-red-base);
+
+  /* Shadows */
+  --amino-shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
+  --amino-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --amino-shadow-large: 0 30px 60px rgba(0, 0, 0, 0.12);
+
+  /* Text */
+  --amino-font-size: 14px;
+
+  /* Layout */
+  --amino-space: 16pt;
+  --amino-space-negative: -16pt;
+  --amino-space-half: 8pt;
+  --amino-space-half-negative: -8pt;
+  --amino-space-quarter: 4pt;
+  --amino-space-quarter-negative: -4pt;
+  --amino-space-double: 32pt;
+  --amino-space-double-negative: -32pt;
+
+  --amino-radius: 5px;
+  --amino-radius-large: 8px;
+
+  /*TODO: page widths and breakpoints*/
+
+  /* Font stack */
+  --amino-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --amino-font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+html {
+  font-size: var(--amino-font-size);
+  font-family: var(--amino-font-sans);
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--amino-font-sans);
+  font-size: 1em;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
