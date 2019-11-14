@@ -1,7 +1,7 @@
 :root {
   /* Colors */
-  --amino-gray-lightest: #FAFAFA;
-  --amino-gray-light: #EAEAEA;
+  --amino-gray-lightest: #fafafa;
+  --amino-gray-light: #eaeaea;
   --amino-gray-base: #333;
   --amino-gray-dark: #111;
 
@@ -88,4 +88,51 @@ body {
 #root {
   height: 100%;
   width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--amino-font-sans);
+  margin-bottom: 0.625rem;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: -0.066875rem;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.25rem;
+  letter-spacing: -0.020625rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  letter-spacing: -0.029375rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  /*letter-spacing: -0.020625rem;*/
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1rem;
+  /*letter-spacing: -0.01125rem;*/
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 0.875rem;
+  /*letter-spacing: -0.005625rem;*/
+  font-weight: 600;
 }

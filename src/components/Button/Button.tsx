@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Spinner } from "../Spinner";
+
 const AminoButton = styled.button`
+  position: relative;
   outline: none;
   border: 1px solid transparent;
   height: 40px;
@@ -55,7 +58,7 @@ export const Button: React.FC<Props> = ({
   intent,
   loading
 }) => {
-  const content = loading ? "loading..." : children;
+  const content = loading ? <Spinner size={16} /> : children;
 
   if (disabled || loading) {
     return <Secondary disabled>{content}</Secondary>
