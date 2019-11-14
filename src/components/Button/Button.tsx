@@ -46,6 +46,8 @@ const Secondary = styled(AminoButton)`
   }
 `;
 
+// TODO: use Intent enum like old amino, not strings
+
 type Props = {
   intent?: string;
   loading?: boolean;
