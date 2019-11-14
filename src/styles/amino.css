@@ -1,9 +1,9 @@
 :root {
   /* Colors */
-  --amino-gray-lightest: #f1f3f5;
-  --amino-gray-light: #dee2e6;
-  --amino-gray-base: #868e96;
-  --amino-gray-dark: #212529;
+  --amino-gray-lightest: #FAFAFA;
+  --amino-gray-light: #EAEAEA;
+  --amino-gray-base: #333;
+  --amino-gray-dark: #111;
 
   --amino-red-lightest: #ffe3e3;
   --amino-red-light: #ffa8a8;
@@ -27,6 +27,9 @@
 
   /* Helpers */
   --amino-primary: var(--amino-blue-base);
+  --amino-primary-light: var(--amino-blue-light);
+  --amino-primary-dark: var(--amino-blue-dark);
+
   --amino-success: var(--amino-green-base);
   --amino-warning: var(--amino-orange-base);
   --amino-error: var(--amino-red-base);
@@ -38,6 +41,8 @@
 
   /* Text */
   --amino-font-size: 14px;
+  --amino-text-light: white;
+  --amino-text-dark: black;
 
   /* Layout */
   --amino-space: 16pt;
@@ -60,11 +65,15 @@
     sans-serif;
   --amino-font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+
+  /* Animation */
+  --amino-transition: all 0.2s ease 0s;
 }
 
 html {
   font-size: var(--amino-font-size);
   font-family: var(--amino-font-sans);
+  color: var(--amino-text-dark);
   height: 100%;
   width: 100%;
 }
