@@ -5,6 +5,8 @@ import { Text, TextStyle } from "../Text";
 import { Button } from "../Button";
 import { AminoOnSaveHandler } from "../..";
 
+// TODO: figure out a way to handle form + validation for inner elements when onSave is called
+
 const AminoCard = styled.div`
   background: white;
   padding: var(--amino-space);
