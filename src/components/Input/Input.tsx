@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { TextStyle, Text } from "../Text";
 
 // TODO: style input error states (for in-browser form validation)
+    // TODO: only show invalid for required fields _after_ submit attempt
+    // TODO: show the actual error message for each validation type
+// TODO: better input class name generation
 
 const InputDecorator = styled.div`
   height: 38px;
@@ -33,7 +36,7 @@ const AminoInput = styled.input`
   padding: 0 var(--amino-space-half);
   transition: var(--amino-transition);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  width: 100%;  
+  width: 100%;
   border-radius: var(--amino-radius);
 
   &:focus {
@@ -41,12 +44,16 @@ const AminoInput = styled.input`
     box-shadow: var(--amino-shadow-glow);
     border: 1px solid var(--amino-primary-light);
   }
-  
+
+  &:invalid {
+    border: 1px solid var(--amino-error);
+  }
+
   &.has-prefix {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  
+
   &.has-suffix {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -93,6 +100,9 @@ type Props = {
 
   /** A short string displayed at the end of the input */
   suffix?: string;
+
+  /** Determines if the input is required for form validation */
+  required?: boolean;
 };
 
 export const Input: React.FC<Props> = ({
@@ -103,7 +113,8 @@ export const Input: React.FC<Props> = ({
   value,
   onChange,
   prefix,
-  suffix
+  suffix,
+  required
 }) => {
   return (
     <AminoInputWrapper width={width} className="amino-input-wrapper">
@@ -111,10 +122,13 @@ export const Input: React.FC<Props> = ({
       <div>
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
         <AminoInput
-          className={`${prefix ? 'has-prefix' : ''} ${suffix ? 'has-suffix' : ''}`}
+          className={`${prefix ? "has-prefix" : ""} ${
+            suffix ? "has-suffix" : ""
+          }`}
           placeholder={placeholder || ""}
           value={value}
           onChange={onChange}
+          // required={required || false}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </div>
