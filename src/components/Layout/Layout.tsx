@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const AminoLayout = styled.div`
-  background: var(--amino-gray-lightest);
+  background: var(--amino-page-background);
   height: 100%;
   width: 100%;
   

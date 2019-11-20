@@ -9,7 +9,7 @@ const AminoCard = styled.div`
   background: white;
   padding: var(--amino-space);
   border-radius: var(--amino-radius-large);
-  box-shadow: var(--amino-shadow-small);
+  box-shadow: var(--amino-shadow-medium);
 `;
 
 const CardHeader = styled.header`

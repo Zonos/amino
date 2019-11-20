@@ -23,6 +23,11 @@ const AminoButton = styled.button<any>`
   &:focus {
     outline: none;
   }
+  
+  &:active {
+    box-shadow: var(--amino-shadow-glow);
+    border: 1px solid var(--amino-blue-light);
+  }
 
   &[disabled] {
     cursor: not-allowed;

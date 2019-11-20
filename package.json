@@ -26,9 +26,10 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "build": "bili"
+    "build": "bili && cp -r src/styles/*.css dist"
   },
   "files": [
-    "dist"
+    "dist",
+    "dist/*.css"
   ]
 }

@@ -1,7 +1,7 @@
 :root {
   /* Colors */
-  --amino-gray-lightest: #fafafa;
-  --amino-gray-light: #eaeaea;
+  --amino-gray-lightest: #F7FAFC;
+  --amino-gray-light: #EDF2F7;
   --amino-gray-base: #333;
   --amino-gray-dark: #111;
 
@@ -35,11 +35,14 @@
   --amino-error: var(--amino-red-base);
 
   --amino-border-color: var(--amino-gray-light);
+  --amino-page-background: var(--amino-gray-light);
 
   /* Shadows */
-  --amino-shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
-  --amino-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --amino-shadow-large: 0 30px 60px rgba(0, 0, 0, 0.12);
+  --amino-shadow-small: 0 2px 5px 0 rgba(60,66,87, 0.12), 0 1px 1px 0 rgba(0,0,0, 0.12);
+  --amino-shadow-medium: 0 7px 14px 0 rgba(60,66,87, 0.12), 0 3px 6px 0 rgba(0,0,0, 0.12);
+  --amino-shadow-large: 0 15px 35px 0 rgba(60,66,87, 0.12), 0 5px 15px 0 rgba(0,0,0, 0.12);
+
+  --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
 
   /* Text */
   --amino-font-size: 14px;
