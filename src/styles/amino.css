@@ -48,7 +48,7 @@
   /* Text */
   --amino-font-size: 14px;
   --amino-text-light: white;
-  --amino-text-dark: var(--amino-gray-base);
+  --amino-text-dark: rgb(62, 62, 64);
 
   /* Layout */
   --amino-space: 16pt;
@@ -82,6 +82,8 @@ html {
   color: var(--amino-text-dark);
   height: 100%;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -89,6 +91,8 @@ body {
   font-size: 1em;
   height: 100%;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -104,7 +108,6 @@ h5,
 h6 {
   font-family: var(--amino-font-sans);
   margin-bottom: 0.625rem;
-  color: var(--amino-gray-dark);
 }
 
 h1 {
