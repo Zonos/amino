@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
-import { Stack } from "../Stack";
+import { Button } from "../Button";
+import { AminoOnSaveHandler } from "../..";
 
 const AminoCard = styled.div`
   background: white;
@@ -13,39 +14,75 @@ const AminoCard = styled.div`
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);
-  margin-bottom: var(--amino-space);
-  padding: 0 var(--amino-space);
-  border-bottom: 1px solid var(--amino-gray-light);
-  height: 64px;
+  padding: var(--amino-space);
   display: flex;
   align-items: center;
+  padding-bottom: 0;
+  margin-bottom: var(--amino-space-half);
 
   h4 {
     margin-bottom: 0;
     flex: 1;
   }
+`;
 
-  // TODO: can this be achieved with the Stack?
-  button {
-    margin-left: var(--amino-space-half);
-  }
+const CardFooter = styled.footer`
+  display: flex;
+  justify-content: flex-end;
+  margin: var(--amino-space-negative);
+  padding: var(--amino-space-half) var(--amino-space);
+  border-top: 1px solid var(--amino-border-color);
+  background: var(--amino-gray-lightest);
+  margin-top: var(--amino-space);
+  border-bottom-left-radius: var(--amino-radius-large);
+  border-bottom-right-radius: var(--amino-radius-large);
 `;
 
 type Props = {
   label?: string;
   actions?: Array<React.ReactNode>;
+  onSave?: AminoOnSaveHandler;
 };
 
-export const Card: React.FC<Props> = ({ children, label, actions }) => {
+export const Card: React.FC<Props> = ({ children, label, onSave }) => {
+  const [saving, setSaving] = useState(false);
+
+  const save = async () => {
+    if (!onSave) {
+      return;
+    }
+
+    setSaving(true);
+
+    // TODO: set saving
+    try {
+      await onSave();
+      alert("Successful");
+      // TODO: notify
+    } catch (e) {
+      // TODO: notify
+      alert("Not successful");
+    }
+
+    setSaving(false);
+    // TODO: unset saving
+  };
+
   return (
     <AminoCard>
       {label && (
         <CardHeader>
           <Text style={TextStyle.h4}>{label}</Text>
-          {actions && <Stack>{actions}</Stack>}
         </CardHeader>
       )}
       {children}
+      {onSave && (
+        <CardFooter>
+          <Button loading={saving} intent="primary" onClick={save}>
+            Save
+          </Button>
+        </CardFooter>
+      )}
     </AminoCard>
   );
 };

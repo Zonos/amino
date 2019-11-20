@@ -34,6 +34,8 @@
   --amino-warning: var(--amino-orange-base);
   --amino-error: var(--amino-red-base);
 
+  --amino-border-color: var(--amino-gray-light);
+
   /* Shadows */
   --amino-shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
   --amino-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);

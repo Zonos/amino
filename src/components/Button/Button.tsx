@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 import { Spinner } from "../Spinner";
+import { AminoOnClickHandler } from "../..";
 
-const AminoButton = styled.button`
+// TODO: button glow
+// TODO: strong typing for Styled buttons
+
+const AminoButton = styled.button<any>`
   position: relative;
   outline: none;
   border: 1px solid transparent;
@@ -27,7 +31,7 @@ const AminoButton = styled.button`
   }
 `;
 
-const Primary = styled(AminoButton)`
+const Primary = styled(AminoButton)<any>`
   background: var(--amino-primary);
   color: var(--amino-text-light);
 
@@ -36,7 +40,7 @@ const Primary = styled(AminoButton)`
   }
 `;
 
-const Secondary = styled(AminoButton)`
+const Secondary = styled(AminoButton)<any>`
   background: white;
   color: var(--amino-text-dark);
   border: 1px solid var(--amino-gray-light);
@@ -52,25 +56,29 @@ type Props = {
   intent?: string;
   loading?: boolean;
   disabled?: boolean;
+  onClick?: AminoOnClickHandler;
 };
 
 export const Button: React.FC<Props> = ({
   disabled,
   children,
   intent,
-  loading
+  loading,
+  onClick
 }) => {
   const content = loading ? <Spinner size={16} /> : children;
 
   if (disabled || loading) {
-    return <Secondary disabled>{content}</Secondary>
+    return <Secondary disabled>{content}</Secondary>;
   }
+
+  const buttonProps = { onClick: onClick || null };
 
   switch (intent) {
     case "primary":
-      return <Primary>{content}</Primary>;
+      return <Primary {...buttonProps}>{content}</Primary>;
     case "secondary":
     default:
-      return <Secondary>{content}</Secondary>;
+      return <Secondary {...buttonProps}>{content}</Secondary>;
   }
 };
