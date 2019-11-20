@@ -8,9 +8,12 @@ export { Input } from './components/Input';
 export { Checkbox } from './components/Checkbox';
 export { Fieldset } from './components/Fieldset';
 export { Divider } from './components/Divider';
+export { Notice } from './components/Notice';
 
 export { AminoOnSaveHandler } from './utils/AminoOnSaveHandler';
 export { AminoOnClickHandler } from './utils/AminoOnClickHandler';
 
 export { useInputValue } from './hooks/useInputValue';
 export { useCheckboxValue } from './hooks/useCheckboxValue';
+
+export { Intent } from './utils/Intent';

@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
 
+// TODO: multiline checkboxes could use some work
+
 const CheckIcon = () => (
   <svg width={10} height={7} viewBox="0 0 10 7">
     <path
