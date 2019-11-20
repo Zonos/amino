@@ -1,4 +1,4 @@
-name: CI
+name: Release
 
 on: [push]
 
@@ -8,16 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Build
-        uses: actions/npm@master
+      - uses: actions/setup-node@v1
         with:
-          args: install
-      - name: Build
-        uses: actions/npm@master
-        with:
-          args: run build
-      - name: Automated releases for npm packages.
-        uses: mikeal/merge-release@v4.0.7
+          node-version: '10.x'
+      - run: npm install
+      - run: npm run build
+      - uses: mikeal/merge-release@v4.0.7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_AUTH_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
