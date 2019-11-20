@@ -3,10 +3,12 @@ import styled from "styled-components";
 
 import { TextStyle, Text } from "../Text";
 
+// TODO: style input error states (for in-browser form validation)
+
 const InputDecorator = styled.div`
   height: 38px;
   background: var(--amino-gray-lightest);
-  padding: 0 var(--amino-space);
+  padding: 0 var(--amino-space-half);
   border: 1px solid var(--amino-border-color);
 `;
 
