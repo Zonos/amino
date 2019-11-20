@@ -10,10 +10,6 @@ const AminoNotice = styled.aside`
   color: var(--amino-gray-dark);
   padding: var(--amino-space);
 `;
-// Success,
-//   Error,
-//   Warning,
-//   Info
 
 const AminoSuccessNotice = styled(AminoNotice)`
   border-left-color: var(--amino-green-base);

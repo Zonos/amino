@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 const AminoLayout = styled.div`
   background: var(--amino-page-background);
-  height: 100%;
-  width: 100%;
   
   // TODO: only for testing
   padding: 50px;
