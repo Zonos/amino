@@ -25,6 +25,11 @@ const AminoInput = styled.input`
 const AminoInputWrapper = styled.div<any>`
   position: relative;
   width: ${p => (p.width ? `${p.width}px` : "100%")};
+
+  span {
+    margin-top: var(--amino-space-quarter);
+    display: block;
+  }
 `;
 
 type Props = {
@@ -63,6 +68,7 @@ export const Input: React.FC<Props> = ({
         value={value}
         onChange={onChange}
       />
+      {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
     </AminoInputWrapper>
   );
 };

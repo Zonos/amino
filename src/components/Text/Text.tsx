@@ -1,4 +1,10 @@
 import React from "react";
+import styled from "styled-components";
+
+const Subtitle = styled.span`
+  opacity: .7;
+  font-style: italic;
+`;
 
 export enum TextStyle {
   h1,
@@ -8,7 +14,8 @@ export enum TextStyle {
   h5,
   h6,
   p,
-  code
+  Code,
+  Subtitle
 }
 
 type Props = {
@@ -29,6 +36,8 @@ export const Text: React.FC<Props> = ({ children, style }) => {
       return <h5>{children}</h5>;
     case TextStyle.h6:
       return <h6>{children}</h6>;
+    case TextStyle.Subtitle:
+      return <Subtitle>{children}</Subtitle>;
     case TextStyle.p:
     default:
       return <p>{children}</p>;
