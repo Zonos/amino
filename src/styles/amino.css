@@ -1,9 +1,9 @@
 :root {
   /* Colors */
-  --amino-gray-lightest: #F7FAFC;
-  --amino-gray-light: #EDF2F7;
-  --amino-gray-base: #333;
-  --amino-gray-dark: #111;
+  --amino-gray-lightest: #f7f8fa;
+  --amino-gray-light: #e7eaef;
+  --amino-gray-base: #2D3748;
+  --amino-gray-dark: #1A202C;
 
   --amino-red-lightest: #ffe3e3;
   --amino-red-light: #ffa8a8;
@@ -35,19 +35,20 @@
   --amino-error: var(--amino-red-base);
 
   --amino-border-color: var(--amino-gray-light);
-  --amino-page-background: var(--amino-gray-light);
+  --amino-page-background: var(--amino-gray-lightest);
 
   /* Shadows */
-  --amino-shadow-small: 0 2px 5px 0 rgba(60,66,87, 0.12), 0 1px 1px 0 rgba(0,0,0, 0.12);
-  --amino-shadow-medium: 0 7px 14px 0 rgba(60,66,87, 0.12), 0 3px 6px 0 rgba(0,0,0, 0.12);
-  --amino-shadow-large: 0 15px 35px 0 rgba(60,66,87, 0.12), 0 5px 15px 0 rgba(0,0,0, 0.12);
-
+  --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --amino-shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --amino-shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
+  --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
 
   /* Text */
   --amino-font-size: 14px;
   --amino-text-light: white;
-  --amino-text-dark: black;
+  --amino-text-dark: var(--amino-gray-base);
 
   /* Layout */
   --amino-space: 16pt;
@@ -103,41 +104,39 @@ h5,
 h6 {
   font-family: var(--amino-font-sans);
   margin-bottom: 0.625rem;
+  color: var(--amino-gray-dark);
 }
 
 h1 {
   font-size: 3rem;
   letter-spacing: -0.066875rem;
   line-height: 1.5;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 h2 {
   font-size: 2.25rem;
   letter-spacing: -0.020625rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h3 {
   font-size: 1.5rem;
   letter-spacing: -0.029375rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h4 {
   font-size: 1.25rem;
-  /*letter-spacing: -0.020625rem;*/
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h5 {
   font-size: 1rem;
-  /*letter-spacing: -0.01125rem;*/
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h6 {
   font-size: 0.875rem;
-  /*letter-spacing: -0.005625rem;*/
-  font-weight: 600;
+  font-weight: 500;
 }

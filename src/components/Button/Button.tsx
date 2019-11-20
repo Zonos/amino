@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Spinner } from "../Spinner";
 import { AminoOnClickHandler } from "../..";
 
-// TODO: button glow
 // TODO: strong typing for Styled buttons
 
 const AminoButton = styled.button<any>`
@@ -26,7 +25,6 @@ const AminoButton = styled.button<any>`
   
   &:active {
     box-shadow: var(--amino-shadow-glow);
-    border: 1px solid var(--amino-blue-light);
   }
 
   &[disabled] {
