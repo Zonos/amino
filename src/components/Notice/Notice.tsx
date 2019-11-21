@@ -9,6 +9,11 @@ const AminoNotice = styled.aside`
   background: var(--amino-gray-lightest);
   color: var(--amino-gray-dark);
   padding: var(--amino-space);
+  
+  a {
+    font-style: italic;
+    text-decoration: underlineg;
+  }
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
