@@ -105,7 +105,7 @@ type Props = {
   required?: boolean;
 
   /** Determines input type (email, password, etc.) */
-  type: string;
+  type?: string;
 };
 
 export const Input: React.FC<Props> = ({
