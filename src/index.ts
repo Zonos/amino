@@ -9,6 +9,7 @@ export { Checkbox } from './components/Checkbox';
 export { Fieldset } from './components/Fieldset';
 export { Divider } from './components/Divider';
 export { Notice } from './components/Notice';
+export { Select } from './components/Select';
 
 export { AminoOnSaveHandler } from './utils/AminoOnSaveHandler';
 export { AminoOnClickHandler } from './utils/AminoOnClickHandler';
