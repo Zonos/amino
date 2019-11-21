@@ -12,7 +12,7 @@ const AminoNotice = styled.aside`
   
   a {
     font-style: italic;
-    text-decoration: underlineg;
+    text-decoration: underline;
   }
 `;
 
