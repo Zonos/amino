@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { TextStyle, Text } from "../Text";
 
 // TODO: style input error states (for in-browser form validation)
-    // TODO: only show invalid for required fields _after_ submit attempt
-    // TODO: show the actual error message for each validation type
+// TODO: only show invalid for required fields _after_ submit attempt
+// TODO: show the actual error message for each validation type
 // TODO: better input class name generation
 
 const InputDecorator = styled.div`
@@ -45,9 +45,9 @@ const AminoInput = styled.input`
     border: 1px solid var(--amino-primary-light);
   }
 
-  &:invalid {
-    border: 1px solid var(--amino-error);
-  }
+  //&:invalid {
+  //  border: 1px solid var(--amino-error);
+  //}
 
   &.has-prefix {
     border-top-left-radius: 0;
@@ -103,6 +103,9 @@ type Props = {
 
   /** Determines if the input is required for form validation */
   required?: boolean;
+
+  /** Determines input type (email, password, etc.) */
+  type: string;
 };
 
 export const Input: React.FC<Props> = ({
@@ -114,7 +117,8 @@ export const Input: React.FC<Props> = ({
   onChange,
   prefix,
   suffix,
-  required
+  required,
+  type
 }) => {
   return (
     <AminoInputWrapper width={width} className="amino-input-wrapper">
@@ -128,7 +132,8 @@ export const Input: React.FC<Props> = ({
           placeholder={placeholder || ""}
           value={value}
           onChange={onChange}
-          // required={required || false}
+          required={required || false}
+          type={type || "text"}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </div>
