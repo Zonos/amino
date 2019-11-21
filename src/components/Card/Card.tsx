@@ -59,11 +59,11 @@ export const Card: React.FC<Props> = ({ children, label, onSave }) => {
     // TODO: set saving
     try {
       await onSave();
-      alert("Successful");
+      // alert("Successful");
       // TODO: notify
     } catch (e) {
       // TODO: notify
-      alert("Not successful");
+      // alert("Not successful");
     }
 
     setSaving(false);
