@@ -44,9 +44,15 @@ type Props = {
   label?: string;
   actions?: Array<React.ReactNode>;
   onSave?: AminoOnSaveHandler;
+  className?: string;
 };
 
-export const Card: React.FC<Props> = ({ children, label, onSave }) => {
+export const Card: React.FC<Props> = ({
+  children,
+  label,
+  onSave,
+  className
+}) => {
   const [saving, setSaving] = useState(false);
 
   const save = async () => {
@@ -71,7 +77,7 @@ export const Card: React.FC<Props> = ({ children, label, onSave }) => {
   };
 
   return (
-    <AminoCard>
+    <AminoCard className={className || ""}>
       {label && (
         <CardHeader>
           <Text style={TextStyle.h4}>{label}</Text>
