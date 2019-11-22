@@ -1,6 +1,7 @@
 :root {
   /* Colors */
   --amino-gray-lightest: #f7f8fa;
+  --amino-gray-lighter: #fcfcfc;
   --amino-gray-light: #e7eaef;
   --amino-gray-base: #2D3748;
   --amino-gray-dark: #1A202C;
