@@ -40,7 +40,9 @@
 
   /* Shadows */
   --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* --amino-shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); */
+
+  --amino-shadow-medium: 0 0.7px 1.5px rgba(0, 0, 0, 0.021), 0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
   --amino-shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
   --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
