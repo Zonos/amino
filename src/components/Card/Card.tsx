@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Text, TextStyle } from "../Text";
 import { Button } from "../Button";
 import { AminoOnSaveHandler } from "../..";
+import { Stack, StackType } from "../Stack";
 
 // TODO: figure out a way to handle form + validation for inner elements when onSave is called
 
@@ -51,7 +52,8 @@ export const Card: React.FC<Props> = ({
   children,
   label,
   onSave,
-  className
+  className,
+  actions
 }) => {
   const [saving, setSaving] = useState(false);
 
@@ -89,6 +91,15 @@ export const Card: React.FC<Props> = ({
           <Button loading={saving} intent="primary" onClick={save}>
             Save
           </Button>
+        </CardFooter>
+      )}
+      {!onSave && actions && (
+        <CardFooter>
+          <Stack type={StackType.row}>
+            {actions.map((action: any, index: number) => (
+              <div key={index}>{action}</div>
+            ))}
+          </Stack>
         </CardFooter>
       )}
     </AminoCard>

@@ -8,11 +8,27 @@ const AminoStack = styled.div`
 const ColumnStack = styled(AminoStack)`
   flex-direction: column;
   justify-content: center;
+
+  & > * {
+    margin-bottom: var(--amino-space-half);
+  }
+
+  & :last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const RowStack = styled(AminoStack)`
   flex-direction: row;
   align-items: center;
+
+  & > * {
+    margin-right: var(--amino-space-half);
+  }
+
+  & :last-child {
+    margin-right: 0;
+  }
 `;
 
 export enum StackType {
