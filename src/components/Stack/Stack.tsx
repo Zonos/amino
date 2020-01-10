@@ -36,22 +36,16 @@ export enum StackType {
   column
 }
 
-export enum StackAlign {
-  start,
-  end
-}
-
 type Props = {
   type?: StackType;
-  align?: StackAlign;
 };
 
-export const Stack: React.FC<Props> = ({ align, type, children }) => {
+export const Stack: React.FC<Props> = ({ type, children }) => {
   switch (type) {
     case StackType.column:
-      return <ColumnStack align={align || StackAlign.start}>{children}</ColumnStack>;
+      return <ColumnStack>{children}</ColumnStack>;
     case StackType.row:
     default:
-      return <RowStack align={align || StackAlign.start}>{children}</RowStack>;
+      return <RowStack>{children}</RowStack>;
   }
 };
