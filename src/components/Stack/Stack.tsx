@@ -10,7 +10,7 @@ const ColumnStack = styled(AminoStack)`
   justify-content: center;
 
   & > * {
-    margin-bottom: var(--amino-space-half);
+    margin-bottom: var(--amino-space-quarter);
   }
 
   & :last-child {
@@ -23,7 +23,7 @@ const RowStack = styled(AminoStack)`
   align-items: center;
 
   & > * {
-    margin-right: var(--amino-space-half);
+    margin-right: var(--amino-space-quarter);
   }
 
   & :last-child {
@@ -36,16 +36,22 @@ export enum StackType {
   column
 }
 
+export enum StackAlign {
+  start,
+  end
+}
+
 type Props = {
   type?: StackType;
+  align?: StackAlign;
 };
 
-export const Stack: React.FC<Props> = ({ type, children }) => {
+export const Stack: React.FC<Props> = ({ align, type, children }) => {
   switch (type) {
     case StackType.column:
-      return <ColumnStack>{children}</ColumnStack>;
+      return <ColumnStack align={align || StackAlign.start}>{children}</ColumnStack>;
     case StackType.row:
     default:
-      return <RowStack>{children}</RowStack>;
+      return <RowStack align={align || StackAlign.start}>{children}</RowStack>;
   }
 };

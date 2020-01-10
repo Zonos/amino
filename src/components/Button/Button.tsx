@@ -64,6 +64,7 @@ type Props = {
   loading?: boolean;
   disabled?: boolean;
   onClick?: AminoOnClickHandler;
+  className?: string;
 };
 
 export const Button: React.FC<Props> = ({
@@ -71,7 +72,8 @@ export const Button: React.FC<Props> = ({
   children,
   intent,
   loading,
-  onClick
+  onClick,
+  className,
 }) => {
   const content = loading ? <Spinner size={16} /> : children;
 
@@ -79,7 +81,7 @@ export const Button: React.FC<Props> = ({
     return <Secondary disabled>{content}</Secondary>;
   }
 
-  const buttonProps = { onClick: onClick || null };
+  const buttonProps = { onClick: onClick || null, className: className || null };
 
   switch (intent) {
     case "primary":
