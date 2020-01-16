@@ -73,8 +73,7 @@ export const Button: React.FC<Props> = ({
   intent,
   loading,
   onClick,
-  className,
-  'data-clipboard-text'
+  className
 }) => {
   const content = loading ? <Spinner size={16} /> : children;
 
