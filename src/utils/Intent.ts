@@ -4,5 +4,6 @@ export enum Intent {
   Error,
   Warning,
   Info,
-  Primary
+  Primary,
+  Danger,
 }

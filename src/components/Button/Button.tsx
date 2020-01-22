@@ -57,6 +57,15 @@ const Secondary = styled(AminoButton)<any>`
   }
 `;
 
+const Danger = styled(AminoButton)<any>`
+  background: var(--amino-error);
+  color: white; 
+
+  &:hover {
+    background: var(--amino-red-dark);
+  }
+`;
+
 // TODO: use Intent enum like old amino, not strings
 
 type Props = {
@@ -86,6 +95,8 @@ export const Button: React.FC<Props> = ({
   switch (intent) {
     case "primary":
       return <Primary {...buttonProps}>{content}</Primary>;
+    case "danger":
+      return <Danger {...buttonProps}>{content}</Danger>;
     case "secondary":
     default:
       return <Secondary {...buttonProps}>{content}</Secondary>;
