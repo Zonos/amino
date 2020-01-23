@@ -12,6 +12,7 @@ export { Notice } from './components/Notice';
 export { Select } from './components/Select';
 export { ListItem } from './components/ListItem';
 export { List } from './components/List';
+export { StepperInput } from './components/StepperInput';
 
 export { AminoOnSaveHandler } from './utils/AminoOnSaveHandler';
 export { AminoOnClickHandler } from './utils/AminoOnClickHandler';
