@@ -48,8 +48,8 @@
   /* Text */
   --amino-font-size: 14px;
   --amino-text-light: white;
-  --amino-text-color: var(--amino-gray-base);
-  --amino-text-dark: var(--amino-gray-dark);
+  --amino-text-color: #525f7f;
+  --amino-text-dark: var(--amino-text-color);
 
   /* Layout */
   --amino-space: 16pt;
