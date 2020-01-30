@@ -6,25 +6,25 @@
   --amino-gray-base: #2D3748;
   --amino-gray-dark: #1A202C;
 
-  --amino-red-lightest: #ffe3e3;
-  --amino-red-light: #ffa8a8;
-  --amino-red-base: #fa5252;
-  --amino-red-dark: #c92a2a;
+  --amino-red-lightest: #fde7e9;
+  --amino-red-light: #e75d5e;
+  --amino-red-base: #da3939;
+  --amino-red-dark: #b41e1f;
 
   --amino-blue-lightest: #bfdcfc;
   --amino-blue-light: #3c91ec;
   --amino-blue-base: #1c74d8;
   --amino-blue-dark: #1e5898;
 
-  --amino-orange-lightest: #ffe8cc;
-  --amino-orange-light: #ffc078;
-  --amino-orange-base: #fd7e14;
-  --amino-orange-dark: #d9480f;
+  --amino-orange-lightest: #fceed1;
+  --amino-orange-light: #f09835;
+  --amino-orange-base: #e4771b;
+  --amino-orange-dark: #c45307;
 
-  --amino-green-lightest: #d3f9d8;
-  --amino-green-light: #8ce99a;
-  --amino-green-base: #40c057;
-  --amino-green-dark: #2b8a3e;
+  --amino-green-lightest: #e1f7eb;
+  --amino-green-light: #44a575;
+  --amino-green-base: #33855d;
+  --amino-green-dark: #27684a;
 
   /* Helpers */
   --amino-primary: var(--amino-blue-base);
@@ -40,17 +40,16 @@
 
   /* Shadows */
   --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  /*--amino-shadow-medium: 0 0 0 1px rgba(0,0,0,.05), 0 1px 3px 0 rgba(0,0,0,.1);*/
   --amino-shadow-medium: 0 0 0 1px rgba(63,63,68,.05),0 1px 3px 0 rgba(63,63,68,.15);
   --amino-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
   --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
-
   /* Text */
   --amino-font-size: 14px;
   --amino-text-light: white;
-  --amino-text-dark: rgb(62, 62, 64);
+  --amino-text-color: var(--amino-gray-base);
+  --amino-text-dark: var(--amino-gray-dark);
 
   /* Layout */
   --amino-space: 16pt;
@@ -75,13 +74,13 @@
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
   /* Animation */
-  --amino-transition: all 0.2s ease 0s;
+  --amino-transition: all 0.2s ease-in-out 0s;
 }
 
 html {
   font-size: var(--amino-font-size);
   font-family: var(--amino-font-sans);
-  color: var(--amino-text-dark);
+  color: var(--amino-text-color);
   height: 100%;
   width: 100%;
   -webkit-font-smoothing: antialiased;
@@ -114,20 +113,17 @@ h6 {
 
 h1 {
   font-size: 3rem;
-  /*letter-spacing: -0.066875rem;*/
   line-height: 1.5;
   font-weight: 500;
 }
 
 h2 {
   font-size: 2.25rem;
-  /*letter-spacing: -0.020625rem;*/
   font-weight: 500;
 }
 
 h3 {
   font-size: 1.5rem;
-  /*letter-spacing: -0.029375rem;*/
   font-weight: 500;
 }
 
