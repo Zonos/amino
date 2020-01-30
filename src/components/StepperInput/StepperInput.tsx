@@ -83,7 +83,7 @@ export const StepperInput: React.FC<Props> = props => {
 
   return (
     <Stepper>
-      <Input value={prettyValue()} onChange={onChange} />
+      <Input readOnly value={prettyValue()} onChange={onChange} />
       <Arrows>
         <div className="flip" onClick={inc}>
           <StepperIcon />

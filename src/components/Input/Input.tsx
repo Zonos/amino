@@ -104,6 +104,9 @@ type Props = {
   /** Determines if the input is required for form validation */
   required?: boolean;
 
+  /** Determines if the input is editable or not */
+  readOnly?: boolean;
+
   /** Determines input type (email, password, etc.) */
   type?: string;
 };
@@ -118,7 +121,8 @@ export const Input: React.FC<Props> = ({
   prefix,
   suffix,
   required,
-  type
+  type,
+  readOnly
 }) => {
   return (
     <AminoInputWrapper width={width} className="amino-input-wrapper">
@@ -134,6 +138,7 @@ export const Input: React.FC<Props> = ({
           onChange={onChange}
           required={required || false}
           type={type || "text"}
+          readOnly={readOnly || false}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </div>
