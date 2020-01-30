@@ -20,6 +20,7 @@ const AminoButton = styled.button<any>`
   border-radius: var(--amino-radius);
   transition: var(--amino-transition);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  font-weight: 500;
 
   &:focus {
     outline: none;
@@ -43,7 +44,7 @@ const Primary = styled(AminoButton)<any>`
   color: var(--amino-text-light);
 
   &:hover {
-    background: var(--amino-primary-dark);
+    background: var(--amino-primary-light);
   }
 `;
 

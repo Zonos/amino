@@ -33,7 +33,7 @@ const CardFooter = styled.footer`
   display: flex;
   justify-content: flex-end;
   margin: var(--amino-space-negative);
-  padding: var(--amino-space-half) var(--amino-space);
+  padding: var(--amino-space);
   border-top: 1px solid var(--amino-border-color);
   background: var(--amino-gray-lighter);
   margin-top: var(--amino-space);
