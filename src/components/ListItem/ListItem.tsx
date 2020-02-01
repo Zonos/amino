@@ -38,6 +38,7 @@ type Props = {
   subtitle?: string;
   icon?: string;
   rightDecorator?: ReactNode;
+  iconComponent?: ReactNode;
   onClick?: any;
 };
 
@@ -45,12 +46,14 @@ export const ListItem: React.FC<Props> = ({
   label,
   subtitle,
   icon,
+  iconComponent,
   rightDecorator,
   onClick
 }) => {
   return (
     <AminoListItem onClick={onClick && onClick}>
       {icon && <img src={icon} alt={label} />}
+      {iconComponent && !icon && iconComponent}
       <div>
         <Text style={TextStyle.h5}>{label}</Text>
         {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
