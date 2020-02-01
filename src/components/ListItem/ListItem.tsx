@@ -10,13 +10,6 @@ const AminoListItem = styled.div<any>`
   flex-direction: row;
   align-items: center;
 
-  img {
-    margin-right: var(--amino-space-half);
-    width: 32px;
-    height: 32px;
-    border-radius: var(--amino-radius);
-  }
-
   div {
     display: flex;
     flex-direction: column;
@@ -31,6 +24,13 @@ const AminoListItem = styled.div<any>`
     background: ${p => (p.onClick ? "var(--amino-gray-lightest)" : "")};
     cursor: ${p => (p.onClick ? "pointer" : "")};
   }
+`;
+
+const Icon = styled.img`
+  margin-right: var(--amino-space-half);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--amino-radius);
 `;
 
 type Props = {
@@ -52,7 +52,7 @@ export const ListItem: React.FC<Props> = ({
 }) => {
   return (
     <AminoListItem onClick={onClick && onClick}>
-      {icon && <img src={icon} alt={label} />}
+      {icon && <Icon src={icon} alt={label} />}
       {iconComponent && !icon && iconComponent}
       <div>
         <Text style={TextStyle.h5}>{label}</Text>
