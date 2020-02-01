@@ -13,6 +13,7 @@ export { Select } from './components/Select';
 export { ListItem } from './components/ListItem';
 export { List } from './components/List';
 export { StepperInput } from './components/StepperInput';
+export { Dialog } from './components/Dialog';
 
 export { AminoOnSaveHandler } from './utils/AminoOnSaveHandler';
 export { AminoOnClickHandler } from './utils/AminoOnClickHandler';

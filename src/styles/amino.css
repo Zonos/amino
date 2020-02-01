@@ -141,3 +141,42 @@ h6 {
   font-size: 0.875rem;
   font-weight: 500;
 }
+
+/* Dialog */
+.amino-dialog-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.amino-dialog-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+.amino-dialog-exit {
+  opacity: 1;
+}
+.amino-dialog-exit-active {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 200ms, transform 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Backdrop */
+.amino-backdrop-enter {
+  opacity: 0;
+}
+.amino-backdrop-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.amino-backdrop-exit {
+  opacity: 1;
+}
+.amino-backdrop-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
