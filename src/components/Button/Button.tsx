@@ -11,6 +11,7 @@ const AminoButton = styled.button<any>`
   outline: none;
   border: 1px solid transparent;
   height: 36px;
+  line-height: 18px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
