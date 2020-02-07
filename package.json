@@ -19,15 +19,17 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "rollup-plugin-typescript2": "^0.25.2",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "downshift": "^4.0.10",
+    "react-spring": "^8.0.27"
   },
   "peerDependencies": {
     "@types/react": "^16.x",
     "@types/react-dom": "^16.x",
-    "downshift": "^4.0.10",
+    "downshift": "^4.x",
     "react": "^16.x",
     "react-dom": "^16.x",
-    "react-spring": "^8.0.27",
+    "react-spring": "^8.x",
     "react-transition-group": "^4.3.0",
     "styled-components": "^4.4.1"
   },
