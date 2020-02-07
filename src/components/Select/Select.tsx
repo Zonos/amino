@@ -17,7 +17,7 @@ const DropdownContainer = styled.div`
     stroke: var(--amino-gray-base);
     pointer-events: none;
   }
-  
+
   span {
     margin-top: var(--amino-space-quarter);
     display: block;
@@ -88,6 +88,7 @@ type Props = {
   placeholder: string;
   itemLabelPath?: string;
   itemValuePath?: string;
+  labelFormatFunction?: any;
 };
 
 // TODO: use onSelectedItemChange ?
@@ -100,13 +101,22 @@ export const Select: React.FC<Props> = ({
   value,
   placeholder,
   itemLabelPath,
-  itemValuePath
+  itemValuePath,
+  labelFormatFunction
 }) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
   useEffect(() => {
     setSelectItems(
-      items.map(item => (itemLabelPath ? item[itemLabelPath] : item.label))
+      items.map(item => {
+        const label = itemLabelPath ? item[itemLabelPath] : item.label;
+
+        if (labelFormatFunction) {
+          return labelFormatFunction(label);
+        } else {
+          return label;
+        }
+      })
     );
   }, [items]);
 
