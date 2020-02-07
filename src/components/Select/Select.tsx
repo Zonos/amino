@@ -54,8 +54,10 @@ const Dropdown = styled.div`
   position: absolute;
   top: calc(var(--amino-space) + 5px);
   left: 0;
-  z-index: 10;
-
+  z-index: 9999999;
+  max-height: 350px;
+  overflow-y: auto;
+  
   ul {
     outline: none !important;
   }
