@@ -146,7 +146,7 @@ export const Select: React.FC<Props> = ({
   }, [selectedItem]);
 
   return (
-    <DropdownContainer>
+    <DropdownContainer className="amino-input-wrapper">
       <Text {...getLabelProps()} style={TextStyle.h5}>
         {label}
       </Text>
