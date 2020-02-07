@@ -1,41 +1,42 @@
-import React, { ChangeEvent } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelect } from "downshift";
 import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
 import { DropdownIcon } from "../../icons/DropdownIcon";
 
-const SelectContainer = styled.div`
+const DropdownContainer = styled.div`
+  position: relative;
+
+  svg {
+    position: absolute;
+    right: var(--amino-space-half);
+    top: 39px;
+    width: 18px;
+    height: 18px;
+    stroke: var(--amino-gray-base);
+    pointer-events: none;
+  }
+  
+  span {
+    margin-top: var(--amino-space-quarter);
+    display: block;
+  }
+`;
+
+const DropdownTrigger = styled.button`
   border-radius: var(--amino-radius);
-  outline: none;
+  outline: none !important;
   box-sizing: border-box;
   transition: var(--amino-transition);
   display: block;
   height: 38px;
   width: 100%;
-  padding: 0;
-  position: relative;
+  padding: 0 var(--amino-space-half);
   background: white;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-
-  svg {
-    position: absolute;
-    top: 9px;
-    right: var(--amino-space-half);
-    stroke: var(--amino-gray-base);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-  }
-`;
-
-const StyledSelect = styled.select`
   border: 1px solid var(--amino-border-color);
-  width: 100%;
-  height: 38px;
-  box-shadow: none;
-  background: transparent;
-  -webkit-appearance: none;
-  padding: 0 var(--amino-space-half);
+  text-align: left;
 
   &:focus {
     outline: none;
@@ -44,46 +45,126 @@ const StyledSelect = styled.select`
   }
 `;
 
-const AminoInputWrapper = styled.div<any>`
-  position: relative;
-  width: ${p => (p.width ? `${p.width}px` : "100%")};
+const Dropdown = styled.div`
+  border-radius: var(--amino-radius-large);
+  background: white;
+  box-shadow: var(--amino-shadow-large);
+  outline: none !important;
+  border: 1px solid var(--amino-border-color);
+  position: absolute;
+  top: calc(var(--amino-space) + 5px);
+  left: 0;
+  z-index: 10;
 
-  span {
-    margin-top: var(--amino-space-quarter);
-    display: block;
-  }
-
-  & div {
-    flex-direction: row;
-    align-items: center;
-    display: flex;
+  ul {
+    outline: none !important;
   }
 `;
 
+const DropdownItem = styled.li<any>`
+  padding: var(--amino-space-half);
+  cursor: pointer;
+  user-select: none;
+
+  &:first-of-type {
+    border-top-left-radius: var(--amino-radius-large);
+    border-top-right-radius: var(--amino-radius-large);
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: var(--amino-radius-large);
+    border-bottom-right-radius: var(--amino-radius-large);
+  }
+
+  background: ${p => (p.active ? "var(--amino-gray-lighter)" : "white")};
+`;
+
 type Props = {
-  label?: string;
+  items: Array<any>;
+  label: string;
   helpText?: string;
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => any;
+  onChange: (newValue: string) => any;
   value: string;
+  placeholder: string;
+  itemLabelPath?: string;
+  itemValuePath?: string;
 };
 
+// TODO: use onSelectedItemChange ?
+
 export const Select: React.FC<Props> = ({
+  items,
   label,
+  onChange,
   helpText,
   value,
-  onChange,
-  children
+  placeholder,
+  itemLabelPath,
+  itemValuePath
 }) => {
+  const [selectItems, setSelectItems] = useState([] as any);
+
+  useEffect(() => {
+    setSelectItems(
+      items.map(item => (itemLabelPath ? item[itemLabelPath] : item.label))
+    );
+  }, [items]);
+
+  const {
+    isOpen,
+    selectedItem,
+    getToggleButtonProps,
+    getLabelProps,
+    getMenuProps,
+    highlightedIndex,
+    getItemProps
+  } = useSelect({
+    items: selectItems,
+    initialSelectedItem: value && value.length ? value : null
+  });
+
+  useEffect(() => {
+    if (selectedItem && selectItems.length) {
+      const item = items.find(i =>
+        itemLabelPath
+          ? i[itemLabelPath] === selectedItem
+          : i.label === selectedItem
+      );
+
+      onChange(itemValuePath ? item[itemValuePath] : item.value);
+    }
+  }, [selectedItem]);
+
   return (
-    <AminoInputWrapper className="amino-input-wrapper">
-      {label && <Text style={TextStyle.h5}>{label}</Text>}
-      <SelectContainer>
-        <StyledSelect onChange={onChange} defaultValue={value}>
-          {children}
-        </StyledSelect>
-        <DropdownIcon />
-      </SelectContainer>
+    <DropdownContainer>
+      <Text {...getLabelProps()} style={TextStyle.h5}>
+        {label}
+      </Text>
+
+      <DropdownTrigger {...getToggleButtonProps()}>
+        {selectedItem || placeholder}
+      </DropdownTrigger>
+
+      <DropdownIcon />
+
+      <Dropdown>
+        <ul {...getMenuProps()}>
+          {isOpen &&
+            selectItems.map((item: any, index: number) => (
+              <DropdownItem
+                active={highlightedIndex === index}
+                key={`${item}${index}`}
+                {...getItemProps({ item, index })}
+              >
+                {item}
+              </DropdownItem>
+            ))}
+        </ul>
+      </Dropdown>
+
       {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
-    </AminoInputWrapper>
+
+      <div tabIndex={0} />
+    </DropdownContainer>
   );
 };
