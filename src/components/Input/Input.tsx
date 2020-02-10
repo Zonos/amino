@@ -151,8 +151,20 @@ export const Input: React.FC<Props> = ({
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </div>
-      {helpText && !error?.length && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
-      {error?.length && <Error><Text style={TextStyle.Subtitle}>{error}</Text></Error>}
+
+      {helpText && (
+        <>
+          {error && error.length ? (
+            <Error>
+              <Text style={TextStyle.Subtitle}>{error}</Text>
+            </Error>
+          ) : null}
+
+          {(!error || !error.length) && helpText ? (
+            <Text style={TextStyle.Subtitle}>{helpText}</Text>
+          ) : null}
+        </>
+      )}
     </AminoInputWrapper>
   );
 };
