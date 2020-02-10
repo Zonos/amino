@@ -8,6 +8,10 @@ import { TextStyle, Text } from "../Text";
 // TODO: show the actual error message for each validation type
 // TODO: better input class name generation
 
+const Error = styled.div`
+  color: var(--amino-error);
+`;
+
 const InputDecorator = styled.div`
   height: 38px;
   background: var(--amino-gray-lightest);
@@ -45,9 +49,9 @@ const AminoInput = styled.input`
     border: 1px solid var(--amino-primary-light);
   }
 
-  //&:invalid {
-  //  border: 1px solid var(--amino-error);
-  //}
+  &[is-invalid] {
+    border: 1px solid var(--amino-error);
+  }
 
   &.has-prefix {
     border-top-left-radius: 0;
@@ -109,6 +113,9 @@ type Props = {
 
   /** Determines input type (email, password, etc.) */
   type?: string;
+
+  /** If present, will display an error message instead of help text */
+  error?: string;
 };
 
 export const Input: React.FC<Props> = ({
@@ -122,7 +129,8 @@ export const Input: React.FC<Props> = ({
   suffix,
   required,
   type,
-  readOnly
+  readOnly,
+  error
 }) => {
   return (
     <AminoInputWrapper width={width} className="amino-input-wrapper">
@@ -139,10 +147,12 @@ export const Input: React.FC<Props> = ({
           required={required || false}
           type={type || "text"}
           readOnly={readOnly || false}
+          is-invalid={error?.length}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </div>
-      {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
+      {helpText && !error?.length && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
+      {error?.length && <Error><Text style={TextStyle.Subtitle}>{error}</Text></Error>}
     </AminoInputWrapper>
   );
 };
