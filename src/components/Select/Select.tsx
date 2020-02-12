@@ -1,9 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useSelect } from "downshift";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 import { Text, TextStyle } from "../Text";
 import { DropdownIcon } from "../../icons/DropdownIcon";
+
+const DropdownAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const SubLabel = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: .4;
+  padding: var(--amino-space-half);
+`;
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -57,9 +76,13 @@ const Dropdown = styled.div`
   z-index: 9999999;
   max-height: 350px;
   overflow-y: auto;
-  
+  width: 100%;
+  animation: ${DropdownAnimation} 250ms ease-in-out;
+  animation-fill-mode: both;
+    
   ul {
     outline: none !important;
+    
   }
 `;
 
@@ -67,11 +90,6 @@ const DropdownItem = styled.li<any>`
   padding: var(--amino-space-half);
   cursor: pointer;
   user-select: none;
-
-  &:first-of-type {
-    border-top-left-radius: var(--amino-radius-large);
-    border-top-right-radius: var(--amino-radius-large);
-  }
 
   &:last-of-type {
     border-bottom-left-radius: var(--amino-radius-large);
@@ -159,20 +177,38 @@ export const Select: React.FC<Props> = ({
 
       <DropdownIcon />
 
-      <Dropdown>
-        <ul {...getMenuProps()}>
-          {isOpen &&
-            selectItems.map((item: any, index: number) => (
-              <DropdownItem
-                active={highlightedIndex === index}
-                key={`${item}${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {item}
-              </DropdownItem>
-            ))}
-        </ul>
-      </Dropdown>
+      {isOpen && (
+        <Dropdown>
+          <SubLabel>{label}</SubLabel>
+          <ul {...getMenuProps()}>
+            {
+              selectItems.map((item: any, index: number) => (
+                <DropdownItem
+                  active={highlightedIndex === index}
+                  key={`${item}${index}`}
+                  {...getItemProps({ item, index })}
+                >
+                  {item}
+                </DropdownItem>
+              ))}
+          </ul>
+        </Dropdown>
+      )}
+
+      {/*<Dropdown>*/}
+      {/*  <ul {...getMenuProps()}>*/}
+      {/*    {isOpen &&*/}
+      {/*      selectItems.map((item: any, index: number) => (*/}
+      {/*        <DropdownItem*/}
+      {/*          active={highlightedIndex === index}*/}
+      {/*          key={`${item}${index}`}*/}
+      {/*          {...getItemProps({ item, index })}*/}
+      {/*        >*/}
+      {/*          {item}*/}
+      {/*        </DropdownItem>*/}
+      {/*      ))}*/}
+      {/*  </ul>*/}
+      {/*</Dropdown>*/}
 
       {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
 
