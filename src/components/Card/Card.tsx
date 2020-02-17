@@ -12,7 +12,9 @@ const AminoCard = styled.div`
   background: white;
   padding: var(--amino-space);
   border-radius: var(--amino-radius-large);
-  box-shadow: var(--amino-shadow-medium);
+  //box-shadow: var(--amino-shadow-medium);
+  box-shadow: var(--amino-shadow-soft);
+  border: 1px solid var(--amino-border-color);
 `;
 
 const CardHeader = styled.header`

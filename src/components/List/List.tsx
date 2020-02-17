@@ -10,7 +10,7 @@ export const List = styled.section`
 
   & > div:last-of-type {
     border-bottom: 0;
-    border-bottom-left-radius: var(--amino-radius);
-    border-bottom-right-radius: var(--amino-radius);
+    border-bottom-left-radius: var(--amino-radius-large);
+    border-bottom-right-radius: var(--amino-radius-large);
   }
 `;

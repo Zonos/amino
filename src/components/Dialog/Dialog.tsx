@@ -38,14 +38,15 @@ const Popup = styled.div`
   max-height: 90vh;
   outline: none;
   box-shadow: var(--amino-shadow-large);
+  border: 1px solid var(--amino-border-color);
 `;
 
 const Header = styled.div`
   padding: var(--amino-space);
   border-bottom: 1px solid var(--amino-border-color);
-  background: var(--amino-gray-lighter);
   border-top-left-radius: var(--amino-radius-large);
   border-top-right-radius: var(--amino-radius-large);
+  background: white;
 
   h4 {
     margin: 0;

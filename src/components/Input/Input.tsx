@@ -45,8 +45,8 @@ const AminoInput = styled.input`
 
   &:focus {
     outline: none;
-    box-shadow: var(--amino-shadow-glow);
-    border: 1px solid var(--amino-primary-light);
+    border: 2px solid var(--amino-primary);
+    padding: 0 calc(var(--amino-space-half) - 1px);
   }
 
   &[is-invalid] {

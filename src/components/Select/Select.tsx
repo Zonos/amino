@@ -16,14 +16,6 @@ const DropdownAnimation = keyframes`
   }
 `;
 
-const SubLabel = styled.div`
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  opacity: .4;
-  padding: var(--amino-space-half);
-`;
-
 const DropdownContainer = styled.div`
   position: relative;
 
@@ -59,19 +51,19 @@ const DropdownTrigger = styled.button`
 
   &:focus {
     outline: none;
-    box-shadow: var(--amino-shadow-glow);
-    border: 1px solid var(--amino-primary-light);
+    border: 2px solid var(--amino-primary);
+    padding: 0 calc(var(--amino-space-half) - 1px);
   }
 `;
 
 const Dropdown = styled.div`
-  border-radius: var(--amino-radius-large);
+  border-radius: var(--amino-radius);
   background: white;
   box-shadow: var(--amino-shadow-large);
   outline: none !important;
   border: 1px solid var(--amino-border-color);
   position: absolute;
-  top: calc(var(--amino-space) + 5px);
+  top: calc(var(--amino-space-double) + 32px);
   left: 0;
   z-index: 9999999;
   max-height: 350px;
@@ -82,7 +74,6 @@ const Dropdown = styled.div`
     
   ul {
     outline: none !important;
-    
   }
 `;
 
@@ -179,7 +170,6 @@ export const Select: React.FC<Props> = ({
 
       {isOpen && (
         <Dropdown>
-          <SubLabel>{label}</SubLabel>
           <ul {...getMenuProps()}>
             {
               selectItems.map((item: any, index: number) => (
@@ -194,21 +184,6 @@ export const Select: React.FC<Props> = ({
           </ul>
         </Dropdown>
       )}
-
-      {/*<Dropdown>*/}
-      {/*  <ul {...getMenuProps()}>*/}
-      {/*    {isOpen &&*/}
-      {/*      selectItems.map((item: any, index: number) => (*/}
-      {/*        <DropdownItem*/}
-      {/*          active={highlightedIndex === index}*/}
-      {/*          key={`${item}${index}`}*/}
-      {/*          {...getItemProps({ item, index })}*/}
-      {/*        >*/}
-      {/*          {item}*/}
-      {/*        </DropdownItem>*/}
-      {/*      ))}*/}
-      {/*  </ul>*/}
-      {/*</Dropdown>*/}
 
       {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
 

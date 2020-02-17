@@ -10,7 +10,7 @@ const AminoButton = styled.button<any>`
   position: relative;
   outline: none;
   border: 1px solid transparent;
-  height: 36px;
+  height: 40px;
   line-height: 18px;
   box-sizing: border-box;
   display: flex;
@@ -20,17 +20,19 @@ const AminoButton = styled.button<any>`
   padding: 0 var(--amino-space);
   border-radius: var(--amino-radius);
   transition: var(--amino-transition);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  font-weight: 500;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.12);
+  font-weight: 600;
   user-select: none;
+  font-family: var(--amino-font-sans);
+  letter-spacing: normal;
 
   &:focus {
     outline: none;
   }
   
   &:active {
-    box-shadow: var(--amino-shadow-glow);
-    border: 1px solid var(--amino-primary-light);
+    border: 2px solid var(--amino-primary);
+    padding: 0 calc(var(--amino-space) - 1px);
   }
 
   &[disabled] {

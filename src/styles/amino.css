@@ -44,6 +44,9 @@
   --amino-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
   --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --amino-shadow-soft:  0 0.7px 1.5px rgba(0, 0, 0, 0.021),
+  0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
+  /*TODO: would love for this soft shadow to be part of the scale...*/
 
   /* Text */
   --amino-font-size: 14px;
@@ -61,8 +64,8 @@
   --amino-space-double: 32pt;
   --amino-space-double-negative: -32pt;
 
-  --amino-radius: 5px;
-  --amino-radius-large: 8px;
+  --amino-radius: 6px;
+  --amino-radius-large: 10px;
 
   /*TODO: page widths and breakpoints*/
 
@@ -128,8 +131,8 @@ h3 {
 }
 
 h4 {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 h5 {
