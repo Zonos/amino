@@ -5,7 +5,6 @@ import { Text, TextStyle } from "../Text";
 
 const AminoListItem = styled.div<any>`
   padding: var(--amino-space-half) var(--amino-space);
-  transition: var(--amino-transition);
   display: flex;
   flex-direction: row;
   align-items: center;
