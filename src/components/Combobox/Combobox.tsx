@@ -45,6 +45,7 @@ const DropdownContainer = styled.div`
   //TODO: I don't like replicating this code...
   input {
     height: 38px;
+    line-height: 38px;
     box-sizing: border-box;
     position: relative;
     outline: none;
@@ -88,6 +89,9 @@ const DropdownItem = styled.li<any>`
   padding: var(--amino-space-half);
   cursor: pointer;
   user-select: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   &:last-of-type {
     border-bottom-left-radius: var(--amino-radius-large);
@@ -95,6 +99,26 @@ const DropdownItem = styled.li<any>`
   }
 
   background: ${p => (p.active ? "var(--amino-gray-lighter)" : "white")};
+`;
+
+const Wrapper = styled.div`
+  position: relative;
+
+  img {
+    position: absolute;
+    left: 6.5px;
+    top: 6.5px;
+    z-index: 999;
+  }
+`;
+
+// TODO: show icon if selected
+
+const Icon = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  margin-right: var(--amino-space-half);
 `;
 
 type Props = {
@@ -169,6 +193,35 @@ export const Combobox: React.FC<Props> = ({
     }
   } as any);
 
+  const renderIcon = (itemLabel?: string) => {
+    const item = items.find(x =>
+      itemLabelPath
+        ? x[itemLabelPath] === itemLabel
+          ? itemLabel
+          : selectedItem
+        : x.label === itemLabel
+        ? itemLabel
+        : selectedItem
+    );
+
+    if (item && item.iconComponent) {
+      return item.iconComponent;
+    } else if (item && item.icon) {
+      return <Icon src={item.icon} />;
+    } else {
+      return null;
+    }
+  };
+
+  const selectedHasIcon = () =>
+    Boolean(
+      items.find(x =>
+        itemLabelPath
+          ? x[itemLabelPath] === selectedItem
+          : x.label === selectedItem
+      ).icon
+    );
+
   useEffect(() => {
     if (selectedItem && selectItems.length) {
       const item = items.find(i =>
@@ -186,10 +239,16 @@ export const Combobox: React.FC<Props> = ({
       <Text {...getLabelProps()} style={TextStyle.h5}>
         {label}
       </Text>
-
-      <div style={{ display: "inline-block" }} {...getComboboxProps()}>
-        <input placeholder={placeholder} {...getInputProps()} />
-      </div>
+      <Wrapper {...getComboboxProps()}>
+        {selectedItem && renderIcon()}
+        <input
+          style={{
+            paddingLeft: selectedItem && selectedHasIcon() ? "40px" : ""
+          }}
+          placeholder={placeholder}
+          {...getInputProps()}
+        />
+      </Wrapper>
 
       {/*TODO: add dropdown button indicator*/}
       {/*<button {...getToggleButtonProps()} aria-label="toggle menu">*/}
@@ -205,6 +264,7 @@ export const Combobox: React.FC<Props> = ({
                 key={`${item}${index}`}
                 {...getItemProps({ item, index })}
               >
+                {renderIcon(item)}
                 {item}
               </DropdownItem>
             ))}
