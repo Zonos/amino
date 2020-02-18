@@ -193,15 +193,9 @@ export const Combobox: React.FC<Props> = ({
     }
   } as any);
 
-  const renderIcon = (itemLabel?: string) => {
+  const renderIcon = (itemLabel: string) => {
     const item = items.find(x =>
-      itemLabelPath
-        ? x[itemLabelPath] === itemLabel
-          ? itemLabel
-          : selectedItem
-        : x.label === itemLabel
-        ? itemLabel
-        : selectedItem
+      itemLabelPath ? x[itemLabelPath] === itemLabel : x.label === itemLabel
     );
 
     if (item && item.iconComponent) {
@@ -240,7 +234,7 @@ export const Combobox: React.FC<Props> = ({
         {label}
       </Text>
       <Wrapper {...getComboboxProps()}>
-        {selectedItem && renderIcon()}
+        {selectedItem && renderIcon(selectedItem)}
         <input
           style={{
             paddingLeft: selectedItem && selectedHasIcon() ? "40px" : ""
