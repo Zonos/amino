@@ -234,7 +234,7 @@ export const Combobox: React.FC<Props> = ({
         {label}
       </Text>
       <Wrapper {...getComboboxProps()}>
-        {selectedItem && renderIcon(selectedItem)}
+        {selectedItem && renderIcon(selectedItem as string)}
         <input
           style={{
             paddingLeft: selectedItem && selectedHasIcon() ? "40px" : ""
