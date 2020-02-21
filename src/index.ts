@@ -16,6 +16,8 @@ export { List } from './components/List';
 export { StepperInput } from './components/StepperInput';
 export { Dialog } from './components/Dialog';
 
+export { Depth, Surface } from './primitives';
+
 export { AminoOnSaveHandler } from './utils/AminoOnSaveHandler';
 export { AminoOnClickHandler } from './utils/AminoOnClickHandler';
 

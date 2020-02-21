@@ -7,7 +7,7 @@ const SurfaceBase = styled.div`
   background: white;
   padding: var(--amino-space);
   border-radius: var(--amino-radius-large);
-  //border: 1px solid var(--amino-border-color);
+  border: 1px solid var(--amino-border-color);
 `;
 
 const Depth4 = styled(SurfaceBase)`
