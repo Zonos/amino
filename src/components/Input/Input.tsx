@@ -39,7 +39,7 @@ const AminoInput = styled.input`
   border: 1px solid var(--amino-border-color);
   padding: 0 var(--amino-space-half);
   transition: var(--amino-transition);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--amino-shadow-top);
   width: 100%;
   border-radius: var(--amino-radius);
 

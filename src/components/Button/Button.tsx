@@ -20,8 +20,8 @@ const AminoButton = styled.button<any>`
   padding: 0 var(--amino-space);
   border-radius: var(--amino-radius);
   transition: var(--amino-transition);
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,.12);
-  font-weight: 600;
+  box-shadow: var(--amino-shadow-top);
+  font-weight: 500;
   user-select: none;
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
@@ -45,6 +45,7 @@ const AminoButton = styled.button<any>`
 
 const Primary = styled(AminoButton)<any>`
   background: var(--amino-primary);
+  box-shadow: var(--amino-shadow-top-primary);
   color: var(--amino-text-light);
 
   &:hover {

@@ -45,8 +45,8 @@ const DropdownTrigger = styled.button`
   width: 100%;
   padding: 0 var(--amino-space-half);
   background: white;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border: 1px solid var(--amino-border-color);
+  box-shadow: var(--amino-shadow-top);
   text-align: left;
 
   &:focus {

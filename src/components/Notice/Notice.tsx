@@ -5,7 +5,7 @@ import { Intent } from "../..";
 
 const AminoNotice = styled.aside`
   border-radius: var(--amino-radius);
-  border-left: 8px solid var(--amino-gray-light);
+  border-left: var(--amino-radius) solid var(--amino-gray-light);
   background: var(--amino-gray-lightest);
   color: var(--amino-gray-dark);
   padding: var(--amino-space);

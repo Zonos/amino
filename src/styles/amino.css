@@ -1,85 +1,3 @@
-:root {
-  /* Colors */
-  --amino-gray-lightest: #f8fafc;
-  --amino-gray-lighter: #f8fafc;
-  --amino-gray-light: #e7eaef;
-  --amino-gray-base: #2D3748;
-  --amino-gray-dark: #1A202C;
-
-  --amino-red-lightest: #fde7e9;
-  --amino-red-light: #e75d5e;
-  --amino-red-base: #da3939;
-  --amino-red-dark: #b41e1f;
-
-  --amino-blue-lightest: #bfdcfc;
-  --amino-blue-light: #3c91ec;
-  --amino-blue-base: #1c74d8;
-  --amino-blue-dark: #1e5898;
-
-  --amino-orange-lightest: #fceed1;
-  --amino-orange-light: #f09835;
-  --amino-orange-base: #e4771b;
-  --amino-orange-dark: #c45307;
-
-  --amino-green-lightest: #e1f7eb;
-  --amino-green-light: #44a575;
-  --amino-green-base: #33855d;
-  --amino-green-dark: #27684a;
-
-  /* Helpers */
-  --amino-primary: var(--amino-blue-base);
-  --amino-primary-light: var(--amino-blue-light);
-  --amino-primary-dark: var(--amino-blue-dark);
-
-  --amino-success: var(--amino-green-base);
-  --amino-warning: var(--amino-orange-base);
-  --amino-error: var(--amino-red-base);
-
-  --amino-border-color: var(--amino-gray-light);
-  --amino-page-background: var(--amino-gray-lightest);
-
-  /* Shadows */
-  --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-medium: 0 0 0 1px rgba(63,63,68,.05),0 1px 3px 0 rgba(63,63,68,.15);
-  --amino-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
-  --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-soft:  0 0.7px 1.5px rgba(0, 0, 0, 0.021),
-  0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
-  /*TODO: would love for this soft shadow to be part of the scale...*/
-
-  /* Text */
-  --amino-font-size: 14px;
-  --amino-text-light: white;
-  --amino-text-color: #525f7f;
-  --amino-text-dark: var(--amino-text-color);
-
-  /* Layout */
-  --amino-space: 16pt;
-  --amino-space-negative: -16pt;
-  --amino-space-half: 8pt;
-  --amino-space-half-negative: -8pt;
-  --amino-space-quarter: 4pt;
-  --amino-space-quarter-negative: -4pt;
-  --amino-space-double: 32pt;
-  --amino-space-double-negative: -32pt;
-
-  --amino-radius: 6px;
-  --amino-radius-large: 10px;
-
-  /*TODO: page widths and breakpoints*/
-
-  /* Font stack */
-  --amino-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  --amino-font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
-    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-
-  /* Animation */
-  --amino-transition: all 0.2s ease-in-out 0s;
-}
-
 html {
   font-size: var(--amino-font-size);
   font-family: var(--amino-font-sans);
@@ -91,6 +9,7 @@ html {
 }
 
 body {
+  background: var(--amino-page-background);
   font-family: var(--amino-font-sans);
   font-size: 1em;
   height: 100%;
@@ -131,8 +50,8 @@ h3 {
 }
 
 h4 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 h5 {

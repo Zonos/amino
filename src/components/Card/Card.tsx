@@ -5,17 +5,9 @@ import { Text, TextStyle } from "../Text";
 import { Button } from "../Button";
 import { AminoOnSaveHandler } from "../..";
 import { Stack, StackType } from "../Stack";
+import { Depth, Surface } from "../../primitives";
 
 // TODO: figure out a way to handle form + validation for inner elements when onSave is called
-
-const AminoCard = styled.div`
-  background: white;
-  padding: var(--amino-space);
-  border-radius: var(--amino-radius-large);
-  //box-shadow: var(--amino-shadow-medium);
-  box-shadow: var(--amino-shadow-soft);
-  border: 1px solid var(--amino-border-color);
-`;
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);
@@ -81,7 +73,7 @@ export const Card: React.FC<Props> = ({
   };
 
   return (
-    <AminoCard className={className || ""}>
+    <Surface depth={Depth.depth4} className={className || ""}>
       {label && (
         <CardHeader>
           <Text style={TextStyle.h4}>{label}</Text>
@@ -104,6 +96,6 @@ export const Card: React.FC<Props> = ({
           </Stack>
         </CardFooter>
       )}
-    </AminoCard>
+    </Surface>
   );
 };
