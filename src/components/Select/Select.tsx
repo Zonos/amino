@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelect } from "downshift";
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { Text, TextStyle } from "../Text";
 import { DropdownIcon } from "../../icons/DropdownIcon";
@@ -71,7 +71,7 @@ const Dropdown = styled.div`
   width: 100%;
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-    
+
   ul {
     outline: none !important;
   }
@@ -88,6 +88,11 @@ const DropdownItem = styled.li<any>`
   }
 
   background: ${p => (p.active ? "var(--amino-gray-lighter)" : "white")};
+`;
+
+const Placeholder = styled.div`
+  color: var(--amino-text-color);
+  opacity: 0.3;
 `;
 
 type Props = {
@@ -163,7 +168,7 @@ export const Select: React.FC<Props> = ({
       </Text>
 
       <DropdownTrigger {...getToggleButtonProps()}>
-        {selectedItem || placeholder}
+        {selectedItem ? selectedItem : <Placeholder>{placeholder}</Placeholder>}
       </DropdownTrigger>
 
       <DropdownIcon />
@@ -171,16 +176,15 @@ export const Select: React.FC<Props> = ({
       {isOpen && (
         <Dropdown>
           <ul {...getMenuProps()}>
-            {
-              selectItems.map((item: any, index: number) => (
-                <DropdownItem
-                  active={highlightedIndex === index}
-                  key={`${item}${index}`}
-                  {...getItemProps({ item, index })}
-                >
-                  {item}
-                </DropdownItem>
-              ))}
+            {selectItems.map((item: any, index: number) => (
+              <DropdownItem
+                active={highlightedIndex === index}
+                key={`${item}${index}`}
+                {...getItemProps({ item, index })}
+              >
+                {item}
+              </DropdownItem>
+            ))}
           </ul>
         </Dropdown>
       )}

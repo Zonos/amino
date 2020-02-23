@@ -31,7 +31,7 @@ const InputSuffix = styled(InputDecorator)`
   border-left: 0;
 `;
 
-const AminoInput = styled.input`
+const AminoInput = styled.input<any>`
   height: 38px;
   box-sizing: border-box;
   position: relative;
@@ -39,18 +39,18 @@ const AminoInput = styled.input`
   border: 1px solid var(--amino-border-color);
   padding: 0 var(--amino-space-half);
   transition: var(--amino-transition);
-  box-shadow: var(--amino-shadow-top);
   width: 100%;
   border-radius: var(--amino-radius);
+  
+  ::placeholder {
+    color: var(--amino-text-color);
+    opacity: .3;
+  }
 
-  &:focus {
+  :focus {
     outline: none;
     border: 2px solid var(--amino-primary);
     padding: 0 calc(var(--amino-space-half) - 1px);
-  }
-
-  &[is-invalid] {
-    border: 1px solid var(--amino-error);
   }
 
   &.has-prefix {
@@ -62,6 +62,15 @@ const AminoInput = styled.input`
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+  
+  &[is-invalid] {
+    border: 2px solid var(--amino-error);
+  }
+`;
+
+const Fields = styled.div`
+  box-shadow: var(--amino-shadow-top);
+  border-radius: var(--amino-radius);
 `;
 
 const AminoInputWrapper = styled.div<any>`
@@ -135,7 +144,7 @@ export const Input: React.FC<Props> = ({
   return (
     <AminoInputWrapper width={width} className="amino-input-wrapper">
       {label && <Text style={TextStyle.h5}>{label}</Text>}
-      <div>
+      <Fields>
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
         <AminoInput
           className={`${prefix ? "has-prefix" : ""} ${
@@ -147,10 +156,10 @@ export const Input: React.FC<Props> = ({
           required={required || false}
           type={type || "text"}
           readOnly={readOnly || false}
-          is-invalid={error?.length}
+          is-invalid={error && error.length}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
-      </div>
+      </Fields>
 
       {helpText && (
         <>

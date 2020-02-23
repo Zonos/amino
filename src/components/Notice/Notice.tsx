@@ -5,9 +5,10 @@ import { Intent } from "../..";
 
 const AminoNotice = styled.aside`
   border-radius: var(--amino-radius);
+  border: 1px solid var(--amino-gray-light);
   border-left: var(--amino-radius) solid var(--amino-gray-light);
   background: var(--amino-gray-lightest);
-  color: var(--amino-gray-dark);
+  color: var(--amino-text-color);
   padding: var(--amino-space);
   
   a {
@@ -17,25 +18,25 @@ const AminoNotice = styled.aside`
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
-  border-left-color: var(--amino-green-base);
+  border-color: var(--amino-green-base);
   background: var(--amino-green-lightest);
   color: var(--amino-green-dark);
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  border-left-color: var(--amino-red-base);
+  border-color: var(--amino-red-base);
   background: var(--amino-red-lightest);
   color: var(--amino-red-dark);
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
-  border-left-color: var(--amino-orange-base);
+  border-color: var(--amino-orange-base);
   background: var(--amino-orange-lightest);
   color: var(--amino-orange-dark);
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
-  border-left-color: var(--amino-blue-base);
+  border-color: var(--amino-blue-base);
   background: var(--amino-blue-lightest);
   color: var(--amino-blue-dark);
 `;

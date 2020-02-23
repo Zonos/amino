@@ -56,6 +56,11 @@ const DropdownContainer = styled.div`
     width: 100%;
     border-radius: var(--amino-radius);
 
+    ::placeholder {
+      color: var(--amino-text-color);
+      opacity: 0.3;
+    }
+
     &:focus {
       outline: none;
       border: 2px solid var(--amino-primary);

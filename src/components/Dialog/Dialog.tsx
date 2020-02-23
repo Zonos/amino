@@ -12,7 +12,7 @@ const Backdrop = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  background: #4a5568bb;
+  background: rgba(55, 55, 59, .8);
   z-index: 99998;
   position: fixed;
 `;
@@ -38,7 +38,7 @@ const Popup = styled.div`
   max-height: 90vh;
   outline: none;
   box-shadow: var(--amino-shadow-large);
-  border: 1px solid var(--amino-border-color);
+  //border: 1px solid var(--amino-border-color);
 `;
 
 const Header = styled.div`

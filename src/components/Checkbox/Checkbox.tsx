@@ -17,6 +17,7 @@ const CheckIcon = () => (
 const AminoCheckbox = styled.div`
   width: 18px;
   height: 18px;
+  line-height: 18px;
   border-radius: 4px;
   background: white;
   border: 1px solid var(--amino-border-color);
@@ -25,22 +26,23 @@ const AminoCheckbox = styled.div`
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--amino-shadow-top);
   margin-right: var(--amino-space-half);
 
   &:active {
     outline: none;
-    box-shadow: var(--amino-shadow-glow);
-    border: 1px solid var(--amino-primary-light);
+    box-shadow: var(--amino-shadow-top-primary);
+    border: 2px solid var(--amino-primary);
   }
 `;
 
 const SelectedCheckbox = styled(AminoCheckbox)`
   background: var(--amino-primary) !important;
-  border: 1px solid var(--amino-primary);
+  border: 2px solid var(--amino-primary);
 
   svg {
     fill: white;
+    box-shadow: var(--amino-shadow-top);
   }
 `;
 
