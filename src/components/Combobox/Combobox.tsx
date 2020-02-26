@@ -180,21 +180,33 @@ export const Combobox: React.FC<Props> = ({
   } = useCombobox({
     items: selectItems,
     onInputValueChange: ({ inputValue }: any) => {
-      setSelectItems(
-        items
-          .map(item => {
-            const label = itemLabelPath ? item[itemLabelPath] : item.label;
+      console.log(inputValue);
 
-            if (labelFormatFunction) {
-              return labelFormatFunction(label);
-            } else {
-              return label;
-            }
-          })
-          .filter(item => {
-            return item.toLowerCase().startsWith(inputValue.toLowerCase());
-          })
-      );
+      const foundItems = items
+        .map(item => {
+          const label = itemLabelPath ? item[itemLabelPath] : item.label;
+
+          if (labelFormatFunction) {
+            return labelFormatFunction(label);
+          } else {
+            return label;
+          }
+        })
+        .filter(item => {
+          return item.toLowerCase().startsWith(inputValue.toLowerCase());
+        });
+
+      if (foundItems.length === 1) {
+        const item = items.find(x =>
+          itemLabelPath
+            ? x[itemLabelPath] === inputValue
+            : x.label === inputValue
+        );
+
+        onChange(itemValuePath ? item[itemValuePath] : item.value);
+      }
+
+      setSelectItems(foundItems);
     }
   } as any);
 
