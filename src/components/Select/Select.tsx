@@ -25,8 +25,9 @@ const DropdownContainer = styled.div`
     top: 39px;
     width: 18px;
     height: 18px;
-    stroke: var(--amino-gray-base);
+    opacity: .5;
     pointer-events: none;
+    color: var(--amino-text-color);
   }
 
   span {

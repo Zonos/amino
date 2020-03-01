@@ -14,8 +14,9 @@ const CardHeader = styled.header`
   padding: var(--amino-space);
   display: flex;
   align-items: center;
-  padding-bottom: 0;
-  margin-bottom: var(--amino-space-half);
+  //padding-bottom: 0;
+  margin-bottom: var(--amino-space);
+  border-bottom: 1px solid var(--amino-border-color);
 
   h4 {
     margin-bottom: 0;
