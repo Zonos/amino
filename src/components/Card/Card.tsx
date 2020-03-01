@@ -14,9 +14,10 @@ const CardHeader = styled.header`
   padding: var(--amino-space);
   display: flex;
   align-items: center;
-  //padding-bottom: 0;
   margin-bottom: var(--amino-space);
   border-bottom: 1px solid var(--amino-border-color);
+  height: 65px;
+  line-height: 65px;
 
   h4 {
     margin-bottom: 0;
@@ -78,6 +79,14 @@ export const Card: React.FC<Props> = ({
       {label && (
         <CardHeader>
           <Text style={TextStyle.h4}>{label}</Text>
+
+          {!onSave && actions && (
+            <Stack type={StackType.row}>
+              {actions.map((action: any, index: number) => (
+                <div key={index}>{action}</div>
+              ))}
+            </Stack>
+          )}
         </CardHeader>
       )}
       {children}
@@ -86,15 +95,6 @@ export const Card: React.FC<Props> = ({
           <Button loading={saving} intent="primary" onClick={save}>
             Save
           </Button>
-        </CardFooter>
-      )}
-      {!onSave && actions && (
-        <CardFooter>
-          <Stack type={StackType.row}>
-            {actions.map((action: any, index: number) => (
-              <div key={index}>{action}</div>
-            ))}
-          </Stack>
         </CardFooter>
       )}
     </Surface>
