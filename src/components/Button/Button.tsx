@@ -63,6 +63,22 @@ const Secondary = styled(AminoButton)<any>`
   }
 `;
 
+const Icon = styled(AminoButton)<any>`
+  background: white;
+  color: var(--amino-text-dark);
+  border: 1px solid var(--amino-border-color);
+  padding: 0 var(--amino-space-half);
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: var(--amino-gray-lightest);
+  }
+`;
+
 const Danger = styled(AminoButton)<any>`
   background: var(--amino-error);
   color: white; 
@@ -103,6 +119,8 @@ export const Button: React.FC<Props> = ({
       return <Primary {...buttonProps}>{content}</Primary>;
     case "danger":
       return <Danger {...buttonProps}>{content}</Danger>;
+    case "icon":
+      return <Icon {...buttonProps}>{content}</Danger>;
     case "secondary":
     default:
       return <Secondary {...buttonProps}>{content}</Secondary>;

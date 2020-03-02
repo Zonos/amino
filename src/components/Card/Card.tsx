@@ -18,6 +18,7 @@ const CardHeader = styled.header`
   border-bottom: 1px solid var(--amino-border-color);
   height: 65px;
   line-height: 65px;
+  user-select: none;
 
   h4 {
     margin-bottom: 0;
