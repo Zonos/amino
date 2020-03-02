@@ -180,8 +180,6 @@ export const Combobox: React.FC<Props> = ({
   } = useCombobox({
     items: selectItems,
     onInputValueChange: ({ inputValue }: any) => {
-      console.log(inputValue);
-
       const foundItems = items
         .map(item => {
           const label = itemLabelPath ? item[itemLabelPath] : item.label;
@@ -203,7 +201,9 @@ export const Combobox: React.FC<Props> = ({
             : x.label === inputValue
         );
 
-        onChange(itemValuePath ? item[itemValuePath] : item.value);
+        if (item) {
+          onChange(itemValuePath ? item[itemValuePath] : item.value);
+        }
       }
 
       setSelectItems(foundItems);
