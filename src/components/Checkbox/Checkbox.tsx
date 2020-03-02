@@ -21,6 +21,7 @@ const AminoCheckbox = styled.div`
   border-radius: 4px;
   background: white;
   border: 1px solid var(--amino-border-color);
+  transition: var(--amino-transition);
   cursor: pointer;
   display: flex;
   align-items: center;
