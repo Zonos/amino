@@ -77,6 +77,11 @@ const Icon = styled(AminoButton)<any>`
   &:hover {
     background: var(--amino-gray-lightest);
   }
+  
+  &:active {
+    border: 2px solid var(--amino-primary);
+    padding: 0 calc(var(--amino-space-half) - 1px);
+  }
 `;
 
 const Danger = styled(AminoButton)<any>`
