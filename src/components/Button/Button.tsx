@@ -120,7 +120,7 @@ export const Button: React.FC<Props> = ({
     case "danger":
       return <Danger {...buttonProps}>{content}</Danger>;
     case "icon":
-      return <Icon {...buttonProps}>{content}</Danger>;
+      return <Icon {...buttonProps}>{content}</Icon>;
     case "secondary":
     default:
       return <Secondary {...buttonProps}>{content}</Secondary>;
