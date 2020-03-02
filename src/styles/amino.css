@@ -102,3 +102,7 @@ h6 {
   opacity: 0;
   transition: opacity 300ms;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

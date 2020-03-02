@@ -38,6 +38,7 @@ const Popup = styled.div`
   max-height: 90vh;
   outline: none;
   box-shadow: var(--amino-shadow-large);
+  overflow-y: scroll;
   //border: 1px solid var(--amino-border-color);
 `;
 
