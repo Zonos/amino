@@ -73,6 +73,7 @@ type Props = {
   label?: string;
   subtitle?: string;
   disabled?: boolean;
+  labelComponent?: any;
 };
 
 export const Checkbox: React.FC<Props> = ({
@@ -80,7 +81,8 @@ export const Checkbox: React.FC<Props> = ({
   onChange,
   label,
   subtitle,
-  disabled
+  disabled,
+  labelComponent
 }) => (
   <CheckboxContainer
     className="amino-input-wrapper"
@@ -96,7 +98,9 @@ export const Checkbox: React.FC<Props> = ({
     )}
     {label && (
       <label>
-        <Text style={TextStyle.h5}>{label}</Text>
+        <Text style={TextStyle.h5}>
+          {labelComponent ? labelComponent : label}
+        </Text>
         {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
       </label>
     )}
