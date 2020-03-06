@@ -99,7 +99,7 @@ export const Checkbox: React.FC<Props> = ({
     {label && (
       <label>
         <Text style={TextStyle.h5}>
-          {labelComponent ? labelComponent : label}
+          {labelComponent ? React.cloneElement(labelComponent) : label}
         </Text>
         {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
       </label>
