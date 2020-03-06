@@ -88,7 +88,7 @@ const DropdownItem = styled.li<any>`
     border-bottom-right-radius: var(--amino-radius-large);
   }
 
-  background: ${p => (p.active ? "var(--amino-gray-lightest)" : "white")};
+  background: ${p => (p.active ? "var(--amino-gray-lighter)" : "white")};
 `;
 
 const Placeholder = styled.div`

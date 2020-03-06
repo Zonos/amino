@@ -32,7 +32,7 @@ const CardFooter = styled.footer`
   margin: var(--amino-space-negative);
   padding: var(--amino-space);
   border-top: 1px solid var(--amino-border-color);
-  background: var(--amino-gray-lightest);
+  background: var(--amino-gray-lighter);
   margin-top: var(--amino-space);
   border-bottom-left-radius: var(--amino-radius-large);
   border-bottom-right-radius: var(--amino-radius-large);
