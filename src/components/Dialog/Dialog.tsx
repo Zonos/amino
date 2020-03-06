@@ -60,7 +60,7 @@ const Footer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: var(--amino-gray-lighter);
+  background: var(--amino-gray-lighterest);
   border-bottom-left-radius: var(--amino-radius-large);
   border-bottom-right-radius: var(--amino-radius-large);
 
