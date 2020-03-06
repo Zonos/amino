@@ -17,6 +17,8 @@ const CheckIcon = () => (
 const AminoCheckbox = styled.div`
   width: 18px;
   height: 18px;
+  min-width: 18px;
+  min-height: 18px;
   line-height: 18px;
   border-radius: 4px;
   background: white;
@@ -54,6 +56,11 @@ const CheckboxContainer = styled.div<any>`
   align-items: ${p => (p.multiline ? "flex-start" : "center")};
   pointer-events: ${props => (props.disabled ? "none" : "auto")};
   opacity: ${props => (props.disabled ? "0.3" : "1")};
+
+  a {
+    color: var(--amino-primary);
+    text-decoration: underline;
+  }
 
   label {
     display: flex;
