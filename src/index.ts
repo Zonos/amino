@@ -1,7 +1,6 @@
 export { Button } from "./components/Button";
 export { Layout } from "./components/Layout";
 export { Card } from "./components/Card";
-export { Spinner } from "./components/Spinner";
 export { Text, TextStyle } from "./components/Text";
 export { Stack, StackType } from "./components/Stack";
 export { Input } from "./components/Input";
@@ -16,6 +15,9 @@ export { ListItem } from "./components/ListItem";
 export { List } from "./components/List";
 export { StepperInput } from "./components/StepperInput";
 export { Dialog } from "./components/Dialog";
+
+export { Spinner } from "./components/Spinner";
+export { Skeleton } from './components/Skeleton';
 
 export { Depth, Surface } from "./primitives";
 
