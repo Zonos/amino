@@ -1,11 +1,12 @@
 :root {
   /* Colors */
 /*TODO: HSL for all colors*/
-  --amino-gray-lightest: #fbfbfb;
-  --amino-gray-lighter: var(--amino-gray-lightest); /* TODO: this is deprecated */
-  --amino-gray-light: #e7e7e7;
-  --amino-gray-base: rgb(68, 68, 68);
-  --amino-gray-dark: rgb(48, 48, 48);
+  --amino-gray-lightest: hsl(210, 40%, 98%);
+  --amino-gray-lighter: hsl(225, 9%, 91%);
+  --amino-gray-light: hsl(225, 5%, 84%);
+  --amino-gray-base: hsl(228, 2%, 49%);
+  --amino-gray-dark: hsl(240, 5%, 21%);
+  --amino-gray-darker: hsl(240, 8%, 12%);
 
   --amino-red-lightest: #fde7e9;
   --amino-red-light: #e75d5e;
@@ -29,8 +30,8 @@
 
   /* Tokens */
   --amino-page-background: var(--amino-gray-lightest);
-  --amino-border-color: var(--amino-gray-light);
-  --amino-text-color: var(--amino-gray-base);
+  --amino-border-color: var(--amino-gray-lighter);
+  --amino-text-color: var(--amino-gray-dark);
   --amino-font-size: 14px;
   --amino-primary: var(--amino-blue-base);
   --amino-primary-light: var(--amino-blue-light);

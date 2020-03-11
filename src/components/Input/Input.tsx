@@ -39,8 +39,9 @@ const AminoInput = styled.input<any>`
   border: 1px solid var(--amino-border-color);
   padding: 0 var(--amino-space-half);
   transition: var(--amino-transition);
-  width: 100%;
+  width: 100%; 
   border-radius: var(--amino-radius);
+  background: white;
   
   ::placeholder {
     color: var(--amino-text-color);
@@ -69,7 +70,6 @@ const AminoInput = styled.input<any>`
 `;
 
 const Fields = styled.div`
-  box-shadow: var(--amino-shadow-top);
   border-radius: var(--amino-radius);
 `;
 

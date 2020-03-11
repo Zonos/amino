@@ -32,7 +32,7 @@ const Pulser = styled.div`
 const SkeletonLoader = styled.div`
   height: 1em;
   width: 50px;
-  background: var(--amino-gray-light);
+  background: var(--amino-gray-lightest);
   border-radius: var(--amino-radius);
   position: relative;
 `;

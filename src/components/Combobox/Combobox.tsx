@@ -70,11 +70,11 @@ const DropdownContainer = styled.div`
 `;
 
 const Dropdown = styled.div`
-  border-radius: var(--amino-radius);
+  border-radius: var(--amino-radius-large);
   background: white;
   box-shadow: var(--amino-shadow-large);
   outline: none !important;
-  border: 1px solid var(--amino-border-color);
+  //border: 1px solid var(--amino-border-color);
   position: absolute;
   top: calc(var(--amino-space-double) + 32px);
   left: 0;
@@ -103,7 +103,7 @@ const DropdownItem = styled.li<any>`
     border-bottom-right-radius: var(--amino-radius-large);
   }
 
-  background: ${p => (p.active ? "var(--amino-gray-lighter)" : "white")};
+  background: ${p => (p.active ? "var(--amino-gray-lightest)" : "white")};
 `;
 
 const Wrapper = styled.div`

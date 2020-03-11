@@ -9,7 +9,7 @@ const AminoNotice = styled.aside`
   color: var(--amino-text-color);
   padding: var(--amino-space);
   box-shadow: var(--amino-shadow-soft);
-  border: 1px solid var(--amino-border-color);
+  //border: 1px solid var(--amino-border-color);
   
   a {
     font-style: italic;
