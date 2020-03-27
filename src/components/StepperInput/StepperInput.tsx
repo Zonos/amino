@@ -75,10 +75,12 @@ export const StepperInput: React.FC<Props> = props => {
     }
   };
 
+  const prettyValue = `${value} / ${max}`;
+
   return (
     <Stepper>
       <Step onClick={dec}>-</Step>
-      <Input value={`${value}`} onChange={onChange} />
+      <Input readOnly value={prettyValue} onChange={onChange} />
       <Step onClick={inc}>+</Step>
     </Stepper>
   );
