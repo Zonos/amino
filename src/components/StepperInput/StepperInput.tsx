@@ -2,58 +2,52 @@ import React from "react";
 import styled from "styled-components";
 
 import { Input } from "../Input";
-import { StepperIcon } from "../../icons/StepperIcon";
 
 const Stepper = styled.div`
-  position: relative;
+  display: flex;
   border-radius: var(--amimo-radius);
+
+  input {
+    border-radius: 0;
+  }
 `;
 
-const Arrows = styled.div`
+const Step = styled.button`
+  border: 1px solid var(--amino-border-color);
+  height: 38px;
+  line-height: 16px;
+  width: 38px;
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  bottom: 1px;
-  border-top-right-radius: var(--amino-radius);
-  border-bottom-right-radius: var(--amino-radius);
-  background: var(--amino-gray-lightest);
-  border-left: 1px solid var(--amino-border-color);
+  align-items: center;
+  justify-content: center;
+  transition: var(--amino-transition);
+  user-select: none;
+  font-weight: 500;
+  box-sizing: border-box;
+  color: var(--amino-gray-base);
+  outline: none;
 
-  svg {
-    fill: #718096;
-    width: 10px;
-    height: 10px;
+  &:focus {
+    outline: none;
   }
 
-  div {
-    cursor: pointer;
-    padding: 0 var(--amino-space-quarter);
-    align-items: center;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    background: white;
-    transition: var(--amino-transition);
-    user-select: none;
-  }
-
-  div:hover {
+  &:hover {
     background: var(--amino-gray-lightest);
   }
 
-  div:first-of-type {
+  &:active {
+    outline: none;
+    border: 2px solid var(--amino-primary);
+  }
+
+  &:first-of-type {
+    border-top-left-radius: var(--amino-radius);
+    border-bottom-left-radius: var(--amino-radius);
+  }
+
+  &:last-of-type {
     border-top-right-radius: var(--amino-radius);
-    border-bottom: 1px solid var(--amino-border-color);
-  }
-
-  div:last-of-type {
     border-bottom-right-radius: var(--amino-radius);
-  }
-
-  .flip svg {
-    transform: rotate(180deg);
   }
 `;
 
@@ -62,36 +56,30 @@ type Props = {
   onChange: any;
   min: number;
   max: number;
+  onIncrement: any;
+  onDecrement: any;
 };
 
 export const StepperInput: React.FC<Props> = props => {
-  const { value, onChange, min, max } = props;
+  const { value, onChange, min, max, onIncrement, onDecrement } = props;
 
   const inc = () => {
     if (value + 1 <= max) {
-      onChange(value + 1);
+      onIncrement();
     }
   };
 
   const dec = () => {
     if (value - 1 >= min) {
-      onChange(value - 1);
+      onDecrement();
     }
   };
 
-  const prettyValue = () => `${value} / ${max}`;
-
   return (
     <Stepper>
-      <Input readOnly value={prettyValue()} onChange={onChange} />
-      <Arrows>
-        <div className="flip" onClick={inc}>
-          <StepperIcon />
-        </div>
-        <div onClick={dec}>
-          <StepperIcon />
-        </div>
-      </Arrows>
+      <Step onClick={dec}>-</Step>
+      <Input value={`${value}`} onChange={onChange} />
+      <Step onClick={inc}>+</Step>
     </Stepper>
   );
 };

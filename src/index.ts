@@ -15,6 +15,7 @@ export { ListItem } from "./components/ListItem";
 export { List } from "./components/List";
 export { StepperInput } from "./components/StepperInput";
 export { Dialog } from "./components/Dialog";
+export { Toast } from './components/Toast';
 
 export { Spinner } from "./components/Spinner";
 export { Skeleton } from './components/Skeleton';
@@ -26,5 +27,6 @@ export { AminoOnClickHandler } from "./utils/AminoOnClickHandler";
 
 export { useInputValue } from "./hooks/useInputValue";
 export { useCheckboxValue } from "./hooks/useCheckboxValue";
+export { useToast } from "./hooks/useToast";
 
 export { Intent } from "./utils/Intent";
