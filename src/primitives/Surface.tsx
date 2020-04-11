@@ -10,19 +10,19 @@ const SurfaceBase = styled.div`
 `;
 
 const Depth4 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-soft);
+  box-shadow: var(--amino-shadow-medium);
 `;
 
 const Depth8 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-soft);
+  box-shadow: var(--amino-shadow-medium);
 `;
 
 const Depth16 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-soft);
+  box-shadow: var(--amino-shadow-medium);
 `;
 
 const Depth64 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-soft);
+  box-shadow: var(--amino-shadow-medium);
 `;
 
 type Props = {
