@@ -36,7 +36,7 @@
 
   /* Tokens */
   --amino-page-background: var(--amino-gray-lightest);
-  --amino-border-color: var(--amino-gray-lighter);
+  --amino-border-color: hsl(200, 6%, 90%);
   --amino-text-color: var(--amino-gray-dark);
   --amino-font-size: 14px;
   --amino-primary: var(--amino-blue-base);
