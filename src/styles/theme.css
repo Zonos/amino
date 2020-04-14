@@ -1,18 +1,11 @@
 :root {
   /* Colors */
-/*TODO: HSL for all colors*/
-/*  --amino-gray-lightest: hsl(210, 40%, 98%);*/
-/*  --amino-gray-lighter: hsl(225, 9%, 91%);*/
-/*  --amino-gray-light: hsl(225, 5%, 84%);*/
-/*  --amino-gray-base: hsl(228, 2%, 49%);*/
-/*  --amino-gray-dark: hsl(240, 5%, 21%);*/
-/*  --amino-gray-darker: hsl(240, 8%, 12%);*/
-  --amino-gray-lightest: hsl(200, 60%, 99%);
+  --amino-gray-lightest: #f4f5f7;
   --amino-gray-lighter: hsl(210, 14%, 95%);
   --amino-gray-light: hsl(210, 5%, 84%);
   --amino-gray-base: hsl(192, 2%, 52%);
   --amino-gray-dark: hsl(204, 4%, 26%);
-  --amino-gray-darker: hsl(200, 7%, 18%);
+  --amino-gray-darker: #1e2024;
 
   --amino-red-lightest: #fde7e9;
   --amino-red-light: #e75d5e;
@@ -36,8 +29,9 @@
 
   /* Tokens */
   --amino-page-background: var(--amino-gray-lightest);
-  --amino-border-color: hsl(200, 6%, 90%);
-  --amino-text-color: var(--amino-gray-dark);
+  --amino-border-color: #d8dee488;
+  --amino-hover-color: #e1e4e955;
+  --amino-text-color: var(--amino-gray-darker);
   --amino-font-size: 14px;
   --amino-primary: var(--amino-blue-base);
   --amino-primary-light: var(--amino-blue-light);
@@ -45,40 +39,23 @@
   --amino-success: var(--amino-green-base);
   --amino-warning: var(--amino-orange-base);
   --amino-error: var(--amino-red-base);
+  --amino-surface-color: white;
+  --amino-surface-color-secondary: var(--amino-gray-lightest);
 
   /* Shadows */
-  --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  /*--amino-shadow-medium: 0 0 0 1px rgba(63,63,68,.05),0 1px 3px 0 rgba(63,63,68,.15);*/
-  --amino-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --amino-shadow-medium: 0 1.9px 5.1px rgba(0, 0, 0, 0.024),
+    0 6.5px 17.2px rgba(0, 0, 0, 0.036), 0 29px 77px rgba(0, 0, 0, 0.06);
+  --amino-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
   --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-soft:  0 0.7px 1.5px rgba(0, 0, 0, 0.021),
-  0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
+  --amino-shadow-soft: 0 0.7px 1.5px rgba(0, 0, 0, 0.021),
+    0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
   /*TODO: would love for this soft shadow to be part of the scale...*/
   --amino-shadow-top: rgb(136, 136, 136) 0px 1px 3px -2px;
   --amino-shadow-top-primary: var(--amino-primary) 0px 1px 3px -2px;
-
-
-  --amino-shadow-medium:
-  0 1.9px 3.6px -7px rgba(0, 0, 0, 0.017),
-  0 5.3px 10px -7px rgba(0, 0, 0, 0.025),
-  0 12.7px 24.1px -7px rgba(0, 0, 0, 0.033),
-  0 42px 80px -7px rgba(0, 0, 0, 0.05)
-;
-
-  --amino-shadow-medium:          0 1.9px 5.1px rgba(0, 0, 0, 0.024),
-  0 6.5px 17.2px rgba(0, 0, 0, 0.036),
-  0 29px 77px rgba(0, 0, 0, 0.06)
-;
-
-
-
-
-
-
-
-
-
 
   /* Text */
   --amino-text-light: white;
@@ -101,11 +78,31 @@
 
   /* Font stack */
   --amino-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   --amino-font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
-  DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
   /* Animation */
   --amino-transition: all 0.2s ease-in-out 0s;
 }
+
+/*WIP dark theme*/
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --amino-gray-lightest: #171c22;*/
+/*    --amino-gray-lighter: #1d2229;*/
+/*    --amino-gray-light: #2c3138;*/
+/*    --amino-gray-base: #7f8997;*/
+/*    --amino-gray-dark: hsl(204, 4%, 26%);*/
+/*    --amino-gray-darker: #1e2024;*/
+
+/*    --amino-page-background: var(--amino-gray-lighter);*/
+/*    --amino-border-color: #171c2288;*/
+/*    --amino-hover-color: #2a323d;*/
+/*    --amino-surface-color: var(--amino-gray-light);*/
+/*    --amino-surface-color-secondary: #1d222988;*/
+/*    --amino-text-dark: white;*/
+/*    --amino-text-color: white;*/
+/*  }*/
+/*}*/

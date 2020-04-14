@@ -20,7 +20,7 @@ const AminoListItem = styled.div<any>`
   }
 
   &:hover {
-    background: ${p => (p.onClick ? "var(--amino-gray-lightest)" : "")};
+    background: ${p => (p.onClick ? "var(--amino-hover-color)" : "")};
     cursor: ${p => (p.onClick ? "pointer" : "")};
   }
 `;

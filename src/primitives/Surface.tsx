@@ -4,7 +4,7 @@ import React from "react";
 import { Depth } from "./Depth";
 
 const SurfaceBase = styled.div`
-  background: white;
+  background: var(--amino-surface-color);
   padding: var(--amino-space);
   border-radius: var(--amino-radius-large);
 `;

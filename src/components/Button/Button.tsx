@@ -59,7 +59,7 @@ const Secondary = styled(AminoButton)<any>`
   border: 1px solid var(--amino-border-color);
 
   &:hover {
-    background: var(--amino-gray-lightest);
+    background: var(--amino-hover-color);
   }
 `;
 
@@ -75,7 +75,7 @@ const Icon = styled(AminoButton)<any>`
   }
 
   &:hover {
-    background: var(--amino-gray-lightest);
+    background: var(--amino-hover-color);
   }
   
   &:active {
