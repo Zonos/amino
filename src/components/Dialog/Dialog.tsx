@@ -32,14 +32,14 @@ const DialogLayout = styled.div`
 const Popup = styled.div`
   position: relative;
   z-index: 100000;
-  background: #fff;
+  background: var(--amino-surface-color);
   width: 550px;
   border-radius: var(--amino-radius-large);
   max-height: 90vh;
   outline: none;
   box-shadow: var(--amino-shadow-large);
   overflow-y: scroll;
-  //border: 1px solid var(--amino-border-color);
+  border: 1px solid var(--amino-border-color);
 `;
 
 const Header = styled.div`
@@ -47,7 +47,7 @@ const Header = styled.div`
   border-bottom: 1px solid var(--amino-border-color);
   border-top-left-radius: var(--amino-radius-large);
   border-top-right-radius: var(--amino-radius-large);
-  background: white;
+  background: var(--amino-surface-color);
 
   h4 {
     margin: 0;
@@ -60,7 +60,7 @@ const Footer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: var(--amino-gray-lightest);
+  background: var(--amino-surface-color-secondary);
   border-bottom-left-radius: var(--amino-radius-large);
   border-bottom-right-radius: var(--amino-radius-large);
 
