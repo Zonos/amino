@@ -11,7 +11,7 @@ const StyledRadio = styled.div`
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: white;
+  background: var(--amino-input-background);
   cursor: pointer;
   display: flex;
   align-items: center;

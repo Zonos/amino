@@ -27,7 +27,7 @@ const DropdownContainer = styled.div`
     height: 18px;
     opacity: .5;
     pointer-events: none;
-    color: var(--amino-text-color);
+    fill: var(--amino-text-color);
   }
 
   span {
@@ -45,7 +45,7 @@ const DropdownTrigger = styled.button`
   height: 38px;
   width: 100%;
   padding: 0 var(--amino-space-half);
-  background: white;
+  background: var(--amino-input-background);
   border: 1px solid var(--amino-border-color);
   box-shadow: var(--amino-shadow-top);
   text-align: left;
@@ -59,7 +59,7 @@ const DropdownTrigger = styled.button`
 
 const Dropdown = styled.div`
   border-radius: var(--amino-radius-large);
-  background: white;
+  background: var(--amino-surface-color);
   box-shadow: var(--amino-shadow-large);
   outline: none !important;
   //border: 1px solid var(--amino-border-color);
@@ -72,6 +72,7 @@ const Dropdown = styled.div`
   width: 100%;
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
+  border: 1px solid var(--amino-border-color);
 
   ul {
     outline: none !important;
@@ -88,7 +89,7 @@ const DropdownItem = styled.li<any>`
     border-bottom-right-radius: var(--amino-radius-large);
   }
 
-  background: ${p => (p.active ? "var(--amino-gray-lightest)" : "white")};
+  background: ${p => (p.active ? "var(--amino-hover-color)" : "var(--amino-surface-color)")};
 `;
 
 const Placeholder = styled.div`

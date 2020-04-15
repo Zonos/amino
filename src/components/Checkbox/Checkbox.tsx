@@ -21,7 +21,7 @@ const AminoCheckbox = styled.div`
   min-height: 18px;
   line-height: 18px;
   border-radius: 4px;
-  background: white;
+  background: var(--amino-input-background);
   border: 1px solid var(--amino-border-color);
   transition: var(--amino-transition);
   cursor: pointer;

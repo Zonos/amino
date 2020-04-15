@@ -41,7 +41,7 @@ const AminoInput = styled.input<any>`
   transition: var(--amino-transition);
   width: 100%; 
   border-radius: var(--amino-radius);
-  background: white;
+  background: var(--amino-input-background);
   
   ::placeholder {
     color: var(--amino-text-color);

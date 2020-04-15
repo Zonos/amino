@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useCombobox, useSelect } from "downshift";
+import { useCombobox } from "downshift";
 import styled, { keyframes } from "styled-components";
 
 import { Text, TextStyle } from "../Text";
-import { DropdownIcon } from "../../icons/DropdownIcon";
 
 const DropdownAnimation = keyframes`
   from {
@@ -55,6 +54,7 @@ const DropdownContainer = styled.div`
     box-shadow: var(--amino-shadow-top);
     width: 100%;
     border-radius: var(--amino-radius);
+  background: var(--amino-input-background);
 
     ::placeholder {
       color: var(--amino-text-color);
@@ -71,10 +71,9 @@ const DropdownContainer = styled.div`
 
 const Dropdown = styled.div`
   border-radius: var(--amino-radius-large);
-  background: white;
+  background: var(--amino-surface-color);
   box-shadow: var(--amino-shadow-large);
   outline: none !important;
-  //border: 1px solid var(--amino-border-color);
   position: absolute;
   top: calc(var(--amino-space-double) + 32px);
   left: 0;
@@ -83,6 +82,7 @@ const Dropdown = styled.div`
   overflow-y: auto;
   width: 100%;
   animation: ${DropdownAnimation} 250ms ease-in-out;
+  border: 1px solid var(--amino-border-color);
   animation-fill-mode: both;
 
   ul {
@@ -103,7 +103,7 @@ const DropdownItem = styled.li<any>`
     border-bottom-right-radius: var(--amino-radius-large);
   }
 
-  background: ${p => (p.active ? "var(--amino-gray-lightest)" : "white")};
+  background: ${p => (p.active ? "var(--amino-hover-color)" : "var(--amino-surface-color)")};
 `;
 
 const Wrapper = styled.div`

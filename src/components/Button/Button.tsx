@@ -57,6 +57,7 @@ const Secondary = styled(AminoButton)<any>`
   background: white;
   color: var(--amino-text-dark);
   border: 1px solid var(--amino-border-color);
+  background: var(--amino-input-background);
 
   &:hover {
     background: var(--amino-hover-color);
