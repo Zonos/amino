@@ -9,18 +9,21 @@ const SurfaceBase = styled.div`
   border-radius: var(--amino-radius-large);
 `;
 
+// shadow small
 const Depth4 = styled(SurfaceBase)`
   box-shadow: var(--amino-shadow-medium);
 `;
 
+// shadow medium
 const Depth8 = styled(SurfaceBase)`
   box-shadow: var(--amino-shadow-medium);
 `;
 
 const Depth16 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-medium);
+  box-shadow: var(--amino-shadow-large);
 `;
 
+// shadow xl
 const Depth64 = styled(SurfaceBase)`
   box-shadow: var(--amino-shadow-medium);
 `;

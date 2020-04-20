@@ -1,4 +1,4 @@
-export { Button } from "./components/Button";
+export { Button, MenuButton } from "./components/Button";
 export { Layout } from "./components/Layout";
 export { Card } from "./components/Card";
 export { Text, TextStyle } from "./components/Text";
@@ -16,6 +16,7 @@ export { List } from "./components/List";
 export { StepperInput } from "./components/StepperInput";
 export { Dialog } from "./components/Dialog";
 export { Toast } from './components/Toast';
+export { Menu, MenuItem } from './components/Menu';
 
 export { Spinner } from "./components/Spinner";
 export { Skeleton } from './components/Skeleton';
