@@ -48,6 +48,11 @@ export const MenuButton: React.FC<Props> = ({ label, children }) => {
   const node = useRef<any>(null);
 
   const handleClick = (e: any) => {
+    if (node.current.contains(e.target)) {
+      e.target.click();
+      setOpen(false);
+    }
+
     setOpen(false);
   };
 
@@ -66,7 +71,9 @@ export const MenuButton: React.FC<Props> = ({ label, children }) => {
         <DropdownIcon />
       </Trigger>
       {open && (
-        <AnimatedSurface depth={Depth.depth16}>{children}</AnimatedSurface>
+        <AnimatedSurface depth={Depth.depth16}>
+          {children}
+        </AnimatedSurface>
       )}
     </Wrapper>
   );
