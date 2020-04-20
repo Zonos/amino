@@ -17,8 +17,10 @@ const AnimatedSurface = styled(Surface)`
   z-index: 10;
   position: absolute;
   padding: var(--amino-radius-large) 0;
-  width: 100%;
   margin-top: var(--amino-space-quarter);
+  right: 0;
+  min-width: 100%;
+  width: max-content;
 `;
 
 const Trigger = styled(Button)`
