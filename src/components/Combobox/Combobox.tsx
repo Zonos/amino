@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useCombobox } from "downshift";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
-
-const DropdownAnimation = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
+import { Surface } from "../../primitives";
+import { MenuItem, Menu } from "../Menu";
+import { DropdownAnimation } from "../../animations";
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -21,11 +13,17 @@ const DropdownContainer = styled.div`
   svg {
     position: absolute;
     right: var(--amino-space-half);
-    top: 39px;
-    width: 18px;
-    height: 18px;
-    stroke: var(--amino-gray-base);
+    top: 41px;
     pointer-events: none;
+    color: var(--amino-text-color);
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
+    transition: opacity 100ms ease-in-out;
+  }
+
+  &:hover svg {
+    opacity: 0.6;
   }
 
   & > div {
@@ -54,7 +52,7 @@ const DropdownContainer = styled.div`
     box-shadow: var(--amino-shadow-top);
     width: 100%;
     border-radius: var(--amino-radius);
-  background: var(--amino-input-background);
+    background: var(--amino-input-background);
 
     ::placeholder {
       color: var(--amino-text-color);
@@ -69,41 +67,35 @@ const DropdownContainer = styled.div`
   }
 `;
 
-const Dropdown = styled.div`
-  border-radius: var(--amino-radius-large);
-  background: var(--amino-surface-color);
-  box-shadow: var(--amino-shadow-large);
-  outline: none !important;
+const AnimatedSurface = styled(Surface)`
+  animation: ${DropdownAnimation} 250ms ease-in-out;
+  animation-fill-mode: both;
+  border: 1px solid var(--amino-border-color);
+  z-index: 10;
   position: absolute;
-  top: calc(var(--amino-space-double) + 32px);
-  left: 0;
-  z-index: 9999999;
+  padding: var(--amino-radius-large) 0;
+  margin-top: var(--amino-space-quarter);
+  right: 0;
+  min-width: 100%;
+  width: max-content;
+  outline: none !important;
   max-height: 350px;
   overflow-y: auto;
-  width: 100%;
-  animation: ${DropdownAnimation} 250ms ease-in-out;
-  border: 1px solid var(--amino-border-color);
-  animation-fill-mode: both;
 
   ul {
     outline: none !important;
   }
 `;
 
-const DropdownItem = styled.li<any>`
-  padding: var(--amino-space-half);
-  cursor: pointer;
-  user-select: none;
+const DropdownItem = styled(MenuItem)<any>`
+  background: ${p =>
+    p.isSelected ? "var(--amino-hover-color)" : "var(--amino-surface-color)"};
+  color: ${p =>
+    p.isSelected ? "var(--amino-primary)" : "var(--amino-text-color)"};
+  font-weight: ${p => (p.isSelected ? "500" : "normal")};
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  &:last-of-type {
-    border-bottom-left-radius: var(--amino-radius-large);
-    border-bottom-right-radius: var(--amino-radius-large);
-  }
-
-  background: ${p => (p.active ? "var(--amino-hover-color)" : "var(--amino-surface-color)")};
 `;
 
 const Wrapper = styled.div`
@@ -116,8 +108,6 @@ const Wrapper = styled.div`
     z-index: 999;
   }
 `;
-
-// TODO: show icon if selected
 
 const Icon = styled.img`
   width: 24px;
@@ -149,7 +139,7 @@ export const Combobox: React.FC<Props> = ({
   placeholder,
   itemLabelPath,
   itemValuePath,
-  labelFormatFunction,
+  labelFormatFunction
 }) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
@@ -267,11 +257,11 @@ export const Combobox: React.FC<Props> = ({
       {/*</button>*/}
 
       {isOpen && (
-        <Dropdown>
-          <ul {...getMenuProps()}>
+        <AnimatedSurface>
+          <Menu {...getMenuProps()}>
             {selectItems.map((item: any, index: number) => (
               <DropdownItem
-                active={highlightedIndex === index}
+                isSelected={selectedItem === item}
                 key={`${item}${index}`}
                 {...getItemProps({ item, index })}
               >
@@ -279,8 +269,8 @@ export const Combobox: React.FC<Props> = ({
                 {item}
               </DropdownItem>
             ))}
-          </ul>
-        </Dropdown>
+          </Menu>
+        </AnimatedSurface>
       )}
 
       {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}

@@ -32,6 +32,7 @@ const Trigger = styled(Button)`
     margin-left: var(--amino-space-quarter);
     transition: opacity 100ms ease-in-out;
     margin-right: -5px !important;
+    pointer-events: none;
   }
 
   &:hover svg {

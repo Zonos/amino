@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelect } from "downshift";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
+import { Menu, MenuItem } from "../Menu";
 import { DropdownIcon } from "../../icons/DropdownIcon";
-
-const DropdownAnimation = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
+import { Surface } from "../../primitives";
+import { DropdownAnimation } from "../../animations";
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -22,12 +14,17 @@ const DropdownContainer = styled.div`
   svg {
     position: absolute;
     right: var(--amino-space-half);
-    top: 39px;
-    width: 18px;
-    height: 18px;
-    opacity: .5;
+    top: 41px;
     pointer-events: none;
-    fill: var(--amino-text-color);
+    color: var(--amino-text-color);
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
+    transition: opacity 100ms ease-in-out;
+  }
+
+  &:hover svg {
+    opacity: 0.6;
   }
 
   span {
@@ -57,39 +54,32 @@ const DropdownTrigger = styled.button`
   }
 `;
 
-const Dropdown = styled.div`
-  border-radius: var(--amino-radius-large);
-  background: var(--amino-surface-color);
-  box-shadow: var(--amino-shadow-large);
-  outline: none !important;
-  //border: 1px solid var(--amino-border-color);
-  position: absolute;
-  top: calc(var(--amino-space-double) + 32px);
-  left: 0;
-  z-index: 9999999;
-  max-height: 350px;
-  overflow-y: auto;
-  width: 100%;
+const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
   border: 1px solid var(--amino-border-color);
+  z-index: 10;
+  position: absolute;
+  padding: var(--amino-radius-large) 0;
+  margin-top: var(--amino-space-quarter);
+  right: 0;
+  min-width: 100%;
+  width: max-content;
+  outline: none !important;
+  max-height: 350px;
+  overflow-y: auto;
 
   ul {
     outline: none !important;
   }
 `;
 
-const DropdownItem = styled.li<any>`
-  padding: var(--amino-space-half);
-  cursor: pointer;
-  user-select: none;
-
-  &:last-of-type {
-    border-bottom-left-radius: var(--amino-radius-large);
-    border-bottom-right-radius: var(--amino-radius-large);
-  }
-
-  background: ${p => (p.active ? "var(--amino-hover-color)" : "var(--amino-surface-color)")};
+const DropdownItem = styled(MenuItem)<any>`
+  background: ${p =>
+    p.isSelected ? "var(--amino-hover-color)" : "var(--amino-surface-color)"};
+  color: ${p =>
+    p.isSelected ? "var(--amino-primary)" : "var(--amino-text-color)"};
+  font-weight: ${p => (p.isSelected ? "500" : "normal")};
 `;
 
 const Placeholder = styled.div`
@@ -176,19 +166,19 @@ export const Select: React.FC<Props> = ({
       <DropdownIcon />
 
       {isOpen && (
-        <Dropdown>
-          <ul {...getMenuProps()}>
+        <AnimatedSurface>
+          <Menu {...getMenuProps()}>
             {selectItems.map((item: any, index: number) => (
               <DropdownItem
-                active={highlightedIndex === index}
+                isSelected={selectedItem === item}
                 key={`${item}${index}`}
                 {...getItemProps({ item, index })}
               >
                 {item}
               </DropdownItem>
             ))}
-          </ul>
-        </Dropdown>
+          </Menu>
+        </AnimatedSurface>
       )}
 
       {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
