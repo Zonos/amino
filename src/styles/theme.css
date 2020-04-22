@@ -28,7 +28,7 @@
   --amino-green-dark: #27684a;
 
   /* Tokens */
-  --amino-page-background: var(--amino-gray-lightest);
+  --amino-page-background: #f7fafd;
   --amino-border-color: #d8dee488;
   --amino-hover-color: #e1e4e955;
   --amino-text-color: var(--amino-gray-darker);
