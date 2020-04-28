@@ -39,7 +39,6 @@ const Popup = styled.div`
   outline: none;
   box-shadow: var(--amino-shadow-large);
   overflow-y: scroll;
-  border: 1px solid var(--amino-border-color);
 `;
 
 const Header = styled.div`
