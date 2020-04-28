@@ -37,7 +37,6 @@ const Popup = styled.div`
   border-radius: var(--amino-radius-large);
   outline: none;
   box-shadow: var(--amino-shadow-large);
-  overflow-y: scroll;
 `;
 
 const Header = styled.div`
@@ -71,6 +70,7 @@ const Content = styled.div`
   padding: var(--amino-space);
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
+  overscroll-behavior: contain;
 `;
 
 type Props = {
