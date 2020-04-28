@@ -12,7 +12,7 @@ const Backdrop = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  background: rgba(55, 55, 59, .8);
+  background: rgba(55, 55, 59, 0.8);
   z-index: 99998;
   position: fixed;
 `;
@@ -35,7 +35,6 @@ const Popup = styled.div`
   background: var(--amino-surface-color);
   width: 550px;
   border-radius: var(--amino-radius-large);
-  max-height: 90vh;
   outline: none;
   box-shadow: var(--amino-shadow-large);
   overflow-y: scroll;
@@ -46,7 +45,7 @@ const Header = styled.div`
   border-bottom: 1px solid var(--amino-border-color);
   border-top-left-radius: var(--amino-radius-large);
   border-top-right-radius: var(--amino-radius-large);
-  background: var(--amino-surface-color);
+  background: var(--amino-surface-color-secondary);
 
   h4 {
     margin: 0;
@@ -70,6 +69,8 @@ const Footer = styled.div`
 
 const Content = styled.div`
   padding: var(--amino-space);
+  max-height: calc(90vh - (83px * 2));
+  overflow-y: auto;
 `;
 
 type Props = {
