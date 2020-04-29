@@ -26,11 +26,8 @@ const AminoButton = styled.button<any>`
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
 
+  &:active,
   &:focus {
-    outline: none;
-  }
-
-  &:active {
     border: 1px solid var(--amino-blue-lighter);
     box-shadow: var(--amino-shadow-glow);
   }

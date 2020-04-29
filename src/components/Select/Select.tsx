@@ -60,7 +60,7 @@ const AnimatedSurface = styled(Surface)`
   border: 1px solid var(--amino-border-color);
   z-index: 10;
   position: absolute;
-  padding: var(--amino-radius-large) 0;
+  padding: var(--amino-radius) 0;
   margin-top: var(--amino-space-quarter);
   right: 0;
   min-width: 100%;
@@ -166,7 +166,7 @@ export const Select: React.FC<Props> = ({
       <DropdownIcon />
 
       {isOpen && (
-        <AnimatedSurface depth={Depth.depth16}>
+        <AnimatedSurface dense depth={Depth.depth16}>
           <Menu {...getMenuProps()}>
             {selectItems.map((item: any, index: number) => (
               <DropdownItem
