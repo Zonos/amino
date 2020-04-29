@@ -126,6 +126,7 @@ type Props = {
   itemLabelPath?: string;
   itemValuePath?: string;
   labelFormatFunction?: any;
+  tabIndex?: number;
 };
 
 // TODO: use onSelectedItemChange ?
@@ -139,7 +140,8 @@ export const Combobox: React.FC<Props> = ({
   placeholder,
   itemLabelPath,
   itemValuePath,
-  labelFormatFunction
+  labelFormatFunction,
+  tabIndex
 }) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
@@ -243,6 +245,7 @@ export const Combobox: React.FC<Props> = ({
       <Wrapper {...getComboboxProps()}>
         {selectedItem && renderIcon(selectedItem as string)}
         <input
+          tabIndex={tabIndex && tabIndex}
           style={{
             paddingLeft: selectedItem && selectedHasIcon() ? "40px" : ""
           }}
