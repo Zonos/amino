@@ -47,7 +47,8 @@ const DropdownTrigger = styled.button`
   box-shadow: var(--amino-shadow-small);
   text-align: left;
 
-  &:focus {
+  &:focus,
+  &:active {
     outline: none;
     border: 1px solid var(--amino-blue-lighter);
     box-shadow: var(--amino-shadow-glow);
@@ -82,7 +83,7 @@ const DropdownItem = styled(MenuItem)<any>`
   font-weight: ${p => (p.isSelected ? "500" : "normal")};
 `;
 
-const Placeholder = styled.div`
+const Placeholder = styled.div<any>`
   color: var(--amino-text-color);
   opacity: 0.3;
 `;
@@ -97,6 +98,7 @@ type Props = {
   itemLabelPath?: string;
   itemValuePath?: string;
   labelFormatFunction?: any;
+  tabIndex?: number;
 };
 
 // TODO: use onSelectedItemChange ?
@@ -110,7 +112,8 @@ export const Select: React.FC<Props> = ({
   placeholder,
   itemLabelPath,
   itemValuePath,
-  labelFormatFunction
+  labelFormatFunction,
+  tabIndex
 }) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
@@ -160,7 +163,13 @@ export const Select: React.FC<Props> = ({
       </Text>
 
       <DropdownTrigger {...getToggleButtonProps()}>
-        {selectedItem ? selectedItem : <Placeholder>{placeholder}</Placeholder>}
+        {selectedItem ? (
+          <div tabIndex={tabIndex && tabIndex}>{selectedItem}</div>
+        ) : (
+          <Placeholder tabIndex={tabIndex && tabIndex}>
+            {placeholder}
+          </Placeholder>
+        )}
       </DropdownTrigger>
 
       <DropdownIcon />
