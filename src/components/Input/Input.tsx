@@ -64,12 +64,6 @@ const AminoInput = styled.input<any>`
     border-bottom-right-radius: 0;
   }
 
-  &.disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
   &[is-invalid] {
     border: 2px solid var(--amino-error);
   }
@@ -93,6 +87,13 @@ const AminoInputWrapper = styled.div<any>`
     flex-direction: row;
     align-items: center;
     display: flex;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+    user-select: none;
   }
 `;
 
@@ -152,14 +153,14 @@ export const Input: React.FC<Props> = ({
   disabled
 }) => {
   return (
-    <AminoInputWrapper width={width} className="amino-input-wrapper">
+    <AminoInputWrapper width={width} className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}>
       {label && <Text style={TextStyle.h5}>{label}</Text>}
       <Fields>
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
         <AminoInput
           className={`${prefix ? "has-prefix" : ""} ${
             suffix ? "has-suffix" : ""
-          } ${disabled ? "disabled" : ""}`}
+          }`}
           placeholder={placeholder || ""}
           value={value}
           onChange={onChange}
