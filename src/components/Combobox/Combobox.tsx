@@ -42,7 +42,6 @@ const DropdownContainer = styled.div`
   //TODO: I don't like replicating this code...
   input {
     height: 38px;
-    line-height: 38px;
     box-sizing: border-box;
     position: relative;
     outline: none;
