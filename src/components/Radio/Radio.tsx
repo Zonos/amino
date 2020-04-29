@@ -23,9 +23,8 @@ const StyledRadio = styled.div`
   transition: var(--amino-transition);
 
   &:active {
-    outline: none;
-    box-shadow: var(--amino-shadow-top-primary);
-    border: 2px solid var(--amino-primary);
+    border: 1px solid var(--amino-blue-lighter);
+    box-shadow: var(--amino-shadow-glow);
   }
 `;
 
@@ -35,7 +34,7 @@ const SelectedRadio = styled(StyledRadio)`
 
   svg {
     fill: white;
-    box-shadow: var(--amino-shadow-top);
+    box-shadow: var(--amino-shadow-small);
   }
 `;
 

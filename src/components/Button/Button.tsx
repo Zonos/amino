@@ -20,7 +20,7 @@ const AminoButton = styled.button<any>`
   padding: 0 var(--amino-space);
   border-radius: var(--amino-radius);
   transition: var(--amino-transition);
-  box-shadow: var(--amino-shadow-top);
+  box-shadow: var(--amino-shadow-small);
   font-weight: 500;
   user-select: none;
   font-family: var(--amino-font-sans);
@@ -29,10 +29,10 @@ const AminoButton = styled.button<any>`
   &:focus {
     outline: none;
   }
-  
+
   &:active {
-    border: 2px solid var(--amino-primary);
-    padding: 0 calc(var(--amino-space) - 1px);
+    border: 1px solid var(--amino-blue-lighter);
+    box-shadow: var(--amino-shadow-glow);
   }
 
   &[disabled] {
@@ -45,11 +45,10 @@ const AminoButton = styled.button<any>`
 
 const Primary = styled(AminoButton)<any>`
   background: var(--amino-primary);
-  box-shadow: var(--amino-shadow-top-primary);
   color: var(--amino-text-light);
 
   &:hover {
-    background: var(--amino-primary-light);
+    background: var(--amino-primary-dark);
   }
 `;
 
@@ -69,7 +68,7 @@ const Icon = styled(AminoButton)<any>`
   color: var(--amino-text-dark);
   border: 1px solid var(--amino-border-color);
   padding: 0 var(--amino-space-half);
-  
+
   svg {
     width: 16px;
     height: 16px;
@@ -78,7 +77,7 @@ const Icon = styled(AminoButton)<any>`
   &:hover {
     background: var(--amino-hover-color);
   }
-  
+
   &:active {
     border: 2px solid var(--amino-primary);
     padding: 0 calc(var(--amino-space-half) - 1px);
@@ -87,7 +86,7 @@ const Icon = styled(AminoButton)<any>`
 
 const Danger = styled(AminoButton)<any>`
   background: var(--amino-error);
-  color: white; 
+  color: white;
 
   &:hover {
     background: var(--amino-red-dark);
@@ -118,7 +117,10 @@ export const Button: React.FC<Props> = ({
     return <Secondary disabled>{content}</Secondary>;
   }
 
-  const buttonProps = { onClick: onClick || null, className: className || null };
+  const buttonProps = {
+    onClick: onClick || null,
+    className: className || null
+  };
 
   switch (intent) {
     case "primary":

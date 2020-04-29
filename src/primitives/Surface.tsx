@@ -25,7 +25,7 @@ const Depth16 = styled(SurfaceBase)`
 
 // shadow xl
 const Depth64 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-medium);
+  box-shadow: var(--amino-shadow-larger);
 `;
 
 type Props = {

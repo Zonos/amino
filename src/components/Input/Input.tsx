@@ -39,10 +39,10 @@ const AminoInput = styled.input<any>`
   border: 1px solid var(--amino-border-color);
   padding: 0 var(--amino-space-half);
   transition: var(--amino-transition);
-  width: 100%; 
+  width: 100%;
   border-radius: var(--amino-radius);
   background: var(--amino-input-background);
-  
+
   ::placeholder {
     color: var(--amino-text-color);
     opacity: .3;
@@ -50,8 +50,8 @@ const AminoInput = styled.input<any>`
 
   :focus {
     outline: none;
-    border: 2px solid var(--amino-primary);
-    padding: 0 calc(var(--amino-space-half) - 1px);
+    border: 1px solid var(--amino-blue-lighter);
+    box-shadow: var(--amino-shadow-glow);
   }
 
   &.has-prefix {
@@ -63,7 +63,7 @@ const AminoInput = styled.input<any>`
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  
+
   &[is-invalid] {
     border: 2px solid var(--amino-error);
   }
@@ -71,6 +71,7 @@ const AminoInput = styled.input<any>`
 
 const Fields = styled.div`
   border-radius: var(--amino-radius);
+  box-shadow: var(--amino-shadow-small);
 `;
 
 const AminoInputWrapper = styled.div<any>`

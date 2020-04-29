@@ -3,7 +3,7 @@ import { useCombobox } from "downshift";
 import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
-import { Surface } from "../../primitives";
+import { Depth, Surface } from "../../primitives";
 import { MenuItem, Menu } from "../Menu";
 import { DropdownAnimation } from "../../animations";
 
@@ -49,7 +49,7 @@ const DropdownContainer = styled.div`
     border: 1px solid var(--amino-border-color);
     padding: 0 var(--amino-space-half);
     transition: var(--amino-transition);
-    box-shadow: var(--amino-shadow-top);
+    box-shadow: var(--amino-shadow-small);
     width: 100%;
     border-radius: var(--amino-radius);
     background: var(--amino-input-background);
@@ -61,8 +61,8 @@ const DropdownContainer = styled.div`
 
     &:focus {
       outline: none;
-      border: 2px solid var(--amino-primary);
-      padding: 0 calc(var(--amino-space-half) - 1px);
+      border: 1px solid var(--amino-blue-lighter);
+      box-shadow: var(--amino-shadow-glow);
     }
   }
 `;
@@ -257,7 +257,7 @@ export const Combobox: React.FC<Props> = ({
       {/*</button>*/}
 
       {isOpen && (
-        <AnimatedSurface>
+        <AnimatedSurface depth={Depth.depth16}>
           <Menu {...getMenuProps()}>
             {selectItems.map((item: any, index: number) => (
               <DropdownItem

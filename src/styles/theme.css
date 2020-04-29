@@ -1,11 +1,11 @@
 :root {
   /* Colors */
-  --amino-gray-lightest: #feffff;
-  --amino-gray-lighter: hsl(210, 14%, 95%);
-  --amino-gray-light: hsl(210, 5%, 84%);
-  --amino-gray-base: hsl(192, 2%, 52%);
-  --amino-gray-dark: hsl(204, 4%, 26%);
-  --amino-gray-darker: #1e2024;
+  --amino-gray-lightest: #f9fafb;
+  --amino-gray-lighter: #f4f5f7;
+  --amino-gray-light: #e6e7eb;
+  --amino-gray-base: #a0a6b2;
+  --amino-gray-dark: #4b5563;
+  --amino-gray-darker: #252f3f;
 
   --amino-red-lightest: #fde7e9;
   --amino-red-light: #e75d5e;
@@ -13,6 +13,7 @@
   --amino-red-dark: #b41e1f;
 
   --amino-blue-lightest: #bfdcfc;
+  --amino-blue-lighter: #76a9fa;
   --amino-blue-light: #3c91ec;
   --amino-blue-base: #1c74d8;
   --amino-blue-dark: #1e5898;
@@ -28,9 +29,9 @@
   --amino-green-dark: #27684a;
 
   /* Tokens */
-  --amino-page-background: #f7fafd;
-  --amino-border-color: #d8dee488;
-  --amino-hover-color: #e1e4e955;
+  --amino-page-background: var(--amino-gray-lightest);
+  --amino-border-color: #d2d6dc88;
+  --amino-hover-color: var(--amino-gray-lightest);
   --amino-text-color: var(--amino-gray-darker);
   --amino-font-size: 14px;
   --amino-primary: var(--amino-blue-base);
@@ -57,6 +58,14 @@
   /*TODO: would love for this soft shadow to be part of the scale...*/
   --amino-shadow-top: rgb(136, 136, 136) 0px 1px 3px -2px;
   --amino-shadow-top-primary: var(--amino-primary) 0px 1px 3px -2px;
+
+
+
+  --amino-shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --amino-shadow-medium: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --amino-shadow-large:  0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --amino-shadow-larger: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --amino-shadow-glow: 0 0 0 3px rgba(66, 153, 225, 0.5);
 
   /* Text */
   --amino-text-light: white;

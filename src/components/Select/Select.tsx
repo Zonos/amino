@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Text, TextStyle } from "../Text";
 import { Menu, MenuItem } from "../Menu";
 import { DropdownIcon } from "../../icons/DropdownIcon";
-import { Surface } from "../../primitives";
+import { Depth, Surface } from "../../primitives";
 import { DropdownAnimation } from "../../animations";
 
 const DropdownContainer = styled.div`
@@ -44,13 +44,13 @@ const DropdownTrigger = styled.button`
   padding: 0 var(--amino-space-half);
   background: var(--amino-input-background);
   border: 1px solid var(--amino-border-color);
-  box-shadow: var(--amino-shadow-top);
+  box-shadow: var(--amino-shadow-small);
   text-align: left;
 
   &:focus {
     outline: none;
-    border: 2px solid var(--amino-primary);
-    padding: 0 calc(var(--amino-space-half) - 1px);
+    border: 1px solid var(--amino-blue-lighter);
+    box-shadow: var(--amino-shadow-glow);
   }
 `;
 
@@ -166,7 +166,7 @@ export const Select: React.FC<Props> = ({
       <DropdownIcon />
 
       {isOpen && (
-        <AnimatedSurface>
+        <AnimatedSurface depth={Depth.depth16}>
           <Menu {...getMenuProps()}>
             {selectItems.map((item: any, index: number) => (
               <DropdownItem

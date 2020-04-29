@@ -29,13 +29,12 @@ const AminoCheckbox = styled.div`
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-shadow: var(--amino-shadow-top);
+  box-shadow: var(--amino-shadow-small);
   margin-right: var(--amino-space-half);
 
   &:active {
-    outline: none;
-    box-shadow: var(--amino-shadow-top-primary);
-    border: 2px solid var(--amino-primary);
+    border: 1px solid var(--amino-blue-lighter);
+    box-shadow: var(--amino-shadow-glow);
   }
 `;
 
@@ -45,7 +44,7 @@ const SelectedCheckbox = styled(AminoCheckbox)`
 
   svg {
     fill: white;
-    box-shadow: var(--amino-shadow-top);
+    box-shadow: var(--amino-shadow-small);
   }
 `;
 
