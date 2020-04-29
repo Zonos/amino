@@ -45,7 +45,7 @@ const AminoInput = styled.input<any>`
 
   ::placeholder {
     color: var(--amino-text-color);
-    opacity: .3;
+    opacity: 0.3;
   }
 
   :focus {
@@ -62,6 +62,12 @@ const AminoInput = styled.input<any>`
   &.has-suffix {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   &[is-invalid] {
@@ -126,6 +132,8 @@ type Props = {
 
   /** If present, will display an error message instead of help text */
   error?: string;
+
+  disabled?: boolean;
 };
 
 export const Input: React.FC<Props> = ({
@@ -140,7 +148,8 @@ export const Input: React.FC<Props> = ({
   required,
   type,
   readOnly,
-  error
+  error,
+  disabled
 }) => {
   return (
     <AminoInputWrapper width={width} className="amino-input-wrapper">
@@ -150,7 +159,7 @@ export const Input: React.FC<Props> = ({
         <AminoInput
           className={`${prefix ? "has-prefix" : ""} ${
             suffix ? "has-suffix" : ""
-          }`}
+          } ${disabled ? "disabled" : ""}`}
           placeholder={placeholder || ""}
           value={value}
           onChange={onChange}
@@ -158,6 +167,7 @@ export const Input: React.FC<Props> = ({
           type={type || "text"}
           readOnly={readOnly || false}
           is-invalid={error && error.length}
+          disabled={disabled}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </Fields>
