@@ -83,13 +83,20 @@ const DropdownItem = styled(MenuItem)<any>`
   font-weight: ${p => (p.isSelected ? "500" : "normal")};
 `;
 
+const SectionHeader = styled.div`
+  span {
+    display: block;
+    margin: var(--amino-space-half);
+  }
+`;
+
 const Placeholder = styled.div<any>`
   color: var(--amino-text-color);
   opacity: 0.3;
 `;
 
 type Props = {
-  items: Array<any>;
+  items: any;
   label: string;
   helpText?: string;
   onChange: (newValue: string) => any;
@@ -103,7 +110,7 @@ type Props = {
 
 // TODO: use onSelectedItemChange ?
 
-export const Select: React.FC<Props> = ({
+export const GroupedSelect: React.FC<Props> = ({
   items,
   label,
   onChange,
@@ -117,18 +124,25 @@ export const Select: React.FC<Props> = ({
 }) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
-  useEffect(() => {
-    setSelectItems(
-      items.map((item: any) => {
-        const label = itemLabelPath ? item[itemLabelPath] : item.label;
+  const parseItems = (toParse: any) =>
+    toParse.map((item: any) => {
+      const label = itemLabelPath ? item[itemLabelPath] : item.label;
 
-        if (labelFormatFunction) {
-          return labelFormatFunction(label);
-        } else {
-          return label;
-        }
-      })
-    );
+      if (labelFormatFunction) {
+        return labelFormatFunction(label);
+      } else {
+        return label;
+      }
+    });
+
+  useEffect(() => {
+    let flatItems = [] as any;
+
+    Object.entries(items).forEach(([key, value]) => {
+      flatItems.push(parseItems(value));
+    });
+
+    setSelectItems(flatItems);
   }, [items]);
 
   const {
@@ -146,11 +160,20 @@ export const Select: React.FC<Props> = ({
 
   useEffect(() => {
     if (selectedItem && selectItems.length) {
-      const item = items.find((i: any) =>
-        itemLabelPath
-          ? i[itemLabelPath] === selectedItem
-          : i.label === selectedItem
-      );
+      let item;
+
+      for (const value of Object.values(items) as any) {
+        const childItem = value.find((i: any) =>
+          itemLabelPath
+            ? i[itemLabelPath] === selectedItem
+            : i.label === selectedItem
+        );
+
+        if (childItem) {
+          item = childItem;
+          break;
+        }
+      }
 
       if (item) {
         onChange(itemValuePath ? item[itemValuePath] : item.value);
@@ -179,15 +202,25 @@ export const Select: React.FC<Props> = ({
       {isOpen && (
         <AnimatedSurface dense depth={Depth.depth16}>
           <Menu {...getMenuProps()}>
-            {selectItems.map((item: any, index: number) => (
-              <DropdownItem
-                isSelected={selectedItem === item}
-                key={`${item}${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {item}
-              </DropdownItem>
-            ))}
+            {Object.keys(items).map(key => {
+              return (
+                <div key={key}>
+                  <SectionHeader>
+                    <Text style={TextStyle.SmallHeader}>{key}</Text>
+                  </SectionHeader>
+
+                  {parseItems(items[key]).map((item: any, index: number) => (
+                    <DropdownItem
+                      isSelected={selectedItem === item}
+                      key={`${item}${index}`}
+                      {...getItemProps({ item, index })}
+                    >
+                      {item}
+                    </DropdownItem>
+                  ))}
+                </div>
+              );
+            })}
           </Menu>
         </AnimatedSurface>
       )}

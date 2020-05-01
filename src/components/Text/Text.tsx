@@ -6,6 +6,14 @@ const Subtitle = styled.span`
   font-style: italic;
 `;
 
+const SmallHeader = styled.span`
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+`;
+
 export enum TextStyle {
   h1,
   h2,
@@ -15,7 +23,8 @@ export enum TextStyle {
   h6,
   p,
   Code,
-  Subtitle
+  Subtitle,
+  SmallHeader
 }
 
 type Props = {
@@ -38,6 +47,8 @@ export const Text: React.FC<Props> = ({ children, style }) => {
       return <h6>{children}</h6>;
     case TextStyle.Subtitle:
       return <Subtitle>{children}</Subtitle>;
+    case TextStyle.SmallHeader:
+      return <SmallHeader>{children}</SmallHeader>;
     case TextStyle.p:
     default:
       return <p>{children}</p>;
