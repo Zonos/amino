@@ -142,7 +142,7 @@ export const GroupedSelect: React.FC<Props> = ({
       flatItems.push(parseItems(value));
     });
 
-    setSelectItems(flatItems);
+    setSelectItems(flatItems.flat());
   }, [items]);
 
   const {
@@ -213,7 +213,10 @@ export const GroupedSelect: React.FC<Props> = ({
                     <DropdownItem
                       isSelected={selectedItem === item}
                       key={`${item}${index}`}
-                      {...getItemProps({ item, index })}
+                      {...getItemProps({
+                        item,
+                        index: selectItems.indexOf(item)
+                      })}
                     >
                       {item}
                     </DropdownItem>
