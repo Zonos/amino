@@ -98,6 +98,7 @@ export const Select: React.FC<Props> = ({
         onChange={e => onChange(e.target.value)}
         tabIndex={tabIndex && tabIndex}
       >
+        <option value="">{placeholder}</option>
         {items.map((item: any, index: number) => (
           <option
             key={`${getItemLabel(index)}-${index}`}
