@@ -33,6 +33,7 @@ const HeaderContent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-right: var(--amino-space);
 `;
 
 const Brand = styled.div`
@@ -66,6 +67,7 @@ const Content = styled.div`
   padding-bottom: var(--amino-space);
   padding-left: var(--amino-space);
   margin-left: var(--amino-space-negative);
+  margin-right: var(--amino-space);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
