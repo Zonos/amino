@@ -27,11 +27,12 @@ const Header = styled.header`
 `;
 
 const HeaderContent = styled.div`
+  box-sizing: border-box;
+  height: var(--amino-appbar-height);
   display: flex;
   flex-direction: row;
   align-items: center;
-  box-sizing: border-box;
-  height: var(--amino-appbar-height);
+  justify-content: center;
 `;
 
 const Brand = styled.div`
@@ -66,10 +67,13 @@ const Content = styled.div`
   padding-left: var(--amino-space);
   margin-left: var(--amino-space-negative);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Wrapper = styled.div`
-  max-width: calc(
+  width: calc(
     var(--amino-container-width) -
       (var(--amino-sidebar-width) + var(--amino-space))
   );
