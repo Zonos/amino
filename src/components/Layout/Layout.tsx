@@ -79,10 +79,11 @@ type Props = {
   header: any;
   sidebar: any;
   brand: any;
+  content: any;
 };
 
 export const Layout: React.FC<Props> = ({
-  children,
+  content,
   header,
   sidebar,
   brand
@@ -99,7 +100,7 @@ export const Layout: React.FC<Props> = ({
       <ContentGrid>
         <Sidebar>{sidebar}</Sidebar>
         <Content>
-          <Wrapper>{children}</Wrapper>
+          <Wrapper>{content}</Wrapper>
         </Content>
       </ContentGrid>
     </AminoLayout>
