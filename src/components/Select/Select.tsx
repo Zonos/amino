@@ -59,7 +59,7 @@ const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
   border: 1px solid var(--amino-border-color);
-  z-index: 10;
+  z-index: 2;
   position: absolute;
   padding: var(--amino-radius) 0;
   margin-top: var(--amino-space-quarter);
