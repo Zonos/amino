@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
 import { Text, TextStyle } from "../Text";
@@ -83,7 +84,7 @@ type Props = {
 export const Dialog: React.FC<Props> = ({ open, label, actions, children }) => {
   const toggleScroll = () => document.body.classList.toggle("no-scroll");
 
-  return (
+  return ReactDOM.createPortal(
     <>
       <CSSTransition
         unmountOnExit
@@ -117,6 +118,7 @@ export const Dialog: React.FC<Props> = ({ open, label, actions, children }) => {
           </Popup>
         </DialogLayout>
       </CSSTransition>
-    </>
+    </>,
+    document.querySelector('body')!
   );
 };
