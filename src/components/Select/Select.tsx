@@ -1,12 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useSelect } from "downshift";
+import React from "react";
 import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
-import { Menu, MenuItem } from "../Menu";
 import { DropdownIcon } from "../../icons/DropdownIcon";
-import { Depth, Surface } from "../../primitives";
-import { DropdownAnimation } from "../../animations";
+
+const StyledSelect = styled.select`
+  border-radius: var(--amino-radius);
+  outline: none !important;
+  box-sizing: border-box;
+  transition: var(--amino-transition);
+  display: block;
+  height: 38px;
+  width: 100%;
+  padding: 0 var(--amino-space-half);
+  background: var(--amino-input-background);
+  border: 1px solid var(--amino-border-color);
+  box-shadow: var(--amino-shadow-small);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:focus,
+  &:active {
+    outline: none;
+    border: 1px solid var(--amino-blue-lighter);
+    box-shadow: var(--amino-shadow-glow);
+  }
+`;
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -33,61 +52,6 @@ const DropdownContainer = styled.div`
   }
 `;
 
-const DropdownTrigger = styled.button`
-  border-radius: var(--amino-radius);
-  outline: none !important;
-  box-sizing: border-box;
-  transition: var(--amino-transition);
-  display: block;
-  height: 38px;
-  width: 100%;
-  padding: 0 var(--amino-space-half);
-  background: var(--amino-input-background);
-  border: 1px solid var(--amino-border-color);
-  box-shadow: var(--amino-shadow-small);
-  text-align: left;
-
-  &:focus,
-  &:active {
-    outline: none;
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
-  }
-`;
-
-const AnimatedSurface = styled(Surface)`
-  animation: ${DropdownAnimation} 250ms ease-in-out;
-  animation-fill-mode: both;
-  border: 1px solid var(--amino-border-color);
-  z-index: 2;
-  position: absolute;
-  padding: var(--amino-radius) 0;
-  margin-top: var(--amino-space-quarter);
-  right: 0;
-  min-width: 100%;
-  width: max-content;
-  outline: none !important;
-  max-height: 350px;
-  overflow-y: auto;
-
-  ul {
-    outline: none !important;
-  }
-`;
-
-const DropdownItem = styled(MenuItem)<any>`
-  background: ${p =>
-    p.isSelected ? "var(--amino-hover-color)" : "var(--amino-surface-color)"};
-  color: ${p =>
-    p.isSelected ? "var(--amino-primary)" : "var(--amino-text-color)"};
-  font-weight: ${p => (p.isSelected ? "500" : "normal")};
-`;
-
-const Placeholder = styled.div<any>`
-  color: var(--amino-text-color);
-  opacity: 0.3;
-`;
-
 type Props = {
   items: Array<any>;
   label: string;
@@ -101,8 +65,6 @@ type Props = {
   tabIndex?: number;
 };
 
-// TODO: use onSelectedItemChange ?
-
 export const Select: React.FC<Props> = ({
   items,
   label,
@@ -115,86 +77,40 @@ export const Select: React.FC<Props> = ({
   labelFormatFunction,
   tabIndex
 }) => {
-  const [selectItems, setSelectItems] = useState([] as any);
+  const getItemLabel = (index: number) => {
+    const label = itemLabelPath
+      ? items[index][itemLabelPath]
+      : items[index].label;
 
-  useEffect(() => {
-    setSelectItems(
-      items.map((item: any) => {
-        const label = itemLabelPath ? item[itemLabelPath] : item.label;
-
-        if (labelFormatFunction) {
-          return labelFormatFunction(label);
-        } else {
-          return label;
-        }
-      })
-    );
-  }, [items]);
-
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    highlightedIndex,
-    getItemProps
-  } = useSelect({
-    items: selectItems,
-    initialSelectedItem: value && value.length ? value : null
-  });
-
-  useEffect(() => {
-    if (selectedItem && selectItems.length) {
-      const item = items.find((i: any) =>
-        itemLabelPath
-          ? i[itemLabelPath] === selectedItem
-          : i.label === selectedItem
-      );
-
-      if (item) {
-        onChange(itemValuePath ? item[itemValuePath] : item.value);
-      }
+    if (labelFormatFunction) {
+      return labelFormatFunction(label);
+    } else {
+      return label;
     }
-  }, [selectedItem]);
+  };
 
   return (
     <DropdownContainer className="amino-input-wrapper">
-      <Text {...getLabelProps()} style={TextStyle.h5}>
-        {label}
-      </Text>
+      <Text style={TextStyle.h5}>{label}</Text>
 
-      <DropdownTrigger {...getToggleButtonProps()}>
-        {selectedItem ? (
-          <div tabIndex={tabIndex && tabIndex}>{selectedItem}</div>
-        ) : (
-          <Placeholder tabIndex={tabIndex && tabIndex}>
-            {placeholder}
-          </Placeholder>
-        )}
-      </DropdownTrigger>
+      <StyledSelect
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        tabIndex={tabIndex && tabIndex}
+      >
+        {items.map((item: any, index: number) => (
+          <option
+            key={`${getItemLabel(index)}-${index}`}
+            value={itemValuePath ? item[itemValuePath] : item.value}
+          >
+            {getItemLabel(index)}
+          </option>
+        ))}
+      </StyledSelect>
 
       <DropdownIcon />
 
-      {isOpen && (
-        <AnimatedSurface dense depth={Depth.depth16}>
-          <Menu {...getMenuProps()}>
-            {selectItems.map((item: any, index: number) => (
-              <DropdownItem
-                isSelected={selectedItem === item}
-                key={`${item}${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {item}
-              </DropdownItem>
-            ))}
-          </Menu>
-        </AnimatedSurface>
-      )}
-
       {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
-
-      <div tabIndex={0} />
     </DropdownContainer>
   );
 };
