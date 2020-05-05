@@ -63,22 +63,18 @@ const Sidebar = styled.nav`
 
 const Content = styled.div`
   overflow-y: auto;
-  padding-top: var(--amino-space);
-  padding-bottom: var(--amino-space);
-  padding-left: var(--amino-space);
+  padding: var(--amino-space);
+  margin-right: var(--amino-space-negative);
   margin-left: var(--amino-space-negative);
-  margin-right: var(--amino-space);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: calc(100vw - var(--amino-sidebar-width));
 `;
 
 const Wrapper = styled.div`
-  width: calc(
-    var(--amino-container-width) -
-      (var(--amino-sidebar-width) + var(--amino-space))
-  );
+  width: calc(var(--amino-container-width) - var(--amino-sidebar-width));
 `;
 
 type Props = {
