@@ -111,7 +111,7 @@ type Props = {
   helpText?: string;
 
   /** Input value. Required since all inputs must be fully controlled */
-  value: string;
+  value: any;
 
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: (e: ChangeEvent<HTMLInputElement>) => any;
