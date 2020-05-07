@@ -136,6 +136,8 @@ type Props = {
 
   disabled?: boolean;
   tabIndex?: number;
+  inputMode?: any;
+  pattern?: any;
 };
 
 export const Input: React.FC<Props> = ({
@@ -152,7 +154,9 @@ export const Input: React.FC<Props> = ({
   readOnly,
   error,
   disabled,
-  tabIndex
+  tabIndex,
+  inputMode,
+  pattern
 }) => {
   return (
     <AminoInputWrapper width={width} className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}>
@@ -172,6 +176,8 @@ export const Input: React.FC<Props> = ({
           is-invalid={error && error.length}
           disabled={disabled}
           tabIndex={tabIndex && tabIndex}
+          pattern={pattern && pattern}
+          inputMode={inputMode && inputMode}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </Fields>
