@@ -44,7 +44,6 @@ const Sidebar = styled.nav`
   width: var(--amino-sidebar-width);
   box-sizing: border-box;
 
-  grid-row-gap: var(--amino-space);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: var(--amino-appbar-height) 1fr var(--amino-appbar-height);
