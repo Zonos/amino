@@ -16,41 +16,12 @@ const AminoLayout = styled.main`
   overflow: hidden;
 `;
 
-const Header = styled.header`
-  background: white;
-  z-index: 2;
-  height: var(--amino-appbar-height);
-  box-sizing: border-box;
-  box-shadow: 0 1px 3px 0 rgba(16, 42, 67, 0.1),
-    0 1px 2px 0 rgba(16, 42, 67, 0.06);
-  transform: translateZ(0);
-
-
-
-
-  //background: #222f41;
-  //color: white;
-`;
-
-const HeaderContent = styled.div`
-  box-sizing: border-box;
-  height: var(--amino-appbar-height);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-right: var(--amino-space);
-`;
-
 const Brand = styled.div`
-  width: var(--amino-sidebar-width);
-  //border-right: 1px solid var(--amino-border-color);
-  height: var(--amino-appbar-height);
-  padding: 0 var(--amino-space);
   display: flex;
   flex-direction: row;
   align-items: center;
   box-sizing: border-box;
+  border-bottom: 1px solid var(--amino-border-color);
 
   img,
   svg {
@@ -59,12 +30,24 @@ const Brand = styled.div`
   }
 `;
 
+const Footer = styled.div`
+  border-top: 1px solid var(--amino-border-color);
+`;
+
+const SidebarContent = styled.div`
+  padding: var(--amino-space);
+`;
+
 const Sidebar = styled.nav`
   border-right: 1px solid var(--amino-border-color);
   height: 100%;
-  padding: var(--amino-space);
   width: var(--amino-sidebar-width);
   box-sizing: border-box;
+
+  grid-row-gap: var(--amino-space);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--amino-appbar-height) 1fr var(--amino-appbar-height);
 `;
 
 const Content = styled.div`
@@ -78,7 +61,6 @@ const Content = styled.div`
   align-items: center;
   width: calc(100vw - var(--amino-sidebar-width));
 
-
   //background: white;
   background: #fdfdfd;
 `;
@@ -88,7 +70,7 @@ const Wrapper = styled.div`
 `;
 
 type Props = {
-  header: any;
+  footer: any;
   sidebar: any;
   brand: any;
   content: any;
@@ -96,21 +78,24 @@ type Props = {
 
 export const Layout: React.FC<Props> = ({
   content,
-  header,
+  footer,
   sidebar,
   brand
 }) => {
   return (
     <AminoLayout>
-      <Header>
-        <Grid>
-          <Brand>{brand}</Brand>
-          <HeaderContent>{header}</HeaderContent>
-        </Grid>
-      </Header>
-
       <ContentGrid>
-        <Sidebar>{sidebar}</Sidebar>
+        <Sidebar>
+          <Brand>
+            <SidebarContent>{brand}</SidebarContent>
+          </Brand>
+
+          <SidebarContent>{sidebar}</SidebarContent>
+
+          <Footer>
+            <SidebarContent>{footer}</SidebarContent>
+          </Footer>
+        </Sidebar>
         <Content>
           <Wrapper>{content}</Wrapper>
         </Content>
