@@ -24,6 +24,12 @@ const Header = styled.header`
   box-shadow: 0 1px 3px 0 rgba(16, 42, 67, 0.1),
     0 1px 2px 0 rgba(16, 42, 67, 0.06);
   transform: translateZ(0);
+
+
+
+
+  background: #222f41;
+  color: white;
 `;
 
 const HeaderContent = styled.div`
@@ -38,7 +44,7 @@ const HeaderContent = styled.div`
 
 const Brand = styled.div`
   width: var(--amino-sidebar-width);
-  border-right: 1px solid var(--amino-border-color);
+  //border-right: 1px solid var(--amino-border-color);
   height: var(--amino-appbar-height);
   padding: 0 var(--amino-space);
   display: flex;
@@ -71,6 +77,9 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   width: calc(100vw - var(--amino-sidebar-width));
+
+
+  background: white;
 `;
 
 const Wrapper = styled.div`
