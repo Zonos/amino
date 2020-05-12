@@ -28,8 +28,8 @@ const Header = styled.header`
 
 
 
-  background: #222f41;
-  color: white;
+  //background: #222f41;
+  //color: white;
 `;
 
 const HeaderContent = styled.div`
@@ -79,7 +79,8 @@ const Content = styled.div`
   width: calc(100vw - var(--amino-sidebar-width));
 
 
-  background: white;
+  //background: white;
+  background: #fdfdfd;
 `;
 
 const Wrapper = styled.div`
