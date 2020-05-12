@@ -183,7 +183,7 @@ export const GroupedSelect: React.FC<Props> = ({
 
   return (
     <DropdownContainer className="amino-input-wrapper">
-      <Text {...getLabelProps()} style={TextStyle.h5}>
+      <Text {...getLabelProps()} style={TextStyle.InputLabel}>
         {label}
       </Text>
 

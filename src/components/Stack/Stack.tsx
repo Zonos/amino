@@ -31,9 +31,22 @@ const RowStack = styled(AminoStack)`
   }
 `;
 
+const CardStack = styled.div`
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: var(--amino-space);
+  }
+
+  & :last-child {
+    margin-bottom: 0;
+  }
+`;
+
 export enum StackType {
   row,
-  column
+  column,
+  cards
 }
 
 type Props = {
@@ -42,6 +55,8 @@ type Props = {
 
 export const Stack: React.FC<Props> = ({ type, children }) => {
   switch (type) {
+    case StackType.cards:
+      return <CardStack>{children}</CardStack>;
     case StackType.column:
       return <ColumnStack>{children}</ColumnStack>;
     case StackType.row:

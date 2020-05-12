@@ -160,7 +160,7 @@ export const Input: React.FC<Props> = ({
 }) => {
   return (
     <AminoInputWrapper width={width} className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}>
-      {label && <Text style={TextStyle.h5}>{label}</Text>}
+      {label && <Text style={TextStyle.InputLabel}>{label}</Text>}
       <Fields>
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
         <AminoInput

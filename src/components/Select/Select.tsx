@@ -91,7 +91,7 @@ export const Select: React.FC<Props> = ({
 
   return (
     <DropdownContainer className="amino-input-wrapper">
-      <Text style={TextStyle.h5}>{label}</Text>
+      <Text style={TextStyle.InputLabel}>{label}</Text>
 
       <StyledSelect
         value={value}

@@ -14,6 +14,14 @@ const SmallHeader = styled.span`
   opacity: 0.5;
 `;
 
+const InputLabel = styled.h5`
+  font-family: var(--amino-font-sans);
+  margin-bottom: 0.625rem;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: .8;
+`;
+
 export enum TextStyle {
   h1,
   h2,
@@ -24,7 +32,8 @@ export enum TextStyle {
   p,
   Code,
   Subtitle,
-  SmallHeader
+  SmallHeader,
+  InputLabel
 }
 
 type Props = {
@@ -49,6 +58,8 @@ export const Text: React.FC<Props> = ({ children, style }) => {
       return <Subtitle>{children}</Subtitle>;
     case TextStyle.SmallHeader:
       return <SmallHeader>{children}</SmallHeader>;
+    case TextStyle.InputLabel:
+      return <InputLabel>{children}</InputLabel>;
     case TextStyle.p:
     default:
       return <p>{children}</p>;
