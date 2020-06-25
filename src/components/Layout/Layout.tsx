@@ -32,10 +32,12 @@ const Brand = styled.div`
 
 const Footer = styled.div`
   border-top: 1px solid var(--amino-border-color);
+  box-sizing: border-box;
 `;
 
 const SidebarContent = styled.div`
   padding: var(--amino-space);
+  box-sizing: border-box;
 `;
 
 const Sidebar = styled.nav`
@@ -92,7 +94,7 @@ export const Layout: React.FC<Props> = ({
           <SidebarContent>{sidebar}</SidebarContent>
 
           <Footer>
-            <SidebarContent>{footer}</SidebarContent>
+            {footer}
           </Footer>
         </Sidebar>
         <Content>

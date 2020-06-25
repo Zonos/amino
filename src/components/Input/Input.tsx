@@ -138,6 +138,8 @@ type Props = {
   tabIndex?: number;
   inputMode?: any;
   pattern?: any;
+  autoFocus?: boolean;
+  onKeyDown?: any;
 };
 
 export const Input: React.FC<Props> = ({
@@ -156,7 +158,9 @@ export const Input: React.FC<Props> = ({
   disabled,
   tabIndex,
   inputMode,
-  pattern
+  pattern,
+  autoFocus,
+  onKeyDown,
 }) => {
   return (
     <AminoInputWrapper width={width} className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}>
@@ -178,6 +182,8 @@ export const Input: React.FC<Props> = ({
           tabIndex={tabIndex && tabIndex}
           pattern={pattern && pattern}
           inputMode={inputMode && inputMode}
+          autoFocus={autoFocus && autoFocus}
+          onKeyDown={onKeyDown && onKeyDown}
         />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </Fields>

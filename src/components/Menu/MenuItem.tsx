@@ -11,4 +11,9 @@ export const MenuItem = styled.li`
   &:hover {
     background: var(--amino-hover-color);
   }
+
+  a {
+    width: 100%;
+    display: block;
+  }
 `;

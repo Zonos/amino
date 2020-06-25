@@ -31,3 +31,5 @@ export { useCheckboxValue } from "./hooks/useCheckboxValue";
 export { useToast } from "./hooks/useToast";
 
 export { Intent } from "./utils/Intent";
+
+export { DropdownAnimation, DropdownAnimationInverse } from './animations';
