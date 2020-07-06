@@ -61,7 +61,8 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   width: calc(100vw - var(--amino-sidebar-width));
-  background: var(--amino-page-background);
+  // background: var(--amino-page-background);
+  background: white;
 `;
 
 const Wrapper = styled.div`
