@@ -33,3 +33,5 @@ export { useToast } from "./hooks/useToast";
 export { Intent } from "./utils/Intent";
 
 export { DropdownAnimation, DropdownAnimationInverse } from './animations';
+
+export { DataList } from './components/DataList';
