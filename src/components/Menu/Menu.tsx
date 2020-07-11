@@ -8,7 +8,7 @@ export const Menu = styled.ul`
 
   hr {
     border: 0;
-    border-bottom: 1px solid var(--amino-border-color);
+    border-bottom: var(--amino-border);
     margin-top: var(--amino-radius);
     margin-bottom: var(--amino-radius);
   }

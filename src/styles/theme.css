@@ -7,11 +7,6 @@
   --amino-gray-dark: #4b5563;
   --amino-gray-darker: #252f3f;
 
-  --amino-red-lightest: #fde7e9;
-  --amino-red-light: #e75d5e;
-  --amino-red-base: #da3939;
-  --amino-red-dark: #b41e1f;
-
   --amino-blue-lightest: #bfdcfc;
   --amino-blue-lighter: #76a9fa;
   --amino-blue-light: #3c91ec;
@@ -23,82 +18,119 @@
   --amino-orange-base: #e4771b;
   --amino-orange-dark: #c45307;
 
-  --amino-green-lightest: #e1f7eb;
-  --amino-green-light: #44a575;
-  --amino-green-base: #33855d;
-  --amino-green-dark: #27684a;
+  /* Animation */
+  --amino-transition: all 0.2s ease-in-out 0s;
 
-  /* Tokens */
-  --amino-page-background: var(--amino-gray-lightest);
-  --amino-border-color: #d2d6dc88;
-  --amino-hover-color: var(--amino-gray-lightest);
-  --amino-text-color: var(--amino-gray-darker);
-  --amino-font-size: 14px;
-  --amino-primary: var(--amino-blue-base);
-  --amino-primary-light: var(--amino-blue-light);
-  --amino-primary-dark: var(--amino-blue-dark);
-  --amino-success: var(--amino-green-base);
-  --amino-warning: var(--amino-orange-base);
-  --amino-error: var(--amino-red-base);
+  /* Shadows */
+  --amino-shadow-glow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+
+
+
+  /* new amino 2 styles */
+  --amino-type-scale-base: 14px;
+
+  --amino-text-xxxxl: 3.815em;
+  --amino-text-xxxl: 3.052em;
+  --amino-text-xxl: 2.441em;
+  --amino-text-xl: 1.953em;
+  --amino-text-lg: 1.563em;
+  --amino-text-md: 1.25em;
+  --amino-text-base: 1em;
+  --amino-text-sm: 0.8em;
+  --amino-text-xs: 0.64em;
+
+  --amino-space: 1.563em;
+  --amino-space-negative: -1.563em;
+  --amino-space-half: 0.938em;
+  --amino-space-half-negative: -0.938em;
+  --amino-space-quarter: 0.469em;
+  --amino-space-quarter-negative: -0.469em;
+  --amino-space-double: 2.5em;
+  --amino-space-double-negative: -2.5em;
+
+  --amino-radius-sm: 0.25em;
+  --amino-radius: 0.375em;
+  --amino-radius-lg: calc(var(--amino-radius) * 2);
+  --amino-radius-large: var(--amino-radius-lg); /* exists for compatibility reasons */
+
+  --amino-gray-300: #FAFCFF;
+  --amino-gray-400: #E4E6E8;
+  --amino-gray-700: #A2A3A5;
+  --amino-gray-900: #282829;
+
+  --amino-blue-alpha: #2190FF80;
+  --amino-blue-300: #2190FF;
+  --amino-blue-400: #0078F2;
+  --amino-blue-700: #0063CD;
+  --amino-blue-900: #003F87;
+
+  --amino-cyan-alpha: #00DFE380;
+  --amino-cyan-300: #00DFE3;
+  --amino-cyan-400: #00D6DB;
+  --amino-cyan-700: #00BAC4;
+  --amino-cyan-900: #008C99;
+
+  --amino-red-alpha: #E0451A80;
+  --amino-red-300: #E0451A;
+  --amino-red-400: #D72B00;
+  --amino-red-700: #BB1B00;
+  --amino-red-900: #870900;
+
+  --amino-glow-blue: 0 0 0 3px var(--amino-blue-alpha);
+  --amino-glow-cyan: 0 0 0 3px var(--amino-cyan-alpha);
+  --amino-glow-red: 0 0 0 3px var(--amino-red-alpha);
+  --amino-glow-orange: 0 0 0 3px var(--amino-orange-alpha);
+  --amino-green-orange: 0 0 0 3px var(--amino-green-alpha);
+
+  --amino-primary: var(--amino-blue-400);
+  --amino-primary-light: var(--amino-blue-300);
+  --amino-primary-dark: var(--amino-blue-700);
+  --amino-success: var(--amino-green-400);
+  --amino-warning: var(--amino-orange-400);
+  --amino-error: var(--amino-red-400);
+
+  --amino-page-background: var(--amino-gray-300);
+  --amino-border-color: var(--amino-gray-400);
+  --amino-hover-color: var(--amino-gray-300);
   --amino-surface-color: white;
-  --amino-surface-color-secondary: var(--amino-gray-lightest);
+  --amino-surface-color-secondary: var(--amino-gray-300);
+
+  --amino-text-light: white;
+  --amino-text-color: var(--amino-gray-900);
+  --amino-text-dark: var(--amino-text-color);
+
   --amino-input-background: white;
   --amino-container-width: 100%;
   --amino-appbar-height: 57px;
   --amino-sidebar-width: 300px;
 
-  /* Shadows */
-  --amino-shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-medium: 0 1.9px 5.1px rgba(0, 0, 0, 0.024),
-    0 6.5px 17.2px rgba(0, 0, 0, 0.036), 0 29px 77px rgba(0, 0, 0, 0.06);
-  --amino-shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --amino-shadow-glow: 0 0 0 3px var(--amino-blue-lightest);
-  --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-soft: 0 0.7px 1.5px rgba(0, 0, 0, 0.021),
-    0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
-  /*TODO: would love for this soft shadow to be part of the scale...*/
-  --amino-shadow-top: rgb(136, 136, 136) 0px 1px 3px -2px;
-  --amino-shadow-top-primary: var(--amino-primary) 0px 1px 3px -2px;
-
-
-  --amino-shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --amino-shadow-medium: 0 0.5em 1em -0.125em rgba(70, 40, 93, 0.1),
-    0 0 0 1px rgba(70, 40, 93, 0.02);
-  --amino-shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --amino-shadow-larger: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --amino-shadow-glow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-
-  /* Text */
-  --amino-text-light: white;
-  --amino-text-dark: var(--amino-text-color);
-
-  /* Layout */
-  --amino-space: 16pt;
-  --amino-space-negative: -16pt;
-  --amino-space-half: 8pt;
-  --amino-space-half-negative: -8pt;
-  --amino-space-quarter: 4pt;
-  --amino-space-quarter-negative: -4pt;
-  --amino-space-double: 32pt;
-  --amino-space-double-negative: -32pt;
-
-  --amino-radius: 6px;
-  --amino-radius-large: 10px;
-
-  /*TODO: page widths and breakpoints*/
-
-  /* Font stack */
   --amino-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
-  --amino-font-mono: Menlo, Monaco, Lucida Console, Liberation Mono,
+  --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono,
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
-  /* Animation */
-  --amino-transition: all 0.2s ease-in-out 0s;
+  --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --amino-shadow-soft: 0 0.7px 1.5px rgba(0, 0, 0, 0.021),
+  0 2.2px 5.1px rgba(0, 0, 0, 0.027), 0 10px 23px rgba(0, 0, 0, 0.05);
+  /*TODO: would love for this soft shadow to be part of the scale...*/
+  --amino-shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --amino-shadow-medium: 0 0.5em 1em -0.125em rgba(70, 40, 93, 0.1),
+  0 0 0 1px rgba(70, 40, 93, 0.02);
+  --amino-shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --amino-shadow-larger: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* helpers */
+  --amino-border: 1px solid var(--amino-border-color);
+  --amino-border-blue: 1px solid var(--amino-blue-300);
+  --amino-border-red: 1px solid var(--amino-red-300);
+  --amino-border-cyan: 1px solid var(--amino-cyan-300);
+  --amino-border-orange: 1px solid var(--amino-orange-300);
+  --amino-border-green: 1px solid var(--amino-green-300);
+  --amino-border-transparent: 1px solid transparent;
+
+  /* TODO: easing functions and timings */
 }
 
 @media (min-width: 560px) {
@@ -125,23 +157,3 @@
   }
 }
 
-/*WIP dark theme*/
-/*@media (prefers-color-scheme: dark) {*/
-/*  :root {*/
-/*    --amino-gray-lightest: #171c22;*/
-/*    --amino-gray-lighter: #1d2229;*/
-/*    --amino-gray-light: #2c3138;*/
-/*    --amino-gray-base: #7f8997;*/
-/*    --amino-gray-dark: hsl(204, 4%, 26%);*/
-/*    --amino-gray-darker: #1e2024;*/
-
-/*    --amino-page-background: var(--amino-gray-lighter);*/
-/*    --amino-border-color: #171c22ff;*/
-/*    --amino-hover-color: #2a323d;*/
-/*    --amino-surface-color: var(--amino-gray-light);*/
-/*    --amino-surface-color-secondary: #1d222988;*/
-/*    --amino-text-dark: white;*/
-/*    --amino-text-color: white;*/
-/*    --amino-input-background: transparent;*/
-/*  }*/
-/*}*/

@@ -50,8 +50,8 @@ const DropdownTrigger = styled.button`
   &:focus,
   &:active {
     outline: none;
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 `;
 

@@ -21,7 +21,6 @@ const Brand = styled.div`
   flex-direction: row;
   align-items: center;
   box-sizing: border-box;
-  //border-bottom: 1px solid var(--amino-border-color);
 
   img,
   svg {
@@ -31,7 +30,6 @@ const Brand = styled.div`
 `;
 
 const Footer = styled.div`
-  //border-top: 1px solid var(--amino-border-color);
   box-sizing: border-box;
 `;
 
@@ -41,11 +39,11 @@ const SidebarContent = styled.div`
 `;
 
 const Sidebar = styled.nav`
-  border-right: 1px solid var(--amino-border-color);
+  border-right: var(--amino-border);
   height: 100%;
   width: var(--amino-sidebar-width);
   box-sizing: border-box;
-  background: white;
+  background: var(--amino-page-background);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: var(--amino-appbar-height) 1fr var(--amino-appbar-height);
@@ -61,8 +59,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   width: calc(100vw - var(--amino-sidebar-width));
-  // background: var(--amino-page-background);
-  background: white;
+  background: var(--amino-page-background);
 `;
 
 const Wrapper = styled.div`

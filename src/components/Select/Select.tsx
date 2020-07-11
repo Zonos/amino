@@ -14,7 +14,7 @@ const StyledSelect = styled.select`
   width: 100%;
   padding: 0 var(--amino-space-half);
   background: var(--amino-input-background);
-  border: 1px solid var(--amino-border-color);
+  border: var(--amino-border);
   box-shadow: var(--amino-shadow-small);
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -22,8 +22,8 @@ const StyledSelect = styled.select`
   &:focus,
   &:active {
     outline: none;
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 `;
 

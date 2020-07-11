@@ -60,8 +60,8 @@ const DropdownContainer = styled.div`
 
     &:focus {
       outline: none;
-      border: 1px solid var(--amino-blue-lighter);
-      box-shadow: var(--amino-shadow-glow);
+      border: var(--amino-border-blue);
+      box-shadow: var(--amino-glow-blue);
     }
   }
 `;
@@ -69,7 +69,7 @@ const DropdownContainer = styled.div`
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: 1px solid var(--amino-border-color);
+  border: var(--amino-border);
   z-index: 10;
   position: absolute;
   padding: var(--amino-radius) 0;

@@ -20,9 +20,9 @@ const AminoCheckbox = styled.div`
   min-width: 18px;
   min-height: 18px;
   line-height: 18px;
-  border-radius: 4px;
+  border-radius: var(--amino-radius-sm);
   background: var(--amino-input-background);
-  border: 1px solid var(--amino-border-color);
+  border: var(--amino-border);
   transition: var(--amino-transition);
   cursor: pointer;
   display: flex;
@@ -33,8 +33,8 @@ const AminoCheckbox = styled.div`
   margin-right: var(--amino-space-half);
 
   &:active {
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
+    border: var(--amino-border-blue):
+    box-shadow: var(--amino-glow-blue);
   }
 `;
 

@@ -17,14 +17,14 @@ const StyledRadio = styled.div`
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: 1px solid var(--amino-border-color);
-  box-shadow: var(--amino-shadow-top);
+  border: var(--amino-border);
+  box-shadow: var(--amino-shadow-small);
   margin-right: var(--amino-space-half);
   transition: var(--amino-transition);
 
   &:active {
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 `;
 
@@ -49,7 +49,6 @@ const RadioContainer = styled.div`
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    font-weight: 500;
   }
 `;
 

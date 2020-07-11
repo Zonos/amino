@@ -15,7 +15,7 @@ const CardHeader = styled.header`
   display: flex;
   align-items: center;
   margin-bottom: var(--amino-space);
-  border-bottom: 1px solid var(--amino-border-color);
+  border-bottom: var(--amino-border);
   height: 65px;
   line-height: 65px;
   user-select: none;
@@ -31,11 +31,11 @@ const CardFooter = styled.footer`
   justify-content: flex-end;
   margin: var(--amino-space-negative);
   padding: var(--amino-space);
-  border-top: 1px solid var(--amino-border-color);
+  border-top: var(--amino-border);
   background: var(--amino-surface-color-secondary);
   margin-top: var(--amino-space);
-  border-bottom-left-radius: var(--amino-radius-large);
-  border-bottom-right-radius: var(--amino-radius-large);
+  border-bottom-left-radius: var(--amino-radius-lg);
+  border-bottom-right-radius: var(--amino-radius-lg);
 `;
 
 type Props = {
@@ -93,7 +93,7 @@ export const Card: React.FC<Props> = ({
       {children}
       {onSave && (
         <CardFooter>
-          <Button loading={saving} intent="primary" onClick={save}>
+          <Button loading={saving} intent="primary" loadingText="Saving" onClick={save}>
             Save
           </Button>
         </CardFooter>

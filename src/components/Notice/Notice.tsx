@@ -4,13 +4,11 @@ import styled from "styled-components";
 import { Intent } from "../..";
 
 const AminoNotice = styled.aside`
-  border-radius: var(--amino-radius-large);
-  background: var(--amino-gray-lightest);
+  border-radius: var(--amino-radius);
+  background: var(--amino-gray-400);
   color: var(--amino-text-color);
   padding: var(--amino-space);
-  box-shadow: var(--amino-shadow-soft);
-  //border: 1px solid var(--amino-border-color);
-  
+
   a {
     font-style: italic;
     text-decoration: underline;
@@ -18,27 +16,23 @@ const AminoNotice = styled.aside`
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
-  background: var(--amino-green-base);
+  background: var(--amino-success);
   color: white;
-  border: 0;
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  background: var(--amino-red-base);
+  background: var(--amino-error);
   color: white;
-  border: 0;
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
-  background: var(--amino-orange-base);
+  background: var(--amino-warning);
   color: white;
-  border: 0;
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
-  background: var(--amino-blue-base);
+  background: var(--amino-primary);
   color: white;
-  border: 0;
 `;
 
 type Props = {

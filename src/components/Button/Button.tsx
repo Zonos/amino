@@ -9,7 +9,7 @@ import { AminoOnClickHandler } from "../..";
 const AminoButton = styled.button<any>`
   position: relative;
   outline: none;
-  border: 1px solid transparent;
+  border: var(--amino-border-transparent);
   height: 40px;
   line-height: 18px;
   box-sizing: border-box;
@@ -28,15 +28,15 @@ const AminoButton = styled.button<any>`
 
   &:active,
   &:focus {
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 
   &[disabled] {
     cursor: not-allowed;
     pointer-events: none;
-    background: var(--amino-gray-lightest);
     box-shadow: none;
+    opacity: .5;
   }
 `;
 
@@ -45,14 +45,14 @@ const Primary = styled(AminoButton)<any>`
   color: var(--amino-text-light);
 
   &:hover {
-    background: var(--amino-primary-dark);
+    background: var(--amino-primary-light);
   }
 `;
 
 const Secondary = styled(AminoButton)<any>`
   background: white;
   color: var(--amino-text-dark);
-  border: 1px solid var(--amino-border-color);
+  border: var(--amino-border);
   background: var(--amino-input-background);
 
   &:hover {
@@ -62,8 +62,8 @@ const Secondary = styled(AminoButton)<any>`
 
 const Icon = styled(AminoButton)<any>`
   background: white;
-  color: var(--amino-text-dark);
-  border: 1px solid var(--amino-border-color);
+  color: var(--amino-text-color);
+  border: var(--amino-border);
   padding: 0 var(--amino-space-half);
 
   svg {
@@ -88,6 +88,12 @@ const Danger = styled(AminoButton)<any>`
   &:hover {
     background: var(--amino-red-dark);
   }
+
+  &:active,
+  &:focus {
+    border: var(--amino-border-red);
+    box-shadow: var(--amino-glow-red);
+  }
 `;
 
 // TODO: use Intent enum like old amino, not strings
@@ -98,6 +104,7 @@ type Props = {
   disabled?: boolean;
   onClick?: AminoOnClickHandler;
   className?: string;
+  loadingText?: string;
 };
 
 export const Button: React.FC<Props> = ({
@@ -106,9 +113,10 @@ export const Button: React.FC<Props> = ({
   intent,
   loading,
   onClick,
-  className
+  className,
+  loadingText
 }) => {
-  const content = loading ? <Spinner size={16} /> : children;
+  const content = loading ? <><Spinner size={16} />{loadingText && loadingText}</> : children;
 
   if (disabled || loading) {
     return <Secondary disabled>{content}</Secondary>;

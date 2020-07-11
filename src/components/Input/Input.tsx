@@ -14,9 +14,9 @@ const Error = styled.div`
 
 const InputDecorator = styled.div`
   height: 38px;
-  background: var(--amino-gray-lightest);
+  background: var(--amino-surface-color-secondary);
   padding: 0 var(--amino-space-half);
-  border: 1px solid var(--amino-border-color);
+  border: var(--amino-border);
 `;
 
 const InputPrefix = styled(InputDecorator)`
@@ -36,7 +36,7 @@ const AminoInput = styled.input<any>`
   box-sizing: border-box;
   position: relative;
   outline: none;
-  border: 1px solid var(--amino-border-color);
+  border: var(--amino-border);
   padding: 0 var(--amino-space-half);
   transition: var(--amino-transition);
   width: 100%;
@@ -50,8 +50,8 @@ const AminoInput = styled.input<any>`
 
   :focus {
     outline: none;
-    border: 1px solid var(--amino-blue-lighter);
-    box-shadow: var(--amino-shadow-glow);
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 
   &.has-prefix {

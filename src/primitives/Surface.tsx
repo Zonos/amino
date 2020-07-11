@@ -7,7 +7,7 @@ const SurfaceBase = styled.div<any>`
   background: var(--amino-surface-color);
   padding: var(--amino-space);
   border-radius: ${p =>
-    p.dense ? "var(--amino-radius)" : "var(--amino-radius-large)"};
+    p.dense ? "var(--amino-radius)" : "var(--amino-radius-lg)"};
 `;
 
 // shadow small

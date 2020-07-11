@@ -13,7 +13,7 @@ const Backdrop = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  background: var(--amino-gray-dark);
+  background: var(--amino-gray-900);
   opacity: .8;
   z-index: 99998;
   position: fixed;
@@ -36,16 +36,16 @@ const Popup = styled.div`
   z-index: 100000;
   background: var(--amino-surface-color);
   width: 550px;
-  border-radius: var(--amino-radius-large);
+  border-radius: var(--amino-radius-lg);
   outline: none;
   box-shadow: var(--amino-shadow-larger);
 `;
 
 const Header = styled.div`
   padding: var(--amino-space);
-  border-bottom: 1px solid var(--amino-border-color);
-  border-top-left-radius: var(--amino-radius-large);
-  border-top-right-radius: var(--amino-radius-large);
+  border-bottom: var(--amino-border);
+  border-top-left-radius: var(--amino-radius-lg);
+  border-top-right-radius: var(--amino-radiuslglarge);
   background: var(--amino-surface-color-secondary);
 
   h4 {
@@ -55,13 +55,13 @@ const Header = styled.div`
 
 const Footer = styled.div`
   padding: var(--amino-space);
-  border-top: 1px solid var(--amino-border-color);
+  border-top: var(--amino-border);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   background: var(--amino-surface-color-secondary);
-  border-bottom-left-radius: var(--amino-radius-large);
-  border-bottom-right-radius: var(--amino-radius-large);
+  border-bottom-left-radius: var(--amino-radius-lg);
+  border-bottom-right-radius: var(--amino-radius-lg);
 
   & > div + div {
     margin-left: var(--amino-space-quarter);

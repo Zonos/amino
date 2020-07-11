@@ -1,7 +1,7 @@
 @import url('https://rsms.me/inter/inter.css');
 
 html {
-  font-size: var(--amino-font-size);
+  font-size: var(--amino-type-scale-base);
   font-family: var(--amino-font-sans);
   color: var(--amino-text-color);
   height: 100%;
@@ -13,7 +13,7 @@ html {
 body {
   background: var(--amino-page-background);
   font-family: var(--amino-font-sans);
-  font-size: 1em;
+  font-size: var(--amino-text-base);
   height: 100%;
   width: 100%;
   -webkit-font-smoothing: antialiased;
@@ -32,37 +32,41 @@ h4,
 h5,
 h6 {
   font-family: var(--amino-font-sans);
-  margin-bottom: 0.625rem;
+  /*margin-bottom: 0.625rem;*/
 }
 
 h1 {
-  font-size: 3rem;
-  line-height: 1.5;
+  /*font-size: 3rem;*/
+  /*line-height: 1.5;*/
+  font-size: var(--amino-text-xxl);
   font-weight: 500;
 }
 
 h2 {
-  font-size: 2.25rem;
+  /*font-size: 2.25rem;*/
+  font-size: var(--amino-text-xl);
   font-weight: 500;
 }
 
 h3 {
-  font-size: 1.5rem;
+  /*font-size: 1.5rem;*/
+  font-size: var(--amino-text-lg);
   font-weight: 500;
 }
 
 h4 {
-  font-size: 17px;
+  /*font-size: 17px;*/
+  font-size: var(--amino-text-md);
   font-weight: 500;
 }
 
 h5 {
-  font-size: 1rem;
+  /*font-size: 1rem;*/
   font-weight: 400;
 }
 
 h6 {
-  font-size: 0.875rem;
+  /*font-size: 0.875rem;*/
   font-weight: 500;
 }
 
