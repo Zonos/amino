@@ -1,12 +1,5 @@
 :root {
   /* Colors */
-  --amino-gray-lightest: #f9fafb;
-  --amino-gray-lighter: #f4f5f7;
-  --amino-gray-light: #e6e7eb;
-  --amino-gray-base: #a0a6b2;
-  --amino-gray-dark: #4b5563;
-  --amino-gray-darker: #252f3f;
-
   --amino-blue-lightest: #bfdcfc;
   --amino-blue-lighter: #76a9fa;
   --amino-blue-light: #3c91ec;
@@ -138,6 +131,8 @@
   --amino-border-transparent: 1px solid transparent;
 
   /* TODO: easing functions and timings */
+  /* TODO: test contrast ratios */
+  /* TODO: more accessible hover color */
 }
 
 @media (min-width: 560px) {

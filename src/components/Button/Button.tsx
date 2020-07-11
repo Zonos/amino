@@ -86,7 +86,7 @@ const Danger = styled(AminoButton)<any>`
   color: white;
 
   &:hover {
-    background: var(--amino-red-dark);
+    background: var(--amino-red-300);
   }
 
   &:active,

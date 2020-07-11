@@ -19,7 +19,7 @@ const InputLabel = styled.h5`
   margin-bottom: 0.625rem;
   font-size: 1rem;
   font-weight: 400;
-  opacity: .5.;
+  opacity: .5;
 `;
 
 export enum TextStyle {

@@ -45,7 +45,7 @@ const Header = styled.div`
   padding: var(--amino-space);
   border-bottom: var(--amino-border);
   border-top-left-radius: var(--amino-radius-lg);
-  border-top-right-radius: var(--amino-radiuslglarge);
+  border-top-right-radius: var(--amino-radius-lg);
   background: var(--amino-surface-color-secondary);
 
   h4 {
