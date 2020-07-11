@@ -13,11 +13,6 @@
   --amino-blue-base: #1c74d8;
   --amino-blue-dark: #1e5898;
 
-  --amino-orange-lightest: #fceed1;
-  --amino-orange-light: #f09835;
-  --amino-orange-base: #e4771b;
-  --amino-orange-dark: #c45307;
-
   /* Animation */
   --amino-transition: all 0.2s ease-in-out 0s;
 
@@ -75,6 +70,18 @@
   --amino-red-400: #D72B00;
   --amino-red-700: #BB1B00;
   --amino-red-900: #870900;
+
+  --amino-orange-alpha: #FFA51E80;
+  --amino-orange-300: #FFA51E;
+  --amino-orange-400: #F28C00;
+  --amino-orange-700: #CD6800;
+  --amino-orange-900: #873600;
+
+  --amino-green-alpha: #1DAB4A80;
+  --amino-green-300: #1DAB4A;
+  --amino-green-400: #00A32F;
+  --amino-green-700: #008B1E;
+  --amino-green-900: #005E09;
 
   --amino-glow-blue: 0 0 0 3px var(--amino-blue-alpha);
   --amino-glow-cyan: 0 0 0 3px var(--amino-cyan-alpha);
