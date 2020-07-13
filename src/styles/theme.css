@@ -1,11 +1,4 @@
 :root {
-  /* Colors */
-  --amino-blue-lightest: #bfdcfc;
-  --amino-blue-lighter: #76a9fa;
-  --amino-blue-light: #3c91ec;
-  --amino-blue-base: #1c74d8;
-  --amino-blue-dark: #1e5898;
-
   /* Animation */
   --amino-transition: all 0.2s ease-in-out 0s;
 
@@ -34,7 +27,6 @@
   --amino-radius-sm: 0.25em;
   --amino-radius: 0.375em;
   --amino-radius-lg: calc(var(--amino-radius) * 2);
-  --amino-radius-large: var(--amino-radius-lg); /* exists for compatibility reasons */
 
   --amino-gray-300: #FAFCFF;
   --amino-gray-400: #E4E6E8;
@@ -80,6 +72,7 @@
   --amino-primary: var(--amino-blue-400);
   --amino-primary-light: var(--amino-blue-300);
   --amino-primary-dark: var(--amino-blue-700);
+
   --amino-success: var(--amino-green-400);
   --amino-warning: var(--amino-orange-400);
   --amino-error: var(--amino-red-400);
