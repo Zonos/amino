@@ -16,23 +16,6 @@ const AminoLayout = styled.main`
   overflow: hidden;
 `;
 
-const Brand = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-
-  img,
-  svg {
-    width: 120px;
-    height: 100%;
-  }
-`;
-
-const Footer = styled.div`
-  box-sizing: border-box;
-`;
-
 const SidebarContent = styled.div`
   padding: var(--amino-space);
   box-sizing: border-box;
@@ -67,31 +50,19 @@ const Wrapper = styled.div`
 `;
 
 type Props = {
-  footer: any;
   sidebar: any;
-  brand: any;
   content: any;
 };
 
 export const Layout: React.FC<Props> = ({
   content,
-  footer,
   sidebar,
-  brand
 }) => {
   return (
     <AminoLayout>
       <ContentGrid>
         <Sidebar>
-          <Brand>
-            <SidebarContent>{brand}</SidebarContent>
-          </Brand>
-
           <SidebarContent>{sidebar}</SidebarContent>
-
-          <Footer>
-            {footer}
-          </Footer>
         </Sidebar>
         <Content>
           <Wrapper>{content}</Wrapper>
