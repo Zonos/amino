@@ -28,6 +28,7 @@ const AminoButton = styled.button<any>`
 
   &:active,
   &:focus {
+    outline: none;
     border: var(--amino-border-blue);
     box-shadow: var(--amino-glow-blue);
   }
