@@ -34,3 +34,4 @@ export { Intent } from "./utils/Intent";
 export { DropdownAnimation, DropdownAnimationInverse } from './animations';
 
 export { DataList } from './components/DataList';
+export { Tabs } from './components/Tabs';
