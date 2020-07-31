@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: var(--amino-sidebar-width) 1fr;
-  grid-column-gap: var(--amino-space);
+  //grid-column-gap: var(--amino-space);
 `;
 
 const ContentGrid = styled(Grid)`
@@ -52,18 +52,11 @@ const Sidebar = styled.nav`
 const Content = styled.div`
   overflow-y: auto;
   padding: var(--amino-space);
-  margin-right: var(--amino-space-negative);
-  margin-left: var(--amino-space-negative);
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: calc(100vw - var(--amino-sidebar-width));
   background: var(--amino-page-background);
-`;
-
-const Wrapper = styled.div`
-  width: calc(var(--amino-container-width) - var(--amino-sidebar-width));
+  //background: white;
+  max-width: var(--amino-container-width);
+  min-width: 760px;
 `;
 
 type Props = {
@@ -94,7 +87,7 @@ export const Layout: React.FC<Props> = ({
           </Footer>
         </Sidebar>
         <Content>
-          <Wrapper>{content}</Wrapper>
+          {content}
         </Content>
       </ContentGrid>
     </AminoLayout>
