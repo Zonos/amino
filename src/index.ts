@@ -14,11 +14,11 @@ export { Combobox } from "./components/Combobox";
 export { ListItem } from "./components/ListItem";
 export { List } from "./components/List";
 export { Dialog } from "./components/Dialog";
-export { Toast } from './components/Toast';
-export { Menu, MenuItem } from './components/Menu';
+export { Toast } from "./components/Toast";
+export { Menu, MenuItem } from "./components/Menu";
 
 export { Spinner } from "./components/Spinner";
-export { Skeleton } from './components/Skeleton';
+export { Skeleton } from "./components/Skeleton";
 
 export { Depth, Surface } from "./primitives";
 
@@ -31,7 +31,9 @@ export { useToast } from "./hooks/useToast";
 
 export { Intent } from "./utils/Intent";
 
-export { DropdownAnimation, DropdownAnimationInverse } from './animations';
+export { DropdownAnimation, DropdownAnimationInverse } from "./animations";
 
-export { DataList } from './components/DataList';
-export { Tabs } from './components/Tabs';
+export { DataList } from "./components/DataList";
+export { Tabs } from "./components/Tabs";
+
+export { VStack } from "./components/Stack";

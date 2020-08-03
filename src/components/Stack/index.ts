@@ -1,1 +1,2 @@
-export { Stack, StackType } from './Stack';
+export { Stack, StackType } from "./Stack";
+export { VStack } from "./VStack";

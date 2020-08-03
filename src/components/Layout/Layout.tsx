@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: var(--amino-sidebar-width) 1fr;
-  //grid-column-gap: var(--amino-space);
 `;
 
 const ContentGrid = styled(Grid)`
@@ -53,10 +52,6 @@ const Content = styled.div`
   overflow-y: auto;
   padding: var(--amino-space);
   box-sizing: border-box;
-  background: var(--amino-page-background);
-  //background: white;
-  max-width: var(--amino-container-width);
-  min-width: 760px;
 `;
 
 type Props = {
@@ -82,13 +77,9 @@ export const Layout: React.FC<Props> = ({
 
           <SidebarContent>{sidebar}</SidebarContent>
 
-          <Footer>
-            {footer}
-          </Footer>
+          <Footer>{footer}</Footer>
         </Sidebar>
-        <Content>
-          {content}
-        </Content>
+        <Content>{content}</Content>
       </ContentGrid>
     </AminoLayout>
   );
