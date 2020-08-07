@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 const Subtitle = styled.span`
   opacity: .7;
   font-style: italic;
@@ -15,7 +17,7 @@ const SmallHeader = styled.span`
 `;
 
 const InputLabel = styled.h5`
-  font-family: var(--amino-font-sans);
+  font-family: var(${AminoTheme.fontSans});
   margin-bottom: 0.625rem;
   font-size: 1rem;
   font-weight: 400;

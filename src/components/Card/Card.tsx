@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 import { Button } from "../Button";
 import { AminoOnSaveHandler } from "../..";
@@ -10,12 +11,12 @@ import { Depth, Surface } from "../../primitives";
 // TODO: figure out a way to handle form + validation for inner elements when onSave is called
 
 const CardHeader = styled.header`
-  margin: var(--amino-space-negative);
-  padding: var(--amino-space);
+  margin: var(${AminoTheme.spaceNegative});
+  padding: var(${AminoTheme.space});
   display: flex;
   align-items: center;
-  margin-bottom: var(--amino-space);
-  border-bottom: var(--amino-border);
+  margin-bottom: var(${AminoTheme.space});
+  border-bottom: var(${AminoTheme.border});
   height: 65px;
   line-height: 65px;
   user-select: none;
@@ -29,13 +30,13 @@ const CardHeader = styled.header`
 const CardFooter = styled.footer`
   display: flex;
   justify-content: flex-end;
-  margin: var(--amino-space-negative);
-  padding: var(--amino-space);
-  border-top: var(--amino-border);
-  background: var(--amino-surface-color-secondary);
-  margin-top: var(--amino-space);
-  border-bottom-left-radius: var(--amino-radius-lg);
-  border-bottom-right-radius: var(--amino-radius-lg);
+  margin: var(${AminoTheme.spaceNegative});
+  padding: var(${AminoTheme.space});
+  border-top: var(${AminoTheme.border});
+  background: var(${AminoTheme.surfaceColorSecondary});
+  margin-top: var(${AminoTheme.space});
+  border-bottom-left-radius: var(${AminoTheme.radiusLg});
+  border-bottom-right-radius: var(${AminoTheme.radiusLg});
 `;
 
 type Props = {

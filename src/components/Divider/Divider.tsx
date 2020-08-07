@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 export const Divider = styled.hr`
-  margin: var(--amino-space) var(--amino-space-negative);
-  border-color: var(--amino-border-color);
+  margin: var(${AminoTheme.space}) var(${AminoTheme.spaceNegative});
+  border-color: var(${AminoTheme.borderColor});
 `;

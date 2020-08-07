@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 
 // TODO: scrollable dialog, max height, etc.
@@ -13,7 +14,7 @@ const Backdrop = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  background: var(--amino-gray-900);
+  background: var(${AminoTheme.gray900});
   opacity: .8;
   z-index: 99998;
   position: fixed;
@@ -34,19 +35,19 @@ const DialogLayout = styled.div`
 const Popup = styled.div`
   position: relative;
   z-index: 100000;
-  background: var(--amino-surface-color);
+  background: var(${AminoTheme.surfaceColor});
   width: 550px;
-  border-radius: var(--amino-radius-lg);
+  border-radius: var(${AminoTheme.radiusLg});
   outline: none;
-  box-shadow: var(--amino-shadow-larger);
+  box-shadow: var(${AminoTheme.shadowLarger});
 `;
 
 const Header = styled.div`
-  padding: var(--amino-space);
-  border-bottom: var(--amino-border);
-  border-top-left-radius: var(--amino-radius-lg);
-  border-top-right-radius: var(--amino-radius-lg);
-  background: var(--amino-surface-color-secondary);
+  padding: var(${AminoTheme.space});
+  border-bottom: var(${AminoTheme.border});
+  border-top-left-radius: var(${AminoTheme.radiusLg});
+  border-top-right-radius: var(${AminoTheme.radiusLg});
+  background: var(${AminoTheme.surfaceColorSecondary});
 
   h4 {
     margin: 0;
@@ -54,22 +55,22 @@ const Header = styled.div`
 `;
 
 const Footer = styled.div`
-  padding: var(--amino-space);
-  border-top: var(--amino-border);
+  padding: var(${AminoTheme.space});
+  border-top: var(${AminoTheme.border});
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: var(--amino-surface-color-secondary);
-  border-bottom-left-radius: var(--amino-radius-lg);
-  border-bottom-right-radius: var(--amino-radius-lg);
+  background: var(${AminoTheme.surfaceColorSecondary});
+  border-bottom-left-radius: var(${AminoTheme.radiusLg});
+  border-bottom-right-radius: var(${AminoTheme.radiusLg});
 
   & > div + div {
-    margin-left: var(--amino-space-quarter);
+    margin-left: var(${AminoTheme.spaceQuarter});
   }
 `;
 
 const Content = styled.div`
-  padding: var(--amino-space);
+  padding: var(${AminoTheme.space});
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   overscroll-behavior: contain;

@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { TextStyle, Text } from "../Text";
 
 // TODO: style input error states (for in-browser form validation)
@@ -9,25 +10,25 @@ import { TextStyle, Text } from "../Text";
 // TODO: better input class name generation
 
 const Error = styled.div`
-  color: var(--amino-error);
+  color: var(${AminoTheme.error});
 `;
 
 const InputDecorator = styled.div`
   height: 38px;
-  background: var(--amino-surface-color-secondary);
-  padding: 0 var(--amino-space-half);
-  border: var(--amino-border);
+  background: var(${AminoTheme.surfaceColorSecondary});
+  padding: 0 var(${AminoTheme.spaceHalf});
+  border: var(${AminoTheme.border});
 `;
 
 const InputPrefix = styled(InputDecorator)`
-  border-top-left-radius: var(--amino-radius);
-  border-bottom-left-radius: var(--amino-radius);
+  border-top-left-radius: var(${AminoTheme.radius});
+  border-bottom-left-radius: var(${AminoTheme.radius});
   border-right: 0;
 `;
 
 const InputSuffix = styled(InputDecorator)`
-  border-top-right-radius: var(--amino-radius);
-  border-bottom-right-radius: var(--amino-radius);
+  border-top-right-radius: var(${AminoTheme.radius});
+  border-bottom-right-radius: var(${AminoTheme.radius});
   border-left: 0;
 `;
 
@@ -36,22 +37,22 @@ const AminoInput = styled.input<any>`
   box-sizing: border-box;
   position: relative;
   outline: none;
-  border: var(--amino-border);
-  padding: 0 var(--amino-space-half);
-  transition: var(--amino-transition);
+  border: var(${AminoTheme.border});
+  padding: 0 var(${AminoTheme.spaceHalf});
+  transition: var(${AminoTheme.transition});
   width: 100%;
-  border-radius: var(--amino-radius);
-  background: var(--amino-input-background);
+  border-radius: var(${AminoTheme.radius});
+  background: var(${AminoTheme.inputBackground});
 
   ::placeholder {
-    color: var(--amino-text-color);
+    color: var(${AminoTheme.textColor});
     opacity: 0.3;
   }
 
   :focus {
     outline: none;
-    border: var(--amino-border-blue);
-    box-shadow: var(--amino-glow-blue);
+    border: var(${AminoTheme.borderBlue});
+    box-shadow: var(${AminoTheme.glowBlue});
   }
 
   &.has-prefix {
@@ -65,13 +66,13 @@ const AminoInput = styled.input<any>`
   }
 
   &[is-invalid] {
-    border: 2px solid var(--amino-error);
+    border: 2px solid var(${AminoTheme.error});
   }
 `;
 
 const Fields = styled.div`
-  border-radius: var(--amino-radius);
-  box-shadow: var(--amino-shadow-small);
+  border-radius: var(${AminoTheme.radius});
+  box-shadow: var(${AminoTheme.shadowSmall});
 `;
 
 const AminoInputWrapper = styled.div<any>`
@@ -79,7 +80,7 @@ const AminoInputWrapper = styled.div<any>`
   width: ${p => (p.width ? `${p.width}px` : "100%")};
 
   span {
-    margin-top: var(--amino-space-quarter);
+    margin-top: var(${AminoTheme.spaceQuarter});
     display: block;
   }
 

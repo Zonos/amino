@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 const AminoStack = styled.div`
   display: flex;
 `;
@@ -10,7 +12,7 @@ const ColumnStack = styled(AminoStack)`
   justify-content: center;
 
   & > * {
-    margin-bottom: var(--amino-space-quarter);
+    margin-bottom: var(${AminoTheme.spaceQuarter});
 
     &:last-child {
       margin-bottom: 0;
@@ -23,7 +25,7 @@ const RowStack = styled(AminoStack)`
   align-items: center;
 
   & > * {
-    margin-right: var(--amino-space-quarter);
+    margin-right: var(${AminoTheme.spaceQuarter});
 
     &:last-child {
       margin-right: 0;
@@ -35,8 +37,7 @@ const CardStack = styled.div`
   flex-direction: column;
 
   & > * {
-    margin-bottom: var(--amino-space);
-
+    margin-bottom: var(${AminoTheme.space});
 
     &:last-child {
       margin-bottom: 0;

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Button } from "./Button";
 import { Depth, Surface } from "../../primitives";
 import { DropdownAnimation } from "../../animations";
@@ -13,11 +14,11 @@ const Wrapper = styled.div`
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: 1px solid var(--amino-border-color);
+  border: 1px solid var(${AminoTheme.borderColor});
   z-index: 10;
   position: absolute;
-  padding: var(--amino-radius) 0;
-  margin-top: var(--amino-space-quarter);
+  padding: var(${AminoTheme.radius}) 0;
+  margin-top: var(${AminoTheme.spaceQuarter});
   right: 0;
   min-width: 100%;
   width: max-content;
@@ -25,11 +26,11 @@ const AnimatedSurface = styled(Surface)`
 
 const Trigger = styled(Button)`
   svg {
-    color: var(--amino-text-color);
+    color: var(${AminoTheme.textColor});
     width: 16px;
     height: 16px;
     opacity: 0.3;
-    margin-left: var(--amino-space-quarter);
+    margin-left: var(${AminoTheme.spaceQuarter});
     transition: opacity 100ms ease-in-out;
     margin-right: -5px !important;
     pointer-events: none;

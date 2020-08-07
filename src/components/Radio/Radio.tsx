@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 const CircleIcon = () => (
   <svg width="8" height="8" viewBox="0 0 10 10">
     <circle cx="5" cy="5" r="5" />
@@ -11,30 +13,30 @@ const StyledRadio = styled.div`
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--amino-input-background);
+  background: var(${AminoTheme.inputBackground});
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: var(--amino-border);
-  box-shadow: var(--amino-shadow-small);
-  margin-right: var(--amino-space-half);
-  transition: var(--amino-transition);
+  border: var(${AminoTheme.border});
+  box-shadow: var(${AminoTheme.shadowSmall});
+  margin-right: var(${AminoTheme.spaceHalf});
+  transition: var(${AminoTheme.transition});
 
   &:active {
-    border: var(--amino-border-blue);
-    box-shadow: var(--amino-glow-blue);
+    border: var(${AminoTheme.borderBlue});
+    box-shadow: var(${AminoTheme.glowBlue});
   }
 `;
 
 const SelectedRadio = styled(StyledRadio)`
-  background: var(--amino-primary);
-  border: 2px solid var(--amino-primary);
+  background: var(${AminoTheme.primary});
+  border: 2px solid var(${AminoTheme.primary});
 
   svg {
     fill: white;
-    box-shadow: var(--amino-shadow-small);
+    box-shadow: var(${AminoTheme.shadowSmall});
   }
 `;
 
