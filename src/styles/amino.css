@@ -11,6 +11,7 @@ html {
 body {
   font-family: var(--amino-font-sans);
   font-size: var(--amino-text-base);
+  background: #fcfcfc55;
   height: 100%;
   width: 100%;
   -webkit-font-smoothing: antialiased;

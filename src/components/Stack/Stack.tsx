@@ -13,10 +13,10 @@ const ColumnStack = styled(AminoStack)`
 
   & > * {
     margin-bottom: var(${AminoTheme.spaceQuarter});
-  }
 
-  & :last-child {
-    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -26,10 +26,10 @@ const RowStack = styled(AminoStack)`
 
   & > * {
     margin-right: var(${AminoTheme.spaceQuarter});
-  }
 
-  & :last-child {
-    margin-right: 0;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `;
 
@@ -38,10 +38,10 @@ const CardStack = styled.div`
 
   & > * {
     margin-bottom: var(${AminoTheme.space});
-  }
 
-  & :last-child {
-    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
