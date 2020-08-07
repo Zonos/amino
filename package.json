@@ -38,6 +38,7 @@
     "build": "bili && cp -r ./src/styles/*.css ./dist"
   },
   "files": [
+    "index.js",
     "dist",
     "dist/*.css"
   ]
