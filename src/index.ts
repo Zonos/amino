@@ -37,3 +37,5 @@ export { DataList } from "./components/DataList";
 export { Tabs } from "./components/Tabs";
 
 export { VStack } from "./components/Stack";
+
+export { AminoTheme } from './styles/AminoTheme';

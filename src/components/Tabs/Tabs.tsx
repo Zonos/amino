@@ -6,7 +6,8 @@ import { AminoTheme } from "../../styles/AminoTheme";
 const AminoTabs = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: var(--amino-border);
+  border: var(${AminoTheme.border});
+  border-radius: var(${AminoTheme.radiusLg});
 `;
 
 const Tab = styled.div`
@@ -18,20 +19,24 @@ const Tab = styled.div`
   font-weight: 500;
   color: var(${AminoTheme.gray900});
   user-select: none;
-  border-bottom: 3px solid transparent;
+  box-sizing: border-box;
+  border-bottom: var(${AminoTheme.radius}) solid transparent;
 
   &.is-selected {
     color: var(${AminoTheme.primary});
-    border-bottom: 3px solid var(${AminoTheme.primary});
+    border-bottom: var(${AminoTheme.radius}) solid var(${AminoTheme.primary});
+  }
+
+  &:first-of-type {
+    border-bottom-left-radius: var(${AminoTheme.radiusLg});
+  }
+  &:last-of-type {
+    border-bottom-right-radius: var(${AminoTheme.radiusLg});
   }
 
   &:not(.is-selected):hover {
     color: var(${AminoTheme.gray900});
     background: rgba(0, 0, 0, 0.03);
-  }
-
-  & + & {
-    margin-left: var(${AminoTheme.spaceHalf});
   }
 `;
 
