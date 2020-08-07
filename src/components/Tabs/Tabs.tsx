@@ -2,13 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const AminoTabs = styled.div`
-  background: var(--amino-page-background);
-  border-radius: var(--amino-radius-lg);
   display: flex;
   align-items: center;
-  border: var(--amino-border);
-  padding: var(--amino-space-quarter);
-  box-shadow: var(--amino-shadow-inset);
+  border-bottom: var(--amino-border);
 `;
 
 const Tab = styled.div`
@@ -18,14 +14,13 @@ const Tab = styled.div`
   text-align: center;
   transition: all 150ms ease-in-out;
   font-weight: 500;
-  border-radius: var(--amino-radius);
-  color: var(--amino-gray-700);
+  color: var(--amino-gray-900);
   user-select: none;
+  border-bottom: 3px solid transparent;
 
   &.is-selected {
-    background: white;
-    box-shadow: var(--amino-shadow-medium);
     color: var(--amino-primary);
+    border-bottom: 3px solid var(--amino-primary);
   }
 
   &:not(.is-selected):hover {
