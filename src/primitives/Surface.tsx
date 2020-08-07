@@ -13,7 +13,6 @@ const SurfaceBase = styled.div<any>`
 // shadow small
 const Depth4 = styled(SurfaceBase)`
   box-shadow: var(--amino-shadow-small);
-
   border: 1px solid var(--amino-border-color);
 `;
 

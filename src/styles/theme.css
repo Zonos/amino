@@ -28,11 +28,6 @@
   --amino-radius: 0.375em;
   --amino-radius-lg: calc(var(--amino-radius) * 2);
 
-  /* --amino-gray-300: #fafcff;
-  --amino-gray-400: #e4e6e8;
-  --amino-gray-700: #a2a3a5;
-  --amino-gray-900: #282829; */
-
   --amino-gray-300: #fafafa;
   --amino-gray-400: #e7e7e7;
   --amino-gray-700: #b0b0b0;
@@ -93,7 +88,6 @@
   --amino-text-dark: var(--amino-text-color);
 
   --amino-input-background: white;
-  --amino-container-width: 100%;
   --amino-appbar-height: 64px;
   --amino-sidebar-width: 300px;
 
@@ -129,28 +123,3 @@
   /* TODO: more accessible hover color */
 }
 
-@media (min-width: 560px) {
-  :root {
-    /*--amino-container-width: 560px;*/
-    --amino-container-width: calc(100vw - var(--amino-sidebar-width));
-  }
-}
-
-@media (min-width: 796px) {
-  :root {
-    /*--amino-container-width: 769px;*/
-    --amino-container-width: calc(100vw - var(--amino-sidebar-width));
-  }
-}
-
-@media (min-width: 960px) {
-  :root {
-    --amino-container-width: calc(100vw - var(--amino-sidebar-width));
-  }
-}
-
-@media (min-width: 1248px) {
-  :root {
-    --amino-container-width: 1096px;
-  }
-}
