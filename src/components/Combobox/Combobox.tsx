@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCombobox } from "downshift";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 import { Depth, Surface } from "../../primitives";
 import { MenuItem, Menu } from "../Menu";
@@ -12,10 +13,10 @@ const DropdownContainer = styled.div`
 
   svg {
     position: absolute;
-    right: var(--amino-space-half);
+    right: var(${AminoTheme.spaceHalf});
     top: 41px;
     pointer-events: none;
-    color: var(--amino-text-color);
+    color: var(${AminoTheme.textColor});
     width: 16px;
     height: 16px;
     opacity: 0.3;
@@ -35,7 +36,7 @@ const DropdownContainer = styled.div`
   }
 
   span {
-    margin-top: var(--amino-space-quarter);
+    margin-top: var(${AminoTheme.spaceQuarter});
     display: block;
   }
 
@@ -45,23 +46,23 @@ const DropdownContainer = styled.div`
     box-sizing: border-box;
     position: relative;
     outline: none;
-    border: 1px solid var(--amino-border-color);
-    padding: 0 var(--amino-space-half);
-    transition: var(--amino-transition);
-    box-shadow: var(--amino-shadow-small);
+    border: 1px solid var(${AminoTheme.borderColor});
+    padding: 0 var(${AminoTheme.spaceHalf});
+    transition: var(${AminoTheme.transition});
+    box-shadow: var(${AminoTheme.shadowSmall});
     width: 100%;
-    border-radius: var(--amino-radius);
-    background: var(--amino-input-background);
+    border-radius: var(${AminoTheme.radius});
+    background: var(${AminoTheme.inputBackground});
 
     ::placeholder {
-      color: var(--amino-text-color);
+      color: var(${AminoTheme.textColor});
       opacity: 0.3;
     }
 
     &:focus {
       outline: none;
-      border: var(--amino-border-blue);
-      box-shadow: var(--amino-glow-blue);
+      border: var(${AminoTheme.borderBlue});
+      box-shadow: var(${AminoTheme.glowBlue});
     }
   }
 `;
@@ -69,11 +70,11 @@ const DropdownContainer = styled.div`
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: var(--amino-border);
+  border: var(${AminoTheme.border});
   z-index: 10;
   position: absolute;
-  padding: var(--amino-radius) 0;
-  margin-top: var(--amino-space-quarter);
+  padding: var(${AminoTheme.radius}) 0;
+  margin-top: var(${AminoTheme.spaceQuarter});
   right: 0;
   min-width: 100%;
   width: max-content;
@@ -88,9 +89,9 @@ const AnimatedSurface = styled(Surface)`
 
 const DropdownItem = styled(MenuItem)<any>`
   background: ${p =>
-    p.isSelected ? "var(--amino-hover-color)" : "var(--amino-surface-color)"};
+    p.isSelected ? `var(${AminoTheme.hoverColor})` : `var(${AminoTheme.surfaceColor})`};
   color: ${p =>
-    p.isSelected ? "var(--amino-primary)" : "var(--amino-text-color)"};
+    p.isSelected ? `var(${AminoTheme.primary})` : `var(${AminoTheme.textColor})`};
   font-weight: ${p => (p.isSelected ? "500" : "normal")};
   display: flex;
   flex-direction: row;
@@ -112,7 +113,7 @@ const Icon = styled.img`
   width: 24px;
   height: 24px;
   border-radius: 3px;
-  margin-right: var(--amino-space-half);
+  margin-right: var(${AminoTheme.spaceHalf});
 `;
 
 type Props = {

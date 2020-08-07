@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: var(--amino-sidebar-width) 1fr;
+  grid-template-columns: var(${AminoTheme.sidebarWidth}) 1fr;
 `;
 
 const ContentGrid = styled(Grid)`
@@ -33,24 +35,24 @@ const Footer = styled.div`
 `;
 
 const SidebarContent = styled.div`
-  padding: var(--amino-space);
+  padding: var(${AminoTheme.space});
   box-sizing: border-box;
 `;
 
 const Sidebar = styled.nav`
-  border-right: var(--amino-border);
+  border-right: var(${AminoTheme.border});
   height: 100%;
-  width: var(--amino-sidebar-width);
+  width: var(${AminoTheme.sidebarWidth});
   box-sizing: border-box;
-  background: var(--amino-page-background);
+  background: var(${AminoTheme.pageBackground});
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: var(--amino-appbar-height) 1fr var(--amino-appbar-height);
+  grid-template-rows: var(${AminoTheme.appbarHeight}) 1fr var(${AminoTheme.appbarHeight});
 `;
 
 const Content = styled.div`
   overflow-y: auto;
-  padding: var(--amino-space);
+  padding: var(${AminoTheme.space});
   box-sizing: border-box;
 `;
 

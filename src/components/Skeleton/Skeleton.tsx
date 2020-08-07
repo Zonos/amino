@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 const Pulse = keyframes`
   from {
     transform: scaleX(0);
@@ -32,8 +34,8 @@ const Pulser = styled.div`
 const SkeletonLoader = styled.div`
   height: 1em;
   width: 50px;
-  background: var(--amino-hover-color);
-  border-radius: var(--amino-radius);
+  background: var(${AminoTheme.hoverColor});
+  border-radius: var(${AminoTheme.radius});
   position: relative;
 `;
 

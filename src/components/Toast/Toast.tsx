@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
+
 const AminoToast = styled.div`
   background: black;
   position: fixed;
   left: 50%;
-  bottom: var(--amino-space-double);
+  bottom: var(${AminoTheme.spaceDouble});
   z-index: 999999;
 `;
 

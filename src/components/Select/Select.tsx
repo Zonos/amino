@@ -1,29 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 import { DropdownIcon } from "../../icons/DropdownIcon";
 
 const StyledSelect = styled.select`
-  border-radius: var(--amino-radius);
+  border-radius: var(${AminoTheme.radius});
   outline: none !important;
   box-sizing: border-box;
-  transition: var(--amino-transition);
+  transition: var(${AminoTheme.transition});
   display: block;
   height: 38px;
   width: 100%;
-  padding: 0 var(--amino-space-half);
-  background: var(--amino-input-background);
-  border: var(--amino-border);
-  box-shadow: var(--amino-shadow-small);
+  padding: 0 var(${AminoTheme.spaceHalf});
+  background: var(${AminoTheme.inputBackground});
+  border: var(${AminoTheme.border});
+  box-shadow: var(${AminoTheme.shadowSmall});
   -webkit-appearance: none;
   -moz-appearance: none;
 
   &:focus,
   &:active {
     outline: none;
-    border: var(--amino-border-blue);
-    box-shadow: var(--amino-glow-blue);
+    border: var(${AminoTheme.borderBlue});
+    box-shadow: var(${AminoTheme.glowBlue});
   }
 `;
 
@@ -32,10 +33,10 @@ const DropdownContainer = styled.div`
 
   svg {
     position: absolute;
-    right: var(--amino-space-half);
+    right: var(${AminoTheme.spaceHalf});
     top: 41px;
     pointer-events: none;
-    color: var(--amino-text-color);
+    color: var(${AminoTheme.textColor});
     width: 16px;
     height: 16px;
     opacity: 0.3;
@@ -47,7 +48,7 @@ const DropdownContainer = styled.div`
   }
 
   span {
-    margin-top: var(--amino-space-quarter);
+    margin-top: var(${AminoTheme.spaceQuarter});
     display: block;
   }
 `;

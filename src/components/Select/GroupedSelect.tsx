@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelect } from "downshift";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 import { Menu, MenuItem } from "../Menu";
 import { DropdownIcon } from "../../icons/DropdownIcon";
@@ -13,10 +14,10 @@ const DropdownContainer = styled.div`
 
   svg {
     position: absolute;
-    right: var(--amino-space-half);
+    right: var(${AminoTheme.spaceHalf});
     top: 41px;
     pointer-events: none;
-    color: var(--amino-text-color);
+    color: var(${AminoTheme.textColor});
     width: 16px;
     height: 16px;
     opacity: 0.3;
@@ -28,41 +29,41 @@ const DropdownContainer = styled.div`
   }
 
   span {
-    margin-top: var(--amino-space-quarter);
+    margin-top: var(${AminoTheme.spaceQuarter});
     display: block;
   }
 `;
 
 const DropdownTrigger = styled.button`
-  border-radius: var(--amino-radius);
+  border-radius: var(${AminoTheme.radius});
   outline: none !important;
   box-sizing: border-box;
-  transition: var(--amino-transition);
+  transition: var(${AminoTheme.transition});
   display: block;
   height: 38px;
   width: 100%;
-  padding: 0 var(--amino-space-half);
-  background: var(--amino-input-background);
-  border: 1px solid var(--amino-border-color);
-  box-shadow: var(--amino-shadow-small);
+  padding: 0 var(${AminoTheme.spaceHalf});
+  background: var(${AminoTheme.inputBackground});
+  border: 1px solid var(${AminoTheme.borderColor});
+  box-shadow: var(${AminoTheme.shadowSmall});
   text-align: left;
 
   &:focus,
   &:active {
     outline: none;
-    border: var(--amino-border-blue);
-    box-shadow: var(--amino-glow-blue);
+    border: var(${AminoTheme.borderBlue});
+    box-shadow: var(${AminoTheme.glowBlue});
   }
 `;
 
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: 1px solid var(--amino-border-color);
+  border: 1px solid var(${AminoTheme.borderColor});
   z-index: 10;
   position: absolute;
-  padding: var(--amino-radius) 0;
-  margin-top: var(--amino-space-quarter);
+  padding: var(${AminoTheme.radius}) 0;
+  margin-top: var(${AminoTheme.spaceQuarter});
   right: 0;
   min-width: 100%;
   width: max-content;
@@ -77,21 +78,21 @@ const AnimatedSurface = styled(Surface)`
 
 const DropdownItem = styled(MenuItem)<any>`
   background: ${p =>
-    p.isSelected ? "var(--amino-hover-color)" : "var(--amino-surface-color)"};
+    p.isSelected ? `var(${AminoTheme.hoverColor})` : `var(${AminoTheme.surfaceColor})`};
   color: ${p =>
-    p.isSelected ? "var(--amino-primary)" : "var(--amino-text-color)"};
+    p.isSelected ? `var(${AminoTheme.primary})` : `var(${AminoTheme.textColor})`};
   font-weight: ${p => (p.isSelected ? "500" : "normal")};
 `;
 
 const SectionHeader = styled.div`
   span {
     display: block;
-    margin: var(--amino-space-half);
+    margin: var(${AminoTheme.spaceHalf});
   }
 `;
 
 const Placeholder = styled.div<any>`
-  color: var(--amino-text-color);
+  color: var(${AminoTheme.textColor});
   opacity: 0.3;
 `;
 

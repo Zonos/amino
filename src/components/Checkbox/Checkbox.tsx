@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 
 // TODO: multiline checkboxes could use some work
@@ -20,31 +21,31 @@ const AminoCheckbox = styled.div`
   min-width: 18px;
   min-height: 18px;
   line-height: 18px;
-  border-radius: var(--amino-radius-sm);
-  background: var(--amino-input-background);
-  border: var(--amino-border);
-  transition: var(--amino-transition);
+  border-radius: var(${AminoTheme.radiusSm});
+  background: var(${AminoTheme.inputBackground});
+  border: var(${AminoTheme.border});
+  transition: var(${AminoTheme.transition});
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-shadow: var(--amino-shadow-small);
-  margin-right: var(--amino-space-half);
+  box-shadow: var(${AminoTheme.shadowSmall});
+  margin-right: var(${AminoTheme.spaceHalf});
 
   &:active {
-    border: var(--amino-border-blue):
-    box-shadow: var(--amino-glow-blue);
+    border: var(${AminoTheme.borderBlue});
+    box-shadow: var(${AminoTheme.glowBlue});
   }
 `;
 
 const SelectedCheckbox = styled(AminoCheckbox)`
-  background: var(--amino-primary) !important;
-  border: 2px solid var(--amino-primary);
+  background: var(${AminoTheme.primary}) !important;
+  border: 2px solid var(${AminoTheme.primary});
 
   svg {
     fill: white;
-    box-shadow: var(--amino-shadow-small);
+    box-shadow: var(${AminoTheme.shadowSmall});
   }
 `;
 
@@ -57,7 +58,7 @@ const CheckboxContainer = styled.div<any>`
   opacity: ${props => (props.disabled ? "0.3" : "1")};
 
   a {
-    color: var(--amino-primary);
+    color: var(${AminoTheme.primary});
     text-decoration: underline;
   }
 

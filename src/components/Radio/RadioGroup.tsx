@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import { AminoTheme } from "../../styles/AminoTheme";
 import { Radio } from "./Radio";
 
 const RadioContainer = styled.div`
   * {
-    margin-bottom: var(--amino-space-half);
+    margin-bottom: var(${AminoTheme.spaceHalf});
   }
-  
+
   *:last-of-type {
     margin-bottom: 0;
   }

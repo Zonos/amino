@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import { Intent } from "../..";
+import { AminoTheme } from "../../styles/AminoTheme";
 
 const AminoNotice = styled.aside`
-  border-radius: var(--amino-radius);
-  background: var(--amino-gray-400);
-  color: var(--amino-text-color);
-  padding: var(--amino-space);
+  border-radius: var(${AminoTheme.radius});
+  background: var(${AminoTheme.gray400});
+  color: var(${AminoTheme.textColor});
+  padding: var(${AminoTheme.space});
 
   a {
     font-style: italic;
@@ -16,22 +17,22 @@ const AminoNotice = styled.aside`
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
-  background: var(--amino-success);
+  background: var(${AminoTheme.success});
   color: white;
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  background: var(--amino-error);
+  background: var(${AminoTheme.error});
   color: white;
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
-  background: var(--amino-warning);
+  background: var(${AminoTheme.warning});
   color: white;
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
-  background: var(--amino-primary);
+  background: var(${AminoTheme.primary});
   color: white;
 `;
 

@@ -1,34 +1,35 @@
 import styled from "styled-components";
 import React from "react";
 
+import { AminoTheme } from "../styles/AminoTheme";
 import { Depth } from "./Depth";
 
 const SurfaceBase = styled.div<any>`
-  background: var(--amino-surface-color);
-  padding: var(--amino-space);
+  background: var(${AminoTheme.surfaceColor});
+  padding: var(${AminoTheme.space});
   border-radius: ${p =>
-    p.dense ? "var(--amino-radius)" : "var(--amino-radius-lg)"};
+    p.dense ? `var(${AminoTheme.radius})` : `var(${AminoTheme.radiusLg})`};
 `;
 
 // shadow small
 const Depth4 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-small);
+  box-shadow: var(${AminoTheme.shadowSmall});
 
   border: 1px solid var(--amino-border-color);
 `;
 
 // shadow medium
 const Depth8 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-base);
+  box-shadow: var(${AminoTheme.shadowBase});
 `;
 
 const Depth16 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-medium);
+  box-shadow: var(${AminoTheme.shadowMedium});
 `;
 
 // shadow xl
 const Depth64 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-large);
+  box-shadow: var(${AminoTheme.shadowLarge});
 `;
 
 type Props = {
