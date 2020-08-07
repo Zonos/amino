@@ -2,7 +2,7 @@
   "name": "@amino-ui/core",
   "version": "0.29.0",
   "description": "Core UI components for Amino",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
   "license": "MIT",
@@ -38,7 +38,6 @@
     "build": "bili && cp -r ./src/styles/*.css ./dist"
   },
   "files": [
-    "index.js",
     "dist",
     "dist/*.css"
   ]
