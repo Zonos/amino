@@ -37,6 +37,8 @@ const Footer = styled.div`
 const SidebarContent = styled.div`
   padding: var(${AminoTheme.space});
   box-sizing: border-box;
+  overflow-y: scroll;
+  height: calc(100vh - 128px);
 `;
 
 const Sidebar = styled.nav`
@@ -47,7 +49,9 @@ const Sidebar = styled.nav`
   background: var(${AminoTheme.pageBackground});
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: var(${AminoTheme.appbarHeight}) 1fr var(${AminoTheme.appbarHeight});
+  grid-template-rows: var(${AminoTheme.appbarHeight}) 1fr var(
+      ${AminoTheme.appbarHeight}
+    );
 `;
 
 const Content = styled.div`
