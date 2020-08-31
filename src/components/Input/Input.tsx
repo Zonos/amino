@@ -119,6 +119,7 @@ type Props = {
 
   /** A short string displayed at the beginning of the input */
   prefix?: string;
+  inputPrefix?: string;
 
   /** A short string displayed at the end of the input */
   suffix?: string;
@@ -151,6 +152,7 @@ export const Input: React.FC<Props> = ({
   value,
   onChange,
   prefix,
+  inputPrefix,
   suffix,
   required,
   type,
@@ -161,15 +163,20 @@ export const Input: React.FC<Props> = ({
   inputMode,
   pattern,
   autoFocus,
-  onKeyDown,
+  onKeyDown
 }) => {
   return (
-    <AminoInputWrapper width={width} className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}>
+    <AminoInputWrapper
+      width={width}
+      className={`amino-input-wrapper ${disabled ? "disabled" : ""}`}
+    >
       {label && <Text style={TextStyle.InputLabel}>{label}</Text>}
       <Fields>
-        {prefix && <InputPrefix>{prefix}</InputPrefix>}
+        {(prefix || inputPrefix) && (
+          <InputPrefix>{prefix || inputPrefix}</InputPrefix>
+        )}
         <AminoInput
-          className={`${prefix ? "has-prefix" : ""} ${
+          className={`${prefix || inputPrefix ? "has-prefix" : ""} ${
             suffix ? "has-suffix" : ""
           }`}
           placeholder={placeholder || ""}
