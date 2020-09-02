@@ -4,19 +4,20 @@ import { AminoTheme } from "../../styles/AminoTheme";
 import { GridAlignment, GridSpacing } from ".";
 
 /**
- * A vertical stack
+ * A horizontal stack
  *
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const VStack = styled.div<{
+export const HStack = styled.div<{
   alignment?: GridAlignment;
   spacing?: GridSpacing;
 }>`
   display: grid;
-  grid-auto-rows: auto;
-  grid-row-gap: ${p =>
+  grid-auto-columns: auto;
+  column-gap: ${p =>
     p.spacing ? `var(--amino-${p.spacing})` : `var(${AminoTheme.space})`};
+  grid-auto-flow: column;
 
   & > * {
     justify-self: ${p => (p.alignment === "end" ? "end" : "unset")};

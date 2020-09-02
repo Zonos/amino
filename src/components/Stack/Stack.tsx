@@ -55,6 +55,10 @@ type Props = {
   type?: StackType;
 };
 
+/**
+ * @description Displays children in a organized stack
+ * @deprecated Use HStack and VStack instead
+ */
 export const Stack: React.FC<Props> = ({ type, children }) => {
   switch (type) {
     case StackType.cards:
