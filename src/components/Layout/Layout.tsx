@@ -46,7 +46,7 @@ const Sidebar = styled.nav`
   height: 100%;
   width: var(${AminoTheme.sidebarWidth});
   box-sizing: border-box;
-  background: var(${AminoTheme.pageBackground});
+  background: white;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: var(${AminoTheme.appbarHeight}) 1fr var(

@@ -7,6 +7,7 @@ const AminoTabs = styled.div`
   display: flex;
   align-items: center;
   border: var(${AminoTheme.border});
+  background: white;
   border-radius: var(${AminoTheme.radiusLg});
 `;
 
@@ -32,6 +33,10 @@ const Tab = styled.div`
   }
   &:last-of-type {
     border-bottom-right-radius: var(${AminoTheme.radiusLg});
+  }
+
+  & + & {
+    border-left: var(${AminoTheme.border});
   }
 
   &:not(.is-selected):hover {
