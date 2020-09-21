@@ -37,13 +37,14 @@ const Footer = styled.div`
 const SidebarContent = styled.div`
   padding: var(${AminoTheme.space});
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100vh - 128px);
+  width: 100%;
 `;
 
 const Sidebar = styled.nav`
   border-right: var(${AminoTheme.border});
-  height: 100%;
+  height: 100vh;
   width: var(${AminoTheme.sidebarWidth});
   box-sizing: border-box;
   background: white;
