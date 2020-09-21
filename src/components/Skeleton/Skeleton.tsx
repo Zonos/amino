@@ -10,7 +10,6 @@ import { AminoTheme } from "../../styles/AminoTheme";
  */
 export const Skeleton = styled.div<{ width?: number; height?: number }>`
   height: ${p => (p.height ? `${p.height}px` : `1em`)};
-  height: ${p => p.height || 1}em;
   width: ${p => `${p.width}px` || "100%"};
   opacity: 0.3;
   background: var(${AminoTheme.gray700});
