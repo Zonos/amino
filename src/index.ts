@@ -14,7 +14,7 @@ export { Combobox } from "./components/Combobox";
 export { ListItem } from "./components/ListItem";
 export { List } from "./components/List";
 export { Dialog } from "./components/Dialog";
-export { Toast } from "./components/Toast";
+export { Toast, ToastContextProvider, ToastContext } from "./components/Toast";
 export { Menu, MenuItem } from "./components/Menu";
 
 export { Spinner } from "./components/Spinner";
@@ -27,7 +27,6 @@ export { AminoOnClickHandler } from "./utils/AminoOnClickHandler";
 
 export { useInputValue } from "./hooks/useInputValue";
 export { useCheckboxValue } from "./hooks/useCheckboxValue";
-export { useToast } from "./hooks/useToast";
 
 export { Intent } from "./utils/Intent";
 

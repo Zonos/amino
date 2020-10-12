@@ -1,9 +1,7 @@
 :root {
-  /* Animation */
   --amino-transition: all 0.2s ease-in-out 0s;
 
-  /* new amino 2 styles */
-  --amino-type-scale-base: 14px;
+  --amino-type-scale-base: 13px;
 
   --amino-text-xxxxl: 3.815em;
   --amino-text-xxxl: 3.052em;
@@ -26,18 +24,30 @@
 
   --amino-radius-sm: 0.25em;
   --amino-radius: 0.375em;
-  --amino-radius-lg: calc(var(--amino-radius) * 2);
+  --amino-radius-lg: 0.5em;
 
-  --amino-gray-300: #fafafa;
-  --amino-gray-400: #e7e7e7;
-  --amino-gray-700: #b0b0b0;
-  --amino-gray-900: #4a4a4a;
+  --amino-gray-50: #f9fafb;
+  --amino-gray-100: #f4f5f7;
+  --amino-gray-200: #e5e7eb;
+  --amino-gray-300: #d2d6dc;
+  --amino-gray-400: #9fa6b2;
+  --amino-gray-500: #6b7280;
+  --amino-gray-600: #4b5563;
+  --amino-gray-700: #374151;
+  --amino-gray-800: #252f3f;
+  --amino-gray-900: #171e2e;
 
   --amino-blue-alpha: #2190ff80;
-  --amino-blue-300: #2190ff;
-  --amino-blue-400: #0078f2;
-  --amino-blue-700: #0063cd;
-  --amino-blue-900: #003f87;
+  --amino-blue-50: #ebf5ff;
+  --amino-blue-100: #e1effd;
+  --amino-blue-200: #c3dcfd;
+  --amino-blue-300: #a5cafd;
+  --amino-blue-400: #76a9fa;
+  --amino-blue-500: #3f83f8;
+  --amino-blue-600: #1a64f2;
+  --amino-blue-700: #1956db;
+  --amino-blue-800: #1f419f;
+  --amino-blue-900: #243876;
 
   --amino-cyan-alpha: #00dfe380;
   --amino-cyan-300: #00dfe3;
@@ -69,19 +79,19 @@
   --amino-glow-orange: 0 0 0 3px var(--amino-orange-alpha);
   --amino-green-orange: 0 0 0 3px var(--amino-green-alpha);
 
-  --amino-primary: var(--amino-blue-400);
-  --amino-primary-light: var(--amino-blue-300);
+  --amino-primary: var(--amino-blue-500);
+  --amino-primary-light: var(--amino-blue-400);
   --amino-primary-dark: var(--amino-blue-700);
 
   --amino-success: var(--amino-green-400);
   --amino-warning: var(--amino-orange-400);
   --amino-error: var(--amino-red-400);
 
-  --amino-page-background: var(--amino-gray-300);
-  --amino-border-color: var(--amino-gray-400);
-  --amino-hover-color: var(--amino-gray-300);
+  --amino-page-background: var(--amino-gray-50);
+  --amino-border-color: var(--amino-gray-200);
+  --amino-hover-color: var(--amino-gray-50);
   --amino-surface-color: white;
-  --amino-surface-color-secondary: var(--amino-gray-300);
+  --amino-surface-color-secondary: var(--amino-gray-50);
 
   --amino-text-light: white;
   --amino-text-color: var(--amino-gray-900);
@@ -89,11 +99,12 @@
 
   --amino-input-background: white;
   --amino-appbar-height: 64px;
-  --amino-sidebar-width: 300px;
+  --amino-sidebar-width: 219px;
+  --amino-sidebar-color: white;
 
-  --amino-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  --amino-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
     Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
     Courier New, monospace;
@@ -111,7 +122,7 @@
 
   /* helpers */
   --amino-border: 1px solid var(--amino-border-color);
-  --amino-border-blue: 1px solid var(--amino-blue-300);
+  --amino-border-blue: 1px solid var(--amino-blue-400);
   --amino-border-red: 1px solid var(--amino-red-300);
   --amino-border-cyan: 1px solid var(--amino-cyan-300);
   --amino-border-orange: 1px solid var(--amino-orange-300);
@@ -123,3 +134,10 @@
   /* TODO: more accessible hover color */
 }
 
+@supports (font-variation-settings: normal) {
+  :root {
+    --amino-font-sans: "Inter var", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+      "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+}

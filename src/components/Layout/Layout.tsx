@@ -53,6 +53,7 @@ const Sidebar = styled.nav`
   grid-template-rows: var(${AminoTheme.appbarHeight}) 1fr var(
       ${AminoTheme.appbarHeight}
     );
+  background: var(${AminoTheme.sidebarColor});
 `;
 
 const Content = styled.div`

@@ -11,8 +11,7 @@ import { AminoTheme } from "../../styles/AminoTheme";
 export const Skeleton = styled.div<{ width?: number; height?: number }>`
   height: ${p => (p.height ? `${p.height}px` : `1em`)};
   width: ${p => `${p.width}px` || "100%"};
-  opacity: 0.3;
-  background: var(${AminoTheme.gray700});
+  background: var(${AminoTheme.gray200});
   border-radius: var(${AminoTheme.radius});
   position: relative;
 `;

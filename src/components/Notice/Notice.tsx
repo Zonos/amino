@@ -6,7 +6,7 @@ import { AminoTheme } from "../../styles/AminoTheme";
 
 const AminoNotice = styled.aside`
   border-radius: var(${AminoTheme.radius});
-  background: var(${AminoTheme.gray400});
+  background: var(${AminoTheme.gray100});
   color: var(${AminoTheme.textColor});
   padding: var(${AminoTheme.space});
 
