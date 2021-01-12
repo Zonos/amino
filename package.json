@@ -10,30 +10,37 @@
   "devDependencies": {
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
+    "@types/react-tooltip": "^4.2.4",
     "@types/react-transition-group": "^4.2.3",
-    "@types/styled-components": "^4x",
+    "@types/styled-components": "^5.1.7",
     "autoprefixer": "^9.7.2",
     "bili": "^4.8.1",
     "downshift": "^4.0.10",
+    "framer-motion": "^2.6.15",
     "node-sass": "^4.14.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.19.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-is": "^17.0.1",
     "react-spring": "^8.0.27",
-    "rollup-plugin-typescript2": "^0.25.2",
+    "react-tooltip": "^4.2.11",
+    "rollup": "^2.36.1",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "styled-components": "^5.2.1",
     "typescript": "^3.7.2"
   },
   "peerDependencies": {
     "@types/react": "^16.x",
     "@types/react-dom": "^16.x",
     "downshift": "^4.x",
+    "framer-motion": "^2.x",
     "react": "^16.x",
     "react-dom": "^16.x",
     "react-spring": "^8.x",
-    "react-transition-group": "^4.3.0",
-    "styled-components": "^4.4.1",
-    "framer-motion": "^2.6.15"
+    "react-tooltip": "^4.x",
+    "react-transition-group": "^4.x",
+    "styled-components": "^5.x"
   },
   "scripts": {
     "build": "bili && cp -r ./src/styles/*.css ./dist"
