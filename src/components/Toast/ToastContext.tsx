@@ -1,12 +1,18 @@
-import React, { useCallback, useEffect, useState, createContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  createContext,
+  ReactNode
+} from "react";
+import { AnimatePresence } from "framer-motion";
 
-import { Toast } from ".";
+import { Toast } from "./Toast";
 
-export const ToastContext = createContext((toast: any): void => {});
+export const ToastContext = createContext((toast: ReactNode): void => {});
 
 type Props = {
-  children: any;
+  children: ReactNode;
 };
 
 export const ToastContextProvider = ({ children }: Props) => {
