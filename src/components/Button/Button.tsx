@@ -1,13 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
+import ReactTooltip from "react-tooltip";
 
 import { AminoTheme } from "../../styles/AminoTheme";
 import { Spinner } from "../Spinner";
 import { AminoOnClickHandler } from "../..";
 
-// TODO: strong typing for Styled buttons
-
-const AminoButton = styled.button<any>`
+const AminoButton = styled.button`
   position: relative;
   outline: none;
   border: var(${AminoTheme.borderTransparent});
@@ -38,11 +37,11 @@ const AminoButton = styled.button<any>`
     cursor: not-allowed;
     pointer-events: none;
     box-shadow: none;
-    opacity: .5;
+    opacity: 0.5;
   }
 `;
 
-const Primary = styled(AminoButton)<any>`
+const Primary = styled(AminoButton)`
   background: var(${AminoTheme.primary});
   color: var(${AminoTheme.textLight});
 
@@ -51,7 +50,7 @@ const Primary = styled(AminoButton)<any>`
   }
 `;
 
-const Secondary = styled(AminoButton)<any>`
+const Secondary = styled(AminoButton)`
   background: white;
   color: var(${AminoTheme.textDark});
   border: var(${AminoTheme.border});
@@ -62,7 +61,7 @@ const Secondary = styled(AminoButton)<any>`
   }
 `;
 
-const Icon = styled(AminoButton)<any>`
+const Icon = styled(AminoButton)`
   background: white;
   color: var(${AminoTheme.textColor});
   border: var(${AminoTheme.border});
@@ -83,7 +82,7 @@ const Icon = styled(AminoButton)<any>`
   }
 `;
 
-const Danger = styled(AminoButton)<any>`
+const Danger = styled(AminoButton)`
   background: var(${AminoTheme.error});
   color: white;
 
@@ -98,15 +97,14 @@ const Danger = styled(AminoButton)<any>`
   }
 `;
 
-// TODO: use Intent enum like old amino, not strings
-
 type Props = {
-  intent?: string;
+  intent?: "primary" | "danger" | "icon" | "secondary";
   loading?: boolean;
   disabled?: boolean;
   onClick?: AminoOnClickHandler;
   className?: string;
   loadingText?: string;
+  tooltip?: ReactNode;
 };
 
 export const Button: React.FC<Props> = ({
@@ -116,17 +114,29 @@ export const Button: React.FC<Props> = ({
   loading,
   onClick,
   className,
-  loadingText
+  loadingText,
+  tooltip
 }) => {
-  const content = loading ? <><Spinner size={16} />{loadingText && loadingText}</> : children;
+  const content = loading ? (
+    <>
+      <Spinner size={16} />
+      {loadingText}
+    </>
+  ) : (
+    <>
+      {tooltip && <ReactTooltip />}
+      {children}
+    </>
+  );
 
   if (disabled || loading) {
     return <Secondary disabled>{content}</Secondary>;
   }
 
   const buttonProps = {
-    onClick: onClick || null,
-    className: className || null
+    onClick,
+    className,
+    "data-tip": tooltip
   };
 
   switch (intent) {
