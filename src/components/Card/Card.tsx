@@ -40,7 +40,7 @@ const CardFooter = styled.footer`
 `;
 
 type Props = {
-  label?: string;
+  label?: React.ReactNode;
   actions?: Array<React.ReactNode>;
   onSave?: AminoOnSaveHandler;
   className?: string;
@@ -94,7 +94,12 @@ export const Card: React.FC<Props> = ({
       {children}
       {onSave && (
         <CardFooter>
-          <Button loading={saving} intent="primary" loadingText="Saving" onClick={save}>
+          <Button
+            intent="primary"
+            loading={saving}
+            loadingText="Saving"
+            onClick={save}
+          >
             Save
           </Button>
         </CardFooter>
