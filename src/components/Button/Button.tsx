@@ -104,6 +104,7 @@ type Props = {
   onClick?: AminoOnClickHandler;
   className?: string;
   loadingText?: string;
+  tabIndex?: number;
   tooltip?: ReactNode;
 };
 
@@ -115,6 +116,7 @@ export const Button: React.FC<Props> = ({
   onClick,
   className,
   loadingText,
+  tabIndex,
   tooltip
 }) => {
   const content = loading ? (
@@ -136,7 +138,8 @@ export const Button: React.FC<Props> = ({
   const buttonProps = {
     onClick,
     className,
-    "data-tip": tooltip
+    "data-tip": tooltip,
+    tabIndex
   };
 
   switch (intent) {
