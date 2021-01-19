@@ -16,7 +16,7 @@ const Backdrop = styled.div`
   top: 0;
   background: var(${AminoTheme.gray900});
   opacity: .8;
-  z-index: 99998;
+  z-index: 999;
   position: fixed;
 `;
 
@@ -25,7 +25,7 @@ const DialogLayout = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  z-index: 99999;
+  z-index: 1000;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ const DialogLayout = styled.div`
 
 const Popup = styled.div`
   position: relative;
-  z-index: 100000;
+  z-index: 1001;
   background: var(${AminoTheme.surfaceColor});
   width: 550px;
   border-radius: var(${AminoTheme.radiusLg});

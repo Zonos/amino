@@ -102,6 +102,17 @@
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: white;
 
+  --amino-elevation-0: 0;
+  --amino-elevation-100: 100;
+  --amino-elevation-200: 200;
+  --amino-elevation-300: 300;
+  --amino-elevation-400: 400;
+  --amino-elevation-500: 500;
+
+  --amino-dialog-elevation: var(--amino-elevation-400);
+  --amino-toast-elevation: var(--amino-elevation-500);
+  --amino-appbar-elevation: var(--amino-elevation-500);
+
   --amino-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;

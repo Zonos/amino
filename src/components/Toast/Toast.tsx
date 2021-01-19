@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { AminoTheme } from "../../styles/AminoTheme";
 
 const AminoToast = styled(motion.div)`
-  background: var(${AminoTheme.gray900});
+  background: var(${AminoTheme.gray800});
   z-index: 999999;
   border-radius: var(${AminoTheme.radius});
   color: white;
@@ -31,3 +31,5 @@ export const Toast: React.FC<Props> = ({ children, toastKey }) => (
     {children}
   </AminoToast>
 );
+
+

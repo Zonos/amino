@@ -35,7 +35,7 @@ const Icon = styled.img`
 
 type Props = {
   label: string;
-  subtitle?: string;
+  subtitle?: ReactNode;
   icon?: string;
   rightDecorator?: ReactNode;
   iconComponent?: ReactNode;

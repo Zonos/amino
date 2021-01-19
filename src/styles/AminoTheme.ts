@@ -34,6 +34,7 @@ export enum AminoTheme {
   gray500 = '--amino-gray-500',
   gray600 = '--amino-gray-600',
   gray700 = "--amino-gray-700",
+  gray800 = "--amino-gray-800",
   gray900 = "--amino-gray-900",
 
   blue50 = '--amino-blue-50',
@@ -44,6 +45,7 @@ export enum AminoTheme {
   blue500 = '--amino-blue-500',
   blue600 = '--amino-blue-600',
   blue700 = "--amino-blue-700",
+  blue800 = '--amino-blue-800',
   blue900 = "--amino-blue-900",
   blueAlpha = "--amino-blue-alpha",
 
@@ -117,5 +119,16 @@ export enum AminoTheme {
   borderCyan = "--amino-border-cyan",
   borderOrange = "--amino-border-orange",
   borderGreen = "--amino-border-green",
-  borderTransparent = "--amino-border-transparent"
+  borderTransparent = "--amino-border-transparent",
+
+  elevation0 = '--amino-elevation-0',
+  elevation100 = '--amino-elevation-100',
+  elevation200 = '--amino-elevation-200',
+  elevation300 = '--amino-elevation-300',
+  elevation400 = '--amino-elevation-400',
+  elevation500 = '--amino-elevation-500',
+
+  dialogElevation = '--amino-dialog-elevation',
+  toastElevation = '--amino-toast-elevation',
+  appbarElevation = '--amino-appbar-elevation',
 }

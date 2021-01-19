@@ -17,19 +17,6 @@ const AminoLayout = styled.main`
   overflow: hidden;
 `;
 
-const Brand = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-
-  img,
-  svg {
-    width: 120px;
-    height: 100%;
-  }
-`;
-
 const Footer = styled.div`
   box-sizing: border-box;
 `;
@@ -44,15 +31,12 @@ const SidebarContent = styled.div`
 
 const Sidebar = styled.nav`
   border-right: var(${AminoTheme.border});
-  height: 100vh;
+  height: calc(100vh - var(${AminoTheme.appbarHeight}));
   width: var(${AminoTheme.sidebarWidth});
   box-sizing: border-box;
   background: white;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: var(${AminoTheme.appbarHeight}) 1fr var(
-      ${AminoTheme.appbarHeight}
-    );
+  grid-template-rows: 1fr var(${AminoTheme.appbarHeight});
   background: var(${AminoTheme.sidebarColor});
 `;
 
@@ -60,29 +44,41 @@ const Content = styled.div`
   overflow-y: auto;
   padding: var(${AminoTheme.space});
   box-sizing: border-box;
+  height: calc(100vh - var(${AminoTheme.appbarHeight}));
+  margin-bottom: var(${AminoTheme.space});
+`;
+
+const Header = styled.header`
+  background: white;
+  box-shadow: var(${AminoTheme.shadowSmall});
+  border-bottom: var(${AminoTheme.border});
+  height: var(${AminoTheme.appbarHeight});
+  z-index: var(${AminoTheme.appbarElevation});
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
 `;
 
 type Props = {
-  footer: any;
-  sidebar: any;
-  brand: any;
-  content: any;
+  footer: React.ReactNode;
+  sidebar: React.ReactNode;
+  content: React.ReactNode;
+  headerContent: React.ReactNode;
 };
 
 export const Layout: React.FC<Props> = ({
   content,
   footer,
   sidebar,
-  brand
+  headerContent
 }) => {
   return (
     <AminoLayout>
+      <Header>
+        {headerContent}
+      </Header>
       <ContentGrid>
         <Sidebar>
-          <Brand>
-            <SidebarContent>{brand}</SidebarContent>
-          </Brand>
-
           <SidebarContent>{sidebar}</SidebarContent>
 
           <Footer>{footer}</Footer>
