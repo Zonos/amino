@@ -54,6 +54,7 @@ const DropdownContainer = styled.div`
 `;
 
 type Props = {
+  autoFocus?: boolean;
   items: Array<any>;
   label: string;
   helpText?: string;
@@ -67,6 +68,7 @@ type Props = {
 };
 
 export const Select: React.FC<Props> = ({
+  autoFocus,
   items,
   label,
   onChange,
@@ -95,6 +97,7 @@ export const Select: React.FC<Props> = ({
       <Text style={TextStyle.InputLabel}>{label}</Text>
 
       <StyledSelect
+        autoFocus={autoFocus}
         value={value}
         onChange={e => onChange(e.target.value)}
         tabIndex={tabIndex && tabIndex}
