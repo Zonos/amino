@@ -41,7 +41,7 @@ const SelectWrapper = styled.div`
   svg {
     position: absolute;
     right: var(${AminoTheme.spaceHalf});
-    top: 10px;
+    top: 11px;
     pointer-events: none;
     color: var(${AminoTheme.textColor});
     width: 16px;
