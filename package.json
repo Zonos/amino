@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "2.45.0",
+  "version": "2.47.0",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "repository": "git@github.com:amino-ui/core.git",
