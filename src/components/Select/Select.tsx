@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 import { AminoTheme } from "../../styles/AminoTheme";
