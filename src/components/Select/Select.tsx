@@ -36,16 +36,12 @@ const DropdownContainer = styled.div`
 `;
 
 const SelectWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
-const AbsoluteIconWrapper = styled.div`
-  position: absolute;
+  position: relative;
 
   svg {
-    margin-right: 12px;
+    position: absolute;
+    right: var(${AminoTheme.spaceHalf});
+    top: 10px;
     pointer-events: none;
     color: var(${AminoTheme.textColor});
     width: 16px;
@@ -126,9 +122,7 @@ export const Select = forwardRef<HTMLSelectElement, Props>(
               </option>
             ))}
           </StyledSelect>
-          <AbsoluteIconWrapper>
-            <DropdownIcon />
-          </AbsoluteIconWrapper>
+          <DropdownIcon />
         </SelectWrapper>
 
         {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
