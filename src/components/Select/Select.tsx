@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import styled from "styled-components";
 
 import { AminoTheme } from "../../styles/AminoTheme";
@@ -29,12 +29,19 @@ const StyledSelect = styled.select`
 `;
 
 const DropdownContainer = styled.div`
+  span {
+    margin-top: var(${AminoTheme.spaceQuarter});
+    display: block;
+  }
+`;
+
+const SelectWrapper = styled.div`
   position: relative;
 
   svg {
     position: absolute;
     right: var(${AminoTheme.spaceHalf});
-    top: 41px;
+    top: 10px;
     pointer-events: none;
     color: var(${AminoTheme.textColor});
     width: 16px;
@@ -46,17 +53,12 @@ const DropdownContainer = styled.div`
   &:hover svg {
     opacity: 0.6;
   }
-
-  span {
-    margin-top: var(${AminoTheme.spaceQuarter});
-    display: block;
-  }
 `;
 
 type Props = {
   autoFocus?: boolean;
   items: Array<any>;
-  label: string;
+  label: string | null;
   helpText?: string;
   onChange: (newValue: string) => any;
   value: string;
@@ -98,27 +100,30 @@ export const Select = forwardRef<HTMLSelectElement, Props>(
 
     return (
       <DropdownContainer className="amino-input-wrapper">
-        <Text style={TextStyle.InputLabel}>{label}</Text>
+        {typeof label === "string" && (
+          <Text style={TextStyle.InputLabel}>{label}</Text>
+        )}
 
-        <StyledSelect
-          autoFocus={autoFocus}
-          value={value}
-          onChange={e => onChange(e.target.value)}
-          ref={ref}
-          tabIndex={tabIndex && tabIndex}
-        >
-          <option value="">{placeholder}</option>
-          {items.map((item: any, index: number) => (
-            <option
-              key={`${getItemLabel(index)}-${index}`}
-              value={itemValuePath ? item[itemValuePath] : item.value}
-            >
-              {getItemLabel(index)}
-            </option>
-          ))}
-        </StyledSelect>
-
-        <DropdownIcon />
+        <SelectWrapper>
+          <StyledSelect
+            autoFocus={autoFocus}
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            ref={ref}
+            tabIndex={tabIndex && tabIndex}
+          >
+            <option value="">{placeholder}</option>
+            {items.map((item: any, index: number) => (
+              <option
+                key={`${getItemLabel(index)}-${index}`}
+                value={itemValuePath ? item[itemValuePath] : item.value}
+              >
+                {getItemLabel(index)}
+              </option>
+            ))}
+          </StyledSelect>
+          <DropdownIcon />
+        </SelectWrapper>
 
         {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
       </DropdownContainer>
