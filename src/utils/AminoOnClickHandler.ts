@@ -1,2 +1,3 @@
-// TODO: better typing
-export type AminoOnClickHandler = () => void;
+export type AminoOnClickHandler = (
+  event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+) => void;
