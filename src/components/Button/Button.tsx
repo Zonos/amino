@@ -4,7 +4,6 @@ import ReactTooltip from "react-tooltip";
 
 import { AminoTheme } from "../../styles/AminoTheme";
 import { Spinner } from "../Spinner";
-import { AminoOnClickHandler } from "../..";
 
 const AminoButton = styled.button`
   position: relative;
@@ -101,7 +100,7 @@ type Props = {
   intent?: "primary" | "danger" | "icon" | "secondary";
   loading?: boolean;
   disabled?: boolean;
-  onClick?: AminoOnClickHandler;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   className?: string;
   loadingText?: string;
   tabIndex?: number;

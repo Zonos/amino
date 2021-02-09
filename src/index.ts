@@ -23,7 +23,6 @@ export { Skeleton } from "./components/Skeleton";
 export { Depth, Surface } from "./primitives";
 
 export { AminoOnSaveHandler } from "./utils/AminoOnSaveHandler";
-export { AminoOnClickHandler } from "./utils/AminoOnClickHandler";
 
 export { useInputValue } from "./hooks/useInputValue";
 export { useCheckboxValue } from "./hooks/useCheckboxValue";
