@@ -68,7 +68,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
     return (
       <AminoListItem
         className={disabled ? "disabled" : ""}
-        onClick={() => !disabled && onClick}
+        onClick={() => !disabled && onClick()}
         ref={ref}
       >
         {renderIcon()}
