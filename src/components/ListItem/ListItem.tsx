@@ -48,7 +48,7 @@ type Props = {
   icon?: string;
   rightDecorator?: ReactNode;
   iconComponent?: ReactNode;
-  onClick?: any;
+  onClick?: () => void;
 };
 
 export const ListItem = forwardRef<HTMLDivElement, Props>(
@@ -68,7 +68,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
     return (
       <AminoListItem
         className={disabled ? "disabled" : ""}
-        onClick={() => !disabled && onClick()}
+        onClick={() => !disabled && onClick && onClick()}
         ref={ref}
       >
         {renderIcon()}
