@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import styled from "styled-components";
 
 import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 
-const AminoListItem = styled.div<any>`
+const AminoListItem = styled.div<{ onClick?: () => void }>`
   padding: var(${AminoTheme.spaceHalf}) var(${AminoTheme.space});
   display: flex;
   flex-direction: row;
@@ -24,6 +24,14 @@ const AminoListItem = styled.div<any>`
     background: ${p => (p.onClick ? `var(${AminoTheme.hoverColor})` : "")};
     cursor: ${p => (p.onClick ? "pointer" : "")};
   }
+
+  &.disabled {
+    opacity: 0.5;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 `;
 
 const Icon = styled.img`
@@ -34,6 +42,7 @@ const Icon = styled.img`
 `;
 
 type Props = {
+  disabled?: boolean;
   label: string;
   subtitle?: ReactNode;
   icon?: string;
@@ -42,23 +51,33 @@ type Props = {
   onClick?: any;
 };
 
-export const ListItem: React.FC<Props> = ({
-  label,
-  subtitle,
-  icon,
-  iconComponent,
-  rightDecorator,
-  onClick
-}) => {
-  return (
-    <AminoListItem onClick={onClick && onClick}>
-      {icon && <Icon src={icon} alt={label} />}
-      {iconComponent && !icon && iconComponent}
-      <div>
-        <Text style={TextStyle.h5}>{label}</Text>
-        {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
-      </div>
-      {rightDecorator && rightDecorator}
-    </AminoListItem>
-  );
-};
+export const ListItem = forwardRef<HTMLDivElement, Props>(
+  (
+    { disabled, label, subtitle, icon, iconComponent, rightDecorator, onClick },
+    ref
+  ) => {
+    const renderIcon = () => {
+      if (icon) {
+        return <Icon src={icon} alt={label} />;
+      }
+      if (iconComponent) {
+        return iconComponent;
+      }
+      return null;
+    };
+    return (
+      <AminoListItem
+        className={disabled ? "disabled" : ""}
+        onClick={() => !disabled && onClick}
+        ref={ref}
+      >
+        {renderIcon()}
+        <div>
+          <Text style={TextStyle.h5}>{label}</Text>
+          {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
+        </div>
+        {rightDecorator}
+      </AminoListItem>
+    );
+  }
+);
