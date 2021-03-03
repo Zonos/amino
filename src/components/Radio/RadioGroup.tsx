@@ -22,7 +22,7 @@ type Props<T> = {
   onChange?: (newValue: string | T[keyof T]) => void;
 };
 
-export const RadioGroup = <T extends { label: string; value: string }>({
+export const RadioGroup = <T extends { label?: string; value?: string }>({
   items,
   onChange,
   itemValuePath,
@@ -38,7 +38,9 @@ export const RadioGroup = <T extends { label: string; value: string }>({
       const value = itemValuePath
         ? activeItem[itemValuePath]
         : activeItem.value;
-      onChange(value);
+      if (typeof value === "string") {
+        onChange(value);
+      }
     }
   }, [active]);
 
