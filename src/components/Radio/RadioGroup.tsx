@@ -14,22 +14,30 @@ const RadioContainer = styled.div`
   }
 `;
 
-type Props = {
-  items: Array<any>;
-  onChange?: any;
-  itemValuePath?: string;
-  itemLabelPath?: string;
+type Props<T> = {
   initialValue?: string;
+  itemLabelPath?: keyof T;
+  itemValuePath?: keyof T;
+  items: T[];
+  onChange?: (newValue: string | T[keyof T]) => void;
 };
 
-export const RadioGroup: React.FC<Props> = props => {
-  const { items, onChange, itemValuePath, itemLabelPath, initialValue } = props;
-
+export const RadioGroup = <T extends { label: string; value: string }>({
+  items,
+  onChange,
+  itemValuePath,
+  itemLabelPath,
+  initialValue
+}: Props<T>) => {
   const [active, setActive] = useState(-1);
 
+  const activeItem = items.find((x, i) => i === active);
+
   useEffect(() => {
-    if (onChange && items[active] && items[active] !== initialValue) {
-      const value = itemValuePath ? items[active][itemValuePath] : items[active].value;
+    if (onChange && activeItem && activeItem?.value !== initialValue) {
+      const value = itemValuePath
+        ? activeItem[itemValuePath]
+        : activeItem.value;
       onChange(value);
     }
   }, [active]);
@@ -45,15 +53,16 @@ export const RadioGroup: React.FC<Props> = props => {
     }
   }, [initialValue]);
 
-  const checked = (index: number) => {
-    return index === active;
-  };
-
-  const radios = items.map((el: any, index: number) => {
+  const radios = items.map((el, index) => {
     const label = itemLabelPath ? el[itemLabelPath] : el.label;
 
     return (
-      <Radio checked={checked(index)} onChange={() => setActive(index)} key={index} label={label} />
+      <Radio
+        checked={index === active}
+        onChange={() => setActive(index)}
+        key={index}
+        label={label as string}
+      />
     );
   });
 
