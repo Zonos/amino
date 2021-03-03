@@ -19,7 +19,7 @@ type Props<T> = {
   itemLabelPath?: keyof T;
   itemValuePath?: keyof T;
   items: T[];
-  onChange?: (newValue: string | T[keyof T]) => void;
+  onChange?: (newValue: string) => void;
 };
 
 export const RadioGroup = <T extends { label?: string; value?: string }>({
