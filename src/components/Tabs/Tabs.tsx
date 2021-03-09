@@ -7,7 +7,7 @@ const AminoTabs = styled.div`
   display: flex;
   align-items: center;
   border: var(${AminoTheme.border});
-  background: white;
+  background: var(--amino-surface-color);
   border-radius: var(${AminoTheme.radiusLg});
 `;
 
