@@ -101,6 +101,7 @@
   --amino-appbar-height: 64px;
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: white;
+  --amino-backdrop-color: var(--amino-gray-900);
 
   --amino-elevation-0: 0;
   --amino-elevation-100: 100;
@@ -151,4 +152,28 @@
       "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
       "Droid Sans", "Helvetica Neue", sans-serif;
   }
+}
+
+[data-theme="dark"] {
+  --amino-gray-50: #171e2e;
+  --amino-gray-100: #252f3f;
+  --amino-gray-200: #374151;
+  --amino-gray-300: #4b5563;
+  --amino-gray-400: #6b7280;
+  --amino-gray-500: #9fa6b2;
+  --amino-gray-600: #d2d6dc;
+  --amino-gray-700: #e5e7eb;
+  --amino-gray-800: #f4f5f7;
+  --amino-gray-900: #f9fafb;
+
+  --amino-backdrop-color: var(--amino-gray-200);
+
+  --amino-surface-color: var(--amino-gray-100);
+  --amino-surface-color-secondary: var(--amino-gray-50);
+  --amino-border-color: var(--amino-gray-200);
+  --amino-text-color: white;
+  --amino-input-background: var(--amino-gray-300);
+  --amino-hover-color: var(--amino-gray-400);
+
+  --amino-border: 1px solid var(--amino-border-color);
 }

@@ -14,8 +14,8 @@ const Backdrop = styled.div`
   height: 100vh;
   left: 0;
   top: 0;
-  background: var(${AminoTheme.gray900});
-  opacity: .8;
+  background: var(--amino-backdrop-color);
+  opacity: 0.8;
   z-index: 999;
   position: fixed;
 `;
@@ -30,12 +30,13 @@ const DialogLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--amino-text-color);
 `;
 
 const Popup = styled.div`
   position: relative;
   z-index: 1001;
-  background: var(${AminoTheme.surfaceColor});
+  background: var(--amino-surface-color);
   width: 550px;
   border-radius: var(${AminoTheme.radiusLg});
   outline: none;
@@ -76,13 +77,22 @@ const Content = styled.div`
   overscroll-behavior: contain;
 `;
 
+type IAminoTheme = "dark" | "light";
+
 type Props = {
   open: boolean;
   label?: string;
   actions?: Array<React.ReactNode>;
+  theme?: IAminoTheme;
 };
 
-export const Dialog: React.FC<Props> = ({ open, label, actions, children }) => {
+export const Dialog: React.FC<Props> = ({
+  theme,
+  open,
+  label,
+  actions,
+  children
+}) => {
   const toggleScroll = () => document.body.classList.toggle("no-scroll");
 
   return ReactDOM.createPortal(
@@ -95,7 +105,7 @@ export const Dialog: React.FC<Props> = ({ open, label, actions, children }) => {
         onEnter={toggleScroll}
         onExit={toggleScroll}
       >
-        <Backdrop />
+        <Backdrop data-theme={theme} />
       </CSSTransition>
       <CSSTransition
         unmountOnExit
@@ -103,7 +113,7 @@ export const Dialog: React.FC<Props> = ({ open, label, actions, children }) => {
         timeout={300}
         classNames="amino-dialog"
       >
-        <DialogLayout>
+        <DialogLayout data-theme={theme}>
           <Popup>
             <Header>
               <Text style={TextStyle.h4}>{label}</Text>
@@ -120,6 +130,6 @@ export const Dialog: React.FC<Props> = ({ open, label, actions, children }) => {
         </DialogLayout>
       </CSSTransition>
     </>,
-    document.querySelector('body')!
+    document.querySelector("body")!
   );
 };

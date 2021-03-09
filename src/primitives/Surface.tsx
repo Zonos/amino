@@ -7,6 +7,7 @@ import { Depth } from "./Depth";
 const SurfaceBase = styled.div<any>`
   background: var(${AminoTheme.surfaceColor});
   padding: var(${AminoTheme.space});
+  color: var(--amino-text-color);
   border-radius: ${p =>
     p.dense ? `var(${AminoTheme.radius})` : `var(${AminoTheme.radiusLg})`};
 `;
