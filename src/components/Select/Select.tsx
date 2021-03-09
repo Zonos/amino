@@ -48,6 +48,7 @@ const SelectWrapper = styled.div`
     height: 16px;
     opacity: 0.3;
     transition: opacity 100ms ease-in-out;
+    color: var(--amino-text-color);
   }
 
   &:hover svg {
