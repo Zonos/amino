@@ -38,3 +38,4 @@ export { VStack } from "./components/Stack";
 export { HStack } from "./components/Stack";
 
 export { AminoTheme } from "./styles/AminoTheme";
+export { DarkModeWrapper } from "./components/DarkModeWrapper";

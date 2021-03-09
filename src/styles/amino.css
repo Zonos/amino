@@ -32,6 +32,7 @@ h4,
 h5,
 h6 {
   font-family: var(--amino-font-sans);
+  color: var(--amino-text-color);
 }
 
 h1 {

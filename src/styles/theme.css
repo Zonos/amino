@@ -1,7 +1,7 @@
 :root {
   --amino-transition: all 0.2s ease-in-out 0s;
 
-  --amino-type-scale-base: 13px;
+  --amino-type-scale-base: 14px;
 
   --amino-text-xxxxl: 3.815em;
   --amino-text-xxxl: 3.052em;
@@ -26,16 +26,16 @@
   --amino-radius: 0.375em;
   --amino-radius-lg: 0.5em;
 
-  --amino-gray-50: #f9fafb;
-  --amino-gray-100: #f4f5f7;
-  --amino-gray-200: #e5e7eb;
-  --amino-gray-300: #d2d6dc;
-  --amino-gray-400: #9fa6b2;
-  --amino-gray-500: #6b7280;
-  --amino-gray-600: #4b5563;
-  --amino-gray-700: #374151;
-  --amino-gray-800: #252f3f;
-  --amino-gray-900: #171e2e;
+  --amino-gray-50: #fafbfc;
+  --amino-gray-100: #f6f8fa;
+  --amino-gray-200: #e1e4e8;
+  --amino-gray-300: #d1d5da;
+  --amino-gray-400: #959da5;
+  --amino-gray-500: #6a737d;
+  --amino-gray-600: #586069;
+  --amino-gray-700: #444d56;
+  --amino-gray-800: #2f363d;
+  --amino-gray-900: #24292e;
 
   --amino-blue-alpha: #2190ff80;
   --amino-blue-50: #ebf5ff;
@@ -101,6 +101,7 @@
   --amino-appbar-height: 64px;
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: white;
+  --amino-backdrop-color: var(--amino-gray-900);
 
   --amino-elevation-0: 0;
   --amino-elevation-100: 100;
@@ -151,4 +152,28 @@
       "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
       "Droid Sans", "Helvetica Neue", sans-serif;
   }
+}
+
+[data-theme="dark"] {
+  --amino-gray-50: #0d1117;
+  --amino-gray-100: #161b22;
+  --amino-gray-200: #21262d;
+  --amino-gray-300: #30363d;
+  --amino-gray-400: #484f58;
+  --amino-gray-500: #6e7681;
+  --amino-gray-600: #8b949e;
+  --amino-gray-700: #b1bac4;
+  --amino-gray-800: #c9d1d9;
+  --amino-gray-900: #f0f6fc;
+
+  --amino-backdrop-color: var(--amino-gray-200);
+  --amino-page-background: var(--amino-gray-50);
+  --amino-surface-color: var(--amino-gray-100);
+  --amino-surface-color-secondary: var(--amino-gray-50);
+  --amino-border-color: var(--amino-gray-200);
+  --amino-text-color: white;
+  --amino-input-background: var(--amino-gray-300);
+  --amino-hover-color: var(--amino-gray-400);
+  --amino-sidebar-color: vaR(--amino-gray-100);
+  --amino-border: 1px solid var(--amino-border-color);
 }

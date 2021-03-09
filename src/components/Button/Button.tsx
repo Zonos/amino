@@ -50,8 +50,7 @@ const Primary = styled(AminoButton)`
 `;
 
 const Secondary = styled(AminoButton)`
-  background: white;
-  color: var(${AminoTheme.textDark});
+  color: var(--amino-text-color);
   border: var(${AminoTheme.border});
   background: var(${AminoTheme.inputBackground});
 
@@ -61,7 +60,7 @@ const Secondary = styled(AminoButton)`
 `;
 
 const Icon = styled(AminoButton)`
-  background: white;
+  background: var(${AminoTheme.inputBackground});
   color: var(${AminoTheme.textColor});
   border: var(${AminoTheme.border});
   padding: 0 var(${AminoTheme.spaceHalf});
