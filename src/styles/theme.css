@@ -1,7 +1,7 @@
 :root {
   --amino-transition: all 0.2s ease-in-out 0s;
 
-  --amino-type-scale-base: 13px;
+  --amino-type-scale-base: 14px;
 
   --amino-text-xxxxl: 3.815em;
   --amino-text-xxxl: 3.052em;
@@ -167,13 +167,13 @@
   --amino-gray-900: #fafbfc;
 
   --amino-backdrop-color: var(--amino-gray-200);
-
+  --amino-page-background: var(--amino-gray-50);
   --amino-surface-color: var(--amino-gray-100);
   --amino-surface-color-secondary: var(--amino-gray-50);
   --amino-border-color: var(--amino-gray-200);
   --amino-text-color: white;
   --amino-input-background: var(--amino-gray-300);
   --amino-hover-color: var(--amino-gray-400);
-  --amino-sidebar-color: vaR(--amino-gray-50);
+  --amino-sidebar-color: vaR(--amino-gray-100);
   --amino-border: 1px solid var(--amino-border-color);
 }
