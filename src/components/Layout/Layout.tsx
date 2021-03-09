@@ -49,7 +49,7 @@ const Content = styled.div`
 `;
 
 const Header = styled.header`
-  background: white;
+  background: var(--amino-sidebar-color);
   box-shadow: var(${AminoTheme.shadowSmall});
   border-bottom: var(${AminoTheme.border});
   height: var(${AminoTheme.appbarHeight});
@@ -74,9 +74,7 @@ export const Layout: React.FC<Props> = ({
 }) => {
   return (
     <AminoLayout>
-      <Header>
-        {headerContent}
-      </Header>
+      <Header>{headerContent}</Header>
       <ContentGrid>
         <Sidebar>
           <SidebarContent>{sidebar}</SidebarContent>
