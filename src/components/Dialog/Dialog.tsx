@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
-import { HStack } from "../stack";
+import { HStack } from "../Stack";
 import { Text, TextStyle } from "../Text";
 
 // TODO: scrollable dialog, max height, etc.
