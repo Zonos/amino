@@ -109,7 +109,7 @@ type Props = {
   value: any;
 
   /** Input on changed. Required since all inputs must be fully controlled */
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void | null;
 
   /** A short string displayed at the beginning of the input */
   prefix?: string;
