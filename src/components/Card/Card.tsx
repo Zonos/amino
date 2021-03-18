@@ -60,7 +60,7 @@ export const Card: React.FC<Props> = ({
       {children}
       {footerActions && (
         <CardFooter>
-          <HStack>{footerActions}</HStack>
+          <HStack spacing="space-quarter">{footerActions}</HStack>
         </CardFooter>
       )}
     </Surface>
