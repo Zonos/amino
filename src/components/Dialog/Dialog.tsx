@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
+import { HStack } from "../stack";
 import { Text, TextStyle } from "../Text";
 
 // TODO: scrollable dialog, max height, etc.
@@ -118,7 +119,11 @@ export const Dialog: React.FC<Props> = ({
               <Text style={TextStyle.h4}>{label}</Text>
             </Header>
             <Content>{children}</Content>
-            {actions && <Footer>{actions}</Footer>}
+            {actions && (
+              <Footer>
+                <HStack spacing="space-quarter">{actions}</HStack>
+              </Footer>
+            )}
           </Popup>
         </DialogLayout>
       </CSSTransition>
