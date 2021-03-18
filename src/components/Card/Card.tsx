@@ -54,7 +54,7 @@ export const Card: React.FC<Props> = ({
         <CardHeader>
           <Text style={TextStyle.h4}>{label}</Text>
 
-          {actions && <HStack>{actions}</HStack>}
+          {actions && <HStack spacing="space-quarter">{actions}</HStack>}
         </CardHeader>
       )}
       {children}
