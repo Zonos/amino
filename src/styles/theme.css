@@ -100,7 +100,8 @@
   --amino-input-background: white;
   --amino-appbar-height: 64px;
   --amino-sidebar-width: 219px;
-  --amino-sidebar-color: white;
+  --amino-sidebar-color: var(--amino-page-background);
+  --amino-header-color: white;
   --amino-backdrop-color: var(--amino-gray-900);
 
   --amino-elevation-0: 0;
@@ -174,6 +175,6 @@
   --amino-text-color: white;
   --amino-input-background: var(--amino-gray-300);
   --amino-hover-color: var(--amino-gray-400);
-  --amino-sidebar-color: vaR(--amino-gray-100);
+  --amino-header-color: white;
   --amino-border: 1px solid var(--amino-border-color);
 }

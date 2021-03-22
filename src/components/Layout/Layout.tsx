@@ -49,7 +49,7 @@ const Content = styled.div`
 `;
 
 const Header = styled.header`
-  background: var(--amino-sidebar-color);
+  background: var(--amino-header-color);
   box-shadow: var(${AminoTheme.shadowSmall});
   border-bottom: var(${AminoTheme.border});
   height: var(${AminoTheme.appbarHeight});
