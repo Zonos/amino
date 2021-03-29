@@ -34,20 +34,21 @@ const CardFooter = styled.footer`
   border-bottom-right-radius: var(--amino-radius-lg);
 `;
 
-type Props = {
+export type CardProps = {
   actions?: React.ReactNode;
   className?: string;
   label?: React.ReactNode;
   footerActions?: React.ReactNode;
+  children: React.ReactNode;
 };
 
-export const Card: React.FC<Props> = ({
+export const Card = ({
   actions,
   children,
   className,
   footerActions,
   label
-}) => {
+}: CardProps) => {
   return (
     <Surface depth={Depth.depth4} className={className || ""}>
       {label && (
