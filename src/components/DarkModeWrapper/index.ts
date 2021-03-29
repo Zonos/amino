@@ -1,1 +1,1 @@
-export { DarkModeWrapper } from "./DarkModeWrapper";
+export { DarkModeWrapper, DarkModeWrapperProps } from "./DarkModeWrapper";

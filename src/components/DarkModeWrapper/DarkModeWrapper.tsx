@@ -1,9 +1,9 @@
 import React from "react";
 
-type Props = {
+export type DarkModeWrapperProps = {
   children: React.ReactNode;
 };
 
-export const DarkModeWrapper = ({ children }: Props) => (
+export const DarkModeWrapper = ({ children }: DarkModeWrapperProps) => (
   <div data-theme="dark">{children}</div>
 );
