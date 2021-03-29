@@ -1,1 +1,1 @@
-export { Dialog } from './Dialog';
+export { Dialog, DialogProps } from "./Dialog";

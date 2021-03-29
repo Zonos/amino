@@ -79,20 +79,21 @@ const Content = styled.div`
 
 type IAminoTheme = "dark" | "light";
 
-type Props = {
+export type DialogProps = {
   open: boolean;
   label?: string;
   actions?: React.ReactNode;
   theme?: IAminoTheme;
+  children: React.ReactNode;
 };
 
-export const Dialog: React.FC<Props> = ({
+export const Dialog = ({
   theme,
   open,
   label,
   actions,
   children
-}) => {
+}: DialogProps) => {
   const toggleScroll = () => document.body.classList.toggle("no-scroll");
 
   return ReactDOM.createPortal(

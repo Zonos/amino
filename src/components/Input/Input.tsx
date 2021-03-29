@@ -92,7 +92,7 @@ const AminoInputWrapper = styled.div<any>`
   }
 `;
 
-type Props = {
+export type InputProps = {
   /** A label that will be displayed above the input */
   label?: string;
 
@@ -139,7 +139,7 @@ type Props = {
   onKeyDown?: any;
 };
 
-export const Input: React.FC<Props> = ({
+export const Input = ({
   label,
   width,
   placeholder,
@@ -160,7 +160,7 @@ export const Input: React.FC<Props> = ({
   pattern,
   autoFocus,
   onKeyDown
-}) => {
+}: InputProps) => {
   return (
     <AminoInputWrapper
       width={width}
