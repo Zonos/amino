@@ -1,2 +1,2 @@
 export { Button, ButtonProps } from "./Button";
-export { MenuButton } from "./MenuButton";
+export { MenuButton, MenuButtonProps } from "./MenuButton";

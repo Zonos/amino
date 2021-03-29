@@ -41,11 +41,12 @@ const Trigger = styled(Button)`
   }
 `;
 
-type Props = {
+type MenuButtonProps = {
   label: string;
+  children: React.ReactNode;
 };
 
-export const MenuButton: React.FC<Props> = ({ label, children }) => {
+export const MenuButton = ({ label, children }: MenuButtonProps) => {
   const [open, setOpen] = useState(false);
   const node = useRef<any>(null);
 
