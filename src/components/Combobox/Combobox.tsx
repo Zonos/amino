@@ -89,9 +89,13 @@ const AnimatedSurface = styled(Surface)`
 
 const DropdownItem = styled(MenuItem)<any>`
   background: ${p =>
-    p.isSelected ? `var(${AminoTheme.hoverColor})` : `var(${AminoTheme.surfaceColor})`};
+    p.isSelected
+      ? `var(${AminoTheme.hoverColor})`
+      : `var(${AminoTheme.surfaceColor})`};
   color: ${p =>
-    p.isSelected ? `var(${AminoTheme.primary})` : `var(${AminoTheme.textColor})`};
+    p.isSelected
+      ? `var(${AminoTheme.primary})`
+      : `var(${AminoTheme.textColor})`};
   font-weight: ${p => (p.isSelected ? "500" : "normal")};
   display: flex;
   flex-direction: row;
@@ -116,7 +120,7 @@ const Icon = styled.img`
   margin-right: var(${AminoTheme.spaceHalf});
 `;
 
-type Props = {
+export type ComboboxProps = {
   items: Array<any>;
   label: string;
   helpText?: string;
@@ -131,7 +135,7 @@ type Props = {
 
 // TODO: use onSelectedItemChange ?
 
-export const Combobox: React.FC<Props> = ({
+export const Combobox = ({
   items,
   label,
   onChange,
@@ -142,7 +146,7 @@ export const Combobox: React.FC<Props> = ({
   itemValuePath,
   labelFormatFunction,
   tabIndex
-}) => {
+}: ComboboxProps) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
   useEffect(() => {
