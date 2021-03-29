@@ -74,7 +74,7 @@ const CheckboxContainer = styled.div<any>`
   }
 `;
 
-type Props = {
+export type CheckboxProps = {
   checked: boolean;
   onChange: (newValue: boolean) => any;
   label?: string;
@@ -83,14 +83,14 @@ type Props = {
   labelComponent?: any;
 };
 
-export const Checkbox: React.FC<Props> = ({
+export const Checkbox = ({
   checked,
   onChange,
   label,
   subtitle,
   disabled,
   labelComponent
-}) => (
+}: CheckboxProps) => (
   <CheckboxContainer
     className="amino-input-wrapper"
     disabled={disabled}
