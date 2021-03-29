@@ -1,2 +1,2 @@
-export { Button } from './Button';
-export { MenuButton } from './MenuButton';
+export { Button, ButtonProps } from "./Button";
+export { MenuButton } from "./MenuButton";
