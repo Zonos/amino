@@ -9,7 +9,7 @@ const Rotate = keyframes`
   }
 `;
 
-const AminoSpinner = styled.div<Props>`
+const AminoSpinner = styled.div<SpinnerProps>`
   display: inline-block;
   border: ${p => p.size! / 8}px solid rgba(0, 0, 0, 0.1);
   border-left-color: var(${AminoTheme.gray900});
@@ -19,11 +19,11 @@ const AminoSpinner = styled.div<Props>`
   height: ${p => p.size}px;
 `;
 
-type Props = {
+export type SpinnerProps = {
   size?: number;
 };
 
-export const Spinner: React.FC<Props> = ({ size }) => {
+export const Spinner = ({ size }: SpinnerProps) => {
   return <AminoSpinner size={size} />;
 };
 
