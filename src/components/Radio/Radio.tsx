@@ -54,28 +54,24 @@ const RadioContainer = styled.div`
   }
 `;
 
-type Props = {
+export type RadioProps = {
   checked?: boolean;
   onChange?: any;
   label?: string;
 };
 
-export const Radio: React.FC<Props> = props => {
-  const { label, checked, onChange } = props;
-
-  return (
-    <RadioContainer onClick={() => onChange(!checked)}>
-      {!checked && <StyledRadio onClick={() => onChange(!checked)} />}
-      {checked && (
-        // TODO: animate in
-        <SelectedRadio onClick={() => onChange(!checked)}>
-          <CircleIcon />
-        </SelectedRadio>
-      )}
-      {label && <label>{label}</label>}
-    </RadioContainer>
-  );
-};
+export const Radio = ({ label, checked, onChange }: RadioProps) => (
+  <RadioContainer onClick={() => onChange(!checked)}>
+    {!checked && <StyledRadio onClick={() => onChange(!checked)} />}
+    {checked && (
+      // TODO: animate in
+      <SelectedRadio onClick={() => onChange(!checked)}>
+        <CircleIcon />
+      </SelectedRadio>
+    )}
+    {label && <label>{label}</label>}
+  </RadioContainer>
+);
 
 Radio.defaultProps = {
   checked: false

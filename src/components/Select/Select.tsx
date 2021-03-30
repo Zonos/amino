@@ -56,7 +56,7 @@ const SelectWrapper = styled.div`
   }
 `;
 
-type Props = {
+export type SelectProps = {
   autoFocus?: boolean;
   items: Array<any>;
   label: string | null;
@@ -70,7 +70,7 @@ type Props = {
   tabIndex?: number;
 };
 
-export const Select = forwardRef<HTMLSelectElement, Props>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       autoFocus,

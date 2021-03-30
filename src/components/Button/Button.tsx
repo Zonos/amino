@@ -95,7 +95,7 @@ const Danger = styled(AminoButton)`
   }
 `;
 
-type Props = {
+export type ButtonProps = {
   intent?: "primary" | "danger" | "icon" | "secondary";
   loading?: boolean;
   disabled?: boolean;
@@ -104,19 +104,20 @@ type Props = {
   loadingText?: string;
   tabIndex?: number;
   tooltip?: ReactNode;
+  children: ReactNode;
 };
 
-export const Button: React.FC<Props> = ({
+export const Button = ({
   disabled,
-  children,
   intent,
   loading,
   onClick,
   className,
   loadingText,
   tabIndex,
-  tooltip
-}) => {
+  tooltip,
+  children
+}: ButtonProps) => {
   const content = loading ? (
     <>
       <Spinner size={16} />
