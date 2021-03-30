@@ -45,13 +45,13 @@ const Tab = styled.div`
   }
 `;
 
-type Props = {
+export type TabsProps = {
   selected: number;
   onChange: (selectedTab: number) => void;
   items: string[];
 };
 
-export const Tabs: React.FC<Props> = ({ selected, onChange, items }) => {
+export const Tabs = ({ selected, onChange, items }: TabsProps) => {
   return (
     <AminoTabs>
       {items.map(item => (
