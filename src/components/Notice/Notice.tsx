@@ -36,21 +36,22 @@ const AminoPrimaryNotice = styled(AminoNotice)`
   color: white;
 `;
 
-type Props = {
+export type NoticeProps = {
   intent?: Intent;
+  children: React.ReactNode;
 };
 
-export const Notice: React.FC<Props> = ({ intent, children }) => {
+export const Notice = ({ intent, children }: NoticeProps) => {
   switch (intent) {
-    case Intent.Success:
+    case "success":
       return <AminoSuccessNotice>{children}</AminoSuccessNotice>;
-    case Intent.Error:
+    case "error":
       return <AminoErrorNotice>{children}</AminoErrorNotice>;
-    case Intent.Warning:
+    case "warning":
       return <AminoWarningNotice>{children}</AminoWarningNotice>;
-    case Intent.Primary:
+    case "primary":
       return <AminoPrimaryNotice>{children}</AminoPrimaryNotice>;
-    case Intent.Info:
+    case "info":
     default:
       return <AminoNotice>{children}</AminoNotice>;
   }
