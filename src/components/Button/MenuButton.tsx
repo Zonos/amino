@@ -41,7 +41,7 @@ const Trigger = styled(Button)`
   }
 `;
 
-type MenuButtonProps = {
+export type MenuButtonProps = {
   label: string;
   children: React.ReactNode;
 };

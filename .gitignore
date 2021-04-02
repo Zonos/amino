@@ -71,3 +71,6 @@ build
 module
 .DS_Store
 dist
+
+# Storybook static build (https://storybook.js.org/)
+storybook-static
