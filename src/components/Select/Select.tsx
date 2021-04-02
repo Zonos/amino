@@ -67,6 +67,7 @@ export type SelectProps = {
   itemLabelPath?: string;
   itemValuePath?: string;
   labelFormatFunction?: any;
+  required?: boolean;
   tabIndex?: number;
 };
 
@@ -83,6 +84,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       itemLabelPath,
       itemValuePath,
       labelFormatFunction,
+      required = false,
       tabIndex
     },
     ref
@@ -108,12 +110,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <SelectWrapper>
           <StyledSelect
             autoFocus={autoFocus}
-            value={value}
             onChange={e => onChange(e.target.value)}
             ref={ref}
-            tabIndex={tabIndex && tabIndex}
+            tabIndex={tabIndex}
+            value={value}
           >
-            <option value="">{placeholder}</option>
+            {!required && <option value="">{placeholder}</option>}
             {items.map((item: any, index: number) => (
               <option
                 key={`${getItemLabel(index)}-${index}`}

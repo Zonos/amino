@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "styles/AminoTheme";
+import { AminoTheme } from "../../styles/AminoTheme";
 
 const AminoTabs = styled.div`
   display: flex;

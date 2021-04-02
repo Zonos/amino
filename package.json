@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "2.73.0",
+  "version": "2.74.0",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "repository": "git@github.com:amino-ui/core.git",
@@ -8,13 +8,14 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@storybook/addon-a11y": "^6.1.21",
     "@babel/core": "^7.13.14",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/react": "^6.1.21",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
     "@types/react-tooltip": "^4.2.4",
     "@types/react-transition-group": "^4.2.3",
     "@types/styled-components": "^5.1.7",
@@ -23,29 +24,26 @@
     "bili": "^4.8.1",
     "downshift": "^4.0.10",
     "framer-motion": "^2.6.15",
-    "jest": "^26.6.3",
     "node-sass": "^4.14.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.19.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-is": "^17.0.1",
     "react-spring": "^8.0.27",
     "react-tooltip": "^4.2.11",
     "rollup": "^2.36.1",
     "rollup-plugin-typescript2": "^0.30.0",
-    "storybook": "^6.2.2",
     "styled-components": "^5.2.1",
-    "typescript": "^4.2.3",
-    "webpack": "^5.30.0"
+    "typescript": "^3.7.2"
   },
   "peerDependencies": {
-    "@types/react": "^17.x",
-    "@types/react-dom": "^17.x",
+    "@types/react": "^16.x",
+    "@types/react-dom": "^16.x",
     "downshift": "^4.x",
     "framer-motion": "^2.x",
-    "react": "^17.x",
-    "react-dom": "^17.x",
+    "react": "^16.x",
+    "react-dom": "^16.x",
     "react-spring": "^8.x",
     "react-tooltip": "^4.x",
     "react-transition-group": "^4.x",
@@ -60,8 +58,5 @@
   "files": [
     "dist",
     "dist/*.css"
-  ],
-  "dependencies": {
-    "@storybook/addon-a11y": "^6.1.21"
-  }
+  ]
 }
