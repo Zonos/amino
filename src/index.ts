@@ -22,12 +22,10 @@ export { Skeleton } from "./components/Skeleton";
 
 export { Depth, Surface } from "./primitives";
 
-export { AminoOnSaveHandler } from "./utils/AminoOnSaveHandler";
-
 export { useInputValue } from "./hooks/useInputValue";
 export { useCheckboxValue } from "./hooks/useCheckboxValue";
 
-export { Intent } from "./utils/Intent";
+export * from "./utils/Intent";
 
 export { DropdownAnimation, DropdownAnimationInverse } from "./animations";
 
