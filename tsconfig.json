@@ -17,8 +17,10 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "sourceMap": true,
     "strict": true,
     "target": "es5",
+    "typeRoots": ["node_modules/@types"],
     "types": [
       "jest"
     ]
