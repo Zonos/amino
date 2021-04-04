@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Skeleton, SkeletonProps } from "../components/Skeleton";
 
-export default {
+const SkeletonMeta: Meta = {
   title: "Amino/Skeleton",
   component: Skeleton
-} as Meta;
+};
+
+export default SkeletonMeta;
 
 const Template: Story<SkeletonProps> = args => <Skeleton {...args} />;
 

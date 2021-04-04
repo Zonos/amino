@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { MenuButton, MenuButtonProps } from "../components/Button";
 
-export default {
+const MenuButtonMeta: Meta = {
   title: "Amino/MenuButton",
   component: MenuButton
-} as Meta;
+};
+
+export default MenuButtonMeta;
 
 const Template: Story<MenuButtonProps> = args => <MenuButton {...args} />;
 

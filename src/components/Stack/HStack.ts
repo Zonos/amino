@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { GridAlignment, GridSpacing } from ".";
+
+export type HStackProps = {
+  alignment?: GridAlignment;
+  spacing?: GridSpacing;
+};
 
 /**
  * A horizontal stack
@@ -9,17 +13,14 @@ import { GridAlignment, GridSpacing } from ".";
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const HStack = styled.div<{
-  alignment?: GridAlignment;
-  spacing?: GridSpacing;
-}>`
+export const HStack = styled.div<HStackProps>`
   display: grid;
-  grid-auto-columns: auto;
+  grid-auto-columns: minmax(0, 1fr);
   column-gap: ${p =>
-    p.spacing ? `var(--amino-${p.spacing})` : `var(${AminoTheme.space})`};
+    p.spacing ? `var(--amino-${p.spacing})` : `var(--amino-space)`};
   grid-auto-flow: column;
 
   & > * {
-    justify-self: ${p => (p.alignment === "end" ? "end" : "unset")};
+    justify-self: ${p => p.alignment || "unset"};
   }
 `;

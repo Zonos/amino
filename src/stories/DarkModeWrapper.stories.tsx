@@ -8,10 +8,12 @@ import {
 
 import { Card } from "../components/Card";
 
-export default {
+const DarkModeWrapperMeta: Meta = {
   title: "Amino/DarkModeWrapper",
   component: DarkModeWrapper
-} as Meta;
+};
+
+export default DarkModeWrapperMeta;
 
 const Template: Story<DarkModeWrapperProps> = args => (
   <DarkModeWrapper>

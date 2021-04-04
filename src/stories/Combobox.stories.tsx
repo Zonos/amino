@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Combobox, ComboboxProps } from "../components/Combobox";
 
-export default {
+const ComboboxMeta: Meta = {
   title: "Amino/Combobox",
   component: Combobox
-} as Meta;
+};
+
+export default ComboboxMeta;
 
 const Template: Story<ComboboxProps> = args => <Combobox {...args} />;
 

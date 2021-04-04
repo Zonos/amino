@@ -4,10 +4,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Card, CardProps } from "../components/Card";
 import { Button } from "../components/Button";
 
-export default {
+const CardMeta: Meta = {
   title: "Amino/Card",
   component: Card
-} as Meta;
+};
+
+export default CardMeta;
 
 const Template: Story<CardProps> = args => <Card {...args} />;
 

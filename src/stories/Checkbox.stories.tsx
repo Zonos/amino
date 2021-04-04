@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Checkbox, CheckboxProps } from "../components/Checkbox";
 
-export default {
+const CheckboxMeta: Meta = {
   title: "Amino/Checkbox",
   component: Checkbox
-} as Meta;
+};
+
+export default CheckboxMeta;
 
 const Template: Story<CheckboxProps> = args => <Checkbox {...args} />;
 

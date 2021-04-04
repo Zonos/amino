@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Input, InputProps } from "../components/Input";
 
-export default {
+const InputMeta: Meta = {
   title: "Amino/Input",
   component: Input
-} as Meta;
+};
+
+export default InputMeta;
 
 const Template: Story<InputProps> = args => <Input {...args} />;
 
