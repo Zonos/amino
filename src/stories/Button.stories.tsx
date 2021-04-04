@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Button, ButtonProps } from "../components/Button";
 
-export default {
+const ButtonMeta: Meta = {
   title: "Amino/Button",
   component: Button
-} as Meta;
+};
+
+export default ButtonMeta;
 
 const Template: Story<ButtonProps> = args => <Button {...args} />;
 

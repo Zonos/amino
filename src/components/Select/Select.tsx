@@ -59,11 +59,11 @@ const SelectWrapper = styled.div`
 export type SelectProps = {
   autoFocus?: boolean;
   items: Array<any>;
-  label: string | null;
+  label?: string | null;
   helpText?: string;
   onChange: (newValue: string) => any;
   value: string;
-  placeholder: string;
+  placeholder?: string;
   itemLabelPath?: string;
   itemValuePath?: string;
   labelFormatFunction?: any;
@@ -115,7 +115,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             tabIndex={tabIndex}
             value={value}
           >
-            {!required && <option value="">{placeholder}</option>}
+            {!required && placeholder && (
+              <option value="">{placeholder}</option>
+            )}
             {items.map((item: any, index: number) => (
               <option
                 key={`${getItemLabel(index)}-${index}`}

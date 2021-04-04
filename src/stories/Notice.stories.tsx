@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Notice, NoticeProps } from "../components/Notice";
 
-export default {
+const NoticeStories: Meta = {
   title: "Amino/Notice",
   component: Notice
-} as Meta;
+};
+
+export default NoticeStories;
 
 const Template: Story<NoticeProps> = args => <Notice {...args} />;
 

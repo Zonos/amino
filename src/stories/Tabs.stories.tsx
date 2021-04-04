@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Tabs, TabsProps } from "../components/Tabs";
 
-export default {
+const TabsMeta: Meta = {
   title: "Amino/Tabs",
   component: Tabs
-} as Meta;
+};
+
+export default TabsMeta;
 
 const Template: Story<TabsProps> = args => <Tabs {...args} />;
 

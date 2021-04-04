@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Spinner, SpinnerProps } from "../components/Spinner";
 
-export default {
+const SpinnerMeta: Meta = {
   title: "Amino/Spinner",
   component: Spinner
-} as Meta;
+};
+
+export default SpinnerMeta;
 
 const Template: Story<SpinnerProps> = args => <Spinner {...args} />;
 

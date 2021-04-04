@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Select, SelectProps } from "../components/Select";
 
-export default {
+const SelectMeta: Meta = {
   title: "Amino/Select",
   component: Select
-} as Meta;
+};
+
+export default SelectMeta;
 
 const Template: Story<SelectProps> = args => <Select {...args} />;
 

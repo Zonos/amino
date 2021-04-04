@@ -3,10 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Radio, RadioProps } from "../components/Radio";
 
-export default {
+const RadioMeta: Meta = {
   title: "Amino/Radio",
   component: Radio
-} as Meta;
+};
+
+export default RadioMeta;
 
 const Template: Story<RadioProps> = args => <Radio {...args} />;
 
