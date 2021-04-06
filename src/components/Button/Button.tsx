@@ -116,7 +116,7 @@ export const Button = ({
   loadingText,
   tabIndex,
   tooltip,
-  children
+  children,
 }: ButtonProps) => {
   const content = loading ? (
     <>
@@ -138,7 +138,7 @@ export const Button = ({
     onClick,
     className,
     "data-tip": tooltip,
-    tabIndex
+    tabIndex,
   };
 
   switch (intent) {
