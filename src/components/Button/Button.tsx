@@ -45,7 +45,7 @@ const Primary = styled(AminoButton)`
   color: var(${AminoTheme.textLight});
 
   &:hover {
-    background: var(${AminoTheme.primaryLight});
+    background: var(${AminoTheme.primaryDark});
   }
 `;
 

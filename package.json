@@ -17,6 +17,8 @@
     "@storybook/react": "^6.2.3",
     "@types/react": "^17.x",
     "@types/react-dom": "^17.x",
+    "@types/react-transition-group": "^4.4.1",
+    "@types/styled-components": "^5.1.9",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "bili": "^5.0.5",
@@ -47,6 +49,7 @@
     "styled-components": "^5.x"
   },
   "scripts": {
+    "build:watch": "bili --watch",
     "build": "bili && cp -r ./src/styles/*.css ./dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",

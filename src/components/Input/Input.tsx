@@ -74,7 +74,7 @@ const Fields = styled.div`
 
 const AminoInputWrapper = styled.div<any>`
   position: relative;
-  width: ${p => (p.width ? `${p.width}px` : "100%")};
+  width: ${(p) => (p.width ? `${p.width}px` : "100%")};
   span {
     margin-top: var(${AminoTheme.spaceQuarter});
     display: block;
@@ -159,7 +159,7 @@ export const Input = ({
   inputMode,
   pattern,
   autoFocus,
-  onKeyDown
+  onKeyDown,
 }: InputProps) => {
   return (
     <AminoInputWrapper
@@ -188,6 +188,7 @@ export const Input = ({
           inputMode={inputMode && inputMode}
           autoFocus={autoFocus && autoFocus}
           onKeyDown={onKeyDown && onKeyDown}
+          aria-label={label && label}
         />
         {(suffix || inputSuffix) && (
           <InputSuffix>{suffix || inputSuffix}</InputSuffix>

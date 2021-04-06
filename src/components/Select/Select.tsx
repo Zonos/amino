@@ -59,7 +59,7 @@ const SelectWrapper = styled.div`
 export type SelectProps = {
   autoFocus?: boolean;
   items: Array<any>;
-  label?: string | null;
+  label?: string;
   helpText?: string;
   onChange: (newValue: string) => any;
   value: string;
@@ -85,7 +85,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       itemValuePath,
       labelFormatFunction,
       required = false,
-      tabIndex
+      tabIndex,
     },
     ref
   ) => {
@@ -103,17 +103,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <DropdownContainer className="amino-input-wrapper">
-        {typeof label === "string" && (
-          <Text style={TextStyle.InputLabel}>{label}</Text>
-        )}
+        {label && <Text style={TextStyle.InputLabel}>{label}</Text>}
 
         <SelectWrapper>
           <StyledSelect
             autoFocus={autoFocus}
-            onChange={e => onChange(e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
             ref={ref}
             tabIndex={tabIndex}
             value={value}
+            aria-label={label}
           >
             {!required && placeholder && (
               <option value="">{placeholder}</option>

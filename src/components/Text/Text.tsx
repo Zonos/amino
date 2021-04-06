@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AminoTheme } from "../../styles/AminoTheme";
 
 const Subtitle = styled.span`
-  opacity: .7;
+  opacity: 0.7;
   font-style: italic;
 `;
 
@@ -16,12 +16,13 @@ const SmallHeader = styled.span`
   opacity: 0.5;
 `;
 
-const InputLabel = styled.h5`
+const InputLabel = styled.label`
   font-family: var(${AminoTheme.fontSans});
-  margin-bottom: 0.625rem;
+  margin-bottom: var(--amino-space-quarter);
+  display: block;
   font-size: 1rem;
   font-weight: 400;
-  opacity: .5;
+  opacity: 0.8;
 `;
 
 export enum TextStyle {
@@ -35,7 +36,7 @@ export enum TextStyle {
   Code,
   Subtitle,
   SmallHeader,
-  InputLabel
+  InputLabel,
 }
 
 type Props = {
