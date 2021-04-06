@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "2.80.0",
+  "version": "2.81.0",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -37,7 +37,7 @@
     "styled-components": "^5.x"
   },
   "scripts": {
-    "build": "bili --format esm && cp -r ./src/styles/*.css ./dist",
+    "build": "bili && cp -r ./src/styles/*.css ./dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start": "yarn build-storybook && yarn storybook"
