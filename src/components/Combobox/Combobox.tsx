@@ -88,15 +88,15 @@ const AnimatedSurface = styled(Surface)`
 `;
 
 const DropdownItem = styled(MenuItem)<any>`
-  background: ${p =>
+  background: ${(p) =>
     p.isSelected
       ? `var(${AminoTheme.hoverColor})`
       : `var(${AminoTheme.surfaceColor})`};
-  color: ${p =>
+  color: ${(p) =>
     p.isSelected
       ? `var(${AminoTheme.primary})`
       : `var(${AminoTheme.textColor})`};
-  font-weight: ${p => (p.isSelected ? "500" : "normal")};
+  font-weight: ${(p) => (p.isSelected ? "500" : "normal")};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -145,13 +145,13 @@ export const Combobox = ({
   itemLabelPath,
   itemValuePath,
   labelFormatFunction,
-  tabIndex
+  tabIndex,
 }: ComboboxProps) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
   useEffect(() => {
     setSelectItems(
-      items.map(item => {
+      items.map((item) => {
         const label = itemLabelPath ? item[itemLabelPath] : item.label;
 
         if (labelFormatFunction) {
@@ -172,12 +172,12 @@ export const Combobox = ({
     getComboboxProps,
     highlightedIndex,
     getItemProps,
-    selectedItem
+    selectedItem,
   } = useCombobox({
     items: selectItems,
     onInputValueChange: ({ inputValue }: any) => {
       const foundItems = items
-        .map(item => {
+        .map((item) => {
           const label = itemLabelPath ? item[itemLabelPath] : item.label;
 
           if (labelFormatFunction) {
@@ -186,12 +186,12 @@ export const Combobox = ({
             return label;
           }
         })
-        .filter(item => {
+        .filter((item) => {
           return item.toLowerCase().startsWith(inputValue.toLowerCase());
         });
 
       if (foundItems.length === 1) {
-        const item = items.find(x =>
+        const item = items.find((x) =>
           itemLabelPath
             ? x[itemLabelPath] === inputValue
             : x.label === inputValue
@@ -203,11 +203,11 @@ export const Combobox = ({
       }
 
       setSelectItems(foundItems);
-    }
+    },
   } as any);
 
   const renderIcon = (itemLabel: string) => {
-    const item = items.find(x =>
+    const item = items.find((x) =>
       itemLabelPath ? x[itemLabelPath] === itemLabel : x.label === itemLabel
     );
 
@@ -222,7 +222,7 @@ export const Combobox = ({
 
   const selectedHasIcon = () =>
     Boolean(
-      items.find(x =>
+      items.find((x) =>
         itemLabelPath
           ? x[itemLabelPath] === selectedItem
           : x.label === selectedItem
@@ -231,7 +231,7 @@ export const Combobox = ({
 
   useEffect(() => {
     if (selectedItem && selectItems.length) {
-      const item = items.find(i =>
+      const item = items.find((i) =>
         itemLabelPath
           ? i[itemLabelPath] === selectedItem
           : i.label === selectedItem
@@ -249,9 +249,10 @@ export const Combobox = ({
       <Wrapper {...getComboboxProps()}>
         {selectedItem && renderIcon(selectedItem as string)}
         <input
+          aria-label={label}
           tabIndex={tabIndex && tabIndex}
           style={{
-            paddingLeft: selectedItem && selectedHasIcon() ? "40px" : ""
+            paddingLeft: selectedItem && selectedHasIcon() ? "40px" : "",
           }}
           placeholder={placeholder}
           {...getInputProps()}
