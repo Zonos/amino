@@ -15,6 +15,7 @@ const shimmerAnimation = (width: number) => keyframes`
 export type SkeletonProps = {
   width?: number;
   height?: number;
+  noShimmer?: boolean;
 };
 
 /* animation: ${(p) => shimmerAnimation(p.width || 100)} 3s infinite; */
@@ -32,7 +33,7 @@ const SkeletonShimmer = styled.div<{ width: number }>`
   display: block;
   content: " ";
   background: var(--amino-gray-50);
-  animation: 3s infinite ${(p) => shimmerAnimation(p.width)};
+  animation: 2s infinite ${(p) => shimmerAnimation(p.width)};
   animation-timing-function: ease-in-out;
   position: absolute;
   left: 0;
@@ -51,8 +52,8 @@ const SkeletonShimmer = styled.div<{ width: number }>`
  * @param width - Optional width in pixels
  * @param height - Optional height in em
  */
-export const Skeleton = ({ width, height }: SkeletonProps) => (
+export const Skeleton = ({ width, height, noShimmer }: SkeletonProps) => (
   <SkeletonWrapper width={width} height={height}>
-    <SkeletonShimmer width={width || 100} />
+    {!noShimmer && <SkeletonShimmer width={width || 100} />}
   </SkeletonWrapper>
 );
