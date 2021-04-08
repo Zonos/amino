@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useState,
   createContext,
-  ReactNode
+  ReactNode,
 } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -16,12 +16,12 @@ type Props = {
 };
 
 export const ToastContextProvider = ({ children }: Props) => {
-  const [toasts, setToasts] = useState<string[]>([]);
+  const [toasts, setToasts] = useState<ReactNode[]>([]);
 
   useEffect(() => {
     if (toasts.length > 0) {
       const timer = setTimeout(
-        () => setToasts(toasts => toasts.slice(1)),
+        () => setToasts((toasts) => toasts.slice(1)),
         6000
       );
       return () => clearTimeout(timer);
@@ -29,8 +29,8 @@ export const ToastContextProvider = ({ children }: Props) => {
   }, [toasts]);
 
   const addToast = useCallback(
-    function(toast) {
-      setToasts(toasts => [...toasts, toast]);
+    (toast: ReactNode) => {
+      setToasts((toasts) => toasts.concat(toast));
     },
     [setToasts]
   );
@@ -40,8 +40,8 @@ export const ToastContextProvider = ({ children }: Props) => {
       {children}
       <div className="toasts-wrapper">
         <AnimatePresence>
-          {toasts.map(toast => (
-            <Toast toastKey={`toast-${toast}`} key={toast}>
+          {toasts.map((toast, index) => (
+            <Toast toastKey={`toast-${toast}`} key={`toast-${index}`}>
               {toast}
             </Toast>
           ))}
