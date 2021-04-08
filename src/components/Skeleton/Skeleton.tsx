@@ -28,7 +28,7 @@ const SkeletonWrapper = styled.div<SkeletonProps>`
 `;
 
 const SkeletonShimmer = styled.div<{ width: number }>`
-  width: 35%;
+  width: 65%;
   height: 100%;
   display: block;
   content: " ";
