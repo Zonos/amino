@@ -22,7 +22,7 @@ Default.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=3%3A58",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51",
   },
 };
 
@@ -35,7 +35,7 @@ Primary.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=3%3A58",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A20",
   },
 };
 
@@ -48,6 +48,6 @@ Danger.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=3%3A58",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24",
   },
 };
