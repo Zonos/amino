@@ -1,11 +1,13 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
+import { withDesign } from "storybook-addon-designs";
 
 import { MenuButton, MenuButtonProps } from "../components/Button";
 
 const MenuButtonMeta: Meta = {
   title: "Amino/MenuButton",
   component: MenuButton,
+  decorators: [withDesign],
 };
 
 export default MenuButtonMeta;
