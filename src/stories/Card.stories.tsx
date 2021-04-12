@@ -24,7 +24,7 @@ BasicCard.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A25",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28",
   },
 };
 
@@ -39,6 +39,6 @@ CardWithActions.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A25",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A34",
   },
 };

@@ -22,7 +22,7 @@ DefaultNotice.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A97",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A98",
   },
 };
 
@@ -35,7 +35,7 @@ InfoNotice.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A97",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A98",
   },
 };
 
@@ -48,7 +48,7 @@ PrimaryNotice.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A97",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A106",
   },
 };
 
@@ -61,7 +61,7 @@ WarningNotice.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A97",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A114",
   },
 };
 
@@ -74,7 +74,7 @@ ErrorNotice.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A97",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A110",
   },
 };
 
@@ -87,6 +87,6 @@ SuccessNotice.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A97",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A118",
   },
 };

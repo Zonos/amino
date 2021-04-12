@@ -22,6 +22,6 @@ BasicRadio.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=6%3A2",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A122",
   },
 };
