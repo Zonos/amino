@@ -22,7 +22,7 @@ BasicInput.parameters = {
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=4%3A61",
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A56",
   },
 };
 
@@ -37,4 +37,11 @@ PrefixesAndSuffixes.args = {
   label: "Example input",
   prefix: "Prefix",
   suffix: "Prefix",
+};
+PrefixesAndSuffixes.parameters = {
+  design: {
+    type: "figma",
+    url:
+      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63",
+  },
 };
