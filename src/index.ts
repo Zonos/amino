@@ -11,6 +11,7 @@ export { Divider } from "./components/Divider";
 export { Notice } from "./components/Notice";
 export { GroupedSelect, Select } from "./components/Select";
 export { Combobox } from "./components/Combobox";
+export { CoverSheet } from "./components/CoverSheet";
 export { ListItem } from "./components/ListItem";
 export { List } from "./components/List";
 export { Dialog } from "./components/Dialog";
