@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { Radio } from "./Radio";
 
 const RadioContainer = styled.div`
   * {
-    margin-bottom: var(${AminoTheme.spaceHalf});
+    margin-bottom: var(--amino-space-half);
   }
 
   *:last-of-type {
@@ -27,7 +26,7 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
   onChange,
   itemValuePath,
   itemLabelPath,
-  initialValue
+  initialValue,
 }: Props<T>) => {
   const [active, setActive] = useState(-1);
 
@@ -45,7 +44,7 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
   }, [active]);
 
   useEffect(() => {
-    const initial = items.findIndex(el => {
+    const initial = items.findIndex((el) => {
       const value = itemValuePath ? el[itemValuePath] : el.value;
       return value === initialValue;
     });
