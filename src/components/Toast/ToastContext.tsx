@@ -36,17 +36,19 @@ export const ToastContextProvider = ({ children }: Props) => {
   );
 
   return (
-    <ToastContext.Provider value={addToast}>
-      {children}
-      <div className="toasts-wrapper">
-        <AnimatePresence>
-          {toasts.map((toast, index) => (
-            <Toast toastKey={`toast-${toast}`} key={`toast-${index}`}>
-              {toast}
-            </Toast>
-          ))}
-        </AnimatePresence>
-      </div>
-    </ToastContext.Provider>
+    <AnimatePresence>
+      <ToastContext.Provider value={addToast}>
+        {children}
+        <div className="toasts-wrapper">
+          <AnimatePresence>
+            {toasts.map((toast, index) => (
+              <Toast toastKey={`toast-${toast}`} key={`toast-${index}`}>
+                {toast}
+              </Toast>
+            ))}
+          </AnimatePresence>
+        </div>
+      </ToastContext.Provider>
+    </AnimatePresence>
   );
 };
