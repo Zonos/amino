@@ -35,7 +35,8 @@
     "rollup-plugin-typescript2": "^0.30.0",
     "storybook-addon-designs": "^5.4.5",
     "styled-components": "^5.x",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "@headlessui/react": "^1.0.0"
   },
   "peerDependencies": {
     "@types/react": "^17.x",
@@ -46,6 +47,7 @@
     "react-dom": "^17.x",
     "react-tooltip": "^4.x",
     "react-transition-group": "^4.x",
+    "@headlessui/react": "^1.x",
     "styled-components": "^5.x"
   },
   "scripts": {
