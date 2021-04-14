@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { GridAlignment, GridSpacing } from ".";
 
 /**
@@ -15,10 +14,10 @@ export const VStack = styled.div<{
 }>`
   display: grid;
   grid-auto-rows: auto;
-  grid-row-gap: ${p =>
-    p.spacing ? `var(--amino-${p.spacing})` : `var(${AminoTheme.space})`};
+  grid-row-gap: ${(p) =>
+    p.spacing ? `var(--amino-${p.spacing})` : `var(--amino-space)`};
 
   & > * {
-    justify-self: ${p => (p.alignment === "end" ? "end" : "unset")};
+    justify-self: ${(p) => (p.alignment === "end" ? "end" : "unset")};
   }
 `;
