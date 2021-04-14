@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 const AminoToast = styled(motion.div)`
   background: var(--amino-gray-700);
   z-index: 999999;
-  border-radius: var(--amino-radius);
+  border-radius: var(--amino-radius-lg);
   color: white;
-  box-shadow: var(--amino-shadow-large);
+  box-shadow: var(--amino-shadow-medium);
   padding: var(--amino-space-half) var(--amino-space);
   font-weight: 500;
   user-select: none;
@@ -24,7 +24,7 @@ type Props = {
 export const Toast: React.FC<Props> = ({ children, toastKey }) => (
   <AminoToast
     key={toastKey}
-    initial={{ opacity: 0, translateX: 5 }}
+    initial={{ opacity: 0, translateX: 10 }}
     animate={{ opacity: 1, translateX: 0 }}
     exit={{ opacity: 0 }}
   >
