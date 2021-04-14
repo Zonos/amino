@@ -1,31 +1,30 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
-import { CSSTransition } from "react-transition-group";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { HStack } from "../Stack";
 import { Text, TextStyle } from "../Text";
 import { CloseIcon } from "../../icons";
 
-const StyledDialog = styled.div`
-  /* notify z-index is 9999, dialog z-index is 1001 */
+const StyledDialog = styled(motion.div)`
   z-index: 990;
   outline: none;
   overflow-y: auto;
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+  background: var(--amino-page-background);
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  box-sizing: border-box;
-  overscroll-behavior: contain;
-  background: var(--amino-page-background);
 `;
 
 const Header = styled.header`
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--amino-surface-color);
+  border-bottom: var(--amino-border);
   box-shadow: var(--amino-shadow-small);
-  backdrop-filter: blur(5px);
   padding: var(--amino-space-half) var(--amino-space);
   display: flex;
   align-items: center;
@@ -52,21 +51,23 @@ const Content = styled.div`
 const Close = styled.div`
   transition: all 100ms ease-in-out;
   background: transparent;
-  border-radius: 6px;
+  border-radius: 32px;
   width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  opacity: 0.8;
 
   &:hover {
-    background: var(--amino-gray-400);
+    background: var(--amino-gray-200);
+    opacity: 1;
   }
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     fill: var(--amino-text-color);
     transition: all 100ms ease-in-out;
   }
@@ -92,14 +93,15 @@ export const CoverSheet = ({
   actions,
 }: CoverSheetProps) => {
   return createPortal(
-    <>
-      <CSSTransition
-        unmountOnExit
-        in={open}
-        timeout={200}
-        classNames="amino-cover-sheet"
-      >
-        <StyledDialog className="print">
+    <AnimatePresence>
+      {open && (
+        <StyledDialog
+          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+          initial={{ opacity: 0, translateY: 10 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          exit={{ opacity: 0, translateY: 5 }}
+          className="print"
+        >
           <Header>
             <Text style={TextStyle.h4}>{label}</Text>
             {actions && (
@@ -113,8 +115,8 @@ export const CoverSheet = ({
           </Header>
           <Content>{children}</Content>
         </StyledDialog>
-      </CSSTransition>
-    </>,
+      )}
+    </AnimatePresence>,
     document.querySelector("body")!
   );
 };
