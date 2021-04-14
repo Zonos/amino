@@ -2,13 +2,12 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import ReactTooltip from "react-tooltip";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { Spinner } from "../Spinner";
 
 const AminoButton = styled.button`
   position: relative;
   outline: none;
-  border: var(${AminoTheme.borderTransparent});
+  border: var(--amino-border-transparent);
   height: 40px;
   line-height: 18px;
   box-sizing: border-box;
@@ -16,20 +15,21 @@ const AminoButton = styled.button`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 var(${AminoTheme.space});
-  border-radius: var(${AminoTheme.radius});
-  transition: var(${AminoTheme.transition});
-  box-shadow: var(${AminoTheme.shadowSmall});
+  padding: 0 var(--amino-space);
+  border-radius: var(--amino-radius);
+  transition: var(--amino-transition);
+  box-shadow: var(--amino-shadow-small);
   font-weight: 500;
   user-select: none;
-  font-family: var(${AminoTheme.fontSans});
+  font-family: var(--amino-font-sans);
   letter-spacing: normal;
 
+  /* should we use active or focus or both? */
   &:active,
   &:focus {
     outline: none;
-    border: var(${AminoTheme.borderBlue});
-    box-shadow: var(${AminoTheme.glowBlue});
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 
   &[disabled] {
@@ -41,57 +41,54 @@ const AminoButton = styled.button`
 `;
 
 const Primary = styled(AminoButton)`
-  background: var(${AminoTheme.primary});
-  color: var(${AminoTheme.textLight});
+  background: var(--amino-primary);
+  color: var(--amino-text-light);
 
   &:hover {
-    background: var(${AminoTheme.primaryDark});
+    background: var(--amino-primary-dark);
   }
 `;
 
 const Secondary = styled(AminoButton)`
   color: var(--amino-text-color);
-  border: var(${AminoTheme.border});
-  background: var(${AminoTheme.inputBackground});
+  border: var(--amino-border);
+  background: var(--amino-input-background);
 
   &:hover {
-    background: var(${AminoTheme.hoverColor});
+    background: var(--amino-hover-color);
   }
 `;
 
 const Icon = styled(AminoButton)`
-  background: var(${AminoTheme.inputBackground});
-  color: var(${AminoTheme.textColor});
-  border: var(${AminoTheme.border});
-  padding: 0 var(${AminoTheme.spaceHalf});
+  background: var(--amino-input-background);
+  color: var(--amino-text-color);
+  border: var(--amino-border);
+  padding: 0 var(--amino-space-half);
 
   svg {
     width: 16px;
     height: 16px;
+    fill: currentColor;
+    color: var(--amino-text-color);
   }
 
   &:hover {
-    background: var(${AminoTheme.hoverColor});
-  }
-
-  &:active {
-    border: 2px solid var(${AminoTheme.primary});
-    padding: 0 calc(var(${AminoTheme.spaceHalf}) - 1px);
+    background: var(--amino-hover-color);
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: var(${AminoTheme.error});
+  background: var(--amino-error);
   color: white;
 
   &:hover {
-    background: var(${AminoTheme.red300});
+    background: var(--amino-red-300);
   }
 
   &:active,
   &:focus {
-    border: var(${AminoTheme.borderRed});
-    box-shadow: var(${AminoTheme.glowRed});
+    border: var(--amino-border-red);
+    box-shadow: var(--amino-glow-red);
   }
 `;
 
