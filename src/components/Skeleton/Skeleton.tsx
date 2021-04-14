@@ -1,8 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
-
 const shimmerAnimation = (width: number) => keyframes`
   0% {
     left: -${width}px;
@@ -22,7 +20,7 @@ export type SkeletonProps = {
 const SkeletonWrapper = styled.div<SkeletonProps>`
   height: ${(p) => (p.height ? `${p.height}px` : `1em`)};
   width: ${(p) => `${p.width}px` || "100%"};
-  border-radius: var(${AminoTheme.radius});
+  border-radius: var(--amino-radius);
   position: relative;
   background: var(--amino-gray-200);
 `;

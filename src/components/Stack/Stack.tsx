@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
-
 const AminoStack = styled.div`
   display: flex;
 `;
@@ -12,7 +10,7 @@ const ColumnStack = styled(AminoStack)`
   justify-content: center;
 
   & > * {
-    margin-bottom: var(${AminoTheme.spaceQuarter});
+    margin-bottom: var(--amino-space-quarter);
 
     &:last-child {
       margin-bottom: 0;
@@ -25,7 +23,7 @@ const RowStack = styled(AminoStack)`
   align-items: center;
 
   & > * {
-    margin-right: var(${AminoTheme.spaceQuarter});
+    margin-right: var(--amino-space-quarter);
 
     &:last-child {
       margin-right: 0;
@@ -37,7 +35,7 @@ const CardStack = styled.div`
   flex-direction: column;
 
   & > * {
-    margin-bottom: var(${AminoTheme.space});
+    margin-bottom: var(--amino-space);
 
     &:last-child {
       margin-bottom: 0;
@@ -48,7 +46,7 @@ const CardStack = styled.div`
 export enum StackType {
   row,
   column,
-  cards
+  cards,
 }
 
 type Props = {

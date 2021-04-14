@@ -1,36 +1,35 @@
 import React, { forwardRef } from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 import { DropdownIcon } from "../../icons/DropdownIcon";
 
 const StyledSelect = styled.select`
-  border-radius: var(${AminoTheme.radius});
+  border-radius: var(--amino-radius);
   outline: none !important;
   box-sizing: border-box;
-  transition: var(${AminoTheme.transition});
+  transition: var(--amino-transition);
   display: block;
   height: 38px;
   width: 100%;
-  padding: 0 var(${AminoTheme.spaceHalf});
-  background: var(${AminoTheme.inputBackground});
-  border: var(${AminoTheme.border});
-  box-shadow: var(${AminoTheme.shadowSmall});
+  padding: 0 var(--amino-space-half);
+  background: var(--amino-input-background);
+  border: var(--amino-border);
+  box-shadow: var(--amino-shadow-small);
   -webkit-appearance: none;
   -moz-appearance: none;
 
   &:focus,
   &:active {
     outline: none;
-    border: var(${AminoTheme.borderBlue});
-    box-shadow: var(${AminoTheme.glowBlue});
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 `;
 
 const DropdownContainer = styled.div`
   span {
-    margin-top: var(${AminoTheme.spaceQuarter});
+    margin-top: var(--amino-space-quarter);
     display: block;
   }
 `;
@@ -40,10 +39,10 @@ const SelectWrapper = styled.div`
 
   svg {
     position: absolute;
-    right: var(${AminoTheme.spaceHalf});
+    right: var(--amino-space-half);
     top: 11px;
     pointer-events: none;
-    color: var(${AminoTheme.textColor});
+    color: var(--amino-text-color);
     width: 16px;
     height: 16px;
     opacity: 0.3;

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import React from "react";
 
-import { AminoTheme } from "../styles/AminoTheme";
 import { Depth } from "./Depth";
 
 const SurfaceBase = styled.div<any>`
-  background: var(${AminoTheme.surfaceColor});
-  padding: var(${AminoTheme.space});
+  background: var(--amino-surface-color);
+  padding: var(--amino-space);
   color: var(--amino-text-color);
-  border-radius: ${p =>
-    p.dense ? `var(${AminoTheme.radius})` : `var(${AminoTheme.radiusLg})`};
+  border-radius: ${(p) =>
+    p.dense ? `var(--amino-radius)` : `var(--amino-radius-lg)`};
 `;
 
 // shadow small
@@ -20,16 +19,16 @@ const Depth4 = styled(SurfaceBase)`
 
 // shadow medium
 const Depth8 = styled(SurfaceBase)`
-  box-shadow: var(${AminoTheme.shadowBase});
+  box-shadow: var(--amino-shadow-base);
 `;
 
 const Depth16 = styled(SurfaceBase)`
-  box-shadow: var(${AminoTheme.shadowMedium});
+  box-shadow: var(--amino-shadow-medium);
 `;
 
 // shadow xl
 const Depth64 = styled(SurfaceBase)`
-  box-shadow: var(${AminoTheme.shadowLarge});
+  box-shadow: var(--amino-shadow-large);
 `;
 
 type Props = {
@@ -42,7 +41,7 @@ export const Surface: React.FC<Props> = ({
   children,
   dense,
   className,
-  depth
+  depth,
 }) => {
   switch (depth) {
     case Depth.depth64:

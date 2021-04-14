@@ -2,18 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { AminoTheme } from "../../styles/AminoTheme";
-
 const AminoToast = styled(motion.div)`
-  background: var(${AminoTheme.gray800});
+  background: var(--amino-gray-800);
   z-index: 999999;
-  border-radius: var(${AminoTheme.radius});
+  border-radius: var(--amino-radius);
   color: white;
-  box-shadow: var(${AminoTheme.shadowLarge});
-  padding: var(${AminoTheme.spaceHalf}) var(${AminoTheme.space});
+  box-shadow: var(--amino-shadow-large);
+  padding: var(--amino-space-half) var(--amino-space);
 
   & + & {
-    margin-top: var(${AminoTheme.space});
+    margin-top: var(--amino-space);
   }
 `;
 
@@ -31,5 +29,3 @@ export const Toast: React.FC<Props> = ({ children, toastKey }) => (
     {children}
   </AminoToast>
 );
-
-

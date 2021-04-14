@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
-
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: var(${AminoTheme.sidebarWidth}) 1fr;
+  grid-template-columns: var(--amino-sidebar-width) 1fr;
 `;
 
 const ContentGrid = styled(Grid)`
@@ -22,7 +20,7 @@ const Footer = styled.div`
 `;
 
 const SidebarContent = styled.div`
-  padding: var(${AminoTheme.space});
+  padding: var(--amino-space);
   box-sizing: border-box;
   overflow-y: auto;
   height: calc(100vh - 128px);
@@ -30,30 +28,30 @@ const SidebarContent = styled.div`
 `;
 
 const Sidebar = styled.nav`
-  border-right: var(${AminoTheme.border});
-  height: calc(100vh - var(${AminoTheme.appbarHeight}));
-  width: var(${AminoTheme.sidebarWidth});
+  border-right: var(--amino-border);
+  height: calc(100vh - var(--amino-appbar-height));
+  width: var(--amino-sidebar-width);
   box-sizing: border-box;
   background: white;
   display: grid;
-  grid-template-rows: 1fr var(${AminoTheme.appbarHeight});
-  background: var(${AminoTheme.sidebarColor});
+  grid-template-rows: 1fr var(--amino-appbar-height);
+  background: var(--amino-sidebar-color);
 `;
 
 const Content = styled.div`
   overflow-y: auto;
-  padding: var(${AminoTheme.space});
+  padding: var(--amino-space);
   box-sizing: border-box;
-  height: calc(100vh - var(${AminoTheme.appbarHeight}));
-  margin-bottom: var(${AminoTheme.space});
+  height: calc(100vh - var(--amino-appbar-height));
+  margin-bottom: var(--amino-space);
 `;
 
 const Header = styled.header`
   background: var(--amino-header-color);
-  box-shadow: var(${AminoTheme.shadowSmall});
-  border-bottom: var(${AminoTheme.border});
-  height: var(${AminoTheme.appbarHeight});
-  z-index: var(${AminoTheme.appbarElevation});
+  box-shadow: var(--amino-shadow-small);
+  border-bottom: var(--amino-border);
+  height: var(--amino-appbar-height);
+  z-index: var(--amino-appbar-elevation);
   position: sticky;
   top: 0;
   box-sizing: border-box;
@@ -70,7 +68,7 @@ export const Layout: React.FC<Props> = ({
   content,
   footer,
   sidebar,
-  headerContent
+  headerContent,
 }) => {
   return (
     <AminoLayout>

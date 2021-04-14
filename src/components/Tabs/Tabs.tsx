@@ -1,46 +1,44 @@
 import React from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
-
 const AminoTabs = styled.div`
   display: flex;
   align-items: center;
-  border: var(${AminoTheme.border});
+  border: var(--amino-border);
   background: var(--amino-surface-color);
-  border-radius: var(${AminoTheme.radiusLg});
+  border-radius: var(--amino-radius-lg);
 `;
 
 const Tab = styled.div`
   flex: 1;
-  padding: var(${AminoTheme.spaceHalf}) 0;
+  padding: var(--amino-space-half) 0;
   cursor: pointer;
   text-align: center;
   transition: all 150ms ease-in-out;
   font-weight: 500;
-  color: var(${AminoTheme.gray900});
+  color: var(--amino-gray-900);
   user-select: none;
   box-sizing: border-box;
-  border-bottom: var(${AminoTheme.radius}) solid transparent;
+  border-bottom: var(--amino-radius) solid transparent;
 
   &.is-selected {
-    color: var(${AminoTheme.primary});
-    border-bottom: var(${AminoTheme.radius}) solid var(${AminoTheme.primary});
+    color: var(--amino-primary);
+    border-bottom: var(--amino-radius) solid var(--amino-primary);
   }
 
   &:first-of-type {
-    border-bottom-left-radius: var(${AminoTheme.radiusLg});
+    border-bottom-left-radius: var(--amino-radius-lg);
   }
   &:last-of-type {
-    border-bottom-right-radius: var(${AminoTheme.radiusLg});
+    border-bottom-right-radius: var(--amino-radius-lg);
   }
 
   & + & {
-    border-left: var(${AminoTheme.border});
+    border-left: var(--amino-border);
   }
 
   &:not(.is-selected):hover {
-    color: var(${AminoTheme.gray900});
+    color: var(--amino-gray-900);
     background: rgba(0, 0, 0, 0.03);
   }
 `;
@@ -54,7 +52,7 @@ export type TabsProps = {
 export const Tabs = ({ selected, onChange, items }: TabsProps) => {
   return (
     <AminoTabs>
-      {items.map(item => (
+      {items.map((item) => (
         <Tab
           onClick={() => onChange(items.indexOf(item))}
           className={selected === items.indexOf(item) ? "is-selected" : ""}

@@ -7,6 +7,7 @@ type Props = {
   items: Array<any>;
 };
 
+/** @deprecated Manually map items instead */
 export const DataList: React.FC<Props> = ({ template, items }) => {
-  return <List>{items.map(item => React.cloneElement(template(item)))}</List>;
+  return <List>{items.map((item) => React.cloneElement(template(item)))}</List>;
 };
