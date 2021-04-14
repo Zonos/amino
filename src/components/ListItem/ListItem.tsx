@@ -1,11 +1,10 @@
 import React, { forwardRef, ReactNode } from "react";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 
 const AminoListItem = styled.div<{ onClick?: () => void }>`
-  padding: var(${AminoTheme.spaceHalf}) var(${AminoTheme.space});
+  padding: var(--amino-space-half) var(--amino-space);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,8 +20,8 @@ const AminoListItem = styled.div<{ onClick?: () => void }>`
   }
 
   &:hover {
-    background: ${p => (p.onClick ? `var(${AminoTheme.hoverColor})` : "")};
-    cursor: ${p => (p.onClick ? "pointer" : "")};
+    background: ${(p) => (p.onClick ? `var(--amino-hover-color)` : "")};
+    cursor: ${(p) => (p.onClick ? "pointer" : "")};
   }
 
   &.disabled {
@@ -35,10 +34,10 @@ const AminoListItem = styled.div<{ onClick?: () => void }>`
 `;
 
 const Icon = styled.img`
-  margin-right: var(${AminoTheme.spaceHalf});
+  margin-right: var(--amino-space-half);
   width: 32px;
   height: 32px;
-  border-radius: var(${AminoTheme.radius});
+  border-radius: var(--amino-radius);
 `;
 
 type Props = {
