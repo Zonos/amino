@@ -23,6 +23,7 @@ type Props = {
 
 export const Toast: React.FC<Props> = ({ children, toastKey }) => (
   <AminoToast
+    layout
     key={toastKey}
     initial={{ opacity: 0, translateX: 10 }}
     animate={{ opacity: 1, translateX: 0 }}

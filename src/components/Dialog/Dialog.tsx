@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ReactDOM from "react-dom";
-import { CSSTransition } from "react-transition-group";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { HStack } from "../Stack";
 import { Text, TextStyle } from "../Text";
@@ -15,7 +15,7 @@ const Backdrop = styled.div`
   left: 0;
   top: 0;
   background: var(--amino-backdrop-color);
-  opacity: 0.8;
+  opacity: 0.65;
   z-index: 999;
   position: fixed;
 `;
@@ -37,8 +37,8 @@ const Popup = styled.div`
   position: relative;
   z-index: 1001;
   background: var(--amino-surface-color);
-  width: 550px;
-  border-radius: var(--amino-radius-lg);
+  width: 444px;
+  border-radius: var(--amino-radius-xl);
   outline: none;
   box-shadow: var(--amino-shadow-larger);
 `;
@@ -46,8 +46,8 @@ const Popup = styled.div`
 const Header = styled.div`
   padding: var(--amino-space);
   border-bottom: var(--amino-border);
-  border-top-left-radius: var(--amino-radius-lg);
-  border-top-right-radius: var(--amino-radius-lg);
+  border-top-left-radius: var(--amino-radius-xl);
+  border-top-right-radius: var(--amino-radius-xl);
   background: var(--amino-surface-color-secondary);
 
   h4 {
@@ -62,8 +62,8 @@ const Footer = styled.div`
   align-items: center;
   justify-content: flex-end;
   background: var(--amino-surface-color-secondary);
-  border-bottom-left-radius: var(--amino-radius-lg);
-  border-bottom-right-radius: var(--amino-radius-lg);
+  border-bottom-left-radius: var(--amino-radius-xl);
+  border-bottom-right-radius: var(--amino-radius-xl);
 
   & > div + div {
     margin-left: var(--amino-space-quarter);
@@ -92,43 +92,45 @@ export const Dialog = ({
   open,
   label,
   actions,
-  children
+  children,
 }: DialogProps) => {
   const toggleScroll = () => document.body.classList.toggle("no-scroll");
 
   return ReactDOM.createPortal(
-    <>
-      <CSSTransition
-        unmountOnExit
-        in={open}
-        timeout={300}
-        classNames="amino-backdrop"
-        onEnter={toggleScroll}
-        onExit={toggleScroll}
-      >
-        <Backdrop data-theme={theme} />
-      </CSSTransition>
-      <CSSTransition
-        unmountOnExit
-        in={open}
-        timeout={300}
-        classNames="amino-dialog"
-      >
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Backdrop data-theme={theme} />
+        </motion.div>
+      )}
+      {open && (
         <DialogLayout data-theme={theme}>
-          <Popup>
-            <Header>
-              <Text style={TextStyle.h4}>{label}</Text>
-            </Header>
-            <Content>{children}</Content>
-            {actions && (
-              <Footer>
-                <HStack spacing="space-quarter">{actions}</HStack>
-              </Footer>
-            )}
-          </Popup>
+          <motion.div
+            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+          >
+            <Popup>
+              <Header>
+                <Text style={TextStyle.h4}>{label}</Text>
+              </Header>
+              <Content>{children}</Content>
+              {actions && (
+                <Footer>
+                  <HStack spacing="space-quarter">{actions}</HStack>
+                </Footer>
+              )}
+            </Popup>
+          </motion.div>
         </DialogLayout>
-      </CSSTransition>
-    </>,
+      )}
+    </AnimatePresence>,
     document.querySelector("body")!
   );
 };
