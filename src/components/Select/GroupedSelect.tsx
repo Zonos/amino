@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelect } from "downshift";
 import styled from "styled-components";
 
-import { AminoTheme } from "../../styles/AminoTheme";
 import { Text, TextStyle } from "../Text";
 import { Menu, MenuItem } from "../Menu";
 import { DropdownIcon } from "../../icons/DropdownIcon";
@@ -14,10 +13,10 @@ const DropdownContainer = styled.div`
 
   svg {
     position: absolute;
-    right: var(${AminoTheme.spaceHalf});
+    right: var(--amino-space-half);
     top: 41px;
     pointer-events: none;
-    color: var(${AminoTheme.textColor});
+    color: var(--amino-text-color);
     width: 16px;
     height: 16px;
     opacity: 0.3;
@@ -29,41 +28,41 @@ const DropdownContainer = styled.div`
   }
 
   span {
-    margin-top: var(${AminoTheme.spaceQuarter});
+    margin-top: var(--amino-space-quarter);
     display: block;
   }
 `;
 
 const DropdownTrigger = styled.button`
-  border-radius: var(${AminoTheme.radius});
+  border-radius: var(--amino-radius);
   outline: none !important;
   box-sizing: border-box;
-  transition: var(${AminoTheme.transition});
+  transition: var(--amino-transition);
   display: block;
   height: 38px;
   width: 100%;
-  padding: 0 var(${AminoTheme.spaceHalf});
-  background: var(${AminoTheme.inputBackground});
-  border: 1px solid var(${AminoTheme.borderColor});
-  box-shadow: var(${AminoTheme.shadowSmall});
+  padding: 0 var(--amino-space-half);
+  background: var(--amino-input-background);
+  border: 1px solid var(--amino-border-color);
+  box-shadow: var(--amino-shadow-small);
   text-align: left;
 
   &:focus,
   &:active {
     outline: none;
-    border: var(${AminoTheme.borderBlue});
-    box-shadow: var(${AminoTheme.glowBlue});
+    border: var(--amino-border-blue);
+    box-shadow: var(--amino-glow-blue);
   }
 `;
 
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: 1px solid var(${AminoTheme.borderColor});
+  border: 1px solid var(--amino-border-color);
   z-index: 10;
   position: absolute;
-  padding: var(${AminoTheme.radius}) 0;
-  margin-top: var(${AminoTheme.spaceQuarter});
+  padding: var(--amino-radius) 0;
+  margin-top: var(--amino-space-quarter);
   right: 0;
   min-width: 100%;
   width: max-content;
@@ -77,22 +76,22 @@ const AnimatedSurface = styled(Surface)`
 `;
 
 const DropdownItem = styled(MenuItem)<any>`
-  background: ${p =>
-    p.isSelected ? `var(${AminoTheme.hoverColor})` : `var(${AminoTheme.surfaceColor})`};
-  color: ${p =>
-    p.isSelected ? `var(${AminoTheme.primary})` : `var(${AminoTheme.textColor})`};
-  font-weight: ${p => (p.isSelected ? "500" : "normal")};
+  background: ${(p) =>
+    p.isSelected ? `var(--amino-hover-color)` : `var(--amino-surface-color)`};
+  color: ${(p) =>
+    p.isSelected ? `var(--amino-primary)` : `var(--amino-text-color)`};
+  font-weight: ${(p) => (p.isSelected ? "500" : "normal")};
 `;
 
 const SectionHeader = styled.div`
   span {
     display: block;
-    margin: var(${AminoTheme.spaceHalf});
+    margin: var(--amino-space-half);
   }
 `;
 
 const Placeholder = styled.div<any>`
-  color: var(${AminoTheme.textColor});
+  color: var(--amino-text-color);
   opacity: 0.3;
 `;
 
@@ -121,7 +120,7 @@ export const GroupedSelect: React.FC<Props> = ({
   itemLabelPath,
   itemValuePath,
   labelFormatFunction,
-  tabIndex
+  tabIndex,
 }) => {
   const [selectItems, setSelectItems] = useState([] as any);
 
@@ -153,10 +152,10 @@ export const GroupedSelect: React.FC<Props> = ({
     getLabelProps,
     getMenuProps,
     highlightedIndex,
-    getItemProps
+    getItemProps,
   } = useSelect({
     items: selectItems,
-    initialSelectedItem: value && value.length ? value : null
+    initialSelectedItem: value && value.length ? value : null,
   });
 
   useEffect(() => {
@@ -203,7 +202,7 @@ export const GroupedSelect: React.FC<Props> = ({
       {isOpen && (
         <AnimatedSurface dense depth={Depth.depth16}>
           <Menu {...getMenuProps()}>
-            {Object.keys(items).map(key => {
+            {Object.keys(items).map((key) => {
               return (
                 <div key={key}>
                   <SectionHeader>
@@ -216,7 +215,7 @@ export const GroupedSelect: React.FC<Props> = ({
                       key={`${item}${index}`}
                       {...getItemProps({
                         item,
-                        index: selectItems.indexOf(item)
+                        index: selectItems.indexOf(item),
                       })}
                     >
                       {item}
