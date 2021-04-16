@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import styled from 'styled-components';
 
-import { Text } from '../Text';
+import { Text } from 'components/Text';
+import { MenuItem, Menu } from 'components/Menu';
+
 import { Depth, Surface } from '../../primitives';
-import { MenuItem, Menu } from '../Menu';
 import { DropdownAnimation } from '../../animations';
 
 const DropdownContainer = styled.div`

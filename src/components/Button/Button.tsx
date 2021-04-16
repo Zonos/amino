@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 
-import { Spinner } from '../Spinner';
+import { Spinner } from 'components/Spinner';
 
 const AminoButton = styled.button`
   position: relative;

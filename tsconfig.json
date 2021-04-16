@@ -12,7 +12,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": "src",
   },
-  "include": ["src"]
+  "include": ["src"],
 }

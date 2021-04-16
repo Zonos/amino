@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { HStack } from '../Stack';
-import { Text } from '../Text';
+import { HStack } from 'components/Stack';
+import { Text } from 'components/Text';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?

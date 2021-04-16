@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
-import { Text } from '../Text';
+import { Text } from 'components/Text';
 
 // TODO: style input error states (for in-browser form validation)
 // TODO: only show invalid for required fields _after_ submit attempt

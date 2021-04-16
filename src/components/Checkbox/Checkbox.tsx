@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '../Text';
+import { Text } from 'components/Text';
 
 // TODO: multiline checkboxes could use some work
 

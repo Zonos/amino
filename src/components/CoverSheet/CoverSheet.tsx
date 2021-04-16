@@ -3,8 +3,9 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { HStack } from '../Stack';
-import { Text } from '../Text';
+import { HStack } from 'components/Stack';
+import { Text } from 'components/Text';
+
 import { CloseIcon } from '../../icons';
 
 const StyledDialog = styled(motion.div)`

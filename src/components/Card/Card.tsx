@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { HStack } from '../Stack';
-import { Text } from '../Text';
+import { HStack } from 'components/Stack';
+import { Text } from 'components/Text';
+
 import { Depth, Surface } from '../../primitives';
 
 const CardHeader = styled.header`
