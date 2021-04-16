@@ -38,7 +38,6 @@ const Footer = styled.div`
 
 const ConfirmationPrompt = styled.span`
   opacity: 0.5;
-  font-weight: 500;
 `;
 
 export type ConfirmDialogProps = {
