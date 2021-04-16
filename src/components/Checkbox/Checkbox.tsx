@@ -96,8 +96,6 @@ export const Checkbox = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.7 }}
             key="checkbox"
-            width={10}
-            height={7}
             viewBox="0 0 20 20"
             fill="currentColor"
           >
