@@ -10,7 +10,9 @@ const SpinnerMeta: Meta = {
 
 export default SpinnerMeta;
 
-const Template: Story<SpinnerProps> = args => <Spinner {...args} />;
+const Template: Story<SpinnerProps> = ({ size }: SpinnerProps) => (
+  <Spinner size={size} />
+);
 
 export const BasicSpinner = Template.bind({});
 BasicSpinner.args = {
