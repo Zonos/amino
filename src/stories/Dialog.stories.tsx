@@ -22,7 +22,18 @@ const Template: Story<DialogProps> = ({
   return (
     <>
       <Button onClick={() => setOpen(true)}>open</Button>
-      <Dialog actions={actions} label={label} open={open}>
+      <Dialog
+        actions={
+          <>
+            <Button onClick={() => setOpen(false)}>Secondary action</Button>
+            <Button onClick={() => setOpen(false)} intent="primary">
+              Primary action
+            </Button>
+          </>
+        }
+        label={label}
+        open={open}
+      >
         {children}
       </Dialog>
     </>
