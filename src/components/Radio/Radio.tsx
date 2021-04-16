@@ -67,7 +67,7 @@ export const Radio = ({ label, checked, onChange }: RadioProps) => (
         <CircleIcon />
       </SelectedRadio>
     )}
-    {label && <label>{label}</label>}
+    {label && <Text style="inputlabel">{label}</Text>}
   </RadioContainer>
 );
 
