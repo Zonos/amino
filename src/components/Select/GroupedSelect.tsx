@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Text, TextStyle } from "../Text";
 import { Menu, MenuItem } from "../Menu";
 import { DropdownIcon } from "../../icons/DropdownIcon";
-import { Depth, Surface } from "../../primitives";
+import { Depth, Surface } from "../../types";
 import { DropdownAnimation } from "../../animations";
 
 const DropdownContainer = styled.div`

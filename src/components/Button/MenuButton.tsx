@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { Button } from "./Button";
-import { Depth, Surface } from "../../primitives";
+import { Depth, Surface } from "../../types";
 import { DropdownAnimation } from "../../animations";
 import { DropdownIcon } from "../../icons/DropdownIcon";
 

@@ -1,46 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import ReactDOM from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
 
 import { HStack } from "../Stack";
 import { Text, TextStyle } from "../Text";
+import { IAminoTheme } from "../../types";
 
-// TODO: scrollable dialog, max height, etc.
-// TODO: close with keyboard shortcut?
-
-const Backdrop = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background: var(--amino-backdrop-color);
-  z-index: 999;
-  position: fixed;
-`;
-
-const DialogLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--amino-text-color);
-`;
-
-const Popup = styled(motion.div)`
-  position: relative;
-  z-index: 1001;
-  background: var(--amino-surface-color);
-  width: 444px;
-  border-radius: var(--amino-radius-xl);
-  outline: none;
-  box-shadow: var(--amino-shadow-larger);
-`;
+import { BaseDialog } from "./BaseDialog";
 
 const Header = styled.div`
   padding: var(--amino-space);
@@ -76,8 +41,6 @@ const Content = styled.div`
   overscroll-behavior: contain;
 `;
 
-type IAminoTheme = "dark" | "light";
-
 export type DialogProps = {
   open: boolean;
   label?: string;
@@ -92,43 +55,16 @@ export const Dialog = ({
   label,
   actions,
   children,
-}: DialogProps) => {
-  const toggleScroll = () => document.body.classList.toggle("no-scroll");
-
-  return ReactDOM.createPortal(
-    <AnimatePresence>
-      {open && (
-        <Backdrop
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.65 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          key="dialog-backdrop"
-          data-theme={theme}
-        />
-      )}
-      {open && (
-        <DialogLayout data-theme={theme}>
-          <Popup
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            key="dialog"
-          >
-            <Header>
-              <Text style={TextStyle.h4}>{label}</Text>
-            </Header>
-            <Content>{children}</Content>
-            {actions && (
-              <Footer>
-                <HStack spacing="space-quarter">{actions}</HStack>
-              </Footer>
-            )}
-          </Popup>
-        </DialogLayout>
-      )}
-    </AnimatePresence>,
-    document.querySelector("body")!
-  );
-};
+}: DialogProps) => (
+  <BaseDialog data-theme={theme} open={open}>
+    <Header>
+      <Text style={TextStyle.h4}>{label}</Text>
+    </Header>
+    <Content>{children}</Content>
+    {actions && (
+      <Footer>
+        <HStack spacing="space-quarter">{actions}</HStack>
+      </Footer>
+    )}
+  </BaseDialog>
+);

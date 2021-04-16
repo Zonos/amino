@@ -57,10 +57,16 @@
   --amino-cyan-900: #008c99;
 
   --amino-red-alpha: #e0451a80;
-  --amino-red-300: #e0451a;
-  --amino-red-400: #d72b00;
-  --amino-red-700: #bb1b00;
-  --amino-red-900: #870900;
+  --amino-red-50: #fef2f2;
+  --amino-red-100: #fee2e2;
+  --amino-red-200: #fecaca;
+  --amino-red-300: #fca5a5;
+  --amino-red-400: #f87171;
+  --amino-red-500: #ef4444;
+  --amino-red-600: #dc2626;
+  --amino-red-700: #b91c1c;
+  --amino-red-800: #991b1b;
+  --amino-red-900: #7f1d1d;
 
   --amino-orange-alpha: #ffa51e80;
   --amino-orange-300: #ffa51e;

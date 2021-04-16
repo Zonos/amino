@@ -5,13 +5,13 @@ import { withDesign } from "storybook-addon-designs";
 import { Button } from "../components/Button";
 import { Dialog, DialogProps } from "../components/Dialog";
 
-const CoverSheetMeta: Meta = {
+const DialogMeta: Meta = {
   title: "Amino/Dialog",
   component: Dialog,
   decorators: [withDesign],
 };
 
-export default CoverSheetMeta;
+export default DialogMeta;
 
 const Template: Story<DialogProps> = ({
   label,
@@ -33,6 +33,7 @@ export const BasicDialog = Template.bind({});
 BasicDialog.args = {
   label: "Label",
   children: <div>Children</div>,
+  actions: <Button>Close</Button>,
 };
 BasicDialog.parameters = {
   design: {

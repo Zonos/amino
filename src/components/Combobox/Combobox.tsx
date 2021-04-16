@@ -3,7 +3,7 @@ import { useCombobox } from "downshift";
 import styled from "styled-components";
 
 import { Text, TextStyle } from "../Text";
-import { Depth, Surface } from "../../primitives";
+import { Depth, Surface } from "../../types";
 import { MenuItem, Menu } from "../Menu";
 import { DropdownAnimation } from "../../animations";
 

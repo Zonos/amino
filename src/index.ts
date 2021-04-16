@@ -21,14 +21,10 @@ export { Menu, MenuItem } from "./components/Menu";
 export { Spinner } from "./components/Spinner";
 export { Skeleton } from "./components/Skeleton";
 
-export { Depth, Surface } from "./primitives";
-
-export { AminoOnSaveHandler } from "./utils/AminoOnSaveHandler";
+export { Intent, Depth, Surface, AminoOnSaveHandler } from "./types";
 
 export { useInputValue } from "./hooks/useInputValue";
 export { useCheckboxValue } from "./hooks/useCheckboxValue";
-
-export { Intent } from "./utils/Intent";
 
 export { DropdownAnimation, DropdownAnimationInverse } from "./animations";
 

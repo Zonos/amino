@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { HStack } from "../Stack";
 import { Text, TextStyle } from "../Text";
-import { Depth, Surface } from "../../primitives";
+import { Depth, Surface } from "../../types";
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);
@@ -47,7 +47,7 @@ export const Card = ({
   children,
   className,
   footerActions,
-  label
+  label,
 }: CardProps) => {
   return (
     <Surface depth={Depth.depth4} className={className || ""}>
