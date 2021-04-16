@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Depth } from './Depth';
 
-const SurfaceBase = styled.div<any>`
+const SurfaceBase = styled.div<{ dense?: boolean }>`
   background: var(--amino-surface-color);
   padding: var(--amino-space);
   color: var(--amino-text-color);
