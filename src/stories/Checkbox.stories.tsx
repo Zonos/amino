@@ -12,7 +12,13 @@ const CheckboxMeta: Meta = {
 
 export default CheckboxMeta;
 
-const Template: Story<CheckboxProps> = args => <Checkbox {...args} />;
+const Template: Story<CheckboxProps> = ({
+  label,
+  onChange,
+  checked,
+}: CheckboxProps) => (
+  <Checkbox label={label} onChange={onChange} checked={checked} />
+);
 
 export const BasicCheckbox = Template.bind({});
 BasicCheckbox.args = {
