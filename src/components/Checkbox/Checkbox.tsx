@@ -69,9 +69,6 @@ const CheckboxContainer = styled.div<{
     flex-direction: column;
     cursor: pointer;
     align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
-  }
-
-  h5 {
     margin-bottom: 0;
   }
 `;
