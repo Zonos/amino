@@ -33,7 +33,7 @@ const InputSuffix = styled(InputDecorator)`
   border-left: 0;
 `;
 
-const AminoInput = styled.input<any>`
+const AminoInput = styled.input`
   height: 38px;
   box-sizing: border-box;
   position: relative;
@@ -76,7 +76,7 @@ const Fields = styled.div`
   box-shadow: var(--amino-shadow-small);
 `;
 
-const AminoInputWrapper = styled.div<any>`
+const AminoInputWrapper = styled.div<{ width?: number }>`
   position: relative;
   width: ${p => (p.width ? `${p.width}px` : '100%')};
   span {
