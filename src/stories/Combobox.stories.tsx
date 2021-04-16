@@ -12,7 +12,21 @@ const ComboboxMeta: Meta = {
 
 export default ComboboxMeta;
 
-const Template: Story<ComboboxProps> = args => <Combobox {...args} />;
+const Template: Story<ComboboxProps> = ({
+  label,
+  items,
+  onChange,
+  value,
+  placeholder,
+}: ComboboxProps) => (
+  <Combobox
+    label={label}
+    items={items}
+    onChange={onChange}
+    value={value}
+    placeholder={placeholder}
+  />
+);
 
 export const BasicCombobox = Template.bind({});
 BasicCombobox.args = {
