@@ -1,28 +1,28 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
-import { withDesign } from "storybook-addon-designs";
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
 
-import { MenuButton, MenuButtonProps } from "../components/Button";
+import { MenuButton, MenuButtonProps } from '../components/Button';
 
 const MenuButtonMeta: Meta = {
-  title: "Amino/MenuButton",
+  title: 'Amino/MenuButton',
   component: MenuButton,
   decorators: [withDesign],
 };
 
 export default MenuButtonMeta;
 
-const Template: Story<MenuButtonProps> = (args) => <MenuButton {...args} />;
+const Template: Story<MenuButtonProps> = args => <MenuButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "Example menu button",
-  children: "Menu contents",
+  label: 'Example menu button',
+  children: 'Menu contents',
 };
 Default.parameters = {
   design: {
-    type: "figma",
+    type: 'figma',
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A89",
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A89',
   },
 };

@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
-import ReactTooltip from "react-tooltip";
+import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
-import { Spinner } from "../Spinner";
+import { Spinner } from '../Spinner';
 
 const AminoButton = styled.button`
   position: relative;
@@ -93,7 +93,7 @@ const Danger = styled(AminoButton)`
 `;
 
 export type ButtonProps = {
-  intent?: "primary" | "danger" | "icon" | "secondary";
+  intent?: 'primary' | 'danger' | 'icon' | 'secondary';
   loading?: boolean;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -134,18 +134,18 @@ export const Button = ({
   const buttonProps = {
     onClick,
     className,
-    "data-tip": tooltip,
+    'data-tip': tooltip,
     tabIndex,
   };
 
   switch (intent) {
-    case "primary":
+    case 'primary':
       return <Primary {...buttonProps}>{content}</Primary>;
-    case "danger":
+    case 'danger':
       return <Danger {...buttonProps}>{content}</Danger>;
-    case "icon":
+    case 'icon':
       return <Icon {...buttonProps}>{content}</Icon>;
-    case "secondary":
+    case 'secondary':
     default:
       return <Secondary {...buttonProps}>{content}</Secondary>;
   }

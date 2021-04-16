@@ -1,12 +1,12 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 export const useCheckboxValue = (initialValue: boolean) => {
-  let [checked, setChecked] = useState(initialValue);
+  const [checked, setChecked] = useState(initialValue);
 
-  let onChange = useCallback(setChecked, []);
+  const onChange = useCallback(setChecked, []);
 
   return {
     checked,
-    onChange
+    onChange,
   };
 };

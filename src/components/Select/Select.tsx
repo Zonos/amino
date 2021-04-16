@@ -1,8 +1,8 @@
-import React, { forwardRef } from "react";
-import styled from "styled-components";
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
 
-import { Text, TextStyle } from "../Text";
-import { DropdownIcon } from "../../icons/DropdownIcon";
+import { Text, TextStyle } from '../Text';
+import { DropdownIcon } from '../../icons/DropdownIcon';
 
 const StyledSelect = styled.select`
   border-radius: var(--amino-radius);
@@ -95,9 +95,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
       if (labelFormatFunction) {
         return labelFormatFunction(label);
-      } else {
-        return label;
       }
+      return label;
     };
 
     return (
@@ -107,7 +106,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <SelectWrapper>
           <StyledSelect
             autoFocus={autoFocus}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={e => onChange(e.target.value)}
             ref={ref}
             tabIndex={tabIndex}
             value={value}

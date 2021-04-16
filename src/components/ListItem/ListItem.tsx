@@ -1,7 +1,7 @@
-import React, { forwardRef, ReactNode } from "react";
-import styled from "styled-components";
+import React, { forwardRef, ReactNode } from 'react';
+import styled from 'styled-components';
 
-import { Text, TextStyle } from "../Text";
+import { Text, TextStyle } from '../Text';
 
 const AminoListItem = styled.div<{ onClick?: () => void }>`
   padding: var(--amino-space-half) var(--amino-space);
@@ -20,8 +20,8 @@ const AminoListItem = styled.div<{ onClick?: () => void }>`
   }
 
   &:hover {
-    background: ${(p) => (p.onClick ? `var(--amino-hover-color)` : "")};
-    cursor: ${(p) => (p.onClick ? "pointer" : "")};
+    background: ${p => (p.onClick ? `var(--amino-hover-color)` : '')};
+    cursor: ${p => (p.onClick ? 'pointer' : '')};
   }
 
   &.disabled {
@@ -66,7 +66,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
     };
     return (
       <AminoListItem
-        className={disabled ? "disabled" : ""}
+        className={disabled ? 'disabled' : ''}
         onClick={() => !disabled && onClick && onClick()}
         ref={ref}
       >

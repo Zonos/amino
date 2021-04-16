@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MenuItem = styled.li`
   padding: 0 var(--amino-space-half);

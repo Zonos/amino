@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import React from "react";
+import styled from 'styled-components';
+import React from 'react';
 
-import { Depth } from "./Depth";
+import { Depth } from './Depth';
 
 const SurfaceBase = styled.div<any>`
   background: var(--amino-surface-color);
   padding: var(--amino-space);
   color: var(--amino-text-color);
-  border-radius: ${(p) =>
+  border-radius: ${p =>
     p.dense ? `var(--amino-radius)` : `var(--amino-radius-lg)`};
 `;
 
@@ -46,26 +46,26 @@ export const Surface: React.FC<Props> = ({
   switch (depth) {
     case Depth.depth64:
       return (
-        <Depth64 dense={dense} className={className || ""}>
+        <Depth64 dense={dense} className={className || ''}>
           {children}
         </Depth64>
       );
     case Depth.depth16:
       return (
-        <Depth16 dense={dense} className={className || ""}>
+        <Depth16 dense={dense} className={className || ''}>
           {children}
         </Depth16>
       );
     case Depth.depth8:
       return (
-        <Depth8 dense={dense} className={className || ""}>
+        <Depth8 dense={dense} className={className || ''}>
           {children}
         </Depth8>
       );
     case Depth.depth4:
     default:
       return (
-        <Depth4 dense={dense} className={className || ""}>
+        <Depth4 dense={dense} className={className || ''}>
           {children}
         </Depth4>
       );

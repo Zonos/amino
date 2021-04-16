@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Text, TextStyle } from "../Text";
+import { Text, TextStyle } from '../Text';
 
 // TODO: multiline checkboxes could use some work
 
@@ -52,9 +52,9 @@ const CheckboxContainer = styled.div<any>`
   display: flex;
   flex-direction: row;
   user-select: none;
-  align-items: ${(p) => (p.multiline ? "flex-start" : "center")};
-  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
-  opacity: ${(props) => (props.disabled ? "0.3" : "1")};
+  align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
+  opacity: ${props => (props.disabled ? '0.3' : '1')};
 
   a {
     color: var(--amino-primary);
@@ -65,7 +65,7 @@ const CheckboxContainer = styled.div<any>`
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    align-items: ${(p) => (p.multiline ? "flex-start" : "center")};
+    align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
   }
 
   h5 {

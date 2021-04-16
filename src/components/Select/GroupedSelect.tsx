@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useSelect } from "downshift";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import { useSelect } from 'downshift';
+import styled from 'styled-components';
 
-import { Text, TextStyle } from "../Text";
-import { Menu, MenuItem } from "../Menu";
-import { DropdownIcon } from "../../icons/DropdownIcon";
-import { Depth, Surface } from "../../primitives";
-import { DropdownAnimation } from "../../animations";
+import { Text, TextStyle } from '../Text';
+import { Menu, MenuItem } from '../Menu';
+import { DropdownIcon } from '../../icons/DropdownIcon';
+import { Depth, Surface } from '../../primitives';
+import { DropdownAnimation } from '../../animations';
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -76,11 +76,11 @@ const AnimatedSurface = styled(Surface)`
 `;
 
 const DropdownItem = styled(MenuItem)<any>`
-  background: ${(p) =>
+  background: ${p =>
     p.isSelected ? `var(--amino-hover-color)` : `var(--amino-surface-color)`};
-  color: ${(p) =>
+  color: ${p =>
     p.isSelected ? `var(--amino-primary)` : `var(--amino-text-color)`};
-  font-weight: ${(p) => (p.isSelected ? "500" : "normal")};
+  font-weight: ${p => (p.isSelected ? '500' : 'normal')};
 `;
 
 const SectionHeader = styled.div`
@@ -130,13 +130,12 @@ export const GroupedSelect: React.FC<Props> = ({
 
       if (labelFormatFunction) {
         return labelFormatFunction(label);
-      } else {
-        return label;
       }
+      return label;
     });
 
   useEffect(() => {
-    let flatItems = [] as any;
+    const flatItems = [] as any;
 
     Object.entries(items).forEach(([key, value]) => {
       flatItems.push(parseItems(value));
@@ -202,7 +201,7 @@ export const GroupedSelect: React.FC<Props> = ({
       {isOpen && (
         <AnimatedSurface dense depth={Depth.depth16}>
           <Menu {...getMenuProps()}>
-            {Object.keys(items).map((key) => {
+            {Object.keys(items).map(key => {
               return (
                 <div key={key}>
                   <SectionHeader>

@@ -1,13 +1,13 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Select, SelectProps } from "../../components/Select";
-import { HStack, HStackProps } from "../../components/Stack";
+import { Select, SelectProps } from '../../components/Select';
+import { HStack, HStackProps } from '../../components/Stack';
 
 const HStackMeta: Meta = {
-  title: "Amino/HStack",
+  title: 'Amino/HStack',
   component: HStack,
-  subcomponents: { Select }
+  subcomponents: { Select },
 };
 
 export default HStackMeta;
@@ -34,5 +34,5 @@ const Template: Story<HStackProps> = args => (
 
 export const HStackSelects = Template.bind({});
 HStackSelects.args = {
-  spacing: "space"
+  spacing: 'space',
 };

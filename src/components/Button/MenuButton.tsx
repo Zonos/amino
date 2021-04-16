@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
-import { Button } from "./Button";
-import { Depth, Surface } from "../../primitives";
-import { DropdownAnimation } from "../../animations";
-import { DropdownIcon } from "../../icons/DropdownIcon";
+import { Button } from './Button';
+import { Depth, Surface } from '../../primitives';
+import { DropdownAnimation } from '../../animations';
+import { DropdownIcon } from '../../icons/DropdownIcon';
 
 const Wrapper = styled.div`
   position: relative;
@@ -59,10 +59,10 @@ export const MenuButton = ({ label, children }: MenuButtonProps) => {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener('mousedown', handleClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener('mousedown', handleClick);
     };
   }, []);
 

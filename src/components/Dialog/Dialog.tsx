@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import ReactDOM from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import React from 'react';
+import styled from 'styled-components';
+import ReactDOM from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { HStack } from "../Stack";
-import { Text, TextStyle } from "../Text";
+import { HStack } from '../Stack';
+import { Text, TextStyle } from '../Text';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?
@@ -76,7 +76,7 @@ const Content = styled.div`
   overscroll-behavior: contain;
 `;
 
-type IAminoTheme = "dark" | "light";
+type IAminoTheme = 'dark' | 'light';
 
 export type DialogProps = {
   open: boolean;
@@ -93,7 +93,7 @@ export const Dialog = ({
   actions,
   children,
 }: DialogProps) => {
-  const toggleScroll = () => document.body.classList.toggle("no-scroll");
+  const toggleScroll = () => document.body.classList.toggle('no-scroll');
 
   return ReactDOM.createPortal(
     <AnimatePresence>
@@ -129,6 +129,6 @@ export const Dialog = ({
         </DialogLayout>
       )}
     </AnimatePresence>,
-    document.querySelector("body")!
+    document.querySelector('body')!
   );
 };

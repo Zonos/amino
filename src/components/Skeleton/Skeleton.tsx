@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const shimmerAnimation = (width: number) => keyframes`
   0% {
@@ -18,8 +18,8 @@ export type SkeletonProps = {
 
 /* animation: ${(p) => shimmerAnimation(p.width || 100)} 3s infinite; */
 const SkeletonWrapper = styled.div<SkeletonProps>`
-  height: ${(p) => (p.height ? `${p.height}px` : `1em`)};
-  width: ${(p) => `${p.width}px` || "100%"};
+  height: ${p => (p.height ? `${p.height}px` : `1em`)};
+  width: ${p => `${p.width}px` || '100%'};
   border-radius: var(--amino-radius);
   position: relative;
   background: var(--amino-gray-200);
@@ -29,9 +29,9 @@ const SkeletonShimmer = styled.div<{ width: number }>`
   width: 65%;
   height: 100%;
   display: block;
-  content: " ";
+  content: ' ';
   background: var(--amino-gray-50);
-  animation: 2s infinite ${(p) => shimmerAnimation(p.width)};
+  animation: 2s infinite ${p => shimmerAnimation(p.width)};
   animation-timing-function: ease-in-out;
   position: absolute;
   left: 0;

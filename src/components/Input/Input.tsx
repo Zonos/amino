@@ -1,7 +1,7 @@
-import React, { ChangeEvent } from "react";
-import styled from "styled-components";
+import React, { ChangeEvent } from 'react';
+import styled from 'styled-components';
 
-import { TextStyle, Text } from "../Text";
+import { TextStyle, Text } from '../Text';
 
 // TODO: style input error states (for in-browser form validation)
 // TODO: only show invalid for required fields _after_ submit attempt
@@ -78,7 +78,7 @@ const Fields = styled.div`
 
 const AminoInputWrapper = styled.div<any>`
   position: relative;
-  width: ${(p) => (p.width ? `${p.width}px` : "100%")};
+  width: ${p => (p.width ? `${p.width}px` : '100%')};
   span {
     margin-top: var(--amino-space-quarter);
     display: block;
@@ -168,7 +168,7 @@ export const Input = ({
   return (
     <AminoInputWrapper
       width={width}
-      className={`amino-input-wrapper ${disabled ? "disabled" : ""}`}
+      className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
     >
       {label && <Text style={TextStyle.InputLabel}>{label}</Text>}
       <Fields>
@@ -176,14 +176,14 @@ export const Input = ({
           <InputPrefix>{prefix || inputPrefix}</InputPrefix>
         )}
         <AminoInput
-          className={`${prefix || inputPrefix ? "has-prefix" : ""} ${
-            suffix || inputSuffix ? "has-suffix" : ""
+          className={`${prefix || inputPrefix ? 'has-prefix' : ''} ${
+            suffix || inputSuffix ? 'has-suffix' : ''
           }`}
-          placeholder={placeholder || ""}
+          placeholder={placeholder || ''}
           value={value}
           onChange={onChange}
           required={required || false}
-          type={type || "text"}
+          type={type || 'text'}
           readOnly={readOnly || false}
           is-invalid={error && error.length}
           disabled={disabled}

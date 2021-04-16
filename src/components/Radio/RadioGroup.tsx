@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import { Radio } from "./Radio";
+import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
   * {
@@ -37,14 +37,14 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
       const value = itemValuePath
         ? activeItem[itemValuePath]
         : activeItem.value;
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         onChange(value);
       }
     }
   }, [active]);
 
   useEffect(() => {
-    const initial = items.findIndex((el) => {
+    const initial = items.findIndex(el => {
       const value = itemValuePath ? el[itemValuePath] : el.value;
       return value === initialValue;
     });

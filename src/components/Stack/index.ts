@@ -1,11 +1,11 @@
-export { Stack, StackType } from "./Stack";
-export { VStack } from "./VStack";
-export { HStack, HStackProps } from "./HStack";
+export { Stack, StackType } from './Stack';
+export { VStack } from './VStack';
+export { HStack, HStackProps } from './HStack';
 
-export type GridAlignment = "start" | "end";
+export type GridAlignment = 'start' | 'end';
 export type GridSpacing =
-  | "none"
-  | "space-quarter"
-  | "space-half"
-  | "space"
-  | "space-double";
+  | 'none'
+  | 'space-quarter'
+  | 'space-half'
+  | 'space'
+  | 'space-double';

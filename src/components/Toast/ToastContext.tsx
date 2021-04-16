@@ -4,10 +4,10 @@ import React, {
   useState,
   createContext,
   ReactNode,
-} from "react";
-import { AnimatePresence } from "framer-motion";
+} from 'react';
+import { AnimatePresence } from 'framer-motion';
 
-import { Toast } from "./Toast";
+import { Toast } from './Toast';
 
 export const ToastContext = createContext((toast: ReactNode): void => {});
 
@@ -21,7 +21,7 @@ export const ToastContextProvider = ({ children }: Props) => {
   useEffect(() => {
     if (toasts.length > 0) {
       const timer = setTimeout(
-        () => setToasts((toasts) => toasts.slice(1)),
+        () => setToasts(toasts => toasts.slice(1)),
         6000
       );
       return () => clearTimeout(timer);
@@ -30,7 +30,7 @@ export const ToastContextProvider = ({ children }: Props) => {
 
   const addToast = useCallback(
     (toast: ReactNode) => {
-      setToasts((toasts) => toasts.concat(toast));
+      setToasts(toasts => toasts.concat(toast));
     },
     [setToasts]
   );

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import { HStack } from "../Stack";
-import { Text, TextStyle } from "../Text";
-import { Depth, Surface } from "../../primitives";
+import { HStack } from '../Stack';
+import { Text, TextStyle } from '../Text';
+import { Depth, Surface } from '../../primitives';
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);
@@ -47,10 +47,10 @@ export const Card = ({
   children,
   className,
   footerActions,
-  label
+  label,
 }: CardProps) => {
   return (
-    <Surface depth={Depth.depth4} className={className || ""}>
+    <Surface depth={Depth.depth4} className={className || ''}>
       {label && (
         <CardHeader>
           <Text style={TextStyle.h4}>{label}</Text>

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const CircleIcon = () => (
   <svg width="8" height="8" viewBox="0 0 10 10">

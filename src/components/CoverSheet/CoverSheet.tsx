@@ -1,11 +1,11 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import styled from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
+import React from 'react';
+import { createPortal } from 'react-dom';
+import styled from 'styled-components';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { HStack } from "../Stack";
-import { Text, TextStyle } from "../Text";
-import { CloseIcon } from "../../icons";
+import { HStack } from '../Stack';
+import { Text, TextStyle } from '../Text';
+import { CloseIcon } from '../../icons';
 
 const StyledDialog = styled(motion.div)`
   z-index: 990;
@@ -117,6 +117,6 @@ export const CoverSheet = ({
         </StyledDialog>
       )}
     </AnimatePresence>,
-    document.querySelector("body")!
+    document.querySelector('body')!
   );
 };
