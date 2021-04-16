@@ -19,8 +19,8 @@ const InputLabel = styled.label`
   margin-bottom: var(--amino-space-quarter);
   display: block;
   font-size: 1rem;
-  font-weight: 400;
-  opacity: 0.8;
+  font-weight: 500;
+  opacity: 0.6;
 `;
 
 type TextStyle =
