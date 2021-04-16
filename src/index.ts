@@ -9,7 +9,7 @@ export { RadioGroup, Radio } from './components/Radio';
 export { Fieldset } from './components/Fieldset';
 export { Divider } from './components/Divider';
 export { Notice } from './components/Notice';
-export { GroupedSelect, Select } from './components/Select';
+export { Select } from './components/Select';
 export { Combobox } from './components/Combobox';
 export { CoverSheet } from './components/CoverSheet';
 export { ListItem } from './components/ListItem';
