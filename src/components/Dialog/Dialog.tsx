@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { HStack } from '../Stack';
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?
@@ -117,7 +117,7 @@ export const Dialog = ({
             key="dialog"
           >
             <Header>
-              <Text style={TextStyle.h4}>{label}</Text>
+              <Text style="h4">{label}</Text>
             </Header>
             <Content>{children}</Content>
             {actions && (

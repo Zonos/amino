@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
-import { TextStyle, Text } from '../Text';
+import { Text } from '../Text';
 
 // TODO: style input error states (for in-browser form validation)
 // TODO: only show invalid for required fields _after_ submit attempt
@@ -170,7 +170,7 @@ export const Input = ({
       width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
     >
-      {label && <Text style={TextStyle.InputLabel}>{label}</Text>}
+      {label && <Text style="inputlabel">{label}</Text>}
       <Fields>
         {(prefix || inputPrefix) && (
           <InputPrefix>{prefix || inputPrefix}</InputPrefix>
@@ -203,12 +203,12 @@ export const Input = ({
         <>
           {error && error.length ? (
             <Error>
-              <Text style={TextStyle.Subtitle}>{error}</Text>
+              <Text style="subtitle">{error}</Text>
             </Error>
           ) : null}
 
           {(!error || !error.length) && helpText ? (
-            <Text style={TextStyle.Subtitle}>{helpText}</Text>
+            <Text style="subtitle">{helpText}</Text>
           ) : null}
         </>
       )}

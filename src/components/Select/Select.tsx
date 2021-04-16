@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 import { DropdownIcon } from '../../icons/DropdownIcon';
 
 const StyledSelect = styled.select`
@@ -60,7 +60,7 @@ export type SelectProps = {
   items: Array<any>;
   label?: string;
   helpText?: string;
-  onChange: (newValue: string) => any;
+  onChange: (newValue: string) => void;
   value: string;
   placeholder?: string;
   itemLabelPath?: string;
@@ -101,7 +101,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <DropdownContainer className="amino-input-wrapper">
-        {label && <Text style={TextStyle.InputLabel}>{label}</Text>}
+        {label && <Text style="inputlabel">{label}</Text>}
 
         <SelectWrapper>
           <StyledSelect
@@ -127,7 +127,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <DropdownIcon />
         </SelectWrapper>
 
-        {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
+        {helpText && <Text style="subtitle">{helpText}</Text>}
       </DropdownContainer>
     );
   }

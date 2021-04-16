@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 
 // TODO: multiline checkboxes could use some work
 
@@ -107,10 +107,10 @@ export const Checkbox = ({
     )}
     {label && (
       <label>
-        <Text style={TextStyle.h5}>
+        <Text style="inputlabel">
           {labelComponent ? labelComponent : label}
         </Text>
-        {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
+        {subtitle && <Text style="subtitle">{subtitle}</Text>}
       </label>
     )}
   </CheckboxContainer>

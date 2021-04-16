@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { HStack } from '../Stack';
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 import { CloseIcon } from '../../icons';
 
 const StyledDialog = styled(motion.div)`
@@ -103,7 +103,7 @@ export const CoverSheet = ({
           className="print"
         >
           <Header>
-            <Text style={TextStyle.h4}>{label}</Text>
+            <Text style="h4">{label}</Text>
             {actions && (
               <Actions>
                 <HStack>{actions}</HStack>

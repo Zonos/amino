@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelect } from 'downshift';
 import styled from 'styled-components';
 
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 import { Menu, MenuItem } from '../Menu';
 import { DropdownIcon } from '../../icons/DropdownIcon';
 import { Depth, Surface } from '../../primitives';
@@ -182,7 +182,7 @@ export const GroupedSelect: React.FC<Props> = ({
 
   return (
     <DropdownContainer className="amino-input-wrapper">
-      <Text {...getLabelProps()} style={TextStyle.InputLabel}>
+      <Text {...getLabelProps()} style="inputlabel">
         {label}
       </Text>
 
@@ -205,7 +205,7 @@ export const GroupedSelect: React.FC<Props> = ({
               return (
                 <div key={key}>
                   <SectionHeader>
-                    <Text style={TextStyle.SmallHeader}>{key}</Text>
+                    <Text style="smallheader">{key}</Text>
                   </SectionHeader>
 
                   {parseItems(items[key]).map((item: any, index: number) => (
@@ -227,7 +227,7 @@ export const GroupedSelect: React.FC<Props> = ({
         </AnimatedSurface>
       )}
 
-      {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
+      {helpText && <Text style="subtitle">{helpText}</Text>}
 
       <div tabIndex={0} />
     </DropdownContainer>

@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 
 const AminoListItem = styled.div<{ onClick?: () => void }>`
   padding: var(--amino-space-half) var(--amino-space);
@@ -72,8 +72,8 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       >
         {renderIcon()}
         <div>
-          <Text style={TextStyle.h5}>{label}</Text>
-          {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
+          <Text style="h5">{label}</Text>
+          {subtitle && <Text style="subtitle">{subtitle}</Text>}
         </div>
         {rightDecorator}
       </AminoListItem>

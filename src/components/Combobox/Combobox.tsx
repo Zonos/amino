@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import styled from 'styled-components';
 
-import { Text, TextStyle } from '../Text';
+import { Text } from '../Text';
 import { Depth, Surface } from '../../primitives';
 import { MenuItem, Menu } from '../Menu';
 import { DropdownAnimation } from '../../animations';
@@ -236,7 +236,7 @@ export const Combobox = ({
 
   return (
     <DropdownContainer className="amino-input-wrapper">
-      <Text {...getLabelProps()} style={TextStyle.InputLabel}>
+      <Text {...getLabelProps()} style="inputlabel">
         {label}
       </Text>
       <Wrapper {...getComboboxProps()}>
@@ -274,7 +274,7 @@ export const Combobox = ({
         </AnimatedSurface>
       )}
 
-      {helpText && <Text style={TextStyle.Subtitle}>{helpText}</Text>}
+      {helpText && <Text style="subtitle">{helpText}</Text>}
 
       <div tabIndex={0} />
     </DropdownContainer>

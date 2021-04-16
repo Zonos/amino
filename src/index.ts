@@ -1,7 +1,7 @@
 export { Button, MenuButton } from './components/Button';
 export { Layout } from './components/Layout';
 export { Card } from './components/Card';
-export { Text, TextStyle } from './components/Text';
+export { Text } from './components/Text';
 export { Stack, StackType } from './components/Stack';
 export { Input } from './components/Input';
 export { Checkbox } from './components/Checkbox';
