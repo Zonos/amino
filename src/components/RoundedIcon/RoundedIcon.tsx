@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Intent } from "../..";
+import { Intent } from '../..';
 
 const IconWrapper = styled.div`
   width: 32px;
@@ -36,12 +36,12 @@ export type RoundedIconProps = {
 
 export const RoundedIcon = ({ children, intent }: RoundedIconProps) => {
   switch (intent) {
-    case "danger":
+    case 'danger':
       return <DangerIconWrapper>{children}</DangerIconWrapper>;
-    case "primary":
+    case 'primary':
       return <PrimaryIconWrapper>{children}</PrimaryIconWrapper>;
-    case "info":
-    case "secondary":
+    case 'info':
+    case 'secondary':
     default:
       return <IconWrapper>{children}</IconWrapper>;
   }

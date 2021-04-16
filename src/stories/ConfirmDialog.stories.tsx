@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
-import { withDesign } from "storybook-addon-designs";
+import React, { useState } from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
 
-import { Button } from "../components/Button";
-import { ConfirmDialog, ConfirmDialogProps } from "../components/ConfirmDialog";
+import { Button } from '../components/Button';
+import { ConfirmDialog, ConfirmDialogProps } from '../components/ConfirmDialog';
 
 const ConfirmDialogMeta: Meta = {
-  title: "Amino/ConfirmDialog",
+  title: 'Amino/ConfirmDialog',
   component: ConfirmDialog,
   decorators: [withDesign],
 };
@@ -40,33 +40,33 @@ const Template: Story<ConfirmDialogProps> = ({
 
 export const DefaultConfirm = Template.bind({});
 DefaultConfirm.args = {
-  label: "Are you sure?",
-  subtitle: "Do you want to perform this action?",
+  label: 'Are you sure?',
+  subtitle: 'Do you want to perform this action?',
   confirmText: "Don't do it",
-  dismissText: "Do action",
-  intent: "primary",
+  dismissText: 'Do action',
+  intent: 'primary',
 };
 DefaultConfirm.parameters = {
   design: {
-    type: "figma",
+    type: 'figma',
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A53",
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A53',
   },
 };
 
 export const DangerConfirm = Template.bind({});
 DangerConfirm.args = {
-  label: "Are you sure?",
+  label: 'Are you sure?',
   subtitle:
-    "Do you want to email these 50,000 customers your middle school yearbook photo?",
-  confirmText: "Email photos",
+    'Do you want to email these 50,000 customers your middle school yearbook photo?',
+  confirmText: 'Email photos',
   dismissText: "Don't email",
-  intent: "danger",
+  intent: 'danger',
 };
 DangerConfirm.parameters = {
   design: {
-    type: "figma",
+    type: 'figma',
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A70",
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A70',
   },
 };

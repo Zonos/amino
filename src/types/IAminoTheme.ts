@@ -1,1 +1,1 @@
-export type IAminoTheme = "dark" | "light";
+export type IAminoTheme = 'dark' | 'light';

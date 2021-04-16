@@ -1,1 +1,1 @@
-export { ConfirmDialogProps, ConfirmDialog } from "./ConfirmDialog";
+export { ConfirmDialogProps, ConfirmDialog } from './ConfirmDialog';

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import ReactDOM from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import React from 'react';
+import styled from 'styled-components';
+import ReactDOM from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { IAminoTheme } from "../../types";
+import { IAminoTheme } from '../../types';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?
@@ -35,7 +35,7 @@ const Popup = styled(motion.div)<{ width: number }>`
   position: relative;
   z-index: 1001;
   background: var(--amino-surface-color);
-  width: ${(p) => p.width}px;
+  width: ${p => p.width}px;
   border-radius: var(--amino-radius-xl);
   outline: none;
   box-shadow: var(--amino-shadow-larger);
@@ -77,6 +77,6 @@ export const BaseDialog = ({ width, theme, open, children }: DialogProps) => {
         </DialogLayout>
       )}
     </AnimatePresence>,
-    document.querySelector("body")!
+    document.querySelector('body')!
   );
 };

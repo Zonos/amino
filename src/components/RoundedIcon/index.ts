@@ -1,1 +1,1 @@
-export { RoundedIcon, RoundedIconProps } from "./RoundedIcon";
+export { RoundedIcon, RoundedIconProps } from './RoundedIcon';
