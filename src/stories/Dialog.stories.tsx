@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
-import { withDesign } from "storybook-addon-designs";
+import React, { useState } from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
 
-import { Button } from "../components/Button";
-import { Dialog, DialogProps } from "../components/Dialog";
+import { Button } from '../components/Button';
+import { Dialog, DialogProps } from '../components/Dialog';
 
 const DialogMeta: Meta = {
-  title: "Amino/Dialog",
+  title: 'Amino/Dialog',
   component: Dialog,
   decorators: [withDesign],
 };
@@ -31,14 +31,14 @@ const Template: Story<DialogProps> = ({
 
 export const BasicDialog = Template.bind({});
 BasicDialog.args = {
-  label: "Label",
+  label: 'Label',
   children: <div>Children</div>,
   actions: <Button>Close</Button>,
 };
 BasicDialog.parameters = {
   design: {
-    type: "figma",
+    type: 'figma',
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79",
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
   },
 };

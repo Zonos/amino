@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { GridAlignment, GridSpacing } from ".";
+import { GridAlignment, GridSpacing } from '.';
 
 export type HStackProps = {
   alignment?: GridAlignment;
@@ -21,6 +21,6 @@ export const HStack = styled.div<HStackProps>`
   grid-auto-flow: column;
 
   & > * {
-    justify-self: ${p => p.alignment || "unset"};
+    justify-self: ${p => p.alignment || 'unset'};
   }
 `;

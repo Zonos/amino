@@ -1,1 +1,1 @@
-export { Card, CardProps } from "./Card";
+export { Card, CardProps } from './Card';

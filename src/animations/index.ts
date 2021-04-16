@@ -1,1 +1,4 @@
-export { DropdownAnimation, DropdownAnimationInverse } from './DropdownAnimation';
+export {
+  DropdownAnimation,
+  DropdownAnimationInverse,
+} from './DropdownAnimation';

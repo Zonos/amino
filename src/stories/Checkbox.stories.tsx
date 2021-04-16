@@ -1,27 +1,33 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
-import { withDesign } from "storybook-addon-designs";
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
 
-import { Checkbox, CheckboxProps } from "../components/Checkbox";
+import { Checkbox, CheckboxProps } from '../components/Checkbox';
 
 const CheckboxMeta: Meta = {
-  title: "Amino/Checkbox",
+  title: 'Amino/Checkbox',
   component: Checkbox,
   decorators: [withDesign],
 };
 
 export default CheckboxMeta;
 
-const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
+const Template: Story<CheckboxProps> = ({
+  label,
+  onChange,
+  checked,
+}: CheckboxProps) => (
+  <Checkbox label={label} onChange={onChange} checked={checked} />
+);
 
 export const BasicCheckbox = Template.bind({});
 BasicCheckbox.args = {
-  label: "Checkbox label",
+  label: 'Checkbox label',
 };
 BasicCheckbox.parameters = {
   design: {
-    type: "figma",
+    type: 'figma',
     url:
-      "https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49",
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
   },
 };

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 export const useInputValue = (initialValue: string) => {
   const [value, setValue] = useState(initialValue);
@@ -9,6 +9,6 @@ export const useInputValue = (initialValue: string) => {
 
   return {
     value,
-    onChange
+    onChange,
   };
 };

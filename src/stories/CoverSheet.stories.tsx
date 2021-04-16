@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import React, { useState } from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Button } from "../components/Button";
-import { CoverSheet, CoverSheetProps } from "../components/CoverSheet";
+import { Button } from '../components/Button';
+import { CoverSheet, CoverSheetProps } from '../components/CoverSheet';
 
 const CoverSheetMeta: Meta = {
-  title: "Amino/CoverSheet",
+  title: 'Amino/CoverSheet',
   component: CoverSheet,
 };
 
@@ -38,7 +38,7 @@ const Template: Story<CoverSheetProps> = ({
 
 export const CoverSheetSelects = Template.bind({});
 CoverSheetSelects.args = {
-  label: "Label",
-  onClose: () => console.log("closed"),
+  label: 'Label',
+  onClose: () => console.log('closed'),
   children: <div>Children</div>,
 };

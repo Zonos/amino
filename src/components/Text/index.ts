@@ -1,1 +1,1 @@
-export { Text, TextStyle } from './Text';
+export { Text } from './Text';

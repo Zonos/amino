@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 /** @deprecated Please use VStacks instead :) */
 export const Fieldset = styled.div`

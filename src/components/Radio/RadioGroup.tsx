@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import { Radio } from "./Radio";
+import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
   * {
@@ -30,21 +30,21 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
 }: Props<T>) => {
   const [active, setActive] = useState(-1);
 
-  const activeItem = items.find((x, i) => i === active);
+  const activeItem = items.find((_, i) => i === active);
 
   useEffect(() => {
     if (onChange && activeItem && activeItem?.value !== initialValue) {
       const value = itemValuePath
         ? activeItem[itemValuePath]
         : activeItem.value;
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         onChange(value);
       }
     }
   }, [active]);
 
   useEffect(() => {
-    const initial = items.findIndex((el) => {
+    const initial = items.findIndex(el => {
       const value = itemValuePath ? el[itemValuePath] : el.value;
       return value === initialValue;
     });
@@ -61,7 +61,7 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
       <Radio
         checked={index === active}
         onChange={() => setActive(index)}
-        key={index}
+        key={label as string}
         label={label as string}
       />
     );

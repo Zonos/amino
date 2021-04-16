@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { HStack } from "../Stack";
-import { Text, TextStyle } from "../Text";
-import { IAminoTheme } from "../../types";
+import { HStack } from 'components/Stack';
+import { Text } from 'components/Text';
+import { IAminoTheme } from 'types';
 
-import { BaseDialog } from "./BaseDialog";
+import { BaseDialog } from './BaseDialog';
 
 const Header = styled.div`
   padding: var(--amino-space);
@@ -58,7 +58,7 @@ export const Dialog = ({
 }: DialogProps) => (
   <BaseDialog data-theme={theme} open={open}>
     <Header>
-      <Text style={TextStyle.h4}>{label}</Text>
+      <Text style="h4">{label}</Text>
     </Header>
     <Content>{children}</Content>
     {actions && (

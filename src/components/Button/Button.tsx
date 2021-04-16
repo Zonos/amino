@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
-import ReactTooltip from "react-tooltip";
+import React, { ReactNode } from 'react';
+import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 
-import { Spinner } from "../Spinner";
-import { Intent } from "../..";
+import { Spinner } from 'components/Spinner';
+import { Intent } from 'types';
 
 const AminoButton = styled.button`
   position: relative;
@@ -135,18 +135,18 @@ export const Button = ({
   const buttonProps = {
     onClick,
     className,
-    "data-tip": tooltip,
+    'data-tip': tooltip,
     tabIndex,
   };
 
   switch (intent) {
-    case "primary":
+    case 'primary':
       return <Primary {...buttonProps}>{content}</Primary>;
-    case "danger":
+    case 'danger':
       return <Danger {...buttonProps}>{content}</Danger>;
-    case "icon":
+    case 'icon':
       return <Icon {...buttonProps}>{content}</Icon>;
-    case "secondary":
+    case 'secondary':
     default:
       return <Secondary {...buttonProps}>{content}</Secondary>;
   }

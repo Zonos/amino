@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { List } from "../List";
+import { List } from '../List';
 
 type Props = {
   template: (item: any) => React.ReactElement;
@@ -9,5 +9,5 @@ type Props = {
 
 /** @deprecated Manually map items instead */
 export const DataList: React.FC<Props> = ({ template, items }) => {
-  return <List>{items.map((item) => React.cloneElement(template(item)))}</List>;
+  return <List>{items.map(item => React.cloneElement(template(item)))}</List>;
 };
