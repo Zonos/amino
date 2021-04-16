@@ -13,7 +13,16 @@ const CardMeta: Meta = {
 
 export default CardMeta;
 
-const Template: Story<CardProps> = args => <Card {...args} />;
+const Template: Story<CardProps> = ({
+  label,
+  children,
+  actions,
+  footerActions,
+}: CardProps) => (
+  <Card label={label} actions={actions} footerActions={footerActions}>
+    {children}
+  </Card>
+);
 
 export const BasicCard = Template.bind({});
 BasicCard.args = {
