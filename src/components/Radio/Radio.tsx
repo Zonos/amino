@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Text } from 'components/Text';
+
 const CircleIcon = () => (
   <svg width="8" height="8" viewBox="0 0 10 10">
     <circle cx="5" cy="5" r="5" />
