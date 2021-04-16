@@ -48,7 +48,10 @@ const SelectedCheckbox = styled(AminoCheckbox)`
   }
 `;
 
-const CheckboxContainer = styled.div<any>`
+const CheckboxContainer = styled.div<{
+  multiline: boolean;
+  disabled?: boolean;
+}>`
   display: flex;
   flex-direction: row;
   user-select: none;
@@ -75,11 +78,11 @@ const CheckboxContainer = styled.div<any>`
 
 export type CheckboxProps = {
   checked: boolean;
-  onChange: (newValue: boolean) => any;
+  onChange: (newValue: boolean) => void;
   label?: string;
   subtitle?: string;
   disabled?: boolean;
-  labelComponent?: any;
+  labelComponent?: React.ReactNode;
 };
 
 export const Checkbox = ({
@@ -93,7 +96,7 @@ export const Checkbox = ({
   <CheckboxContainer
     className="amino-input-wrapper"
     disabled={disabled}
-    multiline={subtitle}
+    multiline={!!subtitle}
     onClick={() => onChange(!checked)}
   >
     {!checked && <AminoCheckbox onClick={() => onChange(!checked)} />}
@@ -105,7 +108,7 @@ export const Checkbox = ({
     {label && (
       <label>
         <Text style={TextStyle.h5}>
-          {labelComponent ? React.cloneElement(labelComponent) : label}
+          {labelComponent ? labelComponent : label}
         </Text>
         {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
       </label>
