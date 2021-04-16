@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Select, SelectProps } from '../../components/Select';
+import { Select } from '../../components/Select';
 import { HStack, HStackProps } from '../../components/Stack';
 
 const HStackMeta: Meta = {
@@ -12,8 +12,8 @@ const HStackMeta: Meta = {
 
 export default HStackMeta;
 
-const Template: Story<HStackProps> = args => (
-  <HStack {...args}>
+const Template: Story<HStackProps> = ({ spacing }: HStackProps) => (
+  <HStack spacing={spacing}>
     <Select
       label="Frankfurters"
       helpText="When you go to a ballgame..."
