@@ -12,7 +12,9 @@ const RadioMeta: Meta = {
 
 export default RadioMeta;
 
-const Template: Story<RadioProps> = args => <Radio {...args} />;
+const Template: Story<RadioProps> = ({ label }: RadioProps) => (
+  <Radio label={label} />
+);
 
 export const BasicRadio = Template.bind({});
 BasicRadio.args = {
