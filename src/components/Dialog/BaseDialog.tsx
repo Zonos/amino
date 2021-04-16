@@ -39,6 +39,7 @@ const Popup = styled(motion.div)<{ width: number }>`
   border-radius: var(--amino-radius-xl);
   outline: none;
   box-shadow: var(--amino-shadow-larger);
+  border: var(--amino-border);
 `;
 
 export type DialogProps = {
