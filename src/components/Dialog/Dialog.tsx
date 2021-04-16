@@ -15,7 +15,6 @@ const Backdrop = styled(motion.div)`
   left: 0;
   top: 0;
   background: var(--amino-backdrop-color);
-  opacity: 0.65;
   z-index: 999;
   position: fixed;
 `;
@@ -101,7 +100,7 @@ export const Dialog = ({
       {open && (
         <Backdrop
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 0.65 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           key="dialog-backdrop"
