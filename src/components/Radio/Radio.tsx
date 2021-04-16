@@ -50,14 +50,14 @@ const RadioContainer = styled.div`
 `;
 
 export type RadioProps = {
-  checked?: boolean;
+  checked: boolean;
   onChange?: any;
   label?: string;
 };
 
 export const Radio = ({ label, checked, onChange }: RadioProps) => (
   <RadioContainer onClick={() => onChange(!checked)}>
-    <StyledRadio checked={checked || false} onClick={() => onChange(!checked)}>
+    <StyledRadio checked={checked} onClick={() => onChange(!checked)}>
       <AnimatePresence>
         {checked && (
           <motion.svg
