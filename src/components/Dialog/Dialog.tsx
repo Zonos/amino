@@ -104,6 +104,7 @@ export const Dialog = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
+          key="dialog-backgdrop"
         >
           <Backdrop data-theme={theme} />
         </motion.div>
@@ -115,6 +116,7 @@ export const Dialog = ({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
+            key="dialog"
           >
             <Popup>
               <Header>
