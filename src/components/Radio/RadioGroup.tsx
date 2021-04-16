@@ -30,7 +30,7 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
 }: Props<T>) => {
   const [active, setActive] = useState(-1);
 
-  const activeItem = items.find((x, i) => i === active);
+  const activeItem = items.find((_, i) => i === active);
 
   useEffect(() => {
     if (onChange && activeItem && activeItem?.value !== initialValue) {
@@ -61,7 +61,7 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
       <Radio
         checked={index === active}
         onChange={() => setActive(index)}
-        key={index}
+        key={label as string}
         label={label as string}
       />
     );

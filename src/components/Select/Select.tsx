@@ -55,22 +55,25 @@ const SelectWrapper = styled.div`
   }
 `;
 
-export type SelectProps = {
+export type SelectProps<T> = {
   autoFocus?: boolean;
-  items: Array<any>;
+  items: T[];
   label?: string;
   helpText?: string;
   onChange: (newValue: string) => void;
   value: string;
   placeholder?: string;
-  itemLabelPath?: string;
-  itemValuePath?: string;
-  labelFormatFunction?: any;
+  itemLabelPath?: keyof T;
+  itemValuePath?: keyof T;
+  labelFormatFunction?: (labelToFormat: string) => string;
   required?: boolean;
   tabIndex?: number;
 };
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+export const Select = forwardRef<
+  HTMLSelectElement,
+  SelectProps<{ label?: string; value?: string }>
+>(
   (
     {
       autoFocus,
@@ -89,14 +92,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     ref
   ) => {
     const getItemLabel = (index: number) => {
-      const label = itemLabelPath
+      const itemLabel = itemLabelPath
         ? items[index][itemLabelPath]
         : items[index].label;
 
       if (labelFormatFunction) {
-        return labelFormatFunction(label);
+        return labelFormatFunction(itemLabel as string);
       }
-      return label;
+      return itemLabel;
     };
 
     return (
@@ -115,9 +118,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             {!required && placeholder && (
               <option value="">{placeholder}</option>
             )}
-            {items.map((item: any, index: number) => (
+            {items.map((item, index) => (
               <option
-                key={`${getItemLabel(index)}-${index}`}
+                key={getItemLabel(index)}
                 value={itemValuePath ? item[itemValuePath] : item.value}
               >
                 {getItemLabel(index)}
