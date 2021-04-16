@@ -54,7 +54,7 @@ export const Card = ({
     <Surface depth={Depth.depth4} className={className || ''}>
       {label && (
         <CardHeader>
-          <Text style="h4">{label}</Text>
+          <Text type="h4">{label}</Text>
 
           {actions && <HStack spacing="space-quarter">{actions}</HStack>}
         </CardHeader>

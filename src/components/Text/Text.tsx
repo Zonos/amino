@@ -37,11 +37,11 @@ type TextStyle =
   | 'inputlabel';
 
 type Props = {
-  style?: TextStyle;
+  type?: TextStyle;
 };
 
-export const Text: React.FC<Props> = ({ children, style }) => {
-  switch (style) {
+export const Text: React.FC<Props> = ({ children, type }) => {
+  switch (type) {
     case 'h1':
       return <h1>{children}</h1>;
     case 'h2':

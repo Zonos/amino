@@ -58,7 +58,7 @@ export const Dialog = ({
 }: DialogProps) => (
   <BaseDialog data-theme={theme} open={open}>
     <Header>
-      <Text style="h4">{label}</Text>
+      <Text type="h4">{label}</Text>
     </Header>
     <Content>{children}</Content>
     {actions && (

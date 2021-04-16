@@ -104,8 +104,8 @@ export const Checkbox = ({
     )}
     {label && (
       <label>
-        <Text style="inputlabel">{labelComponent || label}</Text>
-        {subtitle && <Text style="subtitle">{subtitle}</Text>}
+        <Text type="inputlabel">{labelComponent || label}</Text>
+        {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </label>
     )}
   </CheckboxContainer>
