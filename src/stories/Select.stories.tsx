@@ -12,7 +12,14 @@ const SelectMeta: Meta = {
 
 export default SelectMeta;
 
-const Template: Story<SelectProps> = args => <Select {...args} />;
+const Template: Story<SelectProps> = ({
+  label,
+  items,
+  value,
+  onChange,
+}: SelectProps) => (
+  <Select label={label} items={items} value={value} onChange={onChange} />
+);
 
 export const BasicSelect = Template.bind({});
 BasicSelect.args = {
