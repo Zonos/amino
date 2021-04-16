@@ -11,11 +11,11 @@ const SkeletonMeta: Meta = {
 
 export default SkeletonMeta;
 
-const Template: Story<SkeletonProps> = args => (
+const Template: Story<SkeletonProps> = ({ width, height }: SkeletonProps) => (
   <VStack>
-    <Skeleton {...args} />
-    <Skeleton {...args} />
-    <Skeleton {...args} />
+    <Skeleton width={width} height={height} />
+    <Skeleton width={width} height={height} />
+    <Skeleton width={width} height={height} />
   </VStack>
 );
 
