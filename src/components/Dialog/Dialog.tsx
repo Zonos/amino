@@ -9,13 +9,12 @@ import { Text, TextStyle } from "../Text";
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?
 
-const Backdrop = styled.div`
+const Backdrop = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
   background: var(--amino-backdrop-color);
-  opacity: 0.65;
   z-index: 999;
   position: fixed;
 `;
@@ -33,7 +32,7 @@ const DialogLayout = styled.div`
   color: var(--amino-text-color);
 `;
 
-const Popup = styled.div`
+const Popup = styled(motion.div)`
   position: relative;
   z-index: 1001;
   background: var(--amino-surface-color);
@@ -99,35 +98,34 @@ export const Dialog = ({
   return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
-        <motion.div
+        <Backdrop
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 0.65 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-        >
-          <Backdrop data-theme={theme} />
-        </motion.div>
+          key="dialog-backdrop"
+          data-theme={theme}
+        />
       )}
       {open && (
         <DialogLayout data-theme={theme}>
-          <motion.div
+          <Popup
             transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
+            key="dialog"
           >
-            <Popup>
-              <Header>
-                <Text style={TextStyle.h4}>{label}</Text>
-              </Header>
-              <Content>{children}</Content>
-              {actions && (
-                <Footer>
-                  <HStack spacing="space-quarter">{actions}</HStack>
-                </Footer>
-              )}
-            </Popup>
-          </motion.div>
+            <Header>
+              <Text style={TextStyle.h4}>{label}</Text>
+            </Header>
+            <Content>{children}</Content>
+            {actions && (
+              <Footer>
+                <HStack spacing="space-quarter">{actions}</HStack>
+              </Footer>
+            )}
+          </Popup>
         </DialogLayout>
       )}
     </AnimatePresence>,
