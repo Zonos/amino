@@ -12,7 +12,10 @@ const MenuButtonMeta: Meta = {
 
 export default MenuButtonMeta;
 
-const Template: Story<MenuButtonProps> = args => <MenuButton {...args} />;
+const Template: Story<MenuButtonProps> = ({
+  label,
+  children,
+}: MenuButtonProps) => <MenuButton label={label}>{children}</MenuButton>;
 
 export const Default = Template.bind({});
 Default.args = {
