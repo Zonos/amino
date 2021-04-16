@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const List = styled.section`
   margin: var(--amino-space-negative);

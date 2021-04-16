@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const AminoTabs = styled.div`
   display: flex;
@@ -52,10 +52,10 @@ export type TabsProps = {
 export const Tabs = ({ selected, onChange, items }: TabsProps) => {
   return (
     <AminoTabs>
-      {items.map((item) => (
+      {items.map(item => (
         <Tab
           onClick={() => onChange(items.indexOf(item))}
-          className={selected === items.indexOf(item) ? "is-selected" : ""}
+          className={selected === items.indexOf(item) ? 'is-selected' : ''}
           key={item}
         >
           {item}

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { GridAlignment, GridSpacing } from ".";
+import { GridAlignment, GridSpacing } from '.';
 
 /**
  * A vertical stack
@@ -14,10 +14,10 @@ export const VStack = styled.div<{
 }>`
   display: grid;
   grid-auto-rows: auto;
-  grid-row-gap: ${(p) =>
+  grid-row-gap: ${p =>
     p.spacing ? `var(--amino-${p.spacing})` : `var(--amino-space)`};
 
   & > * {
-    justify-self: ${(p) => (p.alignment === "end" ? "end" : "unset")};
+    justify-self: ${p => (p.alignment === 'end' ? 'end' : 'unset')};
   }
 `;

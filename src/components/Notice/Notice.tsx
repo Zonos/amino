@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Intent } from "../..";
+import { Intent } from '../..';
 
 const AminoNotice = styled.aside`
   border-radius: var(--amino-radius);
@@ -42,15 +42,15 @@ export type NoticeProps = {
 
 export const Notice = ({ intent, children }: NoticeProps) => {
   switch (intent) {
-    case "success":
+    case 'success':
       return <AminoSuccessNotice>{children}</AminoSuccessNotice>;
-    case "error":
+    case 'error':
       return <AminoErrorNotice>{children}</AminoErrorNotice>;
-    case "warning":
+    case 'warning':
       return <AminoWarningNotice>{children}</AminoWarningNotice>;
-    case "primary":
+    case 'primary':
       return <AminoPrimaryNotice>{children}</AminoPrimaryNotice>;
-    case "info":
+    case 'info':
     default:
       return <AminoNotice>{children}</AminoNotice>;
   }

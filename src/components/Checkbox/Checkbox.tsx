@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Text, TextStyle } from "../Text";
+import { Text } from 'components/Text';
 
 // TODO: multiline checkboxes could use some work
 
@@ -48,13 +48,16 @@ const SelectedCheckbox = styled(AminoCheckbox)`
   }
 `;
 
-const CheckboxContainer = styled.div<any>`
+const CheckboxContainer = styled.div<{
+  multiline: boolean;
+  disabled?: boolean;
+}>`
   display: flex;
   flex-direction: row;
   user-select: none;
-  align-items: ${(p) => (p.multiline ? "flex-start" : "center")};
-  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
-  opacity: ${(props) => (props.disabled ? "0.3" : "1")};
+  align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
+  opacity: ${props => (props.disabled ? '0.3' : '1')};
 
   a {
     color: var(--amino-primary);
@@ -65,21 +68,18 @@ const CheckboxContainer = styled.div<any>`
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    align-items: ${(p) => (p.multiline ? "flex-start" : "center")};
-  }
-
-  h5 {
+    align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
     margin-bottom: 0;
   }
 `;
 
 export type CheckboxProps = {
   checked: boolean;
-  onChange: (newValue: boolean) => any;
+  onChange: (newValue: boolean) => void;
   label?: string;
   subtitle?: string;
   disabled?: boolean;
-  labelComponent?: any;
+  labelComponent?: React.ReactNode;
 };
 
 export const Checkbox = ({
@@ -93,7 +93,7 @@ export const Checkbox = ({
   <CheckboxContainer
     className="amino-input-wrapper"
     disabled={disabled}
-    multiline={subtitle}
+    multiline={!!subtitle}
     onClick={() => onChange(!checked)}
   >
     {!checked && <AminoCheckbox onClick={() => onChange(!checked)} />}
@@ -104,10 +104,8 @@ export const Checkbox = ({
     )}
     {label && (
       <label>
-        <Text style={TextStyle.h5}>
-          {labelComponent ? React.cloneElement(labelComponent) : label}
-        </Text>
-        {subtitle && <Text style={TextStyle.Subtitle}>{subtitle}</Text>}
+        <Text style="inputlabel">{labelComponent || label}</Text>
+        {subtitle && <Text style="subtitle">{subtitle}</Text>}
       </label>
     )}
   </CheckboxContainer>

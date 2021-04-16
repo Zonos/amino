@@ -1,19 +1,23 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Tabs, TabsProps } from "../components/Tabs";
+import { Tabs, TabsProps } from '../components/Tabs';
 
 const TabsMeta: Meta = {
-  title: "Amino/Tabs",
-  component: Tabs
+  title: 'Amino/Tabs',
+  component: Tabs,
 };
 
 export default TabsMeta;
 
-const Template: Story<TabsProps> = args => <Tabs {...args} />;
+const Template: Story<TabsProps> = ({
+  items,
+  selected,
+  onChange,
+}: TabsProps) => <Tabs items={items} selected={selected} onChange={onChange} />;
 
 export const BasicTabs = Template.bind({});
 BasicTabs.args = {
-  items: ["Tab 1", "Tab 2", "Tab 3"],
-  selected: 0
+  items: ['Tab 1', 'Tab 2', 'Tab 3'],
+  selected: 0,
 };

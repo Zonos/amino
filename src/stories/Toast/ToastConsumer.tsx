@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import { Button, ToastContext } from "../..";
+import { Button, ToastContext } from '../..';
 
 const useNotify = () => {
   return useContext(ToastContext);
@@ -11,7 +11,7 @@ export const ToastConsumer = () => {
 
   return (
     <div>
-      <Button onClick={() => notify("This is a notification.")}>Notify</Button>
+      <Button onClick={() => notify('This is a notification.')}>Notify</Button>
     </div>
   );
 };

@@ -4,10 +4,10 @@ import React, {
   useState,
   createContext,
   ReactNode,
-} from "react";
-import { AnimatePresence } from "framer-motion";
+} from 'react';
+import { AnimatePresence } from 'framer-motion';
 
-import { Toast } from "./Toast";
+import { Toast } from './Toast';
 
 export const ToastContext = createContext((toast: ReactNode): void => {});
 
@@ -20,17 +20,16 @@ export const ToastContextProvider = ({ children }: Props) => {
 
   useEffect(() => {
     if (toasts.length > 0) {
-      const timer = setTimeout(
-        () => setToasts((toasts) => toasts.slice(1)),
-        6000
-      );
+      const timer = setTimeout(() => setToasts(t => t.slice(1)), 6000);
       return () => clearTimeout(timer);
     }
+
+    return () => {};
   }, [toasts]);
 
   const addToast = useCallback(
     (toast: ReactNode) => {
-      setToasts((toasts) => toasts.concat(toast));
+      setToasts(t => t.concat(toast));
     },
     [setToasts]
   );
@@ -41,8 +40,8 @@ export const ToastContextProvider = ({ children }: Props) => {
         {children}
         <div className="toasts-wrapper">
           <AnimatePresence>
-            {toasts.map((toast, index) => (
-              <Toast toastKey={`toast-${toast}`} key={`toast-${index}`}>
+            {toasts.map(toast => (
+              <Toast toastKey={`toast-${toast}`} key={`toast-${toast}`}>
                 {toast}
               </Toast>
             ))}
