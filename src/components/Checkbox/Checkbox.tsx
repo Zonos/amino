@@ -91,10 +91,10 @@ export const Checkbox = ({
       <AnimatePresence>
         {checked && (
           <motion.svg
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-            initial={{ opacity: 0, scale: 0.7 }}
+            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+            initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
+            exit={{ opacity: 0, scale: 1 }}
             key="checkbox"
             viewBox="0 0 20 20"
             fill="currentColor"
