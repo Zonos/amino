@@ -12,7 +12,9 @@ const NoticeStories: Meta = {
 
 export default NoticeStories;
 
-const Template: Story<NoticeProps> = args => <Notice {...args} />;
+const Template: Story<NoticeProps> = ({ intent, children }: NoticeProps) => (
+  <Notice intent={intent}>{children}</Notice>
+);
 
 export const DefaultNotice = Template.bind({});
 DefaultNotice.args = {
