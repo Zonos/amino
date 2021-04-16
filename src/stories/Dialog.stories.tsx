@@ -33,6 +33,7 @@ const Template: Story<DialogProps> = ({
         }
         label={label}
         open={open}
+        onClose={() => setOpen(false)}
       >
         {children}
       </Dialog>
