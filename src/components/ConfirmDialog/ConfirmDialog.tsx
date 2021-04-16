@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Text, TextStyle } from "../Text";
-import { IAminoTheme, Intent } from "../../types";
+import { Text } from '../Text';
+import { IAminoTheme, Intent } from '../../types';
 
-import { BaseDialog } from "../Dialog/BaseDialog";
-import { Button } from "../Button";
-import { RoundedIcon } from "../RoundedIcon";
-import { VStack } from "../Stack";
+import { BaseDialog } from '../Dialog/BaseDialog';
+import { Button } from '../Button';
+import { RoundedIcon } from '../RoundedIcon';
+import { VStack } from '../Stack';
 
 const Content = styled.div`
   padding: var(--amino-space);
@@ -54,7 +54,7 @@ export type ConfirmDialogProps = {
 
 const getIconForIntent = (intent: Intent) => {
   switch (intent) {
-    case "danger":
+    case 'danger':
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const getIconForIntent = (intent: Intent) => {
           />
         </svg>
       );
-    case "info":
+    case 'info':
     default:
       return (
         <svg
@@ -102,7 +102,7 @@ export const ConfirmDialog = ({
       <VStack spacing="space-half">
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
-          <Text style={TextStyle.h4}>{label}</Text>
+          <Text style="h4">{label}</Text>
           <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>
         </div>
         <Footer>
