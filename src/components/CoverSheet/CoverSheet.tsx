@@ -104,7 +104,7 @@ export const CoverSheet = ({
           className="print"
         >
           <Header>
-            <Text style="h4">{label}</Text>
+            <Text type="h4">{label}</Text>
             {actions && (
               <Actions>
                 <HStack>{actions}</HStack>

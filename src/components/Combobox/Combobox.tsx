@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 import { Text } from 'components/Text';
 import { MenuItem, Menu } from 'components/Menu';
+import { Depth, Surface } from 'types';
 
-import { Depth, Surface } from '../../primitives';
 import { DropdownAnimation } from '../../animations';
 
 const DropdownContainer = styled.div`
@@ -237,7 +237,7 @@ export const Combobox = ({
 
   return (
     <DropdownContainer className="amino-input-wrapper">
-      <Text {...getLabelProps()} style="inputlabel">
+      <Text {...getLabelProps()} type="inputlabel">
         {label}
       </Text>
       <Wrapper {...getComboboxProps()}>
@@ -275,7 +275,7 @@ export const Combobox = ({
         </AnimatedSurface>
       )}
 
-      {helpText && <Text style="subtitle">{helpText}</Text>}
+      {helpText && <Text type="subtitle">{helpText}</Text>}
 
       <div tabIndex={0} />
     </DropdownContainer>

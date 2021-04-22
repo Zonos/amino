@@ -72,8 +72,8 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       >
         {renderIcon()}
         <div>
-          <Text style="h5">{label}</Text>
-          {subtitle && <Text style="subtitle">{subtitle}</Text>}
+          <Text type="h5">{label}</Text>
+          {subtitle && <Text type="subtitle">{subtitle}</Text>}
         </div>
         {rightDecorator}
       </AminoListItem>

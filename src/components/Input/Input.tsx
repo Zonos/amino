@@ -170,7 +170,7 @@ export const Input = ({
       width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
     >
-      {label && <Text style="inputlabel">{label}</Text>}
+      {label && <Text type="inputlabel">{label}</Text>}
       <Fields>
         {(prefix || inputPrefix) && (
           <InputPrefix>{prefix || inputPrefix}</InputPrefix>
@@ -203,12 +203,12 @@ export const Input = ({
         <>
           {error && error.length ? (
             <Error>
-              <Text style="subtitle">{error}</Text>
+              <Text type="subtitle">{error}</Text>
             </Error>
           ) : null}
 
           {(!error || !error.length) && helpText ? (
-            <Text style="subtitle">{helpText}</Text>
+            <Text type="subtitle">{helpText}</Text>
           ) : null}
         </>
       )}

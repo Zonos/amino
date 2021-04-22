@@ -1,29 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Text } from 'components/Text';
 
 // TODO: multiline checkboxes could use some work
 
-const CheckIcon = () => (
-  <svg width={10} height={7} viewBox="0 0 10 7">
-    <path
-      fillRule="evenodd"
-      d="M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z"
-    />
-  </svg>
-);
-
-const AminoCheckbox = styled.div`
+const AminoCheckbox = styled.div<{ checked: boolean }>`
   width: 18px;
   height: 18px;
   min-width: 18px;
   min-height: 18px;
   line-height: 18px;
   border-radius: var(--amino-radius-sm);
-  background: var(--amino-input-background);
-  border: var(--amino-border);
-  transition: var(--amino-transition);
+  background: ${p =>
+    p.checked ? 'var(--amino-primary)' : 'var(--amino-input-background)'};
+  border: ${p =>
+    p.checked ? '2px solid var(--amino-primary)' : 'var(--amino-border)'};
+  transition: all 150ms ease-in-out;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -36,15 +30,12 @@ const AminoCheckbox = styled.div`
     border: var(--amino-border-blue);
     box-shadow: var(--amino-glow-blue);
   }
-`;
-
-const SelectedCheckbox = styled(AminoCheckbox)`
-  background: var(--amino-primary) !important;
-  border: 2px solid var(--amino-primary);
 
   svg {
-    fill: white;
+    color: white;
     box-shadow: var(--amino-shadow-small);
+    width: 16px;
+    height: 16px;
   }
 `;
 
@@ -96,16 +87,32 @@ export const Checkbox = ({
     multiline={!!subtitle}
     onClick={() => onChange(!checked)}
   >
-    {!checked && <AminoCheckbox onClick={() => onChange(!checked)} />}
-    {checked && (
-      <SelectedCheckbox onClick={() => onChange(!checked)}>
-        <CheckIcon />
-      </SelectedCheckbox>
-    )}
+    <AminoCheckbox onClick={() => onChange(!checked)} checked={checked}>
+      <AnimatePresence>
+        {checked && (
+          <motion.svg
+            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1 }}
+            key="checkbox"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clipRule="evenodd"
+            />
+          </motion.svg>
+        )}
+      </AnimatePresence>
+    </AminoCheckbox>
+
     {label && (
       <label>
-        <Text style="inputlabel">{labelComponent || label}</Text>
-        {subtitle && <Text style="subtitle">{subtitle}</Text>}
+        <Text type="inputlabel">{labelComponent || label}</Text>
+        {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </label>
     )}
   </CheckboxContainer>

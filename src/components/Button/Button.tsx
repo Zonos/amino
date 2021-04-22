@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 
 import { Spinner } from 'components/Spinner';
+import { Intent } from 'types';
 
 const AminoButton = styled.button`
   position: relative;
@@ -78,11 +79,11 @@ const Icon = styled(AminoButton)`
 `;
 
 const Danger = styled(AminoButton)`
-  background: var(--amino-error);
+  background: var(--amino-red-500);
   color: white;
 
   &:hover {
-    background: var(--amino-red-300);
+    background: var(--amino-red-600);
   }
 
   &:active,
@@ -93,7 +94,7 @@ const Danger = styled(AminoButton)`
 `;
 
 export type ButtonProps = {
-  intent?: 'primary' | 'danger' | 'icon' | 'secondary';
+  intent?: Intent;
   loading?: boolean;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;

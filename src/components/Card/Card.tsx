@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';
 
-import { Depth, Surface } from '../../primitives';
+import { Depth, Surface } from 'types';
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);
@@ -54,7 +54,7 @@ export const Card = ({
     <Surface depth={Depth.depth4} className={className || ''}>
       {label && (
         <CardHeader>
-          <Text style="h4">{label}</Text>
+          <Text type="h4">{label}</Text>
 
           {actions && <HStack spacing="space-quarter">{actions}</HStack>}
         </CardHeader>

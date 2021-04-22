@@ -1,46 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactDOM from 'react-dom';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';
+import { IAminoTheme } from 'types';
+import { CloseIcon } from 'icons';
 
-// TODO: scrollable dialog, max height, etc.
-// TODO: close with keyboard shortcut?
-
-const Backdrop = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background: var(--amino-backdrop-color);
-  z-index: 999;
-  position: fixed;
-`;
-
-const DialogLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--amino-text-color);
-`;
-
-const Popup = styled(motion.div)`
-  position: relative;
-  z-index: 1001;
-  background: var(--amino-surface-color);
-  width: 444px;
-  border-radius: var(--amino-radius-xl);
-  outline: none;
-  box-shadow: var(--amino-shadow-larger);
-`;
+import { BaseDialog } from './BaseDialog';
 
 const Header = styled.div`
   padding: var(--amino-space);
@@ -48,9 +14,12 @@ const Header = styled.div`
   border-top-left-radius: var(--amino-radius-xl);
   border-top-right-radius: var(--amino-radius-xl);
   background: var(--amino-surface-color-secondary);
+  display: flex;
+  align-items: center;
 
   h4 {
     margin: 0;
+    flex: 1;
   }
 `;
 
@@ -76,7 +45,30 @@ const Content = styled.div`
   overscroll-behavior: contain;
 `;
 
-type IAminoTheme = 'dark' | 'light';
+const Close = styled.div`
+  transition: all 100ms ease-in-out;
+  background: transparent;
+  border-radius: 32px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover {
+    background: var(--amino-gray-200);
+    opacity: 1;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--amino-text-color);
+    transition: all 100ms ease-in-out;
+  }
+`;
 
 export type DialogProps = {
   open: boolean;
@@ -84,6 +76,7 @@ export type DialogProps = {
   actions?: React.ReactNode;
   theme?: IAminoTheme;
   children: React.ReactNode;
+  onClose: () => void;
 };
 
 export const Dialog = ({
@@ -92,43 +85,20 @@ export const Dialog = ({
   label,
   actions,
   children,
-}: DialogProps) => {
-  const toggleScroll = () => document.body.classList.toggle('no-scroll');
-
-  return ReactDOM.createPortal(
-    <AnimatePresence>
-      {open && (
-        <Backdrop
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.65 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          key="dialog-backdrop"
-          data-theme={theme}
-        />
-      )}
-      {open && (
-        <DialogLayout data-theme={theme}>
-          <Popup
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            key="dialog"
-          >
-            <Header>
-              <Text style="h4">{label}</Text>
-            </Header>
-            <Content>{children}</Content>
-            {actions && (
-              <Footer>
-                <HStack spacing="space-quarter">{actions}</HStack>
-              </Footer>
-            )}
-          </Popup>
-        </DialogLayout>
-      )}
-    </AnimatePresence>,
-    document.querySelector('body')!
-  );
-};
+  onClose,
+}: DialogProps) => (
+  <BaseDialog data-theme={theme} open={open}>
+    <Header>
+      <Text type="h4">{label}</Text>
+      <Close onClick={onClose}>
+        <CloseIcon />
+      </Close>
+    </Header>
+    <Content>{children}</Content>
+    {actions && (
+      <Footer>
+        <HStack spacing="space-quarter">{actions}</HStack>
+      </Footer>
+    )}
+  </BaseDialog>
+);

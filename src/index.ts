@@ -17,16 +17,19 @@ export { List } from './components/List';
 export { Dialog } from './components/Dialog';
 export { Toast, ToastContextProvider, ToastContext } from './components/Toast';
 export { Menu, MenuItem } from './components/Menu';
+export {
+  ConfirmDialog,
+  ConfirmContextProvider,
+  ConfirmContext,
+} from './components/ConfirmDialog';
 
 export { Spinner } from './components/Spinner';
 export { Skeleton } from './components/Skeleton';
 
-export { Depth, Surface } from './primitives';
+export { Depth, Surface, Intent } from './types';
 
 export { useInputValue } from './hooks/useInputValue';
 export { useCheckboxValue } from './hooks/useCheckboxValue';
-
-export { Intent } from './utils/Intent';
 
 export { DropdownAnimation, DropdownAnimationInverse } from './animations';
 

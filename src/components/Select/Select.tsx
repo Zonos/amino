@@ -105,7 +105,7 @@ export const Select = forwardRef<
 
     return (
       <DropdownContainer className="amino-input-wrapper">
-        {label && <Text style="inputlabel">{label}</Text>}
+        {label && <Text type="inputlabel">{label}</Text>}
 
         <SelectWrapper>
           <StyledSelect
@@ -131,7 +131,7 @@ export const Select = forwardRef<
           <DropdownIcon />
         </SelectWrapper>
 
-        {helpText && <Text style="subtitle">{helpText}</Text>}
+        {helpText && <Text type="subtitle">{helpText}</Text>}
       </DropdownContainer>
     );
   }
