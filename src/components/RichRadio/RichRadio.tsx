@@ -92,7 +92,6 @@ export const RichRadio = ({
         <StyledItem value={item.value} key={item.value}>
           <div>
             <Label>{item.label}</Label>
-            <strong>{item.label}</strong>
             {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
           </div>
           <StyledIndicator>
