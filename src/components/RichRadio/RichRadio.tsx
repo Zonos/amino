@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Root, Item, Indicator } from '@radix-ui/react-radio-group';
 
@@ -23,10 +23,6 @@ const StyledItem = styled(Item)`
     flex: 1;
   }
 
-  strong {
-    font-weight: 500;
-  }
-
   &:focus {
     outline: none;
     box-shadow: inset 0 0 0 2px var(--amino-blue-600);
@@ -35,6 +31,10 @@ const StyledItem = styled(Item)`
 
 const Subtitle = styled.span`
   opacity: 0.5;
+`;
+
+const Label = styled.span`
+  font-weight: 500;
 `;
 
 const StyledRoot = styled(Root)`
@@ -64,7 +64,7 @@ const StyledIndicator = styled(Indicator)`
 `;
 
 type RichRadioItemType = {
-  label: string;
+  label: ReactNode;
   subtitle?: string;
   value: string;
 };
@@ -91,6 +91,7 @@ export const RichRadio = ({
       {items.map(item => (
         <StyledItem value={item.value} key={item.value}>
           <div>
+            <Label>{item.label}</Label>
             <strong>{item.label}</strong>
             {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
           </div>
