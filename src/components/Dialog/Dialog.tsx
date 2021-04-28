@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import { IAminoTheme } from 'types';
-import { CloseIcon } from 'icons';
+import { XIcon } from 'icons';
 
 import { BaseDialog } from './BaseDialog';
 
@@ -63,8 +63,8 @@ const Close = styled.div`
   }
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     fill: var(--amino-text-color);
     transition: all 100ms ease-in-out;
   }
@@ -91,7 +91,7 @@ export const Dialog = ({
     <Header>
       <Text type="h4">{label}</Text>
       <Close onClick={onClose}>
-        <CloseIcon />
+        <XIcon />
       </Close>
     </Header>
     <Content>{children}</Content>

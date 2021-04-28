@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Text } from 'components/Text';
+import { CheckIcon } from 'icons';
 
 // TODO: multiline checkboxes could use some work
+
+const AnimatedCheckIcon = motion(CheckIcon);
 
 const AminoCheckbox = styled.div<{ checked: boolean }>`
   width: 18px;
@@ -90,21 +93,13 @@ export const Checkbox = ({
     <AminoCheckbox onClick={() => onChange(!checked)} checked={checked}>
       <AnimatePresence>
         {checked && (
-          <motion.svg
+          <AnimatedCheckIcon
             transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1 }}
             key="checkbox"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </motion.svg>
+          />
         )}
       </AnimatePresence>
     </AminoCheckbox>

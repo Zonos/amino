@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const DropdownIcon = () => (
+export const XIcon = () => (
   <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
-      d="M4 5l4-4 4 4M12 11l-4 4-4-4"
+      d="M15 1L1 15M1 1l14 14"
       stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
