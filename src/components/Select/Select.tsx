@@ -57,7 +57,7 @@ const SelectWrapper = styled.div`
 
 export type SelectProps = {
   autoFocus?: boolean;
-  items: T[];
+  items: Array<any>;
   label?: string;
   helpText?: string;
   onChange: (newValue: string) => void;
