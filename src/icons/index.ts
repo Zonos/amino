@@ -1,3 +1,9 @@
-export { CloseIcon } from './CloseIcon';
+export { XIcon } from './XIcon';
 export { DropdownIcon } from './DropdownIcon';
-export { StepperIcon } from './StepperIcon';
+export { ChevronLeftIcon } from './ChevronLeftIcon';
+export { ChevronRightIcon } from './ChevronRightIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
+export { ChevronUpIcon } from './ChevronUpIcon';
+export { PlusIcon } from './PlusIcon';
+export { SearchIcon } from './SearchIcon';
+export { CheckIcon } from './CheckIcon';

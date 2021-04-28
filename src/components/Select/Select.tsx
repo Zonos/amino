@@ -43,7 +43,6 @@ const SelectWrapper = styled.div`
     right: var(--amino-space-half);
     top: 11px;
     pointer-events: none;
-    color: var(--amino-text-color);
     width: 16px;
     height: 16px;
     opacity: 0.3;
