@@ -57,7 +57,7 @@ const StyledIndicator = styled(Indicator)`
   justify-content: center;
 
   svg {
-    color: white;
+    color: var(--amino-blue-700);
     width: 12px;
     height: 12px;
     box-shadow: var(--amino-shadow-small);
