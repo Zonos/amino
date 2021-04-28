@@ -7,3 +7,6 @@ export { ChevronUpIcon } from './ChevronUpIcon';
 export { PlusIcon } from './PlusIcon';
 export { SearchIcon } from './SearchIcon';
 export { CheckIcon } from './CheckIcon';
+export { HomeIcon } from './HomeIcon';
+export { CogIcon } from './CogIcon';
+export { AdminIcon } from './AdminIcon';
