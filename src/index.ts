@@ -2,7 +2,6 @@ export { Button, MenuButton } from './components/Button';
 export { Layout } from './components/Layout';
 export { Card } from './components/Card';
 export { Text } from './components/Text';
-export { Stack, StackType } from './components/Stack';
 export { Input } from './components/Input';
 export { Checkbox } from './components/Checkbox';
 export { RadioGroup, Radio } from './components/Radio';
@@ -33,7 +32,6 @@ export { useCheckboxValue } from './hooks/useCheckboxValue';
 
 export { DropdownAnimation, DropdownAnimationInverse } from './animations';
 
-export { DataList } from './components/DataList';
 export { Tabs } from './components/Tabs';
 
 export { VStack } from './components/Stack';
