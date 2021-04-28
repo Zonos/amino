@@ -63,8 +63,8 @@ const Close = styled.div`
   }
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     fill: var(--amino-text-color);
     transition: all 100ms ease-in-out;
   }
