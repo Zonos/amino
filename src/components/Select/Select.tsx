@@ -55,7 +55,7 @@ const SelectWrapper = styled.div`
   }
 `;
 
-export type SelectProps<T> = {
+export type SelectProps = {
   autoFocus?: boolean;
   items: T[];
   label?: string;
@@ -63,17 +63,14 @@ export type SelectProps<T> = {
   onChange: (newValue: string) => void;
   value: string;
   placeholder?: string;
-  itemLabelPath?: keyof T;
-  itemValuePath?: keyof T;
+  itemLabelPath?: string;
+  itemValuePath?: string;
   labelFormatFunction?: (labelToFormat: string) => string;
   required?: boolean;
   tabIndex?: number;
 };
 
-export const Select = forwardRef<
-  HTMLSelectElement,
-  SelectProps<{ label?: string; value?: string }>
->(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       autoFocus,
