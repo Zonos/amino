@@ -5,8 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';
-
-import { CloseIcon } from '../../icons';
+import { XIcon } from 'icons';
 
 const StyledDialog = styled(motion.div)`
   z-index: 990;
@@ -111,7 +110,7 @@ export const CoverSheet = ({
               </Actions>
             )}
             <Close onClick={onClose}>
-              <CloseIcon />
+              <XIcon />
             </Close>
           </Header>
           <Content>{children}</Content>
