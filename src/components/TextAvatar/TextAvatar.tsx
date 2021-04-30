@@ -28,9 +28,7 @@ export type TextAvatarProps = {
 };
 
 const colorForString = (stringInput: string, brightness: number) => {
-  const stringUniqueHash = [
-    ...Array.from(stringInput.trim().replace(/[^A-Za-z0-9\s!?]/g, '')),
-  ].reduce((acc, char) => {
+  const stringUniqueHash = Array.from(stringInput).reduce((acc, char) => {
     // eslint-disable-next-line no-bitwise
     return char.charCodeAt(0) + ((acc << 5) - acc);
   }, 0);
