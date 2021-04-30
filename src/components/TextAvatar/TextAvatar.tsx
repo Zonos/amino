@@ -28,7 +28,9 @@ export type TextAvatarProps = {
 };
 
 const colorForString = (stringInput: string, brightness: number) => {
-  const stringUniqueHash = [...Array.from(stringInput)].reduce((acc, char) => {
+  const stringUniqueHash = [
+    ...Array.from(stringInput.trim().replace(/[^A-Za-z0-9\s!?]/g, '')),
+  ].reduce((acc, char) => {
     // eslint-disable-next-line no-bitwise
     return char.charCodeAt(0) + ((acc << 5) - acc);
   }, 0);
@@ -36,13 +38,11 @@ const colorForString = (stringInput: string, brightness: number) => {
   return `hsl(${stringUniqueHash % 360}, 95%, ${brightness}%)`;
 };
 
-export const TextAvatar = ({ label = 'Default Label' }: TextAvatarProps) => {
-  return (
-    <GradientSquare
-      gradientStart={colorForString(label, 75)}
-      gradientEnd={colorForString(label.split('').reverse().join(''), 30)}
-    >
-      {label[0].toUpperCase()}
-    </GradientSquare>
-  );
-};
+export const TextAvatar = ({ label = 'Default Label' }: TextAvatarProps) => (
+  <GradientSquare
+    gradientStart={colorForString(label, 75)}
+    gradientEnd={colorForString(label.split('').reverse().join(''), 30)}
+  >
+    {label[0].toUpperCase()}
+  </GradientSquare>
+);
