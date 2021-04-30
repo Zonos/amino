@@ -36,7 +36,7 @@ const colorForString = (stringInput: string, brightness: number) => {
   return `hsl(${stringUniqueHash % 360}, 95%, ${brightness}%)`;
 };
 
-export const TextAvatar = ({ label }: TextAvatarProps) => {
+export const TextAvatar = ({ label = 'Default Label' }: TextAvatarProps) => {
   return (
     <GradientSquare
       gradientStart={colorForString(label, 75)}
