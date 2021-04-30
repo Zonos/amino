@@ -41,5 +41,6 @@ export { DarkModeWrapper } from './components/DarkModeWrapper';
 export { DangerZone } from './components/DangerZone';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
+export { TextAvatar } from './components/TextAvatar';
 
 export * from './icons';
