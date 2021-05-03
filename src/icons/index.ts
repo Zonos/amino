@@ -14,4 +14,4 @@ export { CreditCardIcon } from './CreditCardIcon';
 export { PrinterIcon } from './PrinterIcon';
 export { TagIcon } from './TagIcon';
 export { ReportsIcon } from './ReportsIcon';
-export { CartIcon } from './CartIcon';
+export { BagIcon } from './BagIcon';
