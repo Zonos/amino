@@ -20,3 +20,6 @@ export { LandedCostIcon } from './LandedCostIcon';
 export { DutiesIcon } from './DutiesIcon';
 export { TaxesIcon } from './TaxesIcon';
 export { FeesIcon } from './FeesIcon';
+export { BoxIcon } from './BoxIcon';
+export { CartIcon } from './CartIcon';
+export { CodeIcon } from './CodeIcon';

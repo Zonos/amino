@@ -6,7 +6,7 @@ export const IconsConsumer = () => {
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(icons).map(([args, caller]) => (
         <div key={args}>
-          <div style={{ width: 16, height: 16, margin: 60 }}>
+          <div style={{ width: 20, height: 20, margin: 60 }}>
             {args}
             {/* @ts-ignore */}
             {caller(args)}
