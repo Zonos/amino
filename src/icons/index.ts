@@ -15,3 +15,8 @@ export { PrinterIcon } from './PrinterIcon';
 export { TagIcon } from './TagIcon';
 export { ReportsIcon } from './ReportsIcon';
 export { BagIcon } from './BagIcon';
+export { HelpIcon } from './HelpIcon';
+export { LandedCostIcon } from './LandedCostIcon';
+export { DutiesIcon } from './DutiesIcon';
+export { TaxesIcon } from './TaxesIcon';
+export { FeesIcon } from './FeesIcon';
