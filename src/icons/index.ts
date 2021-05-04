@@ -23,3 +23,7 @@ export { FeesIcon } from './FeesIcon';
 export { BoxIcon } from './BoxIcon';
 export { CartIcon } from './CartIcon';
 export { CodeIcon } from './CodeIcon';
+export { WarningIcon } from './WarningIcon';
+export { FilterIcon } from './FilterIcon';
+export { InfoIcon } from './InfoIcon';
+export { LightbulbIcon } from './LightbulbIcon';
