@@ -29,3 +29,7 @@ export { InfoIcon } from './InfoIcon';
 export { LightbulbIcon } from './LightbulbIcon';
 export { CopyIcon } from './CopyIcon';
 export { MapPinIcon } from './MapPinIcon';
+export { ArrowUpIcon } from './ArrowUpIcon';
+export { ArrowDownIcon } from './ArrowDownIcon';
+export { ArrowLeftIcon } from './ArrowLeftIcon';
+export { ArrowRightIcon } from './ArrowRightIcon';
