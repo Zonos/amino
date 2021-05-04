@@ -12,7 +12,7 @@ const GradientSquare = styled.div<{
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  color: var(--amino-gray-900);
+  color: var(--amino-gray-900) !important;
   font-weight: 500;
 
   --gradient-start: ${p => p.gradientStart};
