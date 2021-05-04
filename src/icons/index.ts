@@ -33,3 +33,4 @@ export { ArrowUpIcon } from './ArrowUpIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';
 export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
+export { DownloadIcon } from './DownloadIcon';
