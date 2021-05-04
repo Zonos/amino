@@ -9,7 +9,7 @@ export const CartIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <circle cx="12" cy="13" r="1" fill="#000" />
-    <circle cx="6.5" cy="13" r="1" fill="#000" />
+    <circle cx="12" cy="13" r="1" fill="currentColor" />
+    <circle cx="6.5" cy="13" r="1" fill="currentColor" />
   </svg>
 );

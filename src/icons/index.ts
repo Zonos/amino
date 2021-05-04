@@ -27,3 +27,5 @@ export { WarningIcon } from './WarningIcon';
 export { FilterIcon } from './FilterIcon';
 export { InfoIcon } from './InfoIcon';
 export { LightbulbIcon } from './LightbulbIcon';
+export { CopyIcon } from './CopyIcon';
+export { MapPinIcon } from './MapPinIcon';
