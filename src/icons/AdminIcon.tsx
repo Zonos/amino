@@ -1,23 +1,12 @@
 import React from 'react';
 
 export const AdminIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
-    <defs />
-    <rect
-      width="12"
-      height="8"
-      x="2"
-      y="6"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      rx="2"
-    />
-    <circle cx="8" cy="10" r="1" fill="currentColor" />
+  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <path
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeWidth="1.5"
-      d="M6 4a2 2 0 114 0"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M10 5.25c-.41421 0-.75-.33579-.75-.75 0-.69036-.55964-1.25-1.25-1.25s-1.25.55964-1.25 1.25c0 .41421-.33579.75-.75.75s-.75-.33579-.75-.75c0-1.51878 1.23122-2.75 2.75-2.75s2.75 1.23122 2.75 2.75c0 .41421-.3358.75-.75.75zM1.75 7.5c0-.9665.7835-1.75 1.75-1.75h9c.9665 0 1.75.7835 1.75 1.75v5c0 .9665-.7835 1.75-1.75 1.75h-9c-.9665 0-1.75-.7835-1.75-1.75v-5zm1.75-.25c-.13807 0-.25.11193-.25.25v5c0 .1381.11193.25.25.25h9c.1381 0 .25-.1119.25-.25v-5c0-.13807-.1119-.25-.25-.25h-9zM8 11c.55228 0 1-.4477 1-1 0-.55228-.44772-1-1-1s-1 .44772-1 1c0 .5523.44772 1 1 1z"
+      fill="currentColor"
     />
   </svg>
 );
