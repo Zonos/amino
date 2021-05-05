@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const DutiesIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconProps } from 'types';
+import { IconBase } from 'icons';
+
+export const DutiesIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <rect
       opacity=".5"
       x="10.0581"
@@ -31,5 +34,5 @@ export const DutiesIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </IconBase>
 );

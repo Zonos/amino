@@ -1,11 +1,14 @@
 import React from 'react';
 
-export const HelpIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const HelpIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
     <path
       d="M7.09375 9.60156h1.48047v-.13281c.00781-.76172.28125-1.11719.89844-1.48828.73044-.43359 1.20704-1.00781 1.20704-1.92578 0-1.36719-1.10158-2.16407-2.65236-2.16407-1.41796 0-2.57421.74219-2.60937 2.30469h1.59375c.02344-.63672.49609-.97656 1.00781-.97656.52735 0 .95313.35156.95313.89453 0 .51172-.3711.85156-.85157 1.15625-.65625.41406-1.02343.83203-1.02734 2.19922v.13281zm.76953 2.50004c.5 0 .9336-.418.9375-.9375-.0039-.5118-.4375-.9297-.9375-.9297-.51562 0-.9414.4179-.9375.9297-.0039.5195.42188.9375.9375.9375z"
       fill="currentColor"
     />
-  </svg>
+  </IconBase>
 );

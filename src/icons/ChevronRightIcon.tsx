@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const ChevronRightIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const ChevronRightIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <path
       d="M5 4l5 4.5L5 13"
       stroke="currentColor"
@@ -9,5 +12,5 @@ export const ChevronRightIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </IconBase>
 );

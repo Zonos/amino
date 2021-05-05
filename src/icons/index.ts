@@ -35,3 +35,5 @@ export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { DownloadIcon } from './DownloadIcon';
 export { ClockIcon } from './ClockIcon';
+
+export { IconBase } from './IconBase';

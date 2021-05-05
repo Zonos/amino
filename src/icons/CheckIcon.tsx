@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const CheckIcon = () => (
-  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const CheckIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <path
       d="M2.5 7.5L6 12l7-7.5"
       stroke="currentColor"
@@ -9,5 +12,5 @@ export const CheckIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </IconBase>
 );

@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const WarningIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const WarningIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <g clipPath="url(#clip0)">
       <path
         d="M7.13398 2c.3849-.66667 1.34715-.66667 1.73205 0l6.06217 10.5c.3849.6667-.0962 1.5-.866 1.5H1.93782c-.7698 0-1.250923-.8333-.86602-1.5L7.13398 2z"
@@ -20,5 +23,5 @@ export const WarningIcon = () => (
         <path fill="#fff" d="M0 0h16v16H0z" />
       </clipPath>
     </defs>
-  </svg>
+  </IconBase>
 );

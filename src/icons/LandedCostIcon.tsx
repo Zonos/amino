@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const LandedCostIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const LandedCostIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <rect
       x="10.0581"
       y="9.55807"
@@ -29,5 +32,5 @@ export const LandedCostIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </IconBase>
 );
