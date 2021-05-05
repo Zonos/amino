@@ -42,5 +42,6 @@ export { ThumbsUpIcon } from './ThumbsUpIcon';
 export { ThumbsDownIcon } from './ThumbsDownIcon';
 export { ConvertIcon } from './ConvertIcon';
 export { AttachmentIcon } from './AttachmentIcon';
+export { PercentIcon } from './PercentIcon';
 
 export { IconBase } from './IconBase';
