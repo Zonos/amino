@@ -74,11 +74,17 @@
   --amino-orange-700: #cd6800;
   --amino-orange-900: #873600;
 
-  --amino-green-alpha: #1dab4a80;
-  --amino-green-300: #1dab4a;
-  --amino-green-400: #00a32f;
-  --amino-green-700: #008b1e;
-  --amino-green-900: #005e09;
+  --amino-green-alpha: #ecfdf580;
+  --amino-green-50: #ecfdf5;
+  --amino-green-100: #d1fae5;
+  --amino-green-200: #a7f3d0;
+  --amino-green-300: #6ee7b7;
+  --amino-green-400: #34d399;
+  --amino-green-500: #1fb981;
+  --amino-green-600: #179769;
+  --amino-green-700: #117857;
+  --amino-green-800: #0b5f46;
+  --amino-green-900: #074e3b;
 
   --amino-glow-blue: 0 0 0 3px var(--amino-blue-alpha);
   --amino-glow-cyan: 0 0 0 3px var(--amino-cyan-alpha);
@@ -122,9 +128,9 @@
   --amino-toast-elevation: var(--amino-elevation-500);
   --amino-appbar-elevation: var(--amino-elevation-500);
 
-  --amino-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
     Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
     Courier New, monospace;
@@ -156,13 +162,13 @@
 
 @supports (font-variation-settings: normal) {
   :root {
-    --amino-font-sans: "Inter var", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-      "Droid Sans", "Helvetica Neue", sans-serif;
+    --amino-font-sans: 'Inter var', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+      'Droid Sans', 'Helvetica Neue', sans-serif;
   }
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --amino-gray-50: #0d1117;
   --amino-gray-100: #161b22;
   --amino-gray-200: #21262d;
