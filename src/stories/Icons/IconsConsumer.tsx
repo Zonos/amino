@@ -1,12 +1,14 @@
 import React from 'react';
-import * as icons from '../../icons';
 
-export const IconsConsumer = () => {
+import { IconProps } from 'types';
+import * as icons from 'icons';
+
+export const IconsConsumer = ({ size, color }: IconProps) => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {Object.entries(icons).map(([args, caller]) => (
         <div key={args}>
-          <div style={{ width: 20, height: 20, margin: 60 }}>
+          <div style={{ width: size, height: size, margin: 60 }}>
             {args}
             {/* @ts-ignore */}
             {caller(args)}
