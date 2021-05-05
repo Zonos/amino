@@ -35,5 +35,6 @@ export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { DownloadIcon } from './DownloadIcon';
 export { ClockIcon } from './ClockIcon';
+export { DangerIcon } from './DangerIcon';
 
 export { IconBase } from './IconBase';
