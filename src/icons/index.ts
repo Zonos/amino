@@ -37,5 +37,6 @@ export { DownloadIcon } from './DownloadIcon';
 export { ClockIcon } from './ClockIcon';
 export { DangerIcon } from './DangerIcon';
 export { OpenExternalIcon } from './OpenExternalIcon';
+export { EditIcon } from './EditIcon';
 
 export { IconBase } from './IconBase';
