@@ -38,5 +38,7 @@ export { ClockIcon } from './ClockIcon';
 export { DangerIcon } from './DangerIcon';
 export { OpenExternalIcon } from './OpenExternalIcon';
 export { EditIcon } from './EditIcon';
+export { ThumbsUpIcon } from './ThumbsUpIcon';
+export { ThumbsDownIcon } from './ThumbsDownIcon';
 
 export { IconBase } from './IconBase';
