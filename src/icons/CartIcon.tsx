@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const CartIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const CartIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <path
       d="M2 2h2.12862l2.15709 8h5.99999L14 4.66667H5"
       stroke="currentColor"
@@ -11,5 +14,5 @@ export const CartIcon = () => (
     />
     <circle cx="12" cy="13" r="1" fill="currentColor" />
     <circle cx="6.5" cy="13" r="1" fill="currentColor" />
-  </svg>
+  </IconBase>
 );

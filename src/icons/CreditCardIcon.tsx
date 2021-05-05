@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const CreditCardIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const CreditCardIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <rect
       x="1.5"
       y="3"
@@ -21,5 +24,5 @@ export const CreditCardIcon = () => (
       strokeLinejoin="round"
       d="M11.75 9.75h-2.5"
     />
-  </svg>
+  </IconBase>
 );

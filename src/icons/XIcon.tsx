@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const XIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const XIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <path
       d="M13 3L3 13M3 3l10 10"
       stroke="currentColor"
@@ -9,5 +12,5 @@ export const XIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </IconBase>
 );

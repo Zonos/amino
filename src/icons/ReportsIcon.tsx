@@ -1,7 +1,10 @@
 import React from 'react';
 
-export const ReportsIcon = () => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const ReportsIcon = ({ size, color }: IconProps) => (
+  <IconBase size={size} color={color}>
     <mask id="a" fill="#fff">
       <path
         fillRule="evenodd"
@@ -25,5 +28,5 @@ export const ReportsIcon = () => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>
+  </IconBase>
 );

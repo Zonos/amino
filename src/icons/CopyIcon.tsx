@@ -1,8 +1,11 @@
 import React from 'react';
 
-export const CopyIcon = () => {
+import { IconBase } from 'icons';
+import { IconProps } from 'types';
+
+export const CopyIcon = ({ size, color }: IconProps) => {
   return (
-    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <IconBase size={size} color={color}>
       <rect
         x="3"
         y="2"
@@ -19,6 +22,6 @@ export const CopyIcon = () => {
         stroke="currentColor"
         strokeWidth="1.5"
       />
-    </svg>
+    </IconBase>
   );
 };
