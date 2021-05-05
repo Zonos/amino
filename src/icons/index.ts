@@ -40,5 +40,7 @@ export { OpenExternalIcon } from './OpenExternalIcon';
 export { EditIcon } from './EditIcon';
 export { ThumbsUpIcon } from './ThumbsUpIcon';
 export { ThumbsDownIcon } from './ThumbsDownIcon';
+export { ConvertIcon } from './ConvertIcon';
+export { AttachmentIcon } from './AttachmentIcon';
 
 export { IconBase } from './IconBase';
