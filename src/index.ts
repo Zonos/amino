@@ -21,14 +21,16 @@ export {
   ConfirmContextProvider,
   ConfirmContext,
 } from './components/ConfirmDialog';
+export {
+  AlertDialog,
+  AlertContextProvider,
+  AlertContext,
+} from './components/AlertDialog';
 
 export { Spinner } from './components/Spinner';
 export { Skeleton } from './components/Skeleton';
 
 export { Depth, Surface, Intent } from './types';
-
-export { useInputValue } from './hooks/useInputValue';
-export { useCheckboxValue } from './hooks/useCheckboxValue';
 
 export { DropdownAnimation, DropdownAnimationInverse } from './animations';
 
@@ -44,3 +46,4 @@ export { RoundedIcon } from './components/RoundedIcon';
 export { TextAvatar } from './components/TextAvatar';
 
 export * from './icons';
+export * from './hooks';
