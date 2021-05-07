@@ -16,31 +16,30 @@ export { List } from './components/List';
 export { Dialog } from './components/Dialog';
 export { Toast, ToastContextProvider, ToastContext } from './components/Toast';
 export { Menu, MenuItem } from './components/Menu';
-export {
-  ConfirmDialog,
-  ConfirmContextProvider,
-  ConfirmContext,
-} from './components/ConfirmDialog';
-
 export { Spinner } from './components/Spinner';
 export { Skeleton } from './components/Skeleton';
-
-export { Depth, Surface, Intent } from './types';
-
-export { useInputValue } from './hooks/useInputValue';
-export { useCheckboxValue } from './hooks/useCheckboxValue';
-
-export { DropdownAnimation, DropdownAnimationInverse } from './animations';
-
 export { Tabs } from './components/Tabs';
-
 export { VStack } from './components/Stack';
 export { HStack, HStackProps } from './components/Stack';
-
 export { DarkModeWrapper } from './components/DarkModeWrapper';
 export { DangerZone } from './components/DangerZone';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
 export { TextAvatar } from './components/TextAvatar';
 
+export {
+  ConfirmDialog,
+  ConfirmContextProvider,
+  ConfirmContext,
+} from './components/ConfirmDialog';
+export {
+  AlertDialog,
+  AlertContextProvider,
+  AlertContext,
+} from './components/AlertDialog';
+
 export * from './icons';
+export * from './hooks';
+export * from './types';
+
+export { DropdownAnimation, DropdownAnimationInverse } from './animations';

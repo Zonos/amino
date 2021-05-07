@@ -8,7 +8,7 @@ import { BaseDialog } from '../Dialog/BaseDialog';
 import { Button } from '../Button';
 import { RoundedIcon } from '../RoundedIcon';
 import { VStack } from '../Stack';
-import { DangerIcon, HelpIcon } from '../../icons';
+import { DangerIcon, InfoIcon } from '../../icons';
 
 const Content = styled.div`
   padding: var(--amino-space);
@@ -37,19 +37,17 @@ const Footer = styled.div`
   }
 `;
 
-const ConfirmationPrompt = styled.span`
+const AlertPrompt = styled.span`
   opacity: 0.5;
 `;
 
-export type ConfirmDialogProps = {
+export type AlertDialogProps = {
   open: boolean;
   label: string;
   theme?: IAminoTheme;
   subtitle: React.ReactNode;
   intent: Intent;
-  confirmText: string;
   dismissText: string;
-  confirmAction: () => void;
   dismissAction: () => void;
 };
 
@@ -59,34 +57,29 @@ const getIconForIntent = (intent: Intent) => {
       return <DangerIcon />;
     case 'info':
     default:
-      return <HelpIcon />;
+      return <InfoIcon />;
   }
 };
 
-export const ConfirmDialog = ({
+export const AlertDialog = ({
   theme,
   open,
   label,
   intent,
   subtitle,
-  confirmText,
   dismissText,
-  confirmAction,
   dismissAction,
-}: ConfirmDialogProps) => (
+}: AlertDialogProps) => (
   <BaseDialog width={350} data-theme={theme} open={open}>
     <Content>
       <VStack spacing="space-half">
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
           <Text type="h4">{label}</Text>
-          <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>
+          <AlertPrompt>{subtitle}</AlertPrompt>
         </div>
         <Footer>
           <Button onClick={dismissAction}>{dismissText}</Button>
-          <Button onClick={confirmAction} intent={intent}>
-            {confirmText}
-          </Button>
         </Footer>
       </VStack>
     </Content>
