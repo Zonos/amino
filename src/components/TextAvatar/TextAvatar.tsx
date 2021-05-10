@@ -43,7 +43,10 @@ const colorForString = (stringInput: string, brightness: number) => {
 export const TextAvatar = ({ label = 'Default Label' }: TextAvatarProps) => (
   <GradientSquare
     gradientStart={colorForString(label, 75)}
-    gradientEnd={colorForString(label.split('').reverse().join(''), 30)}
+    gradientEnd={colorForString(
+      label.split('').reverse().join('') || label,
+      30
+    )}
   >
     {label[0].toUpperCase()}
   </GradientSquare>
