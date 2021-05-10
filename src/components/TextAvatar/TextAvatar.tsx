@@ -42,7 +42,7 @@ export const TextAvatar = ({ label }: TextAvatarProps) => (
   <GradientSquare
     gradientStart={colorForString(label || 'default label', 75)}
     gradientEnd={colorForString(
-      label.split('').reverse().join('') || 'default label',
+      (label && label.split('').reverse().join('')) || 'default label',
       30
     )}
   >
