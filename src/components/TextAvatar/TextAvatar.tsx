@@ -38,14 +38,14 @@ const colorForString = (stringInput: string, brightness: number) => {
   return `hsl(${stringUniqueHash % 360}, 95%, ${brightness}%)`;
 };
 
-export const TextAvatar = ({ label = 'Default Label' }: TextAvatarProps) => (
+export const TextAvatar = ({ label }: TextAvatarProps) => (
   <GradientSquare
-    gradientStart={colorForString(label, 75)}
+    gradientStart={colorForString(label || 'default label', 75)}
     gradientEnd={colorForString(
-      label.split('').reverse().join('') || label,
+      label.split('').reverse().join('') || 'default label',
       30
     )}
   >
-    {label[0].toUpperCase()}
+    {(label && label[0].toUpperCase()) || 'D'}
   </GradientSquare>
 );
