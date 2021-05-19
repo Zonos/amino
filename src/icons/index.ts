@@ -43,5 +43,6 @@ export { ThumbsDownIcon } from './ThumbsDownIcon';
 export { ConvertIcon } from './ConvertIcon';
 export { AttachmentIcon } from './AttachmentIcon';
 export { PercentIcon } from './PercentIcon';
+export { PlayIcon } from './PlayIcon';
 
 export { IconBase } from './IconBase';
