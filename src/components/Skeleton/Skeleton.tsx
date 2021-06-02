@@ -52,6 +52,6 @@ const SkeletonShimmer = styled.div<{ width: number }>`
  */
 export const Skeleton = ({ width, height, noShimmer }: SkeletonProps) => (
   <SkeletonWrapper width={width} height={height}>
-    {!noShimmer && <SkeletonShimmer width={width || 100} />}
+    {/* {!noShimmer && <SkeletonShimmer width={width || 100} />} */}
   </SkeletonWrapper>
 );
