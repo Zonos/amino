@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Intent } from '../..';
+import { Color, Intent } from '../..';
 
 const IconWrapper = styled.div`
   width: 32px;
   height: 32px;
   background: var(--amino-gray-200);
-  color: var(--amino-gray-600);
+  color: var(${p => p.color || '--amino-gray-600'});
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,10 +31,11 @@ const DangerIconWrapper = styled(IconWrapper)`
 
 export type RoundedIconProps = {
   children: React.ReactNode;
+  color?: Color;
   intent: Intent;
 };
 
-export const RoundedIcon = ({ children, intent }: RoundedIconProps) => {
+export const RoundedIcon = ({ children, color, intent }: RoundedIconProps) => {
   switch (intent) {
     case 'danger':
       return <DangerIconWrapper>{children}</DangerIconWrapper>;
@@ -43,6 +44,6 @@ export const RoundedIcon = ({ children, intent }: RoundedIconProps) => {
     case 'info':
     case 'secondary':
     default:
-      return <IconWrapper>{children}</IconWrapper>;
+      return <IconWrapper color={color}>{children}</IconWrapper>;
   }
 };
