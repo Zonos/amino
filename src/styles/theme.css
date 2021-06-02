@@ -86,11 +86,24 @@
   --amino-green-800: #0b5f46;
   --amino-green-900: #074e3b;
 
+  --amino-purple-alpha: #f5f3ff80;
+  --amino-purple-50: #f5f3ff;
+  --amino-purple-100: #ede9fe;
+  --amino-purple-200: #ddd6fe;
+  --amino-purple-300: #c4b5fd;
+  --amino-purple-400: #a78bfa;
+  --amino-purple-500: #8b5cf6;
+  --amino-purple-600: #7c3aed;
+  --amino-purple-700: #6d28d9;
+  --amino-purple-800: #5b21b6;
+  --amino-purple-900: #4c1d95;
+
   --amino-glow-blue: 0 0 0 3px var(--amino-blue-alpha);
   --amino-glow-cyan: 0 0 0 3px var(--amino-cyan-alpha);
   --amino-glow-red: 0 0 0 3px var(--amino-red-alpha);
   --amino-glow-orange: 0 0 0 3px var(--amino-orange-alpha);
-  --amino-green-orange: 0 0 0 3px var(--amino-green-alpha);
+  --amino-glow-green: 0 0 0 3px var(--amino-green-alpha);
+  --amino-glow-purple: 0 0 0 3px var(--amino-purple-alpha);
 
   --amino-primary: var(--amino-blue-500);
   --amino-primary-light: var(--amino-blue-400);
@@ -153,6 +166,7 @@
   --amino-border-cyan: 1px solid var(--amino-cyan-300);
   --amino-border-orange: 1px solid var(--amino-orange-300);
   --amino-border-green: 1px solid var(--amino-green-300);
+  --amino-border-purple: 1px solid var(--amino-purple-300);
   --amino-border-transparent: 1px solid transparent;
 
   /* TODO: easing functions and timings */

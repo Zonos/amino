@@ -70,10 +70,23 @@ export type GreenColor =
   | 'green-800'
   | 'green-900';
 
+export type PurpleColor =
+  | 'purple-50'
+  | 'purple-100'
+  | 'purple-200'
+  | 'purple-300'
+  | 'purple-400'
+  | 'purple-500'
+  | 'purple-600'
+  | 'purple-700'
+  | 'purple-800'
+  | 'purple-900';
+
 export type Color =
   | GrayColor
   | BlueColor
   | CyanColor
   | RedColor
   | OrangeColor
-  | GreenColor;
+  | GreenColor
+  | PurpleColor;
