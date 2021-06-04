@@ -1,5 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const heightCss = css<{ hasHeader: boolean }>`
+  height: ${p =>
+    p.hasHeader ? `calc(100vh - var(--amino-appbar-height))` : '100vh'};
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -19,17 +24,20 @@ const Footer = styled.div`
   box-sizing: border-box;
 `;
 
-const SidebarContent = styled.div`
+const SidebarContent = styled.div<{ hasHeader: boolean }>`
+  ${heightCss}
   padding: var(--amino-space);
   box-sizing: border-box;
   overflow-y: auto;
-  height: calc(100vh - 128px);
+  height: calc(
+    100vh - ${p => (p.hasHeader ? '128px' : 'var(--amino-appbar-height)')}
+  );
   width: 100%;
 `;
 
-const Sidebar = styled.nav`
+const Sidebar = styled.nav<{ hasHeader: boolean }>`
+  ${heightCss}
   border-right: var(--amino-border);
-  height: calc(100vh - var(--amino-appbar-height));
   width: var(--amino-sidebar-width);
   box-sizing: border-box;
   background: white;
@@ -38,11 +46,11 @@ const Sidebar = styled.nav`
   background: var(--amino-sidebar-color);
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ hasHeader: boolean }>`
+  ${heightCss}
   overflow-y: auto;
   padding: var(--amino-space);
   box-sizing: border-box;
-  height: calc(100vh - var(--amino-appbar-height));
   margin-bottom: var(--amino-space);
 `;
 
@@ -57,29 +65,30 @@ const Header = styled.header`
   box-sizing: border-box;
 `;
 
-type Props = {
+export type LayoutProps = {
   footer: React.ReactNode;
   sidebar: React.ReactNode;
   content: React.ReactNode;
   headerContent: React.ReactNode;
 };
 
-export const Layout: React.FC<Props> = ({
+export const Layout: React.FC<LayoutProps> = ({
   content,
   footer,
   sidebar,
   headerContent,
 }) => {
+  const hasHeader = !!headerContent;
   return (
     <AminoLayout>
-      <Header>{headerContent}</Header>
+      {hasHeader && <Header>{headerContent}</Header>}
       <ContentGrid>
-        <Sidebar>
-          <SidebarContent>{sidebar}</SidebarContent>
+        <Sidebar hasHeader={hasHeader}>
+          <SidebarContent hasHeader={hasHeader}>{sidebar}</SidebarContent>
 
           <Footer>{footer}</Footer>
         </Sidebar>
-        <Content>{content}</Content>
+        <Content hasHeader={hasHeader}>{content}</Content>
       </ContentGrid>
     </AminoLayout>
   );
