@@ -1,0 +1,57 @@
+import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
+
+import { Layout, LayoutProps } from '../components/Layout';
+
+const LayoutMeta: Meta = {
+  title: 'Amino/Layout',
+  component: Layout,
+  decorators: [withDesign],
+};
+
+export default LayoutMeta;
+
+const Template: Story<LayoutProps> = ({
+  footer,
+  content,
+  sidebar,
+  headerContent,
+}: LayoutProps) => (
+  <Layout
+    content={content}
+    footer={footer}
+    sidebar={sidebar}
+    headerContent={headerContent}
+  />
+);
+
+export const BasicLayout = Template.bind({});
+BasicLayout.args = {
+  footer: 'footer',
+  sidebar: 'sidebar',
+  content: 'content',
+  headerContent: 'Header content',
+};
+BasicLayout.parameters = {
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
+  },
+};
+
+export const LayoutWithoutHeader = Template.bind({});
+LayoutWithoutHeader.args = {
+  footer: 'footer',
+  sidebar: 'sidebar',
+  content: 'content',
+  headerContent: null,
+};
+LayoutWithoutHeader.parameters = {
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
+  },
+};
