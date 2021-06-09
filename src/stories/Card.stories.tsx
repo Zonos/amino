@@ -17,9 +17,15 @@ const Template: Story<CardProps> = ({
   label,
   children,
   actions,
+  footerContent,
   footerActions,
 }: CardProps) => (
-  <Card label={label} actions={actions} footerActions={footerActions}>
+  <Card
+    label={label}
+    actions={actions}
+    footerActions={footerActions}
+    footerContent={footerContent}
+  >
     {children}
   </Card>
 );
@@ -45,6 +51,26 @@ CardWithActions.args = {
   footerActions: <Button>Footer action</Button>,
 };
 CardWithActions.parameters = {
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A34',
+  },
+};
+
+export const CardWithFooter = Template.bind({});
+CardWithFooter.args = {
+  children: 'content',
+  label: 'Super cool',
+  footerContent: 'footer content',
+  footerActions: (
+    <>
+      <Button>footer action 1</Button>
+      <Button>footer action 2</Button>
+    </>
+  ),
+};
+CardWithFooter.parameters = {
   design: {
     type: 'figma',
     url:
