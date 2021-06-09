@@ -25,7 +25,8 @@ const CardHeader = styled.header`
 
 const CardFooter = styled.footer`
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   margin: var(--amino-space-negative);
   padding: var(--amino-space);
   border-top: var(--amino-border);
@@ -39,6 +40,7 @@ export type CardProps = {
   actions?: React.ReactNode;
   className?: string;
   label?: React.ReactNode;
+  footerContent?: React.ReactNode;
   footerActions?: React.ReactNode;
   children: React.ReactNode;
 };
@@ -47,6 +49,7 @@ export const Card = ({
   actions,
   children,
   className,
+  footerContent,
   footerActions,
   label,
 }: CardProps) => {
@@ -56,12 +59,13 @@ export const Card = ({
         <CardHeader>
           <Text type="h4">{label}</Text>
 
-          {actions && <HStack spacing="space-quarter">{actions}</HStack>}
+          <HStack spacing="space-quarter">{actions}</HStack>
         </CardHeader>
       )}
       {children}
-      {footerActions && (
+      {(footerActions || footerContent) && (
         <CardFooter>
+          <div>{footerContent}</div>
           <HStack spacing="space-quarter">{footerActions}</HStack>
         </CardFooter>
       )}
