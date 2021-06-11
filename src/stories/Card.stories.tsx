@@ -14,17 +14,19 @@ const CardMeta: Meta = {
 export default CardMeta;
 
 const Template: Story<CardProps> = ({
-  label,
-  children,
   actions,
-  footerContent,
+  children,
   footerActions,
+  footerContent,
+  footerHeight,
+  label,
 }: CardProps) => (
   <Card
-    label={label}
     actions={actions}
     footerActions={footerActions}
     footerContent={footerContent}
+    footerHeight={footerHeight}
+    label={label}
   >
     {children}
   </Card>
@@ -71,6 +73,35 @@ CardWithFooter.args = {
   ),
 };
 CardWithFooter.parameters = {
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A34',
+  },
+};
+
+export const CardWithFooterWithoutFooterActions = Template.bind({});
+CardWithFooterWithoutFooterActions.args = {
+  children: 'content',
+  label: 'Super cool',
+  footerContent: 'footer content',
+};
+CardWithFooterWithoutFooterActions.parameters = {
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A34',
+  },
+};
+
+export const CardWithFooterHeight = Template.bind({});
+CardWithFooterHeight.args = {
+  children: 'content',
+  label: 'Super cool',
+  footerContent: 'footer content',
+  footerHeight: 120,
+};
+CardWithFooterHeight.parameters = {
   design: {
     type: 'figma',
     url:

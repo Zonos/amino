@@ -23,7 +23,7 @@ const CardHeader = styled.header`
   }
 `;
 
-const CardFooter = styled.footer`
+const CardFooter = styled.footer<{ footerHeight?: number }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,23 +34,26 @@ const CardFooter = styled.footer`
   margin-top: var(--amino-space);
   border-bottom-left-radius: var(--amino-radius-lg);
   border-bottom-right-radius: var(--amino-radius-lg);
+  height: ${p => p.footerHeight && `${p.footerHeight}px`};
 `;
 
 export type CardProps = {
   actions?: React.ReactNode;
-  className?: string;
-  label?: React.ReactNode;
-  footerContent?: React.ReactNode;
-  footerActions?: React.ReactNode;
   children: React.ReactNode;
+  className?: string;
+  footerActions?: React.ReactNode;
+  footerContent?: React.ReactNode;
+  footerHeight?: number;
+  label?: React.ReactNode;
 };
 
 export const Card = ({
   actions,
   children,
   className,
-  footerContent,
   footerActions,
+  footerContent,
+  footerHeight,
   label,
 }: CardProps) => {
   return (
@@ -64,7 +67,7 @@ export const Card = ({
       )}
       {children}
       {(footerActions || footerContent) && (
-        <CardFooter>
+        <CardFooter footerHeight={footerHeight}>
           <div>{footerContent}</div>
           <HStack spacing="space-quarter">{footerActions}</HStack>
         </CardFooter>

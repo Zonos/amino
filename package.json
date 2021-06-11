@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "2.120.0",
+  "version": "2.121.0",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
