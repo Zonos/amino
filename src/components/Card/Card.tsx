@@ -37,6 +37,12 @@ const CardFooter = styled.footer<{ footerHeight?: number }>`
   height: ${p => p.footerHeight && `${p.footerHeight}px`};
 `;
 
+const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+`;
+
 export type CardProps = {
   actions?: React.ReactNode;
   children: React.ReactNode;
@@ -58,20 +64,22 @@ export const Card = ({
 }: CardProps) => {
   return (
     <Surface depth={Depth.depth4} className={className || ''}>
-      {label && (
-        <CardHeader>
-          <Text type="h4">{label}</Text>
+      <StyledWrapper>
+        {label && (
+          <CardHeader>
+            <Text type="h4">{label}</Text>
 
-          <HStack spacing="space-quarter">{actions}</HStack>
-        </CardHeader>
-      )}
-      {children}
-      {(footerActions || footerContent) && (
-        <CardFooter footerHeight={footerHeight}>
-          <div>{footerContent}</div>
-          <HStack spacing="space-quarter">{footerActions}</HStack>
-        </CardFooter>
-      )}
+            <HStack spacing="space-quarter">{actions}</HStack>
+          </CardHeader>
+        )}
+        {children}
+        {(footerActions || footerContent) && (
+          <CardFooter footerHeight={footerHeight}>
+            <div>{footerContent}</div>
+            <HStack spacing="space-quarter">{footerActions}</HStack>
+          </CardFooter>
+        )}
+      </StyledWrapper>
     </Surface>
   );
 };
