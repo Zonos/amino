@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { GridAlignment, GridSpacing } from '.';
@@ -5,6 +6,7 @@ import { GridAlignment, GridSpacing } from '.';
 export type HStackProps = {
   alignment?: GridAlignment;
   spacing?: GridSpacing;
+  children: React.ReactNode;
 };
 
 /**
