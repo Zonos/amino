@@ -36,32 +36,34 @@ type TextStyle =
   | 'smallheader'
   | 'inputlabel';
 
-type Props = {
+export type TextProps = {
+  children: React.ReactNode;
+  title?: string;
   type?: TextStyle;
 };
 
-export const Text: React.FC<Props> = ({ children, type }) => {
+export const Text: React.FC<TextProps> = ({ children, title, type }) => {
   switch (type) {
     case 'h1':
-      return <h1>{children}</h1>;
+      return <h1 title={title}>{children}</h1>;
     case 'h2':
-      return <h2>{children}</h2>;
+      return <h2 title={title}>{children}</h2>;
     case 'h3':
-      return <h3>{children}</h3>;
+      return <h3 title={title}>{children}</h3>;
     case 'h4':
-      return <h4>{children}</h4>;
+      return <h4 title={title}>{children}</h4>;
     case 'h5':
-      return <h5>{children}</h5>;
+      return <h5 title={title}>{children}</h5>;
     case 'h6':
-      return <h6>{children}</h6>;
+      return <h6 title={title}>{children}</h6>;
     case 'subtitle':
-      return <Subtitle>{children}</Subtitle>;
+      return <Subtitle title={title}>{children}</Subtitle>;
     case 'smallheader':
-      return <SmallHeader>{children}</SmallHeader>;
+      return <SmallHeader title={title}>{children}</SmallHeader>;
     case 'inputlabel':
-      return <InputLabel>{children}</InputLabel>;
+      return <InputLabel title={title}>{children}</InputLabel>;
     case 'p':
     default:
-      return <p>{children}</p>;
+      return <p title={title}>{children}</p>;
   }
 };
