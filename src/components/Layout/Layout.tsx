@@ -42,7 +42,7 @@ const Sidebar = styled.nav<{ hasHeader: boolean }>`
   box-sizing: border-box;
   background: white;
   display: grid;
-  grid-template-rows: 1fr calc(38px + var(--amino-space) * 2);
+  grid-template-rows: 1fr calc(39px + var(--amino-space) * 2);
   background: var(--amino-sidebar-color);
 `;
 
