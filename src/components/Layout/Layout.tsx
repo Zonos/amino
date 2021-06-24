@@ -39,7 +39,8 @@ const Sidebar = styled.nav`
 const Content = styled.div`
   height: 100%;
   overflow-y: auto;
-  padding: var(--amino-space);
+  padding: var(--amino-space) var(--amino-space)
+    calc(39px + var(--amino-space) * 2);
   box-sizing: border-box;
 `;
 
