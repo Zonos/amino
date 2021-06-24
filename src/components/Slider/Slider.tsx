@@ -45,6 +45,41 @@ const StyledThumb = styled(Thumb)`
   }
 `;
 
+const SliderWrapper = styled.div`
+  position: relative;
+`;
+
+const Indicator = styled.div`
+  position: absolute;
+  background: var(--amino-blue-100);
+  color: var(--amino-blue-700);
+  width: 48px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: var(--amino-radius);
+  border-bottom-right-radius: var(--amino-radius);
+  font-weight: 500;
+  user-select: none;
+`;
+
+const UpTriangle = styled.div`
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 24px solid var(--amino-blue-100);
+  width: 48px;
+  border-top-left-radius: var(--amino-radius);
+  border-top-right-radius: var(--amino-radius);
+`;
+
+const IndicatorWrapper = styled.div`
+  margin-left: -12px;
+  margin-top: calc(var(--amino-space) + 10px);
+`;
+
 export type SliderProps = {
   value: number;
   min?: number;
@@ -53,25 +88,26 @@ export type SliderProps = {
   onChange: (newValue: number) => void;
 };
 
-export const Slider = ({
-  min,
-  max,
-  value,
-  step,
-  onChange,
-}: SliderProps) => {
+export const Slider = ({ min, max, value, step, onChange }: SliderProps) => {
   return (
-    <StyledSlider
-      value={[value]}
-      onValueChange={([val]) => onChange(val)}
-      min={min}
-      max={max}
-      step={step}
-    >
-      <StyledTrack>
-        <StyledRange />
-      </StyledTrack>
-      <StyledThumb />
-    </StyledSlider>
+    <SliderWrapper>
+      <StyledSlider
+        value={[value]}
+        onValueChange={([val]) => onChange(val)}
+        min={min}
+        max={max}
+        step={step}
+      >
+        <StyledTrack>
+          <StyledRange />
+        </StyledTrack>
+        <StyledThumb>
+          <IndicatorWrapper>
+            <UpTriangle />
+            <Indicator>{value}%</Indicator>
+          </IndicatorWrapper>
+        </StyledThumb>
+      </StyledSlider>
+    </SliderWrapper>
   );
 };
