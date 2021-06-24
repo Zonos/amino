@@ -13,8 +13,8 @@ const Error = styled.div`
 `;
 
 const InputDecorator = styled.div`
-  height: 38px;
-  line-height: 38px;
+  height: var(--amino-input-height);
+  line-height: var(--amino-input-height);
   font-weight: 500;
   background: var(--amino-surface-color-secondary);
   padding: 0 var(--amino-space-half);
@@ -34,7 +34,7 @@ const InputSuffix = styled(InputDecorator)`
 `;
 
 const AminoInput = styled.input`
-  height: 38px;
+  height: var(--amino-input-height);
   box-sizing: border-box;
   position: relative;
   outline: none;
