@@ -62,6 +62,10 @@ const Indicator = styled.div`
   border-bottom-right-radius: var(--amino-radius);
   font-weight: 500;
   user-select: none;
+
+  span {
+    margin-top: -8px;
+  }
 `;
 
 const UpTriangle = styled.div`
@@ -104,7 +108,9 @@ export const Slider = ({ min, max, value, step, onChange }: SliderProps) => {
         <StyledThumb>
           <IndicatorWrapper>
             <UpTriangle />
-            <Indicator>{value}%</Indicator>
+            <Indicator>
+              <span>{value}%</span>
+            </Indicator>
           </IndicatorWrapper>
         </StyledThumb>
       </StyledSlider>
