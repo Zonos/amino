@@ -124,6 +124,7 @@
   --amino-text-dark: var(--amino-text-color);
 
   --amino-input-background: white;
+  --amino-input-height: 32px;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: var(--amino-page-background);

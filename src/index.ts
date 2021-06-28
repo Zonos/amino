@@ -26,6 +26,7 @@ export { DangerZone } from './components/DangerZone';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
 export { TextAvatar } from './components/TextAvatar';
+export { Slider } from './components/Slider';
 
 export {
   ConfirmDialog,

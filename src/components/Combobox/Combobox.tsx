@@ -42,7 +42,7 @@ const DropdownContainer = styled.div`
 
   //TODO: I don't like replicating this code...
   input {
-    height: 38px;
+    height: var(--amino-input-height);
     box-sizing: border-box;
     position: relative;
     outline: none;

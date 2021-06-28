@@ -11,7 +11,7 @@ const StyledSelect = styled.select`
   box-sizing: border-box;
   transition: var(--amino-transition);
   display: block;
-  height: 38px;
+  height: var(--amino-input-height);
   width: 100%;
   padding: 0 var(--amino-space-half);
   background: var(--amino-input-background);
