@@ -9,8 +9,8 @@ const AminoButton = styled.button`
   position: relative;
   outline: none;
   border: var(--amino-border-transparent);
-  height: 40px;
-  line-height: 18px;
+  height: var(--amino-input-height);
+  line-height: var(--amino-input-height);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -44,9 +44,10 @@ const AminoButton = styled.button`
 const Primary = styled(AminoButton)`
   background: var(--amino-primary);
   color: var(--amino-text-light);
+  border-color: var(--amino-primary);
 
   &:hover {
-    background: var(--amino-primary-dark);
+    background: var(--amino-blue-600);
   }
 `;
 
