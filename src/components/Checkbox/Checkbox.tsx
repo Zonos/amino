@@ -6,7 +6,6 @@ import { Text } from 'components/Text';
 import { CheckIcon } from 'icons';
 
 // TODO: multiline checkboxes could use some work
-
 const AnimatedCheckIcon = motion(CheckIcon);
 
 const AminoCheckbox = styled.div<{ checked: boolean }>`
@@ -90,7 +89,7 @@ export const Checkbox = ({
     multiline={!!subtitle}
     onClick={() => onChange(!checked)}
   >
-    <AminoCheckbox onClick={() => onChange(!checked)} checked={checked}>
+    <AminoCheckbox checked={checked}>
       <AnimatePresence>
         {checked && (
           <AnimatedCheckIcon
