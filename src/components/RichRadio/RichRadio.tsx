@@ -71,7 +71,7 @@ type RichRadioItemType = {
 };
 
 export type RichRadioProps = {
-  onChange: (newVal: string) => {};
+  onChange: (newVal: string) => void;
   items: RichRadioItemType[];
   value?: string;
   defaultValue?: string;
