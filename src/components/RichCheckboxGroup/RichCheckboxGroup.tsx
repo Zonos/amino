@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 
-import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
+import { Indicator, Root } from '@radix-ui/react-checkbox';
 import styled from 'styled-components';
 
 import { CheckIcon } from '../../icons';
 import { VStack } from '../Stack';
 
-const StyledItem = styled(Item)`
+const RichCheckbox = styled(Root)`
   align-items: center;
   appearance: none;
   background: white;
@@ -39,7 +39,7 @@ const Subtitle = styled.span`
   opacity: 0.5;
 `;
 
-const StyledRoot = styled(Root)`
+const StyledVStack = styled(VStack)`
   button[data-state='checked'] {
     background: var(--amino-primary);
     border-color: transparent;
@@ -82,37 +82,35 @@ type RichCheckboxItemType = {
 
 export type RichCheckboxGroupProps = {
   items: RichCheckboxItemType[];
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick: (newVal: string) => void;
 };
 
 export const RichCheckboxGroup = ({
   onClick,
   items,
 }: RichCheckboxGroupProps) => (
-  <StyledRoot>
-    <VStack spacing="space-half">
-      {items.map(item => {
-        const { checked, icon, label, subtitle, value } = item;
-        return (
-          <StyledItem
-            checked={checked}
-            value={value}
-            key={value}
-            onMouseDown={e => onClick(e)}
-          >
-            <StyledItemContentDiv>
-              {icon}
-              <VStack spacing="none">
-                <Label>{label}</Label>
-                {subtitle && <Subtitle>{subtitle}</Subtitle>}
-              </VStack>
-            </StyledItemContentDiv>
-            <StyledIndicator>
-              <CheckIcon />
-            </StyledIndicator>
-          </StyledItem>
-        );
-      })}
-    </VStack>
-  </StyledRoot>
+  <StyledVStack spacing="space-half">
+    {items.map(item => {
+      const { checked, icon, label, subtitle, value } = item;
+      return (
+        <RichCheckbox
+          checked={checked}
+          value={value}
+          key={value}
+          onClick={e => onClick(e.currentTarget.value)}
+        >
+          <StyledItemContentDiv>
+            {icon && icon}
+            <VStack spacing="none">
+              <Label>{label}</Label>
+              {subtitle && <Subtitle>{subtitle}</Subtitle>}
+            </VStack>
+          </StyledItemContentDiv>
+          <StyledIndicator>
+            <CheckIcon />
+          </StyledIndicator>
+        </RichCheckbox>
+      );
+    })}
+  </StyledVStack>
 );

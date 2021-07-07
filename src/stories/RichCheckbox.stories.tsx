@@ -45,12 +45,6 @@ BasicRichCheckbox.args = {
       value: 'item3',
     },
   ],
-  onClick: e =>
-    BasicRichCheckbox.args?.items?.forEach(item => {
-      if (item.value === e.currentTarget.value) {
-        item.checked = !item.checked;
-      }
-    }),
 };
 BasicRichCheckbox.parameters = {
   design: {
