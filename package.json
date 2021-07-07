@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "2.131.0",
+  "version": "2.132.0",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -10,6 +10,7 @@
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.13.14",
+    "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.0.14",
     "@radix-ui/react-slider": "^0.0.16",
     "@storybook/addon-a11y": "^6.2.3",
@@ -55,6 +56,7 @@
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
+    "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.0.14",
     "@radix-ui/react-slider": "^0.0.16",
     "@types/react": "^17.x",
