@@ -33,13 +33,15 @@ const Sidebar = styled.nav`
   display: grid;
   grid-template-rows: 1fr calc(39px + var(--amino-space) * 2);
   height: 100%;
+  overflow-y: auto;
   background: var(--amino-sidebar-color);
 `;
 
 const Content = styled.div`
   height: 100%;
   overflow-y: auto;
-  padding: var(--amino-space);
+  padding: var(--amino-space) var(--amino-space)
+    calc(39px + var(--amino-space) * 2);
   box-sizing: border-box;
 `;
 

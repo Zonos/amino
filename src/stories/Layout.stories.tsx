@@ -29,7 +29,7 @@ const Template: Story<LayoutProps> = ({
 export const BasicLayout = Template.bind({});
 BasicLayout.args = {
   footer: 'footer',
-  sidebar: 'sidebar',
+  sidebar: <div style={{ height: '400px', background: 'gray' }}>sidebar</div>,
   content: 'content',
   headerContent: 'Header content',
 };
