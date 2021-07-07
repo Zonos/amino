@@ -23,6 +23,7 @@ export { VStack } from './components/Stack';
 export { HStack, HStackProps } from './components/Stack';
 export { DarkModeWrapper } from './components/DarkModeWrapper';
 export { DangerZone } from './components/DangerZone';
+export { RichCheckboxGroup } from './components/RichCheckboxGroup';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
 export { TextAvatar } from './components/TextAvatar';
