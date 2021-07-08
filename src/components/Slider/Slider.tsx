@@ -50,7 +50,7 @@ const SliderWrapper = styled.div`
 `;
 
 const Indicator = styled.div`
-  position: absolute;
+  position: relative;
   background: var(--amino-blue-100);
   color: var(--amino-blue-700);
   width: 48px;
