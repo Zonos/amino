@@ -71,23 +71,25 @@ const Close = styled.div`
 `;
 
 export type DialogProps = {
-  open: boolean;
-  label?: string;
   actions?: React.ReactNode;
-  theme?: IAminoTheme;
   children: React.ReactNode;
+  label?: string;
   onClose: () => void;
+  open: boolean;
+  theme?: IAminoTheme;
+  width?: number;
 };
 
 export const Dialog = ({
-  theme,
-  open,
-  label,
   actions,
   children,
+  label,
   onClose,
+  open,
+  theme,
+  width,
 }: DialogProps) => (
-  <BaseDialog data-theme={theme} open={open}>
+  <BaseDialog data-theme={theme} open={open} width={width}>
     <Header>
       <Text type="h4">{label}</Text>
       <Close onClick={onClose}>
