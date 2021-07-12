@@ -3,65 +3,66 @@ import styled from 'styled-components';
 import { Root, Track, Range, Thumb } from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Root)`
-  position: relative;
-  display: flex;
   align-items: center;
-  user-select: none;
-  touch-action: none;
+  display: flex;
   height: 12px;
+  position: relative;
+  touch-action: none;
+  user-select: none;
 `;
 
 const StyledTrack = styled(Track)`
-  position: relative;
-  flex-grow: 1;
-  height: 12px;
   background-color: var(--amino-gray-200);
   border-radius: 20px;
   box-shadow: var(--amino-shadow-inset);
+  flex-grow: 1;
+  height: 12px;
+  position: relative;
 `;
 
 const StyledRange = styled(Range)`
-  position: absolute;
   background-color: var(--amino-primary);
   border-radius: 9999px;
   height: 100%;
+  position: absolute;
 `;
 
 const StyledThumb = styled(Thumb)`
-  display: block;
-  width: 24px;
-  height: 24px;
   background: white;
   border-radius: 20px;
-  box-shadow: var(--amino-shadow-small);
   border: var(--amino-border);
+  box-shadow: var(--amino-shadow-small);
+  display: block;
+  height: 24px;
+  width: 24px;
 
   &:focus,
   &:active {
-    outline: none;
+    background: var(--amino-gray-100);
     border-color: var(--amino-primary);
     box-shadow: var(--amino-glow-blue);
-    background: var(--amino-gray-100);
+    outline: none;
   }
 `;
 
 const SliderWrapper = styled.div`
   position: relative;
+  height: calc(56px + var(--amino-space) + 10px);
 `;
 
 const Indicator = styled.div`
-  position: relative;
-  background: var(--amino-blue-100);
-  color: var(--amino-blue-700);
-  width: 48px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background: var(--amino-blue-100);
   border-bottom-left-radius: var(--amino-radius);
   border-bottom-right-radius: var(--amino-radius);
+  color: var(--amino-blue-700);
+  display: flex;
   font-weight: 500;
+  height: 32px;
+  justify-content: center;
+  position: relative;
   user-select: none;
+  width: 48px;
 
   span {
     margin-top: -8px;
@@ -69,14 +70,14 @@ const Indicator = styled.div`
 `;
 
 const UpTriangle = styled.div`
-  width: 0;
-  height: 0;
+  border-bottom: 24px solid var(--amino-blue-100);
   border-left: 24px solid transparent;
   border-right: 24px solid transparent;
-  border-bottom: 24px solid var(--amino-blue-100);
-  width: 48px;
   border-top-left-radius: var(--amino-radius);
   border-top-right-radius: var(--amino-radius);
+  height: 0;
+  width: 0;
+  width: 48px;
 `;
 
 const IndicatorWrapper = styled.div`
@@ -85,22 +86,22 @@ const IndicatorWrapper = styled.div`
 `;
 
 export type SliderProps = {
-  value: number;
-  min?: number;
   max?: number;
-  step?: number;
+  min?: number;
   onChange: (newValue: number) => void;
+  step?: number;
+  value: number;
 };
 
 export const Slider = ({ min, max, value, step, onChange }: SliderProps) => {
   return (
     <SliderWrapper>
       <StyledSlider
-        value={[value]}
-        onValueChange={([val]) => onChange(val)}
-        min={min}
         max={max}
+        min={min}
+        onValueChange={([val]) => onChange(val)}
         step={step}
+        value={[value]}
       >
         <StyledTrack>
           <StyledRange />
