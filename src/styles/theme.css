@@ -27,16 +27,16 @@
   --amino-radius-lg: 0.714em;
   --amino-radius-xl: 1em;
 
-  --amino-gray-50: #fafafa;
-  --amino-gray-100: #f4f4f5;
-  --amino-gray-200: #e4e4e7;
-  --amino-gray-300: #d4d4d8;
-  --amino-gray-400: #a1a1aa;
-  --amino-gray-500: #71717a;
-  --amino-gray-600: #52525b;
-  --amino-gray-700: #3f3f46;
-  --amino-gray-800: #27272a;
-  --amino-gray-900: #18181b;
+  --amino-gray-50: #f8fafc;
+  --amino-gray-100: #f1f5f9;
+  --amino-gray-200: #e2e8f0;
+  --amino-gray-300: #cbd5e1;
+  --amino-gray-400: #94a3b8;
+  --amino-gray-500: #64748b;
+  --amino-gray-600: #475569;
+  --amino-gray-700: #334155;
+  --amino-gray-800: #1e293b;
+  --amino-gray-900: #0f172a;
 
   --amino-blue-alpha: #2190ff80;
   --amino-blue-50: #ebf5ff;
@@ -97,6 +97,18 @@
   --amino-purple-700: #6d28d9;
   --amino-purple-800: #5b21b6;
   --amino-purple-900: #4c1d95;
+
+  --amino-amber-alpha: #FFFBEB80;
+  --amino-amber-50: #FFFBEB;
+  --amino-amber-100: #FEF3C7;
+  --amino-amber-200: #FDE68A;
+  --amino-amber-300: #FCD34D;
+  --amino-amber-400: #FBBF24;
+  --amino-amber-500: #F59E0B;
+  --amino-amber-600: #D97706;
+  --amino-amber-700: #B45309;
+  --amino-amber-800: #92400E;
+  --amino-amber-900: #78350F;
 
   --amino-glow-blue: 0 0 0 2px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
@@ -159,7 +171,8 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --amino-shadow-larger: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --amino-border-shadow-sm: 0px 0px 1px rgba(0, 0, 0, 0.33), 0px 1px 3px rgba(0, 0, 0, 0.11);
+  --amino-border-shadow-sm: 0px 0px 1px rgba(30, 41, 59, 0.5),
+    0px 1px 3px rgba(30, 41, 59, 0.17);
 
   /* helpers */
   --amino-border: 1px solid var(--amino-border-color);
@@ -169,6 +182,7 @@
   --amino-border-orange: 1px solid var(--amino-orange-300);
   --amino-border-green: 1px solid var(--amino-green-300);
   --amino-border-purple: 1px solid var(--amino-purple-300);
+  --amino-border-amber: 1px solid var(--amino-amber-300);
   --amino-border-transparent: 1px solid transparent;
 
   /* TODO: easing functions and timings */
