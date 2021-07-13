@@ -27,16 +27,16 @@
   --amino-radius-lg: 0.714em;
   --amino-radius-xl: 1em;
 
-  --amino-gray-50: #f8fafc;
-  --amino-gray-100: #f1f5f9;
-  --amino-gray-200: #e2e8f0;
-  --amino-gray-300: #cbd5e1;
-  --amino-gray-400: #94a3b8;
-  --amino-gray-500: #64748b;
-  --amino-gray-600: #475569;
-  --amino-gray-700: #334155;
-  --amino-gray-800: #1e293b;
-  --amino-gray-900: #0f172a;
+  --amino-gray-50: #f9fafb;
+  --amino-gray-100: #f3f4f6;
+  --amino-gray-200: #e5e7eb;
+  --amino-gray-300: #d1d5db;
+  --amino-gray-400: #9ca3af;
+  --amino-gray-500: #6b7280;
+  --amino-gray-600: #4b5563;
+  --amino-gray-700: #374151;
+  --amino-gray-800: #1f2937;
+  --amino-gray-900: #111827;
 
   --amino-blue-alpha: #2190ff80;
   --amino-blue-50: #ebf5ff;
@@ -98,17 +98,17 @@
   --amino-purple-800: #5b21b6;
   --amino-purple-900: #4c1d95;
 
-  --amino-amber-alpha: #FFFBEB80;
-  --amino-amber-50: #FFFBEB;
-  --amino-amber-100: #FEF3C7;
-  --amino-amber-200: #FDE68A;
-  --amino-amber-300: #FCD34D;
-  --amino-amber-400: #FBBF24;
-  --amino-amber-500: #F59E0B;
-  --amino-amber-600: #D97706;
-  --amino-amber-700: #B45309;
-  --amino-amber-800: #92400E;
-  --amino-amber-900: #78350F;
+  --amino-amber-alpha: #fffbeb80;
+  --amino-amber-50: #fffbeb;
+  --amino-amber-100: #fef3c7;
+  --amino-amber-200: #fde68a;
+  --amino-amber-300: #fcd34d;
+  --amino-amber-400: #fbbf24;
+  --amino-amber-500: #f59e0b;
+  --amino-amber-600: #d97706;
+  --amino-amber-700: #b45309;
+  --amino-amber-800: #92400e;
+  --amino-amber-900: #78350f;
 
   --amino-glow-blue: 0 0 0 2px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
@@ -136,7 +136,7 @@
   --amino-text-dark: var(--amino-text-color);
 
   --amino-input-background: white;
-  --amino-input-height: 38px;
+  --amino-input-height: 36px;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: var(--amino-page-background);
@@ -171,8 +171,8 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --amino-shadow-larger: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --amino-border-shadow-sm: 0px 0px 1px rgba(30, 41, 59, 0.5),
-    0px 1px 3px rgba(30, 41, 59, 0.17);
+  --amino-border-shadow-sm: 0px 0px 1px rgba(31, 41, 55, 0.33),
+    0px 1px 3px rgba(31, 41, 55, 0.11);
 
   /* helpers */
   --amino-border: 1px solid var(--amino-border-color);
