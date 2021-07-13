@@ -9,35 +9,33 @@ import { CheckIcon } from 'icons';
 const AnimatedCheckIcon = motion(CheckIcon);
 
 const AminoCheckbox = styled.div<{ checked: boolean }>`
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-  min-height: 18px;
-  line-height: 18px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  line-height: 16px;
   border-radius: var(--amino-radius-sm);
   background: ${p =>
     p.checked ? 'var(--amino-primary)' : 'var(--amino-input-background)'};
-  border: ${p =>
-    p.checked ? '2px solid var(--amino-primary)' : 'var(--amino-border)'};
+  border: ${p => (p.checked ? '2px solid var(--amino-primary)' : 'none')};
   transition: all 150ms ease-in-out;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-shadow: var(--amino-shadow-small);
+  box-shadow: var(--amino-border-shadow-sm);
   margin-right: var(--amino-space-half);
 
   &:active {
-    border: var(--amino-border-blue);
     box-shadow: var(--amino-glow-blue);
   }
 
   svg {
     color: white;
     box-shadow: var(--amino-shadow-small);
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 `;
 

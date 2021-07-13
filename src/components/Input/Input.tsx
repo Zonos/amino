@@ -16,21 +16,20 @@ const InputDecorator = styled.div`
   height: var(--amino-input-height);
   line-height: var(--amino-input-height);
   font-weight: 500;
-  background: var(--amino-surface-color-secondary);
+  background: var(--amino-gray-100);
   padding: 0 var(--amino-space-half);
-  border: var(--amino-border);
 `;
 
 const InputPrefix = styled(InputDecorator)`
   border-top-left-radius: var(--amino-radius);
   border-bottom-left-radius: var(--amino-radius);
-  border-right: 0;
+  border-right: var(--amino-border);
 `;
 
 const InputSuffix = styled(InputDecorator)`
   border-top-right-radius: var(--amino-radius);
   border-bottom-right-radius: var(--amino-radius);
-  border-left: 0;
+  border-left: var(--amino-border);
 `;
 
 const AminoInput = styled.input`
