@@ -19,17 +19,19 @@ const AminoButton = styled.button`
   padding: 0 var(--amino-space);
   border-radius: var(--amino-radius);
   transition: var(--amino-transition);
-  box-shadow: var(--amino-shadow-small);
+  /* box-shadow: var(--amino-shadow-small); */
+  box-shadow: var(--amino-border-shadow-sm);
   font-weight: 500;
   user-select: none;
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
+  border: 0;
 
   /* should we use active or focus or both? */
   &:active,
   &:focus {
     outline: none;
-    border: var(--amino-border-blue);
+    /* border: var(--amino-border-blue); */
     box-shadow: var(--amino-glow-blue);
   }
 
@@ -44,7 +46,7 @@ const AminoButton = styled.button`
 const Primary = styled(AminoButton)`
   background: var(--amino-primary);
   color: var(--amino-text-light);
-  border-color: var(--amino-primary);
+  /* border-color: var(--amino-primary); */
 
   &:hover {
     background: var(--amino-blue-600);
@@ -53,7 +55,7 @@ const Primary = styled(AminoButton)`
 
 const Secondary = styled(AminoButton)`
   color: var(--amino-text-color);
-  border: var(--amino-border);
+  /* border: var(--amino-border); */
   background: var(--amino-input-background);
 
   &:hover {
@@ -64,7 +66,7 @@ const Secondary = styled(AminoButton)`
 const Icon = styled(AminoButton)`
   background: var(--amino-input-background);
   color: var(--amino-text-color);
-  border: var(--amino-border);
+  /* border: var(--amino-border); */
   padding: 0 var(--amino-space-half);
 
   svg {
@@ -89,7 +91,7 @@ const Danger = styled(AminoButton)`
 
   &:active,
   &:focus {
-    border: var(--amino-border-red);
+    /* border: var(--amino-border-red); */
     box-shadow: var(--amino-glow-red);
   }
 `;

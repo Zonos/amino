@@ -38,12 +38,12 @@ const AminoInput = styled.input`
   box-sizing: border-box;
   position: relative;
   outline: none;
-  border: var(--amino-border);
-  padding: 0 calc(var(--amino-space-quarter) + 2px);
+  padding: 0 calc(var(--amino-space-quarter) + 6px);
   transition: var(--amino-transition);
   width: 100%;
   border-radius: var(--amino-radius);
   background: var(--amino-input-background);
+  border: 0;
 
   ::placeholder {
     color: var(--amino-text-color);
@@ -52,7 +52,6 @@ const AminoInput = styled.input`
 
   :focus {
     outline: none;
-    border: var(--amino-border-blue);
     box-shadow: var(--amino-glow-blue);
   }
 
@@ -73,21 +72,24 @@ const AminoInput = styled.input`
 
 const Fields = styled.div`
   border-radius: var(--amino-radius);
-  box-shadow: var(--amino-shadow-small);
+  box-shadow: var(--amino-border-shadow-sm);
 `;
 
 const AminoInputWrapper = styled.div<{ width?: number }>`
   position: relative;
   width: ${p => (p.width ? `${p.width}px` : '100%')};
+
   span {
     margin-top: var(--amino-space-quarter);
     display: block;
   }
+
   & div {
     flex-direction: row;
     align-items: center;
     display: flex;
   }
+
   &.disabled {
     pointer-events: none;
     cursor: not-allowed;
