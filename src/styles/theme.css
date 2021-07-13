@@ -23,8 +23,8 @@
   --amino-space-double-negative: -2.5em;
 
   --amino-radius-sm: 0.25em;
-  --amino-radius: 0.375em;
-  --amino-radius-lg: 0.5em;
+  --amino-radius: 0.428em;
+  --amino-radius-lg: 0.714em;
   --amino-radius-xl: 1em;
 
   --amino-gray-50: #fafafa;
@@ -98,12 +98,12 @@
   --amino-purple-800: #5b21b6;
   --amino-purple-900: #4c1d95;
 
-  --amino-glow-blue: 0 0 0 3px var(--amino-blue-alpha);
-  --amino-glow-cyan: 0 0 0 3px var(--amino-cyan-alpha);
-  --amino-glow-red: 0 0 0 3px var(--amino-red-alpha);
-  --amino-glow-orange: 0 0 0 3px var(--amino-orange-alpha);
-  --amino-glow-green: 0 0 0 3px var(--amino-green-alpha);
-  --amino-glow-purple: 0 0 0 3px var(--amino-purple-alpha);
+  --amino-glow-blue: 0 0 0 2px var(--amino-primary);
+  --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
+  --amino-glow-red: 0 0 0 2px var(--amino-red-alpha);
+  --amino-glow-orange: 0 0 0 2px var(--amino-orange-alpha);
+  --amino-glow-green: 0 0 0 2px var(--amino-green-alpha);
+  --amino-glow-purple: 0 0 0 2px var(--amino-purple-alpha);
 
   --amino-primary: var(--amino-blue-500);
   --amino-primary-light: var(--amino-blue-400);
@@ -124,7 +124,7 @@
   --amino-text-dark: var(--amino-text-color);
 
   --amino-input-background: white;
-  --amino-input-height: 32px;
+  --amino-input-height: 38px;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: var(--amino-page-background);
@@ -159,6 +159,7 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --amino-shadow-larger: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --amino-border-shadow-sm: 0px 0px 1px rgba(0, 0, 0, 0.33), 0px 1px 3px rgba(0, 0, 0, 0.11);
 
   /* helpers */
   --amino-border: 1px solid var(--amino-border-color);
