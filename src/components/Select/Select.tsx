@@ -15,15 +15,14 @@ const StyledSelect = styled.select`
   width: 100%;
   padding: 0 var(--amino-space-half);
   background: var(--amino-input-background);
-  border: var(--amino-border);
-  box-shadow: var(--amino-shadow-small);
+  border: 0;
+  box-shadow: var(--amino-border-shadow-sm);
   -webkit-appearance: none;
   -moz-appearance: none;
 
   &:focus,
   &:active {
     outline: none;
-    border: var(--amino-border-blue);
     box-shadow: var(--amino-glow-blue);
   }
 `;
