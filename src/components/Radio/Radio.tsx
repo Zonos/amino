@@ -5,8 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'components/Text';
 
 const StyledRadio = styled.div<{ checked: boolean }>`
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: ${p =>
     p.checked ? 'var(--amino-primary) ' : 'var(--amino-input-background)'};
@@ -15,14 +15,12 @@ const StyledRadio = styled.div<{ checked: boolean }>`
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: ${p =>
-    p.checked ? '2px solid var(--amino-primary)' : 'var(--amino-border)'};
-  box-shadow: var(--amino-shadow-small);
+  border: ${p => (p.checked ? '2px solid var(--amino-primary)' : 'none')};
+  box-shadow: var(--amino-border-shadow-sm);
   margin-right: var(--amino-space-half);
   transition: var(--amino-transition);
 
   &:active {
-    border: var(--amino-border-blue);
     box-shadow: var(--amino-glow-blue);
   }
 
