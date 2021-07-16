@@ -47,5 +47,6 @@ export { PlayIcon } from './PlayIcon';
 export { EmailIcon } from './EmailIcon';
 export { PuzzleIcon } from './PuzzleIcon';
 export { PersonIcon } from './PersonIcon';
+export { GridIcon } from './GridIcon';
 
 export { IconBase } from './IconBase';
