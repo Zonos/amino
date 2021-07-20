@@ -31,8 +31,8 @@ const AminoWarningNotice = styled(AminoNotice)`
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
-  background: var(--amino-primary);
-  color: white;
+  background: var(--amino-blue-100);
+  color: var(--amino-blue-500);
 `;
 
 export type NoticeProps = {
