@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import { IconProps } from 'types';
 
+import * as icons from 'icons';
 import { IconsConsumer } from './IconsConsumer';
 
 const IconsMeta: Meta = {
@@ -12,12 +13,31 @@ const IconsMeta: Meta = {
 
 export default IconsMeta;
 
-const Template: Story<IconProps> = ({ size, color }: IconProps) => (
-  <IconsConsumer size={size} color={color} />
-);
-
-export const AllIcons = Template.bind({});
-AllIcons.args = {
-  size: 20,
-  color: 'gray-500',
+export const AllIcons = ({ size, color }: IconProps) => {
+  const iicons = Object.values(icons).map(icon => ({
+    icon,
+    iconName: icon.name,
+  }));
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      {iicons.map(({ icon: IconComponent, iconName }) => (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: size,
+            height: size,
+            margin: 60,
+          }}
+        >
+          <IconComponent size={20} color={color || 'gray-500'}>
+            .
+          </IconComponent>
+          <div>{iconName}</div>
+        </div>
+      ))}
+    </div>
+  );
 };
