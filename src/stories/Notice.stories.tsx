@@ -12,13 +12,17 @@ const NoticeStories: Meta = {
 
 export default NoticeStories;
 
-const Template: Story<NoticeProps> = ({ intent, children }: NoticeProps) => (
-  <Notice intent={intent}>{children}</Notice>
+const Template: Story<NoticeProps> = ({
+  intent,
+  noticeText,
+  hRef,
+}: NoticeProps) => (
+  <Notice intent={intent} hRef={hRef} noticeText={noticeText} />
 );
 
 export const DefaultNotice = Template.bind({});
 DefaultNotice.args = {
-  children: 'Example notice',
+  noticeText: 'Example notice',
 };
 DefaultNotice.parameters = {
   design: {
@@ -31,7 +35,7 @@ DefaultNotice.parameters = {
 export const InfoNotice = Template.bind({});
 InfoNotice.args = {
   intent: 'info',
-  children: 'Example notice',
+  noticeText: 'Info notice',
 };
 InfoNotice.parameters = {
   design: {
@@ -44,7 +48,7 @@ InfoNotice.parameters = {
 export const PrimaryNotice = Template.bind({});
 PrimaryNotice.args = {
   intent: 'primary',
-  children: 'Example notice',
+  noticeText: 'Primary notice',
 };
 PrimaryNotice.parameters = {
   design: {
@@ -57,7 +61,7 @@ PrimaryNotice.parameters = {
 export const WarningNotice = Template.bind({});
 WarningNotice.args = {
   intent: 'warning',
-  children: 'Example notice',
+  noticeText: 'Warning notice',
 };
 WarningNotice.parameters = {
   design: {
@@ -70,7 +74,7 @@ WarningNotice.parameters = {
 export const ErrorNotice = Template.bind({});
 ErrorNotice.args = {
   intent: 'error',
-  children: 'Example notice',
+  noticeText: 'Error notice',
 };
 ErrorNotice.parameters = {
   design: {
@@ -83,7 +87,7 @@ ErrorNotice.parameters = {
 export const SuccessNotice = Template.bind({});
 SuccessNotice.args = {
   intent: 'success',
-  children: 'Example notice',
+  noticeText: 'Success notice',
 };
 SuccessNotice.parameters = {
   design: {
