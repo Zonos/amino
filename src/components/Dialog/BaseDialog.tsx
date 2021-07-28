@@ -3,20 +3,12 @@ import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { Backdrop } from 'components/Backdrop';
+
 import { IAminoTheme } from '../../types';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?
-
-const Backdrop = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background: var(--amino-backdrop-color);
-  z-index: 999;
-  position: fixed;
-`;
 
 const DialogLayout = styled.div`
   width: 100vw;

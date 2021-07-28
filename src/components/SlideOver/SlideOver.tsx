@@ -6,18 +6,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { XIcon } from 'icons';
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';
+import { Backdrop } from 'components/Backdrop';
 
 import { IAminoTheme } from '../../types';
-
-const Backdrop = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background: var(--amino-backdrop-color);
-  z-index: 999;
-  position: fixed;
-`;
 
 const Popup = styled(motion.div)`
   position: absolute;
