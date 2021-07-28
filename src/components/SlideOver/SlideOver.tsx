@@ -19,27 +19,16 @@ const Backdrop = styled(motion.div)`
   position: fixed;
 `;
 
-const SlideOverLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  position: fixed;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  color: var(--amino-text-color);
-`;
-
 const Popup = styled(motion.div)`
-  position: relative;
+  position: absolute;
   z-index: 1001;
   background: var(--amino-surface-color);
   width: 300px;
   outline: none;
   box-shadow: var(--amino-shadow-larger);
   height: 100vh;
+  right: 0;
+  top: 0;
 `;
 
 const SlideOverHeader = styled.header`
@@ -128,31 +117,30 @@ export const SlideOver = ({
           transition={{ duration: 0.2 }}
           key="dialog-backdrop"
           data-theme={theme}
+          onClick={onClose}
         />
       )}
       {open && (
-        <SlideOverLayout data-theme={theme}>
-          <Popup
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-            initial={{ opacity: 0, x: 25 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 25 }}
-            key="slide-over"
-          >
-            <SlideOverHeader>
-              <Text type="h4">{label}</Text>
-              <Close onClick={onClose}>
-                <XIcon />
-              </Close>
-            </SlideOverHeader>
-            <SlideOverContent>{children}</SlideOverContent>
-            {actions && (
-              <Footer>
-                <HStack spacing="space-quarter">{actions}</HStack>
-              </Footer>
-            )}
-          </Popup>
-        </SlideOverLayout>
+        <Popup
+          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
+          initial={{ opacity: 0, x: 25 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 25 }}
+          key="slide-over"
+        >
+          <SlideOverHeader>
+            <Text type="h4">{label}</Text>
+            <Close onClick={onClose}>
+              <XIcon />
+            </Close>
+          </SlideOverHeader>
+          <SlideOverContent>{children}</SlideOverContent>
+          {actions && (
+            <Footer>
+              <HStack spacing="space-quarter">{actions}</HStack>
+            </Footer>
+          )}
+        </Popup>
       )}
     </AnimatePresence>,
     document.querySelector('body')!
