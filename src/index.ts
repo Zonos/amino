@@ -28,6 +28,7 @@ export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
 export { TextAvatar } from './components/TextAvatar';
 export { Slider } from './components/Slider';
+export { SlideOver } from './components/SlideOver';
 
 export {
   ConfirmDialog,
