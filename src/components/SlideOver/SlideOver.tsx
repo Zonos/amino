@@ -20,6 +20,7 @@ const Popup = styled(motion.div)`
   height: 100vh;
   right: 0;
   top: 0;
+  border-left: var(--amino-border);
 `;
 
 const SlideOverHeader = styled.header`
@@ -88,6 +89,7 @@ export type SlideOverProps = {
   onClose: () => void;
   open: boolean;
   theme?: IAminoTheme;
+  modal?: boolean;
 };
 
 export const SlideOver = ({
@@ -97,13 +99,14 @@ export const SlideOver = ({
   onClose,
   open,
   theme,
+  modal = true,
 }: SlideOverProps) => {
   return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
         <Backdrop
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.65 }}
+          animate={{ opacity: modal ? 0.65 : 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
           key="dialog-backdrop"

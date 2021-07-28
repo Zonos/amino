@@ -17,12 +17,14 @@ const Template: Story<SlideOverProps> = ({
   children,
   label,
   actions,
+  modal,
 }: SlideOverProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
       <Button onClick={() => setOpen(true)}>open</Button>
       <SlideOver
+        modal={modal}
         actions={actions}
         label={label}
         open={open}
@@ -38,8 +40,23 @@ export const BasicSlideOver = Template.bind({});
 BasicSlideOver.args = {
   label: 'Basic slide over',
   children: <div>Children</div>,
+  modal: false,
 };
 BasicSlideOver.parameters = {
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
+  },
+};
+
+export const ModalSlideOver = Template.bind({});
+ModalSlideOver.args = {
+  label: 'Modal slide oover',
+  children: <div>Children</div>,
+  modal: true,
+};
+ModalSlideOver.parameters = {
   design: {
     type: 'figma',
     url:
