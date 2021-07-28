@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { XIcon } from 'icons';
-import { HStack } from 'components/Stack';
+import { HStack, VStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import { Backdrop } from 'components/Backdrop';
 
@@ -29,7 +29,7 @@ const SlideOverHeader = styled.header`
   display: flex;
   align-items: center;
 
-  h4 {
+  .header-content {
     margin: 0;
     flex: 1;
   }
@@ -90,6 +90,7 @@ export type SlideOverProps = {
   open: boolean;
   theme?: IAminoTheme;
   modal?: boolean;
+  subtitle?: React.ReactNode;
 };
 
 export const SlideOver = ({
@@ -99,6 +100,7 @@ export const SlideOver = ({
   onClose,
   open,
   theme,
+  subtitle,
   modal = true,
 }: SlideOverProps) => {
   return ReactDOM.createPortal(
@@ -123,7 +125,16 @@ export const SlideOver = ({
           key="slide-over"
         >
           <SlideOverHeader>
-            <Text type="h4">{label}</Text>
+            {subtitle ? (
+              <VStack spacing="none" className="header-content">
+                <Text type="h4">{label}</Text>
+                {subtitle}
+              </VStack>
+            ) : (
+              <Text type="h4" className="header-content">
+                {label}
+              </Text>
+            )}
             <Close onClick={onClose}>
               <XIcon />
             </Close>
