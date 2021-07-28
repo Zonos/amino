@@ -52,7 +52,7 @@ BasicSlideOver.parameters = {
 
 export const ModalSlideOver = Template.bind({});
 ModalSlideOver.args = {
-  label: 'Modal slide oover',
+  label: 'Modal slide over',
   children: <div>Children</div>,
   modal: true,
 };
@@ -66,7 +66,7 @@ ModalSlideOver.parameters = {
 
 export const SlideOverWithActions = Template.bind({});
 SlideOverWithActions.args = {
-  label: 'SlideOver with actions',
+  label: 'Slide over with actions',
   children: <div>Children</div>,
   actions: (
     <>
