@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
+import { useHotkeys } from 'react-hotkeys-hook';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { XIcon } from 'icons';
@@ -103,6 +104,8 @@ export const SlideOver = ({
   subtitle,
   modal = true,
 }: SlideOverProps) => {
+  useHotkeys('esc', onClose);
+
   return ReactDOM.createPortal(
     <AnimatePresence>
       {open && (
