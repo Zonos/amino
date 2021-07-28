@@ -22,10 +22,10 @@
   --amino-space-double: 2.5em;
   --amino-space-double-negative: -2.5em;
 
-  --amino-radius-sm: 0.25em;
-  --amino-radius: 0.428em;
-  --amino-radius-lg: 0.714em;
-  --amino-radius-xl: 1em;
+  --amino-radius-sm: 0.25rem;
+  --amino-radius: 0.375rem;
+  --amino-radius-lg: 0.5rem;;
+  --amino-radius-xl: 0.75rem;
 
   --amino-gray-50: #f9fafb;
   --amino-gray-100: #f3f4f6;
