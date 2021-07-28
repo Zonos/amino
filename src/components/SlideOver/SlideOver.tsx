@@ -122,10 +122,10 @@ export const SlideOver = ({
       )}
       {open && (
         <Popup
-          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-          initial={{ opacity: 0, x: 25 }}
+          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.45 }}
+          initial={{ opacity: 0, x: 300 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 25 }}
+          exit={{ opacity: 0, x: 300 }}
           key="slide-over"
         >
           <SlideOverHeader>
