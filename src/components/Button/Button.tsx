@@ -19,12 +19,12 @@ const AminoButton = styled.button`
   padding: 0 var(--amino-space);
   border-radius: var(--amino-radius);
   transition: var(--amino-transition);
-  box-shadow: var(--amino-border-shadow-sm);
   font-weight: 500;
   user-select: none;
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
-  border: 0;
+  border: var(--amino-border);
+  box-shadow: var(--amino-shadow-small);
 
   /* should we use active or focus or both? */
   &:active,

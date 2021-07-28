@@ -13,9 +13,8 @@ const SurfaceBase = styled.div<{ dense?: boolean }>`
 
 // shadow small
 const Depth4 = styled(SurfaceBase)`
-  /* box-shadow: rgba(0, 0, 0, 0.03) 0px 2px 5px; */
-  /* border: 1px solid var(--amino-border-color); */
-  box-shadow: var(--amino-border-shadow-sm);
+  box-shadow: var(--amino-shadow-small);
+  border: var(--amino-border);
 `;
 
 // shadow medium

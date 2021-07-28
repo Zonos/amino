@@ -15,8 +15,8 @@ const StyledSelect = styled.select`
   width: 100%;
   padding: 0 var(--amino-space-half);
   background: var(--amino-input-background);
-  border: 0;
-  box-shadow: var(--amino-border-shadow-sm);
+  box-shadow: var(--amino-shadow-small);
+  border: var(--amino-border);
   -webkit-appearance: none;
   -moz-appearance: none;
 
