@@ -16,9 +16,10 @@ const StyledRadio = styled.div<{ checked: boolean }>`
   justify-content: center;
   user-select: none;
   border: ${p => (p.checked ? '2px solid var(--amino-primary)' : 'none')};
-  box-shadow: var(--amino-border-shadow-sm);
   margin-right: var(--amino-space-half);
   transition: var(--amino-transition);
+  box-shadow: var(--amino-shadow-small);
+  border: var(--amino-border);
 
   &:active {
     box-shadow: var(--amino-glow-blue);

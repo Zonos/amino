@@ -71,7 +71,8 @@ const AminoInput = styled.input`
 
 const Fields = styled.div`
   border-radius: var(--amino-radius);
-  box-shadow: var(--amino-border-shadow-sm);
+  box-shadow: var(--amino-shadow-small);
+  border: var(--amino-border);
 `;
 
 const AminoInputWrapper = styled.div<{ width?: number }>`
