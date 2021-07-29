@@ -110,6 +110,11 @@
   --amino-amber-800: #92400e;
   --amino-amber-900: #78350f;
 
+  --amino-danger: var(--amino-red-500);
+  --amino-danger-dark: var(--amino-red-600);
+
+  --amino-error: var(--amino-red-400);
+
   --amino-glow-blue: 0 0 0 2px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
   --amino-glow-red: 0 0 0 2px var(--amino-red-alpha);
@@ -121,9 +126,11 @@
   --amino-primary-light: var(--amino-blue-400);
   --amino-primary-dark: var(--amino-blue-700);
 
-  --amino-success: var(--amino-green-400);
-  --amino-warning: var(--amino-orange-400);
-  --amino-error: var(--amino-red-400);
+  --amino-success: var(--amino-green-200);
+  --amino-success-dark: var(--amino-green-600);
+
+  --amino-warning: var(--amino-amber-100);
+  --amino-warning-dark: var(--amino-amber-600);
 
   --amino-page-background: var(--amino-gray-50);
   --amino-border-color: var(--amino-gray-200);
