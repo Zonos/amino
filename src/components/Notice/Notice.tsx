@@ -56,12 +56,18 @@ const AminoPrimaryNotice = styled(AminoNotice)`
 `;
 
 export type NoticeProps = {
-  intent?: 'success' | 'error' | 'warning' | 'primary' | 'info';
+  anchorLabel?: string;
   href?: string;
+  intent?: 'success' | 'error' | 'warning' | 'primary' | 'info';
   text: string;
 };
 
-export const Notice = ({ href, intent, text }: NoticeProps) => {
+export const Notice = ({
+  anchorLabel = 'Read more...',
+  href,
+  intent,
+  text,
+}: NoticeProps) => {
   const renderNotice = () => (
     <>
       <Text type="h5">{text}</Text>
@@ -72,7 +78,7 @@ export const Notice = ({ href, intent, text }: NoticeProps) => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          Read More...
+          {anchorLabel}
         </a>
       )}
     </>
