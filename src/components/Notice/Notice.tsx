@@ -56,7 +56,6 @@ const AminoPrimaryNotice = styled(AminoNotice)`
 `;
 
 export type NoticeProps = {
-  children: React.ReactNode;
   intent?: 'success' | 'error' | 'warning' | 'primary' | 'info';
   href?: string;
   text: string;
