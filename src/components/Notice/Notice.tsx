@@ -1,10 +1,7 @@
-import { TextAvatar } from 'components/TextAvatar';
 import React from 'react';
 import styled from 'styled-components';
 
 import { Text } from '../Text';
-
-import { Intent } from '../..';
 
 const AminoNotice = styled.aside`
   background: var(--amino-gray-100);
@@ -59,93 +56,39 @@ const AminoPrimaryNotice = styled(AminoNotice)`
 `;
 
 export type NoticeProps = {
+  children: React.ReactNode;
   intent?: 'success' | 'error' | 'warning' | 'primary' | 'info';
-  hRef?: string;
-  noticeText: string;
+  href?: string;
+  text: string;
 };
 
-export const Notice = ({ hRef, intent, noticeText }: NoticeProps) => {
+export const Notice = ({ href, intent, text }: NoticeProps) => {
+  const renderNotice = () => (
+    <>
+      <Text type="h5">{text}</Text>
+      {href && (
+        <a
+          href={href}
+          className="no-link"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Read More...
+        </a>
+      )}
+    </>
+  );
   switch (intent) {
     case 'success':
-      return (
-        <AminoSuccessNotice>
-          <Text type="h5">{noticeText}</Text>
-          {hRef && (
-            <a
-              href={hRef}
-              className="no-link"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Read More...
-            </a>
-          )}
-        </AminoSuccessNotice>
-      );
+      return <AminoSuccessNotice>{renderNotice()}</AminoSuccessNotice>;
     case 'error':
-      return (
-        <AminoErrorNotice>
-          <Text type="h5">{noticeText}</Text>
-          {hRef && (
-            <a
-              href={hRef}
-              className="no-link"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Read More...
-            </a>
-          )}
-        </AminoErrorNotice>
-      );
+      return <AminoErrorNotice>{renderNotice()}</AminoErrorNotice>;
     case 'warning':
-      return (
-        <AminoWarningNotice>
-          <Text type="h5">{noticeText}</Text>
-          {hRef && (
-            <a
-              href={hRef}
-              className="no-link"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Read More...
-            </a>
-          )}
-        </AminoWarningNotice>
-      );
+      return <AminoWarningNotice>{renderNotice()}</AminoWarningNotice>;
     case 'primary':
-      return (
-        <AminoPrimaryNotice>
-          <Text type="h5">{noticeText}</Text>
-          {hRef && (
-            <a
-              href={hRef}
-              className="no-link"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Read More...
-            </a>
-          )}
-        </AminoPrimaryNotice>
-      );
+      return <AminoPrimaryNotice>{renderNotice()}</AminoPrimaryNotice>;
     case 'info':
     default:
-      return (
-        <AminoNotice>
-          <Text type="h5">{noticeText}</Text>
-          {hRef && (
-            <a
-              href={hRef}
-              className="no-link"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Read More...
-            </a>
-          )}
-        </AminoNotice>
-      );
+      return <AminoNotice>{renderNotice()}</AminoNotice>;
   }
 };
