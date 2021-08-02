@@ -9,12 +9,14 @@ const AminoNotice = styled.aside`
   color: var(--amino-text-color);
   display: flex;
   flex-direction: row;
-  font-weight: 500;
   justify-content: space-between;
   padding: var(--amino-space);
 
-  a {
+  &,
+  & > * {
     font-weight: 500;
+  }
+  a {
     text-align: right;
     text-decoration: underline;
   }
@@ -22,22 +24,34 @@ const AminoNotice = styled.aside`
 
 const AminoSuccessNotice = styled(AminoNotice)`
   background: var(--amino-success);
-  color: var(--amino-success-dark);
+  &,
+  & > * {
+    color: var(--amino-success-dark);
+  }
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
   background: var(--amino-red-200);
-  color: var(--amino-danger);
+  &,
+  & > * {
+    color: var(--amino-danger);
+  }
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
   background: var(--amino-warning);
-  color: var(--amino-warning-dark);
+  &,
+  & > * {
+    color: var(--amino-warning-dark);
+  }
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
   background: var(--amino-blue-100);
-  color: var(--amino-blue-500);
+  &,
+  & > * {
+    color: var(--amino-blue-500);
+  }
 `;
 
 export type NoticeProps = {
