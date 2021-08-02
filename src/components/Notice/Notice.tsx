@@ -16,10 +16,6 @@ const AminoNotice = styled.aside`
   & > * {
     font-weight: 500;
   }
-  a {
-    text-align: right;
-    text-decoration: underline;
-  }
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
