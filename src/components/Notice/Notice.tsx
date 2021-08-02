@@ -1,34 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '../Text';
 import { Intent } from '../..';
 
 const AminoNotice = styled.aside`
-  border-radius: var(--amino-radius);
   background: var(--amino-gray-100);
+  border-radius: var(--amino-radius);
   color: var(--amino-text-color);
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  justify-content: space-between;
   padding: var(--amino-space);
 
   a {
-    font-style: italic;
+    font-weight: 500;
+    text-align: right;
     text-decoration: underline;
   }
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
   background: var(--amino-success);
-  color: white;
+  color: var(--amino-success-dark);
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  background: var(--amino-error);
-  color: white;
+  background: var(--amino-red-200);
+  color: var(--amino-danger);
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
   background: var(--amino-warning);
-  color: white;
+  color: var(--amino-warning-dark);
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
