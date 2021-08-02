@@ -5,6 +5,12 @@ import { IconProps } from 'types';
 
 import * as icons from 'icons';
 
+const IconsMeta: Meta = {
+  title: 'Amino/Icons',
+};
+
+export default IconsMeta;
+
 export const AllIcons = ({ size, color }: IconProps) => {
   const iicons = Object.values(icons).map(icon => ({
     icon,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '../Text';
+import { Intent } from '../..';
 
 const AminoNotice = styled.aside`
   background: var(--amino-gray-100);
@@ -12,88 +12,61 @@ const AminoNotice = styled.aside`
   justify-content: space-between;
   padding: var(--amino-space);
 
-  h5 {
+  &,
+  & > * {
     font-weight: 500;
-  }
-  a {
-    font-weight: 500;
-    text-align: right;
-    text-decoration: underline;
   }
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
   background: var(--amino-success);
-  h5,
-  a {
+  &,
+  & > * {
     color: var(--amino-success-dark);
   }
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
   background: var(--amino-red-200);
-  h5,
-  a {
+  &,
+  & > * {
     color: var(--amino-danger);
   }
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
   background: var(--amino-warning);
-
-  h5,
-  a {
+  &,
+  & > * {
     color: var(--amino-warning-dark);
   }
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
   background: var(--amino-blue-100);
-  h5,
-  a {
+  &,
+  & > * {
     color: var(--amino-blue-500);
   }
 `;
 
 export type NoticeProps = {
-  anchorLabel?: string;
-  href?: string;
-  intent?: 'success' | 'error' | 'warning' | 'primary' | 'info';
-  text: string;
+  intent?: Intent;
+  children: React.ReactNode;
 };
 
-export const Notice = ({
-  anchorLabel = 'Read more...',
-  href,
-  intent,
-  text,
-}: NoticeProps) => {
-  const renderNotice = () => (
-    <>
-      <Text type="h5">{text}</Text>
-      {href && (
-        <a
-          href={href}
-          className="no-link"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {anchorLabel}
-        </a>
-      )}
-    </>
-  );
+export const Notice = ({ intent, children }: NoticeProps) => {
   switch (intent) {
     case 'success':
-      return <AminoSuccessNotice>{renderNotice()}</AminoSuccessNotice>;
+      return <AminoSuccessNotice>{children}</AminoSuccessNotice>;
     case 'error':
-      return <AminoErrorNotice>{renderNotice()}</AminoErrorNotice>;
+      return <AminoErrorNotice>{children}</AminoErrorNotice>;
     case 'warning':
-      return <AminoWarningNotice>{renderNotice()}</AminoWarningNotice>;
+      return <AminoWarningNotice>{children}</AminoWarningNotice>;
     case 'primary':
-      return <AminoPrimaryNotice>{renderNotice()}</AminoPrimaryNotice>;
+      return <AminoPrimaryNotice>{children}</AminoPrimaryNotice>;
     case 'info':
     default:
-      return <AminoNotice>{renderNotice()}</AminoNotice>;
+      return <AminoNotice>{children}</AminoNotice>;
   }
 };
