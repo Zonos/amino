@@ -4,6 +4,14 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { IconProps } from 'types';
 
 import * as icons from 'icons';
+import { IconsConsumer } from './IconsConsumer';
+
+const IconsMeta: Meta = {
+  title: 'Amino/Icons',
+  component: IconsConsumer,
+};
+
+export default IconsMeta;
 
 export const AllIcons = ({ size, color }: IconProps) => {
   const iicons = Object.values(icons).map(icon => ({
