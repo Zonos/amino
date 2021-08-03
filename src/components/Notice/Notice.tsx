@@ -7,9 +7,6 @@ const AminoNotice = styled.aside`
   background: var(--amino-gray-100);
   border-radius: var(--amino-radius);
   color: var(--amino-text-color);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: var(--amino-space);
 
   &,
