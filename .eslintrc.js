@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    browser: true,
     'jest/globals': true,
   },
   extends: [
@@ -9,7 +10,7 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
-  plugins: ['jest', 'prettier', '@typescript-eslint'],
+  plugins: ['jest', '@typescript-eslint', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -34,8 +35,12 @@ module.exports = {
   },
   rules: {
     camelcase: 'off',
+    'no-use-before-define': 'off', // Disable the base rule it can report incorrect errors
+    '@typescript-eslint/no-use-before-define': ['error'],
     'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
     '@typescript-eslint/no-unused-vars': 'warn',
+    'no-shadow': 'off', // https://github.com/typescript-eslint/typescript-eslint/issues/2483
+    '@typescript-eslint/no-shadow': ['error'],
     'import/extensions': [
       'error',
       'ignorePackages',

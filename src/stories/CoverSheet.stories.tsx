@@ -39,6 +39,6 @@ const Template: Story<CoverSheetProps> = ({
 export const CoverSheetSelects = Template.bind({});
 CoverSheetSelects.args = {
   label: 'Label',
-  onClose: () => console.log('closed'),
+  onClose: () => {},
   children: <div>Children</div>,
 };

@@ -49,10 +49,10 @@ export type MenuButtonProps = {
 
 export const MenuButton = ({ label, children }: MenuButtonProps) => {
   const [open, setOpen] = useState(false);
-  const node = useRef<any>(null);
+  const node = useRef<HTMLButtonElement>(null);
 
-  const handleClick = (e: any) => {
-    if (node.current.contains(e.target)) {
+  const handleClick = e => {
+    if (node.current?.contains(e.target)) {
       e.target.click();
       setOpen(false);
     }

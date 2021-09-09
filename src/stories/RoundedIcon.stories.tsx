@@ -13,7 +13,16 @@ const RoundedIconMeta: Meta = {
 
 export default RoundedIconMeta;
 
-const Template: Story<RoundedIconProps> = args => <RoundedIcon {...args} />;
+const Template: Story<RoundedIconProps> = ({
+  background,
+  children,
+  color,
+  intent,
+}) => (
+  <RoundedIcon background={background} color={color} intent={intent}>
+    {children}
+  </RoundedIcon>
+);
 
 export const Default = Template.bind({});
 const defaultArgs: RoundedIconProps = {

@@ -12,7 +12,15 @@ const SliderMeta: Meta = {
 
 export default SliderMeta;
 
-const Template: Story<SliderProps> = args => <Slider {...args} />;
+const Template: Story<SliderProps> = ({
+  max,
+  min,
+  onChange,
+  step,
+  value,
+}: SliderProps) => (
+  <Slider max={max} min={min} onChange={onChange} step={step} value={value} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

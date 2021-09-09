@@ -9,7 +9,10 @@ import { AnimatePresence } from 'framer-motion';
 
 import { Toast } from './Toast';
 
-export const ToastContext = createContext((toast: ReactNode): void => {});
+export const ToastContext = createContext((toast: ReactNode): void => {
+  const defaultFunction = (options: ReactNode) => options;
+  defaultFunction(toast);
+});
 
 type Props = {
   children: ReactNode;

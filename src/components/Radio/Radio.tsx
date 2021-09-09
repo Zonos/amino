@@ -50,7 +50,7 @@ const RadioContainer = styled.div`
 
 export type RadioProps = {
   checked: boolean;
-  onChange?: any;
+  onChange: (checked: boolean) => void;
   label?: string;
 };
 

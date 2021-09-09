@@ -15,7 +15,7 @@ const DarkModeWrapperMeta: Meta = {
 
 export default DarkModeWrapperMeta;
 
-const Template: Story<DarkModeWrapperProps> = args => (
+const Template: Story<DarkModeWrapperProps> = () => (
   <DarkModeWrapper>
     <Card>This content is always in dark mode</Card>
   </DarkModeWrapper>

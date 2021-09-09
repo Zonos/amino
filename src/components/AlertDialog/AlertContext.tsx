@@ -4,7 +4,12 @@ import { AlertDialogOpts } from 'types';
 
 import { AlertDialog } from './AlertDialog';
 
-export const AlertContext = createContext((opts: AlertDialogOpts) => {});
+export const AlertContext = createContext((opts: AlertDialogOpts) => {
+  const defaultFunction = (options: AlertDialogOpts) => {
+    return options;
+  };
+  defaultFunction(opts);
+});
 
 type Props = {
   children: ReactNode;

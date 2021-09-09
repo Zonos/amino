@@ -32,6 +32,15 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
 
   const activeItem = items.find((_, i) => i === active);
 
+  const initial = items.findIndex(el => {
+    const value = itemValuePath ? el[itemValuePath] : el.value;
+    return value === initialValue;
+  });
+
+  if (initial > -1) {
+    setActive(initial);
+  }
+
   useEffect(() => {
     if (onChange && activeItem && activeItem?.value !== initialValue) {
       const value = itemValuePath
@@ -41,18 +50,7 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
         onChange(value);
       }
     }
-  }, [active]);
-
-  useEffect(() => {
-    const initial = items.findIndex(el => {
-      const value = itemValuePath ? el[itemValuePath] : el.value;
-      return value === initialValue;
-    });
-
-    if (initial > -1) {
-      setActive(initial);
-    }
-  }, [initialValue]);
+  }, [active, activeItem, initialValue, itemValuePath, onChange]);
 
   const radios = items.map((el, index) => {
     const label = itemLabelPath ? el[itemLabelPath] : el.label;
