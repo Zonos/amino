@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Select, SelectProps } from '../components/Select';
+import { Select, SelectItem, SelectProps } from '../components/Select';
 
 const SelectMeta: Meta = {
   title: 'Amino/Select',
@@ -12,12 +12,12 @@ const SelectMeta: Meta = {
 
 export default SelectMeta;
 
-const Template: Story<SelectProps> = ({
+const Template: Story<SelectProps<SelectItem>> = ({
   label,
   items,
   value,
   onChange,
-}: SelectProps) => (
+}: SelectProps<SelectItem>) => (
   <Select label={label} items={items} value={value} onChange={onChange} />
 );
 

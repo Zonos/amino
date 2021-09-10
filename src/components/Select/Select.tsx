@@ -54,6 +54,11 @@ const SelectWrapper = styled.div`
   }
 `;
 
+export type SelectItem = {
+  label: string;
+  value: string;
+};
+
 export type SelectProps<T> = {
   autoFocus?: boolean;
   items: T[];
@@ -66,7 +71,7 @@ export type SelectProps<T> = {
   tabIndex?: number;
 };
 
-const SelectInner = <T extends { label: string; value: string }>(
+const SelectInner = <T extends SelectItem>(
   {
     autoFocus,
     items,
