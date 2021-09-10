@@ -49,11 +49,12 @@ export type MenuButtonProps = {
 
 export const MenuButton = ({ label, children }: MenuButtonProps) => {
   const [open, setOpen] = useState(false);
-  const node = useRef<HTMLButtonElement>(null);
+  const node = useRef<HTMLDivElement>(null);
 
-  const handleClick = e => {
-    if (node.current?.contains(e.target)) {
-      e.target.click();
+  const handleClick = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (node.current?.contains(target)) {
+      target.click();
       setOpen(false);
     }
 
