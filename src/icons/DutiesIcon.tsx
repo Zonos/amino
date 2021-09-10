@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IconProps } from 'types';
-import { IconBase } from 'icons';
+import { IconBase } from './IconBase';
 
 export const DutiesIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>

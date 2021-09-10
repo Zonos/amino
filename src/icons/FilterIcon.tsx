@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IconBase } from 'icons';
 import { IconProps } from 'types';
+import { IconBase } from './IconBase';
 
 export const FilterIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
