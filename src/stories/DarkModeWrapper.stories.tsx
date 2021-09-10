@@ -1,12 +1,12 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
 
+import { Meta, Story } from '@storybook/react/types-6-0';
+
+import { Card } from '../components/Card';
 import {
   DarkModeWrapper,
   DarkModeWrapperProps,
 } from '../components/DarkModeWrapper';
-
-import { Card } from '../components/Card';
 
 const DarkModeWrapperMeta: Meta = {
   title: 'Amino/DarkModeWrapper',

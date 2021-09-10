@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 const AminoToast = styled(motion.div)`
   background: var(--amino-gray-700);

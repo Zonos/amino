@@ -10,7 +10,7 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
-  plugins: ['jest', '@typescript-eslint', 'prettier'],
+  plugins: ['jest', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -82,8 +82,8 @@ module.exports = {
       {
         groups: [
           ['^react'],
-          ['^(?!components)'],
-          ['^(components)/'],
+          ['^(?!animations|components|hooks|icons|styles|type)'],
+          ['^'],
           ['((.|..)/)?'],
         ],
       },

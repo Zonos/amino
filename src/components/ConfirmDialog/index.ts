@@ -1,2 +1,2 @@
-export { ConfirmDialogProps, ConfirmDialog } from './ConfirmDialog';
-export { ConfirmContextProvider, ConfirmContext } from './ConfirmContext';
+export { ConfirmContext, ConfirmContextProvider } from './ConfirmContext';
+export { ConfirmDialog, ConfirmDialogProps } from './ConfirmDialog';

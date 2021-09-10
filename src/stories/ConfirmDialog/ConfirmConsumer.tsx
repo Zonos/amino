@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { useConfirm } from 'hooks';
+
 import { Button, VStack } from '../..';
 
 export const ConfirmConsumer = () => {

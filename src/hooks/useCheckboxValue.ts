@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 export const useCheckboxValue = (initialValue: boolean) => {
   const [checked, setChecked] = useState(initialValue);

@@ -1,4 +1,4 @@
-import React, { useState, createContext, ReactNode } from 'react';
+import React, { createContext, ReactNode, useState } from 'react';
 
 import { ConfirmDialogOpts } from 'types';
 

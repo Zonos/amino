@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IconProps } from 'types';
+
 import { IconBase } from './IconBase';
 
 export const PercentIcon = ({ size, color }: IconProps) => (

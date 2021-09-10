@@ -1,13 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { AnimatePresence, motion } from 'framer-motion';
 
-import { XIcon } from 'icons';
+import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+
+import { Backdrop } from 'components/Backdrop';
 import { HStack, VStack } from 'components/Stack';
 import { Text } from 'components/Text';
-import { Backdrop } from 'components/Backdrop';
+import { XIcon } from 'icons';
 
 import { IAminoTheme } from '../../types';
 

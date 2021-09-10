@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 
 import { IconProps } from 'types';
+
 import { IconBase } from './IconBase';
 
 export const CheckIcon = forwardRef<SVGSVGElement, IconProps>(
