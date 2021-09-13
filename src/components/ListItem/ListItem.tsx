@@ -41,7 +41,7 @@ const Icon = styled.img`
   border-radius: var(--amino-radius);
 `;
 
-type Props = {
+export type Props = {
   disabled?: boolean;
   label: string;
   subtitle?: ReactNode;
