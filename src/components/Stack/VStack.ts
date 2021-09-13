@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { GridAlignment, GridSpacing } from '.';
+import { GridAlignment, GridSpacing } from './GridSpacing';
 
 /**
  * A vertical stack

@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Select, SelectProps } from '../components/Select';
+import { Select, SelectItem, SelectProps } from '../components/Select';
 
 const SelectMeta: Meta = {
   title: 'Amino/Select',
@@ -12,12 +12,12 @@ const SelectMeta: Meta = {
 
 export default SelectMeta;
 
-const Template: Story<SelectProps> = ({
+const Template: Story<SelectProps<SelectItem>> = ({
   label,
   items,
   value,
   onChange,
-}: SelectProps) => (
+}: SelectProps<SelectItem>) => (
   <Select label={label} items={items} value={value} onChange={onChange} />
 );
 
@@ -42,7 +42,6 @@ BasicSelect.args = {
 BasicSelect.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
   },
 };

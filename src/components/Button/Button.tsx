@@ -129,22 +129,51 @@ export const Button = ({
     return <Secondary disabled>{content}</Secondary>;
   }
 
-  const buttonProps = {
-    onClick,
-    className,
-    'data-tip': tooltip,
-    tabIndex,
-  };
-
   switch (intent) {
     case 'primary':
-      return <Primary {...buttonProps}>{content}</Primary>;
+      return (
+        <Primary
+          className={className}
+          data-tip={tooltip}
+          onClick={onClick}
+          tabIndex={tabIndex}
+        >
+          {content}
+        </Primary>
+      );
     case 'danger':
-      return <Danger {...buttonProps}>{content}</Danger>;
+      return (
+        <Danger
+          className={className}
+          data-tip={tooltip}
+          onClick={onClick}
+          tabIndex={tabIndex}
+        >
+          {content}
+        </Danger>
+      );
     case 'icon':
-      return <Icon {...buttonProps}>{content}</Icon>;
+      return (
+        <Icon
+          className={className}
+          data-tip={tooltip}
+          onClick={onClick}
+          tabIndex={tabIndex}
+        >
+          {content}
+        </Icon>
+      );
     case 'secondary':
     default:
-      return <Secondary {...buttonProps}>{content}</Secondary>;
+      return (
+        <Secondary
+          className={className}
+          data-tip
+          onClick={onClick}
+          tabIndex={tabIndex}
+        >
+          {content}
+        </Secondary>
+      );
   }
 };

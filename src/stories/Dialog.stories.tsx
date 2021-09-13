@@ -24,14 +24,7 @@ const Template: Story<DialogProps> = ({
     <>
       <Button onClick={() => setOpen(true)}>open</Button>
       <Dialog
-        actions={
-          <>
-            <Button onClick={() => setOpen(false)}>Secondary action</Button>
-            <Button onClick={() => setOpen(false)} intent="primary">
-              Primary action
-            </Button>
-          </>
-        }
+        actions={actions}
         label={label}
         open={open}
         onClose={() => setOpen(false)}
@@ -45,7 +38,12 @@ const Template: Story<DialogProps> = ({
 
 export const BasicDialog = Template.bind({});
 BasicDialog.args = {
-  actions: <Button>Close</Button>,
+  actions: (
+    <>
+      <Button>Close</Button>
+      <Button intent="primary">Save</Button>
+    </>
+  ),
   children: <div>Children</div>,
   label: 'Label',
   width: 650,
@@ -53,7 +51,6 @@ BasicDialog.args = {
 BasicDialog.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
   },
 };

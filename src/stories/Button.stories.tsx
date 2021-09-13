@@ -12,7 +12,30 @@ const ButtonMeta: Meta = {
 
 export default ButtonMeta;
 
-const Template: Story<ButtonProps> = args => <Button {...args} />;
+const Template: Story<ButtonProps> = ({
+  children,
+  className,
+  disabled,
+  intent,
+  loading,
+  loadingText,
+  onClick,
+  tabIndex,
+  tooltip,
+}) => (
+  <Button
+    className={className}
+    disabled={disabled}
+    intent={intent}
+    loading={loading}
+    loadingText={loadingText}
+    onClick={onClick}
+    tabIndex={tabIndex}
+    tooltip={tooltip}
+  >
+    {children}
+  </Button>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -21,8 +44,7 @@ Default.args = {
 Default.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
   },
 };
 
@@ -34,8 +56,7 @@ Primary.args = {
 Primary.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A20',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A20',
   },
 };
 
@@ -47,8 +68,7 @@ Danger.args = {
 Danger.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
   },
 };
 

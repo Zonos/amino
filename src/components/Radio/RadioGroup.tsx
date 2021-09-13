@@ -15,8 +15,6 @@ const RadioContainer = styled.div`
 
 type Props<T> = {
   initialValue?: string;
-  itemLabelPath?: keyof T;
-  itemValuePath?: keyof T;
   items: T[];
   onChange?: (newValue: string) => void;
 };
@@ -24,45 +22,36 @@ type Props<T> = {
 export const RadioGroup = <T extends { label?: string; value?: string }>({
   items,
   onChange,
-  itemValuePath,
-  itemLabelPath,
   initialValue,
 }: Props<T>) => {
   const [active, setActive] = useState(-1);
 
   const activeItem = items.find((_, i) => i === active);
 
-  useEffect(() => {
-    if (onChange && activeItem && activeItem?.value !== initialValue) {
-      const value = itemValuePath
-        ? activeItem[itemValuePath]
-        : activeItem.value;
-      if (typeof value === 'string') {
-        onChange(value);
-      }
-    }
-  }, [active]);
+  const initial = items.findIndex(el => el.value === initialValue);
+
+  if (initial > -1) {
+    setActive(initial);
+  }
 
   useEffect(() => {
-    const initial = items.findIndex(el => {
-      const value = itemValuePath ? el[itemValuePath] : el.value;
-      return value === initialValue;
-    });
-
-    if (initial > -1) {
-      setActive(initial);
+    if (
+      onChange &&
+      activeItem &&
+      activeItem.value &&
+      activeItem?.value !== initialValue
+    ) {
+      onChange(activeItem.value);
     }
-  }, [initialValue]);
+  }, [active, activeItem, initialValue, onChange]);
 
   const radios = items.map((el, index) => {
-    const label = itemLabelPath ? el[itemLabelPath] : el.label;
-
     return (
       <Radio
         checked={index === active}
         onChange={() => setActive(index)}
-        key={label as string}
-        label={label as string}
+        key={el.label}
+        label={el.label}
       />
     );
   });

@@ -1,6 +1,6 @@
-import { IconBase } from 'icons';
 import React from 'react';
 import { IconProps } from 'types';
+import { IconBase } from './IconBase';
 
 export const EditIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>

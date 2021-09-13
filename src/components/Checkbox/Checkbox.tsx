@@ -88,7 +88,7 @@ export const Checkbox = ({
     multiline={!!subtitle}
     onClick={() => onChange(!checked)}
   >
-    <AminoCheckbox checked={checked}>
+    <AminoCheckbox checked={checked} id={label}>
       <AnimatePresence>
         {checked && (
           <AnimatedCheckIcon
@@ -103,7 +103,7 @@ export const Checkbox = ({
     </AminoCheckbox>
 
     {label && (
-      <label>
+      <label htmlFor={label}>
         <Text type="inputlabel">{labelComponent || label}</Text>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </label>

@@ -23,7 +23,6 @@ export const DefaultConfirm = Template.bind({});
 DefaultConfirm.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A53',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A53',
   },
 };

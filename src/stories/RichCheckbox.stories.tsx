@@ -49,8 +49,7 @@ BasicRichCheckbox.args = {
 BasicRichCheckbox.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
   },
 };
 
@@ -83,7 +82,6 @@ DefaultRichCheckbox.args = {
 DefaultRichCheckbox.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
   },
 };

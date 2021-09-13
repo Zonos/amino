@@ -98,6 +98,16 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 `;
 
+type InputMode =
+  | 'decimal'
+  | 'email'
+  | 'none'
+  | 'numeric'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'url';
+
 export type InputProps = {
   /** A label that will be displayed above the input */
   label?: string;
@@ -112,7 +122,7 @@ export type InputProps = {
   helpText?: string;
 
   /** Input value. Required since all inputs must be fully controlled */
-  value: any;
+  value: string;
 
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: (e: ChangeEvent<HTMLInputElement>) => void | null;
@@ -139,10 +149,10 @@ export type InputProps = {
 
   disabled?: boolean;
   tabIndex?: number;
-  inputMode?: any;
-  pattern?: any;
+  inputMode?: InputMode;
+  pattern?: string;
   autoFocus?: boolean;
-  onKeyDown?: any;
+  onKeyDown?: () => void;
 };
 
 export const Input = ({

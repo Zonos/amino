@@ -12,7 +12,51 @@ const InputMeta: Meta = {
 
 export default InputMeta;
 
-const Template: Story<InputProps> = args => <Input {...args} />;
+const Template: Story<InputProps> = ({
+  autoFocus,
+  disabled,
+  error,
+  helpText,
+  inputMode,
+  inputPrefix,
+  inputSuffix,
+  label,
+  onChange,
+  onKeyDown,
+  pattern,
+  placeholder,
+  prefix,
+  readOnly,
+  required,
+  suffix,
+  tabIndex,
+  type,
+  value,
+  width,
+}) => (
+  <Input
+    autoFocus={autoFocus}
+    disabled={disabled}
+    error={error}
+    helpText={helpText}
+    inputMode={inputMode}
+    inputPrefix={inputPrefix}
+    inputSuffix={inputSuffix}
+    label={label}
+    onChange={onChange}
+    onKeyDown={onKeyDown}
+    pattern={pattern}
+    placeholder={placeholder}
+    prefix={prefix}
+    readOnly={readOnly}
+    required={required}
+    suffix={suffix}
+    tabIndex={tabIndex}
+    type={type}
+    value={value}
+    width={width}
+  />
+);
 
 export const BasicInput = Template.bind({});
 BasicInput.args = {
@@ -21,8 +65,7 @@ BasicInput.args = {
 BasicInput.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A56',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A56',
   },
 };
 
@@ -41,7 +84,6 @@ PrefixesAndSuffixes.args = {
 PrefixesAndSuffixes.parameters = {
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
   },
 };

@@ -4,7 +4,10 @@ import { ConfirmDialogOpts } from 'types';
 
 import { ConfirmDialog } from './ConfirmDialog';
 
-export const ConfirmContext = createContext((opts: ConfirmDialogOpts) => {});
+export const ConfirmContext = createContext((opts: ConfirmDialogOpts) => {
+  const defaultFunction = (options: ConfirmDialogOpts) => options;
+  defaultFunction(opts);
+});
 
 type Props = {
   children: ReactNode;
