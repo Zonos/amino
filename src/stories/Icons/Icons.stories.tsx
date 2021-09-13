@@ -1,9 +1,9 @@
 import React from 'react';
+
 import { Meta } from '@storybook/react/types-6-0';
 
-import { IconProps } from 'types';
-
 import * as icons from 'icons';
+import { IconProps } from 'types';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',

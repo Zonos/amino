@@ -1,10 +1,11 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { HStack, HStackProps } from '../components/Stack';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
+import { HStack, HStackProps } from '../components/Stack';
 
 const HStackMeta: Meta = {
   title: 'Amino/HStack',

@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import ReactDOM from 'react-dom';
+
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
 
 import { Backdrop } from 'components/Backdrop';
 

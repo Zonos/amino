@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
+
+import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
-import { Root, Item, Indicator } from '@radix-ui/react-radio-group';
 
 import { VStack } from 'components/Stack';
 import { CheckIcon } from 'icons';

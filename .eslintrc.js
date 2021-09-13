@@ -10,7 +10,7 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
-  plugins: ['jest', '@typescript-eslint', 'prettier'],
+  plugins: ['jest', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -66,14 +66,27 @@ module.exports = {
       'error',
       { forbidDefaultForRequired: true, ignoreFunctionalComponents: true },
     ],
-    // TODO change to error after legacy occurences are fixed
-    '@typescript-eslint/no-explicit-any': 'warn', // 5 left
-    'import/no-extraneous-dependencies': 'warn', // 4 left
-    'jsx-a11y/click-events-have-key-events': 'warn', // 7 left
-    'jsx-a11y/no-static-element-interactions': 'warn', // 7 left
-    'no-alert': 'warn', // 18 left
-    'no-param-reassign': 'warn', // 4 left
-    'no-throw-literal': 'warn', // 5 left
-    'react-hooks/exhaustive-deps': 'warn', // 13 left
+
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'import/no-extraneous-dependencies': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'warn',
+    'jsx-a11y/no-static-element-interactions': 'warn',
+    'no-alert': 'warn',
+    'no-param-reassign': 'warn',
+    'no-throw-literal': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+
+    'simple-import-sort/exports': 'error',
+    'simple-import-sort/imports': [
+      'error',
+      {
+        groups: [
+          ['^react'],
+          ['^(?!animations|components|hooks|icons|styles|type)'],
+          ['^'],
+          ['((.|..)/)?'],
+        ],
+      },
+    ],
   },
 };

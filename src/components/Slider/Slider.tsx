@@ -1,6 +1,7 @@
 import React from 'react';
+
+import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
 import styled from 'styled-components';
-import { Root, Track, Range, Thumb } from '@radix-ui/react-slider';
 
 const StyledSlider = styled(Root)`
   align-items: center;

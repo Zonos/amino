@@ -1,7 +1,8 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import styled from 'styled-components';
+
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
 
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';

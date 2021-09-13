@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useAlert } from 'hooks';
+
 import { Button, VStack } from '../..';
 
 export const AlertConsumer = () => {

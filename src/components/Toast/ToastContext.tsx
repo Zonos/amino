@@ -1,10 +1,11 @@
 import React, {
+  createContext,
+  ReactNode,
   useCallback,
   useEffect,
   useState,
-  createContext,
-  ReactNode,
 } from 'react';
+
 import { AnimatePresence } from 'framer-motion';
 
 import { Toast } from './Toast';

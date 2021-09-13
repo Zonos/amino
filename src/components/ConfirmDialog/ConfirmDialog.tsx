@@ -1,14 +1,14 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
-import { Text } from '../Text';
+import { DangerIcon, HelpIcon } from '../../icons';
 import { IAminoTheme, Intent } from '../../types';
-
-import { BaseDialog } from '../Dialog/BaseDialog';
 import { Button } from '../Button';
+import { BaseDialog } from '../Dialog/BaseDialog';
 import { RoundedIcon } from '../RoundedIcon';
 import { VStack } from '../Stack';
-import { DangerIcon, HelpIcon } from '../../icons';
+import { Text } from '../Text';
 
 const Content = styled.div`
   padding: var(--amino-space);
