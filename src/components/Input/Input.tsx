@@ -123,7 +123,7 @@ export type InputProps = {
   helpText?: string;
 
   /** Input value. Required since all inputs must be fully controlled */
-  value: string;
+  value: string | null;
 
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: (e: ChangeEvent<HTMLInputElement>) => void | null;
@@ -193,7 +193,7 @@ export const Input = ({
             suffix || inputSuffix ? 'has-suffix' : ''
           }`}
           placeholder={placeholder || ''}
-          value={value}
+          value={value || ''}
           onChange={onChange}
           required={required || false}
           type={type || 'text'}
