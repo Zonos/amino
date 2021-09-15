@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
 
@@ -126,7 +126,7 @@ export type InputProps = {
   value: string | null;
 
   /** Input on changed. Required since all inputs must be fully controlled */
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void | null;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
 
   /** A short string displayed at the beginning of the input */
   prefix?: string;
@@ -153,7 +153,7 @@ export type InputProps = {
   inputMode?: InputMode;
   pattern?: string;
   autoFocus?: boolean;
-  onKeyDown?: () => void;
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
 
 export const Input = ({
