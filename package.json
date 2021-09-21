@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@babel/core": "^8.2.2",
+    "@babel/core": "^7.13.14",
     "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.0.14",
     "@radix-ui/react-slider": "^0.0.16",
