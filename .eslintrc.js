@@ -26,6 +26,12 @@ module.exports = {
     'no-shadow': 'off', // https://github.com/typescript-eslint/typescript-eslint/issues/2483
     '@typescript-eslint/no-shadow': ['error'],
     /** End Typescript 4.0 changes */
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+      },
+    ],
     '@typescript-eslint/no-explicit-any': 'error',
     camelcase: 'off',
     'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
