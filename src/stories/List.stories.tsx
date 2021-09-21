@@ -16,11 +16,11 @@ const ListMeta: Meta = {
 export default ListMeta;
 
 export const PrimaryList = () => (
-    <List>
-      <ListItem label="Label" disabled={false} subtitle="subtitle" />
-      <ListItem label="Label" disabled={false} subtitle="subtitle" />
-      <ListItem label="Label" disabled={false} subtitle="subtitle" />
-    </List>
+  <List>
+    <ListItem label="Label" disabled={false} subtitle="subtitle" />
+    <ListItem label="Label" disabled={false} subtitle="subtitle" />
+    <ListItem label="Label" disabled={false} subtitle="subtitle" />
+  </List>
 );
 
 export const Empty = () => <List />;
