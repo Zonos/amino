@@ -19,28 +19,17 @@ module.exports = {
       jsx: true,
     },
   },
-  globals: {
-    Blob: 'readonly',
-    File: 'readonly',
-    FileReader: 'readonly',
-    FormData: 'readonly',
-    alert: 'readonly',
-    confirm: 'readonly',
-    document: 'readonly',
-    fetch: 'readonly',
-    localStorage: 'readonly',
-    navigator: 'readonly',
-    sessionStorage: 'readonly',
-    window: 'readonly',
-  },
   rules: {
-    camelcase: 'off',
+    /** Typescript 4.0 changes */
     'no-use-before-define': 'off', // Disable the base rule it can report incorrect errors
     '@typescript-eslint/no-use-before-define': ['error'],
-    'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
-    '@typescript-eslint/no-unused-vars': 'warn',
     'no-shadow': 'off', // https://github.com/typescript-eslint/typescript-eslint/issues/2483
     '@typescript-eslint/no-shadow': ['error'],
+    /** End Typescript 4.0 changes */
+    '@typescript-eslint/no-explicit-any': 'error',
+    camelcase: 'off',
+    'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
+    '@typescript-eslint/no-unused-vars': 'warn',
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -66,16 +55,6 @@ module.exports = {
       'error',
       { forbidDefaultForRequired: true, ignoreFunctionalComponents: true },
     ],
-
-    '@typescript-eslint/no-explicit-any': 'warn',
-    'import/no-extraneous-dependencies': 'warn',
-    'jsx-a11y/click-events-have-key-events': 'warn',
-    'jsx-a11y/no-static-element-interactions': 'warn',
-    'no-alert': 'warn',
-    'no-param-reassign': 'warn',
-    'no-throw-literal': 'warn',
-    'react-hooks/exhaustive-deps': 'warn',
-
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
       'error',
