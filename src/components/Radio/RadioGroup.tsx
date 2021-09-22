@@ -17,7 +17,7 @@ const RadioContainer = styled.div`
 type Props<T> = {
   initialValue?: string;
   items: T[];
-  onChange?: (newValue: string) => void;
+  onChange: (newValue: string) => void;
 };
 
 export const RadioGroup = <T extends { label?: string; value?: string }>({
@@ -25,32 +25,26 @@ export const RadioGroup = <T extends { label?: string; value?: string }>({
   onChange,
   initialValue,
 }: Props<T>) => {
-  const [active, setActive] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
-  const activeItem = items.find((_, i) => i === active);
-
-  const initial = items.findIndex(el => el.value === initialValue);
-
-  if (initial > -1) {
-    setActive(initial);
-  }
+  const initialIndex = items.findIndex(el => el.value === initialValue);
 
   useEffect(() => {
-    if (
-      onChange &&
-      activeItem &&
-      activeItem.value &&
-      activeItem?.value !== initialValue
-    ) {
-      onChange(activeItem.value);
+    if (initialIndex > -1) {
+      setActiveIndex(initialIndex);
     }
-  }, [active, activeItem, initialValue, onChange]);
+  }, [initialIndex]);
 
   const radios = items.map((el, index) => {
     return (
       <Radio
-        checked={index === active}
-        onChange={() => setActive(index)}
+        checked={index === activeIndex}
+        onChange={() => {
+          setActiveIndex(index);
+          if (onChange && el.value) {
+            onChange(el.value);
+          }
+        }}
         key={el.label}
         label={el.label}
       />
