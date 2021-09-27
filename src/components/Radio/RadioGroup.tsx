@@ -14,17 +14,22 @@ const RadioContainer = styled.div`
   }
 `;
 
-type Props<T> = {
+export type RadioGroupItem = {
+  label: string;
+  value: string;
+};
+
+export type RadioGroupProps<T> = {
   initialValue?: string;
   items: T[];
   onChange: (newValue: string) => void;
 };
 
-export const RadioGroup = <T extends { label?: string; value?: string }>({
+export const RadioGroup = <T extends RadioGroupItem>({
   items,
   onChange,
   initialValue,
-}: Props<T>) => {
+}: RadioGroupProps<T>) => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const initialIndex = items.findIndex(el => el.value === initialValue);
