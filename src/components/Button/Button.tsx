@@ -169,7 +169,7 @@ export const Button = ({
       return (
         <Secondary
           className={className}
-          data-tip
+          data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
         >
