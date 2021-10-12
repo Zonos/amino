@@ -43,33 +43,36 @@ export type DialogProps = {
 };
 
 export const BaseDialog = ({ width, theme, open, children }: DialogProps) => {
-  return ReactDOM.createPortal(
-    <AnimatePresence>
-      {open && (
-        <Backdrop
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.65 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          key="dialog-backdrop"
-          data-theme={theme}
-        />
-      )}
-      {open && (
-        <DialogLayout data-theme={theme}>
-          <Popup
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            key="dialog"
-            width={width || 444}
-          >
-            {children}
-          </Popup>
-        </DialogLayout>
-      )}
-    </AnimatePresence>,
-    document.querySelector('body')!
-  );
+  if (typeof document !== 'undefined') {
+    return ReactDOM.createPortal(
+      <AnimatePresence>
+        {open && (
+          <Backdrop
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.65 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            key="dialog-backdrop"
+            data-theme={theme}
+          />
+        )}
+        {open && (
+          <DialogLayout data-theme={theme}>
+            <Popup
+              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              key="dialog"
+              width={width || 444}
+            >
+              {children}
+            </Popup>
+          </DialogLayout>
+        )}
+      </AnimatePresence>,
+      document.querySelector('body')!
+    );
+  }
+  return null;
 };
