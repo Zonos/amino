@@ -107,51 +107,54 @@ export const SlideOver = ({
 }: SlideOverProps) => {
   useHotkeys('esc', onClose);
 
-  return ReactDOM.createPortal(
-    <AnimatePresence>
-      {open && (
-        <Backdrop
-          initial={{ opacity: 0 }}
-          animate={{ opacity: modal ? 0.65 : 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.35 }}
-          key="dialog-backdrop"
-          data-theme={theme}
-          onClick={onClose}
-        />
-      )}
-      {open && (
-        <Popup
-          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.45 }}
-          initial={{ opacity: 0, x: 300 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 300 }}
-          key="slide-over"
-        >
-          <SlideOverHeader>
-            {subtitle ? (
-              <VStack spacing="none" className="header-content">
-                <Text type="h4">{label}</Text>
-                {subtitle}
-              </VStack>
-            ) : (
-              <Text type="h4" className="header-content">
-                {label}
-              </Text>
+  if (typeof document !== 'undefined') {
+    return ReactDOM.createPortal(
+      <AnimatePresence>
+        {open && (
+          <Backdrop
+            initial={{ opacity: 0 }}
+            animate={{ opacity: modal ? 0.65 : 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            key="dialog-backdrop"
+            data-theme={theme}
+            onClick={onClose}
+          />
+        )}
+        {open && (
+          <Popup
+            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.45 }}
+            initial={{ opacity: 0, x: 300 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 300 }}
+            key="slide-over"
+          >
+            <SlideOverHeader>
+              {subtitle ? (
+                <VStack spacing="none" className="header-content">
+                  <Text type="h4">{label}</Text>
+                  {subtitle}
+                </VStack>
+              ) : (
+                <Text type="h4" className="header-content">
+                  {label}
+                </Text>
+              )}
+              <Close onClick={onClose}>
+                <XIcon />
+              </Close>
+            </SlideOverHeader>
+            <SlideOverContent>{children}</SlideOverContent>
+            {actions && (
+              <Footer>
+                <HStack spacing="space-quarter">{actions}</HStack>
+              </Footer>
             )}
-            <Close onClick={onClose}>
-              <XIcon />
-            </Close>
-          </SlideOverHeader>
-          <SlideOverContent>{children}</SlideOverContent>
-          {actions && (
-            <Footer>
-              <HStack spacing="space-quarter">{actions}</HStack>
-            </Footer>
-          )}
-        </Popup>
-      )}
-    </AnimatePresence>,
-    document.querySelector('body')!
-  );
+          </Popup>
+        )}
+      </AnimatePresence>,
+      document.querySelector('body')!
+    );
+  }
+  return null;
 };

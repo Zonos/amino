@@ -93,31 +93,34 @@ export const CoverSheet = ({
   children,
   actions,
 }: CoverSheetProps) => {
-  return createPortal(
-    <AnimatePresence>
-      {open && (
-        <StyledDialog
-          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-          initial={{ opacity: 0, translateY: 10 }}
-          animate={{ opacity: 1, translateY: 0 }}
-          exit={{ opacity: 0, translateY: 5 }}
-          className="print"
-        >
-          <Header>
-            <Text type="h4">{label}</Text>
-            {actions && (
-              <Actions>
-                <HStack>{actions}</HStack>
-              </Actions>
-            )}
-            <Close onClick={onClose}>
-              <XIcon />
-            </Close>
-          </Header>
-          <Content>{children}</Content>
-        </StyledDialog>
-      )}
-    </AnimatePresence>,
-    document.querySelector('body')!
-  );
+  if (typeof document !== 'undefined') {
+    return createPortal(
+      <AnimatePresence>
+        {open && (
+          <StyledDialog
+            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+            initial={{ opacity: 0, translateY: 10 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: 5 }}
+            className="print"
+          >
+            <Header>
+              <Text type="h4">{label}</Text>
+              {actions && (
+                <Actions>
+                  <HStack>{actions}</HStack>
+                </Actions>
+              )}
+              <Close onClick={onClose}>
+                <XIcon />
+              </Close>
+            </Header>
+            <Content>{children}</Content>
+          </StyledDialog>
+        )}
+      </AnimatePresence>,
+      document.querySelector('body')!
+    );
+  }
+  return null;
 };
