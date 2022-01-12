@@ -1,4 +1,4 @@
-@import url("https://rsms.me/inter/inter.css");
+@import url('https://rsms.me/inter/inter.css');
 
 html {
   font-size: var(--amino-type-scale-base);
@@ -110,6 +110,7 @@ h6 {
 
 .toasts-wrapper {
   position: fixed;
+  z-index: 9999999;
   bottom: var(--amino-space-double);
   right: var(--amino-space-double);
 }
