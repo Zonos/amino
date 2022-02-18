@@ -20,6 +20,12 @@ const StyledDialog = styled(motion.div)`
   top: 0;
   width: 100vw;
   height: 100vh;
+
+  @media print {
+    height: unset;
+    min-height: 100vh;
+    position: absolute;
+  }
 `;
 
 const Header = styled.header`
@@ -102,7 +108,6 @@ export const CoverSheet = ({
             initial={{ opacity: 0, translateY: 10 }}
             animate={{ opacity: 1, translateY: 0 }}
             exit={{ opacity: 0, translateY: 5 }}
-            className="print"
           >
             <Header>
               <Text type="h4">{label}</Text>
