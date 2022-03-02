@@ -11,7 +11,7 @@ import {
 } from '../components/RichCheckboxGroup';
 
 const RichCheckboxMeta: Meta = {
-  title: 'Amino/RichRadio',
+  title: 'Amino/RichCheckboxGroup',
   component: RichCheckboxGroup,
   decorators: [withDesign],
 };
