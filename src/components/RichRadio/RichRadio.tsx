@@ -7,10 +7,11 @@ import { VStack } from 'components/Stack';
 import { CheckIcon } from 'icons';
 
 const StyledItem = styled(Item)`
+  position: relative;
   appearance: none;
-  display: block;
   background: white;
   padding: var(--amino-space-half);
+  padding-right: var(--amino-space-double);
   border: var(--amino-border);
   border-radius: var(--amino-radius);
   text-align: left;
@@ -49,6 +50,8 @@ const StyledRoot = styled(Root)`
 `;
 
 const StyledIndicator = styled(Indicator)`
+  position: absolute;
+  right: var(--amino-space-half);
   background: var(--amino-blue-300);
   content: ' ';
   border-radius: 50px;
@@ -74,20 +77,13 @@ type RichRadioItemType = {
 export type RichRadioProps = {
   onChange: (newVal: string) => void;
   items: RichRadioItemType[];
-  value?: string;
-  defaultValue?: string;
+  value: string;
 };
 
-export const RichRadio = ({
-  defaultValue,
-  value,
-  onChange,
-  items,
-}: RichRadioProps) => (
+export const RichRadio = ({ onChange, items, value }: RichRadioProps) => (
   <StyledRoot
-    defaultValue={defaultValue}
-    value={value}
     onValueChange={e => onChange(e.target.value)}
+    value={value || undefined}
   >
     <VStack spacing="space-half">
       {items.map(item => (
