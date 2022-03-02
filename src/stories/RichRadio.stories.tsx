@@ -17,21 +17,16 @@ const Template: Story<RichRadioProps> = ({
   onChange,
   items,
   value,
-  defaultValue,
 }: RichRadioProps) => (
-  <RichRadio
-    defaultValue={defaultValue}
-    value={value}
-    onChange={onChange}
-    items={items}
-  />
+  <RichRadio value={value} onChange={onChange} items={items} />
 );
 
 export const BasicRichRadio = Template.bind({});
 BasicRichRadio.args = {
   items: [
     {
-      label: 'Item 1',
+      label:
+        'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       subtitle: 'Item 1 subtitle',
       value: 'item1',
     },
@@ -48,34 +43,6 @@ BasicRichRadio.args = {
   ],
 };
 BasicRichRadio.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
-  },
-};
-
-export const DefaultValueRichRadio = Template.bind({});
-DefaultValueRichRadio.args = {
-  items: [
-    {
-      label: 'Item 1',
-      subtitle: 'Item 1 subtitle',
-      value: 'item1',
-    },
-    {
-      label: 'Item 2',
-      subtitle: 'Item 2 subtitle',
-      value: 'item2',
-    },
-    {
-      label: 'Item 3',
-      subtitle: 'Item 3 subtitle',
-      value: 'item3',
-    },
-  ],
-  defaultValue: 'item3',
-};
-DefaultValueRichRadio.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
