@@ -25,16 +25,10 @@ const Template: Story<RadioGroupProps<RadioGroupItem>> = ({
   <RadioGroup initialValue={initialValue} onChange={onChange} items={items} />
 );
 
-export const SimpleRadioGroup: {
-  args: RadioGroupProps<RadioGroupItem>;
-  parameters: {
-    design: {
-      type: string;
-      url: string;
-    };
-  };
-} = Template.bind({});
-SimpleRadioGroup.args = {
+export const SimpleRadioGroup: Story<RadioGroupProps<RadioGroupItem>> =
+  Template.bind({});
+
+const args: RadioGroupProps<RadioGroupItem> = {
   items: [
     {
       value: 'not_for_resale',
@@ -50,9 +44,17 @@ SimpleRadioGroup.args = {
   // eslint-disable-next-line no-console
   onChange: newValue => console.log(newValue),
 };
-SimpleRadioGroup.parameters = {
+const parameters: {
+  design: {
+    type: string;
+    url: string;
+  };
+} = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A122',
   },
 };
+
+SimpleRadioGroup.args = args;
+SimpleRadioGroup.parameters = parameters;
