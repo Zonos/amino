@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Text } from 'components/Text';
 
-const StyledRestState = styled.aside`
+const StyledRestState = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

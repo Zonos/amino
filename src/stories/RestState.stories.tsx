@@ -24,4 +24,5 @@ export const BasicRestState = Template.bind({});
 BasicRestState.args = {
   label: 'Example Rest State',
   subtitle: 'Example Rest State',
+  icon: '',
 };
