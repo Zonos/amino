@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import styled from 'styled-components';
 
@@ -81,27 +81,21 @@ export type DialogProps = {
   width?: number;
 };
 
-export const Dialog = ({
-  actions,
-  children,
-  label,
-  onClose,
-  open,
-  theme,
-  width,
-}: DialogProps) => (
-  <BaseDialog data-theme={theme} open={open} width={width}>
-    <Header>
-      <Text type="h4">{label}</Text>
-      <Close onClick={onClose}>
-        <XIcon />
-      </Close>
-    </Header>
-    <Content>{children}</Content>
-    {actions && (
-      <Footer>
-        <HStack spacing="space-quarter">{actions}</HStack>
-      </Footer>
-    )}
-  </BaseDialog>
+export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
+  ({ actions, children, label, onClose, open, theme, width }, ref) => (
+    <BaseDialog data-theme={theme} open={open} width={width}>
+      <Header>
+        <Text type="h4">{label}</Text>
+        <Close onClick={onClose}>
+          <XIcon />
+        </Close>
+      </Header>
+      <Content ref={ref}>{children}</Content>
+      {actions && (
+        <Footer>
+          <HStack spacing="space-quarter">{actions}</HStack>
+        </Footer>
+      )}
+    </BaseDialog>
+  )
 );
