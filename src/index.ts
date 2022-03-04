@@ -25,6 +25,7 @@ export { ListItem } from './components/ListItem';
 export { Menu, MenuItem } from './components/Menu';
 export { Notice } from './components/Notice';
 export { Radio, RadioGroup } from './components/Radio';
+export { RestState, RestStateProps } from './components/RestState';
 export { RichCheckboxGroup } from './components/RichCheckboxGroup';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
