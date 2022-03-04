@@ -22,6 +22,6 @@ const Template: Story<RestStateProps> = ({
 
 export const BasicRestState = Template.bind({});
 BasicRestState.args = {
-  label: 'Exanple Rest State',
-  subtitle: 'Exanple Rest State',
+  label: 'Example Rest State',
+  subtitle: 'Example Rest State',
 };
