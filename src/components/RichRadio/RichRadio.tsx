@@ -81,10 +81,7 @@ export type RichRadioProps = {
 };
 
 export const RichRadio = ({ onChange, items, value }: RichRadioProps) => (
-  <StyledRoot
-    onValueChange={e => onChange(e.target.value)}
-    value={value || undefined}
-  >
+  <StyledRoot onValueChange={onChange} value={value}>
     <VStack spacing="space-half">
       {items.map(item => (
         <StyledItem value={item.value} key={item.value}>

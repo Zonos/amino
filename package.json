@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "2.164.2",
+  "version": "2.164.3",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -10,9 +10,6 @@
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.13.14",
-    "@radix-ui/react-checkbox": "^0.0.16",
-    "@radix-ui/react-radio-group": "^0.0.14",
-    "@radix-ui/react-slider": "^0.0.16",
     "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
@@ -58,10 +55,12 @@
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.4.2"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@radix-ui/react-checkbox": "^0.0.16",
-    "@radix-ui/react-radio-group": "^0.0.14",
-    "@radix-ui/react-slider": "^0.0.16",
+    "@radix-ui/react-radio-group": "^0.1.5",
+    "@radix-ui/react-slider": "^0.0.16"
+  },
+  "peerDependencies": {
     "downshift": "^4.x",
     "framer-motion": "^4.x",
     "react": "^17.x",
