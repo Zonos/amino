@@ -32,6 +32,7 @@ export type RestStateProps = {
   subtitle: string;
   action?: React.ReactNode;
   icon?: string;
+  className?: string;
 };
 
 export const RestState = ({
@@ -39,8 +40,9 @@ export const RestState = ({
   subtitle,
   action,
   icon,
+  className,
 }: RestStateProps) => (
-  <StyledRestState>
+  <StyledRestState className={className}>
     {icon ? <Icon src={icon} /> : null}
     <Text type="h4">{label}</Text>
     <Text type="subtitle">{subtitle}</Text>
