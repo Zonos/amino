@@ -4,7 +4,7 @@ import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
 
 import { VStack } from 'components/Stack';
-import { CheckIcon, ChevronRightIcon } from 'icons';
+import { CheckIcon } from 'icons';
 
 const StyledItem = styled(Item)`
   position: relative;
