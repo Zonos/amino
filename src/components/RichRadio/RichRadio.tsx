@@ -78,22 +78,23 @@ export type RichRadioProps = {
   onChange: (newVal: string) => void;
   items: RichRadioItemType[];
   value: string;
+  icon?: ReactNode;
 };
 
-export const RichRadio = ({ onChange, items, value }: RichRadioProps) => (
-  <StyledRoot onValueChange={onChange} value={value}>
-    <VStack spacing="space-half">
-      {items.map(item => (
-        <StyledItem value={item.value} key={item.value}>
-          <div>
-            <Label>{item.label}</Label>
-            {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
-          </div>
-          <StyledIndicator>
-            <CheckIcon />
-          </StyledIndicator>
-        </StyledItem>
-      ))}
-    </VStack>
-  </StyledRoot>
-);
+export const RichRadio = ({ onChange, items, value, icon }: RichRadioProps) => {
+  return (
+    <StyledRoot onValueChange={onChange} value={value}>
+      <VStack spacing="space-half">
+        {items.map(item => (
+          <StyledItem value={item.value} key={item.value}>
+            <div>
+              <Label>{item.label}</Label>
+              {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
+            </div>
+            <StyledIndicator>{icon || <CheckIcon />}</StyledIndicator>
+          </StyledItem>
+        ))}
+      </VStack>
+    </StyledRoot>
+  );
+};

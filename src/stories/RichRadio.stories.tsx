@@ -17,8 +17,9 @@ const Template: Story<RichRadioProps> = ({
   onChange,
   items,
   value,
+  icon,
 }: RichRadioProps) => (
-  <RichRadio value={value} onChange={onChange} items={items} />
+  <RichRadio value={value} onChange={onChange} items={items} icon={icon} />
 );
 
 export const BasicRichRadio = Template.bind({});
