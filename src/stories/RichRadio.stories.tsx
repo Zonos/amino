@@ -3,6 +3,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
+import { ChevronRightIcon } from 'icons';
+
 import { RichRadio, RichRadioProps } from '../components/RichRadio';
 
 const RichRadioMeta: Meta = {
@@ -17,19 +19,13 @@ const Template: Story<RichRadioProps> = ({
   onChange,
   items,
   value,
-  selectedIcon,
+  icon,
 }: RichRadioProps) => (
-  <RichRadio
-    value={value}
-    onChange={onChange}
-    items={items}
-    selectedIcon={selectedIcon}
-  />
+  <RichRadio value={value} onChange={onChange} items={items} icon={icon} />
 );
 
 export const BasicRichRadio = Template.bind({});
 BasicRichRadio.args = {
-  selectedIcon: 'right-chevron',
   items: [
     {
       label:
