@@ -17,12 +17,19 @@ const Template: Story<RichRadioProps> = ({
   onChange,
   items,
   value,
+  selectedIcon,
 }: RichRadioProps) => (
-  <RichRadio value={value} onChange={onChange} items={items} />
+  <RichRadio
+    value={value}
+    onChange={onChange}
+    items={items}
+    selectedIcon={selectedIcon}
+  />
 );
 
 export const BasicRichRadio = Template.bind({});
 BasicRichRadio.args = {
+  selectedIcon: 'right-chevron',
   items: [
     {
       label:
