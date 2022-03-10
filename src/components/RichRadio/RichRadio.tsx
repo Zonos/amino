@@ -4,7 +4,7 @@ import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
 
 import { VStack } from 'components/Stack';
-import { CheckIcon } from 'icons';
+import { CheckIcon, ChevronRightIcon } from 'icons';
 
 const StyledItem = styled(Item)`
   position: relative;
@@ -78,22 +78,36 @@ export type RichRadioProps = {
   onChange: (newVal: string) => void;
   items: RichRadioItemType[];
   value: string;
+  selectedIcon?: 'check' | 'right-chevron';
 };
 
-export const RichRadio = ({ onChange, items, value }: RichRadioProps) => (
-  <StyledRoot onValueChange={onChange} value={value}>
-    <VStack spacing="space-half">
-      {items.map(item => (
-        <StyledItem value={item.value} key={item.value}>
-          <div>
-            <Label>{item.label}</Label>
-            {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
-          </div>
-          <StyledIndicator>
-            <CheckIcon />
-          </StyledIndicator>
-        </StyledItem>
-      ))}
-    </VStack>
-  </StyledRoot>
-);
+export const RichRadio = ({
+  onChange,
+  items,
+  value,
+  selectedIcon,
+}: RichRadioProps) => {
+  const renderButton = () => {
+    switch (selectedIcon) {
+      case 'right-chevron':
+        return <ChevronRightIcon />;
+      default:
+        return <CheckIcon />;
+    }
+  };
+  return (
+    <StyledRoot onValueChange={onChange} value={value}>
+      <VStack spacing="space-half">
+        {items.map(item => (
+          <StyledItem value={item.value} key={item.value}>
+            <div>
+              <Label>{item.label}</Label>
+              {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
+            </div>
+            <StyledIndicator>{renderButton()}</StyledIndicator>
+          </StyledItem>
+        ))}
+      </VStack>
+    </StyledRoot>
+  );
+};
