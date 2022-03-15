@@ -2,28 +2,9 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-type ColorList =
-  | 'blue'
-  | 'cyan'
-  | 'gray'
-  | 'green'
-  | 'orange'
-  | 'purple'
-  | 'red'
-  | 'yellow';
+import { HStack } from 'components/Stack';
 
-enum ColorIntensity {
-  'L80' = 100,
-  'L60' = 200,
-  'L40' = 300,
-  'L20' = 400,
-  'Base' = 500,
-  'D20' = 600,
-  'D40' = 700,
-  'D60' = 800,
-  'D80' = 900,
-}
-const colors: ColorList[] = [
+const colors = [
   'blue',
   'cyan',
   'gray',
@@ -32,55 +13,57 @@ const colors: ColorList[] = [
   'purple',
   'red',
   'yellow',
-];
+] as const;
 
-const colorIntensity: (keyof typeof ColorIntensity)[] = [
-  'L80',
-  'L60',
-  'L40',
-  'L20',
-  'Base',
-  'D20',
-  'D40',
-  'D60',
-  'D80',
-];
+const contrastList = [
+  { label: 'L80', value: '100' },
+  { label: 'L60', value: '200' },
+  { label: 'L40', value: '300' },
+  { label: 'L20', value: '400' },
+  { label: 'Base', value: '500' },
+  { label: 'D20', value: '600' },
+  { label: 'D40', value: '700' },
+  { label: 'D60', value: '800' },
+  { label: 'D80', value: '900' },
+] as const;
+
+type ColorIntensity = typeof contrastList[number]['value'];
+type Color = typeof colors[number];
+type AminoColor = `--amino-${Color}-${ColorIntensity}`;
+
 interface ColorProps {
-  color: ColorList;
-  intensity: keyof typeof ColorIntensity;
+  background: AminoColor;
 }
 const StyledWrapper = styled.div`
   margin-bottom: var(--amino-space);
 `;
-const StyledColorIntensities = styled.div`
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-`;
 const StyledColorIntensity = styled.div<ColorProps>`
-  width: 40px;
-  height: 20px;
-  background: var(
-    --amino-${props => props.color}-${props => props.intensity.toLowerCase()}
-  );
+  color: ${p => p.color};
+  font-size: var(--amino-v3-text-sm);
+  padding: var(--amino-space);
+  background: var(${p => p.background});
 `;
 
 export const ColorPalette = () => {
-  return (
-    <>
-      {colors.map(color => (
-        <StyledWrapper>
-          <p>{color.toUpperCase()}</p>
-          <StyledColorIntensities>
-            {colorIntensity.map(intensity => (
-              <div>
-                <StyledColorIntensity color={color} intensity={intensity} />
-                <div>{intensity}</div>
-              </div>
-            ))}
-          </StyledColorIntensities>
-        </StyledWrapper>
-      ))}
-    </>
-  );
+  return colors.map(color => (
+    <StyledWrapper key={color}>
+      <p>{color.toUpperCase()}</p>
+      <HStack spacing="none">
+        {contrastList.map(({ label, value }) => {
+          const aminoColor: AminoColor = `--amino-${color}-${value}`;
+          return (
+            <div key={aminoColor}>
+              <StyledColorIntensity
+                background={aminoColor}
+                color={Number(value) < 500 ? 'black' : 'white'}
+              >
+                var({aminoColor})
+              </StyledColorIntensity>
+              <div>{label}</div>
+            </div>
+          );
+        })}
+      </HStack>
+    </StyledWrapper>
+  ));
 };
