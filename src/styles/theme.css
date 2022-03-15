@@ -38,26 +38,26 @@
   --amino-radius-xl: 0.75rem;
 
   /* GRAY PALETTE */
-  --amino-gray-L80: #F5F5F6;
-  --amino-gray-L60: #EAEAEC;
-  --amino-gray-L40: #D6D6D9;
-  --amino-gray-L20: #B7B7BD;
+  --amino-gray-l80: #F5F5F6;
+  --amino-gray-l60: #EAEAEC;
+  --amino-gray-l40: #D6D6D9;
+  --amino-gray-l20: #B7B7BD;
   --amino-gray-base: #9898A0;
-  --amino-gray-D20: #7A7A80;
-  --amino-gray-D40: #5B5B60;
-  --amino-gray-D60: #3D3D40;
-  --amino-gray-D80: #232326;
+  --amino-gray-d20: #7A7A80;
+  --amino-gray-d40: #5B5B60;
+  --amino-gray-d60: #3D3D40;
+  --amino-gray-d80: #232326;
 
   --amino-gray-50: #f9fafb;
-  --amino-gray-100: var(--amino-gray-L80);
-  --amino-gray-200: var(--amino-gray-L60);
-  --amino-gray-300: var(--amino-gray-L40);
-  --amino-gray-400: var(--amino-gray-L20);
+  --amino-gray-100: var(--amino-gray-l80);
+  --amino-gray-200: var(--amino-gray-l60);
+  --amino-gray-300: var(--amino-gray-l40);
+  --amino-gray-400: var(--amino-gray-l20);
   --amino-gray-500: var(--amino-gray-base);
-  --amino-gray-600: var(--amino-gray-D20);
-  --amino-gray-700: var(--amino-gray-D40);
-  --amino-gray-800: var(--amino-gray-D60);
-  --amino-gray-900: var(--amino-gray-D80);
+  --amino-gray-600: var(--amino-gray-d20);
+  --amino-gray-700: var(--amino-gray-d40);
+  --amino-gray-800: var(--amino-gray-d60);
+  --amino-gray-900: var(--amino-gray-d80);
 
   /* BLUE PALETTE */
   --amino-blue-l80: #E9EBFF;
@@ -321,15 +321,15 @@
 
 [data-theme='dark'] {
   /* GRAY PALETTE */
-  --amino-gray-L80: #F5F5F6;
-  --amino-gray-L60: #D8D8DB;
-  --amino-gray-L40: #C4C4C9;
-  --amino-gray-L20: #B1B1B7;
+  --amino-gray-l80: #F5F5F6;
+  --amino-gray-l60: #D8D8DB;
+  --amino-gray-l40: #C4C4C9;
+  --amino-gray-l20: #B1B1B7;
   --amino-gray-base: #9D9DA5;
-  --amino-gray-D20: #76767C;
-  --amino-gray-D40: #4F4F52;
-  --amino-gray-D60: #2F2F31;
-  --amino-gray-D80: #232326;
+  --amino-gray-d20: #76767C;
+  --amino-gray-d40: #4F4F52;
+  --amino-gray-d60: #2F2F31;
+  --amino-gray-d80: #232326;
 
   /* BLUE PALETTE */
   --amino-blue-l80: #E9EBFF;
