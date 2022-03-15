@@ -36,6 +36,10 @@ interface ColorProps {
 }
 const StyledWrapper = styled.div`
   margin-bottom: var(--amino-space);
+
+  &:last-child {
+    height: 150px;
+  }
 `;
 const StyledColorIntensity = styled.div<ColorProps>`
   color: ${p => p.color};
@@ -44,8 +48,8 @@ const StyledColorIntensity = styled.div<ColorProps>`
   background: var(${p => p.background});
 `;
 
-export const ColorPalette = () => {
-  return colors.map(color => (
+export const ColorPalette = () =>
+  colors.map(color => (
     <StyledWrapper key={color}>
       <p>{color.toUpperCase()}</p>
       <HStack spacing="none">
@@ -66,4 +70,3 @@ export const ColorPalette = () => {
       </HStack>
     </StyledWrapper>
   ));
-};
