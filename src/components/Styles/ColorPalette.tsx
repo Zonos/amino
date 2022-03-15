@@ -48,25 +48,28 @@ const StyledColorIntensity = styled.div<ColorProps>`
   background: var(${p => p.background});
 `;
 
-export const ColorPalette = () =>
-  colors.map(color => (
-    <StyledWrapper key={color}>
-      <p>{color.toUpperCase()}</p>
-      <HStack spacing="none">
-        {contrastList.map(({ label, value }) => {
-          const aminoColor: AminoColor = `--amino-${color}-${value}`;
-          return (
-            <div key={aminoColor}>
-              <StyledColorIntensity
-                background={aminoColor}
-                color={Number(value) < 500 ? 'black' : 'white'}
-              >
-                var({aminoColor})
-              </StyledColorIntensity>
-              <div>{label}</div>
-            </div>
-          );
-        })}
-      </HStack>
-    </StyledWrapper>
-  ));
+export const ColorPalette = () => (
+  <>
+    {colors.map(color => (
+      <StyledWrapper key={color}>
+        <p>{color.toUpperCase()}</p>
+        <HStack spacing="none">
+          {contrastList.map(({ label, value }) => {
+            const aminoColor: AminoColor = `--amino-${color}-${value}`;
+            return (
+              <div key={aminoColor}>
+                <StyledColorIntensity
+                  background={aminoColor}
+                  color={Number(value) < 500 ? 'black' : 'white'}
+                >
+                  var({aminoColor})
+                </StyledColorIntensity>
+                <div>{label}</div>
+              </div>
+            );
+          })}
+        </HStack>
+      </StyledWrapper>
+    ))}
+  </>
+);
