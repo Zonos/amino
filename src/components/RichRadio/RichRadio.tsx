@@ -47,6 +47,20 @@ const StyledRoot = styled(Root)`
     box-shadow: 0px 0px 0px 3px var(--amino-blue-300);
     border-color: transparent;
   }
+  svg {
+    color: var(--amino-blue-700);
+    width: 12px;
+    height: 12px;
+  }
+`;
+
+const StyledIcon = styled.div`
+  position: absolute;
+  content: ' ';
+  right: var(--amino-space-half);
+  background: var(--amino-blue-300);
+  border-radius: 50px;
+  padding: 5px;
 `;
 
 const StyledIndicator = styled(Indicator)`
@@ -59,13 +73,6 @@ const StyledIndicator = styled(Indicator)`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  svg {
-    color: var(--amino-blue-700);
-    width: 12px;
-    height: 12px;
-    box-shadow: var(--amino-shadow-small);
-  }
 `;
 
 type RichRadioItemType = {
@@ -79,9 +86,16 @@ export type RichRadioProps = {
   items: RichRadioItemType[];
   value: string;
   icon?: ReactNode;
+  activeIcon?: ReactNode;
 };
 
-export const RichRadio = ({ onChange, items, value, icon }: RichRadioProps) => {
+export const RichRadio = ({
+  onChange,
+  items,
+  value,
+  icon,
+  activeIcon,
+}: RichRadioProps) => {
   return (
     <StyledRoot onValueChange={onChange} value={value}>
       <VStack spacing="space-half">
@@ -91,7 +105,8 @@ export const RichRadio = ({ onChange, items, value, icon }: RichRadioProps) => {
               <Label>{item.label}</Label>
               {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
             </div>
-            <StyledIndicator>{icon || <CheckIcon />}</StyledIndicator>
+            {!!icon && <StyledIcon>{icon || <CheckIcon />}</StyledIcon>}
+            <StyledIndicator>{activeIcon || <CheckIcon />}</StyledIndicator>
           </StyledItem>
         ))}
       </VStack>
