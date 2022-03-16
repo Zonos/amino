@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { forwardRef } from 'react';
 
 import styled from 'styled-components';

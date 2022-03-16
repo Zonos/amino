@@ -57,6 +57,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off', // Prettier takes care of this
     'react/jsx-wrap-multilines': 'off', // Prettier takes care of this
     'react/prop-types': 'off', // Try removing this after updating to "react-scripts": "^4.x"
+    'react/default-props-match-prop-types': 'off',
     'react/require-default-props': [
       'error',
       { forbidDefaultForRequired: true, ignoreFunctionalComponents: true },
