@@ -3,12 +3,33 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
+import { CheckIcon, ChevronRightIcon } from 'icons';
+
 import { RichRadio, RichRadioProps } from '../components/RichRadio';
 
 const RichRadioMeta: Meta = {
   title: 'Amino/RichRadio',
   component: RichRadio,
   decorators: [withDesign],
+  argTypes: {
+    icon: {
+      defaultValue: 'No Icon',
+      options: ['No Icon', 'Check Icon', 'Chevron Right Icon'],
+      mapping: {
+        'No Icon': undefined,
+        'Check Icon': <CheckIcon />,
+        'Chevron Right Icon': <ChevronRightIcon />,
+      },
+    },
+    activeIcon: {
+      defaultValue: 'Chevron Right Icon',
+      options: ['Check Icon', 'Chevron Right Icon'],
+      mapping: {
+        'Check Icon': <CheckIcon />,
+        'Chevron Right Icon': <ChevronRightIcon />,
+      },
+    },
+  },
 };
 
 export default RichRadioMeta;
@@ -18,8 +39,15 @@ const Template: Story<RichRadioProps> = ({
   items,
   value,
   icon,
+  activeIcon,
 }: RichRadioProps) => (
-  <RichRadio value={value} onChange={onChange} items={items} icon={icon} />
+  <RichRadio
+    value={value}
+    onChange={onChange}
+    items={items}
+    icon={icon}
+    activeIcon={activeIcon}
+  />
 );
 
 export const BasicRichRadio = Template.bind({});
