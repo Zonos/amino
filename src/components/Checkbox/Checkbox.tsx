@@ -40,7 +40,14 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   }
 `;
 
+const StyledSubtitle = styled(Text)`
+  font-style: normal;
+`;
+
+const StyledLabel = styled(Text)``;
+
 const CheckboxContainer = styled.div<{
+  checked: boolean;
   multiline: boolean;
   disabled?: boolean;
 }>`
@@ -49,7 +56,18 @@ const CheckboxContainer = styled.div<{
   user-select: none;
   align-items: ${p => (p.multiline ? 'normal' : 'center')};
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
-  opacity: ${props => (props.disabled ? '0.3' : '1')};
+  &.disabled {
+    ${AminoCheckbox} {
+      background: ${p => (p.checked ? 'var(--amino-blue-200)' : '')};
+      border: ${p => (p.checked ? '2px solid var(--amino-blue-200)' : '')};
+    }
+    ${StyledLabel} {
+      color: var(--amino-gray-500);
+    }
+    ${StyledSubtitle} {
+      color: var(--amino-gray-400);
+    }
+  }
   ${AminoCheckbox} {
     transition: ${p => p.multiline && 'none'};
     margin-top: ${p => p.multiline && '4px'};
@@ -66,6 +84,7 @@ const CheckboxContainer = styled.div<{
     cursor: pointer;
     align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
     margin-bottom: 0;
+    color: black;
   }
   label > label {
     flex-direction: row;
@@ -90,10 +109,11 @@ export const Checkbox = ({
   labelComponent,
 }: CheckboxProps) => (
   <CheckboxContainer
-    className="amino-input-wrapper"
+    className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
+    checked={checked}
     disabled={disabled}
     multiline={!!subtitle}
-    onClick={() => onChange(!checked)}
+    onClick={() => !disabled && onChange(!checked)}
   >
     <AminoCheckbox checked={checked} id={label}>
       <AnimatePresence>
@@ -111,8 +131,10 @@ export const Checkbox = ({
 
     {label && (
       <label htmlFor={label}>
-        <Text type="inputlabel">{labelComponent || label}</Text>
-        {subtitle && <Text type="subtitle">{subtitle}</Text>}
+        <StyledLabel type="inputlabel">{labelComponent || label}</StyledLabel>
+        {subtitle && (
+          <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
+        )}
       </label>
     )}
   </CheckboxContainer>
