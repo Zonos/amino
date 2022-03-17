@@ -26,7 +26,6 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   justify-content: center;
   user-select: none;
   margin-right: var(--amino-space-half);
-  border: var(--amino-border);
   box-shadow: var(--amino-shadow-small);
 
   &:active {
@@ -48,9 +47,13 @@ const CheckboxContainer = styled.div<{
   display: flex;
   flex-direction: row;
   user-select: none;
-  align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
+  align-items: ${p => (p.multiline ? 'normal' : 'center')};
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
   opacity: ${props => (props.disabled ? '0.3' : '1')};
+  ${AminoCheckbox} {
+    transition: ${p => p.multiline && 'none'};
+    margin-top: ${p => p.multiline && '4px'};
+  }
 
   a {
     color: var(--amino-primary);
@@ -63,6 +66,9 @@ const CheckboxContainer = styled.div<{
     cursor: pointer;
     align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
     margin-bottom: 0;
+  }
+  label > label {
+    flex-direction: row;
   }
 `;
 
