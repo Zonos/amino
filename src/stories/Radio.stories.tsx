@@ -9,15 +9,33 @@ const RadioMeta: Meta = {
   title: 'Amino/Radio',
   component: Radio,
   decorators: [withDesign],
+  argTypes: {
+    disabled: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    checked: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+  },
 };
 
 export default RadioMeta;
 
 const Template: Story<RadioProps> = ({
+  disabled,
   checked,
   label,
   onChange,
-}: RadioProps) => <Radio label={label} checked={checked} onChange={onChange} />;
+}: RadioProps) => (
+  <Radio
+    label={label}
+    checked={checked}
+    disabled={disabled}
+    onChange={onChange}
+  />
+);
 
 export const BasicRadio = Template.bind({});
 BasicRadio.args = {
