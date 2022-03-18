@@ -231,7 +231,7 @@
   --amino-danger: var(--amino-red-500);
   --amino-danger-dark: var(--amino-red-600);
 
-  --amino-error: var(--amino-red-400);
+  --amino-error: var(--amino-red-500);
 
   --amino-glow-blue: 0 0 0 2px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
@@ -262,6 +262,7 @@
 
   --amino-input-background: white;
   --amino-input-height: 36px;
+  --amino-input-float-height: 3.5rem;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 219px;
   --amino-sidebar-color: var(--amino-page-background);

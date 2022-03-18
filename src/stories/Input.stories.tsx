@@ -9,6 +9,59 @@ const InputMeta: Meta = {
   title: 'Amino/Input',
   component: Input,
   decorators: [withDesign],
+  argTypes: {
+    width: {
+      type: 'number',
+    },
+    placeholder: {
+      table: {
+        disable: true,
+      },
+    },
+    helpText: {
+      defaultValue: '',
+      type: 'string',
+    },
+    value: {
+      defaultValue: '',
+      type: 'string',
+    },
+    inputPrefix: {
+      table: {
+        disable: true,
+      },
+    },
+    inputSuffix: {
+      table: {
+        disable: true,
+      },
+    },
+    pattern: {
+      type: 'string',
+    },
+    required: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    readOnly: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    autoFocus: {
+      type: 'boolean',
+    },
+    tabIndex: {
+      type: 'number',
+    },
+    error: {
+      defaultValue: '',
+      type: 'string',
+    },
+    type: {
+      defaultValue: 'text',
+      type: 'string',
+    },
+  },
 };
 
 export default InputMeta;
@@ -80,7 +133,7 @@ export const PrefixesAndSuffixes = Template.bind({});
 PrefixesAndSuffixes.args = {
   label: 'Example input',
   prefix: 'Prefix',
-  suffix: 'Prefix',
+  suffix: 'Suffix',
 };
 PrefixesAndSuffixes.parameters = {
   design: {
