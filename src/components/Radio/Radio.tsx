@@ -100,7 +100,3 @@ export const Radio = ({ disabled, label, checked, onChange }: RadioProps) => (
     {label && <Text type="inputlabel">{label}</Text>}
   </RadioContainer>
 );
-
-Radio.defaultProps = {
-  // checked: false,
-};

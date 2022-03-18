@@ -26,12 +26,6 @@ const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
 
-  p {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--amino-space-quarter);
-  }
   svg path {
     fill: currentColor;
   }
@@ -43,6 +37,19 @@ const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   &:active,
   &:focus {
     outline: none;
+  }
+
+  &.has-icon {
+    &.icon-right {
+      svg {
+        margin-left: var(--amino-space-quarter);
+        margin-right: 0;
+      }
+    }
+    svg {
+      margin-right: var(--amino-space-quarter);
+      margin-left: 0;
+    }
   }
 
   &[disabled] {
@@ -187,11 +194,7 @@ const Subtle = styled(AminoButton)`
   }
 `;
 
-type IntentProps =
-  | 'link'
-  | 'outline'
-  | 'subtle'
-  | Exclude<Intent, 'error' | 'success' | 'info'>;
+type IntentProps = 'link' | 'outline' | 'subtle' | Intent;
 
 export type ButtonProps = {
   children?: ReactNode;
@@ -238,133 +241,116 @@ export const Button = ({
     </>
   );
 
+  const buttonClassName = [
+    className || '',
+    icon && !children ? 'only-icon' : '',
+    iconRight ? 'icon-right' : '',
+    icon ? 'has-icon' : '',
+  ].join(' ');
+
   switch (intent) {
     case 'primary':
       return (
         <Primary
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Primary>
       );
     case 'subtle':
       return (
         <Subtle
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Subtle>
       );
     case 'link':
       return (
         <Link
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           href={href || '#'}
           data-tip={tooltip}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Link>
       );
     case 'outline':
       return (
         <Outline
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Outline>
       );
     case 'warning':
       return (
         <Warning
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Warning>
       );
     case 'danger':
       return (
         <Danger
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Danger>
       );
     case 'icon':
       return (
         <Icon
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Icon>
       );
     case 'secondary':
     default:
       return (
         <Secondary
-          className={[
-            className || '',
-            icon && !children ? 'only-icon' : '',
-          ].join(' ')}
+          className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
         >
-          <p>{content}</p>
+          {content}
         </Secondary>
       );
   }
