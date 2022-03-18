@@ -36,6 +36,12 @@ const InputMeta: Meta = {
         disable: true,
       },
     },
+    prefix: {
+      type: 'string',
+    },
+    suffix: {
+      type: 'string',
+    },
     pattern: {
       type: 'string',
     },
