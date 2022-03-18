@@ -13,6 +13,12 @@ const RadioMeta: Meta = {
   title: 'Amino/RadioGroup',
   component: RadioGroup,
   decorators: [withDesign],
+  argTypes: {
+    disabled: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+  },
 };
 
 export default RadioMeta;
@@ -20,9 +26,15 @@ export default RadioMeta;
 const Template: Story<RadioGroupProps<RadioGroupItem>> = ({
   items,
   initialValue,
+  disabled,
   onChange,
 }: RadioGroupProps<RadioGroupItem>) => (
-  <RadioGroup initialValue={initialValue} onChange={onChange} items={items} />
+  <RadioGroup
+    initialValue={initialValue}
+    onChange={onChange}
+    disabled={disabled}
+    items={items}
+  />
 );
 
 export const SimpleRadioGroup: Story<RadioGroupProps<RadioGroupItem>> =

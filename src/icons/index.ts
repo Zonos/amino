@@ -18,6 +18,7 @@ export { CogIcon } from './CogIcon';
 export { ConvertIcon } from './ConvertIcon';
 export { CopyIcon } from './CopyIcon';
 export { CreditCardIcon } from './CreditCardIcon';
+export { CubeIcon } from './CubeIcon';
 export { DangerIcon } from './DangerIcon';
 export { DownloadIcon } from './DownloadIcon';
 export { DropdownIcon } from './DropdownIcon';

@@ -36,6 +36,7 @@ export { Slider } from './components/Slider';
 export { Spinner } from './components/Spinner';
 export { VStack } from './components/Stack';
 export { HStack, HStackProps } from './components/Stack';
+export { Switch } from './components/Switch';
 export { Tabs } from './components/Tabs';
 export { Text } from './components/Text';
 export { TextAvatar } from './components/TextAvatar';

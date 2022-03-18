@@ -3,22 +3,56 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
+import { TagIcon } from 'icons';
+
 import { Checkbox, CheckboxProps } from '../components/Checkbox';
 
 const CheckboxMeta: Meta = {
   title: 'Amino/Checkbox',
   component: Checkbox,
   decorators: [withDesign],
+  argTypes: {
+    disabled: {
+      type: 'boolean',
+      defaultValue: false,
+    },
+    subtitle: {
+      type: 'string',
+      defaultValue: 'test',
+    },
+    labelComponent: {
+      defaultValue: 'Icon Label Component',
+      options: ['No Icon Component', 'Icon Label Component'],
+      mapping: {
+        'No Icon Component': undefined,
+        'Icon Label Component': (
+          <>
+            <TagIcon size={22} /> Checkbox label
+          </>
+        ),
+      },
+    },
+  },
 };
 
 export default CheckboxMeta;
 
 const Template: Story<CheckboxProps> = ({
-  label,
-  onChange,
   checked,
+  disabled,
+  label,
+  labelComponent,
+  onChange,
+  subtitle,
 }: CheckboxProps) => (
-  <Checkbox label={label} onChange={onChange} checked={checked} />
+  <Checkbox
+    checked={checked}
+    disabled={disabled}
+    label={label}
+    onChange={onChange}
+    subtitle={subtitle}
+    labelComponent={labelComponent}
+  />
 );
 
 export const BasicCheckbox = Template.bind({});

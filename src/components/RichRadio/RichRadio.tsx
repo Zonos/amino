@@ -6,6 +6,30 @@ import styled from 'styled-components';
 import { VStack } from 'components/Stack';
 import { CheckIcon } from 'icons';
 
+const StyledIcon = styled.div`
+  position: absolute;
+  content: ' ';
+  right: var(--amino-space-half);
+  background: var(--amino-gray-400);
+  border-radius: 50px;
+  padding: 5px;
+  svg {
+    color: white;
+  }
+`;
+
+const StyledIndicator = styled(Indicator)`
+  position: absolute;
+  right: var(--amino-space-half);
+  background: var(--amino-blue-500);
+  content: ' ';
+  border-radius: 50px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StyledItem = styled(Item)`
   position: relative;
   appearance: none;
@@ -19,16 +43,22 @@ const StyledItem = styled(Item)`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  &:hover {
+    background: var(--amino-gray-100);
+    border: 1px solid var(--amino-gray-200);
+    ${StyledIcon} {
+      background: var(--amino-gray-500);
+    }
   }
 
   &:focus {
     outline: none;
     box-shadow: inset 0 0 0 2px var(--amino-blue-600);
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 `;
 
@@ -42,37 +72,16 @@ const Label = styled.span`
 
 const StyledRoot = styled(Root)`
   button[data-state='checked'] {
-    background: var(--amino-primary);
-    color: white;
+    background: var(--amino-blue-100);
+    border: 1px solid var(--amino-blue-300);
+    color: var(--amino-blue-500);
     box-shadow: 0px 0px 0px 3px var(--amino-blue-300);
-    border-color: transparent;
   }
   svg {
-    color: var(--amino-blue-700);
+    color: white;
     width: 12px;
     height: 12px;
   }
-`;
-
-const StyledIcon = styled.div`
-  position: absolute;
-  content: ' ';
-  right: var(--amino-space-half);
-  background: var(--amino-blue-300);
-  border-radius: 50px;
-  padding: 5px;
-`;
-
-const StyledIndicator = styled(Indicator)`
-  position: absolute;
-  right: var(--amino-space-half);
-  background: var(--amino-blue-300);
-  content: ' ';
-  border-radius: 50px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 type RichRadioItemType = {
