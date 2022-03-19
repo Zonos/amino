@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { CubeIcon } from 'icons';
+import { BoxIcon } from 'icons';
 
 import { Button, ButtonProps } from '../components/Button';
 
@@ -96,7 +96,7 @@ const Template: Story<ButtonProps> = ({
             className={className}
             disabled={disabled}
             intent={intent}
-            icon={<CubeIcon size={16} />}
+            icon={<BoxIcon size={16} />}
             loading={loading}
             loadingText={loadingText}
             onClick={onClick}
@@ -112,7 +112,7 @@ const Template: Story<ButtonProps> = ({
             className={className}
             disabled={disabled}
             intent={intent}
-            icon={<CubeIcon size={16} />}
+            icon={<BoxIcon size={16} />}
             iconRight
             loading={loading}
             loadingText={loadingText}
@@ -129,7 +129,7 @@ const Template: Story<ButtonProps> = ({
             className={className}
             disabled={disabled}
             intent={intent}
-            icon={<CubeIcon size={16} />}
+            icon={<BoxIcon size={16} />}
             loading={loading}
             loadingText={loadingText}
             onClick={onClick}

@@ -49,6 +49,10 @@ const InputMeta: Meta = {
       defaultValue: false,
       type: 'boolean',
     },
+    disabled: {
+      defaultValue: false,
+      type: 'boolean',
+    },
     readOnly: {
       defaultValue: false,
       type: 'boolean',
@@ -126,6 +130,30 @@ BasicInput.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A56',
+  },
+};
+
+export const PasswordInput = Template.bind({});
+PasswordInput.args = {
+  label: 'Example input',
+  type: 'password',
+};
+PasswordInput.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+  },
+};
+
+export const NumberInput = Template.bind({});
+NumberInput.args = {
+  label: 'Example input',
+  type: 'number',
+};
+NumberInput.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
   },
 };
 
