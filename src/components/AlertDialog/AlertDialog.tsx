@@ -2,7 +2,11 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { DangerIcon, InfoIcon } from '../../icons';
+import {
+  ExclamationSolidIcon,
+  HelpSolidIcon,
+  WarningSolidIcon,
+} from '../../icons';
 import { IAminoTheme, Intent } from '../../types';
 import { Button } from '../Button';
 import { BaseDialog } from '../Dialog/BaseDialog';
@@ -54,10 +58,12 @@ export type AlertDialogProps = {
 const getIconForIntent = (intent: Intent) => {
   switch (intent) {
     case 'danger':
-      return <DangerIcon />;
+      return <ExclamationSolidIcon />;
+    case 'warning':
+      return <WarningSolidIcon />;
     case 'info':
     default:
-      return <InfoIcon />;
+      return <HelpSolidIcon />;
   }
 };
 
@@ -79,7 +85,9 @@ export const AlertDialog = ({
           <AlertPrompt>{subtitle}</AlertPrompt>
         </div>
         <Footer>
-          <Button onClick={dismissAction}>{dismissText}</Button>
+          <Button onClick={dismissAction} intent={intent}>
+            {dismissText}
+          </Button>
         </Footer>
       </VStack>
     </Content>

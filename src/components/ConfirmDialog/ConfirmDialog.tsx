@@ -2,7 +2,11 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { DangerIcon, HelpIcon } from '../../icons';
+import {
+  ExclamationSolidIcon,
+  HelpSolidIcon,
+  WarningSolidIcon,
+} from '../../icons';
 import { IAminoTheme, Intent } from '../../types';
 import { Button } from '../Button';
 import { BaseDialog } from '../Dialog/BaseDialog';
@@ -47,8 +51,8 @@ export type ConfirmDialogProps = {
   theme?: IAminoTheme;
   subtitle: React.ReactNode;
   intent: Intent;
-  confirmText: string;
-  dismissText: string;
+  confirmText?: string;
+  dismissText?: string;
   confirmAction: () => void;
   dismissAction: () => void;
 };
@@ -56,10 +60,12 @@ export type ConfirmDialogProps = {
 const getIconForIntent = (intent: Intent) => {
   switch (intent) {
     case 'danger':
-      return <DangerIcon />;
+      return <ExclamationSolidIcon />;
+    case 'warning':
+      return <WarningSolidIcon />;
     case 'info':
     default:
-      return <HelpIcon />;
+      return <HelpSolidIcon />;
   }
 };
 
@@ -83,8 +89,10 @@ export const ConfirmDialog = ({
           <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>
         </div>
         <Footer>
-          <Button onClick={dismissAction}>{dismissText}</Button>
-          <Button onClick={confirmAction} intent={intent}>
+          <Button size="md" onClick={dismissAction} intent="outline">
+            {dismissText}
+          </Button>
+          <Button size="md" onClick={confirmAction} intent={intent}>
             {confirmText}
           </Button>
         </Footer>
