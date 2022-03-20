@@ -6,7 +6,7 @@ type Props = { children: ReactNode } & IconProps;
 
 export const IconBase = forwardRef<SVGSVGElement, Props>(
   ({ size, color, children }, ref) => {
-    const viewBoxSize = size && size > 24 ? size + 2 : 24;
+    const viewBoxSize = size && size > 24 ? size + 2 : 23;
     return (
       <svg
         ref={ref}
