@@ -3,6 +3,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
+import { CubeIcon } from 'icons';
+
 import { Input, InputProps } from '../components/Input';
 
 const InputMeta: Meta = {
@@ -37,10 +39,22 @@ const InputMeta: Meta = {
       },
     },
     prefix: {
-      type: 'string',
+      defaultValue: 'With icon',
+      options: ['No prefix', 'With text', 'With icon'],
+      mapping: {
+        'No prefix': '',
+        'With text': 'USD',
+        'With icon': <CubeIcon size={20} />,
+      },
     },
     suffix: {
-      type: 'string',
+      defaultValue: 'With text',
+      options: ['No prefix', 'With text', 'With icon'],
+      mapping: {
+        'No prefix': '',
+        'With text': 'USD',
+        'With icon': <CubeIcon size={20} />,
+      },
     },
     pattern: {
       type: 'string',
@@ -157,6 +171,19 @@ NumberInput.parameters = {
   },
 };
 
+export const SearchInput = Template.bind({});
+SearchInput.args = {
+  label: 'Example input',
+  type: 'search',
+  prefix: '',
+};
+SearchInput.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+  },
+};
+
 export const InputWithHelpText = Template.bind({});
 InputWithHelpText.args = {
   label: 'Example input',
@@ -166,8 +193,6 @@ InputWithHelpText.args = {
 export const PrefixesAndSuffixes = Template.bind({});
 PrefixesAndSuffixes.args = {
   label: 'Example input',
-  prefix: 'Prefix',
-  suffix: 'Suffix',
 };
 PrefixesAndSuffixes.parameters = {
   design: {

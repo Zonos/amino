@@ -233,6 +233,7 @@
 
   --amino-error: var(--amino-red-500);
 
+  --amino-glow-error: 0 0 0 2px var(--amino-red-500);
   --amino-glow-blue: 0 0 0 2px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
   --amino-glow-red: 0 0 0 2px var(--amino-red-alpha);
