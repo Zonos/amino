@@ -72,7 +72,7 @@ export const AllIcons = ({ size }: IconProps) => {
               /Duotone/.test(iconName) ? 'duotone' : '',
             ].join(' ')}
           >
-            <IconComponent size={20}>
+            <IconComponent size={30}>
               <></>
             </IconComponent>
             <div>{iconName}</div>
