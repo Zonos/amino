@@ -242,12 +242,12 @@ export const Input = ({
             type={type || 'text'}
             readOnly={readOnly || false}
             disabled={disabled}
-            tabIndex={tabIndex && tabIndex}
-            pattern={pattern && pattern}
-            inputMode={inputMode && inputMode}
-            autoFocus={autoFocus && autoFocus}
-            onKeyDown={onKeyDown && onKeyDown}
-            aria-label={label && label}
+            tabIndex={tabIndex}
+            pattern={pattern}
+            inputMode={inputMode}
+            autoFocus={autoFocus}
+            onKeyDown={onKeyDown}
+            aria-label={label}
           />
           <StyledLabelInput data-label={label} />
         </StyledLabelWrapper>
