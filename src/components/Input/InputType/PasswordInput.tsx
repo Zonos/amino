@@ -68,11 +68,11 @@ export const PasswordInput = ({
         label={label}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        pattern={pattern && pattern}
+        pattern={pattern}
         placeholder={placeholder}
-        readOnly={readOnly || false}
+        readOnly={readOnly}
         required={required}
-        tabIndex={tabIndex && tabIndex}
+        tabIndex={tabIndex}
         type={inputType}
         value={value}
       />

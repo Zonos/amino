@@ -60,12 +60,12 @@ export const NumberInput = ({
         label={label}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        pattern={pattern && pattern}
+        pattern={pattern}
         placeholder={placeholder}
-        readOnly={readOnly || false}
+        readOnly={readOnly}
         ref={inputRef}
         required={required}
-        tabIndex={tabIndex && tabIndex}
+        tabIndex={tabIndex}
         type="number"
         value={value}
       />

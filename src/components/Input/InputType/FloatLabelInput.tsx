@@ -143,17 +143,17 @@ export const FloatLabelInput = forwardRef<
             label ? 'has-label' : '',
             value ? 'has-content' : '',
           ].join(' ')}
-          autoFocus={autoFocus && autoFocus}
+          autoFocus={autoFocus}
           disabled={disabled}
           inputMode={inputMode}
           onChange={onChange}
           onKeyDown={onKeyDown && onKeyDown}
-          pattern={pattern && pattern}
+          pattern={pattern}
           placeholder={placeholder || label}
-          readOnly={readOnly || false}
+          readOnly={readOnly}
           ref={ref}
-          required={required || false}
-          tabIndex={tabIndex && tabIndex}
+          required={required}
+          tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
         />
