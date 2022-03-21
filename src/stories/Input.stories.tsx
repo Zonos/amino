@@ -9,6 +9,69 @@ const InputMeta: Meta = {
   title: 'Amino/Input',
   component: Input,
   decorators: [withDesign],
+  argTypes: {
+    width: {
+      type: 'number',
+    },
+    placeholder: {
+      table: {
+        disable: true,
+      },
+    },
+    helpText: {
+      defaultValue: '',
+      type: 'string',
+    },
+    value: {
+      defaultValue: '',
+      type: 'string',
+    },
+    inputPrefix: {
+      table: {
+        disable: true,
+      },
+    },
+    inputSuffix: {
+      table: {
+        disable: true,
+      },
+    },
+    prefix: {
+      type: 'string',
+    },
+    suffix: {
+      type: 'string',
+    },
+    pattern: {
+      type: 'string',
+    },
+    required: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    disabled: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    readOnly: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    autoFocus: {
+      type: 'boolean',
+    },
+    tabIndex: {
+      type: 'number',
+    },
+    error: {
+      defaultValue: '',
+      type: 'string',
+    },
+    type: {
+      defaultValue: 'text',
+      type: 'string',
+    },
+  },
 };
 
 export default InputMeta;
@@ -70,6 +133,30 @@ BasicInput.parameters = {
   },
 };
 
+export const PasswordInput = Template.bind({});
+PasswordInput.args = {
+  label: 'Example input',
+  type: 'password',
+};
+PasswordInput.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+  },
+};
+
+export const NumberInput = Template.bind({});
+NumberInput.args = {
+  label: 'Example input',
+  type: 'number',
+};
+NumberInput.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+  },
+};
+
 export const InputWithHelpText = Template.bind({});
 InputWithHelpText.args = {
   label: 'Example input',
@@ -80,7 +167,7 @@ export const PrefixesAndSuffixes = Template.bind({});
 PrefixesAndSuffixes.args = {
   label: 'Example input',
   prefix: 'Prefix',
-  suffix: 'Prefix',
+  suffix: 'Suffix',
 };
 PrefixesAndSuffixes.parameters = {
   design: {

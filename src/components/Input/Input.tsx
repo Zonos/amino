@@ -10,12 +10,12 @@ import { Text } from 'components/Text';
 // TODO: better input class name generation
 
 const Error = styled.div`
-  color: var(--amino-error);
+  color: var(--amino-red-600);
 `;
 
 const InputDecorator = styled.div`
-  height: var(--amino-input-height);
-  line-height: var(--amino-input-height);
+  height: var(--amino-input-float-height);
+  line-height: var(--amino-input-float-height);
   font-weight: 500;
   background: var(--amino-gray-100);
   padding: 0 var(--amino-space-half);
@@ -33,46 +33,8 @@ const InputSuffix = styled(InputDecorator)`
   border-left: var(--amino-border);
 `;
 
-const AminoInput = styled.input`
-  height: var(--amino-input-height);
-  box-sizing: border-box;
-  position: relative;
-  outline: none;
-  padding: 0 calc(var(--amino-space-quarter) + 6px);
-  transition: var(--amino-transition);
-  width: 100%;
-  border-radius: var(--amino-radius);
-  background: var(--amino-input-background);
-  border: 0;
-
-  ::placeholder {
-    color: var(--amino-text-color);
-    opacity: 0.3;
-  }
-
-  :focus {
-    outline: none;
-    box-shadow: var(--amino-glow-blue);
-  }
-
-  &.has-prefix {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  &.has-suffix {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &[is-invalid] {
-    border: 2px solid var(--amino-error);
-  }
-`;
-
 const Fields = styled.div`
   border-radius: var(--amino-radius);
-  box-shadow: var(--amino-shadow-small);
   border: var(--amino-border);
 `;
 
@@ -85,7 +47,7 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
     display: block;
   }
 
-  & div {
+  & > div {
     flex-direction: row;
     align-items: center;
     display: flex;
@@ -97,6 +59,82 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
     opacity: 0.3;
     user-select: none;
   }
+`;
+const StyledLabelWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+const StyledLabelInput = styled.label`
+  display: block;
+  max-height: 0;
+  pointer-events: none;
+  &::before {
+    content: attr(data-label);
+    position: absolute;
+    font-size: var(--amino-text-base);
+    line-height: var(--amino-text-base);
+    display: inline-block;
+    filter: blur(0);
+    transition: all 0.5s ease;
+    left: calc(var(--amino-space-quarter) + 7px);
+    top: calc(50% - var(--amino-text-base) / 2);
+  }
+`;
+
+const AminoInput = styled.input`
+  height: 3.5rem;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  padding: var(--amino-space) calc(var(--amino-space-quarter) + 6px)
+    var(--amino-space-quarter);
+  transition: var(--amino-transition);
+  width: 100%;
+  border-radius: var(--amino-radius);
+  background: var(--amino-input-background);
+  border: 0;
+
+  ::placeholder {
+    opacity: 0;
+  }
+
+  :focus {
+    outline: none;
+    box-shadow: var(--amino-glow-blue);
+  }
+
+  &.has-content,
+  &:focus {
+    & + ${StyledLabelInput}::before {
+      top: var(--amino-space-quarter);
+      font-size: var(--amino-text-sm);
+    }
+  }
+
+  &.has-prefix {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &.has-suffix {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.has-error {
+    border: 2px solid var(--amino-error);
+    &.has-content,
+    &:focus {
+      & + ${StyledLabelInput}::before {
+        top: calc(var(--amino-space-quarter) + 2px);
+        left: calc(var(--amino-space-quarter) + 9px);
+      }
+    }
+  }
+`;
+
+const StyledSubTitle = styled(Text)`
+  font-style: normal;
 `;
 
 type InputMode =
@@ -117,6 +155,7 @@ export type InputProps = {
   width?: number;
 
   /** Placeholder text to be displayed in the input */
+  /** @deprecated Please use label instead. This placeholder will be replaced with float label. */
   placeholder?: string;
 
   /** Displayed in a tooltip next to the label */
@@ -183,30 +222,35 @@ export const Input = ({
       width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
     >
-      {label && <Text type="inputlabel">{label}</Text>}
+      {/* {label && <Text type="inputlabel">{label}</Text>} */}
       <Fields>
         {(prefix || inputPrefix) && (
           <InputPrefix>{prefix || inputPrefix}</InputPrefix>
         )}
-        <AminoInput
-          className={`${prefix || inputPrefix ? 'has-prefix' : ''} ${
-            suffix || inputSuffix ? 'has-suffix' : ''
-          }`}
-          placeholder={placeholder || ''}
-          value={value || ''}
-          onChange={onChange}
-          required={required || false}
-          type={type || 'text'}
-          readOnly={readOnly || false}
-          is-invalid={error && error.length}
-          disabled={disabled}
-          tabIndex={tabIndex && tabIndex}
-          pattern={pattern && pattern}
-          inputMode={inputMode && inputMode}
-          autoFocus={autoFocus && autoFocus}
-          onKeyDown={onKeyDown && onKeyDown}
-          aria-label={label && label}
-        />
+        <StyledLabelWrapper>
+          <AminoInput
+            className={[
+              prefix || inputPrefix ? 'has-prefix' : '',
+              suffix || inputSuffix ? 'has-suffix' : '',
+              error && error.length ? 'has-error' : '',
+              value ? 'has-content' : '',
+            ].join(' ')}
+            placeholder={placeholder || label}
+            value={value || ''}
+            onChange={onChange}
+            required={required || false}
+            type={type || 'text'}
+            readOnly={readOnly || false}
+            disabled={disabled}
+            tabIndex={tabIndex}
+            pattern={pattern}
+            inputMode={inputMode}
+            autoFocus={autoFocus}
+            onKeyDown={onKeyDown}
+            aria-label={label}
+          />
+          <StyledLabelInput data-label={label} />
+        </StyledLabelWrapper>
         {(suffix || inputSuffix) && (
           <InputSuffix>{suffix || inputSuffix}</InputSuffix>
         )}
@@ -216,12 +260,12 @@ export const Input = ({
         <>
           {error && error.length ? (
             <Error>
-              <Text type="subtitle">{error}</Text>
+              <StyledSubTitle type="subtitle">{error}</StyledSubTitle>
             </Error>
           ) : null}
 
           {(!error || !error.length) && helpText ? (
-            <Text type="subtitle">{helpText}</Text>
+            <StyledSubTitle type="subtitle">{helpText}</StyledSubTitle>
           ) : null}
         </>
       )}

@@ -32,6 +32,7 @@ const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
 
   &.only-icon {
     width: 32px;
+    padding: 0;
   }
 
   &:active,
@@ -39,7 +40,7 @@ const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
     outline: none;
   }
 
-  &.has-icon {
+  &:not(.only-icon).has-icon {
     &.icon-right {
       svg {
         margin-left: var(--amino-space-quarter);
