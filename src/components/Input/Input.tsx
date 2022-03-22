@@ -9,10 +9,6 @@ import {
   FloatLabelInput,
   FloatLabelInputProps,
 } from './InputType/FloatLabelInput';
-// TODO: style input error states (for in-browser form validation)
-// TODO: only show invalid for required fields _after_ submit attempt
-// TODO: show the actual error message for each validation type
-// TODO: better input class name generation
 
 const Error = styled.div`
   color: var(--amino-red-600);
