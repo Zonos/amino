@@ -4,7 +4,7 @@ import { IconProps } from 'types';
 
 import { IconBase } from './IconBase';
 
-/** @deprecated Use CloseIcon instead */
+/** @deprecated Use RemoveIcon instead */
 export const XIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
     <path

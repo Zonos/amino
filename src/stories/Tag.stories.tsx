@@ -11,6 +11,12 @@ const TagMeta: Meta = {
   title: 'Amino/Tag',
   component: Tag,
   decorators: [withDesign],
+  argTypes: {
+    iconRight: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+  },
 };
 
 export default TagMeta;
@@ -19,20 +25,30 @@ const Template: Story<TagProps> = ({
   children,
   icon,
   iconRight,
-  inverted,
   onClose,
 }: TagProps) => (
-  <Tag onClose={onClose} icon={icon} iconRight={iconRight} inverted={inverted}>
+  <Tag onClose={onClose} icon={icon} iconRight={iconRight}>
     {children}
   </Tag>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  icon: <CubeIcon size={20} />,
   children: <span>HS code for Brazil</span>,
 };
 Default.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
+  },
+};
+
+export const Icon = Template.bind({});
+Icon.args = {
+  icon: <CubeIcon size={20} />,
+  children: <span>HS code for Brazil</span>,
+};
+Icon.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',

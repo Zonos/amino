@@ -2,14 +2,13 @@ import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { XIcon } from 'icons';
+import { RemoveIcon } from 'icons';
 
 export interface TagProps {
   children?: ReactNode | string;
   className?: string;
   icon?: ReactNode;
   iconRight?: boolean;
-  inverted?: boolean;
   onClose: () => void;
 }
 
@@ -36,8 +35,7 @@ const StyledTag = styled.button<Omit<TagProps, 'onClose'>>`
     margin: 0;
     font-weight: 700;
   }
-  img {
-    width: 21px !important;
+  svg {
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
   }
 `;
@@ -47,15 +45,14 @@ export const Tag = ({
   className,
   icon,
   iconRight,
-  inverted,
   onClose,
 }: TagProps) => {
   return (
     <TagWrapper className={className}>
-      <StyledTag inverted={!!inverted} iconRight={iconRight} onClick={onClose}>
+      <StyledTag iconRight={iconRight} onClick={onClose}>
         {icon}
         <p>{children}</p>
-        <XIcon size={16} />
+        <RemoveIcon size={16} />
       </StyledTag>
     </TagWrapper>
   );
