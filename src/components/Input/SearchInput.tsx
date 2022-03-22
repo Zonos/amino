@@ -80,7 +80,7 @@ export const SearchInput = ({
   return (
     <StyledWrapper className={className}>
       <StyledLabel htmlFor={AminoInput}>
-        <SearchIcon size={20} />
+        <SearchIcon color="gray-500" size={20} />
       </StyledLabel>
       <AminoInput
         autoFocus={autoFocus}
