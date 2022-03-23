@@ -15,9 +15,8 @@ const InputMeta: Meta = {
       type: 'number',
     },
     placeholder: {
-      table: {
-        disable: true,
-      },
+      defaultValue: 'Example placeholder',
+      type: 'string',
     },
     helpText: {
       defaultValue: '',
@@ -38,7 +37,6 @@ const InputMeta: Meta = {
       },
     },
     prefix: {
-      defaultValue: 'With icon',
       options: ['No prefix', 'With text', 'With icon'],
       mapping: {
         'No prefix': '',
@@ -47,7 +45,6 @@ const InputMeta: Meta = {
       },
     },
     suffix: {
-      defaultValue: 'With text',
       options: ['No prefix', 'With text', 'With icon'],
       mapping: {
         'No prefix': '',
@@ -164,19 +161,6 @@ NumberInput.args = {
   type: 'number',
 };
 NumberInput.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
-  },
-};
-
-export const SearchInput = Template.bind({});
-SearchInput.args = {
-  label: 'Example input',
-  type: 'search',
-  prefix: '',
-};
-SearchInput.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',

@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import { Spinner } from 'components/Spinner';
 import { Intent } from 'types';
 
-import { Link } from './Link';
+import { LinkButton } from './LinkButton';
 
 const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   position: relative;
@@ -278,7 +278,7 @@ export const Button = ({
       );
     case 'link':
       return (
-        <Link
+        <LinkButton
           className={buttonClassName}
           href={href || '#'}
           data-tip={tooltip}
@@ -287,7 +287,7 @@ export const Button = ({
           disabled={disabled}
         >
           {content}
-        </Link>
+        </LinkButton>
       );
     case 'outline':
       return (
