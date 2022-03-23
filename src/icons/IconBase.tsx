@@ -2,10 +2,10 @@ import React, { forwardRef, ReactNode } from 'react';
 
 import { IconProps } from 'types';
 
-type Props = { children: ReactNode } & IconProps;
+type Props = { children: ReactNode; viewBox?: string } & IconProps;
 
 export const IconBase = forwardRef<SVGSVGElement, Props>(
-  ({ size, color, children }, ref) => {
+  ({ size, color, viewBox, children }, ref) => {
     const viewBoxSize = size && size > 24 ? size + 2 : 23;
     return (
       <svg
@@ -15,7 +15,7 @@ export const IconBase = forwardRef<SVGSVGElement, Props>(
         width={size}
         height={size}
         color={color && `var(--amino-${color})`}
-        viewBox={`0 0 ${viewBoxSize} ${viewBoxSize}`}
+        viewBox={viewBox || `0 0 ${viewBoxSize} ${viewBoxSize}`}
       >
         {children}
       </svg>

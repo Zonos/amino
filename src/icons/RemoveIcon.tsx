@@ -4,7 +4,7 @@ import { IconProps } from 'types';
 
 import { IconBase } from './IconBase';
 
-export const CloseIcon = ({ size, color }: IconProps) => (
+export const RemoveIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
     <path
       fillRule="evenodd"
@@ -15,7 +15,7 @@ export const CloseIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CloseSolidIcon = ({ size, color }: IconProps) => (
+export const RemoveSolidIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
     <path
       fillRule="evenodd"
@@ -26,7 +26,7 @@ export const CloseSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CloseDuotoneIcon = ({ size, color }: IconProps) => (
+export const RemoveDuotoneIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
     <path
       fillRule="evenodd"
