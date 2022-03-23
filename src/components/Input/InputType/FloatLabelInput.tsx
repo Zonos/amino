@@ -1,17 +1,16 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-// TODO: style input error states (for in-browser form validation)
-// TODO: only show invalid for required fields _after_ submit attempt
-// TODO: show the actual error message for each validation type
-// TODO: better input class name generation
-
 const StyledLabelWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  background: var(--amino-input-background);
+  border-radius: var(--amino-radius);
 `;
-const StyledLabelInput = styled.label`
+const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   display: block;
   max-height: 0;
   pointer-events: none;
@@ -23,12 +22,47 @@ const StyledLabelInput = styled.label`
     display: inline-block;
     filter: blur(0);
     transition: all 0.5s ease;
-    left: calc(var(--amino-space-quarter) + 7px);
+    left: ${({ hasPrefix }) =>
+      hasPrefix
+        ? 'calc(var(--amino-space-quarter) + 53px)'
+        : 'calc(var(--amino-space-quarter) + 8px)'};
     top: calc(50% - var(--amino-text-base) / 2);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: var(--amino-radius);
   }
 `;
 
-const AminoInput = styled.input`
+const InputDecorator = styled.div`
+  font-size: var(--amino-text-sm);
+  line-height: var(--amino-text-sm);
+  font-weight: 500;
+  background: transparent;
+  padding: 0 var(--amino-space-half);
+  font-weight: 700;
+  flex-basis: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InputPrefix = styled(InputDecorator)`
+  border-top-left-radius: var(--amino-radius);
+  border-bottom-left-radius: var(--amino-radius);
+`;
+
+const InputSuffix = styled(InputDecorator)`
+  border-top-right-radius: var(--amino-radius);
+  border-bottom-right-radius: var(--amino-radius);
+`;
+
+const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
   height: 3.5rem;
   box-sizing: border-box;
   position: relative;
@@ -45,24 +79,30 @@ const AminoInput = styled.input`
   }
 
   ::placeholder {
+    transition: 1s all ease;
     opacity: 0;
   }
 
   :focus {
     outline: none;
-    box-shadow: var(--amino-glow-blue);
+    & + ${StyledLabelInput}::after {
+      box-shadow: var(--amino-glow-blue);
+    }
+  }
+
+  &.has-error + ${StyledLabelInput}::after {
+    box-shadow: var(--amino-glow-error);
   }
 
   &.has-content,
   &:focus {
+    &::placeholder {
+      opacity: 0.6;
+    }
     & + ${StyledLabelInput}::before {
       top: var(--amino-space-half);
       font-size: var(--amino-text-sm);
     }
-  }
-
-  &.has-error {
-    box-shadow: var(--amino-glow-error);
   }
 `;
 export type InputMode =
@@ -86,7 +126,6 @@ export type FloatLabelInputProps = {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 
   /** Placeholder text to be displayed in the input */
-  /** @deprecated Please use label instead. This placeholder will be replaced with float label. */
   placeholder?: string;
 
   /** Determines if the input is required for form validation */
@@ -100,6 +139,12 @@ export type FloatLabelInputProps = {
 
   /** If present, will display an error message instead of help text */
   error: string;
+
+  /** A short string displayed at the beginning of the input */
+  prefix?: ReactNode;
+
+  /** A short string displayed at the end of the input */
+  suffix?: ReactNode;
 
   className?: string;
   disabled?: boolean;
@@ -126,8 +171,10 @@ export const FloatLabelInput = forwardRef<
       onKeyDown,
       pattern,
       placeholder,
+      prefix,
       readOnly,
       required,
+      suffix,
       tabIndex,
       type,
       value,
@@ -136,6 +183,7 @@ export const FloatLabelInput = forwardRef<
   ) => {
     return (
       <StyledLabelWrapper className={className}>
+        {prefix && <InputPrefix>{prefix}</InputPrefix>}
         <AminoInput
           aria-label={label}
           className={[
@@ -143,21 +191,24 @@ export const FloatLabelInput = forwardRef<
             label ? 'has-label' : '',
             value ? 'has-content' : '',
           ].join(' ')}
-          autoFocus={autoFocus && autoFocus}
+          hasPrefix={!!prefix}
+          hasSuffix={!!suffix}
+          autoFocus={autoFocus}
           disabled={disabled}
           inputMode={inputMode}
           onChange={onChange}
-          onKeyDown={onKeyDown && onKeyDown}
-          pattern={pattern && pattern}
-          placeholder={placeholder || label}
-          readOnly={readOnly || false}
+          onKeyDown={onKeyDown}
+          pattern={pattern}
+          placeholder={placeholder}
+          readOnly={readOnly}
           ref={ref}
-          required={required || false}
-          tabIndex={tabIndex && tabIndex}
+          required={required}
+          tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
         />
-        <StyledLabelInput data-label={label} />
+        <StyledLabelInput hasPrefix={!!prefix} data-label={label} />
+        {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );
   }

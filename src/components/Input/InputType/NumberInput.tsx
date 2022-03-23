@@ -11,10 +11,6 @@ const StyledWrapper = styled.div`
   width: 100%;
 `;
 const StyledActionWrapper = styled.div`
-  position: absolute;
-  right: var(--amino-space-quarter);
-  top: 0;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,8 +39,10 @@ export const NumberInput = ({
   onKeyDown,
   pattern,
   placeholder,
+  prefix,
   readOnly,
   required,
+  suffix,
   tabIndex,
   value,
 }: FloatLabelInputProps) => {
@@ -60,37 +58,42 @@ export const NumberInput = ({
         label={label}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        pattern={pattern && pattern}
+        pattern={pattern}
         placeholder={placeholder}
-        readOnly={readOnly || false}
+        prefix={prefix}
+        readOnly={readOnly}
         ref={inputRef}
         required={required}
-        tabIndex={tabIndex && tabIndex}
+        suffix={
+          suffix || (
+            <StyledActionWrapper>
+              <StyledButtonAction
+                onClick={() => {
+                  inputRef.current?.stepUp();
+                  inputRef.current?.dispatchEvent(
+                    new Event('input', { bubbles: true })
+                  );
+                }}
+              >
+                <ChevronUpIcon size={16} />
+              </StyledButtonAction>
+              <StyledButtonAction
+                onClick={() => {
+                  inputRef.current?.stepDown();
+                  inputRef.current?.dispatchEvent(
+                    new Event('input', { bubbles: true })
+                  );
+                }}
+              >
+                <ChevronDownIcon size={16} />
+              </StyledButtonAction>
+            </StyledActionWrapper>
+          )
+        }
+        tabIndex={tabIndex}
         type="number"
         value={value}
       />
-      <StyledActionWrapper>
-        <StyledButtonAction
-          onClick={() => {
-            inputRef.current?.stepUp();
-            inputRef.current?.dispatchEvent(
-              new Event('input', { bubbles: true })
-            );
-          }}
-        >
-          <ChevronUpIcon size={16} />
-        </StyledButtonAction>
-        <StyledButtonAction
-          onClick={() => {
-            inputRef.current?.stepDown();
-            inputRef.current?.dispatchEvent(
-              new Event('input', { bubbles: true })
-            );
-          }}
-        >
-          <ChevronDownIcon size={16} />
-        </StyledButtonAction>
-      </StyledActionWrapper>
     </StyledWrapper>
   );
 };
