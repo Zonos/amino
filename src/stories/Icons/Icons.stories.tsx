@@ -64,7 +64,7 @@ export const AllIcons = ({ size }: IconProps) => {
         return (
           <StyledIcon
             // eslint-disable-next-line react/no-array-index-key
-            key={`${iconName}-${index}`}
+            key={iconName}
             size={size}
             className={[
               isDeprecated ? 'deprecated' : '',

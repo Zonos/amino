@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import { Input, InputProps } from '../components/Input';
+import { CubeIcon } from '../icons';
 
 const InputMeta: Meta = {
   title: 'Amino/Input',
@@ -14,9 +15,8 @@ const InputMeta: Meta = {
       type: 'number',
     },
     placeholder: {
-      table: {
-        disable: true,
-      },
+      defaultValue: 'Example placeholder',
+      type: 'string',
     },
     helpText: {
       defaultValue: '',
@@ -37,10 +37,20 @@ const InputMeta: Meta = {
       },
     },
     prefix: {
-      type: 'string',
+      options: ['No prefix', 'With text', 'With icon'],
+      mapping: {
+        'No prefix': '',
+        'With text': 'USD',
+        'With icon': <CubeIcon size={20} />,
+      },
     },
     suffix: {
-      type: 'string',
+      options: ['No prefix', 'With text', 'With icon'],
+      mapping: {
+        'No prefix': '',
+        'With text': 'USD',
+        'With icon': <CubeIcon size={20} />,
+      },
     },
     pattern: {
       type: 'string',
@@ -166,8 +176,6 @@ InputWithHelpText.args = {
 export const PrefixesAndSuffixes = Template.bind({});
 PrefixesAndSuffixes.args = {
   label: 'Example input',
-  prefix: 'Prefix',
-  suffix: 'Suffix',
 };
 PrefixesAndSuffixes.parameters = {
   design: {

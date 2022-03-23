@@ -32,6 +32,7 @@ const AminoLink = styled.a<Pick<LinkProps, 'size' | 'disabled'>>`
 
   &.only-icon {
     width: 32px;
+    padding: 0;
   }
 
   &:active,
@@ -96,7 +97,7 @@ export type LinkProps = {
   tooltip?: ReactNode;
 };
 
-export const Link = ({
+export const LinkButton = ({
   children,
   className,
   disabled,
