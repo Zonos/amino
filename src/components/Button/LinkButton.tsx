@@ -97,7 +97,7 @@ export type LinkProps = {
   tooltip?: ReactNode;
 };
 
-export const Link = ({
+export const LinkButton = ({
   children,
   className,
   disabled,
