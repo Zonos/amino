@@ -11,14 +11,6 @@ const StyledWrapper = styled.div`
   position: relative;
   width: 100%;
 `;
-const StyledButtonWrapper = styled.div`
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: center;
-`;
 
 const StyledButton = styled(Button)`
   background: transparent;
@@ -51,8 +43,10 @@ export const PasswordInput = ({
   onKeyDown,
   pattern,
   placeholder,
+  prefix,
   readOnly,
   required,
+  suffix,
   tabIndex,
   value,
 }: FloatLabelInputProps) => {
@@ -68,29 +62,32 @@ export const PasswordInput = ({
         label={label}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        pattern={pattern && pattern}
+        pattern={pattern}
         placeholder={placeholder}
-        readOnly={readOnly || false}
+        prefix={prefix}
+        readOnly={readOnly}
         required={required}
-        tabIndex={tabIndex && tabIndex}
+        suffix={
+          suffix || (
+            <StyledButton
+              size="md"
+              icon={
+                inputType === 'password' ? (
+                  <EyeIcon size={16} />
+                ) : (
+                  <EyeOffIcon size={16} />
+                )
+              }
+              onClick={() =>
+                setInputType(inputType === 'password' ? 'text' : 'password')
+              }
+            />
+          )
+        }
+        tabIndex={tabIndex}
         type={inputType}
         value={value}
       />
-      <StyledButtonWrapper>
-        <StyledButton
-          size="md"
-          icon={
-            inputType === 'password' ? (
-              <EyeIcon size={16} />
-            ) : (
-              <EyeOffIcon size={16} />
-            )
-          }
-          onClick={() =>
-            setInputType(inputType === 'password' ? 'text' : 'password')
-          }
-        />
-      </StyledButtonWrapper>
     </StyledWrapper>
   );
 };

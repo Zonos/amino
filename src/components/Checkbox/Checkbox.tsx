@@ -4,10 +4,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { Text } from 'components/Text';
-import { CheckIcon } from 'icons';
+import { CheckMarkIcon } from 'icons';
 
 // TODO: multiline checkboxes could use some work
-const AnimatedCheckIcon = motion(CheckIcon);
+const AnimatedCheckIcon = motion(CheckMarkIcon);
 
 const AminoCheckbox = styled.div<{ checked: boolean }>`
   width: 16px;

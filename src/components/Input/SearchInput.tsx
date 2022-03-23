@@ -80,7 +80,7 @@ export const SearchInput = ({
   return (
     <StyledWrapper className={className}>
       <StyledLabel htmlFor={AminoInput}>
-        <SearchIcon size={20} />
+        <SearchIcon color="gray-500" size={20} />
       </StyledLabel>
       <AminoInput
         autoFocus={autoFocus}
@@ -88,11 +88,11 @@ export const SearchInput = ({
         inputMode={inputMode}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        pattern={pattern && pattern}
+        pattern={pattern}
         placeholder={placeholder || 'search...'}
-        readOnly={readOnly || false}
+        readOnly={readOnly}
         required={required}
-        tabIndex={tabIndex && tabIndex}
+        tabIndex={tabIndex}
         type="search"
         value={value || ''}
       />
