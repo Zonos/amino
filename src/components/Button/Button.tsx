@@ -294,6 +294,7 @@ export const Button = ({
         <Outline
           className={buttonClassName}
           data-tip={tooltip}
+          onClick={onClick}
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}

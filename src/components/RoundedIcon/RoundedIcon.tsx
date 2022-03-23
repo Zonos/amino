@@ -28,13 +28,18 @@ const IconWrapper = styled.div<CSSProps>`
 `;
 
 const PrimaryIconWrapper = styled(IconWrapper)`
-  background: var(--amino-blue-200);
-  color: var(--amino-blue-600);
+  background: var(--amino-blue-100);
+  color: var(--amino-blue-500);
 `;
 
 const DangerIconWrapper = styled(IconWrapper)`
-  background: var(--amino-red-200);
+  background: var(--amino-red-100);
   color: var(--amino-red-500);
+`;
+
+const WarningIconWrapper = styled(IconWrapper)`
+  background: var(--amino-orange-100);
+  color: var(--amino-orange-500);
 `;
 
 export type RoundedIconProps = {
@@ -53,6 +58,8 @@ export const RoundedIcon = ({
       return <DangerIconWrapper>{children}</DangerIconWrapper>;
     case 'primary':
       return <PrimaryIconWrapper>{children}</PrimaryIconWrapper>;
+    case 'warning':
+      return <WarningIconWrapper>{children}</WarningIconWrapper>;
     case 'info':
     case 'secondary':
     default:
