@@ -22,11 +22,13 @@ export type RadioGroupItem = {
 export type RadioGroupProps<T> = {
   initialValue?: string;
   items: T[];
+  disabled?: boolean;
   onChange: (newValue: string) => void;
 };
 
 export const RadioGroup = <T extends RadioGroupItem>({
   items,
+  disabled,
   onChange,
   initialValue,
 }: RadioGroupProps<T>) => {
@@ -45,11 +47,14 @@ export const RadioGroup = <T extends RadioGroupItem>({
       <Radio
         checked={index === activeIndex}
         onChange={() => {
-          setActiveIndex(index);
-          if (onChange && el.value) {
-            onChange(el.value);
+          if (!disabled) {
+            setActiveIndex(index);
+            if (onChange && el.value) {
+              onChange(el.value);
+            }
           }
         }}
+        disabled={disabled}
         key={el.label}
         label={el.label}
       />

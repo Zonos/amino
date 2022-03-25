@@ -6,6 +6,30 @@ import styled from 'styled-components';
 import { VStack } from 'components/Stack';
 import { CheckIcon } from 'icons';
 
+const StyledIcon = styled.div`
+  position: absolute;
+  content: ' ';
+  right: var(--amino-space-half);
+  background: var(--amino-gray-400);
+  border-radius: 50px;
+  padding: 5px;
+  svg {
+    color: white;
+  }
+`;
+
+const StyledIndicator = styled(Indicator)`
+  position: absolute;
+  right: var(--amino-space-half);
+  background: var(--amino-blue-500);
+  content: ' ';
+  border-radius: 50px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StyledItem = styled(Item)`
   position: relative;
   appearance: none;
@@ -19,16 +43,22 @@ const StyledItem = styled(Item)`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  &:hover {
+    background: var(--amino-gray-100);
+    border: 1px solid var(--amino-gray-200);
+    ${StyledIcon} {
+      background: var(--amino-gray-500);
+    }
   }
 
   &:focus {
     outline: none;
     box-shadow: inset 0 0 0 2px var(--amino-blue-600);
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 `;
 
@@ -42,29 +72,15 @@ const Label = styled.span`
 
 const StyledRoot = styled(Root)`
   button[data-state='checked'] {
-    background: var(--amino-primary);
-    color: white;
+    background: var(--amino-blue-100);
+    border: 1px solid var(--amino-blue-300);
+    color: var(--amino-blue-500);
     box-shadow: 0px 0px 0px 3px var(--amino-blue-300);
-    border-color: transparent;
   }
-`;
-
-const StyledIndicator = styled(Indicator)`
-  position: absolute;
-  right: var(--amino-space-half);
-  background: var(--amino-blue-300);
-  content: ' ';
-  border-radius: 50px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   svg {
-    color: var(--amino-blue-700);
+    color: white;
     width: 12px;
     height: 12px;
-    box-shadow: var(--amino-shadow-small);
   }
 `;
 
@@ -79,9 +95,16 @@ export type RichRadioProps = {
   items: RichRadioItemType[];
   value: string;
   icon?: ReactNode;
+  activeIcon?: ReactNode;
 };
 
-export const RichRadio = ({ onChange, items, value, icon }: RichRadioProps) => {
+export const RichRadio = ({
+  onChange,
+  items,
+  value,
+  icon,
+  activeIcon,
+}: RichRadioProps) => {
   return (
     <StyledRoot onValueChange={onChange} value={value}>
       <VStack spacing="space-half">
@@ -91,7 +114,8 @@ export const RichRadio = ({ onChange, items, value, icon }: RichRadioProps) => {
               <Label>{item.label}</Label>
               {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
             </div>
-            <StyledIndicator>{icon || <CheckIcon />}</StyledIndicator>
+            {!!icon && <StyledIcon>{icon || <CheckIcon />}</StyledIcon>}
+            <StyledIndicator>{activeIcon || <CheckIcon />}</StyledIndicator>
           </StyledItem>
         ))}
       </VStack>

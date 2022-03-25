@@ -2,6 +2,9 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
+
+import { BoxIcon } from 'icons';
 
 import { Button, ButtonProps } from '../components/Button';
 
@@ -9,7 +12,38 @@ const ButtonMeta: Meta = {
   title: 'Amino/Button',
   component: Button,
   decorators: [withDesign],
+  argTypes: {
+    disabled: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    href: {
+      defaultValue: '',
+      type: 'string',
+    },
+    iconRight: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    loading: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+    loadingText: {
+      defaultValue: '',
+      type: 'string',
+    },
+    tabIndex: {
+      type: 'number',
+    },
+  },
 };
+
+const StyledWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+`;
 
 export default ButtonMeta;
 
@@ -21,25 +55,97 @@ const Template: Story<ButtonProps> = ({
   loading,
   loadingText,
   onClick,
+  size,
   tabIndex,
   tooltip,
 }) => (
-  <Button
-    className={className}
-    disabled={disabled}
-    intent={intent}
-    loading={loading}
-    loadingText={loadingText}
-    onClick={onClick}
-    tabIndex={tabIndex}
-    tooltip={tooltip}
-  >
-    {children}
-  </Button>
+  <StyledWrapper>
+    {intent === 'icon' ? (
+      <Button
+        className={className}
+        disabled={disabled}
+        intent={intent}
+        loading={loading}
+        loadingText={loadingText}
+        onClick={onClick}
+        size={size}
+        tabIndex={tabIndex}
+        tooltip={tooltip}
+      >
+        {children}
+      </Button>
+    ) : (
+      <>
+        <div>
+          <Button
+            className={className}
+            disabled={disabled}
+            intent={intent}
+            loading={loading}
+            loadingText={loadingText}
+            onClick={onClick}
+            size={size}
+            tabIndex={tabIndex}
+            tooltip={tooltip}
+          >
+            {children}
+          </Button>
+        </div>
+        <div>
+          <Button
+            className={className}
+            disabled={disabled}
+            intent={intent}
+            icon={<BoxIcon size={16} />}
+            loading={loading}
+            loadingText={loadingText}
+            onClick={onClick}
+            size={size}
+            tabIndex={tabIndex}
+            tooltip={tooltip}
+          >
+            {children}
+          </Button>
+        </div>
+        <div>
+          <Button
+            className={className}
+            disabled={disabled}
+            intent={intent}
+            icon={<BoxIcon size={16} />}
+            iconRight
+            loading={loading}
+            loadingText={loadingText}
+            onClick={onClick}
+            size={size}
+            tabIndex={tabIndex}
+            tooltip={tooltip}
+          >
+            {children}
+          </Button>
+        </div>
+        <div>
+          <Button
+            className={className}
+            disabled={disabled}
+            intent={intent}
+            icon={<BoxIcon size={16} />}
+            loading={loading}
+            loadingText={loadingText}
+            onClick={onClick}
+            size={size}
+            tabIndex={tabIndex}
+            tooltip={tooltip}
+          />
+        </div>
+      </>
+    )}
+  </StyledWrapper>
 );
 
 export const Default = Template.bind({});
 Default.args = {
+  intent: 'secondary',
   children: 'Example button',
 };
 Default.parameters = {
@@ -67,6 +173,54 @@ Danger.args = {
   children: 'Example button',
 };
 Danger.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
+  },
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  intent: 'warning',
+  children: 'Example button',
+};
+Warning.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
+  },
+};
+
+export const Subtle = Template.bind({});
+Subtle.args = {
+  intent: 'subtle',
+  children: 'Example button',
+};
+Subtle.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
+  },
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  intent: 'link',
+  children: 'Example button',
+};
+Link.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
+  },
+};
+
+export const Outline = Template.bind({});
+Outline.args = {
+  intent: 'outline',
+  children: 'Example button',
+};
+Outline.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',

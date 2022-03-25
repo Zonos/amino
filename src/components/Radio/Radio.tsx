@@ -5,7 +5,9 @@ import styled from 'styled-components';
 
 import { Text } from 'components/Text';
 
-const StyledRadio = styled.div<{ checked: boolean }>`
+const StyledRadio = styled.div<{
+  checked: boolean;
+}>`
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -17,7 +19,7 @@ const StyledRadio = styled.div<{ checked: boolean }>`
   justify-content: center;
   user-select: none;
   border: ${p => (p.checked ? '2px solid var(--amino-primary)' : 'none')};
-  margin-right: var(--amino-space-half);
+  margin-right: var(--amino-space-quarter);
   transition: var(--amino-transition);
   box-shadow: var(--amino-shadow-small);
   border: var(--amino-border);
@@ -34,29 +36,50 @@ const StyledRadio = styled.div<{ checked: boolean }>`
   }
 `;
 
-const RadioContainer = styled.div`
+const RadioContainer = styled.div<{
+  checked: boolean;
+  disabled?: boolean;
+}>`
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
   user-select: none;
 
+  &.disabled {
+    cursor: not-allowed;
+    & > div {
+      background: ${p => p.checked && 'var(--amino-blue-300)'};
+      cursor: not-allowed;
+    }
+    label {
+      cursor: not-allowed;
+    }
+  }
+
   label {
     display: flex;
     flex-direction: column;
     cursor: pointer;
     margin-bottom: 0;
+    color: ${props => (props.disabled ? 'var(--amino-gray-300)' : 'black')};
   }
 `;
 
 export type RadioProps = {
+  disabled?: boolean;
   checked: boolean;
   onChange: (checked: boolean) => void;
   label?: string;
 };
 
-export const Radio = ({ label, checked, onChange }: RadioProps) => (
-  <RadioContainer onClick={() => onChange(!checked)}>
+export const Radio = ({ disabled, label, checked, onChange }: RadioProps) => (
+  <RadioContainer
+    checked={checked}
+    className={disabled ? 'disabled' : ''}
+    disabled={disabled}
+    onClick={() => !disabled && onChange(!checked)}
+  >
     <StyledRadio checked={checked}>
       <AnimatePresence>
         {checked && (
@@ -77,7 +100,3 @@ export const Radio = ({ label, checked, onChange }: RadioProps) => (
     {label && <Text type="inputlabel">{label}</Text>}
   </RadioContainer>
 );
-
-Radio.defaultProps = {
-  checked: false,
-};
