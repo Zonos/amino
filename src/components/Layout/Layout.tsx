@@ -1,6 +1,49 @@
-import React from 'react';
+import React, { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
 import styled from 'styled-components';
+
+import { SearchInput } from 'components/Input/SearchInput';
+
+import { NavigationGroupProps } from './NavigationGroup';
+
+const Footer = styled.div`
+  box-sizing: border-box;
+  width: var(--amino-sidebar-width);
+`;
+
+const SidebarContent = styled.div`
+  padding: var(--amino-space);
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+`;
+
+const SearchInputWrapper = styled.div`
+  margin-bottom: var(--amino-space-double);
+`;
+const StyledSearchInput = styled(SearchInput)`
+  border: 0;
+  svg {
+    color: black;
+  }
+  input {
+    background-color: var(--amino-gray-100);
+    border: 0;
+    ::placeholder {
+      color: black;
+    }
+  }
+`;
+const StyledSidebar = styled.nav`
+  border-right: var(--amino-border);
+  width: var(--amino-sidebar-width);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 1fr calc(39px + var(--amino-space) * 2);
+  height: inherit;
+  background: var(--amino-sidebar-color);
+`;
 
 const ContentGrid = styled.div<{ hasHeader: boolean }>`
   height: ${p =>
@@ -12,29 +55,6 @@ const ContentGrid = styled.div<{ hasHeader: boolean }>`
 const AminoLayout = styled.main`
   height: 100vh;
   overflow: hidden;
-`;
-
-const Footer = styled.div`
-  box-sizing: border-box;
-`;
-
-const SidebarContent = styled.div`
-  padding: var(--amino-space);
-  box-sizing: border-box;
-  overflow-y: auto;
-  height: 100%;
-  width: 100%;
-`;
-
-const Sidebar = styled.nav`
-  border-right: var(--amino-border);
-  width: var(--amino-sidebar-width);
-  box-sizing: border-box;
-  background: white;
-  display: grid;
-  grid-template-rows: 1fr calc(39px + var(--amino-space) * 2);
-  height: inherit;
-  background: var(--amino-sidebar-color);
 `;
 
 const Content = styled.div`
@@ -56,29 +76,45 @@ const Header = styled.header`
   box-sizing: border-box;
 `;
 
-export type LayoutProps = {
-  footer: React.ReactNode;
-  sidebar: React.ReactNode;
-  content: React.ReactNode;
-  headerContent: React.ReactNode;
+type SearchInputProps = {
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-export const Layout: React.FC<LayoutProps> = ({
+export type LayoutProps = {
+  footer: ReactNode;
+  sidebar: ReactElement<NavigationGroupProps[] | NavigationGroupProps>;
+  searchInput?: SearchInputProps;
+  content: ReactNode;
+  headerContent?: ReactNode;
+};
+
+export const Layout = ({
   content,
   footer,
   sidebar,
+  searchInput,
   headerContent,
-}) => {
-  const hasHeader = !!headerContent;
+}: LayoutProps) => {
   return (
     <AminoLayout>
-      {hasHeader && <Header>{headerContent}</Header>}
-      <ContentGrid hasHeader={hasHeader}>
-        <Sidebar>
-          <SidebarContent>{sidebar}</SidebarContent>
+      {!!headerContent && <Header>{headerContent}</Header>}
+      <ContentGrid hasHeader={!!headerContent}>
+        <StyledSidebar>
+          <SidebarContent>
+            {!!searchInput && (
+              <SearchInputWrapper>
+                <StyledSearchInput
+                  value={searchInput.value}
+                  onChange={searchInput.onChange}
+                />
+              </SearchInputWrapper>
+            )}
+            {sidebar}
+          </SidebarContent>
 
           <Footer>{footer}</Footer>
-        </Sidebar>
+        </StyledSidebar>
         <Content>{content}</Content>
       </ContentGrid>
     </AminoLayout>
