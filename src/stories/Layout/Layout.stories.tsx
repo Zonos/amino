@@ -28,6 +28,17 @@ const LayoutMeta: Meta = {
   },
 
   argTypes: {
+    searchInput: {
+      defaultValue: 'Has Search Input',
+      options: ['No Search Input', 'Has Search Input'],
+      mapping: {
+        'No Search Input': null,
+        'Has Search Input': {
+          value: '',
+          onChange: () => {},
+        },
+      },
+    },
     sidebar: {
       control: false,
     },
@@ -48,9 +59,11 @@ export default LayoutMeta;
 const Template: Story<LayoutProps> = ({
   content,
   headerContent,
+  searchInput,
 }: LayoutProps) => {
   return (
     <Layout
+      searchInput={searchInput}
       content={content}
       footer={<UserMenu />}
       sidebar={<NavigationGroupStory />}

@@ -76,13 +76,15 @@ const Header = styled.header`
   box-sizing: border-box;
 `;
 
+type SearchInputProps = {
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+};
+
 export type LayoutProps = {
   footer: ReactNode;
   sidebar: ReactElement<NavigationGroupProps[] | NavigationGroupProps>;
-  searchInput?: {
-    value: string;
-    onSearchChange: ChangeEventHandler<HTMLInputElement>;
-  };
+  searchInput?: SearchInputProps;
   content: ReactNode;
   headerContent?: ReactNode;
 };
@@ -104,7 +106,7 @@ export const Layout = ({
               <SearchInputWrapper>
                 <StyledSearchInput
                   value={searchInput.value}
-                  onChange={searchInput.onSearchChange}
+                  onChange={searchInput.onChange}
                 />
               </SearchInputWrapper>
             )}
