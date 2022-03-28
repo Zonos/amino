@@ -12,7 +12,8 @@ const Wrapper = styled.div`
 `;
 const StyledNavigationItemIcon = styled.div``;
 const StyledNavigationContent = styled.div``;
-const StyledNavigationItem = styled.div<StyledProps<NavigationItemProps>>`
+type StyledNavigationItemProps = StyledProps<NavigationItemProps>;
+const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
