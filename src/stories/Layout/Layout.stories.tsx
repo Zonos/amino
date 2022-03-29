@@ -39,6 +39,13 @@ const LayoutMeta: Meta = {
         },
       },
     },
+    logoSidebar: {
+      options: ['No Logo Sidebar', 'Has Logo Sidebar'],
+      mapping: {
+        'No Logo Sidebar': null,
+        'Has Logo Sidebar': <ZonosIcon size={110} />,
+      },
+    },
     sidebar: {
       control: false,
     },
