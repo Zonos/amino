@@ -101,7 +101,8 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
     }
     & + ${StyledLabelInput}::before {
       top: var(--amino-space-half);
-      font-size: var(--amino-text-sm);
+      left: calc(var(--amino-space-quarter) - 4px);
+      transform: scale(0.8);
     }
   }
 `;
