@@ -3,7 +3,9 @@ import React, { ReactNode } from 'react';
 import { Indicator, Root } from '@radix-ui/react-checkbox';
 import styled from 'styled-components';
 
-import { CheckIcon } from '../../icons';
+import { StyledProps } from 'types/StyledProps';
+
+import { CheckMarkIcon } from '../../icons';
 import { VStack } from '../Stack';
 
 const RichCheckbox = styled(Root)`
@@ -12,7 +14,6 @@ const RichCheckbox = styled(Root)`
   background: white;
   border-radius: var(--amino-radius);
   border: var(--amino-border);
-  display: block;
   display: flex;
   flex-direction: row;
   padding: var(--amino-space-half);
@@ -58,19 +59,20 @@ const StyledIndicator = styled(Indicator)`
   padding: 5px;
 
   svg {
-    box-shadow: var(--amino-shadow-small);
     color: var(--amino-blue-700);
     height: 12px;
     width: 12px;
   }
 `;
 
-const StyledItemContentDiv = styled.div`
+const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
   align-items: center;
   display: grid !important;
   grid-column-gap: var(--amino-space);
-  grid-template-columns: 30px 1fr;
+  ${({ $icon }) => $icon && `grid-template-columns: 30px 1fr;`}
 `;
+
+type StyledItemContentDivProps = StyledProps<RichCheckboxItemType>;
 
 type RichCheckboxItemType = {
   checked: boolean;
@@ -99,7 +101,7 @@ export const RichCheckboxGroup = ({
           key={value}
           onClick={e => onClick(e.currentTarget.value)}
         >
-          <StyledItemContentDiv>
+          <StyledItemContentDiv $icon={!!icon}>
             {icon && icon}
             <VStack spacing="none">
               <Label>{label}</Label>
@@ -107,7 +109,7 @@ export const RichCheckboxGroup = ({
             </VStack>
           </StyledItemContentDiv>
           <StyledIndicator>
-            <CheckIcon />
+            <CheckMarkIcon />
           </StyledIndicator>
         </RichCheckbox>
       );
