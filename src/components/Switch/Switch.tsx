@@ -6,13 +6,13 @@ import { Text } from 'components/Text';
 
 const AminoSwitch = styled.div<{ checked: boolean }>`
   background: white;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 12px;
   border-radius: 50%;
   transition: 0.5s all ease;
   position: absolute;
-  top: 1px;
-  left: ${p => (p.checked ? 'calc(100% - 15px)' : '1px')}; ;
+  top: 2px;
+  left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')}; ;
 `;
 const AminoSwitchWrapper = styled.div<{
   checked: boolean;

@@ -73,6 +73,7 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
   border-radius: var(--amino-radius);
   background: var(--amino-input-background);
   border: 0;
+  font-weight: 500;
   &.has-label {
     padding: var(--amino-space) calc(var(--amino-space-quarter) + 6px)
       var(--amino-space-quarter);
