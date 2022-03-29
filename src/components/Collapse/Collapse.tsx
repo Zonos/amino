@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { StyledProps } from 'types/StyledProps';
 
-const StyledCollapseWrapper = styled.div<StyledCollapseWrapperProps>`
+const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   overflow: hidden;
   position: relative;
@@ -13,11 +13,9 @@ const StyledCollapseWrapper = styled.div<StyledCollapseWrapperProps>`
   height: ${({ $height }) => `${$height}px`};
 `;
 
-type StyledCollapseWrapperProps = StyledProps<
-  CollapseWrapperProps & { height: number }
->;
+type StyledCollapseProps = StyledProps<CollapseProps & { height: number }>;
 
-export type CollapseWrapperProps = {
+export type CollapseProps = {
   className?: string;
   isExpand: boolean;
   collapseSize?: number;
@@ -28,7 +26,7 @@ export const Collapse = ({
   isExpand,
   collapseSize,
   children,
-}: CollapseWrapperProps) => {
+}: CollapseProps) => {
   const [height, setHeight] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {

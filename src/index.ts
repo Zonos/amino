@@ -7,6 +7,7 @@ export {
 export { Button, MenuButton } from './components/Button';
 export { Card } from './components/Card';
 export { Checkbox } from './components/Checkbox';
+export { Collapse, CollapseProps } from './components/Collapse';
 export {
   ConfirmContext,
   ConfirmContextProvider,
@@ -19,7 +20,14 @@ export { Dialog } from './components/Dialog';
 export { Divider } from './components/Divider';
 export { Fieldset } from './components/Fieldset';
 export { Input } from './components/Input';
-export { Layout } from './components/Layout';
+export {
+  Layout,
+  LayoutProps,
+  NavigationGroup,
+  NavigationGroupProps,
+  NavigationItem,
+  NavigationItemProps,
+} from './components/Layout';
 export { List } from './components/List';
 export { ListItem } from './components/ListItem';
 export { Menu, MenuItem } from './components/Menu';
