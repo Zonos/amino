@@ -28,6 +28,7 @@ const AminoInput = styled.input`
   padding-left: var(--amino-space-double);
   padding-right: var(--amino-space-half);
   height: 40px;
+  font-weight: 500;
   line-height: 40px;
   border-radius: var(--amino-radius);
   outline: none;
