@@ -18,11 +18,9 @@ const StyledRadio = styled.div<{
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: ${p => (p.checked ? '2px solid var(--amino-primary)' : 'none')};
+  border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-400)' : 'none')};
   margin-right: var(--amino-space-quarter);
   transition: var(--amino-transition);
-  box-shadow: var(--amino-shadow-small);
-  border: var(--amino-border);
 
   &:active {
     box-shadow: var(--amino-glow-blue);
@@ -30,7 +28,6 @@ const StyledRadio = styled.div<{
 
   svg {
     color: white;
-    box-shadow: var(--amino-shadow-small);
     width: 8px;
     height: 8px;
   }

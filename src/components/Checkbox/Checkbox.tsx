@@ -18,7 +18,7 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   border-radius: var(--amino-radius-sm);
   background: ${p =>
     p.checked ? 'var(--amino-primary)' : 'var(--amino-input-background)'};
-  border: ${p => (p.checked ? '2px solid var(--amino-primary)' : 'none')};
+  border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-400)' : 'none')};
   transition: all 150ms ease-in-out;
   cursor: pointer;
   display: flex;
@@ -26,7 +26,6 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   justify-content: center;
   user-select: none;
   margin-right: var(--amino-space-half);
-  box-shadow: var(--amino-shadow-small);
 
   &:active {
     box-shadow: var(--amino-glow-blue);
