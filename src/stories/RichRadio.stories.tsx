@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { CheckIcon, ChevronRightIcon } from 'icons';
+import { CheckMarkIcon, ChevronRightIcon } from 'icons';
 
 import { RichRadio, RichRadioProps } from '../components/RichRadio';
 
@@ -17,7 +17,7 @@ const RichRadioMeta: Meta = {
       options: ['No Icon', 'Check Icon', 'Chevron Right Icon'],
       mapping: {
         'No Icon': undefined,
-        'Check Icon': <CheckIcon />,
+        'Check Icon': <CheckMarkIcon />,
         'Chevron Right Icon': <ChevronRightIcon />,
       },
     },
@@ -25,7 +25,7 @@ const RichRadioMeta: Meta = {
       defaultValue: 'Chevron Right Icon',
       options: ['Check Icon', 'Chevron Right Icon'],
       mapping: {
-        'Check Icon': <CheckIcon />,
+        'Check Icon': <CheckMarkIcon />,
         'Chevron Right Icon': <ChevronRightIcon />,
       },
     },

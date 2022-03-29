@@ -4,7 +4,7 @@ import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
 
 import { VStack } from 'components/Stack';
-import { CheckIcon } from 'icons';
+import { CheckMarkIcon } from 'icons';
 
 const StyledIcon = styled.div`
   position: absolute;
@@ -114,8 +114,8 @@ export const RichRadio = ({
               <Label>{item.label}</Label>
               {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
             </div>
-            {!!icon && <StyledIcon>{icon || <CheckIcon />}</StyledIcon>}
-            <StyledIndicator>{activeIcon || <CheckIcon />}</StyledIndicator>
+            {!!icon && <StyledIcon>{icon || <CheckMarkIcon />}</StyledIcon>}
+            <StyledIndicator>{activeIcon || <CheckMarkIcon />}</StyledIndicator>
           </StyledItem>
         ))}
       </VStack>
