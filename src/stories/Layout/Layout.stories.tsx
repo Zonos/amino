@@ -58,11 +58,13 @@ export default LayoutMeta;
 
 const Template: Story<LayoutProps> = ({
   content,
+  logoSidebar,
   headerContent,
   searchInput,
 }: LayoutProps) => {
   return (
     <Layout
+      logoSidebar={logoSidebar}
       searchInput={searchInput}
       content={content}
       footer={<UserMenu />}
@@ -96,6 +98,7 @@ BasicLayout.args = {
 
 export const LayoutWithoutHeader = Template.bind({});
 LayoutWithoutHeader.args = {
+  logoSidebar: <ZonosIcon size={110} />,
   content: (
     <HStack>
       <Card label="Content">Here is content description</Card>

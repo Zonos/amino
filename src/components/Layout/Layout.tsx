@@ -22,6 +22,9 @@ const SidebarContent = styled.div`
 const SearchInputWrapper = styled.div`
   margin-bottom: var(--amino-space-double);
 `;
+const StyledLogoSidebar = styled.div`
+  margin-bottom: var(--amino-space);
+`;
 const StyledSearchInput = styled(SearchInput)`
   border: 0;
   svg {
@@ -74,6 +77,7 @@ const Header = styled.header`
   position: sticky;
   top: 0;
   box-sizing: border-box;
+  display: flex;
 `;
 
 type SearchInputProps = {
@@ -83,6 +87,7 @@ type SearchInputProps = {
 
 export type LayoutProps = {
   footer: ReactNode;
+  logoSidebar?: ReactNode;
   sidebar: ReactElement<NavigationGroupProps[] | NavigationGroupProps>;
   searchInput?: SearchInputProps;
   content: ReactNode;
@@ -93,6 +98,7 @@ export const Layout = ({
   content,
   footer,
   sidebar,
+  logoSidebar,
   searchInput,
   headerContent,
 }: LayoutProps) => {
@@ -102,6 +108,9 @@ export const Layout = ({
       <ContentGrid hasHeader={!!headerContent}>
         <StyledSidebar>
           <SidebarContent>
+            {!!logoSidebar && (
+              <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
+            )}
             {!!searchInput && (
               <SearchInputWrapper>
                 <StyledSearchInput
