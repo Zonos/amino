@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 const StyledNavigationItemIcon = styled.div``;
 const StyledNavigationContent = styled.div``;
-type StyledNavigationItemProps = StyledProps<NavigationItemProps>;
+
 const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   display: flex;
   flex-direction: row;
@@ -20,6 +20,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   height: 36px;
   padding: 0 var(--amino-space-half);
   color: var(--amino-gray-700);
+  font-weight: 500;
   ${StyledNavigationContent} {
     flex-grow: 1;
     & > * {
@@ -44,12 +45,23 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
     `}
 `;
 
-const StyledItemWrapper = styled.div``;
+const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
+  ${({ $isExpand }) =>
+    $isExpand &&
+    css`
+      ${StyledNavigationItem} {
+        color: black;
+      }
+    `}
+`;
 const StyledGroupItemWrapper = styled(Collapse)`
   padding-left: var(--amino-space);
   margin-left: var(--amino-space);
   border-left: 1px solid var(--amino-gray-200);
 `;
+
+type StyledNavigationItemProps = StyledProps<NavigationItemProps>;
+type StyledNavigationGroupItemProps = StyledProps<NavigationGroupProps>;
 
 export type NavigationItemProps = {
   content: ReactNode;
@@ -93,7 +105,7 @@ export const NavigationGroup = ({
 }: NavigationGroupProps) => {
   return (
     <Wrapper className={className}>
-      <StyledItemWrapper>{content}</StyledItemWrapper>
+      <StyledItemWrapper $isExpand={!!isExpand}>{content}</StyledItemWrapper>
       <StyledGroupItemWrapper isExpand={!!isExpand}>
         {children}
       </StyledGroupItemWrapper>
