@@ -40,6 +40,7 @@ const LayoutMeta: Meta = {
       },
     },
     logoSidebar: {
+      description: 'Want to have logo on sidebar or not',
       options: ['No Logo Sidebar', 'Has Logo Sidebar'],
       mapping: {
         'No Logo Sidebar': null,
