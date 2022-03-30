@@ -51,4 +51,5 @@ export { TextAvatar } from './components/TextAvatar';
 export { Toast, ToastContext, ToastContextProvider } from './components/Toast';
 export * from './hooks';
 export * from './icons';
+export * from './icons/DynamicIcon';
 export * from './types';
