@@ -5,4 +5,5 @@ export { Depth } from './Depth';
 export type { IAminoTheme } from './IAminoTheme';
 export type { IconProps } from './IconProps';
 export type { Intent } from './Intent';
+export type { StyledProps } from './StyledProps';
 export { Surface } from './Surface';
