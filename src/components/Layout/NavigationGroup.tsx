@@ -21,6 +21,17 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   padding: 0 var(--amino-space-half);
   color: var(--amino-gray-700);
   font-weight: 500;
+  border-radius: var(--amino-radius);
+  &:hover {
+    background-color: var(--amino-gray-100);
+    color: black;
+    svg {
+      color: var(--amino-gray-600);
+    }
+  }
+  svg {
+    color: var(--amino-gray-500);
+  }
   ${StyledNavigationContent} {
     flex-grow: 1;
     & > * {
@@ -39,9 +50,13 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   ${({ $isActive }) =>
     $isActive &&
     css`
-      background-color: var(--amino-gray-200);
-      color: black;
-      border-radius: var(--amino-radius);
+      && {
+        background-color: var(--amino-gray-200);
+        color: black;
+        svg {
+          color: black;
+        }
+      }
     `}
 `;
 
@@ -51,6 +66,12 @@ const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
     css`
       ${StyledNavigationItem} {
         color: black;
+        &:hover {
+          background-color: transparent;
+        }
+        svg {
+          color: black;
+        }
       }
     `}
 `;
