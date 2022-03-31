@@ -4,9 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { BoxIcon } from 'icons';
-
-import { Button, ButtonProps } from '../components/Button';
+import { Button, ButtonProps } from 'components/Button';
+import { CubeIcon } from 'icons';
 
 const ButtonMeta: Meta = {
   title: 'Amino/Button',
@@ -96,7 +95,7 @@ const Template: Story<ButtonProps> = ({
             className={className}
             disabled={disabled}
             intent={intent}
-            icon={<BoxIcon size={16} />}
+            icon={<CubeIcon size={16} />}
             loading={loading}
             loadingText={loadingText}
             onClick={onClick}
@@ -112,7 +111,7 @@ const Template: Story<ButtonProps> = ({
             className={className}
             disabled={disabled}
             intent={intent}
-            icon={<BoxIcon size={16} />}
+            icon={<CubeIcon size={16} />}
             iconRight
             loading={loading}
             loadingText={loadingText}
@@ -129,7 +128,7 @@ const Template: Story<ButtonProps> = ({
             className={className}
             disabled={disabled}
             intent={intent}
-            icon={<BoxIcon size={16} />}
+            icon={<CubeIcon size={16} />}
             loading={loading}
             loadingText={loadingText}
             onClick={onClick}
@@ -197,18 +196,6 @@ Subtle.args = {
   children: 'Example button',
 };
 Subtle.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
-};
-
-export const Link = Template.bind({});
-Link.args = {
-  intent: 'link',
-  children: 'Example button',
-};
-Link.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
