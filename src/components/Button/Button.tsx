@@ -6,8 +6,6 @@ import styled, { css } from 'styled-components';
 import { Spinner } from 'components/Spinner';
 import { Intent } from 'types';
 
-import { LinkButton } from './LinkButton';
-
 const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   position: relative;
   outline: none;
@@ -195,13 +193,12 @@ const Subtle = styled(AminoButton)`
   }
 `;
 
-type IntentProps = 'link' | 'outline' | 'subtle' | Intent;
+type IntentProps = 'outline' | 'subtle' | Intent;
 
 export type ButtonProps = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
-  href?: string;
   icon?: ReactNode;
   iconRight?: boolean;
   intent?: IntentProps;
@@ -217,7 +214,6 @@ export const Button = ({
   children,
   className,
   disabled,
-  href,
   icon,
   iconRight,
   intent,
@@ -275,19 +271,6 @@ export const Button = ({
         >
           {content}
         </Subtle>
-      );
-    case 'link':
-      return (
-        <LinkButton
-          className={buttonClassName}
-          href={href || '#'}
-          data-tip={tooltip}
-          tabIndex={tabIndex}
-          size={size || 'sm'}
-          disabled={disabled}
-        >
-          {content}
-        </LinkButton>
       );
     case 'outline':
       return (

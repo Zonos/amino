@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import styled, { css } from 'styled-components';
 
-const AminoLink = styled.a<Pick<LinkProps, 'size' | 'disabled'>>`
+const AminoAnchor = styled.a<Pick<AnchorProps, 'size' | 'disabled'>>`
   position: relative;
   outline: none;
   height: 32px;
@@ -11,6 +12,7 @@ const AminoLink = styled.a<Pick<LinkProps, 'size' | 'disabled'>>`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
   padding: 0 var(--amino-space-half);
   border-radius: var(--amino-radius);
@@ -20,12 +22,6 @@ const AminoLink = styled.a<Pick<LinkProps, 'size' | 'disabled'>>`
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
 
-  p {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--amino-space-quarter);
-  }
   svg path {
     fill: var(--amino-text-color);
   }
@@ -38,6 +34,19 @@ const AminoLink = styled.a<Pick<LinkProps, 'size' | 'disabled'>>`
   &:active,
   &:focus {
     outline: none;
+  }
+
+  &:not(.only-icon).has-icon {
+    &.icon-right {
+      svg {
+        margin-left: var(--amino-space-quarter);
+        margin-right: 0;
+      }
+    }
+    svg {
+      margin-right: var(--amino-space-quarter);
+      margin-left: 0;
+    }
   }
 
   &[disabled] {
@@ -66,7 +75,7 @@ const AminoLink = styled.a<Pick<LinkProps, 'size' | 'disabled'>>`
     `}
 `;
 
-const StyledLink = styled(AminoLink)`
+const StyledAnchor = styled(AminoAnchor)`
   background: none;
   color: var(--amino-blue-500);
   svg path {
@@ -87,35 +96,48 @@ const StyledLink = styled(AminoLink)`
   }
 `;
 
-export type LinkProps = {
+export type AnchorProps = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
-  href: string;
+  href?: string;
+  icon?: ReactNode;
+  iconRight?: boolean;
   size?: 'sm' | 'md' | 'lg';
   tabIndex?: number;
   tooltip?: ReactNode;
 };
 
-export const LinkButton = ({
+export const Anchor = ({
   children,
   className,
   disabled,
   href,
+  icon,
+  iconRight,
   size,
   tabIndex,
   tooltip,
-}: LinkProps) => {
+}: AnchorProps) => {
+  const anchorClassName = [
+    className || '',
+    icon && !children ? 'only-icon' : '',
+    iconRight ? 'icon-right' : '',
+    icon ? 'has-icon' : '',
+  ].join(' ');
   return (
-    <StyledLink
-      className={className}
+    <StyledAnchor
+      className={anchorClassName}
       href={href}
       data-tip={tooltip}
       tabIndex={tabIndex}
       size={size || 'sm'}
       disabled={disabled}
     >
+      {tooltip && <ReactTooltip />}
+      {!iconRight && icon}
       {children}
-    </StyledLink>
+      {iconRight && icon}
+    </StyledAnchor>
   );
 };
