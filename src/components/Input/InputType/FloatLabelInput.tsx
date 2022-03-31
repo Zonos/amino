@@ -140,7 +140,7 @@ export type FloatLabelInputProps = {
   type?: string;
 
   /** If present, will display an error message instead of help text */
-  error: string;
+  error?: string;
 
   /** A short string displayed at the beginning of the input */
   prefix?: ReactNode;
