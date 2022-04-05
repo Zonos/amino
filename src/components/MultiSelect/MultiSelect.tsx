@@ -6,16 +6,16 @@ import ReactSelect, {
   CSSObjectWithLabel,
   DropdownIndicatorProps,
   GroupBase,
+  OptionProps,
   OptionsOrGroups,
   PlaceholderProps,
   StylesConfig,
 } from 'react-select';
 
-import styled, { CSSObject } from 'styled-components';
+import styled from 'styled-components';
 
+import { Checkbox } from 'components/Checkbox';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon } from 'icons';
-
-import { OptionState } from './OptionState';
 
 export type MultiSelectOption = { label: string; value: string };
 type AdditionalProps = { label?: string };
@@ -25,7 +25,7 @@ const ClearIndicator = (
 ) => {
   return (
     <components.ClearIndicator {...props}>
-      <RemoveCircleSolidIcon size={17} />
+      <RemoveCircleSolidIcon size={19} />
     </components.ClearIndicator>
   );
 };
@@ -60,7 +60,7 @@ const StyledFloatedLabel = styled.label`
   }
   .has-content &,
   .is-focused & {
-    top: var(--amino-space-half);
+    top: calc(var(--amino-space-quarter) + 3px);
     transform: scale(0.8);
   }
 `;
@@ -126,30 +126,51 @@ const Placeholder = (props: PlaceholderProps) => {
   return <StyledPlaceholder {...props} />;
 };
 
+const Option = <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>
+>(
+  props: OptionProps<Option, IsMulti, Group>
+) => {
+  const { children, getStyles, innerRef, innerProps, isSelected } = props;
+  return (
+    <div
+      ref={innerRef}
+      style={getStyles('option', props) as React.CSSProperties}
+      {...innerProps}
+    >
+      <Checkbox
+        checked={isSelected}
+        labelComponent={children}
+        onChange={() => {}}
+      />
+    </div>
+  );
+};
+
 const styles = {
   clearIndicator: (provided: CSSObjectWithLabel) => {
     return {
       ...provided,
-      color: `var(--amino-gray-800)`,
+      color: `var(--amino-gray-d20)`,
       paddingLeft: 14,
       paddingRight: 4,
     };
   },
-  container: (provided: CSSObjectWithLabel) => {
-    return {
-      ...provided,
-    };
-  },
+  // container
   control: (provided: CSSObjectWithLabel) => {
     return {
       ...provided,
+      borderColor: `var(--amino-gray-l60)`,
+      color: `var(--amino-gray-d40)`,
       height: '3.5rem',
     };
   },
   dropdownIndicator: (provided: CSSObjectWithLabel) => {
     return {
       ...provided,
-      color: `var(--amino-gray-800)`,
+      color: `var(--amino-gray-d60)`,
       paddingLeft: 4,
       paddingRight: 10,
     };
@@ -163,32 +184,41 @@ const styles = {
   // input
   // loadingIndicator
   // loadingMessage
-  // menu
+  menu: (provided: CSSObjectWithLabel) => {
+    return { ...provided, boxShadow: `var(--amino-v3-shadow-large)` };
+  },
   // menuList
   // menuPortal
-  multiValue: (provided: CSSObjectWithLabel) =>
-    ({
+  multiValue: (provided: CSSObjectWithLabel) => {
+    return {
       ...provided,
+      background: 'var(--amino-gray-l60)',
+      color: 'black',
+      fontWeight: 500,
       minWidth: 'inherit',
-    } as CSSObject),
+    };
+  },
   // multiValueLabel
   // multiValueRemove
   // noOptionsMessage
-  option: (provided: CSSObjectWithLabel, state: OptionState) =>
-    ({
+  option: (provided: CSSObjectWithLabel) => {
+    return {
       ...provided,
-      color: state.isSelected ? 'inherit' : 'inherit',
-      backgroundColor: state.isSelected ? 'inherit' : 'inherit',
-    } as CSSObject),
+      '&:hover': { backgroundColor: 'red' },
+      color: 'black',
+      backgroundColor: 'inherit',
+    };
+  },
   // placeholder
   // singleValue
-  valueContainer: (provided: CSSObjectWithLabel) =>
-    ({
+  valueContainer: (provided: CSSObjectWithLabel) => {
+    return {
       ...provided,
       flexWrap: 'nowrap',
       marginLeft: 'var(--amino-space-half)',
-      paddingLeft: '0',
-    } as CSSObject),
+      paddingLeft: 0,
+    };
+  },
 };
 
 export type MultiSelectProps<OptionType> = {
@@ -241,7 +271,9 @@ export const MultiSelect = <OptionType extends MultiSelectOption>({
         // MultiValueContainer,
         // MultiValueLabel,
         // MultiValueRemove,
-        // Option,
+        Option: Option as unknown as ComponentType<
+          OptionProps<OptionType, true, GroupBase<OptionType>>
+        >,
         Placeholder: Placeholder as unknown as ComponentType<
           PlaceholderProps<OptionType, true, GroupBase<OptionType>>
         >,
@@ -255,7 +287,10 @@ export const MultiSelect = <OptionType extends MultiSelectOption>({
       menuIsOpen={menuIsOpen}
       options={options}
       onChange={(changed, meta) => {
-        if (Array.isArray(changed) && meta.action === 'select-option') {
+        if (
+          Array.isArray(changed) &&
+          (meta.action === 'select-option' || meta.action === 'deselect-option')
+        ) {
           onChange(changed);
         } else if (
           meta.action === 'remove-value' ||
