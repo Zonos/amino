@@ -7,6 +7,7 @@ import ReactSelect, {
   DropdownIndicatorProps,
   GroupBase,
   OptionsOrGroups,
+  PlaceholderProps,
   StylesConfig,
 } from 'react-select';
 
@@ -39,8 +40,29 @@ const DropdownIndicator = (
   );
 };
 
-const Label = styled.label`
-  font-size: 11px;
+const StyledPlaceholder = styled(components.Placeholder)`
+  opacity: 0;
+  .has-label.is-focused & {
+    opacity: 1;
+  }
+`;
+
+const StyledFloatedLabel = styled.label`
+  position: absolute;
+  transition: all 0.5s ease;
+  font-size: var(--amino-text-base);
+  line-height: var(--amino-text-base);
+  transform-origin: left top;
+  left: var(--amino-space-half);
+  top: calc(50% - var(--amino-text-base) / 2);
+  .has-label & + div {
+    align-self: flex-end;
+  }
+  .has-content &,
+  .is-focused & {
+    top: var(--amino-space-half);
+    transform: scale(0.8);
+  }
 `;
 
 const StrongLabel = styled.strong`
@@ -102,21 +124,28 @@ const Control = <
           'control--is-focused': isFocused,
           'control--menu-is-open': menuIsOpen,
         },
-        [className, label ? 'has-label' : '', value ? 'has-content' : ''].join(
-          ' '
-        )
+        [
+          className,
+          label ? 'has-label' : '',
+          isFocused ? 'is-focused' : '',
+          Array.isArray(value) && !!value.length ? 'has-content' : '',
+        ].join(' ')
       )}
       {...innerProps}
     >
-      <Label>
+      <StyledFloatedLabel>
         {label}{' '}
         {Array.isArray(value) && !!value.length && (
           <StrongLabel>({value.length} selected)</StrongLabel>
         )}
-      </Label>
+      </StyledFloatedLabel>
       {children}
     </div>
   );
+};
+
+const Placeholder = (props: PlaceholderProps) => {
+  return <StyledPlaceholder {...props} />;
 };
 
 const styles = {
@@ -136,6 +165,7 @@ const styles = {
   control: (provided: CSSObjectWithLabel) => {
     return {
       ...provided,
+      height: '3.5rem',
     };
   },
   dropdownIndicator: (provided: CSSObjectWithLabel) => {
@@ -178,6 +208,8 @@ const styles = {
     ({
       ...provided,
       flexWrap: 'nowrap',
+      marginLeft: 'var(--amino-space-half)',
+      paddingLeft: '0',
     } as CSSObject),
 };
 
@@ -241,7 +273,9 @@ export const MultiSelect = <OptionType extends MultiSelectOption>({
         // MultiValueLabel,
         // MultiValueRemove,
         // Option,
-        // Placeholder,
+        Placeholder: Placeholder as unknown as ComponentType<
+          PlaceholderProps<OptionType, true, GroupBase<OptionType>>
+        >,
         // SelectContainer,
         // SingleValue,
         // ValueContainer,
