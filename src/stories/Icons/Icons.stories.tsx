@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
 import styled from 'styled-components';
 
+import { SearchInput } from 'components/Input/SearchInput';
+import { VStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import * as icons from 'icons';
 import { IconProps } from 'types';
@@ -48,6 +50,7 @@ const StyledIcon = styled.div<{ size?: number }>`
 const hasSubtype = (iconName: string) => /Solid|Duotone/i.test(iconName);
 
 export const AllIcons = ({ size }: IconProps) => {
+  const [filter, setFilter] = useState('');
   const iicons = Object.values(icons)
     .map(icon => ({
       icon,
@@ -56,30 +59,41 @@ export const AllIcons = ({ size }: IconProps) => {
     .filter(icon => icon.iconName);
 
   return (
-    <StyledWrapper>
-      {iicons.map(({ icon: IconComponent, iconName }, index) => {
-        const nextIcon = iicons[index + 1];
-        const isDeprecated =
-          !hasSubtype(iconName) && nextIcon && !hasSubtype(nextIcon.iconName);
-        return (
-          <StyledIcon
-            // eslint-disable-next-line react/no-array-index-key
-            key={iconName}
-            size={size}
-            className={[
-              isDeprecated ? 'deprecated' : '',
-              /Solid/.test(iconName) ? 'solid' : '',
-              /Duotone/.test(iconName) ? 'duotone' : '',
-            ].join(' ')}
-          >
-            <IconComponent size={30}>
-              <></>
-            </IconComponent>
-            <div>{iconName}</div>
-            {isDeprecated && <Text type="smallheader">(Deprecated)</Text>}
-          </StyledIcon>
-        );
-      })}
-    </StyledWrapper>
+    <VStack>
+      <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
+      <StyledWrapper>
+        {iicons
+          .filter(({ iconName }) =>
+            filter
+              ? iconName.toLowerCase().includes(filter.toLowerCase())
+              : true
+          )
+          .map(({ icon: IconComponent, iconName }, index) => {
+            const nextIcon = iicons[index + 1];
+            const isDeprecated =
+              !hasSubtype(iconName) &&
+              nextIcon &&
+              !hasSubtype(nextIcon.iconName);
+            return (
+              <StyledIcon
+                // eslint-disable-next-line react/no-array-index-key
+                key={iconName}
+                size={size}
+                className={[
+                  isDeprecated ? 'deprecated' : '',
+                  /Solid/.test(iconName) ? 'solid' : '',
+                  /Duotone/.test(iconName) ? 'duotone' : '',
+                ].join(' ')}
+              >
+                <IconComponent size={30}>
+                  <></>
+                </IconComponent>
+                <div>{iconName}</div>
+                {isDeprecated && <Text type="smallheader">(Deprecated)</Text>}
+              </StyledIcon>
+            );
+          })}
+      </StyledWrapper>
+    </VStack>
   );
 };

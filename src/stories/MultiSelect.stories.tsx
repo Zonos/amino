@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
@@ -30,24 +30,28 @@ const SelectMeta: Meta = {
 export default SelectMeta;
 
 const MultiSelectTemplate: Story<MultiSelectProps<MultiSelectOption>> = ({
+  label,
   menuIsOpen,
-  onChange,
   options,
-  selected,
-}: MultiSelectProps<MultiSelectOption>) => (
-  <MultiSelect
-    menuIsOpen={menuIsOpen}
-    onChange={onChange}
-    options={options}
-    selected={selected}
-  />
-);
+  selected: _selected,
+}: MultiSelectProps<MultiSelectOption>) => {
+  const [selected, setSelected] = useState(_selected);
+  return (
+    <MultiSelect
+      label={label}
+      menuIsOpen={menuIsOpen}
+      onChange={setSelected}
+      options={options}
+      selected={selected}
+    />
+  );
+};
 
 export const ActiveMultiSelectWithCutoff = MultiSelectTemplate.bind({});
 
 ActiveMultiSelectWithCutoff.args = {
-  menuIsOpen: true,
-  onChange: () => {},
+  label: 'Currencies',
+  closeMenuOnSelect: false,
   selected: [
     {
       label: 'US Dollar (USD)',
