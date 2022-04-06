@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
@@ -17,7 +17,7 @@ import { Checkbox } from 'components/Checkbox';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon } from 'icons';
 
 export type IOption = { label: string; value: string | null };
-type AdditionalProps = { label?: string };
+type AdditionalProps = { icon?: ReactNode; label?: string };
 
 const ClearIndicator = <
   Option,
@@ -47,6 +47,14 @@ const DropdownIndicator = <
   );
 };
 
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--amino-gray-d20);
+  padding: 10px;
+`;
+
 const StyledFloatedLabel = styled.label`
   position: absolute;
   transition: all 0.5s ease;
@@ -54,6 +62,9 @@ const StyledFloatedLabel = styled.label`
   line-height: var(--amino-text-base);
   transform-origin: left top;
   left: var(--amino-space-half);
+  .has-icon & {
+    left: calc(var(--amino-space-double) + 6px);
+  }
   top: calc(50% - var(--amino-text-base) / 2);
   .has-label & + div {
     align-self: flex-end;
@@ -89,13 +100,10 @@ const Control = <
     menuIsOpen,
     selectProps,
   } = props;
-  const { label, value } = selectProps as typeof props['selectProps'] &
+  const { icon, label, value } = selectProps as typeof props['selectProps'] &
     AdditionalProps;
-
   return (
     <div
-      ref={innerRef}
-      style={getStyles('control', props) as React.CSSProperties}
       className={cx(
         {
           control: true,
@@ -105,13 +113,18 @@ const Control = <
         },
         [
           className,
-          label ? 'has-label' : '',
-          isFocused ? 'is-focused' : '',
           hasValue ? 'has-value' : '',
+          icon ? 'has-icon' : '',
+          isFocused ? 'is-focused' : '',
+          label ? 'has-label' : '',
         ].join(' ')
       )}
+      ref={innerRef}
+      style={getStyles('control', props) as React.CSSProperties}
       {...innerProps}
     >
+      {icon && <IconWrapper>{icon}</IconWrapper>}
+
       <StyledFloatedLabel>
         {label}{' '}
         {Array.isArray(value) && value.length > 1 && (
@@ -164,6 +177,9 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   control: provided => {
     return {
       ...provided,
+      '&:hover': {
+        borderColor: `var(--amino-gray-l80)`,
+      },
       borderColor: `var(--amino-gray-l60)`,
       color: `var(--amino-gray-d40)`,
       height: '3.5rem',
@@ -225,18 +241,19 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     return {
       ...provided,
       flexWrap: 'nowrap',
-      marginLeft: 'var(--amino-space-half)',
-      paddingLeft: 0,
+      paddingLeft: 12,
+      '.has-icon &': { paddingLeft: 0 },
     };
   },
 };
 
-export interface SelectProps<
+export interface StyledReactSelectProps<
   Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 > extends Props<Option, IsMulti, Group> {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  icon?: ReactNode;
   label?: string;
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
@@ -247,11 +264,13 @@ export const StyledReactSelect = <
   Group extends GroupBase<Option>
 >({
   components,
+  icon,
   label,
   styles,
   ...props
-}: SelectProps<Option, IsMulti, Group>) => {
+}: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
+    icon,
     label,
   };
   return (

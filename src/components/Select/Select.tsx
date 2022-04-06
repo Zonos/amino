@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   GroupBase,
   Props,
   SelectComponentsConfig,
-  SingleValue,
   StylesConfig,
 } from 'react-select';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 
+type RequiredProps = 'onChange' | 'options' | 'value';
+
 export interface SelectProps<
   Option extends IOption = IOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
-> extends Omit<
-    Props<Option, IsMulti, Group>,
-    'onChange' | 'options' | 'isMulti'
-  > {
+> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
+    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  icon?: ReactNode;
   label?: string;
-  onChange: (selected: SingleValue<Option>) => void;
-  options: Option[];
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
