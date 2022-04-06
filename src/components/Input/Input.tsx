@@ -81,7 +81,7 @@ export const Input = ({
   autoFocus,
   onKeyDown,
 }: InputProps) => {
-  const InputRender = () => {
+  const renderInput = () => {
     switch (type) {
       case 'password':
         return (
@@ -154,10 +154,7 @@ export const Input = ({
       width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
     >
-      {/* {label && <Text type="inputlabel">{label}</Text>} */}
-      <Fields>
-        <InputRender />
-      </Fields>
+      <Fields>{renderInput()}</Fields>
 
       {helpText && (
         <>
