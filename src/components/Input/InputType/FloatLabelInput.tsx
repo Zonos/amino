@@ -21,11 +21,12 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     line-height: var(--amino-text-base);
     display: inline-block;
     filter: blur(0);
+    transform-origin: left top;
     transition: all 0.5s ease;
     left: ${({ hasPrefix }) =>
       hasPrefix
-        ? 'calc(var(--amino-space-quarter) + 53px)'
-        : 'calc(var(--amino-space-quarter) + 8px)'};
+        ? 'calc(var(--amino-space-half) + 47px)'
+        : 'var(--amino-space-half)'};
     top: calc(50% - var(--amino-text-base) / 2);
   }
   &::after {
@@ -102,7 +103,6 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
     }
     & + ${StyledLabelInput}::before {
       top: var(--amino-space-half);
-      left: calc(var(--amino-space-quarter) - 4px);
       transform: scale(0.8);
     }
   }
