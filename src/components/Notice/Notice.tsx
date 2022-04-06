@@ -49,22 +49,37 @@ const AminoPrimaryNotice = styled(AminoNotice)`
 `;
 
 export type NoticeProps = {
-  intent?: Intent;
   children: React.ReactNode;
+  className?: string;
+  intent?: Intent;
 };
 
-export const Notice = ({ intent, children }: NoticeProps) => {
+export const Notice = ({ className, intent, children }: NoticeProps) => {
   switch (intent) {
     case 'success':
-      return <AminoSuccessNotice>{children}</AminoSuccessNotice>;
+      return (
+        <AminoSuccessNotice className={className}>
+          {children}
+        </AminoSuccessNotice>
+      );
     case 'error':
-      return <AminoErrorNotice>{children}</AminoErrorNotice>;
+      return (
+        <AminoErrorNotice className={className}>{children}</AminoErrorNotice>
+      );
     case 'warning':
-      return <AminoWarningNotice>{children}</AminoWarningNotice>;
+      return (
+        <AminoWarningNotice className={className}>
+          {children}
+        </AminoWarningNotice>
+      );
     case 'primary':
-      return <AminoPrimaryNotice>{children}</AminoPrimaryNotice>;
+      return (
+        <AminoPrimaryNotice className={className}>
+          {children}
+        </AminoPrimaryNotice>
+      );
     case 'info':
     default:
-      return <AminoNotice>{children}</AminoNotice>;
+      return <AminoNotice className={className}>{children}</AminoNotice>;
   }
 };
