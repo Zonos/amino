@@ -4,11 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import {
-  MultiSelect,
-  MultiSelectOption,
-  MultiSelectProps,
-} from '../components/MultiSelect';
+import { MultiSelect, MultiSelectProps } from '../components/MultiSelect';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -29,29 +25,18 @@ const SelectMeta: Meta = {
 
 export default SelectMeta;
 
-const MultiSelectTemplate: Story<MultiSelectProps<MultiSelectOption>> = ({
-  label,
-  menuIsOpen,
-  options,
+const MultiSelectTemplate: Story<MultiSelectProps> = ({
   selected: _selected,
-}: MultiSelectProps<MultiSelectOption>) => {
+  ...props
+}: MultiSelectProps) => {
   const [selected, setSelected] = useState(_selected);
-  return (
-    <MultiSelect
-      label={label}
-      menuIsOpen={menuIsOpen}
-      onChange={setSelected}
-      options={options}
-      selected={selected}
-    />
-  );
+  return <MultiSelect {...props} onChange={setSelected} selected={selected} />;
 };
 
 export const ActiveMultiSelectWithCutoff = MultiSelectTemplate.bind({});
 
 ActiveMultiSelectWithCutoff.args = {
   label: 'Currencies',
-  closeMenuOnSelect: false,
   selected: [
     {
       label: 'US Dollar (USD)',
@@ -74,6 +59,7 @@ ActiveMultiSelectWithCutoff.args = {
       value: 'NZD',
     },
   ],
+  onChange: () => {},
   options: [
     {
       label: 'US Dollar (USD)',
