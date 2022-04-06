@@ -84,8 +84,12 @@ export const CustomRichRadioOption = Template.bind({});
 CustomRichRadioOption.args = {
   renderTextWrapper: ({ label, subtitle }) => (
     <div>
-      <span>{label}</span>
-      <span>{subtitle}</span>
+      <span>
+        Customized Label: <b>{label}</b>
+      </span>
+      <span>
+        Customized Subtitle: <b>{subtitle}</b>
+      </span>
     </div>
   ),
   items: [
