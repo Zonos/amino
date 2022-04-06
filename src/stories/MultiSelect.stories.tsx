@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { MultiSelect, MultiSelectProps } from '../components/MultiSelect';
+import { MultiSelect, MultiSelectProps } from '../components/Select';
 
 const StyledWrapper = styled.div`
   width: 412px;

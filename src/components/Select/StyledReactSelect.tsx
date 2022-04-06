@@ -16,7 +16,7 @@ import styled from 'styled-components';
 import { Checkbox } from 'components/Checkbox';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon } from 'icons';
 
-export type IOption = { label: string; value: string };
+export type IOption = { label: string; value: string | null };
 type AdditionalProps = { label?: string };
 
 const ClearIndicator = <

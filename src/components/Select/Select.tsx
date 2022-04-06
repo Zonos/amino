@@ -1,117 +1,41 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
+import {
+  GroupBase,
+  Props,
+  SelectComponentsConfig,
+  SingleValue,
+  StylesConfig,
+} from 'react-select';
 
-import styled from 'styled-components';
+import { IOption, StyledReactSelect } from './StyledReactSelect';
 
-import { Text } from 'components/Text';
-
-import { DropdownIcon } from '../../icons/DropdownIcon';
-
-const StyledSelect = styled.select`
-  border-radius: var(--amino-radius);
-  outline: none !important;
-  box-sizing: border-box;
-  transition: var(--amino-transition);
-  display: block;
-  height: var(--amino-input-height);
-  width: 100%;
-  padding: 0 var(--amino-space-half);
-  background: var(--amino-input-background);
-  box-shadow: var(--amino-shadow-small);
-  border: var(--amino-border);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  &:focus,
-  &:active {
-    outline: none;
-    box-shadow: var(--amino-glow-blue);
-  }
-`;
-
-const DropdownContainer = styled.div`
-  span {
-    margin-top: var(--amino-space-quarter);
-    display: block;
-  }
-`;
-
-const SelectWrapper = styled.div`
-  position: relative;
-
-  svg {
-    position: absolute;
-    right: var(--amino-space-half);
-    top: 11px;
-    pointer-events: none;
-    width: 16px;
-    height: 16px;
-    opacity: 0.3;
-    transition: opacity 100ms ease-in-out;
-    color: var(--amino-text-color);
-  }
-
-  &:hover svg {
-    opacity: 0.6;
-  }
-`;
-
-export type SelectItem = {
-  label: string;
-  value: string;
-};
-
-export type SelectProps<T> = {
-  autoFocus?: boolean;
-  items: T[];
+export interface SelectProps<
+  Option extends IOption = IOption,
+  IsMulti extends false = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> extends Omit<
+    Props<Option, IsMulti, Group>,
+    'onChange' | 'options' | 'isMulti'
+  > {
+  components?: SelectComponentsConfig<Option, IsMulti, Group>;
   label?: string;
-  helpText?: string;
-  onChange: (newValue: string) => void;
-  value: string;
-  placeholder?: string;
-  required?: boolean;
-  tabIndex?: number;
-};
+  onChange: (selected: SingleValue<Option>) => void;
+  options: Option[];
+  styles?: StylesConfig<Option, IsMulti, Group>;
+}
 
-const SelectInner = <T extends SelectItem>(
-  {
-    autoFocus,
-    items,
-    label,
-    onChange,
-    helpText,
-    value,
-    placeholder,
-    required = false,
-    tabIndex,
-  }: SelectProps<T>,
-  ref: React.ForwardedRef<HTMLSelectElement>
-) => {
+export const Select = <
+  Option extends IOption,
+  Group extends GroupBase<Option>
+>({
+  isClearable = true,
+  ...props
+}: SelectProps<Option, false, Group>) => {
   return (
-    <DropdownContainer className="amino-input-wrapper">
-      {label && <Text type="inputlabel">{label}</Text>}
-
-      <SelectWrapper>
-        <StyledSelect
-          autoFocus={autoFocus}
-          onChange={e => onChange(e.target.value)}
-          ref={ref}
-          tabIndex={tabIndex}
-          value={value}
-          aria-label={label}
-        >
-          {!required && placeholder && <option value="">{placeholder}</option>}
-          {items.map(item => (
-            <option key={item.value} value={item.value}>
-              {item.label}
-            </option>
-          ))}
-        </StyledSelect>
-        <DropdownIcon />
-      </SelectWrapper>
-
-      {helpText && <Text type="subtitle">{helpText}</Text>}
-    </DropdownContainer>
+    <StyledReactSelect<Option, false, Group>
+      {...props}
+      isClearable={isClearable}
+      isMulti={false}
+    />
   );
 };
-
-export const Select = forwardRef(SelectInner);
