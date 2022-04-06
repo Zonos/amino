@@ -181,6 +181,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
         borderColor: `var(--amino-gray-l80)`,
       },
       borderColor: `var(--amino-gray-l60)`,
+      borderRadius: 6,
       color: `var(--amino-gray-d40)`,
       height: '3.5rem',
     };
@@ -203,7 +204,12 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // loadingIndicator
   // loadingMessage
   menu: provided => {
-    return { ...provided, boxShadow: `var(--amino-v3-shadow-large)` };
+    return {
+      ...provided,
+      borderRadius: 12,
+      boxShadow: `var(--amino-v3-shadow-large)`,
+      marginTop: 4,
+    };
   },
   // menuList
   // menuPortal

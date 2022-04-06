@@ -4,12 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import {
-  BagIcon,
-  CubeIcon,
-  PlayCircleDuotoneIcon,
-  PlayCircleSolidIcon,
-} from 'icons';
+import { PlayCircleSolidIcon } from 'icons';
 
 import { MultiSelect, MultiSelectProps } from '../components/Select';
 
