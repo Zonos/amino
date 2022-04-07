@@ -16,11 +16,11 @@ import styled from 'styled-components';
 import { Checkbox } from 'components/Checkbox';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon } from 'icons';
 
-export type IOption = { label: string; value: string | null };
+export type IOption = { label: string; value: string };
 type AdditionalProps = { icon?: ReactNode; label?: string };
 
 const ClearIndicator = <
-  Option,
+  Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 >(
@@ -34,7 +34,7 @@ const ClearIndicator = <
 };
 
 const DropdownIndicator = <
-  Option,
+  Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 >(
@@ -81,7 +81,7 @@ const StrongLabel = styled.strong`
 `;
 
 const Control = <
-  Option,
+  Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 >(
@@ -136,8 +136,8 @@ const Control = <
   );
 };
 
-const Option = <
-  Option,
+export const CheckboxOptionComponent = <
+  Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 >(
@@ -271,7 +271,7 @@ export const StyledReactSelect = <
 >({
   components,
   icon,
-  label,
+  label = ' ',
   styles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
@@ -303,7 +303,7 @@ export const StyledReactSelect = <
           // MultiValueContainer,
           // MultiValueLabel,
           // MultiValueRemove,
-          Option,
+          Option: CheckboxOptionComponent,
           // Placeholder,
           // SelectContainer,
           // SingleValue,
