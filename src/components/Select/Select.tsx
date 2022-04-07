@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import {
   GroupBase,
   Props,
+  PropsValue,
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select';
@@ -20,6 +21,11 @@ export interface SelectProps<
   icon?: ReactNode;
   label?: string;
   styles?: StylesConfig<Option, IsMulti, Group>;
+  /**
+   * @example
+   * value: { label: string; value: string; } | null;
+   */
+  value: PropsValue<Option>;
 }
 
 export const Select = <
