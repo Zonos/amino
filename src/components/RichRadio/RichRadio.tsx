@@ -55,7 +55,7 @@ const StyledItem = styled(Item)`
     outline: none;
     border: 1px solid var(--amino-blue-300);
   }
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -91,28 +91,36 @@ type RichRadioItemType = {
 
 export type RichRadioProps = {
   onChange: (newVal: string) => void;
+  renderCustomText?: (option: RichRadioItemType) => ReactNode;
   items: RichRadioItemType[];
   value: string;
+  className?: string;
   icon?: ReactNode;
   activeIcon?: ReactNode;
 };
 
 export const RichRadio = ({
   onChange,
+  renderCustomText,
   items,
   value,
   icon,
+  className,
   activeIcon,
 }: RichRadioProps) => {
   return (
-    <StyledRoot onValueChange={onChange} value={value}>
+    <StyledRoot className={className} onValueChange={onChange} value={value}>
       <VStack spacing="space-half">
         {items.map(item => (
           <StyledItem value={item.value} key={item.value}>
-            <div>
-              <Label>{item.label}</Label>
-              {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
-            </div>
+            {renderCustomText ? (
+              renderCustomText(item)
+            ) : (
+              <div>
+                <Label>{item.label}</Label>
+                {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
+              </div>
+            )}
             {!!icon && <StyledIcon>{icon || <CheckMarkIcon />}</StyledIcon>}
             <StyledIndicator>{activeIcon || <CheckMarkIcon />}</StyledIndicator>
           </StyledItem>
