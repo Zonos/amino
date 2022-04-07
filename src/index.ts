@@ -37,7 +37,13 @@ export { RestState, RestStateProps } from './components/RestState';
 export { RichCheckboxGroup } from './components/RichCheckboxGroup';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
-export { Select } from './components/Select';
+export {
+  LegacySelect,
+  MultiSelect,
+  MultiSelectProps,
+  Select,
+  SelectProps,
+} from './components/Select';
 export { Skeleton } from './components/Skeleton';
 export { SlideOver } from './components/SlideOver';
 export { Slider } from './components/Slider';
