@@ -3,7 +3,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { ScratchPad } from './ScratchPad';
 
 const ScratchPadMeta: Meta = {
-  title: 'Amino/ScratchPad',
+  title: 'Amino/_ScratchPad',
   component: ScratchPad,
 };
 
