@@ -53,7 +53,7 @@ const StyledItem = styled(Item)`
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 2px var(--amino-blue-600);
+    border: 1px solid var(--amino-blue-300);
   }
   div {
     display: flex;
@@ -75,7 +75,6 @@ const StyledRoot = styled(Root)`
     background: var(--amino-blue-100);
     border: 1px solid var(--amino-blue-300);
     color: var(--amino-blue-500);
-    box-shadow: 0px 0px 0px 3px var(--amino-blue-300);
   }
   svg {
     color: white;
