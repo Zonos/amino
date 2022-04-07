@@ -37,7 +37,7 @@ export default RichRadioMeta;
 const Template: Story<RichRadioProps> = ({
   onChange,
   items,
-  renderTextWrapper,
+  renderCustomText,
   value,
   icon,
   activeIcon,
@@ -45,7 +45,7 @@ const Template: Story<RichRadioProps> = ({
   <RichRadio
     value={value}
     onChange={onChange}
-    renderTextWrapper={renderTextWrapper}
+    renderCustomText={renderCustomText}
     items={items}
     icon={icon}
     activeIcon={activeIcon}
@@ -82,7 +82,7 @@ BasicRichRadio.parameters = {
 
 export const CustomRichRadioOption = Template.bind({});
 CustomRichRadioOption.args = {
-  renderTextWrapper: ({ label, subtitle }) => (
+  renderCustomText: ({ label, subtitle }) => (
     <div>
       <span>
         Customized Label: <b>{label}</b>

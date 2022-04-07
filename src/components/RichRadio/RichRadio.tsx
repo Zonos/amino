@@ -91,7 +91,7 @@ type RichRadioItemType = {
 
 export type RichRadioProps = {
   onChange: (newVal: string) => void;
-  renderTextWrapper?: (option: RichRadioItemType) => ReactNode;
+  renderCustomText?: (option: RichRadioItemType) => ReactNode;
   items: RichRadioItemType[];
   value: string;
   className?: string;
@@ -101,7 +101,7 @@ export type RichRadioProps = {
 
 export const RichRadio = ({
   onChange,
-  renderTextWrapper,
+  renderCustomText,
   items,
   value,
   icon,
@@ -113,8 +113,8 @@ export const RichRadio = ({
       <VStack spacing="space-half">
         {items.map(item => (
           <StyledItem value={item.value} key={item.value}>
-            {renderTextWrapper ? (
-              renderTextWrapper(item)
+            {renderCustomText ? (
+              renderCustomText(item)
             ) : (
               <div>
                 <Label>{item.label}</Label>
