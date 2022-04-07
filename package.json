@@ -59,7 +59,8 @@
     "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.1.5",
     "@radix-ui/react-slider": "^0.0.16",
-    "react-dropzone": "^12.0.4"
+    "react-dropzone": "^12.0.4",
+    "react-select": "^5.2.2"
   },
   "peerDependencies": {
     "downshift": "^4.x",

@@ -10,9 +10,9 @@ import { IOption, StyledReactSelect } from './StyledReactSelect';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
-export interface SelectProps<
+export interface MultiSelectProps<
   Option extends IOption = IOption,
-  IsMulti extends false = false,
+  IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
     Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> {
@@ -22,18 +22,20 @@ export interface SelectProps<
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
-export const Select = <
+export const MultiSelect = <
   Option extends IOption,
   Group extends GroupBase<Option>
 >({
-  isClearable = true,
+  closeMenuOnSelect = false,
+  hideSelectedOptions = false,
   ...props
-}: SelectProps<Option, false, Group>) => {
+}: MultiSelectProps<Option, true, Group>) => {
   return (
-    <StyledReactSelect<Option, false, Group>
+    <StyledReactSelect<Option, true, Group>
       {...props}
-      isClearable={isClearable}
-      isMulti={false}
+      closeMenuOnSelect={closeMenuOnSelect}
+      hideSelectedOptions={hideSelectedOptions}
+      isMulti
     />
   );
 };

@@ -100,45 +100,46 @@ export type CheckboxProps = {
 };
 
 export const Checkbox = ({
-  checked,
+  checked = false,
   onChange,
   label,
   subtitle,
   disabled,
   labelComponent,
-}: CheckboxProps) => (
-  <CheckboxContainer
-    className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
-    checked={checked}
-    disabled={disabled}
-    multiline={!!subtitle}
-    onClick={() => !disabled && onChange(!checked)}
-  >
-    <AminoCheckbox checked={checked} id={label}>
-      <AnimatePresence>
-        {checked && (
-          <AnimatedCheckIcon
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1 }}
-            key="checkbox"
-          />
-        )}
-      </AnimatePresence>
-    </AminoCheckbox>
+}: CheckboxProps) => {
+  const htmlFor = typeof labelComponent === 'string' ? labelComponent : label;
+  return (
+    <CheckboxContainer
+      className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
+      checked={checked}
+      disabled={disabled}
+      multiline={!!subtitle}
+      onClick={() => !disabled && onChange(!checked)}
+    >
+      <AminoCheckbox checked={checked} id={label}>
+        <AnimatePresence>
+          {checked && (
+            <AnimatedCheckIcon
+              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1 }}
+              key="checkbox"
+            />
+          )}
+        </AnimatePresence>
+      </AminoCheckbox>
 
-    {label && (
-      <label htmlFor={label}>
-        <StyledLabel type="inputlabel">{labelComponent || label}</StyledLabel>
-        {subtitle && (
-          <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
-        )}
-      </label>
-    )}
-  </CheckboxContainer>
-);
-
-Checkbox.defaultProps = {
-  checked: false,
+      {htmlFor && (
+        <label htmlFor={htmlFor}>
+          {labelComponent || (
+            <StyledLabel type="inputlabel">{label}</StyledLabel>
+          )}
+          {subtitle && (
+            <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
+          )}
+        </label>
+      )}
+    </CheckboxContainer>
+  );
 };

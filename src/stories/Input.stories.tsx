@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
@@ -95,7 +95,6 @@ const Template: Story<InputProps> = ({
   inputPrefix,
   inputSuffix,
   label,
-  onChange,
   onKeyDown,
   pattern,
   placeholder,
@@ -105,32 +104,35 @@ const Template: Story<InputProps> = ({
   suffix,
   tabIndex,
   type,
-  value,
+  value: _value,
   width,
-}) => (
-  <Input
-    autoFocus={autoFocus}
-    disabled={disabled}
-    error={error}
-    helpText={helpText}
-    inputMode={inputMode}
-    inputPrefix={inputPrefix}
-    inputSuffix={inputSuffix}
-    label={label}
-    onChange={onChange}
-    onKeyDown={onKeyDown}
-    pattern={pattern}
-    placeholder={placeholder}
-    prefix={prefix}
-    readOnly={readOnly}
-    required={required}
-    suffix={suffix}
-    tabIndex={tabIndex}
-    type={type}
-    value={value}
-    width={width}
-  />
-);
+}) => {
+  const [value, setValue] = useState(_value);
+  return (
+    <Input
+      autoFocus={autoFocus}
+      disabled={disabled}
+      error={error}
+      helpText={helpText}
+      inputMode={inputMode}
+      inputPrefix={inputPrefix}
+      inputSuffix={inputSuffix}
+      label={label}
+      onChange={e => setValue(e.target.value)}
+      onKeyDown={onKeyDown}
+      pattern={pattern}
+      placeholder={placeholder}
+      prefix={prefix}
+      readOnly={readOnly}
+      required={required}
+      suffix={suffix}
+      tabIndex={tabIndex}
+      type={type}
+      value={value}
+      width={width}
+    />
+  );
+};
 
 export const BasicInput = Template.bind({});
 BasicInput.args = {
