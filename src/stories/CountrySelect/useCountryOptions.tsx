@@ -1,32 +1,42 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { useEffect } from '@storybook/addons';
 
 import {
+  Flag,
   ICountryOption,
   IGetCountriesResponse,
   IRegionCountryOption,
   regions,
-} from './ICountry';
+} from '../../components/Select';
 
-export interface CountryMultiSelectProps {}
-
-export const useCountryOptions = () => {
+export const useCountryOptions = ({
+  baseFlagUrl,
+  dashboardUrl,
+}: {
+  baseFlagUrl: string | null;
+  dashboardUrl: string | null;
+}) => {
   const [countryOptions, setCountryOptions] = useState<ICountryOption[]>([]);
   const [regionCountryOptions, setRegionCountryOptions] = useState<
     IRegionCountryOption[]
   >([]);
 
   const requestCountries = useCallback(async () => {
-    const response = await fetch(
-      `${process.env.STORYBOOK_ZONOS_DASHBOARD_URL}/api/address/getCountries`
-    );
+    const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
     if (response.ok) {
       const json: IGetCountriesResponse = await response.json();
       const countries = Object.entries(json)
         .map(([, country]) => ({
           ...country,
           label: country.displayName,
+          icon: (
+            <Flag
+              countryCode={country.code}
+              compact
+              src={`${baseFlagUrl}/${country.code.toLowerCase()}.svg`}
+            />
+          ),
           value: country.code,
         }))
         .sort((a, b) => a.displayName.localeCompare(b.displayName));
@@ -37,7 +47,7 @@ export const useCountryOptions = () => {
       }));
       setRegionCountryOptions(regionCountries);
     }
-  }, []);
+  }, [baseFlagUrl, dashboardUrl]);
 
   useEffect(() => {
     requestCountries();

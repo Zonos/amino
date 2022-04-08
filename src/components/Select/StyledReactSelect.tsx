@@ -16,8 +16,12 @@ import styled from 'styled-components';
 import { Checkbox } from 'components/Checkbox';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon } from 'icons';
 
-export type IOption = { label: string; value: string };
-type AdditionalProps = { icon?: ReactNode; label?: string };
+export type IOption = { icon?: ReactNode; label: string; value: string };
+type AdditionalProps = {
+  hasGroups?: boolean;
+  icon?: ReactNode;
+  label?: string;
+};
 
 const ClearIndicator = <
   Option extends IOption,
@@ -136,6 +140,13 @@ const Control = <
   );
 };
 
+const CheckboxOptionIconWrapper = styled.div`
+  display: flex;
+  img {
+    margin-right: 4px;
+  }
+`;
+
 export const CheckboxOptionComponent = <
   Option extends IOption,
   IsMulti extends boolean,
@@ -143,22 +154,44 @@ export const CheckboxOptionComponent = <
 >(
   props: OptionProps<Option, IsMulti, Group>
 ) => {
-  const { children, getStyles, innerRef, innerProps, isSelected, selectProps } =
-    props;
+  const {
+    children,
+    data,
+    getStyles,
+    innerRef,
+    innerProps,
+    isSelected,
+    selectProps,
+  } = props;
+  const { hasGroups } = selectProps as typeof props['selectProps'] &
+    AdditionalProps;
+  const style = getStyles('option', props) as React.CSSProperties;
+  if (hasGroups) {
+    style.paddingLeft = 48;
+  }
+  const renderChildren = () => {
+    if (data.icon) {
+      return (
+        <CheckboxOptionIconWrapper>
+          {data.icon}
+          {children}
+        </CheckboxOptionIconWrapper>
+      );
+    }
+    return children;
+  };
+
   return (
-    <div
-      ref={innerRef}
-      style={getStyles('option', props) as React.CSSProperties}
-      {...innerProps}
-    >
+    <div ref={innerRef} style={style} {...innerProps}>
       {selectProps.isMulti ? (
         <Checkbox
           checked={isSelected}
-          labelComponent={children}
+          label={data.value}
+          labelComponent={renderChildren()}
           onChange={() => {}}
         />
       ) : (
-        children
+        renderChildren()
       )}
     </div>
   );
@@ -194,7 +227,13 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       paddingRight: 10,
     };
   },
-  // group
+  group: provided => {
+    return {
+      ...provided,
+      paddingTop: 0,
+      paddingBottom: 0,
+    };
+  },
   // groupHeading
   // indicatorsContainer
   indicatorSeparator: provided => {
@@ -211,7 +250,12 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       marginTop: 4,
     };
   },
-  // menuList
+  menuList: provided => {
+    return {
+      ...provided,
+      paddingTop: 8,
+    };
+  },
   // menuPortal
   multiValue: provided => {
     return {
@@ -231,6 +275,10 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       '&:hover': { backgroundColor: 'red' },
       color: 'black',
       backgroundColor: 'inherit',
+      paddingTop: 7,
+      paddingRight: 12,
+      paddingBottom: 7,
+      paddingLeft: 16,
     };
   },
   placeholder: provided => {
@@ -257,10 +305,9 @@ export interface StyledReactSelectProps<
   Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
-> extends Props<Option, IsMulti, Group> {
+> extends Props<Option, IsMulti, Group>,
+    AdditionalProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
-  icon?: ReactNode;
-  label?: string;
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
@@ -270,12 +317,14 @@ export const StyledReactSelect = <
   Group extends GroupBase<Option>
 >({
   components,
+  hasGroups,
   icon,
   label = ' ',
   styles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
+    hasGroups,
     icon,
     label,
   };
@@ -318,7 +367,7 @@ export const StyledReactSelect = <
         } as StylesConfig<Option, IsMulti, Group>
       }
       {...props}
-      // @ts-ignore additional props as selectProps
+      // @ts-ignore additional props in selectProps
       {...additionalProps}
     />
   );

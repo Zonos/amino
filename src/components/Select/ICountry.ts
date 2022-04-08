@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export const regions = [
   'Africa',
   'Americas',
@@ -26,6 +28,7 @@ export interface ICountry {
   zipRegex: string | null;
 }
 export interface ICountryOption extends ICountry {
+  icon: ReactNode;
   label: string;
   value: string;
 }

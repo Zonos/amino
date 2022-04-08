@@ -17,6 +17,7 @@ export interface SelectProps<
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
     Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
   styles?: StylesConfig<Option, IsMulti, Group>;
@@ -24,7 +25,7 @@ export interface SelectProps<
 
 export const Select = <
   Option extends IOption,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>
 >({
   isClearable = true,
   ...props

@@ -7,9 +7,11 @@ import styled from 'styled-components';
 import {
   CountryMultiSelect,
   CountryMultiSelectProps,
-} from 'components/Select/CountrySelect/CountryMultiSelect';
-import { ICountryOption } from 'components/Select/CountrySelect/ICountry';
-import { useCountryOptions } from 'components/Select/CountrySelect/useCountryOptions';
+  ICountryOption,
+} from 'components/Select';
+
+import { getCountryUrls } from './getCountryUrls';
+import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -33,8 +35,12 @@ export default CountryMultiSelectMeta;
 const CountryMultiSelectTemplate: Story<CountryMultiSelectProps> = ({
   ...props
 }: CountryMultiSelectProps) => {
+  const { baseFlagUrl, dashboardUrl } = getCountryUrls();
   const [value, setValue] = useState<ICountryOption[]>([]);
-  const { regionCountryOptions } = useCountryOptions();
+  const { regionCountryOptions } = useCountryOptions({
+    baseFlagUrl,
+    dashboardUrl,
+  });
   return (
     <CountryMultiSelect
       {...props}
@@ -47,9 +53,7 @@ const CountryMultiSelectTemplate: Story<CountryMultiSelectProps> = ({
 
 export const BasicCountryMultiSelect = CountryMultiSelectTemplate.bind({});
 
-BasicCountryMultiSelect.args = {
-  menuIsOpen: true,
-};
+BasicCountryMultiSelect.args = {};
 
 BasicCountryMultiSelect.parameters = {
   design: {
