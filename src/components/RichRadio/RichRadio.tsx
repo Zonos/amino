@@ -63,6 +63,10 @@ const StyledItem = styled(Item)`
   }
 `;
 
+const StyledTooltip = styled(ReactTooltip)`
+  max-width: 50vw;
+`;
+
 const Subtitle = styled.span`
   opacity: 0.5;
 `;
@@ -121,7 +125,7 @@ export const RichRadio = ({
             key={item.value}
           >
             {item.tooltip && (
-              <ReactTooltip effect="solid" {...item.tooltipSetting} />
+              <StyledTooltip effect="solid" {...item.tooltipSetting} />
             )}
             {renderCustomText ? (
               renderCustomText(item)
