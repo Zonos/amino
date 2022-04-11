@@ -142,7 +142,8 @@ const Control = <
 
 const CheckboxOptionIconWrapper = styled.div`
   display: flex;
-  img {
+  align-items: center;
+  svg {
     margin-right: 4px;
   }
 `;

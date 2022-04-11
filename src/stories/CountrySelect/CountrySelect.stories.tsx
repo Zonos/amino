@@ -5,6 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 import { ICountryOption, Select, SelectProps } from 'components/Select';
+import { CountrySelect } from 'components/Select/CountrySelect';
 
 import { getCountryUrls } from './getCountryUrls';
 import { useCountryOptions } from './useCountryOptions';
@@ -13,7 +14,7 @@ const StyledWrapper = styled.div`
   width: 412px;
 `;
 
-const CountryMultiSelectMeta: Meta = {
+const CountrySelectMeta: Meta = {
   title: 'Amino/CountrySelect',
   component: Select,
   decorators: [
@@ -26,9 +27,9 @@ const CountryMultiSelectMeta: Meta = {
   ],
 };
 
-export default CountryMultiSelectMeta;
+export default CountrySelectMeta;
 
-const CountryMultiSelectTemplate: Story<SelectProps<ICountryOption>> = ({
+const CountrySelectTemplate: Story<SelectProps<ICountryOption>> = ({
   ...props
 }: SelectProps<ICountryOption>) => {
   const { dashboardUrl } = getCountryUrls();
@@ -37,18 +38,16 @@ const CountryMultiSelectTemplate: Story<SelectProps<ICountryOption>> = ({
     dashboardUrl,
   });
   return (
-    <Select
+    <CountrySelect
       {...props}
-      icon={value?.icon}
-      label="Select country"
-      options={countryOptions}
+      countryOptions={countryOptions}
       onChange={setValue}
       value={value}
     />
   );
 };
 
-export const BasicCountrySelect = CountryMultiSelectTemplate.bind({});
+export const BasicCountrySelect = CountrySelectTemplate.bind({});
 
 BasicCountrySelect.args = {};
 

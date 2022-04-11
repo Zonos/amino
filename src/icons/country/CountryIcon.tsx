@@ -4,10 +4,11 @@ import * as largeIcons from './large';
 import * as mediumIcons from './medium';
 import * as smallIcons from './small';
 
-export type CountryCode = keyof typeof largeIcons;
+export type ICountryCode = keyof typeof largeIcons;
+export type ICountryIconScale = 'small' | 'medium' | 'large';
 
-export type CountryIconProps = { scale: 'small' | 'medium' | 'large' } & {
-  type: CountryCode;
+export type CountryIconProps = { scale: ICountryIconScale } & {
+  type: ICountryCode;
 };
 
 export const CountryIcon = ({

@@ -2,7 +2,11 @@ import React, { useCallback, useState } from 'react';
 
 import { useEffect } from '@storybook/addons';
 
-import { CountryCode, CountryIcon } from 'icons/country/CountryIcon';
+import {
+  CountryIcon,
+  ICountryCode,
+  ICountryIconScale,
+} from 'icons/country/CountryIcon';
 
 import {
   ICountryOption,
@@ -13,8 +17,10 @@ import {
 
 export const useCountryOptions = ({
   dashboardUrl,
+  iconScale = 'small',
 }: {
   dashboardUrl: string | null;
+  iconScale?: ICountryIconScale;
 }) => {
   const [countryOptions, setCountryOptions] = useState<ICountryOption[]>([]);
   const [regionCountryOptions, setRegionCountryOptions] = useState<
@@ -30,7 +36,10 @@ export const useCountryOptions = ({
           ...country,
           label: country.displayName,
           icon: (
-            <CountryIcon scale="medium" type={country.code as CountryCode} />
+            <CountryIcon
+              scale={iconScale}
+              type={country.code as ICountryCode}
+            />
           ),
           value: country.code,
         }))
@@ -42,7 +51,7 @@ export const useCountryOptions = ({
       }));
       setRegionCountryOptions(regionCountries);
     }
-  }, [dashboardUrl]);
+  }, [dashboardUrl, iconScale]);
 
   useEffect(() => {
     requestCountries();
