@@ -5,6 +5,8 @@ import ReactSelect, {
   ControlProps,
   DropdownIndicatorProps,
   GroupBase,
+  MultiValueGenericProps,
+  MultiValueRemoveProps,
   OptionProps,
   Props,
   SelectComponentsConfig,
@@ -14,7 +16,7 @@ import ReactSelect, {
 import styled from 'styled-components';
 
 import { Checkbox } from 'components/Checkbox';
-import { ChevronDownSolidIcon, RemoveCircleSolidIcon } from 'icons';
+import { ChevronDownSolidIcon, RemoveCircleSolidIcon, RemoveIcon } from 'icons';
 
 export type IOption = { icon?: ReactNode; label: string; value: string };
 type AdditionalProps = {
@@ -148,6 +150,53 @@ const CheckboxOptionIconWrapper = styled.div`
   }
 `;
 
+const IconLabel = ({
+  children,
+  icon,
+}: {
+  children: ReactNode;
+  icon?: ReactNode;
+}) => {
+  if (icon) {
+    return (
+      <CheckboxOptionIconWrapper>
+        {icon}
+        {children}
+      </CheckboxOptionIconWrapper>
+    );
+  }
+  return <>{children}</>;
+};
+
+const MultiValueLabel = <
+  Option extends IOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>
+>({
+  children,
+  ...props
+}: MultiValueGenericProps<Option, IsMulti, Group>) => {
+  return (
+    <RScomponents.MultiValueLabel {...props}>
+      <IconLabel icon={props.data.icon}>{children}</IconLabel>
+    </RScomponents.MultiValueLabel>
+  );
+};
+
+const MultiValueRemove = <
+  Option extends IOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>
+>({
+  innerProps,
+}: MultiValueRemoveProps<Option, IsMulti, Group>) => {
+  return (
+    <div {...innerProps} role="button">
+      <RemoveIcon size={14} />
+    </div>
+  );
+};
+
 export const CheckboxOptionComponent = <
   Option extends IOption,
   IsMulti extends boolean,
@@ -170,17 +219,6 @@ export const CheckboxOptionComponent = <
   if (hasGroups) {
     style.paddingLeft = 48;
   }
-  const renderChildren = () => {
-    if (data.icon) {
-      return (
-        <CheckboxOptionIconWrapper>
-          {data.icon}
-          {children}
-        </CheckboxOptionIconWrapper>
-      );
-    }
-    return children;
-  };
 
   return (
     <div ref={innerRef} style={style} {...innerProps}>
@@ -188,11 +226,11 @@ export const CheckboxOptionComponent = <
         <Checkbox
           checked={isSelected}
           label={data.value}
-          labelComponent={renderChildren()}
+          labelComponent={<IconLabel icon={data.icon}>{children}</IconLabel>}
           onChange={() => {}}
         />
       ) : (
-        renderChildren()
+        <IconLabel icon={data.icon}>{children}</IconLabel>
       )}
     </div>
   );
@@ -351,8 +389,8 @@ export const StyledReactSelect = <
           // NoOptionsMessage,
           // MultiValue,
           // MultiValueContainer,
-          // MultiValueLabel,
-          // MultiValueRemove,
+          MultiValueLabel,
+          MultiValueRemove,
           Option: CheckboxOptionComponent,
           // Placeholder,
           // SelectContainer,
