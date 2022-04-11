@@ -120,7 +120,9 @@ export const RichRadio = ({
             data-tip={item.tooltip}
             key={item.value}
           >
-            {item.tooltip && <ReactTooltip {...item.tooltipSetting} />}
+            {item.tooltip && (
+              <ReactTooltip {...(item.tooltipSetting, { effect: 'solid' })} />
+            )}
             {renderCustomText ? (
               renderCustomText(item)
             ) : (
