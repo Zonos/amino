@@ -60,11 +60,21 @@ BasicRichRadio.args = {
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       subtitle: 'Item 1 subtitle',
       value: 'item1',
+      tooltip:
+        'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
+      tooltipSetting: {
+        delayShow: 200,
+      },
     },
     {
       label: 'Item 2',
       subtitle: 'Item 2 subtitle',
       value: 'item2',
+      tooltip:
+        'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
+      tooltipSetting: {
+        delayShow: 200,
+      },
     },
     {
       label: 'Item 3',
@@ -98,11 +108,21 @@ CustomRichRadioOption.args = {
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       subtitle: 'Item 1 subtitle',
       value: 'item1',
+      tooltip:
+        'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
+      tooltipSetting: {
+        delayShow: 200,
+      },
     },
     {
       label: 'Item 2',
       subtitle: 'Item 2 subtitle',
       value: 'item2',
+      tooltip:
+        'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
+      tooltipSetting: {
+        delayShow: 200,
+      },
     },
     {
       label: 'Item 3',
