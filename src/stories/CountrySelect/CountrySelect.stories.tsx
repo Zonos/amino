@@ -31,10 +31,9 @@ export default CountryMultiSelectMeta;
 const CountryMultiSelectTemplate: Story<SelectProps<ICountryOption>> = ({
   ...props
 }: SelectProps<ICountryOption>) => {
-  const { baseFlagUrl, dashboardUrl } = getCountryUrls();
+  const { dashboardUrl } = getCountryUrls();
   const [value, setValue] = useState<ICountryOption | null>(null);
   const { countryOptions } = useCountryOptions({
-    baseFlagUrl,
     dashboardUrl,
   });
   return (

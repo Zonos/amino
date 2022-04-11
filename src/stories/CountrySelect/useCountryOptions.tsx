@@ -2,8 +2,9 @@ import React, { useCallback, useState } from 'react';
 
 import { useEffect } from '@storybook/addons';
 
+import { CountryCode, CountryIcon } from 'icons/country/CountryIcon';
+
 import {
-  Flag,
   ICountryOption,
   IGetCountriesResponse,
   IRegionCountryOption,
@@ -11,10 +12,8 @@ import {
 } from '../../components/Select';
 
 export const useCountryOptions = ({
-  baseFlagUrl,
   dashboardUrl,
 }: {
-  baseFlagUrl: string | null;
   dashboardUrl: string | null;
 }) => {
   const [countryOptions, setCountryOptions] = useState<ICountryOption[]>([]);
@@ -31,11 +30,7 @@ export const useCountryOptions = ({
           ...country,
           label: country.displayName,
           icon: (
-            <Flag
-              countryCode={country.code}
-              compact
-              src={`${baseFlagUrl}/${country.code.toLowerCase()}.svg`}
-            />
+            <CountryIcon scale="medium" type={country.code as CountryCode} />
           ),
           value: country.code,
         }))
@@ -47,7 +42,7 @@ export const useCountryOptions = ({
       }));
       setRegionCountryOptions(regionCountries);
     }
-  }, [baseFlagUrl, dashboardUrl]);
+  }, [dashboardUrl]);
 
   useEffect(() => {
     requestCountries();

@@ -25,6 +25,7 @@
     "autoprefixer": "10.4.4",
     "babel-loader": "8.2.3",
     "bili": "^5.0.5",
+    "concurrently": "^7.1.0",
     "downshift": "^4.1.0",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.0",
@@ -76,13 +77,19 @@
     "extends": "react-app"
   },
   "scripts": {
-    "build:watch": "bili --watch",
     "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "start": "yarn build-storybook && yarn storybook",
+    "build:watch": "bili --watch",
+    "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
-    "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.js"
+    "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.js",
+    "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
+    "proxy": "local-ssl-proxy --source 6007 --target 6006",
+    "svgs:create": "yarn svgs:react && yarn svgs:format",
+    "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/reactSVGs",
+    "svgs:format": "eslint svgReact --ext .tsx --fix",
+    "start": "yarn build-storybook && yarn storybook",
+    "storybook": "start-storybook -p 6006"
   },
   "files": [
     "dist",
