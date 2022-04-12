@@ -23,6 +23,18 @@ const Header = styled.div`
   }
 `;
 
+const StyledActionBaseWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+`;
+
+const StyledLeftActionWrapper = styled(StyledActionBaseWrapper)`
+  justify-content: flex-start;
+`;
+const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
+  justify-content: flex-end;
+`;
+
 const Footer = styled.div`
   padding: var(--amino-space);
   display: flex;
@@ -67,6 +79,7 @@ const Close = styled.div`
 
 export type DialogProps = {
   actions?: React.ReactNode;
+  leftActions?: React.ReactNode;
   children: React.ReactNode;
   label?: string;
   onClose: () => void;
@@ -76,7 +89,10 @@ export type DialogProps = {
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
-  ({ actions, children, label, onClose, open, theme, width }, ref) => (
+  (
+    { actions, leftActions, children, label, onClose, open, theme, width },
+    ref
+  ) => (
     <BaseDialog data-theme={theme} open={open} width={width}>
       <Header>
         <Text type="h4">{label}</Text>
@@ -85,9 +101,18 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </Close>
       </Header>
       <Content ref={ref}>{children}</Content>
-      {actions && (
+      {(actions || leftActions) && (
         <Footer>
+          {leftActions && (
+            <StyledLeftActionWrapper>
+              <HStack spacing="space-quarter">{leftActions}</HStack>
+            </StyledLeftActionWrapper>
+          )}
+      {actions && (
+            <StyledRightActionWrapper>
           <HStack spacing="space-quarter">{actions}</HStack>
+            </StyledRightActionWrapper>
+          )}
         </Footer>
       )}
     </BaseDialog>

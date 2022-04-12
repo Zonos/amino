@@ -16,15 +16,17 @@ export default DialogMeta;
 
 const Template: Story<DialogProps> = ({
   actions,
+  leftActions,
   children,
   label,
   width,
 }: DialogProps) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <>
       <Button onClick={() => setOpen(true)}>open</Button>
       <Dialog
+        leftActions={leftActions}
         actions={actions}
         label={label}
         open={open}
@@ -39,6 +41,11 @@ const Template: Story<DialogProps> = ({
 
 export const BasicDialog = Template.bind({});
 BasicDialog.args = {
+  leftActions: (
+    <>
+      <Button>Back</Button>
+    </>
+  ),
   actions: (
     <>
       <Button>Close</Button>
