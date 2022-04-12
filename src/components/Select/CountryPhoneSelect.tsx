@@ -1,6 +1,8 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import {
+  components as RScomponents,
   GroupBase,
+  MenuListProps,
   Props,
   SelectComponentsConfig,
   StylesConfig,
@@ -19,6 +21,52 @@ import {
 import { CountrySelect } from './CountrySelect';
 import { ICountryOption } from './ICountry';
 import { IOption } from './StyledReactSelect';
+
+const OptionLabel = styled.div`
+  display: flex;
+`;
+
+const PhoneCodeLabel = styled.div`
+  margin-left: 4px;
+  color: var(--amino-gray-d20);
+`;
+
+const StyledPrefix = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    border-radius: 2px;
+  }
+`;
+
+type AdditionalProps = {
+  setMenuIsOpen: (isOpen: boolean) => void;
+};
+
+const MenuList = <
+  Option extends IOption,
+  IsMulti extends false,
+  Group extends GroupBase<Option>
+>(
+  props: MenuListProps<Option, IsMulti, Group>
+) => {
+  const { selectProps } = props;
+  const { setMenuIsOpen } = selectProps as typeof props['selectProps'] &
+    AdditionalProps;
+  const handleOutsideClick = useCallback(() => {
+    setMenuIsOpen(false);
+  }, [setMenuIsOpen]);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [handleOutsideClick]);
+  return <RScomponents.MenuList {...props} />;
+};
 
 export interface CountryPhoneSelectProps<
   Option extends IOption = IOption,
@@ -41,24 +89,6 @@ export interface CountryPhoneSelectProps<
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
-const OptionLabel = styled.div`
-  display: flex;
-`;
-
-const PhoneCodeLabel = styled.div`
-  margin-left: 4px;
-  color: var(--amino-gray-d20);
-`;
-
-const StyledPrefix = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    border-radius: 2px;
-  }
-`;
-
 export const CountryPhoneSelect = ({
   countryOptions,
   iconScale = 'medium',
@@ -70,7 +100,9 @@ export const CountryPhoneSelect = ({
   ...props
 }: CountryPhoneSelectProps<ICountryOption>) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-
+  const additionalProps: AdditionalProps = {
+    setMenuIsOpen,
+  };
   return (
     <div>
       <Input
@@ -95,7 +127,7 @@ export const CountryPhoneSelect = ({
       />
       <CountrySelect
         {...props}
-        components={{ Control: () => null }}
+        components={{ Control: () => null, MenuList }}
         countryOptions={countryOptions}
         formatOptionLabel={option => (
           <OptionLabel>
@@ -107,6 +139,7 @@ export const CountryPhoneSelect = ({
         onBlur={() => setMenuIsOpen(false)}
         onChange={setPhoneCountry}
         value={phoneCountry}
+        {...additionalProps}
       />
     </div>
   );
