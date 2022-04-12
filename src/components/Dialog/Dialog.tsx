@@ -23,11 +23,22 @@ const Header = styled.div`
   }
 `;
 
+const StyledActionBaseWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+`;
+
+const StyledLeftActionWrapper = styled(StyledActionBaseWrapper)`
+  justify-content: flex-start;
+`;
+const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
+  justify-content: flex-end;
+`;
+
 const Footer = styled.div`
   padding: var(--amino-space);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   border-bottom-left-radius: var(--amino-radius-xl);
   border-bottom-right-radius: var(--amino-radius-xl);
 
@@ -41,6 +52,47 @@ const Content = styled.div`
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   overscroll-behavior: contain;
+  /* scroll bar width, for use in mask calculations */
+  --scrollbar-width: 8px;
+
+  /* mask fade distance, for use in mask calculations */
+  --mask-height: 32px;
+
+  /* If content exceeds height of container, overflow! */
+  overflow-y: auto;
+
+  padding-bottom: var(--mask-height);
+  /* The CSS mask */
+
+  /* The content mask is a linear gradient from top to bottom */
+  --mask-image-content: linear-gradient(
+    to bottom,
+    transparent,
+    black var(--mask-height),
+    black calc(100% - var(--mask-height)),
+    transparent
+  );
+  /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+  --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+  /* The scrollbar mask is a black pixel */
+  --mask-image-scrollbar: linear-gradient(black, black);
+
+  /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+  --mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+  /* Apply the mask image and mask size variables */
+  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+  /* Position the content gradient in the top left, and the 
+scroll gradient in the top right */
+  mask-position: 0 0, 100% 0;
+
+  /* We don't repeat our mask images */
+  mask-repeat: no-repeat, no-repeat;
 `;
 
 const Close = styled.div`
@@ -67,6 +119,7 @@ const Close = styled.div`
 
 export type DialogProps = {
   actions?: React.ReactNode;
+  leftActions?: React.ReactNode;
   children: React.ReactNode;
   label?: string;
   onClose: () => void;
@@ -76,7 +129,10 @@ export type DialogProps = {
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
-  ({ actions, children, label, onClose, open, theme, width }, ref) => (
+  (
+    { actions, leftActions, children, label, onClose, open, theme, width },
+    ref
+  ) => (
     <BaseDialog data-theme={theme} open={open} width={width}>
       <Header>
         <Text type="h4">{label}</Text>
@@ -85,9 +141,18 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </Close>
       </Header>
       <Content ref={ref}>{children}</Content>
-      {actions && (
+      {(actions || leftActions) && (
         <Footer>
-          <HStack spacing="space-quarter">{actions}</HStack>
+          {leftActions && (
+            <StyledLeftActionWrapper>
+              <HStack spacing="space-quarter">{leftActions}</HStack>
+            </StyledLeftActionWrapper>
+          )}
+          {actions && (
+            <StyledRightActionWrapper>
+              <HStack spacing="space-quarter">{actions}</HStack>
+            </StyledRightActionWrapper>
+          )}
         </Footer>
       )}
     </BaseDialog>
