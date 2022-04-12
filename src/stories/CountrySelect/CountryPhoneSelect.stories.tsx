@@ -4,9 +4,13 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { ICountryOption, Select, SelectProps } from 'components/Select';
-import { CountryPhoneSelect } from 'components/Select/CountryPhoneSelect';
+import { ICountryOption, Select } from 'components/Select';
+import {
+  CountryPhoneSelect,
+  CountryPhoneSelectProps,
+} from 'components/Select/CountryPhoneSelect';
 import { useCountryOptions } from 'hooks';
+import { CountryIcon } from 'icons/country/CountryIcon';
 
 import { getCountryUrls } from './getCountryUrls';
 
@@ -29,12 +33,18 @@ const CountryPhoneSelectMeta: Meta = {
 
 export default CountryPhoneSelectMeta;
 
-const CountryPhoneSelectTemplate: Story<SelectProps<ICountryOption>> = ({
+const CountryPhoneSelectTemplate: Story<
+  CountryPhoneSelectProps<ICountryOption>
+> = ({
+  phone: _phone,
+  phoneCountry: _phoneCountry,
   ...props
-}: SelectProps<ICountryOption>) => {
+}: CountryPhoneSelectProps<ICountryOption>) => {
   const { dashboardUrl } = getCountryUrls();
-  const [phoneCountry, setPhoneCountry] = useState<ICountryOption | null>(null);
-  const [phone, setPhone] = useState('1');
+  const [phoneCountry, setPhoneCountry] = useState<ICountryOption | null>(
+    _phoneCountry
+  );
+  const [phone, setPhone] = useState(_phone);
   const { countryOptions } = useCountryOptions({
     dashboardUrl,
   });
@@ -52,7 +62,26 @@ const CountryPhoneSelectTemplate: Story<SelectProps<ICountryOption>> = ({
 
 export const BasicCountryPhoneSelect = CountryPhoneSelectTemplate.bind({});
 
-BasicCountryPhoneSelect.args = {};
+BasicCountryPhoneSelect.args = {
+  phone: '12 123456',
+  phoneCountry: {
+    active: true,
+    code3: 'AFG',
+    code: 'AF',
+    currencyCode: 'AFN',
+    displayName: 'Afghanistan',
+    fraudRisk: 10,
+    icon: <CountryIcon code="AF" scale="small" />,
+    label: 'Afghanistan',
+    languageCode: 'fa',
+    numericCode: '004',
+    phoneCode: ['93'],
+    region: 'Asia',
+    upsCode: null,
+    value: 'AF',
+    zipRegex: null,
+  },
+};
 
 BasicCountryPhoneSelect.parameters = {
   design: {

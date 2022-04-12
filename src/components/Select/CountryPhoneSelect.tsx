@@ -11,6 +11,7 @@ import {
 import styled from 'styled-components';
 
 import { Input } from 'components/Input';
+import { InputValuePrefix } from 'components/Input/InputType/FloatLabelInput';
 import { ChevronDownIcon } from 'icons';
 import {
   CountryIcon,
@@ -32,11 +33,28 @@ const PhoneCodeLabel = styled.div`
 `;
 
 const StyledPrefix = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
 
   svg {
     border-radius: 2px;
+
+    &:last-child {
+      z-index: 1;
+      position: absolute;
+      top: -2px;
+      left: 20px;
+    }
+  }
+`;
+
+const StyledInputWrapper = styled.div`
+  [data-label]::before {
+    left: 60px;
+  }
+  ${InputValuePrefix} {
+    padding-left: 14px;
   }
 `;
 
@@ -103,28 +121,28 @@ export const CountryPhoneSelect = ({
   const additionalProps: AdditionalProps = {
     setMenuIsOpen,
   };
+  const valuePrefix = phoneCountry?.phoneCode
+    ? `+${phoneCountry?.phoneCode}`
+    : undefined;
   return (
-    <div>
-      <Input
-        label={label}
-        prefix={<div>pre</div>}
-        onChange={e => setPhone(e.target.value)}
-        value={phone}
-      />
-      <Input
-        label={label}
-        prefix={
-          <StyledPrefix onClick={() => setMenuIsOpen(!menuIsOpen)}>
-            <CountryIcon
-              code={(phoneCountry?.code as ICountryCode) || 'Default'}
-              scale={iconScale}
-            />
-            <ChevronDownIcon size={19} />
-          </StyledPrefix>
-        }
-        onChange={e => setPhone(e.target.value)}
-        value={phone}
-      />
+    <>
+      <StyledInputWrapper>
+        <Input
+          label={label}
+          prefix={
+            <StyledPrefix onClick={() => setMenuIsOpen(!menuIsOpen)}>
+              <CountryIcon
+                code={(phoneCountry?.code as ICountryCode) || 'Default'}
+                scale={iconScale}
+              />
+              <ChevronDownIcon size={19} />
+            </StyledPrefix>
+          }
+          onChange={e => setPhone(e.target.value)}
+          valuePrefix={valuePrefix}
+          value={phone}
+        />
+      </StyledInputWrapper>
       <CountrySelect
         {...props}
         components={{ Control: () => null, MenuList }}
@@ -137,10 +155,13 @@ export const CountryPhoneSelect = ({
         )}
         menuIsOpen={menuIsOpen}
         onBlur={() => setMenuIsOpen(false)}
-        onChange={setPhoneCountry}
+        onChange={changed => {
+          setPhoneCountry(changed);
+          setMenuIsOpen(false);
+        }}
         value={phoneCountry}
         {...additionalProps}
       />
-    </div>
+    </>
   );
 };

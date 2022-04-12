@@ -59,27 +59,28 @@ export type InputProps = {
 } & FloatLabelInputProps;
 
 export const Input = ({
-  label,
-  width,
-  className,
-  placeholder,
-  helpText,
-  value,
-  onChange,
-  prefix,
-  inputPrefix,
-  suffix,
-  inputSuffix,
-  required,
-  type,
-  readOnly,
-  error,
-  disabled,
-  tabIndex,
-  inputMode,
-  pattern,
   autoFocus,
+  className,
+  disabled,
+  error,
+  helpText,
+  inputMode,
+  inputPrefix,
+  inputSuffix,
+  label,
+  onChange,
   onKeyDown,
+  pattern,
+  placeholder,
+  prefix,
+  readOnly,
+  required,
+  suffix,
+  tabIndex,
+  type,
+  value,
+  valuePrefix,
+  width,
 }: InputProps) => {
   const renderInput = () => {
     switch (type) {
@@ -102,6 +103,7 @@ export const Input = ({
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
             value={value || ''}
+            valuePrefix={valuePrefix}
           />
         );
       case 'number':
@@ -123,6 +125,7 @@ export const Input = ({
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
             value={value || ''}
+            valuePrefix={valuePrefix}
           />
         );
       default:
@@ -145,6 +148,7 @@ export const Input = ({
             tabIndex={tabIndex}
             type={type}
             value={value || ''}
+            valuePrefix={valuePrefix}
           />
         );
     }
