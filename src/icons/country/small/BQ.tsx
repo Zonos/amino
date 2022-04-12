@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const BQBO = () => {
+export const BQ = () => {
   return (
     <svg
       width="16"

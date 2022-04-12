@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 import { ICountryOption, Select, SelectProps } from 'components/Select';
-import { CountrySelect } from 'components/Select/CountrySelect';
+import { CountryPhoneSelect } from 'components/Select/CountryPhoneSelect';
 import { useCountryOptions } from 'hooks';
 
 import { getCountryUrls } from './getCountryUrls';
@@ -14,8 +14,8 @@ const StyledWrapper = styled.div`
   width: 412px;
 `;
 
-const CountrySelectMeta: Meta = {
-  title: 'Amino/CountrySelect',
+const CountryPhoneSelectMeta: Meta = {
+  title: 'Amino/CountryPhoneSelect',
   component: Select,
   decorators: [
     withDesign,
@@ -27,31 +27,34 @@ const CountrySelectMeta: Meta = {
   ],
 };
 
-export default CountrySelectMeta;
+export default CountryPhoneSelectMeta;
 
-const CountrySelectTemplate: Story<SelectProps<ICountryOption>> = ({
+const CountryPhoneSelectTemplate: Story<SelectProps<ICountryOption>> = ({
   ...props
 }: SelectProps<ICountryOption>) => {
   const { dashboardUrl } = getCountryUrls();
-  const [value, setValue] = useState<ICountryOption | null>(null);
+  const [phoneCountry, setPhoneCountry] = useState<ICountryOption | null>(null);
+  const [phone, setPhone] = useState('1');
   const { countryOptions } = useCountryOptions({
     dashboardUrl,
   });
   return (
-    <CountrySelect
+    <CountryPhoneSelect
       {...props}
       countryOptions={countryOptions}
-      onChange={setValue}
-      value={value}
+      phone={phone}
+      phoneCountry={phoneCountry}
+      setPhone={setPhone}
+      setPhoneCountry={setPhoneCountry}
     />
   );
 };
 
-export const BasicCountrySelect = CountrySelectTemplate.bind({});
+export const BasicCountryPhoneSelect = CountryPhoneSelectTemplate.bind({});
 
-BasicCountrySelect.args = {};
+BasicCountryPhoneSelect.args = {};
 
-BasicCountrySelect.parameters = {
+BasicCountryPhoneSelect.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',

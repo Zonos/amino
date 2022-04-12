@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const YTUNF = () => {
+export const YT = () => {
   return (
     <svg
       width="32"

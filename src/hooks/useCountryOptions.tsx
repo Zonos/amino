@@ -3,17 +3,17 @@ import React, { useCallback, useState } from 'react';
 import { useEffect } from '@storybook/addons';
 
 import {
-  CountryIcon,
-  ICountryCode,
-  ICountryIconScale,
-} from 'icons/country/CountryIcon';
-
-import {
   ICountryOption,
   IGetCountriesResponse,
   IRegionCountryOption,
   regions,
-} from '../../components/Select';
+} from 'components/Select';
+import { countryPhoneCodes } from 'components/Select/countryPhoneCodes';
+import {
+  CountryIcon,
+  ICountryCode,
+  ICountryIconScale,
+} from 'icons/country/CountryIcon';
 
 export const useCountryOptions = ({
   dashboardUrl,
@@ -37,10 +37,13 @@ export const useCountryOptions = ({
           label: country.displayName,
           icon: (
             <CountryIcon
+              code={country.code as ICountryCode}
               scale={iconScale}
-              type={country.code as ICountryCode}
             />
           ),
+          phoneCode:
+            countryPhoneCodes.find(x => x.code === country.code)?.phoneCode ||
+            [],
           value: country.code,
         }))
         .sort((a, b) => a.displayName.localeCompare(b.displayName));

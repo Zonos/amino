@@ -9,9 +9,9 @@ import {
   CountryMultiSelectProps,
   ICountryOption,
 } from 'components/Select';
+import { useCountryOptions } from 'hooks';
 
 import { getCountryUrls } from './getCountryUrls';
-import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;

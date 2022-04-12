@@ -7,8 +7,8 @@ import {
 } from 'react-select';
 
 import {
-  ICountryCode,
   CountryIcon,
+  ICountryCode,
   ICountryIconScale,
 } from 'icons/country/CountryIcon';
 
@@ -49,8 +49,8 @@ export const CountrySelect = ({
       icon={
         icon || (
           <CountryIcon
+            code={(value?.code as ICountryCode) || 'Default'}
             scale={iconScale}
-            type={(value?.code as ICountryCode) || 'Default'}
           />
         )
       }

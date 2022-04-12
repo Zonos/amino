@@ -30,6 +30,7 @@ export interface ICountry {
 export interface ICountryOption extends ICountry {
   icon: ReactNode;
   label: string;
+  phoneCode: string[];
   value: string;
 }
 export interface IRegionCountryOption {

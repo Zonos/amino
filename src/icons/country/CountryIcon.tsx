@@ -8,22 +8,22 @@ export type ICountryCode = keyof typeof largeIcons;
 export type ICountryIconScale = 'small' | 'medium' | 'large';
 
 export type CountryIconProps = { scale: ICountryIconScale } & {
-  type: ICountryCode;
+  code: ICountryCode;
 };
 
 export const CountryIcon = ({
+  code,
   scale,
-  type,
 }: CountryIconProps): ReactElement => {
   if (scale === 'small') {
-    const SmallIcon = smallIcons[type] || smallIcons.Default;
+    const SmallIcon = smallIcons[code] || smallIcons.Default;
     return <SmallIcon />;
   }
   if (scale === 'medium') {
-    const MediumIcon = mediumIcons[type] || mediumIcons.Default;
+    const MediumIcon = mediumIcons[code] || mediumIcons.Default;
     return <MediumIcon />;
   }
 
-  const LargeIcon = largeIcons[type] || largeIcons.Default;
+  const LargeIcon = largeIcons[code] || largeIcons.Default;
   return <LargeIcon />;
 };
