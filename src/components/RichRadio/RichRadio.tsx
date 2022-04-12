@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import ReactTooltip, { TooltipProps } from 'react-tooltip';
 
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import styled from 'styled-components';
@@ -62,6 +63,10 @@ const StyledItem = styled(Item)`
   }
 `;
 
+const StyledTooltip = styled(ReactTooltip)`
+  max-width: 50vw;
+`;
+
 const Subtitle = styled.span`
   opacity: 0.5;
 `;
@@ -87,6 +92,8 @@ type RichRadioItemType = {
   label: ReactNode;
   subtitle?: string;
   value: string;
+  tooltip?: string;
+  tooltipSetting?: TooltipProps;
 };
 
 export type RichRadioProps = {
@@ -112,7 +119,14 @@ export const RichRadio = ({
     <StyledRoot className={className} onValueChange={onChange} value={value}>
       <VStack spacing="space-half">
         {items.map(item => (
-          <StyledItem value={item.value} key={item.value}>
+          <StyledItem
+            value={item.value}
+            data-tip={item.tooltip}
+            key={item.value}
+          >
+            {item.tooltip && (
+              <StyledTooltip effect="solid" {...item.tooltipSetting} />
+            )}
             {renderCustomText ? (
               renderCustomText(item)
             ) : (
