@@ -25,7 +25,7 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   align-items: center;
   justify-content: center;
   user-select: none;
-  margin-right: var(--amino-space-half);
+  margin-right: 8px;
 
   &:active {
     box-shadow: var(--amino-glow-blue);
