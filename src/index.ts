@@ -4,7 +4,7 @@ export {
   AlertContextProvider,
   AlertDialog,
 } from './components/AlertDialog';
-export { Button, MenuButton } from './components/Button';
+export { Anchor, Button, MenuButton } from './components/Button';
 export { Card } from './components/Card';
 export { Checkbox } from './components/Checkbox';
 export { Collapse, CollapseProps } from './components/Collapse';
