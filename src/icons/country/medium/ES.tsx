@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const ES = () => {
+  const ids = useStableUniqueId(5);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const ES = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="7bd6aecf-7c9c-4109-9210Cb509b40100b"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const ES = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#7bd6aecf-7c9c-4109-9210Cb509b40100b)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const ES = () => {
           fill="#FFB400"
         />
         <mask
-          id="2f9bc003-3a6b-4c9d-9c9cAd8bcd61f75a"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const ES = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#2f9bc003-3a6b-4c9d-9c9cAd8bcd61f75a)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -80,7 +83,7 @@ export const ES = () => {
             fill="#005BBF"
           />
           <mask
-            id="589f3e7e-89f5-44bb-8df0D9485a7d2b3d"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="2"
             y="10"
@@ -94,7 +97,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#589f3e7e-89f5-44bb-8df0D9485a7d2b3d)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               d="M2.83854 11.0701L2.81104 11.0031C2.92452 10.9526 3.03841 10.9272 3.15248 10.9272C3.22617 10.9272 3.26465 10.9375 3.33007 10.9666C3.38753 10.9922 3.41732 11.0002 3.48016 11.0002C3.54301 11.0002 3.5728 10.9922 3.63026 10.9666C3.69568 10.9375 3.73416 10.9272 3.80785 10.9272C3.92192 10.9272 4.03581 10.9526 4.14929 11.0031L4.12179 11.0701C4.01682 11.0234 3.91225 11.0002 3.80785 11.0002C3.74501 11.0002 3.71522 11.0081 3.65776 11.0337C3.59234 11.0628 3.55386 11.0731 3.48016 11.0731C3.40647 11.0731 3.36799 11.0628 3.30257 11.0337C3.24511 11.0081 3.21532 11.0002 3.15248 11.0002C3.04808 11.0002 2.94351 11.0234 2.83854 11.0701Z"
               fill="white"
@@ -136,7 +139,7 @@ export const ES = () => {
             fill="#005BBF"
           />
           <mask
-            id="d63697a9-79e5-4e37-911e-76f8bba26af9"
+            id={`${ids[3]}`}
             maskUnits="userSpaceOnUse"
             x="9"
             y="10"
@@ -150,7 +153,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#d63697a9-79e5-4e37-911e-76f8bba26af9)">
+          <g mask={`url(#${ids[3]})`}>
             <path
               d="M9.69852 11.0701L9.67102 11.0031C9.78451 10.9526 9.8984 10.9272 10.0125 10.9272C10.0862 10.9272 10.1246 10.9375 10.1901 10.9666C10.2475 10.9922 10.2773 11.0002 10.3401 11.0002C10.403 11.0002 10.4328 10.9922 10.4902 10.9666C10.5557 10.9375 10.5941 10.9272 10.6678 10.9272C10.7819 10.9272 10.8958 10.9526 11.0093 11.0031L10.9818 11.0701C10.8768 11.0234 10.7722 11.0002 10.6678 11.0002C10.605 11.0002 10.5752 11.0081 10.5177 11.0337C10.4523 11.0628 10.4138 11.0731 10.3401 11.0731C10.2665 11.0731 10.228 11.0628 10.1626 11.0337C10.1051 11.0081 10.0753 11.0002 10.0125 11.0002C9.90806 11.0002 9.8035 11.0234 9.69852 11.0701Z"
               fill="white"
@@ -251,7 +254,7 @@ export const ES = () => {
             fill="#E1E5E8"
           />
           <mask
-            id="3baca4adB349-4fc4Bf74C6c9c0758606"
+            id={`${ids[4]}`}
             maskUnits="userSpaceOnUse"
             x="4"
             y="5"
@@ -265,7 +268,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#3baca4adB349-4fc4Bf74C6c9c0758606)">
+          <g mask={`url(#${ids[4]})`}>
             <rect
               x="4.67004"
               y="8.31006"

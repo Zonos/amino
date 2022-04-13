@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const AO = () => {
+  const ids = useStableUniqueId(4);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const AO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="c84647b6Bcea-4192-9179-47697d3bf5cc"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const AO = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#c84647b6Bcea-4192-9179-47697d3bf5cc)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const AO = () => {
           fill="#1D1D1D"
         />
         <mask
-          id="a4af7328Fea6-4ad7B7a9-13272e245190"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const AO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#a4af7328Fea6-4ad7B7a9-13272e245190)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -52,7 +55,7 @@ export const AO = () => {
             d="M9.93314 5.89655L10.3599 4.4917C13.5601 5.4684 15.4894 7.18064 16.0321 9.62338C16.3922 11.2439 16.2285 12.6924 15.6463 13.9822C15.2314 14.9012 14.7045 15.5873 13.9469 16.3596C12.6836 17.6475 10.6055 18.4693 8.72939 18.1208C7.42168 17.878 6.21703 17.4192 5.11987 16.7454L5.88533 15.4933C6.82796 16.0722 7.86347 16.4665 8.99632 16.6769C10.3511 16.9285 11.9573 16.2933 12.9022 15.33C13.5495 14.6701 13.9816 14.1075 14.3115 13.3769C14.7649 12.3723 14.892 11.2476 14.6021 9.9426C14.188 8.0789 12.6702 6.7319 9.93314 5.89655Z"
             fill="#FFEA42"
           />
-          <g filter="url(#bf39c16d-85a0-45d9Bc86D4ca52d5faee)">
+          <g filter={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -66,7 +69,7 @@ export const AO = () => {
               fill="#FFEA42"
             />
           </g>
-          <g filter="url(#8604b4a9-6a4d-480bB174-4b772aa1ee84)">
+          <g filter={`url(#${ids[3]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -90,7 +93,7 @@ export const AO = () => {
       </g>
       <defs>
         <filter
-          id="bf39c16d-85a0-45d9Bc86D4ca52d5faee"
+          id={`${ids[2]}`}
           x="8.31006"
           y="7.21436"
           width="3.07251"
@@ -123,7 +126,7 @@ export const AO = () => {
           />
         </filter>
         <filter
-          id="8604b4a9-6a4d-480bB174-4b772aa1ee84"
+          id={`${ids[3]}`}
           x="6.74731"
           y="9.85986"
           width="12.126"

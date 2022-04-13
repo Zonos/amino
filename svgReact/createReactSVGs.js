@@ -1,5 +1,6 @@
 const fs = require('fs');
-const uuid = require('uuid');
+
+const addWrapper = id => `{\`${id}\`}`;
 
 const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
   names.forEach(name => {
@@ -15,9 +16,13 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
     const maskIds = maskIdMatches
       ? maskIdMatches.map(x => x.replace(/id=/, '').replace(/"/g, ''))
       : [];
-    maskIds.forEach(id => {
-      const idRegex = new RegExp(id, 'gi');
-      fileContent = fileContent.replace(idRegex, uuid.v4());
+    maskIds.forEach((maskId, index) => {
+      const idRegex = new RegExp(`"${maskId}"`, 'gi');
+      const urlRegex = new RegExp(`"url\\(#${maskId}\\)"`, 'gi');
+      const newId = `\${ids[${index}]}`;
+      fileContent = fileContent
+        .replace(idRegex, `${addWrapper(newId)}`)
+        .replace(urlRegex, `${addWrapper(`url(#${newId})`)}`);
     });
 
     const svg = fileContent
@@ -29,19 +34,18 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
       /** @desc Camecase attributes */
       .replace(/-([a-z])/g, (m, w) => w.toUpperCase());
 
-    // Template for component
-    const component =
-      `import React from 'react';` +
-      '\n\n' +
-      `export const ${name.componentName} = () => {` +
-      '\n' +
-      `  return (` +
-      '\n' +
-      `    ${svg}` +
-      '\n' +
-      `  );` +
-      '\n' +
-      `};`;
+    const component = [
+      `import React from 'react';`,
+      maskIds.length && `import { useStableUniqueId } from 'hooks';`,
+      `export const ${name.componentName} = () => {`,
+      maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
+      `  return (`,
+      svg,
+      `  );`,
+      `};`,
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     if (name.originalFileName.includes('.svg')) {
       if (!fs.existsSync(outputFolder)) {

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const TM = () => {
+  const ids = useStableUniqueId(4);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const TM = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="59197ccb-1b9d-4238B720-9a0afe968ea3"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const TM = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#59197ccb-1b9d-4238B720-9a0afe968ea3)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const TM = () => {
           fill="#29C470"
         />
         <mask
-          id="f0d10c8cE333-4699A558C21e6f64de5e"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const TM = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#f0d10c8cE333-4699A558C21e6f64de5e)">
+        <g mask={`url(#${ids[1]})`}>
           <rect
             x="2"
             y="-0.322998"
@@ -50,7 +53,7 @@ export const TM = () => {
             fill="#C51918"
           />
           <mask
-            id="6ae87abaB8a8-4bb1Bc8d-96d47b87edb7"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="2"
             y="-1"
@@ -65,7 +68,7 @@ export const TM = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#6ae87abaB8a8-4bb1Bc8d-96d47b87edb7)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -113,7 +116,7 @@ export const TM = () => {
               fill="#E8AA00"
             />
             <mask
-              id="ad19af82Ad75-43ec-82dc-2dfdaf1facb7"
+              id={`${ids[3]}`}
               maskUnits="userSpaceOnUse"
               x="4"
               y="17"
@@ -127,7 +130,7 @@ export const TM = () => {
                 fill="white"
               />
             </mask>
-            <g mask="url(#ad19af82Ad75-43ec-82dc-2dfdaf1facb7)">
+            <g mask={`url(#${ids[3]})`}>
               <path
                 d="M4.47095 19.0957H7.23201V20.9186H4.47095V19.0957Z"
                 fill="#E8AA00"

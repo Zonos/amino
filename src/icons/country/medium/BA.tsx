@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const BA = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="20"
@@ -9,9 +12,9 @@ export const BA = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#a18b7719D83c-4191Bd07Fe1e25f5e265)">
+      <g clipPath={`url(#${ids[1]})`}>
         <mask
-          id="76656616Ce14-4a44-88fa-0b82c4e3a6d6"
+          id={`${ids[0]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -20,7 +23,7 @@ export const BA = () => {
         >
           <rect width="21.25" height="15" fill="white" />
         </mask>
-        <g mask="url(#76656616Ce14-4a44-88fa-0b82c4e3a6d6)">
+        <g mask={`url(#${ids[0]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -72,7 +75,7 @@ export const BA = () => {
         </g>
       </g>
       <defs>
-        <clipPath id="a18b7719D83c-4191Bd07Fe1e25f5e265">
+        <clipPath id={`${ids[1]}`}>
           <path
             d="M0 2C0 0.89543 0.895431 0 2 0H18C19.1046 0 20 0.895431 20 2V13C20 14.1046 19.1046 15 18 15H2C0.895431 15 0 14.1046 0 13V2Z"
             fill="white"

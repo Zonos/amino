@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const GQ = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const GQ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="5240143e-82be-4387Bf54-90a17f15cdeb"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const GQ = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#5240143e-82be-4387Bf54-90a17f15cdeb)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const GQ = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="95a76df6-7402-4d3aBce8-29a987d6cb2d"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const GQ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#95a76df6-7402-4d3aBce8-29a987d6cb2d)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -68,7 +71,7 @@ export const GQ = () => {
           fill="#0075D5"
         />
         <mask
-          id="d62ad25d-1e61-4f17-9900-0c087fa49721"
+          id={`${ids[2]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -82,7 +85,7 @@ export const GQ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#d62ad25d-1e61-4f17-9900-0c087fa49721)" />
+        <g mask={`url(#${ids[2]})`} />
         <path
           d="M9.3258 5.68898L9.31554 5.6913L9.30782 5.68416L9.1815 5.56746L9.16571 5.73871L9.16474 5.74918L9.15557 5.75432L9.00555 5.8384L9.16354 5.90634L9.1732 5.91049L9.17525 5.9208L9.20885 6.08946L9.32229 5.9602L9.32922 5.9523L9.33966 5.95353L9.51045 5.97369L9.42257 5.82587L9.4172 5.81683L9.4216 5.80728L9.49355 5.65108L9.3258 5.68898Z"
           fill="#FFD500"

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const MQ1 = () => {
+  const ids = useStableUniqueId(0);
   return (
     <svg
       width="32"

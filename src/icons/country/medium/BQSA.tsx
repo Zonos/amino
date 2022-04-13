@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const BQSA = () => {
+  const ids = useStableUniqueId(1);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const BQSA = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="38ac9197-6ace-49f2Bd40-7db707e7606e"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const BQSA = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#38ac9197-6ace-49f2Bd40-7db707e7606e)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

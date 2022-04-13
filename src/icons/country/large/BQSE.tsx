@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const BQSE = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const BQSE = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="a51c2e16-2624-433a-86ca-06e9979a47bd"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const BQSE = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#a51c2e16-2624-433a-86ca-06e9979a47bd)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -47,7 +50,7 @@ export const BQSE = () => {
           strokeWidth="2"
         />
         <mask
-          id="6778fe51-8700-413aA64dC1c14dd0f1e1"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="1"
           y="4"
@@ -61,7 +64,7 @@ export const BQSE = () => {
             strokeWidth="2"
           />
         </mask>
-        <g mask="url(#6778fe51-8700-413aA64dC1c14dd0f1e1)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M11.6088 16C11.8778 16 25 16 25 16L23.5841 14.7239C23.5841 14.7239 20.7528 12.2005 20.5706 12.0849C20.3884 11.9692 20.0874 11.9193 19.7449 12.2869C19.4023 12.6544 19.2059 12.0849 18.9207 12.0849C18.6355 12.0849 18.5149 12.0849 18.1011 12.5565C17.6874 13.028 16.1973 14.7239 16.1973 14.7239H14.0075C14.0075 14.7239 13.6381 14.4453 13.4276 14.5447C13.2171 14.6441 12.0312 13.4452 11.6088 13.3557C11.1864 13.2661 10.9085 13.6806 10.9085 14.0105C10.9085 14.3404 10.7098 13.7082 10.3056 13.8938C9.90147 14.0794 10.0318 14.5447 10.0318 14.5447C10.0318 14.5447 11.3398 16 11.6088 16Z"
             fill="#059334"

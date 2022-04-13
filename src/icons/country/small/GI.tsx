@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const GI = () => {
+  const ids = useStableUniqueId(1);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const GI = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="f4e8f20e-6750-4e33B6dbE54b39b676b8"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const GI = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#f4e8f20e-6750-4e33B6dbE54b39b676b8)">
+      <g mask={`url(#${ids[0]})`}>
         <rect width="16" height="12" fill="#F7FCFF" />
         <path
           fillRule="evenodd"
@@ -36,19 +39,19 @@ export const GI = () => {
         <path
           fillRule="evenodd"
           clipRule="evenodd"
-          d="M5.80798 6.84511C5.80798 6.5399 6.05541 6.29248 6.36061 6.29248C6.66582 6.29248 6.91325 6.5399 6.91325 6.84511V7.75915H5.80798V6.84511Z"
+          d="M5.80798 6.84511C5.80798 6.5399 6.05541 6.29248 6.36061 6.29248V6.29248C6.66582 6.29248 6.91325 6.5399 6.91325 6.84511V7.75915H5.80798V6.84511Z"
           fill="#272727"
         />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
-          d="M9.8606 6.84511C9.8606 6.5399 10.108 6.29248 10.4132 6.29248C10.7184 6.29248 10.9659 6.5399 10.9659 6.84511V7.75915H9.8606V6.84511Z"
+          d="M9.8606 6.84511C9.8606 6.5399 10.108 6.29248 10.4132 6.29248V6.29248C10.7184 6.29248 10.9659 6.5399 10.9659 6.84511V7.75915H9.8606V6.84511Z"
           fill="#272727"
         />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
-          d="M7.65002 6.66262C7.65002 6.25568 7.97992 5.92578 8.38687 5.92578C8.79381 5.92578 9.12371 6.25568 9.12371 6.66262V8.12578H7.65002V6.66262Z"
+          d="M7.65002 6.66262C7.65002 6.25568 7.97992 5.92578 8.38687 5.92578V5.92578C8.79381 5.92578 9.12371 6.25568 9.12371 6.66262V8.12578H7.65002V6.66262Z"
           fill="#272727"
         />
         <path

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const DZ = () => {
+  const ids = useStableUniqueId(0);
   return (
     <svg
       width="32"

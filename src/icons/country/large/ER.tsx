@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const ER = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="32"
@@ -9,9 +12,9 @@ export const ER = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#f2e3d721-86dc-45fb-8d71B24492f3e735)">
+      <g clipPath={`url(#${ids[1]})`}>
         <mask
-          id="e4bdcef7C577-46f7B865-16b4e1320c61"
+          id={`${ids[0]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -20,7 +23,7 @@ export const ER = () => {
         >
           <rect width="34" height="24" fill="white" />
         </mask>
-        <g mask="url(#e4bdcef7C577-46f7B865-16b4e1320c61)">
+        <g mask={`url(#${ids[0]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -48,7 +51,7 @@ export const ER = () => {
         </g>
       </g>
       <defs>
-        <clipPath id="f2e3d721-86dc-45fb-8d71B24492f3e735">
+        <clipPath id={`${ids[1]}`}>
           <path
             d="M0 3C0 1.34315 1.34315 0 3 0H29C30.6569 0 32 1.34315 32 3V21C32 22.6569 30.6569 24 29 24H3C1.34315 24 0 22.6569 0 21V3Z"
             fill="white"

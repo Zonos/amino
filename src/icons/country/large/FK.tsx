@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const FK = () => {
+  const ids = useStableUniqueId(5);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const FK = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="931c9ead-5070-4c12B30f-5580ed50ea13"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const FK = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#931c9ead-5070-4c12B30f-5580ed50ea13)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const FK = () => {
           fill="#2E42A5"
         />
         <mask
-          id="e38463a9B918-4cdaB9edA20704bd7345"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const FK = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#e38463a9B918-4cdaB9edA20704bd7345)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M25.9503 19.714C24.9216 19.714 24.2057 19.4712 23.6961 19.0478C23.1843 18.6225 22.8487 17.9888 22.6341 17.1443C22.4191 16.2985 22.3312 15.2635 22.2983 14.0611C22.2753 13.2161 22.2795 12.2991 22.2841 11.3158C22.2857 10.9791 22.2873 10.6347 22.2878 10.2827H29.7038C29.8362 12.6901 29.8836 15.0362 29.4124 16.7958C29.1702 17.7 28.7967 18.4261 28.2479 18.9257C27.7044 19.4206 26.9664 19.714 25.9503 19.714Z"
             fill="#6DC2FF"
@@ -49,7 +52,7 @@ export const FK = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="b32bf537C60f-46c4A623-33b55e087052"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="22"
             y="10"
@@ -63,7 +66,7 @@ export const FK = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#b32bf537C60f-46c4A623-33b55e087052)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -105,7 +108,7 @@ export const FK = () => {
           />
           <rect width="18" height="14" fill="#2B409A" />
           <mask
-            id="a1a2565aF02c-448c-8b2c-3c758dc943a0"
+            id={`${ids[3]}`}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -114,7 +117,7 @@ export const FK = () => {
           >
             <rect width="18" height="14" fill="white" />
           </mask>
-          <g mask="url(#a1a2565aF02c-448c-8b2c-3c758dc943a0)">
+          <g mask={`url(#${ids[3]})`}>
             <path
               d="M-2.00415 12.9999L1.9568 14.7371L18.09 1.88878L20.1793 -0.692749L15.9436 -1.27337L9.3633 4.26332L4.06679 7.99375L-2.00415 12.9999Z"
               fill="#F7FCFF"
@@ -132,7 +135,7 @@ export const FK = () => {
               fill="#F50100"
             />
             <mask
-              id="8bed5ad6-655a-41bfAd4b-77bc17de6961"
+              id={`${ids[4]}`}
               maskUnits="userSpaceOnUse"
               x="-2"
               y="-2"
@@ -156,7 +159,7 @@ export const FK = () => {
             <path
               d="M7.98451 0V-1.5H6.48451V0H7.98451ZM9.98451 0H11.4845V-1.5H9.98451V0ZM7.98451 6V7.5H9.48451V6H7.98451ZM0 6V4.5H-1.5V6H0ZM0 8H-1.5V9.5H0V8ZM7.98451 8H9.48451V6.5H7.98451V8ZM7.98451 14H6.48451V15.5H7.98451V14ZM9.98451 14V15.5H11.4845V14H9.98451ZM9.98451 8V6.5H8.48451V8H9.98451ZM18 8V9.5H19.5V8H18ZM18 6H19.5V4.5H18V6ZM9.98451 6H8.48451V7.5H9.98451V6ZM7.98451 1.5H9.98451V-1.5H7.98451V1.5ZM9.48451 6V0H6.48451V6H9.48451ZM0 7.5H7.98451V4.5H0V7.5ZM1.5 8V6H-1.5V8H1.5ZM7.98451 6.5H0V9.5H7.98451V6.5ZM9.48451 14V8H6.48451V14H9.48451ZM9.98451 12.5H7.98451V15.5H9.98451V12.5ZM8.48451 8V14H11.4845V8H8.48451ZM18 6.5H9.98451V9.5H18V6.5ZM16.5 6V8H19.5V6H16.5ZM9.98451 7.5H18V4.5H9.98451V7.5ZM8.48451 0V6H11.4845V0H8.48451Z"
               fill="#F7FCFF"
-              mask="url(#8bed5ad6-655a-41bfAd4b-77bc17de6961)"
+              mask={`url(#${ids[4]})`}
             />
           </g>
         </g>

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const BZ = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const BZ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="a219f03a-995a-483e-8e35-52761949f303"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const BZ = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#a219f03a-995a-483e-8e35-52761949f303)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const BZ = () => {
           fill="#0168B4"
         />
         <mask
-          id="81a9e995-8431-4a5d-9f87D533385f2de9"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const BZ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#81a9e995-8431-4a5d-9f87D533385f2de9)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -67,7 +70,7 @@ export const BZ = () => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M5 6C5 7.65685 6.34315 9 8 9C9.65685 9 11 7.65685 11 6C11 4.34315 9.65685 3 8 3C6.34315 3 5 4.34315 5 6ZM10.3 6C10.3 7.27026 9.27026 8.3 8 8.3C6.72974 8.3 5.7 7.27026 5.7 6C5.7 4.72974 6.72974 3.7 8 3.7C9.27026 3.7 10.3 4.72974 10.3 6Z"
+            d="M5 6C5 7.65685 6.34315 9 8 9C9.65685 9 11 7.65685 11 6C11 4.34315 9.65685 3 8 3C6.34315 3 5 4.34315 5 6ZM10.3 6C10.3 7.27025 9.27025 8.3 8 8.3C6.72974 8.3 5.7 7.27025 5.7 6C5.7 4.72974 6.72974 3.7 8 3.7C9.27025 3.7 10.3 4.72974 10.3 6Z"
             fill="#5B8C39"
           />
           <path

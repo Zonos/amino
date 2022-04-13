@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const AW = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const AW = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="00a48662-9e6e-43e2-81d1-84e010e14349"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const AW = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#00a48662-9e6e-43e2-81d1-84e010e14349)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const AW = () => {
           fill="#5BA3DA"
         />
         <mask
-          id="41d012c6-971c-4b0d-9123-5b0ec76e1386"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,8 +44,8 @@ export const AW = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#41d012c6-971c-4b0d-9123-5b0ec76e1386)">
-          <g filter="url(#68599631-737e-4047B980Dfcc44256b80)">
+        <g mask={`url(#${ids[1]})`}>
+          <g filter={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -66,7 +69,7 @@ export const AW = () => {
       </g>
       <defs>
         <filter
-          id="68599631-737e-4047B980Dfcc44256b80"
+          id={`${ids[2]}`}
           x="-0.192261"
           y="-0.0202637"
           width="8.68054"

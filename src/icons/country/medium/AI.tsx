@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const AI = () => {
+  const ids = useStableUniqueId(4);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const AI = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="92ede070D136-4534-9df6C32ac92632ae"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const AI = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#92ede070D136-4534-9df6C32ac92632ae)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const AI = () => {
           fill="#2E42A5"
         />
         <mask
-          id="a5dc7f75Fbc7-44dc-8516F6ccce13856d"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const AI = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#a5dc7f75Fbc7-44dc-8516F6ccce13856d)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M16.2189 13.4776C15.5908 13.4776 15.1669 13.3295 14.8699 13.0828C14.5708 12.8343 14.3685 12.4591 14.2371 11.9422C14.1054 11.4239 14.0506 10.7854 14.0302 10.0357C14.0158 9.50913 14.0184 8.9384 14.0213 8.32457C14.0221 8.14362 14.023 7.95892 14.0234 7.77051H18.476C18.555 9.24487 18.5766 10.661 18.2921 11.7232C18.1435 12.2782 17.9168 12.7133 17.5918 13.0093C17.272 13.3005 16.8344 13.4776 16.2189 13.4776Z"
             fill="white"
@@ -80,7 +83,7 @@ export const AI = () => {
           />
           <rect width="11" height="9" fill="#2E42A5" />
           <mask
-            id="3448144b-0302-41e2-97e2A3d8927757b7"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -89,7 +92,7 @@ export const AI = () => {
           >
             <rect width="11" height="9" fill="white" />
           </mask>
-          <g mask="url(#3448144b-0302-41e2-97e2A3d8927757b7)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               d="M-1.25269 8.12494L1.22291 9.21069L11.3062 1.18052L12.612 -0.432938L9.96468 -0.795827L5.85197 2.6646L2.54165 4.99613L-1.25269 8.12494Z"
               fill="#F7FCFF"
@@ -107,7 +110,7 @@ export const AI = () => {
               fill="#F50100"
             />
             <mask
-              id="594c551e-177c-4f9a-8013D3d2c29ef718"
+              id={`${ids[3]}`}
               maskUnits="userSpaceOnUse"
               x="-1"
               y="-1"
@@ -131,7 +134,7 @@ export const AI = () => {
             <path
               d="M5 0V-0.9375H4.0625V0H5ZM6 0H6.9375V-0.9375H6V0ZM5 4V4.9375H5.9375V4H5ZM0 4V3.0625H-0.9375V4H0ZM0 5H-0.9375V5.9375H0V5ZM5 5H5.9375V4.0625H5V5ZM5 9H4.0625V9.9375H5V9ZM6 9V9.9375H6.9375V9H6ZM6 5V4.0625H5.0625V5H6ZM11 5V5.9375H11.9375V5H11ZM11 4H11.9375V3.0625H11V4ZM6 4H5.0625V4.9375H6V4ZM5 0.9375H6V-0.9375H5V0.9375ZM5.9375 4V0H4.0625V4H5.9375ZM0 4.9375H5V3.0625H0V4.9375ZM0.9375 5V4H-0.9375V5H0.9375ZM5 4.0625H0V5.9375H5V4.0625ZM5.9375 9V5H4.0625V9H5.9375ZM6 8.0625H5V9.9375H6V8.0625ZM5.0625 5V9H6.9375V5H5.0625ZM11 4.0625H6V5.9375H11V4.0625ZM10.0625 4V5H11.9375V4H10.0625ZM6 4.9375H11V3.0625H6V4.9375ZM5.0625 0V4H6.9375V0H5.0625Z"
               fill="#F7FCFF"
-              mask="url(#594c551e-177c-4f9a-8013D3d2c29ef718)"
+              mask={`url(#${ids[3]})`}
             />
           </g>
         </g>

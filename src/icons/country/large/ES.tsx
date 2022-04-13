@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const ES = () => {
+  const ids = useStableUniqueId(5);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const ES = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="89d6ea43E81b-46dc-9f38-58fba94999c3"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const ES = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#89d6ea43E81b-46dc-9f38-58fba94999c3)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const ES = () => {
           fill="#FFB400"
         />
         <mask
-          id="df05e6ff-1038-4573-9123Cb3e305a5dc4"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const ES = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#df05e6ff-1038-4573-9123Cb3e305a5dc4)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -86,7 +89,7 @@ export const ES = () => {
             fill="#005BBF"
           />
           <mask
-            id="3585a549Ad75-4a1bAff6B8ca04eb86f1"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="4"
             y="16"
@@ -100,7 +103,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#3585a549Ad75-4a1bAff6B8ca04eb86f1)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               d="M4.54181 17.7118L4.4978 17.6045C4.67938 17.5237 4.86161 17.4832 5.04411 17.4832C5.16202 17.4832 5.22359 17.4996 5.32826 17.5462C5.4202 17.5871 5.46786 17.5998 5.56841 17.5998C5.66896 17.5998 5.71662 17.5871 5.80856 17.5462C5.91323 17.4996 5.9748 17.4832 6.09271 17.4832C6.27521 17.4832 6.45744 17.5237 6.63902 17.6045L6.59501 17.7118C6.42706 17.6371 6.25975 17.5998 6.09271 17.5998C5.99216 17.5998 5.9445 17.6125 5.85256 17.6535C5.74789 17.7 5.68632 17.7165 5.56841 17.7165C5.4505 17.7165 5.38893 17.7 5.28426 17.6535C5.19232 17.6125 5.14466 17.5998 5.04411 17.5998C4.87707 17.5998 4.70976 17.6371 4.54181 17.7118Z"
               fill="white"
@@ -142,7 +145,7 @@ export const ES = () => {
             fill="#005BBF"
           />
           <mask
-            id="fbcf72f0Bf59-4ea3-961e-43978e401333"
+            id={`${ids[3]}`}
             maskUnits="userSpaceOnUse"
             x="15"
             y="16"
@@ -156,7 +159,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#fbcf72f0Bf59-4ea3-961e-43978e401333)">
+          <g mask={`url(#${ids[3]})`}>
             <path
               d="M15.5179 17.7118L15.4739 17.6045C15.6555 17.5237 15.8377 17.4832 16.0202 17.4832C16.1381 17.4832 16.1997 17.4996 16.3043 17.5462C16.3963 17.5871 16.4439 17.5998 16.5445 17.5998C16.645 17.5998 16.6927 17.5871 16.7846 17.5462C16.8893 17.4996 16.9509 17.4832 17.0688 17.4832C17.2513 17.4832 17.4335 17.5237 17.6151 17.6045L17.5711 17.7118C17.4031 17.6371 17.2358 17.5998 17.0688 17.5998C16.9682 17.5998 16.9206 17.6125 16.8286 17.6535C16.724 17.7 16.6624 17.7165 16.5445 17.7165C16.4266 17.7165 16.365 17.7 16.2603 17.6535C16.1684 17.6125 16.1207 17.5998 16.0202 17.5998C15.8531 17.5998 15.6858 17.6371 15.5179 17.7118Z"
               fill="white"
@@ -257,7 +260,7 @@ export const ES = () => {
             fill="#E1E5E8"
           />
           <mask
-            id="bdbca3cf-5ffb-4febB8f5-523dcf5db932"
+            id={`${ids[4]}`}
             maskUnits="userSpaceOnUse"
             x="7"
             y="9"
@@ -271,7 +274,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#bdbca3cf-5ffb-4febB8f5-523dcf5db932)">
+          <g mask={`url(#${ids[4]})`}>
             <rect
               x="7.47192"
               y="13.2961"

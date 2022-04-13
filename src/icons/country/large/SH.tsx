@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const SH = () => {
+  const ids = useStableUniqueId(6);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const SH = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="d8461366Aa2e-481a-9a76B91012262aba"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const SH = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#d8461366Aa2e-481a-9a76B91012262aba)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const SH = () => {
           fill="#2E42A5"
         />
         <mask
-          id="4487c69aF755-40f8A8daB55713ab1f36"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,10 +44,10 @@ export const SH = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#4487c69aF755-40f8A8daB55713ab1f36)">
+        <g mask={`url(#${ids[1]})`}>
           <rect width="18" height="14" fill="#2B409A" />
           <mask
-            id="888ec7baC445-48fa-8de2-59f0ae886dbb"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -53,7 +56,7 @@ export const SH = () => {
           >
             <rect width="18" height="14" fill="white" />
           </mask>
-          <g mask="url(#888ec7baC445-48fa-8de2-59f0ae886dbb)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               d="M-2.00415 12.9999L1.9568 14.7371L18.09 1.88878L20.1793 -0.692749L15.9436 -1.27337L9.3633 4.26332L4.06679 7.99375L-2.00415 12.9999Z"
               fill="#F7FCFF"
@@ -71,7 +74,7 @@ export const SH = () => {
               fill="#F50100"
             />
             <mask
-              id="859c57b7-574f-4864Ae08-5d4321bd3cb7"
+              id={`${ids[3]}`}
               maskUnits="userSpaceOnUse"
               x="-2"
               y="-2"
@@ -95,7 +98,7 @@ export const SH = () => {
             <path
               d="M7.98451 0V-1.5H6.48451V0H7.98451ZM9.98451 0H11.4845V-1.5H9.98451V0ZM7.98451 6V7.5H9.48451V6H7.98451ZM0 6V4.5H-1.5V6H0ZM0 8H-1.5V9.5H0V8ZM7.98451 8H9.48451V6.5H7.98451V8ZM7.98451 14H6.48451V15.5H7.98451V14ZM9.98451 14V15.5H11.4845V14H9.98451ZM9.98451 8V6.5H8.48451V8H9.98451ZM18 8V9.5H19.5V8H18ZM18 6H19.5V4.5H18V6ZM9.98451 6H8.48451V7.5H9.98451V6ZM7.98451 1.5H9.98451V-1.5H7.98451V1.5ZM9.48451 6V0H6.48451V6H9.48451ZM0 7.5H7.98451V4.5H0V7.5ZM1.5 8V6H-1.5V8H1.5ZM7.98451 6.5H0V9.5H7.98451V6.5ZM9.48451 14V8H6.48451V14H9.48451ZM9.98451 12.5H7.98451V15.5H9.98451V12.5ZM8.48451 8V14H11.4845V8H8.48451ZM18 6.5H9.98451V9.5H18V6.5ZM16.5 6V8H19.5V6H16.5ZM9.98451 7.5H18V4.5H9.98451V7.5ZM8.48451 0V6H11.4845V0H8.48451Z"
               fill="#F7FCFF"
-              mask="url(#859c57b7-574f-4864Ae08-5d4321bd3cb7)"
+              mask={`url(#${ids[3]})`}
             />
           </g>
           <path
@@ -105,7 +108,7 @@ export const SH = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="daf74f36-964f-4ce6Be44Ff497adbae3d"
+            id={`${ids[4]}`}
             maskUnits="userSpaceOnUse"
             x="21"
             y="9"
@@ -119,9 +122,9 @@ export const SH = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#daf74f36-964f-4ce6Be44Ff497adbae3d)">
+          <g mask={`url(#${ids[4]})`}>
             <rect x="24" y="18" width="6" height="2" fill="#2E42A5" />
-            <g filter="url(#dbb156d9-116b-4aaf-88acE995e4ec815f)">
+            <g filter={`url(#${ids[5]})`}>
               <rect x="20" y="8" width="12" height="6" fill="#FDFF00" />
             </g>
             <path
@@ -301,7 +304,7 @@ export const SH = () => {
       </g>
       <defs>
         <filter
-          id="dbb156d9-116b-4aaf-88acE995e4ec815f"
+          id={`${ids[5]}`}
           x="20"
           y="8"
           width="12"

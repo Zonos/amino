@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const HR = () => {
+  const ids = useStableUniqueId(6);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const HR = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="e6991c8d-9e6b-4a3f-99b5F292d0350592"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const HR = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#e6991c8d-9e6b-4a3f-99b5F292d0350592)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const HR = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="3cd3eb07C50d-4227-8666-9fe94d19c3e5"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const HR = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#3cd3eb07C50d-4227-8666-9fe94d19c3e5)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -68,7 +71,7 @@ export const HR = () => {
             strokeWidth="0.703125"
           />
           <mask
-            id="3ca82babF80e-48f9B9e1Aa2ea31ebec9"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="6"
             y="5"
@@ -82,7 +85,7 @@ export const HR = () => {
               strokeWidth="0.703125"
             />
           </mask>
-          <g mask="url(#3ca82babF80e-48f9B9e1Aa2ea31ebec9)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -141,7 +144,7 @@ export const HR = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="73a050fb-7f0c-4eb0-8900-57e7471e3111"
+            id={`${ids[3]}`}
             maskUnits="userSpaceOnUse"
             x="6"
             y="1"
@@ -155,7 +158,7 @@ export const HR = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#73a050fb-7f0c-4eb0-8900-57e7471e3111)">
+          <g mask={`url(#${ids[3]})`}>
             <path
               d="M7.77277 4.14844L7.61621 3.77964C7.95247 3.63246 8.52049 3.54215 9.11822 3.50684L9.14119 3.90776C8.58552 3.94059 8.0599 4.02277 7.77277 4.14844Z"
               fill="#C51918"
@@ -172,7 +175,7 @@ export const HR = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="dbbb0670-3782-444bAa1eB56fdfca469f"
+            id={`${ids[4]}`}
             maskUnits="userSpaceOnUse"
             x="9"
             y="1"
@@ -186,7 +189,7 @@ export const HR = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#dbbb0670-3782-444bAa1eB56fdfca469f)">
+          <g mask={`url(#${ids[4]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -207,7 +210,7 @@ export const HR = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="4e988b8eA1c5-4019B714-3bd1d84782a7"
+            id={`${ids[5]}`}
             maskUnits="userSpaceOnUse"
             x="11"
             y="1"
@@ -221,7 +224,7 @@ export const HR = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#4e988b8eA1c5-4019B714-3bd1d84782a7)">
+          <g mask={`url(#${ids[5]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"

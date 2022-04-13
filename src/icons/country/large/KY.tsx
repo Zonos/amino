@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const KY = () => {
+  const ids = useStableUniqueId(5);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const KY = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="721dc50b-9f40-47de-86d9-4f5b972f18a6"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const KY = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#721dc50b-9f40-47de-86d9-4f5b972f18a6)" />
+      <g mask={`url(#${ids[0]})`} />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -27,7 +30,7 @@ export const KY = () => {
         fill="#2E42A5"
       />
       <mask
-        id="bb33340a-2a18-4780-8c30C549cb6b78fe"
+        id={`${ids[1]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -41,10 +44,10 @@ export const KY = () => {
           fill="white"
         />
       </mask>
-      <g mask="url(#bb33340a-2a18-4780-8c30C549cb6b78fe)">
+      <g mask={`url(#${ids[1]})`}>
         <rect width="18" height="14" fill="#2B409A" />
         <mask
-          id="912d7e32-4223-4b9b-8981-602233b73902"
+          id={`${ids[2]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -53,7 +56,7 @@ export const KY = () => {
         >
           <rect width="18" height="14" fill="white" />
         </mask>
-        <g mask="url(#912d7e32-4223-4b9b-8981-602233b73902)">
+        <g mask={`url(#${ids[2]})`}>
           <path
             d="M-2.00415 12.9999L1.9568 14.7371L18.09 1.88878L20.1793 -0.692749L15.9436 -1.27337L9.3633 4.26332L4.06679 7.99375L-2.00415 12.9999Z"
             fill="#F7FCFF"
@@ -71,7 +74,7 @@ export const KY = () => {
             fill="#F50100"
           />
           <mask
-            id="0ac4172f-5bcf-4d47B296-487ae87f0193"
+            id={`${ids[3]}`}
             maskUnits="userSpaceOnUse"
             x="-2"
             y="-2"
@@ -95,7 +98,7 @@ export const KY = () => {
           <path
             d="M7.98451 0V-1.5H6.48451V0H7.98451ZM9.98451 0H11.4845V-1.5H9.98451V0ZM7.98451 6V7.5H9.48451V6H7.98451ZM0 6V4.5H-1.5V6H0ZM0 8H-1.5V9.5H0V8ZM7.98451 8H9.48451V6.5H7.98451V8ZM7.98451 14H6.48451V15.5H7.98451V14ZM9.98451 14V15.5H11.4845V14H9.98451ZM9.98451 8V6.5H8.48451V8H9.98451ZM18 8V9.5H19.5V8H18ZM18 6H19.5V4.5H18V6ZM9.98451 6H8.48451V7.5H9.98451V6ZM7.98451 1.5H9.98451V-1.5H7.98451V1.5ZM9.48451 6V0H6.48451V6H9.48451ZM0 7.5H7.98451V4.5H0V7.5ZM1.5 8V6H-1.5V8H1.5ZM7.98451 6.5H0V9.5H7.98451V6.5ZM9.48451 14V8H6.48451V14H9.48451ZM9.98451 12.5H7.98451V15.5H9.98451V12.5ZM8.48451 8V14H11.4845V8H8.48451ZM18 6.5H9.98451V9.5H18V6.5ZM16.5 6V8H19.5V6H16.5ZM9.98451 7.5H18V4.5H9.98451V7.5ZM8.48451 0V6H11.4845V0H8.48451Z"
             fill="#F7FCFF"
-            mask="url(#0ac4172f-5bcf-4d47B296-487ae87f0193)"
+            mask={`url(#${ids[3]})`}
           />
         </g>
         <path
@@ -113,7 +116,7 @@ export const KY = () => {
           strokeWidth="0.1"
         />
         <mask
-          id="0418e2ac-2669-4791-8524-22623be4aaec"
+          id={`${ids[4]}`}
           maskUnits="userSpaceOnUse"
           x="21"
           y="11"
@@ -130,7 +133,7 @@ export const KY = () => {
             strokeWidth="0.1"
           />
         </mask>
-        <g mask="url(#0418e2ac-2669-4791-8524-22623be4aaec)">
+        <g mask={`url(#${ids[4]})`}>
           <rect x="20.5" y="10.5" width="9" height="3.4" fill="#F50100" />
           <path
             d="M24.512 14.6001C24.8 14.6001 25.376 14.2866 25.52 14.2143C26.048 13.9008 26.432 14.1902 26.744 14.3349C27.08 14.4795 27.704 14.6483 28.088 14.3349C28.472 14.0214 28.688 14.0455 28.952 14.0455C29 13.6838 29 13.3221 29 12.9122V12.6229C28.664 12.5506 28.496 12.647 28.136 12.9605C27.776 13.2739 27.368 13.2016 26.84 13.0087C26.336 12.7917 25.832 12.4059 25.328 13.0087C25.184 13.1775 24.848 13.4186 24.512 13.4186C24.152 13.4186 23.84 13.1775 23.696 13.0087C23.168 12.4059 22.688 12.7917 22.184 13.0087C21.656 13.2016 21.224 13.2739 20.864 12.9605C20.528 12.647 20.36 12.5506 20 12.6229V12.9122C20 13.3221 20.024 13.6838 20.072 14.0455C20.336 14.0455 20.528 14.0214 20.912 14.3349C21.296 14.6483 21.944 14.4795 22.256 14.3349C22.592 14.1902 22.976 13.9008 23.504 14.2143C23.648 14.2866 24.2 14.6001 24.512 14.6001H24.512Z"

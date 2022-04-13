@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const ZA = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const ZA = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="10f60cd3F12d-425aB2baF0ec2eff6146"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const ZA = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#10f60cd3F12d-425aB2baF0ec2eff6146)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -39,7 +42,7 @@ export const ZA = () => {
           fill="#3D58DB"
         />
         <mask
-          id="f9713888-5888-4d85Bff4-1a24d8122466"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="-1"
           y="-4"
@@ -63,7 +66,7 @@ export const ZA = () => {
         <path
           d="M0 -1L0.613941 -1.78935L-1 -3.04464V-1H0ZM7.71429 5L7.10035 5.78935L7.37118 6H7.71429V5ZM0 13H-1V15.0446L0.613941 13.7894L0 13ZM7.71429 7V6H7.37118L7.10035 6.21065L7.71429 7ZM16 7V8H17V7H16ZM16 5H17V4H16V5ZM-0.613941 -0.210648L7.10035 5.78935L8.32823 4.21065L0.613941 -1.78935L-0.613941 -0.210648ZM1 13V-1H-1V13H1ZM7.10035 6.21065L-0.613941 12.2106L0.613941 13.7894L8.32823 7.78935L7.10035 6.21065ZM16 6H7.71429V8H16V6ZM15 5V7H17V5H15ZM7.71429 6H16V4H7.71429V6Z"
           fill="#F7FCFF"
-          mask="url(#f9713888-5888-4d85Bff4-1a24d8122466)"
+          mask={`url(#${ids[1]})`}
         />
         <path
           d="M0.3 2.6L-0.5 2V3V9V10L0.3 9.4L4.3 6.4L4.83333 6L4.3 5.6L0.3 2.6Z"

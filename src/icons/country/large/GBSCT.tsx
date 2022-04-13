@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const GBSCT = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const GBSCT = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="fbe80760Dc4e-40fdA7f5B7435937f1ad"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const GBSCT = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#fbe80760Dc4e-40fdA7f5B7435937f1ad)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const GBSCT = () => {
           fill="#0067C3"
         />
         <mask
-          id="ef51dfe7-6e7e-45aa-9cd8-62ec504d0087"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const GBSCT = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#ef51dfe7-6e7e-45aa-9cd8-62ec504d0087)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M1.20005 25.5999L33.2001 1.5999L30.8 -1.6001L-1.19995 22.3999L1.20005 25.5999Z"
             fill="white"

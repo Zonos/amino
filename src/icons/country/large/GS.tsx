@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const GS = () => {
+  const ids = useStableUniqueId(4);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const GS = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="265bbd93Ff16-4b34Aa00Ba50a6a43a7d"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const GS = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#265bbd93Ff16-4b34Aa00Ba50a6a43a7d)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -29,7 +32,7 @@ export const GS = () => {
       </g>
       <rect width="18" height="14" fill="#2B409A" />
       <mask
-        id="433ffea2F0dc-43bd-9dbdA41b608784dd"
+        id={`${ids[1]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -38,7 +41,7 @@ export const GS = () => {
       >
         <rect width="18" height="14" fill="white" />
       </mask>
-      <g mask="url(#433ffea2F0dc-43bd-9dbdA41b608784dd)">
+      <g mask={`url(#${ids[1]})`}>
         <path
           d="M-2.00415 12.9999L1.9568 14.7371L18.09 1.88878L20.1793 -0.692749L15.9436 -1.27337L9.3633 4.26332L4.06679 7.99375L-2.00415 12.9999Z"
           fill="#F7FCFF"
@@ -56,7 +59,7 @@ export const GS = () => {
           fill="#F50100"
         />
         <mask
-          id="7fd2cb67-74ed-411a-98aaC8d9f134086a"
+          id={`${ids[2]}`}
           maskUnits="userSpaceOnUse"
           x="-2"
           y="-2"
@@ -80,7 +83,7 @@ export const GS = () => {
         <path
           d="M7.98451 0V-1.5H6.48451V0H7.98451ZM9.98451 0H11.4845V-1.5H9.98451V0ZM7.98451 6V7.5H9.48451V6H7.98451ZM0 6V4.5H-1.5V6H0ZM0 8H-1.5V9.5H0V8ZM7.98451 8H9.48451V6.5H7.98451V8ZM7.98451 14H6.48451V15.5H7.98451V14ZM9.98451 14V15.5H11.4845V14H9.98451ZM9.98451 8V6.5H8.48451V8H9.98451ZM18 8V9.5H19.5V8H18ZM18 6H19.5V4.5H18V6ZM9.98451 6H8.48451V7.5H9.98451V6ZM7.98451 1.5H9.98451V-1.5H7.98451V1.5ZM9.48451 6V0H6.48451V6H9.48451ZM0 7.5H7.98451V4.5H0V7.5ZM1.5 8V6H-1.5V8H1.5ZM7.98451 6.5H0V9.5H7.98451V6.5ZM9.48451 14V8H6.48451V14H9.48451ZM9.98451 12.5H7.98451V15.5H9.98451V12.5ZM8.48451 8V14H11.4845V8H8.48451ZM18 6.5H9.98451V9.5H18V6.5ZM16.5 6V8H19.5V6H16.5ZM9.98451 7.5H18V4.5H9.98451V7.5ZM8.48451 0V6H11.4845V0H8.48451Z"
           fill="#F7FCFF"
-          mask="url(#7fd2cb67-74ed-411a-98aaC8d9f134086a)"
+          mask={`url(#${ids[2]})`}
         />
       </g>
       <path
@@ -138,7 +141,7 @@ export const GS = () => {
       />
       <path
         d="M28.3852 12.8513C28.3852 12.9152 28.4548 16.6834 28.5311 16.6474C28.7206 16.5578 28.7642 16.7534 28.7642 16.7534C28.7642 16.7534 28.8296 17.3732 28.6661 17.4562C28.372 17.6093 28.2434 17.6431 28.2434 17.6431L27.9605 17.437C27.9605 17.437 27.6728 17.0345 27.6075 16.8556C27.5422 16.677 27.4637 15.8787 27.4897 15.706C27.5158 15.5337 27.5354 14.5244 27.5226 14.4735C27.5094 14.4222 27.4572 13.5792 27.4897 13.4516C27.5226 13.3239 27.725 12.7617 27.7185 12.7617C27.7185 12.7617 28.3852 12.7875 28.3852 12.8513Z"
-        fill="url(#3cc304f4-5417-4d5e-9c18-148f65f3ebaf)"
+        fill={`url(#${ids[3]})`}
       />
       <path
         d="M27.7318 12.2061C27.8688 12.2061 27.9734 12.3211 28.0062 12.4233C28.0127 12.468 27.993 12.5 27.9995 12.5831C28.0062 12.6661 27.0062 12.6019 26.9998 12.5956C26.9998 12.5956 27.4637 12.1551 27.7318 12.2061Z"
@@ -251,7 +254,7 @@ export const GS = () => {
       />
       <defs>
         <linearGradient
-          id="3cc304f4-5417-4d5e-9c18-148f65f3ebaf"
+          id={`${ids[3]}`}
           x1="28.2751"
           y1="15.6073"
           x2="29.0177"

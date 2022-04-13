@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const NP = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="20"
@@ -9,7 +12,7 @@ export const NP = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#965e889cCb9e-4893A3e4-0a089abca9ac)">
+      <g clipPath={`url(#${ids[1]})`}>
         <rect width="20" height="15" fill="white" />
         <path
           d="M7.11834 7.93832L12.6718 14.4999H0.5V0.977849L12.001 7.1153H7.5H6.42178L7.11834 7.93832Z"
@@ -17,7 +20,7 @@ export const NP = () => {
           stroke="#4857A1"
         />
         <mask
-          id="41c81202A10b-4067B90b-8e11c1a9bf66"
+          id={`${ids[0]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -30,7 +33,7 @@ export const NP = () => {
             stroke="white"
           />
         </mask>
-        <g mask="url(#41c81202A10b-4067B90b-8e11c1a9bf66)">
+        <g mask={`url(#${ids[0]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -52,7 +55,7 @@ export const NP = () => {
         </g>
       </g>
       <defs>
-        <clipPath id="965e889cCb9e-4893A3e4-0a089abca9ac">
+        <clipPath id={`${ids[1]}`}>
           <path
             d="M0 2C0 0.89543 0.895431 0 2 0H18C19.1046 0 20 0.895431 20 2V13C20 14.1046 19.1046 15 18 15H2C0.895431 15 0 14.1046 0 13V2Z"
             fill="white"

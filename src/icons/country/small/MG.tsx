@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const MG = () => {
+  const ids = useStableUniqueId(1);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const MG = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="280f03cd-9d2b-4f62B9f4-65039ba7c27b"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const MG = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#280f03cd-9d2b-4f62B9f4-65039ba7c27b)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

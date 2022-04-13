@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const CD = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const CD = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="f62e0c32D556-408d-8b2f-3e29204a66c0"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const CD = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#f62e0c32D556-408d-8b2f-3e29204a66c0)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const CD = () => {
           fill="#3195F9"
         />
         <mask
-          id="b3147867-679a-4f31A630-4b7a61c98c63"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const CD = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#b3147867-679a-4f31A630-4b7a61c98c63)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M-0.910841 12.7196L-0.56386 13.2395L-0.0440243 12.8925L18.0864 0.790733L18.6063 0.443753L18.2593 -0.0760835L17.149 -1.73956L16.802 -2.25939L16.2821 -1.91241L-1.84832 10.1893L-2.36816 10.5363L-2.02118 11.0561L-0.910841 12.7196Z"
             fill="#E31D1C"

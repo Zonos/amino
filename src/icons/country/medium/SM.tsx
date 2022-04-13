@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const SM = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const SM = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="26d62b68-703f-45caAe2b-3aec7739bf1a"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const SM = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#26d62b68-703f-45caAe2b-3aec7739bf1a)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const SM = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="453cbc6e-45c8-4d80-947e-2dabf7105035"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const SM = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#453cbc6e-45c8-4d80-947e-2dabf7105035)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -69,13 +72,13 @@ export const SM = () => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M11.2736 12.3873C11.2736 12.2592 9.33577 10.9237 8.81565 10.6292C8.29553 10.3346 5.75565 8.71334 6.44733 6.25H6.34265C6.34265 6.25 5.87456 9.28528 9.09959 11.172C10.568 12.1571 10.6411 12.3873 10.6411 12.3873C10.6411 12.3873 11.2736 12.5153 11.2736 12.3873Z"
+            d="M11.2736 12.3873C11.2736 12.2592 9.33577 10.9237 8.81565 10.6292C8.29553 10.3346 5.75565 8.71334 6.44733 6.25H6.34265C6.34265 6.25 5.87456 9.28529 9.09959 11.172C10.568 12.1571 10.6411 12.3873 10.6411 12.3873C10.6411 12.3873 11.2736 12.5153 11.2736 12.3873Z"
             fill="#FECA00"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M8.70271 12.3873C8.70271 12.2592 10.6405 10.9237 11.1607 10.6292C11.6808 10.3346 14.2207 8.71334 13.529 6.25H13.6337C13.6337 6.25 14.1018 9.28528 10.8767 11.172C9.4083 12.1571 9.33522 12.3873 9.33522 12.3873C9.33522 12.3873 8.70271 12.5153 8.70271 12.3873Z"
+            d="M8.70271 12.3873C8.70271 12.2592 10.6405 10.9237 11.1607 10.6292C11.6808 10.3346 14.2207 8.71334 13.529 6.25H13.6337C13.6337 6.25 14.1018 9.28529 10.8767 11.172C9.4083 12.1571 9.33522 12.3873 9.33522 12.3873C9.33522 12.3873 8.70271 12.5153 8.70271 12.3873Z"
             fill="#FECA00"
           />
           <path

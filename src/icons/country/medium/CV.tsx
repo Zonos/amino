@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const CV = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const CV = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="4bacc91fE679-4a50A484B23a6f127f7f"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const CV = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#4bacc91fE679-4a50A484B23a6f127f7f)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const CV = () => {
           fill="#4141DB"
         />
         <mask
-          id="54509e62Caf3-4129A3e5-0b5473d407a6"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,14 +44,14 @@ export const CV = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#54509e62Caf3-4129A3e5-0b5473d407a6)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M0 8.125H-0.625V8.75V10V10.625H0H20H20.625V10V8.75V8.125H20H0Z"
             fill="#F90000"
             stroke="#F7FCFF"
             strokeWidth="1.25"
           />
-          <g filter="url(#c9b98846A8e6-4987B142Bcb19a3f0e3b)">
+          <g filter={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -60,7 +63,7 @@ export const CV = () => {
       </g>
       <defs>
         <filter
-          id="c9b98846A8e6-4987B142Bcb19a3f0e3b"
+          id={`${ids[2]}`}
           x="-0.877319"
           y="1.40063"
           width="15.4835"

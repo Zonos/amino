@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const IO = () => {
+  const ids = useStableUniqueId(4);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const IO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="4111c76b-502c-4f4eB41aEe1d9d913e2d"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const IO = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#4111c76b-502c-4f4eB41aEe1d9d913e2d)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const IO = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="21eb7d14Ca92-49f9Aaec-614e93778e83"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const IO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#21eb7d14Ca92-49f9Aaec-614e93778e83)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -49,7 +52,7 @@ export const IO = () => {
             fill="#2E42A5"
           />
           <mask
-            id="6c060d26A1c5-43b7-86e9-3fa5930197d5"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -63,7 +66,7 @@ export const IO = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#6c060d26A1c5-43b7-86e9-3fa5930197d5)">
+          <g mask={`url(#${ids[2]})`}>
             <rect width="10" height="8" fill="#2E42A5" />
             <path
               d="M-1.54858 7.08323L0.73658 8.04834L10.0442 0.910408L11.2496 -0.523776L8.80591 -0.846345L5.00956 2.22959L1.95388 4.30206L-1.54858 7.08323Z"
@@ -82,7 +85,7 @@ export const IO = () => {
               fill="#F50100"
             />
             <mask
-              id="f89decaeCe69-4e79A6d5-8dde85cc65fe"
+              id={`${ids[3]}`}
               maskUnits="userSpaceOnUse"
               x="-1"
               y="-1"
@@ -106,7 +109,7 @@ export const IO = () => {
             <path
               d="M4 0V-0.5H3.5V0H4ZM5 0H5.5V-0.5H5V0ZM4 3V3.5H4.5V3H4ZM0 3V2.5H-0.5V3H0ZM0 4H-0.5V4.5H0V4ZM4 4H4.5V3.5H4V4ZM4 8H3.5V8.5H4V8ZM5 8V8.5H5.5V8H5ZM5 4V3.5H4.5V4H5ZM11 4V4.5H11.5V4H11ZM11 3H11.5V2.5H11V3ZM5 3H4.5V3.5H5V3ZM4 0.5H5V-0.5H4V0.5ZM4.5 3V0H3.5V3H4.5ZM0 3.5H4V2.5H0V3.5ZM0.5 4V3H-0.5V4H0.5ZM4 3.5H0V4.5H4V3.5ZM4.5 8V4H3.5V8H4.5ZM5 7.5H4V8.5H5V7.5ZM4.5 4V8H5.5V4H4.5ZM11 3.5H5V4.5H11V3.5ZM10.5 3V4H11.5V3H10.5ZM5 3.5H11V2.5H5V3.5ZM4.5 0V3H5.5V0H4.5Z"
               fill="#F7FCFF"
-              mask="url(#f89decaeCe69-4e79A6d5-8dde85cc65fe)"
+              mask={`url(#${ids[3]})`}
             />
           </g>
           <rect

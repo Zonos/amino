@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const HT = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const HT = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="4b445a5cB7c0-4d0bAe8fF5d733cfca22"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const HT = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#4b445a5cB7c0-4d0bAe8fF5d733cfca22)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const HT = () => {
           fill="#2E42A5"
         />
         <mask
-          id="c44e0970F4e5-49ad-81a0-548a16ea3105"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const HT = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#c44e0970F4e5-49ad-81a0-548a16ea3105)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -50,7 +53,7 @@ export const HT = () => {
           />
           <rect x="10" y="8" width="12" height="8" fill="white" />
           <mask
-            id="cbacdd68Bc66-4b51-817c-045a073f73a8"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="10"
             y="8"
@@ -59,7 +62,7 @@ export const HT = () => {
           >
             <rect x="10" y="8" width="12" height="8" fill="white" />
           </mask>
-          <g mask="url(#cbacdd68Bc66-4b51-817c-045a073f73a8)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const GA = () => {
+  const ids = useStableUniqueId(1);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const GA = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="b7bd5bb0-07cf-40a8-83d6B0a3a4e4732c"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const GA = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#b7bd5bb0-07cf-40a8-83d6B0a3a4e4732c)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

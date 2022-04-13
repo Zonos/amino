@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const AO = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const AO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="08bd6284-5bd6-4ed0-9394C0b96d4f2da4"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const AO = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#08bd6284-5bd6-4ed0-9394C0b96d4f2da4)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const AO = () => {
           fill="#1D1D1D"
         />
         <mask
-          id="e1a1557aD5b8-4b2fB7a9-09ce8ad2e164"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,14 +44,14 @@ export const AO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#e1a1557aD5b8-4b2fB7a9-09ce8ad2e164)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M0 0V7.5H20V0H0Z"
             fill="#F50100"
           />
-          <g filter="url(#e32e5b18-4792-42f5B728-70a05afbab33)">
+          <g filter={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -66,7 +69,7 @@ export const AO = () => {
       </g>
       <defs>
         <filter
-          id="e32e5b18-4792-42f5B728-70a05afbab33"
+          id={`${ids[2]}`}
           x="4.95947"
           y="2.51685"
           width="8.11145"

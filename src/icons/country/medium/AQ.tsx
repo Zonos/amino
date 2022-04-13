@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const AQ = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const AQ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="6e638edb-5874-42d1-882f-33650791afa4"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const AQ = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#6e638edb-5874-42d1-882f-33650791afa4)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const AQ = () => {
           fill="#5196ED"
         />
         <mask
-          id="7f2cd08d-6fa1-4b9d-80deE8c7a7793ebf"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,8 +44,8 @@ export const AQ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#7f2cd08d-6fa1-4b9d-80deE8c7a7793ebf)">
-          <g filter="url(#4f15d633-0747-474a-8a0c-26f282871f94)">
+        <g mask={`url(#${ids[1]})`}>
+          <g filter={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -60,7 +63,7 @@ export const AQ = () => {
       </g>
       <defs>
         <filter
-          id="4f15d633-0747-474a-8a0c-26f282871f94"
+          id={`${ids[2]}`}
           x="3.99695"
           y="2.77417"
           width="11.8884"

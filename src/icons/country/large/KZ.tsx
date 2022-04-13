@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const KZ = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="32"
@@ -10,7 +13,7 @@ export const KZ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="49b8e721C783-47fd-84de-74d7f3084352"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const KZ = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#49b8e721C783-47fd-84de-74d7f3084352)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const KZ = () => {
           fill="#4EC7EE"
         />
         <mask
-          id="37d451af-4084-4723-8177F3087ce455fc"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const KZ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#37d451af-4084-4723-8177F3087ce455fc)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             d="M4.09008 23.237C4.02662 23.707 4.32767 24.0418 4.8327 24.2572C5.51161 24.5469 6.19665 24.2756 6.82679 23.5774L6.01018 22.8404C5.73027 23.1506 5.52799 23.2701 5.37185 23.2681C5.67758 23.0496 6.06929 22.78 6.54643 22.4596L6.77544 22.1279C6.95937 21.3389 6.38744 20.9113 5.51519 20.9113C5.00144 20.9113 4.5907 21.013 4.3301 21.2315C3.90196 21.5905 3.97526 22.1635 4.4258 22.4617C4.46154 22.4853 4.49781 22.5066 4.53458 22.5255C4.28183 22.739 4.12757 22.9593 4.09008 23.237Z"
             fill="#FFE402"

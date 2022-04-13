@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const BI = () => {
+  const ids = useStableUniqueId(2);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const BI = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="d3f71f30C3b8-4678-90b7-342ac026f875"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,10 +22,10 @@ export const BI = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#d3f71f30C3b8-4678-90b7-342ac026f875)">
+      <g mask={`url(#${ids[0]})`}>
         <rect width="16" height="12" rx="1" fill="#5EAA22" />
         <mask
-          id="f7add9f6-4b86-4afe-8291-4e5914eb2bdd"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="-4"
           y="-2"
@@ -46,7 +49,7 @@ export const BI = () => {
         <path
           d="M16 0L16.75 1L19.75 -1.25H16V0ZM0 0V-1.25H-3.75L-0.75 1L0 0ZM0 12L-0.75 11L-3.75 13.25H0V12ZM16 12V13.25H19.75L16.75 11L16 12ZM15.25 -1L7.25 5L8.75 7L16.75 1L15.25 -1ZM0 1.25H16V-1.25H0V1.25ZM8.75 5L0.75 -1L-0.75 1L7.25 7L8.75 5ZM7.25 5L-0.75 11L0.75 13L8.75 7L7.25 5ZM0 13.25H16V10.75H0V13.25ZM16.75 11L8.75 5L7.25 7L15.25 13L16.75 11Z"
           fill="white"
-          mask="url(#f7add9f6-4b86-4afe-8291-4e5914eb2bdd)"
+          mask={`url(#${ids[1]})`}
         />
         <path
           fillRule="evenodd"

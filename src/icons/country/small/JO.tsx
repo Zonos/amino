@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const JO = () => {
+  const ids = useStableUniqueId(3);
   return (
     <svg
       width="16"
@@ -10,7 +13,7 @@ export const JO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="8a03536b-9c40-4cdaA365-7f43bc8af777"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const JO = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#8a03536b-9c40-4cdaA365-7f43bc8af777)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const JO = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="8dcd4797-422a-4e91Bf90-7d39071062be"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +44,7 @@ export const JO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#8dcd4797-422a-4e91Bf90-7d39071062be)">
+        <g mask={`url(#${ids[1]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -62,7 +65,7 @@ export const JO = () => {
           fill="#E31D1C"
         />
         <mask
-          id="7c23a0a7-206d-4b3a-82ed-69e0ae74b0bc"
+          id={`${ids[2]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -76,7 +79,7 @@ export const JO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#7c23a0a7-206d-4b3a-82ed-69e0ae74b0bc)">
+        <g mask={`url(#${ids[2]})`}>
           <path
             fillRule="evenodd"
             clipRule="evenodd"

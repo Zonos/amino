@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useStableUniqueId } from 'hooks';
+
 export const BR = () => {
+  const ids = useStableUniqueId(5);
   return (
     <svg
       width="20"
@@ -10,7 +13,7 @@ export const BR = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="d3b6db49-3b10-40e8A7c3Ba06e3b423d6"
+        id={`${ids[0]}`}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +22,7 @@ export const BR = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#d3b6db49-3b10-40e8A7c3Ba06e3b423d6)">
+      <g mask={`url(#${ids[0]})`}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +30,7 @@ export const BR = () => {
           fill="#009933"
         />
         <mask
-          id="c700c93f-2e4b-4a7aAe06-2bc02be15b61"
+          id={`${ids[1]}`}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,8 +44,8 @@ export const BR = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#c700c93f-2e4b-4a7aAe06-2bc02be15b61)">
-          <g filter="url(#95918ef4-739f-4685B67bA021d1b2ebd7)">
+        <g mask={`url(#${ids[1]})`}>
+          <g filter={`url(#${ids[3]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -53,7 +56,7 @@ export const BR = () => {
               fillRule="evenodd"
               clipRule="evenodd"
               d="M9.95424 2.31503L17.5804 7.62969L9.8505 12.607L2.38058 7.52667L9.95424 2.31503Z"
-              fill="url(#d23a007dF317-4cd7-8386A76952ce4b37)"
+              fill={`url(#${ids[4]})`}
             />
           </g>
           <path
@@ -63,7 +66,7 @@ export const BR = () => {
             fill="#2E42A5"
           />
           <mask
-            id="243bd16aD028-467d-9e04D9eb0a20a726"
+            id={`${ids[2]}`}
             maskUnits="userSpaceOnUse"
             x="6"
             y="4"
@@ -77,7 +80,7 @@ export const BR = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#243bd16aD028-467d-9e04D9eb0a20a726)">
+          <g mask={`url(#${ids[2]})`}>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -135,7 +138,7 @@ export const BR = () => {
       </g>
       <defs>
         <filter
-          id="95918ef4-739f-4685B67bA021d1b2ebd7"
+          id={`${ids[3]}`}
           x="2.38062"
           y="2.31494"
           width="15.1998"
@@ -168,7 +171,7 @@ export const BR = () => {
           />
         </filter>
         <linearGradient
-          id="d23a007dF317-4cd7-8386A76952ce4b37"
+          id={`${ids[4]}`}
           x1="20"
           y1="15"
           x2="20"
