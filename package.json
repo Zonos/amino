@@ -55,15 +55,15 @@
     "storybook-addon-designs": "6.2.1",
     "styled-components": "5.3.3",
     "tsconfig-paths-webpack-plugin": "3.5.2",
-    "typescript": "4.6.2",
-    "uuid": "^8.3.2"
+    "typescript": "4.6.2"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.1.5",
     "@radix-ui/react-slider": "^0.0.16",
     "react-dropzone": "^12.0.4",
-    "react-select": "^5.2.2"
+    "react-select": "^5.2.2",
+    "uuid": "^8.3.2"
   },
   "peerDependencies": {
     "downshift": "^4.x",
