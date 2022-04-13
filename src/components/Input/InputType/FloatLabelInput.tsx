@@ -25,7 +25,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     transition: all 0.5s ease;
     left: ${({ hasPrefix }) =>
       hasPrefix
-        ? 'calc(var(--amino-space-half) + 47px)'
+        ? 'calc(var(--amino-space-half) + 39px)'
         : 'var(--amino-space-half)'};
     top: calc(50% - var(--amino-text-base) / 2);
   }
@@ -63,11 +63,20 @@ const InputSuffix = styled(InputDecorator)`
   border-bottom-right-radius: var(--amino-radius);
 `;
 
+export const InputValuePrefix = styled.div`
+  display: flex;
+  align-items: flex-end;
+  padding-left: 4px;
+  padding-bottom: calc(var(--amino-space-quarter) + 3.5px);
+  color: var(--amino-gray-d40);
+  white-space: nowrap;
+`;
+
 const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
   height: 3.5rem;
   box-sizing: border-box;
   position: relative;
-  padding: 0 calc(var(--amino-space-quarter) + 6px);
+  padding: 0 var(--amino-space-quarter);
   outline: none;
   transition: var(--amino-transition);
   width: 100%;
@@ -76,8 +85,11 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
   border: 0;
   font-weight: 500;
   &.has-label {
-    padding: var(--amino-space) calc(var(--amino-space-quarter) + 6px)
-      var(--amino-space-quarter);
+    padding: var(--amino-space) 4px var(--amino-space-quarter);
+  }
+
+  &.has-value-prefix {
+    padding-left: 8px;
   }
 
   ::placeholder {
@@ -107,6 +119,7 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
     }
   }
 `;
+
 export type InputMode =
   | 'decimal'
   | 'email'
@@ -145,6 +158,9 @@ export type FloatLabelInputProps = {
   /** A short string displayed at the beginning of the input */
   prefix?: ReactNode;
 
+  /** An additional value that appears next to the input but cannot be changed by the input */
+  valuePrefix?: ReactNode;
+
   /** A short string displayed at the end of the input */
   suffix?: ReactNode;
 
@@ -180,18 +196,23 @@ export const FloatLabelInput = forwardRef<
       tabIndex,
       type,
       value,
+      valuePrefix,
     },
     ref
   ) => {
+    const hasPrefix = !!prefix || !!valuePrefix;
+    const hasValue = !!value || !!valuePrefix;
     return (
       <StyledLabelWrapper className={className}>
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
+        {valuePrefix && <InputValuePrefix>{valuePrefix}</InputValuePrefix>}
         <AminoInput
           aria-label={label}
           className={[
             error && error.length ? 'has-error' : '',
             label ? 'has-label' : '',
-            value ? 'has-content' : '',
+            hasValue ? 'has-content' : '',
+            valuePrefix ? 'has-value-prefix' : '',
           ].join(' ')}
           hasPrefix={!!prefix}
           hasSuffix={!!suffix}
@@ -209,7 +230,7 @@ export const FloatLabelInput = forwardRef<
           type={type || 'text'}
           value={value || ''}
         />
-        <StyledLabelInput hasPrefix={!!prefix} data-label={label} />
+        <StyledLabelInput hasPrefix={hasPrefix} data-label={label} />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );

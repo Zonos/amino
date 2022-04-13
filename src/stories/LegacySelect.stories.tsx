@@ -10,7 +10,7 @@ import {
 } from '../components/Select/LegacySelect';
 
 const SelectMeta: Meta = {
-  title: 'Amino/Select',
+  title: 'Amino/LegacySelect',
   component: LegacySelect,
   decorators: [withDesign],
 };
