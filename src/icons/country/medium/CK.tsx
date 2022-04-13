@@ -10,7 +10,7 @@ export const CK = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71721"
+        id="8630d352-63c5-4b41Affe-7128554ae610"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const CK = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71721)">
+      <g mask="url(#8630d352-63c5-4b41Affe-7128554ae610)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const CK = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_71721"
+          id="22ad619a-6f77-49b6A4fb-637d616d3d0a"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,10 +41,10 @@ export const CK = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71721)">
+        <g mask="url(#22ad619a-6f77-49b6A4fb-637d616d3d0a)">
           <rect width="11" height="9" fill="#2E42A5" />
           <mask
-            id="mask2_157_71721"
+            id="d0e4f747-54bf-446fA3a6-8b12589dac88"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -53,7 +53,7 @@ export const CK = () => {
           >
             <rect width="11" height="9" fill="white" />
           </mask>
-          <g mask="url(#mask2_157_71721)">
+          <g mask="url(#d0e4f747-54bf-446fA3a6-8b12589dac88)">
             <path
               d="M-1.25269 8.12494L1.22291 9.21069L11.3062 1.18052L12.612 -0.432938L9.96468 -0.795827L5.85197 2.6646L2.54165 4.99613L-1.25269 8.12494Z"
               fill="#F7FCFF"
@@ -71,7 +71,7 @@ export const CK = () => {
               fill="#F50100"
             />
             <mask
-              id="path-11Outside-1_157_71721"
+              id="a1b9ba53-3d61-48c7-88bb-9cb0689e2127"
               maskUnits="userSpaceOnUse"
               x="-1"
               y="-1"
@@ -95,7 +95,7 @@ export const CK = () => {
             <path
               d="M5 0V-0.9375H4.0625V0H5ZM6 0H6.9375V-0.9375H6V0ZM5 4V4.9375H5.9375V4H5ZM0 4V3.0625H-0.9375V4H0ZM0 5H-0.9375V5.9375H0V5ZM5 5H5.9375V4.0625H5V5ZM5 9H4.0625V9.9375H5V9ZM6 9V9.9375H6.9375V9H6ZM6 5V4.0625H5.0625V5H6ZM11 5V5.9375H11.9375V5H11ZM11 4H11.9375V3.0625H11V4ZM6 4H5.0625V4.9375H6V4ZM5 0.9375H6V-0.9375H5V0.9375ZM5.9375 4V0H4.0625V4H5.9375ZM0 4.9375H5V3.0625H0V4.9375ZM0.9375 5V4H-0.9375V5H0.9375ZM5 4.0625H0V5.9375H5V4.0625ZM5.9375 9V5H4.0625V9H5.9375ZM6 8.0625H5V9.9375H6V8.0625ZM5.0625 5V9H6.9375V5H5.0625ZM11 4.0625H6V5.9375H11V4.0625ZM10.0625 4V5H11.9375V4H10.0625ZM6 4.9375H11V3.0625H6V4.9375ZM5.0625 0V4H6.9375V0H5.0625Z"
               fill="#F7FCFF"
-              mask="url(#path-11Outside-1_157_71721)"
+              mask="url(#a1b9ba53-3d61-48c7-88bb-9cb0689e2127)"
             />
           </g>
           <path

@@ -10,7 +10,7 @@ export const HR = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78264"
+        id="ead0416a-792f-414fBaeb-4062722939ee"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const HR = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78264)">
+      <g mask="url(#ead0416a-792f-414fBaeb-4062722939ee)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const HR = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_78264"
+          id="6e373273-3089-405c-96b2-31d76cca2f57"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const HR = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78264)">
+        <g mask="url(#6e373273-3089-405c-96b2-31d76cca2f57)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -68,7 +68,7 @@ export const HR = () => {
             strokeWidth="1.125"
           />
           <mask
-            id="mask2_157_78264"
+            id="124cfbf9-8542-4a61-970c-6ff937d12975"
             maskUnits="userSpaceOnUse"
             x="10"
             y="8"
@@ -82,7 +82,7 @@ export const HR = () => {
               strokeWidth="1.125"
             />
           </mask>
-          <g mask="url(#mask2_157_78264)">
+          <g mask="url(#124cfbf9-8542-4a61-970c-6ff937d12975)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -141,7 +141,7 @@ export const HR = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="mask3_157_78264"
+            id="9997bac9-3e8c-42fbAdacE3832dec5d99"
             maskUnits="userSpaceOnUse"
             x="11"
             y="2"
@@ -155,7 +155,7 @@ export const HR = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#mask3_157_78264)">
+          <g mask="url(#9997bac9-3e8c-42fbAdacE3832dec5d99)">
             <path
               d="M12.4365 6.6379L12.186 6.04782C12.724 5.81233 13.6329 5.66783 14.5892 5.61133L14.626 6.25281C13.7369 6.30534 12.8959 6.43682 12.4365 6.6379Z"
               fill="#C51918"
@@ -172,7 +172,7 @@ export const HR = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="mask4_157_78264"
+            id="15e755faAe05-4dea-96f0-864caf831935"
             maskUnits="userSpaceOnUse"
             x="16"
             y="2"
@@ -186,7 +186,7 @@ export const HR = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#mask4_157_78264)">
+          <g mask="url(#15e755faAe05-4dea-96f0-864caf831935)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -207,7 +207,7 @@ export const HR = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="mask5_157_78264"
+            id="08384ff7-80fa-4ff4-9167-855862d6f179"
             maskUnits="userSpaceOnUse"
             x="18"
             y="3"
@@ -221,7 +221,7 @@ export const HR = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#mask5_157_78264)">
+          <g mask="url(#08384ff7-80fa-4ff4-9167-855862d6f179)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"

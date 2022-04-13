@@ -10,7 +10,7 @@ export const ME = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65886"
+        id="23c9d970F355-4406Bdd4-7957ca507e70"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const ME = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65886)">
+      <g mask="url(#23c9d970F355-4406Bdd4-7957ca507e70)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -33,7 +33,7 @@ export const ME = () => {
           fill="#C51918"
         />
         <mask
-          id="mask1_157_65886"
+          id="4163df12B292-4bc5Aad6-41adeacfe4f3"
           maskUnits="userSpaceOnUse"
           x="2"
           y="2"
@@ -47,7 +47,7 @@ export const ME = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65886)">
+        <g mask="url(#4163df12B292-4bc5Aad6-41adeacfe4f3)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -87,7 +87,7 @@ export const ME = () => {
             fill="#1E5E91"
           />
           <mask
-            id="mask2_157_65886"
+            id="453b0363-3949-4c16B83e-43f877c73ef1"
             maskUnits="userSpaceOnUse"
             x="6"
             y="5"
@@ -101,7 +101,7 @@ export const ME = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_65886)">
+          <g mask="url(#453b0363-3949-4c16B83e-43f877c73ef1)">
             <rect
               x="6.97693"
               y="6.59888"

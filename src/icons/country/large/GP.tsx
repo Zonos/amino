@@ -9,7 +9,7 @@ export const GP = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#clip0_157_78252)">
+      <g clipPath="url(#f35de554-3b3d-4abc-9b33-6a939a285b58)">
         <path d="M0 0V7H32V0L0 0Z" fill="#002488" />
         <path d="M0.000732422 7V24H32.0007V7L0.000732422 7Z" fill="#DA121A" />
         <path
@@ -170,7 +170,7 @@ export const GP = () => {
         />
       </g>
       <defs>
-        <clipPath id="clip0_157_78252">
+        <clipPath id="f35de554-3b3d-4abc-9b33-6a939a285b58">
           <path
             d="M0 3C0 1.34315 1.34315 0 3 0H29C30.6569 0 32 1.34315 32 3V21C32 22.6569 30.6569 24 29 24H3C1.34315 24 0 22.6569 0 21V3Z"
             fill="white"

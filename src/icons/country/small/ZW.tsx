@@ -10,7 +10,7 @@ export const ZW = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65997"
+        id="c504863b-2112-4978-95a4-0c907d7f50c2"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const ZW = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65997)">
+      <g mask="url(#c504863b-2112-4978-95a4-0c907d7f50c2)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const ZW = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_65997"
+          id="95862d81-05da-4f37A80eD6aa05aca0d3"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const ZW = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65997)">
+        <g mask="url(#95862d81-05da-4f37A80eD6aa05aca0d3)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -67,7 +67,7 @@ export const ZW = () => {
           stroke="#272727"
         />
         <mask
-          id="mask2_157_65997"
+          id="4d04f593-333f-4a7b-91b5-19796e77fb7f"
           maskUnits="userSpaceOnUse"
           x="-1"
           y="-2"
@@ -80,7 +80,7 @@ export const ZW = () => {
             stroke="white"
           />
         </mask>
-        <g mask="url(#mask2_157_65997)">
+        <g mask="url(#4d04f593-333f-4a7b-91b5-19796e77fb7f)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

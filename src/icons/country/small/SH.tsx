@@ -10,7 +10,7 @@ export const SH = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65947"
+        id="e543e70e-4bc6-43cc-812cC97f6d83ee39"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const SH = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65947)">
+      <g mask="url(#e543e70e-4bc6-43cc-812cC97f6d83ee39)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const SH = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_65947"
+          id="7be73cc4-830e-4c31B707-0511265a2924"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,9 +41,9 @@ export const SH = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65947)">
+        <g mask="url(#7be73cc4-830e-4c31B707-0511265a2924)">
           <mask
-            id="mask2_157_65947"
+            id="8c39d691E086-489a-93bf-2f27fc2ee8ba"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -52,7 +52,7 @@ export const SH = () => {
           >
             <rect width="9" height="7" fill="white" />
           </mask>
-          <g mask="url(#mask2_157_65947)">
+          <g mask="url(#8c39d691E086-489a-93bf-2f27fc2ee8ba)">
             <path
               d="M-1.00208 6.49981L0.9784 7.36841L9.045 0.944269L10.0897 -0.346497L7.97182 -0.636808L4.68165 2.13154L2.0334 3.99675L-1.00208 6.49981Z"
               fill="#F7FCFF"
@@ -70,7 +70,7 @@ export const SH = () => {
               fill="#F50100"
             />
             <mask
-              id="path-10Outside-1_157_65947"
+              id="9feaad45Dfe8-4840A1e8A0509f77270b"
               maskUnits="userSpaceOnUse"
               x="-1"
               y="-1"
@@ -94,7 +94,7 @@ export const SH = () => {
             <path
               d="M3.99226 0V-0.75H3.24226V0H3.99226ZM4.99226 0H5.74226V-0.75H4.99226V0ZM3.99226 3V3.75H4.74226V3H3.99226ZM0 3V2.25H-0.75V3H0ZM0 4H-0.75V4.75H0V4ZM3.99226 4H4.74226V3.25H3.99226V4ZM3.99226 7H3.24226V7.75H3.99226V7ZM4.99226 7V7.75H5.74226V7H4.99226ZM4.99226 4V3.25H4.24226V4H4.99226ZM9 4V4.75H9.75V4H9ZM9 3H9.75V2.25H9V3ZM4.99226 3H4.24226V3.75H4.99226V3ZM3.99226 0.75H4.99226V-0.75H3.99226V0.75ZM4.74226 3V0H3.24226V3H4.74226ZM0 3.75H3.99226V2.25H0V3.75ZM0.75 4V3H-0.75V4H0.75ZM3.99226 3.25H0V4.75H3.99226V3.25ZM4.74226 7V4H3.24226V7H4.74226ZM4.99226 6.25H3.99226V7.75H4.99226V6.25ZM4.24226 4V7H5.74226V4H4.24226ZM9 3.25H4.99226V4.75H9V3.25ZM8.25 3V4H9.75V3H8.25ZM4.99226 3.75H9V2.25H4.99226V3.75ZM4.24226 0V3H5.74226V0H4.24226Z"
               fill="#F7FCFF"
-              mask="url(#path-10Outside-1_157_65947)"
+              mask="url(#9feaad45Dfe8-4840A1e8A0509f77270b)"
             />
           </g>
           <path
@@ -104,7 +104,7 @@ export const SH = () => {
             strokeWidth="0.25"
           />
           <mask
-            id="mask3_157_65947"
+            id="8e563197Dfa1-4581-8a97Caf3abd42bfc"
             maskUnits="userSpaceOnUse"
             x="9"
             y="4"
@@ -118,7 +118,7 @@ export const SH = () => {
               strokeWidth="0.25"
             />
           </mask>
-          <g mask="url(#mask3_157_65947)">
+          <g mask="url(#8e563197Dfa1-4581-8a97Caf3abd42bfc)">
             <rect
               x="11.2001"
               y="9.7998"
@@ -126,7 +126,7 @@ export const SH = () => {
               height="1.2"
               fill="#2E42A5"
             />
-            <g filter="url(#filter0_d_157_65947)">
+            <g filter="url(#6878942a-2c89-4d50-951c-0668adfe4b70)">
               <rect
                 x="8.80005"
                 y="3.7998"
@@ -152,7 +152,7 @@ export const SH = () => {
       </g>
       <defs>
         <filter
-          id="filter0_d_157_65947"
+          id="6878942a-2c89-4d50-951c-0668adfe4b70"
           x="8.80005"
           y="3.7998"
           width="7.19995"

@@ -10,7 +10,7 @@ export const GBWLS = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71685"
+        id="6853c818-2cdd-4633A819E22354cd8c24"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const GBWLS = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71685)">
+      <g mask="url(#6853c818-2cdd-4633A819E22354cd8c24)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const GBWLS = () => {
           fill="#5DAA22"
         />
         <mask
-          id="mask1_157_71685"
+          id="5c7bfd1eFc97-461eBae8-455c74904783"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const GBWLS = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71685)">
+        <g mask="url(#5c7bfd1eFc97-461eBae8-455c74904783)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

@@ -10,7 +10,7 @@ export const SI = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71559"
+        id="cf76eb4b-2646-4c3fA251-2a2979a0fe11"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const SI = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71559)">
+      <g mask="url(#cf76eb4b-2646-4c3fA251-2a2979a0fe11)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const SI = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_71559"
+          id="41ffd8db-66e9-4a55B567-6747174c7312"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const SI = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71559)">
+        <g mask="url(#41ffd8db-66e9-4a55B567-6747174c7312)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

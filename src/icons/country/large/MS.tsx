@@ -10,7 +10,7 @@ export const MS = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78319"
+        id="eb0bf727-79e6-4137-8a17-119653132535"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const MS = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78319)">
+      <g mask="url(#eb0bf727-79e6-4137-8a17-119653132535)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const MS = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_78319"
+          id="f0b7027aEf41-46c5A24a-394626d67911"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const MS = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78319)">
+        <g mask="url(#f0b7027aEf41-46c5A24a-394626d67911)">
           <path
             d="M25.9287 21.714C24.6332 21.714 23.7228 21.4192 23.0726 20.8991C22.4212 20.378 21.9988 19.6054 21.7299 18.5867C21.4604 17.5658 21.3506 16.3187 21.3096 14.8735C21.2808 13.8576 21.2861 12.755 21.2919 11.5733C21.2939 11.153 21.296 10.7227 21.2966 10.2827H30.6716C30.8389 13.191 30.9027 16.0355 30.3093 18.1685C30.006 19.2588 29.5365 20.141 28.8411 20.7507C28.1499 21.3565 27.212 21.714 25.9287 21.714Z"
             fill="#6DC2FF"
@@ -49,7 +49,7 @@ export const MS = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="mask2_157_78319"
+            id="6d285af7-5830-4442-8b7a-8b581fc74aaa"
             maskUnits="userSpaceOnUse"
             x="21"
             y="10"
@@ -63,7 +63,7 @@ export const MS = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#mask2_157_78319)">
+          <g mask="url(#6d285af7-5830-4442-8b7a-8b581fc74aaa)">
             <rect
               x="20.9326"
               y="10"
@@ -123,7 +123,7 @@ export const MS = () => {
           </g>
           <rect width="18" height="14" fill="#2B409A" />
           <mask
-            id="mask3_157_78319"
+            id="d12de1bdD835-4840-81d6-3e4d2c160ab3"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -132,7 +132,7 @@ export const MS = () => {
           >
             <rect width="18" height="14" fill="white" />
           </mask>
-          <g mask="url(#mask3_157_78319)">
+          <g mask="url(#d12de1bdD835-4840-81d6-3e4d2c160ab3)">
             <path
               d="M-2.00415 12.9999L1.9568 14.7371L18.09 1.88878L20.1793 -0.692749L15.9436 -1.27337L9.3633 4.26332L4.06679 7.99375L-2.00415 12.9999Z"
               fill="#F7FCFF"
@@ -150,7 +150,7 @@ export const MS = () => {
               fill="#F50100"
             />
             <mask
-              id="path-23Outside-1_157_78319"
+              id="b65b6fa0Eccc-4223A256Ef250e310295"
               maskUnits="userSpaceOnUse"
               x="-2"
               y="-2"
@@ -174,7 +174,7 @@ export const MS = () => {
             <path
               d="M7.98451 0V-1.5H6.48451V0H7.98451ZM9.98451 0H11.4845V-1.5H9.98451V0ZM7.98451 6V7.5H9.48451V6H7.98451ZM0 6V4.5H-1.5V6H0ZM0 8H-1.5V9.5H0V8ZM7.98451 8H9.48451V6.5H7.98451V8ZM7.98451 14H6.48451V15.5H7.98451V14ZM9.98451 14V15.5H11.4845V14H9.98451ZM9.98451 8V6.5H8.48451V8H9.98451ZM18 8V9.5H19.5V8H18ZM18 6H19.5V4.5H18V6ZM9.98451 6H8.48451V7.5H9.98451V6ZM7.98451 1.5H9.98451V-1.5H7.98451V1.5ZM9.48451 6V0H6.48451V6H9.48451ZM0 7.5H7.98451V4.5H0V7.5ZM1.5 8V6H-1.5V8H1.5ZM7.98451 6.5H0V9.5H7.98451V6.5ZM9.48451 14V8H6.48451V14H9.48451ZM9.98451 12.5H7.98451V15.5H9.98451V12.5ZM8.48451 8V14H11.4845V8H8.48451ZM18 6.5H9.98451V9.5H18V6.5ZM16.5 6V8H19.5V6H16.5ZM9.98451 7.5H18V4.5H9.98451V7.5ZM8.48451 0V6H11.4845V0H8.48451Z"
               fill="#F7FCFF"
-              mask="url(#path-23Outside-1_157_78319)"
+              mask="url(#b65b6fa0Eccc-4223A256Ef250e310295)"
             />
           </g>
         </g>

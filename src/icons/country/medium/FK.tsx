@@ -10,7 +10,7 @@ export const FK = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71694"
+        id="54bfaf4d-25b1-4155-89b8-22d84f12fc71"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const FK = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71694)">
+      <g mask="url(#54bfaf4d-25b1-4155-89b8-22d84f12fc71)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const FK = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_71694"
+          id="d3b7ff3a-1d7a-432eA478-886081e3b345"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,10 +41,10 @@ export const FK = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71694)">
+        <g mask="url(#d3b7ff3a-1d7a-432eA478-886081e3b345)">
           <rect width="11" height="9" fill="#2E42A5" />
           <mask
-            id="mask2_157_71694"
+            id="0b6027bcD052-4f2c-8b32D2ec6abed03d"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -53,7 +53,7 @@ export const FK = () => {
           >
             <rect width="11" height="9" fill="white" />
           </mask>
-          <g mask="url(#mask2_157_71694)">
+          <g mask="url(#0b6027bcD052-4f2c-8b32D2ec6abed03d)">
             <path
               d="M-1.25269 8.12494L1.22291 9.21069L11.3062 1.18052L12.612 -0.432938L9.96468 -0.795827L5.85197 2.6646L2.54165 4.99613L-1.25269 8.12494Z"
               fill="#F7FCFF"
@@ -71,7 +71,7 @@ export const FK = () => {
               fill="#F50100"
             />
             <mask
-              id="path-11Outside-1_157_71694"
+              id="c9d33f89-0f55-4fed-9546A45118acb817"
               maskUnits="userSpaceOnUse"
               x="-1"
               y="-1"
@@ -95,7 +95,7 @@ export const FK = () => {
             <path
               d="M5 0V-0.9375H4.0625V0H5ZM6 0H6.9375V-0.9375H6V0ZM5 4V4.9375H5.9375V4H5ZM0 4V3.0625H-0.9375V4H0ZM0 5H-0.9375V5.9375H0V5ZM5 5H5.9375V4.0625H5V5ZM5 9H4.0625V9.9375H5V9ZM6 9V9.9375H6.9375V9H6ZM6 5V4.0625H5.0625V5H6ZM11 5V5.9375H11.9375V5H11ZM11 4H11.9375V3.0625H11V4ZM6 4H5.0625V4.9375H6V4ZM5 0.9375H6V-0.9375H5V0.9375ZM5.9375 4V0H4.0625V4H5.9375ZM0 4.9375H5V3.0625H0V4.9375ZM0.9375 5V4H-0.9375V5H0.9375ZM5 4.0625H0V5.9375H5V4.0625ZM5.9375 9V5H4.0625V9H5.9375ZM6 8.0625H5V9.9375H6V8.0625ZM5.0625 5V9H6.9375V5H5.0625ZM11 4.0625H6V5.9375H11V4.0625ZM10.0625 4V5H11.9375V4H10.0625ZM6 4.9375H11V3.0625H6V4.9375ZM5.0625 0V4H6.9375V0H5.0625Z"
               fill="#F7FCFF"
-              mask="url(#path-11Outside-1_157_71694)"
+              mask="url(#c9d33f89-0f55-4fed-9546A45118acb817)"
             />
           </g>
           <path
@@ -105,7 +105,7 @@ export const FK = () => {
             strokeWidth="0.5"
           />
           <mask
-            id="mask3_157_71694"
+            id="9f3cc791C795-4a59-9a61-6a08e266dff8"
             maskUnits="userSpaceOnUse"
             x="13"
             y="6"
@@ -119,7 +119,7 @@ export const FK = () => {
               strokeWidth="0.5"
             />
           </mask>
-          <g mask="url(#mask3_157_71694)">
+          <g mask="url(#9f3cc791C795-4a59-9a61-6a08e266dff8)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"

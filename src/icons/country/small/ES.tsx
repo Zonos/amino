@@ -10,7 +10,7 @@ export const ES = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65800"
+        id="90840c9f-142b-4ed0-907b-3e4761c23b0a"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const ES = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65800)">
+      <g mask="url(#90840c9f-142b-4ed0-907b-3e4761c23b0a)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const ES = () => {
           fill="#FFB400"
         />
         <mask
-          id="mask1_157_65800"
+          id="987f9506-5780-49a2B2a4-77156dfface3"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const ES = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65800)">
+        <g mask="url(#987f9506-5780-49a2B2a4-77156dfface3)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -86,7 +86,7 @@ export const ES = () => {
             fill="#005BBF"
           />
           <mask
-            id="mask2_157_65800"
+            id="1f43b43e-70b5-4668A3c5-44829df9dcb9"
             maskUnits="userSpaceOnUse"
             x="2"
             y="8"
@@ -100,7 +100,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_65800)" />
+          <g mask="url(#1f43b43e-70b5-4668A3c5-44829df9dcb9)" />
           <rect
             x="7.99207"
             y="5.13599"
@@ -133,7 +133,7 @@ export const ES = () => {
             fill="#005BBF"
           />
           <mask
-            id="mask3_157_65800"
+            id="7be4ce69-1a07-4f73A52f-436d33b700f6"
             maskUnits="userSpaceOnUse"
             x="7"
             y="8"
@@ -147,7 +147,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask3_157_65800)" />
+          <g mask="url(#7be4ce69-1a07-4f73A52f-436d33b700f6)" />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -205,7 +205,7 @@ export const ES = () => {
             fill="#E1E5E8"
           />
           <mask
-            id="mask4_157_65800"
+            id="172c9ab1C65e-4e32-88bd-38e1cc967707"
             maskUnits="userSpaceOnUse"
             x="3"
             y="4"
@@ -219,7 +219,7 @@ export const ES = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask4_157_65800)">
+          <g mask="url(#172c9ab1C65e-4e32-88bd-38e1cc967707)">
             <rect
               x="3.73596"
               y="6.64819"

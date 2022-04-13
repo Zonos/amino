@@ -10,7 +10,7 @@ export const KR = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78288"
+        id="36d5ce21-075f-4636-9897C095bac281d0"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const KR = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78288)">
+      <g mask="url(#36d5ce21-075f-4636-9897C095bac281d0)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const KR = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_78288"
+          id="09e54abcA858-45b1-9692-9ccc5144a4f5"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const KR = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78288)">
+        <g mask="url(#09e54abcA858-45b1-9692-9ccc5144a4f5)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -49,7 +49,7 @@ export const KR = () => {
             fill="#3D58DB"
           />
           <mask
-            id="mask2_157_78288"
+            id="6a6a22d3E9fa-4818B72b-2a940230833d"
             maskUnits="userSpaceOnUse"
             x="10"
             y="5"
@@ -63,7 +63,7 @@ export const KR = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_78288)">
+          <g mask="url(#6a6a22d3E9fa-4818B72b-2a940230833d)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"

@@ -10,7 +10,7 @@ export const BI = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71744"
+        id="2996d204-7188-4347-85fe-22e5c74c287d"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,10 +19,10 @@ export const BI = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71744)">
+      <g mask="url(#2996d204-7188-4347-85fe-22e5c74c287d)">
         <rect width="20" height="15" rx="1.25" fill="#5EAA22" />
         <mask
-          id="path-4Outside-1_157_71744"
+          id="761adda7-82ab-4a2b-8adc-8e9b3c2599c1"
           maskUnits="userSpaceOnUse"
           x="-5"
           y="-2"
@@ -46,7 +46,7 @@ export const BI = () => {
         <path
           d="M20 0L20.9375 1.25L24.6875 -1.5625H20V0ZM0 0V-1.5625H-4.6875L-0.9375 1.25L0 0ZM0 15L-0.9375 13.75L-4.6875 16.5625H0V15ZM20 15V16.5625H24.6875L20.9375 13.75L20 15ZM19.0625 -1.25L9.0625 6.25L10.9375 8.75L20.9375 1.25L19.0625 -1.25ZM0 1.5625H20V-1.5625H0V1.5625ZM10.9375 6.25L0.9375 -1.25L-0.9375 1.25L9.0625 8.75L10.9375 6.25ZM9.0625 6.25L-0.9375 13.75L0.9375 16.25L10.9375 8.75L9.0625 6.25ZM0 16.5625H20V13.4375H0V16.5625ZM20.9375 13.75L10.9375 6.25L9.0625 8.75L19.0625 16.25L20.9375 13.75Z"
           fill="white"
-          mask="url(#path-4Outside-1_157_71744)"
+          mask="url(#761adda7-82ab-4a2b-8adc-8e9b3c2599c1)"
         />
         <path
           fillRule="evenodd"

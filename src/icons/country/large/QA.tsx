@@ -10,7 +10,7 @@ export const QA = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78355"
+        id="612a1074-7f05-474b-9667E03590b319af"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const QA = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78355)">
+      <g mask="url(#612a1074-7f05-474b-9667E03590b319af)">
         <rect width="32" height="24" fill="#B61C49" />
         <path
           fillRule="evenodd"

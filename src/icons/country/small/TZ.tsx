@@ -10,7 +10,7 @@ export const TZ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65977"
+        id="9acabdab-49ce-4078-9e29-693d240c6df0"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const TZ = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65977)">
+      <g mask="url(#9acabdab-49ce-4078-9e29-693d240c6df0)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const TZ = () => {
           fill="#3195F9"
         />
         <mask
-          id="mask1_157_65977"
+          id="3de13f8a-67d9-4c3cB11e-2c070d8c2f16"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const TZ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65977)">
+        <g mask="url(#3de13f8a-67d9-4c3cB11e-2c070d8c2f16)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

@@ -10,7 +10,7 @@ export const PT = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78352"
+        id="359298d0B770-426d-8409-9713015f5a4c"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const PT = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78352)">
+      <g mask="url(#359298d0B770-426d-8409-9713015f5a4c)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -33,7 +33,7 @@ export const PT = () => {
           fill="#2F8D00"
         />
         <mask
-          id="mask1_157_78352"
+          id="79c15790-662b-4179-8ffd-9db47fd58de5"
           maskUnits="userSpaceOnUse"
           x="4"
           y="4"
@@ -47,7 +47,7 @@ export const PT = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78352)">
+        <g mask="url(#79c15790-662b-4179-8ffd-9db47fd58de5)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

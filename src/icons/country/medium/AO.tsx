@@ -10,7 +10,7 @@ export const AO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71760"
+        id="08bd6284-5bd6-4ed0-9394C0b96d4f2da4"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const AO = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71760)">
+      <g mask="url(#08bd6284-5bd6-4ed0-9394C0b96d4f2da4)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const AO = () => {
           fill="#1D1D1D"
         />
         <mask
-          id="mask1_157_71760"
+          id="e1a1557aD5b8-4b2fB7a9-09ce8ad2e164"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,14 +41,14 @@ export const AO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71760)">
+        <g mask="url(#e1a1557aD5b8-4b2fB7a9-09ce8ad2e164)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M0 0V7.5H20V0H0Z"
             fill="#F50100"
           />
-          <g filter="url(#filter0_d_157_71760)">
+          <g filter="url(#e32e5b18-4792-42f5B728-70a05afbab33)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -66,7 +66,7 @@ export const AO = () => {
       </g>
       <defs>
         <filter
-          id="filter0_d_157_71760"
+          id="e32e5b18-4792-42f5B728-70a05afbab33"
           x="4.95947"
           y="2.51685"
           width="8.11145"

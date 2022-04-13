@@ -10,7 +10,7 @@ export const PG = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65923"
+        id="1a6dd83fEd53-4d0dAef5-156ff55f93ea"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const PG = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65923)">
+      <g mask="url(#1a6dd83fEd53-4d0dAef5-156ff55f93ea)">
         <rect width="16" height="12" fill="#E11C1B" />
         <path
           fillRule="evenodd"

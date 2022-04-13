@@ -10,7 +10,7 @@ export const NU = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71590"
+        id="aed8a35b-6a02-42a9-9db4-87942e812025"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const NU = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71590)">
+      <g mask="url(#aed8a35b-6a02-42a9-9db4-87942e812025)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const NU = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_71590"
+          id="096b525e-5712-467d-83ba-43549e27b99e"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const NU = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71590)">
+        <g mask="url(#096b525e-5712-467d-83ba-43549e27b99e)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -49,7 +49,7 @@ export const NU = () => {
             fill="#FECA00"
           />
           <mask
-            id="mask2_157_71590"
+            id="cc70d318D6eb-4580Ba4aA102b5655184"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -58,7 +58,7 @@ export const NU = () => {
           >
             <rect width="20" height="10" fill="white" />
           </mask>
-          <g mask="url(#mask2_157_71590)">
+          <g mask="url(#cc70d318D6eb-4580Ba4aA102b5655184)">
             <path
               d="M-1.41394 9.45574L2.55026 10.3728L11.0009 5.70347L11.8951 5.18058L19.9224 0.9833L21.8241 -0.342342L17.4743 -0.743505L10.4608 3.21275L5.39241 5.70347L-1.41394 9.45574Z"
               fill="white"

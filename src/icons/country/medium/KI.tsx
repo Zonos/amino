@@ -10,7 +10,7 @@ export const KI = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71644"
+        id="8da79047Fb3e-421fB684A05d18b5911a"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const KI = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71644)">
+      <g mask="url(#8da79047Fb3e-421fB684A05d18b5911a)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const KI = () => {
           fill="#E31D1C"
         />
         <mask
-          id="mask1_157_71644"
+          id="2e0b2904D232-49c8B2c8-52e1e884fd23"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const KI = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71644)">
+        <g mask="url(#2e0b2904D232-49c8B2c8-52e1e884fd23)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -55,7 +55,7 @@ export const KI = () => {
             fill="#F7FCFF"
           />
           <mask
-            id="mask2_157_71644"
+            id="b6ade7cb-5fa1-41d3Baaa-62642e1ff6b6"
             maskUnits="userSpaceOnUse"
             x="-1"
             y="7"
@@ -69,7 +69,7 @@ export const KI = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_71644)">
+          <g mask="url(#b6ade7cb-5fa1-41d3Baaa-62642e1ff6b6)">
             <path
               d="M-0.494995 10.1537L1.13928 9.49043C1.3775 9.39376 1.64424 9.39493 1.88159 9.49371L4.15081 10.438C4.40756 10.5449 4.69769 10.5372 4.9484 10.4169L6.77878 9.53847C7.04131 9.41248 7.34636 9.41024 7.61071 9.53236L9.52786 10.418C9.78614 10.5373 10.0836 10.5381 10.3425 10.42L12.3042 9.52542C12.563 9.40741 12.8603 9.4081 13.1186 9.52731L15.0554 10.4214C15.3095 10.5388 15.6019 10.5414 15.8581 10.4285L17.9744 9.49668C18.2035 9.39579 18.4626 9.38677 18.6982 9.47147L20.5956 10.1537"
               stroke="#015989"

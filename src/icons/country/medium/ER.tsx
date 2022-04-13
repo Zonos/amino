@@ -9,9 +9,9 @@ export const ER = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#clip0_157_71699)">
+      <g clipPath="url(#52db5917-46d7-461cBf94-4f31bd2b070a)">
         <mask
-          id="mask0_157_71699"
+          id="d9b46481-4055-42c5Beaf-2751e22661ac"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -20,7 +20,7 @@ export const ER = () => {
         >
           <rect width="21.25" height="15" fill="white" />
         </mask>
-        <g mask="url(#mask0_157_71699)">
+        <g mask="url(#d9b46481-4055-42c5Beaf-2751e22661ac)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -48,7 +48,7 @@ export const ER = () => {
         </g>
       </g>
       <defs>
-        <clipPath id="clip0_157_71699">
+        <clipPath id="52db5917-46d7-461cBf94-4f31bd2b070a">
           <path
             d="M0 2C0 0.89543 0.895431 0 2 0H18C19.1046 0 20 0.895431 20 2V13C20 14.1046 19.1046 15 18 15H2C0.895431 15 0 14.1046 0 13V2Z"
             fill="white"

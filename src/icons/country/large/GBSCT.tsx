@@ -10,7 +10,7 @@ export const GBSCT = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78240"
+        id="fbe80760Dc4e-40fdA7f5B7435937f1ad"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const GBSCT = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78240)">
+      <g mask="url(#fbe80760Dc4e-40fdA7f5B7435937f1ad)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const GBSCT = () => {
           fill="#0067C3"
         />
         <mask
-          id="mask1_157_78240"
+          id="ef51dfe7-6e7e-45aa-9cd8-62ec504d0087"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const GBSCT = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78240)">
+        <g mask="url(#ef51dfe7-6e7e-45aa-9cd8-62ec504d0087)">
           <path
             d="M1.20005 25.5999L33.2001 1.5999L30.8 -1.6001L-1.19995 22.3999L1.20005 25.5999Z"
             fill="white"

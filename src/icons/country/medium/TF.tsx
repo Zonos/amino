@@ -10,7 +10,7 @@ export const TF = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71543"
+        id="9b83a73b-472f-4f3fA90f-460b4a19155e"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const TF = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71543)">
+      <g mask="url(#9b83a73b-472f-4f3fA90f-460b4a19155e)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const TF = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_71543"
+          id="7b5730d6-4621-4613B9a6D4e7a6289b03"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const TF = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71543)">
+        <g mask="url(#7b5730d6-4621-4613B9a6D4e7a6289b03)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -58,7 +58,7 @@ export const TF = () => {
             strokeWidth="0.625"
           />
           <mask
-            id="mask2_157_71543"
+            id="85fe4f9b-63c3-4471A27aA9c7814747b5"
             maskUnits="userSpaceOnUse"
             x="-1"
             y="-1"
@@ -75,7 +75,7 @@ export const TF = () => {
               strokeWidth="0.625"
             />
           </mask>
-          <g mask="url(#mask2_157_71543)">
+          <g mask="url(#85fe4f9b-63c3-4471A27aA9c7814747b5)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"

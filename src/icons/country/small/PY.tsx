@@ -10,7 +10,7 @@ export const PY = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65934"
+        id="693d035aDf5f-4df6A8f4Df96b7048681"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const PY = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65934)">
+      <g mask="url(#693d035aDf5f-4df6A8f4Df96b7048681)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const PY = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_65934"
+          id="c3736a8c-2244-425f-9c62-93cf50f6d80b"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const PY = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65934)">
+        <g mask="url(#c3736a8c-2244-425f-9c62-93cf50f6d80b)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

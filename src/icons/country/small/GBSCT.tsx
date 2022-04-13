@@ -10,7 +10,7 @@ export const GBSCT = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65820"
+        id="2fd3e1c0-440c-4898B212Ff64c76b3b81"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const GBSCT = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65820)">
+      <g mask="url(#2fd3e1c0-440c-4898B212Ff64c76b3b81)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

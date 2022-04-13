@@ -10,7 +10,7 @@ export const AW = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78173"
+        id="55109d9fD22d-4ec7Bb2b-3e0224c24a60"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const AW = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78173)">
+      <g mask="url(#55109d9fD22d-4ec7Bb2b-3e0224c24a60)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const AW = () => {
           fill="#5BA3DA"
         />
         <mask
-          id="mask1_157_78173"
+          id="ea50b75fB4fd-4c85-95ef-738871128237"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const AW = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78173)">
+        <g mask="url(#ea50b75fB4fd-4c85-95ef-738871128237)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

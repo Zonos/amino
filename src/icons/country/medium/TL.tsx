@@ -10,7 +10,7 @@ export const TL = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71538"
+        id="41d2722aF845-4640-98fa-479ecb0e3f0a"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const TL = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71538)">
+      <g mask="url(#41d2722aF845-4640-98fa-479ecb0e3f0a)">
         <path
           d="M0 -0.625H-0.625V0V15V15.625H0H20H20.625V15V0V-0.625H20H0Z"
           fill="#E31D1C"

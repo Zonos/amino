@@ -10,7 +10,7 @@ export const KZ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71636"
+        id="62c96083E28c-41f5-8b95-762e76d8cbda"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const KZ = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71636)">
+      <g mask="url(#62c96083E28c-41f5-8b95-762e76d8cbda)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const KZ = () => {
           fill="#4EC7EE"
         />
         <mask
-          id="mask1_157_71636"
+          id="047f1b00F2cf-4441Bc70Ae72c5856aee"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const KZ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71636)">
+        <g mask="url(#047f1b00F2cf-4441Bc70Ae72c5856aee)">
           <path
             d="M2.55624 14.5232C2.51658 14.8169 2.70473 15.0261 3.02037 15.1608C3.4447 15.3418 3.87285 15.1723 4.26668 14.7359L3.7563 14.2753C3.58136 14.4692 3.45494 14.5438 3.35735 14.5426C3.54843 14.4061 3.79325 14.2375 4.09145 14.0373L4.23459 13.8299C4.34954 13.3368 3.99209 13.0696 3.44693 13.0696C3.12584 13.0696 2.86912 13.1332 2.70625 13.2697C2.43866 13.4941 2.48447 13.8522 2.76606 14.0386C2.7884 14.0533 2.81107 14.0666 2.83405 14.0785C2.67608 14.2119 2.57967 14.3496 2.55624 14.5232Z"
             fill="#FFE402"

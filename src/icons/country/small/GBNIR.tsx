@@ -10,7 +10,7 @@ export const GBNIR = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65810"
+        id="fc07929f-1f79-4bd0Af5f-130dec5e8ddb"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const GBNIR = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65810)">
+      <g mask="url(#fc07929f-1f79-4bd0Af5f-130dec5e8ddb)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const GBNIR = () => {
           fill="#2E42A5"
         />
         <mask
-          id="mask1_157_65810"
+          id="27cc3579-02ae-4548BdddBc636521d24d"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,9 +41,9 @@ export const GBNIR = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65810)">
+        <g mask="url(#27cc3579-02ae-4548BdddBc636521d24d)">
           <mask
-            id="mask2_157_65810"
+            id="01ae4399-0116-41ddAa02-6aa412db63c9"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -52,7 +52,7 @@ export const GBNIR = () => {
           >
             <rect width="16" height="12" fill="white" />
           </mask>
-          <g mask="url(#mask2_157_65810)">
+          <g mask="url(#01ae4399-0116-41ddAa02-6aa412db63c9)">
             <path
               d="M-1.78149 11.1426L1.73935 12.6316L16.08 1.61878L17.9371 -0.593959L14.1721 -1.09164L8.3229 3.6541L3.6149 6.85161L-1.78149 11.1426Z"
               fill="white"
@@ -69,7 +69,7 @@ export const GBNIR = () => {
               d="M17.6615 11.8913L15.8678 12.7554L8.72439 6.82569L6.60652 6.16318L-2.11569 -0.586414H0.40288L9.1202 6.00298L11.4357 6.7974L17.6615 11.8913Z"
               fill="#F50100"
             />
-            <mask id="path-10Inside-1_157_65810" fill="white">
+            <mask id="e9c45f91-3ecd-4a50B222Cb8a426809d5" fill="white">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -85,7 +85,7 @@ export const GBNIR = () => {
             <path
               d="M6.11114 -1V-2H5.11114V-1H6.11114ZM9.88892 -1H10.8889V-2H9.88892V-1ZM6.11114 4V5H7.11114V4H6.11114ZM-0.986206 4V3H-1.98621V4H-0.986206ZM-0.986206 8H-1.98621V9H-0.986206V8ZM6.11114 8H7.11114V7H6.11114V8ZM6.11114 13H5.11114V14H6.11114V13ZM9.88892 13V14H10.8889V13H9.88892ZM9.88892 8V7H8.88892V8H9.88892ZM17.0138 8V9H18.0138V8H17.0138ZM17.0138 4H18.0138V3H17.0138V4ZM9.88892 4H8.88892V5H9.88892V4ZM6.11114 0H9.88892V-2H6.11114V0ZM7.11114 4V-1H5.11114V4H7.11114ZM-0.986206 5H6.11114V3H-0.986206V5ZM0.0137939 8V4H-1.98621V8H0.0137939ZM6.11114 7H-0.986206V9H6.11114V7ZM7.11114 13V8H5.11114V13H7.11114ZM9.88892 12H6.11114V14H9.88892V12ZM8.88892 8V13H10.8889V8H8.88892ZM17.0138 7H9.88892V9H17.0138V7ZM16.0138 4V8H18.0138V4H16.0138ZM9.88892 5H17.0138V3H9.88892V5ZM8.88892 -1V4H10.8889V-1H8.88892Z"
               fill="white"
-              mask="url(#path-10Inside-1_157_65810)"
+              mask="url(#e9c45f91-3ecd-4a50B222Cb8a426809d5)"
             />
           </g>
         </g>

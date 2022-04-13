@@ -10,7 +10,7 @@ export const CV = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78213"
+        id="625ee216-3e6a-45eb-8486-6fc52e0d207c"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const CV = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78213)">
+      <g mask="url(#625ee216-3e6a-45eb-8486-6fc52e0d207c)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const CV = () => {
           fill="#4141DB"
         />
         <mask
-          id="mask1_157_78213"
+          id="98545b99Fd4e-44d2A500-274bdc573a09"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,14 +41,14 @@ export const CV = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78213)">
+        <g mask="url(#98545b99Fd4e-44d2A500-274bdc573a09)">
           <path
             d="M0 13H-1V14V16V17H0H32H33V16V14V13H32H0Z"
             fill="#F90000"
             stroke="#F7FCFF"
             strokeWidth="2"
           />
-          <g filter="url(#filter0_d_157_78213)">
+          <g filter="url(#03ff0c98Ad0c-4c70Ad0fB9430149f1b3)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -60,7 +60,7 @@ export const CV = () => {
       </g>
       <defs>
         <filter
-          id="filter0_d_157_78213"
+          id="03ff0c98Ad0c-4c70Ad0fB9430149f1b3"
           x="-0.00390625"
           y="4.04077"
           width="20.9736"

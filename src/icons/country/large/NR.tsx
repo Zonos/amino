@@ -16,7 +16,7 @@ export const NR = () => {
         fill="#2E42A5"
       />
       <mask
-        id="mask0_157_78338"
+        id="49c3cd65-9634-485a-99e8-8118da3023fa"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -30,7 +30,7 @@ export const NR = () => {
           fill="white"
         />
       </mask>
-      <g mask="url(#mask0_157_78338)">
+      <g mask="url(#49c3cd65-9634-485a-99e8-8118da3023fa)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

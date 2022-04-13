@@ -16,7 +16,7 @@ export const NP = () => {
         stroke="#4857A1"
       />
       <mask
-        id="mask0_157_78335"
+        id="6f355dee-8bd2-4613-9296F6f26486f86e"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -29,7 +29,7 @@ export const NP = () => {
           stroke="white"
         />
       </mask>
-      <g mask="url(#mask0_157_78335)">
+      <g mask="url(#6f355dee-8bd2-4613-9296F6f26486f86e)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

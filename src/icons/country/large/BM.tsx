@@ -10,7 +10,7 @@ export const BM = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78186"
+        id="51596156A879-4f36B2d3-5524bb528510"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const BM = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78186)">
+      <g mask="url(#51596156A879-4f36B2d3-5524bb528510)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const BM = () => {
           fill="#AF0100"
         />
         <mask
-          id="mask1_157_78186"
+          id="cf19d5ffD025-4562-99e2-41f6fbb399e1"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const BM = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78186)">
+        <g mask="url(#cf19d5ffD025-4562-99e2-41f6fbb399e1)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -49,7 +49,7 @@ export const BM = () => {
             fill="white"
           />
           <mask
-            id="mask2_157_78186"
+            id="e6321202D015-4a5b-8f02-5fd7a23efe43"
             maskUnits="userSpaceOnUse"
             x="21"
             y="11"
@@ -63,7 +63,7 @@ export const BM = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_78186)">
+          <g mask="url(#e6321202D015-4a5b-8f02-5fd7a23efe43)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -83,7 +83,7 @@ export const BM = () => {
               fill="#4ABCE6"
             />
             <mask
-              id="mask3_157_78186"
+              id="ba6c95e2-4de2-4265-80b0-1778632927b2"
               maskUnits="userSpaceOnUse"
               x="22"
               y="14"
@@ -97,7 +97,7 @@ export const BM = () => {
                 fill="white"
               />
             </mask>
-            <g mask="url(#mask3_157_78186)">
+            <g mask="url(#ba6c95e2-4de2-4265-80b0-1778632927b2)">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -132,7 +132,7 @@ export const BM = () => {
           </g>
           <rect width="18" height="14" fill="#2B409A" />
           <mask
-            id="mask4_157_78186"
+            id="73c46cd3Fd81-43f7-938dAcdaf9f5eb93"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -141,7 +141,7 @@ export const BM = () => {
           >
             <rect width="18" height="14" fill="white" />
           </mask>
-          <g mask="url(#mask4_157_78186)">
+          <g mask="url(#73c46cd3Fd81-43f7-938dAcdaf9f5eb93)">
             <path
               d="M-2.00415 12.9999L1.9568 14.7371L18.09 1.88878L20.1793 -0.692749L15.9436 -1.27337L9.3633 4.26332L4.06679 7.99375L-2.00415 12.9999Z"
               fill="#F7FCFF"
@@ -159,7 +159,7 @@ export const BM = () => {
               fill="#F50100"
             />
             <mask
-              id="path-22Outside-1_157_78186"
+              id="baf6cca5-7adb-4b6c-94be-992581513375"
               maskUnits="userSpaceOnUse"
               x="-2"
               y="-2"
@@ -183,7 +183,7 @@ export const BM = () => {
             <path
               d="M7.98451 0V-1.5H6.48451V0H7.98451ZM9.98451 0H11.4845V-1.5H9.98451V0ZM7.98451 6V7.5H9.48451V6H7.98451ZM0 6V4.5H-1.5V6H0ZM0 8H-1.5V9.5H0V8ZM7.98451 8H9.48451V6.5H7.98451V8ZM7.98451 14H6.48451V15.5H7.98451V14ZM9.98451 14V15.5H11.4845V14H9.98451ZM9.98451 8V6.5H8.48451V8H9.98451ZM18 8V9.5H19.5V8H18ZM18 6H19.5V4.5H18V6ZM9.98451 6H8.48451V7.5H9.98451V6ZM7.98451 1.5H9.98451V-1.5H7.98451V1.5ZM9.48451 6V0H6.48451V6H9.48451ZM0 7.5H7.98451V4.5H0V7.5ZM1.5 8V6H-1.5V8H1.5ZM7.98451 6.5H0V9.5H7.98451V6.5ZM9.48451 14V8H6.48451V14H9.48451ZM9.98451 12.5H7.98451V15.5H9.98451V12.5ZM8.48451 8V14H11.4845V8H8.48451ZM18 6.5H9.98451V9.5H18V6.5ZM16.5 6V8H19.5V6H16.5ZM9.98451 7.5H18V4.5H9.98451V7.5ZM8.48451 0V6H11.4845V0H8.48451Z"
               fill="#F7FCFF"
-              mask="url(#path-22Outside-1_157_78186)"
+              mask="url(#baf6cca5-7adb-4b6c-94be-992581513375)"
             />
           </g>
         </g>

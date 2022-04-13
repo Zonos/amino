@@ -10,7 +10,7 @@ export const BQSA = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71737"
+        id="38ac9197-6ace-49f2Bd40-7db707e7606e"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const BQSA = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71737)">
+      <g mask="url(#38ac9197-6ace-49f2Bd40-7db707e7606e)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

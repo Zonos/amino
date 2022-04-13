@@ -10,7 +10,7 @@ export const MQ1 = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71611"
+        id="b2feb146B276-4319B95aA9cc23d71d92"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const MQ1 = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71611)">
+      <g mask="url(#b2feb146B276-4319B95aA9cc23d71d92)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

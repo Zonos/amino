@@ -10,7 +10,7 @@ export const ZM = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65996"
+        id="c70494ceA7c8-47c7-9fad-13c7968686e8"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const ZM = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65996)">
+      <g mask="url(#c70494ceA7c8-47c7-9fad-13c7968686e8)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -33,7 +33,7 @@ export const ZM = () => {
           fill="#5EAA22"
         />
         <mask
-          id="mask1_157_65996"
+          id="9435c37a-3a07-4efbB097F1faa34eb78b"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -47,7 +47,7 @@ export const ZM = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65996)">
+        <g mask="url(#9435c37a-3a07-4efbB097F1faa34eb78b)">
           <rect x="13" y="5" width="3" height="7" fill="#FF8126" />
           <rect x="10" y="5" width="3" height="7" fill="#272727" />
           <rect x="7" y="5" width="3" height="7" fill="#C51918" />

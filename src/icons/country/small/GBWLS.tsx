@@ -16,7 +16,7 @@ export const GBWLS = () => {
         fill="#5DAA22"
       />
       <mask
-        id="mask0_157_65822"
+        id="0840904f-3934-4cd4-8518F7713d3d7eae"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -30,7 +30,7 @@ export const GBWLS = () => {
           fill="white"
         />
       </mask>
-      <g mask="url(#mask0_157_65822)">
+      <g mask="url(#0840904f-3934-4cd4-8518F7713d3d7eae)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

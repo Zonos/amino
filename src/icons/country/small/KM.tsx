@@ -16,7 +16,7 @@ export const KM = () => {
         fill="#5196ED"
       />
       <mask
-        id="mask0_157_65864"
+        id="b6b6c325-67a8-4035A1cfBe3257e80283"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -30,7 +30,7 @@ export const KM = () => {
           fill="white"
         />
       </mask>
-      <g mask="url(#mask0_157_65864)">
+      <g mask="url(#b6b6c325-67a8-4035A1cfBe3257e80283)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

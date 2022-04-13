@@ -10,7 +10,7 @@ export const BR = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78192"
+        id="083aee75Ca3f-4c78-9d22-37b098b803c2"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const BR = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78192)">
+      <g mask="url(#083aee75Ca3f-4c78-9d22-37b098b803c2)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const BR = () => {
           fill="#009933"
         />
         <mask
-          id="mask1_157_78192"
+          id="298795a2B833-4750-8a61-4e837968a453"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,8 +41,8 @@ export const BR = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78192)">
-          <g filter="url(#filter0_d_157_78192)">
+        <g mask="url(#298795a2B833-4750-8a61-4e837968a453)">
+          <g filter="url(#4951af86-979c-44b0-8981Dbcd7e38ee76)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -53,7 +53,7 @@ export const BR = () => {
               fillRule="evenodd"
               clipRule="evenodd"
               d="M15.9268 3.70404L28.1286 12.2075L15.7608 20.1713L3.80893 12.0427L15.9268 3.70404Z"
-              fill="url(#paint0_linear_157_78192)"
+              fill="url(#30e9eece-940e-482eA901-35a9b8b29d28)"
             />
           </g>
           <path
@@ -63,7 +63,7 @@ export const BR = () => {
             fill="#2E42A5"
           />
           <mask
-            id="mask2_157_78192"
+            id="17f150d4-99e8-4962-8e32Ce1e116f3cc8"
             maskUnits="userSpaceOnUse"
             x="11"
             y="7"
@@ -77,7 +77,7 @@ export const BR = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_78192)">
+          <g mask="url(#17f150d4-99e8-4962-8e32Ce1e116f3cc8)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -139,7 +139,7 @@ export const BR = () => {
       </g>
       <defs>
         <filter
-          id="filter0_d_157_78192"
+          id="4951af86-979c-44b0-8981Dbcd7e38ee76"
           x="3.80884"
           y="3.7041"
           width="24.3198"
@@ -172,7 +172,7 @@ export const BR = () => {
           />
         </filter>
         <linearGradient
-          id="paint0_linear_157_78192"
+          id="30e9eece-940e-482eA901-35a9b8b29d28"
           x1="32"
           y1="24"
           x2="32"

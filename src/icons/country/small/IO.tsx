@@ -10,7 +10,7 @@ export const IO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65852"
+        id="89d794e2-9c76-4dc8B694-46f9b284a66f"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const IO = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65852)">
+      <g mask="url(#89d794e2-9c76-4dc8B694-46f9b284a66f)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const IO = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_65852"
+          id="1df64122F3a5-401aB133-477163926e77"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const IO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65852)">
+        <g mask="url(#1df64122F3a5-401aB133-477163926e77)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -49,7 +49,7 @@ export const IO = () => {
             fill="#2E42A5"
           />
           <mask
-            id="mask2_157_65852"
+            id="b3a81b01-9497-4bccA47b-277314dadbb3"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"
@@ -58,7 +58,7 @@ export const IO = () => {
           >
             <rect width="7" height="5" fill="white" />
           </mask>
-          <g mask="url(#mask2_157_65852)">
+          <g mask="url(#b3a81b01-9497-4bccA47b-277314dadbb3)">
             <rect width="7" height="6" fill="#2E42A5" />
             <path
               d="M-1.07892 5.66663L0.749213 6.43872L8.1953 0.728375L9.1596 -0.418972L7.20468 -0.677027L4.16759 1.78372L1.72306 3.4417L-1.07892 5.66663Z"
@@ -77,7 +77,7 @@ export const IO = () => {
               fill="#F50100"
             />
             <mask
-              id="path-12Outside-1_157_65852"
+              id="9a92cb3bA51a-4fa4-8c00-321c6b08bdda"
               maskUnits="userSpaceOnUse"
               x="-0.99231"
               y="-1"
@@ -101,7 +101,7 @@ export const IO = () => {
             <path
               d="M2.99995 0V-0.5H2.49995V0H2.99995ZM3.99995 0H4.49995V-0.5H3.99995V0ZM2.99995 2V2.5H3.49995V2H2.99995ZM0.00769043 2V1.5H-0.49231V2H0.00769043ZM0.00769043 3H-0.49231V3.5H0.00769043V3ZM2.99995 3H3.49995V2.5H2.99995V3ZM2.99995 5H2.49995V5.5H2.99995V5ZM3.99995 5V5.5H4.49995V5H3.99995ZM3.99995 3V2.5H3.49995V3H3.99995ZM7.00769 3V3.5H7.50769V3H7.00769ZM7.00769 2H7.50769V1.5H7.00769V2ZM3.99995 2H3.49995V2.5H3.99995V2ZM2.99995 0.5H3.99995V-0.5H2.99995V0.5ZM3.49995 2V0H2.49995V2H3.49995ZM0.00769043 2.5H2.99995V1.5H0.00769043V2.5ZM0.50769 3V2H-0.49231V3H0.50769ZM2.99995 2.5H0.00769043V3.5H2.99995V2.5ZM3.49995 5V3H2.49995V5H3.49995ZM3.99995 4.5H2.99995V5.5H3.99995V4.5ZM3.49995 3V5H4.49995V3H3.49995ZM7.00769 2.5H3.99995V3.5H7.00769V2.5ZM6.50769 2V3H7.50769V2H6.50769ZM3.99995 2.5H7.00769V1.5H3.99995V2.5ZM3.49995 0V2H4.49995V0H3.49995Z"
               fill="#F7FCFF"
-              mask="url(#path-12Outside-1_157_65852)"
+              mask="url(#9a92cb3bA51a-4fa4-8c00-321c6b08bdda)"
             />
           </g>
           <rect

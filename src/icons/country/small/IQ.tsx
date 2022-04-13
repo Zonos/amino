@@ -10,7 +10,7 @@ export const IQ = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_65853"
+        id="cae6b13fFdc3-46a9-84c6Bf66775f4a68"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const IQ = () => {
       >
         <rect width="16" height="12" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_65853)">
+      <g mask="url(#cae6b13fFdc3-46a9-84c6Bf66775f4a68)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const IQ = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_65853"
+          id="3712d303-8466-4bcbB9e1-4ab5ddc954f3"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const IQ = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_65853)">
+        <g mask="url(#3712d303-8466-4bcbB9e1-4ab5ddc954f3)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

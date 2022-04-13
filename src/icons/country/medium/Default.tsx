@@ -10,7 +10,7 @@ export const Default = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_204_9292"
+        id="e6152485-24cc-4001-8e93-479caa2cdec2"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const Default = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_204_9292)">
+      <g mask="url(#e6152485-24cc-4001-8e93-479caa2cdec2)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"

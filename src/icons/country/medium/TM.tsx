@@ -10,7 +10,7 @@ export const TM = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_71537"
+        id="1f4e4256A276-469d-81d8E8206834ba48"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const TM = () => {
       >
         <rect width="20" height="15" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_71537)">
+      <g mask="url(#1f4e4256A276-469d-81d8E8206834ba48)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const TM = () => {
           fill="#29C470"
         />
         <mask
-          id="mask1_157_71537"
+          id="86836ea4-0904-4661Bd24E0b91b7768d2"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const TM = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_71537)">
+        <g mask="url(#86836ea4-0904-4661Bd24E0b91b7768d2)">
           <rect
             x="1.25"
             y="-0.201904"
@@ -50,7 +50,7 @@ export const TM = () => {
             fill="#C51918"
           />
           <mask
-            id="mask2_157_71537"
+            id="63408c28C712-4592B7d7-7cc06f5bb7a8"
             maskUnits="userSpaceOnUse"
             x="1"
             y="-1"
@@ -65,7 +65,7 @@ export const TM = () => {
               fill="white"
             />
           </mask>
-          <g mask="url(#mask2_157_71537)">
+          <g mask="url(#63408c28C712-4592B7d7-7cc06f5bb7a8)">
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -113,7 +113,7 @@ export const TM = () => {
               fill="#E8AA00"
             />
             <mask
-              id="mask3_157_71537"
+              id="8f52abc3-92cc-4658B0f8-519447ea861c"
               maskUnits="userSpaceOnUse"
               x="2"
               y="10"
@@ -127,7 +127,7 @@ export const TM = () => {
                 fill="white"
               />
             </mask>
-            <g mask="url(#mask3_157_71537)">
+            <g mask="url(#8f52abc3-92cc-4658B0f8-519447ea861c)">
               <path
                 d="M2.79431 11.9348H4.51998V13.0741H2.79431V11.9348Z"
                 fill="#E8AA00"

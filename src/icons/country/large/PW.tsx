@@ -10,7 +10,7 @@ export const PW = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78353"
+        id="13ded4e9-868e-49db-90daCee90e49ff45"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const PW = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78353)">
+      <g mask="url(#13ded4e9-868e-49db-90daCee90e49ff45)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const PW = () => {
           fill="#61C6F0"
         />
         <mask
-          id="mask1_157_78353"
+          id="36711242-5131-4912A88b-2bfc48021f4c"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const PW = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78353)">
+        <g mask="url(#36711242-5131-4912A88b-2bfc48021f4c)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"

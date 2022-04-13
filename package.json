@@ -54,7 +54,8 @@
     "storybook-addon-designs": "6.2.1",
     "styled-components": "5.3.3",
     "tsconfig-paths-webpack-plugin": "3.5.2",
-    "typescript": "4.6.2"
+    "typescript": "4.6.2",
+    "uuid": "^8.3.2"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^0.0.16",
@@ -85,9 +86,10 @@
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.js",
     "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
     "proxy": "local-ssl-proxy --source 6007 --target 6006",
-    "svgs:create": "yarn svgs:react && yarn svgs:format",
-    "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/reactSVGs",
+    "svgs:create": "yarn svgs:react && yarn svgs:format && yarn svgs:index",
     "svgs:format": "eslint svgReact --ext .tsx --fix",
+    "svgs:index": "node ./svgReact/createIndexFile.js ./svgReact/reactSVGs",
+    "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/reactSVGs",
     "start": "yarn build-storybook && yarn storybook",
     "storybook": "start-storybook -p 6006"
   },

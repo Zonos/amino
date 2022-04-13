@@ -10,7 +10,7 @@ export const JO = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
-        id="mask0_157_78279"
+        id="a987301f-356b-4aa2Aafb-99ed0055f6e9"
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -19,7 +19,7 @@ export const JO = () => {
       >
         <rect width="32" height="24" fill="white" />
       </mask>
-      <g mask="url(#mask0_157_78279)">
+      <g mask="url(#a987301f-356b-4aa2Aafb-99ed0055f6e9)">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -27,7 +27,7 @@ export const JO = () => {
           fill="#F7FCFF"
         />
         <mask
-          id="mask1_157_78279"
+          id="1e776626-689a-4e6dBd92-86f2130e2624"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -41,7 +41,7 @@ export const JO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask1_157_78279)">
+        <g mask="url(#1e776626-689a-4e6dBd92-86f2130e2624)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -62,7 +62,7 @@ export const JO = () => {
           fill="#E31D1C"
         />
         <mask
-          id="mask2_157_78279"
+          id="b14b10a2Bfe3-4916B2a3-100f272b74bc"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -76,7 +76,7 @@ export const JO = () => {
             fill="white"
           />
         </mask>
-        <g mask="url(#mask2_157_78279)">
+        <g mask="url(#b14b10a2Bfe3-4916B2a3-100f272b74bc)">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
