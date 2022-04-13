@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, Text, TextAvatar, VStack } from 'index';
 import styled from 'styled-components';
 
-import { Depth, Surface } from 'types';
+import { Surface } from 'components/Surface';
+import { Depth } from 'types';
 
 import { DropdownAnimationInverse } from '../../animations';
 
