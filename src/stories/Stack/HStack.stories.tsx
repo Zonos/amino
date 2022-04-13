@@ -17,18 +17,18 @@ const Template: Story<HStackProps> = ({ spacing }: HStackProps) => (
   <HStack spacing={spacing}>
     <Select
       label="Frankfurters"
-      helpText="When you go to a ballgame..."
-      items={[]}
+      placeholder="When you go to a ballgame..."
+      options={[]}
       onChange={() => {}}
-      value=""
+      value={null}
     />
 
     <Select
       label="HotDogs"
-      helpText="If you are a fan."
-      items={[]}
+      placeholder="If you are a fan."
+      options={[]}
       onChange={() => {}}
-      value=""
+      value={null}
     />
   </HStack>
 );
