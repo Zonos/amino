@@ -1,4 +1,4 @@
-import { Color } from 'types';
+import { Color } from './Color';
 
 export type IconProps = {
   size?: number;
