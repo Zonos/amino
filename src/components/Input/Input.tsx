@@ -2,17 +2,13 @@ import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { Text } from 'components/Text';
+import { HelpText, HelpTextProps } from 'components/HelpText';
 
 import { NumberInput, PasswordInput } from './InputType';
 import {
   FloatLabelInput,
   FloatLabelInputProps,
 } from './InputType/FloatLabelInput';
-
-const Error = styled.div`
-  color: var(--amino-red-600);
-`;
 
 const Fields = styled.div`
   border-radius: var(--amino-radius);
@@ -25,11 +21,6 @@ const Fields = styled.div`
 const AminoInputWrapper = styled.div<{ width?: number }>`
   position: relative;
   width: ${p => (p.width ? `${p.width}px` : '100%')};
-
-  span {
-    margin-top: var(--amino-space-quarter);
-    display: block;
-  }
 
   & > div {
     flex-direction: row;
@@ -44,19 +35,14 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 `;
 
-const StyledSubTitle = styled(Text)`
-  font-style: normal;
-`;
-
 export type InputProps = {
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
 
-  /** Displayed in a tooltip next to the label */
-  helpText?: string;
   inputSuffix?: ReactNode;
   inputPrefix?: ReactNode;
-} & FloatLabelInputProps;
+} & FloatLabelInputProps &
+  HelpTextProps;
 
 export const Input = ({
   autoFocus,
@@ -160,19 +146,7 @@ export const Input = ({
     >
       <Fields>{renderInput()}</Fields>
 
-      {helpText && (
-        <>
-          {error && error.length ? (
-            <Error>
-              <StyledSubTitle type="subtitle">{error}</StyledSubTitle>
-            </Error>
-          ) : null}
-
-          {(!error || !error.length) && helpText ? (
-            <StyledSubTitle type="subtitle">{helpText}</StyledSubTitle>
-          ) : null}
-        </>
-      )}
+      <HelpText error={error} helpText={helpText} />
     </AminoInputWrapper>
   );
 };

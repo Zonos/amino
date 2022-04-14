@@ -10,6 +10,7 @@ import {
 
 import styled from 'styled-components';
 
+import { HelpTextProps } from 'components/HelpText';
 import { Input } from 'components/Input';
 import { InputValuePrefix } from 'components/Input/InputType/FloatLabelInput';
 import { ChevronDownIcon } from 'icons';
@@ -90,10 +91,8 @@ export interface CountryPhoneSelectProps<
   Option extends IOption = IOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
-> extends Omit<
-    Props<Option, IsMulti, Group>,
-    'isMulti' | 'onChange' | 'value'
-  > {
+> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'>,
+    HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   countryOptions: ICountryOption[];
   hasGroups?: boolean;

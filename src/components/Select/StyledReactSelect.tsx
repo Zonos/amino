@@ -16,6 +16,8 @@ import ReactSelect, {
 import styled from 'styled-components';
 
 import { Checkbox } from 'components/Checkbox';
+import { HelpText } from 'components/HelpText';
+import { HelpTextProps } from 'components/HelpText/HelpText';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon, RemoveIcon } from 'icons';
 
 export type IOption = { icon?: ReactNode; label: string; value: string };
@@ -24,6 +26,8 @@ type AdditionalProps = {
   icon?: ReactNode;
   label?: string;
 };
+
+const SelectWrapper = styled.div``;
 
 const ClearIndicator = <
   Option extends IOption,
@@ -345,6 +349,7 @@ export interface StyledReactSelectProps<
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 > extends Props<Option, IsMulti, Group>,
+    HelpTextProps,
     AdditionalProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   styles?: StylesConfig<Option, IsMulti, Group>;
@@ -356,6 +361,8 @@ export const StyledReactSelect = <
   Group extends GroupBase<Option>
 >({
   components,
+  error,
+  helpText,
   hasGroups,
   icon,
   label = ' ',
@@ -368,46 +375,49 @@ export const StyledReactSelect = <
     label,
   };
   return (
-    <ReactSelect<Option, IsMulti, Group>
-      components={
-        {
-          ClearIndicator,
-          Control,
-          DropdownIndicator,
-          // DownChevron,
-          // CrossIcon,
-          // Group,
-          // GroupHeading,
-          // IndicatorsContainer,
-          // IndicatorSeparator,
-          // Input,
-          // LoadingIndicator,
-          // Menu,
-          // MenuList,
-          // MenuPortal,
-          // LoadingMessage,
-          // NoOptionsMessage,
-          // MultiValue,
-          // MultiValueContainer,
-          MultiValueLabel,
-          MultiValueRemove,
-          Option: CheckboxOptionComponent,
-          // Placeholder,
-          // SelectContainer,
-          // SingleValue,
-          // ValueContainer,
-          ...components,
-        } as SelectComponentsConfig<Option, IsMulti, Group>
-      }
-      styles={
-        {
-          ...styles,
-          ...localStyles,
-        } as StylesConfig<Option, IsMulti, Group>
-      }
-      {...props}
-      // @ts-ignore additional props in selectProps
-      {...additionalProps}
-    />
+    <SelectWrapper>
+      <ReactSelect<Option, IsMulti, Group>
+        components={
+          {
+            ClearIndicator,
+            Control,
+            DropdownIndicator,
+            // DownChevron,
+            // CrossIcon,
+            // Group,
+            // GroupHeading,
+            // IndicatorsContainer,
+            // IndicatorSeparator,
+            // Input,
+            // LoadingIndicator,
+            // Menu,
+            // MenuList,
+            // MenuPortal,
+            // LoadingMessage,
+            // NoOptionsMessage,
+            // MultiValue,
+            // MultiValueContainer,
+            MultiValueLabel,
+            MultiValueRemove,
+            Option: CheckboxOptionComponent,
+            // Placeholder,
+            // SelectContainer,
+            // SingleValue,
+            // ValueContainer,
+            ...components,
+          } as SelectComponentsConfig<Option, IsMulti, Group>
+        }
+        styles={
+          {
+            ...styles,
+            ...localStyles,
+          } as StylesConfig<Option, IsMulti, Group>
+        }
+        {...props}
+        // @ts-ignore additional props in selectProps
+        {...additionalProps}
+      />
+      <HelpText error={error} helpText={helpText} />
+    </SelectWrapper>
   );
 };

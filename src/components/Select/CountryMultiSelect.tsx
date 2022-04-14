@@ -10,6 +10,7 @@ import {
 } from 'react-select';
 
 import { Checkbox } from 'components/Checkbox';
+import { HelpTextProps } from 'components/HelpText';
 
 import { ICountryOption, IRegionCountryOption } from './ICountry';
 import { MultiSelect } from './MultiSelect';
@@ -57,9 +58,10 @@ export interface CountryMultiSelectProps<
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<
-    Props<Option, IsMulti, Group>,
-    'isMulti' | 'onChange' | 'options' | 'value'
-  > {
+      Props<Option, IsMulti, Group>,
+      'isMulti' | 'onChange' | 'options' | 'value'
+    >,
+    HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   icon?: ReactNode;
   label?: string;

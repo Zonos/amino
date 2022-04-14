@@ -7,6 +7,8 @@ import {
   StylesConfig,
 } from 'react-select';
 
+import { HelpTextProps } from 'components/HelpText';
+
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
@@ -16,7 +18,8 @@ export interface SelectProps<
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
-    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> {
+    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>>,
+    HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   hasGroups?: boolean;
   icon?: ReactNode;
