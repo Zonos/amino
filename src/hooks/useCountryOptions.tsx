@@ -1,6 +1,4 @@
-import React, { useCallback, useState } from 'react';
-
-import { useEffect } from '@storybook/addons';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import {
   ICountryOption,
