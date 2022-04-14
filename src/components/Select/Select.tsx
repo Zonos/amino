@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import {
+  ActionMeta,
   GroupBase,
   Props,
-  PropsValue,
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select';
@@ -11,7 +11,7 @@ import { HelpTextProps } from 'components/HelpText';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 
-type RequiredProps = 'onChange' | 'options' | 'value';
+type RequiredProps = 'options' | 'value';
 
 export interface SelectProps<
   Option extends IOption = IOption,
@@ -24,12 +24,17 @@ export interface SelectProps<
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
+  /**
+   * @example
+   * onChange={changed => setExampleValue(changed?.value || null)}
+   */
+  onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
   styles?: StylesConfig<Option, IsMulti, Group>;
   /**
    * @example
-   * value: { label: string; value: string; } | null;
+   * value={options.filter(x => x.value === exampleValue)}
    */
-  value: PropsValue<Option>;
+  value: Option[] | Option | null;
 }
 
 export const Select = <
