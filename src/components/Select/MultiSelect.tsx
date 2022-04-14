@@ -13,6 +13,7 @@ import {
 } from 'react-select';
 
 import { Checkbox } from 'components/Checkbox';
+import { HelpTextProps } from 'components/HelpText';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 
@@ -23,7 +24,8 @@ export interface MultiSelectProps<
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
-    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> {
+    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>>,
+    HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   hasGroups?: boolean;
   icon?: ReactNode;

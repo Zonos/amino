@@ -6,6 +6,7 @@ import {
   StylesConfig,
 } from 'react-select';
 
+import { HelpTextProps } from 'components/HelpText';
 import {
   CountryIcon,
   ICountryCode,
@@ -20,10 +21,8 @@ export interface CountrySelectProps<
   Option extends IOption = IOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>
-> extends Omit<
-    Props<Option, IsMulti, Group>,
-    'isMulti' | 'onChange' | 'value'
-  > {
+> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'>,
+    HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   countryOptions: ICountryOption[];
   hasGroups?: boolean;
