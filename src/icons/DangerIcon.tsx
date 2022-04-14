@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use ExclamationIcon instead */
@@ -23,3 +22,4 @@ export const DangerIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+DangerIcon.deprecated = true;

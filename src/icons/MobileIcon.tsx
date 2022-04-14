@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 export const MobileIcon = ({ size, color }: IconProps) => (

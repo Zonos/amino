@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use ChartIcon instead */
@@ -21,3 +20,4 @@ export const ReportsIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+ReportsIcon.deprecated = true;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
+/** @deprecated Use ArrowSwapIcon instead */
 export const ConvertIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
     <path
@@ -14,3 +14,4 @@ export const ConvertIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+ConvertIcon.deprecated = true;
