@@ -102,6 +102,7 @@ export type AnchorProps = {
   disabled?: boolean;
   href?: string;
   icon?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   iconRight?: boolean;
   size?: 'sm' | 'md' | 'lg';
   tabIndex?: number;
@@ -115,6 +116,7 @@ export const Anchor = ({
   href,
   icon,
   iconRight,
+  onClick,
   size,
   tabIndex,
   tooltip,
@@ -133,6 +135,7 @@ export const Anchor = ({
       tabIndex={tabIndex}
       size={size || 'sm'}
       disabled={disabled}
+      onClick={onClick}
     >
       {tooltip && <ReactTooltip />}
       {!iconRight && icon}

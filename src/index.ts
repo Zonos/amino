@@ -19,6 +19,7 @@ export { DarkModeWrapper } from './components/DarkModeWrapper';
 export { Dialog } from './components/Dialog';
 export { Divider } from './components/Divider';
 export { Fieldset } from './components/Fieldset';
+export { FileUpload } from './components/FileUpload';
 export { Input } from './components/Input';
 export {
   Layout,
