@@ -1,7 +1,6 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
-import { ConfirmDialogOpts } from 'types';
-
+import { ConfirmDialogOpts } from '../../types';
 import { ConfirmDialog } from './ConfirmDialog';
 
 export const ConfirmContext = createContext((opts: ConfirmDialogOpts) => {
