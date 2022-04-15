@@ -258,7 +258,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Primary>
@@ -272,7 +272,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Subtle>
@@ -286,7 +286,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Outline>
@@ -300,7 +300,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Warning>
@@ -314,7 +314,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Danger>
@@ -328,7 +328,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Icon>
@@ -343,7 +343,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'submit'}
+          type={type || 'button'}
         >
           {content}
         </Secondary>
