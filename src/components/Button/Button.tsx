@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import styled, { css } from 'styled-components';
@@ -209,6 +209,7 @@ export type ButtonProps = {
   size?: 'sm' | 'md' | 'lg';
   tabIndex?: number;
   tooltip?: ReactNode;
+  type?: 'button' | 'reset' | 'submit';
 };
 
 export const Button = ({
@@ -224,6 +225,7 @@ export const Button = ({
   size,
   tabIndex,
   tooltip,
+  type,
 }: ButtonProps) => {
   const content = loading ? (
     <>
@@ -256,6 +258,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Primary>
@@ -269,6 +272,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Subtle>
@@ -282,6 +286,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Outline>
@@ -295,6 +300,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Warning>
@@ -308,6 +314,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Danger>
@@ -321,6 +328,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Icon>
@@ -335,6 +343,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'submit'}
         >
           {content}
         </Secondary>
