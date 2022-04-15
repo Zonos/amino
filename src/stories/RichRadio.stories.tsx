@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { CheckMarkIcon, ChevronRightIcon } from 'icons';
 
-import { RichRadio, RichRadioProps } from '../components/RichRadio';
+import { RichRadio, type RichRadioProps } from '../components/RichRadio';
 
 const RichRadioMeta: Meta = {
   title: 'Amino/RichRadio',

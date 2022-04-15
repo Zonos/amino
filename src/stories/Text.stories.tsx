@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Text, TextProps } from '../components/Text';
+import { Text, type TextProps } from '../components/Text';
 
 const TextMeta: Meta = {
   title: 'Amino/Text',

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { FileIcon } from 'icons';
 
-import { Select, SelectProps } from '../components/Select';
+import { Select, type SelectProps } from '../components/Select';
 
 const StyledWrapper = styled.div`
   width: 412px;

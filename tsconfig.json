@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "baseUrl": "src",
     "declaration": true,
     "emitDecoratorMetadata": true,

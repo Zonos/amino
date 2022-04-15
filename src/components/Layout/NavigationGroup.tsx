@@ -2,7 +2,7 @@ import React, { ReactElement, ReactNode } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { StyledProps } from '../../types/StyledProps';
+import { type StyledProps } from '../../types/StyledProps';
 import { Collapse } from '../Collapse';
 
 const Wrapper = styled.div`

@@ -10,7 +10,7 @@ import {
 
 import styled from 'styled-components';
 
-import { HelpTextProps } from 'components/HelpText';
+import { type HelpTextProps } from 'components/HelpText';
 import { Input } from 'components/Input';
 import { InputValuePrefix } from 'components/Input/InputType/FloatLabelInput';
 import { ChevronDownIcon } from 'icons';

@@ -4,7 +4,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Collapse, CollapseProps } from 'components/Collapse';
+import { Collapse, type CollapseProps } from 'components/Collapse';
 import { NavigationItem } from 'components/Layout';
 
 const CollapseMeta: Meta = {

@@ -17,7 +17,7 @@ import styled from 'styled-components';
 
 import { Checkbox } from 'components/Checkbox';
 import { HelpText } from 'components/HelpText';
-import { HelpTextProps } from 'components/HelpText/HelpText';
+import { type HelpTextProps } from 'components/HelpText/HelpText';
 import { ChevronDownSolidIcon, RemoveCircleSolidIcon, RemoveIcon } from 'icons';
 
 export type IOption = { icon?: ReactNode; label: string; value: string };

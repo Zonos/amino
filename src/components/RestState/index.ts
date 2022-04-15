@@ -1,1 +1,1 @@
-export { RestState, RestStateProps } from './RestState';
+export { RestState, type RestStateProps } from './RestState';

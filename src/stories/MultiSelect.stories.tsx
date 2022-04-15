@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { PlayCircleSolidIcon } from 'icons';
 
-import { MultiSelect, MultiSelectProps } from '../components/Select';
+import { MultiSelect, type MultiSelectProps } from '../components/Select';
 
 const StyledWrapper = styled.div`
   width: 412px;
