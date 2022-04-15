@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use UserIcon instead */
@@ -21,3 +20,4 @@ export const PersonIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+PersonIcon.deprecated = true;

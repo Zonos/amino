@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use LocationIcon instead */
@@ -19,3 +18,4 @@ export const MapPinIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+MapPinIcon.deprecated = true;

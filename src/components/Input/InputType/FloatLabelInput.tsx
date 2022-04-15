@@ -85,7 +85,8 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
   border: 0;
   font-weight: 500;
   &.has-label {
-    padding: var(--amino-space) 4px var(--amino-space-quarter);
+    padding: var(--amino-space) 4px var(--amino-space-quarter)
+      var(--amino-space-half);
   }
 
   &.has-value-prefix {

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use FileIcon instead */
@@ -15,3 +14,4 @@ export const AttachmentIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+AttachmentIcon.deprecated = true;

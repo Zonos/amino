@@ -22,10 +22,6 @@ const AminoAnchor = styled.a<Pick<AnchorProps, 'size' | 'disabled'>>`
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
 
-  svg path {
-    fill: var(--amino-text-color);
-  }
-
   &.only-icon {
     width: 32px;
     padding: 0;
@@ -78,9 +74,6 @@ const AminoAnchor = styled.a<Pick<AnchorProps, 'size' | 'disabled'>>`
 const StyledAnchor = styled(AminoAnchor)`
   background: none;
   color: var(--amino-blue-500);
-  svg path {
-    fill: var(--amino-blue-500);
-  }
 
   &:hover {
     background: var(--amino-gray-100);
