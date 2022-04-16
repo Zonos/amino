@@ -18,7 +18,12 @@ import styled from 'styled-components';
 import { Checkbox } from 'components/Checkbox';
 import { HelpText } from 'components/HelpText';
 import { HelpTextProps } from 'components/HelpText/HelpText';
-import { ChevronDownSolidIcon, RemoveCircleSolidIcon, RemoveIcon } from 'icons';
+import {
+  CheckCircleSolidIcon,
+  ChevronDownSolidIcon,
+  RemoveCircleSolidIcon,
+  RemoveIcon,
+} from 'icons';
 
 export type IOption = { icon?: ReactNode; label: string; value: string };
 type AdditionalProps = {
@@ -26,8 +31,6 @@ type AdditionalProps = {
   icon?: ReactNode;
   label?: string;
 };
-
-const SelectWrapper = styled.div``;
 
 const ClearIndicator = <
   Option extends IOption,
@@ -146,30 +149,37 @@ const Control = <
   );
 };
 
-const CheckboxOptionIconWrapper = styled.div`
+const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
   display: flex;
   align-items: center;
+  color: ${p => p.$color || 'inherit'};
   svg {
     margin-right: 4px;
+    color: black;
   }
+`;
+
+const SelectedSingleOptionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const IconLabel = ({
   children,
+  color,
   icon,
 }: {
   children: ReactNode;
+  color?: string;
   icon?: ReactNode;
 }) => {
-  if (icon) {
-    return (
-      <CheckboxOptionIconWrapper>
-        {icon}
-        {children}
-      </CheckboxOptionIconWrapper>
-    );
-  }
-  return <>{children}</>;
+  return (
+    <CheckboxOptionIconWrapper $color={color}>
+      {icon}
+      {children}
+    </CheckboxOptionIconWrapper>
+  );
 };
 
 const MultiValueLabel = <
@@ -219,22 +229,30 @@ export const CheckboxOptionComponent = <
   } = props;
   const { hasGroups } = selectProps as typeof props['selectProps'] &
     AdditionalProps;
-  const style = getStyles('option', props) as React.CSSProperties;
+  const { color, ...style } = getStyles('option', props) as React.CSSProperties;
   if (hasGroups) {
     style.paddingLeft = 48;
   }
-
   return (
     <div ref={innerRef} style={style} {...innerProps}>
       {selectProps.isMulti ? (
         <Checkbox
           checked={isSelected}
           label={data.value}
-          labelComponent={<IconLabel icon={data.icon}>{children}</IconLabel>}
+          labelComponent={
+            <IconLabel color={color} icon={data.icon}>
+              {children}
+            </IconLabel>
+          }
           onChange={() => {}}
         />
       ) : (
-        <IconLabel icon={data.icon}>{children}</IconLabel>
+        <SelectedSingleOptionWrapper>
+          <IconLabel color={color} icon={data.icon}>
+            {children}
+          </IconLabel>
+          {isSelected && <CheckCircleSolidIcon color="blue-500" size={16} />}
+        </SelectedSingleOptionWrapper>
       )}
     </div>
   );
@@ -312,11 +330,12 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // multiValueLabel
   // multiValueRemove
   // noOptionsMessage
-  option: provided => {
+  option: (provided, state) => {
     return {
       ...provided,
       '&:hover': { backgroundColor: 'red' },
-      color: 'black',
+      color: state.isSelected ? 'var(--amino-blue-500)' : 'black',
+      fontWeight: state.isSelected ? 500 : 400,
       backgroundColor: 'inherit',
       paddingTop: 7,
       paddingRight: 12,
@@ -375,7 +394,7 @@ export const StyledReactSelect = <
     label,
   };
   return (
-    <SelectWrapper>
+    <div>
       <ReactSelect<Option, IsMulti, Group>
         components={
           {
@@ -418,6 +437,6 @@ export const StyledReactSelect = <
         {...additionalProps}
       />
       <HelpText error={error} helpText={helpText} />
-    </SelectWrapper>
+    </div>
   );
 };

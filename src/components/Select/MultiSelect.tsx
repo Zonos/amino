@@ -105,7 +105,7 @@ export const MultiSelect = <
   Group extends GroupBase<Option>
 >({
   closeMenuOnSelect = false,
-  hideSelectedOptions = false,
+  hideSelectedOptions = true,
   ...props
 }: MultiSelectProps<Option, true, Group>) => {
   return (

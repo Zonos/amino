@@ -131,3 +131,33 @@ BasicSelectWithIcon.parameters = {
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
   },
 };
+
+export const BasicSelectWithOptionIcon = SelectTemplate.bind({});
+
+BasicSelectWithOptionIcon.args = {
+  icon: <FileIcon size={20} />,
+  label: 'Currencies',
+  value: {
+    label: 'US Dollar (USD)',
+    value: 'USD',
+  },
+  options: [
+    {
+      label: 'US Dollar (USD)',
+      icon: <FileIcon size={14} />,
+      value: 'USD',
+    },
+    {
+      icon: <FileIcon size={14} />,
+      label: 'European Euro (EUR)',
+      value: 'EUR',
+    },
+  ],
+};
+
+BasicSelectWithOptionIcon.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
+  },
+};
