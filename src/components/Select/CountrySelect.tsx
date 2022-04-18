@@ -31,7 +31,11 @@ export interface CountrySelectProps<
   label?: string;
   onChange: (changed: ICountryOption | null) => void;
   styles?: StylesConfig<Option, IsMulti, Group>;
-  value: ICountryOption | null;
+  /**
+   * @example
+   * value={countryOptions.filter(x => x.value === countryCode)}
+   */
+  value: ICountryOption[] | ICountryOption | null;
 }
 
 export const CountrySelect = ({
