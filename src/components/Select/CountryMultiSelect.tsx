@@ -93,6 +93,7 @@ export const CountryMultiSelect = ({
       {...props}
       components={{ MenuList }}
       hasGroups
+      hideSelectedOptions={false}
       label={label}
       onChange={changed => onChange(changed as ICountryOption[])}
       options={regionCountryOptions}
