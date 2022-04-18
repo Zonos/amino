@@ -3,9 +3,8 @@ import React, { ReactNode } from 'react';
 import { Indicator, Root } from '@radix-ui/react-checkbox';
 import styled from 'styled-components';
 
-import { StyledProps } from 'types/StyledProps';
-
 import { CheckMarkIcon } from '../../icons';
+import { type StyledProps } from '../../types/StyledProps';
 import { VStack } from '../Stack';
 
 const RichCheckbox = styled(Root)`

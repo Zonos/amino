@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { type IconProps } from '../types';
 import { IconBase } from './IconBase';
 /** @deprecated Use CubeIcon instead */
 export const BoxIcon = ({ size, color }: IconProps) => (
@@ -14,3 +13,4 @@ export const BoxIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+BoxIcon.deprecated = true;

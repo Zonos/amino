@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 
-import { IconProps } from 'types';
-
+import { type IconProps } from '../types';
 import { IconBase } from './IconBase';
 
+/** @deprecated Use CheckMarkIcon instead */
 export const CheckIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ size, color }, ref) => (
     <IconBase size={size} color={color} ref={ref}>

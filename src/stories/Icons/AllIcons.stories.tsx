@@ -7,7 +7,8 @@ import { SearchInput } from 'components/Input/SearchInput';
 import { VStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import * as icons from 'icons';
-import { IconProps } from 'types';
+
+import { type IconProps } from '../../types';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',
@@ -47,14 +48,15 @@ const StyledIcon = styled.div<{ size?: number }>`
 `;
 
 // Check if string contain keyword of the sub icon type or not
-const hasSubtype = (iconName: string) => /Solid|Duotone/i.test(iconName);
+type IconsType = typeof icons[keyof typeof icons] & { deprecated?: boolean };
 
 export const AllIcons = ({ size }: IconProps) => {
   const [filter, setFilter] = useState('');
-  const iicons = Object.values(icons)
+  const iicons = Object.values<IconsType>(icons)
     .map(icon => ({
       icon,
       iconName: icon.name,
+      deprecated: !!icon.deprecated,
     }))
     .filter(icon => icon.iconName);
 
@@ -68,15 +70,10 @@ export const AllIcons = ({ size }: IconProps) => {
               ? iconName.toLowerCase().includes(filter.toLowerCase())
               : true
           )
-          .map(({ icon: IconComponent, iconName }, index) => {
-            const nextIcon = iicons[index + 1];
-            const isDeprecated =
-              !hasSubtype(iconName) &&
-              nextIcon &&
-              !hasSubtype(nextIcon.iconName);
+          .map(({ icon: IconComponent, iconName, deprecated }) => {
+            const isDeprecated = deprecated;
             return (
               <StyledIcon
-                // eslint-disable-next-line react/no-array-index-key
                 key={iconName}
                 size={size}
                 className={[

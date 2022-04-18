@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { type IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use SettingIcon instead */
@@ -25,3 +24,4 @@ export const AdminIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+AdminIcon.deprecated = true;

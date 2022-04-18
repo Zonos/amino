@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { TextAvatar, TextAvatarProps } from '../components/TextAvatar';
+import { TextAvatar, type TextAvatarProps } from '../components/TextAvatar';
 
 const TextAvatarMeta: Meta = {
   title: 'Amino/TextAvatar',

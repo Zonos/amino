@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { CubeIcon } from 'icons';
 
-import { Badge, BadgeProps } from '../components/Badge';
+import { Badge, type BadgeProps } from '../components/Badge';
 
 const BadgeMeta: Meta = {
   title: 'Amino/Badge',

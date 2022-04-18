@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { Button, ButtonProps } from 'components/Button';
+import { Button, type ButtonProps } from 'components/Button';
 import { CubeIcon } from 'icons';
 
 const ButtonMeta: Meta = {

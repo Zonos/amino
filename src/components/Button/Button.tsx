@@ -4,7 +4,8 @@ import ReactTooltip from 'react-tooltip';
 import styled, { css } from 'styled-components';
 
 import { Spinner } from 'components/Spinner';
-import { Intent } from 'types';
+
+import { Intent } from '../../types';
 
 const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   position: relative;
@@ -208,6 +209,7 @@ export type ButtonProps = {
   size?: 'sm' | 'md' | 'lg';
   tabIndex?: number;
   tooltip?: ReactNode;
+  type?: 'button' | 'reset' | 'submit';
 };
 
 export const Button = ({
@@ -223,6 +225,7 @@ export const Button = ({
   size,
   tabIndex,
   tooltip,
+  type,
 }: ButtonProps) => {
   const content = loading ? (
     <>
@@ -255,6 +258,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Primary>
@@ -268,6 +272,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Subtle>
@@ -281,6 +286,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Outline>
@@ -294,6 +300,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Warning>
@@ -307,6 +314,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Danger>
@@ -320,6 +328,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Icon>
@@ -334,6 +343,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
+          type={type || 'button'}
         >
           {content}
         </Secondary>

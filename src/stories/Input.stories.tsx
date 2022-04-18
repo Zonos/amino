@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { CountryIcon } from 'icons/country/CountryIcon';
 
-import { Input, InputProps } from '../components/Input';
+import { Input, type InputProps } from '../components/Input';
 import { BagIcon, CubeIcon } from '../icons';
 
 const InputMeta: Meta = {

@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { CubeIcon } from 'icons';
 
-import { Tag, TagProps } from '../components/Tag';
+import { Tag, type TagProps } from '../components/Tag';
 
 const TagMeta: Meta = {
   title: 'Amino/Tag',

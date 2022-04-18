@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { HStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import { RemoveCircleDuotoneIcon } from 'icons';
-import { IAminoTheme } from 'types';
 
+import { IAminoTheme } from '../../types';
 import { BaseDialog } from './BaseDialog';
 
 const Header = styled.div`

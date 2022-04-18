@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import { Button } from '../components/Button';
-import { Dialog, DialogProps } from '../components/Dialog';
+import { Dialog, type DialogProps } from '../components/Dialog';
 
 const DialogMeta: Meta = {
   title: 'Amino/Dialog',

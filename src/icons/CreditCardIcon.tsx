@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { type IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 /** @deprecated Use BankCardIcon instead */
@@ -20,3 +19,4 @@ export const CreditCardIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+CreditCardIcon.deprecated = true;

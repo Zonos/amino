@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { IconProps } from 'types';
-
+import { type IconProps } from '../types';
 import { IconBase } from './IconBase';
 
 export const PuzzleIcon = ({ size, color }: IconProps) => (
@@ -14,3 +13,4 @@ export const PuzzleIcon = ({ size, color }: IconProps) => (
     />
   </IconBase>
 );
+PuzzleIcon.deprecated = true;

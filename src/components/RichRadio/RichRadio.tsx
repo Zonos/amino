@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import ReactTooltip, { TooltipProps } from 'react-tooltip';
+import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import styled from 'styled-components';

@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { TagIcon } from 'icons';
 
-import { Checkbox, CheckboxProps } from '../components/Checkbox';
+import { Checkbox, type CheckboxProps } from '../components/Checkbox';
 
 const CheckboxMeta: Meta = {
   title: 'Amino/Checkbox',
