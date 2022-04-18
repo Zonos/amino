@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import {
+  ActionMeta,
   GroupBase,
   Props,
-  PropsValue,
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select';
@@ -11,7 +11,7 @@ import { type HelpTextProps } from 'components/HelpText';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 
-type RequiredProps = 'onChange' | 'options' | 'value';
+type RequiredProps = 'options' | 'value';
 
 export interface SelectProps<
   Option extends IOption = IOption,
@@ -24,26 +24,40 @@ export interface SelectProps<
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
+  /**
+   * @example
+   * onChange={changed => setExampleValue(changed?.value || null)}
+   */
+  onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
   styles?: StylesConfig<Option, IsMulti, Group>;
   /**
    * @example
-   * value: { label: string; value: string; } | null;
+   * value={options.filter(x => x.value === exampleValue)}
    */
-  value: PropsValue<Option>;
+  value: Option[] | Option | null;
 }
 
 export const Select = <
   Option extends IOption,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({
+  label,
   isClearable = true,
+  value,
   ...props
 }: SelectProps<Option, false, Group>) => {
+  if (Array.isArray(value) && value.length > 1) {
+    throw Error(
+      `Only one selection allowed for '${label}' select (${value.length}) selected.`
+    );
+  }
   return (
     <StyledReactSelect<Option, false, Group>
       {...props}
+      label={label}
       isClearable={isClearable}
       isMulti={false}
+      value={value}
     />
   );
 };

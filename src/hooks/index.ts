@@ -1,6 +1,6 @@
 export { useAlert } from './useAlert';
 export { useCheckboxValue } from './useCheckboxValue';
 export { useConfirm } from './useConfirm';
-export { useCountryOptions } from './useCountryOptions';
+export { prepCountryOptions, useCountryOptions } from './useCountryOptions';
 export { useInputValue } from './useInputValue';
 export { useStableUniqueId } from './useStableUniqueId';
