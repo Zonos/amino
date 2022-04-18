@@ -12,7 +12,7 @@ import {
 import { HStack } from 'components/Stack';
 import { ZonosIcon } from 'icons/ZonosIcon';
 
-import { Layout, LayoutProps } from '../../components/Layout';
+import { Layout, type LayoutProps } from '../../components/Layout';
 import { NavigationGroupExample as NavigationGroupStory } from './NavigationGroup.stories';
 import { UserMenu } from './UserMenu';
 

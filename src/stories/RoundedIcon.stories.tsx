@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { RoundedIcon, RoundedIconProps } from '../components/RoundedIcon';
+import { RoundedIcon, type RoundedIconProps } from '../components/RoundedIcon';
 import { ReportsIcon } from '../icons';
 
 const RoundedIconMeta: Meta = {

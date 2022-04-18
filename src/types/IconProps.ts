@@ -1,7 +1,7 @@
 import { Color } from './Color';
 /**
  * @desc The types do not build unless you use relative path for import
- * @example import { IconProps } from '../../types';
+ * @example import {type IconProps } from '../../types';
  */
 export type IconProps = {
   size?: number;

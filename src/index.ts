@@ -7,7 +7,7 @@ export {
 export { Anchor, Button, MenuButton } from './components/Button';
 export { Card } from './components/Card';
 export { Checkbox } from './components/Checkbox';
-export { Collapse, CollapseProps } from './components/Collapse';
+export { Collapse, type CollapseProps } from './components/Collapse';
 export {
   ConfirmContext,
   ConfirmContextProvider,
@@ -23,34 +23,34 @@ export { FileUpload } from './components/FileUpload';
 export { Input } from './components/Input';
 export {
   Layout,
-  LayoutProps,
+  type LayoutProps,
   NavigationGroup,
-  NavigationGroupProps,
+  type NavigationGroupProps,
   NavigationItem,
-  NavigationItemProps,
+  type NavigationItemProps,
 } from './components/Layout';
 export { List } from './components/List';
 export { ListItem } from './components/ListItem';
 export { Menu, MenuItem } from './components/Menu';
 export { Notice } from './components/Notice';
 export { Radio, RadioGroup } from './components/Radio';
-export { RestState, RestStateProps } from './components/RestState';
+export { RestState, type RestStateProps } from './components/RestState';
 export { RichCheckboxGroup } from './components/RichCheckboxGroup';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
 export {
   LegacySelect,
   MultiSelect,
-  MultiSelectProps,
+  type MultiSelectProps,
   Select,
-  SelectProps,
+  type SelectProps,
 } from './components/Select';
 export { Skeleton } from './components/Skeleton';
 export { SlideOver } from './components/SlideOver';
 export { Slider } from './components/Slider';
 export { Spinner } from './components/Spinner';
 export { VStack } from './components/Stack';
-export { HStack, HStackProps } from './components/Stack';
+export { HStack, type HStackProps } from './components/Stack';
 export { Surface } from './components/Surface';
 export { Switch } from './components/Switch';
 export { Tabs } from './components/Tabs';

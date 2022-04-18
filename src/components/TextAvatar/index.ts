@@ -1,1 +1,1 @@
-export { TextAvatar, TextAvatarProps } from './TextAvatar';
+export { TextAvatar, type TextAvatarProps } from './TextAvatar';

@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { ICountryOption, Select, SelectProps } from 'components/Select';
+import { ICountryOption, Select, type SelectProps } from 'components/Select';
 import { CountrySelect } from 'components/Select/CountrySelect';
 import { useCountryOptions } from 'hooks';
 

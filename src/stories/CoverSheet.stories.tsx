@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
 import { Button } from '../components/Button';
-import { CoverSheet, CoverSheetProps } from '../components/CoverSheet';
+import { CoverSheet, type CoverSheetProps } from '../components/CoverSheet';
 
 const CoverSheetMeta: Meta = {
   title: 'Amino/CoverSheet',
