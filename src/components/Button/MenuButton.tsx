@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { Surface } from 'components/Surface';
+import { Depth } from 'types';
 
 import { DropdownAnimation } from '../../animations';
 import { DropdownIcon } from '../../icons/DropdownIcon';
-import { Depth } from '../../types';
 import { Button } from './Button';
 
 const Wrapper = styled.div`

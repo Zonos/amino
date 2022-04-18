@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { type IconProps } from '../types';
+import { type IconProps } from 'types';
+
 import { IconBase } from './IconBase';
 
 /** @deprecated Use LocationIcon instead */

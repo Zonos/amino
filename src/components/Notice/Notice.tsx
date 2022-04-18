@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Intent } from '../../types';
+import { Intent } from 'types';
 
 const AminoNotice = styled.aside`
   background: var(--amino-gray-100);

@@ -15,6 +15,13 @@
     "strict": true,
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
+    "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
+    "paths": {
+      "animations/*": ["animations/*"],
+      "components/*": ["components/*"],
+      "icons/*": ["icons/*"],
+      "hooks/*": ["hooks/*"],
+    }
   },
   "include": ["src"],
 }

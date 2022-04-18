@@ -9,8 +9,7 @@ import { Backdrop } from 'components/Backdrop';
 import { HStack, VStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import { XIcon } from 'icons';
-
-import { IAminoTheme } from '../../types';
+import { IAminoTheme } from 'types';
 
 const Popup = styled(motion.div)`
   position: absolute;
