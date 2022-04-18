@@ -41,14 +41,23 @@ export const Select = <
   Option extends IOption,
   Group extends GroupBase<Option> = GroupBase<Option>
 >({
+  label,
   isClearable = true,
+  value,
   ...props
 }: SelectProps<Option, false, Group>) => {
+  if (Array.isArray(value) && value.length > 1) {
+    throw Error(
+      `Only one selection allowed for '${label}' select (${value.length}) selected.`
+    );
+  }
   return (
     <StyledReactSelect<Option, false, Group>
       {...props}
+      label={label}
       isClearable={isClearable}
       isMulti={false}
+      value={value}
     />
   );
 };
