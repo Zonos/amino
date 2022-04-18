@@ -225,7 +225,7 @@ export const Button = ({
   size,
   tabIndex,
   tooltip,
-  type,
+  type = 'button',
 }: ButtonProps) => {
   const content = loading ? (
     <>
@@ -258,7 +258,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Primary>
@@ -272,7 +272,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Subtle>
@@ -286,7 +286,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Outline>
@@ -300,7 +300,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Warning>
@@ -314,7 +314,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Danger>
@@ -328,7 +328,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Icon>
@@ -343,7 +343,7 @@ export const Button = ({
           tabIndex={tabIndex}
           size={size || 'sm'}
           disabled={disabled}
-          type={type || 'button'}
+          type={type}
         >
           {content}
         </Secondary>
