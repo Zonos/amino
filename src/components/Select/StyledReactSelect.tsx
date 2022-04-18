@@ -17,7 +17,6 @@ import styled from 'styled-components';
 
 import { Checkbox } from 'components/Checkbox';
 import { HelpText } from 'components/HelpText';
-
 import { type HelpTextProps } from 'components/HelpText/HelpText';
 import {
   CheckCircleSolidIcon,
