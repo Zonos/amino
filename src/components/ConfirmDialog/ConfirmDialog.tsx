@@ -2,12 +2,13 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { IAminoTheme, Intent } from 'types';
+
 import {
   ExclamationSolidIcon,
   HelpSolidIcon,
   WarningSolidIcon,
 } from '../../icons';
-import { IAminoTheme, Intent } from '../../types';
 import { Button } from '../Button';
 import { BaseDialog } from '../Dialog/BaseDialog';
 import { RoundedIcon } from '../RoundedIcon';

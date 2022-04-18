@@ -5,8 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { Backdrop } from 'components/Backdrop';
-
-import { IAminoTheme } from '../../types';
+import { IAminoTheme } from 'types';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?

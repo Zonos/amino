@@ -1,7 +1,3 @@
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { GrayColor } from '../../types';
- */
 export type GrayColor =
   | 'gray-50'
   | 'gray-100'
@@ -14,10 +10,6 @@ export type GrayColor =
   | 'gray-800'
   | 'gray-900';
 
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { BlueColor } from '../../types';
- */
 export type BlueColor =
   | 'blue-50'
   | 'blue-100'
@@ -30,10 +22,6 @@ export type BlueColor =
   | 'blue-800'
   | 'blue-900';
 
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { CyanColor } from '../../types';
- */
 export type CyanColor =
   | 'cyan-50'
   | 'cyan-100'
@@ -46,10 +34,6 @@ export type CyanColor =
   | 'cyan-800'
   | 'cyan-900';
 
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { RedColor } from '../../types';
- */
 export type RedColor =
   | 'red-50'
   | 'red-100'
@@ -62,10 +46,6 @@ export type RedColor =
   | 'red-800'
   | 'red-900';
 
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { OrangeColor } from '../../types';
- */
 export type OrangeColor =
   | 'orange-50'
   | 'orange-100'
@@ -78,10 +58,6 @@ export type OrangeColor =
   | 'orange-800'
   | 'orange-900';
 
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { GreenColor } from '../../types';
- */
 export type GreenColor =
   | 'green-50'
   | 'green-100'
@@ -94,10 +70,6 @@ export type GreenColor =
   | 'green-800'
   | 'green-900';
 
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { PurpleColor } from '../../types';
- */
 export type PurpleColor =
   | 'purple-50'
   | 'purple-100'
@@ -109,10 +81,7 @@ export type PurpleColor =
   | 'purple-700'
   | 'purple-800'
   | 'purple-900';
-/**
- * @desc The types do not build unless you use relative path for import
- * @example import { Color } from '../../types';
- */
+
 export type Color =
   | GrayColor
   | BlueColor

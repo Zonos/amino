@@ -4,8 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import styled, { css } from 'styled-components';
 
 import { Spinner } from 'components/Spinner';
-
-import { Intent } from '../../types';
+import { Intent } from 'types';
 
 const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   position: relative;

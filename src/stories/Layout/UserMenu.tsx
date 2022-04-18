@@ -4,9 +4,9 @@ import { Menu, MenuItem, Text, TextAvatar, VStack } from 'index';
 import styled from 'styled-components';
 
 import { Surface } from 'components/Surface';
+import { Depth } from 'types';
 
 import { DropdownAnimationInverse } from '../../animations';
-import { Depth } from '../../types';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`
   border-top: var(--amino-border);
