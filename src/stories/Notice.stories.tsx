@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Notice, NoticeProps } from '../components/Notice';
+import { Notice, type NoticeProps } from '../components/Notice';
 
 const NoticeStories: Meta = {
   title: 'Amino/Notice',

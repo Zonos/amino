@@ -10,7 +10,7 @@ import {
 } from 'react-select';
 
 import { Checkbox } from 'components/Checkbox';
-import { HelpTextProps } from 'components/HelpText';
+import { type HelpTextProps } from 'components/HelpText';
 
 import { ICountryOption, IRegionCountryOption } from './ICountry';
 import { MultiSelect } from './MultiSelect';

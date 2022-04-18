@@ -8,7 +8,7 @@ import { VStack } from 'components/Stack';
 import { Text } from 'components/Text';
 import * as icons from 'icons';
 
-import { IconProps } from '../../types';
+import { type IconProps } from '../../types';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',

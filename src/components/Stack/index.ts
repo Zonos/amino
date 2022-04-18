@@ -1,2 +1,2 @@
-export { HStack, HStackProps } from './HStack';
-export { VStack, VStackProps } from './VStack';
+export { HStack, type HStackProps } from './HStack';
+export { VStack, type VStackProps } from './VStack';

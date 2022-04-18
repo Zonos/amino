@@ -1,7 +1,7 @@
-export { Layout, LayoutProps } from './Layout';
+export { Layout, type LayoutProps } from './Layout';
 export {
   NavigationGroup,
-  NavigationGroupProps,
+  type NavigationGroupProps,
   NavigationItem,
-  NavigationItemProps,
+  type NavigationItemProps,
 } from './NavigationGroup';
