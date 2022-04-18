@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { SearchInput } from 'components/Input/SearchInput';
 
-import { NavigationGroupProps } from './NavigationGroup';
+import { type NavigationGroupProps } from './NavigationGroup';
 
 const Footer = styled.div`
   box-sizing: border-box;

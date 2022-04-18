@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { HelpText, HelpTextProps } from 'components/HelpText';
+import { HelpText, type HelpTextProps } from 'components/HelpText';
 
 import { NumberInput, PasswordInput } from './InputType';
 import {

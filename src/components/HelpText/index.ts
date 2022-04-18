@@ -1,1 +1,1 @@
-export { HelpText, HelpTextProps } from './HelpText';
+export { HelpText, type HelpTextProps } from './HelpText';

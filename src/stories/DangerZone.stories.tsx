@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { CardProps } from '../components/Card';
+import { type CardProps } from '../components/Card';
 import { DangerZone } from '../components/DangerZone';
 
 const DangerZoneMeta: Meta = {

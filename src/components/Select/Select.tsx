@@ -7,7 +7,7 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { HelpTextProps } from 'components/HelpText';
+import { type HelpTextProps } from 'components/HelpText';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 

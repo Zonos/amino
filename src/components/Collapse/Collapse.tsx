@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { StyledProps } from '../../types/StyledProps';
+import { type StyledProps } from '../../types/StyledProps';
 
 const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
