@@ -13,6 +13,32 @@ import {
   ICountryIconScale,
 } from 'icons/country/CountryIcon';
 
+export const prepCountryOptions = ({
+  iconScale,
+  json,
+}: {
+  iconScale: ICountryIconScale;
+  json: IGetCountriesResponse;
+}) => {
+  const countries = Object.entries(json)
+    .map(([, country]) => ({
+      ...country,
+      label: country.displayName,
+      icon: (
+        <CountryIcon code={country.code as ICountryCode} scale={iconScale} />
+      ),
+      phoneCode:
+        countryPhoneCodes.find(x => x.code === country.code)?.phoneCode || [],
+      value: country.code,
+    }))
+    .sort((a, b) => a.displayName.localeCompare(b.displayName));
+  const regionCountries = regions.map(region => ({
+    label: region,
+    options: countries.filter(x => x.region === region),
+  }));
+  return { countries, regionCountries };
+};
+
 export const useCountryOptions = ({
   dashboardUrl,
   iconScale = 'small',
@@ -29,27 +55,13 @@ export const useCountryOptions = ({
     const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
     if (response.ok) {
       const json: IGetCountriesResponse = await response.json();
-      const countries = Object.entries(json)
-        .map(([, country]) => ({
-          ...country,
-          label: country.displayName,
-          icon: (
-            <CountryIcon
-              code={country.code as ICountryCode}
-              scale={iconScale}
-            />
-          ),
-          phoneCode:
-            countryPhoneCodes.find(x => x.code === country.code)?.phoneCode ||
-            [],
-          value: country.code,
-        }))
-        .sort((a, b) => a.displayName.localeCompare(b.displayName));
+      const { countries, regionCountries } = prepCountryOptions({
+        iconScale,
+        json,
+      });
+
       setCountryOptions(countries);
-      const regionCountries = regions.map(region => ({
-        label: region,
-        options: countries.filter(x => x.region === region),
-      }));
+
       setRegionCountryOptions(regionCountries);
     }
   }, [dashboardUrl, iconScale]);
