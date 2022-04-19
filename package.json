@@ -95,13 +95,5 @@
     "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/reactSVGs",
     "start": "yarn build-storybook && yarn storybook",
     "storybook": "start-storybook -p 6006"
-  },
-  "files": [
-    "dist/*.js",
-    "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "dist/*.d.ts",
-    "dist/package.json",
-    "dist/*.css"
-  ]
+  }
 }
