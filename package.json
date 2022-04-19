@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.32",
+  "version": "3.0.33",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -81,7 +81,7 @@
     "extends": "react-app"
   },
   "scripts": {
-    "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist",
+    "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
     "build-storybook": "build-storybook",
     "build:watch": "bili --watch",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
