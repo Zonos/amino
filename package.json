@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.33",
+  "version": "3.0.34",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -97,7 +97,11 @@
     "storybook": "start-storybook -p 6006"
   },
   "files": [
-    "dist",
+    "dist/*.js",
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/*.d.ts",
+    "dist/package.json",
     "dist/*.css"
   ]
 }
