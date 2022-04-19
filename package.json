@@ -82,8 +82,6 @@
   },
   "scripts": {
     "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
-    "build-test": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist",
-    "build-package": "cd dist && npm pack",
     "build-storybook": "build-storybook",
     "build:watch": "bili --watch",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
