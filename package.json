@@ -82,6 +82,8 @@
   },
   "scripts": {
     "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
+    "build-test": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist",
+    "build-package": "cd dist && npm pack",
     "build-storybook": "build-storybook",
     "build:watch": "bili --watch",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
@@ -95,13 +97,5 @@
     "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/reactSVGs",
     "start": "yarn build-storybook && yarn storybook",
     "storybook": "start-storybook -p 6006"
-  },
-  "files": [
-    "dist/*.js",
-    "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "dist/*.d.ts",
-    "dist/package.json",
-    "dist/*.css"
-  ]
+  }
 }
