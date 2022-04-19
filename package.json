@@ -81,7 +81,7 @@
     "extends": "react-app"
   },
   "scripts": {
-    "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
+    "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist",
     "build-storybook": "build-storybook",
     "build:watch": "bili --watch",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
