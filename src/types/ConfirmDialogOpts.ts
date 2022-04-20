@@ -2,7 +2,7 @@ import { Intent } from './Intent';
 
 export type ConfirmDialogOpts = {
   label: string;
-  subtitle: string;
+  subtitle?: string;
   intent: Intent;
   dismissText: string;
   confirmText: string;
