@@ -50,7 +50,7 @@ export type ConfirmDialogProps = {
   open: boolean;
   label: string;
   theme?: IAminoTheme;
-  subtitle: React.ReactNode;
+  subtitle?: React.ReactNode;
   intent: Intent;
   confirmText?: string;
   dismissText?: string;
@@ -87,7 +87,7 @@ export const ConfirmDialog = ({
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
           <Text type="h4">{label}</Text>
-          <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>
+          {subtitle && <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>}
         </div>
         <Footer>
           <Button size="md" onClick={dismissAction} intent="outline">
