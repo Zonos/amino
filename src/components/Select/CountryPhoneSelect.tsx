@@ -8,17 +8,13 @@ import {
   StylesConfig,
 } from 'react-select';
 
+import { CountryIcon, ICountryCode, ICountryIconScale } from 'i18n/CountryIcon';
 import styled from 'styled-components';
 
 import { type HelpTextProps } from 'components/HelpText';
 import { Input } from 'components/Input';
 import { InputValuePrefix } from 'components/Input/InputType/FloatLabelInput';
 import { ChevronDownIcon } from 'icons';
-import {
-  CountryIcon,
-  ICountryCode,
-  ICountryIconScale,
-} from 'icons/country/CountryIcon';
 
 import { CountrySelect } from './CountrySelect';
 import { ICountryOption } from './ICountry';
@@ -132,7 +128,7 @@ export const CountryPhoneSelect = ({
             <StyledPrefix onClick={() => setMenuIsOpen(!menuIsOpen)}>
               <CountryIcon
                 code={(phoneCountry?.code as ICountryCode) || 'Default'}
-                scale={iconScale}
+                iconScale={iconScale}
               />
               <ChevronDownIcon size={19} />
             </StyledPrefix>

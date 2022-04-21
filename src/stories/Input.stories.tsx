@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { CountryIcon } from 'i18n';
 import { withDesign } from 'storybook-addon-designs';
-
-import { CountryIcon } from 'icons/country/CountryIcon';
 
 import { Input, type InputProps } from '../components/Input';
 import { BagIcon, CubeIcon } from '../icons';
@@ -166,7 +165,7 @@ PrefixAndValuePrefix.parameters = {
 export const Suffix = Template.bind({});
 Suffix.args = {
   label: 'Example input',
-  suffix: <CountryIcon scale="large" code="AI" />,
+  suffix: <CountryIcon iconScale="large" code="AI" />,
 };
 Suffix.parameters = {
   design: {

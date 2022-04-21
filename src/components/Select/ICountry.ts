@@ -28,7 +28,7 @@ export interface ICountry {
   zipRegex: string | null;
 }
 export interface ICountryOption extends ICountry {
-  icon: ReactNode;
+  icon?: ReactNode;
   label: string;
   phoneCode: string[];
   value: string;

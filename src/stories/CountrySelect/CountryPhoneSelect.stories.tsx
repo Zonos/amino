@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { CountryIcon } from 'i18n';
+import { useCountryOptions } from 'i18n/hooks';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
@@ -9,8 +11,6 @@ import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
 } from 'components/Select/CountryPhoneSelect';
-import { useCountryOptions } from 'hooks';
-import { CountryIcon } from 'icons/country/CountryIcon';
 
 import { getCountryUrls } from './getCountryUrls';
 
@@ -71,7 +71,7 @@ BasicCountryPhoneSelect.args = {
     currencyCode: 'AFN',
     displayName: 'Afghanistan',
     fraudRisk: 10,
-    icon: <CountryIcon code="AF" scale="small" />,
+    icon: <CountryIcon code="AF" iconScale="small" />,
     label: 'Afghanistan',
     languageCode: 'fa',
     numericCode: '004',
