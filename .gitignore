@@ -74,3 +74,8 @@ dist
 
 # Storybook static build (https://storybook.js.org/)
 storybook-static
+
+svgReact/aws-flags
+svgReact/figma-flags
+svgReact/smaller-flags
+svgReact/svgs
