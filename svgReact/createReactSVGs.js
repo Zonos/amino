@@ -11,6 +11,13 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
       }
     );
 
+    /** @desc We need to preserve the viewbox */
+    const viewBoxMatches = fileContent.match(/viewBox="(.*?)"/g);
+    const viewBoxes = viewBoxMatches
+      ? viewBoxMatches.map(x => x.replace(/viewBox=/, '').replace(/"/g, ''))
+      : [];
+    const viewBox = viewBoxes.find(Boolean) || '0 0 16 12';
+
     /** @desc We need our ids to be unique */
     const maskIdMatches = fileContent.match(/id="(.*?)"/g);
     const maskIds = maskIdMatches
@@ -32,17 +39,28 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
       /** @desc Remove style props */
       .replace(/style="([^"]*)"/gi, '')
       /** @desc Camecase attributes */
-      .replace(/-([a-z])/g, (m, w) => w.toUpperCase());
+      .replace(/-([a-z])/g, (m, w) => w.toUpperCase())
+      /** @desc Remove <svg > */
+      .replace(/<svg(.*?)>/gi, '')
+      /** @desc Remove </svg > */
+      .replace(/<\/svg>/gi, '');
 
     const component = [
-      `import React from 'react';`,
-      maskIds.length && `import { useStableUniqueId } from 'hooks';`,
-      `export const ${name.componentName} = () => {`,
-      maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
-      `  return (`,
-      svg,
-      `  );`,
+      `import React, { forwardRef } from 'react';`,
+      `import { CountryIconBase } from '../CountryIconBase';`,
+      maskIds.length && `import { useStableUniqueId } from '../hooks';`,
+      `type Props = {`,
+      `height: number;`,
+      `width: number;`,
       `};`,
+      `export const ${name.componentName} = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {`,
+      maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
+      `return (`,
+      `<CountryIconBase height={height} width={width} ref={ref} viewBox="${viewBox}" >`,
+      svg,
+      `</CountryIconBase>`,
+      `  );`,
+      `});`,
     ]
       .filter(Boolean)
       .join('\n');

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { CountryIcon } from 'i18n';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
@@ -135,7 +136,7 @@ BasicSelectWithIcon.parameters = {
 export const BasicSelectWithOptionIcon = SelectTemplate.bind({});
 
 BasicSelectWithOptionIcon.args = {
-  icon: <FileIcon size={20} />,
+  icon: <CountryIcon code="AE" iconScale="medium" />,
   label: 'Currencies',
   value: {
     label: 'US Dollar (USD)',
@@ -144,11 +145,16 @@ BasicSelectWithOptionIcon.args = {
   options: [
     {
       label: 'US Dollar (USD)',
-      icon: <FileIcon size={14} />,
+      icon: <CountryIcon code="AE" iconScale="small" />,
       value: 'USD',
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <CountryIcon code="AD" iconScale="medium" />,
+      label: 'European Euro (EUR)',
+      value: 'EUR',
+    },
+    {
+      icon: <CountryIcon code="AE" iconScale="large" />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },

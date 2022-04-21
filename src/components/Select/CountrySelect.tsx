@@ -6,12 +6,9 @@ import {
   StylesConfig,
 } from 'react-select';
 
+import { CountryIcon, ICountryCode, ICountryIconScale } from 'i18n/CountryIcon';
+
 import { type HelpTextProps } from 'components/HelpText';
-import {
-  CountryIcon,
-  ICountryCode,
-  ICountryIconScale,
-} from 'icons/country/CountryIcon';
 
 import { ICountryOption } from './ICountry';
 import { Select } from './Select';
@@ -46,14 +43,15 @@ export const CountrySelect = ({
   value,
   ...props
 }: CountrySelectProps<ICountryOption>) => {
+  const firstCountry = Array.isArray(value) ? value.find(Boolean) : value;
   return (
     <Select
       {...props}
       icon={
         icon || (
           <CountryIcon
-            code={(value?.code as ICountryCode) || 'Default'}
-            scale={iconScale}
+            code={(firstCountry?.code as ICountryCode) || 'Default'}
+            iconScale={iconScale}
           />
         )
       }

@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.37",
+  "version": "3.0.38",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -28,6 +28,7 @@
     "babel-loader": "8.2.3",
     "bili": "^5.0.5",
     "concurrently": "^7.1.0",
+    "dotenv": "^16.0.0",
     "downshift": "^4.1.0",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.0",
@@ -81,7 +82,9 @@
     "extends": "react-app"
   },
   "scripts": {
-    "build": "yarn lint:prod && bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
+    "build": "yarn lint:prod && yarn build:bili",
+    "build:bili": "bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
+    "build:bili:test": "bili --input 'src/SetupPackage.ts'",
     "build-storybook": "build-storybook",
     "build:watch": "bili --watch",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
@@ -89,10 +92,13 @@
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.js",
     "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
     "proxy": "local-ssl-proxy --source 6007 --target 6006",
+    "svgs:optimize": "svgo -f ./svgReact/smaller-flags -o ./svgReact/svgs",
+    "svgs:download:flags": "node ./svgReact/downloadFlags.js",
+    "svgs:copy:flags": "node ./svgReact/copySmallerFlags.js",
     "svgs:create": "yarn svgs:react && yarn svgs:format && yarn svgs:index",
     "svgs:format": "eslint svgReact --ext .tsx --fix",
-    "svgs:index": "node ./svgReact/createIndexFile.js ./svgReact/reactSVGs",
-    "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/reactSVGs",
+    "svgs:index": "node ./svgReact/createIndexFile.js ./svgReact/flags",
+    "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/flags",
     "start": "yarn build-storybook && yarn storybook",
     "storybook": "start-storybook -p 6006"
   }
