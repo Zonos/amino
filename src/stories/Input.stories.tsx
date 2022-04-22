@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { CountryIcon } from 'i18n';
+import { CountryIcon } from 'src/i18n';
 import { withDesign } from 'storybook-addon-designs';
 
 import { Input, type InputProps } from '../components/Input';

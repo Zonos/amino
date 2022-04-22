@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "baseUrl": "src",
+    "baseUrl": "./",
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,12 +16,6 @@
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
     "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
-    "paths": {
-      "animations/*": ["animations/*"],
-      "components/*": ["components/*"],
-      "icons/*": ["icons/*"],
-      "hooks/*": ["hooks/*"],
-    }
   },
   "include": ["src"],
 }

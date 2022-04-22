@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { CountryIcon } from 'i18n';
+import { CountryIcon } from 'src/i18n';
+import { FileIcon } from 'src/icons';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { FileIcon } from 'icons';
 
 import { Select, type SelectProps } from '../components/Select';
 

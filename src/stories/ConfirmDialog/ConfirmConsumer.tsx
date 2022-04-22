@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useConfirm } from 'hooks';
+import { useConfirm } from 'src/hooks';
 
 import { Button, VStack } from '../..';
 

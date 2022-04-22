@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
-import { ConfirmDialogOpts } from 'types';
+import { ConfirmDialogOpts } from 'src/types';
 
 import { ConfirmDialog } from './ConfirmDialog';
 

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { CountrySelect, ICountryOption, useCountryOptions } from 'i18n';
+import { Select, type SelectProps } from 'src/components/Select';
+import { CountrySelect, ICountryOption, useCountryOptions } from 'src/i18n';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { Select, type SelectProps } from 'components/Select';
 
 import { getCountryUrls } from './getCountryUrls';
 

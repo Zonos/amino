@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { InputProps, SearchInput } from 'src/components/Input/SearchInput';
 import { withDesign } from 'storybook-addon-designs';
-
-import { InputProps, SearchInput } from 'components/Input/SearchInput';
 
 const InputMeta: Meta = {
   title: 'Amino/SearchInput',

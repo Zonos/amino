@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
-import * as icons from 'icons';
-import { type IconProps } from 'types';
+import * as icons from 'src/icons';
+import { type IconProps } from 'src/types';
 
 export type DynamicIconType = Exclude<
   keyof typeof icons,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAlert } from 'hooks';
+import { useAlert } from 'src/hooks';
 
 import { Button, VStack } from '../..';
 

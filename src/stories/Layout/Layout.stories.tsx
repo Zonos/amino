@@ -2,15 +2,14 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import styled from 'styled-components';
-
-import { Card } from 'components/Card';
+import { Card } from 'src/components/Card';
 import {
   NavigationGroup,
   NavigationItem,
-} from 'components/Layout/NavigationGroup';
-import { HStack } from 'components/Stack';
-import { ZonosIcon } from 'icons/ZonosIcon';
+} from 'src/components/Layout/NavigationGroup';
+import { HStack } from 'src/components/Stack';
+import { ZonosIcon } from 'src/icons/ZonosIcon';
+import styled from 'styled-components';
 
 import { Layout, type LayoutProps } from '../../components/Layout';
 import { NavigationGroupExample as NavigationGroupStory } from './NavigationGroup.stories';
