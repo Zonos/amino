@@ -6,13 +6,12 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { CountryIcon, ICountryCode, ICountryIconScale } from 'i18n/CountryIcon';
-
 import { type HelpTextProps } from 'components/HelpText';
+import { Select } from 'components/Select';
+import { IOption } from 'components/Select/StyledReactSelect';
 
+import { CountryIcon, ICountryCode, ICountryIconScale } from './CountryIcon';
 import { ICountryOption } from './ICountry';
-import { Select } from './Select';
-import { IOption } from './StyledReactSelect';
 
 export interface CountrySelectProps<
   Option extends IOption = IOption,

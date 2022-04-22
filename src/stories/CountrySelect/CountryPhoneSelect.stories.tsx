@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { CountryIcon } from 'i18n';
-import { useCountryOptions } from 'i18n/hooks';
-import { withDesign } from 'storybook-addon-designs';
-import styled from 'styled-components';
-
-import { ICountryOption, Select } from 'components/Select';
+import { CountryIcon, ICountryOption, useCountryOptions } from 'i18n';
 import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
-} from 'components/Select/CountryPhoneSelect';
+} from 'i18n/CountryPhoneSelect';
+import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
 
 import { getCountryUrls } from './getCountryUrls';
 
@@ -20,7 +17,7 @@ const StyledWrapper = styled.div`
 
 const CountryPhoneSelectMeta: Meta = {
   title: 'Amino/CountryPhoneSelect',
-  component: Select,
+  component: CountryPhoneSelect,
   decorators: [
     withDesign,
     Component => (

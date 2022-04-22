@@ -48,7 +48,8 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
     const component = [
       `import React, { forwardRef } from 'react';`,
       `import { CountryIconBase } from '../CountryIconBase';`,
-      maskIds.length && `import { useStableUniqueId } from '../hooks';`,
+      maskIds.length &&
+        `import { useStableUniqueId } from '../useStableUniqueId';`,
       `type Props = {`,
       `height: number;`,
       `width: number;`,

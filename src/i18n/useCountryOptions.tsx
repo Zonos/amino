@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { CountryIcon, ICountryCode, ICountryIconScale } from './CountryIcon';
+import { countryPhoneCodes } from './countryPhoneCodes';
 import {
   ICountryOption,
   IGetCountriesResponse,
   IRegionCountryOption,
   regions,
-} from 'components/Select';
-
-import { CountryIcon, ICountryCode, ICountryIconScale } from '../CountryIcon';
-import { countryPhoneCodes } from '../countryPhoneCodes';
+} from './ICountry';
 
 export const prepCountryOptions = ({ json }: { json: IGetCountriesResponse }) =>
   Object.entries(json)
