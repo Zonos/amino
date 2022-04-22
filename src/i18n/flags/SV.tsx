@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 import { CountryIconBase } from '../CountryIconBase';
-import { useStableUniqueId } from '../hooks';
+import { useStableUniqueId } from '../useStableUniqueId';
 
 type Props = {
   height: number;

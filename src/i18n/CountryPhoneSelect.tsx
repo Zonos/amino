@@ -8,17 +8,17 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { CountryIcon, ICountryCode, ICountryIconScale } from 'i18n/CountryIcon';
 import styled from 'styled-components';
 
 import { type HelpTextProps } from 'components/HelpText';
 import { Input } from 'components/Input';
 import { InputValuePrefix } from 'components/Input/InputType/FloatLabelInput';
+import { IOption } from 'components/Select/StyledReactSelect';
 import { ChevronDownIcon } from 'icons';
 
+import { CountryIcon, ICountryCode, ICountryIconScale } from './CountryIcon';
 import { CountrySelect } from './CountrySelect';
 import { ICountryOption } from './ICountry';
-import { IOption } from './StyledReactSelect';
 
 const OptionLabel = styled.div`
   display: flex;

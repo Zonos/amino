@@ -11,10 +11,10 @@ import {
 
 import { Checkbox } from 'components/Checkbox';
 import { type HelpTextProps } from 'components/HelpText';
+import { MultiSelect } from 'components/Select';
+import { IOption } from 'components/Select/StyledReactSelect';
 
 import { ICountryOption, IRegionCountryOption } from './ICountry';
-import { MultiSelect } from './MultiSelect';
-import { IOption } from './StyledReactSelect';
 
 type AdditionalProps = {
   allSelected: boolean;
