@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 
+import { Text } from 'src/components/Text';
 import styled from 'styled-components';
-
-import { Text } from 'components/Text';
 
 const StyledHelpText = styled.div`
   margin-top: var(--amino-space-quarter);

@@ -1,8 +1,7 @@
 import React, { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
+import { SearchInput } from 'src/components/Input/SearchInput';
 import styled from 'styled-components';
-
-import { SearchInput } from 'components/Input/SearchInput';
 
 import { type NavigationGroupProps } from './NavigationGroup';
 

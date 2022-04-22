@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
+import { ListItem } from 'src/components/ListItem/ListItem';
 import { withDesign } from 'storybook-addon-designs';
-
-import { ListItem } from 'components/ListItem/ListItem';
 
 import { List } from '../components/List';
 

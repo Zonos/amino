@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { CubeIcon } from 'src/icons';
 import { withDesign } from 'storybook-addon-designs';
-
-import { CubeIcon } from 'icons';
 
 import { Tag, type TagProps } from '../components/Tag';
 

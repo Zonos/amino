@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AlertContext } from 'components/AlertDialog';
+import { AlertContext } from 'src/components/AlertDialog';
 
 export const useAlert = () => {
   return useContext(AlertContext);

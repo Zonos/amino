@@ -1,11 +1,10 @@
 import React, { forwardRef } from 'react';
 
+import { HStack } from 'src/components/Stack';
+import { Text } from 'src/components/Text';
+import { RemoveCircleDuotoneIcon } from 'src/icons';
+import { IAminoTheme } from 'src/types';
 import styled from 'styled-components';
-
-import { HStack } from 'components/Stack';
-import { Text } from 'components/Text';
-import { RemoveCircleDuotoneIcon } from 'icons';
-import { IAminoTheme } from 'types';
 
 import { BaseDialog } from './BaseDialog';
 
@@ -72,7 +71,7 @@ const Content = styled.div`
     black calc(100% - var(--mask-height)),
     transparent
   );
-  /* Here we scale the content gradient to the width of the container 
+  /* Here we scale the content gradient to the width of the container
   minus the scrollbar width. The height is the full container height */
   --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
 
@@ -87,7 +86,7 @@ const Content = styled.div`
   mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
   mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
 
-  /* Position the content gradient in the top left, and the 
+  /* Position the content gradient in the top left, and the
 scroll gradient in the top right */
   mask-position: 0 0, 100% 0;
 

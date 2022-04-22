@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-
-import { ColorPalette } from 'components/Styles/ColorPalette';
+import { ColorPalette } from 'src/components/Styles/ColorPalette';
 
 const StyleMeta: Meta = {
   title: 'Amino/ColorPalette',

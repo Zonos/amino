@@ -2,13 +2,12 @@
 import React, { MouseEvent, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   NavigationGroup,
   NavigationItem,
-} from 'components/Layout/NavigationGroup';
-import { HomeIcon, LandedCostIcon, PuzzleIcon } from 'icons';
+} from 'src/components/Layout/NavigationGroup';
+import { HomeIcon, LandedCostIcon, PuzzleIcon } from 'src/icons';
+import { withDesign } from 'storybook-addon-designs';
 
 const NavigationGroupMeta: Meta = {
   title: 'Amino/Layout',

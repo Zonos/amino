@@ -1,8 +1,7 @@
 import React, { forwardRef, ReactNode } from 'react';
 
+import { Text } from 'src/components/Text';
 import styled from 'styled-components';
-
-import { Text } from 'components/Text';
 
 const AminoListItem = styled.div<{ onClick?: () => void }>`
   padding: var(--amino-space-half) var(--amino-space);

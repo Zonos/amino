@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-
-import { Shadow } from 'components/Styles/Shadow';
+import { Shadow } from 'src/components/Styles/Shadow';
 
 const StyleMeta: Meta = {
   title: 'Amino/BoxShadow',

@@ -6,9 +6,9 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { type HelpTextProps } from 'components/HelpText';
-import { Select } from 'components/Select';
-import { IOption } from 'components/Select/StyledReactSelect';
+import { type HelpTextProps } from 'src/components/HelpText';
+import { Select } from 'src/components/Select';
+import { IOption } from 'src/components/Select/StyledReactSelect';
 
 import { CountryIcon, ICountryCode, ICountryIconScale } from './CountryIcon';
 import { ICountryOption } from './ICountry';

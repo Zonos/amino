@@ -6,7 +6,7 @@ import {
   CountryMultiSelectProps,
   ICountryOption,
   useCountryOptions,
-} from 'i18n';
+} from 'src/i18n';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
