@@ -73,4 +73,7 @@ module.exports = {
       },
     ],
   },
+  settings: {
+    'import/resolver': 'parcel2',
+  },
 };

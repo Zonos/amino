@@ -2,14 +2,34 @@
   "name": "@amino-ui/core",
   "version": "3.0.39",
   "description": "Core UI components for Amino",
-  "main": "dist/index.js",
-  "module": "dist/index.esm/js",
+  "engines": {
+    "node": ">= 12"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "source": [
+    "src/index.ts",
+    "src/i18n/index.ts"
+  ],
+  "targets": {
+    "default": {
+      "distDir": "./dist",
+      "source": "src/index.ts"
+    },
+    "i18n": {
+      "source": "src/i18n/index.ts"
+    }
+  },
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@babel/core": "7.17.7",
+    "@parcel/packager-ts": "2.5.0",
+    "@parcel/transformer-typescript-tsc": "^2.5.0",
+    "@parcel/transformer-typescript-types": "2.5.0",
     "@storybook/addon-a11y": "6.4.19",
     "@storybook/addon-actions": "6.4.19",
     "@storybook/addon-essentials": "6.4.19",
@@ -25,8 +45,6 @@
     "@typescript-eslint/parser": "4.33.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "autoprefixer": "10.4.4",
-    "babel-loader": "8.2.3",
-    "bili": "^5.0.5",
     "concurrently": "^7.1.0",
     "dotenv": "^16.0.0",
     "downshift": "^4.1.0",
@@ -34,6 +52,7 @@
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-parcel2": "^1.0.1",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jest": "24.7.0",
     "eslint-plugin-jsx-a11y": "6.5.1",
@@ -42,8 +61,7 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "framer-motion": "^4.1.17",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.2.1",
+    "parcel": "^2.5.0",
     "postcss": "8.4.12",
     "postcss-preset-env": "6.7.1",
     "prettier": "2.6.0",
@@ -52,20 +70,18 @@
     "react-hotkeys-hook": "3.4.4",
     "react-is": "^17.0.2",
     "react-tooltip": "^4.2.21",
-    "rollup": "2.70.1",
-    "rollup-plugin-typescript2": "^0.30.0",
     "storybook-addon-designs": "6.2.1",
     "styled-components": "5.3.3",
-    "tsconfig-paths-webpack-plugin": "3.5.2",
-    "ttypescript": "^1.5.13",
     "typescript": "4.6.2"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.1.5",
     "@radix-ui/react-slider": "^0.0.16",
+    "@swc/helpers": "^0.3.8",
     "react-dropzone": "^12.0.4",
     "react-select": "^5.2.2",
+    "regenerator-runtime": "^0.13.9",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
@@ -82,11 +98,9 @@
     "extends": "react-app"
   },
   "scripts": {
-    "build": "yarn lint:prod && yarn build:bili",
-    "build:bili": "bili && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
-    "build:bili:test": "bili --input 'src/SetupPackage.ts'",
+    "build": "yarn lint:prod && yarn build:parcel",
+    "build:parcel": "parcel build && cp -r ./src/styles/*.css ./dist && node dist/SetupPackage.js",
     "build-storybook": "build-storybook",
-    "build:watch": "bili --watch",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.js",
