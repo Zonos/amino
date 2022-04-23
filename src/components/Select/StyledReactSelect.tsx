@@ -13,16 +13,17 @@ import ReactSelect, {
   StylesConfig,
 } from 'react-select';
 
-import { Checkbox } from 'src/components/Checkbox';
-import { HelpText } from 'src/components/HelpText';
-import { type HelpTextProps } from 'src/components/HelpText/HelpText';
+import styled from 'styled-components';
+
+import { Checkbox } from '~/src/components/Checkbox';
+import { HelpText } from '~/src/components/HelpText';
+import { type HelpTextProps } from '~/src/components/HelpText/HelpText';
 import {
   CheckCircleSolidIcon,
   ChevronDownSolidIcon,
   RemoveCircleSolidIcon,
   RemoveIcon,
-} from 'src/icons';
-import styled from 'styled-components';
+} from '~/src/icons';
 
 export type IOption = { icon?: ReactNode; label: string; value: string };
 type AdditionalProps = {

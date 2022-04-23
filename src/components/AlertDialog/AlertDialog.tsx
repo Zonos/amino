@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { IAminoTheme, Intent } from 'src/types';
 import styled from 'styled-components';
+
+import { IAminoTheme, Intent } from '~/src/types';
 
 import {
   ExclamationSolidIcon,

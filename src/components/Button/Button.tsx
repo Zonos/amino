@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import { Spinner } from 'src/components/Spinner';
-import { Intent } from 'src/types';
 import styled, { css } from 'styled-components';
+
+import { Spinner } from '~/src/components/Spinner';
+import { Intent } from '~/src/types';
 
 const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
   position: relative;

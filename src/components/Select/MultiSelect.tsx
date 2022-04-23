@@ -12,8 +12,8 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { Checkbox } from 'src/components/Checkbox';
-import { type HelpTextProps } from 'src/components/HelpText';
+import { Checkbox } from '~/src/components/Checkbox';
+import { type HelpTextProps } from '~/src/components/HelpText';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 

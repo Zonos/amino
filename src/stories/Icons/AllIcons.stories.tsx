@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
-import { SearchInput } from 'src/components/Input/SearchInput';
-import { VStack } from 'src/components/Stack';
-import { Text } from 'src/components/Text';
-import * as icons from 'src/icons';
-import { type IconProps } from 'src/types';
 import styled from 'styled-components';
+
+import { SearchInput } from '~/src/components/Input/SearchInput';
+import { VStack } from '~/src/components/Stack';
+import { Text } from '~/src/components/Text';
+import * as icons from '~/src/icons';
+import { type IconProps } from '~/src/types';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',

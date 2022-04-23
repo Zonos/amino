@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { SearchIcon } from 'src/icons';
 import styled from 'styled-components';
+
+import { SearchIcon } from '~/src/icons';
 
 import { InputMode } from './InputType/FloatLabelInput';
 

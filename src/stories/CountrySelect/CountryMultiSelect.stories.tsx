@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
+
 import {
   CountryMultiSelect,
   CountryMultiSelectProps,
   ICountryOption,
   useCountryOptions,
-} from 'src/i18n';
-import { withDesign } from 'storybook-addon-designs';
-import styled from 'styled-components';
+} from '~/src/i18n';
 
 import { getCountryUrls } from './getCountryUrls';
 

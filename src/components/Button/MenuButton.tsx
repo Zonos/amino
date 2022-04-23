@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Surface } from 'src/components/Surface';
-import { Depth } from 'src/types';
 import styled from 'styled-components';
+
+import { Surface } from '~/src/components/Surface';
+import { Depth } from '~/src/types';
 
 import { DropdownAnimation } from '../../animations';
 import { DropdownIcon } from '../../icons/DropdownIcon';

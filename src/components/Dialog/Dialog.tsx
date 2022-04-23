@@ -1,10 +1,11 @@
 import React, { forwardRef } from 'react';
 
-import { HStack } from 'src/components/Stack';
-import { Text } from 'src/components/Text';
-import { RemoveCircleDuotoneIcon } from 'src/icons';
-import { IAminoTheme } from 'src/types';
 import styled from 'styled-components';
+
+import { HStack } from '~/src/components/Stack';
+import { Text } from '~/src/components/Text';
+import { RemoveCircleDuotoneIcon } from '~/src/icons';
+import { IAminoTheme } from '~/src/types';
 
 import { BaseDialog } from './BaseDialog';
 

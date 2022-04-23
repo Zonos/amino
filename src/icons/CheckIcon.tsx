@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { type IconProps } from 'src/types';
+import { type IconProps } from '~/src/types';
 
 import { IconBase } from './IconBase';
 

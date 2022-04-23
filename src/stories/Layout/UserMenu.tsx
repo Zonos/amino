@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 import { Menu, MenuItem, Text, TextAvatar, VStack } from 'src';
-import { Surface } from 'src/components/Surface';
-import { Depth } from 'src/types';
 import styled from 'styled-components';
+
+import { Surface } from '~/src/components/Surface';
+import { Depth } from '~/src/types';
 
 import { DropdownAnimationInverse } from '../../animations';
 

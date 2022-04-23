@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 
-import { ChevronDownIcon, ChevronUpIcon } from 'src/icons';
 import styled from 'styled-components';
+
+import { ChevronDownIcon, ChevronUpIcon } from '~/src/icons';
 
 import { FloatLabelInput, type FloatLabelInputProps } from './FloatLabelInput';
 

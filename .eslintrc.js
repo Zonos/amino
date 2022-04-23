@@ -64,12 +64,7 @@ module.exports = {
     'simple-import-sort/imports': [
       'error',
       {
-        groups: [
-          ['^react'],
-          ['^(?!animations|components|hooks|icons|styles|type)'],
-          ['^'],
-          ['((.|..)/)?'],
-        ],
+        groups: [['^react'], ['^@?\\w'], ['^~/src'], ['^'], ['((.|..)/)?']],
       },
     ],
   },

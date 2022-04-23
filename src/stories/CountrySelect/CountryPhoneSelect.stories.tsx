@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { CountryIcon, ICountryOption, useCountryOptions } from 'src/i18n';
+import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
+
+import { CountryIcon, ICountryOption, useCountryOptions } from '~/src/i18n';
 import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
-} from 'src/i18n/CountryPhoneSelect';
-import { withDesign } from 'storybook-addon-designs';
-import styled from 'styled-components';
+} from '~/src/i18n/CountryPhoneSelect';
 
 import { getCountryUrls } from './getCountryUrls';
 

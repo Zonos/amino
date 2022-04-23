@@ -9,10 +9,10 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { Checkbox } from 'src/components/Checkbox';
-import { type HelpTextProps } from 'src/components/HelpText';
-import { MultiSelect } from 'src/components/Select';
-import { IOption } from 'src/components/Select/StyledReactSelect';
+import { Checkbox } from '~/src/components/Checkbox';
+import { type HelpTextProps } from '~/src/components/HelpText';
+import { MultiSelect } from '~/src/components/Select';
+import { IOption } from '~/src/components/Select/StyledReactSelect';
 
 import { ICountryOption, IRegionCountryOption } from './ICountry';
 
