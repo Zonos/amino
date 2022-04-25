@@ -1612,7 +1612,7 @@
     "@parcel/transformer-react-refresh-wrap" "2.5.0"
     "@parcel/transformer-svg" "2.5.0"
 
-"@parcel/core@2.5.0":
+"@parcel/core@2.5.0", "@parcel/core@^2.5.0":
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/@parcel/core/-/core-2.5.0.tgz#13f60be9124a6a3e33aff32715acfc5ebade9dd2"
   integrity sha512-dygDmPsfAYJKTnUftcbEzjCik7AAaPbFvJW8ETYz8diyjkAG9y6hvCAZIrJE5pNOjFzg32en4v4UWv8Sqlzl9g==

@@ -38,13 +38,6 @@ export { RestState, type RestStateProps } from './components/RestState';
 export { RichCheckboxGroup } from './components/RichCheckboxGroup';
 export { RichRadio } from './components/RichRadio';
 export { RoundedIcon } from './components/RoundedIcon';
-export {
-  LegacySelect,
-  MultiSelect,
-  type MultiSelectProps,
-  Select,
-  type SelectProps,
-} from './components/Select';
 export { Skeleton } from './components/Skeleton';
 export { SlideOver } from './components/SlideOver';
 export { Slider } from './components/Slider';
@@ -57,7 +50,6 @@ export { Tabs } from './components/Tabs';
 export { Text } from './components/Text';
 export { TextAvatar } from './components/TextAvatar';
 export { Toast, ToastContext, ToastContextProvider } from './components/Toast';
-export * from './hooks';
+export * from './i18n';
 export * from './icons';
-export * from './icons/DynamicIcon';
 export * from './types';
