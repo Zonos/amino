@@ -4,6 +4,8 @@
     "isolatedModules": true,
     "baseUrl": "./",
     "declaration": true,
+    "declarationDir": "dist",
+    "outDir": "dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "jsx": "react",
@@ -16,8 +18,8 @@
     "typeRoots": ["node_modules/@types"],
     "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
     "paths": {
-      "~/src/*": ["src/*"],
+      "~/*": ["./*"]
     }
   },
-  "include": ["src"],
+  "include": ["./src/**/*"],
 }

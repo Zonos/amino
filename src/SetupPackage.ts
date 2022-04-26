@@ -6,23 +6,22 @@ import path from 'path';
 
 function main() {
   const source = fs
-    .readFileSync(path.resolve(`${__dirname}/../package.json`))
+    .readFileSync(path.resolve(`${path.dirname('..')}/package.json`))
     .toString('utf-8');
   const sourceObj = JSON.parse(source);
   sourceObj.scripts = {};
   sourceObj.devDependencies = {};
-  if (sourceObj.main.startsWith('dist/')) {
-    sourceObj.main = sourceObj.main.slice(5);
-  }
-  if (sourceObj.module.startsWith('dist/')) {
-    sourceObj.module = sourceObj.module.slice(5);
-  }
+  sourceObj.main = 'index.js';
+  sourceObj.types = 'index.d.ts';
   fs.writeFileSync(
-    `${__dirname}/package.json`,
+    `./dist/package.json`,
     Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8')
   );
 
-  fs.copyFileSync(`${__dirname}/../.npmignore`, `${__dirname}/.npmignore`);
+  fs.copyFileSync(
+    `${path.dirname('..')}/.npmignore`,
+    `${path.dirname('./')}/.npmignore`
+  );
 }
 
 main();

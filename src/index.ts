@@ -50,6 +50,4 @@ export { Tabs } from './components/Tabs';
 export { Text } from './components/Text';
 export { TextAvatar } from './components/TextAvatar';
 export { Toast, ToastContext, ToastContextProvider } from './components/Toast';
-export * from './i18n';
-export * from './icons';
 export * from './types';

@@ -83,3 +83,8 @@ svgReact/svgs
 # Parcel cache
 .parcel-cache
 .cache
+
+# Build
+build.map.*
+build.js
+build.js.map
