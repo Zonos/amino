@@ -10,7 +10,6 @@
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
   "license": "MIT",
   "private": false,
-  "type": "module",
   "devDependencies": {
     "@parcel/core": "^2.5.0",
     "@parcel/packager-ts": "2.5.0",
@@ -59,6 +58,7 @@
     "react-tooltip": "^4.2.21",
     "storybook-addon-designs": "6.2.1",
     "styled-components": "5.3.3",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "ttypescript": "^1.5.13",
     "typescript": "4.6.2"
   },
