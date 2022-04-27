@@ -91,7 +91,7 @@
     "postbuild:parcel": "cp -r ./src/styles/*.css ./dist && ttsc src/setupPackage.ts && node dist/setupPackage.js",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
-    "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.js",
+    "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",
     "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
     "proxy": "local-ssl-proxy --source 6007 --target 6006",
     "svgs:optimize": "svgo -f ./svgReact/smaller-flags -o ./svgReact/svgs",
