@@ -2,7 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Color, Intent } from '~/src/types';
+import { Color } from '~/src/types/Color';
+import { Intent } from '~/src/types/Intent';
 
 type CSSProps = {
   background?: Color;

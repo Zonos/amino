@@ -47,6 +47,12 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/no-internal-modules': [
+      'error',
+      {
+        forbid: ['**/src/**/index.ts'],
+      },
+    ],
     'import/no-unresolved': 'off', // Typescript takes care of this
     'import/prefer-default-export': 'off',
     'no-console': 'warn', // For debugging ease

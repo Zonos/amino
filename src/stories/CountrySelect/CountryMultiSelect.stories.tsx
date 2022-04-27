@@ -7,11 +7,11 @@ import styled from 'styled-components';
 import {
   CountryMultiSelect,
   CountryMultiSelectProps,
-  ICountryOption,
-  useCountryOptions,
-} from '~/src/i18n';
+} from '~/src/components/Select/CountryMultiSelect';
+import { ICountryOption } from '~/src/types/ICountry';
 
 import { getCountryUrls } from './getCountryUrls';
+import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;

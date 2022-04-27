@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { CountryIcon } from '~/src/i18n';
-
-import { Input, type InputProps } from '../components/Input';
-import { BagIcon, CubeIcon } from '../icons';
+import { Input, type InputProps } from '~/src/components/Input/Input';
+import { FlagIcon } from '~/src/flags/FlagIcon/FlagIcon';
+import { BagIcon } from '~/src/icons/BagIcon';
+import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const InputMeta: Meta = {
   title: 'Amino/Input',
@@ -166,7 +166,7 @@ PrefixAndValuePrefix.parameters = {
 export const Suffix = Template.bind({});
 Suffix.args = {
   label: 'Example input',
-  suffix: <CountryIcon iconScale="large" code="AI" />,
+  suffix: <FlagIcon iconScale="large" code="AI" />,
 };
 Suffix.parameters = {
   design: {

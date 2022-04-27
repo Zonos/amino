@@ -3,9 +3,8 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
+import { List } from '~/src/components/List/List';
 import { ListItem } from '~/src/components/ListItem/ListItem';
-
-import { List } from '../components/List';
 
 const ListMeta: Meta = {
   title: 'Amino/List',

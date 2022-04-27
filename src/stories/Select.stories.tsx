@@ -4,10 +4,9 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { CountryIcon } from '~/src/i18n';
-import { FileIcon } from '~/src/icons';
-
-import { Select, type SelectProps } from '../components/Select';
+import { Select, type SelectProps } from '~/src/components/Select/Select';
+import { FlagIcon } from '~/src/flags/FlagIcon/FlagIcon';
+import { FileIcon } from '~/src/icons/FileIcon';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -136,7 +135,7 @@ BasicSelectWithIcon.parameters = {
 export const BasicSelectWithOptionIcon = SelectTemplate.bind({});
 
 BasicSelectWithOptionIcon.args = {
-  icon: <CountryIcon code="AE" iconScale="medium" />,
+  icon: <FlagIcon code="AE" iconScale="medium" />,
   label: 'Currencies',
   value: {
     label: 'US Dollar (USD)',
@@ -145,16 +144,16 @@ BasicSelectWithOptionIcon.args = {
   options: [
     {
       label: 'US Dollar (USD)',
-      icon: <CountryIcon code="AE" iconScale="small" />,
+      icon: <FlagIcon code="AE" iconScale="small" />,
       value: 'USD',
     },
     {
-      icon: <CountryIcon code="AD" iconScale="medium" />,
+      icon: <FlagIcon code="AD" iconScale="medium" />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },
     {
-      icon: <CountryIcon code="AE" iconScale="large" />,
+      icon: <FlagIcon code="AE" iconScale="large" />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { VStack } from '~/src/components/Stack';
+import { VStack } from '~/src/components/Stack/VStack';
 
 const StyledWrapper = styled.div`
   width: 412px;

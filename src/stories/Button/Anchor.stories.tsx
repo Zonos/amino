@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import {
   Anchor as AminoAnchor,
   type AnchorProps,
-} from '~/src/components/Button';
-import { CubeIcon } from '~/src/icons';
+} from '~/src/components/Button/Anchor';
+import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const ButtonMeta: Meta = {
   title: 'Amino/Button',

@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { RemoveIcon } from '~/src/icons';
+import { RemoveIcon } from '~/src/icons/RemoveIcon';
 
 export interface TagProps {
   children?: ReactNode | string;

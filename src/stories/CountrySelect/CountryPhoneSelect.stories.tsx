@@ -4,13 +4,15 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { CountryIcon, ICountryOption, useCountryOptions } from '~/src/i18n';
 import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
-} from '~/src/i18n/CountryPhoneSelect';
+} from '~/src/components/Select/CountryPhoneSelect';
+import { FlagIcon, IFlag } from '~/src/flags/FlagIcon/FlagIcon';
+import { ICountryOption } from '~/src/types/ICountry';
 
 import { getCountryUrls } from './getCountryUrls';
+import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -50,6 +52,12 @@ const CountryPhoneSelectTemplate: Story<
     <CountryPhoneSelect
       {...props}
       countryOptions={countryOptions}
+      icon={
+        <FlagIcon
+          code={(phoneCountry?.code as IFlag) || 'Default'}
+          iconScale="medium"
+        />
+      }
       phone={phone}
       phoneCountry={phoneCountry}
       setPhone={setPhone}
@@ -69,7 +77,7 @@ BasicCountryPhoneSelect.args = {
     currencyCode: 'AFN',
     displayName: 'Afghanistan',
     fraudRisk: 10,
-    icon: <CountryIcon code="AF" iconScale="small" />,
+    icon: <FlagIcon code="AF" iconScale="small" />,
     label: 'Afghanistan',
     languageCode: 'fa',
     numericCode: '004',

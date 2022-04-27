@@ -8,7 +8,9 @@ import {
   NavigationGroup,
   NavigationItem,
 } from '~/src/components/Layout/NavigationGroup';
-import { HomeIcon, LandedCostIcon, PuzzleIcon } from '~/src/icons';
+import { HomeIcon } from '~/src/icons/HomeIcon';
+import { LandedCostIcon } from '~/src/icons/LandedCostIcon';
+import { PuzzleIcon } from '~/src/icons/PuzzleIcon';
 
 const NavigationGroupMeta: Meta = {
   title: 'Amino/Layout',

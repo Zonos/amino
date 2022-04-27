@@ -3,8 +3,8 @@ import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { Text } from '~/src/components/Text';
-import { CheckMarkIcon } from '~/src/icons';
+import { Text } from '~/src/components/Text/Text';
+import { CheckMarkIcon } from '~/src/icons/CheckMarkIcon';
 
 // TODO: multiline checkboxes could use some work
 const AnimatedCheckIcon = motion(CheckMarkIcon);

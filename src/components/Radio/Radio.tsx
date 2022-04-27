@@ -3,7 +3,7 @@ import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { Text } from '~/src/components/Text';
+import { Text } from '~/src/components/Text/Text';
 
 const StyledRadio = styled.div<{
   checked: boolean;
