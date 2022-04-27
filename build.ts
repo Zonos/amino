@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
  * }
  */
 const bundlePackage = async (options: InitialParcelOptions) => {
-  const defaultOptions : InitialParcelOptions = {
+  const defaultOptions: InitialParcelOptions = {
     defaultTargetOptions: {
       isLibrary: true,
       sourceMaps: false,
@@ -18,15 +18,15 @@ const bundlePackage = async (options: InitialParcelOptions) => {
     additionalReporters: [
       {
         packageName: '@parcel/reporter-cli',
-        resolveFrom: fileURLToPath(import.meta.url)
-      }
+        resolveFrom: fileURLToPath(import.meta.url),
+      },
     ],
     defaultConfig: '@parcel/config-default',
     mode: 'production',
   };
   const configOptions = {
     ...defaultOptions,
-    ...options
+    ...options,
   };
   if (!options.entries) {
     throw new Error(`Option "entries" is required to bundle!`);
@@ -35,12 +35,13 @@ const bundlePackage = async (options: InitialParcelOptions) => {
 
   try {
     const { bundleGraph } = await bundler.run();
+
     bundleGraph.getBundles();
   } catch (err) {
     // @ts-ignore
     console.error(err.diagnostics);
   }
-}
+};
 
 const bundleConfigs: InitialParcelOptions[] = [
   {
@@ -49,8 +50,8 @@ const bundleConfigs: InitialParcelOptions[] = [
       default: {
         distDir: 'dist/icons',
         includeNodeModules: false,
-      }
-    }
+      },
+    },
   },
   {
     entries: 'src/i18n.ts',
@@ -64,19 +65,17 @@ const bundleConfigs: InitialParcelOptions[] = [
       default: {
         distDir: 'dist/components',
         includeNodeModules: false,
-      }
-    }
+      },
+    },
   },
 ];
 
-// const builds = bundleConfigs.map(options => bundlePackage(options));
-// Promise.all(builds);
-const build = async () => {
-  for (const option of bundleConfigs) {
-    await bundlePackage(option);
-  }
-}
-build();
+/* Set max listener based on the size of bundleConfig (1 config will add 4 event listeners) */
+process.stdout.setMaxListeners(bundleConfigs.length * 4 + 1);
+process.stderr.setMaxListeners(bundleConfigs.length * 4 + 1);
+
+const builds = bundleConfigs.map(options => bundlePackage(options));
+Promise.all(builds);
 
 // const i18nBundler = new Parcel({
 //   entries: [

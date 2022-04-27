@@ -85,6 +85,5 @@ svgReact/svgs
 .cache
 
 # Build
-build.map.*
+*.map
 build.js
-build.js.map

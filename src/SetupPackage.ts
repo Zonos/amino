@@ -20,7 +20,7 @@ function main() {
 
   fs.copyFileSync(
     path.resolve(`${path.dirname('')}/.npmignore`),
-    path.resolve(`${path.dirname('')}/dist/.npmignore`),
+    path.resolve(`${path.dirname('')}/dist/.npmignore`)
   );
 }
 
