@@ -1,1 +1,1 @@
-export { Tag, type TagProps } from './Tag';
+export { type TagProps, Tag } from './Tag';

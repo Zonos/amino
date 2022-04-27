@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Surface } from '~/src/components/Surface';
-import { Depth } from '~/src/types';
+import { DropdownAnimation } from '~/src/animations/DropdownAnimation';
+import { Surface } from '~/src/components/Surface/Surface';
+import { DropdownIcon } from '~/src/icons/DropdownIcon';
+import { Depth } from '~/src/types/Depth';
 
-import { DropdownAnimation } from '../../animations';
-import { DropdownIcon } from '../../icons/DropdownIcon';
 import { Button } from './Button';
 
 const Wrapper = styled.div`

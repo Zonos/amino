@@ -15,7 +15,7 @@ const createIndexFile = () => {
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
   }
-  fs.writeFileSync(`${folderPath}/index.ts`, content);
+  fs.writeFileSync(`${folderPath}/FlagIndex.ts`, content);
 };
 
 createIndexFile();

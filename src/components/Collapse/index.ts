@@ -1,1 +1,1 @@
-export { Collapse, type CollapseProps } from './Collapse';
+export { type CollapseProps, Collapse } from './Collapse';

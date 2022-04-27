@@ -3,8 +3,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Button } from '../components/Button';
-import { Card, type CardProps } from '../components/Card';
+import { Button } from '~/src/components/Button/Button';
+import { type CardProps, Card } from '~/src/components/Card/Card';
 
 const CardMeta: Meta = {
   title: 'Amino/Card',

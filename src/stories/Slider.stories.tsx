@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Slider, type SliderProps } from '../components/Slider';
+import { type SliderProps, Slider } from '~/src/components/radix/Slider/Slider';
 
 const SliderMeta: Meta = {
   title: 'Amino/Slider',

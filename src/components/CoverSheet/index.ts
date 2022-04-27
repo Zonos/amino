@@ -1,1 +1,1 @@
-export { CoverSheet, type CoverSheetProps } from './CoverSheet';
+export { type CoverSheetProps, CoverSheet } from './CoverSheet';

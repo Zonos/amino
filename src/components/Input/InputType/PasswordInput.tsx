@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from '~/src/components/Button';
-import { EyeIcon, EyeOffIcon } from '~/src/icons';
+import { Button } from '~/src/components/Button/Button';
+import { EyeIcon } from '~/src/icons/EyeIcon';
+import { EyeOffIcon } from '~/src/icons/EyeOffIcon';
 
-import { FloatLabelInput, type FloatLabelInputProps } from './FloatLabelInput';
+import { type FloatLabelInputProps, FloatLabelInput } from './FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

@@ -5,10 +5,10 @@ import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 import {
-  Anchor as AminoAnchor,
   type AnchorProps,
-} from '~/src/components/Button';
-import { CubeIcon } from '~/src/icons';
+  Anchor as AminoAnchor,
+} from '~/src/components/Button/Anchor';
+import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const ButtonMeta: Meta = {
   title: 'Amino/Button',

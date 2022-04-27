@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode } from 'react';
 
-import { type IconProps } from '~/src/types';
+import { type IconProps } from '~/src/types/IconProps';
 
 type Props = { children: ReactNode; viewBox?: string } & IconProps;
 

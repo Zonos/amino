@@ -4,8 +4,11 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Collapse, type CollapseProps } from '~/src/components/Collapse';
-import { NavigationItem } from '~/src/components/Layout';
+import {
+  type CollapseProps,
+  Collapse,
+} from '~/src/components/Collapse/Collapse';
+import { NavigationItem } from '~/src/components/Layout/NavigationGroup';
 
 const CollapseMeta: Meta = {
   title: 'Amino/Collapse',

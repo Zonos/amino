@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Text } from '~/src/components/Text';
+import { Text } from '~/src/components/Text/Text';
 
 const StyledRestState = styled.div`
   display: flex;

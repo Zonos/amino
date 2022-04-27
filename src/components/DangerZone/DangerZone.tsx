@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Card } from '~/src/components/Card';
+import { Card } from '~/src/components/Card/Card';
 
 export const DangerZone = styled(Card)`
   border-color: var(--amino-red-200);

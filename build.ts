@@ -1,6 +1,9 @@
 import { Parcel } from '@parcel/core';
 import { type InitialParcelOptions } from '@parcel/types';
 import { fileURLToPath } from 'url';
+
+type ConfigOptions = Omit<InitialParcelOptions, 'entries'> &
+  Required<Pick<InitialParcelOptions, 'entries'>>;
 /**
  * Bundle package
  * @param options option to configure parcel to bundle package, `entries` is required. Use default option if it's not specified
@@ -9,7 +12,7 @@ import { fileURLToPath } from 'url';
  *   entries: 'src/icons/*.tsx'
  * }
  */
-const bundlePackage = async (options: InitialParcelOptions) => {
+const bundlePackage = async (options: ConfigOptions) => {
   const defaultOptions: InitialParcelOptions = {
     defaultTargetOptions: {
       isLibrary: true,
@@ -24,13 +27,10 @@ const bundlePackage = async (options: InitialParcelOptions) => {
     defaultConfig: '@parcel/config-default',
     mode: 'production',
   };
-  const configOptions = {
+  const configOptions: ConfigOptions = {
     ...defaultOptions,
     ...options,
   };
-  if (!options.entries) {
-    throw new Error(`Option "entries" is required to bundle!`);
-  }
   const bundler = new Parcel(configOptions);
 
   try {
@@ -39,71 +39,106 @@ const bundlePackage = async (options: InitialParcelOptions) => {
     bundleGraph.getBundles();
   } catch (err) {
     // @ts-ignore
-    console.error(err.diagnostics);
+    console.error(err.diagnostics); // eslint-disable-line no-console
   }
 };
 
-const bundleConfigs: InitialParcelOptions[] = [
-  {
-    entries: 'src/icons/*.tsx',
-    targets: {
-      default: {
-        distDir: 'dist/icons',
-        includeNodeModules: false,
-      },
+const componentsConfig: ConfigOptions = {
+  detailedReport: { assetsPerBundle: 20 },
+  entries: ['src/index.ts'],
+  targets: {
+    default: {
+      distDir: 'dist',
+      includeNodeModules: false,
     },
   },
-  {
-    entries: 'src/i18n.ts',
-  },
-  {
-    entries: 'src/index.ts',
-  },
-  {
-    entries: 'src/components/*/*.tsx',
-    targets: {
-      default: {
-        distDir: 'dist/components',
-        includeNodeModules: false,
-      },
+};
+const flagConfig: ConfigOptions = {
+  entries: ['src/flags/*.tsx'],
+  targets: {
+    default: {
+      distDir: 'dist/flags',
+      includeNodeModules: ['uuid'],
     },
   },
+};
+const flagIconConfig: ConfigOptions = {
+  detailedReport: { assetsPerBundle: 10 },
+  entries: ['src/flags/FlagIcon/FlagIcon.tsx'],
+  targets: {
+    default: {
+      distDir: 'dist/flags/FlagIcon',
+      includeNodeModules: ['uuid'],
+    },
+  },
+};
+const dynamicIconConfig: ConfigOptions = {
+  detailedReport: { assetsPerBundle: 10 },
+  entries: ['src/icons/DynamicIcon/index.ts'],
+  targets: {
+    default: {
+      distDir: 'dist/icons/DynamicIcon',
+      includeNodeModules: false,
+    },
+  },
+};
+const iconConfig: ConfigOptions = {
+  entries: ['src/icons/*.tsx'],
+  targets: {
+    default: {
+      distDir: 'dist/icons',
+      includeNodeModules: false,
+    },
+  },
+};
+const fileUploadConfig: ConfigOptions = {
+  detailedReport: { assetsPerBundle: 20 },
+  entries: ['src/components/FileUpload/index.ts'],
+  targets: {
+    default: {
+      distDir: 'dist/components/FileUpload',
+      includeNodeModules: ['react-dropzone'],
+    },
+  },
+};
+const radixConfig: ConfigOptions = {
+  detailedReport: { assetsPerBundle: 20 },
+  entries: ['src/components/radix/index.ts'],
+  targets: {
+    default: {
+      distDir: 'dist/components/radix',
+      includeNodeModules: [
+        '@radix-ui/react-slider',
+        '@radix-ui/react-radio-group',
+        '@radix-ui/react-checkbox',
+        '@swc/helpers',
+      ],
+    },
+  },
+};
+const selectConfig: ConfigOptions = {
+  detailedReport: { assetsPerBundle: 40 },
+  entries: ['src/components/Select/index.ts'],
+  targets: {
+    default: {
+      distDir: 'dist/components/Select',
+      includeNodeModules: ['react-select'],
+    },
+  },
+};
+const configs: ConfigOptions[] = [
+  componentsConfig,
+  dynamicIconConfig,
+  fileUploadConfig,
+  flagConfig,
+  flagIconConfig,
+  iconConfig,
+  radixConfig,
+  selectConfig,
 ];
 
 /* Set max listener based on the size of bundleConfig (1 config will add 4 event listeners) */
-process.stdout.setMaxListeners(bundleConfigs.length * 4 + 1);
-process.stderr.setMaxListeners(bundleConfigs.length * 4 + 1);
+process.stdout.setMaxListeners(configs.length * 4 + 1);
+process.stderr.setMaxListeners(configs.length * 4 + 1);
 
-const builds = bundleConfigs.map(options => bundlePackage(options));
-Promise.all(builds);
-
-// const i18nBundler = new Parcel({
-//   entries: [
-//     'src/icons/*.tsx',
-//     'src/i18n.ts',
-//     'src/index.ts',
-//     'src/components/*/index.ts',
-//   ],
-//   defaultTargetOptions: {
-//     isLibrary: true,
-//     sourceMaps: false,
-//   },
-//   additionalReporters: [
-//     {
-//       packageName: '@parcel/reporter-cli',
-//       resolveFrom: fileURLToPath(import.meta.url)
-//     }
-//   ],
-//   defaultConfig: '@parcel/config-default',
-//   mode: 'production',
-// });
-// try {
-//   const { bundleGraph: i18nGraph, buildTime: i18nBuildTime } =
-//     await i18nBundler.run();
-//   const i18nBundles = i18nGraph.getBundles();
-//   console.log(
-//     `✨ Built i18nBundles: ${i18nBundles.length} bundles in ${i18nBuildTime}ms!`
-//   );
-// } catch (err) {
-//   console.log(err.diagnostics);
-// }
+configs.map(bundlePackage);

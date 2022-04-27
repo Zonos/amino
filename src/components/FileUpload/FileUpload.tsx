@@ -3,9 +3,9 @@ import { DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import styled from 'styled-components';
 
-import { HStack } from '~/src/components/Stack';
-import { Text } from '~/src/components/Text';
-import { RemoveCircleIcon } from '~/src/icons';
+import { HStack } from '~/src/components/Stack/HStack';
+import { Text } from '~/src/components/Text/Text';
+import { RemoveCircleIcon } from '~/src/icons/RemoveCircleIcon';
 
 type UploadedFileProps = {
   uploadedSize: string;

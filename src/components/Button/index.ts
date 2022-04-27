@@ -1,3 +1,3 @@
-export { Anchor, type AnchorProps } from './Anchor';
-export { Button, type ButtonProps } from './Button';
-export { MenuButton, type MenuButtonProps } from './MenuButton';
+export { type AnchorProps, Anchor } from './Anchor';
+export { type ButtonProps, Button } from './Button';
+export { type MenuButtonProps, MenuButton } from './MenuButton';
