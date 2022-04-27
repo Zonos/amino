@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
  * }
  */
 const bundlePackage = async (options: InitialParcelOptions) => {
-  const defaultOptions = {
+  const defaultOptions : InitialParcelOptions = {
     defaultTargetOptions: {
       isLibrary: true,
       sourceMaps: false,
@@ -31,7 +31,6 @@ const bundlePackage = async (options: InitialParcelOptions) => {
   if (!options.entries) {
     throw new Error(`Option "entries" is required to bundle!`);
   }
-
   const bundler = new Parcel(configOptions);
 
   try {
@@ -61,11 +60,23 @@ const bundleConfigs: InitialParcelOptions[] = [
   },
   {
     entries: 'src/components/*/*.tsx',
+    targets: {
+      default: {
+        distDir: 'dist/components',
+        includeNodeModules: false,
+      }
+    }
   },
 ];
 
-const builds = bundleConfigs.map(options => bundlePackage(options));
-Promise.all(builds);
+// const builds = bundleConfigs.map(options => bundlePackage(options));
+// Promise.all(builds);
+const build = async () => {
+  for (const option of bundleConfigs) {
+    await bundlePackage(option);
+  }
+}
+build();
 
 // const i18nBundler = new Parcel({
 //   entries: [

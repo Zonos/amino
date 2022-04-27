@@ -86,7 +86,7 @@
   },
   "scripts": {
     "build": "lint:prod && build:parcel",
-    "prebuild:parcel": "rm -rf ./dist && ttsc build.ts --outDir . --module es2022",
+    "prebuild:parcel": "rm -rf ./dist ./.parcel-cache && ttsc build.ts --outDir . --module es2022",
     "build:parcel": "node build.js && ttsc --emitDeclarationOnly",
     "postbuild:parcel": "cp -r ./src/styles/*.css ./dist && ttsc src/setupPackage.ts && node dist/setupPackage.js",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
