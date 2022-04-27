@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 /**
  * Bundle package
  * @param options option to configure parcel to bundle package, `entries` is required. Use default option if it's not specified
- * @example 
+ * @example
  * {
  *   entries: 'src/icons/*.tsx'
  * }
@@ -28,28 +28,30 @@ const bundlePackage = async (options: InitialParcelOptions) => {
     ...defaultOptions,
     ...options
   };
-  if (!options['entries']) {
+  if (!options.entries) {
     throw new Error(`Option "entries" is required to bundle!`);
   }
 
   const bundler = new Parcel(configOptions);
-  
+
   try {
-    const { bundleGraph: i18nGraph, buildTime: i18nBuildTime } =
-      await bundler.run();
-    const i18nBundles = i18nGraph.getBundles();
-    console.log(
-      `✨ Built i18nBundles: ${i18nBundles.length} bundles in ${i18nBuildTime}ms!`
-    );
+    const { bundleGraph } = await bundler.run();
+    bundleGraph.getBundles();
   } catch (err) {
     // @ts-ignore
-    console.log(err.diagnostics);
+    console.error(err.diagnostics);
   }
 }
 
-const bundleConfgis: InitialParcelOptions[] = [
+const bundleConfigs: InitialParcelOptions[] = [
   {
     entries: 'src/icons/*.tsx',
+    targets: {
+      default: {
+        distDir: 'dist/icons',
+        includeNodeModules: false,
+      }
+    }
   },
   {
     entries: 'src/i18n.ts',
@@ -62,12 +64,8 @@ const bundleConfgis: InitialParcelOptions[] = [
   },
 ];
 
-Promise.all(bundleConfgis.map(config => new Promise(async (resolve) => {
-  await bundlePackage(config);
-  resolve(1);
-}))).catch((err) => {
-  console.log(err)
-})
+const builds = bundleConfigs.map(options => bundlePackage(options));
+Promise.all(builds);
 
 // const i18nBundler = new Parcel({
 //   entries: [
