@@ -1,2 +1,3 @@
 *.map
-SetupPackage.*
+setupPackage.*
+build.*

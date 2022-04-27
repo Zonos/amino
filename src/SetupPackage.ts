@@ -6,7 +6,7 @@ import path from 'path';
 
 function main() {
   const source = fs
-    .readFileSync(path.resolve(`${path.dirname('..')}/package.json`))
+    .readFileSync(path.resolve(`${path.dirname('')}/package.json`))
     .toString('utf-8');
   const sourceObj = JSON.parse(source);
   sourceObj.scripts = {};
@@ -19,8 +19,8 @@ function main() {
   );
 
   fs.copyFileSync(
-    `${path.dirname('..')}/.npmignore`,
-    `${path.dirname('./')}/.npmignore`
+    path.resolve(`${path.dirname('')}/.npmignore`),
+    path.resolve(`${path.dirname('')}/dist/.npmignore`),
   );
 }
 
