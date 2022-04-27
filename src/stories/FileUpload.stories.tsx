@@ -4,8 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import {
-  type FileUploadProps,
   FileUpload,
+  type FileUploadProps,
 } from '~/src/components/FileUpload/FileUpload';
 
 const ListMeta: Meta = {

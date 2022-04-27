@@ -5,8 +5,8 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { Button } from '~/src/components/Button/Button';
 import {
-  type SlideOverProps,
   SlideOver,
+  type SlideOverProps,
 } from '~/src/components/SlideOver/SlideOver';
 
 const SlideOverMeta: Meta = {

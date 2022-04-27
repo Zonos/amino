@@ -5,8 +5,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import {
-  type CollapseProps,
   Collapse,
+  type CollapseProps,
 } from '~/src/components/Collapse/Collapse';
 import { NavigationItem } from '~/src/components/Layout/NavigationGroup';
 

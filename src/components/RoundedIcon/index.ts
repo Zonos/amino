@@ -1,1 +1,1 @@
-export { type RoundedIconProps, RoundedIcon } from './RoundedIcon';
+export { RoundedIcon, type RoundedIconProps } from './RoundedIcon';

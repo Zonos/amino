@@ -4,8 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import {
-  type MenuButtonProps,
   MenuButton,
+  type MenuButtonProps,
 } from '~/src/components/Button/MenuButton';
 
 const MenuButtonMeta: Meta = {

@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { type BadgeProps, Badge } from '~/src/components/Badge/Badge';
+import { Badge, type BadgeProps } from '~/src/components/Badge/Badge';
 import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const BadgeMeta: Meta = {

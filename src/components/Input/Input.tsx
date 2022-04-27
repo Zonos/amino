@@ -3,8 +3,8 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from '~/src/components/HelpText/HelpText';
 
 import {

@@ -8,7 +8,7 @@ export {
 export { Anchor, Button, MenuButton } from './components/Button';
 export { Card } from './components/Card';
 export { Checkbox } from './components/Checkbox';
-export { type CollapseProps, Collapse } from './components/Collapse';
+export { Collapse, type CollapseProps } from './components/Collapse';
 export {
   ConfirmContext,
   ConfirmContextProvider,

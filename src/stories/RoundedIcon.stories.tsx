@@ -4,8 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import {
-  type RoundedIconProps,
   RoundedIcon,
+  type RoundedIconProps,
 } from '~/src/components/RoundedIcon/RoundedIcon';
 import { ReportsIcon } from '~/src/icons/ReportsIcon';
 

@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { type SelectProps, Select } from '~/src/components/Select/Select';
+import { Select, type SelectProps } from '~/src/components/Select/Select';
 import { FlagIcon } from '~/src/flags/FlagIcon/FlagIcon';
 import { FileIcon } from '~/src/icons/FileIcon';
 

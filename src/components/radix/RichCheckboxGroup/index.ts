@@ -1,4 +1,4 @@
 export {
-  type RichCheckboxGroupProps,
   RichCheckboxGroup,
+  type RichCheckboxGroupProps,
 } from './RichCheckboxGroup';

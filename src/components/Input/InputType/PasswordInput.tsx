@@ -6,7 +6,7 @@ import { Button } from '~/src/components/Button/Button';
 import { EyeIcon } from '~/src/icons/EyeIcon';
 import { EyeOffIcon } from '~/src/icons/EyeOffIcon';
 
-import { type FloatLabelInputProps, FloatLabelInput } from './FloatLabelInput';
+import { FloatLabelInput, type FloatLabelInputProps } from './FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

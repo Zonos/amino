@@ -1,1 +1,1 @@
-export { type RichRadioProps, RichRadio } from './RichRadio';
+export { RichRadio, type RichRadioProps } from './RichRadio';

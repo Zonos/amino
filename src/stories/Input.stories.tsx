@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { type InputProps, Input } from '~/src/components/Input/Input';
+import { Input, type InputProps } from '~/src/components/Input/Input';
 import { FlagIcon } from '~/src/flags/FlagIcon/FlagIcon';
 import { BagIcon } from '~/src/icons/BagIcon';
 import { CubeIcon } from '~/src/icons/CubeIcon';

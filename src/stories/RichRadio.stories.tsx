@@ -4,8 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import {
-  type RichRadioProps,
   RichRadio,
+  type RichRadioProps,
 } from '~/src/components/radix/RichRadio/RichRadio';
 import { CheckMarkIcon } from '~/src/icons/CheckMarkIcon';
 import { ChevronRightIcon } from '~/src/icons/ChevronRightIcon';

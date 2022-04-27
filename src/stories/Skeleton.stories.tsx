@@ -3,8 +3,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
 import {
-  type SkeletonProps,
   Skeleton,
+  type SkeletonProps,
 } from '~/src/components/Skeleton/Skeleton';
 import { VStack } from '~/src/components/Stack/VStack';
 

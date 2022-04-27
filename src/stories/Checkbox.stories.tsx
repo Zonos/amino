@@ -4,8 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
 import {
-  type CheckboxProps,
   Checkbox,
+  type CheckboxProps,
 } from '~/src/components/Checkbox/Checkbox';
 import { TagIcon } from '~/src/icons/TagIcon';
 

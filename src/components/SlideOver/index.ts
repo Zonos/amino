@@ -1,1 +1,1 @@
-export { type SlideOverProps, SlideOver } from './SlideOver';
+export { SlideOver, type SlideOverProps } from './SlideOver';

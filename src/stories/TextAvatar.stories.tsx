@@ -3,8 +3,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 
 import {
-  type TextAvatarProps,
   TextAvatar,
+  type TextAvatarProps,
 } from '~/src/components/TextAvatar/TextAvatar';
 
 const TextAvatarMeta: Meta = {

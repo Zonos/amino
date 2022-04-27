@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { Button } from '~/src/components/Button/Button';
 import { Card } from '~/src/components/Card/Card';
-import { type HStackProps, HStack } from '~/src/components/Stack/HStack';
+import { HStack, type HStackProps } from '~/src/components/Stack/HStack';
 
 const HStackMeta: Meta = {
   title: 'Amino/HStack',

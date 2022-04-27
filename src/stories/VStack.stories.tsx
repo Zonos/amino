@@ -5,7 +5,7 @@ import { withDesign } from 'storybook-addon-designs';
 
 import { Button } from '~/src/components/Button/Button';
 import { Card } from '~/src/components/Card/Card';
-import { type VStackProps, VStack } from '~/src/components/Stack/VStack';
+import { VStack, type VStackProps } from '~/src/components/Stack/VStack';
 
 const VStackMeta: Meta = {
   title: 'Amino/VStack',

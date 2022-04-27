@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import styled from 'styled-components';
 
 import { Card } from '~/src/components/Card/Card';
-import { type LayoutProps, Layout } from '~/src/components/Layout/Layout';
+import { Layout, type LayoutProps } from '~/src/components/Layout/Layout';
 import {
   NavigationGroup,
   NavigationItem,

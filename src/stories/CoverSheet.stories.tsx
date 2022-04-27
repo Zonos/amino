@@ -4,8 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 
 import { Button } from '~/src/components/Button/Button';
 import {
-  type CoverSheetProps,
   CoverSheet,
+  type CoverSheetProps,
 } from '~/src/components/CoverSheet/CoverSheet';
 
 const CoverSheetMeta: Meta = {

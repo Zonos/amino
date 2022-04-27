@@ -1,11 +1,11 @@
 export {
-  type CountryMultiSelectProps,
   CountryMultiSelect,
+  type CountryMultiSelectProps,
 } from './CountryMultiSelect';
 export {
-  type CountryPhoneSelectProps,
   CountryPhoneSelect,
+  type CountryPhoneSelectProps,
 } from './CountryPhoneSelect';
-export { type LegacySelectProps, LegacySelect } from './LegacySelect';
-export { type MultiSelectProps, MultiSelect } from './MultiSelect';
-export { type SelectProps, Select } from './Select';
+export { LegacySelect, type LegacySelectProps } from './LegacySelect';
+export { MultiSelect, type MultiSelectProps } from './MultiSelect';
+export { Select, type SelectProps } from './Select';
