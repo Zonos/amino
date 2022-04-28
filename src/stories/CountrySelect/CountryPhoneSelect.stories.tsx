@@ -8,7 +8,7 @@ import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
 } from '~/src/components/Select/CountryPhoneSelect';
-import { FlagIcon, IFlag } from '~/src/flags/FlagIcon/FlagIcon';
+import { FlagIcon, IFlag } from '~/src/icons/FlagIcon/FlagIcon';
 import { ICountryOption } from '~/src/types/ICountry';
 
 import { getCountryUrls } from './getCountryUrls';

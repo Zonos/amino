@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { FlagIcon, IFlag, IFlagScale } from '~/src/flags/FlagIcon/FlagIcon';
+import { FlagIcon, IFlag, IFlagScale } from '~/src/icons/FlagIcon/FlagIcon';
 import {
   ICountryOption,
   IGetCountriesResponse,

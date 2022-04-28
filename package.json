@@ -97,7 +97,7 @@
     "svgs:optimize": "svgo -f ./svgReact/smaller-flags -o ./svgReact/svgs",
     "svgs:download:flags": "node ./svgReact/downloadFlags.js",
     "svgs:copy:flags": "node ./svgReact/copySmallerFlags.js",
-    "svgs:create": "yarn svgs:react && yarn svgs:format && yarn svgs:index",
+    "svgs:create": "yarn svgs:react && yarn svgs:index && yarn svgs:format",
     "svgs:format": "eslint svgReact --ext .tsx --fix",
     "svgs:index": "node ./svgReact/createIndexFile.js ./svgReact/flags",
     "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/flags",

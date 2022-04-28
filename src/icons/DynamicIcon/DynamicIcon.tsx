@@ -2,7 +2,8 @@ import React, { ReactElement } from 'react';
 
 import { type IconProps } from '~/src/types/IconProps';
 
-import * as icons from './IconIndex';
+// eslint-disable-next-line import/no-internal-modules
+import * as icons from '../index';
 
 export type DynamicIconType = Exclude<
   keyof typeof icons,

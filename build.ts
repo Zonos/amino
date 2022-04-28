@@ -45,7 +45,7 @@ const bundlePackage = async (options: ConfigOptions) => {
 
 const componentsConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 20 },
-  entries: ['src/index.ts'],
+  entries: 'src/index.ts',
   targets: {
     default: {
       distDir: 'dist',
@@ -54,27 +54,27 @@ const componentsConfig: ConfigOptions = {
   },
 };
 const flagConfig: ConfigOptions = {
-  entries: ['src/flags/*.tsx'],
+  entries: 'src/icons/flags/*.tsx',
   targets: {
     default: {
-      distDir: 'dist/flags',
+      distDir: 'dist/icons/flags',
       includeNodeModules: ['uuid'],
     },
   },
 };
 const flagIconConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 10 },
-  entries: ['src/flags/FlagIcon/FlagIcon.tsx'],
+  entries: 'src/icons/FlagIcon/index.tsx',
   targets: {
     default: {
-      distDir: 'dist/flags/FlagIcon',
+      distDir: 'dist/icons/FlagIcon',
       includeNodeModules: ['uuid'],
     },
   },
 };
 const dynamicIconConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 10 },
-  entries: ['src/icons/DynamicIcon/index.ts'],
+  entries: 'src/icons/DynamicIcon/index.ts',
   targets: {
     default: {
       distDir: 'dist/icons/DynamicIcon',
@@ -83,7 +83,7 @@ const dynamicIconConfig: ConfigOptions = {
   },
 };
 const iconConfig: ConfigOptions = {
-  entries: ['src/icons/*.tsx'],
+  entries: 'src/icons/*.tsx',
   targets: {
     default: {
       distDir: 'dist/icons',
@@ -93,7 +93,7 @@ const iconConfig: ConfigOptions = {
 };
 const fileUploadConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 20 },
-  entries: ['src/components/FileUpload/index.ts'],
+  entries: 'src/components/FileUpload/index.ts',
   targets: {
     default: {
       distDir: 'dist/components/FileUpload',
@@ -103,7 +103,7 @@ const fileUploadConfig: ConfigOptions = {
 };
 const radixConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 20 },
-  entries: ['src/components/radix/index.ts'],
+  entries: 'src/components/radix/index.ts',
   targets: {
     default: {
       distDir: 'dist/components/radix',
@@ -118,7 +118,7 @@ const radixConfig: ConfigOptions = {
 };
 const selectConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 40 },
-  entries: ['src/components/Select/index.ts'],
+  entries: 'src/components/Select/index.ts',
   targets: {
     default: {
       distDir: 'dist/components/Select',
