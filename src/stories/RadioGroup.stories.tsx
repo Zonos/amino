@@ -7,7 +7,7 @@ import {
   RadioGroup,
   RadioGroupItem,
   RadioGroupProps,
-} from '../components/Radio';
+} from '~/src/components/Radio/RadioGroup';
 
 const RadioMeta: Meta = {
   title: 'Amino/RadioGroup',

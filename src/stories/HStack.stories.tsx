@@ -3,9 +3,9 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Button } from '../components/Button';
-import { Card } from '../components/Card';
-import { HStack, type HStackProps } from '../components/Stack';
+import { Button } from '~/src/components/Button/Button';
+import { Card } from '~/src/components/Card/Card';
+import { HStack, type HStackProps } from '~/src/components/Stack/HStack';
 
 const HStackMeta: Meta = {
   title: 'Amino/HStack',

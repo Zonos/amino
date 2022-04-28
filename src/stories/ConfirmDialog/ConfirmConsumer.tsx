@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { useConfirm } from 'src/hooks';
-
-import { Button, VStack } from '../..';
+import { Button } from '~/src/components/Button/Button';
+import { useConfirm } from '~/src/components/ConfirmDialog/useConfirm';
+import { VStack } from '~/src/components/Stack/VStack';
 
 export const ConfirmConsumer = () => {
   const [defaultConfirmOk, setDefaultConfirmOk] = useState(false);

@@ -1,18 +1,17 @@
 import React from 'react';
 
-import { IAminoTheme, Intent } from 'src/types';
 import styled from 'styled-components';
 
-import {
-  ExclamationSolidIcon,
-  HelpSolidIcon,
-  WarningSolidIcon,
-} from '../../icons';
-import { Button } from '../Button';
-import { BaseDialog } from '../Dialog/BaseDialog';
-import { RoundedIcon } from '../RoundedIcon';
-import { VStack } from '../Stack';
-import { Text } from '../Text';
+import { Button } from '~/src/components/Button/Button';
+import { BaseDialog } from '~/src/components/Dialog/BaseDialog';
+import { RoundedIcon } from '~/src/components/RoundedIcon/RoundedIcon';
+import { VStack } from '~/src/components/Stack/VStack';
+import { Text } from '~/src/components/Text/Text';
+import { ExclamationSolidIcon } from '~/src/icons/ExclamationIcon';
+import { HelpSolidIcon } from '~/src/icons/HelpIcon';
+import { WarningSolidIcon } from '~/src/icons/WarningIcon';
+import { IAminoTheme } from '~/src/types/IAminoTheme';
+import { Intent } from '~/src/types/Intent';
 
 const Content = styled.div`
   padding: var(--amino-space);

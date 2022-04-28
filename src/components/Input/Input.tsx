@@ -1,13 +1,18 @@
 import React, { ReactNode } from 'react';
 
-import { HelpText, type HelpTextProps } from 'src/components/HelpText';
 import styled from 'styled-components';
 
-import { NumberInput, PasswordInput } from './InputType';
+import {
+  HelpText,
+  type HelpTextProps,
+} from '~/src/components/HelpText/HelpText';
+
 import {
   FloatLabelInput,
   FloatLabelInputProps,
 } from './InputType/FloatLabelInput';
+import { NumberInput } from './InputType/NumberInput';
+import { PasswordInput } from './InputType/PasswordInput';
 
 const Fields = styled.div`
   border-radius: var(--amino-radius);

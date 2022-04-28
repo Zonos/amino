@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Text } from 'src/components/Text';
 import styled from 'styled-components';
+
+import { Text } from '~/src/components/Text/Text';
 
 const StyledRestState = styled.div`
   display: flex;
