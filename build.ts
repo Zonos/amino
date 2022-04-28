@@ -64,7 +64,7 @@ const flagConfig: ConfigOptions = {
 };
 const flagIconConfig: ConfigOptions = {
   detailedReport: { assetsPerBundle: 10 },
-  entries: 'src/icons/FlagIcon/index.tsx',
+  entries: 'src/icons/FlagIcon/index.ts',
   targets: {
     default: {
       distDir: 'dist/icons/FlagIcon',

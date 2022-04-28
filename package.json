@@ -86,9 +86,9 @@
     "extends": "react-app"
   },
   "scripts": {
-    "prebuild": "lint:prod && rm -rf ./dist .parcel-cache && ttsc build.ts --outDir . --module es2022 --sourceMap false",
-    "build": "node build.js && ttsc --emitDeclarationOnly",
-    "postbuild": "cp -r ./src/styles/*.css ./dist && ttsc src/setupPackage.ts --sourceMap false && node dist/setupPackage.js",
+    "prebuild": "yarn lint:prod && rm -rf ./dist .parcel-cache && ttsc build.ts --outDir . --module es2022 --sourceMap false && mv build.js build.mjs",
+    "build": "node build.mjs && ttsc --emitDeclarationOnly",
+    "postbuild": "cp -r ./src/styles/*.css ./dist && ttsc src/setupPackage.ts --sourceMap false && mv dist/setupPackage.js ./dist/setupPackage.mjs && node dist/setupPackage.mjs",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",

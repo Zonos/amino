@@ -86,4 +86,4 @@ svgReact/svgs
 
 # Build
 *.map
-build.js
+build.mjs
