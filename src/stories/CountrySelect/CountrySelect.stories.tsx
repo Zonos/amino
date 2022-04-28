@@ -42,13 +42,14 @@ const CountrySelectTemplate: Story<SelectProps<ICountryOption>> = ({
   return (
     <Select
       {...props}
-      options={countryOptions}
+      label="Select country"
       icon={
         <FlagIcon
           code={(firstCountry?.code as IFlag) || 'Default'}
           iconScale="medium"
         />
       }
+      options={countryOptions}
       onChange={setValue}
       value={value}
     />
