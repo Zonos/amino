@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.40",
+  "version": "3.0.41",
   "description": "Core UI components for Amino",
   "engines": {
     "node": ">= 12"
