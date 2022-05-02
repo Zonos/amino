@@ -33,7 +33,6 @@
     "autoprefixer": "10.4.4",
     "concurrently": "^7.1.0",
     "dotenv": "^16.0.0",
-    "downshift": "^4.1.0",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
@@ -73,7 +72,6 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "downshift": "^4.x",
     "framer-motion": "^4.x",
     "react": "^17.x",
     "react-dom": "^17.x",
