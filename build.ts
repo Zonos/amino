@@ -43,44 +43,49 @@ const bundlePackage = async (options: ConfigOptions) => {
   }
 };
 
-const generateAllModulesContent = async (bundles: PackagedBundle[]) => {
-  if (bundles && !!bundles.length) {
-    const mainEntry = bundles[0].getMainEntry();
-    if (mainEntry) {
-      const [, subFolderPath, fileName] =
-        mainEntry.filePath.split(/src\/(.*\/)*(.*)\.(tsx|ts)/g) || [];
-      switch (fileName) {
-        case 'index': {
-          if (!subFolderPath) {
-            // Export main root file (enable VSCode to suggest auto-import to all components in main "index" file in package.json)
-            return [
-              `/* Module ${bundles[0].displayName} */`,
-              `export * from "./index"`,
-            ].join('\n');
-          }
-          // Import all sub modules (enable VSCode to suggest auto-import to sub module path)
-          return [
+const generateAllModulesContent = async (
+  bundles: PackagedBundle[]
+): Promise<string[]> => {
+  const firstBundle = bundles.find(Boolean);
+  const mainEntry = firstBundle?.getMainEntry();
+  if (mainEntry) {
+    const [, subFolderPath, fileName] =
+      mainEntry.filePath.split(/src\/(.*\/)*(.*)\.(tsx|ts)/g) || [];
+    switch (fileName) {
+      case 'index': {
+        if (!subFolderPath) {
+          // Export main root file (enable VSCode to suggest auto-import to all components in main "index" file in package.json)
+          const mainRootFile = [
             `/* Module ${bundles[0].displayName} */`,
-            `import "./${subFolderPath}${fileName}";`,
+            `export * from "./index"`,
           ].join('\n');
+          return [mainRootFile];
         }
-        default:
-          return Promise.all(
-            // Enable VScode to suggest auto-import directly to individual module (icons/flags) in order to reduce size of consuming page
-            bundles.map(async bundle => {
-              const moduleName = `${bundle.filePath}`;
-              const { default: defaultModules } = await import(moduleName);
-              return [
-                `/* Module ${bundle.displayName} */`,
-                Object.keys(defaultModules)
-                  .map((name: string) => {
-                    const [componentName] = name.split('.');
-                    return `import './${subFolderPath}${componentName}';`;
-                  })
-                  .join('\n'),
-              ].join('\n');
-            })
-          );
+        // Import all sub modules (enable VSCode to suggest auto-import to sub module path)
+        const subModules = [
+          `/* Module ${bundles[0].displayName} */`,
+          `import "./${subFolderPath}${fileName}";`,
+        ].join('\n');
+        return [subModules];
+      }
+      default: {
+        const individualModules = bundles.map(async bundle => {
+          // Enable VScode to suggest auto-import directly to individual module (icons/flags) in order to reduce size of consuming page
+          const moduleName = `${bundle.filePath}`;
+          const { default: defaultModules } = await import(moduleName);
+          const module = [
+            `/* Module ${bundle.displayName} */`,
+            Object.keys(defaultModules)
+              .map((name: string) => {
+                const [componentName] = name.split('.');
+                return `import './${subFolderPath}${componentName}';`;
+              })
+              .join('\n'),
+          ].join('\n');
+          return module;
+        });
+        const resultModules = await Promise.all(individualModules);
+        return resultModules;
       }
     }
   }
@@ -185,15 +190,22 @@ const configs: ConfigOptions[] = [
 process.stdout.setMaxListeners(configs.length * 4 + 1);
 process.stderr.setMaxListeners(configs.length * 4 + 1);
 
-Promise.all(configs.map(bundlePackage))
-  // generate module contents
-  .then(bundles =>
-    Promise.all(bundles.flatMap(item => generateAllModulesContent(item)))
-  )
-  // generate all modules ts file
-  .then(data => {
-    fs.writeFileSync(
-      `./src/all.ts`,
-      ['/* eslint-disable */', data.flatMap(item => item).join('\n')].join('\n')
-    );
-  });
+const build = async () => {
+  const bundledPackages = await Promise.all(configs.map(bundlePackage));
+
+  const moduleContents = await Promise.all(
+    // generate module contents
+    bundledPackages.map(generateAllModulesContent)
+  );
+
+  fs.writeFileSync(
+    // generate all modules ts file
+    `./src/all.ts`,
+    [
+      '/* eslint-disable */',
+      moduleContents.flatMap(item => item).join('\n'),
+    ].join('\n')
+  );
+};
+
+build();
