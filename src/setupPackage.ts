@@ -12,7 +12,7 @@ function main() {
   sourceObj.scripts = {};
   sourceObj.devDependencies = {};
   sourceObj.main = 'index.js';
-  sourceObj.types = 'index.d.ts';
+  sourceObj.types = 'all.d.ts';
   fs.writeFileSync(
     `./dist/package.json`,
     Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8')

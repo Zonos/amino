@@ -1,5 +1,6 @@
 import { Parcel } from '@parcel/core';
-import { type InitialParcelOptions } from '@parcel/types';
+import { type InitialParcelOptions, PackagedBundle } from '@parcel/types';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 type ConfigOptions = Omit<InitialParcelOptions, 'entries'> &
@@ -35,12 +36,60 @@ const bundlePackage = async (options: ConfigOptions) => {
 
   try {
     const { bundleGraph } = await bundler.run();
-
-    bundleGraph.getBundles();
+    return bundleGraph.getBundles() || [];
   } catch (err) {
-    // @ts-ignore
-    console.error(err.diagnostics); // eslint-disable-line no-console
+    console.error(err); // eslint-disable-line no-console
+    return [];
   }
+};
+
+const generateAllModulesContent = async (
+  bundles: PackagedBundle[]
+): Promise<string[]> => {
+  const firstBundle = bundles.find(Boolean);
+  const mainEntry = firstBundle?.getMainEntry();
+  if (mainEntry) {
+    const [, subFolderPath, fileName] =
+      mainEntry.filePath.split(/src\/(.*\/)*(.*)\.(tsx|ts)/g) || [];
+    switch (fileName) {
+      case 'index': {
+        if (!subFolderPath) {
+          // Export main root file (enable VSCode to suggest auto-import to all components in main "index" file in package.json)
+          const mainRootFile = [
+            `/* Module ${bundles[0].displayName} */`,
+            `export * from "./index"`,
+          ].join('\n');
+          return [mainRootFile];
+        }
+        // Import all sub modules (enable VSCode to suggest auto-import to sub module path)
+        const subModules = [
+          `/* Module ${bundles[0].displayName} */`,
+          `import "./${subFolderPath}${fileName}";`,
+        ].join('\n');
+        return [subModules];
+      }
+      default: {
+        const individualModules = bundles.map(async bundle => {
+          // Enable VScode to suggest auto-import directly to individual module (icons/flags) in order to reduce size of consuming page
+          const moduleName = `${bundle.filePath}`;
+          const { default: defaultModules } = await import(moduleName);
+          const module = [
+            `/* Module ${bundle.displayName} */`,
+            Object.keys(defaultModules)
+              .map((name: string) => {
+                const [componentName] = name.split('.');
+                return `import './${subFolderPath}${componentName}';`;
+              })
+              .join('\n'),
+          ].join('\n');
+          return module;
+        });
+        const resultModules = await Promise.all(individualModules);
+        return resultModules;
+      }
+    }
+  }
+  return [];
 };
 
 const componentsConfig: ConfigOptions = {
@@ -141,4 +190,22 @@ const configs: ConfigOptions[] = [
 process.stdout.setMaxListeners(configs.length * 4 + 1);
 process.stderr.setMaxListeners(configs.length * 4 + 1);
 
-configs.map(bundlePackage);
+const build = async () => {
+  const bundledPackages = await Promise.all(configs.map(bundlePackage));
+
+  const moduleContents = await Promise.all(
+    // generate module contents
+    bundledPackages.map(generateAllModulesContent)
+  );
+
+  fs.writeFileSync(
+    // generate all modules ts file
+    `./src/all.ts`,
+    [
+      '/* eslint-disable */',
+      moduleContents.flatMap(item => item).join('\n'),
+    ].join('\n')
+  );
+};
+
+build();
