@@ -1,5 +1,6 @@
 import { Parcel } from '@parcel/core';
-import { type InitialParcelOptions } from '@parcel/types';
+import { type InitialParcelOptions, PackagedBundle } from '@parcel/types';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 type ConfigOptions = Omit<InitialParcelOptions, 'entries'> &
@@ -35,12 +36,55 @@ const bundlePackage = async (options: ConfigOptions) => {
 
   try {
     const { bundleGraph } = await bundler.run();
-
-    bundleGraph.getBundles();
+    return bundleGraph.getBundles() || [];
   } catch (err) {
-    // @ts-ignore
-    console.error(err.diagnostics); // eslint-disable-line no-console
+    console.error(err); // eslint-disable-line no-console
+    return [];
   }
+};
+
+const generateAllModulesContent = async (bundles: PackagedBundle[]) => {
+  if (bundles && !!bundles.length) {
+    const mainEntry = bundles[0].getMainEntry();
+    if (mainEntry) {
+      const [, subFolderPath, fileName] =
+        mainEntry.filePath.split(/src\/(.*\/)*(.*)\.(tsx|ts)/g) || [];
+      switch (fileName) {
+        case 'index': {
+          if (!subFolderPath) {
+            // Export main root file (enable VSCode to suggest auto-import to all components in main "index" file in package.json)
+            return [
+              `/* Module ${bundles[0].displayName} */`,
+              `export * from "./index"`,
+            ].join('\n');
+          }
+          // Import all sub modules (enable VSCode to suggest auto-import to sub module path)
+          return [
+            `/* Module ${bundles[0].displayName} */`,
+            `import "./${subFolderPath}${fileName}";`,
+          ].join('\n');
+        }
+        default:
+          return Promise.all(
+            // Enable VScode to suggest auto-import directly to individual module (icons/flags) in order to reduce size of consuming page
+            bundles.map(async bundle => {
+              const moduleName = `${bundle.filePath}`;
+              const { default: defaultModules } = await import(moduleName);
+              return [
+                `/* Module ${bundle.displayName} */`,
+                Object.keys(defaultModules)
+                  .map((name: string) => {
+                    const [componentName] = name.split('.');
+                    return `import './${subFolderPath}${componentName}';`;
+                  })
+                  .join('\n'),
+              ].join('\n');
+            })
+          );
+      }
+    }
+  }
+  return [];
 };
 
 const componentsConfig: ConfigOptions = {
@@ -141,4 +185,15 @@ const configs: ConfigOptions[] = [
 process.stdout.setMaxListeners(configs.length * 4 + 1);
 process.stderr.setMaxListeners(configs.length * 4 + 1);
 
-configs.map(bundlePackage);
+Promise.all(configs.map(bundlePackage))
+  // generate module contents
+  .then(bundles =>
+    Promise.all(bundles.flatMap(item => generateAllModulesContent(item)))
+  )
+  // generate all modules ts file
+  .then(data => {
+    fs.writeFileSync(
+      `./src/all.ts`,
+      ['/* eslint-disable */', data.flatMap(item => item).join('\n')].join('\n')
+    );
+  });

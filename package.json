@@ -86,9 +86,15 @@
     "extends": "react-app"
   },
   "scripts": {
-    "prebuild": "yarn lint:prod && rm -rf ./dist .parcel-cache && ttsc build.ts --outDir . --module es2022 --sourceMap false && mv build.js build.mjs",
-    "build": "node build.mjs && ttsc --emitDeclarationOnly",
-    "postbuild": "cp -r ./src/styles/*.css ./dist && ttsc src/setupPackage.ts --sourceMap false && mv dist/setupPackage.js ./dist/setupPackage.mjs && node dist/setupPackage.mjs",
+    "prebuild": "yarn lint:prod && rm -rf ./dist .parcel-cache && ttsc build.ts --outDir . --module es2022 --sourceMap true && mv build.js build.mjs",
+    "build": "node build.mjs && yarn build:dts",
+    "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
+    "prebuild:dts": "echo 'building dts'",
+    "build:dts": "ttsc --emitDeclarationOnly",
+    "posbuild:dts": "echo 'done build dts'",
+    "prebuild:prep:publish": "echo 'building for publishing'",
+    "build:prep:publish": "ttsc src/setupPackage.ts --sourceMap false && mv dist/setupPackage.js ./dist/setupPackage.mjs && node dist/setupPackage.mjs",
+    "postbuild:prep:publish": "echo 'done building for publishing'",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",
