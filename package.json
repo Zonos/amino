@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.39",
+  "version": "3.0.40",
   "description": "Core UI components for Amino",
   "main": "dist/index.js",
   "module": "dist/index.esm/js",
@@ -61,6 +61,10 @@
     "typescript": "4.6.2"
   },
   "dependencies": {
+    "@dnd-kit/core": "^5.0.3",
+    "@dnd-kit/modifiers": "^5.0.0",
+    "@dnd-kit/sortable": "^6.0.1",
+    "@dnd-kit/utilities": "^3.1.0",
     "@radix-ui/react-checkbox": "^0.0.16",
     "@radix-ui/react-radio-group": "^0.1.5",
     "@radix-ui/react-slider": "^0.0.16",
