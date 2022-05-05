@@ -2,7 +2,10 @@ import React, { ReactNode } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { DynamicIcon, DynamicIconType } from 'src';
+import {
+  DynamicIcon,
+  DynamicIconType,
+} from 'src/icons/DynamicIcon/DynamicIcon';
 import styled from 'styled-components';
 
 const StyledSortableListItem = styled.div`
