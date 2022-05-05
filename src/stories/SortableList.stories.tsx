@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Input } from 'src';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   arrayMove,
   DragEndEvent,
   SortableList,
   SortableListItem,
-} from '../components/SortableList';
+} from 'src/components/SortableList';
+import { withDesign } from 'storybook-addon-designs';
 
 const SortableListMeta: Meta = {
   title: 'Amino/SortableList',
