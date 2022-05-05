@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import { Menu, MenuItem, Text, TextAvatar, VStack } from 'src';
-import { Surface } from 'src/components/Surface';
-import { Depth } from 'src/types';
 import styled from 'styled-components';
 
-import { DropdownAnimationInverse } from '../../animations';
+import { DropdownAnimationInverse } from '~/src/animations/DropdownAnimation';
+import { Surface } from '~/src/components/Surface/Surface';
+import { Depth } from '~/src/types/Depth';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`
   border-top: var(--amino-border);

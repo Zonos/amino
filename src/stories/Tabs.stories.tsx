@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Tabs, type TabsProps } from '../components/Tabs';
+import { Tabs, type TabsProps } from '~/src/components/Tabs/Tabs';
 
 const TabsMeta: Meta = {
   title: 'Amino/Tabs',

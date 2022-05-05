@@ -3,8 +3,11 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { RoundedIcon, type RoundedIconProps } from '../components/RoundedIcon';
-import { ReportsIcon } from '../icons';
+import {
+  RoundedIcon,
+  type RoundedIconProps,
+} from '~/src/components/RoundedIcon/RoundedIcon';
+import { ReportsIcon } from '~/src/icons/ReportsIcon';
 
 const RoundedIconMeta: Meta = {
   title: 'Amino/RoundedIcon',

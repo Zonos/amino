@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { PlayCircleSolidIcon } from 'src/icons';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
-import { MultiSelect, type MultiSelectProps } from '../components/Select';
+import {
+  MultiSelect,
+  type MultiSelectProps,
+} from '~/src/components/Select/MultiSelect';
+import { PlayCircleSolidIcon } from '~/src/icons/PlayCircleIcon';
 
 const StyledWrapper = styled.div`
   width: 412px;

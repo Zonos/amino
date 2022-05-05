@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Button } from '../components/Button';
-import { Dialog, type DialogProps } from '../components/Dialog';
+import { Button } from '~/src/components/Button/Button';
+import { Dialog, type DialogProps } from '~/src/components/Dialog/Dialog';
 
 const DialogMeta: Meta = {
   title: 'Amino/Dialog',

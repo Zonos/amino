@@ -1,8 +1,9 @@
 import React, { forwardRef } from 'react';
 
-import { Text } from 'src/components/Text';
-import { DropdownIcon } from 'src/icons';
 import styled from 'styled-components';
+
+import { Text } from '~/src/components/Text/Text';
+import { DropdownIcon } from '~/src/icons/DropdownIcon';
 
 const StyledSelect = styled.select`
   border-radius: var(--amino-radius);

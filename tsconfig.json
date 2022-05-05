@@ -4,18 +4,22 @@
     "isolatedModules": true,
     "baseUrl": "./",
     "declaration": true,
+    "declarationDir": "dist",
+    "outDir": "dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "jsx": "react",
     "lib": ["es2015", "es2016", "es2017", "dom"],
     "module": "es2015",
     "moduleResolution": "node",
-    "noEmit": true,
     "sourceMap": true,
     "strict": true,
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
     "plugins": [{ "transform": "@zerollup/ts-transform-paths" }],
+    "paths": {
+      "~/*": ["./*"]
+    }
   },
-  "include": ["src"],
+  "include": ["./src/**/*"],
 }

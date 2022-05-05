@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
-import { AlertDialogOpts } from 'src/types';
+import { AlertDialogOpts } from '~/src/types/AlertDialogOpts';
 
 import { AlertDialog } from './AlertDialog';
 

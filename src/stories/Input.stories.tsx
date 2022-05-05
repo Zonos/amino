@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { CountryIcon } from 'src/i18n';
 import { withDesign } from 'storybook-addon-designs';
 
-import { Input, type InputProps } from '../components/Input';
-import { BagIcon, CubeIcon } from '../icons';
+import { Input, type InputProps } from '~/src/components/Input/Input';
+import { BagIcon } from '~/src/icons/BagIcon';
+import { CubeIcon } from '~/src/icons/CubeIcon';
+import { FlagIcon } from '~/src/icons/FlagIcon/FlagIcon';
 
 const InputMeta: Meta = {
   title: 'Amino/Input',
@@ -165,7 +166,7 @@ PrefixAndValuePrefix.parameters = {
 export const Suffix = Template.bind({});
 Suffix.args = {
   label: 'Example input',
-  suffix: <CountryIcon iconScale="large" code="AI" />,
+  suffix: <FlagIcon iconScale="large" code="AI" />,
 };
 Suffix.parameters = {
   design: {

@@ -1,2 +1,5 @@
 *.map
-SetupPackage.*
+setupPackage.*
+setupPackage.d.ts
+build.*
+build.d.ts

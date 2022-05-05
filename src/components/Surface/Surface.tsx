@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Depth } from 'src/types';
 import styled from 'styled-components';
+
+import { Depth } from '~/src/types/Depth';
 
 const SurfaceBase = styled.div<{ dense?: boolean }>`
   background: var(--amino-surface-color);

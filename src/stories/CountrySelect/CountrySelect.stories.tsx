@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Select, type SelectProps } from 'src/components/Select';
-import { CountrySelect, ICountryOption, useCountryOptions } from 'src/i18n';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
+import { Select, type SelectProps } from '~/src/components/Select/Select';
+import { FlagIcon, IFlag } from '~/src/icons/FlagIcon/FlagIcon';
+import { ICountryOption } from '~/src/types/ICountry';
+
 import { getCountryUrls } from './getCountryUrls';
+import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -35,10 +38,18 @@ const CountrySelectTemplate: Story<SelectProps<ICountryOption>> = ({
   const { countryOptions } = useCountryOptions({
     dashboardUrl,
   });
+  const firstCountry = Array.isArray(value) ? value.find(Boolean) : value;
   return (
-    <CountrySelect
+    <Select
       {...props}
-      countryOptions={countryOptions}
+      label="Select country"
+      icon={
+        <FlagIcon
+          code={(firstCountry?.code as IFlag) || 'Default'}
+          iconScale="medium"
+        />
+      }
+      options={countryOptions}
       onChange={setValue}
       value={value}
     />

@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { Backdrop } from 'src/components/Backdrop';
-import { IAminoTheme } from 'src/types';
 import styled from 'styled-components';
+
+import { Backdrop } from '~/src/components/Backdrop/Backdrop';
+import { IAminoTheme } from '~/src/types/IAminoTheme';
 
 // TODO: scrollable dialog, max height, etc.
 // TODO: close with keyboard shortcut?

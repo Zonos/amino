@@ -7,7 +7,7 @@ import {
   LegacySelect,
   LegacySelectItem,
   LegacySelectProps,
-} from '../components/Select/LegacySelect';
+} from '~/src/components/Select/LegacySelect';
 
 const SelectMeta: Meta = {
   title: 'Amino/LegacySelect',
