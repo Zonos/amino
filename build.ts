@@ -6,6 +6,7 @@ import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
 import progress from 'rollup-plugin-progress';
 // @ts-ignore
 import sizes from 'rollup-plugin-sizes';
+import { terser } from 'rollup-plugin-terser';
 import tsPlugin from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 
@@ -47,6 +48,7 @@ const bundlePackage = async (
   const defaultOptions: RollupOptions = {
     plugins: [
       tsPlugin({ typescript: ttypescript }),
+      terser({ numWorkers: 8 }),
       progress({ clearLine: true }),
       sizes({ details: true }),
     ],
