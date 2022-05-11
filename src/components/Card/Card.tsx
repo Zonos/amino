@@ -3,7 +3,6 @@ import React from 'react';
 import { HStack } from 'src/components/Stack/HStack';
 import { Surface } from 'src/components/Surface/Surface';
 import { Text } from 'src/components/Text/Text';
-import { Depth } from 'src/types/Depth';
 import styled from 'styled-components';
 
 const CardHeader = styled.header`
@@ -57,7 +56,7 @@ export const Card = ({
   label,
 }: CardProps) => {
   return (
-    <Surface depth={Depth.depth4} className={className || ''}>
+    <Surface depth="depth4" className={className || ''}>
       {label && (
         <CardHeader>
           <Text type="h4">{label}</Text>
