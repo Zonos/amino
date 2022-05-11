@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
+import { List } from 'src/components/List/List';
+import { ListItem } from 'src/components/ListItem/ListItem';
 import { withDesign } from 'storybook-addon-designs';
-
-import { List } from '~/src/components/List/List';
-import { ListItem } from '~/src/components/ListItem/ListItem';
 
 const ListMeta: Meta = {
   title: 'Amino/List',

@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Text, type TextProps } from 'src/components/Text/Text';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Text, type TextProps } from '~/src/components/Text/Text';
 
 const TextMeta: Meta = {
   title: 'Amino/Text',

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Select, type SelectProps } from 'src/components/Select/Select';
+import { FlagIcon, IFlag } from 'src/icons/FlagIcon/FlagIcon';
+import { ICountryOption } from 'src/types/ICountry';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { Select, type SelectProps } from '~/src/components/Select/Select';
-import { FlagIcon, IFlag } from '~/src/icons/FlagIcon/FlagIcon';
-import { ICountryOption } from '~/src/types/ICountry';
 
 import { getCountryUrls } from './getCountryUrls';
 import { useCountryOptions } from './useCountryOptions';

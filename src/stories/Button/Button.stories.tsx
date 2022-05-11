@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button, type ButtonProps } from 'src/components/Button/Button';
+import { CubeIcon } from 'src/icons/CubeIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { Button, type ButtonProps } from '~/src/components/Button/Button';
-import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const ButtonMeta: Meta = {
   title: 'Amino/Button',

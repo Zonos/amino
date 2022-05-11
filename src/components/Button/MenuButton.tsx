@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { DropdownAnimation } from 'src/animations/DropdownAnimation';
+import { Surface } from 'src/components/Surface/Surface';
+import { DropdownIcon } from 'src/icons/DropdownIcon';
+import { Depth } from 'src/types/Depth';
 import styled from 'styled-components';
-
-import { DropdownAnimation } from '~/src/animations/DropdownAnimation';
-import { Surface } from '~/src/components/Surface/Surface';
-import { DropdownIcon } from '~/src/icons/DropdownIcon';
-import { Depth } from '~/src/types/Depth';
 
 import { Button } from './Button';
 

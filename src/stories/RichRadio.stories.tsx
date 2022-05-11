@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   RichRadio,
   type RichRadioProps,
-} from '~/src/components/radix/RichRadio/RichRadio';
-import { CheckMarkIcon } from '~/src/icons/CheckMarkIcon';
-import { ChevronRightIcon } from '~/src/icons/ChevronRightIcon';
+} from 'src/components/radix/RichRadio/RichRadio';
+import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
+import { withDesign } from 'storybook-addon-designs';
 
 const RichRadioMeta: Meta = {
   title: 'Amino/RichRadio',

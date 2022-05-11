@@ -1,4 +1,4 @@
-import { ICountryOption, regions } from '~/src/types/ICountry';
+import { ICountryOption, regions } from 'src/types/ICountry';
 
 export const prepRegionCountryOptions = ({
   countries,

@@ -1,6 +1,5 @@
 import fs from 'fs';
 import glob from 'glob';
-// @ts-ignore
 import { createRequire } from 'module';
 import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
 // @ts-ignore

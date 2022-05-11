@@ -1,8 +1,7 @@
 import React from 'react';
 
+import { HStack } from 'src/components/Stack/HStack';
 import styled from 'styled-components';
-
-import { HStack } from '~/src/components/Stack/HStack';
 
 const colors = [
   'blue',

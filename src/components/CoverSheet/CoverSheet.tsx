@@ -2,11 +2,10 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import { HStack } from 'src/components/Stack/HStack';
+import { Text } from 'src/components/Text/Text';
+import { XIcon } from 'src/icons/XIcon';
 import styled from 'styled-components';
-
-import { HStack } from '~/src/components/Stack/HStack';
-import { Text } from '~/src/components/Text/Text';
-import { XIcon } from '~/src/icons/XIcon';
 
 const StyledDialog = styled(motion.div)`
   z-index: 990;

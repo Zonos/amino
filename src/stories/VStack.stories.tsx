@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/Button/Button';
+import { Card } from 'src/components/Card/Card';
+import { VStack, type VStackProps } from 'src/components/Stack/VStack';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Button } from '~/src/components/Button/Button';
-import { Card } from '~/src/components/Card/Card';
-import { VStack, type VStackProps } from '~/src/components/Stack/VStack';
 
 const VStackMeta: Meta = {
   title: 'Amino/VStack',
