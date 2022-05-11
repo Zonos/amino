@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { HStack } from 'src/components/Stack/HStack';
+import { Surface } from 'src/components/Surface/Surface';
+import { Text } from 'src/components/Text/Text';
+import { Depth } from 'src/types/Depth';
 import styled from 'styled-components';
-
-import { HStack } from '~/src/components/Stack/HStack';
-import { Surface } from '~/src/components/Surface/Surface';
-import { Text } from '~/src/components/Text/Text';
-import { Depth } from '~/src/types/Depth';
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);

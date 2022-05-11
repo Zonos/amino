@@ -2,10 +2,9 @@ import React, { ReactNode } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
 import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
+import { VStack } from 'src/components/Stack/VStack';
+import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
 import styled from 'styled-components';
-
-import { VStack } from '~/src/components/Stack/VStack';
-import { CheckMarkIcon } from '~/src/icons/CheckMarkIcon';
 
 const StyledIcon = styled.div`
   position: absolute;

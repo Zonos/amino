@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-
 import {
   DynamicIcon,
   DynamicIconProps,
   DynamicIconType,
-} from '~/src/icons/DynamicIcon/DynamicIcon';
-import * as icons from '~/src/icons/DynamicIcon/IconIndex';
+} from 'src/icons/DynamicIcon/DynamicIcon';
+import * as icons from 'src/icons/DynamicIcon/IconIndex';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',

@@ -1,9 +1,8 @@
 import React, { ReactElement, ReactNode } from 'react';
 
+import { Collapse } from 'src/components/Collapse/Collapse';
+import { type StyledProps } from 'src/types/StyledProps';
 import styled, { css } from 'styled-components';
-
-import { Collapse } from '~/src/components/Collapse/Collapse';
-import { type StyledProps } from '~/src/types/StyledProps';
 
 const Wrapper = styled.div`
   display: flex;

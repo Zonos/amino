@@ -1,11 +1,10 @@
 import React, { forwardRef } from 'react';
 
+import { HStack } from 'src/components/Stack/HStack';
+import { Text } from 'src/components/Text/Text';
+import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleIcon';
+import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
-
-import { HStack } from '~/src/components/Stack/HStack';
-import { Text } from '~/src/components/Text/Text';
-import { RemoveCircleDuotoneIcon } from '~/src/icons/RemoveCircleIcon';
-import { IAminoTheme } from '~/src/types/IAminoTheme';
 
 import { BaseDialog } from './BaseDialog';
 

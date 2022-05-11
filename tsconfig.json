@@ -3,8 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "baseUrl": "./",
-    "declaration": true,
-    "declarationDir": "dist",
+    "declaration": false,
     "outDir": "dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -21,5 +20,5 @@
       "~/*": ["./*"]
     }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*"]
 }

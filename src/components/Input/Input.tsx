@@ -1,11 +1,7 @@
 import React, { ReactNode } from 'react';
 
+import { HelpText, type HelpTextProps } from 'src/components/HelpText/HelpText';
 import styled from 'styled-components';
-
-import {
-  HelpText,
-  type HelpTextProps,
-} from '~/src/components/HelpText/HelpText';
 
 import {
   FloatLabelInput,

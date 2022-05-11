@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { type IconProps } from '~/src/types/IconProps';
+import { type IconProps } from 'src/types/IconProps';
 
 // eslint-disable-next-line import/no-internal-modules
 import * as icons from './IconIndex';

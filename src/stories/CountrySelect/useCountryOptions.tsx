@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { FlagIcon, IFlag, IFlagScale } from '~/src/icons/FlagIcon/FlagIcon';
+import { FlagIcon, IFlag, IFlagScale } from 'src/icons/FlagIcon/FlagIcon';
 import {
   ICountryOption,
   IGetCountriesResponse,
   IRegionCountryOption,
-} from '~/src/types/ICountry';
-import { prepCountryOptions } from '~/src/utils/prepCountryOptions';
-import { prepRegionCountryOptions } from '~/src/utils/prepRegionCountryOptions';
+} from 'src/types/ICountry';
+import { prepCountryOptions } from 'src/utils/prepCountryOptions';
+import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
 export const useCountryOptions = ({
   dashboardUrl,

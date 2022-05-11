@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   RichCheckboxGroup,
   RichCheckboxGroupProps,
-} from '~/src/components/radix/RichCheckboxGroup/RichCheckboxGroup';
-import { TextAvatar } from '~/src/components/TextAvatar/TextAvatar';
+} from 'src/components/radix/RichCheckboxGroup/RichCheckboxGroup';
+import { TextAvatar } from 'src/components/TextAvatar/TextAvatar';
+import { withDesign } from 'storybook-addon-designs';
 
 const RichCheckboxMeta: Meta = {
   title: 'Amino/RichCheckboxGroup',

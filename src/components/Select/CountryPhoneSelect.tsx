@@ -8,13 +8,12 @@ import {
   StylesConfig,
 } from 'react-select';
 
+import { type HelpTextProps } from 'src/components/HelpText/HelpText';
+import { Input } from 'src/components/Input/Input';
+import { InputValuePrefix } from 'src/components/Input/InputType/FloatLabelInput';
+import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
-
-import { type HelpTextProps } from '~/src/components/HelpText/HelpText';
-import { Input } from '~/src/components/Input/Input';
-import { InputValuePrefix } from '~/src/components/Input/InputType/FloatLabelInput';
-import { ChevronDownIcon } from '~/src/icons/ChevronDownIcon';
-import { ICountryOption } from '~/src/types/ICountry';
 
 import { Select } from './Select';
 import { IOption } from './StyledReactSelect';

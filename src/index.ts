@@ -4,6 +4,7 @@ export {
   AlertContext,
   AlertContextProvider,
   AlertDialog,
+  useAlert,
 } from './components/AlertDialog';
 export { Anchor, Button, MenuButton } from './components/Button';
 export { Card } from './components/Card';
@@ -13,6 +14,7 @@ export {
   ConfirmContext,
   ConfirmContextProvider,
   ConfirmDialog,
+  useConfirm,
 } from './components/ConfirmDialog';
 export { CoverSheet } from './components/CoverSheet';
 export { DangerZone } from './components/DangerZone';

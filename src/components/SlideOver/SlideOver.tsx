@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import { Backdrop } from 'src/components/Backdrop/Backdrop';
+import { HStack } from 'src/components/Stack/HStack';
+import { VStack } from 'src/components/Stack/VStack';
+import { Text } from 'src/components/Text/Text';
+import { XIcon } from 'src/icons/XIcon';
+import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
-
-import { Backdrop } from '~/src/components/Backdrop/Backdrop';
-import { HStack } from '~/src/components/Stack/HStack';
-import { VStack } from '~/src/components/Stack/VStack';
-import { Text } from '~/src/components/Text/Text';
-import { XIcon } from '~/src/icons/XIcon';
-import { IAminoTheme } from '~/src/types/IAminoTheme';
 
 const Popup = styled(motion.div)`
   position: absolute;

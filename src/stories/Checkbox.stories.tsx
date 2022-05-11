@@ -1,13 +1,9 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Checkbox, type CheckboxProps } from 'src/components/Checkbox/Checkbox';
+import { TagIcon } from 'src/icons/TagIcon';
 import { withDesign } from 'storybook-addon-designs';
-
-import {
-  Checkbox,
-  type CheckboxProps,
-} from '~/src/components/Checkbox/Checkbox';
-import { TagIcon } from '~/src/icons/TagIcon';
 
 const CheckboxMeta: Meta = {
   title: 'Amino/Checkbox',

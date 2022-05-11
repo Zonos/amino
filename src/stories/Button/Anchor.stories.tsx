@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-import styled from 'styled-components';
-
 import {
   Anchor as AminoAnchor,
   type AnchorProps,
-} from '~/src/components/Button/Anchor';
-import { CubeIcon } from '~/src/icons/CubeIcon';
+} from 'src/components/Button/Anchor';
+import { CubeIcon } from 'src/icons/CubeIcon';
+import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
 
 const ButtonMeta: Meta = {
   title: 'Amino/Button',

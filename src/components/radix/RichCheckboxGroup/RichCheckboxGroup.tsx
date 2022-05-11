@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react';
 
 import { Indicator, Root } from '@radix-ui/react-checkbox';
+import { VStack } from 'src/components/Stack/VStack';
+import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { type StyledProps } from 'src/types/StyledProps';
 import styled from 'styled-components';
-
-import { VStack } from '~/src/components/Stack/VStack';
-import { CheckMarkIcon } from '~/src/icons/CheckMarkIcon';
-import { type StyledProps } from '~/src/types/StyledProps';
 
 const RichCheckbox = styled(Root)`
   align-items: center;

@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Radio, type RadioProps } from 'src/components/Radio/Radio';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Radio, type RadioProps } from '~/src/components/Radio/Radio';
 
 const RadioMeta: Meta = {
   title: 'Amino/Radio',

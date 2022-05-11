@@ -1,17 +1,16 @@
 import React from 'react';
 
+import { Button } from 'src/components/Button/Button';
+import { BaseDialog } from 'src/components/Dialog/BaseDialog';
+import { RoundedIcon } from 'src/components/RoundedIcon/RoundedIcon';
+import { VStack } from 'src/components/Stack/VStack';
+import { Text } from 'src/components/Text/Text';
+import { ExclamationSolidIcon } from 'src/icons/ExclamationIcon';
+import { HelpSolidIcon } from 'src/icons/HelpIcon';
+import { WarningSolidIcon } from 'src/icons/WarningIcon';
+import { IAminoTheme } from 'src/types/IAminoTheme';
+import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
-
-import { Button } from '~/src/components/Button/Button';
-import { BaseDialog } from '~/src/components/Dialog/BaseDialog';
-import { RoundedIcon } from '~/src/components/RoundedIcon/RoundedIcon';
-import { VStack } from '~/src/components/Stack/VStack';
-import { Text } from '~/src/components/Text/Text';
-import { ExclamationSolidIcon } from '~/src/icons/ExclamationIcon';
-import { HelpSolidIcon } from '~/src/icons/HelpIcon';
-import { WarningSolidIcon } from '~/src/icons/WarningIcon';
-import { IAminoTheme } from '~/src/types/IAminoTheme';
-import { Intent } from '~/src/types/Intent';
 
 const Content = styled.div`
   padding: var(--amino-space);

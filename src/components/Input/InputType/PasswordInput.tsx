@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
+import { Button } from 'src/components/Button/Button';
+import { EyeIcon } from 'src/icons/EyeIcon';
+import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import styled from 'styled-components';
-
-import { Button } from '~/src/components/Button/Button';
-import { EyeIcon } from '~/src/icons/EyeIcon';
-import { EyeOffIcon } from '~/src/icons/EyeOffIcon';
 
 import { FloatLabelInput, type FloatLabelInputProps } from './FloatLabelInput';
 

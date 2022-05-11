@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   LegacySelect,
   LegacySelectItem,
   LegacySelectProps,
-} from '~/src/components/Select/LegacySelect';
+} from 'src/components/Select/LegacySelect';
+import { withDesign } from 'storybook-addon-designs';
 
 const SelectMeta: Meta = {
   title: 'Amino/LegacySelect',

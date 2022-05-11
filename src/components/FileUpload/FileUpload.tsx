@@ -1,11 +1,10 @@
 import React, { ReactNode } from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 
+import { HStack } from 'src/components/Stack/HStack';
+import { Text } from 'src/components/Text/Text';
+import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import styled from 'styled-components';
-
-import { HStack } from '~/src/components/Stack/HStack';
-import { Text } from '~/src/components/Text/Text';
-import { RemoveCircleIcon } from '~/src/icons/RemoveCircleIcon';
 
 type UploadedFileProps = {
   uploadedSize: string;
