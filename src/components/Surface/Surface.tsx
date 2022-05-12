@@ -44,25 +44,25 @@ export const Surface: React.FC<Props> = ({
   depth,
 }) => {
   switch (depth) {
-    case Depth.depth64:
+    case 'depth64':
       return (
         <Depth64 dense={dense} className={className || ''}>
           {children}
         </Depth64>
       );
-    case Depth.depth16:
+    case 'depth16':
       return (
         <Depth16 dense={dense} className={className || ''}>
           {children}
         </Depth16>
       );
-    case Depth.depth8:
+    case 'depth8':
       return (
         <Depth8 dense={dense} className={className || ''}>
           {children}
         </Depth8>
       );
-    case Depth.depth4:
+    case 'depth4':
     default:
       return (
         <Depth4 dense={dense} className={className || ''}>

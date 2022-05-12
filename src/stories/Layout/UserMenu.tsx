@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Menu, MenuItem, Text, TextAvatar, VStack } from 'src';
 import { DropdownAnimationInverse } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/Surface/Surface';
-import { Depth } from 'src/types/Depth';
 import styled from 'styled-components';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`
@@ -126,7 +125,7 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
         </UserInfo>
 
         {open && (
-          <AnimatedSurface dense depth={Depth.depth16}>
+          <AnimatedSurface dense depth="depth16">
             <Menu>
               <StoreItem onClick={() => {}}>
                 <TextAvatar label="Default" />

@@ -6,6 +6,7 @@ import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
 import progress from 'rollup-plugin-progress';
 // @ts-ignore
 import sizes from 'rollup-plugin-sizes';
+import { terser } from 'rollup-plugin-terser';
 import tsPlugin from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 
@@ -47,6 +48,7 @@ const bundlePackage = async (
   const defaultOptions: RollupOptions = {
     plugins: [
       tsPlugin({ typescript: ttypescript }),
+      terser({ numWorkers: 8 }),
       progress({ clearLine: true }),
       sizes({ details: true }),
     ],
@@ -161,6 +163,14 @@ const selectConfig: ConfigOptions = {
     sourcemap: false,
   },
 };
+const utilsConfig: ConfigOptions = {
+  input: prepareEntries(glob.sync('src/utils/**/*.ts')),
+  output: {
+    dir: 'dist',
+    format: 'cjs',
+    sourcemap: false,
+  },
+};
 const configs: ConfigOptions[] = [
   componentsConfig,
   dynamicIconConfig,
@@ -170,6 +180,7 @@ const configs: ConfigOptions[] = [
   iconConfig,
   radixConfig,
   selectConfig,
+  utilsConfig,
 ];
 
 /* Set max listener based on the size of bundleConfig (1 config will add 4 event listeners) */
