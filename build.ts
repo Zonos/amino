@@ -163,6 +163,14 @@ const selectConfig: ConfigOptions = {
     sourcemap: false,
   },
 };
+const utilsConfig: ConfigOptions = {
+  input: prepareEntries(glob.sync('src/utils/**/*.ts')),
+  output: {
+    dir: 'dist',
+    format: 'cjs',
+    sourcemap: false,
+  },
+};
 const configs: ConfigOptions[] = [
   componentsConfig,
   dynamicIconConfig,
@@ -172,6 +180,7 @@ const configs: ConfigOptions[] = [
   iconConfig,
   radixConfig,
   selectConfig,
+  utilsConfig,
 ];
 
 /* Set max listener based on the size of bundleConfig (1 config will add 4 event listeners) */
