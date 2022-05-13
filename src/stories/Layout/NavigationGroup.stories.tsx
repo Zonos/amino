@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   NavigationGroup,
   NavigationItem,
-} from 'src/components/Layout/NavigationGroup';
+} from 'src/components/layout/NavigationGroup';
 import { HomeIcon } from 'src/icons/HomeIcon';
 import { LandedCostIcon } from 'src/icons/LandedCostIcon';
 import { PuzzleIcon } from 'src/icons/PuzzleIcon';

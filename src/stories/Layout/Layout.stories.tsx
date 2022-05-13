@@ -2,13 +2,13 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Card } from 'src/components/Card/Card';
-import { Layout, type LayoutProps } from 'src/components/Layout/Layout';
+import { Card } from 'src/components/card/Card';
+import { Layout, type LayoutProps } from 'src/components/layout/Layout';
 import {
   NavigationGroup,
   NavigationItem,
-} from 'src/components/Layout/NavigationGroup';
-import { HStack } from 'src/components/Stack/HStack';
+} from 'src/components/layout/NavigationGroup';
+import { HStack } from 'src/components/stack/HStack';
 import { ZonosIcon } from 'src/icons/ZonosIcon';
 import styled from 'styled-components';
 

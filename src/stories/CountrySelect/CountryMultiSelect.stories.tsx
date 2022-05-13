@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   CountryMultiSelect,
   CountryMultiSelectProps,
-} from 'src/components/Select/CountryMultiSelect';
+} from 'src/components/select/CountryMultiSelect';
 import { ICountryOption } from 'src/types/ICountry';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';

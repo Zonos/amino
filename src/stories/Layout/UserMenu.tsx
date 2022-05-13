@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 
-import { Menu, MenuItem, Text, TextAvatar, VStack } from 'src';
 import { DropdownAnimationInverse } from 'src/animations/DropdownAnimation';
-import { Surface } from 'src/components/Surface/Surface';
+import { Menu } from 'src/components/menu/Menu';
+import { MenuItem } from 'src/components/menu/MenuItem';
+import { VStack } from 'src/components/stack/VStack';
+import { Surface } from 'src/components/surface/Surface';
+import { Text } from 'src/components/text/Text';
+import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 import styled from 'styled-components';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`

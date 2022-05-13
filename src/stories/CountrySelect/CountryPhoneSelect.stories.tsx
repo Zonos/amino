@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
-} from 'src/components/Select/CountryPhoneSelect';
+} from 'src/components/select/CountryPhoneSelect';
 import { FlagIcon, IFlag } from 'src/icons/FlagIcon/FlagIcon';
 import { ICountryOption } from 'src/types/ICountry';
 import { withDesign } from 'storybook-addon-designs';

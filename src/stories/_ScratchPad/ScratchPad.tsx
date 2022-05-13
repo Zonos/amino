@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VStack } from 'src/components/Stack/VStack';
+import { VStack } from 'src/components/stack/VStack';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`

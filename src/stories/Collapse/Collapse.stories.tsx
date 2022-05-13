@@ -2,8 +2,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Collapse, type CollapseProps } from 'src/components/Collapse/Collapse';
-import { NavigationItem } from 'src/components/Layout/NavigationGroup';
+import { Collapse, type CollapseProps } from 'src/components/collapse/Collapse';
+import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { withDesign } from 'storybook-addon-designs';
 
 const CollapseMeta: Meta = {

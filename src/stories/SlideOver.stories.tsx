@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button } from 'src/components/Button/Button';
+import { Button } from 'src/components/button/Button';
 import {
   SlideOver,
   type SlideOverProps,
-} from 'src/components/SlideOver/SlideOver';
+} from 'src/components/slide-over/SlideOver';
 import { withDesign } from 'storybook-addon-designs';
 
 const SlideOverMeta: Meta = {

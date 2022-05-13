@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   TextAvatar,
   type TextAvatarProps,
-} from 'src/components/TextAvatar/TextAvatar';
+} from 'src/components/text-avatar/TextAvatar';
 
 const TextAvatarMeta: Meta = {
   title: 'Amino/TextAvatar',
