@@ -3,7 +3,7 @@ import React from 'react';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import styled from 'styled-components';
 
-import { InputMode } from './InputType/FloatLabelInput';
+import { InputMode } from './input-type/FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;
