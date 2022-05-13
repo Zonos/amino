@@ -3,25 +3,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Subtitle = styled.span`
-  opacity: 0.7;
-  font-style: italic;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--amino-gray-d60);
 `;
 
 const SmallHeader = styled.span`
-  text-transform: uppercase;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.05em;
   opacity: 0.5;
+  text-transform: uppercase;
 `;
 
 const InputLabel = styled.label`
-  font-family: var(--amino-font-sans);
-  margin-bottom: var(--amino-space-quarter);
+  color: black;
   display: block;
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0.6;
+  font-family: var(--amino-font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
 `;
 
 type TextStyle =
@@ -34,8 +35,8 @@ type TextStyle =
   | 'p'
   | 'code'
   | 'subtitle'
-  | 'smallheader'
-  | 'inputlabel';
+  | 'small-header'
+  | 'input-label';
 
 export type TextProps = {
   children: React.ReactNode;
@@ -93,13 +94,13 @@ export const Text: React.FC<TextProps> = ({
           {children}
         </Subtitle>
       );
-    case 'smallheader':
+    case 'small-header':
       return (
         <SmallHeader className={className} title={title}>
           {children}
         </SmallHeader>
       );
-    case 'inputlabel':
+    case 'input-label':
       return (
         <InputLabel className={className} title={title}>
           {children}
