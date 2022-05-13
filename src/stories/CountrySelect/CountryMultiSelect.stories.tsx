@@ -9,6 +9,8 @@ import { ICountryOption } from 'src/types/ICountry';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
+import { prepRegionCountryOptions } from '~/src/utils/prepRegionCountryOptions';
+
 import { getCountryUrls } from './getCountryUrls';
 import { useCountryOptions } from './useCountryOptions';
 
@@ -36,13 +38,16 @@ const CountryMultiSelectTemplate: Story<CountryMultiSelectProps> = ({
 }: CountryMultiSelectProps) => {
   const { dashboardUrl } = getCountryUrls();
   const [value, setValue] = useState<ICountryOption[]>([]);
-  const { regionCountryOptions } = useCountryOptions({
+  const countryOptions = useCountryOptions({
     dashboardUrl,
   });
   return (
     <CountryMultiSelect
       {...props}
-      regionCountryOptions={regionCountryOptions}
+      menuIsOpen
+      regionCountryOptions={prepRegionCountryOptions(
+        countryOptions.map((x, index) => ({ ...x, isDisabled: index % 2 }))
+      )}
       onChange={setValue}
       value={value}
     />

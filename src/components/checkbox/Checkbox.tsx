@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
 import styled from 'styled-components';
 
-// TODO: multiline checkboxes could use some work
 const AnimatedCheckIcon = motion(CheckMarkIcon);
 
 const AminoCheckbox = styled.div<{ checked: boolean }>`
@@ -17,7 +16,7 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   border-radius: var(--amino-radius-sm);
   background: ${p =>
     p.checked ? 'var(--amino-primary)' : 'var(--amino-input-background)'};
-  border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-400)' : 'none')};
+  border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-l20)' : 'none')};
   transition: all 150ms ease-in-out;
   cursor: pointer;
   display: flex;
@@ -38,26 +37,43 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   }
 `;
 
-const StyledSubtitle = styled(Text)`
-  font-style: normal;
+const StyledSubtitle = styled(Text)``;
+
+const StyledLabelDescription = styled.span`
+  margin-left: 4px;
+  color: var(--amino-gray-500);
 `;
 
 const StyledLabel = styled(Text)``;
 
+const LabelWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+
+  svg {
+    margin-right: 4px;
+  }
+`;
+
 const CheckboxContainer = styled.div<{
   checked: boolean;
   multiline: boolean;
-  disabled?: boolean;
 }>`
   display: flex;
   flex-direction: row;
   user-select: none;
-  align-items: ${p => (p.multiline ? 'normal' : 'center')};
-  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
   &.disabled {
     ${AminoCheckbox} {
       background: ${p => (p.checked ? 'var(--amino-blue-200)' : '')};
-      border: ${p => (p.checked ? '2px solid var(--amino-blue-200)' : '')};
+      border: ${p =>
+        p.checked
+          ? '2px solid var(--amino-blue-200)'
+          : '1.5px solid var(--amino-gray-l40)'};
+      cursor: not-allowed;
+      &:active {
+        box-shadow: none;
+      }
     }
     ${StyledLabel} {
       color: var(--amino-gray-500);
@@ -65,24 +81,18 @@ const CheckboxContainer = styled.div<{
     ${StyledSubtitle} {
       color: var(--amino-gray-400);
     }
-  }
-  ${AminoCheckbox} {
-    transition: ${p => p.multiline && 'none'};
-    margin-top: ${p => p.multiline && '4px'};
-  }
-
-  a {
-    color: var(--amino-primary);
-    text-decoration: underline;
+    ${LabelWrapper} {
+      svg {
+        opacity: 0.6;
+      }
+    }
+    label {
+      cursor: not-allowed;
+    }
   }
 
   label {
-    display: flex;
-    flex-direction: column;
     cursor: pointer;
-    align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
-    margin-bottom: 0;
-    color: black;
   }
   label > label {
     flex-direction: row;
@@ -91,27 +101,27 @@ const CheckboxContainer = styled.div<{
 
 export type CheckboxProps = {
   checked: boolean;
+  labelDescription?: string;
+  icon?: ReactNode;
   onChange: (newValue: boolean) => void;
-  label?: string;
+  label: string;
   subtitle?: string;
   disabled?: boolean;
-  labelComponent?: React.ReactNode;
 };
 
 export const Checkbox = ({
   checked = false,
+  labelDescription,
+  icon,
   onChange,
   label,
   subtitle,
   disabled,
-  labelComponent,
 }: CheckboxProps) => {
-  const htmlFor = typeof labelComponent === 'string' ? labelComponent : label;
   return (
     <CheckboxContainer
       className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       checked={checked}
-      disabled={disabled}
       multiline={!!subtitle}
       onClick={() => !disabled && onChange(!checked)}
     >
@@ -129,16 +139,22 @@ export const Checkbox = ({
         </AnimatePresence>
       </AminoCheckbox>
 
-      {htmlFor && (
-        <label htmlFor={htmlFor}>
-          {labelComponent || (
-            <StyledLabel type="inputlabel">{label}</StyledLabel>
-          )}
-          {subtitle && (
-            <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
-          )}
-        </label>
-      )}
+      <label htmlFor={label}>
+        <LabelWrapper>
+          {icon}
+          <StyledLabel type="input-label">
+            {label}
+            {labelDescription && (
+              <StyledLabelDescription>
+                {labelDescription}
+              </StyledLabelDescription>
+            )}
+          </StyledLabel>
+        </LabelWrapper>
+        {subtitle && (
+          <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
+        )}
+      </label>
     </CheckboxContainer>
   );
 };

@@ -24,7 +24,12 @@ import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import styled from 'styled-components';
 
-export type IOption = { icon?: ReactNode; label: string; value: string };
+export type IOption = {
+  icon?: ReactNode;
+  isDisabled?: boolean;
+  label: string;
+  value: string;
+};
 type AdditionalProps = {
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -223,6 +228,7 @@ export const CheckboxOptionComponent = <
     getStyles,
     innerRef,
     innerProps,
+    isDisabled,
     isSelected,
     selectProps,
   } = props;
@@ -237,12 +243,9 @@ export const CheckboxOptionComponent = <
       {selectProps.isMulti ? (
         <Checkbox
           checked={isSelected}
-          label={data.value}
-          labelComponent={
-            <IconLabel color={color} icon={data.icon}>
-              {children}
-            </IconLabel>
-          }
+          disabled={isDisabled}
+          icon={data.icon}
+          label={data.label}
           onChange={() => {}}
         />
       ) : (

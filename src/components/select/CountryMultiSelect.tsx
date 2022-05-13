@@ -44,7 +44,7 @@ const MenuList = <
       >
         <Checkbox
           checked={allSelected}
-          labelComponent="Rest of world"
+          label="Rest of world"
           onChange={toggleSelectAll}
         />
       </div>
@@ -80,7 +80,7 @@ export const CountryMultiSelect = ({
 }: CountryMultiSelectProps) => {
   const allOptions = regionCountryOptions.flatMap(x => x.options);
   const unselectedOptions = allOptions.filter(
-    option => !value.find(x => x.code === option.code)
+    option => !value.find(x => x.code === option.code) && !option.isDisabled
   );
   const allSelected = !!value.length && !unselectedOptions.length;
   const additionalProps: AdditionalProps = {
