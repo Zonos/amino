@@ -48,7 +48,7 @@ const bundlePackage = async (
   const defaultOptions: RollupOptions = {
     plugins: [
       tsPlugin({ typescript: ttypescript }),
-      terser({ numWorkers: 8 }),
+      terser({ numWorkers: 10 }),
       progress({ clearLine: true }),
       sizes({ details: true }),
     ],
@@ -95,92 +95,29 @@ const generateAllModulesContent = async (bundles: OutputChunk[]) => {
     .concat(['\n']);
 };
 
-const componentsConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/index.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-};
-const flagConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/icons/flags/*.tsx')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-  maxParallelFileReads: 40,
-};
-const flagIconConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/icons/FlagIcon/index.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-  maxParallelFileReads: 40,
-};
-const dynamicIconConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/icons/DynamicIcon/index.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-  maxParallelFileReads: 40,
-};
-const iconConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/icons/*.tsx')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-  maxParallelFileReads: 40,
-};
-const fileUploadConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/components/FileUpload/index.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-};
-const radixConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/components/radix/index.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-};
-const selectConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/components/Select/index.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-};
-const utilsConfig: ConfigOptions = {
-  input: prepareEntries(glob.sync('src/utils/**/*.ts')),
-  output: {
-    dir: 'dist',
-    format: 'cjs',
-    sourcemap: false,
-  },
-};
+const animationsModules = glob.sync('src/animations/**/*.ts*') as string[];
+const iconsModules = glob.sync('src/icons/**/*.ts*') as string[];
+const utilsModules = glob.sync('src/utils/**/*.ts*') as string[];
+const componentsModules = glob.sync('src/components/**/*.ts*') as string[];
+
+const allModules = animationsModules.concat(
+  animationsModules,
+  iconsModules,
+  utilsModules,
+  componentsModules
+);
+
 const configs: ConfigOptions[] = [
-  componentsConfig,
-  dynamicIconConfig,
-  fileUploadConfig,
-  flagConfig,
-  flagIconConfig,
-  iconConfig,
-  radixConfig,
-  selectConfig,
-  utilsConfig,
+  {
+    input: prepareEntries(allModules),
+    output: {
+      dir: 'dist',
+      format: 'cjs',
+      sourcemap: false,
+    },
+
+    maxParallelFileReads: 200,
+  },
 ];
 
 /* Set max listener based on the size of bundleConfig (1 config will add 4 event listeners) */
