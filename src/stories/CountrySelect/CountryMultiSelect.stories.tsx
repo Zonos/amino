@@ -45,7 +45,14 @@ const CountryMultiSelectTemplate: Story<CountryMultiSelectProps> = ({
       {...props}
       menuIsOpen
       regionCountryOptions={prepRegionCountryOptions(
-        countryOptions.map((x, index) => ({ ...x, isDisabled: index % 2 }))
+        countryOptions.map((x, index) => {
+          const isDisabled = !!(index % 2);
+          return {
+            ...x,
+            isDisabled,
+            labelDescription: isDisabled ? '(restricted)' : '',
+          };
+        })
       )}
       onChange={setValue}
       value={value}
