@@ -88,7 +88,7 @@
     "build:dts": "ttsc --emitDeclarationOnly --declarationDir dist --declaration",
     "postbuild:dts": "echo 'done build dts'",
     "prebuild:prep:publish": "echo 'building for publishing'",
-    "build:prep:publish": "ttsc src/setupPackage.ts --sourceMap false && mv dist/setupPackage.js ./dist/setupPackage.mjs && node dist/setupPackage.mjs",
+    "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "postbuild:prep:publish": "echo 'done building for publishing'",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
