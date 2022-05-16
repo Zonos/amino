@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Stack, StackProps } from './Stack';
 
 /**
- * A vertical stack
+ * A horizontal stack
  *
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
