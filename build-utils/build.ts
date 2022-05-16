@@ -1,22 +1,17 @@
 import fs from 'fs';
-import glob from 'glob';
-import { createRequire } from 'module';
+import { glob } from 'glob';
 import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
-// @ts-ignore
 import progress from 'rollup-plugin-progress';
-// @ts-ignore
-import sizes from 'rollup-plugin-sizes';
 import { terser } from 'rollup-plugin-terser';
 import tsPlugin from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 
-const require = createRequire(import.meta.url);
-const { dependencies, peerDependencies } = require('./package.json');
+import { dependencies, peerDependencies } from '../package.json';
+import sizes from './plugins/customized-rollup-plugin-sizes';
 
 type RollupOptions = InputOptions & { output?: OutputOptions };
 type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
   Required<Pick<RollupOptions, 'input' | 'output'>>;
-
 /**
  * Prepare the list of entries
  * @param entries array of entries that need to be prepared or ignore single entry
@@ -52,6 +47,7 @@ const bundlePackage = async (
       progress({ clearLine: true }),
       sizes({ details: true }),
     ],
+    cache: false,
     external: Object.keys(peerDependencies).concat(Object.keys(dependencies)),
     maxParallelFileReads: 50,
   };
@@ -79,17 +75,7 @@ const generateAllModulesContent = async (bundles: OutputChunk[]) => {
       if (!bundle.isEntry) {
         return null;
       }
-      switch (true) {
-        case fileName === 'index' && !subFolderPath: {
-          // Export main root file (enable VSCode to suggest auto-import to all components in main "index" file in package.json)=
-          return `export * from "./index"`;
-        }
-
-        default: {
-          // Import all sub modules (enable VSCode to suggest auto-import to sub module path)
-          return `import "./${subFolderPath || ''}${fileName}";`;
-        }
-      }
+      return `import "./${subFolderPath || ''}${fileName}";`;
     })
     .filter(item => item)
     .concat(['\n']);
@@ -101,7 +87,6 @@ const utilsModules = glob.sync('src/utils/**/*.ts*') as string[];
 const componentsModules = glob.sync('src/components/**/*.ts*') as string[];
 
 const allModules = animationsModules.concat(
-  animationsModules,
   iconsModules,
   utilsModules,
   componentsModules
@@ -115,7 +100,6 @@ const configs: ConfigOptions[] = [
       format: 'cjs',
       sourcemap: false,
     },
-
     maxParallelFileReads: 200,
   },
 ];
@@ -126,7 +110,6 @@ process.stderr.setMaxListeners(configs.length * 4 + 1);
 
 const build = async () => {
   const bundledPackages = await Promise.all(configs.map(bundlePackage));
-
   const moduleContents = await Promise.all(
     // generate module contents
     bundledPackages.map(generateAllModulesContent)

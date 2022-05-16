@@ -11,7 +11,6 @@ function main() {
   const sourceObj = JSON.parse(source);
   sourceObj.scripts = {};
   sourceObj.devDependencies = {};
-  sourceObj.main = 'index.js';
   sourceObj.types = 'all.d.ts';
   fs.writeFileSync(
     `./dist/package.json`,
