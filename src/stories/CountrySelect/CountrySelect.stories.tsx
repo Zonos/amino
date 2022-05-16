@@ -34,7 +34,7 @@ const CountrySelectTemplate: Story<SelectProps<ICountryOption>> = ({
 }: SelectProps<ICountryOption>) => {
   const { dashboardUrl } = getCountryUrls();
   const [value, setValue] = useState<ICountryOption | null>(null);
-  const { countryOptions } = useCountryOptions({
+  const countryOptions = useCountryOptions({
     dashboardUrl,
   });
   const firstCountry = Array.isArray(value) ? value.find(Boolean) : value;

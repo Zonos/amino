@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Text } from 'src/components/Text/Text';
 import styled from 'styled-components';
@@ -32,21 +32,32 @@ const AminoSwitchWrapper = styled.div<{
   position: relative;
 `;
 
-const StyledSubtitle = styled(Text)`
-  font-style: normal;
-`;
 const StyledLabel = styled(Text)``;
 
-const SwitchContainer = styled.div<{
+const StyledSubtitle = styled(Text)``;
+
+const StyledLabelDescription = styled.span`
+  margin-left: 4px;
+  color: var(--amino-gray-500);
+`;
+
+const LabelWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+
+  svg {
+    margin-right: 4px;
+  }
+`;
+
+const SwitchContainer = styled.label<{
   checked: boolean;
-  disabled?: boolean;
-  multiline?: boolean;
 }>`
   display: flex;
   flex-direction: row;
-  cursor: ${p => (p.disabled ? 'not-allowed' : 'auto')};
-  align-items: ${p => (p.multiline ? 'normal' : 'center')};
-  pointer-events: ${p => (p.disabled ? 'none' : 'auto')};
+  cursor: pointer;
+
   &.disabled {
     ${AminoSwitchWrapper} {
       background: ${p => (p.checked ? 'var(--amino-gray-300)' : '')};
@@ -57,54 +68,57 @@ const SwitchContainer = styled.div<{
     ${StyledSubtitle} {
       color: var(--amino-gray-400);
     }
-  }
-  ${AminoSwitchWrapper} {
-    margin-top: ${p => (p.multiline ? '4px' : '')};
-  }
 
-  label {
-    display: flex;
-    flex-direction: column;
-    align-items: ${p => (p.multiline ? 'flex-start' : 'center')};
-    margin-bottom: 0;
-    color: black;
-    cursor: ${p => (p.disabled ? 'not-allowed' : 'auto')};
+    cursor: not-allowed;
   }
 `;
 
 export type SwitchProps = {
   checked: boolean;
-  onChange: (newValue: boolean) => void;
-  label?: string;
-  subtitle?: string;
   disabled?: boolean;
+  icon?: ReactNode;
+  label?: string;
+  labelDescription?: string;
+  onChange: (checked: boolean) => void;
+  subtitle?: string;
 };
 
 export const Switch = ({
   checked,
-  onChange,
-  label,
-  subtitle,
   disabled,
-}: SwitchProps) => (
-  <SwitchContainer
-    className={disabled ? 'disabled' : ''}
-    checked={checked}
-    disabled={disabled}
-    multiline={!!subtitle}
-    onClick={() => !disabled && onChange(!checked)}
-  >
-    <AminoSwitchWrapper checked={checked}>
-      <AminoSwitch checked={checked} id={label} />
-    </AminoSwitchWrapper>
+  icon,
+  label,
+  labelDescription,
+  onChange,
+  subtitle,
+}: SwitchProps) => {
+  return (
+    <SwitchContainer
+      className={disabled ? 'disabled' : ''}
+      checked={checked}
+      htmlFor={label}
+      onClick={() => !disabled && onChange(!checked)}
+    >
+      <AminoSwitchWrapper checked={checked}>
+        <AminoSwitch checked={checked} id={label} />
+      </AminoSwitchWrapper>
 
-    {label && (
-      <label htmlFor={label}>
-        <StyledLabel type="inputlabel">{label}</StyledLabel>
+      <div>
+        <LabelWrapper>
+          {icon}
+          <StyledLabel type="input-label">
+            {label}
+            {labelDescription && (
+              <StyledLabelDescription>
+                {labelDescription}
+              </StyledLabelDescription>
+            )}
+          </StyledLabel>
+        </LabelWrapper>
         {subtitle && (
           <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
         )}
-      </label>
-    )}
-  </SwitchContainer>
-);
+      </div>
+    </SwitchContainer>
+  );
+};

@@ -16,7 +16,7 @@ const SmallHeader = styled.span`
   text-transform: uppercase;
 `;
 
-const InputLabel = styled.label`
+const InputLabel = styled.span`
   color: black;
   display: block;
   font-family: var(--amino-font-sans);

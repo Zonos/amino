@@ -18,7 +18,6 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
     p.checked ? 'var(--amino-primary)' : 'var(--amino-input-background)'};
   border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-l20)' : 'none')};
   transition: all 150ms ease-in-out;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,13 +55,14 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const CheckboxContainer = styled.div<{
+const CheckboxContainer = styled.label<{
   checked: boolean;
-  multiline: boolean;
 }>`
   display: flex;
   flex-direction: row;
   user-select: none;
+  cursor: pointer;
+
   &.disabled {
     ${AminoCheckbox} {
       background: ${p => (p.checked ? 'var(--amino-blue-200)' : '')};
@@ -70,7 +70,6 @@ const CheckboxContainer = styled.div<{
         p.checked
           ? '2px solid var(--amino-blue-200)'
           : '1.5px solid var(--amino-gray-l40)'};
-      cursor: not-allowed;
       &:active {
         box-shadow: none;
       }
@@ -86,43 +85,35 @@ const CheckboxContainer = styled.div<{
         opacity: 0.6;
       }
     }
-    label {
-      cursor: not-allowed;
-    }
-  }
 
-  label {
-    cursor: pointer;
-  }
-  label > label {
-    flex-direction: row;
+    cursor: not-allowed;
   }
 `;
 
 export type CheckboxProps = {
   checked: boolean;
-  labelDescription?: string;
-  icon?: ReactNode;
-  onChange: (newValue: boolean) => void;
-  label: string;
-  subtitle?: string;
   disabled?: boolean;
+  icon?: ReactNode;
+  label: string;
+  labelDescription?: string;
+  onChange: (checked: boolean) => void;
+  subtitle?: string;
 };
 
 export const Checkbox = ({
   checked = false,
-  labelDescription,
-  icon,
-  onChange,
-  label,
-  subtitle,
   disabled,
+  icon,
+  label,
+  labelDescription,
+  onChange,
+  subtitle,
 }: CheckboxProps) => {
   return (
     <CheckboxContainer
       className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       checked={checked}
-      multiline={!!subtitle}
+      htmlFor={label}
       onClick={() => !disabled && onChange(!checked)}
     >
       <AminoCheckbox checked={checked} id={label}>
@@ -139,7 +130,7 @@ export const Checkbox = ({
         </AnimatePresence>
       </AminoCheckbox>
 
-      <label htmlFor={label}>
+      <div>
         <LabelWrapper>
           {icon}
           <StyledLabel type="input-label">
@@ -154,7 +145,7 @@ export const Checkbox = ({
         {subtitle && (
           <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
         )}
-      </label>
+      </div>
     </CheckboxContainer>
   );
 };

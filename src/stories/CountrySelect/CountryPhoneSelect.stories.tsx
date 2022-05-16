@@ -44,7 +44,7 @@ const CountryPhoneSelectTemplate: Story<
     _phoneCountry
   );
   const [phone, setPhone] = useState(_phone);
-  const { countryOptions } = useCountryOptions({
+  const countryOptions = useCountryOptions({
     dashboardUrl,
   });
   return (

@@ -86,7 +86,7 @@ const SelectInner = <T extends LegacySelectItem>(
 ) => {
   return (
     <DropdownContainer className="amino-input-wrapper">
-      {label && <Text type="inputlabel">{label}</Text>}
+      {label && <Text type="input-label">{label}</Text>}
 
       <SelectWrapper>
         <StyledSelect
