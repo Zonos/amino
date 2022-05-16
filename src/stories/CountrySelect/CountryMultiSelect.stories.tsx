@@ -5,8 +5,6 @@ import {
   CountryMultiSelect,
   CountryMultiSelectProps,
 } from 'src/components/Select/CountryMultiSelect';
-import { ICountryOption } from 'src/types/ICountry';
-import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
@@ -36,25 +34,16 @@ const CountryMultiSelectTemplate: Story<CountryMultiSelectProps> = ({
   ...props
 }: CountryMultiSelectProps) => {
   const { dashboardUrl } = getCountryUrls();
-  const [value, setValue] = useState<ICountryOption[]>([]);
+  const [value, setValue] = useState<string[]>([]);
   const countryOptions = useCountryOptions({
     dashboardUrl,
   });
   return (
     <CountryMultiSelect
       {...props}
-      menuIsOpen
-      regionCountryOptions={prepRegionCountryOptions(
-        countryOptions.map((x, index) => {
-          const isDisabled = !!(index % 2);
-          return {
-            ...x,
-            isDisabled,
-            labelDescription: isDisabled ? '(restricted)' : '',
-          };
-        })
-      )}
+      countryOptions={countryOptions}
       onChange={setValue}
+      unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
       value={value}
     />
   );
