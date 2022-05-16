@@ -25,6 +25,7 @@ export type IOption = {
   icon?: ReactNode;
   isDisabled?: boolean;
   label: string;
+  labelDescription?: string;
   value: string;
 };
 type AdditionalProps = {
@@ -243,6 +244,7 @@ export const CheckboxOptionComponent = <
           disabled={isDisabled}
           icon={data.icon}
           label={data.label}
+          labelDescription={data.labelDescription}
           onChange={() => {}}
         />
       ) : (
