@@ -5,8 +5,8 @@ import {
   DynamicIcon,
   DynamicIconProps,
   DynamicIconType,
-} from 'src/icons/DynamicIcon/DynamicIcon';
-import * as icons from 'src/icons/DynamicIcon/IconIndex';
+} from 'src/icons/DynamicIcon';
+import * as icons from 'src/icons/IconIndex';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',

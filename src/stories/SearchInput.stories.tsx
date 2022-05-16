@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { InputProps, SearchInput } from 'src/components/Input/SearchInput';
+import { InputProps, SearchInput } from 'src/components/input/SearchInput';
 import { withDesign } from 'storybook-addon-designs';
 
 const InputMeta: Meta = {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Notice, type NoticeProps } from 'src/components/Notice/Notice';
+import { Notice, type NoticeProps } from 'src/components/notice/Notice';
 import { withDesign } from 'storybook-addon-designs';
 
 const NoticeStories: Meta = {

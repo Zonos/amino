@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useAlert } from 'src/components/AlertDialog/useAlert';
-import { Button } from 'src/components/Button/Button';
-import { VStack } from 'src/components/Stack/VStack';
+import { useAlert } from 'src/components/alert-dialog/useAlert';
+import { Button } from 'src/components/button/Button';
+import { VStack } from 'src/components/stack/VStack';
 
 export const AlertConsumer = () => {
   const defaultAlert = useAlert();

@@ -5,7 +5,7 @@ import {
   LegacySelect,
   LegacySelectItem,
   LegacySelectProps,
-} from 'src/components/Select/LegacySelect';
+} from 'src/components/select/LegacySelect';
 import { withDesign } from 'storybook-addon-designs';
 
 const SelectMeta: Meta = {

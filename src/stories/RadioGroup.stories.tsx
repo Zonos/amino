@@ -5,7 +5,7 @@ import {
   RadioGroup,
   RadioGroupItem,
   RadioGroupProps,
-} from 'src/components/Radio/RadioGroup';
+} from 'src/components/radio/RadioGroup';
 import { withDesign } from 'storybook-addon-designs';
 
 const RadioMeta: Meta = {

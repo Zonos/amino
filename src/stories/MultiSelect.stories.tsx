@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   MultiSelect,
   type MultiSelectProps,
-} from 'src/components/Select/MultiSelect';
+} from 'src/components/select/MultiSelect';
 import { PlayCircleSolidIcon } from 'src/icons/PlayCircleIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';

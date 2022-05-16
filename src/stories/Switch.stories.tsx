@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Switch, type SwitchProps } from 'src/components/Switch/Switch';
+import { Switch, type SwitchProps } from 'src/components/switch/Switch';
 import { withDesign } from 'storybook-addon-designs';
 
 const SwitchMeta: Meta = {

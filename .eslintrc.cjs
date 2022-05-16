@@ -50,7 +50,8 @@ module.exports = {
     'import/no-internal-modules': [
       'error',
       {
-        forbid: ['**/src/**/index.ts'],
+        // allow to access to index.ts if that's types folder
+        forbid: ['**/src/!(types)/**/index.ts*', '**/src/index.ts*'],
       },
     ],
     'import/no-unresolved': 'off', // Typescript takes care of this
@@ -73,5 +74,12 @@ module.exports = {
         groups: [['^react'], ['^@?\\w'], ['^~/src'], ['^'], ['((.|..)/)?']],
       },
     ],
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: [__dirname],
+      },
+    },
   },
 };

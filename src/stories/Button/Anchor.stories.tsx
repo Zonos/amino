@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   Anchor as AminoAnchor,
   type AnchorProps,
-} from 'src/components/Button/Anchor';
+} from 'src/components/button/Anchor';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';

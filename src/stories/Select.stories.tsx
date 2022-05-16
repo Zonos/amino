@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Select, type SelectProps } from 'src/components/Select/Select';
+import { Select, type SelectProps } from 'src/components/select/Select';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/FlagIcon/FlagIcon';
 import { withDesign } from 'storybook-addon-designs';

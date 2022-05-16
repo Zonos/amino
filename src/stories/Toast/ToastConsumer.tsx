@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
-import { Button, ToastContext } from '../..';
+import { Button } from 'src/components/button/Button';
+import { ToastContext } from 'src/components/toast/ToastContext';
 
 const useNotify = () => {
   return useContext(ToastContext);

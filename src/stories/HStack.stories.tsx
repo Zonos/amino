@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button } from 'src/components/Button/Button';
-import { Card } from 'src/components/Card/Card';
-import { HStack, type HStackProps } from 'src/components/Stack/HStack';
+import { Button } from 'src/components/button/Button';
+import { Card } from 'src/components/card/Card';
+import { HStack, type HStackProps } from 'src/components/stack/HStack';
 import { withDesign } from 'storybook-addon-designs';
 
 const HStackMeta: Meta = {

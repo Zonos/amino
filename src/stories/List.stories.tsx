@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
-import { List } from 'src/components/List/List';
-import { ListItem } from 'src/components/ListItem/ListItem';
+import { List } from 'src/components/list/List';
+import { ListItem } from 'src/components/list-item/ListItem';
 import { withDesign } from 'storybook-addon-designs';
 
 const ListMeta: Meta = {
