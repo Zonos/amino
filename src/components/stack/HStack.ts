@@ -1,14 +1,6 @@
-import React from 'react';
-
 import styled from 'styled-components';
 
-import { GridAlignment, GridSpacing } from './GridSpacing';
-
-export type HStackProps = {
-  alignment?: GridAlignment;
-  spacing?: GridSpacing;
-  children: React.ReactNode;
-};
+import { Stack, StackProps } from './Stack';
 
 /**
  * A horizontal stack
@@ -16,14 +8,8 @@ export type HStackProps = {
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const HStack = styled.div<HStackProps>`
-  display: grid;
-  grid-auto-columns: minmax(0, 1fr);
-  column-gap: ${p =>
+export const HStack = styled(Stack)<StackProps>`
+  grid-column-gap: ${p =>
     p.spacing ? `var(--amino-${p.spacing})` : `var(--amino-space)`};
   grid-auto-flow: column;
-
-  & > * {
-    justify-self: ${p => p.alignment || 'unset'};
-  }
 `;

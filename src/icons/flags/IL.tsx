@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
-import { FlagIconBase } from '../FlagIconBase/FlagIconBase';
-import { useStableUniqueId } from '../FlagIconBase/useStableUniqueId';
+import { FlagIconBase } from 'src/icons/flag-icon/FlagIconBase';
+import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   height: number;

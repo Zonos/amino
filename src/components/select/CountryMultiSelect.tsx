@@ -11,7 +11,12 @@ import {
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
-import { ICountryOption, IRegionCountryOption } from 'src/types/ICountry';
+import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
+import {
+  type ICountryOption,
+  type IUnavailableCountry,
+} from 'src/types/ICountry';
+import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
 import { MultiSelect } from './MultiSelect';
 import { IOption } from './StyledReactSelect';
@@ -44,7 +49,7 @@ const MenuList = <
       >
         <Checkbox
           checked={allSelected}
-          labelComponent="Rest of world"
+          label="Rest of world"
           onChange={toggleSelectAll}
         />
       </div>
@@ -65,28 +70,44 @@ export interface CountryMultiSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   icon?: ReactNode;
   label?: string;
-  onChange: (changed: ICountryOption[]) => void;
-  regionCountryOptions: IRegionCountryOption[];
+  onChange: (countryCodes: string[]) => void;
+  countryOptions: ICountryOption[];
   styles?: StylesConfig<Option, IsMulti, Group>;
-  value: ICountryOption[];
+  unavailableCountries: IUnavailableCountry[];
+  value: string[];
 }
 
 export const CountryMultiSelect = ({
   label = 'Select countries',
-  regionCountryOptions,
+  countryOptions,
   onChange,
+  unavailableCountries,
   value,
   ...props
 }: CountryMultiSelectProps) => {
-  const allOptions = regionCountryOptions.flatMap(x => x.options);
-  const unselectedOptions = allOptions.filter(
-    option => !value.find(x => x.code === option.code)
+  const countries = countryOptions.map(option => {
+    const unavailableCountry = unavailableCountries.find(
+      x => x.code === option.code
+    );
+    return {
+      ...option,
+      icon: <FlagIcon iconScale="small" code={option.code as IFlag} />,
+      isDisabled: !!unavailableCountry,
+      labelDescription: unavailableCountry?.message,
+    };
+  });
+  const unselectedOptions = countries.filter(
+    option => !value.includes(option.code) && !option.isDisabled
   );
   const allSelected = !!value.length && !unselectedOptions.length;
   const additionalProps: AdditionalProps = {
     allSelected,
     toggleSelectAll: () =>
-      onChange(unselectedOptions.length ? value.concat(unselectedOptions) : []),
+      onChange(
+        unselectedOptions.length
+          ? value.concat(unselectedOptions.map(x => x.value))
+          : []
+      ),
   };
   return (
     <MultiSelect
@@ -95,11 +116,12 @@ export const CountryMultiSelect = ({
       hasGroups
       hideSelectedOptions={false}
       label={label}
-      onChange={changed => onChange(changed as ICountryOption[])}
-      options={regionCountryOptions}
-      value={value}
+      onChange={changed => onChange(changed.map(x => x.value))}
+      options={prepRegionCountryOptions(countries)}
+      value={countries.filter(x => value.includes(x.code))}
       // @ts-ignore additional props in selectProps
       {...additionalProps}
     />
   );
 };
+export default CountryMultiSelect;

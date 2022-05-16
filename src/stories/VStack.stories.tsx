@@ -3,7 +3,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
-import { VStack, type VStackProps } from 'src/components/stack/VStack';
+import { type StackProps } from 'src/components/Stack/Stack';
+import { VStack } from 'src/components/stack/VStack';
 import { withDesign } from 'storybook-addon-designs';
 
 const VStackMeta: Meta = {
@@ -14,11 +15,11 @@ const VStackMeta: Meta = {
 
 export default VStackMeta;
 
-const Template: Story<VStackProps> = ({
+const Template: Story<StackProps> = ({
   alignment,
   children,
   spacing,
-}: VStackProps) => (
+}: StackProps) => (
   <VStack alignment={alignment} spacing={spacing}>
     {children}
   </VStack>

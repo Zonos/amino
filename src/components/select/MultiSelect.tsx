@@ -77,7 +77,7 @@ const Group = <
       >
         <Checkbox
           checked={groupIsSelected}
-          labelComponent={label}
+          label={typeof label === 'string' ? label : ''}
           onChange={() => {
             const changed = groupIsSelected
               ? currentValue.filter(

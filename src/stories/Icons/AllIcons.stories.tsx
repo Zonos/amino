@@ -84,7 +84,7 @@ export const AllIcons = ({ size }: IconProps) => {
                   <></>
                 </IconComponent>
                 <div>{iconName}</div>
-                {isDeprecated && <Text type="smallheader">(Deprecated)</Text>}
+                {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
               </StyledIcon>
             );
           })}

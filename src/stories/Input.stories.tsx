@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Input, type InputProps } from 'src/components/input/Input';
 import { BagIcon } from 'src/icons/BagIcon';
 import { CubeIcon } from 'src/icons/CubeIcon';
-import { FlagIcon } from 'src/icons/FlagIcon/FlagIcon';
+import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { withDesign } from 'storybook-addon-designs';
 
 const InputMeta: Meta = {
