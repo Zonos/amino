@@ -34,6 +34,10 @@ export interface IRegionCountryOption {
   label: IRegion;
   options: ICountryOption[];
 }
+export interface IUnavailableCountry {
+  code: string;
+  message: string;
+}
 /** @desc /api/address/getCountries */
 export interface IGetCountriesResponse {
   [key: string]: ICountry;
