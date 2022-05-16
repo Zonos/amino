@@ -6,10 +6,9 @@ import {
   CountryMultiSelectProps,
 } from 'src/components/select/CountryMultiSelect';
 import { ICountryOption } from 'src/types/ICountry';
+import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { prepRegionCountryOptions } from '~/src/utils/prepRegionCountryOptions';
 
 import { getCountryUrls } from './getCountryUrls';
 import { useCountryOptions } from './useCountryOptions';

@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import { IOption } from 'src/components/Select/StyledReactSelect';
 
 export const regions = [
