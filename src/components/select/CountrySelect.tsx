@@ -15,7 +15,7 @@ export type CountrySelectProps = {
   value: string | null;
 };
 
-export const CountrySelect = ({
+const CountrySelect = ({
   autoFocus,
   countryOptions,
   filter = Boolean,
