@@ -82,7 +82,7 @@
   },
   "scripts": {
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
-    "build": "yarn lint:prod && ts-node build-utils/build.ts && yarn build:dts",
+    "build": "npm -v && yarn -v && node -v && yarn ttsc -v && yarn tsc -v && yarn lint:prod && ts-node build-utils/build.ts && yarn build:dts",
     "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
     "prebuild:dts": "echo 'building dts'",
     "build:dts": "ttsc --emitDeclarationOnly --declarationDir dist --declaration",
