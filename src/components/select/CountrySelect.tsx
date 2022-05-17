@@ -54,4 +54,3 @@ export const CountrySelect = ({
     />
   );
 };
-export default CountrySelect;

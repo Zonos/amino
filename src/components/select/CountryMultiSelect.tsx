@@ -124,4 +124,3 @@ export const CountryMultiSelect = ({
     />
   );
 };
-export default CountryMultiSelect;
