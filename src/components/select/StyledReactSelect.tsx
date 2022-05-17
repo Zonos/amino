@@ -24,13 +24,13 @@ import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import styled from 'styled-components';
 
-export type IOption = {
+export interface IOption {
   icon?: ReactNode;
   isDisabled?: boolean;
   label: string;
   labelDescription?: string;
   value: string;
-};
+}
 type AdditionalProps = {
   hasGroups?: boolean;
   icon?: ReactNode;
