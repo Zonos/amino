@@ -77,7 +77,7 @@ export interface CountryMultiSelectProps<
   value: string[];
 }
 
-export const CountryMultiSelect = ({
+const CountryMultiSelect = ({
   label = 'Select countries',
   countryOptions,
   onChange,
@@ -124,3 +124,4 @@ export const CountryMultiSelect = ({
     />
   );
 };
+export default CountryMultiSelect;
