@@ -8,6 +8,7 @@ export type {
   ICountryOption,
   IGetCountriesResponse,
   IRegionCountryOption,
+  IUnavailableCountry,
 } from './ICountry';
 export type { Intent } from './Intent';
 export type { StyledProps } from './StyledProps';

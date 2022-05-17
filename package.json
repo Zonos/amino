@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.44",
+  "version": "3.0.45",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -103,6 +103,10 @@
     "svgs:index": "node ./svgReact/createIndexFile.js ./svgReact/flags",
     "svgs:react": "node ./svgReact ./svgReact/svgs ./svgReact/flags",
     "start": "yarn build-storybook && yarn storybook",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "version:patch": "npm version patch -m 'Bump version %s' && yarn push:tags",
+    "version:minor": "npm version minor -m 'Bump version %s' && yarn push:tags",
+    "version:major": "npm version major -m 'Bump version %s' && yarn push:tags",
+    "push:tags": "git push --follow-tags"
   }
 }

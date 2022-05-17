@@ -47,9 +47,9 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
 
     const component = [
       `import React, { forwardRef } from 'react';`,
-      `import { FlagIconBase } from '../FlagIconBase/FlagIconBase';`,
+      `import { FlagIconBase } from 'src/icons/flag-icon/FlagIconBase';`,
       maskIds.length &&
-        `import { useStableUniqueId } from '../FlagIconBase/useStableUniqueId';`,
+        `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
       `type Props = {`,
       `height: number;`,
       `width: number;`,

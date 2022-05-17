@@ -5,7 +5,7 @@ import {
   CountryPhoneSelect,
   CountryPhoneSelectProps,
 } from 'src/components/select/CountryPhoneSelect';
-import { FlagIcon, IFlag } from 'src/icons/FlagIcon/FlagIcon';
+import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
 import { ICountryOption } from 'src/types/ICountry';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
@@ -44,7 +44,7 @@ const CountryPhoneSelectTemplate: Story<
     _phoneCountry
   );
   const [phone, setPhone] = useState(_phone);
-  const { countryOptions } = useCountryOptions({
+  const countryOptions = useCountryOptions({
     dashboardUrl,
   });
   return (

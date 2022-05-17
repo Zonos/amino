@@ -93,6 +93,6 @@ export const Radio = ({ disabled, label, checked, onChange }: RadioProps) => (
         )}
       </AnimatePresence>
     </StyledRadio>
-    {label && <Text type="inputlabel">{label}</Text>}
+    {label && <Text type="input-label">{label}</Text>}
   </RadioContainer>
 );
