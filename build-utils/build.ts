@@ -99,6 +99,7 @@ const configs: ConfigOptions[] = [
       dir: 'dist',
       format: 'cjs',
       sourcemap: false,
+      exports: 'auto',
     },
     maxParallelFileReads: 200,
   },
