@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
-import { type StackProps } from 'src/components/Stack/Stack';
+import { type StackProps } from 'src/components/stack/Stack';
 import { VStack } from 'src/components/stack/VStack';
 import { withDesign } from 'storybook-addon-designs';
 
