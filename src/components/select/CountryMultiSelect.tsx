@@ -26,7 +26,7 @@ type AdditionalProps = {
   toggleSelectAll: () => void;
 };
 
-const MenuList = <
+export const MenuList = <
   Option extends IOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>
@@ -77,7 +77,7 @@ export interface CountryMultiSelectProps<
   value: string[];
 }
 
-const CountryMultiSelect = ({
+export const CountryMultiSelect = ({
   label = 'Select countries',
   countryOptions,
   onChange,
@@ -124,4 +124,3 @@ const CountryMultiSelect = ({
     />
   );
 };
-export default CountryMultiSelect;

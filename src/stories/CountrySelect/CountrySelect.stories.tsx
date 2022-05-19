@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import CountrySelect, {
+import {
+  CountrySelect,
   CountrySelectProps,
 } from 'src/components/select/CountrySelect';
 import { withDesign } from 'storybook-addon-designs';
