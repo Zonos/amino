@@ -14,6 +14,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   display: block;
   max-height: 0;
   pointer-events: none;
+  order: 1;
   &::before {
     content: attr(data-label);
     position: absolute;
@@ -23,10 +24,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     filter: blur(0);
     transform-origin: left top;
     transition: all 0.5s ease;
-    left: ${({ hasPrefix }) =>
-      hasPrefix
-        ? 'calc(var(--amino-space-half) + 39px)'
-        : 'var(--amino-space-half)'};
+    margin-left: var(--amino-space-half);
     top: calc(50% - var(--amino-text-base) / 2);
   }
   &::after {
@@ -59,14 +57,16 @@ const InputPrefix = styled(InputDecorator)`
 `;
 
 const InputSuffix = styled(InputDecorator)`
+  order: 3;
   border-top-right-radius: var(--amino-radius);
   border-bottom-right-radius: var(--amino-radius);
 `;
 
 export const InputValuePrefix = styled.div`
   display: flex;
+  order: 2;
   align-items: flex-end;
-  padding-left: 4px;
+  padding-left: var(--amino-space-half);
   padding-bottom: calc(var(--amino-space-quarter) + 3.5px);
   color: var(--amino-gray-d40);
   white-space: nowrap;
@@ -83,6 +83,7 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
   border-radius: var(--amino-radius);
   background: var(--amino-input-background);
   border: 0;
+  order: 2;
   font-weight: 500;
   &.has-label {
     padding: var(--amino-space) 4px var(--amino-space-quarter)
