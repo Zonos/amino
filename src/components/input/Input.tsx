@@ -64,6 +64,7 @@ export const Input = ({
   suffix,
   tabIndex,
   type,
+  size,
   value,
   valuePrefix,
   width,
@@ -88,6 +89,7 @@ export const Input = ({
             required={required}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
+            size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
           />
@@ -110,6 +112,7 @@ export const Input = ({
             required={required}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
+            size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
           />
@@ -132,6 +135,7 @@ export const Input = ({
             required={required}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
+            size={size}
             type={type}
             value={value || ''}
             valuePrefix={valuePrefix}
