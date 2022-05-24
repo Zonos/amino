@@ -20,7 +20,7 @@ const Template: Story<DialogProps> = ({
   label,
   width,
 }: DialogProps) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <>
       <Button onClick={() => setOpen(true)}>open</Button>
