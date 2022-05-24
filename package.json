@@ -74,7 +74,7 @@
     "react-hotkeys-hook": "^3.x",
     "react-is": "^17.x",
     "react-tooltip": "^4.x",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.x"
   },
   "eslintConfig": {
     "extends": "react-app"
