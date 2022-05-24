@@ -69,6 +69,16 @@ const AminoAnchor = styled.a<Pick<AnchorProps, 'size' | 'disabled'>>`
         width: 48px;
       }
     `}
+
+  ${props =>
+    props.size === 'xl' &&
+    css`
+      height: 56px;
+      line-height: 56px;
+      &.only-icon {
+        width: 56px;
+      }
+    `}
 `;
 
 const StyledAnchor = styled(AminoAnchor)`
@@ -97,7 +107,7 @@ export type AnchorProps = {
   icon?: ReactNode;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   iconRight?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   tabIndex?: number;
   tooltip?: ReactNode;
 };

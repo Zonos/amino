@@ -74,6 +74,16 @@ const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
         width: 48px;
       }
     `}
+
+  ${props =>
+    props.size === 'xl' &&
+    css`
+      height: 56px;
+      line-height: 56px;
+      &.only-icon {
+        width: 56px;
+      }
+    `}
 `;
 
 const Primary = styled(AminoButton)`
@@ -204,7 +214,7 @@ export type ButtonProps = {
   loading?: boolean;
   loadingText?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   tabIndex?: number;
   tooltip?: ReactNode;
   type?: 'button' | 'reset' | 'submit';
