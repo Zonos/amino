@@ -2,26 +2,26 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
-  RichCheckboxGroup,
-  RichCheckboxGroupProps,
-} from 'src/components/radix/RichCheckboxGroup';
+  RichCheckbox,
+  RichCheckboxProps,
+} from 'src/components/rich-checkbox/RichCheckbox';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 import { withDesign } from 'storybook-addon-designs';
 
 const RichCheckboxMeta: Meta = {
-  title: 'Amino/RichCheckboxGroup',
-  component: RichCheckboxGroup,
+  title: 'Amino/RichCheckbox',
+  component: RichCheckbox,
   decorators: [withDesign],
 };
 
 export default RichCheckboxMeta;
 
-const Template: Story<RichCheckboxGroupProps> = ({
+const Template: Story<RichCheckboxProps> = ({
   onClick,
   items,
-}: RichCheckboxGroupProps) => (
-  <RichCheckboxGroup items={items} onClick={onClick} />
-);
+}: RichCheckboxProps) => {
+  return <RichCheckbox items={items} onClick={onClick} />;
+};
 
 export const BasicRichCheckbox = Template.bind({});
 BasicRichCheckbox.args = {

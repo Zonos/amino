@@ -1,12 +1,13 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.46",
+  "version": "3.0.47",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
     "@storybook/addon-a11y": "6.4.19",
     "@storybook/addon-actions": "6.4.19",
     "@storybook/addon-essentials": "6.4.19",
@@ -52,7 +53,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
     "storybook-addon-designs": "6.2.1",
-    "styled-components": "5.3.3",
+    "styled-components": "5.3.5",
     "text-treeview": "^1.0.2",
     "ts-node": "^10.7.0",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
@@ -61,9 +62,7 @@
     "typescript": "4.6.2"
   },
   "dependencies": {
-    "@radix-ui/react-checkbox": "^0.0.16",
-    "@radix-ui/react-radio-group": "^0.1.5",
-    "@radix-ui/react-slider": "^0.0.16",
+    "@radix-ui/react-slider": "^0.1.4",
     "react-dropzone": "^12.0.4",
     "react-select": "^5.2.2",
     "uuid": "^8.3.2"

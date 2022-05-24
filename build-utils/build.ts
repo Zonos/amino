@@ -1,3 +1,4 @@
+import buble from '@rollup/plugin-buble';
 import fs from 'fs';
 import { glob } from 'glob';
 import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
@@ -42,7 +43,23 @@ const bundlePackage = async (
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     plugins: [
-      tsPlugin({ typescript: ttypescript }),
+      tsPlugin({
+        typescript: ttypescript,
+        tsconfigOverride: {
+          compilerOptions: {
+            module: 'esnext',
+          },
+        },
+      }),
+      buble({
+        exclude: 'node_modules/**',
+        include: '**/*.{js,mjs,jsx,ts,tsx,vue}',
+        transforms: {
+          modules: false,
+          dangerousForOf: true,
+          dangerousTaggedTemplateString: true,
+        },
+      }),
       terser({ numWorkers: 10 }),
       progress({ clearLine: true }),
       sizes({ details: true }),

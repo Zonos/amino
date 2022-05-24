@@ -1,7 +1,10 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { RichRadio, type RichRadioProps } from 'src/components/radix/RichRadio';
+import {
+  RichRadio,
+  type RichRadioProps,
+} from 'src/components/rich-radio/RichRadio';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
 import { withDesign } from 'storybook-addon-designs';
@@ -62,7 +65,7 @@ BasicRichRadio.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 200,
+        delayShow: 400,
       },
     },
     {
@@ -110,7 +113,7 @@ CustomRichRadioOption.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 200,
+        delayShow: 400,
       },
     },
     {
@@ -120,7 +123,7 @@ CustomRichRadioOption.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 200,
+        delayShow: 400,
       },
     },
     {

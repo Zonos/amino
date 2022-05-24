@@ -1,7 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
-import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import { VStack } from 'src/components/stack/VStack';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
 import styled from 'styled-components';
@@ -17,8 +16,7 @@ const StyledIcon = styled.div`
     color: white;
   }
 `;
-
-const StyledIndicator = styled(Indicator)`
+const StyledActiveIcon = styled.div`
   position: absolute;
   right: var(--amino-space-half);
   background: var(--amino-blue-500);
@@ -30,7 +28,7 @@ const StyledIndicator = styled(Indicator)`
   justify-content: center;
 `;
 
-const StyledItem = styled(Item)`
+const StyledItem = styled.button`
   position: relative;
   appearance: none;
   background: white;
@@ -62,10 +60,6 @@ const StyledItem = styled(Item)`
   }
 `;
 
-const StyledTooltip = styled(ReactTooltip)`
-  max-width: 50vw;
-`;
-
 const Subtitle = styled.span`
   opacity: 0.5;
 `;
@@ -74,7 +68,7 @@ const Label = styled.span`
   font-weight: 500;
 `;
 
-const StyledRoot = styled(Root)`
+const StyledRadioGroup = styled(VStack)`
   button[data-state='checked'] {
     background: var(--amino-blue-100);
     border: 1px solid var(--amino-blue-300);
@@ -86,17 +80,20 @@ const StyledRoot = styled(Root)`
     height: 12px;
   }
 `;
+const StyledTooltip = styled(ReactTooltip)`
+  max-width: 350px;
+`;
 
 type RichRadioItemType = {
   label: ReactNode;
   subtitle?: string;
   value: string;
   tooltip?: string;
-  tooltipSetting?: TooltipProps;
+  tooltipSetting?: Omit<TooltipProps, 'title' | 'children'>;
 };
 
 export type RichRadioProps = {
-  onChange: (newVal: string) => void;
+  onChange: (value: string) => void;
   renderCustomText?: (option: RichRadioItemType) => ReactNode;
   items: RichRadioItemType[];
   value: string;
@@ -114,31 +111,43 @@ export const RichRadio = ({
   className,
   activeIcon,
 }: RichRadioProps) => {
+  const [selectedValue, setSelectedValue] = useState(value);
+
+  const handleChange = (v: string) => {
+    setSelectedValue(v);
+    onChange(v);
+  };
+
   return (
-    <StyledRoot className={className} onValueChange={onChange} value={value}>
-      <VStack spacing="space-half">
-        {items.map(item => (
-          <StyledItem
-            value={item.value}
-            data-tip={item.tooltip}
-            key={item.value}
-          >
-            {item.tooltip && (
-              <StyledTooltip effect="solid" {...item.tooltipSetting} />
-            )}
-            {renderCustomText ? (
-              renderCustomText(item)
-            ) : (
-              <div>
-                <Label>{item.label}</Label>
-                {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
-              </div>
-            )}
-            {!!icon && <StyledIcon>{icon || <CheckMarkIcon />}</StyledIcon>}
-            <StyledIndicator>{activeIcon || <CheckMarkIcon />}</StyledIndicator>
-          </StyledItem>
-        ))}
-      </VStack>
-    </StyledRoot>
+    <StyledRadioGroup spacing="space-half" className={className}>
+      {items.map(item => (
+        <StyledItem
+          key={item.value}
+          data-tip={item.tooltip}
+          onClick={() => {
+            handleChange(item.value);
+          }}
+          data-state={item.value === selectedValue ? 'checked' : ''}
+        >
+          {item.tooltip && (
+            <StyledTooltip effect="solid" {...item.tooltipSetting} />
+          )}
+          {renderCustomText ? (
+            renderCustomText(item)
+          ) : (
+            <div>
+              <Label>{item.label}</Label>
+              {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
+            </div>
+          )}
+          {!!icon && <StyledIcon>{icon || <CheckMarkIcon />}</StyledIcon>}
+          {item.value === selectedValue && (
+            <StyledActiveIcon>
+              {activeIcon || <CheckMarkIcon />}
+            </StyledActiveIcon>
+          )}
+        </StyledItem>
+      ))}
+    </StyledRadioGroup>
   );
 };

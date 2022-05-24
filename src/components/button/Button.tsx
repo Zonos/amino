@@ -5,7 +5,7 @@ import { Spinner } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
 import styled, { css } from 'styled-components';
 
-const AminoButton = styled.button<Pick<ButtonProps, 'size'>>`
+const AminoButton = styled.button<ButtonProps>`
   position: relative;
   outline: none;
   height: 32px;
@@ -230,10 +230,11 @@ export const Button = ({
   loading,
   loadingText,
   onClick,
-  size,
+  size = 'sm',
   tabIndex,
   tooltip,
   type = 'button',
+  ...props
 }: ButtonProps) => {
   const content = loading ? (
     <>
@@ -264,9 +265,10 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Primary>
@@ -278,9 +280,10 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Subtle>
@@ -292,9 +295,10 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Outline>
@@ -306,7 +310,7 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
         >
@@ -320,9 +324,10 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Danger>
@@ -334,9 +339,10 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Icon>
@@ -349,9 +355,10 @@ export const Button = ({
           data-tip={tooltip}
           onClick={onClick}
           tabIndex={tabIndex}
-          size={size || 'sm'}
+          size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Secondary>

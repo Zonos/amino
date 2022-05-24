@@ -4,7 +4,7 @@ import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleIcon';
 import { IAminoTheme } from 'src/types/IAminoTheme';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { BaseDialog } from './BaseDialog';
 
@@ -46,10 +46,8 @@ const Footer = styled.div`
   }
 `;
 
-const Content = styled.div`
-  padding: var(--amino-space);
-  max-height: calc(90vh - (83px * 2));
-  overflow-y: auto;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const gradientOverflow = css`
   overscroll-behavior: contain;
   /* scroll bar width, for use in mask calculations */
   --scrollbar-width: 8px;
@@ -72,14 +70,14 @@ const Content = styled.div`
     transparent
   );
   /* Here we scale the content gradient to the width of the container
-  minus the scrollbar width. The height is the full container height */
+minus the scrollbar width. The height is the full container height */
   --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
 
   /* The scrollbar mask is a black pixel */
   --mask-image-scrollbar: linear-gradient(black, black);
 
   /* The width of our black pixel is the width of the scrollbar.
-  The height is the full container height */
+The height is the full container height */
   --mask-size-scrollbar: var(--scrollbar-width) 100%;
 
   /* Apply the mask image and mask size variables */
@@ -92,6 +90,17 @@ scroll gradient in the top right */
 
   /* We don't repeat our mask images */
   mask-repeat: no-repeat, no-repeat;
+`;
+
+const Content = styled.div`
+  padding: var(--amino-space);
+  max-height: calc(90vh - (83px * 2));
+  overflow-y: auto;
+  /** 
+   * Current overflow is not working well with react-tooltip. 
+   * Temporary remove gradient overflow until having new tooltip library to use 
+   */
+  // gradientOverflow
 `;
 
 const Close = styled.div`
