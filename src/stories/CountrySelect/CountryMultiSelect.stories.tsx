@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import CountryMultiSelect, {
+import {
+  CountryMultiSelect,
   CountryMultiSelectProps,
 } from 'src/components/select/CountryMultiSelect';
 import { withDesign } from 'storybook-addon-designs';
