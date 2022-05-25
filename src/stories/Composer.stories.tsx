@@ -28,7 +28,7 @@ const StyledActions = styled.div`
 `;
 
 const StyledHStack = styled(HStack)`
-  grid-auto-columns: 150px;
+  grid-auto-columns: 200px;
   align-items: center;
 `;
 

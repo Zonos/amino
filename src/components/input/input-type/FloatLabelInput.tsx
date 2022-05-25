@@ -10,6 +10,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   order: 1;
   &::before {
     content: attr(data-label);
+    color: var(--amino-gray-d40);
     position: absolute;
     font-size: var(--amino-text-base);
     line-height: var(--amino-text-base);
@@ -70,7 +71,7 @@ const AminoInput = styled.input<{
   hasSuffix: boolean;
   $size: Size;
 }>`
-  height: ${p => `var(--amino-size-${p.$size})`};
+  height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
   box-sizing: border-box;
   position: relative;
   padding: 0 var(--amino-space-half);
@@ -118,7 +119,7 @@ const AminoInput = styled.input<{
       opacity: 0.6;
     }
     & + ${StyledLabelInput}::before {
-      top: var(--amino-space-half);
+      top: 11px;
       transform: scale(0.8);
     }
   }
@@ -160,6 +161,9 @@ const StyledLabelWrapper = styled.div`
         top: 10px;
       }
     }
+  }
+  &.xl ${AminoInput}.has-label {
+    padding-bottom: 2px;
   }
 `;
 
