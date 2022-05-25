@@ -262,8 +262,10 @@
   --amino-text-dark: var(--amino-text-color);
 
   --amino-input-background: white;
-  --amino-input-height: 36px;
-  --amino-input-float-height: 3.5rem;
+  --amino-size-xl: 56px;
+  --amino-size-lg: 48px;
+  --amino-size-md: 40px;
+  --amino-size-sm: 32px;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 264px;
   --amino-sidebar-color: white;

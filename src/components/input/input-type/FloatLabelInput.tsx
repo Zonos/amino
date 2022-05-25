@@ -1,21 +1,16 @@
 import React, { forwardRef, ReactNode } from 'react';
 
+import { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
-const StyledLabelWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background: var(--amino-input-background);
-  border-radius: var(--amino-radius);
-`;
 const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   display: block;
   max-height: 0;
   pointer-events: none;
+  order: 1;
   &::before {
     content: attr(data-label);
+    color: var(--amino-gray-d40);
     position: absolute;
     font-size: var(--amino-text-base);
     line-height: var(--amino-text-base);
@@ -23,10 +18,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     filter: blur(0);
     transform-origin: left top;
     transition: all 0.5s ease;
-    left: ${({ hasPrefix }) =>
-      hasPrefix
-        ? 'calc(var(--amino-space-half) + 39px)'
-        : 'var(--amino-space-half)'};
+    margin-left: var(--amino-space-half);
     top: calc(50% - var(--amino-text-base) / 2);
   }
   &::after {
@@ -59,34 +51,46 @@ const InputPrefix = styled(InputDecorator)`
 `;
 
 const InputSuffix = styled(InputDecorator)`
+  order: 3;
   border-top-right-radius: var(--amino-radius);
   border-bottom-right-radius: var(--amino-radius);
 `;
 
 export const InputValuePrefix = styled.div`
   display: flex;
+  order: 2;
   align-items: flex-end;
-  padding-left: 4px;
+  padding-left: var(--amino-space-half);
   padding-bottom: calc(var(--amino-space-quarter) + 3.5px);
   color: var(--amino-gray-d40);
   white-space: nowrap;
 `;
 
-const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
-  height: 3.5rem;
+const AminoInput = styled.input<{
+  hasPrefix: boolean;
+  hasSuffix: boolean;
+  $size: Size;
+}>`
+  height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
   box-sizing: border-box;
   position: relative;
-  padding: 0 var(--amino-space-quarter);
+  padding: 0 var(--amino-space-half);
   outline: none;
   transition: var(--amino-transition);
   width: 100%;
   border-radius: var(--amino-radius);
   background: var(--amino-input-background);
   border: 0;
+  order: 2;
   font-weight: 500;
   &.has-label {
     padding: var(--amino-space) 4px var(--amino-space-quarter)
       var(--amino-space-half);
+  }
+  &:not(.has-label) {
+    ::placeholder {
+      opacity: 0.6;
+    }
   }
 
   &.has-value-prefix {
@@ -115,9 +119,51 @@ const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
       opacity: 0.6;
     }
     & + ${StyledLabelInput}::before {
-      top: var(--amino-space-half);
+      top: 11px;
       transform: scale(0.8);
     }
+  }
+`;
+
+const StyledLabelWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: var(--amino-input-background);
+  border-radius: var(--amino-radius);
+
+  &.sm ${AminoInput}.has-label {
+    padding-top: 13px;
+    padding-bottom: 0;
+    &:focus,
+    &.has-content {
+      & + ${StyledLabelInput}::before {
+        top: 2px;
+      }
+    }
+  }
+
+  &.md ${AminoInput}.has-label {
+    padding-top: 20px;
+    &:focus,
+    &.has-content {
+      & + ${StyledLabelInput}::before {
+        top: 6px;
+      }
+    }
+  }
+
+  &.lg ${AminoInput}.has-label {
+    &:focus,
+    &.has-content {
+      & + ${StyledLabelInput}::before {
+        top: 10px;
+      }
+    }
+  }
+  &.xl ${AminoInput}.has-label {
+    padding-bottom: 2px;
   }
 `;
 
@@ -171,6 +217,7 @@ export type FloatLabelInputProps = {
   inputMode?: InputMode;
   pattern?: string;
   autoFocus?: boolean;
+  size?: Size;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
 
@@ -193,6 +240,7 @@ export const FloatLabelInput = forwardRef<
       prefix,
       readOnly,
       required,
+      size = 'xl',
       suffix,
       tabIndex,
       type,
@@ -204,7 +252,7 @@ export const FloatLabelInput = forwardRef<
     const hasPrefix = !!prefix || !!valuePrefix;
     const hasValue = !!value || !!valuePrefix;
     return (
-      <StyledLabelWrapper className={className}>
+      <StyledLabelWrapper className={`${className || ''} ${size}`}>
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
         {valuePrefix && <InputValuePrefix>{valuePrefix}</InputValuePrefix>}
         <AminoInput
@@ -227,6 +275,7 @@ export const FloatLabelInput = forwardRef<
           readOnly={readOnly}
           ref={ref}
           required={required}
+          $size={size}
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}

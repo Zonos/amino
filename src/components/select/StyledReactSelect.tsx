@@ -22,7 +22,8 @@ import { CheckCircleSolidIcon } from 'src/icons/CheckCircleIcon';
 import { ChevronDownSolidIcon } from 'src/icons/ChevronDownIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-import styled from 'styled-components';
+import { Size } from 'src/types/Size';
+import styled, { css } from 'styled-components';
 
 export interface IOption {
   icon?: ReactNode;
@@ -35,6 +36,7 @@ type AdditionalProps = {
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
+  size?: Size;
 };
 
 const ClearIndicator = <
@@ -73,7 +75,7 @@ const IconWrapper = styled.div`
   padding: 10px;
 `;
 
-const StyledFloatedLabel = styled.label`
+const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   position: absolute;
   transition: all 0.5s ease;
   font-size: var(--amino-text-base);
@@ -84,14 +86,68 @@ const StyledFloatedLabel = styled.label`
     left: calc(var(--amino-space-double) + 6px);
   }
   top: calc(50% - var(--amino-text-base) / 2);
-  .has-label & + div {
-    align-self: flex-end;
+  .has-label & {
+    & + div {
+      align-self: flex-end;
+    }
   }
   .has-value &,
   .is-focused & {
     top: calc(var(--amino-space-quarter) + 3px);
     transform: scale(0.8);
   }
+
+  /* Size modify */
+  ${({ $size }) =>
+    $size === 'sm' &&
+    css`
+      .${$size}.has-label & {
+        & + div {
+          margin-bottom: -6px;
+        }
+      }
+      .${$size}.has-value &,
+      .${$size}.is-focused & {
+        top: 2px;
+      }
+    `}
+
+  ${({ $size }) =>
+    $size === 'md' &&
+    css`
+      .${$size}.has-label & {
+        & + div {
+          margin-bottom: -2px;
+        }
+      }
+      .${$size}.has-value &,
+      .${$size}.is-focused & {
+        top: 6px;
+      }
+    `}
+  
+  ${({ $size }) =>
+    $size === 'lg' &&
+    css`
+      .${$size}.has-value &,
+      .${$size}.is-focused & {
+        top: 10px;
+      }
+    `}
+  
+  ${({ $size }) =>
+    $size === 'xl' &&
+    css`
+      .${$size}.has-label & {
+        & + div {
+          margin-bottom: 3px;
+        }
+      }
+      .${$size}.has-value &,
+      .${$size}.is-focused & {
+        top: 11px;
+      }
+    `}
 `;
 
 const StrongLabel = styled.strong`
@@ -118,8 +174,8 @@ const Control = <
     menuIsOpen,
     selectProps,
   } = props;
-  const { icon, label, value } = selectProps as typeof props['selectProps'] &
-    AdditionalProps;
+  const { icon, label, value, size } =
+    selectProps as typeof props['selectProps'] & AdditionalProps;
   return (
     <div
       className={cx(
@@ -135,6 +191,7 @@ const Control = <
           icon ? 'has-icon' : '',
           isFocused ? 'is-focused' : '',
           label ? 'has-label' : '',
+          size,
         ].join(' ')
       )}
       ref={innerRef}
@@ -143,7 +200,7 @@ const Control = <
     >
       {icon && <IconWrapper>{icon}</IconWrapper>}
 
-      <StyledFloatedLabel>
+      <StyledFloatedLabel $size={size}>
         {label}{' '}
         {Array.isArray(value) && value.length > 1 && (
           <StrongLabel>({value.length} selected)</StrongLabel>
@@ -272,7 +329,9 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     };
   },
   // container
-  control: provided => {
+  control: (provided, state) => {
+    const { size } = state.selectProps as typeof state['selectProps'] &
+      AdditionalProps;
     return {
       ...provided,
       '&:hover': {
@@ -281,7 +340,9 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       borderColor: `var(--amino-gray-l60)`,
       borderRadius: 6,
       color: `var(--amino-gray-d40)`,
-      height: '3.5rem',
+      height: `var(--amino-size-${size})`,
+      flexWrap: 'inherit',
+      minHeight: `var(--amino-size-${size})`,
     };
   },
   dropdownIndicator: provided => {
@@ -356,11 +417,17 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       },
     };
   },
-  // singleValue
+  singleValue: provided => {
+    return {
+      ...provided,
+      fontWeight: 500,
+    };
+  },
   valueContainer: provided => {
     return {
       ...provided,
       flexWrap: 'nowrap',
+      padding: 'unset',
       paddingLeft: 12,
       '.has-icon &': { paddingLeft: 0 },
     };
@@ -375,6 +442,7 @@ export interface StyledReactSelectProps<
     HelpTextProps,
     AdditionalProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
@@ -388,7 +456,8 @@ export const StyledReactSelect = <
   helpText,
   hasGroups,
   icon,
-  label = ' ',
+  label,
+  size = 'xl',
   styles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
@@ -396,6 +465,7 @@ export const StyledReactSelect = <
     hasGroups,
     icon,
     label,
+    size,
   };
   return (
     <div>

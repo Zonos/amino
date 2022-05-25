@@ -45,9 +45,6 @@ const StyledPrefix = styled.div`
 `;
 
 const StyledInputWrapper = styled.div`
-  [data-label]::before {
-    left: 60px;
-  }
   ${InputValuePrefix} {
     padding-left: 14px;
   }
