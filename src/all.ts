@@ -413,7 +413,6 @@ import "./components/select/StyledReactSelect";
 import "./components/select/CountryPhoneSelect";
 import "./components/select/Select";
 import "./components/select/CountrySelect";
-import "./components/select/LegacySelect";
 import "./components/skeleton/Skeleton";
 import "./components/slide-over/SlideOver";
 import "./components/stack/GridSpacing";

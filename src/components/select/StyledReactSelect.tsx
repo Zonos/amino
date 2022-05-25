@@ -22,6 +22,7 @@ import { CheckCircleSolidIcon } from 'src/icons/CheckCircleIcon';
 import { ChevronDownSolidIcon } from 'src/icons/ChevronDownIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
+import { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
 export interface IOption {
@@ -35,6 +36,7 @@ type AdditionalProps = {
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
+  size?: Size;
 };
 
 const ClearIndicator = <
@@ -272,7 +274,9 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     };
   },
   // container
-  control: provided => {
+  control: (provided, state) => {
+    const { size } = state.selectProps as typeof state['selectProps'] &
+      AdditionalProps;
     return {
       ...provided,
       '&:hover': {
@@ -281,7 +285,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       borderColor: `var(--amino-gray-l60)`,
       borderRadius: 6,
       color: `var(--amino-gray-d40)`,
-      height: '3.5rem',
+      height: `var(--amino-size-${size})`,
     };
   },
   dropdownIndicator: provided => {
@@ -375,6 +379,7 @@ export interface StyledReactSelectProps<
     HelpTextProps,
     AdditionalProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
@@ -389,6 +394,7 @@ export const StyledReactSelect = <
   hasGroups,
   icon,
   label = ' ',
+  size = 'xl',
   styles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
@@ -396,6 +402,7 @@ export const StyledReactSelect = <
     hasGroups,
     icon,
     label,
+    size,
   };
   return (
     <div>
