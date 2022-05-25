@@ -1,5 +1,6 @@
 import React, { forwardRef, ReactNode } from 'react';
 
+import { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
 const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
@@ -64,8 +65,12 @@ export const InputValuePrefix = styled.div`
   white-space: nowrap;
 `;
 
-const AminoInput = styled.input<{ hasPrefix: boolean; hasSuffix: boolean }>`
-  height: 3.5rem;
+const AminoInput = styled.input<{
+  hasPrefix: boolean;
+  hasSuffix: boolean;
+  $size: Size;
+}>`
+  height: ${p => `var(--amino-size-${p.$size})`};
   box-sizing: border-box;
   position: relative;
   padding: 0 var(--amino-space-half);
@@ -127,47 +132,32 @@ const StyledLabelWrapper = styled.div`
   background: var(--amino-input-background);
   border-radius: var(--amino-radius);
 
-  &.sm {
-    ${AminoInput} {
-      height: 2rem;
-      &.has-label {
-        padding-top: 13px;
-        padding-bottom: 0;
-        &:focus,
-        &.has-content {
-          & + ${StyledLabelInput}::before {
-            top: 2px;
-          }
-        }
+  &.sm ${AminoInput}.has-label {
+    padding-top: 13px;
+    padding-bottom: 0;
+    &:focus,
+    &.has-content {
+      & + ${StyledLabelInput}::before {
+        top: 2px;
       }
     }
   }
 
-  &.md {
-    ${AminoInput} {
-      height: 2.5rem;
-      &.has-label {
-        padding-top: 20px;
-        &:focus,
-        &.has-content {
-          & + ${StyledLabelInput}::before {
-            top: 6px;
-          }
-        }
+  &.md ${AminoInput}.has-label {
+    padding-top: 20px;
+    &:focus,
+    &.has-content {
+      & + ${StyledLabelInput}::before {
+        top: 6px;
       }
     }
   }
 
-  &.lg {
-    ${AminoInput} {
-      height: 3rem;
-      &.has-label {
-        &:focus,
-        &.has-content {
-          & + ${StyledLabelInput}::before {
-            top: 10px;
-          }
-        }
+  &.lg ${AminoInput}.has-label {
+    &:focus,
+    &.has-content {
+      & + ${StyledLabelInput}::before {
+        top: 10px;
       }
     }
   }
@@ -223,7 +213,7 @@ export type FloatLabelInputProps = {
   inputMode?: InputMode;
   pattern?: string;
   autoFocus?: boolean;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: Size;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
 
@@ -281,6 +271,7 @@ export const FloatLabelInput = forwardRef<
           readOnly={readOnly}
           ref={ref}
           required={required}
+          $size={size}
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}

@@ -3,13 +3,14 @@ import ReactTooltip from 'react-tooltip';
 
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
-import styled, { css } from 'styled-components';
+import { Size } from 'src/types/Size';
+import styled from 'styled-components';
 
 const AminoButton = styled.button<ButtonProps>`
   position: relative;
   outline: none;
-  height: 32px;
-  line-height: 32px;
+  height: ${p => `var(--amino-size-${p.size})`};
+  line-height: ${p => `var(--amino-size-${p.size})`};
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -28,7 +29,7 @@ const AminoButton = styled.button<ButtonProps>`
   }
 
   &.only-icon {
-    width: 32px;
+    width: ${p => `var(--amino-size-${p.size})`};
     padding: 0;
   }
 
@@ -55,35 +56,6 @@ const AminoButton = styled.button<ButtonProps>`
     box-shadow: none;
     opacity: 0.5;
   }
-  ${props =>
-    props.size === 'md' &&
-    css`
-      height: 40px;
-      line-height: 40px;
-      &.only-icon {
-        width: 40px;
-      }
-    `}
-
-  ${props =>
-    props.size === 'lg' &&
-    css`
-      height: 48px;
-      line-height: 48px;
-      &.only-icon {
-        width: 48px;
-      }
-    `}
-
-  ${props =>
-    props.size === 'xl' &&
-    css`
-      height: 56px;
-      line-height: 56px;
-      &.only-icon {
-        width: 56px;
-      }
-    `}
 `;
 
 const Primary = styled(AminoButton)`
@@ -214,7 +186,7 @@ export type ButtonProps = {
   loading?: boolean;
   loadingText?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: Size;
   tabIndex?: number;
   tooltip?: ReactNode;
   type?: 'button' | 'reset' | 'submit';

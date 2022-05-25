@@ -10,6 +10,9 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
+  globals: {
+    JSX: 'readonly',
+  },
   plugins: ['jest', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {

@@ -8,6 +8,7 @@ import {
 } from 'react-select';
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import { Size } from 'src/types/Size';
 
 import { IOption, StyledReactSelect } from './StyledReactSelect';
 
@@ -29,6 +30,7 @@ export interface SelectProps<
    * onChange={changed => setExampleValue(changed?.value || null)}
    */
   onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
+  size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
   /**
    * @example
