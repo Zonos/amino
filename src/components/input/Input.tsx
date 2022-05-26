@@ -68,6 +68,7 @@ export const Input = ({
   value,
   valuePrefix,
   width,
+  ...props
 }: InputProps) => {
   const renderInput = () => {
     switch (type) {
@@ -92,6 +93,7 @@ export const Input = ({
             size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
+            {...props}
           />
         );
       case 'number':
@@ -115,6 +117,7 @@ export const Input = ({
             size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
+            {...props}
           />
         );
       default:
@@ -139,6 +142,7 @@ export const Input = ({
             type={type}
             value={value || ''}
             valuePrefix={valuePrefix}
+            {...props}
           />
         );
     }

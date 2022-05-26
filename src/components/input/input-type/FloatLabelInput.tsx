@@ -66,11 +66,12 @@ export const InputValuePrefix = styled.div`
   white-space: nowrap;
 `;
 
-const AminoInput = styled.input<{
+type TypeInput = {
   hasPrefix: boolean;
   hasSuffix: boolean;
   $size: Size;
-}>`
+};
+const AminoInput = styled.input<TypeInput>`
   height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
   box-sizing: border-box;
   position: relative;
@@ -246,6 +247,7 @@ export const FloatLabelInput = forwardRef<
       type,
       value,
       valuePrefix,
+      ...props
     },
     ref
   ) => {
@@ -279,6 +281,7 @@ export const FloatLabelInput = forwardRef<
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
+          {...props}
         />
         <StyledLabelInput hasPrefix={hasPrefix} data-label={label} />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
