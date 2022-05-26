@@ -285,6 +285,7 @@ export const Button = ({
           size={size}
           disabled={disabled}
           type={type}
+          {...props}
         >
           {content}
         </Warning>

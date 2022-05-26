@@ -123,6 +123,7 @@ export const Anchor = ({
   size,
   tabIndex,
   tooltip,
+  ...props
 }: AnchorProps) => {
   const anchorClassName = [
     className || '',
@@ -139,6 +140,7 @@ export const Anchor = ({
       size={size || 'sm'}
       disabled={disabled}
       onClick={onClick}
+      {...props}
     >
       {tooltip && <ReactTooltip />}
       {!iconRight && icon}

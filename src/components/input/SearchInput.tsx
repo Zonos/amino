@@ -76,6 +76,7 @@ export const SearchInput = ({
   required,
   tabIndex,
   value,
+  ...props
 }: InputProps) => {
   return (
     <StyledWrapper className={className}>
@@ -95,6 +96,7 @@ export const SearchInput = ({
         tabIndex={tabIndex}
         type="search"
         value={value || ''}
+        {...props}
       />
     </StyledWrapper>
   );
