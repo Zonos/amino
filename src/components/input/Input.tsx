@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { InputHTMLAttributes, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
@@ -35,7 +35,7 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 `;
 
-export type InputProps = {
+type InputType = {
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
 
@@ -43,6 +43,9 @@ export type InputProps = {
   inputPrefix?: ReactNode;
 } & FloatLabelInputProps &
   HelpTextProps;
+
+type InputProps = InputType &
+  Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
 
 export const Input = ({
   autoFocus,

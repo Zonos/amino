@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { Size } from 'src/types/Size';
 import styled from 'styled-components';
@@ -178,7 +178,7 @@ export type InputMode =
   | 'text'
   | 'url';
 
-export type FloatLabelInputProps = {
+type FloatLabelInputType = {
   /** A label that will be displayed above the input */
   label?: string;
 
@@ -221,6 +221,8 @@ export type FloatLabelInputProps = {
   size?: Size;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 };
+export type FloatLabelInputProps = FloatLabelInputType &
+  Omit<InputHTMLAttributes<HTMLInputElement>, keyof FloatLabelInputType>;
 
 export const FloatLabelInput = forwardRef<
   HTMLInputElement,
