@@ -44,7 +44,7 @@ type InputType = {
 } & FloatLabelInputProps &
   HelpTextProps;
 
-type InputProps = InputType &
+export type InputProps = InputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
 
 export const Input = ({
