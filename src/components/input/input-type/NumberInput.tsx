@@ -45,6 +45,7 @@ export const NumberInput = ({
   suffix,
   tabIndex,
   value,
+  ...props
 }: FloatLabelInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
@@ -93,6 +94,7 @@ export const NumberInput = ({
         tabIndex={tabIndex}
         type="number"
         value={value}
+        {...props}
       />
     </StyledWrapper>
   );

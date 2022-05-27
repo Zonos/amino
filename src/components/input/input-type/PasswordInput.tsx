@@ -49,6 +49,7 @@ export const PasswordInput = ({
   suffix,
   tabIndex,
   value,
+  ...props
 }: FloatLabelInputProps) => {
   const [inputType, setInputType] = useState('password');
   return (
@@ -87,6 +88,7 @@ export const PasswordInput = ({
         tabIndex={tabIndex}
         type={inputType}
         value={value}
+        {...props}
       />
     </StyledWrapper>
   );
