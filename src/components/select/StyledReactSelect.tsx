@@ -1,4 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, {
+  LegacyRef,
+  ReactNode,
+  Ref,
+  RefCallback,
+  RefObject,
+} from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
@@ -221,6 +227,12 @@ const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
   }
 `;
 
+const StyledSelectOptionWrapper = styled.div`
+  &:hover {
+    background-color: var(--amino-gray-l80) !important;
+  }
+`;
+
 const SelectedSingleOptionWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -297,7 +309,12 @@ export const CheckboxOptionComponent = <
     style.paddingLeft = 48;
   }
   return (
-    <div ref={innerRef} style={style} {...innerProps}>
+    <StyledSelectOptionWrapper
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={innerRef as any}
+      style={style}
+      {...innerProps}
+    >
       {selectProps.isMulti ? (
         <Checkbox
           checked={isSelected}
@@ -315,7 +332,7 @@ export const CheckboxOptionComponent = <
           {isSelected && <CheckCircleSolidIcon color="blue-500" size={16} />}
         </SelectedSingleOptionWrapper>
       )}
-    </div>
+    </StyledSelectOptionWrapper>
   );
 };
 
@@ -334,9 +351,6 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       AdditionalProps;
     return {
       ...provided,
-      '&:hover': {
-        borderColor: `var(--amino-gray-l80)`,
-      },
       borderColor: `var(--amino-gray-l60)`,
       borderRadius: 6,
       color: `var(--amino-gray-d40)`,
@@ -380,6 +394,8 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     return {
       ...provided,
       paddingTop: 8,
+      paddingLeft: 8,
+      paddingRight: 8,
     };
   },
   // menuPortal
@@ -398,14 +414,14 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   option: (provided, state) => {
     return {
       ...provided,
-      '&:hover': { backgroundColor: 'red' },
       color: state.isSelected ? 'var(--amino-blue-500)' : 'black',
       fontWeight: state.isSelected ? 500 : 400,
       backgroundColor: 'inherit',
       paddingTop: 7,
       paddingRight: 12,
       paddingBottom: 7,
-      paddingLeft: 16,
+      paddingLeft: 8,
+      borderRadius: '8px',
     };
   },
   placeholder: provided => {
