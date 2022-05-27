@@ -1,10 +1,4 @@
-import React, {
-  LegacyRef,
-  ReactNode,
-  Ref,
-  RefCallback,
-  RefObject,
-} from 'react';
+import React, { ReactNode } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
