@@ -2,7 +2,7 @@ import React from 'react';
 
 import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
+import { IconBase } from './_IconBase';
 
 /** @deprecated Use ArrowSwapIcon instead */
 export const ConvertIcon = ({ size, color }: IconProps) => (

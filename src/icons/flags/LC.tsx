@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { FlagIconBase } from 'src/icons/flag-icon/FlagIconBase';
+import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 
 type Props = {
   height: number;

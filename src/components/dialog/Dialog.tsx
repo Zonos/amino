@@ -6,7 +6,7 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleIcon';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled, { css } from 'styled-components';
 
-import { BaseDialog } from './BaseDialog';
+import { BaseDialog } from './_BaseDialog';
 
 const Header = styled.div`
   padding: var(--amino-space);

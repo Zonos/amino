@@ -4,7 +4,7 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import styled from 'styled-components';
 
-import { FloatLabelInput, type FloatLabelInputProps } from './FloatLabelInput';
+import { FloatLabelInput, type FloatLabelInputProps } from './_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;
