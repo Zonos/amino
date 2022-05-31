@@ -6,9 +6,9 @@ import { HelpText, HelpTextProps } from '../help-text/HelpText';
 import {
   FloatLabelInput,
   FloatLabelInputProps,
-} from './input-type/FloatLabelInput';
-import { NumberInput } from './input-type/NumberInput';
-import { PasswordInput } from './input-type/PasswordInput';
+} from './input-type/_FloatLabelInput';
+import { NumberInput } from './input-type/_NumberInput';
+import { PasswordInput } from './input-type/_PasswordInput';
 
 const Fields = styled.div`
   border-radius: var(--amino-radius);

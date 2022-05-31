@@ -1,3 +1,4 @@
+export * from './_IconBase';
 export * from './AdminIcon';
 export * from './ArrowDownIcon';
 export * from './ArrowLeftIcon';
@@ -59,7 +60,6 @@ export * from './GridIcon';
 export * from './HelloIcon';
 export * from './HelpIcon';
 export * from './HomeIcon';
-export * from './IconBase';
 export * from './ImageIcon';
 export * from './ImportIcon';
 export * from './InfoIcon';

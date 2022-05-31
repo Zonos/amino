@@ -89,7 +89,8 @@ const generateAllModulesContent = async (bundles: OutputChunk[]) => {
     .map(bundle => {
       const [, subFolderPath, fileName] =
         bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
-      if (!bundle.isEntry) {
+      // exclude all bundles that are not entry or just private components
+      if (!bundle.isEntry || /^_+/.test(fileName)) {
         return null;
       }
       return `import "./${subFolderPath || ''}${fileName}";`;

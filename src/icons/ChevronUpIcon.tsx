@@ -2,7 +2,7 @@ import React from 'react';
 
 import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
+import { IconBase } from './_IconBase';
 
 export const ChevronUpIcon = ({ size, color }: IconProps) => (
   <IconBase size={size} color={color}>
