@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Spinner, type SpinnerProps } from 'src/components/spinner/Spinner';
+import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 
 const SpinnerMeta: Meta = {
   title: 'Amino/Spinner',

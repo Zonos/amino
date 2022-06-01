@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Switch, type SwitchProps } from 'src/components/switch/Switch';
+import { Switch, SwitchProps } from 'src/components/switch/Switch';
 import { Default } from 'src/icons/flags/Default';
 import { withDesign } from 'storybook-addon-designs';
 

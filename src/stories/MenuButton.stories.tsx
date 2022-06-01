@@ -1,10 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import {
-  MenuButton,
-  type MenuButtonProps,
-} from 'src/components/button/MenuButton';
+import { MenuButton, MenuButtonProps } from 'src/components/button/MenuButton';
 import { withDesign } from 'storybook-addon-designs';
 
 const MenuButtonMeta: Meta = {

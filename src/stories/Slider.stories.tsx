@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Slider, type SliderProps } from 'src/components/radix/Slider';
+import { Slider, SliderProps } from 'src/components/radix/Slider';
 import { withDesign } from 'storybook-addon-designs';
 
 const SliderMeta: Meta = {

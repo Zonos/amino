@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
-import { Dialog, type DialogProps } from 'src/components/dialog/Dialog';
+import { Dialog, DialogProps } from 'src/components/dialog/Dialog';
 import { withDesign } from 'storybook-addon-designs';
 
 const DialogMeta: Meta = {

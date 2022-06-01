@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Card } from 'src/components/card/Card';
-import { Layout, type LayoutProps } from 'src/components/layout/Layout';
+import { Layout, LayoutProps } from 'src/components/layout/Layout';
 import {
   NavigationGroup,
   NavigationItem,

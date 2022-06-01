@@ -15,7 +15,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
 
-  h4 {
+  h3 {
     margin: 0;
     flex: 1;
     font-weight: 700;
@@ -94,6 +94,7 @@ scroll gradient in the top right */
 
 const Content = styled.div`
   padding: var(--amino-space);
+  padding-top: var(--amino-space-half);
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   /** 
@@ -143,7 +144,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   ) => (
     <BaseDialog data-theme={theme} open={open} width={width}>
       <Header>
-        <Text type="h4">{label}</Text>
+        <Text type="h3">{label}</Text>
         <Close onClick={onClose}>
           <RemoveCircleDuotoneIcon color="gray-200" size={20} />
         </Close>

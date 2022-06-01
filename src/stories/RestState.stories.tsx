@@ -1,10 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import {
-  RestState,
-  type RestStateProps,
-} from 'src/components/rest-state/RestState';
+import { RestState, RestStateProps } from 'src/components/rest-state/RestState';
 
 const RestStateMeta: Meta = {
   title: 'Amino/RestState',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Checkbox, type CheckboxProps } from 'src/components/checkbox/Checkbox';
+import { Checkbox, CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
