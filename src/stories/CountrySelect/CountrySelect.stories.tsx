@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import {
+  CountrySelect,
+  CountrySelectProps,
+} from 'src/components/select/CountrySelect';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { Select, type SelectProps } from '~/src/components/Select/Select';
-import { FlagIcon, IFlag } from '~/src/icons/FlagIcon/FlagIcon';
-import { ICountryOption } from '~/src/types/ICountry';
 
 import { getCountryUrls } from './getCountryUrls';
 import { useCountryOptions } from './useCountryOptions';
@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
 
 const CountrySelectMeta: Meta = {
   title: 'Amino/CountrySelect',
-  component: Select,
+  component: CountrySelect,
   decorators: [
     withDesign,
     Component => (
@@ -30,27 +30,17 @@ const CountrySelectMeta: Meta = {
 
 export default CountrySelectMeta;
 
-const CountrySelectTemplate: Story<SelectProps<ICountryOption>> = ({
-  ...props
-}: SelectProps<ICountryOption>) => {
+const CountrySelectTemplate: Story<CountrySelectProps> = ({ ...props }) => {
   const { dashboardUrl } = getCountryUrls();
-  const [value, setValue] = useState<ICountryOption | null>(null);
-  const { countryOptions } = useCountryOptions({
+  const [value, setValue] = useState<string | null>(null);
+  const countryOptions = useCountryOptions({
     dashboardUrl,
   });
-  const firstCountry = Array.isArray(value) ? value.find(Boolean) : value;
   return (
-    <Select
+    <CountrySelect
       {...props}
-      label="Select country"
-      icon={
-        <FlagIcon
-          code={(firstCountry?.code as IFlag) || 'Default'}
-          iconScale="medium"
-        />
-      }
-      options={countryOptions}
-      onChange={setValue}
+      countryOptions={countryOptions}
+      onChange={option => setValue(option?.value || null)}
       value={value}
     />
   );

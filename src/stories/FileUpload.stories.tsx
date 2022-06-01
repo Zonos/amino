@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   FileUpload,
-  type FileUploadProps,
-} from '~/src/components/FileUpload/FileUpload';
+  FileUploadProps,
+} from 'src/components/file-upload/FileUpload';
+import { withDesign } from 'storybook-addon-designs';
 
 const ListMeta: Meta = {
   title: 'Amino/FileUpload',

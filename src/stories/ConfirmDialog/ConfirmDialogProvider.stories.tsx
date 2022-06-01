@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { ConfirmContextProvider } from 'src/components/confirm-dialog/ConfirmContext';
 import { withDesign } from 'storybook-addon-designs';
 
-import { ConfirmContextProvider } from '../..';
 import { ConfirmConsumer } from './ConfirmConsumer';
 
 const ToastContextProviderMeta: Meta = {

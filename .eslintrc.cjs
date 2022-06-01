@@ -10,6 +10,9 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
   ],
+  globals: {
+    JSX: 'readonly',
+  },
   plugins: ['jest', '@typescript-eslint', 'simple-import-sort', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -50,7 +53,8 @@ module.exports = {
     'import/no-internal-modules': [
       'error',
       {
-        forbid: ['**/src/**/index.ts'],
+        // allow to access to index.ts if that's types folder
+        forbid: ['**/src/!(types)/**/index.ts*', '**/src/index.ts*'],
       },
     ],
     'import/no-unresolved': 'off', // Typescript takes care of this
@@ -75,6 +79,10 @@ module.exports = {
     ],
   },
   settings: {
-    'import/resolver': 'parcel2',
+    'import/resolver': {
+      node: {
+        paths: [__dirname],
+      },
+    },
   },
 };

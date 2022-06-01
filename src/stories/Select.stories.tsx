@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Select, SelectProps } from 'src/components/select/Select';
+import { FileIcon } from 'src/icons/FileIcon';
+import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { Select, type SelectProps } from '~/src/components/Select/Select';
-import { FileIcon } from '~/src/icons/FileIcon';
-import { FlagIcon } from '~/src/icons/FlagIcon/FlagIcon';
 
 const StyledWrapper = styled.div`
   width: 412px;

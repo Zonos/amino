@@ -1,13 +1,12 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   RadioGroup,
   RadioGroupItem,
   RadioGroupProps,
-} from '~/src/components/Radio/RadioGroup';
+} from 'src/components/radio/RadioGroup';
+import { withDesign } from 'storybook-addon-designs';
 
 const RadioMeta: Meta = {
   title: 'Amino/RadioGroup',

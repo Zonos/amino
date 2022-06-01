@@ -1,13 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { FlagIcon, IFlag, IFlagScale } from '~/src/icons/FlagIcon/FlagIcon';
-import {
-  ICountryOption,
-  IGetCountriesResponse,
-  IRegionCountryOption,
-} from '~/src/types/ICountry';
-import { prepCountryOptions } from '~/src/utils/prepCountryOptions';
-import { prepRegionCountryOptions } from '~/src/utils/prepRegionCountryOptions';
+import { FlagIcon, IFlag, IFlagScale } from 'src/icons/flag-icon/FlagIcon';
+import { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';
+import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
 export const useCountryOptions = ({
   dashboardUrl,
@@ -17,9 +12,6 @@ export const useCountryOptions = ({
   iconScale?: IFlagScale;
 }) => {
   const [countryOptions, setCountryOptions] = useState<ICountryOption[]>([]);
-  const [regionCountryOptions, setRegionCountryOptions] = useState<
-    IRegionCountryOption[]
-  >([]);
 
   const requestCountries = useCallback(async () => {
     const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
@@ -31,8 +23,6 @@ export const useCountryOptions = ({
         icon: <FlagIcon code={option.code as IFlag} iconScale={iconScale} />,
       }));
       setCountryOptions(countries);
-      const regionCountries = prepRegionCountryOptions({ countries });
-      setRegionCountryOptions(regionCountries);
     }
   }, [dashboardUrl, iconScale]);
 
@@ -40,5 +30,5 @@ export const useCountryOptions = ({
     requestCountries();
   }, [requestCountries]);
 
-  return { countryOptions, regionCountryOptions };
+  return countryOptions;
 };

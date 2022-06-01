@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { IOption } from 'src/components/select/StyledReactSelect';
 
 export const regions = [
   'Africa',
@@ -27,15 +27,16 @@ export interface ICountry {
   upsCode: string | null;
   zipRegex: string | null;
 }
-export interface ICountryOption extends ICountry {
-  icon?: ReactNode;
-  label: string;
+export interface ICountryOption extends ICountry, IOption {
   phoneCode: string[];
-  value: string;
 }
 export interface IRegionCountryOption {
   label: IRegion;
   options: ICountryOption[];
+}
+export interface IUnavailableCountry {
+  code: string;
+  message: string;
 }
 /** @desc /api/address/getCountries */
 export interface IGetCountriesResponse {

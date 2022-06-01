@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Tag, TagProps } from 'src/components/tag/Tag';
+import { CubeIcon } from 'src/icons/CubeIcon';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Tag, type TagProps } from '~/src/components/Tag/Tag';
-import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const TagMeta: Meta = {
   title: 'Amino/Tag',

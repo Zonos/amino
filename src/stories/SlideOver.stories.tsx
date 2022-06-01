@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/button/Button';
+import { SlideOver, SlideOverProps } from 'src/components/slide-over/SlideOver';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Button } from '~/src/components/Button/Button';
-import {
-  SlideOver,
-  type SlideOverProps,
-} from '~/src/components/SlideOver/SlideOver';
 
 const SlideOverMeta: Meta = {
   title: 'Amino/SlideOver',

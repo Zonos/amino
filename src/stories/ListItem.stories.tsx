@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { ListItem, Props } from 'src/components/list-item/ListItem';
 import { withDesign } from 'storybook-addon-designs';
-
-import { ListItem, Props } from '~/src/components/ListItem/ListItem';
 
 const ListItemMeta: Meta = {
   title: 'Amino/ListItem',

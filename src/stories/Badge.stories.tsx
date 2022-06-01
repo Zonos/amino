@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Badge, BadgeProps } from 'src/components/badge/Badge';
+import { CubeIcon } from 'src/icons/CubeIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
-
-import { Badge, type BadgeProps } from '~/src/components/Badge/Badge';
-import { CubeIcon } from '~/src/icons/CubeIcon';
 
 const BadgeMeta: Meta = {
   title: 'Amino/Badge',

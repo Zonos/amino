@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
+import { SearchInput } from 'src/components/input/SearchInput';
+import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
+import * as icons from 'src/icons/IconIndex';
+import { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
-
-import { SearchInput } from '~/src/components/Input/SearchInput';
-import { VStack } from '~/src/components/Stack/VStack';
-import { Text } from '~/src/components/Text/Text';
-import * as icons from '~/src/icons/DynamicIcon/IconIndex';
-import { type IconProps } from '~/src/types/IconProps';
 
 const IconsMeta: Meta = {
   title: 'Amino/Icons',
@@ -85,7 +84,7 @@ export const AllIcons = ({ size }: IconProps) => {
                   <></>
                 </IconComponent>
                 <div>{iconName}</div>
-                {isDeprecated && <Text type="smallheader">(Deprecated)</Text>}
+                {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
               </StyledIcon>
             );
           })}

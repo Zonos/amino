@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-
-import { Select } from '~/src/components/Select/Select';
-import { HStack, type HStackProps } from '~/src/components/Stack/HStack';
+import { Select } from 'src/components/select/Select';
+import { HStack } from 'src/components/stack/HStack';
+import { StackProps } from 'src/components/stack/Stack';
 
 const HStackMeta: Meta = {
   title: 'Amino/HStack',
@@ -13,7 +13,7 @@ const HStackMeta: Meta = {
 
 export default HStackMeta;
 
-const Template: Story<HStackProps> = ({ spacing }: HStackProps) => (
+const Template: Story<StackProps> = ({ spacing }: StackProps) => (
   <HStack spacing={spacing}>
     <Select
       label="Frankfurters"

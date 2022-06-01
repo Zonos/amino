@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
-import { Menu, MenuItem, Text, TextAvatar, VStack } from 'src';
+import { DropdownAnimationInverse } from 'src/animations/DropdownAnimation';
+import { Menu } from 'src/components/menu/Menu';
+import { MenuItem } from 'src/components/menu/MenuItem';
+import { VStack } from 'src/components/stack/VStack';
+import { Surface } from 'src/components/surface/Surface';
+import { Text } from 'src/components/text/Text';
+import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 import styled from 'styled-components';
-
-import { DropdownAnimationInverse } from '~/src/animations/DropdownAnimation';
-import { Surface } from '~/src/components/Surface/Surface';
-import { Depth } from '~/src/types/Depth';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`
   border-top: var(--amino-border);
@@ -127,7 +129,7 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
         </UserInfo>
 
         {open && (
-          <AnimatedSurface dense depth={Depth.depth16}>
+          <AnimatedSurface dense depth="depth16">
             <Menu>
               <StoreItem onClick={() => {}}>
                 <TextAvatar label="Default" />
