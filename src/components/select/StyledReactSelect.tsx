@@ -416,6 +416,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       paddingBottom: 7,
       paddingLeft: 8,
       borderRadius: '8px',
+      cursor: 'pointer',
     };
   },
   placeholder: provided => {
