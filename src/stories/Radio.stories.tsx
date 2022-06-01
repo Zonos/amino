@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Radio, type RadioProps } from 'src/components/radio/Radio';
+import { Radio, RadioProps } from 'src/components/radio/Radio';
 import { withDesign } from 'storybook-addon-designs';
 
 const RadioMeta: Meta = {

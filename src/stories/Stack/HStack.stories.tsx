@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
-import { type StackProps } from 'src/components/stack/Stack';
+import { StackProps } from 'src/components/stack/Stack';
 
 const HStackMeta: Meta = {
   title: 'Amino/HStack',

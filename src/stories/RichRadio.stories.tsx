@@ -1,10 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import {
-  RichRadio,
-  type RichRadioProps,
-} from 'src/components/rich-radio/RichRadio';
+import { RichRadio, RichRadioProps } from 'src/components/rich-radio/RichRadio';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
 import { withDesign } from 'storybook-addon-designs';
