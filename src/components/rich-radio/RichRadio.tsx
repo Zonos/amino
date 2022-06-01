@@ -33,7 +33,7 @@ const StyledItem = styled.button`
   appearance: none;
   background: white;
   padding: var(--amino-space-half);
-  padding-right: var(--amino-space-double);
+  padding-right: calc(var(--amino-space-double) + 10px);
   border: var(--amino-border);
   border-radius: var(--amino-radius);
   text-align: left;
@@ -82,6 +82,7 @@ const StyledRadioGroup = styled(VStack)`
 `;
 const StyledTooltip = styled(ReactTooltip)`
   max-width: 350px;
+  border-radius: 10px;
 `;
 
 type RichRadioItemType = {
