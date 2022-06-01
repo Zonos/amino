@@ -3,11 +3,11 @@ import React from 'react';
 import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
 
-const AminoNotice = styled.aside`
+const AminoNotice = styled.div`
   background: var(--amino-gray-100);
   border-radius: var(--amino-radius);
   color: var(--amino-text-color);
-  padding: var(--amino-space);
+  padding: var(--amino-space-half);
 
   &,
   & > * {
