@@ -81,8 +81,10 @@ const StyledRadioGroup = styled(VStack)`
   }
 `;
 const StyledTooltip = styled(ReactTooltip)`
-  max-width: 350px;
-  border-radius: 10px;
+  && {
+    max-width: 350px;
+    border-radius: 10px;
+  }
 `;
 
 type RichRadioItemType = {
