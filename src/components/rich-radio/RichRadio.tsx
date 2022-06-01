@@ -133,7 +133,11 @@ export const RichRadio = ({
           data-state={item.value === selectedValue ? 'checked' : ''}
         >
           {item.tooltip && (
-            <StyledTooltip effect="solid" {...item.tooltipSetting} />
+            <StyledTooltip
+              effect="solid"
+              arrowColor="transparent"
+              {...item.tooltipSetting}
+            />
           )}
           {renderCustomText ? (
             renderCustomText(item)
