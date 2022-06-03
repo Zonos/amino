@@ -351,6 +351,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       height: `var(--amino-size-${size})`,
       flexWrap: 'inherit',
       minHeight: `var(--amino-size-${size})`,
+      boxShadow: state.isFocused ? `var(--amino-glow-blue)` : '',
     };
   },
   dropdownIndicator: provided => {

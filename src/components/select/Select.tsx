@@ -10,7 +10,7 @@ import {
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { Size } from 'src/types/Size';
 
-import { IOption, StyledReactSelect } from './StyledReactSelect';
+import { IOption, StyledReactSelect } from './_StyledReactSelect';
 
 type RequiredProps = 'options' | 'value';
 

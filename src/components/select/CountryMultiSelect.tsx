@@ -18,8 +18,8 @@ import {
 } from 'src/types/ICountry';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
+import { IOption } from './_StyledReactSelect';
 import { MultiSelect } from './MultiSelect';
-import { IOption } from './StyledReactSelect';
 
 type AdditionalProps = {
   allSelected: boolean;
