@@ -17,7 +17,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     display: inline-block;
     filter: blur(0);
     transform-origin: left top;
-    transition: all 0.5s ease;
+    transition: var(--amino-transition);
     margin-left: var(--amino-space-half);
     top: calc(50% - var(--amino-text-base) / 2);
   }

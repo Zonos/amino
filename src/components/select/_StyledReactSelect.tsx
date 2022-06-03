@@ -77,7 +77,7 @@ const IconWrapper = styled.div`
 
 const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   position: absolute;
-  transition: all 0.5s ease;
+  transition: var(--amino-transition);
   font-size: var(--amino-text-base);
   line-height: var(--amino-text-base);
   transform-origin: left top;
@@ -190,7 +190,9 @@ const Control = <
           hasValue ? 'has-value' : '',
           icon ? 'has-icon' : '',
           isFocused ? 'is-focused' : '',
-          label ? 'has-label' : '',
+          label || (Array.isArray(value) && value.length > 1)
+            ? 'has-label'
+            : '',
           size,
         ].join(' ')
       )}
