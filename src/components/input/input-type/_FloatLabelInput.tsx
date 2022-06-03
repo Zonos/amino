@@ -61,7 +61,7 @@ export const InputValuePrefix = styled.div`
   order: 2;
   align-items: flex-end;
   padding-left: var(--amino-space-half);
-  padding-bottom: calc(var(--amino-space-quarter) + 3.5px);
+  padding-bottom: calc(var(--amino-space-quarter));
   color: var(--amino-gray-d40);
   white-space: nowrap;
 `;
