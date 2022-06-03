@@ -17,7 +17,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     display: inline-block;
     filter: blur(0);
     transform-origin: left top;
-    transition: all 0.5s ease;
+    transition: var(--amino-transition);
     margin-left: var(--amino-space-half);
     top: calc(50% - var(--amino-text-base) / 2);
   }
@@ -61,7 +61,7 @@ export const InputValuePrefix = styled.div`
   order: 2;
   align-items: flex-end;
   padding-left: var(--amino-space-half);
-  padding-bottom: calc(var(--amino-space-quarter) + 3.5px);
+  padding-bottom: calc(var(--amino-space-quarter));
   color: var(--amino-gray-d40);
   white-space: nowrap;
 `;
@@ -99,7 +99,7 @@ const AminoInput = styled.input<TypeInput>`
   }
 
   ::placeholder {
-    transition: 1s all ease;
+    transition: var(--amino-transition);
     opacity: 0;
   }
 

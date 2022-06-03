@@ -10,7 +10,7 @@
   --amino-v3-text-xl: 1.375rem;
   --amino-v3-text-lg: 1.125rem;
   --amino-v3-text-base: 0.875rem;
-  --amino-v3-text-sm: 0.688rem;
+  --amino-v3-text-sm: 0.75rem;
   --amino-v3-text-xs: 0.562rem;
 
   --amino-text-xxxxl: var(--amino-v3-text-xxxxxl);
@@ -233,13 +233,13 @@
 
   --amino-error: var(--amino-red-500);
 
-  --amino-glow-error: 0 0 0 2px var(--amino-red-500);
-  --amino-glow-blue: 0 0 0 2px var(--amino-primary);
-  --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
-  --amino-glow-red: 0 0 0 2px var(--amino-red-alpha);
-  --amino-glow-orange: 0 0 0 2px var(--amino-orange-alpha);
-  --amino-glow-green: 0 0 0 2px var(--amino-green-alpha);
-  --amino-glow-purple: 0 0 0 2px var(--amino-purple-alpha);
+  --amino-glow-error: 0 0 0 1px var(--amino-red-500);
+  --amino-glow-blue: 0 0 0 1px var(--amino-primary);
+  --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-alpha);
+  --amino-glow-red: 0 0 0 1px var(--amino-red-alpha);
+  --amino-glow-orange: 0 0 0 1px var(--amino-orange-alpha);
+  --amino-glow-green: 0 0 0 1px var(--amino-green-alpha);
+  --amino-glow-purple: 0 0 0 1px var(--amino-purple-alpha);
 
   --amino-primary: var(--amino-blue-500);
   --amino-primary-light: var(--amino-blue-400);

@@ -15,8 +15,8 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
+import { IOption } from './_StyledReactSelect';
 import { Select } from './Select';
-import { IOption } from './StyledReactSelect';
 
 const OptionLabel = styled.div`
   display: flex;

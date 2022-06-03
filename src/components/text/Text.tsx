@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Subtitle = styled.span`
-  font-size: 11px;
+  font-size: var(--amino-text-sm);
   line-height: 16px;
   color: var(--amino-gray-d60);
 `;
