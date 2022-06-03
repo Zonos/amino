@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { AnchorHTMLAttributes, ReactNode } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import styled, { css } from 'styled-components';
@@ -99,7 +99,7 @@ const StyledAnchor = styled(AminoAnchor)`
   }
 `;
 
-export type AnchorProps = {
+type AnchorType = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -111,6 +111,9 @@ export type AnchorProps = {
   tabIndex?: number;
   tooltip?: ReactNode;
 };
+
+export type AnchorProps = AnchorType &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof AnchorType>;
 
 export const Anchor = ({
   children,
