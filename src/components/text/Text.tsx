@@ -3,13 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Subtitle = styled.span`
-  font-size: 11px;
+  font-size: var(--amino-text-sm);
   line-height: 16px;
   color: var(--amino-gray-d60);
 `;
 
 const SmallHeader = styled.span`
-  font-size: 13px;
+  font-size: var(--amino-text-md);
   font-weight: 500;
   letter-spacing: 0.05em;
   opacity: 0.5;
