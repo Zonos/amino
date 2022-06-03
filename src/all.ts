@@ -403,7 +403,6 @@ import "./components/rich-checkbox/RichCheckbox";
 import "./components/rich-radio/RichRadio";
 import "./components/select/CountryMultiSelect";
 import "./components/select/MultiSelect";
-import "./components/select/StyledReactSelect";
 import "./components/select/CountryPhoneSelect";
 import "./components/select/Select";
 import "./components/select/CountrySelect";
