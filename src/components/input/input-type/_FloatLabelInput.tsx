@@ -99,7 +99,7 @@ const AminoInput = styled.input<TypeInput>`
   }
 
   ::placeholder {
-    transition: 1s all ease;
+    transition: var(--amino-transition);
     opacity: 0;
   }
 
