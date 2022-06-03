@@ -69,7 +69,7 @@ const Label = styled.span`
 `;
 
 const StyledRadioGroup = styled(VStack)`
-  button[data-state='checked'] {
+  ${StyledItem}[data-state='checked'] {
     background: var(--amino-blue-100);
     border: 1px solid var(--amino-blue-300);
     color: var(--amino-blue-500);
