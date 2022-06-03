@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.0.53",
+  "version": "3.0.54",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -62,6 +62,10 @@
     "typescript": "4.6.2"
   },
   "dependencies": {
+    "@dnd-kit/core": "^5.0.3",
+    "@dnd-kit/modifiers": "^5.0.0",
+    "@dnd-kit/sortable": "^6.0.1",
+    "@dnd-kit/utilities": "^3.1.0",
     "@radix-ui/react-slider": "^0.1.4",
     "react-dropzone": "^12.0.4",
     "react-select": "^5.2.2",
