@@ -9,7 +9,7 @@ const Subtitle = styled.span`
 `;
 
 const SmallHeader = styled.span`
-  font-size: var(--amino-text-md);
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.05em;
   opacity: 0.5;
