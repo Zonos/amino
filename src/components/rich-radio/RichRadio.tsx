@@ -87,25 +87,26 @@ const StyledTooltip = styled(ReactTooltip)`
   }
 `;
 
-type RichRadioItemType = {
+type RichRadioItemType<T extends string> = {
   label: ReactNode;
   subtitle?: string;
-  value: string;
+  value: T;
+  disabled?: boolean;
   tooltip?: string;
   tooltipSetting?: Omit<TooltipProps, 'title' | 'children'>;
 };
 
-export type RichRadioProps = {
-  onChange: (value: string) => void;
-  renderCustomText?: (option: RichRadioItemType) => ReactNode;
-  items: RichRadioItemType[];
-  value: string;
+export type RichRadioProps<T extends string = string> = {
+  onChange: (value: T) => void;
+  renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
+  items: RichRadioItemType<T>[];
+  value: T;
   className?: string;
   icon?: ReactNode;
   activeIcon?: ReactNode;
 };
 
-export const RichRadio = ({
+export const RichRadio = <T extends string>({
   onChange,
   renderCustomText,
   items,
@@ -113,10 +114,10 @@ export const RichRadio = ({
   icon,
   className,
   activeIcon,
-}: RichRadioProps) => {
+}: RichRadioProps<T>) => {
   const [selectedValue, setSelectedValue] = useState(value);
 
-  const handleChange = (v: string) => {
+  const handleChange = (v: T) => {
     setSelectedValue(v);
     onChange(v);
   };
@@ -127,6 +128,7 @@ export const RichRadio = ({
         <StyledItem
           key={item.value}
           data-tip={item.tooltip}
+          data-disabled={item.disabled}
           onClick={() => {
             handleChange(item.value);
           }}
