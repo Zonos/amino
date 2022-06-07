@@ -16,7 +16,7 @@ type CountrySelectType = {
 };
 
 export type CountrySelectProps = CountrySelectType &
-  Omit<SelectProps, keyof CountrySelectType>;
+  Omit<SelectProps, keyof CountrySelectType | 'options'>;
 
 export const CountrySelect = ({
   autoFocus,
@@ -26,6 +26,7 @@ export const CountrySelect = ({
   onChange,
   placeholder,
   value,
+  ...props
 }: CountrySelectProps) => {
   const filteredOptions = countryOptions
     .map(option =>
@@ -54,6 +55,7 @@ export const CountrySelect = ({
       onChange={onChange}
       placeholder={placeholder}
       value={selected}
+      {...props}
     />
   );
 };
