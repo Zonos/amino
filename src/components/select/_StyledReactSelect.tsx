@@ -224,6 +224,7 @@ const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
 `;
 
 const StyledSelectOptionWrapper = styled.div`
+  &.is-focused,
   &:hover {
     background-color: var(--amino-gray-l80) !important;
   }
@@ -296,10 +297,13 @@ export const CheckboxOptionComponent = <
     innerProps,
     isDisabled,
     isSelected,
+    isFocused,
+    className,
     selectProps,
   } = props;
   const { hasGroups } = selectProps as typeof props['selectProps'] &
     AdditionalProps;
+
   const { color, ...style } = getStyles('option', props) as React.CSSProperties;
   if (hasGroups) {
     style.paddingLeft = 48;
@@ -309,6 +313,7 @@ export const CheckboxOptionComponent = <
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={innerRef as any}
       style={style}
+      className={[className, isFocused ? 'is-focused' : ''].join(' ')}
       {...innerProps}
     >
       {selectProps.isMulti ? (

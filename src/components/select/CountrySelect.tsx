@@ -11,7 +11,6 @@ type CountrySelectType = {
   filter?: (country: ICountryOption) => boolean;
   label?: string;
   onChange: SelectProps['onChange'];
-  onKeyDown: SelectProps['onKeyDown'];
   placeholder?: string;
   value: string | null;
 };
@@ -25,7 +24,6 @@ export const CountrySelect = ({
   filter = Boolean,
   label = 'Select country',
   onChange,
-  onKeyDown,
   placeholder = 'Enter in your country name',
   value,
 }: CountrySelectProps) => {
@@ -54,7 +52,6 @@ export const CountrySelect = ({
       options={filteredOptions}
       label={label}
       onChange={onChange}
-      onKeyDown={onKeyDown}
       placeholder={placeholder}
       value={selected}
     />
