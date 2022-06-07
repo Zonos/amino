@@ -24,7 +24,7 @@ export const CountrySelect = ({
   filter = Boolean,
   label = 'Select country',
   onChange,
-  placeholder = 'Enter in your country name',
+  placeholder,
   value,
 }: CountrySelectProps) => {
   const filteredOptions = countryOptions
