@@ -485,6 +485,7 @@ export const StyledReactSelect = <
   size = 'xl',
   styles,
   placeholder,
+  menuPosition = 'fixed',
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
@@ -526,6 +527,7 @@ export const StyledReactSelect = <
             ...components,
           } as SelectComponentsConfig<Option, IsMulti, Group>
         }
+        menuPosition={menuPosition}
         placeholder={placeholder || ''}
         styles={
           {
