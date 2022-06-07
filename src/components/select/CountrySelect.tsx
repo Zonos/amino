@@ -5,15 +5,19 @@ import { ICountryOption } from 'src/types';
 
 import { Select, SelectProps } from './Select';
 
-export type CountrySelectProps = {
+type CountrySelectType = {
   autoFocus?: SelectProps['autoFocus'];
   countryOptions: ICountryOption[];
   filter?: (country: ICountryOption) => boolean;
   label?: string;
   onChange: SelectProps['onChange'];
+  onKeyDown: SelectProps['onKeyDown'];
   placeholder?: string;
   value: string | null;
 };
+
+export type CountrySelectProps = CountrySelectType &
+  Omit<SelectProps, keyof CountrySelectType>;
 
 export const CountrySelect = ({
   autoFocus,
@@ -21,6 +25,7 @@ export const CountrySelect = ({
   filter = Boolean,
   label = 'Select country',
   onChange,
+  onKeyDown,
   placeholder = 'Enter in your country name',
   value,
 }: CountrySelectProps) => {
@@ -49,6 +54,7 @@ export const CountrySelect = ({
       options={filteredOptions}
       label={label}
       onChange={onChange}
+      onKeyDown={onKeyDown}
       placeholder={placeholder}
       value={selected}
     />
