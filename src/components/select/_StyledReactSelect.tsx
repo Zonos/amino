@@ -484,6 +484,7 @@ export const StyledReactSelect = <
   label,
   size = 'xl',
   styles,
+  placeholder,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
@@ -525,6 +526,7 @@ export const StyledReactSelect = <
             ...components,
           } as SelectComponentsConfig<Option, IsMulti, Group>
         }
+        placeholder={placeholder || ''}
         styles={
           {
             ...styles,
