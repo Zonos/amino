@@ -5,7 +5,7 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 export const SettingIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+  <IconBase size={size} color={color} viewBox="0 0 24 24">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -22,7 +22,7 @@ export const SettingIcon = ({ size, color }: IconProps) => (
 );
 
 export const SettingSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+  <IconBase size={size} color={color} viewBox="0 0 24 24">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -33,7 +33,7 @@ export const SettingSolidIcon = ({ size, color }: IconProps) => (
 );
 
 export const SettingDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+  <IconBase size={size} color={color} viewBox="0 0 24 24">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
