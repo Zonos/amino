@@ -6,8 +6,8 @@ import { IconBase } from './_IconBase';
 
 /** @deprecated Use CheckMarkIcon instead */
 export const CheckIcon = forwardRef<SVGSVGElement, IconProps>(
-  ({ size, color }, ref) => (
-    <IconBase size={size} color={color} ref={ref}>
+  ({ size, color, className }, ref) => (
+    <IconBase size={size} color={color} className={className} ref={ref}>
       <path
         d="M2.5 7.5L6 12l7-7.5"
         stroke="currentColor"

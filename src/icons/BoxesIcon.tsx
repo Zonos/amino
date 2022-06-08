@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const BoxesIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BoxesIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const BoxesIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BoxesSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BoxesSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -38,8 +38,8 @@ export const BoxesSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BoxesDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BoxesDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10 2C8.89543 2 8 2.89543 8 4V8C8 9.10457 8.89543 10 10 10H14C15.1046 10 16 9.10457 16 8V4C16 2.89543 15.1046 2 14 2H10Z"
       fill="currentColor"

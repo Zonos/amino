@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use RemoveIcon instead */
-export const XIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const XIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

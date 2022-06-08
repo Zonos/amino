@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use DislikeIcon instead */
-export const ThumbsDownIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ThumbsDownIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M20 14C20 14.5523 19.5523 15 19 15C18.4477 15 18 14.5523 18 14V5C18 4.44771 18.4477 4 19 4C19.5523 4 20 4.44772 20 5V14Z"
       fill="currentColor"

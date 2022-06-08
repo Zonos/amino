@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const DutiesIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DutiesIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -27,8 +27,8 @@ export const DutiesIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const DutiesSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DutiesSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M13 14.5C13 13.3954 13.8954 12.5 15 12.5H21C22.1046 12.5 23 13.3954 23 14.5V20.5C23 21.6046 22.1046 22.5 21 22.5H15C13.8954 22.5 13 21.6046 13 20.5V14.5Z"
       fill="currentColor"
@@ -46,8 +46,8 @@ export const DutiesSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const DutiesDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DutiesDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M13 14.5C13 13.3954 13.8954 12.5 15 12.5H21C22.1046 12.5 23 13.3954 23 14.5V20.5C23 21.6046 22.1046 22.5 21 22.5H15C13.8954 22.5 13 21.6046 13 20.5V14.5Z"
       fill="currentColor"

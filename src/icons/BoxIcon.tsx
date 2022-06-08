@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 /** @deprecated Use CubeIcon instead */
-export const BoxIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BoxIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

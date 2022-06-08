@@ -17,8 +17,8 @@ export const CheckMarkIcon = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-export const CheckMarkSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CheckMarkSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -28,8 +28,8 @@ export const CheckMarkSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CheckMarkDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CheckMarkDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

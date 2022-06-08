@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const OpenExternalIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const OpenExternalIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -19,8 +19,12 @@ export const OpenExternalIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const OpenExternalSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const OpenExternalSolidIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -30,8 +34,12 @@ export const OpenExternalSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const OpenExternalDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const OpenExternalDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M17.2518 3.0442C16.7106 2.99998 16.0463 2.99999 15.2413 3H8.75868H8.75866C7.95371 2.99999 7.28936 2.99998 6.74818 3.04419C6.18608 3.09012 5.66938 3.18868 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43598 5.18404C3.18868 5.66937 3.09012 6.18608 3.04419 6.74817C2.99998 7.28936 2.99999 7.95371 3 8.75866V8.75868V15.2413V15.2413C2.99999 16.0463 2.99998 16.7106 3.04419 17.2518C3.09012 17.8139 3.18868 18.3306 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.66937 20.8113 6.18608 20.9099 6.74817 20.9558C7.28936 21 7.95372 21 8.75868 21H15.2413H15.2413C16.0463 21 16.7106 21 17.2518 20.9558C17.8139 20.9099 18.3306 20.8113 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.8113 18.3306 20.9099 17.8139 20.9558 17.2518C21 16.7106 21 16.0463 21 15.2413V8.7587V8.75868C21 7.95372 21 7.28937 20.9558 6.74818C20.9099 6.18608 20.8113 5.66937 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43598C18.3306 3.18868 17.8139 3.09012 17.2518 3.0442Z"
       fill="currentColor"

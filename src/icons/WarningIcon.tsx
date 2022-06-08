@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const WarningIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const WarningIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -23,8 +23,8 @@ export const WarningIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const WarningSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const WarningSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -34,8 +34,8 @@ export const WarningSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const WarningDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const WarningDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M9.31662 4.65952C10.422 2.44773 13.5783 2.44774 14.6837 4.65954L20.6805 16.6588C21.6774 18.6535 20.2269 21 17.997 21H6.00314C3.77322 21 2.32272 18.6535 3.31962 16.6588L9.31662 4.65952Z"
       fill="currentColor"

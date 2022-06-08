@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const MenuIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MenuIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M5 7C5 6.44772 5.44772 6 6 6H18C18.5523 6 19 6.44772 19 7C19 7.55228 18.5523 8 18 8H6C5.44772 8 5 7.55228 5 7Z"
       fill="currentColor"
@@ -21,8 +21,8 @@ export const MenuIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const MenuSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MenuSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M5 7C5 6.44772 5.44772 6 6 6H18C18.5523 6 19 6.44772 19 7C19 7.55228 18.5523 8 18 8H6C5.44772 8 5 7.55228 5 7Z"
       fill="currentColor"
@@ -38,8 +38,8 @@ export const MenuSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const MenuDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MenuDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M5 17C5 16.4477 5.44772 16 6 16H18C18.5523 16 19 16.4477 19 17C19 17.5523 18.5523 18 18 18H6C5.44772 18 5 17.5523 5 17Z"
       fill="#3D3D40"

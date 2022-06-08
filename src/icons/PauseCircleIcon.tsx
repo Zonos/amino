@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const PauseCircleIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PauseCircleIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -23,8 +23,8 @@ export const PauseCircleIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const PauseCircleSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PauseCircleSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -34,8 +34,12 @@ export const PauseCircleSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const PauseCircleDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PauseCircleDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
       fill="currentColor"

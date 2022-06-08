@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const FileUploadIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const FileUploadIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -19,8 +19,8 @@ export const FileUploadIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const FileUploadSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const FileUploadSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M19.7071 15.2929C19.3166 14.9024 18.6834 14.9024 18.2929 15.2929L16.2929 17.2929C15.9024 17.6834 15.9024 18.3166 16.2929 18.7071C16.6834 19.0976 17.3166 19.0976 17.7071 18.7071L18 18.4142V22C18 22.5523 18.4477 23 19 23C19.5523 23 20 22.5523 20 22V18.4142L20.2929 18.7071C20.6834 19.0976 21.3166 19.0976 21.7071 18.7071C22.0976 18.3166 22.0976 17.6834 21.7071 17.2929L19.7071 15.2929Z"
       fill="currentColor"
@@ -36,8 +36,12 @@ export const FileUploadSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const FileUploadDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const FileUploadDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M4 6.8C4 5.11984 4 4.27976 4.32698 3.63803C4.6146 3.07354 5.07354 2.6146 5.63803 2.32698C6.27976 2 7.11984 2 8.8 2H14.6745C15.1637 2 15.4083 2 15.6385 2.05526C15.8425 2.10425 16.0376 2.18506 16.2166 2.29472C16.4184 2.4184 16.5914 2.59135 16.9373 2.93726L19.0627 5.06274C19.4086 5.40865 19.5816 5.5816 19.7053 5.78343C19.8149 5.96237 19.8957 6.15746 19.9447 6.36154C20 6.59171 20 6.8363 20 7.32548V17.2C20 18.8802 20 19.7202 19.673 20.362C19.3854 20.9265 18.9265 21.3854 18.362 21.673C17.7202 22 16.8802 22 15.2 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V6.8Z"
       fill="currentColor"

@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const PrinterIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PrinterIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const PrinterIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const PrinterSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PrinterSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M8 17.6C8 17.0399 8 16.7599 8.10899 16.546C8.20487 16.3578 8.35785 16.2049 8.54601 16.109C8.75992 16 9.03995 16 9.6 16H14.4C14.9601 16 15.2401 16 15.454 16.109C15.6422 16.2049 15.7951 16.3578 15.891 16.546C16 16.7599 16 17.0399 16 17.6V17.8C16 18.9201 16 19.4802 15.782 19.908C15.5903 20.2843 15.2843 20.5903 14.908 20.782C14.4802 21 13.9201 21 12.8 21H11.2C10.0799 21 9.51984 21 9.09202 20.782C8.71569 20.5903 8.40973 20.2843 8.21799 19.908C8 19.4802 8 18.9201 8 17.8V17.6Z"
       fill="currentColor"
@@ -32,8 +32,8 @@ export const PrinterSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const PrinterDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PrinterDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M7 6.2C7 5.0799 7 4.51984 7.21799 4.09202C7.40973 3.71569 7.71569 3.40973 8.09202 3.21799C8.51984 3 9.0799 3 10.2 3H13.8C14.9201 3 15.4802 3 15.908 3.21799C16.2843 3.40973 16.5903 3.71569 16.782 4.09202C17 4.51984 17 5.0799 17 6.2V8H7V6.2Z"
       fill="#3D3D40"

@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const IntegrationIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const IntegrationIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const IntegrationIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const IntegrationSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const IntegrationSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -26,8 +26,12 @@ export const IntegrationSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const IntegrationDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const IntegrationDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
