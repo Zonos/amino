@@ -1,10 +1,22 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import { Spinner } from 'src/components/spinner/Spinner';
+import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
 import styled from 'styled-components';
+
+const StyledSpinnerWrapper = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--amino-radius);
+`;
 
 const AminoButton = styled.button<ButtonProps>`
   position: relative;
@@ -54,7 +66,9 @@ const AminoButton = styled.button<ButtonProps>`
   &[disabled] {
     cursor: not-allowed;
     box-shadow: none;
-    opacity: 0.5;
+    &:not(.loading) {
+      opacity: 0.5;
+    }
   }
 `;
 
@@ -69,6 +83,9 @@ const Primary = styled(AminoButton)`
   &:focus {
     background: var(--amino-blue-600);
     color: white;
+  }
+  ${StyledSpinnerWrapper} {
+    background: var(--amino-primary);
   }
 `;
 
@@ -86,6 +103,9 @@ const Secondary = styled(AminoButton)`
     svg path {
       fill: currentColor;
     }
+  }
+  ${StyledSpinnerWrapper} {
+    background: var(--amino-gray-100);
   }
 `;
 
@@ -111,6 +131,9 @@ const Icon = styled(AminoButton)`
     background: var(--amino-blue-100);
     color: var(--amino-blue-500);
   }
+  ${StyledSpinnerWrapper} {
+    background: var(--amino-input-background);
+  }
 `;
 
 const Danger = styled(AminoButton)`
@@ -125,6 +148,9 @@ const Danger = styled(AminoButton)`
   &:focus {
     background: var(--amino-red-600);
   }
+  ${StyledSpinnerWrapper} {
+    background: var(--amino-red-500);
+  }
 `;
 
 const Warning = styled(AminoButton)`
@@ -138,6 +164,9 @@ const Warning = styled(AminoButton)`
   &:active,
   &:focus {
     background: var(--amino-orange-600);
+  }
+  ${StyledSpinnerWrapper} {
+    background: var(--amino-orange-500);
   }
 `;
 
@@ -157,6 +186,9 @@ const Outline = styled(AminoButton)`
     color: var(--amino-blue-500);
     border: 1px solid var(--amino-blue-300);
   }
+  ${StyledSpinnerWrapper} {
+    background: white;
+  }
 `;
 
 const Subtle = styled(AminoButton)`
@@ -172,11 +204,17 @@ const Subtle = styled(AminoButton)`
     background: var(--amino-blue-100);
     color: var(--amino-blue-500);
   }
+  &.loading {
+    color: transparent;
+  }
+  & > *:not(${StyledSpinnerWrapper}) {
+    opacity: 0;
+  }
 `;
 
 type IntentProps = 'outline' | 'subtle' | Intent;
 
-export type ButtonProps = {
+type ButtonType = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -191,6 +229,9 @@ export type ButtonProps = {
   tooltip?: ReactNode;
   type?: 'button' | 'reset' | 'submit';
 };
+
+export type ButtonProps = ButtonType &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonType>;
 
 export const Button = ({
   children,
@@ -208,12 +249,7 @@ export const Button = ({
   type = 'button',
   ...props
 }: ButtonProps) => {
-  const content = loading ? (
-    <>
-      <Spinner size={16} />
-      {loadingText}
-    </>
-  ) : (
+  const content = (
     <>
       {tooltip && <ReactTooltip />}
       {!iconRight && icon}
@@ -222,11 +258,19 @@ export const Button = ({
     </>
   );
 
+  const renderSpinner = (color?: SpinnerProps['color']) => (
+    <StyledSpinnerWrapper>
+      <Spinner size={16} color={color} />
+      {loadingText}
+    </StyledSpinnerWrapper>
+  );
+
   const buttonClassName = [
     className || '',
     icon && !children ? 'only-icon' : '',
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
+    loading ? 'loading' : '',
   ].join(' ');
 
   switch (intent) {
@@ -238,11 +282,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner('white')}
         </Primary>
       );
     case 'subtle':
@@ -253,11 +298,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner()}
         </Subtle>
       );
     case 'outline':
@@ -268,11 +314,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner()}
         </Outline>
       );
     case 'warning':
@@ -283,11 +330,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner()}
         </Warning>
       );
     case 'danger':
@@ -298,11 +346,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner()}
         </Danger>
       );
     case 'icon':
@@ -313,11 +362,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner()}
         </Icon>
       );
     case 'secondary':
@@ -329,11 +379,12 @@ export const Button = ({
           onClick={onClick}
           tabIndex={tabIndex}
           size={size}
-          disabled={disabled}
+          disabled={disabled || loading}
           type={type}
           {...props}
         >
           {content}
+          {loading && renderSpinner()}
         </Secondary>
       );
   }
