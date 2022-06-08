@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use ChartIcon instead */
-export const ReportsIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ReportsIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

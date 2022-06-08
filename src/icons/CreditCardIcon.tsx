@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use BankCardIcon instead */
-export const CreditCardIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CreditCardIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M6 15C6 14.4477 6.44772 14 7 14H11C11.5523 14 12 14.4477 12 15C12 15.5523 11.5523 16 11 16H7C6.44772 16 6 15.5523 6 15Z"
       fill="currentColor"

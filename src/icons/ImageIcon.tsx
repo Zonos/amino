@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const ImageIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ImageIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M9.00003 11C10.1046 11 11 10.1046 11 9C11 7.89543 10.1046 7 9.00003 7C7.89546 7 7.00003 7.89543 7.00003 9C7.00003 10.1046 7.89546 11 9.00003 11Z"
       fill="currentColor"
@@ -19,8 +19,8 @@ export const ImageIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ImageSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ImageSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -30,8 +30,8 @@ export const ImageSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ImageDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ImageDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M3 9.4C3 7.15979 3 6.03968 3.43597 5.18404C3.81947 4.43139 4.43139 3.81947 5.18404 3.43597C6.03968 3 7.15979 3 9.4 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03968 21 7.15979 21 9.4V14.6C21 16.8402 21 17.9603 20.564 18.816C20.1805 19.5686 19.5686 20.1805 18.816 20.564C17.9603 21 16.8402 21 14.6 21H9.4C7.15979 21 6.03968 21 5.18404 20.564C4.43139 20.1805 3.81947 19.5686 3.43597 18.816C3 17.9603 3 16.8402 3 14.6V9.4Z"
       fill="currentColor"

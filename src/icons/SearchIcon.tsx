@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const SearchIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const SearchIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,8 @@ export const SearchIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const SearchSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const SearchSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -36,8 +36,8 @@ export const SearchSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const SearchDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const SearchDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

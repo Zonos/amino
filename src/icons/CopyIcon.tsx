@@ -4,9 +4,9 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const CopyIcon = ({ size, color }: IconProps) => {
+export const CopyIcon = ({ size, color, className }: IconProps) => {
   return (
-    <IconBase size={size} color={color}>
+    <IconBase size={size} color={color} className={className}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -17,9 +17,9 @@ export const CopyIcon = ({ size, color }: IconProps) => {
   );
 };
 
-export const CopySolidIcon = ({ size, color }: IconProps) => {
+export const CopySolidIcon = ({ size, color, className }: IconProps) => {
   return (
-    <IconBase size={size} color={color}>
+    <IconBase size={size} color={color} className={className}>
       <path
         d="M16 2.02713V5.99999C16 7.10456 15.1046 7.99999 14 7.99999H10C8.89543 7.99999 8 7.10456 8 5.99999V2.02713C7.91325 2.03192 7.82933 2.03756 7.74818 2.04419C7.18608 2.09011 6.66937 2.18868 6.18404 2.43597C5.43139 2.81946 4.81947 3.43138 4.43597 4.18403C4.18868 4.66937 4.09012 5.18607 4.0442 5.74817C3.99998 6.28936 3.99999 6.95371 4 7.75868V16.2413C3.99999 17.0463 3.99998 17.7106 4.0442 18.2518C4.09012 18.8139 4.18868 19.3306 4.43597 19.816C4.81947 20.5686 5.43139 21.1805 6.18404 21.564C6.66937 21.8113 7.18608 21.9099 7.74818 21.9558C8.28937 22 8.95372 22 9.75868 22H14.2413C15.0463 22 15.7106 22 16.2518 21.9558C16.8139 21.9099 17.3306 21.8113 17.816 21.564C18.5686 21.1805 19.1805 20.5686 19.564 19.816C19.8113 19.3306 19.9099 18.8139 19.9558 18.2518C20 17.7106 20 17.0463 20 16.2413V7.75867C20 6.95372 20 6.28935 19.9558 5.74817C19.9099 5.18607 19.8113 4.66937 19.564 4.18403C19.1805 3.43138 18.5686 2.81946 17.816 2.43597C17.3306 2.18868 16.8139 2.09011 16.2518 2.04419C16.1707 2.03756 16.0868 2.03192 16 2.02713Z"
         fill="currentColor"
@@ -32,9 +32,9 @@ export const CopySolidIcon = ({ size, color }: IconProps) => {
   );
 };
 
-export const CopyDuotoneIcon = ({ size, color }: IconProps) => {
+export const CopyDuotoneIcon = ({ size, color, className }: IconProps) => {
   return (
-    <IconBase size={size} color={color}>
+    <IconBase size={size} color={color} className={className}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

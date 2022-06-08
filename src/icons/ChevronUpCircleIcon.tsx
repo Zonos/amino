@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const ChevronUpCircleIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ChevronUpCircleIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,12 @@ export const ChevronUpCircleIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ChevronUpCircleSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ChevronUpCircleSolidIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -32,8 +36,12 @@ export const ChevronUpCircleSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ChevronUpCircleDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ChevronUpCircleDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
       fill="currentColor"

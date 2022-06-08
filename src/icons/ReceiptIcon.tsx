@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const ReceiptIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ReceiptIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -25,8 +25,8 @@ export const ReceiptIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ReceiptSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ReceiptSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -40,8 +40,8 @@ export const ReceiptSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ReceiptDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ReceiptDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M5 4H19V20.5C19 20.8568 18.637 21.0988 18.3077 20.9615L16.3202 20.1334C16.1128 20.047 15.8823 20.0329 15.666 20.0935L12.8089 20.8935C12.2798 21.0417 11.7202 21.0417 11.1911 20.8935L8.33404 20.0935C8.11767 20.0329 7.8872 20.047 7.6798 20.1334L5.69231 20.9615C5.36296 21.0988 5 20.8568 5 20.5V4Z"
       fill="currentColor"

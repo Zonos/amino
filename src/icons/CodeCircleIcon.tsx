@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const CodeCircleIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CodeCircleIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -27,8 +27,8 @@ export const CodeCircleIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CodeCircleSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CodeCircleSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -38,8 +38,12 @@ export const CodeCircleSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CodeCircleDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CodeCircleDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

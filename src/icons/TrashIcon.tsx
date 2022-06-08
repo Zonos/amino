@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const TrashIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const TrashIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -29,8 +29,8 @@ export const TrashIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const TrashSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const TrashSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -44,8 +44,8 @@ export const TrashSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const TrashDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const TrashDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M19 8H5V19C5 20.6569 6.34315 22 8 22H16C17.6569 22 19 20.6569 19 19V8Z"
       fill="currentColor"

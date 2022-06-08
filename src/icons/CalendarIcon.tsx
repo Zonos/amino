@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const CalendarIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CalendarIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path d="M4 9H20V11H4V9Z" fill="currentColor" />
     <path
       fillRule="evenodd"
@@ -24,8 +24,8 @@ export const CalendarIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CalendarSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CalendarSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -35,8 +35,8 @@ export const CalendarSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CalendarDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CalendarDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

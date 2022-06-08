@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const TruckIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const TruckIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const TruckIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const TruckSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const TruckSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -26,8 +26,8 @@ export const TruckSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const TruckDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const TruckDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
