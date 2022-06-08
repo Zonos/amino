@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const DollarIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DollarIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,8 @@ export const DollarIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const DollarSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DollarSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -32,8 +32,8 @@ export const DollarSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const DollarDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DollarDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
       fill="currentColor"

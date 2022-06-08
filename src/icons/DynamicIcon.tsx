@@ -14,10 +14,11 @@ export const DynamicIcon = ({
   size,
   color,
   type,
+  className,
 }: DynamicIconProps): ReactElement => {
   if (type && icons[type]) {
     const Icon = icons[type];
-    return <Icon size={size} color={color} />;
+    return <Icon size={size} color={color} className={className} />;
   }
   return (
     <div

@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const BookIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BookIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const BookIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BookSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BookSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -26,8 +26,8 @@ export const BookSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BookDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BookDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M2 6.60434V16.2655C2 17.4575 3.03613 18.3849 4.22086 18.2532L5.04609 18.1615C6.01023 18.0544 6.98483 18.0882 7.93926 18.2617L12 19V5L8.48684 4.36124C7.17551 4.12282 5.82976 4.14894 4.52868 4.43807L3.56614 4.65197C2.65106 4.85532 2 5.66695 2 6.60434Z"
       fill="#3D3D40"

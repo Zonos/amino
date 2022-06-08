@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const EyeIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EyeIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,8 @@ export const EyeIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const EyeSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EyeSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -36,8 +36,8 @@ export const EyeSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const EyeDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EyeDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M12.0002 4C5.89147 4 3.13935 8.78756 2.27002 10.7399C1.91162 11.5448 1.91162 12.4552 2.27002 13.2601C3.13935 15.2124 5.89147 20 12.0002 20C18.1091 20 20.861 15.2122 21.7302 13.2599C22.0885 12.4552 22.0885 11.5448 21.7302 10.7401C20.861 8.78782 18.1091 4 12.0002 4Z"
       fill="currentColor"

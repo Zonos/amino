@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const ArrowSwapIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ArrowSwapIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16.5858 5.70711C16.1953 5.31658 16.1953 4.68342 16.5858 4.29289C16.9763 3.90237 17.6095 3.90237 18 4.29289L21.7071 8C22.0976 8.39052 22.0976 9.02369 21.7071 9.41421L18 13.1213C17.6095 13.5118 16.9763 13.5118 16.5858 13.1213C16.1953 12.7308 16.1953 12.0976 16.5858 11.7071L18.5858 9.70711L11 9.70711C10.4477 9.70711 10 9.25939 10 8.70711C10 8.15482 10.4477 7.70711 11 7.70711L18.5858 7.70711L16.5858 5.70711Z"
       fill="currentColor"
@@ -17,8 +17,8 @@ export const ArrowSwapIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ArrowSwapSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ArrowSwapSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16.5858 5.70711C16.1953 5.31658 16.1953 4.68342 16.5858 4.2929C16.9763 3.90237 17.6095 3.90237 18 4.2929L21.7071 8C22.0976 8.39053 22.0976 9.02369 21.7071 9.41422L18 13.1213C17.6095 13.5118 16.9763 13.5118 16.5858 13.1213C16.1953 12.7308 16.1953 12.0976 16.5858 11.7071L18.5858 9.70711L11 9.70711C10.4477 9.70711 10 9.25939 10 8.70711C10 8.15482 10.4477 7.70711 11 7.70711L18.5858 7.70711L16.5858 5.70711Z"
       fill="currentColor"
@@ -30,8 +30,8 @@ export const ArrowSwapSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const ArrowSwapDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ArrowSwapDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16.5858 5.70711C16.1953 5.31658 16.1953 4.68342 16.5858 4.2929C16.9763 3.90237 17.6095 3.90237 18 4.2929L21.7071 8C22.0976 8.39053 22.0976 9.02369 21.7071 9.41422L18 13.1213C17.6095 13.5118 16.9763 13.5118 16.5858 13.1213C16.1953 12.7308 16.1953 12.0976 16.5858 11.7071L18.5858 9.70711L11 9.70711C10.4477 9.70711 10 9.25939 10 8.70711C10 8.15482 10.4477 7.70711 11 7.70711L18.5858 7.70711L16.5858 5.70711Z"
       fill="#3D3D40"

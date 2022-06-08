@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const LockIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const LockIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -25,8 +25,8 @@ export const LockIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const LockSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const LockSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -42,8 +42,8 @@ export const LockSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const LockDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const LockDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

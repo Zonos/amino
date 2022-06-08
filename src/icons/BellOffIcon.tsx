@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const BellOffIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BellOffIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10 20H14C14 21.1046 13.1046 22 12 22C10.8954 22 10 21.1046 10 20Z"
       fill="currentColor"
@@ -29,8 +29,8 @@ export const BellOffIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BellOffSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BellOffSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10.0618 20.4949C9.99363 20.2273 10.2239 20 10.5 20H13.5C13.7762 20 14.0065 20.2273 13.9383 20.4949C13.7181 21.3601 12.9338 22 12 22C11.0663 22 10.282 21.3601 10.0618 20.4949Z"
       fill="currentColor"
@@ -52,8 +52,8 @@ export const BellOffSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BellOffDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BellOffDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10 20H14C14 21.1046 13.1046 22 12 22C10.8954 22 10 21.1046 10 20Z"
       fill="#3D3D40"

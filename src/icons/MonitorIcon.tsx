@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const MonitorIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MonitorIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -19,8 +19,8 @@ export const MonitorIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const MonitorSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MonitorSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M7 20C7 19.4477 7.44772 19 8 19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20Z"
       fill="currentColor"
@@ -34,8 +34,8 @@ export const MonitorSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const MonitorDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MonitorDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M7 20C7 19.4477 7.44772 19 8 19H16C16.5523 19 17 19.4477 17 20C17 20.5523 16.5523 21 16 21H8C7.44772 21 7 20.5523 7 20Z"
       fill="currentColor"

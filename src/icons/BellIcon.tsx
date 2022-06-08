@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const BellIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BellIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const BellIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BellSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BellSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10.0617 20.4949C9.99359 20.2273 10.2239 20 10.5 20H13.5C13.7761 20 14.0064 20.2273 13.9383 20.4949C13.718 21.3601 12.9337 22 12 22C11.0663 22 10.282 21.3601 10.0617 20.4949Z"
       fill="currentColor"
@@ -32,8 +32,8 @@ export const BellSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BellDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BellDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10 20H14C14 21.1046 13.1046 22 12 22C10.8954 22 10 21.1046 10 20Z"
       fill="#3D3D40"

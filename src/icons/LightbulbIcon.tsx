@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const LightbulbIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const LightbulbIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M9 18H15V20C15 21.1046 14.1046 22 13 22H11C9.89543 22 9 21.1046 9 20V18Z"
       fill="currentColor"
@@ -23,8 +23,8 @@ export const LightbulbIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const LightbulbSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const LightbulbSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M9 20.5C9 20.2239 9.22386 20 9.5 20H14.5C14.7761 20 15 20.2239 15 20.5V21C15 21.5523 14.5523 22 14 22H10C9.44772 22 9 21.5523 9 21V20.5Z"
       fill="currentColor"
@@ -36,8 +36,8 @@ export const LightbulbSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const LightbulbDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const LightbulbDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16 16.9297C18.3912 15.5465 20 12.9611 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 12.9611 5.60879 15.5465 8 16.9297V18C8 18.5523 8.44772 19 9 19H15C15.5523 19 16 18.5523 16 18V16.9297Z"
       fill="currentColor"

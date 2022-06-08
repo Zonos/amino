@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const CheckCircleIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CheckCircleIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,8 @@ export const CheckCircleIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CheckCircleSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CheckCircleSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -32,8 +32,12 @@ export const CheckCircleSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CheckCircleDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CheckCircleDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
       fill="currentColor"

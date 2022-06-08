@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const PercentIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PercentIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,8 @@ export const PercentIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const PercentSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PercentSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -38,8 +38,8 @@ export const PercentSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const PercentDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const PercentDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

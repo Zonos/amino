@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use LikeIcon instead */
-export const ThumbsUpIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const ThumbsUpIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M4 10C4 9.44771 4.44772 9 5 9C5.55228 9 6 9.44772 6 10V19C6 19.5523 5.55228 20 5 20C4.44772 20 4 19.5523 4 19V10Z"
       fill="currentColor"

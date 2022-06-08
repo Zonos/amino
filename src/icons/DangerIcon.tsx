@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use ExclamationIcon instead */
-export const DangerIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DangerIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

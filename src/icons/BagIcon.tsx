@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const BagIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BagIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -21,8 +21,8 @@ export const BagIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BagSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BagSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -38,8 +38,8 @@ export const BagSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const BagDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const BagDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M3.0154 11.3031C2.83592 9.53546 4.22337 8 6.00006 8H18C19.7767 8 21.1641 9.53546 20.9846 11.3031L20.2739 18.3031C20.1183 19.8347 18.8287 21 17.2892 21H6.71082C5.17132 21 3.88169 19.8347 3.72617 18.3031L3.0154 11.3031Z"
       fill="currentColor"

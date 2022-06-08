@@ -5,8 +5,8 @@ import { type IconProps } from 'src/types/IconProps';
 import { IconBase } from './_IconBase';
 
 /** @deprecated Use LocationIcon instead */
-export const MapPinIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const MapPinIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"

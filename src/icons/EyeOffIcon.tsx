@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const EyeOffIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EyeOffIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M5.97055 5.97055C3.91616 7.5159 2.78466 9.58413 2.26977 10.7406C1.91131 11.5458 1.91183 12.4556 2.2701 13.2602C3.13943 15.2125 5.89155 20 12.0003 20C14.5418 20 16.526 19.1607 18.0297 18.0297L16.5979 16.5979C15.4349 17.4107 13.9345 18 12.0003 18C7.14507 18 4.89013 14.2275 4.09715 12.4466C3.96921 12.1593 3.96921 11.8409 4.09688 11.5541C4.55777 10.5188 5.55489 8.73209 7.30851 7.46896C7.33976 7.44645 7.36933 7.42247 7.39718 7.39718L5.97055 5.97055Z"
       fill="currentColor"
@@ -27,8 +27,8 @@ export const EyeOffIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const EyeOffSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EyeOffSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M18.0309 18.0309L14.8285 14.8285C14.1047 15.5524 13.1046 16.0002 12 16.0002C9.79086 16.0002 8 14.2093 8 12.0002C8 10.8956 8.44775 9.89553 9.17167 9.17167L5.96968 5.96968C3.91173 7.52221 2.7744 9.60788 2.27027 10.7401C1.91186 11.5449 1.91186 12.4554 2.27027 13.2603C3.1396 15.2126 5.89172 20.0002 12.0005 20.0002C14.5665 20.0002 16.5402 19.1554 18.0309 18.0309Z"
       fill="currentColor"
@@ -50,8 +50,8 @@ export const EyeOffSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const EyeOffDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EyeOffDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M18.849 17.4347L6.78812 5.37378L6.09693 5.87716C3.9631 7.43119 2.79589 9.5595 2.27027 10.7399C1.91186 11.5448 1.91186 12.4553 2.27027 13.2602C3.1396 15.2125 5.89172 20.0001 12.0005 20.0001C14.4684 20.0001 16.4135 19.2084 17.9036 18.1232L18.849 17.4347Z"
       fill="currentColor"
