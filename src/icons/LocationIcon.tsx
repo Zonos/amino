@@ -4,9 +4,9 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const LocationIcon = ({ size, color }: IconProps) => {
+export const LocationIcon = ({ size, color, className }: IconProps) => {
   return (
-    <IconBase size={size} color={color}>
+    <IconBase size={size} color={color} className={className}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -21,9 +21,9 @@ export const LocationIcon = ({ size, color }: IconProps) => {
   );
 };
 
-export const LocationSolidIcon = ({ size, color }: IconProps) => {
+export const LocationSolidIcon = ({ size, color, className }: IconProps) => {
   return (
-    <IconBase size={size} color={color}>
+    <IconBase size={size} color={color} className={className}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -34,9 +34,9 @@ export const LocationSolidIcon = ({ size, color }: IconProps) => {
   );
 };
 
-export const LocationDuotoneIcon = ({ size, color }: IconProps) => {
+export const LocationDuotoneIcon = ({ size, color, className }: IconProps) => {
   return (
-    <IconBase size={size} color={color}>
+    <IconBase size={size} color={color} className={className}>
       <path
         d="M12 2C7.02944 2 3 6.02944 3 11C3 14.0264 4.80977 16.5918 6.89505 18.399L10.3365 21.3816C11.2912 22.209 12.7088 22.209 13.6635 21.3816L17.1049 18.399C19.1902 16.5918 21 14.0264 21 11C21 6.02944 16.9706 2 12 2Z"
         fill="currentColor"

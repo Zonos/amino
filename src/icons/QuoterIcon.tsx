@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const QuoterIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const QuoterIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,14 +15,14 @@ export const QuoterIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const QuoterSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const QuoterSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor" />
   </IconBase>
 );
 
-export const QuoterDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const QuoterDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor" />
     <path
       fillRule="evenodd"

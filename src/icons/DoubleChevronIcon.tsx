@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const DoubleChevronIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DoubleChevronIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16.2782 10.2426C16.6687 9.85212 16.6687 9.21895 16.2782 8.82843L12.7427 5.29289C12.3521 4.90237 11.719 4.90237 11.3285 5.29289L7.79292 8.82843C7.40239 9.21895 7.40239 9.85212 7.79292 10.2426C8.18344 10.6332 8.81661 10.6332 9.20713 10.2426L12.0356 7.41421L14.864 10.2426C15.2545 10.6332 15.8877 10.6332 16.2782 10.2426Z"
       fill="currentColor"
@@ -17,8 +17,12 @@ export const DoubleChevronIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const DoubleChevronSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DoubleChevronSolidIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16.2782 8.82843C16.6687 9.21895 16.6687 9.85212 16.2782 10.2426C15.8877 10.6332 15.2545 10.6332 14.864 10.2426L12.0356 7.41421L9.20713 10.2426C8.81661 10.6332 8.18344 10.6332 7.79292 10.2426C7.40239 9.85212 7.40239 9.21895 7.79292 8.82843L11.3285 5.29289C11.719 4.90237 12.3521 4.90237 12.7427 5.29289L16.2782 8.82843Z"
       fill="currentColor"
@@ -30,8 +34,12 @@ export const DoubleChevronSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const DoubleChevronDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const DoubleChevronDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M16.2782 10.2426C16.6687 9.85212 16.6687 9.21895 16.2782 8.82843L12.7426 5.29289C12.3521 4.90237 11.719 4.90237 11.3284 5.29289L7.79289 8.82843C7.40237 9.21895 7.40237 9.85212 7.79289 10.2426C8.18342 10.6332 8.81658 10.6332 9.20711 10.2426L12.0355 7.41421L14.864 10.2426C15.2545 10.6332 15.8877 10.6332 16.2782 10.2426Z"
       fill="#3D3D40"

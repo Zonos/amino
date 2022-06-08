@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const FolderUploadIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const FolderUploadIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M19.7071 15.2929C19.3166 14.9024 18.6834 14.9024 18.2929 15.2929L16.2929 17.2929C15.9024 17.6834 15.9024 18.3166 16.2929 18.7071C16.6834 19.0976 17.3166 19.0976 17.7071 18.7071L18 18.4142V22C18 22.5523 18.4477 23 19 23C19.5523 23 20 22.5523 20 22V18.4142L20.2929 18.7071C20.6834 19.0976 21.3166 19.0976 21.7071 18.7071C22.0976 18.3166 22.0976 17.6834 21.7071 17.2929L19.7071 15.2929Z"
       fill="currentColor"
@@ -19,8 +19,12 @@ export const FolderUploadIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const FolderUploadSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const FolderUploadSolidIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M19.7071 15.2929C19.3166 14.9024 18.6834 14.9024 18.2929 15.2929L16.2929 17.2929C15.9024 17.6834 15.9024 18.3166 16.2929 18.7071C16.6834 19.0976 17.3166 19.0976 17.7071 18.7071L18 18.4142V22C18 22.5523 18.4477 23 19 23C19.5523 23 20 22.5523 20 22V18.4142L20.2929 18.7071C20.6834 19.0976 21.3166 19.0976 21.7071 18.7071C22.0976 18.3166 22.0976 17.6834 21.7071 17.2929L19.7071 15.2929Z"
       fill="currentColor"
@@ -32,8 +36,12 @@ export const FolderUploadSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const FolderUploadDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const FolderUploadDuotoneIcon = ({
+  size,
+  color,
+  className,
+}: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M10.8719 4.08287C10.5235 3.99922 10.1647 3.99955 9.75783 3.99993L6.16146 3.99998C5.63431 3.99996 5.17955 3.99995 4.80497 4.03055C4.40963 4.06285 4.01641 4.13417 3.63803 4.32696C3.07354 4.61458 2.6146 5.07352 2.32698 5.63801C2.13419 6.01639 2.06287 6.40961 2.03057 6.80495C1.99997 7.17951 1.99998 7.63426 2 8.1614V15.8385C1.99998 16.3657 1.99997 16.8204 2.03057 17.195C2.06287 17.5904 2.13419 17.9836 2.32698 18.362C2.6146 18.9264 3.07355 19.3854 3.63803 19.673C4.01641 19.8658 4.40963 19.9371 4.80497 19.9694C5.17952 20 5.63425 20 6.16136 20H17.8385C18.3656 20 18.8205 20 19.195 19.9694C19.5904 19.9371 19.9836 19.8658 20.362 19.673C20.9265 19.3854 21.3854 18.9264 21.673 18.362C21.8658 17.9836 21.9371 17.5904 21.9694 17.195C22 16.8204 22 16.3657 22 15.8385V10.1614C22 9.63427 22 9.17952 21.9694 8.80495C21.9371 8.40961 21.8658 8.01639 21.673 7.63801C21.3854 7.07352 20.9265 6.61458 20.362 6.32696C19.9836 6.13417 19.5904 6.06285 19.195 6.03055C18.8205 5.99995 18.3657 5.99996 17.8386 5.99998L13.4142 5.99998L12.5855 5.17118C12.298 4.8832 12.0446 4.62929 11.7391 4.44206C11.4707 4.27757 11.178 4.15636 10.8719 4.08287Z"
       fill="currentColor"

@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const CubeIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CubeIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const CubeIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CubeSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CubeSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M12.8885 2.45819C12.3287 2.1806 11.6713 2.1806 11.1115 2.45819L3.93484 6.01687L11.9991 10.1088L20.0411 6.00495L12.8885 2.45819Z"
       fill="currentColor"
@@ -32,8 +32,8 @@ export const CubeSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CubeDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CubeDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M20 7.08068V16.9193L12 21L4 16.9193V7.5L12.5 3L20 7.08068Z"
       fill="#3D3D40"

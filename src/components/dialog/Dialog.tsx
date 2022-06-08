@@ -93,8 +93,7 @@ scroll gradient in the top right */
 `;
 
 const Content = styled.div`
-  padding: var(--amino-space);
-  padding-top: var(--amino-space-half);
+  padding: 0 var(--amino-space);
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   /** 

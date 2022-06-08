@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const CodeIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CodeIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M14.4652 4.42319C13.9421 4.2459 13.3744 4.52621 13.1971 5.04927L8.7031 18.3084C8.52581 18.8314 8.80612 19.3992 9.32917 19.5765C9.85223 19.7537 10.42 19.4734 10.5973 18.9504L15.0913 5.69127C15.2686 5.16821 14.9882 4.60047 14.4652 4.42319Z"
       fill="currentColor"
@@ -21,8 +21,8 @@ export const CodeIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CodeSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CodeSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M14.4652 4.42319C13.9421 4.2459 13.3744 4.52621 13.1971 5.04927L8.7031 18.3084C8.52581 18.8314 8.80612 19.3992 9.32917 19.5765C9.85223 19.7537 10.42 19.4734 10.5973 18.9504L15.0913 5.69127C15.2686 5.16821 14.9882 4.60047 14.4652 4.42319Z"
       fill="currentColor"
@@ -38,8 +38,8 @@ export const CodeSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const CodeDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const CodeDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M14.4652 4.42319C13.9421 4.2459 13.3744 4.52621 13.1971 5.04927L8.7031 18.3084C8.52581 18.8314 8.80612 19.3992 9.32917 19.5765C9.85223 19.7537 10.42 19.4734 10.5973 18.9504L15.0913 5.69127C15.2686 5.16821 14.9882 4.60047 14.4652 4.42319Z"
       fill="#3D3D40"

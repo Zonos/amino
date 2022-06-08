@@ -4,8 +4,8 @@ import { type IconProps } from 'src/types/IconProps';
 
 import { IconBase } from './_IconBase';
 
-export const EditIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EditIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,8 +15,8 @@ export const EditIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const EditSolidIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EditSolidIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       d="M13.3978 6.41178L7.03387 12.7757L11.2765 17.0184L17.6405 10.6544L13.3978 6.41178Z"
       fill="currentColor"
@@ -32,8 +32,8 @@ export const EditSolidIcon = ({ size, color }: IconProps) => (
   </IconBase>
 );
 
-export const EditDuotoneIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
+export const EditDuotoneIcon = ({ size, color, className }: IconProps) => (
+  <IconBase size={size} color={color} className={className}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
