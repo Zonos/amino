@@ -80,9 +80,7 @@ export const AllIcons = ({ size }: IconProps) => {
                   /Duotone/.test(iconName) ? 'duotone' : '',
                 ].join(' ')}
               >
-                <IconComponent size={30}>
-                  <></>
-                </IconComponent>
+                <IconComponent size={30} />
                 <div>{iconName}</div>
                 {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
               </StyledIcon>

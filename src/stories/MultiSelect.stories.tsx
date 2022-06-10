@@ -5,7 +5,7 @@ import {
   MultiSelect,
   MultiSelectProps,
 } from 'src/components/select/MultiSelect';
-import { PlayCircleSolidIcon } from 'src/icons/PlayCircleIcon';
+import { PlayCircleSolidIcon } from 'src/icons/PlayCircleSolidIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 

@@ -18,9 +18,9 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
-import { CheckCircleSolidIcon } from 'src/icons/CheckCircleIcon';
-import { ChevronDownSolidIcon } from 'src/icons/ChevronDownIcon';
-import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleIcon';
+import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
+import { ChevronDownSolidIcon } from 'src/icons/ChevronDownSolidIcon';
+import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { Size } from 'src/types/Size';
 import styled, { css } from 'styled-components';

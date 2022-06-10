@@ -117,8 +117,6 @@ const Icon = styled(AminoButton)`
   box-shadow: var(--amino-shadow-small);
 
   svg {
-    width: 16px;
-    height: 16px;
     fill: currentColor;
     color: var(--amino-text-color);
   }

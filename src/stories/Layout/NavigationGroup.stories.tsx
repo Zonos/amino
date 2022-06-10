@@ -7,8 +7,8 @@ import {
   NavigationItem,
 } from 'src/components/layout/NavigationGroup';
 import { HomeIcon } from 'src/icons/HomeIcon';
-import { LandedCostIcon } from 'src/icons/LandedCostIcon';
-import { PuzzleIcon } from 'src/icons/PuzzleIcon';
+import { PuzzleIcon } from 'src/icons/legacy/PuzzleIcon';
+import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 import { withDesign } from 'storybook-addon-designs';
 
 const NavigationGroupMeta: Meta = {
@@ -61,7 +61,7 @@ const Template: Story = ({ className }) => {
           <a href="/quoter/create" onClick={mockUrlChange}>
             <NavigationItem
               content="Quoter"
-              icon={<LandedCostIcon size={20} />}
+              icon={<TotalLandedCostIcon size={20} />}
             />
           </a>
         }

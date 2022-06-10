@@ -5,7 +5,7 @@ import {
   RoundedIcon,
   RoundedIconProps,
 } from 'src/components/rounded-icon/RoundedIcon';
-import { ReportsIcon } from 'src/icons/ReportsIcon';
+import { ReportsIcon } from 'src/icons/legacy/ReportsIcon';
 import { withDesign } from 'storybook-addon-designs';
 
 const RoundedIconMeta: Meta = {

@@ -5,7 +5,7 @@ import {
   DynamicIcon,
   DynamicIconProps,
   DynamicIconType,
-} from 'src/icons/DynamicIcon';
+} from 'src/icons/icon-base/DynamicIcon';
 import * as icons from 'src/icons/IconIndex';
 
 const IconsMeta: Meta = {

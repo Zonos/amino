@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
-import { XIcon } from 'src/icons/XIcon';
+import { RemoveIcon } from 'src/icons/RemoveIcon';
 import styled from 'styled-components';
 
 const StyledDialog = styled(motion.div)`
@@ -72,8 +72,6 @@ const Close = styled.div`
   }
 
   svg {
-    width: 14px;
-    height: 14px;
     fill: var(--amino-text-color);
     transition: all 100ms ease-in-out;
   }
@@ -116,7 +114,7 @@ export const CoverSheet = ({
                 </Actions>
               )}
               <Close onClick={onClose}>
-                <XIcon />
+                <RemoveIcon size={26} />
               </Close>
             </Header>
             <Content>{children}</Content>
