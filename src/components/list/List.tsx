@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const List = styled.section`
   margin: var(--amino-space-negative);
+  margin-top: 0;
 
   & > div {
     border-bottom: var(--amino-border);
