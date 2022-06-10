@@ -23,6 +23,7 @@ const InputLabel = styled.span`
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
+  margin-bottom: var(--amino-space-quarter);
 `;
 
 type TextStyle =

@@ -7,7 +7,7 @@ import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { XIcon } from 'src/icons/XIcon';
+import { XIcon } from 'src/icons/legacy/XIcon';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 

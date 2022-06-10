@@ -1,11 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import {
-  DynamicIcon,
-  DynamicIconProps,
-  DynamicIconType,
-} from 'src/icons/DynamicIcon';
+import { DynamicIcon, DynamicIconProps } from 'src/icons/icon-base/DynamicIcon';
 import * as icons from 'src/icons/IconIndex';
 
 const IconsMeta: Meta = {
@@ -28,18 +24,9 @@ const IconsMeta: Meta = {
 
 export default IconsMeta;
 
-const isDuoTone = (iconName: DynamicIconType) =>
-  iconName.includes('DuotoneIcon');
-
 const DynamicIconTemplate: Story<DynamicIconProps> = ({
   size,
   type,
-}: DynamicIconProps) => (
-  <DynamicIcon
-    size={size}
-    type={type}
-    color={isDuoTone(type) ? `gray-400` : undefined}
-  />
-);
+}: DynamicIconProps) => <DynamicIcon size={size} type={type} />;
 
 export const DynamicIconDemo = DynamicIconTemplate.bind({});

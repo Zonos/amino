@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/surface/Surface';
-import { DropdownIcon } from 'src/icons/DropdownIcon';
+import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import styled from 'styled-components';
 
 import { Button } from './Button';
@@ -72,7 +72,7 @@ export const MenuButton = ({ label, children }: MenuButtonProps) => {
     <Wrapper ref={node}>
       <Trigger onClick={() => setOpen(true)}>
         {label}
-        <DropdownIcon />
+        <DoubleChevronIcon />
       </Trigger>
       {open && (
         <AnimatedSurface dense depth="depth16">

@@ -18,9 +18,9 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
-import { CheckCircleSolidIcon } from 'src/icons/CheckCircleIcon';
-import { ChevronDownSolidIcon } from 'src/icons/ChevronDownIcon';
-import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleIcon';
+import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
+import { ChevronDownSolidIcon } from 'src/icons/ChevronDownSolidIcon';
+import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { Size } from 'src/types/Size';
 import styled, { css } from 'styled-components';
@@ -224,8 +224,11 @@ const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
 `;
 
 const StyledSelectOptionWrapper = styled.div`
-  &:hover {
-    background-color: var(--amino-gray-l80) !important;
+  &:not(.is-disabled) {
+    &.is-focused,
+    &:hover {
+      background-color: var(--amino-gray-l80) !important;
+    }
   }
 `;
 
@@ -296,39 +299,46 @@ export const CheckboxOptionComponent = <
     innerProps,
     isDisabled,
     isSelected,
+    isFocused,
+    className,
     selectProps,
   } = props;
   const { hasGroups } = selectProps as typeof props['selectProps'] &
     AdditionalProps;
+
   const { color, ...style } = getStyles('option', props) as React.CSSProperties;
   if (hasGroups) {
     style.paddingLeft = 48;
   }
   return (
-    <StyledSelectOptionWrapper
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={innerRef as any}
-      style={style}
-      {...innerProps}
-    >
-      {selectProps.isMulti ? (
-        <Checkbox
-          checked={isSelected}
-          disabled={isDisabled}
-          icon={data.icon}
-          label={data.label}
-          labelDescription={data.labelDescription}
-          onChange={() => {}}
-        />
-      ) : (
-        <SelectedSingleOptionWrapper>
-          <IconLabel color={color} icon={data.icon}>
-            {children}
-          </IconLabel>
-          {isSelected && <CheckCircleSolidIcon color="blue-500" size={16} />}
-        </SelectedSingleOptionWrapper>
-      )}
-    </StyledSelectOptionWrapper>
+    <div ref={innerRef} {...innerProps}>
+      <StyledSelectOptionWrapper
+        style={style}
+        className={[
+          className,
+          isFocused ? 'is-focused' : '',
+          isDisabled ? 'is-disabled' : '',
+        ].join(' ')}
+      >
+        {selectProps.isMulti ? (
+          <Checkbox
+            checked={isSelected}
+            disabled={isDisabled}
+            icon={data.icon}
+            label={data.label}
+            labelDescription={data.labelDescription}
+            onChange={() => {}}
+          />
+        ) : (
+          <SelectedSingleOptionWrapper>
+            <IconLabel color={color} icon={data.icon}>
+              {children}
+            </IconLabel>
+            {isSelected && <CheckCircleSolidIcon color="blue-500" size={16} />}
+          </SelectedSingleOptionWrapper>
+        )}
+      </StyledSelectOptionWrapper>
+    </div>
   );
 };
 
@@ -349,6 +359,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       ...provided,
       borderColor: `var(--amino-gray-l60)`,
       borderRadius: 6,
+      cursor: 'pointer',
       color: `var(--amino-gray-d40)`,
       height: `var(--amino-size-${size})`,
       flexWrap: 'inherit',
@@ -473,6 +484,8 @@ export const StyledReactSelect = <
   label,
   size = 'xl',
   styles,
+  placeholder,
+  menuPosition = 'fixed',
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
@@ -514,6 +527,8 @@ export const StyledReactSelect = <
             ...components,
           } as SelectComponentsConfig<Option, IsMulti, Group>
         }
+        menuPosition={menuPosition}
+        placeholder={placeholder || ''}
         styles={
           {
             ...styles,

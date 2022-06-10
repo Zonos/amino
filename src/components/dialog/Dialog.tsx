@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
-import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleIcon';
+import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled, { css } from 'styled-components';
 
