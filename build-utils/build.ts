@@ -2,6 +2,7 @@ import buble from '@rollup/plugin-buble';
 import fs from 'fs';
 import { glob } from 'glob';
 import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
+import image from 'rollup-plugin-img';
 import progress from 'rollup-plugin-progress';
 import { terser } from 'rollup-plugin-terser';
 import tsPlugin from 'rollup-plugin-typescript2';
@@ -43,6 +44,9 @@ const bundlePackage = async (
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     plugins: [
+      image({
+        limit: 10000,
+      }),
       tsPlugin({
         typescript: ttypescript,
         tsconfigOverride: {
