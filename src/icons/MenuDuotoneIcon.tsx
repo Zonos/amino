@@ -3,12 +3,7 @@ import React from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const MenuDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const MenuDuotoneIcon = ({ size, color, className }: IconProps) => {
   return (
     <IconBase
       size={size}
@@ -17,16 +12,12 @@ export const MenuDuotoneIcon = ({
       viewBox="0 0 24 24"
     >
       <path
-        d="M5 17C5 16.4477 5.44772 16 6 16H18C18.5523 16 19 16.4477 19 17C19 17.5523 18.5523 18 18 18H6C5.44772 18 5 17.5523 5 17Z"
-        fill="currentColor"
+        d="M5 17a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm0-5a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
+        fill="#3D3D42"
       />
       <path
-        d="M5 12C5 11.4477 5.44772 11 6 11H14C14.5523 11 15 11.4477 15 12C15 12.5523 14.5523 13 14 13H6C5.44772 13 5 12.5523 5 12Z"
+        d="M5 7a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
         fill="currentColor"
-      />
-      <path
-        d="M5 7C5 6.44772 5.44772 6 6 6H18C18.5523 6 19 6.44772 19 7C19 7.55228 18.5523 8 18 8H6C5.44772 8 5 7.55228 5 7Z"
-        fill={secondaryColor || '#CACACE'}
       />
     </IconBase>
   );

@@ -3,12 +3,7 @@ import React from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const EditDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const EditDuotoneIcon = ({ size, color, className }: IconProps) => {
   return (
     <IconBase
       size={size}
@@ -19,12 +14,12 @@ export const EditDuotoneIcon = ({
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M4.07439 15.7352C3.77821 16.0314 3.5825 16.4131 3.51486 16.8265L3.01348 19.8904C2.90308 20.5651 3.48715 21.1492 4.16185 21.0388L7.2258 20.5374C7.63916 20.4698 8.02085 20.274 8.31703 19.9779L20.4665 7.82843C21.2475 7.04738 21.2475 5.78105 20.4665 5L19.0523 3.58579C18.2712 2.80474 17.0049 2.80474 16.2238 3.58579L4.07439 15.7352Z"
-        fill="currentColor"
+        d="M4.074 15.735a2 2 0 0 0-.56 1.091l-.5 3.064a1 1 0 0 0 1.148 1.149l3.064-.502a2 2 0 0 0 1.091-.56l12.15-12.149a2 2 0 0 0 0-2.828l-1.415-1.414a2 2 0 0 0-2.828 0l-12.15 12.15Z"
+        fill="#3D3D42"
       />
       <path
-        d="M5.61963 14.19L14.812 4.99759L19.0547 9.24023L9.86227 18.4326L5.61963 14.19Z"
-        fill={secondaryColor || '#CACACE'}
+        d="m5.62 14.19 9.192-9.192 4.243 4.242-9.193 9.193L5.62 14.19Z"
+        fill="currentColor"
       />
     </IconBase>
   );

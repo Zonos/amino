@@ -3,12 +3,7 @@ import React from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const SearchDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const SearchDuotoneIcon = ({ size, color, className }: IconProps) => {
   return (
     <IconBase
       size={size}
@@ -19,13 +14,10 @@ export const SearchDuotoneIcon = ({
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M12.7929 12.7929C13.1834 12.4024 13.8166 12.4024 14.2071 12.7929L20.7071 19.2929C21.0976 19.6834 21.0976 20.3166 20.7071 20.7071C20.3166 21.0976 19.6834 21.0976 19.2929 20.7071L12.7929 14.2071C12.4024 13.8166 12.4024 13.1834 12.7929 12.7929Z"
-        fill="currentColor"
+        d="M12.793 12.793a1 1 0 0 1 1.414 0l6.5 6.5a1 1 0 0 1-1.414 1.414l-6.5-6.5a1 1 0 0 1 0-1.414Z"
+        fill="#CACACE"
       />
-      <path
-        d="M10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3Z"
-        fill={secondaryColor || '#3D3D42'}
-      />
+      <path d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z" fill="currentColor" />
     </IconBase>
   );
 };

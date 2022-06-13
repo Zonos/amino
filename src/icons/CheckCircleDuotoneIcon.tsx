@@ -7,8 +7,7 @@ export const CheckCircleDuotoneIcon = ({
   size,
   color,
   className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+}: IconProps) => {
   return (
     <IconBase
       size={size}
@@ -17,14 +16,14 @@ export const CheckCircleDuotoneIcon = ({
       viewBox="0 0 24 24"
     >
       <path
-        d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-        fill="currentColor"
+        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
+        fill="#CACACE"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M15.7071 9.29289C16.0976 9.68342 16.0976 10.3166 15.7071 10.7071L11.7071 14.7071C11.3166 15.0976 10.6834 15.0976 10.2929 14.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929C8.68342 10.9024 9.31658 10.9024 9.70711 11.2929L11 12.5858L14.2929 9.29289C14.6834 8.90237 15.3166 8.90237 15.7071 9.29289Z"
-        fill={secondaryColor || '#3D3D42'}
+        d="M15.707 9.293a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 1 1 1.414-1.414L11 12.586l3.293-3.293a1 1 0 0 1 1.414 0Z"
+        fill="currentColor"
       />
     </IconBase>
   );

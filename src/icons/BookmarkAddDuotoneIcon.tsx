@@ -7,8 +7,7 @@ export const BookmarkAddDuotoneIcon = ({
   size,
   color,
   className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+}: IconProps) => {
   return (
     <IconBase
       size={size}
@@ -17,14 +16,14 @@ export const BookmarkAddDuotoneIcon = ({
       viewBox="0 0 24 24"
     >
       <path
-        d="M8 2C5.79086 2 4 3.79087 4 6V20.0008C4 21.6842 5.95294 22.6146 7.26018 21.5538L11.3699 18.2191C11.7371 17.9211 12.2629 17.9211 12.6301 18.2191L16.7398 21.5538C18.047 22.6146 19.9999 21.6842 19.9999 20.0008V6C19.9999 3.79086 18.2091 2 15.9999 2H8Z"
-        fill="currentColor"
+        d="M8 2a4 4 0 0 0-4 4v14c0 1.684 1.953 2.615 3.26 1.554l4.11-3.335a1 1 0 0 1 1.26 0l4.11 3.335c1.307 1.06 3.26.13 3.26-1.553V6a4 4 0 0 0-4-4H8Z"
+        fill="#CACACE"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M12 7C12.5523 7 13 7.44772 13 8V9H14C14.5523 9 15 9.44772 15 10C15 10.5523 14.5523 11 14 11H13V12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12V11H10C9.44772 11 9 10.5523 9 10C9 9.44772 9.44772 9 10 9H11V8C11 7.44772 11.4477 7 12 7Z"
-        fill={secondaryColor || '#3D3D42'}
+        d="M12 7a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1V8a1 1 0 0 1 1-1Z"
+        fill="currentColor"
       />
     </IconBase>
   );

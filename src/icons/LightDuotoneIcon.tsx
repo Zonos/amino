@@ -3,12 +3,7 @@ import React from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const LightDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const LightDuotoneIcon = ({ size, color, className }: IconProps) => {
   return (
     <IconBase
       size={size}
@@ -17,16 +12,12 @@ export const LightDuotoneIcon = ({
       viewBox="0 0 24 24"
     >
       <path
-        d="M16 16.9297C18.3912 15.5465 20 12.9611 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 12.9611 5.60879 15.5465 8 16.9297V18C8 18.5523 8.44772 19 9 19H15C15.5523 19 16 18.5523 16 18V16.9297Z"
+        d="M16 16.93a8 8 0 1 0-8 0V18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1.07Z"
+        fill="#CACACE"
+      />
+      <path
+        d="M9 19h6v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1Zm1.707-8.707a1 1 0 1 0-1.414 1.414L11 13.414V19h2v-5.586l1.707-1.707a1 1 0 0 0-1.414-1.414L12 11.586l-1.293-1.293Z"
         fill="currentColor"
-      />
-      <path
-        d="M9 19H15V20C15 21.1046 14.1046 22 13 22H11C9.89543 22 9 21.1046 9 20V19Z"
-        fill={secondaryColor || '#3D3D42'}
-      />
-      <path
-        d="M10.7071 10.2929C10.3166 9.90237 9.68342 9.90237 9.29289 10.2929C8.90237 10.6834 8.90237 11.3166 9.29289 11.7071L11 13.4142V19H13V13.4142L14.7071 11.7071C15.0976 11.3166 15.0976 10.6834 14.7071 10.2929C14.3166 9.90237 13.6834 9.90237 13.2929 10.2929L12 11.5858L10.7071 10.2929Z"
-        fill={secondaryColor || '#3D3D42'}
       />
     </IconBase>
   );
