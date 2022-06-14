@@ -1,36 +1,81 @@
 import React, { forwardRef, ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const AminoListItem = styled.div<{ onClick?: () => void }>`
-  padding: var(--amino-space-half) var(--amino-space);
+interface AminoListItemProps {
+  withClick?: boolean;
+  disabled?: boolean;
+  selected?: boolean;
+}
+
+const AminoListItem = styled.div<AminoListItemProps>`
+  padding: var(--amino-space-quarter) var(--amino-space-half);
   display: flex;
   flex-direction: row;
+  gap: var(--amino-space-half);
   align-items: center;
+  min-height: var(--amino-size-xl);
+  border-radius: var(--amino-radius-lg);
+  line-height: 16px;
 
-  div {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  & .item-label {
+    font-weight: 500;
+    font-size: 14px;
   }
 
-  h5 {
-    margin-bottom: 0;
+  & .item-subtitle {
+    font-weight: 400;
+    color: var(--amino-gray-d40);
+    font-size: 12px;
   }
 
-  &:hover {
-    background: ${p => (p.onClick ? `var(--amino-hover-color)` : '')};
-    cursor: ${p => (p.onClick ? 'pointer' : '')};
-  }
+  ${({ selected, disabled }) =>
+    !disabled &&
+    selected &&
+    css`
+      background-color: var(--amino-blue-l80);
+      color: var(--amino-blue-d40);
 
-  &.disabled {
-    opacity: 0.5;
+      & .item-subtitle {
+        color: var(--amino-blue-d20);
+      }
+    `}
 
-    &:hover {
-      cursor: not-allowed;
-    }
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      color: var(--amino-gray-base);
+
+      & .item-subtitle {
+        color: var(--amino-gray-l20);
+      }
+    `}
+
+  :hover {
+    ${({ disabled, withClick }) =>
+      !disabled &&
+      withClick &&
+      css`
+        background-color: var(--amino-gray-l80);
+        cursor: pointer;
+      `}
+
+    ${({ disabled, withClick }) =>
+      disabled &&
+      withClick &&
+      css`
+        cursor: not-allowed;
+      `}
   }
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex-grow: 1;
 `;
 
 const Icon = styled.img`
@@ -42,39 +87,66 @@ const Icon = styled.img`
 
 export type Props = {
   disabled?: boolean;
+  selected?: boolean;
   label: string;
   subtitle?: ReactNode;
-  icon?: string;
   rightDecorator?: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  /** @description Decorater takes a React node, preferably an icon or an avatar */
+  decorator?: ReactNode;
+  /** @deprecated use decorator instead */
+  icon?: string;
+  /** @deprecated use decorator instead */
   iconComponent?: ReactNode;
-  onClick?: () => void;
+};
+
+const ListIcon = ({
+  icon,
+  iconComponent,
+  label,
+}: {
+  icon?: string;
+  iconComponent?: ReactNode;
+  label: string;
+}) => {
+  if (icon) {
+    return <Icon src={icon} alt={label} />;
+  }
+  if (iconComponent) {
+    return <>{iconComponent}</>;
+  }
+  return null;
 };
 
 export const ListItem = forwardRef<HTMLDivElement, Props>(
   (
-    { disabled, label, subtitle, icon, iconComponent, rightDecorator, onClick },
+    {
+      disabled,
+      decorator,
+      selected,
+      label,
+      subtitle,
+      rightDecorator,
+      onClick,
+      icon,
+      iconComponent,
+    },
     ref
   ) => {
-    const renderIcon = () => {
-      if (icon) {
-        return <Icon src={icon} alt={label} />;
-      }
-      if (iconComponent) {
-        return iconComponent;
-      }
-      return null;
-    };
     return (
       <AminoListItem
-        className={disabled ? 'disabled' : ''}
-        onClick={() => !disabled && onClick && onClick()}
+        disabled={disabled}
+        selected={selected}
+        withClick={!!onClick}
+        onClick={!disabled ? undefined : onClick}
         ref={ref}
       >
-        {renderIcon()}
-        <div>
-          <Text type="h5">{label}</Text>
-          {subtitle && <Text type="subtitle">{subtitle}</Text>}
-        </div>
+        {decorator}
+        <ListIcon label={label} icon={icon} iconComponent={iconComponent} />
+        <TextContainer>
+          <Text className="item-label">{label}</Text>
+          {subtitle && <Text className="item-subtitle">{subtitle}</Text>}
+        </TextContainer>
         {rightDecorator}
       </AminoListItem>
     );
