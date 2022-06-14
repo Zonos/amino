@@ -39,7 +39,9 @@ export const createReactIconSVGs = ({
     });
 
     /** @desc Process color */
-    const fillPropMatches = fileContent.matchAll(/<path.*fill=(".*?").*?\//gm);
+    const fillPropMatches = fileContent.matchAll(
+      /<path.*?fill=(".*?").*?\/>/gm
+    );
     const [...fillColors] = Array.from(fillPropMatches);
     fillColors.forEach(([, color]) => {
       /** @desc Replace first color with currentColor if currentColor not found in the svg content */

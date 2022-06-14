@@ -3,7 +3,12 @@ import React from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const CartDuotoneIcon = ({ size, color, className }: IconProps) => {
+export const CartDuotoneIcon = ({
+  size,
+  color,
+  className,
+  secondaryColor,
+}: IconProps & { secondaryColor?: string }) => {
   return (
     <IconBase
       size={size}
@@ -13,13 +18,13 @@ export const CartDuotoneIcon = ({ size, color, className }: IconProps) => {
     >
       <path
         d="M4 3a1 1 0 0 0 0 2h.36a1 1 0 0 1 .981.804l1.518 7.588A2 2 0 0 0 8.819 15h8.887a2 2 0 0 0 1.948-1.548l1.303-5.613A1.5 1.5 0 0 0 19.496 6H7.42l-.118-.588A3 3 0 0 0 4.36 3H4Z"
-        fill="#CACACE"
+        fill="currentColor"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M11 19a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm8 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
-        fill="currentColor"
+        fill={secondaryColor || '#3D3D42'}
       />
     </IconBase>
   );

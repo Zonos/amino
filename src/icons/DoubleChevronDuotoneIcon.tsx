@@ -7,7 +7,8 @@ export const DoubleChevronDuotoneIcon = ({
   size,
   color,
   className,
-}: IconProps) => {
+  secondaryColor,
+}: IconProps & { secondaryColor?: string }) => {
   return (
     <IconBase
       size={size}
@@ -17,15 +18,15 @@ export const DoubleChevronDuotoneIcon = ({
     >
       <path
         d="M16.327 9.828a.966.966 0 0 0 1.386 0 1.014 1.014 0 0 0 0-1.414l-5.02-5.121a.97.97 0 0 0-1.386 0l-5.02 5.121a1.014 1.014 0 0 0 0 1.414.966.966 0 0 0 1.386 0L12 5.414l4.327 4.414Z"
-        fill="#3D3D42"
-      />
-      <path
-        d="M7.673 14.172a.966.966 0 0 0-1.386 0 1.014 1.014 0 0 0 0 1.414l5.02 5.121a.97.97 0 0 0 1.386 0l5.02-5.121a1.014 1.014 0 0 0 0-1.414.966.966 0 0 0-1.386 0L12 18.586l-4.327-4.414Z"
         fill="currentColor"
       />
       <path
         d="M7.673 14.172a.966.966 0 0 0-1.386 0 1.014 1.014 0 0 0 0 1.414l5.02 5.121a.97.97 0 0 0 1.386 0l5.02-5.121a1.014 1.014 0 0 0 0-1.414.966.966 0 0 0-1.386 0L12 18.586l-4.327-4.414Z"
-        fill="currentColor"
+        fill={secondaryColor || '#CACACE'}
+      />
+      <path
+        d="M7.673 14.172a.966.966 0 0 0-1.386 0 1.014 1.014 0 0 0 0 1.414l5.02 5.121a.97.97 0 0 0 1.386 0l5.02-5.121a1.014 1.014 0 0 0 0-1.414.966.966 0 0 0-1.386 0L12 18.586l-4.327-4.414Z"
+        fill={secondaryColor || '#CACACE'}
       />
     </IconBase>
   );
