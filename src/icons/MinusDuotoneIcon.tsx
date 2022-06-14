@@ -17,13 +17,13 @@ export const MinusDuotoneIcon = ({
       viewBox="0 0 24 24"
     >
       <path
-        d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
         fill="currentColor"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M7 12C7 11.4477 7.44772 11 8 11H16C16.5523 11 17 11.4477 17 12C17 12.5523 16.5523 13 16 13H8C7.44772 13 7 12.5523 7 12Z"
+        d="M7 12a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
         fill={secondaryColor || '#3D3D42'}
       />
     </IconBase>

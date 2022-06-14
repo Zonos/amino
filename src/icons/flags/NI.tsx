@@ -47,7 +47,7 @@ export const NI = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M0 0v4h16V0H0ZM0 8v4h16V8H0Z"
+            d="M0 0v4h16V0H0Zm0 8v4h16V8H0Z"
             fill="#0080EC"
           />
           <path
