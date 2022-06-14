@@ -3,7 +3,6 @@ import React from 'react';
 import { DynamicIcon, DynamicIconType } from 'src/icons/icon-base/DynamicIcon';
 import styled, { css } from 'styled-components';
 
-// @ts-ignore
 import avatarimg from './avatar.svg';
 
 const avatarSizes = {
@@ -18,7 +17,7 @@ const iconSizes: { [key in AvatarSize]: number } = {
   md: 20,
   lg: 24,
   xl: 28,
-} as const;
+};
 
 const avatarShapes = {
   round: '50%',
