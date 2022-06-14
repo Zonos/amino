@@ -13,6 +13,7 @@ export { ArrowSwapSolidIcon } from './ArrowSwapSolidIcon';
 export { ArrowUpDuotoneIcon } from './ArrowUpDuotoneIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
 export { ArrowUpSolidIcon } from './ArrowUpSolidIcon';
+export { AvatarIcon } from './AvatarIcon';
 export { BagDuotoneIcon } from './BagDuotoneIcon';
 export { BagIcon } from './BagIcon';
 export { BagSolidIcon } from './BagSolidIcon';

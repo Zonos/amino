@@ -1,6 +1,6 @@
 import React from 'react';
 
-import avatarimg from './avatar.svg';
+import avatarimg from '../../../svgReact/icons/svgs/Avatar.svg';
 import { AvatarBase, AvatarProps } from './AvatarBase';
 
 export type UserAvatarProps = AvatarProps;
