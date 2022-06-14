@@ -76,8 +76,8 @@ dist
 storybook-static
 
 # SVG to React Icon working folders
-svgReact/aws-flags
-svgReact/figma-flags
+svgReact/flags/aws-flags
+svgReact/flags/figma-flags
 svgReact/smaller-flags
 svgReact/svgs
 # Parcel cache
