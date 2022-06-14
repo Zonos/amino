@@ -47,7 +47,7 @@ export const BZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M0 0v2h16V0H0ZM0 10v2h16v-2H0Z"
+            d="M0 0v2h16V0H0Zm0 10v2h16v-2H0Z"
             fill="#E93C43"
           />
           <path d="M8 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" fill="#F7FCFF" />

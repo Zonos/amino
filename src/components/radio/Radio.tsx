@@ -32,6 +32,10 @@ const StyledRadio = styled.div<{
   }
 `;
 
+const StyledText = styled(Text)`
+  margin-bottom: 0;
+`;
+
 const RadioContainer = styled.div<{
   checked: boolean;
   disabled?: boolean;
@@ -93,6 +97,6 @@ export const Radio = ({ disabled, label, checked, onChange }: RadioProps) => (
         )}
       </AnimatePresence>
     </StyledRadio>
-    {label && <Text type="input-label">{label}</Text>}
+    {label && <StyledText type="input-label">{label}</StyledText>}
   </RadioContainer>
 );
