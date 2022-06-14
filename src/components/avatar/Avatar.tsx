@@ -4,7 +4,7 @@ import { DynamicIcon, DynamicIconType } from 'src/icons/icon-base/DynamicIcon';
 import styled, { css } from 'styled-components';
 
 // @ts-ignore
-import avatarimg from './avatarSVG.svg';
+import avatarimg from './avatar.svg';
 
 const avatarSizes = {
   sm: 'var(--amino-size-sm)',
