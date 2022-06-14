@@ -4,7 +4,8 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   IconAvatar as Avatar,
   IconAvatarProps,
-} from 'src/components/avatar/Avatar';
+} from 'src/components/avatar/IconAvatar';
+import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { withDesign } from 'storybook-addon-designs';
 
 const IconAvatarMeta: Meta = {
@@ -25,5 +26,5 @@ export const IconAvatar = IconAvatarTemplate.bind({});
 IconAvatar.args = {
   shape: 'round',
   size: 'lg',
-  icon: 'ArrowDownDuotoneIcon',
+  icon: <ArrowDownIcon />,
 };

@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   ImageAvatar as Avatar,
   ImageAvatarProps,
-} from 'src/components/avatar/Avatar';
+} from 'src/components/avatar/ImageAvatar';
 import { withDesign } from 'storybook-addon-designs';
 
 const ImageAvatarMeta: Meta = {

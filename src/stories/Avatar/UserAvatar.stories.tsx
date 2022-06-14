@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
-  AvatarProps,
   UserAvatar as Avatar,
-} from 'src/components/avatar/Avatar';
+  UserAvatarProps,
+} from 'src/components/avatar/UserAvatar';
 import { withDesign } from 'storybook-addon-designs';
 
 const UserAvatarMeta: Meta = {
@@ -15,10 +15,10 @@ const UserAvatarMeta: Meta = {
 
 export default UserAvatarMeta;
 
-const UserAvatarTemplate: Story<AvatarProps> = ({
+const UserAvatarTemplate: Story<UserAvatarProps> = ({
   shape,
   size,
-}: AvatarProps) => <Avatar shape={shape} size={size} />;
+}: UserAvatarProps) => <Avatar shape={shape} size={size} />;
 
 export const UserAvatar = UserAvatarTemplate.bind({});
 UserAvatar.args = {
