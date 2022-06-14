@@ -14,8 +14,8 @@ export const HelloSolidIcon = ({ size, color, className }: IconProps) => {
       <rect
         x="12"
         y="2"
-        width="14.1422"
-        height="14.1422"
+        width="14.142"
+        height="14.142"
         rx="3"
         transform="rotate(45 12 2)"
         fill="#3D3D42"

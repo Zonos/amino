@@ -3,6 +3,7 @@ import React from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
+/** @deprecated Use IntegrationIcon instead */
 export const PuzzleIcon = ({ size, color, className }: IconProps) => (
   <IconBase size={size} color={color} className={className}>
     <path

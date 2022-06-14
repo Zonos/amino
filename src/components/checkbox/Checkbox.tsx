@@ -43,7 +43,9 @@ const StyledLabelDescription = styled.span`
   color: var(--amino-gray-500);
 `;
 
-const StyledLabel = styled(Text)``;
+const StyledLabel = styled(Text)`
+  margin-bottom: 0;
+`;
 
 const LabelWrapper = styled.div`
   display: flex;
