@@ -1,15 +1,43 @@
-const fs = require('fs');
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from 'fs';
 
-const addWrapper = id => `{\`${id}\`}`;
+import { GenerateIconType, SvgList } from './types/TypeGenerateIcon';
 
-const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
-  names.forEach(name => {
-    let fileContent = fs.readFileSync(
-      `${inputFolder}/${name.originalFileName}`,
+const addWrapper = (id: string) => `{\`${id}\`}`;
+
+const pascalCased = (string: string) => {
+  return (
+    string.charAt(0).toUpperCase() +
+    string.replace(/-([a-z])/g, letters => letters[1].toUpperCase()).slice(1)
+  );
+};
+
+const convertSvgsObj = (destFolder: string): SvgList[] =>
+  readdirSync(destFolder).reduce((accumulator, originalFileName) => {
+    return [
+      ...accumulator,
       {
-        encoding: 'utf8',
-      }
-    );
+        originalFileName,
+        newFileName: pascalCased(originalFileName).replace('.svg', '.tsx'),
+        componentName: pascalCased(originalFileName).replace('.svg', ''),
+      },
+    ];
+  }, []);
+
+export const createReactSVGs = ({
+  inputFolder,
+  outputFolder,
+}: GenerateIconType) => {
+  const names = convertSvgsObj(inputFolder);
+  names.forEach(name => {
+    let fileContent = readFileSync(`${inputFolder}/${name.originalFileName}`, {
+      encoding: 'utf8',
+    });
 
     /** @desc We need to preserve the viewbox */
     const viewBoxMatches = fileContent.match(/viewBox="(.*?)"/g);
@@ -49,7 +77,7 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
       `import React, { forwardRef } from 'react';`,
       `import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';`,
       maskIds.length &&
-      `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
+        `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
       `type Props = {`,
       `height: number;`,
       `width: number;`,
@@ -67,13 +95,11 @@ const createReactSVGs = ({ names, inputFolder, outputFolder }) => {
       .join('\n');
 
     if (name.originalFileName.includes('.svg')) {
-      if (!fs.existsSync(outputFolder)) {
-        fs.mkdirSync(outputFolder);
+      if (!existsSync(outputFolder)) {
+        mkdirSync(outputFolder);
       }
 
-      fs.writeFileSync(`${outputFolder}/${name.newFileName}`, component);
+      writeFileSync(`${outputFolder}/${name.newFileName}`, component);
     }
   });
 };
-
-module.exports = { createReactSVGs };
