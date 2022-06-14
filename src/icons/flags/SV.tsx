@@ -47,7 +47,7 @@ export const SV = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M0 0v4h16V0H0ZM0 8v4h16V8H0Z"
+            d="M0 0v4h16V0H0Zm0 8v4h16V8H0Z"
             fill="#3D58DB"
           />
           <path
@@ -63,7 +63,7 @@ export const SV = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           />
           <path d="M7.08 6.164h1.604" stroke="#188396" strokeWidth=".5" />
           <path
-            d="M7.23 5.903h1.38M8.525 6.206H7.297l.62-1.028.608 1.028Z"
+            d="M7.23 5.903h1.38m-.085.303H7.297l.62-1.028.608 1.028Z"
             stroke="#E8AA00"
             strokeWidth=".5"
           />

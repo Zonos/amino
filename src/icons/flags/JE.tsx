@@ -29,7 +29,7 @@ export const JE = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           fill="#F7FCFF"
         />
         <path
-          d="M-1.35.622-2.376.003V12.397l1.024-.62 8.27-5 .954-.577-.955-.578-8.269-5Z"
+          d="M-1.35.622-2.376.003v12.394l1.024-.62 8.27-5 .954-.577-.955-.578-8.269-5Z"
           fill="#F7FCFF"
           stroke="#E31D1C"
           strokeWidth="1.35"

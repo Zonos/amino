@@ -8,7 +8,7 @@ type Props = {
   width: number;
 };
 export const MT = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
-  const ids = useStableUniqueId(3);
+  const ids = useStableUniqueId(2);
   return (
     <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 16 12">
       <path fill="#F7FCFF" d="M0 0h16v12H0z" />
@@ -47,21 +47,6 @@ export const MT = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           d="M8 0h8v12H8V0Z"
           fill="#E31D1C"
         />
-        <mask
-          id={`${ids[2]}`}
-          maskUnits="userSpaceOnUse"
-          x="8"
-          y="0"
-          width="8"
-          height="12"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M8 0h8v12H8V0Z"
-            fill="#fff"
-          />
-        </mask>
       </g>
     </FlagIconBase>
   );
