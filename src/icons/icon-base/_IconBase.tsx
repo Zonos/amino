@@ -17,7 +17,6 @@ export const IconBase = forwardRef<SVGSVGElement, Props>(
         height={iconSize}
         color={color && `var(--amino-${color})`}
         viewBox={viewBox || `0 0 24 24`}
-        preserveAspectRatio="XMaxYMax meet"
       >
         {children}
       </svg>
