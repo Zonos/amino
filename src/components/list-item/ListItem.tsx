@@ -46,6 +46,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
     disabled &&
     css`
       color: var(--amino-gray-base);
+      cursor: not-allowed;
 
       & .item-subtitle {
         color: var(--amino-gray-l20);
@@ -59,13 +60,6 @@ const AminoListItem = styled.div<AminoListItemProps>`
       css`
         background-color: var(--amino-gray-l80);
         cursor: pointer;
-      `}
-
-    ${({ disabled, withClick }) =>
-      disabled &&
-      withClick &&
-      css`
-        cursor: not-allowed;
       `}
   }
 `;
