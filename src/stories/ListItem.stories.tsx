@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { List } from 'src/components/list/List';
 import { ListItem, Props } from 'src/components/list-item/ListItem';
+import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { withDesign } from 'storybook-addon-designs';
 
 const ListItemMeta: Meta = {
@@ -17,25 +19,29 @@ const Template: Story<Props> = ({
   disabled,
   subtitle,
   onClick,
-  icon,
+  selected,
   rightDecorator,
-  iconComponent,
+  decorator,
 }: Props) => (
-  <ListItem
-    label={label}
-    disabled={disabled}
-    subtitle={subtitle}
-    icon={icon}
-    rightDecorator={rightDecorator}
-    iconComponent={iconComponent}
-    onClick={onClick}
-  />
+  <List>
+    <ListItem
+      label={label}
+      disabled={disabled}
+      subtitle={subtitle}
+      selected={selected}
+      rightDecorator={rightDecorator}
+      onClick={onClick}
+      decorator={decorator}
+    />
+  </List>
 );
 
 export const BasicListItem = Template.bind({});
 BasicListItem.args = {
-  disabled: true,
+  disabled: false,
   label: 'Example ListItem',
   subtitle: 'subtitle example',
-  icon: '',
+  onClick: () => {},
+  selected: true,
+  decorator: <ArrowDownIcon />,
 };
