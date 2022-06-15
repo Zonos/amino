@@ -132,7 +132,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
         disabled={disabled}
         selected={selected}
         withClick={!!onClick}
-        onClick={!disabled ? undefined : onClick}
+        onClick={e => !disabled && onClick && onClick(e)}
         ref={ref}
       >
         {decorator}

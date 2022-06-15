@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta } from '@storybook/react/types-6-0';
 import { IconAvatar } from 'src/components/avatar/IconAvatar';
@@ -17,18 +17,39 @@ const ListMeta: Meta = {
 
 export default ListMeta;
 
-export const PrimaryList = () => (
-  <List>
-    <ListItem
-      label="Label"
-      disabled={false}
-      subtitle="subtitle"
-      onClick={() => {}}
-    />
-    <ListItem label="Label" disabled subtitle="subtitle" />
-    <ListItem label="Label" selected subtitle="subtitle" />
-  </List>
-);
+export const PrimaryList = () => {
+  const [selectedListItem, setSelectedListItem] = useState(1);
+  return (
+    <List>
+      <ListItem
+        label="Label"
+        disabled={false}
+        subtitle="subtitle"
+        onClick={() => {
+          setSelectedListItem(1);
+        }}
+        selected={selectedListItem === 1}
+      />
+      <ListItem
+        label="Label"
+        disabled
+        subtitle="subtitle"
+        onClick={() => {
+          setSelectedListItem(2);
+        }}
+        selected={selectedListItem === 2}
+      />
+      <ListItem
+        label="Label"
+        subtitle="subtitle"
+        onClick={() => {
+          setSelectedListItem(3);
+        }}
+        selected={selectedListItem === 3}
+      />
+    </List>
+  );
+};
 
 export const Empty = () => <List />;
 
@@ -38,29 +59,46 @@ export const OneItem = () => (
   </List>
 );
 
-export const ManyItems = () => (
-  <List>
-    <ListItem
-      decorator={
-        <IconAvatar shape="round" size="sm" icon={<ArrowDownIcon />} />
-      }
-      label="Label"
-      disabled={false}
-      subtitle="subtitle"
-    />
-    <ListItem
-      decorator={
-        <IconAvatar shape="round" size="sm" icon={<ArrowLeftIcon />} />
-      }
-      label="Label"
-      disabled={false}
-      subtitle="subtitle"
-    />
-    <ListItem
-      decorator={<IconAvatar shape="round" size="sm" icon={<ArrowUpIcon />} />}
-      label="Label"
-      disabled={false}
-      subtitle="subtitle"
-    />
-  </List>
-);
+export const ManyItems = () => {
+  const [selectedListItem, setSelectedListItem] = useState(1);
+  return (
+    <List>
+      <ListItem
+        decorator={
+          <IconAvatar shape="round" size="sm" icon={<ArrowDownIcon />} />
+        }
+        label="Label"
+        disabled={false}
+        subtitle="subtitle"
+        selected={selectedListItem === 1}
+        onClick={() => {
+          setSelectedListItem(1);
+        }}
+      />
+      <ListItem
+        decorator={
+          <IconAvatar shape="round" size="sm" icon={<ArrowLeftIcon />} />
+        }
+        label="Label"
+        disabled={false}
+        selected={selectedListItem === 2}
+        onClick={() => {
+          setSelectedListItem(2);
+        }}
+        subtitle="subtitle"
+      />
+      <ListItem
+        decorator={
+          <IconAvatar shape="round" size="sm" icon={<ArrowUpIcon />} />
+        }
+        label="Label"
+        disabled={false}
+        selected={selectedListItem === 3}
+        onClick={() => {
+          setSelectedListItem(3);
+        }}
+        subtitle="subtitle"
+      />
+    </List>
+  );
+};
