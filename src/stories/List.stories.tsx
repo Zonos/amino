@@ -19,32 +19,30 @@ export default ListMeta;
 
 export const PrimaryList = () => {
   const [selectedListItem, setSelectedListItem] = useState(1);
+
+  const updateSelectedListItem = (num: number) => {
+    setSelectedListItem(selectedListItem === num ? 0 : num);
+  };
   return (
     <List>
       <ListItem
         label="Label"
         disabled={false}
         subtitle="subtitle"
-        onClick={() => {
-          setSelectedListItem(1);
-        }}
+        onClick={() => updateSelectedListItem(1)}
         selected={selectedListItem === 1}
       />
       <ListItem
         label="Label"
         disabled
         subtitle="subtitle"
-        onClick={() => {
-          setSelectedListItem(2);
-        }}
+        onClick={() => updateSelectedListItem(2)}
         selected={selectedListItem === 2}
       />
       <ListItem
         label="Label"
         subtitle="subtitle"
-        onClick={() => {
-          setSelectedListItem(3);
-        }}
+        onClick={() => updateSelectedListItem(3)}
         selected={selectedListItem === 3}
       />
     </List>
@@ -61,6 +59,11 @@ export const OneItem = () => (
 
 export const ManyItems = () => {
   const [selectedListItem, setSelectedListItem] = useState(1);
+
+  const updateSelectedListItem = (num: number) => {
+    setSelectedListItem(selectedListItem === num ? 0 : num);
+  };
+
   return (
     <List>
       <ListItem
@@ -71,9 +74,7 @@ export const ManyItems = () => {
         disabled={false}
         subtitle="subtitle"
         selected={selectedListItem === 1}
-        onClick={() => {
-          setSelectedListItem(1);
-        }}
+        onClick={() => updateSelectedListItem(1)}
       />
       <ListItem
         decorator={
@@ -82,9 +83,7 @@ export const ManyItems = () => {
         label="Label"
         disabled={false}
         selected={selectedListItem === 2}
-        onClick={() => {
-          setSelectedListItem(2);
-        }}
+        onClick={() => updateSelectedListItem(2)}
         subtitle="subtitle"
       />
       <ListItem
@@ -94,9 +93,7 @@ export const ManyItems = () => {
         label="Label"
         disabled={false}
         selected={selectedListItem === 3}
-        onClick={() => {
-          setSelectedListItem(3);
-        }}
+        onClick={() => updateSelectedListItem(3)}
         subtitle="subtitle"
       />
     </List>
