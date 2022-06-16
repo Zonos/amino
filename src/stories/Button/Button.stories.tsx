@@ -50,16 +50,27 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
-const ButtonRow = ({ children, ...props }: ButtonProps) => (
+const ButtonRow = (props: ButtonProps) => (
   <HWrapper>
-    <Button {...props}>{children}</Button>
-    <Button {...props} icon={<CubeIcon size={16} />}>
-      {children}
-    </Button>
-    <Button {...props} icon={<CubeIcon size={16} />} iconRight>
-      {children}
-    </Button>
-    <Button {...props} icon={<CubeIcon size={16} />} />
+    <Button {...props} tooltip="Example tooltip" />
+    <Button
+      {...props}
+      icon={<CubeIcon size={16} />}
+      tooltip="Example tooltip"
+    />
+    <Button
+      {...props}
+      icon={<CubeIcon size={16} />}
+      iconRight
+      tooltip="Example tooltip"
+    />
+    <Button
+      {...props}
+      icon={<CubeIcon size={16} />}
+      /*  eslint-disable-next-line react/no-children-prop */
+      children=""
+      tooltip="Example tooltip"
+    />
   </HWrapper>
 );
 
@@ -130,6 +141,18 @@ Outline.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
+  },
+};
+
+export const LinkButton = Template.bind({});
+LinkButton.args = {
+  intent: 'link',
+  children: 'Link button',
+};
+LinkButton.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
   },
 };
 

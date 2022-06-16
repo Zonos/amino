@@ -1,4 +1,9 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import React, {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  ReactNode,
+} from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
@@ -192,10 +197,29 @@ const TextButton = styled(AminoButton)<ButtonProps>`
   }
 `;
 
-type IntentProps = 'outline' | 'subtle' | 'text' | Intent;
+const LinkButton = styled(AminoButton)<ButtonProps>`
+  color: var(--amino-blue-base);
+  background: white;
 
-type ButtonType = {
-  as?: 'button' | 'a';
+  &:hover {
+    background: var(--amino-gray-l80);
+  }
+  &:active,
+  &:focus {
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-d40);
+    svg path {
+      fill: currentColor;
+    }
+  }
+  ${StyledSpinnerWrapper} {
+    background: white;
+  }
+`;
+
+type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | Intent;
+
+type ButtonBase = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -204,17 +228,30 @@ type ButtonType = {
   intent?: IntentProps;
   loading?: boolean;
   loadingText?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   size?: Size;
   tabIndex?: number;
   tooltip?: ReactNode;
   type?: 'button' | 'reset' | 'submit';
 };
 
-export type ButtonProps = ButtonType &
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonType>;
+type AsButtonProps = ButtonBase &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBase> & {
+    as?: 'button';
+  };
 
-export const Button = ({
+type AsDivProps = ButtonBase &
+  Omit<HTMLAttributes<HTMLDivElement>, keyof ButtonBase> & {
+    as?: 'div';
+  };
+
+type AsAnchorProps = ButtonBase &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBase> & {
+    as?: 'a';
+  };
+
+export type ButtonProps = AsButtonProps | AsDivProps | AsAnchorProps;
+
+export function Button({
   as = 'button',
   children,
   className,
@@ -224,27 +261,24 @@ export const Button = ({
   intent,
   loading,
   loadingText,
-  onClick,
   size = 'sm',
-  tabIndex,
   tooltip,
   type = 'button',
   ...props
-}: ButtonProps) => {
-  const content = (
+}: ButtonProps) {
+  const renderContent = (color?: SpinnerProps['color']) => (
     <>
       {tooltip && <ReactTooltip />}
       {!iconRight && icon}
       {children}
       {iconRight && icon}
+      {loading && (
+        <StyledSpinnerWrapper>
+          <Spinner size={16} color={color} />
+          {loadingText}
+        </StyledSpinnerWrapper>
+      )}
     </>
-  );
-
-  const renderSpinner = (color?: SpinnerProps['color']) => (
-    <StyledSpinnerWrapper>
-      <Spinner size={16} color={color} />
-      {loadingText}
-    </StyledSpinnerWrapper>
   );
 
   const buttonClassName = [
@@ -255,126 +289,91 @@ export const Button = ({
     loading ? 'loading' : '',
   ].join(' ');
 
-  switch (intent) {
-    case 'primary':
-      return (
-        <Primary
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner('white')}
-        </Primary>
-      );
-    case 'subtle':
-      return (
-        <Subtle
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner()}
-        </Subtle>
-      );
-    case 'outline':
-      return (
-        <Outline
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner()}
-        </Outline>
-      );
-    case 'warning':
-      return (
-        <Warning
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner()}
-        </Warning>
-      );
-    case 'danger':
-      return (
-        <Danger
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner()}
-        </Danger>
-      );
-    case 'text':
-      return (
-        <TextButton
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner()}
-        </TextButton>
-      );
-    case 'secondary':
-    default:
-      return (
-        <Secondary
-          as={as}
-          className={buttonClassName}
-          data-tip={tooltip}
-          onClick={onClick}
-          tabIndex={tabIndex}
-          size={size}
-          disabled={disabled || loading}
-          type={type}
-          {...props}
-        >
-          {content}
-          {loading && renderSpinner()}
-        </Secondary>
-      );
+  const baseProps = {
+    className: buttonClassName,
+    'data-tip': tooltip,
+    disabled: disabled || loading,
+    size,
+  };
+
+  if (as === 'button') {
+    const buttonProps = {
+      as,
+      type,
+      ...baseProps,
+      ...(props as AsButtonProps),
+    };
+    switch (intent) {
+      case 'primary':
+        return <Primary {...buttonProps}>{renderContent('white')}</Primary>;
+      case 'subtle':
+        return <Subtle {...buttonProps}>{renderContent()}</Subtle>;
+      case 'outline':
+        return <Outline {...buttonProps}>{renderContent()}</Outline>;
+      case 'warning':
+        return <Warning {...buttonProps}>{renderContent()}</Warning>;
+      case 'danger':
+        return <Danger {...buttonProps}>{renderContent()}</Danger>;
+      case 'text':
+        return <TextButton {...buttonProps}>{renderContent()}</TextButton>;
+      case 'link':
+        return <LinkButton {...buttonProps}>{renderContent()}</LinkButton>;
+      case 'secondary':
+      default:
+        return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
+    }
   }
-};
+  if (as === 'div') {
+    const buttonProps = {
+      as,
+      ...baseProps,
+      ...(props as AsDivProps),
+    };
+    switch (intent) {
+      case 'primary':
+        return <Primary {...buttonProps}>{renderContent('white')}</Primary>;
+      case 'subtle':
+        return <Subtle {...buttonProps}>{renderContent()}</Subtle>;
+      case 'outline':
+        return <Outline {...buttonProps}>{renderContent()}</Outline>;
+      case 'warning':
+        return <Warning {...buttonProps}>{renderContent()}</Warning>;
+      case 'danger':
+        return <Danger {...buttonProps}>{renderContent()}</Danger>;
+      case 'text':
+        return <TextButton {...buttonProps}>{renderContent()}</TextButton>;
+      case 'link':
+        return <LinkButton {...buttonProps}>{renderContent()}</LinkButton>;
+      case 'secondary':
+      default:
+        return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
+    }
+  }
+  if (as === 'a') {
+    const buttonProps = {
+      as,
+      ...baseProps,
+      ...(props as AsAnchorProps),
+    };
+    switch (intent) {
+      case 'primary':
+        return <Primary {...buttonProps}>{renderContent('white')}</Primary>;
+      case 'subtle':
+        return <Subtle {...buttonProps}>{renderContent()}</Subtle>;
+      case 'outline':
+        return <Outline {...buttonProps}>{renderContent()}</Outline>;
+      case 'warning':
+        return <Warning {...buttonProps}>{renderContent()}</Warning>;
+      case 'danger':
+        return <Danger {...buttonProps}>{renderContent()}</Danger>;
+      case 'text':
+        return <TextButton {...buttonProps}>{renderContent()}</TextButton>;
+      case 'link':
+        return <LinkButton {...buttonProps}>{renderContent()}</LinkButton>;
+      case 'secondary':
+      default:
+        return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
+    }
+  }
+  return null;
+}
