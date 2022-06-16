@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Input } from 'src/components/input/Input';
+import { UserAvatar } from 'src/components/avatar/UserAvatar';
+import { ListItem } from 'src/components/list-item/ListItem';
 import { SortableList } from 'src/components/sortable-list/SortableList';
 import {
   arrayMove,
@@ -24,11 +25,11 @@ interface IListItemData {
 }
 
 const listItemData: IListItemData[] = [
-  { id: '1', name: 'First' },
-  { id: '2', name: 'Second' },
-  { id: '3', name: 'Third' },
-  { id: '4', name: 'Fourth' },
-  { id: '5', name: 'Fifth' },
+  { id: '1', name: 'Henry' },
+  { id: '2', name: 'Frank' },
+  { id: '3', name: 'Jess' },
+  { id: '4', name: 'Bob' },
+  { id: '5', name: 'Ashley' },
 ];
 
 const Template: Story = () => {
@@ -54,19 +55,19 @@ const Template: Story = () => {
 
   return (
     <SortableList
-      itemIds={listItemData.map(i => i.id)}
+      itemIds={listItems.map(i => i.id)}
       handleDragEnd={handleDragEndEvent}
     >
       {listItems.map(item => (
         <SortableListItem id={item.id} key={item.id}>
-          <Input value={item.name} onChange={() => {}} />
+          <ListItem label={item.name} selected />
         </SortableListItem>
       ))}
     </SortableList>
   );
 };
 
-export const WithoutHandleList = Template.bind({});
+export const WithoutHandle = Template.bind({});
 
 const WithHandleTemplate: Story = () => {
   const [listItems, setListItems] = useState<IListItemData[]>([]);
@@ -96,11 +97,15 @@ const WithHandleTemplate: Story = () => {
     >
       {listItems.map(item => (
         <SortableListItem useHandle id={item.id} key={item.id}>
-          <Input value={item.name} onChange={() => {}} />
+          <ListItem
+            decorator={<UserAvatar size="sm" shape="round" />}
+            label={item.name}
+            onClick={() => {}}
+          />
         </SortableListItem>
       ))}
     </SortableList>
   );
 };
 
-export const WithHandleList = WithHandleTemplate.bind({});
+export const WithHandle = WithHandleTemplate.bind({});
