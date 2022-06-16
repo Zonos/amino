@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 import { closestCenter, DndContext } from '@dnd-kit/core';
 import {
@@ -33,19 +33,13 @@ export const SortableList = ({
   handleDragEnd,
   sortingStrategy = verticalListSortingStrategy,
 }: SortableListProps) => {
-  const [sortableItems, setSortableItems] = useState<string[]>([]);
-
-  useEffect(() => {
-    setSortableItems(itemIds);
-  }, [itemIds]);
-
   return (
     <DndContext
       onDragEnd={handleDragEnd}
       collisionDetection={closestCenter}
       modifiers={[restrictToParentElement, restrictToVerticalAxis]}
     >
-      <SortableContext items={sortableItems} strategy={sortingStrategy}>
+      <SortableContext items={itemIds} strategy={sortingStrategy}>
         <StyledSortableList>{children}</StyledSortableList>
       </SortableContext>
     </DndContext>

@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { DynamicIcon, DynamicIconType } from 'src/icons/icon-base/DynamicIcon';
+import { DragIcon } from 'src/icons/DragIcon';
 import styled from 'styled-components';
 
 const StyledSortableListItem = styled.div`
@@ -20,21 +20,22 @@ export interface SortableListItemProps {
   children: ReactNode;
   useHandle?: boolean;
   id: string;
-  handleIcon?: DynamicIconType;
   handleIconSize?: number;
 }
 
+/** @description This must be a direct child of SortableList */
 export const SortableListItem = ({
   children,
   useHandle,
   id,
-  handleIcon = 'DragIcon',
-  handleIconSize = 15,
+  handleIconSize = 20,
 }: SortableListItemProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
+    transition,
   };
 
   return (
@@ -44,7 +45,7 @@ export const SortableListItem = ({
           <StyledSortableSection>{children}</StyledSortableSection>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <div {...listeners} {...attributes}>
-            <DynamicIcon type={handleIcon} size={handleIconSize} />
+            <DragIcon size={handleIconSize} />
           </div>
         </StyledSortableListItem>
       ) : (
