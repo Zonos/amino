@@ -5,5 +5,4 @@ export type Intent =
   | 'info'
   | 'primary'
   | 'danger'
-  | 'secondary'
-  | 'icon';
+  | 'secondary';

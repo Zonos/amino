@@ -109,31 +109,6 @@ const Secondary = styled(AminoButton)`
   }
 `;
 
-const Icon = styled(AminoButton)`
-  background: var(--amino-input-background);
-  color: var(--amino-text-color);
-  padding: 0 var(--amino-space-half);
-  border: var(--amino-border);
-  box-shadow: var(--amino-shadow-small);
-
-  svg {
-    fill: currentColor;
-    color: var(--amino-text-color);
-  }
-
-  &:hover {
-    background: var(--amino-gray-200);
-  }
-  &:active,
-  &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
-  }
-  ${StyledSpinnerWrapper} {
-    background: var(--amino-input-background);
-  }
-`;
-
 const Danger = styled(AminoButton)`
   background: var(--amino-red-500);
   color: white;
@@ -205,14 +180,22 @@ const Subtle = styled(AminoButton)`
   &.loading {
     color: transparent;
   }
-  & > *:not(${StyledSpinnerWrapper}) {
-    opacity: 0;
+`;
+
+const TextButton = styled(AminoButton)<ButtonProps>`
+  height: 16px;
+  line-height: 14px;
+  padding: 0;
+
+  &.loading {
+    color: transparent;
   }
 `;
 
-type IntentProps = 'outline' | 'subtle' | Intent;
+type IntentProps = 'outline' | 'subtle' | 'text' | Intent;
 
 type ButtonType = {
+  as?: 'button' | 'a';
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
@@ -232,6 +215,7 @@ export type ButtonProps = ButtonType &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonType>;
 
 export const Button = ({
+  as = 'button',
   children,
   className,
   disabled,
@@ -275,6 +259,7 @@ export const Button = ({
     case 'primary':
       return (
         <Primary
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
@@ -291,6 +276,7 @@ export const Button = ({
     case 'subtle':
       return (
         <Subtle
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
@@ -307,6 +293,7 @@ export const Button = ({
     case 'outline':
       return (
         <Outline
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
@@ -323,6 +310,7 @@ export const Button = ({
     case 'warning':
       return (
         <Warning
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
@@ -339,6 +327,7 @@ export const Button = ({
     case 'danger':
       return (
         <Danger
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
@@ -352,9 +341,10 @@ export const Button = ({
           {loading && renderSpinner()}
         </Danger>
       );
-    case 'icon':
+    case 'text':
       return (
-        <Icon
+        <TextButton
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
@@ -366,12 +356,13 @@ export const Button = ({
         >
           {content}
           {loading && renderSpinner()}
-        </Icon>
+        </TextButton>
       );
     case 'secondary':
     default:
       return (
         <Secondary
+          as={as}
           className={buttonClassName}
           data-tip={tooltip}
           onClick={onClick}
