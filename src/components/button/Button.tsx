@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledSpinnerWrapper = styled.span`
   position: absolute;
@@ -66,9 +66,11 @@ const AminoButton = styled.button<ButtonProps>`
   &[disabled] {
     cursor: not-allowed;
     box-shadow: none;
-    &:not(.loading) {
-      opacity: 0.5;
-    }
+    ${props =>
+      !props.loading &&
+      css`
+        opacity: 0.5;
+      `}
   }
 `;
 
@@ -177,9 +179,11 @@ const Subtle = styled(AminoButton)`
     background: var(--amino-blue-100);
     color: var(--amino-blue-500);
   }
-  &.loading {
-    color: transparent;
-  }
+  ${props =>
+    props.loading &&
+    css`
+      color: transparent;
+    `}
 `;
 
 const TextButton = styled(AminoButton)<ButtonProps>`
@@ -187,9 +191,11 @@ const TextButton = styled(AminoButton)<ButtonProps>`
   line-height: 14px;
   padding: 0;
 
-  &.loading {
-    color: transparent;
-  }
+  ${props =>
+    props.loading &&
+    css`
+      color: transparent;
+    `}
 `;
 
 type IntentProps = 'outline' | 'subtle' | 'text' | Intent;
@@ -252,7 +258,6 @@ export const Button = ({
     icon && !children ? 'only-icon' : '',
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
-    loading ? 'loading' : '',
   ].join(' ');
 
   switch (intent) {
@@ -267,6 +272,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
@@ -284,6 +290,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
@@ -301,6 +308,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
@@ -318,6 +326,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
@@ -335,6 +344,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
@@ -352,6 +362,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
@@ -370,6 +381,7 @@ export const Button = ({
           size={size}
           disabled={disabled || loading}
           type={type}
+          loading={!!loading}
           {...props}
         >
           {content}
