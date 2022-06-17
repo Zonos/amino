@@ -44,7 +44,7 @@ const WarningIconWrapper = styled(IconWrapper)`
 
 export type RoundedIconProps = {
   children: React.ReactNode;
-  intent: Intent;
+  intent?: Intent;
 } & CSSProps;
 
 export const RoundedIcon = ({
