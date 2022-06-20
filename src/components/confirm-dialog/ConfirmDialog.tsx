@@ -83,7 +83,7 @@ export const ConfirmDialog = ({
       <VStack spacing="space-half">
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
-          <Text type="h4">{label}</Text>
+          <Text type="xl">{label}</Text>
           {subtitle && <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>}
         </div>
         <Footer>
