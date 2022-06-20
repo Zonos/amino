@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { Meta } from '@storybook/react/types-6-0';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { IconAvatar } from 'src/components/avatar/IconAvatar';
-import { List } from 'src/components/list/List';
+import { List, ListProps } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
@@ -17,14 +17,17 @@ const ListMeta: Meta = {
 
 export default ListMeta;
 
-export const PrimaryList = () => {
+const PrimaryListTemplate: Story<ListProps> = ({
+  withBorder,
+  withNegativeMargin,
+}: ListProps) => {
   const [selectedListItem, setSelectedListItem] = useState(1);
 
   const updateSelectedListItem = (num: number) => {
     setSelectedListItem(selectedListItem === num ? 0 : num);
   };
   return (
-    <List>
+    <List withBorder={withBorder} withNegativeMargin={withNegativeMargin}>
       <ListItem
         label="Label"
         disabled={false}
@@ -47,6 +50,12 @@ export const PrimaryList = () => {
       />
     </List>
   );
+};
+
+export const PrimaryList = PrimaryListTemplate.bind({});
+PrimaryListTemplate.args = {
+  withBorder: true,
+  withNegativeMargin: false,
 };
 
 export const Empty = () => <List />;
