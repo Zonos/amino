@@ -96,9 +96,9 @@ const Content = styled.div`
   padding: 0 var(--amino-space);
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
-  /** 
-   * Current overflow is not working well with react-tooltip. 
-   * Temporary remove gradient overflow until having new tooltip library to use 
+  /**
+   * Current overflow is not working well with react-tooltip.
+   * Temporary remove gradient overflow until having new tooltip library to use
    */
   // gradientOverflow
 `;
@@ -143,7 +143,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   ) => (
     <BaseDialog data-theme={theme} open={open} width={width}>
       <Header>
-        <Text type="h3">{label}</Text>
+        <Text type="2xl">{label}</Text>
         <Close onClick={onClose}>
           <RemoveCircleDuotoneIcon color="gray-200" size={32} />
         </Close>

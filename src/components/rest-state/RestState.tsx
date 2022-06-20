@@ -43,7 +43,7 @@ export const RestState = ({
 }: RestStateProps) => (
   <StyledRestState className={className}>
     {icon ? <Icon src={icon} /> : null}
-    <Text type="h4">{label}</Text>
+    <Text type="xl">{label}</Text>
     <Text type="subtitle">{subtitle}</Text>
     {action ? <Action>{action}</Action> : null}
   </StyledRestState>

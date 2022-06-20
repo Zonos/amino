@@ -71,6 +71,14 @@ const ButtonRow = (props: ButtonProps) => (
       children=""
       tooltip="Example tooltip"
     />
+    <Button
+      icon={<CubeIcon size={16} />}
+      /*  eslint-disable-next-line react/no-children-prop */
+      children=""
+      tooltip="Example tooltip"
+      onClick={e => console.log(e)}
+      tag="div"
+    />
   </HWrapper>
 );
 

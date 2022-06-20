@@ -2,6 +2,7 @@ import React, {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   HTMLAttributes,
+  MouseEventHandler,
   ReactNode,
 } from 'react';
 import ReactTooltip from 'react-tooltip';
@@ -236,23 +237,25 @@ type ButtonBase = {
 
 type AsButtonProps = ButtonBase &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBase> & {
-    as?: 'button';
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    tag?: 'button';
   };
 
 type AsDivProps = ButtonBase &
   Omit<HTMLAttributes<HTMLDivElement>, keyof ButtonBase> & {
-    as?: 'div';
+    onClick?: MouseEventHandler<HTMLDivElement>;
+    tag: 'div';
   };
 
 type AsAnchorProps = ButtonBase &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBase> & {
-    as?: 'a';
+    onClick?: MouseEventHandler<HTMLAnchorElement>;
+    tag: 'a';
   };
 
 export type ButtonProps = AsButtonProps | AsDivProps | AsAnchorProps;
 
 export function Button({
-  as = 'button',
   children,
   className,
   disabled,
@@ -262,6 +265,7 @@ export function Button({
   loading,
   loadingText,
   size = 'sm',
+  tag = 'button',
   tooltip,
   type = 'button',
   ...props
@@ -296,9 +300,9 @@ export function Button({
     size,
   };
 
-  if (as === 'button') {
+  if (tag === 'button') {
     const buttonProps = {
-      as,
+      as: tag,
       type,
       ...baseProps,
       ...(props as AsButtonProps),
@@ -323,9 +327,9 @@ export function Button({
         return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
     }
   }
-  if (as === 'div') {
+  if (tag === 'div') {
     const buttonProps = {
-      as,
+      as: tag,
       ...baseProps,
       ...(props as AsDivProps),
     };
@@ -349,9 +353,9 @@ export function Button({
         return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
     }
   }
-  if (as === 'a') {
+  if (tag === 'a') {
     const buttonProps = {
-      as,
+      as: tag,
       ...baseProps,
       ...(props as AsAnchorProps),
     };
