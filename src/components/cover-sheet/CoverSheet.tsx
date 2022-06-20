@@ -107,7 +107,7 @@ export const CoverSheet = ({
             exit={{ opacity: 0, translateY: 5 }}
           >
             <Header>
-              <Text type="h4">{label}</Text>
+              <Text type="xl">{label}</Text>
               {actions && (
                 <Actions>
                   <HStack>{actions}</HStack>
