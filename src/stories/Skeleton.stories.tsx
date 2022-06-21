@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-
-import { Skeleton, SkeletonProps } from '../components/Skeleton';
-import { VStack } from '../components/Stack';
+import { Skeleton, SkeletonProps } from 'src/components/skeleton/Skeleton';
+import { VStack } from 'src/components/stack/VStack';
 
 const SkeletonMeta: Meta = {
   title: 'Amino/Skeleton',

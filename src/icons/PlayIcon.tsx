@@ -1,24 +1,22 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const PlayIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <g clipPath="url(#clip0)">
+export const PlayIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
       <path
-        d="M13.5 7.13398c.6667.3849.6667 1.34715 0 1.73205l-9 5.19617c-.66667.3849-1.5-.0962-1.5-.866V2.80385c0-.7698.83333-1.25093 1.5-.86603l9 5.19616z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4 6.007C4 2.71 7.762.83 10.399 2.806l7.997 5.993c2.135 1.6 2.135 4.802 0 6.402L10.4 21.194C7.762 23.17 4 21.288 4 17.993V6.007Zm5.2-1.6C7.88 3.417 6 4.358 6 6.006v11.986c0 1.648 1.88 2.588 3.2 1.6l7.997-5.993a2 2 0 0 0 0-3.2L9.199 4.405Z"
+        fill="currentColor"
       />
-    </g>
-    <defs>
-      <clipPath id="clip0">
-        <path fill="#fff" d="M0 0h16v16H0z" />
-      </clipPath>
-    </defs>
-  </IconBase>
-);
+    </IconBase>
+  );
+};

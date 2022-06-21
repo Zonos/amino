@@ -74,3 +74,16 @@ dist
 
 # Storybook static build (https://storybook.js.org/)
 storybook-static
+
+# SVG to React Icon working folders
+svgReact/flags/aws-flags
+svgReact/flags/figma-flags
+svgReact/smaller-flags
+svgReact/svgs
+# Parcel cache
+.parcel-cache
+.cache
+
+# Build
+*.map
+build.mjs

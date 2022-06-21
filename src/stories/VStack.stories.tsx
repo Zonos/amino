@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/button/Button';
+import { Card } from 'src/components/card/Card';
+import { StackProps } from 'src/components/stack/Stack';
+import { VStack } from 'src/components/stack/VStack';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Button } from '../components/Button';
-import { Card } from '../components/Card';
-import { VStack, VStackProps } from '../components/Stack';
 
 const VStackMeta: Meta = {
   title: 'Amino/VStack',
@@ -15,11 +15,11 @@ const VStackMeta: Meta = {
 
 export default VStackMeta;
 
-const Template: Story<VStackProps> = ({
+const Template: Story<StackProps> = ({
   alignment,
   children,
   spacing,
-}: VStackProps) => (
+}: StackProps) => (
   <VStack alignment={alignment} spacing={spacing}>
     {children}
   </VStack>

@@ -1,18 +1,23 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { withDesign } from 'storybook-addon-designs';
-
 import {
   RadioGroup,
   RadioGroupItem,
   RadioGroupProps,
-} from '../components/Radio';
+} from 'src/components/radio/RadioGroup';
+import { withDesign } from 'storybook-addon-designs';
 
 const RadioMeta: Meta = {
   title: 'Amino/RadioGroup',
   component: RadioGroup,
   decorators: [withDesign],
+  argTypes: {
+    disabled: {
+      defaultValue: false,
+      type: 'boolean',
+    },
+  },
 };
 
 export default RadioMeta;
@@ -20,9 +25,15 @@ export default RadioMeta;
 const Template: Story<RadioGroupProps<RadioGroupItem>> = ({
   items,
   initialValue,
+  disabled,
   onChange,
 }: RadioGroupProps<RadioGroupItem>) => (
-  <RadioGroup initialValue={initialValue} onChange={onChange} items={items} />
+  <RadioGroup
+    initialValue={initialValue}
+    onChange={onChange}
+    disabled={disabled}
+    items={items}
+  />
 );
 
 export const SimpleRadioGroup: Story<RadioGroupProps<RadioGroupItem>> =

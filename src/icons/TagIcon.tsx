@@ -1,16 +1,26 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const TagIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7.1955 13.3989c.68342.6834 1.79146.6834 2.47487 0l3.72853-3.72855c.6834-.68342.6834-1.79146 0-2.47487L8.65966 2.45621c-.42843-.42843-1.04798-.60476-1.6378-.46615l-3.01905.7095c-.6465.15194-1.15129.65673-1.30322 1.30323l-.70951 3.01905c-.13861.58982.03773 1.20937.46615 1.63779L7.1955 13.3989zm1.41421-1.0607c-.09763.0977-.25592.0977-.35355 0L3.51689 7.59897c-.0612-.0612-.08639-.14971-.06659-.23397l.7095-3.01904c.02171-.09236.09382-.16447.18618-.18618l3.01905-.7095c.08425-.01981.17276.00539.23397.06659l4.7393 4.73927c.0976.09763.0976.25592 0 .35355L8.60971 12.3382zM6.00001 7c.55229 0 1-.44772 1-1 0-.55229-.44771-1-1-1-.55228 0-1 .44771-1 1 0 .55228.44772 1 1 1z"
-      fill="currentColor"
-    />
-  </IconBase>
-);
+export const TagIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.414 4.172A4 4 0 0 1 13.243 3H18a3 3 0 0 1 3 3v4.757a4 4 0 0 1-1.172 2.829l-6.537 6.537a3 3 0 0 1-4.242 0L3.877 14.95a3 3 0 0 1 0-4.242l6.537-6.537ZM13.243 5a2 2 0 0 0-1.415.586l-6.537 6.537a1 1 0 0 0 0 1.414l5.172 5.172a1 1 0 0 0 1.414 0l6.537-6.537A2 2 0 0 0 19 10.757V6a1 1 0 0 0-1-1h-4.757Z"
+        fill="currentColor"
+      />
+      <path
+        d="M17 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

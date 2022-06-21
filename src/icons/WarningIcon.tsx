@@ -1,28 +1,26 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const WarningIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <g clipPath="url(#clip0)">
-      <path
-        d="M7.13398 2c.3849-.66667 1.34715-.66667 1.73205 0l6.06217 10.5c.3849.6667-.0962 1.5-.866 1.5H1.93782c-.7698 0-1.250923-.8333-.86602-1.5L7.13398 2z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
+export const WarningIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M8 5c-.55228 0-1 .44772-1 1v2c0 .55229.44772 1 1 1 .55229 0 1-.44771 1-1V6c0-.55228-.44771-1-1-1zm0 7c.55229 0 1-.4477 1-1s-.44771-1-1-1c-.55228 0-1 .4477-1 1s.44772 1 1 1z"
+        d="M18.782 16.107 13.79 6.104c-.737-1.476-2.843-1.476-3.58 0L5.219 16.107A2 2 0 0 0 7.008 19h9.985a2 2 0 0 0 1.79-2.893ZM15.58 5.21c-1.473-2.951-5.685-2.951-7.158 0L3.428 15.214C2.101 17.874 4.035 21 7.008 21h9.985c2.972 0 4.906-3.127 3.579-5.786L15.579 5.21Z"
         fill="currentColor"
       />
-    </g>
-    <defs>
-      <clipPath id="clip0">
-        <path fill="#fff" d="M0 0h16v16H0z" />
-      </clipPath>
-    </defs>
-  </IconBase>
-);
+      <path
+        d="M13 8a1 1 0 0 0-2 0v4a1 1 0 1 0 2 0V8Zm-1 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};
