@@ -302,7 +302,6 @@ export function Button<T extends GroupTag = 'button'>({
     const buttonProps = {
       ...baseProps,
       ...(props as ButtonProps<'a'>),
-      tag,
     };
     switch (intent) {
       case 'primary':
@@ -361,7 +360,6 @@ export function Button<T extends GroupTag = 'button'>({
     const buttonProps = {
       ...baseProps,
       ...(props as ButtonProps<'div'>),
-      tag,
     };
     switch (intent) {
       case 'primary':
@@ -417,10 +415,9 @@ export function Button<T extends GroupTag = 'button'>({
   }
 
   const buttonProps = {
-    type,
     ...baseProps,
     ...(props as ButtonProps<'button'>),
-    tag,
+    type,
   };
   switch (intent) {
     case 'primary':
