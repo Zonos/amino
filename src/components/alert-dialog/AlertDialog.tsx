@@ -79,7 +79,7 @@ export const AlertDialog = ({
       <VStack spacing="space-half">
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
-          <Text type="xl">{label}</Text>
+          <Text type="title">{label}</Text>
           <AlertPrompt>{subtitle}</AlertPrompt>
         </div>
         <Footer>

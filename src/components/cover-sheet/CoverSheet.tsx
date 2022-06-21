@@ -43,7 +43,7 @@ const Header = styled.header`
     display: none !important;
   }
 
-  h4 {
+  h5 {
     display: flex;
     flex: 1;
     margin: 0;
@@ -107,7 +107,7 @@ export const CoverSheet = ({
             exit={{ opacity: 0, translateY: 5 }}
           >
             <Header>
-              <Text type="xl">{label}</Text>
+              <Text type="subheader">{label}</Text>
               {actions && (
                 <Actions>
                   <HStack>{actions}</HStack>

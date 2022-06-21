@@ -131,11 +131,11 @@ export const SlideOver = ({
             <SlideOverHeader>
               {subtitle ? (
                 <VStack spacing="none" className="header-content">
-                  <Text type="xl">{label}</Text>
+                  <Text type="title">{label}</Text>
                   {subtitle}
                 </VStack>
               ) : (
-                <Text type="xl" className="header-content">
+                <Text type="title" className="header-content">
                   {label}
                 </Text>
               )}
