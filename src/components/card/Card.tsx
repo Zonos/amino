@@ -16,7 +16,7 @@ const CardHeader = styled.header`
   line-height: 65px;
   user-select: none;
 
-  h4 {
+  h5 {
     margin-bottom: 0;
     flex: 1;
   }
