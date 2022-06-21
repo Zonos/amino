@@ -32,7 +32,9 @@ const AminoSwitchWrapper = styled.div<{
   position: relative;
 `;
 
-const StyledLabel = styled(Text)``;
+const StyledLabel = styled(Text)`
+  margin-bottom: 0;
+`;
 
 const StyledSubtitle = styled(Text)``;
 
