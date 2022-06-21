@@ -6,6 +6,7 @@ import { CubeIcon } from 'src/icons/CubeIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
+const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
   title: 'Amino/Button',
   component: Button,
@@ -76,10 +77,12 @@ const ButtonRow = (props: ButtonProps) => (
       /*  eslint-disable-next-line react/no-children-prop */
       children=""
       tooltip="Example tooltip"
-      /* eslint-disable-next-line no-console */
-      onClick={e => console.log(e)}
+      onClick={e => e.preventDefault()}
       tag="div"
     />
+    <StyledButton tag="div" onClick={e => e.preventDefault()}>
+      Test
+    </StyledButton>
   </HWrapper>
 );
 
