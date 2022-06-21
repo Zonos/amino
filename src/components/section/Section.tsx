@@ -34,7 +34,7 @@ export const Section = ({
     <div className={className || ''}>
       {label && (
         <SectionHeader>
-          <Text type="xl">{label}</Text>
+          <Text type="subheader">{label}</Text>
 
           <HStack spacing="space-quarter">{actions}</HStack>
         </SectionHeader>

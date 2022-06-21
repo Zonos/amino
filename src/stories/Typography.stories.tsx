@@ -29,10 +29,10 @@ const Typography = () => {
   return (
     <VStack spacing="space-quarter">
       {textOptions.map(option => (
-        <StyledVStack key={option.size}>
-          <Text type={option.size}>{content}</Text>
+        <StyledVStack key={option.type}>
+          <Text type={option.type}>{content}</Text>
           <Label>{option.label}</Label>
-          <div>{`<Text size="${option.size}">${content}</Text>`}</div>
+          <div>{`<Text type="${option.type}">${content}</Text>`}</div>
           <div>
             <div>font-size: var(--amino-font-size-{option.size});</div>
             <div>font-weight: var(--amino-font-weight-{option.weight});</div>

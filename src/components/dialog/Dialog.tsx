@@ -15,7 +15,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
 
-  h3 {
+  h5 {
     margin: 0;
     flex: 1;
     font-weight: 700;
@@ -143,7 +143,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   ) => (
     <BaseDialog data-theme={theme} open={open} width={width}>
       <Header>
-        <Text type="2xl">{label}</Text>
+        <Text type="subheader">{label}</Text>
         <Close onClick={onClose}>
           <RemoveCircleDuotoneIcon color="gray-200" size={32} />
         </Close>
