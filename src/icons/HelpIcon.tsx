@@ -1,15 +1,28 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const HelpIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
-    <path
-      d="M7.09375 9.60156h1.48047v-.13281c.00781-.76172.28125-1.11719.89844-1.48828.73044-.43359 1.20704-1.00781 1.20704-1.92578 0-1.36719-1.10158-2.16407-2.65236-2.16407-1.41796 0-2.57421.74219-2.60937 2.30469h1.59375c.02344-.63672.49609-.97656 1.00781-.97656.52735 0 .95313.35156.95313.89453 0 .51172-.3711.85156-.85157 1.15625-.65625.41406-1.02343.83203-1.02734 2.19922v.13281zm.76953 2.50004c.5 0 .9336-.418.9375-.9375-.0039-.5118-.4375-.9297-.9375-.9297-.51562 0-.9414.4179-.9375.9297-.0039.5195.42188.9375.9375.9375z"
-      fill="currentColor"
-    />
-  </IconBase>
-);
+export const HelpIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
+        fill="currentColor"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11.133 9.5a1 1 0 1 1-1.731-1A3 3 0 0 1 15 10c0 1.098-.673 1.994-1.5 2.5-.664.406-.25 1.5-1.503 1.5a1 1 0 0 1-.994-1.104c.027-.529.263-.96.52-1.272.271-.33.628-.6.9-.762 1.517-.902-.333-2.747-1.29-1.361Zm.864 5.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

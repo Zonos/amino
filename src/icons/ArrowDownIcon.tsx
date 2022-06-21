@@ -1,17 +1,20 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const ArrowDownIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <path
-      d="M8 13L4 9m4 4l4-4m-4 4V3"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </IconBase>
-);
+export const ArrowDownIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M15.707 13.879a1 1 0 0 1 1.415 1.414l-4.415 4.414a1 1 0 0 1-1.414 0l-4.414-4.414a1 1 0 1 1 1.414-1.414L11 16.586V5a1 1 0 1 1 2 0v11.586l2.707-2.707Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

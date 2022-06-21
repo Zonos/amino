@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/button/Button';
+import { Card } from 'src/components/card/Card';
+import { HStack } from 'src/components/stack/HStack';
+import { StackProps } from 'src/components/stack/Stack';
 import { withDesign } from 'storybook-addon-designs';
-
-import { Button } from '../components/Button';
-import { Card } from '../components/Card';
-import { HStack, HStackProps } from '../components/Stack';
 
 const HStackMeta: Meta = {
   title: 'Amino/HStack',
@@ -15,11 +15,11 @@ const HStackMeta: Meta = {
 
 export default HStackMeta;
 
-const Template: Story<HStackProps> = ({
+const Template: Story<StackProps> = ({
   alignment,
   children,
   spacing,
-}: HStackProps) => (
+}: StackProps) => (
   <HStack alignment={alignment} spacing={spacing}>
     {children}
   </HStack>

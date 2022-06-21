@@ -1,21 +1,28 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const BagIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <path
-      d="M3.38206 3.36489C3.44963 2.8694 3.87282 2.5 4.37289 2.5h7.25421c.5001 0 .9233.3694.9908.86489l1.2273 9.00001c.0819.6004-.3848 1.1351-.9908 1.1351H3.14562c-.60599 0-1.07271-.5347-.99083-1.1351l1.22727-9.00001z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <path
-      d="M10 5c0 1.10457-.89543 2-2 2s-2-.89543-2-2"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </IconBase>
-);
+export const BagIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3.025 11.45A4 4 0 0 1 6.999 7h10.002a4 4 0 0 1 3.974 4.45l-.68 6A4 4 0 0 1 16.321 21H7.679a4 4 0 0 1-3.974-3.55l-.68-6ZM6.999 9a2 2 0 0 0-1.987 2.225l.68 6A2 2 0 0 0 7.679 19h8.642a2 2 0 0 0 1.987-1.775l.68-6A2 2 0 0 0 17.001 9H6.999Z"
+        fill="currentColor"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 7a4 4 0 0 1 8 0v3a1 1 0 0 1-2 0V7a2 2 0 0 0-4 0v3a1 1 0 0 1-2 0V7Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

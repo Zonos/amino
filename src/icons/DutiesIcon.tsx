@@ -1,39 +1,36 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const DutiesIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <rect
-      opacity=".5"
-      x="10.0581"
-      y="9.55807"
-      width="5.03226"
-      height="5.03226"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M7.17914 2c.3849-.66667 1.34715-.66667 1.73205 0l1.75441 3.03871c.3849.66667-.0962 1.5-.86604 1.5h-3.5088c-.7698 0-1.25092-.83333-.86602-1.5L7.17914 2z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle
-      opacity=".5"
-      cx="3.51613"
-      cy="12.0742"
-      r="2.51613"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </IconBase>
-);
+export const DutiesIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        opacity=".5"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13 14.5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Zm8 0h-6v6h6v-6Z"
+        fill="currentColor"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.742 1.496c.767-1.328 2.685-1.328 3.452 0l3.472 6.015c.767 1.328-.191 2.989-1.725 2.989H8.996c-1.534 0-2.493-1.66-1.726-2.99l3.472-6.014Zm1.726 1.011L9.008 8.5h6.92l-3.46-5.993Z"
+        fill="currentColor"
+      />
+      <path
+        opacity=".5"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6 14.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

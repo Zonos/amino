@@ -1,14 +1,22 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const PercentIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <path
-      d="M8.52843 12.0455c0 1.4318.89489 2.6335 2.55677 2.6335 1.6364 0 2.5313-1.2017 2.5313-2.6335v-.6904c0-1.43181-.8693-2.63351-2.5313-2.63351-1.63631 0-2.55677 1.2017-2.55677 2.63351v.6904zM2.00854 4.55398c0 1.43181.89489 2.63352 2.55682 2.63352 1.63637 0 2.53125-1.20171 2.53125-2.63352v-.69034c0-1.43182-.86932-2.63353-2.53125-2.63353-1.63636 0-2.55682 1.20171-2.55682 2.63353v.69034zM2.49434 14.5h1.45739L12.9517 1.40909h-1.4574L2.49434 14.5zm7.33807-3.1449c0-.7926.35799-1.53408 1.25279-1.53408.9205 0 1.2273.74148 1.2273 1.53408v.6904c0 .7926-.3324 1.534-1.2273 1.534-.9204 0-1.25279-.7414-1.25279-1.534v-.6904zM3.31252 3.86364c0-.79262.35796-1.53409 1.25284-1.53409.92046 0 1.22728.74147 1.22728 1.53409v.69034c0 .79261-.33239 1.53409-1.22728 1.53409-.92045 0-1.25284-.74148-1.25284-1.53409v-.69034z"
-      fill="currentColor"
-    />
-  </IconBase>
-);
+export const PercentIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.6 3.2a1 1 0 0 1 .2 1.4l-12 16a1 1 0 1 1-1.6-1.2l12-16a1 1 0 0 1 1.4-.2ZM8 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm2 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm9 11a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm2 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

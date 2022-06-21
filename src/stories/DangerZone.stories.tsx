@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-
-import { CardProps } from '../components/Card';
-import { DangerZone } from '../components/DangerZone';
+import { CardProps } from 'src/components/card/Card';
+import { DangerZone } from 'src/components/danger-zone/DangerZone';
 
 const DangerZoneMeta: Meta = {
   title: 'Amino/DangerZone',

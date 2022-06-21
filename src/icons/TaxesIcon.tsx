@@ -1,39 +1,29 @@
 import React from 'react';
 
-import { IconProps } from 'types';
+import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { type IconProps } from 'src/types/IconProps';
 
-import { IconBase } from './IconBase';
-
-export const TaxesIcon = ({ size, color }: IconProps) => (
-  <IconBase size={size} color={color}>
-    <rect
-      x="10.0581"
-      y="9.55807"
-      width="5.03226"
-      height="5.03226"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      opacity=".5"
-      d="M7.17913 2c.3849-.66667 1.34715-.66667 1.73205 0l1.75442 3.03871c.3849.66667-.0962 1.5-.86605 1.5h-3.5088c-.7698 0-1.25092-.83333-.86602-1.5L7.17913 2z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle
-      opacity=".5"
-      cx="3.51613"
-      cy="12.0742"
-      r="2.51613"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </IconBase>
-);
+export const TaxesIcon = ({ size, color, className }: IconProps) => {
+  return (
+    <IconBase
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13 15a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Zm8 0h-6v6h6v-6Z"
+        fill="currentColor"
+      />
+      <path
+        opacity=".5"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.742 1.996c.767-1.328 2.685-1.328 3.452 0l3.472 6.015C18.433 9.339 17.475 11 15.941 11H8.996C7.462 11 6.503 9.34 7.27 8.01l3.472-6.014Zm1.726 1.011L9.008 9h6.92l-3.46-5.993ZM6 15a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+        fill="currentColor"
+      />
+    </IconBase>
+  );
+};

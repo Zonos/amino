@@ -1,18 +1,28 @@
 :root {
   --amino-transition: all 0.2s ease-in-out 0s;
-
-  --amino-type-scale-base: 14px;
-
-  --amino-text-xxxxl: 3.815em;
-  --amino-text-xxxl: 3.052em;
-  --amino-text-xxl: 2.441em;
-  --amino-text-xl: 1.953em;
-  --amino-text-lg: 1.563em;
-  --amino-text-md: 1.25em;
-  --amino-text-base: 1em;
-  --amino-text-sm: 0.8em;
-  --amino-text-xs: 0.64em;
-
+  --amino-type-scale-base: 16px;
+  --amino-font-size-3xl: 2.125rem; /* 34px */
+  --amino-font-size-2xl: 1.75rem;  /* 28px */
+  --amino-font-size-xl: 1.375rem;  /* 22px */
+  --amino-font-size-l: 1.125rem;   /* 18px */
+  --amino-font-size-base: .875rem;    /* 14px */
+  --amino-font-size-s: .75rem;    /* 12px */
+  --amino-font-size-xs: .625rem;   /* 10px */
+  --amino-line-height-3xl: 118%;   /* 40px */
+  --amino-line-height-2xl: 119%;   /* 32px */
+  --amino-line-height-xl: 127%;    /* 28px */
+  --amino-line-height-l: 133%;     /* 16px */
+  --amino-line-height-base: 114%;  /* 16px */
+  --amino-line-height-s: 133%;     /* 16px */
+  --amino-line-height-xs: 120%;    /* 12px */
+  /* legacy text variables */
+  --amino-text-xxl: var(--amino-font-size-3xl);
+  --amino-text-xl: var(--amino-font-size-2xl);
+  --amino-text-lg: var(--amino-font-size-xl);
+  --amino-text-md: var(--amino-font-size-l);
+  --amino-text-base: var(--amino-font-size-base);
+  --amino-text-sm: var(--amino-font-size-s);
+  --amino-text-xs: var(--amino-font-size-xs);
   --amino-space: 1.563em;
   --amino-space-negative: -1.563em;
   --amino-space-half: 0.938em;
@@ -21,164 +31,251 @@
   --amino-space-quarter-negative: -0.469em;
   --amino-space-double: 2.5em;
   --amino-space-double-negative: -2.5em;
-
   --amino-radius-sm: 0.25rem;
   --amino-radius: 0.375rem;
-  --amino-radius-lg: 0.5rem;;
+  --amino-radius-lg: 0.5rem;
   --amino-radius-xl: 0.75rem;
-
+  /* GRAY PALETTE */
+  --amino-gray-l80: #f5f5f6;
+  --amino-gray-l60: #eaeaec;
+  --amino-gray-l40: #d6d6d9;
+  --amino-gray-l20: #b7b7bd;
+  --amino-gray-base: #9898a0;
+  --amino-gray-d20: #7a7a80;
+  --amino-gray-d40: #5b5b60;
+  --amino-gray-d60: #3d3d40;
+  --amino-gray-d80: #232326;
   --amino-gray-50: #f9fafb;
-  --amino-gray-100: #f3f4f6;
-  --amino-gray-200: #e5e7eb;
-  --amino-gray-300: #d1d5db;
-  --amino-gray-400: #9ca3af;
-  --amino-gray-500: #6b7280;
-  --amino-gray-600: #4b5563;
-  --amino-gray-700: #374151;
-  --amino-gray-800: #1f2937;
-  --amino-gray-900: #111827;
-
+  --amino-gray-100: var(--amino-gray-l80);
+  --amino-gray-200: var(--amino-gray-l60);
+  --amino-gray-300: var(--amino-gray-l40);
+  --amino-gray-400: var(--amino-gray-l20);
+  --amino-gray-500: var(--amino-gray-base);
+  --amino-gray-600: var(--amino-gray-d20);
+  --amino-gray-700: var(--amino-gray-d40);
+  --amino-gray-800: var(--amino-gray-d60);
+  --amino-gray-900: var(--amino-gray-d80);
+  /* BLUE PALETTE */
+  --amino-blue-l80: #e9ebff;
+  --amino-blue-l60: #a7afff;
+  --amino-blue-l40: #7b86ff;
+  --amino-blue-l20: #4f5eff;
+  --amino-blue-base: #2337ff;
+  --amino-blue-d20: #1c2aca;
+  --amino-blue-d40: #152099;
+  --amino-blue-d60: #0f1666;
+  --amino-blue-d80: #1d233b;
   --amino-blue-alpha: #2190ff80;
   --amino-blue-50: #ebf5ff;
-  --amino-blue-100: #e1effd;
-  --amino-blue-200: #c3dcfd;
-  --amino-blue-300: #a5cafd;
-  --amino-blue-400: #76a9fa;
-  --amino-blue-500: #3f83f8;
-  --amino-blue-600: #1a64f2;
-  --amino-blue-700: #1956db;
-  --amino-blue-800: #1f419f;
-  --amino-blue-900: #243876;
-
+  --amino-blue-100: var(--amino-blue-l80);
+  --amino-blue-200: var(--amino-blue-l60);
+  --amino-blue-300: var(--amino-blue-l40);
+  --amino-blue-400: var(--amino-blue-l20);
+  --amino-blue-500: var(--amino-blue-base);
+  --amino-blue-600: var(--amino-blue-d20);
+  --amino-blue-700: var(--amino-blue-d40);
+  --amino-blue-800: var(--amino-blue-d60);
+  --amino-blue-900: var(--amino-blue-d80);
+  /* CYAN PALETTE */
+  --amino-cyan-l80: #e9fcff;
+  --amino-cyan-l60: #a5edf6;
+  --amino-cyan-l40: #77e3f2;
+  --amino-cyan-l20: #4adaed;
+  --amino-cyan-base: #1dd1e9;
+  --amino-cyan-d20: #17a7ba;
+  --amino-cyan-d40: #117d8c;
+  --amino-cyan-d60: #0c545d;
+  --amino-cyan-d80: #1d363b;
   --amino-cyan-alpha: #00dfe380;
-  --amino-cyan-300: #00dfe3;
-  --amino-cyan-400: #00d6db;
-  --amino-cyan-700: #00bac4;
-  --amino-cyan-900: #008c99;
-
+  --amino-cyan-100: var(--amino-cyan-l80);
+  --amino-cyan-200: var(--amino-cyan-l60);
+  --amino-cyan-300: var(--amino-cyan-l40);
+  --amino-cyan-400: var(--amino-cyan-l20);
+  --amino-cyan-500: var(--amino-cyan-base);
+  --amino-cyan-600: var(--amino-cyan-d20);
+  --amino-cyan-700: var(--amino-cyan-d40);
+  --amino-cyan-800: var(--amino-cyan-d60);
+  --amino-cyan-900: var(--amino-cyan-d80);
+  /* RED PALETTE */
+  --amino-red-l80: #fde5eb;
+  --amino-red-l60: #f899b1;
+  --amino-red-l40: #f5668a;
+  --amino-red-l20: #f13363;
+  --amino-red-base: #ee003c;
+  --amino-red-d20: #be0030;
+  --amino-red-d40: #8f0024;
+  --amino-red-d60: #5f0018;
+  --amino-red-d80: #371822;
   --amino-red-alpha: #e0451a80;
   --amino-red-50: #fef2f2;
-  --amino-red-100: #fee2e2;
-  --amino-red-200: #fecaca;
-  --amino-red-300: #fca5a5;
-  --amino-red-400: #f87171;
-  --amino-red-500: #ef4444;
-  --amino-red-600: #dc2626;
-  --amino-red-700: #b91c1c;
-  --amino-red-800: #991b1b;
-  --amino-red-900: #7f1d1d;
-
+  --amino-red-100: var(--amino-red-l80);
+  --amino-red-200: var(--amino-red-l60);
+  --amino-red-300: var(--amino-red-l40);
+  --amino-red-400: var(--amino-red-l20);
+  --amino-red-500: var(--amino-red-base);
+  --amino-red-600: var(--amino-red-d20);
+  --amino-red-700: var(--amino-red-d40);
+  --amino-red-800: var(--amino-red-d60);
+  --amino-red-900: var(--amino-red-d80);
+  /* ORANGE PALETTE */
+  --amino-orange-l80: #fff0e5;
+  --amino-orange-l60: #ffc499;
+  --amino-orange-l40: #ffa666;
+  --amino-orange-l20: #ff8933;
+  --amino-orange-base: #ff6b00;
+  --amino-orange-d20: #cc5600;
+  --amino-orange-d40: #994000;
+  --amino-orange-d60: #662b00;
+  --amino-orange-d80: #39271c;
   --amino-orange-alpha: #ffa51e80;
-  --amino-orange-300: #ffa51e;
-  --amino-orange-400: #f28c00;
-  --amino-orange-700: #cd6800;
-  --amino-orange-900: #873600;
-
+  --amino-orange-100: var(--amino-orange-l80);
+  --amino-orange-200: var(--amino-orange-l60);
+  --amino-orange-300: var(--amino-orange-l40);
+  --amino-orange-400: var(--amino-orange-l20);
+  --amino-orange-500: var(--amino-orange-base);
+  --amino-orange-600: var(--amino-orange-d20);
+  --amino-orange-700: var(--amino-orange-d40);
+  --amino-orange-800: var(--amino-orange-d60);
+  --amino-orange-900: var(--amino-orange-d80);
+  /* GREEN PALETTE */
+  --amino-green-l80: #e5f9e5;
+  --amino-green-l60: #99e799;
+  --amino-green-l40: #66db66;
+  --amino-green-l20: #33cf33;
+  --amino-green-base: #00c300;
+  --amino-green-d20: #009c00;
+  --amino-green-d40: #007500;
+  --amino-green-d60: #004e00;
+  --amino-green-d80: #17311a;
   --amino-green-alpha: #ecfdf580;
   --amino-green-50: #ecfdf5;
-  --amino-green-100: #d1fae5;
-  --amino-green-200: #a7f3d0;
-  --amino-green-300: #6ee7b7;
-  --amino-green-400: #34d399;
-  --amino-green-500: #1fb981;
-  --amino-green-600: #179769;
-  --amino-green-700: #117857;
-  --amino-green-800: #0b5f46;
-  --amino-green-900: #074e3b;
-
+  --amino-green-100: var(--amino-green-l80);
+  --amino-green-200: var(--amino-green-l60);
+  --amino-green-300: var(--amino-green-l40);
+  --amino-green-400: var(--amino-green-l20);
+  --amino-green-500: var(--amino-green-base);
+  --amino-green-600: var(--amino-green-d20);
+  --amino-green-700: var(--amino-green-d40);
+  --amino-green-800: var(--amino-green-d60);
+  --amino-green-900: var(--amino-green-d80);
+  /* PURPLE */
+  --amino-purple-l80: #f5e5ff;
+  --amino-purple-l60: #d599ff;
+  --amino-purple-l40: #c066ff;
+  --amino-purple-l20: #ab33ff;
+  --amino-purple-base: #9600ff;
+  --amino-purple-d20: #7800cc;
+  --amino-purple-d40: #5a0099;
+  --amino-purple-d60: #3c0066;
+  --amino-purple-d80: #2c183b;
   --amino-purple-alpha: #f5f3ff80;
   --amino-purple-50: #f5f3ff;
-  --amino-purple-100: #ede9fe;
-  --amino-purple-200: #ddd6fe;
-  --amino-purple-300: #c4b5fd;
-  --amino-purple-400: #a78bfa;
-  --amino-purple-500: #8b5cf6;
-  --amino-purple-600: #7c3aed;
-  --amino-purple-700: #6d28d9;
-  --amino-purple-800: #5b21b6;
-  --amino-purple-900: #4c1d95;
-
+  --amino-purple-100: var(--amino-purple-l80);
+  --amino-purple-200: var(--amino-purple-l60);
+  --amino-purple-300: var(--amino-purple-l40);
+  --amino-purple-400: var(--amino-purple-l20);
+  --amino-purple-500: var(--amino-purple-base);
+  --amino-purple-600: var(--amino-purple-d20);
+  --amino-purple-700: var(--amino-purple-d40);
+  --amino-purple-800: var(--amino-purple-d60);
+  --amino-purple-900: var(--amino-purple-d80);
+  /* YELLOW PALLETE */
+  --amino-yellow-l80: #fff9e5;
+  --amino-yellow-l60: #ffe999;
+  --amino-yellow-l40: #ffdd66;
+  --amino-yellow-l20: #ffd233;
+  --amino-yellow-base: #ffc700;
+  --amino-yellow-d20: #cc9f00;
+  --amino-yellow-d40: #997700;
+  --amino-yellow-d60: #665000;
+  --amino-yellow-d80: #39321c;
+  --amino-yellow-100: var(--amino-yellow-l80);
+  --amino-yellow-200: var(--amino-yellow-l60);
+  --amino-yellow-300: var(--amino-yellow-l40);
+  --amino-yellow-400: var(--amino-yellow-l20);
+  --amino-yellow-500: var(--amino-yellow-base);
+  --amino-yellow-600: var(--amino-yellow-d20);
+  --amino-yellow-700: var(--amino-yellow-d40);
+  --amino-yellow-800: var(--amino-yellow-d60);
+  --amino-yellow-900: var(--amino-yellow-d80);
   --amino-amber-alpha: #fffbeb80;
   --amino-amber-50: #fffbeb;
-  --amino-amber-100: #fef3c7;
-  --amino-amber-200: #fde68a;
-  --amino-amber-300: #fcd34d;
-  --amino-amber-400: #fbbf24;
-  --amino-amber-500: #f59e0b;
-  --amino-amber-600: #d97706;
-  --amino-amber-700: #b45309;
-  --amino-amber-800: #92400e;
-  --amino-amber-900: #78350f;
-
+  --amino-amber-100: var(--amino-yellow-l80);
+  --amino-amber-200: var(--amino-yellow-l60);
+  --amino-amber-300: var(--amino-yellow-l40);
+  --amino-amber-400: var(--amino-yellow-l20);
+  --amino-amber-500: var(--amino-yellow-base);
+  --amino-amber-600: var(--amino-yellow-d20);
+  --amino-amber-700: var(--amino-yellow-d40);
+  --amino-amber-800: var(--amino-yellow-d60);
+  --amino-amber-900: var(--amino-yellow-d80);
   --amino-danger: var(--amino-red-500);
   --amino-danger-dark: var(--amino-red-600);
-
-  --amino-error: var(--amino-red-400);
-
-  --amino-glow-blue: 0 0 0 2px var(--amino-primary);
-  --amino-glow-cyan: 0 0 0 2px var(--amino-cyan-alpha);
-  --amino-glow-red: 0 0 0 2px var(--amino-red-alpha);
-  --amino-glow-orange: 0 0 0 2px var(--amino-orange-alpha);
-  --amino-glow-green: 0 0 0 2px var(--amino-green-alpha);
-  --amino-glow-purple: 0 0 0 2px var(--amino-purple-alpha);
-
+  --amino-error: var(--amino-red-500);
+  --amino-glow-error: 0 0 0 1px var(--amino-red-500);
+  --amino-glow-blue: 0 0 0 1px var(--amino-primary);
+  --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-alpha);
+  --amino-glow-red: 0 0 0 1px var(--amino-red-alpha);
+  --amino-glow-orange: 0 0 0 1px var(--amino-orange-alpha);
+  --amino-glow-green: 0 0 0 1px var(--amino-green-alpha);
+  --amino-glow-purple: 0 0 0 1px var(--amino-purple-alpha);
   --amino-primary: var(--amino-blue-500);
   --amino-primary-light: var(--amino-blue-400);
   --amino-primary-dark: var(--amino-blue-700);
-
   --amino-success: var(--amino-green-200);
   --amino-success-dark: var(--amino-green-600);
-
   --amino-warning: var(--amino-amber-100);
   --amino-warning-dark: var(--amino-amber-600);
-
   --amino-page-background: var(--amino-gray-50);
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-surface-color: white;
   --amino-surface-color-secondary: var(--amino-gray-50);
-
   --amino-text-light: white;
   --amino-text-color: var(--amino-gray-900);
   --amino-text-dark: var(--amino-text-color);
-
   --amino-input-background: white;
-  --amino-input-height: 36px;
+  --amino-size-xl: 56px;
+  --amino-size-lg: 48px;
+  --amino-size-md: 40px;
+  --amino-size-sm: 32px;
   --amino-appbar-height: 55px;
-  --amino-sidebar-width: 219px;
-  --amino-sidebar-color: var(--amino-page-background);
+  --amino-sidebar-width: 264px;
+  --amino-sidebar-color: white;
   --amino-header-color: white;
   --amino-backdrop-color: var(--amino-gray-900);
-
   --amino-elevation-0: 0;
   --amino-elevation-100: 100;
   --amino-elevation-200: 200;
   --amino-elevation-300: 300;
   --amino-elevation-400: 400;
   --amino-elevation-500: 500;
-
   --amino-dialog-elevation: var(--amino-elevation-400);
   --amino-toast-elevation: var(--amino-elevation-500);
   --amino-appbar-elevation: var(--amino-elevation-500);
-
   --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
     Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
     Courier New, monospace;
-
-  --amino-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-small: 0px 1px 3px rgba(31, 41, 55, 0.09);
-  --amino-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --amino-shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --amino-shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --amino-shadow-larger: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
+  /* SHADOW SETTING */
+  --amino-v3-shadow-inset: inset 0px 2px 4px rgba(0, 0, 0, 0.06);
+  --amino-v3-shadow-base: 0px 1px 2px rgba(0, 0, 0, 0.06),
+    0px 1px 3px rgba(0, 0, 0, 0.1);
+  --amino-v3-shadow-medium: 0px 2px 4px rgba(0, 0, 0, 0.06),
+    0px 4px 6px rgba(0, 0, 0, 0.1);
+  --amino-v3-shadow-large: 0px 10px 15px rgba(0, 0, 0, 0.1),
+    0px 4px 6px rgba(0, 0, 0, 0.05);
+  --amino-v3-shadow-xl: 0px 20px 25px rgba(0, 0, 0, 0.1),
+    0px 10px 10px rgba(0, 0, 0, 0.04);
+  --amino-v3-shadow-xxl: 0px 32px 50px rgba(0, 0, 0, 0.24);
+  --amino-shadow-inset: var(--amino-v3-shadow-inset);
+  --amino-shadow-small: var(--amino-v3-shadow-base);
+  --amino-shadow-base: var(--amino-v3-shadow-medium);
+  --amino-shadow-medium: var(--amino-v3-shadow-large);
+  --amino-shadow-large: var(--amino-v3-shadow-xl);
+  --amino-shadow-larger: var(--amino-v3-shadow-xxl);
   /* helpers */
   --amino-border: 1px solid var(--amino-border-color);
   --amino-border-blue: 1px solid var(--amino-blue-400);
@@ -189,12 +286,10 @@
   --amino-border-purple: 1px solid var(--amino-purple-300);
   --amino-border-amber: 1px solid var(--amino-amber-300);
   --amino-border-transparent: 1px solid transparent;
-
   /* TODO: easing functions and timings */
   /* TODO: test contrast ratios */
   /* TODO: more accessible hover color */
 }
-
 @supports (font-variation-settings: normal) {
   :root {
     --amino-font-sans: 'Inter var', -apple-system, BlinkMacSystemFont,
@@ -202,22 +297,101 @@
       'Droid Sans', 'Helvetica Neue', sans-serif;
   }
 }
-
 [data-theme='dark'] {
-  --amino-gray-50: #111827;
-  --amino-gray-100: #1f2937;
-  --amino-gray-200: #374151;
-  --amino-gray-300: #4b5563;
-  --amino-gray-400: #6b7280;
-  --amino-gray-500: #9ca3af;
-  --amino-gray-600: #d1d5db;
-  --amino-gray-700: #e5e7eb;
-  --amino-gray-800: #f3f4f6;
-  --amino-gray-900: #f9fafb;
-
+  /* GRAY PALETTE */
+  --amino-gray-l80: #f5f5f6;
+  --amino-gray-l60: #d8d8db;
+  --amino-gray-l40: #c4c4c9;
+  --amino-gray-l20: #b1b1b7;
+  --amino-gray-base: #9d9da5;
+  --amino-gray-d20: #76767c;
+  --amino-gray-d40: #4f4f52;
+  --amino-gray-d60: #2f2f31;
+  --amino-gray-d80: #232326;
+  /* BLUE PALETTE */
+  --amino-blue-l80: #e9ebff;
+  --amino-blue-l60: #b4c5ff;
+  --amino-blue-l40: #8fa7ff;
+  --amino-blue-l20: #698aff;
+  --amino-blue-base: #446dff;
+  --amino-blue-d20: #3657cc;
+  --amino-blue-d40: #294199;
+  --amino-blue-d60: #1b2c66;
+  --amino-blue-d80: #1d233b;
+  /* CYAN PALETTE */
+  --amino-cyan-l80: #e9fcff;
+  --amino-cyan-l60: #b5f6ff;
+  --amino-cyan-l40: #8ff2ff;
+  --amino-cyan-l20: #6aedff;
+  --amino-cyan-base: #45e9ff;
+  --amino-cyan-d20: #37bacc;
+  --amino-cyan-d40: #298c99;
+  --amino-cyan-d60: #1c5d66;
+  --amino-cyan-d80: #1d363b;
+  /* RED PALETTE */
+  --amino-red-l80: #fde5eb;
+  --amino-red-l60: #f9a8bd;
+  --amino-red-l40: #f77d9b;
+  --amino-red-l20: #f4517a;
+  --amino-red-base: #f12659;
+  --amino-red-d20: #c11e47;
+  --amino-red-d40: #911735;
+  --amino-red-d60: #600f24;
+  --amino-red-d80: #371822;
+  /* ORANGE PALETTE */
+  --amino-orange-l80: #fff0e5;
+  --amino-orange-l60: #ffd0ad;
+  --amino-orange-l40: #ffb885;
+  --amino-orange-l20: #ffa05c;
+  --amino-orange-base: #ff8933;
+  --amino-orange-d20: #cc6e29;
+  --amino-orange-d40: #99521f;
+  --amino-orange-d60: #663714;
+  --amino-orange-d80: #39271c;
+  /* GREEN PALETTE */
+  --amino-green-l80: #e5f9e5;
+  --amino-green-l60: #a5eba8;
+  --amino-green-l40: #78e07d;
+  --amino-green-l20: #4bd651;
+  --amino-green-base: #1ecc26;
+  --amino-green-d20: #18a31e;
+  --amino-green-d40: #127a17;
+  --amino-green-d60: #0c520f;
+  --amino-green-d80: #17311a;
+  /* PURPLE */
+  --amino-purple-l80: #f5e5ff;
+  --amino-purple-l60: #dba8ff;
+  --amino-purple-l40: #ca7dff;
+  --amino-purple-l20: #b851ff;
+  --amino-purple-base: #a626ff;
+  --amino-purple-d20: #851ecc;
+  --amino-purple-d40: #641799;
+  --amino-purple-d60: #420f66;
+  --amino-purple-d80: #2c183b;
+  /* YELLOW PALLET */
+  --amino-yellow-l80: #fff9e5;
+  --amino-yellow-l60: #ffedad;
+  --amino-yellow-l40: #ffe485;
+  --amino-yellow-l20: #ffdb5c;
+  --amino-yellow-base: #ffd233;
+  --amino-yellow-d20: #cca829;
+  --amino-yellow-d40: #997e1f;
+  --amino-yellow-d60: #665414;
+  --amino-yellow-d80: #39321c;
+  /* SHADOW SETTING */
+  --amino-v3-shadow-inset: inset 0px 2px 4px rgba(0, 0, 0, 0.18);
+  --amino-v3-shadow-base: 0px 1px 2px rgba(0, 0, 0, 0.18),
+    0px 1px 3px rgba(0, 0, 0, 0.3);
+  --amino-v3-shadow-medium: 0px 2px 4px rgba(0, 0, 0, 0.18),
+    0px 4px 6px rgba(0, 0, 0, 0.3);
+  --amino-v3-shadow-large: 0px 10px 15px rgba(0, 0, 0, 0.3),
+    0px 4px 6px rgba(0, 0, 0, 0.15);
+  --amino-v3-shadow-xl: 0px 20px 25px rgba(0, 0, 0, 0.3),
+    0px 10px 10px rgba(0, 0, 0, 0.12);
+  --amino-v3-shadow-xxl: 0px 32px 50px rgba(0, 0, 0, 0.72);
   --amino-backdrop-color: var(--amino-gray-200);
   --amino-page-background: var(--amino-gray-50);
-  --amino-surface-color: var(--amino-gray-100);
+  --amino-surface-color: var(--amino-gray-500);
   --amino-surface-color-secondary: var(--amino-gray-50);
   --amino-border-color: var(--amino-gray-200);
   --amino-text-color: white;
