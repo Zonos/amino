@@ -238,12 +238,7 @@ export const Text: React.FC<TextProps> = ({
         fontWeight: fontWeight || labelOption.weight,
         size: labelOption.size,
       });
-    case 'body':
-      return renderTypography({
-        as: tag || bodyOption.tag,
-        fontWeight: fontWeight || bodyOption.weight,
-        size: bodyOption.size,
-      });
+
     case 'small-header':
       return renderTypography({
         as: tag || smallheaderOption.tag,
@@ -275,11 +270,12 @@ export const Text: React.FC<TextProps> = ({
           {children}
         </InputLabel>
       );
+    case 'body':
     default:
-      return (
-        <p className={className} title={title}>
-          {children}
-        </p>
-      );
+      return renderTypography({
+        as: tag || bodyOption.tag,
+        fontWeight: fontWeight || bodyOption.weight,
+        size: bodyOption.size,
+      });
   }
 };

@@ -645,6 +645,7 @@ import "./components/text-avatar/TextAvatar";
 import "./components/text/LegacyText";
 import "./components/toast/Toast";
 import "./components/toast/ToastContext";
+import "./components/tooltip/Tooltip";
 import "./icons/flags/FlagIndex";
 import "./icons/IconIndex";
 

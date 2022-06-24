@@ -2,14 +2,16 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from 'src/components/button/Button';
+import { Text } from 'src/components/text/Text';
+import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
-  title: 'Amino/Button',
-  component: Button,
+  title: 'Amino/Tooltip',
+  component: Tooltip,
   decorators: [withDesign],
   argTypes: {
     disabled: {
@@ -51,27 +53,50 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
+const TooltipWrapper = ({ children, ...props }: Partial<TooltipProps>) => (
+  <Tooltip
+    {...props}
+    showTooltip
+    title={<Text type="description-header">Title</Text>}
+    subtitle={<Text type="subheader">subtitle</Text>}
+  >
+    {children}
+  </Tooltip>
+);
+
 const ButtonRow = (props: ButtonProps) => (
   <HWrapper>
-    <Button {...props} />
-    <Button {...props} icon={<CubeIcon size={16} />} />
-    <Button {...props} icon={<CubeIcon size={16} />} iconRight />
-    <Button
-      {...props}
-      icon={<CubeIcon size={16} />}
-      /*  eslint-disable-next-line react/no-children-prop */
-      children=""
-    />
-    <Button
-      icon={<CubeIcon size={16} />}
-      /*  eslint-disable-next-line react/no-children-prop */
-      children=""
-      onClick={e => e.preventDefault()}
-      tag="div"
-    />
-    <StyledButton tag="div" onClick={e => e.preventDefault()}>
-      Test
-    </StyledButton>
+    <TooltipWrapper>
+      <Button {...props} />
+    </TooltipWrapper>
+    <TooltipWrapper>
+      <Button {...props} icon={<CubeIcon size={16} />} />
+    </TooltipWrapper>
+    <TooltipWrapper>
+      <Button {...props} icon={<CubeIcon size={16} />} iconRight />
+    </TooltipWrapper>
+    <TooltipWrapper>
+      <Button
+        {...props}
+        icon={<CubeIcon size={16} />}
+        /*  eslint-disable-next-line react/no-children-prop */
+        children=""
+      />
+    </TooltipWrapper>
+    <TooltipWrapper>
+      <Button
+        icon={<CubeIcon size={16} />}
+        /*  eslint-disable-next-line react/no-children-prop */
+        children=""
+        onClick={e => e.preventDefault()}
+        tag="div"
+      />
+    </TooltipWrapper>
+    <TooltipWrapper>
+      <StyledButton tag="div" onClick={e => e.preventDefault()}>
+        Test
+      </StyledButton>
+    </TooltipWrapper>
   </HWrapper>
 );
 
