@@ -576,6 +576,7 @@ import "./icons/СalculatorSolidIcon";
 import "./utils/countryPhoneCodes";
 import "./utils/prepCountryOptions";
 import "./utils/prepRegionCountryOptions";
+import "./utils/truncateText";
 import "./components/alert-dialog/AlertContext";
 import "./components/alert-dialog/AlertDialog";
 import "./components/button/Button";

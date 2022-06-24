@@ -6,7 +6,16 @@ import MuiTooltip, {
   TooltipProps as MuiTooltipProps,
 } from '@mui/material/Tooltip';
 import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
+
+const StyledTitle = styled(Text)`
+  margin-top: 3px;
+`;
+
+const StyledCaption = styled(Text)`
+  margin-top: 3px;
+`;
 
 const NoTooltipWrapper = styled.div``;
 
@@ -33,17 +42,17 @@ export type TooltipProps = {
   children: ReactNode;
   className?: string;
   showTooltip: boolean;
-  subtitle?: ReactNode;
+  subtitle: string | null;
   tag?: 'div' | 'span';
-  title?: ReactNode;
+  title?: string;
 };
 
-const LightTooltip = muiStyled(({ className, ...props }: MuiTooltipProps) => (
+const StyledTooltip = muiStyled(({ className, ...props }: MuiTooltipProps) => (
   <MuiTooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
+))(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: theme.palette.common.white,
-    boxShadow: theme.shadows[1],
+    backgroundColor: '#0C0C0D',
+    boxShadow: 'var(--amino-v3-shadow-large)',
   },
 }));
 
@@ -57,12 +66,16 @@ export const Tooltip = ({
 }: TooltipProps) => {
   if (showTooltip) {
     return (
-      <LightTooltip
+      <StyledTooltip
         className={className}
         title={
           <VStack spacing="space-quarter">
-            {title}
-            {subtitle}
+            {title && (
+              <StyledTitle type="small-header" isUppercase={false}>
+                {title}
+              </StyledTitle>
+            )}
+            <StyledCaption type="caption">{subtitle}</StyledCaption>
           </VStack>
         }
       >
@@ -70,7 +83,7 @@ export const Tooltip = ({
           {children}
           <HiddenSpan />
         </ChildWrapper>
-      </LightTooltip>
+      </StyledTooltip>
     );
   }
 
