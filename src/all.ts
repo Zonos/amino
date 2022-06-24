@@ -576,6 +576,7 @@ import "./icons/СalculatorSolidIcon";
 import "./utils/countryPhoneCodes";
 import "./utils/prepCountryOptions";
 import "./utils/prepRegionCountryOptions";
+import "./utils/truncateText";
 import "./components/alert-dialog/AlertContext";
 import "./components/alert-dialog/AlertDialog";
 import "./components/button/Button";
@@ -645,6 +646,7 @@ import "./components/text-avatar/TextAvatar";
 import "./components/text/LegacyText";
 import "./components/toast/Toast";
 import "./components/toast/ToastContext";
+import "./components/tooltip/Tooltip";
 import "./icons/flags/FlagIndex";
 import "./icons/IconIndex";
 

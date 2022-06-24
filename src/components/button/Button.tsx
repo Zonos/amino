@@ -5,7 +5,6 @@ import React, {
   MouseEventHandler,
   ReactNode,
 } from 'react';
-import ReactTooltip from 'react-tooltip';
 
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
@@ -231,7 +230,6 @@ type ButtonBase = {
   loadingText?: string;
   size?: Size;
   tabIndex?: number;
-  tooltip?: ReactNode;
   type?: 'button' | 'reset' | 'submit';
 };
 
@@ -264,13 +262,11 @@ export function Button<T extends GroupTag = 'button'>({
   loadingText,
   size = 'sm',
   tag,
-  tooltip,
   type = 'button',
   ...props
 }: ButtonProps<T>) {
   const renderContent = (color?: SpinnerProps['color']) => (
     <>
-      {tooltip && <ReactTooltip />}
       {!iconRight && icon}
       {children}
       {iconRight && icon}
@@ -293,7 +289,6 @@ export function Button<T extends GroupTag = 'button'>({
 
   const baseProps = {
     className: buttonClassName,
-    'data-tip': tooltip,
     disabled: disabled || loading,
     size,
   };

@@ -2,14 +2,16 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from 'src/components/button/Button';
+import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
 import { CubeIcon } from 'src/icons/CubeIcon';
+import { truncateText } from 'src/utils/truncateText';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
-  title: 'Amino/Button',
-  component: Button,
+  title: 'Amino/Tooltip',
+  component: Tooltip,
   decorators: [withDesign],
   argTypes: {
     disabled: {
@@ -51,27 +53,59 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
+const HeadingTooltip = ({
+  children,
+  subtitle = 'This is an example of a tooltip with a heading. Tooltips with a heading can have three lines total.',
+  ...props
+}: Partial<TooltipProps>) => (
+  <Tooltip
+    {...props}
+    showTooltip
+    title="Tooltip with Heading"
+    subtitle={subtitle}
+  >
+    {children}
+  </Tooltip>
+);
+
+const WithoutHeadingTooltip = ({
+  children,
+  subtitle = 'Tooltips should stay under 128 characters and be limited to two lines. This example shows a tooltip with the max amount of characters.',
+  ...props
+}: Partial<TooltipProps>) => (
+  <Tooltip
+    {...props}
+    showTooltip
+    subtitle={truncateText({
+      length: 128,
+      addEllipses: false,
+      text: subtitle,
+    })}
+  >
+    {children}
+  </Tooltip>
+);
+
 const ButtonRow = (props: ButtonProps) => (
   <HWrapper>
-    <Button {...props} />
-    <Button {...props} icon={<CubeIcon size={16} />} />
-    <Button {...props} icon={<CubeIcon size={16} />} iconRight />
-    <Button
-      {...props}
-      icon={<CubeIcon size={16} />}
-      /*  eslint-disable-next-line react/no-children-prop */
-      children=""
-    />
-    <Button
-      icon={<CubeIcon size={16} />}
-      /*  eslint-disable-next-line react/no-children-prop */
-      children=""
-      onClick={e => e.preventDefault()}
-      tag="div"
-    />
-    <StyledButton tag="div" onClick={e => e.preventDefault()}>
-      Test
-    </StyledButton>
+    <HeadingTooltip>
+      <Button {...props}>Has heading</Button>
+    </HeadingTooltip>
+    <HeadingTooltip>
+      <Button {...props} icon={<CubeIcon size={16} />}>
+        Has heading
+      </Button>
+    </HeadingTooltip>
+    <WithoutHeadingTooltip subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated.">
+      <Button {...props} icon={<CubeIcon size={16} />} iconRight>
+        Without heading truncated subtitle
+      </Button>
+    </WithoutHeadingTooltip>
+    <WithoutHeadingTooltip>
+      <StyledButton tag="div" onClick={e => e.preventDefault()}>
+        Without heading
+      </StyledButton>
+    </WithoutHeadingTooltip>
   </HWrapper>
 );
 
@@ -88,7 +122,6 @@ const Template: Story<ButtonProps> = props => {
 export const Default = Template.bind({});
 Default.args = {
   intent: 'secondary',
-  children: 'Example button',
 };
 Default.parameters = {
   design: {
@@ -100,7 +133,6 @@ Default.parameters = {
 export const Primary = Template.bind({});
 Primary.args = {
   intent: 'primary',
-  children: 'Example button',
 };
 Primary.parameters = {
   design: {
@@ -112,7 +144,6 @@ Primary.parameters = {
 export const Danger = Template.bind({});
 Danger.args = {
   intent: 'danger',
-  children: 'Example button',
 };
 Danger.parameters = {
   design: {
@@ -124,7 +155,6 @@ Danger.parameters = {
 export const Warning = Template.bind({});
 Warning.args = {
   intent: 'warning',
-  children: 'Example button',
 };
 Warning.parameters = {
   design: {
@@ -136,7 +166,6 @@ Warning.parameters = {
 export const Outline = Template.bind({});
 Outline.args = {
   intent: 'outline',
-  children: 'Example button',
 };
 Outline.parameters = {
   design: {
@@ -148,7 +177,6 @@ Outline.parameters = {
 export const LinkButton = Template.bind({});
 LinkButton.args = {
   intent: 'link',
-  children: 'Link button',
 };
 LinkButton.parameters = {
   design: {
@@ -160,7 +188,6 @@ LinkButton.parameters = {
 export const Subtle = Template.bind({});
 Subtle.args = {
   intent: 'subtle',
-  children: 'Example button',
 };
 Subtle.parameters = {
   design: {
