@@ -38,11 +38,9 @@ export type TooltipProps = {
   title?: ReactNode;
 };
 
-export const LightTooltip = muiStyled(
-  ({ className, ...props }: MuiTooltipProps) => (
-    <MuiTooltip {...props} classes={{ popper: className }} />
-  )
-)(({ theme }) => ({
+const LightTooltip = muiStyled(({ className, ...props }: MuiTooltipProps) => (
+  <MuiTooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.common.white,
     boxShadow: theme.shadows[1],
