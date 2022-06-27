@@ -9,12 +9,8 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
 
-const StyledTitle = styled(Text)`
-  margin-top: 3px;
-`;
-
-const StyledCaption = styled(Text)`
-  margin-top: 3px;
+const StyledVStack = styled(VStack)`
+  padding-top: 3px;
 `;
 
 const NoTooltipWrapper = styled.div``;
@@ -42,7 +38,7 @@ export type TooltipProps = {
   children: ReactNode;
   className?: string;
   showTooltip: boolean;
-  subtitle: string | null;
+  subtitle: ReactNode | string | null;
   tag?: 'div' | 'span';
   title?: string;
 };
@@ -69,14 +65,18 @@ export const Tooltip = ({
       <StyledTooltip
         className={className}
         title={
-          <VStack spacing="space-quarter">
+          <StyledVStack spacing="space-quarter">
             {title && (
-              <StyledTitle type="small-header" isUppercase={false}>
+              <Text type="small-header" isUppercase={false}>
                 {title}
-              </StyledTitle>
+              </Text>
             )}
-            <StyledCaption type="caption">{subtitle}</StyledCaption>
-          </VStack>
+            {typeof subtitle === 'string' ? (
+              <Text type="caption">{subtitle}</Text>
+            ) : (
+              subtitle
+            )}
+          </StyledVStack>
         }
       >
         <ChildWrapper as={tag}>

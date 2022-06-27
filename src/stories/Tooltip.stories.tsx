@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from 'src/components/button/Button';
+import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { truncateText } from 'src/utils/truncateText';
@@ -76,11 +78,15 @@ const WithoutHeadingTooltip = ({
   <Tooltip
     {...props}
     showTooltip
-    subtitle={truncateText({
-      length: 128,
-      addEllipses: false,
-      text: subtitle,
-    })}
+    subtitle={
+      typeof subtitle === 'string'
+        ? truncateText({
+            length: 128,
+            addEllipses: false,
+            text: subtitle,
+          })
+        : subtitle
+    }
   >
     {children}
   </Tooltip>
@@ -106,6 +112,18 @@ const ButtonRow = (props: ButtonProps) => (
         Without heading
       </StyledButton>
     </WithoutHeadingTooltip>
+    <Tooltip
+      showTooltip
+      subtitle={
+        <VStack>
+          <Text>A</Text>
+          <Text>Custom</Text>
+          <Text>Subtitle</Text>
+        </VStack>
+      }
+    >
+      <StyledButton>Custom subtitle</StyledButton>
+    </Tooltip>
   </HWrapper>
 );
 
