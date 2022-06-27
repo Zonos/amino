@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from 'src/components/button/Button';
+import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
+import { Dialog } from 'src/components/dialog/Dialog';
+import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
@@ -10,6 +13,9 @@ import { truncateText } from 'src/utils/truncateText';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
+const TransparentCoverSheet = styled(CoverSheet)`
+  opacity: 0.9 !important;
+`;
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
   title: 'Amino/Tooltip',
@@ -92,48 +98,203 @@ const WithoutHeadingTooltip = ({
   </Tooltip>
 );
 
-const ButtonRow = (props: ButtonProps) => (
-  <HWrapper>
-    <HeadingTooltip>
-      <Button {...props}>Has heading</Button>
-    </HeadingTooltip>
-    <HeadingTooltip>
-      <Button {...props} icon={<CubeIcon size={16} />}>
-        Has heading
-      </Button>
-    </HeadingTooltip>
-    <WithoutHeadingTooltip subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated.">
-      <Button {...props} icon={<CubeIcon size={16} />} iconRight>
-        Without heading truncated subtitle
-      </Button>
-    </WithoutHeadingTooltip>
-    <WithoutHeadingTooltip>
-      <StyledButton tag="div" onClick={e => e.preventDefault()}>
-        Without heading
-      </StyledButton>
-    </WithoutHeadingTooltip>
-    <Tooltip
-      showTooltip
-      subtitle={
-        <VStack>
-          <Text>A</Text>
-          <Text>Custom</Text>
-          <Text>Subtitle</Text>
-        </VStack>
-      }
-    >
-      <StyledButton>Custom subtitle</StyledButton>
-    </Tooltip>
-  </HWrapper>
-);
+const TopRow = (props: ButtonProps) => {
+  return (
+    <>
+      <HeadingTooltip>
+        <Button {...props}>Has heading</Button>
+      </HeadingTooltip>
+      <WithoutHeadingTooltip subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated.">
+        <Button {...props} iconRight>
+          Without heading truncated subtitle
+        </Button>
+      </WithoutHeadingTooltip>
+      <WithoutHeadingTooltip>
+        <StyledButton {...props} tag="div" onClick={e => e.preventDefault()}>
+          Without heading
+        </StyledButton>
+      </WithoutHeadingTooltip>
+    </>
+  );
+};
+
+const BottomRow = ({
+  toggleCoversheet,
+  toggleDialog,
+  ...props
+}: ButtonProps & {
+  toggleCoversheet: () => void;
+  toggleDialog: () => void;
+}) => {
+  const [showSelect, setShowSelect] = useState(false);
+
+  return (
+    <>
+      <Tooltip
+        showTooltip
+        subtitle={
+          <VStack>
+            <Text>A</Text>
+            <Text>Custom</Text>
+            <Text>Subtitle</Text>
+          </VStack>
+        }
+      >
+        <StyledButton {...props} onClick={toggleCoversheet}>
+          Test coversheet z-index
+        </StyledButton>
+      </Tooltip>
+      <Tooltip
+        showTooltip
+        subtitle={
+          <VStack>
+            <Text>A</Text>
+            <Text>Custom</Text>
+            <Text>Subtitle</Text>
+          </VStack>
+        }
+      >
+        <StyledButton {...props} onClick={toggleDialog}>
+          Test dialog z-index
+        </StyledButton>
+      </Tooltip>
+      {showSelect ? (
+        <Select
+          label="currencies"
+          menuIsOpen
+          onChange={option => !option && setShowSelect(false)}
+          options={[
+            {
+              label: 'US Dollar (USD)',
+              value: 'USD',
+            },
+            {
+              label: 'European Euro (EUR)',
+              value: 'EUR',
+            },
+            {
+              label: 'Japanese Yen (JPY)',
+              value: 'JPY',
+            },
+            {
+              label: 'British Pound (GBP)',
+              value: 'GBP',
+            },
+            {
+              label: 'Swiss Frank (CHF)',
+              value: 'CHF',
+            },
+            {
+              label: 'Australian Dollar (AUD)',
+              value: 'AUD',
+            },
+            {
+              label: 'New Zealand Dollar (NZD)',
+              value: 'NZD',
+            },
+          ]}
+          value={{
+            label: 'US Dollar (USD)',
+            value: 'USD',
+          }}
+        />
+      ) : (
+        <HeadingTooltip>
+          <Button {...props} onClick={() => setShowSelect(true)}>
+            Test select z-index
+          </Button>
+        </HeadingTooltip>
+      )}
+    </>
+  );
+};
 
 const Template: Story<ButtonProps> = props => {
+  const [coversheetOpen, setCoversheetOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
-    <VWrapper>
-      <ButtonRow {...props} />
-      <ButtonRow {...props} disabled />
-      <ButtonRow {...props} loading />
-    </VWrapper>
+    <>
+      <VWrapper>
+        <VStack spacing="space-quarter">
+          <HWrapper>
+            <TopRow {...props} />
+          </HWrapper>
+          <HWrapper>
+            <BottomRow
+              {...props}
+              toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
+              toggleDialog={() => setDialogOpen(!dialogOpen)}
+            />
+          </HWrapper>
+        </VStack>
+        <VStack spacing="space-quarter">
+          <HWrapper>
+            <TopRow {...props} disabled />
+          </HWrapper>
+          <HWrapper>
+            <BottomRow
+              {...props}
+              disabled
+              toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
+              toggleDialog={() => setDialogOpen(!dialogOpen)}
+            />
+          </HWrapper>
+        </VStack>
+        <VStack spacing="space-quarter">
+          <HWrapper>
+            <TopRow {...props} loading />
+          </HWrapper>
+          <HWrapper>
+            <BottomRow
+              {...props}
+              loading
+              toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
+              toggleDialog={() => setDialogOpen(!dialogOpen)}
+            />
+          </HWrapper>
+        </VStack>
+      </VWrapper>
+      <TransparentCoverSheet
+        actions={
+          <HeadingTooltip>
+            <Button {...props} disabled>
+              Has heading
+            </Button>
+          </HeadingTooltip>
+        }
+        label="Coversheet"
+        open={coversheetOpen}
+        onClose={() => setCoversheetOpen(false)}
+      >
+        <VStack>
+          <Text>
+            This coversheet is slightly transparent to allow for testing whether
+            the underlying tooltip will display on top of the coversheet.
+            Coversheet z-index: 990
+          </Text>
+        </VStack>
+      </TransparentCoverSheet>
+      <Dialog
+        actions={
+          <HeadingTooltip>
+            <Button {...props} disabled>
+              Has heading
+            </Button>
+          </HeadingTooltip>
+        }
+        onClose={() => setDialogOpen(false)}
+        open={dialogOpen}
+      >
+        <VStack>
+          <Text>
+            This dialog is overlapping disabled buttons to allow for testing
+            whether the underlying tooltip will display on top of the dialog.
+            Dialog z-index: 1001.
+          </Text>
+        </VStack>
+      </Dialog>
+    </>
   );
 };
 

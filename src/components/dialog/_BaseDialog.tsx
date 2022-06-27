@@ -34,13 +34,20 @@ const Popup = styled(motion.div)<{ width: number }>`
 `;
 
 export type DialogProps = {
+  children: React.ReactNode;
+  className?: string;
   open: boolean;
   theme?: IAminoTheme;
-  children: React.ReactNode;
   width?: number;
 };
 
-export const BaseDialog = ({ width, theme, open, children }: DialogProps) => {
+export const BaseDialog = ({
+  children,
+  className,
+  open,
+  theme,
+  width,
+}: DialogProps) => {
   if (typeof document !== 'undefined') {
     return ReactDOM.createPortal(
       <AnimatePresence>
@@ -57,6 +64,7 @@ export const BaseDialog = ({ width, theme, open, children }: DialogProps) => {
         {open && (
           <DialogLayout data-theme={theme}>
             <Popup
+              className={className}
               transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

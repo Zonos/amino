@@ -24,7 +24,8 @@ const ChildWrapper = styled.div`
   [disabled] + ${HiddenSpan} {
     display: block;
     cursor: not-allowed;
-    z-index: 100000;
+    /** @desc avoid showing tooltip on top of dialog or coversheet */
+    z-index: 10;
 
     position: absolute;
     left: 0;

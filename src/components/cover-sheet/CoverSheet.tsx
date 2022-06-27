@@ -83,6 +83,7 @@ const Actions = styled.div`
 
 export type CoverSheetProps = {
   children: React.ReactNode;
+  className?: string;
   open: boolean;
   label: string;
   onClose: () => void;
@@ -90,6 +91,7 @@ export type CoverSheetProps = {
 };
 
 export const CoverSheet = ({
+  className,
   open,
   label,
   onClose,
@@ -101,6 +103,7 @@ export const CoverSheet = ({
       <AnimatePresence>
         {open && (
           <StyledDialog
+            className={className}
             transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
             initial={{ opacity: 0, translateY: 10 }}
             animate={{ opacity: 1, translateY: 0 }}
