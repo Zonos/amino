@@ -20,6 +20,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     transition: var(--amino-transition);
     margin-left: var(--amino-space-half);
     top: calc(50% - var(--amino-text-base) / 2);
+    z-index: 1;
   }
   &::after {
     content: '';
