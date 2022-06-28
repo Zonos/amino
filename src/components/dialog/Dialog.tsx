@@ -127,9 +127,10 @@ const Close = styled.div`
 
 export type DialogProps = {
   actions?: React.ReactNode;
-  leftActions?: React.ReactNode;
+  className?: string;
   children: React.ReactNode;
   label?: string;
+  leftActions?: React.ReactNode;
   onClose: () => void;
   open: boolean;
   theme?: IAminoTheme;
@@ -138,10 +139,25 @@ export type DialogProps = {
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   (
-    { actions, leftActions, children, label, onClose, open, theme, width },
+    {
+      actions,
+      children,
+      className,
+      label,
+      leftActions,
+      onClose,
+      open,
+      theme,
+      width,
+    },
     ref
   ) => (
-    <BaseDialog data-theme={theme} open={open} width={width}>
+    <BaseDialog
+      className={className}
+      data-theme={theme}
+      open={open}
+      width={width}
+    >
       <Header>
         <Text type="subheader">{label}</Text>
         <Close onClick={onClose}>

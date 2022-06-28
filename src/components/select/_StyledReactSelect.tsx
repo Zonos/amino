@@ -150,6 +150,12 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
     `}
 `;
 
+const StyledSelectWrapper = styled.div`
+  .react-select-control + div {
+    z-index: 20;
+  }
+`;
+
 const StrongLabel = styled.strong`
   font-weight: 600;
 `;
@@ -194,6 +200,7 @@ const Control = <
             ? 'has-label'
             : '',
           size,
+          'react-select-control',
         ].join(' ')
       )}
       ref={innerRef}
@@ -495,7 +502,7 @@ export const StyledReactSelect = <
     size,
   };
   return (
-    <div>
+    <StyledSelectWrapper>
       <ReactSelect<Option, IsMulti, Group>
         components={
           {
@@ -540,6 +547,6 @@ export const StyledReactSelect = <
         {...additionalProps}
       />
       <HelpText error={error} helpText={helpText} />
-    </div>
+    </StyledSelectWrapper>
   );
 };
