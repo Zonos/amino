@@ -8,7 +8,6 @@ import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
-import { CubeIcon } from 'src/icons/CubeIcon';
 import { truncateText } from 'src/utils/truncateText';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
