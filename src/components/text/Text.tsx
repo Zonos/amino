@@ -137,9 +137,9 @@ type TypographyOverrides = {
 };
 type TypoDefaultProp = { size: Size; isUppercase: Boolean };
 const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
-  font-size: ${p => p.fontSize || `var(--amino-font-size-${p.size})`};
+  font-size: ${p => `var(--amino-font-size-${p.fontSize || p.size})`};
   font-weight: ${p => p.fontWeight};
-  line-height: ${p => p.lineHeight || `var(--amino-line-height-${p.size})`};
+  line-height: ${p => `var(--amino-line-height-${p.lineHeight || p.size})`};
   margin: 0;
   ${p =>
     p.isUppercase &&
