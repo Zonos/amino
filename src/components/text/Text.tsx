@@ -135,7 +135,7 @@ type TypographyOverrides = {
   fontWeight?: FontWeight;
   lineHeight?: Size;
 };
-type TypoDefaultProp = { size: Size; isUppercase: Boolean };
+type TypoDefaultProp = { size: Size; isUppercase?: Boolean };
 const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
   font-size: ${p => `var(--amino-font-size-${p.fontSize || p.size})`};
   font-weight: ${p => p.fontWeight};
@@ -156,12 +156,13 @@ export type TextProps = {
   title?: string;
   type?: TextStyle;
 } & TypographyOverrides;
+
 export const Text: React.FC<TextProps> = ({
   children,
   className,
   fontSize,
   fontWeight,
-  isUppercase = false,
+  isUppercase,
   lineHeight,
   tag,
   title,
