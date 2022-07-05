@@ -20,7 +20,7 @@ export interface BadgeProps {
   color?: ColorList;
   icon?: ReactNode;
   iconRight?: boolean;
-  inverted?: boolean;
+  bold?: boolean;
   rounded?: boolean;
   size?: Size;
 }
@@ -31,7 +31,7 @@ const BadgeWrapper = styled.div`
 const StyledBadge = styled.div<BadgeProps>`
   display: flex;
   gap: var(--amino-space-quarter);
-  font-size: var(--amino-type-scale-base);
+  font-size: var(--amino-text-sm);
   font-weight: normal;
   padding: 3px var(--amino-space-half);
   text-align: center;
@@ -50,8 +50,8 @@ const StyledBadge = styled.div<BadgeProps>`
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
   }
 
-  &.inverted {
-    // inverted config default (gray)
+  &.bold {
+    // bold config default (gray)
     background-color: var(--amino-gray-600);
     color: var(--amino-gray-200);
   }
@@ -65,8 +65,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-blue-100);
     color: var(--amino-blue-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-blue-500);
       color: var(--amino-blue-100);
     }
@@ -76,8 +76,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-green-100);
     color: var(--amino-green-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-green-500);
       color: var(--amino-green-100);
     }
@@ -87,8 +87,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-red-100);
     color: var(--amino-red-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-red-500);
       color: var(--amino-red-100);
     }
@@ -98,8 +98,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-orange-100);
     color: var(--amino-orange-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-orange-500);
       color: var(--amino-orange-100);
     }
@@ -109,8 +109,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-purple-100);
     color: var(--amino-purple-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-purple-500);
       color: var(--amino-purple-100);
     }
@@ -120,8 +120,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-cyan-100);
     color: var(--amino-cyan-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-cyan-500);
       color: var(--amino-cyan-100);
     }
@@ -131,8 +131,8 @@ const StyledBadge = styled.div<BadgeProps>`
     // color config
     background-color: var(--amino-yellow-100);
     color: var(--amino-yellow-700);
-    &.inverted {
-      // inverted config
+    &.bold {
+      // bold config
       background-color: var(--amino-yellow-500);
       color: black;
     }
@@ -144,7 +144,7 @@ export const Badge = ({
   color,
   icon,
   iconRight,
-  inverted,
+  bold,
   rounded,
   size,
 }: BadgeProps) => {
@@ -152,15 +152,13 @@ export const Badge = ({
     <BadgeWrapper className={className}>
       <StyledBadge
         rounded={!!rounded}
-        inverted={!!inverted}
+        bold={!!bold}
         iconRight={iconRight}
         color={color}
         size={size}
-        className={[
-          color || 'gray',
-          size || 'small',
-          inverted ? 'inverted' : '',
-        ].join(' ')}
+        className={[color || 'gray', size || 'small', bold ? 'bold' : ''].join(
+          ' '
+        )}
       >
         {icon}
         <p>{children}</p>
