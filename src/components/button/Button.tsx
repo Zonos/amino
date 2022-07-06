@@ -9,6 +9,7 @@ import React, {
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
+import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const StyledSpinnerWrapper = styled.span`
@@ -20,7 +21,7 @@ const StyledSpinnerWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--amino-radius);
+  border-radius: var(--amino-radius-sm);
 `;
 
 const AminoButton = styled.button<ButtonProps<GroupTag>>`
@@ -82,11 +83,11 @@ const Primary = styled(AminoButton)`
   color: var(--amino-text-light);
 
   &:hover {
-    background: var(--amino-blue-400);
+    background: var(--amino-blue-l20);
   }
   &:active,
   &:focus {
-    background: var(--amino-blue-600);
+    background: var(--amino-blue-d20);
     color: white;
   }
   ${StyledSpinnerWrapper} {
@@ -96,73 +97,94 @@ const Primary = styled(AminoButton)`
 
 const Secondary = styled(AminoButton)`
   color: var(--amino-text-color);
-  background: var(--amino-gray-100);
+  background: var(--amino-gray-l80);
 
   &:hover {
-    background: var(--amino-gray-200);
+    background: var(--amino-gray-l60);
   }
   &:active,
   &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-base);
     svg path {
       fill: currentColor;
     }
   }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-gray-100);
+    background: var(--amino-gray-l80);
+  }
+
+  /** Dark mode */
+  &.dark {
+    color: white;
+    background: var(--amino-gray-d80);
+
+    &:hover {
+      background: var(--amino-gray-d60);
+    }
+    &:active,
+    &:focus {
+      background: var(--amino-blue-d80);
+      color: var(--amino-blue-l40);
+      svg path {
+        fill: currentColor;
+      }
+    }
+    ${StyledSpinnerWrapper} {
+      background: var(--amino-gray-d80);
+    }
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: var(--amino-red-500);
+  background: var(--amino-red-base);
   color: white;
 
   &:hover {
-    background: var(--amino-red-400);
+    background: var(--amino-red-l20);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-red-600);
+    background: var(--amino-red-d20);
   }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-red-500);
+    background: var(--amino-red-base);
   }
 `;
 
 const Warning = styled(AminoButton)`
-  background: var(--amino-orange-500);
+  background: var(--amino-orange-base);
   color: white;
 
   &:hover {
-    background: var(--amino-orange-400);
+    background: var(--amino-orange-l20);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-orange-600);
+    background: var(--amino-orange-d20);
   }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-orange-500);
+    background: var(--amino-orange-base);
   }
 `;
 
 const Outline = styled(AminoButton)`
   background: white;
   color: var(--amino-text-color);
-  border: 1px solid var(--amino-gray-200);
+  border: 1px solid var(--amino-gray-l60);
 
   &:hover {
-    background: var(--amino-gray-100);
-    border: 1px solid var(--amino-gray-200);
+    background: var(--amino-gray-l80);
+    border: 1px solid var(--amino-gray-l60);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
-    border: 1px solid var(--amino-blue-300);
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-base);
+    border: 1px solid var(--amino-blue-l40);
   }
   ${StyledSpinnerWrapper} {
     background: white;
@@ -171,16 +193,16 @@ const Outline = styled(AminoButton)`
 
 const Subtle = styled(AminoButton)`
   background: none;
-  color: var(--amino-gray-700);
+  color: var(--amino-gray-d40);
 
   &:hover {
-    background: var(--amino-gray-100);
+    background: var(--amino-gray-l80);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-base);
   }
   &.loading {
     color: transparent;
@@ -228,6 +250,7 @@ type ButtonBase = {
   intent?: IntentProps;
   loading?: boolean;
   loadingText?: string;
+  theme?: Theme | 'space';
   size?: Size;
   tabIndex?: number;
   type?: 'button' | 'reset' | 'submit';
@@ -262,6 +285,7 @@ export function Button<T extends GroupTag = 'button'>({
   loadingText,
   size = 'sm',
   tag,
+  theme,
   type = 'button',
   ...props
 }: ButtonProps<T>) {
@@ -285,7 +309,10 @@ export function Button<T extends GroupTag = 'button'>({
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
     loading ? 'loading' : '',
-  ].join(' ');
+    theme,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const baseProps = {
     className: buttonClassName,
