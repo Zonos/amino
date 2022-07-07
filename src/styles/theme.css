@@ -23,7 +23,7 @@
   --amino-text-base: var(--amino-font-size-base);
   --amino-text-sm: var(--amino-font-size-s);
   --amino-text-xs: var(--amino-font-size-xs);
-  --amino-space: 1.563em;
+  --amino-space: 1rem;
   --amino-space-negative: -1.563em;
   --amino-space-half: 0.938em;
   --amino-space-half-negative: -0.938em;
