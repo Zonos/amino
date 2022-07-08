@@ -23,6 +23,7 @@ export const BoxesDuotoneIcon = ({
       <path
         d="M11 2h2v2a1 1 0 1 1-2 0V2ZM6 12h2v2a1 1 0 1 1-2 0v-2Zm12 0h-2v2a1 1 0 1 0 2 0v-2Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

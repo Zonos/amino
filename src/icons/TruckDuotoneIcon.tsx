@@ -27,6 +27,7 @@ export const TruckDuotoneIcon = ({
         clipRule="evenodd"
         d="M10 17a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-2 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm12 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-2 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

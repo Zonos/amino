@@ -23,6 +23,7 @@ export const WarningDuotoneIcon = ({
       <path
         d="M12 8a1 1 0 0 0-1 1v4a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Zm0 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

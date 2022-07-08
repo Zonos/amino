@@ -41,7 +41,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
 
-  svg path {
+  svg path:not([data-is-secondary-color]) {
     fill: currentColor;
   }
 
@@ -53,6 +53,9 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   &:active,
   &:focus {
     outline: none;
+    svg path:not([data-is-secondary-color]) {
+      fill: currentColor;
+    }
   }
 
   &:not(.only-icon).has-icon {
@@ -105,9 +108,6 @@ const Secondary = styled(AminoButton)`
   &:focus {
     background: var(--amino-blue-100);
     color: var(--amino-blue-500);
-    svg path {
-      fill: currentColor;
-    }
   }
   ${StyledSpinnerWrapper} {
     background: var(--amino-gray-100);
@@ -208,9 +208,6 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   &:focus {
     background: var(--amino-blue-l80);
     color: var(--amino-blue-d40);
-    svg path {
-      fill: currentColor;
-    }
   }
   ${StyledSpinnerWrapper} {
     background: white;

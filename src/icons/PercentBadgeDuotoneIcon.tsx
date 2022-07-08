@@ -25,6 +25,7 @@ export const PercentBadgeDuotoneIcon = ({
         clipRule="evenodd"
         d="M10 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4.707-.293-4 4a1 1 0 0 1-1.414-1.414l4-4a1 1 0 1 1 1.414 1.414ZM13 14a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

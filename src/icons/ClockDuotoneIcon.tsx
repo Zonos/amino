@@ -25,6 +25,7 @@ export const ClockDuotoneIcon = ({
         clipRule="evenodd"
         d="M12 6a1 1 0 0 1 1 1v4h2a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

@@ -25,6 +25,7 @@ export const UserDuotoneIcon = ({
       <path
         d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

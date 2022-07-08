@@ -23,6 +23,7 @@ export const MoneyDuotoneIcon = ({
       <path
         d="M5 11a1 1 0 1 1 2 0v2a1 1 0 1 1-2 0v-2Zm9 1a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4-2a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

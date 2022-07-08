@@ -23,6 +23,7 @@ export const FileUploadDuotoneIcon = ({
       <path
         d="M19.707 15.293a1 1 0 0 0-1.414 0l-2 2a1 1 0 0 0 1.414 1.414l.293-.293V22a1 1 0 1 0 2 0v-3.586l.293.293a1 1 0 0 0 1.414-1.414l-2-2ZM14 3.414a1.414 1.414 0 0 1 2.414-1l3.172 3.172a1.414 1.414 0 0 1-1 2.414H16a2 2 0 0 1-2-2V3.414Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

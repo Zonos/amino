@@ -23,6 +23,7 @@ export const MobileDuotoneIcon = ({
       <path
         d="M13.5 16.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );
