@@ -2,10 +2,11 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import styled from 'styled-components';
+
+import { CoverSheetActions } from './CoverSheetActions';
 
 const StyledDialog = styled(motion.div)`
   z-index: 990;
@@ -77,10 +78,6 @@ const Close = styled.div`
   }
 `;
 
-const Actions = styled.div`
-  margin-right: var(--amino-space);
-`;
-
 export type CoverSheetProps = {
   children: React.ReactNode;
   className?: string;
@@ -99,33 +96,34 @@ export const CoverSheet = ({
   actions,
 }: CoverSheetProps) => {
   if (typeof document !== 'undefined') {
-    return createPortal(
-      <AnimatePresence>
-        {open && (
-          <StyledDialog
-            className={className}
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-            initial={{ opacity: 0, translateY: 10 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            exit={{ opacity: 0, translateY: 5 }}
-          >
-            <Header>
-              <Text type="subheader">{label}</Text>
-              {actions && (
-                <Actions>
-                  <HStack>{actions}</HStack>
-                </Actions>
-              )}
-              <Close onClick={onClose}>
-                <RemoveIcon size={26} />
-              </Close>
-            </Header>
-            <Content>{children}</Content>
-          </StyledDialog>
-        )}
-      </AnimatePresence>,
-      document.querySelector('body')!
-    );
+    const body = document.querySelector('body');
+    if (body) {
+      return createPortal(
+        <AnimatePresence>
+          {open && (
+            <StyledDialog
+              className={className}
+              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+              initial={{ opacity: 0, translateY: 10 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              exit={{ opacity: 0, translateY: 5 }}
+            >
+              <Header>
+                <Text type="subheader">{label}</Text>
+                <div id="cover-sheet-actions">
+                  {actions && <CoverSheetActions>{actions}</CoverSheetActions>}
+                </div>
+                <Close onClick={onClose}>
+                  <RemoveIcon size={26} />
+                </Close>
+              </Header>
+              <Content>{children}</Content>
+            </StyledDialog>
+          )}
+        </AnimatePresence>,
+        body
+      );
+    }
   }
   return null;
 };

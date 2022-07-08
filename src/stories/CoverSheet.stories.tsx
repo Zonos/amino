@@ -6,6 +6,7 @@ import {
   CoverSheet,
   CoverSheetProps,
 } from 'src/components/cover-sheet/CoverSheet';
+import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 
 const CoverSheetMeta: Meta = {
   title: 'Amino/CoverSheet',
@@ -14,34 +15,50 @@ const CoverSheetMeta: Meta = {
 
 export default CoverSheetMeta;
 
-const Template: Story<CoverSheetProps> = ({
-  label,
-  onClose,
+const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
+  actionPortalOpen: _actionPortalOpen = false,
   children,
-  actions,
-}: CoverSheetProps) => {
+  ...props
+}: CoverSheetProps & { actionPortalOpen?: boolean }) => {
   const [open, setOpen] = useState(false);
+  const [actionPortalOpen, setActionPortalOpen] = useState(_actionPortalOpen);
   return (
     <>
       <Button onClick={() => setOpen(true)}>open</Button>
-      <CoverSheet
-        actions={actions}
-        label={label}
-        onClose={() => {
-          setOpen(false);
-          onClose();
-        }}
-        open={open}
-      >
+
+      <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>
         {children}
+        <Button onClick={() => setActionPortalOpen(!actionPortalOpen)}>
+          Toggle coversheet action portal
+        </Button>
+        {actionPortalOpen && (
+          <CoverSheetActions>
+            <Button onClick={() => setActionPortalOpen(false)}>
+              Remove coversheet actions
+            </Button>
+            <Button>Save (coversheet)</Button>
+          </CoverSheetActions>
+        )}
       </CoverSheet>
     </>
   );
 };
 
-export const CoverSheetSelects = Template.bind({});
-CoverSheetSelects.args = {
+export const CoverSheetWithActions = Template.bind({});
+CoverSheetWithActions.args = {
+  actions: (
+    <>
+      <Button>Cancel</Button>
+      <Button>Save</Button>
+    </>
+  ),
   label: 'Label',
-  onClose: () => {},
+  children: <div>Children</div>,
+};
+
+export const CoverSheetNoActions = Template.bind({});
+CoverSheetNoActions.args = {
+  actionPortalOpen: true,
+  label: 'Label',
   children: <div>Children</div>,
 };
