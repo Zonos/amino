@@ -29,8 +29,8 @@
   --amino-space-half-negative: -1rem; /* -16px */
   --amino-space-quarter: 0.5rem; /* 8px */
   --amino-space-quarter-negative: -0.5rem; /* -8px */
-  --amino-space-double: 2.5em; /* 40px */
-  --amino-space-double-negative: -2.5em; /* -40px */
+  --amino-space-double: 2.5rem; /* 40px */
+  --amino-space-double-negative: -2.5rem; /* -40px */
   --amino-radius-sm: 0.25rem; /* 4px */
   --amino-radius: 0.375rem; /* 6px */
   --amino-radius-lg: 0.5rem; /* 8px */
