@@ -17,7 +17,6 @@ const ButtonMeta: Meta = {
       type: 'boolean',
     },
     href: {
-      defaultValue: '',
       type: 'string',
     },
     iconRight: {
@@ -70,8 +69,11 @@ const ButtonRow = (props: ButtonProps) => (
       tag="div"
     />
     <StyledButton tag="div" onClick={e => e.preventDefault()}>
-      Test
+      Div Button
     </StyledButton>
+    <Button theme="dark" {...props}>
+      Dark
+    </Button>
   </HWrapper>
 );
 
