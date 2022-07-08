@@ -6,6 +6,7 @@ import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import styled from 'styled-components';
 
+import { Button } from '../button/Button';
 import { CoverSheetActions } from './CoverSheetActions';
 
 const StyledDialog = styled(motion.div)`
@@ -28,10 +29,16 @@ const StyledDialog = styled(motion.div)`
   }
 `;
 
+const StyledCloseButton = styled(Button)`
+  margin-right: var(--amino-space);
+`;
+const StyledHeader = styled(Text)`
+  flex-grow: 1;
+`;
 const Header = styled.header`
   background: var(--amino-surface-color);
   border-bottom: var(--amino-border);
-  box-shadow: var(--amino-shadow-small);
+
   padding: var(--amino-space-half) var(--amino-space);
   display: flex;
   align-items: center;
@@ -42,12 +49,6 @@ const Header = styled.header`
 
   @media print {
     display: none !important;
-  }
-
-  h5 {
-    display: flex;
-    flex: 1;
-    margin: 0;
   }
 `;
 
@@ -109,13 +110,14 @@ export const CoverSheet = ({
               exit={{ opacity: 0, translateY: 5 }}
             >
               <Header>
-                <Text type="subheader">{label}</Text>
+                <StyledCloseButton
+                  icon={<RemoveIcon size={20} />}
+                  onClick={onClose}
+                />
+                <StyledHeader type="header">{label}</StyledHeader>
                 <div id="cover-sheet-actions">
                   {actions && <CoverSheetActions>{actions}</CoverSheetActions>}
                 </div>
-                <Close onClick={onClose}>
-                  <RemoveIcon size={26} />
-                </Close>
               </Header>
               <Content>{children}</Content>
             </StyledDialog>
