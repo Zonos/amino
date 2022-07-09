@@ -56,29 +56,6 @@ const Content = styled.div`
   padding: var(--amino-space);
 `;
 
-const Close = styled.div`
-  transition: all 100ms ease-in-out;
-  background: transparent;
-  border-radius: 32px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0.8;
-
-  &:hover {
-    background: var(--amino-gray-200);
-    opacity: 1;
-  }
-
-  svg {
-    fill: var(--amino-text-color);
-    transition: all 100ms ease-in-out;
-  }
-`;
-
 export type CoverSheetProps = {
   children: React.ReactNode;
   className?: string;
