@@ -22,7 +22,7 @@ const AminoNotice = styled.div`
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
-  background: var(--amino-success);
+  background: var(--amino-green-100);
   &,
   & > * {
     color: var(--amino-success-dark);
@@ -30,7 +30,7 @@ const AminoSuccessNotice = styled(AminoNotice)`
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  background: var(--amino-red-200);
+  background: var(--amino-red-100);
   &,
   & > * {
     color: var(--amino-red-700);
@@ -115,7 +115,7 @@ export const Notice = ({
         <AminoWarningNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'yellow-100',
+              color: 'yellow-200',
               secondaryColor: 'var(--amino-yellow-600)',
             })}
           {children}
@@ -126,7 +126,7 @@ export const Notice = ({
         <AminoPrimaryNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'blue-100',
+              color: 'blue-200',
               secondaryColor: 'var(--amino-blue-500)',
             })}
           {children}
