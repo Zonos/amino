@@ -1,9 +1,14 @@
 import React from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
-import { Surface } from 'src/components/surface/Surface';
 import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
+
+const StyledCard = styled.div`
+  border: var(--amino-border);
+  border-radius: var(--amino-radius);
+  padding: var(--amino-space);
+`;
 
 const CardHeader = styled.header`
   margin: var(--amino-space-negative);
@@ -56,7 +61,7 @@ export const Card = ({
   label,
 }: CardProps) => {
   return (
-    <Surface depth="depth4" className={className || ''}>
+    <StyledCard className={className || ''}>
       {label && (
         <CardHeader>
           <Text type="subheader">{label}</Text>
@@ -71,6 +76,6 @@ export const Card = ({
           <HStack spacing="space-quarter">{footerActions}</HStack>
         </CardFooter>
       )}
-    </Surface>
+    </StyledCard>
   );
 };
