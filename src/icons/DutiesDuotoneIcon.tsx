@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const DutiesDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const DutiesDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: string }
+>(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
+      ref={ref}
       size={size}
       color={color}
       className={className}
@@ -29,4 +28,4 @@ export const DutiesDuotoneIcon = ({
       <path d="M1 17.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" fill="currentColor" />
     </IconBase>
   );
-};
+});

@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const ShoppingListDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const ShoppingListDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: string }
+>(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
+      ref={ref}
       size={size}
       color={color}
       className={className}
@@ -32,4 +31,4 @@ export const ShoppingListDuotoneIcon = ({
       />
     </IconBase>
   );
-};
+});
