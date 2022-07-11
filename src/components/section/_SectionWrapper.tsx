@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { HStack } from '../stack/HStack';
 
 const StyledSectionWrapper = styled(HStack)`
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr 2fr;
 `;
 
 export const SectioWrapper = ({
