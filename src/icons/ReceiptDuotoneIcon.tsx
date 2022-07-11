@@ -25,10 +25,12 @@ export const ReceiptDuotoneIcon = ({
         clipRule="evenodd"
         d="M9 9a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2H9Zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-7 5a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm7-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
       <path
         d="M3 4a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

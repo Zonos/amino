@@ -25,6 +25,7 @@ export const BagDuotoneIcon = ({
         clipRule="evenodd"
         d="M8 7a4 4 0 1 1 8 0v3a1 1 0 1 1-2 0V7a2 2 0 1 0-4 0v3a1 1 0 1 1-2 0V7Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );
