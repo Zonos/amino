@@ -17,7 +17,7 @@ export type StackProps = {
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const Stack = styled.div<StackProps>`
+const StyledStack = styled.div<StackProps>`
   display: grid;
   grid-auto-columns: minmax(0, 1fr);
 
@@ -25,3 +25,16 @@ export const Stack = styled.div<StackProps>`
     justify-self: ${p => p.alignment || 'unset'};
   }
 `;
+
+export const Stack = ({
+  className,
+  spacing,
+  alignment,
+  children,
+}: StackProps) => {
+  return (
+    <StyledStack className={className} spacing={spacing} alignment={alignment}>
+      {children}
+    </StyledStack>
+  );
+};
