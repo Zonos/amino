@@ -1,11 +1,8 @@
+import React, { ReactNode } from 'react';
+
 import styled, { css } from 'styled-components';
 
-export interface ListProps {
-  withBorder?: boolean;
-  withNegativeMargin?: boolean;
-}
-
-export const List = styled.section<ListProps>`
+const StyledList = styled.section<ListProps>`
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -24,3 +21,25 @@ export const List = styled.section<ListProps>`
       margin: var(--amino-space-negative);
     `}
 `;
+
+export type ListProps = {
+  className?: string;
+  withBorder?: boolean;
+  withNegativeMargin?: boolean;
+  children?: ReactNode;
+};
+
+export const List = ({
+  className,
+  withBorder,
+  withNegativeMargin,
+  children,
+}: ListProps) => (
+  <StyledList
+    className={className}
+    withBorder={withBorder}
+    withNegativeMargin={withNegativeMargin}
+  >
+    {children}
+  </StyledList>
+);
