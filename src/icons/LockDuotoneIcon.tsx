@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 
-export const LockDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const LockDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: string }
+>(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
+      ref={ref}
       size={size}
       color={color}
       className={className}
@@ -30,4 +29,4 @@ export const LockDuotoneIcon = ({
       <path d="M11 16a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Z" fill="currentColor" />
     </IconBase>
   );
-};
+});

@@ -70,20 +70,20 @@ export const createReactIconSVGs = ({
       .replace(/<\/svg>/gi, '');
 
     const component = [
-      `import React from 'react';`,
+      `import React, { forwardRef } from 'react';`,
       `import { type IconProps } from 'src/types/IconProps';`,
       `import { IconBase } from 'src/icons/icon-base/_IconBase';`,
       maskIds.length &&
         `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
       /secondaryColor/.test(fileContent)
-        ? `export const ${name.componentName} = ({ size, color, className, secondaryColor }: IconProps & {secondaryColor?: string}) => {`
-        : `export const ${name.componentName} = ({ size, color, className }: IconProps) => {`,
+        ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: string}>(({ size, color, className, secondaryColor}, ref) => {`
+        : `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps>(({ size, color, className }, ref) => {`,
       maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
-      `return (<IconBase size={size} color={color} className={className} viewBox="${viewBox}">`,
+      `return (<IconBase ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,
       svg,
       `</IconBase>`,
       `  );`,
-      `};`,
+      `});`,
     ]
       .filter(Boolean)
       .join('\n');

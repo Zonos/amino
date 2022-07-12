@@ -23,6 +23,7 @@ const Template: Story<SectionProps> = (props: SectionProps) => (
 export const BasicSection = Template.bind({});
 BasicSection.args = {
   children: 'Section contents',
+  sublabel: 'Sublabel',
   label: 'My section',
 };
 BasicSection.parameters = {
@@ -44,6 +45,7 @@ SectionWithActions.args = {
     </VStack>
   ),
   label: 'Payment',
+  sublabel: 'Sublabel',
   actions: (
     <>
       <Button size="md">Receipt</Button>
