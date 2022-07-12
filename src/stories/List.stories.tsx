@@ -58,8 +58,6 @@ PrimaryListTemplate.args = {
   withNegativeMargin: false,
 };
 
-export const Empty = () => <List />;
-
 export const OneItem = () => (
   <List>
     <ListItem label="Label" disabled={false} subtitle="subtitle" />
