@@ -20,7 +20,6 @@ const StyledButton = styled(Button)`
     background-color: transparent;
   }
   svg {
-    width: 17px;
     height: auto;
     overflow: visible;
   }
@@ -74,9 +73,9 @@ export const PasswordInput = ({
               size="md"
               icon={
                 inputType === 'password' ? (
-                  <EyeIcon size={16} />
+                  <EyeIcon size={20} />
                 ) : (
-                  <EyeOffIcon size={16} />
+                  <EyeOffIcon size={20} />
                 )
               }
               onClick={() =>
