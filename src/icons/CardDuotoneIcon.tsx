@@ -23,6 +23,7 @@ export const CardDuotoneIcon = ({
       <path
         d="M6 15a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM2 8h20v2H2V8Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

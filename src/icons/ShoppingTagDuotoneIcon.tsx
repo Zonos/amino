@@ -23,6 +23,7 @@ export const ShoppingTagDuotoneIcon = ({
       <path
         d="M15.414 18 6 8.586 4.586 10 14 19.414 15.414 18ZM17 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

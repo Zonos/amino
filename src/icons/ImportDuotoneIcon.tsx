@@ -23,6 +23,7 @@ export const ImportDuotoneIcon = ({
       <path
         d="M8.293 13.707a1 1 0 1 1 1.414-1.414L11 13.586V4a1 1 0 1 1 2 0v9.586l1.293-1.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );
