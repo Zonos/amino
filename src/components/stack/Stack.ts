@@ -8,6 +8,7 @@ export type StackProps = {
   alignment?: GridAlignment;
   spacing?: GridSpacing;
   children: React.ReactNode;
+  className?: string;
 };
 
 /**
