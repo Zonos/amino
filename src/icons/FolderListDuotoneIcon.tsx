@@ -22,6 +22,7 @@ export const FolderListDuotoneIcon = forwardRef<
       <path
         d="M10 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm3-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2Zm0 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2Zm-4 2a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

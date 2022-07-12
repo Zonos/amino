@@ -24,6 +24,7 @@ export const MinusDuotoneIcon = forwardRef<
         clipRule="evenodd"
         d="M7 12a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

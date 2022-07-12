@@ -54,7 +54,7 @@ export const createReactIconSVGs = ({
         /** @desc Replace secondary color with secondary color if found second color in the svg content */
         fileContent = fileContent.replace(
           new RegExp(`${color}`, 'gi'),
-          `{secondaryColor || ${color}}`
+          `{secondaryColor || ${color}} data-is-secondary-color="true" `
         );
       }
     });
@@ -64,8 +64,6 @@ export const createReactIconSVGs = ({
       )
       /** @desc Remove style props */
       .replace(/style="([^"]*)"/gi, '')
-      /** @desc Camecase attributes */
-      .replace(/-([a-z])/g, (m, w) => w.toUpperCase())
       /** @desc Remove <svg > */
       .replace(/<svg(.*?)>/gi, '')
       /** @desc Remove </svg > */

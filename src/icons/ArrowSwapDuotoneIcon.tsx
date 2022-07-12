@@ -22,6 +22,7 @@ export const ArrowSwapDuotoneIcon = forwardRef<
       <path
         d="M7.414 17.707A1 1 0 1 1 6 19.121l-3.707-3.707a1 1 0 0 1 0-1.414L6 10.293a1 1 0 1 1 1.414 1.414l-2 2H13a1 1 0 1 1 0 2H5.414l2 2Z"
         fill={secondaryColor || '#CACACE'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

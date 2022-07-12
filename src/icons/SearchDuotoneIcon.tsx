@@ -24,6 +24,7 @@ export const SearchDuotoneIcon = forwardRef<
       <path
         d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

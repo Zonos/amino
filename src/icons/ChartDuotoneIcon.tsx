@@ -24,6 +24,7 @@ export const ChartDuotoneIcon = forwardRef<
         clipRule="evenodd"
         d="M18 5a1 1 0 0 0-1 1v12a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1Zm-8 2a1 1 0 0 0-1 1v10a1 1 0 1 0 2 0V8a1 1 0 0 0-1-1Zm-4 6a1 1 0 0 0-1 1v4a1 1 0 1 0 2 0v-4a1 1 0 0 0-1-1Zm7-3a1 1 0 1 1 2 0v8a1 1 0 1 1-2 0v-8Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

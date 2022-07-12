@@ -24,6 +24,7 @@ export const HomeDuotoneIcon = forwardRef<
       <path
         d="M11 21H9v-5a3 3 0 1 1 6 0v5h-4Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

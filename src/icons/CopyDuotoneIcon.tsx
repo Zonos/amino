@@ -29,10 +29,12 @@ export const CopyDuotoneIcon = forwardRef<
       <path
         d="M8 4h8v2a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V4Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
       <path
         d="M8 4V3H7v1h1Zm8 0h1V3h-1v1ZM8 5h8V3H8v2Zm7-1v2h2V4h-2Zm-1 3h-4v2h4V7ZM9 6V4H7v2h2Zm1 1a1 1 0 0 1-1-1H7a3 3 0 0 0 3 3V7Zm5-1a1 1 0 0 1-1 1v2a3 3 0 0 0 3-3h-2Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
         mask={`url(#${ids[0]})`}
       />
     </IconBase>

@@ -22,6 +22,7 @@ export const LogoutDuotoneIcon = forwardRef<
       <path
         d="M7.707 14.293a1 1 0 1 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 0 1 1.414 1.414L6.414 11H15a1 1 0 1 1 0 2H6.414l1.293 1.293Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

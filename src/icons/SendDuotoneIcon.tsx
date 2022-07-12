@@ -24,6 +24,7 @@ export const SendDuotoneIcon = forwardRef<
         clipRule="evenodd"
         d="M6.175 8.434a1 1 0 0 1 1.39-.259l3.87 2.654a1 1 0 0 0 1.13 0l3.87-2.654a1 1 0 0 1 1.13 1.65l-3.868 2.654a3 3 0 0 1-3.394 0L6.434 9.825a1 1 0 0 1-.259-1.39Zm16.532 9.859a1 1 0 0 1 0 1.414l-2 2a1 1 0 0 1-1.414-1.414l.293-.293H16a1 1 0 1 1 0-2h3.586l-.293-.293a1 1 0 0 1 1.414-1.414l2 2Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

@@ -22,6 +22,7 @@ export const InfoDuotoneIcon = forwardRef<
       <path
         d="M12 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm1 5a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0v-4Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

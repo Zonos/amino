@@ -26,6 +26,7 @@ export const PercentDuotoneIcon = forwardRef<
         clipRule="evenodd"
         d="M6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

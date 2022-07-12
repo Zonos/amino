@@ -24,6 +24,7 @@ export const BookmarkSubtractDuotoneIcon = forwardRef<
         clipRule="evenodd"
         d="M9 10a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

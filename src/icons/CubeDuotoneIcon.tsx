@@ -24,6 +24,7 @@ export const CubeDuotoneIcon = forwardRef<
       <path
         d="M11.25 11.911 6.096 9.355a1 1 0 1 1 .888-1.792l5.266 2.612 5.266-2.612a1 1 0 0 1 .889 1.792l-5.155 2.556v6.586a1 1 0 1 1-2 0v-6.586Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

@@ -26,10 +26,12 @@ export const CalendarDuotoneIcon = forwardRef<
         clipRule="evenodd"
         d="M3 9h18v2H3V9Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
       <path
         d="M9 4a1 1 0 0 0-2 0v2a1 1 0 0 0 2 0V4Zm8 0a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V4Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

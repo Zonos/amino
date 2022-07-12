@@ -22,6 +22,7 @@ export const CoinsDuotoneIcon = forwardRef<
       <path
         d="M3 14.5a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"
         fill={secondaryColor || '#3D3D42'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );

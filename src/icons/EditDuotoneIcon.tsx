@@ -24,6 +24,7 @@ export const EditDuotoneIcon = forwardRef<
       <path
         d="m5.62 14.19 9.192-9.192 4.243 4.242-9.193 9.193L5.62 14.19Z"
         fill={secondaryColor || '#CACACE'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );
