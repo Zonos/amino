@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Color } from 'src/types';
 import styled, { css } from 'styled-components';
 
 const Subtitle = styled.span`
@@ -131,6 +132,7 @@ type Type = typeof textOptions[number]['type'];
 type FontWeight = typeof textOptions[number]['weight'];
 type Tag = typeof textOptions[number]['tag'];
 type TypographyOverrides = {
+  color?: Color;
   fontSize?: Size;
   fontWeight?: FontWeight;
   lineHeight?: Size;
@@ -141,6 +143,11 @@ const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
   font-weight: ${p => p.fontWeight};
   line-height: ${p => `var(--amino-line-height-${p.lineHeight || p.size})`};
   margin: 0;
+  ${p =>
+    p.color &&
+    css`
+      color: var(--amino-${p.color});
+    `}
   ${p =>
     p.isUppercase &&
     css`
@@ -160,6 +167,7 @@ export type TextProps = {
 export const Text: React.FC<TextProps> = ({
   children,
   className,
+  color,
   fontSize,
   fontWeight,
   isUppercase,
@@ -181,6 +189,7 @@ export const Text: React.FC<TextProps> = ({
   }) => (
     <Typography
       as={as}
+      color={color}
       className={className}
       fontSize={fontSize}
       fontWeight={_fontWeight}

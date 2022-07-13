@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { VStack } from 'src/components/stack/VStack';
-import { Text, textOptions } from 'src/components/text/Text';
+import { Text, textOptions, TextProps } from 'src/components/text/Text';
 import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
@@ -25,12 +25,20 @@ const Label = styled.div`
 
 const content = 'The quick brown fox jumps over the lazy';
 
-const Typography = () => {
+const StyleMeta: Meta = {
+  title: 'Amino/Typography',
+};
+
+export default StyleMeta;
+
+const Template: Story<TextProps> = props => {
   return (
     <VStack spacing="space-quarter">
       {textOptions.map(option => (
         <StyledVStack key={option.type}>
-          <Text type={option.type}>{content}</Text>
+          <Text type={option.type} {...props}>
+            {content}
+          </Text>
           <Label>{option.label}</Label>
           <div>{`<Text type="${option.type}">${content}</Text>`}</div>
           <div>
@@ -44,12 +52,21 @@ const Typography = () => {
   );
 };
 
-const StyleMeta: Meta = {
-  title: 'Amino/Typography',
-};
-
-export default StyleMeta;
-
-const TypographyTemplate: Story = () => <Typography />;
-
-export const TextExample = TypographyTemplate.bind({});
+export const TextExample = Template.bind({});
+TextExample.args = {};
+export const TextBlue = Template.bind({});
+TextBlue.args = { color: 'blue-base' };
+export const TextCyan = Template.bind({});
+TextCyan.args = { color: 'cyan-base' };
+export const TextGray = Template.bind({});
+TextGray.args = { color: 'gray-base' };
+export const TextGreen = Template.bind({});
+TextGreen.args = { color: 'green-base' };
+export const TextOrange = Template.bind({});
+TextOrange.args = { color: 'orange-base' };
+export const TextPurple = Template.bind({});
+TextPurple.args = { color: 'purple-base' };
+export const TextRed = Template.bind({});
+TextRed.args = { color: 'red-base' };
+export const TextYellow = Template.bind({});
+TextYellow.args = { color: 'yellow-base' };

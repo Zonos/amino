@@ -50,9 +50,9 @@ Danger.args = dangerArgs;
 
 export const Colored = Template.bind({});
 const coloredArgs: RoundedIconProps = {
-  background: 'gray-900',
+  background: 'gray-d80',
   children: <ReportsIcon />,
-  color: 'purple-400',
+  color: 'purple-l40',
   intent: 'secondary',
 };
 Colored.args = coloredArgs;
