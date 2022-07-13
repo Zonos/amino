@@ -81,9 +81,9 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   font-size: var(--amino-text-base);
   line-height: var(--amino-text-base);
   transform-origin: left top;
-  left: var(--amino-space-half);
+  left: calc(var(--amino-space-half) - 2px);
   .has-icon & {
-    left: calc(var(--amino-space-double) + 6px);
+    left: calc(var(--amino-space-double) + 2px);
   }
   top: calc(50% - var(--amino-text-base) / 2);
   .has-label & {
