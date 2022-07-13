@@ -616,6 +616,7 @@ import "./components/input/SearchInput";
 import "./components/layout/Layout";
 import "./components/layout/NavigationGroup";
 import "./components/list-item/ListItem";
+import "./components/list/CollapsableList";
 import "./components/list/List";
 import "./components/menu/Menu";
 import "./components/menu/MenuItem";

@@ -88,6 +88,12 @@ const AminoInput = styled.input<TypeInput>`
   &.has-label {
     padding: var(--amino-space) 4px var(--amino-space-quarter)
       var(--amino-space-half);
+    &.has-input-prefix {
+      padding-left: 0;
+      & + ${StyledLabelInput}::before {
+        margin-left: 0;
+      }
+    }
   }
   &:not(.has-label) {
     ::placeholder {
@@ -266,6 +272,7 @@ export const FloatLabelInput = forwardRef<
             error && error.length ? 'has-error' : '',
             label ? 'has-label' : '',
             hasValue ? 'has-content' : '',
+            prefix ? 'has-input-prefix' : '',
             valuePrefix ? 'has-value-prefix' : '',
           ].join(' ')}
           hasPrefix={!!prefix}
