@@ -10,17 +10,17 @@ export const colorPrefixes = [
 ] as const;
 
 export const colorContrasts = [
-  { label: 'L80', value: 'l80' },
-  { label: 'L60', value: 'l60' },
-  { label: 'L40', value: 'l40' },
-  { label: 'L20', value: 'l20' },
-  { label: 'Base', value: 'base' },
-  { label: 'D20', value: 'd20' },
-  { label: 'D40', value: 'd40' },
-  { label: 'D60', value: 'd60' },
-  { label: 'D80', value: 'd80' },
+  'l80',
+  'l60',
+  'l40',
+  'l20',
+  'base',
+  'd20',
+  'd40',
+  'd60',
+  'd80',
 ] as const;
 
-type ColorContrast = typeof colorContrasts[number]['value'];
+type ColorContrast = typeof colorContrasts[number];
 type ColorPrefix = typeof colorPrefixes[number];
 export type Color = `${ColorPrefix}-${ColorContrast}`;

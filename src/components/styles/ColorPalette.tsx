@@ -4,6 +4,10 @@ import { HStack } from 'src/components/stack/HStack';
 import { Color, colorContrasts, colorPrefixes } from 'src/types/Color';
 import styled from 'styled-components';
 
+const StyledDiv = styled.div`
+  text-transform: capitalize;
+`;
+
 const StyledWrapper = styled.div`
   margin-bottom: var(--amino-space);
 
@@ -28,7 +32,7 @@ export const ColorPalette = () => (
       <StyledWrapper key={color}>
         <p>{color.toUpperCase()}</p>
         <HStack spacing="none">
-          {colorContrasts.map(({ label, value }) => {
+          {colorContrasts.map(value => {
             const aminoColor: AminoColor = `--amino-${color}-${value}`;
             return (
               <div key={aminoColor}>
@@ -38,7 +42,7 @@ export const ColorPalette = () => (
                 >
                   var({aminoColor})
                 </StyledColorIntensity>
-                <div>{label}</div>
+                <StyledDiv>{value}</StyledDiv>
               </div>
             );
           })}
