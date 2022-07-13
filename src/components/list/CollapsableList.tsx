@@ -45,7 +45,7 @@ const StyledList = styled(List)<ListProps>`
     withNegativeMargin &&
     css`
       margin: var(--amino-space-negative);
-    `} /** Collapsable List item */
+    `}
 `;
 
 export type CollapsableListProps = ListProps & {
