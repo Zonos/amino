@@ -134,6 +134,15 @@ export const Notice = ({
       );
     case 'info':
     default:
-      return <AminoNotice className={className}>{children}</AminoNotice>;
+      return (
+        <AminoNotice className={className}>
+          {!!onClose &&
+            renderCloseButton({
+              color: 'gray-200',
+              secondaryColor: 'var(--amino-gray-500)',
+            })}
+          {children}
+        </AminoNotice>
+      );
   }
 };
