@@ -17,7 +17,7 @@ const Template: Story<NoticeProps> = ({ intent, children }: NoticeProps) => {
   const [open, setOpen] = useState(true);
   return (
     <>
-      <Button onClick={() => (!open ? setOpen(true) : setOpen(false))}>
+      <Button onClick={() => setOpen(!open)}>
         Toggle Notice
       </Button>
       <br />
