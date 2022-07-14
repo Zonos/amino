@@ -125,7 +125,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
         top: 6px;
       }
     `}
-  
+
   ${({ $size }) =>
     $size === 'lg' &&
     css`
@@ -134,7 +134,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
         top: 10px;
       }
     `}
-  
+
   ${({ $size }) =>
     $size === 'xl' &&
     css`
@@ -341,7 +341,7 @@ export const CheckboxOptionComponent = <
             <IconLabel color={color} icon={data.icon}>
               {children}
             </IconLabel>
-            {isSelected && <CheckCircleSolidIcon color="blue-500" size={16} />}
+            {isSelected && <CheckCircleSolidIcon color="blue-base" size={16} />}
           </SelectedSingleOptionWrapper>
         )}
       </StyledSelectOptionWrapper>
