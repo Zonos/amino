@@ -67,7 +67,9 @@ export const CollapsableList = ({
   const [expand, setExpand] = useState(false);
   useEffect(() => {
     /* Trigger expand on collapse component when dom is ready to avoid getting wrong height */
-    setExpand(!!isExpand);
+    if (isExpand) {
+      setTimeout(() => setExpand(!!isExpand), 50);
+    }
   }, [isExpand]);
   return (
     <StyledList
