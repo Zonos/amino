@@ -23,4 +23,4 @@ export const colorContrasts = [
 
 type ColorContrast = typeof colorContrasts[number];
 type ColorPrefix = typeof colorPrefixes[number];
-export type Color = `${ColorPrefix}-${ColorContrast}`;
+export type Color = `${ColorPrefix}-${ColorContrast}` | 'black';
