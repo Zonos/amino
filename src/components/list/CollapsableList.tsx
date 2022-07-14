@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
@@ -64,7 +64,11 @@ export const CollapsableList = ({
   withBorder,
   withNegativeMargin,
 }: CollapsableListProps) => {
-  const [expand, setExpand] = useState(isExpand);
+  const [expand, setExpand] = useState(false);
+  useEffect(() => {
+    /* Trigger expand on collapse component when dom is ready to avoid getting wrong height */
+    setExpand(!!isExpand);
+  }, [isExpand]);
   return (
     <StyledList
       className={className}
