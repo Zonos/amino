@@ -29,6 +29,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   outline: none;
   height: ${p => `var(--amino-size-${p.size})`};
   line-height: ${p => `var(--amino-size-${p.size})`};
+  font-size: 14px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -41,6 +42,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   user-select: none;
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
+  cursor: pointer;
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
@@ -213,9 +215,26 @@ const Subtle = styled(AminoButton)`
 `;
 
 const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  height: 16px;
-  line-height: 14px;
+  color: var(--amino-gray-d40);
+  height: 20px;
+  line-height: 20px;
   padding: 0;
+
+  &[disabled] {
+    color: var(--amino-gray-l20);
+    &:not(.loading) {
+      opacity: inherit;
+    }
+    &:active,
+    &:focus {
+      color: var(--amino-gray-l20);
+    }
+  }
+
+  &:active,
+  &:focus {
+    color: var(--amino-black);
+  }
 
   &.loading {
     color: transparent;
