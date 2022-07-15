@@ -14,6 +14,7 @@ const StyledCollapse = styled(Collapse)<{ $hasIcon: boolean }>`
     css`
       .___icon-wrapper {
         width: 32px;
+        display: inline-block;
       }
     `}
 `;

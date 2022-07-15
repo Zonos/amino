@@ -19,6 +19,13 @@ const AminoListItem = styled.div<AminoListItemProps>`
   border-radius: var(--amino-radius-lg);
   line-height: 16px;
 
+  .___icon-wrapper {
+    display: none;
+    &.has-icon {
+      display: inline-block;
+    }
+  }
+
   ${({ selected, disabled }) =>
     !disabled &&
     selected &&
@@ -120,7 +127,12 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
         onClick={e => !disabled && onClick && onClick(e)}
         ref={ref}
       >
-        <div className="___icon-wrapper">
+        <div
+          className={[
+            '___icon-wrapper',
+            icon || iconComponent || decorator ? 'has-icon' : '',
+          ].join(' ')}
+        >
           {decorator}
           <ListIcon
             label={typeof label === 'string' ? label : ''}
