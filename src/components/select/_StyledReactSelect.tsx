@@ -19,7 +19,7 @@ import {
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
-import { ChevronDownSolidIcon } from 'src/icons/ChevronDownSolidIcon';
+import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { Size } from 'src/types/Size';
@@ -62,7 +62,7 @@ const DropdownIndicator = <
 ) => {
   return (
     <RScomponents.DropdownIndicator {...props}>
-      <ChevronDownSolidIcon size={20} />
+      <DoubleChevronIcon size={20} />
     </RScomponents.DropdownIndicator>
   );
 };

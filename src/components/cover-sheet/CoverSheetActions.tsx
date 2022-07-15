@@ -5,15 +5,15 @@ import { HStack } from 'src/components/stack/HStack';
 import styled from 'styled-components';
 
 const Actions = styled.div`
-  margin-right: var(--amino-space);
   z-index: 990;
 `;
 
 export type CoverSheetProps = {
+  className?: string;
   children: React.ReactNode;
 };
 
-export const CoverSheetActions = ({ children }: CoverSheetProps) => {
+export const CoverSheetActions = ({ className, children }: CoverSheetProps) => {
   const [coverSheetReady, setCoverSheetReady] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const CoverSheetActions = ({ children }: CoverSheetProps) => {
     const div = document.querySelector('#cover-sheet-actions');
     if (div) {
       return createPortal(
-        <Actions>
+        <Actions className={className}>
           <HStack>{children}</HStack>
         </Actions>,
         div
