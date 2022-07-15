@@ -10,7 +10,7 @@ import { SectioWrapper } from './_SectionWrapper';
 const SectionHeader = styled.header<{ $layout: SectionLayout }>`
   display: flex;
   align-items: center;
-  margin-bottom: var(--amino-space-double);
+  margin-bottom: var(--amino-space);
   ${({ $layout }) =>
     $layout === 'horizontal' &&
     css`
