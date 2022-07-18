@@ -31,7 +31,7 @@ const PrimaryCollapsableListTemplate: Story<CollapsableListProps> = ({
   };
   return (
     <CollapsableList
-      isExpand
+      expandOnRender
       icon={
         <svg
           width="32"
