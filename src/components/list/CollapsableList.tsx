@@ -52,14 +52,14 @@ const StyledList = styled(List)<ListProps>`
 export type CollapsableListProps = ListProps & {
   icon?: ReactNode;
   title: ReactNode;
-  isExpand?: boolean;
+  expandOnRender?: boolean;
 };
 
 export const CollapsableList = ({
   className,
   /** @description list of ListItem are recommended to pass in */
   children,
-  isExpand,
+  expandOnRender,
   icon,
   title,
   withBorder,
@@ -68,10 +68,10 @@ export const CollapsableList = ({
   const [expand, setExpand] = useState(false);
   useEffect(() => {
     /* Trigger expand on collapse component when dom is ready to avoid getting wrong height */
-    if (isExpand) {
-      setTimeout(() => setExpand(!!isExpand), 50);
+    if (expandOnRender) {
+      setTimeout(() => setExpand(!!expandOnRender), 200);
     }
-  }, [isExpand]);
+  }, [expandOnRender]);
   return (
     <StyledList
       className={className}
