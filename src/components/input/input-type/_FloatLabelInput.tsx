@@ -85,6 +85,13 @@ const AminoInput = styled.input<TypeInput>`
   border: 0;
   order: 2;
   font-weight: 500;
+
+  :-internal-autofill-selected {
+    border-radius: var(--amino-radius) 0 0 var(--amino-radius);
+    && + label + div {
+      background-color: #e8f0fe;
+    }
+  }
   &.has-label {
     padding: var(--amino-space) 4px var(--amino-space-quarter)
       var(--amino-space-half);
