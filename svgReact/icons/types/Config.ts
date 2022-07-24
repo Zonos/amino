@@ -13,7 +13,7 @@ export type FileConfig = {
    * @desc Input path that all generated file located
    * @example svgReact/icons/dist
    */
-  inputFolderPath: `svgReact/icons${string}` | `src/icons${string}`;
+  inputFolderPath: `svgReact/icons/dist${string}` | `src/icons${string}`;
   /** @desc Text on the top of index file to separate 2 contents */
   titleComment?: string;
 };
