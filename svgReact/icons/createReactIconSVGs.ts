@@ -1,5 +1,6 @@
 import fs from 'fs';
 
+import { getColorVariables } from './getColorVariables';
 import { GenerateIconType } from './types/TypeGenerateIcon';
 
 const addWrapper = (id: string) => `{\`${id}\`}`;
@@ -39,26 +40,9 @@ export const createReactIconSVGs = ({
     });
 
     /** @desc Process color */
-    const fillPropMatches = fileContent.matchAll(
-      /<path.*?fill=(".*?").*?\/>/gm
-    );
-    const [...fillColors] = Array.from(fillPropMatches);
-    fillColors.forEach(([, color]) => {
-      /** @desc Replace first color with currentColor if currentColor not found in the svg content */
-      if (!/currentColor/g.test(fileContent)) {
-        fileContent = fileContent.replace(
-          new RegExp(`${color}`, 'gi'),
-          '"currentColor"'
-        );
-      } else if (!/secondaryColor/g.test(fileContent)) {
-        /** @desc Replace secondary color with secondary color if found second color in the svg content */
-        fileContent = fileContent.replace(
-          new RegExp(`${color}`, 'gi'),
-          `{secondaryColor || ${color}} data-is-secondary-color="true" `
-        );
-      }
-    });
-    const svg = fileContent
+    const colorVariableContent = getColorVariables(fileContent);
+
+    const svg = colorVariableContent
       .replace(/(?!\w):\w/g, attribute =>
         attribute.replace(':', '').toUpperCase()
       )
@@ -75,7 +59,7 @@ export const createReactIconSVGs = ({
       `import { IconBase } from 'src/icons/icon-base/_IconBase';`,
       maskIds.length &&
         `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
-      /secondaryColor/.test(fileContent)
+      /secondaryColor/.test(colorVariableContent)
         ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: string}>(({ size, color, className, secondaryColor}, ref) => {`
         : `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps>(({ size, color, className }, ref) => {`,
       maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,

@@ -17,12 +17,12 @@ export const InfoDuotoneIcon = forwardRef<
     >
       <path
         d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
-        fill="currentColor"
+        fill={secondaryColor || '#CACACE'}
+        data-is-secondary-color="true"
       />
       <path
         d="M12 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm1 5a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0v-4Z"
-        fill={secondaryColor || '#3D3D42'}
-        data-is-secondary-color="true"
+        fill="currentColor"
       />
     </IconBase>
   );

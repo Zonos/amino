@@ -17,14 +17,14 @@ export const MinusDuotoneIcon = forwardRef<
     >
       <path
         d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
-        fill="currentColor"
+        fill={secondaryColor || '#CACACE'}
+        data-is-secondary-color="true"
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M7 12a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
-        fill={secondaryColor || '#3D3D42'}
-        data-is-secondary-color="true"
+        fill="currentColor"
       />
     </IconBase>
   );
