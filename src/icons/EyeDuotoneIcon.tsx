@@ -18,7 +18,7 @@ export const EyeDuotoneIcon = forwardRef<
     >
       <path
         d="M12 4c-6.108 0-8.86 4.788-9.73 6.74a3.088 3.088 0 0 0 0 2.52C3.14 15.212 5.892 20 12 20c6.11 0 8.861-4.788 9.73-6.74a3.088 3.088 0 0 0 0-2.52C20.861 8.788 18.11 4 12 4Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

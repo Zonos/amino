@@ -22,7 +22,7 @@ export const CodeDuotoneIcon = forwardRef<
       />
       <path
         d="M14.465 4.423a1 1 0 0 0-1.268.626L8.703 18.31a1 1 0 0 0 1.894.641l4.494-13.259a1 1 0 0 0-.626-1.268Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
     </IconBase>

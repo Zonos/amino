@@ -18,7 +18,7 @@ export const TrashCanDuotoneIcon = forwardRef<
     >
       <path
         d="M19 8H5v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

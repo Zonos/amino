@@ -18,7 +18,7 @@ export const LocationDuotoneIcon = forwardRef<
     >
       <path
         d="M12 2a9 9 0 0 0-9 9c0 3.026 1.81 5.592 3.895 7.399l3.441 2.983a2.54 2.54 0 0 0 3.328 0l3.44-2.983C19.19 16.592 21 14.026 21 11a9 9 0 0 0-9-9Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" fill="currentColor" />

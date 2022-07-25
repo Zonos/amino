@@ -18,7 +18,7 @@ export const BoxesDuotoneIcon = forwardRef<
     >
       <path
         d="M10 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4ZM3 14a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4Zm10 0a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

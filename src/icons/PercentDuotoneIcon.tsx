@@ -20,7 +20,7 @@ export const PercentDuotoneIcon = forwardRef<
         fillRule="evenodd"
         clipRule="evenodd"
         d="M18.6 3.2a1 1 0 0 1 .2 1.4l-12 16a1 1 0 1 1-1.6-1.2l12-16a1 1 0 0 1 1.4-.2Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

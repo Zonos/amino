@@ -24,7 +24,7 @@ export const TruckDuotoneIcon = forwardRef<
       />
       <path
         d="M5 4a3 3 0 0 0-3 3v8c0 1.354.897 2.498 2.129 2.872a3 3 0 1 1 5.7.128H13V7a3 3 0 0 0-3-3H5Z"
-        fill={secondaryColor || '#C9C9CD'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#C9C9CD'}
         data-is-secondary-color="true"
       />
     </IconBase>

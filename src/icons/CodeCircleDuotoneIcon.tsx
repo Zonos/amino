@@ -20,7 +20,7 @@ export const CodeCircleDuotoneIcon = forwardRef<
         fillRule="evenodd"
         clipRule="evenodd"
         d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

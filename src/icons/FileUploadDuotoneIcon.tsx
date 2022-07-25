@@ -18,7 +18,7 @@ export const FileUploadDuotoneIcon = forwardRef<
     >
       <path
         d="M4 6.8c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311C6.28 2 7.12 2 8.8 2h5.874c.49 0 .734 0 .965.055.204.05.399.13.578.24.201.123.374.296.72.642l2.126 2.126c.346.346.519.519.642.72.11.18.19.374.24.579.055.23.055.474.055.963V17.2c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C17.72 22 16.88 22 15.2 22H8.8c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C4 19.72 4 18.88 4 17.2V6.8Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path
