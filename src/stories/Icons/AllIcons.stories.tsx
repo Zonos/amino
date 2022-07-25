@@ -33,11 +33,6 @@ const StyledIcon = styled.div<{ size?: number }>`
   svg {
     color: var(--amino-gray-700);
   }
-  &.duotone {
-    svg {
-      color: var(--amino-gray-300);
-    }
-  }
   &.deprecated {
     div {
       text-decoration: line-through;
@@ -46,18 +41,22 @@ const StyledIcon = styled.div<{ size?: number }>`
 `;
 
 // Check if string contain keyword of the sub icon type or not
-type IconsType = typeof icons[keyof typeof icons] & { deprecated?: boolean };
+type IconsType = typeof icons[keyof typeof icons] & {
+  deprecated?: boolean;
+  displayName?: string;
+};
 
 export const AllIcons = ({ size }: IconProps) => {
   const [filter, setFilter] = useState('');
   const iicons = Object.values<IconsType>(icons)
-    .map(icon => ({
-      icon,
-      iconName: icon.name,
-      deprecated: !!icon.deprecated,
-    }))
+    .map(icon => {
+      return {
+        icon,
+        iconName: icon.displayName || '',
+        deprecated: !!icon.deprecated,
+      };
+    })
     .filter(icon => icon.iconName);
-
   return (
     <VStack>
       <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
