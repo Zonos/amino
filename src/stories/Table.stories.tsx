@@ -1,24 +1,24 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Badge } from 'src/components/badge/Badge';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Table, TableProps } from 'src/components/table/Table';
 import { TableBody } from 'src/components/table/TableBody';
 import { TableCell } from 'src/components/table/TableCell';
+import { TableFooter } from 'src/components/table/TableFooter';
 import { TableHead } from 'src/components/table/TableHead';
 import { TableRow } from 'src/components/table/TableRow';
 import { TableRowCollapse } from 'src/components/table/TableRowCollapse';
 import { Text } from 'src/components/text/Text';
 import { ClassifyIcon } from 'src/icons/ClassifyIcon';
+import { CoinsDuotoneIcon } from 'src/icons/CoinsDuotoneIcon';
 import { ImageDuotoneIcon } from 'src/icons/ImageDuotoneIcon';
 import { ImportDuotoneIcon } from 'src/icons/ImportDuotoneIcon';
+import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 import styled from 'styled-components';
-import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
-import { Badge } from 'src/components/badge/Badge';
-import { CoinsDuotoneIcon } from 'src/icons/CoinsDuotoneIcon';
-import { TableFooter } from 'src/components/table/TableFooter';
 
 const StyledTable = styled(Table)`
   max-width: 1080px;

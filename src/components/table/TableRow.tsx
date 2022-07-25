@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
 
-import styled from 'styled-components';
-
 export type TableRowProps = {
   children: ReactNode;
   className?: string;

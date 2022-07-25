@@ -18,7 +18,7 @@ const defaultPadding = css`
   }
 `;
 
-const padding = css<StyledProps>`
+const paddingCss = css<StyledProps>`
   ${p =>
     p.padding
       ? css`
@@ -38,7 +38,7 @@ const StyledTableCell = styled.td<StyledProps>`
   .Amino-table-size-small & {
     height: 48px;
   }
-  ${padding}
+  ${paddingCss}
 `;
 
 const InlineWrapper = styled.div<StyledProps>`
