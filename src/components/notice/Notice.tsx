@@ -17,7 +17,7 @@ const AminoNotice = styled.div`
 
   &,
   & > * {
-    font-weight: base;
+    font-weight: 500;
   }
 `;
 
