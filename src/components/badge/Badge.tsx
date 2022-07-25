@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
+import { FontWeight } from '../text/Text';
+
 type ColorList =
   | 'blue'
   | 'cyan'
@@ -18,6 +20,7 @@ export interface BadgeProps {
   children?: ReactNode | string;
   className?: string;
   color?: ColorList;
+  fontWeight?: FontWeight;
   icon?: ReactNode;
   iconRight?: boolean;
   bold?: boolean;
@@ -32,10 +35,8 @@ const StyledBadge = styled.div<BadgeProps>`
   display: flex;
   gap: var(--amino-space-quarter);
   font-size: var(--amino-text-sm);
-  font-weight: normal;
   padding: 3px var(--amino-space-half);
   text-align: center;
-  font-weight: 500;
   border-radius: ${({ rounded }) => (rounded ? 'var(--amino-radius)' : '20px')};
   // default background color (gray)
   background-color: var(--amino-gray-200);
@@ -44,7 +45,7 @@ const StyledBadge = styled.div<BadgeProps>`
 
   p {
     margin: 0;
-    font-weight: 700;
+    font-weight: ${p => p.fontWeight || '700'};
   }
   svg {
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
@@ -142,6 +143,7 @@ export const Badge = ({
   children,
   className,
   color,
+  fontWeight,
   icon,
   iconRight,
   bold,
@@ -153,6 +155,7 @@ export const Badge = ({
       <StyledBadge
         rounded={!!rounded}
         bold={!!bold}
+        fontWeight={fontWeight}
         iconRight={iconRight}
         color={color}
         size={size}

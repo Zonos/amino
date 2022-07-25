@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
 import * as icons from '../IconIndex';
@@ -12,7 +13,7 @@ export type DynamicIconProps = IconProps & {
   /**
    * Only apply to the icon has secondary color (Duotone)
    * */
-  secondaryColor?: string;
+  secondaryColor?: Color;
 } & {
   type: DynamicIconType;
 };
