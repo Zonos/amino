@@ -9,7 +9,7 @@ import {
   NavigationItem,
 } from 'src/components/layout/NavigationGroup';
 import { HStack } from 'src/components/stack/HStack';
-import { ZonosIcon } from 'src/icons/ZonosIcon';
+import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
 import styled from 'styled-components';
 
 import { NavigationGroupExample as NavigationGroupStory } from './NavigationGroup.stories';

@@ -1,27 +1,48 @@
 import fs from 'fs';
 
-export const createIndexFile = (folderPath: string) => {
-  const newIconNames = fs.readdirSync(folderPath);
-  const legacyIconNames = fs.readdirSync(`src/icons/legacy`);
-  const legacyContent = legacyIconNames
-    .filter(name => !name.includes('index'))
-    .flatMap(name => {
-      const [componentName] = name.split('.');
-      return `export { ${componentName} } from './legacy/${componentName}';`;
-    })
-    .join('\n');
-  const content = newIconNames
-    .filter(name => !name.includes('index'))
-    .flatMap(name => {
-      const [componentName] = name.split('.');
-      return `export { ${componentName} } from './${componentName}';`;
-    })
-    .join('\n');
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath);
+import { GenerateIndexContentType } from './config/path';
+
+const generateContent = ({
+  inputFolderPath,
+  destFolder,
+  titleComment,
+}: GenerateIndexContentType) => {
+  const iconNames = fs
+    .readdirSync(inputFolderPath)
+    .filter(name => !/index/i.test(name) && name.includes('.'));
+  if (!iconNames.length) {
+    return '';
   }
-  fs.writeFileSync(
-    `${folderPath}/IconIndex.ts`,
-    `${content}\n${legacyContent}`
-  );
+  if (!fs.existsSync(destFolder)) {
+    // generate destination folder
+    fs.mkdirSync(destFolder);
+  }
+  return [
+    titleComment ? `/** ${titleComment} */` : null,
+    iconNames
+      .flatMap(name => {
+        const [componentName] = name.split('.');
+        const pathImport = destFolder.replace(/\/?src\/icons/, '');
+        return `export { ${componentName} } from '.${pathImport}/${componentName}';`;
+      })
+      .join('\n'),
+  ]
+    .filter(Boolean)
+    .join('\n');
+};
+
+export const createIndexFile = ({
+  generatePath,
+  target,
+}: {
+  generatePath: GenerateIndexContentType[];
+  /**
+   * @desc location to save the file
+   * @example svgReact/icons/dist
+   * */
+  target: string;
+}) => {
+  const mergedContent = generatePath.map(generateContent).join('\n');
+
+  fs.writeFileSync(`${target}/IconIndex.ts`, mergedContent);
 };
