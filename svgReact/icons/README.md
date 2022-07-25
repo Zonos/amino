@@ -23,7 +23,7 @@ Currently, there are 3 type of icon sources:
 3. Put downloaded svgs or folder of svgs at `svgReact/icons/${FOLDER_NAME}`  
   
     **NOTE**: 
-    - Under `${FOLDER_NAME}`, if there is folder with svgs, folder name will be component name and svg under that folder will be type.  
+    - Under `${FOLDER_NAME}`, if there is folder with svgs, folder name will be component name and svg under that folder will be concatenated with folder name.  
     **Ex**: Folder `Arrow Down` and svg file inside is `Solid.svg`   
     => This will generate a component with name `ArrowDownSolidIcon.tsx`  
 
