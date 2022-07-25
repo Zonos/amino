@@ -2,11 +2,12 @@ import React, { forwardRef } from 'react';
 
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
 export const CopyDuotoneIcon = forwardRef<
   SVGSVGElement,
-  IconProps & { secondaryColor?: string }
+  IconProps & { secondaryColor?: Color }
 >(({ size, color, className, secondaryColor }, ref) => {
   const ids = useStableUniqueId(1);
   return (

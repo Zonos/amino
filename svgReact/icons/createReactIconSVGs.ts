@@ -53,14 +53,16 @@ export const createReactIconSVGs = ({
       /** @desc Remove </svg > */
       .replace(/<\/svg>/gi, '');
 
+    const hasSecondaryColor = /secondaryColor/.test(colorVariableContent);
     const component = [
       `import React, { forwardRef } from 'react';`,
       `import { type IconProps } from 'src/types/IconProps';`,
+      hasSecondaryColor && `import { Color } from 'src/types';`,
       `import { IconBase } from 'src/icons/icon-base/_IconBase';`,
       maskIds.length &&
         `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
-      /secondaryColor/.test(colorVariableContent)
-        ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: string}>(({ size, color, className, secondaryColor}, ref) => {`
+      hasSecondaryColor
+        ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: Color}>(({ size, color, className, secondaryColor}, ref) => {`
         : `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps>(({ size, color, className }, ref) => {`,
       maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
       `return (<IconBase ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,

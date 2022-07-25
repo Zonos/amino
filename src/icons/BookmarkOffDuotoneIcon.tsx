@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
 export const BookmarkOffDuotoneIcon = forwardRef<
   SVGSVGElement,
-  IconProps & { secondaryColor?: string }
+  IconProps & { secondaryColor?: Color }
 >(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
