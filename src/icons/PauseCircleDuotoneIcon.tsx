@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
 export const PauseCircleDuotoneIcon = forwardRef<
   SVGSVGElement,
-  IconProps & { secondaryColor?: string }
+  IconProps & { secondaryColor?: Color }
 >(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
@@ -17,7 +18,7 @@ export const PauseCircleDuotoneIcon = forwardRef<
     >
       <path
         d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

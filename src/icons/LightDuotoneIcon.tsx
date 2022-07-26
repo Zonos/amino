@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
 export const LightDuotoneIcon = forwardRef<
   SVGSVGElement,
-  IconProps & { secondaryColor?: string }
+  IconProps & { secondaryColor?: Color }
 >(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
@@ -17,7 +18,7 @@ export const LightDuotoneIcon = forwardRef<
     >
       <path
         d="M16 16.93a8 8 0 1 0-8 0V18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1.07Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
         data-is-secondary-color="true"
       />
       <path

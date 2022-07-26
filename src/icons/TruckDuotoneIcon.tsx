@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
 export const TruckDuotoneIcon = forwardRef<
   SVGSVGElement,
-  IconProps & { secondaryColor?: string }
+  IconProps & { secondaryColor?: Color }
 >(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
@@ -23,7 +24,7 @@ export const TruckDuotoneIcon = forwardRef<
       />
       <path
         d="M5 4a3 3 0 0 0-3 3v8c0 1.354.897 2.498 2.129 2.872a3 3 0 1 1 5.7.128H13V7a3 3 0 0 0-3-3H5Z"
-        fill={secondaryColor || '#C9C9CD'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#C9C9CD'}
         data-is-secondary-color="true"
       />
     </IconBase>

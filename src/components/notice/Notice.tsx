@@ -33,7 +33,7 @@ const AminoErrorNotice = styled(AminoNotice)`
   background: var(--amino-red-100);
   &,
   & > * {
-    color: var(--amino-red-700);
+    color: var(--amino-red-d60);
   }
 `;
 
@@ -49,7 +49,7 @@ const AminoPrimaryNotice = styled(AminoNotice)`
   background: var(--amino-blue-100);
   &,
   & > * {
-    color: var(--amino-blue-500);
+    color: var(--amino-blue-base);
   }
 `;
 
@@ -71,7 +71,7 @@ export const Notice = ({
     secondaryColor,
   }: {
     color: Color;
-    secondaryColor: string;
+    secondaryColor: Color;
   }) => {
     return (
       <Button
@@ -94,7 +94,7 @@ export const Notice = ({
           {!!onClose &&
             renderCloseButton({
               color: 'green-l60',
-              secondaryColor: 'var(--amino-green-600)',
+              secondaryColor: 'green-d40',
             })}
           {children}
         </AminoSuccessNotice>
@@ -105,7 +105,7 @@ export const Notice = ({
           {!!onClose &&
             renderCloseButton({
               color: 'red-l60',
-              secondaryColor: 'var(--amino-red-700)',
+              secondaryColor: 'red-d60',
             })}
           {children}
         </AminoErrorNotice>
@@ -116,7 +116,7 @@ export const Notice = ({
           {!!onClose &&
             renderCloseButton({
               color: 'yellow-l60',
-              secondaryColor: 'var(--amino-yellow-600)',
+              secondaryColor: 'yellow-d40',
             })}
           {children}
         </AminoWarningNotice>
@@ -127,7 +127,7 @@ export const Notice = ({
           {!!onClose &&
             renderCloseButton({
               color: 'blue-l60',
-              secondaryColor: 'var(--amino-blue-500)',
+              secondaryColor: 'blue-base',
             })}
           {children}
         </AminoPrimaryNotice>
@@ -139,7 +139,7 @@ export const Notice = ({
           {!!onClose &&
             renderCloseButton({
               color: 'gray-l60',
-              secondaryColor: 'var(--amino-gray-500)',
+              secondaryColor: 'gray-base',
             })}
           {children}
         </AminoNotice>
