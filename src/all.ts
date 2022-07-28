@@ -604,6 +604,8 @@ import "./components/confirm-dialog/ConfirmDialog";
 import "./components/confirm-dialog/useConfirm";
 import "./components/cover-sheet/CoverSheet";
 import "./components/cover-sheet/CoverSheetActions";
+import "./components/currency/Currency";
+import "./components/currency/DualCurrency";
 import "./components/danger-zone/DangerZone";
 import "./components/dark-mode-wrapper/DarkModeWrapper";
 import "./components/dialog/Dialog";
