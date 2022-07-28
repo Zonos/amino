@@ -23,18 +23,20 @@
   --amino-text-base: var(--amino-font-size-base);
   --amino-text-sm: var(--amino-font-size-s);
   --amino-text-xs: var(--amino-font-size-xs);
-  --amino-space: 1.563em;
-  --amino-space-negative: -1.563em;
-  --amino-space-half: 0.938em;
-  --amino-space-half-negative: -0.938em;
-  --amino-space-quarter: 0.469em;
-  --amino-space-quarter-negative: -0.469em;
-  --amino-space-double: 2.5em;
-  --amino-space-double-negative: -2.5em;
-  --amino-radius-sm: 0.25rem;
-  --amino-radius: 0.375rem;
-  --amino-radius-lg: 0.5rem;
-  --amino-radius-xl: 0.75rem;
+  --amino-space: 1.5rem; /* 24px */
+  --amino-space-negative: -1.5rem; /* -24px */
+  --amino-space-half: 1rem; /* 16px */
+  --amino-space-half-negative: -1rem; /* -16px */
+  --amino-space-quarter: 0.5rem; /* 8px */
+  --amino-space-quarter-negative: -0.5rem; /* -8px */
+  --amino-space-double: 2.5rem; /* 40px */
+  --amino-space-double-negative: -2.5rem; /* -40px */
+  --amino-radius-sm: 0.25rem; /* 4px */
+  --amino-radius: 0.375rem; /* 6px */
+  --amino-radius-lg: 0.5rem; /* 8px */
+  --amino-radius-xl: 0.75rem; /* 12px */
+
+  --amino-black: #0c0c0D;
   /* GRAY PALETTE */
   --amino-gray-l80: #f5f5f6;
   --amino-gray-l60: #eaeaec;
@@ -226,7 +228,7 @@
   --amino-success-dark: var(--amino-green-600);
   --amino-warning: var(--amino-amber-100);
   --amino-warning-dark: var(--amino-amber-600);
-  --amino-page-background: var(--amino-gray-50);
+  --amino-page-background: white;
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-surface-color: white;

@@ -20,6 +20,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     transition: var(--amino-transition);
     margin-left: var(--amino-space-half);
     top: calc(50% - var(--amino-text-base) / 2);
+    z-index: 1;
   }
   &::after {
     content: '';
@@ -84,9 +85,22 @@ const AminoInput = styled.input<TypeInput>`
   border: 0;
   order: 2;
   font-weight: 500;
+
+  :-internal-autofill-selected {
+    border-radius: var(--amino-radius) 0 0 var(--amino-radius);
+    && + label + div {
+      background-color: #e8f0fe;
+    }
+  }
   &.has-label {
     padding: var(--amino-space) 4px var(--amino-space-quarter)
       var(--amino-space-half);
+    &.has-input-prefix {
+      padding-left: 0;
+      & + ${StyledLabelInput}::before {
+        margin-left: 0;
+      }
+    }
   }
   &:not(.has-label) {
     ::placeholder {
@@ -265,6 +279,7 @@ export const FloatLabelInput = forwardRef<
             error && error.length ? 'has-error' : '',
             label ? 'has-label' : '',
             hasValue ? 'has-content' : '',
+            prefix ? 'has-input-prefix' : '',
             valuePrefix ? 'has-value-prefix' : '',
           ].join(' ')}
           hasPrefix={!!prefix}

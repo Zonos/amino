@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Color } from 'src/types';
 import styled, { css } from 'styled-components';
 
 const Subtitle = styled.span`
@@ -128,19 +129,25 @@ const [
 
 type Size = typeof textOptions[number]['size'];
 type Type = typeof textOptions[number]['type'];
-type FontWeight = typeof textOptions[number]['weight'];
+export type FontWeight = typeof textOptions[number]['weight'] | '800';
 type Tag = typeof textOptions[number]['tag'];
 type TypographyOverrides = {
+  color?: Color;
   fontSize?: Size;
   fontWeight?: FontWeight;
   lineHeight?: Size;
 };
-type TypoDefaultProp = { size: Size; isUppercase: Boolean };
+type TypoDefaultProp = { size: Size; isUppercase?: Boolean };
 const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
-  font-size: ${p => p.fontSize || `var(--amino-font-size-${p.size})`};
+  font-size: ${p => `var(--amino-font-size-${p.fontSize || p.size})`};
   font-weight: ${p => p.fontWeight};
-  line-height: ${p => p.lineHeight || `var(--amino-line-height-${p.size})`};
+  line-height: ${p => `var(--amino-line-height-${p.lineHeight || p.size})`};
   margin: 0;
+  ${p =>
+    p.color &&
+    css`
+      color: var(--amino-${p.color});
+    `}
   ${p =>
     p.isUppercase &&
     css`
@@ -151,15 +158,19 @@ type TextStyle = Type | OtherText;
 export type TextProps = {
   children: React.ReactNode;
   className?: string;
+  isUppercase?: boolean;
   tag?: Tag;
   title?: string;
   type?: TextStyle;
 } & TypographyOverrides;
+
 export const Text: React.FC<TextProps> = ({
   children,
   className,
+  color,
   fontSize,
   fontWeight,
+  isUppercase,
   lineHeight,
   tag,
   title,
@@ -169,7 +180,7 @@ export const Text: React.FC<TextProps> = ({
     as,
     fontWeight: _fontWeight,
     size,
-    isUppercase = false,
+    isUppercase: _isUppercase,
   }: {
     as: Tag;
     fontWeight: FontWeight;
@@ -178,12 +189,13 @@ export const Text: React.FC<TextProps> = ({
   }) => (
     <Typography
       as={as}
+      color={color}
       className={className}
       fontSize={fontSize}
       fontWeight={_fontWeight}
       lineHeight={lineHeight}
       size={size}
-      isUppercase={isUppercase}
+      isUppercase={!!_isUppercase}
       title={title}
     >
       {children}
@@ -194,73 +206,78 @@ export const Text: React.FC<TextProps> = ({
       return renderTypography({
         as: tag || pageHeaderOption.tag,
         fontWeight: fontWeight || pageHeaderOption.weight,
+        isUppercase,
         size: pageHeaderOption.size,
       });
     case 'header':
       return renderTypography({
         as: tag || headerOption.tag,
         fontWeight: fontWeight || headerOption.weight,
+        isUppercase,
         size: headerOption.size,
       });
     case 'description-header':
       return renderTypography({
         as: tag || descriptionHeaderOption.tag,
         fontWeight: fontWeight || descriptionHeaderOption.weight,
+        isUppercase,
         size: descriptionHeaderOption.size,
       });
     case 'title':
       return renderTypography({
         as: tag || titleOption.tag,
         fontWeight: fontWeight || titleOption.weight,
+        isUppercase,
         size: titleOption.size,
       });
     case 'bold-subheader':
       return renderTypography({
         as: tag || boldSubheaderOption.tag,
         fontWeight: fontWeight || boldSubheaderOption.weight,
+        isUppercase,
         size: boldSubheaderOption.size,
       });
     case 'subheader':
       return renderTypography({
         as: tag || subheaderOption.tag,
         fontWeight: fontWeight || subheaderOption.weight,
+        isUppercase,
         size: subheaderOption.size,
       });
     case 'bold-label':
       return renderTypography({
         as: tag || boldLabelOption.tag,
         fontWeight: fontWeight || boldLabelOption.weight,
+        isUppercase,
         size: boldLabelOption.size,
       });
     case 'label':
       return renderTypography({
         as: tag || labelOption.tag,
         fontWeight: fontWeight || labelOption.weight,
+        isUppercase,
         size: labelOption.size,
       });
-    case 'body':
-      return renderTypography({
-        as: tag || bodyOption.tag,
-        fontWeight: fontWeight || bodyOption.weight,
-        size: bodyOption.size,
-      });
+
     case 'small-header':
       return renderTypography({
         as: tag || smallheaderOption.tag,
         fontWeight: fontWeight || smallheaderOption.weight,
+        isUppercase: typeof isUppercase === 'boolean' ? isUppercase : true,
         size: smallheaderOption.size,
-        isUppercase: true,
       });
     case 'caption':
       return renderTypography({
         as: tag || captionOption.tag,
         fontWeight: fontWeight || captionOption.weight,
+        isUppercase,
         size: captionOption.size,
       });
     case 'hint-text':
       return renderTypography({
         as: tag || hintTextOption.tag,
         fontWeight: fontWeight || hintTextOption.weight,
+        isUppercase,
         size: hintTextOption.size,
       });
     case 'subtitle':
@@ -275,11 +292,13 @@ export const Text: React.FC<TextProps> = ({
           {children}
         </InputLabel>
       );
+    case 'body':
     default:
-      return (
-        <p className={className} title={title}>
-          {children}
-        </p>
-      );
+      return renderTypography({
+        as: tag || bodyOption.tag,
+        fontWeight: fontWeight || bodyOption.weight,
+        isUppercase,
+        size: bodyOption.size,
+      });
   }
 };

@@ -19,7 +19,7 @@ import {
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
-import { ChevronDownSolidIcon } from 'src/icons/ChevronDownSolidIcon';
+import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { Size } from 'src/types/Size';
@@ -62,7 +62,7 @@ const DropdownIndicator = <
 ) => {
   return (
     <RScomponents.DropdownIndicator {...props}>
-      <ChevronDownSolidIcon size={20} />
+      <DoubleChevronIcon size={20} />
     </RScomponents.DropdownIndicator>
   );
 };
@@ -81,9 +81,9 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   font-size: var(--amino-text-base);
   line-height: var(--amino-text-base);
   transform-origin: left top;
-  left: var(--amino-space-half);
+  left: calc(var(--amino-space-half) - 2px);
   .has-icon & {
-    left: calc(var(--amino-space-double) + 6px);
+    left: calc(var(--amino-space-double) + 2px);
   }
   top: calc(50% - var(--amino-text-base) / 2);
   .has-label & {
@@ -125,7 +125,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
         top: 6px;
       }
     `}
-  
+
   ${({ $size }) =>
     $size === 'lg' &&
     css`
@@ -134,7 +134,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
         top: 10px;
       }
     `}
-  
+
   ${({ $size }) =>
     $size === 'xl' &&
     css`
@@ -148,6 +148,12 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
         top: 11px;
       }
     `}
+`;
+
+const StyledSelectWrapper = styled.div`
+  .react-select-control + div {
+    z-index: 20;
+  }
 `;
 
 const StrongLabel = styled.strong`
@@ -194,6 +200,7 @@ const Control = <
             ? 'has-label'
             : '',
           size,
+          'react-select-control',
         ].join(' ')
       )}
       ref={innerRef}
@@ -334,7 +341,7 @@ export const CheckboxOptionComponent = <
             <IconLabel color={color} icon={data.icon}>
               {children}
             </IconLabel>
-            {isSelected && <CheckCircleSolidIcon color="blue-500" size={16} />}
+            {isSelected && <CheckCircleSolidIcon color="blue-base" size={16} />}
           </SelectedSingleOptionWrapper>
         )}
       </StyledSelectOptionWrapper>
@@ -495,7 +502,7 @@ export const StyledReactSelect = <
     size,
   };
   return (
-    <div>
+    <StyledSelectWrapper>
       <ReactSelect<Option, IsMulti, Group>
         components={
           {
@@ -540,6 +547,6 @@ export const StyledReactSelect = <
         {...additionalProps}
       />
       <HelpText error={error} helpText={helpText} />
-    </div>
+    </StyledSelectWrapper>
   );
 };

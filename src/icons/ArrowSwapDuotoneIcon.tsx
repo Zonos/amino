@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
-export const ArrowSwapDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const ArrowSwapDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: Color }
+>(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
+      ref={ref}
       size={size}
       color={color}
       className={className}
@@ -22,8 +22,9 @@ export const ArrowSwapDuotoneIcon = ({
       />
       <path
         d="M7.414 17.707A1 1 0 1 1 6 19.121l-3.707-3.707a1 1 0 0 1 0-1.414L6 10.293a1 1 0 1 1 1.414 1.414l-2 2H13a1 1 0 1 1 0 2H5.414l2 2Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );
-};
+});

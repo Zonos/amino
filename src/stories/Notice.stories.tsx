@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/button/Button';
 import { Notice, NoticeProps } from 'src/components/notice/Notice';
 import { withDesign } from 'storybook-addon-designs';
 
@@ -12,13 +13,27 @@ const NoticeStories: Meta = {
 
 export default NoticeStories;
 
-const Template: Story<NoticeProps> = ({ intent, children }: NoticeProps) => (
-  <Notice intent={intent}>{children}</Notice>
-);
+const Template: Story<NoticeProps> = ({ intent, children }: NoticeProps) => {
+  const [open, setOpen] = useState(true);
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle Notice</Button>
+      <br />
+      {open && (
+        <Notice intent={intent} onClose={() => setOpen(false)}>
+          {children}
+        </Notice>
+      )}
+      <br />
+      <Notice intent={intent}>{children}</Notice>
+    </>
+  );
+};
 
 export const DefaultNotice = Template.bind({});
 DefaultNotice.args = {
   children: 'Example notice',
+  onClose: () => {},
 };
 DefaultNotice.parameters = {
   design: {
@@ -31,6 +46,7 @@ export const InfoNotice = Template.bind({});
 InfoNotice.args = {
   intent: 'info',
   children: 'Info notice',
+  onClose: () => {},
 };
 InfoNotice.parameters = {
   design: {
@@ -43,6 +59,7 @@ export const PrimaryNotice = Template.bind({});
 PrimaryNotice.args = {
   intent: 'primary',
   children: 'Primary notice',
+  onClose: () => {},
 };
 PrimaryNotice.parameters = {
   design: {
@@ -55,6 +72,7 @@ export const WarningNotice = Template.bind({});
 WarningNotice.args = {
   intent: 'warning',
   children: 'Warning notice',
+  onClose: () => {},
 };
 WarningNotice.parameters = {
   design: {
@@ -67,6 +85,7 @@ export const ErrorNotice = Template.bind({});
 ErrorNotice.args = {
   intent: 'error',
   children: 'Error notice',
+  onClose: () => {},
 };
 ErrorNotice.parameters = {
   design: {
@@ -79,6 +98,7 @@ export const SuccessNotice = Template.bind({});
 SuccessNotice.args = {
   intent: 'success',
   children: 'Success notice',
+  onClose: () => {},
 };
 SuccessNotice.parameters = {
   design: {

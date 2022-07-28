@@ -44,27 +44,43 @@ const WarningIconWrapper = styled(IconWrapper)`
 
 export type RoundedIconProps = {
   children: React.ReactNode;
+  className?: string;
   intent?: Intent;
 } & CSSProps;
 
 export const RoundedIcon = ({
   background,
   children,
+  className,
   color,
   intent,
 }: RoundedIconProps) => {
   switch (intent) {
     case 'danger':
-      return <DangerIconWrapper>{children}</DangerIconWrapper>;
+      return (
+        <DangerIconWrapper className={className}>{children}</DangerIconWrapper>
+      );
     case 'primary':
-      return <PrimaryIconWrapper>{children}</PrimaryIconWrapper>;
+      return (
+        <PrimaryIconWrapper className={className}>
+          {children}
+        </PrimaryIconWrapper>
+      );
     case 'warning':
-      return <WarningIconWrapper>{children}</WarningIconWrapper>;
+      return (
+        <WarningIconWrapper className={className}>
+          {children}
+        </WarningIconWrapper>
+      );
     case 'info':
     case 'secondary':
     default:
       return (
-        <IconWrapper background={background} color={color}>
+        <IconWrapper
+          background={background}
+          color={color}
+          className={className}
+        >
           {children}
         </IconWrapper>
       );

@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';
 
-export const MenuDuotoneIcon = ({
-  size,
-  color,
-  className,
-  secondaryColor,
-}: IconProps & { secondaryColor?: string }) => {
+export const MenuDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: Color }
+>(({ size, color, className, secondaryColor }, ref) => {
   return (
     <IconBase
+      ref={ref}
       size={size}
       color={color}
       className={className}
@@ -22,8 +22,9 @@ export const MenuDuotoneIcon = ({
       />
       <path
         d="M5 7a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
-        fill={secondaryColor || '#CACACE'}
+        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+        data-is-secondary-color="true"
       />
     </IconBase>
   );
-};
+});

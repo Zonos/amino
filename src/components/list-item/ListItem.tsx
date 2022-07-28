@@ -19,15 +19,11 @@ const AminoListItem = styled.div<AminoListItemProps>`
   border-radius: var(--amino-radius-lg);
   line-height: 16px;
 
-  & .item-label {
-    font-weight: 500;
-    font-size: 14px;
-  }
-
-  & .item-subtitle {
-    font-weight: 400;
-    color: var(--amino-gray-d40);
-    font-size: 12px;
+  .___icon-wrapper {
+    display: none;
+    &.has-icon {
+      display: inline-block;
+    }
   }
 
   ${({ selected, disabled }) =>
@@ -36,10 +32,6 @@ const AminoListItem = styled.div<AminoListItemProps>`
     css`
       background-color: var(--amino-blue-l80);
       color: var(--amino-blue-d40);
-
-      & .item-subtitle {
-        color: var(--amino-blue-d20);
-      }
     `}
 
   ${({ disabled }) =>
@@ -47,16 +39,13 @@ const AminoListItem = styled.div<AminoListItemProps>`
     css`
       color: var(--amino-gray-base);
       cursor: not-allowed;
-
-      & .item-subtitle {
-        color: var(--amino-gray-l20);
-      }
     `}
 
   :hover {
-    ${({ disabled, withClick }) =>
+    ${({ disabled, withClick, selected }) =>
       !disabled &&
       withClick &&
+      !selected &&
       css`
         background-color: var(--amino-gray-l80);
         cursor: pointer;
@@ -80,9 +69,10 @@ const Icon = styled.img`
 `;
 
 export type Props = {
+  className?: string;
   disabled?: boolean;
   selected?: boolean;
-  label: string;
+  label: ReactNode;
   subtitle?: ReactNode;
   rightDecorator?: ReactNode;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -115,6 +105,7 @@ const ListIcon = ({
 export const ListItem = forwardRef<HTMLDivElement, Props>(
   (
     {
+      className,
       disabled,
       decorator,
       selected,
@@ -129,17 +120,30 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
   ) => {
     return (
       <AminoListItem
+        className={className}
         disabled={disabled}
         selected={selected}
         withClick={!!onClick}
         onClick={e => !disabled && onClick && onClick(e)}
         ref={ref}
       >
-        {decorator}
-        <ListIcon label={label} icon={icon} iconComponent={iconComponent} />
+        <div
+          className={[
+            '___icon-wrapper',
+            icon || iconComponent || decorator ? 'has-icon' : '',
+          ].join(' ')}
+        >
+          {decorator}
+          <ListIcon
+            label={typeof label === 'string' ? label : ''}
+            icon={icon}
+            iconComponent={iconComponent}
+          />
+        </div>
+
         <TextContainer>
-          <Text className="item-label">{label}</Text>
-          {subtitle && <Text className="item-subtitle">{subtitle}</Text>}
+          <Text type="label">{label}</Text>
+          {subtitle && <Text type="caption">{subtitle}</Text>}
         </TextContainer>
         {rightDecorator}
       </AminoListItem>

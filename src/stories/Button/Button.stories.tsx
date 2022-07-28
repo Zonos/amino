@@ -17,7 +17,6 @@ const ButtonMeta: Meta = {
       type: 'boolean',
     },
     href: {
-      defaultValue: '',
       type: 'string',
     },
     iconRight: {
@@ -51,38 +50,61 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
-const ButtonRow = (props: ButtonProps) => (
+const ButtonRow = ({ intent, disabled, loading, ...props }: ButtonProps) => (
   <HWrapper>
-    <Button {...props} tooltip="Example tooltip" />
+    <Button {...props} intent={intent} disabled={disabled} loading={loading} />
     <Button
       {...props}
       icon={<CubeIcon size={16} />}
-      tooltip="Example tooltip"
+      intent={intent}
+      disabled={disabled}
+      loading={loading}
     />
     <Button
       {...props}
       icon={<CubeIcon size={16} />}
       iconRight
-      tooltip="Example tooltip"
+      intent={intent}
+      disabled={disabled}
+      loading={loading}
     />
     <Button
       {...props}
       icon={<CubeIcon size={16} />}
       /*  eslint-disable-next-line react/no-children-prop */
       children=""
-      tooltip="Example tooltip"
+      intent={intent}
+      disabled={disabled}
+      loading={loading}
     />
     <Button
+      intent={intent}
+      disabled={disabled}
+      loading={loading}
       icon={<CubeIcon size={16} />}
       /*  eslint-disable-next-line react/no-children-prop */
       children=""
-      tooltip="Example tooltip"
       onClick={e => e.preventDefault()}
       tag="div"
     />
-    <StyledButton tag="div" onClick={e => e.preventDefault()}>
-      Test
+    <StyledButton
+      intent={intent}
+      disabled={disabled}
+      loading={loading}
+      tag="div"
+      onClick={e => e.preventDefault()}
+    >
+      Div Button
     </StyledButton>
+    <Button
+      intent={intent}
+      disabled={disabled}
+      loading={loading}
+      theme="dark"
+      {...props}
+    >
+      Dark
+    </Button>
   </HWrapper>
 );
 

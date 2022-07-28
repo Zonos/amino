@@ -5,11 +5,11 @@ import React, {
   MouseEventHandler,
   ReactNode,
 } from 'react';
-import ReactTooltip from 'react-tooltip';
 
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
+import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const StyledSpinnerWrapper = styled.span`
@@ -21,7 +21,7 @@ const StyledSpinnerWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--amino-radius);
+  border-radius: var(--amino-radius-sm);
 `;
 
 const AminoButton = styled.button<ButtonProps<GroupTag>>`
@@ -29,6 +29,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   outline: none;
   height: ${p => `var(--amino-size-${p.size})`};
   line-height: ${p => `var(--amino-size-${p.size})`};
+  font-size: 14px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -41,8 +42,9 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   user-select: none;
   font-family: var(--amino-font-sans);
   letter-spacing: normal;
+  cursor: pointer;
 
-  svg path {
+  svg path:not([data-is-secondary-color]) {
     fill: currentColor;
   }
 
@@ -54,6 +56,9 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   &:active,
   &:focus {
     outline: none;
+    svg path:not([data-is-secondary-color]) {
+      fill: currentColor;
+    }
   }
 
   &:not(.only-icon).has-icon {
@@ -83,11 +88,11 @@ const Primary = styled(AminoButton)`
   color: var(--amino-text-light);
 
   &:hover {
-    background: var(--amino-blue-400);
+    background: var(--amino-blue-l20);
   }
   &:active,
   &:focus {
-    background: var(--amino-blue-600);
+    background: var(--amino-blue-d20);
     color: white;
   }
   ${StyledSpinnerWrapper} {
@@ -97,73 +102,94 @@ const Primary = styled(AminoButton)`
 
 const Secondary = styled(AminoButton)`
   color: var(--amino-text-color);
-  background: var(--amino-gray-100);
+  background: var(--amino-gray-l80);
 
   &:hover {
-    background: var(--amino-gray-200);
+    background: var(--amino-gray-l60);
   }
   &:active,
   &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-base);
     svg path {
       fill: currentColor;
     }
   }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-gray-100);
+    background: var(--amino-gray-l80);
+  }
+
+  /** Dark mode */
+  &.dark {
+    color: white;
+    background: var(--amino-gray-d80);
+
+    &:hover {
+      background: var(--amino-gray-d60);
+    }
+    &:active,
+    &:focus {
+      background: var(--amino-blue-d80);
+      color: var(--amino-blue-l40);
+      svg path {
+        fill: currentColor;
+      }
+    }
+    ${StyledSpinnerWrapper} {
+      background: var(--amino-gray-d80);
+    }
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: var(--amino-red-500);
+  background: var(--amino-red-base);
   color: white;
 
   &:hover {
-    background: var(--amino-red-400);
+    background: var(--amino-red-l20);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-red-600);
+    background: var(--amino-red-d20);
   }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-red-500);
+    background: var(--amino-red-base);
   }
 `;
 
 const Warning = styled(AminoButton)`
-  background: var(--amino-orange-500);
+  background: var(--amino-orange-base);
   color: white;
 
   &:hover {
-    background: var(--amino-orange-400);
+    background: var(--amino-orange-l20);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-orange-600);
+    background: var(--amino-orange-d20);
   }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-orange-500);
+    background: var(--amino-orange-base);
   }
 `;
 
 const Outline = styled(AminoButton)`
   background: white;
   color: var(--amino-text-color);
-  border: 1px solid var(--amino-gray-200);
+  border: 1px solid var(--amino-gray-l60);
 
   &:hover {
-    background: var(--amino-gray-100);
-    border: 1px solid var(--amino-gray-200);
+    background: var(--amino-gray-l80);
+    border: 1px solid var(--amino-gray-l60);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
-    border: 1px solid var(--amino-blue-300);
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-base);
+    border: 1px solid var(--amino-blue-l40);
   }
   ${StyledSpinnerWrapper} {
     background: white;
@@ -172,16 +198,16 @@ const Outline = styled(AminoButton)`
 
 const Subtle = styled(AminoButton)`
   background: none;
-  color: var(--amino-gray-700);
+  color: var(--amino-gray-d40);
 
   &:hover {
-    background: var(--amino-gray-100);
+    background: var(--amino-gray-l80);
   }
 
   &:active,
   &:focus {
-    background: var(--amino-blue-100);
-    color: var(--amino-blue-500);
+    background: var(--amino-blue-l80);
+    color: var(--amino-blue-base);
   }
   &.loading {
     color: transparent;
@@ -189,9 +215,26 @@ const Subtle = styled(AminoButton)`
 `;
 
 const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  height: 16px;
-  line-height: 14px;
+  color: var(--amino-gray-d40);
+  height: 20px;
+  line-height: 20px;
   padding: 0;
+
+  &[disabled] {
+    color: var(--amino-gray-l20);
+    &:not(.loading) {
+      opacity: inherit;
+    }
+    &:active,
+    &:focus {
+      color: var(--amino-gray-l20);
+    }
+  }
+
+  &:active,
+  &:focus {
+    color: var(--amino-black);
+  }
 
   &.loading {
     color: transparent;
@@ -209,9 +252,6 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   &:focus {
     background: var(--amino-blue-l80);
     color: var(--amino-blue-d40);
-    svg path {
-      fill: currentColor;
-    }
   }
   ${StyledSpinnerWrapper} {
     background: white;
@@ -229,9 +269,9 @@ type ButtonBase = {
   intent?: IntentProps;
   loading?: boolean;
   loadingText?: string;
+  theme?: Theme | 'space';
   size?: Size;
   tabIndex?: number;
-  tooltip?: ReactNode;
   type?: 'button' | 'reset' | 'submit';
 };
 
@@ -264,13 +304,12 @@ export function Button<T extends GroupTag = 'button'>({
   loadingText,
   size = 'sm',
   tag,
-  tooltip,
+  theme,
   type = 'button',
   ...props
 }: ButtonProps<T>) {
   const renderContent = (color?: SpinnerProps['color']) => (
     <>
-      {tooltip && <ReactTooltip />}
       {!iconRight && icon}
       {children}
       {iconRight && icon}
@@ -289,11 +328,13 @@ export function Button<T extends GroupTag = 'button'>({
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
     loading ? 'loading' : '',
-  ].join(' ');
+    theme,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const baseProps = {
     className: buttonClassName,
-    'data-tip': tooltip,
     disabled: disabled || loading,
     size,
   };

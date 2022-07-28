@@ -18,7 +18,7 @@ const pascalCased = (string: string) => {
 };
 
 const convertSvgsObj = (destFolder: string): SvgList[] =>
-  readdirSync(destFolder).reduce((accumulator, originalFileName) => {
+  readdirSync(destFolder).reduce<SvgList[]>((accumulator, originalFileName) => {
     return [
       ...accumulator,
       {

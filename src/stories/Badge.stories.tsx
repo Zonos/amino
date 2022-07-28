@@ -33,7 +33,7 @@ const BadgeMeta: Meta = {
     iconRight: {
       type: 'boolean',
     },
-    inverted: {
+    bold: {
       type: 'boolean',
     },
   },
@@ -50,7 +50,7 @@ const Template: Story<BadgeProps> = ({
   color,
   children,
   iconRight,
-  inverted,
+  bold,
   rounded,
   size,
 }: BadgeProps) => (
@@ -60,7 +60,7 @@ const Template: Story<BadgeProps> = ({
       <Badge
         color={color}
         iconRight={iconRight}
-        inverted={inverted}
+        bold={bold}
         rounded={rounded}
         size={size}
       >
@@ -72,7 +72,7 @@ const Template: Story<BadgeProps> = ({
         color={color}
         icon={<CubeIcon size={20} />}
         iconRight={iconRight}
-        inverted={inverted}
+        bold={bold}
         rounded={rounded}
         size={size}
       >
@@ -84,7 +84,7 @@ const Template: Story<BadgeProps> = ({
         color={color}
         icon={<CubeIcon size={20} />}
         iconRight
-        inverted={inverted}
+        bold={bold}
         rounded={rounded}
         size={size}
       >
@@ -96,7 +96,7 @@ const Template: Story<BadgeProps> = ({
       <Badge
         color={color}
         iconRight={iconRight}
-        inverted
+        bold
         rounded={rounded}
         size={size}
       >
@@ -107,7 +107,7 @@ const Template: Story<BadgeProps> = ({
       <Badge
         color={color}
         icon={<CubeIcon size={20} />}
-        inverted
+        bold
         rounded={rounded}
         size={size}
       >
@@ -119,7 +119,7 @@ const Template: Story<BadgeProps> = ({
         color={color}
         icon={<CubeIcon size={20} />}
         iconRight
-        inverted
+        bold
         rounded={rounded}
         size={size}
       >

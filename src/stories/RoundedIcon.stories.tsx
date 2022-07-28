@@ -5,7 +5,7 @@ import {
   RoundedIcon,
   RoundedIconProps,
 } from 'src/components/rounded-icon/RoundedIcon';
-import { ReportsIcon } from 'src/icons/legacy/ReportsIcon';
+import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 import { withDesign } from 'storybook-addon-designs';
 
 const RoundedIconMeta: Meta = {
@@ -16,43 +16,34 @@ const RoundedIconMeta: Meta = {
 
 export default RoundedIconMeta;
 
-const Template: Story<RoundedIconProps> = ({
-  background,
-  children,
-  color,
-  intent,
-}) => (
-  <RoundedIcon background={background} color={color} intent={intent}>
-    {children}
-  </RoundedIcon>
-);
+const Template: Story<RoundedIconProps> = props => <RoundedIcon {...props} />;
 
 export const Default = Template.bind({});
 const defaultArgs: RoundedIconProps = {
-  children: <ReportsIcon />,
+  children: <TruckDuotoneIcon />,
   intent: 'info',
 };
 Default.args = defaultArgs;
 
 export const Primary = Template.bind({});
 const primaryArgs: RoundedIconProps = {
-  children: <ReportsIcon />,
+  children: <TruckDuotoneIcon />,
   intent: 'primary',
 };
 Primary.args = primaryArgs;
 
 export const Danger = Template.bind({});
 const dangerArgs: RoundedIconProps = {
-  children: <ReportsIcon />,
+  children: <TruckDuotoneIcon />,
   intent: 'danger',
 };
 Danger.args = dangerArgs;
 
 export const Colored = Template.bind({});
 const coloredArgs: RoundedIconProps = {
-  background: 'gray-900',
-  children: <ReportsIcon />,
-  color: 'purple-400',
+  background: 'gray-d80',
+  children: <TruckDuotoneIcon />,
+  color: 'purple-l40',
   intent: 'secondary',
 };
 Colored.args = coloredArgs;
