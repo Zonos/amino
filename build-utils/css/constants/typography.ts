@@ -1,5 +1,3 @@
-import {} from './utils';
-
 export const fontSizes = {
   'font-size-3xl': '2.125rem' /* 34px */,
   'font-size-2xl': '1.75rem' /* 28px */,
