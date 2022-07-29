@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "baseUrl": "./",
@@ -21,9 +22,11 @@
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
+      "resolveJsonModule": true,
       "allowSyntheticDefaultImports": true,
       "lib": ["es2015", "es2016", "es2017", "es2020", "dom"],
       "declaration": false,
+      "rootDir": "src",
       "outDir": "dist",
       "baseUrl": "./",
       "module": "commonjs",
