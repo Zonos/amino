@@ -102,5 +102,5 @@ export const generateCSS = async (destinationPath: string) => {
   ${darkThemeContent}
   `);
   /** @desc write to destination */
-  writeFileSync(`${path}/theme_1.css`, content);
+  writeFileSync(`${path}/theme.css`, content);
 };

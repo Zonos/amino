@@ -1,6 +1,6 @@
 export const spaces = {
   /** @info px: 24px */
-  'space': 'var(--amino-space)',
+  space: 'var(--amino-space)',
   /** @info px: -24px */
   'space-negative': 'var(--amino-space-negative)',
   /** @info px: 16px */

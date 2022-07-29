@@ -1,5 +1,5 @@
 export const colors = {
-  'black': 'var(--amino-black)',
+  black: 'var(--amino-black)',
   /* GRAY PALETTE */
   'gray-l80': 'var(--amino-gray-l80)',
   'gray-l60': 'var(--amino-gray-l60)',
@@ -182,15 +182,15 @@ export const colors = {
 } as const;
 
 export const commonColors = {
-  'danger': 'var(--amino-danger)',
+  danger: 'var(--amino-danger)',
   'danger-dark': 'var(--amino-danger-dark)',
-  'error': 'var(--amino-error)',
-  'primary': 'var(--amino-primary)',
+  error: 'var(--amino-error)',
+  primary: 'var(--amino-primary)',
   'primary-light': 'var(--amino-primary-light)',
   'primary-dark': 'var(--amino-primary-dark)',
-  'success': 'var(--amino-success)',
+  success: 'var(--amino-success)',
   'success-dark': 'var(--amino-success-dark)',
-  'warning': 'var(--amino-warning)',
+  warning: 'var(--amino-warning)',
   'warning-dark': 'var(--amino-warning-dark)',
 } as const;
 

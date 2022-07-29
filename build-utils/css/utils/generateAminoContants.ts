@@ -1,4 +1,18 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { format, resolveConfig, resolveConfigFile } from 'prettier';
+
+/**
+ * Format css file using prettier api
+ * @param content File content to format
+ * */
+export const formatTS = async (content: string) => {
+  const configFile = await resolveConfigFile();
+  const options = (await resolveConfig(configFile || '')) || {};
+  return format(content, {
+    ...options,
+    parser: 'typescript',
+  });
+};
 
 /**
  * Replace all values to turn constants to object with usable css variable
@@ -27,7 +41,7 @@ export const generateAminoConstants = async (destinationPath: string) => {
     'utils',
   ];
   const rootFolder = process.cwd();
-  constantList.map(file => {
+  constantList.map(async file => {
     const content = readFileSync(
       `${rootFolder}/build-utils/css/constants/${file}.ts`,
       {
@@ -36,11 +50,15 @@ export const generateAminoConstants = async (destinationPath: string) => {
     );
 
     const newContent = generateConstantContent(content);
+    const formatedContent = await formatTS(newContent);
     if (!existsSync(`${rootFolder}/${destinationPath}`)) {
       mkdirSync(`${rootFolder}/${destinationPath}`);
     }
     /** @desc write to destination */
-    writeFileSync(`${rootFolder}/${destinationPath}/${file}.ts`, newContent);
+    writeFileSync(
+      `${rootFolder}/${destinationPath}/${file}.ts`,
+      formatedContent
+    );
     return null;
   });
 };

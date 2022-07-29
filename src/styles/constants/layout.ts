@@ -31,7 +31,7 @@ export const shadows = {
 } as const;
 
 export const borders = {
-  'border': 'var(--amino-border)',
+  border: 'var(--amino-border)',
   'border-blue': 'var(--amino-border-blue)',
   'border-red': 'var(--amino-border-red)',
   'border-cyan': 'var(--amino-border-cyan)',
