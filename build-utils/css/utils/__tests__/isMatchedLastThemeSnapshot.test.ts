@@ -4,12 +4,6 @@ import { darkStyleList } from '../../constants/_darkTheme';
 import { theme as lightTheme } from '../../constants/theme';
 import { isMatchedLastThemeSnapshot } from '../isMatchedLastThemeSnapshot';
 
-// const lightThemeCSSSnapshot = readFileSync(
-//   `build-utils/css/utils/__snapshots__/theme.css`,
-//   {
-//     encoding: 'utf-8',
-//   }
-// );
 const lightThemeCSSSnapshot = readFileSync(
   `build-utils/css/utils/__snapshots__/theme.css`,
   {
