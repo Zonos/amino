@@ -8,6 +8,7 @@ const build = async () => {
   /** Generate theme css file to  */
   await generateCSS('src/styles');
 
+  /** Generate theme snapshots after checked and current theme.css is overwritten */
   await generateSnapshots();
 };
 
