@@ -15,14 +15,28 @@ export const formatTS = async (content: string) => {
 };
 
 /**
- * Replace all values to turn constants to object with usable css variable
+ * Replace all values, turn constants to object with usable css variable (with jsdocs)
  * @example: 'space': '1.5rem' => 'space': 'var(--amino-space)'
  */
-export const generateConstantContent = (content: string) => {
-  return content.replace(
-    /'?([a-zA-Z0-9-]+)'?:\s+['`](.*)/gm,
-    "'$1': 'var(--amino-$1)',"
-  );
+export const generateConstantContent = async (content: string) => {
+  const result = content
+    /** @desc find and replace all key value pairs that have jsdocs comment above */
+    .replace(
+      /(?<=\/\*\*.*\/)(\n\s*)'?([a-zA-Z0-9-]+)'?:\s+['`](.*)['`],*/gm,
+      "$1'$2': 'var(--amino-$2)',"
+    )
+    /**
+     * @desc find and replace all key value pairs that don't have jsdocs comment above
+     * and add '@info $value' jsdocs comment above it
+     */
+    .replace(
+      /(?<!\/\*\*.*\/)(\n\s*)'?([a-zA-Z0-9-]+)'?:\s+['`](.*)['`],*/gm,
+      "$1/** @info $3 */\n'$2': 'var(--amino-$2)',"
+    );
+
+  /** @desc format file with TScript formater */
+  const formatedResult = await formatTS(result);
+  return formatedResult;
 };
 
 /**
@@ -38,9 +52,7 @@ export const generateAminoConstants = async (destinationPath: string) => {
     }
   );
 
-  const newContent = generateConstantContent(content);
-  /** @desc format file with TScript formater */
-  const formatedContent = await formatTS(newContent);
+  const formatedContent = await generateConstantContent(content);
   if (!existsSync(`${rootFolder}/${destinationPath}`)) {
     mkdirSync(`${rootFolder}/${destinationPath}`);
   }

@@ -33,6 +33,7 @@ export const theme = {
   'gray-800': 'var(--amino-gray-d60)',
   /** @deprecated use gray-d80 instead */
   'gray-900': 'var(--amino-gray-d80)',
+
   /* BLUE PALETTE */
   'blue-l80': '#e9ebff',
   'blue-l60': '#a7afff',
@@ -63,6 +64,7 @@ export const theme = {
   'blue-800': 'var(--amino-blue-d60)',
   /** @deprecated use blue-d80 instead */
   'blue-900': 'var(--amino-blue-d80)',
+
   /* CYAN PALETTE */
   'cyan-l80': '#e9fcff',
   'cyan-l60': '#a5edf6',
@@ -93,6 +95,7 @@ export const theme = {
   'cyan-800': 'var(--amino-cyan-d60)',
   /** @deprecated use cyan-d80 instead */
   'cyan-900': 'var(--amino-cyan-d80)',
+
   /* RED PALETTE */
   'red-l80': '#fde5eb',
   'red-l60': '#f899b1',
@@ -123,6 +126,7 @@ export const theme = {
   'red-800': 'var(--amino-red-d60)',
   /** @deprecated use red-d80 instead */
   'red-900': 'var(--amino-red-d80)',
+
   /* ORANGE PALETTE */
   'orange-l80': '#fff0e5',
   'orange-l60': '#ffc499',
@@ -153,6 +157,7 @@ export const theme = {
   'orange-800': 'var(--amino-orange-d60)',
   /** @deprecated use orange-d80 instead */
   'orange-900': 'var(--amino-orange-d80)',
+
   /* GREEN PALETTE */
   'green-l80': '#e5f9e5',
   'green-l60': '#99e799',
@@ -183,6 +188,7 @@ export const theme = {
   'green-800': 'var(--amino-green-d60)',
   /** @deprecated use green-d80 instead */
   'green-900': 'var(--amino-green-d80)',
+
   /* PURPLE */
   'purple-l80': '#f5e5ff',
   'purple-l60': '#d599ff',
@@ -213,6 +219,7 @@ export const theme = {
   'purple-800': 'var(--amino-purple-d60)',
   /** @deprecated use purple-d80 instead */
   'purple-900': 'var(--amino-purple-d80)',
+
   /* YELLOW PALLETE */
   'yellow-l80': '#fff9e5',
   'yellow-l60': '#ffe999',
