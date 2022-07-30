@@ -103,7 +103,7 @@ const darkLayoutStyleList = constraintDefinedAminoVar(theme, {
     '0px 20px 25px rgba(0, 0, 0, 0.3), 0px 10px 10px rgba(0, 0, 0, 0.12)',
   'v3-shadow-xxl': '0px 32px 50px rgba(0, 0, 0, 0.72)',
   'backdrop-color': 'var(--amino-gray-l60)',
-  'header-color': 'var(--amino-gray-100)',
+  'header-color': 'var(--amino-gray-l80)',
   border: '1px solid var(--amino-border-color)',
 });
 
