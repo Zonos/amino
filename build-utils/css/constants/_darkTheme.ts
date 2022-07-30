@@ -1,8 +1,7 @@
-import { colorStyleList } from './colors';
-import { layoutStyleList } from './layout';
+import { theme } from './theme';
 import { constraintDefinedAminoVar } from './utils';
 
-const darkColorStyleList = constraintDefinedAminoVar(colorStyleList, {
+const darkColorStyleList = constraintDefinedAminoVar(theme, {
   'gray-l80': '#f5f5f6',
   'gray-l60': '#d8d8db',
   'gray-l40': '#c4c4c9',
@@ -84,15 +83,15 @@ const darkColorStyleList = constraintDefinedAminoVar(colorStyleList, {
   'yellow-d80': '#39321c',
 
   'page-background': 'var(--amino-gray-50)',
-  'surface-color': 'var(--amino-gray-500)',
+  'surface-color': 'var(--amino-gray-base)',
   'surface-color-secondary': 'var(--amino-gray-50)',
-  'border-color': 'var(--amino-gray-200)',
+  'border-color': 'var(--amino-gray-l60)',
   'text-color': 'white',
-  'input-background': 'var(--amino-gray-300)',
-  'hover-color': 'var(--amino-gray-400)',
+  'input-background': 'var(--amino-gray-l40)',
+  'hover-color': 'var(--amino-gray-l20)',
 });
 
-const darkLayoutStyleList = constraintDefinedAminoVar(layoutStyleList, {
+const darkLayoutStyleList = constraintDefinedAminoVar(theme, {
   'v3-shadow-inset': 'inset 0px 2px 4px rgba(0, 0, 0, 0.18)',
   'v3-shadow-base':
     '0px 1px 2px rgba(0, 0, 0, 0.18), 0px 1px 3px rgba(0, 0, 0, 0.3)',
@@ -103,7 +102,7 @@ const darkLayoutStyleList = constraintDefinedAminoVar(layoutStyleList, {
   'v3-shadow-xl':
     '0px 20px 25px rgba(0, 0, 0, 0.3), 0px 10px 10px rgba(0, 0, 0, 0.12)',
   'v3-shadow-xxl': '0px 32px 50px rgba(0, 0, 0, 0.72)',
-  'backdrop-color': 'var(--amino-gray-200)',
+  'backdrop-color': 'var(--amino-gray-l60)',
   'header-color': 'var(--amino-gray-100)',
   border: '1px solid var(--amino-border-color)',
 });
