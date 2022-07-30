@@ -1,7 +1,7 @@
 import { theme } from './theme';
 import { constraintDefinedAminoVar } from './utils';
 
-const darkColorStyleList = constraintDefinedAminoVar(theme, {
+export const darkStyleList = constraintDefinedAminoVar(theme, {
   'gray-l80': '#f5f5f6',
   'gray-l60': '#d8d8db',
   'gray-l40': '#c4c4c9',
@@ -89,9 +89,7 @@ const darkColorStyleList = constraintDefinedAminoVar(theme, {
   'text-color': 'white',
   'input-background': 'var(--amino-gray-l40)',
   'hover-color': 'var(--amino-gray-l20)',
-});
 
-const darkLayoutStyleList = constraintDefinedAminoVar(theme, {
   'v3-shadow-inset': 'inset 0px 2px 4px rgba(0, 0, 0, 0.18)',
   'v3-shadow-base':
     '0px 1px 2px rgba(0, 0, 0, 0.18), 0px 1px 3px rgba(0, 0, 0, 0.3)',
@@ -106,8 +104,3 @@ const darkLayoutStyleList = constraintDefinedAminoVar(theme, {
   'header-color': 'var(--amino-gray-l80)',
   border: '1px solid var(--amino-border-color)',
 });
-
-export const darkStyleList = {
-  ...darkColorStyleList,
-  ...darkLayoutStyleList,
-};
