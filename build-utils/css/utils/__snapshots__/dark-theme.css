@@ -72,12 +72,12 @@
   --amino-yellow-d60: #665414;
   --amino-yellow-d80: #39321c;
   --amino-page-background: var(--amino-gray-50);
-  --amino-surface-color: var(--amino-gray-500);
+  --amino-surface-color: var(--amino-gray-base);
   --amino-surface-color-secondary: var(--amino-gray-50);
-  --amino-border-color: var(--amino-gray-200);
+  --amino-border-color: var(--amino-gray-l60);
   --amino-text-color: white;
-  --amino-input-background: var(--amino-gray-300);
-  --amino-hover-color: var(--amino-gray-400);
+  --amino-input-background: var(--amino-gray-l40);
+  --amino-hover-color: var(--amino-gray-l20);
   --amino-v3-shadow-inset: inset 0px 2px 4px rgba(0, 0, 0, 0.18);
   --amino-v3-shadow-base: 0px 1px 2px rgba(0, 0, 0, 0.18),
     0px 1px 3px rgba(0, 0, 0, 0.3);
@@ -88,7 +88,7 @@
   --amino-v3-shadow-xl: 0px 20px 25px rgba(0, 0, 0, 0.3),
     0px 10px 10px rgba(0, 0, 0, 0.12);
   --amino-v3-shadow-xxl: 0px 32px 50px rgba(0, 0, 0, 0.72);
-  --amino-backdrop-color: var(--amino-gray-200);
+  --amino-backdrop-color: var(--amino-gray-l60);
   --amino-header-color: var(--amino-gray-100);
   --amino-border: 1px solid var(--amino-border-color);
 }

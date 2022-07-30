@@ -20,7 +20,7 @@ export const formatTS = async (content: string) => {
  */
 export const generateConstantContent = (content: string) => {
   return content.replace(
-    /'?([a-zA-Z0-9-]+)'?:\s+'(.*)/gm,
+    /'?([a-zA-Z0-9-]+)'?:\s+['`](.*)/gm,
     "'$1': 'var(--amino-$1)',"
   );
 };
@@ -30,35 +30,20 @@ export const generateConstantContent = (content: string) => {
  * @param destinationPath Folder path where generated files would be located
  */
 export const generateAminoConstants = async (destinationPath: string) => {
-  /** Constant files located at 'build-utils/css/constants/*.ts */
-  const constantList = [
-    'colors',
-    'layout',
-    'radius',
-    'spacing',
-    'theme',
-    'typography',
-    'utils',
-  ];
   const rootFolder = process.cwd();
-  constantList.map(async file => {
-    const content = readFileSync(
-      `${rootFolder}/build-utils/css/constants/${file}.ts`,
-      {
-        encoding: 'utf-8',
-      }
-    );
-
-    const newContent = generateConstantContent(content);
-    const formatedContent = await formatTS(newContent);
-    if (!existsSync(`${rootFolder}/${destinationPath}`)) {
-      mkdirSync(`${rootFolder}/${destinationPath}`);
+  const content = readFileSync(
+    `${rootFolder}/build-utils/css/constants/theme.ts`,
+    {
+      encoding: 'utf-8',
     }
-    /** @desc write to destination */
-    writeFileSync(
-      `${rootFolder}/${destinationPath}/${file}.ts`,
-      formatedContent
-    );
-    return null;
-  });
+  );
+
+  const newContent = generateConstantContent(content);
+  /** @desc format file with TScript formater */
+  const formatedContent = await formatTS(newContent);
+  if (!existsSync(`${rootFolder}/${destinationPath}`)) {
+    mkdirSync(`${rootFolder}/${destinationPath}`);
+  }
+  /** @desc write to destination */
+  writeFileSync(`${rootFolder}/${destinationPath}/theme.ts`, formatedContent);
 };

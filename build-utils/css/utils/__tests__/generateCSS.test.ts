@@ -2,13 +2,10 @@ import { readFileSync } from 'fs';
 
 import { darkStyleList } from '../../constants/_darkTheme';
 import { theme } from '../../constants/theme';
-import { generateLightThemeContent } from '../generateCSS';
-
-type UnitTestItem = {
-  testCase: string;
-  input: Record<string, string>;
-  expected: string;
-};
+import {
+  generateDarkThemeContent,
+  generateLightThemeContent,
+} from '../generateCSS';
 
 const lightThemeCSSSnapshot = readFileSync(
   `build-utils/css/utils/__snapshots__/theme.css`,
@@ -24,20 +21,12 @@ const darkThemeCSSSnapshot = readFileSync(
   }
 );
 
-const testCases: UnitTestItem[] = [
-  {
-    testCase: `light theme`,
-    input: theme,
-    expected: lightThemeCSSSnapshot,
-  },
-  {
-    testCase: `dark`,
-    input: darkStyleList,
-    expected: darkThemeCSSSnapshot,
-  },
-];
+test(`Case light theme:`, async () => {
+  const result = await generateLightThemeContent(theme);
+  expect(result).toStrictEqual(lightThemeCSSSnapshot);
+});
 
-test.each(testCases)(`Case $case:`, async ({ testCase, input }) => {
-  const result = await generateLightThemeContent(input);
-  expect(result).toMatchSnapshot(testCase);
+test(`Case dark theme:`, async () => {
+  const result = await generateDarkThemeContent(darkStyleList);
+  expect(result).toStrictEqual(darkThemeCSSSnapshot);
 });

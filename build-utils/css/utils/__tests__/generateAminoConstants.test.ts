@@ -2,41 +2,23 @@ import { readFileSync } from 'fs';
 
 import { generateConstantContent } from '../generateAminoContants';
 
-const spacingConstants = readFileSync(`build-utils/css/constants/spacing.ts`, {
+const themeContent = readFileSync(`build-utils/css/constants/theme.ts`, {
   encoding: 'utf-8',
 });
 
-type UnitTestItem = {
-  case: string;
-  input: string;
-};
+test(`Long content with backtick`, () => {
+  const input = `
+  'font-sans': \`'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif\`,
+  'font-mono': \`Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace\`,
+  `;
 
-const testCases: UnitTestItem[] = [
-  {
-    case: `Spacing constants`,
-    input: spacingConstants.trim(),
-  },
-];
+  expect(generateConstantContent(input)).toStrictEqual(`
+  'font-sans': 'var(--amino-font-sans)',
+  'font-mono': 'var(--amino-font-mono)',
+  `);
+});
 
-test.each(testCases)(`Case $case:`, ({ input }) =>
-  expect(generateConstantContent(input)).toMatchInlineSnapshot(`
-    "export const spaces = {
-      /** @info px: 24px */
-      'space': 'var(--amino-space)',
-      /** @info px: -24px */
-      'space-negative': 'var(--amino-space-negative)',
-      /** @info px: 16px */
-      'space-half': 'var(--amino-space-half)',
-      /** @info px: -16px */
-      'space-half-negative': 'var(--amino-space-half-negative)',
-      /** @info px: 8px */
-      'space-quarter': 'var(--amino-space-quarter)',
-      /** @info px: -8px */
-      'space-quarter-negative': 'var(--amino-space-quarter-negative)',
-      /** @info px: 40px */
-      'space-double': 'var(--amino-space-double)',
-      /** @info px: -40px */
-      'space-double-negative': 'var(--amino-space-double-negative)',
-    } as const;"
-  `)
-);
+test(`Case light theme`, () => {
+  const input = themeContent.trim();
+  expect(generateConstantContent(input)).toMatchSnapshot();
+});
