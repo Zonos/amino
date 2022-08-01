@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -96,16 +96,34 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "roots": [
+      "<rootDir>"
+    ],
+    "modulePaths": [
+      "<rootDir>",
+      "build-utils/**/*.ts",
+      "src/**/*.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "./jest/setupJestMock.ts"
+    ]
+  },
   "scripts": {
+    "prebuild:theme": "echo 'start generating styles'",
+    "build:theme": "ts-node build-utils/css/buildTheme.ts",
+    "postbuild:theme": "echo 'done generating styles'",
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
-    "build": "npm -v && yarn -v && node -v && yarn ttsc -v && yarn tsc -v && yarn lint:prod && ts-node build-utils/build.ts && yarn build:dts",
+    "build": "yarn lint:prod && yarn test:prod && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
     "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
     "prebuild:dts": "echo 'building dts'",
-    "build:dts": "ttsc --emitDeclarationOnly --declarationDir dist --declaration",
+    "build:dts": "ttsc -p ./tsconfig.emitDeclarationOnly.json",
     "postbuild:dts": "echo 'done build dts'",
     "prebuild:prep:publish": "echo 'building for publishing'",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "postbuild:prep:publish": "echo 'done building for publishing'",
+    "test": "jest --watchAll",
+    "test:prod": "jest",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",

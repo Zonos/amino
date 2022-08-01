@@ -107,11 +107,13 @@ const animationsModules = glob.sync('src/animations/**/*.ts*') as string[];
 const iconsModules = glob.sync('src/icons/**/*.ts*') as string[];
 const utilsModules = glob.sync('src/utils/**/*.ts*') as string[];
 const componentsModules = glob.sync('src/components/**/*.ts*') as string[];
+const styleModules = glob.sync('src/styles/**/*.ts') as string[];
 
 const allModules = animationsModules.concat(
   iconsModules,
   utilsModules,
-  componentsModules
+  componentsModules,
+  styleModules
 );
 
 const configs: ConfigOptions[] = [
