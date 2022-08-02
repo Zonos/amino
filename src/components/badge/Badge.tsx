@@ -45,7 +45,7 @@ const StyledBadge = styled.div<BadgeProps>`
 
   p {
     margin: 0;
-    font-weight: ${p => p.fontWeight || '700'};
+    font-weight: ${p => p.fontWeight || '600'};
   }
   svg {
     order: ${({ iconRight }) => (iconRight ? '2' : '')};

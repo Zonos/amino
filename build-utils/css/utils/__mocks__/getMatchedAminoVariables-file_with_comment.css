@@ -1,7 +1,43 @@
 :root {
   --amino-transition: all 0.2s ease-in-out 0s;
   --amino-type-scale-base: 16px;
-  --amino-black: #0c0c0d;
+  --amino-font-size-3xl: 2.125rem; /* 34px */
+  --amino-font-size-2xl: 1.75rem;  /* 28px */
+  --amino-font-size-xl: 1.375rem;  /* 22px */
+  --amino-font-size-l: 1.125rem;   /* 18px */
+  --amino-font-size-base: .875rem;    /* 14px */
+  --amino-font-size-s: .75rem;    /* 12px */
+  --amino-font-size-xs: .625rem;   /* 10px */
+  --amino-line-height-3xl: 118%;   /* 40px */
+  --amino-line-height-2xl: 119%;   /* 32px */
+  --amino-line-height-xl: 127%;    /* 28px */
+  --amino-line-height-l: 133%;     /* 16px */
+  --amino-line-height-base: 114%;  /* 16px */
+  --amino-line-height-s: 133%;     /* 16px */
+  --amino-line-height-xs: 120%;    /* 12px */
+  /* legacy text variables */
+  --amino-text-xxl: var(--amino-font-size-3xl);
+  --amino-text-xl: var(--amino-font-size-2xl);
+  --amino-text-lg: var(--amino-font-size-xl);
+  --amino-text-md: var(--amino-font-size-l);
+  --amino-text-base: var(--amino-font-size-base);
+  --amino-text-sm: var(--amino-font-size-s);
+  --amino-text-xs: var(--amino-font-size-xs);
+  --amino-space: 1.5rem; /* 24px */
+  --amino-space-negative: -1.5rem; /* -24px */
+  --amino-space-half: 1rem; /* 16px */
+  --amino-space-half-negative: -1rem; /* -16px */
+  --amino-space-quarter: 0.5rem; /* 8px */
+  --amino-space-quarter-negative: -0.5rem; /* -8px */
+  --amino-space-double: 2.5rem; /* 40px */
+  --amino-space-double-negative: -2.5rem; /* -40px */
+  --amino-radius-sm: 0.25rem; /* 4px */
+  --amino-radius: 0.375rem; /* 6px */
+  --amino-radius-lg: 0.5rem; /* 8px */
+  --amino-radius-xl: 0.75rem; /* 12px */
+
+  --amino-black: #0c0c0D;
+  /* GRAY PALETTE */
   --amino-gray-l80: #f5f5f6;
   --amino-gray-l60: #eaeaec;
   --amino-gray-l40: #d6d6d9;
@@ -11,7 +47,6 @@
   --amino-gray-d40: #5b5b60;
   --amino-gray-d60: #3d3d40;
   --amino-gray-d80: #232326;
-  --amino-gray-alpha: #f9fafb;
   --amino-gray-50: #f9fafb;
   --amino-gray-100: var(--amino-gray-l80);
   --amino-gray-200: var(--amino-gray-l60);
@@ -22,6 +57,7 @@
   --amino-gray-700: var(--amino-gray-d40);
   --amino-gray-800: var(--amino-gray-d60);
   --amino-gray-900: var(--amino-gray-d80);
+  /* BLUE PALETTE */
   --amino-blue-l80: #e9ebff;
   --amino-blue-l60: #a7afff;
   --amino-blue-l40: #7b86ff;
@@ -42,6 +78,7 @@
   --amino-blue-700: var(--amino-blue-d40);
   --amino-blue-800: var(--amino-blue-d60);
   --amino-blue-900: var(--amino-blue-d80);
+  /* CYAN PALETTE */
   --amino-cyan-l80: #e9fcff;
   --amino-cyan-l60: #a5edf6;
   --amino-cyan-l40: #77e3f2;
@@ -52,7 +89,6 @@
   --amino-cyan-d60: #0c545d;
   --amino-cyan-d80: #1d363b;
   --amino-cyan-alpha: #00dfe380;
-  --amino-cyan-50: #e9fcff;
   --amino-cyan-100: var(--amino-cyan-l80);
   --amino-cyan-200: var(--amino-cyan-l60);
   --amino-cyan-300: var(--amino-cyan-l40);
@@ -62,6 +98,7 @@
   --amino-cyan-700: var(--amino-cyan-d40);
   --amino-cyan-800: var(--amino-cyan-d60);
   --amino-cyan-900: var(--amino-cyan-d80);
+  /* RED PALETTE */
   --amino-red-l80: #fde5eb;
   --amino-red-l60: #f899b1;
   --amino-red-l40: #f5668a;
@@ -82,6 +119,7 @@
   --amino-red-700: var(--amino-red-d40);
   --amino-red-800: var(--amino-red-d60);
   --amino-red-900: var(--amino-red-d80);
+  /* ORANGE PALETTE */
   --amino-orange-l80: #fff0e5;
   --amino-orange-l60: #ffc499;
   --amino-orange-l40: #ffa666;
@@ -92,7 +130,6 @@
   --amino-orange-d60: #662b00;
   --amino-orange-d80: #39271c;
   --amino-orange-alpha: #ffa51e80;
-  --amino-orange-50: #fff0e5;
   --amino-orange-100: var(--amino-orange-l80);
   --amino-orange-200: var(--amino-orange-l60);
   --amino-orange-300: var(--amino-orange-l40);
@@ -102,6 +139,7 @@
   --amino-orange-700: var(--amino-orange-d40);
   --amino-orange-800: var(--amino-orange-d60);
   --amino-orange-900: var(--amino-orange-d80);
+  /* GREEN PALETTE */
   --amino-green-l80: #e5f9e5;
   --amino-green-l60: #99e799;
   --amino-green-l40: #66db66;
@@ -122,6 +160,7 @@
   --amino-green-700: var(--amino-green-d40);
   --amino-green-800: var(--amino-green-d60);
   --amino-green-900: var(--amino-green-d80);
+  /* PURPLE */
   --amino-purple-l80: #f5e5ff;
   --amino-purple-l60: #d599ff;
   --amino-purple-l40: #c066ff;
@@ -142,6 +181,7 @@
   --amino-purple-700: var(--amino-purple-d40);
   --amino-purple-800: var(--amino-purple-d60);
   --amino-purple-900: var(--amino-purple-d80);
+  /* YELLOW PALLETE */
   --amino-yellow-l80: #fff9e5;
   --amino-yellow-l60: #ffe999;
   --amino-yellow-l40: #ffdd66;
@@ -151,8 +191,6 @@
   --amino-yellow-d40: #997700;
   --amino-yellow-d60: #665000;
   --amino-yellow-d80: #39321c;
-  --amino-yellow-alpha: #fffbeb80;
-  --amino-yellow-50: #fffbeb;
   --amino-yellow-100: var(--amino-yellow-l80);
   --amino-yellow-200: var(--amino-yellow-l60);
   --amino-yellow-300: var(--amino-yellow-l40);
@@ -173,62 +211,57 @@
   --amino-amber-700: var(--amino-yellow-d40);
   --amino-amber-800: var(--amino-yellow-d60);
   --amino-amber-900: var(--amino-yellow-d80);
-  --amino-danger: var(--amino-red-base);
-  --amino-danger-dark: var(--amino-red-d20);
-  --amino-error: var(--amino-red-base);
-  --amino-primary: var(--amino-blue-base);
-  --amino-primary-light: var(--amino-blue-l20);
-  --amino-primary-dark: var(--amino-blue-d40);
-  --amino-success: var(--amino-green-l60);
-  --amino-success-dark: var(--amino-green-d20);
-  --amino-warning: var(--amino-amber-l80);
-  --amino-warning-dark: var(--amino-amber-d20);
-  --amino-glow-error: 0 0 0 1px var(--amino-red-base);
+  --amino-danger: var(--amino-red-500);
+  --amino-danger-dark: var(--amino-red-600);
+  --amino-error: var(--amino-red-500);
+  --amino-glow-error: 0 0 0 1px var(--amino-red-500);
   --amino-glow-blue: 0 0 0 1px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-alpha);
   --amino-glow-red: 0 0 0 1px var(--amino-red-alpha);
   --amino-glow-orange: 0 0 0 1px var(--amino-orange-alpha);
   --amino-glow-green: 0 0 0 1px var(--amino-green-alpha);
   --amino-glow-purple: 0 0 0 1px var(--amino-purple-alpha);
+  --amino-primary: var(--amino-blue-500);
+  --amino-primary-light: var(--amino-blue-400);
+  --amino-primary-dark: var(--amino-blue-700);
+  --amino-success: var(--amino-green-200);
+  --amino-success-dark: var(--amino-green-600);
+  --amino-warning: var(--amino-amber-100);
+  --amino-warning-dark: var(--amino-amber-600);
   --amino-page-background: white;
-  --amino-border-color: var(--amino-gray-l60);
+  --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-surface-color: white;
   --amino-surface-color-secondary: var(--amino-gray-50);
   --amino-text-light: white;
-  --amino-text-color: var(--amino-gray-d80);
+  --amino-text-color: var(--amino-gray-900);
   --amino-text-dark: var(--amino-text-color);
   --amino-input-background: white;
   --amino-size-xl: 56px;
   --amino-size-lg: 48px;
   --amino-size-md: 40px;
   --amino-size-sm: 32px;
-  --amino-radius-sm: 0.25rem;
-  --amino-radius: 0.375rem;
-  --amino-radius-lg: 0.5rem;
-  --amino-radius-xl: 0.75rem;
-  --amino-space: 1.5rem;
-  --amino-space-negative: -1.5rem;
-  --amino-space-half: 1rem;
-  --amino-space-half-negative: -1rem;
-  --amino-space-quarter: 0.5rem;
-  --amino-space-quarter-negative: -0.5rem;
-  --amino-space-double: 2.5rem;
-  --amino-space-double-negative: -2.5rem;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 264px;
   --amino-sidebar-color: white;
   --amino-header-color: white;
-  --amino-backdrop-color: var(--amino-gray-d80);
+  --amino-backdrop-color: var(--amino-gray-900);
   --amino-elevation-0: 0;
   --amino-elevation-100: 100;
   --amino-elevation-200: 200;
   --amino-elevation-300: 300;
   --amino-elevation-400: 400;
   --amino-elevation-500: 500;
-  --amino-dialog-elevation: var(--amino-elevation-l20);
-  --amino-toast-elevation: var(--amino-elevation-base);
-  --amino-appbar-elevation: var(--amino-elevation-base);
+  --amino-dialog-elevation: var(--amino-elevation-400);
+  --amino-toast-elevation: var(--amino-elevation-500);
+  --amino-appbar-elevation: var(--amino-elevation-500);
+  --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
+    Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+    Courier New, monospace;
+  /* SHADOW SETTING */
   --amino-v3-shadow-inset: inset 0px 2px 4px rgba(0, 0, 0, 0.06);
   --amino-v3-shadow-base: 0px 1px 2px rgba(0, 0, 0, 0.06),
     0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -245,136 +278,17 @@
   --amino-shadow-medium: var(--amino-v3-shadow-large);
   --amino-shadow-large: var(--amino-v3-shadow-xl);
   --amino-shadow-larger: var(--amino-v3-shadow-xxl);
+  /* helpers */
   --amino-border: 1px solid var(--amino-border-color);
-  --amino-border-blue: 1px solid var(--amino-blue-l20);
-  --amino-border-red: 1px solid var(--amino-red-l40);
-  --amino-border-cyan: 1px solid var(--amino-cyan-l40);
-  --amino-border-orange: 1px solid var(--amino-orange-l40);
-  --amino-border-green: 1px solid var(--amino-green-l40);
-  --amino-border-purple: 1px solid var(--amino-purple-l40);
-  --amino-border-amber: 1px solid var(--amino-amber-l40);
+  --amino-border-blue: 1px solid var(--amino-blue-400);
+  --amino-border-red: 1px solid var(--amino-red-300);
+  --amino-border-cyan: 1px solid var(--amino-cyan-300);
+  --amino-border-orange: 1px solid var(--amino-orange-300);
+  --amino-border-green: 1px solid var(--amino-green-300);
+  --amino-border-purple: 1px solid var(--amino-purple-300);
+  --amino-border-amber: 1px solid var(--amino-amber-300);
   --amino-border-transparent: 1px solid transparent;
-  --amino-font-size-3xl: 2.125rem;
-  --amino-font-size-2xl: 1.75rem;
-  --amino-font-size-xl: 1.375rem;
-  --amino-font-size-l: 1.125rem;
-  --amino-font-size-base: 0.875rem;
-  --amino-font-size-s: 0.75rem;
-  --amino-font-size-xs: 0.625rem;
-  --amino-text-xxl: var(--amino-font-size-3xl);
-  --amino-text-xl: var(--amino-font-size-2xl);
-  --amino-text-lg: var(--amino-font-size-xl);
-  --amino-text-md: var(--amino-font-size-l);
-  --amino-text-base: var(--amino-font-size-base);
-  --amino-text-sm: var(--amino-font-size-s);
-  --amino-text-xs: var(--amino-font-size-xs);
-  --amino-line-height-3xl: 118%;
-  --amino-line-height-2xl: 119%;
-  --amino-line-height-xl: 127%;
-  --amino-line-height-l: 133%;
-  --amino-line-height-base: 114%;
-  --amino-line-height-s: 133%;
-  --amino-line-height-xs: 120%;
-  --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-  --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
-    Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
-    Courier New, monospace;
-}
-
-/* Dark theme */
-[data-theme='dark'] {
-  --amino-gray-l80: #f5f5f6;
-  --amino-gray-l60: #d8d8db;
-  --amino-gray-l40: #c4c4c9;
-  --amino-gray-l20: #b1b1b7;
-  --amino-gray-base: #9d9da5;
-  --amino-gray-d20: #76767c;
-  --amino-gray-d40: #4f4f52;
-  --amino-gray-d60: #2f2f31;
-  --amino-gray-d80: #232326;
-  --amino-blue-l80: #e9ebff;
-  --amino-blue-l60: #b4c5ff;
-  --amino-blue-l40: #8fa7ff;
-  --amino-blue-l20: #698aff;
-  --amino-blue-base: #446dff;
-  --amino-blue-d20: #3657cc;
-  --amino-blue-d40: #294199;
-  --amino-blue-d60: #1b2c66;
-  --amino-blue-d80: #1d233b;
-  --amino-cyan-l80: #e9fcff;
-  --amino-cyan-l60: #b5f6ff;
-  --amino-cyan-l40: #8ff2ff;
-  --amino-cyan-l20: #6aedff;
-  --amino-cyan-base: #45e9ff;
-  --amino-cyan-d20: #37bacc;
-  --amino-cyan-d40: #298c99;
-  --amino-cyan-d60: #1c5d66;
-  --amino-cyan-d80: #1d363b;
-  --amino-red-l80: #fde5eb;
-  --amino-red-l60: #f9a8bd;
-  --amino-red-l40: #f77d9b;
-  --amino-red-l20: #f4517a;
-  --amino-red-base: #f12659;
-  --amino-red-d20: #c11e47;
-  --amino-red-d40: #911735;
-  --amino-red-d60: #600f24;
-  --amino-red-d80: #371822;
-  --amino-orange-l80: #fff0e5;
-  --amino-orange-l60: #ffd0ad;
-  --amino-orange-l40: #ffb885;
-  --amino-orange-l20: #ffa05c;
-  --amino-orange-base: #ff8933;
-  --amino-orange-d20: #cc6e29;
-  --amino-orange-d40: #99521f;
-  --amino-orange-d60: #663714;
-  --amino-orange-d80: #39271c;
-  --amino-green-l80: #e5f9e5;
-  --amino-green-l60: #a5eba8;
-  --amino-green-l40: #78e07d;
-  --amino-green-l20: #4bd651;
-  --amino-green-base: #1ecc26;
-  --amino-green-d20: #18a31e;
-  --amino-green-d40: #127a17;
-  --amino-green-d60: #0c520f;
-  --amino-green-d80: #17311a;
-  --amino-purple-l80: #f5e5ff;
-  --amino-purple-l60: #dba8ff;
-  --amino-purple-l40: #ca7dff;
-  --amino-purple-l20: #b851ff;
-  --amino-purple-base: #a626ff;
-  --amino-purple-d20: #851ecc;
-  --amino-purple-d40: #641799;
-  --amino-purple-d60: #420f66;
-  --amino-purple-d80: #2c183b;
-  --amino-yellow-l80: #fff9e5;
-  --amino-yellow-l60: #ffedad;
-  --amino-yellow-l40: #ffe485;
-  --amino-yellow-l20: #ffdb5c;
-  --amino-yellow-base: #ffd233;
-  --amino-yellow-d20: #cca829;
-  --amino-yellow-d40: #997e1f;
-  --amino-yellow-d60: #665414;
-  --amino-yellow-d80: #39321c;
-  --amino-page-background: var(--amino-gray-50);
-  --amino-surface-color: var(--amino-gray-base);
-  --amino-surface-color-secondary: var(--amino-gray-50);
-  --amino-border-color: var(--amino-gray-l60);
-  --amino-text-color: white;
-  --amino-input-background: var(--amino-gray-l40);
-  --amino-hover-color: var(--amino-gray-l20);
-  --amino-v3-shadow-inset: inset 0px 2px 4px rgba(0, 0, 0, 0.18);
-  --amino-v3-shadow-base: 0px 1px 2px rgba(0, 0, 0, 0.18),
-    0px 1px 3px rgba(0, 0, 0, 0.3);
-  --amino-v3-shadow-medium: 0px 2px 4px rgba(0, 0, 0, 0.18),
-    0px 4px 6px rgba(0, 0, 0, 0.3);
-  --amino-v3-shadow-large: 0px 10px 15px rgba(0, 0, 0, 0.3),
-    0px 4px 6px rgba(0, 0, 0, 0.15);
-  --amino-v3-shadow-xl: 0px 20px 25px rgba(0, 0, 0, 0.3),
-    0px 10px 10px rgba(0, 0, 0, 0.12);
-  --amino-v3-shadow-xxl: 0px 32px 50px rgba(0, 0, 0, 0.72);
-  --amino-backdrop-color: var(--amino-gray-l60);
-  --amino-header-color: var(--amino-gray-l80);
-  --amino-border: 1px solid var(--amino-border-color);
+  /* TODO: easing functions and timings */
+  /* TODO: test contrast ratios */
+  /* TODO: more accessible hover color */
 }

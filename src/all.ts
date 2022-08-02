@@ -604,6 +604,8 @@ import "./components/confirm-dialog/ConfirmDialog";
 import "./components/confirm-dialog/useConfirm";
 import "./components/cover-sheet/CoverSheet";
 import "./components/cover-sheet/CoverSheetActions";
+import "./components/currency/Currency";
+import "./components/currency/DualCurrency";
 import "./components/danger-zone/DangerZone";
 import "./components/dark-mode-wrapper/DarkModeWrapper";
 import "./components/dialog/Dialog";
@@ -657,6 +659,7 @@ import "./components/text/LegacyText";
 import "./components/toast/Toast";
 import "./components/toast/ToastContext";
 import "./components/tooltip/Tooltip";
+import "./styles/constants/theme";
 import "./icons/flags/FlagIndex";
 import "./icons/IconIndex";
 
