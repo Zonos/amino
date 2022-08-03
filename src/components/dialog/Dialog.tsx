@@ -161,7 +161,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       <Header>
         <Text type="subheader">{label}</Text>
         <Close onClick={onClose}>
-          <RemoveCircleDuotoneIcon color="gray-l20" size={32} />
+          <RemoveCircleDuotoneIcon size={32} />
         </Close>
       </Header>
       <Content ref={ref}>{children}</Content>
