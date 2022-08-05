@@ -41,6 +41,7 @@ const StyledItem = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 64px;
   &:hover {
     background: var(--amino-gray-100);
     border: 1px solid var(--amino-gray-200);
