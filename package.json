@@ -116,11 +116,11 @@
     ]
   },
   "scripts": {
-    "prebuild:theme": "echo 'start generating styles'",
+    "prebuild:theme": "echo 'start generating styles' && yarn test:prod",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "postbuild:theme": "echo 'done generating styles'",
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
-    "build": "yarn lint:prod && yarn test:prod && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
+    "build": "yarn lint:prod && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
     "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
     "prebuild:dts": "echo 'building dts'",
     "build:dts": "ttsc -p ./tsconfig.emitDeclarationOnly.json",
@@ -141,9 +141,9 @@
     "svgs:react:icons": "ts-node ./svgReact/icons",
     "start": "yarn build-storybook && yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "version:patch": "npm version patch -m 'Bump version %s' && yarn push:tags",
-    "version:minor": "npm version minor -m 'Bump version %s' && yarn push:tags",
-    "version:major": "npm version major -m 'Bump version %s' && yarn push:tags",
+    "version:patch": "yarn build && npm version patch -m 'Bump version %s' && yarn push:tags",
+    "version:minor": "yarn build && npm version minor -m 'Bump version %s' && yarn push:tags",
+    "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",
     "push:tags": "git push --follow-tags"
   }
 }

@@ -28,6 +28,7 @@ test(`Have and don't have jsdocs comment`, async () => {
   expect(result).toMatchInlineSnapshot(`
     "export const theme = {
       /* NO JSDOCS COMMENT */
+      /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
       /** @info #e9ebff */
       'blue-l80': 'var(--amino-blue-l80)',
 
@@ -116,8 +117,10 @@ test(`Long content with backtick`, async () => {
   const result = await generateConstantContent(input);
   expect(result).toMatchInlineSnapshot(`
     "export const fontSize = {
+      /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
       /** @info 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif */
       'font-sans': 'var(--amino-font-sans)',
+      /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
       /** @info Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace */
       'font-mono': 'var(--amino-font-mono)',
     };

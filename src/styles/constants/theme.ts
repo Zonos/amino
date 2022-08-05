@@ -1,32 +1,46 @@
 export const theme = {
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info all 0.2s ease-in-out 0s */
   transition: 'var(--amino-transition)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 16px */
   'type-scale-base': 'var(--amino-type-scale-base)',
 
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #0c0c0d */
   black: 'var(--amino-black)',
   /* GRAY PALETTE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f5f5f6 */
   'gray-l80': 'var(--amino-gray-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #eaeaec */
   'gray-l60': 'var(--amino-gray-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #d6d6d9 */
   'gray-l40': 'var(--amino-gray-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #b7b7bd */
   'gray-l20': 'var(--amino-gray-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #9898a0 */
   'gray-base': 'var(--amino-gray-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #7a7a80 */
   'gray-d20': 'var(--amino-gray-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #5b5b60 */
   'gray-d40': 'var(--amino-gray-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #3d3d40 */
   'gray-d60': 'var(--amino-gray-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #232326 */
   'gray-d80': 'var(--amino-gray-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f9fafb */
   'gray-alpha': 'var(--amino-gray-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f9fafb */
   'gray-50': 'var(--amino-gray-50)',
   /** @deprecated use gray-l80 instead */
@@ -49,26 +63,37 @@ export const theme = {
   'gray-900': 'var(--amino-gray-900)',
 
   /* BLUE PALETTE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #e9ebff */
   'blue-l80': 'var(--amino-blue-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #a7afff */
   'blue-l60': 'var(--amino-blue-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #7b86ff */
   'blue-l40': 'var(--amino-blue-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #4f5eff */
   'blue-l20': 'var(--amino-blue-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #2337ff */
   'blue-base': 'var(--amino-blue-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #1c2aca */
   'blue-d20': 'var(--amino-blue-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #152099 */
   'blue-d40': 'var(--amino-blue-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #0f1666 */
   'blue-d60': 'var(--amino-blue-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #1d233b */
   'blue-d80': 'var(--amino-blue-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #2190ff80 */
   'blue-alpha': 'var(--amino-blue-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ebf5ff */
   'blue-50': 'var(--amino-blue-50)',
   /** @deprecated use blue-l80 instead */
@@ -91,26 +116,37 @@ export const theme = {
   'blue-900': 'var(--amino-blue-900)',
 
   /* CYAN PALETTE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #e9fcff */
   'cyan-l80': 'var(--amino-cyan-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #a5edf6 */
   'cyan-l60': 'var(--amino-cyan-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #77e3f2 */
   'cyan-l40': 'var(--amino-cyan-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #4adaed */
   'cyan-l20': 'var(--amino-cyan-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #1dd1e9 */
   'cyan-base': 'var(--amino-cyan-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #17a7ba */
   'cyan-d20': 'var(--amino-cyan-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #117d8c */
   'cyan-d40': 'var(--amino-cyan-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #0c545d */
   'cyan-d60': 'var(--amino-cyan-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #1d363b */
   'cyan-d80': 'var(--amino-cyan-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #00dfe380 */
   'cyan-alpha': 'var(--amino-cyan-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #e9fcff */
   'cyan-50': 'var(--amino-cyan-50)',
   /** @deprecated --*/
@@ -133,26 +169,37 @@ export const theme = {
   'cyan-900': 'var(--amino-cyan-900)',
 
   /* RED PALETTE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fde5eb */
   'red-l80': 'var(--amino-red-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f899b1 */
   'red-l60': 'var(--amino-red-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f5668a */
   'red-l40': 'var(--amino-red-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f13363 */
   'red-l20': 'var(--amino-red-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ee003c */
   'red-base': 'var(--amino-red-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #be0030 */
   'red-d20': 'var(--amino-red-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #8f0024 */
   'red-d40': 'var(--amino-red-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #5f0018 */
   'red-d60': 'var(--amino-red-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #371822 */
   'red-d80': 'var(--amino-red-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #e0451a80 */
   'red-alpha': 'var(--amino-red-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fef2f2 */
   'red-50': 'var(--amino-red-50)',
   /** @deprecated use red-l80 instead */
@@ -175,26 +222,37 @@ export const theme = {
   'red-900': 'var(--amino-red-900)',
 
   /* ORANGE PALETTE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fff0e5 */
   'orange-l80': 'var(--amino-orange-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffc499 */
   'orange-l60': 'var(--amino-orange-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffa666 */
   'orange-l40': 'var(--amino-orange-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ff8933 */
   'orange-l20': 'var(--amino-orange-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ff6b00 */
   'orange-base': 'var(--amino-orange-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #cc5600 */
   'orange-d20': 'var(--amino-orange-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #994000 */
   'orange-d40': 'var(--amino-orange-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #662b00 */
   'orange-d60': 'var(--amino-orange-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #39271c */
   'orange-d80': 'var(--amino-orange-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffa51e80 */
   'orange-alpha': 'var(--amino-orange-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fff0e5 */
   'orange-50': 'var(--amino-orange-50)',
   /** @deprecated use orange-l80 instead */
@@ -217,26 +275,37 @@ export const theme = {
   'orange-900': 'var(--amino-orange-900)',
 
   /* GREEN PALETTE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #e5f9e5 */
   'green-l80': 'var(--amino-green-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #99e799 */
   'green-l60': 'var(--amino-green-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #66db66 */
   'green-l40': 'var(--amino-green-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #33cf33 */
   'green-l20': 'var(--amino-green-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #00c300 */
   'green-base': 'var(--amino-green-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #009c00 */
   'green-d20': 'var(--amino-green-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #007500 */
   'green-d40': 'var(--amino-green-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #004e00 */
   'green-d60': 'var(--amino-green-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #17311a */
   'green-d80': 'var(--amino-green-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ecfdf580 */
   'green-alpha': 'var(--amino-green-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ecfdf5 */
   'green-50': 'var(--amino-green-50)',
   /** @deprecated use green-l80 instead */
@@ -259,26 +328,37 @@ export const theme = {
   'green-900': 'var(--amino-green-900)',
 
   /* PURPLE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f5e5ff */
   'purple-l80': 'var(--amino-purple-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #d599ff */
   'purple-l60': 'var(--amino-purple-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #c066ff */
   'purple-l40': 'var(--amino-purple-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ab33ff */
   'purple-l20': 'var(--amino-purple-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #9600ff */
   'purple-base': 'var(--amino-purple-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #7800cc */
   'purple-d20': 'var(--amino-purple-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #5a0099 */
   'purple-d40': 'var(--amino-purple-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #3c0066 */
   'purple-d60': 'var(--amino-purple-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #2c183b */
   'purple-d80': 'var(--amino-purple-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f5f3ff80 */
   'purple-alpha': 'var(--amino-purple-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #f5f3ff */
   'purple-50': 'var(--amino-purple-50)',
   /** @deprecated use purple-l80 instead */
@@ -301,26 +381,37 @@ export const theme = {
   'purple-900': 'var(--amino-purple-900)',
 
   /* YELLOW PALLETE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fff9e5 */
   'yellow-l80': 'var(--amino-yellow-l80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffe999 */
   'yellow-l60': 'var(--amino-yellow-l60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffdd66 */
   'yellow-l40': 'var(--amino-yellow-l40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffd233 */
   'yellow-l20': 'var(--amino-yellow-l20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #ffc700 */
   'yellow-base': 'var(--amino-yellow-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #cc9f00 */
   'yellow-d20': 'var(--amino-yellow-d20)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #997700 */
   'yellow-d40': 'var(--amino-yellow-d40)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #665000 */
   'yellow-d60': 'var(--amino-yellow-d60)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #39321c */
   'yellow-d80': 'var(--amino-yellow-d80)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fffbeb80 */
   'yellow-alpha': 'var(--amino-yellow-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fffbeb */
   'yellow-50': 'var(--amino-yellow-50)',
   /** @deprecated use yellow-l80 instead */
@@ -341,8 +432,10 @@ export const theme = {
   'yellow-800': 'var(--amino-yellow-800)',
   /** @deprecated use yellow-d80 instead */
   'yellow-900': 'var(--amino-yellow-900)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fffbeb80 */
   'amber-alpha': 'var(--amino-amber-alpha)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info #fffbeb */
   'amber-50': 'var(--amino-amber-50)',
   /** @deprecated use yellow-l80 instead */
@@ -365,70 +458,100 @@ export const theme = {
   'amber-900': 'var(--amino-amber-900)',
 
   /* COMMON COLOR */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-red-base) */
   danger: 'var(--amino-danger)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-red-d20) */
   'danger-dark': 'var(--amino-danger-dark)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-red-base) */
   error: 'var(--amino-error)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-blue-base) */
   primary: 'var(--amino-primary)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-blue-l20) */
   'primary-light': 'var(--amino-primary-light)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-blue-d40) */
   'primary-dark': 'var(--amino-primary-dark)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-green-l60) */
   success: 'var(--amino-success)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-green-d20) */
   'success-dark': 'var(--amino-success-dark)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-amber-l80) */
   warning: 'var(--amino-warning)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-amber-d20) */
   'warning-dark': 'var(--amino-warning-dark)',
 
   /* GLOW COLOR */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-red-base) */
   'glow-error': 'var(--amino-glow-error)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-primary) */
   'glow-blue': 'var(--amino-glow-blue)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-cyan-alpha) */
   'glow-cyan': 'var(--amino-glow-cyan)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-red-alpha) */
   'glow-red': 'var(--amino-glow-red)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-orange-alpha) */
   'glow-orange': 'var(--amino-glow-orange)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-green-alpha) */
   'glow-green': 'var(--amino-glow-green)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 0 0 1px var(--amino-purple-alpha) */
   'glow-purple': 'var(--amino-glow-purple)',
 
   /* LAYOUT COLOR */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info white */
   'page-background': 'var(--amino-page-background)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-gray-l60) */
   'border-color': 'var(--amino-border-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-gray-50) */
   'hover-color': 'var(--amino-hover-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info white */
   'surface-color': 'var(--amino-surface-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-gray-50) */
   'surface-color-secondary': 'var(--amino-surface-color-secondary)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info white */
   'text-light': 'var(--amino-text-light)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-gray-d80) */
   'text-color': 'var(--amino-text-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-text-color) */
   'text-dark': 'var(--amino-text-dark)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info white */
   'input-background': 'var(--amino-input-background)',
 
   /* BUTTON SIZE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 56px */
   'size-xl': 'var(--amino-size-xl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 48px */
   'size-lg': 'var(--amino-size-lg)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 40px */
   'size-md': 'var(--amino-size-md)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 32px */
   'size-sm': 'var(--amino-size-sm)',
 
@@ -460,26 +583,37 @@ export const theme = {
   'space-double-negative': 'var(--amino-space-double-negative)',
 
   /* LAYOUT STYLE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 55px */
   'appbar-height': 'var(--amino-appbar-height)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 264px */
   'sidebar-width': 'var(--amino-sidebar-width)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info white */
   'sidebar-color': 'var(--amino-sidebar-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info white */
   'header-color': 'var(--amino-header-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-gray-d80) */
   'backdrop-color': 'var(--amino-backdrop-color)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0 */
   'elevation-0': 'var(--amino-elevation-0)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 100 */
   'elevation-100': 'var(--amino-elevation-100)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 200 */
   'elevation-200': 'var(--amino-elevation-200)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 300 */
   'elevation-300': 'var(--amino-elevation-300)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 400 */
   'elevation-400': 'var(--amino-elevation-400)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 500 */
   'elevation-500': 'var(--amino-elevation-500)',
   /** @info 400 */
@@ -490,16 +624,22 @@ export const theme = {
   'appbar-elevation': 'var(--amino-appbar-elevation)',
 
   /* BOX SHADOW */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info inset 0px 2px 4px rgba(0, 0, 0, 0.06) */
   'v3-shadow-inset': 'var(--amino-v3-shadow-inset)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1) */
   'v3-shadow-base': 'var(--amino-v3-shadow-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1) */
   'v3-shadow-medium': 'var(--amino-v3-shadow-medium)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05) */
   'v3-shadow-large': 'var(--amino-v3-shadow-large)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0px 20px 25px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.04) */
   'v3-shadow-xl': 'var(--amino-v3-shadow-xl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 0px 32px 50px rgba(0, 0, 0, 0.24) */
   'v3-shadow-xxl': 'var(--amino-v3-shadow-xxl)',
   /* LEGACY BOX SHADOW */
@@ -517,22 +657,31 @@ export const theme = {
   'shadow-larger': 'var(--amino-shadow-larger)',
 
   /* BORDER */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-border-color) */
   border: 'var(--amino-border)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-blue-l20) */
   'border-blue': 'var(--amino-border-blue)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-red-l40) */
   'border-red': 'var(--amino-border-red)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-cyan-l40) */
   'border-cyan': 'var(--amino-border-cyan)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-orange-l40) */
   'border-orange': 'var(--amino-border-orange)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-green-l40) */
   'border-green': 'var(--amino-border-green)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-purple-l40) */
   'border-purple': 'var(--amino-border-purple)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid var(--amino-amber-l40) */
   'border-amber': 'var(--amino-border-amber)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 1px solid transparent */
   'border-transparent': 'var(--amino-border-transparent)',
 
@@ -552,40 +701,56 @@ export const theme = {
   'font-size-xs': 'var(--amino-font-size-xs)',
 
   /* LEGACY FONT SIZE */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-3xl) */
   'text-xxl': 'var(--amino-text-xxl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-2xl) */
   'text-xl': 'var(--amino-text-xl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-xl) */
   'text-lg': 'var(--amino-text-lg)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-l) */
   'text-md': 'var(--amino-text-md)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-base) */
   'text-base': 'var(--amino-text-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-s) */
   'text-sm': 'var(--amino-text-sm)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info var(--amino-font-size-xs) */
   'text-xs': 'var(--amino-text-xs)',
 
   /* LINE HEIGHT */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 118% */
   'line-height-3xl': 'var(--amino-line-height-3xl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 119% */
   'line-height-2xl': 'var(--amino-line-height-2xl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 127% */
   'line-height-xl': 'var(--amino-line-height-xl)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 133% */
   'line-height-l': 'var(--amino-line-height-l)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 114% */
   'line-height-base': 'var(--amino-line-height-base)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 133% */
   'line-height-s': 'var(--amino-line-height-s)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 120% */
   'line-height-xs': 'var(--amino-line-height-xs)',
 
   /* FONTS */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif */
   'font-sans': 'var(--amino-font-sans)',
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace */
   'font-mono': 'var(--amino-font-mono)',
 } as const;
