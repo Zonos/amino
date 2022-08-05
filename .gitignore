@@ -87,4 +87,3 @@ svgReact/svgs
 # Build
 *.map
 build.mjs
-src/styles/constants
