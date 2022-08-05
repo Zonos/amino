@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -22,6 +22,7 @@
     "@types/node": "^17.0.33",
     "@types/react": "17.0.41",
     "@types/react-dom": "17.0.13",
+    "@types/react-simple-maps": "^1.0.8",
     "@types/styled-components": "5.1.24",
     "@types/svgo": "^2.6.3",
     "@types/uuid": "^8.3.4",
@@ -80,8 +81,13 @@
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.8.5",
     "@radix-ui/react-slider": "^0.1.4",
+    "@types/topojson-client": "^3.1.1",
+    "d3-geo": "^3.0.1",
     "react-dropzone": "^12.0.4",
     "react-select": "^5.2.2",
+    "react-simple-maps": "^3.0.0",
+    "swr": "^1.3.0",
+    "topojson-client": "^3.1.0",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
@@ -110,11 +116,11 @@
     ]
   },
   "scripts": {
-    "prebuild:theme": "echo 'start generating styles'",
+    "prebuild:theme": "echo 'start generating styles' && yarn test:prod",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "postbuild:theme": "echo 'done generating styles'",
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
-    "build": "yarn lint:prod && yarn test:prod && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
+    "build": "yarn lint:prod && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
     "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
     "prebuild:dts": "echo 'building dts'",
     "build:dts": "ttsc -p ./tsconfig.emitDeclarationOnly.json",
@@ -130,13 +136,14 @@
     "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
     "proxy": "local-ssl-proxy --source 6007 --target 6006",
     "svgs:format": "eslint --fix svgReact --ext .tsx -c ./.eslintrc.prod.cjs",
-    "svgs:react:flags": "ts-node ./svgReact/flags",
+    "presvgs:react:flags": "ts-node ./svgReact/flags/runGenerateSvgs.ts",
+    "svgs:react:flags": "ts-node ./svgReact/flags/runCreateComponentsFromSvgs.ts",
     "svgs:react:icons": "ts-node ./svgReact/icons",
     "start": "yarn build-storybook && yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "version:patch": "npm version patch -m 'Bump version %s' && yarn push:tags",
-    "version:minor": "npm version minor -m 'Bump version %s' && yarn push:tags",
-    "version:major": "npm version major -m 'Bump version %s' && yarn push:tags",
+    "version:patch": "yarn build && npm version patch -m 'Bump version %s' && yarn push:tags",
+    "version:minor": "yarn build && npm version minor -m 'Bump version %s' && yarn push:tags",
+    "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",
     "push:tags": "git push --follow-tags"
   }
 }

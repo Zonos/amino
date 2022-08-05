@@ -1,7 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Case light theme 1`] = `
-"export const theme = {
+export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   /** @info all 0.2s ease-in-out 0s */
   transition: 'var(--amino-transition)',
@@ -761,5 +758,3 @@ exports[`Case light theme 1`] = `
 export type ThemeKey = keyof typeof theme;
 
 export type ThemeValue = typeof theme[ThemeKey];
-"
-`;
