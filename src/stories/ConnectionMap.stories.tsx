@@ -102,22 +102,10 @@ ConnectionMap400Scale.parameters = {
   },
 };
 
-export const ConnectionMap200Scale = ConnectionMapTemplate.bind({});
-ConnectionMap200Scale.args = {
-  from: 'TN',
-  to: 'MG',
-};
-ConnectionMap200Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
-
 export const ConnectionMap150Scale = ConnectionMapTemplate.bind({});
 ConnectionMap150Scale.args = {
   from: 'US',
-  to: 'KZ',
+  to: 'JP',
 };
 ConnectionMap150Scale.parameters = {
   design: {

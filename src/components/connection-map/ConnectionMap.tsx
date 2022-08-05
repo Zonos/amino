@@ -38,10 +38,6 @@ const getScaleMultiple = ({
     // US to GL (Greenland) = .68
     return 400;
   }
-  if (distance < 1.5 && verticalDistance < 55) {
-    // US to CH (Switzerland) = 1.23
-    return 200;
-  }
   if (distance < 1.75 && verticalDistance < 60) {
     // US to KZ (Kazakhstan) = 1.509
     return 150;
