@@ -80,6 +80,10 @@ BasicRichRadio.args = {
       subtitle: 'Item 3 subtitle',
       value: 'item3',
     },
+    {
+      label: 'Item 4',
+      value: 'item4',
+    },
   ],
 };
 BasicRichRadio.parameters = {
@@ -127,6 +131,10 @@ CustomRichRadioOption.args = {
       label: 'Item 3',
       subtitle: 'Item 3 subtitle',
       value: 'item3',
+    },
+    {
+      label: 'Item 4',
+      value: 'item4',
     },
   ],
 };
