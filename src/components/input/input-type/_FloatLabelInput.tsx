@@ -1,5 +1,6 @@
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
