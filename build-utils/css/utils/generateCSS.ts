@@ -69,7 +69,7 @@ export const generateDarkThemeContent = async <
  * @info light theme snapshot name: theme.css
  * @info dark theme snapshot name: dark-theme.css
  */
-export const generateSnapshots = async () => {
+export const generateThemeCapture = async () => {
   const themeContent = await generateLightThemeContent(theme);
   const darkThemeContent = await generateDarkThemeContent(darkStyleList);
   const rootFolder = process.cwd();
