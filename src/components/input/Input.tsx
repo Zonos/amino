@@ -40,7 +40,7 @@ type DateInputEventHandler = (
   e: Omit<React.ChangeEvent<HTMLInputElement>, 'target'> & {
     target: Omit<EventTarget, 'value'> & {
       /** @desc The parsed value is always formatted `yyyy-mm-dd`. Ex: '2022-12-28' */
-      value: `${number}-${number}-${number}`;
+      value: `${number}-${number}-${number}` | '';
     };
   }
 ) => void;
