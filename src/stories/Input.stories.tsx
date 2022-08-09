@@ -129,6 +129,18 @@ NumberInput.parameters = {
   },
 };
 
+export const DateInput = Template.bind({});
+DateInput.args = {
+  label: 'Date input',
+  type: 'date',
+};
+DateInput.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+  },
+};
+
 export const InputWithHelpText = Template.bind({});
 InputWithHelpText.args = {
   label: 'Example input',

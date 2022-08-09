@@ -4,7 +4,7 @@ This script is primarily created for generating accessible style constants and c
 Main script for this building process is `build-utils/css/buildTheme.ts`.
   
 ## **Building process overview**
-**NOTE**: Because of running `'yarn build:theme'` will overwrite last snapshot with latest content, before you run a script, run `yarn test` first to make sure the current constant `theme.ts` and `_darkTheme.ts` in `build-utils/css/constants` doesn't have conflict with last theme snapshot. If there is conflict of last theme snapshot with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
+**NOTE**: Because of running `'yarn build:theme'` will overwrite last capture with latest content, before you run a script, run `yarn test` first to make sure the current constant `theme.ts` and `_darkTheme.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
     
 ### **When you run the script, it will**:
 1. Generate css variable style constant
@@ -36,9 +36,9 @@ Main script for this building process is `build-utils/css/buildTheme.ts`.
 2. Generate css file (theme.css)
     - Get contents from `build-utils/css/constants` (theme.ts and _darkTheme.ts), format and generate `theme.css` and put in `src/styles` folder
 
-3. Generate theme css snapshot (These snapshots will be used for unit testing when running `yarn test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
-    - Generate light theme css snapshot get from `build-utils/css/constants/theme.ts`. New file will be located at `build-utils/css/utils/__snapshots__/theme.css`
-    - Generate dark theme css snapshot get from `build-utils/css/constants/_darkTheme.ts`. New file will be located at `build-utils/css/utils/__snapshots__/dark-theme.css`
+3. Generate theme css capture (These captures will be used for unit testing when running `yarn test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
+    - Generate light theme css capture get from `build-utils/css/constants/theme.ts`. New file will be located at `build-utils/css/utils/__snapshots__/theme.css`
+    - Generate dark theme css capture get from `build-utils/css/constants/_darkTheme.ts`. New file will be located at `build-utils/css/utils/__snapshots__/dark-theme.css`
 
 ## **How to**
 Main folder to pay attention is `build-utils/css/constants/*.ts` to add a new or update an existing css variable of Amino.

@@ -3,6 +3,7 @@ import React, { InputHTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { HelpText, HelpTextProps } from '../help-text/HelpText';
+import { DateInput } from './input-type/_DateInput';
 import {
   FloatLabelInput,
   FloatLabelInputProps,
@@ -78,6 +79,30 @@ export const Input = ({
       case 'password':
         return (
           <PasswordInput
+            autoFocus={autoFocus}
+            className={className}
+            disabled={disabled}
+            error={error}
+            inputMode={inputMode}
+            label={label}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            pattern={pattern}
+            placeholder={placeholder}
+            prefix={prefix || inputPrefix}
+            readOnly={readOnly}
+            required={required}
+            suffix={suffix || inputSuffix}
+            tabIndex={tabIndex}
+            size={size}
+            value={value || ''}
+            valuePrefix={valuePrefix}
+            {...props}
+          />
+        );
+      case 'date':
+        return (
+          <DateInput
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
