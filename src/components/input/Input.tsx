@@ -36,19 +36,31 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 `;
 
-type InputType = {
+type DateInputEventHandler = (
+  e: Omit<React.ChangeEvent<HTMLInputElement>, 'target'> & {
+    target: Omit<EventTarget, 'value'> & {
+      /** @desc The parsed value is always formatted `yyyy-mm-dd`. Ex: '2022-12-28' */
+      value: `${number}-${number}-${number}` | '';
+    };
+  }
+) => void;
+
+type InputType<T extends string> = {
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
-
+  type?: T;
+  onChange: T extends 'date'
+    ? DateInputEventHandler
+    : React.ChangeEventHandler<HTMLInputElement>;
   inputSuffix?: ReactNode;
   inputPrefix?: ReactNode;
-} & FloatLabelInputProps &
+} & Omit<FloatLabelInputProps, 'onChange' | 'type'> &
   HelpTextProps;
 
-export type InputProps = InputType &
-  Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
+export type InputProps<T extends string = string> = InputType<T> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType<T>>;
 
-export const Input = ({
+export const Input = <T extends string>({
   autoFocus,
   className,
   disabled,
@@ -73,7 +85,7 @@ export const Input = ({
   valuePrefix,
   width,
   ...props
-}: InputProps) => {
+}: InputProps<T>) => {
   const renderInput = () => {
     switch (type) {
       case 'password':
@@ -103,6 +115,7 @@ export const Input = ({
       case 'date':
         return (
           <DateInput
+            type="date"
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
