@@ -23,35 +23,10 @@ const Map = styled.div`
   }
 `;
 
-const getScaleMultiple = ({
-  distance,
-  verticalDistance,
-}: {
-  distance: number;
-  verticalDistance: number;
-}) => {
-  if (distance < 0.5 && verticalDistance < 45) {
-    // US to MX (Mexico) = .36
-    return 700;
-  }
-  if (distance < 1 && verticalDistance < 50) {
-    // US to GL (Greenland) = .68
-    return 400;
-  }
-  if (distance < 1.75 && verticalDistance < 60) {
-    // US to KZ (Kazakhstan) = 1.509
-    return 150;
-  }
-  if (distance < 2 && verticalDistance < 65) {
-    // US to SA (Saudia Arabia) = 1.83
-    return 100;
-  }
-  if (distance < 2.5 && verticalDistance < 70) {
-    // US to AU (Australia) = 2.27
-    return 75;
-  }
-  // US to MG (Madagascar) = 2.52
-  return 50;
+const getScale = (distance: number, verticalDistance: number) => {
+  const verticalScaling = 80 * Math.abs(verticalDistance / distance);
+
+  return -72.4 * distance + 302 - verticalScaling;
 };
 
 type Props = {
@@ -71,6 +46,7 @@ export const ConnectionMap = ({
 }: Props) => {
   const [center, setCenter] = useState<[number, number]>([0, 0]);
   const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
 
   const geographies = useMemo(() => {
     if (worldData) {
@@ -95,17 +71,34 @@ export const ConnectionMap = ({
   );
 
   useEffect(() => {
+    /**
+     * @link https://www.react-simple-maps.io/docs/composable-map/
+     * Do some math to make sure the map looks good in all positions
+     */
     if (geographies) {
-      const [x1, y1] = coordsForIso(to);
-      const [x2, y2] = coordsForIso(from);
+      const [x1, y1] = coordsForIso(from);
+      const [x2, y2] = coordsForIso(to);
 
       const distance = geoDistance([x1, y1], [x2, y2]);
-      const midpoint: [number, number] = [(x1 + x2) / 2, (y1 + y2) / 2];
+      const verticalDistance = geoDistance([0, y1], [0, y2]);
 
-      setCenter(midpoint);
-      const verticalDistance = Math.abs(y1 - y2);
-      const scaleMultiple = getScaleMultiple({ distance, verticalDistance });
-      setScale(distance * scaleMultiple);
+      setScale(getScale(distance, verticalDistance));
+
+      const [midX, midY]: [number, number] = [(x1 + x2) / 2, (y1 + y2) / 2];
+      // Use rotation for X instead of center as it looks better. Y rotation skews the projection unpleasantly though, so use the Y center primarily.
+      setCenter([0, midY]);
+
+      let rotateX = -midX;
+      // If we need to flip completely because the shorter arc is on the opposite side
+      if (Math.abs(x1 - x2) > 180) {
+        rotateX += 180;
+      }
+
+      // High Y centers make the arc flattened and it looks bad, so solve that edge case, by rotating Y by a percent of Y coord if the value is large enough.
+      const rotateY =
+        Math.abs(midY) > 55 ? distance * -(Math.abs(midY) - 50) : 0;
+      // Figure out rotation based on midpoint
+      setRotation([rotateX, rotateY, 0]);
     }
   }, [geographies, coordsForIso, to, from]);
 
@@ -120,6 +113,7 @@ export const ConnectionMap = ({
         projectionConfig={{
           scale,
           center,
+          rotate: rotation,
         }}
         height={height}
       >
