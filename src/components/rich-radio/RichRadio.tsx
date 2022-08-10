@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
 import { VStack } from 'src/components/stack/VStack';
@@ -117,6 +117,10 @@ export const RichRadio = <T extends string>({
   activeIcon,
 }: RichRadioProps<T>) => {
   const [selectedValue, setSelectedValue] = useState(value);
+
+  useEffect(() => {
+    setSelectedValue(value);
+  }, [value]);
 
   const handleChange = (v: T) => {
     setSelectedValue(v);

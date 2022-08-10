@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { useEffect } from '@storybook/addons';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { RichRadio, RichRadioProps } from 'src/components/rich-radio/RichRadio';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
@@ -40,16 +41,25 @@ const Template: Story<RichRadioProps> = ({
   value,
   icon,
   activeIcon,
-}: RichRadioProps) => (
-  <RichRadio
-    value={value}
-    onChange={onChange}
-    renderCustomText={renderCustomText}
-    items={items}
-    icon={icon}
-    activeIcon={activeIcon}
-  />
-);
+}: RichRadioProps) => {
+  const [radioValue, setRadioValue] = useState('');
+
+  // This effect mimics data fetching where the component is rendered before the data is populated
+  useEffect(() => {
+    setRadioValue(value);
+  }, [value]);
+
+  return (
+    <RichRadio
+      value={radioValue}
+      onChange={onChange}
+      renderCustomText={renderCustomText}
+      items={items}
+      icon={icon}
+      activeIcon={activeIcon}
+    />
+  );
+};
 
 export const BasicRichRadio = Template.bind({});
 BasicRichRadio.args = {
@@ -85,6 +95,7 @@ BasicRichRadio.args = {
       value: 'item4',
     },
   ],
+  value: 'item1',
 };
 BasicRichRadio.parameters = {
   design: {
