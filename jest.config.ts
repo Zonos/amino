@@ -9,12 +9,16 @@ const config: InitialOptionsTsJest = {
     'src/**/*.tsx',
     '.storybook/**/*.ts',
   ],
+  // These modules needed to be transformed :shrug:
+  transformIgnorePatterns: ['/node_modules/(?!uuid|d3-.*|internmap)'],
   modulePathIgnorePatterns: ['dist'],
   setupFilesAfterEnv: ['./jest/setupJestMock.ts'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)?$': 'ts-jest',
     '^.+\\.svg$': 'jest-transformer-svg',
+    '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
   },
+  testEnvironment: 'jsdom',
   globals: {
     'ts-jest': {
       isolatedModules: true,
