@@ -31,7 +31,14 @@ export const generateConstantContent = async (content: string) => {
      */
     .replace(
       /(?<!\/\*\*.*\/)(\n\s*)'?([a-zA-Z0-9-]+)'?:\s+['`](.*)['`],*/gm,
-      "$1/* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */\n/** @info $3 */\n'$2': 'var(--amino-$2)',"
+      "$1/** @info $3 */\n'$2': 'var(--amino-$2)',"
+    )
+    /**
+     * @desc find and add Warning comment into all key value pairs
+     */
+    .replace(
+      /(?<=\/\*\*.*\/)(\n\s*)('?[a-zA-Z0-9-]+'?:.+,*)/gm,
+      "$1/* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */\n$2"
     );
 
   /** @desc format file with TScript formater */
