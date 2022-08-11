@@ -8,18 +8,14 @@ import React, {
 
 import { AnimatePresence } from 'framer-motion';
 
-import { Toast } from './Toast';
+import { Toast, ToastProps } from './Toast';
 
 export const ToastContext = createContext((toast: ReactNode): void => {
   const defaultFunction = (options: ReactNode) => options;
   defaultFunction(toast);
 });
 
-type Props = {
-  children: ReactNode;
-};
-
-export const ToastContextProvider = ({ children }: Props) => {
+export const ToastContextProvider = ({ children, intent }: ToastProps) => {
   const [toasts, setToasts] = useState<ReactNode[]>([]);
 
   useEffect(() => {
@@ -42,14 +38,20 @@ export const ToastContextProvider = ({ children }: Props) => {
     <AnimatePresence>
       <ToastContext.Provider value={addToast}>
         {children}
-        <div className="toasts-wrapper">
-          <AnimatePresence>
-            {toasts.map(toast => (
-              <Toast toastKey={`toast-${toast}`} key={`toast-${toast}`}>
-                {toast}
-              </Toast>
-            ))}
-          </AnimatePresence>
+        <div className="toast-container">
+          <div className="toasts-wrapper">
+            <AnimatePresence>
+              {toasts.map(toast => (
+                <Toast
+                  toastKey={`toast-${toast}`}
+                  key={`toast-${toast}`}
+                  intent={intent}
+                >
+                  {toast}
+                </Toast>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
       </ToastContext.Provider>
     </AnimatePresence>

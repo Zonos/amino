@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { ToastProps } from 'src/components/toast/Toast';
 import { ToastContextProvider } from 'src/components/toast/ToastContext';
 import { withDesign } from 'storybook-addon-designs';
 
@@ -14,8 +15,13 @@ const ToastContextProviderMeta: Meta = {
 
 export default ToastContextProviderMeta;
 
-const Template: Story = () => (
-  <ToastContextProvider>
+const Template: Story<ToastProps> = ({
+  intent,
+  children,
+  toastKey,
+}: ToastProps) => (
+  <ToastContextProvider intent={intent} toastKey={toastKey}>
+    {children}
     <ToastConsumer />
   </ToastContextProvider>
 );
