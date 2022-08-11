@@ -15,6 +15,11 @@ const config: InitialOptionsTsJest = {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.svg$': 'jest-transformer-svg',
   },
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
+  },
 };
 
 export default config;
