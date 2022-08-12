@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar snapshot tests DynamicIconAvatar matches snapshot 1`] = `
+exports[`Avatar DOM snapshot tests DynamicIconAvatar matches snapshot 1`] = `
 <div
   className="sc-bczRLJ cesvjd"
   shape="round"
@@ -21,7 +21,7 @@ exports[`Avatar snapshot tests DynamicIconAvatar matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Avatar snapshot tests IconAvatar matches snapshot 1`] = `
+exports[`Avatar DOM snapshot tests IconAvatar matches snapshot 1`] = `
 <div
   className="sc-bczRLJ cesvjd"
   shape="round"
@@ -42,7 +42,7 @@ exports[`Avatar snapshot tests IconAvatar matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Avatar snapshot tests ImageAvatar matches snapshot 1`] = `
+exports[`Avatar DOM snapshot tests ImageAvatar matches snapshot 1`] = `
 <div
   className="sc-bczRLJ ivqPzI"
   shape="round"
@@ -50,7 +50,7 @@ exports[`Avatar snapshot tests ImageAvatar matches snapshot 1`] = `
 />
 `;
 
-exports[`Avatar snapshot tests UserAvatar matches snapshot 1`] = `
+exports[`Avatar DOM snapshot tests UserAvatar matches snapshot 1`] = `
 <div
   className="sc-bczRLJ kdoqip"
   shape="round"
