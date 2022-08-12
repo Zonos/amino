@@ -13,7 +13,7 @@ const AminoToast = styled(motion.div)`
   background: ${theme['gray-l80']};
   z-index: 999999;
   border-radius: var(--amino-radius-lg);
-  color: white;
+  color: ${theme['gray-d80']};
   box-shadow: var(--amino-shadow-medium);
   padding: var(--amino-space-half) var(--amino-space);
   display: flex;
@@ -47,7 +47,7 @@ const AminoInfoToast = styled(AminoToast)`
 
 export type ToastProps = {
   children: React.ReactNode;
-  intent?: Intent;
+  intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
   toastKey: string;
 };
 

@@ -15,12 +15,8 @@ const ToastContextProviderMeta: Meta = {
 
 export default ToastContextProviderMeta;
 
-const Template: Story<ToastProps> = ({
-  intent,
-  children,
-  toastKey,
-}: ToastProps) => (
-  <ToastContextProvider intent={intent} toastKey={toastKey}>
+const Template: Story<ToastProps> = ({ children }: ToastProps) => (
+  <ToastContextProvider>
     {children}
     <ToastConsumer />
   </ToastContextProvider>
