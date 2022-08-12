@@ -8,7 +8,7 @@ import { IconAvatar } from './IconAvatar';
 import { ImageAvatar } from './ImageAvatar';
 import { UserAvatar } from './UserAvatar';
 
-describe('Avatar snapshot tests', () => {
+describe('Avatar DOM snapshot tests', () => {
   it('UserAvatar matches snapshot', () => {
     const tree = renderer
       .create(<UserAvatar size="lg" shape="round" />)

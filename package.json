@@ -125,6 +125,7 @@
     "postbuild:prep:publish": "echo 'done building for publishing'",
     "test": "jest --watchAll",
     "test:prod": "jest",
+    "test:normal": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/storyshots",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
