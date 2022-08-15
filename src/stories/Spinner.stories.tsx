@@ -18,5 +18,3 @@ export const BasicSpinner = Template.bind({});
 BasicSpinner.args = {
   size: 32,
 };
-
-BasicSpinner.storyName = 'BasicSpinner';

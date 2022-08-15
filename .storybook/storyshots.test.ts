@@ -63,7 +63,7 @@ afterAll(async () => {
 describe('Visual regression testing', () => {
   initStoryshots({
     suite: 'Puppeteer storyshots',
-    storyNameRegex: /^((?!.*?BasicSpinner).)*$/,
+    storyNameRegex: /^((?!.*?Basic Spinner).)*$/,
     test: imageSnapshot({
       storybookUrl: 'https://amino-dev.zonos.com:6007',
       getCustomBrowser: () => browser,
