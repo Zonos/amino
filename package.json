@@ -123,7 +123,7 @@
     "prebuild:prep:publish": "echo 'building for publishing'",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "postbuild:prep:publish": "echo 'done building for publishing'",
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "test:prod": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/storyshots",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",

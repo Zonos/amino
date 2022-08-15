@@ -864,7 +864,7 @@ export const theme = {
   'font-mono': 'var(--amino-font-mono)',
   /** @info 'Fira Code', var(--amino-font-sans) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  'harmonized-codes': 'var(--amino-harmonized-codes)',
+  'font-harmonized-codes': 'var(--amino-font-harmonized-codes)',
 } as const;
 
 export type ThemeKey = keyof typeof theme;
