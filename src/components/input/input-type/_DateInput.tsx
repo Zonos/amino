@@ -26,17 +26,11 @@ const AminoInput = styled(FloatLabelInput)`
       -webkit-appearance: none;
     }
 
-    &::-webkit-datetime-edit-year-field,
-    &::-webkit-datetime-edit-text,
-    &::-webkit-datetime-edit-month-field,
-    &::-webkit-datetime-edit-day-field {
+    &::-webkit-datetime-edit-fields-wrapper {
       transition: 0.5s all ease;
     }
     &:not(:focus):not(.has-content) {
-      &::-webkit-datetime-edit-year-field,
-      &::-webkit-datetime-edit-text,
-      &::-webkit-datetime-edit-month-field,
-      &::-webkit-datetime-edit-day-field {
+      &::-webkit-datetime-edit-fields-wrapper {
         color: transparent;
       }
     }

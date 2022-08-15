@@ -575,6 +575,7 @@ import "./icons/legacy/ThumbsUpIcon";
 import "./icons/legacy/XIcon";
 import "./utils/countryPhoneCodes";
 import "./utils/getCountryCodeByName";
+import "./utils/getTestId";
 import "./utils/prepCountryOptions";
 import "./utils/prepRegionCountryOptions";
 import "./utils/truncateText";
