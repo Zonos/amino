@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -10,6 +10,8 @@
     "@babel/core": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
     "@babel/preset-typescript": "^7.18.6",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@rollup/plugin-buble": "^0.21.3",
     "@storybook/addon-a11y": "^6.5.9",
     "@storybook/addon-actions": "^6.5.9",
@@ -77,8 +79,6 @@
     "@dnd-kit/modifiers": "^5.0.0",
     "@dnd-kit/sortable": "^6.0.1",
     "@dnd-kit/utilities": "^3.1.0",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.8.5",
     "@radix-ui/react-slider": "^0.1.4",
     "@types/topojson-client": "^3.1.1",
@@ -97,7 +97,9 @@
     "react-hotkeys-hook": "^3.x",
     "react-is": "^17.x",
     "react-tooltip": "^4.x",
-    "styled-components": "^5.x"
+    "styled-components": "^5.x",
+    "@emotion/react": "^11.x",
+    "@emotion/styled": "^11.x"
   },
   "eslintConfig": {
     "extends": "react-app"

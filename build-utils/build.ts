@@ -94,7 +94,11 @@ const generateAllModulesContent = async (bundles: OutputChunk[]) => {
       const [, subFolderPath, fileName] =
         bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
       // exclude all bundles that are not entry or just private components
-      if (!bundle.isEntry || /^_+/.test(fileName)) {
+      if (
+        !bundle.isEntry ||
+        /^_+/.test(fileName) ||
+        /__tests__/.test(subFolderPath)
+      ) {
         return null;
       }
       return `import "./${subFolderPath || ''}${fileName}";`;
@@ -109,12 +113,10 @@ const utilsModules = glob.sync('src/utils/**/*.ts*') as string[];
 const componentsModules = glob.sync('src/components/**/*.ts*') as string[];
 const styleModules = glob.sync('src/styles/**/*.ts') as string[];
 
-const allModules = animationsModules.concat(
-  iconsModules,
-  utilsModules,
-  componentsModules,
-  styleModules
-);
+const allModules = animationsModules
+  .concat(iconsModules, utilsModules, componentsModules, styleModules)
+  /** Exclude all paths __tests__ folder */
+  .filter(item => !item.includes('__tests__'));
 
 const configs: ConfigOptions[] = [
   {

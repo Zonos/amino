@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
@@ -23,6 +23,7 @@ import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { Size } from 'src/types/Size';
+import { getTestId } from 'src/utils/getTestId';
 import styled, { css } from 'styled-components';
 
 export interface IOption {
@@ -501,8 +502,12 @@ export const StyledReactSelect = <
     label,
     size,
   };
+  const testId = useMemo(
+    () => getTestId({ componentName: 'select', name: label }),
+    [label]
+  );
   return (
-    <StyledSelectWrapper>
+    <StyledSelectWrapper data-testid={testId}>
       <ReactSelect<Option, IsMulti, Group>
         components={
           {

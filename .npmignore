@@ -3,3 +3,4 @@ setupPackage.*
 setupPackage.d.ts
 build.*
 build.d.ts
+__tests__

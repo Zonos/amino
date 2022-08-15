@@ -1,8 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { getTestId } from 'src/utils/getTestId';
 import styled from 'styled-components';
 
 const AnimatedCheckIcon = motion(CheckMarkIcon);
@@ -57,9 +58,7 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const CheckboxContainer = styled.label<{
-  checked: boolean;
-}>`
+const CheckboxContainer = styled.label<{ checked: boolean }>`
   display: flex;
   flex-direction: row;
   user-select: none;
@@ -113,8 +112,13 @@ export const Checkbox = ({
   onChange,
   subtitle,
 }: CheckboxProps) => {
+  const testId = useMemo(
+    () => getTestId({ componentName: 'checkbox', name: label }),
+    [label]
+  );
   return (
     <CheckboxContainer
+      data-testid={testId}
       className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       checked={checked}
       htmlFor={label}
