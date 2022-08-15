@@ -98,8 +98,8 @@
     "react-is": "^17.x",
     "react-tooltip": "^4.x",
     "styled-components": "^5.x",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3"
+    "@emotion/react": "^11.x",
+    "@emotion/styled": "^11.x"
   },
   "eslintConfig": {
     "extends": "react-app"
