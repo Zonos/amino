@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.1.8",
+  "version": "3.1.9",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -17,6 +17,8 @@
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
+    "@storybook/addon-storyshots": "^6.5.10",
+    "@storybook/addon-storyshots-puppeteer": "^6.5.10",
     "@storybook/addons": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/theming": "^6.5.9",
@@ -49,9 +51,13 @@
     "framer-motion": "^4.1.17",
     "glob": "^8.0.1",
     "jest": "^28.1.3",
+    "jest-css-modules-transform": "^4.4.2",
+    "jest-environment-jsdom": "^28.1.3",
+    "jest-transformer-svg": "^2.0.0",
     "postcss": "8.4.12",
     "postcss-preset-env": "6.7.1",
     "prettier": "2.6.0",
+    "puppeteer": "^16.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hotkeys-hook": "3.4.4",
@@ -104,19 +110,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "jest": {
-    "roots": [
-      "<rootDir>"
-    ],
-    "modulePaths": [
-      "<rootDir>",
-      "build-utils/**/*.ts",
-      "src/**/*.ts"
-    ],
-    "setupFilesAfterEnv": [
-      "./jest/setupJestMock.ts"
-    ]
-  },
   "scripts": {
     "prebuild:theme": "echo 'start generating styles' && yarn test:prod",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
@@ -131,7 +124,8 @@
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "postbuild:prep:publish": "echo 'done building for publishing'",
     "test": "jest --watchAll",
-    "test:prod": "jest",
+    "test:prod": "jest --testPathIgnorePatterns storyshots",
+    "test:visual": "jest ./.storybook/storyshots",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",

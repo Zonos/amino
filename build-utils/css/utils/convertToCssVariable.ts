@@ -1,5 +1,5 @@
 export const convertToCssConstant = (themeContent: Record<string, string>) => {
-  const newContent = {};
+  const newContent: Record<string, string> = {};
   Object.entries(themeContent).forEach(([key, value]) => {
     newContent[`--amino-${key}`] = value;
   });

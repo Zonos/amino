@@ -7,24 +7,29 @@
 ## Quick start
 
 ## Documentation
+
 ### - Available features in Amino:
+
 - [Style generation (generate style constants and css file)](./build-utils/css/README.md)
 - [Icon component generation process (generate optimized react components based on SVG downloaded from Figma/any sources)](./svgReact/icons/README.md)
 - [Flag component generation process (generate optimized react components for flag svgs from smallest svg size of AWS and Figma)](./svgReact/flags/README.md)
 
 ### - Configuration
+
 - Install and setup library dependencies
-    ```
-    yarn & yarn build:theme
-    ```
+  ```
+  yarn & yarn build:theme
+  ```
 - Development
-    ```
-    yarn dev
-    ```
+  ```
+  yarn dev
+  ```
 - Unit testing
-    ```
-    yarn test
-    ```
+  ```
+  yarn test
+  ```
+
+To run the visual tests (with puppeteer), you must have storybook open and running so puppeteer can navigate to it.
 
 ### - Naming rule for auto-importing suggestion
 
