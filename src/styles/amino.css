@@ -108,9 +108,12 @@ h6 {
   overflow: hidden;
 }
 
+.toast-container {
+  display: flex;
+  justify-content: center;
+}
 .toasts-wrapper {
   position: fixed;
   z-index: 9999999;
   bottom: var(--amino-space-double);
-  right: var(--amino-space-double);
 }

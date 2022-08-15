@@ -864,7 +864,10 @@ exports[`Case light theme 1`] = `
   fontSans: 'var(--amino-font-sans)',
   /** @info Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontMono: 'var(--amino-font-mono)',
+  'font-mono': 'var(--amino-font-mono)',
+  /** @info 'Fira Code', var(--amino-font-sans) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  'harmonized-codes': 'var(--amino-harmonized-codes)',
 } as const;
 
 export type ThemeKey = keyof typeof theme;

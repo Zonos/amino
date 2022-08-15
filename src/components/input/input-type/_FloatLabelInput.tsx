@@ -1,6 +1,12 @@
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import React, {
+  forwardRef,
+  InputHTMLAttributes,
+  ReactNode,
+  useMemo,
+} from 'react';
 
 import { Size } from 'src/types/Size';
+import { getTestId } from 'src/utils/getTestId';
 import styled from 'styled-components';
 
 const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
@@ -267,6 +273,10 @@ export const FloatLabelInput = forwardRef<
     },
     ref
   ) => {
+    const testId = useMemo(
+      () => getTestId({ componentName: 'input', name: label }),
+      [label]
+    );
     const hasPrefix = !!prefix || !!valuePrefix;
     const hasValue = !!value || !!valuePrefix;
     return (
@@ -298,6 +308,7 @@ export const FloatLabelInput = forwardRef<
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
+          data-testid={testId}
           {...props}
         />
         <StyledLabelInput hasPrefix={hasPrefix} data-label={label} />

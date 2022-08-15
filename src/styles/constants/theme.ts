@@ -862,6 +862,9 @@ export const theme = {
   /** @info Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   'font-mono': 'var(--amino-font-mono)',
+  /** @info 'Fira Code', var(--amino-font-sans) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  'harmonized-codes': 'var(--amino-harmonized-codes)',
 } as const;
 
 export type ThemeKey = keyof typeof theme;
