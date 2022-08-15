@@ -423,7 +423,7 @@ export const theme = {
   /* FONTS */
   'font-sans': `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
   'font-mono': `Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace`,
-  'harmonized-codes': `'Fira Code', var(--amino-font-sans)`,
+  'font-harmonized-codes': `'Fira Code', var(--amino-font-sans)`,
 } as const;
 
 export type ThemeKey = keyof typeof theme;

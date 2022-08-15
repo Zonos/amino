@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.1.9",
+  "version": "3.1.10",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -123,7 +123,7 @@
     "prebuild:prep:publish": "echo 'building for publishing'",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "postbuild:prep:publish": "echo 'done building for publishing'",
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "test:prod": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/storyshots",
     "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",

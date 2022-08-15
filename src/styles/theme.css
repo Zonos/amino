@@ -281,7 +281,7 @@
   --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
     Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
     Courier New, monospace;
-  --amino-harmonized-codes: 'Fira Code', var(--amino-font-sans);
+  --amino-font-harmonized-codes: 'Fira Code', var(--amino-font-sans);
 }
 
 /* Dark theme */
