@@ -3,6 +3,7 @@ import React, { ReactNode, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { theme } from 'src/styles/constants/theme';
 import { getTestId } from 'src/utils/getTestId';
 import styled from 'styled-components';
 
@@ -14,10 +15,9 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   min-width: 16px;
   min-height: 16px;
   line-height: 16px;
-  border-radius: var(--amino-radius-sm);
-  background: ${p =>
-    p.checked ? 'var(--amino-primary)' : 'var(--amino-input-background)'};
-  border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-l20)' : 'none')};
+  border-radius: ${theme.radiusSm};
+  background: ${p => (p.checked ? theme.primary : theme.inputBackground)};
+  border: ${p => (!p.checked ? `1.5px solid ${theme.grayL20}` : 'none')};
   transition: all 150ms ease-in-out;
   display: flex;
   align-items: center;
@@ -26,12 +26,12 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   margin-right: 8px;
 
   &:active {
-    box-shadow: var(--amino-glow-blue);
+    box-shadow: ${theme.glowBlue};
   }
 
   svg {
     color: white;
-    box-shadow: var(--amino-shadow-small);
+    box-shadow: ${theme.v3ShadowBase};
     width: 14px;
     height: 14px;
   }
@@ -41,7 +41,7 @@ const StyledSubtitle = styled(Text)``;
 
 const StyledLabelDescription = styled.span`
   margin-left: 4px;
-  color: var(--amino-gray-500);
+  color: ${theme.grayBase};
 `;
 
 const StyledLabel = styled(Text)`
@@ -66,20 +66,20 @@ const CheckboxContainer = styled.label<{ checked: boolean }>`
 
   &.disabled {
     ${AminoCheckbox} {
-      background: ${p => (p.checked ? 'var(--amino-blue-200)' : '')};
+      background: ${p => (p.checked ? theme.blueL60 : '')};
       border: ${p =>
         p.checked
-          ? '2px solid var(--amino-blue-200)'
-          : '1.5px solid var(--amino-gray-l40)'};
+          ? `2px solid ${theme.blueL60}`
+          : `1.5px solid ${theme.grayL40}`};
       &:active {
         box-shadow: none;
       }
     }
     ${StyledLabel} {
-      color: var(--amino-gray-500);
+      color: ${theme.grayBase};
     }
     ${StyledSubtitle} {
-      color: var(--amino-gray-400);
+      color: ${theme.grayL20};
     }
     ${LabelWrapper} {
       svg {

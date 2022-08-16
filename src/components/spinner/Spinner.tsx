@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled, { css, keyframes } from 'styled-components';
 
 const Rotate = keyframes`
@@ -28,8 +29,8 @@ const RotateInsideRing = keyframes`
 
 const AminoSpinner = styled.span<SpinnerProps>`
   display: inline-block;
-  border: ${p => p.size! / 8}px solid var(--amino-gray-l80);
-  border-top-color: var(--amino-blue-base);
+  border: ${p => p.size! / 8}px solid ${theme.grayL80};
+  border-top-color: ${theme.blueBase};
   animation: ${css`
       ${Rotate}`} 1.5s linear infinite;
   border-radius: 50%;
@@ -46,7 +47,7 @@ const AminoSpinner = styled.span<SpinnerProps>`
     height: ${p => p.size}px;
     border-radius: 50%;
     border: ${p => p.size! / 8}px solid transparent;
-    border-right-color: var(--amino-gray-l80);
+    border-right-color: ${theme.grayL80};
     z-index: 1;
     animation: ${css`
         ${RotateInsideRing}`} 1.5s linear infinite;
@@ -79,8 +80,9 @@ export type SpinnerProps = {
 
 export const Spinner = ({ size, color, className }: SpinnerProps) => {
   return (
-    <AminoSpinner className={[className, color || ''].join(' ')} size={size} />
+    <AminoSpinner
+      className={[className, color || ''].join(' ')}
+      size={size || 32}
+    />
   );
 };
-
-Spinner.defaultProps = { size: 32 };

@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode } from 'react';
 
 import { Collapse } from 'src/components/collapse/Collapse';
+import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
 import styled, { css } from 'styled-components';
 
@@ -16,19 +17,19 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   flex-direction: row;
   align-items: center;
   height: 36px;
-  padding: 0 var(--amino-space-half);
-  color: var(--amino-gray-700);
+  padding: 0 ${theme.spaceHalf};
+  color: ${theme.grayD40};
   font-weight: 500;
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
   &:hover {
-    background-color: var(--amino-gray-100);
+    background-color: ${theme.grayL80};
     color: black;
     svg {
-      color: var(--amino-gray-600);
+      color: ${theme.grayD20};
     }
   }
   svg {
-    color: var(--amino-gray-500);
+    color: ${theme.grayBase};
   }
   ${StyledNavigationContent} {
     flex-grow: 1;
@@ -49,7 +50,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
     $isActive &&
     css`
       && {
-        background-color: var(--amino-gray-200);
+        background-color: ${theme.grayL60};
         color: black;
         svg {
           color: black;
@@ -74,9 +75,9 @@ const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
     `}
 `;
 const StyledGroupItemWrapper = styled(Collapse)`
-  padding-left: var(--amino-space);
-  margin-left: var(--amino-space);
-  border-left: 1px solid var(--amino-gray-200);
+  padding-left: ${theme.space};
+  margin-left: ${theme.space};
+  border-left: 1px solid ${theme.grayL60};
 `;
 
 type StyledNavigationItemProps = StyledProps<NavigationItemProps>;

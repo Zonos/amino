@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 const StyledList = styled.section<ListProps>`
@@ -10,15 +11,15 @@ const StyledList = styled.section<ListProps>`
   ${({ withBorder }) =>
     withBorder &&
     css`
-      padding: var(--amino-space-quarter);
-      border: 1px solid var(--amino-gray-l60);
-      border-radius: var(--amino-radius-xl);
+      padding: ${theme.spaceQuarter};
+      border: 1px solid ${theme.grayL60};
+      border-radius: ${theme.radiusXl};
     `}
 
   ${({ withNegativeMargin }) =>
     withNegativeMargin &&
     css`
-      margin: var(--amino-space-negative);
+      margin: ${theme.spaceNegative};
     `}
 `;
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
+import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
@@ -19,18 +20,18 @@ const DialogLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--amino-text-color);
+  color: ${theme.textColor};
 `;
 
 const Popup = styled(motion.div)<{ width: number }>`
   position: relative;
   z-index: 1001;
-  background: var(--amino-surface-color);
+  background: ${theme.surfaceColor};
   width: ${p => p.width}px;
-  border-radius: var(--amino-radius-xl);
+  border-radius: ${theme.radiusXl};
   outline: none;
-  box-shadow: var(--amino-shadow-larger);
-  border: var(--amino-border);
+  box-shadow: ${theme.v3ShadowXxl};
+  border: ${theme.border};
 `;
 
 export type DialogProps = {
@@ -45,7 +46,7 @@ export const BaseDialog = ({
   children,
   className,
   open,
-  theme,
+  theme: _theme,
   width,
 }: DialogProps) => {
   if (typeof document !== 'undefined') {
@@ -58,11 +59,11 @@ export const BaseDialog = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             key="dialog-backdrop"
-            data-theme={theme}
+            data-theme={_theme}
           />
         )}
         {open && (
-          <DialogLayout data-theme={theme}>
+          <DialogLayout data-theme={_theme}>
             <Popup
               className={className}
               transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}

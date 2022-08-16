@@ -10,39 +10,39 @@ import { Intent } from 'src/types';
 import styled from 'styled-components';
 
 const AminoToast = styled(motion.div)`
-  background: ${theme['gray-l80']};
+  background: ${theme.grayL80};
   z-index: 999999;
-  border-radius: var(--amino-radius-lg);
-  color: ${theme['gray-d80']};
-  box-shadow: var(--amino-shadow-medium);
-  padding: var(--amino-space-half) var(--amino-space);
+  border-radius: ${theme.radiusLg};
+  color: ${theme.grayD80};
+  box-shadow: ${theme.v3ShadowLarge};
+  padding: ${theme.spaceHalf} ${theme.space};
   display: flex;
-  gap: ${theme['space-quarter']};
+  gap: ${theme.spaceQuarter};
   font-weight: 500;
   user-select: none;
 
   & + & {
-    margin-top: var(--amino-space);
+    margin-top: ${theme.space};
   }
 `;
 
 const AminoSuccessToast = styled(AminoToast)`
-  background-color: ${theme['green-l80']};
-  color: ${theme['green-d40']};
+  background-color: ${theme.greenL80};
+  color: ${theme.greenD40};
 `;
 
 const AminoErrorToast = styled(AminoToast)`
-  background-color: ${theme['red-l80']};
-  color: ${theme['red-d40']};
+  background-color: ${theme.redL80};
+  color: ${theme.redD40};
 `;
 
 const AminoWarningToast = styled(AminoToast)`
-  background-color: ${theme['orange-l80']};
-  color: ${theme['orange-d40']};
+  background-color: ${theme.orangeL80};
+  color: ${theme.orangeD40};
 `;
 const AminoInfoToast = styled(AminoToast)`
-  background-color: ${theme['blue-l80']};
-  color: ${theme['blue-d40']};
+  background-color: ${theme.blueL80};
+  color: ${theme.blueD40};
 `;
 
 export type ToastProps = {

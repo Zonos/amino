@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledHelpText = styled.div`
-  margin-top: var(--amino-space-quarter);
+  margin-top: ${theme.spaceQuarter};
 `;
 
 export type HelpTextProps = {

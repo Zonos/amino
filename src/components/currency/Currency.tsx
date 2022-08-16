@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledCurrency = styled.span`
   font-feature-settings: 'tnum' 1;
 
   &.negative {
-    color: var(--amino-red-l20);
+    color: ${theme.redL20};
   }
 `;
 

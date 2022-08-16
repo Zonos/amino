@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/surface/Surface';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { Button } from './Button';
@@ -14,11 +15,11 @@ const Wrapper = styled.div`
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: var(--amino-border);
+  border: ${theme.border};
   z-index: 10;
   position: absolute;
-  padding: var(--amino-radius) 0;
-  margin-top: var(--amino-space-quarter);
+  padding: ${theme.radius} 0;
+  margin-top: ${theme.spaceQuarter};
   right: 0;
   min-width: 100%;
   width: max-content;
@@ -26,11 +27,11 @@ const AnimatedSurface = styled(Surface)`
 
 const Trigger = styled(Button)`
   svg {
-    color: var(--amino-text-color);
+    color: ${theme.textColor};
     width: 16px;
     height: 16px;
     opacity: 0.3;
-    margin-left: var(--amino-space-quarter);
+    margin-left: ${theme.spaceQuarter};
     transition: opacity 100ms ease-in-out;
     margin-right: -5px !important;
     pointer-events: none;

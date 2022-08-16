@@ -22,6 +22,7 @@ import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
+import { theme } from 'src/styles/constants/theme';
 import { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 import styled, { css } from 'styled-components';
@@ -72,21 +73,21 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--amino-gray-d20);
+  color: ${theme.grayD20};
   padding: 10px;
 `;
 
 const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   position: absolute;
-  transition: var(--amino-transition);
-  font-size: var(--amino-text-base);
-  line-height: var(--amino-text-base);
+  transition: ${theme.transition};
+  font-size: ${theme.textBase};
+  line-height: ${theme.textBase};
   transform-origin: left top;
-  left: calc(var(--amino-space-half) - 2px);
+  left: calc(${theme.spaceHalf} - 2px);
   .has-icon & {
-    left: calc(var(--amino-space-double) + 2px);
+    left: calc(${theme.spaceDouble} + 2px);
   }
-  top: calc(50% - var(--amino-text-base) / 2);
+  top: calc(50% - ${theme.textBase} / 2);
   .has-label & {
     & + div {
       align-self: flex-end;
@@ -94,7 +95,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   }
   .has-value &,
   .is-focused & {
-    top: calc(var(--amino-space-quarter) + 3px);
+    top: calc(${theme.spaceQuarter} + 3px);
     transform: scale(0.8);
   }
 
@@ -235,7 +236,7 @@ const StyledSelectOptionWrapper = styled.div`
   &:not(.is-disabled) {
     &.is-focused,
     &:hover {
-      background-color: var(--amino-gray-l80) !important;
+      background-color: ${theme.grayL80} !important;
     }
   }
 `;
@@ -354,7 +355,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   clearIndicator: provided => {
     return {
       ...provided,
-      color: `var(--amino-gray-d20)`,
+      color: `${theme.grayD20}`,
       paddingLeft: 14,
       paddingRight: 4,
     };
@@ -365,20 +366,20 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       AdditionalProps;
     return {
       ...provided,
-      borderColor: `var(--amino-gray-l60)`,
+      borderColor: `${theme.grayL60}`,
       borderRadius: 6,
       cursor: 'pointer',
-      color: `var(--amino-gray-d40)`,
+      color: theme.grayD40,
       height: `var(--amino-size-${size})`,
       flexWrap: 'inherit',
       minHeight: `var(--amino-size-${size})`,
-      boxShadow: state.isFocused ? `var(--amino-glow-blue)` : '',
+      boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
     };
   },
   dropdownIndicator: provided => {
     return {
       ...provided,
-      color: `var(--amino-gray-d60)`,
+      color: `${theme.grayD60}`,
       paddingLeft: 4,
       paddingRight: 10,
     };
@@ -402,7 +403,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     return {
       ...provided,
       borderRadius: 12,
-      boxShadow: `var(--amino-v3-shadow-large)`,
+      boxShadow: theme.v3ShadowLarge,
       marginTop: 4,
     };
   },
@@ -418,7 +419,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   multiValue: provided => {
     return {
       ...provided,
-      background: 'var(--amino-gray-l60)',
+      background: theme.grayL60,
       color: 'black',
       fontWeight: 500,
       minWidth: 'inherit',
@@ -430,7 +431,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   option: (provided, state) => {
     return {
       ...provided,
-      color: state.isSelected ? 'var(--amino-blue-500)' : 'black',
+      color: state.isSelected ? theme.blueBase : 'black',
       fontWeight: state.isSelected ? 500 : 400,
       backgroundColor: 'inherit',
       paddingTop: 7,

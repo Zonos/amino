@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from 'src/components/button/Button';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { FloatLabelInput, type FloatLabelInputProps } from './_FloatLabelInput';
@@ -27,7 +28,7 @@ const StyledButton = styled(Button)`
 
 const AminoInput = styled(FloatLabelInput)`
   input {
-    padding-right: var(--amino-space-double);
+    padding-right: ${theme.spaceDouble};
   }
 `;
 

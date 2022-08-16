@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledSlider = styled(Root)`
@@ -13,16 +14,16 @@ const StyledSlider = styled(Root)`
 `;
 
 const StyledTrack = styled(Track)`
-  background-color: var(--amino-gray-200);
+  background-color: ${theme.grayL60};
   border-radius: 20px;
-  box-shadow: var(--amino-shadow-inset);
+  box-shadow: ${theme.v3ShadowInset};
   flex-grow: 1;
   height: 12px;
   position: relative;
 `;
 
 const StyledRange = styled(Range)`
-  background-color: var(--amino-primary);
+  background-color: ${theme.primary};
   border-radius: 9999px;
   height: 100%;
   position: absolute;
@@ -31,32 +32,32 @@ const StyledRange = styled(Range)`
 const StyledThumb = styled(Thumb)`
   background: white;
   border-radius: 20px;
-  border: var(--amino-border);
-  box-shadow: var(--amino-shadow-small);
+  border: ${theme.border};
+  box-shadow: ${theme.v3ShadowBase};
   display: block;
   height: 24px;
   width: 24px;
 
   &:focus,
   &:active {
-    background: var(--amino-gray-100);
-    border-color: var(--amino-primary);
-    box-shadow: var(--amino-glow-blue);
+    background: ${theme.grayL80};
+    border-color: ${theme.primary};
+    box-shadow: ${theme.glowBlue};
     outline: none;
   }
 `;
 
 const SliderWrapper = styled.div`
   position: relative;
-  height: calc(56px + var(--amino-space) + 10px);
+  height: calc(56px + ${theme.space} + 10px);
 `;
 
 const Indicator = styled.div`
   align-items: center;
-  background: var(--amino-blue-100);
-  border-bottom-left-radius: var(--amino-radius);
-  border-bottom-right-radius: var(--amino-radius);
-  color: var(--amino-blue-700);
+  background: ${theme.blueL80};
+  border-bottom-left-radius: ${theme.radius};
+  border-bottom-right-radius: ${theme.radius};
+  color: ${theme.blueD40};
   display: flex;
   font-weight: 500;
   height: 32px;
@@ -71,11 +72,11 @@ const Indicator = styled.div`
 `;
 
 const UpTriangle = styled.div`
-  border-bottom: 24px solid var(--amino-blue-100);
+  border-bottom: 24px solid ${theme.blueL80};
   border-left: 24px solid transparent;
   border-right: 24px solid transparent;
-  border-top-left-radius: var(--amino-radius);
-  border-top-right-radius: var(--amino-radius);
+  border-top-left-radius: ${theme.radius};
+  border-top-right-radius: ${theme.radius};
   height: 0;
   width: 0;
   width: 48px;
@@ -83,7 +84,7 @@ const UpTriangle = styled.div`
 
 const IndicatorWrapper = styled.div`
   margin-left: -12px;
-  margin-top: calc(var(--amino-space) + 10px);
+  margin-top: calc(${theme.space} + 10px);
 `;
 
 export type SliderProps = {

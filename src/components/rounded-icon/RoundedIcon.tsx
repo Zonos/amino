@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types/Color';
 import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
@@ -28,18 +29,18 @@ const IconWrapper = styled.div<CSSProps>`
 `;
 
 const PrimaryIconWrapper = styled(IconWrapper)`
-  background: var(--amino-blue-100);
-  color: var(--amino-blue-500);
+  background: ${theme.blueL80};
+  color: ${theme.blueBase};
 `;
 
 const DangerIconWrapper = styled(IconWrapper)`
-  background: var(--amino-red-100);
-  color: var(--amino-red-500);
+  background: ${theme.redL80};
+  color: ${theme.redBase};
 `;
 
 const WarningIconWrapper = styled(IconWrapper)`
-  background: var(--amino-orange-100);
-  color: var(--amino-orange-500);
+  background: ${theme.orangeL80};
+  color: ${theme.orangeBase};
 `;
 
 export type RoundedIconProps = {

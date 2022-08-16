@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const shadows = [
@@ -18,14 +19,14 @@ interface ShadowProps {
   shadow: AminoShadow;
 }
 const StyledBoxShadowWrapper = styled.div<ShadowProps>`
-  margin-bottom: var(--amino-space-double);
+  margin-bottom: ${theme.spaceDouble};
   box-shadow: var(${props => props.shadow});
-  background: var(--amino-gray-l80);
-  padding: var(--amino-space-half) var(--amino-space);
+  background: ${theme.grayL80};
+  padding: ${theme.spaceHalf} ${theme.space};
 `;
 const StyledWrapper = styled.div`
   background: white;
-  padding: var(--amino-space-quarter) var(--amino-space);
+  padding: ${theme.spaceQuarter} ${theme.space};
 `;
 
 export const Shadow = () => {

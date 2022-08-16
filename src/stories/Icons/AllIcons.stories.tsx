@@ -5,6 +5,7 @@ import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import * as icons from 'src/icons/IconIndex';
+import { theme } from 'src/styles/constants/theme';
 import { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
 
@@ -18,8 +19,8 @@ const StyledWrapper = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: var(--amino-space-double);
-  grid-column-gap: var(--amino-space);
+  grid-row-gap: ${theme.spaceDouble};
+  grid-column-gap: ${theme.space};
   padding-bottom: 20px;
 `;
 
@@ -28,10 +29,10 @@ const StyledIcon = styled.div<{ size?: number }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: var(--amino-shadow-small);
-  padding: var(--amino-space-half);
+  box-shadow: ${theme.v3ShadowBase};
+  padding: ${theme.spaceHalf};
   svg {
-    color: var(--amino-gray-700);
+    color: ${theme.grayD40};
   }
   &.deprecated {
     div {

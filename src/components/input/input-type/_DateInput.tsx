@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { CalendarIcon } from 'src/icons/CalendarIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { FloatLabelInput, type FloatLabelInputProps } from './_FloatLabelInput';
@@ -18,7 +19,7 @@ const StyledActionWrapper = styled.div`
 const StyledButtonAction = styled.button``;
 const AminoInput = styled(FloatLabelInput)`
   && input {
-    padding-right: var(--amino-space-double);
+    padding-right: ${theme.spaceDouble};
     appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-calendar-picker-indicator {
