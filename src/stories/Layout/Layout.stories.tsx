@@ -10,6 +10,7 @@ import {
 } from 'src/components/layout/NavigationGroup';
 import { HStack } from 'src/components/stack/HStack';
 import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { NavigationGroupExample as NavigationGroupStory } from './NavigationGroup.stories';
@@ -82,11 +83,11 @@ const Template: Story<LayoutProps> = ({
 };
 
 const StyledHeader = styled.div`
-  padding: 0 var(--amino-space);
+  padding: 0 ${theme.space};
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--amino-space);
+  gap: ${theme.space};
 `;
 
 export const BasicLayout = Template.bind({});

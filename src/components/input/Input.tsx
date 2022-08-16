@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes, ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { HelpText, HelpTextProps } from '../help-text/HelpText';
@@ -12,10 +13,10 @@ import { NumberInput } from './input-type/_NumberInput';
 import { PasswordInput } from './input-type/_PasswordInput';
 
 const Fields = styled.div`
-  border-radius: var(--amino-radius);
-  border: var(--amino-border);
+  border-radius: ${theme.radius};
+  border: ${theme.border};
   &:hover {
-    border: 1px solid var(--amino-gray-300);
+    border: 1px solid ${theme.grayL40};
   }
 `;
 

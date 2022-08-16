@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { FontWeight } from '../text/Text';
@@ -33,14 +34,14 @@ const BadgeWrapper = styled.div`
 `;
 const StyledBadge = styled.div<BadgeProps>`
   display: flex;
-  gap: var(--amino-space-quarter);
-  font-size: var(--amino-text-sm);
-  padding: 3px var(--amino-space-half);
+  gap: ${theme.spaceQuarter};
+  font-size: ${theme.textSm};
+  padding: 3px ${theme.spaceHalf};
   text-align: center;
-  border-radius: ${({ rounded }) => (rounded ? 'var(--amino-radius)' : '20px')};
+  border-radius: ${({ rounded }) => (rounded ? theme.radius : '20px')};
   // default background color (gray)
-  background-color: var(--amino-gray-200);
-  color: var(--amino-gray-700);
+  background-color: ${theme.grayL60};
+  color: ${theme.grayD40};
   align-items: center;
 
   p {
@@ -53,88 +54,88 @@ const StyledBadge = styled.div<BadgeProps>`
 
   &.bold {
     // bold config default (gray)
-    background-color: var(--amino-gray-600);
-    color: var(--amino-gray-200);
+    background-color: ${theme.grayD20};
+    color: ${theme.grayL60};
   }
 
   // size
   &.large {
-    padding: 10px var(--amino-space-half);
+    padding: 10px ${theme.spaceHalf};
   }
 
   &.blue {
     // color config
-    background-color: var(--amino-blue-100);
-    color: var(--amino-blue-700);
+    background-color: ${theme.blueL80};
+    color: ${theme.blueD40};
     &.bold {
       // bold config
-      background-color: var(--amino-blue-500);
-      color: var(--amino-blue-100);
+      background-color: ${theme.blueBase};
+      color: ${theme.blueL80};
     }
   }
 
   &.green {
     // color config
-    background-color: var(--amino-green-100);
-    color: var(--amino-green-700);
+    background-color: ${theme.greenL80};
+    color: ${theme.greenD40};
     &.bold {
       // bold config
-      background-color: var(--amino-green-500);
-      color: var(--amino-green-100);
+      background-color: ${theme.greenBase};
+      color: ${theme.greenL80};
     }
   }
 
   &.red {
     // color config
-    background-color: var(--amino-red-100);
-    color: var(--amino-red-700);
+    background-color: ${theme.redL80};
+    color: ${theme.redD40};
     &.bold {
       // bold config
-      background-color: var(--amino-red-500);
-      color: var(--amino-red-100);
+      background-color: ${theme.redBase};
+      color: ${theme.redL80};
     }
   }
 
   &.orange {
     // color config
-    background-color: var(--amino-orange-100);
-    color: var(--amino-orange-700);
+    background-color: ${theme.orangeL80};
+    color: ${theme.orangeD40};
     &.bold {
       // bold config
-      background-color: var(--amino-orange-500);
-      color: var(--amino-orange-100);
+      background-color: ${theme.orangeBase};
+      color: ${theme.orangeL80};
     }
   }
 
   &.purple {
     // color config
-    background-color: var(--amino-purple-100);
-    color: var(--amino-purple-700);
+    background-color: ${theme.purpleL80};
+    color: ${theme.purpleD40};
     &.bold {
       // bold config
-      background-color: var(--amino-purple-500);
-      color: var(--amino-purple-100);
+      background-color: ${theme.purpleBase};
+      color: ${theme.purpleL80};
     }
   }
 
   &.cyan {
     // color config
-    background-color: var(--amino-cyan-100);
-    color: var(--amino-cyan-700);
+    background-color: ${theme.cyanL80};
+    color: ${theme.cyanD40};
     &.bold {
       // bold config
-      background-color: var(--amino-cyan-500);
-      color: var(--amino-cyan-100);
+      background-color: ${theme.cyanBase};
+      color: ${theme.cyanL80};
     }
   }
 
   &.yellow {
     // color config
-    background-color: var(--amino-yellow-100);
-    color: var(--amino-yellow-700);
+    background-color: ${theme.yellowL80};
+    color: ${theme.yellowD40};
     &.bold {
       // bold config
-      background-color: var(--amino-yellow-500);
+      background-color: ${theme.yellowBase};
       color: black;
     }
   }

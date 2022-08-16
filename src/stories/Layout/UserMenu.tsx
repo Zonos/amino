@@ -7,10 +7,11 @@ import { VStack } from 'src/components/stack/VStack';
 import { Surface } from 'src/components/surface/Surface';
 import { Text } from 'src/components/text/Text';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`
-  border-top: var(--amino-border);
+  border-top: ${theme.border};
   position: relative;
   display: flex;
   align-items: center;
@@ -28,17 +29,17 @@ const MenuWrapper = styled.div<{ addSpacing: boolean }>`
 
 const UserInfo = styled.button<{ addSpacing: boolean }>`
   width: 100%;
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
   box-sizing: border-box;
-  padding: ${p => p.addSpacing && `var(--amino-space)`};
-  transition: var(--amino-transition);
+  padding: ${p => p.addSpacing && theme.space};
+  transition: ${theme.transition};
   background: transparent;
   display: flex;
   align-items: center;
   flex-direction: row;
 
   &:hover {
-    background: var(--amino-hover-color);
+    background: ${theme.hoverColor};
   }
 
   * {
@@ -55,12 +56,12 @@ const Avatar = styled.div`
   height: 28px;
   border-radius: 50%;
   cursor: pointer;
-  margin-right: var(--amino-space-half);
+  margin-right: ${theme.spaceHalf};
 `;
 
 const StoreItem = styled.div`
-  padding: var(--amino-space-half);
-  transition: var(--amino-transition);
+  padding: ${theme.spaceHalf};
+  transition: ${theme.transition};
   user-select: none;
   cursor: pointer;
   display: flex;
@@ -68,11 +69,11 @@ const StoreItem = styled.div`
   align-items: center;
 
   & + & {
-    margin-top: var(--amino-space-half-negative);
+    margin-top: ${theme.spaceHalfNegative};
   }
 
   &:hover {
-    background: var(--amino-hover-color);
+    background: ${theme.hoverColor};
   }
 
   * {
@@ -82,22 +83,22 @@ const StoreItem = styled.div`
   }
 
   & > div {
-    margin-right: var(--amino-space-half);
+    margin-right: ${theme.spaceHalf};
   }
 `;
 
 const AnimatedSurface = styled(Surface)`
   animation: ${DropdownAnimationInverse.getName()} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: 1px solid var(--amino-border-color);
+  border: 1px solid ${theme.borderColor};
   z-index: 100;
   position: absolute;
-  padding: var(--amino-radius) 0;
+  padding: ${theme.radius} 0;
   min-width: 100%;
   width: max-content;
 
-  left: var(--amino-space-half);
-  bottom: var(--amino-space-half);
+  left: ${theme.spaceHalf};
+  bottom: ${theme.spaceHalf};
 `;
 
 const StyledSubtitle = styled.span`

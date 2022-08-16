@@ -2,6 +2,7 @@ import React from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledRadio = styled.div<{
@@ -10,19 +11,18 @@ const StyledRadio = styled.div<{
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: ${p =>
-    p.checked ? 'var(--amino-primary) ' : 'var(--amino-input-background)'};
+  background: ${p => (p.checked ? theme.primary : theme.inputBackground)};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: ${p => (!p.checked ? '1.5px solid var(--amino-gray-400)' : 'none')};
-  margin-right: var(--amino-space-quarter);
-  transition: var(--amino-transition);
+  border: ${p => (!p.checked ? `1.5px solid ${theme.grayL20}` : 'none')};
+  margin-right: ${theme.spaceQuarter};
+  transition: ${theme.transition};
 
   &:active {
-    box-shadow: var(--amino-glow-blue);
+    box-shadow: ${theme.glowBlue};
   }
 
   svg {
@@ -49,7 +49,7 @@ const RadioContainer = styled.div<{
   &.disabled {
     cursor: not-allowed;
     & > div {
-      background: ${p => p.checked && 'var(--amino-blue-300)'};
+      background: ${p => p.checked && theme.blueL40};
       cursor: not-allowed;
     }
     label {
@@ -62,7 +62,7 @@ const RadioContainer = styled.div<{
     flex-direction: column;
     cursor: pointer;
     margin-bottom: 0;
-    color: ${props => (props.disabled ? 'var(--amino-gray-300)' : 'black')};
+    color: ${props => (props.disabled ? theme.grayL40 : 'black')};
   }
 `;
 

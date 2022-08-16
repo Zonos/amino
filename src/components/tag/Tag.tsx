@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 
 import { RemoveIcon } from 'src/icons/RemoveIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 export interface TagProps {
@@ -16,19 +17,19 @@ const TagWrapper = styled.div`
 `;
 const StyledTag = styled.button<Omit<TagProps, 'onClose'>>`
   display: flex;
-  gap: var(--amino-space-quarter);
-  font-size: var(--amino-type-scale-base);
+  gap: ${theme.spaceQuarter};
+  font-size: ${theme.typeScaleBase};
   font-weight: normal;
-  padding: 3px var(--amino-space-half);
+  padding: 3px ${theme.spaceHalf};
   text-align: center;
   font-weight: 500;
   // default background color (gray)
-  background-color: var(--amino-gray-200);
-  color: var(--amino-gray-700);
-  border-radius: var(--amino-radius);
+  background-color: ${theme.grayL60};
+  color: ${theme.grayD40};
+  border-radius: ${theme.radius};
   align-items: center;
   &:hover {
-    background-color: var(--amino-gray-300);
+    background-color: ${theme.grayL40};
   }
   p {
     margin: 0;

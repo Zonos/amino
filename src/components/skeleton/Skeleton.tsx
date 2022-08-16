@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 export type SkeletonProps = {
@@ -11,9 +12,9 @@ export type SkeletonProps = {
 const SkeletonWrapper = styled.div<SkeletonProps>`
   height: ${p => (p.height ? `${p.height}px` : `1em`)};
   width: ${p => `${p.width}px` || '100%'};
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
   position: relative;
-  background: var(--amino-gray-200);
+  background: ${theme.grayL60};
 `;
 
 /**

@@ -1,14 +1,15 @@
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 export const MenuItem = styled.li`
-  padding: 0 var(--amino-space-half);
+  padding: 0 ${theme.spaceHalf};
   height: 42px;
   line-height: 42px;
   user-select: none;
   cursor: default;
 
   &:hover {
-    background: var(--amino-hover-color);
+    background: ${theme.hoverColor};
   }
 
   a {

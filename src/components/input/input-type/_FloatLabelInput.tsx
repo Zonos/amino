@@ -5,6 +5,7 @@ import React, {
   useMemo,
 } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 import styled from 'styled-components';
@@ -16,16 +17,16 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   order: 1;
   &::before {
     content: attr(data-label);
-    color: var(--amino-gray-d40);
+    color: ${theme.grayD40};
     position: absolute;
-    font-size: var(--amino-text-base);
-    line-height: var(--amino-text-base);
+    font-size: ${theme.textBase};
+    line-height: ${theme.textBase};
     display: inline-block;
     filter: blur(0);
     transform-origin: left top;
-    transition: var(--amino-transition);
-    margin-left: var(--amino-space-half);
-    top: calc(50% - var(--amino-text-base) / 2);
+    transition: ${theme.transition};
+    margin-left: ${theme.spaceHalf};
+    top: calc(50% - ${theme.textBase} / 2);
     z-index: 1;
   }
   &::after {
@@ -35,16 +36,16 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     right: 0;
     top: 0;
     bottom: 0;
-    border-radius: var(--amino-radius);
+    border-radius: ${theme.radius};
   }
 `;
 
 const InputDecorator = styled.div`
-  font-size: var(--amino-text-sm);
-  line-height: var(--amino-text-sm);
+  font-size: ${theme.textSm};
+  line-height: ${theme.textSm};
   font-weight: 500;
   background: transparent;
-  padding: 0 var(--amino-space-half);
+  padding: 0 ${theme.spaceHalf};
   font-weight: 700;
   flex-basis: 50px;
   display: flex;
@@ -53,23 +54,23 @@ const InputDecorator = styled.div`
 `;
 
 const InputPrefix = styled(InputDecorator)`
-  border-top-left-radius: var(--amino-radius);
-  border-bottom-left-radius: var(--amino-radius);
+  border-top-left-radius: ${theme.radius};
+  border-bottom-left-radius: ${theme.radius};
 `;
 
 const InputSuffix = styled(InputDecorator)`
   order: 3;
-  border-top-right-radius: var(--amino-radius);
-  border-bottom-right-radius: var(--amino-radius);
+  border-top-right-radius: ${theme.radius};
+  border-bottom-right-radius: ${theme.radius};
 `;
 
 export const InputValuePrefix = styled.div`
   display: flex;
   order: 2;
   align-items: flex-end;
-  padding-left: var(--amino-space-half);
-  padding-bottom: calc(var(--amino-space-quarter));
-  color: var(--amino-gray-d40);
+  padding-left: ${theme.spaceHalf};
+  padding-bottom: calc(${theme.spaceQuarter});
+  color: ${theme.grayD40};
   white-space: nowrap;
 `;
 
@@ -82,25 +83,24 @@ const AminoInput = styled.input<TypeInput>`
   height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
   box-sizing: border-box;
   position: relative;
-  padding: 0 var(--amino-space-half);
+  padding: 0 ${theme.spaceHalf};
   outline: none;
-  transition: var(--amino-transition);
+  transition: ${theme.transition};
   width: 100%;
-  border-radius: var(--amino-radius);
-  background: var(--amino-input-background);
+  border-radius: ${theme.radius};
+  background: ${theme.inputBackground};
   border: 0;
   order: 2;
   font-weight: 500;
 
   :-internal-autofill-selected {
-    border-radius: var(--amino-radius) 0 0 var(--amino-radius);
+    border-radius: ${theme.radius} 0 0 ${theme.radius};
     && + label + div {
       background-color: #e8f0fe;
     }
   }
   &.has-label {
-    padding: var(--amino-space) 4px var(--amino-space-quarter)
-      var(--amino-space-half);
+    padding: ${theme.space} 4px ${theme.spaceQuarter} ${theme.spaceHalf};
     &.has-input-prefix {
       padding-left: 0;
       & + ${StyledLabelInput}::before {
@@ -119,19 +119,19 @@ const AminoInput = styled.input<TypeInput>`
   }
 
   ::placeholder {
-    transition: var(--amino-transition);
+    transition: ${theme.transition};
     opacity: 0;
   }
 
   :focus {
     outline: none;
     & + ${StyledLabelInput}::after {
-      box-shadow: var(--amino-glow-blue);
+      box-shadow: ${theme.glowBlue};
     }
   }
 
   &.has-error + ${StyledLabelInput}::after {
-    box-shadow: var(--amino-glow-error);
+    box-shadow: ${theme.glowError};
   }
 
   &.has-content,
@@ -151,8 +151,8 @@ const StyledLabelWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  background: var(--amino-input-background);
-  border-radius: var(--amino-radius);
+  background: ${theme.inputBackground};
+  border-radius: ${theme.radius};
 
   &.sm ${AminoInput}.has-label {
     padding-top: 13px;

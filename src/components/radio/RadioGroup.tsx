@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
   * {
-    margin-bottom: var(--amino-space-half);
+    margin-bottom: ${theme.spaceHalf};
   }
 
   *:last-of-type {

@@ -1,14 +1,15 @@
 import React from 'react';
 
 import { SearchIcon } from 'src/icons/SearchIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { InputMode } from './input-type/_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;
-  border: var(--amino-border);
-  border-radius: var(--amino-radius);
+  border: ${theme.border};
+  border-radius: ${theme.radius};
   width: 100%;
 `;
 
@@ -20,21 +21,21 @@ const StyledLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--amino-space-double);
+  width: ${theme.spaceDouble};
 `;
 
 const AminoInput = styled.input`
-  padding-left: var(--amino-space-double);
-  padding-right: var(--amino-space-half);
+  padding-left: ${theme.spaceDouble};
+  padding-right: ${theme.spaceHalf};
   height: 40px;
   font-weight: 500;
   line-height: 40px;
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
   outline: none;
   width: 100%;
   :focus {
     outline: none;
-    box-shadow: var(--amino-glow-blue);
+    box-shadow: ${theme.glowBlue};
   }
 `;
 

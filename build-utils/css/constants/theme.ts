@@ -15,23 +15,23 @@ export const theme = {
   'gray-d80': '#232326',
   'gray-alpha': '#f9fafb',
   'gray-50': '#f9fafb',
-  /** @deprecated use gray-l80 instead */
+  /** @deprecated use grayL80 instead */
   'gray-100': 'var(--amino-gray-l80)',
-  /** @deprecated use gray-l60 instead */
+  /** @deprecated use grayL60 instead */
   'gray-200': 'var(--amino-gray-l60)',
-  /** @deprecated use gray-l40 instead */
+  /** @deprecated use grayL40 instead */
   'gray-300': 'var(--amino-gray-l40)',
-  /** @deprecated use gray-l20 instead */
+  /** @deprecated use grayL20 instead */
   'gray-400': 'var(--amino-gray-l20)',
-  /** @deprecated use gray-base instead */
+  /** @deprecated use grayBase instead */
   'gray-500': 'var(--amino-gray-base)',
-  /** @deprecated use gray-d20 instead */
+  /** @deprecated use grayD20 instead */
   'gray-600': 'var(--amino-gray-d20)',
-  /** @deprecated use gray-d40 instead */
+  /** @deprecated use grayD40 instead */
   'gray-700': 'var(--amino-gray-d40)',
-  /** @deprecated use gray-d60 instead */
+  /** @deprecated use grayD60 instead */
   'gray-800': 'var(--amino-gray-d60)',
-  /** @deprecated use gray-d80 instead */
+  /** @deprecated use grayD80 instead */
   'gray-900': 'var(--amino-gray-d80)',
 
   /* BLUE PALETTE */
@@ -46,23 +46,23 @@ export const theme = {
   'blue-d80': '#1d233b',
   'blue-alpha': '#2190ff80',
   'blue-50': '#ebf5ff',
-  /** @deprecated use blue-l80 instead */
+  /** @deprecated use blueL80 instead */
   'blue-100': 'var(--amino-blue-l80)',
-  /** @deprecated use blue-l60 instead */
+  /** @deprecated use blueL60 instead */
   'blue-200': 'var(--amino-blue-l60)',
-  /** @deprecated use blue-l40 instead */
+  /** @deprecated use blueL40 instead */
   'blue-300': 'var(--amino-blue-l40)',
-  /** @deprecated use blue-l20 instead */
+  /** @deprecated use blueL20 instead */
   'blue-400': 'var(--amino-blue-l20)',
-  /** @deprecated use blue-base instead */
+  /** @deprecated use blueBase instead */
   'blue-500': 'var(--amino-blue-base)',
-  /** @deprecated use blue-d20 instead */
+  /** @deprecated use blueD20 instead */
   'blue-600': 'var(--amino-blue-d20)',
-  /** @deprecated use blue-d40 instead */
+  /** @deprecated use blueD40 instead */
   'blue-700': 'var(--amino-blue-d40)',
-  /** @deprecated use blue-d60 instead */
+  /** @deprecated use blueD60 instead */
   'blue-800': 'var(--amino-blue-d60)',
-  /** @deprecated use blue-d80 instead */
+  /** @deprecated use blueD80 instead */
   'blue-900': 'var(--amino-blue-d80)',
 
   /* CYAN PALETTE */
@@ -77,23 +77,23 @@ export const theme = {
   'cyan-d80': '#1d363b',
   'cyan-alpha': '#00dfe380',
   'cyan-50': '#e9fcff',
-  /** @deprecated --*/
+  /** @deprecated use cyanL80 instead */
   'cyan-100': 'var(--amino-cyan-l80)',
-  /** @deprecated use cyan-l60 instead */
+  /** @deprecated use cyanL60 instead */
   'cyan-200': 'var(--amino-cyan-l60)',
-  /** @deprecated use cyan-l40 instead */
+  /** @deprecated use cyanL40 instead */
   'cyan-300': 'var(--amino-cyan-l40)',
-  /** @deprecated use cyan-l20 instead */
+  /** @deprecated use cyanL20 instead */
   'cyan-400': 'var(--amino-cyan-l20)',
-  /** @deprecated use cyan-base instead */
+  /** @deprecated use cyanBase instead */
   'cyan-500': 'var(--amino-cyan-base)',
-  /** @deprecated use cyan-d20 instead */
+  /** @deprecated use cyanD20 instead */
   'cyan-600': 'var(--amino-cyan-d20)',
-  /** @deprecated use cyan-d40 instead */
+  /** @deprecated use cyanD40 instead */
   'cyan-700': 'var(--amino-cyan-d40)',
-  /** @deprecated use cyan-d60 instead */
+  /** @deprecated use cyanD60 instead */
   'cyan-800': 'var(--amino-cyan-d60)',
-  /** @deprecated use cyan-d80 instead */
+  /** @deprecated use cyanD80 instead */
   'cyan-900': 'var(--amino-cyan-d80)',
 
   /* RED PALETTE */
@@ -108,23 +108,23 @@ export const theme = {
   'red-d80': '#371822',
   'red-alpha': '#e0451a80',
   'red-50': '#fef2f2',
-  /** @deprecated use red-l80 instead */
+  /** @deprecated use redL80 instead */
   'red-100': 'var(--amino-red-l80)',
-  /** @deprecated use red-l60 instead */
+  /** @deprecated use redL60 instead */
   'red-200': 'var(--amino-red-l60)',
-  /** @deprecated use red-l40 instead */
+  /** @deprecated use redL40 instead */
   'red-300': 'var(--amino-red-l40)',
-  /** @deprecated use red-l20 instead */
+  /** @deprecated use redL20 instead */
   'red-400': 'var(--amino-red-l20)',
-  /** @deprecated use red-base instead */
+  /** @deprecated use redBase instead */
   'red-500': 'var(--amino-red-base)',
-  /** @deprecated use red-d20 instead */
+  /** @deprecated use redD20 instead */
   'red-600': 'var(--amino-red-d20)',
-  /** @deprecated use red-d40 instead */
+  /** @deprecated use redD40 instead */
   'red-700': 'var(--amino-red-d40)',
-  /** @deprecated use red-d60 instead */
+  /** @deprecated use redD60 instead */
   'red-800': 'var(--amino-red-d60)',
-  /** @deprecated use red-d80 instead */
+  /** @deprecated use redD80 instead */
   'red-900': 'var(--amino-red-d80)',
 
   /* ORANGE PALETTE */
@@ -139,23 +139,23 @@ export const theme = {
   'orange-d80': '#39271c',
   'orange-alpha': '#ffa51e80',
   'orange-50': '#fff0e5',
-  /** @deprecated use orange-l80 instead */
+  /** @deprecated use orangeL80 instead */
   'orange-100': 'var(--amino-orange-l80)',
-  /** @deprecated use orange-l60 instead */
+  /** @deprecated use orangeL60 instead */
   'orange-200': 'var(--amino-orange-l60)',
-  /** @deprecated use orange-l40 instead */
+  /** @deprecated use orangeL40 instead */
   'orange-300': 'var(--amino-orange-l40)',
-  /** @deprecated use orange-l20 instead */
+  /** @deprecated use orangeL20 instead */
   'orange-400': 'var(--amino-orange-l20)',
-  /** @deprecated use orange-base instead */
+  /** @deprecated use orangeBase instead */
   'orange-500': 'var(--amino-orange-base)',
-  /** @deprecated use orange-d20 instead */
+  /** @deprecated use orangeD20 instead */
   'orange-600': 'var(--amino-orange-d20)',
-  /** @deprecated use orange-d40 instead */
+  /** @deprecated use orangeD40 instead */
   'orange-700': 'var(--amino-orange-d40)',
-  /** @deprecated use orange-d60 instead */
+  /** @deprecated use orangeD60 instead */
   'orange-800': 'var(--amino-orange-d60)',
-  /** @deprecated use orange-d80 instead */
+  /** @deprecated use orangeD80 instead */
   'orange-900': 'var(--amino-orange-d80)',
 
   /* GREEN PALETTE */
@@ -170,23 +170,23 @@ export const theme = {
   'green-d80': '#17311a',
   'green-alpha': '#ecfdf580',
   'green-50': '#ecfdf5',
-  /** @deprecated use green-l80 instead */
+  /** @deprecated use greenL80 instead */
   'green-100': 'var(--amino-green-l80)',
-  /** @deprecated use green-l60 instead */
+  /** @deprecated use greenL60 instead */
   'green-200': 'var(--amino-green-l60)',
-  /** @deprecated use green-l40 instead */
+  /** @deprecated use greenL40 instead */
   'green-300': 'var(--amino-green-l40)',
-  /** @deprecated use green-l20 instead */
+  /** @deprecated use greenL20 instead */
   'green-400': 'var(--amino-green-l20)',
-  /** @deprecated use green-base instead */
+  /** @deprecated use greenBase instead */
   'green-500': 'var(--amino-green-base)',
-  /** @deprecated use green-d20 instead */
+  /** @deprecated use greenD20 instead */
   'green-600': 'var(--amino-green-d20)',
-  /** @deprecated use green-d40 instead */
+  /** @deprecated use greenD40 instead */
   'green-700': 'var(--amino-green-d40)',
-  /** @deprecated use green-d60 instead */
+  /** @deprecated use greenD60 instead */
   'green-800': 'var(--amino-green-d60)',
-  /** @deprecated use green-d80 instead */
+  /** @deprecated use greenD80 instead */
   'green-900': 'var(--amino-green-d80)',
 
   /* PURPLE */
@@ -201,23 +201,23 @@ export const theme = {
   'purple-d80': '#2c183b',
   'purple-alpha': '#f5f3ff80',
   'purple-50': '#f5f3ff',
-  /** @deprecated use purple-l80 instead */
+  /** @deprecated use purpleL80 instead */
   'purple-100': 'var(--amino-purple-l80)',
-  /** @deprecated use purple-l60 instead */
+  /** @deprecated use purpleL60 instead */
   'purple-200': 'var(--amino-purple-l60)',
-  /** @deprecated use purple-l40 instead */
+  /** @deprecated use purpleL40 instead */
   'purple-300': 'var(--amino-purple-l40)',
-  /** @deprecated use purple-l20 instead */
+  /** @deprecated use purpleL20 instead */
   'purple-400': 'var(--amino-purple-l20)',
-  /** @deprecated use purple-base instead */
+  /** @deprecated use purpleBase instead */
   'purple-500': 'var(--amino-purple-base)',
-  /** @deprecated use purple-d20 instead */
+  /** @deprecated use purpleD20 instead */
   'purple-600': 'var(--amino-purple-d20)',
-  /** @deprecated use purple-d40 instead */
+  /** @deprecated use purpleD40 instead */
   'purple-700': 'var(--amino-purple-d40)',
-  /** @deprecated use purple-d60 instead */
+  /** @deprecated use purpleD60 instead */
   'purple-800': 'var(--amino-purple-d60)',
-  /** @deprecated use purple-d80 instead */
+  /** @deprecated use purpleD80 instead */
   'purple-900': 'var(--amino-purple-d80)',
 
   /* YELLOW PALLETE */
@@ -232,43 +232,43 @@ export const theme = {
   'yellow-d80': '#39321c',
   'yellow-alpha': '#fffbeb80',
   'yellow-50': '#fffbeb',
-  /** @deprecated use yellow-l80 instead */
+  /** @deprecated use yellowL80 instead */
   'yellow-100': 'var(--amino-yellow-l80)',
-  /** @deprecated use yellow-l60 instead */
+  /** @deprecated use yellowL60 instead */
   'yellow-200': 'var(--amino-yellow-l60)',
-  /** @deprecated use yellow-l40 instead */
+  /** @deprecated use yellowL40 instead */
   'yellow-300': 'var(--amino-yellow-l40)',
-  /** @deprecated use yellow-l20 instead */
+  /** @deprecated use yellowL20 instead */
   'yellow-400': 'var(--amino-yellow-l20)',
-  /** @deprecated use yellow-base instead */
+  /** @deprecated use yellowBase instead */
   'yellow-500': 'var(--amino-yellow-base)',
-  /** @deprecated use yellow-d20 instead */
+  /** @deprecated use yellowD20 instead */
   'yellow-600': 'var(--amino-yellow-d20)',
-  /** @deprecated use yellow-d40 instead */
+  /** @deprecated use yellowD40 instead */
   'yellow-700': 'var(--amino-yellow-d40)',
-  /** @deprecated use yellow-d60 instead */
+  /** @deprecated use yellowD60 instead */
   'yellow-800': 'var(--amino-yellow-d60)',
-  /** @deprecated use yellow-d80 instead */
+  /** @deprecated use yellowD80 instead */
   'yellow-900': 'var(--amino-yellow-d80)',
   'amber-alpha': '#fffbeb80',
   'amber-50': '#fffbeb',
-  /** @deprecated use yellow-l80 instead */
+  /** @deprecated use yellowL80 instead */
   'amber-100': 'var(--amino-yellow-l80)',
-  /** @deprecated use yellow-l60 instead */
+  /** @deprecated use yellowL60 instead */
   'amber-200': 'var(--amino-yellow-l60)',
-  /** @deprecated use yellow-l40 instead */
+  /** @deprecated use yellowL40 instead */
   'amber-300': 'var(--amino-yellow-l40)',
-  /** @deprecated use yellow-l20 instead */
+  /** @deprecated use yellowL20 instead */
   'amber-400': 'var(--amino-yellow-l20)',
-  /** @deprecated use yellow-base instead */
+  /** @deprecated use yellowBase instead */
   'amber-500': 'var(--amino-yellow-base)',
-  /** @deprecated use yellow-d20 instead */
+  /** @deprecated use yellowD20 instead */
   'amber-600': 'var(--amino-yellow-d20)',
-  /** @deprecated use yellow-d40 instead */
+  /** @deprecated use yellowD40 instead */
   'amber-700': 'var(--amino-yellow-d40)',
-  /** @deprecated use yellow-d60 instead */
+  /** @deprecated use yellowD60 instead */
   'amber-800': 'var(--amino-yellow-d60)',
-  /** @deprecated use yellow-d80 instead */
+  /** @deprecated use yellowD80 instead */
   'amber-900': 'var(--amino-yellow-d80)',
 
   /* COMMON COLOR */
@@ -363,17 +363,17 @@ export const theme = {
   'v3-shadow-xl': `0px 20px 25px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.04)`,
   'v3-shadow-xxl': '0px 32px 50px rgba(0, 0, 0, 0.24)',
   /* LEGACY BOX SHADOW */
-  /** @deprecated use v3-shadow-inset instead */
+  /** @deprecated use v3ShadowInset instead */
   'shadow-inset': 'var(--amino-v3-shadow-inset)',
-  /** @deprecated use v3-shadow-base instead */
+  /** @deprecated use v3ShadowBase instead */
   'shadow-small': 'var(--amino-v3-shadow-base)',
-  /** @deprecated use v3-shadow-medium instead */
+  /** @deprecated use v3ShadowMedium instead */
   'shadow-base': 'var(--amino-v3-shadow-medium)',
-  /** @deprecated use v3-shadow-large instead */
+  /** @deprecated use v3ShadowLarge instead */
   'shadow-medium': 'var(--amino-v3-shadow-large)',
-  /** @deprecated use v3-shadow-xl instead */
+  /** @deprecated use v3ShadowXl instead */
   'shadow-large': 'var(--amino-v3-shadow-xl)',
-  /** @deprecated use v3-shadow-xxl instead */
+  /** @deprecated use v3ShadowXxl instead */
   'shadow-larger': 'var(--amino-v3-shadow-xxl)',
 
   /* BORDER */

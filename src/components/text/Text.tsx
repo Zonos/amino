@@ -1,21 +1,22 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import styled, { css } from 'styled-components';
 
 const Subtitle = styled.span`
-  font-size: var(--amino-text-sm);
+  font-size: ${theme.textSm};
   line-height: 16px;
-  color: var(--amino-gray-d60);
+  color: ${theme.grayD60};
 `;
 const InputLabel = styled.span`
   color: black;
   display: block;
-  font-family: var(--amino-font-sans);
+  font-family: ${theme.fontSans};
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  margin-bottom: var(--amino-space-quarter);
+  margin-bottom: ${theme.spaceQuarter};
 `;
 
 export const textOthers = [
