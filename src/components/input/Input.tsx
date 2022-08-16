@@ -11,6 +11,7 @@ import {
 } from './input-type/_FloatLabelInput';
 import { NumberInput } from './input-type/_NumberInput';
 import { PasswordInput } from './input-type/_PasswordInput';
+import { TimeInput } from './input-type/_TimeInput';
 
 const Fields = styled.div`
   border-radius: ${theme.radius};
@@ -141,6 +142,31 @@ export const Input = <T extends string>({
       case 'number':
         return (
           <NumberInput
+            autoFocus={autoFocus}
+            className={className}
+            disabled={disabled}
+            error={error}
+            inputMode={inputMode}
+            label={label}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            pattern={pattern}
+            placeholder={placeholder}
+            prefix={prefix || inputPrefix}
+            readOnly={readOnly}
+            required={required}
+            suffix={suffix || inputSuffix}
+            tabIndex={tabIndex}
+            size={size}
+            value={value || ''}
+            valuePrefix={valuePrefix}
+            {...props}
+          />
+        );
+
+      case 'time':
+        return (
+          <TimeInput
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
