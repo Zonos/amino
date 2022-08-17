@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
+import { theme } from 'src/styles/constants/theme';
 import { Color, colorContrasts, colorPrefixes } from 'src/types/Color';
 import styled from 'styled-components';
 
@@ -9,7 +10,7 @@ const StyledDiv = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-  margin-bottom: var(--amino-space);
+  margin-bottom: ${theme.space};
 
   &:last-child {
     height: 150px;
@@ -21,8 +22,8 @@ const StyledColorIntensity = styled.div<{
   background: AminoColor;
 }>`
   color: ${p => p.color};
-  font-size: var(--amino-v3-text-sm);
-  padding: var(--amino-space);
+  font-size: ${theme.fontSizeS};
+  padding: ${theme.space};
   background: var(${p => p.background});
 `;
 

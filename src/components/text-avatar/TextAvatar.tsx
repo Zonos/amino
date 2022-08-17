@@ -1,19 +1,22 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-const GradientSquare = styled.div<{
+type GraidentSquareType = {
   gradientStart: string;
   gradientEnd: string;
-}>`
+};
+
+const GradientSquare = styled.div<GraidentSquareType>`
   width: 32px;
   height: 32px;
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  color: var(--amino-gray-900) !important;
+  color: ${theme.grayD80} !important;
   font-weight: 500;
 
   --gradient-start: ${p => p.gradientStart};

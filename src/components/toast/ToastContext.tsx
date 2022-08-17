@@ -8,19 +8,31 @@ import React, {
 
 import { AnimatePresence } from 'framer-motion';
 
-import { Toast } from './Toast';
+import { Toast, ToastProps } from './Toast';
 
-export const ToastContext = createContext((toast: ReactNode): void => {
-  const defaultFunction = (options: ReactNode) => options;
-  defaultFunction(toast);
-});
+type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
+type ToastContextFunctionType = (toast: ReactNode, props?: BaseProps) => void;
+type ToastType = {
+  toast: Parameters<ToastContextFunctionType>[0];
+  props?: Parameters<ToastContextFunctionType>[1];
+};
+export const ToastContext = createContext<ToastContextFunctionType>(
+  (toast, props) => {
+    //  This function is for the context type definition purpose.
+    const defaultFunction = () => ({
+      toast,
+      props,
+    });
+    defaultFunction();
+  }
+);
 
 type Props = {
   children: ReactNode;
 };
 
 export const ToastContextProvider = ({ children }: Props) => {
-  const [toasts, setToasts] = useState<ReactNode[]>([]);
+  const [toasts, setToasts] = useState<ToastType[]>([]);
 
   useEffect(() => {
     if (toasts.length > 0) {
@@ -31,9 +43,14 @@ export const ToastContextProvider = ({ children }: Props) => {
     return () => {};
   }, [toasts]);
 
-  const addToast = useCallback(
-    (toast: ReactNode) => {
-      setToasts(t => t.concat(toast));
+  const addToast = useCallback<ToastContextFunctionType>(
+    (toast, props) => {
+      setToasts(t =>
+        t.concat({
+          toast,
+          props,
+        })
+      );
     },
     [setToasts]
   );
@@ -42,14 +59,22 @@ export const ToastContextProvider = ({ children }: Props) => {
     <AnimatePresence>
       <ToastContext.Provider value={addToast}>
         {children}
-        <div className="toasts-wrapper">
-          <AnimatePresence>
-            {toasts.map(toast => (
-              <Toast toastKey={`toast-${toast}`} key={`toast-${toast}`}>
-                {toast}
-              </Toast>
-            ))}
-          </AnimatePresence>
+        <div className="toast-container">
+          <div className="toasts-wrapper">
+            <AnimatePresence>
+              {toasts.map(({ toast, props }) => {
+                return (
+                  <Toast
+                    toastKey={`toast-${toast}-${Date.now()}`}
+                    key={`toast-${toast}-${Date.now()}`}
+                    intent={props?.intent}
+                  >
+                    {toast}
+                  </Toast>
+                );
+              })}
+            </AnimatePresence>
+          </div>
         </div>
       </ToastContext.Provider>
     </AnimatePresence>

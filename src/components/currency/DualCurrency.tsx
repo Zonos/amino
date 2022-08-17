@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 import { Currency } from './Currency';
@@ -25,7 +26,7 @@ const DualCurrencyWrapper = styled.div<StyledProps>`
   align-items: center;
   justify-items: right;
   ${p => (p.isTabular ? tableCss : inlineCss)}
-  grid-column-gap: var(--amino-space-quarter);
+  grid-column-gap: ${theme.spaceQuarter};
   ${p =>
     p.width &&
     css`

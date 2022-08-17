@@ -39,6 +39,12 @@ export const generateConstantContent = async (content: string) => {
     .replace(
       /(?<=\/\*\*.*\/)(\n\s*)('?[a-zA-Z0-9-]+'?:.+,*)/gm,
       "$1/* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */\n$2"
+    )
+    /**
+     * @desc convert key to camel case
+     */
+    .replace(/'\w+(-\w+)+':/gm, str =>
+      str.replace(/-(\w)/gm, (_, letter) => letter.toUpperCase())
     );
 
   /** @desc format file with TScript formater */

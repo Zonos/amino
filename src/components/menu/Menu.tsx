@@ -1,3 +1,4 @@
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 export const Menu = styled.ul`
@@ -7,8 +8,8 @@ export const Menu = styled.ul`
 
   hr {
     border: 0;
-    border-bottom: var(--amino-border);
-    margin-top: var(--amino-radius);
-    margin-bottom: var(--amino-radius);
+    border-bottom: ${theme.border};
+    margin-top: ${theme.radius};
+    margin-bottom: ${theme.radius};
   }
 `;

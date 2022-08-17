@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const AminoSwitch = styled.div<{ checked: boolean }>`
@@ -16,7 +17,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
 const AminoSwitchWrapper = styled.div<{
   checked: boolean;
 }>`
-  margin-right: var(--amino-space-half);
+  margin-right: ${theme.spaceHalf};
   width: 24px;
   height: 16px;
   min-width: 24px;
@@ -24,11 +25,10 @@ const AminoSwitchWrapper = styled.div<{
   line-height: 16px;
   border-radius: 20px;
   transition: 0.5s all ease;
-  background: ${p =>
-    p.checked ? 'var(--amino-primary)' : 'var(--amino-gray-400)'};
+  background: ${p => (p.checked ? theme.primary : theme.grayL20)};
   display: block;
   user-select: none;
-  margin-right: var(--amino-space-half);
+  margin-right: ${theme.spaceHalf};
   position: relative;
 `;
 
@@ -40,7 +40,7 @@ const StyledSubtitle = styled(Text)``;
 
 const StyledLabelDescription = styled.span`
   margin-left: 4px;
-  color: var(--amino-gray-500);
+  color: ${theme.grayBase};
 `;
 
 const LabelWrapper = styled.div`
@@ -62,13 +62,13 @@ const SwitchContainer = styled.label<{
 
   &.disabled {
     ${AminoSwitchWrapper} {
-      background: ${p => (p.checked ? 'var(--amino-gray-300)' : '')};
+      background: ${p => (p.checked ? theme.grayL40 : '')};
     }
     ${StyledLabel} {
-      color: var(--amino-gray-500);
+      color: ${theme.grayBase};
     }
     ${StyledSubtitle} {
-      color: var(--amino-gray-400);
+      color: ${theme.grayL20};
     }
 
     cursor: not-allowed;

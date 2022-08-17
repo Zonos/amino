@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
@@ -8,10 +9,10 @@ import styled from 'styled-components';
 import { Button } from '../button/Button';
 
 const AminoNotice = styled.div`
-  background: var(--amino-gray-100);
-  border-radius: var(--amino-radius);
-  color: var(--amino-text-color);
-  padding: var(--amino-space-half);
+  background: ${theme.grayL80};
+  border-radius: ${theme.radius};
+  color: ${theme.textColor};
+  padding: ${theme.spaceHalf};
   display: flex;
   align-items: center;
 
@@ -22,34 +23,34 @@ const AminoNotice = styled.div`
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
-  background: var(--amino-green-100);
+  background: ${theme.greenL80};
   &,
   & > * {
-    color: var(--amino-success-dark);
+    color: ${theme.successDark};
   }
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  background: var(--amino-red-100);
+  background: ${theme.redL80};
   &,
   & > * {
-    color: var(--amino-red-d60);
+    color: ${theme.redD60};
   }
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
-  background: var(--amino-warning);
+  background: ${theme.warning};
   &,
   & > * {
-    color: var(--amino-warning-dark);
+    color: ${theme.warningDark};
   }
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
-  background: var(--amino-blue-100);
+  background: ${theme.blueL80};
   &,
   & > * {
-    color: var(--amino-blue-base);
+    color: ${theme.blueBase};
   }
 `;
 

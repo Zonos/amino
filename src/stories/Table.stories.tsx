@@ -19,6 +19,7 @@ import { ImageDuotoneIcon } from 'src/icons/ImageDuotoneIcon';
 import { ImportDuotoneIcon } from 'src/icons/ImportDuotoneIcon';
 import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledTable = styled(Table)`
@@ -41,10 +42,10 @@ const RightIconLabel = styled.div`
 `;
 
 const ExpandedItemCard = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
   padding-left: 44px;
-  border: var(--amino-border);
-  border-radius: var(--amino-radius);
+  border: ${theme.border};
+  border-radius: ${theme.radius};
 `;
 const ExpandedTableCard = styled(ExpandedItemCard)`
   padding: 8px;

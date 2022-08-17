@@ -3,13 +3,14 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { VStack } from 'src/components/stack/VStack';
 import { Text, textOptions, TextProps } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
   background-color: white;
-  border: 1px solid var(--amino-gray-200);
-  padding: var(--amino-space-half);
-  margin-bottom: var(--amino-space);
+  border: 1px solid ${theme.grayL60};
+  padding: ${theme.spaceHalf};
+  margin-bottom: ${theme.space};
   width: 640px;
   border-radius: 16px;
 `;
@@ -17,8 +18,8 @@ const StyledVStack = styled(VStack)`
 const Label = styled.div`
   display: flex;
   justify-content: center;
-  background: var(--amino-gray-300);
-  padding: var(--amino-space-quarter);
+  background: ${theme.grayL40};
+  padding: ${theme.spaceQuarter};
   border-radius: 5px;
   width: 200px;
 `;

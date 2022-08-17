@@ -12,6 +12,7 @@ import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import { theme } from 'src/styles/constants/theme';
 import { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
@@ -24,7 +25,7 @@ const OptionLabel = styled.div`
 
 const PhoneCodeLabel = styled.div`
   margin-left: 4px;
-  color: var(--amino-gray-d20);
+  color: ${theme.grayD20};
 `;
 
 const StyledPrefix = styled.div`

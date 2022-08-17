@@ -4,6 +4,7 @@ import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 type UploadedFileProps = {
@@ -25,25 +26,24 @@ export interface FileUploadProps {
   helperText?: string;
 }
 
-const StyledDropzoneWrapper = styled.div<{
+type DropzoneWrapper = {
   width?: number;
-}>`
+  loading: boolean;
+  error?: boolean;
+  hasUploadedFile?: boolean;
+};
+
+const StyledDropzoneWrapper = styled.div<{ width?: number }>`
   display: flex;
   flex-direction: column;
   ${({ width }) => width && `width: ${width}px;`}
 `;
 
-const StyledWrapper = styled.div<{
-  width?: number;
-  loading: boolean;
-  error?: boolean;
-  hasUploadedFile?: boolean;
-}>`
+const StyledWrapper = styled.div<DropzoneWrapper>`
   position: relative;
   border: 1px dashed
-    ${({ error }) =>
-      error ? 'var(--amino-danger)' : 'var(--amino-border-color)'};
-  border-radius: var(--amino-radius);
+    ${({ error }) => (error ? theme.danger : theme.borderColor)};
+  border-radius: ${theme.radius};
   height: 50px;
   display: flex;
   align-items: center;
@@ -51,7 +51,7 @@ const StyledWrapper = styled.div<{
     hasUploadedFile || loading ? 'left' : 'center'};
 
   padding-left: ${({ hasUploadedFile, loading }) =>
-    (hasUploadedFile || loading) && 'var(--amino-space-half)'};
+    (hasUploadedFile || loading) && theme.spaceHalf};
   img {
     height: auto;
   }
@@ -63,7 +63,7 @@ const StyledImageWrapper = styled.div``;
 const StyledHStack = styled(HStack)`
   grid-template-columns: auto;
   height: 100%;
-  flex-basis: calc(100% - var(--amino-space-double));
+  flex-basis: calc(100% - ${theme.spaceDouble});
   ${StyledImageWrapper} {
     margin: auto;
     width: 32px;
@@ -80,18 +80,18 @@ const StyledFileInput = styled.div`
 const StyledFileInfo = styled.div<{ hasUploadedFile: boolean }>`
   display: flex;
   flex-direction: row;
-  gap: var(--amino-space-quarter);
+  gap: ${theme.spaceQuarter};
   align-items: center;
   justify-content: ${({ hasUploadedFile }) =>
     hasUploadedFile ? 'left' : 'center'};
 `;
 const StyledFileName = styled.span`
   font-style: normal;
-  font-size: var(--amino-text-sm);
+  font-size: ${theme.textSm};
 `;
 const StyledCloseButton = styled.button`
   position: absolute;
-  right: var(--amino-space-half);
+  right: ${theme.spaceHalf};
   top: calc(50% - 10px);
   :active,
   :focus {
@@ -100,7 +100,7 @@ const StyledCloseButton = styled.button`
   }
 `;
 const StyledLink = styled.span`
-  color: var(--amino-blue-500);
+  color: ${theme.blueBase};
   cursor: pointer;
 `;
 const StyledHelperText = styled(Text)`

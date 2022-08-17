@@ -2,6 +2,7 @@ import React from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import { SectionLayout } from 'src/types/SectionLayout';
 import styled, { css } from 'styled-components';
 
@@ -10,7 +11,7 @@ import { SectioWrapper } from './_SectionWrapper';
 const SectionHeader = styled.header<{ $layout: SectionLayout }>`
   display: flex;
   align-items: center;
-  margin-bottom: var(--amino-space);
+  margin-bottom: ${theme.space};
   ${({ $layout }) =>
     $layout === 'horizontal' &&
     css`
@@ -20,9 +21,9 @@ const SectionHeader = styled.header<{ $layout: SectionLayout }>`
 `;
 
 const StyledSubheader = styled(Text)`
-  color: var(--amino-gray-d40);
+  color: ${theme.grayD40};
   font-style: italic;
-  margin-top: var(--amino-space-quarter);
+  margin-top: ${theme.spaceQuarter};
 `;
 
 const StyledHeader = styled(Text)<{ $layout: SectionLayout }>`
@@ -37,7 +38,7 @@ const StyledHeader = styled(Text)<{ $layout: SectionLayout }>`
 `;
 
 const StyledSectionWrapper = styled(SectioWrapper)`
-  margin-bottom: var(--amino-space-double);
+  margin-bottom: ${theme.spaceDouble};
 `;
 
 export type SectionProps = {

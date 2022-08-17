@@ -3,15 +3,16 @@ import React, { forwardRef } from 'react';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
+import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled, { css } from 'styled-components';
 
 import { BaseDialog } from './_BaseDialog';
 
 const Header = styled.div`
-  padding: var(--amino-space);
-  border-top-left-radius: var(--amino-radius-xl);
-  border-top-right-radius: var(--amino-radius-xl);
+  padding: ${theme.space};
+  border-top-left-radius: ${theme.radiusXl};
+  border-top-right-radius: ${theme.radiusXl};
   display: flex;
   align-items: center;
 
@@ -35,14 +36,14 @@ const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
 `;
 
 const Footer = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
   display: flex;
   align-items: center;
-  border-bottom-left-radius: var(--amino-radius-xl);
-  border-bottom-right-radius: var(--amino-radius-xl);
+  border-bottom-left-radius: ${theme.radiusXl};
+  border-bottom-right-radius: ${theme.radiusXl};
 
   & > div + div {
-    margin-left: var(--amino-space-quarter);
+    margin-left: ${theme.spaceQuarter};
   }
 `;
 
@@ -93,7 +94,7 @@ scroll gradient in the top right */
 `;
 
 const Content = styled.div`
-  padding: 0 var(--amino-space);
+  padding: 0 ${theme.space};
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   /**
@@ -116,7 +117,7 @@ const Close = styled.div`
 
   &:hover {
     svg {
-      fill: var(--amino-gray-400);
+      fill: ${theme.grayL20};
     }
   }
 
@@ -147,14 +148,14 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       leftActions,
       onClose,
       open,
-      theme,
+      theme: _theme,
       width,
     },
     ref
   ) => (
     <BaseDialog
       className={className}
-      data-theme={theme}
+      data-theme={_theme}
       open={open}
       width={width}
     >

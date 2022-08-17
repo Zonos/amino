@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { CalendarIcon } from 'src/icons/CalendarIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { FloatLabelInput, type FloatLabelInputProps } from './_FloatLabelInput';
@@ -18,7 +19,7 @@ const StyledActionWrapper = styled.div`
 const StyledButtonAction = styled.button``;
 const AminoInput = styled(FloatLabelInput)`
   && input {
-    padding-right: var(--amino-space-double);
+    padding-right: ${theme.spaceDouble};
     appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-calendar-picker-indicator {
@@ -26,17 +27,11 @@ const AminoInput = styled(FloatLabelInput)`
       -webkit-appearance: none;
     }
 
-    &::-webkit-datetime-edit-year-field,
-    &::-webkit-datetime-edit-text,
-    &::-webkit-datetime-edit-month-field,
-    &::-webkit-datetime-edit-day-field {
+    &::-webkit-datetime-edit-fields-wrapper {
       transition: 0.5s all ease;
     }
     &:not(:focus):not(.has-content) {
-      &::-webkit-datetime-edit-year-field,
-      &::-webkit-datetime-edit-text,
-      &::-webkit-datetime-edit-month-field,
-      &::-webkit-datetime-edit-day-field {
+      &::-webkit-datetime-edit-fields-wrapper {
         color: transparent;
       }
     }

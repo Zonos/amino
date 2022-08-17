@@ -16,7 +16,7 @@ import styled from 'styled-components';
 import { feature } from 'topojson-client';
 
 const Map = styled.div`
-  background: ${theme['gray-l80']};
+  background: ${theme.grayL80};
 
   * {
     outline: none;
@@ -125,7 +125,7 @@ export const ConnectionMap = ({
       >
         <Geographies
           geography={geographies}
-          stroke={theme['gray-l20']}
+          stroke={theme.grayL20}
           strokeWidth={1}
         >
           {({ geographies: geos }) =>
@@ -137,34 +137,34 @@ export const ConnectionMap = ({
                   [to, from].includes(
                     getCountryCodeByName(geo.properties.name, countries)
                   )
-                    ? theme['blue-l80']
-                    : theme['gray-l40']
+                    ? theme.blueL80
+                    : theme.grayL40
                 }
               />
             ))
           }
         </Geographies>
         <Marker coordinates={coordsForIso(from)}>
-          <circle r={10} fill={theme['blue-l60']} />
-          <circle r={7} fill={theme['blue-l40']} />
+          <circle r={10} fill={theme.blueL60} />
+          <circle r={7} fill={theme.blueL40} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
-          <circle r={10} fill={theme['blue-l60']} />
-          <circle r={7} fill={theme['blue-l40']} />
+          <circle r={10} fill={theme.blueL60} />
+          <circle r={7} fill={theme.blueL40} />
         </Marker>
         <Line
           from={coordsForIso(from)}
           to={coordsForIso(to)}
-          stroke={theme['blue-base']}
+          stroke={theme.blueBase}
           strokeWidth={4}
         />
         <Marker coordinates={coordsForIso(from)}>
           <circle r={4} fill="white" />
-          <circle r={2} fill={theme['blue-base']} />
+          <circle r={2} fill={theme.blueBase} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
           <circle r={4} fill="white" />
-          <circle r={2} fill={theme['blue-base']} />
+          <circle r={2} fill={theme.blueBase} />
         </Marker>
       </ComposableMap>
     </Map>

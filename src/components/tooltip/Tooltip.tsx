@@ -7,6 +7,7 @@ import MuiTooltip, {
 } from '@mui/material/Tooltip';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
@@ -49,7 +50,7 @@ const StyledTooltip = muiStyled(({ className, ...props }: MuiTooltipProps) => (
 ))(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: '#0C0C0D',
-    boxShadow: 'var(--amino-v3-shadow-large)',
+    boxShadow: theme.v3ShadowLarge,
   },
 }));
 

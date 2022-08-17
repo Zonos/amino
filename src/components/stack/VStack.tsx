@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { Stack, StackProps } from './Stack';
 
 const StyledVStack = styled(Stack)<StackProps>`
-  grid-row-gap: ${p =>
-    p.spacing ? `var(--amino-${p.spacing})` : `var(--amino-space)`};
+  grid-row-gap: ${p => (p.spacing ? `var(--amino-${p.spacing})` : theme.space)};
   grid-auto-flow: row;
 `;
 

@@ -1,10 +1,11 @@
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 export const avatarSizes = {
-  sm: 'var(--amino-size-sm)',
-  md: 'var(--amino-size-md)',
-  lg: 'var(--amino-size-lg)',
-  xl: 'var(--amino-size-xl)',
+  sm: theme.fontSizeS,
+  md: theme.fontSizeBase,
+  lg: theme.fontSizeL,
+  xl: theme.fontSizeXl,
 } as const;
 
 export const iconSizes: { [key in AvatarSize]: number } = {
@@ -28,10 +29,13 @@ export interface AvatarProps {
   shape: AvatarShape;
 }
 
-export const AvatarBase = styled.div<
-  AvatarProps & { backgroundUrl?: string; backgroundSize?: string }
->`
-  background-color: var(--amino-gray-l80);
+type AvartarBaseProps = AvatarProps & {
+  backgroundUrl?: string;
+  backgroundSize?: string;
+};
+
+export const AvatarBase = styled.div<AvartarBaseProps>`
+  background-color: ${theme.grayL80};
   display: flex;
   justify-content: center;
   align-items: center;
