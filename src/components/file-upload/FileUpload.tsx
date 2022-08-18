@@ -21,7 +21,7 @@ export interface FileUploadProps {
 
   /** Display file info if uploaded file property has data */
   uploadedFile?: UploadedFileProps;
-  onRemove: () => void;
+  onRemove?: () => void;
   width?: number;
   helperText?: string;
 }
@@ -151,9 +151,11 @@ export const FileUpload = ({
             </StyledFileInfo>
           </StyledHStack>
 
-          <StyledCloseButton onClick={() => onRemove()}>
-            <RemoveCircleIcon size={20} />
-          </StyledCloseButton>
+          {onRemove && (
+            <StyledCloseButton onClick={() => onRemove()}>
+              <RemoveCircleIcon size={20} />
+            </StyledCloseButton>
+          )}
         </>
       );
     }
