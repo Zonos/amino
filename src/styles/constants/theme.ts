@@ -810,25 +810,25 @@ export const theme = {
   fontSizeXs: 'var(--amino-font-size-xs)',
 
   /* LEGACY FONT SIZE */
-  /** @info var(--amino-font-size-3xl) */
+  /** @deprecated use fontSize3xl instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textXxl: 'var(--amino-text-xxl)',
-  /** @info var(--amino-font-size-2xl) */
+  /** @deprecated use fontSize2xl instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textXl: 'var(--amino-text-xl)',
-  /** @info var(--amino-font-size-xl) */
+  /** @deprecated use fontSizeXl instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textLg: 'var(--amino-text-lg)',
-  /** @info var(--amino-font-size-l) */
+  /** @deprecated use fontSizeL instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textMd: 'var(--amino-text-md)',
-  /** @info var(--amino-font-size-base) */
+  /** @deprecated use fontSizeBase instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textBase: 'var(--amino-text-base)',
-  /** @info var(--amino-font-size-s) */
+  /** @deprecated use fontSizeS instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textSm: 'var(--amino-text-sm)',
-  /** @info var(--amino-font-size-xs) */
+  /** @deprecated use fontSizeXs instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textXs: 'var(--amino-text-xs)',
 
