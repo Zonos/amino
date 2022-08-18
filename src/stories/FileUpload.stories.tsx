@@ -67,7 +67,6 @@ NoFileSelected.args = {
 };
 export const ErrorState = Template.bind({});
 ErrorState.args = {
-  loading: false,
   error: true,
   width: 215,
   helperText: '',
@@ -82,7 +81,6 @@ ErrorState.args = {
 };
 export const HasUploadedFile = Template.bind({});
 HasUploadedFile.args = {
-  loading: false,
   error: false,
   width: 215,
   helperText: '',
@@ -90,6 +88,41 @@ HasUploadedFile.args = {
     uploadedFilename: 'file.tsc',
     uploadedSize: '14kb',
     uploadedThumbnailUrl: 'https://dummyimage.com/50x50/000/fff',
+  },
+  dropzoneOptions: {
+    onDropAccepted: () => {
+      // handle accepted files here
+    },
+    onDropRejected: () => {
+      // handle rejected files here
+    },
+  },
+};
+export const HasUploadedFileNoFileSize = Template.bind({});
+HasUploadedFileNoFileSize.args = {
+  error: false,
+  width: 215,
+  helperText: '',
+  uploadedFile: {
+    uploadedFilename: 'file.tsc',
+    uploadedThumbnailUrl: 'https://dummyimage.com/50x50/000/fff',
+  },
+  dropzoneOptions: {
+    onDropAccepted: () => {
+      // handle accepted files here
+    },
+    onDropRejected: () => {
+      // handle rejected files here
+    },
+  },
+};
+export const HasUploadedFileNoFileUrl = Template.bind({});
+HasUploadedFileNoFileUrl.args = {
+  error: false,
+  width: 215,
+  helperText: '',
+  uploadedFile: {
+    uploadedFilename: 'file.tsc',
   },
   dropzoneOptions: {
     onDropAccepted: () => {

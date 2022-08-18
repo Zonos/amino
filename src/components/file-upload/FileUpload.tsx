@@ -8,8 +8,8 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 type UploadedFileProps = {
-  uploadedSize: string;
-  uploadedThumbnailUrl: string;
+  uploadedSize?: string;
+  uploadedThumbnailUrl?: string;
   uploadedFilename: string;
 };
 
@@ -136,18 +136,19 @@ export const FileUpload = ({
       return loadingText || 'Loading...';
     }
     if (uploadedFile) {
+      const { uploadedFilename, uploadedSize, uploadedThumbnailUrl } =
+        uploadedFile;
       return (
         <>
           <StyledHStack>
-            <StyledImageWrapper>
-              <img
-                src={uploadedFile.uploadedThumbnailUrl || ''}
-                alt="Uploaded thumbnail"
-              />
-            </StyledImageWrapper>
+            {uploadedThumbnailUrl && (
+              <StyledImageWrapper>
+                <img src={uploadedThumbnailUrl} alt="Uploaded thumbnail" />
+              </StyledImageWrapper>
+            )}
             <StyledFileInfo hasUploadedFile={!!uploadedFile}>
-              <strong>{uploadedFile.uploadedFilename}</strong>
-              <StyledFileName>{uploadedFile.uploadedSize}</StyledFileName>
+              <strong>{uploadedFilename}</strong>
+              {uploadedSize && <StyledFileName>{uploadedSize}</StyledFileName>}
             </StyledFileInfo>
           </StyledHStack>
 
