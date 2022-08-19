@@ -20,8 +20,8 @@ export interface FileUploadProps {
   error?: boolean;
 
   /** Display file info if uploaded file property has data */
-  uploadedFile?: UploadedFileProps;
-  onRemove?: () => void;
+  uploadedFile?: UploadedFileProps | null;
+  onRemove?: (() => void) | null;
   width?: number;
   helperText?: string;
 }
@@ -178,7 +178,7 @@ export const FileUpload = ({
       <StyledWrapper
         error={!!error}
         hasUploadedFile={
-          uploadedFile && Object.entries(uploadedFile).length > 0
+          !!uploadedFile && Object.entries(uploadedFile).length > 0
         }
         loading={loading}
       >
