@@ -403,12 +403,19 @@ export const theme = {
   'font-size-xs': '0.625rem',
 
   /* LEGACY FONT SIZE */
+  /** @deprecated use fontSize3xl instead */
   'text-xxl': 'var(--amino-font-size-3xl)',
+  /** @deprecated use fontSize2xl instead */
   'text-xl': 'var(--amino-font-size-2xl)',
+  /** @deprecated use fontSizeXl instead */
   'text-lg': 'var(--amino-font-size-xl)',
+  /** @deprecated use fontSizeL instead */
   'text-md': 'var(--amino-font-size-l)',
+  /** @deprecated use fontSizeBase instead */
   'text-base': 'var(--amino-font-size-base)',
+  /** @deprecated use fontSizeS instead */
   'text-sm': 'var(--amino-font-size-s)',
+  /** @deprecated use fontSizeXs instead */
   'text-xs': 'var(--amino-font-size-xs)',
 
   /* LINE HEIGHT */

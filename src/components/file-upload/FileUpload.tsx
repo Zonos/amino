@@ -8,8 +8,8 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 type UploadedFileProps = {
-  uploadedSize: string;
-  uploadedThumbnailUrl: string;
+  uploadedSize?: string;
+  uploadedThumbnailUrl?: string;
   uploadedFilename: string;
 };
 
@@ -20,8 +20,8 @@ export interface FileUploadProps {
   error?: boolean;
 
   /** Display file info if uploaded file property has data */
-  uploadedFile?: UploadedFileProps;
-  onRemove: () => void;
+  uploadedFile: UploadedFileProps | null;
+  onRemove?: () => void;
   width?: number;
   helperText?: string;
 }
@@ -136,24 +136,27 @@ export const FileUpload = ({
       return loadingText || 'Loading...';
     }
     if (uploadedFile) {
+      const { uploadedFilename, uploadedSize, uploadedThumbnailUrl } =
+        uploadedFile;
       return (
         <>
           <StyledHStack>
-            <StyledImageWrapper>
-              <img
-                src={uploadedFile.uploadedThumbnailUrl || ''}
-                alt="Uploaded thumbnail"
-              />
-            </StyledImageWrapper>
+            {uploadedThumbnailUrl && (
+              <StyledImageWrapper>
+                <img src={uploadedThumbnailUrl} alt="Uploaded thumbnail" />
+              </StyledImageWrapper>
+            )}
             <StyledFileInfo hasUploadedFile={!!uploadedFile}>
-              <strong>{uploadedFile.uploadedFilename}</strong>
-              <StyledFileName>{uploadedFile.uploadedSize}</StyledFileName>
+              <strong>{uploadedFilename}</strong>
+              {uploadedSize && <StyledFileName>{uploadedSize}</StyledFileName>}
             </StyledFileInfo>
           </StyledHStack>
 
-          <StyledCloseButton onClick={() => onRemove()}>
-            <RemoveCircleIcon size={20} />
-          </StyledCloseButton>
+          {onRemove && (
+            <StyledCloseButton onClick={() => onRemove()}>
+              <RemoveCircleIcon size={20} />
+            </StyledCloseButton>
+          )}
         </>
       );
     }
@@ -175,7 +178,7 @@ export const FileUpload = ({
       <StyledWrapper
         error={!!error}
         hasUploadedFile={
-          uploadedFile && Object.entries(uploadedFile).length > 0
+          !!uploadedFile && Object.entries(uploadedFile).length > 0
         }
         loading={loading}
       >
