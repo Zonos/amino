@@ -20,8 +20,8 @@ export interface FileUploadProps {
   error?: boolean;
 
   /** Display file info if uploaded file property has data */
-  uploadedFile?: UploadedFileProps | null;
-  onRemove?: (() => void) | null;
+  uploadedFile: UploadedFileProps | null;
+  onRemove?: () => void;
   width?: number;
   helperText?: string;
 }
