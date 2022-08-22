@@ -1,35 +1,49 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { IOption } from 'src/components/select/_StyledReactSelect';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import { StackProps } from 'src/components/stack/Stack';
 
-const HStackMeta: Meta = {
+type StoryProps = StackProps & { numberOfChildren: number };
+
+const HStackMeta: Meta<StoryProps> = {
   title: 'Amino/HStack',
   component: HStack,
   subcomponents: { Select },
+  args: {
+    numberOfChildren: 2,
+  },
 };
 
 export default HStackMeta;
 
-const Template: Story<StackProps> = ({ spacing }: StackProps) => (
-  <HStack spacing={spacing}>
-    <Select
-      label="Frankfurters"
-      placeholder="When you go to a ballgame..."
-      options={[]}
-      onChange={() => {}}
-      value={null}
-    />
+const options = [
+  'Nope',
+  'Gollum',
+  'Not sure how to answer that question',
+  '*confused noises*',
+].map<IOption>(v => ({
+  label: v,
+  value: v,
+}));
 
-    <Select
-      label="HotDogs"
-      placeholder="If you are a fan."
-      options={[]}
-      onChange={() => {}}
-      value={null}
-    />
+const Template: Story<StoryProps> = ({
+  spacing,
+  numberOfChildren,
+}: StoryProps) => (
+  <HStack spacing={spacing}>
+    {[...Array(numberOfChildren).keys()].map(n => (
+      <Select
+        key={n}
+        label="What is your name"
+        placeholder="What?"
+        options={options}
+        onChange={() => {}}
+        value={null}
+      />
+    ))}
   </HStack>
 );
 
