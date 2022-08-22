@@ -30,7 +30,8 @@
         "transform": "@zerollup/ts-transform-paths"
       }
     ],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "downlevelIteration": true
   },
   "ts-node": {
     "transpileOnly": true,

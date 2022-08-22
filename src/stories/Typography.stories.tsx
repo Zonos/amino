@@ -53,6 +53,28 @@ const Template: Story<TextProps> = props => {
   );
 };
 
+const TextSizesLabel = styled.div`
+  margin-right: 10px;
+  font-size: 14px;
+`;
+
+const TemplateTextSizes: Story<TextProps> = props => {
+  return (
+    <VStack spacing="space-quarter">
+      {textOptions.map(option => (
+        <div>
+          <TextSizesLabel>{option.type}</TextSizesLabel>
+          <Text type={option.type} {...props}>
+            {content}
+          </Text>
+        </div>
+      ))}
+    </VStack>
+  );
+};
+
+export const TextTypes = TemplateTextSizes.bind({});
+
 export const TextExample = Template.bind({});
 TextExample.args = {};
 export const TextBlue = Template.bind({});

@@ -11,36 +11,30 @@ const VStackMeta: Meta = {
   title: 'Amino/VStack',
   component: VStack,
   decorators: [withDesign],
+  args: {
+    numberOfChildren: 4,
+  },
 };
 
 export default VStackMeta;
 
-const Template: Story<StackProps> = ({
+type StoryProps = StackProps & { numberOfChildren: number };
+
+const Template: Story<StoryProps> = ({
   alignment,
-  children,
   spacing,
-}: StackProps) => (
+  numberOfChildren,
+}: StoryProps) => (
   <VStack alignment={alignment} spacing={spacing}>
-    {children}
+    {[...Array(numberOfChildren).keys()].map(n => (
+      <Card label={`Card ${n}`} key={n} footerActions={<Button>Do it</Button>}>
+        <p>Some text</p>
+      </Card>
+    ))}
   </VStack>
 );
 
 export const CardVStack = Template.bind({});
-CardVStack.args = {
-  children: (
-    <>
-      <Card footerActions={<Button>action</Button>}>
-        <div>one</div>
-      </Card>
-      <Card footerActions={<Button>action 2</Button>}>
-        <div>two</div>
-        <div>two</div>
-      </Card>
-    </>
-  ),
-  alignment: 'start',
-  spacing: 'space-double',
-};
 
 CardVStack.parameters = {
   design: {

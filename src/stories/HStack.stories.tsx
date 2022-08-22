@@ -7,38 +7,35 @@ import { HStack } from 'src/components/stack/HStack';
 import { StackProps } from 'src/components/stack/Stack';
 import { withDesign } from 'storybook-addon-designs';
 
-const HStackMeta: Meta = {
+type StoryProps = StackProps & { numberOfChildren: number };
+
+const HStackMeta: Meta<StoryProps> = {
   title: 'Amino/HStack',
   component: HStack,
   decorators: [withDesign],
+  args: {
+    numberOfChildren: 4,
+  },
 };
 
 export default HStackMeta;
 
-const Template: Story<StackProps> = ({
+const Template: Story<StoryProps> = ({
   alignment,
-  children,
   spacing,
-}: StackProps) => (
+  numberOfChildren,
+}: StoryProps) => (
   <HStack alignment={alignment} spacing={spacing}>
-    {children}
+    {[...Array(numberOfChildren).keys()].map(n => (
+      <Card label={`Card ${n}`} key={n} footerActions={<Button>Do it</Button>}>
+        <p>Some text</p>
+      </Card>
+    ))}
   </HStack>
 );
 
 export const CardHStack = Template.bind({});
-CardHStack.args = {
-  children: (
-    <>
-      <Card footerActions={<Button>action</Button>}>
-        <div>one</div>
-      </Card>
-      <Card footerContent={<Button>action 2</Button>}>
-        <div>two</div>
-        <div>two</div>
-      </Card>
-    </>
-  ),
-};
+
 CardHStack.parameters = {
   design: {
     type: 'figma',

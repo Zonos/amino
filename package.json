@@ -111,6 +111,7 @@
     "extends": "react-app"
   },
   "scripts": {
+    "dev": "concurrently 'yarn storybook' 'yarn proxy' 'yarn open'",
     "prebuild:theme": "echo 'start generating styles' && yarn test:prod",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "postbuild:theme": "echo 'done generating styles'",
@@ -126,7 +127,6 @@
     "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "test:prod": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/storyshots",
-    "dev": "concurrently 'yarn start' 'yarn proxy' 'yarn open'",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",
     "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
@@ -136,7 +136,7 @@
     "svgs:react:flags": "ts-node ./svgReact/flags/runCreateComponentsFromSvgs.ts",
     "svgs:react:icons": "ts-node ./svgReact/icons",
     "start": "yarn build-storybook && yarn storybook",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --no-open",
     "version:patch": "yarn build && npm version patch -m 'Bump version %s' && yarn push:tags",
     "version:minor": "yarn build && npm version minor -m 'Bump version %s' && yarn push:tags",
     "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",
