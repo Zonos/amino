@@ -1,12 +1,7 @@
-import React, {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, ReactNode, useCallback, useState } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Toast, ToastProps } from './Toast';
 
@@ -15,6 +10,7 @@ type ToastContextFunctionType = (toast: ReactNode, props?: BaseProps) => void;
 type ToastType = {
   toast: Parameters<ToastContextFunctionType>[0];
   props?: Parameters<ToastContextFunctionType>[1];
+  uuid: string;
 };
 export const ToastContext = createContext<ToastContextFunctionType>(
   (toast, props) => {
@@ -34,23 +30,17 @@ type Props = {
 export const ToastContextProvider = ({ children }: Props) => {
   const [toasts, setToasts] = useState<ToastType[]>([]);
 
-  useEffect(() => {
-    if (toasts.length > 0) {
-      const timer = setTimeout(() => setToasts(t => t.slice(1)), 6000);
-      return () => clearTimeout(timer);
-    }
-
-    return () => {};
-  }, [toasts]);
-
   const addToast = useCallback<ToastContextFunctionType>(
     (toast, props) => {
       setToasts(t =>
         t.concat({
           toast,
           props,
+          uuid: uuidv4(),
         })
       );
+      // Each toast has a lifetime of 6 seconds
+      setTimeout(() => setToasts(t => t.slice(1)), 6000);
     },
     [setToasts]
   );
@@ -62,13 +52,10 @@ export const ToastContextProvider = ({ children }: Props) => {
         <div className="toast-container">
           <div className="toasts-wrapper">
             <AnimatePresence>
-              {toasts.map(({ toast, props }) => {
+              {toasts.map(({ toast, props, uuid }) => {
+                const key = `toast-${toast}-${uuid}`;
                 return (
-                  <Toast
-                    toastKey={`toast-${toast}-${Date.now()}`}
-                    key={`toast-${toast}-${Date.now()}`}
-                    intent={props?.intent}
-                  >
+                  <Toast toastKey={key} key={key} intent={props?.intent}>
                     {toast}
                   </Toast>
                 );
