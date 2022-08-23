@@ -55,12 +55,7 @@ export const ToastContextProvider = ({ children }: Props) => {
               {toasts.map(({ toast, props, uuid }) => {
                 const key = `toast-${toast}-${uuid}`;
                 return (
-                  <Toast
-                    toastKey={key}
-                    key={key}
-                    intent={props?.intent}
-                    data-dog-id={key}
-                  >
+                  <Toast toastKey={key} key={key} intent={props?.intent}>
                     {toast}
                   </Toast>
                 );
