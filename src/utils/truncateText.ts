@@ -1,12 +1,14 @@
+export type TruncateTextParams = {
+  addEllipses?: boolean;
+  length: number;
+  text: string | null;
+};
+
 export const truncateText = ({
   addEllipses = true,
   length,
   text,
-}: {
-  addEllipses?: boolean;
-  length: number;
-  text: string | null;
-}) => {
+}: TruncateTextParams) => {
   const ellipses = addEllipses ? '...' : '';
   const matchPattern = new RegExp(`(.{1,${length}}\\s)(.*)`, 'gi');
   const truncatePattern =
