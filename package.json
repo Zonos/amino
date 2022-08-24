@@ -111,7 +111,8 @@
     "extends": "react-app"
   },
   "scripts": {
-    "dev": "concurrently 'yarn storybook' 'yarn proxy' 'yarn open'",
+    "dev": "concurrently 'yarn storybook' 'yarn proxy'",
+    "dev:open": "concurrently 'yarn storybook' 'yarn proxy' 'yarn open'",
     "prebuild:theme": "echo 'start generating styles' && yarn test:prod",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "postbuild:theme": "echo 'done generating styles'",
@@ -129,7 +130,7 @@
     "test:visual": "jest ./.storybook/storyshots",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",
-    "open": "open -a 'Google Chrome' https://amino-dev.zonos.com:6007",
+    "open": "open https://amino-dev.zonos.com:6007",
     "proxy": "local-ssl-proxy --source 6007 --target 6006",
     "svgs:format": "eslint --fix svgReact --ext .tsx -c ./.eslintrc.prod.cjs",
     "presvgs:react:flags": "ts-node ./svgReact/flags/runGenerateSvgs.ts",
