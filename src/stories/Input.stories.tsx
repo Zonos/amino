@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Input, InputProps } from 'src/components/input/Input';
+import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import { BagIcon } from 'src/icons/BagIcon';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
@@ -90,7 +92,16 @@ export default InputMeta;
 const Template: Story<InputProps> = ({ value: _value, ...props }) => {
   const [value, setValue] = useState(_value);
   return (
-    <Input {...props} onChange={e => setValue(e.target.value)} value={value} />
+    <VStack>
+      <Input
+        {...props}
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      />
+      <Text type="bold-subheader">
+        Value: <Text type="code">{value || '--'}</Text>
+      </Text>
+    </VStack>
   );
 };
 
@@ -141,6 +152,12 @@ DateInput.parameters = {
   },
 };
 
+export const DateTimeInput = Template.bind({});
+DateTimeInput.args = {
+  label: 'Datetime input',
+  type: 'datetime-local',
+};
+
 export const TimeInput = Template.bind({});
 TimeInput.args = {
   label: 'Time input',
@@ -156,6 +173,13 @@ TimeInput.parameters = {
 export const InputWithHelpText = Template.bind({});
 InputWithHelpText.args = {
   label: 'Example input',
+  helpText: "This is the input's help text",
+};
+
+export const InputWithErrorText = Template.bind({});
+InputWithErrorText.args = {
+  label: 'Example input',
+  error: 'This is an error',
   helpText: "This is the input's help text",
 };
 
