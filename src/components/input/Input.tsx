@@ -1,4 +1,8 @@
-import React, { InputHTMLAttributes, ReactNode } from 'react';
+import React, {
+  HTMLInputTypeAttribute,
+  InputHTMLAttributes,
+  ReactNode,
+} from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
@@ -47,16 +51,15 @@ type DateInputEventHandler = (
   }
 ) => void;
 
-type InputType<T extends string> = {
+type InputType<T extends HTMLInputTypeAttribute> = {
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
-  type?: T;
   onChange: T extends 'date'
     ? DateInputEventHandler
     : React.ChangeEventHandler<HTMLInputElement>;
   inputSuffix?: ReactNode;
   inputPrefix?: ReactNode;
-} & Omit<FloatLabelInputProps, 'onChange' | 'type'> &
+} & Omit<FloatLabelInputProps, 'onChange'> &
   HelpTextProps;
 
 export type InputProps<T extends string = string> = InputType<T> &
@@ -115,9 +118,10 @@ export const Input = <T extends string>({
           />
         );
       case 'date':
+      case 'datetime-local':
         return (
           <DateInput
-            type="date"
+            type={type}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}

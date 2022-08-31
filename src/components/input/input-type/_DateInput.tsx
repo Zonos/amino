@@ -16,7 +16,6 @@ const StyledActionWrapper = styled.div`
   justify-content: center;
 `;
 
-const StyledButtonAction = styled.button``;
 const AminoInput = styled(FloatLabelInput)`
   && input {
     padding-right: ${theme.spaceDouble};
@@ -78,7 +77,8 @@ export const DateInput = ({
         suffix={
           suffix || (
             <StyledActionWrapper>
-              <StyledButtonAction
+              <button
+                type="button"
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
@@ -87,7 +87,7 @@ export const DateInput = ({
                 }}
               >
                 <CalendarIcon size={20} />
-              </StyledButtonAction>
+              </button>
             </StyledActionWrapper>
           )
         }
