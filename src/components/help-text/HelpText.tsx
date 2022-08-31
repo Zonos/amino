@@ -9,31 +9,36 @@ const StyledHelpText = styled.div`
 `;
 
 export type HelpTextProps = {
-  error?: ReactNode;
+  /**
+   * Is this an error state.
+   */
+  error?: boolean;
+  /**
+   * Shows below input. Use in conjunction with `error` to show feedback about error.
+   */
   helpText?: ReactNode;
 };
 
 export const HelpText = ({ error, helpText }: HelpTextProps) => {
-  if (helpText && error && typeof error === 'string') {
-    return (
-      <StyledHelpText>
-        <Text type="caption" color="red-d20">
-          {error}
-        </Text>
-      </StyledHelpText>
-    );
-  }
-  if (helpText && error) {
-    return <StyledHelpText>{error}</StyledHelpText>;
-  }
-  if (helpText && typeof helpText === 'string') {
-    return (
-      <StyledHelpText>
-        <Text type="caption">{helpText}</Text>
-      </StyledHelpText>
-    );
-  }
   if (helpText) {
+    if (error && typeof helpText === 'string') {
+      return (
+        <StyledHelpText>
+          <Text type="caption" color="red-d20">
+            {helpText}
+          </Text>
+        </StyledHelpText>
+      );
+    }
+
+    if (typeof helpText === 'string') {
+      return (
+        <StyledHelpText>
+          <Text type="caption">{helpText}</Text>
+        </StyledHelpText>
+      );
+    }
+
     return <StyledHelpText>{helpText}</StyledHelpText>;
   }
   return null;
