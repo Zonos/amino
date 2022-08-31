@@ -71,6 +71,7 @@ export const PasswordInput = ({
         suffix={
           suffix || (
             <StyledButton
+              intent="text"
               size="md"
               icon={
                 inputType === 'password' ? (
