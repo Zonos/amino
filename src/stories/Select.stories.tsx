@@ -84,8 +84,8 @@ BasicSelect.parameters = {
 export const BasicSelectWithIcon = SelectTemplate.bind({});
 
 BasicSelectWithIcon.args = {
-  error: 'This input is required',
-  helpText: 'Your currency',
+  error: true,
+  helpText: 'This input is required',
   icon: <FileIcon size={20} />,
   label: 'Currencies',
   value: {

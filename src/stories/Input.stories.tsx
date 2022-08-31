@@ -176,11 +176,17 @@ InputWithHelpText.args = {
   helpText: "This is the input's help text",
 };
 
-export const InputWithErrorText = Template.bind({});
-InputWithErrorText.args = {
+export const InputWithError = Template.bind({});
+InputWithError.args = {
   label: 'Example input',
-  error: 'This is an error',
-  helpText: "This is the input's help text",
+  error: true,
+};
+
+export const InputWithErrorAndHelpText = Template.bind({});
+InputWithErrorAndHelpText.args = {
+  label: 'Example input',
+  error: true,
+  helpText: 'This is an error',
 };
 
 export const Prefix = Template.bind({});
@@ -220,4 +226,26 @@ Suffix.parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
   },
+};
+
+export const DynamicErrorAndHelpText: Story<InputProps> = ({
+  value: _value,
+  ...props
+}) => {
+  const [value, setValue] = useState(_value);
+  const hasError = value?.length === 0;
+  return (
+    <VStack>
+      <Input
+        {...props}
+        error={hasError}
+        helpText={hasError ? 'This field is required' : 'Enter some stuff'}
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      />
+      <Text type="bold-subheader">
+        Value: <Text type="code">{value || '--'}</Text>
+      </Text>
+    </VStack>
+  );
 };

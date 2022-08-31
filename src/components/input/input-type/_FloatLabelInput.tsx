@@ -6,6 +6,7 @@ import React, {
   useMemo,
 } from 'react';
 
+import { HelpTextProps } from 'src/components/help-text/HelpText';
 import { theme } from 'src/styles/constants/theme';
 import { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
@@ -221,9 +222,6 @@ type FloatLabelInputType = {
   /** Determines input type (email, password, etc.) */
   type?: HTMLInputTypeAttribute;
 
-  /** If present, will display an error message instead of help text */
-  error?: string;
-
   /** A short string displayed at the beginning of the input */
   prefix?: ReactNode;
 
@@ -241,7 +239,7 @@ type FloatLabelInputType = {
   autoFocus?: boolean;
   size?: Size;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
-};
+} & Pick<HelpTextProps, 'error'>;
 export type FloatLabelInputProps = FloatLabelInputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof FloatLabelInputType>;
 
@@ -287,7 +285,7 @@ export const FloatLabelInput = forwardRef<
         <AminoInput
           aria-label={label}
           className={[
-            error && error.length ? 'has-error' : '',
+            error ? 'has-error' : '',
             label ? 'has-label' : '',
             hasValue ? 'has-content' : '',
             prefix ? 'has-input-prefix' : '',
