@@ -15,6 +15,21 @@ const StyledActionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+const StyledButtonAction = styled.button`
+  padding: 6px;
+  border-radius: ${theme.radiusSm};
+  transition: ${theme.transition};
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: none;
+  }
+`;
 
 const AminoInput = styled(FloatLabelInput)`
   && input {
@@ -77,8 +92,7 @@ export const DateInput = ({
         suffix={
           suffix || (
             <StyledActionWrapper>
-              <button
-                type="button"
+              <StyledButtonAction
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
@@ -87,7 +101,7 @@ export const DateInput = ({
                 }}
               >
                 <CalendarIcon size={20} />
-              </button>
+              </StyledButtonAction>
             </StyledActionWrapper>
           )
         }

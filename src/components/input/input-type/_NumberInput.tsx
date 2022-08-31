@@ -16,7 +16,21 @@ const StyledActionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
-const StyledButtonAction = styled.button``;
+const StyledButtonAction = styled.button`
+  padding: ${theme.radiusSm};
+  border-radius: ${theme.radiusSm};
+  transition: ${theme.transition};
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: none;
+  }
+`;
 const AminoInput = styled(FloatLabelInput)`
   && input {
     padding-right: ${theme.spaceDouble};
