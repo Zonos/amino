@@ -1,5 +1,6 @@
 import React, {
   forwardRef,
+  HTMLInputTypeAttribute,
   InputHTMLAttributes,
   ReactNode,
   useMemo,
@@ -218,7 +219,7 @@ type FloatLabelInputType = {
   readOnly?: boolean;
 
   /** Determines input type (email, password, etc.) */
-  type?: string;
+  type?: HTMLInputTypeAttribute;
 
   /** If present, will display an error message instead of help text */
   error?: string;

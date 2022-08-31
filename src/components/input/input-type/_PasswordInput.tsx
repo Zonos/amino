@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import { Button } from 'src/components/button/Button';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -13,16 +12,19 @@ const StyledWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledButton = styled(Button)`
-  background: transparent;
-  :hover,
-  :active,
-  :focus {
-    background-color: transparent;
+const StyledButtonAction = styled.button`
+  padding: 6px;
+  border-radius: 50%;
+  transition: ${theme.transition};
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
   }
-  svg {
-    height: auto;
-    overflow: visible;
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -70,19 +72,17 @@ export const PasswordInput = ({
         required={required}
         suffix={
           suffix || (
-            <StyledButton
-              size="md"
-              icon={
-                inputType === 'password' ? (
-                  <EyeIcon size={20} />
-                ) : (
-                  <EyeOffIcon size={20} />
-                )
-              }
+            <StyledButtonAction
               onClick={() =>
                 setInputType(inputType === 'password' ? 'text' : 'password')
               }
-            />
+            >
+              {inputType === 'password' ? (
+                <EyeIcon size={20} />
+              ) : (
+                <EyeOffIcon size={20} />
+              )}
+            </StyledButtonAction>
           )
         }
         tabIndex={tabIndex}
