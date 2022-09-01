@@ -16,6 +16,10 @@ const ListMeta: Meta = {
       type: 'boolean',
       description: 'Flag determine to render error border or not',
     },
+    dropzoneDisabled: {
+      type: 'boolean',
+      defaultValue: false,
+    },
     loadingText: {
       description: 'ReactNode that will be rendered when `loading` flag is on',
     },
@@ -35,6 +39,7 @@ const Template: Story<FileUploadProps> = ({
   loading,
   loadingText,
   onRemove,
+  dropzoneDisabled,
   uploadedFile,
   width,
 }: FileUploadProps) => {
@@ -45,6 +50,7 @@ const Template: Story<FileUploadProps> = ({
       helperText={helperText}
       loading={loading}
       onRemove={onRemove}
+      dropzoneDisabled={dropzoneDisabled}
       uploadedFile={uploadedFile}
       width={width}
       loadingText={loadingText}
@@ -56,6 +62,21 @@ NoFileSelected.args = {
   loading: false,
   error: false,
   width: 215,
+  dropzoneOptions: {
+    onDropAccepted: () => {
+      // handle accepted files here
+    },
+    onDropRejected: () => {
+      // handle rejected files here
+    },
+  },
+};
+export const DisabledState = Template.bind({});
+DisabledState.args = {
+  loading: false,
+  error: false,
+  width: 215,
+  dropzoneDisabled: true,
   dropzoneOptions: {
     onDropAccepted: () => {
       // handle accepted files here

@@ -24,6 +24,8 @@ export interface FileUploadProps {
   onRemove?: () => void;
   width?: number;
   helperText?: string;
+  /** @desc This `disabled` state only apply to dropzone when no file is selected */
+  dropzoneDisabled?: boolean;
 }
 
 type DropzoneWrapper = {
@@ -37,6 +39,12 @@ const StyledDropzoneWrapper = styled.div<{ width?: number }>`
   display: flex;
   flex-direction: column;
   ${({ width }) => width && `width: ${width}px;`}
+  &.disabled {
+    cursor: not-allowed;
+    p {
+      color: ${theme.grayL20};
+    }
+  }
 `;
 
 const StyledWrapper = styled.div<DropzoneWrapper>`
@@ -76,6 +84,9 @@ const StyledFileInput = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  ${StyledDropzoneWrapper}.disabled & {
+    cursor: not-allowed;
+  }
 `;
 const StyledFileInfo = styled.div<{ hasUploadedFile: boolean }>`
   display: flex;
@@ -102,6 +113,10 @@ const StyledCloseButton = styled.button`
 const StyledLink = styled.span`
   color: ${theme.blueBase};
   cursor: pointer;
+  ${StyledDropzoneWrapper}.disabled & {
+    color: ${theme.blueL40};
+    cursor: not-allowed;
+  }
 `;
 const StyledHelperText = styled(Text)`
   font-style: normal;
@@ -115,6 +130,7 @@ export const FileUpload = ({
   onRemove,
   uploadedFile,
   width,
+  dropzoneDisabled,
 }: FileUploadProps) => {
   const localDropzoneOption = { ...dropzoneOptions };
   // override onDropAccepted event
@@ -130,6 +146,9 @@ export const FileUpload = ({
       dropzoneOptions.onDropRejected(files, e);
     }
   };
+  //  override disabled prop of dropzone
+  localDropzoneOption.disabled = dropzoneDisabled;
+
   const { getRootProps, getInputProps } = useDropzone(localDropzoneOption);
   const renderContent = () => {
     if (loading) {
@@ -174,7 +193,10 @@ export const FileUpload = ({
     );
   };
   return (
-    <StyledDropzoneWrapper width={width}>
+    <StyledDropzoneWrapper
+      width={width}
+      className={dropzoneDisabled ? 'disabled' : ''}
+    >
       <StyledWrapper
         error={!!error}
         hasUploadedFile={
