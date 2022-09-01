@@ -118,8 +118,9 @@ const StyledLink = styled.span`
     cursor: not-allowed;
   }
 `;
-const StyledHelperText = styled(Text)`
+const StyledHelperText = styled(Text)<Pick<DropzoneWrapper, 'error'>>`
   font-style: normal;
+  ${({ error }) => error && `color: ${theme.danger}`};
 `;
 export const FileUpload = ({
   dropzoneOptions,
@@ -208,7 +209,9 @@ export const FileUpload = ({
       </StyledWrapper>
 
       {helperText && (
-        <StyledHelperText type="subtitle">{helperText}</StyledHelperText>
+        <StyledHelperText error={!!error} type="subtitle">
+          {helperText}
+        </StyledHelperText>
       )}
     </StyledDropzoneWrapper>
   );
