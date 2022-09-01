@@ -14,7 +14,7 @@ type UploadedFileProps = {
 };
 
 export interface FileUploadProps {
-  dropzoneOptions: DropzoneOptions;
+  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   loading: boolean;
   loadingText?: ReactNode;
   error?: boolean;
@@ -24,7 +24,7 @@ export interface FileUploadProps {
   onRemove?: () => void;
   width?: number;
   helperText?: string;
-  /** @desc This `disabled` state only apply to dropzone when no file is selected */
+  /** @desc This `disabled` state only apply when no file is selected */
   dropzoneDisabled?: boolean;
 }
 
@@ -133,7 +133,10 @@ export const FileUpload = ({
   width,
   dropzoneDisabled,
 }: FileUploadProps) => {
-  const localDropzoneOption = { ...dropzoneOptions };
+  const localDropzoneOption: DropzoneOptions = {
+    ...dropzoneOptions,
+    disabled: dropzoneDisabled,
+  };
   // override onDropAccepted event
   localDropzoneOption.onDropAccepted = (files, e) => {
     if (dropzoneOptions.onDropAccepted) {
@@ -147,8 +150,6 @@ export const FileUpload = ({
       dropzoneOptions.onDropRejected(files, e);
     }
   };
-  //  override disabled prop of dropzone
-  localDropzoneOption.disabled = dropzoneDisabled;
 
   const { getRootProps, getInputProps } = useDropzone(localDropzoneOption);
   const renderContent = () => {
