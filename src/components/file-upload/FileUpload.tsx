@@ -14,7 +14,7 @@ type UploadedFileProps = {
 };
 
 export interface FileUploadProps {
-  dropzoneOptions: DropzoneOptions;
+  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   loading: boolean;
   loadingText?: ReactNode;
   error?: boolean;
@@ -24,6 +24,8 @@ export interface FileUploadProps {
   onRemove?: () => void;
   width?: number;
   helperText?: string;
+  /** @desc This `disabled` state only apply when no file is selected */
+  dropzoneDisabled?: boolean;
 }
 
 type DropzoneWrapper = {
@@ -37,6 +39,12 @@ const StyledDropzoneWrapper = styled.div<{ width?: number }>`
   display: flex;
   flex-direction: column;
   ${({ width }) => width && `width: ${width}px;`}
+  &.disabled {
+    cursor: not-allowed;
+    p {
+      color: ${theme.grayL20};
+    }
+  }
 `;
 
 const StyledWrapper = styled.div<DropzoneWrapper>`
@@ -76,6 +84,9 @@ const StyledFileInput = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  ${StyledDropzoneWrapper}.disabled & {
+    cursor: not-allowed;
+  }
 `;
 const StyledFileInfo = styled.div<{ hasUploadedFile: boolean }>`
   display: flex;
@@ -102,9 +113,14 @@ const StyledCloseButton = styled.button`
 const StyledLink = styled.span`
   color: ${theme.blueBase};
   cursor: pointer;
+  ${StyledDropzoneWrapper}.disabled & {
+    color: ${theme.blueL40};
+    cursor: not-allowed;
+  }
 `;
-const StyledHelperText = styled(Text)`
+const StyledHelperText = styled(Text)<Pick<DropzoneWrapper, 'error'>>`
   font-style: normal;
+  ${({ error }) => error && `color: ${theme.danger}`};
 `;
 export const FileUpload = ({
   dropzoneOptions,
@@ -115,8 +131,12 @@ export const FileUpload = ({
   onRemove,
   uploadedFile,
   width,
+  dropzoneDisabled,
 }: FileUploadProps) => {
-  const localDropzoneOption = { ...dropzoneOptions };
+  const localDropzoneOption: DropzoneOptions = {
+    ...dropzoneOptions,
+    disabled: dropzoneDisabled,
+  };
   // override onDropAccepted event
   localDropzoneOption.onDropAccepted = (files, e) => {
     if (dropzoneOptions.onDropAccepted) {
@@ -130,6 +150,7 @@ export const FileUpload = ({
       dropzoneOptions.onDropRejected(files, e);
     }
   };
+
   const { getRootProps, getInputProps } = useDropzone(localDropzoneOption);
   const renderContent = () => {
     if (loading) {
@@ -174,7 +195,10 @@ export const FileUpload = ({
     );
   };
   return (
-    <StyledDropzoneWrapper width={width}>
+    <StyledDropzoneWrapper
+      width={width}
+      className={dropzoneDisabled ? 'disabled' : ''}
+    >
       <StyledWrapper
         error={!!error}
         hasUploadedFile={
@@ -186,7 +210,9 @@ export const FileUpload = ({
       </StyledWrapper>
 
       {helperText && (
-        <StyledHelperText type="subtitle">{helperText}</StyledHelperText>
+        <StyledHelperText error={!!error} type="subtitle">
+          {helperText}
+        </StyledHelperText>
       )}
     </StyledDropzoneWrapper>
   );
