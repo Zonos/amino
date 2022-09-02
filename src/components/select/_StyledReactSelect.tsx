@@ -156,6 +156,10 @@ const StyledSelectWrapper = styled.div`
   .react-select-control + div {
     z-index: 20;
   }
+
+  &.has-error .react-select-control {
+    box-shadow: ${theme.glowError};
+  }
 `;
 
 const StrongLabel = styled.strong`
@@ -508,7 +512,10 @@ export const StyledReactSelect = <
     [label]
   );
   return (
-    <StyledSelectWrapper data-testid={testId}>
+    <StyledSelectWrapper
+      data-testid={testId}
+      className={[error ? 'has-error' : ''].join(' ')}
+    >
       <ReactSelect<Option, IsMulti, Group>
         components={
           {
