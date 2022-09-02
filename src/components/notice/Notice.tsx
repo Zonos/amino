@@ -60,7 +60,7 @@ export type NoticeProps = {
   intent?: Intent;
   onClose?: () => void;
 };
-
+/** @deprecated Use Banner instead. */
 export const Notice = ({
   className,
   intent,

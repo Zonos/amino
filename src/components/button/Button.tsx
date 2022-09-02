@@ -8,10 +8,21 @@ import React, {
 
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
+import { Color } from 'src/types';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
 import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
+
+const getAminoColor = (color?: Color | 'inherit') => {
+  if (color === 'inherit') {
+    return 'inherit';
+  }
+  if (color) {
+    return `var(--amino-${color})`;
+  }
+  return undefined;
+};
 
 const StyledSpinnerWrapper = styled.span`
   position: absolute;
@@ -85,8 +96,8 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 `;
 
 const Primary = styled(AminoButton)`
-  background: ${theme.primary};
-  color: ${theme.textLight};
+  background: ${p => getAminoColor(p.background) || theme.primary};
+  color: ${p => getAminoColor(p.color) || theme.textLight};
 
   &:hover {
     background: ${theme.blueL20};
@@ -102,8 +113,8 @@ const Primary = styled(AminoButton)`
 `;
 
 const Secondary = styled(AminoButton)`
-  color: ${theme.textColor};
-  background: ${theme.grayL80};
+  color: ${p => getAminoColor(p.color) || theme.textColor};
+  background: ${p => getAminoColor(p.background) || theme.grayL80};
 
   &:hover {
     background: ${theme.grayL60};
@@ -143,8 +154,8 @@ const Secondary = styled(AminoButton)`
 `;
 
 const Danger = styled(AminoButton)`
-  background: ${theme.redBase};
-  color: white;
+  background: ${p => getAminoColor(p.background) || theme.redBase};
+  color: ${p => getAminoColor(p.color) || 'white'};
 
   &:hover {
     background: ${theme.redL20};
@@ -160,8 +171,8 @@ const Danger = styled(AminoButton)`
 `;
 
 const Warning = styled(AminoButton)`
-  background: ${theme.orangeBase};
-  color: white;
+  background: ${p => getAminoColor(p.background) || theme.orangeBase};
+  color: ${p => getAminoColor(p.color) || 'white'};
 
   &:hover {
     background: ${theme.orangeL20};
@@ -177,9 +188,9 @@ const Warning = styled(AminoButton)`
 `;
 
 const Outline = styled(AminoButton)`
-  background: white;
-  color: ${theme.textColor};
-  border: 1px solid ${theme.grayL60};
+  background: ${p => getAminoColor(p.background) || 'white'};
+  color: ${p => getAminoColor(p.color) || theme.textColor};
+  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.grayL60};
 
   &:hover {
     background: ${theme.grayL80};
@@ -198,8 +209,8 @@ const Outline = styled(AminoButton)`
 `;
 
 const Subtle = styled(AminoButton)`
-  background: none;
-  color: ${theme.grayD40};
+  background: ${p => getAminoColor(p.background) || 'none'};
+  color: ${p => getAminoColor(p.color) || theme.grayD40};
 
   &:hover {
     background: ${theme.grayL80};
@@ -216,7 +227,7 @@ const Subtle = styled(AminoButton)`
 `;
 
 const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: ${theme.grayD40};
+  color: ${p => getAminoColor(p.color) || theme.grayD40};
   height: 20px;
   line-height: 20px;
   padding: 0;
@@ -243,8 +254,8 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 `;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: ${theme.blueBase};
-  background: white;
+  color: ${p => getAminoColor(p.color) || theme.blueBase};
+  background: ${p => getAminoColor(p.background) || 'white'};
 
   &:hover {
     background: ${theme.grayL80};
@@ -262,8 +273,12 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | Intent;
 
 type ButtonBase = {
+  background?: Color | 'inherit';
+  /** @param borderColor only available for intent 'outline' */
+  borderColor?: Color | 'inherit';
   children?: ReactNode;
   className?: string;
+  color?: Color | 'inherit';
   disabled?: boolean;
   icon?: ReactNode;
   iconRight?: boolean;
@@ -309,14 +324,14 @@ export function Button<T extends GroupTag = 'button'>({
   type = 'button',
   ...props
 }: ButtonProps<T>) {
-  const renderContent = (color?: SpinnerProps['color']) => (
+  const renderContent = (spinnerColor?: SpinnerProps['color']) => (
     <>
       {!iconRight && icon}
       {children}
       {iconRight && icon}
       {loading && (
         <StyledSpinnerWrapper>
-          <Spinner size={16} color={color} />
+          <Spinner size={16} color={spinnerColor} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
