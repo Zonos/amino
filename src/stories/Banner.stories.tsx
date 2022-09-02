@@ -53,6 +53,7 @@ const Template: ComponentStory<typeof Banner> = ({
         intent={intent}
         footerActions={
           <Button
+            color="inherit"
             onClick={() => setOpenIds(ids.filter(Boolean))}
             intent="outline"
           >
