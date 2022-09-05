@@ -14,7 +14,7 @@ type UploadedFileProps = {
   uploadedFilename: string;
 };
 
-export interface FileUploadProps {
+export interface DropzoneProps {
   dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   loading: boolean;
   loadingText?: ReactNode;
@@ -123,7 +123,7 @@ const StyledHelperText = styled(Text)<Pick<DropzoneWrapper, 'error'>>`
   font-style: normal;
   ${({ error }) => error && `color: ${theme.danger}`};
 `;
-export const FileUpload = ({
+export const Dropzone = ({
   dropzoneOptions,
   error,
   helperText,
@@ -133,7 +133,7 @@ export const FileUpload = ({
   uploadedFile,
   width,
   dropzoneDisabled,
-}: FileUploadProps) => {
+}: DropzoneProps) => {
   const localDropzoneOption: DropzoneOptions = {
     ...dropzoneOptions,
     disabled: dropzoneDisabled,
