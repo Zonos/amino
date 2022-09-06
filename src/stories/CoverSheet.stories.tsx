@@ -7,6 +7,7 @@ import {
   CoverSheetProps,
 } from 'src/components/cover-sheet/CoverSheet';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
+import styled from 'styled-components';
 
 const CoverSheetMeta: Meta = {
   title: 'Amino/CoverSheet',
@@ -14,6 +15,13 @@ const CoverSheetMeta: Meta = {
 };
 
 export default CoverSheetMeta;
+
+const CenteredDiv = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
   actionPortalOpen: _actionPortalOpen = false,
@@ -23,8 +31,8 @@ const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
   const [open, setOpen] = useState(false);
   const [actionPortalOpen, setActionPortalOpen] = useState(_actionPortalOpen);
   return (
-    <>
-      <Button onClick={() => setOpen(true)}>open</Button>
+    <CenteredDiv>
+      <Button onClick={() => setOpen(true)}>Open</Button>
 
       <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>
         {children}
@@ -40,7 +48,7 @@ const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
           </CoverSheetActions>
         )}
       </CoverSheet>
-    </>
+    </CenteredDiv>
   );
 };
 

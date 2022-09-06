@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Dialog, DialogProps } from 'src/components/dialog/Dialog';
 import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
 
 const DialogMeta: Meta = {
   title: 'Amino/Dialog',
@@ -12,6 +13,13 @@ const DialogMeta: Meta = {
 };
 
 export default DialogMeta;
+
+const CenteredDiv = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Template: Story<DialogProps> = ({
   actions,
@@ -22,8 +30,8 @@ const Template: Story<DialogProps> = ({
 }: DialogProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <>
-      <Button onClick={() => setOpen(true)}>open</Button>
+    <CenteredDiv>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
         leftActions={leftActions}
         actions={actions}
@@ -34,7 +42,7 @@ const Template: Story<DialogProps> = ({
       >
         {children}
       </Dialog>
-    </>
+    </CenteredDiv>
   );
 };
 
