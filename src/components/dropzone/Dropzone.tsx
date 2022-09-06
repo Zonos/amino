@@ -5,6 +5,7 @@ import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { theme } from 'src/styles/constants/theme';
+import { StyledProps } from 'src/types';
 import styled from 'styled-components';
 
 type UploadedFileProps = {
@@ -13,7 +14,7 @@ type UploadedFileProps = {
   uploadedFilename: string;
 };
 
-export interface FileUploadProps {
+export interface DropzoneProps {
   dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   loading: boolean;
   loadingText?: ReactNode;
@@ -47,19 +48,19 @@ const StyledDropzoneWrapper = styled.div<{ width?: number }>`
   }
 `;
 
-const StyledWrapper = styled.div<DropzoneWrapper>`
+const StyledWrapper = styled.div<StyledProps<DropzoneWrapper>>`
   position: relative;
   border: 1px dashed
-    ${({ error }) => (error ? theme.danger : theme.borderColor)};
+    ${({ $error }) => ($error ? theme.danger : theme.borderColor)};
   border-radius: ${theme.radius};
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: ${({ hasUploadedFile, loading }) =>
-    hasUploadedFile || loading ? 'left' : 'center'};
+  justify-content: ${({ $hasUploadedFile, $loading }) =>
+    $hasUploadedFile || $loading ? 'left' : 'center'};
 
-  padding-left: ${({ hasUploadedFile, loading }) =>
-    (hasUploadedFile || loading) && theme.spaceHalf};
+  padding-left: ${({ $hasUploadedFile, $loading }) =>
+    ($hasUploadedFile || $loading) && theme.spaceHalf};
   img {
     height: auto;
   }
@@ -122,7 +123,7 @@ const StyledHelperText = styled(Text)<Pick<DropzoneWrapper, 'error'>>`
   font-style: normal;
   ${({ error }) => error && `color: ${theme.danger}`};
 `;
-export const FileUpload = ({
+export const Dropzone = ({
   dropzoneOptions,
   error,
   helperText,
@@ -132,7 +133,7 @@ export const FileUpload = ({
   uploadedFile,
   width,
   dropzoneDisabled,
-}: FileUploadProps) => {
+}: DropzoneProps) => {
   const localDropzoneOption: DropzoneOptions = {
     ...dropzoneOptions,
     disabled: dropzoneDisabled,
@@ -200,11 +201,11 @@ export const FileUpload = ({
       className={dropzoneDisabled ? 'disabled' : ''}
     >
       <StyledWrapper
-        error={!!error}
-        hasUploadedFile={
+        $error={!!error}
+        $hasUploadedFile={
           !!uploadedFile && Object.entries(uploadedFile).length > 0
         }
-        loading={loading}
+        $loading={loading}
       >
         {renderContent()}
       </StyledWrapper>
