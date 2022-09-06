@@ -34,6 +34,7 @@ const StyledSpinnerWrapper = styled.span`
   align-items: center;
   justify-content: center;
   border-radius: ${theme.radiusSm};
+  gap: ${theme.spaceQuarter};
 `;
 
 const AminoButton = styled.button<ButtonProps<GroupTag>>`

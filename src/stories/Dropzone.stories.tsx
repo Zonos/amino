@@ -1,15 +1,12 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import {
-  FileUpload,
-  FileUploadProps,
-} from 'src/components/file-upload/FileUpload';
+import { Dropzone, DropzoneProps } from 'src/components/dropzone/Dropzone';
 import { withDesign } from 'storybook-addon-designs';
 
 const ListMeta: Meta = {
-  title: 'Amino/FileUpload',
-  component: FileUpload,
+  title: 'Amino/Dropzone',
+  component: Dropzone,
   decorators: [withDesign],
   argTypes: {
     error: {
@@ -32,7 +29,7 @@ const ListMeta: Meta = {
 
 export default ListMeta;
 
-const Template: Story<FileUploadProps> = ({
+const Template: Story<DropzoneProps> = ({
   dropzoneOptions,
   error,
   helperText,
@@ -42,9 +39,9 @@ const Template: Story<FileUploadProps> = ({
   dropzoneDisabled,
   uploadedFile,
   width,
-}: FileUploadProps) => {
+}: DropzoneProps) => {
   return (
-    <FileUpload
+    <Dropzone
       dropzoneOptions={dropzoneOptions}
       error={error}
       helperText={helperText}
