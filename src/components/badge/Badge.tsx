@@ -38,7 +38,7 @@ const StyledBadge = styled.div<BadgeProps>`
   font-size: ${theme.textSm};
   padding: 3px ${theme.spaceHalf};
   text-align: center;
-  border-radius: ${({ rounded }) => (rounded ? theme.radius : '20px')};
+  border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius)};
   // default background color (gray)
   background-color: ${theme.grayL60};
   color: ${theme.grayD40};
