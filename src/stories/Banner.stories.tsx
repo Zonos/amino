@@ -25,6 +25,7 @@ const StyledVStack = styled(VStack)`
 const ids = [
   'withTitle',
   'withHeaderAction',
+  'withoutClose',
   'withoutTitle',
   'onlyFooterActions',
   'titleWithParagraph',
@@ -76,6 +77,9 @@ const Template: ComponentStory<typeof Banner> = ({
           onClose={() => toggleBannerId('withHeaderAction')}
           title={title}
         />
+      )}
+      {openIds.includes('withoutClose') && (
+        <Banner headerActions={headerActions} intent={intent} title={title} />
       )}
       {openIds.includes('withoutTitle') && (
         <Banner intent={intent} onClose={() => toggleBannerId('withoutTitle')}>

@@ -20,8 +20,17 @@ const StyledBanner = styled.div`
   padding: 13px 0 13px 13px;
 `;
 
-const StyledHStack = styled(HStack)<{ shouldAlignCenter: boolean }>`
+const StyledHStack = styled(HStack)<{
+  shouldAlignCenter: boolean;
+  withoutCloseButton: boolean;
+}>`
   grid-template-columns: 48px 1fr 36px;
+  ${p =>
+    p.withoutCloseButton &&
+    css`
+      grid-template-columns: 48px 1fr;
+      margin-right: 16px;
+    `}
   ${p =>
     p.shouldAlignCenter &&
     css`
@@ -95,7 +104,10 @@ export const Banner = ({
     const shouldAlignCenter =
       [children, title, footerActions].filter(Boolean).length === 1;
     return (
-      <StyledHStack shouldAlignCenter={shouldAlignCenter}>
+      <StyledHStack
+        shouldAlignCenter={shouldAlignCenter}
+        withoutCloseButton={!onClose}
+      >
         {intentIcon}
 
         <VStack spacing="space-quarter">
