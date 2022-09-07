@@ -1,12 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
 
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/surface/Surface';
-import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
-
-import { Button } from './Button';
 
 const Wrapper = styled.div`
   position: relative;
@@ -25,41 +22,31 @@ const AnimatedSurface = styled(Surface)`
   width: max-content;
 `;
 
-const Trigger = styled(Button)`
-  svg {
-    color: ${theme.textColor};
-    width: 16px;
-    height: 16px;
-    opacity: 0.3;
-    margin-left: ${theme.spaceQuarter};
-    transition: opacity 100ms ease-in-out;
-    margin-right: -5px !important;
-    pointer-events: none;
-  }
-
-  &:hover svg {
-    opacity: 0.6;
-  }
-`;
-
 export type MenuButtonProps = {
-  label: string;
-  children: React.ReactNode;
+  action: ReactNode;
+  children: ReactNode;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 };
 
-export const MenuButton = ({ label, children }: MenuButtonProps) => {
-  const [open, setOpen] = useState(false);
-  const node = useRef<HTMLDivElement>(null);
+export const MenuButton = ({
+  action,
+  children,
+  open,
+  setOpen,
+}: MenuButtonProps) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = (e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    if (node.current?.contains(target)) {
-      target.click();
-      setOpen(false);
-    }
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
 
-    setOpen(false);
-  };
+      if (!wrapperRef?.current?.contains(target)) {
+        setOpen(false);
+      }
+    },
+    [setOpen]
+  );
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClick);
@@ -67,14 +54,11 @@ export const MenuButton = ({ label, children }: MenuButtonProps) => {
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
-  }, []);
+  }, [handleClick]);
 
   return (
-    <Wrapper ref={node}>
-      <Trigger onClick={() => setOpen(true)}>
-        {label}
-        <DoubleChevronIcon />
-      </Trigger>
+    <Wrapper ref={wrapperRef}>
+      {action}
       {open && (
         <AnimatedSurface dense depth="depth16">
           {children}
