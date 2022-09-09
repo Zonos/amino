@@ -634,6 +634,7 @@ import "./components/radix/Slider";
 import "./components/rest-state/RestState";
 import "./components/rich-checkbox/RichCheckbox";
 import "./components/rich-radio/RichRadio";
+import "./components/section/HSection";
 import "./components/section/Section";
 import "./components/select/CountryMultiSelect";
 import "./components/select/MultiSelect";
