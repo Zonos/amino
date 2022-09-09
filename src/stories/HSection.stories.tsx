@@ -22,7 +22,10 @@ Basic.args = {
   Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt 
   illo asperiores quasi! Neque, praesentium. 
   Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
-  sublabel: 'Sublabel',
+  sublabel: `SUB TITLE Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt 
+  illo asperiores quasi! Neque, praesentium. 
+  Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
   label: 'My HSection',
 };
 
@@ -32,7 +35,10 @@ Collapsable.args = {
   Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt 
   illo asperiores quasi! Neque, praesentium. 
   Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
-  sublabel: 'Sublabel',
+  sublabel: `SUB TITLE Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt 
+  illo asperiores quasi! Neque, praesentium. 
+  Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
   label: 'My HSection',
   collapsable: true,
 };
@@ -43,7 +49,10 @@ CollapsedByDefault.args = {
   Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt 
   illo asperiores quasi! Neque, praesentium. 
   Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
-  sublabel: 'Sublabel',
+  sublabel: `SUB TITLE Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt 
+  illo asperiores quasi! Neque, praesentium. 
+  Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
   label: 'My HSection',
   collapsable: true,
   collapseByDefault: true,

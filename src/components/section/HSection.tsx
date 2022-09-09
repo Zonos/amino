@@ -18,6 +18,7 @@ const StyledSectionWrapper = styled(HStack)`
 
 const StyledHeader = styled.div`
   position: relative;
+  display: inline-block;
 `;
 
 const StyledCollapseIndicator = styled(Button)`
@@ -75,16 +76,18 @@ export const HSection = ({
       {label && (
         <SectionInnerWrapper>
           <SectionHeader>
-            <StyledHeader className={collapse ? 'collapse' : ''}>
-              {label}{' '}
-              {collapsable && (
-                <StyledCollapseIndicator
-                  size="sm"
-                  icon={<ChevronDownSolidIcon size={20} />}
-                  onClick={() => setCollapse(!collapse)}
-                />
-              )}
-            </StyledHeader>
+            <div>
+              <StyledHeader className={collapse ? 'collapse' : ''}>
+                {label}{' '}
+                {collapsable && (
+                  <StyledCollapseIndicator
+                    size="sm"
+                    icon={<ChevronDownSolidIcon size={20} />}
+                    onClick={() => setCollapse(!collapse)}
+                  />
+                )}
+              </StyledHeader>
+            </div>
             <SectionSubheader>{sublabel}</SectionSubheader>
           </SectionHeader>
         </SectionInnerWrapper>
