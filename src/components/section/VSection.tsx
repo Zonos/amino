@@ -12,7 +12,7 @@ const StyledSectionWrapper = styled.div`
   margin-bottom: ${theme.spaceDouble};
 `;
 
-export type SectionProps = {
+export type VSectionProps = {
   actions?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
@@ -20,13 +20,13 @@ export type SectionProps = {
   sublabel?: React.ReactNode;
 };
 
-export const Section = ({
+export const VSection = ({
   actions,
   children,
   className,
   label,
   sublabel = '',
-}: SectionProps) => {
+}: VSectionProps) => {
   return (
     <StyledSectionWrapper className={className || ''}>
       {label && (
