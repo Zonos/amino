@@ -4,7 +4,7 @@ import { ClockIcon } from 'src/icons/ClockIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { FloatLabelInput, type FloatLabelInputProps } from './_FloatLabelInput';
+import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

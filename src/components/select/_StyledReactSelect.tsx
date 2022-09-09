@@ -15,8 +15,8 @@ import ReactSelect, {
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
-  HelpText,
   type HelpTextProps,
+  HelpText,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
