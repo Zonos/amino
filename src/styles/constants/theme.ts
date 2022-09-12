@@ -650,28 +650,161 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radiusXl: 'var(--amino-radius-xl)',
 
+  /* SPACING */
+  /** @info space-negative-80: -5rem (-80px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative80: 'var(--amino-space-negative-80)',
+  /** @info space-negative-76: -4.75rem (-76px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative76: 'var(--amino-space-negative-76)',
+  /** @info space-negative-72: -4.5rem (-72px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative72: 'var(--amino-space-negative-72)',
+  /** @info space-negative-68: -4.25rem (-68px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative68: 'var(--amino-space-negative-68)',
+  /** @info space-negative-64: -4rem (-64px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative64: 'var(--amino-space-negative-64)',
+  /** @info space-negative-60: -3.75rem (-60px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative60: 'var(--amino-space-negative-60)',
+  /** @info space-negative-56: -3.5rem (-56px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative56: 'var(--amino-space-negative-56)',
+  /** @info space-negative-52: -3.25rem (-52px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative52: 'var(--amino-space-negative-52)',
+  /** @info space-negative-48: -3rem (-48px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative48: 'var(--amino-space-negative-48)',
+  /** @info space-negative-44: -2.75rem (-44px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative44: 'var(--amino-space-negative-44)',
+  /** @info space-negative-40: -2.5rem (-40px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative40: 'var(--amino-space-negative-40)',
+  /** @info space-negative-36: -2.25rem (-36px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative36: 'var(--amino-space-negative-36)',
+  /** @info space-negative-32: -2rem (-32px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative32: 'var(--amino-space-negative-32)',
+  /** @info space-negative-28: -1.75rem (-28px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative28: 'var(--amino-space-negative-28)',
+  /** @info space-negative-24: -1.5rem (-24px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative24: 'var(--amino-space-negative-24)',
+  /** @info space-negative-20: -1.25rem (-20px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative20: 'var(--amino-space-negative-20)',
+  /** @info space-negative-16: -1rem (-16px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative16: 'var(--amino-space-negative-16)',
+  /** @info space-negative-12: -0.75rem (-12px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative12: 'var(--amino-space-negative-12)',
+  /** @info space-negative-8: -0.5rem (-8px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative8: 'var(--amino-space-negative-8)',
+  /** @info space-negative-4: -0.25rem (-4px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spaceNegative4: 'var(--amino-space-negative-4)',
+  /** @info space-0: 0 (0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space0: 'var(--amino-space-0)',
+  /** @info space-4: 0.25rem (4px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space4: 'var(--amino-space-4)',
+  /** @info space-8: 0.5rem (8px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space8: 'var(--amino-space-8)',
+  /** @info space-12: 0.75rem (12px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space12: 'var(--amino-space-12)',
+  /** @info space-16: 1rem (16px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space16: 'var(--amino-space-16)',
+  /** @info space-20: 1.25rem (20px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space20: 'var(--amino-space-20)',
+  /** @info space-24: 1.5rem (24px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space24: 'var(--amino-space-24)',
+  /** @info space-28: 1.75rem (28px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space28: 'var(--amino-space-28)',
+  /** @info space-32: 2rem (32px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space32: 'var(--amino-space-32)',
+  /** @info space-36: 2.25rem (36px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space36: 'var(--amino-space-36)',
+  /** @info space-40: 2.5rem (40px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space40: 'var(--amino-space-40)',
+  /** @info space-44: 2.75rem (44px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space44: 'var(--amino-space-44)',
+  /** @info space-48: 3rem (48px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space48: 'var(--amino-space-48)',
+  /** @info space-52: 3.25rem (52px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space52: 'var(--amino-space-52)',
+  /** @info space-56: 3.5rem (56px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space56: 'var(--amino-space-56)',
+  /** @info space-60: 3.75rem (60px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space60: 'var(--amino-space-60)',
+  /** @info space-64: 4rem (64px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space64: 'var(--amino-space-64)',
+  /** @info space-68: 4.25rem (68px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space68: 'var(--amino-space-68)',
+  /** @info space-72: 4.5rem (72px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space72: 'var(--amino-space-72)',
+  /** @info space-76: 4.75rem (76px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space76: 'var(--amino-space-76)',
+  /** @info space-80: 5rem (80px) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  space80: 'var(--amino-space-80)',
+
   /** @info px: 24px */
+  /** @deprecated use space24 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   space: 'var(--amino-space)',
   /** @info px: -24px */
+  /** @deprecated use spaceNegative24 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceNegative: 'var(--amino-space-negative)',
   /** @info px: 16px */
+  /** @deprecated use spaceNegative16 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceHalf: 'var(--amino-space-half)',
   /** @info px: -16px */
+  /** @deprecated use spaceNegative16 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceHalfNegative: 'var(--amino-space-half-negative)',
   /** @info px: 8px */
+  /** @deprecated use space8 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceQuarter: 'var(--amino-space-quarter)',
   /** @info px: -8px */
+  /** @deprecated use spaceNegative8 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceQuarterNegative: 'var(--amino-space-quarter-negative)',
   /** @info px: 40px */
+  /** @deprecated use space40 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceDouble: 'var(--amino-space-double)',
   /** @info px: -40px */
+  /** @deprecated use spaceNegative40 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceDoubleNegative: 'var(--amino-space-double-negative)',
 
