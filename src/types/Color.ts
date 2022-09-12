@@ -24,11 +24,3 @@ export const colorContrasts = [
 type ColorContrast = typeof colorContrasts[number];
 type ColorPrefix = typeof colorPrefixes[number];
 export type Color = `${ColorPrefix}-${ColorContrast}` | 'black';
-
-export type ThemeColor =
-  | 'primary'
-  | 'secondary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger';

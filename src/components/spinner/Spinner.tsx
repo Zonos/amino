@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import { ThemeColor } from 'src/types/Color';
+import { Intent } from 'src/types';
 import styled, { css, keyframes } from 'styled-components';
 
 const Rotate = keyframes`
@@ -86,7 +86,10 @@ const AminoSpinner = styled.span<SpinnerProps>`
   }
 `;
 
-export type SpinnerColor = 'black' | 'white' | ThemeColor;
+export type SpinnerColor =
+  | 'black'
+  | 'white'
+  | Exclude<Intent, 'default' | 'error'>;
 
 export type SpinnerProps = {
   size?: number;
