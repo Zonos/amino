@@ -28,12 +28,14 @@ const RotateInsideRing = keyframes`
   }
 `;
 
+const spinDuration = '1.5s';
+
 const AminoSpinner = styled.span<SpinnerProps>`
   display: inline-block;
   border: ${p => p.size! / 8}px solid ${theme.grayL80};
   border-top-color: ${theme.blueBase};
   animation: ${css`
-      ${Rotate}`} 10s linear infinite;
+      ${Rotate}`} ${spinDuration} linear infinite;
   border-radius: 50%;
   transform: rotate(45deg);
   width: ${p => p.size}px;
@@ -51,7 +53,7 @@ const AminoSpinner = styled.span<SpinnerProps>`
     border-right-color: ${theme.grayL80};
     z-index: 1;
     animation: ${css`
-        ${RotateInsideRing}`} 10s linear infinite;
+        ${RotateInsideRing}`} ${spinDuration} linear infinite;
   }
 
   &.black {
