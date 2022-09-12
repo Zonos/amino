@@ -46,7 +46,7 @@ const AminoInput = styled(FloatLabelInput)`
     }
     &:not(:focus):not(.has-content) {
       &::-webkit-datetime-edit-fields-wrapper {
-        color: transparent;
+        opacity: 0;
       }
     }
   }

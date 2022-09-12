@@ -152,10 +152,28 @@ DateInput.parameters = {
   },
 };
 
+export const DateInputClamped = Template.bind({});
+DateInputClamped.args = {
+  label: 'Date input with range',
+  placeholder: 'placeholder',
+  type: 'date',
+  min: new Date('2009-01-10').toISOString().split('T')[0],
+  max: new Date('2009-01-18').toISOString().split('T')[0],
+};
+
 export const DateTimeInput = Template.bind({});
 DateTimeInput.args = {
   label: 'Datetime input',
   type: 'datetime-local',
+};
+
+export const DateTimeInputClamped = Template.bind({});
+DateTimeInputClamped.args = {
+  label: 'Datetime input with range',
+  placeholder: 'placeholder',
+  type: 'datetime-local',
+  min: new Date('2009-01-10T03:24:00').toISOString().slice(0, -1),
+  max: new Date('2009-01-18T03:50:00').toISOString().slice(0, -1),
 };
 
 export const TimeInput = Template.bind({});
