@@ -1,17 +1,25 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import { Any } from 'ts-toolbelt';
 
 import { GridAlignment, GridSpacing } from './GridSpacing';
 
-export type StackProps = {
+type DivProps = Omit<
+  Partial<HTMLDivElement>,
+  | 'translate'
+  | 'style'
+  | 'prefix'
+  | 'contentEditable'
+  | 'inputMode'
+  | 'children'
+>;
+
+export interface StackProps extends DivProps {
   alignment?: GridAlignment;
   spacing?: GridSpacing;
   children: React.ReactNode;
-} & Omit<
-  HTMLDivElement,
-  'translate' | 'style' | 'prefix' | 'contentEditable' | 'inputMode'
->;
+}
 /**
  * A stack
  *
