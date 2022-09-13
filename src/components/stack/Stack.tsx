@@ -8,9 +8,10 @@ export type StackProps = {
   alignment?: GridAlignment;
   spacing?: GridSpacing;
   children: React.ReactNode;
-  className?: string;
-};
-
+} & Omit<
+  HTMLDivElement,
+  'translate' | 'style' | 'prefix' | 'contentEditable' | 'inputMode'
+>;
 /**
  * A stack
  *
@@ -20,21 +21,10 @@ export type StackProps = {
 const StyledStack = styled.div<StackProps>`
   display: grid;
   grid-auto-columns: minmax(0, 1fr);
-
   & > * {
     justify-self: ${p => p.alignment || 'unset'};
   }
 `;
-
-export const Stack = ({
-  className,
-  spacing,
-  alignment,
-  children,
-}: StackProps) => {
-  return (
-    <StyledStack className={className} spacing={spacing} alignment={alignment}>
-      {children}
-    </StyledStack>
-  );
+export const Stack = ({ children, ...otherProps }: StackProps) => {
+  return <StyledStack {...otherProps}>{children}</StyledStack>;
 };
