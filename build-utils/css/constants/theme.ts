@@ -1,3 +1,5 @@
+import { space } from './generated/_space';
+
 export const theme = {
   transition: 'all 0.2s ease-in-out 0s',
   'type-scale-base': '16px',
@@ -319,21 +321,32 @@ export const theme = {
   /** @info 12px */
   'radius-xl': '0.75rem',
 
+  /* SPACING */
+  ...space,
+
   /** @info px: 24px */
+  /** @deprecated use space24 instead */
   space: '1.5rem',
   /** @info px: -24px */
+  /** @deprecated use spaceNegative24 instead */
   'space-negative': '-1.5rem',
   /** @info px: 16px */
+  /** @deprecated use spaceNegative16 instead */
   'space-half': '1rem',
   /** @info px: -16px */
+  /** @deprecated use spaceNegative16 instead */
   'space-half-negative': '-1rem',
   /** @info px: 8px */
+  /** @deprecated use space8 instead */
   'space-quarter': '0.5rem',
   /** @info px: -8px */
+  /** @deprecated use spaceNegative8 instead */
   'space-quarter-negative': '-0.5rem',
   /** @info px: 40px */
+  /** @deprecated use space40 instead */
   'space-double': '2.5rem',
   /** @info px: -40px */
+  /** @deprecated use spaceNegative40 instead */
   'space-double-negative': '-2.5rem',
 
   /* LAYOUT STYLE */
