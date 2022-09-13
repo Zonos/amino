@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "strict": true,
+    "strictNullChecks": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types",
