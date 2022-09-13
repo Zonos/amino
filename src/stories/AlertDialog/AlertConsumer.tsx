@@ -47,7 +47,7 @@ export const AlertConsumer = () => {
         onClick={() =>
           warningAlert({
             label: 'Heads up',
-            subtitle: 'There was an warning',
+            subtitle: 'This is your final warning',
             intent: 'warning',
             dismissText: "Don't do action",
             onDismiss: () => {},

@@ -356,122 +356,6 @@ export function Button<T extends GroupTag = 'button'>({
     size,
   };
 
-  if (tag === 'a') {
-    const buttonProps = {
-      ...baseProps,
-      ...(props as ButtonProps<'a'>),
-    };
-    switch (intent) {
-      case 'primary':
-        return (
-          <Primary as="a" {...buttonProps}>
-            {renderContent('white')}
-          </Primary>
-        );
-      case 'subtle':
-        return (
-          <Subtle as="a" {...buttonProps}>
-            {renderContent()}
-          </Subtle>
-        );
-      case 'outline':
-        return (
-          <Outline as="a" {...buttonProps}>
-            {renderContent()}
-          </Outline>
-        );
-      case 'warning':
-        return (
-          <Warning as="a" {...buttonProps}>
-            {renderContent()}
-          </Warning>
-        );
-      case 'danger':
-        return (
-          <Danger as="a" {...buttonProps}>
-            {renderContent()}
-          </Danger>
-        );
-      case 'text':
-        return (
-          <TextButton as="a" {...buttonProps}>
-            {renderContent()}
-          </TextButton>
-        );
-      case 'link':
-        return (
-          <LinkButton as="a" {...buttonProps}>
-            {renderContent()}
-          </LinkButton>
-        );
-      case 'secondary':
-      default:
-        return (
-          <Secondary as="a" {...buttonProps}>
-            {renderContent()}
-          </Secondary>
-        );
-    }
-  }
-
-  if (tag === 'div') {
-    const buttonProps = {
-      ...baseProps,
-      ...(props as ButtonProps<'div'>),
-    };
-    switch (intent) {
-      case 'primary':
-        return (
-          <Primary as="div" {...buttonProps}>
-            {renderContent('white')}
-          </Primary>
-        );
-      case 'subtle':
-        return (
-          <Subtle as="div" {...buttonProps}>
-            {renderContent()}
-          </Subtle>
-        );
-      case 'outline':
-        return (
-          <Outline as="div" {...buttonProps}>
-            {renderContent()}
-          </Outline>
-        );
-      case 'warning':
-        return (
-          <Warning as="div" {...buttonProps}>
-            {renderContent()}
-          </Warning>
-        );
-      case 'danger':
-        return (
-          <Danger as="div" {...buttonProps}>
-            {renderContent()}
-          </Danger>
-        );
-      case 'text':
-        return (
-          <TextButton as="div" {...buttonProps}>
-            {renderContent()}
-          </TextButton>
-        );
-      case 'link':
-        return (
-          <LinkButton as="div" {...buttonProps}>
-            {renderContent()}
-          </LinkButton>
-        );
-      case 'secondary':
-      default:
-        return (
-          <Secondary as="div" {...buttonProps}>
-            {renderContent()}
-          </Secondary>
-        );
-    }
-  }
-
   const buttonProps = {
     ...baseProps,
     ...(props as ButtonProps<'button'>),
@@ -479,21 +363,53 @@ export function Button<T extends GroupTag = 'button'>({
   };
   switch (intent) {
     case 'primary':
-      return <Primary {...buttonProps}>{renderContent('white')}</Primary>;
+      return (
+        <Primary as={tag || 'button'} {...buttonProps}>
+          {renderContent('white')}
+        </Primary>
+      );
     case 'subtle':
-      return <Subtle {...buttonProps}>{renderContent()}</Subtle>;
+      return (
+        <Subtle as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </Subtle>
+      );
     case 'outline':
-      return <Outline {...buttonProps}>{renderContent()}</Outline>;
+      return (
+        <Outline as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </Outline>
+      );
     case 'warning':
-      return <Warning {...buttonProps}>{renderContent()}</Warning>;
+      return (
+        <Warning as={tag || 'button'} {...buttonProps}>
+          {renderContent('white')}
+        </Warning>
+      );
     case 'danger':
-      return <Danger {...buttonProps}>{renderContent()}</Danger>;
+      return (
+        <Danger as={tag || 'button'} {...buttonProps}>
+          {renderContent('white')}
+        </Danger>
+      );
     case 'text':
-      return <TextButton {...buttonProps}>{renderContent()}</TextButton>;
+      return (
+        <TextButton as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </TextButton>
+      );
     case 'link':
-      return <LinkButton {...buttonProps}>{renderContent()}</LinkButton>;
+      return (
+        <LinkButton as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </LinkButton>
+      );
     case 'secondary':
     default:
-      return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
+      return (
+        <Secondary as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </Secondary>
+      );
   }
 }

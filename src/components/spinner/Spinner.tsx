@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { theme } from 'src/styles/constants/theme';
+import { Intent } from 'src/types';
 import styled, { css, keyframes } from 'styled-components';
 
 const Rotate = keyframes`
@@ -27,12 +28,14 @@ const RotateInsideRing = keyframes`
   }
 `;
 
+const spinDuration = '1.5s';
+
 const AminoSpinner = styled.span<SpinnerProps>`
   display: inline-block;
   border: ${p => p.size! / 8}px solid ${theme.grayL80};
   border-top-color: ${theme.blueBase};
   animation: ${css`
-      ${Rotate}`} 1.5s linear infinite;
+      ${Rotate}`} ${spinDuration} linear infinite;
   border-radius: 50%;
   transform: rotate(45deg);
   width: ${p => p.size}px;
@@ -50,7 +53,7 @@ const AminoSpinner = styled.span<SpinnerProps>`
     border-right-color: ${theme.grayL80};
     z-index: 1;
     animation: ${css`
-        ${RotateInsideRing}`} 1.5s linear infinite;
+        ${RotateInsideRing}`} ${spinDuration} linear infinite;
   }
 
   &.black {
@@ -68,13 +71,29 @@ const AminoSpinner = styled.span<SpinnerProps>`
       border-right-color: rgba(255, 255, 255, 0.3);
     }
   }
+
+  &.info {
+    border-top-color: ${theme.blueBase};
+  }
+  &.success {
+    border-top-color: ${theme.greenBase};
+  }
+  &.danger {
+    border-top-color: ${theme.redBase};
+  }
+  &.warning {
+    border-top-color: ${theme.orangeBase};
+  }
 `;
 
-type Color = 'black' | 'white';
+export type SpinnerColor =
+  | 'black'
+  | 'white'
+  | Exclude<Intent, 'default' | 'error'>;
 
 export type SpinnerProps = {
   size?: number;
-  color?: Color;
+  color?: SpinnerColor;
   className?: string;
 };
 
@@ -83,6 +102,7 @@ export const Spinner = ({ size, color, className }: SpinnerProps) => {
     <AminoSpinner
       className={[className, color || ''].join(' ')}
       size={size || 32}
+      color={color}
     />
   );
 };
