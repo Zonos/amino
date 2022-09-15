@@ -579,6 +579,7 @@ import "./utils/getTestId";
 import "./utils/prepCountryOptions";
 import "./utils/prepRegionCountryOptions";
 import "./utils/truncateText";
+import "./utils/useResizeAware";
 import "./components/alert-dialog/AlertContext";
 import "./components/alert-dialog/AlertDialog";
 import "./components/button/Button";
