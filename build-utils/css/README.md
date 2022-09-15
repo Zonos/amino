@@ -1,8 +1,112 @@
 # **Build styles**
-This script is primarily created for generating accessible style constants and css file from configured style constant to benefit from strongly typed css variable for Amino consumers.  
+This script is primarily created for generating accessible style constants and css file from configured style constant to benefit from strongly typed css variable and jsdocs support for Amino consumers.   
   
-Main script for this building process is `build-utils/css/buildTheme.ts`.
+- Sub script for generating dynamic constants to be consumed in `build-utils/css/constants/theme.ts` process is `build-utils/css/buildLogicConstants.ts`
+- Main script for this whole building process is `build-utils/css/buildTheme.ts`.
+---
+
+## **Generating dynamic constant process overview**
+Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for having a way to generate a constant programmatically with logic and customized jsdocs comments.  
+**REASON**: Typescript will not read and provide jsdocs info on the spread operators (Ex: `...sthing`), so we can't benefit from jsdocs tag when using typescript key suggestion.  
   
+### **When you run the script, it will**:
+*BEBFORE STARTED, UNTIL WE HAVE A SCRIPT TO GENERATE THE TEMPLATE, YOU MAY NEED TO MANUALLY PUT A FILE WITH SOME REQUIRED FUNCTIONS AND VARIABLES WITH NAMING SYNTAX `_${name}.ts` (WHICH WILL BE EXPLAINED HOW DEEPER BELOW) INTO `build-utils/css/constants/logics`.*  
+1. Read through all the files in `build-utils/css/constants/logics`, class `LogicConstant` in `build-utils/css/class` will:
+    - Parse the given file. 
+    - Validate the file and throw error message if the file doesn't have specific function or constant.
+    - Generate constant variables based on the logic provided in the function with pattern `get{{CapitalizedFileNameNoUnderScore}}ConstantKeyValuePairs`. Adding @jsdocs comment if `hasJSDocsComment` is `true`, and the logic for the JSDocs comment will be a function with convention `get{{CapitalizedFileName}}ConstantCustomizedComment`.
+    - Put the generated file at `build-utils/css/constants/generated`
+
+2. All theme files in `build-utils/css/constants/*.ts` now can import the generated files in `build-utils/css/constants/generated` by using spread variables (Ex: `...space`). Then when you command `yarn build:theme`, the process will use static function `transformImportedConstant` in class `LogicConstant` to convert/transform the file `theme.ts` into typescript jsdocs friendly (it basically will find all import lines in `theme.ts` and import them, then replace the spread value with content in each imported file).
+
+## **How to**:
+### - Create a logic file
+1. Create a file follow this naming convention `_${fileName}.ts` in `build-utils/css/constants/logics`.
+2. Copy content below and replace `{{CapitalizedFileName}}` with capitalized file name without `_` and extension. And replace `{{FileName}}` with actual file name `_${filename}.ts`.
+    ```
+    import {
+    ConstantCustomizedComment,
+    ConstantKeyValuePairsType,
+    } from './types/LogicConstantType';
+
+    /** Flag to determine to apply jdocs generation rule from get{{CapitalizedFileName}}ConstantCustomizedComment function below */
+    export const hasJSDocsComment: boolean = true;
+
+    /**
+    * Get jsdocs comment that need to be injected to each {{FileName}} constant with customized comment
+    *
+    * **NOTE**: enable when `hasJSDocsComment` is on
+    * */
+    export const get{{CapitalizedFileName}}ConstantCustomizedComment: ConstantCustomizedComment = ({
+    key,
+    value,
+    }) => {
+    /** Put logic here to generate jsdocs string for each line in constant */
+    return `${key}: ${value}`;
+    };
+
+    /**
+    * Return key/value pairs after applying logic
+    */
+    export const get{{CapitalizedFileName}}ConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
+    const contentArr: Record<string, string> = {};
+
+    /** Put logic here to generate constant key value pairs */
+    
+    return contentArr;
+    };
+    ```
+3. Put logic of how you want the key/value pair in constant to look like in function `get{{CapitalizedFileName}}ConstantKeyValuePairs`.  
+Ex: 
+    ```
+    export const getTestNumberConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
+        const contentArr: Record<string, string> = {};
+
+        /** Put logic here to generate constant key value pairs */
+        for (let i=0; i<5; i++) {
+            // this will return a constant looks like `{"key-1": "value-1", "key-2": "value-2", ...}.
+            contentArr[`key-${i}`] = `value-${i}`; 
+        }
+        return contentArr;
+    };
+    ``` 
+4. Put logic of how you want @jsdocs tag to be generated to look like with each key/value pair in constant in function `getTestNumberConstantCustomizedComment`. Leave it as it is if you want it to use the default one.  
+Ex: 
+    ```
+    export const getTestNumberConstantCustomizedComment: ConstantCustomizedComment = ({
+        key,
+        value,
+    }) => {
+        /** Put logic here to generate jsdocs string for each line in constant */
+        return `${key}: ${value}`;
+    };
+    ``` 
+5. Turn the flag `hasJSDocsComment` on or off wether to enable showing jsdocs.
+6. Run command `'yarn build:logic-constant'` to generate the file. New files will be generated at `build-utils/css/constants/generated`
+  
+### - Import generated file in theme file (`theme.ts` | `_darkTheme.ts`)
+Let's say we have an exported constant `testNumber` in `build-utils/csss/constants/logics/_testNumber.ts` and we want to import that file into `theme.ts`.
+1. Go to `theme.ts`. 
+2. Type `testNumber` to trigger VScode import suggestion and continue to import the file. At the beginning of `theme.ts` now have:
+    ```
+    import { testNumber } from './generated/_testNumber';
+    ```
+3. Inside constant content, put a spread operator for the `testNumber` on where you want it to be. For example you want to spread it in between `'gray-l60'` and `'gray-l40'`. Now it will look like this:
+    ```
+    export const theme = {
+        /* GRAY PALETTE */
+        'gray-l80': '#f5f5f6',
+        'gray-l60': '#eaeaec',
+
+        ...testNumber,
+
+        'gray-l40': '#d6d6d9',
+        
+    } as const;
+    ```
+4. Now when you run `'yarn build:theme'`, it will replace `...testNumber` with primitive content in the constant when it's generating the theme constant in `src/styles/constants/theme.ts`.
+---
+
 ## **Building process overview**
 **NOTE**: Because of running `'yarn build:theme'` will overwrite last capture with latest content, before you run a script, run `yarn test` first to make sure the current constant `theme.ts` and `_darkTheme.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
     
@@ -31,7 +135,7 @@ Main script for this building process is `build-utils/css/buildTheme.ts`.
             /** @deprecated use blue-l80 instead */
             'blue-100': 'var(--amino-blue-100)',
             ```
-    - Generate new constant `theme.ts` with generated content above, format them and put into `src/styles/constants` folder  
+    - Generate new constant file `theme.ts` with generated content above, format them and put into `src/styles/constants` folder  
 
 2. Generate css file (theme.css)
     - Get contents from `build-utils/css/constants` (theme.ts and _darkTheme.ts), format and generate `theme.css` and put in `src/styles` folder
@@ -45,13 +149,15 @@ Main folder to pay attention is `build-utils/css/constants/*.ts` to add a new or
 ### - Deprecate a variable
 Add `@deprecated` to variable, create new variable and apply the new one to the legacy one.  
 **Ex**:  
-To add new `--amino-new-variable` to replace for `--amino-legacy-variable`. 
-- Create value for `--amino-new-variable`, add `@deprecated use ${NEW} instead` (replace `${NEW}` with `new variable`) and apply `var(--amino-new-variable)` to `--amino-legacy-variable`
+To add new `new-variable` to replace for `legacy-variable`. 
+- Create value for `new-variable`, add `@deprecated use ${NEW} instead` (replace `${NEW}` with `newVariable`) and apply `var(--amino-new-variable)` to `legacy-variable`.  
+**NOTE**: Since the generated constants' keys would be transformed to camelCase (new-variable => newVariable). When you adding `@jsdocs`, use camel case when you referring to a variable.
+Ex: 
     ```
-    --amino-new-variable: #123abc;
+    'new-variable': #123abc;
 
-    /** @deprecated use new-variable instead */
-    --amino-legacy-variable: var(--amino-new-variable);
+    /** @deprecated use newVariable instead */
+    'legacy-variable': var(--amino-new-variable);
     ```
 
 ### - Add/adjust variable
