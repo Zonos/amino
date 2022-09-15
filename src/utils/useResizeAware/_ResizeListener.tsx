@@ -7,12 +7,9 @@ export const ResizeListener = ({
 }: {
   onResize: (ref: MutableRefObject<HTMLIFrameElement | null>) => void;
 }) => {
-  const ref = useRef<HTMLIFrameElement | null>(null);
+  const ref = useRef<HTMLIFrameElement>(null);
 
-  const getTarget = () =>
-    ref.current &&
-    ref.current.contentDocument &&
-    ref.current.contentDocument.defaultView;
+  const getTarget = () => ref?.current?.contentDocument?.defaultView;
 
   const load = useCallback(() => {
     // trigger onResize event on mount to provide initial sizes
@@ -26,7 +23,7 @@ export const ResizeListener = ({
   React.useEffect(() => {
     if (getTarget()) {
       load();
-    } else if (ref.current && ref.current.addEventListener) {
+    } else if (ref?.current?.addEventListener) {
       ref.current.addEventListener('load', load);
     }
 
@@ -36,8 +33,7 @@ export const ResizeListener = ({
       // this fixes an issue where contentDocument.defaultView is not a real window object
       // as can be the case when used with React portals
       const target = getTarget();
-      const isListener =
-        target && typeof target.removeEventListener === 'function';
+      const isListener = typeof target?.removeEventListener === 'function';
       if (isListener) {
         target.removeEventListener('resize', () => onResize(ref));
       }

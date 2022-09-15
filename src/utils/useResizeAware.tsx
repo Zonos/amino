@@ -4,8 +4,8 @@ import { ResizeListener } from './useResizeAware/_ResizeListener';
 
 const defaultReporter = (target: HTMLElement | null) => {
   return {
-    width: target != null ? target.offsetWidth : null,
-    height: target != null ? target.offsetHeight : null,
+    width: target?.offsetWidth || null,
+    height: target?.offsetHeight || null,
   };
 };
 
@@ -17,7 +17,7 @@ export type UseResizeAwareProps = [
 /** @resource https://github.com/FezVrasta/react-resize-aware */
 /**
  * Hook to detect element when it changes in size (height / width)
- * @NOTE Make sure the measured element to have `position != initial`
+ * @NOTE Make sure the measured element has `position != initial`
  * (`relative`, `absolute`, or `fixed` will work))
  * @example
  * import React from 'react';
