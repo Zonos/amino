@@ -1,4 +1,5 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import useResizeAware from 'react-resize-aware';
 
 import styled from 'styled-components';
 
@@ -28,14 +29,16 @@ export const Collapse = ({
   children,
 }: CollapseProps) => {
   const [height, setHeight] = useState(0);
-  const ref = useRef<HTMLDivElement | null>(null);
+  const [resizeListener, sizes] = useResizeAware();
+
   useEffect(() => {
-    if (ref.current && isExpand) {
-      setHeight(ref.current.getBoundingClientRect().height);
+    if (sizes.height && isExpand) {
+      setHeight(sizes.height);
     } else {
       setHeight(0);
     }
-  }, [isExpand, setHeight]);
+  }, [isExpand, setHeight, sizes.height]);
+
   return (
     <StyledCollapseWrapper
       className={className}
@@ -43,7 +46,10 @@ export const Collapse = ({
       $isExpand={isExpand}
       $collapseSize={collapseSize || 0}
     >
-      <div ref={ref}>{children}</div>
+      <div style={{ position: 'relative' }}>
+        {resizeListener}
+        {children}
+      </div>
     </StyledCollapseWrapper>
   );
 };
