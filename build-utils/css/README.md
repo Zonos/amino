@@ -10,7 +10,7 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 **REASON**: Typescript will not read and provide jsdocs info on the spread operators (Ex: `...sthing`), so we can't benefit from jsdocs tag when using typescript key suggestion.  
   
 ### **When you run the script, it will**:
-*BEBFORE STARTED, UNTIL WE HAVE A SCRIPT TO GENERATE THE TEMPLATE, YOU MAY NEED TO MANUALLY PUT A FILE WITH SOME REQUIRED FUNCTIONS AND VARIABLES WITH NAMING SYNTAX `_${name}.ts` (WHICH WILL BE EXPLAINED HOW DEEPER BELOW) INTO `build-utils/css/constants/logics`.*  
+*BEFORE STARTED, UNTIL WE HAVE A SCRIPT TO GENERATE THE TEMPLATE, YOU MAY NEED TO MANUALLY PUT A FILE WITH SOME REQUIRED FUNCTIONS AND VARIABLES WITH NAMING SYNTAX `_${name}.ts` (WHICH WILL BE EXPLAINED HOW DEEPER BELOW) INTO `build-utils/css/constants/logics`.*  
 1. Read through all the files in `build-utils/css/constants/logics`, class `LogicConstant` in `build-utils/css/class` will:
     - Parse the given file. 
     - Validate the file and throw error message if the file doesn't have specific function or constant.
