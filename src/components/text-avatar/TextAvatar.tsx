@@ -1,14 +1,25 @@
 import React from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
 
-type GraidentSquareType = {
+type GradientSquareType = {
   gradientStart: string;
   gradientEnd: string;
 };
 
-const GradientSquare = styled.div<GraidentSquareType>`
+// Used in store list, and when too many classes are generated styled-components complains. This is their recommended solution to make the changes styles inline, rather than generating a CSS class for each one.
+const GradientSquare = styled.div.attrs<GradientSquareType>(
+  (props): { style: CSSProperties } => ({
+    style: {
+      background: `linear-gradient(
+      137deg,
+      ${props.gradientStart},
+      ${props.gradientEnd}
+    )`,
+    },
+  })
+)<GradientSquareType>`
   width: 32px;
   height: 32px;
   border-radius: ${theme.radius};
@@ -18,15 +29,6 @@ const GradientSquare = styled.div<GraidentSquareType>`
   font-weight: 500;
   color: ${theme.grayD80} !important;
   font-weight: 500;
-
-  --gradient-start: ${p => p.gradientStart};
-  --gradient-end: ${p => p.gradientEnd};
-
-  background: linear-gradient(
-    137deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
 `;
 
 export type TextAvatarProps = {
