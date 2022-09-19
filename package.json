@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.2.20",
+  "version": "3.2.21",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -89,7 +89,7 @@
     "@mui/material": "^5.8.5",
     "@radix-ui/react-slider": "^0.1.4",
     "@types/topojson-client": "^3.1.1",
-    "d3-geo": "^3.0.1",
+    "d3-geo": "^2.0.2",
     "react-dropzone": "^12.0.4",
     "react-select": "^5.2.2",
     "react-simple-maps": "^3.0.0",
@@ -107,9 +107,6 @@
     "react-is": "^17.x",
     "react-tooltip": "^4.x",
     "styled-components": "^5.x"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "scripts": {
     "dev": "concurrently 'yarn storybook' 'yarn proxy'",
