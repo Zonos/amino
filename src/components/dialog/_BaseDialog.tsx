@@ -8,7 +8,6 @@ import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
 // TODO: scrollable dialog, max height, etc.
-// TODO: close with keyboard shortcut?
 
 const DialogLayout = styled.div`
   width: 100vw;
