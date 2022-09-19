@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -34,12 +34,15 @@ const Popup = styled(motion.div)<{ width: number }>`
   border: ${theme.border};
 `;
 
-export type DialogProps = {
+export type BaseDialogProps = {
   children: React.ReactNode;
   className?: string;
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  onClose: () => void;
+  closeOnBlur?: boolean;
+  closeOnEsc?: boolean;
 };
 
 export const BaseDialog = ({
@@ -48,7 +51,22 @@ export const BaseDialog = ({
   open,
   theme: _theme,
   width,
-}: DialogProps) => {
+  onClose,
+  closeOnBlur = true,
+  closeOnEsc = true,
+}: BaseDialogProps) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (closeOnEsc && event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  const dialogBackdrop = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    dialogBackdrop?.current?.focus();
+  }, [open]);
+
   if (typeof document !== 'undefined') {
     return ReactDOM.createPortal(
       <AnimatePresence>
@@ -63,7 +81,13 @@ export const BaseDialog = ({
           />
         )}
         {open && (
-          <DialogLayout data-theme={_theme}>
+          <DialogLayout
+            data-theme={_theme}
+            onClick={() => closeOnBlur && onClose()}
+            onKeyDown={handleKeyDown}
+            tabIndex={-1}
+            ref={dialogBackdrop}
+          >
             <Popup
               className={className}
               transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
@@ -72,6 +96,10 @@ export const BaseDialog = ({
               exit={{ opacity: 0, scale: 0.95 }}
               key="dialog"
               width={width || 444}
+              onClick={e => {
+                // e.preventDefault();
+                e.stopPropagation();
+              }}
             >
               {children}
             </Popup>

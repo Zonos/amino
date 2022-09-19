@@ -7,6 +7,7 @@ import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled, { css } from 'styled-components';
 
+import { Button } from '../button/Button';
 import { BaseDialog } from './_BaseDialog';
 
 const Header = styled.div`
@@ -16,10 +17,35 @@ const Header = styled.div`
   display: flex;
   align-items: center;
 
-  h5 {
+  > :not(button) {
     margin: 0;
     flex: 1;
     font-weight: 700;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  padding: 0;
+  path[data-is-secondary-color] {
+    fill: ${theme.grayL60};
+  }
+  &,
+  &:focus,
+  &:hover,
+  &:active {
+    color: ${theme.grayD60};
+    background: transparent;
+  }
+  &:hover {
+    path[data-is-secondary-color] {
+      fill: ${theme.grayL40};
+    }
+  }
+  &:active,
+  &:focus {
+    path[data-is-secondary-color] {
+      fill: ${theme.grayL20};
+    }
   }
 `;
 
@@ -104,28 +130,6 @@ const Content = styled.div`
   // gradientOverflow
 `;
 
-const Close = styled.div`
-  transition: all 100ms ease-in-out;
-  background: transparent;
-  border-radius: 32px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    svg {
-      fill: ${theme.grayL20};
-    }
-  }
-
-  svg {
-    transition: all 100ms ease-in-out;
-  }
-`;
-
 export type DialogProps = {
   actions?: React.ReactNode;
   className?: string;
@@ -136,6 +140,14 @@ export type DialogProps = {
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  /** Close when clicking outside dialog (on the backdrop)
+   * @default true
+   */
+  closeOnBlur?: boolean;
+  /** Close on pressing 'escape' key
+   * @default true
+   */
+  closeOnEsc?: boolean;
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
@@ -150,6 +162,8 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       open,
       theme: _theme,
       width,
+      closeOnBlur,
+      closeOnEsc,
     },
     ref
   ) => (
@@ -158,12 +172,16 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       data-theme={_theme}
       open={open}
       width={width}
+      onClose={onClose}
+      closeOnBlur={closeOnBlur}
+      closeOnEsc={closeOnEsc}
     >
       <Header>
-        <Text type="subheader">{label}</Text>
-        <Close onClick={onClose}>
-          <RemoveCircleDuotoneIcon size={32} />
-        </Close>
+        <Text type="title">{label}</Text>
+        <StyledButton
+          onClick={onClose}
+          icon={<RemoveCircleDuotoneIcon size={32} />}
+        />
       </Header>
       <Content ref={ref}>{children}</Content>
       {(actions || leftActions) && (

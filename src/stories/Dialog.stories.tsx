@@ -48,6 +48,25 @@ const Template: Story<DialogProps> = ({
 
 export const BasicDialog = Template.bind({});
 BasicDialog.args = {
+  actions: (
+    <>
+      <Button intent="outline">Close</Button>
+      <Button intent="primary">Save</Button>
+    </>
+  ),
+  children: <div>Children</div>,
+  label: 'Dialog title',
+  width: 460,
+};
+BasicDialog.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
+  },
+};
+
+export const WithLeftActions = Template.bind({});
+WithLeftActions.args = {
   leftActions: (
     <>
       <Button>Back</Button>
@@ -55,15 +74,15 @@ BasicDialog.args = {
   ),
   actions: (
     <>
-      <Button>Close</Button>
+      <Button intent="outline">Close</Button>
       <Button intent="primary">Save</Button>
     </>
   ),
   children: <div>Children</div>,
-  label: 'Label',
+  label: 'Dialog title',
   width: 650,
 };
-BasicDialog.parameters = {
+WithLeftActions.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
@@ -79,7 +98,7 @@ LongContentDialog.args = {
   ),
   actions: (
     <>
-      <Button>Close</Button>
+      <Button intent="outline">Close</Button>
       <Button intent="primary">Save</Button>
     </>
   ),
