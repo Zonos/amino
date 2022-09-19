@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -8,7 +8,6 @@ import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
 // TODO: scrollable dialog, max height, etc.
-// TODO: close with keyboard shortcut?
 
 const DialogLayout = styled.div`
   width: 100vw;
@@ -34,12 +33,15 @@ const Popup = styled(motion.div)<{ width: number }>`
   border: ${theme.border};
 `;
 
-export type DialogProps = {
+export type BaseDialogProps = {
   children: React.ReactNode;
   className?: string;
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  onClose?: () => void;
+  closeOnBlur?: boolean;
+  closeOnEsc?: boolean;
 };
 
 export const BaseDialog = ({
@@ -48,7 +50,25 @@ export const BaseDialog = ({
   open,
   theme: _theme,
   width,
-}: DialogProps) => {
+  onClose,
+  closeOnBlur = true,
+  closeOnEsc = true,
+}: BaseDialogProps) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (onClose && closeOnEsc && event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  const dialogBackdrop = useRef<HTMLDivElement>(null);
+
+  // Focus the backdrop so we can listen for keypresses ('escape' to close)
+  useEffect(() => {
+    if (!dialogBackdrop.current?.contains(document.activeElement)) {
+      dialogBackdrop.current?.focus();
+    }
+  }, [open]);
+
   if (typeof document !== 'undefined') {
     return ReactDOM.createPortal(
       <AnimatePresence>
@@ -63,7 +83,13 @@ export const BaseDialog = ({
           />
         )}
         {open && (
-          <DialogLayout data-theme={_theme}>
+          <DialogLayout
+            data-theme={_theme}
+            onClick={() => onClose && closeOnBlur && onClose()}
+            onKeyDown={handleKeyDown}
+            tabIndex={-1}
+            ref={dialogBackdrop}
+          >
             <Popup
               className={className}
               transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
@@ -72,6 +98,10 @@ export const BaseDialog = ({
               exit={{ opacity: 0, scale: 0.95 }}
               key="dialog"
               width={width || 444}
+              onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
             >
               {children}
             </Popup>
