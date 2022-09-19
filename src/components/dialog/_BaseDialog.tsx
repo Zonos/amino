@@ -40,7 +40,7 @@ export type BaseDialogProps = {
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
-  onClose: () => void;
+  onClose?: () => void;
   closeOnBlur?: boolean;
   closeOnEsc?: boolean;
 };
@@ -56,13 +56,14 @@ export const BaseDialog = ({
   closeOnEsc = true,
 }: BaseDialogProps) => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (closeOnEsc && event.key === 'Escape') {
+    if (onClose && closeOnEsc && event.key === 'Escape') {
       onClose();
     }
   };
 
   const dialogBackdrop = useRef<HTMLDivElement>(null);
 
+  // Focus the backdrop so we can listen for keypresses ('escape' to close)
   useEffect(() => {
     dialogBackdrop?.current?.focus();
   }, [open]);
@@ -83,7 +84,7 @@ export const BaseDialog = ({
         {open && (
           <DialogLayout
             data-theme={_theme}
-            onClick={() => closeOnBlur && onClose()}
+            onClick={() => onClose && closeOnBlur && onClose()}
             onKeyDown={handleKeyDown}
             tabIndex={-1}
             ref={dialogBackdrop}
@@ -97,7 +98,7 @@ export const BaseDialog = ({
               key="dialog"
               width={width || 444}
               onClick={e => {
-                // e.preventDefault();
+                e.preventDefault();
                 e.stopPropagation();
               }}
             >

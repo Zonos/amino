@@ -75,7 +75,12 @@ export const AlertDialog = ({
   dismissText,
   dismissAction,
 }: AlertDialogProps) => (
-  <BaseDialog width={350} data-theme={_theme} open={open}>
+  <BaseDialog
+    width={350}
+    data-theme={_theme}
+    open={open}
+    onClose={dismissAction}
+  >
     <Content>
       <VStack spacing="space-half">
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
