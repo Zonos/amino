@@ -64,7 +64,9 @@ export const BaseDialog = ({
 
   // Focus the backdrop so we can listen for keypresses ('escape' to close)
   useEffect(() => {
-    dialogBackdrop?.current?.focus();
+    if (!dialogBackdrop.current?.contains(document.activeElement)) {
+      dialogBackdrop.current?.focus();
+    }
   }, [open]);
 
   if (typeof document !== 'undefined') {

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Dialog, DialogProps } from 'src/components/dialog/Dialog';
+import { Input } from 'src/components/input/Input';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
@@ -10,6 +11,12 @@ const DialogMeta: Meta = {
   title: 'Amino/Dialog',
   component: Dialog,
   decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=224%3A16329',
+    },
+  },
 };
 
 export default DialogMeta;
@@ -58,12 +65,6 @@ BasicDialog.args = {
   label: 'Dialog title',
   width: 460,
 };
-BasicDialog.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
-  },
-};
 
 export const WithLeftActions = Template.bind({});
 WithLeftActions.args = {
@@ -81,12 +82,6 @@ WithLeftActions.args = {
   children: <div>Children</div>,
   label: 'Dialog title',
   width: 650,
-};
-WithLeftActions.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
-  },
 };
 
 export const LongContentDialog = Template.bind({});
@@ -138,9 +133,34 @@ LongContentDialog.args = {
   label: 'Label',
   width: 500,
 };
-LongContentDialog.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=102%3A79',
-  },
+
+export const WithInput = () => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+
+  return (
+    <CenteredDiv>
+      <Button onClick={() => setOpen(true)}>Open</Button>
+      <Dialog
+        actions={
+          <>
+            <Button intent="outline" onClick={() => setOpen(false)}>
+              Close
+            </Button>
+            <Button intent="primary">Submit</Button>
+          </>
+        }
+        label="With an input"
+        open={open}
+        onClose={() => setOpen(false)}
+        width={460}
+      >
+        <Input
+          onChange={e => setValue(e.target.value)}
+          value={value}
+          autoFocus
+        />
+      </Dialog>
+    </CenteredDiv>
+  );
 };
