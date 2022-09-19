@@ -2,39 +2,16 @@ name: Release
 
 on:
   push:
-    branches:
-      - develop
+    tags:
+      - 'v*'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org'
-      - run: yarn
-      - run: yarn run build
-      - run: cd dist && npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+  release:
+    name: 'Release'
+    runs-on: 'ubuntu-latest'
 
-changelog:
-  exclude:
-    labels:
-      - ignore-for-release
-    authors:
-      - octocat
-  categories:
-    - title: Breaking Changes 🛠
-      labels:
-        - Semver-Major
-        - breaking-change
-    - title: Exciting New Features 🎉
-      labels:
-        - Semver-Minor
-        - enhancement
-    - title: Other Changes
-      labels:
-        - '*'
+    steps:
+      - uses: 'marvinpinto/action-automatic-releases@1.2.1'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false
