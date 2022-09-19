@@ -3,7 +3,6 @@ name: Release
 on:
   push:
     branches:
-      - master
       - develop
 
 jobs:
@@ -20,3 +19,22 @@ jobs:
       - run: cd dist && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+    authors:
+      - octocat
+  categories:
+    - title: Breaking Changes 🛠
+      labels:
+        - Semver-Major
+        - breaking-change
+    - title: Exciting New Features 🎉
+      labels:
+        - Semver-Minor
+        - enhancement
+    - title: Other Changes
+      labels:
+        - '*'
