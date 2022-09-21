@@ -145,6 +145,64 @@ export class LogicConstant {
     }
   }
 
+  /** Checking camel case for a text */
+  static camelCaseChecking(text: string) {
+    return !!text && /^[a-z]/.test(text) && !/[\W_]/.test(text);
+  }
+
+  /**
+   *
+   * @param fileName file name that would be generated.
+   *
+   * **Note**:
+   * - Need to be camelCase
+   * - No extension
+   * @return
+   * - `null` when fileName is invalid
+   * - `string` when fileName is valid
+   */
+  static async _generateLogicConstFileContent(
+    fileName: string
+  ): Promise<string> {
+    if (!this.camelCaseChecking(fileName)) {
+      throw Error(
+        'File name needs to be in valid camelCase format with no extension and no underscore.'
+      );
+    }
+    const rootFolder = process.cwd();
+    /** Read the template content */
+    const templateContent = readFileSync(
+      path.resolve(
+        `${rootFolder}/build-utils/css/class/template/logicConstant.tpl`
+      ),
+      { encoding: 'utf-8' }
+    );
+    const newTemplateContent = templateContent
+      .replace(/{{FileName}}/g, fileName)
+      .replace(/{{CapitalizedFileName}}/g, capitalize(fileName));
+
+    return formatTS(newTemplateContent);
+  }
+
+  /**
+   *
+   * @param fileName file name that would be generated.
+   * File name:
+   * - Need to be camelCase
+   * - Have no extension
+   * @note
+   * - Generated file will be located at `build-utils/css/constants/logics` with file name `_${fileName}.ts`.
+   * - It will do nothing if fileName is in wrong format has nothing
+   */
+  static async generateLogicConstantFile(fileName: string) {
+    const fileContent = await this._generateLogicConstFileContent(fileName);
+    const rootFolder = process.cwd();
+    writeFileSync(
+      `${rootFolder}/build-utils/css/constants/logics/_${fileName}.ts`,
+      fileContent
+    );
+  }
+
   /**
    *
    * @param content : file content that need to converted;

@@ -7,10 +7,10 @@ This script is primarily created for generating accessible style constants and c
 
 ## **Generating dynamic constant process overview**
 Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for having a way to generate a constant programmatically with logic and customized jsdocs comments.  
+(**Included script to generate template for generating a content**)  
 **REASON**: Typescript will not read and provide jsdocs info on the spread operators (Ex: `...sthing`), so we can't benefit from jsdocs tag when using typescript key suggestion.  
   
 ### **When you run the script, it will**:
-*BEFORE STARTED, UNTIL WE HAVE A SCRIPT TO GENERATE THE TEMPLATE, YOU MAY NEED TO MANUALLY PUT A FILE WITH SOME REQUIRED FUNCTIONS AND VARIABLES WITH NAMING SYNTAX `_${name}.ts` (WHICH WILL BE EXPLAINED HOW DEEPER BELOW) INTO `build-utils/css/constants/logics`.*  
 1. Read through all the files in `build-utils/css/constants/logics`, class `LogicConstant` in `build-utils/css/class` will:
     - Parse the given file. 
     - Validate the file and throw error message if the file doesn't have specific function or constant.
@@ -21,45 +21,15 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 
 ## **How to**:
 ### - Create a logic file
-1. Create a file follow this naming convention `_${fileName}.ts` in `build-utils/css/constants/logics`.
-2. Copy content below and replace `{{CapitalizedFileName}}` with capitalized file name without `_` and extension. And replace `{{FileName}}` with actual file name `_${filename}.ts`.
+1. Run the command below to generate the dummy content for your new dynamic constant logic.
     ```
-    import {
-    ConstantCustomizedComment,
-    ConstantKeyValuePairsType,
-    } from './types/LogicConstantType';
-
-    /** Flag to determine to apply jdocs generation rule from get{{CapitalizedFileName}}ConstantCustomizedComment function below */
-    export const hasJSDocsComment: boolean = true;
-
-    /**
-    * Get jsdocs comment that need to be injected to each {{FileName}} constant with customized comment
-    *
-    * **NOTE**: enable when `hasJSDocsComment` is on
-    * */
-    export const get{{CapitalizedFileName}}ConstantCustomizedComment: ConstantCustomizedComment = ({
-    key,
-    value,
-    }) => {
-    /** Put logic here to generate jsdocs string for each line in constant */
-    return `${key}: ${value}`;
-    };
-
-    /**
-    * Return key/value pairs after applying logic
-    */
-    export const get{{CapitalizedFileName}}ConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
-    const contentArr: Record<string, string> = {};
-
-    /** Put logic here to generate constant key value pairs */
-    
-    return contentArr;
-    };
+    yarn template:logic-constant yourFileName
     ```
+2. The generated file now will be located at `build-utils/css/constants/logics` with name `_yourFileName.ts`.
 3. Put logic of how you want the key/value pair in constant to look like in function `get{{CapitalizedFileName}}ConstantKeyValuePairs`.  
 Ex: 
     ```
-    export const getTestNumberConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
+    export const getYourFileNameConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
         const contentArr: Record<string, string> = {};
 
         /** Put logic here to generate constant key value pairs */
@@ -70,10 +40,10 @@ Ex:
         return contentArr;
     };
     ``` 
-4. Put logic of how you want @jsdocs tag to be generated to look like with each key/value pair in constant in function `getTestNumberConstantCustomizedComment`. Leave it as it is if you want it to use the default one.  
+4. Put logic of how you want @jsdocs tag to be generated to look like with each key/value pair in constant in function `getYourFileNameConstantCustomizedComment`. Leave it as it is if you want it to use the default one.  
 Ex: 
     ```
-    export const getTestNumberConstantCustomizedComment: ConstantCustomizedComment = ({
+    export const getYourFileNameConstantCustomizedComment: ConstantCustomizedComment = ({
         key,
         value,
     }) => {
@@ -82,7 +52,7 @@ Ex:
     };
     ``` 
 5. Turn the flag `hasJSDocsComment` on or off wether to enable showing jsdocs.
-6. Run command `'yarn build:logic-constant'` to generate the file. New files will be generated at `build-utils/css/constants/generated`
+6. Run command `'yarn build:logic-constant'` to generate the file. New files with exact same name will be generated at `build-utils/css/constants/generated`
   
 ### - Import generated file in theme file (`theme.ts` | `_darkTheme.ts`)
 Let's say we have an exported constant `testNumber` in `build-utils/csss/constants/logics/_testNumber.ts` and we want to import that file into `theme.ts`.

@@ -123,6 +123,7 @@
     "prebuild:prep:publish": "echo 'building for publishing'",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "postbuild:prep:publish": "echo 'done building for publishing'",
+    "template:logic-constant": "ts-node build-utils/css/generateLogicConstTemplate.ts",
     "build:logic-constant": "ts-node build-utils/css/buildLogicConstants.ts",
     "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "test:prod": "jest --testPathIgnorePatterns storyshots",
