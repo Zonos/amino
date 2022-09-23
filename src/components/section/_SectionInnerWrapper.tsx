@@ -6,8 +6,7 @@ import styled from 'styled-components';
 const StyledSectionInnerWrapper = styled.header`
   display: flex;
   align-items: center;
-  margin-bottom: ${theme.space};
-  flex-direction: column;
+  margin-bottom: ${theme.space24};
   align-items: flex-start;
 `;
 
