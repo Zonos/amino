@@ -19,6 +19,7 @@ import { ImageDuotoneIcon } from 'src/icons/ImageDuotoneIcon';
 import { ImportDuotoneIcon } from 'src/icons/ImportDuotoneIcon';
 import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
+import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
@@ -417,6 +418,25 @@ const Template: Story<
               </Table>
             </ExpandedTableCard>
           </TableRowCollapse>
+          <TableRowCollapse
+            handleExpandClick={() => handleExpandClick(5)}
+            isExpand={expandedRows.includes(5)}
+            rowContent={
+              <>
+                <TableCell colSpan={2}>
+                  <LeftIconLabel>
+                    <RoundedIcon background="orange-l80">
+                      <WarningIcon color="orange-d60" />
+                    </RoundedIcon>
+                    <Text fontWeight="500">No children (cannot expand)</Text>
+                  </LeftIconLabel>
+                </TableCell>
+                <TableCell align="right">
+                  <Text fontWeight="500">$0.00</Text>
+                </TableCell>
+              </>
+            }
+          />
         </TableBody>
         <TableFooter>
           <TableRow>
