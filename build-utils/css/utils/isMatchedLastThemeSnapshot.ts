@@ -4,9 +4,12 @@ import { convertToCssConstant } from './convertToCssVariable';
 import { getMatchedAminoVariables } from './getMatchedAminoVariables';
 
 export const getLastSnapshot = () => {
-  return readFileSync(`build-utils/css/utils/__snapshots__/theme.css`, {
-    encoding: 'utf-8',
-  });
+  return readFileSync(
+    `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`,
+    {
+      encoding: 'utf-8',
+    }
+  );
 };
 
 /**

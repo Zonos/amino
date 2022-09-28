@@ -346,7 +346,7 @@ export const theme = {
   /** @deprecated use spaceNegative24 instead */
   'space-negative': '-1.5rem',
   /** @info px: 16px */
-  /** @deprecated use spaceNegative16 instead */
+  /** @deprecated use space16 instead */
   'space-half': '1rem',
   /** @info px: -16px */
   /** @deprecated use spaceNegative16 instead */
