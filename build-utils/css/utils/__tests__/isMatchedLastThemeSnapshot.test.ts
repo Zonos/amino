@@ -1,22 +1,6 @@
-import { readFileSync } from 'fs';
-
 import { darkStyleList } from '../../constants/_darkTheme';
 import { theme as lightTheme } from '../../constants/theme';
 import { isMatchedLastThemeSnapshot } from '../isMatchedLastThemeSnapshot';
-
-const lightThemeCSSSnapshot = readFileSync(
-  `build-utils/css/utils/__snapshots__/theme.css`,
-  {
-    encoding: 'utf-8',
-  }
-);
-
-const darkThemeCSSSnapshot = readFileSync(
-  `build-utils/css/utils/__snapshots__/dark-theme.css`,
-  {
-    encoding: 'utf-8',
-  }
-);
 
 type UnitTestItem = {
   case: string;
@@ -27,24 +11,12 @@ type UnitTestItem = {
 
 const testCases: UnitTestItem[] = [
   {
-    case: `Match last light theme snapshot`,
-    theme: lightTheme,
-    input: lightThemeCSSSnapshot,
-    expected: [],
-  },
-  {
-    case: `Match last dark theme snapshot`,
-    theme: darkStyleList,
-    input: darkThemeCSSSnapshot,
-    expected: [],
-  },
-  {
     case: `Missing one key from the theme constant`,
     theme: lightTheme,
     input: `
       --amino-type-scale-base: 16px;
       --amino-new-key: 2.125rem;
-      --amino-font-size-2xl: 1.75rem; 
+      --amino-font-size-2xl: 1.75rem;
       --amino-font-size-xl: 1.375rem;
       --amino-font-size-l: 1.125rem;`,
     expected: ["Found variable '--amino-new-key' in last snapshot"],
@@ -55,7 +27,7 @@ const testCases: UnitTestItem[] = [
     input: `
       --amino-type-scale-base: 16px;
       --amino-new-key: 2.125rem;
-      --amino-font-size-2xl: 1.75rem; 
+      --amino-font-size-2xl: 1.75rem;
       --amino-new-key-2: 1.375rem;
 
       --amino-font-size-l: 1.125rem;
@@ -72,7 +44,7 @@ const testCases: UnitTestItem[] = [
     input: `
       --amino-type-scale-base: 16px;
       --amino-font-size-3xl: 2.100rem;
-      --amino-font-size-2xl: 1.75rem; 
+      --amino-font-size-2xl: 1.75rem;
       --amino-font-size-xl: 1.375rem;
       --amino-font-size-l: 1.125rem;`,
     expected: [
@@ -85,7 +57,7 @@ const testCases: UnitTestItem[] = [
     input: `
       --amino-type-scale-base: 16px;
       --amino-font-size-3xl: 2.100rem;
-      --amino-font-size-2xl: 1.75rem; 
+      --amino-font-size-2xl: 1.75rem;
       --amino-font-size-xl: 1.300rem;
       --amino-font-size-l: 1.125rem;`,
     expected: [
@@ -99,7 +71,7 @@ const testCases: UnitTestItem[] = [
     input: `
       --amino-type-scale-base: 16px;
       --amino-font-size-3xl: 2.100rem;
-      --amino-brand-new-key: 1.75rem; 
+      --amino-brand-new-key: 1.75rem;
       --amino-font-size-xl: 1.300rem;
       --amino-font-size-l: 1.125rem;`,
     expected: [

@@ -313,12 +313,27 @@ export const theme = {
 
   /* BORDER RADIUS */
   /** @info 4px */
+  'radius-4': '0.25rem',
+  /** @info 6px */
+  'radius-6': '0.375rem',
+  /** @info 8px */
+  'radius-8': '0.5rem',
+  /** @info 10px */
+  'radius-10': '0.625rem',
+  /** @info 12px */
+  'radius-12': '0.75rem',
+
+  /** @info 4px */
+  /** @deprecated use radius4 instead */
   'radius-sm': '0.25rem',
   /** @info 6px */
+  /** @deprecated use radius6 instead */
   radius: '0.375rem',
   /** @info 8px */
+  /** @deprecated use radius8 instead */
   'radius-lg': '0.5rem',
   /** @info 12px */
+  /** @deprecated use radius12 instead */
   'radius-xl': '0.75rem',
 
   /* SPACING */
@@ -331,7 +346,7 @@ export const theme = {
   /** @deprecated use spaceNegative24 instead */
   'space-negative': '-1.5rem',
   /** @info px: 16px */
-  /** @deprecated use spaceNegative16 instead */
+  /** @deprecated use space16 instead */
   'space-half': '1rem',
   /** @info px: -16px */
   /** @deprecated use spaceNegative16 instead */

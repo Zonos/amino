@@ -123,25 +123,22 @@ export const ConnectionMap = ({
         }}
         height={height}
       >
-        <Geographies
-          geography={geographies}
-          stroke={theme.grayL20}
-          strokeWidth={1}
-        >
+        <Geographies geography={geographies}>
           {({ geographies: geos }) =>
-            geos.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                fill={
-                  [to, from].includes(
-                    getCountryCodeByName(geo.properties.name, countries)
-                  )
-                    ? theme.blueL80
-                    : theme.grayL40
-                }
-              />
-            ))
+            geos.map(geo => {
+              const isConnectionCountry = [to, from].includes(
+                getCountryCodeByName(geo.properties.name, countries)
+              );
+              return (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  fill={isConnectionCountry ? theme.blueL80 : theme.grayL40}
+                  stroke={isConnectionCountry ? theme.blueL60 : theme.grayL20}
+                  strokeWidth={1}
+                />
+              );
+            })
           }
         </Geographies>
         <Marker coordinates={coordsForIso(from)}>

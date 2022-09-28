@@ -65,7 +65,7 @@ export const generateDarkThemeContent = async <
 
 /**
  * Generate two css snapshots for two themes.
- * Located at 'build-utils/css/utils/__snapshots__'
+ * Located at 'build-utils/css/utils/__tests__/__previous-test-files__'
  * @info light theme snapshot name: theme.css
  * @info dark theme snapshot name: dark-theme.css
  */
@@ -73,7 +73,7 @@ export const generateThemeCapture = async () => {
   const themeContent = await generateLightThemeContent(theme);
   const darkThemeContent = await generateDarkThemeContent(darkStyleList);
   const rootFolder = process.cwd();
-  const path = `${rootFolder}/build-utils/css/utils/__snapshots__`;
+  const path = `${rootFolder}/build-utils/css/utils/__tests__/__previous-test-files__`;
 
   if (!existsSync(path)) {
     mkdirSync(path);
