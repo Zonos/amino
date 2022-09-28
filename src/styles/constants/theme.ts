@@ -639,14 +639,34 @@ export const theme = {
   /* BORDER RADIUS */
   /** @info 4px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius4: 'var(--amino-radius-4)',
+  /** @info 6px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius6: 'var(--amino-radius-6)',
+  /** @info 8px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius8: 'var(--amino-radius-8)',
+  /** @info 10px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius10: 'var(--amino-radius-10)',
+  /** @info 12px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius12: 'var(--amino-radius-12)',
+
+  /** @info 4px */
+  /** @deprecated use radius4 instead */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radiusSm: 'var(--amino-radius-sm)',
   /** @info 6px */
+  /** @deprecated use radius6 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radius: 'var(--amino-radius)',
   /** @info 8px */
+  /** @deprecated use radius8 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radiusLg: 'var(--amino-radius-lg)',
   /** @info 12px */
+  /** @deprecated use radius12 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radiusXl: 'var(--amino-radius-xl)',
 
@@ -784,7 +804,7 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceNegative: 'var(--amino-space-negative)',
   /** @info px: 16px */
-  /** @deprecated use spaceNegative16 instead */
+  /** @deprecated use space16 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spaceHalf: 'var(--amino-space-half)',
   /** @info px: -16px */
