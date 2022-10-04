@@ -9,10 +9,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
-          cache: 'yarn'
+          node-version: "14.x"
+          cache: "yarn"
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: yarn build:ci
 
   CI:
     name: Lint, TSC, Test
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
-          cache: 'yarn'
+          node-version: "14.x"
+          cache: "yarn"
       - run: yarn install --frozen-lockfile
       - run: yarn ci:concurrent

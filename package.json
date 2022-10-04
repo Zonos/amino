@@ -116,6 +116,7 @@
     "postbuild:theme": "echo 'done generating styles'",
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
     "build": "yarn && yarn lint:prod && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
+    "build:ci": "yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
     "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
     "prebuild:dts": "echo 'building dts'",
     "build:dts": "ttsc -p ./tsconfig.emitDeclarationOnly.json",
