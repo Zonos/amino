@@ -115,7 +115,7 @@
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "postbuild:theme": "echo 'done generating styles'",
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
-    "build": "yarn && ci:concurrent && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
+    "build": "yarn && yarn ci:concurrent && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
     "postbuild": "cp -r ./src/styles/*.css ./dist && yarn build:prep:publish",
     "prebuild:ci": "yarn prebuild",
     "build:ci": "yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
