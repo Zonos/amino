@@ -17,6 +17,7 @@ const AminoToast = styled(motion.div)`
   box-shadow: ${theme.v3ShadowLarge};
   padding: ${theme.spaceHalf} ${theme.space};
   display: flex;
+  align-items: center;
   gap: ${theme.spaceQuarter};
   font-weight: 500;
   user-select: none;
