@@ -6,7 +6,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { Toast, ToastProps } from './Toast';
 
 type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
-type ToastContextFunctionType = (toast: ReactNode, props?: BaseProps) => void;
+export type ToastContextFunctionType = (
+  toast: ReactNode,
+  props?: BaseProps
+) => void;
 type ToastType = {
   toast: Parameters<ToastContextFunctionType>[0];
   props?: Parameters<ToastContextFunctionType>[1];
