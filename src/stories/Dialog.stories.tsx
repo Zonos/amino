@@ -66,6 +66,23 @@ BasicDialog.args = {
   width: 460,
 };
 
+export const WithLink = Template.bind({});
+WithLink.args = {
+  actions: (
+    <>
+      <Button intent="outline">Close</Button>
+      <Button intent="primary">Save</Button>
+    </>
+  ),
+  children: (
+    <div>
+      <a href="http://zonos.com">Here is a link</a>
+    </div>
+  ),
+  label: 'Dialog title',
+  width: 460,
+};
+
 export const WithLeftActions = Template.bind({});
 WithLeftActions.args = {
   leftActions: (

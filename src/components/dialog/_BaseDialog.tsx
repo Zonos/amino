@@ -99,7 +99,6 @@ export const BaseDialog = ({
               key="dialog"
               width={width || 444}
               onClick={e => {
-                e.preventDefault();
                 e.stopPropagation();
               }}
             >
