@@ -33,8 +33,8 @@ const StyledSpinnerWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${theme.radiusSm};
-  gap: ${theme.spaceQuarter};
+  border-radius: ${theme.radius4};
+  gap: ${theme.space8};
 `;
 
 const AminoButton = styled.button<ButtonProps<GroupTag>>`
@@ -56,6 +56,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   font-family: ${theme.fontSans};
   letter-spacing: normal;
   cursor: pointer;
+  white-space: nowrap;
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
