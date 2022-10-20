@@ -18,7 +18,7 @@ export type UseResizeAwareProps = [
 /**
  * Hook to detect element when it changes in size (height / width)
  * @NOTE Make sure the measured element has `position != initial`
- * (`relative`, `absolute`, or `fixed` will work))
+ * (`relative`, `absolute`, or `fixed` will work)
  * @example
  * import React from 'react';
   import { useResizeAware } from 'src/utils/useResizeAware';

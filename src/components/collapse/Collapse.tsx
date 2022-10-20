@@ -7,14 +7,16 @@ import { type StyledProps } from '../../types/StyledProps';
 
 const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  overflow: hidden;
+  overflow: ${({ $hideOverflow }) => ($hideOverflow ? 'hidden' : 'auto')};
   position: relative;
   min-height: ${({ $collapseSize }) =>
     $collapseSize ? `${$collapseSize}px` : '0px'};
   height: ${({ $height }) => `${$height}px`};
 `;
 
-type StyledCollapseProps = StyledProps<CollapseProps & { height: number }>;
+type StyledCollapseProps = StyledProps<
+  CollapseProps & { height: number; hideOverflow: boolean }
+>;
 
 export type CollapseProps = {
   className?: string;
@@ -29,6 +31,7 @@ export const Collapse = ({
   children,
 }: CollapseProps) => {
   const [height, setHeight] = useState(0);
+  const [hideOverflow, setHideOverflow] = useState(!isExpand);
   const [resizeListener, sizes] = useResizeAware();
 
   useEffect(() => {
@@ -37,14 +40,26 @@ export const Collapse = ({
     } else {
       setHeight(0);
     }
+    setHideOverflow(true);
   }, [isExpand, setHeight, sizes.height]);
+
+  const handleTransitionEnd = () => {
+    if (isExpand) {
+      // Done expanding so safe to show overflow
+      setHideOverflow(false);
+    } else {
+      setHideOverflow(true);
+    }
+  };
 
   return (
     <StyledCollapseWrapper
       className={className}
       $height={height}
       $isExpand={isExpand}
+      $hideOverflow={hideOverflow}
       $collapseSize={collapseSize || 0}
+      onTransitionEnd={handleTransitionEnd}
     >
       <div style={{ position: 'relative' }}>
         {resizeListener}
