@@ -1,10 +1,11 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/button/Button';
 import { Collapse, CollapseProps } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { withDesign } from 'storybook-addon-designs';
+import styled from 'styled-components';
 
 const CollapseMeta: Meta = {
   title: 'Amino/Collapse',
@@ -16,42 +17,46 @@ const CollapseMeta: Meta = {
   },
   argTypes: {
     children: {
-      description: 'ReactNode item that need to be collapsed or expanded',
-      type: 'symbol',
+      table: {
+        disable: true,
+      },
     },
     isExpand: {
-      defaultValue: false,
-      type: 'boolean',
-    },
-    collapseSize: {
-      type: 'number',
-      defaultValue: 0,
-    },
-    className: {
-      type: 'string',
+      table: {
+        disable: true,
+      },
     },
   },
 };
 
 export default CollapseMeta;
 
+const CollapseContainer = styled.div`
+  margin: 20px;
+`;
+
 const Template: Story<CollapseProps> = ({
   className,
   children,
-  isExpand,
   collapseSize,
 }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <p>Collapse status: {isExpand ? 'Expanded' : 'Collapsed'}</p>
-      <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
-      <Collapse
-        className={className}
-        isExpand={isExpand}
-        collapseSize={collapseSize}
-      >
-        {children}
-      </Collapse>
+      <Button onClick={() => setOpen(!open)}>
+        {open ? 'Collapse' : 'Expand'}{' '}
+      </Button>
+      <CollapseContainer>
+        <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
+        <Collapse
+          className={className}
+          isExpand={open}
+          collapseSize={collapseSize}
+        >
+          {children}
+        </Collapse>
+      </CollapseContainer>
     </>
   );
 };
