@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
-import { Collapse, CollapseProps } from 'src/components/collapse/Collapse';
+import {
+  Collapse as CollapseComponent,
+  CollapseProps,
+} from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const CollapseMeta: Meta = {
   title: 'Amino/Collapse',
-  component: Collapse,
+  component: CollapseComponent,
   decorators: [withDesign],
 
   parameters: {
@@ -49,19 +52,19 @@ const Template: Story<CollapseProps> = ({
       </Button>
       <CollapseContainer>
         <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
-        <Collapse
+        <CollapseComponent
           className={className}
           isExpand={open}
           collapseSize={collapseSize}
         >
           {children}
-        </Collapse>
+        </CollapseComponent>
       </CollapseContainer>
     </>
   );
 };
-export const Example = Template.bind({});
-Example.args = {
+export const Collapse = Template.bind({});
+Collapse.args = {
   children: (
     <>
       <NavigationItem content="Item 1" isActive />
