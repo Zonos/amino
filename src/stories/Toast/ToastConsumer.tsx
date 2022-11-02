@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import { Button } from 'src/components/button/Button';
+import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { ToastContext } from 'src/components/toast/ToastContext';
 import { theme } from 'src/styles/constants/theme';
@@ -31,6 +32,7 @@ export const ToastConsumer = () => {
   const notify = useNotify();
 
   const [message, setMessage] = useState('Your custom message');
+  const [duration, setDuration] = useState(6000);
 
   return (
     <LeftCenteredDiv>
@@ -40,25 +42,29 @@ export const ToastConsumer = () => {
         </Button>
         <Button
           intent="success"
-          onClick={() => notify('Success toast', { intent: 'success' })}
+          onClick={() =>
+            notify('Success toast', { intent: 'success', duration })
+          }
         >
           Success
         </Button>
         <Button
           intent="danger"
-          onClick={() => notify('Error toast', { intent: 'error' })}
+          onClick={() => notify('Error toast', { intent: 'error', duration })}
         >
           Error
         </Button>
         <Button
           intent="warning"
-          onClick={() => notify('Warning toast', { intent: 'warning' })}
+          onClick={() =>
+            notify('Warning toast', { intent: 'warning', duration })
+          }
         >
           Warning
         </Button>
         <Button
           intent="primary"
-          onClick={() => notify('Info toast', { intent: 'info' })}
+          onClick={() => notify('Info toast', { intent: 'info', duration })}
         >
           Information
         </Button>
@@ -71,14 +77,20 @@ export const ToastConsumer = () => {
             onKeyDown={e => {
               if (e.key === 'Enter') {
                 e.preventDefault();
-                notify(message, { intent: 'info' });
+                notify(message, { intent: 'info', duration });
               }
             }}
           />
-          <Button onClick={() => notify(message, { intent: 'info' })}>
+          <Button onClick={() => notify(message, { intent: 'info', duration })}>
             Display Custom
           </Button>
         </CustomWrapper>
+        <Input
+          type="number"
+          label="duration"
+          value={String(duration)}
+          onChange={e => setDuration(+e.target.value)}
+        />
       </VStack>
     </LeftCenteredDiv>
   );

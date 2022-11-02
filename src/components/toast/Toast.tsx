@@ -48,8 +48,10 @@ const AminoInfoToast = styled(AminoToast)`
 
 export type ToastProps = {
   children: React.ReactNode;
-  intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
   toastKey: string;
+  intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
+  /** Dismiss delay (default 6000 ms) */
+  duration?: number;
 };
 
 export const Toast: React.FC<ToastProps> = ({ children, intent, toastKey }) => {
