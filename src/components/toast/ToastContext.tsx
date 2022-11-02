@@ -42,8 +42,8 @@ export const ToastContextProvider = ({ children }: Props) => {
           uuid: uuidv4(),
         })
       );
-      // Each toast has a lifetime of 6 seconds
-      setTimeout(() => setToasts(t => t.slice(1)), 6000);
+      // Each toast has a default lifetime of 6 seconds
+      setTimeout(() => setToasts(t => t.slice(1)), props?.duration || 6000);
     },
     [setToasts]
   );
