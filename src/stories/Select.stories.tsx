@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button } from 'src/components/button/Button';
+import { Dialog } from 'src/components/dialog/Dialog';
 import { IOption } from 'src/components/select/_StyledReactSelect';
 import { Select, SelectProps } from 'src/components/select/Select';
+import { HStack } from 'src/components/stack/HStack';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { withDesign } from 'storybook-addon-designs';
@@ -15,14 +18,7 @@ const StyledWrapper = styled.div`
 const SelectMeta: Meta = {
   title: 'Amino/Select',
   component: Select,
-  decorators: [
-    withDesign,
-    Component => (
-      <StyledWrapper>
-        <Component />
-      </StyledWrapper>
-    ),
-  ],
+  decorators: [withDesign],
 };
 
 export default SelectMeta;
@@ -32,7 +28,11 @@ const SelectTemplate: Story<SelectProps> = ({
   ...props
 }: SelectProps) => {
   const [value, setValue] = useState(_value);
-  return <Select {...props} onChange={setValue} value={value} />;
+  return (
+    <StyledWrapper>
+      <Select {...props} onChange={setValue} value={value} />
+    </StyledWrapper>
+  );
 };
 
 const currencyOptions = [
@@ -192,6 +192,17 @@ const ScrollableDiv = styled.div`
   }
 `;
 
+const CenteredDiv = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledHStack = styled(HStack)`
+  width: 400px;
+`;
+
 export const ScrollableSelect = () => {
   const [value, setValue] = useState<IOption | null>({
     label: 'US Dollar (USD)',
@@ -199,20 +210,60 @@ export const ScrollableSelect = () => {
   });
   return (
     <ScrollableDiv>
-      <Select
-        label="absolute position"
-        options={currencyOptions}
-        onChange={setValue}
-        value={value}
-        menuPosition="absolute"
-      />
-      <Select
-        label="fixed position"
-        options={currencyOptions}
-        onChange={setValue}
-        value={value}
-        menuPosition="fixed"
-      />
+      <StyledHStack>
+        <Select
+          label="absolute position"
+          options={currencyOptions}
+          onChange={setValue}
+          value={value}
+          menuPosition="absolute"
+        />
+        <Select
+          label="fixed position"
+          options={currencyOptions}
+          onChange={setValue}
+          value={value}
+          menuPosition="fixed"
+        />
+      </StyledHStack>
     </ScrollableDiv>
+  );
+};
+
+export const ScrollableDialogSelect = () => {
+  const [value, setValue] = useState<IOption | null>({
+    label: 'US Dollar (USD)',
+    value: 'USD',
+  });
+  const [open, setOpen] = useState(false);
+
+  return (
+    <CenteredDiv>
+      <Button onClick={() => setOpen(true)}>Open</Button>
+      <Dialog
+        label="Selects are in the middle"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <ScrollableDiv>
+          <HStack>
+            <Select
+              label="absolute position"
+              options={currencyOptions}
+              onChange={setValue}
+              value={value}
+              menuPosition="absolute"
+            />
+            <Select
+              label="fixed position"
+              options={currencyOptions}
+              onChange={setValue}
+              value={value}
+              menuPosition="fixed"
+            />
+          </HStack>
+        </ScrollableDiv>
+      </Dialog>
+    </CenteredDiv>
   );
 };
