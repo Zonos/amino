@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode, useMemo, useRef } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
@@ -12,6 +12,7 @@ import ReactSelect, {
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select';
+import Select from 'react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
@@ -482,6 +483,7 @@ export interface StyledReactSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
+  closeOnOutsideScroll?: boolean;
 }
 
 export const StyledReactSelect = <
@@ -498,7 +500,8 @@ export const StyledReactSelect = <
   size = 'xl',
   styles,
   placeholder,
-  menuPosition = 'absolute',
+  menuPosition = 'fixed',
+  closeOnOutsideScroll = false,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
@@ -511,6 +514,24 @@ export const StyledReactSelect = <
     () => getTestId({ componentName: 'select', name: label }),
     [label]
   );
+
+  const selectElement = useRef<Select<Option, IsMulti, Group>>(null);
+
+  const closeMenuOnScroll = useMemo(() => {
+    if (closeOnOutsideScroll) {
+      return (e: Event) => {
+        if (e.target instanceof HTMLElement) {
+          return (
+            !selectElement.current?.menuListRef?.isEqualNode(e.target) ?? true
+          );
+        }
+        return true;
+      };
+    }
+
+    return false;
+  }, [closeOnOutsideScroll]);
+
   return (
     <StyledSelectWrapper
       data-testid={testId}
@@ -555,6 +576,8 @@ export const StyledReactSelect = <
             ...localStyles,
           } as StylesConfig<Option, IsMulti, Group>
         }
+        ref={selectElement}
+        closeMenuOnScroll={closeMenuOnScroll}
         {...props}
         // @ts-ignore additional props in selectProps
         {...additionalProps}

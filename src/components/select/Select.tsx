@@ -37,6 +37,7 @@ export interface SelectProps<
    * value={options.filter(x => x.value === exampleValue)}
    */
   value: Option[] | Option | null;
+  closeOnOutsideScroll?: boolean;
 }
 
 export const Select = <
