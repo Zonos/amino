@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { IOption } from 'src/components/select/_StyledReactSelect';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import { StackProps } from 'src/components/stack/Stack';
+import { IOption } from 'src/types/IOption';
 
 type StoryProps = StackProps & { numberOfChildren: number };
 

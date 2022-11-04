@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
-import { IOption } from 'src/components/select/_StyledReactSelect';
 import { Select, SelectProps } from 'src/components/select/Select';
-import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { IOption } from 'src/types/IOption';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 

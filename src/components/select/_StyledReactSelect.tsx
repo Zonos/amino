@@ -24,17 +24,11 @@ import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
+import { IOption } from 'src/types/IOption';
 import { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 import styled, { css } from 'styled-components';
 
-export interface IOption {
-  icon?: ReactNode;
-  isDisabled?: boolean;
-  label: string;
-  labelDescription?: string;
-  value: string;
-}
 type AdditionalProps = {
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -483,6 +477,7 @@ export interface StyledReactSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
+  /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
 }
 
@@ -579,7 +574,6 @@ export const StyledReactSelect = <
         ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}
         {...props}
-        // @ts-ignore additional props in selectProps
         {...additionalProps}
       />
       <HelpText error={error} helpText={helpText} />

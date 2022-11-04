@@ -14,8 +14,9 @@ import {
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import { IOption } from 'src/types/IOption';
 
-import { IOption, StyledReactSelect } from './_StyledReactSelect';
+import { StyledReactSelect } from './_StyledReactSelect';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
