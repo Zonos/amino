@@ -477,7 +477,6 @@ export interface StyledReactSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
-  /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
 }
 

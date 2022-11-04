@@ -38,6 +38,7 @@ export interface SelectProps<
    * value={options.filter(x => x.value === exampleValue)}
    */
   value: Option[] | Option | null;
+  /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
 }
 
