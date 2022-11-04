@@ -7,8 +7,6 @@ import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
-// TODO: scrollable dialog, max height, etc.
-
 const DialogLayout = styled.div`
   width: 100vw;
   height: 100vh;
@@ -27,10 +25,11 @@ const Popup = styled(motion.div)<{ width: number }>`
   z-index: 1001;
   background: ${theme.surfaceColor};
   width: ${p => p.width}px;
-  border-radius: ${theme.radiusXl};
+  border-radius: ${theme.radius12};
   outline: none;
   box-shadow: ${theme.v3ShadowXxl};
   border: ${theme.border};
+  overflow: hidden;
 `;
 
 export type BaseDialogProps = {

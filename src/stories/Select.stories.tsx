@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
-import { IOption } from 'src/components/select/_StyledReactSelect';
 import { Select, SelectProps } from 'src/components/select/Select';
-import { HStack } from 'src/components/stack/HStack';
+import { VStack } from 'src/components/stack/VStack';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { IOption } from 'src/types/IOption';
 import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
@@ -178,20 +178,6 @@ SelectWithDeveloperException.parameters = {
   },
 };
 
-const ScrollableDiv = styled.div`
-  height: 150vh;
-  width: 150vw;
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-  justify-content: center;
-  align-items: center;
-
-  > {
-    flex-grow: 1;
-  }
-`;
-
 const CenteredDiv = styled.div`
   height: 100%;
   display: flex;
@@ -199,36 +185,9 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-const StyledHStack = styled(HStack)`
-  width: 400px;
+const StyledVStack = styled(VStack)`
+  margin: 10px 0;
 `;
-
-export const ScrollableSelect = () => {
-  const [value, setValue] = useState<IOption | null>({
-    label: 'US Dollar (USD)',
-    value: 'USD',
-  });
-  return (
-    <ScrollableDiv>
-      <StyledHStack>
-        <Select
-          label="absolute position"
-          options={currencyOptions}
-          onChange={setValue}
-          value={value}
-          menuPosition="absolute"
-        />
-        <Select
-          label="fixed position"
-          options={currencyOptions}
-          onChange={setValue}
-          value={value}
-          menuPosition="fixed"
-        />
-      </StyledHStack>
-    </ScrollableDiv>
-  );
-};
 
 export const ScrollableDialogSelect = () => {
   const [value, setValue] = useState<IOption | null>({
@@ -240,29 +199,56 @@ export const ScrollableDialogSelect = () => {
   return (
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <Dialog
-        label="Selects are in the middle"
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-        <ScrollableDiv>
-          <HStack>
-            <Select
-              label="absolute position"
-              options={currencyOptions}
-              onChange={setValue}
-              value={value}
-              menuPosition="absolute"
-            />
-            <Select
-              label="fixed position"
-              options={currencyOptions}
-              onChange={setValue}
-              value={value}
-              menuPosition="fixed"
-            />
-          </HStack>
-        </ScrollableDiv>
+      <Dialog label="Selects" open={open} onClose={() => setOpen(false)}>
+        <StyledVStack>
+          <span>
+            Bacon ipsum dolor amet tongue ham hock pork chop, burgdoggen shank
+            beef ribs beef buffalo cupim pork loin pastrami drumstick boudin.
+            Pork chop drumstick cow porchetta, tri-tip turkey sausage shank pork
+            loin turducken doner tenderloin ham. Sausage salami leberkas, rump
+            prosciutto sirloin boudin pork chop ball tip bacon drumstick.
+            Picanha pork chop bresaola jowl leberkas swine frankfurter, sausage
+            tongue filet mignon pancetta ball tip rump turducken meatball. Pig
+            brisket tongue, short loin ham alcatra fatback pork belly ribeye
+            tail. Pork loin strip steak salami beef burgdoggen spare ribs t-bone
+            brisket. Beef ribs bresaola filet mignon alcatra fatback venison
+            spare ribs chuck ham hock. Chuck shoulder flank buffalo shankle
+            capicola doner. Rump tongue sausage, turducken jerky spare ribs
+            leberkas corned beef biltong andouille shankle landjaeger beef.
+            Shankle buffalo tail sausage bresaola frankfurter. Drumstick short
+            loin pastrami cupim, pork chop tri-tip hamburger prosciutto
+            tenderloin filet mignon ham flank tail pork loin jerky. Ground round
+            filet mignon tri-tip, ribeye short loin kevin venison. Shankle
+            meatball pork chop beef ribs landjaeger flank jowl cupim. Filet
+            mignon pork belly andouille bacon tenderloin salami fatback
+            leberkas. Meatball biltong andouille drumstick ground round. Beef
+            ribs tail ball tip fatback, flank kevin short ribs jerky rump
+            prosciutto frankfurter chislic bresaola. Chislic filet mignon
+            picanha, beef t-bone short loin capicola ribeye shoulder cupim cow
+            salami sausage tongue. Salami jowl andouille pig filet mignon
+            sausage pork belly bacon. Beef cow porchetta, sirloin doner fatback
+            pig leberkas jowl. Ground round prosciutto shank, cupim corned beef
+            kielbasa beef ribs rump cow shoulder. Pastrami strip steak buffalo
+            shankle. Pastrami andouille ribeye, sirloin capicola turkey
+            hamburger ground round short loin fatback filet mignon. Buffalo ham
+            capicola t-bone jowl. Ham alcatra landjaeger cow pastrami beef
+            brisket chicken andouille venison prosciutto pork belly tenderloin
+            corned beef t-bone.
+          </span>
+          <Select
+            label="Close on scroll"
+            options={currencyOptions}
+            onChange={setValue}
+            value={value}
+            closeOnOutsideScroll
+          />
+          <Select
+            label="Normal"
+            options={currencyOptions}
+            onChange={setValue}
+            value={value}
+          />
+        </StyledVStack>
       </Dialog>
     </CenteredDiv>
   );

@@ -16,9 +16,9 @@ import {
   type ICountryOption,
   type IUnavailableCountry,
 } from 'src/types/ICountry';
+import { IOption } from 'src/types/IOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
-import { IOption } from './_StyledReactSelect';
 import { MultiSelect } from './MultiSelect';
 
 type AdditionalProps = {

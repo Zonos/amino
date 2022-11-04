@@ -14,9 +14,9 @@ import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInp
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import { ICountryOption } from 'src/types/ICountry';
+import { IOption } from 'src/types/IOption';
 import styled from 'styled-components';
 
-import { IOption } from './_StyledReactSelect';
 import { Select } from './Select';
 
 const OptionLabel = styled.div`

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { IOption } from 'src/components/select/_StyledReactSelect';
+import { Button } from 'src/components/button/Button';
+import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import { StackProps } from 'src/components/stack/Stack';
+import { IOption } from 'src/types/IOption';
 
 type StoryProps = StackProps & { numberOfChildren: number };
 
@@ -13,7 +15,7 @@ const HStackMeta: Meta<StoryProps> = {
   component: HStack,
   subcomponents: { Select },
   args: {
-    numberOfChildren: 2,
+    numberOfChildren: 4,
   },
 };
 
@@ -29,25 +31,34 @@ const options = [
   value: v,
 }));
 
-const Template: Story<StoryProps> = ({
-  spacing,
-  numberOfChildren,
-}: StoryProps) => (
+const Template: Story<
+  StoryProps & { renderChild: (key: number) => ReactNode }
+> = ({ spacing, numberOfChildren, renderChild }) => (
   <HStack spacing={spacing}>
-    {[...Array(numberOfChildren).keys()].map(n => (
-      <Select
-        key={n}
-        label="What is your name"
-        placeholder="What?"
-        options={options}
-        onChange={() => {}}
-        value={null}
-      />
-    ))}
+    {[...Array(numberOfChildren).keys()].map(renderChild)}
   </HStack>
 );
 
-export const HStackSelects = Template.bind({});
-HStackSelects.args = {
+export const Selects = Template.bind({});
+Selects.args = {
   spacing: 'space',
+  renderChild: k => (
+    <Select
+      key={k}
+      label="What is your name"
+      placeholder="What?"
+      options={options}
+      onChange={() => {}}
+      value={null}
+    />
+  ),
+};
+
+export const Cards = Template.bind({});
+Cards.args = {
+  renderChild: k => (
+    <Card label={`Card ${k}`} key={k} footerActions={<Button>Do it</Button>}>
+      <p>Some text</p>
+    </Card>
+  ),
 };

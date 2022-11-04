@@ -8,9 +8,10 @@ import {
 } from 'react-select';
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import { IOption } from 'src/types/IOption';
 import { Size } from 'src/types/Size';
 
-import { IOption, StyledReactSelect } from './_StyledReactSelect';
+import { StyledReactSelect } from './_StyledReactSelect';
 
 type RequiredProps = 'options' | 'value';
 
@@ -37,6 +38,8 @@ export interface SelectProps<
    * value={options.filter(x => x.value === exampleValue)}
    */
   value: Option[] | Option | null;
+  /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
+  closeOnOutsideScroll?: boolean;
 }
 
 export const Select = <
