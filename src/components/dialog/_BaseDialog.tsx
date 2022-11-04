@@ -7,8 +7,6 @@ import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
-// TODO: scrollable dialog, max height, etc.
-
 const DialogLayout = styled.div`
   width: 100vw;
   height: 100vh;
