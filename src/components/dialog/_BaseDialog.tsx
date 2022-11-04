@@ -27,10 +27,11 @@ const Popup = styled(motion.div)<{ width: number }>`
   z-index: 1001;
   background: ${theme.surfaceColor};
   width: ${p => p.width}px;
-  border-radius: ${theme.radiusXl};
+  border-radius: ${theme.radius12};
   outline: none;
   box-shadow: ${theme.v3ShadowXxl};
   border: ${theme.border};
+  overflow: hidden;
 `;
 
 export type BaseDialogProps = {
