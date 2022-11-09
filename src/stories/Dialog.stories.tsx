@@ -82,6 +82,12 @@ WithSubtitle.args = {
     'Choose your preferred units to be shown across the Zonos Dashboard.',
   width: 460,
 };
+WithSubtitle.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=3602%3A67909',
+  },
+};
 
 export const WithLink = Template.bind({});
 WithLink.args = {
