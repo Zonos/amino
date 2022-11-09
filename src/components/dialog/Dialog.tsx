@@ -191,7 +191,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
           <Text type="title">{label}</Text>
           <StyledButton
             onClick={onClose}
-            icon={<RemoveCircleDuotoneIcon size={32} />}
+            icon={<RemoveCircleDuotoneIcon size={24} />}
           />
         </Title>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}
