@@ -32,7 +32,7 @@ const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
       if (hasSubfolder) {
         const [folderName, type] = item.split('/');
         const fileName = pascalCased(
-          `${folderName}${type.replace(/(Line)\.svg/, '.svg')}`
+          `${folderName}${type.replace(/(Line|Black)\.svg/, '.svg')}`
         );
         return {
           originalFileName: item,
