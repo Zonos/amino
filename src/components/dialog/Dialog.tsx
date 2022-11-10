@@ -11,15 +11,23 @@ import { Button } from '../button/Button';
 import { BaseDialog } from './_BaseDialog';
 
 const Header = styled.div`
-  padding: ${theme.space};
-  border-top-left-radius: ${theme.radiusXl};
-  border-top-right-radius: ${theme.radiusXl};
+  padding: ${theme.space24};
+  padding-bottom: ${theme.space16};
+  border-top-left-radius: ${theme.radius12};
+  border-top-right-radius: ${theme.radius12};
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.space12};
+`;
+
+const Title = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
 
   > :not(button) {
     margin: 0;
-    flex: 1;
+    flex-grow: 1;
     font-weight: 700;
   }
 `;
@@ -135,6 +143,7 @@ export type DialogProps = {
   className?: string;
   children: React.ReactNode;
   label?: string;
+  subtitle?: string;
   leftActions?: React.ReactNode;
   onClose: () => void;
   open: boolean;
@@ -157,6 +166,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       children,
       className,
       label,
+      subtitle,
       leftActions,
       onClose,
       open,
@@ -177,11 +187,14 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       closeOnEsc={closeOnEsc}
     >
       <Header>
-        <Text type="title">{label}</Text>
-        <StyledButton
-          onClick={onClose}
-          icon={<RemoveCircleDuotoneIcon size={32} />}
-        />
+        <Title>
+          <Text type="title">{label}</Text>
+          <StyledButton
+            onClick={onClose}
+            icon={<RemoveCircleDuotoneIcon size={24} />}
+          />
+        </Title>
+        {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </Header>
       <Content ref={ref}>{children}</Content>
       {(actions || leftActions) && (

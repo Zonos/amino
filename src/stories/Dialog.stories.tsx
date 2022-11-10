@@ -34,12 +34,14 @@ const Template: Story<DialogProps> = ({
   children,
   label,
   width,
+  ...rest
 }: DialogProps) => {
   const [open, setOpen] = useState(false);
   return (
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
+        {...rest}
         leftActions={leftActions}
         actions={actions}
         label={label}
@@ -64,6 +66,27 @@ BasicDialog.args = {
   children: <div>Children</div>,
   label: 'Dialog title',
   width: 460,
+};
+
+export const WithSubtitle = Template.bind({});
+WithSubtitle.args = {
+  actions: (
+    <>
+      <Button intent="outline">Close</Button>
+      <Button intent="primary">Save</Button>
+    </>
+  ),
+  children: <div>Children</div>,
+  label: 'With subtitle',
+  subtitle:
+    'Choose your preferred units to be shown across the Zonos Dashboard.',
+  width: 460,
+};
+WithSubtitle.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=3602%3A67909',
+  },
 };
 
 export const WithLink = Template.bind({});
