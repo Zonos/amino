@@ -33,7 +33,6 @@ export const Collapse = ({
   const [height, setHeight] = useState(0);
   const [hideOverflow, setHideOverflow] = useState(!isExpand);
   const [resizeListener, sizes] = useResizeAware();
-  console.log(height, hideOverflow);
 
   useEffect(() => {
     setHideOverflow(true);
@@ -45,7 +44,6 @@ export const Collapse = ({
   }, [isExpand, setHeight, sizes.height, hideOverflow]);
 
   const handleTransitionEnd = () => {
-    console.log('transition ended', hideOverflow, isExpand);
     if (isExpand) {
       // Done expanding so safe to show overflow
       setHideOverflow(false);
