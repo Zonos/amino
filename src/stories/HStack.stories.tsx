@@ -8,18 +8,17 @@ import { HStack } from 'src/components/stack/HStack';
 import { StackProps } from 'src/components/stack/Stack';
 import { IOption } from 'src/types/IOption';
 
-type StoryProps = StackProps & { numberOfChildren: number };
-
-const HStackMeta: Meta<StoryProps> = {
+const HStackMeta: Meta = {
   title: 'Amino/HStack',
   component: HStack,
-  subcomponents: { Select },
   args: {
     numberOfChildren: 4,
   },
 };
 
 export default HStackMeta;
+
+type StoryProps = StackProps & { numberOfChildren: number };
 
 const options = [
   'Nope',

@@ -5,12 +5,10 @@ import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { StackProps } from 'src/components/stack/Stack';
 import { VStack } from 'src/components/stack/VStack';
-import { withDesign } from 'storybook-addon-designs';
 
 const VStackMeta: Meta = {
   title: 'Amino/VStack',
   component: VStack,
-  decorators: [withDesign],
   args: {
     numberOfChildren: 4,
   },
