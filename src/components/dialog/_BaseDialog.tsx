@@ -98,6 +98,7 @@ export const BaseDialog = ({
               key="dialog"
               width={width || 444}
               onClick={e => {
+                // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
               }}
             >

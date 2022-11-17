@@ -7,24 +7,19 @@ import styled from 'styled-components';
 
 import { Button } from '../button/Button';
 import { Collapse } from '../collapse/Collapse';
-import { SectionHeader } from './_SectionHeader';
+import { Text } from '../text/Text';
 import { SectionInnerWrapper } from './_SectionInnerWrapper';
 import { SectionSubheader } from './_SectionSubheader';
 
 const StyledSectionWrapper = styled(HStack)`
-  margin-bottom: ${theme.spaceDouble};
+  padding: ${theme.space8};
+  margin-bottom: ${theme.space40};
   grid-template-columns: 1fr 2fr;
 `;
 
-const StyledHeader = styled.div`
-  position: relative;
-  display: inline-block;
-`;
-
 const StyledCollapseIndicator = styled(Button)`
-  position: absolute;
-  left: 100%;
-  top: -2px;
+  position: relative;
+  margin-left: ${theme.space4};
   transition: 0.2s all ease;
   background: transparent;
   &:active,
@@ -34,9 +29,19 @@ const StyledCollapseIndicator = styled(Button)`
     color: ${theme.grayD40};
   }
 
-  .collapse & {
+  &.collapse {
     transform: rotate(-90deg);
   }
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const TitleDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export type HSectionProps = {
@@ -75,21 +80,28 @@ export const HSection = ({
     <StyledSectionWrapper className={className || ''}>
       {label && (
         <SectionInnerWrapper>
-          <SectionHeader>
-            <div>
-              <StyledHeader className={collapse ? 'collapse' : ''}>
-                {label}{' '}
-                {collapsable && (
-                  <StyledCollapseIndicator
-                    size="sm"
-                    icon={<ChevronDownSolidIcon size={20} />}
-                    onClick={() => setCollapse(!collapse)}
-                  />
-                )}
-              </StyledHeader>
-            </div>
-            <SectionSubheader>{sublabel}</SectionSubheader>
-          </SectionHeader>
+          <StyledDiv>
+            {collapsable ? (
+              <TitleDiv
+                role="button"
+                tabIndex={0}
+                onClick={() => setCollapse(!collapse)}
+                onKeyDown={() => null}
+              >
+                <Text type="title">{label}</Text>
+                <StyledCollapseIndicator
+                  className={collapse ? 'collapse' : ''}
+                  size="sm"
+                  icon={<ChevronDownSolidIcon size={24} />}
+                  onClick={() => setCollapse(!collapse)}
+                />
+              </TitleDiv>
+            ) : (
+              <Text type="title">{label}</Text>
+            )}
+
+            {sublabel && <SectionSubheader>{sublabel}</SectionSubheader>}
+          </StyledDiv>
         </SectionInnerWrapper>
       )}
       {renderContent()}

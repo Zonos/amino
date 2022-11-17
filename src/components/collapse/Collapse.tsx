@@ -35,13 +35,13 @@ export const Collapse = ({
   const [resizeListener, sizes] = useResizeAware();
 
   useEffect(() => {
+    setHideOverflow(true);
     if (sizes.height && isExpand) {
       setHeight(sizes.height);
     } else {
       setHeight(0);
     }
-    setHideOverflow(true);
-  }, [isExpand, setHeight, sizes.height]);
+  }, [isExpand, setHeight, sizes.height, hideOverflow]);
 
   const handleTransitionEnd = () => {
     if (isExpand) {
