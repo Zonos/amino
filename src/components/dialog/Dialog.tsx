@@ -37,22 +37,25 @@ const StyledButton = styled(Button)`
   path[data-is-secondary-color] {
     fill: ${theme.grayL60};
   }
-  &,
-  &:focus,
-  &:hover,
-  &:active {
-    color: ${theme.grayD60};
-    background: transparent;
-  }
-  &:hover {
-    path[data-is-secondary-color] {
-      fill: ${theme.grayL40};
+
+  && {
+    &,
+    &:focus,
+    &:hover,
+    &:active {
+      color: ${theme.grayD60};
+      background: transparent;
     }
-  }
-  &:active,
-  &:focus {
-    path[data-is-secondary-color] {
-      fill: ${theme.grayL20};
+    &:hover {
+      path[data-is-secondary-color] {
+        fill: ${theme.grayL40};
+      }
+    }
+    &:active,
+    &:focus {
+      path[data-is-secondary-color] {
+        fill: ${theme.grayL20};
+      }
     }
   }
 `;
@@ -128,14 +131,14 @@ scroll gradient in the top right */
 `;
 
 const Content = styled.div`
-  padding: 0 ${theme.space};
+  padding: ${theme.space8} ${theme.space24};
   max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   /**
    * Current overflow is not working well with react-tooltip.
    * Temporary remove gradient overflow until having new tooltip library to use
    */
-  // gradientOverflow
+  // gradientOveørflow
 `;
 
 export type DialogProps = {
