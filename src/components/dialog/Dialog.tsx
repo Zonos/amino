@@ -138,7 +138,7 @@ const Content = styled.div`
    * Current overflow is not working well with react-tooltip.
    * Temporary remove gradient overflow until having new tooltip library to use
    */
-  // gradientOveørflow
+  // gradientOverflow
 `;
 
 export type DialogProps = {
