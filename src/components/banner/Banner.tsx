@@ -9,36 +9,72 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import { Color, Intent } from 'src/types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Button } from '../button/Button';
-import { VStack } from '../stack/VStack';
 
 const StyledBanner = styled.div`
   border: ${theme.border};
-  border-radius: ${theme.radius};
-  padding: 13px 0 13px 13px;
+  border-radius: ${theme.radius6};
+  padding: ${theme.space16};
 `;
 
-const StyledHStack = styled(HStack)<{
-  shouldAlignCenter: boolean;
+const Container = styled.div<{
   withoutCloseButton: boolean;
 }>`
-  grid-template-columns: 48px 1fr 36px;
-  ${p =>
-    p.withoutCloseButton &&
-    css`
-      grid-template-columns: 48px 1fr;
-      margin-right: 16px;
-    `}
-  ${p =>
-    p.shouldAlignCenter &&
-    css`
-      align-items: center;
-    `}
+  display: grid;
+  align-items: center;
+  grid-template-areas:
+    'icon header close'
+    '. content .';
+  grid-template-columns: 32px auto ${p =>
+      p.withoutCloseButton ? '0px' : '32px'};
 `;
 
-const DefaultBanner = styled(StyledBanner)``;
+const Icon = styled.div`
+  grid-area: icon;
+  justify-self: start;
+`;
+
+const Close = styled.div`
+  grid-area: close;
+  justify-self: end;
+`;
+
+const CloseButton = styled(Button)`
+  && {
+    width: 20px;
+  }
+`;
+
+const Header = styled.div`
+  grid-area: header;
+`;
+
+const Content = styled.div`
+  grid-area: content;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const BannerHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const BannerFooter = styled.footer`
+  display: flex;
+  align-items: center;
+`;
+
+const DefaultBanner = styled(StyledBanner)`
+  background: ${theme.grayL80};
+  border-color: ${theme.grayL80};
+  color: ${theme.grayD40};
+`;
 
 const InfoBanner = styled(StyledBanner)`
   background: ${theme.blueL80};
@@ -64,25 +100,14 @@ const ErrorBanner = styled(StyledBanner)`
   color: ${theme.redD40};
 `;
 
-const BannerHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const BannerFooter = styled.footer`
-  display: flex;
-  align-items: center;
-`;
-
 export type BannerProps = {
-  children?: ReactNode;
   className?: string;
+  children?: ReactNode;
+  title?: ReactNode;
   footerActions?: ReactNode;
   headerActions?: ReactNode;
   intent?: Intent;
   onClose?: () => void;
-  title?: ReactNode;
 };
 
 export const Banner = ({
@@ -101,44 +126,58 @@ export const Banner = ({
     intentIcon: ReactNode;
     removeIconColor: Color;
   }) => {
-    const shouldAlignCenter =
-      [children, title, footerActions].filter(Boolean).length === 1;
+    const renderTitle = () => {
+      return (
+        title && (
+          <BannerHeader>
+            <Text type="label">{title}</Text>
+            {headerActions && (
+              <HStack spacing="space-quarter">{headerActions}</HStack>
+            )}
+          </BannerHeader>
+        )
+      );
+    };
+
+    const renderFooter = () => {
+      return (
+        footerActions && (
+          <BannerFooter>
+            <HStack spacing="space-quarter">{footerActions}</HStack>
+          </BannerFooter>
+        )
+      );
+    };
+
+    // A hack to make sure the header content (whatever the first non-null is) aligns in it's own row
+    const [header, content, moreContent] = [
+      renderTitle(),
+      children,
+      renderFooter(),
+    ].filter(Boolean);
+
     return (
-      <StyledHStack
-        shouldAlignCenter={shouldAlignCenter}
-        withoutCloseButton={!onClose}
-      >
-        {intentIcon}
-
-        <VStack spacing="space-quarter">
-          {title && (
-            <BannerHeader>
-              {title && (
-                <Text type="bold-label" fontWeight="500">
-                  {title}
-                </Text>
-              )}
-              {headerActions && (
-                <HStack spacing="space-quarter">{headerActions}</HStack>
-              )}
-            </BannerHeader>
-          )}
-          {children}
-          {footerActions && (
-            <BannerFooter>
-              <HStack spacing="space-quarter">{footerActions}</HStack>
-            </BannerFooter>
-          )}
-        </VStack>
-
+      <Container withoutCloseButton={!onClose}>
+        <Icon>{intentIcon}</Icon>
         {onClose && (
-          <Button
-            intent="text"
-            onClick={onClose}
-            icon={<RemoveIcon size={20} color={removeIconColor} />}
-          />
+          <Close>
+            <CloseButton
+              intent="text"
+              onClick={onClose}
+              icon={<RemoveIcon size={20} color={removeIconColor} />}
+            />
+          </Close>
         )}
-      </StyledHStack>
+
+        <Header>{header}</Header>
+
+        {content && (
+          <Content>
+            {content}
+            {moreContent}
+          </Content>
+        )}
+      </Container>
     );
   };
   switch (intent) {
@@ -209,8 +248,8 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <InfoDuotoneIcon
-                color="gray-d60"
-                secondaryColor="gray-l60"
+                color="gray-d80"
+                secondaryColor="gray-l40"
                 size={20}
               />
             ),

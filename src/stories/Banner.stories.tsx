@@ -18,7 +18,7 @@ const BannerStories: Meta = {
 export default BannerStories;
 
 const StyledVStack = styled(VStack)`
-  width: 1080px;
+  max-width: 1080px;
   margin: 0 auto;
 `;
 
@@ -30,6 +30,7 @@ const ids = [
   'onlyFooterActions',
   'titleWithParagraph',
   'titleWithParagraphWithFooterActions',
+  'titleWithParagraphWithHeaderActions',
 ] as const;
 type ID = typeof ids[number];
 const Template: ComponentStory<typeof Banner> = ({
@@ -112,6 +113,31 @@ const Template: ComponentStory<typeof Banner> = ({
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </Banner>
       )}
+      {openIds.includes('titleWithParagraphWithHeaderActions') && (
+        <Banner
+          intent={intent}
+          title={title}
+          onClose={() => toggleBannerId('titleWithParagraphWithHeaderActions')}
+          headerActions={
+            <a
+              target="_blank"
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              rel="noreferrer"
+            >
+              <Button
+                borderColor="black"
+                background="inherit"
+                color="inherit"
+                intent="outline"
+              >
+                View additional details
+              </Button>
+            </a>
+          }
+        >
+          {paragraph}
+        </Banner>
+      )}
     </StyledVStack>
   );
 };
@@ -120,13 +146,29 @@ export const DefaultBanner = Template.bind({});
 DefaultBanner.args = {
   footerActions: (
     <>
-      <Button intent="outline">View status</Button>
-      <Button intent="subtle">Dismiss</Button>
+      <Button
+        background="inherit"
+        borderColor="gray-l40"
+        color="inherit"
+        intent="outline"
+      >
+        View status
+      </Button>
+      <Button color="inherit" intent="subtle">
+        Dismiss
+      </Button>
     </>
   ),
   headerActions: (
     <>
-      <Button intent="outline" icon={<ChevronDownIcon size={20} />} iconRight>
+      <Button
+        background="inherit"
+        borderColor="gray-l40"
+        color="inherit"
+        intent="outline"
+        icon={<ChevronDownIcon size={20} />}
+        iconRight
+      >
         Details
       </Button>
     </>
