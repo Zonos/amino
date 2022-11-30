@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { glob } from 'glob';
-import { optimize, OptimizedSvg } from 'svgo';
+import { optimize } from 'svgo';
 
 export const optimizeSvgs = ({
   folderPath,
@@ -25,7 +25,7 @@ export const optimizeSvgs = ({
           },
         },
       ],
-    }) as OptimizedSvg;
+    });
     if (optimizedSvg.data) {
       writeFileSync(item, optimizedSvg.data, { encoding: 'utf-8' });
     }

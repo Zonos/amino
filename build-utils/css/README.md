@@ -144,7 +144,7 @@ If you create new variable, the script will add some default jsdocs to your vari
 
 **NOTE**: ALL OTHER THEME FILE NAME NEED TO HAVE PREFIX `_` SINCE IT WOULD ONLY BE USED FOR GENERATING CSS FILE AND NOT BEING EXPOSED TO AMINO CONSUMER.
 
-File `theme.ts` in `build-utils/css/constants` is the main theme constant. If you are going to update/add new theme, the new theme need to extend the key of variables in `theme.ts` by overwritting the variable in it's own theme file (ex: `_darkTheme.ts`).
+File `theme.ts` in `build-utils/css/constants` is the main theme constant. If you are going to update/add new theme, the new theme need to extend the key of variables in `theme.ts` by overwriting the variable in it's own theme file (ex: `_darkTheme.ts`).
 
 To strongly type the key of the new theme constant, use custom utility function `constraintDefinedAminoVar` located at `build-utils/css/constants/utils.ts` (This function would do nothing at runtime but help Typescript to understand and tell developers where the key in `darkStyleList` constant doesn't match with existing key in `theme.ts`).
 **Ex**: Constraint key constant of `Dark Mode` with keys exist in `Light Mode` (theme.ts).
