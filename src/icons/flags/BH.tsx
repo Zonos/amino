@@ -10,24 +10,17 @@ type Props = {
 export const BH = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
   const ids = useStableUniqueId(1);
   return (
-    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 16 12">
-      <mask
-        id={`${ids[0]}`}
-        maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="16"
-        height="12"
-      >
-        <path fill="#fff" d="M0 0h16v12H0z" />
-      </mask>
-      <g mask={`url(#${ids[0]})`}>
-        <rect width="16" height="12" rx="1" fill="#E31D1C" />
+    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 640 480">
+      <defs>
+        <clipPath id={`${ids[0]}`}>
+          <path fillOpacity=".7" d="M0 0h640v480H0z" />
+        </clipPath>
+      </defs>
+      <g fillRule="evenodd" strokeWidth="1pt" clipPath={`url(#${ids[0]})`}>
+        <path fill="#e10011" d="M-32.5 0h720v480h-720z" />
         <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M0 0h3.4L6 1 3.4 2 6 3 3.4 4 6 5 3.4 6 6 7 3.4 8 6 9l-2.6 1L6 11l-2.6 1H0V0Z"
-          fill="#F7FCFF"
+          fill="#fff"
+          d="m114.3 479.8-146.8.2V0h146l94.3 30.4-93.5 29.5 93.5 30.5-93.5 29.5 93.5 30.5-93.5 29.5 93.5 30.5-93.5 29.5 93.5 30.5-93.5 29.5 93.5 30.5-93.5 29.5 93.5 30.5-93.5 29.5 93.5 30.5-93.5 29.5"
         />
       </g>
     </FlagIconBase>

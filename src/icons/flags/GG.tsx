@@ -20,22 +20,22 @@ export const GG = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         d="m110 286.7 23.3-23.4h210v-46.6h-210L110 193.3z"
       />
       <use
+        xlinkHref="#a"
         width="36"
         height="24"
         transform="rotate(90 320 240)"
-        xlinkHref="#a"
       />
       <use
+        xlinkHref="#a"
         width="36"
         height="24"
         transform="rotate(-90 320 240)"
-        xlinkHref="#a"
       />
       <use
+        xlinkHref="#a"
         width="36"
         height="24"
         transform="rotate(180 320 240)"
-        xlinkHref="#a"
       />
     </FlagIconBase>
   );

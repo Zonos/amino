@@ -28,11 +28,11 @@ export const TJ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         d="M316.8 258.3a26 26 0 0 1-43.8 16.6 27 27 0 0 1-41 12c2.5 25 40 19.9 42.8-4.4 11.7 20.7 37.6 14.7 45.2-10.6z"
       />
       <use
+        xlinkHref="#a"
         width="100%"
         height="100%"
         fill="#f8c300"
         transform="matrix(-1 0 0 1 640 0)"
-        xlinkHref="#a"
       />
       <path
         id={`${ids[1]}`}
@@ -40,18 +40,18 @@ export const TJ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         d="M291.8 302.6c-5.3 11.3-15.7 13.2-24.8 4.1 0 0 3.6-2.6 7.6-3.3-.8-3.1.7-7.5 2.9-9.8a15 15 0 0 1 6.1 8.1c5.5-.7 8.2 1 8.2 1z"
       />
       <use
+        xlinkHref="#b"
         width="100%"
         height="100%"
         fill="#f8c300"
         transform="rotate(9.4 320 551.3)"
-        xlinkHref="#b"
       />
       <use
+        xlinkHref="#b"
         width="100%"
         height="100%"
         fill="#f8c300"
         transform="rotate(18.7 320 551.3)"
-        xlinkHref="#b"
       />
       <path
         fill="none"
@@ -72,30 +72,30 @@ export const TJ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         transform="translate(320 260.6) scale(.68571)"
       >
         <use
+          xlinkHref="#c"
           width="100%"
           height="100%"
           transform="translate(-70 -121.2)"
-          xlinkHref="#c"
         />
         <use
+          xlinkHref="#c"
           width="100%"
           height="100%"
           transform="translate(-121.2 -70)"
-          xlinkHref="#c"
         />
         <use
+          xlinkHref="#c"
           width="100%"
           height="100%"
           transform="translate(-140)"
-          xlinkHref="#c"
         />
       </g>
       <use
+        xlinkHref="#d"
         width="100%"
         height="100%"
         fill="#f8c300"
         transform="matrix(-1 0 0 1 640 0)"
-        xlinkHref="#d"
       />
     </FlagIconBase>
   );
