@@ -32,16 +32,14 @@ export const SortableList = ({
   itemIds,
   handleDragEnd,
   sortingStrategy = verticalListSortingStrategy,
-}: SortableListProps) => {
-  return (
-    <DndContext
-      onDragEnd={handleDragEnd}
-      collisionDetection={closestCenter}
-      modifiers={[restrictToParentElement, restrictToVerticalAxis]}
-    >
-      <SortableContext items={itemIds} strategy={sortingStrategy}>
-        <StyledSortableList>{children}</StyledSortableList>
-      </SortableContext>
-    </DndContext>
-  );
-};
+}: SortableListProps) => (
+  <DndContext
+    onDragEnd={handleDragEnd}
+    collisionDetection={closestCenter}
+    modifiers={[restrictToParentElement, restrictToVerticalAxis]}
+  >
+    <SortableContext items={itemIds} strategy={sortingStrategy}>
+      <StyledSortableList>{children}</StyledSortableList>
+    </SortableContext>
+  </DndContext>
+);

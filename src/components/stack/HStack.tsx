@@ -17,6 +17,6 @@ const StyledHStack = styled(Stack)<StackProps>`
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const HStack = ({ children, ...props }: StackProps) => {
-  return <StyledHStack {...props}>{children}</StyledHStack>;
-};
+export const HStack = ({ children, ...props }: StackProps) => (
+  <StyledHStack {...props}>{children}</StyledHStack>
+);

@@ -51,18 +51,16 @@ export type TabsProps = {
   items: string[];
 };
 
-export const Tabs = ({ selected, onChange, items }: TabsProps) => {
-  return (
-    <AminoTabs>
-      {items.map(item => (
-        <Tab
-          onClick={() => onChange(items.indexOf(item))}
-          className={selected === items.indexOf(item) ? 'is-selected' : ''}
-          key={item}
-        >
-          {item}
-        </Tab>
-      ))}
-    </AminoTabs>
-  );
-};
+export const Tabs = ({ selected, onChange, items }: TabsProps) => (
+  <AminoTabs>
+    {items.map(item => (
+      <Tab
+        onClick={() => onChange(items.indexOf(item))}
+        className={selected === items.indexOf(item) ? 'is-selected' : ''}
+        key={item}
+      >
+        {item}
+      </Tab>
+    ))}
+  </AminoTabs>
+);

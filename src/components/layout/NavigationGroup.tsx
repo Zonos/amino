@@ -103,32 +103,28 @@ export const NavigationItem = ({
   className,
   icon,
   isActive,
-}: NavigationItemProps) => {
-  return (
-    <StyledNavigationItem
-      className={className}
-      $content={content}
-      $icon={icon}
-      $isActive={isActive}
-    >
-      {icon && <StyledNavigationItemIcon>{icon}</StyledNavigationItemIcon>}
-      {content}
-    </StyledNavigationItem>
-  );
-};
+}: NavigationItemProps) => (
+  <StyledNavigationItem
+    className={className}
+    $content={content}
+    $icon={icon}
+    $isActive={isActive}
+  >
+    {icon && <StyledNavigationItemIcon>{icon}</StyledNavigationItemIcon>}
+    {content}
+  </StyledNavigationItem>
+);
 
 export const NavigationGroup = ({
   content,
   children,
   className,
   isExpand,
-}: NavigationGroupProps) => {
-  return (
-    <Wrapper className={className}>
-      <StyledItemWrapper $isExpand={!!isExpand}>{content}</StyledItemWrapper>
-      <StyledGroupItemWrapper isExpand={!!isExpand}>
-        {children}
-      </StyledGroupItemWrapper>
-    </Wrapper>
-  );
-};
+}: NavigationGroupProps) => (
+  <Wrapper className={className}>
+    <StyledItemWrapper $isExpand={!!isExpand}>{content}</StyledItemWrapper>
+    <StyledGroupItemWrapper isExpand={!!isExpand}>
+      {children}
+    </StyledGroupItemWrapper>
+  </Wrapper>
+);

@@ -61,17 +61,15 @@ export const TableCell = ({
   className,
   padding,
   tag,
-}: TableCellProps) => {
-  return (
-    <StyledTableCell
-      as={tag}
-      align={align}
-      borderBottom={borderBottom}
-      className={className}
-      colSpan={colSpan}
-      padding={padding}
-    >
-      <InlineWrapper>{children}</InlineWrapper>
-    </StyledTableCell>
-  );
-};
+}: TableCellProps) => (
+  <StyledTableCell
+    as={tag}
+    align={align}
+    borderBottom={borderBottom}
+    className={className}
+    colSpan={colSpan}
+    padding={padding}
+  >
+    <InlineWrapper>{children}</InlineWrapper>
+  </StyledTableCell>
+);

@@ -118,36 +118,34 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       iconComponent,
     },
     ref
-  ) => {
-    return (
-      <AminoListItem
-        className={className}
-        disabled={disabled}
-        selected={selected}
-        withClick={!!onClick}
-        onClick={e => !disabled && onClick && onClick(e)}
-        ref={ref}
+  ) => (
+    <AminoListItem
+      className={className}
+      disabled={disabled}
+      selected={selected}
+      withClick={!!onClick}
+      onClick={e => !disabled && onClick && onClick(e)}
+      ref={ref}
+    >
+      <div
+        className={[
+          '___icon-wrapper',
+          icon || iconComponent || decorator ? 'has-icon' : '',
+        ].join(' ')}
       >
-        <div
-          className={[
-            '___icon-wrapper',
-            icon || iconComponent || decorator ? 'has-icon' : '',
-          ].join(' ')}
-        >
-          {decorator}
-          <ListIcon
-            label={typeof label === 'string' ? label : ''}
-            icon={icon}
-            iconComponent={iconComponent}
-          />
-        </div>
+        {decorator}
+        <ListIcon
+          label={typeof label === 'string' ? label : ''}
+          icon={icon}
+          iconComponent={iconComponent}
+        />
+      </div>
 
-        <TextContainer>
-          <Text type="label">{label}</Text>
-          {subtitle && <Text type="caption">{subtitle}</Text>}
-        </TextContainer>
-        {rightDecorator}
-      </AminoListItem>
-    );
-  }
+      <TextContainer>
+        <Text type="label">{label}</Text>
+        {subtitle && <Text type="caption">{subtitle}</Text>}
+      </TextContainer>
+      {rightDecorator}
+    </AminoListItem>
+  )
 );

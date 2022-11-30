@@ -130,15 +130,13 @@ const ButtonRow = ({
   </div>
 );
 
-const Template: Story<ButtonProps> = props => {
-  return (
-    <VWrapper>
-      <ButtonRow {...props} label="Default" />
-      <ButtonRow {...props} disabled label="Disabled" />
-      <ButtonRow {...props} loading label="Loading" />
-    </VWrapper>
-  );
-};
+const Template: Story<ButtonProps> = props => (
+  <VWrapper>
+    <ButtonRow {...props} label="Default" />
+    <ButtonRow {...props} disabled label="Disabled" />
+    <ButtonRow {...props} loading label="Loading" />
+  </VWrapper>
+);
 
 export const Default = Template.bind({});
 Default.args = {

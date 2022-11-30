@@ -42,13 +42,11 @@ const ClearIndicator = <
   Group extends GroupBase<Option>
 >(
   props: ClearIndicatorProps<Option, IsMulti, Group>
-) => {
-  return (
-    <RScomponents.ClearIndicator {...props}>
-      <RemoveCircleSolidIcon size={19} />
-    </RScomponents.ClearIndicator>
-  );
-};
+) => (
+  <RScomponents.ClearIndicator {...props}>
+    <RemoveCircleSolidIcon size={19} />
+  </RScomponents.ClearIndicator>
+);
 
 const DropdownIndicator = <
   Option extends IOption,
@@ -56,13 +54,11 @@ const DropdownIndicator = <
   Group extends GroupBase<Option>
 >(
   props: DropdownIndicatorProps<Option, IsMulti, Group>
-) => {
-  return (
-    <RScomponents.DropdownIndicator {...props}>
-      <DoubleChevronIcon size={20} />
-    </RScomponents.DropdownIndicator>
-  );
-};
+) => (
+  <RScomponents.DropdownIndicator {...props}>
+    <DoubleChevronIcon size={20} />
+  </RScomponents.DropdownIndicator>
+);
 
 const IconWrapper = styled.div`
   display: flex;
@@ -254,14 +250,12 @@ const IconLabel = ({
   children: ReactNode;
   color?: string;
   icon?: ReactNode;
-}) => {
-  return (
-    <CheckboxOptionIconWrapper $color={color}>
-      {icon}
-      {children}
-    </CheckboxOptionIconWrapper>
-  );
-};
+}) => (
+  <CheckboxOptionIconWrapper $color={color}>
+    {icon}
+    {children}
+  </CheckboxOptionIconWrapper>
+);
 
 const MultiValueLabel = <
   Option extends IOption,
@@ -270,13 +264,11 @@ const MultiValueLabel = <
 >({
   children,
   ...props
-}: MultiValueGenericProps<Option, IsMulti, Group>) => {
-  return (
-    <RScomponents.MultiValueLabel {...props}>
-      <IconLabel icon={props.data.icon}>{children}</IconLabel>
-    </RScomponents.MultiValueLabel>
-  );
-};
+}: MultiValueGenericProps<Option, IsMulti, Group>) => (
+  <RScomponents.MultiValueLabel {...props}>
+    <IconLabel icon={props.data.icon}>{children}</IconLabel>
+  </RScomponents.MultiValueLabel>
+);
 
 const MultiValueRemove = <
   Option extends IOption,
@@ -284,13 +276,11 @@ const MultiValueRemove = <
   Group extends GroupBase<Option>
 >({
   innerProps,
-}: MultiValueRemoveProps<Option, IsMulti, Group>) => {
-  return (
-    <div {...innerProps} role="button">
-      <RemoveIcon size={14} />
-    </div>
-  );
-};
+}: MultiValueRemoveProps<Option, IsMulti, Group>) => (
+  <div {...innerProps} role="button">
+    <RemoveIcon size={14} />
+  </div>
+);
 
 export const CheckboxOptionComponent = <
   Option extends IOption,
@@ -351,14 +341,12 @@ export const CheckboxOptionComponent = <
 };
 
 const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
-  clearIndicator: provided => {
-    return {
-      ...provided,
-      color: `${theme.grayD20}`,
-      paddingLeft: 14,
-      paddingRight: 4,
-    };
-  },
+  clearIndicator: provided => ({
+    ...provided,
+    color: `${theme.grayD20}`,
+    paddingLeft: 14,
+    paddingRight: 4,
+  }),
   // container
   control: (provided, state) => {
     const { size } = state.selectProps as typeof state['selectProps'] &
@@ -375,96 +363,76 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
     };
   },
-  dropdownIndicator: provided => {
-    return {
-      ...provided,
-      color: `${theme.grayD60}`,
-      paddingLeft: 4,
-      paddingRight: 10,
-    };
-  },
-  group: provided => {
-    return {
-      ...provided,
-      paddingTop: 0,
-      paddingBottom: 0,
-    };
-  },
+  dropdownIndicator: provided => ({
+    ...provided,
+    color: `${theme.grayD60}`,
+    paddingLeft: 4,
+    paddingRight: 10,
+  }),
+  group: provided => ({
+    ...provided,
+    paddingTop: 0,
+    paddingBottom: 0,
+  }),
   // groupHeading
   // indicatorsContainer
-  indicatorSeparator: provided => {
-    return { ...provided, width: 0 };
-  },
+  indicatorSeparator: provided => ({ ...provided, width: 0 }),
   // input
   // loadingIndicator
   // loadingMessage
-  menu: provided => {
-    return {
-      ...provided,
-      borderRadius: 12,
-      boxShadow: theme.v3ShadowLarge,
-      marginTop: 4,
-    };
-  },
-  menuList: provided => {
-    return {
-      ...provided,
-      paddingTop: 8,
-      paddingLeft: 8,
-      paddingRight: 8,
-    };
-  },
+  menu: provided => ({
+    ...provided,
+    borderRadius: 12,
+    boxShadow: theme.v3ShadowLarge,
+    marginTop: 4,
+  }),
+  menuList: provided => ({
+    ...provided,
+    paddingTop: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
+  }),
   // menuPortal
-  multiValue: provided => {
-    return {
-      ...provided,
-      background: theme.grayL60,
-      color: 'black',
-      fontWeight: 500,
-      minWidth: 'inherit',
-    };
-  },
+  multiValue: provided => ({
+    ...provided,
+    background: theme.grayL60,
+    color: 'black',
+    fontWeight: 500,
+    minWidth: 'inherit',
+  }),
   // multiValueLabel
   // multiValueRemove
   // noOptionsMessage
-  option: (provided, state) => {
-    return {
-      ...provided,
-      color: state.isSelected ? theme.blueBase : 'black',
-      fontWeight: state.isSelected ? 500 : 400,
-      backgroundColor: 'inherit',
-      paddingTop: 7,
-      paddingRight: 12,
-      paddingBottom: 7,
-      paddingLeft: 8,
-      borderRadius: '8px',
-      cursor: 'pointer',
-    };
-  },
-  placeholder: provided => {
-    return {
-      ...provided,
-      opacity: 0,
-      '.has-label.is-focused &': {
-        opacity: 1,
-      },
-    };
-  },
-  singleValue: provided => {
-    return {
-      ...provided,
-      fontWeight: 500,
-    };
-  },
-  valueContainer: provided => {
-    return {
-      ...provided,
-      flexWrap: 'nowrap',
-      padding: 'unset',
-      paddingLeft: 12,
-      '.has-icon &': { paddingLeft: 0 },
-    };
-  },
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? theme.blueBase : 'black',
+    fontWeight: state.isSelected ? 500 : 400,
+    backgroundColor: 'inherit',
+    paddingTop: 7,
+    paddingRight: 12,
+    paddingBottom: 7,
+    paddingLeft: 8,
+    borderRadius: '8px',
+    cursor: 'pointer',
+  }),
+  placeholder: provided => ({
+    ...provided,
+    opacity: 0,
+    '.has-label.is-focused &': {
+      opacity: 1,
+    },
+  }),
+  singleValue: provided => ({
+    ...provided,
+    fontWeight: 500,
+  }),
+  valueContainer: provided => ({
+    ...provided,
+    flexWrap: 'nowrap',
+    padding: 'unset',
+    paddingLeft: 12,
+    '.has-icon &': { paddingLeft: 0 },
+  }),
 };
 
 export interface StyledReactSelectProps<
