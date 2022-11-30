@@ -107,7 +107,6 @@ export { CodeIcon } from './CodeIcon';
 export { CodeSolidIcon } from './CodeSolidIcon';
 export { CoinsDuotoneIcon } from './CoinsDuotoneIcon';
 export { CoinsIcon } from './CoinsIcon';
-export { CoinsSolidIcon } from './CoinsSolidIcon';
 export { CopyDuotoneIcon } from './CopyDuotoneIcon';
 export { CopyIcon } from './CopyIcon';
 export { CopySolidIcon } from './CopySolidIcon';
