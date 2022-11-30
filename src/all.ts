@@ -107,7 +107,6 @@ import './icons/CodeIcon';
 import './icons/CodeSolidIcon';
 import './icons/CoinsDuotoneIcon';
 import './icons/CoinsIcon';
-import './icons/CoinsSolidIcon';
 import './icons/CopyDuotoneIcon';
 import './icons/flag-icon/useStableUniqueId';
 import './icons/CopyIcon';
