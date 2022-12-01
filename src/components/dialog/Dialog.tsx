@@ -145,7 +145,7 @@ export type DialogProps = {
   actions?: React.ReactNode;
   className?: string;
   children: React.ReactNode;
-  label?: string;
+  label?: React.ReactNode;
   subtitle?: string;
   leftActions?: React.ReactNode;
   onClose: () => void;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
 import { Dialog, DialogProps } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
@@ -89,6 +90,12 @@ WithSubtitle.parameters = {
   },
 };
 
+const StyledTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const WithLink = Template.bind({});
 WithLink.args = {
   actions: (
@@ -102,7 +109,14 @@ WithLink.args = {
       <a href="http://zonos.com">Here is a link</a>
     </div>
   ),
-  label: 'Dialog title',
+  label: (
+    <StyledTitle>
+      <span>Dialog title</span>
+      <Badge rounded color="blue" bold>
+        With a link
+      </Badge>
+    </StyledTitle>
+  ),
   width: 460,
 };
 
