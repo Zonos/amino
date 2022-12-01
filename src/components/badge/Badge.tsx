@@ -26,6 +26,9 @@ export interface BadgeProps {
   iconRight?: boolean;
   bold?: boolean;
   rounded?: boolean;
+  /**
+   * @default large
+   */
   size?: Size;
 }
 
@@ -47,6 +50,7 @@ const StyledBadge = styled.div<BadgeProps>`
   p {
     margin: 0;
     font-weight: ${p => p.fontWeight || '600'};
+    line-height: 16px;
   }
   svg {
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
@@ -143,13 +147,13 @@ const StyledBadge = styled.div<BadgeProps>`
 export const Badge = ({
   children,
   className,
-  color,
+  color = 'gray',
   fontWeight,
   icon,
   iconRight,
   bold,
-  rounded,
-  size,
+  rounded = false,
+  size = 'large',
 }: BadgeProps) => {
   return (
     <BadgeWrapper className={className}>
@@ -160,9 +164,7 @@ export const Badge = ({
         iconRight={iconRight}
         color={color}
         size={size}
-        className={[color || 'gray', size || 'small', bold ? 'bold' : ''].join(
-          ' '
-        )}
+        className={[color, size, bold ? 'bold' : ''].join(' ')}
       >
         {icon}
         <p>{children}</p>
