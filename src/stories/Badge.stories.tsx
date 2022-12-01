@@ -27,7 +27,6 @@ const BadgeMeta: Meta = {
       type: 'string',
     },
     rounded: {
-      defaultValue: false,
       type: 'boolean',
     },
     iconRight: {
@@ -35,6 +34,12 @@ const BadgeMeta: Meta = {
     },
     bold: {
       type: 'boolean',
+    },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
     },
   },
 };
@@ -133,23 +138,11 @@ export const BasicBadge = Template.bind({});
 BasicBadge.args = {
   children: <span>Option</span>,
 };
-BasicBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
-};
 
 export const BlueBadge = Template.bind({});
 BlueBadge.args = {
   color: 'blue',
   children: <span>Option</span>,
-};
-BlueBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
 };
 
 export const GreenBadge = Template.bind({});
@@ -157,23 +150,11 @@ GreenBadge.args = {
   color: 'green',
   children: <span>Option</span>,
 };
-GreenBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
-};
 
 export const RedBadge = Template.bind({});
 RedBadge.args = {
   color: 'red',
   children: <span>Option</span>,
-};
-RedBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
 };
 
 export const OrangeBadge = Template.bind({});
@@ -181,23 +162,11 @@ OrangeBadge.args = {
   color: 'orange',
   children: <span>Option</span>,
 };
-OrangeBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
-};
 
 export const PurpleBadge = Template.bind({});
 PurpleBadge.args = {
   color: 'purple',
   children: <span>Option</span>,
-};
-PurpleBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
 };
 
 export const YellowBadge = Template.bind({});
@@ -205,21 +174,9 @@ YellowBadge.args = {
   color: 'yellow',
   children: <span>Option</span>,
 };
-YellowBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
-};
 
 export const CyanBadge = Template.bind({});
 CyanBadge.args = {
   color: 'cyan',
   children: <span>Option</span>,
-};
-CyanBadge.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
 };

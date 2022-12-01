@@ -36,7 +36,7 @@ const StyledBadge = styled.div<BadgeProps>`
   display: flex;
   gap: ${theme.spaceQuarter};
   font-size: ${theme.textSm};
-  padding: 3px ${theme.spaceHalf};
+  padding: 2px 6px;
   text-align: center;
   border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius)};
   // default background color (gray)
@@ -60,7 +60,7 @@ const StyledBadge = styled.div<BadgeProps>`
 
   // size
   &.large {
-    padding: 10px ${theme.spaceHalf};
+    padding: 4px 8px;
   }
 
   &.blue {
