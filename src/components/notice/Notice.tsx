@@ -73,21 +73,19 @@ export const Notice = ({
   }: {
     color: Color;
     secondaryColor: Color;
-  }) => {
-    return (
-      <Button
-        intent="text"
-        onClick={onClose}
-        icon={
-          <RemoveCircleDuotoneIcon
-            size={20}
-            color={color}
-            secondaryColor={secondaryColor}
-          />
-        }
-      />
-    );
-  };
+  }) => (
+    <Button
+      intent="text"
+      onClick={onClose}
+      icon={
+        <RemoveCircleDuotoneIcon
+          size={20}
+          color={color}
+          secondaryColor={secondaryColor}
+        />
+      }
+    />
+  );
   switch (intent) {
     case 'success':
       return (

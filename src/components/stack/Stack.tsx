@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import styled from 'styled-components';
 
 import { GridAlignment, GridSpacing } from './GridSpacing';
 
 type DivProps = Omit<
-  Partial<HTMLDivElement>,
+  HTMLAttributes<HTMLDivElement>,
   | 'translate'
   | 'style'
   | 'prefix'
@@ -32,6 +32,7 @@ const StyledStack = styled.div<StackProps>`
     justify-self: ${p => p.alignment || 'unset'};
   }
 `;
-export const Stack = ({ children, ...otherProps }: StackProps) => {
-  return <StyledStack {...otherProps}>{children}</StyledStack>;
-};
+
+export const Stack = ({ children, ...otherProps }: StackProps) => (
+  <StyledStack {...otherProps}>{children}</StyledStack>
+);

@@ -150,23 +150,21 @@ export const Badge = ({
   bold,
   rounded,
   size,
-}: BadgeProps) => {
-  return (
-    <BadgeWrapper className={className}>
-      <StyledBadge
-        rounded={!!rounded}
-        bold={!!bold}
-        fontWeight={fontWeight}
-        iconRight={iconRight}
-        color={color}
-        size={size}
-        className={[color || 'gray', size || 'small', bold ? 'bold' : ''].join(
-          ' '
-        )}
-      >
-        {icon}
-        <p>{children}</p>
-      </StyledBadge>
-    </BadgeWrapper>
-  );
-};
+}: BadgeProps) => (
+  <BadgeWrapper className={className}>
+    <StyledBadge
+      rounded={!!rounded}
+      bold={!!bold}
+      fontWeight={fontWeight}
+      iconRight={iconRight}
+      color={color}
+      size={size}
+      className={[color || 'gray', size || 'small', bold ? 'bold' : ''].join(
+        ' '
+      )}
+    >
+      {icon}
+      <p>{children}</p>
+    </StyledBadge>
+  </BadgeWrapper>
+);

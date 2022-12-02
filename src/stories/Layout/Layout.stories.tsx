@@ -69,18 +69,16 @@ const Template: Story<LayoutProps> = ({
   logoSidebar,
   headerContent,
   searchInput,
-}: LayoutProps) => {
-  return (
-    <Layout
-      logoSidebar={logoSidebar}
-      searchInput={searchInput}
-      content={content}
-      footer={<UserMenu />}
-      sidebar={<NavigationGroupStory />}
-      headerContent={headerContent}
-    />
-  );
-};
+}: LayoutProps) => (
+  <Layout
+    logoSidebar={logoSidebar}
+    searchInput={searchInput}
+    content={content}
+    footer={<UserMenu />}
+    sidebar={<NavigationGroupStory />}
+    headerContent={headerContent}
+  />
+);
 
 const StyledHeader = styled.div`
   padding: 0 ${theme.space};

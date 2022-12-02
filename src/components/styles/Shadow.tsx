@@ -29,20 +29,18 @@ const StyledWrapper = styled.div`
   padding: ${theme.spaceQuarter} ${theme.space};
 `;
 
-export const Shadow = () => {
-  return (
-    <StyledWrapper>
-      {shadows.map(({ label, value }) => {
-        const aminoShadow: AminoShadow = `--amino-shadow-${value}`;
-        return (
-          <React.Fragment key={aminoShadow}>
-            <p>Shadow intensity: {label}</p>
-            <StyledBoxShadowWrapper shadow={aminoShadow}>
-              <p>var({aminoShadow})</p>
-            </StyledBoxShadowWrapper>
-          </React.Fragment>
-        );
-      })}
-    </StyledWrapper>
-  );
-};
+export const Shadow = () => (
+  <StyledWrapper>
+    {shadows.map(({ label, value }) => {
+      const aminoShadow: AminoShadow = `--amino-shadow-${value}`;
+      return (
+        <React.Fragment key={aminoShadow}>
+          <p>Shadow intensity: {label}</p>
+          <StyledBoxShadowWrapper shadow={aminoShadow}>
+            <p>var({aminoShadow})</p>
+          </StyledBoxShadowWrapper>
+        </React.Fragment>
+      );
+    })}
+  </StyledWrapper>
+);

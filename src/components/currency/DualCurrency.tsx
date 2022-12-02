@@ -26,7 +26,7 @@ const DualCurrencyWrapper = styled.div<StyledProps>`
   align-items: center;
   justify-items: right;
   ${p => (p.isTabular ? tableCss : inlineCss)}
-  grid-column-gap: ${theme.spaceQuarter};
+  grid-column-gap: ${theme.space8};
   ${p =>
     p.width &&
     css`

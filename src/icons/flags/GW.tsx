@@ -8,28 +8,45 @@ type Props = {
   width: number;
 };
 export const GW = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
-  const ids = useStableUniqueId(1);
+  const ids = useStableUniqueId(2);
   return (
-    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 16 12">
-      <mask
-        id={`${ids[0]}`}
-        maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="16"
-        height="12"
-      >
-        <path fill="#fff" d="M0 0h16v12H0z" />
-      </mask>
-      <g mask={`url(#${ids[0]})`} fillRule="evenodd" clipRule="evenodd">
-        <path d="M8 0h8v6H8V0Z" fill="#FBCD17" />
-        <path d="M8 6h8v6H8V6Z" fill="#0B9E7A" />
-        <path d="M0 0h8v12H0V0Z" fill="#E11C1B" />
-        <path
-          d="M4.465 7.303 2.723 8.512l.556-2.07L2 5.119l1.732-.072L4.465 3l.733 2.047h1.73L5.65 6.442l.64 1.948-1.826-1.087Z"
-          fill="#1D1D1D"
+    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 640 480">
+      <path fill="#ce1126" d="M0 0h220v480H0z" />
+      <path fill="#fcd116" d="M220 0h420v240H220z" />
+      <path fill="#009e49" d="M220 240h420v240H220z" />
+      <g id={`${ids[0]}`} transform="matrix(80 0 0 80 110 240)">
+        <path id={`${ids[1]}`} d="M0-1v1h.5" transform="rotate(18 0 -1)" />
+        <use
+          xlinkHref="#a"
+          width="100%"
+          height="100%"
+          transform="scale(-1 1)"
         />
       </g>
+      <use
+        xlinkHref="#b"
+        width="100%"
+        height="100%"
+        transform="rotate(72 110 240)"
+      />
+      <use
+        xlinkHref="#b"
+        width="100%"
+        height="100%"
+        transform="rotate(144 110 240)"
+      />
+      <use
+        xlinkHref="#b"
+        width="100%"
+        height="100%"
+        transform="rotate(-144 110 240)"
+      />
+      <use
+        xlinkHref="#b"
+        width="100%"
+        height="100%"
+        transform="rotate(-72 110 240)"
+      />
     </FlagIconBase>
   );
 });
