@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 
-import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -67,9 +66,13 @@ const StyledActionBaseWrapper = styled.div`
 
 const StyledLeftActionWrapper = styled(StyledActionBaseWrapper)`
   justify-content: flex-start;
+  display: flex;
+  gap: ${theme.space8};
 `;
 const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
   justify-content: flex-end;
+  display: flex;
+  gap: ${theme.space8};
 `;
 
 const Footer = styled.div`
@@ -145,7 +148,7 @@ export type DialogProps = {
   actions?: React.ReactNode;
   className?: string;
   children: React.ReactNode;
-  label?: string;
+  label?: React.ReactNode;
   subtitle?: string;
   leftActions?: React.ReactNode;
   onClose: () => void;
@@ -203,14 +206,10 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       {(actions || leftActions) && (
         <Footer>
           {leftActions && (
-            <StyledLeftActionWrapper>
-              <HStack spacing="space-quarter">{leftActions}</HStack>
-            </StyledLeftActionWrapper>
+            <StyledLeftActionWrapper>{leftActions}</StyledLeftActionWrapper>
           )}
           {actions && (
-            <StyledRightActionWrapper>
-              <HStack spacing="space-quarter">{actions}</HStack>
-            </StyledRightActionWrapper>
+            <StyledRightActionWrapper>{actions}</StyledRightActionWrapper>
           )}
         </Footer>
       )}
