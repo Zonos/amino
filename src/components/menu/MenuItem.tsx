@@ -32,11 +32,9 @@ type MenuItemProps = {
   onClick?: () => void;
 };
 
-export const MenuItem = ({ children, icon, onClick }: MenuItemProps) => {
-  return (
-    <StyledListItem onClick={onClick}>
-      {icon}
-      {children}
-    </StyledListItem>
-  );
-};
+export const MenuItem = ({ children, icon, onClick }: MenuItemProps) => (
+  <StyledListItem onClick={onClick}>
+    {icon}
+    {children}
+  </StyledListItem>
+);

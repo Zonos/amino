@@ -95,28 +95,26 @@ export type SliderProps = {
   value: number;
 };
 
-export const Slider = ({ min, max, value, step, onChange }: SliderProps) => {
-  return (
-    <SliderWrapper>
-      <StyledSlider
-        max={max}
-        min={min}
-        onValueChange={([val]) => onChange(val)}
-        step={step}
-        value={[value]}
-      >
-        <StyledTrack>
-          <StyledRange />
-        </StyledTrack>
-        <StyledThumb>
-          <IndicatorWrapper>
-            <UpTriangle />
-            <Indicator>
-              <span>{value}%</span>
-            </Indicator>
-          </IndicatorWrapper>
-        </StyledThumb>
-      </StyledSlider>
-    </SliderWrapper>
-  );
-};
+export const Slider = ({ min, max, value, step, onChange }: SliderProps) => (
+  <SliderWrapper>
+    <StyledSlider
+      max={max}
+      min={min}
+      onValueChange={([val]) => onChange(val)}
+      step={step}
+      value={[value]}
+    >
+      <StyledTrack>
+        <StyledRange />
+      </StyledTrack>
+      <StyledThumb>
+        <IndicatorWrapper>
+          <UpTriangle />
+          <Indicator>
+            <span>{value}%</span>
+          </Indicator>
+        </IndicatorWrapper>
+      </StyledThumb>
+    </StyledSlider>
+  </SliderWrapper>
+);

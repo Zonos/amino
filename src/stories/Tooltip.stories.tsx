@@ -97,25 +97,23 @@ const WithoutHeadingTooltip = ({
   </Tooltip>
 );
 
-const TopRow = (props: ButtonProps) => {
-  return (
-    <>
-      <HeadingTooltip>
-        <Button {...props}>Has heading</Button>
-      </HeadingTooltip>
-      <WithoutHeadingTooltip subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated.">
-        <Button {...props} iconRight>
-          Without heading truncated subtitle
-        </Button>
-      </WithoutHeadingTooltip>
-      <WithoutHeadingTooltip>
-        <StyledButton {...props} tag="div" onClick={e => e.preventDefault()}>
-          Without heading
-        </StyledButton>
-      </WithoutHeadingTooltip>
-    </>
-  );
-};
+const TopRow = (props: ButtonProps) => (
+  <>
+    <HeadingTooltip>
+      <Button {...props}>Has heading</Button>
+    </HeadingTooltip>
+    <WithoutHeadingTooltip subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated.">
+      <Button {...props} iconRight>
+        Without heading truncated subtitle
+      </Button>
+    </WithoutHeadingTooltip>
+    <WithoutHeadingTooltip>
+      <StyledButton {...props} tag="div" onClick={e => e.preventDefault()}>
+        Without heading
+      </StyledButton>
+    </WithoutHeadingTooltip>
+  </>
+);
 
 const BottomRow = ({
   toggleCoversheet,

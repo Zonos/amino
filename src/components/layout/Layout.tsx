@@ -102,31 +102,29 @@ export const Layout = ({
   logoSidebar,
   searchInput,
   headerContent,
-}: LayoutProps) => {
-  return (
-    <AminoLayout>
-      {!!headerContent && <Header>{headerContent}</Header>}
-      <ContentGrid hasHeader={!!headerContent}>
-        <StyledSidebar>
-          <SidebarContent>
-            {!!logoSidebar && (
-              <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
-            )}
-            {!!searchInput && (
-              <SearchInputWrapper>
-                <StyledSearchInput
-                  value={searchInput.value}
-                  onChange={searchInput.onChange}
-                />
-              </SearchInputWrapper>
-            )}
-            {sidebar}
-          </SidebarContent>
+}: LayoutProps) => (
+  <AminoLayout>
+    {!!headerContent && <Header>{headerContent}</Header>}
+    <ContentGrid hasHeader={!!headerContent}>
+      <StyledSidebar>
+        <SidebarContent>
+          {!!logoSidebar && (
+            <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
+          )}
+          {!!searchInput && (
+            <SearchInputWrapper>
+              <StyledSearchInput
+                value={searchInput.value}
+                onChange={searchInput.onChange}
+              />
+            </SearchInputWrapper>
+          )}
+          {sidebar}
+        </SidebarContent>
 
-          <Footer>{footer}</Footer>
-        </StyledSidebar>
-        <Content>{content}</Content>
-      </ContentGrid>
-    </AminoLayout>
-  );
-};
+        <Footer>{footer}</Footer>
+      </StyledSidebar>
+      <Content>{content}</Content>
+    </ContentGrid>
+  </AminoLayout>
+);

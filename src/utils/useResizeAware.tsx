@@ -2,12 +2,10 @@ import React, { ReactNode, useCallback, useMemo, useState } from 'react';
 
 import { ResizeListener } from './useResizeAware/_ResizeListener';
 
-const defaultReporter = (target: HTMLElement | null) => {
-  return {
-    width: target?.offsetWidth || null,
-    height: target?.offsetHeight || null,
-  };
-};
+const defaultReporter = (target: HTMLElement | null) => ({
+  width: target?.offsetWidth || null,
+  height: target?.offsetHeight || null,
+});
 
 export type UseResizeAwareProps = [
   ReactNode,

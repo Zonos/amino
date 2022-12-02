@@ -46,14 +46,12 @@ export const Tag = ({
   icon,
   iconRight,
   onClose,
-}: TagProps) => {
-  return (
-    <TagWrapper className={className}>
-      <StyledTag iconRight={iconRight} onClick={onClose}>
-        {icon}
-        <p>{children}</p>
-        <RemoveIcon size={16} />
-      </StyledTag>
-    </TagWrapper>
-  );
-};
+}: TagProps) => (
+  <TagWrapper className={className}>
+    <StyledTag iconRight={iconRight} onClick={onClose}>
+      {icon}
+      <p>{children}</p>
+      <RemoveIcon size={16} />
+    </StyledTag>
+  </TagWrapper>
+);

@@ -6,10 +6,8 @@ export type TableRowProps = {
   onClick?: () => void;
 };
 
-export const TableRow = ({ children, className, onClick }: TableRowProps) => {
-  return (
-    <tr className={className} onClick={onClick}>
-      {children}
-    </tr>
-  );
-};
+export const TableRow = ({ children, className, onClick }: TableRowProps) => (
+  <tr className={className} onClick={onClick}>
+    {children}
+  </tr>
+);

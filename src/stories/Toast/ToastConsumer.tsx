@@ -7,9 +7,7 @@ import { ToastContext } from 'src/components/toast/ToastContext';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-const useNotify = () => {
-  return useContext(ToastContext);
-};
+const useNotify = () => useContext(ToastContext);
 
 // Toasts appear in the middle, so don't hide controls
 const LeftCenteredDiv = styled.div`

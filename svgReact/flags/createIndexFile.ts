@@ -16,5 +16,5 @@ export const createIndexFile = (folderPath: string) => {
   }
   writeFileSync(`${folderPath}/FlagIndex.ts`, content);
   // eslint-disable-next-line no-console
-  console.log(`Writting FlaxIndex.ts done!`);
+  console.log(`Writing FlaxIndex.ts done!`);
 };

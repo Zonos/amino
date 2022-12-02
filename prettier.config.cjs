@@ -14,14 +14,5 @@ module.exports = {
         tabWidth: 2,
       },
     },
-    {
-      files: '{**/.vscode/*.json,**/tsconfig.json,**/tsconfig.*.json}',
-      options: {
-        parser: 'json5',
-        quoteProps: 'preserve',
-        singleQuote: false,
-        trailingComma: 'all',
-      },
-    },
   ],
 };

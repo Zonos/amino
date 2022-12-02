@@ -27,10 +27,10 @@ export const MO = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         />
       </g>
       <use
+        xlinkHref="#a"
         width="100%"
         height="100%"
         transform="matrix(-1 0 0 1 640 0)"
-        xlinkHref="#a"
       />
     </FlagIconBase>
   );

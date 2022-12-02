@@ -5,6 +5,6 @@ export type TableFooterProps = {
   className?: string;
 };
 
-export const TableFooter = ({ children, className }: TableFooterProps) => {
-  return <tfoot className={className}>{children}</tfoot>;
-};
+export const TableFooter = ({ children, className }: TableFooterProps) => (
+  <tfoot className={className}>{children}</tfoot>
+);

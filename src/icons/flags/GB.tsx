@@ -8,15 +8,15 @@ type Props = {
   width: number;
 };
 export const GB = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
-  const ids = useStableUniqueId(2);
+  const ids = useStableUniqueId(1);
   return (
     <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 640 480">
       <defs>
-        <clipPath id={`${ids[1]}`}>
+        <clipPath id={`${ids[0]}`}>
           <path fillOpacity=".7" d="M-85.3 0h682.6v512H-85.3z" />
         </clipPath>
       </defs>
-      <g clipPath={`url(#${ids[1]})`} transform="translate(80) scale(.94)">
+      <g clipPath={`url(#${ids[0]})`} transform="translate(80) scale(.94)">
         <g strokeWidth="1pt">
           <path fill="#012169" d="M-256 0H768v512H-256z" />
           <path
@@ -29,7 +29,7 @@ export const GB = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           />
           <path
             fill="#c8102e"
-            d="M-256 204.8v102.4H768V204.8H-256zM204.8 0v512h102.4V0H204.8zM-256 512L85.3 341.3h76.4L-179.7 512H-256zm0-512L85.3 170.7H9L-256 38.2V0zm606.4 170.7L691.7 0H768L426.7 170.7h-76.3zM768 512L426.7 341.3H503l265 132.5V512z"
+            d="M-256 204.8v102.4H768V204.8H-256zM204.8 0v512h102.4V0H204.8zM-256 512 85.3 341.3h76.4L-179.7 512H-256zm0-512L85.3 170.7H9L-256 38.2V0zm606.4 170.7L691.7 0H768L426.7 170.7h-76.3zM768 512 426.7 341.3H503l265 132.5V512z"
           />
         </g>
       </g>

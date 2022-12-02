@@ -39,21 +39,19 @@ const Template: Story<DropzoneProps> = ({
   dropzoneDisabled,
   uploadedFile,
   width,
-}: DropzoneProps) => {
-  return (
-    <Dropzone
-      dropzoneOptions={dropzoneOptions}
-      error={error}
-      helperText={helperText}
-      loading={loading}
-      onRemove={onRemove}
-      dropzoneDisabled={dropzoneDisabled}
-      uploadedFile={uploadedFile}
-      width={width}
-      loadingText={loadingText}
-    />
-  );
-};
+}: DropzoneProps) => (
+  <Dropzone
+    dropzoneOptions={dropzoneOptions}
+    error={error}
+    helperText={helperText}
+    loading={loading}
+    onRemove={onRemove}
+    dropzoneDisabled={dropzoneDisabled}
+    uploadedFile={uploadedFile}
+    width={width}
+    loadingText={loadingText}
+  />
+);
 export const NoFileSelected = Template.bind({});
 NoFileSelected.args = {
   loading: false,

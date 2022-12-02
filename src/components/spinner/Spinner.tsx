@@ -97,12 +97,10 @@ export type SpinnerProps = {
   className?: string;
 };
 
-export const Spinner = ({ size, color, className }: SpinnerProps) => {
-  return (
-    <AminoSpinner
-      className={[className, color || ''].join(' ')}
-      size={size || 32}
-      color={color}
-    />
-  );
-};
+export const Spinner = ({ size, color, className }: SpinnerProps) => (
+  <AminoSpinner
+    className={[className, color || ''].join(' ')}
+    size={size || 32}
+    color={color}
+  />
+);

@@ -8,7 +8,7 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
@@ -97,6 +97,13 @@ export interface CountryPhoneSelectProps<
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
+const formatOptionLabel = (option: ICountryOption) => (
+  <OptionLabel>
+    {option.displayName}
+    <PhoneCodeLabel>{option.phoneCode.join(', ')}</PhoneCodeLabel>
+  </OptionLabel>
+);
+
 export const CountryPhoneSelect = ({
   countryOptions,
   icon,
@@ -114,6 +121,7 @@ export const CountryPhoneSelect = ({
   const valuePrefix = phoneCountry?.phoneCode
     ? `+${phoneCountry?.phoneCode}`
     : undefined;
+
   return (
     <>
       <StyledInputWrapper>
@@ -134,12 +142,7 @@ export const CountryPhoneSelect = ({
         {...props}
         components={{ Control: () => null, MenuList }}
         options={countryOptions}
-        formatOptionLabel={option => (
-          <OptionLabel>
-            {option.displayName}
-            <PhoneCodeLabel>{option.phoneCode.join(', ')}</PhoneCodeLabel>
-          </OptionLabel>
-        )}
+        formatOptionLabel={formatOptionLabel}
         menuIsOpen={menuIsOpen}
         onBlur={() => setMenuIsOpen(false)}
         onChange={changed => {
