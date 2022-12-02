@@ -78,27 +78,25 @@ export const SearchInput = ({
   tabIndex,
   value,
   ...props
-}: InputProps) => {
-  return (
-    <StyledWrapper className={className}>
-      <StyledLabel htmlFor={AminoInput}>
-        <SearchIcon color="gray-base" size={20} />
-      </StyledLabel>
-      <AminoInput
-        autoFocus={autoFocus}
-        disabled={disabled}
-        inputMode={inputMode}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        pattern={pattern}
-        placeholder={placeholder || 'search...'}
-        readOnly={readOnly}
-        required={required}
-        tabIndex={tabIndex}
-        type="search"
-        value={value || ''}
-        {...props}
-      />
-    </StyledWrapper>
-  );
-};
+}: InputProps) => (
+  <StyledWrapper className={className}>
+    <StyledLabel htmlFor={AminoInput}>
+      <SearchIcon color="gray-base" size={20} />
+    </StyledLabel>
+    <AminoInput
+      autoFocus={autoFocus}
+      disabled={disabled}
+      inputMode={inputMode}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      pattern={pattern}
+      placeholder={placeholder || 'search...'}
+      readOnly={readOnly}
+      required={required}
+      tabIndex={tabIndex}
+      type="search"
+      value={value || ''}
+      {...props}
+    />
+  </StyledWrapper>
+);

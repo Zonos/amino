@@ -5,6 +5,6 @@ export type TableHeadProps = {
   className?: string;
 };
 
-export const TableHead = ({ children, className }: TableHeadProps) => {
-  return <thead className={className}>{children}</thead>;
-};
+export const TableHead = ({ children, className }: TableHeadProps) => (
+  <thead className={className}>{children}</thead>
+);

@@ -108,14 +108,12 @@ export const MultiSelect = <
   closeMenuOnSelect = false,
   hideSelectedOptions = true,
   ...props
-}: MultiSelectProps<Option, true, Group>) => {
-  return (
-    <StyledReactSelect<Option, true, Group>
-      {...props}
-      closeMenuOnSelect={closeMenuOnSelect}
-      components={{ Group, ...props.components }}
-      hideSelectedOptions={hideSelectedOptions}
-      isMulti
-    />
-  );
-};
+}: MultiSelectProps<Option, true, Group>) => (
+  <StyledReactSelect<Option, true, Group>
+    {...props}
+    closeMenuOnSelect={closeMenuOnSelect}
+    components={{ Group, ...props.components }}
+    hideSelectedOptions={hideSelectedOptions}
+    isMulti
+  />
+);

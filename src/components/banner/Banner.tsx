@@ -126,28 +126,22 @@ export const Banner = ({
     intentIcon: ReactNode;
     removeIconColor: Color;
   }) => {
-    const renderTitle = () => {
-      return (
-        title && (
-          <BannerHeader>
-            <Text type="label">{title}</Text>
-            {headerActions && (
-              <HStack spacing="space-quarter">{headerActions}</HStack>
-            )}
-          </BannerHeader>
-        )
+    const renderTitle = () =>
+      title && (
+        <BannerHeader>
+          <Text type="label">{title}</Text>
+          {headerActions && (
+            <HStack spacing="space-quarter">{headerActions}</HStack>
+          )}
+        </BannerHeader>
       );
-    };
 
-    const renderFooter = () => {
-      return (
-        footerActions && (
-          <BannerFooter>
-            <HStack spacing="space-quarter">{footerActions}</HStack>
-          </BannerFooter>
-        )
+    const renderFooter = () =>
+      footerActions && (
+        <BannerFooter>
+          <HStack spacing="space-quarter">{footerActions}</HStack>
+        </BannerFooter>
       );
-    };
 
     // A hack to make sure the header content (whatever the first non-null is) aligns in it's own row
     const [header, content, moreContent] = [

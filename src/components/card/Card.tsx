@@ -60,23 +60,21 @@ export const Card = ({
   footerContent,
   footerHeight,
   label,
-}: CardProps) => {
-  return (
-    <StyledCard className={className || ''}>
-      {label && (
-        <CardHeader>
-          <Text type="subheader">{label}</Text>
+}: CardProps) => (
+  <StyledCard className={className || ''}>
+    {label && (
+      <CardHeader>
+        <Text type="subheader">{label}</Text>
 
-          <HStack spacing="space-quarter">{actions}</HStack>
-        </CardHeader>
-      )}
-      {children}
-      {(footerActions || footerContent) && (
-        <CardFooter footerHeight={footerHeight}>
-          <div>{footerContent}</div>
-          <HStack spacing="space-quarter">{footerActions}</HStack>
-        </CardFooter>
-      )}
-    </StyledCard>
-  );
-};
+        <HStack spacing="space-quarter">{actions}</HStack>
+      </CardHeader>
+    )}
+    {children}
+    {(footerActions || footerContent) && (
+      <CardFooter footerHeight={footerHeight}>
+        <div>{footerContent}</div>
+        <HStack spacing="space-quarter">{footerActions}</HStack>
+      </CardFooter>
+    )}
+  </StyledCard>
+);

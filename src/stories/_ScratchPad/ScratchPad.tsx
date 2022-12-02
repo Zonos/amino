@@ -77,35 +77,33 @@ const SecondOption = ({ label }: { label: string }) => (
   </SecondMultiValue>
 );
 
-export const ScratchPad = () => {
-  return (
-    <VStack>
-      <StyledWrapper>
-        <ValueContainer>
-          <Option label="France" />
-          <Option label="Germany" />
-          <Option label="Algeria" />
-          <Option label="Angola" />
-          <Option label="Benin" />
-          <Option label="Austria" />
-          <Option label="Greenland" />
-          <Option label="Iceland" />
-          <Option label="United States" />
-        </ValueContainer>
-      </StyledWrapper>
-      <StyledWrapper>
-        <Container>
-          <SecondOption label="France" />
-          <SecondOption label="Germany" />
-          <SecondOption label="Algeria" />
-          <SecondOption label="Angola" />
-          <SecondOption label="Benin" />
-          <SecondOption label="Austria" />
-          <SecondOption label="Greenland" />
-          <SecondOption label="Iceland" />
-          <SecondOption label="United States" />
-        </Container>
-      </StyledWrapper>
-    </VStack>
-  );
-};
+export const ScratchPad = () => (
+  <VStack>
+    <StyledWrapper>
+      <ValueContainer>
+        <Option label="France" />
+        <Option label="Germany" />
+        <Option label="Algeria" />
+        <Option label="Angola" />
+        <Option label="Benin" />
+        <Option label="Austria" />
+        <Option label="Greenland" />
+        <Option label="Iceland" />
+        <Option label="United States" />
+      </ValueContainer>
+    </StyledWrapper>
+    <StyledWrapper>
+      <Container>
+        <SecondOption label="France" />
+        <SecondOption label="Germany" />
+        <SecondOption label="Algeria" />
+        <SecondOption label="Angola" />
+        <SecondOption label="Benin" />
+        <SecondOption label="Austria" />
+        <SecondOption label="Greenland" />
+        <SecondOption label="Iceland" />
+        <SecondOption label="United States" />
+      </Container>
+    </StyledWrapper>
+  </VStack>
+);

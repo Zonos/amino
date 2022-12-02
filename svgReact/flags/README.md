@@ -17,23 +17,10 @@ We have two sources for the flags AWS & Figma:
 1. Select the icons to download
 2. Change type to svg
 3. Export files
-4. Add the files to the folder `./svgReact/figma-flags`
+4. Choose the Small folder
+5. Add the files to the folder `./svgReact/figma-flags`
 
 ## Creating SVGs
 
-1. The component name is based on the filename so clean it up using the `Batch Rename` VS code plugin
-2. Choose the smaller SVG by running `yarn svgs:copy:flags` or `node ./svgReact/copySmallerFlags.js`
-3. Optimize the svgs with svgo with `yarn svgs:optimize` or `svgo -f ./svgReact/smaller-flags -o ./svgReact/svgs`
-   - If not already installed: `yarn global add svgo`
-4. Create the svgs `yarn svgs:create` or `yarn svgs:react && yarn svgs:index && yarn svgs:format`
-
-   - `yarn svgs:react` or `node ./svgReact ./svgReact/svgs ./svgReact/flags`
-     Create React files from the SVG's
-   - `yarn svgs:index` or `node ./svgReact/createIndexFile.js ./svgReact/flags`
-     Create an index file for all of the flags
-   - `yarn svgs:format` or `eslint svgReact --ext .tsx --fix`
-     Format React files using our style-guide
-
-5. Move the `./svgReact/flags` folder to `src/icons/flags`
-
-// Default Icon
+1. The component name is based on the filename so clean it up using the `Batch Rename` VS code plugin (or rename using shell commands). The filename needs to just be the country ISO code (the same as the aws-flags). Some Figma flags have duplicate ISO codes so try to use the same one that was there before and delete the duplicates.
+2. Run `yarn svgs:react:flags`

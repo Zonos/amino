@@ -16,6 +16,6 @@ const StyledVStack = styled(Stack)<StackProps>`
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const VStack = ({ children, ...props }: StackProps) => {
-  return <StyledVStack {...props}>{children}</StyledVStack>;
-};
+export const VStack = ({ children, ...props }: StackProps) => (
+  <StyledVStack {...props}>{children}</StyledVStack>
+);

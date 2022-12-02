@@ -50,13 +50,11 @@ type IconsType = typeof icons[keyof typeof icons] & {
 export const AllIcons = ({ size }: IconProps) => {
   const [filter, setFilter] = useState('');
   const iicons = Object.values<IconsType>(icons)
-    .map(icon => {
-      return {
-        icon,
-        iconName: icon.displayName || '',
-        deprecated: !!icon.deprecated,
-      };
-    })
+    .map(icon => ({
+      icon,
+      iconName: icon.displayName || '',
+      deprecated: !!icon.deprecated,
+    }))
     .filter(icon => icon.iconName);
   return (
     <VStack>

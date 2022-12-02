@@ -19,9 +19,7 @@ export default RichCheckboxMeta;
 const Template: Story<RichCheckboxProps> = ({
   onClick,
   items,
-}: RichCheckboxProps) => {
-  return <RichCheckbox items={items} onClick={onClick} />;
-};
+}: RichCheckboxProps) => <RichCheckbox items={items} onClick={onClick} />;
 
 export const BasicRichCheckbox = Template.bind({});
 BasicRichCheckbox.args = {

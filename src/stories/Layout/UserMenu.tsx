@@ -119,63 +119,61 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <MenuWrapper addSpacing={addSpacing}>
-        <UserInfo addSpacing={addSpacing} onClick={() => setOpen(!open)}>
-          <Avatar />
-          <StyledVStack spacing="none">
-            <strong>Hello</strong>
-            <StyledSubtitle title="Store 2458">Store #1234</StyledSubtitle>
-          </StyledVStack>
-        </UserInfo>
+    <MenuWrapper addSpacing={addSpacing}>
+      <UserInfo addSpacing={addSpacing} onClick={() => setOpen(!open)}>
+        <Avatar />
+        <StyledVStack spacing="none">
+          <strong>Hello</strong>
+          <StyledSubtitle title="Store 2458">Store #1234</StyledSubtitle>
+        </StyledVStack>
+      </UserInfo>
 
-        {open && (
-          <AnimatedSurface dense depth="depth16">
-            <Menu>
-              <StoreItem onClick={() => {}}>
-                <TextAvatar label="Default" />
-                <VStack spacing="none">
-                  <strong>Test Store</strong>
-                  <Text type="subtitle">Click to switch...</Text>
-                </VStack>
-              </StoreItem>
+      {open && (
+        <AnimatedSurface dense depth="depth16">
+          <Menu>
+            <StoreItem onClick={() => {}}>
+              <TextAvatar label="Default" />
+              <VStack spacing="none">
+                <strong>Test Store</strong>
+                <Text type="subtitle">Click to switch...</Text>
+              </VStack>
+            </StoreItem>
 
-              <StoreItem>
-                <TextAvatar label="Zonos" />
-                <VStack spacing="none">
-                  <strong>Switch to Zonos</strong>
-                  <Text type="subtitle">Click to switch...</Text>
-                </VStack>
-              </StoreItem>
+            <StoreItem>
+              <TextAvatar label="Zonos" />
+              <VStack spacing="none">
+                <strong>Switch to Zonos</strong>
+                <Text type="subtitle">Click to switch...</Text>
+              </VStack>
+            </StoreItem>
 
-              <hr />
+            <hr />
 
-              <MenuItem>
-                <span>Your profile</span>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="https://docs.zonos.com/support"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Support
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="https://docs.zonos.com"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Documentation
-                </a>
-              </MenuItem>
-              <MenuItem>Logout</MenuItem>
-            </Menu>
-          </AnimatedSurface>
-        )}
-      </MenuWrapper>
-    </>
+            <MenuItem>
+              <span>Your profile</span>
+            </MenuItem>
+            <MenuItem>
+              <a
+                href="https://docs.zonos.com/support"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Support
+              </a>
+            </MenuItem>
+            <MenuItem>
+              <a
+                href="https://docs.zonos.com"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Documentation
+              </a>
+            </MenuItem>
+            <MenuItem>Logout</MenuItem>
+          </Menu>
+        </AnimatedSurface>
+      )}
+    </MenuWrapper>
   );
 };

@@ -9,12 +9,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "jsx": "react",
-    "lib": [
-      "es2015",
-      "es2016",
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2015", "es2016", "es2017", "dom"],
     "module": "es2015",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
@@ -22,30 +17,23 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types",
-      "build-utils/types"
-    ],
+    "typeRoots": ["node_modules/@types", "build-utils/types"],
+    "paths": {
+      "src/*": ["src/*"]
+    },
     "plugins": [
-      {
-        "transform": "@zerollup/ts-transform-paths"
-      }
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
     ],
     "esModuleInterop": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "skipLibCheck": true
   },
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
       "resolveJsonModule": true,
       "allowSyntheticDefaultImports": true,
-      "lib": [
-        "es2015",
-        "es2016",
-        "es2017",
-        "es2020",
-        "dom"
-      ],
+      "lib": ["es2015", "es2016", "es2017", "es2020", "dom"],
       "declaration": false,
       "rootDir": "src",
       "outDir": "dist",
@@ -57,18 +45,13 @@
       "sourceMap": true,
       "strict": true,
       "target": "ES2020",
-      "typeRoots": [
-        "node_modules/@types",
-        "build-utils/types"
-      ],
+      "typeRoots": ["node_modules/@types", "build-utils/types"],
       "plugins": [
         {
-          "transform": "@zerollup/ts-transform-paths"
+          "transform": "typescript-transform-paths"
         }
       ]
     }
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*"]
 }

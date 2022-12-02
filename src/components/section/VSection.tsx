@@ -26,20 +26,18 @@ export const VSection = ({
   className,
   label,
   sublabel = '',
-}: VSectionProps) => {
-  return (
-    <StyledSectionWrapper className={className || ''}>
-      {label && (
-        <SectionInnerWrapper>
-          <SectionHeader>
-            {label}
-            <SectionSubheader>{sublabel}</SectionSubheader>
-          </SectionHeader>
+}: VSectionProps) => (
+  <StyledSectionWrapper className={className || ''}>
+    {label && (
+      <SectionInnerWrapper>
+        <SectionHeader>
+          {label}
+          <SectionSubheader>{sublabel}</SectionSubheader>
+        </SectionHeader>
 
-          <HStack spacing="space-quarter">{actions}</HStack>
-        </SectionInnerWrapper>
-      )}
-      <div>{children}</div>
-    </StyledSectionWrapper>
-  );
-};
+        <HStack spacing="space-quarter">{actions}</HStack>
+      </SectionInnerWrapper>
+    )}
+    <div>{children}</div>
+  </StyledSectionWrapper>
+);

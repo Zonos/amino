@@ -93,34 +93,28 @@ export const Switch = ({
   labelDescription,
   onChange,
   subtitle,
-}: SwitchProps) => {
-  return (
-    <SwitchContainer
-      className={disabled ? 'disabled' : ''}
-      checked={checked}
-      htmlFor={label}
-      onClick={() => !disabled && onChange(!checked)}
-    >
-      <AminoSwitchWrapper checked={checked}>
-        <AminoSwitch checked={checked} id={label} />
-      </AminoSwitchWrapper>
+}: SwitchProps) => (
+  <SwitchContainer
+    className={disabled ? 'disabled' : ''}
+    checked={checked}
+    htmlFor={label}
+    onClick={() => !disabled && onChange(!checked)}
+  >
+    <AminoSwitchWrapper checked={checked}>
+      <AminoSwitch checked={checked} id={label} />
+    </AminoSwitchWrapper>
 
-      <div>
-        <LabelWrapper>
-          {icon}
-          <StyledLabel type="input-label">
-            {label}
-            {labelDescription && (
-              <StyledLabelDescription>
-                {labelDescription}
-              </StyledLabelDescription>
-            )}
-          </StyledLabel>
-        </LabelWrapper>
-        {subtitle && (
-          <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
-        )}
-      </div>
-    </SwitchContainer>
-  );
-};
+    <div>
+      <LabelWrapper>
+        {icon}
+        <StyledLabel type="input-label">
+          {label}
+          {labelDescription && (
+            <StyledLabelDescription>{labelDescription}</StyledLabelDescription>
+          )}
+        </StyledLabel>
+      </LabelWrapper>
+      {subtitle && <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>}
+    </div>
+  </SwitchContainer>
+);

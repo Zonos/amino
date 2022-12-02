@@ -32,46 +32,42 @@ const StyleMeta: Meta = {
 
 export default StyleMeta;
 
-const Template: Story<TextProps> = props => {
-  return (
-    <VStack spacing="space-quarter">
-      {textOptions.map(option => (
-        <StyledVStack key={option.type}>
-          <Text type={option.type} {...props}>
-            {content}
-          </Text>
-          <Label>{option.label}</Label>
-          <div>{`<Text type="${option.type}">${content}</Text>`}</div>
-          <div>
-            <div>font-size: var(--amino-font-size-{option.size});</div>
-            <div>font-weight: var(--amino-font-weight-{option.weight});</div>
-            <div>line-height: var(--amino-line-height-{option.size});</div>
-          </div>
-        </StyledVStack>
-      ))}
-    </VStack>
-  );
-};
+const Template: Story<TextProps> = props => (
+  <VStack spacing="space-quarter">
+    {textOptions.map(option => (
+      <StyledVStack key={option.type}>
+        <Text type={option.type} {...props}>
+          {content}
+        </Text>
+        <Label>{option.label}</Label>
+        <div>{`<Text type="${option.type}">${content}</Text>`}</div>
+        <div>
+          <div>font-size: var(--amino-font-size-{option.size});</div>
+          <div>font-weight: var(--amino-font-weight-{option.weight});</div>
+          <div>line-height: var(--amino-line-height-{option.size});</div>
+        </div>
+      </StyledVStack>
+    ))}
+  </VStack>
+);
 
 const TextSizesLabel = styled.div`
   margin-right: 10px;
   font-size: 14px;
 `;
 
-const TemplateTextSizes: Story<TextProps> = props => {
-  return (
-    <VStack spacing="space-quarter">
-      {textOptions.map(option => (
-        <div>
-          <TextSizesLabel>{option.type}</TextSizesLabel>
-          <Text type={option.type} {...props}>
-            {content}
-          </Text>
-        </div>
-      ))}
-    </VStack>
-  );
-};
+const TemplateTextSizes: Story<TextProps> = props => (
+  <VStack spacing="space-quarter">
+    {textOptions.map(option => (
+      <div>
+        <TextSizesLabel>{option.type}</TextSizesLabel>
+        <Text type={option.type} {...props}>
+          {content}
+        </Text>
+      </div>
+    ))}
+  </VStack>
+);
 
 export const TextTypes = TemplateTextSizes.bind({});
 

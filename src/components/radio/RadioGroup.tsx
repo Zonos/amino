@@ -43,24 +43,22 @@ export const RadioGroup = <T extends RadioGroupItem>({
     }
   }, [initialIndex]);
 
-  const radios = items.map((el, index) => {
-    return (
-      <Radio
-        checked={index === activeIndex}
-        onChange={() => {
-          if (!disabled) {
-            setActiveIndex(index);
-            if (onChange && el.value) {
-              onChange(el.value);
-            }
+  const radios = items.map((el, index) => (
+    <Radio
+      checked={index === activeIndex}
+      onChange={() => {
+        if (!disabled) {
+          setActiveIndex(index);
+          if (onChange && el.value) {
+            onChange(el.value);
           }
-        }}
-        disabled={disabled}
-        key={el.label}
-        label={el.label}
-      />
-    );
-  });
+        }
+      }}
+      disabled={disabled}
+      key={el.label}
+      label={el.label}
+    />
+  ));
 
   return <RadioContainer>{radios}</RadioContainer>;
 };

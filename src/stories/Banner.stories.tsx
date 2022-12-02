@@ -160,18 +160,16 @@ DefaultBanner.args = {
     </>
   ),
   headerActions: (
-    <>
-      <Button
-        background="inherit"
-        borderColor="gray-l40"
-        color="inherit"
-        intent="outline"
-        icon={<ChevronDownIcon size={20} />}
-        iconRight
-      >
-        Details
-      </Button>
-    </>
+    <Button
+      background="inherit"
+      borderColor="gray-l40"
+      color="inherit"
+      intent="outline"
+      icon={<ChevronDownIcon size={20} />}
+      iconRight
+    >
+      Details
+    </Button>
   ),
 };
 DefaultBanner.parameters = {
@@ -199,18 +197,16 @@ InfoBanner.args = {
     </>
   ),
   headerActions: (
-    <>
-      <Button
-        background="inherit"
-        borderColor="blue-l40"
-        color="inherit"
-        intent="outline"
-        icon={<ChevronDownIcon size={20} />}
-        iconRight
-      >
-        Details
-      </Button>
-    </>
+    <Button
+      background="inherit"
+      borderColor="blue-l40"
+      color="inherit"
+      intent="outline"
+      icon={<ChevronDownIcon size={20} />}
+      iconRight
+    >
+      Details
+    </Button>
   ),
   intent: 'info',
 };
@@ -239,18 +235,16 @@ SuccessBanner.args = {
     </>
   ),
   headerActions: (
-    <>
-      <Button
-        background="inherit"
-        borderColor="green-l40"
-        color="inherit"
-        intent="outline"
-        icon={<ChevronDownIcon size={20} />}
-        iconRight
-      >
-        Details
-      </Button>
-    </>
+    <Button
+      background="inherit"
+      borderColor="green-l40"
+      color="inherit"
+      intent="outline"
+      icon={<ChevronDownIcon size={20} />}
+      iconRight
+    >
+      Details
+    </Button>
   ),
   intent: 'success',
 };
@@ -279,18 +273,16 @@ WarningBanner.args = {
     </>
   ),
   headerActions: (
-    <>
-      <Button
-        background="inherit"
-        borderColor="orange-l40"
-        color="inherit"
-        intent="outline"
-        icon={<ChevronDownIcon size={20} />}
-        iconRight
-      >
-        Details
-      </Button>
-    </>
+    <Button
+      background="inherit"
+      borderColor="orange-l40"
+      color="inherit"
+      intent="outline"
+      icon={<ChevronDownIcon size={20} />}
+      iconRight
+    >
+      Details
+    </Button>
   ),
   intent: 'warning',
 };
@@ -319,18 +311,16 @@ ErrorBanner.args = {
     </>
   ),
   headerActions: (
-    <>
-      <Button
-        background="inherit"
-        borderColor="red-l40"
-        color="inherit"
-        intent="outline"
-        icon={<ChevronDownIcon size={20} />}
-        iconRight
-      >
-        Details
-      </Button>
-    </>
+    <Button
+      background="inherit"
+      borderColor="red-l40"
+      color="inherit"
+      intent="outline"
+      icon={<ChevronDownIcon size={20} />}
+      iconRight
+    >
+      Details
+    </Button>
   ),
   intent: 'error',
 };

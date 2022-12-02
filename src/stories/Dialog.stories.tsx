@@ -122,11 +122,7 @@ WithLink.args = {
 
 export const WithLeftActions = Template.bind({});
 WithLeftActions.args = {
-  leftActions: (
-    <>
-      <Button>Back</Button>
-    </>
-  ),
+  leftActions: <Button>Back</Button>,
   actions: (
     <>
       <Button intent="outline">Close</Button>
@@ -140,11 +136,7 @@ WithLeftActions.args = {
 
 export const LongContentDialog = Template.bind({});
 LongContentDialog.args = {
-  leftActions: (
-    <>
-      <Button>Back</Button>
-    </>
-  ),
+  leftActions: <Button>Back</Button>,
   actions: (
     <>
       <Button intent="outline">Close</Button>

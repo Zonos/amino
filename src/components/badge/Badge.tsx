@@ -154,21 +154,19 @@ export const Badge = ({
   bold,
   rounded = false,
   size = 'large',
-}: BadgeProps) => {
-  return (
-    <BadgeWrapper className={className}>
-      <StyledBadge
-        rounded={!!rounded}
-        bold={!!bold}
-        fontWeight={fontWeight}
-        iconRight={iconRight}
-        color={color}
-        size={size}
-        className={[color, size, bold ? 'bold' : ''].join(' ')}
-      >
-        {icon}
-        <p>{children}</p>
-      </StyledBadge>
-    </BadgeWrapper>
-  );
-};
+}: BadgeProps) => (
+  <BadgeWrapper className={className}>
+    <StyledBadge
+      rounded={rounded}
+      bold={!!bold}
+      fontWeight={fontWeight}
+      iconRight={iconRight}
+      color={color}
+      size={size}
+      className={[color, size, bold ? 'bold' : ''].join(' ')}
+    >
+      {icon}
+      <p>{children}</p>
+    </StyledBadge>
+  </BadgeWrapper>
+);
