@@ -21,9 +21,10 @@ const StyledBanner = styled.div`
 
 const Container = styled.div<{
   withoutCloseButton: boolean;
+  onlyContent: boolean;
 }>`
   display: grid;
-  align-items: center;
+  align-items: ${p => (p.onlyContent ? 'start' : 'center')};
   grid-template-areas:
     'icon header close'
     '. content .';
@@ -126,6 +127,9 @@ export const Banner = ({
     intentIcon: ReactNode;
     removeIconColor: Color;
   }) => {
+    // Some banners are used with just a wall of text, which causes the icons to be centered vertically in said wall and look a little off. This should handle that edge case and move the icons to align at the top.
+    const onlyContent = !!children && !title && !footerActions;
+
     const renderTitle = () =>
       title && (
         <BannerHeader>
@@ -151,7 +155,7 @@ export const Banner = ({
     ].filter(Boolean);
 
     return (
-      <Container withoutCloseButton={!onClose}>
+      <Container withoutCloseButton={!onClose} onlyContent={onlyContent}>
         <Icon>{intentIcon}</Icon>
         {onClose && (
           <Close>
