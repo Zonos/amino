@@ -130,7 +130,7 @@ WithLeftActions.args = {
   actions: (
     <>
       <Button intent="outline">Close</Button>
-      <Button intent="primary">Save</Button>
+      <Button intent="primary">Do something amazing</Button>
     </>
   ),
   children: <div>Children</div>,
