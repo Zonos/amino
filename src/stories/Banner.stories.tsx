@@ -31,6 +31,7 @@ const ids = [
   'titleWithParagraph',
   'titleWithParagraphWithFooterActions',
   'titleWithParagraphWithHeaderActions',
+  'longSoloTitle',
 ] as const;
 type ID = typeof ids[number];
 const Template: ComponentStory<typeof Banner> = ({
@@ -136,6 +137,14 @@ const Template: ComponentStory<typeof Banner> = ({
           }
         >
           {paragraph}
+        </Banner>
+      )}
+      {openIds.includes('longSoloTitle') && (
+        <Banner intent={intent} onClose={() => toggleBannerId('longSoloTitle')}>
+          Did you know that over 50% of trees on planet earth harbor enough
+          different species that if you were to add them all up you would come
+          up with a large number that makes about as much sense as this
+          sentence.
         </Banner>
       )}
     </StyledVStack>

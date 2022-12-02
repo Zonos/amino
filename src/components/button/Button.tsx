@@ -256,15 +256,16 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
     &:not(.loading) {
       opacity: inherit;
     }
-    &:active,
-    &:focus {
-      color: ${theme.grayL20};
-    }
   }
 
-  &:active,
-  &:focus {
-    color: ${theme.black};
+  &:not([disabled]) {
+    &:hover {
+      color: ${theme.grayD20};
+    }
+    &:active,
+    &:focus {
+      color: ${theme.black};
+    }
   }
 
   &.loading {
