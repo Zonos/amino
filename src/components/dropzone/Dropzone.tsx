@@ -97,9 +97,8 @@ const StyledFileInfo = styled.div<{ hasUploadedFile: boolean }>`
   justify-content: ${({ hasUploadedFile }) =>
     hasUploadedFile ? 'left' : 'center'};
 `;
-const StyledFileName = styled.span`
-  font-style: normal;
-  font-size: ${theme.textSm};
+const StyledFileSize = styled.span`
+  font-weight: 300;
 `;
 const StyledCloseButton = styled.button`
   position: absolute;
@@ -170,7 +169,7 @@ export const Dropzone = ({
             )}
             <StyledFileInfo hasUploadedFile={!!uploadedFile}>
               <strong>{uploadedFilename}</strong>
-              {uploadedSize && <StyledFileName>{uploadedSize}</StyledFileName>}
+              {uploadedSize && <StyledFileSize>{uploadedSize}</StyledFileSize>}
             </StyledFileInfo>
           </StyledHStack>
 
