@@ -123,15 +123,15 @@ export const theme = {
 
   /* COMMON COLOR */
   danger: 'var(--amino-red-base)',
-  'danger-dark': 'var(--amino-red-d20)',
+  'danger-dark': 'var(--amino-red-700)',
   error: 'var(--amino-red-base)',
   primary: 'var(--amino-blue-base)',
-  'primary-light': 'var(--amino-blue-l20)',
-  'primary-dark': 'var(--amino-blue-d40)',
-  success: 'var(--amino-green-l60)',
-  'success-dark': 'var(--amino-green-d20)',
-  warning: 'var(--amino-amber-l80)',
-  'warning-dark': 'var(--amino-amber-d20)',
+  'primary-light': 'var(--amino-blue-500)',
+  'primary-dark': 'var(--amino-blue-800)',
+  success: 'var(--amino-green-300)',
+  'success-dark': 'var(--amino-green-700)',
+  warning: 'var(--amino-amber-100)',
+  'warning-dark': 'var(--amino-amber-700)',
 
   /* GLOW COLOR */
   'glow-error': '0 0 0 1px var(--amino-red-base)',
@@ -144,12 +144,12 @@ export const theme = {
 
   /* LAYOUT COLOR */
   'page-background': 'white',
-  'border-color': 'var(--amino-gray-l60)',
+  'border-color': 'var(--amino-gray-300)',
   'hover-color': 'var(--amino-gray-50)',
   'surface-color': 'white',
   'surface-color-secondary': 'var(--amino-gray-50)',
   'text-light': 'white',
-  'text-color': 'var(--amino-gray-d80)',
+  'text-color': 'var(--amino-gray-1000)',
   'text-dark': 'var(--amino-text-color)',
   'input-background': 'white',
 
@@ -217,7 +217,7 @@ export const theme = {
   'sidebar-width': '264px',
   'sidebar-color': 'white',
   'header-color': 'white',
-  'backdrop-color': 'var(--amino-gray-d80)',
+  'backdrop-color': 'var(--amino-gray-1000)',
   'elevation-0': '0',
   'elevation-100': '100',
   'elevation-200': '200',
@@ -225,7 +225,7 @@ export const theme = {
   'elevation-400': '400',
   'elevation-500': '500',
   /** @info 400 */
-  'dialog-elevation': 'var(--amino-elevation-l20)',
+  'dialog-elevation': 'var(--amino-elevation-400)',
   /** @info 500 */
   'toast-elevation': 'var(--amino-elevation-base)',
   /** @info 500 */
@@ -254,13 +254,13 @@ export const theme = {
 
   /* BORDER */
   border: '1px solid var(--amino-border-color)',
-  'border-blue': '1px solid var(--amino-blue-l20)',
-  'border-red': '1px solid var(--amino-red-l40)',
-  'border-cyan': '1px solid var(--amino-cyan-l40)',
-  'border-orange': '1px solid var(--amino-orange-l40)',
-  'border-green': '1px solid var(--amino-green-l40)',
-  'border-purple': '1px solid var(--amino-purple-l40)',
-  'border-amber': '1px solid var(--amino-amber-l40)',
+  'border-blue': '1px solid var(--amino-blue-500)',
+  'border-red': '1px solid var(--amino-red-400)',
+  'border-cyan': '1px solid var(--amino-cyan-400)',
+  'border-orange': '1px solid var(--amino-orange-400)',
+  'border-green': '1px solid var(--amino-green-400)',
+  'border-purple': '1px solid var(--amino-purple-400)',
+  'border-amber': '1px solid var(--amino-amber-400)',
   'border-transparent': '1px solid transparent',
 
   /** @info 34px */
