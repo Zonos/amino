@@ -582,7 +582,7 @@ export const theme = {
   /** @info var(--amino-red-base) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   danger: 'var(--amino-danger)',
-  /** @info var(--amino-red-d20) */
+  /** @info var(--amino-red-700) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   dangerDark: 'var(--amino-danger-dark)',
   /** @info var(--amino-red-base) */
@@ -591,22 +591,22 @@ export const theme = {
   /** @info var(--amino-blue-base) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   primary: 'var(--amino-primary)',
-  /** @info var(--amino-blue-l20) */
+  /** @info var(--amino-blue-500) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   primaryLight: 'var(--amino-primary-light)',
-  /** @info var(--amino-blue-d40) */
+  /** @info var(--amino-blue-800) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   primaryDark: 'var(--amino-primary-dark)',
-  /** @info var(--amino-green-l60) */
+  /** @info var(--amino-green-300) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   success: 'var(--amino-success)',
-  /** @info var(--amino-green-d20) */
+  /** @info var(--amino-green-700) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   successDark: 'var(--amino-success-dark)',
-  /** @info var(--amino-amber-l80) */
+  /** @info var(--amino-amber-100) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   warning: 'var(--amino-warning)',
-  /** @info var(--amino-amber-d20) */
+  /** @info var(--amino-amber-700) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   warningDark: 'var(--amino-warning-dark)',
 
@@ -637,7 +637,7 @@ export const theme = {
   /** @info white */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   pageBackground: 'var(--amino-page-background)',
-  /** @info var(--amino-gray-l60) */
+  /** @info var(--amino-gray-300) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderColor: 'var(--amino-border-color)',
   /** @info var(--amino-gray-50) */
@@ -652,7 +652,7 @@ export const theme = {
   /** @info white */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textLight: 'var(--amino-text-light)',
-  /** @info var(--amino-gray-d80) */
+  /** @info var(--amino-gray-1000) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textColor: 'var(--amino-text-color)',
   /** @info var(--amino-text-color) */
@@ -881,7 +881,7 @@ export const theme = {
   /** @info white */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   headerColor: 'var(--amino-header-color)',
-  /** @info var(--amino-gray-d80) */
+  /** @info var(--amino-gray-1000) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   backdropColor: 'var(--amino-backdrop-color)',
   /** @info 0 */
@@ -955,25 +955,25 @@ export const theme = {
   /** @info 1px solid var(--amino-border-color) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   border: 'var(--amino-border)',
-  /** @info 1px solid var(--amino-blue-l20) */
+  /** @info 1px solid var(--amino-blue-500) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderBlue: 'var(--amino-border-blue)',
-  /** @info 1px solid var(--amino-red-l40) */
+  /** @info 1px solid var(--amino-red-400) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderRed: 'var(--amino-border-red)',
-  /** @info 1px solid var(--amino-cyan-l40) */
+  /** @info 1px solid var(--amino-cyan-400) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderCyan: 'var(--amino-border-cyan)',
-  /** @info 1px solid var(--amino-orange-l40) */
+  /** @info 1px solid var(--amino-orange-400) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderOrange: 'var(--amino-border-orange)',
-  /** @info 1px solid var(--amino-green-l40) */
+  /** @info 1px solid var(--amino-green-400) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderGreen: 'var(--amino-border-green)',
-  /** @info 1px solid var(--amino-purple-l40) */
+  /** @info 1px solid var(--amino-purple-400) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderPurple: 'var(--amino-border-purple)',
-  /** @info 1px solid var(--amino-amber-l40) */
+  /** @info 1px solid var(--amino-amber-400) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderAmber: 'var(--amino-border-amber)',
   /** @info 1px solid transparent */
