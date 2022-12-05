@@ -2,10 +2,70 @@
 
 This script is primarily created for generating accessible style constants and css file from configured style constant to benefit from strongly typed css variable and jsdocs support for Amino consumers.
 
-- Sub script for generating dynamic constants to be consumed in `build-utils/css/constants/theme.ts` process is `build-utils/css/buildLogicConstants.ts`
+- Sub script for generating color css constant from the color svgs downloaded from Figma, and checking if any generated color constants are not being imported/used in the main `theme.ts`, also generating dynamic constants to be consumed in `build-utils/css/constants/theme.ts`.
+    + Script for building the dynamic logic constant process is `build-utils/css/buildLogicConstants.ts`.
+    + Script for building color from svg exported from Figma is `build-utils/css/buildColorConstants.ts`
 - Main script for this whole building process is `build-utils/css/buildTheme.ts`.
 
 ---
+
+## **Generating color css constants**
+Sub script `build-utils/css/buildColorConstants.ts` is primarily created for generating the color constants in folder `build-utils/css/constants/generated/colors` that can be used in any theme file (`theme.ts`). If you run `yarn build:theme`, it will also trigger the command below.
+
+**Command**:
+```bash
+    yarn build:colors
+```
+### **When you run the script, it will**:
+
+1. Read through all the files om `build-utils/css/colorSvgs` to look for svgs that are downloaded from Figma. Base on the svg downloaded from Figma, the name of the svg will be separated into 2 parts:  "color name" and "color intensity" (Ex: "Blue500"). And the color code can be found in `fill` property of a `rect` tag in the svg. In this first step, the script will extract all of necessary data (color name, color code and color intensity) for step 2.
+2. Generating color constant with the file naming convention: `_${color}.ts`, and having the new color code as well as the deprecated code. Below is the example of the generated constant (blue).  
+Ex:  
+    ```
+    // File name: _blue.ts
+    export const blue = {
+        /** @info #E8EBFC  */
+        'blue-100': '#E8EBFC',
+        /** @info #C9CFF8  */
+        'blue-200': '#C9CFF8',
+        /** @info #96A2F3  */
+        'blue-300': '#96A2F3',
+        /** @info #7081F0  */
+        'blue-400': '#7081F0',
+        /** @info #586CEE  */
+        'blue-500': '#586CEE',
+        /** @info #475FE9  */
+        'blue-600': '#475FE9',
+        /** @info #3A4ECF  */
+        'blue-700': '#3A4ECF',
+        /** @info #2A3BAC  */
+        'blue-800': '#2A3BAC',
+        /** @info #1C2662  */
+        'blue-900': '#1C2662',
+        /** @info #13193F  */
+        'blue-1000': '#13193F',
+
+        /** @deprecated use blue100 instead */
+        'blue-l80': 'var(--amino-blue-100)',
+        /** @deprecated use blue300 instead */
+        'blue-l60': 'var(--amino-blue-300)',
+        /** @deprecated use blue400 instead */
+        'blue-l40': 'var(--amino-blue-400)',
+        /** @deprecated use blue500 instead */
+        'blue-l20': 'var(--amino-blue-500)',
+        /** @deprecated use blue600 instead */
+        'blue-base': 'var(--amino-blue-600)',
+        /** @deprecated use blue700 instead */
+        'blue-d20': 'var(--amino-blue-700)',
+        /** @deprecated use blue800 instead */
+        'blue-d40': 'var(--amino-blue-800)',
+        /** @deprecated use blue900 instead */
+        'blue-d60': 'var(--amino-blue-900)',
+        /** @deprecated use blue1000 instead */
+        'blue-d80': 'var(--amino-blue-1000)',
+    } as const;
+    ```
+3. The build process is programmed to terminate the process if there is an unused color constant in `build-utils/css/constants/generated/colors` folder. So remember to use that generated constant in the main theme file `theme.ts`.
 
 ## **Generating dynamic constant process overview**
 
@@ -26,6 +86,24 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 
 ## **How to**:
 
+### - Generate a color constant
+1. Download the color set svg from Figma by selecting the whole component (the component should be named after the text inside) and exporting them to svg format
+2. Put all of the exported svg into `build-utils/css/colorSvgs` folder, and make sure the component name is in CamelCase (Blue100.svg, Blue200.svg, ...).
+3. **SKIP THIS STEP if the variable name doesn't change. If the variable from the Figma and the current variable are different (like the variable name before was `BlueL80` and now it become `Blue100`).**
+    - Look into `build-utils/css/utils/generateColorConstantFromSvgs/generateFileContent.ts` file.
+    - Adjust mapping configuration for the color in the mapping array `deprecatedIntensityMapping`. The key on the left would be the legacy color suffix and the value on the right would be the new one. This mapping configuration would also add the legacy color down below and add the `@deprecated` tag above it after the content of the new color.
+    - You can also adjust the content of constant `content` in the function `generateFileContent` to modify what's being generated if needed (Like add jsdocs or change text or adding more deperecated color).
+4. Run the command below to trigger the generation process.
+    ```yarn build:colors```
+5. Import and use the generated constant in the `theme.ts` by spreading the constant variable.
+    ```
+        // File name: `theme.ts`
+        import { blue } from './generated/colors/_blue';
+        export const theme = {
+            ...blue,
+        } as const
+    ```
+**NOTE**: If there is any unused generated color constants and you run command `yarn build:theme` or `yarn build`. The building process will be terminated intentionally to tell you which color files are not being used. You can either delete the unused svgs so that it will not generate the constant and remove the referencing constant in the `build-utils/css/constants/generated/colors` folder, or use them in the main theme constant `theme.ts`.
 ### - Create a logic file
 
 1.  Run the command below to generate the dummy content for your new dynamic constant logic.
@@ -38,16 +116,15 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 
     ````
     export const getYourFileNameConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
-    const contentArr: Record<string, string> = {};
+        const contentArr: Record<string, string> = {};
 
-            /** Put logic here to generate constant key value pairs */
-            for (let i=0; i<5; i++) {
-                // this will return a constant looks like `{"key-1": "value-1", "key-2": "value-2", ...}.
-                contentArr[`key-${i}`] = `value-${i}`;
-            }
-            return contentArr;
-        };
-        ```
+        /** Put logic here to generate constant key value pairs */
+        for (let i=0; i<5; i++) {
+            // this will return a constant looks like `{"key-1": "value-1", "key-2": "value-2", ...}.
+            contentArr[`key-${i}`] = `value-${i}`;
+        }
+        return contentArr;
+    };
 
     ````
 
