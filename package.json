@@ -127,6 +127,7 @@
     "postbuild:prep:publish": "echo 'done building for publishing'",
     "template:logic-constant": "ts-node build-utils/css/generateLogicConstTemplate.ts",
     "build:logic-constant": "ts-node build-utils/css/buildLogicConstants.ts",
+    "build:colors": "ts-node build-utils/css/buildColorConstants.ts",
     "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "test:prod": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/storyshots",
