@@ -26,6 +26,9 @@ export interface BadgeProps {
   iconRight?: boolean;
   bold?: boolean;
   rounded?: boolean;
+  /**
+   * @default large
+   */
   size?: Size;
 }
 
@@ -36,7 +39,7 @@ const StyledBadge = styled.div<BadgeProps>`
   display: flex;
   gap: ${theme.spaceQuarter};
   font-size: ${theme.textSm};
-  padding: 3px ${theme.spaceHalf};
+  padding: 2px 6px;
   text-align: center;
   border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius)};
   // default background color (gray)
@@ -47,6 +50,7 @@ const StyledBadge = styled.div<BadgeProps>`
   p {
     margin: 0;
     font-weight: ${p => p.fontWeight || '600'};
+    line-height: 16px;
   }
   svg {
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
@@ -60,7 +64,7 @@ const StyledBadge = styled.div<BadgeProps>`
 
   // size
   &.large {
-    padding: 10px ${theme.spaceHalf};
+    padding: 4px 8px;
   }
 
   &.blue {
@@ -143,25 +147,23 @@ const StyledBadge = styled.div<BadgeProps>`
 export const Badge = ({
   children,
   className,
-  color,
+  color = 'gray',
   fontWeight,
   icon,
   iconRight,
   bold,
-  rounded,
-  size,
+  rounded = false,
+  size = 'large',
 }: BadgeProps) => (
   <BadgeWrapper className={className}>
     <StyledBadge
-      rounded={!!rounded}
+      rounded={rounded}
       bold={!!bold}
       fontWeight={fontWeight}
       iconRight={iconRight}
       color={color}
       size={size}
-      className={[color || 'gray', size || 'small', bold ? 'bold' : ''].join(
-        ' '
-      )}
+      className={[color, size, bold ? 'bold' : ''].join(' ')}
     >
       {icon}
       <p>{children}</p>
