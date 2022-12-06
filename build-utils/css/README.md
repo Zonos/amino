@@ -103,7 +103,7 @@ Ex:
     3. **SKIP THIS STEP if the variable name doesn't change. If the variable from the Figma and the current variable are different (like the variable name before was `BlueL80` and now it become `Blue100`).**
         - Look into `build-utils/css/utils/generateColorConstantFromSvgs/generateFileContent.ts` file.
         - Adjust the mapping configuration for the color in the mapping array `deprecatedIntensityMapping`. In the object, the key on the left would be the legacy color suffix and the value on the right would be the new one. This mapping configuration would also add the legacy colors down below and add the `@deprecated` tag above it after the content of the new color.
-        - You can also adjust the content of constant `content` in the function `generateFileContent` to modify what's being generated if needed (Like add jsdocs or change text or adding more deperecated color).
+        - You can also adjust the content of constant `content` in the function `generateFileContent` to modify what's being generated if needed (Like add jsdocs or change text or adding more deprecated color).
     4. Run the command below to trigger the generation process.
         ```yarn build:colors```
     5. Import and use the generated constant in the `theme.ts` by spreading the constant variable (you can find out more details [here](#import-generated-file-in-theme-file-themets--_darkthemets)).
