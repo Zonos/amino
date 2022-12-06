@@ -66,8 +66,8 @@ export const Toast: React.FC<ToastProps> = ({ children, intent, toastKey }) => {
       return (
         <AminoSuccessToast layout {...baseProps}>
           <CheckCircleDuotoneIcon
-            color="green-d60"
-            secondaryColor="green-l40"
+            color="green-900"
+            secondaryColor="green-400"
           />
           {children}
         </AminoSuccessToast>
@@ -75,14 +75,14 @@ export const Toast: React.FC<ToastProps> = ({ children, intent, toastKey }) => {
     case 'error':
       return (
         <AminoErrorToast layout {...baseProps}>
-          <RemoveCircleDuotoneIcon color="red-d60" secondaryColor="red-l40" />
+          <RemoveCircleDuotoneIcon color="red-900" secondaryColor="red-400" />
           {children}
         </AminoErrorToast>
       );
     case 'warning':
       return (
         <AminoWarningToast layout {...baseProps}>
-          <WarningDuotoneIcon color="orange-d60" secondaryColor="orange-l40" />
+          <WarningDuotoneIcon color="orange-900" secondaryColor="orange-400" />
           {children}
         </AminoWarningToast>
       );
@@ -90,14 +90,14 @@ export const Toast: React.FC<ToastProps> = ({ children, intent, toastKey }) => {
     case 'info':
       return (
         <AminoInfoToast layout {...baseProps}>
-          <InfoDuotoneIcon color="blue-d60" secondaryColor="blue-l40" />
+          <InfoDuotoneIcon color="blue-900" secondaryColor="blue-400" />
           {children}
         </AminoInfoToast>
       );
     default:
       return (
         <AminoToast layout {...baseProps}>
-          <InfoDuotoneIcon color="gray-d60" secondaryColor="gray-l40" />
+          <InfoDuotoneIcon color="gray-900" secondaryColor="gray-400" />
           {children}
         </AminoToast>
       );

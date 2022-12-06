@@ -86,9 +86,9 @@ export const CollapsableList = ({
         onClick={() => setExpand(!expand)}
         rightDecorator={
           expand ? (
-            <ChevronUpIcon color="gray-d60" />
+            <ChevronUpIcon color="gray-900" />
           ) : (
-            <ChevronDownIcon color="gray-d60" />
+            <ChevronDownIcon color="gray-900" />
           )
         }
       />
