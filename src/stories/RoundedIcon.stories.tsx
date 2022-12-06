@@ -6,12 +6,10 @@ import {
   RoundedIconProps,
 } from 'src/components/rounded-icon/RoundedIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const RoundedIconMeta: Meta = {
   title: 'Amino/RoundedIcon',
   component: RoundedIcon,
-  decorators: [withDesign],
 };
 
 export default RoundedIconMeta;

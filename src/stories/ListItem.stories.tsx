@@ -4,12 +4,10 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { List } from 'src/components/list/List';
 import { ListItem, Props } from 'src/components/list-item/ListItem';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const ListItemMeta: Meta = {
   title: 'Amino/ListItem',
   component: ListItem,
-  decorators: [withDesign],
 };
 
 export default ListItemMeta;

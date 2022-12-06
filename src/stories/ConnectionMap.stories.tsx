@@ -6,7 +6,6 @@ import { CountrySelect } from 'src/components/select/CountrySelect';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 import useSWR from 'swr';
 
@@ -24,7 +23,6 @@ const CountrySelectMeta: Meta = {
   title: 'Amino/ConnectionMap',
   component: ConnectionMap,
   decorators: [
-    withDesign,
     Component => (
       <StyledWrapper>
         <Component />

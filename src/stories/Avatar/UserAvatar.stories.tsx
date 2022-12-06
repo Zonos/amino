@@ -5,12 +5,10 @@ import {
   UserAvatar as Avatar,
   UserAvatarProps,
 } from 'src/components/avatar/UserAvatar';
-import { withDesign } from 'storybook-addon-designs';
 
 const UserAvatarMeta: Meta = {
   title: 'Amino/Avatar/User Avatar',
   component: Avatar,
-  decorators: [withDesign],
 };
 
 export default UserAvatarMeta;

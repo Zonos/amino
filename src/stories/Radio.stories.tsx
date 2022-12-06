@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Radio, RadioProps } from 'src/components/radio/Radio';
-import { withDesign } from 'storybook-addon-designs';
 
 const RadioMeta: Meta = {
   title: 'Amino/Radio',
   component: Radio,
-  decorators: [withDesign],
   argTypes: {
     disabled: {
-      defaultValue: false,
       type: 'boolean',
     },
     checked: {
-      defaultValue: false,
       type: 'boolean',
     },
   },
@@ -24,17 +20,19 @@ export default RadioMeta;
 
 const Template: Story<RadioProps> = ({
   disabled,
-  checked,
+  checked: initialChecked,
   label,
-  onChange,
-}: RadioProps) => (
-  <Radio
-    label={label}
-    checked={checked}
-    disabled={disabled}
-    onChange={onChange}
-  />
-);
+}: RadioProps) => {
+  const [checked, setChecked] = useState(initialChecked);
+  return (
+    <Radio
+      label={label}
+      checked={checked}
+      disabled={disabled}
+      onChange={e => setChecked(e)}
+    />
+  );
+};
 
 export const BasicRadio = Template.bind({});
 BasicRadio.args = {

@@ -15,12 +15,10 @@ import { MailIcon } from 'src/icons/MailIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import { UserIcon } from 'src/icons/UserIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const MenuButtonMeta: Meta = {
   title: 'Amino/MenuButton',
   component: MenuButton,
-  decorators: [withDesign],
 };
 
 export default MenuButtonMeta;

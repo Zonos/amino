@@ -5,15 +5,12 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import { RichRadio, RichRadioProps } from 'src/components/rich-radio/RichRadio';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const RichRadioMeta: Meta = {
   title: 'Amino/RichRadio',
   component: RichRadio,
-  decorators: [withDesign],
   argTypes: {
     icon: {
-      defaultValue: 'No Icon',
       options: ['No Icon', 'Check Icon', 'Chevron Right Icon'],
       mapping: {
         'No Icon': undefined,
@@ -22,7 +19,6 @@ const RichRadioMeta: Meta = {
       },
     },
     activeIcon: {
-      defaultValue: 'Chevron Right Icon',
       options: ['Check Icon', 'Chevron Right Icon'],
       mapping: {
         'Check Icon': <CheckMarkIcon />,
@@ -77,7 +73,7 @@ BasicRichRadio.args = {
     },
     {
       label: 'Item 2',
-      subtitle: 'Item 2 subtitle',
+      subtitle: 'Item 2 subtitle (with tooltip)',
       value: 'item2',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
@@ -130,7 +126,7 @@ CustomRichRadioOption.args = {
     },
     {
       label: 'Item 2',
-      subtitle: 'Item 2 subtitle',
+      subtitle: 'Item 2 subtitle (with tooltip)',
       value: 'item2',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',

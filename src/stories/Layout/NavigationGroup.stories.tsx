@@ -9,14 +9,11 @@ import {
 import { HomeIcon } from 'src/icons/HomeIcon';
 import { PuzzleIcon } from 'src/icons/legacy/PuzzleIcon';
 import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const NavigationGroupMeta: Meta = {
   title: 'Amino/Layout',
   component: NavigationGroup,
   subcomponents: { NavigationItem },
-  decorators: [withDesign],
-
   parameters: {
     docs: { source: { type: 'code' } },
   },

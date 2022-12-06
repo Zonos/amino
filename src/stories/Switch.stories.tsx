@@ -3,27 +3,22 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Switch, SwitchProps } from 'src/components/switch/Switch';
 import { Default } from 'src/icons/flags/Default';
-import { withDesign } from 'storybook-addon-designs';
 
 const SwitchMeta: Meta = {
   title: 'Amino/Switch',
   component: Switch,
-  decorators: [withDesign],
   argTypes: {
     checked: {
       type: 'boolean',
-      defaultValue: true,
     },
     labelDescription: {
-      defaultValue: 'label description',
+      type: 'string',
     },
     disabled: {
       type: 'boolean',
-      defaultValue: false,
     },
     subtitle: {
       type: 'string',
-      defaultValue: undefined,
     },
   },
 };

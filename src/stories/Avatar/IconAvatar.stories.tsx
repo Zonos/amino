@@ -6,12 +6,10 @@ import {
   IconAvatarProps,
 } from 'src/components/avatar/IconAvatar';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const IconAvatarMeta: Meta = {
   title: 'Amino/Avatar/Icon Avatar',
   component: Avatar,
-  decorators: [withDesign],
 };
 
 export default IconAvatarMeta;

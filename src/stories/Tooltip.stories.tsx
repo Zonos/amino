@@ -9,7 +9,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
 import { truncateText } from 'src/utils/truncateText';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const TransparentCoverSheet = styled(CoverSheet)`
@@ -19,26 +18,26 @@ const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
   title: 'Amino/Tooltip',
   component: Tooltip,
-  decorators: [withDesign],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=196%3A10758&t=2qWmuoXr8klMzpYH-0',
+    },
+  },
   argTypes: {
     disabled: {
-      defaultValue: false,
       type: 'boolean',
     },
     href: {
-      defaultValue: '',
       type: 'string',
     },
     iconRight: {
-      defaultValue: false,
       type: 'boolean',
     },
     loading: {
-      defaultValue: false,
       type: 'boolean',
     },
     loadingText: {
-      defaultValue: '',
       type: 'string',
     },
     tabIndex: {
@@ -299,77 +298,35 @@ export const Default = Template.bind({});
 Default.args = {
   intent: 'secondary',
 };
-Default.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
-  },
-};
 
 export const Primary = Template.bind({});
 Primary.args = {
   intent: 'primary',
-};
-Primary.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A20',
-  },
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
   intent: 'danger',
 };
-Danger.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
-};
 
 export const Warning = Template.bind({});
 Warning.args = {
   intent: 'warning',
-};
-Warning.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
   intent: 'outline',
 };
-Outline.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
-};
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
   intent: 'link',
 };
-LinkButton.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
-  },
-};
 
 export const Subtle = Template.bind({});
 Subtle.args = {
   intent: 'subtle',
-};
-Subtle.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
 };
 
 export const TextButton = Template.bind({});

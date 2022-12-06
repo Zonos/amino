@@ -9,14 +9,12 @@ import { Input } from 'src/components/input/Input';
 import { HSection, HSectionProps } from 'src/components/section/HSection';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 import { v4 } from 'uuid';
 
 const HSectionMeta: Meta = {
   title: 'Amino/HSection',
   component: HSection,
-  decorators: [withDesign],
 };
 
 export default HSectionMeta;

@@ -6,12 +6,10 @@ import {
   RichCheckboxProps,
 } from 'src/components/rich-checkbox/RichCheckbox';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
-import { withDesign } from 'storybook-addon-designs';
 
 const RichCheckboxMeta: Meta = {
   title: 'Amino/RichCheckbox',
   component: RichCheckbox,
-  decorators: [withDesign],
 };
 
 export default RichCheckboxMeta;

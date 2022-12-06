@@ -5,32 +5,26 @@ import { Button, ButtonProps } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { theme } from 'src/styles/constants/theme';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
   title: 'Amino/Button',
   component: Button,
-  decorators: [withDesign],
   argTypes: {
     disabled: {
-      defaultValue: false,
       type: 'boolean',
     },
     href: {
       type: 'string',
     },
     iconRight: {
-      defaultValue: false,
       type: 'boolean',
     },
     loading: {
-      defaultValue: false,
       type: 'boolean',
     },
     loadingText: {
-      defaultValue: '',
       type: 'string',
     },
     tabIndex: {

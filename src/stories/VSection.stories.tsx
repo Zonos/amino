@@ -7,13 +7,11 @@ import { ListItem } from 'src/components/list-item/ListItem';
 import { VSection, VSectionProps } from 'src/components/section/VSection';
 import { VStack } from 'src/components/stack/VStack';
 import { CartIcon } from 'src/icons/CartIcon';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const VSectionMeta: Meta = {
   title: 'Amino/VSection',
   component: VSection,
-  decorators: [withDesign],
 };
 
 export default VSectionMeta;

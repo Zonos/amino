@@ -9,12 +9,10 @@ import {
   DragEndEvent,
 } from 'src/components/sortable-list/SortableListDeps';
 import { SortableListItem } from 'src/components/sortable-list/SortableListItem';
-import { withDesign } from 'storybook-addon-designs';
 
 const SortableListMeta: Meta = {
   title: 'Amino/SortableList',
   component: SortableList,
-  decorators: [withDesign],
 };
 
 export default SortableListMeta;

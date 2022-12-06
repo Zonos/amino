@@ -3,28 +3,26 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Checkbox, CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const CheckboxMeta: Meta = {
   title: 'Amino/Checkbox',
   component: Checkbox,
-  decorators: [withDesign],
-  argTypes: {
-    checked: {
-      type: 'boolean',
-      defaultValue: true,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
     },
+  },
+  argTypes: {
     labelDescription: {
-      defaultValue: 'label description',
+      type: 'string',
     },
     disabled: {
       type: 'boolean',
-      defaultValue: false,
     },
     subtitle: {
       type: 'string',
-      defaultValue: undefined,
     },
   },
 };
@@ -60,12 +58,6 @@ BasicCheckbox.args = {
   icon: <Default width={16} height={12} />,
   subtitle: 'Subtitle here',
 };
-BasicCheckbox.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
-};
 
 export const DisabledBasicCheckbox = Template.bind({});
 DisabledBasicCheckbox.args = {
@@ -74,40 +66,22 @@ DisabledBasicCheckbox.args = {
   label: 'Input label',
   subtitle: 'Subtitle here',
 };
-DisabledBasicCheckbox.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
-};
 
 export const BasicCheckboxWithoutIcon = Template.bind({});
 BasicCheckboxWithoutIcon.args = {
   label: 'Input label',
   subtitle: 'Subtitle here',
 };
-BasicCheckboxWithoutIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
-};
 export const BasicCheckboxWithoutSubtitle = Template.bind({});
 BasicCheckboxWithoutSubtitle.args = {
-  icon: <Default height={16} width={16} />,
   label: 'Input label',
-};
-BasicCheckboxWithoutSubtitle.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
+  icon: <Default height={16} width={16} />,
 };
 
 export const CheckboxWithSubstitueLabel = Template.bind({});
 CheckboxWithSubstitueLabel.args = {
-  icon: <Default height={16} width={16} />,
   label: 'Input label',
+  icon: <Default height={16} width={16} />,
   labelComponent: (
     <LabelComponent>
       I have read and agree to the{' '}
@@ -145,10 +119,4 @@ CheckboxWithSubstitueLabel.args = {
       .
     </LabelComponent>
   ),
-};
-CheckboxWithSubstitueLabel.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
 };

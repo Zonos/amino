@@ -8,7 +8,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { IOption } from 'src/types/IOption';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -18,7 +17,6 @@ const StyledWrapper = styled.div`
 const SelectMeta: Meta = {
   title: 'Amino/Select',
   component: Select,
-  decorators: [withDesign],
 };
 
 export default SelectMeta;

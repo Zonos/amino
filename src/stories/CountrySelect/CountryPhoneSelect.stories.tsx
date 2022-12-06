@@ -7,7 +7,6 @@ import {
 } from 'src/components/select/CountryPhoneSelect';
 import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
 import { ICountryOption } from 'src/types/ICountry';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 import { getCountryUrls } from './getCountryUrls';
@@ -21,7 +20,6 @@ const CountryPhoneSelectMeta: Meta = {
   title: 'Amino/CountryPhoneSelect',
   component: CountryPhoneSelect,
   decorators: [
-    withDesign,
     Component => (
       <StyledWrapper>
         <Component />

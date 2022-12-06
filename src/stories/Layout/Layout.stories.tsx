@@ -26,10 +26,8 @@ const LayoutMeta: Meta = {
   parameters: {
     docs: { source: { type: 'code' } },
   },
-
   argTypes: {
     searchInput: {
-      defaultValue: 'Has Search Input',
       options: ['No Search Input', 'Has Search Input'],
       mapping: {
         'No Search Input': null,

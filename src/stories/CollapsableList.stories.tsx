@@ -10,12 +10,10 @@ import { ListItem } from 'src/components/list-item/ListItem';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const CollapsableListMeta: Meta = {
   title: 'Amino/CollapsableList',
   component: CollapsableList,
-  decorators: [withDesign],
 };
 
 export default CollapsableListMeta;

@@ -10,13 +10,11 @@ import { VStack } from 'src/components/stack/VStack';
 import { MinusSolidIcon } from 'src/icons/MinusSolidIcon';
 import { PlusSolidIcon } from 'src/icons/PlusSolidIcon';
 import { Size } from 'src/types/Size';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const ComposerMeta: Meta = {
   title: 'Amino/Composer',
   component: () => <div />,
-  decorators: [withDesign],
 };
 
 export default ComposerMeta;

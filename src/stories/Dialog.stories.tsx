@@ -5,13 +5,11 @@ import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
 import { Dialog, DialogProps } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const DialogMeta: Meta = {
   title: 'Amino/Dialog',
   component: Dialog,
-  decorators: [withDesign],
   parameters: {
     design: {
       type: 'figma',

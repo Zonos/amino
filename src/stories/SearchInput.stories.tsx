@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { InputProps, SearchInput } from 'src/components/input/SearchInput';
-import { withDesign } from 'storybook-addon-designs';
 
 const InputMeta: Meta = {
   title: 'Amino/SearchInput',
   component: SearchInput,
-  decorators: [withDesign],
   argTypes: {
     className: {
       table: {
@@ -18,22 +16,18 @@ const InputMeta: Meta = {
       type: 'string',
     },
     value: {
-      defaultValue: '',
       type: 'string',
     },
     pattern: {
       type: 'string',
     },
     required: {
-      defaultValue: false,
       type: 'boolean',
     },
     disabled: {
-      defaultValue: false,
       type: 'boolean',
     },
     readOnly: {
-      defaultValue: false,
       type: 'boolean',
     },
     autoFocus: {
@@ -50,7 +44,6 @@ export default InputMeta;
 const Template: Story<InputProps> = ({
   autoFocus,
   disabled,
-  onChange,
   onKeyDown,
   pattern,
   placeholder,
@@ -58,20 +51,24 @@ const Template: Story<InputProps> = ({
   required,
   tabIndex,
   value,
-}) => (
-  <SearchInput
-    autoFocus={autoFocus}
-    disabled={disabled}
-    onChange={onChange}
-    onKeyDown={onKeyDown}
-    pattern={pattern}
-    placeholder={placeholder}
-    readOnly={readOnly}
-    required={required}
-    tabIndex={tabIndex}
-    value={value}
-  />
-);
+}) => {
+  const [search, setSearch] = useState(value);
+
+  return (
+    <SearchInput
+      autoFocus={autoFocus}
+      disabled={disabled}
+      onChange={e => setSearch(e.target.value)}
+      onKeyDown={onKeyDown}
+      pattern={pattern}
+      placeholder={placeholder}
+      readOnly={readOnly}
+      required={required}
+      tabIndex={tabIndex}
+      value={search}
+    />
+  );
+};
 
 export const Default = Template.bind({});
 Default.parameters = {

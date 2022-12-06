@@ -2,26 +2,22 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Dropzone, DropzoneProps } from 'src/components/dropzone/Dropzone';
-import { withDesign } from 'storybook-addon-designs';
 
 const ListMeta: Meta = {
   title: 'Amino/Dropzone',
   component: Dropzone,
-  decorators: [withDesign],
   argTypes: {
     error: {
       type: 'boolean',
-      description: 'Flag determine to render error border or not',
+      description: 'Error state',
     },
     dropzoneDisabled: {
       type: 'boolean',
-      defaultValue: false,
     },
     loadingText: {
       description: 'ReactNode that will be rendered when `loading` flag is on',
     },
     helperText: {
-      defaultValue: '',
       type: 'string',
     },
   },

@@ -5,7 +5,6 @@ import {
   CountryMultiSelect,
   CountryMultiSelectProps,
 } from 'src/components/select/CountryMultiSelect';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 import { getCountryUrls } from './getCountryUrls';
@@ -19,7 +18,6 @@ const CountryMultiSelectMeta: Meta = {
   title: 'Amino/CountryMultiSelect',
   component: CountryMultiSelect,
   decorators: [
-    withDesign,
     Component => (
       <StyledWrapper>
         <Component />

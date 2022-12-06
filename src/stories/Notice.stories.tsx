@@ -3,12 +3,10 @@ import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Notice, NoticeProps } from 'src/components/notice/Notice';
-import { withDesign } from 'storybook-addon-designs';
 
 const NoticeStories: Meta = {
   title: 'Amino/Notice',
   component: Notice,
-  decorators: [withDesign],
 };
 
 export default NoticeStories;

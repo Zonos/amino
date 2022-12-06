@@ -7,12 +7,10 @@ import { ListItem } from 'src/components/list-item/ListItem';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
-import { withDesign } from 'storybook-addon-designs';
 
 const ListMeta: Meta = {
   title: 'Amino/List',
   component: List,
-  decorators: [withDesign],
 };
 
 export default ListMeta;

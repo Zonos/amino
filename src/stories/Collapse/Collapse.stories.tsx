@@ -7,13 +7,11 @@ import {
   CollapseProps,
 } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const CollapseMeta: Meta = {
   title: 'Amino/Collapse',
   component: CollapseComponent,
-  decorators: [withDesign],
 
   parameters: {
     docs: { source: { type: 'code' } },

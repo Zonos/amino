@@ -5,12 +5,10 @@ import {
   DynamicIconAvatar as Avatar,
   DynamicIconAvatarProps,
 } from 'src/components/avatar/DynamicIconAvatar';
-import { withDesign } from 'storybook-addon-designs';
 
 const DynamicIconAvatarMeta: Meta = {
   title: 'Amino/Avatar/Dynamic Icon Avatar',
   component: Avatar,
-  decorators: [withDesign],
 };
 
 export default DynamicIconAvatarMeta;

@@ -6,13 +6,11 @@ import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
-import { withDesign } from 'storybook-addon-designs';
 import styled from 'styled-components';
 
 const BannerStories: Meta = {
   title: 'Amino/Banner',
   component: Banner,
-  decorators: [withDesign],
 };
 
 export default BannerStories;
