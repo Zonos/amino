@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { ComponentStory } from '@storybook/react';
 import { Meta } from '@storybook/react/types-6-0';

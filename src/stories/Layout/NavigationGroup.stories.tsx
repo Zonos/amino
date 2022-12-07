@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { MouseEvent, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {

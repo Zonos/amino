@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { VStack } from 'src/components/stack/VStack';
 import { Text, textOptions, TextProps } from 'src/components/text/Text';
@@ -57,7 +55,7 @@ const TextSizesLabel = styled.div`
 const TemplateTextSizes: Story<TextProps> = props => (
   <VStack spacing="space-quarter">
     {textOptions.map(option => (
-      <div>
+      <div key={option.type}>
         <TextSizesLabel>{option.type}</TextSizesLabel>
         <Text type={option.type} {...props}>
           {content}

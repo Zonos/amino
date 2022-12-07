@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
@@ -30,7 +30,7 @@ const Action = styled.div`
 export type RestStateProps = {
   label: string;
   subtitle: string;
-  action?: React.ReactNode;
+  action?: ReactNode;
   icon?: string;
   className?: string;
 };

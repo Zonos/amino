@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   IconAvatar as Avatar,
@@ -8,7 +6,15 @@ import {
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 
 const IconAvatarMeta: Meta = {
+  title: 'Avatar',
   component: Avatar,
+  argTypes: {
+    icon: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export default IconAvatarMeta;

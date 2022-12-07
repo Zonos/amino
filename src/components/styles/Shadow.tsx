@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
@@ -34,12 +34,12 @@ export const Shadow = () => (
     {shadows.map(({ label, value }) => {
       const aminoShadow: AminoShadow = `--amino-shadow-${value}`;
       return (
-        <React.Fragment key={aminoShadow}>
+        <Fragment key={aminoShadow}>
           <p>Shadow intensity: {label}</p>
           <StyledBoxShadowWrapper shadow={aminoShadow}>
             <p>var({aminoShadow})</p>
           </StyledBoxShadowWrapper>
-        </React.Fragment>
+        </Fragment>
       );
     })}
   </StyledWrapper>

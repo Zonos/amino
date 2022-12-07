@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
@@ -145,12 +145,12 @@ const Content = styled.div`
 `;
 
 export type DialogProps = {
-  actions?: React.ReactNode;
+  actions?: ReactNode;
   className?: string;
-  children: React.ReactNode;
-  label?: React.ReactNode;
+  children: ReactNode;
+  label?: ReactNode;
   subtitle?: string;
-  leftActions?: React.ReactNode;
+  leftActions?: ReactNode;
   onClose: () => void;
   open: boolean;
   theme?: IAminoTheme;

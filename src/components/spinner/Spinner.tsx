@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { theme } from 'src/styles/constants/theme';
 import { Intent } from 'src/types';
 import styled, { css, keyframes } from 'styled-components';

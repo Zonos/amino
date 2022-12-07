@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Badge, BadgeProps } from 'src/components/badge/Badge';
 import { CubeIcon } from 'src/icons/CubeIcon';

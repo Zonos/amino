@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { DynamicIcon, DynamicIconProps } from 'src/icons/icon-base/DynamicIcon';
 import * as icons from 'src/icons/IconIndex';

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { Color } from 'src/types';
 import { type IconProps } from 'src/types/IconProps';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { ChevronDownSolidIcon } from 'src/icons/ChevronDownSolidIcon';
@@ -45,10 +45,10 @@ const TitleDiv = styled.div`
 `;
 
 export type HSectionProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  label?: React.ReactNode;
-  sublabel?: React.ReactNode;
+  label?: ReactNode;
+  sublabel?: ReactNode;
   /**
    * @info Make the section content collapsable or not
    * @default false

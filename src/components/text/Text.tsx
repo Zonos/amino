@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
@@ -157,7 +157,7 @@ const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
 `;
 type TextStyle = Type | OtherText;
 export type TextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   isUppercase?: boolean;
   tag?: Tag;
@@ -165,7 +165,7 @@ export type TextProps = {
   type?: TextStyle;
 } & TypographyOverrides;
 
-export const Text: React.FC<TextProps> = ({
+export const Text: FC<TextProps> = ({
   children,
   className,
   color,

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import styled from 'styled-components';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   DynamicIconAvatar as Avatar,
@@ -7,6 +5,7 @@ import {
 } from 'src/components/avatar/DynamicIconAvatar';
 
 const DynamicIconAvatarMeta: Meta = {
+  title: 'Avatar',
   component: Avatar,
 };
 

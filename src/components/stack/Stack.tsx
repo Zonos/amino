@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ type DivProps = Omit<
 export interface StackProps extends DivProps {
   alignment?: GridAlignment;
   spacing?: GridSpacing;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 /**
  * A stack

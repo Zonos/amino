@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { type IconProps } from 'src/types/IconProps';
 

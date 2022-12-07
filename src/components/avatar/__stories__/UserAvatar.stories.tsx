@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   UserAvatar as Avatar,
@@ -7,6 +5,7 @@ import {
 } from 'src/components/avatar/UserAvatar';
 
 const UserAvatarMeta: Meta = {
+  title: 'Avatar',
   component: Avatar,
 };
 

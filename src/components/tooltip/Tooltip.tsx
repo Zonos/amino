@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { styled as muiStyled } from '@mui/material/styles';
 import MuiTooltip, {

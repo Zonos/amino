@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types/Color';
@@ -44,7 +44,7 @@ const WarningIconWrapper = styled(IconWrapper)`
 `;
 
 export type RoundedIconProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   intent?: Intent;
 } & CSSProps;

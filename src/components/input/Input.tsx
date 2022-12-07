@@ -1,4 +1,6 @@
-import React, {
+import {
+  ChangeEvent,
+  ChangeEventHandler,
   HTMLInputTypeAttribute,
   InputHTMLAttributes,
   ReactNode,
@@ -43,7 +45,7 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
 `;
 
 type DateInputEventHandler = (
-  e: Omit<React.ChangeEvent<HTMLInputElement>, 'target'> & {
+  e: Omit<ChangeEvent<HTMLInputElement>, 'target'> & {
     target: Omit<EventTarget, 'value'> & {
       /** @desc The parsed value is always formatted `yyyy-mm-dd`. Ex: '2022-12-28' */
       value: `${number}-${number}-${number}` | '';
@@ -56,7 +58,7 @@ type InputType<T extends HTMLInputTypeAttribute> = {
   width?: number;
   onChange: T extends 'date'
     ? DateInputEventHandler
-    : React.ChangeEventHandler<HTMLInputElement>;
+    : ChangeEventHandler<HTMLInputElement>;
   inputSuffix?: ReactNode;
   inputPrefix?: ReactNode;
 } & Omit<FloatLabelInputProps, 'onChange'> &

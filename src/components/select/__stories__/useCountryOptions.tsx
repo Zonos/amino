@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { FlagIcon, IFlag, IFlagScale } from 'src/icons/flag-icon/FlagIcon';
 import { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';

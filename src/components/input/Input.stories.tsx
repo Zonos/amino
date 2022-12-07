@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Input, InputProps } from 'src/components/input/Input';

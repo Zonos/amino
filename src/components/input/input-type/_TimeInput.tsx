@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import { ClockIcon } from 'src/icons/ClockIcon';
 import { theme } from 'src/styles/constants/theme';

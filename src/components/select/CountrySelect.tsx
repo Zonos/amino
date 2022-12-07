@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
 import { ICountryOption } from 'src/types/ICountry';
 

@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Card } from 'src/components/card/Card';

@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useCallback, useRef } from 'react';
+import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
 
 // This automatically attaches to itself the resize event listener
 // and adds onResize as callback
@@ -20,7 +20,7 @@ export const ResizeListener = ({
     }
   }, [onResize]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (getTarget()) {
       load();
     } else if (ref?.current?.addEventListener) {

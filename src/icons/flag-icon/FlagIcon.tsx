@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 // eslint-disable-next-line import/no-internal-modules
 import * as flags from '../flags/FlagIndex';

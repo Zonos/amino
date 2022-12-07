@@ -27,6 +27,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-props-no-spreading': 'off',
+    'react/react-in-jsx-scope': 'off',
     /** Typescript 4.0 changes */
     'no-use-before-define': 'off', // Disable the base rule it can report incorrect errors
     '@typescript-eslint/no-use-before-define': ['error'],

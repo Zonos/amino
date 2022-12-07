@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
@@ -217,7 +217,7 @@ const Template: Story<Props> = ({
               ].find(x => x.label === components[rowCol])?.value;
 
               return (
-                <React.Fragment key={rowCol}>
+                <Fragment key={rowCol}>
                   {Component ? (
                     <Component />
                   ) : (
@@ -226,7 +226,7 @@ const Template: Story<Props> = ({
                       icon={<PlusSolidIcon size={16} />}
                     />
                   )}
-                </React.Fragment>
+                </Fragment>
               );
             })}
           </StyledHStack>

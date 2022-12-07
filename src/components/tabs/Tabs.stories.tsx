@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Tabs, TabsProps } from 'src/components/tabs/Tabs';
 

@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useMemo, useState } from 'react';
 
 import { ResizeListener } from './useResizeAware/_ResizeListener';
 
@@ -18,7 +18,7 @@ export type UseResizeAwareProps = [
  * @NOTE Make sure the measured element has `position != initial`
  * (`relative`, `absolute`, or `fixed` will work)
  * @example
- * import React from 'react';
+ *
   import { useResizeAware } from 'src/utils/useResizeAware';
 
   const App = () => {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { VStack } from 'src/components/stack/VStack';
 import styled from 'styled-components';
 

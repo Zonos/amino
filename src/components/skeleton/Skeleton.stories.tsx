@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Card } from 'src/components/card/Card';

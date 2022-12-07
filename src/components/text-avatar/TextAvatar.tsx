@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { theme } from 'src/styles/constants/theme';
 import styled, { CSSProperties } from 'styled-components';
 

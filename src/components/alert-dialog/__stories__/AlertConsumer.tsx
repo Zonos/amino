@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useAlert } from 'src/components/alert-dialog/useAlert';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { theme } from 'src/styles/constants/theme';
@@ -13,11 +13,11 @@ const StyledSectionWrapper = styled.div`
 `;
 
 export type VSectionProps = {
-  actions?: React.ReactNode;
-  children: React.ReactNode;
+  actions?: ReactNode;
+  children: ReactNode;
   className?: string;
-  label?: React.ReactNode;
-  sublabel?: React.ReactNode;
+  label?: ReactNode;
+  sublabel?: ReactNode;
 };
 
 export const VSection = ({

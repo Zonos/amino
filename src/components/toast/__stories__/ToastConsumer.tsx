@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
@@ -35,7 +35,10 @@ export const ToastConsumer = () => {
   return (
     <LeftCenteredDiv>
       <VStack>
-        <Button intent="secondary" onClick={() => notify('Default toast')}>
+        <Button
+          intent="secondary"
+          onClick={() => notify('Default toast', { duration })}
+        >
           Notify
         </Button>
         <Button

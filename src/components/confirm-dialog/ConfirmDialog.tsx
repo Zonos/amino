@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
@@ -48,7 +48,7 @@ export type ConfirmDialogProps = {
   open: boolean;
   label: string;
   theme?: IAminoTheme;
-  subtitle?: React.ReactNode;
+  subtitle?: ReactNode;
   intent: Intent;
   confirmText?: string;
   dismissText?: string;

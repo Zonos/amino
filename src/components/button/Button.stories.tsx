@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';

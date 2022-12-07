@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
 import { SearchIcon } from 'src/icons/SearchIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -44,7 +44,7 @@ export type InputProps = {
   value: string | null;
 
   /** Input on changed. Required since all inputs must be fully controlled */
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 
   /** Placeholder text to be displayed in the input */
   placeholder?: string;
@@ -61,7 +61,7 @@ export type InputProps = {
   inputMode?: InputMode;
   pattern?: string;
   autoFocus?: boolean;
-  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 };
 
 export const SearchInput = ({

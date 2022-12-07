@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { ConfirmContextProvider } from 'src/components/confirm-dialog/ConfirmContext';
 
 import { ConfirmConsumer } from './ConfirmConsumer';
 
-const ToastContextProviderMeta: Meta = {
+const ConfirmMeta: Meta = {
   component: ConfirmContextProvider,
 };
 
-export default ToastContextProviderMeta;
+export default ConfirmMeta;
 
 const Template: Story = () => (
   <ConfirmContextProvider>
@@ -17,8 +15,8 @@ const Template: Story = () => (
   </ConfirmContextProvider>
 );
 
-export const DefaultConfirm = Template.bind({});
-DefaultConfirm.parameters = {
+export const Confirm = Template.bind({});
+Confirm.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=151%3A53',

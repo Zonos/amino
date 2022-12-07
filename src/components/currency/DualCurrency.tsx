@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';

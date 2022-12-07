@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 
 import { motion } from 'framer-motion';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
@@ -47,14 +47,14 @@ const AminoInfoToast = styled(AminoToast)`
 `;
 
 export type ToastProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   toastKey: string;
   intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
   /** Dismiss delay (default 6000 ms) */
   duration?: number;
 };
 
-export const Toast: React.FC<ToastProps> = ({ children, intent, toastKey }) => {
+export const Toast: FC<ToastProps> = ({ children, intent, toastKey }) => {
   const baseProps = {
     key: toastKey,
     initial: { opacity: 0, translateX: 10 },

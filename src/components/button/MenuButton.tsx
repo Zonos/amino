@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
+import { ReactNode, useCallback, useEffect, useRef } from 'react';
 
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/surface/Surface';

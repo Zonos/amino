@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';

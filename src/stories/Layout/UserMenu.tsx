@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { DropdownAnimationInverse } from 'src/animations/DropdownAnimation';
 import { Menu } from 'src/components/menu/Menu';

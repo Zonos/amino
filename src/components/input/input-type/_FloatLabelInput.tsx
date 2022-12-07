@@ -1,7 +1,9 @@
-import React, {
+import {
+  ChangeEventHandler,
   forwardRef,
   HTMLInputTypeAttribute,
   InputHTMLAttributes,
+  KeyboardEventHandler,
   ReactNode,
   useMemo,
 } from 'react';
@@ -208,7 +210,7 @@ type FloatLabelInputType = {
   value: string | null;
 
   /** Input on changed. Required since all inputs must be fully controlled */
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 
   /** Placeholder text to be displayed in the input */
   placeholder?: string;
@@ -238,7 +240,7 @@ type FloatLabelInputType = {
   pattern?: string;
   autoFocus?: boolean;
   size?: Size;
-  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 } & Pick<HelpTextProps, 'error'>;
 export type FloatLabelInputProps = FloatLabelInputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof FloatLabelInputType>;

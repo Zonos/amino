@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import { HStack } from 'src/components/stack/HStack';
