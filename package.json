@@ -141,7 +141,7 @@
     "svgs:react:flags": "ts-node ./svgReact/flags/runCreateComponentsFromSvgs.ts",
     "svgs:react:icons": "ts-node ./svgReact/icons",
     "start": "yarn build-storybook && yarn storybook",
-    "storybook": "start-storybook -p 6006 --no-open",
+    "storybook": "start-storybook -p 6006 --no-open --quiet",
     "version:patch": "yarn build && npm version patch -m 'Bump version %s' && yarn push:tags",
     "version:minor": "yarn build && npm version minor -m 'Bump version %s' && yarn push:tags",
     "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",
