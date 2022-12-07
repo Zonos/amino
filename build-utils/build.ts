@@ -1,4 +1,5 @@
 import buble from '@rollup/plugin-buble';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import fs from 'fs';
 import { glob } from 'glob';
@@ -42,6 +43,10 @@ const bundlePackage = async (
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     plugins: [
+      nodeResolve({
+        // Seems to evaluate falsiness, so put something
+        resolveOnly: [''],
+      }),
       image({
         limit: 10000,
       }),
@@ -129,8 +134,6 @@ const configs: ConfigOptions[] = [
       interop: 'auto',
     },
     maxParallelFileOps: 200,
-    // Peer deps
-    external: ['react', 'react/jsx-runtime', 'react-dom', 'styled-components'],
   },
 ];
 
