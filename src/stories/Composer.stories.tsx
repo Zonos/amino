@@ -13,7 +13,6 @@ import { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
 const ComposerMeta: Meta = {
-  title: 'Amino/Composer',
   component: () => <div />,
 };
 

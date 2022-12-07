@@ -17,7 +17,6 @@ import { NavigationGroupExample as NavigationGroupStory } from './NavigationGrou
 import { UserMenu } from './UserMenu';
 
 const LayoutMeta: Meta = {
-  title: 'Amino/Layout',
   component: Layout,
   subcomponents: {
     NavigationGroup,

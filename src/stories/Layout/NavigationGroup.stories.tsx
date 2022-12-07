@@ -11,7 +11,6 @@ import { PuzzleIcon } from 'src/icons/legacy/PuzzleIcon';
 import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 
 const NavigationGroupMeta: Meta = {
-  title: 'Amino/Layout',
   component: NavigationGroup,
   subcomponents: { NavigationItem },
   parameters: {

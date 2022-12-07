@@ -1,7 +1,17 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+import type { StorybookConfig } from '@storybook/core-common';
+import { glob } from 'glob';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
-module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+function findStories(): string[] {
+  const stories = glob.sync('../src/{components,stories}/**/*.stories.tsx', {
+    cwd: __dirname,
+  });
+
+  return stories;
+}
+
+const config: StorybookConfig = {
+  stories: findStories(),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -11,7 +21,7 @@ module.exports = {
     'storybook-addon-designs',
   ],
   webpackFinal: async config => {
-    config.resolve.plugins.push(new TsconfigPathsPlugin({}));
+    config.resolve?.plugins?.push(new TsconfigPathsPlugin({}));
     return config;
   },
   typescript: {
@@ -29,3 +39,5 @@ module.exports = {
   },
   staticDirs: ['../public'],
 };
+
+module.exports = config;
