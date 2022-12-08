@@ -21,21 +21,21 @@ export const purple = {
   'purple-1000': '#30133F',
 
   /** @deprecated use purple100 instead */
-  'purple-l80': 'var(--amino-blue-100)',
+  'purple-l80': 'var(--amino-purple-100)',
   /** @deprecated use purple300 instead */
-  'purple-l60': 'var(--amino-blue-300)',
+  'purple-l60': 'var(--amino-purple-300)',
   /** @deprecated use purple400 instead */
-  'purple-l40': 'var(--amino-blue-400)',
+  'purple-l40': 'var(--amino-purple-400)',
   /** @deprecated use purple500 instead */
-  'purple-l20': 'var(--amino-blue-500)',
+  'purple-l20': 'var(--amino-purple-500)',
   /** @deprecated use purple600 instead */
-  'purple-base': 'var(--amino-blue-600)',
+  'purple-base': 'var(--amino-purple-600)',
   /** @deprecated use purple700 instead */
-  'purple-d20': 'var(--amino-blue-700)',
+  'purple-d20': 'var(--amino-purple-700)',
   /** @deprecated use purple800 instead */
-  'purple-d40': 'var(--amino-blue-800)',
+  'purple-d40': 'var(--amino-purple-800)',
   /** @deprecated use purple900 instead */
-  'purple-d60': 'var(--amino-blue-900)',
+  'purple-d60': 'var(--amino-purple-900)',
   /** @deprecated use purple1000 instead */
-  'purple-d80': 'var(--amino-blue-1000)',
+  'purple-d80': 'var(--amino-purple-1000)',
 } as const;

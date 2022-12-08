@@ -21,21 +21,21 @@ export const orange = {
   'orange-1000': '#173B3A',
 
   /** @deprecated use orange100 instead */
-  'orange-l80': 'var(--amino-blue-100)',
+  'orange-l80': 'var(--amino-orange-100)',
   /** @deprecated use orange300 instead */
-  'orange-l60': 'var(--amino-blue-300)',
+  'orange-l60': 'var(--amino-orange-300)',
   /** @deprecated use orange400 instead */
-  'orange-l40': 'var(--amino-blue-400)',
+  'orange-l40': 'var(--amino-orange-400)',
   /** @deprecated use orange500 instead */
-  'orange-l20': 'var(--amino-blue-500)',
+  'orange-l20': 'var(--amino-orange-500)',
   /** @deprecated use orange600 instead */
-  'orange-base': 'var(--amino-blue-600)',
+  'orange-base': 'var(--amino-orange-600)',
   /** @deprecated use orange700 instead */
-  'orange-d20': 'var(--amino-blue-700)',
+  'orange-d20': 'var(--amino-orange-700)',
   /** @deprecated use orange800 instead */
-  'orange-d40': 'var(--amino-blue-800)',
+  'orange-d40': 'var(--amino-orange-800)',
   /** @deprecated use orange900 instead */
-  'orange-d60': 'var(--amino-blue-900)',
+  'orange-d60': 'var(--amino-orange-900)',
   /** @deprecated use orange1000 instead */
-  'orange-d80': 'var(--amino-blue-1000)',
+  'orange-d80': 'var(--amino-orange-1000)',
 } as const;

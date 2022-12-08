@@ -43,7 +43,7 @@ export const generateFileContent = async ({
             .map(
               ([deprecatedIntensity, newIntensity]) => `
               /** @deprecated use ${colorConstantKey}${newIntensity} instead */
-              '${colorConstantKey}-${deprecatedIntensity}': 'var(--amino-blue-${newIntensity})',`
+              '${colorConstantKey}-${deprecatedIntensity}': 'var(--amino-${colorConstantKey}-${newIntensity})',`
             )
             .join('')}
     } as const;

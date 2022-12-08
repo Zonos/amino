@@ -21,21 +21,21 @@ export const cyan = {
   'cyan-1000': '#173B3A',
 
   /** @deprecated use cyan100 instead */
-  'cyan-l80': 'var(--amino-blue-100)',
+  'cyan-l80': 'var(--amino-cyan-100)',
   /** @deprecated use cyan300 instead */
-  'cyan-l60': 'var(--amino-blue-300)',
+  'cyan-l60': 'var(--amino-cyan-300)',
   /** @deprecated use cyan400 instead */
-  'cyan-l40': 'var(--amino-blue-400)',
+  'cyan-l40': 'var(--amino-cyan-400)',
   /** @deprecated use cyan500 instead */
-  'cyan-l20': 'var(--amino-blue-500)',
+  'cyan-l20': 'var(--amino-cyan-500)',
   /** @deprecated use cyan600 instead */
-  'cyan-base': 'var(--amino-blue-600)',
+  'cyan-base': 'var(--amino-cyan-600)',
   /** @deprecated use cyan700 instead */
-  'cyan-d20': 'var(--amino-blue-700)',
+  'cyan-d20': 'var(--amino-cyan-700)',
   /** @deprecated use cyan800 instead */
-  'cyan-d40': 'var(--amino-blue-800)',
+  'cyan-d40': 'var(--amino-cyan-800)',
   /** @deprecated use cyan900 instead */
-  'cyan-d60': 'var(--amino-blue-900)',
+  'cyan-d60': 'var(--amino-cyan-900)',
   /** @deprecated use cyan1000 instead */
-  'cyan-d80': 'var(--amino-blue-1000)',
+  'cyan-d80': 'var(--amino-cyan-1000)',
 } as const;
