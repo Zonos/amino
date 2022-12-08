@@ -115,13 +115,8 @@ const styleModules = glob.sync('src/styles/**/*.ts');
 
 const allModules = animationsModules
   .concat(iconsModules, utilsModules, componentsModules, styleModules)
-  /** Exclude all paths __tests__ folder */
-  .filter(
-    item =>
-      !item.includes('__tests__') &&
-      !item.includes('.stories.') &&
-      !item.includes('__stories__')
-  );
+  /** Exclude dev folders */
+  .filter(item => !item.includes('__tests__') && !item.includes('__stories__'));
 
 const configs: ConfigOptions[] = [
   {

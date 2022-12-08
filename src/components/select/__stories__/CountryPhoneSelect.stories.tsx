@@ -9,8 +9,8 @@ import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
 import { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
-import { getCountryUrls } from './getCountryUrls';
-import { useCountryOptions } from './useCountryOptions';
+import { getCountryUrls } from './getCountryUrls.stories';
+import { useCountryOptions } from './useCountryOptions.stories';
 
 const StyledWrapper = styled.div`
   width: 412px;

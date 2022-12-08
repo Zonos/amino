@@ -9,8 +9,8 @@ import { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
 import styled from 'styled-components';
 import useSWR from 'swr';
 
-import { getCountryUrls } from '../../select/__stories__/getCountryUrls';
-import { useCountryOptions } from '../../select/__stories__/useCountryOptions';
+import { getCountryUrls } from '../../select/__stories__/getCountryUrls.stories';
+import { useCountryOptions } from '../../select/__stories__/useCountryOptions.stories';
 
 const GEO_URL = '/zonos-countries-geojson.json';
 
