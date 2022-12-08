@@ -69,23 +69,23 @@ exports[`Make sure all generated color constants matched previous snapshot: _cya
   'cyan-1000': '#173B3A',
 
   /** @deprecated use cyan100 instead */
-  'cyan-l80': 'var(--amino-blue-100)',
+  'cyan-l80': 'var(--amino-cyan-100)',
   /** @deprecated use cyan300 instead */
-  'cyan-l60': 'var(--amino-blue-300)',
+  'cyan-l60': 'var(--amino-cyan-300)',
   /** @deprecated use cyan400 instead */
-  'cyan-l40': 'var(--amino-blue-400)',
+  'cyan-l40': 'var(--amino-cyan-400)',
   /** @deprecated use cyan500 instead */
-  'cyan-l20': 'var(--amino-blue-500)',
+  'cyan-l20': 'var(--amino-cyan-500)',
   /** @deprecated use cyan600 instead */
-  'cyan-base': 'var(--amino-blue-600)',
+  'cyan-base': 'var(--amino-cyan-600)',
   /** @deprecated use cyan700 instead */
-  'cyan-d20': 'var(--amino-blue-700)',
+  'cyan-d20': 'var(--amino-cyan-700)',
   /** @deprecated use cyan800 instead */
-  'cyan-d40': 'var(--amino-blue-800)',
+  'cyan-d40': 'var(--amino-cyan-800)',
   /** @deprecated use cyan900 instead */
-  'cyan-d60': 'var(--amino-blue-900)',
+  'cyan-d60': 'var(--amino-cyan-900)',
   /** @deprecated use cyan1000 instead */
-  'cyan-d80': 'var(--amino-blue-1000)',
+  'cyan-d80': 'var(--amino-cyan-1000)',
 } as const;
 "
 `;
@@ -122,23 +122,23 @@ exports[`Make sure all generated color constants matched previous snapshot: _gra
   'gray-1300': '#0A0A0B',
 
   /** @deprecated use gray100 instead */
-  'gray-l80': 'var(--amino-blue-100)',
+  'gray-l80': 'var(--amino-gray-100)',
   /** @deprecated use gray300 instead */
-  'gray-l60': 'var(--amino-blue-300)',
+  'gray-l60': 'var(--amino-gray-300)',
   /** @deprecated use gray400 instead */
-  'gray-l40': 'var(--amino-blue-400)',
+  'gray-l40': 'var(--amino-gray-400)',
   /** @deprecated use gray500 instead */
-  'gray-l20': 'var(--amino-blue-500)',
+  'gray-l20': 'var(--amino-gray-500)',
   /** @deprecated use gray600 instead */
-  'gray-base': 'var(--amino-blue-600)',
+  'gray-base': 'var(--amino-gray-600)',
   /** @deprecated use gray700 instead */
-  'gray-d20': 'var(--amino-blue-700)',
+  'gray-d20': 'var(--amino-gray-700)',
   /** @deprecated use gray800 instead */
-  'gray-d40': 'var(--amino-blue-800)',
+  'gray-d40': 'var(--amino-gray-800)',
   /** @deprecated use gray900 instead */
-  'gray-d60': 'var(--amino-blue-900)',
+  'gray-d60': 'var(--amino-gray-900)',
   /** @deprecated use gray1000 instead */
-  'gray-d80': 'var(--amino-blue-1000)',
+  'gray-d80': 'var(--amino-gray-1000)',
 } as const;
 "
 `;
@@ -167,23 +167,23 @@ exports[`Make sure all generated color constants matched previous snapshot: _gre
   'green-1000': '#173B28',
 
   /** @deprecated use green100 instead */
-  'green-l80': 'var(--amino-blue-100)',
+  'green-l80': 'var(--amino-green-100)',
   /** @deprecated use green300 instead */
-  'green-l60': 'var(--amino-blue-300)',
+  'green-l60': 'var(--amino-green-300)',
   /** @deprecated use green400 instead */
-  'green-l40': 'var(--amino-blue-400)',
+  'green-l40': 'var(--amino-green-400)',
   /** @deprecated use green500 instead */
-  'green-l20': 'var(--amino-blue-500)',
+  'green-l20': 'var(--amino-green-500)',
   /** @deprecated use green600 instead */
-  'green-base': 'var(--amino-blue-600)',
+  'green-base': 'var(--amino-green-600)',
   /** @deprecated use green700 instead */
-  'green-d20': 'var(--amino-blue-700)',
+  'green-d20': 'var(--amino-green-700)',
   /** @deprecated use green800 instead */
-  'green-d40': 'var(--amino-blue-800)',
+  'green-d40': 'var(--amino-green-800)',
   /** @deprecated use green900 instead */
-  'green-d60': 'var(--amino-blue-900)',
+  'green-d60': 'var(--amino-green-900)',
   /** @deprecated use green1000 instead */
-  'green-d80': 'var(--amino-blue-1000)',
+  'green-d80': 'var(--amino-green-1000)',
 } as const;
 "
 `;
@@ -212,23 +212,23 @@ exports[`Make sure all generated color constants matched previous snapshot: _ora
   'orange-1000': '#173B3A',
 
   /** @deprecated use orange100 instead */
-  'orange-l80': 'var(--amino-blue-100)',
+  'orange-l80': 'var(--amino-orange-100)',
   /** @deprecated use orange300 instead */
-  'orange-l60': 'var(--amino-blue-300)',
+  'orange-l60': 'var(--amino-orange-300)',
   /** @deprecated use orange400 instead */
-  'orange-l40': 'var(--amino-blue-400)',
+  'orange-l40': 'var(--amino-orange-400)',
   /** @deprecated use orange500 instead */
-  'orange-l20': 'var(--amino-blue-500)',
+  'orange-l20': 'var(--amino-orange-500)',
   /** @deprecated use orange600 instead */
-  'orange-base': 'var(--amino-blue-600)',
+  'orange-base': 'var(--amino-orange-600)',
   /** @deprecated use orange700 instead */
-  'orange-d20': 'var(--amino-blue-700)',
+  'orange-d20': 'var(--amino-orange-700)',
   /** @deprecated use orange800 instead */
-  'orange-d40': 'var(--amino-blue-800)',
+  'orange-d40': 'var(--amino-orange-800)',
   /** @deprecated use orange900 instead */
-  'orange-d60': 'var(--amino-blue-900)',
+  'orange-d60': 'var(--amino-orange-900)',
   /** @deprecated use orange1000 instead */
-  'orange-d80': 'var(--amino-blue-1000)',
+  'orange-d80': 'var(--amino-orange-1000)',
 } as const;
 "
 `;
@@ -257,23 +257,23 @@ exports[`Make sure all generated color constants matched previous snapshot: _pur
   'purple-1000': '#30133F',
 
   /** @deprecated use purple100 instead */
-  'purple-l80': 'var(--amino-blue-100)',
+  'purple-l80': 'var(--amino-purple-100)',
   /** @deprecated use purple300 instead */
-  'purple-l60': 'var(--amino-blue-300)',
+  'purple-l60': 'var(--amino-purple-300)',
   /** @deprecated use purple400 instead */
-  'purple-l40': 'var(--amino-blue-400)',
+  'purple-l40': 'var(--amino-purple-400)',
   /** @deprecated use purple500 instead */
-  'purple-l20': 'var(--amino-blue-500)',
+  'purple-l20': 'var(--amino-purple-500)',
   /** @deprecated use purple600 instead */
-  'purple-base': 'var(--amino-blue-600)',
+  'purple-base': 'var(--amino-purple-600)',
   /** @deprecated use purple700 instead */
-  'purple-d20': 'var(--amino-blue-700)',
+  'purple-d20': 'var(--amino-purple-700)',
   /** @deprecated use purple800 instead */
-  'purple-d40': 'var(--amino-blue-800)',
+  'purple-d40': 'var(--amino-purple-800)',
   /** @deprecated use purple900 instead */
-  'purple-d60': 'var(--amino-blue-900)',
+  'purple-d60': 'var(--amino-purple-900)',
   /** @deprecated use purple1000 instead */
-  'purple-d80': 'var(--amino-blue-1000)',
+  'purple-d80': 'var(--amino-purple-1000)',
 } as const;
 "
 `;
@@ -302,23 +302,23 @@ exports[`Make sure all generated color constants matched previous snapshot: _red
   'red-1000': '#3F131D',
 
   /** @deprecated use red100 instead */
-  'red-l80': 'var(--amino-blue-100)',
+  'red-l80': 'var(--amino-red-100)',
   /** @deprecated use red300 instead */
-  'red-l60': 'var(--amino-blue-300)',
+  'red-l60': 'var(--amino-red-300)',
   /** @deprecated use red400 instead */
-  'red-l40': 'var(--amino-blue-400)',
+  'red-l40': 'var(--amino-red-400)',
   /** @deprecated use red500 instead */
-  'red-l20': 'var(--amino-blue-500)',
+  'red-l20': 'var(--amino-red-500)',
   /** @deprecated use red600 instead */
-  'red-base': 'var(--amino-blue-600)',
+  'red-base': 'var(--amino-red-600)',
   /** @deprecated use red700 instead */
-  'red-d20': 'var(--amino-blue-700)',
+  'red-d20': 'var(--amino-red-700)',
   /** @deprecated use red800 instead */
-  'red-d40': 'var(--amino-blue-800)',
+  'red-d40': 'var(--amino-red-800)',
   /** @deprecated use red900 instead */
-  'red-d60': 'var(--amino-blue-900)',
+  'red-d60': 'var(--amino-red-900)',
   /** @deprecated use red1000 instead */
-  'red-d80': 'var(--amino-blue-1000)',
+  'red-d80': 'var(--amino-red-1000)',
 } as const;
 "
 `;
