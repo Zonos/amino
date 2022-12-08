@@ -21,21 +21,21 @@ export const green = {
   'green-1000': '#173B28',
 
   /** @deprecated use green100 instead */
-  'green-l80': 'var(--amino-blue-100)',
+  'green-l80': 'var(--amino-green-100)',
   /** @deprecated use green300 instead */
-  'green-l60': 'var(--amino-blue-300)',
+  'green-l60': 'var(--amino-green-300)',
   /** @deprecated use green400 instead */
-  'green-l40': 'var(--amino-blue-400)',
+  'green-l40': 'var(--amino-green-400)',
   /** @deprecated use green500 instead */
-  'green-l20': 'var(--amino-blue-500)',
+  'green-l20': 'var(--amino-green-500)',
   /** @deprecated use green600 instead */
-  'green-base': 'var(--amino-blue-600)',
+  'green-base': 'var(--amino-green-600)',
   /** @deprecated use green700 instead */
-  'green-d20': 'var(--amino-blue-700)',
+  'green-d20': 'var(--amino-green-700)',
   /** @deprecated use green800 instead */
-  'green-d40': 'var(--amino-blue-800)',
+  'green-d40': 'var(--amino-green-800)',
   /** @deprecated use green900 instead */
-  'green-d60': 'var(--amino-blue-900)',
+  'green-d60': 'var(--amino-green-900)',
   /** @deprecated use green1000 instead */
-  'green-d80': 'var(--amino-blue-1000)',
+  'green-d80': 'var(--amino-green-1000)',
 } as const;

@@ -21,21 +21,21 @@ export const red = {
   'red-1000': '#3F131D',
 
   /** @deprecated use red100 instead */
-  'red-l80': 'var(--amino-blue-100)',
+  'red-l80': 'var(--amino-red-100)',
   /** @deprecated use red300 instead */
-  'red-l60': 'var(--amino-blue-300)',
+  'red-l60': 'var(--amino-red-300)',
   /** @deprecated use red400 instead */
-  'red-l40': 'var(--amino-blue-400)',
+  'red-l40': 'var(--amino-red-400)',
   /** @deprecated use red500 instead */
-  'red-l20': 'var(--amino-blue-500)',
+  'red-l20': 'var(--amino-red-500)',
   /** @deprecated use red600 instead */
-  'red-base': 'var(--amino-blue-600)',
+  'red-base': 'var(--amino-red-600)',
   /** @deprecated use red700 instead */
-  'red-d20': 'var(--amino-blue-700)',
+  'red-d20': 'var(--amino-red-700)',
   /** @deprecated use red800 instead */
-  'red-d40': 'var(--amino-blue-800)',
+  'red-d40': 'var(--amino-red-800)',
   /** @deprecated use red900 instead */
-  'red-d60': 'var(--amino-blue-900)',
+  'red-d60': 'var(--amino-red-900)',
   /** @deprecated use red1000 instead */
-  'red-d80': 'var(--amino-blue-1000)',
+  'red-d80': 'var(--amino-red-1000)',
 } as const;

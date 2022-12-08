@@ -29,21 +29,21 @@ export const gray = {
   'gray-1300': '#0A0A0B',
 
   /** @deprecated use gray100 instead */
-  'gray-l80': 'var(--amino-blue-100)',
+  'gray-l80': 'var(--amino-gray-100)',
   /** @deprecated use gray300 instead */
-  'gray-l60': 'var(--amino-blue-300)',
+  'gray-l60': 'var(--amino-gray-300)',
   /** @deprecated use gray400 instead */
-  'gray-l40': 'var(--amino-blue-400)',
+  'gray-l40': 'var(--amino-gray-400)',
   /** @deprecated use gray500 instead */
-  'gray-l20': 'var(--amino-blue-500)',
+  'gray-l20': 'var(--amino-gray-500)',
   /** @deprecated use gray600 instead */
-  'gray-base': 'var(--amino-blue-600)',
+  'gray-base': 'var(--amino-gray-600)',
   /** @deprecated use gray700 instead */
-  'gray-d20': 'var(--amino-blue-700)',
+  'gray-d20': 'var(--amino-gray-700)',
   /** @deprecated use gray800 instead */
-  'gray-d40': 'var(--amino-blue-800)',
+  'gray-d40': 'var(--amino-gray-800)',
   /** @deprecated use gray900 instead */
-  'gray-d60': 'var(--amino-blue-900)',
+  'gray-d60': 'var(--amino-gray-900)',
   /** @deprecated use gray1000 instead */
-  'gray-d80': 'var(--amino-blue-1000)',
+  'gray-d80': 'var(--amino-gray-1000)',
 } as const;
