@@ -635,7 +635,7 @@ import './components/menu/MenuItem';
 import './components/notice/Notice';
 import './components/radio/Radio';
 import './components/radio/RadioGroup';
-import './components/radix/Slider';
+import './components/slider/Slider';
 import './components/rest-state/RestState';
 import './components/rich-checkbox/RichCheckbox';
 import './components/rich-radio/RichRadio';

@@ -1,3 +1,4 @@
+import { Meta } from '@storybook/react/types-6-0';
 import { VStack } from 'src/components/stack/VStack';
 import styled from 'styled-components';
 
@@ -22,7 +23,6 @@ const MultiValue = styled.div`
   border-radius: 2px;
   display: flex;
   margin: 2px;
-  /* min-width: 0; */
   box-sizing: border-box;
 `;
 
@@ -30,7 +30,6 @@ const Label = styled.div`
   border-radius: 2px;
   color: hsl(0, 0%, 20%);
   font-size: 85%;
-  /* overflow: hidden; */
   padding: 3px;
   padding-left: 6px;
   text-overflow: ellipsis;
@@ -57,7 +56,6 @@ const SecondMultiValue = styled.div`
   border-radius: 2px;
   display: flex;
   margin: 2px;
-  /* min-width: 0; */
   box-sizing: border-box;
 `;
 
@@ -105,3 +103,9 @@ export const ScratchPad = () => (
     </StyledWrapper>
   </VStack>
 );
+
+const ScratchPadMeta: Meta = {
+  component: ScratchPad,
+};
+
+export default ScratchPadMeta;
