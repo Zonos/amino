@@ -15,9 +15,7 @@ export const hasJSDocsComment: boolean = true;
 export const getSpaceConstantCustomizedComment: ConstantCustomizedComment = ({
   key,
   value,
-}) => {
-  return `@info ${key}: ${value} (${convertRemToPx(parseFloat(value))})`;
-};
+}) => `@info ${key}: ${value} (${convertRemToPx(parseFloat(value))})`;
 
 /**
  * Return key/value pairs after applying logic

@@ -92,8 +92,8 @@ export const Notice = ({
         <AminoSuccessNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'green-l60',
-              secondaryColor: 'green-d40',
+              color: 'green-300',
+              secondaryColor: 'green-800',
             })}
           {children}
         </AminoSuccessNotice>
@@ -103,8 +103,8 @@ export const Notice = ({
         <AminoErrorNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'red-l60',
-              secondaryColor: 'red-d60',
+              color: 'red-300',
+              secondaryColor: 'red-900',
             })}
           {children}
         </AminoErrorNotice>
@@ -114,8 +114,8 @@ export const Notice = ({
         <AminoWarningNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'yellow-l60',
-              secondaryColor: 'yellow-d40',
+              color: 'orange-300',
+              secondaryColor: 'orange-800',
             })}
           {children}
         </AminoWarningNotice>
@@ -125,8 +125,8 @@ export const Notice = ({
         <AminoPrimaryNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'blue-l60',
-              secondaryColor: 'blue-base',
+              color: 'blue-300',
+              secondaryColor: 'blue-600',
             })}
           {children}
         </AminoPrimaryNotice>
@@ -137,8 +137,8 @@ export const Notice = ({
         <AminoNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'gray-l60',
-              secondaryColor: 'gray-base',
+              color: 'gray-300',
+              secondaryColor: 'gray-600',
             })}
           {children}
         </AminoNotice>

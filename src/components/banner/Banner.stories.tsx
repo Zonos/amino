@@ -154,7 +154,7 @@ DefaultBanner.args = {
     <>
       <Button
         background="inherit"
-        borderColor="gray-l40"
+        borderColor="gray-400"
         color="inherit"
         intent="outline"
       >
@@ -168,7 +168,7 @@ DefaultBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="gray-l40"
+      borderColor="gray-400"
       color="inherit"
       intent="outline"
       icon={<ChevronDownIcon size={20} />}
@@ -191,7 +191,7 @@ InfoBanner.args = {
     <>
       <Button
         background="inherit"
-        borderColor="blue-l40"
+        borderColor="blue-400"
         color="inherit"
         intent="outline"
       >
@@ -205,7 +205,7 @@ InfoBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="blue-l40"
+      borderColor="blue-400"
       color="inherit"
       intent="outline"
       icon={<ChevronDownIcon size={20} />}
@@ -229,7 +229,7 @@ SuccessBanner.args = {
     <>
       <Button
         background="inherit"
-        borderColor="green-l40"
+        borderColor="green-400"
         color="inherit"
         intent="outline"
       >
@@ -243,7 +243,7 @@ SuccessBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="green-l40"
+      borderColor="green-400"
       color="inherit"
       intent="outline"
       icon={<ChevronDownIcon size={20} />}
@@ -267,7 +267,7 @@ WarningBanner.args = {
     <>
       <Button
         background="inherit"
-        borderColor="orange-l40"
+        borderColor="orange-400"
         color="inherit"
         intent="outline"
       >
@@ -281,7 +281,7 @@ WarningBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="orange-l40"
+      borderColor="orange-400"
       color="inherit"
       intent="outline"
       icon={<ChevronDownIcon size={20} />}
@@ -305,7 +305,7 @@ ErrorBanner.args = {
     <>
       <Button
         background="inherit"
-        borderColor="red-l40"
+        borderColor="red-400"
         color="inherit"
         intent="outline"
       >
@@ -319,7 +319,7 @@ ErrorBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="red-l40"
+      borderColor="red-400"
       color="inherit"
       intent="outline"
       icon={<ChevronDownIcon size={20} />}

@@ -7,17 +7,19 @@ import { createIndexFile } from './createIndexFile';
 import { createReactIconSVGs } from './createReactIconSVGs';
 import { SvgList } from './types/TypeGenerateIcon';
 
-const pascalCased = (string: string) => {
-  return (
-    string
-      /** @desc Uppercase first character */
-      .replace(/(\s|-)+[a-z]/g, word => word.toUpperCase())
-      /** @desc Remove spaces and - */
-      .replace(/\s|-/g, '')
-      /** @desc Adding suffix Icon to file name */
-      .replace(/\.svg/, 'Icon.svg')
-  );
+const log = (msg: string) => {
+  // eslint-disable-next-line no-console
+  console.log(msg);
 };
+
+const pascalCased = (string: string) =>
+  string
+    /** @desc Uppercase first character */
+    .replace(/(\s|-)+[a-z]/g, word => word.toUpperCase())
+    /** @desc Remove spaces and - */
+    .replace(/\s|-/g, '')
+    /** @desc Adding suffix Icon to file name */
+    .replace(/\.svg/, 'Icon.svg');
 
 const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
   const names: SvgList[] = glob
@@ -59,6 +61,7 @@ const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
       /** @desc Optimize svg */
       optimizeSvgs({ folderPath: `${__dirname}/${svgFolder}/**/*.svg` });
 
+      log(`Generating react component for folder "${svgFolder}"`);
       /** @desc Generate svg react component */
       createReactIconSVGs({
         names,
@@ -75,12 +78,14 @@ const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
   }
 };
 
+log('Cleaning up distribution folder ...');
 /** @desc Clean up distribution folder */
 execSync('rm -rf svgReact/icons/dist', { encoding: 'utf-8' });
 
 /** @desc Generte all svg components base on path configuration */
 svgProcessPaths.map(generateSvgs);
 
+log('Generating index file for generated svg react components ...');
 /** @desc Generate index file for generated svg react components */
 createIndexFile({
   generatePath: [
@@ -97,17 +102,20 @@ createIndexFile({
 /** @desc Format generated svg react component and new IconIndex */
 execSync('yarn svgs:format', { encoding: 'utf8' });
 
-svgProcessPaths.map(({ inputFolderPath, destFolder }) => {
+svgProcessPaths.forEach(({ inputFolderPath, destFolder }) => {
+  log(`Cleaning up folder "${destFolder}" ...`);
   /** @desc Clean up all tsx/ts under icons folder (only file not folder) */
   execSync(`rm -rf ${destFolder}/*.tsx ${destFolder}/*.ts`, {
     encoding: 'utf-8',
   });
 
+  log(`Moving files from "${inputFolderPath}" to "${destFolder}"`);
   /** @desc Move file from distribution folder over */
-  execSync(`mv ${inputFolderPath}/*.ts* ${destFolder}`, { encoding: 'utf-8' });
-
-  /** @desc Run autofix eslint */
-  execSync('yarn lint:prod --fix', { encoding: 'utf-8' });
-
-  return null;
+  execSync(`mv ${inputFolderPath}/*.ts* ${destFolder}`, {
+    encoding: 'utf-8',
+  });
 });
+
+log('Linting ...');
+/** @desc Run autofix eslint */
+execSync('yarn lint:prod --fix', { encoding: 'utf-8' });

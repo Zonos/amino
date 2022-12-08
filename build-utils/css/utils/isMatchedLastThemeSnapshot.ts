@@ -3,14 +3,13 @@ import { readFileSync } from 'fs';
 import { convertToCssConstant } from './convertToCssVariable';
 import { getMatchedAminoVariables } from './getMatchedAminoVariables';
 
-export const getLastSnapshot = () => {
-  return readFileSync(
+export const getLastSnapshot = () =>
+  readFileSync(
     `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`,
     {
       encoding: 'utf-8',
     }
   );
-};
 
 /**
  * Compare current given theme constants with last snapshot content

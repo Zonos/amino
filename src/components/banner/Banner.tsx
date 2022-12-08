@@ -185,12 +185,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <CheckCircleDuotoneIcon
-                color="blue-d80"
-                secondaryColor="blue-l40"
+                color="blue-1000"
+                secondaryColor="blue-400"
                 size={20}
               />
             ),
-            removeIconColor: 'blue-d40',
+            removeIconColor: 'blue-800',
           })}
         </InfoBanner>
       );
@@ -200,12 +200,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <CheckCircleDuotoneIcon
-                color="green-d80"
-                secondaryColor="green-l40"
+                color="green-1000"
+                secondaryColor="green-400"
                 size={20}
               />
             ),
-            removeIconColor: 'green-d40',
+            removeIconColor: 'green-800',
           })}
         </SuccessBanner>
       );
@@ -215,12 +215,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <WarningDuotoneIcon
-                color="orange-d80"
-                secondaryColor="orange-l40"
+                color="orange-1000"
+                secondaryColor="orange-400"
                 size={20}
               />
             ),
-            removeIconColor: 'orange-d40',
+            removeIconColor: 'orange-800',
           })}
         </WarningBanner>
       );
@@ -230,12 +230,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <RemoveCircleDuotoneIcon
-                color="red-d80"
-                secondaryColor="red-l40"
+                color="red-1000"
+                secondaryColor="red-400"
                 size={20}
               />
             ),
-            removeIconColor: 'red-d40',
+            removeIconColor: 'red-800',
           })}
         </ErrorBanner>
       );
@@ -246,12 +246,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <InfoDuotoneIcon
-                color="gray-d80"
-                secondaryColor="gray-l40"
+                color="gray-1000"
+                secondaryColor="gray-400"
                 size={20}
               />
             ),
-            removeIconColor: 'gray-d40',
+            removeIconColor: 'gray-800',
           })}
         </DefaultBanner>
       );
