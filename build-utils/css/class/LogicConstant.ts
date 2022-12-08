@@ -111,8 +111,8 @@ export class LogicConstant {
     const { keyValueParsed, generateJsDocsFunction, hasJSDocsComment } =
       this.#parsedFile;
     if (keyValueParsed) {
-      const contents = Object.entries(keyValueParsed).map(([key, value]) => {
-        return [
+      const contents = Object.entries(keyValueParsed).map(([key, value]) =>
+        [
           /** Add JSDocsComment by adding content get function `generateJsDocsFunction` on each loop */
           hasJSDocsComment && generateJsDocsFunction
             ? `/** ${generateJsDocsFunction({ key, value })} */`
@@ -120,8 +120,8 @@ export class LogicConstant {
           `'${key}': '${value}',`,
         ]
           .filter(Boolean)
-          .join('\n');
-      });
+          .join('\n')
+      );
       return contents.join('\n');
     }
     return null;
@@ -224,7 +224,7 @@ export class LogicConstant {
       );
       /** Extract only constant content */
       const matchAll = fileContent.matchAll(
-        new RegExp(`(?<=.+ = {\n +)((\n|.)+)(?=}.+)`, 'gm')
+        /(?<=.+ = {\n +)((\n|.)+)(?=}.+)/gm
       );
       const matched = Array.from(matchAll);
       const result = matched
@@ -240,11 +240,11 @@ export class LogicConstant {
       /** Clean up all imports */
       .replace(/import {\s+(\w+)\s+} from '(.+)';/gm, '')
       /** Replace spread constant in theme constant with extracted constant from generated constant file */
-      .replace(/\.\.\.(\w+),/gm, (_g0, variable) => {
-        return (
+      .replace(
+        /\.\.\.(\w+),/gm,
+        (_g0, variable) =>
           extractedConstants.find(item => item.key === variable)?.data || _g0
-        );
-      });
+      );
     return formatTS(result);
   }
 }

@@ -136,12 +136,12 @@ const Template: Story<
       <TableHead>
         <TableRow>
           <TableCell>
-            <Text color="gray-d40" type="small-header">
+            <Text color="gray-800" type="small-header">
               Description
             </Text>
           </TableCell>
           <TableCell align="right" colSpan={2}>
-            <Text color="gray-d40" type="small-header">
+            <Text color="gray-800" type="small-header">
               Amount
             </Text>
           </TableCell>
@@ -167,7 +167,7 @@ const Template: Story<
               <TableCell align="right">
                 <RightIconLabel>
                   <Text fontWeight="500">6404.11.0000</Text>
-                  <ClassifyIcon color="purple-base" size={14} />
+                  <ClassifyIcon color="purple-600" size={14} />
                 </RightIconLabel>
               </TableCell>
               <TableCell align="right">
@@ -188,7 +188,7 @@ const Template: Story<
               <Text type="bold-label">
                 Huka One Running Shoe - Women&apos;s
               </Text>
-              <Text color="gray-d40">
+              <Text color="gray-800">
                 <DualCurrency
                   conversionRate={conversionRate}
                   foreignCode={foreignCode}
@@ -211,7 +211,7 @@ const Template: Story<
               ].map(option => (
                 <AttributeLabel key={option.label} spacing="space-quarter">
                   <Text
-                    color="gray-d20"
+                    color="gray-700"
                     fontWeight="600"
                     isUppercase
                     type="caption"
@@ -279,10 +279,10 @@ const Template: Story<
             <>
               <TableCell>
                 <LeftIconLabel>
-                  <RoundedIcon background="blue-l80">
+                  <RoundedIcon background="blue-100">
                     <ImportDuotoneIcon
-                      color="blue-d60"
-                      secondaryColor="blue-l60"
+                      color="blue-900"
+                      secondaryColor="blue-300"
                     />
                   </RoundedIcon>
                   <Text fontWeight="500">Duties</Text>
@@ -323,10 +323,10 @@ const Template: Story<
             <>
               <TableCell>
                 <LeftIconLabel>
-                  <RoundedIcon background="red-l80">
+                  <RoundedIcon background="red-100">
                     <ShoppingListDuotoneIcon
-                      secondaryColor="red-l40"
-                      color="red-d60"
+                      secondaryColor="red-400"
+                      color="red-900"
                     />
                   </RoundedIcon>
                   <Text fontWeight="500">Fees</Text>
@@ -371,10 +371,10 @@ const Template: Story<
             <>
               <TableCell>
                 <LeftIconLabel>
-                  <RoundedIcon background="green-l80">
+                  <RoundedIcon background="green-100">
                     <CoinsDuotoneIcon
-                      color="green-d60"
-                      secondaryColor="green-l40"
+                      color="green-900"
+                      secondaryColor="green-400"
                     />
                   </RoundedIcon>
                   <Text fontWeight="500">Taxes</Text>
@@ -424,8 +424,8 @@ const Template: Story<
             <>
               <TableCell colSpan={2}>
                 <LeftIconLabel>
-                  <RoundedIcon background="orange-l80">
-                    <WarningIcon color="orange-d60" />
+                  <RoundedIcon background="orange-100">
+                    <WarningIcon color="orange-900" />
                   </RoundedIcon>
                   <Text fontWeight="500">No children (cannot expand)</Text>
                 </LeftIconLabel>

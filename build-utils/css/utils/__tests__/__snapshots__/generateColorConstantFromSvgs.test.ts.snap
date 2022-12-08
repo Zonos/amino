@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Make sure all generated color constants matched previous snapshot: _blue.ts 1`] = `
+"export const blue = {
+  /** @info #E8EBFC  */
+  'blue-100': '#E8EBFC',
+  /** @info #C9CFF8  */
+  'blue-200': '#C9CFF8',
+  /** @info #96A2F3  */
+  'blue-300': '#96A2F3',
+  /** @info #7081F0  */
+  'blue-400': '#7081F0',
+  /** @info #586CEE  */
+  'blue-500': '#586CEE',
+  /** @info #475FE9  */
+  'blue-600': '#475FE9',
+  /** @info #3A4ECF  */
+  'blue-700': '#3A4ECF',
+  /** @info #2A3BAC  */
+  'blue-800': '#2A3BAC',
+  /** @info #1C2662  */
+  'blue-900': '#1C2662',
+  /** @info #13193F  */
+  'blue-1000': '#13193F',
+
+  /** @deprecated use blue100 instead */
+  'blue-l80': 'var(--amino-blue-100)',
+  /** @deprecated use blue300 instead */
+  'blue-l60': 'var(--amino-blue-300)',
+  /** @deprecated use blue400 instead */
+  'blue-l40': 'var(--amino-blue-400)',
+  /** @deprecated use blue500 instead */
+  'blue-l20': 'var(--amino-blue-500)',
+  /** @deprecated use blue600 instead */
+  'blue-base': 'var(--amino-blue-600)',
+  /** @deprecated use blue700 instead */
+  'blue-d20': 'var(--amino-blue-700)',
+  /** @deprecated use blue800 instead */
+  'blue-d40': 'var(--amino-blue-800)',
+  /** @deprecated use blue900 instead */
+  'blue-d60': 'var(--amino-blue-900)',
+  /** @deprecated use blue1000 instead */
+  'blue-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;
+
+exports[`Make sure all generated color constants matched previous snapshot: _cyan.ts 1`] = `
+"export const cyan = {
+  /** @info #E9FBFB  */
+  'cyan-100': '#E9FBFB',
+  /** @info #CBF6F4  */
+  'cyan-200': '#CBF6F4',
+  /** @info #9AEFEC  */
+  'cyan-300': '#9AEFEC',
+  /** @info #7BEAE7  */
+  'cyan-400': '#7BEAE7',
+  /** @info #4FE3DE  */
+  'cyan-500': '#4FE3DE',
+  /** @info #4AD3CF  */
+  'cyan-600': '#4AD3CF',
+  /** @info #44C5C1  */
+  'cyan-700': '#44C5C1',
+  /** @info #32A4A0  */
+  'cyan-800': '#32A4A0',
+  /** @info #225E5C  */
+  'cyan-900': '#225E5C',
+  /** @info #173B3A  */
+  'cyan-1000': '#173B3A',
+
+  /** @deprecated use cyan100 instead */
+  'cyan-l80': 'var(--amino-blue-100)',
+  /** @deprecated use cyan300 instead */
+  'cyan-l60': 'var(--amino-blue-300)',
+  /** @deprecated use cyan400 instead */
+  'cyan-l40': 'var(--amino-blue-400)',
+  /** @deprecated use cyan500 instead */
+  'cyan-l20': 'var(--amino-blue-500)',
+  /** @deprecated use cyan600 instead */
+  'cyan-base': 'var(--amino-blue-600)',
+  /** @deprecated use cyan700 instead */
+  'cyan-d20': 'var(--amino-blue-700)',
+  /** @deprecated use cyan800 instead */
+  'cyan-d40': 'var(--amino-blue-800)',
+  /** @deprecated use cyan900 instead */
+  'cyan-d60': 'var(--amino-blue-900)',
+  /** @deprecated use cyan1000 instead */
+  'cyan-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;
+
+exports[`Make sure all generated color constants matched previous snapshot: _gray.ts 1`] = `
+"export const gray = {
+  /** @info white  */
+  'gray-0': 'white',
+  /** @info #EFEFF0  */
+  'gray-100': '#EFEFF0',
+  /** @info #E4E4E7  */
+  'gray-200': '#E4E4E7',
+  /** @info #C8C8CB  */
+  'gray-300': '#C8C8CB',
+  /** @info #ABACB2  */
+  'gray-400': '#ABACB2',
+  /** @info #96979E  */
+  'gray-500': '#96979E',
+  /** @info #80818A  */
+  'gray-600': '#80818A',
+  /** @info #686970  */
+  'gray-700': '#686970',
+  /** @info #4F5257  */
+  'gray-800': '#4F5257',
+  /** @info #36383D  */
+  'gray-900': '#36383D',
+  /** @info #2B2C32  */
+  'gray-1000': '#2B2C32',
+  /** @info #1D1F24  */
+  'gray-1100': '#1D1F24',
+  /** @info #121417  */
+  'gray-1200': '#121417',
+  /** @info #0A0A0B  */
+  'gray-1300': '#0A0A0B',
+
+  /** @deprecated use gray100 instead */
+  'gray-l80': 'var(--amino-blue-100)',
+  /** @deprecated use gray300 instead */
+  'gray-l60': 'var(--amino-blue-300)',
+  /** @deprecated use gray400 instead */
+  'gray-l40': 'var(--amino-blue-400)',
+  /** @deprecated use gray500 instead */
+  'gray-l20': 'var(--amino-blue-500)',
+  /** @deprecated use gray600 instead */
+  'gray-base': 'var(--amino-blue-600)',
+  /** @deprecated use gray700 instead */
+  'gray-d20': 'var(--amino-blue-700)',
+  /** @deprecated use gray800 instead */
+  'gray-d40': 'var(--amino-blue-800)',
+  /** @deprecated use gray900 instead */
+  'gray-d60': 'var(--amino-blue-900)',
+  /** @deprecated use gray1000 instead */
+  'gray-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;
+
+exports[`Make sure all generated color constants matched previous snapshot: _green.ts 1`] = `
+"export const green = {
+  /** @info #DCF9EA  */
+  'green-100': '#DCF9EA',
+  /** @info #A8F0CA  */
+  'green-200': '#A8F0CA',
+  /** @info #77E9AC  */
+  'green-300': '#77E9AC',
+  /** @info #53E497  */
+  'green-400': '#53E497',
+  /** @info #3DE188  */
+  'green-500': '#3DE188',
+  /** @info #3ACF80  */
+  'green-600': '#3ACF80',
+  /** @info #35AC6C  */
+  'green-700': '#35AC6C',
+  /** @info #298554  */
+  'green-800': '#298554',
+  /** @info #1C4F34  */
+  'green-900': '#1C4F34',
+  /** @info #173B28  */
+  'green-1000': '#173B28',
+
+  /** @deprecated use green100 instead */
+  'green-l80': 'var(--amino-blue-100)',
+  /** @deprecated use green300 instead */
+  'green-l60': 'var(--amino-blue-300)',
+  /** @deprecated use green400 instead */
+  'green-l40': 'var(--amino-blue-400)',
+  /** @deprecated use green500 instead */
+  'green-l20': 'var(--amino-blue-500)',
+  /** @deprecated use green600 instead */
+  'green-base': 'var(--amino-blue-600)',
+  /** @deprecated use green700 instead */
+  'green-d20': 'var(--amino-blue-700)',
+  /** @deprecated use green800 instead */
+  'green-d40': 'var(--amino-blue-800)',
+  /** @deprecated use green900 instead */
+  'green-d60': 'var(--amino-blue-900)',
+  /** @deprecated use green1000 instead */
+  'green-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;
+
+exports[`Make sure all generated color constants matched previous snapshot: _orange.ts 1`] = `
+"export const orange = {
+  /** @info #E9FBFB  */
+  'orange-100': '#E9FBFB',
+  /** @info #CBF6F4  */
+  'orange-200': '#CBF6F4',
+  /** @info #9AEFEC  */
+  'orange-300': '#9AEFEC',
+  /** @info #7BEAE7  */
+  'orange-400': '#7BEAE7',
+  /** @info #4FE3DE  */
+  'orange-500': '#4FE3DE',
+  /** @info #4AD3CF  */
+  'orange-600': '#4AD3CF',
+  /** @info #44C5C1  */
+  'orange-700': '#44C5C1',
+  /** @info #32A4A0  */
+  'orange-800': '#32A4A0',
+  /** @info #225E5C  */
+  'orange-900': '#225E5C',
+  /** @info #173B3A  */
+  'orange-1000': '#173B3A',
+
+  /** @deprecated use orange100 instead */
+  'orange-l80': 'var(--amino-blue-100)',
+  /** @deprecated use orange300 instead */
+  'orange-l60': 'var(--amino-blue-300)',
+  /** @deprecated use orange400 instead */
+  'orange-l40': 'var(--amino-blue-400)',
+  /** @deprecated use orange500 instead */
+  'orange-l20': 'var(--amino-blue-500)',
+  /** @deprecated use orange600 instead */
+  'orange-base': 'var(--amino-blue-600)',
+  /** @deprecated use orange700 instead */
+  'orange-d20': 'var(--amino-blue-700)',
+  /** @deprecated use orange800 instead */
+  'orange-d40': 'var(--amino-blue-800)',
+  /** @deprecated use orange900 instead */
+  'orange-d60': 'var(--amino-blue-900)',
+  /** @deprecated use orange1000 instead */
+  'orange-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;
+
+exports[`Make sure all generated color constants matched previous snapshot: _purple.ts 1`] = `
+"export const purple = {
+  /** @info #F6E8FC  */
+  'purple-100': '#F6E8FC',
+  /** @info #E8C9F8  */
+  'purple-200': '#E8C9F8',
+  /** @info #D496F3  */
+  'purple-300': '#D496F3',
+  /** @info #C570F0  */
+  'purple-400': '#C570F0',
+  /** @info #BC58EE  */
+  'purple-500': '#BC58EE',
+  /** @info #B347E9  */
+  'purple-600': '#B347E9',
+  /** @info #9D3ACF  */
+  'purple-700': '#9D3ACF',
+  /** @info #812AAC  */
+  'purple-800': '#812AAC',
+  /** @info #4B1D63  */
+  'purple-900': '#4B1D63',
+  /** @info #30133F  */
+  'purple-1000': '#30133F',
+
+  /** @deprecated use purple100 instead */
+  'purple-l80': 'var(--amino-blue-100)',
+  /** @deprecated use purple300 instead */
+  'purple-l60': 'var(--amino-blue-300)',
+  /** @deprecated use purple400 instead */
+  'purple-l40': 'var(--amino-blue-400)',
+  /** @deprecated use purple500 instead */
+  'purple-l20': 'var(--amino-blue-500)',
+  /** @deprecated use purple600 instead */
+  'purple-base': 'var(--amino-blue-600)',
+  /** @deprecated use purple700 instead */
+  'purple-d20': 'var(--amino-blue-700)',
+  /** @deprecated use purple800 instead */
+  'purple-d40': 'var(--amino-blue-800)',
+  /** @deprecated use purple900 instead */
+  'purple-d60': 'var(--amino-blue-900)',
+  /** @deprecated use purple1000 instead */
+  'purple-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;
+
+exports[`Make sure all generated color constants matched previous snapshot: _red.ts 1`] = `
+"export const red = {
+  /** @info #FCE8ED  */
+  'red-100': '#FCE8ED',
+  /** @info #F8C9D4  */
+  'red-200': '#F8C9D4',
+  /** @info #F396AC  */
+  'red-300': '#F396AC',
+  /** @info #F0708E  */
+  'red-400': '#F0708E',
+  /** @info #EE587B  */
+  'red-500': '#EE587B',
+  /** @info #E9476D  */
+  'red-600': '#E9476D',
+  /** @info #CF3A5D  */
+  'red-700': '#CF3A5D',
+  /** @info #AC2A48  */
+  'red-800': '#AC2A48',
+  /** @info #631D2D  */
+  'red-900': '#631D2D',
+  /** @info #3F131D  */
+  'red-1000': '#3F131D',
+
+  /** @deprecated use red100 instead */
+  'red-l80': 'var(--amino-blue-100)',
+  /** @deprecated use red300 instead */
+  'red-l60': 'var(--amino-blue-300)',
+  /** @deprecated use red400 instead */
+  'red-l40': 'var(--amino-blue-400)',
+  /** @deprecated use red500 instead */
+  'red-l20': 'var(--amino-blue-500)',
+  /** @deprecated use red600 instead */
+  'red-base': 'var(--amino-blue-600)',
+  /** @deprecated use red700 instead */
+  'red-d20': 'var(--amino-blue-700)',
+  /** @deprecated use red800 instead */
+  'red-d40': 'var(--amino-blue-800)',
+  /** @deprecated use red900 instead */
+  'red-d60': 'var(--amino-blue-900)',
+  /** @deprecated use red1000 instead */
+  'red-d80': 'var(--amino-blue-1000)',
+} as const;
+"
+`;

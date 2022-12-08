@@ -24,7 +24,7 @@ export const HelpText = ({ error, helpText }: HelpTextProps) => {
     if (error && typeof helpText === 'string') {
       return (
         <StyledHelpText>
-          <Text type="caption" color="red-d20">
+          <Text type="caption" color="red-700">
             {helpText}
           </Text>
         </StyledHelpText>

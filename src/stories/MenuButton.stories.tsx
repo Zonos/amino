@@ -50,31 +50,31 @@ export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: (
     <Menu>
-      <MenuItem icon={<CodeIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<CodeIcon color="gray-600" size={19} />}>
         View API details
       </MenuItem>
-      <MenuItem icon={<CartIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<CartIcon color="gray-600" size={19} />}>
         Re-create customer cart
       </MenuItem>
-      <MenuItem icon={<MailIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<MailIcon color="gray-600" size={19} />}>
         Re-send confirmation email
       </MenuItem>
-      <MenuItem icon={<UserIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<UserIcon color="gray-600" size={19} />}>
         Blacklist customer
       </MenuItem>
-      <MenuItem icon={<ExternalIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<ExternalIcon color="gray-600" size={19} />}>
         Open fraud tools
       </MenuItem>
-      <MenuItem icon={<CheckCircleIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<CheckCircleIcon color="gray-600" size={19} />}>
         Approve
       </MenuItem>
-      <MenuItem icon={<RemoveCircleIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<RemoveCircleIcon color="gray-600" size={19} />}>
         Deny
       </MenuItem>
-      <MenuItem icon={<SearchIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<SearchIcon color="gray-600" size={19} />}>
         Investigate buyer
       </MenuItem>
-      <MenuItem icon={<EyeIcon color="gray-base" size={19} />}>
+      <MenuItem icon={<EyeIcon color="gray-600" size={19} />}>
         Request verification
       </MenuItem>
     </Menu>
