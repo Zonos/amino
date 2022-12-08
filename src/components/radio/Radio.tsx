@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';

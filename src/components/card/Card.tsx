@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
@@ -43,13 +43,13 @@ const CardFooter = styled.footer<{ footerHeight?: number }>`
 `;
 
 export type CardProps = {
-  actions?: React.ReactNode;
-  children: React.ReactNode;
+  actions?: ReactNode;
+  children: ReactNode;
   className?: string;
-  footerActions?: React.ReactNode;
-  footerContent?: React.ReactNode;
+  footerActions?: ReactNode;
+  footerContent?: ReactNode;
   footerHeight?: number;
-  label?: React.ReactNode;
+  label?: ReactNode;
 };
 
 export const Card = ({

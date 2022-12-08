@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -55,7 +55,7 @@ const AminoPrimaryNotice = styled(AminoNotice)`
 `;
 
 export type NoticeProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   intent?: Intent;
   onClose?: () => void;

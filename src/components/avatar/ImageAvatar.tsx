@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { AvatarBase, AvatarProps } from './AvatarBase';
 
 export type ImageAvatarProps = {

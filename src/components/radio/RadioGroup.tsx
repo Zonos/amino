@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';

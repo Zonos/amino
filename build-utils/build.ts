@@ -1,4 +1,5 @@
 import buble from '@rollup/plugin-buble';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import fs from 'fs';
 import { glob } from 'glob';
@@ -42,6 +43,10 @@ const bundlePackage = async (
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     plugins: [
+      nodeResolve({
+        // Seems to evaluate falsiness, so put something
+        resolveOnly: [''],
+      }),
       image({
         limit: 10000,
       }),
@@ -102,16 +107,16 @@ const generateAllModulesContent = async (bundles: OutputChunk[]) =>
     })
     .filter(item => item);
 
-const animationsModules = glob.sync('src/animations/**/*.ts*') as string[];
-const iconsModules = glob.sync('src/icons/**/*.ts*') as string[];
-const utilsModules = glob.sync('src/utils/**/*.ts*') as string[];
-const componentsModules = glob.sync('src/components/**/*.ts*') as string[];
-const styleModules = glob.sync('src/styles/**/*.ts') as string[];
+const animationsModules = glob.sync('src/animations/**/*.ts*');
+const iconsModules = glob.sync('src/icons/**/*.ts*');
+const utilsModules = glob.sync('src/utils/**/*.ts*');
+const componentsModules = glob.sync('src/components/**/*.ts*');
+const styleModules = glob.sync('src/styles/**/*.ts');
 
 const allModules = animationsModules
   .concat(iconsModules, utilsModules, componentsModules, styleModules)
-  /** Exclude all paths __tests__ folder */
-  .filter(item => !item.includes('__tests__'));
+  /** Exclude dev folders */
+  .filter(item => !item.includes('__tests__') && !item.includes('__stories__'));
 
 const configs: ConfigOptions[] = [
   {

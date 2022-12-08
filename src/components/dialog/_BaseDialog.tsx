@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { KeyboardEvent, ReactNode, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -33,7 +33,7 @@ const Popup = styled(motion.div)<{ width: number }>`
 `;
 
 export type BaseDialogProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   open: boolean;
   theme?: IAminoTheme;
@@ -53,7 +53,7 @@ export const BaseDialog = ({
   closeOnBlur = true,
   closeOnEsc = true,
 }: BaseDialogProps) => {
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
     if (onClose && closeOnEsc && event.key === 'Escape') {
       onClose();
     }

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { useResizeAware } from 'src/utils/useResizeAware';
 import styled from 'styled-components';

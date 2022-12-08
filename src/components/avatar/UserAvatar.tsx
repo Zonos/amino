@@ -1,5 +1,3 @@
-import React from 'react';
-
 import avatarImg from '../../../svgReact/icons/custom-svgs/Avatar.svg';
 import { AvatarBase, AvatarProps } from './AvatarBase';
 

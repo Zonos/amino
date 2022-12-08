@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, MouseEventHandler, ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
@@ -76,7 +76,7 @@ export type Props = {
   label: ReactNode;
   subtitle?: ReactNode;
   rightDecorator?: ReactNode;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   /** @description Decorater takes a React node, preferably an icon or an avatar */
   decorator?: ReactNode;
   /** @deprecated use decorator instead */

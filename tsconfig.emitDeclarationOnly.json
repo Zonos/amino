@@ -6,5 +6,5 @@
     "declarationDir": "dist"
   },
   "include": ["./src"],
-  "exclude": ["**/__tests__"]
+  "exclude": ["**/_*"]
 }

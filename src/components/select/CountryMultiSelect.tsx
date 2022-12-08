@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import {
   components as RScomponents,
   GroupBase,
@@ -44,7 +44,7 @@ export const MenuList = <
           getStyles(
             'option',
             props as unknown as OptionProps<Option, IsMulti, Group>
-          ) as React.CSSProperties
+          ) as CSSProperties
         }
       >
         <Checkbox

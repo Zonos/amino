@@ -1,0 +1,24 @@
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { RestState, RestStateProps } from 'src/components/rest-state/RestState';
+
+const RestStateMeta: Meta = {
+  component: RestState,
+};
+
+export default RestStateMeta;
+
+const Template: Story<RestStateProps> = ({
+  label,
+  subtitle,
+  action,
+  icon,
+}: RestStateProps) => (
+  <RestState label={label} subtitle={subtitle} action={action} icon={icon} />
+);
+
+export const BasicRestState = Template.bind({});
+BasicRestState.args = {
+  label: 'Example Rest State',
+  subtitle: 'Example Rest State',
+  icon: '',
+};

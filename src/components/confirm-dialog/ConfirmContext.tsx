@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useCallback, useState } from 'react';
+import { createContext, ReactNode, useCallback, useState } from 'react';
 
 import { ConfirmDialogOpts } from 'src/types/ConfirmDialogOpts';
 

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { Color } from 'src/types';

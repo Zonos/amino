@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
@@ -41,13 +41,13 @@ type LegacyTextStyle =
   | 'input-label';
 
 export type LegacyTextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   title?: string;
   type?: LegacyTextStyle;
   className?: string;
 };
 
-export const LegacyText: React.FC<LegacyTextProps> = ({
+export const LegacyText: FC<LegacyTextProps> = ({
   className,
   children,
   title,

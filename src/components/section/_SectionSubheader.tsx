@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';

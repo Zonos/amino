@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { HStack } from 'src/components/stack/HStack';
@@ -10,7 +10,7 @@ const Actions = styled.div`
 
 export type CoverSheetProps = {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const CoverSheetActions = ({ className, children }: CoverSheetProps) => {

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import {
   ActionMeta,
   GroupBase,
@@ -64,16 +64,13 @@ const Group = <
   const groupIsSelected = available.length === selected.length;
 
   return (
-    <div
-      style={getStyles('group', props) as React.CSSProperties}
-      {...innerProps}
-    >
+    <div style={getStyles('group', props) as CSSProperties} {...innerProps}>
       <div
         style={
           getStyles(
             'option',
             props as unknown as OptionProps<Option, IsMulti, Group>
-          ) as React.CSSProperties
+          ) as CSSProperties
         }
       >
         <Checkbox

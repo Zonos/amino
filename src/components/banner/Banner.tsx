@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';

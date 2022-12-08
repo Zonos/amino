@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';

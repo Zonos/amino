@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { useHotkeys } from 'react-hotkeys-hook';
 
@@ -85,14 +85,14 @@ const Footer = styled.div`
 `;
 
 export type SlideOverProps = {
-  children: React.ReactNode;
-  actions?: React.ReactNode;
+  children: ReactNode;
+  actions?: ReactNode;
   label?: string;
   onClose: () => void;
   open: boolean;
   theme?: IAminoTheme;
   modal?: boolean;
-  subtitle?: React.ReactNode;
+  subtitle?: ReactNode;
 };
 
 export const SlideOver = ({

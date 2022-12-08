@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import { CalendarIcon } from 'src/icons/CalendarIcon';
 import { theme } from 'src/styles/constants/theme';

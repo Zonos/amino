@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo, useRef } from 'react';
+import { CSSProperties, ReactNode, useMemo, useRef } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
@@ -201,7 +201,7 @@ const Control = <
         ].join(' ')
       )}
       ref={innerRef}
-      style={getStyles('control', props) as React.CSSProperties}
+      style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
       {icon && <IconWrapper>{icon}</IconWrapper>}
@@ -304,7 +304,7 @@ export const CheckboxOptionComponent = <
   const { hasGroups } = selectProps as typeof props['selectProps'] &
     AdditionalProps;
 
-  const { color, ...style } = getStyles('option', props) as React.CSSProperties;
+  const { color, ...style } = getStyles('option', props) as CSSProperties;
   if (hasGroups) {
     style.paddingLeft = 48;
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -58,12 +58,12 @@ const Content = styled.div`
 `;
 
 export type CoverSheetProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   open: boolean;
   label: string;
   onClose: () => void;
-  actions?: React.ReactNode;
+  actions?: ReactNode;
 };
 
 export const CoverSheet = ({
