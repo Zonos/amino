@@ -1,24 +1,24 @@
 export const orange = {
-  /** @info #E9FBFB  */
-  'orange-100': '#E9FBFB',
-  /** @info #CBF6F4  */
-  'orange-200': '#CBF6F4',
-  /** @info #9AEFEC  */
-  'orange-300': '#9AEFEC',
-  /** @info #7BEAE7  */
-  'orange-400': '#7BEAE7',
-  /** @info #4FE3DE  */
-  'orange-500': '#4FE3DE',
-  /** @info #4AD3CF  */
-  'orange-600': '#4AD3CF',
-  /** @info #44C5C1  */
-  'orange-700': '#44C5C1',
-  /** @info #32A4A0  */
-  'orange-800': '#32A4A0',
-  /** @info #225E5C  */
-  'orange-900': '#225E5C',
-  /** @info #173B3A  */
-  'orange-1000': '#173B3A',
+  /** @info #FCF0E8  */
+  'orange-100': '#FCF0E8',
+  /** @info #F8DCC9  */
+  'orange-200': '#F8DCC9',
+  /** @info #F3BB96  */
+  'orange-300': '#F3BB96',
+  /** @info #F0A370  */
+  'orange-400': '#F0A370',
+  /** @info #EE9458  */
+  'orange-500': '#EE9458',
+  /** @info #E98847  */
+  'orange-600': '#E98847',
+  /** @info #CF763A  */
+  'orange-700': '#CF763A',
+  /** @info #AC5E2A  */
+  'orange-800': '#AC5E2A',
+  /** @info #63391D  */
+  'orange-900': '#63391D',
+  /** @info #3F2513  */
+  'orange-1000': '#3F2513',
 
   /** @deprecated use orange100 instead */
   'orange-l80': 'var(--amino-orange-100)',

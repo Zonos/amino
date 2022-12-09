@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -20,7 +21,7 @@ export const MenuDuotoneIcon = forwardRef<
       d="M5 17a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm0-5a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
     />
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       d="M5 7a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
     />

@@ -332,7 +332,7 @@ export const CheckboxOptionComponent = <
             <IconLabel color={color} icon={data.icon}>
               {children}
             </IconLabel>
-            {isSelected && <CheckCircleSolidIcon color="blue-600" size={16} />}
+            {isSelected && <CheckCircleSolidIcon color="blue600" size={16} />}
           </SelectedSingleOptionWrapper>
         )}
       </StyledSelectOptionWrapper>

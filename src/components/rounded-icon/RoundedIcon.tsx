@@ -13,10 +13,8 @@ type CSSProps = {
 const IconWrapper = styled.div<CSSProps>`
   width: 32px;
   height: 32px;
-  background: var(
-    ${p => (p.background ? `--amino-${p.background}` : '--amino-gray-200')}
-  );
-  color: var(${p => (p.color ? `--amino-${p.color}` : '--amino-gray-600')});
+  background: ${p => (p.background ? theme[p.background] : theme.gray200)};
+  color: ${p => (p.color ? theme[p.color] : theme.gray600)};
   display: flex;
   align-items: center;
   justify-content: center;

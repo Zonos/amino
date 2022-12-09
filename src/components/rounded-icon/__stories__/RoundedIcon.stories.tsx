@@ -36,9 +36,9 @@ Danger.args = dangerArgs;
 
 export const Colored = Template.bind({});
 const coloredArgs: RoundedIconProps = {
-  background: 'gray-1000',
+  background: 'gray1000',
   children: <TruckDuotoneIcon />,
-  color: 'purple-400',
+  color: 'purple400',
   intent: 'secondary',
 };
 Colored.args = coloredArgs;

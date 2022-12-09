@@ -37,7 +37,7 @@ const SkeletonWrapper = styled.div<SkeletonProps>`
   width: ${p => (p.width ? `${p.width}px` : '100%')};
   border-radius: ${theme.radius6};
   position: relative;
-  background: ${theme.grayL60};
+  background: ${theme.gray200};
   overflow: hidden;
 
   ${p => p.animation && waveAnimation}

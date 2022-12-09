@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -16,7 +17,7 @@ export const LightDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       d="M16 16.93a8 8 0 1 0-8 0V18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1.07Z"
     />

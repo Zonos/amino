@@ -8,21 +8,20 @@ const StyledDiv = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-  margin-bottom: ${theme.space};
+  margin-bottom: ${theme.space24};
 
   &:last-child {
     height: 150px;
   }
 `;
-type AminoColor = `--amino-${Color}`;
 
 const StyledColorIntensity = styled.div<{
-  background: AminoColor;
+  background: Color;
 }>`
   color: ${p => p.color};
   font-size: ${theme.fontSizeS};
   padding: ${theme.space};
-  background: var(${p => p.background});
+  background: ${p => theme[p.background]};
 `;
 
 export const ColorPalette = () => (
@@ -31,8 +30,11 @@ export const ColorPalette = () => (
       <StyledWrapper key={color}>
         <p>{color.toUpperCase()}</p>
         <HStack spacing="none">
-          {colorContrasts.map(value => {
-            const aminoColor: AminoColor = `--amino-${color}-${value}`;
+          {(color !== 'gray'
+            ? colorContrasts
+            : [...colorContrasts, '1100', '1200', '1300']
+          ).map(value => {
+            const aminoColor: Color = `${color}${value}` as Color;
             return (
               <div key={aminoColor}>
                 <StyledColorIntensity

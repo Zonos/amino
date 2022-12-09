@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -16,7 +17,7 @@ export const EyeDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       d="M12 4c-6.108 0-8.86 4.788-9.73 6.74a3.088 3.088 0 0 0 0 2.52C3.14 15.212 5.892 20 12 20c6.11 0 8.861-4.788 9.73-6.74a3.088 3.088 0 0 0 0-2.52C20.861 8.788 18.11 4 12 4Z"
     />

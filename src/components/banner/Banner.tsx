@@ -14,7 +14,6 @@ import styled from 'styled-components';
 import { Button } from '../button/Button';
 
 const StyledBanner = styled.div`
-  border: ${theme.border};
   border-radius: ${theme.radius6};
   padding: ${theme.space16};
 `;
@@ -48,8 +47,9 @@ const CloseButton = styled(Button)`
   }
 `;
 
-const Header = styled.div`
+const Header = styled.div<{ color: Color }>`
   grid-area: header;
+  color: ${p => theme[p.color]};
 `;
 
 const Content = styled.div`
@@ -72,33 +72,28 @@ const BannerFooter = styled.footer`
 `;
 
 const DefaultBanner = styled(StyledBanner)`
-  background: ${theme.grayL80};
-  border-color: ${theme.grayL80};
-  color: ${theme.grayD40};
+  background: ${theme.gray100};
+  color: ${theme.gray700};
 `;
 
 const InfoBanner = styled(StyledBanner)`
-  background: ${theme.blueL80};
-  border-color: ${theme.blueL80};
-  color: ${theme.blueD40};
+  background: ${theme.blue100};
+  color: ${theme.blue700};
 `;
 
 const SuccessBanner = styled(StyledBanner)`
-  background: ${theme.greenL80};
-  border-color: ${theme.greenL80};
-  color: ${theme.greenD40};
+  background: ${theme.green100};
+  color: ${theme.green700};
 `;
 
 const WarningBanner = styled(StyledBanner)`
-  background: ${theme.orangeL80};
-  border-color: ${theme.orangeL80};
-  color: ${theme.orangeD40};
+  background: ${theme.orange100};
+  color: ${theme.orange700};
 `;
 
 const ErrorBanner = styled(StyledBanner)`
-  background: ${theme.redL80};
-  border-color: ${theme.redL80};
-  color: ${theme.redD40};
+  background: ${theme.red100};
+  color: ${theme.red700};
 `;
 
 export type BannerProps = {
@@ -133,7 +128,9 @@ export const Banner = ({
     const renderTitle = () =>
       title && (
         <BannerHeader>
-          <Text type="label">{title}</Text>
+          <Text type="label" color={removeIconColor}>
+            {title}
+          </Text>
           {headerActions && (
             <HStack spacing="space-quarter">{headerActions}</HStack>
           )}
@@ -167,7 +164,7 @@ export const Banner = ({
           </Close>
         )}
 
-        <Header>{header}</Header>
+        <Header color={removeIconColor}>{header}</Header>
 
         {content && (
           <Content>
@@ -185,12 +182,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <CheckCircleDuotoneIcon
-                color="blue-1000"
-                secondaryColor="blue-400"
+                color="blue800"
+                secondaryColor="blue300"
                 size={20}
               />
             ),
-            removeIconColor: 'blue-800',
+            removeIconColor: 'blue800',
           })}
         </InfoBanner>
       );
@@ -200,12 +197,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <CheckCircleDuotoneIcon
-                color="green-1000"
-                secondaryColor="green-400"
+                color="green800"
+                secondaryColor="green300"
                 size={20}
               />
             ),
-            removeIconColor: 'green-800',
+            removeIconColor: 'green800',
           })}
         </SuccessBanner>
       );
@@ -215,12 +212,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <WarningDuotoneIcon
-                color="orange-1000"
-                secondaryColor="orange-400"
+                color="orange800"
+                secondaryColor="orange300"
                 size={20}
               />
             ),
-            removeIconColor: 'orange-800',
+            removeIconColor: 'orange800',
           })}
         </WarningBanner>
       );
@@ -230,12 +227,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <RemoveCircleDuotoneIcon
-                color="red-1000"
-                secondaryColor="red-400"
+                color="red800"
+                secondaryColor="red300"
                 size={20}
               />
             ),
-            removeIconColor: 'red-800',
+            removeIconColor: 'red800',
           })}
         </ErrorBanner>
       );
@@ -246,12 +243,12 @@ export const Banner = ({
           {renderContent({
             intentIcon: (
               <InfoDuotoneIcon
-                color="gray-1000"
-                secondaryColor="gray-400"
+                color="gray800"
+                secondaryColor="gray300"
                 size={20}
               />
             ),
-            removeIconColor: 'gray-800',
+            removeIconColor: 'gray800',
           })}
         </DefaultBanner>
       );

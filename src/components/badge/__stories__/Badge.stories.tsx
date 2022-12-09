@@ -164,12 +164,6 @@ PurpleBadge.args = {
   children: <span>Option</span>,
 };
 
-export const YellowBadge = Template.bind({});
-YellowBadge.args = {
-  color: 'yellow',
-  children: <span>Option</span>,
-};
-
 export const CyanBadge = Template.bind({});
 CyanBadge.args = {
   color: 'cyan',
