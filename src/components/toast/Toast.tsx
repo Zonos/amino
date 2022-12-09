@@ -65,24 +65,21 @@ export const Toast: FC<ToastProps> = ({ children, intent, toastKey }) => {
     case 'success':
       return (
         <AminoSuccessToast layout {...baseProps}>
-          <CheckCircleDuotoneIcon
-            color="green-900"
-            secondaryColor="green-400"
-          />
+          <CheckCircleDuotoneIcon color="green900" secondaryColor="green400" />
           {children}
         </AminoSuccessToast>
       );
     case 'error':
       return (
         <AminoErrorToast layout {...baseProps}>
-          <RemoveCircleDuotoneIcon color="red-900" secondaryColor="red-400" />
+          <RemoveCircleDuotoneIcon color="red900" secondaryColor="red400" />
           {children}
         </AminoErrorToast>
       );
     case 'warning':
       return (
         <AminoWarningToast layout {...baseProps}>
-          <WarningDuotoneIcon color="orange-900" secondaryColor="orange-400" />
+          <WarningDuotoneIcon color="orange900" secondaryColor="orange400" />
           {children}
         </AminoWarningToast>
       );
@@ -90,14 +87,14 @@ export const Toast: FC<ToastProps> = ({ children, intent, toastKey }) => {
     case 'info':
       return (
         <AminoInfoToast layout {...baseProps}>
-          <InfoDuotoneIcon color="blue-900" secondaryColor="blue-400" />
+          <InfoDuotoneIcon color="blue900" secondaryColor="blue400" />
           {children}
         </AminoInfoToast>
       );
     default:
       return (
         <AminoToast layout {...baseProps}>
-          <InfoDuotoneIcon color="gray-900" secondaryColor="gray-400" />
+          <InfoDuotoneIcon color="gray900" secondaryColor="gray400" />
           {children}
         </AminoToast>
       );

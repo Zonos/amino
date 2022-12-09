@@ -81,7 +81,7 @@ export const SearchInput = ({
 }: InputProps) => (
   <StyledWrapper className={className}>
     <StyledLabel htmlFor={AminoInput}>
-      <SearchIcon color="gray-600" size={20} />
+      <SearchIcon color="gray600" size={20} />
     </StyledLabel>
     <AminoInput
       autoFocus={autoFocus}

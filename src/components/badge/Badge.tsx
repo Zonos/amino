@@ -12,8 +12,7 @@ type ColorList =
   | 'green'
   | 'orange'
   | 'purple'
-  | 'red'
-  | 'yellow';
+  | 'red';
 
 type Size = 'small' | 'large';
 
@@ -43,8 +42,8 @@ const StyledBadge = styled.div<BadgeProps>`
   text-align: center;
   border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius)};
   // default background color (gray)
-  background-color: ${theme.grayL60};
-  color: ${theme.grayD40};
+  background-color: ${theme.gray100};
+  color: ${theme.gray800};
   align-items: center;
 
   p {
@@ -58,8 +57,8 @@ const StyledBadge = styled.div<BadgeProps>`
 
   &.bold {
     // bold config default (gray)
-    background-color: ${theme.grayD20};
-    color: ${theme.grayL60};
+    background-color: ${theme.gray600};
+    color: ${theme.gray100};
   }
 
   // size
@@ -69,78 +68,67 @@ const StyledBadge = styled.div<BadgeProps>`
 
   &.blue {
     // color config
-    background-color: ${theme.blueL80};
-    color: ${theme.blueD40};
+    background-color: ${theme.blue100};
+    color: ${theme.blue800};
     &.bold {
       // bold config
-      background-color: ${theme.blueBase};
-      color: ${theme.blueL80};
+      background-color: ${theme.blue600};
+      color: ${theme.blue100};
     }
   }
 
   &.green {
     // color config
-    background-color: ${theme.greenL80};
-    color: ${theme.greenD40};
+    background-color: ${theme.green100};
+    color: ${theme.green800};
     &.bold {
       // bold config
-      background-color: ${theme.greenBase};
-      color: ${theme.greenL80};
+      background-color: ${theme.green600};
+      color: ${theme.green100};
     }
   }
 
   &.red {
     // color config
-    background-color: ${theme.redL80};
-    color: ${theme.redD40};
+    background-color: ${theme.red100};
+    color: ${theme.red800};
     &.bold {
       // bold config
-      background-color: ${theme.redBase};
-      color: ${theme.redL80};
+      background-color: ${theme.red600};
+      color: ${theme.red100};
     }
   }
 
   &.orange {
     // color config
-    background-color: ${theme.orangeL80};
-    color: ${theme.orangeD40};
+    background-color: ${theme.orange100};
+    color: ${theme.orange800};
     &.bold {
       // bold config
-      background-color: ${theme.orangeBase};
-      color: ${theme.orangeL80};
+      background-color: ${theme.orange600};
+      color: ${theme.orange100};
     }
   }
 
   &.purple {
     // color config
-    background-color: ${theme.purpleL80};
-    color: ${theme.purpleD40};
+    background-color: ${theme.purple100};
+    color: ${theme.purple800};
     &.bold {
       // bold config
-      background-color: ${theme.purpleBase};
-      color: ${theme.purpleL80};
+      background-color: ${theme.purple600};
+      color: ${theme.purple100};
     }
   }
 
   &.cyan {
     // color config
-    background-color: ${theme.cyanL80};
-    color: ${theme.cyanD40};
+    background-color: ${theme.cyan100};
+    color: ${theme.cyan800};
     &.bold {
       // bold config
-      background-color: ${theme.cyanBase};
-      color: ${theme.cyanL80};
-    }
-  }
-
-  &.yellow {
-    // color config
-    background-color: ${theme.yellowL80};
-    color: ${theme.yellowD40};
-    &.bold {
-      // bold config
-      background-color: ${theme.yellowBase};
-      color: black;
+      background-color: ${theme.cyan600};
+      color: ${theme.cyan100};
     }
   }
 `;

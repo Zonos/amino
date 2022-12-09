@@ -1,5 +1,6 @@
 import './animations/DropdownAnimation';
 import './icons/ArrowDownDuotoneIcon';
+import './styles/constants/theme';
 import './icons/ArrowDownIcon';
 import './icons/ArrowDownSolidIcon';
 import './icons/ArrowLeftDuotoneIcon';
@@ -590,7 +591,6 @@ import './components/button/Button';
 import './components/rounded-icon/RoundedIcon';
 import './components/stack/VStack';
 import './components/text/Text';
-import './styles/constants/theme';
 import './components/spinner/Spinner';
 import './components/backdrop/Backdrop';
 import './components/stack/Stack';

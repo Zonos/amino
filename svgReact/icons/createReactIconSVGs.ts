@@ -57,6 +57,8 @@ export const createReactIconSVGs = ({
     const component = [
       `import { forwardRef } from 'react';`,
       `import type { IconProps } from 'src/types/IconProps';`,
+      hasSecondaryColor &&
+        `import { theme } from 'src/styles/constants/theme';`,
       hasSecondaryColor && `import { Color } from 'src/types';`,
       `import { IconBase } from 'src/icons/icon-base/_IconBase';`,
       maskIds.length &&

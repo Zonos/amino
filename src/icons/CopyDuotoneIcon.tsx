@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -19,7 +20,7 @@ export const CopyDuotoneIcon = forwardRef<
       viewBox="0 0 24 24"
     >
       <path
-        fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+        fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
         data-is-secondary-color="true"
         fillRule="evenodd"
         d="M14.241 2H9.76c-.805 0-1.47 0-2.01.044-.563.046-1.08.145-1.565.392a4 4 0 0 0-1.748 1.748c-.247.485-.346 1.002-.392 1.564C4 6.29 4 6.954 4 7.758v8.483c0 .805 0 1.47.044 2.01.046.563.145 1.08.392 1.565a4 4 0 0 0 1.748 1.748c.485.247 1.002.346 1.564.392C8.29 22 8.954 22 9.758 22h4.483c.805 0 1.47 0 2.01-.044.563-.046 1.08-.145 1.565-.392a4 4 0 0 0 1.748-1.748c.247-.485.346-1.002.392-1.564.044-.541.044-1.206.044-2.01V7.758c0-.805 0-1.47-.044-2.01-.046-.563-.145-1.08-.392-1.565a4 4 0 0 0-1.748-1.748c-.485-.247-1.002-.346-1.564-.392C15.71 2 15.046 2 14.242 2Z"

@@ -19,7 +19,7 @@ const getAminoColor = (color?: Color | 'inherit') => {
     return 'inherit';
   }
   if (color) {
-    return `var(--amino-${color})`;
+    return theme[color];
   }
   return undefined;
 };

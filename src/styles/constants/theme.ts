@@ -283,34 +283,34 @@ export const theme = {
   red50: 'var(--amino-red-50)',
 
   /* ORANGE PALETTE */
-  /** @info #E9FBFB  */
+  /** @info #FCF0E8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange100: 'var(--amino-orange-100)',
-  /** @info #CBF6F4  */
+  /** @info #F8DCC9  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange200: 'var(--amino-orange-200)',
-  /** @info #9AEFEC  */
+  /** @info #F3BB96  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange300: 'var(--amino-orange-300)',
-  /** @info #7BEAE7  */
+  /** @info #F0A370  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange400: 'var(--amino-orange-400)',
-  /** @info #4FE3DE  */
+  /** @info #EE9458  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange500: 'var(--amino-orange-500)',
-  /** @info #4AD3CF  */
+  /** @info #E98847  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange600: 'var(--amino-orange-600)',
-  /** @info #44C5C1  */
+  /** @info #CF763A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange700: 'var(--amino-orange-700)',
-  /** @info #32A4A0  */
+  /** @info #AC5E2A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange800: 'var(--amino-orange-800)',
-  /** @info #225E5C  */
+  /** @info #63391D  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange900: 'var(--amino-orange-900)',
-  /** @info #173B3A  */
+  /** @info #3F2513  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange1000: 'var(--amino-orange-1000)',
 

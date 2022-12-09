@@ -147,7 +147,7 @@ const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
   ${p =>
     p.color &&
     css`
-      color: var(--amino-${p.color});
+      color: ${theme[p.color]};
     `}
   ${p =>
     p.isUppercase &&

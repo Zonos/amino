@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -16,7 +17,7 @@ export const DutiesDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       d="M13 14.5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Z"
     />
@@ -27,7 +28,7 @@ export const DutiesDuotoneIcon = forwardRef<
       clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       d="M1 17.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
     />

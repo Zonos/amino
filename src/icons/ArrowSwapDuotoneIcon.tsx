@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -20,7 +21,7 @@ export const ArrowSwapDuotoneIcon = forwardRef<
       d="M16.586 5.707A1 1 0 0 1 18 4.293L21.707 8a1 1 0 0 1 0 1.414L18 13.121a1 1 0 0 1-1.414-1.414l2-2H11a1 1 0 1 1 0-2h7.586l-2-2Z"
     />
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       d="M7.414 17.707A1 1 0 1 1 6 19.121l-3.707-3.707a1 1 0 0 1 0-1.414L6 10.293a1 1 0 1 1 1.414 1.414l-2 2H13a1 1 0 1 1 0 2H5.414l2 2Z"
     />

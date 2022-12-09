@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
@@ -16,7 +17,7 @@ export const CubeDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `var(--amino-${secondaryColor})` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M11.361 2.44a2 2 0 0 1 1.777 0l7.25 3.596A2 2 0 0 1 21.5 7.827v8.578a2 2 0 0 1-1.111 1.792l-7.25 3.595a2 2 0 0 1-1.777 0l-7.25-3.595A2 2 0 0 1 3 16.405V7.827a2 2 0 0 1 1.112-1.791l7.25-3.595Z"

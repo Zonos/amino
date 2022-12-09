@@ -7,16 +7,7 @@ const BadgeMeta: Meta = {
   component: Badge,
   argTypes: {
     color: {
-      options: [
-        'default',
-        'blue',
-        'green',
-        'red',
-        'orange',
-        'purple',
-        'yellow',
-        'cyan',
-      ],
+      options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
     },
     className: {
       type: 'string',
@@ -161,12 +152,6 @@ OrangeBadge.args = {
 export const PurpleBadge = Template.bind({});
 PurpleBadge.args = {
   color: 'purple',
-  children: <span>Option</span>,
-};
-
-export const YellowBadge = Template.bind({});
-YellowBadge.args = {
-  color: 'yellow',
   children: <span>Option</span>,
 };
 
