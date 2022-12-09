@@ -1,11 +1,11 @@
 export const colorPrefixes = [
   'blue',
   'cyan',
-  'gray',
   'green',
   'orange',
   'purple',
   'red',
+  'gray',
 ] as const;
 
 export const colorContrasts = [

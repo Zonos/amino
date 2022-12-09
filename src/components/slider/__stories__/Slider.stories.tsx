@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Slider, SliderProps } from 'src/components/slider/Slider';
+import {
+  Slider as SliderComponent,
+  SliderProps,
+} from 'src/components/slider/Slider';
 
 const SliderMeta: Meta = {
-  component: Slider,
+  component: SliderComponent,
 };
 
 export default SliderMeta;
@@ -18,7 +21,7 @@ const Template: Story<SliderProps> = ({
   const [value, setValue] = useState(_value);
 
   return (
-    <Slider
+    <SliderComponent
       max={max}
       min={min}
       onChange={n => setValue(n)}
@@ -28,14 +31,14 @@ const Template: Story<SliderProps> = ({
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
+export const Slider = Template.bind({});
+Slider.args = {
   value: 50,
   min: 0,
   max: 100,
   step: 1,
 };
-Default.parameters = {
+Slider.parameters = {
   design: {
     type: 'figma',
     url: '',

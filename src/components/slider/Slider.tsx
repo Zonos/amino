@@ -36,6 +36,8 @@ const StyledThumb = styled(Thumb)`
   height: 24px;
   width: 24px;
 
+  cursor: pointer;
+
   &:focus,
   &:active {
     background: ${theme.grayL80};

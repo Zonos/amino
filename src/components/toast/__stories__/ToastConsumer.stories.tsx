@@ -88,7 +88,7 @@ export const ToastConsumer = () => {
         </CustomWrapper>
         <Input
           type="number"
-          label="duration"
+          label="Duration"
           value={String(duration)}
           onChange={e => setDuration(+e.target.value)}
         />

@@ -83,5 +83,3 @@ export const TextPurple = Template.bind({});
 TextPurple.args = { color: 'purple600' };
 export const TextRed = Template.bind({});
 TextRed.args = { color: 'red600' };
-export const TextYellow = Template.bind({});
-TextYellow.args = { color: 'orange600' };

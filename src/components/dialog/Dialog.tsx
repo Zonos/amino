@@ -31,10 +31,10 @@ const Title = styled.div`
   }
 `;
 
-const StyledButton = styled(Button)`
+const StyledCloseButton = styled(Button)`
   padding: 0;
   path[data-is-secondary-color] {
-    fill: ${theme.grayL60};
+    fill: ${theme.gray200};
   }
 
   && {
@@ -42,18 +42,18 @@ const StyledButton = styled(Button)`
     &:focus,
     &:hover,
     &:active {
-      color: ${theme.grayD60};
+      color: ${theme.gray800};
       background: transparent;
     }
     &:hover {
       path[data-is-secondary-color] {
-        fill: ${theme.grayL40};
+        fill: ${theme.gray300};
       }
     }
     &:active,
     &:focus {
       path[data-is-secondary-color] {
-        fill: ${theme.grayL20};
+        fill: ${theme.gray400};
       }
     }
   }
@@ -195,7 +195,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       <Header>
         <Title>
           <Text type="title">{label}</Text>
-          <StyledButton
+          <StyledCloseButton
             onClick={onClose}
             icon={<RemoveCircleDuotoneIcon size={24} />}
           />

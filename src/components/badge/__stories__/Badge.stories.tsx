@@ -7,16 +7,7 @@ const BadgeMeta: Meta = {
   component: Badge,
   argTypes: {
     color: {
-      options: [
-        'default',
-        'blue',
-        'green',
-        'red',
-        'orange',
-        'purple',
-        'yellow',
-        'cyan',
-      ],
+      options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
     },
     className: {
       type: 'string',
