@@ -60,7 +60,7 @@ const ConnectionMapTemplate: Story<{ from: string; to: string }> = ({
         from={from}
         to={to}
         worldData={worldData || null}
-        height={260}
+        height={265}
       />
 
       <HStack>
@@ -127,4 +127,22 @@ export const RussiaToAustralia = ConnectionMapTemplate.bind({});
 RussiaToAustralia.args = {
   from: 'RU',
   to: 'AU',
+};
+
+export const RussiaToArgentina = ConnectionMapTemplate.bind({});
+RussiaToArgentina.args = {
+  from: 'RU',
+  to: 'AR',
+};
+
+export const RussiaToGreenland = ConnectionMapTemplate.bind({});
+RussiaToGreenland.args = {
+  from: 'RU',
+  to: 'GL',
+};
+
+export const RussiaToEcuador = ConnectionMapTemplate.bind({});
+RussiaToEcuador.args = {
+  from: 'RU',
+  to: 'EC',
 };

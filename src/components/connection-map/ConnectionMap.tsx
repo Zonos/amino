@@ -16,17 +16,24 @@ import styled from 'styled-components';
 import { feature } from 'topojson-client';
 
 const Map = styled.div`
-  background: ${theme.grayL80};
+  background: ${theme.gray100};
 
   * {
     outline: none;
   }
 `;
 
-const getScale = (distance: number, verticalDistance: number) => {
-  const verticalScaling = 80 * Math.abs(verticalDistance / distance);
+const getScale = (xDistance: number, yDistance: number) => {
+  // Account for large vertical distances not being scaled properly relative to horizntal distances because our viewport width is much greater than height
+  const adjustedDistance =
+    xDistance + yDistance > 4 ? 80 * (xDistance + yDistance - 4) : 0;
 
-  return -72.4 * distance + 302 - verticalScaling;
+  return (
+    -19.46498024 * xDistance +
+    -92.29376925 * yDistance +
+    284.7 +
+    adjustedDistance
+  );
 };
 
 type Props = {
@@ -80,9 +87,12 @@ export const ConnectionMap = ({
       const [x2, y2] = coordsForIso(to);
 
       const distance = geoDistance([x1, y1], [x2, y2]);
-      const verticalDistance = geoDistance([0, y1], [0, y2]);
+      const xDistance = geoDistance([x1, 0], [x2, 0]);
+      const yDistance = geoDistance([0, y1], [0, y2]);
 
-      setScale(getScale(distance, verticalDistance));
+      const calculatedScale = getScale(xDistance, yDistance);
+
+      setScale(calculatedScale);
 
       const [midX, midY]: [number, number] = [(x1 + x2) / 2, (y1 + y2) / 2];
       // Use rotation for X instead of center as it looks better. Y rotation skews the projection unpleasantly though, so use the Y center primarily.
@@ -95,8 +105,17 @@ export const ConnectionMap = ({
       }
 
       // High Y centers make the arc flattened and it looks bad, so solve that edge case, by rotating Y by a percent of Y coord if the value is large enough.
-      const rotateY =
+      const baseRotateY =
         Math.abs(midY) > 55 ? distance * -(Math.abs(midY) - 50) : 0;
+
+      // Account for arc getting flattened at the top for extremely long arcs at high Y positions
+      const longArcFlatteningRotation =
+        yDistance > 1 && xDistance > yDistance && Math.max(y1, y2) > 50
+          ? (xDistance / yDistance) * -5
+          : 0;
+
+      const rotateY = baseRotateY + longArcFlatteningRotation;
+
       // Figure out rotation based on midpoint
       setRotation([rotateX, rotateY, 0]);
     }
@@ -144,6 +163,7 @@ export const ConnectionMap = ({
           <circle r={7} fill={theme.blueL40} />
         </Marker>
         <Line
+          id="test_test"
           from={coordsForIso(from)}
           to={coordsForIso(to)}
           stroke={theme.blueBase}
