@@ -28,6 +28,7 @@ const getScale = (xDistance: number, yDistance: number) => {
   const adjustedDistance =
     xDistance + yDistance > 4 ? 80 * (xDistance + yDistance - 4) : 0;
 
+  // This was calculated using linear regression for approximate fit
   return (
     -19.46498024 * xDistance +
     -92.29376925 * yDistance +
@@ -87,6 +88,7 @@ export const ConnectionMap = ({
       const [x2, y2] = coordsForIso(to);
 
       const distance = geoDistance([x1, y1], [x2, y2]);
+      // Isolate the vector components because our width and height are different, and should be weighted differently.
       const xDistance = geoDistance([x1, 0], [x2, 0]);
       const yDistance = geoDistance([0, y1], [0, y2]);
 
@@ -95,16 +97,16 @@ export const ConnectionMap = ({
       setScale(calculatedScale);
 
       const [midX, midY]: [number, number] = [(x1 + x2) / 2, (y1 + y2) / 2];
-      // Use rotation for X instead of center as it looks better. Y rotation skews the projection unpleasantly though, so use the Y center primarily.
+      // Use rotation for X instead of center as it looks better. Y rotation skews the projection unpleasantly though, so use the Y center primarily and use Y rotatin sparingly when needed
       setCenter([0, midY]);
 
       let rotateX = -midX;
-      // If we need to flip completely because the shorter arc is on the opposite side
+      // If we need to flip completely because the shortest arc is on the opposite side
       if (Math.abs(x1 - x2) > 180) {
         rotateX += 180;
       }
 
-      // High Y centers make the arc flattened and it looks bad, so solve that edge case, by rotating Y by a percent of Y coord if the value is large enough.
+      // High Y centers make the arc flattened and it looks bad, so solve that edge case, by rotating Y by a percent of Y coord if the value is large enough
       const baseRotateY =
         Math.abs(midY) > 55 ? distance * -(Math.abs(midY) - 50) : 0;
 
@@ -116,7 +118,6 @@ export const ConnectionMap = ({
 
       const rotateY = baseRotateY + longArcFlatteningRotation;
 
-      // Figure out rotation based on midpoint
       setRotation([rotateX, rotateY, 0]);
     }
   }, [geographies, coordsForIso, to, from]);
