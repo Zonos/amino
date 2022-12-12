@@ -147,8 +147,8 @@ export const ConnectionMap = ({
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={isConnectionCountry ? theme.blueL80 : theme.grayL40}
-                  stroke={isConnectionCountry ? theme.blueL60 : theme.grayL20}
+                  fill={isConnectionCountry ? theme.blue100 : theme.gray400}
+                  stroke={isConnectionCountry ? theme.blue300 : theme.gray500}
                   strokeWidth={1}
                 />
               );
@@ -156,27 +156,26 @@ export const ConnectionMap = ({
           }
         </Geographies>
         <Marker coordinates={coordsForIso(from)}>
-          <circle r={10} fill={theme.blueL60} />
-          <circle r={7} fill={theme.blueL40} />
+          <circle r={10} fill={theme.blue300} />
+          <circle r={7} fill={theme.blue400} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
-          <circle r={10} fill={theme.blueL60} />
-          <circle r={7} fill={theme.blueL40} />
+          <circle r={10} fill={theme.blue300} />
+          <circle r={7} fill={theme.blue400} />
         </Marker>
         <Line
-          id="test_test"
           from={coordsForIso(from)}
           to={coordsForIso(to)}
-          stroke={theme.blueBase}
+          stroke={theme.blue600}
           strokeWidth={4}
         />
         <Marker coordinates={coordsForIso(from)}>
           <circle r={4} fill="white" />
-          <circle r={2} fill={theme.blueBase} />
+          <circle r={2} fill={theme.blue600} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
           <circle r={4} fill="white" />
-          <circle r={2} fill={theme.blueBase} />
+          <circle r={2} fill={theme.blue600} />
         </Marker>
       </ComposableMap>
     </Map>
