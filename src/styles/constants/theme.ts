@@ -637,7 +637,7 @@ export const theme = {
   /** @info white */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   pageBackground: 'var(--amino-page-background)',
-  /** @info var(--amino-gray-300) */
+  /** @info var(--amino-gray-200) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderColor: 'var(--amino-border-color)',
   /** @info var(--amino-gray-50) */
