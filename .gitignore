@@ -90,3 +90,4 @@ build.mjs
 
 # Snapshots
 __diff_output__
+.vercel

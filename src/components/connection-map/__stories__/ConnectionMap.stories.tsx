@@ -28,6 +28,12 @@ const CountrySelectMeta: Meta = {
       </StyledWrapper>
     ),
   ],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
+    },
+  },
 };
 
 export default CountrySelectMeta;
@@ -54,7 +60,7 @@ const ConnectionMapTemplate: Story<{ from: string; to: string }> = ({
         from={from}
         to={to}
         worldData={worldData || null}
-        height={260}
+        height={265}
       />
 
       <HStack>
@@ -75,74 +81,68 @@ const ConnectionMapTemplate: Story<{ from: string; to: string }> = ({
   );
 };
 
-export const ConnectionMap700Scale = ConnectionMapTemplate.bind({});
-ConnectionMap700Scale.args = {
+export const USToMexico = ConnectionMapTemplate.bind({});
+USToMexico.args = {
   from: 'US',
   to: 'MX',
 };
-ConnectionMap700Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
 
-export const ConnectionMap400Scale = ConnectionMapTemplate.bind({});
-ConnectionMap400Scale.args = {
-  from: 'US',
-  to: 'GL',
-};
-ConnectionMap400Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
-
-export const ConnectionMap150Scale = ConnectionMapTemplate.bind({});
-ConnectionMap150Scale.args = {
+export const USToJapan = ConnectionMapTemplate.bind({});
+USToJapan.args = {
   from: 'US',
   to: 'JP',
 };
-ConnectionMap150Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
+
+export const IcelandToGreenland = ConnectionMapTemplate.bind({});
+IcelandToGreenland.args = {
+  from: 'IS',
+  to: 'GL',
 };
 
-export const ConnectionMap100Scale = ConnectionMapTemplate.bind({});
-ConnectionMap100Scale.args = {
+export const USToSaudiArabia = ConnectionMapTemplate.bind({});
+USToSaudiArabia.args = {
   from: 'US',
   to: 'SA',
 };
-ConnectionMap100Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
 
-export const ConnectionMap75Scale = ConnectionMapTemplate.bind({});
-ConnectionMap75Scale.args = {
+export const USToAustralia = ConnectionMapTemplate.bind({});
+USToAustralia.args = {
   from: 'US',
   to: 'AU',
 };
-ConnectionMap75Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
 
-export const ConnectionMap50Scale = ConnectionMapTemplate.bind({});
-ConnectionMap50Scale.args = {
+export const USToMadagascar = ConnectionMapTemplate.bind({});
+USToMadagascar.args = {
   from: 'US',
   to: 'MG',
 };
-ConnectionMap50Scale.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
+
+export const RussiaToCanada = ConnectionMapTemplate.bind({});
+RussiaToCanada.args = {
+  from: 'RU',
+  to: 'CA',
+};
+
+export const RussiaToAustralia = ConnectionMapTemplate.bind({});
+RussiaToAustralia.args = {
+  from: 'RU',
+  to: 'AU',
+};
+
+export const RussiaToArgentina = ConnectionMapTemplate.bind({});
+RussiaToArgentina.args = {
+  from: 'RU',
+  to: 'AR',
+};
+
+export const RussiaToGreenland = ConnectionMapTemplate.bind({});
+RussiaToGreenland.args = {
+  from: 'RU',
+  to: 'GL',
+};
+
+export const RussiaToEcuador = ConnectionMapTemplate.bind({});
+RussiaToEcuador.args = {
+  from: 'RU',
+  to: 'EC',
 };
