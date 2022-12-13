@@ -135,7 +135,6 @@ scroll gradient in the top right */
 
 const Content = styled.div`
   padding: ${theme.space8} ${theme.space24};
-  max-height: calc(90vh - (83px * 2));
   overflow-y: auto;
   flex-grow: 1;
   /**

@@ -25,6 +25,7 @@ const Popup = styled(motion.div)<{ width: number }>`
   z-index: 1001;
   background: ${theme.surfaceColor};
   width: ${p => p.width}px;
+  max-height: 90vh;
   border-radius: ${theme.radius12};
   outline: none;
   box-shadow: ${theme.v3ShadowXxl};
