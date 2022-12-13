@@ -30,6 +30,8 @@ const Popup = styled(motion.div)<{ width: number }>`
   box-shadow: ${theme.v3ShadowXxl};
   border: ${theme.border};
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
 export type BaseDialogProps = {
