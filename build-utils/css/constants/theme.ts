@@ -144,7 +144,7 @@ export const theme = {
 
   /* LAYOUT COLOR */
   'page-background': 'white',
-  'border-color': 'var(--amino-gray-300)',
+  'border-color': 'var(--amino-gray-200)',
   'hover-color': 'var(--amino-gray-50)',
   'surface-color': 'white',
   'surface-color-secondary': 'var(--amino-gray-50)',

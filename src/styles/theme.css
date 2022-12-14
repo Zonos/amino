@@ -200,7 +200,7 @@
   --amino-glow-green: 0 0 0 1px var(--amino-green-alpha);
   --amino-glow-purple: 0 0 0 1px var(--amino-purple-alpha);
   --amino-page-background: white;
-  --amino-border-color: var(--amino-gray-300);
+  --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-surface-color: white;
   --amino-surface-color-secondary: var(--amino-gray-50);

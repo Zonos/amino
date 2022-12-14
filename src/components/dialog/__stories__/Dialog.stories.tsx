@@ -15,9 +15,28 @@ const DialogMeta: Meta = {
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=224%3A16329',
     },
   },
+  argTypes: {
+    height: {
+      type: 'number',
+    },
+    actions: {
+      table: {
+        disable: true,
+      },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export default DialogMeta;
+
+const StyledDialog = styled(Dialog)<{ height: number }>`
+  height: ${p => p.height}px;
+`;
 
 const CenteredDiv = styled.div`
   height: 100%;
@@ -26,19 +45,19 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-const Template: Story<DialogProps> = ({
+const Template: Story<DialogProps & { height: number }> = ({
   actions,
   leftActions,
   children,
   label,
   width,
   ...rest
-}: DialogProps) => {
+}) => {
   const [open, setOpen] = useState(false);
   return (
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <Dialog
+      <StyledDialog
         {...rest}
         leftActions={leftActions}
         actions={actions}
@@ -48,7 +67,7 @@ const Template: Story<DialogProps> = ({
         width={width}
       >
         {children}
-      </Dialog>
+      </StyledDialog>
     </CenteredDiv>
   );
 };
@@ -62,7 +81,7 @@ BasicDialog.args = {
     </>
   ),
   children: <div>Children</div>,
-  label: 'Dialog title',
+  label: 'StyledDialog title',
   width: 460,
 };
 
@@ -108,7 +127,7 @@ WithLink.args = {
   ),
   label: (
     <StyledTitle>
-      <span>Dialog title</span>
+      <span>StyledDialog title</span>
       <Badge rounded color="blue" bold>
         With a link
       </Badge>
@@ -127,7 +146,7 @@ WithLeftActions.args = {
     </>
   ),
   children: <div>Children</div>,
-  label: 'Dialog title',
+  label: 'StyledDialog title',
   width: 650,
 };
 
@@ -177,14 +196,15 @@ LongContentDialog.args = {
   width: 500,
 };
 
-export const WithInput = () => {
+export const WithInput = ({ height }: { height: number }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
   return (
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <Dialog
+      <StyledDialog
+        height={height}
         actions={
           <>
             <Button intent="outline" onClick={() => setOpen(false)}>
@@ -203,7 +223,7 @@ export const WithInput = () => {
           value={value}
           autoFocus
         />
-      </Dialog>
+      </StyledDialog>
     </CenteredDiv>
   );
 };
