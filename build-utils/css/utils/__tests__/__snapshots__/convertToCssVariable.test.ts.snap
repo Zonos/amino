@@ -41,7 +41,7 @@ Object {
   "--amino-border": "1px solid var(--amino-border-color)",
   "--amino-border-amber": "1px solid var(--amino-amber-400)",
   "--amino-border-blue": "1px solid var(--amino-blue-500)",
-  "--amino-border-color": "var(--amino-gray-300)",
+  "--amino-border-color": "var(--amino-gray-200)",
   "--amino-border-cyan": "1px solid var(--amino-cyan-400)",
   "--amino-border-green": "1px solid var(--amino-green-400)",
   "--amino-border-orange": "1px solid var(--amino-orange-400)",

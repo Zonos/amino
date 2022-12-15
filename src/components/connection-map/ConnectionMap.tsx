@@ -16,42 +16,25 @@ import styled from 'styled-components';
 import { feature } from 'topojson-client';
 
 const Map = styled.div`
-  background: ${theme.grayL80};
+  background: ${theme.gray100};
 
   * {
     outline: none;
   }
 `;
 
-const getScaleMultiple = ({
-  distance,
-  verticalDistance,
-}: {
-  distance: number;
-  verticalDistance: number;
-}) => {
-  if (distance < 0.5 && verticalDistance < 45) {
-    // US to MX (Mexico) = .36
-    return 700;
-  }
-  if (distance < 1 && verticalDistance < 50) {
-    // US to GL (Greenland) = .68
-    return 400;
-  }
-  if (distance < 1.75 && verticalDistance < 60) {
-    // US to KZ (Kazakhstan) = 1.509
-    return 150;
-  }
-  if (distance < 2 && verticalDistance < 65) {
-    // US to SA (Saudia Arabia) = 1.83
-    return 100;
-  }
-  if (distance < 2.5 && verticalDistance < 70) {
-    // US to AU (Australia) = 2.27
-    return 75;
-  }
-  // US to MG (Madagascar) = 2.52
-  return 50;
+const getScale = (xDistance: number, yDistance: number) => {
+  // Account for large vertical distances not being scaled properly relative to horizntal distances because our viewport width is much greater than height
+  const adjustedDistance =
+    xDistance + yDistance > 4 ? 80 * (xDistance + yDistance - 4) : 0;
+
+  // This was calculated using linear regression for approximate fit
+  return (
+    -19.46498024 * xDistance +
+    -92.29376925 * yDistance +
+    284.7 +
+    adjustedDistance
+  );
 };
 
 type Props = {
@@ -71,6 +54,7 @@ export const ConnectionMap = ({
 }: Props) => {
   const [center, setCenter] = useState<[number, number]>([0, 0]);
   const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
 
   const geographies = useMemo(() => {
     if (worldData) {
@@ -95,17 +79,46 @@ export const ConnectionMap = ({
   );
 
   useEffect(() => {
+    /**
+     * @link https://www.react-simple-maps.io/docs/composable-map/
+     * Do some math to make sure the map looks good in all positions
+     */
     if (geographies) {
-      const [x1, y1] = coordsForIso(to);
-      const [x2, y2] = coordsForIso(from);
+      const [x1, y1] = coordsForIso(from);
+      const [x2, y2] = coordsForIso(to);
 
       const distance = geoDistance([x1, y1], [x2, y2]);
-      const midpoint: [number, number] = [(x1 + x2) / 2, (y1 + y2) / 2];
+      // Isolate the vector components because our width and height are different, and should be weighted differently.
+      const xDistance = geoDistance([x1, 0], [x2, 0]);
+      const yDistance = geoDistance([0, y1], [0, y2]);
 
-      setCenter(midpoint);
-      const verticalDistance = Math.abs(y1 - y2);
-      const scaleMultiple = getScaleMultiple({ distance, verticalDistance });
-      setScale(distance * scaleMultiple);
+      const calculatedScale = getScale(xDistance, yDistance);
+
+      setScale(calculatedScale);
+
+      const [midX, midY]: [number, number] = [(x1 + x2) / 2, (y1 + y2) / 2];
+      // Use rotation for X instead of center as it looks better. Y rotation skews the projection unpleasantly though, so use the Y center primarily and use Y rotatin sparingly when needed
+      setCenter([0, midY]);
+
+      let rotateX = -midX;
+      // If we need to flip completely because the shortest arc is on the opposite side
+      if (Math.abs(x1 - x2) > 180) {
+        rotateX += 180;
+      }
+
+      // High Y centers make the arc flattened and it looks bad, so solve that edge case, by rotating Y by a percent of Y coord if the value is large enough
+      const baseRotateY =
+        Math.abs(midY) > 55 ? distance * -(Math.abs(midY) - 50) : 0;
+
+      // Account for arc getting flattened at the top for extremely long arcs at high Y positions
+      const longArcFlatteningRotation =
+        yDistance > 1 && xDistance > yDistance && Math.max(y1, y2) > 50
+          ? (xDistance / yDistance) * -5
+          : 0;
+
+      const rotateY = baseRotateY + longArcFlatteningRotation;
+
+      setRotation([rotateX, rotateY, 0]);
     }
   }, [geographies, coordsForIso, to, from]);
 
@@ -120,6 +133,7 @@ export const ConnectionMap = ({
         projectionConfig={{
           scale,
           center,
+          rotate: rotation,
         }}
         height={height}
       >
@@ -133,8 +147,8 @@ export const ConnectionMap = ({
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={isConnectionCountry ? theme.blueL80 : theme.grayL40}
-                  stroke={isConnectionCountry ? theme.blueL60 : theme.grayL20}
+                  fill={isConnectionCountry ? theme.blue100 : theme.gray400}
+                  stroke={isConnectionCountry ? theme.blue300 : theme.gray500}
                   strokeWidth={1}
                 />
               );
@@ -142,26 +156,26 @@ export const ConnectionMap = ({
           }
         </Geographies>
         <Marker coordinates={coordsForIso(from)}>
-          <circle r={10} fill={theme.blueL60} />
-          <circle r={7} fill={theme.blueL40} />
+          <circle r={10} fill={theme.blue300} />
+          <circle r={7} fill={theme.blue400} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
-          <circle r={10} fill={theme.blueL60} />
-          <circle r={7} fill={theme.blueL40} />
+          <circle r={10} fill={theme.blue300} />
+          <circle r={7} fill={theme.blue400} />
         </Marker>
         <Line
           from={coordsForIso(from)}
           to={coordsForIso(to)}
-          stroke={theme.blueBase}
+          stroke={theme.blue600}
           strokeWidth={4}
         />
         <Marker coordinates={coordsForIso(from)}>
           <circle r={4} fill="white" />
-          <circle r={2} fill={theme.blueBase} />
+          <circle r={2} fill={theme.blue600} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
           <circle r={4} fill="white" />
-          <circle r={2} fill={theme.blueBase} />
+          <circle r={2} fill={theme.blue600} />
         </Marker>
       </ComposableMap>
     </Map>
