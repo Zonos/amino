@@ -122,10 +122,10 @@ export const theme = {
   'amber-900': 'var(--amino-yellow-d80)',
 
   /* COMMON COLOR */
-  danger: 'var(--amino-red-base)',
+  danger: 'var(--amino-red-600)',
   'danger-dark': 'var(--amino-red-700)',
-  error: 'var(--amino-red-base)',
-  primary: 'var(--amino-blue-base)',
+  error: 'var(--amino-red-600)',
+  primary: 'var(--amino-blue-600)',
   'primary-light': 'var(--amino-blue-500)',
   'primary-dark': 'var(--amino-blue-800)',
   success: 'var(--amino-green-300)',
@@ -134,7 +134,7 @@ export const theme = {
   'warning-dark': 'var(--amino-amber-700)',
 
   /* GLOW COLOR */
-  'glow-error': '0 0 0 1px var(--amino-red-base)',
+  'glow-error': '0 0 0 1px var(--amino-red-600)',
   'glow-blue': '0 0 0 1px var(--amino-primary)',
   'glow-cyan': '0 0 0 1px var(--amino-cyan-alpha)',
   'glow-red': '0 0 0 1px var(--amino-red-alpha)',
@@ -227,9 +227,9 @@ export const theme = {
   /** @info 400 */
   'dialog-elevation': 'var(--amino-elevation-400)',
   /** @info 500 */
-  'toast-elevation': 'var(--amino-elevation-base)',
+  'toast-elevation': 'var(--amino-elevation-500)',
   /** @info 500 */
-  'appbar-elevation': 'var(--amino-elevation-base)',
+  'appbar-elevation': 'var(--amino-elevation-500)',
 
   /* BOX SHADOW */
   'v3-shadow-inset': 'inset 0px 2px 4px rgba(0, 0, 0, 0.06)',

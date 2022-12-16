@@ -579,16 +579,16 @@ export const theme = {
   amber900: 'var(--amino-amber-900)',
 
   /* COMMON COLOR */
-  /** @info var(--amino-red-base) */
+  /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   danger: 'var(--amino-danger)',
   /** @info var(--amino-red-700) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   dangerDark: 'var(--amino-danger-dark)',
-  /** @info var(--amino-red-base) */
+  /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   error: 'var(--amino-error)',
-  /** @info var(--amino-blue-base) */
+  /** @info var(--amino-blue-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   primary: 'var(--amino-primary)',
   /** @info var(--amino-blue-500) */
@@ -611,7 +611,7 @@ export const theme = {
   warningDark: 'var(--amino-warning-dark)',
 
   /* GLOW COLOR */
-  /** @info 0 0 0 1px var(--amino-red-base) */
+  /** @info 0 0 0 1px var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   glowError: 'var(--amino-glow-error)',
   /** @info 0 0 0 1px var(--amino-primary) */
