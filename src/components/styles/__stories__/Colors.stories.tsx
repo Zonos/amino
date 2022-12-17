@@ -1,7 +1,9 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { ColorPalette } from 'src/components/styles/ColorPalette';
 
-const StyleMeta: Meta = {};
+const StyleMeta: Meta = {
+  component: ColorPalette,
+};
 
 export default StyleMeta;
 

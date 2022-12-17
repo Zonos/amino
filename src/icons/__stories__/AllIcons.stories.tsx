@@ -9,7 +9,11 @@ import { theme } from 'src/styles/constants/theme';
 import { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
 
-const IconsMeta: Meta = {};
+import { IconBase } from '../icon-base/_IconBase';
+
+const IconsMeta: Meta = {
+  component: IconBase,
+};
 
 export default IconsMeta;
 
