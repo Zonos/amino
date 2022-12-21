@@ -22,12 +22,12 @@ export const cyan = {
 
   /** @deprecated use cyan100 instead */
   'cyan-l80': 'var(--amino-cyan-100)',
+  /** @deprecated use cyan200 instead */
+  'cyan-l60': 'var(--amino-cyan-200)',
   /** @deprecated use cyan300 instead */
-  'cyan-l60': 'var(--amino-cyan-300)',
+  'cyan-l40': 'var(--amino-cyan-300)',
   /** @deprecated use cyan400 instead */
-  'cyan-l40': 'var(--amino-cyan-400)',
-  /** @deprecated use cyan500 instead */
-  'cyan-l20': 'var(--amino-cyan-500)',
+  'cyan-l20': 'var(--amino-cyan-400)',
   /** @deprecated use cyan600 instead */
   'cyan-base': 'var(--amino-cyan-600)',
   /** @deprecated use cyan700 instead */

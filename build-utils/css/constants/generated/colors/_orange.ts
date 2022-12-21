@@ -22,12 +22,12 @@ export const orange = {
 
   /** @deprecated use orange100 instead */
   'orange-l80': 'var(--amino-orange-100)',
+  /** @deprecated use orange200 instead */
+  'orange-l60': 'var(--amino-orange-200)',
   /** @deprecated use orange300 instead */
-  'orange-l60': 'var(--amino-orange-300)',
+  'orange-l40': 'var(--amino-orange-300)',
   /** @deprecated use orange400 instead */
-  'orange-l40': 'var(--amino-orange-400)',
-  /** @deprecated use orange500 instead */
-  'orange-l20': 'var(--amino-orange-500)',
+  'orange-l20': 'var(--amino-orange-400)',
   /** @deprecated use orange600 instead */
   'orange-base': 'var(--amino-orange-600)',
   /** @deprecated use orange700 instead */
