@@ -15,9 +15,9 @@ export type GenerateFileContentProps = {
 /** The mapping suffix of the legacy and the new color */
 const deprecatedIntensityMapping = {
   l80: '100',
-  l60: '300',
-  l40: '400',
-  l20: '500',
+  l60: '200',
+  l40: '300',
+  l20: '400',
   base: '600',
   d20: '700',
   d40: '800',

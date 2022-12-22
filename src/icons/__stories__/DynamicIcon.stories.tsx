@@ -6,7 +6,6 @@ import {
 import * as icons from 'src/icons/IconIndex';
 
 const IconsMeta: Meta = {
-  component: Component,
   argTypes: {
     size: {
       type: 'number',

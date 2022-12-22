@@ -1,9 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Shadow } from 'src/components/styles/Shadow';
 
-const StyleMeta: Meta = {
-  component: Shadow,
-};
+const StyleMeta: Meta = {};
 
 export default StyleMeta;
 

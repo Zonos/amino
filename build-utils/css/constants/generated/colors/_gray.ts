@@ -30,12 +30,12 @@ export const gray = {
 
   /** @deprecated use gray100 instead */
   'gray-l80': 'var(--amino-gray-100)',
+  /** @deprecated use gray200 instead */
+  'gray-l60': 'var(--amino-gray-200)',
   /** @deprecated use gray300 instead */
-  'gray-l60': 'var(--amino-gray-300)',
+  'gray-l40': 'var(--amino-gray-300)',
   /** @deprecated use gray400 instead */
-  'gray-l40': 'var(--amino-gray-400)',
-  /** @deprecated use gray500 instead */
-  'gray-l20': 'var(--amino-gray-500)',
+  'gray-l20': 'var(--amino-gray-400)',
   /** @deprecated use gray600 instead */
   'gray-base': 'var(--amino-gray-600)',
   /** @deprecated use gray700 instead */
