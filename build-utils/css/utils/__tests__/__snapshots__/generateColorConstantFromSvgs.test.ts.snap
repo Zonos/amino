@@ -25,12 +25,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _blu
 
   /** @deprecated use blue100 instead */
   'blue-l80': 'var(--amino-blue-100)',
+  /** @deprecated use blue200 instead */
+  'blue-l60': 'var(--amino-blue-200)',
   /** @deprecated use blue300 instead */
-  'blue-l60': 'var(--amino-blue-300)',
+  'blue-l40': 'var(--amino-blue-300)',
   /** @deprecated use blue400 instead */
-  'blue-l40': 'var(--amino-blue-400)',
-  /** @deprecated use blue500 instead */
-  'blue-l20': 'var(--amino-blue-500)',
+  'blue-l20': 'var(--amino-blue-400)',
   /** @deprecated use blue600 instead */
   'blue-base': 'var(--amino-blue-600)',
   /** @deprecated use blue700 instead */
@@ -70,12 +70,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _cya
 
   /** @deprecated use cyan100 instead */
   'cyan-l80': 'var(--amino-cyan-100)',
+  /** @deprecated use cyan200 instead */
+  'cyan-l60': 'var(--amino-cyan-200)',
   /** @deprecated use cyan300 instead */
-  'cyan-l60': 'var(--amino-cyan-300)',
+  'cyan-l40': 'var(--amino-cyan-300)',
   /** @deprecated use cyan400 instead */
-  'cyan-l40': 'var(--amino-cyan-400)',
-  /** @deprecated use cyan500 instead */
-  'cyan-l20': 'var(--amino-cyan-500)',
+  'cyan-l20': 'var(--amino-cyan-400)',
   /** @deprecated use cyan600 instead */
   'cyan-base': 'var(--amino-cyan-600)',
   /** @deprecated use cyan700 instead */
@@ -123,12 +123,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _gra
 
   /** @deprecated use gray100 instead */
   'gray-l80': 'var(--amino-gray-100)',
+  /** @deprecated use gray200 instead */
+  'gray-l60': 'var(--amino-gray-200)',
   /** @deprecated use gray300 instead */
-  'gray-l60': 'var(--amino-gray-300)',
+  'gray-l40': 'var(--amino-gray-300)',
   /** @deprecated use gray400 instead */
-  'gray-l40': 'var(--amino-gray-400)',
-  /** @deprecated use gray500 instead */
-  'gray-l20': 'var(--amino-gray-500)',
+  'gray-l20': 'var(--amino-gray-400)',
   /** @deprecated use gray600 instead */
   'gray-base': 'var(--amino-gray-600)',
   /** @deprecated use gray700 instead */
@@ -168,12 +168,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _gre
 
   /** @deprecated use green100 instead */
   'green-l80': 'var(--amino-green-100)',
+  /** @deprecated use green200 instead */
+  'green-l60': 'var(--amino-green-200)',
   /** @deprecated use green300 instead */
-  'green-l60': 'var(--amino-green-300)',
+  'green-l40': 'var(--amino-green-300)',
   /** @deprecated use green400 instead */
-  'green-l40': 'var(--amino-green-400)',
-  /** @deprecated use green500 instead */
-  'green-l20': 'var(--amino-green-500)',
+  'green-l20': 'var(--amino-green-400)',
   /** @deprecated use green600 instead */
   'green-base': 'var(--amino-green-600)',
   /** @deprecated use green700 instead */
@@ -213,12 +213,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _ora
 
   /** @deprecated use orange100 instead */
   'orange-l80': 'var(--amino-orange-100)',
+  /** @deprecated use orange200 instead */
+  'orange-l60': 'var(--amino-orange-200)',
   /** @deprecated use orange300 instead */
-  'orange-l60': 'var(--amino-orange-300)',
+  'orange-l40': 'var(--amino-orange-300)',
   /** @deprecated use orange400 instead */
-  'orange-l40': 'var(--amino-orange-400)',
-  /** @deprecated use orange500 instead */
-  'orange-l20': 'var(--amino-orange-500)',
+  'orange-l20': 'var(--amino-orange-400)',
   /** @deprecated use orange600 instead */
   'orange-base': 'var(--amino-orange-600)',
   /** @deprecated use orange700 instead */
@@ -258,12 +258,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _pur
 
   /** @deprecated use purple100 instead */
   'purple-l80': 'var(--amino-purple-100)',
+  /** @deprecated use purple200 instead */
+  'purple-l60': 'var(--amino-purple-200)',
   /** @deprecated use purple300 instead */
-  'purple-l60': 'var(--amino-purple-300)',
+  'purple-l40': 'var(--amino-purple-300)',
   /** @deprecated use purple400 instead */
-  'purple-l40': 'var(--amino-purple-400)',
-  /** @deprecated use purple500 instead */
-  'purple-l20': 'var(--amino-purple-500)',
+  'purple-l20': 'var(--amino-purple-400)',
   /** @deprecated use purple600 instead */
   'purple-base': 'var(--amino-purple-600)',
   /** @deprecated use purple700 instead */
@@ -303,12 +303,12 @@ exports[`Make sure all generated color constants matched previous snapshot: _red
 
   /** @deprecated use red100 instead */
   'red-l80': 'var(--amino-red-100)',
+  /** @deprecated use red200 instead */
+  'red-l60': 'var(--amino-red-200)',
   /** @deprecated use red300 instead */
-  'red-l60': 'var(--amino-red-300)',
+  'red-l40': 'var(--amino-red-300)',
   /** @deprecated use red400 instead */
-  'red-l40': 'var(--amino-red-400)',
-  /** @deprecated use red500 instead */
-  'red-l20': 'var(--amino-red-500)',
+  'red-l20': 'var(--amino-red-400)',
   /** @deprecated use red600 instead */
   'red-base': 'var(--amino-red-600)',
   /** @deprecated use red700 instead */

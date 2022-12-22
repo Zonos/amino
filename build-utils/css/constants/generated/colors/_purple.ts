@@ -22,12 +22,12 @@ export const purple = {
 
   /** @deprecated use purple100 instead */
   'purple-l80': 'var(--amino-purple-100)',
+  /** @deprecated use purple200 instead */
+  'purple-l60': 'var(--amino-purple-200)',
   /** @deprecated use purple300 instead */
-  'purple-l60': 'var(--amino-purple-300)',
+  'purple-l40': 'var(--amino-purple-300)',
   /** @deprecated use purple400 instead */
-  'purple-l40': 'var(--amino-purple-400)',
-  /** @deprecated use purple500 instead */
-  'purple-l20': 'var(--amino-purple-500)',
+  'purple-l20': 'var(--amino-purple-400)',
   /** @deprecated use purple600 instead */
   'purple-base': 'var(--amino-purple-600)',
   /** @deprecated use purple700 instead */

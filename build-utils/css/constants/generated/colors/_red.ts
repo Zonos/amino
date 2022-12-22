@@ -22,12 +22,12 @@ export const red = {
 
   /** @deprecated use red100 instead */
   'red-l80': 'var(--amino-red-100)',
+  /** @deprecated use red200 instead */
+  'red-l60': 'var(--amino-red-200)',
   /** @deprecated use red300 instead */
-  'red-l60': 'var(--amino-red-300)',
+  'red-l40': 'var(--amino-red-300)',
   /** @deprecated use red400 instead */
-  'red-l40': 'var(--amino-red-400)',
-  /** @deprecated use red500 instead */
-  'red-l20': 'var(--amino-red-500)',
+  'red-l20': 'var(--amino-red-400)',
   /** @deprecated use red600 instead */
   'red-base': 'var(--amino-red-600)',
   /** @deprecated use red700 instead */
