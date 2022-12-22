@@ -5,7 +5,6 @@ import {
 } from 'src/components/avatar/DynamicIconAvatar';
 
 const DynamicIconAvatarMeta: Meta = {
-  title: 'Avatar',
   component: Avatar,
 };
 

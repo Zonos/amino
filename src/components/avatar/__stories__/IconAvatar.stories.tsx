@@ -6,7 +6,6 @@ import {
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 
 const IconAvatarMeta: Meta = {
-  title: 'Avatar',
   component: Avatar,
   argTypes: {
     icon: {

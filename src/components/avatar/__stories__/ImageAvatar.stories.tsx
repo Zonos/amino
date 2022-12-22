@@ -5,7 +5,6 @@ import {
 } from 'src/components/avatar/ImageAvatar';
 
 const ImageAvatarMeta: Meta = {
-  title: 'Avatar',
   component: Avatar,
 };
 
