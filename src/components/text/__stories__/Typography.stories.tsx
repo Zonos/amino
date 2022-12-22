@@ -24,9 +24,7 @@ const Label = styled.div`
 
 const content = 'The quick brown fox jumps over the lazy';
 
-const StyleMeta: Meta = {
-  component: Text,
-};
+const StyleMeta: Meta = {};
 
 export default StyleMeta;
 
