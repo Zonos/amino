@@ -673,6 +673,7 @@ import './components/tabs/Tabs';
 import './components/tag/Tag';
 import './components/text-avatar/TextAvatar';
 import './components/text/LegacyText';
+import './components/textarea/Textarea';
 import './components/toast/Toast';
 import './components/toast/ToastContext';
 import './components/tooltip/Tooltip';
