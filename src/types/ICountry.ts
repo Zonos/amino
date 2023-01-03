@@ -14,10 +14,10 @@ export const regions = [
 type IRegion = typeof regions[number];
 
 /** @desc /api/address/getCountries */
-export interface ICountry {
+export interface ICountry<CountryCode extends string = string> {
   active: boolean;
   code3: string | null;
-  code: string;
+  code: CountryCode;
   currencyCode: string;
   displayName: string;
   fraudRisk: number;
@@ -27,7 +27,9 @@ export interface ICountry {
   upsCode: string | null;
   zipRegex: string | null;
 }
-export interface ICountryOption extends ICountry, IOption {
+export interface ICountryOption<CountryCode extends string = string>
+  extends ICountry<CountryCode>,
+    IOption {
   phoneCode: string[];
 }
 export interface IRegionCountryOption {
@@ -39,6 +41,6 @@ export interface IUnavailableCountry {
   message: string;
 }
 /** @desc /api/address/getCountries */
-export interface IGetCountriesResponse {
-  [key: string]: ICountry;
+export interface IGetCountriesResponse<CountryCode extends string = string> {
+  [key: string]: ICountry<CountryCode>;
 }

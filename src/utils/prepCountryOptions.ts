@@ -2,7 +2,11 @@ import { IGetCountriesResponse } from 'src/types/ICountry';
 
 import { countryPhoneCodes } from './countryPhoneCodes';
 
-export const prepCountryOptions = ({ json }: { json: IGetCountriesResponse }) =>
+export const prepCountryOptions = <CountryCode extends string = string>({
+  json,
+}: {
+  json: IGetCountriesResponse<CountryCode>;
+}) =>
   Object.entries(json)
     .map(([, country]) => ({
       ...country,
