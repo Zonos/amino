@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { cloneElement, ReactElement } from 'react';
 
 import { AvatarBase, AvatarProps, iconSizes } from './AvatarBase';
 
@@ -9,7 +9,7 @@ export type IconAvatarProps = {
 export const IconAvatar = ({ icon, shape, size }: IconAvatarProps) => {
   const iconWithCorrectSize = icon.props.size
     ? icon
-    : React.cloneElement(icon, { size: iconSizes[size] });
+    : cloneElement(icon, { size: iconSizes[size] });
 
   return (
     <AvatarBase shape={shape} size={size}>

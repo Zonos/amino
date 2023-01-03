@@ -1,11 +1,12 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const Subtitle = styled.span`
-  font-size: var(--amino-text-sm);
+  font-size: ${theme.textSm};
   line-height: 16px;
-  color: var(--amino-gray-d60);
+  color: ${theme.grayD60};
 `;
 
 const SmallHeader = styled.span`
@@ -19,11 +20,11 @@ const SmallHeader = styled.span`
 const InputLabel = styled.span`
   color: black;
   display: block;
-  font-family: var(--amino-font-sans);
+  font-family: ${theme.fontSans};
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  margin-bottom: var(--amino-space-quarter);
+  margin-bottom: ${theme.spaceQuarter};
 `;
 
 type LegacyTextStyle =
@@ -40,13 +41,13 @@ type LegacyTextStyle =
   | 'input-label';
 
 export type LegacyTextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   title?: string;
   type?: LegacyTextStyle;
   className?: string;
 };
 
-export const LegacyText: React.FC<LegacyTextProps> = ({
+export const LegacyText: FC<LegacyTextProps> = ({
   className,
   children,
   title,

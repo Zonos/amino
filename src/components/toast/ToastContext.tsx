@@ -1,39 +1,49 @@
-import React, {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, ReactNode, useCallback, useState } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
-import { Toast } from './Toast';
+import { Toast, ToastProps } from './Toast';
 
-export const ToastContext = createContext((toast: ReactNode): void => {
-  const defaultFunction = (options: ReactNode) => options;
-  defaultFunction(toast);
-});
+type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
+export type ToastContextFunctionType = (
+  toast: ReactNode,
+  props?: BaseProps
+) => void;
+type ToastType = {
+  toast: Parameters<ToastContextFunctionType>[0];
+  props?: Parameters<ToastContextFunctionType>[1];
+  uuid: string;
+};
+export const ToastContext = createContext<ToastContextFunctionType>(
+  (toast, props) => {
+    //  This function is for the context type definition purpose.
+    const defaultFunction = () => ({
+      toast,
+      props,
+    });
+    defaultFunction();
+  }
+);
 
 type Props = {
   children: ReactNode;
 };
 
 export const ToastContextProvider = ({ children }: Props) => {
-  const [toasts, setToasts] = useState<ReactNode[]>([]);
+  const [toasts, setToasts] = useState<ToastType[]>([]);
 
-  useEffect(() => {
-    if (toasts.length > 0) {
-      const timer = setTimeout(() => setToasts(t => t.slice(1)), 6000);
-      return () => clearTimeout(timer);
-    }
-
-    return () => {};
-  }, [toasts]);
-
-  const addToast = useCallback(
-    (toast: ReactNode) => {
-      setToasts(t => t.concat(toast));
+  const addToast = useCallback<ToastContextFunctionType>(
+    (toast, props) => {
+      setToasts(t =>
+        t.concat({
+          toast,
+          props,
+          uuid: uuidv4(),
+        })
+      );
+      // Each toast has a default lifetime of 6 seconds
+      setTimeout(() => setToasts(t => t.slice(1)), props?.duration || 6000);
     },
     [setToasts]
   );
@@ -42,14 +52,19 @@ export const ToastContextProvider = ({ children }: Props) => {
     <AnimatePresence>
       <ToastContext.Provider value={addToast}>
         {children}
-        <div className="toasts-wrapper">
-          <AnimatePresence>
-            {toasts.map(toast => (
-              <Toast toastKey={`toast-${toast}`} key={`toast-${toast}`}>
-                {toast}
-              </Toast>
-            ))}
-          </AnimatePresence>
+        <div className="toast-container">
+          <div className="toasts-wrapper">
+            <AnimatePresence>
+              {toasts.map(({ toast, props, uuid }) => {
+                const key = `toast-${toast}-${uuid}`;
+                return (
+                  <Toast toastKey={key} key={key} intent={props?.intent}>
+                    {toast}
+                  </Toast>
+                );
+              })}
+            </AnimatePresence>
+          </div>
         </div>
       </ToastContext.Provider>
     </AnimatePresence>

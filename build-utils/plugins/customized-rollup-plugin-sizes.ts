@@ -22,7 +22,5 @@ type Options = {
   report?: (options: ReportOptions) => void;
   details: boolean;
 };
-const customizedSizePlugin = (options: Options): Plugin => {
-  return sizes(options);
-};
+const customizedSizePlugin = (options: Options): Plugin => sizes(options);
 export default customizedSizePlugin;

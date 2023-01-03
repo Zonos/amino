@@ -1,15 +1,16 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { DragIcon } from 'src/icons/DragIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledSortableListItem = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: var(--amino-space);
+  gap: ${theme.space};
 `;
 
 const StyledSortableSection = styled.div`

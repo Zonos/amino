@@ -1,12 +1,12 @@
 import buble from '@rollup/plugin-buble';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
 import fs from 'fs';
 import { glob } from 'glob';
 import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
 import image from 'rollup-plugin-img';
 import progress from 'rollup-plugin-progress';
-import { terser } from 'rollup-plugin-terser';
 import tsPlugin from 'rollup-plugin-typescript2';
-import ttypescript from 'ttypescript';
 
 import { dependencies, peerDependencies } from '../package.json';
 import sizes from './plugins/customized-rollup-plugin-sizes';
@@ -19,8 +19,8 @@ type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
  * @param entries array of entries that need to be prepared or ignore single entry
  * @returns string{} | string
  */
-const prepareEntries = (entries: string[] | string) => {
-  return Array.isArray(entries)
+const prepareEntries = (entries: string[] | string) =>
+  Array.isArray(entries)
     ? entries.reduce(
         (prev, current) => ({
           ...prev,
@@ -29,7 +29,6 @@ const prepareEntries = (entries: string[] | string) => {
         {}
       )
     : entries;
-};
 
 /**
  * Bundle package
@@ -44,11 +43,14 @@ const bundlePackage = async (
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     plugins: [
+      nodeResolve({
+        // Seems to evaluate falsiness, so put something
+        resolveOnly: [''],
+      }),
       image({
         limit: 10000,
       }),
       tsPlugin({
-        typescript: ttypescript,
         tsconfigOverride: {
           compilerOptions: {
             module: 'esnext',
@@ -64,13 +66,13 @@ const bundlePackage = async (
           dangerousTaggedTemplateString: true,
         },
       }),
-      terser({ numWorkers: 10 }),
+      terser(),
       progress({ clearLine: true }),
       sizes({ details: true }),
     ],
     cache: false,
     external: Object.keys(peerDependencies).concat(Object.keys(dependencies)),
-    maxParallelFileReads: 50,
+    maxParallelFileOps: 50,
   };
   const configOptions: ConfigOptions = {
     ...defaultOptions,
@@ -83,36 +85,38 @@ const bundlePackage = async (
     const { output } = await bundle.write(configOptions.output);
     return output.filter(item => item.type === 'chunk') as OutputChunk[];
   } catch (err) {
-    console.error(err); // eslint-disable-line no-console
+    console.error('Error bundling:', err); // eslint-disable-line no-console
     return [];
   }
 };
 
-const generateAllModulesContent = async (bundles: OutputChunk[]) => {
-  return bundles
+const generateAllModulesContent = async (bundles: OutputChunk[]) =>
+  bundles
     .map(bundle => {
       const [, subFolderPath, fileName] =
         bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
       // exclude all bundles that are not entry or just private components
-      if (!bundle.isEntry || /^_+/.test(fileName)) {
+      if (
+        !bundle.isEntry ||
+        /^_+/.test(fileName) ||
+        /__tests__/.test(subFolderPath)
+      ) {
         return null;
       }
-      return `import "./${subFolderPath || ''}${fileName}";`;
+      return `import './${subFolderPath || ''}${fileName}';`;
     })
-    .filter(item => item)
-    .concat(['\n']);
-};
+    .filter(item => item);
 
-const animationsModules = glob.sync('src/animations/**/*.ts*') as string[];
-const iconsModules = glob.sync('src/icons/**/*.ts*') as string[];
-const utilsModules = glob.sync('src/utils/**/*.ts*') as string[];
-const componentsModules = glob.sync('src/components/**/*.ts*') as string[];
+const animationsModules = glob.sync('src/animations/**/*.ts*');
+const iconsModules = glob.sync('src/icons/**/*.ts*');
+const utilsModules = glob.sync('src/utils/**/*.ts*');
+const componentsModules = glob.sync('src/components/**/*.ts*');
+const styleModules = glob.sync('src/styles/**/*.ts');
 
-const allModules = animationsModules.concat(
-  iconsModules,
-  utilsModules,
-  componentsModules
-);
+const allModules = animationsModules
+  .concat(iconsModules, utilsModules, componentsModules, styleModules)
+  /** Exclude dev folders */
+  .filter(item => !item.includes('__tests__') && !item.includes('__stories__'));
 
 const configs: ConfigOptions[] = [
   {
@@ -122,8 +126,9 @@ const configs: ConfigOptions[] = [
       format: 'cjs',
       sourcemap: false,
       exports: 'auto',
+      interop: 'auto',
     },
-    maxParallelFileReads: 200,
+    maxParallelFileOps: 200,
   },
 ];
 
@@ -141,10 +146,7 @@ const build = async () => {
   fs.writeFileSync(
     // generate all modules ts file
     `./src/all.ts`,
-    [
-      '/* eslint-disable */',
-      moduleContents.flatMap(item => item).join('\n'),
-    ].join('\n')
+    `${moduleContents.flatMap(item => item).join('\n')}\n`
   );
 };
 

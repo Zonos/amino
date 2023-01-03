@@ -1,6 +1,7 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
@@ -8,10 +9,10 @@ import styled from 'styled-components';
 import { Button } from '../button/Button';
 
 const AminoNotice = styled.div`
-  background: var(--amino-gray-100);
-  border-radius: var(--amino-radius);
-  color: var(--amino-text-color);
-  padding: var(--amino-space-half);
+  background: ${theme.grayL80};
+  border-radius: ${theme.radius};
+  color: ${theme.textColor};
+  padding: ${theme.spaceHalf};
   display: flex;
   align-items: center;
 
@@ -22,44 +23,44 @@ const AminoNotice = styled.div`
 `;
 
 const AminoSuccessNotice = styled(AminoNotice)`
-  background: var(--amino-green-100);
+  background: ${theme.greenL80};
   &,
   & > * {
-    color: var(--amino-success-dark);
+    color: ${theme.successDark};
   }
 `;
 
 const AminoErrorNotice = styled(AminoNotice)`
-  background: var(--amino-red-100);
+  background: ${theme.redL80};
   &,
   & > * {
-    color: var(--amino-red-d60);
+    color: ${theme.redD60};
   }
 `;
 
 const AminoWarningNotice = styled(AminoNotice)`
-  background: var(--amino-warning);
+  background: ${theme.warning};
   &,
   & > * {
-    color: var(--amino-warning-dark);
+    color: ${theme.warningDark};
   }
 `;
 
 const AminoPrimaryNotice = styled(AminoNotice)`
-  background: var(--amino-blue-100);
+  background: ${theme.blueL80};
   &,
   & > * {
-    color: var(--amino-blue-base);
+    color: ${theme.blueBase};
   }
 `;
 
 export type NoticeProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   intent?: Intent;
   onClose?: () => void;
 };
-
+/** @deprecated Use Banner instead. */
 export const Notice = ({
   className,
   intent,
@@ -72,29 +73,27 @@ export const Notice = ({
   }: {
     color: Color;
     secondaryColor: Color;
-  }) => {
-    return (
-      <Button
-        intent="text"
-        onClick={onClose}
-        icon={
-          <RemoveCircleDuotoneIcon
-            size={20}
-            color={color}
-            secondaryColor={secondaryColor}
-          />
-        }
-      />
-    );
-  };
+  }) => (
+    <Button
+      intent="text"
+      onClick={onClose}
+      icon={
+        <RemoveCircleDuotoneIcon
+          size={20}
+          color={color}
+          secondaryColor={secondaryColor}
+        />
+      }
+    />
+  );
   switch (intent) {
     case 'success':
       return (
         <AminoSuccessNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'green-l60',
-              secondaryColor: 'green-d40',
+              color: 'green300',
+              secondaryColor: 'green800',
             })}
           {children}
         </AminoSuccessNotice>
@@ -104,8 +103,8 @@ export const Notice = ({
         <AminoErrorNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'red-l60',
-              secondaryColor: 'red-d60',
+              color: 'red300',
+              secondaryColor: 'red900',
             })}
           {children}
         </AminoErrorNotice>
@@ -115,8 +114,8 @@ export const Notice = ({
         <AminoWarningNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'yellow-l60',
-              secondaryColor: 'yellow-d40',
+              color: 'orange300',
+              secondaryColor: 'orange800',
             })}
           {children}
         </AminoWarningNotice>
@@ -126,8 +125,8 @@ export const Notice = ({
         <AminoPrimaryNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'blue-l60',
-              secondaryColor: 'blue-base',
+              color: 'blue300',
+              secondaryColor: 'blue600',
             })}
           {children}
         </AminoPrimaryNotice>
@@ -138,8 +137,8 @@ export const Notice = ({
         <AminoNotice className={className}>
           {!!onClose &&
             renderCloseButton({
-              color: 'gray-l60',
-              secondaryColor: 'gray-base',
+              color: 'gray300',
+              secondaryColor: 'gray600',
             })}
           {children}
         </AminoNotice>

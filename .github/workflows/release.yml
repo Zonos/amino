@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      mood:
+        description: 'How are you feeling today?'
+        required: true
+        default: 'lazy'
+        type: choice
+        options:
+          - Happy
+          - Sad
+          - Annoyed
+          - Lazy
+          - Alright
+
+jobs:
+  release:
+    name: 'Release'
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - uses: 'marvinpinto/action-automatic-releases@v1.2.1'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false

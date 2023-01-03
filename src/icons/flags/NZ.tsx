@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
@@ -20,78 +20,78 @@ export const NZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         </clipPath>
         <g id={`${ids[2]}`}>
           <g id={`${ids[3]}`}>
-            <path d="M0 0v.5L1 0z" transform="translate(0 -.3)" />
-            <path d="M0 0v-.5L1 0z" transform="rotate(-36 .5 -.2)" />
+            <path d="M0-.3v.5l1-.5z" />
+            <path d="M.213.256-.081-.15l1.103-.183z" />
           </g>
-          <use transform="scale(-1 1)" xlinkHref="#a" />
-          <use transform="rotate(72 0 0)" xlinkHref="#a" />
-          <use transform="rotate(-72 0 0)" xlinkHref="#a" />
-          <use transform="scale(-1 1) rotate(72)" xlinkHref="#a" />
+          <use xlinkHref="#a" transform="scale(-1 1)" />
+          <use xlinkHref="#a" transform="rotate(72 0 0)" />
+          <use xlinkHref="#a" transform="rotate(-72 0 0)" />
+          <use xlinkHref="#a" transform="scale(-1 1) rotate(72)" />
         </g>
       </defs>
       <path fill="#00247d" fillRule="evenodd" d="M0 0h640v480H0z" />
       <g transform="translate(-93 36.1) scale(.66825)">
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#fff"
           transform="matrix(45.4 0 0 45.4 900 120)"
-          xlinkHref="#b"
         />
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#cc142b"
           transform="matrix(30 0 0 30 900 120)"
-          xlinkHref="#b"
         />
       </g>
       <g transform="rotate(82 534.2 125) scale(.66825)">
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#fff"
           transform="rotate(-82 519 -457.7) scale(40.4)"
-          xlinkHref="#b"
         />
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#cc142b"
           transform="rotate(-82 519 -457.7) scale(25)"
-          xlinkHref="#b"
         />
       </g>
       <g transform="rotate(82 534.2 125) scale(.66825)">
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#fff"
           transform="rotate(-82 668.6 -327.7) scale(45.4)"
-          xlinkHref="#b"
         />
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#cc142b"
           transform="rotate(-82 668.6 -327.7) scale(30)"
-          xlinkHref="#b"
         />
       </g>
       <g transform="translate(-93 36.1) scale(.66825)">
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#fff"
           transform="matrix(50.4 0 0 50.4 900 480)"
-          xlinkHref="#b"
         />
         <use
+          xlinkHref="#b"
           width="100%"
           height="100%"
           fill="#cc142b"
           transform="matrix(35 0 0 35 900 480)"
-          xlinkHref="#b"
         />
       </g>
       <path

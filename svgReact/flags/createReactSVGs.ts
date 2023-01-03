@@ -10,24 +10,22 @@ import { GenerateIconType, SvgList } from './types/TypeGenerateIcon';
 
 const addWrapper = (id: string) => `{\`${id}\`}`;
 
-const pascalCased = (string: string) => {
-  return (
-    string.charAt(0).toUpperCase() +
-    string.replace(/-([a-z])/g, letters => letters[1].toUpperCase()).slice(1)
-  );
-};
+const pascalCased = (string: string) =>
+  string.charAt(0).toUpperCase() +
+  string.replace(/-([a-z])/g, letters => letters[1].toUpperCase()).slice(1);
 
 const convertSvgsObj = (destFolder: string): SvgList[] =>
-  readdirSync(destFolder).reduce<SvgList[]>((accumulator, originalFileName) => {
-    return [
+  readdirSync(destFolder).reduce<SvgList[]>(
+    (accumulator, originalFileName) => [
       ...accumulator,
       {
         originalFileName,
         newFileName: pascalCased(originalFileName).replace('.svg', '.tsx'),
         componentName: pascalCased(originalFileName).replace('.svg', ''),
       },
-    ];
-  }, []);
+    ],
+    []
+  );
 
 export const createReactSVGs = ({
   inputFolder,
@@ -74,7 +72,7 @@ export const createReactSVGs = ({
       .replace(/<\/svg>/gi, '');
 
     const component = [
-      `import React, { forwardRef } from 'react';`,
+      `import { forwardRef } from 'react';`,
       `import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';`,
       maskIds.length &&
         `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,

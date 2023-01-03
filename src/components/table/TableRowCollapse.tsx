@@ -1,20 +1,31 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
-import { ButtonProps } from '../button/Button';
 import { ExpandButton } from './ExpandButton';
 
-const StyledTableRow = styled(TableRow)<{ isExpand: boolean }>`
+const StyledTableRow = styled(TableRow)<{
+  isExpand: boolean;
+  isExpandable: boolean;
+}>`
   ${p =>
     p.isExpand &&
     css`
       margin-bottom: 16px;
       td {
         border-bottom: 0;
+      }
+    `}
+  ${p =>
+    p.isExpandable &&
+    css`
+      cursor: pointer;
+      :hover {
+        background: ${theme.grayL80};
       }
     `}
 `;
@@ -31,9 +42,9 @@ const ExpandableCell = styled(TableCell)<{ isExpand: boolean }>`
 `;
 
 export type TableRowCollapseProps = {
-  children: ReactNode;
+  children?: ReactNode;
+  handleExpandClick: () => void;
   isExpand: boolean;
-  handleExpandClick: ButtonProps['onClick'];
   rowContent: ReactNode;
 };
 
@@ -43,19 +54,26 @@ export const TableRowCollapse = ({
   isExpand,
   rowContent,
 }: TableRowCollapseProps) => {
+  const isExpandable = !!children;
   return (
     <>
-      <StyledTableRow isExpand={isExpand}>
+      <StyledTableRow
+        isExpandable={isExpandable}
+        isExpand={isExpand}
+        onClick={() => isExpandable && handleExpandClick()}
+      >
         {rowContent}
         <TableCell align="right">
-          <ExpandButton isExpand={isExpand} onClick={handleExpandClick} />
+          {isExpandable && <ExpandButton isExpand={isExpand} />}
         </TableCell>
       </StyledTableRow>
-      <TableRow>
-        <ExpandableCell colSpan={100} isExpand={isExpand}>
-          <Collapse isExpand={isExpand}>{children}</Collapse>
-        </ExpandableCell>
-      </TableRow>
+      {isExpandable && (
+        <TableRow>
+          <ExpandableCell colSpan={100} isExpand={isExpand}>
+            <Collapse isExpand={isExpand}>{children}</Collapse>
+          </ExpandableCell>
+        </TableRow>
+      )}
     </>
   );
 };

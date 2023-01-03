@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
@@ -20,12 +20,12 @@ export const GD = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
               d="M0-1v1h.5"
               transform="rotate(18 0 -1)"
             />
-            <use transform="scale(-1 1)" xlinkHref="#a" />
+            <use xlinkHref="#a" transform="scale(-1 1)" />
           </g>
-          <use transform="rotate(72)" xlinkHref="#b" />
-          <use transform="rotate(144)" xlinkHref="#b" />
-          <use transform="rotate(216)" xlinkHref="#b" />
-          <use transform="rotate(288)" xlinkHref="#b" />
+          <use xlinkHref="#b" transform="rotate(72)" />
+          <use xlinkHref="#b" transform="rotate(144)" />
+          <use xlinkHref="#b" transform="rotate(216)" />
+          <use xlinkHref="#b" transform="rotate(288)" />
         </g>
       </defs>
       <path fill="#ce1126" d="M0 0h640v480H0z" />
@@ -33,31 +33,31 @@ export const GD = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       <path fill="#fcd116" d="M67.2 67.3h505.6L67.2 412.9h505.6z" />
       <circle cx="319.9" cy="240.1" r="57.6" fill="#ce1126" />
       <use
+        xlinkHref="#c"
         width="100%"
         height="100%"
         transform="matrix(52.8 0 0 52.8 320 240)"
-        xlinkHref="#c"
       />
       <use
+        xlinkHref="#d"
         width="100%"
         height="100%"
         x="-100"
         transform="translate(-30.3)"
-        xlinkHref="#d"
       />
       <use
+        xlinkHref="#c"
         id={`${ids[3]}`}
         width="100%"
         height="100%"
         transform="matrix(31.2 0 0 31.2 320 33.6)"
-        xlinkHref="#c"
       />
       <use
+        xlinkHref="#d"
         width="100%"
         height="100%"
         x="100"
         transform="translate(30.3)"
-        xlinkHref="#d"
       />
       <path
         fill="#ce1126"
@@ -68,24 +68,24 @@ export const GD = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         d="M90.1 194.7c10.4 21.7-27.1 73.7 35.5 85.9a63.2 63.2 0 0 1-10.9-41.9 70 70 0 0 1 32.5 30.8c16.4-59.5-42-55.8-57.1-74.8z"
       />
       <use
+        xlinkHref="#d"
         width="100%"
         height="100%"
         x="-100"
         transform="translate(-30.3 414.6)"
-        xlinkHref="#d"
       />
       <use
+        xlinkHref="#c"
         width="100%"
         height="100%"
         transform="matrix(31.2 0 0 31.2 320 448.2)"
-        xlinkHref="#c"
       />
       <use
+        xlinkHref="#d"
         width="100%"
         height="100%"
         x="100"
         transform="translate(30.3 414.6)"
-        xlinkHref="#d"
       />
     </FlagIconBase>
   );

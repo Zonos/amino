@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DynamicIcon, DynamicIconType } from 'src/icons/icon-base/DynamicIcon';
 
 import { AvatarBase, AvatarProps, iconSizes } from './AvatarBase';

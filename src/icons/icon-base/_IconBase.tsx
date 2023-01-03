@@ -1,5 +1,6 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { type IconProps } from 'src/types/IconProps';
 
 type Props = { children: ReactNode; viewBox?: string } & IconProps;
@@ -15,7 +16,7 @@ export const IconBase = forwardRef<SVGSVGElement, Props>(
         xmlns="http://www.w3.org/2000/svg"
         width={iconSize}
         height={iconSize}
-        color={color && `var(--amino-${color})`}
+        color={color && `${theme[color]}`}
         viewBox={viewBox || `0 0 24 24`}
       >
         {children}

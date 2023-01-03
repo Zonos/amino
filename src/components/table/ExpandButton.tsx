@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import styled from 'styled-components';
 
@@ -27,13 +25,11 @@ export const ExpandButton = ({
   className,
   isExpand,
   ...props
-}: TableCellProps) => {
-  return (
-    <StyledButton
-      {...props}
-      className={[className, isExpand ? 'is-expanded' : ''].join(' ')}
-      icon={<ChevronDownIcon className="collapse" />}
-      intent="subtle"
-    />
-  );
-};
+}: TableCellProps) => (
+  <StyledButton
+    {...props}
+    className={[className, isExpand ? 'is-expanded' : ''].join(' ')}
+    icon={<ChevronDownIcon className="collapse" />}
+    intent="subtle"
+  />
+);

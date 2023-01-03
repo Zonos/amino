@@ -1,5 +1,6 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types/Color';
 import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
@@ -12,10 +13,8 @@ type CSSProps = {
 const IconWrapper = styled.div<CSSProps>`
   width: 32px;
   height: 32px;
-  background: var(
-    ${p => (p.background ? `--amino-${p.background}` : '--amino-gray-200')}
-  );
-  color: var(${p => (p.color ? `--amino-${p.color}` : '--amino-gray-600')});
+  background: ${p => (p.background ? theme[p.background] : theme.gray200)};
+  color: ${p => (p.color ? theme[p.color] : theme.gray600)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,22 +27,22 @@ const IconWrapper = styled.div<CSSProps>`
 `;
 
 const PrimaryIconWrapper = styled(IconWrapper)`
-  background: var(--amino-blue-100);
-  color: var(--amino-blue-500);
+  background: ${theme.blueL80};
+  color: ${theme.blueBase};
 `;
 
 const DangerIconWrapper = styled(IconWrapper)`
-  background: var(--amino-red-100);
-  color: var(--amino-red-500);
+  background: ${theme.redL80};
+  color: ${theme.redBase};
 `;
 
 const WarningIconWrapper = styled(IconWrapper)`
-  background: var(--amino-orange-100);
-  color: var(--amino-orange-500);
+  background: ${theme.orangeL80};
+  color: ${theme.orangeBase};
 `;
 
 export type RoundedIconProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   intent?: Intent;
 } & CSSProps;

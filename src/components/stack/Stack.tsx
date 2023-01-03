@@ -1,16 +1,24 @@
-import React from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
 import { GridAlignment, GridSpacing } from './GridSpacing';
 
-export type StackProps = {
+type DivProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  | 'translate'
+  | 'style'
+  | 'prefix'
+  | 'contentEditable'
+  | 'inputMode'
+  | 'children'
+>;
+
+export interface StackProps extends DivProps {
   alignment?: GridAlignment;
   spacing?: GridSpacing;
-  children: React.ReactNode;
-  className?: string;
-};
-
+  children: ReactNode;
+}
 /**
  * A stack
  *
@@ -20,21 +28,11 @@ export type StackProps = {
 const StyledStack = styled.div<StackProps>`
   display: grid;
   grid-auto-columns: minmax(0, 1fr);
-
   & > * {
     justify-self: ${p => p.alignment || 'unset'};
   }
 `;
 
-export const Stack = ({
-  className,
-  spacing,
-  alignment,
-  children,
-}: StackProps) => {
-  return (
-    <StyledStack className={className} spacing={spacing} alignment={alignment}>
-      {children}
-    </StyledStack>
-  );
-};
+export const Stack = ({ children, ...otherProps }: StackProps) => (
+  <StyledStack {...otherProps}>{children}</StyledStack>
+);

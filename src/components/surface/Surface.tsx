@@ -1,34 +1,34 @@
-import React from 'react';
+import { FC } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import { Depth } from 'src/types/Depth';
 import styled from 'styled-components';
 
 const SurfaceBase = styled.div<{ dense?: boolean }>`
-  background: var(--amino-surface-color);
-  padding: var(--amino-space);
-  color: var(--amino-text-color);
-  border-radius: ${p =>
-    p.dense ? `var(--amino-radius)` : `var(--amino-radius-lg)`};
+  background: ${theme.surfaceColor};
+  padding: ${theme.space};
+  color: ${theme.textColor};
+  border-radius: ${p => (p.dense ? theme.radius : theme.radiusLg)};
 `;
 
 // shadow small
 const Depth4 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-small);
-  border: var(--amino-border);
+  box-shadow: ${theme.v3ShadowBase};
+  border: ${theme.border};
 `;
 
 // shadow medium
 const Depth8 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-base);
+  box-shadow: ${theme.v3ShadowMedium};
 `;
 
 const Depth16 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-medium);
+  box-shadow: ${theme.v3ShadowLarge};
 `;
 
 // shadow xl
 const Depth64 = styled(SurfaceBase)`
-  box-shadow: var(--amino-shadow-large);
+  box-shadow: ${theme.v3ShadowXl};
 `;
 
 type Props = {
@@ -37,12 +37,7 @@ type Props = {
   dense?: boolean;
 };
 
-export const Surface: React.FC<Props> = ({
-  children,
-  dense,
-  className,
-  depth,
-}) => {
+export const Surface: FC<Props> = ({ children, dense, className, depth }) => {
   switch (depth) {
     case 'depth64':
       return (

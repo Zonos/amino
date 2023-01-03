@@ -1,24 +1,61 @@
-import React, { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
-import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
+import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled, { css } from 'styled-components';
 
+import { Button } from '../button/Button';
 import { BaseDialog } from './_BaseDialog';
 
 const Header = styled.div`
-  padding: var(--amino-space);
-  border-top-left-radius: var(--amino-radius-xl);
-  border-top-right-radius: var(--amino-radius-xl);
+  padding: ${theme.space24};
+  padding-bottom: ${theme.space16};
+  border-top-left-radius: ${theme.radius12};
+  border-top-right-radius: ${theme.radius12};
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.space12};
+`;
+
+const Title = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
 
-  h5 {
+  > :not(button) {
     margin: 0;
-    flex: 1;
+    flex-grow: 1;
     font-weight: 700;
+  }
+`;
+
+const StyledCloseButton = styled(Button)`
+  padding: 0;
+  path[data-is-secondary-color] {
+    fill: ${theme.gray200};
+  }
+
+  && {
+    &,
+    &:focus,
+    &:hover,
+    &:active {
+      color: ${theme.gray800};
+      background: transparent;
+    }
+    &:hover {
+      path[data-is-secondary-color] {
+        fill: ${theme.gray300};
+      }
+    }
+    &:active,
+    &:focus {
+      path[data-is-secondary-color] {
+        fill: ${theme.gray400};
+      }
+    }
   }
 `;
 
@@ -29,20 +66,24 @@ const StyledActionBaseWrapper = styled.div`
 
 const StyledLeftActionWrapper = styled(StyledActionBaseWrapper)`
   justify-content: flex-start;
+  display: flex;
+  gap: ${theme.space8};
 `;
 const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
   justify-content: flex-end;
+  display: flex;
+  gap: ${theme.space8};
 `;
 
 const Footer = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
   display: flex;
   align-items: center;
-  border-bottom-left-radius: var(--amino-radius-xl);
-  border-bottom-right-radius: var(--amino-radius-xl);
+  border-bottom-left-radius: ${theme.radiusXl};
+  border-bottom-right-radius: ${theme.radiusXl};
 
   & > div + div {
-    margin-left: var(--amino-space-quarter);
+    margin-left: ${theme.spaceQuarter};
   }
 `;
 
@@ -93,9 +134,9 @@ scroll gradient in the top right */
 `;
 
 const Content = styled.div`
-  padding: 0 var(--amino-space);
-  max-height: calc(90vh - (83px * 2));
+  padding: ${theme.space8} ${theme.space24};
   overflow-y: auto;
+  flex-grow: 1;
   /**
    * Current overflow is not working well with react-tooltip.
    * Temporary remove gradient overflow until having new tooltip library to use
@@ -103,38 +144,25 @@ const Content = styled.div`
   // gradientOverflow
 `;
 
-const Close = styled.div`
-  transition: all 100ms ease-in-out;
-  background: transparent;
-  border-radius: 32px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    svg {
-      fill: var(--amino-gray-400);
-    }
-  }
-
-  svg {
-    transition: all 100ms ease-in-out;
-  }
-`;
-
 export type DialogProps = {
-  actions?: React.ReactNode;
+  actions?: ReactNode;
   className?: string;
-  children: React.ReactNode;
-  label?: string;
-  leftActions?: React.ReactNode;
+  children: ReactNode;
+  label?: ReactNode;
+  subtitle?: string;
+  leftActions?: ReactNode;
   onClose: () => void;
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  /** Close when clicking outside dialog (on the backdrop)
+   * @default true
+   */
+  closeOnBlur?: boolean;
+  /** Close on pressing 'escape' key
+   * @default true
+   */
+  closeOnEsc?: boolean;
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
@@ -144,38 +172,44 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       children,
       className,
       label,
+      subtitle,
       leftActions,
       onClose,
       open,
-      theme,
+      theme: _theme,
       width,
+      closeOnBlur,
+      closeOnEsc,
     },
     ref
   ) => (
     <BaseDialog
       className={className}
-      data-theme={theme}
+      data-theme={_theme}
       open={open}
       width={width}
+      onClose={onClose}
+      closeOnBlur={closeOnBlur}
+      closeOnEsc={closeOnEsc}
     >
       <Header>
-        <Text type="subheader">{label}</Text>
-        <Close onClick={onClose}>
-          <RemoveCircleDuotoneIcon color="gray-l20" size={32} />
-        </Close>
+        <Title>
+          <Text type="title">{label}</Text>
+          <StyledCloseButton
+            onClick={onClose}
+            icon={<RemoveCircleDuotoneIcon size={24} />}
+          />
+        </Title>
+        {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </Header>
       <Content ref={ref}>{children}</Content>
       {(actions || leftActions) && (
         <Footer>
           {leftActions && (
-            <StyledLeftActionWrapper>
-              <HStack spacing="space-quarter">{leftActions}</HStack>
-            </StyledLeftActionWrapper>
+            <StyledLeftActionWrapper>{leftActions}</StyledLeftActionWrapper>
           )}
           {actions && (
-            <StyledRightActionWrapper>
-              <HStack spacing="space-quarter">{actions}</HStack>
-            </StyledRightActionWrapper>
+            <StyledRightActionWrapper>{actions}</StyledRightActionWrapper>
           )}
         </Footer>
       )}

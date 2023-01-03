@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { useHotkeys } from 'react-hotkeys-hook';
 
@@ -8,25 +8,26 @@ import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { XIcon } from 'src/icons/legacy/XIcon';
+import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
 const Popup = styled(motion.div)`
   position: absolute;
   z-index: 1001;
-  background: var(--amino-surface-color);
+  background: ${theme.surfaceColor};
   width: 300px;
   outline: none;
-  box-shadow: var(--amino-shadow-larger);
+  box-shadow: ${theme.v3ShadowXxl};
   height: 100vh;
   right: 0;
   top: 0;
-  border-left: var(--amino-border);
+  border-left: ${theme.border};
 `;
 
 const SlideOverHeader = styled.header`
-  padding: var(--amino-space);
-  border-bottom: var(--amino-border);
+  padding: ${theme.space};
+  border-bottom: ${theme.border};
   display: flex;
   align-items: center;
 
@@ -49,49 +50,49 @@ const Close = styled.div`
   opacity: 0.8;
 
   &:hover {
-    background: var(--amino-gray-200);
+    background: ${theme.grayL60};
     opacity: 1;
   }
 
   svg {
     width: 14px;
     height: 14px;
-    fill: var(--amino-text-color);
+    fill: ${theme.textColor};
     transition: all 100ms ease-in-out;
   }
 `;
 
 const SlideOverContent = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
   overflow-y: auto;
   overscroll-behavior: contain;
 `;
 
 const Footer = styled.div`
-  padding: var(--amino-space);
-  border-top: var(--amino-border);
+  padding: ${theme.space};
+  border-top: ${theme.border};
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: var(--amino-surface-color-secondary);
+  background: ${theme.surfaceColorSecondary};
   position: absolute;
   bottom: 0;
   width: 100%;
 
   & > div + div {
-    margin-left: var(--amino-space-quarter);
+    margin-left: ${theme.spaceQuarter};
   }
 `;
 
 export type SlideOverProps = {
-  children: React.ReactNode;
-  actions?: React.ReactNode;
+  children: ReactNode;
+  actions?: ReactNode;
   label?: string;
   onClose: () => void;
   open: boolean;
   theme?: IAminoTheme;
   modal?: boolean;
-  subtitle?: React.ReactNode;
+  subtitle?: ReactNode;
 };
 
 export const SlideOver = ({
@@ -100,7 +101,7 @@ export const SlideOver = ({
   label,
   onClose,
   open,
-  theme,
+  theme: _theme,
   subtitle,
   modal = true,
 }: SlideOverProps) => {
@@ -116,7 +117,7 @@ export const SlideOver = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             key="dialog-backdrop"
-            data-theme={theme}
+            data-theme={_theme}
             onClick={onClose}
           />
         )}

@@ -1,26 +1,31 @@
 export const colorPrefixes = [
   'blue',
   'cyan',
-  'gray',
   'green',
   'orange',
   'purple',
   'red',
-  'yellow',
+  'gray',
 ] as const;
 
 export const colorContrasts = [
-  'l80',
-  'l60',
-  'l40',
-  'l20',
-  'base',
-  'd20',
-  'd40',
-  'd60',
-  'd80',
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900',
+  '1000',
 ] as const;
 
 type ColorContrast = typeof colorContrasts[number];
 type ColorPrefix = typeof colorPrefixes[number];
-export type Color = `${ColorPrefix}-${ColorContrast}` | 'black';
+export type Color =
+  | `${ColorPrefix}${ColorContrast}`
+  | 'black'
+  | 'gray1100'
+  | 'gray1200'
+  | 'gray1300';

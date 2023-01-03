@@ -1,6 +1,7 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledRestState = styled.div`
@@ -18,18 +19,18 @@ const StyledRestState = styled.div`
 const Icon = styled.img`
   width: 100px;
   height: auto;
-  margin-bottom: var(--amino-space-half);
+  margin-bottom: ${theme.spaceHalf};
 `;
 
 const Action = styled.div`
-  margin-top: var(--amino-space);
-  margin-bottom: var(--amino-space-quarter);
+  margin-top: ${theme.space};
+  margin-bottom: ${theme.spaceQuarter};
 `;
 
 export type RestStateProps = {
   label: string;
   subtitle: string;
-  action?: React.ReactNode;
+  action?: ReactNode;
   icon?: string;
   className?: string;
 };

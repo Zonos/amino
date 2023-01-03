@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Make sure \`generateLogicConstFileContent\` in LogicConstant work properly Generated template content match snapshot 1`] = `
+"import {
+  ConstantCustomizedComment,
+  ConstantKeyValuePairsType,
+} from './types/LogicConstantType';
+
+/** Flag to determine to apply jdocs generation rule from getSpaceConstantCustomizedComment function below */
+export const hasJSDocsComment: boolean = true;
+
+/**
+ * Get jsdocs comment that need to be injected to each space constant with customized comment
+ *
+ * **NOTE**: only enable when \`hasJSDocsComment\` is on
+ * */
+export const getSpaceConstantCustomizedComment: ConstantCustomizedComment = ({
+  key,
+  value,
+}) => {
+  /** Put logic here to generate jsdocs string for each line in constant */
+  return \`\${key}: \${value}\`;
+};
+
+/**
+ * Return key/value pairs after applying logic
+ */
+export const getSpaceConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
+  const contentArr: Record<string, string> = {};
+
+  /** Put logic here to generate constant key value pairs */
+
+  return contentArr;
+};
+"
+`;
+
+exports[`Make sure transformLogicConstant in LogicConstant work properly Case: 'Has 1 import': Has 1 import 1`] = `
+"export const test = {
+  key1: 'value1',
+  key2: 'value2',
+} as const;
+"
+`;
+
+exports[`Make sure transformLogicConstant in LogicConstant work properly Case: 'Has 2 imports': Has 2 imports 1`] = `
+"export const test = {
+  key1: 'value1',
+  key2: 'value2',
+
+  /** Example 2 */
+  keyExample21: 'value Example2 1',
+  keyExample22: 'value Example2 2',
+} as const;
+"
+`;

@@ -1,13 +1,11 @@
-import React from 'react';
+import { KeyboardEvent, ReactNode, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
+import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
-
-// TODO: scrollable dialog, max height, etc.
-// TODO: close with keyboard shortcut?
 
 const DialogLayout = styled.div`
   width: 100vw;
@@ -19,35 +17,60 @@ const DialogLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--amino-text-color);
+  color: ${theme.textColor};
 `;
 
 const Popup = styled(motion.div)<{ width: number }>`
   position: relative;
   z-index: 1001;
-  background: var(--amino-surface-color);
+  background: ${theme.surfaceColor};
   width: ${p => p.width}px;
-  border-radius: var(--amino-radius-xl);
+  max-height: 90vh;
+  border-radius: ${theme.radius12};
   outline: none;
-  box-shadow: var(--amino-shadow-larger);
-  border: var(--amino-border);
+  box-shadow: ${theme.v3ShadowXxl};
+  border: ${theme.border};
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
-export type DialogProps = {
-  children: React.ReactNode;
+export type BaseDialogProps = {
+  children: ReactNode;
   className?: string;
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  onClose?: () => void;
+  closeOnBlur?: boolean;
+  closeOnEsc?: boolean;
 };
 
 export const BaseDialog = ({
   children,
   className,
   open,
-  theme,
+  theme: _theme,
   width,
-}: DialogProps) => {
+  onClose,
+  closeOnBlur = true,
+  closeOnEsc = true,
+}: BaseDialogProps) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (onClose && closeOnEsc && event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  const dialogBackdrop = useRef<HTMLDivElement>(null);
+
+  // Focus the backdrop so we can listen for keypresses ('escape' to close)
+  useEffect(() => {
+    if (!dialogBackdrop.current?.contains(document.activeElement)) {
+      dialogBackdrop.current?.focus();
+    }
+  }, [open]);
+
   if (typeof document !== 'undefined') {
     return ReactDOM.createPortal(
       <AnimatePresence>
@@ -58,11 +81,17 @@ export const BaseDialog = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             key="dialog-backdrop"
-            data-theme={theme}
+            data-theme={_theme}
           />
         )}
         {open && (
-          <DialogLayout data-theme={theme}>
+          <DialogLayout
+            data-theme={_theme}
+            onClick={() => onClose && closeOnBlur && onClose()}
+            onKeyDown={handleKeyDown}
+            tabIndex={-1}
+            ref={dialogBackdrop}
+          >
             <Popup
               className={className}
               transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
@@ -71,6 +100,10 @@ export const BaseDialog = ({
               exit={{ opacity: 0, scale: 0.95 }}
               key="dialog"
               width={width || 444}
+              onClick={e => {
+                // Prevent dialog from closing when clicking in the dialog
+                e.stopPropagation();
+              }}
             >
               {children}
             </Popup>

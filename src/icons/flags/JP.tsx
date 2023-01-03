@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
@@ -26,9 +26,9 @@ export const JP = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         <circle
           cx="523.1"
           cy="344.1"
+          r="194.9"
           fill="#d30000"
           transform="translate(-168.4 8.6) scale(.76554)"
-          r="194.9"
         />
       </g>
     </FlagIconBase>

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
@@ -8,12 +8,13 @@ import { Text } from 'src/components/text/Text';
 import { ExclamationMarkSolidIcon } from 'src/icons/ExclamationMarkSolidIcon';
 import { HelpSolidIcon } from 'src/icons/HelpSolidIcon';
 import { WarningSolidIcon } from 'src/icons/WarningSolidIcon';
+import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
 
 const Content = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
 
   & > div {
     text-align: center;
@@ -28,10 +29,10 @@ const Footer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: var(--amino-space);
+  margin-top: ${theme.space};
 
   & > button + button {
-    margin-left: var(--amino-space-quarter);
+    margin-left: ${theme.spaceQuarter};
   }
 
   button {
@@ -47,7 +48,7 @@ export type AlertDialogProps = {
   open: boolean;
   label: string;
   theme?: IAminoTheme;
-  subtitle: React.ReactNode;
+  subtitle: ReactNode;
   intent: Intent;
   dismissText: string;
   dismissAction: () => void;
@@ -66,7 +67,7 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const AlertDialog = ({
-  theme,
+  theme: _theme,
   open,
   label,
   intent,
@@ -74,7 +75,12 @@ export const AlertDialog = ({
   dismissText,
   dismissAction,
 }: AlertDialogProps) => (
-  <BaseDialog width={350} data-theme={theme} open={open}>
+  <BaseDialog
+    width={350}
+    data-theme={_theme}
+    open={open}
+    onClose={dismissAction}
+  >
     <Content>
       <VStack spacing="space-half">
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>

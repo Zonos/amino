@@ -1,45 +1,44 @@
-import React from 'react';
-
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const AminoTabs = styled.div`
   display: flex;
   align-items: center;
-  border: var(--amino-border);
-  background: var(--amino-surface-color);
-  border-radius: var(--amino-radius-lg);
+  border: ${theme.border};
+  background: ${theme.surfaceColor};
+  border-radius: ${theme.radiusLg};
 `;
 
 const Tab = styled.div`
   flex: 1;
-  padding: var(--amino-space-half) 0;
+  padding: ${theme.spaceHalf} 0;
   cursor: pointer;
   text-align: center;
   transition: all 150ms ease-in-out;
   font-weight: 500;
-  color: var(--amino-gray-900);
+  color: ${theme.grayD80};
   user-select: none;
   box-sizing: border-box;
-  border-bottom: var(--amino-radius) solid transparent;
+  border-bottom: ${theme.radius} solid transparent;
 
   &.is-selected {
-    color: var(--amino-primary);
-    border-bottom: var(--amino-radius) solid var(--amino-primary);
+    color: ${theme.primary};
+    border-bottom: ${theme.radius} solid ${theme.primary};
   }
 
   &:first-of-type {
-    border-bottom-left-radius: var(--amino-radius-lg);
+    border-bottom-left-radius: ${theme.radiusLg};
   }
   &:last-of-type {
-    border-bottom-right-radius: var(--amino-radius-lg);
+    border-bottom-right-radius: ${theme.radiusLg};
   }
 
   & + & {
-    border-left: var(--amino-border);
+    border-left: ${theme.border};
   }
 
   &:not(.is-selected):hover {
-    color: var(--amino-gray-900);
+    color: ${theme.grayD80};
     background: rgba(0, 0, 0, 0.03);
   }
 `;
@@ -50,18 +49,16 @@ export type TabsProps = {
   items: string[];
 };
 
-export const Tabs = ({ selected, onChange, items }: TabsProps) => {
-  return (
-    <AminoTabs>
-      {items.map(item => (
-        <Tab
-          onClick={() => onChange(items.indexOf(item))}
-          className={selected === items.indexOf(item) ? 'is-selected' : ''}
-          key={item}
-        >
-          {item}
-        </Tab>
-      ))}
-    </AminoTabs>
-  );
-};
+export const Tabs = ({ selected, onChange, items }: TabsProps) => (
+  <AminoTabs>
+    {items.map(item => (
+      <Tab
+        onClick={() => onChange(items.indexOf(item))}
+        className={selected === items.indexOf(item) ? 'is-selected' : ''}
+        key={item}
+      >
+        {item}
+      </Tab>
+    ))}
+  </AminoTabs>
+);

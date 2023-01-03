@@ -1,46 +1,44 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledHelpText = styled.div`
-  margin-top: var(--amino-space-quarter);
-`;
-
-const Error = styled.div`
-  color: var(--amino-red-600);
-`;
-
-const StyledSubTitle = styled(Text)`
-  font-style: normal;
+  margin-top: ${theme.spaceQuarter};
 `;
 
 export type HelpTextProps = {
-  error?: ReactNode;
+  /**
+   * Is this an error state.
+   */
+  error?: boolean;
+  /**
+   * Shows below input. Use in conjunction with `error` to show feedback about error.
+   */
   helpText?: ReactNode;
 };
 
 export const HelpText = ({ error, helpText }: HelpTextProps) => {
-  if (helpText && error && typeof error === 'string') {
-    return (
-      <StyledHelpText>
-        <Error>
-          <StyledSubTitle type="subtitle">{error}</StyledSubTitle>
-        </Error>
-      </StyledHelpText>
-    );
-  }
-  if (helpText && error) {
-    return <StyledHelpText>{error}</StyledHelpText>;
-  }
-  if (helpText && typeof helpText === 'string') {
-    return (
-      <StyledHelpText>
-        <StyledSubTitle type="subtitle">{helpText}</StyledSubTitle>
-      </StyledHelpText>
-    );
-  }
   if (helpText) {
+    if (error && typeof helpText === 'string') {
+      return (
+        <StyledHelpText>
+          <Text type="caption" color="red700">
+            {helpText}
+          </Text>
+        </StyledHelpText>
+      );
+    }
+
+    if (typeof helpText === 'string') {
+      return (
+        <StyledHelpText>
+          <Text type="caption">{helpText}</Text>
+        </StyledHelpText>
+      );
+    }
+
     return <StyledHelpText>{helpText}</StyledHelpText>;
   }
   return null;

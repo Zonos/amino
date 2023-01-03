@@ -1,13 +1,11 @@
-import React, { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useCallback, useState } from 'react';
 
 import { AlertDialogOpts } from 'src/types/AlertDialogOpts';
 
 import { AlertDialog } from './AlertDialog';
 
 export const AlertContext = createContext((opts: AlertDialogOpts) => {
-  const defaultFunction = (options: AlertDialogOpts) => {
-    return options;
-  };
+  const defaultFunction = (options: AlertDialogOpts) => options;
   defaultFunction(opts);
 });
 
@@ -19,10 +17,10 @@ export const AlertContextProvider = ({ children }: Props) => {
   const [dialog, setDialog] = useState<AlertDialogOpts | null>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const confirm = (opts: AlertDialogOpts) => {
+  const confirm = useCallback((opts: AlertDialogOpts) => {
     setDialog(opts);
     setIsOpen(true);
-  };
+  }, []);
 
   return (
     <AlertContext.Provider value={confirm}>

@@ -1,22 +1,23 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
-  border: var(--amino-border);
-  border-radius: var(--amino-radius);
-  padding: var(--amino-space);
+  border: ${theme.border};
+  border-radius: ${theme.radius};
+  padding: ${theme.space};
 `;
 
 const CardHeader = styled.header`
-  margin: var(--amino-space-negative);
-  padding: var(--amino-space);
+  margin: ${theme.spaceNegative};
+  padding: ${theme.space};
   display: flex;
   align-items: center;
-  margin-bottom: var(--amino-space);
-  border-bottom: var(--amino-border);
+  margin-bottom: ${theme.space};
+  border-bottom: ${theme.border};
   height: 65px;
   line-height: 65px;
   user-select: none;
@@ -31,24 +32,24 @@ const CardFooter = styled.footer<{ footerHeight?: number }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: var(--amino-space-negative);
-  padding: var(--amino-space);
-  border-top: var(--amino-border);
-  background: var(--amino-surface-color-secondary);
-  margin-top: var(--amino-space);
-  border-bottom-left-radius: var(--amino-radius-lg);
-  border-bottom-right-radius: var(--amino-radius-lg);
+  margin: ${theme.spaceNegative};
+  padding: ${theme.space};
+  border-top: ${theme.border};
+  background: ${theme.surfaceColorSecondary};
+  margin-top: ${theme.space};
+  border-bottom-left-radius: ${theme.radiusLg};
+  border-bottom-right-radius: ${theme.radiusLg};
   height: ${p => p.footerHeight && `${p.footerHeight}px`};
 `;
 
 export type CardProps = {
-  actions?: React.ReactNode;
-  children: React.ReactNode;
+  actions?: ReactNode;
+  children: ReactNode;
   className?: string;
-  footerActions?: React.ReactNode;
-  footerContent?: React.ReactNode;
+  footerActions?: ReactNode;
+  footerContent?: ReactNode;
   footerHeight?: number;
-  label?: React.ReactNode;
+  label?: ReactNode;
 };
 
 export const Card = ({
@@ -59,23 +60,21 @@ export const Card = ({
   footerContent,
   footerHeight,
   label,
-}: CardProps) => {
-  return (
-    <StyledCard className={className || ''}>
-      {label && (
-        <CardHeader>
-          <Text type="subheader">{label}</Text>
+}: CardProps) => (
+  <StyledCard className={className || ''}>
+    {label && (
+      <CardHeader>
+        <Text type="subheader">{label}</Text>
 
-          <HStack spacing="space-quarter">{actions}</HStack>
-        </CardHeader>
-      )}
-      {children}
-      {(footerActions || footerContent) && (
-        <CardFooter footerHeight={footerHeight}>
-          <div>{footerContent}</div>
-          <HStack spacing="space-quarter">{footerActions}</HStack>
-        </CardFooter>
-      )}
-    </StyledCard>
-  );
-};
+        <HStack spacing="space-quarter">{actions}</HStack>
+      </CardHeader>
+    )}
+    {children}
+    {(footerActions || footerContent) && (
+      <CardFooter footerHeight={footerHeight}>
+        <div>{footerContent}</div>
+        <HStack spacing="space-quarter">{footerActions}</HStack>
+      </CardFooter>
+    )}
+  </StyledCard>
+);

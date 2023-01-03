@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { FloatLabelInput, type FloatLabelInputProps } from './_FloatLabelInput';
+import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;
@@ -15,10 +16,24 @@ const StyledActionWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
-const StyledButtonAction = styled.button``;
+const StyledButtonAction = styled.button`
+  padding: ${theme.radiusSm};
+  border-radius: ${theme.radiusSm};
+  transition: ${theme.transition};
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: none;
+  }
+`;
 const AminoInput = styled(FloatLabelInput)`
   && input {
-    padding-right: var(--amino-space-double);
+    padding-right: ${theme.spaceDouble};
     appearance: textfield;
 
     &::-webkit-inner-spin-button,

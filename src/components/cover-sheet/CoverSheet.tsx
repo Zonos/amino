@@ -1,9 +1,10 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -15,7 +16,7 @@ const StyledDialog = styled(motion.div)`
   overflow-y: auto;
   box-sizing: border-box;
   overscroll-behavior: contain;
-  background: var(--amino-page-background);
+  background: ${theme.pageBackground};
   position: fixed;
   left: 0;
   top: 0;
@@ -30,16 +31,16 @@ const StyledDialog = styled(motion.div)`
 `;
 
 const StyledCloseButton = styled(Button)`
-  margin-right: var(--amino-space);
+  margin-right: ${theme.space};
 `;
 const StyledHeader = styled(Text)`
   flex-grow: 1;
 `;
 const Header = styled.header`
-  background: var(--amino-surface-color);
-  border-bottom: var(--amino-border);
+  background: ${theme.surfaceColor};
+  border-bottom: ${theme.border};
 
-  padding: var(--amino-space-half) var(--amino-space);
+  padding: ${theme.spaceHalf} ${theme.space};
   display: flex;
   align-items: center;
   height: 64px;
@@ -53,16 +54,16 @@ const Header = styled.header`
 `;
 
 const Content = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
 `;
 
 export type CoverSheetProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   open: boolean;
   label: string;
   onClose: () => void;
-  actions?: React.ReactNode;
+  actions?: ReactNode;
 };
 
 export const CoverSheet = ({

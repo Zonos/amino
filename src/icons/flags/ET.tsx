@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
@@ -28,9 +28,9 @@ export const ET = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         <circle
           cx="534.2"
           cy="353"
+          r="199.7"
           fill="#006bc6"
           transform="matrix(.54 0 0 .54 -25.8 74)"
-          r="199.7"
         />
         <path
           fill="#ffc621"

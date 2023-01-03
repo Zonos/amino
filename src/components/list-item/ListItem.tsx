@@ -1,6 +1,7 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, MouseEventHandler, ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 interface AminoListItemProps {
@@ -10,13 +11,13 @@ interface AminoListItemProps {
 }
 
 const AminoListItem = styled.div<AminoListItemProps>`
-  padding: var(--amino-space-quarter) var(--amino-space-half);
+  padding: ${theme.spaceQuarter} ${theme.spaceHalf};
   display: flex;
   flex-direction: row;
-  gap: var(--amino-space-half);
+  gap: ${theme.spaceHalf};
   align-items: center;
-  min-height: var(--amino-size-xl);
-  border-radius: var(--amino-radius-lg);
+  min-height: ${theme.sizeXl};
+  border-radius: ${theme.radiusLg};
   line-height: 16px;
 
   .___icon-wrapper {
@@ -30,14 +31,14 @@ const AminoListItem = styled.div<AminoListItemProps>`
     !disabled &&
     selected &&
     css`
-      background-color: var(--amino-blue-l80);
-      color: var(--amino-blue-d40);
+      background-color: ${theme.blueL80};
+      color: ${theme.blueD40};
     `}
 
   ${({ disabled }) =>
     disabled &&
     css`
-      color: var(--amino-gray-base);
+      color: ${theme.grayBase};
       cursor: not-allowed;
     `}
 
@@ -47,7 +48,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
       withClick &&
       !selected &&
       css`
-        background-color: var(--amino-gray-l80);
+        background-color: ${theme.grayL80};
         cursor: pointer;
       `}
   }
@@ -62,10 +63,10 @@ const TextContainer = styled.div`
 `;
 
 const Icon = styled.img`
-  margin-right: var(--amino-space-half);
+  margin-right: ${theme.spaceHalf};
   width: 32px;
   height: 32px;
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
 `;
 
 export type Props = {
@@ -75,7 +76,7 @@ export type Props = {
   label: ReactNode;
   subtitle?: ReactNode;
   rightDecorator?: ReactNode;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   /** @description Decorater takes a React node, preferably an icon or an avatar */
   decorator?: ReactNode;
   /** @deprecated use decorator instead */
@@ -117,36 +118,34 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       iconComponent,
     },
     ref
-  ) => {
-    return (
-      <AminoListItem
-        className={className}
-        disabled={disabled}
-        selected={selected}
-        withClick={!!onClick}
-        onClick={e => !disabled && onClick && onClick(e)}
-        ref={ref}
+  ) => (
+    <AminoListItem
+      className={className}
+      disabled={disabled}
+      selected={selected}
+      withClick={!!onClick}
+      onClick={e => !disabled && onClick && onClick(e)}
+      ref={ref}
+    >
+      <div
+        className={[
+          '___icon-wrapper',
+          icon || iconComponent || decorator ? 'has-icon' : '',
+        ].join(' ')}
       >
-        <div
-          className={[
-            '___icon-wrapper',
-            icon || iconComponent || decorator ? 'has-icon' : '',
-          ].join(' ')}
-        >
-          {decorator}
-          <ListIcon
-            label={typeof label === 'string' ? label : ''}
-            icon={icon}
-            iconComponent={iconComponent}
-          />
-        </div>
+        {decorator}
+        <ListIcon
+          label={typeof label === 'string' ? label : ''}
+          icon={icon}
+          iconComponent={iconComponent}
+        />
+      </div>
 
-        <TextContainer>
-          <Text type="label">{label}</Text>
-          {subtitle && <Text type="caption">{subtitle}</Text>}
-        </TextContainer>
-        {rightDecorator}
-      </AminoListItem>
-    );
-  }
+      <TextContainer>
+        <Text type="label">{label}</Text>
+        {subtitle && <Text type="caption">{subtitle}</Text>}
+      </TextContainer>
+      {rightDecorator}
+    </AminoListItem>
+  )
 );

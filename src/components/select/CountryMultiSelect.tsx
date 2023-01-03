@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import {
   components as RScomponents,
   GroupBase,
@@ -16,9 +16,9 @@ import {
   type ICountryOption,
   type IUnavailableCountry,
 } from 'src/types/ICountry';
+import { IOption } from 'src/types/IOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
-import { IOption } from './_StyledReactSelect';
 import { MultiSelect } from './MultiSelect';
 
 type AdditionalProps = {
@@ -44,7 +44,7 @@ export const MenuList = <
           getStyles(
             'option',
             props as unknown as OptionProps<Option, IsMulti, Group>
-          ) as React.CSSProperties
+          ) as CSSProperties
         }
       >
         <Checkbox

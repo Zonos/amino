@@ -1,17 +1,18 @@
-import React, { ChangeEventHandler, ReactElement, ReactNode } from 'react';
+import { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
 import { SearchInput } from 'src/components/input/SearchInput';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { type NavigationGroupProps } from './NavigationGroup';
 
 const Footer = styled.div`
   box-sizing: border-box;
-  width: var(--amino-sidebar-width);
+  width: ${theme.sidebarWidth};
 `;
 
 const SidebarContent = styled.div`
-  padding: var(--amino-space);
+  padding: ${theme.space};
   box-sizing: border-box;
   overflow-y: auto;
   height: 100%;
@@ -21,10 +22,10 @@ const SidebarContent = styled.div`
 `;
 
 const SearchInputWrapper = styled.div`
-  margin-bottom: var(--amino-space-double);
+  margin-bottom: ${theme.spaceDouble};
 `;
 const StyledLogoSidebar = styled.div`
-  margin-bottom: var(--amino-space);
+  margin-bottom: ${theme.space};
 `;
 const StyledSearchInput = styled(SearchInput)`
   border: 0;
@@ -32,7 +33,7 @@ const StyledSearchInput = styled(SearchInput)`
     color: black;
   }
   input {
-    background-color: var(--amino-gray-100);
+    background-color: ${theme.grayL80};
     border: 0;
     ::placeholder {
       color: black;
@@ -40,20 +41,20 @@ const StyledSearchInput = styled(SearchInput)`
   }
 `;
 const StyledSidebar = styled.nav`
-  border-right: var(--amino-border);
-  width: var(--amino-sidebar-width);
+  border-right: ${theme.border};
+  width: ${theme.sidebarWidth};
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 1fr calc(39px + var(--amino-space) * 2);
+  grid-template-rows: 1fr calc(39px + ${theme.space} * 2);
   height: inherit;
-  background: var(--amino-sidebar-color);
+  background: ${theme.sidebarColor};
 `;
 
 const ContentGrid = styled.div<{ hasHeader: boolean }>`
   height: ${p =>
-    p.hasHeader ? `calc(100vh - var(--amino-appbar-height))` : '100vh'};
+    p.hasHeader ? `calc(100vh - ${theme.appbarHeight})` : '100vh'};
   display: grid;
-  grid-template-columns: var(--amino-sidebar-width) 1fr;
+  grid-template-columns: ${theme.sidebarWidth} 1fr;
 `;
 
 const AminoLayout = styled.main`
@@ -64,17 +65,16 @@ const AminoLayout = styled.main`
 const Content = styled.div`
   height: inherit;
   overflow-y: auto;
-  padding: var(--amino-space) var(--amino-space)
-    calc(39px + var(--amino-space) * 2);
+  padding: ${theme.space} ${theme.space} calc(39px + ${theme.space} * 2);
   box-sizing: border-box;
 `;
 
 const Header = styled.header`
-  background: var(--amino-header-color);
-  box-shadow: var(--amino-shadow-small);
-  border-bottom: var(--amino-border);
-  height: var(--amino-appbar-height);
-  z-index: var(--amino-appbar-elevation);
+  background: ${theme.headerColor};
+  box-shadow: ${theme.v3ShadowBase};
+  border-bottom: ${theme.border};
+  height: ${theme.appbarHeight};
+  z-index: ${theme.appbarElevation};
   position: sticky;
   top: 0;
   box-sizing: border-box;
@@ -102,31 +102,29 @@ export const Layout = ({
   logoSidebar,
   searchInput,
   headerContent,
-}: LayoutProps) => {
-  return (
-    <AminoLayout>
-      {!!headerContent && <Header>{headerContent}</Header>}
-      <ContentGrid hasHeader={!!headerContent}>
-        <StyledSidebar>
-          <SidebarContent>
-            {!!logoSidebar && (
-              <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
-            )}
-            {!!searchInput && (
-              <SearchInputWrapper>
-                <StyledSearchInput
-                  value={searchInput.value}
-                  onChange={searchInput.onChange}
-                />
-              </SearchInputWrapper>
-            )}
-            {sidebar}
-          </SidebarContent>
+}: LayoutProps) => (
+  <AminoLayout>
+    {!!headerContent && <Header>{headerContent}</Header>}
+    <ContentGrid hasHeader={!!headerContent}>
+      <StyledSidebar>
+        <SidebarContent>
+          {!!logoSidebar && (
+            <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
+          )}
+          {!!searchInput && (
+            <SearchInputWrapper>
+              <StyledSearchInput
+                value={searchInput.value}
+                onChange={searchInput.onChange}
+              />
+            </SearchInputWrapper>
+          )}
+          {sidebar}
+        </SidebarContent>
 
-          <Footer>{footer}</Footer>
-        </StyledSidebar>
-        <Content>{content}</Content>
-      </ContentGrid>
-    </AminoLayout>
-  );
-};
+        <Footer>{footer}</Footer>
+      </StyledSidebar>
+      <Content>{content}</Content>
+    </ContentGrid>
+  </AminoLayout>
+);

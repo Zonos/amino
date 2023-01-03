@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 type StyledProps = {
@@ -11,10 +12,10 @@ type StyledProps = {
 const defaultPadding = css`
   padding: 0;
   &:first-of-type {
-    padding-left: var(--amino-space-half);
+    padding-left: ${theme.spaceHalf};
   }
   &:last-of-type {
-    padding-right: var(--amino-space-half);
+    padding-right: ${theme.spaceHalf};
   }
 `;
 
@@ -30,7 +31,7 @@ const paddingCss = css<StyledProps>`
 const StyledTableCell = styled.td<StyledProps>`
   font-variant-numeric: tabular-nums;
   text-align: ${p => p.align};
-  border-bottom: ${p => p.borderBottom || '1px solid var(--amino-gray-l80)'};
+  border-bottom: ${p => p.borderBottom || `1px solid ${theme.grayL80}`};
 
   .Amino-table-size-medium & {
     height: 64px;
@@ -60,17 +61,15 @@ export const TableCell = ({
   className,
   padding,
   tag,
-}: TableCellProps) => {
-  return (
-    <StyledTableCell
-      as={tag}
-      align={align}
-      borderBottom={borderBottom}
-      className={className}
-      colSpan={colSpan}
-      padding={padding}
-    >
-      <InlineWrapper>{children}</InlineWrapper>
-    </StyledTableCell>
-  );
-};
+}: TableCellProps) => (
+  <StyledTableCell
+    as={tag}
+    align={align}
+    borderBottom={borderBottom}
+    className={className}
+    colSpan={colSpan}
+    padding={padding}
+  >
+    <InlineWrapper>{children}</InlineWrapper>
+  </StyledTableCell>
+);

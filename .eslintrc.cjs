@@ -1,3 +1,6 @@
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
   env: {
     browser: true,
@@ -24,6 +27,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-props-no-spreading': 'off',
+    'react/react-in-jsx-scope': 'off',
     /** Typescript 4.0 changes */
     'no-use-before-define': 'off', // Disable the base rule it can report incorrect errors
     '@typescript-eslint/no-use-before-define': ['error'],
@@ -40,6 +44,7 @@ module.exports = {
     camelcase: 'off',
     'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
     '@typescript-eslint/no-unused-vars': 'warn',
+    'class-methods-use-this': 'off', // disable since sometime `this` doesn't need to be used in some util function in class
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -68,8 +73,16 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off', // Prettier takes care of this
     'react/jsx-wrap-multilines': 'off', // Prettier takes care of this
     'react/prop-types': 'off', // Try removing this after updating to "react-scripts": "^4.x"
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: ['function-declaration', 'arrow-function'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'react/default-props-match-prop-types': 'off',
     'react/require-default-props': 'off',
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
       'error',

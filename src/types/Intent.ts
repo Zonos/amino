@@ -1,8 +1,9 @@
 export type Intent =
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
+  | 'default'
   | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
   | 'danger'
-  | 'secondary';
+  | 'error';

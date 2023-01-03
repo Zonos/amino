@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { VStack } from 'src/components/stack/VStack';
 import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
 import styled from 'styled-components';
 
@@ -9,23 +10,23 @@ const StyledRichCheckbox = styled.button`
   position: relative;
   appearance: none;
   background: white;
-  padding: var(--amino-space-half);
-  padding-right: var(--amino-space-double);
-  border: var(--amino-border);
-  border-radius: var(--amino-radius);
+  padding: ${theme.spaceHalf};
+  padding-right: ${theme.spaceDouble};
+  border: ${theme.border};
+  border-radius: ${theme.radius};
   text-align: left;
   transition: all 150ms ease-in-out;
   display: flex;
   flex-direction: row;
   align-items: center;
   &:hover {
-    background: var(--amino-gray-100);
-    border: 1px solid var(--amino-gray-200);
+    background: ${theme.grayL80};
+    border: 1px solid ${theme.grayL60};
   }
 
   &:focus {
     outline: none;
-    border: 1px solid var(--amino-blue-300);
+    border: 1px solid ${theme.blueL40};
   }
   > div {
     display: flex;
@@ -44,9 +45,9 @@ const Subtitle = styled.span`
 
 const StyledVStack = styled(VStack)`
   button[data-state='checked'] {
-    background: var(--amino-blue-100);
-    border: 1px solid var(--amino-blue-300);
-    color: var(--amino-blue-500);
+    background: ${theme.blueL80};
+    border: 1px solid ${theme.blueL40};
+    color: ${theme.blueBase};
   }
   svg {
     color: white;
@@ -57,8 +58,8 @@ const StyledVStack = styled(VStack)`
 
 const StyledIcon = styled.div`
   position: absolute;
-  right: var(--amino-space-half);
-  background: var(--amino-blue-500);
+  right: ${theme.spaceHalf};
+  background: ${theme.blueBase};
   content: ' ';
   border-radius: 50px;
   padding: 5px;
@@ -70,7 +71,7 @@ const StyledIcon = styled.div`
 const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
   align-items: center;
   display: grid !important;
-  grid-column-gap: var(--amino-space);
+  grid-column-gap: ${theme.space};
   ${({ $icon }) => $icon && `grid-template-columns: 30px 1fr;`}
 `;
 
@@ -89,33 +90,31 @@ export type RichCheckboxProps = {
   onClick: (newVal: string) => void;
 };
 
-export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => {
-  return (
-    <StyledVStack spacing="space-half">
-      {items.map(item => {
-        const { checked, icon, label, subtitle, value } = item;
-        return (
-          <StyledRichCheckbox
-            data-state={checked ? 'checked' : ''}
-            value={value}
-            key={value}
-            onClick={e => onClick(e.currentTarget.value)}
-          >
-            <StyledItemContentDiv $icon={!!icon}>
-              {icon && icon}
-              <VStack spacing="none">
-                <Label>{label}</Label>
-                {subtitle && <Subtitle>{subtitle}</Subtitle>}
-              </VStack>
-            </StyledItemContentDiv>
-            {checked && (
-              <StyledIcon>
-                <CheckMarkIcon />
-              </StyledIcon>
-            )}
-          </StyledRichCheckbox>
-        );
-      })}
-    </StyledVStack>
-  );
-};
+export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
+  <StyledVStack spacing="space-half">
+    {items.map(item => {
+      const { checked, icon, label, subtitle, value } = item;
+      return (
+        <StyledRichCheckbox
+          data-state={checked ? 'checked' : ''}
+          value={value}
+          key={value}
+          onClick={e => onClick(e.currentTarget.value)}
+        >
+          <StyledItemContentDiv $icon={!!icon}>
+            {icon && icon}
+            <VStack spacing="none">
+              <Label>{label}</Label>
+              {subtitle && <Subtitle>{subtitle}</Subtitle>}
+            </VStack>
+          </StyledItemContentDiv>
+          {checked && (
+            <StyledIcon>
+              <CheckMarkIcon />
+            </StyledIcon>
+          )}
+        </StyledRichCheckbox>
+      );
+    })}
+  </StyledVStack>
+);

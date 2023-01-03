@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import {
   components as RScomponents,
   GroupBase,
@@ -8,14 +8,15 @@ import {
   StylesConfig,
 } from 'react-select';
 
-import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import { theme } from 'src/styles/constants/theme';
 import { ICountryOption } from 'src/types/ICountry';
+import { IOption } from 'src/types/IOption';
 import styled from 'styled-components';
 
-import { IOption } from './_StyledReactSelect';
 import { Select } from './Select';
 
 const OptionLabel = styled.div`
@@ -24,7 +25,7 @@ const OptionLabel = styled.div`
 
 const PhoneCodeLabel = styled.div`
   margin-left: 4px;
-  color: var(--amino-gray-d20);
+  color: ${theme.grayD20};
 `;
 
 const StyledPrefix = styled.div`
@@ -96,6 +97,13 @@ export interface CountryPhoneSelectProps<
   styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
+const formatOptionLabel = (option: ICountryOption) => (
+  <OptionLabel>
+    {option.displayName}
+    <PhoneCodeLabel>{option.phoneCode.join(', ')}</PhoneCodeLabel>
+  </OptionLabel>
+);
+
 export const CountryPhoneSelect = ({
   countryOptions,
   icon,
@@ -113,6 +121,7 @@ export const CountryPhoneSelect = ({
   const valuePrefix = phoneCountry?.phoneCode
     ? `+${phoneCountry?.phoneCode}`
     : undefined;
+
   return (
     <>
       <StyledInputWrapper>
@@ -133,12 +142,7 @@ export const CountryPhoneSelect = ({
         {...props}
         components={{ Control: () => null, MenuList }}
         options={countryOptions}
-        formatOptionLabel={option => (
-          <OptionLabel>
-            {option.displayName}
-            <PhoneCodeLabel>{option.phoneCode.join(', ')}</PhoneCodeLabel>
-          </OptionLabel>
-        )}
+        formatOptionLabel={formatOptionLabel}
         menuIsOpen={menuIsOpen}
         onBlur={() => setMenuIsOpen(false)}
         onChange={changed => {

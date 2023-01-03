@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
   * {
-    margin-bottom: var(--amino-space-half);
+    margin-bottom: ${theme.spaceHalf};
   }
 
   *:last-of-type {
@@ -42,24 +43,22 @@ export const RadioGroup = <T extends RadioGroupItem>({
     }
   }, [initialIndex]);
 
-  const radios = items.map((el, index) => {
-    return (
-      <Radio
-        checked={index === activeIndex}
-        onChange={() => {
-          if (!disabled) {
-            setActiveIndex(index);
-            if (onChange && el.value) {
-              onChange(el.value);
-            }
+  const radios = items.map((el, index) => (
+    <Radio
+      checked={index === activeIndex}
+      onChange={() => {
+        if (!disabled) {
+          setActiveIndex(index);
+          if (onChange && el.value) {
+            onChange(el.value);
           }
-        }}
-        disabled={disabled}
-        key={el.label}
-        label={el.label}
-      />
-    );
-  });
+        }
+      }}
+      disabled={disabled}
+      key={el.label}
+      label={el.label}
+    />
+  ));
 
   return <RadioContainer>{radios}</RadioContainer>;
 };

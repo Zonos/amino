@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import {
   ActionMeta,
   GroupBase,
@@ -14,8 +14,9 @@ import {
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import { IOption } from 'src/types/IOption';
 
-import { IOption, StyledReactSelect } from './_StyledReactSelect';
+import { StyledReactSelect } from './_StyledReactSelect';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
@@ -63,16 +64,13 @@ const Group = <
   const groupIsSelected = available.length === selected.length;
 
   return (
-    <div
-      style={getStyles('group', props) as React.CSSProperties}
-      {...innerProps}
-    >
+    <div style={getStyles('group', props) as CSSProperties} {...innerProps}>
       <div
         style={
           getStyles(
             'option',
             props as unknown as OptionProps<Option, IsMulti, Group>
-          ) as React.CSSProperties
+          ) as CSSProperties
         }
       >
         <Checkbox
@@ -107,14 +105,12 @@ export const MultiSelect = <
   closeMenuOnSelect = false,
   hideSelectedOptions = true,
   ...props
-}: MultiSelectProps<Option, true, Group>) => {
-  return (
-    <StyledReactSelect<Option, true, Group>
-      {...props}
-      closeMenuOnSelect={closeMenuOnSelect}
-      components={{ Group, ...props.components }}
-      hideSelectedOptions={hideSelectedOptions}
-      isMulti
-    />
-  );
-};
+}: MultiSelectProps<Option, true, Group>) => (
+  <StyledReactSelect<Option, true, Group>
+    {...props}
+    closeMenuOnSelect={closeMenuOnSelect}
+    components={{ Group, ...props.components }}
+    hideSelectedOptions={hideSelectedOptions}
+    isMulti
+  />
+);

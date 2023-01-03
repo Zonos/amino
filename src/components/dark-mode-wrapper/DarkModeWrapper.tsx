@@ -1,7 +1,7 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
 export type DarkModeWrapperProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export const DarkModeWrapper = ({ children }: DarkModeWrapperProps) => (

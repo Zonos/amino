@@ -1,29 +1,32 @@
-import React from 'react';
+import { theme } from 'src/styles/constants/theme';
+import styled, { CSSProperties } from 'styled-components';
 
-import styled from 'styled-components';
-
-const GradientSquare = styled.div<{
+type GradientSquareType = {
   gradientStart: string;
   gradientEnd: string;
-}>`
+};
+
+// Used in store list, and when too many classes are generated styled-components complains. This is their recommended solution to make the changes styles inline, rather than generating a CSS class for each one.
+const GradientSquare = styled.div.attrs<GradientSquareType>(
+  (props): { style: CSSProperties } => ({
+    style: {
+      background: `linear-gradient(
+      137deg,
+      ${props.gradientStart},
+      ${props.gradientEnd}
+    )`,
+    },
+  })
+)<GradientSquareType>`
   width: 32px;
   height: 32px;
-  border-radius: var(--amino-radius);
+  border-radius: ${theme.radius};
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  color: var(--amino-gray-900) !important;
+  color: ${theme.grayD80} !important;
   font-weight: 500;
-
-  --gradient-start: ${p => p.gradientStart};
-  --gradient-end: ${p => p.gradientEnd};
-
-  background: linear-gradient(
-    137deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
 `;
 
 export type TextAvatarProps = {
@@ -31,10 +34,12 @@ export type TextAvatarProps = {
 };
 
 const colorForString = (stringInput: string, brightness: number) => {
-  const stringUniqueHash = Array.from(stringInput).reduce((acc, char) => {
-    // eslint-disable-next-line no-bitwise
-    return char.charCodeAt(0) + ((acc << 5) - acc);
-  }, 0);
+  const stringUniqueHash = Array.from(stringInput).reduce(
+    (acc, char) =>
+      // eslint-disable-next-line no-bitwise
+      char.charCodeAt(0) + ((acc << 5) - acc),
+    0
+  );
 
   return `hsl(${stringUniqueHash % 360}, 95%, ${brightness}%)`;
 };

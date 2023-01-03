@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
@@ -26,37 +26,37 @@ export const IN = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
                 <path d="M0 17.5.6 7 0 2l-.6 5L0 17.5z" />
               </g>
               <use
+                xlinkHref="#a"
                 width="100%"
                 height="100%"
                 transform="rotate(15)"
-                xlinkHref="#a"
               />
             </g>
             <use
+              xlinkHref="#b"
               width="100%"
               height="100%"
               transform="rotate(30)"
-              xlinkHref="#b"
             />
           </g>
           <use
+            xlinkHref="#c"
             width="100%"
             height="100%"
             transform="rotate(60)"
-            xlinkHref="#c"
           />
         </g>
         <use
+          xlinkHref="#d"
           width="100%"
           height="100%"
           transform="rotate(120)"
-          xlinkHref="#d"
         />
         <use
+          xlinkHref="#d"
           width="100%"
           height="100%"
           transform="rotate(-120)"
-          xlinkHref="#d"
         />
       </g>
     </FlagIconBase>

@@ -1,7 +1,8 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 import { Collapse } from '../collapse/Collapse';
@@ -37,15 +38,15 @@ const StyledList = styled(List)<ListProps>`
   ${({ withBorder }) =>
     withBorder &&
     css`
-      padding: var(--amino-space-quarter);
-      border: 1px solid var(--amino-gray-l60);
-      border-radius: var(--amino-radius-xl);
+      padding: ${theme.spaceQuarter};
+      border: 1px solid ${theme.grayL60};
+      border-radius: ${theme.radiusXl};
     `}
 
   ${({ withNegativeMargin }) =>
     withNegativeMargin &&
     css`
-      margin: var(--amino-space-negative);
+      margin: ${theme.spaceNegative};
     `}
 `;
 
@@ -85,9 +86,9 @@ export const CollapsableList = ({
         onClick={() => setExpand(!expand)}
         rightDecorator={
           expand ? (
-            <ChevronUpIcon color="gray-d60" />
+            <ChevronUpIcon color="gray900" />
           ) : (
-            <ChevronDownIcon color="gray-d60" />
+            <ChevronDownIcon color="gray900" />
           )
         }
       />

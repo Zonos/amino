@@ -1,4 +1,4 @@
-import React, {
+import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   HTMLAttributes,
@@ -7,10 +7,22 @@ import React, {
 } from 'react';
 
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
+import { theme } from 'src/styles/constants/theme';
+import { Color } from 'src/types';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
 import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
+
+const getAminoColor = (color?: Color | 'inherit') => {
+  if (color === 'inherit') {
+    return 'inherit';
+  }
+  if (color) {
+    return theme[color];
+  }
+  return undefined;
+};
 
 const StyledSpinnerWrapper = styled.span`
   position: absolute;
@@ -21,7 +33,8 @@ const StyledSpinnerWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--amino-radius-sm);
+  border-radius: ${theme.radius4};
+  gap: ${theme.space8};
 `;
 
 const AminoButton = styled.button<ButtonProps<GroupTag>>`
@@ -35,14 +48,15 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--amino-space-half);
-  border-radius: var(--amino-radius);
-  transition: var(--amino-transition);
+  padding: 0 ${theme.spaceHalf};
+  border-radius: ${theme.radius};
+  transition: ${theme.transition};
   font-weight: 500;
   user-select: none;
-  font-family: var(--amino-font-sans);
+  font-family: ${theme.fontSans};
   letter-spacing: normal;
   cursor: pointer;
+  white-space: nowrap;
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
@@ -64,12 +78,12 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   &:not(.only-icon).has-icon {
     &.icon-right {
       svg {
-        margin-left: var(--amino-space-quarter);
+        margin-left: ${theme.spaceQuarter};
         margin-right: 0;
       }
     }
     svg {
-      margin-right: var(--amino-space-quarter);
+      margin-right: ${theme.spaceQuarter};
       margin-left: 0;
     }
   }
@@ -84,156 +98,174 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 `;
 
 const Primary = styled(AminoButton)`
-  background: var(--amino-primary);
-  color: var(--amino-text-light);
+  background: ${p => getAminoColor(p.background) || theme.primary};
+  color: ${p => getAminoColor(p.color) || theme.textLight};
 
-  &:hover {
-    background: var(--amino-blue-l20);
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.blueL20};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.blueD20};
+      color: white;
+    }
   }
-  &:active,
-  &:focus {
-    background: var(--amino-blue-d20);
-    color: white;
-  }
+
   ${StyledSpinnerWrapper} {
-    background: var(--amino-primary);
+    background: ${theme.primary};
   }
 `;
 
 const Secondary = styled(AminoButton)`
-  color: var(--amino-text-color);
-  background: var(--amino-gray-l80);
+  color: ${p => getAminoColor(p.color) || theme.textColor};
+  background: ${p => getAminoColor(p.background) || theme.grayL80};
 
-  &:hover {
-    background: var(--amino-gray-l60);
-  }
-  &:active,
-  &:focus {
-    background: var(--amino-blue-l80);
-    color: var(--amino-blue-base);
-    svg path {
-      fill: currentColor;
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.grayL60};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.blueL80};
+      color: ${theme.blueBase};
+      svg path {
+        fill: currentColor;
+      }
     }
   }
+
   ${StyledSpinnerWrapper} {
-    background: var(--amino-gray-l80);
+    background: ${theme.grayL80};
   }
 
   /** Dark mode */
   &.dark {
     color: white;
-    background: var(--amino-gray-d80);
+    background: ${theme.grayD80};
 
-    &:hover {
-      background: var(--amino-gray-d60);
-    }
-    &:active,
-    &:focus {
-      background: var(--amino-blue-d80);
-      color: var(--amino-blue-l40);
-      svg path {
-        fill: currentColor;
+    &:not([disabled]) {
+      &:hover {
+        background: ${theme.grayD60};
+      }
+      &:active,
+      &:focus {
+        background: ${theme.blueD80};
+        color: ${theme.blueL40};
+        svg path {
+          fill: currentColor;
+        }
       }
     }
+
     ${StyledSpinnerWrapper} {
-      background: var(--amino-gray-d80);
+      background: ${theme.grayD80};
     }
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: var(--amino-red-base);
-  color: white;
+  background: ${p => getAminoColor(p.background) || theme.redBase};
+  color: ${p => getAminoColor(p.color) || 'white'};
 
-  &:hover {
-    background: var(--amino-red-l20);
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.redL20};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.redD20};
+    }
   }
 
-  &:active,
-  &:focus {
-    background: var(--amino-red-d20);
-  }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-red-base);
+    background: ${theme.redBase};
   }
 `;
 
 const Warning = styled(AminoButton)`
-  background: var(--amino-orange-base);
-  color: white;
+  background: ${p => getAminoColor(p.background) || theme.orangeBase};
+  color: ${p => getAminoColor(p.color) || 'white'};
 
-  &:hover {
-    background: var(--amino-orange-l20);
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.orangeL20};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.orangeD20};
+    }
   }
 
-  &:active,
-  &:focus {
-    background: var(--amino-orange-d20);
-  }
   ${StyledSpinnerWrapper} {
-    background: var(--amino-orange-base);
+    background: ${theme.orangeBase};
   }
 `;
 
 const Outline = styled(AminoButton)`
-  background: white;
-  color: var(--amino-text-color);
-  border: 1px solid var(--amino-gray-l60);
+  background: ${p => getAminoColor(p.background) || 'white'};
+  color: ${p => getAminoColor(p.color) || theme.textColor};
+  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.grayL60};
 
-  &:hover {
-    background: var(--amino-gray-l80);
-    border: 1px solid var(--amino-gray-l60);
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.grayL80};
+      border: 1px solid ${theme.grayL60};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.blueL80};
+      color: ${theme.blueBase};
+      border: 1px solid ${theme.blueL40};
+    }
   }
 
-  &:active,
-  &:focus {
-    background: var(--amino-blue-l80);
-    color: var(--amino-blue-base);
-    border: 1px solid var(--amino-blue-l40);
-  }
   ${StyledSpinnerWrapper} {
     background: white;
   }
 `;
 
 const Subtle = styled(AminoButton)`
-  background: none;
-  color: var(--amino-gray-d40);
+  background: ${p => getAminoColor(p.background) || 'none'};
+  color: ${p => getAminoColor(p.color) || theme.grayD40};
 
-  &:hover {
-    background: var(--amino-gray-l80);
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.grayL80};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.blueL80};
+      color: ${theme.blueBase};
+    }
   }
 
-  &:active,
-  &:focus {
-    background: var(--amino-blue-l80);
-    color: var(--amino-blue-base);
-  }
   &.loading {
     color: transparent;
   }
 `;
 
 const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: var(--amino-gray-d40);
+  color: ${p => getAminoColor(p.color) || theme.grayD40};
   height: 20px;
   line-height: 20px;
   padding: 0;
 
   &[disabled] {
-    color: var(--amino-gray-l20);
+    color: ${theme.grayL20};
     &:not(.loading) {
       opacity: inherit;
     }
-    &:active,
-    &:focus {
-      color: var(--amino-gray-l20);
-    }
   }
 
-  &:active,
-  &:focus {
-    color: var(--amino-black);
+  &:not([disabled]) {
+    &:hover {
+      color: ${theme.grayD20};
+    }
+    &:active,
+    &:focus {
+      color: ${theme.black};
+    }
   }
 
   &.loading {
@@ -242,17 +274,20 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 `;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: var(--amino-blue-base);
-  background: white;
+  color: ${p => getAminoColor(p.color) || theme.blueBase};
+  background: ${p => getAminoColor(p.background) || 'white'};
 
-  &:hover {
-    background: var(--amino-gray-l80);
+  &:not([disabled]) {
+    &:hover {
+      background: ${theme.grayL80};
+    }
+    &:active,
+    &:focus {
+      background: ${theme.blueL80};
+      color: ${theme.blueD40};
+    }
   }
-  &:active,
-  &:focus {
-    background: var(--amino-blue-l80);
-    color: var(--amino-blue-d40);
-  }
+
   ${StyledSpinnerWrapper} {
     background: white;
   }
@@ -261,8 +296,12 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | Intent;
 
 type ButtonBase = {
+  background?: Color | 'inherit';
+  /** @param borderColor only available for intent 'outline' */
+  borderColor?: Color | 'inherit';
   children?: ReactNode;
   className?: string;
+  color?: Color | 'inherit';
   disabled?: boolean;
   icon?: ReactNode;
   iconRight?: boolean;
@@ -304,18 +343,18 @@ export function Button<T extends GroupTag = 'button'>({
   loadingText,
   size = 'sm',
   tag,
-  theme,
+  theme: _theme,
   type = 'button',
   ...props
 }: ButtonProps<T>) {
-  const renderContent = (color?: SpinnerProps['color']) => (
+  const renderContent = (spinnerColor?: SpinnerProps['color']) => (
     <>
       {!iconRight && icon}
       {children}
       {iconRight && icon}
       {loading && (
         <StyledSpinnerWrapper>
-          <Spinner size={16} color={color} />
+          <Spinner size={16} color={spinnerColor} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
@@ -328,7 +367,7 @@ export function Button<T extends GroupTag = 'button'>({
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
     loading ? 'loading' : '',
-    theme,
+    _theme,
   ]
     .filter(Boolean)
     .join(' ');
@@ -339,122 +378,6 @@ export function Button<T extends GroupTag = 'button'>({
     size,
   };
 
-  if (tag === 'a') {
-    const buttonProps = {
-      ...baseProps,
-      ...(props as ButtonProps<'a'>),
-    };
-    switch (intent) {
-      case 'primary':
-        return (
-          <Primary as="a" {...buttonProps}>
-            {renderContent('white')}
-          </Primary>
-        );
-      case 'subtle':
-        return (
-          <Subtle as="a" {...buttonProps}>
-            {renderContent()}
-          </Subtle>
-        );
-      case 'outline':
-        return (
-          <Outline as="a" {...buttonProps}>
-            {renderContent()}
-          </Outline>
-        );
-      case 'warning':
-        return (
-          <Warning as="a" {...buttonProps}>
-            {renderContent()}
-          </Warning>
-        );
-      case 'danger':
-        return (
-          <Danger as="a" {...buttonProps}>
-            {renderContent()}
-          </Danger>
-        );
-      case 'text':
-        return (
-          <TextButton as="a" {...buttonProps}>
-            {renderContent()}
-          </TextButton>
-        );
-      case 'link':
-        return (
-          <LinkButton as="a" {...buttonProps}>
-            {renderContent()}
-          </LinkButton>
-        );
-      case 'secondary':
-      default:
-        return (
-          <Secondary as="a" {...buttonProps}>
-            {renderContent()}
-          </Secondary>
-        );
-    }
-  }
-
-  if (tag === 'div') {
-    const buttonProps = {
-      ...baseProps,
-      ...(props as ButtonProps<'div'>),
-    };
-    switch (intent) {
-      case 'primary':
-        return (
-          <Primary as="div" {...buttonProps}>
-            {renderContent('white')}
-          </Primary>
-        );
-      case 'subtle':
-        return (
-          <Subtle as="div" {...buttonProps}>
-            {renderContent()}
-          </Subtle>
-        );
-      case 'outline':
-        return (
-          <Outline as="div" {...buttonProps}>
-            {renderContent()}
-          </Outline>
-        );
-      case 'warning':
-        return (
-          <Warning as="div" {...buttonProps}>
-            {renderContent()}
-          </Warning>
-        );
-      case 'danger':
-        return (
-          <Danger as="div" {...buttonProps}>
-            {renderContent()}
-          </Danger>
-        );
-      case 'text':
-        return (
-          <TextButton as="div" {...buttonProps}>
-            {renderContent()}
-          </TextButton>
-        );
-      case 'link':
-        return (
-          <LinkButton as="div" {...buttonProps}>
-            {renderContent()}
-          </LinkButton>
-        );
-      case 'secondary':
-      default:
-        return (
-          <Secondary as="div" {...buttonProps}>
-            {renderContent()}
-          </Secondary>
-        );
-    }
-  }
-
   const buttonProps = {
     ...baseProps,
     ...(props as ButtonProps<'button'>),
@@ -462,21 +385,53 @@ export function Button<T extends GroupTag = 'button'>({
   };
   switch (intent) {
     case 'primary':
-      return <Primary {...buttonProps}>{renderContent('white')}</Primary>;
+      return (
+        <Primary as={tag || 'button'} {...buttonProps}>
+          {renderContent('white')}
+        </Primary>
+      );
     case 'subtle':
-      return <Subtle {...buttonProps}>{renderContent()}</Subtle>;
+      return (
+        <Subtle as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </Subtle>
+      );
     case 'outline':
-      return <Outline {...buttonProps}>{renderContent()}</Outline>;
+      return (
+        <Outline as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </Outline>
+      );
     case 'warning':
-      return <Warning {...buttonProps}>{renderContent()}</Warning>;
+      return (
+        <Warning as={tag || 'button'} {...buttonProps}>
+          {renderContent('white')}
+        </Warning>
+      );
     case 'danger':
-      return <Danger {...buttonProps}>{renderContent()}</Danger>;
+      return (
+        <Danger as={tag || 'button'} {...buttonProps}>
+          {renderContent('white')}
+        </Danger>
+      );
     case 'text':
-      return <TextButton {...buttonProps}>{renderContent()}</TextButton>;
+      return (
+        <TextButton as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </TextButton>
+      );
     case 'link':
-      return <LinkButton {...buttonProps}>{renderContent()}</LinkButton>;
+      return (
+        <LinkButton as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </LinkButton>
+      );
     case 'secondary':
     default:
-      return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
+      return (
+        <Secondary as={tag || 'button'} {...buttonProps}>
+          {renderContent()}
+        </Secondary>
+      );
   }
 }

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode, useMemo, useRef } from 'react';
 import ReactSelect, {
   ClearIndicatorProps,
   components as RScomponents,
@@ -12,26 +12,23 @@ import ReactSelect, {
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select';
+import Select from 'react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
-  HelpText,
   type HelpTextProps,
+  HelpText,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
+import { theme } from 'src/styles/constants/theme';
+import { IOption } from 'src/types/IOption';
 import { Size } from 'src/types/Size';
+import { getTestId } from 'src/utils/getTestId';
 import styled, { css } from 'styled-components';
 
-export interface IOption {
-  icon?: ReactNode;
-  isDisabled?: boolean;
-  label: string;
-  labelDescription?: string;
-  value: string;
-}
 type AdditionalProps = {
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -45,13 +42,11 @@ const ClearIndicator = <
   Group extends GroupBase<Option>
 >(
   props: ClearIndicatorProps<Option, IsMulti, Group>
-) => {
-  return (
-    <RScomponents.ClearIndicator {...props}>
-      <RemoveCircleSolidIcon size={19} />
-    </RScomponents.ClearIndicator>
-  );
-};
+) => (
+  <RScomponents.ClearIndicator {...props}>
+    <RemoveCircleSolidIcon size={19} />
+  </RScomponents.ClearIndicator>
+);
 
 const DropdownIndicator = <
   Option extends IOption,
@@ -59,33 +54,31 @@ const DropdownIndicator = <
   Group extends GroupBase<Option>
 >(
   props: DropdownIndicatorProps<Option, IsMulti, Group>
-) => {
-  return (
-    <RScomponents.DropdownIndicator {...props}>
-      <DoubleChevronIcon size={20} />
-    </RScomponents.DropdownIndicator>
-  );
-};
+) => (
+  <RScomponents.DropdownIndicator {...props}>
+    <DoubleChevronIcon size={20} />
+  </RScomponents.DropdownIndicator>
+);
 
 const IconWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--amino-gray-d20);
+  color: ${theme.grayD20};
   padding: 10px;
 `;
 
 const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   position: absolute;
-  transition: var(--amino-transition);
-  font-size: var(--amino-text-base);
-  line-height: var(--amino-text-base);
+  transition: ${theme.transition};
+  font-size: ${theme.textBase};
+  line-height: ${theme.textBase};
   transform-origin: left top;
-  left: calc(var(--amino-space-half) - 2px);
+  left: calc(${theme.spaceHalf} - 2px);
   .has-icon & {
-    left: calc(var(--amino-space-double) + 2px);
+    left: calc(${theme.spaceDouble} + 2px);
   }
-  top: calc(50% - var(--amino-text-base) / 2);
+  top: calc(50% - ${theme.textBase} / 2);
   .has-label & {
     & + div {
       align-self: flex-end;
@@ -93,7 +86,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   }
   .has-value &,
   .is-focused & {
-    top: calc(var(--amino-space-quarter) + 3px);
+    top: calc(${theme.spaceQuarter} + 3px);
     transform: scale(0.8);
   }
 
@@ -154,6 +147,10 @@ const StyledSelectWrapper = styled.div`
   .react-select-control + div {
     z-index: 20;
   }
+
+  &.has-error .react-select-control {
+    box-shadow: ${theme.glowError};
+  }
 `;
 
 const StrongLabel = styled.strong`
@@ -204,7 +201,7 @@ const Control = <
         ].join(' ')
       )}
       ref={innerRef}
-      style={getStyles('control', props) as React.CSSProperties}
+      style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
       {icon && <IconWrapper>{icon}</IconWrapper>}
@@ -234,7 +231,7 @@ const StyledSelectOptionWrapper = styled.div`
   &:not(.is-disabled) {
     &.is-focused,
     &:hover {
-      background-color: var(--amino-gray-l80) !important;
+      background-color: ${theme.grayL80} !important;
     }
   }
 `;
@@ -253,14 +250,12 @@ const IconLabel = ({
   children: ReactNode;
   color?: string;
   icon?: ReactNode;
-}) => {
-  return (
-    <CheckboxOptionIconWrapper $color={color}>
-      {icon}
-      {children}
-    </CheckboxOptionIconWrapper>
-  );
-};
+}) => (
+  <CheckboxOptionIconWrapper $color={color}>
+    {icon}
+    {children}
+  </CheckboxOptionIconWrapper>
+);
 
 const MultiValueLabel = <
   Option extends IOption,
@@ -269,13 +264,11 @@ const MultiValueLabel = <
 >({
   children,
   ...props
-}: MultiValueGenericProps<Option, IsMulti, Group>) => {
-  return (
-    <RScomponents.MultiValueLabel {...props}>
-      <IconLabel icon={props.data.icon}>{children}</IconLabel>
-    </RScomponents.MultiValueLabel>
-  );
-};
+}: MultiValueGenericProps<Option, IsMulti, Group>) => (
+  <RScomponents.MultiValueLabel {...props}>
+    <IconLabel icon={props.data.icon}>{children}</IconLabel>
+  </RScomponents.MultiValueLabel>
+);
 
 const MultiValueRemove = <
   Option extends IOption,
@@ -283,13 +276,11 @@ const MultiValueRemove = <
   Group extends GroupBase<Option>
 >({
   innerProps,
-}: MultiValueRemoveProps<Option, IsMulti, Group>) => {
-  return (
-    <div {...innerProps} role="button">
-      <RemoveIcon size={14} />
-    </div>
-  );
-};
+}: MultiValueRemoveProps<Option, IsMulti, Group>) => (
+  <div {...innerProps} role="button">
+    <RemoveIcon size={14} />
+  </div>
+);
 
 export const CheckboxOptionComponent = <
   Option extends IOption,
@@ -313,7 +304,7 @@ export const CheckboxOptionComponent = <
   const { hasGroups } = selectProps as typeof props['selectProps'] &
     AdditionalProps;
 
-  const { color, ...style } = getStyles('option', props) as React.CSSProperties;
+  const { color, ...style } = getStyles('option', props) as CSSProperties;
   if (hasGroups) {
     style.paddingLeft = 48;
   }
@@ -341,7 +332,7 @@ export const CheckboxOptionComponent = <
             <IconLabel color={color} icon={data.icon}>
               {children}
             </IconLabel>
-            {isSelected && <CheckCircleSolidIcon color="blue-base" size={16} />}
+            {isSelected && <CheckCircleSolidIcon color="blue600" size={16} />}
           </SelectedSingleOptionWrapper>
         )}
       </StyledSelectOptionWrapper>
@@ -350,120 +341,98 @@ export const CheckboxOptionComponent = <
 };
 
 const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
-  clearIndicator: provided => {
-    return {
-      ...provided,
-      color: `var(--amino-gray-d20)`,
-      paddingLeft: 14,
-      paddingRight: 4,
-    };
-  },
+  clearIndicator: provided => ({
+    ...provided,
+    color: `${theme.grayD20}`,
+    paddingLeft: 14,
+    paddingRight: 4,
+  }),
   // container
   control: (provided, state) => {
     const { size } = state.selectProps as typeof state['selectProps'] &
       AdditionalProps;
     return {
       ...provided,
-      borderColor: `var(--amino-gray-l60)`,
+      borderColor: `${theme.grayL60}`,
       borderRadius: 6,
       cursor: 'pointer',
-      color: `var(--amino-gray-d40)`,
+      color: theme.grayD40,
       height: `var(--amino-size-${size})`,
       flexWrap: 'inherit',
       minHeight: `var(--amino-size-${size})`,
-      boxShadow: state.isFocused ? `var(--amino-glow-blue)` : '',
+      boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
     };
   },
-  dropdownIndicator: provided => {
-    return {
-      ...provided,
-      color: `var(--amino-gray-d60)`,
-      paddingLeft: 4,
-      paddingRight: 10,
-    };
-  },
-  group: provided => {
-    return {
-      ...provided,
-      paddingTop: 0,
-      paddingBottom: 0,
-    };
-  },
+  dropdownIndicator: provided => ({
+    ...provided,
+    color: `${theme.grayD60}`,
+    paddingLeft: 4,
+    paddingRight: 10,
+  }),
+  group: provided => ({
+    ...provided,
+    paddingTop: 0,
+    paddingBottom: 0,
+  }),
   // groupHeading
   // indicatorsContainer
-  indicatorSeparator: provided => {
-    return { ...provided, width: 0 };
-  },
+  indicatorSeparator: provided => ({ ...provided, width: 0 }),
   // input
   // loadingIndicator
   // loadingMessage
-  menu: provided => {
-    return {
-      ...provided,
-      borderRadius: 12,
-      boxShadow: `var(--amino-v3-shadow-large)`,
-      marginTop: 4,
-    };
-  },
-  menuList: provided => {
-    return {
-      ...provided,
-      paddingTop: 8,
-      paddingLeft: 8,
-      paddingRight: 8,
-    };
-  },
+  menu: provided => ({
+    ...provided,
+    borderRadius: 12,
+    boxShadow: theme.v3ShadowLarge,
+    marginTop: 4,
+  }),
+  menuList: provided => ({
+    ...provided,
+    paddingTop: 8,
+    paddingLeft: 8,
+    paddingRight: 8,
+  }),
   // menuPortal
-  multiValue: provided => {
-    return {
-      ...provided,
-      background: 'var(--amino-gray-l60)',
-      color: 'black',
-      fontWeight: 500,
-      minWidth: 'inherit',
-    };
-  },
+  multiValue: provided => ({
+    ...provided,
+    background: theme.grayL60,
+    color: 'black',
+    fontWeight: 500,
+    minWidth: 'inherit',
+  }),
   // multiValueLabel
   // multiValueRemove
   // noOptionsMessage
-  option: (provided, state) => {
-    return {
-      ...provided,
-      color: state.isSelected ? 'var(--amino-blue-500)' : 'black',
-      fontWeight: state.isSelected ? 500 : 400,
-      backgroundColor: 'inherit',
-      paddingTop: 7,
-      paddingRight: 12,
-      paddingBottom: 7,
-      paddingLeft: 8,
-      borderRadius: '8px',
-      cursor: 'pointer',
-    };
-  },
-  placeholder: provided => {
-    return {
-      ...provided,
-      opacity: 0,
-      '.has-label.is-focused &': {
-        opacity: 1,
-      },
-    };
-  },
-  singleValue: provided => {
-    return {
-      ...provided,
-      fontWeight: 500,
-    };
-  },
-  valueContainer: provided => {
-    return {
-      ...provided,
-      flexWrap: 'nowrap',
-      padding: 'unset',
-      paddingLeft: 12,
-      '.has-icon &': { paddingLeft: 0 },
-    };
-  },
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? theme.blueBase : 'black',
+    fontWeight: state.isSelected ? 500 : 400,
+    backgroundColor: 'inherit',
+    paddingTop: 7,
+    paddingRight: 12,
+    paddingBottom: 7,
+    paddingLeft: 8,
+    borderRadius: '8px',
+    cursor: 'pointer',
+  }),
+  placeholder: provided => ({
+    ...provided,
+    opacity: 0,
+    '.has-label.is-focused &': {
+      opacity: 1,
+    },
+  }),
+  singleValue: provided => ({
+    ...provided,
+    fontWeight: 500,
+  }),
+  valueContainer: provided => ({
+    ...provided,
+    flexWrap: 'nowrap',
+    padding: 'unset',
+    paddingLeft: 12,
+    '.has-icon &': { paddingLeft: 0 },
+  }),
 };
 
 export interface StyledReactSelectProps<
@@ -476,6 +445,7 @@ export interface StyledReactSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
+  closeOnOutsideScroll?: boolean;
 }
 
 export const StyledReactSelect = <
@@ -493,6 +463,7 @@ export const StyledReactSelect = <
   styles,
   placeholder,
   menuPosition = 'fixed',
+  closeOnOutsideScroll = false,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
@@ -501,8 +472,33 @@ export const StyledReactSelect = <
     label,
     size,
   };
+  const testId = useMemo(
+    () => getTestId({ componentName: 'select', name: label }),
+    [label]
+  );
+
+  const selectElement = useRef<Select<Option, IsMulti, Group>>(null);
+
+  const closeMenuOnScroll = useMemo(() => {
+    if (closeOnOutsideScroll) {
+      return (e: Event) => {
+        if (e.target instanceof HTMLElement) {
+          return (
+            !selectElement.current?.menuListRef?.isEqualNode(e.target) ?? true
+          );
+        }
+        return true;
+      };
+    }
+
+    return false;
+  }, [closeOnOutsideScroll]);
+
   return (
-    <StyledSelectWrapper>
+    <StyledSelectWrapper
+      data-testid={testId}
+      className={[error ? 'has-error' : ''].join(' ')}
+    >
       <ReactSelect<Option, IsMulti, Group>
         components={
           {
@@ -542,8 +538,9 @@ export const StyledReactSelect = <
             ...localStyles,
           } as StylesConfig<Option, IsMulti, Group>
         }
+        ref={selectElement}
+        closeMenuOnScroll={closeMenuOnScroll}
         {...props}
-        // @ts-ignore additional props in selectProps
         {...additionalProps}
       />
       <HelpText error={error} helpText={helpText} />

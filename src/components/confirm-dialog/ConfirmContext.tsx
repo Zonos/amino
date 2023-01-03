@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useCallback, useState } from 'react';
 
 import { ConfirmDialogOpts } from 'src/types/ConfirmDialogOpts';
 
@@ -17,10 +17,10 @@ export const ConfirmContextProvider = ({ children }: Props) => {
   const [dialog, setDialog] = useState<ConfirmDialogOpts | null>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const confirm = (opts: ConfirmDialogOpts) => {
+  const confirm = useCallback((opts: ConfirmDialogOpts) => {
     setDialog(opts);
     setIsOpen(true);
-  };
+  }, []);
 
   return (
     <ConfirmContext.Provider value={confirm}>

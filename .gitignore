@@ -87,3 +87,7 @@ svgReact/svgs
 # Build
 *.map
 build.mjs
+
+# Snapshots
+__diff_output__
+.vercel

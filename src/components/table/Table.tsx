@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
@@ -12,14 +12,12 @@ export type TableProps = {
   size?: 'medium' | 'small';
 };
 
-export const Table = ({ children, className, size = 'medium' }: TableProps) => {
-  return (
-    <StyledTable
-      className={[className, `Amino-table-size-${size}`]
-        .filter(Boolean)
-        .join(' ')}
-    >
-      {children}
-    </StyledTable>
-  );
-};
+export const Table = ({ children, className, size = 'medium' }: TableProps) => (
+  <StyledTable
+    className={[className, `Amino-table-size-${size}`]
+      .filter(Boolean)
+      .join(' ')}
+  >
+    {children}
+  </StyledTable>
+);

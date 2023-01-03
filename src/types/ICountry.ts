@@ -1,4 +1,4 @@
-import { IOption } from 'src/components/select/_StyledReactSelect';
+import { IOption } from './IOption';
 
 export const regions = [
   'Africa',
