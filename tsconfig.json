@@ -26,7 +26,8 @@
     ],
     "esModuleInterop": true,
     "downlevelIteration": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true
   },
   "ts-node": {
     "transpileOnly": true,
