@@ -52,6 +52,6 @@ export const TextAvatar = ({ label }: TextAvatarProps) => (
       30
     )}
   >
-    {(label && label[0].toUpperCase()) || 'D'}
+    {(label && label[0]?.toUpperCase()) || 'D'}
   </GradientSquare>
 );

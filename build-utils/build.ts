@@ -90,22 +90,22 @@ const bundlePackage = async (
   }
 };
 
-const generateAllModulesContent = async (bundles: OutputChunk[]) =>
-  bundles
-    .map(bundle => {
-      const [, subFolderPath, fileName] =
-        bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
-      // exclude all bundles that are not entry or just private components
-      if (
-        !bundle.isEntry ||
-        /^_+/.test(fileName) ||
-        /__tests__/.test(subFolderPath)
-      ) {
-        return null;
-      }
-      return `import './${subFolderPath || ''}${fileName}';`;
-    })
-    .filter(item => item);
+const generateAllModulesContent = async (
+  bundles: OutputChunk[]
+): Promise<string[]> =>
+  bundles.flatMap(bundle => {
+    const [, subFolderPath, fileName] =
+      bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
+    // exclude all bundles that are not entry or just private components
+    if (
+      !bundle.isEntry ||
+      /^_+/.test(fileName) ||
+      /__tests__/.test(subFolderPath)
+    ) {
+      return [];
+    }
+    return [`import './${subFolderPath || ''}${fileName}';`];
+  });
 
 const animationsModules = glob.sync('src/animations/**/*.ts*');
 const iconsModules = glob.sync('src/icons/**/*.ts*');
@@ -146,7 +146,10 @@ const build = async () => {
   fs.writeFileSync(
     // generate all modules ts file
     `./src/all.ts`,
-    `${moduleContents.flatMap(item => item).join('\n')}\n`
+    `${moduleContents
+      .flat()
+      .sort((a, b) => a.localeCompare(b))
+      .join('\n')}\n`
   );
 };
 

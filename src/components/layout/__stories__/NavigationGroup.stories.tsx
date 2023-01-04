@@ -63,7 +63,7 @@ const Template: Story = ({ className }) => {
         }
         className={className}
         isExpand={
-          !!pathname.split('/')[1] && pathname.split('/')[1].includes('quoter')
+          !!pathname.split('/')[1] && pathname.split('/')[1]?.includes('quoter')
         }
       >
         <a href="/quoter/create" onClick={mockUrlChange}>
@@ -91,7 +91,7 @@ const Template: Story = ({ className }) => {
         }
         isExpand={
           !!pathname.split('/')[1] &&
-          pathname.split('/')[1].includes('classify')
+          pathname.split('/')[1]?.includes('classify')
         }
         className={className}
       >
