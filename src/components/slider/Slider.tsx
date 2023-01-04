@@ -100,7 +100,7 @@ export const Slider = ({ min, max, value, step, onChange }: SliderProps) => (
     <StyledSlider
       max={max}
       min={min}
-      onValueChange={([val]) => onChange(val)}
+      onValueChange={([val]) => val !== undefined && onChange(val)}
       step={step}
       value={[value]}
     >
