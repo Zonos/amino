@@ -92,9 +92,15 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   width: ${p => (p.width ? `${p.width}px` : '100%')};
 
   &.disabled {
-    cursor: not-allowed;
-    opacity: 0.4;
-    user-select: none;
+    * {
+      cursor: not-allowed;
+    }
+    ${Fields} {
+      opacity: 0.4;
+    }
+    ${StyledTextarea} {
+      user-select: none;
+    }
   }
 `;
 

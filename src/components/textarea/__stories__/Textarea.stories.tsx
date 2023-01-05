@@ -74,6 +74,19 @@ const Template: Story<TextareaProps> = ({
           readOnly
         />
       </div>
+      <div>
+        <Text type="bold-label">Disabled:</Text>
+        <Textarea
+          error={error}
+          disabled
+          helpText={helpText}
+          label={label}
+          value={value}
+          onChange={e => setValue(e.target.value)}
+          placeholder={placeholder}
+          readOnly
+        />
+      </div>
     </div>
   );
 };
