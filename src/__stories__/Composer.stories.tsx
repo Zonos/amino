@@ -7,8 +7,8 @@ import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
-import { MinusSolidIcon } from 'src/icons/MinusSolidIcon';
-import { PlusSolidIcon } from 'src/icons/PlusSolidIcon';
+import { MinusIcon } from 'src/icons/MinusIcon';
+import { PlusIcon } from 'src/icons/PlusIcon';
 import { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
@@ -188,21 +188,21 @@ const Template: Story<Props> = ({
           <Button
             disabled={!columns}
             onClick={() => setColumns(columns - 1)}
-            icon={<MinusSolidIcon size={16} />}
+            icon={<MinusIcon size={16} />}
           />
           <Button
             onClick={() => setColumns(columns + 1)}
-            icon={<PlusSolidIcon size={16} />}
+            icon={<PlusIcon size={16} />}
           />
           Row
           <Button
             disabled={!rows}
             onClick={() => setRows(rows - 1)}
-            icon={<MinusSolidIcon size={16} />}
+            icon={<MinusIcon size={16} />}
           />
           <Button
             onClick={() => setRows(rows + 1)}
-            icon={<PlusSolidIcon size={16} />}
+            icon={<PlusIcon size={16} />}
           />
         </StyledActions>
 
@@ -223,7 +223,7 @@ const Template: Story<Props> = ({
                   ) : (
                     <Button
                       onClick={() => setOpenRowCol(rowCol)}
-                      icon={<PlusSolidIcon size={16} />}
+                      icon={<PlusIcon size={16} />}
                     />
                   )}
                 </Fragment>

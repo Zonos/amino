@@ -2,12 +2,12 @@ import { ReactNode, useMemo } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
-import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import { getTestId } from 'src/utils/getTestId';
 import styled from 'styled-components';
 
-const AnimatedCheckIcon = motion(CheckMarkIcon);
+const AnimatedCheckIcon = motion(CheckmarkIcon);
 
 const AminoCheckbox = styled.div<{ checked: boolean }>`
   width: 16px;

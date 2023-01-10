@@ -27,7 +27,7 @@ Currently, there are 3 type of icon sources:
     **NOTE**:
     - Under `${FOLDER_NAME}`, if there is a folder with svgs, the component will be named after the folder name and svgs under that folder will be concatenated with folder name.
     **Ex**: Folder `Arrow Down` and the svg file inside is `Solid.svg`
-    => This will generate a component with name `ArrowDownSolidIcon.tsx`
+    => This will generate a component with name `ArrowDownIcon.tsx`
 
     - Under `${FOLDER_NAME}`, all components will be generated with the svg name.
     **Ex**: svg with name `Arrow Down.svg` will generate a component with name `ArrowDownIcon.tsx`.
@@ -50,4 +50,5 @@ Currently, there are 3 type of icon sources:
         destFolder: 'src/icons',
     }
     ```
-4. Run `yarn svgs:react:icons` to optimize and generate icon components for you.
+5. Run `yarn svgs:react:icons` to optimize and generate icon components for you.
+6. Run `yarn build:ci` to build the `all.ts` file.

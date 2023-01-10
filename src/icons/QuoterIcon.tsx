@@ -15,7 +15,7 @@ export const QuoterIcon = forwardRef<SVGSVGElement, IconProps>(
       <path
         fill="currentColor"
         fillRule="evenodd"
-        d="M18 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1ZM6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H6Z"
+        d="M2.9 6A3.1 3.1 0 0 1 6 2.9h12A3.1 3.1 0 0 1 21.1 6v12a3.1 3.1 0 0 1-3.1 3.1H6A3.1 3.1 0 0 1 2.9 18V6ZM6 5.1a.9.9 0 0 0-.9.9v12a.9.9 0 0 0 .9.9h12a.9.9 0 0 0 .9-.9V6a.9.9 0 0 0-.9-.9H6Z"
         clipRule="evenodd"
       />
     </IconBase>

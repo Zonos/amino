@@ -14,7 +14,9 @@ export const ChevronDownDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M5.293 8.636a1 1 0 0 0 0 1.414l5.657 5.657a1 1 0 0 0 1.414 0l5.657-5.657a1 1 0 0 0-1.414-1.414l-4.95 4.95-4.95-4.95a1 1 0 0 0-1.414 0Z"
+        fillRule="evenodd"
+        d="M6.293 9.293a1 1 0 0 1 1.414 0L12 13.586l4.293-4.293a1 1 0 0 1 1.414 1.414l-4.93 4.93a1.1 1.1 0 0 1-1.555 0l-4.93-4.93a1 1 0 0 1 0-1.414Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

@@ -14,7 +14,9 @@ export const ClassifyDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M11.104 3.53a1.023 1.023 0 0 1 1.792 0l8.964 15.882c.398.706-.1 1.588-.897 1.588H3.037c-.797 0-1.295-.882-.897-1.588l8.964-15.883Z"
+        fillRule="evenodd"
+        d="M10.257 5.06c.765-1.36 2.722-1.36 3.486 0l7.29 12.96c.75 1.333-.213 2.98-1.743 2.98H4.71c-1.53 0-2.493-1.647-1.743-2.98l7.29-12.96Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

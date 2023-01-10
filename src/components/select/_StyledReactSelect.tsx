@@ -19,9 +19,9 @@ import {
   type HelpTextProps,
   HelpText,
 } from 'src/components/help-text/HelpText';
-import { CheckCircleSolidIcon } from 'src/icons/CheckCircleSolidIcon';
+import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
-import { RemoveCircleSolidIcon } from 'src/icons/RemoveCircleSolidIcon';
+import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import { IOption } from 'src/types/IOption';
@@ -44,7 +44,7 @@ const ClearIndicator = <
   props: ClearIndicatorProps<Option, IsMulti, Group>
 ) => (
   <RScomponents.ClearIndicator {...props}>
-    <RemoveCircleSolidIcon size={19} />
+    <RemoveCircleIcon size={19} />
   </RScomponents.ClearIndicator>
 );
 
@@ -332,7 +332,7 @@ export const CheckboxOptionComponent = <
             <IconLabel color={color} icon={data.icon}>
               {children}
             </IconLabel>
-            {isSelected && <CheckCircleSolidIcon color="blue600" size={16} />}
+            {isSelected && <CheckCircleIcon color="blue600" size={16} />}
           </SelectedSingleOptionWrapper>
         )}
       </StyledSelectOptionWrapper>

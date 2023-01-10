@@ -17,18 +17,17 @@ export const DoubleChevronDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      data-is-secondary-color="true"
+      fillRule="evenodd"
+      d="M16.707 14.293a1 1 0 0 1 0 1.414l-3.93 3.93a1.1 1.1 0 0 1-1.555 0l-3.93-3.93a1 1 0 1 1 1.415-1.414L12 17.586l3.293-3.293a1 1 0 0 1 1.414 0Z"
+      clipRule="evenodd"
+    />
+    <path
       fill="currentColor"
-      d="M16.327 9.828a.966.966 0 0 0 1.386 0 1.014 1.014 0 0 0 0-1.414l-5.02-5.121a.97.97 0 0 0-1.386 0l-5.02 5.121a1.014 1.014 0 0 0 0 1.414.966.966 0 0 0 1.386 0L12 5.414l4.327 4.414Z"
-    />
-    <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M7.673 14.172a.966.966 0 0 0-1.386 0 1.014 1.014 0 0 0 0 1.414l5.02 5.121a.97.97 0 0 0 1.386 0l5.02-5.121a1.014 1.014 0 0 0 0-1.414.966.966 0 0 0-1.386 0L12 18.586l-4.327-4.414Z"
-    />
-    <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M7.673 14.172a.966.966 0 0 0-1.386 0 1.014 1.014 0 0 0 0 1.414l5.02 5.121a.97.97 0 0 0 1.386 0l5.02-5.121a1.014 1.014 0 0 0 0-1.414.966.966 0 0 0-1.386 0L12 18.586l-4.327-4.414Z"
+      fillRule="evenodd"
+      d="M16.707 9.707a1 1 0 0 1-1.414 0L12 6.414 8.707 9.707a1 1 0 1 1-1.414-1.414l3.93-3.93a1.1 1.1 0 0 1 1.555 0l3.93 3.93a1 1 0 0 1 0 1.414Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));

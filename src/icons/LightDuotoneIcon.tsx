@@ -17,13 +17,17 @@ export const LightDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
       data-is-secondary-color="true"
-      d="M16 16.93a8 8 0 1 0-8 0V18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1.07Z"
+      fillRule="evenodd"
+      d="M4 10a8 8 0 1 1 13.495 5.814c-.335.317-.495.67-.495.975V17a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3v-.211c0-.306-.16-.658-.496-.975A7.98 7.98 0 0 1 4 10Z"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M9 19h6v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1Zm1.707-8.707a1 1 0 1 0-1.414 1.414L11 13.414V19h2v-5.586l1.707-1.707a1 1 0 0 0-1.414-1.414L12 11.586l-1.293-1.293Z"
+      fillRule="evenodd"
+      d="M9.293 10.293a1 1 0 0 1 1.414 0L12 11.586l1.293-1.293a1 1 0 1 1 1.414 1.414L13 13.414v4.649A2 2 0 0 1 12.5 22h-1a2 2 0 0 1-.5-3.937v-4.649l-1.707-1.707a1 1 0 0 1 0-1.414Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));

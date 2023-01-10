@@ -16,12 +16,16 @@ export const BellDuotoneIcon = forwardRef<
     className={className}
     viewBox="0 0 24 24"
   >
-    <path fill="currentColor" d="M10 20h4a2 2 0 1 1-4 0Z" />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
       data-is-secondary-color="true"
-      d="M13.004 4h-2.009l-1.026.37A6 6 0 0 0 6 10.014v3.32c0 .734-.345 1.425-.932 1.866C3.021 16.741 4.11 20 6.671 20h10.657c2.562 0 3.65-3.26 1.603-4.799A2.334 2.334 0 0 1 18 13.335v-3.32a6 6 0 0 0-3.97-5.646L13.005 4Z"
+      fillRule="evenodd"
+      d="M6 10a6 6 0 1 1 12 0v1.099c0 .595.247 1.164.682 1.57A4.178 4.178 0 0 1 20 15.715C20 18.05 18.109 20 15.747 20H8.253C5.891 20 4 18.05 4 15.715c0-1.145.474-2.258 1.318-3.046.435-.406.682-.975.682-1.57V10Z"
+      clipRule="evenodd"
     />
-    <path fill="currentColor" d="M11 3a1 1 0 1 1 2 0v1h-2V3Z" />
+    <path
+      fill="currentColor"
+      d="M13 3a1 1 0 1 0-2 0v1.083a6.04 6.04 0 0 1 2 0V3Zm-3 17a2 2 0 1 0 4 0h-4Z"
+    />
   </IconBase>
 ));
