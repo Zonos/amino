@@ -14,7 +14,9 @@ export const ArrowRightIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M13.879 8.293a1 1 0 0 1 1.414-1.414l4.414 4.414a1 1 0 0 1 0 1.414l-4.414 4.414a1 1 0 0 1-1.414-1.414L16.586 13H5a1 1 0 1 1 0-2h11.586l-2.707-2.707Z"
+        fillRule="evenodd"
+        d="M14.222 7.222a1.1 1.1 0 0 1 1.556 0l3.646 3.647a1.6 1.6 0 0 1 0 2.262l-3.646 3.647a1.1 1.1 0 1 1-1.556-1.556l2.122-2.122H5a1.1 1.1 0 0 1 0-2.2h11.344l-2.122-2.122a1.1 1.1 0 0 1 0-1.556Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

@@ -5,9 +5,9 @@ import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { ExclamationMarkSolidIcon } from 'src/icons/ExclamationMarkSolidIcon';
-import { HelpSolidIcon } from 'src/icons/HelpSolidIcon';
-import { WarningSolidIcon } from 'src/icons/WarningSolidIcon';
+import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
+import { HelpIcon } from 'src/icons/HelpIcon';
+import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import { Intent } from 'src/types/Intent';
@@ -59,12 +59,12 @@ export type ConfirmDialogProps = {
 const getIconForIntent = (intent: Intent) => {
   switch (intent) {
     case 'danger':
-      return <ExclamationMarkSolidIcon />;
+      return <ExclamationMarkIcon />;
     case 'warning':
-      return <WarningSolidIcon />;
+      return <WarningIcon />;
     case 'info':
     default:
-      return <HelpSolidIcon />;
+      return <HelpIcon />;
   }
 };
 

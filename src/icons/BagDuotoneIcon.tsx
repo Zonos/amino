@@ -17,14 +17,16 @@ export const BagDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
       data-is-secondary-color="true"
-      d="M3.015 11.303A3 3 0 0 1 6 8h12a3 3 0 0 1 2.984 3.303l-.71 7A3 3 0 0 1 17.289 21H6.711a3 3 0 0 1-2.985-2.697l-.71-7Z"
+      fillRule="evenodd"
+      d="M4.537 9.841A3 3 0 0 1 7.533 7h8.934a3 3 0 0 1 2.996 2.841l.424 8A3 3 0 0 1 16.891 21H7.11a3 3 0 0 1-2.996-3.159l.424-8Z"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M8 7a4 4 0 1 1 8 0v3a1 1 0 1 1-2 0V7a2 2 0 1 0-4 0v3a1 1 0 1 1-2 0V7Z"
+      d="M11 5a1 1 0 0 0-1 1v4a1 1 0 1 1-2 0V6a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v4a1 1 0 1 1-2 0V6a1 1 0 0 0-1-1h-2Z"
       clipRule="evenodd"
     />
   </IconBase>

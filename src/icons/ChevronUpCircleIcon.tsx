@@ -15,13 +15,7 @@ export const ChevronUpCircleIcon = forwardRef<SVGSVGElement, IconProps>(
       <path
         fill="currentColor"
         fillRule="evenodd"
-        d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
-        clipRule="evenodd"
-      />
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M11.293 9.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414L12 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414l3-3Z"
+        d="M12 19.9a7.9 7.9 0 1 0 0-15.8 7.9 7.9 0 0 0 0 15.8ZM22.1 12c0 5.578-4.522 10.1-10.1 10.1-5.578 0-10.1-4.522-10.1-10.1C1.9 6.422 6.422 1.9 12 1.9c5.578 0 10.1 4.522 10.1 10.1Zm-6.322 1.778a1.1 1.1 0 0 1-1.556 0L12 11.556l-2.222 2.222a1.1 1.1 0 1 1-1.556-1.556l2.647-2.646a1.6 1.6 0 0 1 2.263 0l2.646 2.646a1.1 1.1 0 0 1 0 1.556Z"
         clipRule="evenodd"
       />
     </IconBase>

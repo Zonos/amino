@@ -12,14 +12,11 @@ export const HelloDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       className={className}
       viewBox="0 0 24 24"
     >
-      <rect
-        width="14.142"
-        height="14.142"
-        x="12"
-        y="2"
-        fill="#CACACE"
-        rx="3"
-        transform="rotate(45 12 2)"
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M9.879 3.707a3 3 0 0 1 4.242 0l6.172 6.172a3 3 0 0 1 0 4.242l-6.171 6.172a3 3 0 0 1-4.243 0L3.707 14.12a3 3 0 0 1 0-4.242L9.88 3.707Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

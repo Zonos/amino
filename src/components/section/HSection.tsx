@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
-import { ChevronDownSolidIcon } from 'src/icons/ChevronDownSolidIcon';
+import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
@@ -92,7 +92,7 @@ export const HSection = ({
                 <StyledCollapseIndicator
                   className={collapse ? 'collapse' : ''}
                   size="sm"
-                  icon={<ChevronDownSolidIcon size={24} />}
+                  icon={<ChevronDownIcon size={24} />}
                   onClick={() => setCollapse(!collapse)}
                 />
               </TitleDiv>

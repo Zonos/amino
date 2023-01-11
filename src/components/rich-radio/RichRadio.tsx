@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
 import { VStack } from 'src/components/stack/VStack';
-import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
@@ -155,10 +155,10 @@ export const RichRadio = <T extends string>({
               {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
             </div>
           )}
-          {!!icon && <StyledIcon>{icon || <CheckMarkIcon />}</StyledIcon>}
+          {!!icon && <StyledIcon>{icon || <CheckmarkIcon />}</StyledIcon>}
           {item.value === selectedValue && (
             <StyledActiveIcon>
-              {activeIcon || <CheckMarkIcon />}
+              {activeIcon || <CheckmarkIcon />}
             </StyledActiveIcon>
           )}
         </StyledItem>

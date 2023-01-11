@@ -14,7 +14,9 @@ export const ArrowLeftDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M10.121 15.707a1 1 0 0 1-1.414 1.414l-4.414-4.414a1 1 0 0 1 0-1.414l4.414-4.414a1 1 0 1 1 1.414 1.414L7.414 11H19a1 1 0 1 1 0 2H7.414l2.707 2.707Z"
+        fillRule="evenodd"
+        d="M9.707 16.707a1 1 0 0 1-1.414 0l-3.647-3.646a1.5 1.5 0 0 1 0-2.122l3.647-3.646a1 1 0 0 1 1.414 1.414L7.414 11H19a1 1 0 1 1 0 2H7.414l2.293 2.293a1 1 0 0 1 0 1.414Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

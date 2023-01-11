@@ -17,13 +17,21 @@ export const TagDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
       data-is-secondary-color="true"
-      d="M12.829 3a3 3 0 0 0-2.122.879L3.59 10.996a2 2 0 0 0 0 2.828l6.586 6.586a2 2 0 0 0 2.828 0l7.118-7.117A3 3 0 0 0 21 11.172V5a2 2 0 0 0-2-2h-6.17Z"
+      fillRule="evenodd"
+      d="M18.924 3.19a2 2 0 0 1 1.872 1.87l.388 6.206a3 3 0 0 1-.873 2.308l-6.932 6.932a3 3 0 0 1-4.243 0L3.48 14.85a3 3 0 0 1 0-4.242l6.932-6.932a3 3 0 0 1 2.309-.873l6.204.388Z"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M17 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+      fillRule="evenodd"
+      d="M14.5 8a1.5 1.5 0 0 1 0 3m0-3A1.5 1.5 0 0 0 13 9.5L14.5 8ZM13 9.5a1.5 1.5 0 0 0 1.5 1.5L13 9.5Z"
+      clipRule="evenodd"
+    />
+    <path
+      fill="currentColor"
+      d="M16 9.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
     />
   </IconBase>
 ));

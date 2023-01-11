@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { VStack } from 'src/components/stack/VStack';
-import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
 import styled from 'styled-components';
@@ -110,7 +110,7 @@ export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
           </StyledItemContentDiv>
           {checked && (
             <StyledIcon>
-              <CheckMarkIcon />
+              <CheckmarkIcon />
             </StyledIcon>
           )}
         </StyledRichCheckbox>

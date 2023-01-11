@@ -5,10 +5,10 @@ export const sortColorMatch = (a: string, b: string) =>
 
 export const getColorVariables = (fileContent: string) => {
   let content = fileContent;
-  const fillPropMatches = content.matchAll(/<path.*?fill=(".*?").*?\/>/gm);
+  const fillPropMatches = content.matchAll(/<(path|rect).*?fill=(".*?").*?\/>/gm);
   const matches = Array.from(fillPropMatches);
   const fillColors = matches
-    .map(x => x[1])
+    .map(x => x[2])
     .sort((a, b) => (getHspFromColor(a).hsp < getHspFromColor(b).hsp ? -1 : 1));
   fillColors.forEach(color => {
     if (!/currentColor/g.test(content)) {

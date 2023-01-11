@@ -17,13 +17,17 @@ export const ArrowSwapDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill="currentColor"
-      d="M16.586 5.707A1 1 0 0 1 18 4.293L21.707 8a1 1 0 0 1 0 1.414L18 13.121a1 1 0 0 1-1.414-1.414l2-2H11a1 1 0 1 1 0-2h7.586l-2-2Z"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      data-is-secondary-color="true"
+      fillRule="evenodd"
+      d="M7.707 11.293a1 1 0 0 1 0 1.414L6.414 14H13a1 1 0 1 1 0 2H6.414l1.293 1.293a1 1 0 1 1-1.414 1.414l-2.647-2.646a1.5 1.5 0 0 1 0-2.122l2.647-2.646a1 1 0 0 1 1.414 0Z"
+      clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M7.414 17.707A1 1 0 1 1 6 19.121l-3.707-3.707a1 1 0 0 1 0-1.414L6 10.293a1 1 0 1 1 1.414 1.414l-2 2H13a1 1 0 1 1 0 2H5.414l2 2Z"
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M16.293 5.293a1 1 0 0 1 1.414 0l2.647 2.646a1.5 1.5 0 0 1 0 2.122l-2.647 2.646a1 1 0 0 1-1.414-1.414L17.586 10H11a1 1 0 1 1 0-2h6.586l-1.293-1.293a1 1 0 0 1 0-1.414Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));
