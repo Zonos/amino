@@ -6,6 +6,36 @@
 
 ## Quick start
 
+### HTTPS proxy
+
+In order for cookies to passed properly we need to use the same domain and HTTPS. The development server runs on http by default. One solution for resolving this issue is to add [`local-ssl-proxy`](https://www.npmjs.com/package/local-ssl-proxy) to your environment so cookies will be properly seen on localhost.
+
+```shell script
+$ yarn global add local-ssl-proxy
+```
+
+In order for the HTTPS request to be routed properly, you will need to modify your `/etc/hosts` file and add some redirects:
+
+```
+127.0.0.1 dev.amino.zonos.com
+```
+
+<details>
+  <summary>Start dev server, start proxy</summary>
+
+In the terminal, run the following:
+
+```sh
+$ yarn dev
+```
+
+To also open the browser to the page (https://dev.amino.zonos.com:6007), you can use:
+```sh
+$ yarn dev:open
+```
+
+</details>
+
 ## Documentation
 
 ### - Available features in Amino:
