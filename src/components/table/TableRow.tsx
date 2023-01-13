@@ -1,13 +1,15 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 export type TableRowProps = {
   children: ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLTableRowElement>;
 };
 
-export const TableRow = ({ children, className, onClick }: TableRowProps) => (
-  <tr className={className} onClick={onClick}>
-    {children}
-  </tr>
-);
+export function TableRow({ children, className, onClick }: TableRowProps) {
+  return (
+    <tr className={className} onClick={onClick}>
+      {children}
+    </tr>
+  );
+}
