@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -122,7 +122,7 @@
     "dev": "concurrently 'yarn storybook' 'yarn proxy'",
     "lint:prod": "eslint src --ext .ts,.tsx -c ./.eslintrc.prod.cjs",
     "lint": "eslint src --ext .ts,.tsx",
-    "open": "open https://amino-dev.zonos.com:6007",
+    "open": "open https://dev.amino.zonos.com:6007",
     "postbuild:ci": "yarn postbuild",
     "postbuild:dts": "echo 'done build dts'",
     "postbuild:prep:publish": "echo 'done building for publishing'",
