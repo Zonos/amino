@@ -17,14 +17,8 @@ type Props = {
 
 export const Currency = ({ children, code }: Props) => {
   const formattedCurrency = new Intl.NumberFormat(`en-US`, {
-    style: 'currency',
     currency: code,
-  })
-    .format(Number(children))
-    /**
-     * Since we have new format for currency (`10 USD`, `10 AUD`, `10 EUR`)
-     * Remove character in front of symbol. Ex: A$3.23 AUD=> 3.23 AUD, -A$3.23 AUD => 3.23 AUD */
-    .replace(/^(-*)\D+/, '$1');
+  }).format(Number(children));
 
   return (
     <StyledCurrency className={Number(children) < 0 ? 'negative' : ''}>
