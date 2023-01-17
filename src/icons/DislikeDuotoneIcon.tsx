@@ -17,7 +17,7 @@ export const DislikeDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M14.372 19.133a2 2 0 0 1-1.648.867h-2.14a2 2 0 0 1-2-2v-2H6.2a2 2 0 0 1-1.967-2.36l1.466-8A2 2 0 0 1 7.667 4H15a2 2 0 0 1 2 2v8.69a2 2 0 0 1-.352 1.133l-2.276 3.31Z"

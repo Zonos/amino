@@ -17,7 +17,7 @@ export const BufferDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M11.39 3.176a1.5 1.5 0 0 1 1.22 0l7.768 3.453c1.188.528 1.188 2.214 0 2.742l-7.769 3.452a1.5 1.5 0 0 1-1.218 0L3.62 9.371c-1.187-.528-1.187-2.214 0-2.742l7.77-3.453Z"
