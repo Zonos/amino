@@ -81,6 +81,7 @@ import './components/text-avatar/TextAvatar';
 import './components/text/LegacyText';
 import './components/text/Text';
 import './components/textarea/Textarea';
+import './components/thumbnail/Thumbail';
 import './components/toast/Toast';
 import './components/toast/ToastContext';
 import './components/tooltip/Tooltip';
