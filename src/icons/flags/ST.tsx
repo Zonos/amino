@@ -22,34 +22,39 @@ export const ST = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
             transform="rotate(18 0 -200)"
           />
           <use
-            xlinkHref="#a"
+            xlinkHref={`#${ids[2]}`}
             width="100%"
             height="100%"
             transform="scale(-1 1)"
           />
         </g>
-        <use xlinkHref="#b" width="100%" height="100%" transform="rotate(72)" />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
+          width="100%"
+          height="100%"
+          transform="rotate(72)"
+        />
+        <use
+          xlinkHref={`#${ids[1]}`}
           width="100%"
           height="100%"
           transform="rotate(144)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
           width="100%"
           height="100%"
           transform="rotate(-144)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
           width="100%"
           height="100%"
           transform="rotate(-72)"
         />
       </g>
       <use
-        xlinkHref="#c"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         x="700"

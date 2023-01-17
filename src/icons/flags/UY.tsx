@@ -37,20 +37,25 @@ export const UY = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
               <path d="M0 0h6L0 33-6 0h6v33" />
             </g>
             <use
-              xlinkHref="#a"
+              xlinkHref={`#${ids[2]}`}
               width="100%"
               height="100%"
               transform="rotate(45)"
             />
           </g>
           <use
-            xlinkHref="#b"
+            xlinkHref={`#${ids[1]}`}
             width="100%"
             height="100%"
             transform="rotate(90)"
           />
         </g>
-        <use xlinkHref="#c" width="100%" height="100%" transform="scale(-1)" />
+        <use
+          xlinkHref={`#${ids[0]}`}
+          width="100%"
+          height="100%"
+          transform="scale(-1)"
+        />
         <circle r="11" />
       </g>
       <g transform="translate(133.3 133.3) scale(.29333)">
@@ -60,7 +65,7 @@ export const UY = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           <path d="M56-17c13-7 5-17 0-19 2 2 10 12 0 19M0 43c6 0 8-2 16-2s27 11 38 7c-23 9-14 3-54 3h-5m63 6c-4-7-3-5-11-16 8 6 10 9 11 16M0 67c25 0 21-5 54-19-24 3-29 11-54 11h-5m5-29c7 0 9-5 17-5s19 3 24 7c1 1-3-8-11-9S25 9 16 7c0 4 3 3 4 9 0 5-9 5-11 0 2 8-4 8-9 8" />
         </g>
         <use
-          xlinkHref="#d"
+          xlinkHref={`#${ids[3]}`}
           width="100%"
           height="100%"
           transform="scale(-1 1)"

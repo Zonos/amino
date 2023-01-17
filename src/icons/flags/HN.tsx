@@ -21,52 +21,57 @@ export const HN = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         <g id={`${ids[1]}`}>
           <path id={`${ids[2]}`} d="m-.3 0 .5.1L0-1z" />
           <use
-            xlinkHref="#a"
+            xlinkHref={`#${ids[2]}`}
             width="100%"
             height="100%"
             transform="scale(-1 1)"
           />
         </g>
-        <use xlinkHref="#b" width="100%" height="100%" transform="rotate(72)" />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
+          width="100%"
+          height="100%"
+          transform="rotate(72)"
+        />
+        <use
+          xlinkHref={`#${ids[1]}`}
           width="100%"
           height="100%"
           transform="rotate(-72)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
           width="100%"
           height="100%"
           transform="rotate(144)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
           width="100%"
           height="100%"
           transform="rotate(-144)"
         />
       </g>
       <use
-        xlinkHref="#c"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(133.3 -42.7)"
       />
       <use
-        xlinkHref="#c"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(133.3 37.3)"
       />
       <use
-        xlinkHref="#c"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(-133.3 -42.7)"
       />
       <use
-        xlinkHref="#c"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(-133.3 37.3)"

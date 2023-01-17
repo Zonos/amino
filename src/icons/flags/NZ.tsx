@@ -23,23 +23,23 @@ export const NZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
             <path d="M0-.3v.5l1-.5z" />
             <path d="M.213.256-.081-.15l1.103-.183z" />
           </g>
-          <use xlinkHref="#a" transform="scale(-1 1)" />
-          <use xlinkHref="#a" transform="rotate(72 0 0)" />
-          <use xlinkHref="#a" transform="rotate(-72 0 0)" />
-          <use xlinkHref="#a" transform="scale(-1 1) rotate(72)" />
+          <use xlinkHref={`#${ids[3]}`} transform="scale(-1 1)" />
+          <use xlinkHref={`#${ids[3]}`} transform="rotate(72 0 0)" />
+          <use xlinkHref={`#${ids[3]}`} transform="rotate(-72 0 0)" />
+          <use xlinkHref={`#${ids[3]}`} transform="scale(-1 1) rotate(72)" />
         </g>
       </defs>
       <path fill="#00247d" fillRule="evenodd" d="M0 0h640v480H0z" />
       <g transform="translate(-93 36.1) scale(.66825)">
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#fff"
           transform="matrix(45.4 0 0 45.4 900 120)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#cc142b"
@@ -48,14 +48,14 @@ export const NZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       </g>
       <g transform="rotate(82 534.2 125) scale(.66825)">
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#fff"
           transform="rotate(-82 519 -457.7) scale(40.4)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#cc142b"
@@ -64,14 +64,14 @@ export const NZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       </g>
       <g transform="rotate(82 534.2 125) scale(.66825)">
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#fff"
           transform="rotate(-82 668.6 -327.7) scale(45.4)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#cc142b"
@@ -80,14 +80,14 @@ export const NZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       </g>
       <g transform="translate(-93 36.1) scale(.66825)">
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#fff"
           transform="matrix(50.4 0 0 50.4 900 480)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[2]}`}
           width="100%"
           height="100%"
           fill="#cc142b"
