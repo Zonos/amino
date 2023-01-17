@@ -86,7 +86,7 @@ export const KH = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           <path d="M130.2 639.2v-6.8c-2.4 1-4.5 2.3-5.3 3.8-.8-3.8-2.5-5.4-4.6-7.7-2.1 2.3-3.5 4-4.4 7.7-.8-1.5-2.9-2.9-5.2-3.8v6.8z" />
         </g>
         <use
-          xlinkHref="#a"
+          xlinkHref={`#${ids[0]}`}
           width="100%"
           height="100%"
           transform="matrix(-1 0 0 1 390.7 0)"

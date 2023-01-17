@@ -22,11 +22,16 @@ export const KE = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       <path d="M0 0h640v144H0z" />
       <path fill="#060" d="M0 336h640v144H0z" />
       <g id={`${ids[1]}`} transform="matrix(3 0 0 3 320 240)">
-        <use xlinkHref="#a" width="100%" height="100%" stroke="#000" />
-        <use xlinkHref="#a" width="100%" height="100%" fill="#fff" />
+        <use
+          xlinkHref={`#${ids[0]}`}
+          width="100%"
+          height="100%"
+          stroke="#000"
+        />
+        <use xlinkHref={`#${ids[0]}`} width="100%" height="100%" fill="#fff" />
       </g>
       <use
-        xlinkHref="#b"
+        xlinkHref={`#${ids[1]}`}
         width="100%"
         height="100%"
         transform="matrix(-1 0 0 1 640 0)"
@@ -40,7 +45,7 @@ export const KE = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         d="M377 312c9-24 15-48 15-72s-6-48-15-72c-9 24-15 48-15 72s6 48 15 72"
       />
       <use
-        xlinkHref="#c"
+        xlinkHref={`#${ids[2]}`}
         width="100%"
         height="100%"
         transform="matrix(-1 0 0 1 640 0)"
@@ -48,15 +53,20 @@ export const KE = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       <g fill="#fff" transform="matrix(3 0 0 3 320 240)">
         <ellipse rx="4" ry="6" />
         <path id={`${ids[3]}`} d="M1 5.8s4 8 4 21-4 21-4 21z" />
-        <use xlinkHref="#d" width="100%" height="100%" transform="scale(-1)" />
         <use
-          xlinkHref="#d"
+          xlinkHref={`#${ids[3]}`}
+          width="100%"
+          height="100%"
+          transform="scale(-1)"
+        />
+        <use
+          xlinkHref={`#${ids[3]}`}
           width="100%"
           height="100%"
           transform="scale(-1 1)"
         />
         <use
-          xlinkHref="#d"
+          xlinkHref={`#${ids[3]}`}
           width="100%"
           height="100%"
           transform="scale(1 -1)"

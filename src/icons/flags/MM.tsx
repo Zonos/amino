@@ -19,18 +19,38 @@ export const MM = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           transform="scale(8.844)"
         />
         <g id={`${ids[1]}`}>
-          <use xlinkHref="#a" width="18" height="12" transform="rotate(-144)" />
-          <use xlinkHref="#a" width="18" height="12" transform="rotate(-72)" />
-          <use xlinkHref="#a" width="18" height="12" />
-          <use xlinkHref="#a" width="18" height="12" transform="rotate(72)" />
-          <use xlinkHref="#a" width="18" height="12" transform="rotate(144)" />
+          <use
+            xlinkHref={`#${ids[0]}`}
+            width="18"
+            height="12"
+            transform="rotate(-144)"
+          />
+          <use
+            xlinkHref={`#${ids[0]}`}
+            width="18"
+            height="12"
+            transform="rotate(-72)"
+          />
+          <use xlinkHref={`#${ids[0]}`} width="18" height="12" />
+          <use
+            xlinkHref={`#${ids[0]}`}
+            width="18"
+            height="12"
+            transform="rotate(72)"
+          />
+          <use
+            xlinkHref={`#${ids[0]}`}
+            width="18"
+            height="12"
+            transform="rotate(144)"
+          />
         </g>
       </defs>
       <path fill="#fecb00" d="M0-.1h640V160H0z" />
       <path fill="#ea2839" d="M0 320h640v160H0z" />
       <path fill="#34b233" d="M0 160h640v160H0z" />
       <use
-        xlinkHref="#b"
+        xlinkHref={`#${ids[1]}`}
         width="18"
         height="12"
         x="9"
