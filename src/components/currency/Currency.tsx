@@ -22,9 +22,9 @@ export const Currency = ({ children, code }: Props) => {
   })
     .format(Number(children))
     /**
-     * Since we have new format for currency (`$10 USD`, `$10 AUD`, `€10 EUR`)
-     * Remove character in front of symbol. Ex: A$3.23 AUD=> $3.23 AUD, -A$3.23 AUD => $3.23 AUD */
-    .replace(/^(-*)\w+/, '$1');
+     * Since we have new format for currency (`10 USD`, `10 AUD`, `10 EUR`)
+     * Remove character in front of symbol. Ex: A$3.23 AUD=> 3.23 AUD, -A$3.23 AUD => 3.23 AUD */
+    .replace(/^(-*)\D+/, '$1');
 
   return (
     <StyledCurrency className={Number(children) < 0 ? 'negative' : ''}>
