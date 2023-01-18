@@ -21,7 +21,7 @@ export const LoginDuotoneIcon = forwardRef<
       height="18"
       x="11"
       y="3"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       rx="2"
     />

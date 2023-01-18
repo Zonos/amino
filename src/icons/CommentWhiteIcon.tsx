@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
-export const CaretLeftDuotone1Icon = forwardRef<SVGSVGElement, IconProps>(
+export const CommentWhiteIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ size, color, className }, ref) => (
     <IconBase
       ref={ref}
@@ -15,7 +15,7 @@ export const CaretLeftDuotone1Icon = forwardRef<SVGSVGElement, IconProps>(
       <path
         fill="currentColor"
         fillRule="evenodd"
-        d="M13.994 6.074c.97-.849 2.487-.16 2.487 1.129v9.592c0 1.29-1.518 1.978-2.487 1.13l-5.482-4.797a1.5 1.5 0 0 1 0-2.258l5.482-4.796Z"
+        d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-7a1 1 0 0 0-.8.4l-1.8 2.4A3 3 0 0 1 3 18V6Zm3-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1.8.6l1.8-2.4A3 3 0 0 1 11 15h7a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6Zm1 3a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Zm0 4a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
         clipRule="evenodd"
       />
     </IconBase>

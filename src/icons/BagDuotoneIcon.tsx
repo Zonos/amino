@@ -17,7 +17,7 @@ export const BagDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M4.537 9.841A3 3 0 0 1 7.533 7h8.934a3 3 0 0 1 2.996 2.841l.424 8A3 3 0 0 1 16.891 21H7.11a3 3 0 0 1-2.996-3.159l.424-8Z"

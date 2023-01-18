@@ -17,7 +17,7 @@ export const LocationDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C8C8CB'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M3 11a9 9 0 0 1 18 0c0 2.522-1.672 4.88-3.349 6.645-1.718 1.809-3.653 3.213-4.566 3.837a1.92 1.92 0 0 1-2.17 0c-.913-.624-2.848-2.028-4.566-3.837C4.672 15.88 3 13.522 3 11Z"
