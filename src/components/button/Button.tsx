@@ -89,7 +89,6 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   }
 
   &[disabled] {
-    cursor: not-allowed;
     box-shadow: none;
     &:not(.loading) {
       opacity: 0.5;

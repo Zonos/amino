@@ -8,7 +8,7 @@ import { HelpText } from '../help-text/HelpText';
 type TextareaType = {
   error?: boolean;
   helpText?: ReactNode;
-  label: string;
+  label?: string;
   /** @desc A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
 };

@@ -89,7 +89,7 @@ const StyledTooltip = styled(ReactTooltip)`
   }
 `;
 
-type RichRadioItemType<T extends string> = {
+export type RichRadioItemType<T extends string> = {
   label: ReactNode;
   subtitle?: string;
   value: T;
@@ -102,7 +102,7 @@ export type RichRadioProps<T extends string = string> = {
   onChange: (value: T) => void;
   renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
   items: RichRadioItemType<T>[];
-  value: T;
+  value: T | null;
   className?: string;
   icon?: ReactNode;
   activeIcon?: ReactNode;
