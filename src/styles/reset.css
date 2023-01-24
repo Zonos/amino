@@ -504,7 +504,7 @@ button:not([disabled]),
 
 button[disabled],
 [role="button"][disabled] {
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 table {
