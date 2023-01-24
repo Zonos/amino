@@ -497,8 +497,13 @@ textarea::placeholder {
     color: #a0aec0;
 }
 
-button,
-[role="button"] {
+button:not([disabled]),
+[role="button"]:not([disabled]) {
+    cursor: pointer;
+}
+
+button[disabled],
+[role="button"][disabled] {
     cursor: pointer;
 }
 
