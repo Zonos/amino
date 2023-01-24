@@ -3,7 +3,7 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import * as icons from '../../../icons/IconIndex';
-import { Thumbnail as ThumbnailComponent, ThumbnailProps } from '../Thumbail';
+import { Thumbnail as ThumbnailComponent, ThumbnailProps } from '../Thumbnail';
 
 const ThumbnailMeta: Meta = {
   component: ThumbnailComponent,
