@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from 'react';
+import { MouseEvent, ReactNode, useMemo } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
@@ -95,10 +95,10 @@ export type CheckboxProps = {
   checked: boolean;
   disabled?: boolean;
   icon?: ReactNode;
-  label: string;
+  label?: string;
   labelComponent?: ReactNode;
   labelDescription?: string;
-  onChange: (checked: boolean) => void;
+  onChange: (checked: boolean, event: MouseEvent<HTMLLabelElement>) => void;
   subtitle?: string;
 };
 
@@ -122,7 +122,7 @@ export const Checkbox = ({
       className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       checked={checked}
       htmlFor={label}
-      onClick={() => !disabled && onChange(!checked)}
+      onClick={e => !disabled && onChange(!checked, e)}
     >
       <AminoCheckbox checked={checked} id={label}>
         <AnimatePresence>
