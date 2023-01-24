@@ -37,7 +37,7 @@ const Template: Story<RichRadioProps> = ({
   icon,
   activeIcon,
 }: RichRadioProps) => {
-  const [radioValue, setRadioValue] = useState('');
+  const [radioValue, setRadioValue] = useState<string | null>(null);
 
   // This effect mimics data fetching where the component is rendered before the data is populated
   useEffect(() => {
