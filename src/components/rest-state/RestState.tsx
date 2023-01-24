@@ -29,7 +29,7 @@ const Action = styled.div`
 
 export type RestStateProps = {
   label: string;
-  subtitle: string;
+  subtitle?: string;
   action?: ReactNode;
   icon?: string;
   className?: string;
@@ -45,7 +45,7 @@ export const RestState = ({
   <StyledRestState className={className}>
     {icon ? <Icon src={icon} /> : null}
     <Text type="title">{label}</Text>
-    <Text type="subtitle">{subtitle}</Text>
+    {subtitle && <Text type="subtitle">{subtitle}</Text>}
     {action ? <Action>{action}</Action> : null}
   </StyledRestState>
 );
