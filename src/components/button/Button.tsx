@@ -24,6 +24,18 @@ const getAminoColor = (color?: Color | 'inherit') => {
   return undefined;
 };
 
+const getPadding = (size?: Size) => {
+  switch (size) {
+    case 'sm':
+      return '6px 10px';
+    case 'lg':
+      return '14px 18px';
+    case 'md':
+    default:
+      return '10px 14px';
+  }
+};
+
 const StyledSpinnerWrapper = styled.span`
   position: absolute;
   top: 0;
@@ -57,6 +69,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   letter-spacing: normal;
   cursor: pointer;
   white-space: nowrap;
+  padding: ${p => getPadding(p.size)};
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
