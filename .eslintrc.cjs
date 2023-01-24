@@ -43,7 +43,10 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error',
     camelcase: 'off',
     'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
-    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      { ignoreRestSiblings: true, argsIgnorePattern: '^_' },
+    ],
     'class-methods-use-this': 'off', // disable since sometime `this` doesn't need to be used in some util function in class
     'import/extensions': [
       'error',
