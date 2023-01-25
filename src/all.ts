@@ -26,7 +26,7 @@ import './components/danger-zone/DangerZone';
 import './components/dark-mode-wrapper/DarkModeWrapper';
 import './components/dialog/Dialog';
 import './components/divider/Divider';
-import './components/dropzone/DropZone';
+import './components/drop-zone/DropZone';
 import './components/fieldset/Fieldset';
 import './components/file-upload/FileUpload';
 import './components/help-text/HelpText';
