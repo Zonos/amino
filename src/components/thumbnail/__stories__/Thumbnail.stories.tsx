@@ -15,8 +15,8 @@ const ThumbnailMeta: Meta = {
   },
   argTypes: {
     icon: {
-      options: Object.keys(icons),
       control: { type: 'select' },
+      options: Object.keys(icons),
     },
     shape: {
       table: {

@@ -6,10 +6,23 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import * as icons from 'src/icons/IconIndex';
 import { theme } from 'src/styles/constants/theme';
+import { Color } from 'src/types';
 import { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
 
-const IconsMeta: Meta = {};
+const IconsMeta: Meta = {
+  component: icons.MailDuotoneIcon,
+  argTypes: {
+    size: {
+      control: { type: 'number' },
+    },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+};
 
 export default IconsMeta;
 
@@ -29,9 +42,6 @@ const StyledIcon = styled.div<{ size?: number }>`
   align-items: center;
   box-shadow: ${theme.v3ShadowBase};
   padding: ${theme.spaceHalf};
-  svg {
-    color: ${theme.grayD40};
-  }
   &.deprecated {
     div {
       text-decoration: line-through;
@@ -45,7 +55,11 @@ type IconsType = typeof icons[keyof typeof icons] & {
   displayName?: string;
 };
 
-export const AllIcons = ({ size }: IconProps) => {
+export const Icons = ({
+  size,
+  color,
+  secondaryColor,
+}: IconProps & { secondaryColor?: Color }) => {
   const [filter, setFilter] = useState('');
   const iicons = Object.values<IconsType>(icons)
     .map(icon => ({
@@ -76,7 +90,11 @@ export const AllIcons = ({ size }: IconProps) => {
                   /Duotone/.test(iconName) ? 'duotone' : '',
                 ].join(' ')}
               >
-                <IconComponent size={30} />
+                <IconComponent
+                  size={size}
+                  color={color}
+                  secondaryColor={secondaryColor}
+                />
                 <div>{iconName}</div>
                 {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
               </StyledIcon>
