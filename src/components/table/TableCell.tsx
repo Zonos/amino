@@ -12,10 +12,10 @@ type StyledProps = {
 const defaultPadding = css`
   padding: 0;
   &:first-of-type {
-    padding-left: ${theme.spaceHalf};
+    padding-left: ${theme.space16};
   }
   &:last-of-type {
-    padding-right: ${theme.spaceHalf};
+    padding-right: ${theme.space16};
   }
 `;
 
@@ -31,7 +31,12 @@ const paddingCss = css<StyledProps>`
 const StyledTableCell = styled.td<StyledProps>`
   font-variant-numeric: tabular-nums;
   text-align: ${p => p.align};
-  border-bottom: ${p => p.borderBottom || `1px solid ${theme.grayL80}`};
+  border-bottom: ${p => p.borderBottom || `1px solid ${theme.gray100}`};
+  /* Reset space for display inline-block */
+  font-size: 0;
+  > * {
+    font-size: ${theme.fontSizeBase};
+  }
 
   .Amino-table-size-medium & {
     height: 64px;
