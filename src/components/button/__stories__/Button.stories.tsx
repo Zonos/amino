@@ -8,6 +8,12 @@ import styled from 'styled-components';
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
   component: Button,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=81%3A1128&t=erzegCytT9AfSn9f-0',
+    },
+  },
   argTypes: {
     disabled: {
       type: 'boolean',
@@ -37,6 +43,8 @@ const HWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: ${theme.space24};
+  margin: ${theme.space16} 0;
+  align-items: center;
 `;
 const VWrapper = styled.div`
   display: flex;
@@ -118,6 +126,29 @@ const ButtonRow = ({
         Dark
       </Button>
     </HWrapper>
+    <HWrapper>
+      <Button
+        {...props}
+        size="lg"
+        intent={intent}
+        disabled={disabled}
+        loading={loading}
+      />
+      <Button
+        {...props}
+        size="md"
+        intent={intent}
+        disabled={disabled}
+        loading={loading}
+      />
+      <Button
+        {...props}
+        size="sm"
+        intent={intent}
+        disabled={disabled}
+        loading={loading}
+      />
+    </HWrapper>
   </div>
 );
 
@@ -134,23 +165,11 @@ Default.args = {
   intent: 'secondary',
   children: 'Example button',
 };
-Default.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
-  },
-};
 
 export const Primary = Template.bind({});
 Primary.args = {
   intent: 'primary',
   children: 'Example button',
-};
-Primary.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A20',
-  },
 };
 
 export const Danger = Template.bind({});
@@ -158,23 +177,11 @@ Danger.args = {
   intent: 'danger',
   children: 'Example button',
 };
-Danger.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
-};
 
 export const Warning = Template.bind({});
 Warning.args = {
   intent: 'warning',
   children: 'Example button',
-};
-Warning.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
 };
 
 export const Outline = Template.bind({});
@@ -182,35 +189,17 @@ Outline.args = {
   intent: 'outline',
   children: 'Example button',
 };
-Outline.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
-};
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
   intent: 'link',
   children: 'Link button',
 };
-LinkButton.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=77%3A51',
-  },
-};
 
 export const Subtle = Template.bind({});
 Subtle.args = {
   intent: 'subtle',
   children: 'Example button',
-};
-Subtle.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A24',
-  },
 };
 
 export const TextButton = Template.bind({});
