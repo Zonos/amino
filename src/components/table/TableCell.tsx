@@ -31,7 +31,7 @@ const paddingCss = css<StyledProps>`
 const StyledTableCell = styled.td<StyledProps>`
   font-variant-numeric: tabular-nums;
   text-align: ${p => p.align};
-  border-bottom: ${p => p.borderBottom || `1px solid ${theme.gray100}`};
+  border-bottom: ${p => p.borderBottom || `1px solid ${theme.gray200}`};
   /* Reset space for display inline-block */
   font-size: 0;
   > * {
@@ -39,7 +39,7 @@ const StyledTableCell = styled.td<StyledProps>`
   }
 
   .Amino-table-size-medium & {
-    height: 64px;
+    height: 56px;
   }
   .Amino-table-size-small & {
     height: 48px;
