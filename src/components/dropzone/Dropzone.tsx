@@ -4,6 +4,7 @@ import { FileDuotoneIcon } from 'src/icons/FileDuotoneIcon';
 import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import { UploadedFile } from 'src/types/FileUpload';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -21,8 +22,8 @@ const Wrapper = styled.div<{ disabled: boolean }>`
 const UploadWrapper = styled.div<{
   error: boolean;
 }>`
-  border: 2px dashed
-    ${({ error }) => (error ? theme.danger : theme.borderColor)};
+  border: 2px dashed;
+  border-color: ${({ error }) => (error ? theme.danger : theme.borderColor)};
   border-radius: ${theme.radius12};
   display: flex;
   flex-direction: column;
@@ -105,12 +106,14 @@ const UploadedFileInfoWrapper = styled.div`
   flex-direction: column;
 `;
 
-type UploadedFileProps = {
-  name: string;
-  size?: string;
-};
-
 export type DropzoneProps = {
+  className?: string;
+  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
+  /**
+   * This `disabled` state only applies when no file is selected
+   * @default false
+   * */
+  disabled?: boolean;
   helpText?: string;
   /**
    * Text to display in empty state
@@ -122,30 +125,23 @@ export type DropzoneProps = {
    * @default false
    * */
   noIcon?: boolean;
-  /**
-   * This `disabled` state only applies when no file is selected
-   * @default false
-   * */
-  disabled?: boolean;
-  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   /** Display file info if uploaded file property has data */
-  uploadedFiles: UploadedFileProps[];
+  uploadedFiles: UploadedFile[];
   /** When the remove icon is clicked on an individual file */
   onRemoveFile: (index: number) => void;
   error?: boolean;
-  className?: string;
 };
 
 export const Dropzone = ({
+  className,
+  dropzoneOptions,
+  disabled = false,
   instructionText = 'Drop your file(s) here',
   helpText,
   noIcon = false,
-  disabled = false,
-  dropzoneOptions,
   uploadedFiles,
   onRemoveFile,
-  error,
-  className,
+  error = false,
 }: DropzoneProps) => {
   const multiple = dropzoneOptions.multiple || false;
 
@@ -202,9 +198,7 @@ export const Dropzone = ({
   return (
     <Wrapper disabled={disabled} className={className}>
       {!uploadedMaxFiles && (
-        <UploadWrapper className={disabled ? 'disabled' : ''} error={!!error}>
-          {renderContent()}
-        </UploadWrapper>
+        <UploadWrapper error={error}>{renderContent()}</UploadWrapper>
       )}
       {!!uploadedFiles.length && (
         <UploadedFilesWrapper>{renderFiles()}</UploadedFilesWrapper>
