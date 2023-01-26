@@ -42,7 +42,7 @@ const HWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: ${theme.space};
+  gap: ${theme.space24};
   margin: ${theme.space16} 0;
   align-items: center;
 `;
@@ -54,7 +54,7 @@ const VWrapper = styled.div`
 
 const ButtonRowLabel = styled(Text)`
   border-bottom: 1px solid black;
-  margin-bottom: ${theme.spaceQuarter};
+  margin-bottom: ${theme.space8};
 `;
 
 const ButtonRow = ({
