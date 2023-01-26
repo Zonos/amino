@@ -25,6 +25,7 @@ const Icon = styled.img`
 const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: ${theme.space8};
 `;
 

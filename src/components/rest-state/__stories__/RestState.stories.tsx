@@ -27,7 +27,7 @@ BasicRestState.args = {
 export const WithImage = Template.bind({});
 WithImage.args = {
   label: 'Amino!',
-  subtitle: 'Woohooooo',
+  subtitle: 'Woohooooo I LOVE CHICKEN',
   action: <Button>Click me!</Button>,
   icon: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
 };
