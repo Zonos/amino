@@ -6,7 +6,7 @@ const DividerHorizontal = styled.hr`
   border-color: ${theme.borderColor};
 `;
 
-export const DividerVertical = styled.hr`
+const DividerVertical = styled.hr`
   margin: 0 ${theme.space4};
   height: auto;
   align-self: stretch;

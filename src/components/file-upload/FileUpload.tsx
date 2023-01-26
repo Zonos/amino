@@ -3,7 +3,7 @@ import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import { UploadedFile } from 'src/types/FileUpload';
+import { UploadedFile } from 'src/types/UploadedFile';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -100,6 +100,12 @@ export type FileUploadProps = {
   /** Display file info if uploaded file property has data */
   uploadedFile: UploadedFile | null;
   onRemoveFile?: () => void;
+  loading?: boolean;
+  /**
+   * Text to show while loading state is active
+   * @default 'Uploading...''
+   */
+  loadingText?: string;
 };
 
 /**
@@ -113,6 +119,8 @@ export const FileUpload = ({
   onRemoveFile,
   uploadedFile,
   instructionText = 'or drag your file here',
+  loading,
+  loadingText = 'Uploading...',
 }: FileUploadProps) => {
   const { getRootProps, getInputProps, open } = useDropzone({
     ...dropzoneOptions,
@@ -143,16 +151,26 @@ export const FileUpload = ({
     return null;
   };
 
+  const renderText = () => {
+    if (loading) {
+      return <Text>{loadingText}</Text>;
+    }
+
+    return uploadedFile ? (
+      renderFile()
+    ) : (
+      <Text color="gray600">{instructionText}</Text>
+    );
+  };
+
   const renderContent = () => (
     <StyledFileInput {...getRootProps()}>
       <input {...getInputProps()} />
       <ContentWrapper>
-        <Button onClick={open}>Browse</Button>
-        {uploadedFile ? (
-          renderFile()
-        ) : (
-          <Text color="gray600">{instructionText}</Text>
-        )}
+        <Button onClick={open} loading={loading} spinnerColor="black">
+          Browse
+        </Button>
+        {renderText()}
       </ContentWrapper>
     </StyledFileInput>
   );

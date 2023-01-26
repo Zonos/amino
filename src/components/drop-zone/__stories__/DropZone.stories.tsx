@@ -47,7 +47,7 @@ export const DropZone: ComponentStory<typeof DropZoneComponent> = props => {
     <DropZoneComponent
       {...props}
       instructionText="Drop your files here"
-      helpText="Max file size: 25 MB"
+      helpText="Max file size: 2 KB"
       uploadedFiles={files.map(f => ({
         name: f.name,
         size: `${f.size} bytes`,
@@ -64,7 +64,8 @@ export const DropZone: ComponentStory<typeof DropZoneComponent> = props => {
           setFiles(acceptedFiles);
         },
         multiple: true,
-        // maxSize: 25 << 20,
+        maxFiles: 2,
+        // 2 KB
         // eslint-disable-next-line no-bitwise
         maxSize: 2 << 10,
       }}
