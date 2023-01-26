@@ -1,0 +1,6 @@
+name: "PR auto assign"
+description: "Zonos specific auto-labeling action"
+author: "Zonos"
+runs:
+  using: "node16"
+  main: "index.js"

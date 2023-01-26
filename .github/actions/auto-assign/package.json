@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "auto-assign",
+  "version": "0",
+  "exports": "./index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "pack": "ncc -m -o . build lib/index.js",
+    "build": "tsc && yarn run pack"
+  },
+  "devDependencies": {
+    "@octokit/webhooks-types": "6.9.0",
+    "@types/node": "^18.11.0",
+    "@vercel/ncc": "0.34.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1"
+  }
+}
