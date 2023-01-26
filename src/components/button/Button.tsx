@@ -317,6 +317,10 @@ type ButtonBase = {
   size?: Size;
   tabIndex?: number;
   type?: 'button' | 'reset' | 'submit';
+  /**
+   * Color for the spinner when in a loading state
+   */
+  spinnerColor?: SpinnerProps['color'];
 };
 
 type GroupTag = 'div' | 'a' | 'button';
@@ -350,16 +354,17 @@ export function Button<T extends GroupTag = 'button'>({
   tag,
   theme: _theme,
   type = 'button',
+  spinnerColor,
   ...props
 }: ButtonProps<T>) {
-  const renderContent = (spinnerColor?: SpinnerProps['color']) => (
+  const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
       {!iconRight && icon}
       {children}
       {iconRight && icon}
       {loading && (
         <StyledSpinnerWrapper>
-          <Spinner size={16} color={spinnerColor} />
+          <Spinner size={16} color={_spinnerColor} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
@@ -392,50 +397,50 @@ export function Button<T extends GroupTag = 'button'>({
     case 'primary':
       return (
         <Primary as={tag || 'button'} {...buttonProps}>
-          {renderContent('white')}
+          {renderContent(spinnerColor || 'white')}
         </Primary>
       );
     case 'subtle':
       return (
         <Subtle as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </Subtle>
       );
     case 'outline':
       return (
         <Outline as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </Outline>
       );
     case 'warning':
       return (
         <Warning as={tag || 'button'} {...buttonProps}>
-          {renderContent('white')}
+          {renderContent(spinnerColor || 'white')}
         </Warning>
       );
     case 'danger':
       return (
         <Danger as={tag || 'button'} {...buttonProps}>
-          {renderContent('white')}
+          {renderContent(spinnerColor || 'white')}
         </Danger>
       );
     case 'text':
       return (
         <TextButton as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </TextButton>
       );
     case 'link':
       return (
         <LinkButton as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </LinkButton>
       );
     case 'secondary':
     default:
       return (
         <Secondary as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </Secondary>
       );
   }
