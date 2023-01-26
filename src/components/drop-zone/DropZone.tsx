@@ -4,10 +4,11 @@ import { FileDuotoneIcon } from 'src/icons/FileDuotoneIcon';
 import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import { UploadedFile } from 'src/types/FileUpload';
+import { UploadedFile } from 'src/types/UploadedFile';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
+import { Spinner } from '../spinner/Spinner';
 import { Text } from '../text/Text';
 import { Thumbnail } from '../thumbnail/Thumbnail';
 
@@ -20,7 +21,7 @@ const Wrapper = styled.div<{ disabled: boolean }>`
 `;
 
 const UploadWrapper = styled.div<{
-  error: boolean;
+  error?: boolean;
 }>`
   border: 2px dashed;
   border-color: ${({ error }) => (error ? theme.danger : theme.borderColor)};
@@ -30,7 +31,7 @@ const UploadWrapper = styled.div<{
   align-items: center;
 `;
 
-const StyledFileInput = styled.div`
+const ContentWrapper = styled.div`
   padding: ${theme.space16};
   outline: none;
   display: flex;
@@ -130,6 +131,12 @@ export type DropZoneProps = {
   /** When the remove icon is clicked on an individual file */
   onRemoveFile: (index: number) => void;
   error?: boolean;
+  loading?: boolean;
+  /**
+   * Text to show while loading state is active
+   * @default 'Uploading file(s)...''
+   */
+  loadingText?: string;
 };
 
 export const DropZone = ({
@@ -142,8 +149,10 @@ export const DropZone = ({
   uploadedFiles,
   onRemoveFile,
   error = false,
+  loading,
+  loadingText = 'Uploading file(s)...',
 }: DropZoneProps) => {
-  const multiple = dropzoneOptions.multiple || false;
+  const maxFiles = dropzoneOptions.maxFiles || 0;
 
   const { getRootProps, getInputProps, open } = useDropzone({
     ...dropzoneOptions,
@@ -152,9 +161,9 @@ export const DropZone = ({
     noKeyboard: true,
   });
 
-  const renderContent = () => (
-    // The role gets set to button despite setting `noClick`
-    <StyledFileInput {...getRootProps()} role={undefined}>
+  const renderUpload = () => (
+    // The role gets set to button despite setting `noClick`, so override it as `undefined`
+    <ContentWrapper {...getRootProps()} role={undefined}>
       <input {...getInputProps()} />
       {!noIcon && <Thumbnail size={40} icon={<FileUploadDuotoneIcon />} />}
       <InstructionTextWrapper>
@@ -168,7 +177,7 @@ export const DropZone = ({
         </Text>
         {helpText && <Text type="caption">{helpText}</Text>}
       </InstructionTextWrapper>
-    </StyledFileInput>
+    </ContentWrapper>
   );
 
   const renderFiles = () =>
@@ -193,16 +202,37 @@ export const DropZone = ({
       </UploadedFileRow>
     ));
 
-  const uploadedMaxFiles = !multiple && !!uploadedFiles.length;
+  const uploadedMaxFiles = maxFiles !== 0 && uploadedFiles.length >= maxFiles;
+
+  const renderContent = () => {
+    if (loading) {
+      return (
+        <UploadWrapper>
+          <ContentWrapper>
+            <Spinner />
+            <Text type="label" color="gray800">
+              {loadingText}
+            </Text>
+          </ContentWrapper>
+        </UploadWrapper>
+      );
+    }
+
+    return (
+      <>
+        {!uploadedMaxFiles && (
+          <UploadWrapper error={error}>{renderUpload()}</UploadWrapper>
+        )}
+        {!!uploadedFiles.length && (
+          <UploadedFilesWrapper>{renderFiles()}</UploadedFilesWrapper>
+        )}
+      </>
+    );
+  };
 
   return (
     <Wrapper disabled={disabled} className={className}>
-      {!uploadedMaxFiles && (
-        <UploadWrapper error={error}>{renderContent()}</UploadWrapper>
-      )}
-      {!!uploadedFiles.length && (
-        <UploadedFilesWrapper>{renderFiles()}</UploadedFilesWrapper>
-      )}
+      {renderContent()}
     </Wrapper>
   );
 };
