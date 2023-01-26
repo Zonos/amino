@@ -1,0 +1,15 @@
+name: "Auto Assign"
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  auto-assign:
+    name: Auto add assignees/reviewers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/auto-assign
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
