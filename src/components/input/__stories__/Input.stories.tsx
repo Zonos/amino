@@ -93,6 +93,12 @@ const Template: Story<InputProps> = ({ value: _value, ...props }) => {
         onChange={e => setValue(e.target.value)}
         value={value}
       />
+      <Input
+        {...props}
+        disabled
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      />
       <Text type="bold-subheader">
         Value: <Text type="code">{value || '--'}</Text>
       </Text>
@@ -103,24 +109,28 @@ const Template: Story<InputProps> = ({ value: _value, ...props }) => {
 export const BasicInput = Template.bind({});
 BasicInput.args = {
   label: 'Example input',
+  value: 'Awesome',
 };
 
 export const PasswordInput = Template.bind({});
 PasswordInput.args = {
   label: 'Example input',
   type: 'password',
+  value: 'Awesome',
 };
 
 export const NumberInput = Template.bind({});
 NumberInput.args = {
   label: 'Example input',
   type: 'number',
+  value: '123',
 };
 
 export const DateInput = Template.bind({});
 DateInput.args = {
   label: 'Date input',
   type: 'date',
+  value: '1995-09-08',
 };
 
 export const DateInputClamped = Template.bind({});
@@ -136,6 +146,7 @@ export const DateTimeInput = Template.bind({});
 DateTimeInput.args = {
   label: 'Datetime input',
   type: 'datetime-local',
+  value: '1995-09-08 09:21:00',
 };
 
 export const DateTimeInputClamped = Template.bind({});
@@ -145,24 +156,28 @@ DateTimeInputClamped.args = {
   type: 'datetime-local',
   min: new Date('2009-01-10T03:24:00').toISOString().slice(0, -1),
   max: new Date('2009-01-18T03:50:00').toISOString().slice(0, -1),
+  value: '2009-01-13 09:21:00',
 };
 
 export const TimeInput = Template.bind({});
 TimeInput.args = {
   label: 'Time input',
   type: 'time',
+  value: '09:21:00',
 };
 
 export const InputWithHelpText = Template.bind({});
 InputWithHelpText.args = {
   label: 'Example input',
   helpText: "This is the input's help text",
+  value: 'Magnificent',
 };
 
 export const InputWithError = Template.bind({});
 InputWithError.args = {
   label: 'Example input',
   error: true,
+  value: 'Magnificent',
 };
 
 export const InputWithErrorAndHelpText = Template.bind({});
@@ -170,6 +185,7 @@ InputWithErrorAndHelpText.args = {
   label: 'Example input',
   error: true,
   helpText: 'This is an error',
+  value: 'Magnificent',
 };
 
 export const Prefix = Template.bind({});
