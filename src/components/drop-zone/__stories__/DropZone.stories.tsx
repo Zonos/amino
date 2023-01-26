@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 
 import { ComponentStory } from '@storybook/react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Dropzone as DropZoneComponent } from 'src/components/drop-zone/DropZone';
+import { DropZone as DropZoneComponent } from 'src/components/drop-zone/DropZone';
 import {
   ToastContext,
   ToastContextProvider,

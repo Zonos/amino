@@ -38,9 +38,7 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 
   &.disabled {
-    cursor: not-allowed;
     opacity: 0.4;
-    user-select: none;
   }
 `;
 

@@ -106,7 +106,7 @@ const UploadedFileInfoWrapper = styled.div`
   flex-direction: column;
 `;
 
-export type DropzoneProps = {
+export type DropZoneProps = {
   className?: string;
   dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   /**
@@ -132,7 +132,7 @@ export type DropzoneProps = {
   error?: boolean;
 };
 
-export const Dropzone = ({
+export const DropZone = ({
   className,
   dropzoneOptions,
   disabled = false,
@@ -142,7 +142,7 @@ export const Dropzone = ({
   uploadedFiles,
   onRemoveFile,
   error = false,
-}: DropzoneProps) => {
+}: DropZoneProps) => {
   const multiple = dropzoneOptions.multiple || false;
 
   const { getRootProps, getInputProps, open } = useDropzone({
