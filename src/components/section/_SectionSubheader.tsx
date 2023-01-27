@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import { Text } from '../text/Text';
 
 const StyledSectionSubheader = styled(Text)`
-  color: ${theme.grayD40};
+  color: ${theme.gray800};
   font-style: italic;
-  margin-top: ${theme.spaceQuarter};
+  margin-top: ${theme.space8};
 `;
 type Props = { className?: string; children: ReactNode };
 export const SectionSubheader = ({ className, children }: Props) => (

@@ -6,7 +6,7 @@ const StyledCurrency = styled.span`
   /** Make it not break line */
   white-space: nowrap;
   &.negative {
-    color: ${theme.redL20};
+    color: ${theme.red400};
   }
 `;
 

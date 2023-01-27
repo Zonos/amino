@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${theme.space};
+  gap: ${theme.space24};
 `;
 
 const Template: Story<StoryProps> = ({ icon, ...props }) => {

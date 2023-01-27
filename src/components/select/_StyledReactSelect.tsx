@@ -64,21 +64,21 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${theme.grayD20};
+  color: ${theme.gray700};
   padding: 10px;
 `;
 
 const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   position: absolute;
   transition: ${theme.transition};
-  font-size: ${theme.textBase};
-  line-height: ${theme.textBase};
+  font-size: ${theme.fontSizeBase};
+  line-height: ${theme.fontSizeBase};
   transform-origin: left top;
-  left: calc(${theme.spaceHalf} - 2px);
+  left: calc(${theme.space16} - 2px);
   .has-icon & {
-    left: calc(${theme.spaceDouble} + 2px);
+    left: calc(${theme.space40} + 2px);
   }
-  top: calc(50% - ${theme.textBase} / 2);
+  top: calc(50% - ${theme.fontSizeBase} / 2);
   .has-label & {
     & + div {
       align-self: flex-end;
@@ -86,7 +86,7 @@ const StyledFloatedLabel = styled.label<{ $size?: Size }>`
   }
   .has-value &,
   .is-focused & {
-    top: calc(${theme.spaceQuarter} + 3px);
+    top: calc(${theme.space8} + 3px);
     transform: scale(0.8);
   }
 
@@ -231,7 +231,7 @@ const StyledSelectOptionWrapper = styled.div`
   &:not(.is-disabled) {
     &.is-focused,
     &:hover {
-      background-color: ${theme.grayL80} !important;
+      background-color: ${theme.gray100} !important;
     }
   }
 `;
@@ -343,7 +343,7 @@ export const CheckboxOptionComponent = <
 const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   clearIndicator: provided => ({
     ...provided,
-    color: `${theme.grayD20}`,
+    color: `${theme.gray700}`,
     paddingLeft: 14,
     paddingRight: 4,
   }),
@@ -353,10 +353,10 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       AdditionalProps;
     return {
       ...provided,
-      borderColor: `${theme.grayL60}`,
+      borderColor: `${theme.gray200}`,
       borderRadius: 6,
       cursor: 'pointer',
-      color: theme.grayD40,
+      color: theme.gray800,
       height: `var(--amino-size-${size})`,
       flexWrap: 'inherit',
       minHeight: `var(--amino-size-${size})`,
@@ -365,7 +365,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   },
   dropdownIndicator: provided => ({
     ...provided,
-    color: `${theme.grayD60}`,
+    color: `${theme.gray900}`,
     paddingLeft: 4,
     paddingRight: 10,
   }),
@@ -395,7 +395,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // menuPortal
   multiValue: provided => ({
     ...provided,
-    background: theme.grayL60,
+    background: theme.gray200,
     color: 'black',
     fontWeight: 500,
     minWidth: 'inherit',
@@ -405,7 +405,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // noOptionsMessage
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? theme.blueBase : 'black',
+    color: state.isSelected ? theme.blue600 : 'black',
     fontWeight: state.isSelected ? 500 : 400,
     backgroundColor: 'inherit',
     paddingTop: 7,

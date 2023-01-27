@@ -17,7 +17,7 @@ const StyledActionWrapper = styled.div`
 `;
 const StyledButtonAction = styled.button`
   padding: 6px;
-  border-radius: ${theme.radiusSm};
+  border-radius: ${theme.radius4};
   transition: ${theme.transition};
 
   &:hover {
@@ -33,7 +33,7 @@ const StyledButtonAction = styled.button`
 
 const AminoInput = styled(FloatLabelInput)`
   && input {
-    padding-right: ${theme.spaceDouble};
+    padding-right: ${theme.space40};
     appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-calendar-picker-indicator {

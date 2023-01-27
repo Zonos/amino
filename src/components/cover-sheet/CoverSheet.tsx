@@ -31,7 +31,7 @@ const StyledDialog = styled(motion.div)`
 `;
 
 const StyledCloseButton = styled(Button)`
-  margin-right: ${theme.space};
+  margin-right: ${theme.space24};
 `;
 const StyledHeader = styled(Text)`
   flex-grow: 1;
@@ -40,7 +40,7 @@ const Header = styled.header`
   background: ${theme.surfaceColor};
   border-bottom: ${theme.border};
 
-  padding: ${theme.spaceHalf} ${theme.space};
+  padding: ${theme.space16} ${theme.space24};
   display: flex;
   align-items: center;
   height: 64px;
@@ -54,7 +54,7 @@ const Header = styled.header`
 `;
 
 const Content = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
 `;
 
 export type CoverSheetProps = {

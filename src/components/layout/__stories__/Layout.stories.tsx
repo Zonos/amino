@@ -77,11 +77,11 @@ const Template: Story<LayoutProps> = ({
 );
 
 const StyledHeader = styled.div`
-  padding: 0 ${theme.space};
+  padding: 0 ${theme.space24};
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: ${theme.space};
+  gap: ${theme.space24};
 `;
 
 export const BasicLayout = Template.bind({});

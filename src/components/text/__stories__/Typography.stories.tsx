@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
   background-color: white;
-  border: 1px solid ${theme.grayL60};
-  padding: ${theme.spaceHalf};
-  margin-bottom: ${theme.space};
+  border: 1px solid ${theme.gray200};
+  padding: ${theme.space16};
+  margin-bottom: ${theme.space24};
   width: 640px;
   border-radius: 16px;
 `;
@@ -16,8 +16,8 @@ const StyledVStack = styled(VStack)`
 const Label = styled.div`
   display: flex;
   justify-content: center;
-  background: ${theme.grayL40};
-  padding: ${theme.spaceQuarter};
+  background: ${theme.gray300};
+  padding: ${theme.space8};
   border-radius: 5px;
   width: 200px;
 `;

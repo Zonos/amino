@@ -29,9 +29,9 @@ const MenuWrapper = styled.div<{ addSpacing: boolean }>`
 
 const UserInfo = styled.button<{ addSpacing: boolean }>`
   width: 100%;
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   box-sizing: border-box;
-  padding: ${p => p.addSpacing && theme.space};
+  padding: ${p => p.addSpacing && theme.space24};
   transition: ${theme.transition};
   background: transparent;
   display: flex;
@@ -56,11 +56,11 @@ const Avatar = styled.div`
   height: 28px;
   border-radius: 50%;
   cursor: pointer;
-  margin-right: ${theme.spaceHalf};
+  margin-right: ${theme.space16};
 `;
 
 const StoreItem = styled.div`
-  padding: ${theme.spaceHalf};
+  padding: ${theme.space16};
   transition: ${theme.transition};
   user-select: none;
   cursor: pointer;
@@ -69,7 +69,7 @@ const StoreItem = styled.div`
   align-items: center;
 
   & + & {
-    margin-top: ${theme.spaceHalfNegative};
+    margin-top: ${theme.spaceNegative16};
   }
 
   &:hover {
@@ -83,7 +83,7 @@ const StoreItem = styled.div`
   }
 
   & > div {
-    margin-right: ${theme.spaceHalf};
+    margin-right: ${theme.space16};
   }
 `;
 
@@ -93,12 +93,12 @@ const AnimatedSurface = styled(Surface)`
   border: 1px solid ${theme.borderColor};
   z-index: 100;
   position: absolute;
-  padding: ${theme.radius} 0;
+  padding: ${theme.radius6} 0;
   min-width: 100%;
   width: max-content;
 
-  left: ${theme.spaceHalf};
-  bottom: ${theme.spaceHalf};
+  left: ${theme.space16};
+  bottom: ${theme.space16};
 `;
 
 const StyledSubtitle = styled.span`

@@ -91,12 +91,12 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   &:not(.only-icon).has-icon {
     &.icon-right {
       svg {
-        margin-left: ${theme.spaceQuarter};
+        margin-left: ${theme.space8};
         margin-right: 0;
       }
     }
     svg {
-      margin-right: ${theme.spaceQuarter};
+      margin-right: ${theme.space8};
       margin-left: 0;
     }
   }
@@ -153,7 +153,7 @@ const Secondary = styled(AminoButton)`
   /** Dark mode */
   &.dark {
     color: white;
-    background: ${theme.grayD80};
+    background: ${theme.gray1000};
 
     &:not([disabled]) {
       &:hover {
@@ -170,7 +170,7 @@ const Secondary = styled(AminoButton)`
     }
 
     ${StyledSpinnerWrapper} {
-      background: ${theme.grayD80};
+      background: ${theme.gray1000};
     }
   }
 `;
@@ -259,7 +259,7 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   padding: 0;
 
   &[disabled] {
-    color: ${theme.grayL20};
+    color: ${theme.gray400};
     &:not(.loading) {
       opacity: inherit;
     }
@@ -267,7 +267,7 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 
   &:not([disabled]) {
     &:hover {
-      color: ${theme.grayD20};
+      color: ${theme.gray700};
     }
     &:active {
       color: ${theme.black};

@@ -26,7 +26,7 @@ const StyledCollapseIndicator = styled(Button)`
   &:focus,
   &:hover {
     background: transparent;
-    color: ${theme.grayD40};
+    color: ${theme.gray800};
   }
 
   &.collapse {

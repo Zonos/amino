@@ -30,8 +30,8 @@ const StyledWrapper = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: ${theme.spaceDouble};
-  grid-column-gap: ${theme.space};
+  grid-row-gap: ${theme.space40};
+  grid-column-gap: ${theme.space24};
   padding-bottom: 20px;
 `;
 
@@ -41,7 +41,7 @@ const StyledIcon = styled.div<{ size?: number }>`
   justify-content: center;
   align-items: center;
   box-shadow: ${theme.v3ShadowBase};
-  padding: ${theme.spaceHalf};
+  padding: ${theme.space16};
   &.deprecated {
     div {
       text-decoration: line-through;

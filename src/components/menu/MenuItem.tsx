@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export const StyledListItem = styled.li`
   display: flex;
   align-items: center;
-  padding: 0 ${theme.spaceHalf};
+  padding: 0 ${theme.space16};
   height: 36px;
   line-height: 36px;
   user-select: none;

@@ -7,7 +7,7 @@ import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { XIcon } from 'src/icons/legacy/XIcon';
+import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
@@ -26,7 +26,7 @@ const Popup = styled(motion.div)`
 `;
 
 const SlideOverHeader = styled.header`
-  padding: ${theme.space};
+  padding: ${theme.space24};
   border-bottom: ${theme.border};
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ const Close = styled.div`
   opacity: 0.8;
 
   &:hover {
-    background: ${theme.grayL60};
+    background: ${theme.gray200};
     opacity: 1;
   }
 
@@ -63,13 +63,13 @@ const Close = styled.div`
 `;
 
 const SlideOverContent = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
   overflow-y: auto;
   overscroll-behavior: contain;
 `;
 
 const Footer = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
   border-top: ${theme.border};
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@ const Footer = styled.div`
   width: 100%;
 
   & > div + div {
-    margin-left: ${theme.spaceQuarter};
+    margin-left: ${theme.space8};
   }
 `;
 
@@ -141,7 +141,7 @@ export const SlideOver = ({
                 </Text>
               )}
               <Close onClick={onClose}>
-                <XIcon />
+                <RemoveIcon />
               </Close>
             </SlideOverHeader>
             <SlideOverContent>{children}</SlideOverContent>

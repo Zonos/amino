@@ -25,7 +25,7 @@ const StyledTableRow = styled(TableRow)<{
     css`
       cursor: pointer;
       :hover {
-        background: ${theme.grayL80};
+        background: ${theme.gray100};
       }
     `}
 `;

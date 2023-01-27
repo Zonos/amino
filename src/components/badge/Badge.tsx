@@ -36,11 +36,11 @@ const BadgeWrapper = styled.div`
 `;
 const StyledBadge = styled.div<BadgeProps>`
   display: flex;
-  gap: ${theme.spaceQuarter};
-  font-size: ${theme.textSm};
+  gap: ${theme.space8};
+  font-size: ${theme.fontSizeS};
   padding: 2px 6px;
   text-align: center;
-  border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius)};
+  border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius6)};
   // default background color (gray)
   background-color: ${theme.gray100};
   color: ${theme.gray800};

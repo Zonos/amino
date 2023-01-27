@@ -33,7 +33,7 @@ const StyledButtonAction = styled.button`
 `;
 const AminoInput = styled(FloatLabelInput)`
   && input {
-    padding-right: ${theme.spaceDouble};
+    padding-right: ${theme.space40};
     appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-calendar-picker-indicator {
