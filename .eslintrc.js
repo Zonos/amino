@@ -16,7 +16,13 @@ module.exports = {
   globals: {
     JSX: 'readonly',
   },
-  plugins: ['jest', '@typescript-eslint', 'simple-import-sort', 'prettier'],
+  plugins: [
+    'jest',
+    '@typescript-eslint',
+    'simple-import-sort',
+    'prettier',
+    'deprecation',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2020,
@@ -24,8 +30,10 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: './tsconfig.json',
   },
   rules: {
+    // 'deprecation/deprecation': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
     /** Typescript 4.0 changes */
