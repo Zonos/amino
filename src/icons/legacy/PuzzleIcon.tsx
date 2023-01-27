@@ -12,4 +12,5 @@ export const PuzzleIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 PuzzleIcon.deprecated = true;

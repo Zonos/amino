@@ -7,6 +7,7 @@ import { orange } from './generated/colors/_orange';
 import { purple } from './generated/colors/_purple';
 import { red } from './generated/colors/_red';
 
+/* eslint-disable deprecation/deprecation */
 export const theme = {
   transition: 'all 0.2s ease-in-out 0s',
   'type-scale-base': '16px',

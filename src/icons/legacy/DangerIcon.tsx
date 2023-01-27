@@ -20,4 +20,5 @@ export const DangerIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 DangerIcon.deprecated = true;

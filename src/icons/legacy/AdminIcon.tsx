@@ -22,4 +22,5 @@ export const AdminIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 AdminIcon.deprecated = true;

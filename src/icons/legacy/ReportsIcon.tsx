@@ -18,4 +18,5 @@ export const ReportsIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 ReportsIcon.deprecated = true;

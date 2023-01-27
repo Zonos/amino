@@ -42,7 +42,10 @@ export const createIndexFile = ({
    * */
   target: string;
 }) => {
-  const mergedContent = generatePath.map(generateContent).join('\n');
+  const mergedContent = [
+    '/* eslint-disable deprecation/deprecation */',
+    ...generatePath.map(generateContent),
+  ].join('\n');
 
   fs.writeFileSync(`${target}/IconIndex.ts`, mergedContent);
 };

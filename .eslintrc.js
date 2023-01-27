@@ -30,10 +30,17 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    project: './tsconfig.json',
   },
+  overrides: [
+    {
+      files: ['./src/**/*'],
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+  ],
   rules: {
-    // 'deprecation/deprecation': 'warn',
+    'deprecation/deprecation': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
     /** Typescript 4.0 changes */

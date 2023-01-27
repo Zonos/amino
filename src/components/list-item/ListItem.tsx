@@ -114,7 +114,9 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       subtitle,
       rightDecorator,
       onClick,
+      // eslint-disable-next-line deprecation/deprecation
       icon,
+      // eslint-disable-next-line deprecation/deprecation
       iconComponent,
     },
     ref

@@ -17,4 +17,5 @@ export const CreditCardIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 CreditCardIcon.deprecated = true;
