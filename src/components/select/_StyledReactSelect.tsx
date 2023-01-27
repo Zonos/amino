@@ -231,6 +231,7 @@ const StyledSelectOptionWrapper = styled.div`
   &:not(.is-disabled) {
     &.is-focused,
     &:hover {
+      /* The styles are inlined on this component from emotion, so we must override */
       background-color: ${theme.gray100} !important;
     }
   }

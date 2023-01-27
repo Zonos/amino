@@ -25,7 +25,7 @@ const GradientSquare = styled.div.attrs<GradientSquareType>(
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  color: ${theme.gray1000} !important;
+  color: ${theme.gray1000};
   font-weight: 500;
 `;
 

@@ -49,7 +49,7 @@ const Header = styled.header`
   z-index: 99;
 
   @media print {
-    display: none !important;
+    display: none;
   }
 `;
 

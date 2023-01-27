@@ -28,11 +28,6 @@ const StyledRichCheckbox = styled.button`
     outline: none;
     border: 1px solid ${theme.blue300};
   }
-  > div {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
 `;
 
 const Label = styled.span`
@@ -70,7 +65,7 @@ const StyledIcon = styled.div`
 
 const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
   align-items: center;
-  display: grid !important;
+  display: grid;
   grid-column-gap: ${theme.space24};
   ${({ $icon }) => $icon && `grid-template-columns: 30px 1fr;`}
 `;
