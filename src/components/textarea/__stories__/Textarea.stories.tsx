@@ -1,8 +1,15 @@
 import { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import { Textarea, TextareaProps } from 'src/components/textarea/Textarea';
+import styled from 'styled-components';
+
+const StyledGroup = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 
 const TextAreaMeta: Meta = {
   component: Textarea,
@@ -34,58 +41,89 @@ const Template: Story<TextareaProps> = ({
     >
       <div>
         <Text type="bold-label">No placeholder:</Text>
-        <Textarea
-          error={error}
-          helpText={helpText}
-          label={label}
-          onChange={e => setValue(e.target.value)}
-        />
+
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            label={label}
+            value=""
+            onChange={() => {}}
+          />
+          <Input label={label} value="" onChange={() => {}} />
+        </StyledGroup>
       </div>
       <div>
         <Text type="bold-label">Empty:</Text>
-        <Textarea
-          error={error}
-          helpText={helpText}
-          label={label}
-          onChange={e => setValue(e.target.value)}
-          placeholder={placeholder}
-        />
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            label={label}
+            value=""
+            onChange={() => {}}
+            placeholder={placeholder}
+          />
+          <Input label={label} value="" onChange={() => {}} />
+        </StyledGroup>
       </div>
       <div>
         <Text type="bold-label">Editable:</Text>
-        <Textarea
-          error={error}
-          helpText={helpText}
-          label={label}
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          placeholder={placeholder}
-        />
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            label={label}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder={placeholder}
+          />
+          <Input
+            label={label}
+            value={value?.toString() || ''}
+            onChange={e => setValue(e.target.value)}
+          />
+        </StyledGroup>
       </div>
       <div>
         <Text type="bold-label">Read only:</Text>
-        <Textarea
-          error={error}
-          helpText={helpText}
-          label={label}
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          placeholder={placeholder}
-          readOnly
-        />
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            label={label}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder={placeholder}
+            readOnly
+          />
+          <Input
+            label={label}
+            value={value?.toString() || ''}
+            onChange={e => setValue(e.target.value)}
+          />
+        </StyledGroup>
       </div>
       <div>
         <Text type="bold-label">Disabled:</Text>
-        <Textarea
-          error={error}
-          disabled
-          helpText={helpText}
-          label={label}
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          placeholder={placeholder}
-          readOnly
-        />
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            disabled
+            helpText={helpText}
+            label={label}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder={placeholder}
+            readOnly
+          />
+          <Input
+            label={label}
+            value={value?.toString() || ''}
+            disabled
+            onChange={e => setValue(e.target.value)}
+          />
+        </StyledGroup>
       </div>
     </div>
   );

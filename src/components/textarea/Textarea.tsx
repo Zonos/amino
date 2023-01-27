@@ -37,19 +37,23 @@ const StyledBorder = styled.div`
 `;
 
 const StyledLabelInput = styled.label`
-  display: block;
-  color: ${theme.gray700};
-  font-size: ${theme.fontSizeS};
+  color: ${theme.gray800};
+  font-size: ${theme.fontSizeBase};
   line-height: ${theme.fontSizeBase};
-  z-index: 2;
-  margin-left: ${theme.space16};
-  margin-top: 12px;
+  position: absolute;
+  filter: blur(0);
+  top: calc(${theme.fontSizeBase} + 6px);
+  transform-origin: left top;
+  transition: ${theme.transition};
+  left: ${theme.space16};
+  z-index: 3;
 `;
 
 const StyledTextarea = styled.textarea<TextareaType>`
   box-sizing: border-box;
   position: relative;
   padding: 0 ${theme.space16};
+  transition: ${theme.transition};
   outline: none;
   order: 2;
   width: 100%;
@@ -67,22 +71,34 @@ const StyledTextarea = styled.textarea<TextareaType>`
     }
   }
   &.has-label {
-    margin-top: ${theme.space4};
-    padding: 0 ${theme.space4} ${theme.space8} ${theme.space16};
+    padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
   }
+
   ::placeholder {
+    transition: ${theme.transition};
+    opacity: 0;
     color: ${theme.gray400};
     font-weight: 400;
+  }
+  &.has-content,
+  &:focus {
+    &::placeholder {
+      opacity: 0.6;
+    }
+    & + ${StyledLabelInput} {
+      top: 11px;
+      transform: scale(0.8);
+    }
   }
 
   :focus {
     outline: none;
-    & + ${StyledBorder}::after {
+    & ~ ${StyledBorder}::after {
       box-shadow: ${theme.glowBlue};
     }
   }
 
-  &.has-error + ${StyledBorder}::after {
+  &.has-error ~ ${StyledBorder}::after {
     box-shadow: ${theme.glowError};
   }
 `;
@@ -131,7 +147,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         }`}
       >
         <Fields>
-          <StyledLabelInput data-label={label}>{label}</StyledLabelInput>
           <StyledTextarea
             className={[
               error ? 'has-error' : '',
@@ -145,6 +160,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             value={value}
             {...props}
           />
+          <StyledLabelInput data-label={label}>{label}</StyledLabelInput>
           <StyledBorder />
         </Fields>
         <HelpText error={error} helpText={helpText} />
