@@ -9,7 +9,7 @@ export const Menu = styled.ul`
   hr {
     border: 0;
     border-bottom: ${theme.border};
-    margin-top: ${theme.radius};
-    margin-bottom: ${theme.radius};
+    margin-top: ${theme.radius6};
+    margin-bottom: ${theme.radius6};
   }
 `;

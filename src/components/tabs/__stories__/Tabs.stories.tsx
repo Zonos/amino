@@ -1,6 +1,8 @@
 import { useState } from '@storybook/addons';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { VStack } from 'src/components/stack/VStack';
 import { Tabs, TabsProps } from 'src/components/tabs/Tabs';
+import { Text } from 'src/components/text/Text';
 
 const TabsMeta: Meta = {
   component: Tabs,
@@ -8,19 +10,28 @@ const TabsMeta: Meta = {
 
 export default TabsMeta;
 
-const Template: Story<TabsProps> = ({
-  items,
-  selected: _selected,
-}: TabsProps) => {
-  const [selected, setSelected] = useState(_selected);
+const items = ['Tab 1', 'Tab 2', 'Tab 3'];
+
+const Template: Story<TabsProps> = props => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <Tabs items={items} selected={selected} onChange={t => setSelected(t)} />
+    <VStack>
+      <Tabs
+        {...props}
+        items={items}
+        selected={selectedIndex}
+        onChange={setSelectedIndex}
+      />
+      <Text type="bold-label">{items[selectedIndex]}</Text>
+    </VStack>
   );
 };
 
 export const BasicTabs = Template.bind({});
-BasicTabs.args = {
-  items: ['Tab 1', 'Tab 2', 'Tab 3'],
-  selected: 0,
+
+export const Subtle = Template.bind({});
+Subtle.args = {
+  subtle: true,
+  align: 'center',
 };

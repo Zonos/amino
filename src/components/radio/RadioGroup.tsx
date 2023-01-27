@@ -7,7 +7,7 @@ import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
   * {
-    margin-bottom: ${theme.spaceHalf};
+    margin-bottom: ${theme.space16};
   }
 
   *:last-of-type {

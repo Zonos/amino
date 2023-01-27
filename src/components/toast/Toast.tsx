@@ -10,40 +10,40 @@ import { Intent } from 'src/types';
 import styled from 'styled-components';
 
 const AminoToast = styled(motion.div)`
-  background: ${theme.grayL80};
+  background: ${theme.gray100};
   z-index: 999999;
-  border-radius: ${theme.radiusLg};
-  color: ${theme.grayD80};
+  border-radius: ${theme.radius8};
+  color: ${theme.gray1000};
   box-shadow: ${theme.v3ShadowLarge};
-  padding: ${theme.spaceHalf} ${theme.space};
+  padding: ${theme.space16} ${theme.space24};
   display: flex;
   align-items: center;
-  gap: ${theme.spaceQuarter};
+  gap: ${theme.space8};
   font-weight: 500;
   user-select: none;
 
   & + & {
-    margin-top: ${theme.space};
+    margin-top: ${theme.space24};
   }
 `;
 
 const AminoSuccessToast = styled(AminoToast)`
-  background-color: ${theme.greenL80};
-  color: ${theme.greenD40};
+  background-color: ${theme.green100};
+  color: ${theme.green800};
 `;
 
 const AminoErrorToast = styled(AminoToast)`
-  background-color: ${theme.redL80};
-  color: ${theme.redD40};
+  background-color: ${theme.red100};
+  color: ${theme.red800};
 `;
 
 const AminoWarningToast = styled(AminoToast)`
-  background-color: ${theme.orangeL80};
-  color: ${theme.orangeD40};
+  background-color: ${theme.orange100};
+  color: ${theme.orange800};
 `;
 const AminoInfoToast = styled(AminoToast)`
-  background-color: ${theme.blueL80};
-  color: ${theme.blueD40};
+  background-color: ${theme.blue100};
+  color: ${theme.blue800};
 `;
 
 export type ToastProps = {

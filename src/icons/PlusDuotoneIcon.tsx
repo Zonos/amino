@@ -1,31 +1,23 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
-import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
-export const PlusDuotoneIcon = forwardRef<
-  SVGSVGElement,
-  IconProps & { secondaryColor?: Color }
->(({ size, color, className, secondaryColor }, ref) => (
-  <IconBase
-    ref={ref}
-    size={size}
-    color={color}
-    className={className}
-    viewBox="0 0 24 24"
-  >
-    <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
-    />
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M12 7a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H8a1 1 0 1 1 0-2h3V8a1 1 0 0 1 1-1Z"
-      clipRule="evenodd"
-    />
-  </IconBase>
-));
+export const PlusDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ size, color, className }, ref) => (
+    <IconBase
+      ref={ref}
+      size={size}
+      color={color}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M12 5a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-5v5a1 1 0 1 1-2 0v-5H6a1 1 0 1 1 0-2h5V6a1 1 0 0 1 1-1Z"
+        clipRule="evenodd"
+      />
+    </IconBase>
+  )
+);

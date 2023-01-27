@@ -17,16 +17,17 @@ export const LockDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill="currentColor"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      data-is-secondary-color="true"
       fillRule="evenodd"
-      d="M8 6a4 4 0 1 1 8 0v3h-2V6a2 2 0 1 0-4 0v3H8V6Z"
+      d="M4 12a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-6Z"
       clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M16.318 8H7.682c-.593 0-1.105 0-1.526.033-.445.035-.888.112-1.313.32a3.306 3.306 0 0 0-1.475 1.411c-.217.408-.297.831-.334 1.257C3 11.424 3 11.914 3 12.48v5.037c0 .568 0 1.058.034 1.461.037.426.117.85.334 1.257.323.608.84 1.102 1.475 1.412.425.207.868.284 1.313.32.421.032.933.032 1.526.032h8.636c.593 0 1.105 0 1.526-.033.445-.035.887-.111 1.313-.32a3.306 3.306 0 0 0 1.475-1.411c.217-.408.297-.831.334-1.257.034-.403.034-.893.034-1.46v-5.037c0-.568 0-1.058-.034-1.461-.037-.426-.117-.85-.334-1.257a3.306 3.306 0 0 0-1.475-1.412c-.425-.207-.868-.284-1.313-.32A21.04 21.04 0 0 0 16.318 8Z"
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M11 5a1 1 0 0 0-1 1v3H8V6a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v3h-2V6a1 1 0 0 0-1-1h-2Zm1 9a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Z"
+      clipRule="evenodd"
     />
-    <path fill="currentColor" d="M11 16a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Z" />
   </IconBase>
 ));

@@ -17,13 +17,17 @@ export const PlayCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
-      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+      fillRule="evenodd"
+      d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M9 9.003a1 1 0 0 1 1.513-.858l4.997 2.988a1.01 1.01 0 0 1 0 1.734l-4.997 2.988A1 1 0 0 1 9 14.997V9.003Z"
+      fillRule="evenodd"
+      d="M9.5 9.187a1.1 1.1 0 0 1 1.71-.915l4.22 2.813a1.1 1.1 0 0 1 0 1.83l-4.22 2.813a1.1 1.1 0 0 1-1.71-.915V9.187Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));

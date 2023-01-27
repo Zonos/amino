@@ -35,12 +35,12 @@ describe(`Make sure to find color in the svg's fill and throw error if it occurs
 
         /** @deprecated use blue100 instead */
         'blue-l80': 'var(--amino-blue-100)',
+        /** @deprecated use blue200 instead */
+        'blue-l60': 'var(--amino-blue-200)',
         /** @deprecated use blue300 instead */
-        'blue-l60': 'var(--amino-blue-300)',
+        'blue-l40': 'var(--amino-blue-300)',
         /** @deprecated use blue400 instead */
-        'blue-l40': 'var(--amino-blue-400)',
-        /** @deprecated use blue500 instead */
-        'blue-l20': 'var(--amino-blue-500)',
+        'blue-l20': 'var(--amino-blue-400)',
         /** @deprecated use blue600 instead */
         'blue-base': 'var(--amino-blue-600)',
         /** @deprecated use blue700 instead */
@@ -91,12 +91,12 @@ describe(`Make sure to find color in the svg's fill and throw error if it occurs
 
         /** @deprecated use black100 instead */
         'black-l80': 'var(--amino-black-100)',
+        /** @deprecated use black200 instead */
+        'black-l60': 'var(--amino-black-200)',
         /** @deprecated use black300 instead */
-        'black-l60': 'var(--amino-black-300)',
+        'black-l40': 'var(--amino-black-300)',
         /** @deprecated use black400 instead */
-        'black-l40': 'var(--amino-black-400)',
-        /** @deprecated use black500 instead */
-        'black-l20': 'var(--amino-black-500)',
+        'black-l20': 'var(--amino-black-400)',
         /** @deprecated use black600 instead */
         'black-base': 'var(--amino-black-600)',
         /** @deprecated use black700 instead */

@@ -22,12 +22,12 @@ export const blue = {
 
   /** @deprecated use blue100 instead */
   'blue-l80': 'var(--amino-blue-100)',
+  /** @deprecated use blue200 instead */
+  'blue-l60': 'var(--amino-blue-200)',
   /** @deprecated use blue300 instead */
-  'blue-l60': 'var(--amino-blue-300)',
+  'blue-l40': 'var(--amino-blue-300)',
   /** @deprecated use blue400 instead */
-  'blue-l40': 'var(--amino-blue-400)',
-  /** @deprecated use blue500 instead */
-  'blue-l20': 'var(--amino-blue-500)',
+  'blue-l20': 'var(--amino-blue-400)',
   /** @deprecated use blue600 instead */
   'blue-base': 'var(--amino-blue-600)',
   /** @deprecated use blue700 instead */

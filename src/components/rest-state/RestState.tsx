@@ -19,17 +19,24 @@ const StyledRestState = styled.div`
 const Icon = styled.img`
   width: 100px;
   height: auto;
-  margin-bottom: ${theme.spaceHalf};
+  margin-bottom: ${theme.space16};
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${theme.space8};
 `;
 
 const Action = styled.div`
-  margin-top: ${theme.space};
-  margin-bottom: ${theme.spaceQuarter};
+  margin-top: ${theme.space24};
+  margin-bottom: ${theme.space8};
 `;
 
 export type RestStateProps = {
   label: string;
-  subtitle: string;
+  subtitle?: string;
   action?: ReactNode;
   icon?: string;
   className?: string;
@@ -44,8 +51,10 @@ export const RestState = ({
 }: RestStateProps) => (
   <StyledRestState className={className}>
     {icon ? <Icon src={icon} /> : null}
-    <Text type="title">{label}</Text>
-    <Text type="subtitle">{subtitle}</Text>
-    {action ? <Action>{action}</Action> : null}
+    <TextWrapper>
+      <Text type="title">{label}</Text>
+      {subtitle && <Text type="subtitle">{subtitle}</Text>}
+      {action ? <Action>{action}</Action> : null}
+    </TextWrapper>
   </StyledRestState>
 );

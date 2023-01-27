@@ -14,7 +14,9 @@ export const PlayDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M8.722 2.547C6.733 1.154 4 2.576 4 5.004v13.993c0 2.427 2.733 3.85 4.722 2.456l10.008-7.012c1.693-1.187 1.693-3.695 0-4.881L8.722 2.547Z"
+        fillRule="evenodd"
+        d="M4 5.608c0-2.356 2.592-3.792 4.59-2.544l10.226 6.392c1.88 1.175 1.88 3.913 0 5.088L8.59 20.935C6.592 22.185 4 20.748 4 18.391V5.608Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

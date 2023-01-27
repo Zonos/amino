@@ -14,7 +14,9 @@ export const DragIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M5 9a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
+        fillRule="evenodd"
+        d="M3.9 9A1.1 1.1 0 0 1 5 7.9h14a1.1 1.1 0 0 1 0 2.2H5A1.1 1.1 0 0 1 3.9 9Zm0 6A1.1 1.1 0 0 1 5 13.9h14a1.1 1.1 0 0 1 0 2.2H5A1.1 1.1 0 0 1 3.9 15Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

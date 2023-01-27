@@ -35,7 +35,7 @@ type AvartarBaseProps = AvatarProps & {
 };
 
 export const AvatarBase = styled.div<AvartarBaseProps>`
-  background-color: ${theme.grayL80};
+  background-color: ${theme.gray100};
   display: flex;
   justify-content: center;
   align-items: center;

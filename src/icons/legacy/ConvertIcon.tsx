@@ -12,4 +12,5 @@ export const ConvertIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 ConvertIcon.deprecated = true;

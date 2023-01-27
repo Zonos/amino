@@ -11,13 +11,13 @@ interface AminoListItemProps {
 }
 
 const AminoListItem = styled.div<AminoListItemProps>`
-  padding: ${theme.spaceQuarter} ${theme.spaceHalf};
+  padding: ${theme.space8} ${theme.space16};
   display: flex;
   flex-direction: row;
-  gap: ${theme.spaceHalf};
+  gap: ${theme.space16};
   align-items: center;
   min-height: ${theme.sizeXl};
-  border-radius: ${theme.radiusLg};
+  border-radius: ${theme.radius8};
   line-height: 16px;
 
   .___icon-wrapper {
@@ -31,14 +31,14 @@ const AminoListItem = styled.div<AminoListItemProps>`
     !disabled &&
     selected &&
     css`
-      background-color: ${theme.blueL80};
-      color: ${theme.blueD40};
+      background-color: ${theme.blue100};
+      color: ${theme.blue800};
     `}
 
   ${({ disabled }) =>
     disabled &&
     css`
-      color: ${theme.grayBase};
+      color: ${theme.gray600};
       cursor: not-allowed;
     `}
 
@@ -48,7 +48,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
       withClick &&
       !selected &&
       css`
-        background-color: ${theme.grayL80};
+        background-color: ${theme.gray100};
         cursor: pointer;
       `}
   }
@@ -63,10 +63,10 @@ const TextContainer = styled.div`
 `;
 
 const Icon = styled.img`
-  margin-right: ${theme.spaceHalf};
+  margin-right: ${theme.space16};
   width: 32px;
   height: 32px;
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
 `;
 
 export type Props = {
@@ -114,7 +114,9 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       subtitle,
       rightDecorator,
       onClick,
+      // eslint-disable-next-line deprecation/deprecation
       icon,
+      // eslint-disable-next-line deprecation/deprecation
       iconComponent,
     },
     ref

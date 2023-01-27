@@ -1,13 +1,13 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
-  Spinner,
+  Spinner as SpinnerComponent,
   SpinnerColor,
   SpinnerProps,
 } from 'src/components/spinner/Spinner';
 import styled from 'styled-components';
 
 const SpinnerMeta: Meta = {
-  component: Spinner,
+  component: SpinnerComponent,
 };
 
 export default SpinnerMeta;
@@ -29,13 +29,13 @@ const Template: Story<SpinnerProps> = ({
   ...props
 }: SpinnerProps) => (
   <Wrapper color={color}>
-    <Spinner size={size && size - 10} color={color} {...props} />
-    <Spinner size={size} color={color} {...props} />
-    <Spinner size={size && size + 10} color={color} {...props} />
+    <SpinnerComponent size={size && size - 10} color={color} {...props} />
+    <SpinnerComponent size={size} color={color} {...props} />
+    <SpinnerComponent size={size && size + 10} color={color} {...props} />
   </Wrapper>
 );
 
-export const BasicSpinner = Template.bind({});
-BasicSpinner.args = {
+export const Spinner = Template.bind({});
+Spinner.args = {
   size: 32,
 };

@@ -21,16 +21,16 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   order: 1;
   &::before {
     content: attr(data-label);
-    color: ${theme.grayD40};
+    color: ${theme.gray800};
     position: absolute;
-    font-size: ${theme.textBase};
-    line-height: ${theme.textBase};
+    font-size: ${theme.fontSizeBase};
+    line-height: ${theme.fontSizeBase};
     display: inline-block;
     filter: blur(0);
     transform-origin: left top;
     transition: ${theme.transition};
-    margin-left: ${theme.spaceHalf};
-    top: calc(50% - ${theme.textBase} / 2);
+    margin-left: ${theme.space16};
+    top: calc(50% - ${theme.fontSizeBase} / 2);
     z-index: 1;
   }
   &::after {
@@ -40,16 +40,24 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     right: 0;
     top: 0;
     bottom: 0;
-    border-radius: ${theme.radius};
+    border-radius: ${theme.radius6};
+  }
+  /** disabled state */
+  .disabled & {
+    pointer-events: inherit;
+    ::after {
+      cursor: not-allowed;
+      z-index: 1;
+    }
   }
 `;
 
 const InputDecorator = styled.div`
-  font-size: ${theme.textSm};
-  line-height: ${theme.textSm};
+  font-size: ${theme.fontSizeS};
+  line-height: ${theme.fontSizeS};
   font-weight: 500;
   background: transparent;
-  padding: 0 ${theme.spaceHalf};
+  padding: 0 ${theme.space16};
   font-weight: 700;
   flex-basis: 50px;
   display: flex;
@@ -58,23 +66,23 @@ const InputDecorator = styled.div`
 `;
 
 const InputPrefix = styled(InputDecorator)`
-  border-top-left-radius: ${theme.radius};
-  border-bottom-left-radius: ${theme.radius};
+  border-top-left-radius: ${theme.radius6};
+  border-bottom-left-radius: ${theme.radius6};
 `;
 
 const InputSuffix = styled(InputDecorator)`
   order: 3;
-  border-top-right-radius: ${theme.radius};
-  border-bottom-right-radius: ${theme.radius};
+  border-top-right-radius: ${theme.radius6};
+  border-bottom-right-radius: ${theme.radius6};
 `;
 
 export const InputValuePrefix = styled.div`
   display: flex;
   order: 2;
   align-items: flex-end;
-  padding-left: ${theme.spaceHalf};
-  padding-bottom: calc(${theme.spaceQuarter});
-  color: ${theme.grayD40};
+  padding-left: ${theme.space16};
+  padding-bottom: calc(${theme.space8});
+  color: ${theme.gray800};
   white-space: nowrap;
 `;
 
@@ -87,24 +95,24 @@ const AminoInput = styled.input<TypeInput>`
   height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
   box-sizing: border-box;
   position: relative;
-  padding: 0 ${theme.spaceHalf};
+  padding: 0 ${theme.space16};
   outline: none;
   transition: ${theme.transition};
   width: 100%;
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   background: ${theme.inputBackground};
   border: 0;
   order: 2;
   font-weight: 500;
 
   :-internal-autofill-selected {
-    border-radius: ${theme.radius} 0 0 ${theme.radius};
+    border-radius: ${theme.radius6} 0 0 ${theme.radius6};
     && + label + div {
       background-color: #e8f0fe;
     }
   }
   &.has-label {
-    padding: ${theme.space} 4px ${theme.spaceQuarter} ${theme.spaceHalf};
+    padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
     &.has-input-prefix {
       padding-left: 0;
       & + ${StyledLabelInput}::before {
@@ -156,7 +164,7 @@ const StyledLabelWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   background: ${theme.inputBackground};
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
 
   &.sm ${AminoInput}.has-label {
     padding-top: 13px;

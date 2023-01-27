@@ -15,12 +15,8 @@ export const ExclamationMarkIcon = forwardRef<SVGSVGElement, IconProps>(
       <path
         fill="currentColor"
         fillRule="evenodd"
-        d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
+        d="M12 19.9a7.9 7.9 0 1 0 0-15.8 7.9 7.9 0 0 0 0 15.8ZM22.1 12c0 5.578-4.522 10.1-10.1 10.1-5.578 0-10.1-4.522-10.1-10.1C1.9 6.422 6.422 1.9 12 1.9c5.578 0 10.1 4.522 10.1 10.1ZM12 17.11a1.1 1.1 0 0 1-1.1-1.1V16a1.1 1.1 0 0 1 2.2 0v.01a1.1 1.1 0 0 1-1.1 1.1Zm0-4.01a1.1 1.1 0 0 1-1.1-1.1V8a1.1 1.1 0 0 1 2.2 0v4a1.1 1.1 0 0 1-1.1 1.1Z"
         clipRule="evenodd"
-      />
-      <path
-        fill="currentColor"
-        d="M13 8a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0V8Zm-1 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
       />
     </IconBase>
   )

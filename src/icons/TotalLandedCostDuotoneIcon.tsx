@@ -14,15 +14,10 @@ export const TotalLandedCostDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M13 14.5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Z"
-      />
-      <path
-        fill="currentColor"
         fillRule="evenodd"
-        d="M10.742 1.496c.767-1.328 2.685-1.328 3.452 0l3.472 6.015c.767 1.328-.191 2.989-1.725 2.989H8.996c-1.534 0-2.493-1.66-1.726-2.99l3.472-6.014Z"
+        d="M10.728 2.148a1.5 1.5 0 0 1 2.544 0l4.098 6.557A1.5 1.5 0 0 1 16.098 11H7.902A1.5 1.5 0 0 1 6.63 8.705l4.098-6.557ZM1 18a5 5 0 1 1 10 0 5 5 0 0 1-10 0Zm12-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Z"
         clipRule="evenodd"
       />
-      <path fill="currentColor" d="M1 17.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" />
     </IconBase>
   )
 );

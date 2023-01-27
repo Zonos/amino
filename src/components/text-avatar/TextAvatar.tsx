@@ -20,12 +20,12 @@ const GradientSquare = styled.div.attrs<GradientSquareType>(
 )<GradientSquareType>`
   width: 32px;
   height: 32px;
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  color: ${theme.grayD80} !important;
+  color: ${theme.gray1000};
   font-weight: 500;
 `;
 
@@ -52,6 +52,6 @@ export const TextAvatar = ({ label }: TextAvatarProps) => (
       30
     )}
   >
-    {(label && label[0].toUpperCase()) || 'D'}
+    {(label && label[0]?.toUpperCase()) || 'D'}
   </GradientSquare>
 );

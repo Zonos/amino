@@ -21,8 +21,8 @@ export const colorContrasts = [
   '1000',
 ] as const;
 
-type ColorContrast = typeof colorContrasts[number];
-type ColorPrefix = typeof colorPrefixes[number];
+export type ColorContrast = typeof colorContrasts[number];
+export type ColorPrefix = typeof colorPrefixes[number];
 export type Color =
   | `${ColorPrefix}${ColorContrast}`
   | 'black'

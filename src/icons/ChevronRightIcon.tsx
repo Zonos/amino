@@ -14,7 +14,9 @@ export const ChevronRightIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         fill="currentColor"
-        d="M8.633 18.435a1 1 0 0 0 1.414 0l5.657-5.657a1 1 0 0 0 0-1.414l-5.657-5.657a1 1 0 1 0-1.414 1.414l4.95 4.95-4.95 4.95a1 1 0 0 0 0 1.414Z"
+        fillRule="evenodd"
+        d="M8.507 18.435a1.1 1.1 0 0 1 0-1.556L13.386 12l-4.88-4.879a1.1 1.1 0 0 1 1.556-1.556l5.587 5.587a1.2 1.2 0 0 1 0 1.697l-5.587 5.586a1.1 1.1 0 0 1-1.555 0Z"
+        clipRule="evenodd"
       />
     </IconBase>
   )

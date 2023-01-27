@@ -16,23 +16,17 @@ export const BellOffDuotoneIcon = forwardRef<
     className={className}
     viewBox="0 0 24 24"
   >
-    <path fill="currentColor" d="M10 20h4a2 2 0 1 1-4 0Z" />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       fillRule="evenodd"
-      d="M6.882 6.883c-.564.922-.882 2-.882 3.132v3.32c0 .734-.345 1.425-.932 1.866C3.021 16.741 4.11 20 6.671 20h10.657c.787 0 1.434-.307 1.895-.777L6.883 6.883Z"
+      d="M12 2a1 1 0 0 1 1 1v1.083c2.838.476 5 2.944 5 5.917v1a1 1 0 1 1-2 0v-1a4 4 0 0 0-4-4h-2a1 1 0 0 1 0-2h1V3a1 1 0 0 1 1-1ZM6 4.586 21.414 20H8.253C5.891 20 4 18.05 4 15.715c0-1.145.474-2.258 1.318-3.046.435-.406.682-.975.682-1.57V4.586Z"
       clipRule="evenodd"
-    />
-    <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M12 2a1 1 0 0 0-1 1v1a1 1 0 1 0 0 2h1a4 4 0 0 1 4 4v1a1 1 0 1 0 2 0v-1a6.002 6.002 0 0 0-5-5.917V3a1 1 0 0 0-1-1Z"
     />
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M2.293 2.293a1 1 0 0 1 1.414 0l18 18a1 1 0 0 1-1.414 1.414l-18-18a1 1 0 0 1 0-1.414Z"
+      d="M2.293 2.293a1 1 0 0 1 1.414 0l18 18a1 1 0 0 1-1.414 1.414l-18-18a1 1 0 0 1 0-1.414ZM12 22a2 2 0 0 1-2-2h4a2 2 0 0 1-2 2Z"
       clipRule="evenodd"
     />
   </IconBase>

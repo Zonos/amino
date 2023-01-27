@@ -12,6 +12,7 @@ import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
 const TransparentCoverSheet = styled(CoverSheet)`
+  /* framer-motion inlines the opacity style */
   opacity: 0.9 !important;
 `;
 const StyledButton = styled(Button)``;

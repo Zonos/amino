@@ -17,13 +17,15 @@ export const BoxesDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
-      d="M10 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4ZM3 14a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4Zm10 0a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4Z"
+      fillRule="evenodd"
+      d="M6.333 5a2 2 0 0 1 2-2h7.334a2 2 0 0 1 2 2v4.578H18a2 2 0 0 1 2 2V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.422a2 2 0 0 1 2-2h.333V5Z"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M11 2h2v2a1 1 0 1 1-2 0V2ZM6 12h2v2a1 1 0 1 1-2 0v-2Zm12 0h-2v2a1 1 0 1 0 2 0v-2Z"
+      d="M6 9.578a2 2 0 0 0-2 2h7v2.2a1 1 0 1 0 2 0v-2.2h7a2 2 0 0 0-2-2H6ZM17.667 5H13v.778a1 1 0 1 1-2 0V5H6.333a2 2 0 0 1 2-2h7.334a2 2 0 0 1 2 2Z"
     />
   </IconBase>
 ));

@@ -24,7 +24,7 @@ export const CW = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
         <path fill="#002b7f" d="M0 0h768v512H0z" />
         <path fill="#f9e814" d="M0 320h768v64H0z" />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
           width="13500"
           height="9000"
           x="2"
@@ -33,7 +33,7 @@ export const CW = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
           transform="scale(42.67)"
         />
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[1]}`}
           width="13500"
           height="9000"
           x="3"

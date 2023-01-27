@@ -17,13 +17,17 @@ export const ExclamationMarkDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
-      d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Z"
+      fillRule="evenodd"
+      d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M13 8a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0V8Zm-2 8a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"
+      fillRule="evenodd"
+      d="M12 17.01a1 1 0 0 1-1-1V16a1 1 0 1 1 2 0v.01a1 1 0 0 1-1 1ZM12 13a1 1 0 0 1-1-1V8a1 1 0 1 1 2 0v4a1 1 0 0 1-1 1Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));

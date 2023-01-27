@@ -43,10 +43,10 @@ const RightIconLabel = styled.div`
 `;
 
 const ExpandedItemCard = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
   padding-left: 44px;
   border: ${theme.border};
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
 `;
 const ExpandedTableCard = styled(ExpandedItemCard)`
   padding: 8px;

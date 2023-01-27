@@ -102,7 +102,7 @@ export type BannerProps = {
   title?: ReactNode;
   footerActions?: ReactNode;
   headerActions?: ReactNode;
-  intent?: Intent;
+  intent?: Exclude<Intent, 'danger' | 'secondary' | 'primary'>;
   onClose?: () => void;
 };
 

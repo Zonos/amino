@@ -17,13 +17,17 @@ export const MonitorDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill="currentColor"
-      d="M7 20a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      data-is-secondary-color="true"
+      fillRule="evenodd"
+      d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6Z"
+      clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M7.8 17c-1.68 0-2.52 0-3.162-.327a3 3 0 0 1-1.311-1.311C3 14.72 3 13.88 3 12.2V7.8c0-1.68 0-2.52.327-3.162a3 3 0 0 1 1.311-1.311C5.28 3 6.12 3 7.8 3h8.4c1.68 0 2.52 0 3.162.327a3 3 0 0 1 1.311 1.311C21 5.28 21 6.12 21 7.8v4.4c0 1.68 0 2.52-.327 3.162a3 3 0 0 1-1.311 1.311C18.72 17 17.88 17 16.2 17H7.8Z"
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M13 17v2h4a1 1 0 1 1 0 2H7a1 1 0 1 1 0-2h4v-2h2Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));

@@ -17,10 +17,17 @@ export const LocationDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
-      d="M12 2a9 9 0 0 0-9 9c0 3.026 1.81 5.592 3.895 7.399l3.441 2.983a2.54 2.54 0 0 0 3.328 0l3.44-2.983C19.19 16.592 21 14.026 21 11a9 9 0 0 0-9-9Z"
+      fillRule="evenodd"
+      d="M3 11a9 9 0 0 1 18 0c0 2.522-1.672 4.88-3.349 6.645-1.718 1.809-3.653 3.213-4.566 3.837a1.92 1.92 0 0 1-2.17 0c-.913-.624-2.848-2.028-4.566-3.837C4.672 15.88 3 13.522 3 11Z"
+      clipRule="evenodd"
     />
-    <path fill="currentColor" d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M10 10a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z"
+      clipRule="evenodd"
+    />
   </IconBase>
 ));

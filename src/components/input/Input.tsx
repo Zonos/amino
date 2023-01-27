@@ -20,10 +20,10 @@ import { PasswordInput } from './input-type/_PasswordInput';
 import { TimeInput } from './input-type/_TimeInput';
 
 const Fields = styled.div`
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   border: ${theme.border};
   &:hover {
-    border: 1px solid ${theme.grayL40};
+    border: 1px solid ${theme.gray300};
   }
 `;
 
@@ -38,9 +38,7 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 
   &.disabled {
-    cursor: not-allowed;
     opacity: 0.4;
-    user-select: none;
   }
 `;
 

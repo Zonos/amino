@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
@@ -25,7 +25,7 @@ const StyledTableRow = styled(TableRow)<{
     css`
       cursor: pointer;
       :hover {
-        background: ${theme.grayL80};
+        background: ${theme.gray100};
       }
     `}
 `;
@@ -42,13 +42,15 @@ const ExpandableCell = styled(TableCell)<{ isExpand: boolean }>`
 `;
 
 export type TableRowCollapseProps = {
+  className?: string;
   children?: ReactNode;
-  handleExpandClick: () => void;
+  handleExpandClick: MouseEventHandler<HTMLTableRowElement>;
   isExpand: boolean;
   rowContent: ReactNode;
 };
 
 export const TableRowCollapse = ({
+  className,
   children,
   handleExpandClick,
   isExpand,
@@ -60,7 +62,8 @@ export const TableRowCollapse = ({
       <StyledTableRow
         isExpandable={isExpandable}
         isExpand={isExpand}
-        onClick={() => isExpandable && handleExpandClick()}
+        onClick={e => isExpandable && handleExpandClick(e)}
+        className={className}
       >
         {rowContent}
         <TableCell align="right">

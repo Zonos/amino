@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
   RichCheckbox,
@@ -12,9 +14,24 @@ const RichCheckboxMeta: Meta = {
 export default RichCheckboxMeta;
 
 const Template: Story<RichCheckboxProps> = ({
-  onClick,
-  items,
-}: RichCheckboxProps) => <RichCheckbox items={items} onClick={onClick} />;
+  items: _items,
+}: RichCheckboxProps) => {
+  const [items, setItems] = useState(_items);
+
+  return (
+    <RichCheckbox
+      items={items}
+      onClick={value =>
+        setItems(
+          items.map(item => ({
+            ...item,
+            checked: item.value === value ? !item.checked : item.checked,
+          }))
+        )
+      }
+    />
+  );
+};
 
 export const BasicRichCheckbox = Template.bind({});
 BasicRichCheckbox.args = {

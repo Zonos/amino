@@ -24,40 +24,46 @@ export const UZ = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
               <g id={`${ids[3]}`}>
                 <path id={`${ids[4]}`} d="M0-6-1.9-.3 1 .7" />
                 <use
-                  xlinkHref="#a"
+                  xlinkHref={`#${ids[4]}`}
                   width="100%"
                   height="100%"
                   transform="scale(-1 1)"
                 />
               </g>
               <use
-                xlinkHref="#b"
+                xlinkHref={`#${ids[3]}`}
                 width="100%"
                 height="100%"
                 transform="rotate(72)"
               />
             </g>
             <use
-              xlinkHref="#b"
+              xlinkHref={`#${ids[3]}`}
               width="100%"
               height="100%"
               transform="rotate(-72)"
             />
             <use
-              xlinkHref="#c"
+              xlinkHref={`#${ids[2]}`}
               width="100%"
               height="100%"
               transform="rotate(144)"
             />
           </g>
-          <use xlinkHref="#d" width="100%" height="100%" y="-24" />
-          <use xlinkHref="#d" width="100%" height="100%" y="-48" />
+          <use xlinkHref={`#${ids[1]}`} width="100%" height="100%" y="-24" />
+          <use xlinkHref={`#${ids[1]}`} width="100%" height="100%" y="-48" />
         </g>
-        <use xlinkHref="#e" width="100%" height="100%" x="24" />
-        <use xlinkHref="#e" width="100%" height="100%" x="48" />
-        <use xlinkHref="#d" width="100%" height="100%" x="-48" />
-        <use xlinkHref="#d" width="100%" height="100%" x="-24" />
-        <use xlinkHref="#d" width="100%" height="100%" x="-24" y="-24" />
+        <use xlinkHref={`#${ids[0]}`} width="100%" height="100%" x="24" />
+        <use xlinkHref={`#${ids[0]}`} width="100%" height="100%" x="48" />
+        <use xlinkHref={`#${ids[1]}`} width="100%" height="100%" x="-48" />
+        <use xlinkHref={`#${ids[1]}`} width="100%" height="100%" x="-24" />
+        <use
+          xlinkHref={`#${ids[1]}`}
+          width="100%"
+          height="100%"
+          x="-24"
+          y="-24"
+        />
       </g>
     </FlagIconBase>
   );

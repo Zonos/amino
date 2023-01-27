@@ -11,4 +11,5 @@ export const BoxIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 BoxIcon.deprecated = true;

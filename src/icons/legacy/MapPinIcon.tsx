@@ -16,4 +16,5 @@ export const MapPinIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 MapPinIcon.deprecated = true;

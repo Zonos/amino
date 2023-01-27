@@ -22,14 +22,14 @@ export const RW = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
             d="M116.1 0 35.7 4.7l76.4 25.4-78.8-16.3L100.6 58l-72-36.2L82 82.1 21.9 28.6l36.2 72-44.3-67.3L30 112 4.7 35.7 0 116.1-1-1z"
           />
           <use
-            xlinkHref="#a"
+            xlinkHref={`#${ids[1]}`}
             width="100%"
             height="100%"
             transform="scale(1 -1)"
           />
         </g>
         <use
-          xlinkHref="#b"
+          xlinkHref={`#${ids[0]}`}
           width="100%"
           height="100%"
           transform="scale(-1 1)"

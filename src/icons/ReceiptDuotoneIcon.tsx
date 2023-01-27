@@ -17,19 +17,17 @@ export const ReceiptDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
-      d="M5 4h14v16.5a.5.5 0 0 1-.692.462l-1.988-.829a1 1 0 0 0-.654-.04l-2.857.8a2.999 2.999 0 0 1-1.618 0l-2.857-.8a1 1 0 0 0-.654.04l-1.988.829A.5.5 0 0 1 5 20.5V4Z"
-    />
-    <path
-      fill="currentColor"
       fillRule="evenodd"
-      d="M9 9a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2H9Zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-7 5a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm7-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"
+      d="M4 3h16v16.168C20 20.18 19.18 21 18.168 21c-.307 0-.607-.09-.862-.261l-1.751-1.167a1 1 0 0 0-1.11 0l-.78.52a3 3 0 0 1-3.33 0l-.78-.52a1 1 0 0 0-1.11 0l-1.75 1.167a1.56 1.56 0 0 1-.863.261A1.832 1.832 0 0 1 4 19.168V3Z"
       clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      d="M3 4a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z"
+      fillRule="evenodd"
+      d="M3 4a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Zm5 5a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm6 0a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H15a1 1 0 0 1-1-1Zm-6 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Zm6 0a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H15a1 1 0 0 1-1-1Z"
+      clipRule="evenodd"
     />
   </IconBase>
 ));

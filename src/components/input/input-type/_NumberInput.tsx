@@ -17,8 +17,8 @@ const StyledActionWrapper = styled.div`
   justify-content: center;
 `;
 const StyledButtonAction = styled.button`
-  padding: ${theme.radiusSm};
-  border-radius: ${theme.radiusSm};
+  padding: ${theme.radius4};
+  border-radius: ${theme.radius4};
   transition: ${theme.transition};
 
   &:hover {
@@ -33,7 +33,7 @@ const StyledButtonAction = styled.button`
 `;
 const AminoInput = styled(FloatLabelInput)`
   && input {
-    padding-right: ${theme.spaceDouble};
+    padding-right: ${theme.space40};
     appearance: textfield;
 
     &::-webkit-inner-spin-button,

@@ -14,37 +14,37 @@ export const MY = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
       <path fill="#cc0001" d="M0 0h640v480H0z" />
       <path id={`${ids[0]}`} fill="#fff" d="M0 445.8h640V480H0z" />
       <use
-        xlinkHref="#a"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(0 -68.6)"
       />
       <use
-        xlinkHref="#a"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(0 -137.2)"
       />
       <use
-        xlinkHref="#a"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(0 -205.8)"
       />
       <use
-        xlinkHref="#a"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(0 -274.3)"
       />
       <use
-        xlinkHref="#a"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(0 -343)"
       />
       <use
-        xlinkHref="#a"
+        xlinkHref={`#${ids[0]}`}
         width="100%"
         height="100%"
         transform="translate(0 -411.5)"

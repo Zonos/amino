@@ -9,7 +9,7 @@ import { SectionInnerWrapper } from './_SectionInnerWrapper';
 import { SectionSubheader } from './_SectionSubheader';
 
 const StyledSectionWrapper = styled.div`
-  margin-bottom: ${theme.spaceDouble};
+  margin-bottom: ${theme.space40};
 `;
 
 export type VSectionProps = {

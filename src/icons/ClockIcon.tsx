@@ -15,13 +15,7 @@ export const ClockIcon = forwardRef<SVGSVGElement, IconProps>(
       <path
         fill="currentColor"
         fillRule="evenodd"
-        d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
-        clipRule="evenodd"
-      />
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M12 6a1 1 0 0 1 1 1v4h2a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"
+        d="M12 4.1a7.9 7.9 0 1 0 0 15.8 7.9 7.9 0 0 0 0-15.8ZM1.9 12C1.9 6.422 6.422 1.9 12 1.9c5.578 0 10.1 4.522 10.1 10.1 0 5.578-4.522 10.1-10.1 10.1-5.578 0-10.1-4.522-10.1-10.1ZM12 5.9A1.1 1.1 0 0 1 13.1 7v3.9H15a1.1 1.1 0 0 1 0 2.2h-2.5a1.6 1.6 0 0 1-1.6-1.6V7A1.1 1.1 0 0 1 12 5.9Z"
         clipRule="evenodd"
       />
     </IconBase>

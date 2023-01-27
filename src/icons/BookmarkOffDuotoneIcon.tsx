@@ -17,15 +17,10 @@ export const BookmarkOffDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="M20 18.586 4.656 3.24l-.484 1.597A4 4 0 0 0 4 6v14c0 1.684 1.953 2.614 3.26 1.554l4.11-3.335a1 1 0 0 1 1.26 0l4.11 3.335c1.307 1.06 3.26.13 3.26-1.553v-1.415Z"
-    />
-    <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
       data-is-secondary-color="true"
       fillRule="evenodd"
-      d="M8 3a1 1 0 0 1 1-1h7a4 4 0 0 1 4 4v7a1 1 0 1 1-2 0V6a2 2 0 0 0-2-2H9a1 1 0 0 1-1-1Z"
+      d="M8 3a1 1 0 0 1 1-1h8a3 3 0 0 1 3 3v7a1 1 0 1 1-2 0V5a1 1 0 0 0-1-1H9a1 1 0 0 1-1-1Zm-4-.414 15.293 15.293A2.414 2.414 0 0 1 17.586 22h-.758a3 3 0 0 1-2.12-.879l-2-2a1 1 0 0 0-1.415 0l-2 2A3 3 0 0 1 7.172 22H7a3 3 0 0 1-3-3V2.586Z"
       clipRule="evenodd"
     />
     <path

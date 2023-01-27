@@ -2,15 +2,15 @@ import { ReactNode, useEffect, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
 import { VStack } from 'src/components/stack/VStack';
-import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledIcon = styled.div`
   position: absolute;
   content: ' ';
-  right: ${theme.spaceHalf};
-  background: ${theme.grayL20};
+  right: ${theme.space16};
+  background: ${theme.gray400};
   border-radius: 50px;
   padding: 5px;
   svg {
@@ -19,8 +19,8 @@ const StyledIcon = styled.div`
 `;
 const StyledActiveIcon = styled.div`
   position: absolute;
-  right: ${theme.spaceHalf};
-  background: ${theme.blueBase};
+  right: ${theme.space16};
+  background: ${theme.blue600};
   content: ' ';
   border-radius: 50px;
   padding: 5px;
@@ -33,10 +33,10 @@ const StyledItem = styled.button`
   position: relative;
   appearance: none;
   background: white;
-  padding: ${theme.spaceHalf};
-  padding-right: calc(${theme.spaceDouble} + 10px);
+  padding: ${theme.space16};
+  padding-right: calc(${theme.space40} + 10px);
   border: ${theme.border};
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   text-align: left;
   transition: all 150ms ease-in-out;
   display: flex;
@@ -44,16 +44,16 @@ const StyledItem = styled.button`
   align-items: center;
   height: 64px;
   &:hover {
-    background: ${theme.grayL80};
-    border: 1px solid ${theme.grayL60};
+    background: ${theme.gray100};
+    border: 1px solid ${theme.gray200};
     ${StyledIcon} {
-      background: ${theme.grayBase};
+      background: ${theme.gray600};
     }
   }
 
   &:focus {
     outline: none;
-    border: 1px solid ${theme.blueL40};
+    border: 1px solid ${theme.blue300};
   }
   > div {
     display: flex;
@@ -72,9 +72,9 @@ const Label = styled.span`
 
 const StyledRadioGroup = styled(VStack)`
   ${StyledItem}[data-state='checked'] {
-    background: ${theme.blueL80};
-    border: 1px solid ${theme.blueL40};
-    color: ${theme.blueBase};
+    background: ${theme.blue100};
+    border: 1px solid ${theme.blue300};
+    color: ${theme.blue600};
   }
   svg {
     color: white;
@@ -89,7 +89,7 @@ const StyledTooltip = styled(ReactTooltip)`
   }
 `;
 
-type RichRadioItemType<T extends string> = {
+export type RichRadioItemType<T extends string> = {
   label: ReactNode;
   subtitle?: string;
   value: T;
@@ -102,7 +102,7 @@ export type RichRadioProps<T extends string = string> = {
   onChange: (value: T) => void;
   renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
   items: RichRadioItemType<T>[];
-  value: T;
+  value: T | null;
   className?: string;
   icon?: ReactNode;
   activeIcon?: ReactNode;
@@ -155,10 +155,10 @@ export const RichRadio = <T extends string>({
               {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
             </div>
           )}
-          {!!icon && <StyledIcon>{icon || <CheckMarkIcon />}</StyledIcon>}
+          {!!icon && <StyledIcon>{icon || <CheckmarkIcon />}</StyledIcon>}
           {item.value === selectedValue && (
             <StyledActiveIcon>
-              {activeIcon || <CheckMarkIcon />}
+              {activeIcon || <CheckmarkIcon />}
             </StyledActiveIcon>
           )}
         </StyledItem>

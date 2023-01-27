@@ -27,18 +27,18 @@ const IconWrapper = styled.div<CSSProps>`
 `;
 
 const PrimaryIconWrapper = styled(IconWrapper)`
-  background: ${theme.blueL80};
-  color: ${theme.blueBase};
+  background: ${theme.blue100};
+  color: ${theme.blue600};
 `;
 
 const DangerIconWrapper = styled(IconWrapper)`
-  background: ${theme.redL80};
-  color: ${theme.redBase};
+  background: ${theme.red100};
+  color: ${theme.red600};
 `;
 
 const WarningIconWrapper = styled(IconWrapper)`
-  background: ${theme.orangeL80};
-  color: ${theme.orangeBase};
+  background: ${theme.orange100};
+  color: ${theme.orange600};
 `;
 
 export type RoundedIconProps = {

@@ -5,7 +5,7 @@ import {
   MultiSelect,
   MultiSelectProps,
 } from 'src/components/select/MultiSelect';
-import { PlayCircleSolidIcon } from 'src/icons/PlayCircleSolidIcon';
+import { PlayCircleIcon } from 'src/icons/PlayCircleIcon';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -101,7 +101,7 @@ ActiveMultiSelectWithCutoff.parameters = {
 export const ActiveMultiSelectWithCutoffWithIcon = MultiSelectTemplate.bind({});
 
 ActiveMultiSelectWithCutoffWithIcon.args = {
-  icon: <PlayCircleSolidIcon size={20} />,
+  icon: <PlayCircleIcon size={20} />,
   label: 'Currencies',
   value: [
     {

@@ -65,7 +65,7 @@ describe('Visual regression testing', () => {
     suite: 'Puppeteer storyshots',
     storyNameRegex: /^((?!.*?Spinner).)*$/,
     test: imageSnapshot({
-      storybookUrl: 'https://amino-dev.zonos.com:6007',
+      storybookUrl: 'https://dev.amino.zonos.com:6007',
       getCustomBrowser: () => browser,
       beforeScreenshot: beforeScreenshot,
       getGotoOptions,

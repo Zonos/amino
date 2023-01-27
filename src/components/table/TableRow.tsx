@@ -1,13 +1,41 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
+import { theme } from 'src/styles/constants/theme';
+import styled from 'styled-components';
+
+const StyledTableRow = styled.tr`
+  th {
+    color: ${theme.gray800};
+    text-transform: uppercase;
+    & > * {
+      font-size: ${theme.fontSizeS};
+    }
+  }
+  /** Only affect on tr inside tbody */
+  tbody &.active,
+  tbody &:hover {
+    background: ${theme.gray100};
+  }
+`;
 export type TableRowProps = {
+  active?: boolean;
   children: ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLTableRowElement>;
 };
 
-export const TableRow = ({ children, className, onClick }: TableRowProps) => (
-  <tr className={className} onClick={onClick}>
-    {children}
-  </tr>
-);
+export function TableRow({
+  active,
+  children,
+  className,
+  onClick,
+}: TableRowProps) {
+  return (
+    <StyledTableRow
+      className={[className || '', active ? 'active' : ''].join(' ')}
+      onClick={onClick}
+    >
+      {children}
+    </StyledTableRow>
+  );
+}

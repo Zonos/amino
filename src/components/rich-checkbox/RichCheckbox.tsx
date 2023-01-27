@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { VStack } from 'src/components/stack/VStack';
-import { CheckMarkIcon } from 'src/icons/CheckMarkIcon';
+import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
 import styled from 'styled-components';
@@ -10,28 +10,23 @@ const StyledRichCheckbox = styled.button`
   position: relative;
   appearance: none;
   background: white;
-  padding: ${theme.spaceHalf};
-  padding-right: ${theme.spaceDouble};
+  padding: ${theme.space16};
+  padding-right: ${theme.space40};
   border: ${theme.border};
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   text-align: left;
   transition: all 150ms ease-in-out;
   display: flex;
   flex-direction: row;
   align-items: center;
   &:hover {
-    background: ${theme.grayL80};
-    border: 1px solid ${theme.grayL60};
+    background: ${theme.gray100};
+    border: 1px solid ${theme.gray200};
   }
 
   &:focus {
     outline: none;
-    border: 1px solid ${theme.blueL40};
-  }
-  > div {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    border: 1px solid ${theme.blue300};
   }
 `;
 
@@ -45,9 +40,9 @@ const Subtitle = styled.span`
 
 const StyledVStack = styled(VStack)`
   button[data-state='checked'] {
-    background: ${theme.blueL80};
-    border: 1px solid ${theme.blueL40};
-    color: ${theme.blueBase};
+    background: ${theme.blue100};
+    border: 1px solid ${theme.blue300};
+    color: ${theme.blue600};
   }
   svg {
     color: white;
@@ -58,8 +53,8 @@ const StyledVStack = styled(VStack)`
 
 const StyledIcon = styled.div`
   position: absolute;
-  right: ${theme.spaceHalf};
-  background: ${theme.blueBase};
+  right: ${theme.space16};
+  background: ${theme.blue600};
   content: ' ';
   border-radius: 50px;
   padding: 5px;
@@ -70,8 +65,8 @@ const StyledIcon = styled.div`
 
 const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
   align-items: center;
-  display: grid !important;
-  grid-column-gap: ${theme.space};
+  display: grid;
+  grid-column-gap: ${theme.space24};
   ${({ $icon }) => $icon && `grid-template-columns: 30px 1fr;`}
 `;
 
@@ -110,7 +105,7 @@ export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
           </StyledItemContentDiv>
           {checked && (
             <StyledIcon>
-              <CheckMarkIcon />
+              <CheckmarkIcon />
             </StyledIcon>
           )}
         </StyledRichCheckbox>

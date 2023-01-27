@@ -26,7 +26,8 @@
     ],
     "esModuleInterop": true,
     "downlevelIteration": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true
   },
   "ts-node": {
     "transpileOnly": true,
@@ -53,5 +54,10 @@
       ]
     }
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    ".eslintrc.js",
+    ".eslintrc.prod.js",
+    "prettier.config.js"
+  ]
 }

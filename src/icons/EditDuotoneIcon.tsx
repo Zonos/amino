@@ -17,15 +17,15 @@ export const EditDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill="currentColor"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      data-is-secondary-color="true"
       fillRule="evenodd"
-      d="M4.074 15.735a2 2 0 0 0-.56 1.091l-.5 3.064a1 1 0 0 0 1.148 1.149l3.064-.502a2 2 0 0 0 1.091-.56l12.15-12.149a2 2 0 0 0 0-2.828l-1.415-1.414a2 2 0 0 0-2.828 0l-12.15 12.15Z"
+      d="m13.982 5.458 4.414 4.415-8.414 8.414-4.415-4.414 8.415-8.415Z"
       clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#CACACE'}
-      data-is-secondary-color="true"
-      d="m5.62 14.19 9.192-9.192 4.243 4.242-9.193 9.193L5.62 14.19Z"
+      fill="currentColor"
+      d="m5.567 13.873-.9.9a3 3 0 0 0-.79 1.394l-.825 3.3a1.1 1.1 0 0 0 1.334 1.335l3.3-.825a3 3 0 0 0 1.394-.79l.901-.9-4.414-4.414Zm8.414-8.415 4.415 4.414 1.586-1.586a2 2 0 0 0 0-2.828l-1.586-1.586a2 2 0 0 0-2.829 0l-1.586 1.586Z"
     />
   </IconBase>
 ));

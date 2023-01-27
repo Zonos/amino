@@ -17,7 +17,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
 const AminoSwitchWrapper = styled.div<{
   checked: boolean;
 }>`
-  margin-right: ${theme.spaceHalf};
+  margin-right: ${theme.space16};
   width: 24px;
   height: 16px;
   min-width: 24px;
@@ -25,10 +25,10 @@ const AminoSwitchWrapper = styled.div<{
   line-height: 16px;
   border-radius: 20px;
   transition: 0.5s all ease;
-  background: ${p => (p.checked ? theme.primary : theme.grayL20)};
+  background: ${p => (p.checked ? theme.primary : theme.gray400)};
   display: block;
   user-select: none;
-  margin-right: ${theme.spaceHalf};
+  margin-right: ${theme.space16};
   position: relative;
 `;
 
@@ -40,7 +40,7 @@ const StyledSubtitle = styled(Text)``;
 
 const StyledLabelDescription = styled.span`
   margin-left: 4px;
-  color: ${theme.grayBase};
+  color: ${theme.gray600};
 `;
 
 const LabelWrapper = styled.div`
@@ -62,13 +62,13 @@ const SwitchContainer = styled.label<{
 
   &.disabled {
     ${AminoSwitchWrapper} {
-      background: ${p => (p.checked ? theme.grayL40 : '')};
+      background: ${p => (p.checked ? theme.gray300 : '')};
     }
     ${StyledLabel} {
-      color: ${theme.grayBase};
+      color: ${theme.gray600};
     }
     ${StyledSubtitle} {
-      color: ${theme.grayL20};
+      color: ${theme.gray400};
     }
 
     cursor: not-allowed;

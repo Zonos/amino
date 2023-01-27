@@ -24,6 +24,18 @@ const getAminoColor = (color?: Color | 'inherit') => {
   return undefined;
 };
 
+const getPadding = (size?: Size) => {
+  switch (size) {
+    case 'sm':
+      return '6px 10px';
+    case 'lg':
+      return '14px 18px';
+    case 'md':
+    default:
+      return '10px 14px';
+  }
+};
+
 const StyledSpinnerWrapper = styled.span`
   position: absolute;
   top: 0;
@@ -48,8 +60,8 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 ${theme.spaceHalf};
-  border-radius: ${theme.radius};
+  padding: 0 ${theme.space16};
+  border-radius: ${theme.radius6};
   transition: ${theme.transition};
   font-weight: 500;
   user-select: none;
@@ -57,6 +69,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   letter-spacing: normal;
   cursor: pointer;
   white-space: nowrap;
+  padding: ${p => getPadding(p.size)};
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
@@ -78,18 +91,17 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   &:not(.only-icon).has-icon {
     &.icon-right {
       svg {
-        margin-left: ${theme.spaceQuarter};
+        margin-left: ${theme.space8};
         margin-right: 0;
       }
     }
     svg {
-      margin-right: ${theme.spaceQuarter};
+      margin-right: ${theme.space8};
       margin-left: 0;
     }
   }
 
   &[disabled] {
-    cursor: not-allowed;
     box-shadow: none;
     &:not(.loading) {
       opacity: 0.5;
@@ -103,11 +115,11 @@ const Primary = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.blueL20};
+      background: ${theme.blue400};
     }
     &:active,
     &:focus {
-      background: ${theme.blueD20};
+      background: ${theme.blue700};
       color: white;
     }
   }
@@ -119,16 +131,15 @@ const Primary = styled(AminoButton)`
 
 const Secondary = styled(AminoButton)`
   color: ${p => getAminoColor(p.color) || theme.textColor};
-  background: ${p => getAminoColor(p.background) || theme.grayL80};
+  background: ${p => getAminoColor(p.background) || theme.gray100};
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.grayL60};
+      background: ${theme.gray200};
     }
-    &:active,
-    &:focus {
-      background: ${theme.blueL80};
-      color: ${theme.blueBase};
+    &:active {
+      background: ${theme.blue100};
+      color: ${theme.blue600};
       svg path {
         fill: currentColor;
       }
@@ -136,22 +147,22 @@ const Secondary = styled(AminoButton)`
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.grayL80};
+    background: ${theme.gray100};
   }
 
   /** Dark mode */
   &.dark {
     color: white;
-    background: ${theme.grayD80};
+    background: ${theme.gray1000};
 
     &:not([disabled]) {
       &:hover {
-        background: ${theme.grayD60};
+        background: ${theme.gray900};
       }
       &:active,
       &:focus {
-        background: ${theme.blueD80};
-        color: ${theme.blueL40};
+        background: ${theme.blue1000};
+        color: ${theme.blue300};
         svg path {
           fill: currentColor;
         }
@@ -159,64 +170,61 @@ const Secondary = styled(AminoButton)`
     }
 
     ${StyledSpinnerWrapper} {
-      background: ${theme.grayD80};
+      background: ${theme.gray1000};
     }
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.redBase};
+  background: ${p => getAminoColor(p.background) || theme.red600};
   color: ${p => getAminoColor(p.color) || 'white'};
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.redL20};
+      background: ${theme.red400};
     }
-    &:active,
-    &:focus {
-      background: ${theme.redD20};
+    &:active {
+      background: ${theme.red700};
     }
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.redBase};
+    background: ${theme.red600};
   }
 `;
 
 const Warning = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.orangeBase};
+  background: ${p => getAminoColor(p.background) || theme.orange600};
   color: ${p => getAminoColor(p.color) || 'white'};
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.orangeL20};
+      background: ${theme.orange400};
     }
-    &:active,
-    &:focus {
-      background: ${theme.orangeD20};
+    &:active {
+      background: ${theme.orange700};
     }
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.orangeBase};
+    background: ${theme.orange600};
   }
 `;
 
 const Outline = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || 'white'};
   color: ${p => getAminoColor(p.color) || theme.textColor};
-  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.grayL60};
+  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray200};
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.grayL80};
-      border: 1px solid ${theme.grayL60};
+      background: ${theme.gray100};
+      border: 1px solid ${theme.gray200};
     }
-    &:active,
-    &:focus {
-      background: ${theme.blueL80};
-      color: ${theme.blueBase};
-      border: 1px solid ${theme.blueL40};
+    &:active {
+      background: ${theme.blue100};
+      color: ${theme.blue600};
+      border: 1px solid ${theme.blue300};
     }
   }
 
@@ -227,16 +235,15 @@ const Outline = styled(AminoButton)`
 
 const Subtle = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || 'none'};
-  color: ${p => getAminoColor(p.color) || theme.grayD40};
+  color: ${p => getAminoColor(p.color) || theme.gray800};
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.grayL80};
+      background: ${theme.gray100};
     }
-    &:active,
-    &:focus {
-      background: ${theme.blueL80};
-      color: ${theme.blueBase};
+    &:active {
+      background: ${theme.blue100};
+      color: ${theme.blue600};
     }
   }
 
@@ -246,13 +253,13 @@ const Subtle = styled(AminoButton)`
 `;
 
 const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: ${p => getAminoColor(p.color) || theme.grayD40};
+  color: ${p => getAminoColor(p.color) || theme.gray800};
   height: 20px;
   line-height: 20px;
   padding: 0;
 
   &[disabled] {
-    color: ${theme.grayL20};
+    color: ${theme.gray400};
     &:not(.loading) {
       opacity: inherit;
     }
@@ -260,10 +267,9 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 
   &:not([disabled]) {
     &:hover {
-      color: ${theme.grayD20};
+      color: ${theme.gray700};
     }
-    &:active,
-    &:focus {
+    &:active {
       color: ${theme.black};
     }
   }
@@ -274,17 +280,16 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 `;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: ${p => getAminoColor(p.color) || theme.blueBase};
+  color: ${p => getAminoColor(p.color) || theme.blue600};
   background: ${p => getAminoColor(p.background) || 'white'};
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.grayL80};
+      background: ${theme.gray100};
     }
-    &:active,
-    &:focus {
-      background: ${theme.blueL80};
-      color: ${theme.blueD40};
+    &:active {
+      background: ${theme.blue100};
+      color: ${theme.blue800};
     }
   }
 
@@ -312,6 +317,10 @@ type ButtonBase = {
   size?: Size;
   tabIndex?: number;
   type?: 'button' | 'reset' | 'submit';
+  /**
+   * Color for the spinner when in a loading state
+   */
+  spinnerColor?: SpinnerProps['color'];
 };
 
 type GroupTag = 'div' | 'a' | 'button';
@@ -345,16 +354,17 @@ export function Button<T extends GroupTag = 'button'>({
   tag,
   theme: _theme,
   type = 'button',
+  spinnerColor,
   ...props
 }: ButtonProps<T>) {
-  const renderContent = (spinnerColor?: SpinnerProps['color']) => (
+  const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
       {!iconRight && icon}
       {children}
       {iconRight && icon}
       {loading && (
         <StyledSpinnerWrapper>
-          <Spinner size={16} color={spinnerColor} />
+          <Spinner size={16} color={_spinnerColor} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
@@ -387,50 +397,50 @@ export function Button<T extends GroupTag = 'button'>({
     case 'primary':
       return (
         <Primary as={tag || 'button'} {...buttonProps}>
-          {renderContent('white')}
+          {renderContent(spinnerColor || 'white')}
         </Primary>
       );
     case 'subtle':
       return (
         <Subtle as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </Subtle>
       );
     case 'outline':
       return (
         <Outline as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </Outline>
       );
     case 'warning':
       return (
         <Warning as={tag || 'button'} {...buttonProps}>
-          {renderContent('white')}
+          {renderContent(spinnerColor || 'white')}
         </Warning>
       );
     case 'danger':
       return (
         <Danger as={tag || 'button'} {...buttonProps}>
-          {renderContent('white')}
+          {renderContent(spinnerColor || 'white')}
         </Danger>
       );
     case 'text':
       return (
         <TextButton as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </TextButton>
       );
     case 'link':
       return (
         <LinkButton as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </LinkButton>
       );
     case 'secondary':
     default:
       return (
         <Secondary as={tag || 'button'} {...buttonProps}>
-          {renderContent()}
+          {renderContent(spinnerColor)}
         </Secondary>
       );
   }

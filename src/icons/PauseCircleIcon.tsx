@@ -15,12 +15,8 @@ export const PauseCircleIcon = forwardRef<SVGSVGElement, IconProps>(
       <path
         fill="currentColor"
         fillRule="evenodd"
-        d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0 2c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"
+        d="M12 4.1a7.9 7.9 0 1 0 0 15.8 7.9 7.9 0 0 0 0-15.8ZM1.9 12C1.9 6.422 6.422 1.9 12 1.9c5.578 0 10.1 4.522 10.1 10.1 0 5.578-4.522 10.1-10.1 10.1-5.578 0-10.1-4.522-10.1-10.1ZM10 7.9A1.1 1.1 0 0 1 11.1 9v6a1.1 1.1 0 0 1-2.2 0V9A1.1 1.1 0 0 1 10 7.9Zm4 0A1.1 1.1 0 0 1 15.1 9v6a1.1 1.1 0 0 1-2.2 0V9A1.1 1.1 0 0 1 14 7.9Z"
         clipRule="evenodd"
-      />
-      <path
-        fill="currentColor"
-        d="M10 8a1 1 0 0 0-1 1v6a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Zm4 0a1 1 0 0 0-1 1v6a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z"
       />
     </IconBase>
   )

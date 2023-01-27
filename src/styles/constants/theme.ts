@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 export const theme = {
   /** @info all 0.2s ease-in-out 0s */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
@@ -56,13 +57,13 @@ export const theme = {
   /** @deprecated use gray100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   grayL80: 'var(--amino-gray-l80)',
-  /** @deprecated use gray300 instead */
+  /** @deprecated use gray200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   grayL60: 'var(--amino-gray-l60)',
-  /** @deprecated use gray400 instead */
+  /** @deprecated use gray300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   grayL40: 'var(--amino-gray-l40)',
-  /** @deprecated use gray500 instead */
+  /** @deprecated use gray400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   grayL20: 'var(--amino-gray-l20)',
   /** @deprecated use gray600 instead */
@@ -123,13 +124,13 @@ export const theme = {
   /** @deprecated use blue100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blueL80: 'var(--amino-blue-l80)',
-  /** @deprecated use blue300 instead */
+  /** @deprecated use blue200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blueL60: 'var(--amino-blue-l60)',
-  /** @deprecated use blue400 instead */
+  /** @deprecated use blue300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blueL40: 'var(--amino-blue-l40)',
-  /** @deprecated use blue500 instead */
+  /** @deprecated use blue400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blueL20: 'var(--amino-blue-l20)',
   /** @deprecated use blue600 instead */
@@ -190,13 +191,13 @@ export const theme = {
   /** @deprecated use cyan100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyanL80: 'var(--amino-cyan-l80)',
-  /** @deprecated use cyan300 instead */
+  /** @deprecated use cyan200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyanL60: 'var(--amino-cyan-l60)',
-  /** @deprecated use cyan400 instead */
+  /** @deprecated use cyan300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyanL40: 'var(--amino-cyan-l40)',
-  /** @deprecated use cyan500 instead */
+  /** @deprecated use cyan400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyanL20: 'var(--amino-cyan-l20)',
   /** @deprecated use cyan600 instead */
@@ -250,13 +251,13 @@ export const theme = {
   /** @deprecated use red100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   redL80: 'var(--amino-red-l80)',
-  /** @deprecated use red300 instead */
+  /** @deprecated use red200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   redL60: 'var(--amino-red-l60)',
-  /** @deprecated use red400 instead */
+  /** @deprecated use red300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   redL40: 'var(--amino-red-l40)',
-  /** @deprecated use red500 instead */
+  /** @deprecated use red400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   redL20: 'var(--amino-red-l20)',
   /** @deprecated use red600 instead */
@@ -317,13 +318,13 @@ export const theme = {
   /** @deprecated use orange100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orangeL80: 'var(--amino-orange-l80)',
-  /** @deprecated use orange300 instead */
+  /** @deprecated use orange200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orangeL60: 'var(--amino-orange-l60)',
-  /** @deprecated use orange400 instead */
+  /** @deprecated use orange300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orangeL40: 'var(--amino-orange-l40)',
-  /** @deprecated use orange500 instead */
+  /** @deprecated use orange400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orangeL20: 'var(--amino-orange-l20)',
   /** @deprecated use orange600 instead */
@@ -384,13 +385,13 @@ export const theme = {
   /** @deprecated use green100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   greenL80: 'var(--amino-green-l80)',
-  /** @deprecated use green300 instead */
+  /** @deprecated use green200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   greenL60: 'var(--amino-green-l60)',
-  /** @deprecated use green400 instead */
+  /** @deprecated use green300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   greenL40: 'var(--amino-green-l40)',
-  /** @deprecated use green500 instead */
+  /** @deprecated use green400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   greenL20: 'var(--amino-green-l20)',
   /** @deprecated use green600 instead */
@@ -451,13 +452,13 @@ export const theme = {
   /** @deprecated use purple100 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purpleL80: 'var(--amino-purple-l80)',
-  /** @deprecated use purple300 instead */
+  /** @deprecated use purple200 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purpleL60: 'var(--amino-purple-l60)',
-  /** @deprecated use purple400 instead */
+  /** @deprecated use purple300 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purpleL40: 'var(--amino-purple-l40)',
-  /** @deprecated use purple500 instead */
+  /** @deprecated use purple400 instead */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purpleL20: 'var(--amino-purple-l20)',
   /** @deprecated use purple600 instead */
@@ -579,16 +580,16 @@ export const theme = {
   amber900: 'var(--amino-amber-900)',
 
   /* COMMON COLOR */
-  /** @info var(--amino-red-base) */
+  /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   danger: 'var(--amino-danger)',
   /** @info var(--amino-red-700) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   dangerDark: 'var(--amino-danger-dark)',
-  /** @info var(--amino-red-base) */
+  /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   error: 'var(--amino-error)',
-  /** @info var(--amino-blue-base) */
+  /** @info var(--amino-blue-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   primary: 'var(--amino-primary)',
   /** @info var(--amino-blue-500) */
@@ -611,7 +612,7 @@ export const theme = {
   warningDark: 'var(--amino-warning-dark)',
 
   /* GLOW COLOR */
-  /** @info 0 0 0 1px var(--amino-red-base) */
+  /** @info 0 0 0 1px var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   glowError: 'var(--amino-glow-error)',
   /** @info 0 0 0 1px var(--amino-primary) */

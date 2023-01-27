@@ -20,7 +20,7 @@ const StyledColorIntensity = styled.div<{
 }>`
   color: ${p => p.color};
   font-size: ${theme.fontSizeS};
-  padding: ${theme.space};
+  padding: ${theme.space24};
   background: ${p => theme[p.background]};
 `;
 

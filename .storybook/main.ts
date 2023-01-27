@@ -1,32 +1,16 @@
-import type { StorybookConfig } from '@storybook/core-common';
-import { fstat, readFileSync } from 'fs';
+import { capitalize } from './../build-utils/css/utils/capitalize';
+import type { StorybookConfig, StoriesEntry } from '@storybook/core-common';
 import { glob } from 'glob';
-import { basename, resolve } from 'path';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import { buildStories } from './buildStories';
 
-function findStories(): string[] {
+const findStories = (): StoriesEntry[] => {
   const stories = glob.sync('../src/**/__stories__/*.stories.tsx', {
     cwd: __dirname,
   });
 
-  // Will order stories alphabetically by file name. If a title is specified it will take priority over the file name.
-  const alphabetical = stories.sort((a: string, b: string) => {
-    const storyNameA = getTitle(resolve(__dirname, a)) || a;
-    const storyNameB = getTitle(resolve(__dirname, b)) || b;
-
-    return basename(storyNameA).localeCompare(basename(storyNameB));
-  });
-
-  return alphabetical;
-}
-
-// Read the specified title from a story meta.
-function getTitle(path: string): string | null {
-  const contents = readFileSync(path, { encoding: 'utf-8' });
-  const match = contents.match(/const \w+: Meta = {.+\stitle: '(.+?)',/s);
-  const title = match?.[1];
-  return title || null;
-}
+  return buildStories(stories);
+};
 
 const config: StorybookConfig = {
   stories: findStories(),

@@ -95,7 +95,8 @@ Ex:
 #### Update Amino color variables with existing or new Figma icon set
 
 <details>
-**NOTE: Don't touch the generated color constant because it will be overwritten everytime you run `yarn build` or `yarn build:theme`, work with the svg in `build-utils/css/colorSvgs` instead.**
+
+> **NOTE: Don't touch the generated color constant because it will be overwritten everytime you run `yarn build` or `yarn build:theme`, work with the svg in `build-utils/css/colorSvgs` instead.**
 
 There would be 2 cases: the variable exists and you just want to update the color code, or adding brand new color variable (Ex: `Gray2000`). The steps below can apply to both cases.
 1. Download the color set svg from Figma (either every color sets or just the one you want to update) that you want to update in Amino, by selecting the whole component of each color in the color set palette (the designer shoud name the component name the same as text inside of component, ask them to rename it if this is not the case) and exporting them to svg format
@@ -117,6 +118,7 @@ There would be 2 cases: the variable exists and you just want to update the colo
 > **NOTE**: If there is any unused generated color constants and you run command `yarn build:theme` or `yarn build`. The building process will be terminated intentionally to tell you which color files are not being used. You can either delete the unused svgs so that it will not generate the constant and remove the referencing constant in the `build-utils/css/constants/generated/colors` folder, or use them in the main theme constant `theme.ts`.
 </details>
 
+---
 ## **Generating dynamic constant process**
 ### Overview
 Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for having a way to generate a constant programmatically with logic and customized jsdocs comments.
@@ -148,19 +150,19 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 3.  Put logic of how you want the key/value pair in constant to look like in function `get{{CapitalizedFileName}}ConstantKeyValuePairs`.
    Ex:
 
-   ````
-   export const getYourFileNameConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
-       const contentArr: Record<string, string> = {};
+    ````
+    export const getYourFileNameConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
+        const contentArr: Record<string, string> = {};
 
-       /** Put logic here to generate constant key value pairs */
-       for (let i=0; i<5; i++) {
-           // this will return a constant looks like `{"key-1": "value-1", "key-2": "value-2", ...}.
-           contentArr[`key-${i}`] = `value-${i}`;
-       }
-       return contentArr;
-   };
+        /** Put logic here to generate constant key value pairs */
+        for (let i=0; i<5; i++) {
+            // this will return a constant looks like `{"key-1": "value-1", "key-2": "value-2", ...}.
+            contentArr[`key-${i}`] = `value-${i}`;
+        }
+        return contentArr;
+    };
 
-   ````
+    ````
 
 4.  Put logic of how you want @jsdocs tag to be generated to look like with each key/value pair in constant in function `getYourFileNameConstantCustomizedComment`. Leave it as it is if you want it to use the default one.
    Ex:
@@ -176,23 +178,23 @@ Let's say we have an exported constant `testNumber` in `build-utils/csss/constan
 
 1. Go to `theme.ts`.
 2. Type `testNumber` to trigger VScode import suggestion and continue to import the file. At the beginning of `theme.ts` now have:
-```
-import { testNumber } from './generated/_testNumber';
-```
+    ```
+    import { testNumber } from './generated/_testNumber';
+    ```
 3. Inside constant content, put a spread operator for the `testNumber` on where you want it to be. For example you want to spread it in between `'gray-l60'` and `'gray-l40'`. Now it will look like this:
 
-```
-export const theme = {
-    /* GRAY PALETTE */
-    'gray-l80': '#f5f5f6',
-    'gray-l60': '#eaeaec',
+    ```
+    export const theme = {
+        /* GRAY PALETTE */
+        'gray-l80': '#f5f5f6',
+        'gray-l60': '#eaeaec',
 
-    ...testNumber,
+        ...testNumber,
 
-    'gray-l40': '#d6d6d9',
+        'gray-l40': '#d6d6d9',
 
-} as const;
-```
+    } as const;
+    ```
 
 4. Now when you run `'yarn build:theme'`, it will replace `...testNumber` with primitive content in the constant when it's generating the theme constant in `src/styles/constants/theme.ts`.
 </details>
@@ -246,17 +248,15 @@ To add new `new-variable` to replace for `legacy-variable`.
 **NOTE**: Since the generated constants' keys would be transformed to camelCase (new-variable => newVariable). When you adding `@jsdocs`, use camel case when you referring to a variable.
 Ex:
 
-````
-'new-variable': #123abc;
+    ```
+    'new-variable': #123abc;
 
     /** @deprecated use newVariable instead */
     'legacy-variable': var(--amino-new-variable);
     ```
-````
 </details>
 
 ---
-
 
 #### Add/adjust variable
 
