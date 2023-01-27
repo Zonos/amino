@@ -76,14 +76,14 @@ const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
 `;
 
 const Footer = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
   display: flex;
   align-items: center;
-  border-bottom-left-radius: ${theme.radiusXl};
-  border-bottom-right-radius: ${theme.radiusXl};
+  border-bottom-left-radius: ${theme.radius12};
+  border-bottom-right-radius: ${theme.radius12};
 
   & > div + div {
-    margin-left: ${theme.spaceQuarter};
+    margin-left: ${theme.space8};
   }
 `;
 

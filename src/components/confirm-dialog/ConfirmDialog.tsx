@@ -14,7 +14,7 @@ import { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
 
 const Content = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
 
   & > div {
     text-align: center;
@@ -29,10 +29,10 @@ const Footer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: ${theme.space};
+  margin-top: ${theme.space24};
 
   & > button + button {
-    margin-left: ${theme.spaceQuarter};
+    margin-left: ${theme.space8};
   }
 
   button {

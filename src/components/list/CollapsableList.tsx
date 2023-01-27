@@ -38,15 +38,15 @@ const StyledList = styled(List)<ListProps>`
   ${({ withBorder }) =>
     withBorder &&
     css`
-      padding: ${theme.spaceQuarter};
-      border: 1px solid ${theme.grayL60};
-      border-radius: ${theme.radiusXl};
+      padding: ${theme.space8};
+      border: 1px solid ${theme.gray200};
+      border-radius: ${theme.radius12};
     `}
 
   ${({ withNegativeMargin }) =>
     withNegativeMargin &&
     css`
-      margin: ${theme.spaceNegative};
+      margin: ${theme.spaceNegative24};
     `}
 `;
 

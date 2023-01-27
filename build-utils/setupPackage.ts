@@ -10,7 +10,9 @@ function main() {
     .toString('utf-8');
   const sourceObj = JSON.parse(source);
   sourceObj.scripts = {};
+
   sourceObj.devDependencies = {};
+
   sourceObj.types = 'all.d.ts';
   fs.writeFileSync(
     `./dist/package.json`,

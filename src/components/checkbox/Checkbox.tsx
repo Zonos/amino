@@ -15,9 +15,9 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   min-width: 16px;
   min-height: 16px;
   line-height: 16px;
-  border-radius: ${theme.radiusSm};
+  border-radius: ${theme.radius4};
   background: ${p => (p.checked ? theme.primary : theme.inputBackground)};
-  border: ${p => (!p.checked ? `1.5px solid ${theme.grayL20}` : 'none')};
+  border: ${p => (!p.checked ? `1.5px solid ${theme.gray400}` : 'none')};
   transition: all 150ms ease-in-out;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@ const StyledSubtitle = styled(Text)``;
 
 const StyledLabelDescription = styled.span`
   margin-left: 4px;
-  color: ${theme.grayBase};
+  color: ${theme.gray600};
 `;
 
 const StyledLabel = styled(Text)`
@@ -66,20 +66,20 @@ const CheckboxContainer = styled.label<{ checked: boolean }>`
 
   &.disabled {
     ${AminoCheckbox} {
-      background: ${p => (p.checked ? theme.blueL60 : '')};
+      background: ${p => (p.checked ? theme.blue200 : '')};
       border: ${p =>
         p.checked
-          ? `2px solid ${theme.blueL60}`
-          : `1.5px solid ${theme.grayL40}`};
+          ? `2px solid ${theme.blue200}`
+          : `1.5px solid ${theme.gray300}`};
       &:active {
         box-shadow: none;
       }
     }
     ${StyledLabel} {
-      color: ${theme.grayBase};
+      color: ${theme.gray600};
     }
     ${StyledSubtitle} {
-      color: ${theme.grayL20};
+      color: ${theme.gray400};
     }
     ${LabelWrapper} {
       svg {

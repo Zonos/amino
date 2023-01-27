@@ -54,5 +54,10 @@
       ]
     }
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    ".eslintrc.js",
+    ".eslintrc.prod.js",
+    "prettier.config.js"
+  ]
 }

@@ -39,7 +39,6 @@ import './components/list/CollapsableList';
 import './components/list/List';
 import './components/menu/Menu';
 import './components/menu/MenuItem';
-import './components/notice/Notice';
 import './components/radio/Radio';
 import './components/radio/RadioGroup';
 import './components/rest-state/RestState';

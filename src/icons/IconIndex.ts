@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 /** Common */
 export { ArrowDownDuotoneIcon } from './ArrowDownDuotoneIcon';
 export { ArrowDownIcon } from './ArrowDownIcon';

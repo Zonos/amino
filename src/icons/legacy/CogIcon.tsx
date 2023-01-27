@@ -18,4 +18,5 @@ export const CogIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 CogIcon.deprecated = true;

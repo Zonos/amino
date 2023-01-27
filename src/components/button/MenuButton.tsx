@@ -15,8 +15,8 @@ const AnimatedSurface = styled(Surface)`
   border: ${theme.border};
   z-index: 10;
   position: absolute;
-  padding: ${theme.radius} 0;
-  margin-top: ${theme.spaceQuarter};
+  padding: ${theme.radius6} 0;
+  margin-top: ${theme.space8};
   right: 0;
   min-width: 100%;
   width: max-content;

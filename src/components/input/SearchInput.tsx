@@ -9,7 +9,7 @@ import { InputMode } from './input-type/_FloatLabelInput';
 const StyledWrapper = styled.div`
   position: relative;
   border: ${theme.border};
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   width: 100%;
 `;
 
@@ -21,16 +21,16 @@ const StyledLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${theme.spaceDouble};
+  width: ${theme.space40};
 `;
 
 const AminoInput = styled.input`
-  padding-left: ${theme.spaceDouble};
-  padding-right: ${theme.spaceHalf};
+  padding-left: ${theme.space40};
+  padding-right: ${theme.space16};
   height: 40px;
   font-weight: 500;
   line-height: 40px;
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   outline: none;
   width: 100%;
   :focus {

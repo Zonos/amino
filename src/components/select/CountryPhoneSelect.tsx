@@ -25,7 +25,7 @@ const OptionLabel = styled.div`
 
 const PhoneCodeLabel = styled.div`
   margin-left: 4px;
-  color: ${theme.grayD20};
+  color: ${theme.gray700};
 `;
 
 const StyledPrefix = styled.div`

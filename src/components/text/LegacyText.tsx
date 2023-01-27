@@ -4,9 +4,9 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const Subtitle = styled.span`
-  font-size: ${theme.textSm};
+  font-size: ${theme.fontSizeS};
   line-height: 16px;
-  color: ${theme.grayD60};
+  color: ${theme.gray900};
 `;
 
 const SmallHeader = styled.span`
@@ -24,7 +24,7 @@ const InputLabel = styled.span`
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  margin-bottom: ${theme.spaceQuarter};
+  margin-bottom: ${theme.space8};
 `;
 
 type LegacyTextStyle =

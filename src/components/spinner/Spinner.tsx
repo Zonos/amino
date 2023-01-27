@@ -30,8 +30,8 @@ const spinDuration = '1.5s';
 
 const AminoSpinner = styled.span<SpinnerProps>`
   display: inline-block;
-  border: ${p => p.size! / 8}px solid ${theme.grayL80};
-  border-top-color: ${theme.blueBase};
+  border: ${p => p.size! / 8}px solid ${theme.gray100};
+  border-top-color: ${theme.blue600};
   animation: ${css`
       ${Rotate}`} ${spinDuration} linear infinite;
   border-radius: 50%;
@@ -48,7 +48,7 @@ const AminoSpinner = styled.span<SpinnerProps>`
     height: ${p => p.size}px;
     border-radius: 50%;
     border: ${p => p.size! / 8}px solid transparent;
-    border-right-color: ${theme.grayL80};
+    border-right-color: ${theme.gray100};
     z-index: 1;
     animation: ${css`
         ${RotateInsideRing}`} ${spinDuration} linear infinite;
@@ -71,16 +71,16 @@ const AminoSpinner = styled.span<SpinnerProps>`
   }
 
   &.info {
-    border-top-color: ${theme.blueBase};
+    border-top-color: ${theme.blue600};
   }
   &.success {
-    border-top-color: ${theme.greenBase};
+    border-top-color: ${theme.green600};
   }
   &.danger {
-    border-top-color: ${theme.redBase};
+    border-top-color: ${theme.red600};
   }
   &.warning {
-    border-top-color: ${theme.orangeBase};
+    border-top-color: ${theme.orange600};
   }
 `;
 

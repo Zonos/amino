@@ -17,19 +17,19 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   flex-direction: row;
   align-items: center;
   height: 36px;
-  padding: 0 ${theme.spaceHalf};
-  color: ${theme.grayD40};
+  padding: 0 ${theme.space16};
+  color: ${theme.gray800};
   font-weight: 500;
-  border-radius: ${theme.radius};
+  border-radius: ${theme.radius6};
   &:hover {
-    background-color: ${theme.grayL80};
+    background-color: ${theme.gray100};
     color: black;
     svg {
-      color: ${theme.grayD20};
+      color: ${theme.gray700};
     }
   }
   svg {
-    color: ${theme.grayBase};
+    color: ${theme.gray600};
   }
   ${StyledNavigationContent} {
     flex-grow: 1;
@@ -50,7 +50,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
     $isActive &&
     css`
       && {
-        background-color: ${theme.grayL60};
+        background-color: ${theme.gray200};
         color: black;
         svg {
           color: black;
@@ -75,9 +75,9 @@ const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
     `}
 `;
 const StyledGroupItemWrapper = styled(Collapse)`
-  padding-left: ${theme.space};
-  margin-left: ${theme.space};
-  border-left: 1px solid ${theme.grayL60};
+  padding-left: ${theme.space24};
+  margin-left: ${theme.space24};
+  border-left: 1px solid ${theme.gray200};
 `;
 
 type StyledNavigationItemProps = StyledProps<NavigationItemProps>;

@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 const SurfaceBase = styled.div<{ dense?: boolean }>`
   background: ${theme.surfaceColor};
-  padding: ${theme.space};
+  padding: ${theme.space24};
   color: ${theme.textColor};
-  border-radius: ${p => (p.dense ? theme.radius : theme.radiusLg)};
+  border-radius: ${p => (p.dense ? theme.radius6 : theme.radius8)};
 `;
 
 // shadow small

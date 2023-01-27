@@ -17,19 +17,19 @@ const TagWrapper = styled.div`
 `;
 const StyledTag = styled.button<Omit<TagProps, 'onClose'>>`
   display: flex;
-  gap: ${theme.spaceQuarter};
+  gap: ${theme.space8};
   font-size: ${theme.typeScaleBase};
   font-weight: normal;
-  padding: 3px ${theme.spaceHalf};
+  padding: 3px ${theme.space16};
   text-align: center;
   font-weight: 500;
   // default background color (gray)
-  background-color: ${theme.grayL60};
-  color: ${theme.grayD40};
-  border-radius: ${theme.radius};
+  background-color: ${theme.gray200};
+  color: ${theme.gray800};
+  border-radius: ${theme.radius6};
   align-items: center;
   &:hover {
-    background-color: ${theme.grayL40};
+    background-color: ${theme.gray300};
   }
   p {
     margin: 0;

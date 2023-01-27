@@ -19,14 +19,14 @@ interface ShadowProps {
   shadow: AminoShadow;
 }
 const StyledBoxShadowWrapper = styled.div<ShadowProps>`
-  margin-bottom: ${theme.spaceDouble};
+  margin-bottom: ${theme.space40};
   box-shadow: var(${props => props.shadow});
-  background: ${theme.grayL80};
-  padding: ${theme.spaceHalf} ${theme.space};
+  background: ${theme.gray100};
+  padding: ${theme.space16} ${theme.space24};
 `;
 const StyledWrapper = styled.div`
   background: white;
-  padding: ${theme.spaceQuarter} ${theme.space};
+  padding: ${theme.space8} ${theme.space24};
 `;
 
 export const Shadow = () => (

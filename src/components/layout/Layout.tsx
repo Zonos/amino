@@ -12,7 +12,7 @@ const Footer = styled.div`
 `;
 
 const SidebarContent = styled.div`
-  padding: ${theme.space};
+  padding: ${theme.space24};
   box-sizing: border-box;
   overflow-y: auto;
   height: 100%;
@@ -22,10 +22,10 @@ const SidebarContent = styled.div`
 `;
 
 const SearchInputWrapper = styled.div`
-  margin-bottom: ${theme.spaceDouble};
+  margin-bottom: ${theme.space40};
 `;
 const StyledLogoSidebar = styled.div`
-  margin-bottom: ${theme.space};
+  margin-bottom: ${theme.space24};
 `;
 const StyledSearchInput = styled(SearchInput)`
   border: 0;
@@ -33,7 +33,7 @@ const StyledSearchInput = styled(SearchInput)`
     color: black;
   }
   input {
-    background-color: ${theme.grayL80};
+    background-color: ${theme.gray100};
     border: 0;
     ::placeholder {
       color: black;
@@ -45,7 +45,7 @@ const StyledSidebar = styled.nav`
   width: ${theme.sidebarWidth};
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 1fr calc(39px + ${theme.space} * 2);
+  grid-template-rows: 1fr calc(39px + ${theme.space24} * 2);
   height: inherit;
   background: ${theme.sidebarColor};
 `;
@@ -65,7 +65,7 @@ const AminoLayout = styled.main`
 const Content = styled.div`
   height: inherit;
   overflow-y: auto;
-  padding: ${theme.space} ${theme.space} calc(39px + ${theme.space} * 2);
+  padding: ${theme.space24} ${theme.space24} calc(39px + ${theme.space24} * 2);
   box-sizing: border-box;
 `;
 

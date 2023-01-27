@@ -5,7 +5,7 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledHelpText = styled.div`
-  margin-top: ${theme.spaceQuarter};
+  margin-top: ${theme.space8};
 `;
 
 export type HelpTextProps = {

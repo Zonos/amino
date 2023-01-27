@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Case light theme 1`] = `
-"export const theme = {
+"/* eslint-disable deprecation/deprecation */
+export const theme = {
   /** @info all 0.2s ease-in-out 0s */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   transition: 'var(--amino-transition)',

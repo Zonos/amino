@@ -15,8 +15,8 @@ const StyledRadio = styled.div<{
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: ${p => (!p.checked ? `1.5px solid ${theme.grayL20}` : 'none')};
-  margin-right: ${theme.spaceQuarter};
+  border: ${p => (!p.checked ? `1.5px solid ${theme.gray400}` : 'none')};
+  margin-right: ${theme.space8};
   transition: ${theme.transition};
 
   &:active {
@@ -47,7 +47,7 @@ const RadioContainer = styled.div<{
   &.disabled {
     cursor: not-allowed;
     & > div {
-      background: ${p => p.checked && theme.blueL40};
+      background: ${p => p.checked && theme.blue300};
       cursor: not-allowed;
     }
     label {
@@ -60,7 +60,7 @@ const RadioContainer = styled.div<{
     flex-direction: column;
     cursor: pointer;
     margin-bottom: 0;
-    color: ${props => (props.disabled ? theme.grayL40 : 'black')};
+    color: ${props => (props.disabled ? theme.gray300 : 'black')};
   }
 `;
 

@@ -12,4 +12,5 @@ export const AttachmentIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 AttachmentIcon.deprecated = true;

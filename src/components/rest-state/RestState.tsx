@@ -19,7 +19,7 @@ const StyledRestState = styled.div`
 const Icon = styled.img`
   width: 100px;
   height: auto;
-  margin-bottom: ${theme.spaceHalf};
+  margin-bottom: ${theme.space16};
 `;
 
 const TextWrapper = styled.div`
@@ -30,8 +30,8 @@ const TextWrapper = styled.div`
 `;
 
 const Action = styled.div`
-  margin-top: ${theme.space};
-  margin-bottom: ${theme.spaceQuarter};
+  margin-top: ${theme.space24};
+  margin-bottom: ${theme.space8};
 `;
 
 export type RestStateProps = {

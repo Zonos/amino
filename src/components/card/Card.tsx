@@ -7,16 +7,16 @@ import styled from 'styled-components';
 
 const StyledCard = styled.div`
   border: ${theme.border};
-  border-radius: ${theme.radius};
-  padding: ${theme.space};
+  border-radius: ${theme.radius6};
+  padding: ${theme.space24};
 `;
 
 const CardHeader = styled.header`
-  margin: ${theme.spaceNegative};
-  padding: ${theme.space};
+  margin: ${theme.spaceNegative24};
+  padding: ${theme.space24};
   display: flex;
   align-items: center;
-  margin-bottom: ${theme.space};
+  margin-bottom: ${theme.space24};
   border-bottom: ${theme.border};
   height: 65px;
   line-height: 65px;
@@ -32,13 +32,13 @@ const CardFooter = styled.footer<{ footerHeight?: number }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: ${theme.spaceNegative};
-  padding: ${theme.space};
+  margin: ${theme.spaceNegative24};
+  padding: ${theme.space24};
   border-top: ${theme.border};
   background: ${theme.surfaceColorSecondary};
-  margin-top: ${theme.space};
-  border-bottom-left-radius: ${theme.radiusLg};
-  border-bottom-right-radius: ${theme.radiusLg};
+  margin-top: ${theme.space24};
+  border-bottom-left-radius: ${theme.radius8};
+  border-bottom-right-radius: ${theme.radius8};
   height: ${p => p.footerHeight && `${p.footerHeight}px`};
 `;
 

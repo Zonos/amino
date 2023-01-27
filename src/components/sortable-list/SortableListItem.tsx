@@ -10,7 +10,7 @@ const StyledSortableListItem = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: ${theme.space};
+  gap: ${theme.space24};
 `;
 
 const StyledSortableSection = styled.div`

@@ -18,4 +18,5 @@ export const PersonIcon = ({ size, color, className }: IconProps) => (
     />
   </IconBase>
 );
+// eslint-disable-next-line deprecation/deprecation
 PersonIcon.deprecated = true;

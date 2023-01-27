@@ -7,7 +7,7 @@ import {
   NavigationItem,
 } from 'src/components/layout/NavigationGroup';
 import { HomeIcon } from 'src/icons/HomeIcon';
-import { PuzzleIcon } from 'src/icons/legacy/PuzzleIcon';
+import { IntegrationIcon } from 'src/icons/IntegrationIcon';
 import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 
 const NavigationGroupMeta: Meta = {
@@ -85,7 +85,7 @@ const Template: Story = ({ className }) => {
           <a href="/classify/create" onClick={mockUrlChange}>
             <NavigationItem
               content="Classify"
-              icon={<PuzzleIcon size={20} />}
+              icon={<IntegrationIcon size={20} />}
             />
           </a>
         }
