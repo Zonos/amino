@@ -6,19 +6,19 @@ import styled, { keyframes } from 'styled-components';
 import { Ripple, RippleProps } from './Ripple';
 
 export interface IRippleActions {
-  start: (event: React.MouseEvent, callback?: () => void) => void;
-  stop: (event: React.SyntheticEvent, callback?: () => void) => void;
+  start: (event: React.SyntheticEvent) => void;
+  stop: (event: React.SyntheticEvent) => void;
 }
 
 const rippleAnimation = keyframes`
   0% {
     transform: scale(0);
-    opacity: 0.1;
+    opacity: 0.15;
   }
 
   100% {
     transform: scale(4);
-    opacity: 0.12;
+    opacity: 0.25;
   }
 `;
 
@@ -37,7 +37,7 @@ const RippleRoot = styled.span`
     overflow: hidden;
     position: absolute;
     border-radius: 50%;
-    opacity: 0.12;
+    opacity: 0.25;
     transform: scale(4);
     animation: ${rippleAnimation} 1000ms ease-out;
     background-color: currentColor;
@@ -45,14 +45,17 @@ const RippleRoot = styled.span`
 `;
 
 const getRippleStyle = (
-  event: React.MouseEvent,
+  event: React.SyntheticEvent,
   parent: HTMLSpanElement
 ): RippleProps['style'] => {
   const parentRect = parent.getBoundingClientRect();
   const diameter = Math.max(parentRect.width, parentRect.height);
   const radius = diameter / 2;
-  const left = event.clientX - parentRect.left - radius;
-  const top = event.clientY - parentRect.top - radius;
+
+  const { clientX, clientY } = event as React.MouseEvent;
+
+  const left = (clientX || 0) - parentRect.left - radius;
+  const top = (clientY || 0) - parentRect.top - radius;
 
   return {
     width: diameter,
@@ -69,7 +72,7 @@ export const RippleGroup = React.forwardRef<IRippleActions>((props, ref) => {
 
   const nextKey = React.useRef(0);
 
-  const start = React.useCallback((event: React.MouseEvent) => {
+  const start = React.useCallback<IRippleActions['start']>(event => {
     if (container.current) {
       const rippleProps: RippleProps = {
         style: getRippleStyle(event, container.current),
@@ -84,7 +87,7 @@ export const RippleGroup = React.forwardRef<IRippleActions>((props, ref) => {
     }
   }, []);
 
-  const stop = React.useCallback(() => {
+  const stop = React.useCallback<IRippleActions['stop']>(() => {
     setRipples(oldRipples => {
       if (oldRipples.length > 0) {
         return oldRipples.slice(1);

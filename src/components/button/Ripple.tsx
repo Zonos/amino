@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 export type RippleProps = {
   style: {
     width: number;
@@ -9,13 +7,15 @@ export type RippleProps = {
   };
 };
 
-const PositionedRipple = styled.span<RippleProps['style']>`
-  width: ${p => `${p.width}px`};
-  height: ${p => `${p.height}px`};
-  top: ${p => `${p.top}px`};
-  left: ${p => `${p.left}px`};
-`;
-
 export const Ripple = ({ style }: RippleProps) => (
-  <PositionedRipple {...style} className="ripple" />
+  <span
+    {...style}
+    className="ripple"
+    style={{
+      width: `${style.width}px`,
+      height: `${style.height}px`,
+      top: `${style.top}px`,
+      left: `${style.left}px`,
+    }}
+  />
 );

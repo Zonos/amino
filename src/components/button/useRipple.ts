@@ -2,25 +2,6 @@ import * as React from 'react';
 
 import { IRippleActions } from './RippleGroup';
 
-// /**
-//  * https://github.com/facebook/react/issues/14099#issuecomment-440013892
-//  */
-// export function useEventCallback<Args extends unknown[], Return>(
-//   fn: (...args: Args) => Return
-// ): (...args: Args) => Return {
-//   const ref = React.useRef(fn);
-//   useEnhancedEffect(() => {
-//     ref.current = fn;
-//   });
-//   return React.useCallback(
-//     (...args: Args) =>
-//       // @ts-expect-error hide `this`
-//       // tslint:disable-next-line:ban-comma-operator
-//       (0, ref.current!)(...args),
-//     []
-//   );
-// }
-
 interface IRippleEventHandlers {
   onBlur: React.FocusEventHandler;
   onContextMenu: React.MouseEventHandler;
@@ -28,9 +9,6 @@ interface IRippleEventHandlers {
   onMouseDown: React.MouseEventHandler;
   onMouseLeave: React.MouseEventHandler;
   onMouseUp: React.MouseEventHandler;
-  onTouchEnd: React.TouchEventHandler;
-  onTouchMove: React.TouchEventHandler;
-  onTouchStart: React.TouchEventHandler;
 }
 
 type Props = {
@@ -72,9 +50,6 @@ export const useRipple = ({
   const handleDragLeave = useRippleHandler('stop');
   const handleMouseUp = useRippleHandler('stop');
   const handleMouseLeave = useRippleHandler('stop');
-  const handleTouchStart = useRippleHandler('start');
-  const handleTouchEnd = useRippleHandler('stop');
-  const handleTouchMove = useRippleHandler('stop');
 
   const getRippleHandlers = React.useMemo(() => {
     const rippleHandlers: IRippleEventHandlers = {
@@ -84,9 +59,6 @@ export const useRipple = ({
       onMouseLeave: handleMouseLeave,
       onContextMenu: handleContextMenu,
       onDragLeave: handleDragLeave,
-      onTouchStart: handleTouchStart,
-      onTouchEnd: handleTouchEnd,
-      onTouchMove: handleTouchMove,
     };
 
     return (otherEvents: Partial<IRippleEventHandlers>) => {
@@ -95,7 +67,11 @@ export const useRipple = ({
       ) as (keyof IRippleEventHandlers)[];
       const wrappedEvents = eventNames.map(eventName => ({
         name: eventName,
-        handler: ev => {
+        handler: (
+          ev: React.FocusEvent<Element, Element> &
+            React.MouseEvent<Element, MouseEvent> &
+            React.DragEvent<Element>
+        ) => {
           otherEvents[eventName]?.(ev);
           rippleHandlers[eventName](ev);
         },
@@ -113,9 +89,6 @@ export const useRipple = ({
     handleMouseLeave,
     handleContextMenu,
     handleDragLeave,
-    handleTouchStart,
-    handleTouchEnd,
-    handleTouchMove,
   ]);
 
   return {
