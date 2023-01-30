@@ -17,6 +17,7 @@ import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 import { IRippleActions, RippleGroup } from './RippleGroup';
+import { useRipple } from './useRipple';
 
 const getAminoColor = (color?: Color | 'inherit') => {
   if (color === 'inherit') {
@@ -352,7 +353,7 @@ export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
 export function Button<T extends GroupTag = 'button'>({
   children,
   className,
-  disabled,
+  disabled = false,
   icon,
   iconRight,
   intent,
@@ -396,15 +397,11 @@ export function Button<T extends GroupTag = 'button'>({
   >(null);
   const rippleRef = useRef<IRippleActions>(null);
 
-  const handleMouseDown = (event: MouseEvent<HTMLElement>) => {
-    props.onMouseDown?.(event);
-    !noRipple && rippleRef.current?.start(event);
-  };
-
-  const handleMouseLeave = (event: MouseEvent<HTMLElement>) => {
-    props.onMouseLeave?.(event);
-    !noRipple && rippleRef.current?.stop(event);
-  };
+  const { rippleEnabled, getRippleHandlers } = useRipple({
+    rippleRef,
+    rippleEnabled: !noRipple,
+    disabled,
+  });
 
   const baseProps = {
     className: buttonClassName,
@@ -413,13 +410,10 @@ export function Button<T extends GroupTag = 'button'>({
   };
 
   const buttonProps: ButtonProps = {
+    type,
     ...baseProps,
     ...(props as ButtonProps<'button'>),
-    type,
-    onMouseDown: handleMouseDown,
-    onMouseLeave: handleMouseLeave,
-    onMouseUp: handleMouseLeave,
-    onDragLeave: handleMouseLeave,
+    ...getRippleHandlers(props),
   };
 
   switch (intent) {
@@ -427,7 +421,7 @@ export function Button<T extends GroupTag = 'button'>({
       return (
         <Primary as={tag || 'button'} ref={buttonRef} {...buttonProps}>
           {renderContent(spinnerColor || 'white')}
-          <RippleGroup ref={rippleRef} />
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Primary>
       );
     case 'subtle':
@@ -471,7 +465,7 @@ export function Button<T extends GroupTag = 'button'>({
       return (
         <Secondary as={tag || 'button'} ref={buttonRef} {...buttonProps}>
           {renderContent(spinnerColor)}
-          {!noRipple && <RippleGroup ref={rippleRef} />}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Secondary>
       );
   }

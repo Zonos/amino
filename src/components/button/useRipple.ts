@@ -34,8 +34,9 @@ interface IRippleEventHandlers {
 }
 
 type Props = {
-  disabled?: boolean;
   rippleRef: React.RefObject<IRippleActions>;
+  disabled: boolean;
+  rippleEnabled: boolean;
 };
 
 type Return = {
@@ -43,20 +44,26 @@ type Return = {
   getRippleHandlers(
     otherEvents: Partial<IRippleEventHandlers>
   ): IRippleEventHandlers;
+  rippleEnabled: boolean;
 };
 
-export const useRipple = ({ disabled = false }: Props): Return => {
+export const useRipple = ({
+  rippleRef,
+  disabled,
+  rippleEnabled,
+}: Props): Return => {
   function useRippleHandler(
-    rippleAction: keyof TouchRippleActions,
-    skipRippleAction = disableTouchRipple
+    rippleAction: keyof IRippleActions,
+    skipRippleAction = !rippleEnabled
   ) {
-    return React.useCallback((event: React.SyntheticEvent) => {
-      if (!skipRippleAction && rippleRef.current) {
-        rippleRef.current[rippleAction](event);
-      }
-
-      return true;
-    });
+    return React.useCallback(
+      (event: React.SyntheticEvent) => {
+        if (!skipRippleAction && rippleRef.current) {
+          rippleRef.current[rippleAction](event);
+        }
+      },
+      [rippleAction, skipRippleAction]
+    );
   }
 
   const handleBlur = useRippleHandler('stop', false);
@@ -70,7 +77,7 @@ export const useRipple = ({ disabled = false }: Props): Return => {
   const handleTouchMove = useRippleHandler('stop');
 
   const getRippleHandlers = React.useMemo(() => {
-    const rippleHandlers = {
+    const rippleHandlers: IRippleEventHandlers = {
       onBlur: handleBlur,
       onMouseDown: handleMouseDown,
       onMouseUp: handleMouseUp,
@@ -80,7 +87,7 @@ export const useRipple = ({ disabled = false }: Props): Return => {
       onTouchStart: handleTouchStart,
       onTouchEnd: handleTouchEnd,
       onTouchMove: handleTouchMove,
-    } as IRippleEventHandlers;
+    };
 
     return (otherEvents: Partial<IRippleEventHandlers>) => {
       const eventNames = Object.keys(
@@ -112,6 +119,7 @@ export const useRipple = ({ disabled = false }: Props): Return => {
   ]);
 
   return {
+    rippleEnabled: rippleEnabled && !disabled,
     getRippleHandlers,
   };
 };
