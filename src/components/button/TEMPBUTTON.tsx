@@ -1,9 +1,7 @@
 import {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  HTMLAttributes,
+  ComponentPropsWithoutRef,
+  ComponentPropsWithRef,
   MouseEvent,
-  MouseEventHandler,
   ReactNode,
   useRef,
 } from 'react';
@@ -14,9 +12,7 @@ import { Color } from 'src/types';
 import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
 import { Theme } from 'src/types/Theme';
-import styled from 'styled-components';
-
-import { IRippleActions, RippleGroup } from './RippleGroup';
+import styled, { keyframes } from 'styled-components';
 
 const getAminoColor = (color?: Color | 'inherit') => {
   if (color === 'inherit') {
@@ -26,18 +22,6 @@ const getAminoColor = (color?: Color | 'inherit') => {
     return theme[color];
   }
   return undefined;
-};
-
-const getPadding = (size?: Size) => {
-  switch (size) {
-    case 'sm':
-      return '6px 10px';
-    case 'lg':
-      return '14px 18px';
-    case 'md':
-    default:
-      return '10px 14px';
-  }
 };
 
 const StyledSpinnerWrapper = styled.span`
@@ -53,7 +37,7 @@ const StyledSpinnerWrapper = styled.span`
   gap: ${theme.space8};
 `;
 
-const AminoButton = styled.button<ButtonProps<GroupTag>>`
+const AminoButton = styled.button<ConcreteButtonProps>`
   position: relative;
   outline: none;
   height: ${p => `var(--amino-size-${p.size})`};
@@ -73,7 +57,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   letter-spacing: normal;
   cursor: pointer;
   white-space: nowrap;
-  padding: ${p => getPadding(p.size)};
+  overflow: hidden;
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
@@ -84,12 +68,14 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
     padding: 0;
   }
 
-  &:active,
-  &:focus {
-    outline: none;
+  &:active {
     svg path:not([data-is-secondary-color]) {
       fill: currentColor;
     }
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:not(.only-icon).has-icon {
@@ -106,6 +92,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   }
 
   &[disabled] {
+    cursor: not-allowed;
     box-shadow: none;
     &:not(.loading) {
       opacity: 0.5;
@@ -119,12 +106,13 @@ const Primary = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.blue400};
+      background: ${theme.blue500};
+      box-shadow: ${theme.v3ShadowMedium};
     }
-    &:active,
-    &:focus {
+    &:active {
       background: ${theme.blue700};
       color: white;
+      box-shadow: ${theme.v3ShadowLarge};
     }
   }
 
@@ -139,11 +127,13 @@ const Secondary = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.gray200};
+      background: ${theme.gray300};
+      box-shadow: ${theme.v3ShadowBase};
     }
     &:active {
       background: ${theme.blue100};
       color: ${theme.blue600};
+      box-shadow: ${theme.v3ShadowMedium};
       svg path {
         fill: currentColor;
       }
@@ -162,11 +152,12 @@ const Secondary = styled(AminoButton)`
     &:not([disabled]) {
       &:hover {
         background: ${theme.gray900};
+        box-shadow: ${theme.v3ShadowMedium};
       }
-      &:active,
-      &:focus {
+      &:active {
         background: ${theme.blue1000};
-        color: ${theme.blue300};
+        color: ${theme.blue400};
+        box-shadow: ${theme.v3ShadowLarge};
         svg path {
           fill: currentColor;
         }
@@ -185,10 +176,12 @@ const Danger = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.red400};
+      background: ${theme.red500};
+      box-shadow: ${theme.v3ShadowMedium};
     }
     &:active {
       background: ${theme.red700};
+      box-shadow: ${theme.v3ShadowLarge};
     }
   }
 
@@ -203,10 +196,12 @@ const Warning = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.orange400};
+      background: ${theme.orange500};
+      box-shadow: ${theme.v3ShadowMedium};
     }
     &:active {
       background: ${theme.orange700};
+      box-shadow: ${theme.v3ShadowLarge};
     }
   }
 
@@ -218,23 +213,27 @@ const Warning = styled(AminoButton)`
 const Outline = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || 'white'};
   color: ${p => getAminoColor(p.color) || theme.textColor};
-  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray200};
+  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray300};
 
   &:not([disabled]) {
     &:hover {
       background: ${theme.gray100};
-      border: 1px solid ${theme.gray200};
+      border: 1px solid ${theme.gray300};
     }
     &:active {
       background: ${theme.blue100};
       color: ${theme.blue600};
-      border: 1px solid ${theme.blue300};
+      border: 1px solid ${theme.blue400};
     }
   }
 
   ${StyledSpinnerWrapper} {
     background: white;
   }
+
+  /* span.ripple {
+      background-color: rgba(107, 172, 246, 0.25);
+    } */
 `;
 
 const Subtle = styled(AminoButton)`
@@ -254,16 +253,20 @@ const Subtle = styled(AminoButton)`
   &.loading {
     color: transparent;
   }
+
+  /* span.ripple {
+      background-color: rgba(107, 172, 246, 0.25);
+    } */
 `;
 
-const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
+const TextButton = styled(AminoButton)<ConcreteButtonProps>`
   color: ${p => getAminoColor(p.color) || theme.gray800};
   height: 20px;
   line-height: 20px;
   padding: 0;
 
   &[disabled] {
-    color: ${theme.gray400};
+    color: ${theme.gray500};
     &:not(.loading) {
       opacity: inherit;
     }
@@ -283,7 +286,7 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
-const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
+const LinkButton = styled(AminoButton)<ConcreteButtonProps>`
   color: ${p => getAminoColor(p.color) || theme.blue600};
   background: ${p => getAminoColor(p.background) || 'white'};
 
@@ -300,6 +303,10 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   ${StyledSpinnerWrapper} {
     background: white;
   }
+
+  /* span.ripple {
+      background-color: rgba(107, 172, 246, 0.25);
+    } */
 `;
 
 type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | Intent;
@@ -321,35 +328,38 @@ type ButtonBase = {
   size?: Size;
   tabIndex?: number;
   type?: 'button' | 'reset' | 'submit';
-  /**
-   * Color for the spinner when in a loading state.
-   * @default dog sdas
-   */
-  spinnerColor?: SpinnerProps['color'];
-  /** Disable ripple effect */
   noRipple?: boolean;
 };
 
-type GroupTag = 'div' | 'a' | 'button';
-
-type MyHTMLElement<T extends GroupTag> = T extends 'a'
+type SupportedTag = 'div' | 'a' | 'button';
+type HTMLElement<T extends SupportedTag> = T extends 'a'
   ? HTMLAnchorElement
   : T extends 'div'
   ? HTMLDivElement
   : HTMLButtonElement;
-type HTMLAttribute<T> = T extends HTMLAnchorElement
-  ? AnchorHTMLAttributes<T>
-  : T extends HTMLDivElement
-  ? HTMLAttributes<T>
-  : ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
-  Omit<HTMLAttribute<MyHTMLElement<T>>, keyof ButtonBase | 'onClick'> & {
-    onClick?: MouseEventHandler<MyHTMLElement<T>>;
-    tag?: T;
-  };
+// type HTMLAttribute<T> = T extends HTMLAnchorElement
+//   ? AnchorHTMLAttributes<T>
+//   : T extends HTMLDivElement
+//   ? HTMLAttributes<T>
+//   : ButtonHTMLAttributes<HTMLButtonElement>;
+// export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
+//   Omit<HTMLAttribute<HTMLElement<T>>, keyof ButtonBase | 'onClick'> & {
+//     onClick?: MouseEventHandler<HTMLElement<T>>;
+//     tag?: GroupTag;
+//   };
 
-export function Button<T extends GroupTag = 'button'>({
+type ButtonProps2<T extends SupportedTag = 'button'> = {
+  tag?: T;
+} & ButtonBase &
+  Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase>;
+
+type ConcreteButtonProps<T extends SupportedTag = 'button'> = {
+  tag: T;
+} & ButtonBase &
+  Omit<ComponentPropsWithRef<T>, keyof ButtonBase>;
+
+export function Button<T extends SupportedTag>({
   children,
   className,
   disabled,
@@ -359,21 +369,25 @@ export function Button<T extends GroupTag = 'button'>({
   loading,
   loadingText,
   size = 'sm',
-  tag,
+  tag: _tag,
   theme: _theme,
   type = 'button',
-  spinnerColor,
   noRipple = false,
   ...props
-}: ButtonProps<T>) {
-  const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
+}: ButtonProps2<T>) {
+  const tag: SupportedTag = _tag || 'button';
+
+  const onlyIcon = icon && !children;
+  const rippleEnabled = !noRipple && !onlyIcon && intent !== 'text';
+
+  const renderContent = (spinnerColor?: SpinnerProps['color']) => (
     <>
       {!iconRight && icon}
       {children}
       {iconRight && icon}
       {loading && (
         <StyledSpinnerWrapper>
-          <Spinner size={16} color={_spinnerColor} />
+          <Spinner size={16} color={spinnerColor} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
@@ -382,7 +396,7 @@ export function Button<T extends GroupTag = 'button'>({
 
   const buttonClassName = [
     className || '',
-    icon && !children ? 'only-icon' : '',
+    onlyIcon ? 'only-icon' : '',
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
     loading ? 'loading' : '',
@@ -394,16 +408,41 @@ export function Button<T extends GroupTag = 'button'>({
   const buttonRef = useRef<
     HTMLButtonElement | HTMLAnchorElement | HTMLDivElement
   >(null);
-  const rippleRef = useRef<IRippleActions>(null);
 
-  const handleMouseDown = (event: MouseEvent<HTMLElement>) => {
-    props.onMouseDown?.(event);
-    !noRipple && rippleRef.current?.start(event);
+  const handleRipple = (event: MouseEvent<HTMLElement<typeof tag>>) => {
+    const button = buttonRef.current;
+
+    if (button) {
+      const circle = document.createElement('span');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+
+      circle.style.width = `${diameter}px`;
+      circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+      circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+      circle.classList.add('ripple');
+
+      const ripple = button.getElementsByClassName('ripple')[0];
+
+      if (ripple) {
+        ripple.remove();
+      }
+
+      button.appendChild(circle);
+    }
   };
 
-  const handleMouseLeave = (event: MouseEvent<HTMLElement>) => {
+  const handleOnMouseDown = (event: MouseEvent<HTMLElement<typeof tag>>) => {
+    props.onMouseDown?.(event);
+    rippleEnabled && handleRipple(event);
+  };
+
+  const handleOnMouseLeave = (event: MouseEvent<HTMLElement<typeof tag>>) => {
     props.onMouseLeave?.(event);
-    !noRipple && rippleRef.current?.stop(event);
+    if (rippleEnabled) {
+      buttonRef.current?.getElementsByClassName('ripple')?.[0]?.remove();
+    }
   };
 
   const baseProps = {
@@ -412,67 +451,37 @@ export function Button<T extends GroupTag = 'button'>({
     size,
   };
 
-  const buttonProps: ButtonProps = {
-    ...baseProps,
-    ...(props as ButtonProps<'button'>),
+  const buttonProps: ConcreteButtonProps<typeof tag> = {
     type,
-    onMouseDown: handleMouseDown,
-    onMouseLeave: handleMouseLeave,
-    onMouseUp: handleMouseLeave,
-    onDragLeave: handleMouseLeave,
-  };
+    tag,
+    ...baseProps,
+    ...props,
+    onMouseDown: handleOnMouseDown,
+    onMouseLeave: handleOnMouseLeave,
+    ref: buttonRef,
+  } as ConcreteButtonProps<typeof tag>;
 
   switch (intent) {
     case 'primary':
       return (
-        <Primary as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor || 'white')}
-          <RippleGroup ref={rippleRef} />
+        <Primary as={tag} {...buttonProps}>
+          {renderContent('white')}
         </Primary>
       );
     case 'subtle':
-      return (
-        <Subtle as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor)}
-        </Subtle>
-      );
+      return <Subtle {...buttonProps}>{renderContent()}</Subtle>;
     case 'outline':
-      return (
-        <Outline as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor)}
-        </Outline>
-      );
+      return <Outline {...buttonProps}>{renderContent()}</Outline>;
     case 'warning':
-      return (
-        <Warning as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor || 'white')}
-        </Warning>
-      );
+      return <Warning {...buttonProps}>{renderContent('white')}</Warning>;
     case 'danger':
-      return (
-        <Danger as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor || 'white')}
-        </Danger>
-      );
+      return <Danger {...buttonProps}>{renderContent('white')}</Danger>;
     case 'text':
-      return (
-        <TextButton as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor)}
-        </TextButton>
-      );
+      return <TextButton {...buttonProps}>{renderContent()}</TextButton>;
     case 'link':
-      return (
-        <LinkButton as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor)}
-        </LinkButton>
-      );
+      return <LinkButton {...buttonProps}>{renderContent()}</LinkButton>;
     case 'secondary':
     default:
-      return (
-        <Secondary as={tag || 'button'} ref={buttonRef} {...buttonProps}>
-          {renderContent(spinnerColor)}
-          {!noRipple && <RippleGroup ref={rippleRef} />}
-        </Secondary>
-      );
+      return <Secondary {...buttonProps}>{renderContent()}</Secondary>;
   }
 }
