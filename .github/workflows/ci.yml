@@ -36,4 +36,4 @@ jobs:
           node-version: "16.x"
           cache: "yarn"
       - run: yarn install --frozen-lockfile
-      - run: yarn test:visual
+      - run: yarn build-storybook && yarn test:visual
