@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useLayoutEffect, useState } from 'react';
 
 import { useResizeAware } from 'src/utils/useResizeAware';
 import styled from 'styled-components';
@@ -34,7 +34,7 @@ export const Collapse = ({
   const [hideOverflow, setHideOverflow] = useState(!isExpand);
   const [resizeListener, sizes] = useResizeAware();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHideOverflow(true);
     if (sizes.height && isExpand) {
       setHeight(sizes.height);

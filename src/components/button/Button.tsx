@@ -1,9 +1,8 @@
 import {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  HTMLAttributes,
+  ComponentPropsWithoutRef,
   MouseEventHandler,
   ReactNode,
+  useRef,
 } from 'react';
 
 import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
@@ -13,6 +12,9 @@ import { Intent } from 'src/types/Intent';
 import { Size } from 'src/types/Size';
 import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
+
+import { IRippleActions, RippleGroup } from './RippleGroup';
+import { useRipple } from './useRipple';
 
 const getAminoColor = (color?: Color | 'inherit') => {
   if (color === 'inherit') {
@@ -313,50 +315,50 @@ type ButtonBase = {
   intent?: IntentProps;
   loading?: boolean;
   loadingText?: string;
-  theme?: Theme | 'space';
+  /** Disable ripple effect */
+  noRipple?: boolean;
   size?: Size;
-  tabIndex?: number;
-  type?: 'button' | 'reset' | 'submit';
-  /**
-   * Color for the spinner when in a loading state
-   */
+  /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
+  tabIndex?: number;
+  theme?: Theme | 'space';
+  type?: 'button' | 'reset' | 'submit';
 };
 
-type GroupTag = 'div' | 'a' | 'button';
+export type GroupTag = 'div' | 'a' | 'button';
 
-type HTMLElement<T extends GroupTag> = T extends 'a'
+/* These types are kind of hacked because styled components makes it difficult to do polymorphic components. */
+
+type MyHTMLElement<T extends GroupTag> = T extends 'a'
   ? HTMLAnchorElement
   : T extends 'div'
   ? HTMLDivElement
   : HTMLButtonElement;
-type HTMLAttribute<T> = T extends HTMLAnchorElement
-  ? AnchorHTMLAttributes<T>
-  : T extends HTMLDivElement
-  ? HTMLAttributes<T>
-  : ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
-  Omit<HTMLAttribute<HTMLElement<T>>, keyof ButtonBase | 'onClick'> & {
-    onClick?: MouseEventHandler<HTMLElement<T>>;
+  Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'> & {
+    onClick?: MouseEventHandler<MyHTMLElement<T>>;
     tag?: T;
   };
+
 export function Button<T extends GroupTag = 'button'>({
   children,
   className,
-  disabled,
+  disabled = false,
   icon,
   iconRight,
   intent,
   loading,
   loadingText,
+  noRipple = false,
   size = 'sm',
-  tag,
+  spinnerColor,
+  tag: _tag,
   theme: _theme,
   type = 'button',
-  spinnerColor,
   ...props
 }: ButtonProps<T>) {
+  const tag = _tag || 'button';
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
       {!iconRight && icon}
@@ -382,65 +384,83 @@ export function Button<T extends GroupTag = 'button'>({
     .filter(Boolean)
     .join(' ');
 
+  const rippleRef = useRef<IRippleActions>(null);
+
+  const { rippleEnabled, getRippleHandlers } = useRipple({
+    rippleRef,
+    rippleEnabled: !noRipple,
+    disabled,
+  });
+
   const baseProps = {
     className: buttonClassName,
     disabled: disabled || loading,
     size,
   };
 
-  const buttonProps = {
-    ...baseProps,
-    ...(props as ButtonProps<'button'>),
+  const buttonProps: ButtonProps = {
     type,
+    ...baseProps,
+    ...(props as ButtonProps),
+    ...getRippleHandlers(props),
   };
+
   switch (intent) {
     case 'primary':
       return (
-        <Primary as={tag || 'button'} {...buttonProps}>
+        <Primary as={tag} {...buttonProps}>
           {renderContent(spinnerColor || 'white')}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Primary>
       );
     case 'subtle':
       return (
-        <Subtle as={tag || 'button'} {...buttonProps}>
+        <Subtle as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Subtle>
       );
     case 'outline':
       return (
-        <Outline as={tag || 'button'} {...buttonProps}>
+        <Outline as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Outline>
       );
     case 'warning':
       return (
-        <Warning as={tag || 'button'} {...buttonProps}>
+        <Warning as={tag} {...buttonProps}>
           {renderContent(spinnerColor || 'white')}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Warning>
       );
     case 'danger':
       return (
-        <Danger as={tag || 'button'} {...buttonProps}>
+        <Danger as={tag} {...buttonProps}>
           {renderContent(spinnerColor || 'white')}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Danger>
       );
     case 'text':
       return (
-        <TextButton as={tag || 'button'} {...buttonProps}>
+        <TextButton as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </TextButton>
       );
     case 'link':
       return (
-        <LinkButton as={tag || 'button'} {...buttonProps}>
+        <LinkButton as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </LinkButton>
       );
     case 'secondary':
     default:
       return (
-        <Secondary as={tag || 'button'} {...buttonProps}>
+        <Secondary as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Secondary>
       );
   }
