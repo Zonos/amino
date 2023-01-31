@@ -5,6 +5,7 @@ import {
   CountrySelect,
   CountrySelectProps,
 } from 'src/components/select/CountrySelect';
+import { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
 import { getCountryUrls } from './getCountryUrls.stories';
@@ -13,6 +14,8 @@ import { useCountryOptions } from './useCountryOptions.stories';
 const StyledWrapper = styled.div`
   width: 412px;
 `;
+
+type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';
 
 const CountrySelectMeta: Meta = {
   component: CountrySelect,
@@ -33,13 +36,24 @@ const CountrySelectTemplate: Story<CountrySelectProps> = ({ ...props }) => {
   const countryOptions = useCountryOptions({
     dashboardUrl,
   });
+  const [typedValue, setTypedValue] = useState<RandomCountryCode | null>(null);
+  const stronglyTypedCountries =
+    countryOptions as ICountryOption<RandomCountryCode>[];
   return (
-    <CountrySelect
-      {...props}
-      countryOptions={countryOptions}
-      onChange={option => setValue(option?.value || null)}
-      value={value}
-    />
+    <>
+      <CountrySelect
+        {...props}
+        countryOptions={countryOptions}
+        onChange={option => setValue(option?.value || null)}
+        value={value}
+      />
+      {/* Check for correctly returning type for onChange and value when there is strongly typed `countryOptions` passed in */}
+      <CountrySelect
+        countryOptions={stronglyTypedCountries}
+        onChange={option => setTypedValue(option?.value || null)}
+        value={typedValue}
+      />
+    </>
   );
 };
 
