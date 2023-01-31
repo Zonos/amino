@@ -6,7 +6,7 @@ import { Color } from 'src/types';
 import styled, { keyframes } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Ripple, RippleProps } from './Ripple';
+import { Ripple, RippleProps } from './_Ripple';
 
 export interface IRippleActions {
   start: (event: React.SyntheticEvent) => void;
