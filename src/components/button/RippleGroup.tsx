@@ -10,7 +10,6 @@ import { Ripple, RippleProps } from './Ripple';
 
 export interface IRippleActions {
   start: (event: React.SyntheticEvent) => void;
-  stop: (event: React.SyntheticEvent) => void;
 }
 
 const rippleAnimation = (opacity: number) => keyframes`
@@ -118,15 +117,12 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
       [duration]
     );
 
-    const stop = React.useCallback<IRippleActions['stop']>(() => {}, []);
-
     React.useImperativeHandle(
       ref,
       () => ({
         start,
-        stop,
       }),
-      [start, stop]
+      [start]
     );
 
     return (

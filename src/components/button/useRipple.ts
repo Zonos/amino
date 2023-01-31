@@ -3,12 +3,7 @@ import * as React from 'react';
 import { IRippleActions } from './RippleGroup';
 
 interface IRippleEventHandlers {
-  onBlur: React.FocusEventHandler;
-  onContextMenu: React.MouseEventHandler;
-  onDragLeave: React.DragEventHandler;
   onMouseDown: React.MouseEventHandler;
-  onMouseLeave: React.MouseEventHandler;
-  onMouseUp: React.MouseEventHandler;
 }
 
 type Props = {
@@ -44,21 +39,11 @@ export const useRipple = ({
     );
   }
 
-  const handleBlur = useRippleHandler('stop', false);
   const handleMouseDown = useRippleHandler('start');
-  const handleContextMenu = useRippleHandler('stop');
-  const handleDragLeave = useRippleHandler('stop');
-  const handleMouseUp = useRippleHandler('stop');
-  const handleMouseLeave = useRippleHandler('stop');
 
   const getRippleHandlers = React.useMemo(() => {
     const rippleHandlers: IRippleEventHandlers = {
-      onBlur: handleBlur,
       onMouseDown: handleMouseDown,
-      onMouseUp: handleMouseUp,
-      onMouseLeave: handleMouseLeave,
-      onContextMenu: handleContextMenu,
-      onDragLeave: handleDragLeave,
     };
 
     return (otherEvents: Partial<IRippleEventHandlers>) => {
@@ -82,14 +67,7 @@ export const useRipple = ({
         return acc;
       }, {} as IRippleEventHandlers);
     };
-  }, [
-    handleBlur,
-    handleMouseDown,
-    handleMouseUp,
-    handleMouseLeave,
-    handleContextMenu,
-    handleDragLeave,
-  ]);
+  }, [handleMouseDown]);
 
   return {
     rippleEnabled: rippleEnabled && !disabled,
