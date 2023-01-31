@@ -1,30 +1,36 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
     inputs:
-      mood:
-        description: 'How are you feeling today?'
+      update:
+        description: "Update snapshots?"
         required: true
-        default: 'lazy'
-        type: choice
-        options:
-          - Happy
-          - Sad
-          - Annoyed
-          - Lazy
-          - Alright
+        default: false
+        type: boolean
 
 jobs:
-  release:
-    name: 'Release'
-    runs-on: 'ubuntu-latest'
-
+  Visual:
+    name: Visual regression tests
+    runs-on: ubuntu-22.04
+    env:
+      CI: true
     steps:
-      - uses: 'marvinpinto/action-automatic-releases@v1.2.1'
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          prerelease: false
+          node-version: "16.x"
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn build-storybook
+      - run: yarn test:visual
+        if: ${{ !inputs.update }}
+      - run: yarn test:visual -u
+        if: ${{ inputs.update }}
+      - name: Archive image snapshot results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: image-output
+          path: |
+            .storybook/__image_snapshots__

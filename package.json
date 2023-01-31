@@ -144,7 +144,7 @@
     "svgs:react:icons": "ts-node ./svgReact/icons",
     "template:logic-constant": "ts-node build-utils/css/generateLogicConstTemplate.ts",
     "test:prod": "jest --testPathIgnorePatterns storyshots",
-    "test:visual": "jest ./.storybook/storyshots",
+    "test:visual": "jest ./.storybook/__tests__/storyshots",
     "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "tsc": "tsc --noEmit",
     "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",

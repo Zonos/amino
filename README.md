@@ -87,4 +87,11 @@ To run the visual tests (with puppeteer), you must have storybook open and runni
 
 After project is bundled, all files that started with `"_"` will always be available, but VS Code will not suggest the path for the auto import suggestion.
 
-## License
+## Visual testing
+
+We use storyshots and puppeteer to do visual regression testing by comparing screenshots. This approach is quite brittle as browser rendering differs between version and OS.
+
+
+```
+yarn test:visual
+```

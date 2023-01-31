@@ -26,9 +26,6 @@ const StyledColorIntensity = styled.div<{
   font-size: ${theme.fontSizeS};
   padding: ${theme.space24};
   background: ${p => theme[p.background]};
-
-  display: flex;
-  gap: ${theme.space8};
 `;
 
 export const ColorPalette = () => (

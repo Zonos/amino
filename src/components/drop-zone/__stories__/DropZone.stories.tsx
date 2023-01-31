@@ -8,6 +8,7 @@ import {
   ToastContext,
   ToastContextProvider,
 } from 'src/components/toast/ToastContext';
+import { customSnapshotsDir } from 'src/utils/snapshotsFolder';
 
 const DropZoneMeta: Meta = {
   component: DropZoneComponent,
@@ -17,8 +18,10 @@ const DropZoneMeta: Meta = {
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A72912&t=erzegCytT9AfSn9f-0',
     },
     async puppeteerTest(page: puppeteer.Page) {
-      const image = await page.screenshot();
-      expect(image).toMatchImageSnapshot();
+      const image = await page.screenshot({ fullPage: true });
+      expect(image).toMatchImageSnapshot({
+        customSnapshotsDir,
+      });
     },
   },
   decorators: [
