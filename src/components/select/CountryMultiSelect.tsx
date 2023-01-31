@@ -70,21 +70,21 @@ export interface CountryMultiSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   icon?: ReactNode;
   label?: string;
-  onChange: (countryCodes: string[]) => void;
-  countryOptions: ICountryOption[];
+  onChange: (countryCodes: Option['value'][]) => void;
+  countryOptions: ICountryOption<Option['value']>[];
   styles?: StylesConfig<Option, IsMulti, Group>;
   unavailableCountries: IUnavailableCountry[];
-  value: string[];
+  value: Option['value'][];
 }
 
-export const CountryMultiSelect = ({
+export const CountryMultiSelect = <T extends string>({
   label = 'Select countries',
   countryOptions,
   onChange,
   unavailableCountries,
   value,
   ...props
-}: CountryMultiSelectProps) => {
+}: CountryMultiSelectProps<IOption<T>>) => {
   const countries = countryOptions.map(option => {
     const unavailableCountry = unavailableCountries.find(
       x => x.code === option.code

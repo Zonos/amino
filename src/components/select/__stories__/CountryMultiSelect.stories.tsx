@@ -5,6 +5,7 @@ import {
   CountryMultiSelect,
   CountryMultiSelectProps,
 } from 'src/components/select/CountryMultiSelect';
+import { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
 import { getCountryUrls } from './getCountryUrls.stories';
@@ -13,6 +14,8 @@ import { useCountryOptions } from './useCountryOptions.stories';
 const StyledWrapper = styled.div`
   width: 412px;
 `;
+
+type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';
 
 const CountryMultiSelectMeta: Meta = {
   component: CountryMultiSelect,
@@ -35,14 +38,26 @@ const CountryMultiSelectTemplate: Story<CountryMultiSelectProps> = ({
   const countryOptions = useCountryOptions({
     dashboardUrl,
   });
+  const [typedValue, setTypedValue] = useState<RandomCountryCode[]>([]);
+  const stronglyTypedCountries =
+    countryOptions as ICountryOption<RandomCountryCode>[];
   return (
-    <CountryMultiSelect
-      {...props}
-      countryOptions={countryOptions}
-      onChange={setValue}
-      unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
-      value={value}
-    />
+    <>
+      <CountryMultiSelect
+        {...props}
+        countryOptions={countryOptions}
+        onChange={setValue}
+        unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
+        value={value}
+      />
+      {/* Check for correctly returning type for onChange and value when there is strongly typed `countryOptions` passed in */}
+      <CountryMultiSelect
+        countryOptions={stronglyTypedCountries}
+        onChange={setTypedValue}
+        unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
+        value={typedValue}
+      />
+    </>
   );
 };
 
