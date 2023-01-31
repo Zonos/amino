@@ -135,8 +135,8 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
           {ripples.map(r => (
             <motion.div
               key={r.key}
-              initial={{ opacity }}
-              animate={{ opacity }}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
               {r.element}
