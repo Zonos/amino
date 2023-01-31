@@ -9,7 +9,6 @@ export type RippleProps = {
 
 export const Ripple = ({ style }: RippleProps) => (
   <span
-    {...style}
     className="ripple"
     style={{
       width: `${style.width}px`,

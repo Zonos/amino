@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import { theme } from 'src/styles/constants/theme';
+import { Color } from 'src/types';
 import styled, { keyframes } from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Ripple, RippleProps } from './Ripple';
 
@@ -10,19 +13,19 @@ export interface IRippleActions {
   stop: (event: React.SyntheticEvent) => void;
 }
 
-const rippleAnimation = keyframes`
+const rippleAnimation = (opacity: number) => keyframes`
   0% {
     transform: scale(0);
-    opacity: 0.15;
+    opacity: 0.1;
   }
 
   100% {
     transform: scale(4);
-    opacity: 0.25;
+    opacity: ${opacity};
   }
 `;
 
-const RippleRoot = styled.span`
+const RippleRoot = styled.span<{ $color?: Color; $opacity: number }>`
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -37,10 +40,10 @@ const RippleRoot = styled.span`
     overflow: hidden;
     position: absolute;
     border-radius: 50%;
-    opacity: 0.25;
+    opacity: ${p => p.$opacity};
     transform: scale(4);
-    animation: ${rippleAnimation} 1000ms ease-out;
-    background-color: currentColor;
+    animation: ${p => rippleAnimation(p.$opacity)} 600ms ease-out;
+    background-color: ${p => (p.$color ? theme[p.$color] : 'currentColor')};
   }
 `;
 
@@ -65,59 +68,82 @@ const getRippleStyle = (
   };
 };
 
-export const RippleGroup = React.forwardRef<IRippleActions>((props, ref) => {
-  const [ripples, setRipples] = React.useState<React.ReactNode[]>([]);
+type RippleItem = {
+  element: React.ReactNode;
+  key: string;
+};
 
-  const container = React.useRef<HTMLSpanElement>(null);
+export type RippleGroupProps = {
+  /**
+   * @default 200 ms
+   */
+  duration?: number;
+  /**
+   * @default 0.12
+   */
+  opacity?: number;
+  /**
+   * @default 'inherit'
+   */
+  color?: Color;
+};
 
-  const nextKey = React.useRef(0);
+export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
+  ({ duration = 200, opacity = 0.12, color }, ref) => {
+    const [ripples, setRipples] = React.useState<RippleItem[]>([]);
 
-  const start = React.useCallback<IRippleActions['start']>(event => {
-    if (container.current) {
-      const rippleProps: RippleProps = {
-        style: getRippleStyle(event, container.current),
-      };
+    const container = React.useRef<HTMLSpanElement>(null);
 
-      setRipples(oldRipples => [
-        ...oldRipples,
-        <Ripple key={nextKey.current} {...rippleProps} />,
-      ]);
+    const start = React.useCallback<IRippleActions['start']>(
+      event => {
+        if (container.current) {
+          const rippleProps: RippleProps = {
+            style: getRippleStyle(event, container.current),
+          };
 
-      nextKey.current += 1;
-    }
-  }, []);
+          setRipples(oldRipples => [
+            ...oldRipples,
+            {
+              element: <Ripple {...rippleProps} />,
+              key: uuidv4(),
+            },
+          ]);
 
-  const stop = React.useCallback<IRippleActions['stop']>(() => {
-    setRipples(oldRipples => {
-      if (oldRipples.length > 0) {
-        return oldRipples.slice(1);
-      }
-      return oldRipples;
-    });
-  }, []);
+          setTimeout(
+            () => setRipples(oldRipples => oldRipples.slice(1)),
+            duration
+          );
+        }
+      },
+      [duration]
+    );
 
-  React.useImperativeHandle(
-    ref,
-    () => ({
-      start,
-      stop,
-    }),
-    [start, stop]
-  );
+    const stop = React.useCallback<IRippleActions['stop']>(() => {}, []);
 
-  return (
-    <RippleRoot ref={container}>
-      <AnimatePresence>
-        {!!ripples.length && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {ripples}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </RippleRoot>
-  );
-});
+    React.useImperativeHandle(
+      ref,
+      () => ({
+        start,
+        stop,
+      }),
+      [start, stop]
+    );
+
+    return (
+      <RippleRoot ref={container} $color={color} $opacity={opacity}>
+        <AnimatePresence>
+          {ripples.map(r => (
+            <motion.div
+              key={r.key}
+              initial={{ opacity }}
+              animate={{ opacity }}
+              exit={{ opacity: 0 }}
+            >
+              {r.element}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </RippleRoot>
+    );
+  }
+);
