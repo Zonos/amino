@@ -74,6 +74,10 @@ type RippleItem = {
 
 export type RippleGroupProps = {
   /**
+   * @default 'inherit'
+   */
+  color?: Color;
+  /**
    * @default 200 ms
    */
   duration?: number;
@@ -81,14 +85,10 @@ export type RippleGroupProps = {
    * @default 0.12
    */
   opacity?: number;
-  /**
-   * @default 'inherit'
-   */
-  color?: Color;
 };
 
 export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
-  ({ duration = 200, opacity = 0.12, color }, ref) => {
+  ({ color, duration = 200, opacity = 0.12 }, ref) => {
     const [ripples, setRipples] = React.useState<RippleItem[]>([]);
 
     const container = React.useRef<HTMLSpanElement>(null);

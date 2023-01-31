@@ -315,19 +315,19 @@ type ButtonBase = {
   intent?: IntentProps;
   loading?: boolean;
   loadingText?: string;
-  theme?: Theme | 'space';
-  size?: Size;
-  tabIndex?: number;
-  type?: 'button' | 'reset' | 'submit';
-  /** Color for the spinner when in a loading state */
-  spinnerColor?: SpinnerProps['color'];
   /** Disable ripple effect */
   noRipple?: boolean;
+  size?: Size;
+  /** Color for the spinner when in a loading state */
+  spinnerColor?: SpinnerProps['color'];
+  tabIndex?: number;
+  theme?: Theme | 'space';
+  type?: 'button' | 'reset' | 'submit';
 };
 
 export type GroupTag = 'div' | 'a' | 'button';
 
-/* These types are scuffed because styled components makes it difficult to do polymorphic components. */
+/* These types are kind of hacked because styled components makes it difficult to do polymorphic components. */
 
 type MyHTMLElement<T extends GroupTag> = T extends 'a'
   ? HTMLAnchorElement
@@ -350,12 +350,12 @@ export function Button<T extends GroupTag = 'button'>({
   intent,
   loading,
   loadingText,
+  noRipple = false,
   size = 'sm',
+  spinnerColor,
   tag: _tag,
   theme: _theme,
   type = 'button',
-  spinnerColor,
-  noRipple = false,
   ...props
 }: ButtonProps<T>) {
   const tag = _tag || 'button';

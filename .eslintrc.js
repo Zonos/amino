@@ -58,12 +58,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error',
     camelcase: 'off',
     'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
-    'no-unused-expressions': [
-      'error',
-      {
-        allowShortCircuit: true,
-      },
-    ],
+    'no-unused-expressions': 'error',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       { ignoreRestSiblings: true, argsIgnorePattern: '^_' },
