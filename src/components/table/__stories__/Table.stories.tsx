@@ -260,6 +260,7 @@ const Template: Story<
                   { label: 'Buffer', value: 5.0 },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
                     label={label}
@@ -304,6 +305,7 @@ const Template: Story<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
                     label={label}
@@ -352,6 +354,7 @@ const Template: Story<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
                     showForeign={showForeign}
@@ -405,6 +408,7 @@ const Template: Story<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
                     label={label}
