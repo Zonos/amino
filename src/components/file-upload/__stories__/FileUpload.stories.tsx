@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 
 import { ComponentStory } from '@storybook/react';
 import { Meta } from '@storybook/react/types-6-0';
+import type puppeteer from 'puppeteer';
 import {
   ToastContext,
   ToastContextProvider,
@@ -15,6 +16,10 @@ const FileUploadMeta: Meta = {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=72%3A819&t=erzegCytT9AfSn9f-0',
+    },
+    async puppeteerTest(page: puppeteer.Page) {
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot();
     },
   },
   decorators: [
