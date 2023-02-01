@@ -19,11 +19,12 @@ export default UserAvatarMeta;
 
 const UserAvatarTemplate: Story<UserAvatarProps> = ({
   size,
+  bordered,
 }: UserAvatarProps) => (
   <BaseWrapper>
-    <Avatar shape="round" size={size} />
-    <Avatar shape="rounded" size={size} />
-    <Avatar shape="square" size={size} />
+    <Avatar shape="round" size={size} bordered={bordered} />
+    <Avatar shape="rounded" size={size} bordered={bordered} />
+    <Avatar shape="square" size={size} bordered={bordered} />
   </BaseWrapper>
 );
 
