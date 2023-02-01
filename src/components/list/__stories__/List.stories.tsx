@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { IconAvatar } from 'src/components/avatar/IconAvatar';
 import { List, ListProps } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
+import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
@@ -72,7 +72,7 @@ export const ManyItems = () => {
     <List>
       <ListItem
         decorator={
-          <IconAvatar shape="round" size={16} icon={<ArrowDownIcon />} />
+          <Thumbnail shape="round" size={16} icon={<ArrowDownIcon />} />
         }
         label="Label"
         disabled={false}
@@ -82,7 +82,7 @@ export const ManyItems = () => {
       />
       <ListItem
         decorator={
-          <IconAvatar shape="round" size={16} icon={<ArrowLeftIcon />} />
+          <Thumbnail shape="round" size={16} icon={<ArrowLeftIcon />} />
         }
         label="Label"
         disabled={false}
@@ -91,9 +91,7 @@ export const ManyItems = () => {
         subtitle="subtitle"
       />
       <ListItem
-        decorator={
-          <IconAvatar shape="round" size={16} icon={<ArrowUpIcon />} />
-        }
+        decorator={<Thumbnail shape="round" size={16} icon={<ArrowUpIcon />} />}
         label="Label"
         disabled={false}
         selected={selectedListItem === 3}
