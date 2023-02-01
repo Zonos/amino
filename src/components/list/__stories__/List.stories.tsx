@@ -72,7 +72,7 @@ export const ManyItems = () => {
     <List>
       <ListItem
         decorator={
-          <IconAvatar shape="round" size="sm" icon={<ArrowDownIcon />} />
+          <IconAvatar shape="round" size={16} icon={<ArrowDownIcon />} />
         }
         label="Label"
         disabled={false}
@@ -82,7 +82,7 @@ export const ManyItems = () => {
       />
       <ListItem
         decorator={
-          <IconAvatar shape="round" size="sm" icon={<ArrowLeftIcon />} />
+          <IconAvatar shape="round" size={16} icon={<ArrowLeftIcon />} />
         }
         label="Label"
         disabled={false}
@@ -92,7 +92,7 @@ export const ManyItems = () => {
       />
       <ListItem
         decorator={
-          <IconAvatar shape="round" size="sm" icon={<ArrowUpIcon />} />
+          <IconAvatar shape="round" size={16} icon={<ArrowUpIcon />} />
         }
         label="Label"
         disabled={false}

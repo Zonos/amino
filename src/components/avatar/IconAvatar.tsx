@@ -1,19 +1,27 @@
-import { cloneElement, ReactElement } from 'react';
+import { ReactNode } from 'react';
 
-import { AvatarBase, AvatarProps, iconSizes } from './AvatarBase';
+import styled from 'styled-components';
+
+import { AvatarBase, AvatarProps } from './AvatarBase';
 
 export type IconAvatarProps = {
-  icon: ReactElement;
+  icon: ReactNode;
 } & AvatarProps;
 
-export const IconAvatar = ({ icon, shape, size }: IconAvatarProps) => {
-  const iconWithCorrectSize = icon.props.size
-    ? icon
-    : cloneElement(icon, { size: iconSizes[size] });
+const StyledAvatarBase = styled(AvatarBase)<Omit<IconAvatarProps, 'icon'>>`
+  svg {
+    width: 50%;
+    height: 50%;
+  }
+`;
 
-  return (
-    <AvatarBase shape={shape} size={size}>
-      {iconWithCorrectSize}
-    </AvatarBase>
-  );
-};
+export const IconAvatar = ({
+  icon,
+  shape = 'round',
+  size = 32,
+  bordered = false,
+}: IconAvatarProps) => (
+  <StyledAvatarBase shape={shape} size={size} bordered={bordered}>
+    {icon}
+  </StyledAvatarBase>
+);

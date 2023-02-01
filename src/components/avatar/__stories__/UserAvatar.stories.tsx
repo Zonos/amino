@@ -4,19 +4,27 @@ import {
   UserAvatarProps,
 } from 'src/components/avatar/UserAvatar';
 
+import { BaseWrapper } from './BaseWrapper.stories';
+
 const UserAvatarMeta: Meta = {
   component: Avatar,
+  argTypes: {
+    bordered: {
+      control: { type: 'boolean' },
+    },
+  },
 };
 
 export default UserAvatarMeta;
 
 const UserAvatarTemplate: Story<UserAvatarProps> = ({
-  shape,
   size,
-}: UserAvatarProps) => <Avatar shape={shape} size={size} />;
+}: UserAvatarProps) => (
+  <BaseWrapper>
+    <Avatar shape="round" size={size} />
+    <Avatar shape="rounded" size={size} />
+    <Avatar shape="square" size={size} />
+  </BaseWrapper>
+);
 
 export const UserAvatar = UserAvatarTemplate.bind({});
-UserAvatar.args = {
-  shape: 'round',
-  size: 'lg',
-};

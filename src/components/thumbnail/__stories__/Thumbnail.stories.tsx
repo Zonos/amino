@@ -23,6 +23,9 @@ const ThumbnailMeta: Meta = {
         disable: true,
       },
     },
+    bordered: {
+      control: { type: 'boolean' },
+    },
   },
 };
 
