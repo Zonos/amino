@@ -9,6 +9,7 @@ export const UserAvatar = ({
   bordered = false,
 }: AvatarProps) => (
   <AvatarBase
+    backgroundPosition="bottom"
     backgroundSize="80%"
     backgroundUrl={`${avatarImg}`}
     bordered={bordered}

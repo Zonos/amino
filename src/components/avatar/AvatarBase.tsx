@@ -26,6 +26,7 @@ export type AvatarProps = {
 type AvartarBaseProps = Required<AvatarProps> & {
   backgroundUrl?: string;
   backgroundSize?: string;
+  backgroundPosition?: string;
   children?: ReactNode;
 };
 
@@ -62,7 +63,7 @@ const StyledAvatarBase = styled.div<AvartarBaseProps>`
     props.backgroundUrl &&
     css`
       background-image: url(${props.backgroundUrl});
-      background-position: bottom;
+      background-position: ${props.backgroundPosition || 'center'};
       background-repeat: no-repeat;
       background-size: ${props.backgroundSize};
     `}
