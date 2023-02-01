@@ -8,10 +8,12 @@ import styled, { css } from 'styled-components';
 
 import { ExpandButton } from './ExpandButton';
 
-const StyledTableRow = styled(TableRow)<{
+type Props = {
   isExpand: boolean;
   isExpandable: boolean;
-}>`
+};
+
+const StyledTableRow = styled(TableRow)<Props>`
   ${p =>
     p.isExpand &&
     css`

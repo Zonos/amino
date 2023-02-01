@@ -3,11 +3,16 @@ import { AvatarBase, AvatarProps } from './AvatarBase';
 
 export type UserAvatarProps = AvatarProps;
 
-export const UserAvatar = ({ size, shape }: AvatarProps) => (
+export const UserAvatar = ({
+  size = 32,
+  shape = 'round',
+  bordered = false,
+}: AvatarProps) => (
   <AvatarBase
+    backgroundSize="80%"
+    backgroundUrl={`${avatarImg}`}
+    bordered={bordered}
     shape={shape}
     size={size}
-    backgroundUrl={`${avatarImg}`}
-    backgroundSize="80%"
   />
 );

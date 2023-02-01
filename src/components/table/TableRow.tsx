@@ -12,8 +12,7 @@ const StyledTableRow = styled.tr`
     }
   }
   /** Only affect on tr inside tbody */
-  tbody &.active,
-  tbody &:hover {
+  tbody &.active {
     background: ${theme.gray100};
   }
 `;
