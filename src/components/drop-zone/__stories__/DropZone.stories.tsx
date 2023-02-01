@@ -8,7 +8,7 @@ import {
   ToastContext,
   ToastContextProvider,
 } from 'src/components/toast/ToastContext';
-import { customSnapshotsDir } from 'src/utils/snapshotsFolder';
+import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
 const DropZoneMeta: Meta = {
   component: DropZoneComponent,

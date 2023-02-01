@@ -4,7 +4,7 @@ import { Button, ButtonProps } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { theme } from 'src/styles/constants/theme';
-import { customSnapshotsDir } from 'src/utils/snapshotsFolder';
+import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)``;
