@@ -3,7 +3,6 @@ import './components/alert-dialog/AlertContext';
 import './components/alert-dialog/AlertDialog';
 import './components/alert-dialog/useAlert';
 import './components/avatar/AvatarBase';
-import './components/avatar/IconAvatar';
 import './components/avatar/ImageAvatar';
 import './components/avatar/UserAvatar';
 import './components/backdrop/Backdrop';
