@@ -4,6 +4,8 @@ import { theme } from 'src/styles/constants/theme';
 import { ColorPrefix } from 'src/types/Color';
 import styled from 'styled-components';
 
+import { ImageSize } from '../avatar/AvatarBase';
+
 const thumbnailShapes = {
   round: '50%',
   rounded: '20%',
@@ -11,8 +13,8 @@ const thumbnailShapes = {
 } as const;
 
 export type ThumbnailProps = {
-  /** @default 24 */
-  size?: number;
+  /** @default 32 */
+  size?: ImageSize;
   /** @default 'round' */
   shape?: keyof typeof thumbnailShapes;
   /** @default 'gray' */

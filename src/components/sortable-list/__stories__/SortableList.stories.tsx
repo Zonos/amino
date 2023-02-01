@@ -95,7 +95,7 @@ const WithHandleTemplate: Story = () => {
       {listItems.map(item => (
         <SortableListItem useHandle id={item.id} key={item.id}>
           <ListItem
-            decorator={<UserAvatar size="sm" shape="round" />}
+            decorator={<UserAvatar size={16} shape="round" />}
             label={item.name}
             onClick={() => {}}
           />

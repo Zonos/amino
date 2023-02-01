@@ -1,19 +1,10 @@
+import { ReactNode } from 'react';
+
 import { theme } from 'src/styles/constants/theme';
+import { StyledProps } from 'src/types';
 import styled, { css } from 'styled-components';
 
-export const avatarSizes = {
-  sm: theme.fontSizeS,
-  md: theme.fontSizeBase,
-  lg: theme.fontSizeL,
-  xl: theme.fontSizeXl,
-} as const;
-
-export const iconSizes: { [key in AvatarSize]: number } = {
-  sm: 16,
-  md: 20,
-  lg: 24,
-  xl: 28,
-};
+export type ImageSize = 16 | 24 | 32 | 40 | 48 | 56 | 64;
 
 export const avatarShapes = {
   round: '50%',
@@ -21,29 +12,50 @@ export const avatarShapes = {
   square: '0px',
 } as const;
 
-type AvatarSize = keyof typeof avatarSizes;
 type AvatarShape = keyof typeof avatarShapes;
 
-export interface AvatarProps {
-  size: AvatarSize;
+export type AvatarProps = {
+  /** @default round */
   shape: AvatarShape;
-}
-
-type AvartarBaseProps = AvatarProps & {
-  backgroundUrl?: string;
-  backgroundSize?: string;
+  /** @default 32 px */
+  size?: ImageSize;
+  /** @default false */
+  bordered?: boolean;
 };
 
-export const AvatarBase = styled.div<AvartarBaseProps>`
-  background-color: ${theme.gray100};
+type AvartarBaseProps = Required<AvatarProps> & {
+  backgroundUrl?: string;
+  backgroundSize?: string;
+  children?: ReactNode;
+};
+
+type WrapperProp = Required<StyledProps<AvatarProps>>;
+
+const Wrapper = styled.div<WrapperProp>`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${theme.gray100};
+  border: ${p =>
+    p.$bordered ? `${p.$size / 16}px solid ${theme.gray0}` : undefined};
+
+  ${props =>
+    props.$size &&
+    css`
+      border-radius: ${avatarShapes[props.$shape]};
+      height: ${props.$size}px;
+      width: ${props.$size}px;
+    `}
+`;
+
+const StyledAvatarBase = styled.div<AvartarBaseProps>`
+  background-color: ${theme.gray100};
+  height: 100%;
+  width: 100%;
+
   ${props =>
     css`
       border-radius: ${avatarShapes[props.shape]};
-      height: ${avatarSizes[props.size]};
-      width: ${avatarSizes[props.size]};
     `}
 
   ${props =>
@@ -55,3 +67,9 @@ export const AvatarBase = styled.div<AvartarBaseProps>`
       background-size: ${props.backgroundSize};
     `}
 `;
+
+export const AvatarBase = ({ children, ...rest }: AvartarBaseProps) => (
+  <Wrapper $bordered={rest.bordered} $size={rest.size} $shape={rest.shape}>
+    {children || <StyledAvatarBase {...rest} />}
+  </Wrapper>
+);
