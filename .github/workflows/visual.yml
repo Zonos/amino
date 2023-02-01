@@ -33,4 +33,4 @@ jobs:
         with:
           name: image-output
           path: |
-            .storybook/__image_snapshots__
+            .storybook/__image_snapshots__/linux
