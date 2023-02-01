@@ -1,0 +1,36 @@
+name: Visual Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      update:
+        description: "Update snapshots?"
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  Visual:
+    name: Visual regression tests
+    runs-on: ubuntu-22.04
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn build-storybook
+      - run: yarn test:visual
+        if: ${{ !inputs.update }}
+      - run: yarn test:visual -u
+        if: ${{ inputs.update }}
+      - name: Archive image snapshot results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: image-output
+          path: |
+            .storybook/__image_snapshots__
