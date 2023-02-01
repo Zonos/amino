@@ -2,11 +2,13 @@ import { useContext, useState } from 'react';
 
 import { ComponentStory } from '@storybook/react';
 import { Meta } from '@storybook/react/types-6-0';
+import type puppeteer from 'puppeteer';
 import { DropZone as DropZoneComponent } from 'src/components/drop-zone/DropZone';
 import {
   ToastContext,
   ToastContextProvider,
 } from 'src/components/toast/ToastContext';
+import { customSnapshotsDir } from 'src/utils/snapshotsFolder';
 
 const DropZoneMeta: Meta = {
   component: DropZoneComponent,
@@ -14,6 +16,12 @@ const DropZoneMeta: Meta = {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A72912&t=erzegCytT9AfSn9f-0',
+    },
+    async puppeteerTest(page: puppeteer.Page) {
+      const image = await page.screenshot({ fullPage: true });
+      expect(image).toMatchImageSnapshot({
+        customSnapshotsDir,
+      });
     },
   },
   decorators: [
