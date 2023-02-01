@@ -1,8 +1,10 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
+import type puppeteer from 'puppeteer';
 import { Button, ButtonProps } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { theme } from 'src/styles/constants/theme';
+import { customSnapshotsDir } from 'src/utils/snapshotsFolder';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)``;
@@ -12,6 +14,21 @@ const ButtonMeta: Meta = {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=81%3A1128&t=erzegCytT9AfSn9f-0',
+    },
+    async puppeteerTest(page: puppeteer.Page) {
+      // Hide loading spinners as their moving parts interfere with visual regression tests
+      await page.$$eval('.loading', els => {
+        for (let i = 0; i < els.length; i += 1) {
+          const el = els[i];
+          if (el instanceof HTMLElement) {
+            el.style.display = 'none';
+          }
+        }
+      });
+      const image = await page.screenshot({ fullPage: true });
+      expect(image).toMatchImageSnapshot({
+        customSnapshotsDir,
+      });
     },
   },
   argTypes: {
