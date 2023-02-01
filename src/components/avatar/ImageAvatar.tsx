@@ -11,10 +11,10 @@ export const ImageAvatar = ({
   size = 32,
 }: ImageAvatarProps) => (
   <AvatarBase
+    backgroundSize="contain"
+    backgroundUrl={imageUrl}
+    bordered={bordered}
     shape={shape}
     size={size}
-    bordered={bordered}
-    backgroundUrl={imageUrl}
-    backgroundSize="cover"
   />
 );

@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import type puppeteer from 'puppeteer';
 import { ColorPalette } from 'src/components/styles/ColorPalette';
-import { customSnapshotsDir } from 'src/utils/snapshotsFolder';
+import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
 const StyleMeta: Meta = {
   parameters: {
