@@ -35,13 +35,14 @@ export const ToastContextProvider = ({ children }: Props) => {
 
   const addToast = useCallback<ToastContextFunctionType>(
     (toast, props) => {
-      setToasts(t =>
-        t.concat({
+      setToasts(t => [
+        ...t,
+        {
           toast,
           props,
           uuid: uuidv4(),
-        })
-      );
+        },
+      ]);
       // Each toast has a default lifetime of 6 seconds
       setTimeout(() => setToasts(t => t.slice(1)), props?.duration || 6000);
     },

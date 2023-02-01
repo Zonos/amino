@@ -29,7 +29,7 @@ export interface ICountry<CountryCode extends string = string> {
 }
 export interface ICountryOption<CountryCode extends string = string>
   extends ICountry<CountryCode>,
-    IOption {
+    IOption<CountryCode> {
   phoneCode: string[];
 }
 export interface IRegionCountryOption {

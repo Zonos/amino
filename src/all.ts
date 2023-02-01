@@ -10,6 +10,8 @@ import './components/badge/Badge';
 import './components/banner/Banner';
 import './components/button/Button';
 import './components/button/MenuButton';
+import './components/button/RippleGroup';
+import './components/button/useRipple';
 import './components/card/Card';
 import './components/checkbox/Checkbox';
 import './components/collapse/Collapse';
