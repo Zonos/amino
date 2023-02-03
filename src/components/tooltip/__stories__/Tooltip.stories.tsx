@@ -59,6 +59,9 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
+type ButtonPropWithTooltipOption = Omit<ButtonProps, 'background'> &
+  Pick<TooltipProps, 'background'>;
+
 const HeadingTooltip = ({
   children,
   subtitle = 'This is an example of a tooltip with a heading. Tooltips with a heading can have three lines total.',
@@ -96,17 +99,20 @@ const WithoutHeadingTooltip = ({
   </Tooltip>
 );
 
-const TopRow = (props: ButtonProps) => (
+const TopRow = ({ background, ...props }: ButtonPropWithTooltipOption) => (
   <>
-    <HeadingTooltip>
+    <HeadingTooltip background={background}>
       <Button {...props}>Has heading</Button>
     </HeadingTooltip>
-    <WithoutHeadingTooltip subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated.">
+    <WithoutHeadingTooltip
+      background={background}
+      subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated."
+    >
       <Button {...props} iconRight>
         Without heading truncated subtitle
       </Button>
     </WithoutHeadingTooltip>
-    <WithoutHeadingTooltip>
+    <WithoutHeadingTooltip background={background}>
       <StyledButton {...props} tag="div" onClick={e => e.preventDefault()}>
         Without heading
       </StyledButton>
@@ -117,8 +123,9 @@ const TopRow = (props: ButtonProps) => (
 const BottomRow = ({
   toggleCoversheet,
   toggleDialog,
+  background,
   ...props
-}: ButtonProps & {
+}: ButtonPropWithTooltipOption & {
   toggleCoversheet: () => void;
   toggleDialog: () => void;
 }) => {
@@ -127,6 +134,7 @@ const BottomRow = ({
   return (
     <>
       <Tooltip
+        background={background}
         showTooltip
         subtitle={
           <VStack>
@@ -141,6 +149,7 @@ const BottomRow = ({
         </StyledButton>
       </Tooltip>
       <Tooltip
+        background={background}
         showTooltip
         subtitle={
           <VStack>
@@ -195,7 +204,7 @@ const BottomRow = ({
           }}
         />
       ) : (
-        <HeadingTooltip>
+        <HeadingTooltip background={background}>
           <Button {...props} onClick={() => setShowSelect(true)}>
             Test select z-index
           </Button>
@@ -205,7 +214,10 @@ const BottomRow = ({
   );
 };
 
-const Template: Story<ButtonProps> = props => {
+const Template: Story<ButtonPropWithTooltipOption> = ({
+  background,
+  ...props
+}) => {
   const [coversheetOpen, setCoversheetOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -214,10 +226,11 @@ const Template: Story<ButtonProps> = props => {
       <VWrapper>
         <VStack spacing="space-quarter">
           <HWrapper>
-            <TopRow {...props} />
+            <TopRow background={background} {...props} />
           </HWrapper>
           <HWrapper>
             <BottomRow
+              background={background}
               {...props}
               toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
               toggleDialog={() => setDialogOpen(!dialogOpen)}
@@ -226,10 +239,11 @@ const Template: Story<ButtonProps> = props => {
         </VStack>
         <VStack spacing="space-quarter">
           <HWrapper>
-            <TopRow {...props} disabled />
+            <TopRow background={background} {...props} disabled />
           </HWrapper>
           <HWrapper>
             <BottomRow
+              background={background}
               {...props}
               disabled
               toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
@@ -239,10 +253,11 @@ const Template: Story<ButtonProps> = props => {
         </VStack>
         <VStack spacing="space-quarter">
           <HWrapper>
-            <TopRow {...props} loading />
+            <TopRow background={background} {...props} loading />
           </HWrapper>
           <HWrapper>
             <BottomRow
+              background={background}
               {...props}
               loading
               toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
@@ -253,7 +268,7 @@ const Template: Story<ButtonProps> = props => {
       </VWrapper>
       <TransparentCoverSheet
         actions={
-          <HeadingTooltip>
+          <HeadingTooltip background={background}>
             <Button {...props} disabled>
               Has heading
             </Button>
@@ -273,7 +288,7 @@ const Template: Story<ButtonProps> = props => {
       </TransparentCoverSheet>
       <Dialog
         actions={
-          <HeadingTooltip>
+          <HeadingTooltip background={background}>
             <Button {...props} disabled>
               Has heading
             </Button>
