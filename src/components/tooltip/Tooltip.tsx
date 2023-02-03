@@ -8,6 +8,7 @@ import MuiTooltip, {
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import { Color } from 'src/types';
 import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
@@ -37,35 +38,47 @@ const ChildWrapper = styled.div`
 `;
 
 export type TooltipProps = {
+  background?: Color;
   children: ReactNode;
   className?: string;
+  open?: boolean;
   showTooltip: boolean;
   subtitle: ReactNode | string | null;
   tag?: 'div' | 'span';
   title?: string;
 };
 
-const StyledTooltip = muiStyled(({ className, ...props }: MuiTooltipProps) => (
-  <MuiTooltip {...props} classes={{ popper: className }} />
-))(() => ({
+const StyledTooltip = muiStyled(
+  ({
+    className,
+    ...props
+  }: MuiTooltipProps & Pick<TooltipProps, 'background'>) => (
+    <MuiTooltip {...props} classes={{ popper: className }} />
+  )
+)(({ background }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: '#0C0C0D',
+    backgroundColor: background ? theme[background] : '#0C0C0D',
     boxShadow: theme.v3ShadowLarge,
   },
 }));
 
 export const Tooltip = ({
+  background,
   className,
   children,
   showTooltip,
   subtitle,
   tag,
   title,
+  open,
 }: TooltipProps) => {
   if (showTooltip) {
+    console.log(background);
     return (
       <StyledTooltip
+        background={background}
         className={className}
+        open={open}
         title={
           <StyledVStack spacing="space-quarter">
             {title && (
