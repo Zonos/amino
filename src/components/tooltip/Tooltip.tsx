@@ -73,7 +73,6 @@ export const Tooltip = ({
   open,
 }: TooltipProps) => {
   if (showTooltip) {
-    console.log(background);
     return (
       <StyledTooltip
         background={background}
