@@ -1,4 +1,4 @@
-import { ReactNode, useLayoutEffect, useState } from 'react';
+import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { useResizeAware } from 'src/utils/useResizeAware';
 import styled from 'styled-components';
@@ -12,10 +12,12 @@ const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
   min-height: ${({ $collapseSize }) =>
     $collapseSize ? `${$collapseSize}px` : '0px'};
   height: ${({ $height }) => `${$height}px`};
+
+  opacity: ${p => (p.$isExpand ? 1 : 0)};
 `;
 
 type StyledCollapseProps = StyledProps<
-  CollapseProps & { height: number; hideOverflow: boolean }
+  CollapseProps & { height: number | null; hideOverflow: boolean }
 >;
 
 export type CollapseProps = {
@@ -30,9 +32,12 @@ export const Collapse = ({
   collapseSize,
   children,
 }: CollapseProps) => {
-  const [height, setHeight] = useState(0);
-  const [hideOverflow, setHideOverflow] = useState(!isExpand);
   const [resizeListener, sizes] = useResizeAware();
+  const [height, setHeight] = useState<number | null>(sizes.height);
+  const [hideOverflow, setHideOverflow] = useState(!isExpand);
+  const [definitelyCollapsed, setDefinitelyCollapsed] = useState(!isExpand);
+
+  const el = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     setHideOverflow(true);
@@ -43,12 +48,28 @@ export const Collapse = ({
     }
   }, [isExpand, setHeight, sizes.height, hideOverflow]);
 
+  useEffect(() => {
+    const { current } = el;
+
+    current?.addEventListener('transitionstart', () =>
+      setDefinitelyCollapsed(false)
+    );
+
+    return () => {
+      current?.removeEventListener('transitions', () =>
+        setDefinitelyCollapsed(false)
+      );
+    };
+  }, []);
+
   const handleTransitionEnd = () => {
     if (isExpand) {
       // Done expanding so safe to show overflow
       setHideOverflow(false);
+      setDefinitelyCollapsed(false);
     } else {
       setHideOverflow(true);
+      setDefinitelyCollapsed(true);
     }
   };
 
@@ -56,10 +77,11 @@ export const Collapse = ({
     <StyledCollapseWrapper
       className={className}
       $height={height}
-      $isExpand={isExpand}
+      $isExpand={!definitelyCollapsed}
       $hideOverflow={hideOverflow}
       $collapseSize={collapseSize || 0}
       onTransitionEnd={handleTransitionEnd}
+      ref={el}
     >
       <div style={{ position: 'relative' }}>
         {resizeListener}
