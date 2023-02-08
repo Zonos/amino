@@ -33,6 +33,13 @@ export default CollapseMeta;
 
 const CollapseContainer = styled.div`
   margin: 20px;
+  display: flex;
+  gap: 40px;
+`;
+
+const StyledCollapseComponent = styled(CollapseComponent)`
+  border: 1px solid grey;
+  border-radius: 6px;
 `;
 
 const Template: Story<CollapseProps> = ({
@@ -40,22 +47,41 @@ const Template: Story<CollapseProps> = ({
   children,
   collapseSize,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(true);
+  const [open2, setOpen2] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setOpen(!open)}>
-        {open ? 'Collapse' : 'Expand'}{' '}
+      <Button
+        onClick={() => {
+          setOpen1(!open1);
+          setOpen2(!open2);
+        }}
+      >
+        Toggle
       </Button>
       <CollapseContainer>
         <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
-        <CollapseComponent
-          className={className}
-          isExpand={open}
-          collapseSize={collapseSize}
-        >
-          {children}
-        </CollapseComponent>
+        <div>
+          Open by default
+          <StyledCollapseComponent
+            className={className}
+            isExpand={open1}
+            collapseSize={collapseSize}
+          >
+            {children}
+          </StyledCollapseComponent>
+        </div>
+        <div>
+          Closed by default
+          <StyledCollapseComponent
+            className={className}
+            isExpand={open2}
+            collapseSize={collapseSize}
+          >
+            {children}
+          </StyledCollapseComponent>
+        </div>
       </CollapseContainer>
     </>
   );
