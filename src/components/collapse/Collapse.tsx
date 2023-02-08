@@ -56,7 +56,7 @@ export const Collapse = ({
     );
 
     return () => {
-      current?.removeEventListener('transitions', () =>
+      current?.removeEventListener('transitionstart', () =>
         setDefinitelyCollapsed(false)
       );
     };
