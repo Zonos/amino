@@ -760,4 +760,3 @@ import './utils/getTestId';
 import './utils/prepCountryOptions';
 import './utils/prepRegionCountryOptions';
 import './utils/truncateText';
-import './utils/useResizeAware';
