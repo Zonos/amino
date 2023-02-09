@@ -280,7 +280,7 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
-const PlainButton = styled(AminoButton)<ButtonProps<GroupTag>>``;
+const PlainButton = AminoButton;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.blue600};
@@ -472,7 +472,6 @@ export function Button<T extends GroupTag = 'button'>({
       return (
         <Secondary as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
-          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Secondary>
       );
   }
