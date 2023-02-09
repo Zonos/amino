@@ -196,6 +196,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         <Title>
           <Text type="title">{label}</Text>
           <StyledCloseButton
+            noRipple
             onClick={onClose}
             icon={<RemoveCircleDuotoneIcon size={24} />}
           />

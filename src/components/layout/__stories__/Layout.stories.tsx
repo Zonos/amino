@@ -12,7 +12,7 @@ import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { NavigationGroupExample as NavigationGroupStory } from './NavigationGroup.stories';
+import { NavigationGroup as NavigationGroupStory } from './NavigationGroup.stories';
 import { UserMenu } from './UserMenu';
 
 const LayoutMeta: Meta = {

@@ -1,6 +1,5 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
-import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
@@ -28,6 +27,15 @@ const StyledPrimaryListItem = styled(ListItem)<{ $hasIcon: boolean }>`
         display: none;
       }
     `}
+
+  svg {
+    transition: ${theme.transition};
+
+    &.collapsed {
+      opacity: 1;
+      transform: rotate(-180deg);
+    }
+  }
 `;
 
 const StyledList = styled(List)<ListProps>`
@@ -50,29 +58,28 @@ const StyledList = styled(List)<ListProps>`
     `}
 `;
 
-export type CollapsableListProps = ListProps & {
+export type CollapsibleListProps = ListProps & {
   icon?: ReactNode;
   title: ReactNode;
-  expandOnRender?: boolean;
+  /**
+   * Whether to start expanded
+   * @default false
+   */
+  startExpanded?: boolean;
 };
 
-export const CollapsableList = ({
+export const CollapsibleList = ({
   className,
   /** @description list of ListItem are recommended to pass in */
   children,
-  expandOnRender,
+  startExpanded,
   icon,
   title,
   withBorder,
   withNegativeMargin,
-}: CollapsableListProps) => {
-  const [expand, setExpand] = useState(false);
-  useEffect(() => {
-    /* Trigger expand on collapse component when dom is ready to avoid getting wrong height */
-    if (expandOnRender) {
-      setTimeout(() => setExpand(!!expandOnRender), 200);
-    }
-  }, [expandOnRender]);
+}: CollapsibleListProps) => {
+  const [collapsed, setCollapsed] = useState(!startExpanded);
+
   return (
     <StyledList
       className={className}
@@ -83,16 +90,12 @@ export const CollapsableList = ({
         $hasIcon={!!icon}
         decorator={icon}
         label={title}
-        onClick={() => setExpand(!expand)}
+        onClick={() => setCollapsed(!collapsed)}
         rightDecorator={
-          expand ? (
-            <ChevronUpIcon color="gray900" />
-          ) : (
-            <ChevronDownIcon color="gray900" />
-          )
+          <ChevronUpIcon className={collapsed ? 'collapsed' : ''} />
         }
       />
-      <StyledCollapse $hasIcon={!!icon} isExpand={!!expand}>
+      <StyledCollapse $hasIcon={!!icon} collapsed={collapsed}>
         {children}
       </StyledCollapse>
     </StyledList>

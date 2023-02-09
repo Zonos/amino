@@ -21,7 +21,7 @@ const CollapseMeta: Meta = {
         disable: true,
       },
     },
-    isExpand: {
+    collapsed: {
       table: {
         disable: true,
       },
@@ -66,7 +66,7 @@ const Template: Story<CollapseProps> = ({
           Open by default
           <StyledCollapseComponent
             className={className}
-            isExpand={open1}
+            collapsed={!open1}
             collapseSize={collapseSize}
           >
             {children}
@@ -76,7 +76,7 @@ const Template: Story<CollapseProps> = ({
           Closed by default
           <StyledCollapseComponent
             className={className}
-            isExpand={open2}
+            collapsed={!open2}
             collapseSize={collapseSize}
           >
             {children}

@@ -116,13 +116,13 @@ const Template: Story<
     showForeign: boolean;
   }
 > = ({ conversionRate, foreignCode, showForeign }) => {
-  const [expandedRows, setExpandedRows] = useState<number[]>([0, 1]);
+  const [collapsedRows, setCollapsedRows] = useState<number[]>([0, 1]);
 
-  const handleExpandClick = (index: number) =>
-    setExpandedRows(
-      expandedRows.includes(index)
-        ? expandedRows.filter(x => x !== index)
-        : expandedRows.concat(index)
+  const handleToggleCollapse = (index: number) =>
+    setCollapsedRows(
+      collapsedRows.includes(index)
+        ? collapsedRows.filter(x => x !== index)
+        : collapsedRows.concat(index)
     );
   return (
     <StyledTable>
@@ -149,8 +149,8 @@ const Template: Story<
       </TableHead>
       <TableBody>
         <TableRowCollapse
-          handleExpandClick={() => handleExpandClick(0)}
-          isExpand={expandedRows.includes(0)}
+          onToggleCollapse={() => handleToggleCollapse(0)}
+          collapsed={collapsedRows.includes(0)}
           rowContent={
             <>
               <TableCell>
@@ -224,8 +224,8 @@ const Template: Story<
           </ExpandedItemCard>
         </TableRowCollapse>
         <TableRowCollapse
-          handleExpandClick={() => handleExpandClick(1)}
-          isExpand={expandedRows.includes(1)}
+          onToggleCollapse={() => handleToggleCollapse(1)}
+          collapsed={collapsedRows.includes(1)}
           rowContent={
             <>
               <TableCell>
@@ -273,8 +273,8 @@ const Template: Story<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          handleExpandClick={() => handleExpandClick(2)}
-          isExpand={expandedRows.includes(2)}
+          onToggleCollapse={() => handleToggleCollapse(2)}
+          collapsed={collapsedRows.includes(2)}
           rowContent={
             <>
               <TableCell>
@@ -318,8 +318,8 @@ const Template: Story<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          handleExpandClick={() => handleExpandClick(3)}
-          isExpand={expandedRows.includes(3)}
+          onToggleCollapse={() => handleToggleCollapse(3)}
+          collapsed={collapsedRows.includes(3)}
           rowContent={
             <>
               <TableCell>
@@ -367,8 +367,8 @@ const Template: Story<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          handleExpandClick={() => handleExpandClick(4)}
-          isExpand={expandedRows.includes(4)}
+          onToggleCollapse={() => handleToggleCollapse(4)}
+          collapsed={collapsedRows.includes(4)}
           rowContent={
             <>
               <TableCell>
@@ -421,8 +421,8 @@ const Template: Story<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          handleExpandClick={() => handleExpandClick(5)}
-          isExpand={expandedRows.includes(5)}
+          onToggleCollapse={() => handleToggleCollapse(5)}
+          collapsed={collapsedRows.includes(5)}
           rowContent={
             <>
               <TableCell colSpan={2}>

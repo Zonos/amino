@@ -19,7 +19,7 @@ export default HSectionMeta;
 const Template: Story<HSectionProps> = (props: HSectionProps) => {
   const [input, setInput] = useState('');
   const [renderDelay, setRenderDelay] = useState(false);
-  const { collapseByDefault, collapsable } = props;
+  const { collapseByDefault, collapsible } = props;
 
   useEffect(() => {
     const interval = setTimeout(() => {
@@ -33,11 +33,11 @@ const Template: Story<HSectionProps> = (props: HSectionProps) => {
     <VStack>
       <HSection {...props} />
       <HSection
-        label="Collapsable HSection"
+        label="Collapsible HSection"
         sublabel={
           <Button onClick={() => setRenderDelay(false)}>Reset delay</Button>
         }
-        collapsable={collapsable}
+        collapsible={collapsible}
         collapseByDefault={collapseByDefault}
       >
         <VStack>
@@ -71,8 +71,8 @@ Basic.args = {
   label: 'My HSection',
 };
 
-export const Collapsable = Template.bind({});
-Collapsable.args = {
+export const Collapsible = Template.bind({});
+Collapsible.args = {
   children: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
   Iure minima tenetur ratione deserunt beatae a et, aliquam, nesciunt
   illo asperiores quasi! Neque, praesentium.
@@ -82,7 +82,7 @@ Collapsable.args = {
   illo asperiores quasi! Neque, praesentium.
   Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
   label: 'My HSection',
-  collapsable: true,
+  collapsible: true,
 };
 
 export const CollapsedByDefault = Template.bind({});
@@ -96,7 +96,7 @@ CollapsedByDefault.args = {
   illo asperiores quasi! Neque, praesentium.
   Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
   label: 'My HSection',
-  collapsable: true,
+  collapsible: true,
   collapseByDefault: true,
 };
 
@@ -105,7 +105,7 @@ const StyledVStack = styled(VStack)`
 `;
 
 export const VariableList = () => {
-  const [collapsable, setCollapsable] = useState(true);
+  const [collapsible, setcollapsible] = useState(true);
   const [items, setItems] = useState<string[]>(['Couch']);
 
   const removeItem = (index: number) => {
@@ -123,12 +123,12 @@ export const VariableList = () => {
   return (
     <StyledVStack>
       <Checkbox
-        label="Collapsable"
-        checked={collapsable}
-        onChange={e => setCollapsable(e.valueOf())}
+        label="collapsible"
+        checked={collapsible}
+        onChange={e => setcollapsible(e.valueOf())}
       />
       <Button onClick={() => setItems([])}>Clear</Button>
-      <HSection label="Variable length list" collapsable={collapsable}>
+      <HSection label="Variable length list" collapsible={collapsible}>
         <Input label="No padding input" onChange={() => null} value="value" />
         <VStack>
           {items.map((item, idx) => (
@@ -146,7 +146,7 @@ export const VariableList = () => {
       <HSection
         label="Variable length list"
         sublabel="With a sublabel"
-        collapsable={collapsable}
+        collapsible={collapsible}
       >
         <VStack>
           {items.map((item, idx) => (
