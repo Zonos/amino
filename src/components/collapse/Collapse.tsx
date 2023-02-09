@@ -1,63 +1,62 @@
 import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
-import { useResizeAware } from 'src/utils/useResizeAware';
 import styled from 'styled-components';
 
-import { type StyledProps } from '../../types/StyledProps';
+type StyledCollapseProps = {
+  completelyCollapsed: boolean;
+  hideOverflow: boolean;
+  currentlyExpanded: boolean;
+  $height?: number;
+  collapseSize: number;
+};
 
 const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  overflow: ${({ $hideOverflow }) => ($hideOverflow ? 'hidden' : 'auto')};
   position: relative;
-  min-height: ${({ $collapseSize }) =>
-    $collapseSize ? `${$collapseSize}px` : '0px'};
-  height: ${({ $height }) => `${$height}px`};
-
-  opacity: ${p => (p.$isExpand ? 1 : 0)};
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  overflow: ${p => (p.hideOverflow ? 'hidden' : undefined)};
+  visibility: ${p => (p.completelyCollapsed ? 'hidden' : undefined)};
+  height: ${p =>
+    p.currentlyExpanded ? `${p.$height}px` : `${p.collapseSize}px`};
 `;
-
-type StyledCollapseProps = StyledProps<
-  CollapseProps & { height: number | null; hideOverflow: boolean }
->;
 
 export type CollapseProps = {
   className?: string;
-  isExpand: boolean;
-  collapseSize?: number;
   children: ReactNode;
+  isExpand: boolean;
+  /** Size when collapsed
+   * @default 0
+   *
+   */
+  collapseSize?: number;
 };
 export const Collapse = ({
   className,
-  isExpand,
-  collapseSize,
   children,
+  isExpand,
+  collapseSize = 0,
 }: CollapseProps) => {
-  const [resizeListener, sizes] = useResizeAware();
-  const [height, setHeight] = useState<number | null>(sizes.height);
+  const [completelyCollapsed, setCompletelyCollapsed] = useState(!isExpand);
   const [hideOverflow, setHideOverflow] = useState(!isExpand);
-  const [definitelyCollapsed, setDefinitelyCollapsed] = useState(!isExpand);
 
-  const el = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const contentWrapperRef = useRef<HTMLDivElement>(null);
+
+  const contentHeight = contentWrapperRef.current?.clientHeight;
 
   useLayoutEffect(() => {
     setHideOverflow(true);
-    if (sizes.height && isExpand) {
-      setHeight(sizes.height);
-    } else {
-      setHeight(0);
-    }
-  }, [isExpand, setHeight, sizes.height, hideOverflow]);
+  }, [isExpand, hideOverflow]);
 
   useEffect(() => {
-    const { current } = el;
+    const { current } = wrapperRef;
 
-    current?.addEventListener('transitionstart', () =>
-      setDefinitelyCollapsed(false)
-    );
+    current?.addEventListener('transitionstart', () => {
+      setCompletelyCollapsed(false);
+    });
 
     return () => {
       current?.removeEventListener('transitionstart', () =>
-        setDefinitelyCollapsed(false)
+        setCompletelyCollapsed(false)
       );
     };
   }, []);
@@ -66,25 +65,25 @@ export const Collapse = ({
     if (isExpand) {
       // Done expanding so safe to show overflow
       setHideOverflow(false);
-      setDefinitelyCollapsed(false);
+      setCompletelyCollapsed(false);
     } else {
       setHideOverflow(true);
-      setDefinitelyCollapsed(true);
+      setCompletelyCollapsed(true);
     }
   };
 
   return (
     <StyledCollapseWrapper
+      ref={wrapperRef}
       className={className}
-      $height={height}
-      $isExpand={!definitelyCollapsed}
-      $hideOverflow={hideOverflow}
-      $collapseSize={collapseSize || 0}
+      currentlyExpanded={isExpand}
+      completelyCollapsed={completelyCollapsed}
+      hideOverflow={hideOverflow}
       onTransitionEnd={handleTransitionEnd}
-      ref={el}
+      $height={contentHeight}
+      collapseSize={collapseSize}
     >
-      <div style={{ position: 'relative' }}>
-        {resizeListener}
+      <div style={{ position: 'relative' }} ref={contentWrapperRef}>
         {children}
       </div>
     </StyledCollapseWrapper>
