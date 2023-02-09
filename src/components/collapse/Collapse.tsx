@@ -1,4 +1,11 @@
-import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import styled from 'styled-components';
 
@@ -50,14 +57,14 @@ export const Collapse = ({
   useEffect(() => {
     const { current } = wrapperRef;
 
-    current?.addEventListener('transitionstart', () => {
+    const handleTransitionStart = () => {
       setCompletelyCollapsed(false);
-    });
+    };
+
+    current?.addEventListener('transitionstart', handleTransitionStart);
 
     return () => {
-      current?.removeEventListener('transitionstart', () =>
-        setCompletelyCollapsed(false)
-      );
+      current?.removeEventListener('transitionstart', handleTransitionStart);
     };
   }, []);
 
