@@ -222,5 +222,11 @@ Subtle.args = {
 export const TextButton = Template.bind({});
 TextButton.args = {
   intent: 'text',
-  children: 'Back',
+  children: 'Text Button',
+};
+
+export const PlainButton = Template.bind({});
+PlainButton.args = {
+  intent: 'plain',
+  children: 'Plain button',
 };
