@@ -60,8 +60,8 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
 `;
 
 const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
-  ${({ $isExpand }) =>
-    $isExpand &&
+  ${({ $collapsed }) =>
+    !$collapsed &&
     css`
       ${StyledNavigationItem} {
         color: black;
@@ -95,7 +95,10 @@ export type NavigationGroupProps = {
   content: ReactElement<NavigationItemProps> | HTMLAnchorElement;
   className?: string;
   children: ReactNode;
-  isExpand?: boolean;
+  /**
+   * @default false
+   */
+  collapsed?: boolean;
 };
 
 export const NavigationItem = ({
@@ -119,11 +122,11 @@ export const NavigationGroup = ({
   content,
   children,
   className,
-  isExpand,
+  collapsed = false,
 }: NavigationGroupProps) => (
   <Wrapper className={className}>
-    <StyledItemWrapper $isExpand={!!isExpand}>{content}</StyledItemWrapper>
-    <StyledGroupItemWrapper isExpand={!!isExpand}>
+    <StyledItemWrapper $collapsed={collapsed}>{content}</StyledItemWrapper>
+    <StyledGroupItemWrapper collapsed={collapsed}>
       {children}
     </StyledGroupItemWrapper>
   </Wrapper>

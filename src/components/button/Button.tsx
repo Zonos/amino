@@ -258,7 +258,6 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.gray800};
   height: 20px;
   line-height: 20px;
-  padding: 0;
 
   &[disabled] {
     color: ${theme.gray400};
@@ -281,6 +280,8 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
+const PlainButton = AminoButton;
+
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.blue600};
   background: ${p => getAminoColor(p.background) || 'white'};
@@ -300,7 +301,7 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
-type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | Intent;
+type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | 'plain' | Intent;
 
 type ButtonBase = {
   background?: Color | 'inherit';
@@ -313,9 +314,13 @@ type ButtonBase = {
   icon?: ReactNode;
   iconRight?: boolean;
   intent?: IntentProps;
+  /** @default false */
   loading?: boolean;
   loadingText?: string;
-  /** Disable ripple effect */
+  /**
+   * Disable ripple effect
+   * @default false
+   */
   noRipple?: boolean;
   size?: Size;
   /** Color for the spinner when in a loading state */
@@ -348,7 +353,7 @@ export function Button<T extends GroupTag = 'button'>({
   icon,
   iconRight,
   intent,
-  loading,
+  loading = false,
   loadingText,
   noRipple = false,
   size = 'sm',
@@ -364,7 +369,7 @@ export function Button<T extends GroupTag = 'button'>({
       {!iconRight && icon}
       {children}
       {iconRight && icon}
-      {loading && (
+      {intent !== 'plain' && loading && (
         <StyledSpinnerWrapper>
           <Spinner size={16} color={_spinnerColor} />
           {loadingText}
@@ -388,8 +393,8 @@ export function Button<T extends GroupTag = 'button'>({
 
   const { rippleEnabled, getRippleHandlers } = useRipple({
     rippleRef,
-    rippleEnabled: !noRipple,
-    disabled,
+    rippleEnabled: !noRipple && intent !== 'plain',
+    disabled: disabled || loading,
   });
 
   const baseProps = {
@@ -454,6 +459,12 @@ export function Button<T extends GroupTag = 'button'>({
           {renderContent(spinnerColor)}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </LinkButton>
+      );
+    case 'plain':
+      return (
+        <PlainButton as={tag} {...buttonProps}>
+          {renderContent(spinnerColor)}
+        </PlainButton>
       );
     case 'secondary':
     default:

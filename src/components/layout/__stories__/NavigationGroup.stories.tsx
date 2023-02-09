@@ -3,7 +3,7 @@ import { MouseEvent, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
-  NavigationGroup,
+  NavigationGroup as NavigationGroupComponent,
   NavigationItem,
 } from 'src/components/layout/NavigationGroup';
 import { HomeIcon } from 'src/icons/HomeIcon';
@@ -11,16 +11,13 @@ import { IntegrationIcon } from 'src/icons/IntegrationIcon';
 import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 
 const NavigationGroupMeta: Meta = {
-  component: NavigationGroup,
+  component: NavigationGroupComponent,
   subcomponents: { NavigationItem },
   parameters: {
     docs: { source: { type: 'code' } },
   },
   argTypes: {
     children: {
-      type: 'symbol',
-    },
-    isExpand: {
       type: 'symbol',
     },
     content: {
@@ -52,7 +49,7 @@ const Template: Story = ({ className }) => {
           isActive={pathname === '/'}
         />
       </a>
-      <NavigationGroup
+      <NavigationGroupComponent
         content={
           <a href="/quoter/create" onClick={mockUrlChange}>
             <NavigationItem
@@ -62,9 +59,7 @@ const Template: Story = ({ className }) => {
           </a>
         }
         className={className}
-        isExpand={
-          !!pathname.split('/')[1] && pathname.split('/')[1]?.includes('quoter')
-        }
+        collapsed={!pathname.split('/')[1]?.includes('quoter')}
       >
         <a href="/quoter/create" onClick={mockUrlChange}>
           <NavigationItem
@@ -78,9 +73,9 @@ const Template: Story = ({ className }) => {
             isActive={pathname.includes('/quoter/recent')}
           />
         </a>
-      </NavigationGroup>
+      </NavigationGroupComponent>
 
-      <NavigationGroup
+      <NavigationGroupComponent
         content={
           <a href="/classify/create" onClick={mockUrlChange}>
             <NavigationItem
@@ -89,10 +84,7 @@ const Template: Story = ({ className }) => {
             />
           </a>
         }
-        isExpand={
-          !!pathname.split('/')[1] &&
-          pathname.split('/')[1]?.includes('classify')
-        }
+        collapsed={!pathname.split('/')[1]?.includes('classify')}
         className={className}
       >
         <a href="/classify/create" onClick={mockUrlChange}>
@@ -107,8 +99,8 @@ const Template: Story = ({ className }) => {
             isActive={pathname.includes('/classify/bulk')}
           />
         </a>
-      </NavigationGroup>
+      </NavigationGroupComponent>
     </>
   );
 };
-export const NavigationGroupExample = Template.bind({});
+export const NavigationGroup = Template.bind({});

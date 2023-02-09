@@ -2,33 +2,33 @@ import { useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
-  CollapsableList,
-  CollapsableListProps,
-} from 'src/components/list/CollapsableList';
+  CollapsibleList,
+  CollapsibleListProps,
+} from 'src/components/list/CollapsibleList';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
 
-const CollapsableListMeta: Meta = {
-  component: CollapsableList,
+const CollapsibleListMeta: Meta = {
+  component: CollapsibleList,
 };
 
-export default CollapsableListMeta;
+export default CollapsibleListMeta;
 
-const PrimaryCollapsableListTemplate: Story<CollapsableListProps> = ({
+const PrimarycollapsibleListTemplate: Story<CollapsibleListProps> = ({
   withBorder,
   withNegativeMargin,
-}: CollapsableListProps) => {
+}: CollapsibleListProps) => {
   const [selectedListItem, setSelectedListItem] = useState(1);
 
   const updateSelectedListItem = (num: number) => {
     setSelectedListItem(selectedListItem === num ? 0 : num);
   };
   return (
-    <CollapsableList
-      expandOnRender
+    <CollapsibleList
+      startExpanded
       icon={
         <svg
           width="32"
@@ -86,20 +86,20 @@ const PrimaryCollapsableListTemplate: Story<CollapsableListProps> = ({
         onClick={() => updateSelectedListItem(3)}
         selected={selectedListItem === 3}
       />
-    </CollapsableList>
+    </CollapsibleList>
   );
 };
 
-export const PrimaryList = PrimaryCollapsableListTemplate.bind({});
-PrimaryCollapsableListTemplate.args = {
+export const PrimaryList = PrimarycollapsibleListTemplate.bind({});
+PrimarycollapsibleListTemplate.args = {
   withBorder: true,
   withNegativeMargin: false,
 };
 
 export const OneItem = () => (
-  <CollapsableList title="Collapse item 1">
+  <CollapsibleList title="Collapse item 1">
     <ListItem label="Label" disabled={false} subtitle="subtitle" />
-  </CollapsableList>
+  </CollapsibleList>
 );
 
 export const ManyItems = () => {
@@ -110,7 +110,7 @@ export const ManyItems = () => {
   };
 
   return (
-    <CollapsableList title="Item 1">
+    <CollapsibleList title="Item 1">
       <ListItem
         decorator={
           <Thumbnail shape="round" size={16} icon={<ArrowDownIcon />} />
@@ -139,6 +139,6 @@ export const ManyItems = () => {
         onClick={() => updateSelectedListItem(3)}
         subtitle="subtitle"
       />
-    </CollapsableList>
+    </CollapsibleList>
   );
 };

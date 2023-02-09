@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
-import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
@@ -22,15 +22,30 @@ const StyledCollapseIndicator = styled(Button)`
   margin-left: ${theme.space4};
   transition: 0.2s all ease;
   background: transparent;
-  &:active,
-  &:focus,
-  &:hover {
-    background: transparent;
-    color: ${theme.gray800};
-  }
 
-  &.collapse {
-    transform: rotate(-90deg);
+  && {
+    &:hover {
+      path[data-is-secondary-color] {
+        fill: ${theme.gray300};
+      }
+    }
+    &:active,
+    &:focus {
+      path[data-is-secondary-color] {
+        fill: ${theme.gray400};
+      }
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      background: transparent;
+      color: ${theme.gray800};
+    }
+
+    &.collapsed {
+      transform: rotate(90deg);
+    }
   }
 `;
 
@@ -42,6 +57,7 @@ const StyledDiv = styled.div`
 const TitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export type HSectionProps = {
@@ -50,12 +66,12 @@ export type HSectionProps = {
   label?: ReactNode;
   sublabel?: ReactNode;
   /**
-   * @info Make the section content collapsable or not
+   * @info Make the section content collapsible or not
    * @default false
    */
-  collapsable?: boolean;
+  collapsible?: boolean;
   /**
-   * @info Initial collapse state. **Note**: only have effect when `collapsable` is specified
+   * @info Initial collapse state. **Note**: only have effect when `collapsible` is specified
    * @default false
    * */
   collapseByDefault?: boolean;
@@ -66,13 +82,13 @@ export const HSection = ({
   className,
   label,
   sublabel = '',
-  collapsable = false,
+  collapsible = false,
   collapseByDefault = false,
 }: HSectionProps) => {
-  const [collapse, setCollapse] = useState(collapseByDefault);
+  const [collapsed, setCollapsed] = useState(collapseByDefault);
   const renderContent = () =>
-    collapsable ? (
-      <Collapse isExpand={!collapse}>{children}</Collapse>
+    collapsible ? (
+      <Collapse collapsed={collapsed}>{children}</Collapse>
     ) : (
       <div>{children}</div>
     );
@@ -81,19 +97,20 @@ export const HSection = ({
       {label && (
         <SectionInnerWrapper>
           <StyledDiv>
-            {collapsable ? (
+            {collapsible ? (
               <TitleDiv
                 role="button"
                 tabIndex={0}
-                onClick={() => setCollapse(!collapse)}
+                onClick={() => setCollapsed(!collapsed)}
                 onKeyDown={() => null}
               >
                 <Text type="title">{label}</Text>
                 <StyledCollapseIndicator
-                  className={collapse ? 'collapse' : ''}
+                  className={collapsed ? 'collapsed' : ''}
                   size="sm"
-                  icon={<ChevronDownIcon size={24} />}
-                  onClick={() => setCollapse(!collapse)}
+                  intent="plain"
+                  icon={<ChevronUpIcon />}
+                  onClick={() => setCollapsed(!collapsed)}
                 />
               </TitleDiv>
             ) : (
