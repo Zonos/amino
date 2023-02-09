@@ -464,7 +464,6 @@ export function Button<T extends GroupTag = 'button'>({
       return (
         <PlainButton as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
-          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </PlainButton>
       );
     case 'secondary':
@@ -472,6 +471,7 @@ export function Button<T extends GroupTag = 'button'>({
       return (
         <Secondary as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Secondary>
       );
   }
