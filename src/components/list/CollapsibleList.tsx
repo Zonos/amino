@@ -33,7 +33,7 @@ const StyledPrimaryListItem = styled(ListItem)<{ $hasIcon: boolean }>`
 
     &.collapsed {
       opacity: 1;
-      transform: rotate(-180deg);
+      transform: rotate(180deg);
     }
   }
 `;

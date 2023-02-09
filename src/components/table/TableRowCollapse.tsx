@@ -49,7 +49,7 @@ const CollapseButton = styled(Button)`
     transition: ${theme.transition};
 
     &.collapsed {
-      transform: rotate(-180deg);
+      transform: rotate(180deg);
     }
   }
 `;
