@@ -169,7 +169,7 @@ export const DropZone = ({
       <InstructionTextWrapper>
         <Text type="label">
           {instructionText} or{' '}
-          <BrowseButton onClick={open} disabled={disabled}>
+          <BrowseButton type="button" onClick={open} disabled={disabled}>
             <Text type="label" color="blue600">
               browse
             </Text>

@@ -132,6 +132,7 @@ export const RichRadio = <T extends string>({
     <StyledRadioGroup spacing="space-half" className={className}>
       {items.map(item => (
         <StyledItem
+          type="button"
           key={item.value}
           data-tip={item.tooltip}
           data-disabled={item.disabled}
