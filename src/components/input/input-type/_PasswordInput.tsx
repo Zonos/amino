@@ -73,6 +73,7 @@ export const PasswordInput = ({
         suffix={
           suffix || (
             <StyledButtonAction
+              type="button"
               onClick={() =>
                 setInputType(inputType === 'password' ? 'text' : 'password')
               }

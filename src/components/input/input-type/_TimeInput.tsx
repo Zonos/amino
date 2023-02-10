@@ -93,6 +93,7 @@ export const TimeInput = ({
           suffix || (
             <StyledActionWrapper>
               <StyledButtonAction
+                type="button"
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(

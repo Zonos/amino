@@ -91,6 +91,7 @@ export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
       const { checked, icon, label, subtitle, value } = item;
       return (
         <StyledRichCheckbox
+          type="button"
           data-state={checked ? 'checked' : ''}
           value={value}
           key={value}

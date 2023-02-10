@@ -120,7 +120,11 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
 
   return (
     <MenuWrapper addSpacing={addSpacing}>
-      <UserInfo addSpacing={addSpacing} onClick={() => setOpen(!open)}>
+      <UserInfo
+        type="button"
+        addSpacing={addSpacing}
+        onClick={() => setOpen(!open)}
+      >
         <Avatar />
         <StyledVStack spacing="none">
           <strong>Hello</strong>

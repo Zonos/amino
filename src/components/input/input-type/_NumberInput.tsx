@@ -84,6 +84,7 @@ export const NumberInput = ({
           suffix || (
             <StyledActionWrapper>
               <StyledButtonAction
+                type="button"
                 onClick={() => {
                   inputRef.current?.stepUp();
                   inputRef.current?.dispatchEvent(
@@ -94,6 +95,7 @@ export const NumberInput = ({
                 <ChevronUpIcon size={16} />
               </StyledButtonAction>
               <StyledButtonAction
+                type="button"
                 onClick={() => {
                   inputRef.current?.stepDown();
                   inputRef.current?.dispatchEvent(
