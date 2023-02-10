@@ -1,4 +1,4 @@
-import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -47,7 +47,7 @@ export const Collapse = ({
 
   const contentWrapperRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const resizeObserver = new ResizeObserver(entries => {
       setContentHeight(entries[0]?.contentRect.height);
     });
@@ -61,7 +61,7 @@ export const Collapse = ({
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setHideOverflow(true);
     if (!collapsed) {
       setCompletelyCollapsed(false);
