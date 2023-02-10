@@ -38,7 +38,7 @@ jobs:
       id: playwright-cache
       with:
         path:
-          ~/.cache/ms-playwright
+          ~/Library/Caches/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
     - run: yarn playwright install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
