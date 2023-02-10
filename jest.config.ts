@@ -11,7 +11,7 @@ const config: InitialOptionsTsJest = {
   ],
   // These modules needed to be transformed :shrug:
   transformIgnorePatterns: ['/node_modules/(?!uuid|d3-.*|internmap)'],
-  modulePathIgnorePatterns: ['dist'],
+  modulePathIgnorePatterns: ['dist', '__stories__', 'playwright'],
   setupFilesAfterEnv: ['./jest/setupJestMock.ts'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)?$': 'ts-jest',

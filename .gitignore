@@ -90,3 +90,7 @@ build.mjs
 # Snapshots
 __diff_output__
 .vercel
+/playwright-test-results/
+/playwright-report/
+/playwright/.cache/
+snapshots

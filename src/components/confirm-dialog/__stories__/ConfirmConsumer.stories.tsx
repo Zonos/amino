@@ -32,7 +32,10 @@ export const ConfirmConsumer = () => {
       >
         Trigger default confirmation
       </Button>
-      <div>{defaultConfirmOk ? 'confirmed' : 'not confirmed'}</div>
+      <div className="default-confirmation">
+        <b>Default confirmation:</b>{' '}
+        {defaultConfirmOk ? 'confirmed' : 'not confirmed'}
+      </div>
 
       {/** Danger Confirmation */}
       <Button
@@ -50,7 +53,10 @@ export const ConfirmConsumer = () => {
       >
         Trigger danger confirmation
       </Button>
-      <div>{dangerConfirmOk ? 'confirmed' : 'not confirmed'}</div>
+      <div className="warning-confirmation">
+        <b>Danger confirmation:</b>{' '}
+        {dangerConfirmOk ? 'confirmed' : 'not confirmed'}
+      </div>
 
       {/** Warning Confirmation */}
       <Button
@@ -68,7 +74,10 @@ export const ConfirmConsumer = () => {
       >
         Trigger warning confirmation
       </Button>
-      <div>{warningConfirmOk ? 'confirmed' : 'not confirmed'}</div>
+      <div>
+        <b>Warning confirmation:</b>{' '}
+        {warningConfirmOk ? 'confirmed' : 'not confirmed'}
+      </div>
     </VStack>
   );
 };
