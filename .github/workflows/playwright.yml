@@ -1,0 +1,50 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test_setup:
+    name: Test setup
+    runs-on: macos-latest
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    steps:
+      - name: Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
+  test_e2e:
+    needs: test_setup
+    timeout-minutes: 60
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'yarn'
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    # https://playwrightsolutions.com/playwright-github-action-to-cache-the-browser-binaries/
+    - name: Get installed Playwright version
+      id: playwright-version
+      run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'])")" >> $GITHUB_ENV
+    - name: Cache playwright binaries
+      uses: actions/cache@v3
+      id: playwright-cache
+      with:
+        path:
+          ~/Library/Caches/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+    - run: yarn playwright install --with-deps
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+    - run: yarn playwright install-deps
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
+    - name: Run Playwright tests
+      run: yarn test:pw
+      env:
+        PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
