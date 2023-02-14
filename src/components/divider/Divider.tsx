@@ -1,26 +1,39 @@
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-const DividerHorizontal = styled.hr`
-  margin: ${theme.space24} 0;
+type StyledProps = {
+  outset: boolean;
+};
+
+const DividerHorizontal = styled.hr<StyledProps>`
+  margin: ${theme.space24} ${p => (p.outset ? theme.spaceNegative24 : 0)};
   border-color: ${theme.borderColor};
 `;
 
-const DividerVertical = styled.hr`
-  margin: 0 ${theme.space24};
+const DividerVertical = styled.hr<StyledProps>`
+  margin: ${p => (p.outset ? theme.spaceNegative24 : 0)} ${theme.space24};
   height: auto;
   align-self: stretch;
   border-right: solid thin ${theme.borderColor};
 `;
 
 type Props = {
-  vertical?: boolean;
   className?: string;
+  vertical?: boolean;
+  /**
+   * Adds negative margin (-24px) in the non-primary direction. For use with Cards and other containers with padding.
+   * @default false
+   */
+  outset?: boolean;
 };
 
-export const Divider = ({ className, vertical = false }: Props) =>
+export const Divider = ({
+  className,
+  vertical = false,
+  outset = false,
+}: Props) =>
   vertical ? (
-    <DividerVertical className={className} />
+    <DividerVertical className={className} outset={outset} />
   ) : (
-    <DividerHorizontal className={className} />
+    <DividerHorizontal className={className} outset={outset} />
   );
