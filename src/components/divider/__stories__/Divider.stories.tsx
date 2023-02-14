@@ -125,23 +125,13 @@ export const Basic = () => (
 );
 
 export const InCard = () => (
-  <div>
-    <Card label="Default">
-      <div>Some stuff</div>
-
-      <Divider />
-
-      <div>Some other stuff</div>
-    </Card>
+  <Card label="Default">
+    <div>
+      Cards automatically add negative margin to <code>{'<hr/>'}</code> tags
+    </div>
 
     <Divider />
 
-    <Card label="Outset">
-      <div>Some stuff</div>
-
-      <Divider outset />
-
-      <div>Some other stuff</div>
-    </Card>
-  </div>
+    <div>Some other stuff</div>
+  </Card>
 );
