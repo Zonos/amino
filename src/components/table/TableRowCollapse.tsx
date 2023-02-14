@@ -16,6 +16,13 @@ type StyleProps = {
 
 const StyledTableRow = styled(TableRow)<StyleProps>`
   ${p =>
+    !p.collapsed &&
+    css`
+      td {
+        border-bottom: 0;
+      }
+    `}
+  ${p =>
     p.collapsible &&
     css`
       cursor: pointer;
@@ -26,7 +33,6 @@ const StyledTableRow = styled(TableRow)<StyleProps>`
 `;
 
 const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
-  font-size: ${p => (!p.collapsed ? 'inherit' : 0)};
   border-bottom: ${p => (!p.collapsed ? 'inherit' : 0)};
   && {
     height: ${p => (!p.collapsed ? 'inherit' : 0)};
