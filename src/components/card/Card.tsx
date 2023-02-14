@@ -9,6 +9,12 @@ const StyledCard = styled.div`
   border: ${theme.border};
   border-radius: ${theme.radius6};
   padding: ${theme.space24};
+
+  /** Dividers should stretch the whole width by default */
+  hr {
+    margin-left: ${theme.spaceNegative24};
+    margin-right: ${theme.spaceNegative24};
+  }
 `;
 
 const CardHeader = styled.header`
