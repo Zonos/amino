@@ -16,14 +16,6 @@ type StyleProps = {
 
 const StyledTableRow = styled(TableRow)<StyleProps>`
   ${p =>
-    !p.collapsed &&
-    css`
-      margin-bottom: 16px;
-      td {
-        border-bottom: 0;
-      }
-    `}
-  ${p =>
     p.collapsible &&
     css`
       cursor: pointer;
