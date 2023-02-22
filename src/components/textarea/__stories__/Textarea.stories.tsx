@@ -54,6 +54,29 @@ const Template: Story<TextareaProps> = ({
         </StyledGroup>
       </div>
       <div>
+        <Text type="bold-label">Long content:</Text>
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            label={label}
+            onChange={() => {}}
+            placeholder={placeholder}
+            value={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id
+            iure amet accusantium ea consequuntur eaque animi fugiat iusto
+            similique, vero velit distinctio sequi nesciunt odit nobis
+            consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Repellat id iure amet accusantium ea consequuntur
+            eaque animi fugiat iusto similique, vero velit distinctio sequi
+            nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Repellat id iure amet accusantium
+            ea consequuntur eaque animi fugiat iusto similique, vero velit
+            distinctio sequi nesciunt odit nobis consequatur nihil sunt.`}
+          />
+          <Input label={label} value="" onChange={() => {}} />
+        </StyledGroup>
+      </div>
+      <div>
         <Text type="bold-label">Empty:</Text>
         <StyledGroup style={{ display: 'flex', gap: '10px' }}>
           <Textarea

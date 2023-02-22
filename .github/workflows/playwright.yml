@@ -1,13 +1,13 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 jobs:
   test_setup:
     name: Test setup
-    runs-on: macos-latest
+    runs-on: macos-12
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
@@ -40,11 +40,13 @@ jobs:
         path:
           ~/Library/Caches/ms-playwright
         key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      # Install browsers
     - run: yarn playwright install --with-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
+      # Install system requirement for installed browsers
     - run: yarn playwright install-deps
       if: steps.playwright-cache.outputs.cache-hit != 'true'
     - name: Run Playwright tests
-      run: yarn test:pw
+      run: yarn playwright test
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}

@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.4.26",
+  "version": "3.4.27",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -147,7 +147,6 @@
     "test:prod": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/__tests__/storyshots",
     "test:pw": "playwright test",
-    "test:pw:update": "playwright test --update-snapshots",
     "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "tsc": "tsc --noEmit",
     "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",

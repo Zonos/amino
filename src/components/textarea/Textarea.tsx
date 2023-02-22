@@ -23,7 +23,6 @@ const Fields = styled.div`
 `;
 
 const StyledBorder = styled.div`
-  order: 1;
   &::after {
     content: '';
     position: absolute;
@@ -88,6 +87,19 @@ const StyledTextarea = styled.textarea<TextareaType>`
     & + ${StyledLabelInput} {
       top: 11px;
       transform: scale(0.8);
+      & + ${StyledBorder} {
+        &::before {
+          content: '';
+          position: absolute;
+          z-index: 2;
+          left: 0;
+          top: 0;
+          height: 25px;
+          right: 0;
+          background: white;
+          border-radius: ${theme.radius6};
+        }
+      }
     }
   }
 
