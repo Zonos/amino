@@ -42,7 +42,7 @@ const Template: Story<SliderProps> = ({
         />
       </div>
       <div>
-        Different suffix (Separate value): value: {value}
+        Different suffix
         <SliderComponent
           max={max}
           min={min}
