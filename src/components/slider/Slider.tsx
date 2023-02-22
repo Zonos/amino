@@ -120,7 +120,7 @@ export const Slider = ({
       <StyledTrack>
         <StyledRange />
       </StyledTrack>
-      (
+
       <StyledThumb>
         {!hideIndicator && (
           <IndicatorWrapper>
@@ -134,7 +134,6 @@ export const Slider = ({
           </IndicatorWrapper>
         )}
       </StyledThumb>
-      )
     </StyledSlider>
   </SliderWrapper>
 );
