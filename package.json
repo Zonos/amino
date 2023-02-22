@@ -147,7 +147,6 @@
     "test:prod": "jest --testPathIgnorePatterns storyshots",
     "test:visual": "jest ./.storybook/__tests__/storyshots",
     "test:pw": "playwright test",
-    "test:pw:update": "playwright test --update-snapshots",
     "test": "jest --watchAll --testPathIgnorePatterns storyshots",
     "tsc": "tsc --noEmit",
     "version:major": "yarn build && npm version major -m 'Bump version %s' && yarn push:tags",
