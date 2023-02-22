@@ -97,6 +97,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
           height: 25px;
           right: 0;
           background: white;
+          border-radius: ${theme.radius6};
         }
       }
     }
