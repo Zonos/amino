@@ -5,6 +5,7 @@ import {
   Slider as SliderComponent,
   SliderProps,
 } from 'src/components/slider/Slider';
+import { VStack } from 'src/components/stack/VStack';
 
 const SliderMeta: Meta = {
   component: SliderComponent,
@@ -21,13 +22,37 @@ const Template: Story<SliderProps> = ({
   const [value, setValue] = useState(_value);
 
   return (
-    <SliderComponent
-      max={max}
-      min={min}
-      onChange={n => setValue(n)}
-      step={step}
-      value={value}
-    />
+    <VStack>
+      <SliderComponent
+        max={max}
+        min={min}
+        onChange={n => setValue(n)}
+        step={step}
+        value={value}
+      />
+      <div>
+        No indicator (Separate value): value: {value}
+        <SliderComponent
+          max={max}
+          min={min}
+          hideIndicator
+          onChange={n => setValue(n)}
+          step={step}
+          value={value}
+        />
+      </div>
+      <div>
+        Different suffix (Separate value): value: {value}
+        <SliderComponent
+          max={max}
+          min={min}
+          suffix="$"
+          onChange={n => setValue(n)}
+          step={step}
+          value={value}
+        />
+      </div>
+    </VStack>
   );
 };
 

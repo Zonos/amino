@@ -88,14 +88,27 @@ const IndicatorWrapper = styled.div`
 `;
 
 export type SliderProps = {
+  hideIndicator?: boolean;
   max?: number;
   min?: number;
   onChange: (newValue: number) => void;
   step?: number;
+  /**
+   * @default "%"
+   */
+  suffix?: string;
   value: number;
 };
 
-export const Slider = ({ min, max, value, step, onChange }: SliderProps) => (
+export const Slider = ({
+  hideIndicator = false,
+  max,
+  min,
+  onChange,
+  step,
+  suffix = '%',
+  value,
+}: SliderProps) => (
   <SliderWrapper>
     <StyledSlider
       max={max}
@@ -107,14 +120,21 @@ export const Slider = ({ min, max, value, step, onChange }: SliderProps) => (
       <StyledTrack>
         <StyledRange />
       </StyledTrack>
+      (
       <StyledThumb>
-        <IndicatorWrapper>
-          <UpTriangle />
-          <Indicator>
-            <span>{value}%</span>
-          </Indicator>
-        </IndicatorWrapper>
+        {!hideIndicator && (
+          <IndicatorWrapper>
+            <UpTriangle />
+            <Indicator>
+              <span>
+                {value}
+                {suffix}
+              </span>
+            </Indicator>
+          </IndicatorWrapper>
+        )}
       </StyledThumb>
+      )
     </StyledSlider>
   </SliderWrapper>
 );
