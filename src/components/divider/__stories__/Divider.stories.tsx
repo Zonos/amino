@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/react/types-6-0';
+import { Card } from 'src/components/card/Card';
 import { Text } from 'src/components/text/Text';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
@@ -8,10 +9,10 @@ import { CircleIcon } from 'src/icons/CircleIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { Divider as DividerComponent } from '../Divider';
+import { Divider } from '../Divider';
 
 const DividerMeta: Meta = {
-  component: DividerComponent,
+  component: Divider,
 };
 
 export default DividerMeta;
@@ -62,30 +63,30 @@ const Column = styled(ColumnInset)`
 
 // These dividers have custom styling to not appear inset when the container has the padding. There are multiple approaches to make it full size, as demonstrated here.
 
-const StyledDividerVertical = styled(DividerComponent)`
+const StyledDividerVertical = styled(Divider)`
   margin: ${theme.spaceNegative8} 0;
 `;
 
-const StyledDividerHorizontal = styled(DividerComponent)`
+const StyledDividerHorizontal = styled(Divider)`
   margin: 0 ${theme.spaceNegative8};
 `;
 
-export const Divider = () => (
+export const Basic = () => (
   <Wrapper>
     <Wrapper>
       <Text type="title">Vertical</Text>
       <Row>
         <ArrowLeftIcon />
-        <DividerComponent vertical />
+        <Divider vertical />
         <CircleIcon />
-        <DividerComponent vertical />
+        <Divider vertical />
         <ArrowRightIcon />
       </Row>
       <RowInset>
         <ArrowLeftIcon />
-        <DividerComponent vertical />
+        <Divider vertical />
         <CircleIcon />
-        <DividerComponent vertical />
+        <Divider vertical />
         <ArrowRightIcon />
       </RowInset>
       <RowInset>
@@ -100,16 +101,16 @@ export const Divider = () => (
     <ColumnWrapper>
       <Column>
         <ArrowUpIcon />
-        <DividerComponent />
+        <Divider />
         <CircleIcon />
-        <DividerComponent />
+        <Divider />
         <ArrowDownIcon />
       </Column>
       <ColumnInset>
         <ArrowUpIcon />
-        <DividerComponent />
+        <Divider />
         <CircleIcon />
-        <DividerComponent />
+        <Divider />
         <ArrowDownIcon />
       </ColumnInset>
       <ColumnInset>
@@ -121,4 +122,16 @@ export const Divider = () => (
       </ColumnInset>
     </ColumnWrapper>
   </Wrapper>
+);
+
+export const InCard = () => (
+  <Card label="Default">
+    <div>
+      Cards automatically add negative margin to <code>{'<hr/>'}</code> tags
+    </div>
+
+    <Divider />
+
+    <div>Some other stuff</div>
+  </Card>
 );

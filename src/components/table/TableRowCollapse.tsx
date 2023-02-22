@@ -18,7 +18,6 @@ const StyledTableRow = styled(TableRow)<StyleProps>`
   ${p =>
     !p.collapsed &&
     css`
-      margin-bottom: 16px;
       td {
         border-bottom: 0;
       }
@@ -34,7 +33,6 @@ const StyledTableRow = styled(TableRow)<StyleProps>`
 `;
 
 const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
-  font-size: ${p => (!p.collapsed ? 'inherit' : 0)};
   border-bottom: ${p => (!p.collapsed ? 'inherit' : 0)};
   && {
     height: ${p => (!p.collapsed ? 'inherit' : 0)};
