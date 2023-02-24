@@ -1,5 +1,6 @@
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
 import { theme } from 'src/styles/constants/theme';
+import { StyledProps } from 'src/types';
 import styled from 'styled-components';
 
 const StyledSlider = styled(Root)`
@@ -11,30 +12,34 @@ const StyledSlider = styled(Root)`
   user-select: none;
 `;
 
-const StyledTrack = styled(Track)`
+const StyledTrack = styled(Track)<StyledProps<SliderProps>>`
   background-color: ${theme.gray200};
   border-radius: 20px;
   box-shadow: ${theme.v3ShadowInset};
   flex-grow: 1;
-  height: 12px;
+  height: ${p => p.$size && `${p.$size}px`};
   position: relative;
+  & + span {
+    transition: 0.3s all ease;
+  }
 `;
 
 const StyledRange = styled(Range)`
   background-color: ${theme.primary};
+  transition: 0.3s all ease;
   border-radius: 9999px;
   height: 100%;
   position: absolute;
 `;
 
-const StyledThumb = styled(Thumb)`
+const StyledThumb = styled(Thumb)<StyledProps<SliderProps>>`
   background: white;
   border-radius: 20px;
   border: ${theme.border};
   box-shadow: ${theme.v3ShadowBase};
   display: block;
-  height: 24px;
-  width: 24px;
+  height: ${p => p.$size && `${p.$size * 2}px`};
+  width: ${p => p.$size && `${p.$size * 2}px`};
 
   cursor: pointer;
 
@@ -47,9 +52,9 @@ const StyledThumb = styled(Thumb)`
   }
 `;
 
-const SliderWrapper = styled.div`
+const SliderWrapper = styled.div<StyledProps<{ hideIndicator: boolean }>>`
   position: relative;
-  height: calc(56px + ${theme.space24} + 10px);
+  height: ${p => !p.$hideIndicator && `calc(56px + ${theme.space24} + 10px)`};
 `;
 
 const Indicator = styled.div`
@@ -88,11 +93,17 @@ const IndicatorWrapper = styled.div`
 `;
 
 export type SliderProps = {
+  className?: string;
   hideIndicator?: boolean;
   max?: number;
   min?: number;
   onChange: (newValue: number) => void;
   step?: number;
+  /**
+   * How thick you want the progress look
+   * @default 12
+   * */
+  size?: 8 | 12;
   /**
    * @default "%"
    */
@@ -105,11 +116,13 @@ export const Slider = ({
   max,
   min,
   onChange,
+  className,
   step,
+  size = 12,
   suffix = '%',
   value,
 }: SliderProps) => (
-  <SliderWrapper>
+  <SliderWrapper className={className} $hideIndicator={hideIndicator}>
     <StyledSlider
       max={max}
       min={min}
@@ -117,11 +130,11 @@ export const Slider = ({
       step={step}
       value={[value]}
     >
-      <StyledTrack>
+      <StyledTrack $size={size}>
         <StyledRange />
       </StyledTrack>
 
-      <StyledThumb>
+      <StyledThumb $size={size}>
         {!hideIndicator && (
           <IndicatorWrapper>
             <UpTriangle />

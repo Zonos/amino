@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
 import {
@@ -18,24 +18,47 @@ const Template: Story<SliderProps> = ({
   min,
   step,
   value: _value,
+  size,
 }: SliderProps) => {
   const [value, setValue] = useState(_value);
-
+  const [randomValue, setRandomValue] = useState(_value);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRandomValue(Math.round(Math.random() * 100));
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <VStack>
       <SliderComponent
         max={max}
         min={min}
         onChange={n => setValue(n)}
+        size={size}
         step={step}
         value={value}
       />
+      <div>
+        Random value: {randomValue}
+        <SliderComponent
+          max={max}
+          min={min}
+          hideIndicator
+          size={size}
+          onChange={n => setRandomValue(n)}
+          step={step}
+          value={randomValue}
+        />
+      </div>
       <div>
         No indicator (Separate value): value: {value}
         <SliderComponent
           max={max}
           min={min}
           hideIndicator
+          size={size}
           onChange={n => setValue(n)}
           step={step}
           value={value}
@@ -47,6 +70,7 @@ const Template: Story<SliderProps> = ({
           max={max}
           min={min}
           suffix="$"
+          size={size}
           onChange={n => setValue(n)}
           step={step}
           value={value}
