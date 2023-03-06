@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -63,6 +63,8 @@ export type CoverSheetProps = {
   open: boolean;
   label: string;
   onClose: () => void;
+  /** used for setting id of the wrapper of where the action will be located */
+  actionWrapperId?: string;
   actions?: ReactNode;
 };
 
@@ -72,8 +74,21 @@ export const CoverSheet = ({
   label,
   onClose,
   children,
+  actionWrapperId = '__cover-sheet-actions',
   actions,
 }: CoverSheetProps) => {
+  useEffect(() => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    if (document.querySelectorAll(`[id='${actionWrapperId}']`).length > 0) {
+      // eslint-disable-next-line no-console
+      console.error(
+        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to an unique id.`
+      );
+    }
+  }, [actionWrapperId]);
+
   if (typeof document !== 'undefined') {
     const body = document.querySelector('body');
     if (body) {
@@ -93,8 +108,12 @@ export const CoverSheet = ({
                   onClick={onClose}
                 />
                 <StyledHeader type="header">{label}</StyledHeader>
-                <div id="cover-sheet-actions">
-                  {actions && <CoverSheetActions>{actions}</CoverSheetActions>}
+                <div id={actionWrapperId}>
+                  {actions && (
+                    <CoverSheetActions coverSheetActionId={actionWrapperId}>
+                      {actions}
+                    </CoverSheetActions>
+                  )}
                 </div>
               </Header>
               <Content>{children}</Content>
