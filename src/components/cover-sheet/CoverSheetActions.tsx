@@ -9,11 +9,20 @@ const Actions = styled.div`
 `;
 
 export type CoverSheetProps = {
-  className?: string;
   children: ReactNode;
+  className?: string;
+  /**
+   * Determine where to put this actions in the coversheet
+   * @default id for coversheet component is `__cover-sheet-actions`
+   * */
+  coverSheetActionId: string;
 };
 
-export const CoverSheetActions = ({ className, children }: CoverSheetProps) => {
+export const CoverSheetActions = ({
+  children,
+  className,
+  coverSheetActionId,
+}: CoverSheetProps) => {
   const [coverSheetReady, setCoverSheetReady] = useState(false);
 
   useEffect(() => {
@@ -23,7 +32,7 @@ export const CoverSheetActions = ({ className, children }: CoverSheetProps) => {
   }, [coverSheetReady]);
 
   if (typeof document !== 'undefined' && coverSheetReady) {
-    const div = document.querySelector('#cover-sheet-actions');
+    const div = document.querySelector(`#${coverSheetActionId}`);
     if (div) {
       return createPortal(
         <Actions className={className}>

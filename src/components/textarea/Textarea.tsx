@@ -167,7 +167,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             ].join(' ')}
             disabled={disabled}
             ref={ref}
-            rows={rows || 4}
+            rows={rows}
             label={label}
             value={value}
             {...props}
