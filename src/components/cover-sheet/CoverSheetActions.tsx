@@ -11,7 +11,10 @@ const Actions = styled.div`
 export type CoverSheetProps = {
   children: ReactNode;
   className?: string;
-  /** default id for coversheet component is `__cover-sheet-actions` */
+  /**
+   * Determine where to put this actions in the coversheet
+   * @default id for coversheet component is `__cover-sheet-actions`
+   * */
   coverSheetActionId: string;
 };
 

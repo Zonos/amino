@@ -7,6 +7,7 @@ import {
   CoverSheetProps,
 } from 'src/components/cover-sheet/CoverSheet';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
+import { VStack } from 'src/components/stack/VStack';
 import styled from 'styled-components';
 
 const CoverSheetMeta: Meta = {
@@ -27,25 +28,50 @@ const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
   children,
   ...props
 }: CoverSheetProps & { actionPortalOpen?: boolean }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [actionPortalOpen, setActionPortalOpen] = useState(_actionPortalOpen);
+  const [secondCoversheetOpen, setSecondCoversheetOpen] = useState(false);
+
   return (
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
 
       <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>
         {children}
-        <Button onClick={() => setActionPortalOpen(!actionPortalOpen)}>
-          Toggle coversheet action portal
-        </Button>
+        <VStack>
+          <Button onClick={() => setActionPortalOpen(!actionPortalOpen)}>
+            Toggle coversheet action portal
+          </Button>
+          <Button
+            intent="primary"
+            onClick={() => setSecondCoversheetOpen(!secondCoversheetOpen)}
+          >
+            Open second CoverSheet
+          </Button>
+        </VStack>
         {actionPortalOpen && (
-          <CoverSheetActions>
+          <CoverSheetActions coverSheetActionId="__cover-sheet-actions">
             <Button onClick={() => setActionPortalOpen(false)}>
               Remove coversheet actions
             </Button>
             <Button>Save (coversheet)</Button>
           </CoverSheetActions>
         )}
+      </CoverSheet>
+      <CoverSheet
+        open={secondCoversheetOpen}
+        label="Second Coversheet"
+        onClose={() => setSecondCoversheetOpen(false)}
+        actionWrapperId="second-cover-sheet"
+      >
+        This is a second coversheet set with <b>actionWrapperId</b>. The button
+        action <b>Action in second coversheete</b> should be possitioned
+        correctly at the top right of this coversheet
+        <CoverSheetActions coverSheetActionId="second-cover-sheet">
+          <Button onClick={() => setSecondCoversheetOpen(false)}>
+            Action in second coversheete
+          </Button>
+        </CoverSheetActions>
       </CoverSheet>
     </CenteredDiv>
   );
@@ -60,12 +86,12 @@ CoverSheetWithActions.args = {
     </>
   ),
   label: 'Label',
-  children: <div>Children</div>,
+  children: <div />,
 };
 
 export const CoverSheetNoActions = Template.bind({});
 CoverSheetNoActions.args = {
   actionPortalOpen: true,
   label: 'Label',
-  children: <div>Children</div>,
+  children: <div />,
 };
