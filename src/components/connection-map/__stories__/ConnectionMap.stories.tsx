@@ -7,7 +7,7 @@ import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
 import styled from 'styled-components';
-import useSWR from 'swr';
+import useSwr from 'swr';
 
 import { getCountryUrls } from '../../select/__stories__/getCountryUrls.stories';
 import { useCountryOptions } from '../../select/__stories__/useCountryOptions.stories';
@@ -43,7 +43,7 @@ const ConnectionMapTemplate: Story<{ from: string; to: string }> = ({
   to: _to,
 }) => {
   const { dashboardUrl } = getCountryUrls();
-  const { data: worldData } = useSWR<IGeoJsonWorld>(GEO_URL, async params => {
+  const { data: worldData } = useSwr<IGeoJsonWorld>(GEO_URL, async params => {
     const response = await fetch(params);
     const json = await response.json();
     return json;
