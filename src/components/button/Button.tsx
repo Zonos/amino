@@ -338,7 +338,7 @@ export type GroupTag = 'div' | 'a' | 'button';
 
 /* These types are kind of hacked because styled components makes it difficult to do polymorphic components. */
 
-type MyHTMLElement<T extends GroupTag> = T extends 'a'
+type MyHtmlElement<T extends GroupTag> = T extends 'a'
   ? HTMLAnchorElement
   : T extends 'div'
   ? HTMLDivElement
@@ -346,7 +346,7 @@ type MyHTMLElement<T extends GroupTag> = T extends 'a'
 
 export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
   Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'> & {
-    onClick?: MouseEventHandler<MyHTMLElement<T>>;
+    onClick?: MouseEventHandler<MyHtmlElement<T>>;
     tag?: T;
   };
 
