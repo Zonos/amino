@@ -90,6 +90,10 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
     }
   }
 
+  &:active {
+    transform: scale(0.99);
+  }
+
   &:not(.only-icon).has-icon {
     &.icon-right {
       svg {
