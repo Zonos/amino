@@ -15,19 +15,19 @@ const RadioContainer = styled.div`
   }
 `;
 
-export type RadioGroupItem = {
+export type RadioGroupItem<T extends string = string> = {
   label: string;
-  value: string;
+  value: T;
 };
 
-export type RadioGroupProps<T> = {
+export type RadioGroupProps<T extends string = string> = {
   initialValue?: string;
-  items: T[];
+  items: RadioGroupItem<T>[];
   disabled?: boolean;
-  onChange: (newValue: string) => void;
+  onChange: (newValue: T) => void;
 };
 
-export const RadioGroup = <T extends RadioGroupItem>({
+export const RadioGroup = <T extends string = string>({
   items,
   disabled,
   onChange,

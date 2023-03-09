@@ -24,11 +24,11 @@ const RadioMeta: Meta = {
 
 export default RadioMeta;
 
-const Template: Story<RadioGroupProps<RadioGroupItem>> = ({
+const Template: Story<RadioGroupProps> = ({
   items,
   initialValue,
   disabled,
-}: RadioGroupProps<RadioGroupItem>) => {
+}: RadioGroupProps) => {
   const [value, setValue] = useState(initialValue);
 
   return (
@@ -41,8 +41,7 @@ const Template: Story<RadioGroupProps<RadioGroupItem>> = ({
   );
 };
 
-export const SimpleRadioGroup: Story<RadioGroupProps<RadioGroupItem>> =
-  Template.bind({});
+export const SimpleRadioGroup: Story<RadioGroupProps> = Template.bind({});
 
 const options: RadioGroupItem[] = [
   {
