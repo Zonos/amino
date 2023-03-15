@@ -22,8 +22,8 @@ NegativeValue.args = {
   children: -40.23,
 };
 
-export const positiveValue = CurrencyTemplate.bind({});
-positiveValue.args = {
+export const PositiveValue = CurrencyTemplate.bind({});
+PositiveValue.args = {
   code: 'CAD',
   children: 1000.23,
 };

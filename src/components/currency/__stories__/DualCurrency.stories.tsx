@@ -40,8 +40,8 @@ NegativeValue.args = {
   value: -40.23,
 };
 
-export const positiveValue = DualCurrencyTemplate.bind({});
-positiveValue.args = {
+export const PositiveValue = DualCurrencyTemplate.bind({});
+PositiveValue.args = {
   conversionRate: 1.23,
   foreignCode: 'CAD',
   localeCode: 'USD',
