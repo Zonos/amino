@@ -1,7 +1,11 @@
+import { ReactNode } from 'react';
+
 import { theme } from 'src/styles/constants/theme';
 import styled, { css, keyframes } from 'styled-components';
 
 export type SkeletonProps = {
+  className?: string;
+  children?: ReactNode;
   width?: number;
   height?: number;
   animation?: boolean;
@@ -50,9 +54,18 @@ const SkeletonWrapper = styled.div<SkeletonProps>`
  * @param height - Optional height in em
  */
 export const Skeleton = ({
+  className,
+  children,
   width,
   height,
   animation = true,
 }: SkeletonProps) => (
-  <SkeletonWrapper width={width} height={height} animation={animation} />
+  <SkeletonWrapper
+    width={width}
+    height={height}
+    animation={animation}
+    className={className}
+  >
+    {children}
+  </SkeletonWrapper>
 );
