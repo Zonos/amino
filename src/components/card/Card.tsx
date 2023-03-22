@@ -1,4 +1,3 @@
-import { Spacing } from '@mui/system';
 import { ReactNode } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
@@ -9,7 +8,7 @@ import styled from 'styled-components';
 const StyledCard = styled.div<{ spacing?: string }>`
   border: ${theme.border};
   border-radius: ${theme.radius6};
-  padding: ${({ spacing }) => (spacing ? spacing : theme.space24)};
+  padding: ${({ spacing }) => spacing || theme.space24};
 
   /** Dividers should stretch the whole width by default */
   hr {
@@ -23,10 +22,10 @@ const StyledCard = styled.div<{ spacing?: string }>`
 const CardHeader = styled.header<{ spacing?: string }>`
   margin: ${({ spacing }) =>
     spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
-  padding: ${({ spacing }) => (spacing ? spacing : theme.space24)};
+  padding: ${({ spacing }) => spacing || theme.space24};
   display: flex;
   align-items: center;
-  margin-bottom: ${({ spacing }) => (spacing ? spacing : theme.space24)};
+  margin-bottom: ${({ spacing }) => spacing || theme.space24};
   border-bottom: ${theme.border};
   height: 65px;
   line-height: 65px;
@@ -44,10 +43,10 @@ const CardFooter = styled.footer<{ footerHeight?: number; spacing?: string }>`
   justify-content: space-between;
   margin: ${({ spacing }) =>
     spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
-  padding: ${({ spacing }) => (spacing ? spacing : theme.space24)};
+  padding: ${({ spacing }) => spacing || theme.space24};
   border-top: ${theme.border};
   background: ${theme.surfaceColorSecondary};
-  margin-top: ${({ spacing }) => (spacing ? spacing : theme.space24)};
+  margin-top: ${({ spacing }) => spacing || theme.space24};
   border-bottom-left-radius: ${theme.radius8};
   border-bottom-right-radius: ${theme.radius8};
   height: ${p => p.footerHeight && `${p.footerHeight}px`};
