@@ -4,6 +4,9 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledTableRow = styled.tr`
+  :hover {
+    background-color: ${theme.gray100};
+  }
   th {
     color: ${theme.gray800};
     text-transform: uppercase;
@@ -16,6 +19,7 @@ const StyledTableRow = styled.tr`
     background: ${theme.gray100};
   }
 `;
+
 export type TableRowProps = {
   active?: boolean;
   children: ReactNode;
