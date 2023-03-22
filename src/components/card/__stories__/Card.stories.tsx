@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from 'src/components/button/Button';
 import { Card, CardProps } from 'src/components/card/Card';
+import { theme } from 'src/styles/constants/theme';
 
 const CardMeta: Meta = {
   component: Card,
@@ -15,6 +16,7 @@ const Template: Story<CardProps> = ({
   footerContent,
   footerHeight,
   label,
+  spacing = theme.space24,
 }: CardProps) => (
   <Card
     actions={actions}
@@ -22,6 +24,7 @@ const Template: Story<CardProps> = ({
     footerContent={footerContent}
     footerHeight={footerHeight}
     label={label}
+    spacing={spacing}
   >
     {children}
   </Card>
@@ -29,6 +32,7 @@ const Template: Story<CardProps> = ({
 
 export const BasicCard = Template.bind({});
 BasicCard.args = {
+  spacing: theme.space20,
   children: 'Card contents',
   label: 'My hot card',
 };
