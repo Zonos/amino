@@ -5,24 +5,27 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-const StyledCard = styled.div`
+const StyledCard = styled.div<{ spacing?: string }>`
   border: ${theme.border};
   border-radius: ${theme.radius6};
-  padding: ${theme.space24};
+  padding: ${({ spacing }) => spacing || theme.space24};
 
   /** Dividers should stretch the whole width by default */
   hr {
-    margin-left: ${theme.spaceNegative24};
-    margin-right: ${theme.spaceNegative24};
+    margin-left: ${({ spacing }) =>
+      spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
+    margin-right: ${({ spacing }) =>
+      spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
   }
 `;
 
-const CardHeader = styled.header`
-  margin: ${theme.spaceNegative24};
-  padding: ${theme.space24};
+const CardHeader = styled.header<{ spacing?: string }>`
+  margin: ${({ spacing }) =>
+    spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
+  padding: ${({ spacing }) => spacing || theme.space24};
   display: flex;
   align-items: center;
-  margin-bottom: ${theme.space24};
+  margin-bottom: ${({ spacing }) => spacing || theme.space24};
   border-bottom: ${theme.border};
   height: 65px;
   line-height: 65px;
@@ -34,15 +37,16 @@ const CardHeader = styled.header`
   }
 `;
 
-const CardFooter = styled.footer<{ footerHeight?: number }>`
+const CardFooter = styled.footer<{ footerHeight?: number; spacing?: string }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: ${theme.spaceNegative24};
-  padding: ${theme.space24};
+  margin: ${({ spacing }) =>
+    spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
+  padding: ${({ spacing }) => spacing || theme.space24};
   border-top: ${theme.border};
   background: ${theme.surfaceColorSecondary};
-  margin-top: ${theme.space24};
+  margin-top: ${({ spacing }) => spacing || theme.space24};
   border-bottom-left-radius: ${theme.radius8};
   border-bottom-right-radius: ${theme.radius8};
   height: ${p => p.footerHeight && `${p.footerHeight}px`};
@@ -56,6 +60,7 @@ export type CardProps = {
   footerContent?: ReactNode;
   footerHeight?: number;
   label?: ReactNode;
+  spacing?: string;
 };
 
 export const Card = ({
@@ -66,10 +71,11 @@ export const Card = ({
   footerContent,
   footerHeight,
   label,
+  spacing = theme.space24,
 }: CardProps) => (
-  <StyledCard className={className || ''}>
+  <StyledCard spacing={spacing} className={className || ''}>
     {label && (
-      <CardHeader>
+      <CardHeader spacing={spacing}>
         <Text type="subheader">{label}</Text>
 
         <HStack spacing="space-quarter">{actions}</HStack>
@@ -77,7 +83,7 @@ export const Card = ({
     )}
     {children}
     {(footerActions || footerContent) && (
-      <CardFooter footerHeight={footerHeight}>
+      <CardFooter footerHeight={footerHeight} spacing={spacing}>
         <div>{footerContent}</div>
         <HStack spacing="space-quarter">{footerActions}</HStack>
       </CardFooter>
