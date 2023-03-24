@@ -89,7 +89,7 @@ const WithoutHeadingTooltip = ({
       typeof subtitle === 'string'
         ? truncateText({
             length: 128,
-            addEllipses: false,
+            addEllipsis: false,
             text: subtitle,
           })
         : subtitle
