@@ -26,90 +26,98 @@ export const textOthers = [
   'input-label',
 ] as const;
 type OtherText = typeof textOthers[number];
+
 export const textOptions = [
   {
     label: 'Page Header (3XL) · 34px (2.125rem)',
     size: '3xl',
     tag: 'h2',
     type: 'page-header', // default
-    weight: '900',
+    weight: 900,
   },
   {
     label: 'Header (2XL) · 28px (1.75rem)',
     size: '2xl',
     type: 'header', // default
     tag: 'h3',
-    weight: '700',
+    weight: 700,
   },
   {
     label: 'Description Header (2XL) · 28px (1.75rem)',
     size: '2xl',
     tag: 'h3',
     type: 'description-header',
-    weight: '700',
+    weight: 700,
   },
   {
     label: 'Title (XL) • 22px (1.375rem)',
     size: 'xl',
     tag: 'h4',
     type: 'title',
-    weight: '600',
+    weight: 600,
   },
   {
     label: 'Bold Subheader (L) • 18px (1.125rem)',
     size: 'l',
     tag: 'h5',
     type: 'bold-subheader',
-    weight: '700',
+    weight: 700,
+  },
+  {
+    label: 'Semi Bold Subheader (L / H4) • 18px (1.125rem)',
+    size: 'l',
+    tag: 'h5',
+    type: 'semi-bold-subheader',
+    weight: 600,
   },
   {
     label: 'Subheader (L) • 18px (1.125rem)',
     size: 'l',
     tag: 'h5',
     type: 'subheader',
-    weight: '500',
+    weight: 500,
   },
   {
     label: 'Bold Label (Base) • 14px (.875rem)',
     size: 'base',
     tag: 'span',
     type: 'bold-label',
-    weight: '700',
+    weight: 700,
   },
   {
     label: 'Label (Base) • 14px (.875rem)',
     size: 'base',
     tag: 'span',
     type: 'label',
-    weight: '500',
+    weight: 500,
   },
   {
     label: 'Body (Base) • 14px (.875rem)',
     size: 'base',
     tag: 'span',
     type: 'body',
-    weight: '400',
+    weight: 400,
   },
   {
     label: 'Small header (S) • 12px (.75rem)',
     size: 's',
     tag: 'span',
     type: 'small-header',
-    weight: '600',
+    weight: 600,
   },
   {
     label: 'Caption (S) • 12px (.75rem)',
     size: 's',
     tag: 'span',
     type: 'caption',
-    weight: '400',
+    weight: 400,
   },
   {
     label: 'Hint text (XS) • 10px (.625rem)',
     size: 'xs',
     tag: 'span',
     type: 'hint-text',
-    weight: '400',
+    weight: 400,
   },
 ] as const;
 
@@ -119,6 +127,7 @@ const [
   descriptionHeaderOption,
   titleOption,
   boldSubheaderOption,
+  semiBoldSubheaderOption,
   subheaderOption,
   boldLabelOption,
   labelOption,
@@ -138,8 +147,9 @@ type TypographyOverrides = {
   fontWeight?: FontWeight;
   lineHeight?: Size;
 };
-type TypoDefaultProp = { size: Size; isUppercase?: Boolean };
-const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
+type TypeDefaultProp = { size: Size; isUppercase?: Boolean };
+
+const Typography = styled.h1<TypographyOverrides & TypeDefaultProp>`
   font-size: ${p => `var(--amino-font-size-${p.fontSize || p.size})`};
   font-weight: ${p => p.fontWeight};
   line-height: ${p => `var(--amino-line-height-${p.lineHeight || p.size})`};
@@ -155,7 +165,9 @@ const Typography = styled.h1<TypographyOverrides & TypoDefaultProp>`
       text-transform: uppercase;
     `}
 `;
+
 type TextStyle = Type | OtherText;
+
 export type TextProps = {
   children: ReactNode;
   className?: string;
@@ -237,6 +249,13 @@ export const Text: FC<TextProps> = ({
         fontWeight: fontWeight || boldSubheaderOption.weight,
         isUppercase,
         size: boldSubheaderOption.size,
+      });
+    case 'semi-bold-subheader':
+      return renderTypography({
+        as: tag || semiBoldSubheaderOption.tag,
+        fontWeight: fontWeight || semiBoldSubheaderOption.weight,
+        isUppercase,
+        size: semiBoldSubheaderOption.size,
       });
     case 'subheader':
       return renderTypography({
