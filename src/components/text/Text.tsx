@@ -139,7 +139,7 @@ const [
 
 type Size = typeof textOptions[number]['size'];
 type Type = typeof textOptions[number]['type'];
-export type FontWeight = typeof textOptions[number]['weight'] | '800';
+export type FontWeight = typeof textOptions[number]['weight'] | 800;
 type Tag = typeof textOptions[number]['tag'];
 type TypographyOverrides = {
   color?: Color;
