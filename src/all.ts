@@ -755,6 +755,7 @@ import './icons/WarningWhiteIcon';
 import './styles/constants/theme';
 import './utils/countryPhoneCodes';
 import './utils/getCountryCodeByName';
+import './utils/getFuzzySearch';
 import './utils/getTestId';
 import './utils/prepCountryOptions';
 import './utils/prepRegionCountryOptions';
