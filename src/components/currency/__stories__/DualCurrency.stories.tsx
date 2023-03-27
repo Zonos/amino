@@ -35,8 +35,8 @@ export const NegativeValue = DualCurrencyTemplate.bind({});
 NegativeValue.args = {
   conversionRate: 1.23,
   foreignCode: 'CAD',
-  localeCode: 'USD',
   isTabular: false,
+  localeCode: 'USD',
   value: -40.23,
 };
 
@@ -44,8 +44,8 @@ export const PositiveValue = DualCurrencyTemplate.bind({});
 PositiveValue.args = {
   conversionRate: 1.23,
   foreignCode: 'CAD',
-  localeCode: 'USD',
   isTabular: false,
+  localeCode: 'USD',
   value: 4.23,
 };
 
@@ -54,8 +54,8 @@ export const DifferentCurrencyFormatWithPositiveValue =
 DifferentCurrencyFormatWithPositiveValue.args = {
   conversionRate: 20300,
   foreignCode: 'VND',
-  localeCode: 'CAD',
   isTabular: false,
+  localeCode: 'CAD',
   value: 128.23,
 };
 
@@ -64,7 +64,7 @@ export const DifferentCurrencyFormatWithNegativeValue =
 DifferentCurrencyFormatWithNegativeValue.args = {
   conversionRate: 20300,
   foreignCode: 'VND',
-  localeCode: 'CAD',
   isTabular: false,
+  localeCode: 'CAD',
   value: -128.23,
 };
