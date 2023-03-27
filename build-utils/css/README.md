@@ -100,7 +100,7 @@ Ex:
 
 There would be 2 cases: the variable exists and you just want to update the color code, or adding brand new color variable (Ex: `Gray2000`). The steps below can apply to both cases.
 1. Download the color set svg from Figma (either every color sets or just the one you want to update) that you want to update in Amino, by selecting the whole component of each color in the color set palette (the designer shoud name the component name the same as text inside of component, ask them to rename it if this is not the case) and exporting them to svg format
-2. Put all of the exported svgs into `build-utils/css/colorSvgs` folder, and make sure the component name is in CamelCase (Blue100.svg, Blue200.svg, ...).
+2. Put all of the exported svgs into `build-utils/css/colorSvgs` folder, and make sure the component name is in CamelCase (Blue100.svg, Blue200.svg, ...). Helpful terminal command to rename files: `rename 's/^/Orange/' *.svg` Which would prefix all svgs with "Orange".
 3. **SKIP THIS STEP if the variable name doesn't change. If the variable from the Figma and the current variable are different (like the variable name before was `BlueL80` and now it become `Blue100`).**
     - Look into `build-utils/css/utils/generateColorConstantFromSvgs/generateFileContent.ts` file.
     - Adjust the mapping configuration for the color in the mapping array `deprecatedIntensityMapping`. In the object, the key on the left would be the legacy color suffix and the value on the right would be the new one. This mapping configuration would also add the legacy colors down below and add the `@deprecated` tag above it after the content of the new color.

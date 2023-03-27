@@ -33,16 +33,18 @@ const DualCurrencyWrapper = styled.div<StyledProps>`
 `;
 
 type Props = {
+  className?: string;
   conversionRate?: number;
+  foreignCode: string;
   isTabular?: boolean;
   localeCode?: string;
-  foreignCode: string;
   showForeign?: boolean;
   showLocale?: boolean;
   value: number;
 } & Partial<StyledProps>;
 
 export const DualCurrency = ({
+  className,
   conversionRate,
   foreignCode = 'USD',
   isTabular = true,
@@ -53,12 +55,13 @@ export const DualCurrency = ({
   width,
 }: Props) => {
   const renderLocaleCurrency = () => (
-    <Currency code={localeCode.toLocaleLowerCase()}>{value}</Currency>
+    <Currency amount={value} code={localeCode} />
   );
+
+  const convertedValue = conversionRate ? value * conversionRate : value;
+
   const renderForeignCurrency = () => (
-    <Currency code={foreignCode.toLocaleLowerCase()}>
-      {conversionRate ? value * conversionRate : value}
-    </Currency>
+    <Currency amount={convertedValue} code={foreignCode} />
   );
 
   const showLocaleCurrency = localeCode && showLocale;
@@ -67,7 +70,11 @@ export const DualCurrency = ({
 
   if (showForeignCurrency && showLocaleCurrency && !isSameCode) {
     return (
-      <DualCurrencyWrapper width={width?.toString()} isTabular={isTabular}>
+      <DualCurrencyWrapper
+        className={className}
+        width={width?.toString()}
+        isTabular={isTabular}
+      >
         {renderLocaleCurrency()}
         <ArrowSwapIcon size={12} />
         {renderForeignCurrency()}

@@ -9,19 +9,41 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
-          cache: "yarn"
+          node-version: 16
+          cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: yarn build:ci
+      - run: yarn build
 
-  CI:
-    name: Lint, TSC, Test
+  Lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
-          cache: "yarn"
+          node-version: 16
+          cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: yarn ci:concurrent
+      - run: yarn lint:prod
+
+  TSC:
+    name: Check types
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn tsc
+
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn test:prod

@@ -1,4 +1,4 @@
-import { space } from './generated/_space';
+import { spacing } from './generated/_spacing';
 import { blue } from './generated/colors/_blue';
 import { cyan } from './generated/colors/_cyan';
 import { gray } from './generated/colors/_gray';
@@ -15,112 +15,24 @@ export const theme = {
   black: '#0c0c0d',
   /* GRAY PALETTE */
   ...gray,
-  /** @deprecated this is no longer being used */
-  'gray-alpha': '#f9fafb',
-  /** @deprecated this is no longer being used */
-  'gray-50': '#f9fafb',
 
   /* BLUE PALETTE */
   ...blue,
-  /** @deprecated this is no longer being used */
-  'blue-alpha': '#2190ff80',
-  /** @deprecated this is no longer being used */
-  'blue-50': '#ebf5ff',
 
   /* CYAN PALETTE */
   ...cyan,
 
   /* RED PALETTE */
   ...red,
-  /** @deprecated this is no longer being used */
-  'red-alpha': '#e0451a80',
-  /** @deprecated this is no longer being used */
-  'red-50': '#fef2f2',
 
   /* ORANGE PALETTE */
   ...orange,
-  /** @deprecated this is no longer being used */
-  'orange-alpha': '#ffa51e80',
-  /** @deprecated this is no longer being used */
-  'orange-50': '#fff0e5',
 
   /* GREEN PALETTE */
   ...green,
-  /** @deprecated this is no longer being used */
-  'green-alpha': '#ecfdf580',
-  /** @deprecated this is no longer being used */
-  'green-50': '#ecfdf5',
 
   /* PURPLE */
   ...purple,
-  /** @deprecated this is no longer being used */
-  'purple-alpha': '#f5f3ff80',
-  /** @deprecated this is no longer being used */
-  'purple-50': '#f5f3ff',
-
-  /* YELLOW PALLETE */
-  /** @deprecated this is no longer being used */
-  'yellow-l80': '#fff9e5',
-  /** @deprecated this is no longer being used */
-  'yellow-l60': '#ffe999',
-  /** @deprecated this is no longer being used */
-  'yellow-l40': '#ffdd66',
-  /** @deprecated this is no longer being used */
-  'yellow-l20': '#ffd233',
-  /** @deprecated this is no longer being used */
-  'yellow-base': '#ffc700',
-  /** @deprecated this is no longer being used */
-  'yellow-d20': '#cc9f00',
-  /** @deprecated this is no longer being used */
-  'yellow-d40': '#997700',
-  /** @deprecated this is no longer being used */
-  'yellow-d60': '#665000',
-  /** @deprecated this is no longer being used */
-  'yellow-d80': '#39321c',
-  /** @deprecated this is no longer being used */
-  'yellow-alpha': '#fffbeb80',
-  /** @deprecated this is no longer being used */
-  'yellow-50': '#fffbeb',
-  /** @deprecated this is no longer being used */
-  'yellow-100': 'var(--amino-yellow-l80)',
-  /** @deprecated this is no longer being used */
-  'yellow-200': 'var(--amino-yellow-l60)',
-  /** @deprecated this is no longer being used */
-  'yellow-300': 'var(--amino-yellow-l40)',
-  /** @deprecated this is no longer being used */
-  'yellow-400': 'var(--amino-yellow-l20)',
-  /** @deprecated this is no longer being used */
-  'yellow-500': 'var(--amino-yellow-base)',
-  /** @deprecated this is no longer being used */
-  'yellow-600': 'var(--amino-yellow-d20)',
-  /** @deprecated this is no longer being used */
-  'yellow-700': 'var(--amino-yellow-d40)',
-  /** @deprecated this is no longer being used */
-  'yellow-800': 'var(--amino-yellow-d60)',
-  /** @deprecated this is no longer being used */
-  'yellow-900': 'var(--amino-yellow-d80)',
-  /** @deprecated this is no longer being used */
-  'amber-alpha': '#fffbeb80',
-  /** @deprecated this is no longer being used */
-  'amber-50': '#fffbeb',
-  /** @deprecated this is no longer being used */
-  'amber-100': 'var(--amino-yellow-l80)',
-  /** @deprecated this is no longer being used */
-  'amber-200': 'var(--amino-yellow-l60)',
-  /** @deprecated this is no longer being used */
-  'amber-300': 'var(--amino-yellow-l40)',
-  /** @deprecated this is no longer being used */
-  'amber-400': 'var(--amino-yellow-l20)',
-  /** @deprecated this is no longer being used */
-  'amber-500': 'var(--amino-yellow-base)',
-  /** @deprecated this is no longer being used */
-  'amber-600': 'var(--amino-yellow-d20)',
-  /** @deprecated this is no longer being used */
-  'amber-700': 'var(--amino-yellow-d40)',
-  /** @deprecated this is no longer being used */
-  'amber-800': 'var(--amino-yellow-d60)',
-  /** @deprecated this is no longer being used */
-  'amber-900': 'var(--amino-yellow-d80)',
 
   /* COMMON COLOR */
   danger: 'var(--amino-red-600)',
@@ -172,46 +84,8 @@ export const theme = {
   /** @info 12px */
   'radius-12': '0.75rem',
 
-  /** @info 4px */
-  /** @deprecated use radius4 instead */
-  'radius-sm': '0.25rem',
-  /** @info 6px */
-  /** @deprecated use radius6 instead */
-  radius: '0.375rem',
-  /** @info 8px */
-  /** @deprecated use radius8 instead */
-  'radius-lg': '0.5rem',
-  /** @info 12px */
-  /** @deprecated use radius12 instead */
-  'radius-xl': '0.75rem',
-
   /* SPACING */
-  ...space,
-
-  /** @info px: 24px */
-  /** @deprecated use space24 instead */
-  space: '1.5rem',
-  /** @info px: -24px */
-  /** @deprecated use spaceNegative24 instead */
-  'space-negative': '-1.5rem',
-  /** @info px: 16px */
-  /** @deprecated use space16 instead */
-  'space-half': '1rem',
-  /** @info px: -16px */
-  /** @deprecated use spaceNegative16 instead */
-  'space-half-negative': '-1rem',
-  /** @info px: 8px */
-  /** @deprecated use space8 instead */
-  'space-quarter': '0.5rem',
-  /** @info px: -8px */
-  /** @deprecated use spaceNegative8 instead */
-  'space-quarter-negative': '-0.5rem',
-  /** @info px: 40px */
-  /** @deprecated use space40 instead */
-  'space-double': '2.5rem',
-  /** @info px: -40px */
-  /** @deprecated use spaceNegative40 instead */
-  'space-double-negative': '-2.5rem',
+  ...spacing,
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',
@@ -239,19 +113,6 @@ export const theme = {
   'v3-shadow-large': `0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05)`,
   'v3-shadow-xl': `0px 20px 25px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.04)`,
   'v3-shadow-xxl': '0px 32px 50px rgba(0, 0, 0, 0.24)',
-  /* LEGACY BOX SHADOW */
-  /** @deprecated use v3ShadowInset instead */
-  'shadow-inset': 'var(--amino-v3-shadow-inset)',
-  /** @deprecated use v3ShadowBase instead */
-  'shadow-small': 'var(--amino-v3-shadow-base)',
-  /** @deprecated use v3ShadowMedium instead */
-  'shadow-base': 'var(--amino-v3-shadow-medium)',
-  /** @deprecated use v3ShadowLarge instead */
-  'shadow-medium': 'var(--amino-v3-shadow-large)',
-  /** @deprecated use v3ShadowXl instead */
-  'shadow-large': 'var(--amino-v3-shadow-xl)',
-  /** @deprecated use v3ShadowXxl instead */
-  'shadow-larger': 'var(--amino-v3-shadow-xxl)',
 
   /* BORDER */
   border: '1px solid var(--amino-border-color)',
@@ -278,22 +139,6 @@ export const theme = {
   'font-size-s': '0.75rem',
   /** @info 10px */
   'font-size-xs': '0.625rem',
-
-  /* LEGACY FONT SIZE */
-  /** @deprecated use fontSize3xl instead */
-  'text-xxl': 'var(--amino-font-size-3xl)',
-  /** @deprecated use fontSize2xl instead */
-  'text-xl': 'var(--amino-font-size-2xl)',
-  /** @deprecated use fontSizeXl instead */
-  'text-lg': 'var(--amino-font-size-xl)',
-  /** @deprecated use fontSizeL instead */
-  'text-md': 'var(--amino-font-size-l)',
-  /** @deprecated use fontSizeBase instead */
-  'text-base': 'var(--amino-font-size-base)',
-  /** @deprecated use fontSizeS instead */
-  'text-sm': 'var(--amino-font-size-s)',
-  /** @deprecated use fontSizeXs instead */
-  'text-xs': 'var(--amino-font-size-xs)',
 
   /* LINE HEIGHT */
   'line-height-3xl': '118%',

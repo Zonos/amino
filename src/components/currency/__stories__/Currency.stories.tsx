@@ -12,34 +12,34 @@ export default CurrencyMeta;
 type CurrencyProps = Parameters<typeof Currency>[number];
 
 const CurrencyTemplate: Story<CurrencyProps> = ({
+  amount,
   code,
-  children,
-}: CurrencyProps) => <Currency code={code}>{children}</Currency>;
+}: CurrencyProps) => <Currency amount={amount} code={code} />;
 
 export const NegativeValue = CurrencyTemplate.bind({});
 NegativeValue.args = {
+  amount: -40.23,
   code: 'AUD',
-  children: -40.23,
 };
 
 export const PositiveValue = CurrencyTemplate.bind({});
 PositiveValue.args = {
+  amount: 1000.23,
   code: 'CAD',
-  children: 1000.23,
 };
 
 export const DifferentCurrencyFormatWithPositiveValue = CurrencyTemplate.bind(
   {}
 );
 DifferentCurrencyFormatWithPositiveValue.args = {
+  amount: 2349000,
   code: 'VND',
-  children: 2349000,
 };
 
 export const DifferentCurrencyFormatWithNegativeValue = CurrencyTemplate.bind(
   {}
 );
 DifferentCurrencyFormatWithNegativeValue.args = {
+  amount: -2349000,
   code: 'VND',
-  children: -2349000,
 };

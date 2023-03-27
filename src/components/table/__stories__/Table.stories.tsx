@@ -158,19 +158,19 @@ const Template: Story<
                   <RoundedIcon>
                     <ImageDuotoneIcon />
                   </RoundedIcon>
-                  <Text fontWeight="500">
+                  <Text fontWeight={500}>
                     Huka One Running Shoe - Women&apos;s
                   </Text>
                 </LeftIconLabel>
               </TableCell>
               <TableCell align="right">
                 <RightIconLabel>
-                  <Text fontWeight="500">6404.11.0000</Text>
+                  <Text fontWeight={500}>6404.11.0000</Text>
                   <ClassifyIcon color="purple600" size={14} />
                 </RightIconLabel>
               </TableCell>
               <TableCell align="right">
-                <Text fontWeight="500">
+                <Text fontWeight={500}>
                   <DualCurrency
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
@@ -211,7 +211,7 @@ const Template: Story<
                 <AttributeLabel key={option.label} spacing="space-quarter">
                   <Text
                     color="gray700"
-                    fontWeight="600"
+                    fontWeight={600}
                     isUppercase
                     type="caption"
                   >
@@ -233,11 +233,11 @@ const Template: Story<
                   <RoundedIcon>
                     <TruckDuotoneIcon />
                   </RoundedIcon>
-                  <Text fontWeight="500">Custom</Text>
+                  <Text fontWeight={500}>Custom</Text>
                 </LeftIconLabel>
               </TableCell>
               <TableCell align="right" colSpan={2}>
-                <Text fontWeight="500">
+                <Text fontWeight={500}>
                   <DualCurrency
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
@@ -285,11 +285,11 @@ const Template: Story<
                       secondaryColor="blue300"
                     />
                   </RoundedIcon>
-                  <Text fontWeight="500">Duties</Text>
+                  <Text fontWeight={500}>Duties</Text>
                 </LeftIconLabel>
               </TableCell>
               <TableCell align="right" colSpan={2}>
-                <Text fontWeight="500">$0.55</Text>
+                <Text fontWeight={500}>$0.55</Text>
               </TableCell>
             </>
           }
@@ -330,11 +330,11 @@ const Template: Story<
                       color="red900"
                     />
                   </RoundedIcon>
-                  <Text fontWeight="500">Fees</Text>
+                  <Text fontWeight={500}>Fees</Text>
                 </LeftIconLabel>
               </TableCell>
               <TableCell align="right" colSpan={2}>
-                <Text fontWeight="500">$10.71</Text>
+                <Text fontWeight={500}>$10.71</Text>
               </TableCell>
             </>
           }
@@ -379,16 +379,16 @@ const Template: Story<
                       secondaryColor="green400"
                     />
                   </RoundedIcon>
-                  <Text fontWeight="500">Taxes</Text>
+                  <Text fontWeight={500}>Taxes</Text>
                 </LeftIconLabel>
               </TableCell>
               <TableCell align="right">
-                <Badge color="orange" fontWeight="600">
+                <Badge color="orange" fontWeight={600}>
                   Over tax de minimis
                 </Badge>
               </TableCell>
               <TableCell align="right">
-                <Text fontWeight="500">$10.94</Text>
+                <Text fontWeight={500}>$10.94</Text>
               </TableCell>
             </>
           }
@@ -430,11 +430,11 @@ const Template: Story<
                   <RoundedIcon background="orange100">
                     <WarningIcon color="orange900" />
                   </RoundedIcon>
-                  <Text fontWeight="500">No children (cannot expand)</Text>
+                  <Text fontWeight={500}>No children (cannot expand)</Text>
                 </LeftIconLabel>
               </TableCell>
               <TableCell align="right">
-                <Text fontWeight="500">$0.00</Text>
+                <Text fontWeight={500}>$0.00</Text>
               </TableCell>
             </>
           }
@@ -443,10 +443,10 @@ const Template: Story<
       <TableFooter>
         <TableRow>
           <TableCell align="right" borderBottom="0" colSpan={2}>
-            <Text fontWeight="800">Total</Text>
+            <Text fontWeight={800}>Total</Text>
           </TableCell>
           <TableCell align="right" borderBottom="0" padding="0">
-            <Text fontWeight="800">$65.62</Text>
+            <Text fontWeight={800}>$65.62</Text>
           </TableCell>
         </TableRow>
       </TableFooter>

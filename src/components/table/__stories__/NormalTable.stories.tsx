@@ -147,9 +147,10 @@ const Template: Story<
                 </Tooltip>
                 <div>
                   <Text fontSize="s">
-                    <Currency code={node.currencyCode || 'USD'}>
-                      {node.amount?.toFixed(2) || ''}
-                    </Currency>
+                    <Currency
+                      amount={Number(node.amount?.toFixed(2)) || 0}
+                      code={node.currencyCode || 'USD'}
+                    />
                   </Text>
                 </div>
               </TableCell>

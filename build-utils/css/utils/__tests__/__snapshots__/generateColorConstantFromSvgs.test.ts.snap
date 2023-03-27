@@ -2,90 +2,52 @@
 
 exports[`Make sure all generated color constants matched previous snapshot: _blue.ts 1`] = `
 "export const blue = {
-  /** @info #E8EBFC  */
-  'blue-100': '#E8EBFC',
-  /** @info #C9CFF8  */
-  'blue-200': '#C9CFF8',
-  /** @info #96A2F3  */
-  'blue-300': '#96A2F3',
-  /** @info #7081F0  */
-  'blue-400': '#7081F0',
-  /** @info #586CEE  */
-  'blue-500': '#586CEE',
-  /** @info #475FE9  */
-  'blue-600': '#475FE9',
-  /** @info #3A4ECF  */
-  'blue-700': '#3A4ECF',
-  /** @info #2A3BAC  */
-  'blue-800': '#2A3BAC',
-  /** @info #1C2662  */
-  'blue-900': '#1C2662',
-  /** @info #13193F  */
-  'blue-1000': '#13193F',
-
-  /** @deprecated use blue100 instead */
-  'blue-l80': 'var(--amino-blue-100)',
-  /** @deprecated use blue200 instead */
-  'blue-l60': 'var(--amino-blue-200)',
-  /** @deprecated use blue300 instead */
-  'blue-l40': 'var(--amino-blue-300)',
-  /** @deprecated use blue400 instead */
-  'blue-l20': 'var(--amino-blue-400)',
-  /** @deprecated use blue600 instead */
-  'blue-base': 'var(--amino-blue-600)',
-  /** @deprecated use blue700 instead */
-  'blue-d20': 'var(--amino-blue-700)',
-  /** @deprecated use blue800 instead */
-  'blue-d40': 'var(--amino-blue-800)',
-  /** @deprecated use blue900 instead */
-  'blue-d60': 'var(--amino-blue-900)',
-  /** @deprecated use blue1000 instead */
-  'blue-d80': 'var(--amino-blue-1000)',
+  /** @info #DEECFE  */
+  'blue-100': '#DEECFE',
+  /** @info #C5DCFD  */
+  'blue-200': '#C5DCFD',
+  /** @info #AAC8FC  */
+  'blue-300': '#AAC8FC',
+  /** @info #89ADFA  */
+  'blue-400': '#89ADFA',
+  /** @info #568CF6  */
+  'blue-500': '#568CF6',
+  /** @info #435DEE  */
+  'blue-600': '#435DEE',
+  /** @info #294DBE  */
+  'blue-700': '#294DBE',
+  /** @info #263B98  */
+  'blue-800': '#263B98',
+  /** @info #1F2B73  */
+  'blue-900': '#1F2B73',
+  /** @info #151943  */
+  'blue-1000': '#151943',
 } as const;
 "
 `;
 
 exports[`Make sure all generated color constants matched previous snapshot: _cyan.ts 1`] = `
 "export const cyan = {
-  /** @info #E9FBFB  */
-  'cyan-100': '#E9FBFB',
-  /** @info #CBF6F4  */
-  'cyan-200': '#CBF6F4',
-  /** @info #9AEFEC  */
-  'cyan-300': '#9AEFEC',
-  /** @info #7BEAE7  */
-  'cyan-400': '#7BEAE7',
-  /** @info #4FE3DE  */
-  'cyan-500': '#4FE3DE',
-  /** @info #4AD3CF  */
-  'cyan-600': '#4AD3CF',
-  /** @info #44C5C1  */
-  'cyan-700': '#44C5C1',
-  /** @info #32A4A0  */
-  'cyan-800': '#32A4A0',
-  /** @info #225E5C  */
-  'cyan-900': '#225E5C',
-  /** @info #173B3A  */
-  'cyan-1000': '#173B3A',
-
-  /** @deprecated use cyan100 instead */
-  'cyan-l80': 'var(--amino-cyan-100)',
-  /** @deprecated use cyan200 instead */
-  'cyan-l60': 'var(--amino-cyan-200)',
-  /** @deprecated use cyan300 instead */
-  'cyan-l40': 'var(--amino-cyan-300)',
-  /** @deprecated use cyan400 instead */
-  'cyan-l20': 'var(--amino-cyan-400)',
-  /** @deprecated use cyan600 instead */
-  'cyan-base': 'var(--amino-cyan-600)',
-  /** @deprecated use cyan700 instead */
-  'cyan-d20': 'var(--amino-cyan-700)',
-  /** @deprecated use cyan800 instead */
-  'cyan-d40': 'var(--amino-cyan-800)',
-  /** @deprecated use cyan900 instead */
-  'cyan-d60': 'var(--amino-cyan-900)',
-  /** @deprecated use cyan1000 instead */
-  'cyan-d80': 'var(--amino-cyan-1000)',
+  /** @info #DBFDFF  */
+  'cyan-100': '#DBFDFF',
+  /** @info #BAF8FD  */
+  'cyan-200': '#BAF8FD',
+  /** @info #8FF1FA  */
+  'cyan-300': '#8FF1FA',
+  /** @info #65E2EF  */
+  'cyan-400': '#65E2EF',
+  /** @info #48C4D3  */
+  'cyan-500': '#48C4D3',
+  /** @info #349DAB  */
+  'cyan-600': '#349DAB',
+  /** @info #287E8A  */
+  'cyan-700': '#287E8A',
+  /** @info #236A75  */
+  'cyan-800': '#236A75',
+  /** @info #22525A  */
+  'cyan-900': '#22525A',
+  /** @info #183338  */
+  'cyan-1000': '#183338',
 } as const;
 "
 `;
@@ -94,231 +56,138 @@ exports[`Make sure all generated color constants matched previous snapshot: _gra
 "export const gray = {
   /** @info white  */
   'gray-0': 'white',
-  /** @info #EFEFF0  */
-  'gray-100': '#EFEFF0',
-  /** @info #E4E4E7  */
-  'gray-200': '#E4E4E7',
-  /** @info #C8C8CB  */
-  'gray-300': '#C8C8CB',
-  /** @info #ABACB2  */
-  'gray-400': '#ABACB2',
-  /** @info #96979E  */
-  'gray-500': '#96979E',
-  /** @info #80818A  */
-  'gray-600': '#80818A',
-  /** @info #686970  */
-  'gray-700': '#686970',
-  /** @info #4F5257  */
-  'gray-800': '#4F5257',
-  /** @info #36383D  */
-  'gray-900': '#36383D',
-  /** @info #2B2C32  */
-  'gray-1000': '#2B2C32',
-  /** @info #1D1F24  */
-  'gray-1100': '#1D1F24',
-  /** @info #121417  */
-  'gray-1200': '#121417',
-  /** @info #0A0A0B  */
-  'gray-1300': '#0A0A0B',
-
-  /** @deprecated use gray100 instead */
-  'gray-l80': 'var(--amino-gray-100)',
-  /** @deprecated use gray200 instead */
-  'gray-l60': 'var(--amino-gray-200)',
-  /** @deprecated use gray300 instead */
-  'gray-l40': 'var(--amino-gray-300)',
-  /** @deprecated use gray400 instead */
-  'gray-l20': 'var(--amino-gray-400)',
-  /** @deprecated use gray600 instead */
-  'gray-base': 'var(--amino-gray-600)',
-  /** @deprecated use gray700 instead */
-  'gray-d20': 'var(--amino-gray-700)',
-  /** @deprecated use gray800 instead */
-  'gray-d40': 'var(--amino-gray-800)',
-  /** @deprecated use gray900 instead */
-  'gray-d60': 'var(--amino-gray-900)',
-  /** @deprecated use gray1000 instead */
-  'gray-d80': 'var(--amino-gray-1000)',
+  /** @info #F6F6F8  */
+  'gray-50': '#F6F6F8',
+  /** @info #EAEBED  */
+  'gray-100': '#EAEBED',
+  /** @info #D9DADD  */
+  'gray-200': '#D9DADD',
+  /** @info #C5C6CA  */
+  'gray-300': '#C5C6CA',
+  /** @info #ACAEB3  */
+  'gray-400': '#ACAEB3',
+  /** @info #94969E  */
+  'gray-500': '#94969E',
+  /** @info #6A6D77  */
+  'gray-600': '#6A6D77',
+  /** @info #5C5E68  */
+  'gray-700': '#5C5E68',
+  /** @info #4D505A  */
+  'gray-800': '#4D505A',
+  /** @info #40424C  */
+  'gray-900': '#40424C',
+  /** @info #2E3038  */
+  'gray-1000': '#2E3038',
+  /** @info #1E1F26  */
+  'gray-1100': '#1E1F26',
+  /** @info #101116  */
+  'gray-1200': '#101116',
+  /** @info black  */
+  'gray-1300': 'black',
 } as const;
 "
 `;
 
 exports[`Make sure all generated color constants matched previous snapshot: _green.ts 1`] = `
 "export const green = {
-  /** @info #DCF9EA  */
-  'green-100': '#DCF9EA',
-  /** @info #A8F0CA  */
-  'green-200': '#A8F0CA',
-  /** @info #77E9AC  */
-  'green-300': '#77E9AC',
-  /** @info #53E497  */
-  'green-400': '#53E497',
-  /** @info #3DE188  */
-  'green-500': '#3DE188',
-  /** @info #3ACF80  */
-  'green-600': '#3ACF80',
-  /** @info #35AC6C  */
-  'green-700': '#35AC6C',
-  /** @info #298554  */
-  'green-800': '#298554',
-  /** @info #1C4F34  */
-  'green-900': '#1C4F34',
-  /** @info #173B28  */
-  'green-1000': '#173B28',
-
-  /** @deprecated use green100 instead */
-  'green-l80': 'var(--amino-green-100)',
-  /** @deprecated use green200 instead */
-  'green-l60': 'var(--amino-green-200)',
-  /** @deprecated use green300 instead */
-  'green-l40': 'var(--amino-green-300)',
-  /** @deprecated use green400 instead */
-  'green-l20': 'var(--amino-green-400)',
-  /** @deprecated use green600 instead */
-  'green-base': 'var(--amino-green-600)',
-  /** @deprecated use green700 instead */
-  'green-d20': 'var(--amino-green-700)',
-  /** @deprecated use green800 instead */
-  'green-d40': 'var(--amino-green-800)',
-  /** @deprecated use green900 instead */
-  'green-d60': 'var(--amino-green-900)',
-  /** @deprecated use green1000 instead */
-  'green-d80': 'var(--amino-green-1000)',
+  /** @info #DBFFDD  */
+  'green-100': '#DBFFDD',
+  /** @info #BAFDC2  */
+  'green-200': '#BAFDC2',
+  /** @info #86F99E  */
+  'green-300': '#86F99E',
+  /** @info #62E488  */
+  'green-400': '#62E488',
+  /** @info #4DC477  */
+  'green-500': '#4DC477',
+  /** @info #2A995A  */
+  'green-600': '#2A995A',
+  /** @info #25794A  */
+  'green-700': '#25794A',
+  /** @info #236641  */
+  'green-800': '#236641',
+  /** @info #214C34  */
+  'green-900': '#214C34',
+  /** @info #193123  */
+  'green-1000': '#193123',
 } as const;
 "
 `;
 
 exports[`Make sure all generated color constants matched previous snapshot: _orange.ts 1`] = `
 "export const orange = {
-  /** @info #FCF0E8  */
-  'orange-100': '#FCF0E8',
-  /** @info #F8DCC9  */
-  'orange-200': '#F8DCC9',
-  /** @info #F3BB96  */
-  'orange-300': '#F3BB96',
-  /** @info #F0A370  */
-  'orange-400': '#F0A370',
-  /** @info #EE9458  */
-  'orange-500': '#EE9458',
-  /** @info #E98847  */
-  'orange-600': '#E98847',
-  /** @info #CF763A  */
-  'orange-700': '#CF763A',
-  /** @info #AC5E2A  */
-  'orange-800': '#AC5E2A',
-  /** @info #63391D  */
-  'orange-900': '#63391D',
-  /** @info #3F2513  */
-  'orange-1000': '#3F2513',
-
-  /** @deprecated use orange100 instead */
-  'orange-l80': 'var(--amino-orange-100)',
-  /** @deprecated use orange200 instead */
-  'orange-l60': 'var(--amino-orange-200)',
-  /** @deprecated use orange300 instead */
-  'orange-l40': 'var(--amino-orange-300)',
-  /** @deprecated use orange400 instead */
-  'orange-l20': 'var(--amino-orange-400)',
-  /** @deprecated use orange600 instead */
-  'orange-base': 'var(--amino-orange-600)',
-  /** @deprecated use orange700 instead */
-  'orange-d20': 'var(--amino-orange-700)',
-  /** @deprecated use orange800 instead */
-  'orange-d40': 'var(--amino-orange-800)',
-  /** @deprecated use orange900 instead */
-  'orange-d60': 'var(--amino-orange-900)',
-  /** @deprecated use orange1000 instead */
-  'orange-d80': 'var(--amino-orange-1000)',
+  /** @info #FFEEE0  */
+  'orange-100': '#FFEEE0',
+  /** @info #FED5B8  */
+  'orange-200': '#FED5B8',
+  /** @info #FDC2A0  */
+  'orange-300': '#FDC2A0',
+  /** @info #FCA375  */
+  'orange-400': '#FCA375',
+  /** @info #F88548  */
+  'orange-500': '#F88548',
+  /** @info #D7581F  */
+  'orange-600': '#D7581F',
+  /** @info #A4431D  */
+  'orange-700': '#A4431D',
+  /** @info #85341D  */
+  'orange-800': '#85341D',
+  /** @info #63261A  */
+  'orange-900': '#63261A',
+  /** @info #3C1611  */
+  'orange-1000': '#3C1611',
 } as const;
 "
 `;
 
 exports[`Make sure all generated color constants matched previous snapshot: _purple.ts 1`] = `
 "export const purple = {
-  /** @info #F6E8FC  */
-  'purple-100': '#F6E8FC',
-  /** @info #E8C9F8  */
-  'purple-200': '#E8C9F8',
-  /** @info #D496F3  */
-  'purple-300': '#D496F3',
-  /** @info #C570F0  */
-  'purple-400': '#C570F0',
-  /** @info #BC58EE  */
-  'purple-500': '#BC58EE',
-  /** @info #B347E9  */
-  'purple-600': '#B347E9',
-  /** @info #9D3ACF  */
-  'purple-700': '#9D3ACF',
-  /** @info #812AAC  */
-  'purple-800': '#812AAC',
-  /** @info #4B1D63  */
-  'purple-900': '#4B1D63',
-  /** @info #30133F  */
-  'purple-1000': '#30133F',
-
-  /** @deprecated use purple100 instead */
-  'purple-l80': 'var(--amino-purple-100)',
-  /** @deprecated use purple200 instead */
-  'purple-l60': 'var(--amino-purple-200)',
-  /** @deprecated use purple300 instead */
-  'purple-l40': 'var(--amino-purple-300)',
-  /** @deprecated use purple400 instead */
-  'purple-l20': 'var(--amino-purple-400)',
-  /** @deprecated use purple600 instead */
-  'purple-base': 'var(--amino-purple-600)',
-  /** @deprecated use purple700 instead */
-  'purple-d20': 'var(--amino-purple-700)',
-  /** @deprecated use purple800 instead */
-  'purple-d40': 'var(--amino-purple-800)',
-  /** @deprecated use purple900 instead */
-  'purple-d60': 'var(--amino-purple-900)',
-  /** @deprecated use purple1000 instead */
-  'purple-d80': 'var(--amino-purple-1000)',
+  /** @info #EEF0FF  */
+  'purple-100': '#EEF0FF',
+  /** @info #D8DAFD  */
+  'purple-200': '#D8DAFD',
+  /** @info #C4C0FC  */
+  'purple-300': '#C4C0FC',
+  /** @info #B09FF9  */
+  'purple-400': '#B09FF9',
+  /** @info #A379F6  */
+  'purple-500': '#A379F6',
+  /** @info #9635EE  */
+  'purple-600': '#9635EE',
+  /** @info #7728B9  */
+  'purple-700': '#7728B9',
+  /** @info #612392  */
+  'purple-800': '#612392',
+  /** @info #461F66  */
+  'purple-900': '#461F66',
+  /** @info #29143A  */
+  'purple-1000': '#29143A',
 } as const;
 "
 `;
 
 exports[`Make sure all generated color constants matched previous snapshot: _red.ts 1`] = `
 "export const red = {
-  /** @info #FCE8ED  */
-  'red-100': '#FCE8ED',
-  /** @info #F8C9D4  */
-  'red-200': '#F8C9D4',
-  /** @info #F396AC  */
-  'red-300': '#F396AC',
-  /** @info #F0708E  */
-  'red-400': '#F0708E',
-  /** @info #EE587B  */
-  'red-500': '#EE587B',
-  /** @info #E9476D  */
-  'red-600': '#E9476D',
-  /** @info #CF3A5D  */
-  'red-700': '#CF3A5D',
-  /** @info #AC2A48  */
-  'red-800': '#AC2A48',
-  /** @info #631D2D  */
-  'red-900': '#631D2D',
-  /** @info #3F131D  */
-  'red-1000': '#3F131D',
-
-  /** @deprecated use red100 instead */
-  'red-l80': 'var(--amino-red-100)',
-  /** @deprecated use red200 instead */
-  'red-l60': 'var(--amino-red-200)',
-  /** @deprecated use red300 instead */
-  'red-l40': 'var(--amino-red-300)',
-  /** @deprecated use red400 instead */
-  'red-l20': 'var(--amino-red-400)',
-  /** @deprecated use red600 instead */
-  'red-base': 'var(--amino-red-600)',
-  /** @deprecated use red700 instead */
-  'red-d20': 'var(--amino-red-700)',
-  /** @deprecated use red800 instead */
-  'red-d40': 'var(--amino-red-800)',
-  /** @deprecated use red900 instead */
-  'red-d60': 'var(--amino-red-900)',
-  /** @deprecated use red1000 instead */
-  'red-d80': 'var(--amino-red-1000)',
+  /** @info #FFEDEB  */
+  'red-100': '#FFEDEB',
+  /** @info #FDD3D0  */
+  'red-200': '#FDD3D0',
+  /** @info #FCB4B2  */
+  'red-300': '#FCB4B2',
+  /** @info #FA8B8B  */
+  'red-400': '#FA8B8B',
+  /** @info #F9505B  */
+  'red-500': '#F9505B',
+  /** @info #D3203F  */
+  'red-600': '#D3203F',
+  /** @info #A81E37  */
+  'red-700': '#A81E37',
+  /** @info #841A2F  */
+  'red-800': '#841A2F',
+  /** @info #601725  */
+  'red-900': '#601725',
+  /** @info #3B1119  */
+  'red-1000': '#3B1119',
 } as const;
 "
 `;
