@@ -81,7 +81,7 @@ export const ConfirmDialog = ({
 }: ConfirmDialogProps) => (
   <BaseDialog width={350} data-theme={_theme} open={open}>
     <Content>
-      <VStack spacing="space-half">
+      <VStack spacing={16}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
           <Text type="title">{label}</Text>

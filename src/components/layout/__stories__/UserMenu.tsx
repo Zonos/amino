@@ -126,7 +126,7 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
         onClick={() => setOpen(!open)}
       >
         <Avatar />
-        <StyledVStack spacing="none">
+        <StyledVStack spacing={0}>
           <strong>Hello</strong>
           <StyledSubtitle title="Store 2458">Store #1234</StyledSubtitle>
         </StyledVStack>
@@ -137,7 +137,7 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
           <Menu>
             <StoreItem onClick={() => {}}>
               <TextAvatar label="Default" />
-              <VStack spacing="none">
+              <VStack spacing={0}>
                 <strong>Test Store</strong>
                 <Text type="subtitle">Click to switch...</Text>
               </VStack>
@@ -145,7 +145,7 @@ export const UserMenu = ({ addSpacing = true }: Props) => {
 
             <StoreItem>
               <TextAvatar label="Zonos" />
-              <VStack spacing="none">
+              <VStack spacing={0}>
                 <strong>Switch to Zonos</strong>
                 <Text type="subtitle">Click to switch...</Text>
               </VStack>

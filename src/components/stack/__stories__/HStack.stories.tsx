@@ -39,7 +39,6 @@ const Template: Story<
 
 export const Selects = Template.bind({});
 Selects.args = {
-  spacing: 'space',
   renderChild: k => (
     <Select
       key={k}

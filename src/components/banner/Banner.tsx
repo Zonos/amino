@@ -131,16 +131,14 @@ export const Banner = ({
           <Text type="label" color={removeIconColor}>
             {title}
           </Text>
-          {headerActions && (
-            <HStack spacing="space-quarter">{headerActions}</HStack>
-          )}
+          {headerActions && <HStack spacing={8}>{headerActions}</HStack>}
         </BannerHeader>
       );
 
     const renderFooter = () =>
       footerActions && (
         <BannerFooter>
-          <HStack spacing="space-quarter">{footerActions}</HStack>
+          <HStack spacing={8}>{footerActions}</HStack>
         </BannerFooter>
       );
 

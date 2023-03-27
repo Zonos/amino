@@ -129,7 +129,7 @@ export const RichRadio = <T extends string>({
   };
 
   return (
-    <StyledRadioGroup spacing="space-half" className={className}>
+    <StyledRadioGroup spacing={16} className={className}>
       {items.map(item => (
         <StyledItem
           type="button"

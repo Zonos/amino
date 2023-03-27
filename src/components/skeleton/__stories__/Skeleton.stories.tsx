@@ -44,7 +44,6 @@ export const Basic = Template.bind({});
 Basic.args = {
   width: 500,
   height: 20,
-  spacing: 'space',
 };
 
 const StyledCard = styled(CardComponent)`
@@ -68,7 +67,6 @@ export const Card: Story<
 
 Card.args = {
   height: 30,
-  spacing: 'space',
 };
 
 const StyledSkeletonWithChildren = styled(Skeleton)`

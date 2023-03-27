@@ -78,14 +78,14 @@ export const Card = ({
       <CardHeader spacing={spacing}>
         <Text type="subheader">{label}</Text>
 
-        <HStack spacing="space-quarter">{actions}</HStack>
+        <HStack spacing={8}>{actions}</HStack>
       </CardHeader>
     )}
     {children}
     {(footerActions || footerContent) && (
       <CardFooter footerHeight={footerHeight} spacing={spacing}>
         <div>{footerContent}</div>
-        <HStack spacing="space-quarter">{footerActions}</HStack>
+        <HStack spacing={8}>{footerActions}</HStack>
       </CardFooter>
     )}
   </StyledCard>

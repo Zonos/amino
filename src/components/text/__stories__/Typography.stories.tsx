@@ -29,7 +29,7 @@ const StyleMeta: Meta = {};
 export default StyleMeta;
 
 const Template: Story<TextProps> = props => (
-  <VStack spacing="space-quarter">
+  <VStack spacing={8}>
     {textOptions.map(option => (
       <StyledVStack key={option.type}>
         <Text type={option.type} {...props}>
@@ -53,7 +53,7 @@ const TextSizesLabel = styled.div`
 `;
 
 const TemplateTextSizes: Story<TextProps> = props => (
-  <VStack spacing="space-quarter">
+  <VStack spacing={8}>
     {textOptions.map(option => (
       <div key={option.type}>
         <TextSizesLabel>{option.type}</TextSizesLabel>

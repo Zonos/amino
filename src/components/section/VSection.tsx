@@ -35,7 +35,7 @@ export const VSection = ({
           <SectionSubheader>{sublabel}</SectionSubheader>
         </SectionHeader>
 
-        <HStack spacing="space-quarter">{actions}</HStack>
+        <HStack spacing={8}>{actions}</HStack>
       </SectionInnerWrapper>
     )}
     <div>{children}</div>

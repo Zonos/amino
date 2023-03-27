@@ -183,7 +183,7 @@ const Template: Story<
           }
         >
           <ExpandedItemCard>
-            <VStack spacing="space-quarter">
+            <VStack spacing={8}>
               <Text type="bold-label">
                 Huka One Running Shoe - Women&apos;s
               </Text>
@@ -208,7 +208,7 @@ const Template: Story<
                 { label: 'Width', value: '45 in' },
                 { label: 'Height', value: '11 in' },
               ].map(option => (
-                <AttributeLabel key={option.label} spacing="space-quarter">
+                <AttributeLabel key={option.label} spacing={8}>
                   <Text
                     color="gray700"
                     fontWeight={600}

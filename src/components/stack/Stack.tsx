@@ -23,7 +23,6 @@ export interface StackProps extends DivProps {
  * A stack
  *
  * @param alignment - Optional alignment
- * @param spacing - Optional spacing between elements
  */
 const StyledStack = styled.div<StackProps>`
   display: grid;

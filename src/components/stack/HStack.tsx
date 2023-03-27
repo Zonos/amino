@@ -5,7 +5,7 @@ import { Stack, StackProps } from './Stack';
 
 const StyledHStack = styled(Stack)<StackProps>`
   grid-column-gap: ${p =>
-    p.spacing ? `var(--amino-${p.spacing})` : theme.space24};
+    p.spacing ? theme[`space${p.spacing}`] : theme.space24};
   grid-auto-flow: column;
 `;
 

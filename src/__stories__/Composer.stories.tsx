@@ -162,7 +162,7 @@ const Template: Story<Props> = ({
   const renderDialogOptions = (
     options: typeof inputOptions | typeof selectOptions | typeof buttonOptions
   ) => (
-    <StyledHStack spacing="space-quarter">
+    <StyledHStack spacing={8}>
       {options.map(x => (
         // eslint-disable-next-line
         <div
@@ -207,7 +207,7 @@ const Template: Story<Props> = ({
         </StyledActions>
 
         {range(rows).map(row => (
-          <StyledHStack key={row} spacing="space-quarter">
+          <StyledHStack key={row} spacing={8}>
             {range(columns).map(column => {
               const rowCol = `${column}-${row}`;
               const Component = [

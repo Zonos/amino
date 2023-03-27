@@ -224,7 +224,7 @@ const Template: Story<ButtonPropWithTooltipOption> = ({
   return (
     <>
       <VWrapper>
-        <VStack spacing="space-quarter">
+        <VStack spacing={8}>
           <HWrapper>
             <TopRow background={background} {...props} />
           </HWrapper>
@@ -237,7 +237,7 @@ const Template: Story<ButtonPropWithTooltipOption> = ({
             />
           </HWrapper>
         </VStack>
-        <VStack spacing="space-quarter">
+        <VStack spacing={8}>
           <HWrapper>
             <TopRow background={background} {...props} disabled />
           </HWrapper>
@@ -251,7 +251,7 @@ const Template: Story<ButtonPropWithTooltipOption> = ({
             />
           </HWrapper>
         </VStack>
-        <VStack spacing="space-quarter">
+        <VStack spacing={8}>
           <HWrapper>
             <TopRow background={background} {...props} loading />
           </HWrapper>
