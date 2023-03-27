@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.4.32",
+  "version": "3.4.34",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
@@ -96,6 +96,7 @@
     "@radix-ui/react-slider": "^0.1.4",
     "@types/topojson-client": "^3.1.1",
     "d3-geo": "^2.0.2",
+    "fuse.js": "^6.6.2",
     "react-dropzone": "^12.0.4",
     "react-select": "^5.6.0",
     "react-simple-maps": "^3.0.0",
