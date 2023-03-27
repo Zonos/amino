@@ -36,7 +36,7 @@ export const ColorPalette = () => (
         <VStack spacing="none">
           {(color !== 'gray'
             ? colorContrasts
-            : [...colorContrasts, '1100', '1200', '1300']
+            : ['0', '50', ...colorContrasts, '1100', '1200', '1300']
           ).map(value => {
             const aminoColor: Color = `${color}${value}` as Color;
             return (

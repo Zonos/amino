@@ -1,4 +1,4 @@
-export const space = {
+export const spacing = {
   /** @info space-negative-80: -5rem (-80px) */
   'space-negative-80': '-5rem',
   /** @info space-negative-76: -4.75rem (-76px) */

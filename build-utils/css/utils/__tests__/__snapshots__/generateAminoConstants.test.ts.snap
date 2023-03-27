@@ -17,570 +17,240 @@ export const theme = {
   /** @info white  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray0: 'var(--amino-gray-0)',
-  /** @info #EFEFF0  */
+  /** @info #F6F6F8  */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  gray50: 'var(--amino-gray-50)',
+  /** @info #EAEBED  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray100: 'var(--amino-gray-100)',
-  /** @info #E4E4E7  */
+  /** @info #D9DADD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray200: 'var(--amino-gray-200)',
-  /** @info #C8C8CB  */
+  /** @info #C5C6CA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray300: 'var(--amino-gray-300)',
-  /** @info #ABACB2  */
+  /** @info #ACAEB3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray400: 'var(--amino-gray-400)',
-  /** @info #96979E  */
+  /** @info #94969E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray500: 'var(--amino-gray-500)',
-  /** @info #80818A  */
+  /** @info #6A6D77  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray600: 'var(--amino-gray-600)',
-  /** @info #686970  */
+  /** @info #5C5E68  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray700: 'var(--amino-gray-700)',
-  /** @info #4F5257  */
+  /** @info #4D505A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray800: 'var(--amino-gray-800)',
-  /** @info #36383D  */
+  /** @info #40424C  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray900: 'var(--amino-gray-900)',
-  /** @info #2B2C32  */
+  /** @info #2E3038  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray1000: 'var(--amino-gray-1000)',
-  /** @info #1D1F24  */
+  /** @info #1E1F26  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray1100: 'var(--amino-gray-1100)',
-  /** @info #121417  */
+  /** @info #101116  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray1200: 'var(--amino-gray-1200)',
-  /** @info #0A0A0B  */
+  /** @info black  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray1300: 'var(--amino-gray-1300)',
 
-  /** @deprecated use gray100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayL80: 'var(--amino-gray-l80)',
-  /** @deprecated use gray200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayL60: 'var(--amino-gray-l60)',
-  /** @deprecated use gray300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayL40: 'var(--amino-gray-l40)',
-  /** @deprecated use gray400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayL20: 'var(--amino-gray-l20)',
-  /** @deprecated use gray600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayBase: 'var(--amino-gray-base)',
-  /** @deprecated use gray700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayD20: 'var(--amino-gray-d20)',
-  /** @deprecated use gray800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayD40: 'var(--amino-gray-d40)',
-  /** @deprecated use gray900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayD60: 'var(--amino-gray-d60)',
-  /** @deprecated use gray1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayD80: 'var(--amino-gray-d80)',
-
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  grayAlpha: 'var(--amino-gray-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  gray50: 'var(--amino-gray-50)',
-
   /* BLUE PALETTE */
-  /** @info #E8EBFC  */
+  /** @info #DEECFE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue100: 'var(--amino-blue-100)',
-  /** @info #C9CFF8  */
+  /** @info #C5DCFD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue200: 'var(--amino-blue-200)',
-  /** @info #96A2F3  */
+  /** @info #AAC8FC  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue300: 'var(--amino-blue-300)',
-  /** @info #7081F0  */
+  /** @info #89ADFA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue400: 'var(--amino-blue-400)',
-  /** @info #586CEE  */
+  /** @info #568CF6  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue500: 'var(--amino-blue-500)',
-  /** @info #475FE9  */
+  /** @info #435DEE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue600: 'var(--amino-blue-600)',
-  /** @info #3A4ECF  */
+  /** @info #294DBE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue700: 'var(--amino-blue-700)',
-  /** @info #2A3BAC  */
+  /** @info #263B98  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue800: 'var(--amino-blue-800)',
-  /** @info #1C2662  */
+  /** @info #1F2B73  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue900: 'var(--amino-blue-900)',
-  /** @info #13193F  */
+  /** @info #151943  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue1000: 'var(--amino-blue-1000)',
 
-  /** @deprecated use blue100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueL80: 'var(--amino-blue-l80)',
-  /** @deprecated use blue200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueL60: 'var(--amino-blue-l60)',
-  /** @deprecated use blue300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueL40: 'var(--amino-blue-l40)',
-  /** @deprecated use blue400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueL20: 'var(--amino-blue-l20)',
-  /** @deprecated use blue600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueBase: 'var(--amino-blue-base)',
-  /** @deprecated use blue700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueD20: 'var(--amino-blue-d20)',
-  /** @deprecated use blue800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueD40: 'var(--amino-blue-d40)',
-  /** @deprecated use blue900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueD60: 'var(--amino-blue-d60)',
-  /** @deprecated use blue1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueD80: 'var(--amino-blue-d80)',
-
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blueAlpha: 'var(--amino-blue-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  blue50: 'var(--amino-blue-50)',
-
   /* CYAN PALETTE */
-  /** @info #E9FBFB  */
+  /** @info #DBFDFF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan100: 'var(--amino-cyan-100)',
-  /** @info #CBF6F4  */
+  /** @info #BAF8FD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan200: 'var(--amino-cyan-200)',
-  /** @info #9AEFEC  */
+  /** @info #8FF1FA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan300: 'var(--amino-cyan-300)',
-  /** @info #7BEAE7  */
+  /** @info #65E2EF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan400: 'var(--amino-cyan-400)',
-  /** @info #4FE3DE  */
+  /** @info #48C4D3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan500: 'var(--amino-cyan-500)',
-  /** @info #4AD3CF  */
+  /** @info #349DAB  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan600: 'var(--amino-cyan-600)',
-  /** @info #44C5C1  */
+  /** @info #287E8A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan700: 'var(--amino-cyan-700)',
-  /** @info #32A4A0  */
+  /** @info #236A75  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan800: 'var(--amino-cyan-800)',
-  /** @info #225E5C  */
+  /** @info #22525A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan900: 'var(--amino-cyan-900)',
-  /** @info #173B3A  */
+  /** @info #183338  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan1000: 'var(--amino-cyan-1000)',
 
-  /** @deprecated use cyan100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanL80: 'var(--amino-cyan-l80)',
-  /** @deprecated use cyan200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanL60: 'var(--amino-cyan-l60)',
-  /** @deprecated use cyan300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanL40: 'var(--amino-cyan-l40)',
-  /** @deprecated use cyan400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanL20: 'var(--amino-cyan-l20)',
-  /** @deprecated use cyan600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanBase: 'var(--amino-cyan-base)',
-  /** @deprecated use cyan700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanD20: 'var(--amino-cyan-d20)',
-  /** @deprecated use cyan800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanD40: 'var(--amino-cyan-d40)',
-  /** @deprecated use cyan900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanD60: 'var(--amino-cyan-d60)',
-  /** @deprecated use cyan1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  cyanD80: 'var(--amino-cyan-d80)',
-
   /* RED PALETTE */
-  /** @info #FCE8ED  */
+  /** @info #FFEDEB  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red100: 'var(--amino-red-100)',
-  /** @info #F8C9D4  */
+  /** @info #FDD3D0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red200: 'var(--amino-red-200)',
-  /** @info #F396AC  */
+  /** @info #FCB4B2  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red300: 'var(--amino-red-300)',
-  /** @info #F0708E  */
+  /** @info #FA8B8B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red400: 'var(--amino-red-400)',
-  /** @info #EE587B  */
+  /** @info #F9505B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red500: 'var(--amino-red-500)',
-  /** @info #E9476D  */
+  /** @info #D3203F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red600: 'var(--amino-red-600)',
-  /** @info #CF3A5D  */
+  /** @info #A81E37  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red700: 'var(--amino-red-700)',
-  /** @info #AC2A48  */
+  /** @info #841A2F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red800: 'var(--amino-red-800)',
-  /** @info #631D2D  */
+  /** @info #601725  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red900: 'var(--amino-red-900)',
-  /** @info #3F131D  */
+  /** @info #3B1119  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red1000: 'var(--amino-red-1000)',
 
-  /** @deprecated use red100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redL80: 'var(--amino-red-l80)',
-  /** @deprecated use red200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redL60: 'var(--amino-red-l60)',
-  /** @deprecated use red300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redL40: 'var(--amino-red-l40)',
-  /** @deprecated use red400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redL20: 'var(--amino-red-l20)',
-  /** @deprecated use red600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redBase: 'var(--amino-red-base)',
-  /** @deprecated use red700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redD20: 'var(--amino-red-d20)',
-  /** @deprecated use red800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redD40: 'var(--amino-red-d40)',
-  /** @deprecated use red900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redD60: 'var(--amino-red-d60)',
-  /** @deprecated use red1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redD80: 'var(--amino-red-d80)',
-
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  redAlpha: 'var(--amino-red-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  red50: 'var(--amino-red-50)',
-
   /* ORANGE PALETTE */
-  /** @info #FCF0E8  */
+  /** @info #FFEEE0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange100: 'var(--amino-orange-100)',
-  /** @info #F8DCC9  */
+  /** @info #FED5B8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange200: 'var(--amino-orange-200)',
-  /** @info #F3BB96  */
+  /** @info #FDC2A0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange300: 'var(--amino-orange-300)',
-  /** @info #F0A370  */
+  /** @info #FCA375  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange400: 'var(--amino-orange-400)',
-  /** @info #EE9458  */
+  /** @info #F88548  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange500: 'var(--amino-orange-500)',
-  /** @info #E98847  */
+  /** @info #D7581F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange600: 'var(--amino-orange-600)',
-  /** @info #CF763A  */
+  /** @info #A4431D  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange700: 'var(--amino-orange-700)',
-  /** @info #AC5E2A  */
+  /** @info #85341D  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange800: 'var(--amino-orange-800)',
-  /** @info #63391D  */
+  /** @info #63261A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange900: 'var(--amino-orange-900)',
-  /** @info #3F2513  */
+  /** @info #3C1611  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange1000: 'var(--amino-orange-1000)',
 
-  /** @deprecated use orange100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeL80: 'var(--amino-orange-l80)',
-  /** @deprecated use orange200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeL60: 'var(--amino-orange-l60)',
-  /** @deprecated use orange300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeL40: 'var(--amino-orange-l40)',
-  /** @deprecated use orange400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeL20: 'var(--amino-orange-l20)',
-  /** @deprecated use orange600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeBase: 'var(--amino-orange-base)',
-  /** @deprecated use orange700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeD20: 'var(--amino-orange-d20)',
-  /** @deprecated use orange800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeD40: 'var(--amino-orange-d40)',
-  /** @deprecated use orange900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeD60: 'var(--amino-orange-d60)',
-  /** @deprecated use orange1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeD80: 'var(--amino-orange-d80)',
-
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orangeAlpha: 'var(--amino-orange-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  orange50: 'var(--amino-orange-50)',
-
   /* GREEN PALETTE */
-  /** @info #DCF9EA  */
+  /** @info #DBFFDD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green100: 'var(--amino-green-100)',
-  /** @info #A8F0CA  */
+  /** @info #BAFDC2  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green200: 'var(--amino-green-200)',
-  /** @info #77E9AC  */
+  /** @info #86F99E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green300: 'var(--amino-green-300)',
-  /** @info #53E497  */
+  /** @info #62E488  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green400: 'var(--amino-green-400)',
-  /** @info #3DE188  */
+  /** @info #4DC477  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green500: 'var(--amino-green-500)',
-  /** @info #3ACF80  */
+  /** @info #2A995A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green600: 'var(--amino-green-600)',
-  /** @info #35AC6C  */
+  /** @info #25794A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green700: 'var(--amino-green-700)',
-  /** @info #298554  */
+  /** @info #236641  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green800: 'var(--amino-green-800)',
-  /** @info #1C4F34  */
+  /** @info #214C34  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green900: 'var(--amino-green-900)',
-  /** @info #173B28  */
+  /** @info #193123  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green1000: 'var(--amino-green-1000)',
 
-  /** @deprecated use green100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenL80: 'var(--amino-green-l80)',
-  /** @deprecated use green200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenL60: 'var(--amino-green-l60)',
-  /** @deprecated use green300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenL40: 'var(--amino-green-l40)',
-  /** @deprecated use green400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenL20: 'var(--amino-green-l20)',
-  /** @deprecated use green600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenBase: 'var(--amino-green-base)',
-  /** @deprecated use green700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenD20: 'var(--amino-green-d20)',
-  /** @deprecated use green800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenD40: 'var(--amino-green-d40)',
-  /** @deprecated use green900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenD60: 'var(--amino-green-d60)',
-  /** @deprecated use green1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenD80: 'var(--amino-green-d80)',
-
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  greenAlpha: 'var(--amino-green-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  green50: 'var(--amino-green-50)',
-
   /* PURPLE */
-  /** @info #F6E8FC  */
+  /** @info #EEF0FF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple100: 'var(--amino-purple-100)',
-  /** @info #E8C9F8  */
+  /** @info #D8DAFD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple200: 'var(--amino-purple-200)',
-  /** @info #D496F3  */
+  /** @info #C4C0FC  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple300: 'var(--amino-purple-300)',
-  /** @info #C570F0  */
+  /** @info #B09FF9  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple400: 'var(--amino-purple-400)',
-  /** @info #BC58EE  */
+  /** @info #A379F6  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple500: 'var(--amino-purple-500)',
-  /** @info #B347E9  */
+  /** @info #9635EE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple600: 'var(--amino-purple-600)',
-  /** @info #9D3ACF  */
+  /** @info #7728B9  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple700: 'var(--amino-purple-700)',
-  /** @info #812AAC  */
+  /** @info #612392  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple800: 'var(--amino-purple-800)',
-  /** @info #4B1D63  */
+  /** @info #461F66  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple900: 'var(--amino-purple-900)',
-  /** @info #30133F  */
+  /** @info #29143A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple1000: 'var(--amino-purple-1000)',
-
-  /** @deprecated use purple100 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleL80: 'var(--amino-purple-l80)',
-  /** @deprecated use purple200 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleL60: 'var(--amino-purple-l60)',
-  /** @deprecated use purple300 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleL40: 'var(--amino-purple-l40)',
-  /** @deprecated use purple400 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleL20: 'var(--amino-purple-l20)',
-  /** @deprecated use purple600 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleBase: 'var(--amino-purple-base)',
-  /** @deprecated use purple700 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleD20: 'var(--amino-purple-d20)',
-  /** @deprecated use purple800 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleD40: 'var(--amino-purple-d40)',
-  /** @deprecated use purple900 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleD60: 'var(--amino-purple-d60)',
-  /** @deprecated use purple1000 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleD80: 'var(--amino-purple-d80)',
-
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purpleAlpha: 'var(--amino-purple-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  purple50: 'var(--amino-purple-50)',
-
-  /* YELLOW PALLETE */
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowL80: 'var(--amino-yellow-l80)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowL60: 'var(--amino-yellow-l60)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowL40: 'var(--amino-yellow-l40)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowL20: 'var(--amino-yellow-l20)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowBase: 'var(--amino-yellow-base)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowD20: 'var(--amino-yellow-d20)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowD40: 'var(--amino-yellow-d40)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowD60: 'var(--amino-yellow-d60)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowD80: 'var(--amino-yellow-d80)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellowAlpha: 'var(--amino-yellow-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow50: 'var(--amino-yellow-50)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow100: 'var(--amino-yellow-100)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow200: 'var(--amino-yellow-200)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow300: 'var(--amino-yellow-300)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow400: 'var(--amino-yellow-400)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow500: 'var(--amino-yellow-500)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow600: 'var(--amino-yellow-600)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow700: 'var(--amino-yellow-700)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow800: 'var(--amino-yellow-800)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  yellow900: 'var(--amino-yellow-900)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amberAlpha: 'var(--amino-amber-alpha)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber50: 'var(--amino-amber-50)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber100: 'var(--amino-amber-100)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber200: 'var(--amino-amber-200)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber300: 'var(--amino-amber-300)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber400: 'var(--amino-amber-400)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber500: 'var(--amino-amber-500)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber600: 'var(--amino-amber-600)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber700: 'var(--amino-amber-700)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber800: 'var(--amino-amber-800)',
-  /** @deprecated this is no longer being used */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  amber900: 'var(--amino-amber-900)',
 
   /* COMMON COLOR */
   /** @info var(--amino-red-600) */
@@ -696,23 +366,6 @@ export const theme = {
   /** @info 12px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radius12: 'var(--amino-radius-12)',
-
-  /** @info 4px */
-  /** @deprecated use radius4 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radiusSm: 'var(--amino-radius-sm)',
-  /** @info 6px */
-  /** @deprecated use radius6 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius: 'var(--amino-radius)',
-  /** @info 8px */
-  /** @deprecated use radius8 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radiusLg: 'var(--amino-radius-lg)',
-  /** @info 12px */
-  /** @deprecated use radius12 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radiusXl: 'var(--amino-radius-xl)',
 
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */
@@ -839,39 +492,6 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   space80: 'var(--amino-space-80)',
 
-  /** @info px: 24px */
-  /** @deprecated use space24 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  space: 'var(--amino-space)',
-  /** @info px: -24px */
-  /** @deprecated use spaceNegative24 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceNegative: 'var(--amino-space-negative)',
-  /** @info px: 16px */
-  /** @deprecated use space16 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceHalf: 'var(--amino-space-half)',
-  /** @info px: -16px */
-  /** @deprecated use spaceNegative16 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceHalfNegative: 'var(--amino-space-half-negative)',
-  /** @info px: 8px */
-  /** @deprecated use space8 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceQuarter: 'var(--amino-space-quarter)',
-  /** @info px: -8px */
-  /** @deprecated use spaceNegative8 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceQuarterNegative: 'var(--amino-space-quarter-negative)',
-  /** @info px: 40px */
-  /** @deprecated use space40 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceDouble: 'var(--amino-space-double)',
-  /** @info px: -40px */
-  /** @deprecated use spaceNegative40 instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spaceDoubleNegative: 'var(--amino-space-double-negative)',
-
   /* LAYOUT STYLE */
   /** @info 55px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
@@ -935,25 +555,6 @@ export const theme = {
   /** @info 0px 32px 50px rgba(0, 0, 0, 0.24) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowXxl: 'var(--amino-v3-shadow-xxl)',
-  /* LEGACY BOX SHADOW */
-  /** @deprecated use v3ShadowInset instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowInset: 'var(--amino-shadow-inset)',
-  /** @deprecated use v3ShadowBase instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowSmall: 'var(--amino-shadow-small)',
-  /** @deprecated use v3ShadowMedium instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowBase: 'var(--amino-shadow-base)',
-  /** @deprecated use v3ShadowLarge instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowMedium: 'var(--amino-shadow-medium)',
-  /** @deprecated use v3ShadowXl instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowLarge: 'var(--amino-shadow-large)',
-  /** @deprecated use v3ShadowXxl instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowLarger: 'var(--amino-shadow-larger)',
 
   /* BORDER */
   /** @info 1px solid var(--amino-border-color) */
@@ -1005,29 +606,6 @@ export const theme = {
   /** @info 10px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeXs: 'var(--amino-font-size-xs)',
-
-  /* LEGACY FONT SIZE */
-  /** @deprecated use fontSize3xl instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textXxl: 'var(--amino-text-xxl)',
-  /** @deprecated use fontSize2xl instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textXl: 'var(--amino-text-xl)',
-  /** @deprecated use fontSizeXl instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textLg: 'var(--amino-text-lg)',
-  /** @deprecated use fontSizeL instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textMd: 'var(--amino-text-md)',
-  /** @deprecated use fontSizeBase instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textBase: 'var(--amino-text-base)',
-  /** @deprecated use fontSizeS instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textSm: 'var(--amino-text-sm)',
-  /** @deprecated use fontSizeXs instead */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textXs: 'var(--amino-text-xs)',
 
   /* LINE HEIGHT */
   /** @info 118% */
