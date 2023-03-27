@@ -79,7 +79,7 @@ export const Tooltip = ({
         className={className}
         open={open}
         title={
-          <StyledVStack spacing="space-quarter">
+          <StyledVStack spacing={8}>
             {title && (
               <Text type="small-header" isUppercase={false}>
                 {title}

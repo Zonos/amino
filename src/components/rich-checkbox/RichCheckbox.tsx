@@ -86,7 +86,7 @@ export type RichCheckboxProps = {
 };
 
 export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
-  <StyledVStack spacing="space-half">
+  <StyledVStack spacing={16}>
     {items.map(item => {
       const { checked, icon, label, subtitle, value } = item;
       return (
@@ -99,7 +99,7 @@ export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
         >
           <StyledItemContentDiv $icon={!!icon}>
             {icon && icon}
-            <VStack spacing="none">
+            <VStack spacing={0}>
               <Label>{label}</Label>
               {subtitle && <Subtitle>{subtitle}</Subtitle>}
             </VStack>

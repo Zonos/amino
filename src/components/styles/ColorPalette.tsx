@@ -33,7 +33,7 @@ export const ColorPalette = () => (
     {colorPrefixes.map(color => (
       <ColorWrapper key={color}>
         <Text type="title">{color.toUpperCase()}</Text>
-        <VStack spacing="none">
+        <VStack spacing={0}>
           {(color !== 'gray'
             ? colorContrasts
             : ['0', '50', ...colorContrasts, '1100', '1200', '1300']

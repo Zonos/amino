@@ -82,7 +82,7 @@ export const AlertDialog = ({
     onClose={dismissAction}
   >
     <Content>
-      <VStack spacing="space-half">
+      <VStack spacing={16}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <div>
           <Text type="title">{label}</Text>

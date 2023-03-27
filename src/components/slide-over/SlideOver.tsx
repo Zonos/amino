@@ -131,7 +131,7 @@ export const SlideOver = ({
           >
             <SlideOverHeader>
               {subtitle ? (
-                <VStack spacing="none" className="header-content">
+                <VStack spacing={0} className="header-content">
                   <Text type="title">{label}</Text>
                   {subtitle}
                 </VStack>
@@ -147,7 +147,7 @@ export const SlideOver = ({
             <SlideOverContent>{children}</SlideOverContent>
             {actions && (
               <Footer>
-                <HStack spacing="space-quarter">{actions}</HStack>
+                <HStack spacing={8}>{actions}</HStack>
               </Footer>
             )}
           </Popup>
