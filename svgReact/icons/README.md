@@ -13,9 +13,6 @@ Currently, there are 3 type of icon sources:
 - **Custom**:
     - **Description**: Svgs that are not downloaded from Figma icon set
     - **Location**: Component's location is under `src/icons/custom` folder.
-- **Legacy**:
-    - **Description**: Old svgs component (these components doesn't have original svg - will be removed after found and replaced all legacy icons with new one).
-    - **Location**: Component's location is under `src/icons/legacy` folder.
 
 
 ## Steps to run script

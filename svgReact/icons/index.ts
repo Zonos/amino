@@ -88,14 +88,7 @@ svgProcessPaths.map(generateSvgs);
 log('Generating index file for generated svg react components ...');
 /** @desc Generate index file for generated svg react components */
 createIndexFile({
-  generatePath: [
-    ...svgProcessPaths,
-    {
-      titleComment: 'Legacy',
-      inputFolderPath: 'src/icons/legacy',
-      destFolder: 'src/icons/legacy',
-    },
-  ],
+  generatePath: [...svgProcessPaths],
   target: 'svgReact/icons/dist',
 });
 
