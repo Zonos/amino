@@ -22,7 +22,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   font-weight: 500;
   border-radius: ${theme.radius6};
   &:hover {
-    background-color: ${theme.gray100};
+    background-color: ${theme.gray50};
     color: black;
     svg {
       color: ${theme.gray700};
