@@ -1,11 +1,11 @@
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
+import { GridSpacing } from './GridSpacing';
 import { Stack, StackProps } from './Stack';
 
-const StyledVStack = styled(Stack)<StackProps>`
-  grid-row-gap: ${p =>
-    p.spacing ? theme[`space${p.spacing}`] : theme.space24};
+const StyledVStack = styled(Stack)<{ $spacing: GridSpacing }>`
+  grid-row-gap: ${p => theme[`space${p.$spacing}`]};
   grid-auto-flow: row;
 `;
 
@@ -15,6 +15,8 @@ const StyledVStack = styled(Stack)<StackProps>`
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const VStack = ({ children, ...props }: StackProps) => (
-  <StyledVStack {...props}>{children}</StyledVStack>
+export const VStack = ({ children, spacing = 24, ...props }: StackProps) => (
+  <StyledVStack $spacing={spacing} {...props}>
+    {children}
+  </StyledVStack>
 );
