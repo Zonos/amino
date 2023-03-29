@@ -146,3 +146,6 @@ RussiaToEcuador.args = {
   from: 'RU',
   to: 'EC',
 };
+
+export const Loading = ConnectionMapTemplate.bind({});
+Loading.args = {};
