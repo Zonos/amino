@@ -317,6 +317,7 @@ type ButtonBase = {
   disabled?: boolean;
   icon?: ReactNode;
   iconRight?: boolean;
+  /** @default 'secondary' */
   intent?: IntentProps;
   /** @default false */
   loading?: boolean;
@@ -356,7 +357,7 @@ export function Button<T extends GroupTag = 'button'>({
   disabled = false,
   icon,
   iconRight,
-  intent,
+  intent = 'secondary',
   loading = false,
   loadingText,
   noRipple = false,
@@ -397,7 +398,7 @@ export function Button<T extends GroupTag = 'button'>({
 
   const { rippleEnabled, getRippleHandlers } = useRipple({
     rippleRef,
-    rippleEnabled: !noRipple && intent !== 'plain',
+    rippleEnabled: !noRipple && !['plain', 'text'].includes(intent),
     disabled: disabled || loading,
   });
 
@@ -454,7 +455,6 @@ export function Button<T extends GroupTag = 'button'>({
       return (
         <TextButton as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
-          {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </TextButton>
       );
     case 'link':
