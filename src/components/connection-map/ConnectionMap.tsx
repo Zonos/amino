@@ -19,10 +19,21 @@ import { Skeleton } from '../skeleton/Skeleton';
 
 const Map = styled.div`
   background: ${theme.gray100};
+  border-radius: ${theme.radius12};
+  overflow: hidden;
 
   * {
     outline: none;
   }
+`;
+
+const MapSkeleton = styled(Skeleton)`
+  box-sizing: border-box;
+  border-radius: ${theme.radius12};
+  width: 100%;
+  /* 50% padding is 100% of width, ratio is 33%, so half */
+  padding: 16.5%;
+  margin: 0;
 `;
 
 const getScale = (xDistance: number, yDistance: number) => {
@@ -80,7 +91,7 @@ export const ConnectionMap = ({
     [countries, geographies]
   );
 
-  const loading = !geographies || !countries.length;
+  const loading = !geographies || !countries.length || !from || !to;
 
   useEffect(() => {
     if (loading) {
@@ -129,7 +140,7 @@ export const ConnectionMap = ({
   }, [coordsForIso, to, from, loading]);
 
   if (loading) {
-    return <Skeleton height={height} />;
+    return <MapSkeleton height={height} />;
   }
 
   return (
