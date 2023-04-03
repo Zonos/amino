@@ -1,8 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { ComponentStory, Meta } from '@storybook/react';
+import { Button } from 'src/components/button/Button';
 import { IRippleActions, RippleGroup } from 'src/components/button/RippleGroup';
 import { useRipple } from 'src/components/button/useRipple';
+import { Checkbox } from 'src/components/checkbox/Checkbox';
+import { VStack } from 'src/components/stack/VStack';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
@@ -44,18 +47,31 @@ const StyledDiv = styled.div`
 
 export const Ripple: ComponentStory<typeof RippleGroup> = props => {
   const rippleRef = useRef<IRippleActions>(null);
+  const [controlRippleEnabled, setControlRippleEnabled] = useState(true);
 
   const { rippleEnabled, getRippleHandlers } = useRipple({
     rippleRef,
-    rippleEnabled: true,
+    rippleEnabled: controlRippleEnabled,
     disabled: false,
   });
 
   return (
-    <StyledDiv {...getRippleHandlers({})}>
-      <BackgroundDiv />
-      <div>Click me!</div>
-      {rippleEnabled && <RippleGroup ref={rippleRef} {...props} />}
-    </StyledDiv>
+    <VStack>
+      <StyledDiv {...getRippleHandlers({})}>
+        <BackgroundDiv />
+        <div>Click me!</div>
+        {rippleEnabled && <RippleGroup ref={rippleRef} {...props} />}
+      </StyledDiv>
+      <Checkbox
+        label="Ripple enabled"
+        checked={controlRippleEnabled}
+        onChange={checked => setControlRippleEnabled(checked)}
+      />
+      {controlRippleEnabled && (
+        <Button onClick={() => setControlRippleEnabled(false)}>
+          This button should cause no memory leaks
+        </Button>
+      )}
+    </VStack>
   );
 };
