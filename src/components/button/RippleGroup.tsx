@@ -24,7 +24,11 @@ const rippleAnimation = (opacity: number) => keyframes`
   }
 `;
 
-const RippleRoot = styled.span<{ $color?: Color; $opacity: number }>`
+const RippleRoot = styled.span<{
+  $color?: Color;
+  $opacity: number;
+  $duration: number;
+}>`
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -41,7 +45,9 @@ const RippleRoot = styled.span<{ $color?: Color; $opacity: number }>`
     border-radius: 50%;
     opacity: ${p => p.$opacity};
     transform: scale(4);
-    animation: ${p => rippleAnimation(p.$opacity)} 600ms ease-out;
+    // prettier-ignore
+    animation: ${p => rippleAnimation(p.$opacity)}
+      max(${p => p.$duration}ms, 600ms) ease-out;
     background-color: ${p => (p.$color ? theme[p.$color] : 'currentColor')};
   }
 `;
@@ -93,11 +99,15 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
 
     const container = React.useRef<HTMLSpanElement>(null);
 
+    const removeRipple = () => setRipples(oldRipples => oldRipples.slice(1));
+
     const start = React.useCallback<IRippleActions['start']>(
       event => {
         if (container.current) {
           const rippleProps: RippleProps = {
             style: getRippleStyle(event, container.current),
+            destroy: removeRipple,
+            duration,
           };
 
           setRipples(oldRipples => [
@@ -107,11 +117,6 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
               key: uuidv4(),
             },
           ]);
-
-          setTimeout(
-            () => setRipples(oldRipples => oldRipples.slice(1)),
-            duration
-          );
         }
       },
       [duration]
@@ -126,7 +131,12 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
     );
 
     return (
-      <RippleRoot ref={container} $color={color} $opacity={opacity}>
+      <RippleRoot
+        ref={container}
+        $color={color}
+        $opacity={opacity}
+        $duration={duration}
+      >
         <AnimatePresence>
           {ripples.map(r => (
             <motion.div
