@@ -41,9 +41,8 @@ export const CoverSheetActions = ({
         div
       );
     }
-    // eslint-disable-next-line no-console
-    console.error(
-      `CoverSheetActions: Could not find Coversheet wrapper with id ${coverSheetActionId}`
+    throw Error(
+      `CoverSheetActions: Could not find Coversheet wrapper with id "${coverSheetActionId}"`
     );
   }
   return null;
