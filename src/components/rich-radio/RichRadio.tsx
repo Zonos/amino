@@ -106,6 +106,7 @@ export type RichRadioProps<T extends string = string> = {
   className?: string;
   icon?: ReactNode;
   /**
+   * @param itemHeight
    * @default 40
    */
   itemHeight?: 40 | 64;
