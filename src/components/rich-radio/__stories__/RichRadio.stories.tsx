@@ -25,17 +25,24 @@ const RichRadioMeta: Meta = {
       },
     },
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=96%3A2004&t=TdkLVg0lxI1YWk86-4',
+    },
+  },
 };
 
 export default RichRadioMeta;
 
 const Template: Story<RichRadioProps> = ({
-  onChange,
+  activeIcon,
+  icon,
+  itemHeight,
   items,
+  onChange,
   renderCustomText,
   value,
-  icon,
-  activeIcon,
 }: RichRadioProps) => {
   const [radioValue, setRadioValue] = useState<string | null>(null);
 
@@ -51,6 +58,7 @@ const Template: Story<RichRadioProps> = ({
       renderCustomText={renderCustomText}
       items={items}
       icon={icon}
+      itemHeight={itemHeight}
       activeIcon={activeIcon}
     />
   );
@@ -91,12 +99,6 @@ BasicRichRadio.args = {
     },
   ],
   value: 'item1',
-};
-BasicRichRadio.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
-  },
 };
 
 export const CustomRichRadioOption = Template.bind({});
@@ -144,9 +146,35 @@ CustomRichRadioOption.args = {
     },
   ],
 };
-CustomRichRadioOption.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
-  },
+
+export const SmallRichRadio = Template.bind({});
+SmallRichRadio.args = {
+  itemHeight: 40,
+  items: [
+    {
+      label: 'Handbags, whether or not with shoulder strap',
+      value: 'item1',
+      tooltip: 'Handbags, whether or not with shoulder strap',
+      tooltipSetting: {
+        delayShow: 400,
+      },
+    },
+    {
+      label: 'Item 2',
+      value: 'item2',
+      tooltip:
+        'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
+      tooltipSetting: {
+        delayShow: 400,
+      },
+    },
+    {
+      label: 'Item 3',
+      value: 'item3',
+    },
+    {
+      label: 'Item 4',
+      value: 'item4',
+    },
+  ],
 };

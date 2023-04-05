@@ -6,6 +6,8 @@ import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
+import { Text } from '../text/Text';
+
 const StyledIcon = styled.div`
   position: absolute;
   content: ' ';
@@ -29,7 +31,7 @@ const StyledActiveIcon = styled.div`
   justify-content: center;
 `;
 
-const StyledItem = styled.button`
+const StyledItem = styled.button<{ $itemHeight: number }>`
   position: relative;
   appearance: none;
   background: white;
@@ -42,7 +44,7 @@ const StyledItem = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 64px;
+  height: ${({ $itemHeight }) => $itemHeight}px;
   &:hover {
     background: ${theme.gray100};
     border: 1px solid ${theme.gray200};
@@ -53,7 +55,7 @@ const StyledItem = styled.button`
 
   &:focus {
     outline: none;
-    border: 1px solid ${theme.blue300};
+    border: 1px solid ${theme.blue400};
   }
   > div {
     display: flex;
@@ -62,9 +64,7 @@ const StyledItem = styled.button`
   }
 `;
 
-const Subtitle = styled.span`
-  opacity: 0.5;
-`;
+const Subtitle = styled(Text)``;
 
 const Label = styled.span`
   font-weight: 500;
@@ -73,8 +73,11 @@ const Label = styled.span`
 const StyledRadioGroup = styled(VStack)`
   ${StyledItem}[data-state='checked'] {
     background: ${theme.blue100};
-    border: 1px solid ${theme.blue300};
-    color: ${theme.blue600};
+    border: 2px solid ${theme.blue400};
+    color: ${theme.blue700};
+    ${Subtitle} {
+      color: ${theme.blue600};
+    }
   }
   svg {
     color: white;
@@ -90,32 +93,37 @@ const StyledTooltip = styled(ReactTooltip)`
 `;
 
 export type RichRadioItemType<T extends string> = {
+  disabled?: boolean;
   label: ReactNode;
   subtitle?: string;
-  value: T;
-  disabled?: boolean;
   tooltip?: string;
   tooltipSetting?: Omit<TooltipProps, 'title' | 'children'>;
+  value: T;
 };
 
 export type RichRadioProps<T extends string = string> = {
-  onChange: (value: T) => void;
-  renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
-  items: RichRadioItemType<T>[];
-  value: T | null;
+  activeIcon?: ReactNode;
   className?: string;
   icon?: ReactNode;
-  activeIcon?: ReactNode;
+  /**
+   * @default 40
+   */
+  itemHeight?: 40 | 64;
+  items: RichRadioItemType<T>[];
+  onChange: (value: T) => void;
+  renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
+  value: T | null;
 };
 
 export const RichRadio = <T extends string>({
+  activeIcon,
+  className,
+  icon,
+  itemHeight = 64,
+  items,
   onChange,
   renderCustomText,
-  items,
   value,
-  icon,
-  className,
-  activeIcon,
 }: RichRadioProps<T>) => {
   const [selectedValue, setSelectedValue] = useState(value);
 
@@ -133,6 +141,7 @@ export const RichRadio = <T extends string>({
       {items.map(item => (
         <StyledItem
           type="button"
+          $itemHeight={itemHeight}
           key={item.value}
           data-tip={item.tooltip}
           data-disabled={item.disabled}
@@ -153,7 +162,11 @@ export const RichRadio = <T extends string>({
           ) : (
             <div>
               <Label>{item.label}</Label>
-              {item.subtitle && <Subtitle>{item.subtitle}</Subtitle>}
+              {item.subtitle && (
+                <Subtitle color="gray900" type="body">
+                  {item.subtitle}
+                </Subtitle>
+              )}
             </div>
           )}
           {!!icon && <StyledIcon>{icon || <CheckmarkIcon />}</StyledIcon>}
