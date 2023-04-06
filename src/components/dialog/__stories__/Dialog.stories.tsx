@@ -150,6 +150,17 @@ WithLeftActions.args = {
   width: 650,
 };
 
+export const WithImage = Template.bind({});
+WithImage.args = {
+  image: true,
+  children: (
+    <div>
+      <img src="test.png" alt="logo" />
+    </div>
+  ),
+  width: 650,
+};
+
 export const LongContentDialog = Template.bind({});
 LongContentDialog.args = {
   leftActions: <Button>Back</Button>,

@@ -155,6 +155,7 @@ export type DialogProps = {
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  image?: boolean;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
    */
@@ -178,6 +179,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       open,
       theme: _theme,
       width,
+      image,
       closeOnBlur,
       closeOnEsc,
     },
@@ -188,31 +190,38 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       data-theme={_theme}
       open={open}
       width={width}
+      image={image}
       onClose={onClose}
       closeOnBlur={closeOnBlur}
       closeOnEsc={closeOnEsc}
     >
-      <Header>
-        <Title>
-          <Text type="title">{label}</Text>
-          <StyledCloseButton
-            noRipple
-            onClick={onClose}
-            icon={<RemoveCircleDuotoneIcon size={24} />}
-          />
-        </Title>
-        {subtitle && <Text type="subtitle">{subtitle}</Text>}
-      </Header>
-      <Content ref={ref}>{children}</Content>
-      {(actions || leftActions) && (
-        <Footer>
-          {leftActions && (
-            <StyledLeftActionWrapper>{leftActions}</StyledLeftActionWrapper>
+      {image ? (
+        children
+      ) : (
+        <>
+          <Header>
+            <Title>
+              <Text type="title">{label}</Text>
+              <StyledCloseButton
+                noRipple
+                onClick={onClose}
+                icon={<RemoveCircleDuotoneIcon size={24} />}
+              />
+            </Title>
+            {subtitle && <Text type="subtitle">{subtitle}</Text>}
+          </Header>
+          <Content ref={ref}>{children}</Content>
+          {(actions || leftActions) && (
+            <Footer>
+              {leftActions && (
+                <StyledLeftActionWrapper>{leftActions}</StyledLeftActionWrapper>
+              )}
+              {actions && (
+                <StyledRightActionWrapper>{actions}</StyledRightActionWrapper>
+              )}
+            </Footer>
           )}
-          {actions && (
-            <StyledRightActionWrapper>{actions}</StyledRightActionWrapper>
-          )}
-        </Footer>
+        </>
       )}
     </BaseDialog>
   )

@@ -20,7 +20,7 @@ const DialogLayout = styled.div`
   color: ${theme.textColor};
 `;
 
-const Popup = styled(motion.div)<{ width: number }>`
+const Popup = styled(motion.div)<{ width: number; image?: boolean }>`
   position: relative;
   z-index: 1001;
   background: ${theme.surfaceColor};
@@ -29,7 +29,7 @@ const Popup = styled(motion.div)<{ width: number }>`
   border-radius: ${theme.radius12};
   outline: none;
   box-shadow: ${theme.v3ShadowXxl};
-  border: ${theme.border};
+  border: ${p => !p.image && theme.border};
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -41,6 +41,7 @@ export type BaseDialogProps = {
   open: boolean;
   theme?: IAminoTheme;
   width?: number;
+  image?: boolean;
   onClose?: () => void;
   closeOnBlur?: boolean;
   closeOnEsc?: boolean;
@@ -52,6 +53,7 @@ export const BaseDialog = ({
   open,
   theme: _theme,
   width,
+  image,
   onClose,
   closeOnBlur = true,
   closeOnEsc = true,
@@ -100,6 +102,7 @@ export const BaseDialog = ({
               exit={{ opacity: 0, scale: 0.95 }}
               key="dialog"
               width={width || 444}
+              image={image}
               onClick={e => {
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
