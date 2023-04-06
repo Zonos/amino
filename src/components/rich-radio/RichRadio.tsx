@@ -56,6 +56,7 @@ const StyledItem = styled.button<{ $itemHeight: number }>`
   &:focus {
     outline: none;
     border: 1px solid ${theme.blue400};
+    box-shadow: 0 0 0 1px ${theme.blue400};
   }
   > div {
     display: flex;
@@ -73,7 +74,8 @@ const Label = styled.span`
 const StyledRadioGroup = styled(VStack)`
   ${StyledItem}[data-state='checked'] {
     background: ${theme.blue100};
-    border: 2px solid ${theme.blue400};
+    border: 1px solid ${theme.blue400};
+    box-shadow: 0 0 0 1px ${theme.blue400};
     color: ${theme.blue700};
     ${Subtitle} {
       color: ${theme.blue600};
