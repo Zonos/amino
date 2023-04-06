@@ -155,7 +155,7 @@ WithImage.args = {
   image: true,
   children: (
     <div>
-      <img src="test.png" alt="logo" />
+      <img src="logo.png" alt="logo" />
     </div>
   ),
   width: 650,
