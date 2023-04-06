@@ -26,9 +26,6 @@ const StyledTableRow = styled(TableRow)<StyleProps>`
     p.collapsible &&
     css`
       cursor: pointer;
-      :hover {
-        background: ${theme.gray50};
-      }
     `}
 `;
 
@@ -75,6 +72,7 @@ export const TableRowCollapse = ({
     <>
       <StyledTableRow
         collapsible={collapsible}
+        noHover={!collapsible}
         collapsed={collapsed}
         onClick={e => collapsible && onToggleCollapse(e)}
         className={className}
@@ -90,7 +88,7 @@ export const TableRowCollapse = ({
         </TableCell>
       </StyledTableRow>
       {collapsible && (
-        <TableRow>
+        <TableRow noHover>
           <CollapsibleCell colSpan={100} collapsed={collapsed}>
             <Collapse collapsed={collapsed}>{children}</Collapse>
           </CollapsibleCell>
