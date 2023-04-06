@@ -163,6 +163,7 @@ export type DialogProps = {
    * @default true
    */
   closeOnEsc?: boolean;
+  noBorder?: boolean;
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
@@ -180,6 +181,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       width,
       closeOnBlur,
       closeOnEsc,
+      noBorder,
     },
     ref
   ) => (
@@ -191,6 +193,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       onClose={onClose}
       closeOnBlur={closeOnBlur}
       closeOnEsc={closeOnEsc}
+      noBorder={noBorder}
     >
       <Header>
         <Title>

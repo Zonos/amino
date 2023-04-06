@@ -34,6 +34,7 @@ import './components/input/Input';
 import './components/input/SearchInput';
 import './components/layout/Layout';
 import './components/layout/NavigationGroup';
+import './components/lightbox/LightBox';
 import './components/list-item/ListItem';
 import './components/list/CollapsibleList';
 import './components/list/List';
