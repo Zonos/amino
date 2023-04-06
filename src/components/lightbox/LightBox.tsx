@@ -13,6 +13,7 @@ export type LightBoxProps = {
   width?: number;
   noBorder?: boolean;
   /** Close when clicking outside dialog (on the backdrop)
+   * @param closeOnBlur
    * @default true
    */
   closeOnBlur?: boolean;
