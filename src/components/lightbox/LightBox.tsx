@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { IAminoTheme } from 'src/types/IAminoTheme';
 
@@ -25,29 +25,27 @@ export type LightBoxProps = {
   closeOnEsc?: boolean;
 };
 
-export const LightBox = forwardRef<HTMLDivElement, LightBoxProps>(
-  ({
-    children,
-    className,
-    onClose,
-    open,
-    theme: _theme,
-    width,
-    withBorder = false,
-    closeOnBlur,
-    closeOnEsc,
-  }) => (
-    <BaseDialog
-      className={className}
-      data-theme={_theme}
-      open={open}
-      width={width}
-      noBorder={!withBorder}
-      onClose={onClose}
-      closeOnBlur={closeOnBlur}
-      closeOnEsc={closeOnEsc}
-    >
-      {children}
-    </BaseDialog>
-  )
+export const LightBox = ({
+  children,
+  className,
+  onClose,
+  open,
+  theme: _theme,
+  width,
+  withBorder = false,
+  closeOnBlur,
+  closeOnEsc,
+}: LightBoxProps) => (
+  <BaseDialog
+    className={className}
+    data-theme={_theme}
+    open={open}
+    width={width}
+    noBorder={!withBorder}
+    onClose={onClose}
+    closeOnBlur={closeOnBlur}
+    closeOnEsc={closeOnEsc}
+  >
+    {children}
+  </BaseDialog>
 );
