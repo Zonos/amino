@@ -16,7 +16,9 @@ export type LightBoxProps = {
    * @default true
    */
   closeOnBlur?: boolean;
-  /** Close on pressing 'escape' key
+  /** 
+   * Close on pressing 'escape' key
+   * @param closeOnEsc
    * @default true
    */
   closeOnEsc?: boolean;
