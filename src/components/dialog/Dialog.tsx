@@ -181,7 +181,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       width,
       closeOnBlur,
       closeOnEsc,
-      noBorder = false,
+      noBorder,
     },
     ref
   ) => (
