@@ -4,7 +4,7 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledTableRow = styled.tr`
-  :not(.no-hover):hover {
+  &.with-hover:hover {
     background-color: ${theme.gray50};
   }
   th {
@@ -24,7 +24,7 @@ export type TableRowProps = {
   active?: boolean;
   children: ReactNode;
   className?: string;
-  noHover?: boolean;
+  withHover?: boolean;
   onClick?: MouseEventHandler<HTMLTableRowElement>;
 };
 
@@ -32,7 +32,7 @@ export function TableRow({
   active,
   children,
   className,
-  noHover,
+  withHover,
   onClick,
 }: TableRowProps) {
   return (
@@ -40,7 +40,7 @@ export function TableRow({
       className={[
         className || '',
         active ? 'active' : '',
-        noHover ? 'no-hover' : '',
+        withHover ? 'with-hover' : '',
       ].join(' ')}
       onClick={onClick}
     >
