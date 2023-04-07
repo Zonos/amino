@@ -31,6 +31,8 @@ const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
   const [open, setOpen] = useState(true);
   const [actionPortalOpen, setActionPortalOpen] = useState(_actionPortalOpen);
   const [secondCoversheetOpen, setSecondCoversheetOpen] = useState(false);
+  const [toggleErrorCoversheetAction, setToggleErrorCoversheetAction] =
+    useState(false);
 
   return (
     <CenteredDiv>
@@ -48,6 +50,9 @@ const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
           >
             Open second CoverSheet
           </Button>
+          <Button onClick={() => setToggleErrorCoversheetAction(true)}>
+            Toggle error coversheet action (This will throw an error)
+          </Button>
         </VStack>
         {actionPortalOpen && (
           <CoverSheetActions coverSheetActionId="__cover-sheet-actions">
@@ -55,6 +60,13 @@ const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
               Remove coversheet actions
             </Button>
             <Button>Save (coversheet)</Button>
+          </CoverSheetActions>
+        )}
+        {toggleErrorCoversheetAction && (
+          <CoverSheetActions coverSheetActionId="non-existing-id">
+            <Button onClick={() => setToggleErrorCoversheetAction(false)}>
+              Remove coversheet actions
+            </Button>
           </CoverSheetActions>
         )}
       </CoverSheet>

@@ -26,10 +26,13 @@ const StyledTableRow = styled(TableRow)<StyleProps>`
     p.collapsible &&
     css`
       cursor: pointer;
-      :hover {
-        background: ${theme.gray50};
-      }
     `}
+`;
+
+const StyledCollapse = styled(Collapse)`
+  > div {
+    padding-bottom: ${theme.space16};
+  }
 `;
 
 const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
@@ -57,6 +60,7 @@ export type TableRowCollapseProps = {
   children?: ReactNode;
   onToggleCollapse: MouseEventHandler<HTMLTableRowElement>;
   /**
+   * @param collapsed
    * @default false
    */
   collapsed?: boolean;
@@ -75,6 +79,7 @@ export const TableRowCollapse = ({
     <>
       <StyledTableRow
         collapsible={collapsible}
+        withHover={collapsible}
         collapsed={collapsed}
         onClick={e => collapsible && onToggleCollapse(e)}
         className={className}
@@ -92,7 +97,7 @@ export const TableRowCollapse = ({
       {collapsible && (
         <TableRow>
           <CollapsibleCell colSpan={100} collapsed={collapsed}>
-            <Collapse collapsed={collapsed}>{children}</Collapse>
+            <StyledCollapse collapsed={collapsed}>{children}</StyledCollapse>
           </CollapsibleCell>
         </TableRow>
       )}

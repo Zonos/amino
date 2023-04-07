@@ -81,7 +81,7 @@ export const CoverSheet = ({
     if (typeof document === 'undefined') {
       return;
     }
-    if (document.querySelectorAll(`[id='${actionWrapperId}']`).length > 0) {
+    if (document.querySelectorAll(`[id='${actionWrapperId}']`).length > 1) {
       // eslint-disable-next-line no-console
       console.error(
         `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to an unique id.`
