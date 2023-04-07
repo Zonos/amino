@@ -16,7 +16,7 @@ type AvatarShape = keyof typeof avatarShapes;
 
 export type AvatarProps = {
   /** @default round */
-  shape: AvatarShape;
+  shape?: AvatarShape;
   /** @default 32 px */
   size?: ImageSize;
   /** @default false */

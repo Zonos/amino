@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { Depth } from 'src/types/Depth';
@@ -32,12 +32,13 @@ const Depth64 = styled(SurfaceBase)`
 `;
 
 type Props = {
+  children: ReactNode;
   className?: string;
   depth?: Depth;
   dense?: boolean;
 };
 
-export const Surface: FC<Props> = ({ children, dense, className, depth }) => {
+export const Surface = ({ children, dense, className, depth }: Props) => {
   switch (depth) {
     case 'depth64':
       return (
