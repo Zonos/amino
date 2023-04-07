@@ -49,7 +49,8 @@ export const Collapse = ({
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(entries => {
-      setContentHeight(entries[0]?.contentRect.height);
+      // borderBoxSize will get the full box size including padding and border
+      setContentHeight(entries[0]?.borderBoxSize[0]?.blockSize);
     });
 
     if (contentWrapperRef.current) {
