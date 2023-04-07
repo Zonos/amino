@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
@@ -47,12 +47,12 @@ export type LegacyTextProps = {
   className?: string;
 };
 
-export const LegacyText: FC<LegacyTextProps> = ({
+export const LegacyText = ({
   className,
   children,
   title,
   type,
-}) => {
+}: LegacyTextProps) => {
   switch (type) {
     case 'h1':
       return (

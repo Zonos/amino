@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { motion } from 'framer-motion';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
@@ -54,7 +54,7 @@ export type ToastProps = {
   duration?: number;
 };
 
-export const Toast: FC<ToastProps> = ({ children, intent, toastKey }) => {
+export const Toast = ({ children, intent, toastKey }: ToastProps) => {
   const baseProps = {
     key: toastKey,
     initial: { opacity: 0, translateX: 10 },
