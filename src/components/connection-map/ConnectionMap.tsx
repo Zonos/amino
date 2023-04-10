@@ -18,7 +18,7 @@ import { feature } from 'topojson-client';
 import { Skeleton } from '../skeleton/Skeleton';
 
 const Map = styled.div`
-  background: ${theme.gray100};
+  background: ${theme.gray50};
   border-radius: ${theme.radius12};
   overflow: hidden;
 
