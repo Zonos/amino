@@ -55,13 +55,17 @@ export const DualCurrency = ({
   width,
 }: Props) => {
   const renderLocaleCurrency = () => (
-    <Currency amount={value} code={localeCode} />
+    <Currency amount={value} className={className} code={localeCode} />
   );
 
   const convertedValue = conversionRate ? value * conversionRate : value;
 
   const renderForeignCurrency = () => (
-    <Currency amount={convertedValue} code={foreignCode} />
+    <Currency
+      amount={convertedValue}
+      className={className}
+      code={foreignCode}
+    />
   );
 
   const showLocaleCurrency = localeCode && showLocale;
