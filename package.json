@@ -1,6 +1,6 @@
 {
   "name": "@amino-ui/core",
-  "version": "3.4.49",
+  "version": "3.4.50",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:amino-ui/core.git",
   "author": "Joshua Beitler <joshbeitler@gmail.com>",
