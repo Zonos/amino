@@ -9,7 +9,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  transition: 0.5s all ease;
+  transition: 0.2s all ease;
   position: absolute;
   top: 2px;
   left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')}; ;
