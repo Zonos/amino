@@ -10,7 +10,7 @@ import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
 import styled from 'styled-components';
 
-import 'graphiql/graphiql.css';
+import 'src/styles/graphiql.css';
 
 import { GraphiqlExplorer as GraphiqlExplorerComponent } from '../GraphiqlExplorer';
 
@@ -85,6 +85,10 @@ export const GraphiqlExplorer: ComponentStory<
   return (
     <div>
       <VStack>
+        <Text>
+          Import this when you use this component
+          <pre>{`import '@amino-ui/core/graphiql.css';`}</pre>
+        </Text>
         <Text>Schema: {fetchedSchema ? 'fetched' : 'not fetched'}</Text>
         <Text>Query loading: {isFetching ? 'yes' : 'no'}</Text>
         <Text>
