@@ -9,7 +9,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  transition: 0.5s all ease;
+  transition: ${theme.transition};
   position: absolute;
   top: 2px;
   left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')}; ;
@@ -24,7 +24,6 @@ const AminoSwitchWrapper = styled.div<{
   min-height: 16px;
   line-height: 16px;
   border-radius: 20px;
-  transition: 0.5s all ease;
   background: ${p => (p.checked ? theme.primary : theme.gray400)};
   display: block;
   user-select: none;

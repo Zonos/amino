@@ -54,14 +54,18 @@ export const DualCurrency = ({
   value,
   width,
 }: Props) => {
-  const renderLocaleCurrency = () => (
-    <Currency amount={value} code={localeCode} />
+  const renderLocaleCurrency = (currencyClassName?: string) => (
+    <Currency amount={value} className={currencyClassName} code={localeCode} />
   );
 
   const convertedValue = conversionRate ? value * conversionRate : value;
 
-  const renderForeignCurrency = () => (
-    <Currency amount={convertedValue} code={foreignCode} />
+  const renderForeignCurrency = (currencyClassName?: string) => (
+    <Currency
+      amount={convertedValue}
+      className={currencyClassName}
+      code={foreignCode}
+    />
   );
 
   const showLocaleCurrency = localeCode && showLocale;
@@ -83,11 +87,11 @@ export const DualCurrency = ({
   }
 
   if (isSameCode || showLocaleCurrency) {
-    return renderLocaleCurrency();
+    return renderLocaleCurrency(className);
   }
 
   if (showForeignCurrency) {
-    return renderForeignCurrency();
+    return renderForeignCurrency(className);
   }
   return null;
 };
