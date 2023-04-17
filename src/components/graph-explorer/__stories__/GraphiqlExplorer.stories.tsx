@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { ComponentStory } from '@storybook/react';
 import { Meta } from '@storybook/react/types-6-0';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
+import { Banner } from 'src/components/banner/Banner';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { GraphiqlExecutionResult } from 'src/utils/_graphiqlFetcher';
@@ -85,10 +86,10 @@ export const GraphiqlExplorer: ComponentStory<
   return (
     <div>
       <VStack>
-        <Text>
+        <Banner intent="info">
           Import this when you use this component
-          <pre>{`import '@amino-ui/core/graphiql.css';`}</pre>
-        </Text>
+          <b>{` import '@amino-ui/core/graphiql.css';`}</b>
+        </Banner>
         <Text>Schema: {fetchedSchema ? 'fetched' : 'not fetched'}</Text>
         <Text>Query loading: {isFetching ? 'yes' : 'no'}</Text>
         <Text>
