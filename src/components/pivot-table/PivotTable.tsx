@@ -18,7 +18,7 @@ import styled from 'styled-components';
 export type KeyValue = string | number;
 type RowData = Record<string, (KeyValue | boolean)[] | KeyValue | boolean>;
 
-type OverriedColumn<TRow extends RowData> = {
+type OverrideColumn<TRow extends RowData> = {
   key: keyof TRow extends string
     ? keyof TRow | (string & { _placeholder?: never })
     : never;
@@ -27,7 +27,7 @@ export type ColumnProps<TRow extends RowData, TSummaryRow = unknown> = Exclude<
   Column<TRow, TSummaryRow>,
   'key'
 > &
-  OverriedColumn<TRow>;
+  OverrideColumn<TRow>;
 
 type OverrideProps<TRow extends RowData, TSummaryRow extends unknown> = {
   rows: TRow[];
