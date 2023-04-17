@@ -5,7 +5,7 @@ type AminoLocalStorageKey = 'current-schema';
 
 /** Storage key that's being used in Amino */
 export type AminoStorageKey =
-  | AminoLocalStorageKey
+  | `amino:${AminoLocalStorageKey}`
   | (string & Record<never, never>);
 
 type Props<TValue extends unknown, TKey extends AminoStorageKey> = {

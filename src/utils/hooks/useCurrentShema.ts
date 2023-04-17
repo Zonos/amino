@@ -4,7 +4,7 @@ export const useCurrentSchema = <TValue extends string>(
   defaultSchema: TValue
 ) =>
   useStorage({
-    type: 'local',
-    key: 'current-schema',
+    type: 'session',
+    key: 'amino:current-schema',
     defaultValue: defaultSchema,
   });
