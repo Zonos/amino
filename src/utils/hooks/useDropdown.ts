@@ -12,7 +12,7 @@ export const useDropdown = <
 
   const wrapperRef = useRef<WrapperRef | null>(null);
 
-  const { x, y, reference, floating, strategy } = useFloating<TriggerRef>({
+  const { x, y, refs, strategy } = useFloating<TriggerRef>({
     middleware: [offset(10)],
     whileElementsMounted: autoUpdate,
   });
@@ -46,10 +46,10 @@ export const useDropdown = <
   }, [handleClick]);
 
   return {
-    floatingRef: floating,
+    floatingRef: refs.setFloating,
     left: x ? x - 94 : 0,
     position: strategy,
-    reference,
+    reference: refs.setReference,
     setVisible,
     top: y || '',
     visibility,

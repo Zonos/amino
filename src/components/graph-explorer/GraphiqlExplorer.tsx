@@ -4,7 +4,6 @@ import { ExecutionContextType } from '@graphiql/react';
 import { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 import { GraphiQL } from 'graphiql';
 import { GraphQLSchema } from 'graphql';
-import { SwrtParams } from 'src/types';
 import {
   ExecutionResultType,
   GraphiqlExecutionResult,
@@ -39,7 +38,7 @@ type GraphiqlExplorerProps = {
   onEditQuery: (query: string) => void;
   onEditVariables: (variables: string) => void;
   onResultData: (
-    data: SwrtParams<GraphiqlExecutionResult<ExecutionResultType>> | null
+    data: GraphiqlExecutionResult<ExecutionResultType> | null
   ) => void;
   // Caching key for the swr hook
   cachingKey: string;
@@ -94,7 +93,7 @@ export const GraphiqlExplorer = ({
   }, [executionContext?.isFetching, setIsFetching, isLoading]);
 
   useEffect(() => {
-    onResultData(resultData || null);
+    onResultData(resultData);
   }, [onResultData, resultData]);
 
   const graphiqlExplorerPlugin = useGraphiqlExplorer({

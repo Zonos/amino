@@ -57,6 +57,7 @@ export const graphiqlFetcher: IFetcher =
     const fetcher = customFetcher || handleFetch;
     const { json } = await fetcher<GraphiqlExecutionResult>(url, {
       method: 'POST',
+      ...options,
       headers: {
         'content-type': 'application/json',
         ...options?.headers,

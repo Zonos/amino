@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { SwrtParams } from 'src/types';
 import { mutate } from 'swr';
 
 import {
@@ -10,7 +9,7 @@ import {
   graphiqlFetcher,
   HandleFetchFetcher,
 } from '../_graphiqlFetcher';
-import { useSwrt } from './useSwrt';
+import { useSwr } from './useSwr';
 
 type Props = {
   // caching key (use cache if it's already loaded in swr)
@@ -31,23 +30,24 @@ export const useGraphiqlFetcher = ({
   customFetcher,
   url,
 }: Props) => {
-  const [, setResultData] = useState<SwrtParams<
-    GraphiqlExecutionResult<ExecutionResultType>
-  > | null>(null);
+  const [resultData, setResultData] =
+    useState<GraphiqlExecutionResult<ExecutionResultType> | null>(null);
 
   const fetcher = graphiqlFetcher({
     url,
     customFetcher,
   });
 
-  const { data, isLoading } = useSwrt<GraphiqlExecutionResult>(
+  const { data, isLoading } = useSwr(
     cachingKey,
-    async () =>
-      fetcher({
+    async () => {
+      const result = await fetcher({
         query,
         variables: variables ? JSON.parse(variables) : undefined,
         operationName,
-      }),
+      });
+      return { json: result };
+    },
     {
       keepPreviousData: true,
     }
@@ -63,10 +63,16 @@ export const useGraphiqlFetcher = ({
       if (results) {
         setResultData(results);
       }
-      return results || { json: { data: null }, errors: [], response: null };
+      return results || { data: null };
     },
     [fetcher, url]
   );
 
-  return { graphiqlFetcher: gqlFetcher, resultData: data, isLoading };
+  useEffect(() => {
+    if (data) {
+      setResultData(data.json);
+    }
+  }, [data]);
+
+  return { graphiqlFetcher: gqlFetcher, resultData, isLoading };
 };
