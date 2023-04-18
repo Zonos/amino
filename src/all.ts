@@ -38,6 +38,7 @@ import './components/lightbox/LightBox';
 import './components/list-item/ListItem';
 import './components/list/CollapsibleList';
 import './components/list/List';
+import './components/mdx/image/Image';
 import './components/menu/Menu';
 import './components/menu/MenuItem';
 import './components/radio/Radio';
