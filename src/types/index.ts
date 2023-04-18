@@ -1,7 +1,11 @@
 export type { AlertDialogOpts } from './AlertDialogOpts';
 export type { Color } from './Color';
 export type { ConfirmDialogOpts } from './ConfirmDialogOpts';
+export type { FetcherError } from './FetcherError';
 export type { IAminoTheme } from './IAminoTheme';
 export type { IconProps } from './IconProps';
 export type { Intent } from './Intent';
+export type { JsonError } from './JsonError';
+export type { NoInfer } from './NoInfer';
 export type { StyledProps } from './StyledProps';
+export type { SwrtParams } from './SwrtParams';
