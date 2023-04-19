@@ -1,7 +1,8 @@
 import { ComponentStory } from '@storybook/react';
 import { Meta } from '@storybook/react/types-6-0';
 
-import { MdxTab, MdxTabs as MdxTabsComponent } from '../MdxTabs';
+import { MdxTab } from '../MdxTab';
+import { MdxTabs as MdxTabsComponent } from '../MdxTabs';
 
 const MdxTabsMeta: Meta = {
   component: MdxTabsComponent,
