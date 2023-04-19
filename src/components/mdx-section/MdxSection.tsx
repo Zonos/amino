@@ -63,13 +63,13 @@ const StyledLinkIcon = styled(LinkIcon)`
 `;
 
 type Props = {
-  href?: string;
   children?: ReactNode;
   className?: string;
 };
 
-export const Section = ({ href, children, className }: Props) => {
+export const MdxSection = ({ children, className }: Props) => {
   const { showTooltip, copyText } = useCopyText();
+  const href = typeof window !== 'undefined' ? window.location.href : null;
 
   const createHeadingElement = (node: JSX.Element) => {
     const nodeChildren = node.props.children;

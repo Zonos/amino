@@ -9,6 +9,7 @@ const ImageWrapper = styled.div<{ showColor?: boolean; addMargin?: boolean }>`
   display: block;
   margin: ${({ addMargin }) => addMargin && '32px 0'};
   cursor: pointer;
+  width: 100%;
 
   ::after {
     content: '';
@@ -45,14 +46,14 @@ const LightBoxStyled = styled(LightBox)`
   margin: 32px;
 `;
 
-export type Props = {
+type Props = {
   addMargin?: boolean;
   color?: boolean;
   shadow?: boolean;
   children: ReactNode;
 };
 
-export const Image = ({ addMargin, color, shadow, children }: Props) => {
+export const MdxImage = ({ addMargin, color, shadow, children }: Props) => {
   const [showImgDialog, setShowImgDialog] = useState(false);
   return (
     <>

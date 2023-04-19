@@ -1,15 +1,15 @@
 import { ReactNode, useState } from 'react';
 
 import { Button } from 'src/components/button/Button';
-import { Collapse as AminoCollapse } from 'src/components/collapse/Collapse';
+import { Collapse } from 'src/components/collapse/Collapse';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import { getHashId } from 'src/utils/getHashId';
 import styled from 'styled-components';
 
-import { Section } from '../section/Section';
+import { MdxSection } from '../mdx-section/MdxSection';
 
-const StyledSection = styled(Section)`
+const StyledSection = styled(MdxSection)`
   border-top: 1px solid ${theme.gray200};
   border-bottom: 1px solid ${theme.gray200};
   padding: 16px 0;
@@ -63,13 +63,17 @@ export type Props = {
   children: ReactNode;
 };
 
-export const Collapse = ({ stepNumber, collapse = false, children }: Props) => {
-  console.log('COLLAPSE');
+export const MdxCollapse = ({
+  stepNumber,
+  collapse = false,
+  children,
+}: Props) => {
   const [isCollapsed, setIsCollapsed] = useState(collapse);
-  const firstChild = Array.isArray(children) && children?.find(Boolean);
 
-  const labelWithLink =
-    (firstChild.type?.name === 'h2' || firstChild.type === 'h2') && firstChild;
+  const firstChild = Array.isArray(children) && children?.find(Boolean);
+  const type = firstChild.type?.name || firstChild.type || null;
+  const hasH2 = type === 'h2';
+  const labelWithLink = hasH2 && firstChild;
   if (!labelWithLink) {
     throw new Error('Expecting first child of MdxCollapse to have an H2 label');
   }
@@ -77,15 +81,13 @@ export const Collapse = ({ stepNumber, collapse = false, children }: Props) => {
   const content =
     labelWithLink && children.filter(node => node !== labelWithLink);
 
-  const hashId =
-    labelWithLink.type?.name === 'h2'
-      ? getHashId(labelWithLink.props?.children)
-      : labelWithLink.props?.children?.id;
+  const hashId = hasH2
+    ? getHashId(labelWithLink.props?.children)
+    : labelWithLink.props?.children?.id;
 
-  const label =
-    labelWithLink.type?.name === 'h2'
-      ? labelWithLink.props?.children
-      : labelWithLink.props?.children?.props?.title;
+  const label = hasH2
+    ? labelWithLink.props?.children
+    : labelWithLink.props?.children?.props?.title;
 
   return (
     <StyledSection>
@@ -103,9 +105,7 @@ export const Collapse = ({ stepNumber, collapse = false, children }: Props) => {
         />
       </Label>
 
-      <AminoCollapse collapsed={isCollapsed}>
-        {content || children}
-      </AminoCollapse>
+      <Collapse collapsed={isCollapsed}>{content || children}</Collapse>
     </StyledSection>
   );
 };
