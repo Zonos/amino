@@ -18,7 +18,7 @@ const getStoryEntry = (storyPath: string) => {
   );
   const [, fullPath, folder, fileName] = matched || [];
   /** remove the `-` and lowercase it for comparing */
-  const sanitizedFolder = folder.toLowerCase().replace('-', '');
+  const sanitizedFolder = folder.toLowerCase().replace(/-/g, '');
   const titlePrefix =
     /** If it's not root folder, make folder for the prefix title, otherwise just namespace */
     sanitizedFolder !== fileName.toLowerCase() && !isRootFolder(folder)

@@ -39,7 +39,7 @@ import './components/lightbox/LightBox';
 import './components/list-item/ListItem';
 import './components/list/CollapsibleList';
 import './components/list/List';
-import './components/mdx/mdx-image/MdxImage';
+import './components/mdx-image/MdxImage';
 import './components/menu/Menu';
 import './components/menu/MenuItem';
 import './components/pivot-table/ActionPivotTable';
