@@ -2,8 +2,7 @@
   "name": "@amino-ui/core",
   "version": "3.4.51",
   "description": "Core UI components for Amino",
-  "repository": "git@github.com:amino-ui/core.git",
-  "author": "Joshua Beitler <joshbeitler@gmail.com>",
+  "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
   "private": false,
   "browserslist": [
