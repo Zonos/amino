@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { IconBase } from '../icon-base/_IconBase';
+import { IconBase } from '../../icon-base/_IconBase';
 
 type Props = {
   size?: number;

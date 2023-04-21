@@ -1,12 +1,12 @@
-import { CheckoutIcon } from 'src/icons/products/CheckoutIcon';
-import { ClassifyIcon } from 'src/icons/products/ClassifyIcon';
-import { ClearIcon } from 'src/icons/products/ClearIcon';
-import { DashboardIcon } from 'src/icons/products/DashboardIcon';
-import { HelloIcon } from 'src/icons/products/HelloIcon';
-import { LandedCostIcon } from 'src/icons/products/LandedCostIcon';
-import { RateIcon } from 'src/icons/products/RateIcon';
-import { RestrictIcon } from 'src/icons/products/RestrictIcon';
-import { ScreenIcon } from 'src/icons/products/ScreenIcon';
+import { CheckoutIcon } from 'src/icons/custom/products/CheckoutIcon';
+import { ClassifyIcon } from 'src/icons/custom/products/ClassifyIcon';
+import { ClearIcon } from 'src/icons/custom/products/ClearIcon';
+import { DashboardIcon } from 'src/icons/custom/products/DashboardIcon';
+import { HelloIcon } from 'src/icons/custom/products/HelloIcon';
+import { LandedCostIcon } from 'src/icons/custom/products/LandedCostIcon';
+import { RateIcon } from 'src/icons/custom/products/RateIcon';
+import { RestrictIcon } from 'src/icons/custom/products/RestrictIcon';
+import { ScreenIcon } from 'src/icons/custom/products/ScreenIcon';
 import { ColorPrefix } from 'src/types/Color';
 
 export type Products =

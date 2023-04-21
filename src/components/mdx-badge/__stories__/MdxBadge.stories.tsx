@@ -1,12 +1,12 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Badge, BadgeProps } from 'src/components/badge/Badge';
+import { BadgeProps } from 'src/components/badge/Badge';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import styled from 'styled-components';
 
 import { MdxBadge } from '../MdxBadge';
 
 const MdxBadgeMeta: Meta = {
-  component: Badge,
+  component: MdxBadge,
   argTypes: {
     color: {
       options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
