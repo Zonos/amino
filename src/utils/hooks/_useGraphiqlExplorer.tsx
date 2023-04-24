@@ -32,7 +32,7 @@ type GraphiQlColors = {
  * Somehow typescript didn't pickup the imported `graphiql-explorer.d.ts` that's declared in that library.
  * @path node_modules/@graphiql/plugin-explorer/types/index.d.ts
  */
-type GraphiqlExplorerProps = {
+type GraphMatrixProps = {
   query: string;
   width?: number;
   title?: string;
@@ -61,7 +61,7 @@ type GraphiqlExplorerProps = {
     buttonStyle?: CSSProperties;
     actionButtonStyle?: CSSProperties;
   } | null;
-  showAttribution?: boolean;
+  showAttribution: boolean;
   hideActions?: boolean;
   externalFragments?: FragmentDefinitionNode[];
 };
@@ -75,7 +75,7 @@ export const useGraphiqlExplorer = ({
   query: string;
   overrideColor?: GraphiQlColors;
 }) => {
-  const explorerPluginProps: GraphiqlExplorerProps = {
+  const explorerPluginProps: GraphMatrixProps = {
     query,
     onEdit,
     showAttribution: true,

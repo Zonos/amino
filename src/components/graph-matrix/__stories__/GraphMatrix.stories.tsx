@@ -1,22 +1,19 @@
 import { useMemo, useState } from 'react';
 
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, Meta } from '@storybook/react';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
-import { Banner } from 'src/components/banner/Banner';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { GraphiqlExecutionResult } from 'src/utils/_graphiqlFetcher';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
+import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
-import 'src/styles/graphiql.css';
-
-import { GraphiqlExplorer as GraphiqlExplorerComponent } from '../GraphiqlExplorer';
+import { GraphMatrix as GraphMatrixComponent } from '../GraphMatrix';
 
 const FileUploadMeta: Meta = {
-  component: GraphiqlExplorerComponent,
+  component: GraphMatrixComponent,
   parameters: {
     design: {
       type: 'figma',
@@ -35,14 +32,11 @@ const LoadingWrapper = styled.div`
   align-items: center;
 `;
 
-export const GraphiqlExplorer: ComponentStory<
-  typeof GraphiqlExplorerComponent
-> = () => {
-  const [query, setQuery] = useState('');
-  const [variables, setVariables] = useState('');
-  const [isFetching, setIsFetching] = useState(false);
-  const [cachingKey] = useState('page=1');
+const StyledWrapper = styled.div`
+  height: 100%;
+`;
 
+export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
   const [queryResult, setQueryResult] =
     useState<GraphiqlExecutionResult | null>();
 
@@ -83,43 +77,33 @@ export const GraphiqlExplorer: ComponentStory<
     return <LoadingWrapper>Loading schema...</LoadingWrapper>;
   }
 
+  if (!fetchedSchema) {
+    return <LoadingWrapper>Fail to load schema</LoadingWrapper>;
+  }
+
   return (
-    <div>
+    <StyledWrapper>
       <VStack>
-        <Banner intent="info">
-          Import this when you use this component
-          <b>{` import '@amino-ui/core/graphiql.css';`}</b>
-        </Banner>
-        <Text>Schema: {fetchedSchema ? 'fetched' : 'not fetched'}</Text>
-        <Text>Query loading: {isFetching ? 'yes' : 'no'}</Text>
         <Text>
-          Loaded query result from `GraphiqlExplorer` component:
-          {JSON.stringify(queryResult?.data)}
+          Loaded query result from `GraphMatrix` component:
+          <pre>
+            {truncateText({
+              length: 70,
+              text: JSON.stringify(queryResult || ''),
+            })}
+          </pre>
         </Text>
       </VStack>
 
       {fetchedSchema && (
-        <GraphiqlExplorerComponent
-          fetcher={async (url, options) =>
-            handleFetch(url, {
-              ...options,
-              headers: {
-                ...options?.headers,
-              },
-            })
-          }
-          cachingKey={cachingKey}
+        <GraphMatrixComponent
           schemaName="Public Country Schema"
           url={publicGqlUrl}
-          onEditQuery={setQuery}
-          onEditVariables={setVariables}
           onResultData={setQueryResult}
-          query={query}
           schema={fetchedSchema}
-          setIsFetching={setIsFetching}
-          variables={variables}
+          loadingComponent={<LoadingWrapper>Loading...</LoadingWrapper>}
         />
       )}
-    </div>
+    </StyledWrapper>
   );
 };
