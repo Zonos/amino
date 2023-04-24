@@ -60,6 +60,7 @@ export const useGraphiqlFetcher = ({
         async () => fetcher(params, options),
         false
       );
+
       if (results) {
         setResultData(results);
       }

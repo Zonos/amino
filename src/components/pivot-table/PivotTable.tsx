@@ -16,7 +16,7 @@ import { addIndex } from 'src/utils/addIndex';
 import styled from 'styled-components';
 
 export type KeyValue = string | number;
-type RowData = Record<string, (KeyValue | boolean)[] | KeyValue | boolean>;
+type RowData = Record<string, unknown>;
 
 type OverrideColumn<TRow extends RowData> = {
   key: keyof TRow extends string
@@ -38,10 +38,17 @@ type OverrideProps<TRow extends RowData, TSummaryRow extends unknown> = {
   columns: ColumnProps<TRow, TSummaryRow>[];
 };
 
-export type RowWithIndex = RowData & { _itemIndex?: number };
+export type NestedRowData = {
+  _expandedData: Record<string, unknown>[]; // for nested table data
+  _expandedKey: string;
+};
+
+export type RowWithIndex = RowData & {
+  _itemIndex?: number;
+} & NestedRowData;
 
 type Props<
-  TRow extends RowData,
+  TRow extends RowWithIndex,
   TSummaryRow extends unknown,
   TRowKey extends KeyValue
 > = Omit<
@@ -52,7 +59,7 @@ type Props<
 
 type Comparator<TRow extends unknown> = (a: TRow, b: TRow) => number;
 
-type StyledWrapperProps = StyledProps<Props<RowData, unknown, KeyValue>>;
+type StyledWrapperProps = StyledProps<Props<RowWithIndex, unknown, KeyValue>>;
 
 const SortStatus = styled.span`
   display: flex;
@@ -137,7 +144,7 @@ export const PivotTable = <
     {
       key: '_itemIndex',
       name: '',
-      minWidth: 60,
+      width: 60,
       sortable: false,
       frozen: true,
     },
