@@ -23,6 +23,7 @@ const config: StorybookConfig = {
   ],
   webpackFinal: async config => {
     config.resolve?.plugins?.push(new TsconfigPathsPlugin({}));
+    // add babel loader to support react-data-grid (based on chat gpt suggestion :) )
     config.module?.rules.push({
       test: /\.js$/,
       exclude: /node_modules[/\\](?!react-data-grid[/\\]lib)/,
