@@ -1,6 +1,6 @@
 ![amino logo](./public/logo.png)
 
-[![npm version](https://badge.fury.io/js/@amino-ui%2Fcore.svg)](https://www.npmjs.com/package/@amino-ui/core)
+[![npm version](https://badge.fury.io/js/@zonos%2Famino.svg)](https://badge.fury.io/js/@zonos%2Famino)
 
 > Building blocks for cross-border experiences
 
