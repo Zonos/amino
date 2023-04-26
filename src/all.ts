@@ -42,6 +42,7 @@ import './components/list/List';
 import './components/menu/Menu';
 import './components/menu/MenuItem';
 import './components/nested-data-table/NestedDataTable';
+import './components/nested-data-table/NestedDataTableHasura';
 import './components/pivot-table/PivotTable';
 import './components/radio/Radio';
 import './components/radio/RadioGroup';
