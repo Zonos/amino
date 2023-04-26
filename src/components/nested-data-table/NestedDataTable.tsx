@@ -2,7 +2,6 @@ import { ReactNode, useMemo } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { flattenRow } from 'src/utils/flattenRow';
-import { useHasuraGqlPagination } from 'src/utils/hooks/action-pivot-table/useHasuraGqlPagination';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -26,32 +25,25 @@ const StyledTableActionWrapper = styled.div`
 `;
 
 type Props = {
+  currentPage?: number;
   /**
    * @param customFlattenRow
    * @description Custom flattenRow function, if not provided, the default flattenRow (flattenRow - "src/utils/flattenRow.ts") will be used
    */
   customFlattenRow?: typeof flattenRow;
-  hasPagination?: boolean;
+  handlePagination?: (page: number) => void;
   isFetching: boolean;
   loadingComponent?: ReactNode;
-  query: string;
-  /**
-   * @param cachingKey key to be used for caching response in Swr
-   */
-  setCachingKey: (cachingKey: string) => void;
-  setQuery: (query: string) => void;
   tableData: Record<string, unknown> | Record<string, unknown>[];
   title: string;
 };
 
 export const NestedDataTable = ({
+  currentPage,
   customFlattenRow,
-  hasPagination,
+  handlePagination,
   isFetching,
   loadingComponent,
-  query,
-  setCachingKey,
-  setQuery,
   tableData,
   title,
 }: Props) => {
@@ -60,19 +52,13 @@ export const NestedDataTable = ({
     [tableData]
   );
 
-  const { currentPage, handlePagination } = useHasuraGqlPagination({
-    query,
-    setCachingKey,
-    setQuery,
-    actionName: title,
-  });
-
   return (
     <StyledPivotTableContentWrapper>
       <StyledTableHeader>
         {isFetching && loadingComponent}
         <Text type="header">{title}</Text>
-        {!!hasPagination && (
+        {/* Only show pagination if handlePagination and currentPage is provided */}
+        {!!handlePagination && !!currentPage && (
           <StyledTableActionWrapper>
             <Button
               intent="outline"

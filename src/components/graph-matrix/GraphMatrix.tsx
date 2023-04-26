@@ -56,7 +56,6 @@ type GraphMatrixProps = {
    * @description Custom fetcher, if not provided, the default fetcher (handleFetch - "src/utils/handleFetch.ts") will be used
    */
   fetcher?: HandleFetchFetcher;
-  hasPagination?: boolean;
   loadingComponent?: ReactNode;
   onEditQuery?: (query: string) => void;
   onEditVariables?: (variables: string) => void;
@@ -74,7 +73,6 @@ type GraphMatrixProps = {
 
 export const GraphMatrix = ({
   fetcher,
-  hasPagination,
   loadingComponent,
   onEditQuery,
   onEditVariables,
@@ -93,7 +91,7 @@ export const GraphMatrix = ({
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [isFetching, setIsFetching] = useState(false);
-  const [cachingKey, setCachingKey] = useState('first-time');
+  const [cachingKey] = useState('first-time');
   const [showTable, setShowTable] = useState(false);
 
   const [operationName, setOperationName] = useState('');
@@ -154,12 +152,8 @@ export const GraphMatrix = ({
             if (Array.isArray(actionResult) || actionResult) {
               return (
                 <NestedDataTable
-                  hasPagination={hasPagination}
                   isFetching={isFetching}
                   key={actionName}
-                  query={query}
-                  setCachingKey={setCachingKey}
-                  setQuery={setQuery}
                   tableData={actionResult as Record<string, unknown>[]}
                   title={actionName}
                 />
