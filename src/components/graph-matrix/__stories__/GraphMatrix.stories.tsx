@@ -2,16 +2,10 @@ import { useMemo, useState } from 'react';
 
 import { ComponentStory, Meta } from '@storybook/react';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
-import { Button } from 'src/components/button/Button';
-import { Input } from 'src/components/input/Input';
 import { HStack } from 'src/components/stack/HStack';
-import { VStack } from 'src/components/stack/VStack';
-import { Text } from 'src/components/text/Text';
 import { Textarea } from 'src/components/textarea/Textarea';
-import { GraphiqlExecutionResult } from 'src/utils/_graphiqlFetcher';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
-import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
 import { GraphMatrix as GraphMatrixComponent } from '../GraphMatrix';
