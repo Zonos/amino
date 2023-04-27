@@ -57,11 +57,12 @@ type GraphMatrixProps = {
    */
   fetcher?: HandleFetchFetcher;
   loadingComponent?: ReactNode;
-  onEditQuery?: (query: string) => void;
-  onEditVariables?: (variables: string) => void;
+  onEditQuery: (query: string) => void;
+  onEditVariables: (variables: string) => void;
   onResultData?: (
     data: GraphiqlExecutionResult<ExecutionResultType> | null
   ) => void;
+  query: string;
   schema: GraphQLSchema | null;
   /**
    * @param schemaName name of the schema, used to get the option for that schema from the cache
@@ -69,6 +70,7 @@ type GraphMatrixProps = {
    */
   schemaName: string;
   url: string;
+  variables: string;
 };
 
 export const GraphMatrix = ({
@@ -77,9 +79,11 @@ export const GraphMatrix = ({
   onEditQuery,
   onEditVariables,
   onResultData,
+  query = '',
   schema,
   schemaName,
   url,
+  variables = '',
 }: GraphMatrixProps) => {
   /** @description Graphiql doesn't expose props, so we use the hook `use{Something}Context` */
   const [executionContext, setExecutionContext] =
@@ -88,8 +92,6 @@ export const GraphMatrix = ({
   /** @description Response codemirror editor (have the ability to do some actions with response codemirror) */
   const [, setResponseEditorContext] = useState<CodeMirrorEditor | null>(null);
 
-  const [query, setQuery] = useState('');
-  const [variables, setVariables] = useState('');
   const [isFetching, setIsFetching] = useState(false);
   const [cachingKey] = useState('first-time');
   const [showTable, setShowTable] = useState(false);
@@ -118,20 +120,8 @@ export const GraphMatrix = ({
     }
   }, [onResultData, resultData]);
 
-  useEffect(() => {
-    if (onEditQuery) {
-      onEditQuery(query);
-    }
-  }, [onEditQuery, query]);
-
-  useEffect(() => {
-    if (onEditVariables) {
-      onEditVariables(variables);
-    }
-  }, [onEditVariables, variables]);
-
   const graphMatrixPlugin = useGraphiqlExplorer({
-    onEdit: setQuery,
+    onEdit: onEditQuery,
     query,
   });
 
@@ -174,8 +164,8 @@ export const GraphMatrix = ({
           <GraphiQL
             fetcher={graphiqlFetcher}
             onEditOperationName={setOperationName}
-            onEditQuery={setQuery}
-            onEditVariables={setVariables}
+            onEditQuery={onEditQuery}
+            onEditVariables={onEditVariables}
             plugins={[graphMatrixPlugin]}
             query={query}
             variables={variables}
