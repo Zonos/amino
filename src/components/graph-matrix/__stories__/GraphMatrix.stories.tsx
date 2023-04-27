@@ -2,12 +2,10 @@ import { useMemo, useState } from 'react';
 
 import { ComponentStory, Meta } from '@storybook/react';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
-import { VStack } from 'src/components/stack/VStack';
-import { Text } from 'src/components/text/Text';
-import { GraphiqlExecutionResult } from 'src/utils/_graphiqlFetcher';
+import { HStack } from 'src/components/stack/HStack';
+import { Textarea } from 'src/components/textarea/Textarea';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
-import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
 import { GraphMatrix as GraphMatrixComponent } from '../GraphMatrix';
@@ -37,8 +35,8 @@ const StyledWrapper = styled.div`
 `;
 
 export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
-  const [queryResult, setQueryResult] =
-    useState<GraphiqlExecutionResult | null>();
+  const [query, setQuery] = useState('');
+  const [variables, setVariables] = useState('');
 
   const publicGqlUrl = 'https://countries.trevorblades.com';
 
@@ -83,25 +81,29 @@ export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
 
   return (
     <StyledWrapper>
-      <VStack>
-        <Text>
-          Loaded query result from `GraphMatrix` component:
-          <pre>
-            {truncateText({
-              length: 70,
-              text: JSON.stringify(queryResult || ''),
-            })}
-          </pre>
-        </Text>
-      </VStack>
+      <HStack>
+        <Textarea
+          label="Query"
+          onChange={e => setQuery(e.target.value)}
+          value={query}
+        />
+        <Textarea
+          label="Variables"
+          onChange={e => setVariables(e.target.value)}
+          value={variables}
+        />
+      </HStack>
 
       {fetchedSchema && (
         <GraphMatrixComponent
+          loadingComponent={<LoadingWrapper>Loading...</LoadingWrapper>}
+          onEditQuery={setQuery}
+          onEditVariables={setVariables}
+          query={query}
+          schema={fetchedSchema}
           schemaName="Public Country Schema"
           url={publicGqlUrl}
-          onResultData={setQueryResult}
-          schema={fetchedSchema}
-          loadingComponent={<LoadingWrapper>Loading...</LoadingWrapper>}
+          variables={variables}
         />
       )}
     </StyledWrapper>
