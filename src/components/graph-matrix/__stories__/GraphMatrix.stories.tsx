@@ -4,6 +4,8 @@ import { ComponentStory, Meta } from '@storybook/react';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
 import { HStack } from 'src/components/stack/HStack';
 import { Textarea } from 'src/components/textarea/Textarea';
+import { BookmarkIcon } from 'src/icons/BookmarkIcon';
+import { BookmarkOffIcon } from 'src/icons/BookmarkOffIcon';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
 import styled from 'styled-components';
@@ -37,6 +39,7 @@ const StyledWrapper = styled.div`
 export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
+  const [toolbarState, setToolbarState] = useState(false);
 
   const publicGqlUrl = 'https://countries.trevorblades.com';
 
@@ -93,7 +96,6 @@ export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
           value={variables}
         />
       </HStack>
-
       {fetchedSchema && (
         <GraphMatrixComponent
           loadingComponent={<LoadingWrapper>Loading...</LoadingWrapper>}
@@ -102,6 +104,14 @@ export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
           query={query}
           schema={fetchedSchema}
           schemaName="Public Country Schema"
+          customToolbar={
+            <GraphMatrixComponent.ToolbarButton
+              label="This is custom button"
+              onClick={() => setToolbarState(!toolbarState)}
+            >
+              {toolbarState ? <BookmarkIcon /> : <BookmarkOffIcon />}
+            </GraphMatrixComponent.ToolbarButton>
+          }
           url={publicGqlUrl}
           variables={variables}
         />
