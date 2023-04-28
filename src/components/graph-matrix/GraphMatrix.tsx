@@ -71,6 +71,8 @@ type GraphMatrixProps = {
   schemaName: string;
   url: string;
   variables: string;
+  // Toolbar item. You can add your own toolbar item and use the built in <GraphMatrix.ToolbarButton>
+  customToolbar?: ReactNode;
 };
 
 export const GraphMatrix = ({
@@ -84,6 +86,7 @@ export const GraphMatrix = ({
   schemaName,
   url,
   variables = '',
+  customToolbar,
 }: GraphMatrixProps) => {
   /** @description Graphiql doesn't expose props, so we use the hook `use{Something}Context` */
   const [executionContext, setExecutionContext] =
@@ -172,16 +175,19 @@ export const GraphMatrix = ({
             schema={schema}
             toolbar={{
               additionalContent: (
-                <ToolbarButton
-                  label={showTable ? 'Hide table' : 'Show table'}
-                  onClick={() => setShowTable(!showTable)}
-                >
-                  {showTable ? (
-                    <EyeOffIcon color="gray400" />
-                  ) : (
-                    <EyeIcon color="gray400" />
-                  )}
-                </ToolbarButton>
+                <>
+                  <ToolbarButton
+                    label={showTable ? 'Hide table' : 'Show table'}
+                    onClick={() => setShowTable(!showTable)}
+                  >
+                    {showTable ? (
+                      <EyeOffIcon color="gray400" />
+                    ) : (
+                      <EyeIcon color="gray400" />
+                    )}
+                  </ToolbarButton>
+                  {customToolbar}
+                </>
               ),
             }}
             storage={storage}
@@ -199,3 +205,5 @@ export const GraphMatrix = ({
     </StyledWrapper>
   );
 };
+
+GraphMatrix.ToolbarButton = ToolbarButton;
