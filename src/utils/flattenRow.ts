@@ -1,27 +1,52 @@
+type Value = string | number | boolean;
+
 export const flattenRow = ({
   prev,
   currentVal: [key, value],
   previousKey = '',
 }: {
-  prev: Record<string, string>;
+  prev: Record<string, unknown>;
   currentVal: [string, unknown];
   previousKey?: string;
-}): Record<string, string | number | boolean> => {
-  const keyWithPrefix = previousKey ? `${previousKey}.${key}` : key;
+}): Record<string, unknown> | Value => {
+  const keyWithPrefix = previousKey !== '' ? `${previousKey}.${key}` : key;
   if (Array.isArray(value)) {
-    return { ...prev, [key]: JSON.stringify(value) };
+    // Flatten the array
+    return {
+      ...prev,
+      [keyWithPrefix]: value.map(arrayValue => {
+        const nestedRow =
+          typeof arrayValue === 'object' && arrayValue
+            ? // keep flattening the object
+              Object.entries(arrayValue).reduce(
+                (_prev, currentVal) =>
+                  flattenRow({
+                    currentVal,
+                    prev: _prev,
+                  }),
+                {}
+              )
+            : arrayValue;
+        return nestedRow;
+      }),
+    };
   }
 
   if (typeof value === 'object' && value) {
     // Flatten the object
     const nestedObj: Record<string, string> = Object.entries(value).reduce(
-      (pre, [nestedKey, nestedVal]) => ({
-        ...flattenRow({
+      (pre, [nestedKey, nestedVal]) => {
+        const newFlattenRow = flattenRow({
           currentVal: [nestedKey, nestedVal],
           prev: pre,
           previousKey: previousKey ? `${previousKey}.${nestedKey}` : key,
-        }),
-      }),
+        });
+        return typeof newFlattenRow === 'object'
+          ? {
+              ...newFlattenRow,
+            }
+          : newFlattenRow;
+      },
       {}
     );
 

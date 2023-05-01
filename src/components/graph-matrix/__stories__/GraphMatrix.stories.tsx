@@ -1,22 +1,19 @@
 import { useMemo, useState } from 'react';
 
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import { ComponentStory, Meta } from '@storybook/react';
 import { buildClientSchema, IntrospectionQuery } from 'graphql';
-import { Banner } from 'src/components/banner/Banner';
-import { VStack } from 'src/components/stack/VStack';
-import { Text } from 'src/components/text/Text';
-import { GraphiqlExecutionResult } from 'src/utils/_graphiqlFetcher';
+import { HStack } from 'src/components/stack/HStack';
+import { Textarea } from 'src/components/textarea/Textarea';
+import { BookmarkIcon } from 'src/icons/BookmarkIcon';
+import { BookmarkOffIcon } from 'src/icons/BookmarkOffIcon';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
 import styled from 'styled-components';
 
-import 'src/styles/graphiql.css';
-
-import { GraphiqlExplorer as GraphiqlExplorerComponent } from '../GraphiqlExplorer';
+import { GraphMatrix as GraphMatrixComponent } from '../GraphMatrix';
 
 const FileUploadMeta: Meta = {
-  component: GraphiqlExplorerComponent,
+  component: GraphMatrixComponent,
   parameters: {
     design: {
       type: 'figma',
@@ -35,16 +32,14 @@ const LoadingWrapper = styled.div`
   align-items: center;
 `;
 
-export const GraphiqlExplorer: ComponentStory<
-  typeof GraphiqlExplorerComponent
-> = () => {
+const StyledWrapper = styled.div`
+  height: 100%;
+`;
+
+export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
-  const [isFetching, setIsFetching] = useState(false);
-  const [cachingKey] = useState('page=1');
-
-  const [queryResult, setQueryResult] =
-    useState<GraphiqlExecutionResult | null>();
+  const [toolbarState, setToolbarState] = useState(false);
 
   const publicGqlUrl = 'https://countries.trevorblades.com';
 
@@ -83,43 +78,44 @@ export const GraphiqlExplorer: ComponentStory<
     return <LoadingWrapper>Loading schema...</LoadingWrapper>;
   }
 
-  return (
-    <div>
-      <VStack>
-        <Banner intent="info">
-          Import this when you use this component
-          <b>{` import '@amino-ui/core/graphiql.css';`}</b>
-        </Banner>
-        <Text>Schema: {fetchedSchema ? 'fetched' : 'not fetched'}</Text>
-        <Text>Query loading: {isFetching ? 'yes' : 'no'}</Text>
-        <Text>
-          Loaded query result from `GraphiqlExplorer` component:
-          {JSON.stringify(queryResult?.data)}
-        </Text>
-      </VStack>
+  if (!fetchedSchema) {
+    return <LoadingWrapper>Fail to load schema</LoadingWrapper>;
+  }
 
+  return (
+    <StyledWrapper>
+      <HStack>
+        <Textarea
+          label="Query"
+          onChange={e => setQuery(e.target.value)}
+          value={query}
+        />
+        <Textarea
+          label="Variables"
+          onChange={e => setVariables(e.target.value)}
+          value={variables}
+        />
+      </HStack>
       {fetchedSchema && (
-        <GraphiqlExplorerComponent
-          fetcher={async (url, options) =>
-            handleFetch(url, {
-              ...options,
-              headers: {
-                ...options?.headers,
-              },
-            })
-          }
-          cachingKey={cachingKey}
-          schemaName="Public Country Schema"
-          url={publicGqlUrl}
+        <GraphMatrixComponent
+          loadingComponent={<LoadingWrapper>Loading...</LoadingWrapper>}
           onEditQuery={setQuery}
           onEditVariables={setVariables}
-          onResultData={setQueryResult}
           query={query}
           schema={fetchedSchema}
-          setIsFetching={setIsFetching}
+          schemaName="Public Country Schema"
+          customToolbar={
+            <GraphMatrixComponent.ToolbarButton
+              label="This is custom button"
+              onClick={() => setToolbarState(!toolbarState)}
+            >
+              {toolbarState ? <BookmarkIcon /> : <BookmarkOffIcon />}
+            </GraphMatrixComponent.ToolbarButton>
+          }
+          url={publicGqlUrl}
           variables={variables}
         />
       )}
-    </div>
+    </StyledWrapper>
   );
 };

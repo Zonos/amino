@@ -52,6 +52,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
   box-sizing: border-box;
   position: relative;
   padding: 0 ${theme.space16};
+  padding-top: ${theme.space8};
   transition: ${theme.transition};
   outline: none;
   order: 2;
@@ -71,6 +72,30 @@ const StyledTextarea = styled.textarea<TextareaType>`
   }
   &.has-label {
     padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
+
+    &.has-content,
+    &:focus {
+      &::placeholder {
+        opacity: 0.6;
+      }
+      & + ${StyledLabelInput} {
+        top: 11px;
+        transform: scale(0.8);
+        & + ${StyledBorder} {
+          &::before {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            height: 25px;
+            right: 0;
+            background: white;
+            border-radius: ${theme.radius6};
+          }
+        }
+      }
+    }
   }
 
   ::placeholder {
@@ -78,29 +103,6 @@ const StyledTextarea = styled.textarea<TextareaType>`
     opacity: 0;
     color: ${theme.gray400};
     font-weight: 400;
-  }
-  &.has-content,
-  &:focus {
-    &::placeholder {
-      opacity: 0.6;
-    }
-    & + ${StyledLabelInput} {
-      top: 11px;
-      transform: scale(0.8);
-      & + ${StyledBorder} {
-        &::before {
-          content: '';
-          position: absolute;
-          z-index: 2;
-          left: 0;
-          top: 0;
-          height: 25px;
-          right: 0;
-          background: white;
-          border-radius: ${theme.radius6};
-        }
-      }
-    }
   }
 
   :focus {

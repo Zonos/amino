@@ -1,4 +1,3 @@
-import { capitalize } from './../build-utils/css/utils/capitalize';
 import type { StorybookConfig, StoriesEntry } from '@storybook/core-common';
 import { glob } from 'glob';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -24,6 +23,23 @@ const config: StorybookConfig = {
   ],
   webpackFinal: async config => {
     config.resolve?.plugins?.push(new TsconfigPathsPlugin({}));
+    // add babel loader to support react-data-grid (based on chat gpt suggestion :) )
+    config.module?.rules.push({
+      test: /\.js$/,
+      exclude: /node_modules[/\\](?!react-data-grid[/\\]lib)/,
+      loader: 'babel-loader',
+      options: {
+        presets: [
+          [
+            require.resolve('babel-preset-react-app'),
+            {
+              runtime: 'automatic',
+            },
+          ],
+          ['@babel/preset-typescript', { allowNamespaces: true }],
+        ],
+      },
+    });
     return config;
   },
   typescript: {

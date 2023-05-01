@@ -40,6 +40,35 @@ const Template: Story<TextareaProps> = ({
       }}
     >
       <div>
+        <Text type="bold-label">No label:</Text>
+
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            value=""
+            onChange={() => {}}
+          />
+          <Input value="" onChange={() => {}} />
+        </StyledGroup>
+      </div>
+      <div>
+        <Text type="bold-label">No label, has content:</Text>
+
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            helpText={helpText}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+          />
+          <Input
+            value={value?.toString() || ''}
+            onChange={e => setValue(e.target.value)}
+          />
+        </StyledGroup>
+      </div>
+      <div>
         <Text type="bold-label">No placeholder:</Text>
 
         <StyledGroup style={{ display: 'flex', gap: '10px' }}>
