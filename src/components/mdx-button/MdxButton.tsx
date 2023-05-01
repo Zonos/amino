@@ -4,6 +4,7 @@ import {
 } from 'src/components/button/Button';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { theme } from 'src/styles/constants/theme';
+import { getIsInternalLink } from 'src/utils/getIsInternalLink';
 import styled from 'styled-components';
 
 const Wrapper = styled.div<{ isPrimary: boolean }>`
@@ -21,7 +22,7 @@ const Wrapper = styled.div<{ isPrimary: boolean }>`
 `;
 
 export type MdxButtonProps = ButtonProps<'a'> & {
-  isInternalLink?: boolean;
+  internalPaths?: string[];
 };
 
 export const MdxButton = ({
@@ -29,10 +30,12 @@ export const MdxButton = ({
   href,
   children,
   className,
-  isInternalLink,
+  internalPaths,
   ...props
 }: MdxButtonProps) => {
   const isPrimary = intent === 'primary';
+  const { isInternalLink } = getIsInternalLink({ href, internalPaths });
+
   if (!href) {
     throw new Error(`<MdxButton>${children}</MdxButton> requires an href`);
   }

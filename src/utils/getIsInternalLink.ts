@@ -5,13 +5,13 @@ export const getIsInternalLink = ({
 }: {
   href?: string;
   shouldWarn?: boolean;
-  internalPaths: string[];
+  internalPaths?: string[];
 }) => {
   const isInternalLink = href?.startsWith('/') || href?.startsWith('#');
-  if (isInternalLink && href) {
+  if (isInternalLink && href && !!internalPaths?.length) {
     const [to] = href.split('#');
 
-    if (!internalPaths.includes(to as typeof internalPaths[number])) {
+    if (!internalPaths?.includes(to as typeof internalPaths[number])) {
       if (shouldWarn) {
         // eslint-disable-next-line no-console
         console.warn(
