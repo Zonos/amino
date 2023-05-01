@@ -59,7 +59,7 @@ export const MdxButton: ComponentStory<typeof MdxButtonComponent> = () => (
       <MdxButtonComponent intent="outline" href="/">
         Outline button
       </MdxButtonComponent>
-      <MdxButtonComponent href="https://zonos.com" isExternalLink>
+      <MdxButtonComponent href="https://zonos.com">
         Default button
       </MdxButtonComponent>
     </div>

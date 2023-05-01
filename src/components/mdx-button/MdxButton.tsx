@@ -20,8 +20,8 @@ const Wrapper = styled.div<{ isPrimary: boolean }>`
   }
 `;
 
-export type Props = ButtonProps<'a'> & {
-  isExternalLink?: boolean;
+export type MdxButtonProps = ButtonProps<'a'> & {
+  isInternalLink?: boolean;
 };
 
 export const MdxButton = ({
@@ -29,9 +29,9 @@ export const MdxButton = ({
   href,
   children,
   className,
-  isExternalLink,
+  isInternalLink,
   ...props
-}: Props) => {
+}: MdxButtonProps) => {
   const isPrimary = intent === 'primary';
   if (!href) {
     throw new Error(`<MdxButton>${children}</MdxButton> requires an href`);
@@ -45,8 +45,8 @@ export const MdxButton = ({
         icon={isPrimary && <ArrowRightIcon size={20} />}
         iconRight={isPrimary}
         href={href}
-        target={isExternalLink ? '_blank' : undefined}
-        rel={isExternalLink ? 'nofollow noopener noreferrer' : undefined}
+        target={!isInternalLink ? '_blank' : undefined}
+        rel={!isInternalLink ? 'nofollow noopener noreferrer' : undefined}
         className={['link-button', className].join(' ')}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
