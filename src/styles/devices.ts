@@ -7,7 +7,7 @@ const size = {
   desktopS: '1080px',
   desktop: '1300px',
   desktopMax: '1400px',
-};
+} as const;
 
 export const devices = {
   mobileS: `(max-width: ${size.mobileS})`,
@@ -18,4 +18,4 @@ export const devices = {
   desktopS: `(max-width: ${size.desktopS})`,
   desktop: `(max-width: ${size.desktop})`,
   desktopMax: `(max-width: ${size.desktopMax})`,
-};
+} as const;

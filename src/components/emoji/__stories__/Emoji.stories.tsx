@@ -25,7 +25,7 @@ const StyledWrapper = styled.div`
   max-width: 100%;
 `;
 
-const StyledIcon = styled.div<{ size?: number }>`
+const StyledIcon = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
