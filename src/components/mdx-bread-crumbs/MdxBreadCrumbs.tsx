@@ -11,10 +11,15 @@ const StyledBreadcrumbs = styled.div`
   > a,
   span {
     color: ${theme.gray800};
-    border-bottom: 0px solid #fff;
+    border-bottom: none;
     margin: 0 3px 0 5px;
     :hover {
       opacity: 0.9;
+    }
+    :after {
+      content: '/';
+      color: ${theme.gray500};
+      margin-left: 8px;
     }
   }
   a:first-of-type {
@@ -22,6 +27,9 @@ const StyledBreadcrumbs = styled.div`
   }
   span:last-of-type {
     color: ${theme.gray300};
+    :after {
+      content: none;
+    }
   }
 `;
 
