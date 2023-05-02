@@ -49,8 +49,8 @@ const CodeBlockBody = styled.div`
     background: transparent;
 
     .hljs {
-      color: ${theme.gray100} !important;
-      background: transparent !important;
+      color: ${theme.gray100};
+      background: transparent;
     }
 
     code {
