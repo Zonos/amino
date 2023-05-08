@@ -79,10 +79,6 @@ export type Props = {
   onClick?: MouseEventHandler<HTMLDivElement>;
   /** @description Decorater takes a React node, preferably an icon or an avatar */
   decorator?: ReactNode;
-  /** @deprecated use decorator instead */
-  icon?: string;
-  /** @deprecated use decorator instead */
-  iconComponent?: ReactNode;
 };
 
 const ListIcon = ({
@@ -114,10 +110,6 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       subtitle,
       rightDecorator,
       onClick,
-      // eslint-disable-next-line deprecation/deprecation
-      icon,
-      // eslint-disable-next-line deprecation/deprecation
-      iconComponent,
     },
     ref
   ) => (
@@ -130,17 +122,10 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       ref={ref}
     >
       <div
-        className={[
-          '___icon-wrapper',
-          icon || iconComponent || decorator ? 'has-icon' : '',
-        ].join(' ')}
+        className={['___icon-wrapper', decorator ? 'has-icon' : ''].join(' ')}
       >
         {decorator}
-        <ListIcon
-          label={typeof label === 'string' ? label : ''}
-          icon={icon}
-          iconComponent={iconComponent}
-        />
+        <ListIcon label={typeof label === 'string' ? label : ''} />
       </div>
 
       <TextContainer>
