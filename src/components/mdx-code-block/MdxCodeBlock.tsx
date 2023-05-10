@@ -34,10 +34,10 @@ const CodeBlockHeader = styled.div`
   }
 `;
 
-const CodeBlockBody = styled.div`
+const CodeBlockBody = styled.div<{ maxHeight: number }>`
   padding: 16px;
   display: flex;
-  max-height: 260px;
+  max-height: ${p => p.maxHeight}px;
   overflow: auto;
   height: fit-content;
 
@@ -118,6 +118,7 @@ type Props = {
   children?: ReactElement;
   xlabel: string;
   type: 'JSON' | 'GraphQL';
+  maxHeight?: number;
 };
 
 /**
@@ -143,7 +144,12 @@ const countLines = (codeChildren?: ReactElement[] | ReactElement): number => {
   return 0;
 };
 
-export const MdxCodeBlock = ({ children, xlabel, type }: Props) => {
+export const MdxCodeBlock = ({
+  children,
+  xlabel,
+  type,
+  maxHeight = 260,
+}: Props) => {
   const pre = children?.type === 'pre' && children.props.children;
   const codeChildren = (pre?.type === 'code' && pre.props.children) || [];
   const lines: number = countLines(codeChildren);
@@ -172,7 +178,7 @@ export const MdxCodeBlock = ({ children, xlabel, type }: Props) => {
           )}
         </HStackRight>
       </CodeBlockHeader>
-      <CodeBlockBody>
+      <CodeBlockBody maxHeight={maxHeight}>
         <CodeBlockLines>
           {[...Array(lines)].map((e, i) => (
             // eslint-disable-next-line react/no-array-index-key
