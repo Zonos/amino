@@ -191,3 +191,13 @@ exports[`Make sure all generated color constants matched previous snapshot: _red
 } as const;
 "
 `;
+
+exports[`Make sure all generated color constants matched previous snapshot: _transparent.ts 1`] = `
+"export const transparent = {
+  /** @info #FFFFFFBB */
+  'transparent-white': '#FFFFFFBB',
+  /** @info #000000BB */
+  'transparent-black': '#000000BB',
+};
+"
+`;

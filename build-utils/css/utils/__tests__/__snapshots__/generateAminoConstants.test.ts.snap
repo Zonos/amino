@@ -252,10 +252,13 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple1000: 'var(--amino-purple-1000)',
 
-  /* SOLID BLUR */
-  /** @info rgba(var(--amino-gray-0), 0.75) */
+  /* TRANSPARENT */
+  /** @info #FFFFFFBB */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  solidBlur: 'var(--amino-solid-blur)',
+  transparentWhite: 'var(--amino-transparent-white)',
+  /** @info #000000BB */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  transparentBlack: 'var(--amino-transparent-black)',
 
   /* COMMON COLOR */
   /** @info var(--amino-red-600) */

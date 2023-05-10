@@ -77,6 +77,8 @@
   --amino-purple-800: #612392;
   --amino-purple-900: #461f66;
   --amino-purple-1000: #29143a;
+  --amino-transparent-white: #ffffffbb;
+  --amino-transparent-black: #000000bb;
   --amino-danger: var(--amino-red-600);
   --amino-danger-dark: var(--amino-red-700);
   --amino-error: var(--amino-red-600);

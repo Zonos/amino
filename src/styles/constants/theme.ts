@@ -249,6 +249,14 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple1000: 'var(--amino-purple-1000)',
 
+  /* TRANSPARENT */
+  /** @info #FFFFFFBB */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  transparentWhite: 'var(--amino-transparent-white)',
+  /** @info #000000BB */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  transparentBlack: 'var(--amino-transparent-black)',
+
   /* COMMON COLOR */
   /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
