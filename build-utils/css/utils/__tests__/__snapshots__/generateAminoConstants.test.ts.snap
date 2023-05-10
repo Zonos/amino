@@ -252,6 +252,11 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple1000: 'var(--amino-purple-1000)',
 
+  /* SOLID BLUR */
+  /** @info rgba(var(--amino-gray-0), 0.75) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  solidBlur: 'var(--amino-solid-blur)',
+
   /* COMMON COLOR */
   /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */

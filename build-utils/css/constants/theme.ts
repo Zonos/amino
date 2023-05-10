@@ -34,6 +34,9 @@ export const theme = {
   /* PURPLE */
   ...purple,
 
+  /* SOLID BLUR */
+  'solid-blur': 'rgba(var(--amino-gray-0), 0.75)',
+
   /* COMMON COLOR */
   danger: 'var(--amino-red-600)',
   'danger-dark': 'var(--amino-red-700)',

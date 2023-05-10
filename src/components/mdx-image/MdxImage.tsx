@@ -74,3 +74,5 @@ export const MdxImage = ({ addMargin, color, shadow, children }: Props) => {
     </>
   );
 };
+
+MdxImage.stableName = 'MdxImage';

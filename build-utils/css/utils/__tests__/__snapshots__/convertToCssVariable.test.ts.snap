@@ -143,6 +143,7 @@ Object {
   "--amino-size-md": "40px",
   "--amino-size-sm": "32px",
   "--amino-size-xl": "56px",
+  "--amino-solid-blur": "rgba(var(--amino-gray-0), 0.75)",
   "--amino-space-0": "0",
   "--amino-space-12": "0.75rem",
   "--amino-space-16": "1rem",
