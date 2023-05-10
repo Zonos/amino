@@ -6,6 +6,7 @@ import { green } from './generated/colors/_green';
 import { orange } from './generated/colors/_orange';
 import { purple } from './generated/colors/_purple';
 import { red } from './generated/colors/_red';
+import { transparent } from './generated/colors/_transparent';
 
 /* eslint-disable deprecation/deprecation */
 export const theme = {
@@ -33,6 +34,9 @@ export const theme = {
 
   /* PURPLE */
   ...purple,
+
+  /* TRANSPARENT */
+  ...transparent,
 
   /* COMMON COLOR */
   danger: 'var(--amino-red-600)',

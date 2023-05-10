@@ -193,6 +193,8 @@ Object {
   "--amino-text-light": "white",
   "--amino-toast-elevation": "var(--amino-elevation-500)",
   "--amino-transition": "all 0.2s ease-in-out 0s",
+  "--amino-transparent-black": "#000000BB",
+  "--amino-transparent-white": "#FFFFFFBB",
   "--amino-type-scale-base": "16px",
   "--amino-v3-shadow-base": "0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1)",
   "--amino-v3-shadow-inset": "inset 0px 2px 4px rgba(0, 0, 0, 0.06)",
