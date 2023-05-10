@@ -32,3 +32,32 @@ export const MdxCodeBlock: ComponentStory<
     </pre>
   </MdxCodeBlockComponent>
 );
+
+export const MdxCodeBlockWithHeight: ComponentStory<
+  typeof MdxCodeBlockComponent
+> = () => (
+  <MdxCodeBlockComponent xlabel="JSON Example" type="JSON" maxHeight={600}>
+    <pre>
+      <code>{`
+{
+  "border": "{{int(1, 5)}}px {{random(solid, dotted, dashed)}} {{color()}}",
+  "coordinates": {
+    "type": "array",
+    "count": 2,
+    "items": "{{float(0, 120, 5)}}"
+  },
+  "password": "xX{{animal()}}-{{string(6, 10, *)}}"
+}
+
+{
+  "border": "1px dotted silver",
+  "coordinates": [
+    109.06664,
+    61.56686
+  ],
+  "password": "xXjunglefowl-*********"
+}
+      `}</code>
+    </pre>
+  </MdxCodeBlockComponent>
+);
