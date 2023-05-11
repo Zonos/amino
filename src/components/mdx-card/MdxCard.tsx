@@ -5,10 +5,11 @@ import { ColorPrefix } from 'src/types/Color';
 import { getProductDetails, Products } from 'src/utils/getProductDetails';
 import styled, { css } from 'styled-components';
 
+import { MdxAnchor } from '../mdx-anchor/MdxAnchor';
+
 type CardProps = Required<Pick<Props, 'glowingColor' | 'noGlowOnHover'>>;
 
-// WAS USING MDX-ANCHOR. Need follow up on this.
-const StyledAnchor = styled.a``;
+const StyledAnchor = styled(MdxAnchor)``;
 
 const CardStyled = styled.div<CardProps>`
   display: flex;

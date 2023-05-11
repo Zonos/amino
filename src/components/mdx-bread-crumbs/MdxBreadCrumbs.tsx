@@ -35,8 +35,9 @@ const StyledBreadcrumbs = styled.div`
 
 export type Props = {
   children: ReactNode;
+  className?: string;
 };
 
-export const MdxBreadCrumbs = ({ children }: Props) => (
-  <StyledBreadcrumbs>{children}</StyledBreadcrumbs>
+export const MdxBreadCrumbs = ({ children, className }: Props) => (
+  <StyledBreadcrumbs className={className}>{children}</StyledBreadcrumbs>
 );

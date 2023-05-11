@@ -50,6 +50,7 @@ import './components/mdx-card/MdxCard';
 import './components/mdx-code-block/MdxCodeBlock';
 import './components/mdx-collapse/MdxCollapse';
 import './components/mdx-copy-value/MdxCopyValue';
+import './components/mdx-hero/MdxHero';
 import './components/mdx-image/MdxImage';
 import './components/mdx-progress-checkbox/MdxProgressCheckbox';
 import './components/mdx-related-content/MdxRelatedContent';
