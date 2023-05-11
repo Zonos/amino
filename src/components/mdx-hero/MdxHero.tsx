@@ -33,8 +33,8 @@ const Wrapper = styled(MdxSection)`
 `;
 
 const HeroImage = styled.div`
-  img {
-    box-shadow: ${theme.v3ShadowLarge} !important;
+  && img {
+    box-shadow: ${theme.v3ShadowLarge};
     border-radius: 10px;
   }
 `;
@@ -44,8 +44,8 @@ const ButtonWrap = styled.div`
   gap: 8px;
   flex-wrap: wrap;
 
-  > a:hover {
-    border-bottom: none !important;
+  && > a:hover {
+    border-bottom: none;
   }
 `;
 
