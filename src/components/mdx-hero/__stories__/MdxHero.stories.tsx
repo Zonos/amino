@@ -19,6 +19,12 @@ const Template: Story = () => (
       projects heading styles.
     </p>
 
+    <p>
+      The MdxHero will look for an image as a child and automatically place it
+      on the right side of the hero and place the rest of the content on the
+      left.
+    </p>
+
     <MdxButton
       intent="primary"
       href="/?path=/story/amino-mdxcopyvalue--mdx-copy-value"

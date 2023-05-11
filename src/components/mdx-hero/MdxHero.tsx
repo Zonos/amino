@@ -57,7 +57,7 @@ export const MdxHero = ({ children }: Props) => {
   if (!Array.isArray(children)) {
     // eslint-disable-next-line no-console
     console.error(
-      'The Hero component needs more content. See CONTRIBUTING.md for examples.'
+      'The MdxHero component requires at least 2 children elements. See https://amino.zonos.com:6007/?path=/story/amino-mdxhero--mdx-hero for details.'
     );
     return null;
   }
