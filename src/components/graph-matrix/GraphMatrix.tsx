@@ -22,19 +22,26 @@ import { SplitPanel } from '../split-panel/SplitPanel';
 import { GraphiqlContextWrapper } from './_GraphiqlContextWrapper';
 import { Loading } from './_LoadingIcon';
 
+// These rules are !important because graphiql inlines their styles
 const StyledWrapper = styled.div`
   height: 100%;
   .graphiql-tab > .graphiql-tab-button {
     outline: none;
   }
   .docExplorerWrap {
-    // Built-in plugin height is set to 100% which prevents the plugin bar scrolling
+    /* Built-in plugin height is set to 100% which prevents the plugin bar scrolling */
     height: auto !important;
+    /* Don't cap explorer width */
+    width: auto !important;
   }
   .graphiql-explorer-graphql-arguments {
     svg {
       display: inline-block;
     }
+  }
+
+  .graphiql-explorer-root > div {
+    overflow: auto !important;
   }
 `;
 
