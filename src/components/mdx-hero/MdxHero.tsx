@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { devices } from 'src/styles/devices';
