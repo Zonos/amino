@@ -33,8 +33,8 @@ const Wrapper = styled(MdxSection)`
 `;
 
 const HeroImage = styled.div`
-  && img {
-    box-shadow: ${theme.v3ShadowLarge};
+  img {
+    box-shadow: ${theme.v3ShadowLarge} !important;
     border-radius: 10px;
   }
 `;
