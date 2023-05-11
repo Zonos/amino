@@ -33,7 +33,8 @@ const Wrapper = styled(MdxSection)`
 `;
 
 const HeroImage = styled.div`
-  img, .gatsby-resp-image-wrapper {
+  img,
+  .gatsby-resp-image-wrapper {
     box-shadow: ${theme.v3ShadowLarge};
     border-radius: 10px;
   }
