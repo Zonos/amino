@@ -6,13 +6,8 @@ import styled from 'styled-components';
 import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
-  * {
-    margin-bottom: ${theme.space16};
-  }
-
-  *:last-of-type {
-    margin-bottom: 0;
-  }
+  display: flex;
+  gap: ${theme.space8};
 `;
 
 export type RadioGroupItem<T extends string = string> = {
@@ -21,17 +16,19 @@ export type RadioGroupItem<T extends string = string> = {
 };
 
 export type RadioGroupProps<T extends string = string> = {
+  className?: string;
+  disabled?: boolean;
   initialValue?: string;
   items: RadioGroupItem<T>[];
-  disabled?: boolean;
   onChange: (newValue: T) => void;
 };
 
 export const RadioGroup = <T extends string = string>({
-  items,
+  className,
   disabled,
-  onChange,
   initialValue,
+  items,
+  onChange,
 }: RadioGroupProps<T>) => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -60,5 +57,5 @@ export const RadioGroup = <T extends string = string>({
     />
   ));
 
-  return <RadioContainer>{radios}</RadioContainer>;
+  return <RadioContainer className={className}>{radios}</RadioContainer>;
 };
