@@ -94,3 +94,6 @@ __diff_output__
 /playwright-report/
 /playwright/.cache/
 snapshots
+
+# Ignore _private_* folders (for some scratchpad scripts)
+_private_*

@@ -250,3 +250,31 @@ export const ScrollableDialogSelect = () => {
     </CenteredDiv>
   );
 };
+
+export const SelectWithNumberOptions = () => {
+  const [value, setValue] = useState<number>(1);
+  const options = [
+    {
+      label: 'US Dollar (USD)',
+      icon: <FileIcon size={14} />,
+      value: 1,
+    },
+    {
+      icon: <FileIcon size={14} />,
+      label: 'European Euro (EUR)',
+      value: 2,
+    },
+  ];
+  return (
+    <div>
+      <Select
+        icon={<FileIcon size={20} />}
+        onChange={item => item?.value && setValue(item.value)}
+        label="Currencies"
+        value={options.find(option => option.value === value) || null}
+        options={options}
+      />
+      Selected value: {value} (typeof value: {typeof value})
+    </div>
+  );
+};
