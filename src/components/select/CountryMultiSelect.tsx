@@ -59,7 +59,7 @@ export const MenuList = <
 };
 
 export interface CountryMultiSelectProps<
-  Option extends IOption = IOption,
+  Option extends IOption<string> = IOption<string>,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<
