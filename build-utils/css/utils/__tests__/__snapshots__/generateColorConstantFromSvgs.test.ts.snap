@@ -1,203 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Make sure all generated color constants matched previous snapshot: _blue.ts 1`] = `
-"export const blue = {
-  /** @info #DEECFE  */
-  'blue-100': '#DEECFE',
-  /** @info #C5DCFD  */
-  'blue-200': '#C5DCFD',
-  /** @info #AAC8FC  */
-  'blue-300': '#AAC8FC',
-  /** @info #89ADFA  */
-  'blue-400': '#89ADFA',
-  /** @info #568CF6  */
-  'blue-500': '#568CF6',
-  /** @info #435DEE  */
-  'blue-600': '#435DEE',
-  /** @info #294DBE  */
-  'blue-700': '#294DBE',
-  /** @info #263B98  */
-  'blue-800': '#263B98',
-  /** @info #1F2B73  */
-  'blue-900': '#1F2B73',
-  /** @info #151943  */
-  'blue-1000': '#151943',
+exports[`Make sure all generated color constants matched previous snapshot: _spacing.ts 1`] = `
+"export const spacing = {
+  /** @info space-negative-80: -5rem (-80px) */
+  'space-negative-80': '-5rem',
+  /** @info space-negative-76: -4.75rem (-76px) */
+  'space-negative-76': '-4.75rem',
+  /** @info space-negative-72: -4.5rem (-72px) */
+  'space-negative-72': '-4.5rem',
+  /** @info space-negative-68: -4.25rem (-68px) */
+  'space-negative-68': '-4.25rem',
+  /** @info space-negative-64: -4rem (-64px) */
+  'space-negative-64': '-4rem',
+  /** @info space-negative-60: -3.75rem (-60px) */
+  'space-negative-60': '-3.75rem',
+  /** @info space-negative-56: -3.5rem (-56px) */
+  'space-negative-56': '-3.5rem',
+  /** @info space-negative-52: -3.25rem (-52px) */
+  'space-negative-52': '-3.25rem',
+  /** @info space-negative-48: -3rem (-48px) */
+  'space-negative-48': '-3rem',
+  /** @info space-negative-44: -2.75rem (-44px) */
+  'space-negative-44': '-2.75rem',
+  /** @info space-negative-40: -2.5rem (-40px) */
+  'space-negative-40': '-2.5rem',
+  /** @info space-negative-36: -2.25rem (-36px) */
+  'space-negative-36': '-2.25rem',
+  /** @info space-negative-32: -2rem (-32px) */
+  'space-negative-32': '-2rem',
+  /** @info space-negative-28: -1.75rem (-28px) */
+  'space-negative-28': '-1.75rem',
+  /** @info space-negative-24: -1.5rem (-24px) */
+  'space-negative-24': '-1.5rem',
+  /** @info space-negative-20: -1.25rem (-20px) */
+  'space-negative-20': '-1.25rem',
+  /** @info space-negative-16: -1rem (-16px) */
+  'space-negative-16': '-1rem',
+  /** @info space-negative-12: -0.75rem (-12px) */
+  'space-negative-12': '-0.75rem',
+  /** @info space-negative-8: -0.5rem (-8px) */
+  'space-negative-8': '-0.5rem',
+  /** @info space-negative-4: -0.25rem (-4px) */
+  'space-negative-4': '-0.25rem',
+  /** @info space-0: 0 (0) */
+  'space-0': '0',
+  /** @info space-4: 0.25rem (4px) */
+  'space-4': '0.25rem',
+  /** @info space-8: 0.5rem (8px) */
+  'space-8': '0.5rem',
+  /** @info space-12: 0.75rem (12px) */
+  'space-12': '0.75rem',
+  /** @info space-16: 1rem (16px) */
+  'space-16': '1rem',
+  /** @info space-20: 1.25rem (20px) */
+  'space-20': '1.25rem',
+  /** @info space-24: 1.5rem (24px) */
+  'space-24': '1.5rem',
+  /** @info space-28: 1.75rem (28px) */
+  'space-28': '1.75rem',
+  /** @info space-32: 2rem (32px) */
+  'space-32': '2rem',
+  /** @info space-36: 2.25rem (36px) */
+  'space-36': '2.25rem',
+  /** @info space-40: 2.5rem (40px) */
+  'space-40': '2.5rem',
+  /** @info space-44: 2.75rem (44px) */
+  'space-44': '2.75rem',
+  /** @info space-48: 3rem (48px) */
+  'space-48': '3rem',
+  /** @info space-52: 3.25rem (52px) */
+  'space-52': '3.25rem',
+  /** @info space-56: 3.5rem (56px) */
+  'space-56': '3.5rem',
+  /** @info space-60: 3.75rem (60px) */
+  'space-60': '3.75rem',
+  /** @info space-64: 4rem (64px) */
+  'space-64': '4rem',
+  /** @info space-68: 4.25rem (68px) */
+  'space-68': '4.25rem',
+  /** @info space-72: 4.5rem (72px) */
+  'space-72': '4.5rem',
+  /** @info space-76: 4.75rem (76px) */
+  'space-76': '4.75rem',
+  /** @info space-80: 5rem (80px) */
+  'space-80': '5rem',
 } as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _cyan.ts 1`] = `
-"export const cyan = {
-  /** @info #DBFDFF  */
-  'cyan-100': '#DBFDFF',
-  /** @info #BAF8FD  */
-  'cyan-200': '#BAF8FD',
-  /** @info #8FF1FA  */
-  'cyan-300': '#8FF1FA',
-  /** @info #65E2EF  */
-  'cyan-400': '#65E2EF',
-  /** @info #48C4D3  */
-  'cyan-500': '#48C4D3',
-  /** @info #349DAB  */
-  'cyan-600': '#349DAB',
-  /** @info #287E8A  */
-  'cyan-700': '#287E8A',
-  /** @info #236A75  */
-  'cyan-800': '#236A75',
-  /** @info #22525A  */
-  'cyan-900': '#22525A',
-  /** @info #183338  */
-  'cyan-1000': '#183338',
-} as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _gray.ts 1`] = `
-"export const gray = {
-  /** @info white  */
-  'gray-0': 'white',
-  /** @info #F6F6F8  */
-  'gray-50': '#F6F6F8',
-  /** @info #EAEBED  */
-  'gray-100': '#EAEBED',
-  /** @info #D9DADD  */
-  'gray-200': '#D9DADD',
-  /** @info #C5C6CA  */
-  'gray-300': '#C5C6CA',
-  /** @info #ACAEB3  */
-  'gray-400': '#ACAEB3',
-  /** @info #94969E  */
-  'gray-500': '#94969E',
-  /** @info #6A6D77  */
-  'gray-600': '#6A6D77',
-  /** @info #5C5E68  */
-  'gray-700': '#5C5E68',
-  /** @info #4D505A  */
-  'gray-800': '#4D505A',
-  /** @info #40424C  */
-  'gray-900': '#40424C',
-  /** @info #2E3038  */
-  'gray-1000': '#2E3038',
-  /** @info #1E1F26  */
-  'gray-1100': '#1E1F26',
-  /** @info #101116  */
-  'gray-1200': '#101116',
-  /** @info black  */
-  'gray-1300': 'black',
-} as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _green.ts 1`] = `
-"export const green = {
-  /** @info #DBFFDD  */
-  'green-100': '#DBFFDD',
-  /** @info #BAFDC2  */
-  'green-200': '#BAFDC2',
-  /** @info #86F99E  */
-  'green-300': '#86F99E',
-  /** @info #62E488  */
-  'green-400': '#62E488',
-  /** @info #4DC477  */
-  'green-500': '#4DC477',
-  /** @info #2A995A  */
-  'green-600': '#2A995A',
-  /** @info #25794A  */
-  'green-700': '#25794A',
-  /** @info #236641  */
-  'green-800': '#236641',
-  /** @info #214C34  */
-  'green-900': '#214C34',
-  /** @info #193123  */
-  'green-1000': '#193123',
-} as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _orange.ts 1`] = `
-"export const orange = {
-  /** @info #FFEEE0  */
-  'orange-100': '#FFEEE0',
-  /** @info #FED5B8  */
-  'orange-200': '#FED5B8',
-  /** @info #FDC2A0  */
-  'orange-300': '#FDC2A0',
-  /** @info #FCA375  */
-  'orange-400': '#FCA375',
-  /** @info #F88548  */
-  'orange-500': '#F88548',
-  /** @info #D7581F  */
-  'orange-600': '#D7581F',
-  /** @info #A4431D  */
-  'orange-700': '#A4431D',
-  /** @info #85341D  */
-  'orange-800': '#85341D',
-  /** @info #63261A  */
-  'orange-900': '#63261A',
-  /** @info #3C1611  */
-  'orange-1000': '#3C1611',
-} as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _purple.ts 1`] = `
-"export const purple = {
-  /** @info #EEF0FF  */
-  'purple-100': '#EEF0FF',
-  /** @info #D8DAFD  */
-  'purple-200': '#D8DAFD',
-  /** @info #C4C0FC  */
-  'purple-300': '#C4C0FC',
-  /** @info #B09FF9  */
-  'purple-400': '#B09FF9',
-  /** @info #A379F6  */
-  'purple-500': '#A379F6',
-  /** @info #9635EE  */
-  'purple-600': '#9635EE',
-  /** @info #7728B9  */
-  'purple-700': '#7728B9',
-  /** @info #612392  */
-  'purple-800': '#612392',
-  /** @info #461F66  */
-  'purple-900': '#461F66',
-  /** @info #29143A  */
-  'purple-1000': '#29143A',
-} as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _red.ts 1`] = `
-"export const red = {
-  /** @info #FFEDEB  */
-  'red-100': '#FFEDEB',
-  /** @info #FDD3D0  */
-  'red-200': '#FDD3D0',
-  /** @info #FCB4B2  */
-  'red-300': '#FCB4B2',
-  /** @info #FA8B8B  */
-  'red-400': '#FA8B8B',
-  /** @info #F9505B  */
-  'red-500': '#F9505B',
-  /** @info #D3203F  */
-  'red-600': '#D3203F',
-  /** @info #A81E37  */
-  'red-700': '#A81E37',
-  /** @info #841A2F  */
-  'red-800': '#841A2F',
-  /** @info #601725  */
-  'red-900': '#601725',
-  /** @info #3B1119  */
-  'red-1000': '#3B1119',
-} as const;
-"
-`;
-
-exports[`Make sure all generated color constants matched previous snapshot: _transparent.ts 1`] = `
-"export const transparent = {
-  /** @info #FFFFFFBB */
-  'transparent-white': '#FFFFFFBB',
-  /** @info #000000BB */
-  'transparent-black': '#000000BB',
-};
 "
 `;

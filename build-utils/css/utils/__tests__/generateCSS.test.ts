@@ -1,7 +1,7 @@
-import { darkStyleList } from '../../constants/_darkTheme';
+import { night } from '../../constants/_night';
 import { theme } from '../../constants/theme';
 import {
-  generateDarkThemeContent,
+  generateNightThemeContent,
   generateLightThemeContent,
 } from '../generateCSS';
 
@@ -10,7 +10,7 @@ test(`Case light theme:`, async () => {
   expect(result).toMatchSnapshot();
 });
 
-test(`Case dark theme:`, async () => {
-  const result = await generateDarkThemeContent(darkStyleList);
+test(`Case night theme:`, async () => {
+  const result = await generateNightThemeContent(night);
   expect(result).toMatchSnapshot();
 });

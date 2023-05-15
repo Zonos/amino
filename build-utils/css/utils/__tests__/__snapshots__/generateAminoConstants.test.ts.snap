@@ -260,7 +260,7 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   transparentBlack: 'var(--amino-transparent-black)',
 
-  /* COMMON COLOR */
+  /* INTENT COLOR */
   /** @info var(--amino-red-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   danger: 'var(--amino-danger)',

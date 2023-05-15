@@ -9,8 +9,8 @@ import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import { Color } from 'src/types';
 import { Intent } from 'src/types/Intent';
+import { ITheme } from 'src/types/ITheme';
 import { Size } from 'src/types/Size';
-import { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 import { IRippleActions, RippleGroup } from './RippleGroup';
@@ -156,8 +156,8 @@ const Secondary = styled(AminoButton)`
     background: ${theme.gray100};
   }
 
-  /** Dark mode */
-  &.dark {
+  /** Night mode */
+  &.night {
     color: white;
     background: ${theme.gray1000};
 
@@ -331,7 +331,7 @@ type ButtonBase = {
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
   tabIndex?: number;
-  theme?: Theme | 'space';
+  theme?: ITheme;
   type?: 'button' | 'reset' | 'submit';
 };
 

@@ -3,7 +3,7 @@ import { forwardRef, ReactNode } from 'react';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import { ITheme } from 'src/types/ITheme';
 import styled, { css } from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -153,7 +153,7 @@ export type DialogProps = {
   leftActions?: ReactNode;
   onClose: () => void;
   open: boolean;
-  theme?: IAminoTheme;
+  theme?: ITheme;
   width?: number;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true

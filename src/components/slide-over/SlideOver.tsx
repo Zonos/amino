@@ -9,7 +9,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import { ITheme } from 'src/types/ITheme';
 import styled from 'styled-components';
 
 const Popup = styled(motion.div)`
@@ -90,7 +90,7 @@ export type SlideOverProps = {
   label?: string;
   onClose: () => void;
   open: boolean;
-  theme?: IAminoTheme;
+  theme?: ITheme;
   modal?: boolean;
   subtitle?: ReactNode;
 };

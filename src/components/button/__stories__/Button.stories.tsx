@@ -137,10 +137,10 @@ const ButtonRow = ({
         intent={intent}
         disabled={disabled}
         loading={loading}
-        theme="dark"
+        theme="night"
         {...props}
       >
-        Dark
+        Night
       </Button>
     </HWrapper>
     <HWrapper>

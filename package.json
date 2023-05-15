@@ -141,9 +141,7 @@
   },
   "scripts": {
     "build:ci": "yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",
-    "build:colors": "ts-node build-utils/css/buildColorConstants.ts",
     "build:dts": "ttsc -p ./tsconfig.emitDeclarationOnly.json",
-    "build:logic-constant": "ts-node build-utils/css/buildLogicConstants.ts",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "build": "yarn && yarn ci:concurrent && yarn build:theme && ts-node build-utils/build.ts && yarn build:dts",

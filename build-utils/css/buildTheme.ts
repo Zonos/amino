@@ -1,22 +1,29 @@
+import { ITheme } from '../types/ITheme';
 import { checkGeneratedColorsAreUsed } from './utils/checkGeneratedColorsAreUsed';
 import { generateAminoConstants } from './utils/generateAminoContants';
-import { generateColorConstantFromSvgs } from './utils/generateColorConstantFromSvgs';
 import { generateCSS, generateThemeCapture } from './utils/generateCSS';
 import { logging } from './utils/logging';
 
+const logError = ({theme, unusedConstants}: {theme: ITheme, unusedConstants: string[]}) => {
+ /** Terminate the build process */
+ logging(`Error occurs: There are some ${theme} constants that are generated and not being used in "theme.ts":
+ File list: ${unusedConstants.map(constant => `"${constant}"`).join(', ')}`);
+ logging(
+   `Please either delete the redundant files or use them in "build-utils/css/constants/theme.ts" to continue.`
+ );
+ process.exit(1);
+}
+
 (async () => {
-  await generateColorConstantFromSvgs();
+  const unusedDayConstants = await checkGeneratedColorsAreUsed('day');
+  const unusedNightConstants = await checkGeneratedColorsAreUsed('night');
 
-  const unusedConstants = await checkGeneratedColorsAreUsed();
+  if (unusedDayConstants.length) {
+    logError({theme: 'day', unusedConstants: unusedDayConstants});
+  }
 
-  if (unusedConstants.length) {
-    /** Terminate the build process */
-    logging(`Error occurs:There are some constants that are generated and not being used in "theme.ts": 
-    File list: ${unusedConstants.map(constant => `"${constant}"`).join(', ')}`);
-    logging(
-      `Please either delete the redundant files or use them in "build-utils/css/constants/theme.ts" to continue.`
-    );
-    process.exit(1);
+  if (unusedNightConstants.length) {
+    logError({theme: 'night', unusedConstants: unusedNightConstants});
   }
 
   /** Generate style constants file to folder desitnation */

@@ -1,12 +1,13 @@
-import { spacing } from './generated/_spacing';
-import { blue } from './generated/colors/_blue';
-import { cyan } from './generated/colors/_cyan';
-import { gray } from './generated/colors/_gray';
-import { green } from './generated/colors/_green';
-import { orange } from './generated/colors/_orange';
-import { purple } from './generated/colors/_purple';
-import { red } from './generated/colors/_red';
-import { transparent } from './generated/colors/_transparent';
+import { spacing } from './theme/_spacing';
+import { shadow } from './theme/day/_shadow';
+import { blue } from './theme/day/colors/_blue';
+import { cyan } from './theme/day/colors/_cyan';
+import { gray } from './theme/day/colors/_gray';
+import { green } from './theme/day/colors/_green';
+import { orange } from './theme/day/colors/_orange';
+import { purple } from './theme/day/colors/_purple';
+import { red } from './theme/day/colors/_red';
+import { transparent } from './theme/day/colors/_transparent';
 
 /* eslint-disable deprecation/deprecation */
 export const theme = {
@@ -38,7 +39,7 @@ export const theme = {
   /* TRANSPARENT */
   ...transparent,
 
-  /* COMMON COLOR */
+  /* INTENT COLOR */
   danger: 'var(--amino-red-600)',
   'danger-dark': 'var(--amino-red-700)',
   error: 'var(--amino-red-600)',
@@ -111,12 +112,7 @@ export const theme = {
   'appbar-elevation': 'var(--amino-elevation-500)',
 
   /* BOX SHADOW */
-  'v3-shadow-inset': 'inset 0px 2px 4px rgba(0, 0, 0, 0.06)',
-  'v3-shadow-base': `0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1)`,
-  'v3-shadow-medium': `0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1)`,
-  'v3-shadow-large': `0px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05)`,
-  'v3-shadow-xl': `0px 20px 25px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.04)`,
-  'v3-shadow-xxl': '0px 32px 50px rgba(0, 0, 0, 0.24)',
+  ...shadow,
 
   /* BORDER */
   border: '1px solid var(--amino-border-color)',

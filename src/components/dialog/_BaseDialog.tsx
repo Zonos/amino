@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import { ITheme } from 'src/types/ITheme';
 import styled from 'styled-components';
 
 const DialogLayout = styled.div`
@@ -39,7 +39,7 @@ export type BaseDialogProps = {
   children: ReactNode;
   className?: string;
   open: boolean;
-  theme?: IAminoTheme;
+  theme?: ITheme;
   width?: number;
   onClose?: () => void;
   closeOnBlur?: boolean;

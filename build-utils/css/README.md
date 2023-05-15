@@ -3,8 +3,6 @@
 This script is primarily created for generating accessible style constants and css file from configured style constant to benefit from strongly typed css variable and jsdocs support for Amino consumers.
 
 - Sub script for generating color css constant from the color svgs downloaded from Figma, and checking if any generated color constants are not being imported/used in the main `theme.ts`, also generating dynamic constants to be consumed in `build-utils/css/constants/theme.ts`.
-    + Script for building the dynamic logic constant process is `build-utils/css/buildLogicConstants.ts`.
-    + Script for building color from svg exported from Figma is `build-utils/css/buildColorConstants.ts`
 - Main script for this whole building process is `build-utils/css/buildTheme.ts`.
 
 ## **Table content**
@@ -20,7 +18,7 @@ This script is primarily created for generating accessible style constants and c
     - [When you run the script, it will:](#when-you-run-the-script-it-will-1)
     - [How to:](#how-to-1)
       - [Create a logic file](#create-a-logic-file)
-      - [Import generated file in theme file (`theme.ts` | `_darkTheme.ts`)](#import-generated-file-in-theme-file-themets--_darkthemets)
+      - [Import generated file in theme file (`theme.ts` | `_night.ts`)](#import-generated-file-in-theme-file-themets--_nightts)
   - [**Building process**](#building-process)
     - [Overview](#overview-2)
     - [When you run the script, it will:](#when-you-run-the-script-it-will-2)
@@ -31,14 +29,6 @@ This script is primarily created for generating accessible style constants and c
 
 ---
 
-## **Building colors process**
-### Overview
-Sub script `build-utils/css/buildColorConstants.ts` is primarily created for generating the color constants in folder `build-utils/css/constants/generated/colors` that can be used in any theme file (`theme.ts`). If you run `yarn build:theme`, it will also trigger the command below.
-
-**Command**:
-```bash
-    yarn build:colors
-```
 ### When you run the script, it will:
 
 1. Read through all the files om `build-utils/css/colorSvgs` to look for svgs that are downloaded from Figma. Base on the svg downloaded from Figma, the name of the svg will be separated into 2 parts:  "color name" and "color intensity" (Ex: "Blue500"). And the color code can be found in `fill` property of a `rect` tag in the svg. In this first step, the script will extract all of necessary data (color name, color code and color intensity) for step 2.
@@ -107,7 +97,7 @@ There would be 2 cases: the variable exists and you just want to update the colo
     - You can also adjust the content of constant `content` in the function `generateFileContent` to modify what's being generated if needed (Like add jsdocs or change text or adding more deprecated color).
 4. Run the command below to trigger the generation process.
     ```yarn build:colors```
-5. Import and use the generated constant in the `theme.ts` by spreading the constant variable (you can find out more details [here](#import-generated-file-in-theme-file-themets--_darkthemets)).
+5. Import and use the generated constant in the `theme.ts` by spreading the constant variable (you can find out more details [here](#import-generated-file-in-theme-file-themets--_nightts)).
     ```
         // File name: `theme.ts`
         import { blue } from './generated/colors/_blue';
@@ -121,7 +111,6 @@ There would be 2 cases: the variable exists and you just want to update the colo
 ---
 ## **Generating dynamic constant process**
 ### Overview
-Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for having a way to generate a constant programmatically with logic and customized jsdocs comments.
 (**Included script to generate template for generating a content**)
 **REASON**: Typescript will not read and provide jsdocs info on the spread operators (Ex: `...sthing`), so we can't benefit from jsdocs tag when using typescript key suggestion.
 
@@ -171,7 +160,7 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 6.  Run command `'yarn build:logic-constant'` to generate the file. New files with exact same name will be generated at `build-utils/css/constants/generated`
 </details>
 
-#### Import generated file in theme file (`theme.ts` | `_darkTheme.ts`)
+#### Import generated file in theme file (`theme.ts` | `_night.ts`)
 
 <details>
 Let's say we have an exported constant `testNumber` in `build-utils/csss/constants/logics/_testNumber.ts` and we want to import that file into `theme.ts`.
@@ -202,8 +191,8 @@ Let's say we have an exported constant `testNumber` in `build-utils/csss/constan
 ## **Building process**
 
 ### Overview
-Main command for this is just `yarn build`. This would trigger the tests for the whole build application, typescript check and eslint check, also run `yarn build:theme` to generate css files that are based on the theme constant `theme.ts` or `_darkTheme.ts` in `build-utils/css/constants`.
-> **NOTE**: Because of running `'yarn build:theme'` will overwrite last capture with latest content, before you run a script, run `yarn test` first to make sure the current constant `theme.ts` and `_darkTheme.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
+Main command for this is just `yarn build`. This would trigger the tests for the whole build application, typescript check and eslint check, also run `yarn build:theme` to generate css files that are based on the theme constant `theme.ts` or `_night.ts` in `build-utils/css/constants`.
+> **NOTE**: Because of running `'yarn build:theme'` will overwrite last capture with latest content, before you run a script, run `yarn test` first to make sure the current constant `theme.ts` and `_night.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
 
 ### When you run the script, it will:
 
@@ -224,11 +213,11 @@ Main command for this is just `yarn build`. This would trigger the tests for the
 
 2. Generate css file (theme.css)
 
-   - Get contents from `build-utils/css/constants` (theme.ts and \_darkTheme.ts), format and generate `theme.css` and put in `src/styles` folder
+   - Get contents from `build-utils/css/constants` (theme.ts and \_night.ts), format and generate `theme.css` and put in `src/styles` folder
 
 3. Generate theme css capture (These captures will be used for unit testing when running `yarn test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
    - Generate light theme css capture get from `build-utils/css/constants/theme.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`
-   - Generate dark theme css capture get from `build-utils/css/constants/_darkTheme.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/dark-theme.css`
+   - Generate night theme css capture get from `build-utils/css/constants/_night.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/night-theme.css`
 
 ### How to
 
@@ -271,13 +260,13 @@ If you create new variable, the script will add some default jsdocs to your vari
 <details>
 **NOTE**: ALL OTHER THEME FILE NAME NEED TO HAVE PREFIX `_` SINCE IT WOULD ONLY BE USED FOR GENERATING CSS FILE AND NOT BEING EXPOSED TO AMINO CONSUMER.
 
-File `theme.ts` in `build-utils/css/constants` is the main theme constant. If you are going to update/add new theme, the new theme need to extend the key of variables in `theme.ts` by overwriting the variable in it's own theme file (ex: `_darkTheme.ts`).
+File `theme.ts` in `build-utils/css/constants` is the main theme constant. If you are going to update/add new theme, the new theme need to extend the key of variables in `theme.ts` by overwriting the variable in it's own theme file (ex: `_night.ts`).
 
-To strongly type the key of the new theme constant, use custom utility function `constraintDefinedAminoVar` located at `build-utils/css/constants/utils.ts` (This function would do nothing at runtime but help Typescript to understand and tell developers where the key in `darkStyleList` constant doesn't match with existing key in `theme.ts`).
-**Ex**: Constraint key constant of `Dark Mode` with keys exist in `Light Mode` (theme.ts).
+To strongly type the key of the new theme constant, use custom utility function `constraintDefinedAminoVar` located at `build-utils/css/constants/utils.ts` (This function would do nothing at runtime but help Typescript to understand and tell developers where the key in `night` constant doesn't match with existing key in `theme.ts`).
+**Ex**: Constraint key constant of `Night` with keys exist in `Day` (theme.ts).
 
 ```
-export const darkStyleList = constraintDefinedAminoVar(theme, {
+export const night = constraintDefinedAminoVar(theme, {
 'gray-l80': '#f5f5f6', // 'gray-l80' exist in `theme` constant, overwrite gray-l80 value => NO TYPESCRIPT ERROR
 'new-gray-l80': '#f5f5f6', // `new-gray-l80' doesn't exist in `theme` constant => TYPESCRIPT ERROR
 ...
