@@ -14,7 +14,6 @@ export const theme = {
   transition: 'all 0.2s ease-in-out 0s',
   'type-scale-base': '16px',
 
-  black: '#0c0c0d',
   /* GRAY PALETTE */
   ...gray,
 

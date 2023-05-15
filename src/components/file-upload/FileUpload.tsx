@@ -136,7 +136,7 @@ export const FileUpload = ({
 
       return (
         <UploadedFileInfoWrapper>
-          <Text type="label" color="gray1300">
+          <Text type="label" color="gray1200">
             {name}
           </Text>
           {size && (

@@ -275,7 +275,7 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
       color: ${theme.gray700};
     }
     &:active {
-      color: ${theme.black};
+      color: ${theme.gray1200};
     }
   }
 

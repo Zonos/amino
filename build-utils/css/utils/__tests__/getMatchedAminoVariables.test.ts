@@ -54,7 +54,6 @@ const testCases: UnitTestItem[] = [
       { key: '--amino-radius', value: '0.375rem' },
       { key: '--amino-radius-lg', value: '0.5rem' },
       { key: '--amino-radius-xl', value: '0.75rem' },
-      { key: '--amino-black', value: '#0c0c0D' },
       { key: '--amino-gray-l80', value: '#f5f5f6' },
       { key: '--amino-gray-l60', value: '#eaeaec' },
       { key: '--amino-gray-l40', value: '#d6d6d9' },

@@ -123,7 +123,7 @@ const Template: ComponentStory<typeof Banner> = ({
               rel="noreferrer"
             >
               <Button
-                borderColor="black"
+                borderColor="gray1200"
                 background="inherit"
                 color="inherit"
                 intent="outline"

@@ -1,10 +1,39 @@
 import { theme } from './theme';
 import { blue } from './theme/night/colors/_blue';
+import { cyan } from './theme/night/colors/_cyan';
+import { gray } from './theme/night/colors/_gray';
+import { red } from './theme/night/colors/_red';
+import { orange } from './theme/night/colors/_orange';
+import { green } from './theme/night/colors/_green';
+import { purple } from './theme/night/colors/_purple';
+import { transparent } from './theme/night/colors/_transparent';
+
 import { constraintDefinedAminoVar } from './utils';
 
 export const night = constraintDefinedAminoVar(theme, {
+  /* GRAY PALETTE */
+  ...gray,
 
+  /* BLUE PALETTE */
   ...blue,
+
+  /* CYAN PALETTE */
+  ...cyan,
+
+  /* RED PALETTE */
+  ...red,
+
+  /* ORANGE PALETTE */
+  ...orange,
+
+  /* GREEN PALETTE */
+  ...green,
+
+  /* PURPLE */
+  ...purple,
+
+  /* TRANSPARENT */
+  ...transparent,
 
   'page-background': 'var(--amino-gray-50)',
   'surface-color': 'var(--amino-gray-base)',
