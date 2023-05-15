@@ -1,9 +1,11 @@
 name: Playwright Tests
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
 jobs:
   test_setup:
     name: Test setup
@@ -17,36 +19,39 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
+
   test_e2e:
     needs: test_setup
     timeout-minutes: 60
     runs-on: macos-12
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'yarn'
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
-    # https://playwrightsolutions.com/playwright-github-action-to-cache-the-browser-binaries/
-    - name: Get installed Playwright version
-      id: playwright-version
-      run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'])")" >> $GITHUB_ENV
-    - name: Cache playwright binaries
-      uses: actions/cache@v3
-      id: playwright-cache
-      with:
-        path:
-          ~/Library/Caches/ms-playwright
-        key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-      # Install browsers
-    - run: yarn playwright install --with-deps
-      if: steps.playwright-cache.outputs.cache-hit != 'true'
-      # Install system requirement for installed browsers
-    - run: yarn playwright install-deps
-      if: steps.playwright-cache.outputs.cache-hit != 'true'
-    - name: Run Playwright tests
-      run: yarn playwright test
-      env:
-        PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
+      # https://playwrightsolutions.com/playwright-github-action-to-cache-the-browser-binaries/
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'])")" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: ~/Library/Caches/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+        # Install browsers
+      - run: pnpm playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        # Install system requirement for installed browsers
+      - run: pnpm playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - name: Run Playwright tests
+        run: pnpm playwright test
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}

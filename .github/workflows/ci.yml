@@ -7,43 +7,55 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm build
 
   Lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint:prod
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm lint:prod
 
   TSC:
     name: Check types
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn tsc
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm tsc
 
   Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn test:prod
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm test:prod
