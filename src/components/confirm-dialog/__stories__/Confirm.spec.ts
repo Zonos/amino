@@ -5,6 +5,7 @@ test.describe('Functionality of confirmation dialog', () => {
   test.beforeEach(async ({ page }) => {
     page.goto('/');
     await page.getByRole('button', { name: 'Confirm-Dialog' }).click();
+    await page.getByRole('button', { name: 'Confirm', exact: true }).click();
     await page.getByRole('link', { name: 'Confirm' }).click();
 
     /** Open popup since interact with `iframe` doesn't give much insight when debuging */
