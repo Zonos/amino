@@ -1,4 +1,4 @@
-import { ZonosIcon } from 'src/icons/IconIndex';
+import { ZonosLogoIcon } from 'src/icons/custom/ZonosLogoIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled, { keyframes } from 'styled-components';
 
@@ -26,7 +26,7 @@ const Rotate = keyframes`
   }
 `;
 
-const StyledIcon = styled(ZonosIcon)`
+const StyledIcon = styled(ZonosLogoIcon)`
   animation: ${Rotate} 2s linear infinite;
 `;
 
