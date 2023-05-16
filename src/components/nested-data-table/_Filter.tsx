@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import { Column } from 'react-data-grid';
+import type { Column } from 'react-data-grid';
 
 import { FilterIcon } from 'src/icons/FilterIcon';
 import { theme } from 'src/styles/constants/theme';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
 import styled from 'styled-components';
 
-import { RowWithIndex } from '../pivot-table/PivotTable';
+import type { RowWithIndex } from '../pivot-table/PivotTable';
 import { MultiSelect } from '../select/MultiSelect';
 
 const StyledTriggerButton = styled.button`

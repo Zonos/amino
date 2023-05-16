@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { InputProps, SearchInput } from 'src/components/input/SearchInput';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type InputProps, SearchInput } from 'src/components/input/SearchInput';
 
 const InputMeta: Meta = {
   component: SearchInput,
@@ -40,7 +40,7 @@ const InputMeta: Meta = {
 
 export default InputMeta;
 
-const Template: Story<InputProps> = ({
+const Template: StoryFn<InputProps> = ({
   autoFocus,
   disabled,
   onKeyDown,

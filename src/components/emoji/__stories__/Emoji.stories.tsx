@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Banner } from 'src/components/banner/Banner';
 import { VStack } from 'src/components/stack/VStack';
 import { theme } from 'src/styles/constants/theme';
@@ -50,7 +50,7 @@ const BannerStyled = styled(Banner)`
   }
 `;
 
-const Template: Story = () => {
+const Template: StoryFn = () => {
   const [count, setCount] = useState(50);
   return (
     <VStack>

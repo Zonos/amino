@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { ToastProps } from 'src/components/toast/Toast';
+import type { Meta, StoryFn } from '@storybook/react';
+import type { ToastProps } from 'src/components/toast/Toast';
 import { ToastContextProvider } from 'src/components/toast/ToastContext';
 
-import { ToastConsumer } from './ToastConsumer.stories';
+import { ToastConsumer } from './ToastConsumer';
 
 const ToastMeta: Meta = {
   component: ToastContextProvider,
@@ -10,7 +10,7 @@ const ToastMeta: Meta = {
 
 export default ToastMeta;
 
-const Template: Story<ToastProps> = ({ children }: ToastProps) => (
+const Template: StoryFn<ToastProps> = ({ children }: ToastProps) => (
   <ToastContextProvider>
     {children}
     <ToastConsumer />

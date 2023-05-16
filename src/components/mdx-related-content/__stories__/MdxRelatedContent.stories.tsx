@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MdxCardGrid } from 'src/components/mdx-card-grid/MdxCardGrid';
 
 import { MdxRelatedContent as MdxRelatedContentComponent } from '../MdxRelatedContent';
@@ -9,7 +9,7 @@ const MdxRelatedContentMeta: Meta = {
 
 export default MdxRelatedContentMeta;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <MdxCardGrid>
     <MdxRelatedContentComponent
       product="landed-cost"

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ReactElement, ReactNode } from 'react';
+import type { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
 import { SearchInput } from 'src/components/input/SearchInput';
 import { theme } from 'src/styles/constants/theme';

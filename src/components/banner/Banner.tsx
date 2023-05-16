@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
@@ -8,7 +8,7 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import { Color, Intent } from 'src/types';
+import type { Color, Intent } from 'src/types';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';

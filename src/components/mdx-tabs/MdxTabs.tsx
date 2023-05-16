@@ -1,6 +1,6 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
-import { AnimatePresence, motion, Variants } from 'framer-motion';
+import { type Variants, AnimatePresence, motion } from 'framer-motion';
 import { Tabs } from 'src/components/tabs/Tabs';
 import styled from 'styled-components';
 

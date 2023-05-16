@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';

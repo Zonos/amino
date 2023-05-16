@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import {
+  type CoverSheetProps,
   CoverSheet,
-  CoverSheetProps,
 } from 'src/components/cover-sheet/CoverSheet';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import { VStack } from 'src/components/stack/VStack';
@@ -23,7 +23,7 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-const Template: Story<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
+const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
   actionPortalOpen: _actionPortalOpen = false,
   children,
   ...props

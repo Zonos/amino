@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode, useMemo } from 'react';
+import { type MouseEvent, type ReactNode, useMemo } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';

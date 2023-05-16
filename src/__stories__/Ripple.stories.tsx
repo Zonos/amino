@@ -1,8 +1,11 @@
 import { useRef, useState } from 'react';
 
-import { ComponentStory, Meta } from '@storybook/react';
+import type { ComponentStory, Meta } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
-import { IRippleActions, RippleGroup } from 'src/components/button/RippleGroup';
+import {
+  type IRippleActions,
+  RippleGroup,
+} from 'src/components/button/RippleGroup';
 import { useRipple } from 'src/components/button/useRipple';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { VStack } from 'src/components/stack/VStack';

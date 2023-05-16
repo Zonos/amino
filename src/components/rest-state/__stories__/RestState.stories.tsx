@@ -1,6 +1,9 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
-import { RestState, RestStateProps } from 'src/components/rest-state/RestState';
+import {
+  type RestStateProps,
+  RestState,
+} from 'src/components/rest-state/RestState';
 
 const RestStateMeta: Meta = {
   component: RestState,
@@ -8,7 +11,7 @@ const RestStateMeta: Meta = {
 
 export default RestStateMeta;
 
-const Template: Story<RestStateProps> = ({
+const Template: StoryFn<RestStateProps> = ({
   label,
   subtitle,
   action,

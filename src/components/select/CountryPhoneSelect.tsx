@@ -1,11 +1,11 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { type ReactNode, useCallback, useEffect, useState } from 'react';
 import {
+  type GroupBase,
+  type MenuListProps,
+  type Props,
+  type SelectComponentsConfig,
+  type StylesConfig,
   components as RScomponents,
-  GroupBase,
-  MenuListProps,
-  Props,
-  SelectComponentsConfig,
-  StylesConfig,
 } from 'react-select';
 
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
@@ -13,8 +13,8 @@ import { Input } from 'src/components/input/Input';
 import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
-import { ICountryOption } from 'src/types/ICountry';
-import { IOption } from 'src/types/IOption';
+import type { ICountryOption } from 'src/types/ICountry';
+import type { IOption } from 'src/types/IOption';
 import styled from 'styled-components';
 
 import { Select } from './Select';

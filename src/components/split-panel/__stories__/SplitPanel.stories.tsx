@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -36,7 +36,7 @@ const StyledItem = styled.div`
 
 type SplitPanelProps = Parameters<typeof SplitPanelComponent>[0];
 
-const Template: Story<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
+const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   const [isCollapse, setIsCollapse] = useState(false);
   const [itemQty, setItemQty] = useState(2);
   const [collapseFirstItem, setCollapseFirstItem] = useState(false);

@@ -1,6 +1,6 @@
 import {
+  type ButtonProps,
   Button as AminoButton,
-  ButtonProps,
 } from 'src/components/button/Button';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { theme } from 'src/styles/constants/theme';

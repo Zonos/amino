@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { flattenRow } from 'src/utils/flattenRow';

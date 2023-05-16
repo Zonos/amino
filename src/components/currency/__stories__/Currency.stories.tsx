@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Currency } from 'src/components/currency/Currency';
 
 const CurrencyMeta: Meta = {
@@ -11,7 +11,7 @@ export default CurrencyMeta;
 
 type CurrencyProps = Parameters<typeof Currency>[number];
 
-const CurrencyTemplate: Story<CurrencyProps> = ({
+const CurrencyTemplate: StoryFn<CurrencyProps> = ({
   amount,
   code,
 }: CurrencyProps) => <Currency amount={amount} code={code} />;

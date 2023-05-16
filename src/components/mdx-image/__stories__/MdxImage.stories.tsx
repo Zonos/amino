@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { ComponentStory, Meta } from '@storybook/react';
 import { MdxImage as MdxImageComponent } from 'src/components/mdx-image/MdxImage';
 import styled from 'styled-components';
 

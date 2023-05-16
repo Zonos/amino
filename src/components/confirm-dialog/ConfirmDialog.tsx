@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
@@ -9,8 +9,8 @@ import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
 import { HelpIcon } from 'src/icons/HelpIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
-import { Intent } from 'src/types/Intent';
+import type { IAminoTheme } from 'src/types/IAminoTheme';
+import type { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
 
 const Content = styled.div`

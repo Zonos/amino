@@ -1,7 +1,7 @@
-import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
-import { ICountryOption } from 'src/types/ICountry';
+import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import type { ICountryOption } from 'src/types/ICountry';
 
-import { Select, SelectProps } from './Select';
+import { type SelectProps, Select } from './Select';
 
 type CountrySelectType<T extends string> = {
   autoFocus?: SelectProps['autoFocus'];

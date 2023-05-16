@@ -1,4 +1,4 @@
-import { IOption } from './IOption';
+import type { IOption } from 'src/types/IOption';
 
 export const regions = [
   'Africa',

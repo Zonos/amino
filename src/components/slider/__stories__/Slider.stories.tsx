@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type SliderProps,
   Slider as SliderComponent,
-  SliderProps,
 } from 'src/components/slider/Slider';
 import { VStack } from 'src/components/stack/VStack';
 
@@ -13,7 +13,7 @@ const SliderMeta: Meta = {
 
 export default SliderMeta;
 
-const Template: Story<SliderProps> = ({
+const Template: StoryFn<SliderProps> = ({
   max,
   min,
   step,

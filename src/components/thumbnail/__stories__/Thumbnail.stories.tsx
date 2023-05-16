@@ -1,9 +1,12 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import * as icons from '../../../icons/IconIndex';
-import { Thumbnail as ThumbnailComponent, ThumbnailProps } from '../Thumbnail';
+import {
+  type ThumbnailProps,
+  Thumbnail as ThumbnailComponent,
+} from '../Thumbnail';
 
 const ThumbnailMeta: Meta = {
   component: ThumbnailComponent,
@@ -42,7 +45,7 @@ const Wrapper = styled.div`
   gap: ${theme.space24};
 `;
 
-const Template: Story<StoryProps> = ({ icon, ...props }) => {
+const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
   const Icon = icons[icon];
 
   return (

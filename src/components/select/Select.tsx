@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
   ActionMeta,
   GroupBase,
   Props,
@@ -8,8 +8,8 @@ import {
 } from 'react-select';
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
-import { IOption } from 'src/types/IOption';
-import { Size } from 'src/types/Size';
+import type { IOption } from 'src/types/IOption';
+import type { Size } from 'src/types/Size';
 
 import { StyledReactSelect } from './_StyledReactSelect';
 

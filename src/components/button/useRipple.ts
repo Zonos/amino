@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IRippleActions } from './RippleGroup';
+import type { IRippleActions } from './RippleGroup';
 
 interface IRippleEventHandlers {
   onMouseDown: React.MouseEventHandler;

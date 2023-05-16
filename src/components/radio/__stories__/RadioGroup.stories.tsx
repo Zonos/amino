@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type RadioGroupItem,
+  type RadioGroupProps,
   RadioGroup,
-  RadioGroupItem,
-  RadioGroupProps,
 } from 'src/components/radio/RadioGroup';
 
 const RadioMeta: Meta = {
@@ -24,7 +24,7 @@ const RadioMeta: Meta = {
 
 export default RadioMeta;
 
-const Template: Story<RadioGroupProps> = ({
+const Template: StoryFn<RadioGroupProps> = ({
   items,
   initialValue,
   disabled,
@@ -41,7 +41,7 @@ const Template: Story<RadioGroupProps> = ({
   );
 };
 
-export const SimpleRadioGroup: Story<RadioGroupProps> = Template.bind({});
+export const SimpleRadioGroup: StoryFn<RadioGroupProps> = Template.bind({});
 
 const options: RadioGroupItem[] = [
   {

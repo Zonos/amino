@@ -1,5 +1,5 @@
-import { CSSProperties, ReactNode } from 'react';
-import {
+import type { CSSProperties, ReactNode } from 'react';
+import type {
   ActionMeta,
   GroupBase,
   GroupProps,
@@ -14,7 +14,7 @@ import {
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
-import { IOption } from 'src/types/IOption';
+import type { IOption } from 'src/types/IOption';
 
 import { StyledReactSelect } from './_StyledReactSelect';
 

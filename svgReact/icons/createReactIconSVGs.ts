@@ -59,7 +59,7 @@ export const createReactIconSVGs = ({
       `import type { IconProps } from 'src/types/IconProps';`,
       hasSecondaryColor &&
         `import { theme } from 'src/styles/constants/theme';`,
-      hasSecondaryColor && `import { Color } from 'src/types';`,
+      hasSecondaryColor && `import type { Color } from 'src/types';`,
       `import { IconBase } from 'src/icons/icon-base/_IconBase';`,
       maskIds.length &&
         `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,

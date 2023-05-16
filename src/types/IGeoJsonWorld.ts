@@ -1,5 +1,10 @@
-import { BBox } from 'geojson';
-import { Arc, MultiPolygon, Polygon, Transform } from 'topojson-specification';
+import type { BBox } from 'geojson';
+import type {
+  Arc,
+  MultiPolygon,
+  Polygon,
+  Transform,
+} from 'topojson-specification';
 
 type IProperties = {
   name: string;

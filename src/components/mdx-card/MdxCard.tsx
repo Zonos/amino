@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import { ColorPrefix } from 'src/types/Color';
-import { getProductDetails, Products } from 'src/utils/getProductDetails';
+import type { ColorPrefix } from 'src/types/Color';
+import { type Products, getProductDetails } from 'src/utils/getProductDetails';
 import styled, { css } from 'styled-components';
 
 import { MdxAnchor } from '../mdx-anchor/MdxAnchor';

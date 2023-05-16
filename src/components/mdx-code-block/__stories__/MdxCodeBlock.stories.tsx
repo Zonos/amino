@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { ComponentStory, Meta } from '@storybook/react';
 
 import { MdxCodeBlock as MdxCodeBlockComponent } from '../MdxCodeBlock';
 

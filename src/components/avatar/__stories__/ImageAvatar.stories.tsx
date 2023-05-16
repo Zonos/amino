@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import bigSvg from 'src/components/avatar/__stories__/resources/big.svg';
 import magentoSvg from 'src/components/avatar/__stories__/resources/magento.svg';
 import mivaSvg from 'src/components/avatar/__stories__/resources/miva.svg';
@@ -6,12 +6,12 @@ import shopifySvg from 'src/components/avatar/__stories__/resources/shopify.svg'
 import volusionSvg from 'src/components/avatar/__stories__/resources/volusion.svg';
 import woocommerceSvg from 'src/components/avatar/__stories__/resources/woocommerce.svg';
 import {
+  type ImageAvatarProps,
   ImageAvatar as Avatar,
-  ImageAvatarProps,
 } from 'src/components/avatar/ImageAvatar';
 import { HStack } from 'src/components/stack/HStack';
 
-import { BaseWrapper } from './BaseWrapper.stories';
+import { BaseWrapper } from './BaseWrapper';
 
 const ImageAvatarMeta: Meta = {
   component: Avatar,
@@ -38,7 +38,7 @@ const platformList = [
   woocommerceSvg,
 ];
 
-const ImageAvatarTemplate: Story<ImageAvatarProps> = ({
+const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
   size,
   imageUrl,
   bordered,

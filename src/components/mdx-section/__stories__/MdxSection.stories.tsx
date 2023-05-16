@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { ComponentStory, Meta } from '@storybook/react';
 import styled from 'styled-components';
 
 import { MdxSection as MdxSectionComponent } from '../MdxSection';

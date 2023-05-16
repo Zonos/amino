@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { MdxCard, Props } from 'src/components/mdx-card/MdxCard';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type Props, MdxCard } from 'src/components/mdx-card/MdxCard';
 import { MdxCardGrid } from 'src/components/mdx-card-grid/MdxCardGrid';
 
 const MdxCardMeta: Meta = {
@@ -8,7 +8,7 @@ const MdxCardMeta: Meta = {
 
 export default MdxCardMeta;
 
-const Template: Story<Props> = ({
+const Template: StoryFn<Props> = ({
   xlabel,
   xsubLabel,
   glowingColor,

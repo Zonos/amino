@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
-import { Textarea, TextareaProps } from 'src/components/textarea/Textarea';
+import { type TextareaProps, Textarea } from 'src/components/textarea/Textarea';
 import styled from 'styled-components';
 
 const StyledGroup = styled.div`
@@ -22,7 +22,7 @@ const TextAreaMeta: Meta = {
 
 export default TextAreaMeta;
 
-const Template: Story<TextareaProps> = ({
+const Template: StoryFn<TextareaProps> = ({
   error,
   helpText,
   label,

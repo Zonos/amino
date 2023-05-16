@@ -3,11 +3,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { mutate } from 'swr';
 
 import {
-  ExecutionResultType,
-  GraphiqlExecutionResult,
-  GraphiqlFetcher,
+  type ExecutionResultType,
+  type GraphiqlExecutionResult,
+  type GraphiqlFetcher,
+  type HandleFetchFetcher,
   graphiqlFetcher,
-  HandleFetchFetcher,
 } from '../_graphiqlFetcher';
 import { useSwr } from './useSwr';
 

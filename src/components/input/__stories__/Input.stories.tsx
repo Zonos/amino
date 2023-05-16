@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Input, InputProps } from 'src/components/input/Input';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type InputProps, Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { BagIcon } from 'src/icons/BagIcon';
@@ -84,7 +84,7 @@ const InputMeta: Meta = {
 
 export default InputMeta;
 
-const Template: Story<InputProps> = ({ value: _value, ...props }) => {
+const Template: StoryFn<InputProps> = ({ value: _value, ...props }) => {
   const [value, setValue] = useState(_value);
   return (
     <VStack>
@@ -209,7 +209,7 @@ Suffix.args = {
   suffix: <FlagIcon iconScale="large" code="AI" />,
 };
 
-export const DynamicErrorAndHelpText: Story<InputProps> = ({
+export const DynamicErrorAndHelpText: StoryFn<InputProps> = ({
   value: _value,
   ...props
 }) => {

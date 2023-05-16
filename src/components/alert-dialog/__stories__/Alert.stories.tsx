@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { AlertContextProvider } from 'src/components/alert-dialog/AlertContext';
 
-import { AlertConsumer } from './AlertConsumer.stories';
+import { AlertConsumer } from './AlertConsumer';
 
 const AlertMeta: Meta = {
   component: AlertContextProvider,
@@ -9,7 +9,7 @@ const AlertMeta: Meta = {
 
 export default AlertMeta;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <AlertContextProvider>
     <AlertConsumer />
   </AlertContextProvider>

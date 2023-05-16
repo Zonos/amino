@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta } from '@storybook/react';
 import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import * as icons from 'src/icons/IconIndex';
 import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types';
-import { IconProps } from 'src/types/IconProps';
+import type { Color } from 'src/types';
+import type { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
 
 const IconsMeta: Meta = {

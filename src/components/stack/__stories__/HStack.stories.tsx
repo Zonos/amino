@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
-import { StackProps } from 'src/components/stack/Stack';
-import { IOption } from 'src/types/IOption';
+import type { StackProps } from 'src/components/stack/Stack';
+import type { IOption } from 'src/types/IOption';
 
 const HStackMeta: Meta = {
   component: HStack,
@@ -29,7 +29,7 @@ const options = [
   value: v,
 }));
 
-const Template: Story<
+const Template: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
 > = ({ spacing, numberOfChildren, renderChild }) => (
   <HStack spacing={spacing}>

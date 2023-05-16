@@ -97,3 +97,5 @@ snapshots
 
 # Ignore _private_* folders (for some scratchpad scripts)
 _private_*
+
+!.vscode

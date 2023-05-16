@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { ComponentStory, Meta } from '@storybook/react';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';

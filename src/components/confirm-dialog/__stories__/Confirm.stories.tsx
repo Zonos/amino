@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { ConfirmContextProvider } from 'src/components/confirm-dialog/ConfirmContext';
 
-import { ConfirmConsumer } from './ConfirmConsumer.stories';
+import { ConfirmConsumer } from './ConfirmConsumer';
 
 const ConfirmMeta: Meta = {
   component: ConfirmContextProvider,
@@ -9,7 +9,7 @@ const ConfirmMeta: Meta = {
 
 export default ConfirmMeta;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <ConfirmContextProvider>
     <ConfirmConsumer />
   </ConfirmContextProvider>

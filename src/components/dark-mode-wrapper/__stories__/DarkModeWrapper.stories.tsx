@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Card } from 'src/components/card/Card';
 import {
+  type DarkModeWrapperProps,
   DarkModeWrapper,
-  DarkModeWrapperProps,
 } from 'src/components/dark-mode-wrapper/DarkModeWrapper';
 
 const DarkModeWrapperMeta: Meta = {
@@ -11,7 +11,7 @@ const DarkModeWrapperMeta: Meta = {
 
 export default DarkModeWrapperMeta;
 
-const Template: Story<DarkModeWrapperProps> = () => (
+const Template: StoryFn<DarkModeWrapperProps> = () => (
   <DarkModeWrapper>
     <Card>This content is always in dark mode</Card>
   </DarkModeWrapper>

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
-import { ComponentStory, Meta } from '@storybook/react';
-import { buildClientSchema, IntrospectionQuery } from 'graphql';
+import type { ComponentStory, Meta } from '@storybook/react';
+import { type IntrospectionQuery, buildClientSchema } from 'graphql';
 import { HStack } from 'src/components/stack/HStack';
 import { Textarea } from 'src/components/textarea/Textarea';
 import { BookmarkIcon } from 'src/icons/BookmarkIcon';

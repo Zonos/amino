@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { ComponentStory, Meta } from '@storybook/react';
 import type puppeteer from 'puppeteer';
 import { DropZone as DropZoneComponent } from 'src/components/drop-zone/DropZone';
 import {

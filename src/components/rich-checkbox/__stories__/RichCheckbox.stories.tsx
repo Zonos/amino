@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type RichCheckboxProps,
   RichCheckbox,
-  RichCheckboxProps,
 } from 'src/components/rich-checkbox/RichCheckbox';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 
@@ -13,7 +13,7 @@ const RichCheckboxMeta: Meta = {
 
 export default RichCheckboxMeta;
 
-const Template: Story<RichCheckboxProps> = ({
+const Template: StoryFn<RichCheckboxProps> = ({
   items: _items,
 }: RichCheckboxProps) => {
   const [items, setItems] = useState(_items);

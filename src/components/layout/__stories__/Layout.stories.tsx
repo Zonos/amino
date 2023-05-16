@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Card } from 'src/components/card/Card';
-import { Layout, LayoutProps } from 'src/components/layout/Layout';
+import { type LayoutProps, Layout } from 'src/components/layout/Layout';
 import {
   NavigationGroup,
   NavigationItem,
@@ -51,6 +49,7 @@ const LayoutMeta: Meta = {
     },
     content: {
       control: false,
+      defaultValue: 'hello',
     },
     footer: {
       control: false,
@@ -60,7 +59,7 @@ const LayoutMeta: Meta = {
 
 export default LayoutMeta;
 
-const Template: Story<LayoutProps> = ({
+const Template: StoryFn<LayoutProps> = ({
   content,
   logoSidebar,
   headerContent,

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Currency } from 'src/components/currency/Currency';
 import { Text } from 'src/components/text/Text';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { truncateText } from 'src/utils/truncateText';
 
-import { Table, TableProps } from '../Table';
+import { type TableProps, Table } from '../Table';
 import { TableBody } from '../TableBody';
 import { TableCell } from '../TableCell';
 import { TableHead } from '../TableHead';
@@ -48,7 +48,7 @@ type ProductProps = {
   };
 };
 
-const Template: Story<
+const Template: StoryFn<
   TableProps & {
     products: ProductProps[];
   }

@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
 import { useEffect } from '@storybook/addons';
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { RichRadio, RichRadioProps } from 'src/components/rich-radio/RichRadio';
+import type { Meta, StoryFn } from '@storybook/react';
+import {
+  type RichRadioProps,
+  RichRadio,
+} from 'src/components/rich-radio/RichRadio';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
 
@@ -35,7 +38,7 @@ const RichRadioMeta: Meta = {
 
 export default RichRadioMeta;
 
-const Template: Story<RichRadioProps> = ({
+const Template: StoryFn<RichRadioProps> = ({
   activeIcon,
   icon,
   itemHeight,

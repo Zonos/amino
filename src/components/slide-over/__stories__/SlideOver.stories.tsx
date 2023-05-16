@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
-import { SlideOver, SlideOverProps } from 'src/components/slide-over/SlideOver';
+import {
+  type SlideOverProps,
+  SlideOver,
+} from 'src/components/slide-over/SlideOver';
 
 const SlideOverMeta: Meta = {
   component: SlideOver,
@@ -10,7 +13,7 @@ const SlideOverMeta: Meta = {
 
 export default SlideOverMeta;
 
-const Template: Story<SlideOverProps> = ({
+const Template: StoryFn<SlideOverProps> = ({
   children,
   label,
   actions,

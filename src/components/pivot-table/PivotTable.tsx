@@ -11,7 +11,7 @@ import DataGrid, {
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-import { StyledProps } from 'src/types';
+import type { StyledProps } from 'src/types';
 import { addIndex } from 'src/utils/addIndex';
 import styled from 'styled-components';
 

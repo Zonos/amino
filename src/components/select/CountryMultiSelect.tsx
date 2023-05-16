@@ -1,22 +1,22 @@
-import { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import {
+  type GroupBase,
+  type MenuListProps,
+  type OptionProps,
+  type Props,
+  type SelectComponentsConfig,
+  type StylesConfig,
   components as RScomponents,
-  GroupBase,
-  MenuListProps,
-  OptionProps,
-  Props,
-  SelectComponentsConfig,
-  StylesConfig,
 } from 'react-select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
-import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
+import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import {
   type ICountryOption,
   type IUnavailableCountry,
 } from 'src/types/ICountry';
-import { IOption } from 'src/types/IOption';
+import type { IOption } from 'src/types/IOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
 import { MultiSelect } from './MultiSelect';

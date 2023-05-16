@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Text } from 'src/components/text/Text';

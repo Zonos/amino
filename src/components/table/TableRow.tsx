@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';

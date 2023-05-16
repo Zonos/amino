@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { useHotkeys } from 'react-hotkeys-hook';
 
@@ -9,7 +9,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import type { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
 const Popup = styled(motion.div)`

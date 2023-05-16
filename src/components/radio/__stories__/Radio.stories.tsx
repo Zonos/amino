@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Radio, RadioProps } from 'src/components/radio/Radio';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type RadioProps, Radio } from 'src/components/radio/Radio';
 
 const RadioMeta: Meta = {
   component: Radio,
@@ -17,7 +17,7 @@ const RadioMeta: Meta = {
 
 export default RadioMeta;
 
-const Template: Story<RadioProps> = ({
+const Template: StoryFn<RadioProps> = ({
   disabled,
   checked: initialChecked,
   label,

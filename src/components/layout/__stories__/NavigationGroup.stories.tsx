@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { MouseEvent, useState } from 'react';
+import { type MouseEvent, useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
   NavigationGroup as NavigationGroupComponent,
   NavigationItem,
@@ -33,7 +32,7 @@ const NavigationGroupMeta: Meta = {
 
 export default NavigationGroupMeta;
 
-const Template: Story = ({ className }) => {
+const Template: StoryFn = ({ className }) => {
   const [pathname, setPathname] = useState('/quoter/create');
   const mockUrlChange = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

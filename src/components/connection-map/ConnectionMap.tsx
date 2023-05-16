@@ -9,8 +9,8 @@ import {
 
 import { geoCentroid, geoDistance } from 'd3-geo';
 import { theme } from 'src/styles/constants/theme';
-import { ICountryOption } from 'src/types/ICountry';
-import { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
+import { type ICountryOption } from 'src/types/ICountry';
+import { type IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
 import styled from 'styled-components';
 import { feature } from 'topojson-client';

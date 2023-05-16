@@ -1,6 +1,10 @@
-import { DocumentNode, ExecutionResult } from 'graphql';
+import type { DocumentNode, ExecutionResult } from 'graphql';
 
-import { handleFetch, HandleFetchReturn, RequestOptions } from './handleFetch';
+import {
+  type HandleFetchReturn,
+  type RequestOptions,
+  handleFetch,
+} from './handleFetch';
 
 type FetcherParams = {
   query: string;

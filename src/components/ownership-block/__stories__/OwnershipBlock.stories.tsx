@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import {
+  type Props,
   OwnershipBlock as OwnershipBlockComponent,
-  Props,
 } from '../OwnershipBlock';
 
 const OwnershipBlockMeta: Meta = {
@@ -11,7 +11,7 @@ const OwnershipBlockMeta: Meta = {
 
 export default OwnershipBlockMeta;
 
-const Template: Story<Props> = ({
+const Template: StoryFn<Props> = ({
   docChampion,
   docEngineer,
   docOwner,

@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { List } from 'src/components/list/List';
-import { ListItem, Props } from 'src/components/list-item/ListItem';
+import { type Props, ListItem } from 'src/components/list-item/ListItem';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 
 const ListItemMeta: Meta = {
@@ -9,7 +9,7 @@ const ListItemMeta: Meta = {
 
 export default ListItemMeta;
 
-const Template: Story<Props> = ({
+const Template: StoryFn<Props> = ({
   label,
   disabled,
   subtitle,

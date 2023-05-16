@@ -1,15 +1,15 @@
 import {
+  type HTMLAttributes,
+  type ReactNode,
   Children,
-  HTMLAttributes,
   isValidElement,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 
-import Split, { SplitProps } from '@zonos/react-split';
+import Split, { type SplitProps } from '@zonos/react-split';
 import styled from 'styled-components';
 
 const StyledSplit = styled(Split)`

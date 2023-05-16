@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 
 const DualCurrencyMeta: Meta = {
@@ -11,7 +11,7 @@ export default DualCurrencyMeta;
 
 type DualCurrencyProps = Parameters<typeof DualCurrency>[number];
 
-const DualCurrencyTemplate: Story<DualCurrencyProps> = ({
+const DualCurrencyTemplate: StoryFn<DualCurrencyProps> = ({
   conversionRate,
   foreignCode,
   localeCode,

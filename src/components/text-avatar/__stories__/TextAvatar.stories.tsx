@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type TextAvatarProps,
   TextAvatar as TextAvatarComponent,
-  TextAvatarProps,
 } from 'src/components/text-avatar/TextAvatar';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
@@ -25,7 +25,7 @@ const codes = [...Array(250).keys()].map(
     String.fromCharCode(((n + 10) % 26) + 65)
 );
 
-const Template: Story<TextAvatarProps> = () => (
+const Template: StoryFn<TextAvatarProps> = () => (
   <Wrapper>
     {codes.map(n => (
       <TextAvatarComponent label={n} key={n} />

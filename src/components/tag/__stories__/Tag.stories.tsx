@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Tag, TagProps } from 'src/components/tag/Tag';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type TagProps, Tag } from 'src/components/tag/Tag';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
 const TagMeta: Meta = {
@@ -13,7 +13,7 @@ const TagMeta: Meta = {
 
 export default TagMeta;
 
-const Template: Story<TagProps> = ({
+const Template: StoryFn<TagProps> = ({
   children,
   icon,
   iconRight,

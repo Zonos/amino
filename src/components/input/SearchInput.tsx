@@ -1,10 +1,10 @@
-import { ChangeEventHandler, KeyboardEventHandler } from 'react';
+import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
 import { SearchIcon } from 'src/icons/SearchIcon';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { InputMode } from './input-type/_FloatLabelInput';
+import type { InputMode } from './input-type/_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

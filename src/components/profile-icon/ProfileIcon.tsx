@@ -1,4 +1,4 @@
-import { getGravatarUrl, GravatarOptions } from 'react-awesome-gravatar';
+import { type GravatarOptions, getGravatarUrl } from 'react-awesome-gravatar';
 
 import { UserDuotoneIcon } from 'src/icons/UserDuotoneIcon';
 import styled from 'styled-components';

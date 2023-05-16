@@ -1,4 +1,4 @@
-import test, { expect, Page } from '@playwright/test';
+import test, { type Page, expect } from '@playwright/test';
 
 test.describe('Functionality of confirmation dialog', () => {
   let framePage: Page;

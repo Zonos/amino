@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { ComponentStory, Meta } from '@storybook/react';
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';

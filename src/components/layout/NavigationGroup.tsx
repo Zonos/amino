@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import { Collapse } from 'src/components/collapse/Collapse';
 import { theme } from 'src/styles/constants/theme';

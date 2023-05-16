@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, createContext, useCallback, useState } from 'react';
 
-import { AlertDialogOpts } from 'src/types/AlertDialogOpts';
+import type { AlertDialogOpts } from 'src/types/AlertDialogOpts';
 
 import { AlertDialog } from './AlertDialog';
 

@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, TextareaHTMLAttributes } from 'react';
+import { type ReactNode, type TextareaHTMLAttributes, forwardRef } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';

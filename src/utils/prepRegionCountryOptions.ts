@@ -1,4 +1,4 @@
-import { ICountryOption, regions } from 'src/types/ICountry';
+import { type ICountryOption, regions } from 'src/types/ICountry';
 
 export const prepRegionCountryOptions = <T extends string = string>(
   countries: ICountryOption<T>[]

@@ -1,7 +1,6 @@
-import { CSSProperties, ReactNode, useMemo, useRef } from 'react';
-import ReactSelect, {
+import { type CSSProperties, type ReactNode, useMemo, useRef } from 'react';
+import type {
   ClearIndicatorProps,
-  components as RScomponents,
   ControlProps,
   DropdownIndicatorProps,
   GroupBase,
@@ -12,6 +11,7 @@ import ReactSelect, {
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select';
+import ReactSelect, { components as RScomponents } from 'react-select';
 import Select from 'react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
@@ -24,8 +24,8 @@ import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import { IOption } from 'src/types/IOption';
-import { Size } from 'src/types/Size';
+import type { IOption } from 'src/types/IOption';
+import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 import styled, { css } from 'styled-components';
 

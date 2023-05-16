@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { BadgeProps } from 'src/components/badge/Badge';
+import type { Meta, StoryFn } from '@storybook/react';
+import type { BadgeProps } from 'src/components/badge/Badge';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import styled from 'styled-components';
 
@@ -40,7 +40,7 @@ const StyledWrapper = styled.div`
   gap: 20px;
 `;
 
-const Template: Story<BadgeProps> = ({
+const Template: StoryFn<BadgeProps> = ({
   color,
   children,
   iconRight,

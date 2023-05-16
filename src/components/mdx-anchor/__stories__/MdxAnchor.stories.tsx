@@ -1,8 +1,11 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { MdxAnchor as MdxAnchorComponent, MdxAnchorProps } from '../MdxAnchor';
+import {
+  type MdxAnchorProps,
+  MdxAnchor as MdxAnchorComponent,
+} from '../MdxAnchor';
 
 const MdxAnchorMeta: Meta = {
   component: MdxAnchorComponent,
@@ -26,7 +29,7 @@ const RedText = styled.span`
   color: ${theme.error};
 `;
 
-const Template: Story<MdxAnchorProps> = ({
+const Template: StoryFn<MdxAnchorProps> = ({
   className,
   internalPaths,
 }: MdxAnchorProps) => (

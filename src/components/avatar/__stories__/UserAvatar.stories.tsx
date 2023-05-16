@@ -1,10 +1,10 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type UserAvatarProps,
   UserAvatar as Avatar,
-  UserAvatarProps,
 } from 'src/components/avatar/UserAvatar';
 
-import { BaseWrapper } from './BaseWrapper.stories';
+import { BaseWrapper } from './BaseWrapper';
 
 const UserAvatarMeta: Meta = {
   component: Avatar,
@@ -17,7 +17,7 @@ const UserAvatarMeta: Meta = {
 
 export default UserAvatarMeta;
 
-const UserAvatarTemplate: Story<UserAvatarProps> = ({
+const UserAvatarTemplate: StoryFn<UserAvatarProps> = ({
   size,
   bordered,
 }: UserAvatarProps) => (

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { closestCenter, DndContext } from '@dnd-kit/core';
 import {
@@ -9,10 +9,10 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { SortingStrategy } from '@dnd-kit/sortable/dist/types';
+import type { SortingStrategy } from '@dnd-kit/sortable/dist/types';
 import styled from 'styled-components';
 
-import { DragEndEvent } from './SortableListDeps';
+import type { DragEndEvent } from './SortableListDeps';
 
 const StyledSortableList = styled.div`
   display: flex;

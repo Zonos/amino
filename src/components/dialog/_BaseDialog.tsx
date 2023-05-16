@@ -1,10 +1,10 @@
-import { KeyboardEvent, ReactNode, useEffect, useRef } from 'react';
+import { type KeyboardEvent, type ReactNode, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import type { IAminoTheme } from 'src/types/IAminoTheme';
 import styled from 'styled-components';
 
 const DialogLayout = styled.div`
