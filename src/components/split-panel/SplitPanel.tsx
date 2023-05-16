@@ -3,6 +3,7 @@ import {
   type ReactNode,
   Children,
   isValidElement,
+  memo,
   useCallback,
   useEffect,
   useMemo,
@@ -38,7 +39,7 @@ type BaseSplitPaneProps = {
 type SplitPaneProps = BaseSplitPaneProps &
   Omit<SplitProps, keyof HTMLAttributes<HTMLDivElement>>;
 
-export const SplitPanel = ({
+const _SplitPanel = ({
   children,
   className,
   visiable,
@@ -78,8 +79,11 @@ export const SplitPanel = ({
         );
       } else {
         // Restore all split panes
-        setSplitPaneStyles(prevSplitPanes =>
-          prevSplitPanes.map((style, index) => {
+        setSplitPaneStyles(prevSplitPanes => {
+          if (collapse) {
+            return prevSplitPanes;
+          }
+          return prevSplitPanes.map((style, index) => {
             // Use default width if provided, otherwise use equal width
             const width =
               defaultSplitPaneWidth[index]?.width ||
@@ -95,9 +99,10 @@ export const SplitPanel = ({
             return {
               ...style,
               width,
+              opacity: '1',
             };
-          })
-        );
+          });
+        });
       }
     },
     [defaultSplitPaneWidth]
@@ -171,3 +176,4 @@ export const SplitPanel = ({
     </StyledSplit>
   );
 };
+export const SplitPanel = memo(_SplitPanel);
