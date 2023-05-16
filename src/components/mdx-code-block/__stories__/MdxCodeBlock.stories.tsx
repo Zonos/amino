@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { MdxCodeBlock as MdxCodeBlockComponent } from '../MdxCodeBlock';
 
@@ -23,9 +22,7 @@ const codeContent = JSON.stringify(
   '  '
 );
 
-export const MdxCodeBlock: ComponentStory<
-  typeof MdxCodeBlockComponent
-> = () => (
+export const MdxCodeBlock: StoryFn<typeof MdxCodeBlockComponent> = () => (
   <MdxCodeBlockComponent xlabel="JSON Example" type="JSON">
     <pre>
       <code>{codeContent}</code>
@@ -33,7 +30,7 @@ export const MdxCodeBlock: ComponentStory<
   </MdxCodeBlockComponent>
 );
 
-export const MdxCodeBlockWithHeight: ComponentStory<
+export const MdxCodeBlockWithHeight: StoryFn<
   typeof MdxCodeBlockComponent
 > = () => (
   <MdxCodeBlockComponent xlabel="JSON Example" type="JSON" maxHeight={600}>

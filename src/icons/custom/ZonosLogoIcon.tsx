@@ -1,4 +1,4 @@
-import { Color } from 'src/types';
+import type { Color } from 'src/types';
 
 export const ZonosLogoIcon = ({
   className,

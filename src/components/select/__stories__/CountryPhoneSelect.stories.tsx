@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type CountryPhoneSelectProps,
   CountryPhoneSelect,
-  CountryPhoneSelectProps,
 } from 'src/components/select/CountryPhoneSelect';
-import { FlagIcon, IFlag } from 'src/icons/flag-icon/FlagIcon';
-import { ICountryOption } from 'src/types/ICountry';
+import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import type { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
-import { getCountryUrls } from './getCountryUrls.stories';
-import { useCountryOptions } from './useCountryOptions.stories';
+import { getCountryUrls } from './getCountryUrls';
+import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -29,7 +29,7 @@ const CountryPhoneSelectMeta: Meta = {
 
 export default CountryPhoneSelectMeta;
 
-const CountryPhoneSelectTemplate: Story<
+const CountryPhoneSelectTemplate: StoryFn<
   CountryPhoneSelectProps<ICountryOption>
 > = ({
   phone: _phone,

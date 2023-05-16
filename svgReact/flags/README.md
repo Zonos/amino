@@ -10,7 +10,7 @@ We have two sources for the flags AWS & Figma:
 
 1. Set the `ZONOS_FLAG_URL=` in .env
 2. Create the folder `./svgReact/figma-flags`
-3. run `yarn svgs:download:flags` or `node ./svgReact/downloadFlags.js`
+3. run `pnpm svgs:download:flags` or `node ./svgReact/downloadFlags.js`
 
 ## Figma
 
@@ -23,4 +23,4 @@ We have two sources for the flags AWS & Figma:
 ## Creating SVGs
 
 1. The component name is based on the filename so clean it up using the `Batch Rename` VS code plugin (or rename using shell commands). The filename needs to just be the country ISO code (the same as the aws-flags). Some Figma flags have duplicate ISO codes so try to use the same one that was there before and delete the duplicates.
-2. Run `yarn svgs:react:flags`
+2. Run `pnpm svgs:react:flags`

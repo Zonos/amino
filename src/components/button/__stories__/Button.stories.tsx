@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import type puppeteer from 'puppeteer';
-import { Button, ButtonProps } from 'src/components/button/Button';
+import { type ButtonProps, Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -169,7 +169,7 @@ const ButtonRow = ({
   </div>
 );
 
-const Template: Story<ButtonProps> = props => (
+const Template: StoryFn<ButtonProps> = props => (
   <VWrapper>
     <ButtonRow {...props} label="Default" />
     <ButtonRow {...props} disabled label="Disabled" />

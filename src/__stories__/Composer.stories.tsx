@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
@@ -9,7 +9,7 @@ import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { MinusIcon } from 'src/icons/MinusIcon';
 import { PlusIcon } from 'src/icons/PlusIcon';
-import { Size } from 'src/types/Size';
+import type { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
 const ComposerMeta: Meta = {
@@ -145,7 +145,7 @@ type Props = {
   withValue: boolean;
 };
 
-const Template: Story<Props> = ({
+const Template: StoryFn<Props> = ({
   columns: _columns,
   components: _components,
   rows: _rows,

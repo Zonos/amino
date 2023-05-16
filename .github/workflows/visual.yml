@@ -17,15 +17,18 @@ jobs:
       CI: true
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.x
       - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
-          cache: "yarn"
-      - run: yarn install --frozen-lockfile
-      - run: yarn build-storybook
-      - run: yarn test:visual
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build-storybook
+      - run: pnpm test:visual
         if: ${{ !inputs.update }}
-      - run: yarn test:visual -u
+      - run: pnpm test:visual -u
         if: ${{ inputs.update }}
       - name: Archive image snapshot results
         if: always()

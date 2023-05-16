@@ -1,12 +1,12 @@
-import { ReactNode, useMemo } from 'react';
-import { Column } from 'react-data-grid';
+import { type ReactNode, useMemo } from 'react';
+import type { Column } from 'react-data-grid';
 
 import { theme } from 'src/styles/constants/theme';
 import { flattenRow } from 'src/utils/flattenRow';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
-import { RowWithIndex } from '../pivot-table/PivotTable';
+import type { RowWithIndex } from '../pivot-table/PivotTable';
 import { RestState } from '../rest-state/RestState';
 import { Text } from '../text/Text';
 import { TableData } from './_TableData';

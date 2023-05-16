@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MdxButton } from 'src/components/mdx-button/MdxButton';
 import { MdxHero as MdxHeroComponent } from 'src/components/mdx-hero/MdxHero';
 import { MdxImage } from 'src/components/mdx-image/MdxImage';
@@ -9,7 +9,7 @@ const MdxHeroMeta: Meta = {
 
 export default MdxHeroMeta;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <MdxHeroComponent>
     <h1>Zonos Hero</h1>
 

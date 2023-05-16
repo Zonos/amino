@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { List, ListProps } from 'src/components/list/List';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type ListProps, List } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
@@ -14,7 +14,7 @@ const ListMeta: Meta = {
 
 export default ListMeta;
 
-const PrimaryListTemplate: Story<ListProps> = ({
+const PrimaryListTemplate: StoryFn<ListProps> = ({
   withBorder,
   withNegativeMargin,
 }: ListProps) => {

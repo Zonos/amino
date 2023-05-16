@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';

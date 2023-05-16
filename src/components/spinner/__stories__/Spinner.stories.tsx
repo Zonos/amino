@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type SpinnerColor,
+  type SpinnerProps,
   Spinner as SpinnerComponent,
-  SpinnerColor,
-  SpinnerProps,
 } from 'src/components/spinner/Spinner';
 import styled from 'styled-components';
 
@@ -23,7 +23,7 @@ const Wrapper = styled.div<{ color?: SpinnerColor }>`
   gap: 20px;
 `;
 
-const Template: Story<SpinnerProps> = ({
+const Template: StoryFn<SpinnerProps> = ({
   size,
   color,
   ...props

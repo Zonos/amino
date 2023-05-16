@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { UserAvatar } from 'src/components/avatar/UserAvatar';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { SortableList } from 'src/components/sortable-list/SortableList';
 import {
+  type DragEndEvent,
   arrayMove,
-  DragEndEvent,
 } from 'src/components/sortable-list/SortableListDeps';
 import { SortableListItem } from 'src/components/sortable-list/SortableListItem';
 
@@ -29,7 +29,7 @@ const listItemData: IListItemData[] = [
   { id: '5', name: 'Ashley' },
 ];
 
-const Template: Story = () => {
+const Template: StoryFn = () => {
   const [listItems, setListItems] = useState<IListItemData[]>([]);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Template: Story = () => {
 
 export const WithoutHandle = Template.bind({});
 
-const WithHandleTemplate: Story = () => {
+const WithHandleTemplate: StoryFn = () => {
   const [listItems, setListItems] = useState<IListItemData[]>([]);
 
   useEffect(() => {

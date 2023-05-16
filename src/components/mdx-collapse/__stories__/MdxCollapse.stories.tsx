@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 
-import { MdxCollapse, Props } from '../MdxCollapse';
+import { type Props, MdxCollapse } from '../MdxCollapse';
 
 const MdxCollapseMeta: Meta = {
   component: MdxCollapse,
@@ -8,7 +8,7 @@ const MdxCollapseMeta: Meta = {
 
 export default MdxCollapseMeta;
 
-const Template: Story<Props> = ({ stepNumber, collapse }: Props) => (
+const Template: StoryFn<Props> = ({ stepNumber, collapse }: Props) => (
   <MdxCollapse collapse={collapse} stepNumber={stepNumber}>
     <h2>H2 label</h2>
     <p>

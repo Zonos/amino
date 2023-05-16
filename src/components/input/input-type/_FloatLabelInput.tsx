@@ -1,16 +1,16 @@
 import {
-  ChangeEventHandler,
+  type ChangeEventHandler,
+  type HTMLInputTypeAttribute,
+  type InputHTMLAttributes,
+  type KeyboardEventHandler,
+  type ReactNode,
   forwardRef,
-  HTMLInputTypeAttribute,
-  InputHTMLAttributes,
-  KeyboardEventHandler,
-  ReactNode,
   useMemo,
 } from 'react';
 
-import { HelpTextProps } from 'src/components/help-text/HelpText';
+import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { theme } from 'src/styles/constants/theme';
-import { Size } from 'src/types/Size';
+import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 import styled from 'styled-components';
 

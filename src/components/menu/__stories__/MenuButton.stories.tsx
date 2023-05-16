@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
-import { MenuButton, MenuButtonProps } from 'src/components/button/MenuButton';
+import {
+  type MenuButtonProps,
+  MenuButton,
+} from 'src/components/button/MenuButton';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { CartIcon } from 'src/icons/CartIcon';
@@ -22,7 +25,7 @@ const MenuButtonMeta: Meta = {
 
 export default MenuButtonMeta;
 
-const Template: Story<MenuButtonProps> = ({ children }: MenuButtonProps) => {
+const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => {
   const [open, setOpen] = useState(true);
   return (
     <MenuButton

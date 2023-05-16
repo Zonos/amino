@@ -1,10 +1,11 @@
-import test, { expect, Page } from '@playwright/test';
+import test, { type Page, expect } from '@playwright/test';
 
 test.describe('Functionality of confirmation dialog', () => {
   let framePage: Page;
   test.beforeEach(async ({ page }) => {
     page.goto('/');
     await page.getByRole('button', { name: 'Confirm-Dialog' }).click();
+    await page.getByRole('button', { name: 'Confirm', exact: true }).click();
     await page.getByRole('link', { name: 'Confirm' }).click();
 
     /** Open popup since interact with `iframe` doesn't give much insight when debuging */

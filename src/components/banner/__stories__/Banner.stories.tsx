@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
@@ -31,7 +30,7 @@ const ids = [
   'longSoloTitle',
 ] as const;
 type ID = typeof ids[number];
-const Template: ComponentStory<typeof Banner> = ({
+const Template: StoryFn<typeof Banner> = ({
   footerActions,
   headerActions,
   intent,

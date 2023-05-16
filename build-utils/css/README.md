@@ -33,11 +33,11 @@ This script is primarily created for generating accessible style constants and c
 
 ## **Building colors process**
 ### Overview
-Sub script `build-utils/css/buildColorConstants.ts` is primarily created for generating the color constants in folder `build-utils/css/constants/generated/colors` that can be used in any theme file (`theme.ts`). If you run `yarn build:theme`, it will also trigger the command below.
+Sub script `build-utils/css/buildColorConstants.ts` is primarily created for generating the color constants in folder `build-utils/css/constants/generated/colors` that can be used in any theme file (`theme.ts`). If you run `pnpm build:theme`, it will also trigger the command below.
 
 **Command**:
 ```bash
-    yarn build:colors
+    pnpm build:colors
 ```
 ### When you run the script, it will:
 
@@ -96,7 +96,7 @@ Ex:
 
 <details>
 
-> **NOTE: Don't touch the generated color constant because it will be overwritten everytime you run `yarn build` or `yarn build:theme`, work with the svg in `build-utils/css/colorSvgs` instead.**
+> **NOTE: Don't touch the generated color constant because it will be overwritten everytime you run `pnpm build` or `pnpm build:theme`, work with the svg in `build-utils/css/colorSvgs` instead.**
 
 There would be 2 cases: the variable exists and you just want to update the color code, or adding brand new color variable (Ex: `Gray2000`). The steps below can apply to both cases.
 1. Download the color set svg from Figma (either every color sets or just the one you want to update) that you want to update in Amino, by selecting the whole component of each color in the color set palette (the designer shoud name the component name the same as text inside of component, ask them to rename it if this is not the case) and exporting them to svg format
@@ -106,7 +106,7 @@ There would be 2 cases: the variable exists and you just want to update the colo
     - Adjust the mapping configuration for the color in the mapping array `deprecatedIntensityMapping`. In the object, the key on the left would be the legacy color suffix and the value on the right would be the new one. This mapping configuration would also add the legacy colors down below and add the `@deprecated` tag above it after the content of the new color.
     - You can also adjust the content of constant `content` in the function `generateFileContent` to modify what's being generated if needed (Like add jsdocs or change text or adding more deprecated color).
 4. Run the command below to trigger the generation process.
-    ```yarn build:colors```
+    ```pnpm build:colors```
 5. Import and use the generated constant in the `theme.ts` by spreading the constant variable (you can find out more details [here](#import-generated-file-in-theme-file-themets--_darkthemets)).
     ```
         // File name: `theme.ts`
@@ -115,7 +115,7 @@ There would be 2 cases: the variable exists and you just want to update the colo
             ...blue,
         } as const
     ```
-> **NOTE**: If there is any unused generated color constants and you run command `yarn build:theme` or `yarn build`. The building process will be terminated intentionally to tell you which color files are not being used. You can either delete the unused svgs so that it will not generate the constant and remove the referencing constant in the `build-utils/css/constants/generated/colors` folder, or use them in the main theme constant `theme.ts`.
+> **NOTE**: If there is any unused generated color constants and you run command `pnpm build:theme` or `pnpm build`. The building process will be terminated intentionally to tell you which color files are not being used. You can either delete the unused svgs so that it will not generate the constant and remove the referencing constant in the `build-utils/css/constants/generated/colors` folder, or use them in the main theme constant `theme.ts`.
 </details>
 
 ---
@@ -134,7 +134,7 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
    - Generate constant variables based on the logic provided in the function with pattern `get{{CapitalizedFileNameNoUnderScore}}ConstantKeyValuePairs`. Adding @jsdocs comment if `hasJSDocsComment` is `true`, and the logic for the JSDocs comment will be a function with convention `get{{CapitalizedFileName}}ConstantCustomizedComment`.
    - Put the generated file at `build-utils/css/constants/generated`
 
-2. All theme files in `build-utils/css/constants/*.ts` now can import the generated files in `build-utils/css/constants/generated` by using spread variables (Ex: `...space`). Then when you command `yarn build:theme`, the process will use static function `transformImportedConstant` in class `LogicConstant` to convert/transform the file `theme.ts` into typescript jsdocs friendly (it basically will find all import lines in `theme.ts` and import them, then replace the spread value with content in each imported file).
+2. All theme files in `build-utils/css/constants/*.ts` now can import the generated files in `build-utils/css/constants/generated` by using spread variables (Ex: `...space`). Then when you command `pnpm build:theme`, the process will use static function `transformImportedConstant` in class `LogicConstant` to convert/transform the file `theme.ts` into typescript jsdocs friendly (it basically will find all import lines in `theme.ts` and import them, then replace the spread value with content in each imported file).
 
 ### How to:
 
@@ -144,7 +144,7 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
 
 1. Run the command below to generate the dummy content for your new dynamic constant logic.
    ```
-   yarn template:logic-constant yourFileName
+   pnpm template:logic-constant yourFileName
    ```
 2.  The generated file now will be located at `build-utils/css/constants/logics` with name `_yourFileName.ts`.
 3.  Put logic of how you want the key/value pair in constant to look like in function `get{{CapitalizedFileName}}ConstantKeyValuePairs`.
@@ -168,7 +168,7 @@ Sub script `build-utils/css/buildLogicConstants.ts` is primarily created for hav
    Ex:
    `` export const getYourFileNameConstantCustomizedComment: ConstantCustomizedComment = ({ key, value, }) => { /** Put logic here to generate jsdocs string for each line in constant */ return `${key}: ${value}`; }; ``
 5.  Turn the flag `hasJSDocsComment` on or off wether to enable showing jsdocs.
-6.  Run command `'yarn build:logic-constant'` to generate the file. New files with exact same name will be generated at `build-utils/css/constants/generated`
+6.  Run command `'pnpm build:logic-constant'` to generate the file. New files with exact same name will be generated at `build-utils/css/constants/generated`
 </details>
 
 #### Import generated file in theme file (`theme.ts` | `_darkTheme.ts`)
@@ -196,14 +196,14 @@ Let's say we have an exported constant `testNumber` in `build-utils/csss/constan
     } as const;
     ```
 
-4. Now when you run `'yarn build:theme'`, it will replace `...testNumber` with primitive content in the constant when it's generating the theme constant in `src/styles/constants/theme.ts`.
+4. Now when you run `'pnpm build:theme'`, it will replace `...testNumber` with primitive content in the constant when it's generating the theme constant in `src/styles/constants/theme.ts`.
 </details>
 
 ## **Building process**
 
 ### Overview
-Main command for this is just `yarn build`. This would trigger the tests for the whole build application, typescript check and eslint check, also run `yarn build:theme` to generate css files that are based on the theme constant `theme.ts` or `_darkTheme.ts` in `build-utils/css/constants`.
-> **NOTE**: Because of running `'yarn build:theme'` will overwrite last capture with latest content, before you run a script, run `yarn test` first to make sure the current constant `theme.ts` and `_darkTheme.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
+Main command for this is just `pnpm build`. This would trigger the tests for the whole build application, typescript check and eslint check, also run `pnpm build:theme` to generate css files that are based on the theme constant `theme.ts` or `_darkTheme.ts` in `build-utils/css/constants`.
+> **NOTE**: Because of running `'pnpm build:theme'` will overwrite last capture with latest content, before you run a script, run `pnpm test` first to make sure the current constant `theme.ts` and `_darkTheme.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
 
 ### When you run the script, it will:
 
@@ -226,7 +226,7 @@ Main command for this is just `yarn build`. This would trigger the tests for the
 
    - Get contents from `build-utils/css/constants` (theme.ts and \_darkTheme.ts), format and generate `theme.css` and put in `src/styles` folder
 
-3. Generate theme css capture (These captures will be used for unit testing when running `yarn test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
+3. Generate theme css capture (These captures will be used for unit testing when running `pnpm test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
    - Generate light theme css capture get from `build-utils/css/constants/theme.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`
    - Generate dark theme css capture get from `build-utils/css/constants/_darkTheme.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/dark-theme.css`
 

@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MdxImage as MdxImageComponent } from 'src/components/mdx-image/MdxImage';
 import styled from 'styled-components';
 
@@ -15,7 +14,7 @@ const CenteredDiv = styled.div`
   position: relative;
 `;
 
-export const MdxImage: ComponentStory<typeof MdxImageComponent> = () => (
+export const MdxImage: StoryFn<typeof MdxImageComponent> = () => (
   <MdxImageComponent shadow>
     <CenteredDiv>
       <img src="logo.png" alt="logo" />

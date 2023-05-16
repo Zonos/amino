@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types/Color';
-import { Intent } from 'src/types/Intent';
+import type { Color } from 'src/types/Color';
+import type { Intent } from 'src/types/Intent';
 import styled from 'styled-components';
 
 type CSSProps = {

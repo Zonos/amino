@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import { StyledProps } from 'src/types';
+import type { StyledProps } from 'src/types';
 import styled, { css } from 'styled-components';
 
 export type ImageSize = 16 | 24 | 32 | 40 | 48 | 56 | 64;

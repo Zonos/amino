@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { VStack } from 'src/components/stack/VStack';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';

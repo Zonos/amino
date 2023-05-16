@@ -1,5 +1,4 @@
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { MdxSection as MdxSectionComponent } from '../MdxSection';
@@ -16,7 +15,7 @@ const H1 = styled.h1`
   margin-bottom: 20px;
 `;
 
-export const MdxSection: ComponentStory<typeof MdxSectionComponent> = () => (
+export const MdxSection: StoryFn<typeof MdxSectionComponent> = () => (
   <MdxSectionComponent>
     <H1>Heading 1</H1>
     <p>

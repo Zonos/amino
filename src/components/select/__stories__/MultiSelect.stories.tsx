@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type MultiSelectProps,
   MultiSelect,
-  MultiSelectProps,
 } from 'src/components/select/MultiSelect';
 import { PlayCircleIcon } from 'src/icons/PlayCircleIcon';
 import styled from 'styled-components';
@@ -25,7 +25,7 @@ const SelectMeta: Meta = {
 
 export default SelectMeta;
 
-const MultiSelectTemplate: Story<MultiSelectProps> = ({
+const MultiSelectTemplate: StoryFn<MultiSelectProps> = ({
   value: _value,
   ...props
 }: MultiSelectProps) => {

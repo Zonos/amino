@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
-import { Card, CardProps } from 'src/components/card/Card';
+import { type CardProps, Card } from 'src/components/card/Card';
 import { theme } from 'src/styles/constants/theme';
 
 const CardMeta: Meta = {
@@ -9,7 +9,7 @@ const CardMeta: Meta = {
 
 export default CardMeta;
 
-const Template: Story<CardProps> = ({
+const Template: StoryFn<CardProps> = ({
   actions,
   children,
   footerActions,

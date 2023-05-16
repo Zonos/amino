@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
-import { Dialog, DialogProps } from 'src/components/dialog/Dialog';
+import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 import styled from 'styled-components';
 
@@ -45,7 +45,7 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-const Template: Story<DialogProps & { height: number }> = ({
+const Template: StoryFn<DialogProps & { height: number }> = ({
   actions,
   leftActions,
   children,

@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { VStack } from 'src/components/stack/VStack';
-import { Text, textOptions, TextProps } from 'src/components/text/Text';
+import { type TextProps, Text, textOptions } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
@@ -24,11 +24,13 @@ const Label = styled.div`
 
 const content = 'The quick brown fox jumps over the lazy';
 
-const StyleMeta: Meta = {};
+const StyleMeta: Meta = {
+  component: Text,
+};
 
 export default StyleMeta;
 
-const Template: Story<TextProps> = props => (
+const Template: StoryFn<TextProps> = props => (
   <VStack spacing={8}>
     {textOptions.map(option => (
       <StyledVStack key={option.type}>
@@ -52,7 +54,7 @@ const TextSizesLabel = styled.div`
   font-size: 14px;
 `;
 
-const TemplateTextSizes: Story<TextProps> = props => (
+const TemplateTextSizes: StoryFn<TextProps> = props => (
   <VStack spacing={8}>
     {textOptions.map(option => (
       <div key={option.type}>

@@ -1,15 +1,15 @@
-import { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 import { useExplorerPlugin } from '@graphiql/plugin-explorer';
 import {
-  FragmentDefinitionNode,
-  GraphQLArgument,
-  GraphQLField,
-  GraphQLInputField,
-  GraphQLLeafType,
+  type FragmentDefinitionNode,
+  type GraphQLArgument,
+  type GraphQLField,
+  type GraphQLInputField,
+  type GraphQLLeafType,
+  type ValueNode,
   GraphQLObjectType,
   GraphQLSchema,
-  ValueNode,
 } from 'graphql';
 import { theme } from 'src/styles/constants/theme';
 

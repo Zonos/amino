@@ -1,4 +1,4 @@
-import { Banner, BannerProps } from 'src/components/banner/Banner';
+import { type BannerProps, Banner } from 'src/components/banner/Banner';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 

@@ -1,9 +1,9 @@
-import { forwardRef, ReactNode } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import type { IAminoTheme } from 'src/types/IAminoTheme';
 import styled, { css } from 'styled-components';
 
 import { Button } from '../button/Button';

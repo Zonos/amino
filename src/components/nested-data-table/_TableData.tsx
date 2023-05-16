@@ -1,5 +1,11 @@
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import { Column } from 'react-data-grid';
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import type { Column } from 'react-data-grid';
 
 import { ChevronRightCircleIcon } from 'src/icons/ChevronRightCircleIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -9,7 +15,7 @@ import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
-import { PivotTable, RowWithIndex } from '../pivot-table/PivotTable';
+import { type RowWithIndex, PivotTable } from '../pivot-table/PivotTable';
 import { Tooltip } from '../tooltip/Tooltip';
 import { Filter } from './_Filter';
 

@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { HStack } from 'src/components/stack/HStack';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';

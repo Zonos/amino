@@ -1,5 +1,5 @@
 import { theme } from 'src/styles/constants/theme';
-import styled, { CSSProperties } from 'styled-components';
+import styled, { type CSSProperties } from 'styled-components';
 
 type GradientSquareType = {
   gradientStart: string;

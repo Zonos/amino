@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta } from '@storybook/react';
 import { VStack } from 'src/components/stack/VStack';
 import styled from 'styled-components';
 

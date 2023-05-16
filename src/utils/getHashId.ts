@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export const getHashId = (title: ReactNode) => {
   if (typeof title === 'string') {

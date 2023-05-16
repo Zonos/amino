@@ -1,6 +1,6 @@
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
 
 import { NestedDataTable as NestedDataTableComponent } from '../NestedDataTable';
@@ -13,9 +13,9 @@ export default NestedDataTableMeta;
 
 type NestedDataTableProps = ComponentProps<typeof NestedDataTableComponent>;
 
-const Template: Story<NestedDataTableProps> = (props: NestedDataTableProps) => (
-  <NestedDataTableComponent {...props} />
-);
+const Template: StoryFn<NestedDataTableProps> = (
+  props: NestedDataTableProps
+) => <NestedDataTableComponent {...props} />;
 
 export const NestedDataTableNoPagination = Template.bind({});
 NestedDataTableNoPagination.args = {

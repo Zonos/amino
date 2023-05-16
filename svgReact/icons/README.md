@@ -47,5 +47,5 @@ Currently, there are 3 type of icon sources:
         destFolder: 'src/icons',
     }
     ```
-5. Run `yarn svgs:react:icons` to optimize and generate icon components for you.
-6. Run `yarn build:ci` to build the `all.ts` file with latest file names.
+5. Run `pnpm svgs:react:icons` to optimize and generate icon components for you.
+6. Run `pnpm build:ci` to build the `all.ts` file with latest file names.

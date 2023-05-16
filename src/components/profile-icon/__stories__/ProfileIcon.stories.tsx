@@ -1,11 +1,14 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
 
-import { ProfileIcon as ProfileIconComponent, Props } from '../ProfileIcon';
+import {
+  type Props,
+  ProfileIcon as ProfileIconComponent,
+} from '../ProfileIcon';
 
 const ProfileIconMeta: Meta = {
   component: ProfileIconComponent,
@@ -25,7 +28,7 @@ const FlexWrap = styled.div`
   align-items: center;
 `;
 
-const Template: Story<Props> = () => {
+const Template: StoryFn<Props> = () => {
   const [email, setEmail] = useState('');
   return (
     <Wrapper>

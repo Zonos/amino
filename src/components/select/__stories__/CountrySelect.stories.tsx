@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type CountrySelectProps,
   CountrySelect,
-  CountrySelectProps,
 } from 'src/components/select/CountrySelect';
-import { ICountryOption } from 'src/types/ICountry';
+import type { ICountryOption } from 'src/types/ICountry';
 import styled from 'styled-components';
 
-import { getCountryUrls } from './getCountryUrls.stories';
-import { useCountryOptions } from './useCountryOptions.stories';
+import { getCountryUrls } from './getCountryUrls';
+import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -30,7 +30,7 @@ const CountrySelectMeta: Meta = {
 
 export default CountrySelectMeta;
 
-const CountrySelectTemplate: Story<CountrySelectProps> = ({ ...props }) => {
+const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
   const { dashboardUrl } = getCountryUrls();
   const [value, setValue] = useState<string | null>(null);
   const countryOptions = useCountryOptions({

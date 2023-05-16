@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type RoundedIconProps,
   RoundedIcon,
-  RoundedIconProps,
 } from 'src/components/rounded-icon/RoundedIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 
@@ -11,7 +11,7 @@ const RoundedIconMeta: Meta = {
 
 export default RoundedIconMeta;
 
-const Template: Story<RoundedIconProps> = props => <RoundedIcon {...props} />;
+const Template: StoryFn<RoundedIconProps> = props => <RoundedIcon {...props} />;
 
 export const Default = Template.bind({});
 const defaultArgs: RoundedIconProps = {

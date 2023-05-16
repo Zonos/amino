@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Card } from 'src/components/card/Card';
-import { Layout, LayoutProps } from 'src/components/layout/Layout';
+import { type LayoutProps, Layout } from 'src/components/layout/Layout';
 import {
   NavigationGroup,
   NavigationItem,
@@ -18,7 +16,9 @@ import { UserMenu } from './UserMenu';
 const LayoutMeta: Meta = {
   component: Layout,
   subcomponents: {
+    // @ts-ignore subcomponents don't seem to be working
     NavigationGroup,
+    // @ts-ignore subcomponents don't seem to be working
     NavigationItem,
   },
   parameters: {
@@ -60,7 +60,7 @@ const LayoutMeta: Meta = {
 
 export default LayoutMeta;
 
-const Template: Story<LayoutProps> = ({
+const Template: StoryFn<LayoutProps> = ({
   content,
   logoSidebar,
   headerContent,

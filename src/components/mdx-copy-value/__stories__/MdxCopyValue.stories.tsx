@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type Props,
   MdxCopyValue as MdxCopyValueComponent,
-  Props,
 } from 'src/components/mdx-copy-value/MdxCopyValue';
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-const Template: Story<Props> = ({ text }: Props) => (
+const Template: StoryFn<Props> = ({ text }: Props) => (
   <Wrapper>
     <MdxCopyValueComponent text={text} />
   </Wrapper>

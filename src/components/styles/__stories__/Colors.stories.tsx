@@ -1,9 +1,10 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import type puppeteer from 'puppeteer';
 import { ColorPalette } from 'src/components/styles/ColorPalette';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
 const StyleMeta: Meta = {
+  title: 'Styles/Colors',
   parameters: {
     design: {
       type: 'figma',
@@ -20,6 +21,6 @@ const StyleMeta: Meta = {
 
 export default StyleMeta;
 
-const ColorTemplate: Story = () => <ColorPalette />;
+const ColorTemplate: StoryFn = () => <ColorPalette />;
 
 export const Colors = ColorTemplate.bind({});

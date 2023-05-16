@@ -1,5 +1,5 @@
 import { theme } from 'src/styles/constants/theme';
-import { Color, colorContrasts, colorPrefixes } from 'src/types/Color';
+import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
 import styled from 'styled-components';
 
 import { VStack } from '../stack/VStack';

@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
-import { StackProps } from 'src/components/stack/Stack';
+import type { StackProps } from 'src/components/stack/Stack';
 import { VStack } from 'src/components/stack/VStack';
 
 const VStackMeta: Meta = {
@@ -15,7 +15,7 @@ export default VStackMeta;
 
 type StoryProps = StackProps & { numberOfChildren: number };
 
-const Template: Story<StoryProps> = ({
+const Template: StoryFn<StoryProps> = ({
   alignment,
   spacing,
   numberOfChildren,

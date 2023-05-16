@@ -4,7 +4,10 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 import { devices } from '../../styles/devices';
-import { getProductDetails, Products } from '../../utils/getProductDetails';
+import {
+  type Products,
+  getProductDetails,
+} from '../../utils/getProductDetails';
 
 const Wrapper = styled.div`
   display: flex;

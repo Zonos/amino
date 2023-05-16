@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { IAminoTheme } from 'src/types/IAminoTheme';
+import type { IAminoTheme } from 'src/types/IAminoTheme';
 
 import { BaseDialog } from '../dialog/_BaseDialog';
 

@@ -1,4 +1,4 @@
-import { AvatarBase, AvatarProps } from './AvatarBase';
+import { type AvatarProps, AvatarBase } from './AvatarBase';
 
 export type ImageAvatarProps = {
   imageUrl: string;
