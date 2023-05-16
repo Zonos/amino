@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import type { Meta, StoryFn } from '@Storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
 
 import { NestedDataTable as NestedDataTableComponent } from '../NestedDataTable';
