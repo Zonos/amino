@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type puppeteer from 'puppeteer';
 import {
   ToastContext,
@@ -37,7 +37,7 @@ export default FileUploadMeta;
 
 const useNotify = () => useContext(ToastContext);
 
-export const FileUpload: ComponentStory<typeof FileUploadComponent> = props => {
+export const FileUpload: StoryFn<typeof FileUploadComponent> = props => {
   const notify = useNotify();
 
   const [file, setFile] = useState<File | null>(null);

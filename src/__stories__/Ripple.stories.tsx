@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import {
   type IRippleActions,
@@ -48,7 +48,7 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-export const Ripple: ComponentStory<typeof RippleGroup> = props => {
+export const Ripple: StoryFn<typeof RippleGroup> = props => {
   const rippleRef = useRef<IRippleActions>(null);
   const [controlRippleEnabled, setControlRippleEnabled] = useState(true);
 

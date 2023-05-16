@@ -1,7 +1,7 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import { glob } from 'glob';
-import { buildStories } from './buildStories';
 import path from 'path';
+import { buildStories } from './buildStories';
 
 const findStories = () => {
   const stories = glob.sync('../src/**/__stories__/*.stories.tsx', {
@@ -10,8 +10,7 @@ const findStories = () => {
   return buildStories(stories);
 };
 const config: StorybookConfig = {
-  // stories: findStories(),
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: findStories(),
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
@@ -45,9 +44,6 @@ const config: StorybookConfig = {
         },
       },
     };
-  },
-  features: {
-    storyStoreV7: false,
   },
   staticDirs: ['../public'],
   docs: {

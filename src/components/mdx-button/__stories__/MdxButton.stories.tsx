@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
@@ -48,7 +48,7 @@ const ButtonRowLabel = styled(Text)`
   margin-bottom: ${theme.space8};
 `;
 
-export const MdxButton: ComponentStory<typeof MdxButtonComponent> = () => (
+export const MdxButton: StoryFn<typeof MdxButtonComponent> = () => (
   <VWrapper>
     <ButtonRowLabel type="bold-subheader">MdxButton examples</ButtonRowLabel>
     <div>

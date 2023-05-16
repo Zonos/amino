@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { LightBox as LightBoxComponent } from 'src/components/lightbox/LightBox';
 import styled from 'styled-components';
@@ -24,7 +24,7 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-export const LightBox: ComponentStory<typeof LightBoxComponent> = ({
+export const LightBox: StoryFn<typeof LightBoxComponent> = ({
   children,
   width,
   ...rest

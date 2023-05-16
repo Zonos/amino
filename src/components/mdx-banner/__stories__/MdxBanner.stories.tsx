@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
@@ -31,7 +31,7 @@ const ids = [
   'longSoloTitle',
 ] as const;
 type ID = typeof ids[number];
-const Template: ComponentStory<typeof MdxBanner> = ({
+const Template: StoryFn<typeof MdxBanner> = ({
   footerActions,
   headerActions,
   intent,
