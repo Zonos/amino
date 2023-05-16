@@ -1,7 +1,8 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/react-webpack5';
 import { glob } from 'glob';
 import { buildStories } from './buildStories';
 import path from 'path';
+
 const findStories = () => {
   const stories = glob.sync('../src/**/__stories__/*.stories.tsx', {
     cwd: __dirname,
@@ -10,7 +11,11 @@ const findStories = () => {
 };
 const config: StorybookConfig = {
   // stories: findStories(),
-  stories: ['../src/**/__stories__/*.stories.tsx'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -28,28 +33,25 @@ const config: StorybookConfig = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
-  features: {},
-  viteFinal: async config => {
+  webpackFinal: async config => {
     return {
       ...config,
+
       resolve: {
+        ...config.resolve,
         alias: {
+          ...config.resolve?.alias,
           src: path.resolve(__dirname, '../src'),
         },
       },
-      define: {
-        'process.env': {},
-      },
     };
   },
-  staticDirs: ['../public'],
-  framework: {
-    name: '@storybook/react-vite',
-    options: {},
+  features: {
+    storyStoreV7: false,
   },
+  staticDirs: ['../public'],
   docs: {
-    // TEMP:
-    autodocs: false,
+    autodocs: true,
   },
 };
 module.exports = config;

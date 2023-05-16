@@ -16,7 +16,9 @@ import { UserMenu } from './UserMenu';
 const LayoutMeta: Meta = {
   component: Layout,
   subcomponents: {
+    // @ts-ignore subcomponents don't seem to be working
     NavigationGroup,
+    // @ts-ignore subcomponents don't seem to be working
     NavigationItem,
   },
   parameters: {
@@ -49,7 +51,6 @@ const LayoutMeta: Meta = {
     },
     content: {
       control: false,
-      defaultValue: 'hello',
     },
     footer: {
       control: false,

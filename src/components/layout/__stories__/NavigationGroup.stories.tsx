@@ -11,6 +11,7 @@ import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 
 const NavigationGroupMeta: Meta = {
   component: NavigationGroupComponent,
+  // @ts-ignore subcomponents don't seem to be working
   subcomponents: { NavigationItem },
   parameters: {
     docs: { source: { type: 'code' } },

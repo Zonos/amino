@@ -31,7 +31,7 @@
     "@storybook/addon-storyshots-puppeteer": "^7.0.12",
     "@storybook/addons": "^7.0.12",
     "@storybook/react": "^7.0.12",
-    "@storybook/react-vite": "^7.0.12",
+    "@storybook/react-webpack5": "^7.0.12",
     "@storybook/theming": "^7.0.12",
     "@types/d3-geo": "^3.0.3",
     "@types/geojson": "^7946.0.10",
@@ -105,8 +105,7 @@
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.4.0",
     "typescript": "5.0.4",
-    "typescript-transform-paths": "^3.4.4",
-    "vite": "^4.3.6"
+    "typescript-transform-paths": "^3.4.4"
   },
   "dependencies": {
     "@dnd-kit/core": "^5.0.3",
@@ -175,10 +174,11 @@
     "prebuild:theme": "echo 'start generating styles'",
     "prebuild": "echo 'start cleaning up' && rm -rf dist && echo 'done cleaning up'",
     "presvgs:react:flags": "ts-node ./svgReact/flags/runGenerateSvgs.ts",
-    "proxy": "local-ssl-proxy --source 6007 --target 6006",
+    "proxy": "pnpm proxy:options --source 6007 --target 6006",
+    "proxy:options": "NODE_OPTIONS=--dns-result-order=ipv4first local-ssl-proxy",
     "push:tags": "git push --follow-tags",
     "start": "pnpm storybook build && pnpm storybook",
-    "storybook": "storybook dev -p 6006 --no-open",
+    "storybook": "storybook dev -p 6006 --no-open --quiet",
     "svgs:format": "eslint --fix svgReact --ext .tsx -c ./.eslintrc.prod.js",
     "svgs:react:flags": "ts-node ./svgReact/flags/runCreateComponentsFromSvgs.ts",
     "svgs:react:icons": "ts-node ./svgReact/icons",
