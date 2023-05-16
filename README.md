@@ -11,7 +11,7 @@
 In order for cookies to passed properly we need to use the same domain and HTTPS. The development server runs on http by default. One solution for resolving this issue is to add [`local-ssl-proxy`](https://www.npmjs.com/package/local-ssl-proxy) to your environment so cookies will be properly seen on localhost.
 
 ```shell script
-$ pnpm global add local-ssl-proxy
+$ pnpm add -g local-ssl-proxy
 ```
 
 In order for the HTTPS request to be routed properly, you will need to modify your `/etc/hosts` file and add some redirects:
