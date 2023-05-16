@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { Column } from 'react-data-grid';
 
 import { ChevronRightCircleIcon } from 'src/icons/ChevronRightCircleIcon';
 import { theme } from 'src/styles/constants/theme';
 import { flattenRow } from 'src/utils/flattenRow';
 import { setupNestedData } from 'src/utils/setupNestedData';
+import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -44,20 +45,24 @@ const StyledTableWrapper = styled.div`
   }
 `;
 
+type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
+
+type ColumnFormatter = Parameters<NonNullable<ColumnType['formatter']>>;
+
 type Props<TRow extends Record<string, unknown>> = {
   customFlattenRow?: typeof flattenRow;
   noFilter?: boolean;
   tableDataArr: TRow[];
+  customColumnFormatters?: {
+    [key in keyof TRow]?: (props: ColumnFormatter[0]) => ReactNode;
+  };
 };
-
-type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
-
-type ColumnFormatter = Parameters<NonNullable<ColumnType['formatter']>>;
 
 export const TableData = <TRow extends Record<string, unknown>>({
   customFlattenRow,
   noFilter,
   tableDataArr,
+  customColumnFormatters,
 }: Props<TRow>) => {
   const flatten = customFlattenRow || flattenRow;
   const [hiddenColumns, setHiddenColumns] = useState<string[]>([]);
@@ -118,14 +123,23 @@ export const TableData = <TRow extends Record<string, unknown>>({
           <TableData
             customFlattenRow={customFlattenRow}
             noFilter
-            tableDataArr={row._expandedData}
+            tableDataArr={row._expandedData as TRow[]}
+            customColumnFormatters={customColumnFormatters}
           />
         );
       }
 
+      if (typeof currentValue === 'string') {
+        return truncateText({
+          text: currentValue,
+          length: 40,
+          addEllipsis: true,
+        });
+      }
+
       return currentValue;
     },
-    [customFlattenRow]
+    [customColumnFormatters, customFlattenRow]
   );
 
   const columns = useMemo(
@@ -137,10 +151,10 @@ export const TableData = <TRow extends Record<string, unknown>>({
           {
             key,
             name: key,
-            formatter: renderTriggerFormater,
+            formatter: customColumnFormatters?.[key] || renderTriggerFormater,
           },
         ]),
-    [renderTriggerFormater, rows]
+    [customColumnFormatters, renderTriggerFormater, rows]
   );
 
   const filteredHiddenColumns: ColumnType[] = useMemo(() => {

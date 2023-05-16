@@ -1,14 +1,16 @@
 type Value = string | number | boolean;
 
+type Params = {
+  prev: Record<string, unknown>;
+  currentVal: [string, unknown];
+  previousKey?: string;
+};
+
 export const flattenRow = ({
   prev,
   currentVal: [key, value],
   previousKey = '',
-}: {
-  prev: Record<string, unknown>;
-  currentVal: [string, unknown];
-  previousKey?: string;
-}): Record<string, unknown> | Value => {
+}: Params): Record<string, unknown> | Value => {
   const keyWithPrefix = previousKey !== '' ? `${previousKey}.${key}` : key;
   if (Array.isArray(value)) {
     // Flatten the array
@@ -57,6 +59,54 @@ export const flattenRow = ({
   }
   if (typeof value === 'boolean') {
     return { ...prev, [keyWithPrefix]: !!value };
+  }
+  if (typeof value === 'string') {
+    try {
+      const parsedValue = JSON.parse(value);
+      if (Array.isArray(parsedValue)) {
+        // Flatten the array
+        return {
+          ...prev,
+          [keyWithPrefix]: parsedValue.map(arrayValue => {
+            const nestedRow =
+              typeof arrayValue === 'object' && arrayValue
+                ? // keep flattening the object
+                  Object.entries(arrayValue).reduce(
+                    (_prev, currentVal) =>
+                      flattenRow({
+                        currentVal,
+                        prev: _prev,
+                      }),
+                    {}
+                  )
+                : arrayValue;
+            return nestedRow;
+          }),
+        };
+      }
+
+      if (typeof parsedValue === 'object') {
+        // Flatten the object
+        const nestedObj: Record<string, string> = Object.entries(
+          parsedValue
+        ).reduce((pre, [nestedKey, nestedVal]) => {
+          const newFlattenRow = flattenRow({
+            currentVal: [nestedKey, nestedVal],
+            prev: pre,
+            previousKey: previousKey ? `${previousKey}.${nestedKey}` : key,
+          });
+          return typeof newFlattenRow === 'object'
+            ? {
+                ...newFlattenRow,
+              }
+            : newFlattenRow;
+        }, {});
+
+        return { ...prev, ...nestedObj };
+      }
+    } catch (err) {
+      // ignore
+    }
   }
   if (!value) {
     return { ...prev, [keyWithPrefix]: '' };
