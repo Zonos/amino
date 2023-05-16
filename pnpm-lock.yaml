@@ -53,8 +53,8 @@ dependencies:
     specifier: ^12.0.4
     version: 12.0.4(react@17.0.2)
   react-select:
-    specifier: ^5.6.0
-    version: 5.6.0(@babel/core@7.18.9)(@types/react@17.0.41)(react-dom@17.0.2)(react@17.0.2)
+    specifier: ^5.7.3
+    version: 5.7.3(@babel/core@7.18.9)(@types/react@17.0.41)(react-dom@17.0.2)(react@17.0.2)
   react-simple-maps:
     specifier: ^3.0.0
     version: 3.0.0(prop-types@15.8.1)(react-dom@17.0.2)(react@17.0.2)
@@ -13330,8 +13330,8 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
     dev: true
 
-  /react-select@5.6.0(@babel/core@7.18.9)(@types/react@17.0.41)(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-uUvP/72rA8NGhOL16RVBaeC12Wa4NUE0iXIa6hz0YRno9ZgxTmpuMeKzjR7vHcwmigpVCoe0prP+3NVb6Obq8Q==}
+  /react-select@5.7.3(@babel/core@7.18.9)(@types/react@17.0.41)(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-z8i3NCuFFWL3w27xq92rBkVI2onT0jzIIPe480HlBjXJ3b5o6Q+Clp4ydyeKrj9DZZ3lrjawwLC5NGl0FSvUDg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0

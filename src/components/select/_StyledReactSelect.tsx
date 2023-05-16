@@ -12,7 +12,7 @@ import type {
   StylesConfig,
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
-import Select from 'react-select/dist/declarations/src/Select';
+import type Select from 'react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
