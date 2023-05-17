@@ -63,7 +63,7 @@ import './components/menu/Menu';
 import './components/menu/MenuItem';
 import './components/nested-data-table/NestedDataTable';
 import './components/nested-data-table/NestedDataTableHasura';
-import './components/night-mode-wrapper/NightModeWrapper';
+import './components/dark-mode-wrapper/DarkModeWrapper';
 import './components/ownership-block/OwnershipBlock';
 import './components/pivot-table/PivotTable';
 import './components/profile-icon/ProfileIcon';
