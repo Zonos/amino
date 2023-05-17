@@ -33,7 +33,7 @@ const StyledRange = styled(Range)`
 `;
 
 const StyledThumb = styled(Thumb)<StyledProps<SliderProps>>`
-  background: white;
+  background: ${theme.gray0};
   border-radius: 20px;
   border: ${theme.border};
   box-shadow: ${theme.v3ShadowBase};

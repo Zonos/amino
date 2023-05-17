@@ -5,7 +5,7 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const AminoSwitch = styled.div<{ checked: boolean }>`
-  background: white;
+  background: ${theme.gray0};
   height: 12px;
   width: 12px;
   border-radius: 50%;

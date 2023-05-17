@@ -30,7 +30,7 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   }
 
   svg {
-    color: white;
+    color: ${theme.gray0};
     box-shadow: ${theme.v3ShadowBase};
     width: 14px;
     height: 14px;

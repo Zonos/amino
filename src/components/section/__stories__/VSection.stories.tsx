@@ -5,6 +5,7 @@ import { ListItem } from 'src/components/list-item/ListItem';
 import { VSection, VSectionProps } from 'src/components/section/VSection';
 import { VStack } from 'src/components/stack/VStack';
 import { CartIcon } from 'src/icons/CartIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const VSectionMeta: Meta = {
@@ -18,7 +19,7 @@ const Template: Story<VSectionProps> = (props: VSectionProps) => (
 );
 
 const StyledDiv = styled.div`
-  border: 1px solid black;
+  border: 1px solid ${theme.gray1200};
 `;
 
 export const BasicVSection = Template.bind({});

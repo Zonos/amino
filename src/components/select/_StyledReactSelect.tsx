@@ -223,7 +223,7 @@ const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
   color: ${p => p.$color || 'inherit'};
   svg {
     margin-right: 4px;
-    color: black;
+    color: ${theme.gray1200};
   }
 `;
 

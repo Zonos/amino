@@ -90,7 +90,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
             top: 0;
             height: 25px;
             right: 0;
-            background: white;
+            background: ${theme.gray0};
             border-radius: ${theme.radius6};
           }
         }

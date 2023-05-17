@@ -16,7 +16,7 @@ const StyledIcon = styled.div`
   border-radius: 50px;
   padding: 5px;
   svg {
-    color: white;
+    color: ${theme.gray0};
   }
 `;
 const StyledActiveIcon = styled.div`
@@ -34,7 +34,7 @@ const StyledActiveIcon = styled.div`
 const StyledItem = styled.button<{ $itemHeight: number }>`
   position: relative;
   appearance: none;
-  background: white;
+  background: ${theme.gray0};
   padding: ${theme.space16};
   padding-right: calc(${theme.space40} + 10px);
   border: ${theme.border};
@@ -82,7 +82,7 @@ const StyledRadioGroup = styled(VStack)`
     }
   }
   svg {
-    color: white;
+    color: ${theme.gray0};
     width: 12px;
     height: 12px;
   }

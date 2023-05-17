@@ -25,7 +25,7 @@ const StyledBoxShadowWrapper = styled.div<ShadowProps>`
   padding: ${theme.space16} ${theme.space24};
 `;
 const StyledWrapper = styled.div`
-  background: white;
+  background: ${theme.gray0};
   padding: ${theme.space8} ${theme.space24};
 `;
 

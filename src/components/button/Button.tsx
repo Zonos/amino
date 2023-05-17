@@ -117,7 +117,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 
 const Primary = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || theme.primary};
-  color: ${p => getAminoColor(p.color) || theme.textLight};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
@@ -126,7 +126,7 @@ const Primary = styled(AminoButton)`
     &:active,
     &:focus {
       background: ${theme.blue700};
-      color: white;
+      color: ${theme.gray0};
     }
   }
 
@@ -158,7 +158,7 @@ const Secondary = styled(AminoButton)`
 
   /** Night mode */
   &.night {
-    color: white;
+    color: ${theme.gray0};
     background: ${theme.gray1000};
 
     &:not([disabled]) {
@@ -183,7 +183,7 @@ const Secondary = styled(AminoButton)`
 
 const Danger = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || theme.red600};
-  color: ${p => getAminoColor(p.color) || 'white'};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
@@ -201,7 +201,7 @@ const Danger = styled(AminoButton)`
 
 const Warning = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || theme.orange600};
-  color: ${p => getAminoColor(p.color) || 'white'};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
@@ -218,7 +218,7 @@ const Warning = styled(AminoButton)`
 `;
 
 const Outline = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || 'white'};
+  background: ${p => getAminoColor(p.background) || theme.gray0};
   color: ${p => getAminoColor(p.color) || theme.textColor};
   border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray200};
 
@@ -235,7 +235,7 @@ const Outline = styled(AminoButton)`
   }
 
   ${StyledSpinnerWrapper} {
-    background: white;
+    background: ${theme.gray0};
   }
 `;
 
@@ -301,7 +301,7 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 
   ${StyledSpinnerWrapper} {
-    background: white;
+    background: ${theme.gray0};
   }
 `;
 

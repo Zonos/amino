@@ -64,7 +64,7 @@ const AminoSpinner = styled.span<SpinnerProps>`
 
   &.white {
     border: ${p => p.size! / 8}px solid rgba(255, 255, 255, 0.3);
-    border-top-color: white;
+    border-top-color: ${theme.gray0};
     &::before {
       border-right-color: rgba(255, 255, 255, 0.3);
     }

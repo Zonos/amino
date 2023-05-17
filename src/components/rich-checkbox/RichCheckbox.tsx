@@ -9,7 +9,7 @@ import styled from 'styled-components';
 const StyledRichCheckbox = styled.button`
   position: relative;
   appearance: none;
-  background: white;
+  background: ${theme.gray0};
   padding: ${theme.space16};
   padding-right: ${theme.space40};
   border: ${theme.border};
@@ -45,7 +45,7 @@ const StyledVStack = styled(VStack)`
     color: ${theme.blue600};
   }
   svg {
-    color: white;
+    color: ${theme.gray0};
     width: 12px;
     height: 12px;
   }

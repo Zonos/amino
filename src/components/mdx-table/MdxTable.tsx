@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
   table {
     width: 100%;
-    background: white;
+    background: ${theme.gray0};
     border-radius: 10px;
     font-size: 14px;
     border: 1px solid ${theme.gray200};

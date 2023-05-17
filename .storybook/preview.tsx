@@ -15,10 +15,11 @@ export const parameters = {
       defaultValue: 'day',
       toolbar: {
         icon: 'circlehollow',
-        // dynamicTitle: true,
+        dynamicTitle: true,
         items: [
           { value: 'day', title: 'Day', icon: 'circlehollow' },
           { value: 'night', title: 'Night', icon: 'circle' },
+          { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
         ],
         defaultValue: 'day',
         onChange: value => {
@@ -29,23 +30,52 @@ export const parameters = {
   },
 };
 
-const ThemeBlock = styled.div`
+const ThemeBlock = styled.div<{
+  themeColor: string;
+  left?: boolean;
+  fill?: boolean;
+}>`
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  min-height: 100vh;
+  left: ${props => (props.left || props.fill ? 0 : '50vw')};
+  border-right: ${props => (props.left ? '1px solid #202020' : 'none')};
+  right: ${props => (props.left ? '50vw' : 0)};
+  width: ${props => (props.fill ? '100vw' : '50vw')};
+  height: 100vh;
+  bottom: 0;
+  overflow: auto;
   padding: 16px;
   background: ${theme.gray0};
+`;
+
+const SideBySideContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
 
 const withTheme = (Story, context) => {
   const theme = context.parameters.theme || context.globals.theme;
 
+  if (theme === 'side-by-side') {
+    return (
+      <SideBySideContainer>
+        <div data-theme="day">
+          <ThemeBlock themeColor={theme.gray0} left>
+            <Story {...context} />
+          </ThemeBlock>
+        </div>
+        <div data-theme="night">
+          <ThemeBlock themeColor={theme.gray1200}>
+            <Story {...context} />
+          </ThemeBlock>
+        </div>
+      </SideBySideContainer>
+    );
+  }
+
   return (
     <div data-theme={theme}>
-      <ThemeBlock>
+      <ThemeBlock themeColor={theme.gray0} fill>
         <Story {...context} />
       </ThemeBlock>
     </div>
