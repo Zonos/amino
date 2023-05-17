@@ -18,8 +18,8 @@ export const globalTypes = {
       icon: 'circlehollow',
       dynamicTitle: true,
       items: [
-        { value: 'day', title: 'Day', icon: 'circlehollow' },
-        { value: 'night', title: 'Night', icon: 'circle' },
+        { value: 'day', title: 'Light', icon: 'circlehollow' },
+        { value: 'night', title: 'Dark', icon: 'circle' },
         { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
       ],
       defaultValue: 'day',

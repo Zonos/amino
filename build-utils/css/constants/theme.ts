@@ -5,6 +5,7 @@ import { blue } from './theme/day/colors/_blue';
 import { cyan } from './theme/day/colors/_cyan';
 import { gray } from './theme/day/colors/_gray';
 import { green } from './theme/day/colors/_green';
+import { oneOffColors } from './theme/day/colors/_oneOffColors';
 import { orange } from './theme/day/colors/_orange';
 import { purple } from './theme/day/colors/_purple';
 import { red } from './theme/day/colors/_red';
@@ -47,6 +48,9 @@ export const theme = {
 
   /* VARIABLES USING COLORS */
   ...variablesUsingColors,
+
+  /* ONE OFF COLORS */
+ ...oneOffColors,
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',

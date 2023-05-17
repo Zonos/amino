@@ -502,18 +502,20 @@ export const theme = {
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   hoverColor: 'var(--amino-hover-color)',
-  /** @info var(--amino-gray-0) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  surfaceColor: 'var(--amino-surface-color)',
-  /** @info var(--amino-gray-50) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
   /** @info var(--amino-gray-1000) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textColor: 'var(--amino-text-color)',
   /** @info var(--amino-gray-0) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   inputBackground: 'var(--amino-input-background)',
+
+  /* ONE OFF COLORS */
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  surfaceColor: 'var(--amino-surface-color)',
+  /** @info var(--amino-gray-50) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
 
   /* LAYOUT STYLE */
   /** @info 55px */

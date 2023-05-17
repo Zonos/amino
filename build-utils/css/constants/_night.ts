@@ -11,6 +11,7 @@ import { transparent } from './theme/night/colors/_transparent';
 import { constraintDefinedAminoVar } from './utils';
 import { shadow } from './theme/night/_shadow';
 import { variablesUsingColors } from './theme/_variablesUsingColors';
+import { oneOffColors } from './theme/night/colors/_oneOffColors';
 
 export const night = constraintDefinedAminoVar(theme, {
   /* GRAY PALETTE */
@@ -42,4 +43,7 @@ export const night = constraintDefinedAminoVar(theme, {
 
   /* VARIABLES USING COLORS */
   ...variablesUsingColors,
+
+  /* ONE OFF COLORS */
+  ...oneOffColors
 });
