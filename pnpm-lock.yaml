@@ -61,9 +61,6 @@ dependencies:
   topojson-client:
     specifier: ^3.1.0
     version: 3.1.0
-  types-7-0:
-    specifier: link:@storybook/react/types-7-0
-    version: link:@storybook/react/types-7-0
   uuid:
     specifier: ^8.3.2
     version: 8.3.2
