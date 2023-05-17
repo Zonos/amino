@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
+import type { ImageSize } from 'src/components/avatar/AvatarBase';
 import { theme } from 'src/styles/constants/theme';
-import { ColorPrefix } from 'src/types/Color';
+import type { ColorPrefix } from 'src/types/Color';
 import styled from 'styled-components';
-
-import { ImageSize } from '../avatar/AvatarBase';
 
 const thumbnailShapes = {
   round: '50%',

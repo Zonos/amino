@@ -1,18 +1,20 @@
-import type { StorybookConfig, StoriesEntry } from '@storybook/core-common';
+import type { StorybookConfig } from '@storybook/react-webpack5';
 import { glob } from 'glob';
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import path from 'path';
 import { buildStories } from './buildStories';
 
-const findStories = (): StoriesEntry[] => {
+const findStories = () => {
   const stories = glob.sync('../src/**/__stories__/*.stories.tsx', {
     cwd: __dirname,
   });
-
   return buildStories(stories);
 };
-
 const config: StorybookConfig = {
   stories: findStories(),
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -21,30 +23,8 @@ const config: StorybookConfig = {
     '@storybook/addon-storyshots-puppeteer',
     'storybook-addon-designs',
   ],
-  webpackFinal: async config => {
-    config.resolve?.plugins?.push(new TsconfigPathsPlugin({}));
-    // add babel loader to support react-data-grid (based on chat gpt suggestion :) )
-    config.module?.rules.push({
-      test: /\.js$/,
-      exclude: /node_modules[/\\](?!react-data-grid[/\\]lib)/,
-      loader: 'babel-loader',
-      options: {
-        presets: [
-          [
-            require.resolve('babel-preset-react-app'),
-            {
-              runtime: 'automatic',
-            },
-          ],
-          ['@babel/preset-typescript', { allowNamespaces: true }],
-        ],
-      },
-    });
-    return config;
-  },
   typescript: {
     check: false,
-    checkOptions: {},
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
@@ -52,10 +32,22 @@ const config: StorybookConfig = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
-  features: {
-    postcss: false,
+  webpackFinal: async config => {
+    return {
+      ...config,
+
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+          src: path.resolve(__dirname, '../src'),
+        },
+      },
+    };
   },
   staticDirs: ['../public'],
+  docs: {
+    autodocs: true,
+  },
 };
-
 module.exports = config;

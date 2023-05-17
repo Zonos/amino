@@ -1,4 +1,4 @@
-import { Badge, BadgeProps } from 'src/components/badge/Badge';
+import { type BadgeProps, Badge } from 'src/components/badge/Badge';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`

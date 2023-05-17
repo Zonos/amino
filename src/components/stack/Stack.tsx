@@ -1,8 +1,8 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { GridAlignment, GridSpacing } from './GridSpacing';
+import type { GridAlignment, GridSpacing } from './GridSpacing';
 
 type DivProps = Omit<
   HTMLAttributes<HTMLDivElement>,

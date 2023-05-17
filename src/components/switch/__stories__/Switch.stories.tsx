@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Switch, SwitchProps } from 'src/components/switch/Switch';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type SwitchProps, Switch } from 'src/components/switch/Switch';
 import { Default } from 'src/icons/flags/Default';
 
 const SwitchMeta: Meta = {
@@ -24,7 +24,7 @@ const SwitchMeta: Meta = {
 
 export default SwitchMeta;
 
-const Template: Story<SwitchProps> = ({ checked, ...props }: SwitchProps) => {
+const Template: StoryFn<SwitchProps> = ({ checked, ...props }: SwitchProps) => {
   const [isChecked, setIsChecked] = useState(checked);
 
   return (

@@ -1,4 +1,4 @@
-import {
+import type {
   ChangeEvent,
   ChangeEventHandler,
   HTMLInputTypeAttribute,
@@ -9,11 +9,11 @@ import {
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { HelpText, HelpTextProps } from '../help-text/HelpText';
+import { type HelpTextProps, HelpText } from '../help-text/HelpText';
 import { DateInput } from './input-type/_DateInput';
 import {
+  type FloatLabelInputProps,
   FloatLabelInput,
-  FloatLabelInputProps,
 } from './input-type/_FloatLabelInput';
 import { NumberInput } from './input-type/_NumberInput';
 import { PasswordInput } from './input-type/_PasswordInput';

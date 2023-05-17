@@ -268,6 +268,7 @@ import './icons/custom/products/RateIcon';
 import './icons/custom/products/RestrictIcon';
 import './icons/custom/products/ScreenIcon';
 import './icons/custom/ZonosIcon';
+import './icons/custom/ZonosLogoIcon';
 import './icons/DashboardDuotoneIcon';
 import './icons/DashboardIcon';
 import './icons/DashboardWhiteIcon';

@@ -93,7 +93,7 @@ createIndexFile({
 });
 
 /** @desc Format generated svg react component and new IconIndex */
-execSync('yarn svgs:format', { encoding: 'utf8' });
+execSync('pnpm svgs:format', { encoding: 'utf8' });
 
 svgProcessPaths.forEach(({ inputFolderPath, destFolder }) => {
   log(`Cleaning up folder "${destFolder}" ...`);
@@ -111,4 +111,4 @@ svgProcessPaths.forEach(({ inputFolderPath, destFolder }) => {
 
 log('Linting ...');
 /** @desc Run autofix eslint */
-execSync('yarn lint:prod --fix', { encoding: 'utf-8' });
+execSync('pnpm lint:prod --fix', { encoding: 'utf-8' });

@@ -1,4 +1,4 @@
-import { getStorageItem, setStorageItem, StorageType } from '../storage';
+import { type StorageType, getStorageItem, setStorageItem } from '../storage';
 import { useSwr } from './useSwr';
 
 type AminoLocalStorageKey = 'current-schema';

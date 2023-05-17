@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { styled as muiStyled } from '@mui/material/styles';
 import MuiTooltip, {
+  type TooltipProps as MuiTooltipProps,
   tooltipClasses,
-  TooltipProps as MuiTooltipProps,
 } from '@mui/material/Tooltip';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types';
+import type { Color } from 'src/types';
 import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`

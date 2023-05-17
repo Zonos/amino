@@ -1,5 +1,5 @@
 import avatarImg from '../../../svgReact/icons/custom-svgs/Avatar.svg';
-import { AvatarBase, AvatarProps } from './AvatarBase';
+import { type AvatarProps, AvatarBase } from './AvatarBase';
 
 export type UserAvatarProps = AvatarProps;
 

@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { ListItem } from 'src/components/list-item/ListItem';
-import { VSection, VSectionProps } from 'src/components/section/VSection';
+import { type VSectionProps, VSection } from 'src/components/section/VSection';
 import { VStack } from 'src/components/stack/VStack';
 import { CartIcon } from 'src/icons/CartIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -14,7 +14,7 @@ const VSectionMeta: Meta = {
 
 export default VSectionMeta;
 
-const Template: Story<VSectionProps> = (props: VSectionProps) => (
+const Template: StoryFn<VSectionProps> = (props: VSectionProps) => (
   <VSection {...props} />
 );
 

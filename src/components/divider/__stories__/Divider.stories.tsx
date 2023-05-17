@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta } from '@storybook/react';
 import { Card } from 'src/components/card/Card';
 import { Text } from 'src/components/text/Text';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';

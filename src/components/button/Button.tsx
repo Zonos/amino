@@ -1,19 +1,19 @@
 import {
-  ComponentPropsWithoutRef,
-  MouseEventHandler,
-  ReactNode,
+  type ComponentPropsWithoutRef,
+  type MouseEventHandler,
+  type ReactNode,
   useRef,
 } from 'react';
 
-import { Spinner, SpinnerProps } from 'src/components/spinner/Spinner';
+import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types';
-import { Intent } from 'src/types/Intent';
-import { ITheme } from 'src/types/ITheme';
-import { Size } from 'src/types/Size';
+import type { Color } from 'src/types';
+import type { Intent } from 'src/types/Intent';
+import type { ITheme } from 'src/types/ITheme';
+import type { Size } from 'src/types/Size';
 import styled from 'styled-components';
 
-import { IRippleActions, RippleGroup } from './RippleGroup';
+import { type IRippleActions, RippleGroup } from './RippleGroup';
 import { useRipple } from './useRipple';
 
 const getAminoColor = (color?: Color | 'inherit') => {

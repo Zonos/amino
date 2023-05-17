@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MdxCard } from 'src/components/mdx-card/MdxCard';
 
-import { MdxCardGrid, Props } from '../MdxCardGrid';
+import { type Props, MdxCardGrid } from '../MdxCardGrid';
 
 const MdxCardGridMeta: Meta = {
   component: MdxCardGrid,
@@ -9,7 +9,7 @@ const MdxCardGridMeta: Meta = {
 
 export default MdxCardGridMeta;
 
-const Template: Story<Props> = ({ twoColumn, children }: Props) => (
+const Template: StoryFn<Props> = ({ twoColumn, children }: Props) => (
   <MdxCardGrid twoColumn={twoColumn}>{children}</MdxCardGrid>
 );
 

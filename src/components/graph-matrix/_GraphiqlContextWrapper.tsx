@@ -1,13 +1,12 @@
-import { ReactNode, useEffect } from 'react';
+import { type ReactNode, useEffect } from 'react';
 
 import {
-  EditorContextType,
-  ExecutionContextType,
+  type EditorContextType,
+  type ExecutionContextType,
   useEditorContext,
   useExecutionContext,
-  // eslint-disable-next-line import/no-internal-modules
 } from '@graphiql/react';
-import { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
+import type { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 
 type Props = {
   children: ReactNode;

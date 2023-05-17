@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Checkbox, CheckboxProps } from 'src/components/checkbox/Checkbox';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
 import styled from 'styled-components';
 
@@ -37,7 +37,7 @@ const LabelComponent = styled.div`
 
 export default CheckboxMeta;
 
-const Template: Story<CheckboxProps> = ({
+const Template: StoryFn<CheckboxProps> = ({
   checked,
   ...props
 }: CheckboxProps) => {

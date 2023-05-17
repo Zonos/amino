@@ -1,4 +1,4 @@
-import { truncateText, TruncateTextParams } from '../truncateText';
+import { type TruncateTextParams, truncateText } from '../truncateText';
 
 type TestCaseType = {
   expected: ReturnType<typeof truncateText>;

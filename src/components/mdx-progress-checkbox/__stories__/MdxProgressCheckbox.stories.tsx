@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type Props,
   MdxProgressCheckbox as MdxProgressCheckboxComponent,
-  Props,
 } from 'src/components/mdx-progress-checkbox/MdxProgressCheckbox';
 
 const MdxProgressCheckboxMeta: Meta = {
@@ -10,7 +10,7 @@ const MdxProgressCheckboxMeta: Meta = {
 
 export default MdxProgressCheckboxMeta;
 
-const Template: Story<Props> = ({ pathname, children }: Props) => (
+const Template: StoryFn<Props> = ({ pathname, children }: Props) => (
   <>
     <MdxProgressCheckboxComponent
       pathname={pathname}

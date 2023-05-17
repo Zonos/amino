@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 
 import { Collapse } from '../collapse/Collapse';
 import { ListItem } from '../list-item/ListItem';
-import { List, ListProps } from './List';
+import { type ListProps, List } from './List';
 
 const StyledCollapse = styled(Collapse)<{ $hasIcon: boolean }>`
   ${({ $hasIcon }) =>

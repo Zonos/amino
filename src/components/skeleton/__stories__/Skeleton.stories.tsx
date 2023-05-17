@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Card as CardComponent } from 'src/components/card/Card';
-import { Skeleton, SkeletonProps } from 'src/components/skeleton/Skeleton';
-import { GridSpacing } from 'src/components/stack/GridSpacing';
+import { type SkeletonProps, Skeleton } from 'src/components/skeleton/Skeleton';
+import type { GridSpacing } from 'src/components/stack/GridSpacing';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ type StoryProps = SkeletonProps & {
   spacing: GridSpacing;
 };
 
-const Template: Story<
+const Template: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
 > = ({ numberOfChildren, spacing, width, height }) => (
   <VStack spacing={spacing}>
@@ -50,7 +50,7 @@ const StyledCard = styled(CardComponent)`
   max-width: 600px;
 `;
 
-export const Card: Story<
+export const Card: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
 > = ({ numberOfChildren, spacing, width, height }) => (
   <StyledCard
@@ -75,7 +75,7 @@ const StyledSkeletonWithChildren = styled(Skeleton)`
   align-items: center;
 `;
 
-export const WithChildren: Story = () => (
+export const WithChildren: StoryFn = () => (
   <StyledSkeletonWithChildren width={400} height={100}>
     <Text type="subheader" color="gray600">
       Generating report...

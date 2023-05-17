@@ -1,4 +1,4 @@
-import { Intent } from './Intent';
+import type { Intent } from './Intent';
 
 export type ConfirmDialogOpts = {
   label: string;

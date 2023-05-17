@@ -1,8 +1,8 @@
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import { GridSpacing } from './GridSpacing';
-import { Stack, StackProps } from './Stack';
+import type { GridSpacing } from './GridSpacing';
+import { type StackProps, Stack } from './Stack';
 
 const StyledVStack = styled(Stack)<{ $spacing: GridSpacing }>`
   grid-row-gap: ${p => theme[`space${p.$spacing}`]};

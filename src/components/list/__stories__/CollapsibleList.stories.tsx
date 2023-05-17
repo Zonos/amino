@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type CollapsibleListProps,
   CollapsibleList,
-  CollapsibleListProps,
 } from 'src/components/list/CollapsibleList';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -17,7 +17,7 @@ const CollapsibleListMeta: Meta = {
 
 export default CollapsibleListMeta;
 
-const PrimarycollapsibleListTemplate: Story<CollapsibleListProps> = ({
+const PrimarycollapsibleListTemplate: StoryFn<CollapsibleListProps> = ({
   withBorder,
   withNegativeMargin,
 }: CollapsibleListProps) => {

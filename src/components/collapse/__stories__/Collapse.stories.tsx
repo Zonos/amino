@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import {
+  type CollapseProps,
   Collapse as CollapseComponent,
-  CollapseProps,
 } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import styled from 'styled-components';
@@ -42,7 +42,7 @@ const StyledCollapseComponent = styled(CollapseComponent)`
   border-radius: 6px;
 `;
 
-const Template: Story<CollapseProps> = ({
+const Template: StoryFn<CollapseProps> = ({
   className,
   children,
   collapseSize,

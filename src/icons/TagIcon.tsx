@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types';
+import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
 export const TagIcon = forwardRef<

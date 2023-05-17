@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { FlagIcon, IFlag, IFlagScale } from 'src/icons/flag-icon/FlagIcon';
-import { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';
+import {
+  type IFlag,
+  type IFlagScale,
+  FlagIcon,
+} from 'src/icons/flag-icon/FlagIcon';
+import type { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
+export default {};
 export const useCountryOptions = ({
   dashboardUrl,
   iconScale = 'small',

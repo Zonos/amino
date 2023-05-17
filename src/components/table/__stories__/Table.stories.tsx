@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Badge } from 'src/components/badge/Badge';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
-import { Table, TableProps } from 'src/components/table/Table';
+import { type TableProps, Table } from 'src/components/table/Table';
 import { TableBody } from 'src/components/table/TableBody';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableFooter } from 'src/components/table/TableFooter';
@@ -109,7 +109,7 @@ const TableMeta: Meta = {
 
 export default TableMeta;
 
-const Template: Story<
+const Template: StoryFn<
   TableProps & {
     conversionRate?: number;
     foreignCode: string;

@@ -19,3 +19,8 @@ jest.mock('fs', () => {
     readFileSync: mockReadFileSync,
   };
 });
+
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
+
+// https://github.com/americanexpress/jest-image-snapshot#invocation
+expect.extend({ toMatchImageSnapshot });

@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 
 import { getIsInternalLink } from 'src/utils/getIsInternalLink';
 

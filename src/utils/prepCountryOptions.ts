@@ -1,4 +1,4 @@
-import { IGetCountriesResponse } from 'src/types/ICountry';
+import type { IGetCountriesResponse } from 'src/types/ICountry';
 
 import { countryPhoneCodes } from './countryPhoneCodes';
 

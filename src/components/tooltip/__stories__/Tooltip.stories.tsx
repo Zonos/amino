@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button, ButtonProps } from 'src/components/button/Button';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type ButtonProps, Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { Tooltip, TooltipProps } from 'src/components/tooltip/Tooltip';
+import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
 import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
@@ -214,7 +214,7 @@ const BottomRow = ({
   );
 };
 
-const Template: Story<ButtonPropWithTooltipOption> = ({
+const Template: StoryFn<ButtonPropWithTooltipOption> = ({
   background,
   ...props
 }) => {

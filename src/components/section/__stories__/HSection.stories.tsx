@@ -1,10 +1,10 @@
 import { useEffect, useState } from '@storybook/addons';
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Input } from 'src/components/input/Input';
-import { HSection, HSectionProps } from 'src/components/section/HSection';
+import { type HSectionProps, HSection } from 'src/components/section/HSection';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
@@ -16,7 +16,7 @@ const HSectionMeta: Meta = {
 
 export default HSectionMeta;
 
-const Template: Story<HSectionProps> = (props: HSectionProps) => {
+const Template: StoryFn<HSectionProps> = (props: HSectionProps) => {
   const [input, setInput] = useState('');
   const [renderDelay, setRenderDelay] = useState(false);
   const { collapseByDefault, collapsible } = props;

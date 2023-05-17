@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
-import { ComponentStory, Meta } from '@storybook/react';
-import { buildClientSchema, IntrospectionQuery } from 'graphql';
+import type { Meta, StoryFn } from '@storybook/react';
+import { type IntrospectionQuery, buildClientSchema } from 'graphql';
 import { HStack } from 'src/components/stack/HStack';
 import { Textarea } from 'src/components/textarea/Textarea';
 import { BookmarkIcon } from 'src/icons/BookmarkIcon';
@@ -36,7 +36,7 @@ const StyledWrapper = styled.div`
   height: 100%;
 `;
 
-export const GraphMatrix: ComponentStory<typeof GraphMatrixComponent> = () => {
+export const GraphMatrix: StoryFn<typeof GraphMatrixComponent> = () => {
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [toolbarState, setToolbarState] = useState(false);

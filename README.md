@@ -11,7 +11,7 @@
 In order for cookies to passed properly we need to use the same domain and HTTPS. The development server runs on http by default. One solution for resolving this issue is to add [`local-ssl-proxy`](https://www.npmjs.com/package/local-ssl-proxy) to your environment so cookies will be properly seen on localhost.
 
 ```shell script
-$ yarn global add local-ssl-proxy
+$ pnpm add -g local-ssl-proxy
 ```
 
 In order for the HTTPS request to be routed properly, you will need to modify your `/etc/hosts` file and add some redirects:
@@ -26,12 +26,12 @@ In order for the HTTPS request to be routed properly, you will need to modify yo
 In the terminal, run the following:
 
 ```sh
-$ yarn dev
+$ pnpm dev
 ```
 
 To also open the browser to the page (https://dev.amino.zonos.com:6007), you can use:
 ```sh
-$ yarn dev:open
+$ pnpm dev:open
 ```
 
 </details>
@@ -48,15 +48,15 @@ $ yarn dev:open
 
 - Install and setup library dependencies
   ```
-  yarn & yarn build:theme
+  pnpm install && pnpm build:theme
   ```
 - Development
   ```
-  yarn dev
+  pnpm dev
   ```
 - Unit testing
   ```
-  yarn test
+  pnpm test
   ```
 
 To run the visual tests (with puppeteer), you must have storybook open and running so puppeteer can navigate to it.
@@ -72,15 +72,15 @@ To run the visual tests (with puppeteer), you must have storybook open and runni
 
 - Patch
   ```
-  yarn version:patch
+  pnpm version:patch
   ```
 - Minor
   ```
-  yarn version:minor
+  pnpm version:minor
   ```
 - Major
   ```
-  yarn version:major
+  pnpm version:major
   ```
 
 ### - Naming rule for auto-importing suggestion
@@ -93,5 +93,5 @@ We use storyshots and puppeteer to do visual regression testing by comparing scr
 
 
 ```
-yarn test:visual
+pnpm test:visual
 ```

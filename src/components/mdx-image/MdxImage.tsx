@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { LightBox } from 'src/components/lightbox/LightBox';
 import styled from 'styled-components';

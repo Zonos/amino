@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import {
+  type Props,
   MdxVideoGuide as MdxVideoGuideComponent,
-  Props,
 } from 'src/components/mdx-video-guide/MdxVideoGuide';
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-const Template: Story<Props> = ({ url, xtitle }: Props) => (
+const Template: StoryFn<Props> = ({ url, xtitle }: Props) => (
   <Wrapper>
     <MdxVideoGuideComponent url={url} xtitle={xtitle} />
   </Wrapper>

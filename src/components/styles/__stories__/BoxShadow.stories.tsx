@@ -1,10 +1,12 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Shadow } from 'src/components/styles/Shadow';
 
-const StyleMeta: Meta = {};
+const StyleMeta: Meta = {
+  component: Shadow,
+};
 
 export default StyleMeta;
 
-const BoxShadowTemplate: Story = () => <Shadow />;
+const BoxShadowTemplate: StoryFn = () => <Shadow />;
 
 export const Demo = BoxShadowTemplate.bind({});

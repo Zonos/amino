@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import { devices } from 'src/styles/devices';

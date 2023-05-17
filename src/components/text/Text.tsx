@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import { Color } from 'src/types';
+import type { Color } from 'src/types';
 import styled, { css } from 'styled-components';
 
 const Subtitle = styled.span`

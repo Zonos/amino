@@ -1,8 +1,11 @@
 import { useRef, useState } from 'react';
 
-import { ComponentStory, Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
-import { IRippleActions, RippleGroup } from 'src/components/button/RippleGroup';
+import {
+  type IRippleActions,
+  RippleGroup,
+} from 'src/components/button/RippleGroup';
 import { useRipple } from 'src/components/button/useRipple';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { VStack } from 'src/components/stack/VStack';
@@ -45,7 +48,7 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-export const Ripple: ComponentStory<typeof RippleGroup> = props => {
+export const Ripple: StoryFn<typeof RippleGroup> = props => {
   const rippleRef = useRef<IRippleActions>(null);
   const [controlRippleEnabled, setControlRippleEnabled] = useState(true);
 

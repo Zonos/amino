@@ -1,4 +1,4 @@
-import { ReactElement, useRef } from 'react';
+import { type ReactElement, useRef } from 'react';
 
 import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';

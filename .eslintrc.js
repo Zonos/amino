@@ -12,6 +12,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:import/typescript',
     'prettier',
+    'plugin:storybook/recommended',
   ],
   globals: {
     JSX: 'readonly',
@@ -44,9 +45,11 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
     /** Typescript 4.0 changes */
-    'no-use-before-define': 'off', // Disable the base rule it can report incorrect errors
+    // Disable the base rule it can report incorrect errors
+    'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    'no-shadow': 'off', // https://github.com/typescript-eslint/typescript-eslint/issues/2483
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2483
+    'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     /** End Typescript 4.0 changes */
     'import/no-extraneous-dependencies': [
@@ -57,13 +60,18 @@ module.exports = {
     ],
     '@typescript-eslint/no-explicit-any': 'error',
     camelcase: 'off',
-    'no-unused-vars': 'off', // Disable the base rule it can report incorrect errors
+    // Disable the base rule it can report incorrect errors
+    'no-unused-vars': 'off',
     'no-unused-expressions': 'error',
     '@typescript-eslint/no-unused-vars': [
       'warn',
-      { ignoreRestSiblings: true, argsIgnorePattern: '^_' },
+      {
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_',
+      },
     ],
-    'class-methods-use-this': 'off', // disable since sometime `this` doesn't need to be used in some util function in class
+    // disable since sometime `this` doesn't need to be used in some util function in class
+    'class-methods-use-this': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -81,17 +89,23 @@ module.exports = {
         forbid: ['**/src/!(types)/**/index.ts*', '**/src/index.ts*'],
       },
     ],
-    'import/no-unresolved': 'off', // Typescript takes care of this
+    // Typescript takes care of this
+    'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
-    'no-console': 'warn', // For debugging ease
+    // For debugging ease
+    'no-console': 'warn',
     'no-underscore-dangle': 'off',
     'prettier/prettier': 'error',
-    'react/jsx-curly-newline': 'off', // Prettier takes care of this
+    // Prettier takes care of this
+    'react/jsx-curly-newline': 'off',
     'react/jsx-filename-extension': 'off',
-    'react/jsx-indent': 'off', // Prettier takes care of this
-    'react/jsx-one-expression-per-line': 'off', // Prettier takes care of this
-    'react/jsx-wrap-multilines': 'off', // Prettier takes care of this
-    'react/prop-types': 'off', // Try removing this after updating to "react-scripts": "^4.x"
+    // Prettier takes care of this
+    'react/jsx-indent': 'off',
+    // Prettier takes care of this
+    'react/jsx-one-expression-per-line': 'off',
+    // Prettier takes care of this
+    'react/jsx-wrap-multilines': 'off',
+    'react/prop-types': 'off',
     'react/function-component-definition': [
       'error',
       {
@@ -101,7 +115,12 @@ module.exports = {
     ],
     'react/default-props-match-prop-types': 'off',
     'react/require-default-props': 'off',
-    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+    'react/jsx-no-useless-fragment': [
+      'error',
+      {
+        allowExpressions: true,
+      },
+    ],
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
       'error',
@@ -109,6 +128,7 @@ module.exports = {
         groups: [['^react'], ['^@?\\w'], ['^~/src'], ['^'], ['((.|..)/)?']],
       },
     ],
+    'storybook/use-storybook-expect': 'off',
   },
   settings: {
     'import/resolver': {

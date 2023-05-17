@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 
-import { ComponentStory } from '@storybook/react';
-import { Meta } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import type puppeteer from 'puppeteer';
 import { DropZone as DropZoneComponent } from 'src/components/drop-zone/DropZone';
 import {
@@ -37,7 +36,7 @@ export default DropZoneMeta;
 
 const useNotify = () => useContext(ToastContext);
 
-export const DropZone: ComponentStory<typeof DropZoneComponent> = props => {
+export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
   const notify = useNotify();
 
   const [files, setFiles] = useState<File[]>([]);

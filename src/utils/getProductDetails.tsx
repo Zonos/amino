@@ -7,7 +7,7 @@ import { LandedCostIcon } from 'src/icons/custom/products/LandedCostIcon';
 import { RateIcon } from 'src/icons/custom/products/RateIcon';
 import { RestrictIcon } from 'src/icons/custom/products/RestrictIcon';
 import { ScreenIcon } from 'src/icons/custom/products/ScreenIcon';
-import { ColorPrefix } from 'src/types/Color';
+import type { ColorPrefix } from 'src/types/Color';
 
 export type Products =
   | 'landed-cost'

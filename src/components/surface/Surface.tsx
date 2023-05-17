@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
-import { Depth } from 'src/types/Depth';
+import type { Depth } from 'src/types/Depth';
 import styled from 'styled-components';
 
 const SurfaceBase = styled.div<{ dense?: boolean }>`

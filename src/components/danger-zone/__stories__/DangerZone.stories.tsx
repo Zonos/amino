@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { CardProps } from 'src/components/card/Card';
+import type { Meta, StoryFn } from '@storybook/react';
+import type { CardProps } from 'src/components/card/Card';
 import { DangerZone } from 'src/components/danger-zone/DangerZone';
 
 const DangerZoneMeta: Meta = {
@@ -8,7 +8,7 @@ const DangerZoneMeta: Meta = {
 
 export default DangerZoneMeta;
 
-const Template: Story<CardProps> = ({
+const Template: StoryFn<CardProps> = ({
   label,
   children,
   actions,

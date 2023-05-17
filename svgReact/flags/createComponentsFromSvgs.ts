@@ -18,10 +18,10 @@ export const createComponentsFromSvgs = async () => {
     console.log(`Formatting SVGs...`);
     /** @desc Format generated svg react component and new IconIndex */
     try {
-      execSync('yarn svgs:format', { encoding: 'utf8' });
+      execSync('pnpm svgs:format', { encoding: 'utf8' });
     } catch {
       /** @desc Run lint --fix the first time only fix part of the fixable erros, run it again to fix all */
-      execSync('yarn svgs:format', { encoding: 'utf8' });
+      execSync('pnpm svgs:format', { encoding: 'utf8' });
     }
 
     /** @desc Clean up all tsx/ts under flags folder (only file not folder) */
@@ -37,7 +37,7 @@ export const createComponentsFromSvgs = async () => {
     // eslint-disable-next-line no-console
     console.log(`Linting all files...`);
     /** @desc Run autofix eslint */
-    execSync('yarn lint:prod --fix', { encoding: 'utf-8' });
+    execSync('pnpm lint:prod --fix', { encoding: 'utf-8' });
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);

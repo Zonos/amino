@@ -1,9 +1,9 @@
-import { createContext, ReactNode, useCallback, useState } from 'react';
+import { type ReactNode, createContext, useCallback, useState } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Toast, ToastProps } from './Toast';
+import { type ToastProps, Toast } from './Toast';
 
 type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
 export type ToastContextFunctionType = (

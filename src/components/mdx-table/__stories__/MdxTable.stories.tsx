@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MdxTable as MdxTableComponent } from 'src/components/mdx-table/MdxTable';
 
 const MdxTableMeta: Meta = {
@@ -7,7 +7,7 @@ const MdxTableMeta: Meta = {
 
 export default MdxTableMeta;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <MdxTableComponent>
     <thead>
       <tr>

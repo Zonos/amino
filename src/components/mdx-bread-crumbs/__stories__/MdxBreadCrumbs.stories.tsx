@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import {
+  type Props,
   MdxBreadCrumbs as MdxBreadCrumbsComponent,
-  Props,
 } from '../MdxBreadCrumbs';
 
 const MdxBreadcrumbsMeta: Meta = {
@@ -11,7 +11,7 @@ const MdxBreadcrumbsMeta: Meta = {
 
 export default MdxBreadcrumbsMeta;
 
-const Template: Story<Props> = () => (
+const Template: StoryFn<Props> = () => (
   <MdxBreadCrumbsComponent>
     <span>
       <a href="/">Page 1</a>

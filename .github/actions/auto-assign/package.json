@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "pack": "ncc -m -o . build lib/index.js",
-    "build": "tsc && yarn run pack"
+    "build": "tsc && pnpm run pack"
   },
   "devDependencies": {
     "@octokit/webhooks-types": "6.9.0",

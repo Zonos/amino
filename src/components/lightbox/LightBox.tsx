@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { ITheme } from 'src/types/ITheme';
+import type { ITheme } from 'src/types/ITheme';
 
 import { BaseDialog } from '../dialog/_BaseDialog';
 

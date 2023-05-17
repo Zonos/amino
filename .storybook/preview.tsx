@@ -1,37 +1,37 @@
 import React from 'react';
+import styled from 'styled-components';
 import '../src/styles/amino.css';
 import '../src/styles/reset.css';
 import '../src/styles/theme.css';
-import styled, { css } from 'styled-components';
-import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/styles/constants/theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
+};
+
+export const globalTypes = {
+  theme: {
+    description: 'Global theme for components',
+    defaultValue: 'day',
+    toolbar: {
+      icon: 'circlehollow',
+      dynamicTitle: true,
+      items: [
+        { value: 'day', title: 'Day', icon: 'circlehollow' },
+        { value: 'night', title: 'Night', icon: 'circle' },
+        { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
+      ],
       defaultValue: 'day',
-      toolbar: {
-        icon: 'circlehollow',
-        dynamicTitle: true,
-        items: [
-          { value: 'day', title: 'Day', icon: 'circlehollow' },
-          { value: 'night', title: 'Night', icon: 'circle' },
-          { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
-        ],
-        defaultValue: 'day',
-        onChange: value => {
-          return value;
-        },
+      onChange: value => {
+        return value;
       },
     },
   },
 };
 
 const ThemeBlock = styled.div<{
-  themeColor: string;
+  themeColor?: string;
   left?: boolean;
   fill?: boolean;
 }>`
@@ -60,7 +60,7 @@ const withTheme = (Story, context) => {
     return (
       <SideBySideContainer>
         <div data-theme="day">
-          <ThemeBlock themeColor={theme.gray0} left>
+          <ThemeBlock left>
             <Story {...context} />
           </ThemeBlock>
         </div>
@@ -75,7 +75,7 @@ const withTheme = (Story, context) => {
 
   return (
     <div data-theme={theme}>
-      <ThemeBlock themeColor={theme.gray0} fill>
+      <ThemeBlock fill>
         <Story {...context} />
       </ThemeBlock>
     </div>
