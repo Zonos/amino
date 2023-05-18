@@ -190,10 +190,7 @@ export const GraphMatrix = ({
                 <>
                   <ToolbarButton
                     label={showTable ? 'Hide table' : 'Show table'}
-                    onClick={() => {
-                      //
-                      setShowTable(!showTable);
-                    }}
+                    onClick={() => setShowTable(!showTable)}
                   >
                     {showTable ? (
                       <EyeOffIcon color="red600" />
