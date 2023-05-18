@@ -20,18 +20,25 @@ const StyledWrapper = styled.div`
   gap: ${theme.space12};
 `;
 
+const StyledSplitPanel = styled(SplitPanelComponent)`
+  .pane {
+    &:last-child,
+    &:last-child > div {
+      border-radius: 0 ${theme.radius8} ${theme.radius8} 0;
+    }
+    &:first-child,
+    &:first-child > div {
+      border-radius: ${theme.radius8} 0 0 ${theme.radius8};
+    }
+  }
+`;
+
 const StyledItem = styled.div`
   border: 1px solid ${theme.gray300};
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  &:last-child {
-    border-radius: 0 ${theme.radius8} ${theme.radius8} 0;
-  }
-  &:first-child {
-    border-radius: ${theme.radius8} 0 0 ${theme.radius8};
-  }
 `;
 
 type SplitPanelProps = Parameters<typeof SplitPanelComponent>[0];
@@ -40,15 +47,13 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   const [isCollapse, setIsCollapse] = useState(false);
   const [itemQty, setItemQty] = useState(2);
   const [collapseFirstItem, setCollapseFirstItem] = useState(false);
+  const [sizes, setSizes] = useState<number[]>([0.2, 0.8]);
 
-  const renderSplitItem = ({ id, width }: { id: number; width?: string }) => (
-    <StyledItem key={id} style={{ width: width || undefined }}>
+  const renderSplitItem = ({ id }: { id: number }) => (
+    <StyledItem key={id}>
       <Text type="header">{id}</Text>
     </StyledItem>
   );
-  // get the random number in javascript
-  const getRandomNumber = (min: number, max: number) =>
-    Math.floor(Math.random() * (max - min + 1) + min);
 
   return (
     <VStack>
@@ -56,7 +61,12 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
         <Button onClick={() => setIsCollapse(!isCollapse)}>
           {isCollapse ? `Collapse all (Except the first one)` : `Expand all`}
         </Button>
-        <Button onClick={() => setCollapseFirstItem(!collapseFirstItem)}>
+        <Button
+          onClick={() => {
+            setSizes([!collapseFirstItem ? 0 : 0.2]);
+            setCollapseFirstItem(!collapseFirstItem);
+          }}
+        >
           {!collapseFirstItem
             ? `Collapse first item`
             : `Expand first item to random width`}
@@ -69,15 +79,19 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
           Remove item
         </Button>
       </StyledWrapper>
-      <SplitPanelComponent collapseAll={isCollapse} {...props}>
+      <StyledSplitPanel
+        collapseAll={isCollapse}
+        {...props}
+        sizes={sizes}
+        onSetSizes={setSizes}
+      >
         {renderSplitItem({
           id: 1,
-          width: collapseFirstItem ? '0' : `${getRandomNumber(10, 300)}px`,
         })}
         {Array.from({ length: itemQty }).map((_, index) =>
           renderSplitItem({ id: index + 3 })
         )}
-      </SplitPanelComponent>
+      </StyledSplitPanel>
     </VStack>
   );
 };

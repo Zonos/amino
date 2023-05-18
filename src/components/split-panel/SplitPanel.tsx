@@ -1,179 +1,100 @@
 import {
-  type HTMLAttributes,
-  type ReactNode,
+  type Dispatch,
+  type SetStateAction,
   Children,
-  isValidElement,
-  memo,
-  useCallback,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
+import Split from 'react-split-it';
 
-import Split, { type SplitProps } from '@zonos/react-split';
 import styled from 'styled-components';
 
-const StyledSplit = styled(Split)`
-  > .w-split-pane[style*='width: 0'] {
-    opacity: 0;
+const normalizeSizes = ({
+  childrenCount,
+  sizes,
+}: {
+  childrenCount: number;
+  sizes: number[];
+}) => {
+  if (sizes.length === 0) {
+    return [1, ...new Array(childrenCount - 1).fill(0)];
   }
-  > :last-child {
-    flex: 1;
+  if (sizes.length !== childrenCount) {
+    // get absolute number of missing children (not negative)
+    const numberOfMissingChildren = Math.abs(childrenCount - sizes.length);
+    return [...sizes, ...new Array(numberOfMissingChildren).fill(1)];
   }
+  const total = sizes.reduce((acc, size) => acc + size, 0);
+  return sizes.map(size => size / total);
+};
+
+const StyledWrapper = styled.div`
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
-type BaseSplitPaneProps = {
-  /**
-   * @param children
-   * @description The content of the component.
-   */
-  children: ReactNode;
-  /**
-   * @param className
-   * @description Override or extend the styles applied to the component.
-   */
+type IProps = {
   className?: string;
+  direction?: 'horizontal' | 'vertical';
+  /**
+   * @param minSize The minumum size in css pixel
+   * @default 10
+   */
+  minSize?: number;
+  /**
+   * @param gutterSize The size of the gutter in pixels
+   * @default 10
+   */
+  gutterSize?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: any;
+  /**
+   * @param sizes The initial sizes of the panes
+   * @default 1 (make sure the sum of all sizes is 1)
+   */
+  sizes?: number[];
+  onSetSizes?: Dispatch<SetStateAction<number[]>>;
   collapseAll?: boolean;
+  lineBar?: boolean;
 };
 
-type SplitPaneProps = BaseSplitPaneProps &
-  Omit<SplitProps, keyof HTMLAttributes<HTMLDivElement>>;
-
-const _SplitPanel = ({
-  children,
+export const SplitPanel = ({
   className,
-  visiable,
+  children,
   collapseAll,
+  direction,
+  gutterSize = 3,
+  sizes,
+  onSetSizes,
   ...props
-}: SplitPaneProps) => {
-  const childrenArray = useMemo(() => Children.toArray(children), [children]);
-  const [splitPaneStyles, setSplitPaneStyles] = useState<
-    (Partial<CSSStyleDeclaration> | null)[]
-  >([]);
-  const [defaultSplitPaneWidth, setDefaultSplitPaneWidth] = useState<
-    (Partial<CSSStyleDeclaration> | null)[]
-  >([]);
-
-  // Collapse or expand all split panes
-  const togglePanel = useCallback(
-    ({
-      collapse,
-      childrenLength,
-    }: {
-      collapse?: boolean;
-      childrenLength: number;
-    }) => {
-      const splitPanesLength = childrenLength;
-      if (collapse) {
-        // Collapse all split panes
-        setSplitPaneStyles(prevSplitPanes =>
-          prevSplitPanes.map((style, index) => {
-            // Expand the first split pane, collapse the rest
-            const width = index === 0 ? '100%' : '0';
-            if (!style) {
-              // Skip if style is not provided
-              return { width };
-            }
-            return { ...style, width };
-          })
-        );
-      } else {
-        // Restore all split panes
-        setSplitPaneStyles(prevSplitPanes => {
-          if (collapse) {
-            return prevSplitPanes;
-          }
-          return prevSplitPanes.map((style, index) => {
-            // Use default width if provided, otherwise use equal width
-            const width =
-              defaultSplitPaneWidth[index]?.width ||
-              `calc(100% / ${splitPanesLength})`;
-
-            if (!style) {
-              // Skip if style is not provided
-              return {
-                width,
-                opacity: '1',
-              };
-            }
-            return {
-              ...style,
-              width,
-              opacity: '1',
-            };
-          });
-        });
-      }
-    },
-    [defaultSplitPaneWidth]
+}: IProps) => {
+  const childrenCount = Children.count(children);
+  const [defaultSizes] = useState<number[]>(
+    normalizeSizes({ childrenCount, sizes: sizes || [] })
   );
 
   useEffect(() => {
-    if (childrenArray.length > 0) {
-      // Set default size for each split pane, hide split pane if default size / current width is 0
-      const newSplitPanes = childrenArray.map(child => {
-        const currentChild = Children.only(child);
-        if (!isValidElement(currentChild)) {
-          return null;
-        }
-        const { style } = currentChild.props;
-        return style
-          ? {
-              ...style,
-              width: style.width,
-            }
-          : null;
-      });
-      setDefaultSplitPaneWidth(newSplitPanes);
-      setSplitPaneStyles(newSplitPanes);
+    if (collapseAll) {
+      // collapse all the items except the first one
+      onSetSizes?.([1, ...new Array(childrenCount - 1).fill(0)]);
+    } else {
+      // set the sizes back to the default sizes
+      onSetSizes?.(normalizeSizes({ childrenCount, sizes: defaultSizes }));
     }
-  }, [childrenArray, childrenArray.length]);
-
-  useEffect(() => {
-    togglePanel({
-      collapse: !!collapseAll,
-      childrenLength: childrenArray.length,
-    });
-  }, [collapseAll, childrenArray.length, togglePanel]);
+  }, [childrenCount, collapseAll, defaultSizes, onSetSizes]);
 
   return (
-    <StyledSplit visiable={!collapseAll} className={className} {...props}>
-      {childrenArray.map((child, index) => {
-        const currentChild = Children.only(child);
-        if (!isValidElement(currentChild)) {
-          return null;
-        }
-        const { style } = currentChild.props;
-        if (collapseAll && index > 0) {
-          return {
-            ...currentChild,
-            props: {
-              ...currentChild.props,
-              className: 'w-split-pane',
-              style: {
-                ...style,
-                width: 0,
-                opacity: 0,
-              },
-            },
-          };
-        }
-        return currentChild
-          ? {
-              ...currentChild,
-              props: {
-                ...currentChild.props,
-                className: 'w-split-pane',
-                style: {
-                  ...style,
-                  width: splitPaneStyles[index]?.width,
-                  opacity: splitPaneStyles[index]?.opacity,
-                },
-              },
-            }
-          : null;
-      })}
-    </StyledSplit>
+    <StyledWrapper className={className}>
+      <Split
+        sizes={normalizeSizes({ childrenCount, sizes: sizes || [] })}
+        onSetSizes={onSetSizes}
+        gutterSize={!collapseAll ? gutterSize : 0}
+        direction={direction}
+        {...props}
+      >
+        {children}
+      </Split>
+    </StyledWrapper>
   );
 };
-export const SplitPanel = memo(_SplitPanel);

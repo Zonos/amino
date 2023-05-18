@@ -188,7 +188,7 @@ export const GraphMatrix = ({
                     onClick={() => setShowTable(!showTable)}
                   >
                     {showTable ? (
-                      <EyeOffIcon color="gray400" />
+                      <EyeOffIcon color="red600" />
                     ) : (
                       <EyeIcon color="gray400" />
                     )}
