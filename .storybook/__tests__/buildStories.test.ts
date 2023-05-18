@@ -16,7 +16,7 @@ describe('Make sure buildStories works as expected', () => {
     ]);
     expect(stories.map(story => `${story.directory}/${story.files}`))
       .toMatchInlineSnapshot(`
-      Array [
+      [
         "../src/__stories__/Composer.stories.tsx",
         "../src/icons/__stories__/AllIcons.stories.tsx",
         "../src/__stories__/ScratchPad.stories.tsx",
@@ -42,7 +42,7 @@ describe('Make sure buildStories works as expected', () => {
     ]);
     expect(stories.map(story => `${story.directory}/${story.files}`))
       .toMatchInlineSnapshot(`
-      Array [
+      [
         "../src/components/sortable-list/__stories__/SortableList.stories.tsx",
         "../src/components/spinner/__stories__/Spinner.stories.tsx",
         "../src/components/stack/__stories__/HStack.stories.tsx",
@@ -79,7 +79,7 @@ describe('Make sure buildStories works as expected', () => {
     ]);
     expect(stories.map(story => `${story.directory}/${story.files}`))
       .toMatchInlineSnapshot(`
-      Array [
+      [
         "../src/__stories__/Composer.stories.tsx",
         "../src/icons/__stories__/AllIcons.stories.tsx",
         "../src/__stories__/ScratchPad.stories.tsx",
