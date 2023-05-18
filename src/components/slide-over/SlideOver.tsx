@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
