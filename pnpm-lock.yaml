@@ -28,9 +28,6 @@ dependencies:
   '@types/topojson-client':
     specifier: ^3.1.1
     version: 3.1.1
-  '@zonos/react-split':
-    specifier: ^5.9.1
-    version: 5.9.1(react-dom@17.0.2)(react@17.0.2)
   d3-geo:
     specifier: ^2.0.2
     version: 2.0.2
@@ -58,6 +55,9 @@ dependencies:
   react-simple-maps:
     specifier: ^3.0.0
     version: 3.0.0(prop-types@15.8.1)(react-dom@17.0.2)(react@17.0.2)
+  react-split-it:
+    specifier: ^2.0.0
+    version: 2.0.0(react@17.0.2)
   topojson-client:
     specifier: ^3.1.0
     version: 3.1.0
@@ -6566,16 +6566,6 @@ packages:
       esbuild: 0.17.19
       tslib: 2.4.0
     dev: true
-
-  /@zonos/react-split@5.9.1(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-sDhOqiwXOqv8eNXmmu15oGG0BPCP1bc8G/1IksCJKcDKfCenw6fcCDtjdKDmdwxjxJqWrSCbOxrviBuhG5ZhrQ==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-    dev: false
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
@@ -13376,6 +13366,15 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       topojson-client: 3.1.0
+    dev: false
+
+  /react-split-it@2.0.0(react@17.0.2):
+    resolution: {integrity: sha512-MRb8Aez8c7243Nc2y/LoxPea2aW+GCCeSa7GgapChvAB52rFksOB7uiGmFJPfj5DfIt73e1+DGZZCx6zVkm0rA==}
+    peerDependencies:
+      react: '>= 17.0.0'
+    dependencies:
+      prop-types: 15.8.1
+      react: 17.0.2
     dev: false
 
   /react-style-singleton@2.2.1(@types/react@17.0.41)(react@17.0.2):
