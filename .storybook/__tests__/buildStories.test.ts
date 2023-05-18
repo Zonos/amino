@@ -1,4 +1,3 @@
-import { glob } from 'glob';
 import { buildStories } from '../buildStories';
 
 describe('Make sure buildStories works as expected', () => {
