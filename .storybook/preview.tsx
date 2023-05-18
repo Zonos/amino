@@ -8,6 +8,7 @@ import { theme } from '../src/styles/constants/theme';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: { expanded: true },
+  layout: 'fullscreen',
 };
 
 export const globalTypes = {
@@ -18,8 +19,8 @@ export const globalTypes = {
       icon: 'circlehollow',
       dynamicTitle: true,
       items: [
-        { value: 'day', title: 'Light', icon: 'circlehollow' },
-        { value: 'night', title: 'Dark', icon: 'circle' },
+        { value: 'day', title: 'Day', icon: 'circlehollow' },
+        { value: 'night', title: 'Night', icon: 'circle' },
         { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
       ],
       defaultValue: 'day',
@@ -31,26 +32,23 @@ export const globalTypes = {
 };
 
 const ThemeBlock = styled.div<{
-  themeColor?: string;
   left?: boolean;
-  fill?: boolean;
 }>`
-  position: absolute;
-  top: 0;
-  left: ${props => (props.left || props.fill ? 0 : '50vw')};
-  border-right: ${props => (props.left ? '1px solid #202020' : 'none')};
-  right: ${props => (props.left ? '50vw' : 0)};
-  width: ${props => (props.fill ? '100vw' : '50vw')};
-  height: 100vh;
-  bottom: 0;
+  border-right: ${props =>
+    props.left ? `1px solid ${theme.gray500}` : 'none'};
+  width: 100%;
   overflow: auto;
-  padding: 16px;
+  padding: ${theme.space16};
   background: ${theme.gray0};
 `;
 
 const SideBySideContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  width: 100%;
+  > * {
+    flex: 1;
+  }
 `;
 
 const withTheme = (Story, context) => {
@@ -65,7 +63,7 @@ const withTheme = (Story, context) => {
           </ThemeBlock>
         </div>
         <div data-theme="night">
-          <ThemeBlock themeColor={theme.gray1200}>
+          <ThemeBlock>
             <Story {...context} />
           </ThemeBlock>
         </div>
@@ -75,7 +73,7 @@ const withTheme = (Story, context) => {
 
   return (
     <div data-theme={theme}>
-      <ThemeBlock fill>
+      <ThemeBlock>
         <Story {...context} />
       </ThemeBlock>
     </div>

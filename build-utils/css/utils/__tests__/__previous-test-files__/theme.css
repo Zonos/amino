@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme='day'] {
   --amino-transition: all 0.2s ease-in-out 0s;
   --amino-type-scale-base: 16px;
   --amino-gray-0: white;
@@ -143,7 +144,6 @@
   --amino-border-transparent: 1px solid transparent;
   --amino-sidebar-color: var(--amino-gray-0);
   --amino-header-color: var(--amino-gray-0);
-  --amino-backdrop-color: var(--amino-gray-1000);
   --amino-danger: var(--amino-red-600);
   --amino-danger-dark: var(--amino-red-700);
   --amino-error: var(--amino-red-600);
@@ -168,6 +168,7 @@
   --amino-input-background: var(--amino-gray-0);
   --amino-surface-color: var(--amino-gray-0);
   --amino-surface-color-secondary: var(--amino-gray-50);
+  --amino-backdrop-color: var(--amino-gray-1000);
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 264px;
   --amino-elevation-0: 0;

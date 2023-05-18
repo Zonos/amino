@@ -433,9 +433,6 @@ export const theme = {
   /** @info var(--amino-gray-0) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   headerColor: 'var(--amino-header-color)',
-  /** @info var(--amino-gray-1000) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  backdropColor: 'var(--amino-backdrop-color)',
 
   /* INTENT COLOR */
   /** @info var(--amino-red-600) */
@@ -516,6 +513,9 @@ export const theme = {
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
+  /** @info var(--amino-gray-1000) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  backdropColor: 'var(--amino-backdrop-color)',
 
   /* LAYOUT STYLE */
   /** @info 55px */

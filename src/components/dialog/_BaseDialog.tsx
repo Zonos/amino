@@ -1,5 +1,4 @@
-import { type KeyboardEvent, type ReactNode, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
+import React, { type ReactNode, useEffect, useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
@@ -21,7 +20,7 @@ const DialogLayout = styled.div`
 `;
 
 const Popup = styled(motion.div)<{ width: number; noBorder?: boolean }>`
-  position: relative;
+  position: fixed;
   z-index: 1001;
   background: ${theme.surfaceColor};
   width: ${p => p.width}px;
@@ -58,63 +57,59 @@ export const BaseDialog = ({
   closeOnEsc = true,
   noBorder = false,
 }: BaseDialogProps) => {
-  const handleKeyDown = (event: KeyboardEvent) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
     if (onClose && closeOnEsc && event.key === 'Escape') {
       onClose();
     }
   };
 
-  const dialogBackdrop = useRef<HTMLDivElement>(null);
-
-  // Focus the backdrop so we can listen for keypresses ('escape' to close)
-  useEffect(() => {
-    if (!dialogBackdrop.current?.contains(document.activeElement)) {
-      dialogBackdrop.current?.focus();
-    }
-  }, [open]);
-
-  if (typeof document !== 'undefined') {
-    return ReactDOM.createPortal(
-      <AnimatePresence>
-        {open && (
-          <Backdrop
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.65 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            key="dialog-backdrop"
-            data-theme={_theme}
-          />
-        )}
-        {open && (
-          <DialogLayout
-            data-theme={_theme}
-            onClick={() => onClose && closeOnBlur && onClose()}
-            onKeyDown={handleKeyDown}
-            tabIndex={-1}
-            ref={dialogBackdrop}
-          >
-            <Popup
-              className={className}
-              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              key="dialog"
-              width={width || 444}
-              noBorder={noBorder}
-              onClick={e => {
-                // Prevent dialog from closing when clicking in the dialog
-                e.stopPropagation();
-              }}
-            >
-              {children}
-            </Popup>
-          </DialogLayout>
-        )}
-      </AnimatePresence>,
-      document.querySelector('body')!
-    );
+  if (!isMounted) {
+    return null;
   }
-  return null;
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <Backdrop
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.65 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          key="dialog-backdrop"
+          data-theme={_theme}
+        />
+      )}
+      {open && (
+        <DialogLayout
+          data-theme={_theme}
+          onClick={() => onClose && closeOnBlur && onClose()}
+          onKeyDown={handleKeyDown}
+          tabIndex={-1}
+        >
+          <Popup
+            className={className}
+            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            key="dialog"
+            width={width || 444}
+            noBorder={noBorder}
+            onClick={e => {
+              // Prevent dialog from closing when clicking in the dialog
+              e.stopPropagation();
+            }}
+          >
+            {children}
+          </Popup>
+        </DialogLayout>
+      )}
+    </AnimatePresence>
+  );
 };

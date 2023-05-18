@@ -1,5 +1,4 @@
-import { type ReactNode, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Text } from 'src/components/text/Text';
@@ -77,6 +76,12 @@ export const CoverSheet = ({
   actionWrapperId = '__cover-sheet-actions',
   actions,
 }: CoverSheetProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   useEffect(() => {
     if (typeof document === 'undefined') {
       return;
@@ -84,45 +89,42 @@ export const CoverSheet = ({
     if (document.querySelectorAll(`[id='${actionWrapperId}']`).length > 1) {
       // eslint-disable-next-line no-console
       console.error(
-        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to an unique id.`
+        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to a unique id.`
       );
     }
   }, [actionWrapperId]);
 
-  if (typeof document !== 'undefined') {
-    const body = document.querySelector('body');
-    if (body) {
-      return createPortal(
-        <AnimatePresence>
-          {open && (
-            <StyledDialog
-              className={className}
-              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-              initial={{ opacity: 0, translateY: 10 }}
-              animate={{ opacity: 1, translateY: 0 }}
-              exit={{ opacity: 0, translateY: 5 }}
-            >
-              <Header>
-                <StyledCloseButton
-                  icon={<RemoveIcon size={20} />}
-                  onClick={onClose}
-                />
-                <StyledHeader type="header">{label}</StyledHeader>
-                <div id={actionWrapperId}>
-                  {actions && (
-                    <CoverSheetActions coverSheetActionId={actionWrapperId}>
-                      {actions}
-                    </CoverSheetActions>
-                  )}
-                </div>
-              </Header>
-              <Content>{children}</Content>
-            </StyledDialog>
-          )}
-        </AnimatePresence>,
-        body
-      );
-    }
+  if (!isMounted) {
+    return null;
   }
-  return null;
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <StyledDialog
+          className={className}
+          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
+          initial={{ opacity: 0, translateY: 10 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          exit={{ opacity: 0, translateY: 5 }}
+        >
+          <Header>
+            <StyledCloseButton
+              icon={<RemoveIcon size={20} />}
+              onClick={onClose}
+            />
+            <StyledHeader type="header">{label}</StyledHeader>
+            <div id={actionWrapperId}>
+              {actions && (
+                <CoverSheetActions coverSheetActionId={actionWrapperId}>
+                  {actions}
+                </CoverSheetActions>
+              )}
+            </div>
+          </Header>
+          <Content>{children}</Content>
+        </StyledDialog>
+      )}
+    </AnimatePresence>
+  );
 };

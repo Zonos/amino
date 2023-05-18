@@ -144,20 +144,15 @@ SelectWithDeveloperException.args = {
   label: 'Currencies',
   value: [
     {
+      icon: <FileIcon size={14} />,
       label: 'US Dollar (USD)',
-      icon: <FileIcon size={14} />,
       value: 'USD',
-    },
-    {
-      icon: <FileIcon size={14} />,
-      label: 'European Euro (EUR)',
-      value: 'EUR',
     },
   ],
   options: [
     {
-      label: 'US Dollar (USD)',
       icon: <FileIcon size={14} />,
+      label: 'US Dollar (USD)',
       value: 'USD',
     },
     {

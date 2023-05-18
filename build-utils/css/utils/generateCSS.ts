@@ -33,7 +33,7 @@ export const generateLightThemeContent = async <
     .join('\n');
 
   const fullContent = `
-  :root {
+  :root, [data-theme="day"] {
     ${content}
   }`;
 

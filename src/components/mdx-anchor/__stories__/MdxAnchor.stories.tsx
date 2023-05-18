@@ -15,7 +15,6 @@ export default MdxAnchorMeta;
 
 const Wrapper = styled.div`
   height: auto;
-  width: 800px;
   margin: 0 auto;
 
   a {

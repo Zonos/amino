@@ -13,7 +13,6 @@ export const variablesUsingColors = {
   /* LAYOUT STYLE */
   'sidebar-color': 'var(--amino-gray-0)',
   'header-color': 'var(--amino-gray-0)',
-  'backdrop-color': 'var(--amino-gray-1000)',
 
   /* INTENT COLOR */
   danger: 'var(--amino-red-600)',

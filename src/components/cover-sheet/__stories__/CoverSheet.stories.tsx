@@ -77,11 +77,11 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
         actionWrapperId="second-cover-sheet"
       >
         This is a second coversheet set with <b>actionWrapperId</b>. The button
-        action <b>Action in second coversheete</b> should be possitioned
-        correctly at the top right of this coversheet
+        action <b>Action in second coversheet</b> should be positioned correctly
+        at the top right of this coversheet
         <CoverSheetActions coverSheetActionId="second-cover-sheet">
           <Button onClick={() => setSecondCoversheetOpen(false)}>
-            Action in second coversheete
+            Action in second coversheet
           </Button>
         </CoverSheetActions>
       </CoverSheet>

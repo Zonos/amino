@@ -102,7 +102,6 @@
   --amino-border-transparent: 1px solid transparent;
   --amino-sidebar-color: var(--amino-gray-0);
   --amino-header-color: var(--amino-gray-0);
-  --amino-backdrop-color: var(--amino-gray-1000);
   --amino-danger: var(--amino-red-600);
   --amino-danger-dark: var(--amino-red-700);
   --amino-error: var(--amino-red-600);
@@ -127,4 +126,5 @@
   --amino-input-background: var(--amino-gray-0);
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
+  --amino-backdrop-color: var(--amino-gray-100);
 }

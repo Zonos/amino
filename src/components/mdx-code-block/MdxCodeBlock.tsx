@@ -5,15 +5,16 @@ import { Button } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
 import { CopyIcon } from 'src/icons/CopyIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { ITheme } from 'src/types';
 import styled from 'styled-components';
 
 import { useCopyText } from '../../utils/useCopyText';
 
 const Wrapper = styled.div`
   width: 100%;
-  background-color: ${theme.gray1100};
+  background-color: ${theme.gray50};
   border-radius: 12px;
-  color: ${theme.gray0};
+  color: ${theme.gray1200};
   margin-bottom: 16px;
 `;
 
@@ -21,7 +22,7 @@ const CodeBlockHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${theme.gray1000};
+  background-color: ${theme.gray100};
   padding: 8px 16px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -49,7 +50,7 @@ const CodeBlockBody = styled.div<{ maxHeight: number }>`
     background: transparent;
 
     .hljs {
-      color: ${theme.gray100};
+      color: ${theme.gray1000};
       background: transparent;
     }
 
@@ -64,21 +65,21 @@ const CodeBlockBody = styled.div<{ maxHeight: number }>`
       .hljs- {
         &attr,
         &tag {
-          color: ${theme.gray200};
+          color: ${theme.gray900};
         }
 
         &literal,
         &number {
-          color: ${theme.blue400};
+          color: ${theme.blue700};
         }
 
         &string {
-          color: ${theme.purple400};
+          color: ${theme.purple700};
         }
       }
 
       .key {
-        color: ${theme.orange500};
+        color: ${theme.orange600};
       }
 
       div {
@@ -90,9 +91,9 @@ const CodeBlockBody = styled.div<{ maxHeight: number }>`
 
 const BadgeStyled = styled(Badge)`
   > div {
-    background-color: ${theme.gray800};
+    background-color: ${theme.gray300};
     p {
-      color: #fff;
+      color: ${theme.gray1200};
     }
   }
 `;
@@ -102,7 +103,7 @@ const CodeBlockLines = styled.div`
   line-height: 20px;
   padding: 4px 0;
   font-size: 10px;
-  color: ${theme.gray500};
+  color: ${theme.gray600};
   font-weight: 600;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -114,11 +115,12 @@ const HStackRight = styled(HStack)`
   align-items: center;
 `;
 
-type Props = {
+export type Props = {
   children?: ReactElement;
   xlabel: string;
   type: 'JSON' | 'GraphQL';
   maxHeight?: number;
+  _theme?: ITheme;
 };
 
 /**
@@ -149,6 +151,7 @@ export const MdxCodeBlock = ({
   xlabel,
   type,
   maxHeight = 260,
+  _theme = 'night',
 }: Props) => {
   const pre = children?.type === 'pre' && children.props.children;
   const codeChildren = (pre?.type === 'code' && pre.props.children) || [];
@@ -157,7 +160,7 @@ export const MdxCodeBlock = ({
   const codeRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <Wrapper>
+    <Wrapper data-theme={_theme}>
       <CodeBlockHeader>
         <p>{xlabel}</p>
         <HStackRight spacing={16}>
@@ -167,7 +170,7 @@ export const MdxCodeBlock = ({
           ) : (
             <Button
               intent="text"
-              icon={<CopyIcon color="gray100" size={20} />}
+              icon={<CopyIcon color="gray1000" size={20} />}
               onClick={() =>
                 copyText(
                   codeRef.current?.innerText ||
