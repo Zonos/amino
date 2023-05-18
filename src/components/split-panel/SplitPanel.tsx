@@ -59,23 +59,32 @@ type IProps = {
   lineBar?: boolean;
 };
 
+/**
+ * Split panel component
+ * @ref https://greggman.github.io/react-split-it/
+ */
 export const SplitPanel = ({
   className,
   children,
   collapseAll,
   direction,
   gutterSize = 3,
-  sizes,
+  sizes = [1],
   onSetSizes,
   ...props
 }: IProps) => {
   const childrenCount = Children.count(children);
   const [defaultSizes] = useState<number[]>(
-    normalizeSizes({ childrenCount, sizes: sizes || [] })
+    normalizeSizes({ childrenCount, sizes })
   );
 
   useEffect(() => {
-    if (collapseAll) {
+    const firstDefaultSize = defaultSizes[0];
+    // if the first default size is already 1, if state is expand, set size equally
+    if (firstDefaultSize === 1 && !collapseAll) {
+      const euqalSize = 1 / childrenCount;
+      onSetSizes?.(new Array(childrenCount).fill(euqalSize));
+    } else if (collapseAll) {
       // collapse all the items except the first one
       onSetSizes?.([1, ...new Array(childrenCount - 1).fill(0)]);
     } else {
@@ -87,7 +96,7 @@ export const SplitPanel = ({
   return (
     <StyledWrapper className={className}>
       <Split
-        sizes={normalizeSizes({ childrenCount, sizes: sizes || [] })}
+        sizes={normalizeSizes({ childrenCount, sizes })}
         onSetSizes={onSetSizes}
         gutterSize={!collapseAll ? gutterSize : 0}
         direction={direction}
