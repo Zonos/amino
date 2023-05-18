@@ -105,6 +105,7 @@ export const GraphMatrix = ({
   const [isFetching, setIsFetching] = useState(false);
   const [cachingKey] = useState('first-time');
   const [showTable, setShowTable] = useState(false);
+  const [splitPanelSizes, setSplitPanelSizes] = useState([1, 0]);
 
   const [operationName, setOperationName] = useState('');
   const { graphiqlFetcher, resultData, isLoading } = useGraphiqlFetcher({
@@ -169,7 +170,11 @@ export const GraphMatrix = ({
 
   return (
     <StyledWrapper>
-      <SplitPanel collapseAll={!showTable}>
+      <SplitPanel
+        sizes={splitPanelSizes}
+        onSetSizes={setSplitPanelSizes}
+        collapseAll={!showTable}
+      >
         <StyleTableWrap>
           <GraphiQL
             fetcher={graphiqlFetcher}
@@ -185,7 +190,10 @@ export const GraphMatrix = ({
                 <>
                   <ToolbarButton
                     label={showTable ? 'Hide table' : 'Show table'}
-                    onClick={() => setShowTable(!showTable)}
+                    onClick={() => {
+                      //
+                      setShowTable(!showTable);
+                    }}
                   >
                     {showTable ? (
                       <EyeOffIcon color="red600" />
