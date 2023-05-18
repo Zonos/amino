@@ -40,7 +40,7 @@ import './components/lightbox/LightBox';
 import './components/list-item/ListItem';
 import './components/list/CollapsibleList';
 import './components/list/List';
-import './components/mdx/mdx/mdx-anchor/MdxAnchor';
+import './components/mdx/mdx-anchor/MdxAnchor';
 import './components/mdx/mdx-badge/MdxBadge';
 import './components/mdx/mdx-banner/MdxBanner';
 import './components/mdx/mdx-bread-crumbs/MdxBreadCrumbs';
