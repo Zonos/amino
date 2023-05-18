@@ -1,3 +1,5 @@
+// theme.js
+
 import { create } from '@storybook/theming/create';
 
 export default create({
@@ -5,7 +7,7 @@ export default create({
   brandTitle: 'Building blocks for cross-border interfaces',
   brandUrl: 'https://amino.zonos.com',
   brandImage: 'https://zonos-docs.s3.us-east-1.amazonaws.com/amino-logo.png',
-  appBg: '#fafafa',
-  appContentBg: 'white',
+  appBg: '#ffffff', // Customize light background color
+  appContentBg: '#f7f7f7', // Customize light content background color
   appBorderRadius: 8,
 });

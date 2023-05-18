@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { theme } from '../src/styles/constants/theme';
 import '../src/styles/amino.css';
 import '../src/styles/reset.css';
 import '../src/styles/theme.css';
-import { theme } from '../src/styles/constants/theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
