@@ -5,13 +5,14 @@ import { EyeDuotoneIcon } from 'src/icons/EyeDuotoneIcon';
 import { StarIcon } from 'src/icons/StarIcon';
 import { UserIcon } from 'src/icons/UserIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { ITheme } from 'src/types';
 import styled from 'styled-components';
 
 import { devices } from '../../styles/devices';
 
 const Wrapper = styled.div`
   padding: 24px;
-  background-color: ${theme.gray1100};
+  background-color: ${theme.gray50};
   border-radius: 10px;
   margin: 6px 28px 32px;
   overflow: hidden;
@@ -37,7 +38,7 @@ const Owner = styled.div`
   gap: 8px;
   align-items: center;
   font-size: 14px;
-  color: ${theme.gray0};
+  color: ${theme.gray1200};
   width: fit-content;
   flex: 1 1 0px;
   position: relative;
@@ -125,6 +126,7 @@ export type Props = {
   docOwner: DocOwner;
   docWriter: DocOwner;
   isLoading: boolean;
+  themeOverride?: ITheme;
 };
 
 export const OwnershipBlock = ({
@@ -133,8 +135,9 @@ export const OwnershipBlock = ({
   docOwner,
   docWriter,
   isLoading,
+  themeOverride = 'night',
 }: Props) => (
-  <Wrapper>
+  <Wrapper data-theme={themeOverride}>
     <Owner>
       <EyeDuotoneIcon size={20} color="gray300" secondaryColor="gray800" />
       <span>Zonos Only</span>
