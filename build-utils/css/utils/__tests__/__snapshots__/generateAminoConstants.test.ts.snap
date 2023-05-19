@@ -254,120 +254,25 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   transparentBlack: 'var(--amino-transparent-black)',
 
-  /* INTENT COLOR */
-  /** @info var(--amino-red-600) */
+  /* BOX SHADOW */
+  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 1px 2px rgba(10, 10, 11, 0.06), 0px 1px 3px rgba(10, 10, 11, 0.1) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  danger: 'var(--amino-danger)',
-  /** @info var(--amino-red-700) */
+  v3ShadowBase: 'var(--amino-v3-shadow-base)',
+  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 4px 6px rgba(10, 10, 11, 0.1), 0px 2px 4px rgba(10, 10, 11, 0.06) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  dangerDark: 'var(--amino-danger-dark)',
-  /** @info var(--amino-red-600) */
+  v3ShadowMedium: 'var(--amino-v3-shadow-medium)',
+  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 10px 15px rgba(10, 10, 11, 0.1), 0px 4px 6px rgba(10, 10, 11, 0.05) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  error: 'var(--amino-error)',
-  /** @info var(--amino-blue-600) */
+  v3ShadowLarge: 'var(--amino-v3-shadow-large)',
+  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 20px 25px rgba(10, 10, 11, 0.1), 0px 10px 10px rgba(12, 12, 13, 0.04) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  primary: 'var(--amino-primary)',
-  /** @info var(--amino-blue-500) */
+  v3ShadowXl: 'var(--amino-v3-shadow-xl)',
+  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 32px 50px rgba(10, 10, 11, 0.24) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  primaryLight: 'var(--amino-primary-light)',
-  /** @info var(--amino-blue-800) */
+  v3ShadowXxl: 'var(--amino-v3-shadow-xxl)',
+  /** @info 0px 1px 0px #FFFFFF, 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 0px 8px rgba(0, 0, 0, 0.02) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  primaryDark: 'var(--amino-primary-dark)',
-  /** @info var(--amino-green-300) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  success: 'var(--amino-success)',
-  /** @info var(--amino-green-700) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  successDark: 'var(--amino-success-dark)',
-  /** @info var(--amino-amber-100) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  warning: 'var(--amino-warning)',
-  /** @info var(--amino-amber-700) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  warningDark: 'var(--amino-warning-dark)',
-
-  /* GLOW COLOR */
-  /** @info 0 0 0 1px var(--amino-red-600) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowError: 'var(--amino-glow-error)',
-  /** @info 0 0 0 1px var(--amino-primary) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowBlue: 'var(--amino-glow-blue)',
-  /** @info 0 0 0 1px var(--amino-cyan-alpha) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowCyan: 'var(--amino-glow-cyan)',
-  /** @info 0 0 0 1px var(--amino-red-alpha) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowRed: 'var(--amino-glow-red)',
-  /** @info 0 0 0 1px var(--amino-orange-alpha) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowOrange: 'var(--amino-glow-orange)',
-  /** @info 0 0 0 1px var(--amino-green-alpha) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowGreen: 'var(--amino-glow-green)',
-  /** @info 0 0 0 1px var(--amino-purple-alpha) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  glowPurple: 'var(--amino-glow-purple)',
-
-  /* LAYOUT COLOR */
-  /** @info white */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  pageBackground: 'var(--amino-page-background)',
-  /** @info var(--amino-gray-200) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  borderColor: 'var(--amino-border-color)',
-  /** @info var(--amino-gray-50) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  hoverColor: 'var(--amino-hover-color)',
-  /** @info white */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  surfaceColor: 'var(--amino-surface-color)',
-  /** @info var(--amino-gray-50) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
-  /** @info white */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textLight: 'var(--amino-text-light)',
-  /** @info var(--amino-gray-1000) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textColor: 'var(--amino-text-color)',
-  /** @info var(--amino-text-color) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  textDark: 'var(--amino-text-dark)',
-  /** @info white */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  inputBackground: 'var(--amino-input-background)',
-
-  /* BUTTON SIZE */
-  /** @info 56px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeXl: 'var(--amino-size-xl)',
-  /** @info 48px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeLg: 'var(--amino-size-lg)',
-  /** @info 40px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeMd: 'var(--amino-size-md)',
-  /** @info 32px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeSm: 'var(--amino-size-sm)',
-
-  /* BORDER RADIUS */
-  /** @info 4px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius4: 'var(--amino-radius-4)',
-  /** @info 6px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius6: 'var(--amino-radius-6)',
-  /** @info 8px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius8: 'var(--amino-radius-8)',
-  /** @info 10px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius10: 'var(--amino-radius-10)',
-  /** @info 12px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius12: 'var(--amino-radius-12)',
+  v3ShadowInset: 'var(--amino-v3-shadow-inset)',
 
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */
@@ -494,70 +399,7 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   space80: 'var(--amino-space-80)',
 
-  /* LAYOUT STYLE */
-  /** @info 55px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  appbarHeight: 'var(--amino-appbar-height)',
-  /** @info 264px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sidebarWidth: 'var(--amino-sidebar-width)',
-  /** @info white */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sidebarColor: 'var(--amino-sidebar-color)',
-  /** @info white */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  headerColor: 'var(--amino-header-color)',
-  /** @info var(--amino-gray-1000) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  backdropColor: 'var(--amino-backdrop-color)',
-  /** @info 0 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  elevation0: 'var(--amino-elevation-0)',
-  /** @info 100 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  elevation100: 'var(--amino-elevation-100)',
-  /** @info 200 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  elevation200: 'var(--amino-elevation-200)',
-  /** @info 300 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  elevation300: 'var(--amino-elevation-300)',
-  /** @info 400 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  elevation400: 'var(--amino-elevation-400)',
-  /** @info 500 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  elevation500: 'var(--amino-elevation-500)',
-  /** @info 400 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  dialogElevation: 'var(--amino-dialog-elevation)',
-  /** @info 500 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  toastElevation: 'var(--amino-toast-elevation)',
-  /** @info 500 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  appbarElevation: 'var(--amino-appbar-elevation)',
-
-  /* BOX SHADOW */
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 1px 2px rgba(10, 10, 11, 0.06), 0px 1px 3px rgba(10, 10, 11, 0.1) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  v3ShadowBase: 'var(--amino-v3-shadow-base)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 4px 6px rgba(10, 10, 11, 0.1), 0px 2px 4px rgba(10, 10, 11, 0.06) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  v3ShadowMedium: 'var(--amino-v3-shadow-medium)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 10px 15px rgba(10, 10, 11, 0.1), 0px 4px 6px rgba(10, 10, 11, 0.05) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  v3ShadowLarge: 'var(--amino-v3-shadow-large)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 20px 25px rgba(10, 10, 11, 0.1), 0px 10px 10px rgba(12, 12, 13, 0.04) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  v3ShadowXl: 'var(--amino-v3-shadow-xl)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 32px 50px rgba(10, 10, 11, 0.24) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  v3ShadowXxl: 'var(--amino-v3-shadow-xxl)',
-  /** @info 0px 1px 0px #FFFFFF, 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 0px 8px rgba(0, 0, 0, 0.02) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  v3ShadowInset: 'var(--amino-v3-shadow-inset)',
-
+  /* VARIABLES USING COLORS */
   /* BORDER */
   /** @info 1px solid var(--amino-border-color) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
@@ -586,6 +428,163 @@ export const theme = {
   /** @info 1px solid transparent */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderTransparent: 'var(--amino-border-transparent)',
+
+  /* LAYOUT STYLE */
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  sidebarColor: 'var(--amino-sidebar-color)',
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  headerColor: 'var(--amino-header-color)',
+
+  /* INTENT COLOR */
+  /** @info var(--amino-red-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  danger: 'var(--amino-danger)',
+  /** @info var(--amino-red-700) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  dangerDark: 'var(--amino-danger-dark)',
+  /** @info var(--amino-red-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  error: 'var(--amino-error)',
+  /** @info var(--amino-blue-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  primary: 'var(--amino-primary)',
+  /** @info var(--amino-blue-500) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  primaryLight: 'var(--amino-primary-light)',
+  /** @info var(--amino-blue-800) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  primaryDark: 'var(--amino-primary-dark)',
+  /** @info var(--amino-green-300) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  success: 'var(--amino-success)',
+  /** @info var(--amino-green-700) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  successDark: 'var(--amino-success-dark)',
+  /** @info var(--amino-amber-100) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  warning: 'var(--amino-warning)',
+  /** @info var(--amino-amber-700) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  warningDark: 'var(--amino-warning-dark)',
+
+  /* GLOW COLOR */
+  /** @info 0 0 0 1px var(--amino-red-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowError: 'var(--amino-glow-error)',
+  /** @info 0 0 0 1px var(--amino-primary) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowBlue: 'var(--amino-glow-blue)',
+  /** @info 0 0 0 1px var(--amino-cyan-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowCyan: 'var(--amino-glow-cyan)',
+  /** @info 0 0 0 1px var(--amino-red-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowRed: 'var(--amino-glow-red)',
+  /** @info 0 0 0 1px var(--amino-orange-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowOrange: 'var(--amino-glow-orange)',
+  /** @info 0 0 0 1px var(--amino-green-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowGreen: 'var(--amino-glow-green)',
+  /** @info 0 0 0 1px var(--amino-purple-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glowPurple: 'var(--amino-glow-purple)',
+
+  /* LAYOUT COLOR */
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  pageBackground: 'var(--amino-page-background)',
+  /** @info var(--amino-gray-200) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  borderColor: 'var(--amino-border-color)',
+  /** @info var(--amino-gray-50) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  hoverColor: 'var(--amino-hover-color)',
+  /** @info var(--amino-gray-1000) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  textColor: 'var(--amino-text-color)',
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  inputBackground: 'var(--amino-input-background)',
+
+  /* ONE OFF COLORS */
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  surfaceColor: 'var(--amino-surface-color)',
+  /** @info var(--amino-gray-50) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
+  /** @info var(--amino-gray-1000) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  backdropColor: 'var(--amino-backdrop-color)',
+
+  /* LAYOUT STYLE */
+  /** @info 55px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  appbarHeight: 'var(--amino-appbar-height)',
+  /** @info 264px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  sidebarWidth: 'var(--amino-sidebar-width)',
+  /** @info 0 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  elevation0: 'var(--amino-elevation-0)',
+  /** @info 100 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  elevation100: 'var(--amino-elevation-100)',
+  /** @info 200 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  elevation200: 'var(--amino-elevation-200)',
+  /** @info 300 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  elevation300: 'var(--amino-elevation-300)',
+  /** @info 400 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  elevation400: 'var(--amino-elevation-400)',
+  /** @info 500 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  elevation500: 'var(--amino-elevation-500)',
+  /** @info 400 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  dialogElevation: 'var(--amino-dialog-elevation)',
+  /** @info 500 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  toastElevation: 'var(--amino-toast-elevation)',
+  /** @info 500 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  appbarElevation: 'var(--amino-appbar-elevation)',
+
+  /* BUTTON SIZE */
+  /** @info 56px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  sizeXl: 'var(--amino-size-xl)',
+  /** @info 48px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  sizeLg: 'var(--amino-size-lg)',
+  /** @info 40px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  sizeMd: 'var(--amino-size-md)',
+  /** @info 32px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  sizeSm: 'var(--amino-size-sm)',
+
+  /* BORDER RADIUS */
+  /** @info 4px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius4: 'var(--amino-radius-4)',
+  /** @info 6px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius6: 'var(--amino-radius-6)',
+  /** @info 8px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius8: 'var(--amino-radius-8)',
+  /** @info 10px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius10: 'var(--amino-radius-10)',
+  /** @info 12px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius12: 'var(--amino-radius-12)',
 
   /** @info 34px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
