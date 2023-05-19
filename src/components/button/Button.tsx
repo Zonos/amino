@@ -329,7 +329,7 @@ type ButtonBase = {
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
   tabIndex?: number;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   type?: 'button' | 'reset' | 'submit';
 };
 
@@ -362,7 +362,7 @@ export function Button<T extends GroupTag = 'button'>({
   size = 'sm',
   spinnerColor,
   tag: _tag,
-  theme: _theme,
+  themeOverride,
   type = 'button',
   ...props
 }: ButtonProps<T>) {
@@ -387,7 +387,7 @@ export function Button<T extends GroupTag = 'button'>({
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
     loading ? 'loading' : '',
-    _theme,
+    themeOverride,
   ]
     .filter(Boolean)
     .join(' ');

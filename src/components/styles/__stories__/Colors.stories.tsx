@@ -4,7 +4,7 @@ import { ColorPalette } from 'src/components/styles/ColorPalette';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
 const StyleMeta: Meta = {
-  title: 'Styles/Colors',
+  component: ColorPalette,
   parameters: {
     design: {
       type: 'figma',

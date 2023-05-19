@@ -153,7 +153,7 @@ export type DialogProps = {
   leftActions?: ReactNode;
   onClose: () => void;
   open: boolean;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   width?: number;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
@@ -177,7 +177,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       leftActions,
       onClose,
       open,
-      theme: _theme,
+      themeOverride,
       width,
       closeOnBlur,
       closeOnEsc,
@@ -187,7 +187,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   ) => (
     <BaseDialog
       className={className}
-      data-theme={_theme}
+      data-theme={themeOverride}
       open={open}
       width={width}
       onClose={onClose}

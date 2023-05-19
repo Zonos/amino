@@ -9,7 +9,7 @@ export type LightBoxProps = {
   children: ReactNode;
   onClose: () => void;
   open: boolean;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   width?: number;
   withBorder?: boolean;
   /** Close when clicking outside dialog (on the backdrop)
@@ -30,7 +30,7 @@ export const LightBox = ({
   className,
   onClose,
   open,
-  theme: _theme,
+  themeOverride,
   width,
   withBorder = false,
   closeOnBlur,
@@ -38,7 +38,7 @@ export const LightBox = ({
 }: LightBoxProps) => (
   <BaseDialog
     className={className}
-    data-theme={_theme}
+    data-theme={themeOverride}
     open={open}
     width={width}
     noBorder={!withBorder}

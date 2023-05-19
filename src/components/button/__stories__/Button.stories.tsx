@@ -137,7 +137,7 @@ const ButtonRow = ({
         intent={intent}
         disabled={disabled}
         loading={loading}
-        theme="night"
+        themeOverride="night"
         {...props}
       >
         Night

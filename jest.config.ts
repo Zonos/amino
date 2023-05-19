@@ -14,16 +14,11 @@ const config: InitialOptionsTsJest = {
   modulePathIgnorePatterns: ['dist', '__stories__', 'playwright'],
   setupFilesAfterEnv: ['./jest/setupJest.ts'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)?$': ['ts-jest', { isolatedModules: true }],
     '^.+\\.svg$': 'jest-transformer-svg',
     '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
   },
   testEnvironment: 'jsdom',
-  globals: {
-    'ts-jest': {
-      isolatedModules: true,
-    },
-  },
 };
 
 export default config;

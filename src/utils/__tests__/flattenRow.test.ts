@@ -94,20 +94,20 @@ test.only('flatten table row data', () => {
   });
 
   expect(flattenData).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "aggregate.count": 2,
         "aggregate.created_at.created_at": "2010-04-20T23:06:44",
         "aggregate.duties.duties": 0,
         "aggregate.fees.fees": 0,
-        "nodes": Array [
-          Object {
+        "nodes": [
+          {
             "created_at": "2010-04-20T23:06:44",
             "duties": 0,
             "fees": 0,
             "items": 15.54,
-            "nodes": Array [
-              Object {
+            "nodes": [
+              {
                 "created_at": "2010-04-20T23:06:44",
                 "duties": 0,
                 "fees.created_at": "2010-04-20T23:06:44",
@@ -120,7 +120,7 @@ test.only('flatten table row data', () => {
                 "shipping": 35,
                 "taxes": 0,
               },
-              Object {
+              {
                 "created_at": "2010-04-20T23:06:44",
                 "duties": 0,
                 "fees.created_at": "2010-04-20T23:06:44",
@@ -137,13 +137,13 @@ test.only('flatten table row data', () => {
             "shipping": 35,
             "taxes": 0,
           },
-          Object {
+          {
             "created_at": "2010-04-20T23:06:44",
             "duties": 0,
             "fees": 0,
             "items": 15.54,
-            "nodes": Array [
-              Object {
+            "nodes": [
+              {
                 "created_at": "2010-04-20T23:06:44",
                 "duties": 0,
                 "fees": 0,
@@ -151,7 +151,7 @@ test.only('flatten table row data', () => {
                 "shipping": 35,
                 "taxes": 0,
               },
-              Object {
+              {
                 "created_at": "2010-04-20T23:06:44",
                 "duties": 0,
                 "fees": 0,

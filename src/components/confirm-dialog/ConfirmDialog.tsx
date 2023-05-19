@@ -47,7 +47,7 @@ const ConfirmationPrompt = styled.span`
 export type ConfirmDialogProps = {
   open: boolean;
   label: string;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   subtitle?: ReactNode;
   intent: Intent;
   confirmText?: string;
@@ -69,7 +69,7 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const ConfirmDialog = ({
-  theme: _theme,
+  themeOverride,
   open,
   label,
   intent,
@@ -79,7 +79,7 @@ export const ConfirmDialog = ({
   confirmAction,
   dismissAction,
 }: ConfirmDialogProps) => (
-  <BaseDialog width={350} data-theme={_theme} open={open}>
+  <BaseDialog width={350} data-theme={themeOverride} open={open}>
     <Content>
       <VStack spacing={16}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>

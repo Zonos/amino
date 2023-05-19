@@ -88,7 +88,7 @@ export type SlideOverProps = {
   label?: string;
   onClose: () => void;
   open: boolean;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   modal?: boolean;
   subtitle?: ReactNode;
 };
@@ -99,7 +99,7 @@ export const SlideOver = ({
   label,
   onClose,
   open,
-  theme: _theme,
+  themeOverride,
   subtitle,
   modal = true,
 }: SlideOverProps) => (
@@ -112,7 +112,7 @@ export const SlideOver = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
           key="dialog-backdrop"
-          data-theme={_theme}
+          data-theme={themeOverride}
           onClick={onClose}
         />
         <Popup

@@ -38,7 +38,7 @@ export type BaseDialogProps = {
   children: ReactNode;
   className?: string;
   open: boolean;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   width?: number;
   onClose?: () => void;
   closeOnBlur?: boolean;
@@ -50,7 +50,7 @@ export const BaseDialog = ({
   children,
   className,
   open,
-  theme: _theme,
+  themeOverride,
   width,
   onClose,
   closeOnBlur = true,
@@ -82,12 +82,12 @@ export const BaseDialog = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           key="dialog-backdrop"
-          data-theme={_theme}
+          data-theme={themeOverride}
         />
       )}
       {open && (
         <DialogLayout
-          data-theme={_theme}
+          data-theme={themeOverride}
           onClick={() => onClose && closeOnBlur && onClose()}
           onKeyDown={handleKeyDown}
           tabIndex={-1}

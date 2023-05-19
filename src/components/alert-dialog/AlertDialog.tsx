@@ -47,7 +47,7 @@ const AlertPrompt = styled.span`
 export type AlertDialogProps = {
   open: boolean;
   label: string;
-  theme?: ITheme;
+  themeOverride?: ITheme;
   subtitle: ReactNode;
   intent: Intent;
   dismissText: string;
@@ -67,7 +67,7 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const AlertDialog = ({
-  theme: _theme,
+  themeOverride,
   open,
   label,
   intent,
@@ -77,7 +77,7 @@ export const AlertDialog = ({
 }: AlertDialogProps) => (
   <BaseDialog
     width={350}
-    data-theme={_theme}
+    data-theme={themeOverride}
     open={open}
     onClose={dismissAction}
   >
