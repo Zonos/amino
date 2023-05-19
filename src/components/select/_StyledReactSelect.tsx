@@ -399,11 +399,13 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   multiValue: provided => ({
     ...provided,
     background: theme.gray200,
-    color: theme.textColor,
     fontWeight: 500,
     minWidth: 'inherit',
   }),
-  // multiValueLabel
+  multiValueLabel: provided => ({
+    ...provided,
+    color: theme.textColor,
+  }),
   // multiValueRemove
   // noOptionsMessage
   option: (provided, state) => ({

@@ -152,7 +152,6 @@ CustomRichRadioOption.args = {
 
 export const SmallRichRadio = Template.bind({});
 SmallRichRadio.args = {
-  itemHeight: 40,
   items: [
     {
       label: 'Handbags, whether or not with shoulder strap',
