@@ -182,8 +182,3 @@ h6 {
   z-index: 9999999;
   bottom: var(--amino-space-40);
 }
-
-[data-theme] {
-  color: var(--amino-text-color);
-  background-color: var(--amino-gray-0);
-}

@@ -30,11 +30,14 @@ export const ThemeSelect = () => {
     }
   };
   return (
-    <Select
-      value={themes.filter(x => x.value === aminoTheme)}
-      options={themes}
-      icon={getIcon()}
-      onChange={theme => setAminoTheme(theme?.value || 'day')}
-    />
+    <>
+      <Select
+        value={themes.filter(x => x.value === aminoTheme)}
+        options={themes}
+        icon={getIcon()}
+        onChange={theme => setAminoTheme(theme?.value || 'day')}
+      />
+      <p>Local storage value: {aminoTheme}</p>
+    </>
   );
 };

@@ -218,7 +218,6 @@ const Warning = styled(AminoButton)`
 `;
 
 const Outline = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.gray0};
   color: ${p => getAminoColor(p.color) || theme.textColor};
   border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray200};
 
@@ -288,7 +287,6 @@ const PlainButton = AminoButton;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.blue600};
-  background: ${p => getAminoColor(p.background) || 'white'};
 
   &:not([disabled]) {
     &:hover {

@@ -46,7 +46,7 @@ const CardStyled = styled.div<CardProps>`
         background: radial-gradient(
           circle,
           ${theme[`${p.glowingColor}600`]} 0%,
-          white 70%
+          transparent 70%
         );
         filter: blur(20px);
         transition: opacity 0.5s;

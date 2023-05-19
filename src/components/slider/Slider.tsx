@@ -41,6 +41,10 @@ const StyledThumb = styled(Thumb)<StyledProps<SliderProps>>`
   height: ${p => p.$size && `${p.$size * 2}px`};
   width: ${p => p.$size && `${p.$size * 2}px`};
 
+  [data-theme='night'] & {
+    background: ${theme.gray1200};
+  }
+
   cursor: pointer;
 
   &:focus,

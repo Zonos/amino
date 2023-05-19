@@ -12,8 +12,12 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   transition: ${theme.transition};
   position: absolute;
   top: 2px;
-  left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')}; ;
+  left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')};
+  [data-theme='night'] & {
+    background: ${theme.gray1200};
+  }
 `;
+
 const AminoSwitchWrapper = styled.div<{
   checked: boolean;
 }>`

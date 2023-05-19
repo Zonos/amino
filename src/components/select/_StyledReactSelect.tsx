@@ -387,7 +387,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     borderRadius: 12,
     boxShadow: theme.v3ShadowLarge,
     marginTop: 4,
-    background: theme.gray0,
+    background: theme.surfaceColor,
   }),
   menuList: provided => ({
     ...provided,

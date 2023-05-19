@@ -67,8 +67,12 @@ const StyledItem = styled.button<{ $itemHeight: number }>`
 
 const Subtitle = styled(Text)``;
 
-const Label = styled.span`
-  font-weight: 500;
+const Label = styled(Text)`
+  color: ${theme.textColor};
+  line-height: 24px;
+  [data-state='checked'] & {
+    color: ${theme.primary};
+  }
 `;
 
 const StyledRadioGroup = styled(VStack)`
@@ -164,7 +168,7 @@ export const RichRadio = <T extends string>({
             renderCustomText(item)
           ) : (
             <div>
-              <Label>{item.label}</Label>
+              <Label type="label">{item.label}</Label>
               {item.subtitle && (
                 <Subtitle color="gray900" type="body">
                   {item.subtitle}

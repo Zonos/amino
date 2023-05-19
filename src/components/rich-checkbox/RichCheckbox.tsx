@@ -6,6 +6,8 @@ import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
 import styled from 'styled-components';
 
+import { Text } from '../text/Text';
+
 const StyledRichCheckbox = styled.button`
   position: relative;
   appearance: none;
@@ -30,12 +32,17 @@ const StyledRichCheckbox = styled.button`
   }
 `;
 
-const Label = styled.span`
-  font-weight: 500;
+const Label = styled(Text)`
+  line-height: 24px;
+  [data-state='checked'] & {
+    color: ${theme.primary};
+  }
 `;
 
-const Subtitle = styled.span`
-  opacity: 0.5;
+const Subtitle = styled(Text)`
+  [data-state='checked'] & {
+    color: ${theme.primary};
+  }
 `;
 
 const StyledVStack = styled(VStack)`
@@ -100,8 +107,10 @@ export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
           <StyledItemContentDiv $icon={!!icon}>
             {icon && icon}
             <VStack spacing={0}>
-              <Label>{label}</Label>
-              {subtitle && <Subtitle>{subtitle}</Subtitle>}
+              <Label type="label" color="gray1200">
+                {label}
+              </Label>
+              {subtitle && <Subtitle color="gray700">{subtitle}</Subtitle>}
             </VStack>
           </StyledItemContentDiv>
           {checked && (
