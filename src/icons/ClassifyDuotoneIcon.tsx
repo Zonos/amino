@@ -12,7 +12,7 @@ export const ClassifyDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
@@ -23,7 +23,7 @@ export const ClassifyDuotoneIcon = forwardRef<
       clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M11 4.18c0-1.548 2.06-2.082 2.811-.729l8.65 15.57a1.5 1.5 0 0 1-1.31 2.229H3.804c-1.521 0-2.076-2.004-.771-2.786l3.917-2.35a5.658 5.658 0 0 1-.496-2.326c0-2.744 1.95-5.045 4.545-5.524V4.18Z"

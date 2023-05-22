@@ -11,7 +11,7 @@ test(`Have and don't have jsdocs comment`, async () => {
   export const theme = {
     /* NO JSDOCS COMMENT */
     'blue-l80': '#e9ebff',
-    
+
     /* HAS CUSTOM JSDOCS */
     /** @info CUSTOM INFO */
     'blue-l60': '#a7afff',

@@ -1,6 +1,4 @@
-import type { ReactNode } from 'react';
-import ReactDOM from 'react-dom';
-import { useHotkeys } from 'react-hotkeys-hook';
+import { type ReactNode } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
@@ -9,7 +7,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { IAminoTheme } from 'src/types/IAminoTheme';
+import type { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const Popup = styled(motion.div)`
@@ -75,9 +73,9 @@ const Footer = styled.div`
   align-items: center;
   justify-content: flex-end;
   background: ${theme.surfaceColorSecondary};
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 300px;
 
   & > div + div {
     margin-left: ${theme.space8};
@@ -90,7 +88,7 @@ export type SlideOverProps = {
   label?: string;
   onClose: () => void;
   open: boolean;
-  theme?: IAminoTheme;
+  themeOverride?: Theme;
   modal?: boolean;
   subtitle?: ReactNode;
 };
@@ -101,60 +99,52 @@ export const SlideOver = ({
   label,
   onClose,
   open,
-  theme: _theme,
+  themeOverride,
   subtitle,
   modal = true,
-}: SlideOverProps) => {
-  useHotkeys('esc', onClose);
-
-  if (typeof document !== 'undefined') {
-    return ReactDOM.createPortal(
-      <AnimatePresence>
-        {open && (
-          <Backdrop
-            initial={{ opacity: 0 }}
-            animate={{ opacity: modal ? 0.65 : 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            key="dialog-backdrop"
-            data-theme={_theme}
-            onClick={onClose}
-          />
-        )}
-        {open && (
-          <Popup
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.45 }}
-            initial={{ opacity: 0, x: 300 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 300 }}
-            key="slide-over"
-          >
-            <SlideOverHeader>
-              {subtitle ? (
-                <VStack spacing={0} className="header-content">
-                  <Text type="title">{label}</Text>
-                  {subtitle}
-                </VStack>
-              ) : (
-                <Text type="title" className="header-content">
-                  {label}
-                </Text>
-              )}
-              <Close onClick={onClose}>
-                <RemoveIcon />
-              </Close>
-            </SlideOverHeader>
-            <SlideOverContent>{children}</SlideOverContent>
-            {actions && (
-              <Footer>
-                <HStack spacing={8}>{actions}</HStack>
-              </Footer>
+}: SlideOverProps) => (
+  <AnimatePresence>
+    {open && (
+      <>
+        <Backdrop
+          initial={{ opacity: 0 }}
+          animate={{ opacity: modal ? 0.65 : 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.35 }}
+          key="dialog-backdrop"
+          data-theme={themeOverride}
+          onClick={onClose}
+        />
+        <Popup
+          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.45 }}
+          initial={{ opacity: 0, x: 300 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 300 }}
+          key="slide-over"
+        >
+          <SlideOverHeader>
+            {subtitle ? (
+              <VStack spacing={0} className="header-content">
+                <Text type="title">{label}</Text>
+                {subtitle}
+              </VStack>
+            ) : (
+              <Text type="title" className="header-content">
+                {label}
+              </Text>
             )}
-          </Popup>
-        )}
-      </AnimatePresence>,
-      document.querySelector('body')!
-    );
-  }
-  return null;
-};
+            <Close onClick={onClose}>
+              <RemoveIcon />
+            </Close>
+          </SlideOverHeader>
+          <SlideOverContent>{children}</SlideOverContent>
+          {actions && (
+            <Footer>
+              <HStack spacing={8}>{actions}</HStack>
+            </Footer>
+          )}
+        </Popup>
+      </>
+    )}
+  </AnimatePresence>
+);

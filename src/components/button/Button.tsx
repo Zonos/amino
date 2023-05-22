@@ -117,7 +117,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 
 const Primary = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || theme.primary};
-  color: ${p => getAminoColor(p.color) || theme.textLight};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
@@ -126,7 +126,7 @@ const Primary = styled(AminoButton)`
     &:active,
     &:focus {
       background: ${theme.blue700};
-      color: white;
+      color: ${theme.gray0};
     }
   }
 
@@ -156,9 +156,9 @@ const Secondary = styled(AminoButton)`
     background: ${theme.gray100};
   }
 
-  /** Dark mode */
-  &.dark {
-    color: white;
+  /** Night mode */
+  &.night {
+    color: ${theme.gray0};
     background: ${theme.gray1000};
 
     &:not([disabled]) {
@@ -183,7 +183,7 @@ const Secondary = styled(AminoButton)`
 
 const Danger = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || theme.red600};
-  color: ${p => getAminoColor(p.color) || 'white'};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
@@ -201,7 +201,7 @@ const Danger = styled(AminoButton)`
 
 const Warning = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || theme.orange600};
-  color: ${p => getAminoColor(p.color) || 'white'};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
@@ -218,7 +218,6 @@ const Warning = styled(AminoButton)`
 `;
 
 const Outline = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || 'white'};
   color: ${p => getAminoColor(p.color) || theme.textColor};
   border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray200};
 
@@ -235,7 +234,7 @@ const Outline = styled(AminoButton)`
   }
 
   ${StyledSpinnerWrapper} {
-    background: white;
+    background: ${theme.gray0};
   }
 `;
 
@@ -275,7 +274,7 @@ const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
       color: ${theme.gray700};
     }
     &:active {
-      color: ${theme.black};
+      color: ${theme.gray1200};
     }
   }
 
@@ -288,7 +287,6 @@ const PlainButton = AminoButton;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.blue600};
-  background: ${p => getAminoColor(p.background) || 'white'};
 
   &:not([disabled]) {
     &:hover {
@@ -301,7 +299,7 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 
   ${StyledSpinnerWrapper} {
-    background: white;
+    background: ${theme.gray0};
   }
 `;
 
@@ -331,7 +329,7 @@ type ButtonBase = {
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
   tabIndex?: number;
-  theme?: Theme | 'space';
+  themeOverride?: Theme;
   type?: 'button' | 'reset' | 'submit';
 };
 
@@ -364,7 +362,7 @@ export function Button<T extends GroupTag = 'button'>({
   size = 'sm',
   spinnerColor,
   tag: _tag,
-  theme: _theme,
+  themeOverride,
   type = 'button',
   ...props
 }: ButtonProps<T>) {
@@ -389,7 +387,7 @@ export function Button<T extends GroupTag = 'button'>({
     iconRight ? 'icon-right' : '',
     icon ? 'has-icon' : '',
     loading ? 'loading' : '',
-    _theme,
+    themeOverride,
   ]
     .filter(Boolean)
     .join(' ');

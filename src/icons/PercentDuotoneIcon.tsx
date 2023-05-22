@@ -12,12 +12,12 @@ export const PercentDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       d="M10.5 6.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm9 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
     />

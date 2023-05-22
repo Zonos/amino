@@ -12,12 +12,12 @@ export const ClearDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       d="M3 22h13a6 6 0 0 0 6-6v-1.889a1 1 0 0 0-1-1h-4.056a.537.537 0 0 1-.522-.5 5.557 5.557 0 0 0-5.034-5.033.537.537 0 0 1-.5-.522V3a1 1 0 0 0-1-1H8a6 6 0 0 0-6 6v13a1 1 0 0 0 1 1Z"
     />

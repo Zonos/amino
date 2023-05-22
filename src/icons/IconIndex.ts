@@ -393,3 +393,4 @@ export { WarningWhiteIcon } from './WarningWhiteIcon';
 /** Custom */
 export { AvatarIcon } from './custom/AvatarIcon';
 export { ZonosIcon } from './custom/ZonosIcon';
+export { ZonosLogoIcon } from './custom/ZonosLogoIcon';

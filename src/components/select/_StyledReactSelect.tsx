@@ -223,7 +223,7 @@ const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
   color: ${p => p.$color || 'inherit'};
   svg {
     margin-right: 4px;
-    color: black;
+    color: ${theme.gray1200};
   }
 `;
 
@@ -362,6 +362,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       flexWrap: 'inherit',
       minHeight: `var(--amino-size-${size})`,
       boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
+      background: theme.gray0,
     };
   },
   dropdownIndicator: provided => ({
@@ -386,6 +387,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     borderRadius: 12,
     boxShadow: theme.v3ShadowLarge,
     marginTop: 4,
+    background: theme.surfaceColor,
   }),
   menuList: provided => ({
     ...provided,
@@ -397,16 +399,18 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   multiValue: provided => ({
     ...provided,
     background: theme.gray200,
-    color: 'black',
     fontWeight: 500,
     minWidth: 'inherit',
   }),
-  // multiValueLabel
+  multiValueLabel: provided => ({
+    ...provided,
+    color: theme.textColor,
+  }),
   // multiValueRemove
   // noOptionsMessage
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? theme.blue600 : 'black',
+    color: state.isSelected ? theme.blue600 : theme.textColor,
     fontWeight: state.isSelected ? 500 : 400,
     backgroundColor: 'inherit',
     paddingTop: 7,
@@ -426,6 +430,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   singleValue: provided => ({
     ...provided,
     fontWeight: 500,
+    color: theme.textColor,
   }),
   valueContainer: provided => ({
     ...provided,

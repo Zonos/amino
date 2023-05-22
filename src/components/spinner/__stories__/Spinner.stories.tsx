@@ -14,10 +14,8 @@ export default SpinnerMeta;
 
 const Wrapper = styled.div<{ color?: SpinnerColor }>`
   width: min-content;
-  background-color: ${p => (p.color === 'white' ? 'black' : 'white')};
   border-radius: 5px;
   padding: 10px;
-
   display: flex;
   align-items: center;
   gap: 20px;

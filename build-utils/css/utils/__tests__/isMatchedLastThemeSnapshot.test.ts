@@ -1,10 +1,10 @@
-import { darkStyleList } from '../../constants/_darkTheme';
+import { night } from '../../constants/_night';
 import { theme as lightTheme } from '../../constants/theme';
 import { isMatchedLastThemeSnapshot } from '../isMatchedLastThemeSnapshot';
 
 type UnitTestItem = {
   case: string;
-  theme: typeof lightTheme | typeof darkStyleList;
+  theme: typeof lightTheme | typeof night;
   input: string;
   expected: string[];
 };

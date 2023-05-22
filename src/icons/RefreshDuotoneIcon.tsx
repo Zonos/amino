@@ -12,12 +12,12 @@ export const RefreshDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M3 11a1 1 0 0 1 1 1 8 8 0 0 0 13.292 6H16a1 1 0 1 1 0-2h3a1.5 1.5 0 0 1 1.5 1.5v3a1 1 0 1 1-2 0v-.9A9.963 9.963 0 0 1 12 22C6.477 22 2 17.523 2 12a1 1 0 0 1 1-1Z"

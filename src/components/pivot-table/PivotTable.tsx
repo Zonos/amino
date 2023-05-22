@@ -78,7 +78,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
     border-radius: 8px;
     background-color: inherit;
     .rdg-row {
-      background-color: white;
+      background-color: ${theme.gray0};
       color: ${theme.textColor};
     }
     .rdg-header-row,

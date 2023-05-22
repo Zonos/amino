@@ -70,7 +70,7 @@ const VWrapper = styled.div`
 `;
 
 const ButtonRowLabel = styled(Text)`
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${theme.gray1200};
   margin-bottom: ${theme.space8};
 `;
 
@@ -137,10 +137,10 @@ const ButtonRow = ({
         intent={intent}
         disabled={disabled}
         loading={loading}
-        theme="dark"
+        themeOverride="night"
         {...props}
       >
-        Dark
+        Night
       </Button>
     </HWrapper>
     <HWrapper>

@@ -16,7 +16,7 @@ const StyledIcon = styled.div`
   border-radius: 50px;
   padding: 5px;
   svg {
-    color: white;
+    color: ${theme.gray0};
   }
 `;
 const StyledActiveIcon = styled.div`
@@ -31,10 +31,10 @@ const StyledActiveIcon = styled.div`
   justify-content: center;
 `;
 
-const StyledItem = styled.button<{ $itemHeight: number }>`
+const StyledItem = styled.button<{ itemHeight: number }>`
   position: relative;
   appearance: none;
-  background: white;
+  background: ${theme.gray0};
   padding: ${theme.space16};
   padding-right: calc(${theme.space40} + 10px);
   border: ${theme.border};
@@ -44,7 +44,7 @@ const StyledItem = styled.button<{ $itemHeight: number }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: ${({ $itemHeight }) => $itemHeight}px;
+  height: ${({ itemHeight }) => itemHeight}px;
   &:hover {
     background: ${theme.gray100};
     border: 1px solid ${theme.gray200};
@@ -67,8 +67,12 @@ const StyledItem = styled.button<{ $itemHeight: number }>`
 
 const Subtitle = styled(Text)``;
 
-const Label = styled.span`
-  font-weight: 500;
+const Label = styled(Text)`
+  color: ${theme.textColor};
+  line-height: 24px;
+  [data-state='checked'] & {
+    color: ${theme.primary};
+  }
 `;
 
 const StyledRadioGroup = styled(VStack)`
@@ -82,7 +86,7 @@ const StyledRadioGroup = styled(VStack)`
     }
   }
   svg {
-    color: white;
+    color: ${theme.gray0};
     width: 12px;
     height: 12px;
   }
@@ -144,7 +148,7 @@ export const RichRadio = <T extends string>({
       {items.map(item => (
         <StyledItem
           type="button"
-          $itemHeight={itemHeight}
+          itemHeight={itemHeight}
           key={item.value}
           data-tip={item.tooltip}
           data-disabled={item.disabled}
@@ -164,7 +168,7 @@ export const RichRadio = <T extends string>({
             renderCustomText(item)
           ) : (
             <div>
-              <Label>{item.label}</Label>
+              <Label type="label">{item.label}</Label>
               {item.subtitle && (
                 <Subtitle color="gray900" type="body">
                   {item.subtitle}

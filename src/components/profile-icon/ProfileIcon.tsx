@@ -1,7 +1,9 @@
 import { type GravatarOptions, getGravatarUrl } from 'react-awesome-gravatar';
 
-import { UserDuotoneIcon } from 'src/icons/UserDuotoneIcon';
 import styled from 'styled-components';
+
+import type { ImageSize } from '../avatar/AvatarBase';
+import { UserAvatar } from '../avatar/UserAvatar';
 
 const Avatar = styled.img<{ size?: number }>`
   width: 100%;
@@ -12,7 +14,7 @@ const Avatar = styled.img<{ size?: number }>`
   max-width: ${({ size }) => size}px;
 `;
 
-export type Props = { email: string | null; size?: number };
+export type Props = { email: string | null; size?: ImageSize };
 
 export const ProfileIcon = ({ email, size = 32 }: Props) => {
   const options: GravatarOptions = {
@@ -25,5 +27,5 @@ export const ProfileIcon = ({ email, size = 32 }: Props) => {
   if (profileUrl) {
     return <Avatar size={size} alt="Profile" src={profileUrl} />;
   }
-  return <UserDuotoneIcon color="gray800" secondaryColor="gray800" />;
+  return <UserAvatar size={size} />;
 };

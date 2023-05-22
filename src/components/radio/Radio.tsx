@@ -24,7 +24,7 @@ const StyledRadio = styled.div<{
   }
 
   svg {
-    color: white;
+    color: ${theme.gray0};
     width: 8px;
     height: 8px;
   }

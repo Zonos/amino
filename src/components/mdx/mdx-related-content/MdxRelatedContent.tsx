@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   height: fit-content;
 
   > h4 {
-    color: ${theme.gray1300};
+    color: ${theme.gray1200};
     font-weight: 700;
     margin-top: 4px;
   }

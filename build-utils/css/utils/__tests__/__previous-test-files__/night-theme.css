@@ -1,0 +1,130 @@
+[data-theme='night'] {
+  --amino-gray-0: #101116;
+  --amino-gray-50: #1e1f26;
+  --amino-gray-100: #2e3038;
+  --amino-gray-200: #40424c;
+  --amino-gray-300: #4d505a;
+  --amino-gray-400: #5c5e68;
+  --amino-gray-500: #6a6d77;
+  --amino-gray-600: #94969e;
+  --amino-gray-700: #acaeb3;
+  --amino-gray-800: #c5c6ca;
+  --amino-gray-900: #d9dadd;
+  --amino-gray-1000: #eaebed;
+  --amino-gray-1100: #f6f6f8;
+  --amino-gray-1200: white;
+  --amino-blue-100: #151943;
+  --amino-blue-200: #1f2b73;
+  --amino-blue-300: #263b98;
+  --amino-blue-400: #294dbe;
+  --amino-blue-500: #435dee;
+  --amino-blue-600: #568cf6;
+  --amino-blue-700: #89adfa;
+  --amino-blue-800: #aac8fc;
+  --amino-blue-900: #c5dcfd;
+  --amino-blue-1000: #deecfe;
+  --amino-cyan-100: #183338;
+  --amino-cyan-200: #22525a;
+  --amino-cyan-300: #236a75;
+  --amino-cyan-400: #287e8a;
+  --amino-cyan-500: #349dab;
+  --amino-cyan-600: #48c4d3;
+  --amino-cyan-700: #65e2ef;
+  --amino-cyan-800: #8ff1fa;
+  --amino-cyan-900: #baf8fd;
+  --amino-cyan-1000: #dbfdff;
+  --amino-red-100: #3b1119;
+  --amino-red-200: #601725;
+  --amino-red-300: #841a2f;
+  --amino-red-400: #a81e37;
+  --amino-red-500: #d3203f;
+  --amino-red-600: #f9505b;
+  --amino-red-700: #fa8b8b;
+  --amino-red-800: #fcb4b2;
+  --amino-red-900: #fdd3d0;
+  --amino-red-1000: #ffedeb;
+  --amino-orange-100: #3c1611;
+  --amino-orange-200: #63261a;
+  --amino-orange-300: #85341d;
+  --amino-orange-400: #a4431d;
+  --amino-orange-500: #d7581f;
+  --amino-orange-600: #f88548;
+  --amino-orange-700: #fca375;
+  --amino-orange-800: #fdc2a0;
+  --amino-orange-900: #fed5b8;
+  --amino-orange-1000: #ffeee0;
+  --amino-green-100: #193123;
+  --amino-green-200: #214c34;
+  --amino-green-300: #236641;
+  --amino-green-400: #25794a;
+  --amino-green-500: #2a995a;
+  --amino-green-600: #4dc477;
+  --amino-green-700: #62e488;
+  --amino-green-800: #86f99e;
+  --amino-green-900: #bafdc2;
+  --amino-green-1000: #dbffdd;
+  --amino-purple-100: #29143a;
+  --amino-purple-200: #461f66;
+  --amino-purple-300: #612392;
+  --amino-purple-400: #7728b9;
+  --amino-purple-500: #9635ee;
+  --amino-purple-600: #a379f6;
+  --amino-purple-700: #b09ff9;
+  --amino-purple-800: #c4c0fc;
+  --amino-purple-900: #d8dafd;
+  --amino-purple-1000: #eef0ff;
+  --amino-transparent-white: #000000bb;
+  --amino-transparent-black: #ffffffbb;
+  --amino-v3-shadow-base: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
+    0px 1px 3px rgba(0, 0, 0, 0.9), 0px 1px 2px rgba(0, 0, 0, 0.8);
+  --amino-v3-shadow-medium: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
+    0px 4px 6px rgba(0, 0, 0, 0.9), 0px 2px 4px rgba(0, 0, 0, 0.8);
+  --amino-v3-shadow-large: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
+    0px 10px 15px rgba(0, 0, 0, 0.9), 0px 4px 6px rgba(0, 0, 0, 0.8);
+  --amino-v3-shadow-xl: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
+    0px 20px 25px rgba(0, 0, 0, 0.9), 0px 10px 10px rgba(0, 0, 0, 0.8);
+  --amino-v3-shadow-xxl: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
+    0px 32px 50px rgba(0, 0, 0, 0.96);
+  --amino-v3-shadow-inset: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
+    0px 0px 6px rgba(255, 255, 255, 0.08), 0px 1px 0px #111114,
+    0px 2px 4px rgba(0, 0, 0, 0.24), inset 0px 1px 1px rgba(0, 0, 0, 0.24),
+    inset 0px 2px 4px rgba(0, 0, 0, 0.24),
+    inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.24),
+    inset 0px 0px 8px rgba(0, 0, 0, 0.16);
+  --amino-border: 1px solid var(--amino-border-color);
+  --amino-border-blue: 1px solid var(--amino-blue-500);
+  --amino-border-red: 1px solid var(--amino-red-400);
+  --amino-border-cyan: 1px solid var(--amino-cyan-400);
+  --amino-border-orange: 1px solid var(--amino-orange-400);
+  --amino-border-green: 1px solid var(--amino-green-400);
+  --amino-border-purple: 1px solid var(--amino-purple-400);
+  --amino-border-amber: 1px solid var(--amino-amber-400);
+  --amino-border-transparent: 1px solid transparent;
+  --amino-sidebar-color: var(--amino-gray-0);
+  --amino-header-color: var(--amino-gray-0);
+  --amino-danger: var(--amino-red-600);
+  --amino-danger-dark: var(--amino-red-700);
+  --amino-error: var(--amino-red-600);
+  --amino-primary: var(--amino-blue-600);
+  --amino-primary-light: var(--amino-blue-500);
+  --amino-primary-dark: var(--amino-blue-800);
+  --amino-success: var(--amino-green-300);
+  --amino-success-dark: var(--amino-green-700);
+  --amino-warning: var(--amino-amber-100);
+  --amino-warning-dark: var(--amino-amber-700);
+  --amino-glow-error: 0 0 0 1px var(--amino-red-600);
+  --amino-glow-blue: 0 0 0 1px var(--amino-primary);
+  --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-600);
+  --amino-glow-red: 0 0 0 1px var(--amino-red-600);
+  --amino-glow-orange: 0 0 0 1px var(--amino-orange-600);
+  --amino-glow-green: 0 0 0 1px var(--amino-green-600);
+  --amino-glow-purple: 0 0 0 1px var(--amino-purple-600);
+  --amino-page-background: var(--amino-gray-0);
+  --amino-border-color: var(--amino-gray-200);
+  --amino-hover-color: var(--amino-gray-50);
+  --amino-text-color: var(--amino-gray-1000);
+  --amino-input-background: var(--amino-gray-0);
+  --amino-surface-color: var(--amino-gray-50);
+  --amino-surface-color-secondary: var(--amino-gray-100);
+  --amino-backdrop-color: var(--amino-gray-100);
+}

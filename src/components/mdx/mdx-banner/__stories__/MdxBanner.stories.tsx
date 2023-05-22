@@ -127,7 +127,7 @@ const Template: StoryFn<typeof MdxBanner> = ({
               rel="noreferrer"
             >
               <Button
-                borderColor="black"
+                borderColor="gray1200"
                 background="inherit"
                 color="inherit"
                 intent="outline"

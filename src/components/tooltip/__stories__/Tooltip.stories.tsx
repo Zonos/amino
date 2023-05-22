@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import { type ButtonProps, Button } from 'src/components/button/Button';
@@ -8,6 +8,7 @@ import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
+import type { Theme } from 'src/types';
 import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
@@ -60,7 +61,7 @@ const VWrapper = styled.div`
 export default ButtonMeta;
 
 type ButtonPropWithTooltipOption = Omit<ButtonProps, 'background'> &
-  Pick<TooltipProps, 'background'>;
+  Pick<TooltipProps, 'background' | 'themeOverride'>;
 
 const HeadingTooltip = ({
   children,
@@ -99,20 +100,28 @@ const WithoutHeadingTooltip = ({
   </Tooltip>
 );
 
-const TopRow = ({ background, ...props }: ButtonPropWithTooltipOption) => (
+const TopRow = ({
+  background,
+  themeOverride,
+  ...props
+}: ButtonPropWithTooltipOption) => (
   <>
-    <HeadingTooltip background={background}>
+    <HeadingTooltip background={background} themeOverride={themeOverride}>
       <Button {...props}>Has heading</Button>
     </HeadingTooltip>
     <WithoutHeadingTooltip
       background={background}
+      themeOverride={themeOverride}
       subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated."
     >
       <Button {...props} iconRight>
         Without heading truncated subtitle
       </Button>
     </WithoutHeadingTooltip>
-    <WithoutHeadingTooltip background={background}>
+    <WithoutHeadingTooltip
+      background={background}
+      themeOverride={themeOverride}
+    >
       <StyledButton {...props} tag="div" onClick={e => e.preventDefault()}>
         Without heading
       </StyledButton>
@@ -124,6 +133,7 @@ const BottomRow = ({
   toggleCoversheet,
   toggleDialog,
   background,
+  themeOverride,
   ...props
 }: ButtonPropWithTooltipOption & {
   toggleCoversheet: () => void;
@@ -135,6 +145,7 @@ const BottomRow = ({
     <>
       <Tooltip
         background={background}
+        themeOverride={themeOverride}
         showTooltip
         subtitle={
           <VStack>
@@ -150,6 +161,7 @@ const BottomRow = ({
       </Tooltip>
       <Tooltip
         background={background}
+        themeOverride={themeOverride}
         showTooltip
         subtitle={
           <VStack>
@@ -204,7 +216,7 @@ const BottomRow = ({
           }}
         />
       ) : (
-        <HeadingTooltip background={background}>
+        <HeadingTooltip background={background} themeOverride={themeOverride}>
           <Button {...props} onClick={() => setShowSelect(true)}>
             Test select z-index
           </Button>
@@ -219,18 +231,34 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
   ...props
 }) => {
   const [coversheetOpen, setCoversheetOpen] = useState(false);
+  const [themeOverride, setThemeOverride] = useState<Theme>('day');
   const [dialogOpen, setDialogOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      const themeAttribute = wrapperRef.current
+        .closest('[data-theme]')
+        ?.getAttribute('data-theme');
+      setThemeOverride((themeAttribute as Theme) || 'day');
+    }
+  }, []);
 
   return (
     <>
-      <VWrapper>
+      <VWrapper ref={wrapperRef}>
         <VStack spacing={8}>
           <HWrapper>
-            <TopRow background={background} {...props} />
+            <TopRow
+              background={background}
+              {...props}
+              themeOverride={themeOverride}
+            />
           </HWrapper>
           <HWrapper>
             <BottomRow
               background={background}
+              themeOverride={themeOverride}
               {...props}
               toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
               toggleDialog={() => setDialogOpen(!dialogOpen)}
@@ -239,11 +267,17 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
         </VStack>
         <VStack spacing={8}>
           <HWrapper>
-            <TopRow background={background} {...props} disabled />
+            <TopRow
+              background={background}
+              themeOverride={themeOverride}
+              {...props}
+              disabled
+            />
           </HWrapper>
           <HWrapper>
             <BottomRow
               background={background}
+              themeOverride={themeOverride}
               {...props}
               disabled
               toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
@@ -253,11 +287,17 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
         </VStack>
         <VStack spacing={8}>
           <HWrapper>
-            <TopRow background={background} {...props} loading />
+            <TopRow
+              background={background}
+              themeOverride={themeOverride}
+              {...props}
+              loading
+            />
           </HWrapper>
           <HWrapper>
             <BottomRow
               background={background}
+              themeOverride={themeOverride}
               {...props}
               loading
               toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
@@ -268,7 +308,7 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       </VWrapper>
       <TransparentCoverSheet
         actions={
-          <HeadingTooltip background={background}>
+          <HeadingTooltip background={background} themeOverride={themeOverride}>
             <Button {...props} disabled>
               Has heading
             </Button>
@@ -288,7 +328,7 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       </TransparentCoverSheet>
       <Dialog
         actions={
-          <HeadingTooltip background={background}>
+          <HeadingTooltip background={background} themeOverride={themeOverride}>
             <Button {...props} disabled>
               Has heading
             </Button>

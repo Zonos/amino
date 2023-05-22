@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { format, resolveConfig, resolveConfigFile } from 'prettier';
 
-import { darkStyleList } from '../constants/_darkTheme';
+import { night } from '../constants/_night';
 import { theme } from '../constants/theme';
 
 /**
@@ -19,7 +19,7 @@ export const formatCSS = async (content: string) => {
 
 /**
  * Generate Light theme content base on configured light theme constant
- * @param themeConstant theme constant (files that has all the styles - Ex: theme.ts/_darkTheme.ts)
+ * @param themeConstant theme constant (files that has all the styles - Ex: theme.ts/_night.ts)
  * @returns formated css file
  */
 export const generateLightThemeContent = async <
@@ -33,7 +33,7 @@ export const generateLightThemeContent = async <
     .join('\n');
 
   const fullContent = `
-  :root {
+  :root, [data-theme="day"] {
     ${content}
   }`;
 
@@ -41,11 +41,11 @@ export const generateLightThemeContent = async <
 };
 
 /**
- * Generate Dark theme content base on configured dark theme constant
- * @param themeConstant theme constant (files that have all the styles - Ex: theme.ts/_darkTheme.ts)
+ * Generate Night theme content base on configured night theme constant
+ * @param themeConstant theme constant (files that have all the styles - Ex: theme.ts/_night.ts)
  * @returns formated css file
  */
-export const generateDarkThemeContent = async <
+export const generateNightThemeContent = async <
   T extends Record<string, string>
 >(
   themeConstant: T
@@ -56,7 +56,7 @@ export const generateDarkThemeContent = async <
     .join('\n');
 
   const fullContent = `
-  [data-theme='dark'] {
+  [data-theme='night'] {
     ${content}
   }`;
 
@@ -67,11 +67,11 @@ export const generateDarkThemeContent = async <
  * Generate two css snapshots for two themes.
  * Located at 'build-utils/css/utils/__tests__/__previous-test-files__'
  * @info light theme snapshot name: theme.css
- * @info dark theme snapshot name: dark-theme.css
+ * @info night theme snapshot name: night-theme.css
  */
 export const generateThemeCapture = async () => {
   const themeContent = await generateLightThemeContent(theme);
-  const darkThemeContent = await generateDarkThemeContent(darkStyleList);
+  const nightThemeContent = await generateNightThemeContent(night);
   const rootFolder = process.cwd();
   const path = `${rootFolder}/build-utils/css/utils/__tests__/__previous-test-files__`;
 
@@ -80,7 +80,7 @@ export const generateThemeCapture = async () => {
   }
   /** @desc write to destination */
   writeFileSync(`${path}/theme.css`, themeContent);
-  writeFileSync(`${path}/dark-theme.css`, darkThemeContent);
+  writeFileSync(`${path}/night-theme.css`, nightThemeContent);
 };
 
 /**
@@ -89,7 +89,7 @@ export const generateThemeCapture = async () => {
  */
 export const generateCSS = async (destinationPath: string) => {
   const themeContent = await generateLightThemeContent(theme);
-  const darkThemeContent = await generateDarkThemeContent(darkStyleList);
+  const nightThemeContent = await generateNightThemeContent(night);
   const rootFolder = process.cwd();
   const path = `${rootFolder}/${destinationPath}`;
 
@@ -98,8 +98,8 @@ export const generateCSS = async (destinationPath: string) => {
   }
   const content = await formatCSS(`
   ${themeContent}
-  /* Dark theme */
-  ${darkThemeContent}
+  /* Night theme */
+  ${nightThemeContent}
   `);
   /** @desc write to destination */
   writeFileSync(`${path}/theme.css`, content);

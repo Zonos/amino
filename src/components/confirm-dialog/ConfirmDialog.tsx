@@ -9,8 +9,8 @@ import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
 import { HelpIcon } from 'src/icons/HelpIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { IAminoTheme } from 'src/types/IAminoTheme';
 import type { Intent } from 'src/types/Intent';
+import type { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -47,7 +47,7 @@ const ConfirmationPrompt = styled.span`
 export type ConfirmDialogProps = {
   open: boolean;
   label: string;
-  theme?: IAminoTheme;
+  themeOverride?: Theme;
   subtitle?: ReactNode;
   intent: Intent;
   confirmText?: string;
@@ -69,7 +69,7 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const ConfirmDialog = ({
-  theme: _theme,
+  themeOverride,
   open,
   label,
   intent,
@@ -79,7 +79,7 @@ export const ConfirmDialog = ({
   confirmAction,
   dismissAction,
 }: ConfirmDialogProps) => (
-  <BaseDialog width={350} data-theme={_theme} open={open}>
+  <BaseDialog width={350} data-theme={themeOverride} open={open}>
     <Content>
       <VStack spacing={16}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>

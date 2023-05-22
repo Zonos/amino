@@ -185,7 +185,7 @@ export const DropZone = ({
       <UploadedFileRow key={file.name}>
         <FileDuotoneIcon />
         <UploadedFileInfoWrapper>
-          <Text type="label" color="gray1300">
+          <Text type="label" color="gray1200">
             {file.name}
           </Text>
           {file.size && (

@@ -44,7 +44,7 @@ const VWrapper = styled.div`
 `;
 
 const ButtonRowLabel = styled(Text)`
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${theme.gray1200};
   margin-bottom: ${theme.space8};
 `;
 
