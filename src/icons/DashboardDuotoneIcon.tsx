@@ -12,12 +12,12 @@ export const DashboardDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       d="M2.534 3.779a1 1 0 0 1 1.245-1.245l7.934 2.38a1 1 0 0 0 .574 0l7.934-2.38a1 1 0 0 1 1.245 1.245l-2.38 7.934a1 1 0 0 0 0 .574l2.38 7.934a1 1 0 0 1-1.245 1.245l-7.934-2.38a1 1 0 0 0-.574 0l-7.934 2.38a1 1 0 0 1-1.245-1.245l2.38-7.934a1 1 0 0 0 0-.574l-2.38-7.934Z"
     />

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Subtitle = styled.span`
   font-size: ${theme.fontSizeS};
@@ -154,16 +154,8 @@ const Typography = styled.h1<TypographyOverrides & TypeDefaultProp>`
   font-weight: ${p => p.fontWeight};
   line-height: ${p => `var(--amino-line-height-${p.lineHeight || p.size})`};
   margin: 0;
-  ${p =>
-    p.color &&
-    css`
-      color: ${theme[p.color]};
-    `}
-  ${p =>
-    p.isUppercase &&
-    css`
-      text-transform: uppercase;
-    `}
+  color: ${props => props.color && theme[props.color]};
+  text-transform: ${props => props.isUppercase && 'uppercase'};
 `;
 
 type TextStyle = Type | OtherText;

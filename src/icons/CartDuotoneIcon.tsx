@@ -12,12 +12,12 @@ export const CartDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M3 3a1 1 0 0 1 1-1h1.047c.261 0 .52.05.763.147a3.11 3.11 0 0 1 1.895 2.278L7.82 5h9.914a3 3 0 0 1 2.977 3.372l-.5 4A3 3 0 0 1 17.234 15H9.766a3 3 0 0 1-2.977-2.628L6.012 6.16l-.268-1.343a1.11 1.11 0 0 0-.677-.813.055.055 0 0 0-.02-.004H4a1 1 0 0 1-1-1Z"

@@ -20,7 +20,7 @@ export const getColorVariables = (fileContent: string) => {
       /** @desc Replace the second color with the variable secondaryColor */
       content = content.replace(
         new RegExp(`${color}`, 'gi'),
-        `{secondaryColor ? \`\${theme[secondaryColor]}\` : ${color}} data-is-secondary-color="true" `
+        `{secondaryColor ? \`\${theme[secondaryColor]}\` : \`\${theme.gray300}\`} data-is-secondary-color="true" `
       );
     }
   });

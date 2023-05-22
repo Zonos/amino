@@ -12,12 +12,12 @@ export const ReceiptDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M4 3h16v16.168C20 20.18 19.18 21 18.168 21c-.307 0-.607-.09-.862-.261l-1.751-1.167a1 1 0 0 0-1.11 0l-.78.52a3 3 0 0 1-3.33 0l-.78-.52a1 1 0 0 0-1.11 0l-1.75 1.167a1.56 1.56 0 0 1-.863.261A1.832 1.832 0 0 1 4 19.168V3Z"

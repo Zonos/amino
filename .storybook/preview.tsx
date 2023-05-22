@@ -40,6 +40,7 @@ const ThemeBlock = styled.div<{
   overflow: auto;
   padding: ${theme.space16};
   background: ${theme.gray0};
+  color: ${theme.textColor};
 `;
 
 const SideBySideContainer = styled.div`

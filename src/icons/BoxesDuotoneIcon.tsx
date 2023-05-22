@@ -12,12 +12,12 @@ export const BoxesDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M6.333 5a2 2 0 0 1 2-2h7.334a2 2 0 0 1 2 2v4.578H18a2 2 0 0 1 2 2V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.422a2 2 0 0 1 2-2h.333V5Z"

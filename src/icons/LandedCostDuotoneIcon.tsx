@@ -12,7 +12,7 @@ export const LandedCostDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
@@ -23,7 +23,7 @@ export const LandedCostDuotoneIcon = forwardRef<
       clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M11.445 2.015C12.33 1.967 13 2.687 13 3.5v4.937A3.706 3.706 0 0 1 15.563 11H20.5c.814 0 1.533.67 1.485 1.555C21.697 17.82 17.337 22 12 22 6.477 22 2 17.523 2 12c0-5.337 4.18-9.696 9.445-9.985Z"

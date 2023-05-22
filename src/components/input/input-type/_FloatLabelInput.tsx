@@ -81,6 +81,7 @@ export const InputValuePrefix = styled.div`
   order: 2;
   align-items: flex-end;
   padding-left: ${theme.space16};
+  padding-right: ${theme.space4};
   padding-bottom: calc(${theme.space8});
   color: ${theme.gray800};
   white-space: nowrap;
@@ -112,7 +113,7 @@ const AminoInput = styled.input<TypeInput>`
     }
   }
   &.has-label {
-    padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
+    padding: ${theme.space16} 4px ${theme.space8} ${theme.space16};
     &.has-input-prefix {
       padding-left: 0;
       & + ${StyledLabelInput}::before {

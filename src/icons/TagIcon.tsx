@@ -31,7 +31,7 @@ export const TagIcon = forwardRef<
         <clipPath id={`${ids[0]}`}>
           <path
             fill={
-              secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray0}`
+              secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`
             }
             data-is-secondary-color="true"
             d="M0 0h24v24H0z"

@@ -66,10 +66,6 @@
     U+FEFF, U+FFFD;
 }
 
-* {
-  color: var(--amino-text-color);
-}
-
 html {
   font-size: var(--amino-type-scale-base);
   font-family: var(--amino-font-sans);

@@ -54,6 +54,8 @@ export const createReactIconSVGs = ({
       .replace(/<\/svg>/gi, '');
 
     const hasSecondaryColor = /secondaryColor/.test(colorVariableContent);
+    const isDuotone = name.componentName.includes('Duotone');
+    const duotoneDefaultColor = isDuotone && hasSecondaryColor ? 'gray800' : 'gray300';
     const component = [
       `import { forwardRef } from 'react';`,
       `import type { IconProps } from 'src/types/IconProps';`,
@@ -67,7 +69,8 @@ export const createReactIconSVGs = ({
         ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: Color}>(({ size, color, className, secondaryColor}, ref) => {`
         : `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps>(({ size, color, className }, ref) => {`,
       maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
-      `return (<IconBase ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,
+      isDuotone ? `return (<IconBase ref={ref} size={size} color={color || '${duotoneDefaultColor}'} className={className} viewBox="${viewBox}">`
+        : `return (<IconBase ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,
       svg,
       `</IconBase>`,
       `  );`,
