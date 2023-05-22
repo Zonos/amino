@@ -8,7 +8,7 @@ import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
-import type { ITheme } from 'src/types';
+import type { Theme } from 'src/types';
 import { truncateText } from 'src/utils/truncateText';
 import styled from 'styled-components';
 
@@ -231,7 +231,7 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
   ...props
 }) => {
   const [coversheetOpen, setCoversheetOpen] = useState(false);
-  const [themeOverride, setThemeOverride] = useState<ITheme>('day');
+  const [themeOverride, setThemeOverride] = useState<Theme>('day');
   const [dialogOpen, setDialogOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -240,7 +240,7 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       const themeAttribute = wrapperRef.current
         .closest('[data-theme]')
         ?.getAttribute('data-theme');
-      setThemeOverride((themeAttribute as ITheme) || 'day');
+      setThemeOverride((themeAttribute as Theme) || 'day');
     }
   }, []);
 

@@ -1,10 +1,10 @@
-import { ITheme } from '../types/ITheme';
+import { Theme } from '../types/Theme';
 import { checkGeneratedColorsAreUsed } from './utils/checkGeneratedColorsAreUsed';
 import { generateAminoConstants } from './utils/generateAminoContants';
 import { generateCSS, generateThemeCapture } from './utils/generateCSS';
 import { logging } from './utils/logging';
 
-const logError = ({theme, unusedConstants}: {theme: ITheme, unusedConstants: string[]}) => {
+const logError = ({theme, unusedConstants}: {theme: Theme, unusedConstants: string[]}) => {
  /** Terminate the build process */
  logging(`Error occurs: There are some ${theme} constants that are generated and not being used in "theme.ts":
  File list: ${unusedConstants.map(constant => `"${constant}"`).join(', ')}`);

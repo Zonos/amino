@@ -10,7 +10,7 @@ import { HelpIcon } from 'src/icons/HelpIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type Intent } from 'src/types/Intent';
-import { type ITheme } from 'src/types/ITheme';
+import { type Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -47,7 +47,7 @@ const AlertPrompt = styled.span`
 export type AlertDialogProps = {
   open: boolean;
   label: string;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
   subtitle: ReactNode;
   intent: Intent;
   dismissText: string;

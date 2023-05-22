@@ -1,11 +1,11 @@
 import { NightIcon } from 'src/icons/NightIcon';
 import { SunnyIcon } from 'src/icons/SunnyIcon';
-import type { ITheme } from 'src/types';
+import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 import { Select } from './Select';
 
-const themes: { label: string; value: ITheme }[] = [
+const themes: { label: string; value: Theme }[] = [
   {
     label: 'Light',
     value: 'day',

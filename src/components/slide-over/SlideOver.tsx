@@ -7,7 +7,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { ITheme } from 'src/types/ITheme';
+import type { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const Popup = styled(motion.div)`
@@ -88,7 +88,7 @@ export type SlideOverProps = {
   label?: string;
   onClose: () => void;
   open: boolean;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
   modal?: boolean;
   subtitle?: ReactNode;
 };

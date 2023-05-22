@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { ITheme } from 'src/types/ITheme';
+import type { Theme } from 'src/types/Theme';
 
 import { BaseDialog } from '../dialog/_BaseDialog';
 
@@ -9,7 +9,7 @@ export type LightBoxProps = {
   children: ReactNode;
   onClose: () => void;
   open: boolean;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
   width?: number;
   withBorder?: boolean;
   /** Close when clicking outside dialog (on the backdrop)

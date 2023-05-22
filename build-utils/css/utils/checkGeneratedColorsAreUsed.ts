@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { glob } from 'glob';
 
 import { logging } from './logging';
-import { ITheme } from '../../types/ITheme';
+import { Theme } from '../../types/Theme';
 
 const themeEntry = {
   day: 'theme.ts',
@@ -12,7 +12,7 @@ const themeEntry = {
 /**
  * Function make sure generated color constants are used
  */
-export const checkGeneratedColorsAreUsed = async (theme: ITheme) => {
+export const checkGeneratedColorsAreUsed = async (theme: Theme) => {
   const rootDir = process.cwd();
   const generatedColorPath = `${rootDir}/build-utils/css/constants/theme/${theme}/colors`;
   const themeFilePath = `${rootDir}/build-utils/css/constants/${themeEntry[theme]}`;

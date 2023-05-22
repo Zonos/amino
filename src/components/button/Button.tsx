@@ -9,8 +9,8 @@ import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { Intent } from 'src/types/Intent';
-import type { ITheme } from 'src/types/ITheme';
 import type { Size } from 'src/types/Size';
+import type { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 import { type IRippleActions, RippleGroup } from './RippleGroup';
@@ -329,7 +329,7 @@ type ButtonBase = {
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
   tabIndex?: number;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
   type?: 'button' | 'reset' | 'submit';
 };
 

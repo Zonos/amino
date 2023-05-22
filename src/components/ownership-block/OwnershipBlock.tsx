@@ -5,7 +5,7 @@ import { EyeDuotoneIcon } from 'src/icons/EyeDuotoneIcon';
 import { StarIcon } from 'src/icons/StarIcon';
 import { UserIcon } from 'src/icons/UserIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { ITheme } from 'src/types';
+import type { Theme } from 'src/types';
 import styled from 'styled-components';
 
 import { devices } from '../../styles/devices';
@@ -126,7 +126,7 @@ export type Props = {
   docOwner: DocOwner;
   docWriter: DocOwner;
   isLoading: boolean;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
 };
 
 export const OwnershipBlock = ({

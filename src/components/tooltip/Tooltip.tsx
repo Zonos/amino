@@ -9,7 +9,7 @@ import MuiTooltip, {
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import type { Color, ITheme } from 'src/types';
+import type { Color, Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import styled from 'styled-components';
 
@@ -48,7 +48,7 @@ export type TooltipProps = {
   subtitle: ReactNode | string | null;
   tag?: 'div' | 'span';
   title?: string;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
 };
 
 const StyledTooltip = muiStyled(
@@ -57,7 +57,7 @@ const StyledTooltip = muiStyled(
     dataTheme,
     ...props
   }: MuiTooltipProps &
-    Pick<TooltipProps, 'background'> & { dataTheme: ITheme }) => (
+    Pick<TooltipProps, 'background'> & { dataTheme: Theme }) => (
     <MuiTooltip
       {...props}
       classes={{ popper: className }}

@@ -17,6 +17,7 @@ export const createReactIconSVGs = ({
         encoding: 'utf8',
       }
     );
+    const isDuotone = name.componentName.includes('Duotone');
 
     /** @desc We need to preserve the viewbox */
     const viewBoxMatches = fileContent.match(/viewBox="(.*?)"/g);
@@ -40,7 +41,7 @@ export const createReactIconSVGs = ({
     });
 
     /** @desc Process color */
-    const colorVariableContent = getColorVariables(fileContent);
+    const colorVariableContent = getColorVariables({fileContent, isDuotone});
 
     const svg = colorVariableContent
       .replace(/(?!\w):\w/g, attribute =>
@@ -54,7 +55,6 @@ export const createReactIconSVGs = ({
       .replace(/<\/svg>/gi, '');
 
     const hasSecondaryColor = /secondaryColor/.test(colorVariableContent);
-    const isDuotone = name.componentName.includes('Duotone');
     const duotoneDefaultColor = isDuotone && hasSecondaryColor ? 'gray800' : 'gray300';
     const component = [
       `import { forwardRef } from 'react';`,

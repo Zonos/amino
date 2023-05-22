@@ -3,7 +3,7 @@ import React, { type ReactNode, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { theme } from 'src/styles/constants/theme';
-import type { ITheme } from 'src/types/ITheme';
+import type { Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const DialogLayout = styled.div`
@@ -38,7 +38,7 @@ export type BaseDialogProps = {
   children: ReactNode;
   className?: string;
   open: boolean;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
   width?: number;
   onClose?: () => void;
   closeOnBlur?: boolean;

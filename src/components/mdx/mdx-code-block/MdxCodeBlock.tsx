@@ -5,7 +5,7 @@ import { Button } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
 import { CopyIcon } from 'src/icons/CopyIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { ITheme } from 'src/types';
+import type { Theme } from 'src/types';
 import { useCopyText } from 'src/utils/useCopyText';
 import styled from 'styled-components';
 
@@ -119,7 +119,7 @@ export type Props = {
   xlabel: string;
   type: 'JSON' | 'GraphQL';
   maxHeight?: number;
-  themeOverride?: ITheme;
+  themeOverride?: Theme;
 };
 
 /**
