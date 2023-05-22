@@ -150,7 +150,7 @@
   },
   "scripts": {
     "build:ci": "pnpm build:theme && ts-node build-utils/build.ts && pnpm build:dts",
-    "build:dts": "ttsc -p ./tsconfig.emitDeclarationOnly.json",
+    "build:dts": "tspc -p ./tsconfig.emitDeclarationOnly.json",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "build": "pnpm install && pnpm ci:concurrent && pnpm build:theme && ts-node build-utils/build.ts && pnpm build:dts",
