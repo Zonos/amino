@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 
-import { ConstantCustomizedComment } from '../constants/logics/types/LogicConstantType';
+import { ConstantCustomizedComment } from '../constants/logic/types/LogicConstantType';
 import { capitalize } from '../utils/capitalize';
 import { formatTS } from '../utils/formatTS';
 
@@ -18,7 +18,7 @@ type ParsedFile = FileToParse & {
 };
 
 /**
- * Parse `ts` file from given path that has all the logics to generate key/value
+ * Parse `ts` file from given path that has all the logic to generate key/value
  * and consume and generate constant
  */
 export class LogicConstant {
@@ -191,14 +191,14 @@ export class LogicConstant {
    * - Need to be camelCase
    * - Have no extension
    * @note
-   * - Generated file will be located at `build-utils/css/constants/logics` with file name `_${fileName}.ts`.
+   * - Generated file will be located at `build-utils/css/constants/logic` with file name `_${fileName}.ts`.
    * - It will do nothing if fileName is in wrong format has nothing
    */
   static async generateLogicConstantFile(fileName: string) {
     const fileContent = await this._generateLogicConstFileContent(fileName);
     const rootFolder = process.cwd();
     writeFileSync(
-      `${rootFolder}/build-utils/css/constants/logics/_${fileName}.ts`,
+      `${rootFolder}/build-utils/css/constants/logic/_${fileName}.ts`,
       fileContent
     );
   }
