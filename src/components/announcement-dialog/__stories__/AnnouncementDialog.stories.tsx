@@ -46,10 +46,6 @@ const CenteredDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  svg {
-    display: inline-block;
-  }
 `;
 
 const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
