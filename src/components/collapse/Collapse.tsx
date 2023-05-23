@@ -41,25 +41,27 @@ export const Collapse = ({
 }: CollapseProps) => {
   const [completelyCollapsed, setCompletelyCollapsed] = useState(collapsed);
   const [hideOverflow, setHideOverflow] = useState(collapsed);
-  const [contentHeight, setContentHeight] = useState<number | undefined>(
-    undefined
-  );
+  const [contentHeight, setContentHeight] = useState<number | undefined>();
 
   const contentWrapperRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver(entries => {
-      // borderBoxSize will get the full box size including padding and border
-      setContentHeight(entries[0]?.borderBoxSize[0]?.blockSize);
-    });
-
-    if (contentWrapperRef.current) {
-      resizeObserver.observe(contentWrapperRef.current);
+  const getComputedHeight = () => {
+    if (contentWrapperRef.current === null) {
+      return undefined;
     }
+    const computedStyle = window.getComputedStyle(contentWrapperRef.current);
+    // Height already contains padding
+    const height = parseFloat(computedStyle.height);
+    const borderTop = parseFloat(computedStyle.borderTopWidth);
+    const borderBottom = parseFloat(computedStyle.borderBottomWidth);
+    const marginTop = parseFloat(computedStyle.marginTop);
+    const marginBottom = parseFloat(computedStyle.marginBottom);
+    const total = height + borderTop + borderBottom + marginTop + marginBottom;
+    return total;
+  };
 
-    return () => {
-      resizeObserver.disconnect();
-    };
+  useEffect(() => {
+    setContentHeight(getComputedHeight());
   }, []);
 
   useEffect(() => {
@@ -77,6 +79,7 @@ export const Collapse = ({
       // Done expanding so safe to show overflow
       setHideOverflow(false);
       setCompletelyCollapsed(false);
+      setContentHeight(getComputedHeight());
     }
   };
 
