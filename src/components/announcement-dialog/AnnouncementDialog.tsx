@@ -3,6 +3,7 @@ import { type ReactNode, forwardRef } from 'react';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
+import { useStorage } from 'src/utils/hooks/useStorage';
 import styled from 'styled-components';
 
 import { BaseDialog } from '../dialog/_BaseDialog';
@@ -14,12 +15,21 @@ const Content = styled(VStack)`
   flex-grow: 1;
 `;
 
+const StyledImage = styled.div<{ imageWidth?: number }>`
+  width: ${props => `${props.imageWidth}px` || '100%'};
+  height: auto;
+  margin: ${props => (props.imageWidth ? '0 auto' : 'unset')};
+  margin-bottom: ${theme.space16};
+`;
+
 type AnnouncementType = 'feature-update' | 'announcement';
 
 export type AnnouncementDialogProps = {
+  announcementId: string;
   children: ReactNode;
   className?: string;
   image?: ReactNode;
+  imageWidth?: number;
   label?: ReactNode;
   onClose: () => void;
   open: boolean;
@@ -43,9 +53,11 @@ export const AnnouncementDialog = forwardRef<
 >(
   (
     {
+      announcementId,
       children,
       className,
       image,
+      imageWidth,
       label,
       onClose,
       open,
@@ -58,6 +70,15 @@ export const AnnouncementDialog = forwardRef<
     },
     ref
   ) => {
+    const [announcementSeen, setAnnouncementSeen] = useStorage<
+      'seen' | '',
+      string
+    >({
+      key: `announcement:${announcementId}`,
+      defaultValue: '',
+      type: 'local',
+    });
+
     const getTypeLabel = () => {
       switch (type) {
         case 'feature-update':
@@ -70,14 +91,17 @@ export const AnnouncementDialog = forwardRef<
       <BaseDialog
         className={className}
         data-theme={themeOverride}
-        open={open}
+        open={open || !announcementSeen}
         width={width}
-        onClose={onClose}
+        onClose={() => {
+          onClose();
+          setAnnouncementSeen('seen');
+        }}
         closeOnBlur={closeOnBlur}
         closeOnEsc={closeOnEsc}
         noBorder={noBorder}
       >
-        {image}
+        <StyledImage imageWidth={imageWidth}>{image}</StyledImage>
         <Content spacing={8}>
           <Text type="label" color="blue600">
             {getTypeLabel()}

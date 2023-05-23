@@ -49,6 +49,7 @@ const CenteredDiv = styled.div`
 `;
 
 const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
+  announcementId,
   children,
   label,
   width,
@@ -60,6 +61,7 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
       <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledAnnouncementDialog
         {...rest}
+        announcementId={announcementId}
         label={label}
         open={open}
         onClose={() => setOpen(false)}
@@ -73,6 +75,7 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
 
 export const BasicDialog = Template.bind({});
 BasicDialog.args = {
+  announcementId: 'amino-storybook-announcement-dialog',
   children: (
     <>
       This cool feature has moved locations.{' '}
@@ -82,7 +85,7 @@ BasicDialog.args = {
       to use the updated feature.
     </>
   ),
-  image: <img src="/logo.png" alt="Logo img" />,
+  image: <img src="/logo.png" alt="Announcement example" />,
   label: 'This is a feature update!',
   type: 'feature-update',
   width: 460,
