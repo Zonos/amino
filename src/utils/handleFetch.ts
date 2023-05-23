@@ -39,7 +39,24 @@ export const handleRequest = async <ResponseBody extends unknown>(
   url: string,
   options?: RequestInit
 ): Promise<HandleFetchReturn<ResponseBody>> => {
-  const response = await fetch(url, options);
+  let response: Response;
+  try {
+    response = await fetch(url, options);
+  } catch (e) {
+    if (e instanceof Error) {
+      return {
+        errors: [{ message: e.message, type: 'unknown' }],
+        json: null,
+        response: null,
+      };
+    }
+    const message = 'Fail to fetch';
+    return {
+      errors: [{ message, type: 'unknown' }],
+      json: null,
+      response: null,
+    };
+  }
   if (response.ok) {
     const data = await getResponseBody<ResponseBody>({ response });
 
