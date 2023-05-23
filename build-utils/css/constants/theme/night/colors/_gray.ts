@@ -26,5 +26,5 @@ export const gray = {
   /** @info #F6F6F8  */
   'gray-1100': '#F6F6F8',
   /** @info white  */
-  'gray-1200': 'white',
+  'gray-1200': '#FFFFFF',
 } as const;

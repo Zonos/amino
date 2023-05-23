@@ -52,66 +52,66 @@ export const theme = {
   gray1200: 'var(--amino-gray-1200)',
 
   /* BLUE PALETTE */
-  /** @info #DEECFE  */
+  /** @info #DEEDFE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue100: 'var(--amino-blue-100)',
-  /** @info #C5DCFD  */
+  /** @info #C5DDFD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue200: 'var(--amino-blue-200)',
-  /** @info #AAC8FC  */
+  /** @info #AACBFC  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue300: 'var(--amino-blue-300)',
-  /** @info #89ADFA  */
+  /** @info #89B2FA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue400: 'var(--amino-blue-400)',
-  /** @info #568CF6  */
+  /** @info #5F92F6  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue500: 'var(--amino-blue-500)',
-  /** @info #435DEE  */
+  /** @info #445EEE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue600: 'var(--amino-blue-600)',
-  /** @info #294DBE  */
+  /** @info #364BD4  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue700: 'var(--amino-blue-700)',
-  /** @info #263B98  */
+  /** @info #2C3BAF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue800: 'var(--amino-blue-800)',
-  /** @info #1F2B73  */
+  /** @info #252E7E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue900: 'var(--amino-blue-900)',
-  /** @info #151943  */
+  /** @info #1C2154  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue1000: 'var(--amino-blue-1000)',
 
   /* CYAN PALETTE */
-  /** @info #DBFDFF  */
+  /** @info #DBFFFE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan100: 'var(--amino-cyan-100)',
-  /** @info #BAF8FD  */
+  /** @info #BAFDFD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan200: 'var(--amino-cyan-200)',
-  /** @info #8FF1FA  */
+  /** @info #8FF6FA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan300: 'var(--amino-cyan-300)',
-  /** @info #65E2EF  */
+  /** @info #65E6EF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan400: 'var(--amino-cyan-400)',
-  /** @info #48C4D3  */
+  /** @info #4EC6D4  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan500: 'var(--amino-cyan-500)',
-  /** @info #349DAB  */
+  /** @info #37A5B4  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan600: 'var(--amino-cyan-600)',
-  /** @info #287E8A  */
+  /** @info #2C8896  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan700: 'var(--amino-cyan-700)',
-  /** @info #236A75  */
+  /** @info #26707E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan800: 'var(--amino-cyan-800)',
-  /** @info #22525A  */
+  /** @info #245660  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan900: 'var(--amino-cyan-900)',
-  /** @info #183338  */
+  /** @info #183339  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan1000: 'var(--amino-cyan-1000)',
 
@@ -128,118 +128,118 @@ export const theme = {
   /** @info #FA8B8B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red400: 'var(--amino-red-400)',
-  /** @info #F9505B  */
+  /** @info #F95C67  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red500: 'var(--amino-red-500)',
-  /** @info #D3203F  */
+  /** @info #D92141  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red600: 'var(--amino-red-600)',
-  /** @info #A81E37  */
+  /** @info #B4223D  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red700: 'var(--amino-red-700)',
-  /** @info #841A2F  */
+  /** @info #8C1D33  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red800: 'var(--amino-red-800)',
-  /** @info #601725  */
+  /** @info #641627  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red900: 'var(--amino-red-900)',
-  /** @info #3B1119  */
+  /** @info #49121F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red1000: 'var(--amino-red-1000)',
 
   /* ORANGE PALETTE */
-  /** @info #FFEEE0  */
+  /** @info #FFEFE0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange100: 'var(--amino-orange-100)',
-  /** @info #FED5B8  */
+  /** @info #FED7B8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange200: 'var(--amino-orange-200)',
-  /** @info #FDC2A0  */
+  /** @info #FDC7A0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange300: 'var(--amino-orange-300)',
-  /** @info #FCA375  */
+  /** @info #FCA975  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange400: 'var(--amino-orange-400)',
-  /** @info #F88548  */
+  /** @info #F88C53  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange500: 'var(--amino-orange-500)',
-  /** @info #D7581F  */
+  /** @info #E5591A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange600: 'var(--amino-orange-600)',
-  /** @info #A4431D  */
+  /** @info #B6471B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange700: 'var(--amino-orange-700)',
-  /** @info #85341D  */
+  /** @info #903A1D  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange800: 'var(--amino-orange-800)',
-  /** @info #63261A  */
+  /** @info #692C1C  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange900: 'var(--amino-orange-900)',
-  /** @info #3C1611  */
+  /** @info #441C13  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange1000: 'var(--amino-orange-1000)',
 
   /* GREEN PALETTE */
-  /** @info #DBFFDD  */
+  /** @info #E0FFE3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green100: 'var(--amino-green-100)',
-  /** @info #BAFDC2  */
+  /** @info #C8FDCE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green200: 'var(--amino-green-200)',
-  /** @info #86F99E  */
+  /** @info #A9F9B5  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green300: 'var(--amino-green-300)',
-  /** @info #62E488  */
+  /** @info #7DE490  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green400: 'var(--amino-green-400)',
-  /** @info #4DC477  */
+  /** @info #56C76F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green500: 'var(--amino-green-500)',
-  /** @info #2A995A  */
+  /** @info #2B9C4D  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green600: 'var(--amino-green-600)',
-  /** @info #25794A  */
+  /** @info #298549  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green700: 'var(--amino-green-700)',
-  /** @info #236641  */
+  /** @info #266E3E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green800: 'var(--amino-green-800)',
-  /** @info #214C34  */
+  /** @info #245234  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green900: 'var(--amino-green-900)',
-  /** @info #193123  */
+  /** @info #1C3626  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green1000: 'var(--amino-green-1000)',
 
   /* PURPLE */
-  /** @info #EEF0FF  */
+  /** @info #F4EEFF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple100: 'var(--amino-purple-100)',
-  /** @info #D8DAFD  */
+  /** @info #E7D8FD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple200: 'var(--amino-purple-200)',
-  /** @info #C4C0FC  */
+  /** @info #DDC5FC  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple300: 'var(--amino-purple-300)',
-  /** @info #B09FF9  */
+  /** @info #CEA9FA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple400: 'var(--amino-purple-400)',
-  /** @info #A379F6  */
+  /** @info #BD82F8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple500: 'var(--amino-purple-500)',
-  /** @info #9635EE  */
+  /** @info #AB30EE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple600: 'var(--amino-purple-600)',
-  /** @info #7728B9  */
+  /** @info #922BC5  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple700: 'var(--amino-purple-700)',
-  /** @info #612392  */
+  /** @info #742498  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple800: 'var(--amino-purple-800)',
-  /** @info #461F66  */
+  /** @info #54206A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple900: 'var(--amino-purple-900)',
-  /** @info #29143A  */
+  /** @info #3B1948  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple1000: 'var(--amino-purple-1000)',
 
