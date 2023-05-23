@@ -12,9 +12,7 @@ const Wrapper = styled.div<{ isPrimary: boolean }>`
   max-width: fit-content;
   a {
     color: ${({ isPrimary }) =>
-      isPrimary
-        ? `${theme.textLight} !important`
-        : `${theme.gray900}  !important`};
+      isPrimary ? `${theme.gray0} !important` : `${theme.gray900}  !important`};
   }
   p {
     margin: 0 !important;

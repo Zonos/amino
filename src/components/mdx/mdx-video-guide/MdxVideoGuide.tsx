@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { PlayCircleDuotoneIcon } from 'src/icons/PlayCircleDuotoneIcon';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const StyledBaseDialog = styled(BaseDialog)`
@@ -15,7 +16,7 @@ const VideoButton = styled.button<{ thumbnail: string }>`
   background: ${({ thumbnail }) =>
     thumbnail && `url(${thumbnail}) center center no-repeat`};
   background-size: cover;
-  color: #fff;
+  color: ${theme.gray0};
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -35,7 +36,7 @@ const VideoButton = styled.button<{ thumbnail: string }>`
     right: 0;
     bottom: 0;
     left: 0;
-    background: #000000;
+    background: ${theme.gray1200};
     opacity: 0.85;
   }
 

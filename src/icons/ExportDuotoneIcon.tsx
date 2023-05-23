@@ -12,7 +12,7 @@ export const ExportDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
@@ -21,7 +21,7 @@ export const ExportDuotoneIcon = forwardRef<
       height="18"
       x="21.104"
       y="10.896"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       rx="2"
       transform="rotate(90 21.104 10.896)"

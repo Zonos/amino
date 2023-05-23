@@ -32,13 +32,17 @@ const AminoListItem = styled.div<AminoListItemProps>`
     selected &&
     css`
       background-color: ${theme.blue100};
-      color: ${theme.blue800};
+      * {
+        color: ${theme.blue800};
+      }
     `}
 
   ${({ disabled }) =>
     disabled &&
     css`
-      color: ${theme.gray600};
+      * {
+        color: ${theme.gray600};
+      }
       cursor: not-allowed;
     `}
 

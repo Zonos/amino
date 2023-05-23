@@ -17,6 +17,7 @@ const Template: StoryFn<Props> = ({
   docOwner,
   docWriter,
   isLoading,
+  themeOverride,
 }) => (
   <OwnershipBlockComponent
     docChampion={docChampion}
@@ -24,6 +25,7 @@ const Template: StoryFn<Props> = ({
     docOwner={docOwner}
     docWriter={docWriter}
     isLoading={isLoading}
+    themeOverride={themeOverride}
   />
 );
 

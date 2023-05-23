@@ -9,8 +9,8 @@ import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
 import { HelpIcon } from 'src/icons/HelpIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { IAminoTheme } from 'src/types/IAminoTheme';
-import type { Intent } from 'src/types/Intent';
+import { type Intent } from 'src/types/Intent';
+import { type Theme } from 'src/types/Theme';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -47,7 +47,7 @@ const AlertPrompt = styled.span`
 export type AlertDialogProps = {
   open: boolean;
   label: string;
-  theme?: IAminoTheme;
+  themeOverride?: Theme;
   subtitle: ReactNode;
   intent: Intent;
   dismissText: string;
@@ -67,7 +67,7 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const AlertDialog = ({
-  theme: _theme,
+  themeOverride,
   open,
   label,
   intent,
@@ -77,7 +77,7 @@ export const AlertDialog = ({
 }: AlertDialogProps) => (
   <BaseDialog
     width={350}
-    data-theme={_theme}
+    data-theme={themeOverride}
     open={open}
     onClose={dismissAction}
   >

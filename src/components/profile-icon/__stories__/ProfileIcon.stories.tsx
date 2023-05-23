@@ -18,7 +18,7 @@ export default ProfileIconMeta;
 
 const Wrapper = styled.div`
   height: auto;
-  width: 360px;
+  max-width: 400px;
   margin: 0 auto;
 `;
 

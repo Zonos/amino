@@ -12,12 +12,12 @@ export const BellOffDuotoneIcon = forwardRef<
   <IconBase
     ref={ref}
     size={size}
-    color={color}
+    color={color || 'gray800'}
     className={className}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : '#C1C1C4'}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M12 2a1 1 0 0 1 1 1v1.083c2.838.476 5 2.944 5 5.917v1a1 1 0 1 1-2 0v-1a4 4 0 0 0-4-4h-2a1 1 0 0 1 0-2h1V3a1 1 0 0 1 1-1ZM6 4.586 21.414 20H8.253C5.891 20 4 18.05 4 15.715c0-1.145.474-2.258 1.318-3.046.435-.406.682-.975.682-1.57V4.586Z"

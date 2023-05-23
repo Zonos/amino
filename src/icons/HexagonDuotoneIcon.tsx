@@ -8,7 +8,7 @@ export const HexagonDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     <IconBase
       ref={ref}
       size={size}
-      color={color}
+      color={color || 'gray300'}
       className={className}
       viewBox="0 0 24 24"
     >

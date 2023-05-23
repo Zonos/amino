@@ -47,6 +47,7 @@ const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
         onChange={option => setValue(option?.value || null)}
         value={value}
       />
+      <br />
       {/* Check for correctly returning type for onChange and value when there is strongly typed `countryOptions` passed in */}
       <CountrySelect
         countryOptions={stronglyTypedCountries}

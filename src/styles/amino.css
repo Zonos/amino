@@ -69,7 +69,6 @@
 html {
   font-size: var(--amino-type-scale-base);
   font-family: var(--amino-font-sans);
-  color: var(--amino-text-color);
   height: 100%;
   width: 100%;
   -webkit-font-smoothing: antialiased;

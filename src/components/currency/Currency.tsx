@@ -31,7 +31,7 @@ export const Currency = ({ amount, className, code }: Props) => {
 
   return (
     <StyledCurrency className={className}>
-      <Text type="label" color={isNegative ? 'red600' : 'gray1300'}>
+      <Text type="label" color={isNegative ? 'red600' : 'gray1200'}>
         {formattedCurrency}
       </Text>
       <Text color={isNegative ? 'red400' : 'gray700'}>

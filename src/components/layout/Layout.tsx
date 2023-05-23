@@ -30,13 +30,13 @@ const StyledLogoSidebar = styled.div`
 const StyledSearchInput = styled(SearchInput)`
   border: 0;
   svg {
-    color: black;
+    color: ${theme.gray1200};
   }
   input {
     background-color: ${theme.gray100};
     border: 0;
     ::placeholder {
-      color: black;
+      color: ${theme.gray1200};
     }
   }
 `;

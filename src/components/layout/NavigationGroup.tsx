@@ -23,7 +23,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   border-radius: ${theme.radius6};
   &:hover {
     background-color: ${theme.gray50};
-    color: black;
+    color: ${theme.gray1200};
     svg {
       color: ${theme.gray700};
     }
@@ -51,9 +51,9 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
     css`
       && {
         background-color: ${theme.gray200};
-        color: black;
+        color: ${theme.gray1200};
         svg {
-          color: black;
+          color: ${theme.gray1200};
         }
       }
     `}
@@ -64,12 +64,12 @@ const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
     !$collapsed &&
     css`
       ${StyledNavigationItem} {
-        color: black;
+        color: ${theme.gray1200};
         &:hover {
           background-color: transparent;
         }
         svg {
-          color: black;
+          color: ${theme.gray1200};
         }
       }
     `}

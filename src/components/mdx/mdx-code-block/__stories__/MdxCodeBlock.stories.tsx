@@ -1,12 +1,32 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { MdxCodeBlock as MdxCodeBlockComponent } from '../MdxCodeBlock';
+import {
+  type Props,
+  MdxCodeBlock as MdxCodeBlockComponent,
+} from '../MdxCodeBlock';
 
 const MdxCodeBlockMeta: Meta = {
   component: MdxCodeBlockComponent,
 };
 
 export default MdxCodeBlockMeta;
+
+const Template: StoryFn<Props> = ({
+  xlabel,
+  type,
+  children,
+  maxHeight,
+  themeOverride,
+}: Props) => (
+  <MdxCodeBlockComponent
+    xlabel={xlabel}
+    type={type}
+    maxHeight={maxHeight}
+    themeOverride={themeOverride}
+  >
+    {children}
+  </MdxCodeBlockComponent>
+);
 
 const codeContent = JSON.stringify(
   {
@@ -22,39 +42,14 @@ const codeContent = JSON.stringify(
   '  '
 );
 
-export const MdxCodeBlock: StoryFn<typeof MdxCodeBlockComponent> = () => (
-  <MdxCodeBlockComponent xlabel="JSON Example" type="JSON">
+export const MdxCodeBlock = Template.bind({});
+MdxCodeBlock.args = {
+  children: (
     <pre>
       <code>{codeContent}</code>
     </pre>
-  </MdxCodeBlockComponent>
-);
-
-export const MdxCodeBlockWithHeight: StoryFn<
-  typeof MdxCodeBlockComponent
-> = () => (
-  <MdxCodeBlockComponent xlabel="JSON Example" type="JSON" maxHeight={600}>
-    <pre>
-      <code>{`
-{
-  "border": "{{int(1, 5)}}px {{random(solid, dotted, dashed)}} {{color()}}",
-  "coordinates": {
-    "type": "array",
-    "count": 2,
-    "items": "{{float(0, 120, 5)}}"
-  },
-  "password": "xX{{animal()}}-{{string(6, 10, *)}}"
-}
-
-{
-  "border": "1px dotted silver",
-  "coordinates": [
-    109.06664,
-    61.56686
-  ],
-  "password": "xXjunglefowl-*********"
-}
-      `}</code>
-    </pre>
-  </MdxCodeBlockComponent>
-);
+  ),
+  maxHeight: undefined,
+  type: 'JSON',
+  xlabel: 'JSON Example',
+};

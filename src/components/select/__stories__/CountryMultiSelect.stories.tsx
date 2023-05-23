@@ -50,6 +50,7 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
         unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
         value={value}
       />
+      <br />
       {/* Check for correctly returning type for onChange and value when there is strongly typed `countryOptions` passed in */}
       <CountryMultiSelect
         countryOptions={stronglyTypedCountries}

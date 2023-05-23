@@ -5,15 +5,19 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const AminoSwitch = styled.div<{ checked: boolean }>`
-  background: white;
+  background: ${theme.gray0};
   height: 12px;
   width: 12px;
   border-radius: 50%;
   transition: ${theme.transition};
   position: absolute;
   top: 2px;
-  left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')}; ;
+  left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')};
+  [data-theme='night'] & {
+    background: ${theme.gray1200};
+  }
 `;
+
 const AminoSwitchWrapper = styled.div<{
   checked: boolean;
 }>`

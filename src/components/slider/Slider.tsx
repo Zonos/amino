@@ -33,13 +33,17 @@ const StyledRange = styled(Range)`
 `;
 
 const StyledThumb = styled(Thumb)<StyledProps<SliderProps>>`
-  background: white;
+  background: ${theme.gray0};
   border-radius: 20px;
   border: ${theme.border};
   box-shadow: ${theme.v3ShadowBase};
   display: block;
   height: ${p => p.$size && `${p.$size * 2}px`};
   width: ${p => p.$size && `${p.$size * 2}px`};
+
+  [data-theme='night'] & {
+    background: ${theme.gray1200};
+  }
 
   cursor: pointer;
 

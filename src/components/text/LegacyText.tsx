@@ -18,7 +18,7 @@ const SmallHeader = styled.span`
 `;
 
 const InputLabel = styled.span`
-  color: black;
+  color: ${theme.gray1200};
   display: block;
   font-family: ${theme.fontSans};
   font-size: 14px;

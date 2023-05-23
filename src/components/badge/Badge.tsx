@@ -40,7 +40,6 @@ const StyledBadge = styled.div<BadgeProps>`
   padding: 2px 6px;
   text-align: center;
   border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius6)};
-  // default background color (gray)
   background-color: ${theme.gray100};
   color: ${theme.gray800};
   align-items: center;
@@ -58,6 +57,9 @@ const StyledBadge = styled.div<BadgeProps>`
     // bold config default (gray)
     background-color: ${theme.gray600};
     color: ${theme.gray100};
+    & svg {
+      color: ${theme.gray100};
+    }
   }
 
   // size
@@ -73,6 +75,9 @@ const StyledBadge = styled.div<BadgeProps>`
       // bold config
       background-color: ${theme.blue600};
       color: ${theme.blue100};
+      & svg {
+        color: ${theme.blue100};
+      }
     }
   }
 
@@ -84,6 +89,9 @@ const StyledBadge = styled.div<BadgeProps>`
       // bold config
       background-color: ${theme.green600};
       color: ${theme.green100};
+      & svg {
+        color: ${theme.green100};
+      }
     }
   }
 
@@ -95,6 +103,9 @@ const StyledBadge = styled.div<BadgeProps>`
       // bold config
       background-color: ${theme.red600};
       color: ${theme.red100};
+      & svg {
+        color: ${theme.red100};
+      }
     }
   }
 
@@ -106,6 +117,9 @@ const StyledBadge = styled.div<BadgeProps>`
       // bold config
       background-color: ${theme.orange600};
       color: ${theme.orange100};
+      & svg {
+        color: ${theme.orange100};
+      }
     }
   }
 
@@ -117,6 +131,9 @@ const StyledBadge = styled.div<BadgeProps>`
       // bold config
       background-color: ${theme.purple600};
       color: ${theme.purple100};
+      & svg {
+        color: ${theme.purple100};
+      }
     }
   }
 
