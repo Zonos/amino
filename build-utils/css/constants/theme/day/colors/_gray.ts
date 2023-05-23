@@ -1,6 +1,6 @@
 export const gray = {
   /** @info white  */
-  'gray-0': 'white',
+  'gray-0': '#FFFFFF',
   /** @info #F6F6F8  */
   'gray-50': '#F6F6F8',
   /** @info #EAEBED  */
@@ -28,3 +28,4 @@ export const gray = {
   /** @info #101116  */
   'gray-1200': '#101116',
 } as const;
+

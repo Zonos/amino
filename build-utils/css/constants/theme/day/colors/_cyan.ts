@@ -1,22 +1,22 @@
 export const cyan = {
-  /** @info #DBFDFF  */
-  'cyan-100': '#DBFDFF',
-  /** @info #BAF8FD  */
-  'cyan-200': '#BAF8FD',
-  /** @info #8FF1FA  */
-  'cyan-300': '#8FF1FA',
-  /** @info #65E2EF  */
-  'cyan-400': '#65E2EF',
-  /** @info #48C4D3  */
-  'cyan-500': '#48C4D3',
-  /** @info #349DAB  */
-  'cyan-600': '#349DAB',
-  /** @info #287E8A  */
-  'cyan-700': '#287E8A',
-  /** @info #236A75  */
-  'cyan-800': '#236A75',
-  /** @info #22525A  */
-  'cyan-900': '#22525A',
-  /** @info #183338  */
-  'cyan-1000': '#183338',
+  /** @info #DBFFFE  */
+  'cyan-100': '#DBFFFE',
+  /** @info #BAFDFD  */
+  'cyan-200': '#BAFDFD',
+  /** @info #8FF6FA  */
+  'cyan-300': '#8FF6FA',
+  /** @info #65E6EF  */
+  'cyan-400': '#65E6EF',
+  /** @info #4EC6D4  */
+  'cyan-500': '#4EC6D4',
+  /** @info #37A5B4  */
+  'cyan-600': '#37A5B4',
+  /** @info #2C8896  */
+  'cyan-700': '#2C8896',
+  /** @info #26707E  */
+  'cyan-800': '#26707E',
+  /** @info #245660  */
+  'cyan-900': '#245660',
+  /** @info #183339  */
+  'cyan-1000': '#183339',
 } as const;
