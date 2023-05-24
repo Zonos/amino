@@ -3,9 +3,9 @@ import type { Schema } from 'zod';
 
 export type StorageType = 'session' | 'local';
 
-export type StorageProps<Value> = {
+export type StorageProps<Value, Key extends string = string> = {
   type: StorageType;
-  key: string;
+  key: Key;
   /**
    * @param json - If true, the value will be set/parsed as JSON
    * Set the schema for runtime validation of values.
