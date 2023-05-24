@@ -43,10 +43,10 @@ export const MdxProgressCheckbox = ({
     );
   }
   const pageCheckboxKey = `${pathname}-${checkboxKey}`;
-  const [isChecked, setValue] = useStorage({
+  const [isChecked, setChecked] = useStorage({
+    defaultValue: '',
     key: pageCheckboxKey,
     type: 'local',
-    defaultValue: '',
   });
 
   return (
@@ -55,7 +55,7 @@ export const MdxProgressCheckbox = ({
         checked={!!isChecked}
         labelComponent={<Label type="bold-label">{xlabel}</Label>}
         label={xlabel}
-        onChange={() => setValue(isChecked ? '' : 'isChecked')}
+        onChange={() => setChecked(isChecked ? '' : 'checked')}
       />
       <Description>{children}</Description>
     </Wrapper>
