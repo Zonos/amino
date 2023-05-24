@@ -5,7 +5,6 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import { useStorage } from 'src/utils/hooks/useStorage';
 import styled from 'styled-components';
-import { z } from 'zod';
 
 const Label = styled(Text)`
   font-size: ${theme.space16};
