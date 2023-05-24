@@ -1,18 +1,22 @@
 import { mutate } from 'swr';
+import type { Schema } from 'zod';
 
 export type StorageType = 'session' | 'local';
 
-export type StorageProps = {
+export type StorageProps<Value> = {
   type: StorageType;
   key: string;
   /**
    * @param json - If true, the value will be set/parsed as JSON
-   * @default false
+   * Set the schema for runtime validation of values.
+   * @default undefined
    */
-  json?: boolean;
+  json?: {
+    schema: Schema<Value>;
+  };
 };
 
-type SetProps<Value> = StorageProps & {
+type SetProps<Value> = StorageProps<Value> & {
   value: Value;
 };
 
@@ -20,7 +24,7 @@ export const getStorageItem = <Value extends unknown>({
   type,
   key,
   json,
-}: StorageProps): Value | null => {
+}: StorageProps<Value>): Value | null => {
   const storage = type === 'session' ? sessionStorage : localStorage;
   const rawValue = storage.getItem(key);
 
@@ -29,7 +33,14 @@ export const getStorageItem = <Value extends unknown>({
   if (json) {
     try {
       const value = JSON.parse(rawValue);
-      return value as Value;
+
+      const parsed = json.schema.safeParse(value);
+
+      if (!parsed.success) {
+        return null;
+      }
+
+      return parsed.data;
     } catch {
       return null;
     }

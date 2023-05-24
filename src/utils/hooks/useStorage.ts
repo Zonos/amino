@@ -1,3 +1,5 @@
+import { Schema } from 'zod';
+
 import { type StorageType, getStorageItem, setStorageItem } from '../storage';
 import { useSwr } from './useSwr';
 
@@ -9,14 +11,17 @@ export type AminoStorageKey =
   | (string & Record<never, never>);
 
 type Props<TValue extends unknown, TKey extends AminoStorageKey> = {
-  type: StorageType;
-  key: TKey;
+  defaultValue: TValue;
   /**
    * @param json - If true, the value will be set/parsed as JSON
-   * @default false
+   * Set the schema for runtime validation of values.
+   * @default undefined
    */
-  json?: boolean;
-  defaultValue: TValue;
+  json?: {
+    schema: Schema<TValue>;
+  };
+  key: TKey;
+  type: StorageType;
 };
 
 type Return<T> = [value: T, setValue: (value: T) => void];
@@ -26,9 +31,9 @@ export const useStorage = <
   TKey extends AminoStorageKey = AminoStorageKey
 >({
   defaultValue,
+  json,
   key,
   type,
-  json,
 }: Props<TValue, TKey>): Return<TValue> => {
   // we don't need wrapper swrt here since we only use swr for catching the storage value
   const { data } = useSwr<TValue | null>(
