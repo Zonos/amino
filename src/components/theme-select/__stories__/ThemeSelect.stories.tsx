@@ -14,7 +14,7 @@ export default ThemeSelectMeta;
 
 const Wrapper = styled.div`
   height: auto;
-  width: 360px;
+  max-width: 600px;
   margin: 0 auto;
 `;
 

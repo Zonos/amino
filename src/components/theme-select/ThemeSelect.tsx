@@ -12,6 +12,7 @@ import { Text } from '../text/Text';
 
 // Card style
 const ButtonStyled = styled.button`
+  border: 2px solid transparent;
   &:not([disabled]) {
     &:active,
     &:focus {
@@ -44,7 +45,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
 const SunnyIconStyled = styled(SunnyIcon)<{ checked: boolean }>`
   position: absolute;
   top: 6px;
-  right: 5.5px;
+  right: 5.8px;
   color: ${p => (p.checked ? theme.gray0 : theme.gray1200)};
   [data-theme='night'] & {
     color: ${p => (p.checked ? theme.gray1200 : theme.gray0)};
@@ -153,6 +154,7 @@ export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
           icon={getIcon()}
           onChange={newTheme => setAminoTheme(newTheme?.value || 'day')}
           isDisabled={disabled}
+          isClearable={false}
         />
       )}
 
