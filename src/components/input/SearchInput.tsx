@@ -37,6 +37,11 @@ const AminoInput = styled.input`
     outline: none;
     box-shadow: ${theme.glowBlue};
   }
+  &:-webkit-autofill,
+  &:-moz-autofill {
+    background-color: ${theme.inputBackground};
+    color: ${theme.textColor};
+  }
 `;
 
 export type InputProps = {

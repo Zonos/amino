@@ -157,6 +157,12 @@ const AminoInput = styled.input<TypeInput>`
       transform: scale(0.8);
     }
   }
+
+  &:-webkit-autofill,
+  &:-moz-autofill {
+    background-color: ${theme.inputBackground};
+    color: ${theme.textColor};
+  }
 `;
 
 const StyledLabelWrapper = styled.div`

@@ -63,6 +63,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
   font-size: ${theme.fontSizeBase};
   font-weight: 500;
   z-index: 2;
+  display: block;
 
   :-internal-autofill-selected {
     border-radius: ${theme.radius6} 0 0 ${theme.radius6};
