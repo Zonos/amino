@@ -88,7 +88,7 @@ exports[`Theme content: 1`] = `
   "--amino-green-900": "#245234",
   "--amino-header-color": "var(--amino-gray-0)",
   "--amino-hover-color": "var(--amino-gray-50)",
-  "--amino-input-background": "var(--amino-gray-0)",
+  "--amino-input-background": "inherit",
   "--amino-line-height-2xl": "119%",
   "--amino-line-height-3xl": "118%",
   "--amino-line-height-base": "114%",

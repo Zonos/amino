@@ -33,6 +33,7 @@ const AminoInput = styled.input`
   border-radius: ${theme.radius6};
   outline: none;
   width: 100%;
+  background: ${theme.inputBackground};
   :focus {
     outline: none;
     box-shadow: ${theme.glowBlue};
