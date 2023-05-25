@@ -165,7 +165,6 @@
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-text-color: var(--amino-gray-1000);
-  --amino-input-background: var(--amino-gray-0);
   --amino-surface-color: var(--amino-gray-0);
   --amino-surface-color-secondary: var(--amino-gray-50);
   --amino-backdrop-color: var(--amino-gray-1000);
@@ -210,6 +209,7 @@
     Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
     Courier New, monospace;
   --amino-font-harmonized-codes: 'Fira Code', var(--amino-font-sans);
+  --amino-input-background: inherit;
 }
 
 /* Night theme */
@@ -338,7 +338,6 @@
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-text-color: var(--amino-gray-1000);
-  --amino-input-background: var(--amino-gray-0);
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
   --amino-backdrop-color: var(--amino-gray-100);
