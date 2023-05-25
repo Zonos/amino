@@ -156,6 +156,11 @@ const Typography = styled.h1<TypographyOverrides & TypeDefaultProp>`
   margin: 0;
   color: ${props => props.color && theme[props.color]};
   text-transform: ${props => props.isUppercase && 'uppercase'};
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
 `;
 
 type TextStyle = Type | OtherText;
