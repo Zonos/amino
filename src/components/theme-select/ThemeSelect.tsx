@@ -1,3 +1,5 @@
+import { ThemeDarkIcon } from 'src/icons/custom/theme/ThemeDarkIcon';
+import { ThemeLightIcon } from 'src/icons/custom/theme/ThemeLightIcon';
 import { NightIcon } from 'src/icons/NightIcon';
 import { SunnyIcon } from 'src/icons/SunnyIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -11,23 +13,32 @@ import { HStack } from '../stack/HStack';
 import { Text } from '../text/Text';
 
 // Card style
-const ButtonStyled = styled.button`
-  border: 2px solid transparent;
+const ButtonStyled = styled.button<{ isActive: boolean }>`
+  border: ${p => `2px solid ${p.isActive ? theme.blue400 : 'transparent'}`};
+  color: ${p => (p.isActive ? theme.primary : theme.textColor)};
+  border-radius: ${theme.radius8};
+
   &:not([disabled]) {
     &:active,
     &:focus {
       outline: none;
-      color: ${theme.primary};
-      border: 2px solid ${theme.blue400};
-      border-radius: ${theme.radius8};
     }
   }
 `;
 
 const ThemeCard = styled(Card)`
+  background: ${theme.gray0};
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: ${theme.space16};
+
+  svg {
+    height: 64px;
+    width: 110px;
+    box-shadow: ${theme.v3ShadowLarge};
+    margin-bottom: ${theme.space16};
+  }
 `;
 
 // Switch style
@@ -42,24 +53,18 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   left: ${p => (p.checked ? 'calc(100% - 30px)' : '2px')};
 `;
 
-const SunnyIconStyled = styled(SunnyIcon)<{ checked: boolean }>`
+const SunnyIconStyled = styled(SunnyIcon)<{ isActive: boolean }>`
   position: absolute;
   top: 6px;
   right: 5.8px;
-  color: ${p => (p.checked ? theme.gray0 : theme.gray1200)};
-  [data-theme='night'] & {
-    color: ${p => (p.checked ? theme.gray1200 : theme.gray0)};
-  }
+  color: ${p => (p.isActive ? theme.gray0 : theme.gray1200)};
 `;
 
-const NightIconStyled = styled(NightIcon)<{ checked: boolean }>`
+const NightIconStyled = styled(NightIcon)<{ isActive: boolean }>`
   position: absolute;
   top: 6px;
   left: 6px;
-  color: ${p => (p.checked ? theme.gray0 : theme.gray1200)};
-  [data-theme='night'] & {
-    color: ${p => (p.checked ? theme.gray1200 : theme.gray0)};
-  }
+  color: ${p => (p.isActive ? theme.gray0 : theme.gray1200)};
 `;
 
 const AminoSwitchWrapper = styled.div<{
@@ -131,17 +136,27 @@ export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
     <>
       {type === 'cards' && (
         <HStack>
-          <ButtonStyled onClick={() => setAminoTheme('day')} type="button">
+          <ButtonStyled
+            onClick={() => setAminoTheme('day')}
+            type="button"
+            data-theme="day"
+            isActive={aminoTheme === 'day'}
+          >
             <ThemeCard>
-              <img src="/light.png" alt="light theme" />
-              <Text>Light</Text>
+              <ThemeLightIcon />
+              <Text type="bold-label">Light</Text>
             </ThemeCard>
           </ButtonStyled>
 
-          <ButtonStyled onClick={() => setAminoTheme('night')} type="button">
+          <ButtonStyled
+            onClick={() => setAminoTheme('night')}
+            type="button"
+            data-theme="night"
+            isActive={aminoTheme === 'night'}
+          >
             <ThemeCard>
-              <img src="/dark.png" alt="dark theme" />
-              <Text>Dark</Text>
+              <ThemeDarkIcon />
+              <Text type="bold-label">Dark</Text>
             </ThemeCard>
           </ButtonStyled>
         </HStack>
@@ -168,8 +183,8 @@ export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
         >
           <AminoSwitchWrapper checked={checked}>
             <AminoSwitch checked={checked} id="amino-theme-switch" />
-            <SunnyIconStyled size={20} checked={aminoTheme === 'day'} />
-            <NightIconStyled size={20} checked={aminoTheme === 'night'} />
+            <SunnyIconStyled size={20} isActive={aminoTheme === 'day'} />
+            <NightIconStyled size={20} isActive={aminoTheme === 'night'} />
           </AminoSwitchWrapper>
         </SwitchContainer>
       )}
