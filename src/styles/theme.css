@@ -77,7 +77,7 @@
   --amino-purple-900: #54206a;
   --amino-purple-1000: #3b1948;
   --amino-transparent-white: #ffffffbb;
-  --amino-transparent-black: #000000bb;
+  --amino-transparent-black: #101116bb;
   --amino-v3-shadow-base: 0px 0px 0px 1px rgba(110, 110, 120, 0.1),
     0px 1px 2px rgba(10, 10, 11, 0.06), 0px 1px 3px rgba(10, 10, 11, 0.1);
   --amino-v3-shadow-medium: 0px 0px 0px 1px rgba(110, 110, 120, 0.1),
@@ -288,7 +288,7 @@
   --amino-purple-800: #ddc5fc;
   --amino-purple-900: #e7d8fd;
   --amino-purple-1000: #f4eeff;
-  --amino-transparent-white: #000000bb;
+  --amino-transparent-white: #101116bb;
   --amino-transparent-black: #ffffffbb;
   --amino-v3-shadow-base: 0px 0px 0px 1px rgba(255, 255, 255, 0.12),
     0px 1px 3px rgba(0, 0, 0, 0.9), 0px 1px 2px rgba(0, 0, 0, 0.8);
