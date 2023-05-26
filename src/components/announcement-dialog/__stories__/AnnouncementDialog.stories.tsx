@@ -86,7 +86,7 @@ BasicDialog.args = {
     </>
   ),
   image: <img src="/logo.png" alt="Announcement example" />,
-  label: 'This is a feature update!',
-  type: 'feature-update',
+  label: 'Feature update',
+  title: 'This is a feature update!',
   width: 460,
 };

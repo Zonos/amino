@@ -22,19 +22,17 @@ const StyledImage = styled.div<{ imageWidth?: number }>`
   margin-bottom: ${theme.space16};
 `;
 
-type AnnouncementType = 'feature-update' | 'announcement';
-
 export type AnnouncementDialogProps = {
   announcementId: string;
   children: ReactNode;
   className?: string;
   image?: ReactNode;
   imageWidth?: number;
-  label?: ReactNode;
-  onClose: () => void;
-  open: boolean;
+  label?: string;
+  onClose?: () => void;
+  open?: boolean;
   themeOverride?: Theme;
-  type: AnnouncementType;
+  title?: ReactNode;
   width?: number;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
@@ -62,7 +60,7 @@ export const AnnouncementDialog = forwardRef<
       onClose,
       open,
       themeOverride,
-      type,
+      title,
       width,
       closeOnBlur,
       closeOnEsc,
@@ -79,14 +77,6 @@ export const AnnouncementDialog = forwardRef<
       type: 'local',
     });
 
-    const getTypeLabel = () => {
-      switch (type) {
-        case 'feature-update':
-          return 'Feature update';
-        default:
-          return 'Announcement';
-      }
-    };
     return (
       <BaseDialog
         className={className}
@@ -94,7 +84,9 @@ export const AnnouncementDialog = forwardRef<
         open={open || !announcementSeen}
         width={width}
         onClose={() => {
-          onClose();
+          if (onClose) {
+            onClose();
+          }
           setAnnouncementSeen('seen');
         }}
         closeOnBlur={closeOnBlur}
@@ -104,9 +96,9 @@ export const AnnouncementDialog = forwardRef<
         <StyledImage imageWidth={imageWidth}>{image}</StyledImage>
         <Content spacing={8}>
           <Text type="label" color="blue600">
-            {getTypeLabel()}
+            {label}
           </Text>
-          <Text type="title">{label}</Text>
+          <Text type="title">{title}</Text>
           <div ref={ref}>
             <Text color="gray800">{children}</Text>
           </div>
