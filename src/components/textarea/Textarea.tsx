@@ -107,6 +107,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
     transition: ${theme.transition};
     color: ${theme.gray400};
     font-weight: 400;
+    opacity: 0.6;
   }
 
   :focus {
