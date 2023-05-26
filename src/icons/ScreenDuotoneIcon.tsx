@@ -23,7 +23,7 @@ export const ScreenDuotoneIcon = forwardRef<
       clipRule="evenodd"
     />
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M19.44 3.146c.943-.943 2.56-.278 2.56 1.06V11.5c0 5.523-4.477 10-10 10s-10-4.477-10-10V4.206c0-1.342 1.62-2 2.56-1.06l4.391 4.391a4.981 4.981 0 0 1 3.05-1.037c1.147 0 2.205.387 3.048 1.037l4.39-4.39Z"
