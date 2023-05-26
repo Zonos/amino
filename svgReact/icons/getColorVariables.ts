@@ -19,7 +19,7 @@ export const getColorVariables = ({fileContent, isDuotone}: {fileContent: string
       content = content.replace(new RegExp(`${color}`, 'gi'), '"currentColor"');
     } else if (!/secondaryColor/g.test(content)) {
       /** @desc Replace the second color with the variable secondaryColor */
-      const defaultSecondaryColor = isDuotone ? '\`\${theme.gray300}\`' : `'#fff'`;
+      const defaultSecondaryColor = isDuotone ? '\`\${theme.gray400}\`' : `'#fff'`;
       content = content.replace(
         new RegExp(`${color}`, 'gi'),
         `{secondaryColor ? \`\${theme[secondaryColor]}\` : ${defaultSecondaryColor}} data-is-secondary-color="true" `
