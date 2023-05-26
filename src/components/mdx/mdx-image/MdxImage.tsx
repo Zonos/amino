@@ -1,9 +1,14 @@
 import { type ReactNode, useState } from 'react';
 
 import { LightBox } from 'src/components/lightbox/LightBox';
+import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-const ImageWrapper = styled.div<{ showColor?: boolean; addMargin?: boolean }>`
+const ImageWrapper = styled.div<{
+  showColor?: boolean;
+  addMargin?: boolean;
+  shadow?: boolean;
+}>`
   position: relative;
   margin: 0 auto;
   display: block;
@@ -29,15 +34,8 @@ const ImageWrapper = styled.div<{ showColor?: boolean; addMargin?: boolean }>`
   img {
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: ${({ shadow }) => shadow && theme.v3ShadowLarge};
   }
-`;
-
-const Shadow = styled.div<{ showShadow?: boolean }>`
-  filter: ${({ showShadow }) =>
-    showShadow &&
-    `drop-shadow(0px 4px 6px rgba(10, 10, 11, 0.1))
-    drop-shadow(0px 2px 4px rgba(10, 10, 11, 0.06))`};
-  position: ${({ showShadow }) => showShadow && 'relative'};
 `;
 
 const LightBoxStyled = styled(LightBox)`
@@ -61,8 +59,9 @@ export const MdxImage = ({ addMargin, color, shadow, children }: Props) => {
         addMargin={addMargin}
         showColor={color}
         onClick={() => setShowImgDialog(true)}
+        shadow={shadow}
       >
-        <Shadow showShadow={shadow}>{children}</Shadow>
+        {children}
       </ImageWrapper>
 
       <LightBoxStyled

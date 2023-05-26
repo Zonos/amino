@@ -189,7 +189,7 @@ exports[`Theme content: 1`] = `
   "--amino-text-color": "var(--amino-gray-1000)",
   "--amino-toast-elevation": "var(--amino-elevation-500)",
   "--amino-transition": "all 0.2s ease-in-out 0s",
-  "--amino-transparent-black": "#000000BB",
+  "--amino-transparent-black": "#101116BB",
   "--amino-transparent-white": "#FFFFFFBB",
   "--amino-type-scale-base": "16px",
   "--amino-v3-shadow-base": "0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 1px 2px rgba(10, 10, 11, 0.06), 0px 1px 3px rgba(10, 10, 11, 0.1)",

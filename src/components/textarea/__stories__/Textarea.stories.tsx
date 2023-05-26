@@ -48,6 +48,7 @@ const Template: StoryFn<TextareaProps> = ({
             helpText={helpText}
             value=""
             onChange={() => {}}
+            placeholder={placeholder}
           />
           <Input value="" onChange={() => {}} />
         </StyledGroup>
@@ -116,7 +117,12 @@ const Template: StoryFn<TextareaProps> = ({
             onChange={() => {}}
             placeholder={placeholder}
           />
-          <Input label={label} value="" onChange={() => {}} />
+          <Input
+            label={label}
+            value=""
+            onChange={() => {}}
+            placeholder={placeholder}
+          />
         </StyledGroup>
       </div>
       <div>

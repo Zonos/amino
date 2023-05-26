@@ -1,6 +1,6 @@
 export const transparent = {
-  /** @info #000000BB */
-  'transparent-white': '#000000BB',
+  /** @info #101116BB */
+  'transparent-white': '#101116BB',
   /** @info #FFFFFFBB */
   'transparent-black': '#FFFFFFBB',
 };

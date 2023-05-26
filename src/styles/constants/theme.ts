@@ -247,7 +247,7 @@ export const theme = {
   /** @info #FFFFFFBB */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   transparentWhite: 'var(--amino-transparent-white)',
-  /** @info #000000BB */
+  /** @info #101116BB */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   transparentBlack: 'var(--amino-transparent-black)',
 
