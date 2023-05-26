@@ -75,10 +75,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
     padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
 
     ::placeholder {
-      transition: ${theme.transition};
       opacity: 0;
-      color: ${theme.gray400};
-      font-weight: 400;
     }
 
     &.has-content,
@@ -104,6 +101,12 @@ const StyledTextarea = styled.textarea<TextareaType>`
         }
       }
     }
+  }
+
+  ::placeholder {
+    transition: ${theme.transition};
+    color: ${theme.gray400};
+    font-weight: 400;
   }
 
   :focus {
