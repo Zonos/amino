@@ -74,6 +74,13 @@ const StyledTextarea = styled.textarea<TextareaType>`
   &.has-label {
     padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
 
+    ::placeholder {
+      transition: ${theme.transition};
+      opacity: 0;
+      color: ${theme.gray400};
+      font-weight: 400;
+    }
+
     &.has-content,
     &:focus {
       &::placeholder {
@@ -97,13 +104,6 @@ const StyledTextarea = styled.textarea<TextareaType>`
         }
       }
     }
-  }
-
-  ::placeholder {
-    transition: ${theme.transition};
-    opacity: 0;
-    color: ${theme.gray400};
-    font-weight: 400;
   }
 
   :focus {
