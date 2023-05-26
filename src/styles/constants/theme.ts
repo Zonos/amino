@@ -502,9 +502,6 @@ export const theme = {
   /** @info var(--amino-gray-1000) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textColor: 'var(--amino-text-color)',
-  /** @info var(--amino-gray-0) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  inputBackground: 'var(--amino-input-background)',
 
   /* ONE OFF COLORS */
   /** @info var(--amino-gray-0) */
@@ -638,6 +635,11 @@ export const theme = {
   /** @info 'Fira Code', var(--amino-font-sans) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontHarmonizedCodes: 'var(--amino-font-harmonized-codes)',
+
+  /* OTHER */
+  /** @info inherit */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  inputBackground: 'var(--amino-input-background)',
 } as const;
 
 export type ThemeKey = keyof typeof theme;

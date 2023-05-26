@@ -17,7 +17,7 @@ export const CommentDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h.375a2 2 0 0 0 1.6-.8l2.175-2.9a2 2 0 0 1 1.6-.8H19a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"
     />

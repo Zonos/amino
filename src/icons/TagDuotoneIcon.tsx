@@ -17,7 +17,7 @@ export const TagDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M18.924 3.19a2 2 0 0 1 1.872 1.87l.388 6.206a3 3 0 0 1-.873 2.308l-6.932 6.932a3 3 0 0 1-4.243 0L3.48 14.85a3 3 0 0 1 0-4.242l6.932-6.932a3 3 0 0 1 2.309-.873l6.204.388Z"

@@ -17,7 +17,7 @@ export const FolderListDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M2 7a3 3 0 0 1 3-3h4.882c1.064 0 2.037.601 2.512 1.553a.81.81 0 0 0 .724.447H19a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7Z"

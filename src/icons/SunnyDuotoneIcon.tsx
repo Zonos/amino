@@ -17,7 +17,7 @@ export const SunnyDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M7 12a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"

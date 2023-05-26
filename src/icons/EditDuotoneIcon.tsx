@@ -17,7 +17,7 @@ export const EditDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="m13.982 5.458 4.414 4.415-8.414 8.414-4.415-4.414 8.415-8.415Z"

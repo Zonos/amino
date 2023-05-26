@@ -17,7 +17,7 @@ export const DoubleChevronDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M16.707 14.293a1 1 0 0 1 0 1.414l-3.93 3.93a1.1 1.1 0 0 1-1.555 0l-3.93-3.93a1 1 0 1 1 1.415-1.414L12 17.586l3.293-3.293a1 1 0 0 1 1.414 0Z"

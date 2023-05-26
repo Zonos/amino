@@ -8,7 +8,7 @@ export const ArrowUpDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     <IconBase
       ref={ref}
       size={size}
-      color={color || 'gray300'}
+      color={color || 'gray400'}
       className={className}
       viewBox="0 0 24 24"
     >

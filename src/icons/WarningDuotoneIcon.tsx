@@ -17,7 +17,7 @@ export const WarningDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M9.377 4.661c1.143-2.057 4.102-2.057 5.245 0l6.601 11.882c1.111 2-.335 4.457-2.622 4.457H5.399c-2.288 0-3.734-2.457-2.623-4.457L9.377 4.661Z"

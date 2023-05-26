@@ -55,7 +55,7 @@ export const createReactIconSVGs = ({
       .replace(/<\/svg>/gi, '');
 
     const hasSecondaryColor = /secondaryColor/.test(colorVariableContent);
-    const duotoneDefaultColor = isDuotone && hasSecondaryColor ? 'gray800' : 'gray300';
+    const duotoneDefaultColor = isDuotone && hasSecondaryColor ? 'gray800' : 'gray400';
     const component = [
       `import { forwardRef } from 'react';`,
       `import type { IconProps } from 'src/types/IconProps';`,

@@ -40,5 +40,4 @@ export const variablesUsingColors = {
   'border-color': 'var(--amino-gray-200)',
   'hover-color': 'var(--amino-gray-50)',
   'text-color': 'var(--amino-gray-1000)',
-  'input-background': 'var(--amino-gray-0)',
 } as const;

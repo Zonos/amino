@@ -17,7 +17,7 @@ export const CodeDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray300}`}
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       data-is-secondary-color="true"
       fillRule="evenodd"
       d="M7.707 7.293a1 1 0 0 1 0 1.414L4.414 12l3.293 3.293a1 1 0 1 1-1.414 1.414l-3.647-3.646a1.5 1.5 0 0 1 0-2.122l.707.707-.707-.707 3.647-3.646a1 1 0 0 1 1.414 0Zm8.586 0a1 1 0 0 1 1.414 0l3.646 3.646a1.5 1.5 0 0 1 0 2.122l-3.646 3.646a1 1 0 0 1-1.414-1.414L19.586 12l-3.293-3.293a1 1 0 0 1 0-1.414Z"
