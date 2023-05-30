@@ -4,7 +4,7 @@ exports[`Theme content: 1`] = `
 {
   "--amino-appbar-elevation": "var(--amino-elevation-500)",
   "--amino-appbar-height": "55px",
-  "--amino-backdrop-color": "var(--amino-gray-1000)",
+  "--amino-backdrop-color": "var(--amino-gray-1200)",
   "--amino-blue-100": "#DEEDFE",
   "--amino-blue-1000": "#1C2154",
   "--amino-blue-200": "#C5DDFD",

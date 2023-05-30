@@ -81,7 +81,6 @@ const AminoSwitchWrapper = styled.div<{
   box-shadow: ${theme.v3ShadowInset};
   display: block;
   user-select: none;
-  margin-right: ${theme.space16};
   position: relative;
 `;
 
@@ -112,11 +111,16 @@ const themes: { label: string; value: Theme }[] = [
 ];
 
 export type Props = {
+  className?: string;
   disabled?: boolean;
   type?: 'cards' | 'select' | 'toggle';
 };
 
-export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
+export const ThemeSelect = ({
+  className,
+  disabled = false,
+  type = 'select',
+}: Props) => {
   const { aminoTheme, setAminoTheme } = useAminoTheme();
 
   const getIcon = () => {
@@ -135,7 +139,7 @@ export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
   return (
     <>
       {type === 'cards' && (
-        <HStack>
+        <HStack className={className}>
           <ButtonStyled
             onClick={() => setAminoTheme('day')}
             type="button"
@@ -164,6 +168,7 @@ export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
 
       {type === 'select' && (
         <Select
+          className={className}
           value={themes.filter(x => x.value === aminoTheme)}
           options={themes}
           icon={getIcon()}
@@ -175,7 +180,7 @@ export const ThemeSelect = ({ disabled = false, type = 'select' }: Props) => {
 
       {type === 'toggle' && (
         <SwitchContainer
-          className={disabled ? 'disabled' : ''}
+          className={`${className} ${disabled ? 'disabled' : ''}`}
           checked={checked}
           onClick={() =>
             !disabled && setAminoTheme(aminoTheme === 'day' ? 'night' : 'day')
