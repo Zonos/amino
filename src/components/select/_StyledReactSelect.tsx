@@ -362,7 +362,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       flexWrap: 'inherit',
       minHeight: `var(--amino-size-${size})`,
       boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
-      background: theme.gray0,
+      background: theme.inputBackground,
     };
   },
   dropdownIndicator: provided => ({
