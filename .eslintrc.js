@@ -131,10 +131,6 @@ module.exports = {
     'storybook/use-storybook-expect': 'off',
     'no-restricted-syntax': [
       'error',
-      {
-        selector: 'MemberExpression[object.name="JSON"][property.name="parse"]',
-        message: 'Use `jsonParse` function instead of `JSON.parse`',
-      },
       // https://stackoverflow.com/questions/42226436/how-can-i-turn-off-eslints-no-restricted-syntax-rule-just-for-forofstatement
       'ForInStatement',
       'LabeledStatement',
