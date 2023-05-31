@@ -1,9 +1,12 @@
-import type { ComponentProps } from 'react';
+import { type ComponentProps, useCallback } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
 
-import { NestedDataTable as NestedDataTableComponent } from '../NestedDataTable';
+import {
+  type ColumnFormatter,
+  NestedDataTable as NestedDataTableComponent,
+} from '../NestedDataTable';
 
 const NestedDataTableMeta: Meta = {
   component: NestedDataTableComponent,
@@ -105,7 +108,7 @@ NestedDataTableWithJsonColumn.args = {
 };
 
 const tableData: {
-  name: string;
+  name: 'Amino 1' | 'Amino 2';
   content: string;
   json: string;
   jsonObj: string;
@@ -131,10 +134,20 @@ const tableData: {
     }),
   },
 ];
-export const NestedDataTableWithCustomColumn = Template.bind({});
-NestedDataTableWithCustomColumn.args = {
-  customColumnFormatters: {
-    name: ({ column }) => <span style={{ color: 'red' }}>{column.key}</span>,
-  },
-  tableData,
+export const NestedDataTableWithCustomColumn = () => {
+  const nameFormatter: ColumnFormatter<{
+    name: 'Amino 1' | 'Amino 2';
+    content: string;
+    json: string;
+    jsonObj: string;
+  }> = useCallback(({ row }) => <div>{row.name}</div>, []);
+  return (
+    <NestedDataTableComponent
+      tableData={tableData}
+      isFetching={false}
+      customColumnFormatters={{
+        name: nameFormatter,
+      }}
+    />
+  );
 };
