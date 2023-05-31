@@ -43,7 +43,7 @@ export type NestedRowData = {
   _expandedKey: string;
 };
 
-export type RowWithIndex = RowData & {
+export type RowWithIndex<Row extends RowData = RowData> = Row & {
   _itemIndex?: number;
 } & NestedRowData;
 
