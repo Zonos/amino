@@ -27,20 +27,25 @@ const StyledTableActionWrapper = styled.div`
   gap: ${theme.space8};
 `;
 
-type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
-type ColumnFormatter = Parameters<NonNullable<ColumnType['formatter']>>;
+type ColumnType<TRow> = Column<TRow, Record<string, unknown>>;
+export type ColumnFormatter<TRow extends Record<string, unknown>> = NonNullable<
+  ColumnType<TRow>['formatter']
+>;
+export type CustomColumnFormatters<TRow extends Record<string, unknown>> = {
+  [key in keyof TRow]?: ColumnFormatter<TRow>;
+};
 
-type Props<TRow = Record<string, unknown>> = {
+type Props<TRow extends Record<string, unknown>> = {
   currentPage?: number;
   /**
    * @param customFlattenRow
    * @description Custom flattenRow function, if not provided, the default flattenRow (flattenRow - "src/utils/flattenRow.ts") will be used
    */
   customFlattenRow?: typeof flattenRow;
-  customColumnFormatters?: {
-    [key in keyof TRow]?: (props: ColumnFormatter[0]) => ReactNode;
-  };
+  customColumnFormatters?: CustomColumnFormatters<TRow>;
   handlePagination?: (page: number) => void;
+  hasNextPage?: boolean;
+  hasPreviousPage?: boolean;
   isFetching: boolean;
   loadingComponent?: ReactNode;
   restState?: ReactNode;
@@ -55,6 +60,8 @@ export const NestedDataTable = <
   customFlattenRow,
   customColumnFormatters,
   handlePagination,
+  hasNextPage,
+  hasPreviousPage,
   isFetching,
   loadingComponent,
   restState,
@@ -88,7 +95,9 @@ export const NestedDataTable = <
 
     return (
       <TableData
-        customColumnFormatters={customColumnFormatters}
+        customColumnFormatters={
+          customColumnFormatters as CustomColumnFormatters<RowWithIndex>
+        }
         tableDataArr={tableDataArr}
         customFlattenRow={customFlattenRow}
       />
@@ -104,17 +113,22 @@ export const NestedDataTable = <
           <StyledTableActionWrapper>
             <Button
               intent="outline"
-              disabled={currentPage === 1}
+              disabled={currentPage === 1 || !hasPreviousPage}
               onClick={() => {
-                handlePagination(currentPage - 1);
+                if (hasPreviousPage) {
+                  handlePagination(currentPage - 1);
+                }
               }}
             >
               Previous page
             </Button>
             {currentPage}
             <Button
+              disabled={!hasNextPage}
               onClick={() => {
-                handlePagination(currentPage + 1);
+                if (hasNextPage) {
+                  handlePagination(currentPage + 1);
+                }
               }}
               intent="outline"
             >
