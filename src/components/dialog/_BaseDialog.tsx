@@ -69,10 +69,19 @@ export const BaseDialog = ({
 
   const dialogBackdrop = useRef<HTMLDivElement>(null);
 
-  // Focus the backdrop so we can listen for keypresses ('escape' to close)
+  // Focus the backdrop so we can listen for keypress ('escape' to close)
   useEffect(() => {
     if (!dialogBackdrop.current?.contains(document.activeElement)) {
       dialogBackdrop.current?.focus();
+    }
+
+    if (!document?.body) {
+      return;
+    }
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
     }
   }, [open]);
 

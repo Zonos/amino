@@ -40,9 +40,7 @@ const StyledHeader = styled(Text)`
   flex-grow: 1;
 `;
 const Header = styled.header`
-  background: ${theme.surfaceColor};
   border-bottom: ${theme.border};
-
   padding: ${theme.space16} ${theme.space24};
   display: flex;
   align-items: center;
