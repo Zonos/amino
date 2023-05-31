@@ -78,11 +78,7 @@ export const BaseDialog = ({
     if (!document?.body) {
       return;
     }
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
 
   if (typeof document !== 'undefined') {
