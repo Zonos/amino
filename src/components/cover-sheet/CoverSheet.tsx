@@ -94,6 +94,17 @@ export const CoverSheet = ({
     }
   }, [actionWrapperId]);
 
+  useEffect(() => {
+    if (!document?.body) {
+      return;
+    }
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [open]);
+
   if (typeof document !== 'undefined') {
     const body = document.querySelector('body');
     if (body) {
