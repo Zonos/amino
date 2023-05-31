@@ -510,7 +510,7 @@ export const theme = {
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
-  /** @info var(--amino-gray-1000) */
+  /** @info var(--amino-gray-1200) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   backdropColor: 'var(--amino-backdrop-color)',
 

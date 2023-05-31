@@ -125,5 +125,5 @@
   --amino-text-color: var(--amino-gray-1000);
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
-  --amino-backdrop-color: var(--amino-gray-100);
+  --amino-backdrop-color: var(--amino-gray-0);
 }
