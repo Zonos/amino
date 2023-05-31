@@ -41,8 +41,6 @@ const StyledExpandWrapper = styled.div`
 `;
 
 const StyledTableWrapper = styled.div`
-  overflow: auto;
-  height: 100%;
   .expanding {
     background-color: ${theme.gray50};
   }
