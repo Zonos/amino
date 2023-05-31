@@ -58,6 +58,8 @@ const StyledPivotTableWrapper = styled.div`
 `;
 
 type GraphMatrixProps = {
+  // Toolbar item. You can add your own toolbar item and use the built in <GraphMatrix.ToolbarButton>
+  customToolbar?: ReactNode;
   /**
    * @param fetcher
    * @description Custom fetcher, if not provided, the default fetcher (handleFetch - "src/utils/handleFetch.ts") will be used
@@ -78,11 +80,10 @@ type GraphMatrixProps = {
   schemaName: string;
   url: string;
   variables: string;
-  // Toolbar item. You can add your own toolbar item and use the built in <GraphMatrix.ToolbarButton>
-  customToolbar?: ReactNode;
 };
 
 export const GraphMatrix = ({
+  customToolbar,
   fetcher,
   loadingComponent,
   onEditQuery,
@@ -93,7 +94,6 @@ export const GraphMatrix = ({
   schemaName,
   url,
   variables = '',
-  customToolbar,
 }: GraphMatrixProps) => {
   /** @description Graphiql doesn't expose props, so we use the hook `use{Something}Context` */
   const [executionContext, setExecutionContext] =
