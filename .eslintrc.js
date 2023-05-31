@@ -129,6 +129,13 @@ module.exports = {
       },
     ],
     'storybook/use-storybook-expect': 'off',
+    'no-restricted-syntax': [
+      'error',
+      // https://stackoverflow.com/questions/42226436/how-can-i-turn-off-eslints-no-restricted-syntax-rule-just-for-forofstatement
+      'ForInStatement',
+      'LabeledStatement',
+      'WithStatement',
+    ],
   },
   settings: {
     'import/resolver': {
