@@ -1,3 +1,4 @@
+import { glob } from 'glob';
 import { capitalize } from '../build-utils/css/utils/capitalize';
 
 // https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
@@ -26,7 +27,7 @@ type StoryEntry = StorySpecifier & {
 const removedPrefixes = /(components|icons|styles)\//;
 
 const pathRegex =
-  /(?<fullFolder>..\/src(\/(?<folder>.*))?\/__stories__)\/(?<fileName>.*)\.stories\.tsx/i;
+  /(?<fullFolder>..\/src(\/(?<folder>.*))?\/__stories__)\/(?<fullFileName>(?<fileName>.*)\.stories\.(tsx|mdx))/i;
 
 // The titlePrefix defines the folder structure in the sidebar
 const getTitlePrefix = ({
@@ -60,7 +61,7 @@ const getTitlePrefix = ({
 const getStoryEntry = (storyPath: string): StoryEntry => {
   const matched = storyPath.match(pathRegex);
 
-  const { fullFolder, folder, fileName } = matched?.groups || {};
+  const { fullFolder, folder, fileName, fullFileName } = matched?.groups || {};
 
   const titlePrefix = getTitlePrefix({ folder, fileName });
 
@@ -68,7 +69,7 @@ const getStoryEntry = (storyPath: string): StoryEntry => {
     directory: fullFolder,
     fileName,
     titlePrefix,
-    files: `${fileName}.stories.tsx`,
+    files: fullFileName,
   };
 };
 
@@ -85,3 +86,11 @@ export const buildStories = (stories: string[]) =>
       const storyNameB = getTitle(b);
       return storyNameA.localeCompare(storyNameB);
     });
+
+export const getStories = () => {
+  const stories = glob.sync('../src/**/__stories__/*.stories.{tsx,mdx}', {
+    cwd: __dirname,
+  });
+  const storyPaths = buildStories(stories);
+  return storyPaths;
+};

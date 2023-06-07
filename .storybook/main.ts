@@ -1,16 +1,9 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { glob } from 'glob';
 import path from 'path';
-import { buildStories } from './buildStories';
+import { getStories } from './buildStories';
 
-const findStories = () => {
-  const stories = glob.sync('../src/**/__stories__/*.stories.tsx', {
-    cwd: __dirname,
-  });
-  return buildStories(stories);
-};
 const config: StorybookConfig = {
-  stories: findStories(),
+  stories: getStories(),
   framework: {
     name: '@storybook/react-webpack5',
     options: {},

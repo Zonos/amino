@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/blocks';
+import { ThemeSelect } from '../ThemeSelect';
+
+<Meta title="ThemeSelect/Usage" component={ThemeSelect} />
+
+# Theme
+
+At the root of your app, use the current theme and wrap all contents in a node with `data-theme={aminoTheme}`.
+
+Due to some components that use portals (dialogs...), the theme should also be applied to the whole document body.
+
+
+```typescript
+export const Layout = () => {
+  const { aminoTheme } = useAminoTheme();
+  useEffect(() => {
+    document.body.dataset.theme = aminoTheme;
+  }, [aminoTheme]);
+
+  return <div data-theme={aminoTheme}>YOUR CONTENT HERE</div>;
+};
+```
