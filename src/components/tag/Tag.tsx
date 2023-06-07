@@ -1,3 +1,4 @@
+import { unset } from 'lodash';
 import type { ReactNode } from 'react';
 
 import { RemoveIcon } from 'src/icons/RemoveIcon';
@@ -9,7 +10,9 @@ export interface TagProps {
   className?: string;
   icon?: ReactNode;
   iconRight?: boolean;
-  onClose: () => void;
+  onClose?: () => void;
+  isCode?: boolean;
+  disabled?: boolean;
 }
 
 const TagWrapper = styled.div`
@@ -20,20 +23,30 @@ const StyledTag = styled.button<Omit<TagProps, 'onClose'>>`
   gap: ${theme.space8};
   font-size: ${theme.typeScaleBase};
   font-weight: normal;
-  padding: 3px ${theme.space16};
+  padding: 3px ${({ isCode }) => (isCode ? theme.space4 : theme.space16)};
   text-align: center;
   font-weight: 500;
   // default background color (gray)
-  background-color: ${theme.gray200};
-  color: ${theme.gray800};
+  background-color: ${theme.surfaceColorSecondary};
+  color: ${({ isCode, disabled }) => {
+    if (isCode && disabled) {
+      return theme.gray600;
+    } else if (isCode) {
+      return theme.gray1200;
+    } else {
+      return theme.textColor;
+    }
+  }};
   border-radius: ${theme.radius6};
   align-items: center;
   &:hover {
-    background-color: ${theme.gray300};
+    background-color: ${({ isCode }) =>
+      isCode ? theme.surfaceColorSecondary : theme.gray300};
   }
   p {
     margin: 0;
-    font-weight: 700;
+    font-weight: ${({ isCode }) => (isCode ? 400 : 700)};
+    font-family: ${({ isCode }) => (isCode ? theme.fontMono : 'inherit')};
   }
   svg {
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
@@ -46,12 +59,20 @@ export const Tag = ({
   icon,
   iconRight,
   onClose,
+  isCode,
+  disabled,
 }: TagProps) => (
   <TagWrapper className={className}>
-    <StyledTag type="button" iconRight={iconRight} onClick={onClose}>
+    <StyledTag
+      type="button"
+      iconRight={iconRight}
+      onClick={onClose}
+      isCode={isCode}
+      disabled={disabled}
+    >
       {icon}
       <p>{children}</p>
-      <RemoveIcon size={16} />
+      {onClose && <RemoveIcon size={16} />}
     </StyledTag>
   </TagWrapper>
 );

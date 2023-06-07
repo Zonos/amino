@@ -8,6 +8,9 @@ const TagMeta: Meta = {
     iconRight: {
       type: 'boolean',
     },
+    isCode: {
+      type: 'boolean',
+    },
   },
 };
 
@@ -18,12 +21,23 @@ const Template: StoryFn<TagProps> = ({
   icon,
   iconRight,
   onClose,
-}: TagProps) => (
-  <Tag onClose={onClose} icon={icon} iconRight={iconRight}>
-    {children}
-  </Tag>
-);
+  isCode,
+  disabled,
+}: TagProps) => {
+  console.log(isCode);
 
+  return (
+    <Tag
+      onClose={onClose}
+      icon={icon}
+      iconRight={iconRight}
+      isCode={isCode}
+      disabled={disabled}
+    >
+      {children}
+    </Tag>
+  );
+};
 export const Default = Template.bind({});
 Default.args = {
   children: <span>HS code for Brazil</span>,
@@ -96,5 +110,32 @@ Country.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
+  },
+};
+
+export const Code = Template.bind({});
+Code.args = {
+  children: <span>Option</span>,
+  isCode: true,
+  onClose: undefined,
+};
+Code.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?type=design&node-id=5114-93930&t=U2cjNjlExkGuh0vR-0',
+  },
+};
+
+export const CodeDisabled = Template.bind({});
+CodeDisabled.args = {
+  children: <span>Option</span>,
+  isCode: true,
+  disabled: true,
+  onClose: undefined,
+};
+CodeDisabled.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?type=design&node-id=5114-93930&t=U2cjNjlExkGuh0vR-0',
   },
 };
