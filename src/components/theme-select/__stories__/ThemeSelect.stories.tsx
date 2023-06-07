@@ -24,10 +24,10 @@ const Template: StoryFn = ({ type }: Props) => (
   </Wrapper>
 );
 
-export const ThemeSelect = Template.bind({});
+export const Default = Template.bind({});
 
-export const ThemeSelectCards = Template.bind({});
-ThemeSelectCards.args = { type: 'cards' };
+export const Cards = Template.bind({});
+Cards.args = { type: 'cards' };
 
-export const ThemeSelectToggle = Template.bind({});
-ThemeSelectToggle.args = { type: 'toggle' };
+export const Toggle = Template.bind({});
+Toggle.args = { type: 'toggle' };
