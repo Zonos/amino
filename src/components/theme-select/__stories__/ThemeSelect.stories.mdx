@@ -5,18 +5,15 @@ import { ThemeSelect } from '../ThemeSelect';
 
 # Theme
 
-At the root of your app, use the current theme and wrap all contents in a node with `data-theme={aminoTheme}`.
-
-Due to some components that use portals (dialogs...), the theme should also be applied to the whole document body.
-
+At the root of your app, all you need to do is call `useAminoTheme({ root: true })`. This will automatically set a data attribute on the HTML body that matches the current theme. All children will inherit the theme.
 
 ```typescript
-export const Layout = () => {
-  const { aminoTheme } = useAminoTheme();
-  useEffect(() => {
-    document.body.dataset.theme = aminoTheme;
-  }, [aminoTheme]);
+import { useAminoTheme } from "@zonos/amino/utils/hooks/useAminoTheme";
 
-  return <div data-theme={aminoTheme}>YOUR CONTENT HERE</div>;
+
+export const Layout = () => {
+  useAminoTheme({ root: true });
+
+  return <div>{YOUR_CONTENT_HERE}</div>;
 };
 ```
