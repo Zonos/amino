@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/blocks';
+import { ThemeSelect } from '../ThemeSelect';
+
+<Meta title="ThemeSelect/Usage" component={ThemeSelect} />
+
+# Theme
+
+At the root of your app, all you need to do is call `useAminoTheme({ root: true })`. This will automatically set a data attribute on the HTML body that matches the current theme. All children will inherit the theme.
+
+```typescript
+import { useAminoTheme } from "@zonos/amino/utils/hooks/useAminoTheme";
+
+
+export const Layout = () => {
+  useAminoTheme({ root: true });
+
+  return <div>{YOUR_CONTENT_HERE}</div>;
+};
+```
