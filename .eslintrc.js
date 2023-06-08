@@ -14,7 +14,7 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['generated/**'],
+  ignorePatterns: ['**/generated/**'],
   globals: {
     JSX: 'readonly',
   },
