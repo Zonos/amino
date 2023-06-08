@@ -42,14 +42,14 @@ type LegacyTextStyle =
 
 export type LegacyTextProps = {
   children: ReactNode;
+  className?: string;
   title?: string;
   type?: LegacyTextStyle;
-  className?: string;
 };
 
 export const LegacyText = ({
-  className,
   children,
+  className,
   title,
   type,
 }: LegacyTextProps) => {

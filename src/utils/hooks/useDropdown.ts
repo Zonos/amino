@@ -12,7 +12,7 @@ export const useDropdown = <
 
   const wrapperRef = useRef<WrapperRef | null>(null);
 
-  const { x, y, refs, strategy } = useFloating<TriggerRef>({
+  const { refs, strategy, x, y } = useFloating<TriggerRef>({
     middleware: [offset(10)],
     whileElementsMounted: autoUpdate,
   });

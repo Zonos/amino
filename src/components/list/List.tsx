@@ -24,17 +24,17 @@ const StyledList = styled.section<ListProps>`
 `;
 
 export type ListProps = {
+  children?: ReactNode;
   className?: string;
   withBorder?: boolean;
   withNegativeMargin?: boolean;
-  children?: ReactNode;
 };
 
 export const List = ({
+  children,
   className,
   withBorder,
   withNegativeMargin,
-  children,
 }: ListProps) => (
   <StyledList
     className={className}

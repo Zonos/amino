@@ -6,22 +6,22 @@ import { Default } from 'src/icons/flags/Default';
 import styled from 'styled-components';
 
 const CheckboxMeta: Meta = {
+  argTypes: {
+    disabled: {
+      type: 'boolean',
+    },
+    labelDescription: {
+      type: 'string',
+    },
+    subtitle: {
+      type: 'string',
+    },
+  },
   component: Checkbox,
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-    },
-  },
-  argTypes: {
-    labelDescription: {
-      type: 'string',
-    },
-    disabled: {
-      type: 'boolean',
-    },
-    subtitle: {
-      type: 'string',
     },
   },
 };
@@ -53,8 +53,8 @@ const Template: StoryFn<CheckboxProps> = ({
 
 export const BasicCheckbox = Template.bind({});
 BasicCheckbox.args = {
+  icon: <Default height={12} width={16} />,
   label: 'Input label',
-  icon: <Default width={16} height={12} />,
   subtitle: 'Subtitle here',
 };
 
@@ -73,14 +73,14 @@ BasicCheckboxWithoutIcon.args = {
 };
 export const BasicCheckboxWithoutSubtitle = Template.bind({});
 BasicCheckboxWithoutSubtitle.args = {
-  label: 'Input label',
   icon: <Default height={16} width={16} />,
+  label: 'Input label',
 };
 
 export const CheckboxWithSubstitueLabel = Template.bind({});
 CheckboxWithSubstitueLabel.args = {
-  label: 'Input label',
   icon: <Default height={16} width={16} />,
+  label: 'Input label',
   labelComponent: (
     <LabelComponent>
       I have read and agree to the{' '}

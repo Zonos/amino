@@ -87,23 +87,23 @@ export const Filter = ({
       <StyledFilter
         ref={floatingRef}
         style={{
-          position,
-          top,
           left,
           opacity: visibility === 'visible' ? 1 : 0,
+          position,
+          top,
           zIndex: visibility === 'visible' ? 1 : -1,
         }}
       >
         <MultiSelect
-          label="Hide column"
           hideSelectedOptions={false}
+          label="Hide column"
+          onChange={_hiddenColumns => {
+            setHiddenColumns(_hiddenColumns.flatMap(column => [column.value]));
+          }}
           options={hideColumnOptions}
           value={hideColumnOptions.filter(col =>
             hiddenColumns.includes(col.value)
           )}
-          onChange={_hiddenColumns => {
-            setHiddenColumns(_hiddenColumns.flatMap(column => [column.value]));
-          }}
         />
       </StyledFilter>
     </StyledFilterWrapper>

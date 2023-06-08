@@ -4,8 +4,6 @@ import type { Schema } from 'zod';
 export type StorageType = 'session' | 'local';
 
 export type StorageProps<Value, Key extends string = string> = {
-  type: StorageType;
-  key: Key;
   /**
    * @param json - If true, the value will be set/parsed as JSON
    * Set the schema for runtime validation of values.
@@ -14,6 +12,8 @@ export type StorageProps<Value, Key extends string = string> = {
   json?: {
     schema: Schema<Value>;
   };
+  key: Key;
+  type: StorageType;
 };
 
 type SetProps<Value> = StorageProps<Value> & {
@@ -21,9 +21,9 @@ type SetProps<Value> = StorageProps<Value> & {
 };
 
 export const getStorageItem = <Value extends unknown>({
-  type,
-  key,
   json,
+  key,
+  type,
 }: StorageProps<Value>): Value | null => {
   const storage = type === 'session' ? sessionStorage : localStorage;
   const rawValue = storage.getItem(key);
@@ -50,9 +50,9 @@ export const getStorageItem = <Value extends unknown>({
 };
 
 export const setStorageItem = <Value extends unknown>({
-  type,
-  key,
   json,
+  key,
+  type,
   value,
 }: SetProps<Value>): void => {
   const storage = type === 'session' ? sessionStorage : localStorage;

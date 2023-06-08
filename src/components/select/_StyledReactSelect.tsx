@@ -166,21 +166,22 @@ const Control = <
 ) => {
   const {
     children,
+    className,
     cx,
     getStyles,
-    className,
     hasValue,
+    innerProps,
+    innerRef,
     isDisabled,
     isFocused,
-    innerRef,
-    innerProps,
     menuIsOpen,
     selectProps,
   } = props;
-  const { icon, label, value, size } =
+  const { icon, label, size, value } =
     selectProps as typeof props['selectProps'] & AdditionalProps;
   return (
     <div
+      ref={innerRef}
       className={cx(
         {
           control: true,
@@ -200,7 +201,6 @@ const Control = <
           'react-select-control',
         ].join(' ')
       )}
-      ref={innerRef}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
@@ -292,14 +292,14 @@ export const CheckboxOptionComponent = <
 ) => {
   const {
     children,
+    className,
     data,
     getStyles,
-    innerRef,
     innerProps,
+    innerRef,
     isDisabled,
-    isSelected,
     isFocused,
-    className,
+    isSelected,
     selectProps,
   } = props;
   const { hasGroups } = selectProps as typeof props['selectProps'] &
@@ -312,12 +312,12 @@ export const CheckboxOptionComponent = <
   return (
     <div ref={innerRef} {...innerProps}>
       <StyledSelectOptionWrapper
-        style={style}
         className={[
           className,
           isFocused ? 'is-focused' : '',
           isDisabled ? 'is-disabled' : '',
         ].join(' ')}
+        style={style}
       >
         {selectProps.isMulti ? (
           <Checkbox
@@ -354,15 +354,15 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
       AdditionalProps;
     return {
       ...provided,
+      background: theme.inputBackground,
       borderColor: `${theme.gray200}`,
       borderRadius: 6,
-      cursor: 'pointer',
-      color: theme.gray800,
-      height: `var(--amino-size-${size})`,
-      flexWrap: 'inherit',
-      minHeight: `var(--amino-size-${size})`,
       boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
-      background: theme.inputBackground,
+      color: theme.gray800,
+      cursor: 'pointer',
+      flexWrap: 'inherit',
+      height: `var(--amino-size-${size})`,
+      minHeight: `var(--amino-size-${size})`,
     };
   },
   dropdownIndicator: provided => ({
@@ -373,8 +373,8 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   }),
   group: provided => ({
     ...provided,
-    paddingTop: 0,
     paddingBottom: 0,
+    paddingTop: 0,
   }),
   // groupHeading
   // indicatorsContainer
@@ -384,16 +384,16 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // loadingMessage
   menu: provided => ({
     ...provided,
+    background: theme.surfaceColor,
     borderRadius: 12,
     boxShadow: theme.v3ShadowLarge,
     marginTop: 4,
-    background: theme.surfaceColor,
   }),
   menuList: provided => ({
     ...provided,
-    paddingTop: 8,
     paddingLeft: 8,
     paddingRight: 8,
+    paddingTop: 8,
   }),
   // menuPortal
   multiValue: provided => ({
@@ -410,34 +410,34 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // noOptionsMessage
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? theme.blue600 : theme.textColor,
-    fontWeight: state.isSelected ? 500 : 400,
     backgroundColor: 'inherit',
-    paddingTop: 7,
-    paddingRight: 12,
+    borderRadius: '8px',
+    color: state.isSelected ? theme.blue600 : theme.textColor,
+    cursor: 'pointer',
+    fontWeight: state.isSelected ? 500 : 400,
     paddingBottom: 7,
     paddingLeft: 8,
-    borderRadius: '8px',
-    cursor: 'pointer',
+    paddingRight: 12,
+    paddingTop: 7,
   }),
   placeholder: provided => ({
     ...provided,
-    opacity: 0,
     '.has-label.is-focused &': {
       opacity: 1,
     },
+    opacity: 0,
   }),
   singleValue: provided => ({
     ...provided,
-    fontWeight: 500,
     color: theme.textColor,
+    fontWeight: 500,
   }),
   valueContainer: provided => ({
     ...provided,
+    '.has-icon &': { paddingLeft: 0 },
     flexWrap: 'nowrap',
     padding: 'unset',
     paddingLeft: 12,
-    '.has-icon &': { paddingLeft: 0 },
   }),
 };
 
@@ -448,10 +448,10 @@ export interface StyledReactSelectProps<
 > extends Props<Option, IsMulti, Group>,
     HelpTextProps,
     AdditionalProps {
+  closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
-  closeOnOutsideScroll?: boolean;
 }
 
 export const StyledReactSelect = <
@@ -459,17 +459,17 @@ export const StyledReactSelect = <
   IsMulti extends boolean,
   Group extends GroupBase<Option>
 >({
+  closeOnOutsideScroll = false,
   components,
   error,
-  helpText,
   hasGroups,
+  helpText,
   icon,
   label,
+  menuPosition = 'fixed',
+  placeholder,
   size = 'xl',
   styles,
-  placeholder,
-  menuPosition = 'fixed',
-  closeOnOutsideScroll = false,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps = {
@@ -502,10 +502,12 @@ export const StyledReactSelect = <
 
   return (
     <StyledSelectWrapper
-      data-testid={testId}
       className={[error ? 'has-error' : ''].join(' ')}
+      data-testid={testId}
     >
       <ReactSelect<Option, IsMulti, Group>
+        ref={selectElement}
+        closeMenuOnScroll={closeMenuOnScroll}
         components={
           {
             ClearIndicator,
@@ -544,8 +546,6 @@ export const StyledReactSelect = <
             ...localStyles,
           } as StylesConfig<Option, IsMulti, Group>
         }
-        ref={selectElement}
-        closeMenuOnScroll={closeMenuOnScroll}
         {...props}
         {...additionalProps}
       />

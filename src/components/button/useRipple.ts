@@ -7,9 +7,9 @@ interface IRippleEventHandlers {
 }
 
 type Props = {
-  rippleRef: React.RefObject<IRippleActions>;
   disabled: boolean;
   rippleEnabled: boolean;
+  rippleRef: React.RefObject<IRippleActions>;
 };
 
 type Return = {
@@ -21,9 +21,9 @@ type Return = {
 };
 
 export const useRipple = ({
-  rippleRef,
   disabled,
   rippleEnabled,
+  rippleRef,
 }: Props): Return => {
   function useRippleHandler(
     rippleAction: keyof IRippleActions,
@@ -51,7 +51,6 @@ export const useRipple = ({
         rippleHandlers
       ) as (keyof IRippleEventHandlers)[];
       const wrappedEvents = eventNames.map(eventName => ({
-        name: eventName,
         handler: (
           ev: React.FocusEvent<Element, Element> &
             React.MouseEvent<Element, MouseEvent> &
@@ -60,6 +59,7 @@ export const useRipple = ({
           otherEvents[eventName]?.(ev);
           rippleHandlers[eventName](ev);
         },
+        name: eventName,
       }));
 
       return wrappedEvents.reduce((acc, current) => {
@@ -70,7 +70,7 @@ export const useRipple = ({
   }, [handleMouseDown]);
 
   return {
-    rippleEnabled: rippleEnabled && !disabled,
     getRippleHandlers,
+    rippleEnabled: rippleEnabled && !disabled,
   };
 };

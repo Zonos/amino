@@ -49,12 +49,12 @@ export type Props = {
 };
 
 export const MdxCopyValue = ({ text }: Props) => {
-  const { showTooltip, copyText } = useCopyText();
+  const { copyText, showTooltip } = useCopyText();
   const notify = useNotify();
 
   const CopyValueClicked = () => {
     copyText(text || '');
-    notify('Text was copied!', { intent: 'info', duration: 4000 });
+    notify('Text was copied!', { duration: 4000, intent: 'info' });
   };
 
   return (

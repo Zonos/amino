@@ -1,10 +1,10 @@
 import type { Intent } from './Intent';
 
 export type ConfirmDialogOpts = {
+  confirmText: string;
+  dismissText: string;
+  intent: Intent;
   label: string;
   subtitle?: string;
-  intent: Intent;
-  dismissText: string;
-  confirmText: string;
   onConfirm: (ok: boolean) => void;
 };

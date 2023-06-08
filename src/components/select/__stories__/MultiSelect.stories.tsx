@@ -37,28 +37,6 @@ export const ActiveMultiSelectWithCutoff = MultiSelectTemplate.bind({});
 
 ActiveMultiSelectWithCutoff.args = {
   label: 'Currencies',
-  value: [
-    {
-      label: 'US Dollar (USD)',
-      value: 'USD',
-    },
-    {
-      label: 'European Euro (EUR)',
-      value: 'EUR',
-    },
-    {
-      label: 'British Pound (GBP)',
-      value: 'GBP',
-    },
-    {
-      label: 'Australian Dollar (AUD)',
-      value: 'AUD',
-    },
-    {
-      label: 'New Zealand Dollar (NZD)',
-      value: 'NZD',
-    },
-  ],
   options: [
     {
       label: 'US Dollar (USD)',
@@ -79,6 +57,28 @@ ActiveMultiSelectWithCutoff.args = {
     {
       label: 'Swiss Frank (CHF)',
       value: 'CHF',
+    },
+    {
+      label: 'Australian Dollar (AUD)',
+      value: 'AUD',
+    },
+    {
+      label: 'New Zealand Dollar (NZD)',
+      value: 'NZD',
+    },
+  ],
+  value: [
+    {
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+    {
+      label: 'European Euro (EUR)',
+      value: 'EUR',
+    },
+    {
+      label: 'British Pound (GBP)',
+      value: 'GBP',
     },
     {
       label: 'Australian Dollar (AUD)',
@@ -103,28 +103,6 @@ export const ActiveMultiSelectWithCutoffWithIcon = MultiSelectTemplate.bind({});
 ActiveMultiSelectWithCutoffWithIcon.args = {
   icon: <PlayCircleIcon size={20} />,
   label: 'Currencies',
-  value: [
-    {
-      label: 'US Dollar (USD)',
-      value: 'USD',
-    },
-    {
-      label: 'European Euro (EUR)',
-      value: 'EUR',
-    },
-    {
-      label: 'British Pound (GBP)',
-      value: 'GBP',
-    },
-    {
-      label: 'Australian Dollar (AUD)',
-      value: 'AUD',
-    },
-    {
-      label: 'New Zealand Dollar (NZD)',
-      value: 'NZD',
-    },
-  ],
   options: [
     {
       label: 'US Dollar (USD)',
@@ -145,6 +123,28 @@ ActiveMultiSelectWithCutoffWithIcon.args = {
     {
       label: 'Swiss Frank (CHF)',
       value: 'CHF',
+    },
+    {
+      label: 'Australian Dollar (AUD)',
+      value: 'AUD',
+    },
+    {
+      label: 'New Zealand Dollar (NZD)',
+      value: 'NZD',
+    },
+  ],
+  value: [
+    {
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+    {
+      label: 'European Euro (EUR)',
+      value: 'EUR',
+    },
+    {
+      label: 'British Pound (GBP)',
+      value: 'GBP',
     },
     {
       label: 'Australian Dollar (AUD)',

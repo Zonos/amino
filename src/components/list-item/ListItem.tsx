@@ -5,9 +5,9 @@ import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
 
 interface AminoListItemProps {
-  withClick?: boolean;
   disabled?: boolean;
   selected?: boolean;
+  withClick?: boolean;
 }
 
 const AminoListItem = styled.div<AminoListItemProps>`
@@ -27,7 +27,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
     }
   }
 
-  ${({ selected, disabled }) =>
+  ${({ disabled, selected }) =>
     !disabled &&
     selected &&
     css`
@@ -47,7 +47,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
     `}
 
   :hover {
-    ${({ disabled, withClick, selected }) =>
+    ${({ disabled, selected, withClick }) =>
       !disabled &&
       withClick &&
       !selected &&
@@ -75,14 +75,14 @@ const Icon = styled.img`
 
 export type Props = {
   className?: string;
-  disabled?: boolean;
-  selected?: boolean;
-  label: ReactNode;
-  subtitle?: ReactNode;
-  rightDecorator?: ReactNode;
-  onClick?: MouseEventHandler<HTMLDivElement>;
   /** @description Decorater takes a React node, preferably an icon or an avatar */
   decorator?: ReactNode;
+  disabled?: boolean;
+  label: ReactNode;
+  onClick?: MouseEventHandler<HTMLDivElement>;
+  rightDecorator?: ReactNode;
+  selected?: boolean;
+  subtitle?: ReactNode;
 };
 
 const ListIcon = ({
@@ -95,7 +95,7 @@ const ListIcon = ({
   label: string;
 }) => {
   if (icon) {
-    return <Icon src={icon} alt={label} />;
+    return <Icon alt={label} src={icon} />;
   }
   if (iconComponent) {
     return <>{iconComponent}</>;
@@ -107,23 +107,23 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
   (
     {
       className,
-      disabled,
       decorator,
-      selected,
+      disabled,
       label,
-      subtitle,
-      rightDecorator,
       onClick,
+      rightDecorator,
+      selected,
+      subtitle,
     },
     ref
   ) => (
     <AminoListItem
+      ref={ref}
       className={className}
       disabled={disabled}
+      onClick={e => !disabled && onClick && onClick(e)}
       selected={selected}
       withClick={!!onClick}
-      onClick={e => !disabled && onClick && onClick(e)}
-      ref={ref}
     >
       <div
         className={['___icon-wrapper', decorator ? 'has-icon' : ''].join(' ')}

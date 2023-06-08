@@ -83,53 +83,53 @@ const Footer = styled.div`
 `;
 
 export type SlideOverProps = {
-  children: ReactNode;
   actions?: ReactNode;
+  children: ReactNode;
   label?: string;
-  onClose: () => void;
-  open: boolean;
-  themeOverride?: Theme;
   modal?: boolean;
+  open: boolean;
   subtitle?: ReactNode;
+  themeOverride?: Theme;
+  onClose: () => void;
 };
 
 export const SlideOver = ({
-  children,
   actions,
+  children,
   label,
+  modal = true,
   onClose,
   open,
-  themeOverride,
   subtitle,
-  modal = true,
+  themeOverride,
 }: SlideOverProps) => (
   <AnimatePresence>
     {open && (
       <>
         <Backdrop
-          initial={{ opacity: 0 }}
-          animate={{ opacity: modal ? 0.65 : 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.35 }}
           key="dialog-backdrop"
+          animate={{ opacity: modal ? 0.65 : 0 }}
           data-theme={themeOverride}
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
           onClick={onClose}
+          transition={{ duration: 0.35 }}
         />
         <Popup
-          transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.45 }}
-          initial={{ opacity: 0, x: 300 }}
+          key="slide-over"
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 300 }}
-          key="slide-over"
+          initial={{ opacity: 0, x: 300 }}
+          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
         >
           <SlideOverHeader>
             {subtitle ? (
-              <VStack spacing={0} className="header-content">
+              <VStack className="header-content" spacing={0}>
                 <Text type="title">{label}</Text>
                 {subtitle}
               </VStack>
             ) : (
-              <Text type="title" className="header-content">
+              <Text className="header-content" type="title">
                 {label}
               </Text>
             )}

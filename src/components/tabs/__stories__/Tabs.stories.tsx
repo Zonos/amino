@@ -20,8 +20,8 @@ const Template: StoryFn<TabsProps> = props => {
       <Tabs
         {...props}
         items={items}
-        selected={selectedIndex}
         onChange={setSelectedIndex}
+        selected={selectedIndex}
       />
       <Text type="bold-label">{items[selectedIndex]}</Text>
     </VStack>
@@ -32,6 +32,6 @@ export const BasicTabs = Template.bind({});
 
 export const Subtle = Template.bind({});
 Subtle.args = {
-  subtle: true,
   align: 'center',
+  subtle: true,
 };

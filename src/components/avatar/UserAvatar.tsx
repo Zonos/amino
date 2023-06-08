@@ -4,9 +4,9 @@ import { type AvatarProps, AvatarBase } from './AvatarBase';
 export type UserAvatarProps = AvatarProps;
 
 export const UserAvatar = ({
-  size = 32,
-  shape = 'round',
   bordered = false,
+  shape = 'round',
+  size = 32,
 }: AvatarProps) => (
   <AvatarBase
     backgroundPosition="bottom"

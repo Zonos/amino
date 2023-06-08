@@ -9,10 +9,6 @@ import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
 
 const SkeletonMeta: Meta = {
-  component: Skeleton,
-  args: {
-    numberOfChildren: 4,
-  },
   argTypes: {
     height: {
       type: 'number',
@@ -21,6 +17,10 @@ const SkeletonMeta: Meta = {
       type: 'number',
     },
   },
+  args: {
+    numberOfChildren: 4,
+  },
+  component: Skeleton,
 };
 
 export default SkeletonMeta;
@@ -32,18 +32,18 @@ type StoryProps = SkeletonProps & {
 
 const Template: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
-> = ({ numberOfChildren, spacing, width, height }) => (
+> = ({ height, numberOfChildren, spacing, width }) => (
   <VStack spacing={spacing}>
     {[...Array(numberOfChildren).keys()].map(n => (
-      <Skeleton key={n} width={width} height={height} />
+      <Skeleton key={n} height={height} width={width} />
     ))}
   </VStack>
 );
 
 export const Basic = Template.bind({});
 Basic.args = {
-  width: 500,
   height: 20,
+  width: 500,
 };
 
 const StyledCard = styled(CardComponent)`
@@ -52,14 +52,14 @@ const StyledCard = styled(CardComponent)`
 
 export const Card: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
-> = ({ numberOfChildren, spacing, width, height }) => (
+> = ({ height, numberOfChildren, spacing, width }) => (
   <StyledCard
+    footerActions={<Skeleton height={30} width={60} />}
     label="A Card"
-    footerActions={<Skeleton width={60} height={30} />}
   >
     <VStack spacing={spacing}>
       {[...Array(numberOfChildren).keys()].map(n => (
-        <Skeleton key={n} width={width} height={height} />
+        <Skeleton key={n} height={height} width={width} />
       ))}
     </VStack>
   </StyledCard>
@@ -76,8 +76,8 @@ const StyledSkeletonWithChildren = styled(Skeleton)`
 `;
 
 export const WithChildren: StoryFn = () => (
-  <StyledSkeletonWithChildren width={400} height={100}>
-    <Text type="subheader" color="gray600">
+  <StyledSkeletonWithChildren height={100} width={400}>
+    <Text color="gray600" type="subheader">
       Generating report...
     </Text>
   </StyledSkeletonWithChildren>

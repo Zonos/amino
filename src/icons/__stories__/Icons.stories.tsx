@@ -11,17 +11,17 @@ import type { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
 
 const IconsMeta: Meta = {
-  component: icons.MailDuotoneIcon,
   argTypes: {
-    size: {
-      control: { type: 'number' },
-    },
     className: {
       table: {
         disable: true,
       },
     },
+    size: {
+      control: { type: 'number' },
+    },
   },
+  component: icons.MailDuotoneIcon,
 };
 
 export default IconsMeta;
@@ -56,16 +56,16 @@ type IconsType = typeof icons[keyof typeof icons] & {
 };
 
 export const Icons = ({
-  size,
   color,
   secondaryColor,
+  size,
 }: IconProps & { secondaryColor?: Color }) => {
   const [filter, setFilter] = useState('');
   const iicons = Object.values<IconsType>(icons)
     .map(icon => ({
+      deprecated: !!icon.deprecated,
       icon,
       iconName: icon.displayName || '',
-      deprecated: !!icon.deprecated,
     }))
     .filter(icon => icon.iconName);
   return (
@@ -78,22 +78,22 @@ export const Icons = ({
               ? iconName.toLowerCase().includes(filter.toLowerCase())
               : true
           )
-          .map(({ icon: IconComponent, iconName, deprecated }) => {
+          .map(({ deprecated, icon: IconComponent, iconName }) => {
             const isDeprecated = deprecated;
             return (
               <StyledIcon
                 key={iconName}
-                size={size}
                 className={[
                   isDeprecated ? 'deprecated' : '',
                   /Solid/.test(iconName) ? 'solid' : '',
                   /Duotone/.test(iconName) ? 'duotone' : '',
                 ].join(' ')}
+                size={size}
               >
                 <IconComponent
-                  size={size}
                   color={color}
                   secondaryColor={secondaryColor}
+                  size={size}
                 />
                 <div>{iconName}</div>
                 {isDeprecated && <Text type="small-header">(Deprecated)</Text>}

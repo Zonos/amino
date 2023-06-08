@@ -2,8 +2,8 @@ import { theme } from 'src/styles/constants/theme';
 import styled, { type CSSProperties } from 'styled-components';
 
 type GradientSquareType = {
-  gradientStart: string;
   gradientEnd: string;
+  gradientStart: string;
 };
 
 // Used in store list, and when too many classes are generated styled-components complains. This is their recommended solution to make the changes styles inline, rather than generating a CSS class for each one.
@@ -46,11 +46,11 @@ const colorForString = (stringInput: string, brightness: number) => {
 
 export const TextAvatar = ({ label }: TextAvatarProps) => (
   <GradientSquare
-    gradientStart={colorForString(label || 'default label', 75)}
     gradientEnd={colorForString(
       (label && label.split('').reverse().join('')) || 'default label',
       30
     )}
+    gradientStart={colorForString(label || 'default label', 75)}
   >
     {(label && label[0]?.toUpperCase()) || 'D'}
   </GradientSquare>

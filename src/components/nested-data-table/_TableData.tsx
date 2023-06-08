@@ -54,19 +54,19 @@ type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
 type ColumnFormatter = Parameters<NonNullable<ColumnType['formatter']>>;
 
 type Props<TRow extends Record<string, unknown>> = {
-  customFlattenRow?: typeof flattenRow;
-  noFilter?: boolean;
-  tableDataArr: TRow[];
   customColumnFormatters?: {
     [key in keyof TRow]?: (props: ColumnFormatter[0]) => ReactNode;
   };
+  customFlattenRow?: typeof flattenRow;
+  noFilter?: boolean;
+  tableDataArr: TRow[];
 };
 
 export const TableData = <TRow extends Record<string, unknown>>({
+  customColumnFormatters,
   customFlattenRow,
   noFilter,
   tableDataArr,
-  customColumnFormatters,
 }: Props<TRow>) => {
   const flatten = customFlattenRow || flattenRow;
   const [hiddenColumns, setHiddenColumns] = useState<string[]>([]);
@@ -96,7 +96,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
   }, [setUpRows, tableDataArr]);
 
   const renderTriggerFormater = useCallback(
-    ({ row, column, onRowChange }: ColumnFormatter[0]) => {
+    ({ column, onRowChange, row }: ColumnFormatter[0]) => {
       const currentValue = row[column.key];
       // if the value is an array, render a button to expand the row
       if (Array.isArray(currentValue)) {
@@ -104,11 +104,12 @@ export const TableData = <TRow extends Record<string, unknown>>({
         const isExpanding = row._expandedKey === column.key;
         return (
           <StyledExpandWrapper>
-            <Tooltip subtitle="This list has no items." showTooltip={noItems}>
+            <Tooltip showTooltip={noItems} subtitle="This list has no items.">
               <Button
                 className={isExpanding ? 'expanding-button' : ''}
-                intent="subtle"
                 disabled={noItems}
+                icon={<ChevronRightCircleIcon />}
+                intent="subtle"
                 onClick={() =>
                   onRowChange({
                     ...row,
@@ -116,7 +117,6 @@ export const TableData = <TRow extends Record<string, unknown>>({
                     _expandedKey: !isExpanding ? column.key : '',
                   })
                 }
-                icon={<ChevronRightCircleIcon />}
               />
             </Tooltip>
           </StyledExpandWrapper>
@@ -125,19 +125,19 @@ export const TableData = <TRow extends Record<string, unknown>>({
       if (row._expandedData && row._expandedData.length > 0) {
         return (
           <TableData
+            customColumnFormatters={customColumnFormatters}
             customFlattenRow={customFlattenRow}
             noFilter
             tableDataArr={row._expandedData as TRow[]}
-            customColumnFormatters={customColumnFormatters}
           />
         );
       }
 
       if (typeof currentValue === 'string') {
         return truncateText({
-          text: currentValue,
-          length: 40,
           addEllipsis: true,
+          length: 40,
+          text: currentValue,
         });
       }
 
@@ -153,9 +153,9 @@ export const TableData = <TRow extends Record<string, unknown>>({
         .filter(([key]) => key !== 'key' && !key.startsWith('_'))
         .flatMap(([key]): ColumnType[] => [
           {
+            formatter: customColumnFormatters?.[key] || renderTriggerFormater,
             key,
             name: key,
-            formatter: customColumnFormatters?.[key] || renderTriggerFormater,
           },
         ]),
     [customColumnFormatters, renderTriggerFormater, rows]
@@ -191,13 +191,12 @@ export const TableData = <TRow extends Record<string, unknown>>({
         )}
       </StyledFilterWrapper>
       <PivotTable
+        columns={filteredHiddenColumns}
+        defaultColumnOptions={{
+          resizable: true,
+          sortable: false,
+        }}
         headerRowHeight={40}
-        rowHeight={args =>
-          // expand the row height if the row is expanded
-          args.type === 'ROW' && args.row?._expandedData?.length > 0 ? 300 : 45
-        }
-        tableHeight="100%"
-        rows={rows}
         onRowsChange={(newRows, { indexes }) => {
           const index = indexes[0];
           const row = index !== undefined ? newRows[index] : null;
@@ -236,11 +235,12 @@ export const TableData = <TRow extends Record<string, unknown>>({
             setRows(newRows);
           }
         }}
-        columns={filteredHiddenColumns}
-        defaultColumnOptions={{
-          sortable: false,
-          resizable: true,
-        }}
+        rowHeight={args =>
+          // expand the row height if the row is expanded
+          args.type === 'ROW' && args.row?._expandedData?.length > 0 ? 300 : 45
+        }
+        rows={rows}
+        tableHeight="100%"
       />
     </StyledTableWrapper>
   );

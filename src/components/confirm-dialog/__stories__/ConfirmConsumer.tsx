@@ -20,13 +20,13 @@ export const ConfirmConsumer = () => {
         intent="primary"
         onClick={() =>
           defaultConfirm({
+            confirmText: 'Do action',
+            dismissText: "Don't do action",
+            intent: 'primary',
             label: 'Are you sure?',
+            onConfirm: setDefaultConfirmOk,
             subtitle:
               'This is the descriptive text about what the user is about to do',
-            intent: 'primary',
-            dismissText: "Don't do action",
-            confirmText: 'Do action',
-            onConfirm: setDefaultConfirmOk,
           })
         }
       >
@@ -42,12 +42,12 @@ export const ConfirmConsumer = () => {
         intent="danger"
         onClick={() =>
           dangerConfirm({
-            label: 'Are you sure?',
-            subtitle: 'This is the descriptive text about what just happened',
-            intent: 'danger',
-            dismissText: "Don't do action",
             confirmText: 'Do action',
+            dismissText: "Don't do action",
+            intent: 'danger',
+            label: 'Are you sure?',
             onConfirm: setDangerConfirmOk,
+            subtitle: 'This is the descriptive text about what just happened',
           })
         }
       >
@@ -63,12 +63,12 @@ export const ConfirmConsumer = () => {
         intent="warning"
         onClick={() =>
           warningConfirm({
-            label: 'Are you sure?',
-            subtitle: 'This is the descriptive text about what just happened',
-            intent: 'warning',
-            dismissText: "Don't do action",
             confirmText: 'Do action',
+            dismissText: "Don't do action",
+            intent: 'warning',
+            label: 'Are you sure?',
             onConfirm: setWarningConfirmOk,
+            subtitle: 'This is the descriptive text about what just happened',
           })
         }
       >

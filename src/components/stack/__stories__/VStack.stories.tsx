@@ -5,10 +5,10 @@ import type { StackProps } from 'src/components/stack/Stack';
 import { VStack } from 'src/components/stack/VStack';
 
 const VStackMeta: Meta = {
-  component: VStack,
   args: {
     numberOfChildren: 4,
   },
+  component: VStack,
 };
 
 export default VStackMeta;
@@ -17,12 +17,12 @@ type StoryProps = StackProps & { numberOfChildren: number };
 
 const Template: StoryFn<StoryProps> = ({
   alignment,
-  spacing,
   numberOfChildren,
+  spacing,
 }: StoryProps) => (
   <VStack alignment={alignment} spacing={spacing}>
     {[...Array(numberOfChildren).keys()].map(n => (
-      <Card label={`Card ${n}`} key={n} footerActions={<Button>Do it</Button>}>
+      <Card key={n} footerActions={<Button>Do it</Button>} label={`Card ${n}`}>
         <p>Some text</p>
       </Card>
     ))}

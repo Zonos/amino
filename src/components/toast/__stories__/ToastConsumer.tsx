@@ -44,53 +44,53 @@ export const ToastConsumer = () => {
         <Button
           intent="success"
           onClick={() =>
-            notify('Success toast', { intent: 'success', duration })
+            notify('Success toast', { duration, intent: 'success' })
           }
         >
           Success
         </Button>
         <Button
           intent="danger"
-          onClick={() => notify('Error toast', { intent: 'error', duration })}
+          onClick={() => notify('Error toast', { duration, intent: 'error' })}
         >
           Error
         </Button>
         <Button
           intent="warning"
           onClick={() =>
-            notify('Warning toast', { intent: 'warning', duration })
+            notify('Warning toast', { duration, intent: 'warning' })
           }
         >
           Warning
         </Button>
         <Button
           intent="primary"
-          onClick={() => notify('Info toast', { intent: 'info', duration })}
+          onClick={() => notify('Info toast', { duration, intent: 'info' })}
         >
           Information
         </Button>
         <CustomWrapper>
           <textarea
-            rows={5}
             cols={30}
-            value={message}
             onChange={v => setMessage(v.target.value)}
             onKeyDown={e => {
               if (e.key === 'Enter') {
                 e.preventDefault();
-                notify(message, { intent: 'info', duration });
+                notify(message, { duration, intent: 'info' });
               }
             }}
+            rows={5}
+            value={message}
           />
-          <Button onClick={() => notify(message, { intent: 'info', duration })}>
+          <Button onClick={() => notify(message, { duration, intent: 'info' })}>
             Display Custom
           </Button>
         </CustomWrapper>
         <Input
-          type="number"
           label="Duration"
-          value={String(duration)}
           onChange={e => setDuration(+e.target.value)}
+          type="number"
+          value={String(duration)}
         />
       </VStack>
     </LeftCenteredDiv>

@@ -8,12 +8,12 @@ import { Text } from '../text/Text';
 const StyledSectionSubheader = styled(Text)`
   margin-top: ${theme.space8};
 `;
-type Props = { className?: string; children: ReactNode };
-export const SectionSubheader = ({ className, children }: Props) => (
+type Props = { children: ReactNode; className?: string };
+export const SectionSubheader = ({ children, className }: Props) => (
   <StyledSectionSubheader
-    type="body"
-    color="gray800"
     className={className || ''}
+    color="gray800"
+    type="body"
   >
     {children}
   </StyledSectionSubheader>

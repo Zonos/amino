@@ -31,8 +31,8 @@ const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => {
     <MenuButton
       action={
         <Button
-          iconRight
           icon={<ChevronDownIcon size={20} />}
+          iconRight
           onClick={() => setOpen(!open)}
         >
           More...

@@ -16,13 +16,13 @@ type ColorList =
 type Size = 'small' | 'large';
 
 export interface BadgeProps {
+  bold?: boolean;
   children?: ReactNode | string;
   className?: string;
   color?: ColorList;
   fontWeight?: FontWeight;
   icon?: ReactNode;
   iconRight?: boolean;
-  bold?: boolean;
   rounded?: boolean;
   /**
    * @default large
@@ -149,25 +149,25 @@ const StyledBadge = styled.div<BadgeProps>`
   }
 `;
 export const Badge = ({
+  bold,
   children,
   className,
   color = 'gray',
   fontWeight,
   icon,
   iconRight,
-  bold,
   rounded = false,
   size = 'large',
 }: BadgeProps) => (
   <BadgeWrapper className={className}>
     <StyledBadge
-      rounded={rounded}
       bold={!!bold}
+      className={[color, size, bold ? 'bold' : ''].join(' ')}
+      color={color}
       fontWeight={fontWeight}
       iconRight={iconRight}
-      color={color}
+      rounded={rounded}
       size={size}
-      className={[color, size, bold ? 'bold' : ''].join(' ')}
     >
       {icon}
       <p>{children}</p>

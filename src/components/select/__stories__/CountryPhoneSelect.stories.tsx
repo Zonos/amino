@@ -68,8 +68,8 @@ BasicCountryPhoneSelect.args = {
   phone: '12 123456',
   phoneCountry: {
     active: true,
-    code3: 'AFG',
     code: 'AF',
+    code3: 'AFG',
     currencyCode: 'AFN',
     displayName: 'Afghanistan',
     fraudRisk: 10,

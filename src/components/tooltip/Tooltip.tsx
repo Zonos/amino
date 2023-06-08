@@ -47,8 +47,8 @@ export type TooltipProps = {
   showTooltip: boolean;
   subtitle: ReactNode | string | null;
   tag?: 'div' | 'span';
-  title?: string;
   themeOverride?: Theme;
+  title?: string;
 };
 
 const StyledTooltip = muiStyled(
@@ -84,27 +84,27 @@ const StyledTooltip = muiStyled(
 
 export const Tooltip = ({
   background,
-  className,
   children,
+  className,
+  open,
   showTooltip,
   subtitle,
   tag,
-  title,
-  open,
   themeOverride,
+  title,
 }: TooltipProps) => {
   const { aminoTheme } = useAminoTheme();
   if (showTooltip) {
     return (
       <StyledTooltip
-        dataTheme={themeOverride || aminoTheme}
         background={background}
         className={className}
+        dataTheme={themeOverride || aminoTheme}
         open={open}
         title={
           <StyledVStack spacing={8}>
             {title && (
-              <Text type="small-header" isUppercase={false}>
+              <Text isUppercase={false} type="small-header">
                 {title}
               </Text>
             )}

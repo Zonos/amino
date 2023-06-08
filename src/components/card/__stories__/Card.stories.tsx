@@ -32,9 +32,9 @@ const Template: StoryFn<CardProps> = ({
 
 export const BasicCard = Template.bind({});
 BasicCard.args = {
-  spacing: theme.space20,
   children: 'Card contents',
   label: 'My hot card',
+  spacing: theme.space20,
 };
 BasicCard.parameters = {
   design: {
@@ -45,10 +45,10 @@ BasicCard.parameters = {
 
 export const CardWithActions = Template.bind({});
 CardWithActions.args = {
-  children: 'Card contents',
-  label: 'My hot card',
   actions: <Button>Title action</Button>,
+  children: 'Card contents',
   footerActions: <Button>Footer action</Button>,
+  label: 'My hot card',
 };
 CardWithActions.parameters = {
   design: {
@@ -60,14 +60,14 @@ CardWithActions.parameters = {
 export const CardWithFooter = Template.bind({});
 CardWithFooter.args = {
   children: 'content',
-  label: 'Super cool',
-  footerContent: 'footer content',
   footerActions: (
     <>
       <Button>footer action 1</Button>
       <Button>footer action 2</Button>
     </>
   ),
+  footerContent: 'footer content',
+  label: 'Super cool',
 };
 CardWithFooter.parameters = {
   design: {
@@ -79,8 +79,8 @@ CardWithFooter.parameters = {
 export const CardWithFooterWithoutFooterActions = Template.bind({});
 CardWithFooterWithoutFooterActions.args = {
   children: 'content',
-  label: 'Super cool',
   footerContent: 'footer content',
+  label: 'Super cool',
 };
 CardWithFooterWithoutFooterActions.parameters = {
   design: {
@@ -92,9 +92,9 @@ CardWithFooterWithoutFooterActions.parameters = {
 export const CardWithFooterHeight = Template.bind({});
 CardWithFooterHeight.args = {
   children: 'content',
-  label: 'Super cool',
   footerContent: 'footer content',
   footerHeight: 120,
+  label: 'Super cool',
 };
 CardWithFooterHeight.parameters = {
   design: {

@@ -116,10 +116,10 @@ const HStackRight = styled(HStack)`
 
 export type Props = {
   children?: ReactElement;
-  xlabel: string;
-  type: 'JSON' | 'GraphQL';
   maxHeight?: number;
   themeOverride?: Theme;
+  type: 'JSON' | 'GraphQL';
+  xlabel: string;
 };
 
 /**
@@ -147,15 +147,15 @@ const countLines = (codeChildren?: ReactElement[] | ReactElement): number => {
 
 export const MdxCodeBlock = ({
   children,
-  xlabel,
-  type,
   maxHeight = 260,
   themeOverride = 'night',
+  type,
+  xlabel,
 }: Props) => {
   const pre = children?.type === 'pre' && children.props.children;
   const codeChildren = (pre?.type === 'code' && pre.props.children) || [];
   const lines: number = countLines(codeChildren);
-  const { showTooltip, copyText } = useCopyText();
+  const { copyText, showTooltip } = useCopyText();
   const codeRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -168,8 +168,8 @@ export const MdxCodeBlock = ({
             <p>Copied!</p>
           ) : (
             <Button
-              intent="text"
               icon={<CopyIcon color="gray1000" size={20} />}
+              intent="text"
               onClick={() =>
                 copyText(
                   codeRef.current?.innerText ||

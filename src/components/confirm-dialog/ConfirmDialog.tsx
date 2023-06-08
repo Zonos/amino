@@ -45,13 +45,13 @@ const ConfirmationPrompt = styled.span`
 `;
 
 export type ConfirmDialogProps = {
-  open: boolean;
-  label: string;
-  themeOverride?: Theme;
-  subtitle?: ReactNode;
-  intent: Intent;
   confirmText?: string;
   dismissText?: string;
+  intent: Intent;
+  label: string;
+  open: boolean;
+  subtitle?: ReactNode;
+  themeOverride?: Theme;
   confirmAction: () => void;
   dismissAction: () => void;
 };
@@ -69,17 +69,17 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const ConfirmDialog = ({
-  themeOverride,
-  open,
-  label,
-  intent,
-  subtitle,
-  confirmText,
-  dismissText,
   confirmAction,
+  confirmText,
   dismissAction,
+  dismissText,
+  intent,
+  label,
+  open,
+  subtitle,
+  themeOverride,
 }: ConfirmDialogProps) => (
-  <BaseDialog width={350} data-theme={themeOverride} open={open}>
+  <BaseDialog data-theme={themeOverride} open={open} width={350}>
     <Content>
       <VStack spacing={16}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
@@ -88,10 +88,10 @@ export const ConfirmDialog = ({
           {subtitle && <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>}
         </div>
         <Footer>
-          <Button size="md" onClick={dismissAction} intent="outline">
+          <Button intent="outline" onClick={dismissAction} size="md">
             {dismissText}
           </Button>
-          <Button size="md" onClick={confirmAction} intent={intent}>
+          <Button intent={intent} onClick={confirmAction} size="md">
             {confirmText}
           </Button>
         </Footer>

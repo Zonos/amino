@@ -92,22 +92,22 @@ export type RichCheckboxProps = {
   onClick: (newVal: string) => void;
 };
 
-export const RichCheckbox = ({ onClick, items }: RichCheckboxProps) => (
+export const RichCheckbox = ({ items, onClick }: RichCheckboxProps) => (
   <StyledVStack spacing={16}>
     {items.map(item => {
       const { checked, icon, label, subtitle, value } = item;
       return (
         <StyledRichCheckbox
-          type="button"
-          data-state={checked ? 'checked' : ''}
-          value={value}
           key={value}
+          data-state={checked ? 'checked' : ''}
           onClick={e => onClick(e.currentTarget.value)}
+          type="button"
+          value={value}
         >
           <StyledItemContentDiv $icon={!!icon}>
             {icon && icon}
             <VStack spacing={0}>
-              <Label type="label" color="gray1200">
+              <Label color="gray1200" type="label">
                 {label}
               </Label>
               {subtitle && <Subtitle color="gray700">{subtitle}</Subtitle>}

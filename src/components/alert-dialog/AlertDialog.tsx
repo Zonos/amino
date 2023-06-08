@@ -45,12 +45,12 @@ const AlertPrompt = styled.span`
 `;
 
 export type AlertDialogProps = {
-  open: boolean;
-  label: string;
-  themeOverride?: Theme;
-  subtitle: ReactNode;
-  intent: Intent;
   dismissText: string;
+  intent: Intent;
+  label: string;
+  open: boolean;
+  subtitle: ReactNode;
+  themeOverride?: Theme;
   dismissAction: () => void;
 };
 
@@ -67,19 +67,19 @@ const getIconForIntent = (intent: Intent) => {
 };
 
 export const AlertDialog = ({
-  themeOverride,
-  open,
-  label,
-  intent,
-  subtitle,
-  dismissText,
   dismissAction,
+  dismissText,
+  intent,
+  label,
+  open,
+  subtitle,
+  themeOverride,
 }: AlertDialogProps) => (
   <BaseDialog
-    width={350}
     data-theme={themeOverride}
-    open={open}
     onClose={dismissAction}
+    open={open}
+    width={350}
   >
     <Content>
       <VStack spacing={16}>
@@ -89,7 +89,7 @@ export const AlertDialog = ({
           <AlertPrompt>{subtitle}</AlertPrompt>
         </div>
         <Footer>
-          <Button onClick={dismissAction} intent={intent}>
+          <Button intent={intent} onClick={dismissAction}>
             {dismissText}
           </Button>
         </Footer>

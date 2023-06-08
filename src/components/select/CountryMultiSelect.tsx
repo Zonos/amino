@@ -68,18 +68,18 @@ export interface CountryMultiSelectProps<
     >,
     HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  countryOptions: ICountryOption<Option['value']>[];
   icon?: ReactNode;
   label?: string;
-  onChange: (countryCodes: Option['value'][]) => void;
-  countryOptions: ICountryOption<Option['value']>[];
   styles?: StylesConfig<Option, IsMulti, Group>;
   unavailableCountries: IUnavailableCountry[];
   value: Option['value'][];
+  onChange: (countryCodes: Option['value'][]) => void;
 }
 
 export const CountryMultiSelect = <T extends string>({
-  label = 'Select countries',
   countryOptions,
+  label = 'Select countries',
   onChange,
   unavailableCountries,
   value,
@@ -91,7 +91,7 @@ export const CountryMultiSelect = <T extends string>({
     );
     return {
       ...option,
-      icon: <FlagIcon iconScale="small" code={option.code as IFlag} />,
+      icon: <FlagIcon code={option.code as IFlag} iconScale="small" />,
       isDisabled: !!unavailableCountry,
       labelDescription: unavailableCountry?.message,
     };

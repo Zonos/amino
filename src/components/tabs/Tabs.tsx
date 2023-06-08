@@ -99,14 +99,6 @@ const SubtleTabs = styled(BaseTabs)<{ align: TabsProps['align'] }>`
 const SubtleTab = BaseTab;
 
 export type TabsProps = {
-  selected: number;
-  onChange: (selectedTab: number) => void;
-  items: string[];
-  /**
-   * Use the subtle design
-   * @default false
-   */
-  subtle?: boolean;
   /**
    * Only applies to subtle design
    * Align tabs horizontally.
@@ -114,24 +106,32 @@ export type TabsProps = {
    */
   align?: 'start' | 'center' | 'end';
   className?: string;
+  items: string[];
+  selected: number;
+  /**
+   * Use the subtle design
+   * @default false
+   */
+  subtle?: boolean;
+  onChange: (selectedTab: number) => void;
 };
 
 export const Tabs = ({
-  selected,
-  onChange,
-  items,
-  subtle = false,
   align = 'start',
   className,
+  items,
+  onChange,
+  selected,
+  subtle = false,
 }: TabsProps) => {
   if (subtle) {
     return (
       <SubtleTabs align={align} className={className}>
         {items.map(item => (
           <SubtleTab
-            onClick={() => onChange(items.indexOf(item))}
-            className={selected === items.indexOf(item) ? 'is-selected' : ''}
             key={item}
+            className={selected === items.indexOf(item) ? 'is-selected' : ''}
+            onClick={() => onChange(items.indexOf(item))}
           >
             <Text type="label">{item}</Text>
           </SubtleTab>
@@ -144,9 +144,9 @@ export const Tabs = ({
     <AminoTabs className={className}>
       {items.map(item => (
         <Tab
-          onClick={() => onChange(items.indexOf(item))}
-          className={selected === items.indexOf(item) ? 'is-selected' : ''}
           key={item}
+          className={selected === items.indexOf(item) ? 'is-selected' : ''}
+          onClick={() => onChange(items.indexOf(item))}
         >
           {item}
         </Tab>

@@ -24,31 +24,31 @@ export const NestedDataTableNoPagination = Template.bind({});
 NestedDataTableNoPagination.args = {
   tableData: [
     {
-      name: 'Amino 1',
       age: 1,
       children: [
         {
-          name: 'Amino 2',
           age: 1,
           children: [
             {
-              name: 'Amino 3',
               age: 1,
               children: [
                 {
-                  name: 'Amino 4',
                   age: 1,
+                  name: 'Amino 4',
                 },
               ],
+              name: 'Amino 3',
             },
           ],
+          name: 'Amino 2',
         },
       ],
+      name: 'Amino 1',
     },
     {
-      name: 'Amino',
       age: 2,
       children: [],
+      name: 'Amino',
     },
   ],
 };
@@ -60,23 +60,23 @@ NestedDataTableEmpty.args = {
 
 export const NestedDataTableLoading = Template.bind({});
 NestedDataTableLoading.args = {
-  tableData: [],
   isFetching: true,
   loadingComponent: (
     <div>
       <Loading />
     </div>
   ),
+  tableData: [],
 };
 
 export const NestedDataTableLongColumnContent = Template.bind({});
 NestedDataTableLongColumnContent.args = {
   tableData: [
     {
-      name: 'Amino 1',
       // long content field
       content:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\n',
+      name: 'Amino 1',
     },
   ],
 };
@@ -85,7 +85,6 @@ export const NestedDataTableWithJsonColumn = Template.bind({});
 NestedDataTableWithJsonColumn.args = {
   tableData: [
     {
-      name: 'Amino 1',
       // long content field
       content:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\n',
@@ -100,21 +99,21 @@ NestedDataTableWithJsonColumn.args = {
         },
       ]),
       jsonObj: JSON.stringify({
-        name: 'Nested object',
         key: '2',
+        name: 'Nested object',
       }),
+      name: 'Amino 1',
     },
   ],
 };
 
 const tableData: {
-  name: 'Amino 1' | 'Amino 2';
   content: string;
   json: string;
   jsonObj: string;
+  name: 'Amino 1' | 'Amino 2';
 }[] = [
   {
-    name: 'Amino 1',
     // long content field
     content:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, sapiente vel delectus odio unde iusto minus, consequatur fugiat esse corporis quaerat facilis consequuntur sit, rerum quae modi illo ratione sunt.\n',
@@ -129,25 +128,26 @@ const tableData: {
       },
     ]),
     jsonObj: JSON.stringify({
-      name: 'Nested object',
       key: '2',
+      name: 'Nested object',
     }),
+    name: 'Amino 1',
   },
 ];
 export const NestedDataTableWithCustomColumn = () => {
   const nameFormatter: ColumnFormatter<{
-    name: 'Amino 1' | 'Amino 2';
     content: string;
     json: string;
     jsonObj: string;
+    name: 'Amino 1' | 'Amino 2';
   }> = useCallback(({ row }) => <div>{row.name}</div>, []);
   return (
     <NestedDataTableComponent
-      tableData={tableData}
-      isFetching={false}
       customColumnFormatters={{
         name: nameFormatter,
       }}
+      isFetching={false}
+      tableData={tableData}
     />
   );
 };

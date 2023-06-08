@@ -14,11 +14,11 @@ export const AlertConsumer = () => {
         intent="primary"
         onClick={() =>
           defaultAlert({
-            label: 'Heads up',
-            subtitle: 'You look nice today',
-            intent: 'primary',
             dismissText: "Don't do action",
+            intent: 'primary',
+            label: 'Heads up',
             onDismiss: () => {},
+            subtitle: 'You look nice today',
           })
         }
       >
@@ -29,11 +29,11 @@ export const AlertConsumer = () => {
         intent="danger"
         onClick={() =>
           dangerAlert({
-            label: 'Heads up',
-            subtitle: 'There was an error or something',
-            intent: 'danger',
             dismissText: "Don't do action",
+            intent: 'danger',
+            label: 'Heads up',
             onDismiss: () => {},
+            subtitle: 'There was an error or something',
           })
         }
       >
@@ -44,11 +44,11 @@ export const AlertConsumer = () => {
         intent="warning"
         onClick={() =>
           warningAlert({
-            label: 'Heads up',
-            subtitle: 'This is your final warning',
-            intent: 'warning',
             dismissText: "Don't do action",
+            intent: 'warning',
+            label: 'Heads up',
             onDismiss: () => {},
+            subtitle: 'This is your final warning',
           })
         }
       >

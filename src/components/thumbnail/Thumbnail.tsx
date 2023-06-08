@@ -12,15 +12,15 @@ const thumbnailShapes = {
 } as const;
 
 export type ThumbnailProps = {
-  /** @default 32 */
-  size?: ImageSize;
-  /** @default 'round' */
-  shape?: keyof typeof thumbnailShapes;
-  /** @default 'gray' */
-  color?: ColorPrefix;
   /** @default false */
   bordered?: boolean;
+  /** @default 'gray' */
+  color?: ColorPrefix;
   icon: ReactNode;
+  /** @default 'round' */
+  shape?: keyof typeof thumbnailShapes;
+  /** @default 32 */
+  size?: ImageSize;
 };
 
 type StyleProps = Required<
@@ -52,13 +52,13 @@ const Wrapper = styled.div<StyleProps>`
 `;
 
 export const Thumbnail = ({
-  icon,
   bordered = false,
-  size = 32,
   color = 'gray',
+  icon,
   shape = 'round',
+  size = 32,
 }: ThumbnailProps) => (
-  <Wrapper shape={shape} color={color} size={size} bordered={bordered}>
+  <Wrapper bordered={bordered} color={color} shape={shape} size={size}>
     {icon}
   </Wrapper>
 );

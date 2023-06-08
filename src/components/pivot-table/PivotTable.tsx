@@ -30,12 +30,12 @@ export type ColumnProps<TRow extends RowData, TSummaryRow = unknown> = Exclude<
   OverrideColumn<TRow>;
 
 type OverrideProps<TRow extends RowData, TSummaryRow extends unknown> = {
+  columns: ColumnProps<TRow, TSummaryRow>[];
   rows: TRow[];
   /**
    * @default string
    */
   tableHeight?: string;
-  columns: ColumnProps<TRow, TSummaryRow>[];
 };
 
 export type NestedRowData = {
@@ -104,13 +104,13 @@ export const PivotTable = <
   TSummaryRow = unknown,
   TRowKey extends KeyValue = KeyValue
 >({
-  rows,
   columns,
-  tableHeight,
-  sortColumns: _sortColumns = [],
-  /** If the change want to make for this handler */
   onSortColumnsChange,
   renderers: _renderers,
+  rows,
+  /** If the change want to make for this handler */
+  sortColumns: _sortColumns = [],
+  tableHeight,
   ...rest
 }: Props<TRow, TSummaryRow, TRowKey>) => {
   const dataGridRef = useRef<DataGridHandle>(null);
@@ -119,7 +119,7 @@ export const PivotTable = <
   );
 
   const renderSortStatus = useCallback(
-    ({ sortDirection, priority }: SortStatusProps) => {
+    ({ priority, sortDirection }: SortStatusProps) => {
       if (!sortDirection) {
         return null;
       }
@@ -142,11 +142,11 @@ export const PivotTable = <
   };
   const modifiedColumns: Column<TRow, TSummaryRow>[] = [
     {
+      frozen: true,
       key: '_itemIndex',
       name: '',
-      width: 60,
       sortable: false,
-      frozen: true,
+      width: 60,
     },
     ...columns,
   ];
@@ -199,13 +199,13 @@ export const PivotTable = <
   return (
     <StyledWrapper $tableHeight={tableHeight}>
       <DataGrid
-        className="data-grid"
         ref={dataGridRef}
-        rows={sortedRows}
+        className="data-grid"
         columns={modifiedColumns}
-        sortColumns={sortColumns}
         onSortColumnsChange={onSortColumnsChange || setSortColumns}
         renderers={defaultRenderers}
+        rows={sortedRows}
+        sortColumns={sortColumns}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />

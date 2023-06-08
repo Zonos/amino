@@ -21,7 +21,7 @@ const DialogLayout = styled.div`
   color: ${theme.textColor};
 `;
 
-const Popup = styled(motion.div)<{ width: number; noBorder?: boolean }>`
+const Popup = styled(motion.div)<{ noBorder?: boolean; width: number }>`
   position: relative;
   z-index: 1001;
   background: ${theme.surfaceColor};
@@ -39,25 +39,25 @@ const Popup = styled(motion.div)<{ width: number; noBorder?: boolean }>`
 export type BaseDialogProps = {
   children: ReactNode;
   className?: string;
+  closeOnBlur?: boolean;
+  closeOnEsc?: boolean;
+  noBorder?: boolean;
   open: boolean;
   themeOverride?: Theme;
   width?: number;
   onClose?: () => void;
-  closeOnBlur?: boolean;
-  closeOnEsc?: boolean;
-  noBorder?: boolean;
 };
 
 export const BaseDialog = ({
   children,
   className,
-  open,
-  themeOverride,
-  width,
-  onClose,
   closeOnBlur = true,
   closeOnEsc = true,
   noBorder = false,
+  onClose,
+  open,
+  themeOverride,
+  width,
 }: BaseDialogProps) => {
   const { aminoTheme } = useAminoTheme();
 
@@ -86,12 +86,12 @@ export const BaseDialog = ({
       <AnimatePresence>
         {open && (
           <Backdrop
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.65 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
             key="dialog-backdrop"
+            animate={{ opacity: 0.65 }}
             data-theme={themeOverride || aminoTheme}
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           />
         )}
         {open && (
@@ -102,18 +102,18 @@ export const BaseDialog = ({
             tabIndex={-1}
           >
             <Popup
-              className={className}
-              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.3 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
               key="dialog"
-              width={width || 444}
+              animate={{ opacity: 1, scale: 1 }}
+              className={className}
+              exit={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               noBorder={noBorder}
               onClick={e => {
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
               }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              width={width || 444}
             >
               {children}
             </Popup>

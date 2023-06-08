@@ -18,7 +18,7 @@ export const Emoji = ({ code }: Props) => {
   if (emojiFileName) {
     const attribution = `Attribution for Twitter Emojis: ©️ Twitter, Inc.`;
     const alt = `${emojiFileName.emoji} ${attribution}`;
-    return <StyledImage src={`/emojis/${emojiFileName.fileName}`} alt={alt} />;
+    return <StyledImage alt={alt} src={`/emojis/${emojiFileName.fileName}`} />;
   }
   // eslint-disable-next-line no-console
   console.warn(`We do not have an image for ${code}`);

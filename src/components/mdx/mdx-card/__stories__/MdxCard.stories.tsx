@@ -9,20 +9,20 @@ const MdxCardMeta: Meta = {
 export default MdxCardMeta;
 
 const Template: StoryFn<Props> = ({
-  xlabel,
-  xsubLabel,
+  children,
   glowingColor,
   noGlowOnHover,
   product,
-  children,
+  xlabel,
+  xsubLabel,
 }: Props) => (
   <MdxCardGrid>
     <MdxCard
-      xlabel={xlabel}
-      xsubLabel={xsubLabel}
       glowingColor={glowingColor}
       noGlowOnHover={noGlowOnHover}
       product={product}
+      xlabel={xlabel}
+      xsubLabel={xsubLabel}
     >
       {children}
     </MdxCard>
@@ -38,8 +38,8 @@ BasicMdxCard.args = {
 
 export const NoGlow = Template.bind({});
 NoGlow.args = {
+  noGlowOnHover: true,
   product: 'dashboard',
   xlabel: 'Dashboard',
   xsubLabel: 'Dashboard sub-label',
-  noGlowOnHover: true,
 };

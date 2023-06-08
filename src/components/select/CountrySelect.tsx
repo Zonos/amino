@@ -6,12 +6,12 @@ import { type SelectProps, Select } from './Select';
 type CountrySelectType<T extends string> = {
   autoFocus?: SelectProps['autoFocus'];
   countryOptions: ICountryOption<T>[];
-  filter?: (country: ICountryOption<T>) => boolean;
   label?: string;
   onChange: SelectProps<ICountryOption<T>>['onChange'];
   placeholder?: string;
-
   value: T | null;
+
+  filter?: (country: ICountryOption<T>) => boolean;
 };
 
 export type CountrySelectProps<T extends string = string> =
@@ -35,7 +35,7 @@ export const CountrySelect = <T extends string>({
     filter(option)
       ? {
           ...option,
-          icon: <FlagIcon iconScale="small" code={option.code as IFlag} />,
+          icon: <FlagIcon code={option.code as IFlag} iconScale="small" />,
         }
       : []
   );
@@ -51,9 +51,9 @@ export const CountrySelect = <T extends string>({
           iconScale="medium"
         />
       }
-      options={filteredOptions}
       label={label}
       onChange={onChange}
+      options={filteredOptions}
       placeholder={placeholder}
       value={selected}
       {...props}

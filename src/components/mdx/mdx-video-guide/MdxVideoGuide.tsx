@@ -112,11 +112,11 @@ export const MdxVideoGuide = ({ url, xtitle }: Props) => {
   return (
     <>
       <VideoButton
-        thumbnail={thumbnail}
         onClick={e => {
           e.stopPropagation();
           setVideoOpen(true);
         }}
+        thumbnail={thumbnail}
       >
         <ButtonContent>
           <PlayCircleDuotoneIcon color="gray800" secondaryColor="gray100" />
@@ -125,20 +125,20 @@ export const MdxVideoGuide = ({ url, xtitle }: Props) => {
       </VideoButton>
 
       <StyledBaseDialog
-        width={1080}
-        open={videoOpen}
-        onClose={() => setVideoOpen(false)}
         closeOnBlur
         closeOnEsc
+        onClose={() => setVideoOpen(false)}
+        open={videoOpen}
+        width={1080}
       >
         <iframe
           ref={iframeRef}
-          src={videoUrl}
-          title={xtitle}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
-          width="1080"
           height="608"
+          src={videoUrl}
+          title={xtitle}
+          width="1080"
         />
       </StyledBaseDialog>
     </>

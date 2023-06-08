@@ -37,9 +37,9 @@ const InputOption = ({
   withValue: boolean;
 }) => (
   <Input
-    size={size}
     label={`input-${size}`}
     onChange={() => {}}
+    size={size}
     value={withValue ? size : ''}
   />
 );
@@ -105,7 +105,7 @@ const getSelectOptions = ({
 ];
 
 const ButtonOption = ({ size }: { size: Size }) => (
-  <Button size={size} intent="primary">
+  <Button intent="primary" size={size}>
     button-{size}
   </Button>
 );
@@ -139,8 +139,8 @@ type DynamicComponent = {
 };
 
 type Props = {
-  components: DynamicComponent;
   columns: number;
+  components: DynamicComponent;
   rows: number;
   withValue: boolean;
 };
@@ -187,22 +187,22 @@ const Template: StoryFn<Props> = ({
           Column
           <Button
             disabled={!columns}
-            onClick={() => setColumns(columns - 1)}
             icon={<MinusIcon size={16} />}
+            onClick={() => setColumns(columns - 1)}
           />
           <Button
-            onClick={() => setColumns(columns + 1)}
             icon={<PlusIcon size={16} />}
+            onClick={() => setColumns(columns + 1)}
           />
           Row
           <Button
             disabled={!rows}
-            onClick={() => setRows(rows - 1)}
             icon={<MinusIcon size={16} />}
+            onClick={() => setRows(rows - 1)}
           />
           <Button
-            onClick={() => setRows(rows + 1)}
             icon={<PlusIcon size={16} />}
+            onClick={() => setRows(rows + 1)}
           />
         </StyledActions>
 
@@ -222,8 +222,8 @@ const Template: StoryFn<Props> = ({
                     <Component />
                   ) : (
                     <Button
-                      onClick={() => setOpenRowCol(rowCol)}
                       icon={<PlusIcon size={16} />}
+                      onClick={() => setOpenRowCol(rowCol)}
                     />
                   )}
                 </Fragment>
@@ -233,8 +233,8 @@ const Template: StoryFn<Props> = ({
         ))}
       </VStack>
       <Dialog
-        open={!!openRowCol}
         onClose={() => setOpenRowCol(null)}
+        open={!!openRowCol}
         width={650}
       >
         <VStack>
@@ -250,7 +250,6 @@ const Template: StoryFn<Props> = ({
 export const ComposerWithValue = Template.bind({});
 ComposerWithValue.args = {
   columns: 3,
-  rows: 4,
   components: {
     '0-0': 'input-sm',
     '0-1': 'input-md',
@@ -265,13 +264,13 @@ ComposerWithValue.args = {
     '2-2': 'button-lg',
     '2-3': 'button-xl',
   },
+  rows: 4,
   withValue: true,
 };
 
 export const ComposerWithoutValue = Template.bind({});
 ComposerWithoutValue.args = {
   columns: 3,
-  rows: 4,
   components: {
     '0-0': 'input-sm',
     '0-1': 'input-md',
@@ -286,4 +285,5 @@ ComposerWithoutValue.args = {
     '2-2': 'button-lg',
     '2-3': 'button-xl',
   },
+  rows: 4,
 };

@@ -63,27 +63,27 @@ const TitleDiv = styled.div`
 export type HSectionProps = {
   children: ReactNode;
   className?: string;
-  label?: ReactNode;
-  sublabel?: ReactNode;
-  /**
-   * @info Make the section content collapsible or not
-   * @default false
-   */
-  collapsible?: boolean;
   /**
    * @info Initial collapse state. **Note**: only have effect when `collapsible` is specified
    * @default false
    * */
   collapseByDefault?: boolean;
+  /**
+   * @info Make the section content collapsible or not
+   * @default false
+   */
+  collapsible?: boolean;
+  label?: ReactNode;
+  sublabel?: ReactNode;
 };
 
 export const HSection = ({
   children,
   className,
+  collapseByDefault = false,
+  collapsible = false,
   label,
   sublabel = '',
-  collapsible = false,
-  collapseByDefault = false,
 }: HSectionProps) => {
   const [collapsed, setCollapsed] = useState(collapseByDefault);
   const renderContent = () =>
@@ -99,18 +99,18 @@ export const HSection = ({
           <StyledDiv>
             {collapsible ? (
               <TitleDiv
-                role="button"
-                tabIndex={0}
                 onClick={() => setCollapsed(!collapsed)}
                 onKeyDown={() => null}
+                role="button"
+                tabIndex={0}
               >
                 <Text type="title">{label}</Text>
                 <StyledCollapseIndicator
                   className={collapsed ? 'collapsed' : ''}
-                  size="sm"
-                  intent="plain"
                   icon={<ChevronUpIcon />}
+                  intent="plain"
                   onClick={() => setCollapsed(!collapsed)}
+                  size="sm"
                 />
               </TitleDiv>
             ) : (

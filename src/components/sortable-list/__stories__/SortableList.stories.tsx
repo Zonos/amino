@@ -52,11 +52,11 @@ const Template: StoryFn = () => {
 
   return (
     <SortableList
-      itemIds={listItems.map(i => i.id)}
       handleDragEnd={handleDragEndEvent}
+      itemIds={listItems.map(i => i.id)}
     >
       {listItems.map(item => (
-        <SortableListItem id={item.id} key={item.id}>
+        <SortableListItem key={item.id} id={item.id}>
           <ListItem label={item.name} selected />
         </SortableListItem>
       ))}
@@ -89,13 +89,13 @@ const WithHandleTemplate: StoryFn = () => {
 
   return (
     <SortableList
-      itemIds={listItems.map(i => i.id)}
       handleDragEnd={handleDragEndEvent}
+      itemIds={listItems.map(i => i.id)}
     >
       {listItems.map(item => (
-        <SortableListItem useHandle id={item.id} key={item.id}>
+        <SortableListItem key={item.id} id={item.id} useHandle>
           <ListItem
-            decorator={<UserAvatar size={16} shape="round" />}
+            decorator={<UserAvatar shape="round" size={16} />}
             label={item.name}
             onClick={() => {}}
           />

@@ -18,13 +18,6 @@ const TransparentCoverSheet = styled(CoverSheet)`
 `;
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
-  component: Tooltip,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=196%3A10758&t=2qWmuoXr8klMzpYH-0',
-    },
-  },
   argTypes: {
     disabled: {
       type: 'boolean',
@@ -43,6 +36,13 @@ const ButtonMeta: Meta = {
     },
     tabIndex: {
       type: 'number',
+    },
+  },
+  component: Tooltip,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=196%3A10758&t=2qWmuoXr8klMzpYH-0',
     },
   },
 };
@@ -71,8 +71,8 @@ const HeadingTooltip = ({
   <Tooltip
     {...props}
     showTooltip
-    title="Tooltip with Heading"
     subtitle={subtitle}
+    title="Tooltip with Heading"
   >
     {children}
   </Tooltip>
@@ -89,8 +89,8 @@ const WithoutHeadingTooltip = ({
     subtitle={
       typeof subtitle === 'string'
         ? truncateText({
-            length: 128,
             addEllipsis: false,
+            length: 128,
             text: subtitle,
           })
         : subtitle
@@ -111,8 +111,8 @@ const TopRow = ({
     </HeadingTooltip>
     <WithoutHeadingTooltip
       background={background}
-      themeOverride={themeOverride}
       subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated."
+      themeOverride={themeOverride}
     >
       <Button {...props} iconRight>
         Without heading truncated subtitle
@@ -122,7 +122,7 @@ const TopRow = ({
       background={background}
       themeOverride={themeOverride}
     >
-      <StyledButton {...props} tag="div" onClick={e => e.preventDefault()}>
+      <StyledButton {...props} onClick={e => e.preventDefault()} tag="div">
         Without heading
       </StyledButton>
     </WithoutHeadingTooltip>
@@ -130,10 +130,10 @@ const TopRow = ({
 );
 
 const BottomRow = ({
-  toggleCoversheet,
-  toggleDialog,
   background,
   themeOverride,
+  toggleCoversheet,
+  toggleDialog,
   ...props
 }: ButtonPropWithTooltipOption & {
   toggleCoversheet: () => void;
@@ -145,7 +145,6 @@ const BottomRow = ({
     <>
       <Tooltip
         background={background}
-        themeOverride={themeOverride}
         showTooltip
         subtitle={
           <VStack>
@@ -154,6 +153,7 @@ const BottomRow = ({
             <Text>Subtitle</Text>
           </VStack>
         }
+        themeOverride={themeOverride}
       >
         <StyledButton {...props} onClick={toggleCoversheet}>
           Test coversheet z-index
@@ -161,7 +161,6 @@ const BottomRow = ({
       </Tooltip>
       <Tooltip
         background={background}
-        themeOverride={themeOverride}
         showTooltip
         subtitle={
           <VStack>
@@ -170,6 +169,7 @@ const BottomRow = ({
             <Text>Subtitle</Text>
           </VStack>
         }
+        themeOverride={themeOverride}
       >
         <StyledButton {...props} onClick={toggleDialog}>
           Test dialog z-index
@@ -315,8 +315,8 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
           </HeadingTooltip>
         }
         label="Coversheet"
-        open={coversheetOpen}
         onClose={() => setCoversheetOpen(false)}
+        open={coversheetOpen}
       >
         <VStack>
           <Text>
@@ -386,6 +386,6 @@ Subtle.args = {
 
 export const TextButton = Template.bind({});
 TextButton.args = {
-  intent: 'text',
   children: 'Back',
+  intent: 'text',
 };

@@ -28,7 +28,7 @@ const codes = [...Array(250).keys()].map(
 const Template: StoryFn<TextAvatarProps> = () => (
   <Wrapper>
     {codes.map(n => (
-      <TextAvatarComponent label={n} key={n} />
+      <TextAvatarComponent key={n} label={n} />
     ))}
   </Wrapper>
 );

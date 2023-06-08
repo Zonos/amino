@@ -46,28 +46,28 @@ const AminoInput = styled.input`
 `;
 
 export type InputProps = {
-  /** Input value. Required since all inputs must be fully controlled */
-  value: string | null;
+  autoFocus?: boolean;
+
+  className?: string;
+
+  disabled?: boolean;
+
+  inputMode?: InputMode;
 
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: ChangeEventHandler<HTMLInputElement>;
 
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  pattern?: string;
   /** Placeholder text to be displayed in the input */
   placeholder?: string;
-
-  /** Determines if the input is required for form validation */
-  required?: boolean;
-
   /** Determines if the input is editable or not */
   readOnly?: boolean;
-
-  className?: string;
-  disabled?: boolean;
+  /** Determines if the input is required for form validation */
+  required?: boolean;
   tabIndex?: number;
-  inputMode?: InputMode;
-  pattern?: string;
-  autoFocus?: boolean;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  /** Input value. Required since all inputs must be fully controlled */
+  value: string | null;
 };
 
 export const SearchInput = ({

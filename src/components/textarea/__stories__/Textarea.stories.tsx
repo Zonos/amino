@@ -12,12 +12,12 @@ const StyledGroup = styled.div`
 `;
 
 const TextAreaMeta: Meta = {
-  component: Textarea,
   argTypes: {
     iconRight: {
       type: 'boolean',
     },
   },
+  component: Textarea,
 };
 
 export default TextAreaMeta;
@@ -26,16 +26,16 @@ const Template: StoryFn<TextareaProps> = ({
   error,
   helpText,
   label,
-  value: _value,
   placeholder,
+  value: _value,
 }: TextareaProps) => {
   const [value, setValue] = useState(_value);
   return (
     <div
       style={{
         display: 'flex',
-        gap: '10px',
         flexDirection: 'column',
+        gap: '10px',
         padding: '15px 0',
       }}
     >
@@ -46,11 +46,11 @@ const Template: StoryFn<TextareaProps> = ({
           <Textarea
             error={error}
             helpText={helpText}
-            value=""
             onChange={() => {}}
             placeholder={placeholder}
+            value=""
           />
-          <Input value="" onChange={() => {}} />
+          <Input onChange={() => {}} value="" />
         </StyledGroup>
       </div>
       <div>
@@ -60,12 +60,12 @@ const Template: StoryFn<TextareaProps> = ({
           <Textarea
             error={error}
             helpText={helpText}
-            value={value}
             onChange={e => setValue(e.target.value)}
+            value={value}
           />
           <Input
-            value={value?.toString() || ''}
             onChange={e => setValue(e.target.value)}
+            value={value?.toString() || ''}
           />
         </StyledGroup>
       </div>
@@ -77,10 +77,10 @@ const Template: StoryFn<TextareaProps> = ({
             error={error}
             helpText={helpText}
             label={label}
-            value=""
             onChange={() => {}}
+            value=""
           />
-          <Input label={label} value="" onChange={() => {}} />
+          <Input label={label} onChange={() => {}} value="" />
         </StyledGroup>
       </div>
       <div>
@@ -103,7 +103,7 @@ const Template: StoryFn<TextareaProps> = ({
             ea consequuntur eaque animi fugiat iusto similique, vero velit
             distinctio sequi nesciunt odit nobis consequatur nihil sunt.`}
           />
-          <Input label={label} value="" onChange={() => {}} />
+          <Input label={label} onChange={() => {}} value="" />
         </StyledGroup>
       </div>
       <div>
@@ -113,15 +113,15 @@ const Template: StoryFn<TextareaProps> = ({
             error={error}
             helpText={helpText}
             label={label}
-            value=""
             onChange={() => {}}
             placeholder={placeholder}
+            value=""
           />
           <Input
             label={label}
-            value=""
             onChange={() => {}}
             placeholder={placeholder}
+            value=""
           />
         </StyledGroup>
       </div>
@@ -132,14 +132,14 @@ const Template: StoryFn<TextareaProps> = ({
             error={error}
             helpText={helpText}
             label={label}
-            value={value}
             onChange={e => setValue(e.target.value)}
             placeholder={placeholder}
+            value={value}
           />
           <Input
             label={label}
-            value={value?.toString() || ''}
             onChange={e => setValue(e.target.value)}
+            value={value?.toString() || ''}
           />
         </StyledGroup>
       </div>
@@ -150,15 +150,15 @@ const Template: StoryFn<TextareaProps> = ({
             error={error}
             helpText={helpText}
             label={label}
-            value={value}
             onChange={e => setValue(e.target.value)}
             placeholder={placeholder}
             readOnly
+            value={value}
           />
           <Input
             label={label}
-            value={value?.toString() || ''}
             onChange={e => setValue(e.target.value)}
+            value={value?.toString() || ''}
           />
         </StyledGroup>
       </div>
@@ -166,20 +166,20 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Disabled:</Text>
         <StyledGroup style={{ display: 'flex', gap: '10px' }}>
           <Textarea
-            error={error}
             disabled
+            error={error}
             helpText={helpText}
             label={label}
-            value={value}
             onChange={e => setValue(e.target.value)}
             placeholder={placeholder}
             readOnly
+            value={value}
           />
           <Input
-            label={label}
-            value={value?.toString() || ''}
             disabled
+            label={label}
             onChange={e => setValue(e.target.value)}
+            value={value?.toString() || ''}
           />
         </StyledGroup>
       </div>
@@ -196,25 +196,25 @@ Default.args = {
 
 export const WithHelpText = Template.bind({});
 WithHelpText.args = {
+  helpText: '* This field is required',
   label: 'Description',
   placeholder: 'Please fill out the description',
   value: 'HS code for Brazil',
-  helpText: '* This field is required',
 };
 
 export const ErrorWithHelpText = Template.bind({});
 ErrorWithHelpText.args = {
+  error: true,
+  helpText: '* This field is required',
   label: 'Description',
   placeholder: 'Please fill out the description',
   value: 'HS code for Brazil',
-  error: true,
-  helpText: '* This field is required',
 };
 
 export const ErrorState = Template.bind({});
 ErrorState.args = {
+  error: true,
   label: 'Description',
   placeholder: 'Please fill out the description',
   value: 'HS code for Brazil',
-  error: true,
 };

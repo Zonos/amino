@@ -1,15 +1,15 @@
 import { type ReactNode, forwardRef } from 'react';
 
-type Props = { children: ReactNode; viewBox?: string; className?: string };
+type Props = { children: ReactNode; className?: string; viewBox?: string };
 
 export const ThemeIconBase = forwardRef<SVGSVGElement, Props>(
-  ({ viewBox, children, className }, ref) => (
+  ({ children, className, viewBox }, ref) => (
     <svg
       ref={ref}
-      fill="none"
       className={className}
-      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox={viewBox || '0 0 110 64'}
+      xmlns="http://www.w3.org/2000/svg"
     >
       {children}
     </svg>

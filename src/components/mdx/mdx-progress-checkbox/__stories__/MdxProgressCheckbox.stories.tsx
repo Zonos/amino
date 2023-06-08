@@ -10,11 +10,11 @@ const MdxProgressCheckboxMeta: Meta = {
 
 export default MdxProgressCheckboxMeta;
 
-const Template: StoryFn<Props> = ({ pathname, children }: Props) => (
+const Template: StoryFn<Props> = ({ children, pathname }: Props) => (
   <>
     <MdxProgressCheckboxComponent
-      pathname={pathname}
       checkboxKey="first"
+      pathname={pathname}
       xlabel="First checkbox"
     >
       {children}
@@ -23,8 +23,8 @@ const Template: StoryFn<Props> = ({ pathname, children }: Props) => (
     <br />
 
     <MdxProgressCheckboxComponent
-      pathname={pathname}
       checkboxKey="second"
+      pathname={pathname}
       xlabel="Second checkbox"
     >
       {children}
@@ -34,7 +34,7 @@ const Template: StoryFn<Props> = ({ pathname, children }: Props) => (
 
 export const MdxProgressCheckbox = Template.bind({});
 MdxProgressCheckbox.args = {
-  pathname: 'amino-progress-checkbox',
   children:
     'lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+  pathname: 'amino-progress-checkbox',
 };

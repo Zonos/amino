@@ -10,25 +10,25 @@ import { IntegrationIcon } from 'src/icons/IntegrationIcon';
 import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 
 const NavigationGroupMeta: Meta = {
-  component: NavigationGroupComponent,
-  // @ts-ignore subcomponents don't seem to be working
-  subcomponents: { NavigationItem },
-  parameters: {
-    docs: { source: { type: 'code' } },
-  },
   argTypes: {
     children: {
       type: 'symbol',
     },
-    content: {
-      type: 'symbol',
-      description:
-        '**NOTE**: Should be `NavigationItem` component in order to have proper styling. If you want to use `href`, WRAP the `anchor` tag outside of the `NavigationItem` component.',
-    },
     className: {
       type: 'string',
     },
+    content: {
+      description:
+        '**NOTE**: Should be `NavigationItem` component in order to have proper styling. If you want to use `href`, WRAP the `anchor` tag outside of the `NavigationItem` component.',
+      type: 'symbol',
+    },
   },
+  component: NavigationGroupComponent,
+  parameters: {
+    docs: { source: { type: 'code' } },
+  },
+  // @ts-ignore subcomponents don't seem to be working
+  subcomponents: { NavigationItem },
 };
 
 export default NavigationGroupMeta;
@@ -50,6 +50,8 @@ const Template: StoryFn = ({ className }) => {
         />
       </a>
       <NavigationGroupComponent
+        className={className}
+        collapsed={!pathname.split('/')[1]?.includes('quoter')}
         content={
           <a href="/quoter/create" onClick={mockUrlChange}>
             <NavigationItem
@@ -58,8 +60,6 @@ const Template: StoryFn = ({ className }) => {
             />
           </a>
         }
-        className={className}
-        collapsed={!pathname.split('/')[1]?.includes('quoter')}
       >
         <a href="/quoter/create" onClick={mockUrlChange}>
           <NavigationItem
@@ -76,6 +76,8 @@ const Template: StoryFn = ({ className }) => {
       </NavigationGroupComponent>
 
       <NavigationGroupComponent
+        className={className}
+        collapsed={!pathname.split('/')[1]?.includes('classify')}
         content={
           <a href="/classify/create" onClick={mockUrlChange}>
             <NavigationItem
@@ -84,8 +86,6 @@ const Template: StoryFn = ({ className }) => {
             />
           </a>
         }
-        collapsed={!pathname.split('/')[1]?.includes('classify')}
-        className={className}
       >
         <a href="/classify/create" onClick={mockUrlChange}>
           <NavigationItem

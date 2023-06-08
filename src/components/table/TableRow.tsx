@@ -24,16 +24,16 @@ export type TableRowProps = {
   active?: boolean;
   children: ReactNode;
   className?: string;
-  withHover?: boolean;
   onClick?: MouseEventHandler<HTMLTableRowElement>;
+  withHover?: boolean;
 };
 
 export function TableRow({
   active,
   children,
   className,
-  withHover,
   onClick,
+  withHover,
 }: TableRowProps) {
   return (
     <StyledTableRow

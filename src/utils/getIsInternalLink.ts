@@ -1,11 +1,11 @@
 export const getIsInternalLink = ({
   href,
-  shouldWarn = true,
   internalPaths,
+  shouldWarn = true,
 }: {
   href?: string;
-  shouldWarn?: boolean;
   internalPaths?: string[];
+  shouldWarn?: boolean;
 }) => {
   const isInternalLink = href?.startsWith('/') || href?.startsWith('#');
   if (isInternalLink && href && !!internalPaths?.length) {
@@ -19,8 +19,8 @@ export const getIsInternalLink = ({
           `This internal link may be handled by a redirect, but since it is an internal link it should be corrected.`
         );
       }
-      return { isInternalLink, isBrokenLink: true };
+      return { isBrokenLink: true, isInternalLink };
     }
   }
-  return { isInternalLink, isBrokenLink: false };
+  return { isBrokenLink: false, isInternalLink };
 };

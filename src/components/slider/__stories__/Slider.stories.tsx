@@ -16,9 +16,9 @@ export default SliderMeta;
 const Template: StoryFn<SliderProps> = ({
   max,
   min,
+  size,
   step,
   value: _value,
-  size,
 }: SliderProps) => {
   const [value, setValue] = useState(_value);
   const [randomValue, setRandomValue] = useState(_value);
@@ -43,11 +43,11 @@ const Template: StoryFn<SliderProps> = ({
       <div>
         Random value: {randomValue}
         <SliderComponent
+          hideIndicator
           max={max}
           min={min}
-          hideIndicator
-          size={size}
           onChange={n => setRandomValue(n)}
+          size={size}
           step={step}
           value={randomValue}
         />
@@ -55,11 +55,11 @@ const Template: StoryFn<SliderProps> = ({
       <div>
         No indicator (Separate value): value: {value}
         <SliderComponent
+          hideIndicator
           max={max}
           min={min}
-          hideIndicator
-          size={size}
           onChange={n => setValue(n)}
+          size={size}
           step={step}
           value={value}
         />
@@ -69,10 +69,10 @@ const Template: StoryFn<SliderProps> = ({
         <SliderComponent
           max={max}
           min={min}
-          suffix="$"
-          size={size}
           onChange={n => setValue(n)}
+          size={size}
           step={step}
+          suffix="$"
           value={value}
         />
       </div>
@@ -82,10 +82,10 @@ const Template: StoryFn<SliderProps> = ({
 
 export const Slider = Template.bind({});
 Slider.args = {
-  value: 50,
-  min: 0,
   max: 100,
+  min: 0,
   step: 1,
+  value: 50,
 };
 Slider.parameters = {
   design: {

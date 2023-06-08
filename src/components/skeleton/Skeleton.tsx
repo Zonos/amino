@@ -4,11 +4,11 @@ import { theme } from 'src/styles/constants/theme';
 import styled, { css, keyframes } from 'styled-components';
 
 export type SkeletonProps = {
-  className?: string;
-  children?: ReactNode;
-  width?: number;
-  height?: number;
   animation?: boolean;
+  children?: ReactNode;
+  className?: string;
+  height?: number;
+  width?: number;
 };
 
 const shimmerAnimation = keyframes`
@@ -54,17 +54,17 @@ const SkeletonWrapper = styled.div<SkeletonProps>`
  * @param height - Optional height in em
  */
 export const Skeleton = ({
-  className,
-  children,
-  width,
-  height,
   animation = true,
+  children,
+  className,
+  height,
+  width,
 }: SkeletonProps) => (
   <SkeletonWrapper
-    width={width}
-    height={height}
     animation={animation}
     className={className}
+    height={height}
+    width={width}
   >
     {children}
   </SkeletonWrapper>

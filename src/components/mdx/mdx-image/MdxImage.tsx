@@ -5,9 +5,9 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const ImageWrapper = styled.div<{
-  showColor?: boolean;
   addMargin?: boolean;
   shadow?: boolean;
+  showColor?: boolean;
 }>`
   position: relative;
   margin: 0 auto;
@@ -46,27 +46,27 @@ const LightBoxStyled = styled(LightBox)`
 
 type Props = {
   addMargin?: boolean;
+  children: ReactNode;
   color?: boolean;
   shadow?: boolean;
-  children: ReactNode;
 };
 
-export const MdxImage = ({ addMargin, color, shadow, children }: Props) => {
+export const MdxImage = ({ addMargin, children, color, shadow }: Props) => {
   const [showImgDialog, setShowImgDialog] = useState(false);
   return (
     <>
       <ImageWrapper
         addMargin={addMargin}
-        showColor={color}
         onClick={() => setShowImgDialog(true)}
         shadow={shadow}
+        showColor={color}
       >
         {children}
       </ImageWrapper>
 
       <LightBoxStyled
-        open={showImgDialog}
         onClose={() => setShowImgDialog(false)}
+        open={showImgDialog}
       >
         {children}
       </LightBoxStyled>

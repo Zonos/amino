@@ -1,11 +1,11 @@
 export const paramRegex = `\\s*\\(([\\W\\w]*)\\)`;
 
 export const extractQueryParams = ({
-  query,
   actionName,
+  query,
 }: {
-  query: string;
   actionName: string;
+  query: string;
 }) => {
   const paramsRegex = `${actionName}${paramRegex}`;
   const paramsRegexResult = new RegExp(paramsRegex).exec(query);

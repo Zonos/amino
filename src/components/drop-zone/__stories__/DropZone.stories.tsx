@@ -11,6 +11,13 @@ import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
 const DropZoneMeta: Meta = {
   component: DropZoneComponent,
+  decorators: [
+    Children => (
+      <ToastContextProvider>
+        <Children />
+      </ToastContextProvider>
+    ),
+  ],
   parameters: {
     design: {
       type: 'figma',
@@ -23,13 +30,6 @@ const DropZoneMeta: Meta = {
       });
     },
   },
-  decorators: [
-    Children => (
-      <ToastContextProvider>
-        <Children />
-      </ToastContextProvider>
-    ),
-  ],
 };
 
 export default DropZoneMeta;
@@ -53,15 +53,12 @@ export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
   return (
     <DropZoneComponent
       {...props}
-      instructionText="Drop your files here"
-      helpText="Max file size: 2 KB"
-      uploadedFiles={files.map(f => ({
-        name: f.name,
-        size: `${f.size} bytes`,
-      }))}
-      error={error}
-      onRemoveFile={index => handleRemoveFile(index)}
       dropzoneOptions={{
+        maxFiles: 2,
+        // 2 KB
+        // eslint-disable-next-line no-bitwise
+        maxSize: 2 << 10,
+        multiple: true,
         onDrop: (acceptedFiles, rejections) => {
           setError(!!rejections.length);
           rejections.forEach(rej => {
@@ -70,12 +67,15 @@ export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
           });
           setFiles(acceptedFiles);
         },
-        multiple: true,
-        maxFiles: 2,
-        // 2 KB
-        // eslint-disable-next-line no-bitwise
-        maxSize: 2 << 10,
       }}
+      error={error}
+      helpText="Max file size: 2 KB"
+      instructionText="Drop your files here"
+      onRemoveFile={index => handleRemoveFile(index)}
+      uploadedFiles={files.map(f => ({
+        name: f.name,
+        size: `${f.size} bytes`,
+      }))}
     />
   );
 };

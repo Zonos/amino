@@ -59,25 +59,25 @@ const Content = styled.div`
 `;
 
 export type CoverSheetProps = {
-  children: ReactNode;
-  className?: string;
-  open: boolean;
-  label: string;
-  onClose: () => void;
   /** used for setting id of the wrapper of where the action will be located */
   actionWrapperId?: string;
   actions?: ReactNode;
+  children: ReactNode;
+  className?: string;
+  label: string;
+  open: boolean;
   themeOverride?: Theme;
+  onClose: () => void;
 };
 
 export const CoverSheet = ({
+  actions,
+  actionWrapperId = '__cover-sheet-actions',
+  children,
   className,
-  open,
   label,
   onClose,
-  children,
-  actionWrapperId = '__cover-sheet-actions',
-  actions,
+  open,
   themeOverride,
 }: CoverSheetProps) => {
   const { aminoTheme } = useAminoTheme();
@@ -108,12 +108,12 @@ export const CoverSheet = ({
         <AnimatePresence>
           {open && (
             <StyledDialog
+              animate={{ opacity: 1, translateY: 0 }}
               className={className}
               data-theme={themeOverride || aminoTheme}
-              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-              initial={{ opacity: 0, translateY: 10 }}
-              animate={{ opacity: 1, translateY: 0 }}
               exit={{ opacity: 0, translateY: 5 }}
+              initial={{ opacity: 0, translateY: 10 }}
+              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             >
               <Header>
                 <StyledCloseButton

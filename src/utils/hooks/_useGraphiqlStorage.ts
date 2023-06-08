@@ -31,11 +31,11 @@ export const useGraphiqlStorage = ({
   };
 
   const storageApi: Storage = {
-    getItem: key => localStorage.getItem(suffix(key)),
-    setItem: (key, value) => localStorage.setItem(suffix(key), value),
-    removeItem: key => localStorage.removeItem(suffix(key)),
     clear: localStorage.clear,
+    getItem: key => localStorage.getItem(suffix(key)),
     length: localStorage.length,
+    removeItem: key => localStorage.removeItem(suffix(key)),
+    setItem: (key, value) => localStorage.setItem(suffix(key), value),
   };
 
   return storageApi;
