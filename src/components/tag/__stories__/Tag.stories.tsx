@@ -23,21 +23,18 @@ const Template: StoryFn<TagProps> = ({
   onClose,
   isCode,
   disabled,
-}: TagProps) => {
-  console.log(isCode);
+}: TagProps) => (
+  <Tag
+    onClose={onClose}
+    icon={icon}
+    iconRight={iconRight}
+    isCode={isCode}
+    disabled={disabled}
+  >
+    {children}
+  </Tag>
+);
 
-  return (
-    <Tag
-      onClose={onClose}
-      icon={icon}
-      iconRight={iconRight}
-      isCode={isCode}
-      disabled={disabled}
-    >
-      {children}
-    </Tag>
-  );
-};
 export const Default = Template.bind({});
 Default.args = {
   children: <span>HS code for Brazil</span>,

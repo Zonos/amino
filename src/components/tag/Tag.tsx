@@ -1,4 +1,3 @@
-import { unset } from 'lodash';
 import type { ReactNode } from 'react';
 
 import { RemoveIcon } from 'src/icons/RemoveIcon';
@@ -31,11 +30,11 @@ const StyledTag = styled.button<Omit<TagProps, 'onClose'>>`
   color: ${({ isCode, disabled }) => {
     if (isCode && disabled) {
       return theme.gray600;
-    } else if (isCode) {
-      return theme.gray1200;
-    } else {
-      return theme.textColor;
     }
+    if (isCode) {
+      return theme.gray1200;
+    }
+    return theme.textColor;
   }};
   border-radius: ${theme.radius6};
   align-items: center;
