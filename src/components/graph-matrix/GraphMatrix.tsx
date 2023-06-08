@@ -106,6 +106,7 @@ export const GraphMatrix = ({
   const [cachingKey] = useState('first-time');
   const [showTable, setShowTable] = useState(false);
   const [splitPanelSizes, setSplitPanelSizes] = useState([1, 0]);
+  const [isClientRendering, setIsClientRendering] = useState(false);
 
   const [operationName, setOperationName] = useState('');
   const { graphiqlFetcher, resultData, isLoading } = useGraphiqlFetcher({
@@ -119,6 +120,10 @@ export const GraphMatrix = ({
   const storage = useGraphiqlStorage({
     defaultSchema: schemaName,
   });
+
+  useEffect(() => {
+    setIsClientRendering(true);
+  }, []);
 
   useEffect(() => {
     /** Detect if is fetching data in graphiql explorer when hitting "Play" button  */
@@ -176,41 +181,43 @@ export const GraphMatrix = ({
         collapseAll={!showTable}
       >
         <StyleTableWrap>
-          <GraphiQL
-            fetcher={graphiqlFetcher}
-            onEditOperationName={setOperationName}
-            onEditQuery={onEditQuery}
-            onEditVariables={onEditVariables}
-            plugins={[graphMatrixPlugin]}
-            query={query}
-            variables={variables}
-            schema={schema}
-            toolbar={{
-              additionalContent: (
-                <>
-                  <ToolbarButton
-                    label={showTable ? 'Hide table' : 'Show table'}
-                    onClick={() => setShowTable(!showTable)}
-                  >
-                    {showTable ? (
-                      <EyeOffIcon color="red600" />
-                    ) : (
-                      <EyeIcon color="gray400" />
-                    )}
-                  </ToolbarButton>
-                  {customToolbar}
-                </>
-              ),
-            }}
-            storage={storage}
-          >
-            <GraphiqlContextWrapper
-              setExecutionContext={setExecutionContext}
-              setResponseEditorContext={setResponseEditorContext}
+          {isClientRendering && (
+            <GraphiQL
+              fetcher={graphiqlFetcher}
+              onEditOperationName={setOperationName}
+              onEditQuery={onEditQuery}
+              onEditVariables={onEditVariables}
+              plugins={[graphMatrixPlugin]}
+              query={query}
+              variables={variables}
+              schema={schema}
+              toolbar={{
+                additionalContent: (
+                  <>
+                    <ToolbarButton
+                      label={showTable ? 'Hide table' : 'Show table'}
+                      onClick={() => setShowTable(!showTable)}
+                    >
+                      {showTable ? (
+                        <EyeOffIcon color="red600" />
+                      ) : (
+                        <EyeIcon color="gray400" />
+                      )}
+                    </ToolbarButton>
+                    {customToolbar}
+                  </>
+                ),
+              }}
+              storage={storage}
             >
-              <GraphiQL.Footer />
-            </GraphiqlContextWrapper>
-          </GraphiQL>
+              <GraphiqlContextWrapper
+                setExecutionContext={setExecutionContext}
+                setResponseEditorContext={setResponseEditorContext}
+              >
+                <GraphiQL.Footer />
+              </GraphiqlContextWrapper>
+            </GraphiQL>
+          )}
         </StyleTableWrap>
         {renderTableData()}
       </SplitPanel>
