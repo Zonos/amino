@@ -14,7 +14,6 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['**/generated/**'],
   globals: {
     JSX: 'readonly',
   },
@@ -41,18 +40,6 @@ module.exports = {
       files: ['./src/**/*'],
       parserOptions: {
         project: './tsconfig.json',
-      },
-    },
-    {
-      /**
-       * Turn off sort-keys for generated files (it will take longer to sort and there is no need to sort the generated files)
-       */
-      files: ['**/generated/**/*.ts'],
-      rules: {
-        'sort-destructure-keys/sort-destructure-keys': 'off',
-        'sort-keys': 'off',
-        'sort-keys/sort-keys-fix': 'off',
-        'typescript-custom-sort-keys/interface': 'off',
       },
     },
   ],
