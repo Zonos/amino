@@ -42,6 +42,18 @@ module.exports = {
         project: './tsconfig.json',
       },
     },
+    {
+      /**
+       * Turn off sort-keys for generated constants file (we don't want to sort because of comments, but want to do other linting)
+       */
+      files: ['src/styles/constants/*.ts'],
+      rules: {
+        'sort-destructure-keys/sort-destructure-keys': 'off',
+        'sort-keys': 'off',
+        'sort-keys/sort-keys-fix': 'off',
+        'typescript-custom-sort-keys/interface': 'off',
+      },
+    }
   ],
   rules: {
     /**
