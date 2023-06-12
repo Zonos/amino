@@ -3,82 +3,82 @@ import { flattenRow } from '../flattenRow';
 test.only('flatten table row data', () => {
   const tableDataArr = [
     {
-      nodes: [
-        {
-          fees: 0,
-          items: 15.54,
-          shipping: 35,
-          taxes: 0,
-          duties: 0,
-          created_at: '2010-04-20T23:06:44',
-          nodes: [
-            {
-              fees: {
-                fees: 0,
-                items: 15.54,
-                shipping: 35,
-                taxes: 0,
-                duties: 0,
-                created_at: '2010-04-20T23:06:44',
-              },
-              items: 15.54,
-              shipping: 35,
-              taxes: 0,
-              duties: 0,
-              created_at: '2010-04-20T23:06:44',
-            },
-            {
-              fees: {
-                fees: 0,
-                items: 15.54,
-                shipping: 35,
-                taxes: 0,
-                duties: 0,
-                created_at: '2010-04-20T23:06:44',
-              },
-              items: 15.54,
-              shipping: 84,
-              taxes: 0,
-              duties: 0,
-              created_at: '2010-04-20T23:06:44',
-            },
-          ],
-        },
-        {
-          fees: 0,
-          items: 15.54,
-          shipping: 84,
-          taxes: 0,
-          duties: 0,
-          created_at: '2010-04-20T23:06:44',
-          nodes: [
-            {
-              fees: 0,
-              items: 15.54,
-              shipping: 35,
-              taxes: 0,
-              duties: 0,
-              created_at: '2010-04-20T23:06:44',
-            },
-            {
-              fees: 0,
-              items: 15.54,
-              shipping: 84,
-              taxes: 0,
-              duties: 0,
-              created_at: '2010-04-20T23:06:44',
-            },
-          ],
-        },
-      ],
       aggregate: {
+        count: 2,
         max: {
           created_at: '2010-04-20T23:06:44',
-          fees: 0,
           duties: 0,
+          fees: 0,
         },
-        count: 2,
       },
+      nodes: [
+        {
+          created_at: '2010-04-20T23:06:44',
+          duties: 0,
+          fees: 0,
+          items: 15.54,
+          nodes: [
+            {
+              created_at: '2010-04-20T23:06:44',
+              duties: 0,
+              fees: {
+                created_at: '2010-04-20T23:06:44',
+                duties: 0,
+                fees: 0,
+                items: 15.54,
+                shipping: 35,
+                taxes: 0,
+              },
+              items: 15.54,
+              shipping: 35,
+              taxes: 0,
+            },
+            {
+              created_at: '2010-04-20T23:06:44',
+              duties: 0,
+              fees: {
+                created_at: '2010-04-20T23:06:44',
+                duties: 0,
+                fees: 0,
+                items: 15.54,
+                shipping: 35,
+                taxes: 0,
+              },
+              items: 15.54,
+              shipping: 84,
+              taxes: 0,
+            },
+          ],
+          shipping: 35,
+          taxes: 0,
+        },
+        {
+          created_at: '2010-04-20T23:06:44',
+          duties: 0,
+          fees: 0,
+          items: 15.54,
+          nodes: [
+            {
+              created_at: '2010-04-20T23:06:44',
+              duties: 0,
+              fees: 0,
+              items: 15.54,
+              shipping: 35,
+              taxes: 0,
+            },
+            {
+              created_at: '2010-04-20T23:06:44',
+              duties: 0,
+              fees: 0,
+              items: 15.54,
+              shipping: 84,
+              taxes: 0,
+            },
+          ],
+          shipping: 84,
+          taxes: 0,
+        },
+      ],
     },
   ];
   const flattenData = tableDataArr.map((item): Record<string, string> => {
@@ -177,20 +177,24 @@ test('flatten table row with complex data', () => {
         {
           awsRegion: 'af-south-1',
           capital: 'Saint-Denis',
+          continent: {
+            code: 'AF',
+            name: 'Africa',
+          },
           languages: [
             {
               name: 'French',
               native: 'Français',
             },
           ],
-          continent: {
-            code: 'AF',
-            name: 'Africa',
-          },
         },
         {
           awsRegion: 'af-south-1',
           capital: 'Kigali',
+          continent: {
+            code: 'AF',
+            name: 'Africa',
+          },
           languages: [
             {
               name: 'Rwandi',
@@ -205,14 +209,14 @@ test('flatten table row with complex data', () => {
               native: 'Français',
             },
           ],
-          continent: {
-            code: 'AF',
-            name: 'Africa',
-          },
         },
         {
           awsRegion: 'ap-south-1',
           capital: 'Victoria',
+          continent: {
+            code: 'AF',
+            name: 'Africa',
+          },
           languages: [
             {
               name: 'French',
@@ -223,14 +227,14 @@ test('flatten table row with complex data', () => {
               native: 'English',
             },
           ],
-          continent: {
-            code: 'AF',
-            name: 'Africa',
-          },
         },
         {
           awsRegion: 'af-south-1',
           capital: 'Pretoria',
+          continent: {
+            code: 'AF',
+            name: 'Africa',
+          },
           languages: [
             {
               name: 'Afrikaans',
@@ -273,10 +277,6 @@ test('flatten table row with complex data', () => {
               native: 'isiZulu',
             },
           ],
-          continent: {
-            code: 'AF',
-            name: 'Africa',
-          },
         },
       ],
     },
@@ -286,15 +286,19 @@ test('flatten table row with complex data', () => {
         {
           awsRegion: 'af-south-1',
           capital: null,
-          languages: [],
           continent: {
             code: 'AN',
             name: 'Antarctica',
           },
+          languages: [],
         },
         {
           awsRegion: 'af-south-1',
           capital: null,
+          continent: {
+            code: 'AN',
+            name: 'Antarctica',
+          },
           languages: [
             {
               name: 'Norwegian',
@@ -309,38 +313,34 @@ test('flatten table row with complex data', () => {
               native: 'Norsk nynorsk',
             },
           ],
-          continent: {
-            code: 'AN',
-            name: 'Antarctica',
-          },
         },
         {
           awsRegion: 'af-south-1',
           capital: null,
+          continent: {
+            code: 'AN',
+            name: 'Antarctica',
+          },
           languages: [
             {
               name: 'English',
               native: 'English',
             },
           ],
-          continent: {
-            code: 'AN',
-            name: 'Antarctica',
-          },
         },
         {
           awsRegion: 'af-south-1',
           capital: 'Port-aux-Français',
+          continent: {
+            code: 'AN',
+            name: 'Antarctica',
+          },
           languages: [
             {
               name: 'French',
               native: 'Français',
             },
           ],
-          continent: {
-            code: 'AN',
-            name: 'Antarctica',
-          },
         },
       ],
     },

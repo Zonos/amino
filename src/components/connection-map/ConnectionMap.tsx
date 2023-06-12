@@ -52,17 +52,17 @@ const getScale = (xDistance: number, yDistance: number) => {
 
 type Props = {
   countries: ICountryOption[];
+  from: string;
   height?: number;
   to: string;
-  from: string;
   worldData: IGeoJsonWorld | null;
 };
 
 export const ConnectionMap = ({
   countries,
-  to,
   from,
   height = 400,
+  to,
   worldData,
 }: Props) => {
   const [center, setCenter] = useState<[number, number]>([0, 0]);
@@ -146,13 +146,13 @@ export const ConnectionMap = ({
   return (
     <Map>
       <ComposableMap
+        height={height}
         projection="geoEqualEarth"
         projectionConfig={{
-          scale,
           center,
           rotate: rotation,
+          scale,
         }}
-        height={height}
       >
         <Geographies geography={geographies}>
           {({ geographies: geos }) =>
@@ -163,8 +163,8 @@ export const ConnectionMap = ({
               return (
                 <Geography
                   key={geo.rsmKey}
-                  geography={geo}
                   fill={isConnectionCountry ? theme.blue100 : theme.gray400}
+                  geography={geo}
                   stroke={isConnectionCountry ? theme.blue300 : theme.gray500}
                   strokeWidth={1}
                 />
@@ -173,26 +173,26 @@ export const ConnectionMap = ({
           }
         </Geographies>
         <Marker coordinates={coordsForIso(from)}>
-          <circle r={10} fill={theme.blue300} />
-          <circle r={7} fill={theme.blue400} />
+          <circle fill={theme.blue300} r={10} />
+          <circle fill={theme.blue400} r={7} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
-          <circle r={10} fill={theme.blue300} />
-          <circle r={7} fill={theme.blue400} />
+          <circle fill={theme.blue300} r={10} />
+          <circle fill={theme.blue400} r={7} />
         </Marker>
         <Line
           from={coordsForIso(from)}
-          to={coordsForIso(to)}
           stroke={theme.blue600}
           strokeWidth={4}
+          to={coordsForIso(to)}
         />
         <Marker coordinates={coordsForIso(from)}>
-          <circle r={4} fill="white" />
-          <circle r={2} fill={theme.blue600} />
+          <circle fill="white" r={4} />
+          <circle fill={theme.blue600} r={2} />
         </Marker>
         <Marker coordinates={coordsForIso(to)}>
-          <circle r={4} fill="white" />
-          <circle r={2} fill={theme.blue600} />
+          <circle fill="white" r={4} />
+          <circle fill={theme.blue600} r={2} />
         </Marker>
       </ComposableMap>
     </Map>

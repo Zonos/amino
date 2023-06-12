@@ -26,8 +26,8 @@ const rippleAnimation = (opacity: number) => keyframes`
 
 const RippleRoot = styled.span<{
   $color?: Color;
-  $opacity: number;
   $duration: number;
+  $opacity: number;
 }>`
   overflow: hidden;
   pointer-events: none;
@@ -66,10 +66,10 @@ const getRippleStyle = (
   const top = (clientY || 0) - parentRect.top - radius;
 
   return {
-    width: diameter,
     height: diameter,
     left,
     top,
+    width: diameter,
   };
 };
 
@@ -105,9 +105,9 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
       event => {
         if (container.current) {
           const rippleProps: RippleProps = {
-            style: getRippleStyle(event, container.current),
             destroy: removeRipple,
             duration,
+            style: getRippleStyle(event, container.current),
           };
 
           setRipples(oldRipples => [
@@ -134,16 +134,16 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
       <RippleRoot
         ref={container}
         $color={color}
-        $opacity={opacity}
         $duration={duration}
+        $opacity={opacity}
       >
         <AnimatePresence>
           {ripples.map(r => (
             <motion.div
               key={r.key}
-              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
             >
               {r.element}
             </motion.div>

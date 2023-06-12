@@ -13,20 +13,20 @@ export type Props = {
 };
 
 const variants: Variants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0,
-  }),
   center: {
-    zIndex: 1,
-    x: 0,
     opacity: 1,
+    x: 0,
+    zIndex: 1,
   },
+  enter: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? 1000 : -1000,
+  }),
   exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
     opacity: 0,
     position: 'absolute',
+    x: direction < 0 ? 1000 : -1000,
+    zIndex: 0,
   }),
 };
 
@@ -56,26 +56,26 @@ export const MdxTabs = ({ children }: Props) => {
     <div>
       <TabsStyled
         items={tabLabels || ['Error loading tabs']}
-        subtle
-        selected={openTabIndex}
         onChange={index => {
           setDirection(index - openTabIndex);
           setOpenTabIndex(index);
         }}
+        selected={openTabIndex}
+        subtle
       />
 
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence custom={direction} initial={false}>
         <motion.div
           key={openTabIndex}
-          variants={variants}
-          custom={direction}
-          initial="enter"
           animate="center"
+          custom={direction}
           exit="exit"
+          initial="enter"
           transition={{
-            x: { type: 'spring', stiffness: 400, damping: 40 },
             opacity: { duration: 0.2 },
+            x: { damping: 40, stiffness: 400, type: 'spring' },
           }}
+          variants={variants}
         >
           {currentTab}
         </motion.div>

@@ -7,11 +7,11 @@ type Props = {
   width: number;
 };
 export const TH = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => (
-  <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 640 480">
+  <FlagIconBase ref={ref} height={height} viewBox="0 0 640 480" width={width}>
     <g fillRule="evenodd">
-      <path fill="#f4f5f8" d="M0 0h640v480H0z" />
-      <path fill="#2d2a4a" d="M0 162.5h640v160H0z" />
-      <path fill="#a51931" d="M0 0h640v82.5H0zm0 400h640v80H0z" />
+      <path d="M0 0h640v480H0z" fill="#f4f5f8" />
+      <path d="M0 162.5h640v160H0z" fill="#2d2a4a" />
+      <path d="M0 0h640v82.5H0zm0 400h640v80H0z" fill="#a51931" />
     </g>
   </FlagIconBase>
 ));

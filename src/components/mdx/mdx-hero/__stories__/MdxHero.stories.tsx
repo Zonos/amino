@@ -26,21 +26,21 @@ const Template: StoryFn = () => (
     </p>
 
     <MdxButton
-      intent="primary"
       href="/?path=/story/amino-mdxcopyvalue--mdx-copy-value"
+      intent="primary"
     >
       See copy value
     </MdxButton>
 
     <MdxButton
-      intent="outline"
       href="/?path=/story/amino-mdxprogresscheckbox--mdx-progress-checkbox"
+      intent="outline"
     >
       See progress checkbox
     </MdxButton>
 
     <MdxImage>
-      <img src="/logo.png" alt="Zonos Logo" />
+      <img alt="Zonos Logo" src="/logo.png" />
     </MdxImage>
   </MdxHeroComponent>
 );

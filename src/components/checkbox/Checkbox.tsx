@@ -98,8 +98,8 @@ export type CheckboxProps = {
   label?: string;
   labelComponent?: ReactNode;
   labelDescription?: string;
-  onChange: (checked: boolean, event: MouseEvent<HTMLLabelElement>) => void;
   subtitle?: string;
+  onChange: (checked: boolean, event: MouseEvent<HTMLLabelElement>) => void;
 };
 
 export const Checkbox = ({
@@ -118,9 +118,9 @@ export const Checkbox = ({
   );
   return (
     <CheckboxContainer
-      data-testid={testId}
-      className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       checked={checked}
+      className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
+      data-testid={testId}
       htmlFor={label}
       onClick={e => !disabled && onChange(!checked, e)}
     >
@@ -128,11 +128,11 @@ export const Checkbox = ({
         <AnimatePresence>
           {checked && (
             <AnimatedCheckIcon
-              transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-              initial={{ opacity: 0, scale: 0.5 }}
+              key="checkbox"
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1 }}
-              key="checkbox"
+              initial={{ opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             />
           )}
         </AnimatePresence>

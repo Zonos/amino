@@ -38,8 +38,8 @@ export const textOptions = [
   {
     label: 'Header (2XL) · 28px (1.75rem)',
     size: '2xl',
-    type: 'header', // default
     tag: 'h3',
+    type: 'header', // default
     weight: 700,
   },
   {
@@ -147,7 +147,7 @@ type TypographyOverrides = {
   fontWeight?: FontWeight;
   lineHeight?: Size;
 };
-type TypeDefaultProp = { size: Size; isUppercase?: Boolean };
+type TypeDefaultProp = { isUppercase?: Boolean; size: Size };
 
 const Typography = styled.h1<TypographyOverrides & TypeDefaultProp>`
   font-size: ${p => `var(--amino-font-size-${p.fontSize || p.size})`};
@@ -189,23 +189,23 @@ export const Text = ({
   const renderTypography = ({
     as,
     fontWeight: _fontWeight,
-    size,
     isUppercase: _isUppercase,
+    size,
   }: {
     as: Tag;
     fontWeight: FontWeight;
-    size: Size;
     isUppercase?: boolean;
+    size: Size;
   }) => (
     <Typography
       as={as}
-      color={color}
       className={className}
+      color={color}
       fontSize={fontSize}
       fontWeight={_fontWeight}
+      isUppercase={!!_isUppercase}
       lineHeight={lineHeight}
       size={size}
-      isUppercase={!!_isUppercase}
       title={title}
     >
       {children}

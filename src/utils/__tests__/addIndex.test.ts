@@ -1,37 +1,37 @@
 import { addIndex } from '../addIndex';
 
 type UnitTest = {
-  input: Array<Record<string, unknown>>;
   expected: ReturnType<typeof addIndex>[];
+  input: Array<Record<string, unknown>>;
 };
 
 const testCases: UnitTest[] = [
   {
-    input: [
-      {
-        key: 'test',
-        item: '123',
-      },
-      {
-        key: 'test1',
-        item: '456',
-      },
-    ],
     expected: [
       {
-        key: 'test',
-        item: '123',
         _itemIndex: 1,
+        item: '123',
+        key: 'test',
       },
       {
-        key: 'test1',
-        item: '456',
         _itemIndex: 2,
+        item: '456',
+        key: 'test1',
+      },
+    ],
+    input: [
+      {
+        item: '123',
+        key: 'test',
+      },
+      {
+        item: '456',
+        key: 'test1',
       },
     ],
   },
 ];
 
-test.each(testCases)('test: $input', ({ input, expected }) => {
+test.each(testCases)('test: $input', ({ expected, input }) => {
   expect(input.map(addIndex)).toStrictEqual(expected);
 });

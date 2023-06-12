@@ -14,17 +14,17 @@ import {
 import { theme } from 'src/styles/constants/theme';
 
 type GraphiQlColors = {
-  keyword: string;
+  atom: string;
+  attribute: string;
+  builtin: string;
   def: string;
+  keyword: string;
+  number: string;
   property: string;
   qualifier: string;
-  attribute: string;
-  number: string;
   string: string;
-  builtin: string;
   string2: string;
   variable: string;
-  atom: string;
 };
 
 /**
@@ -33,52 +33,49 @@ type GraphiQlColors = {
  * @path node_modules/@graphiql/plugin-explorer/types/index.d.ts
  */
 type GraphMatrixProps = {
-  query: string;
-  width?: number;
-  title?: string;
-  schema?: GraphQLSchema | null;
-  onEdit?: (newQuery: string) => void;
+  arrowClosed?: ReactNode | null;
+  arrowOpen?: ReactNode | null;
+  checkboxChecked?: ReactNode | null;
+  checkboxUnchecked?: ReactNode | null;
+  colors?: GraphiQlColors;
+  explorerIsOpen?: boolean;
+  externalFragments?: FragmentDefinitionNode[];
   getDefaultFieldNames?(type: GraphQLObjectType): string[];
   getDefaultScalarArgValue?(
     parentField: GraphQLField<unknown, unknown>,
     arg: GraphQLArgument | GraphQLInputField,
     underlyingArgType: GraphQLLeafType
   ): ValueNode;
+  hideActions?: boolean;
   makeDefaultArg?(
     parentField: GraphQLField<unknown, unknown>,
     arg: GraphQLArgument | GraphQLInputField
   ): boolean;
-  onToggleExplorer?(): void;
-  explorerIsOpen?: boolean;
   onRunOperation?(name: string | null): void;
-  colors?: GraphiQlColors;
-  arrowOpen?: ReactNode | null;
-  arrowClosed?: ReactNode | null;
-  checkboxChecked?: ReactNode | null;
-  checkboxUnchecked?: ReactNode | null;
-  styles?: {
-    explorerActionsStyle?: CSSProperties;
-    buttonStyle?: CSSProperties;
-    actionButtonStyle?: CSSProperties;
-  } | null;
+  onToggleExplorer?(): void;
+  query: string;
+  schema?: GraphQLSchema | null;
   showAttribution: boolean;
-  hideActions?: boolean;
-  externalFragments?: FragmentDefinitionNode[];
+  styles?: {
+    actionButtonStyle?: CSSProperties;
+    buttonStyle?: CSSProperties;
+    explorerActionsStyle?: CSSProperties;
+  } | null;
+  title?: string;
+  width?: number;
+  onEdit?: (newQuery: string) => void;
 };
 
 export const useGraphiqlExplorer = ({
   onEdit,
-  query,
   overrideColor,
+  query,
 }: {
-  onEdit: (newQuery: string) => void;
-  query: string;
   overrideColor?: GraphiQlColors;
+  query: string;
+  onEdit: (newQuery: string) => void;
 }) => {
   const explorerPluginProps: GraphMatrixProps = {
-    query,
-    onEdit,
-    showAttribution: true,
     colors: {
       atom: theme.blue300,
       attribute: theme.blue700,
@@ -88,11 +85,14 @@ export const useGraphiqlExplorer = ({
       number: theme.blue700,
       property: theme.blue700,
       qualifier: theme.blue700,
-      string2: theme.blue500,
       string: theme.blue500,
+      string2: theme.blue500,
       variable: theme.red400,
       ...overrideColor,
     },
+    onEdit,
+    query,
+    showAttribution: true,
   };
 
   const explorerPlugin = useExplorerPlugin(explorerPluginProps);

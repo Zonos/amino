@@ -10,33 +10,33 @@ const ListItemMeta: Meta = {
 export default ListItemMeta;
 
 const Template: StoryFn<Props> = ({
-  label,
-  disabled,
-  subtitle,
-  onClick,
-  selected,
-  rightDecorator,
   decorator,
+  disabled,
+  label,
+  onClick,
+  rightDecorator,
+  selected,
+  subtitle,
 }: Props) => (
   <List>
     <ListItem
-      label={label}
-      disabled={disabled}
-      subtitle={subtitle}
-      selected={selected}
-      rightDecorator={rightDecorator}
-      onClick={onClick}
       decorator={decorator}
+      disabled={disabled}
+      label={label}
+      onClick={onClick}
+      rightDecorator={rightDecorator}
+      selected={selected}
+      subtitle={subtitle}
     />
   </List>
 );
 
 export const BasicListItem = Template.bind({});
 BasicListItem.args = {
+  decorator: <ArrowDownIcon />,
   disabled: false,
   label: 'Example ListItem',
-  subtitle: 'subtitle example',
   onClick: () => {},
   selected: true,
-  decorator: <ArrowDownIcon />,
+  subtitle: 'subtitle example',
 };

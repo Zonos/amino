@@ -8,15 +8,15 @@ type Props = {
 };
 export const RestrictIcon = forwardRef<SVGSVGElement, Props>(
   ({ size = 24, viewBox }, ref) => (
-    <IconBase size={size} ref={ref} viewBox={viewBox}>
+    <IconBase ref={ref} size={size} viewBox={viewBox}>
       <mask
+        height="20"
         id="mask0_4150_91296"
-        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
+        style={{ maskType: 'alpha' }}
+        width="20"
         x="2"
         y="2"
-        width="20"
-        height="20"
       >
         <path
           d="M12.0278 19.7115C16.298 19.7115 19.7597 16.2498 19.7597 11.9796C19.7597 7.70943 16.298 4.24773 12.0278 4.24773C7.75757 4.24773 4.29588 7.70943 4.29588 11.9796C4.29588 16.2498 7.75757 19.7115 12.0278 19.7115Z"
@@ -53,87 +53,87 @@ export const RestrictIcon = forwardRef<SVGSVGElement, Props>(
       </g>
       <defs>
         <filter
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+          height="21.4638"
           id="filter0_f_4150_91296"
+          width="21.4638"
           x="2.29588"
           y="0.247742"
-          width="21.4638"
-          height="21.4638"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
-            mode="normal"
             in="SourceGraphic"
             in2="BackgroundImageFix"
+            mode="normal"
             result="shape"
           />
           <feGaussianBlur
-            stdDeviation="1.5"
             result="effect1_foregroundBlur_4150_91296"
+            stdDeviation="1.5"
           />
         </filter>
         <filter
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+          height="19.4638"
           id="filter1_f_4150_91296"
+          width="19.4638"
           x="2.29588"
           y="2.24774"
-          width="19.4638"
-          height="19.4638"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
-            mode="normal"
             in="SourceGraphic"
             in2="BackgroundImageFix"
+            mode="normal"
             result="shape"
           />
           <feGaussianBlur
-            stdDeviation="1"
             result="effect1_foregroundBlur_4150_91296"
+            stdDeviation="1"
           />
         </filter>
         <linearGradient
+          gradientUnits="userSpaceOnUse"
           id="paint0_linear_4150_91296"
           x1="9.61015"
-          y1="14.4713"
           x2="5.86973"
+          y1="14.4713"
           y2="18.3506"
-          gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="white" />
           <stop offset="1" stopColor="#FFE37D" />
         </linearGradient>
         <linearGradient
+          gradientUnits="userSpaceOnUse"
           id="paint1_linear_4150_91296"
           x1="10.0096"
-          y1="13.6756"
           x2="25.7956"
+          y1="13.6756"
           y2="0.396594"
-          gradientUnits="userSpaceOnUse"
         >
           <stop offset="0.01" stopColor="#9297FA" />
           <stop offset="1" stopColor="#3122F9" />
         </linearGradient>
         <linearGradient
+          gradientUnits="userSpaceOnUse"
           id="paint2_linear_4150_91296"
           x1="10.18"
-          y1="13.8904"
           x2="7.28791"
+          y1="13.8904"
           y2="16.8898"
-          gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="white" />
           <stop offset="1" stopColor="#FFE37D" />
         </linearGradient>
         <linearGradient
+          gradientUnits="userSpaceOnUse"
           id="paint3_linear_4150_91296"
           x1="10.0096"
-          y1="13.6756"
           x2="25.7956"
+          y1="13.6756"
           y2="0.396594"
-          gradientUnits="userSpaceOnUse"
         >
           <stop offset="0.01" stopColor="#9297FA" />
           <stop offset="1" stopColor="#3122F9" />

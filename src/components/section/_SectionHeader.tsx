@@ -11,9 +11,9 @@ const StyledSectionHeader = styled(Text)`
   flex: auto;
 `;
 
-type Props = { className?: string; children: ReactNode };
+type Props = { children: ReactNode; className?: string };
 
-export const SectionHeader = ({ className, children }: Props) => (
+export const SectionHeader = ({ children, className }: Props) => (
   <StyledSectionHeader className={className || ''} type="title">
     {children}
   </StyledSectionHeader>

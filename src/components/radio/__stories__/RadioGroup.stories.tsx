@@ -8,6 +8,11 @@ import {
 } from 'src/components/radio/RadioGroup';
 
 const RadioMeta: Meta = {
+  argTypes: {
+    disabled: {
+      type: 'boolean',
+    },
+  },
   component: RadioGroup,
   parameters: {
     design: {
@@ -15,28 +20,23 @@ const RadioMeta: Meta = {
       url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A122',
     },
   },
-  argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
-  },
 };
 
 export default RadioMeta;
 
 const Template: StoryFn<RadioGroupProps> = ({
-  items,
-  initialValue,
   disabled,
+  initialValue,
+  items,
 }: RadioGroupProps) => {
   const [value, setValue] = useState(initialValue);
 
   return (
     <RadioGroup
-      initialValue={value}
-      onChange={e => setValue(e)}
       disabled={disabled}
+      initialValue={value}
       items={items}
+      onChange={e => setValue(e)}
     />
   );
 };
@@ -45,10 +45,10 @@ export const SimpleRadioGroup: StoryFn<RadioGroupProps> = Template.bind({});
 
 const options: RadioGroupItem[] = [
   {
-    value: 'not_for_resale',
     label: 'For personal use (not for resale)',
+    value: 'not_for_resale',
   },
-  { value: 'for_resale', label: 'For resale' },
+  { label: 'For resale', value: 'for_resale' },
 ];
 
 SimpleRadioGroup.args = {

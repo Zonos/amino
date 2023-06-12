@@ -22,10 +22,10 @@ const Wrapper = styled.div<{ twoColumn?: boolean }>`
 `;
 
 export type Props = {
-  twoColumn?: boolean;
   children: ReactNode;
+  twoColumn?: boolean;
 };
 
-export const MdxCardGrid = ({ twoColumn, children }: Props) => (
+export const MdxCardGrid = ({ children, twoColumn }: Props) => (
   <Wrapper twoColumn={twoColumn}>{children}</Wrapper>
 );

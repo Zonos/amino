@@ -8,7 +8,7 @@ const MdxCollapseMeta: Meta = {
 
 export default MdxCollapseMeta;
 
-const Template: StoryFn<Props> = ({ stepNumber, collapse }: Props) => (
+const Template: StoryFn<Props> = ({ collapse, stepNumber }: Props) => (
   <MdxCollapse collapse={collapse} stepNumber={stepNumber}>
     <h2>H2 label</h2>
     <p>

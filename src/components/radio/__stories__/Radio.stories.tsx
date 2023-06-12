@@ -4,30 +4,30 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { type RadioProps, Radio } from 'src/components/radio/Radio';
 
 const RadioMeta: Meta = {
-  component: Radio,
   argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
     checked: {
       type: 'boolean',
     },
+    disabled: {
+      type: 'boolean',
+    },
   },
+  component: Radio,
 };
 
 export default RadioMeta;
 
 const Template: StoryFn<RadioProps> = ({
-  disabled,
   checked: initialChecked,
+  disabled,
   label,
 }: RadioProps) => {
   const [checked, setChecked] = useState(initialChecked);
   return (
     <Radio
-      label={label}
       checked={checked}
       disabled={disabled}
+      label={label}
       onChange={e => setChecked(e)}
     />
   );

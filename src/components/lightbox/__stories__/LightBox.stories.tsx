@@ -36,11 +36,11 @@ export const LightBox: StoryFn<typeof LightBoxComponent> = ({
 
       <LightBoxComponent
         {...rest}
-        open={open}
         onClose={() => setOpen(false)}
+        open={open}
         width={width}
       >
-        <img src="logo.png" alt="logo" />
+        <img alt="logo" src="logo.png" />
       </LightBoxComponent>
     </CenteredDiv>
   );

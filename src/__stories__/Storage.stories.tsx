@@ -15,27 +15,27 @@ const meta: Meta = {
 export default meta;
 
 const schema = z.object({
-  name: z.string(),
   age: z.number(),
   isCool: z.boolean(),
+  name: z.string(),
 });
 
 type Person = z.infer<typeof schema>;
 
 const defaultPerson: Person = {
-  name: 'John',
   age: 20,
   isCool: true,
+  name: 'John',
 };
 
 export const Storage = () => {
   const [value, setValue] = useStorage({
-    type: 'local',
-    key: 'amino:story:storage:test',
     defaultValue: defaultPerson,
     json: {
       schema,
     },
+    key: 'amino:story:storage:test',
+    type: 'local',
   });
 
   const [input, setInput] = useState('');
@@ -59,10 +59,10 @@ export const Storage = () => {
         Parsed Value: <strong>{JSON.stringify(value, null, 2)}</strong>
       </div>
       <Input
-        type="text"
-        value={input}
         onChange={e => setInput(e.target.value)}
         placeholder="Enter a value to set"
+        type="text"
+        value={input}
       />
       <HStack>
         <Button onClick={submit}>Set Value</Button>

@@ -27,20 +27,20 @@ export const ConfirmContextProvider = ({ children }: Props) => {
       {children}
       {dialog && (
         <ConfirmDialog
-          open={isOpen}
-          label={dialog.label}
-          subtitle={dialog.subtitle}
-          intent={dialog.intent}
-          dismissText={dialog.dismissText}
+          confirmAction={() => {
+            setIsOpen(false);
+            dialog.onConfirm(true);
+          }}
           confirmText={dialog.confirmText}
           dismissAction={() => {
             setIsOpen(false);
             dialog.onConfirm(false);
           }}
-          confirmAction={() => {
-            setIsOpen(false);
-            dialog.onConfirm(true);
-          }}
+          dismissText={dialog.dismissText}
+          intent={dialog.intent}
+          label={dialog.label}
+          open={isOpen}
+          subtitle={dialog.subtitle}
         />
       )}
     </ConfirmContext.Provider>

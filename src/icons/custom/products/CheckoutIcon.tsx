@@ -8,21 +8,21 @@ type Props = {
 };
 export const CheckoutIcon = forwardRef<SVGSVGElement, Props>(
   ({ size = 24, viewBox }, ref) => (
-    <IconBase size={size} ref={ref} viewBox={viewBox}>
+    <IconBase ref={ref} size={size} viewBox={viewBox}>
       <mask
+        height="20"
         id="mask0_4150_91290"
         maskUnits="userSpaceOnUse"
         style={{ maskType: 'alpha' }}
+        width="19"
         x="3"
         y="2"
-        width="19"
-        height="20"
       >
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M6.25682 2.5H15.6425C16.1339 2.5 16.5872 2.76283 16.831 3.18565L21.5239 11.3144C21.7676 11.7372 21.7676 12.2628 21.5239 12.6856L16.831 20.8144C16.5834 21.2372 16.1339 21.5 15.6425 21.5H6.25682C5.76544 21.5 5.31215 21.2372 5.06836 20.8144L4.51985 19.8659C4.2075 19.325 4.29892 18.647 4.73697 18.2089L5.32572 17.6201C3.88866 16.1812 3 14.1943 3 12C3 9.80563 3.88865 7.81883 5.32571 6.37984L4.73697 5.7911C4.29892 5.34924 4.21131 4.67121 4.51985 4.13412L5.06836 3.18565C5.31596 2.76283 5.76544 2.5 6.25682 2.5Z"
           fill="#FFE37D"
+          fillRule="evenodd"
         />
       </mask>
       <g mask="url(#mask0_4150_91290)">
@@ -51,65 +51,65 @@ export const CheckoutIcon = forwardRef<SVGSVGElement, Props>(
       </g>
       <defs>
         <filter
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+          height="21.907"
           id="filter0_f_4150_91290"
+          width="21.907"
           x="0.949999"
           y="1.04649"
-          width="21.907"
-          height="21.907"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
-            mode="normal"
             in="SourceGraphic"
             in2="BackgroundImageFix"
+            mode="normal"
             result="shape"
           />
           <feGaussianBlur
-            stdDeviation="1.5"
             result="effect1_foregroundBlur_4150_91290"
+            stdDeviation="1.5"
           />
         </filter>
         <filter
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+          height="19.907"
           id="filter1_f_4150_91290"
+          width="19.907"
           x="1"
           y="2.04649"
-          width="19.907"
-          height="19.907"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
-            mode="normal"
             in="SourceGraphic"
             in2="BackgroundImageFix"
+            mode="normal"
             result="shape"
           />
           <feGaussianBlur
-            stdDeviation="1"
             result="effect1_foregroundBlur_4150_91290"
+            stdDeviation="1"
           />
         </filter>
         <linearGradient
+          gradientUnits="userSpaceOnUse"
           id="paint0_linear_4150_91290"
           x1="8.63753"
-          y1="11.9733"
           x2="4.0399"
+          y1="11.9733"
           y2="11.92"
-          gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="white" />
           <stop offset="1" stopColor="#FFE37D" />
         </linearGradient>
         <linearGradient
+          gradientUnits="userSpaceOnUse"
           id="paint1_linear_4150_91290"
           x1="11.7153"
-          y1="12"
           x2="23.4399"
+          y1="12"
           y2="12"
-          gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#E7910A" />
           <stop offset="1" stopColor="#DF2B76" />

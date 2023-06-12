@@ -35,19 +35,19 @@ const Action = styled.div`
 `;
 
 export type RestStateProps = {
+  action?: ReactNode;
+  className?: string;
+  icon?: string;
   label: string;
   subtitle?: string;
-  action?: ReactNode;
-  icon?: string;
-  className?: string;
 };
 
 export const RestState = ({
+  action,
+  className,
+  icon,
   label,
   subtitle,
-  action,
-  icon,
-  className,
 }: RestStateProps) => (
   <StyledRestState className={className}>
     {icon ? <Icon src={icon} /> : null}

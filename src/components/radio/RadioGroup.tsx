@@ -42,7 +42,10 @@ export const RadioGroup = <T extends string = string>({
 
   const radios = items.map((el, index) => (
     <Radio
+      key={el.label}
       checked={index === activeIndex}
+      disabled={disabled}
+      label={el.label}
       onChange={() => {
         if (!disabled) {
           setActiveIndex(index);
@@ -51,9 +54,6 @@ export const RadioGroup = <T extends string = string>({
           }
         }
       }}
-      disabled={disabled}
-      key={el.label}
-      label={el.label}
     />
   ));
 

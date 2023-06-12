@@ -58,15 +58,15 @@ const ChevronDownIconStyled = styled(ChevronDownIcon)<{ isCollapsed: boolean }>`
 `;
 
 export type Props = {
-  stepNumber?: number;
-  collapse?: boolean;
   children: ReactNode;
+  collapse?: boolean;
+  stepNumber?: number;
 };
 
 export const MdxCollapse = ({
-  stepNumber,
-  collapse = false,
   children,
+  collapse = false,
+  stepNumber,
 }: Props) => {
   const [isCollapsed, setIsCollapsed] = useState(collapse);
 
@@ -100,8 +100,8 @@ export const MdxCollapse = ({
           <h2 id={hashId}>{label}</h2>
         </div>
         <Button
-          intent="plain"
           icon={<ChevronDownIconStyled isCollapsed={isCollapsed} />}
+          intent="plain"
         />
       </Label>
 

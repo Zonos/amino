@@ -16,8 +16,8 @@ type IRegion = typeof regions[number];
 /** @desc /api/address/getCountries */
 export interface ICountry<CountryCode extends string = string> {
   active: boolean;
-  code3: string | null;
   code: CountryCode;
+  code3: string | null;
   currencyCode: string;
   displayName: string;
   fraudRisk: number;

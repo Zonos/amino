@@ -3,11 +3,11 @@ import { type ReactNode, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 type StyledCollapseProps = {
-  completelyCollapsed: boolean;
-  hideOverflow: boolean;
-  currentlyCollapsed: boolean;
   $height?: number;
   collapseSize: number;
+  completelyCollapsed: boolean;
+  currentlyCollapsed: boolean;
+  hideOverflow: boolean;
 };
 
 const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
@@ -20,22 +20,22 @@ const StyledCollapseWrapper = styled.div<StyledCollapseProps>`
 `;
 
 export type CollapseProps = {
-  className?: string;
   children: ReactNode;
-  /**
-   * Collapsed state
-   * @default false
-   */
-  collapsed?: boolean;
+  className?: string;
   /**
    * Size when collapsed
    * @default 0
    */
   collapseSize?: number;
+  /**
+   * Collapsed state
+   * @default false
+   */
+  collapsed?: boolean;
 };
 export const Collapse = ({
-  className,
   children,
+  className,
   collapsed = false,
   collapseSize = 0,
 }: CollapseProps) => {
@@ -85,15 +85,15 @@ export const Collapse = ({
 
   return (
     <StyledCollapseWrapper
+      $height={contentHeight}
       className={className}
-      currentlyCollapsed={collapsed}
+      collapseSize={collapseSize}
       completelyCollapsed={completelyCollapsed}
+      currentlyCollapsed={collapsed}
       hideOverflow={hideOverflow}
       onTransitionEnd={handleTransitionEnd}
-      $height={contentHeight}
-      collapseSize={collapseSize}
     >
-      <div style={{ position: 'relative' }} ref={contentWrapperRef}>
+      <div ref={contentWrapperRef} style={{ position: 'relative' }}>
         {children}
       </div>
     </StyledCollapseWrapper>

@@ -1,14 +1,14 @@
 type Value = string | number | boolean;
 
 type Params = {
-  prev: Record<string, unknown>;
   currentVal: [string, unknown];
+  prev: Record<string, unknown>;
   previousKey?: string;
 };
 
 export const flattenRow = ({
-  prev,
   currentVal: [key, value],
+  prev,
   previousKey = '',
 }: Params): Record<string, unknown> | Value => {
   const keyWithPrefix = previousKey !== '' ? `${previousKey}.${key}` : key;

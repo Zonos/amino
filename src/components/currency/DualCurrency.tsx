@@ -5,8 +5,8 @@ import styled, { css } from 'styled-components';
 import { Currency } from './Currency';
 
 type StyledProps = {
-  width?: string;
   isTabular: boolean;
+  width?: string;
 };
 
 const tableCss = css<StyledProps>`
@@ -76,8 +76,8 @@ export const DualCurrency = ({
     return (
       <DualCurrencyWrapper
         className={className}
-        width={width?.toString()}
         isTabular={isTabular}
+        width={width?.toString()}
       >
         {renderLocaleCurrency()}
         <ArrowSwapIcon size={12} />

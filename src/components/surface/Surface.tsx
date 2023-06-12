@@ -34,34 +34,34 @@ const Depth64 = styled(SurfaceBase)`
 type Props = {
   children: ReactNode;
   className?: string;
-  depth?: Depth;
   dense?: boolean;
+  depth?: Depth;
 };
 
-export const Surface = ({ children, dense, className, depth }: Props) => {
+export const Surface = ({ children, className, dense, depth }: Props) => {
   switch (depth) {
     case 'depth64':
       return (
-        <Depth64 dense={dense} className={className || ''}>
+        <Depth64 className={className || ''} dense={dense}>
           {children}
         </Depth64>
       );
     case 'depth16':
       return (
-        <Depth16 dense={dense} className={className || ''}>
+        <Depth16 className={className || ''} dense={dense}>
           {children}
         </Depth16>
       );
     case 'depth8':
       return (
-        <Depth8 dense={dense} className={className || ''}>
+        <Depth8 className={className || ''} dense={dense}>
           {children}
         </Depth8>
       );
     case 'depth4':
     default:
       return (
-        <Depth4 dense={dense} className={className || ''}>
+        <Depth4 className={className || ''} dense={dense}>
           {children}
         </Depth4>
       );

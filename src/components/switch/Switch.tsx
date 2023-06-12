@@ -84,8 +84,8 @@ export type SwitchProps = {
   icon?: ReactNode;
   label?: string;
   labelDescription?: string;
-  onChange: (checked: boolean) => void;
   subtitle?: string;
+  onChange: (checked: boolean) => void;
 };
 
 export const Switch = ({
@@ -98,8 +98,8 @@ export const Switch = ({
   subtitle,
 }: SwitchProps) => (
   <SwitchContainer
-    className={disabled ? 'disabled' : ''}
     checked={checked}
+    className={disabled ? 'disabled' : ''}
     htmlFor={label}
     onClick={() => !disabled && onChange(!checked)}
   >

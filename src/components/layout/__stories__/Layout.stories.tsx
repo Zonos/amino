@@ -14,47 +14,47 @@ import { NavigationGroup as NavigationGroupStory } from './NavigationGroup.stori
 import { UserMenu } from './UserMenu';
 
 const LayoutMeta: Meta = {
-  component: Layout,
-  subcomponents: {
-    // @ts-ignore subcomponents don't seem to be working
-    NavigationGroup,
-    // @ts-ignore subcomponents don't seem to be working
-    NavigationItem,
-  },
-  parameters: {
-    docs: { source: { type: 'code' } },
-  },
   argTypes: {
-    searchInput: {
-      options: ['No Search Input', 'Has Search Input'],
-      mapping: {
-        'No Search Input': null,
-        'Has Search Input': {
-          value: '',
-          onChange: () => {},
-        },
-      },
-    },
-    logoSidebar: {
-      description: 'Want to have logo on sidebar or not',
-      options: ['No Logo Sidebar', 'Has Logo Sidebar'],
-      mapping: {
-        'No Logo Sidebar': null,
-        'Has Logo Sidebar': <ZonosIcon size={110} />,
-      },
-    },
-    sidebar: {
-      control: false,
-    },
-    headerContent: {
-      control: false,
-    },
     content: {
       control: false,
     },
     footer: {
       control: false,
     },
+    headerContent: {
+      control: false,
+    },
+    logoSidebar: {
+      description: 'Want to have logo on sidebar or not',
+      mapping: {
+        'Has Logo Sidebar': <ZonosIcon size={110} />,
+        'No Logo Sidebar': null,
+      },
+      options: ['No Logo Sidebar', 'Has Logo Sidebar'],
+    },
+    searchInput: {
+      mapping: {
+        'Has Search Input': {
+          onChange: () => {},
+          value: '',
+        },
+        'No Search Input': null,
+      },
+      options: ['No Search Input', 'Has Search Input'],
+    },
+    sidebar: {
+      control: false,
+    },
+  },
+  component: Layout,
+  parameters: {
+    docs: { source: { type: 'code' } },
+  },
+  subcomponents: {
+    // @ts-ignore subcomponents don't seem to be working
+    NavigationGroup,
+    // @ts-ignore subcomponents don't seem to be working
+    NavigationItem,
   },
 };
 
@@ -62,17 +62,17 @@ export default LayoutMeta;
 
 const Template: StoryFn<LayoutProps> = ({
   content,
-  logoSidebar,
   headerContent,
+  logoSidebar,
   searchInput,
 }: LayoutProps) => (
   <Layout
-    logoSidebar={logoSidebar}
-    searchInput={searchInput}
     content={content}
     footer={<UserMenu />}
-    sidebar={<NavigationGroupStory />}
     headerContent={headerContent}
+    logoSidebar={logoSidebar}
+    searchInput={searchInput}
+    sidebar={<NavigationGroupStory />}
   />
 );
 
@@ -100,10 +100,10 @@ BasicLayout.args = {
 
 export const LayoutWithoutHeader = Template.bind({});
 LayoutWithoutHeader.args = {
-  logoSidebar: <ZonosIcon size={110} />,
   content: (
     <HStack>
       <Card label="Content">Here is content description</Card>
     </HStack>
   ),
+  logoSidebar: <ZonosIcon size={110} />,
 };

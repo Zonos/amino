@@ -73,7 +73,7 @@ type Props = {
 };
 
 export const MdxSection = ({ children, className }: Props) => {
-  const { showTooltip, copyText } = useCopyText();
+  const { copyText, showTooltip } = useCopyText();
   const href = typeof window !== 'undefined' ? window.location.href : null;
 
   const createHeadingElement = (node: JSX.Element) => {
@@ -95,17 +95,17 @@ export const MdxSection = ({ children, className }: Props) => {
       node.type.name,
       {
         id,
+        key: id,
         onClick: () =>
           window.innerWidth > 768 &&
           href &&
           copyText(`${href.replace(/#.*/g, '') + hashId}`),
-        key: id,
       },
       <HeadingLink
         key={hashId}
+        className="link-button"
         href={hashId}
         title={nodeChildren}
-        className="link-button"
       >
         {nodeChildren}
         <span className="link-icon">

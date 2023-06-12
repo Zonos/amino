@@ -10,24 +10,24 @@ import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
 
 const RichRadioMeta: Meta = {
-  component: RichRadio,
   argTypes: {
-    icon: {
-      options: ['No Icon', 'Check Icon', 'Chevron Right Icon'],
-      mapping: {
-        'No Icon': undefined,
-        'Check Icon': <CheckmarkIcon />,
-        'Chevron Right Icon': <ChevronRightIcon />,
-      },
-    },
     activeIcon: {
-      options: ['Check Icon', 'Chevron Right Icon'],
       mapping: {
         'Check Icon': <CheckmarkIcon />,
         'Chevron Right Icon': <ChevronRightIcon />,
       },
+      options: ['Check Icon', 'Chevron Right Icon'],
+    },
+    icon: {
+      mapping: {
+        'Check Icon': <CheckmarkIcon />,
+        'Chevron Right Icon': <ChevronRightIcon />,
+        'No Icon': undefined,
+      },
+      options: ['No Icon', 'Check Icon', 'Chevron Right Icon'],
     },
   },
+  component: RichRadio,
   parameters: {
     design: {
       type: 'figma',
@@ -56,13 +56,13 @@ const Template: StoryFn<RichRadioProps> = ({
 
   return (
     <RichRadio
-      value={radioValue}
-      onChange={onChange}
-      renderCustomText={renderCustomText}
-      items={items}
+      activeIcon={activeIcon}
       icon={icon}
       itemHeight={itemHeight}
-      activeIcon={activeIcon}
+      items={items}
+      onChange={onChange}
+      renderCustomText={renderCustomText}
+      value={radioValue}
     />
   );
 };
@@ -74,22 +74,22 @@ BasicRichRadio.args = {
       label:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       subtitle: 'Item 1 subtitle',
-      value: 'item1',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
         delayShow: 400,
       },
+      value: 'item1',
     },
     {
       label: 'Item 2',
       subtitle: 'Item 2 subtitle (with tooltip)',
-      value: 'item2',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
         delayShow: 200,
       },
+      value: 'item2',
     },
     {
       label: 'Item 3',
@@ -106,37 +106,27 @@ BasicRichRadio.args = {
 
 export const CustomRichRadioOption = Template.bind({});
 CustomRichRadioOption.args = {
-  renderCustomText: ({ label, subtitle }) => (
-    <div>
-      <span>
-        Customized Label: <b>{label}</b>
-      </span>
-      <span>
-        Customized Subtitle: <b>{subtitle}</b>
-      </span>
-    </div>
-  ),
   items: [
     {
       label:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       subtitle: 'Item 1 subtitle',
-      value: 'item1',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
         delayShow: 400,
       },
+      value: 'item1',
     },
     {
       label: 'Item 2',
       subtitle: 'Item 2 subtitle (with tooltip)',
-      value: 'item2',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
         delayShow: 400,
       },
+      value: 'item2',
     },
     {
       label: 'Item 3',
@@ -148,6 +138,16 @@ CustomRichRadioOption.args = {
       value: 'item4',
     },
   ],
+  renderCustomText: ({ label, subtitle }) => (
+    <div>
+      <span>
+        Customized Label: <b>{label}</b>
+      </span>
+      <span>
+        Customized Subtitle: <b>{subtitle}</b>
+      </span>
+    </div>
+  ),
 };
 
 export const SmallRichRadio = Template.bind({});
@@ -155,20 +155,20 @@ SmallRichRadio.args = {
   items: [
     {
       label: 'Handbags, whether or not with shoulder strap',
-      value: 'item1',
       tooltip: 'Handbags, whether or not with shoulder strap',
       tooltipSetting: {
         delayShow: 400,
       },
+      value: 'item1',
     },
     {
       label: 'Item 2',
-      value: 'item2',
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
         delayShow: 400,
       },
+      value: 'item2',
     },
     {
       label: 'Item 3',

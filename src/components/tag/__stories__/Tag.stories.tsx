@@ -3,12 +3,12 @@ import { type TagProps, Tag } from 'src/components/tag/Tag';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
 const TagMeta: Meta = {
-  component: Tag,
   argTypes: {
     iconRight: {
       type: 'boolean',
     },
   },
+  component: Tag,
 };
 
 export default TagMeta;
@@ -19,7 +19,7 @@ const Template: StoryFn<TagProps> = ({
   iconRight,
   onClose,
 }: TagProps) => (
-  <Tag onClose={onClose} icon={icon} iconRight={iconRight}>
+  <Tag icon={icon} iconRight={iconRight} onClose={onClose}>
     {children}
   </Tag>
 );
@@ -37,8 +37,8 @@ Default.parameters = {
 
 export const Icon = Template.bind({});
 Icon.args = {
-  icon: <CubeIcon size={20} />,
   children: <span>HS code for Brazil</span>,
+  icon: <CubeIcon size={20} />,
 };
 Icon.parameters = {
   design: {
@@ -49,48 +49,48 @@ Icon.parameters = {
 
 export const Country = Template.bind({});
 Country.args = {
-  onClose: () => {},
+  children: <span>Brazil</span>,
   icon: (
     <svg
-      width="16"
+      fill="none"
       height="12"
       viewBox="0 0 16 12"
-      fill="none"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <mask
+        height="12"
         id="mask0_183_6804"
         maskUnits="userSpaceOnUse"
+        width="16"
         x="0"
         y="0"
-        width="16"
-        height="12"
       >
-        <rect width="16" height="12" fill="white" />
+        <rect fill="white" height="12" width="16" />
       </mask>
       <g mask="url(#mask0_183_6804)">
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M0 0H16V12H0V0Z"
           fill="#9898A0"
+          fillRule="evenodd"
         />
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M0 0V4H16V0H0Z"
           fill="#D6D6D9"
+          fillRule="evenodd"
         />
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M0 8V12H16V8H0Z"
           fill="#5B5B60"
+          fillRule="evenodd"
         />
       </g>
     </svg>
   ),
-  children: <span>Brazil</span>,
+  onClose: () => {},
 };
 Country.parameters = {
   design: {

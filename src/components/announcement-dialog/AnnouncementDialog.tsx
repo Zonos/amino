@@ -26,14 +26,6 @@ export type AnnouncementDialogProps = {
   announcementId: string;
   children: ReactNode;
   className?: string;
-  image?: ReactNode;
-  imageWidth?: number;
-  label?: string;
-  onClose?: () => void;
-  open?: boolean;
-  themeOverride?: Theme;
-  title?: ReactNode;
-  width?: number;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
    */
@@ -42,7 +34,15 @@ export type AnnouncementDialogProps = {
    * @default true
    */
   closeOnEsc?: boolean;
+  image?: ReactNode;
+  imageWidth?: number;
+  label?: string;
   noBorder?: boolean;
+  open?: boolean;
+  themeOverride?: Theme;
+  title?: ReactNode;
+  width?: number;
+  onClose?: () => void;
 };
 
 export const AnnouncementDialog = forwardRef<
@@ -54,17 +54,17 @@ export const AnnouncementDialog = forwardRef<
       announcementId,
       children,
       className,
+      closeOnBlur,
+      closeOnEsc,
       image,
       imageWidth,
       label,
+      noBorder,
       onClose,
       open,
       themeOverride,
       title,
       width,
-      closeOnBlur,
-      closeOnEsc,
-      noBorder,
     },
     ref
   ) => {
@@ -72,30 +72,30 @@ export const AnnouncementDialog = forwardRef<
       'seen' | '',
       string
     >({
-      key: `announcement:${announcementId}`,
       defaultValue: '',
+      key: `announcement:${announcementId}`,
       type: 'local',
     });
 
     return (
       <BaseDialog
         className={className}
+        closeOnBlur={closeOnBlur}
+        closeOnEsc={closeOnEsc}
         data-theme={themeOverride}
-        open={open || !announcementSeen}
-        width={width}
+        noBorder={noBorder}
         onClose={() => {
           if (onClose) {
             onClose();
           }
           setAnnouncementSeen('seen');
         }}
-        closeOnBlur={closeOnBlur}
-        closeOnEsc={closeOnEsc}
-        noBorder={noBorder}
+        open={open || !announcementSeen}
+        width={width}
       >
         <StyledImage imageWidth={imageWidth}>{image}</StyledImage>
         <Content spacing={8}>
-          <Text type="label" color="blue600">
+          <Text color="blue600" type="label">
             {label}
           </Text>
           <Text type="title">{title}</Text>

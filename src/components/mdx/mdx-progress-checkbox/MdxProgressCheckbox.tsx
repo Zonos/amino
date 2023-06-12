@@ -24,16 +24,16 @@ const Description = styled.div`
 `;
 
 export type Props = {
-  pathname: string;
   checkboxKey: string;
   children?: ReactNode;
+  pathname: string;
   xlabel: string;
 };
 
 export const MdxProgressCheckbox = ({
-  pathname,
   checkboxKey,
   children,
+  pathname,
   xlabel,
 }: Props) => {
   if (!checkboxKey) {
@@ -53,8 +53,8 @@ export const MdxProgressCheckbox = ({
     <Wrapper>
       <Checkbox
         checked={!!isChecked}
-        labelComponent={<Label type="bold-label">{xlabel}</Label>}
         label={xlabel}
+        labelComponent={<Label type="bold-label">{xlabel}</Label>}
         onChange={() => setChecked(isChecked ? '' : 'checked')}
       />
       <Description>{children}</Description>

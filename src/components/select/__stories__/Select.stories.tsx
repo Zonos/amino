@@ -67,11 +67,11 @@ export const BasicSelect = SelectTemplate.bind({});
 
 BasicSelect.args = {
   label: 'Currencies',
+  options: currencyOptions,
   value: {
     label: 'US Dollar (USD)',
     value: 'USD',
   },
-  options: currencyOptions,
 };
 
 BasicSelect.parameters = {
@@ -88,11 +88,11 @@ BasicSelectWithIcon.args = {
   helpText: 'This input is required',
   icon: <FileIcon size={20} />,
   label: 'Currencies',
+  options: currencyOptions,
   value: {
     label: 'US Dollar (USD)',
     value: 'USD',
   },
-  options: currencyOptions,
 };
 
 BasicSelectWithIcon.parameters = {
@@ -107,14 +107,10 @@ export const BasicSelectWithOptionIcon = SelectTemplate.bind({});
 BasicSelectWithOptionIcon.args = {
   icon: <FlagIcon code="AE" iconScale="medium" />,
   label: 'Currencies',
-  value: {
-    label: 'US Dollar (USD)',
-    value: 'USD',
-  },
   options: [
     {
-      label: 'US Dollar (USD)',
       icon: <FlagIcon code="AE" iconScale="small" />,
+      label: 'US Dollar (USD)',
       value: 'USD',
     },
     {
@@ -128,6 +124,10 @@ BasicSelectWithOptionIcon.args = {
       value: 'EUR',
     },
   ],
+  value: {
+    label: 'US Dollar (USD)',
+    value: 'USD',
+  },
 };
 
 BasicSelectWithOptionIcon.parameters = {
@@ -142,13 +142,6 @@ export const SelectWithDeveloperException = SelectTemplate.bind({});
 SelectWithDeveloperException.args = {
   icon: <FileIcon size={20} />,
   label: 'Currencies',
-  value: [
-    {
-      icon: <FileIcon size={14} />,
-      label: 'US Dollar (USD)',
-      value: 'USD',
-    },
-  ],
   options: [
     {
       icon: <FileIcon size={14} />,
@@ -159,6 +152,13 @@ SelectWithDeveloperException.args = {
       icon: <FileIcon size={14} />,
       label: 'European Euro (EUR)',
       value: 'EUR',
+    },
+  ],
+  value: [
+    {
+      icon: <FileIcon size={14} />,
+      label: 'US Dollar (USD)',
+      value: 'USD',
     },
   ],
 };
@@ -191,7 +191,7 @@ export const ScrollableDialogSelect = () => {
   return (
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <Dialog label="Selects" open={open} onClose={() => setOpen(false)}>
+      <Dialog label="Selects" onClose={() => setOpen(false)} open={open}>
         <StyledVStack>
           <span>
             Bacon ipsum dolor amet tongue ham hock pork chop, burgdoggen shank
@@ -228,16 +228,16 @@ export const ScrollableDialogSelect = () => {
             corned beef t-bone.
           </span>
           <Select
-            label="Close on scroll"
-            options={currencyOptions}
-            onChange={setValue}
-            value={value}
             closeOnOutsideScroll
+            label="Close on scroll"
+            onChange={setValue}
+            options={currencyOptions}
+            value={value}
           />
           <Select
             label="Normal"
-            options={currencyOptions}
             onChange={setValue}
+            options={currencyOptions}
             value={value}
           />
         </StyledVStack>
@@ -250,8 +250,8 @@ export const SelectWithNumberOptions = () => {
   const [value, setValue] = useState<number>(1);
   const options = [
     {
-      label: 'US Dollar (USD)',
       icon: <FileIcon size={14} />,
+      label: 'US Dollar (USD)',
       value: 1,
     },
     {
@@ -264,10 +264,10 @@ export const SelectWithNumberOptions = () => {
     <div>
       <Select
         icon={<FileIcon size={20} />}
-        onChange={item => item?.value && setValue(item.value)}
         label="Currencies"
-        value={options.find(option => option.value === value) || null}
+        onChange={item => item?.value && setValue(item.value)}
         options={options}
+        value={options.find(option => option.value === value) || null}
       />
       Selected value: {value} (typeof value: {typeof value})
     </div>

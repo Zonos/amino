@@ -9,10 +9,10 @@ import type { StackProps } from 'src/components/stack/Stack';
 import type { IOption } from 'src/types/IOption';
 
 const HStackMeta: Meta = {
-  component: HStack,
   args: {
     numberOfChildren: 4,
   },
+  component: HStack,
 };
 
 export default HStackMeta;
@@ -31,7 +31,7 @@ const options = [
 
 const Template: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
-> = ({ spacing, numberOfChildren, renderChild }) => (
+> = ({ numberOfChildren, renderChild, spacing }) => (
   <HStack spacing={spacing}>
     {[...Array(numberOfChildren).keys()].map(renderChild)}
   </HStack>
@@ -43,9 +43,9 @@ Selects.args = {
     <Select
       key={k}
       label="What is your name"
-      placeholder="What?"
-      options={options}
       onChange={() => {}}
+      options={options}
+      placeholder="What?"
       value={null}
     />
   ),
@@ -54,7 +54,7 @@ Selects.args = {
 export const Cards = Template.bind({});
 Cards.args = {
   renderChild: k => (
-    <Card label={`Card ${k}`} key={k} footerActions={<Button>Do it</Button>}>
+    <Card key={k} footerActions={<Button>Do it</Button>} label={`Card ${k}`}>
       <p>Some text</p>
     </Card>
   ),

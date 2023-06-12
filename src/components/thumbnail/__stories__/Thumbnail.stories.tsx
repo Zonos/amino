@@ -9,14 +9,10 @@ import {
 } from '../Thumbnail';
 
 const ThumbnailMeta: Meta = {
-  component: ThumbnailComponent,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A53302&t=YH8gQICo75N9Y6uZ-0',
-    },
-  },
   argTypes: {
+    bordered: {
+      control: { type: 'boolean' },
+    },
     icon: {
       control: { type: 'select' },
       options: Object.keys(icons),
@@ -26,8 +22,12 @@ const ThumbnailMeta: Meta = {
         disable: true,
       },
     },
-    bordered: {
-      control: { type: 'boolean' },
+  },
+  component: ThumbnailComponent,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A53302&t=YH8gQICo75N9Y6uZ-0',
     },
   },
 };

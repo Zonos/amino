@@ -19,17 +19,17 @@ const StyledSortableSection = styled.div`
 
 export interface SortableListItemProps {
   children: ReactNode;
-  useHandle?: boolean;
-  id: string;
   handleIconSize?: number;
+  id: string;
+  useHandle?: boolean;
 }
 
 /** @description This must be a direct child of SortableList */
 export const SortableListItem = ({
   children,
-  useHandle,
-  id,
   handleIconSize = 20,
+  id,
+  useHandle,
 }: SortableListItemProps) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });

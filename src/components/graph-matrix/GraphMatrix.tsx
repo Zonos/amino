@@ -66,11 +66,6 @@ type GraphMatrixProps = {
    */
   fetcher?: HandleFetchFetcher;
   loadingComponent?: ReactNode;
-  onEditQuery: (query: string) => void;
-  onEditVariables: (variables: string) => void;
-  onResultData?: (
-    data: GraphiqlExecutionResult<ExecutionResultType> | null
-  ) => void;
   query: string;
   schema: GraphQLSchema | null;
   /**
@@ -80,6 +75,11 @@ type GraphMatrixProps = {
   schemaName: string;
   url: string;
   variables: string;
+  onEditQuery: (query: string) => void;
+  onEditVariables: (variables: string) => void;
+  onResultData?: (
+    data: GraphiqlExecutionResult<ExecutionResultType> | null
+  ) => void;
 };
 
 export const GraphMatrix = ({
@@ -106,19 +106,24 @@ export const GraphMatrix = ({
   const [cachingKey] = useState('first-time');
   const [showTable, setShowTable] = useState(false);
   const [splitPanelSizes, setSplitPanelSizes] = useState([1, 0]);
+  const [isClientRendering, setIsClientRendering] = useState(false);
 
   const [operationName, setOperationName] = useState('');
-  const { graphiqlFetcher, resultData, isLoading } = useGraphiqlFetcher({
+  const { graphiqlFetcher, isLoading, resultData } = useGraphiqlFetcher({
     cachingKey,
-    url,
-    query,
     customFetcher: fetcher || null,
     operationName,
+    query,
+    url,
   });
 
   const storage = useGraphiqlStorage({
     defaultSchema: schemaName,
   });
+
+  useEffect(() => {
+    setIsClientRendering(true);
+  }, []);
 
   useEffect(() => {
     /** Detect if is fetching data in graphiql explorer when hitting "Play" button  */
@@ -153,8 +158,8 @@ export const GraphMatrix = ({
             if (Array.isArray(actionResult) || actionResult) {
               return (
                 <NestedDataTable
-                  isFetching={isFetching}
                   key={actionName}
+                  isFetching={isFetching}
                   tableData={actionResult as Record<string, unknown>[]}
                   title={actionName}
                 />
@@ -171,46 +176,48 @@ export const GraphMatrix = ({
   return (
     <StyledWrapper>
       <SplitPanel
-        sizes={splitPanelSizes}
-        onSetSizes={setSplitPanelSizes}
         collapseAll={!showTable}
+        onSetSizes={setSplitPanelSizes}
+        sizes={splitPanelSizes}
       >
         <StyleTableWrap>
-          <GraphiQL
-            fetcher={graphiqlFetcher}
-            onEditOperationName={setOperationName}
-            onEditQuery={onEditQuery}
-            onEditVariables={onEditVariables}
-            plugins={[graphMatrixPlugin]}
-            query={query}
-            variables={variables}
-            schema={schema}
-            toolbar={{
-              additionalContent: (
-                <>
-                  <ToolbarButton
-                    label={showTable ? 'Hide table' : 'Show table'}
-                    onClick={() => setShowTable(!showTable)}
-                  >
-                    {showTable ? (
-                      <EyeOffIcon color="red600" />
-                    ) : (
-                      <EyeIcon color="gray400" />
-                    )}
-                  </ToolbarButton>
-                  {customToolbar}
-                </>
-              ),
-            }}
-            storage={storage}
-          >
-            <GraphiqlContextWrapper
-              setExecutionContext={setExecutionContext}
-              setResponseEditorContext={setResponseEditorContext}
+          {isClientRendering && (
+            <GraphiQL
+              fetcher={graphiqlFetcher}
+              onEditOperationName={setOperationName}
+              onEditQuery={onEditQuery}
+              onEditVariables={onEditVariables}
+              plugins={[graphMatrixPlugin]}
+              query={query}
+              schema={schema}
+              storage={storage}
+              toolbar={{
+                additionalContent: (
+                  <>
+                    <ToolbarButton
+                      label={showTable ? 'Hide table' : 'Show table'}
+                      onClick={() => setShowTable(!showTable)}
+                    >
+                      {showTable ? (
+                        <EyeOffIcon color="red600" />
+                      ) : (
+                        <EyeIcon color="gray400" />
+                      )}
+                    </ToolbarButton>
+                    {customToolbar}
+                  </>
+                ),
+              }}
+              variables={variables}
             >
-              <GraphiQL.Footer />
-            </GraphiqlContextWrapper>
-          </GraphiQL>
+              <GraphiqlContextWrapper
+                setExecutionContext={setExecutionContext}
+                setResponseEditorContext={setResponseEditorContext}
+              >
+                <GraphiQL.Footer />
+              </GraphiqlContextWrapper>
+            </GraphiQL>
+          )}
         </StyleTableWrap>
         {renderTableData()}
       </SplitPanel>

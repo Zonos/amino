@@ -80,7 +80,7 @@ const ExpandedListItem = ({
     <TableCell align="left" borderBottom="0" padding="0">
       <Text>{label}</Text>
     </TableCell>
-    <TableCell align="right" borderBottom="0" padding="0" colSpan={2}>
+    <TableCell align="right" borderBottom="0" colSpan={2} padding="0">
       <Text>
         <DualCurrency
           conversionRate={conversionRate}
@@ -149,8 +149,8 @@ const Template: StoryFn<
       </TableHead>
       <TableBody>
         <TableRowCollapse
-          onToggleCollapse={() => handleToggleCollapse(0)}
           collapsed={collapsedRows.includes(0)}
+          onToggleCollapse={() => handleToggleCollapse(0)}
           rowContent={
             <>
               <TableCell>
@@ -224,8 +224,8 @@ const Template: StoryFn<
           </ExpandedItemCard>
         </TableRowCollapse>
         <TableRowCollapse
-          onToggleCollapse={() => handleToggleCollapse(1)}
           collapsed={collapsedRows.includes(1)}
+          onToggleCollapse={() => handleToggleCollapse(1)}
           rowContent={
             <>
               <TableCell>
@@ -273,8 +273,8 @@ const Template: StoryFn<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          onToggleCollapse={() => handleToggleCollapse(2)}
           collapsed={collapsedRows.includes(2)}
+          onToggleCollapse={() => handleToggleCollapse(2)}
           rowContent={
             <>
               <TableCell>
@@ -318,16 +318,16 @@ const Template: StoryFn<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          onToggleCollapse={() => handleToggleCollapse(3)}
           collapsed={collapsedRows.includes(3)}
+          onToggleCollapse={() => handleToggleCollapse(3)}
           rowContent={
             <>
               <TableCell>
                 <LeftIconLabel>
                   <RoundedIcon background="red100">
                     <ShoppingListDuotoneIcon
-                      secondaryColor="red400"
                       color="red900"
+                      secondaryColor="red400"
                     />
                   </RoundedIcon>
                   <Text fontWeight={500}>Fees</Text>
@@ -357,8 +357,8 @@ const Template: StoryFn<
                     key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    showForeign={showForeign}
                     label={label}
+                    showForeign={showForeign}
                     value={value}
                   />
                 ))}
@@ -367,8 +367,8 @@ const Template: StoryFn<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          onToggleCollapse={() => handleToggleCollapse(4)}
           collapsed={collapsedRows.includes(4)}
+          onToggleCollapse={() => handleToggleCollapse(4)}
           rowContent={
             <>
               <TableCell>
@@ -421,8 +421,8 @@ const Template: StoryFn<
           </ExpandedTableCard>
         </TableRowCollapse>
         <TableRowCollapse
-          onToggleCollapse={() => handleToggleCollapse(5)}
           collapsed={collapsedRows.includes(5)}
+          onToggleCollapse={() => handleToggleCollapse(5)}
           rowContent={
             <>
               <TableCell colSpan={2}>
@@ -463,7 +463,7 @@ ExpandableTable.parameters = {};
 export const ExpandableShowForeignCurrencyTable = Template.bind({});
 ExpandableShowForeignCurrencyTable.args = {
   conversionRate: 1.2,
-  showForeign: true,
   foreignCode: 'CAD',
+  showForeign: true,
 };
 ExpandableShowForeignCurrencyTable.parameters = {};

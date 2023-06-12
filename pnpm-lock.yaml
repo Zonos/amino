@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@dnd-kit/core':
@@ -85,11 +89,11 @@ devDependencies:
     specifier: ^11.9.3
     version: 11.9.3(@babel/core@7.18.9)(@emotion/react@11.9.3)(@types/react@17.0.41)(react@17.0.2)
   '@graphiql/plugin-explorer':
-    specifier: ^0.1.15
-    version: 0.1.15(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+    specifier: ^0.1.20
+    version: 0.1.20(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
   '@graphiql/react':
-    specifier: ^0.17.1
-    version: 0.17.1(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+    specifier: ^0.17.6
+    version: 0.17.6(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
   '@playwright/test':
     specifier: ^1.30.0
     version: 1.30.0
@@ -234,9 +238,18 @@ devDependencies:
   eslint-plugin-simple-import-sort:
     specifier: ^7.0.0
     version: 7.0.0(eslint@8.28.0)
+  eslint-plugin-sort-destructure-keys:
+    specifier: ^1.5.0
+    version: 1.5.0(eslint@8.28.0)
+  eslint-plugin-sort-keys:
+    specifier: ^2.3.5
+    version: 2.3.5
   eslint-plugin-storybook:
     specifier: ^0.6.12
     version: 0.6.12(eslint@8.28.0)(typescript@5.0.4)
+  eslint-plugin-typescript-custom-sort-keys:
+    specifier: ^1.0.5
+    version: 1.0.5(@typescript-eslint/parser@5.59.6)(eslint@8.28.0)(typescript@5.0.4)
   framer-motion:
     specifier: ^4.1.17
     version: 4.1.17(react-dom@17.0.2)(react@17.0.2)
@@ -244,8 +257,8 @@ devDependencies:
     specifier: ^8.0.1
     version: 8.0.1
   graphiql:
-    specifier: ^2.4.1
-    version: 2.4.1(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+    specifier: ^2.4.7
+    version: 2.4.7(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
   graphql:
     specifier: ^16.6.0
     version: 16.6.0
@@ -3575,14 +3588,14 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
     dev: false
 
-  /@graphiql/plugin-explorer@0.1.15(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-/S82L0zahiUfOKqUtdUcHX0rWzxkr24iH7zdisAypBYK7E/oBCpbAySyQHox4+z6l/xcjhXMXdhLNuqZKUCAiw==}
+  /@graphiql/plugin-explorer@0.1.20(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-dgvcoQPJDl6h7DoACMw1MaH1KqUTOWY2ny9t+zjBnW/ZhXzQfoni1H3JmLndbfiXq/XPvtRNGGfd2hfqk8KVLg==}
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@graphiql/react': 0.17.1(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+      '@graphiql/react': 0.17.6(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
       graphiql-explorer: 0.9.0(graphql@16.6.0)(react-dom@17.0.2)(react@17.0.2)
       graphql: 16.6.0
       react: 17.0.2
@@ -3595,8 +3608,8 @@ packages:
       - react-is
     dev: true
 
-  /@graphiql/react@0.17.1(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-p99Vnl3aoQsh/T651pkGiS0wqvn7y65Bv4Q32l990T2IIgEDqeqJxgwRp3F48Ol9dWzk6KzxNkZYqe5IVHEmoA==}
+  /@graphiql/react@0.17.6(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-3k1paSRbRwVNxr2U80xnRhkws8tSErWlETJvEQBmqRcWbt0+WmwFJorkLnG1n3Wj0Ho6k4a2BAiTfJ6F4SPrLg==}
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -6330,6 +6343,22 @@ packages:
       - supports-color
     dev: true
 
+  /@typescript-eslint/experimental-utils@2.32.0(eslint@8.28.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-oDWuB2q5AXsQ/mLq2N4qtWiBASWXPf7KhqXgeGH4QsyVKx+km8F6Vfqd3bspJQyhyCqxcbLO/jKJuIV3DzHZ6A==}
+    engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
+    peerDependencies:
+      eslint: '*'
+    dependencies:
+      '@types/json-schema': 7.0.11
+      '@typescript-eslint/typescript-estree': 2.32.0(typescript@5.0.4)
+      eslint: 8.28.0
+      eslint-scope: 5.1.1
+      eslint-utils: 2.1.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   /@typescript-eslint/parser@5.59.6(eslint@8.28.0)(typescript@5.0.4):
     resolution: {integrity: sha512-7pCa6al03Pv1yf/dUg/s1pXz/yGMUBAw5EeWqNTFiSueKvRNonze3hma3lhdsOrQcaOXhbk5gKu2Fludiho9VA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -6381,6 +6410,27 @@ packages:
   /@typescript-eslint/types@5.59.6:
     resolution: {integrity: sha512-tH5lBXZI7T2MOUgOWFdVNUILsI02shyQvfzG9EJkoONWugCG77NDDa1EeDGw7oJ5IvsTAAGVV8I3Tk2PNu9QfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@typescript-eslint/typescript-estree@2.32.0(typescript@5.0.4):
+    resolution: {integrity: sha512-hQpbWM/Y2iq6jB9FHYJBqa3h1R9IEGodOtajhb261cVHt9cz30AKjXM6WP7LxJdEPPlyJ9rPTZVgBUgZgiyPgw==}
+    engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      debug: 4.3.4(supports-color@5.5.0)
+      eslint-visitor-keys: 1.3.0
+      glob: 7.2.3
+      is-glob: 4.0.3
+      lodash: 4.17.21
+      semver: 7.5.1
+      tsutils: 3.21.0(typescript@5.0.4)
+      typescript: 5.0.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@typescript-eslint/typescript-estree@5.59.6(typescript@5.0.4):
@@ -9261,6 +9311,22 @@ packages:
       eslint: 8.28.0
     dev: true
 
+  /eslint-plugin-sort-destructure-keys@1.5.0(eslint@8.28.0):
+    resolution: {integrity: sha512-xGLyqHtbFXZNXQSvAiQ4ISBYokrbUywEhmaA50fKtSKgceCv5y3zjoNuZwcnajdM6q29Nxj+oXC9KcqfMsAPrg==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      eslint: 3 - 8
+    dependencies:
+      eslint: 8.28.0
+      natural-compare-lite: 1.4.0
+    dev: true
+
+  /eslint-plugin-sort-keys@2.3.5:
+    resolution: {integrity: sha512-2j/XKQ9sNJwK8kIp/U0EvuF6stS6/8aIc53/NskE4C5NRNh4dt3xzbZyOdrVC11cTH6Zo59/pdzA0Kb+2fQGWg==}
+    dependencies:
+      natural-compare: 1.4.0
+    dev: true
+
   /eslint-plugin-storybook@0.6.12(eslint@8.28.0)(typescript@5.0.4):
     resolution: {integrity: sha512-XbIvrq6hNVG6rpdBr+eBw63QhOMLpZneQVSooEDow8aQCWGCk/5vqtap1yxpVydNfSxi3S/3mBBRLQqKUqQRww==}
     engines: {node: 12.x || 14.x || >= 16}
@@ -9275,6 +9341,24 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
+    dev: true
+
+  /eslint-plugin-typescript-custom-sort-keys@1.0.5(@typescript-eslint/parser@5.59.6)(eslint@8.28.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-0PA+6mD9erITponlmH/NSII23deVBQDqGFHvfH5bxxgxMwV/KM0TMnOQWXQjKId4ZunI3kw//mHTLWRzZvMQYQ==}
+    engines: {node: 10 - 12 || >= 13.9}
+    peerDependencies:
+      '@typescript-eslint/parser': ^1 || ^2 || ^3
+      eslint: ^5 || ^6 || ^7
+      typescript: ^3
+    dependencies:
+      '@typescript-eslint/experimental-utils': 2.32.0(eslint@8.28.0)(typescript@5.0.4)
+      '@typescript-eslint/parser': 5.59.6(eslint@8.28.0)(typescript@5.0.4)
+      eslint: 8.28.0
+      json-schema: 0.2.5
+      natural-compare-lite: 1.4.0
+      typescript: 5.0.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /eslint-scope@5.1.1:
@@ -9293,6 +9377,13 @@ packages:
       estraverse: 5.3.0
     dev: true
 
+  /eslint-utils@2.1.0:
+    resolution: {integrity: sha512-w94dQYoauyvlDc43XnGB8lU3Zt713vNChgt4EWwhXAP2XkBvndfxF0AgIqKOOasjPIPzj9JqgwkwbCYD0/V3Zg==}
+    engines: {node: '>=6'}
+    dependencies:
+      eslint-visitor-keys: 1.3.0
+    dev: true
+
   /eslint-utils@3.0.0(eslint@8.28.0):
     resolution: {integrity: sha512-uuQC43IGctw68pJA1RgbQS8/NP7rch6Cwd4j3ZBtgo4/8Flj4eGE7ZYSZRN3iq5pVUv6GPdW5Z1RFleo84uLDA==}
     engines: {node: ^10.0.0 || ^12.0.0 || >= 14.0.0}
@@ -9301,6 +9392,11 @@ packages:
     dependencies:
       eslint: 8.28.0
       eslint-visitor-keys: 2.1.0
+    dev: true
+
+  /eslint-visitor-keys@1.3.0:
+    resolution: {integrity: sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ==}
+    engines: {node: '>=4'}
     dev: true
 
   /eslint-visitor-keys@2.1.0:
@@ -10115,14 +10211,14 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
     dev: true
 
-  /graphiql@2.4.1(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-PLTY2KI+FwU6548Bsrip2ptne/t2QzNdARHZwXl/KGJ+KVfSpXjjfryJQBHXiEq4plQnG4orw7dJpm8KfM5iig==}
+  /graphiql@2.4.7(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-Fm3fVI65EPyXy+PdbeQUyODTwl2NhpZ47msGnGwpDvdEzYdgF7pPrxL96xCfF31KIauS4+ceEJ+ZwEe5iLWiQw==}
     peerDependencies:
       graphql: ^15.5.0 || ^16.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@graphiql/react': 0.17.1(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+      '@graphiql/react': 0.17.6(@codemirror/language@6.0.0)(@types/node@17.0.33)(@types/react@17.0.41)(graphql@16.6.0)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
       '@graphiql/toolkit': 0.8.4(@types/node@17.0.33)(graphql@16.6.0)
       graphql: 16.6.0
       graphql-language-service: 5.1.6(graphql@16.6.0)
@@ -11457,6 +11553,10 @@ packages:
 
   /json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+    dev: true
+
+  /json-schema@0.2.5:
+    resolution: {integrity: sha512-gWJOWYFrhQ8j7pVm0EM8Slr+EPVq1Phf6lvzvD/WCeqkrx/f2xBI0xOsRRS9xCn3I4vKtP519dvs3TP09r24wQ==}
     dev: true
 
   /json-stable-stringify-without-jsonify@1.0.1:

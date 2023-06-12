@@ -84,12 +84,12 @@ const RemoveFileButton = styled(Button)`
 
 export type FileUploadProps = {
   className?: string;
-  dropzoneOptions: Omit<DropzoneOptions, 'disabled' | 'multiple'>;
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
    * */
   disabled?: boolean;
+  dropzoneOptions: Omit<DropzoneOptions, 'disabled' | 'multiple'>;
   error?: boolean;
   /**
    * Text to display in empty state
@@ -97,15 +97,15 @@ export type FileUploadProps = {
    * */
   instructionText?: string;
 
-  /** Display file info if uploaded file property has data */
-  uploadedFile: UploadedFile | null;
-  onRemoveFile?: () => void;
   loading?: boolean;
   /**
    * Text to show while loading state is active
    * @default 'Uploading...''
    */
   loadingText?: string;
+  /** Display file info if uploaded file property has data */
+  uploadedFile: UploadedFile | null;
+  onRemoveFile?: () => void;
 };
 
 /**
@@ -113,21 +113,21 @@ export type FileUploadProps = {
  */
 export const FileUpload = ({
   className,
-  dropzoneOptions,
   disabled = false,
+  dropzoneOptions,
   error = false,
-  onRemoveFile,
-  uploadedFile,
   instructionText = 'or drag your file here',
   loading,
   loadingText = 'Uploading...',
+  onRemoveFile,
+  uploadedFile,
 }: FileUploadProps) => {
-  const { getRootProps, getInputProps, open } = useDropzone({
+  const { getInputProps, getRootProps, open } = useDropzone({
     ...dropzoneOptions,
     disabled,
+    multiple: false,
     noClick: true,
     noKeyboard: true,
-    multiple: false,
   });
 
   const renderFile = () => {
@@ -136,11 +136,11 @@ export const FileUpload = ({
 
       return (
         <UploadedFileInfoWrapper>
-          <Text type="label" color="gray1200">
+          <Text color="gray1200" type="label">
             {name}
           </Text>
           {size && (
-            <Text type="caption" color="gray700">
+            <Text color="gray700" type="caption">
               {size}
             </Text>
           )}
@@ -167,7 +167,7 @@ export const FileUpload = ({
     <StyledFileInput {...getRootProps()}>
       <input {...getInputProps()} />
       <ContentWrapper>
-        <Button onClick={open} loading={loading} spinnerColor="black">
+        <Button loading={loading} onClick={open} spinnerColor="black">
           Browse
         </Button>
         {renderText()}
@@ -176,7 +176,7 @@ export const FileUpload = ({
   );
 
   return (
-    <Wrapper disabled={disabled} error={error} className={className}>
+    <Wrapper className={className} disabled={disabled} error={error}>
       {renderContent()}
       {onRemoveFile && uploadedFile && (
         <RemoveFileButton onClick={() => onRemoveFile()}>

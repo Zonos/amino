@@ -9,5 +9,5 @@ export const useCopyText = () => {
     setShowTooltip(true);
     setTimeout(() => setShowTooltip(false), 4000);
   };
-  return { showTooltip, setShowTooltip, copyText };
+  return { copyText, setShowTooltip, showTooltip };
 };

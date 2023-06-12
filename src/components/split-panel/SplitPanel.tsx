@@ -35,28 +35,28 @@ const StyledWrapper = styled.div`
 `;
 
 type IProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: any;
   className?: string;
+  collapseAll?: boolean;
   direction?: 'horizontal' | 'vertical';
-  /**
-   * @param minSize The minumum size in css pixel
-   * @default 10
-   */
-  minSize?: number;
   /**
    * @param gutterSize The size of the gutter in pixels
    * @default 10
    */
   gutterSize?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: any;
+  lineBar?: boolean;
+  /**
+   * @param minSize The minumum size in css pixel
+   * @default 10
+   */
+  minSize?: number;
+  onSetSizes?: Dispatch<SetStateAction<number[]>>;
   /**
    * @param sizes The initial sizes of the panes
    * @default 1 (make sure the sum of all sizes is 1)
    */
   sizes?: number[];
-  onSetSizes?: Dispatch<SetStateAction<number[]>>;
-  collapseAll?: boolean;
-  lineBar?: boolean;
 };
 
 /**
@@ -64,13 +64,13 @@ type IProps = {
  * @ref https://greggman.github.io/react-split-it/
  */
 export const SplitPanel = ({
-  className,
   children,
+  className,
   collapseAll,
   direction,
   gutterSize = 3,
-  sizes = [1],
   onSetSizes,
+  sizes = [1],
   ...props
 }: IProps) => {
   const childrenCount = Children.count(children);
@@ -96,10 +96,10 @@ export const SplitPanel = ({
   return (
     <StyledWrapper className={className}>
       <Split
-        sizes={normalizeSizes({ childrenCount, sizes })}
-        onSetSizes={onSetSizes}
-        gutterSize={!collapseAll ? gutterSize : 0}
         direction={direction}
+        gutterSize={!collapseAll ? gutterSize : 0}
+        onSetSizes={onSetSizes}
+        sizes={normalizeSizes({ childrenCount, sizes })}
         {...props}
       >
         {children}

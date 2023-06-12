@@ -20,8 +20,8 @@ type Props = {
 export const Currency = ({ amount, className, code }: Props) => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
   const formattedCurrency = new Intl.NumberFormat(`en-US`, {
-    style: 'currency',
     currency: code,
+    style: 'currency',
   })
     .format(amount)
     // Remove currency symbols because that's how we want to show it. There is no option to do this when usinge `style: 'currency'`
@@ -31,7 +31,7 @@ export const Currency = ({ amount, className, code }: Props) => {
 
   return (
     <StyledCurrency className={className}>
-      <Text type="label" color={isNegative ? 'red600' : 'gray1200'}>
+      <Text color={isNegative ? 'red600' : 'gray1200'} type="label">
         {formattedCurrency}
       </Text>
       <Text color={isNegative ? 'red400' : 'gray700'}>

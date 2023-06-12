@@ -33,9 +33,9 @@ type NormalizedArgs<ResponseData> = readonly [
 ];
 
 type ObjectArgs<ResponseData> = {
-  key: NormalizedArgs<ResponseData>[0];
-  fetcher: NormalizedArgs<ResponseData>[1];
   config: NormalizedArgs<ResponseData>[2];
+  fetcher: NormalizedArgs<ResponseData>[1];
+  key: NormalizedArgs<ResponseData>[0];
 };
 
 const isSwrFetcher = <T>(
@@ -49,9 +49,9 @@ const normalizeArguments = <T>(...args: UseSwrArgs<T>): NormalizedArgs<T> =>
     : ([args[0], null, (args[1] === null ? args[2] : args[1]) || {}] as const);
 
 const asObject = <T>(args: NormalizedArgs<T>): ObjectArgs<T> => ({
-  key: args[0],
-  fetcher: args[1],
   config: args[2],
+  fetcher: args[1],
+  key: args[0],
 });
 
 /**

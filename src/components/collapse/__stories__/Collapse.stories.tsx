@@ -10,11 +10,6 @@ import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import styled from 'styled-components';
 
 const CollapseMeta: Meta = {
-  component: CollapseComponent,
-
-  parameters: {
-    docs: { source: { type: 'code' } },
-  },
   argTypes: {
     children: {
       table: {
@@ -26,6 +21,11 @@ const CollapseMeta: Meta = {
         disable: true,
       },
     },
+  },
+
+  component: CollapseComponent,
+  parameters: {
+    docs: { source: { type: 'code' } },
   },
 };
 
@@ -43,8 +43,8 @@ const StyledCollapseComponent = styled(CollapseComponent)`
 `;
 
 const Template: StoryFn<CollapseProps> = ({
-  className,
   children,
+  className,
   collapseSize,
 }) => {
   const [open1, setOpen1] = useState(true);

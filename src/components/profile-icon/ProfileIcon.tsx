@@ -25,7 +25,7 @@ export const ProfileIcon = ({ email, size = 32 }: Props) => {
   const profileUrl = email && getGravatarUrl(email, options);
 
   if (profileUrl) {
-    return <Avatar size={size} alt="Profile" src={profileUrl} />;
+    return <Avatar alt="Profile" size={size} src={profileUrl} />;
   }
   return <UserAvatar size={size} />;
 };

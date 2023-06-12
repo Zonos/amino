@@ -22,14 +22,14 @@ const Wrapper = styled.div<{ color?: SpinnerColor }>`
 `;
 
 const Template: StoryFn<SpinnerProps> = ({
-  size,
   color,
+  size,
   ...props
 }: SpinnerProps) => (
   <Wrapper color={color}>
-    <SpinnerComponent size={size && size - 10} color={color} {...props} />
-    <SpinnerComponent size={size} color={color} {...props} />
-    <SpinnerComponent size={size && size + 10} color={color} {...props} />
+    <SpinnerComponent color={color} size={size && size - 10} {...props} />
+    <SpinnerComponent color={color} size={size} {...props} />
+    <SpinnerComponent color={color} size={size && size + 10} {...props} />
   </Wrapper>
 );
 

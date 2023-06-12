@@ -9,24 +9,17 @@ import { CubeIcon } from 'src/icons/CubeIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 
 const InputMeta: Meta = {
-  component: Input,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
-    },
-  },
   argTypes: {
-    width: {
-      type: 'number',
+    autoFocus: {
+      type: 'boolean',
     },
-    placeholder: {
+    disabled: {
+      type: 'boolean',
+    },
+    error: {
       type: 'string',
     },
     helpText: {
-      type: 'string',
-    },
-    value: {
       type: 'string',
     },
     inputPrefix: {
@@ -39,45 +32,52 @@ const InputMeta: Meta = {
         disable: true,
       },
     },
-    prefix: {
-      options: ['No prefix', 'With text', 'With icon'],
-      mapping: {
-        'No prefix': '',
-        'With text': 'USD',
-        'With icon': <CubeIcon size={20} />,
-      },
-    },
-    suffix: {
-      options: ['No prefix', 'With text', 'With icon'],
-      mapping: {
-        'No prefix': '',
-        'With text': 'USD',
-        'With icon': <CubeIcon size={20} />,
-      },
-    },
     pattern: {
       type: 'string',
     },
-    required: {
-      type: 'boolean',
+    placeholder: {
+      type: 'string',
     },
-    disabled: {
-      type: 'boolean',
+    prefix: {
+      mapping: {
+        'No prefix': '',
+        'With icon': <CubeIcon size={20} />,
+        'With text': 'USD',
+      },
+      options: ['No prefix', 'With text', 'With icon'],
     },
     readOnly: {
       type: 'boolean',
     },
-    autoFocus: {
+    required: {
       type: 'boolean',
+    },
+    suffix: {
+      mapping: {
+        'No prefix': '',
+        'With icon': <CubeIcon size={20} />,
+        'With text': 'USD',
+      },
+      options: ['No prefix', 'With text', 'With icon'],
     },
     tabIndex: {
       type: 'number',
     },
-    error: {
-      type: 'string',
-    },
     type: {
       type: 'string',
+    },
+    value: {
+      type: 'string',
+    },
+    width: {
+      type: 'number',
+    },
+  },
+  component: Input,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
     },
   },
 };
@@ -136,10 +136,10 @@ DateInput.args = {
 export const DateInputClamped = Template.bind({});
 DateInputClamped.args = {
   label: 'Date input with range',
+  max: new Date('2009-01-18').toISOString().split('T')[0],
+  min: new Date('2009-01-10').toISOString().split('T')[0],
   placeholder: 'placeholder',
   type: 'date',
-  min: new Date('2009-01-10').toISOString().split('T')[0],
-  max: new Date('2009-01-18').toISOString().split('T')[0],
 };
 
 export const DateTimeInput = Template.bind({});
@@ -152,10 +152,10 @@ DateTimeInput.args = {
 export const DateTimeInputClamped = Template.bind({});
 DateTimeInputClamped.args = {
   label: 'Datetime input with range',
+  max: new Date('2009-01-18T03:50:00').toISOString().slice(0, -1),
+  min: new Date('2009-01-10T03:24:00').toISOString().slice(0, -1),
   placeholder: 'placeholder',
   type: 'datetime-local',
-  min: new Date('2009-01-10T03:24:00').toISOString().slice(0, -1),
-  max: new Date('2009-01-18T03:50:00').toISOString().slice(0, -1),
   value: '2009-01-13 09:21:00',
 };
 
@@ -168,23 +168,23 @@ TimeInput.args = {
 
 export const InputWithHelpText = Template.bind({});
 InputWithHelpText.args = {
-  label: 'Example input',
   helpText: "This is the input's help text",
+  label: 'Example input',
   value: 'Magnificent',
 };
 
 export const InputWithError = Template.bind({});
 InputWithError.args = {
-  label: 'Example input',
   error: true,
+  label: 'Example input',
   value: 'Magnificent',
 };
 
 export const InputWithErrorAndHelpText = Template.bind({});
 InputWithErrorAndHelpText.args = {
-  label: 'Example input',
   error: true,
   helpText: 'This is an error',
+  label: 'Example input',
   value: 'Magnificent',
 };
 
@@ -199,14 +199,14 @@ export const PrefixAndValuePrefix = Template.bind({});
 PrefixAndValuePrefix.args = {
   label: 'Phone number',
   prefix: <BagIcon />,
-  valuePrefix: '+1-383',
   value: '435-229-9136',
+  valuePrefix: '+1-383',
 };
 
 export const Suffix = Template.bind({});
 Suffix.args = {
   label: 'Example input',
-  suffix: <FlagIcon iconScale="large" code="AI" />,
+  suffix: <FlagIcon code="AI" iconScale="large" />,
 };
 
 export const DynamicErrorAndHelpText: StoryFn<InputProps> = ({

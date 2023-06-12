@@ -75,6 +75,7 @@ export const TimeInput = ({
   return (
     <StyledWrapper className={className}>
       <AminoInput
+        ref={inputRef}
         aria-label={label}
         autoFocus={autoFocus}
         disabled={disabled}
@@ -87,19 +88,18 @@ export const TimeInput = ({
         placeholder={placeholder}
         prefix={prefix}
         readOnly={readOnly}
-        ref={inputRef}
         required={required}
         suffix={
           suffix || (
             <StyledActionWrapper>
               <StyledButtonAction
-                type="button"
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
                     new Event('input', { bubbles: true })
                   );
                 }}
+                type="button"
               >
                 <ClockIcon size={20} />
               </StyledButtonAction>

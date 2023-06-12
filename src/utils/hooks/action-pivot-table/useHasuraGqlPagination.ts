@@ -5,19 +5,19 @@ import { extractQueryParams, paramRegex } from 'src/utils/_extractQueryParams';
 type Props = {
   actionName: string;
   query: string;
-  setQuery: (query: string) => void;
   setCachingKey: (key: string) => void;
+  setQuery: (query: string) => void;
 };
 
 export const useHasuraGqlPagination = ({
-  query,
-  setQuery,
   actionName,
+  query,
   setCachingKey,
+  setQuery,
 }: Props) => {
   const { limit: _limit, offset: _offset } = extractQueryParams({
-    query,
     actionName,
+    query,
   });
   const limit =
     _limit && typeof _limit === 'string' ? parseInt(_limit, 10) : 10;
@@ -55,8 +55,8 @@ export const useHasuraGqlPagination = ({
   );
 
   return {
-    handlePagination,
     currentPage,
+    handlePagination,
     limit,
     offset,
   };

@@ -49,16 +49,16 @@ const Template: StoryFn<typeof Banner> = ({
   return (
     <StyledVStack>
       <Banner
-        intent={intent}
         footerActions={
           <Button
             color="inherit"
-            onClick={() => setOpenIds(ids.filter(Boolean))}
             intent="outline"
+            onClick={() => setOpenIds(ids.filter(Boolean))}
           >
             Open Banners
           </Button>
         }
+        intent={intent}
       />
 
       {openIds.includes('withTitle') && (
@@ -94,8 +94,8 @@ const Template: StoryFn<typeof Banner> = ({
       {openIds.includes('titleWithParagraph') && (
         <Banner
           intent={intent}
-          title={title}
           onClose={() => toggleBannerId('titleWithParagraph')}
+          title={title}
         >
           {paragraph}
         </Banner>
@@ -103,8 +103,8 @@ const Template: StoryFn<typeof Banner> = ({
       {openIds.includes('titleWithParagraphWithFooterActions') && (
         <Banner
           footerActions={footerActions}
-          onClose={() => toggleBannerId('titleWithParagraphWithFooterActions')}
           intent={intent}
+          onClose={() => toggleBannerId('titleWithParagraphWithFooterActions')}
           title={title}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -112,18 +112,15 @@ const Template: StoryFn<typeof Banner> = ({
       )}
       {openIds.includes('titleWithParagraphWithHeaderActions') && (
         <Banner
-          intent={intent}
-          title={title}
-          onClose={() => toggleBannerId('titleWithParagraphWithHeaderActions')}
           headerActions={
             <a
-              target="_blank"
               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
               rel="noreferrer"
+              target="_blank"
             >
               <Button
-                borderColor="gray1200"
                 background="inherit"
+                borderColor="gray1200"
                 color="inherit"
                 intent="outline"
               >
@@ -131,6 +128,9 @@ const Template: StoryFn<typeof Banner> = ({
               </Button>
             </a>
           }
+          intent={intent}
+          onClose={() => toggleBannerId('titleWithParagraphWithHeaderActions')}
+          title={title}
         >
           {paragraph}
         </Banner>
@@ -169,9 +169,9 @@ DefaultBanner.args = {
       background="inherit"
       borderColor="gray400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -206,9 +206,9 @@ InfoBanner.args = {
       background="inherit"
       borderColor="blue400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -244,9 +244,9 @@ SuccessBanner.args = {
       background="inherit"
       borderColor="green400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -282,9 +282,9 @@ WarningBanner.args = {
       background="inherit"
       borderColor="orange400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -320,9 +320,9 @@ ErrorBanner.args = {
       background="inherit"
       borderColor="red400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>

@@ -10,52 +10,52 @@ type Props = {
 export const MM = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
   const ids = useStableUniqueId(2);
   return (
-    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 640 480">
+    <FlagIconBase ref={ref} height={height} viewBox="0 0 640 480" width={width}>
       <defs>
         <path
-          id={`${ids[0]}`}
-          fill="#fff"
           d="m0-.5.2.5h-.4z"
+          fill="#fff"
+          id={`${ids[0]}`}
           transform="scale(8.844)"
         />
         <g id={`${ids[1]}`}>
           <use
-            xlinkHref={`#${ids[0]}`}
-            width="18"
             height="12"
             transform="rotate(-144)"
+            width="18"
+            xlinkHref={`#${ids[0]}`}
           />
           <use
-            xlinkHref={`#${ids[0]}`}
-            width="18"
             height="12"
             transform="rotate(-72)"
-          />
-          <use xlinkHref={`#${ids[0]}`} width="18" height="12" />
-          <use
-            xlinkHref={`#${ids[0]}`}
             width="18"
+            xlinkHref={`#${ids[0]}`}
+          />
+          <use height="12" width="18" xlinkHref={`#${ids[0]}`} />
+          <use
             height="12"
             transform="rotate(72)"
+            width="18"
+            xlinkHref={`#${ids[0]}`}
           />
           <use
-            xlinkHref={`#${ids[0]}`}
-            width="18"
             height="12"
             transform="rotate(144)"
+            width="18"
+            xlinkHref={`#${ids[0]}`}
           />
         </g>
       </defs>
-      <path fill="#fecb00" d="M0-.1h640V160H0z" />
-      <path fill="#ea2839" d="M0 320h640v160H0z" />
-      <path fill="#34b233" d="M0 160h640v160H0z" />
+      <path d="M0-.1h640V160H0z" fill="#fecb00" />
+      <path d="M0 320h640v160H0z" fill="#ea2839" />
+      <path d="M0 160h640v160H0z" fill="#34b233" />
       <use
-        xlinkHref={`#${ids[1]}`}
-        width="18"
         height="12"
-        x="9"
-        y="6.4"
         transform="matrix(40 0 0 40 -40 0)"
+        width="18"
+        x="9"
+        xlinkHref={`#${ids[1]}`}
+        y="6.4"
       />
     </FlagIconBase>
   );

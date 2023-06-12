@@ -14,37 +14,37 @@ import { useSwr } from './useSwr';
 type Props = {
   // caching key (use cache if it's already loaded in swr)
   cachingKey: string;
-  query: string;
-  operationName?: string;
-  variables?: string;
   customFetcher: HandleFetchFetcher | null;
   headers?: Record<string, string>;
+  operationName?: string;
+  query: string;
   url: string;
+  variables?: string;
 };
 
 export const useGraphiqlFetcher = ({
   cachingKey,
-  query,
-  operationName,
-  variables,
   customFetcher,
+  operationName,
+  query,
   url,
+  variables,
 }: Props) => {
   const [resultData, setResultData] =
     useState<GraphiqlExecutionResult<ExecutionResultType> | null>(null);
 
   const fetcher = graphiqlFetcher({
-    url,
     customFetcher,
+    url,
   });
 
   const { data, isLoading } = useSwr(
     cachingKey,
     async () => {
       const result = await fetcher({
+        operationName,
         query,
         variables: variables ? JSON.parse(variables) : undefined,
-        operationName,
       });
       return { json: result };
     },
@@ -75,5 +75,5 @@ export const useGraphiqlFetcher = ({
     }
   }, [data]);
 
-  return { graphiqlFetcher: gqlFetcher, resultData, isLoading };
+  return { graphiqlFetcher: gqlFetcher, isLoading, resultData };
 };

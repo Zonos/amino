@@ -7,24 +7,24 @@ import {
 import { BaseWrapper } from './BaseWrapper';
 
 const UserAvatarMeta: Meta = {
-  component: Avatar,
   argTypes: {
     bordered: {
       control: { type: 'boolean' },
     },
   },
+  component: Avatar,
 };
 
 export default UserAvatarMeta;
 
 const UserAvatarTemplate: StoryFn<UserAvatarProps> = ({
-  size,
   bordered,
+  size,
 }: UserAvatarProps) => (
   <BaseWrapper>
-    <Avatar shape="round" size={size} bordered={bordered} />
-    <Avatar shape="rounded" size={size} bordered={bordered} />
-    <Avatar shape="square" size={size} bordered={bordered} />
+    <Avatar bordered={bordered} shape="round" size={size} />
+    <Avatar bordered={bordered} shape="rounded" size={size} />
+    <Avatar bordered={bordered} shape="square" size={size} />
   </BaseWrapper>
 );
 

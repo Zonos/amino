@@ -31,18 +31,18 @@ const Template: StoryFn<Props> = ({
 
 export const OwnershipBlock = Template.bind({});
 OwnershipBlock.args = {
-  docChampion: { name: 'Doc Champion', id: '1' },
-  docEngineer: { name: 'Doc Engineer', id: '2' },
-  docOwner: { name: 'Doc Owner', id: '3' },
-  docWriter: { name: 'Doc Writer', id: '4' },
+  docChampion: { id: '1', name: 'Doc Champion' },
+  docEngineer: { id: '2', name: 'Doc Engineer' },
+  docOwner: { id: '3', name: 'Doc Owner' },
+  docWriter: { id: '4', name: 'Doc Writer' },
   isLoading: false,
 };
 
 export const OwnershipBlockLoading = Template.bind({});
 OwnershipBlockLoading.args = {
-  docChampion: { name: 'Doc Champion', id: '1' },
-  docEngineer: { name: 'Doc Engineer', id: '2' },
-  docOwner: { name: 'Doc Owner', id: '3' },
-  docWriter: { name: 'Doc Writer', id: '4' },
+  docChampion: { id: '1', name: 'Doc Champion' },
+  docEngineer: { id: '2', name: 'Doc Engineer' },
+  docOwner: { id: '3', name: 'Doc Owner' },
+  docWriter: { id: '4', name: 'Doc Writer' },
   isLoading: true,
 };

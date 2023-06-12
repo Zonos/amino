@@ -83,8 +83,8 @@ export const handleRequest = async <ResponseBody extends unknown>(
   } catch (e) {
     const message = 'Unknown error';
     return {
-      json: null,
       errors: [{ message: `${status}: ${message}`, type: status }],
+      json: null,
       response: null,
     };
   }

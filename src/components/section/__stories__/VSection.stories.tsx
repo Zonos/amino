@@ -47,8 +47,8 @@ BasicVSection.args = {
       </p>
     </StyledDiv>
   ),
-  sublabel: 'Sublabel',
   label: 'My VSection',
+  sublabel: 'Sublabel',
 };
 BasicVSection.parameters = {
   design: {
@@ -59,6 +59,12 @@ BasicVSection.parameters = {
 
 export const VSectionWithActions = Template.bind({});
 VSectionWithActions.args = {
+  actions: (
+    <>
+      <Button size="md">Receipt</Button>
+      <Button size="md">Cancel order</Button>
+    </>
+  ),
   children: (
     <>
       <Input label="An input" onChange={() => null} value="value" />
@@ -73,12 +79,6 @@ VSectionWithActions.args = {
   ),
   label: 'Payment',
   sublabel: 'Sublabel',
-  actions: (
-    <>
-      <Button size="md">Receipt</Button>
-      <Button size="md">Cancel order</Button>
-    </>
-  ),
 };
 VSectionWithActions.parameters = {
   design: {

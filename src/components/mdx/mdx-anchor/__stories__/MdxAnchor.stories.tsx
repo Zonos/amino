@@ -36,8 +36,8 @@ const Template: StoryFn<MdxAnchorProps> = ({
     <MdxAnchorComponent
       className={className}
       href="/"
-      title="Valid internal anchor example"
       internalPaths={internalPaths}
+      title="Valid internal anchor example"
     >
       Valid internal anchor example
     </MdxAnchorComponent>
@@ -45,8 +45,8 @@ const Template: StoryFn<MdxAnchorProps> = ({
     <MdxAnchorComponent
       className={className}
       href="/invalid-path"
-      title="Invalid internal anchor example"
       internalPaths={internalPaths}
+      title="Invalid internal anchor example"
     >
       <RedText>
         Invalid internal anchor example (check console warnings)
@@ -56,8 +56,8 @@ const Template: StoryFn<MdxAnchorProps> = ({
     <MdxAnchorComponent
       className={className}
       href="https://zonos.com"
-      title="External anchor example"
       internalPaths={internalPaths}
+      title="External anchor example"
     >
       External anchor example
     </MdxAnchorComponent>

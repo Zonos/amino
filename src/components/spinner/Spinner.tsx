@@ -90,15 +90,15 @@ export type SpinnerColor =
   | Exclude<Intent, 'default' | 'error'>;
 
 export type SpinnerProps = {
-  size?: number;
-  color?: SpinnerColor;
   className?: string;
+  color?: SpinnerColor;
+  size?: number;
 };
 
-export const Spinner = ({ size, color, className }: SpinnerProps) => (
+export const Spinner = ({ className, color, size }: SpinnerProps) => (
   <AminoSpinner
     className={[className, color || ''].join(' ')}
-    size={size || 32}
     color={color}
+    size={size || 32}
   />
 );

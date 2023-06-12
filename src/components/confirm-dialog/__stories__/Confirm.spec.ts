@@ -5,7 +5,7 @@ test.describe('Functionality of confirmation dialog', () => {
   test.beforeEach(async ({ page }) => {
     page.goto('/');
     await page.getByRole('button', { name: 'Confirm-Dialog' }).click();
-    await page.getByRole('button', { name: 'Confirm', exact: true }).click();
+    await page.getByRole('button', { exact: true, name: 'Confirm' }).click();
     await page.getByRole('link', { name: 'Confirm' }).click();
 
     /** Open popup since interact with `iframe` doesn't give much insight when debuging */
@@ -35,7 +35,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .getByRole('button', { name: 'Trigger default confirmation' })
       .click();
     await framePage
-      .getByRole('button', { name: 'Do action', exact: true })
+      .getByRole('button', { exact: true, name: 'Do action' })
       .click();
     await expect(
       framePage.getByText('Default confirmation: confirmed')
@@ -53,7 +53,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .getByRole('button', { name: 'Trigger danger confirmation' })
       .click();
     await framePage
-      .getByRole('button', { name: 'Do action', exact: true })
+      .getByRole('button', { exact: true, name: 'Do action' })
       .click();
     await expect(
       framePage.getByText('Danger confirmation: confirmed')
@@ -71,7 +71,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .getByRole('button', { name: 'Trigger warning confirmation' })
       .click();
     await framePage
-      .getByRole('button', { name: 'Do action', exact: true })
+      .getByRole('button', { exact: true, name: 'Do action' })
       .click();
     await expect(
       framePage.getByText('Warning confirmation: confirmed')

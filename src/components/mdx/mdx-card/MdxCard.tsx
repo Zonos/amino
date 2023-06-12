@@ -89,27 +89,27 @@ const InnerWrapper = styled.div`
 `;
 
 export type Props = {
-  product?: Products;
-  /**
-   * @default false
-   */
-  noGlowOnHover?: boolean;
+  children?: JSX.Element;
   /**
    * @default gray
    */
   glowingColor?: ColorPrefix;
+  /**
+   * @default false
+   */
+  noGlowOnHover?: boolean;
+  product?: Products;
   xlabel: string;
   xsubLabel: string;
-  children?: JSX.Element;
 };
 
 export const MdxCard = ({
-  product,
+  children,
   glowingColor = 'gray',
   noGlowOnHover = false,
+  product,
   xlabel,
   xsubLabel,
-  children,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -156,9 +156,9 @@ export const MdxCard = ({
     >
       <StyledAnchor
         as={link ? 'a' : 'div'}
+        className="link-button"
         href={link || undefined}
         title={xlabel}
-        className="link-button"
       >
         <InnerWrapper>
           {product && <div>{productDetails.icon}</div>}

@@ -12,25 +12,25 @@ const RestStateMeta: Meta = {
 export default RestStateMeta;
 
 const Template: StoryFn<RestStateProps> = ({
-  label,
-  subtitle,
   action,
   icon,
+  label,
+  subtitle,
 }: RestStateProps) => (
-  <RestState label={label} subtitle={subtitle} action={action} icon={icon} />
+  <RestState action={action} icon={icon} label={label} subtitle={subtitle} />
 );
 
 export const BasicRestState = Template.bind({});
 BasicRestState.args = {
+  icon: '',
   label: 'Example Rest State',
   subtitle: 'Example Rest State',
-  icon: '',
 };
 
 export const WithImage = Template.bind({});
 WithImage.args = {
-  label: 'Amino!',
-  subtitle: 'Woohooooo I LOVE CHICKEN',
   action: <Button>Click me!</Button>,
   icon: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
+  label: 'Amino!',
+  subtitle: 'Woohooooo I LOVE CHICKEN',
 };

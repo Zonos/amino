@@ -48,7 +48,7 @@ export const Tag = ({
   onClose,
 }: TagProps) => (
   <TagWrapper className={className}>
-    <StyledTag type="button" iconRight={iconRight} onClick={onClose}>
+    <StyledTag iconRight={iconRight} onClick={onClose} type="button">
       {icon}
       <p>{children}</p>
       <RemoveIcon size={16} />

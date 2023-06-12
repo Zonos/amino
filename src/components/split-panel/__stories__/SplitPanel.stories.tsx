@@ -82,8 +82,8 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
       <StyledSplitPanel
         collapseAll={isCollapse}
         {...props}
-        sizes={sizes}
         onSetSizes={setSizes}
+        sizes={sizes}
       >
         {renderSplitItem({
           id: 1,

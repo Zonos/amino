@@ -9,12 +9,12 @@ const DangerZoneMeta: Meta = {
 export default DangerZoneMeta;
 
 const Template: StoryFn<CardProps> = ({
-  label,
-  children,
   actions,
+  children,
   footerActions,
+  label,
 }: CardProps) => (
-  <DangerZone label={label} actions={actions} footerActions={footerActions}>
+  <DangerZone actions={actions} footerActions={footerActions} label={label}>
     {children}
   </DangerZone>
 );

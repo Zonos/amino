@@ -11,16 +11,16 @@ export type ToastContextFunctionType = (
   props?: BaseProps
 ) => void;
 type ToastType = {
-  toast: Parameters<ToastContextFunctionType>[0];
   props?: Parameters<ToastContextFunctionType>[1];
+  toast: Parameters<ToastContextFunctionType>[0];
   uuid: string;
 };
 export const ToastContext = createContext<ToastContextFunctionType>(
   (toast, props) => {
     //  This function is for the context type definition purpose.
     const defaultFunction = () => ({
-      toast,
       props,
+      toast,
     });
     defaultFunction();
   }
@@ -38,8 +38,8 @@ export const ToastContextProvider = ({ children }: Props) => {
       setToasts(t => [
         ...t,
         {
-          toast,
           props,
+          toast,
           uuid: uuidv4(),
         },
       ]);
@@ -56,10 +56,10 @@ export const ToastContextProvider = ({ children }: Props) => {
         <div className="toast-container">
           <div className="toasts-wrapper">
             <AnimatePresence>
-              {toasts.map(({ toast, props, uuid }) => {
+              {toasts.map(({ props, toast, uuid }) => {
                 const key = `toast-${toast}-${uuid}`;
                 return (
-                  <Toast toastKey={key} key={key} intent={props?.intent}>
+                  <Toast key={key} intent={props?.intent} toastKey={key}>
                     {toast}
                   </Toast>
                 );

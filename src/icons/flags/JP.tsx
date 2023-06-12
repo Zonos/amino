@@ -10,24 +10,24 @@ type Props = {
 export const JP = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
   const ids = useStableUniqueId(1);
   return (
-    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 640 480">
+    <FlagIconBase ref={ref} height={height} viewBox="0 0 640 480" width={width}>
       <defs>
         <clipPath id={`${ids[0]}`}>
-          <path fillOpacity=".7" d="M-88 32h640v480H-88z" />
+          <path d="M-88 32h640v480H-88z" fillOpacity=".7" />
         </clipPath>
       </defs>
       <g
+        clipPath={`url(#${ids[0]})`}
         fillRule="evenodd"
         strokeWidth="1pt"
-        clipPath={`url(#${ids[0]})`}
         transform="translate(88 -32)"
       >
-        <path fill="#fff" d="M-128 32h720v480h-720z" />
+        <path d="M-128 32h720v480h-720z" fill="#fff" />
         <circle
           cx="523.1"
           cy="344.1"
-          r="194.9"
           fill="#d30000"
+          r="194.9"
           transform="translate(-168.4 8.6) scale(.76554)"
         />
       </g>

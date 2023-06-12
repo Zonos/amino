@@ -14,7 +14,6 @@ import { HStack } from 'src/components/stack/HStack';
 import { BaseWrapper } from './BaseWrapper';
 
 const ImageAvatarMeta: Meta = {
-  component: Avatar,
   argTypes: {
     bordered: {
       control: { type: 'boolean' },
@@ -25,6 +24,7 @@ const ImageAvatarMeta: Meta = {
       },
     },
   },
+  component: Avatar,
 };
 
 export default ImageAvatarMeta;
@@ -39,50 +39,50 @@ const platformList = [
 ];
 
 const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
-  size,
-  imageUrl,
   bordered,
+  imageUrl,
+  size,
 }: ImageAvatarProps) => (
   <HStack>
     <BaseWrapper>
       <Avatar
+        bordered={bordered}
+        imageUrl={imageUrl}
         shape="round"
         size={size}
-        bordered={bordered}
-        imageUrl={imageUrl}
       />
       <Avatar
+        bordered={bordered}
+        imageUrl={imageUrl}
         shape="rounded"
         size={size}
-        bordered={bordered}
-        imageUrl={imageUrl}
       />
       <Avatar
-        shape="square"
-        size={size}
         bordered={bordered}
         imageUrl={imageUrl}
+        shape="square"
+        size={size}
       />
     </BaseWrapper>
     {platformList.map(platform => (
       <BaseWrapper>
         <Avatar
+          bordered={bordered}
+          imageUrl={`${platform}`}
           shape="round"
           size={size}
-          bordered={bordered}
-          imageUrl={`${platform}`}
         />
         <Avatar
+          bordered={bordered}
+          imageUrl={`${platform}`}
           shape="rounded"
           size={size}
-          bordered={bordered}
-          imageUrl={`${platform}`}
         />
         <Avatar
-          shape="square"
-          size={size}
           bordered={bordered}
           imageUrl={`${platform}`}
+          shape="square"
+          size={size}
         />
       </BaseWrapper>
     ))}
@@ -91,8 +91,8 @@ const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
 
 export const ImageAvatar = ImageAvatarTemplate.bind({});
 ImageAvatar.args = {
-  shape: 'round',
-  size: 56,
   imageUrl:
     'https://upload.wikimedia.org/wikipedia/commons/2/23/Mountain_Goat%2C_Enchantments_Basin.jpg',
+  shape: 'round',
+  size: 56,
 };

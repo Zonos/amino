@@ -8,19 +8,19 @@ describe('storage tests', () => {
   });
 
   const schema = z.object({
-    name: z.string(),
     age: z.number(),
+    name: z.string(),
   });
 
   type Person = z.infer<typeof schema>;
 
   test(`Value doesn't exist`, () => {
     const result = getStorageItem({
-      type: 'local',
-      key: 'person',
       json: {
         schema,
       },
+      key: 'person',
+      type: 'local',
     });
 
     expect(result).toStrictEqual(null);
@@ -28,18 +28,18 @@ describe('storage tests', () => {
 
   test(`Good value`, () => {
     const p: Person = {
-      name: 'test',
       age: 12,
+      name: 'test',
     };
 
     localStorage.setItem('person', JSON.stringify(p));
 
     const result = getStorageItem({
-      type: 'local',
-      key: 'person',
       json: {
         schema,
       },
+      key: 'person',
+      type: 'local',
     });
 
     expect(result).toStrictEqual(p);
@@ -47,18 +47,18 @@ describe('storage tests', () => {
 
   test(`Value is invalid`, () => {
     const almostAPerson = {
-      names: 'test',
       age: 12,
+      names: 'test',
     };
 
     localStorage.setItem('person', JSON.stringify(almostAPerson));
 
     const result = getStorageItem({
-      type: 'local',
-      key: 'person',
       json: {
         schema,
       },
+      key: 'person',
+      type: 'local',
     });
 
     expect(result).toStrictEqual(null);

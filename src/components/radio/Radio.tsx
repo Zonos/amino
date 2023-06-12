@@ -65,13 +65,13 @@ const RadioContainer = styled.div<{
 `;
 
 export type RadioProps = {
-  disabled?: boolean;
   checked: boolean;
-  onChange: (checked: boolean) => void;
+  disabled?: boolean;
   label?: string;
+  onChange: (checked: boolean) => void;
 };
 
-export const Radio = ({ disabled, label, checked, onChange }: RadioProps) => (
+export const Radio = ({ checked, disabled, label, onChange }: RadioProps) => (
   <RadioContainer
     checked={checked}
     className={disabled ? 'disabled' : ''}
@@ -82,12 +82,12 @@ export const Radio = ({ disabled, label, checked, onChange }: RadioProps) => (
       <AnimatePresence>
         {checked && (
           <motion.svg
-            transition={{ ease: [0.4, 0, 0.2, 1], duration: 0.35 }}
-            initial={{ opacity: 0, scale: 1.5 }}
+            key="radio"
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.5 }}
-            key="radio"
             fill="currentColor"
+            initial={{ opacity: 0, scale: 1.5 }}
+            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             viewBox="0 0 10 10"
           >
             <circle cx="5" cy="5" r="5" />
