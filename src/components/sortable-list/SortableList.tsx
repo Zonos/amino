@@ -23,20 +23,20 @@ const StyledSortableList = styled.div`
 export interface SortableListProps {
   children: ReactNode;
   itemIds: string[];
-  handleDragEnd: (e: DragEndEvent) => void;
   sortingStrategy?: SortingStrategy;
+  handleDragEnd: (e: DragEndEvent) => void;
 }
 
 export const SortableList = ({
   children,
-  itemIds,
   handleDragEnd,
+  itemIds,
   sortingStrategy = verticalListSortingStrategy,
 }: SortableListProps) => (
   <DndContext
-    onDragEnd={handleDragEnd}
     collisionDetection={closestCenter}
     modifiers={[restrictToParentElement, restrictToVerticalAxis]}
+    onDragEnd={handleDragEnd}
   >
     <SortableContext items={itemIds} strategy={sortingStrategy}>
       <StyledSortableList>{children}</StyledSortableList>

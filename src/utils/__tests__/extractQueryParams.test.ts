@@ -10,8 +10,8 @@ test('Params in one line', () => {
   }`;
   expect(
     extractQueryParams({
-      query,
       actionName: 'viewport_amount_subtotals_aggregate',
+      query,
     })
   ).toMatchInlineSnapshot(`
     {
@@ -34,8 +34,8 @@ test('Params in multiple lines', () => {
   }`;
   expect(
     extractQueryParams({
-      query,
       actionName: 'viewport_amount_subtotals_aggregate',
+      query,
     })
   ).toMatchInlineSnapshot(`
     {

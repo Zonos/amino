@@ -35,9 +35,9 @@ const Template: StoryFn<Props> = () => {
       <FlexWrap>
         <ProfileIconComponent email={email} />
         <Input
+          onChange={e => setEmail(e.target.value)}
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
         />
       </FlexWrap>
 

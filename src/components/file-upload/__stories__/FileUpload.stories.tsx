@@ -12,6 +12,13 @@ import { FileUpload as FileUploadComponent } from '../FileUpload';
 
 const FileUploadMeta: Meta = {
   component: FileUploadComponent,
+  decorators: [
+    Children => (
+      <ToastContextProvider>
+        <Children />
+      </ToastContextProvider>
+    ),
+  ],
   parameters: {
     design: {
       type: 'figma',
@@ -24,13 +31,6 @@ const FileUploadMeta: Meta = {
       });
     },
   },
-  decorators: [
-    Children => (
-      <ToastContextProvider>
-        <Children />
-      </ToastContextProvider>
-    ),
-  ],
 };
 
 export default FileUploadMeta;
@@ -46,12 +46,10 @@ export const FileUpload: StoryFn<typeof FileUploadComponent> = props => {
   return (
     <FileUploadComponent
       {...props}
-      uploadedFile={
-        file ? { name: file.name, size: `${file.size} bytes` } : null
-      }
-      error={error}
-      onRemoveFile={() => setFile(null)}
       dropzoneOptions={{
+        // maxSize: 25 << 20,
+        // eslint-disable-next-line no-bitwise
+        maxSize: 2 << 10,
         onDrop: (acceptedFiles, rejections) => {
           setError(!!rejections.length);
           rejections.forEach(rej => {
@@ -60,10 +58,12 @@ export const FileUpload: StoryFn<typeof FileUploadComponent> = props => {
           });
           setFile(acceptedFiles[0] || null);
         },
-        // maxSize: 25 << 20,
-        // eslint-disable-next-line no-bitwise
-        maxSize: 2 << 10,
       }}
+      error={error}
+      onRemoveFile={() => setFile(null)}
+      uploadedFile={
+        file ? { name: file.name, size: `${file.size} bytes` } : null
+      }
     />
   );
 };

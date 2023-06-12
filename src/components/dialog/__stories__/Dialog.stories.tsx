@@ -8,17 +8,7 @@ import { Input } from 'src/components/input/Input';
 import styled from 'styled-components';
 
 const DialogMeta: Meta = {
-  component: Dialog,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=224%3A16329',
-    },
-  },
   argTypes: {
-    height: {
-      type: 'number',
-    },
     actions: {
       table: {
         disable: true,
@@ -28,6 +18,16 @@ const DialogMeta: Meta = {
       table: {
         disable: true,
       },
+    },
+    height: {
+      type: 'number',
+    },
+  },
+  component: Dialog,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=224%3A16329',
     },
   },
 };
@@ -47,9 +47,9 @@ const CenteredDiv = styled.div`
 
 const Template: StoryFn<DialogProps & { height: number }> = ({
   actions,
-  leftActions,
   children,
   label,
+  leftActions,
   width,
   ...rest
 }) => {
@@ -59,11 +59,11 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
       <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledDialog
         {...rest}
-        leftActions={leftActions}
         actions={actions}
         label={label}
-        open={open}
+        leftActions={leftActions}
         onClose={() => setOpen(false)}
+        open={open}
         width={width}
       >
         {children}
@@ -128,7 +128,7 @@ WithLink.args = {
   label: (
     <StyledTitle>
       <span>StyledDialog title</span>
-      <Badge rounded color="blue" bold>
+      <Badge bold color="blue" rounded>
         With a link
       </Badge>
     </StyledTitle>
@@ -138,7 +138,6 @@ WithLink.args = {
 
 export const WithLeftActions = Template.bind({});
 WithLeftActions.args = {
-  leftActions: <Button>Back</Button>,
   actions: (
     <>
       <Button intent="outline">Close</Button>
@@ -147,12 +146,12 @@ WithLeftActions.args = {
   ),
   children: <div>Children</div>,
   label: 'StyledDialog title',
+  leftActions: <Button>Back</Button>,
   width: 650,
 };
 
 export const LongContentDialog = Template.bind({});
 LongContentDialog.args = {
-  leftActions: <Button>Back</Button>,
   actions: (
     <>
       <Button intent="outline">Close</Button>
@@ -193,6 +192,7 @@ LongContentDialog.args = {
     </div>
   ),
   label: 'Label',
+  leftActions: <Button>Back</Button>,
   width: 500,
 };
 
@@ -204,7 +204,6 @@ export const WithInput = ({ height }: { height: number }) => {
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledDialog
-        height={height}
         actions={
           <>
             <Button intent="outline" onClick={() => setOpen(false)}>
@@ -213,15 +212,16 @@ export const WithInput = ({ height }: { height: number }) => {
             <Button intent="primary">Submit</Button>
           </>
         }
+        height={height}
         label="With an input"
-        open={open}
         onClose={() => setOpen(false)}
+        open={open}
         width={460}
       >
         <Input
+          autoFocus
           onChange={e => setValue(e.target.value)}
           value={value}
-          autoFocus
         />
       </StyledDialog>
     </CenteredDiv>

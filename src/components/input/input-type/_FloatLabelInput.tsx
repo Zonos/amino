@@ -88,9 +88,9 @@ export const InputValuePrefix = styled.div`
 `;
 
 type TypeInput = {
+  $size: Size;
   hasPrefix: boolean;
   hasSuffix: boolean;
-  $size: Size;
 };
 const AminoInput = styled.input<TypeInput>`
   height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
@@ -218,44 +218,44 @@ export type InputMode =
   | 'url';
 
 type FloatLabelInputType = {
+  autoFocus?: boolean;
+
+  className?: string;
+
+  disabled?: boolean;
+
+  inputMode?: InputMode;
+
   /** A label that will be displayed above the input */
   label?: string;
-
-  /** Input value. Required since all inputs must be fully controlled */
-  value: string | null;
 
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: ChangeEventHandler<HTMLInputElement>;
 
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+
+  pattern?: string;
+
   /** Placeholder text to be displayed in the input */
   placeholder?: string;
-
-  /** Determines if the input is required for form validation */
-  required?: boolean;
-
-  /** Determines if the input is editable or not */
-  readOnly?: boolean;
-
-  /** Determines input type (email, password, etc.) */
-  type?: HTMLInputTypeAttribute;
 
   /** A short string displayed at the beginning of the input */
   prefix?: ReactNode;
 
-  /** An additional value that appears next to the input but cannot be changed by the input */
-  valuePrefix?: ReactNode;
-
+  /** Determines if the input is editable or not */
+  readOnly?: boolean;
+  /** Determines if the input is required for form validation */
+  required?: boolean;
+  size?: Size;
   /** A short string displayed at the end of the input */
   suffix?: ReactNode;
-
-  className?: string;
-  disabled?: boolean;
   tabIndex?: number;
-  inputMode?: InputMode;
-  pattern?: string;
-  autoFocus?: boolean;
-  size?: Size;
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  /** Determines input type (email, password, etc.) */
+  type?: HTMLInputTypeAttribute;
+  /** Input value. Required since all inputs must be fully controlled */
+  value: string | null;
+  /** An additional value that appears next to the input but cannot be changed by the input */
+  valuePrefix?: ReactNode;
 } & Pick<HelpTextProps, 'error'>;
 export type FloatLabelInputProps = FloatLabelInputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof FloatLabelInputType>;
@@ -300,7 +300,10 @@ export const FloatLabelInput = forwardRef<
         {prefix && <InputPrefix>{prefix}</InputPrefix>}
         {valuePrefix && <InputValuePrefix>{valuePrefix}</InputValuePrefix>}
         <AminoInput
+          ref={ref}
+          $size={size}
           aria-label={label}
+          autoFocus={autoFocus}
           className={[
             error ? 'has-error' : '',
             label ? 'has-label' : '',
@@ -308,26 +311,23 @@ export const FloatLabelInput = forwardRef<
             prefix ? 'has-input-prefix' : '',
             valuePrefix ? 'has-value-prefix' : '',
           ].join(' ')}
+          data-testid={testId}
+          disabled={disabled}
           hasPrefix={!!prefix}
           hasSuffix={!!suffix}
-          autoFocus={autoFocus}
-          disabled={disabled}
           inputMode={inputMode}
           onChange={onChange}
           onKeyDown={onKeyDown}
           pattern={pattern}
           placeholder={placeholder}
           readOnly={readOnly}
-          ref={ref}
           required={required}
-          $size={size}
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
-          data-testid={testId}
           {...props}
         />
-        <StyledLabelInput hasPrefix={hasPrefix} data-label={label} />
+        <StyledLabelInput data-label={label} hasPrefix={hasPrefix} />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );

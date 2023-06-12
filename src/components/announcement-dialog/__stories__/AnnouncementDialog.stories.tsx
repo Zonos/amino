@@ -11,17 +11,7 @@ import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import styled from 'styled-components';
 
 const AnnouncementDialogMeta: Meta = {
-  component: AnnouncementDialog,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=224%3A16329',
-    },
-  },
   argTypes: {
-    height: {
-      type: 'number',
-    },
     actions: {
       table: {
         disable: true,
@@ -31,6 +21,16 @@ const AnnouncementDialogMeta: Meta = {
       table: {
         disable: true,
       },
+    },
+    height: {
+      type: 'number',
+    },
+  },
+  component: AnnouncementDialog,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=224%3A16329',
     },
   },
 };
@@ -63,8 +63,8 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
         {...rest}
         announcementId={announcementId}
         label={label}
-        open={open}
         onClose={() => setOpen(false)}
+        open={open}
         width={width}
       >
         {children}
@@ -85,7 +85,7 @@ BasicDialog.args = {
       to use the updated feature.
     </>
   ),
-  image: <img src="/logo.png" alt="Announcement example" />,
+  image: <img alt="Announcement example" src="/logo.png" />,
   label: 'Feature update',
   title: 'This is a feature update!',
   width: 460,

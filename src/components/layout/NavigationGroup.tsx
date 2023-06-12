@@ -84,34 +84,34 @@ type StyledNavigationItemProps = StyledProps<NavigationItemProps>;
 type StyledNavigationGroupItemProps = StyledProps<NavigationGroupProps>;
 
 export type NavigationItemProps = {
-  content: ReactNode;
   className?: string;
+  content: ReactNode;
   icon?: ReactNode;
   isActive?: boolean;
 };
 
 export type NavigationGroupProps = {
-  /** **NOTE**: Should be `NavigationItem` component in order to have proper styling. If you want to use `href`, WRAP the `anchor` tag outside of the `NavigationItem` component. */
-  content: ReactElement<NavigationItemProps> | HTMLAnchorElement;
-  className?: string;
   children: ReactNode;
+  className?: string;
   /**
    * @default false
    */
   collapsed?: boolean;
+  /** **NOTE**: Should be `NavigationItem` component in order to have proper styling. If you want to use `href`, WRAP the `anchor` tag outside of the `NavigationItem` component. */
+  content: ReactElement<NavigationItemProps> | HTMLAnchorElement;
 };
 
 export const NavigationItem = ({
-  content,
   className,
+  content,
   icon,
   isActive,
 }: NavigationItemProps) => (
   <StyledNavigationItem
-    className={className}
     $content={content}
     $icon={icon}
     $isActive={isActive}
+    className={className}
   >
     {icon && <StyledNavigationItemIcon>{icon}</StyledNavigationItemIcon>}
     {content}
@@ -119,10 +119,10 @@ export const NavigationItem = ({
 );
 
 export const NavigationGroup = ({
-  content,
   children,
   className,
   collapsed = false,
+  content,
 }: NavigationGroupProps) => (
   <Wrapper className={className}>
     <StyledItemWrapper $collapsed={collapsed}>{content}</StyledItemWrapper>

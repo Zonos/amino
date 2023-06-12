@@ -26,24 +26,24 @@ const PrimaryListTemplate: StoryFn<ListProps> = ({
   return (
     <List withBorder={withBorder} withNegativeMargin={withNegativeMargin}>
       <ListItem
-        label="Label"
         disabled={false}
-        subtitle="subtitle"
+        label="Label"
         onClick={() => updateSelectedListItem(1)}
         selected={selectedListItem === 1}
+        subtitle="subtitle"
       />
       <ListItem
-        label="Label"
         disabled
-        subtitle="subtitle"
+        label="Label"
         onClick={() => updateSelectedListItem(2)}
         selected={selectedListItem === 2}
+        subtitle="subtitle"
       />
       <ListItem
         label="Label"
-        subtitle="subtitle"
         onClick={() => updateSelectedListItem(3)}
         selected={selectedListItem === 3}
+        subtitle="subtitle"
       />
     </List>
   );
@@ -57,7 +57,7 @@ PrimaryListTemplate.args = {
 
 export const OneItem = () => (
   <List>
-    <ListItem label="Label" disabled={false} subtitle="subtitle" />
+    <ListItem disabled={false} label="Label" subtitle="subtitle" />
   </List>
 );
 
@@ -72,30 +72,30 @@ export const ManyItems = () => {
     <List>
       <ListItem
         decorator={
-          <Thumbnail shape="round" size={16} icon={<ArrowDownIcon />} />
+          <Thumbnail icon={<ArrowDownIcon />} shape="round" size={16} />
         }
-        label="Label"
         disabled={false}
-        subtitle="subtitle"
-        selected={selectedListItem === 1}
+        label="Label"
         onClick={() => updateSelectedListItem(1)}
+        selected={selectedListItem === 1}
+        subtitle="subtitle"
       />
       <ListItem
         decorator={
-          <Thumbnail shape="round" size={16} icon={<ArrowLeftIcon />} />
+          <Thumbnail icon={<ArrowLeftIcon />} shape="round" size={16} />
         }
-        label="Label"
         disabled={false}
-        selected={selectedListItem === 2}
+        label="Label"
         onClick={() => updateSelectedListItem(2)}
+        selected={selectedListItem === 2}
         subtitle="subtitle"
       />
       <ListItem
-        decorator={<Thumbnail shape="round" size={16} icon={<ArrowUpIcon />} />}
-        label="Label"
+        decorator={<Thumbnail icon={<ArrowUpIcon />} shape="round" size={16} />}
         disabled={false}
-        selected={selectedListItem === 3}
+        label="Label"
         onClick={() => updateSelectedListItem(3)}
+        selected={selectedListItem === 3}
         subtitle="subtitle"
       />
     </List>

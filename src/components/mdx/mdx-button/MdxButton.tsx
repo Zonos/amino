@@ -24,10 +24,10 @@ export type MdxButtonProps = ButtonProps<'a'> & {
 };
 
 export const MdxButton = ({
-  intent,
-  href,
   children,
   className,
+  href,
+  intent,
   internalPaths,
   ...props
 }: MdxButtonProps) => {
@@ -41,14 +41,14 @@ export const MdxButton = ({
   return (
     <Wrapper isPrimary={isPrimary}>
       <AminoButton
-        tag="a"
-        intent={intent}
+        className={['link-button', className].join(' ')}
+        href={href}
         icon={isPrimary && <ArrowRightIcon size={20} />}
         iconRight={isPrimary}
-        href={href}
-        target={!isInternalLink ? '_blank' : undefined}
+        intent={intent}
         rel={!isInternalLink ? 'nofollow noopener noreferrer' : undefined}
-        className={['link-button', className].join(' ')}
+        tag="a"
+        target={!isInternalLink ? '_blank' : undefined}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       >

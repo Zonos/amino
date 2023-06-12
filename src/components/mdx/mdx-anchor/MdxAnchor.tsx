@@ -3,23 +3,23 @@ import { type ReactNode, forwardRef } from 'react';
 import { getIsInternalLink } from 'src/utils/getIsInternalLink';
 
 export type MdxAnchorProps = {
-  className?: string;
   children?: ReactNode;
+  className?: string;
   href?: string;
-  title?: string;
   internalPaths: string[];
+  title?: string;
 };
 
 export const MdxAnchor = forwardRef<HTMLAnchorElement, MdxAnchorProps>(
-  ({ className, children, href, title, internalPaths }, ref) => {
+  ({ children, className, href, internalPaths, title }, ref) => {
     const { isInternalLink } = getIsInternalLink({ href, internalPaths });
     if (isInternalLink) {
       return (
         <a
-          className={className || ''}
           ref={ref}
-          title={title}
+          className={className || ''}
           href={href as typeof internalPaths[number]}
+          title={title}
         >
           {children}
         </a>
@@ -27,9 +27,9 @@ export const MdxAnchor = forwardRef<HTMLAnchorElement, MdxAnchorProps>(
     }
     return (
       <a
+        ref={ref}
         className={className || ''}
         href={href}
-        ref={ref}
         rel="nofollow noopener noreferrer"
         target="_blank"
         title={title}

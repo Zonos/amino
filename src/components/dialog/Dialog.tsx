@@ -146,15 +146,8 @@ const Content = styled.div`
 
 export type DialogProps = {
   actions?: ReactNode;
-  className?: string;
   children: ReactNode;
-  label?: ReactNode;
-  subtitle?: string;
-  leftActions?: ReactNode;
-  onClose: () => void;
-  open: boolean;
-  themeOverride?: Theme;
-  width?: number;
+  className?: string;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
    */
@@ -163,7 +156,14 @@ export type DialogProps = {
    * @default true
    */
   closeOnEsc?: boolean;
+  label?: ReactNode;
+  leftActions?: ReactNode;
   noBorder?: boolean;
+  open: boolean;
+  subtitle?: string;
+  themeOverride?: Theme;
+  width?: number;
+  onClose: () => void;
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
@@ -172,36 +172,36 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       actions,
       children,
       className,
-      label,
-      subtitle,
-      leftActions,
-      onClose,
-      open,
-      themeOverride,
-      width,
       closeOnBlur,
       closeOnEsc,
+      label,
+      leftActions,
       noBorder,
+      onClose,
+      open,
+      subtitle,
+      themeOverride,
+      width,
     },
     ref
   ) => (
     <BaseDialog
       className={className}
-      data-theme={themeOverride}
-      open={open}
-      width={width}
-      onClose={onClose}
       closeOnBlur={closeOnBlur}
       closeOnEsc={closeOnEsc}
+      data-theme={themeOverride}
       noBorder={noBorder}
+      onClose={onClose}
+      open={open}
+      width={width}
     >
       <Header>
         <Title>
           <Text type="title">{label}</Text>
           <StyledCloseButton
+            icon={<RemoveCircleDuotoneIcon size={24} />}
             noRipple
             onClick={onClose}
-            icon={<RemoveCircleDuotoneIcon size={24} />}
           />
         </Title>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}

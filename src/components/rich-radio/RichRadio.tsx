@@ -117,9 +117,9 @@ export type RichRadioProps<T extends string = string> = {
    */
   itemHeight?: 40 | 64;
   items: RichRadioItemType<T>[];
+  value: T | null;
   onChange: (value: T) => void;
   renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
-  value: T | null;
 };
 
 export const RichRadio = <T extends string>({
@@ -144,23 +144,23 @@ export const RichRadio = <T extends string>({
   };
 
   return (
-    <StyledRadioGroup spacing={16} className={className}>
+    <StyledRadioGroup className={className} spacing={16}>
       {items.map(item => (
         <StyledItem
-          type="button"
-          itemHeight={itemHeight}
           key={item.value}
-          data-tip={item.tooltip}
           data-disabled={item.disabled}
+          data-state={item.value === selectedValue ? 'checked' : ''}
+          data-tip={item.tooltip}
+          itemHeight={itemHeight}
           onClick={() => {
             handleChange(item.value);
           }}
-          data-state={item.value === selectedValue ? 'checked' : ''}
+          type="button"
         >
           {item.tooltip && (
             <StyledTooltip
-              effect="solid"
               arrowColor="transparent"
+              effect="solid"
               {...item.tooltipSetting}
             />
           )}

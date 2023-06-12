@@ -150,8 +150,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       error,
       helpText,
       label,
-      value,
       rows,
+      value,
       width,
       ...props
     },
@@ -160,22 +160,22 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const hasValue = !!value;
     return (
       <AminoInputWrapper
-        width={width}
         className={`amino-input-wrapper ${className || ''} ${
           disabled ? 'disabled' : ''
         }`}
+        width={width}
       >
         <Fields>
           <StyledTextarea
+            ref={ref}
             className={[
               error ? 'has-error' : '',
               label ? 'has-label' : '',
               hasValue ? 'has-content' : '',
             ].join(' ')}
             disabled={disabled}
-            ref={ref}
-            rows={rows}
             label={label}
+            rows={rows}
             value={value}
             {...props}
           />

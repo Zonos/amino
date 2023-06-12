@@ -17,9 +17,9 @@ type DivProps = Omit<
 export interface StackProps extends DivProps {
   /** @default 'unset' */
   alignment?: GridAlignment;
+  children: ReactNode;
   /** @default 24 */
   spacing?: GridSpacing;
-  children: ReactNode;
 }
 /**
  * A stack
@@ -34,7 +34,7 @@ const StyledStack = styled.div<{ $alignment?: GridAlignment }>`
   }
 `;
 
-export const Stack = ({ children, alignment, ...otherProps }: StackProps) => (
+export const Stack = ({ alignment, children, ...otherProps }: StackProps) => (
   <StyledStack $alignment={alignment} {...otherProps}>
     {children}
   </StyledStack>

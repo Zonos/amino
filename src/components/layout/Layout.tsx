@@ -82,26 +82,26 @@ const Header = styled.header`
 `;
 
 type SearchInputProps = {
-  value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  value: string;
 };
 
 export type LayoutProps = {
-  footer: ReactNode;
-  logoSidebar?: ReactNode;
-  sidebar: ReactElement<NavigationGroupProps[] | NavigationGroupProps>;
-  searchInput?: SearchInputProps;
   content: ReactNode;
+  footer: ReactNode;
   headerContent?: ReactNode;
+  logoSidebar?: ReactNode;
+  searchInput?: SearchInputProps;
+  sidebar: ReactElement<NavigationGroupProps[] | NavigationGroupProps>;
 };
 
 export const Layout = ({
   content,
   footer,
-  sidebar,
+  headerContent,
   logoSidebar,
   searchInput,
-  headerContent,
+  sidebar,
 }: LayoutProps) => (
   <AminoLayout>
     {!!headerContent && <Header>{headerContent}</Header>}
@@ -114,8 +114,8 @@ export const Layout = ({
           {!!searchInput && (
             <SearchInputWrapper>
               <StyledSearchInput
-                value={searchInput.value}
                 onChange={searchInput.onChange}
+                value={searchInput.value}
               />
             </SearchInputWrapper>
           )}

@@ -17,7 +17,7 @@ const CenteredDiv = styled.div`
 export const MdxImage: StoryFn<typeof MdxImageComponent> = () => (
   <MdxImageComponent shadow>
     <CenteredDiv>
-      <img src="logo.png" alt="logo" />
+      <img alt="logo" src="logo.png" />
     </CenteredDiv>
   </MdxImageComponent>
 );

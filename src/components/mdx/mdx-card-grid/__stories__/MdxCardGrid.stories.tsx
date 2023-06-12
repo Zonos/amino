@@ -9,7 +9,7 @@ const MdxCardGridMeta: Meta = {
 
 export default MdxCardGridMeta;
 
-const Template: StoryFn<Props> = ({ twoColumn, children }: Props) => (
+const Template: StoryFn<Props> = ({ children, twoColumn }: Props) => (
   <MdxCardGrid twoColumn={twoColumn}>{children}</MdxCardGrid>
 );
 
@@ -80,6 +80,6 @@ ThreeColumns.args = {
 
 export const TwoColumns = Template.bind({});
 TwoColumns.args = {
-  twoColumn: true,
   children: allCards,
+  twoColumn: true,
 };

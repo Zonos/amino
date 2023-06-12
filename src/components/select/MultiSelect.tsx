@@ -54,7 +54,7 @@ const Group = <
 >(
   props: GroupProps<Option, IsMulti, Group>
 ) => {
-  const { children, label, getStyles, innerProps, options, selectProps } =
+  const { children, getStyles, innerProps, label, options, selectProps } =
     props;
   const currentValue = selectProps.value as MultiValue<Option>;
   const groupOptions = options as unknown as IGroupOption<Option>[];

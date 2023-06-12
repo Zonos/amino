@@ -5,13 +5,8 @@ import type { Theme } from 'src/types/Theme';
 import { BaseDialog } from '../dialog/_BaseDialog';
 
 export type LightBoxProps = {
-  className?: string;
   children: ReactNode;
-  onClose: () => void;
-  open: boolean;
-  themeOverride?: Theme;
-  width?: number;
-  withBorder?: boolean;
+  className?: string;
   /** Close when clicking outside dialog (on the backdrop)
    * @param closeOnBlur
    * @default true
@@ -23,28 +18,33 @@ export type LightBoxProps = {
    * @default true
    */
   closeOnEsc?: boolean;
+  open: boolean;
+  themeOverride?: Theme;
+  width?: number;
+  withBorder?: boolean;
+  onClose: () => void;
 };
 
 export const LightBox = ({
   children,
   className,
+  closeOnBlur,
+  closeOnEsc,
   onClose,
   open,
   themeOverride,
   width,
   withBorder = false,
-  closeOnBlur,
-  closeOnEsc,
 }: LightBoxProps) => (
   <BaseDialog
     className={className}
-    data-theme={themeOverride}
-    open={open}
-    width={width}
-    noBorder={!withBorder}
-    onClose={onClose}
     closeOnBlur={closeOnBlur}
     closeOnEsc={closeOnEsc}
+    data-theme={themeOverride}
+    noBorder={!withBorder}
+    onClose={onClose}
+    open={open}
+    width={width}
   >
     {children}
   </BaseDialog>

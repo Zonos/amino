@@ -12,17 +12,17 @@ const MdxCodeBlockMeta: Meta = {
 export default MdxCodeBlockMeta;
 
 const Template: StoryFn<Props> = ({
-  xlabel,
-  type,
   children,
   maxHeight,
   themeOverride,
+  type,
+  xlabel,
 }: Props) => (
   <MdxCodeBlockComponent
-    xlabel={xlabel}
-    type={type}
     maxHeight={maxHeight}
     themeOverride={themeOverride}
+    type={type}
+    xlabel={xlabel}
   >
     {children}
   </MdxCodeBlockComponent>

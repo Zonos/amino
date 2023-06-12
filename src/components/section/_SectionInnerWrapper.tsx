@@ -10,9 +10,9 @@ const StyledSectionInnerWrapper = styled.header`
   align-items: flex-start;
 `;
 
-type Props = { className?: string; children: ReactNode };
+type Props = { children: ReactNode; className?: string };
 
-export const SectionInnerWrapper = ({ className, children }: Props) => (
+export const SectionInnerWrapper = ({ children, className }: Props) => (
   <StyledSectionInnerWrapper className={className || ''}>
     {children}
   </StyledSectionInnerWrapper>

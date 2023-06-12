@@ -9,6 +9,26 @@ import styled from 'styled-components';
 
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
+  argTypes: {
+    disabled: {
+      type: 'boolean',
+    },
+    href: {
+      type: 'string',
+    },
+    iconRight: {
+      type: 'boolean',
+    },
+    loading: {
+      type: 'boolean',
+    },
+    loadingText: {
+      type: 'string',
+    },
+    tabIndex: {
+      type: 'number',
+    },
+  },
   component: Button,
   parameters: {
     design: {
@@ -29,26 +49,6 @@ const ButtonMeta: Meta = {
       expect(image).toMatchImageSnapshot({
         customSnapshotsDir,
       });
-    },
-  },
-  argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
-    href: {
-      type: 'string',
-    },
-    iconRight: {
-      type: 'boolean',
-    },
-    loading: {
-      type: 'boolean',
-    },
-    loadingText: {
-      type: 'string',
-    },
-    tabIndex: {
-      type: 'number',
     },
   },
 };
@@ -75,9 +75,9 @@ const ButtonRowLabel = styled(Text)`
 `;
 
 const ButtonRow = ({
-  label,
-  intent,
   disabled,
+  intent,
+  label,
   loading,
   ...props
 }: ButtonProps & { label: string }) => (
@@ -86,56 +86,56 @@ const ButtonRow = ({
     <HWrapper>
       <Button<'button'>
         {...props}
-        intent={intent}
         disabled={disabled}
+        intent={intent}
         loading={loading}
       />
       <Button
         {...props}
+        disabled={disabled}
         icon={<CubeIcon size={16} />}
         intent={intent}
-        disabled={disabled}
         loading={loading}
       />
       <Button
         {...props}
+        disabled={disabled}
         icon={<CubeIcon size={16} />}
         iconRight
         intent={intent}
-        disabled={disabled}
         loading={loading}
       />
       <Button
         {...props}
-        icon={<CubeIcon size={16} />}
         /*  eslint-disable-next-line react/no-children-prop */
         children=""
-        intent={intent}
         disabled={disabled}
+        icon={<CubeIcon size={16} />}
+        intent={intent}
         loading={loading}
       />
       <Button
-        intent={intent}
-        disabled={disabled}
-        loading={loading}
-        icon={<CubeIcon size={16} />}
         /*  eslint-disable-next-line react/no-children-prop */
         children=""
+        disabled={disabled}
+        icon={<CubeIcon size={16} />}
+        intent={intent}
+        loading={loading}
         onClick={e => e.preventDefault()}
         tag="div"
       />
       <StyledButton
-        intent={intent}
         disabled={disabled}
+        intent={intent}
         loading={loading}
-        tag="div"
         onClick={e => e.preventDefault()}
+        tag="div"
       >
         Div Button
       </StyledButton>
       <Button
-        intent={intent}
         disabled={disabled}
+        intent={intent}
         loading={loading}
         themeOverride="night"
         {...props}
@@ -146,24 +146,24 @@ const ButtonRow = ({
     <HWrapper>
       <Button
         {...props}
+        disabled={disabled}
+        intent={intent}
+        loading={loading}
         size="lg"
-        intent={intent}
-        disabled={disabled}
-        loading={loading}
       />
       <Button
         {...props}
+        disabled={disabled}
+        intent={intent}
+        loading={loading}
         size="md"
-        intent={intent}
-        disabled={disabled}
-        loading={loading}
       />
       <Button
         {...props}
-        size="sm"
-        intent={intent}
         disabled={disabled}
+        intent={intent}
         loading={loading}
+        size="sm"
       />
     </HWrapper>
   </div>
@@ -173,60 +173,60 @@ const Template: StoryFn<ButtonProps> = props => (
   <VWrapper>
     <ButtonRow {...props} label="Default" />
     <ButtonRow {...props} disabled label="Disabled" />
-    <ButtonRow {...props} loading label="Loading" />
+    <ButtonRow {...props} label="Loading" loading />
   </VWrapper>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  intent: 'secondary',
   children: 'Example button',
+  intent: 'secondary',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  intent: 'primary',
   children: 'Example button',
+  intent: 'primary',
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  intent: 'danger',
   children: 'Example button',
+  intent: 'danger',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  intent: 'warning',
   children: 'Example button',
+  intent: 'warning',
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-  intent: 'outline',
   children: 'Example button',
+  intent: 'outline',
 };
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
-  intent: 'link',
   children: 'Link button',
+  intent: 'link',
 };
 
 export const Subtle = Template.bind({});
 Subtle.args = {
-  intent: 'subtle',
   children: 'Example button',
+  intent: 'subtle',
 };
 
 export const TextButton = Template.bind({});
 TextButton.args = {
-  intent: 'text',
   children: 'Text Button',
+  intent: 'text',
 };
 
 export const PlainButton = Template.bind({});
 PlainButton.args = {
-  intent: 'plain',
   children: 'Plain button',
+  intent: 'plain',
 };

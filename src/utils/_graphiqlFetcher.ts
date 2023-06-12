@@ -7,8 +7,8 @@ import {
 } from './handleFetch';
 
 type FetcherParams = {
-  query: string;
   operationName?: string | null;
+  query: string;
   variables?: Record<string, unknown>;
 };
 
@@ -17,8 +17,8 @@ export type ExecutionResultType =
   | Record<string, unknown>[];
 
 type FetcherOpts = {
-  headers?: { [key: string]: unknown };
   documentAST?: DocumentNode;
+  headers?: { [key: string]: unknown };
 };
 
 export type GraphiqlExecutionResult<
@@ -43,8 +43,8 @@ export type HandleFetchFetcher = <
 ) => Promise<HandleFetchReturn<ResponseBody>>;
 
 type IFetcher = (props: {
-  url: string | null;
   customFetcher: HandleFetchFetcher | null;
+  url: string | null;
 }) => GraphiqlFetcher;
 
 /**
@@ -52,7 +52,7 @@ type IFetcher = (props: {
  * @param url url to fetch
  */
 export const graphiqlFetcher: IFetcher =
-  ({ url, customFetcher }) =>
+  ({ customFetcher, url }) =>
   async (params, options) => {
     if (!url || !params.query) {
       return { data: null };
@@ -62,11 +62,11 @@ export const graphiqlFetcher: IFetcher =
     const { json } = await fetcher<GraphiqlExecutionResult>(url, {
       method: 'POST',
       ...options,
+      body: params,
       headers: {
         'content-type': 'application/json',
         ...options?.headers,
       },
-      body: params,
     });
 
     return json || { data: null };

@@ -6,13 +6,6 @@ import styled from 'styled-components';
 import { MdxButton as MdxButtonComponent } from '../MdxButton';
 
 const MdxButtonMeta: Meta = {
-  component: MdxButtonComponent,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=81%3A1128&t=erzegCytT9AfSn9f-0',
-    },
-  },
   argTypes: {
     disabled: {
       type: 'boolean',
@@ -31,6 +24,13 @@ const MdxButtonMeta: Meta = {
     },
     tabIndex: {
       type: 'number',
+    },
+  },
+  component: MdxButtonComponent,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=81%3A1128&t=erzegCytT9AfSn9f-0',
     },
   },
 };
@@ -52,10 +52,10 @@ export const MdxButton: StoryFn<typeof MdxButtonComponent> = () => (
   <VWrapper>
     <ButtonRowLabel type="bold-subheader">MdxButton examples</ButtonRowLabel>
     <div>
-      <MdxButtonComponent intent="primary" href="/">
+      <MdxButtonComponent href="/" intent="primary">
         Primary button
       </MdxButtonComponent>
-      <MdxButtonComponent intent="outline" href="/">
+      <MdxButtonComponent href="/" intent="outline">
         Outline button
       </MdxButtonComponent>
       <MdxButtonComponent href="https://zonos.com">

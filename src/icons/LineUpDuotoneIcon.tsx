@@ -8,26 +8,26 @@ import type { IconProps } from 'src/types/IconProps';
 export const LineUpDuotoneIcon = forwardRef<
   SVGSVGElement,
   IconProps & { secondaryColor?: Color }
->(({ size, color, className, secondaryColor }, ref) => (
+>(({ className, color, secondaryColor, size }, ref) => (
   <IconBase
     ref={ref}
-    size={size}
-    color={color || 'gray800'}
     className={className}
+    color={color || 'gray800'}
+    size={size}
     viewBox="0 0 24 24"
   >
     <path
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      data-is-secondary-color="true"
-      fillRule="evenodd"
-      d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Z"
       clipRule="evenodd"
+      d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      fillRule="evenodd"
     />
     <path
+      clipRule="evenodd"
+      d="M14.94 5.646a1.5 1.5 0 0 1 2.12 0l1.647 1.647a1 1 0 0 1-1.414 1.414L17 8.414V11a8 8 0 0 1-8 8H6a1 1 0 1 1 0-2h3a6 6 0 0 0 6-6V8.414l-.293.293a1 1 0 1 1-1.414-1.414l1.646-1.647Z"
       fill="currentColor"
       fillRule="evenodd"
-      d="M14.94 5.646a1.5 1.5 0 0 1 2.12 0l1.647 1.647a1 1 0 0 1-1.414 1.414L17 8.414V11a8 8 0 0 1-8 8H6a1 1 0 1 1 0-2h3a6 6 0 0 0 6-6V8.414l-.293.293a1 1 0 1 1-1.414-1.414l1.646-1.647Z"
-      clipRule="evenodd"
     />
   </IconBase>
 ));

@@ -23,6 +23,9 @@ module.exports = {
     'simple-import-sort',
     'prettier',
     'deprecation',
+    'sort-keys',
+    'typescript-custom-sort-keys',
+    'sort-destructure-keys',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -39,8 +42,48 @@ module.exports = {
         project: './tsconfig.json',
       },
     },
+    {
+      /**
+       * Turn off sort-keys for generated constants file (we don't want to sort because of comments, but want to do other linting)
+       */
+      files: ['src/styles/constants/*.ts'],
+      rules: {
+        'sort-destructure-keys/sort-destructure-keys': 'off',
+        'sort-keys': 'off',
+        'sort-keys/sort-keys-fix': 'off',
+        'typescript-custom-sort-keys/interface': 'off',
+      },
+    }
   ],
   rules: {
+    /**
+     * Sort object destructure keys. This rule autofix doesn't tie with comment like `sort-keys`
+     * @ref https://github.com/mthadley/eslint-plugin-sort-destructure-keys
+     */
+    'sort-destructure-keys/sort-destructure-keys': [
+      'warn',
+      { caseSensitive: false },
+    ],
+    'sort-keys': 'off',
+    /**
+     * Sort object keys (not included destructure object)
+     * @ref https://github.com/namnm/eslint-plugin-sort-keys
+     */
+    'sort-keys/sort-keys-fix': ['warn', 'asc'],
+    /**
+     * Sort all types/interface keys
+     * @ref https://github.com/prash471/eslint-plugin-typescript-custom-sort-keys
+     */
+    'typescript-custom-sort-keys/interface': [
+      'warn',
+      'asc',
+      {
+        caseSensitive: true,
+        showFunctionsAtEnd: true,
+      },
+    ],
+    'react/jsx-sort-props': ['error'],
+
     'deprecation/deprecation': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',

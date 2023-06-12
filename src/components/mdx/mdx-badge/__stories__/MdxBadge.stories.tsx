@@ -6,24 +6,24 @@ import styled from 'styled-components';
 import { MdxBadge } from '../MdxBadge';
 
 const MdxBadgeMeta: Meta = {
-  component: MdxBadge,
   argTypes: {
-    color: {
-      options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
+    bold: {
+      type: 'boolean',
     },
     className: {
       type: 'string',
     },
-    rounded: {
-      type: 'boolean',
+    color: {
+      options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
     },
     iconRight: {
       type: 'boolean',
     },
-    bold: {
+    rounded: {
       type: 'boolean',
     },
   },
+  component: MdxBadge,
   parameters: {
     design: {
       type: 'figma',
@@ -41,10 +41,10 @@ const StyledWrapper = styled.div`
 `;
 
 const Template: StoryFn<BadgeProps> = ({
-  color,
-  children,
-  iconRight,
   bold,
+  children,
+  color,
+  iconRight,
   rounded,
   size,
 }: BadgeProps) => (
@@ -52,9 +52,9 @@ const Template: StoryFn<BadgeProps> = ({
     <div>
       <h3>Normal</h3>
       <MdxBadge
+        bold={bold}
         color={color}
         iconRight={iconRight}
-        bold={bold}
         rounded={rounded}
         size={size}
       >
@@ -63,10 +63,10 @@ const Template: StoryFn<BadgeProps> = ({
     </div>
     <div>
       <MdxBadge
+        bold={bold}
         color={color}
         icon={<CubeIcon size={20} />}
         iconRight={iconRight}
-        bold={bold}
         rounded={rounded}
         size={size}
       >
@@ -75,10 +75,10 @@ const Template: StoryFn<BadgeProps> = ({
     </div>
     <div>
       <MdxBadge
+        bold={bold}
         color={color}
         icon={<CubeIcon size={20} />}
         iconRight
-        bold={bold}
         rounded={rounded}
         size={size}
       >
@@ -88,9 +88,9 @@ const Template: StoryFn<BadgeProps> = ({
     <div>
       <h3>Bold / Inverted</h3>
       <MdxBadge
+        bold
         color={color}
         iconRight={iconRight}
-        bold
         rounded={rounded}
         size={size}
       >
@@ -99,9 +99,9 @@ const Template: StoryFn<BadgeProps> = ({
     </div>
     <div>
       <MdxBadge
+        bold
         color={color}
         icon={<CubeIcon size={20} />}
-        bold
         rounded={rounded}
         size={size}
       >
@@ -110,10 +110,10 @@ const Template: StoryFn<BadgeProps> = ({
     </div>
     <div>
       <MdxBadge
+        bold
         color={color}
         icon={<CubeIcon size={20} />}
         iconRight
-        bold
         rounded={rounded}
         size={size}
       >
@@ -130,36 +130,36 @@ BasicBadge.args = {
 
 export const BlueBadge = Template.bind({});
 BlueBadge.args = {
-  color: 'blue',
   children: <span>Option</span>,
+  color: 'blue',
 };
 
 export const GreenBadge = Template.bind({});
 GreenBadge.args = {
-  color: 'green',
   children: <span>Option</span>,
+  color: 'green',
 };
 
 export const RedBadge = Template.bind({});
 RedBadge.args = {
-  color: 'red',
   children: <span>Option</span>,
+  color: 'red',
 };
 
 export const OrangeBadge = Template.bind({});
 OrangeBadge.args = {
-  color: 'orange',
   children: <span>Option</span>,
+  color: 'orange',
 };
 
 export const PurpleBadge = Template.bind({});
 PurpleBadge.args = {
-  color: 'purple',
   children: <span>Option</span>,
+  color: 'purple',
 };
 
 export const CyanBadge = Template.bind({});
 CyanBadge.args = {
-  color: 'cyan',
   children: <span>Option</span>,
+  color: 'cyan',
 };

@@ -66,6 +66,7 @@ export const NumberInput = ({
   return (
     <StyledWrapper className={className}>
       <AminoInput
+        ref={inputRef}
         aria-label={label}
         autoFocus={autoFocus}
         disabled={disabled}
@@ -78,30 +79,29 @@ export const NumberInput = ({
         placeholder={placeholder}
         prefix={prefix}
         readOnly={readOnly}
-        ref={inputRef}
         required={required}
         suffix={
           suffix || (
             <StyledActionWrapper>
               <StyledButtonAction
-                type="button"
                 onClick={() => {
                   inputRef.current?.stepUp();
                   inputRef.current?.dispatchEvent(
                     new Event('input', { bubbles: true })
                   );
                 }}
+                type="button"
               >
                 <ChevronUpIcon size={16} />
               </StyledButtonAction>
               <StyledButtonAction
-                type="button"
                 onClick={() => {
                   inputRef.current?.stepDown();
                   inputRef.current?.dispatchEvent(
                     new Event('input', { bubbles: true })
                   );
                 }}
+                type="button"
               >
                 <ChevronDownIcon size={16} />
               </StyledButtonAction>

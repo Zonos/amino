@@ -3,18 +3,18 @@ import { type ReactNode, forwardRef } from 'react';
 type FlagIconBaseProps = {
   children: ReactNode;
   height: number;
-  width: number;
   viewBox: string;
+  width: number;
 };
 
 export const FlagIconBase = forwardRef<SVGSVGElement, FlagIconBaseProps>(
-  ({ width, height, children, viewBox }, ref) => (
+  ({ children, height, viewBox, width }, ref) => (
     <svg
       ref={ref}
-      xmlns="http://www.w3.org/2000/svg"
+      height={height}
       viewBox={viewBox}
       width={width}
-      height={height}
+      xmlns="http://www.w3.org/2000/svg"
     >
       {children}
     </svg>

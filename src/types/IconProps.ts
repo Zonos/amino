@@ -1,7 +1,7 @@
 import type { Color } from './Color';
 
 export type IconProps = {
-  size?: number;
-  color?: Color;
   className?: string;
+  color?: Color;
+  size?: number;
 };

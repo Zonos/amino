@@ -60,20 +60,20 @@ const StyledList = styled(List)<ListProps>`
 
 export type CollapsibleListProps = ListProps & {
   icon?: ReactNode;
-  title: ReactNode;
   /**
    * Whether to start expanded
    * @default false
    */
   startExpanded?: boolean;
+  title: ReactNode;
 };
 
 export const CollapsibleList = ({
-  className,
-  /** @description list of ListItem are recommended to pass in */
   children,
-  startExpanded,
+  /** @description list of ListItem are recommended to pass in */
+  className,
   icon,
+  startExpanded,
   title,
   withBorder,
   withNegativeMargin,

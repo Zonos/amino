@@ -141,10 +141,10 @@ export const ThemeSelect = ({
       {type === 'cards' && (
         <HStack className={className}>
           <ButtonStyled
-            onClick={() => setAminoTheme('day')}
-            type="button"
             data-theme="day"
             isActive={aminoTheme === 'day'}
+            onClick={() => setAminoTheme('day')}
+            type="button"
           >
             <ThemeCard>
               <ThemeLightIcon />
@@ -153,10 +153,10 @@ export const ThemeSelect = ({
           </ButtonStyled>
 
           <ButtonStyled
-            onClick={() => setAminoTheme('night')}
-            type="button"
             data-theme="night"
             isActive={aminoTheme === 'night'}
+            onClick={() => setAminoTheme('night')}
+            type="button"
           >
             <ThemeCard>
               <ThemeDarkIcon />
@@ -169,27 +169,27 @@ export const ThemeSelect = ({
       {type === 'select' && (
         <Select
           className={className}
-          value={themes.filter(x => x.value === aminoTheme)}
-          options={themes}
           icon={getIcon()}
-          onChange={newTheme => setAminoTheme(newTheme?.value || 'day')}
-          isDisabled={disabled}
           isClearable={false}
+          isDisabled={disabled}
+          onChange={newTheme => setAminoTheme(newTheme?.value || 'day')}
+          options={themes}
+          value={themes.filter(x => x.value === aminoTheme)}
         />
       )}
 
       {type === 'toggle' && (
         <SwitchContainer
-          className={`${className} ${disabled ? 'disabled' : ''}`}
           checked={checked}
+          className={`${className} ${disabled ? 'disabled' : ''}`}
           onClick={() =>
             !disabled && setAminoTheme(aminoTheme === 'day' ? 'night' : 'day')
           }
         >
           <AminoSwitchWrapper checked={checked}>
             <AminoSwitch checked={checked} id="amino-theme-switch" />
-            <SunnyIconStyled size={20} isActive={aminoTheme === 'day'} />
-            <NightIconStyled size={20} isActive={aminoTheme === 'night'} />
+            <SunnyIconStyled isActive={aminoTheme === 'day'} size={20} />
+            <NightIconStyled isActive={aminoTheme === 'night'} size={20} />
           </AminoSwitchWrapper>
         </SwitchContainer>
       )}

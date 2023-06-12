@@ -77,8 +77,8 @@ export const RoundedIcon = ({
       return (
         <IconWrapper
           background={background}
-          color={color}
           className={className}
+          color={color}
         >
           {children}
         </IconWrapper>

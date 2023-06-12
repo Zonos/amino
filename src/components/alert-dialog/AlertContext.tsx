@@ -27,15 +27,15 @@ export const AlertContextProvider = ({ children }: Props) => {
       {children}
       {dialog && (
         <AlertDialog
-          open={isOpen}
-          label={dialog.label}
-          subtitle={dialog.subtitle}
-          intent={dialog.intent}
-          dismissText={dialog.dismissText}
           dismissAction={() => {
             setIsOpen(false);
             dialog.onDismiss();
           }}
+          dismissText={dialog.dismissText}
+          intent={dialog.intent}
+          label={dialog.label}
+          open={isOpen}
+          subtitle={dialog.subtitle}
         />
       )}
     </AlertContext.Provider>

@@ -116,8 +116,8 @@ const OwnerOrange = styled(Owner)`
 `;
 
 type DocOwner = {
-  name: string | null;
   id: string | null;
+  name: string | null;
 } | null;
 
 export type Props = {
@@ -139,39 +139,39 @@ export const OwnershipBlock = ({
 }: Props) => (
   <Wrapper data-theme={themeOverride}>
     <Owner>
-      <EyeDuotoneIcon size={20} color="gray300" secondaryColor="gray800" />
+      <EyeDuotoneIcon color="gray300" secondaryColor="gray800" size={20} />
       <span>Zonos Only</span>
     </Owner>
 
     <OwnersWrapper>
       <Owner>
-        <UserIcon size={20} color="green500" />
+        <UserIcon color="green500" size={20} />
         {isLoading ? (
-          <Skeleton width={100} animation />
+          <Skeleton animation width={100} />
         ) : (
           <b>{docOwner?.name || 'N/A'}</b>
         )}
       </Owner>
       <OwnerRed>
-        <BookIcon size={20} color="red500" />
+        <BookIcon color="red500" size={20} />
         {isLoading ? (
-          <Skeleton width={100} animation />
+          <Skeleton animation width={100} />
         ) : (
           <b>{docWriter?.name || 'N/A'}</b>
         )}
       </OwnerRed>
       <OwnerBlue>
-        <CodeIcon size={20} color="blue500" />
+        <CodeIcon color="blue500" size={20} />
         {isLoading ? (
-          <Skeleton width={100} animation />
+          <Skeleton animation width={100} />
         ) : (
           <b>{docEngineer?.name || 'N/A'}</b>
         )}
       </OwnerBlue>
       <OwnerOrange>
-        <StarIcon size={20} color="orange500" />
+        <StarIcon color="orange500" size={20} />
         {isLoading ? (
-          <Skeleton width={100} animation />
+          <Skeleton animation width={100} />
         ) : (
           <b>{docChampion?.name || 'N/A'}</b>
         )}

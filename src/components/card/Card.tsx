@@ -73,7 +73,7 @@ export const Card = ({
   label,
   spacing = theme.space24,
 }: CardProps) => (
-  <StyledCard spacing={spacing} className={className || ''}>
+  <StyledCard className={className || ''} spacing={spacing}>
     {label && (
       <CardHeader spacing={spacing}>
         <Text type="subheader">{label}</Text>

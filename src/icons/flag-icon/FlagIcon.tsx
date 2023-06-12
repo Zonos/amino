@@ -14,12 +14,12 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
   ({ code, iconScale }, ref) => {
     const Icon = flags[code];
     if (iconScale === 'small') {
-      return <Icon ref={ref} width={16} height={12} />;
+      return <Icon ref={ref} height={12} width={16} />;
     }
     if (iconScale === 'medium') {
-      return <Icon ref={ref} width={20} height={15} />;
+      return <Icon ref={ref} height={15} width={20} />;
     }
 
-    return Icon ? <Icon ref={ref} width={32} height={24} /> : null;
+    return Icon ? <Icon ref={ref} height={24} width={32} /> : null;
   }
 );

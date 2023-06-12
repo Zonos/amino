@@ -37,13 +37,12 @@ export type CustomColumnFormatters<TRow extends Record<string, unknown>> = {
 
 type Props<TRow extends Record<string, unknown>> = {
   currentPage?: number;
+  customColumnFormatters?: CustomColumnFormatters<TRow>;
   /**
    * @param customFlattenRow
    * @description Custom flattenRow function, if not provided, the default flattenRow (flattenRow - "src/utils/flattenRow.ts") will be used
    */
   customFlattenRow?: typeof flattenRow;
-  customColumnFormatters?: CustomColumnFormatters<TRow>;
-  handlePagination?: (page: number) => void;
   hasNextPage?: boolean;
   hasPreviousPage?: boolean;
   isFetching: boolean;
@@ -51,14 +50,15 @@ type Props<TRow extends Record<string, unknown>> = {
   restState?: ReactNode;
   tableData: TRow[];
   title?: string;
+  handlePagination?: (page: number) => void;
 };
 
 export const NestedDataTable = <
   TRow extends Record<string, unknown> | Record<string, unknown>
 >({
   currentPage,
-  customFlattenRow,
   customColumnFormatters,
+  customFlattenRow,
   handlePagination,
   hasNextPage,
   hasPreviousPage,
@@ -98,8 +98,8 @@ export const NestedDataTable = <
         customColumnFormatters={
           customColumnFormatters as CustomColumnFormatters<RowWithIndex>
         }
-        tableDataArr={tableDataArr}
         customFlattenRow={customFlattenRow}
+        tableDataArr={tableDataArr}
       />
     );
   };
@@ -112,8 +112,8 @@ export const NestedDataTable = <
         {!!showPagination && (
           <StyledTableActionWrapper>
             <Button
-              intent="outline"
               disabled={currentPage === 1 || !hasPreviousPage}
+              intent="outline"
               onClick={() => {
                 if (hasPreviousPage) {
                   handlePagination(currentPage - 1);
@@ -125,12 +125,12 @@ export const NestedDataTable = <
             {currentPage}
             <Button
               disabled={!hasNextPage}
+              intent="outline"
               onClick={() => {
                 if (hasNextPage) {
                   handlePagination(currentPage + 1);
                 }
               }}
-              intent="outline"
             >
               Next page
             </Button>

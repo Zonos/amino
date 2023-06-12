@@ -62,14 +62,14 @@ export const TableCell = ({
   align = 'left',
   borderBottom,
   children,
-  colSpan,
   className,
+  colSpan,
   padding,
   tag,
 }: TableCellProps) => (
   <StyledTableCell
-    as={tag}
     align={align}
+    as={tag}
     borderBottom={borderBottom}
     className={className}
     colSpan={colSpan}

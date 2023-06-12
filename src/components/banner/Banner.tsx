@@ -19,8 +19,8 @@ const StyledBanner = styled.div`
 `;
 
 const Container = styled.div<{
-  withoutCloseButton: boolean;
   onlyContent: boolean;
+  withoutCloseButton: boolean;
 }>`
   display: grid;
   align-items: ${p => (p.onlyContent ? 'start' : 'center')};
@@ -97,12 +97,12 @@ const ErrorBanner = styled(StyledBanner)`
 `;
 
 export type BannerProps = {
-  className?: string;
   children?: ReactNode;
-  title?: ReactNode;
+  className?: string;
   footerActions?: ReactNode;
   headerActions?: ReactNode;
   intent?: Exclude<Intent, 'danger' | 'secondary' | 'primary'>;
+  title?: ReactNode;
   onClose?: () => void;
 };
 
@@ -128,7 +128,7 @@ export const Banner = ({
     const renderTitle = () =>
       title && (
         <BannerHeader>
-          <Text type="label" color={removeIconColor}>
+          <Text color={removeIconColor} type="label">
             {title}
           </Text>
           {headerActions && <HStack spacing={8}>{headerActions}</HStack>}
@@ -150,14 +150,14 @@ export const Banner = ({
     ].filter(Boolean);
 
     return (
-      <Container withoutCloseButton={!onClose} onlyContent={onlyContent}>
+      <Container onlyContent={onlyContent} withoutCloseButton={!onClose}>
         <Icon>{intentIcon}</Icon>
         {onClose && (
           <Close>
             <CloseButton
+              icon={<RemoveIcon color={removeIconColor} size={20} />}
               intent="text"
               onClick={onClose}
-              icon={<RemoveIcon size={20} color={removeIconColor} />}
             />
           </Close>
         )}

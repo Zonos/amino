@@ -109,18 +109,25 @@ const UploadedFileInfoWrapper = styled.div`
 
 export type DropZoneProps = {
   className?: string;
-  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
    * */
   disabled?: boolean;
+  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
+  error?: boolean;
   helpText?: string;
   /**
    * Text to display in empty state
    * @default 'Drop your file(s) here'
    * */
   instructionText?: string;
+  loading?: boolean;
+  /**
+   * Text to show while loading state is active
+   * @default 'Uploading file(s)...''
+   */
+  loadingText?: string;
   /**
    * Whether to show the icon in file upload
    * @default false
@@ -130,31 +137,24 @@ export type DropZoneProps = {
   uploadedFiles: UploadedFile[];
   /** When the remove icon is clicked on an individual file */
   onRemoveFile: (index: number) => void;
-  error?: boolean;
-  loading?: boolean;
-  /**
-   * Text to show while loading state is active
-   * @default 'Uploading file(s)...''
-   */
-  loadingText?: string;
 };
 
 export const DropZone = ({
   className,
-  dropzoneOptions,
   disabled = false,
-  instructionText = 'Drop your file(s) here',
-  helpText,
-  noIcon = false,
-  uploadedFiles,
-  onRemoveFile,
+  dropzoneOptions,
   error = false,
+  helpText,
+  instructionText = 'Drop your file(s) here',
   loading,
   loadingText = 'Uploading file(s)...',
+  noIcon = false,
+  onRemoveFile,
+  uploadedFiles,
 }: DropZoneProps) => {
   const maxFiles = dropzoneOptions.maxFiles || 0;
 
-  const { getRootProps, getInputProps, open } = useDropzone({
+  const { getInputProps, getRootProps, open } = useDropzone({
     ...dropzoneOptions,
     disabled,
     noClick: true,
@@ -165,12 +165,12 @@ export const DropZone = ({
     // The role gets set to button despite setting `noClick`, so override it as `undefined`
     <ContentWrapper {...getRootProps()} role={undefined}>
       <input {...getInputProps()} />
-      {!noIcon && <Thumbnail size={40} icon={<FileUploadDuotoneIcon />} />}
+      {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
       <InstructionTextWrapper>
         <Text type="label">
           {instructionText} or{' '}
-          <BrowseButton type="button" onClick={open} disabled={disabled}>
-            <Text type="label" color="blue600">
+          <BrowseButton disabled={disabled} onClick={open} type="button">
+            <Text color="blue600" type="label">
               browse
             </Text>
           </BrowseButton>
@@ -185,11 +185,11 @@ export const DropZone = ({
       <UploadedFileRow key={file.name}>
         <FileDuotoneIcon />
         <UploadedFileInfoWrapper>
-          <Text type="label" color="gray1200">
+          <Text color="gray1200" type="label">
             {file.name}
           </Text>
           {file.size && (
-            <Text type="caption" color="gray700">
+            <Text color="gray700" type="caption">
               {file.size}
             </Text>
           )}
@@ -210,7 +210,7 @@ export const DropZone = ({
         <UploadWrapper>
           <ContentWrapper>
             <Spinner />
-            <Text type="label" color="gray800">
+            <Text color="gray800" type="label">
               {loadingText}
             </Text>
           </ContentWrapper>
@@ -231,7 +231,7 @@ export const DropZone = ({
   };
 
   return (
-    <Wrapper disabled={disabled} className={className}>
+    <Wrapper className={className} disabled={disabled}>
       {renderContent()}
     </Wrapper>
   );

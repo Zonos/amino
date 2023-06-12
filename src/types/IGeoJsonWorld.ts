@@ -13,14 +13,14 @@ type IProperties = {
 type IGeometry = (Polygon | MultiPolygon) & { properties: IProperties };
 
 export type IGeoJsonWorld = {
-  type: 'Topology';
-  objects: {
-    countries: {
-      type: 'GeometryCollection';
-      geometries: IGeometry[];
-    };
-  };
   arcs: Arc[];
   bbox: BBox;
+  objects: {
+    countries: {
+      geometries: IGeometry[];
+      type: 'GeometryCollection';
+    };
+  };
   transform: Transform;
+  type: 'Topology';
 };

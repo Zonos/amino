@@ -58,9 +58,9 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
       <ConnectionMap
         countries={countryOptions}
         from={from}
+        height={265}
         to={to}
         worldData={worldData || null}
-        height={265}
       />
 
       <HStack>

@@ -71,10 +71,10 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
         )}
       </CoverSheet>
       <CoverSheet
-        open={secondCoversheetOpen}
+        actionWrapperId="second-cover-sheet"
         label="Second Coversheet"
         onClose={() => setSecondCoversheetOpen(false)}
-        actionWrapperId="second-cover-sheet"
+        open={secondCoversheetOpen}
       >
         This is a second coversheet set with <b>actionWrapperId</b>. The button
         action <b>Action in second coversheet</b> should be positioned correctly
@@ -97,13 +97,13 @@ CoverSheetWithActions.args = {
       <Button>Save</Button>
     </>
   ),
-  label: 'Label',
   children: <div />,
+  label: 'Label',
 };
 
 export const CoverSheetNoActions = Template.bind({});
 CoverSheetNoActions.args = {
   actionPortalOpen: true,
-  label: 'Label',
   children: <div />,
+  label: 'Label',
 };

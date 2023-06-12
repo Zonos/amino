@@ -50,16 +50,16 @@ const Template: StoryFn<typeof MdxBanner> = ({
   return (
     <StyledVStack>
       <MdxBanner
-        intent={intent}
         footerActions={
           <Button
             color="inherit"
-            onClick={() => setOpenIds(ids.filter(Boolean))}
             intent="outline"
+            onClick={() => setOpenIds(ids.filter(Boolean))}
           >
             Open MdxBanners
           </Button>
         }
+        intent={intent}
       />
 
       {openIds.includes('withTitle') && (
@@ -95,8 +95,8 @@ const Template: StoryFn<typeof MdxBanner> = ({
       {openIds.includes('titleWithParagraph') && (
         <MdxBanner
           intent={intent}
-          xtitle={title}
           onClose={() => toggleMdxBannerId('titleWithParagraph')}
+          xtitle={title}
         >
           {paragraph}
         </MdxBanner>
@@ -104,10 +104,10 @@ const Template: StoryFn<typeof MdxBanner> = ({
       {openIds.includes('titleWithParagraphWithFooterActions') && (
         <MdxBanner
           footerActions={footerActions}
+          intent={intent}
           onClose={() =>
             toggleMdxBannerId('titleWithParagraphWithFooterActions')
           }
-          intent={intent}
           xtitle={title}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -115,20 +115,15 @@ const Template: StoryFn<typeof MdxBanner> = ({
       )}
       {openIds.includes('titleWithParagraphWithHeaderActions') && (
         <MdxBanner
-          intent={intent}
-          xtitle={title}
-          onClose={() =>
-            toggleMdxBannerId('titleWithParagraphWithHeaderActions')
-          }
           headerActions={
             <a
-              target="_blank"
               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
               rel="noreferrer"
+              target="_blank"
             >
               <Button
-                borderColor="gray1200"
                 background="inherit"
+                borderColor="gray1200"
                 color="inherit"
                 intent="outline"
               >
@@ -136,6 +131,11 @@ const Template: StoryFn<typeof MdxBanner> = ({
               </Button>
             </a>
           }
+          intent={intent}
+          onClose={() =>
+            toggleMdxBannerId('titleWithParagraphWithHeaderActions')
+          }
+          xtitle={title}
         >
           {paragraph}
         </MdxBanner>
@@ -177,9 +177,9 @@ DefaultMdxBanner.args = {
       background="inherit"
       borderColor="gray400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -214,9 +214,9 @@ InfoMdxBanner.args = {
       background="inherit"
       borderColor="blue400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -252,9 +252,9 @@ SuccessMdxBanner.args = {
       background="inherit"
       borderColor="green400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -290,9 +290,9 @@ WarningMdxBanner.args = {
       background="inherit"
       borderColor="orange400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>
@@ -328,9 +328,9 @@ ErrorMdxBanner.args = {
       background="inherit"
       borderColor="red400"
       color="inherit"
-      intent="outline"
       icon={<ChevronDownIcon size={20} />}
       iconRight
+      intent="outline"
     >
       Details
     </Button>

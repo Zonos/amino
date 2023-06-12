@@ -101,32 +101,32 @@ export type SliderProps = {
   hideIndicator?: boolean;
   max?: number;
   min?: number;
-  onChange: (newValue: number) => void;
-  step?: number;
   /**
    * How thick you want the progress look
    * @default 12
    * */
   size?: 8 | 12;
+  step?: number;
   /**
    * @default "%"
    */
   suffix?: string;
   value: number;
+  onChange: (newValue: number) => void;
 };
 
 export const Slider = ({
+  className,
   hideIndicator = false,
   max,
   min,
   onChange,
-  className,
-  step,
   size = 12,
+  step,
   suffix = '%',
   value,
 }: SliderProps) => (
-  <SliderWrapper className={className} $hideIndicator={hideIndicator}>
+  <SliderWrapper $hideIndicator={hideIndicator} className={className}>
     <StyledSlider
       max={max}
       min={min}

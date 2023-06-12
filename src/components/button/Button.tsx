@@ -374,7 +374,7 @@ export function Button<T extends GroupTag = 'button'>({
       {iconRight && icon}
       {intent !== 'plain' && loading && (
         <StyledSpinnerWrapper>
-          <Spinner size={16} color={_spinnerColor} />
+          <Spinner color={_spinnerColor} size={16} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
@@ -394,10 +394,10 @@ export function Button<T extends GroupTag = 'button'>({
 
   const rippleRef = useRef<IRippleActions>(null);
 
-  const { rippleEnabled, getRippleHandlers } = useRipple({
-    rippleRef,
-    rippleEnabled: !noRipple && !['plain', 'text'].includes(intent),
+  const { getRippleHandlers, rippleEnabled } = useRipple({
     disabled: disabled || loading,
+    rippleEnabled: !noRipple && !['plain', 'text'].includes(intent),
+    rippleRef,
   });
 
   const baseProps = {

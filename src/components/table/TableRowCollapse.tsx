@@ -56,33 +56,33 @@ const CollapseButton = styled(Button)`
 `;
 
 export type TableRowCollapseProps = {
-  className?: string;
   children?: ReactNode;
-  onToggleCollapse: MouseEventHandler<HTMLTableRowElement>;
+  className?: string;
   /**
    * @param collapsed
    * @default false
    */
   collapsed?: boolean;
+  onToggleCollapse: MouseEventHandler<HTMLTableRowElement>;
   rowContent: ReactNode;
 };
 
 export const TableRowCollapse = ({
-  className,
   children,
-  onToggleCollapse,
+  className,
   collapsed = false,
+  onToggleCollapse,
   rowContent,
 }: TableRowCollapseProps) => {
   const collapsible = !!children;
   return (
     <>
       <StyledTableRow
-        collapsible={collapsible}
-        withHover={collapsible}
-        collapsed={collapsed}
-        onClick={e => collapsible && onToggleCollapse(e)}
         className={className}
+        collapsed={collapsed}
+        collapsible={collapsible}
+        onClick={e => collapsible && onToggleCollapse(e)}
+        withHover={collapsible}
       >
         {rowContent}
         <TableCell align="right">
@@ -96,7 +96,7 @@ export const TableRowCollapse = ({
       </StyledTableRow>
       {collapsible && (
         <TableRow>
-          <CollapsibleCell colSpan={100} collapsed={collapsed}>
+          <CollapsibleCell collapsed={collapsed} colSpan={100}>
             <StyledCollapse collapsed={collapsed}>{children}</StyledCollapse>
           </CollapsibleCell>
         </TableRow>

@@ -15,18 +15,18 @@ export const avatarShapes = {
 type AvatarShape = keyof typeof avatarShapes;
 
 export type AvatarProps = {
+  /** @default false */
+  bordered?: boolean;
   /** @default round */
   shape?: AvatarShape;
   /** @default 32 px */
   size?: ImageSize;
-  /** @default false */
-  bordered?: boolean;
 };
 
 type AvartarBaseProps = Required<AvatarProps> & {
-  backgroundUrl?: string;
-  backgroundSize?: string;
   backgroundPosition?: string;
+  backgroundSize?: string;
+  backgroundUrl?: string;
   children?: ReactNode;
 };
 
@@ -70,7 +70,7 @@ const StyledAvatarBase = styled.div<AvartarBaseProps>`
 `;
 
 export const AvatarBase = ({ children, ...rest }: AvartarBaseProps) => (
-  <Wrapper $bordered={rest.bordered} $size={rest.size} $shape={rest.shape}>
+  <Wrapper $bordered={rest.bordered} $shape={rest.shape} $size={rest.size}>
     {children || <StyledAvatarBase {...rest} />}
   </Wrapper>
 );

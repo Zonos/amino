@@ -13,7 +13,6 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const RippleMeta: Meta = {
-  component: RippleGroup,
   argTypes: {
     duration: {
       control: { type: 'number' },
@@ -22,6 +21,7 @@ const RippleMeta: Meta = {
       control: { type: 'number' },
     },
   },
+  component: RippleGroup,
 };
 
 export default RippleMeta;
@@ -52,10 +52,10 @@ export const Ripple: StoryFn<typeof RippleGroup> = props => {
   const rippleRef = useRef<IRippleActions>(null);
   const [controlRippleEnabled, setControlRippleEnabled] = useState(true);
 
-  const { rippleEnabled, getRippleHandlers } = useRipple({
-    rippleRef,
-    rippleEnabled: controlRippleEnabled,
+  const { getRippleHandlers, rippleEnabled } = useRipple({
     disabled: false,
+    rippleEnabled: controlRippleEnabled,
+    rippleRef,
   });
 
   return (
@@ -66,8 +66,8 @@ export const Ripple: StoryFn<typeof RippleGroup> = props => {
         {rippleEnabled && <RippleGroup ref={rippleRef} {...props} />}
       </StyledDiv>
       <Checkbox
-        label="Ripple enabled"
         checked={controlRippleEnabled}
+        label="Ripple enabled"
         onChange={checked => setControlRippleEnabled(checked)}
       />
       {controlRippleEnabled && (

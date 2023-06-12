@@ -92,9 +92,9 @@ export interface CountryPhoneSelectProps<
   label?: string;
   phone: string;
   phoneCountry: ICountryOption | null;
+  styles?: StylesConfig<Option, IsMulti, Group>;
   setPhone: (changed: string) => void;
   setPhoneCountry: (changed: ICountryOption | null) => void;
-  styles?: StylesConfig<Option, IsMulti, Group>;
 }
 
 const formatOptionLabel = (option: ICountryOption) => (
@@ -127,21 +127,20 @@ export const CountryPhoneSelect = ({
       <StyledInputWrapper>
         <Input
           label={label}
+          onChange={e => setPhone(e.target.value)}
           prefix={
             <StyledPrefix onClick={() => setMenuIsOpen(!menuIsOpen)}>
               {icon}
               <ChevronDownIcon size={19} />
             </StyledPrefix>
           }
-          onChange={e => setPhone(e.target.value)}
-          valuePrefix={valuePrefix}
           value={phone}
+          valuePrefix={valuePrefix}
         />
       </StyledInputWrapper>
       <Select
         {...props}
         components={{ Control: () => null, MenuList }}
-        options={countryOptions}
         formatOptionLabel={formatOptionLabel}
         menuIsOpen={menuIsOpen}
         onBlur={() => setMenuIsOpen(false)}
@@ -149,6 +148,7 @@ export const CountryPhoneSelect = ({
           setPhoneCountry(changed);
           setMenuIsOpen(false);
         }}
+        options={countryOptions}
         value={phoneCountry}
         {...additionalProps}
       />

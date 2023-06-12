@@ -52,13 +52,13 @@ type DateInputEventHandler = (
 ) => void;
 
 type InputType<T extends HTMLInputTypeAttribute> = {
-  /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
-  width?: number;
+  inputPrefix?: ReactNode;
+  inputSuffix?: ReactNode;
   onChange: T extends 'date'
     ? DateInputEventHandler
     : ChangeEventHandler<HTMLInputElement>;
-  inputSuffix?: ReactNode;
-  inputPrefix?: ReactNode;
+  /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
+  width?: number;
 } & Omit<FloatLabelInputProps, 'onChange'> &
   HelpTextProps;
 
@@ -82,10 +82,10 @@ export const Input = <T extends string>({
   prefix,
   readOnly,
   required,
+  size,
   suffix,
   tabIndex,
   type,
-  size,
   value,
   valuePrefix,
   width,
@@ -109,9 +109,9 @@ export const Input = <T extends string>({
             prefix={prefix || inputPrefix}
             readOnly={readOnly}
             required={required}
+            size={size}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
-            size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
             {...props}
@@ -121,7 +121,6 @@ export const Input = <T extends string>({
       case 'datetime-local':
         return (
           <DateInput
-            type={type}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
@@ -135,9 +134,10 @@ export const Input = <T extends string>({
             prefix={prefix || inputPrefix}
             readOnly={readOnly}
             required={required}
+            size={size}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
-            size={size}
+            type={type}
             value={value || ''}
             valuePrefix={valuePrefix}
             {...props}
@@ -159,9 +159,9 @@ export const Input = <T extends string>({
             prefix={prefix || inputPrefix}
             readOnly={readOnly}
             required={required}
+            size={size}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
-            size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
             {...props}
@@ -184,9 +184,9 @@ export const Input = <T extends string>({
             prefix={prefix || inputPrefix}
             readOnly={readOnly}
             required={required}
+            size={size}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
-            size={size}
             value={value || ''}
             valuePrefix={valuePrefix}
             {...props}
@@ -208,9 +208,9 @@ export const Input = <T extends string>({
             prefix={prefix || inputPrefix}
             readOnly={readOnly}
             required={required}
+            size={size}
             suffix={suffix || inputSuffix}
             tabIndex={tabIndex}
-            size={size}
             type={type}
             value={value || ''}
             valuePrefix={valuePrefix}
@@ -221,8 +221,8 @@ export const Input = <T extends string>({
   };
   return (
     <AminoInputWrapper
-      width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
+      width={width}
     >
       <Fields>{renderInput()}</Fields>
 

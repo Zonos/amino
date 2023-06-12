@@ -34,70 +34,70 @@ export type ProductNames =
 export const getProductDetails = (
   product?: Products
 ): {
-  icon: JSX.Element;
   color: ColorPrefix;
+  icon: JSX.Element;
   name: ProductNames;
 } => {
   switch (product) {
     case 'checkout':
       return {
-        icon: <CheckoutIcon />,
         color: 'orange',
+        icon: <CheckoutIcon />,
         name: 'Checkout',
       };
     case 'classify':
       return {
-        icon: <ClassifyIcon />,
         color: 'purple',
+        icon: <ClassifyIcon />,
         name: 'Classify',
       };
     case 'clear':
       return {
-        icon: <ClearIcon />,
         color: 'cyan',
+        icon: <ClearIcon />,
         name: 'Clear',
       };
     case 'dashboard':
       return {
-        icon: <DashboardIcon />,
         color: 'blue',
+        icon: <DashboardIcon />,
         name: 'Dashboard',
       };
     case 'hello':
       return {
-        icon: <HelloIcon />,
         color: 'green',
+        icon: <HelloIcon />,
         name: 'Hello',
       };
     case 'landed-cost':
       return {
-        icon: <LandedCostIcon />,
         color: 'red',
+        icon: <LandedCostIcon />,
         name: 'Landed Cost',
       };
     case 'rate':
       return {
-        icon: <RateIcon />,
         color: 'blue',
+        icon: <RateIcon />,
         name: 'Rate',
       };
     case 'restrict':
       return {
-        icon: <RestrictIcon />,
         color: 'blue',
+        icon: <RestrictIcon />,
         name: 'Restrict',
       };
     case 'screen':
       return {
-        icon: <ScreenIcon />,
         color: 'green',
+        icon: <ScreenIcon />,
         name: 'Screen',
       };
 
     default:
       return {
-        icon: <DashboardIcon />,
         color: 'blue',
+        icon: <DashboardIcon />,
         name: 'Dashboard',
       };
   }

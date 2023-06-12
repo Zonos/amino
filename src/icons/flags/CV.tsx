@@ -10,53 +10,53 @@ type Props = {
 export const CV = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
   const ids = useStableUniqueId(3);
   return (
-    <FlagIconBase height={height} width={width} ref={ref} viewBox="0 0 16 12">
+    <FlagIconBase ref={ref} height={height} viewBox="0 0 16 12" width={width}>
       <g clipPath={`url(#${ids[2]})`}>
         <mask
-          id={`${ids[0]}`}
-          width="16"
           height="12"
+          id={`${ids[0]}`}
+          maskUnits="userSpaceOnUse"
+          width="16"
           x="0"
           y="0"
-          maskUnits="userSpaceOnUse"
         >
-          <path fill="#fff" d="M0 0h16v12H0z" />
+          <path d="M0 0h16v12H0z" fill="#fff" />
         </mask>
         <g mask={`url(#${ids[0]})`}>
           <path
+            clipRule="evenodd"
+            d="M0 0v12h16V0H0Z"
             fill="#4141DB"
             fillRule="evenodd"
-            d="M0 0v12h16V0H0Z"
-            clipRule="evenodd"
           />
           <mask
-            id={`${ids[1]}`}
-            width="16"
             height="12"
+            id={`${ids[1]}`}
+            maskUnits="userSpaceOnUse"
+            width="16"
             x="0"
             y="0"
-            maskUnits="userSpaceOnUse"
           >
             <path
+              clipRule="evenodd"
+              d="M0 0v12h16V0H0Z"
               fill="#fff"
               fillRule="evenodd"
-              d="M0 0v12h16V0H0Z"
-              clipRule="evenodd"
             />
           </mask>
           <g mask={`url(#${ids[1]})`}>
-            <path fill="#F90000" stroke="#F7FCFF" d="M0 6.5h-.5v2h17v-2H0Z" />
+            <path d="M0 6.5h-.5v2h17v-2H0Z" fill="#F90000" stroke="#F7FCFF" />
             <path
-              stroke="#FFDE00"
-              d="M5.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"
               clipRule="evenodd"
+              d="M5.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"
+              stroke="#FFDE00"
             />
           </g>
         </g>
       </g>
       <defs>
         <clipPath id={`${ids[2]}`}>
-          <rect width="16" height="12" fill="#fff" rx="1" />
+          <rect fill="#fff" height="12" rx="1" width="16" />
         </clipPath>
       </defs>
     </FlagIconBase>

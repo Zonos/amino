@@ -48,17 +48,17 @@ const IconWrap = styled.div`
 `;
 
 export type Props = {
+  children?: JSX.Element;
   product: Products;
   xlabel: string;
   xsubLabel: string;
-  children?: JSX.Element;
 };
 
 export const MdxRelatedContent = ({
+  children,
   product,
   xlabel,
   xsubLabel,
-  children,
 }: Props) => {
   const productDetails = getProductDetails(product);
 
@@ -78,11 +78,11 @@ export const MdxRelatedContent = ({
           <h4>{xlabel}</h4>
           <p>{xsubLabel}</p>
           <Button
-            tag="a"
-            intent="link"
             href={href}
+            icon={<ArrowRightIcon color="blue600" size={18} />}
             iconRight
-            icon={<ArrowRightIcon size={18} color="blue600" />}
+            intent="link"
+            tag="a"
           >
             {linkText}
           </Button>

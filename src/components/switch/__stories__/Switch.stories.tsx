@@ -5,21 +5,21 @@ import { type SwitchProps, Switch } from 'src/components/switch/Switch';
 import { Default } from 'src/icons/flags/Default';
 
 const SwitchMeta: Meta = {
-  component: Switch,
   argTypes: {
     checked: {
+      type: 'boolean',
+    },
+    disabled: {
       type: 'boolean',
     },
     labelDescription: {
       type: 'string',
     },
-    disabled: {
-      type: 'boolean',
-    },
     subtitle: {
       type: 'string',
     },
   },
+  component: Switch,
 };
 
 export default SwitchMeta;
@@ -38,8 +38,8 @@ const Template: StoryFn<SwitchProps> = ({ checked, ...props }: SwitchProps) => {
 
 export const BasicSwitch = Template.bind({});
 BasicSwitch.args = {
+  icon: <Default height={12} width={16} />,
   label: 'Input label',
-  icon: <Default width={16} height={12} />,
   subtitle: 'Subtitle here',
 };
 BasicSwitch.parameters = {
