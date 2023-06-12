@@ -48,6 +48,7 @@ const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 99;
+  background-color: ${theme.pageBackground};
 
   @media print {
     display: none;
