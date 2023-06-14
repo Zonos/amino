@@ -136,7 +136,7 @@ exports[`Theme content: 1`] = `
   "--amino-red-800": "#8C1D33",
   "--amino-red-900": "#641627",
   "--amino-sidebar-color": "var(--amino-gray-0)",
-  "--amino-sidebar-width": "264px",
+  "--amino-sidebar-width": "232px",
   "--amino-size-lg": "48px",
   "--amino-size-md": "40px",
   "--amino-size-sm": "32px",
