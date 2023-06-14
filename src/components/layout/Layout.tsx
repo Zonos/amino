@@ -12,7 +12,7 @@ const Footer = styled.div`
 `;
 
 const SidebarContent = styled.div`
-  padding: ${theme.space24};
+  padding: ${theme.space16};
   box-sizing: border-box;
   overflow-y: auto;
   height: 100%;
