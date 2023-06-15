@@ -223,7 +223,11 @@ const Outline = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.gray100};
+      background: linear-gradient(
+        180deg,
+        ${theme.gray0} 12.5%,
+        ${theme.gray100} 87.5%
+      );
       border: 1px solid ${theme.gray200};
     }
     &:active {

@@ -54,7 +54,7 @@ export const theme = {
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',
-  'sidebar-width': '264px',
+  'sidebar-width': '232px',
   'elevation-0': '0',
   'elevation-100': '100',
   'elevation-200': '200',

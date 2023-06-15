@@ -518,7 +518,7 @@ export const theme = {
   /** @info 55px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   appbarHeight: 'var(--amino-appbar-height)',
-  /** @info 264px */
+  /** @info 232px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   sidebarWidth: 'var(--amino-sidebar-width)',
   /** @info 0 */
