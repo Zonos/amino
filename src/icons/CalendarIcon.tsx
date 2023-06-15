@@ -14,7 +14,7 @@ export const CalendarIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M8 2.9A1.1 1.1 0 0 1 9.1 4v.9h5.8V4a1.1 1.1 0 0 1 2.2 0v.9h.9A3.1 3.1 0 0 1 21.1 8v10a3.1 3.1 0 0 1-3.1 3.1H6A3.1 3.1 0 0 1 2.9 18V8A3.1 3.1 0 0 1 6 4.9h.9V4A1.1 1.1 0 0 1 8 2.9ZM6 7.1a.9.9 0 0 0-.9.9v.9h13.8V8a.9.9 0 0 0-.9-.9H6Zm12.9 4H5.1V18a.9.9 0 0 0 .9.9h12a.9.9 0 0 0 .9-.9v-6.9Z"
+        d="M8 3a1 1 0 0 1 1 1v1h6V4a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h1V4a1 1 0 0 1 1-1ZM6 7a1 1 0 0 0-1 1v1h14V8a1 1 0 0 0-1-1H6Zm13 4H5v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7Z"
         fill="currentColor"
         fillRule="evenodd"
       />

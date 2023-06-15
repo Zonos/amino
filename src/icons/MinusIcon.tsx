@@ -14,7 +14,7 @@ export const MinusIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M3.9 12A1.1 1.1 0 0 1 5 10.9h14a1.1 1.1 0 0 1 0 2.2H5A1.1 1.1 0 0 1 3.9 12Z"
+        d="M4 12a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z"
         fill="currentColor"
         fillRule="evenodd"
       />

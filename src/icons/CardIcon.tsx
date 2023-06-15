@@ -14,7 +14,7 @@ export const CardIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M1.9 7A3.1 3.1 0 0 1 5 3.9h14A3.1 3.1 0 0 1 22.1 7v10a3.1 3.1 0 0 1-3.1 3.1H5A3.1 3.1 0 0 1 1.9 17V7ZM5 6.1a.9.9 0 0 0-.9.9v.9h15.8V7a.9.9 0 0 0-.9-.9H5Zm14.9 4H4.1V17a.9.9 0 0 0 .9.9h14a.9.9 0 0 0 .9-.9v-6.9ZM5.9 15A1.1 1.1 0 0 1 7 13.9h4a1.1 1.1 0 0 1 0 2.2H7A1.1 1.1 0 0 1 5.9 15Z"
+        d="M2 7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7Zm3-1a1 1 0 0 0-1 1v1h16V7a1 1 0 0 0-1-1H5Zm15 4H4v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7ZM6 15a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Z"
         fill="currentColor"
         fillRule="evenodd"
       />

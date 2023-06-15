@@ -14,7 +14,7 @@ export const MenuIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M4.9 7A1.1 1.1 0 0 1 6 5.9h12a1.1 1.1 0 0 1 0 2.2H6A1.1 1.1 0 0 1 4.9 7Zm0 5A1.1 1.1 0 0 1 6 10.9h8a1.1 1.1 0 0 1 0 2.2H6A1.1 1.1 0 0 1 4.9 12Zm0 5A1.1 1.1 0 0 1 6 15.9h12a1.1 1.1 0 0 1 0 2.2H6A1.1 1.1 0 0 1 4.9 17Z"
+        d="M5 7a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
         fill="currentColor"
         fillRule="evenodd"
       />
