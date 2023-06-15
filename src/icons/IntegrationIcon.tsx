@@ -14,7 +14,7 @@ export const IntegrationIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M2.9 12A8.1 8.1 0 0 1 11 3.9h3.909c1.21 0 2.19.98 2.19 2.19V7.9H20a1.1 1.1 0 0 1 0 2.2h-2.9v3.8H20a1.1 1.1 0 0 1 0 2.2h-2.9v1.81c0 1.21-.98 2.19-2.19 2.19H11A8.1 8.1 0 0 1 2.9 12ZM11 6.1a5.9 5.9 0 1 0 0 11.8h3.9V6.1H11Z"
+        d="M3 12a8 8 0 0 1 8-8h3.91A2.09 2.09 0 0 1 17 6.09V8h3a1 1 0 1 1 0 2h-3v4h3a1 1 0 1 1 0 2h-3v1.91A2.09 2.09 0 0 1 14.91 20H11a8 8 0 0 1-8-8Zm8-6a6 6 0 1 0 0 12h3.91c.05 0 .09-.04.09-.09V6.09a.09.09 0 0 0-.09-.09H11Z"
         fill="currentColor"
         fillRule="evenodd"
       />

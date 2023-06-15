@@ -35,12 +35,12 @@ Default.parameters = {
   },
 };
 
-export const Icon = Template.bind({});
-Icon.args = {
+export const WithIcon = Template.bind({});
+WithIcon.args = {
   children: <span>HS code for Brazil</span>,
   icon: <CubeIcon size={20} />,
 };
-Icon.parameters = {
+WithIcon.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',

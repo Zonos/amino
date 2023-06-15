@@ -14,7 +14,7 @@ export const PlusIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M12 3.9A1.1 1.1 0 0 1 13.1 5v5.9H19a1.1 1.1 0 0 1 0 2.2h-5.9V19a1.1 1.1 0 0 1-2.2 0v-5.9H5a1.1 1.1 0 0 1 0-2.2h5.9V5A1.1 1.1 0 0 1 12 3.9Z"
+        d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6V5a1 1 0 0 1 1-1Z"
         fill="currentColor"
         fillRule="evenodd"
       />

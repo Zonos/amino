@@ -14,7 +14,7 @@ export const MobileIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M3.9 5A3.1 3.1 0 0 1 7 1.9h10A3.1 3.1 0 0 1 20.1 5v14a3.1 3.1 0 0 1-3.1 3.1H7A3.1 3.1 0 0 1 3.9 19V5ZM7 4.1a.9.9 0 0 0-.9.9v14a.9.9 0 0 0 .9.9h10a.9.9 0 0 0 .9-.9V5a.9.9 0 0 0-.9-.9H7ZM9.9 16a1.1 1.1 0 0 1 1.1-1.1h2a1.1 1.1 0 0 1 0 2.2h-2A1.1 1.1 0 0 1 9.9 16Z"
+        d="M4 5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V5Zm3-1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H7Zm3 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1Z"
         fill="currentColor"
         fillRule="evenodd"
       />

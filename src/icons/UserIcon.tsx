@@ -14,7 +14,7 @@ export const UserIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M12 4.1a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8ZM6.9 7a5.1 5.1 0 1 1 10.2 0A5.1 5.1 0 0 1 6.9 7Zm.1 9.1a.9.9 0 0 0-.9.9v2a.9.9 0 0 0 .9.9h10a.9.9 0 0 0 .9-.9v-2a.9.9 0 0 0-.9-.9H7Zm-3.1.9A3.1 3.1 0 0 1 7 13.9h10a3.1 3.1 0 0 1 3.1 3.1v2a3.1 3.1 0 0 1-3.1 3.1H7A3.1 3.1 0 0 1 3.9 19v-2Z"
+        d="M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7Zm0 9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H7Zm-3 1a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-2Z"
         fill="currentColor"
         fillRule="evenodd"
       />

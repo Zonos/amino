@@ -14,7 +14,7 @@ export const ThreeDotIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M3.9 12a2.1 2.1 0 1 1 4.2 0 2.1 2.1 0 0 1-4.2 0Zm6 0a2.1 2.1 0 1 1 4.2 0 2.1 2.1 0 0 1-4.2 0Zm6 0a2.1 2.1 0 1 1 4.2 0 2.1 2.1 0 0 1-4.2 0Z"
+        d="M4 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm6 0a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm6 0a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z"
         fill="currentColor"
         fillRule="evenodd"
       />
