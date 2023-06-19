@@ -54,5 +54,5 @@ if (modifiedState) {
 }
 
 export const BasicRichCardStateSelect = Template.bind({});
-BasicRichCardStateSelect.args = { states: unitedStates };
+BasicRichCardStateSelect.args = { states: usStates };
 BasicRichCardStateSelect.parameters = {};
