@@ -3,7 +3,6 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { UploadedFile } from 'src/types/UploadedFile';
 import styled from 'styled-components';
 
 import { Button } from '../button/Button';
@@ -82,6 +81,11 @@ const RemoveFileButton = styled(Button)`
   }
 `;
 
+type UploadFileNoImage = {
+  name: string;
+  size: string;
+};
+
 export type FileUploadProps = {
   className?: string;
   /**
@@ -104,7 +108,7 @@ export type FileUploadProps = {
    */
   loadingText?: string;
   /** Display file info if uploaded file property has data */
-  uploadedFile: UploadedFile | null;
+  uploadedFile: UploadFileNoImage | null;
   onRemoveFile?: () => void;
 };
 

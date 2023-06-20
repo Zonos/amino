@@ -73,6 +73,8 @@ export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
       instructionText="Drop your files here"
       onRemoveFile={index => handleRemoveFile(index)}
       uploadedFiles={files.map(f => ({
+        // get preview image from localfile or remote url
+        imageUrl: URL.createObjectURL(f),
         name: f.name,
         size: `${f.size} bytes`,
       }))}

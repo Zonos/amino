@@ -7,6 +7,7 @@ import { theme } from 'src/styles/constants/theme';
 import { type UploadedFile } from 'src/types/UploadedFile';
 import styled from 'styled-components';
 
+import { ImageAvatar } from '../avatar/ImageAvatar';
 import { Button } from '../button/Button';
 import { Spinner } from '../spinner/Spinner';
 import { Text } from '../text/Text';
@@ -183,7 +184,11 @@ export const DropZone = ({
   const renderFiles = () =>
     uploadedFiles.map((file, index) => (
       <UploadedFileRow key={file.name}>
-        <FileDuotoneIcon />
+        {file.imageUrl ? (
+          <ImageAvatar imageUrl={file.imageUrl} shape="rounded" />
+        ) : (
+          <FileDuotoneIcon />
+        )}
         <UploadedFileInfoWrapper>
           <Text color="gray1200" type="label">
             {file.name}
