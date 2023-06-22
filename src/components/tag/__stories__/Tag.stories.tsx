@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import type { Meta, StoryFn } from '@storybook/react';
+import { VStack } from 'src/components/stack/VStack';
 import { type TagProps, Tag } from 'src/components/tag/Tag';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
@@ -18,11 +21,59 @@ const Template: StoryFn<TagProps> = ({
   icon,
   iconRight,
   onClose,
-}: TagProps) => (
-  <Tag icon={icon} iconRight={iconRight} onClose={onClose}>
-    {children}
-  </Tag>
-);
+}: TagProps) => {
+  const [tagSectionClicked, settagSectionClicked] = useState<
+    'whole' | 'close' | null
+  >(null);
+  useEffect(() => {
+    if (tagSectionClicked) {
+      // reset after 5 seconds
+      setTimeout(() => {
+        settagSectionClicked(null);
+      }, 2000);
+    }
+  }, [tagSectionClicked]);
+
+  return (
+    <VStack>
+      <p>Tag section clicked: {tagSectionClicked || 'None'}</p>
+      <div>
+        <p>
+          Size: <b>base</b>
+        </p>
+        <Tag
+          icon={icon}
+          iconRight={iconRight}
+          onClick={() => settagSectionClicked('whole')}
+          onClose={() => {
+            settagSectionClicked('close');
+            onClose();
+          }}
+          size="base"
+        >
+          {children}
+        </Tag>
+      </div>
+      <div>
+        <p>
+          Size: <b>lg</b>
+        </p>
+        <Tag
+          icon={icon}
+          iconRight={iconRight}
+          onClick={() => settagSectionClicked('whole')}
+          onClose={() => {
+            settagSectionClicked('close');
+            onClose();
+          }}
+          size="lg"
+        >
+          {children}
+        </Tag>
+      </div>
+    </VStack>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -38,7 +89,7 @@ Default.parameters = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: <span>HS code for Brazil</span>,
-  icon: <CubeIcon size={20} />,
+  icon: <CubeIcon size={16} />,
 };
 WithIcon.parameters = {
   design: {
