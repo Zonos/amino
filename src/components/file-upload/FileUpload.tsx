@@ -83,7 +83,7 @@ const RemoveFileButton = styled(Button)`
 
 type UploadFileNoImage = {
   name: string;
-  size: string;
+  size?: string;
 };
 
 export type FileUploadProps = {
