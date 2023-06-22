@@ -7,6 +7,7 @@ import { orange } from './theme/night/colors/_orange';
 import { green } from './theme/night/colors/_green';
 import { purple } from './theme/night/colors/_purple';
 import { transparent } from './theme/night/colors/_transparent';
+import { glass } from './theme/night/colors/_glass';
 
 import { constraintDefinedAminoVar } from './utils';
 import { shadow } from './theme/night/_shadow';
@@ -14,6 +15,9 @@ import { variablesUsingColors } from './theme/_variablesUsingColors';
 import { oneOffColors } from './theme/night/colors/_oneOffColors';
 
 export const night = constraintDefinedAminoVar(theme, {
+  /* GLASS PALETTE */
+  ...glass,
+
   /* GRAY PALETTE */
   ...gray,
 
@@ -45,5 +49,5 @@ export const night = constraintDefinedAminoVar(theme, {
   ...variablesUsingColors,
 
   /* ONE OFF COLORS */
-  ...oneOffColors
+  ...oneOffColors,
 });

@@ -1,4 +1,18 @@
 [data-theme='night'] {
+  --amino-glass-0: #ffffff00;
+  --amino-glass-50: #ffffff0a;
+  --amino-glass-100: #ffffff21;
+  --amino-glass-200: #ffffff26;
+  --amino-glass-300: #ffffff44;
+  --amino-glass-400: #ffffff51;
+  --amino-glass-500: #ffffff63;
+  --amino-glass-600: #ffffff8e;
+  --amino-glass-700: #ffffffa8;
+  --amino-glass-800: #ffffffc1;
+  --amino-glass-900: #ffffffd8;
+  --amino-glass-1000: #ffffffea;
+  --amino-glass-1100: #fffffff4;
+  --amino-glass-1200: #fffffffa;
   --amino-gray-0: #101116;
   --amino-gray-50: #1e1f26;
   --amino-gray-100: #2e3038;
