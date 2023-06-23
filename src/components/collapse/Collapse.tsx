@@ -62,6 +62,18 @@ export const Collapse = ({
 
   useEffect(() => {
     setContentHeight(getComputedHeight());
+    let resizeObserver: ResizeObserver | null = null;
+    if (contentWrapperRef.current) {
+      // change size when content changes
+      resizeObserver = new ResizeObserver(() => {
+        setContentHeight(getComputedHeight());
+      });
+      resizeObserver.observe(contentWrapperRef.current);
+    }
+
+    return () => {
+      resizeObserver?.disconnect();
+    };
   }, []);
 
   useEffect(() => {
