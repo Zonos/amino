@@ -5,6 +5,20 @@ exports[`Case light theme: 1`] = `
 [data-theme='day'] {
   --amino-transition: all 0.2s ease-in-out 0s;
   --amino-type-scale-base: 16px;
+  --amino-glass-0: #10111600;
+  --amino-glass-50: #1011160a;
+  --amino-glass-100: #10111614;
+  --amino-glass-200: #10111626;
+  --amino-glass-300: #1011163d;
+  --amino-glass-400: #10111656;
+  --amino-glass-500: #10111670;
+  --amino-glass-600: #1011169b;
+  --amino-glass-700: #101116ad;
+  --amino-glass-800: #101116bc;
+  --amino-glass-900: #101116c6;
+  --amino-glass-1000: #101116dd;
+  --amino-glass-1100: #101116ef;
+  --amino-glass-1200: #101116f5;
   --amino-gray-0: #ffffff;
   --amino-gray-50: #f6f6f8;
   --amino-gray-100: #eaebed;
@@ -219,6 +233,20 @@ exports[`Case light theme: 1`] = `
 
 exports[`Case night theme: 1`] = `
 "[data-theme='night'] {
+  --amino-glass-0: #ffffff00;
+  --amino-glass-50: #ffffff0a;
+  --amino-glass-100: #ffffff21;
+  --amino-glass-200: #ffffff26;
+  --amino-glass-300: #ffffff44;
+  --amino-glass-400: #ffffff51;
+  --amino-glass-500: #ffffff63;
+  --amino-glass-600: #ffffff8e;
+  --amino-glass-700: #ffffffa8;
+  --amino-glass-800: #ffffffc1;
+  --amino-glass-900: #ffffffd8;
+  --amino-glass-1000: #ffffffea;
+  --amino-glass-1100: #fffffff4;
+  --amino-glass-1200: #fffffffa;
   --amino-gray-0: #101116;
   --amino-gray-50: #1e1f26;
   --amino-gray-100: #2e3038;

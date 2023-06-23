@@ -6,6 +6,7 @@ export const colorPrefixes = [
   'purple',
   'red',
   'gray',
+  'glass',
 ] as const;
 
 export const colorContrasts = [
@@ -25,6 +26,10 @@ export type ColorContrast = typeof colorContrasts[number];
 export type ColorPrefix = typeof colorPrefixes[number];
 export type Color =
   | 'gray0'
+  | 'glass0'
+  | 'glass50'
   | `${ColorPrefix}${ColorContrast}`
   | 'gray1100'
-  | 'gray1200';
+  | 'gray1200'
+  | 'glass1100'
+  | 'glass1200';
