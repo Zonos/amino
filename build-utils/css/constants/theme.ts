@@ -3,6 +3,7 @@ import { variablesUsingColors } from './theme/_variablesUsingColors';
 import { shadow } from './theme/day/_shadow';
 import { blue } from './theme/day/colors/_blue';
 import { cyan } from './theme/day/colors/_cyan';
+import { glass } from './theme/day/colors/_glass';
 import { gray } from './theme/day/colors/_gray';
 import { green } from './theme/day/colors/_green';
 import { oneOffColors } from './theme/day/colors/_oneOffColors';
@@ -15,6 +16,9 @@ import { transparent } from './theme/day/colors/_transparent';
 export const theme = {
   transition: 'all 0.2s ease-in-out 0s',
   'type-scale-base': '16px',
+
+  /* GLASS PALETTE */
+  ...glass,
 
   /* GRAY PALETTE */
   ...gray,
