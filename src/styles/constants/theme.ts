@@ -7,6 +7,50 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   typeScaleBase: 'var(--amino-type-scale-base)',
 
+  /* GLASS PALETTE */
+  /** @info #10111600 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass0: 'var(--amino-glass-0)',
+  /** @info #1011160A */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass50: 'var(--amino-glass-50)',
+  /** @info #10111614 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass100: 'var(--amino-glass-100)',
+  /** @info #10111626 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass200: 'var(--amino-glass-200)',
+  /** @info #1011163D */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass300: 'var(--amino-glass-300)',
+  /** @info #10111656 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass400: 'var(--amino-glass-400)',
+  /** @info #10111670 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass500: 'var(--amino-glass-500)',
+  /** @info #1011169B */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass600: 'var(--amino-glass-600)',
+  /** @info #101116AD */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass700: 'var(--amino-glass-700)',
+  /** @info #101116BC */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass800: 'var(--amino-glass-800)',
+  /** @info #101116C6 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass900: 'var(--amino-glass-900)',
+  /** @info #101116DD */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass1000: 'var(--amino-glass-1000)',
+  /** @info #101116EF */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass1100: 'var(--amino-glass-1100)',
+  /** @info #101116F5 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  glass1200: 'var(--amino-glass-1200)',
+
   /* GRAY PALETTE */
   /** @info white  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */

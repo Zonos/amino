@@ -34,7 +34,7 @@ export const ColorPalette = () => (
       <ColorWrapper key={color}>
         <Text type="title">{color.toUpperCase()}</Text>
         <VStack spacing={0}>
-          {(color !== 'gray'
+          {(color !== 'gray' && color !== 'glass'
             ? colorContrasts
             : ['0', '50', ...colorContrasts, '1100', '1200']
           ).map(value => {
