@@ -12,11 +12,11 @@ const thumbnailShapes = {
 } as const;
 
 export type ThumbnailProps = {
-  /** @default false */
-  bordered?: boolean;
   /** @default 'gray' */
   color?: ColorPrefix;
   icon: ReactNode;
+  /** @default 'full' */
+  intent?: 'full' | 'outline' | 'bordered';
   /** @default 'round' */
   shape?: keyof typeof thumbnailShapes;
   /** @default 32 */
@@ -24,7 +24,7 @@ export type ThumbnailProps = {
 };
 
 type StyleProps = Required<
-  Pick<ThumbnailProps, 'shape' | 'color' | 'size' | 'bordered'>
+  Pick<ThumbnailProps, 'shape' | 'color' | 'size' | 'intent'>
 >;
 
 const Wrapper = styled.div<StyleProps>`
@@ -35,9 +35,11 @@ const Wrapper = styled.div<StyleProps>`
   height: ${p => `${p.size}px`};
   border-radius: ${p => thumbnailShapes[p.shape]};
   border: ${p =>
-    p.bordered ? `${p.size / 16}px solid ${theme.gray0}` : undefined};
+    p.intent === 'bordered' && `${p.size / 16}px solid ${theme.gray0}`};
+  border: ${p => p.intent === 'outline' && `1px solid ${theme.gray200}`};
   box-sizing: content-box;
-  background-color: ${p => theme[`${p.color}100`]};
+  background-color: ${p =>
+    p.intent === 'outline' ? 'transparent' : theme[`${p.color}100`]};
 
   svg {
     color: ${p => theme[`${p.color}800`]};
@@ -52,13 +54,13 @@ const Wrapper = styled.div<StyleProps>`
 `;
 
 export const Thumbnail = ({
-  bordered = false,
   color = 'gray',
   icon,
+  intent = 'full',
   shape = 'round',
   size = 32,
 }: ThumbnailProps) => (
-  <Wrapper bordered={bordered} color={color} shape={shape} size={size}>
+  <Wrapper color={color} intent={intent} shape={shape} size={size}>
     {icon}
   </Wrapper>
 );

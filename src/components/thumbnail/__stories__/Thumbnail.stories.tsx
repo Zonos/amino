@@ -53,6 +53,19 @@ const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
       <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
       <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
       <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
+      <ThumbnailComponent {...props} icon={<Icon />} intent="outline" />
+      <ThumbnailComponent
+        {...props}
+        icon={<Icon />}
+        intent="outline"
+        shape="rounded"
+      />
+      <ThumbnailComponent
+        {...props}
+        icon={<Icon />}
+        intent="outline"
+        shape="square"
+      />
     </Wrapper>
   );
 };
