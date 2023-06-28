@@ -30,6 +30,9 @@ const Template: StoryFn<TextareaProps> = ({
   value: _value,
 }: TextareaProps) => {
   const [value, setValue] = useState(_value);
+  const [longContent, setLongContent] = useState(
+    `lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt.`
+  );
   return (
     <div
       style={{
@@ -140,6 +143,30 @@ const Template: StoryFn<TextareaProps> = ({
             label={label}
             onChange={e => setValue(e.target.value)}
             value={value?.toString() || ''}
+          />
+        </StyledGroup>
+      </div>
+      <div>
+        <Text type="bold-label">Expandable (maxRow 5 | maxRow 3):</Text>
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            expandable
+            helpText={helpText}
+            label={label}
+            onChange={e => setLongContent(e.target.value)}
+            placeholder={placeholder}
+            value={longContent}
+          />
+          <Textarea
+            error={error}
+            expandable
+            helpText={helpText}
+            label={label}
+            maxRows={3}
+            onChange={e => setLongContent(e.target.value)}
+            placeholder={placeholder}
+            value={longContent}
           />
         </StyledGroup>
       </div>
