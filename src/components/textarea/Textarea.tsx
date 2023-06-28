@@ -2,7 +2,6 @@ import {
   type ReactNode,
   type TextareaHTMLAttributes,
   forwardRef,
-  useEffect,
   useRef,
 } from 'react';
 
@@ -182,11 +181,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const hasValue = !!value;
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-    useEffect(() => {
-      if (ref && typeof ref !== 'function') {
-        textareaRef.current = ref.current;
-      }
-    }, [ref]);
 
     useHeightAdjustTextarea({
       maxRows,
@@ -202,9 +196,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         }`}
         width={width}
       >
-        <Fields onClick={() => textareaRef.current?.focus()}>
+        <Fields onClick={() => textareaRef?.current?.focus()}>
           <StyledTextarea
-            ref={textareaRef}
+            ref={node => {
+              if (ref && typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                // eslint-disable-next-line no-param-reassign
+                ref.current = node;
+              }
+              textareaRef.current = node;
+            }}
             className={[
               error ? 'has-error' : '',
               label ? 'has-label' : '',
@@ -218,7 +220,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           />
           <StyledLabelInput
             data-label={label}
-            onClick={() => textareaRef.current?.focus()}
+            onClick={() => textareaRef?.current?.focus()}
           >
             {label}
           </StyledLabelInput>

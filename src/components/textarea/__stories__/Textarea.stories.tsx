@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import { Input } from 'src/components/input/Input';
@@ -34,6 +34,12 @@ const Template: StoryFn<TextareaProps> = ({
 }: TextareaProps) => {
   const [value, setValue] = useState(_value);
   const [autoAdjustContent, setAutoAdjustContent] = useState(longContent);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    // focus the first input on mount (ref works)
+    textareaRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,6 +64,7 @@ const Template: StoryFn<TextareaProps> = ({
 
         <StyledGroup style={{ display: 'flex', gap: '10px' }}>
           <Textarea
+            ref={textareaRef}
             error={error}
             helpText={helpText}
             onChange={() => {}}
