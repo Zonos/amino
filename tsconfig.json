@@ -20,7 +20,8 @@
     "typeRoots": ["node_modules/@types", "build-utils/types"],
     "verbatimModuleSyntax": true,
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "story-utils/*": ["./.storybook/utils/*"]
     },
     "plugins": [
       { "transform": "typescript-transform-paths", "afterDeclarations": true }
@@ -59,6 +60,8 @@
     "./src/**/*",
     ".eslintrc.js",
     ".eslintrc.prod.js",
-    "prettier.config.js"
+    "prettier.config.js",
+    ".storybook/utils",
+    ".storybook/utils"
   ]
 }

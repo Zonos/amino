@@ -8,7 +8,6 @@ import {
 import type { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
-export default {};
 export const useCountryOptions = ({
   dashboardUrl,
   iconScale = 'small',

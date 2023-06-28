@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import * as icons from 'src/icons/IconIndex';
 import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
-import * as icons from '../../../icons/IconIndex';
 import {
   type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
@@ -12,7 +12,6 @@ const ThumbnailMeta: Meta = {
   argTypes: {
     icon: {
       control: { type: 'select' },
-      // TEMP:
       options: Object.keys(icons),
     },
     shape: {
@@ -21,6 +20,9 @@ const ThumbnailMeta: Meta = {
         disable: true,
       },
     },
+  },
+  args: {
+    icon: 'CubeIcon',
   },
   component: ThumbnailComponent,
   parameters: {
@@ -70,7 +72,3 @@ const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
 };
 
 export const Thumbnail = Template.bind({});
-
-Thumbnail.args = {
-  icon: 'CubeIcon',
-};

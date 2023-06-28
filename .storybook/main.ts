@@ -28,6 +28,7 @@ const config: StorybookConfig = {
         alias: {
           ...config.resolve?.alias,
           src: path.resolve(__dirname, '../src'),
+          'story-utils': path.resolve(__dirname, './utils'),
         },
       },
     };

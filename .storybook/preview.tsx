@@ -65,9 +65,15 @@ const preview: Preview = {
         disable: true,
       },
     },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    // Display events in Actions panel
+    actions: { argTypesRegex: '^on.*' },
     controls: { expanded: true },
     layout: 'fullscreen',
   },
