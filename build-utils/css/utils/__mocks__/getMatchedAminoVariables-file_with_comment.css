@@ -287,7 +287,7 @@
   --amino-border-purple: 1px solid var(--amino-purple-300);
   --amino-border-amber: 1px solid var(--amino-amber-300);
   --amino-border-transparent: 1px solid transparent;
-  /* TODO: easing functions and timings */
-  /* TODO: test contrast ratios */
-  /* TODO: more accessible hover color */
+  /* NOTE TO ADD: easing functions and timings */
+  /* NOTE TO ADD: test contrast ratios */
+  /* NOTE TO ADD: more accessible hover color */
 }
