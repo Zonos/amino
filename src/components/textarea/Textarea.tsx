@@ -1,17 +1,15 @@
-import { type ReactNode, type TextareaHTMLAttributes, forwardRef } from 'react';
+import {
+  type ReactNode,
+  type TextareaHTMLAttributes,
+  forwardRef,
+  useRef,
+} from 'react';
 
 import { theme } from 'src/styles/constants/theme';
+import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
 import styled from 'styled-components';
 
 import { HelpText } from '../help-text/HelpText';
-
-type TextareaType = {
-  error?: boolean;
-  helpText?: ReactNode;
-  label?: string;
-  /** @desc A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
-  width?: number;
-};
 
 const Fields = styled.div`
   border-radius: ${theme.radius6};
@@ -53,7 +51,6 @@ const StyledTextarea = styled.textarea<TextareaType>`
   position: relative;
   padding: 0 ${theme.space16};
   padding-top: ${theme.space8};
-  transition: ${theme.transition};
   outline: none;
   order: 2;
   width: 100%;
@@ -72,7 +69,8 @@ const StyledTextarea = styled.textarea<TextareaType>`
     }
   }
   &.has-label {
-    padding: ${theme.space24} 4px ${theme.space8} ${theme.space16};
+    margin-top: ${theme.space24};
+    padding: 0 4px ${theme.space8} ${theme.space16};
 
     ::placeholder {
       opacity: 0;
@@ -139,6 +137,28 @@ const AminoInputWrapper = styled.div<{ width?: number }>`
   }
 `;
 
+type TextareaAdjustableHeightType = {
+  /**
+   * @param expandable
+   * @desc if set to true, the textarea will expand to fit the content
+   */
+  expandable?: boolean;
+  /**
+   * @param maxRows
+   * @desc max rows that the textarea can expand to when expandable is set. If nothing is passed, it defaults to 5
+   * @default 5
+   */
+  maxRows?: number;
+};
+
+type TextareaType = {
+  error?: boolean;
+  helpText?: ReactNode;
+  label?: string;
+  /** @desc A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
+  width?: number;
+} & TextareaAdjustableHeightType;
+
 export type TextareaProps = TextareaType &
   Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'>;
 
@@ -148,8 +168,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       className,
       disabled,
       error,
+      expandable,
       helpText,
       label,
+      maxRows,
       rows,
       value,
       width,
@@ -158,6 +180,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     ref
   ) => {
     const hasValue = !!value;
+    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+    useHeightAdjustTextarea({
+      maxRows,
+      ref: textareaRef,
+      shouldExpand: !!expandable,
+      textareaValue: value?.toString() || '',
+    });
+
     return (
       <AminoInputWrapper
         className={`amino-input-wrapper ${className || ''} ${
@@ -165,9 +196,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         }`}
         width={width}
       >
-        <Fields>
+        <Fields onClick={() => textareaRef?.current?.focus()}>
           <StyledTextarea
-            ref={ref}
+            ref={node => {
+              if (ref && typeof ref === 'function') {
+                ref(node);
+              } else if (ref) {
+                // eslint-disable-next-line no-param-reassign
+                ref.current = node;
+              }
+              textareaRef.current = node;
+            }}
             className={[
               error ? 'has-error' : '',
               label ? 'has-label' : '',
@@ -179,7 +218,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             value={value}
             {...props}
           />
-          <StyledLabelInput data-label={label}>{label}</StyledLabelInput>
+          <StyledLabelInput
+            data-label={label}
+            onClick={() => textareaRef?.current?.focus()}
+          >
+            {label}
+          </StyledLabelInput>
           <StyledBorder />
         </Fields>
         <HelpText error={error} helpText={helpText} />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import { Input } from 'src/components/input/Input';
@@ -15,6 +15,9 @@ const TextAreaMeta: Meta = {
   component: Textarea,
 };
 
+const longContent = `lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt.`;
+const shortContent = `lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique`;
+
 export default TextAreaMeta;
 
 const Template: StoryFn<TextareaProps> = ({
@@ -25,6 +28,23 @@ const Template: StoryFn<TextareaProps> = ({
   value: _value,
 }: TextareaProps) => {
   const [value, setValue] = useState(_value);
+  const [autoAdjustContent, setAutoAdjustContent] = useState(longContent);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    // focus the first input on mount (ref works)
+    textareaRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // toggle between long and short content every 3 seconds
+      setAutoAdjustContent(content =>
+        longContent === content ? shortContent : longContent
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div
       style={{
@@ -39,6 +59,7 @@ const Template: StoryFn<TextareaProps> = ({
 
         <StyledGroup style={{ display: 'flex', gap: '10px' }}>
           <Textarea
+            ref={textareaRef}
             error={error}
             helpText={helpText}
             onChange={() => {}}
@@ -87,16 +108,7 @@ const Template: StoryFn<TextareaProps> = ({
             label={label}
             onChange={() => {}}
             placeholder={placeholder}
-            value={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id
-            iure amet accusantium ea consequuntur eaque animi fugiat iusto
-            similique, vero velit distinctio sequi nesciunt odit nobis
-            consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Repellat id iure amet accusantium ea consequuntur
-            eaque animi fugiat iusto similique, vero velit distinctio sequi
-            nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Repellat id iure amet accusantium
-            ea consequuntur eaque animi fugiat iusto similique, vero velit
-            distinctio sequi nesciunt odit nobis consequatur nihil sunt.`}
+            value={longContent}
           />
           <Input label={label} onChange={() => {}} value="" />
         </StyledGroup>
@@ -135,6 +147,30 @@ const Template: StoryFn<TextareaProps> = ({
             label={label}
             onChange={e => setValue(e.target.value)}
             value={value?.toString() || ''}
+          />
+        </StyledGroup>
+      </div>
+      <div>
+        <Text type="bold-label">Expandable (maxRow 5 | maxRow 3):</Text>
+        <StyledGroup style={{ display: 'flex', gap: '10px' }}>
+          <Textarea
+            error={error}
+            expandable
+            helpText={helpText}
+            label={label}
+            onChange={e => setAutoAdjustContent(e.target.value)}
+            placeholder={placeholder}
+            value={autoAdjustContent}
+          />
+          <Textarea
+            error={error}
+            expandable
+            helpText={helpText}
+            label={label}
+            maxRows={3}
+            onChange={e => setAutoAdjustContent(e.target.value)}
+            placeholder={placeholder}
+            value={autoAdjustContent}
           />
         </StyledGroup>
       </div>

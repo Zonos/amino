@@ -60,6 +60,7 @@ export const BaseDialog = ({
   width,
 }: BaseDialogProps) => {
   const { aminoTheme } = useAminoTheme();
+  const mouseDownTarget = useRef<HTMLDivElement | null>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (onClose && closeOnEsc && event.key === 'Escape') {
@@ -68,6 +69,7 @@ export const BaseDialog = ({
   };
 
   const dialogBackdrop = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   // Focus the backdrop so we can listen for keypress ('escape' to close)
   useEffect(() => {
@@ -85,39 +87,55 @@ export const BaseDialog = ({
     return createPortal(
       <AnimatePresence>
         {open && (
-          <Backdrop
-            key="dialog-backdrop"
-            animate={{ opacity: 0.65 }}
-            data-theme={themeOverride || aminoTheme}
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          />
-        )}
-        {open && (
-          <DialogLayout
-            data-theme={themeOverride || aminoTheme}
-            onClick={() => onClose && closeOnBlur && onClose()}
-            onKeyDown={handleKeyDown}
-            tabIndex={-1}
-          >
-            <Popup
-              key="dialog"
-              animate={{ opacity: 1, scale: 1 }}
-              className={className}
-              exit={{ opacity: 0, scale: 0.95 }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              noBorder={noBorder}
-              onClick={e => {
-                // Prevent dialog from closing when clicking in the dialog
-                e.stopPropagation();
+          <>
+            <Backdrop
+              key="dialog-backdrop"
+              ref={dialogBackdrop}
+              animate={{ opacity: 0.65 }}
+              data-theme={themeOverride || aminoTheme}
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+            <DialogLayout
+              ref={dialogRef}
+              data-theme={themeOverride || aminoTheme}
+              onKeyDown={handleKeyDown}
+              onMouseDown={e => {
+                // Store the target of the mouse down event so we can compare it to the target of the mouse up event
+                mouseDownTarget.current = e.target as HTMLDivElement;
               }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              width={width || 444}
+              onMouseUp={e => {
+                const isSameTarget = e.target === mouseDownTarget.current;
+                const shouldClose =
+                  onClose && closeOnBlur && e.target === dialogRef.current;
+                // only want to trigger close if key down and key up targets are the same and the clicking is on the overlay
+                if (isSameTarget && shouldClose) {
+                  onClose();
+                }
+                // reset the mouse down target
+                mouseDownTarget.current = null;
+              }}
+              tabIndex={-1}
             >
-              {children}
-            </Popup>
-          </DialogLayout>
+              <Popup
+                key="dialog"
+                animate={{ opacity: 1, scale: 1 }}
+                className={className}
+                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                noBorder={noBorder}
+                onClick={e => {
+                  // Prevent dialog from closing when clicking in the dialog
+                  e.stopPropagation();
+                }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                width={width || 444}
+              >
+                {children}
+              </Popup>
+            </DialogLayout>
+          </>
         )}
       </AnimatePresence>,
       document.querySelector('body')!
