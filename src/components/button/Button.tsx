@@ -29,12 +29,13 @@ const getAminoColor = (color?: Color | 'inherit') => {
 const getPadding = (size?: Size) => {
   switch (size) {
     case 'sm':
-      return '6px 10px';
+      return `${theme.space4} ${theme.space8}`;
     case 'lg':
-      return '14px 18px';
+    case 'xl':
+      return `${theme.space12} ${theme.space24}`;
     case 'md':
     default:
-      return '10px 14px';
+      return `${theme.space8} ${theme.space16}`;
   }
 };
 
