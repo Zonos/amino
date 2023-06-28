@@ -10,18 +10,6 @@ import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 
 const InputMeta: Meta = {
   argTypes: {
-    autoFocus: {
-      type: 'boolean',
-    },
-    disabled: {
-      type: 'boolean',
-    },
-    error: {
-      type: 'string',
-    },
-    helpText: {
-      type: 'string',
-    },
     inputPrefix: {
       table: {
         disable: true,
@@ -32,12 +20,6 @@ const InputMeta: Meta = {
         disable: true,
       },
     },
-    pattern: {
-      type: 'string',
-    },
-    placeholder: {
-      type: 'string',
-    },
     prefix: {
       mapping: {
         'No prefix': '',
@@ -46,12 +28,6 @@ const InputMeta: Meta = {
       },
       options: ['No prefix', 'With text', 'With icon'],
     },
-    readOnly: {
-      type: 'boolean',
-    },
-    required: {
-      type: 'boolean',
-    },
     suffix: {
       mapping: {
         'No prefix': '',
@@ -59,18 +35,6 @@ const InputMeta: Meta = {
         'With text': 'USD',
       },
       options: ['No prefix', 'With text', 'With icon'],
-    },
-    tabIndex: {
-      type: 'number',
-    },
-    type: {
-      type: 'string',
-    },
-    value: {
-      type: 'string',
-    },
-    width: {
-      type: 'number',
     },
   },
   component: Input,

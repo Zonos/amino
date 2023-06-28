@@ -7,28 +7,10 @@ import { theme } from 'src/styles/constants/theme';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 import styled from 'styled-components';
 
+// To test interaction with styled components
 const StyledButton = styled(Button)``;
+
 const ButtonMeta: Meta = {
-  argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
-    href: {
-      type: 'string',
-    },
-    iconRight: {
-      type: 'boolean',
-    },
-    loading: {
-      type: 'boolean',
-    },
-    loadingText: {
-      type: 'string',
-    },
-    tabIndex: {
-      type: 'number',
-    },
-  },
   component: Button,
   parameters: {
     design: {

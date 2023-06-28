@@ -1,35 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../src/styles/constants/theme';
 import '../src/styles/amino.css';
+import { theme } from '../src/styles/constants/theme';
 import '../src/styles/reset.css';
 import '../src/styles/theme.css';
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: { expanded: true },
-  layout: 'fullscreen',
-};
-
-export const globalTypes = {
-  theme: {
-    description: 'Global theme for components',
-    defaultValue: 'day',
-    toolbar: {
-      icon: 'circlehollow',
-      dynamicTitle: true,
-      items: [
-        { value: 'day', title: 'Day', icon: 'circlehollow' },
-        { value: 'night', title: 'Night', icon: 'circle' },
-        { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
-      ],
-      defaultValue: 'day',
-      onChange: value => {
-        return value;
-      },
-    },
-  },
-};
+import { Decorator, Preview } from '@storybook/react';
 
 const ThemeBlock = styled.div<{
   left?: boolean;
@@ -52,7 +28,7 @@ const SideBySideContainer = styled.div`
   }
 `;
 
-const withTheme = (Story, context) => {
+const withTheme: Decorator = (Story, context) => {
   const theme = context.parameters.theme || context.globals.theme;
 
   if (theme === 'side-by-side') {
@@ -81,4 +57,45 @@ const withTheme = (Story, context) => {
   );
 };
 
-export const decorators = [withTheme];
+const preview: Preview = {
+  decorators: [withTheme],
+  argTypes: {
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  parameters: {
+    // Display events in Actions panel
+    actions: { argTypesRegex: /^on.*/ },
+    controls: { expanded: true, exclude: /^on.*/, sort: 'alpha' },
+    layout: 'fullscreen',
+  },
+  globalTypes: {
+    theme: {
+      description: 'Global theme for components',
+      defaultValue: 'day',
+      toolbar: {
+        icon: 'circlehollow',
+        dynamicTitle: true,
+        items: [
+          { value: 'day', title: 'Day', icon: 'circlehollow' },
+          { value: 'night', title: 'Night', icon: 'circle' },
+          { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
+        ],
+        defaultValue: 'day',
+        onChange: value => {
+          return value;
+        },
+      },
+    },
+  },
+};
+
+export default preview;

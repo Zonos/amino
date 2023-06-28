@@ -3,7 +3,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { type ExecutionContextType, ToolbarButton } from '@graphiql/react';
 import type { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 import { GraphiQL } from 'graphiql';
-import { GraphQLSchema } from 'graphql';
+import { type GraphQLSchema } from 'graphql';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { theme } from 'src/styles/constants/theme';

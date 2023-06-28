@@ -53,7 +53,7 @@ module.exports = {
         'sort-keys/sort-keys-fix': 'off',
         'typescript-custom-sort-keys/interface': 'off',
       },
-    }
+    },
   ],
   rules: {
     /**
@@ -111,6 +111,13 @@ module.exports = {
       {
         ignoreRestSiblings: true,
         argsIgnorePattern: '^_',
+      },
+    ],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        fixStyle: 'inline-type-imports',
+        prefer: 'type-imports',
       },
     ],
     // disable since sometime `this` doesn't need to be used in some util function in class

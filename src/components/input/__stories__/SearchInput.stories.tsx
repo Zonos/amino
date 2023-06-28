@@ -4,37 +4,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { type InputProps, SearchInput } from 'src/components/input/SearchInput';
 
 const InputMeta: Meta = {
-  argTypes: {
-    autoFocus: {
-      type: 'boolean',
-    },
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-    disabled: {
-      type: 'boolean',
-    },
-    pattern: {
-      type: 'string',
-    },
-    placeholder: {
-      type: 'string',
-    },
-    readOnly: {
-      type: 'boolean',
-    },
-    required: {
-      type: 'boolean',
-    },
-    tabIndex: {
-      type: 'number',
-    },
-    value: {
-      type: 'string',
-    },
-  },
   component: SearchInput,
 };
 

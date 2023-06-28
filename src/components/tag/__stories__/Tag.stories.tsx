@@ -6,11 +6,6 @@ import { type TagProps, Tag } from 'src/components/tag/Tag';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
 const TagMeta: Meta = {
-  argTypes: {
-    iconRight: {
-      type: 'boolean',
-    },
-  },
   component: Tag,
 };
 

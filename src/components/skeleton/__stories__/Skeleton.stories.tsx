@@ -9,14 +9,6 @@ import { Text } from 'src/components/text/Text';
 import styled from 'styled-components';
 
 const SkeletonMeta: Meta = {
-  argTypes: {
-    height: {
-      type: 'number',
-    },
-    width: {
-      type: 'number',
-    },
-  },
   args: {
     numberOfChildren: 4,
   },

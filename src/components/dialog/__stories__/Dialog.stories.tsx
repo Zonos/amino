@@ -19,9 +19,6 @@ const DialogMeta: Meta = {
         disable: true,
       },
     },
-    height: {
-      type: 'number',
-    },
   },
   component: Dialog,
   parameters: {

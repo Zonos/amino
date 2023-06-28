@@ -13,14 +13,6 @@ import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
 
 const RippleMeta: Meta = {
-  argTypes: {
-    duration: {
-      control: { type: 'number' },
-    },
-    opacity: {
-      control: { type: 'number' },
-    },
-  },
   component: RippleGroup,
 };
 
