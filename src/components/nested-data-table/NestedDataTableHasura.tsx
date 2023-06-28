@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { flattenRow } from 'src/utils/flattenRow';
+import { type flattenRow } from 'src/utils/flattenRow';
 import { useHasuraGqlPagination } from 'src/utils/hooks/action-pivot-table/useHasuraGqlPagination';
 
 import { NestedDataTable } from './NestedDataTable';

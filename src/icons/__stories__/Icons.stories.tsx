@@ -11,16 +11,6 @@ import type { IconProps } from 'src/types/IconProps';
 import styled from 'styled-components';
 
 const IconsMeta: Meta = {
-  argTypes: {
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-    size: {
-      control: { type: 'number' },
-    },
-  },
   component: icons.MailDuotoneIcon,
 };
 

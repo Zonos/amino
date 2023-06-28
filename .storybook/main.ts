@@ -18,12 +18,6 @@ const config: StorybookConfig = {
   ],
   typescript: {
     check: false,
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: prop =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
-    },
   },
   webpackFinal: async config => {
     return {
@@ -34,6 +28,7 @@ const config: StorybookConfig = {
         alias: {
           ...config.resolve?.alias,
           src: path.resolve(__dirname, '../src'),
+          'story-utils': path.resolve(__dirname, './utils'),
         },
       },
     };

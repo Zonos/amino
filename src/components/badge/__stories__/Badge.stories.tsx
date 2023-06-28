@@ -1,25 +1,21 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { type BadgeProps, Badge } from 'src/components/badge/Badge';
-import { CubeIcon } from 'src/icons/CubeIcon';
+import * as icons from 'src/icons/IconIndex';
+import { omitControls } from 'story-utils/omitControls';
 import styled from 'styled-components';
+
+const omittedProps: (keyof BadgeProps)[] = ['iconRight', 'bold'];
 
 const BadgeMeta: Meta = {
   argTypes: {
-    bold: {
-      type: 'boolean',
+    ...omitControls<BadgeProps>(omittedProps),
+    icon: {
+      control: { type: 'select' },
+      options: Object.keys(icons),
     },
-    className: {
-      type: 'string',
-    },
-    color: {
-      options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
-    },
-    iconRight: {
-      type: 'boolean',
-    },
-    rounded: {
-      type: 'boolean',
-    },
+  },
+  args: {
+    icon: 'CubeIcon',
   },
   component: Badge,
   parameters: {
@@ -37,88 +33,48 @@ const StyledWrapper = styled.div`
   gap: 20px;
 `;
 
-const Template: StoryFn<BadgeProps> = ({
-  bold,
-  children,
-  color,
-  iconRight,
-  rounded,
-  size,
-}: BadgeProps) => (
-  <StyledWrapper>
-    <div>
-      <h3>Normal</h3>
-      <Badge
-        bold={bold}
-        color={color}
-        iconRight={iconRight}
-        rounded={rounded}
-        size={size}
-      >
-        {children}
-      </Badge>
-    </div>
-    <div>
-      <Badge
-        bold={bold}
-        color={color}
-        icon={<CubeIcon size={20} />}
-        iconRight={iconRight}
-        rounded={rounded}
-        size={size}
-      >
-        {children}
-      </Badge>
-    </div>
-    <div>
-      <Badge
-        bold={bold}
-        color={color}
-        icon={<CubeIcon size={20} />}
-        iconRight
-        rounded={rounded}
-        size={size}
-      >
-        {children}
-      </Badge>
-    </div>
-    <div>
-      <h3>Bold / Inverted</h3>
-      <Badge
-        bold
-        color={color}
-        iconRight={iconRight}
-        rounded={rounded}
-        size={size}
-      >
-        {children}
-      </Badge>
-    </div>
-    <div>
-      <Badge
-        bold
-        color={color}
-        icon={<CubeIcon size={20} />}
-        rounded={rounded}
-        size={size}
-      >
-        {children}
-      </Badge>
-    </div>
-    <div>
-      <Badge
-        bold
-        color={color}
-        icon={<CubeIcon size={20} />}
-        iconRight
-        rounded={rounded}
-        size={size}
-      >
-        {children}
-      </Badge>
-    </div>
-  </StyledWrapper>
-);
+type StoryProps = Omit<BadgeProps, 'iconRight' | 'icon' | 'bold'> & {
+  icon: keyof typeof icons;
+};
+
+const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
+  const Icon = icons[icon];
+
+  return (
+    <StyledWrapper>
+      <div>
+        <h3>Normal</h3>
+        <Badge {...props}>{children}</Badge>
+      </div>
+      <div>
+        <Badge icon={<Icon />} {...props}>
+          {children}
+        </Badge>
+      </div>
+      <div>
+        <Badge icon={<Icon />} iconRight {...props}>
+          {children}
+        </Badge>
+      </div>
+      <div>
+        <h3>Bold / Inverted</h3>
+        <Badge bold {...props}>
+          {children}
+        </Badge>
+      </div>
+      <div>
+        <Badge bold icon={<Icon />} {...props}>
+          {children}
+        </Badge>
+      </div>
+      <div>
+        <Badge bold icon={<Icon />} iconRight {...props}>
+          {children}
+        </Badge>
+      </div>
+    </StyledWrapper>
+  );
+};
 
 export const BasicBadge = Template.bind({});
 BasicBadge.args = {

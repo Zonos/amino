@@ -6,17 +6,10 @@ import { Default } from 'src/icons/flags/Default';
 
 const SwitchMeta: Meta = {
   argTypes: {
-    checked: {
-      type: 'boolean',
-    },
-    disabled: {
-      type: 'boolean',
-    },
-    labelDescription: {
-      type: 'string',
-    },
-    subtitle: {
-      type: 'string',
+    icon: {
+      table: {
+        disable: true,
+      },
     },
   },
   component: Switch,

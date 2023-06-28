@@ -10,19 +10,6 @@ import { IntegrationIcon } from 'src/icons/IntegrationIcon';
 import { TotalLandedCostIcon } from 'src/icons/TotalLandedCostIcon';
 
 const NavigationGroupMeta: Meta = {
-  argTypes: {
-    children: {
-      type: 'symbol',
-    },
-    className: {
-      type: 'string',
-    },
-    content: {
-      description:
-        '**NOTE**: Should be `NavigationItem` component in order to have proper styling. If you want to use `href`, WRAP the `anchor` tag outside of the `NavigationItem` component.',
-      type: 'symbol',
-    },
-  },
   component: NavigationGroupComponent,
   parameters: {
     docs: { source: { type: 'code' } },

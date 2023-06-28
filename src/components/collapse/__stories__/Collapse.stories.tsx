@@ -22,7 +22,6 @@ const CollapseMeta: Meta = {
       },
     },
   },
-
   component: CollapseComponent,
   parameters: {
     docs: { source: { type: 'code' } },
