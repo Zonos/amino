@@ -73,8 +73,8 @@ const preview: Preview = {
   },
   parameters: {
     // Display events in Actions panel
-    actions: { argTypesRegex: '^on.*' },
-    controls: { expanded: true },
+    actions: { argTypesRegex: /^on.*/ },
+    controls: { expanded: true, exclude: /^on.*/, sort: 'alpha' },
     layout: 'fullscreen',
   },
   globalTypes: {
