@@ -7,9 +7,9 @@ import {
   type GraphQLField,
   type GraphQLInputField,
   type GraphQLLeafType,
+  type GraphQLObjectType,
+  type GraphQLSchema,
   type ValueNode,
-  GraphQLObjectType,
-  GraphQLSchema,
 } from 'graphql';
 import { theme } from 'src/styles/constants/theme';
 
