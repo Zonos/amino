@@ -22,9 +22,6 @@ const AnnouncementDialogMeta: Meta = {
         disable: true,
       },
     },
-    height: {
-      type: 'number',
-    },
   },
   component: AnnouncementDialog,
   parameters: {

@@ -15,9 +15,7 @@ import { BaseWrapper } from './BaseWrapper';
 
 const ImageAvatarMeta: Meta = {
   argTypes: {
-    bordered: {
-      control: { type: 'boolean' },
-    },
+    // We are showing all shapes already
     shape: {
       table: {
         disable: true,

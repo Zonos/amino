@@ -8,8 +8,11 @@ import { BaseWrapper } from './BaseWrapper';
 
 const UserAvatarMeta: Meta = {
   argTypes: {
-    bordered: {
-      control: { type: 'boolean' },
+    // We are showing all shapes already
+    shape: {
+      table: {
+        disable: true,
+      },
     },
   },
   component: Avatar,

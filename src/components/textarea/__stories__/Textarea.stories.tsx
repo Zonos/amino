@@ -12,11 +12,6 @@ const StyledGroup = styled.div`
 `;
 
 const TextAreaMeta: Meta = {
-  argTypes: {
-    iconRight: {
-      type: 'boolean',
-    },
-  },
   component: Textarea,
 };
 

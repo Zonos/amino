@@ -10,14 +10,13 @@ import {
 
 const ThumbnailMeta: Meta = {
   argTypes: {
-    bordered: {
-      control: { type: 'boolean' },
-    },
     icon: {
       control: { type: 'select' },
+      // TEMP:
       options: Object.keys(icons),
     },
     shape: {
+      // We are showing all shapes already
       table: {
         disable: true,
       },

@@ -16,13 +16,19 @@ import { UserMenu } from './UserMenu';
 const LayoutMeta: Meta = {
   argTypes: {
     content: {
-      control: false,
+      table: {
+        disable: true,
+      },
     },
     footer: {
-      control: false,
+      table: {
+        disable: true,
+      },
     },
     headerContent: {
-      control: false,
+      table: {
+        disable: true,
+      },
     },
     logoSidebar: {
       description: 'Want to have logo on sidebar or not',
@@ -43,7 +49,9 @@ const LayoutMeta: Meta = {
       options: ['No Search Input', 'Has Search Input'],
     },
     sidebar: {
-      control: false,
+      table: {
+        disable: true,
+      },
     },
   },
   component: Layout,

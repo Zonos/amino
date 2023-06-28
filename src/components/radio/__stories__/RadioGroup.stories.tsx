@@ -8,11 +8,6 @@ import {
 } from 'src/components/radio/RadioGroup';
 
 const RadioMeta: Meta = {
-  argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
-  },
   component: RadioGroup,
   parameters: {
     design: {

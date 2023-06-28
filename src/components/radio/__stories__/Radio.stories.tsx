@@ -4,14 +4,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { type RadioProps, Radio } from 'src/components/radio/Radio';
 
 const RadioMeta: Meta = {
-  argTypes: {
-    checked: {
-      type: 'boolean',
-    },
-    disabled: {
-      type: 'boolean',
-    },
-  },
   component: Radio,
 };
 

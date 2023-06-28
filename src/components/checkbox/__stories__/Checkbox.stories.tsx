@@ -6,17 +6,6 @@ import { Default } from 'src/icons/flags/Default';
 import styled from 'styled-components';
 
 const CheckboxMeta: Meta = {
-  argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
-    labelDescription: {
-      type: 'string',
-    },
-    subtitle: {
-      type: 'string',
-    },
-  },
   component: Checkbox,
   parameters: {
     design: {

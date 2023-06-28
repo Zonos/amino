@@ -4,23 +4,6 @@ import { CubeIcon } from 'src/icons/CubeIcon';
 import styled from 'styled-components';
 
 const BadgeMeta: Meta = {
-  argTypes: {
-    bold: {
-      type: 'boolean',
-    },
-    className: {
-      type: 'string',
-    },
-    color: {
-      options: ['default', 'blue', 'green', 'red', 'orange', 'purple', 'cyan'],
-    },
-    iconRight: {
-      type: 'boolean',
-    },
-    rounded: {
-      type: 'boolean',
-    },
-  },
   component: Badge,
   parameters: {
     design: {

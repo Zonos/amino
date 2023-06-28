@@ -18,26 +18,6 @@ const TransparentCoverSheet = styled(CoverSheet)`
 `;
 const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
-  argTypes: {
-    disabled: {
-      type: 'boolean',
-    },
-    href: {
-      type: 'string',
-    },
-    iconRight: {
-      type: 'boolean',
-    },
-    loading: {
-      type: 'boolean',
-    },
-    loadingText: {
-      type: 'string',
-    },
-    tabIndex: {
-      type: 'number',
-    },
-  },
   component: Tooltip,
   parameters: {
     design: {
