@@ -61,7 +61,6 @@
     ".eslintrc.js",
     ".eslintrc.prod.js",
     "prettier.config.js",
-    ".storybook/utils",
     ".storybook/utils"
   ]
 }
