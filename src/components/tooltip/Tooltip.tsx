@@ -49,7 +49,7 @@ export type TooltipProps = {
   tag?: 'div' | 'span';
   themeOverride?: Theme;
   title?: string;
-};
+} & Partial<Omit<MuiTooltipProps, 'children'>>;
 
 const StyledTooltip = muiStyled(
   ({
@@ -92,11 +92,13 @@ export const Tooltip = ({
   tag,
   themeOverride,
   title,
+  ...rest
 }: TooltipProps) => {
   const { aminoTheme } = useAminoTheme();
   if (showTooltip) {
     return (
       <StyledTooltip
+        {...rest}
         background={background}
         className={className}
         dataTheme={themeOverride || aminoTheme}
