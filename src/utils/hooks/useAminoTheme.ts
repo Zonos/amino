@@ -19,7 +19,7 @@ export const useAminoTheme = (props?: Params) => {
 
   useEffect(() => {
     if (isRoot) {
-      document.body.dataset.theme = aminoTheme;
+      document.documentElement.dataset.theme = aminoTheme;
     }
   }, [aminoTheme, isRoot]);
 
