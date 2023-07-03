@@ -31,10 +31,9 @@ const defaultPerson: Person = {
 export const Storage = () => {
   const [value, setValue] = useStorage({
     defaultValue: defaultPerson,
-    json: {
-      schema,
-    },
+    json: true,
     key: 'amino:story:storage:test',
+    schema,
     type: 'local',
   });
 
