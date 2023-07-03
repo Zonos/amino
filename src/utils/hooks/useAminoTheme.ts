@@ -16,6 +16,10 @@ export const useAminoTheme = (props?: Params) => {
 
   // SWR cache is not initialized at first, so it would default to 'day' instead of the localStorage value.
   const getDefaultValue = () => {
+    if (typeof window === 'undefined') {
+      return 'day';
+    }
+
     const storedValue = getStorageItem<Theme>({
       key: 'amino:theme',
       schema: themeSchema,
