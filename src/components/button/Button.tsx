@@ -319,7 +319,7 @@ type ButtonBase = {
   className?: string;
   color?: Color | 'inherit';
   disabled?: boolean;
-  hoverBackground?: Color;
+  hoverBackground?: Color | 'inherit';
   icon?: ReactNode;
   iconRight?: boolean;
   /** @default 'secondary' */
