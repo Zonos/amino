@@ -122,7 +122,7 @@ const Primary = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.blue400};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.blue400};
     }
     &:active,
     &:focus {
@@ -142,7 +142,7 @@ const Secondary = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.gray200};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.gray200};
     }
     &:active {
       background: ${theme.blue100};
@@ -164,7 +164,7 @@ const Secondary = styled(AminoButton)`
 
     &:not([disabled]) {
       &:hover {
-        background: ${theme.gray900};
+        background: ${p => getAminoColor(p.hoverBackground) || theme.gray900};
       }
       &:active,
       &:focus {
@@ -188,7 +188,7 @@ const Danger = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.red400};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.red400};
     }
     &:active {
       background: ${theme.red700};
@@ -206,7 +206,7 @@ const Warning = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.orange400};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.orange400};
     }
     &:active {
       background: ${theme.orange700};
@@ -229,6 +229,7 @@ const Outline = styled(AminoButton)`
         ${theme.gray0} 12.5%,
         ${theme.gray100} 87.5%
       );
+      background: ${p => p.hoverBackground && getAminoColor(p.hoverBackground)};
       border: 1px solid ${theme.gray200};
     }
     &:active {
@@ -249,7 +250,7 @@ const Subtle = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.gray100};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.gray100};
     }
     &:active {
       background: ${theme.blue100};
@@ -295,7 +296,7 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
 
   &:not([disabled]) {
     &:hover {
-      background: ${theme.gray100};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.gray100};
     }
     &:active {
       background: ${theme.blue100};
@@ -318,6 +319,7 @@ type ButtonBase = {
   className?: string;
   color?: Color | 'inherit';
   disabled?: boolean;
+  hoverBackground?: Color | 'inherit';
   icon?: ReactNode;
   iconRight?: boolean;
   /** @default 'secondary' */
