@@ -65,7 +65,7 @@ const AminoLayout = styled.main`
 const Content = styled.div`
   height: inherit;
   overflow-y: auto;
-  padding: ${theme.space24} ${theme.space24} calc(39px + ${theme.space24} * 2);
+  padding: ${theme.space24};
   box-sizing: border-box;
 `;
 
