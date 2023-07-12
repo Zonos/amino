@@ -16,7 +16,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 36px;
+  height: 32px;
   padding: 0 ${theme.space8};
   color: ${theme.gray800};
   font-weight: 500;
