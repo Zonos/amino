@@ -51,11 +51,11 @@ const StyledTableWrapper = styled.div`
 
 type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
 
-type ColumnFormatter = Parameters<NonNullable<ColumnType['formatter']>>;
+type ColumnCell = Parameters<NonNullable<ColumnType['renderCell']>>;
 
 type Props<TRow extends Record<string, unknown>> = {
-  customColumnFormatters?: {
-    [key in keyof TRow]?: (props: ColumnFormatter[0]) => ReactNode;
+  customColumnCells?: {
+    [key in keyof TRow]?: (props: ColumnCell[0]) => ReactNode;
   };
   customFlattenRow?: typeof flattenRow;
   noFilter?: boolean;
@@ -63,7 +63,7 @@ type Props<TRow extends Record<string, unknown>> = {
 };
 
 export const TableData = <TRow extends Record<string, unknown>>({
-  customColumnFormatters,
+  customColumnCells,
   customFlattenRow,
   noFilter,
   tableDataArr,
@@ -96,7 +96,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
   }, [setUpRows, tableDataArr]);
 
   const renderTriggerFormater = useCallback(
-    ({ column, onRowChange, row }: ColumnFormatter[0]) => {
+    ({ column, onRowChange, row }: ColumnCell[0]) => {
       const currentValue = row[column.key];
       // if the value is an array, render a button to expand the row
       if (Array.isArray(currentValue)) {
@@ -125,7 +125,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
       if (row._expandedData && row._expandedData.length > 0) {
         return (
           <TableData
-            customColumnFormatters={customColumnFormatters}
+            customColumnCells={customColumnCells}
             customFlattenRow={customFlattenRow}
             noFilter
             tableDataArr={row._expandedData as TRow[]}
@@ -143,7 +143,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
 
       return currentValue;
     },
-    [customColumnFormatters, customFlattenRow]
+    [customColumnCells, customFlattenRow]
   );
 
   const columns = useMemo(
@@ -153,12 +153,12 @@ export const TableData = <TRow extends Record<string, unknown>>({
         .filter(([key]) => key !== 'key' && !key.startsWith('_'))
         .flatMap(([key]): ColumnType[] => [
           {
-            formatter: customColumnFormatters?.[key] || renderTriggerFormater,
             key,
             name: key,
+            renderCell: customColumnCells?.[key] || renderTriggerFormater,
           },
         ]),
-    [customColumnFormatters, renderTriggerFormater, rows]
+    [customColumnCells, renderTriggerFormater, rows]
   );
 
   const filteredHiddenColumns: ColumnType[] = useMemo(() => {

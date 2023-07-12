@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
 
 import {
-  type ColumnFormatter,
+  type ColumnCell,
   NestedDataTable as NestedDataTableComponent,
 } from '../NestedDataTable';
 
@@ -135,7 +135,7 @@ const tableData: {
   },
 ];
 export const NestedDataTableWithCustomColumn = () => {
-  const nameFormatter: ColumnFormatter<{
+  const nameFormatter: ColumnCell<{
     content: string;
     json: string;
     jsonObj: string;
@@ -143,7 +143,7 @@ export const NestedDataTableWithCustomColumn = () => {
   }> = useCallback(({ row }) => <div>{row.name}</div>, []);
   return (
     <NestedDataTableComponent
-      customColumnFormatters={{
+      customColumnCells={{
         name: nameFormatter,
       }}
       isFetching={false}

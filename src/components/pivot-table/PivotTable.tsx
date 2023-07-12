@@ -4,8 +4,8 @@ import DataGrid, {
   type DataGridHandle,
   type DataGridProps,
   type Renderers,
-  type SortColumn,
-  type SortStatusProps,
+  type RenderSortStatusProps,
+  type SortColumn
 } from 'react-data-grid';
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
@@ -119,7 +119,7 @@ export const PivotTable = <
   );
 
   const renderSortStatus = useCallback(
-    ({ priority, sortDirection }: SortStatusProps) => {
+    ({ priority, sortDirection }: RenderSortStatusProps) => {
       if (!sortDirection) {
         return null;
       }
@@ -137,8 +137,8 @@ export const PivotTable = <
     []
   );
   const defaultRenderers: Renderers<TRow, TSummaryRow> = {
-    sortStatus: renderSortStatus,
-    ..._renderers,
+    renderSortStatus,
+    ..._renderers
   };
   const modifiedColumns: Column<TRow, TSummaryRow>[] = [
     {
@@ -146,9 +146,9 @@ export const PivotTable = <
       key: '_itemIndex',
       name: '',
       sortable: false,
-      width: 60,
+      width: 60
     },
-    ...columns,
+    ...columns
   ];
 
   const sortedRows = useMemo((): readonly TRow[] => {

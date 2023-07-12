@@ -28,16 +28,16 @@ const StyledTableActionWrapper = styled.div`
 `;
 
 type ColumnType<TRow> = Column<TRow, Record<string, unknown>>;
-export type ColumnFormatter<TRow extends Record<string, unknown>> = NonNullable<
-  ColumnType<TRow>['formatter']
+export type ColumnCell<TRow extends Record<string, unknown>> = NonNullable<
+  ColumnType<TRow>['renderCell']
 >;
-export type CustomColumnFormatters<TRow extends Record<string, unknown>> = {
-  [key in keyof TRow]?: ColumnFormatter<TRow>;
+export type CustomColumnCells<TRow extends Record<string, unknown>> = {
+  [key in keyof TRow]?: ColumnCell<TRow>;
 };
 
 type Props<TRow extends Record<string, unknown>> = {
   currentPage?: number;
-  customColumnFormatters?: CustomColumnFormatters<TRow>;
+  customColumnCells?: CustomColumnCells<TRow>;
   /**
    * @param customFlattenRow
    * @description Custom flattenRow function, if not provided, the default flattenRow (flattenRow - "src/utils/flattenRow.ts") will be used
@@ -57,7 +57,7 @@ export const NestedDataTable = <
   TRow extends Record<string, unknown> | Record<string, unknown>
 >({
   currentPage,
-  customColumnFormatters,
+  customColumnCells,
   customFlattenRow,
   handlePagination,
   hasNextPage,
@@ -95,9 +95,7 @@ export const NestedDataTable = <
 
     return (
       <TableData
-        customColumnFormatters={
-          customColumnFormatters as CustomColumnFormatters<RowWithIndex>
-        }
+        customColumnCells={customColumnCells as CustomColumnCells<RowWithIndex>}
         customFlattenRow={customFlattenRow}
         tableDataArr={tableDataArr}
       />
