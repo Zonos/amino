@@ -1,9 +1,10 @@
+/** @type {import("prettier").Options} */
 module.exports = {
   tabWidth: 2,
   printWidth: 80,
   proseWrap: 'preserve',
   semi: true,
-  trailingComma: 'es5',
+  trailingComma: 'all',
   singleQuote: true,
   arrowParens: 'avoid',
   overrides: [
