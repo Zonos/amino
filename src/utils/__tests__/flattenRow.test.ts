@@ -1,6 +1,6 @@
 import { flattenRow } from '../flattenRow';
 
-test.only('flatten table row data', () => {
+test('flatten table row data', () => {
   const tableDataArr = [
     {
       aggregate: {
@@ -357,101 +357,101 @@ test('flatten table row with complex data', () => {
     return row;
   });
   expect(flattenData).toMatchInlineSnapshot(`
-    Array [
-      Object {
+    [
+      {
         "code": "AF",
-        "countries": Array [
-          Object {
+        "countries": [
+          {
             "awsRegion": "af-south-1",
             "capital": "Saint-Denis",
             "continent.code": "AF",
             "continent.name": "Africa",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "French",
                 "native": "Français",
               },
             ],
           },
-          Object {
+          {
             "awsRegion": "af-south-1",
             "capital": "Kigali",
             "continent.code": "AF",
             "continent.name": "Africa",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "Rwandi",
                 "native": "Kinyarwandi",
               },
-              Object {
+              {
                 "name": "English",
                 "native": "English",
               },
-              Object {
+              {
                 "name": "French",
                 "native": "Français",
               },
             ],
           },
-          Object {
+          {
             "awsRegion": "ap-south-1",
             "capital": "Victoria",
             "continent.code": "AF",
             "continent.name": "Africa",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "French",
                 "native": "Français",
               },
-              Object {
+              {
                 "name": "English",
                 "native": "English",
               },
             ],
           },
-          Object {
+          {
             "awsRegion": "af-south-1",
             "capital": "Pretoria",
             "continent.code": "AF",
             "continent.name": "Africa",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "Afrikaans",
                 "native": "Afrikaans",
               },
-              Object {
+              {
                 "name": "English",
                 "native": "English",
               },
-              Object {
+              {
                 "name": "South Ndebele",
                 "native": "isiNdebele",
               },
-              Object {
+              {
                 "name": "Southern Sotho",
                 "native": "Sesotho",
               },
-              Object {
+              {
                 "name": "Swati",
                 "native": "SiSwati",
               },
-              Object {
+              {
                 "name": "Tswana",
                 "native": "Setswana",
               },
-              Object {
+              {
                 "name": "Tsonga",
                 "native": "Xitsonga",
               },
-              Object {
+              {
                 "name": "Venda",
                 "native": "Tshivenḓa",
               },
-              Object {
+              {
                 "name": "Xhosa",
                 "native": "isiXhosa",
               },
-              Object {
+              {
                 "name": "Zulu",
                 "native": "isiZulu",
               },
@@ -459,55 +459,55 @@ test('flatten table row with complex data', () => {
           },
         ],
       },
-      Object {
+      {
         "code": "AN",
-        "countries": Array [
-          Object {
+        "countries": [
+          {
             "awsRegion": "af-south-1",
             "capital": "",
             "continent.code": "AN",
             "continent.name": "Antarctica",
-            "languages": Array [],
+            "languages": [],
           },
-          Object {
+          {
             "awsRegion": "af-south-1",
             "capital": "",
             "continent.code": "AN",
             "continent.name": "Antarctica",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "Norwegian",
                 "native": "Norsk",
               },
-              Object {
+              {
                 "name": "Norwegian Bokmål",
                 "native": "Norsk bokmål",
               },
-              Object {
+              {
                 "name": "Norwegian Nynorsk",
                 "native": "Norsk nynorsk",
               },
             ],
           },
-          Object {
+          {
             "awsRegion": "af-south-1",
             "capital": "",
             "continent.code": "AN",
             "continent.name": "Antarctica",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "English",
                 "native": "English",
               },
             ],
           },
-          Object {
+          {
             "awsRegion": "af-south-1",
             "capital": "Port-aux-Français",
             "continent.code": "AN",
             "continent.name": "Antarctica",
-            "languages": Array [
-              Object {
+            "languages": [
+              {
                 "name": "French",
                 "native": "Français",
               },
