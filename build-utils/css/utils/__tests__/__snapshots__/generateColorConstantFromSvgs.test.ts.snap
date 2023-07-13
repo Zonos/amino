@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Make sure all generated color constants matched previous snapshot: _spacing.ts 1`] = `
+exports[`Make sure all generated color constants matched previous snapshot > _spacing.ts 1`] = `
 "export const spacing = {
   /** @info space-negative-80: -5rem (-80px) */
   'space-negative-80': '-5rem',
@@ -88,7 +88,7 @@ exports[`Make sure all generated color constants matched previous snapshot: _spa
 "
 `;
 
-exports[`Make sure all generated color constants matched previous snapshot: _variablesUsingColors.ts 1`] = `
+exports[`Make sure all generated color constants matched previous snapshot > _variablesUsingColors.ts 1`] = `
 "export const variablesUsingColors = {
   /* BORDER */
   border: '1px solid var(--amino-border-color)',

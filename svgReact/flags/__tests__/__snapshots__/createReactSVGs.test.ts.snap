@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Make sure component render as expected AL.svg (mask xlink:href) 1`] = `
+exports[`Make sure component render as expected > AL.svg (mask xlink:href) 1`] = `
 "import { forwardRef } from 'react';
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
@@ -29,7 +29,7 @@ export const AL = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
 "
 `;
 
-exports[`Make sure component render as expected CN.svg (mask xlink:href) 1`] = `
+exports[`Make sure component render as expected > CN.svg (mask xlink:href) 1`] = `
 "import { forwardRef } from 'react';
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';

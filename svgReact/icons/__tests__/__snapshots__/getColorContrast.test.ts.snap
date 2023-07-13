@@ -1,41 +1,41 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getHspFromColor --amino-gray-base: #9d9da5 1`] = `
+exports[`getHspFromColor '--amino-gray-base': '#9d9da5' 1`] = `
 {
   "contrast": "light",
   "hsp": 157.93246657986444,
 }
 `;
 
-exports[`getHspFromColor --amino-green-base: #00c300 1`] = `
+exports[`getHspFromColor '--amino-green-base': '#00c300' 1`] = `
 {
   "contrast": "light",
   "hsp": 149.40105421314803,
 }
 `;
 
-exports[`getHspFromColor dark-gray: #3E3E42 1`] = `
+exports[`getHspFromColor 'dark-gray': '#3E3E42' 1`] = `
 {
   "contrast": "dark",
   "hsp": 62.46893628036258,
 }
 `;
 
-exports[`getHspFromColor dark-gray: #CACACE 1`] = `
+exports[`getHspFromColor 'dark-gray': '#CACACE' 1`] = `
 {
   "contrast": "light",
   "hsp": 202.45999110935472,
 }
 `;
 
-exports[`getHspFromColor light-gray: #3D3D42 1`] = `
+exports[`getHspFromColor 'light-gray': '#3D3D42' 1`] = `
 {
   "contrast": "dark",
   "hsp": 61.590502514592295,
 }
 `;
 
-exports[`getHspFromColor light-gray: #C9C9CD 1`] = `
+exports[`getHspFromColor 'light-gray': '#C9C9CD' 1`] = `
 {
   "contrast": "light",
   "hsp": 201.46001092028163,
