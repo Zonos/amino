@@ -11,6 +11,7 @@ import {
   type GraphQLSchema,
   type ValueNode,
 } from 'graphql';
+
 import { theme } from 'src/styles/constants/theme';
 
 type GraphiQlColors = {

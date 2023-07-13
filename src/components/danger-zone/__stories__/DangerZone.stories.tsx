@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+
 import type { CardProps } from 'src/components/card/Card';
 import { DangerZone } from 'src/components/danger-zone/DangerZone';
 

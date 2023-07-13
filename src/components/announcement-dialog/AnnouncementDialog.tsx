@@ -1,10 +1,11 @@
 import { type ReactNode, forwardRef } from 'react';
 
+import styled from 'styled-components';
+
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
 import { useStorage } from 'src/utils/hooks/useStorage';
-import styled from 'styled-components';
 
 import { BaseDialog } from '../dialog/_BaseDialog';
 import { VStack } from '../stack/VStack';

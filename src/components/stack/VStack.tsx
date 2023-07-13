@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { GridSpacing } from 'src/types';
-import styled from 'styled-components';
 
 import { type StackProps, Stack } from './Stack';
 

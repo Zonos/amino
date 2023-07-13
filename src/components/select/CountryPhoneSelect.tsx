@@ -8,6 +8,8 @@ import {
   components as RScomponents,
 } from 'react-select';
 
+import styled from 'styled-components';
+
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
@@ -15,7 +17,6 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { ICountryOption } from 'src/types/ICountry';
 import type { IOption } from 'src/types/IOption';
-import styled from 'styled-components';
 
 import { Select } from './Select';
 

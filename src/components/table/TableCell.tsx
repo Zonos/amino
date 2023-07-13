@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled, { css } from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 type StyledProps = {
   align?: 'center' | 'justify' | 'left' | 'right';

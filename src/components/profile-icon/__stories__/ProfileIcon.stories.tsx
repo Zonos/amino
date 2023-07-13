@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
-import styled from 'styled-components';
 
 import {
   type Props,

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 
 const DualCurrencyMeta: Meta = {

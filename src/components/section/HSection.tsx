@@ -1,9 +1,10 @@
 import { type ReactNode, useState } from 'react';
 
+import styled from 'styled-components';
+
 import { HStack } from 'src/components/stack/HStack';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { Button } from '../button/Button';
 import { Collapse } from '../collapse/Collapse';

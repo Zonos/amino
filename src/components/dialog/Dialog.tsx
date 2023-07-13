@@ -1,10 +1,11 @@
 import { type ReactNode, forwardRef } from 'react';
 
+import styled, { css } from 'styled-components';
+
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
-import styled, { css } from 'styled-components';
 
 import { Button } from '../button/Button';
 import { BaseDialog } from './_BaseDialog';
@@ -127,7 +128,9 @@ The height is the full container height */
 
   /* Position the content gradient in the top left, and the
 scroll gradient in the top right */
-  mask-position: 0 0, 100% 0;
+  mask-position:
+    0 0,
+    100% 0;
 
   /* We don't repeat our mask images */
   mask-repeat: no-repeat, no-repeat;

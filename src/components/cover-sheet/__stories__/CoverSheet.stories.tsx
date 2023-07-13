@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import {
   type CoverSheetProps,
@@ -8,7 +10,6 @@ import {
 } from 'src/components/cover-sheet/CoverSheet';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import { VStack } from 'src/components/stack/VStack';
-import styled from 'styled-components';
 
 const CoverSheetMeta: Meta = {
   component: CoverSheet,

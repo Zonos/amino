@@ -342,5 +342,5 @@ const testCases: UnitTestItem[] = [
 ];
 
 test.each(testCases)(`Case $case`, ({ input, expected }) => {
-  expect(getMatchedAminoVariables(input)).toStrictEqual(expected);
+  expect(getMatchedAminoVariables(input)).toBe(expected);
 });

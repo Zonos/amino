@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
-import styled from 'styled-components';
 
 const BannerStories: Meta = {
   component: Banner,

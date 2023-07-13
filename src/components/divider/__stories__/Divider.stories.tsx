@@ -1,4 +1,6 @@
 import type { Meta } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Card } from 'src/components/card/Card';
 import { Text } from 'src/components/text/Text';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
@@ -7,7 +9,6 @@ import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
 import { CircleIcon } from 'src/icons/CircleIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { Divider } from '../Divider';
 

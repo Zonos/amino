@@ -1,6 +1,7 @@
 import isEqual from 'lodash/isEqual';
-import type { FetcherError, SwrtParams } from 'src/types';
 import useSwr, { type Fetcher, type Key, type SWRConfiguration } from 'swr';
+
+import type { FetcherError, SwrtParams } from 'src/types';
 
 type UseSwrArgs<ResponseData> =
   | readonly [Key]

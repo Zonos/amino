@@ -14,6 +14,8 @@ import type {
 import ReactSelect, { components as RScomponents } from 'react-select';
 import type Select from 'react-select/dist/declarations/src/Select';
 
+import styled, { css } from 'styled-components';
+
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
   type HelpTextProps,
@@ -27,7 +29,6 @@ import { theme } from 'src/styles/constants/theme';
 import type { IOption } from 'src/types/IOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
-import styled, { css } from 'styled-components';
 
 type AdditionalProps = {
   hasGroups?: boolean;

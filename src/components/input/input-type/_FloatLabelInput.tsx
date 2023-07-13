@@ -8,11 +8,12 @@ import {
   useMemo,
 } from 'react';
 
+import styled from 'styled-components';
+
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
-import styled from 'styled-components';
 
 const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   display: block;

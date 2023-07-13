@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import {
   type CollapseProps,
   Collapse as CollapseComponent,
 } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
-import styled from 'styled-components';
 
 const CollapseMeta: Meta = {
   argTypes: {

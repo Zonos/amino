@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { Depth } from 'src/types/Depth';
-import styled from 'styled-components';
 
 const SurfaceBase = styled.div<{ dense?: boolean }>`
   background: ${theme.surfaceColor};

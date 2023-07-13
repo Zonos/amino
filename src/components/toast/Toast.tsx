@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react';
 
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
+
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Intent } from 'src/types';
-import styled from 'styled-components';
 
 const AminoToast = styled(motion.div)`
   background: ${theme.gray100};

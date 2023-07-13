@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
 
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { ToastContext } from 'src/components/toast/ToastContext';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const useNotify = () => useContext(ToastContext);
 

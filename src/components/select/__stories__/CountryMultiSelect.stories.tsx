@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import {
   type CountryMultiSelectProps,
   CountryMultiSelect,
 } from 'src/components/select/CountryMultiSelect';
 import type { ICountryOption } from 'src/types/ICountry';
-import styled from 'styled-components';
 
 import { getCountryUrls } from './getCountryUrls';
 import { useCountryOptions } from './useCountryOptions';

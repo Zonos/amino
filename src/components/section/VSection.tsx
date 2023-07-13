@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { HStack } from 'src/components/stack/HStack';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { SectionHeader } from './_SectionHeader';
 import { SectionInnerWrapper } from './_SectionInnerWrapper';

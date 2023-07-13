@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { Shadow } from 'src/components/styles/Shadow';
 
 const StyleMeta: Meta = {

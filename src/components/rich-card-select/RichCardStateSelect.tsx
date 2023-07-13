@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { UnitedState } from 'src/types/UnitedStates';
-import styled from 'styled-components';
 
 import { Card } from '../card/Card';
 import { VStack } from '../stack/VStack';

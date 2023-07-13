@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import {
   type AnnouncementDialogProps,
   AnnouncementDialog,
@@ -8,7 +10,6 @@ import {
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
-import styled from 'styled-components';
 
 const AnnouncementDialogMeta: Meta = {
   argTypes: {

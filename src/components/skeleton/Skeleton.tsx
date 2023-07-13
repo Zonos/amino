@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled, { css, keyframes } from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 export type SkeletonProps = {
   animation?: boolean;

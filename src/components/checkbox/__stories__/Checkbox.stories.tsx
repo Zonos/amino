@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
-import styled from 'styled-components';
 
 const CheckboxMeta: Meta = {
   component: Checkbox,

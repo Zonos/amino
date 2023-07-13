@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 
+import styled from 'styled-components';
+
 import { CalendarIcon } from 'src/icons/CalendarIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 

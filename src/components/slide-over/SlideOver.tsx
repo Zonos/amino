@@ -1,6 +1,8 @@
 import { type ReactNode } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+
 import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
@@ -8,7 +10,6 @@ import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
-import styled from 'styled-components';
 
 const Popup = styled(motion.div)`
   position: absolute;

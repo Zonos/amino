@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
 import styled, { keyframes } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+
+import { theme } from 'src/styles/constants/theme';
+import type { Color } from 'src/types';
 
 import { type RippleProps, Ripple } from './_Ripple';
 

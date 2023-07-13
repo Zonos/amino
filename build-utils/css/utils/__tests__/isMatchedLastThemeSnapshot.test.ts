@@ -85,5 +85,5 @@ const testCases: UnitTestItem[] = [
 test.each(testCases)(`Case $case:`, ({ input, theme, expected }) =>
   expect(
     isMatchedLastThemeSnapshot({ theme, snapshotContent: input })
-  ).toStrictEqual(expected)
+  ).toBe(expected)
 );

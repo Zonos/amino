@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import type { Page } from 'puppeteer';
+
 import {
   ToastContext,
   ToastContextProvider,

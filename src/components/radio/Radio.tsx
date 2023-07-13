@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const StyledRadio = styled.div<{
   checked: boolean;

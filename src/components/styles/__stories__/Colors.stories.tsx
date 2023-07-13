@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { Page } from 'puppeteer';
+
 import { ColorPalette } from 'src/components/styles/ColorPalette';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 

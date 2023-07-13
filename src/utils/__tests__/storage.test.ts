@@ -1,5 +1,6 @@
-import { getStorageItem } from 'src/utils/storage';
 import { z } from 'zod';
+
+import { getStorageItem } from 'src/utils/storage';
 
 describe('storage tests', () => {
   beforeEach(() => {
@@ -22,7 +23,7 @@ describe('storage tests', () => {
       type: 'local',
     });
 
-    expect(result).toStrictEqual(null);
+    expect(result).toBeNull();
   });
 
   test(`Good value`, () => {
@@ -40,7 +41,7 @@ describe('storage tests', () => {
       type: 'local',
     });
 
-    expect(result).toStrictEqual(p);
+    expect(result).toBe(p);
   });
 
   test(`Value is invalid`, () => {
@@ -58,7 +59,7 @@ describe('storage tests', () => {
       type: 'local',
     });
 
-    expect(result).toStrictEqual(null);
+    expect(result).toBeNull();
   });
 
   test(`String enum`, () => {
@@ -74,7 +75,7 @@ describe('storage tests', () => {
       type: 'local',
     });
 
-    expect(result).toStrictEqual('day');
+    expect(result).toBe('day');
   });
 
   test(`String enum invalid`, () => {
@@ -90,6 +91,6 @@ describe('storage tests', () => {
       type: 'local',
     });
 
-    expect(result).toStrictEqual(null);
+    expect(result).toBeNull();
   });
 });

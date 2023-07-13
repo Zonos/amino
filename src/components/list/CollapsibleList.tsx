@@ -1,8 +1,9 @@
 import { type ReactNode, useState } from 'react';
 
+import styled, { css } from 'styled-components';
+
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled, { css } from 'styled-components';
 
 import { Collapse } from '../collapse/Collapse';
 import { ListItem } from '../list-item/ListItem';

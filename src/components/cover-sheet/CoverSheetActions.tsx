@@ -1,8 +1,9 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { HStack } from 'src/components/stack/HStack';
 import styled from 'styled-components';
+
+import { HStack } from 'src/components/stack/HStack';
 
 const Actions = styled.div`
   z-index: 990;

@@ -2,12 +2,13 @@ import { type ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-import styled from 'styled-components';
 
 import { Button } from '../button/Button';
 import { CoverSheetActions } from './CoverSheetActions';

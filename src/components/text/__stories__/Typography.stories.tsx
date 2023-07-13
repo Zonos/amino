@@ -1,8 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { VStack } from 'src/components/stack/VStack';
 import { type TextProps, Text, textOptions } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
   background-color: white;

@@ -1,9 +1,10 @@
 import { type ReactNode, useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import { type flattenRow } from 'src/utils/flattenRow';
-import styled from 'styled-components';
 
 import { Button } from '../button/Button';
 import type { RowWithIndex } from '../pivot-table/PivotTable';

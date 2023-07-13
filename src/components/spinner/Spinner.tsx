@@ -1,6 +1,7 @@
+import styled, { css, keyframes } from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { Intent } from 'src/types';
-import styled, { css, keyframes } from 'styled-components';
 
 const Rotate = keyframes`
   0% {

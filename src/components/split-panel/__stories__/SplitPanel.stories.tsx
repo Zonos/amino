@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { SplitPanel as SplitPanelComponent } from '../SplitPanel';
 

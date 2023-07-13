@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import { Card } from 'src/components/card/Card';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 export const DangerZone = styled(Card)`
   border-color: ${theme.red200};

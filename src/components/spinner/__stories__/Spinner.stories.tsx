@@ -1,10 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import {
   type SpinnerColor,
   type SpinnerProps,
   Spinner as SpinnerComponent,
 } from 'src/components/spinner/Spinner';
-import styled from 'styled-components';
 
 const SpinnerMeta: Meta = {
   component: SpinnerComponent,

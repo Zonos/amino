@@ -8,12 +8,13 @@ import {
 } from 'react-simple-maps';
 
 import { geoCentroid, geoDistance } from 'd3-geo';
+import styled from 'styled-components';
+import { feature } from 'topojson-client';
+
 import { theme } from 'src/styles/constants/theme';
 import { type ICountryOption } from 'src/types/ICountry';
 import { type IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
-import styled from 'styled-components';
-import { feature } from 'topojson-client';
 
 import { Skeleton } from '../skeleton/Skeleton';
 

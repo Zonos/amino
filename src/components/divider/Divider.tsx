@@ -1,5 +1,6 @@
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 const DividerHorizontal = styled.hr`
   margin: ${theme.space24} 0;

@@ -5,9 +5,10 @@ import {
   useRef,
 } from 'react';
 
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
-import styled from 'styled-components';
 
 import { HelpText } from '../help-text/HelpText';
 

@@ -1,11 +1,12 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
+import styled, { css } from 'styled-components';
+
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled, { css } from 'styled-components';
 
 import { Button } from '../button/Button';
 

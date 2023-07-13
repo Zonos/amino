@@ -1,10 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import {
   type TextAvatarProps,
   TextAvatar as TextAvatarComponent,
 } from 'src/components/text-avatar/TextAvatar';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const TextAvatarMeta: Meta = {
   component: TextAvatarComponent,

@@ -6,12 +6,13 @@ import MuiTooltip, {
   type TooltipProps as MuiTooltipProps,
   tooltipClasses,
 } from '@mui/material/Tooltip';
+import styled from 'styled-components';
+
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Color, Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-import styled from 'styled-components';
 
 const StyledVStack = styled(VStack)`
   padding-top: 3px;

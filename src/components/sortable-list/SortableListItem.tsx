@@ -2,9 +2,10 @@ import type { ReactNode } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import styled from 'styled-components';
+
 import { DragIcon } from 'src/icons/DragIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const StyledSortableListItem = styled.div`
   display: flex;

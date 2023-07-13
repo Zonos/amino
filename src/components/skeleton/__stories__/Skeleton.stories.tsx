@@ -1,12 +1,13 @@
 import type { ReactNode } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Card as CardComponent } from 'src/components/card/Card';
 import { type SkeletonProps, Skeleton } from 'src/components/skeleton/Skeleton';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import type { GridSpacing } from 'src/types/GridSpacing';
-import styled from 'styled-components';
 
 const SkeletonMeta: Meta = {
   args: {

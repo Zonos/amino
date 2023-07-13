@@ -1,11 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { Page } from 'puppeteer';
+import styled from 'styled-components';
+
 import { type ButtonProps, Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { theme } from 'src/styles/constants/theme';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
-import styled from 'styled-components';
 
 // To test interaction with styled components
 const StyledButton = styled(Button)``;

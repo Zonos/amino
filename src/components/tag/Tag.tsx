@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 type TagSize = 'base' | 'lg';
 

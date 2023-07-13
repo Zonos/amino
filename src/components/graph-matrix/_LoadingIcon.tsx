@@ -1,6 +1,7 @@
+import styled, { keyframes } from 'styled-components';
+
 import { ZonosLogoIcon } from 'src/icons/custom/ZonosLogoIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled, { keyframes } from 'styled-components';
 
 import { Text } from '../text/Text';
 

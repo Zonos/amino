@@ -1,4 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { ListItem } from 'src/components/list-item/ListItem';
@@ -6,7 +8,6 @@ import { type VSectionProps, VSection } from 'src/components/section/VSection';
 import { VStack } from 'src/components/stack/VStack';
 import { CartIcon } from 'src/icons/CartIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const VSectionMeta: Meta = {
   component: VSection,

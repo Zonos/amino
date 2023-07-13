@@ -8,12 +8,13 @@ import DataGrid, {
   type SortColumn,
 } from 'react-data-grid';
 
+import styled from 'styled-components';
+
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
 import { addIndex } from 'src/utils/addIndex';
-import styled from 'styled-components';
 
 export type KeyValue = string | number;
 type RowData = Record<string, unknown>;

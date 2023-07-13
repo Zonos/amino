@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import { ThemeDarkIcon } from 'src/icons/custom/theme/ThemeDarkIcon';
 import { ThemeLightIcon } from 'src/icons/custom/theme/ThemeLightIcon';
 import { NightIcon } from 'src/icons/NightIcon';
@@ -5,7 +7,6 @@ import { SunnyIcon } from 'src/icons/SunnyIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-import styled from 'styled-components';
 
 import { Card } from '../card/Card';
 import { Select } from '../select/Select';
