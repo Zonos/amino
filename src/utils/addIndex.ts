@@ -3,7 +3,7 @@
  * */
 export const addIndex = <T extends Record<string, unknown>>(
   item: T,
-  index: number
+  index: number,
 ): T & { _itemIndex: number } => ({
   ...item,
   _itemIndex: index + 1,

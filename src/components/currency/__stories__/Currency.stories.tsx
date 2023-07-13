@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { Currency } from 'src/components/currency/Currency';
 
 const CurrencyMeta: Meta = {
@@ -29,7 +30,7 @@ PositiveValue.args = {
 };
 
 export const DifferentCurrencyFormatWithPositiveValue = CurrencyTemplate.bind(
-  {}
+  {},
 );
 DifferentCurrencyFormatWithPositiveValue.args = {
   amount: 2349000,
@@ -37,7 +38,7 @@ DifferentCurrencyFormatWithPositiveValue.args = {
 };
 
 export const DifferentCurrencyFormatWithNegativeValue = CurrencyTemplate.bind(
-  {}
+  {},
 );
 DifferentCurrencyFormatWithNegativeValue.args = {
   amount: -2349000,

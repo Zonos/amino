@@ -6,8 +6,9 @@ import type {
   ReactNode,
 } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 import { type HelpTextProps, HelpText } from '../help-text/HelpText';
 import { DateInput } from './input-type/_DateInput';
@@ -48,7 +49,7 @@ type DateInputEventHandler = (
       /** @desc The parsed value is always formatted `yyyy-mm-dd`. Ex: '2022-12-28' */
       value: `${number}-${number}-${number}` | '';
     };
-  }
+  },
 ) => void;
 
 type InputType<T extends HTMLInputTypeAttribute> = {

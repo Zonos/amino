@@ -1,5 +1,8 @@
 import { useEffect, useState } from '@storybook/addons';
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+import { v4 } from 'uuid';
+
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
@@ -7,8 +10,6 @@ import { Input } from 'src/components/input/Input';
 import { type HSectionProps, HSection } from 'src/components/section/HSection';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import styled from 'styled-components';
-import { v4 } from 'uuid';
 
 const HSectionMeta: Meta = {
   component: HSection,

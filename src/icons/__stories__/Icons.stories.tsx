@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import type { Meta } from '@storybook/react';
+import styled from 'styled-components';
+
 import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -8,7 +10,6 @@ import * as icons from 'src/icons/IconIndex';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
-import styled from 'styled-components';
 
 const IconsMeta: Meta = {
   component: icons.MailDuotoneIcon,
@@ -40,7 +41,7 @@ const StyledIcon = styled.div<{ size?: number }>`
 `;
 
 // Check if string contain keyword of the sub icon type or not
-type IconsType = typeof icons[keyof typeof icons] & {
+type IconsType = (typeof icons)[keyof typeof icons] & {
   deprecated?: boolean;
   displayName?: string;
 };
@@ -66,7 +67,7 @@ export const Icons = ({
           .filter(({ iconName }) =>
             filter
               ? iconName.toLowerCase().includes(filter.toLowerCase())
-              : true
+              : true,
           )
           .map(({ deprecated, icon: IconComponent, iconName }) => {
             const isDeprecated = deprecated;

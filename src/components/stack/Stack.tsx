@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import type { GridAlignment, GridSpacing } from './GridSpacing';
+import type { GridAlignment, GridSpacing } from 'src/types';
 
 type DivProps = Omit<
   HTMLAttributes<HTMLDivElement>,

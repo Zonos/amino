@@ -4,7 +4,6 @@
 module.exports = {
   env: {
     browser: true,
-    'jest/globals': true,
   },
   extends: [
     'airbnb',
@@ -13,12 +12,13 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
     'plugin:storybook/recommended',
+    'plugin:vitest/recommended',
   ],
   globals: {
     JSX: 'readonly',
   },
   plugins: [
-    'jest',
+    'vitest',
     '@typescript-eslint',
     'simple-import-sort',
     'prettier',
@@ -44,6 +44,16 @@ module.exports = {
     },
     {
       /**
+       * Disable no-undef on typescript file since the check it provides are already provided by Typescript without the need for configuration
+       * Refs: https://github.com/typescript-eslint/typescript-eslint/blob/bbfed02ce62533d2020dc0b834cfa17e26a6d523/docs/linting/Troubleshooting.mdx?plain=1#L169
+       */
+      files: ['*.ts', '*.mts', '*.cts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+    {
+      /**
        * Turn off sort-keys for generated constants file (we don't want to sort because of comments, but want to do other linting)
        */
       files: ['src/styles/constants/*.ts'],
@@ -52,6 +62,13 @@ module.exports = {
         'sort-keys': 'off',
         'sort-keys/sort-keys-fix': 'off',
         'typescript-custom-sort-keys/interface': 'off',
+      },
+    },
+    {
+      files: ['test-utils/**'],
+      rules: {
+        'import/no-internal-modules': 'off',
+        'react/jsx-props-no-spreading': 'off',
       },
     },
   ],
@@ -175,7 +192,7 @@ module.exports = {
     'simple-import-sort/imports': [
       'error',
       {
-        groups: [['^react'], ['^@?\\w'], ['^~/src'], ['^'], ['((.|..)/)?']],
+        groups: [['^react'], ['^@?w', '^(?!src)'], ['^(src)/'], ['((.|..)/)?']],
       },
     ],
     'storybook/use-storybook-expect': 'off',

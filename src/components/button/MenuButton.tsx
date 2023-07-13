@@ -1,9 +1,10 @@
 import { type ReactNode, useCallback, useEffect, useRef } from 'react';
 
+import styled from 'styled-components';
+
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/surface/Surface';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const Wrapper = styled.div`
   position: relative;
@@ -45,7 +46,7 @@ export const MenuButton = ({
         setOpen(false);
       }
     },
-    [setOpen]
+    [setOpen],
   );
 
   useEffect(() => {

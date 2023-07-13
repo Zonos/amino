@@ -4,6 +4,8 @@ import { type ExecutionContextType, ToolbarButton } from '@graphiql/react';
 import type { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 import { GraphiQL } from 'graphiql';
 import { type GraphQLSchema } from 'graphql';
+import styled from 'styled-components';
+
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -15,7 +17,6 @@ import type {
 import { useGraphiqlExplorer } from 'src/utils/hooks/_useGraphiqlExplorer';
 import { useGraphiqlFetcher } from 'src/utils/hooks/_useGraphiqlFetcher';
 import { useGraphiqlStorage } from 'src/utils/hooks/_useGraphiqlStorage';
-import styled from 'styled-components';
 
 import { NestedDataTable } from '../nested-data-table/NestedDataTable';
 import { SplitPanel } from '../split-panel/SplitPanel';
@@ -78,7 +79,7 @@ type GraphMatrixProps = {
   onEditQuery: (query: string) => void;
   onEditVariables: (variables: string) => void;
   onResultData?: (
-    data: GraphiqlExecutionResult<ExecutionResultType> | null
+    data: GraphiqlExecutionResult<ExecutionResultType> | null,
   ) => void;
 };
 

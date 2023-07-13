@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { LightBox as LightBoxComponent } from 'src/components/lightbox/LightBox';
-import styled from 'styled-components';
 
 const LightBoxMeta: Meta = {
   component: LightBoxComponent,

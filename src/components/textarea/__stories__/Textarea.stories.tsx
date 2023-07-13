@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import { type TextareaProps, Textarea } from 'src/components/textarea/Textarea';
-import styled from 'styled-components';
 
 const StyledGroup = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ const Template: StoryFn<TextareaProps> = ({
     const interval = setInterval(() => {
       // toggle between long and short content every 3 seconds
       setAutoAdjustContent(content =>
-        longContent === content ? shortContent : longContent
+        longContent === content ? shortContent : longContent,
       );
     }, 3000);
     return () => clearInterval(interval);

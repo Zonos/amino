@@ -69,7 +69,6 @@ import './components/sortable-list/SortableListDeps';
 import './components/sortable-list/SortableListItem';
 import './components/spinner/Spinner';
 import './components/split-panel/SplitPanel';
-import './components/stack/GridSpacing';
 import './components/stack/HStack';
 import './components/stack/Stack';
 import './components/stack/VStack';

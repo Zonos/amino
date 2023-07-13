@@ -37,7 +37,7 @@ const getResponseBody = async <ResponseBody extends unknown>({
 
 export const handleRequest = async <ResponseBody extends unknown>(
   url: string,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<HandleFetchReturn<ResponseBody>> => {
   let response: Response;
   try {
@@ -97,12 +97,12 @@ export type RequestOptions<ResponseBody, RequestBody> = {
 
 export const handleFetch = async <
   ResponseBody extends unknown,
-  RequestBody = unknown
+  RequestBody = unknown,
 >(
   url: string,
   _opts?: RequestOptions<ResponseBody, RequestBody> & {
     logRequestIfError?: boolean;
-  }
+  },
 ): Promise<HandleFetchReturn<ResponseBody>> => {
   const { logRequestIfError, ...opts } = _opts || {};
   const body = opts.body && JSON.stringify(opts.body);
@@ -114,10 +114,10 @@ export const handleFetch = async <
 
 export const fetcher = async <
   ResponseBody extends unknown,
-  RequestBody = unknown
+  RequestBody = unknown,
 >(
   url: string,
-  options?: RequestOptions<ResponseBody, RequestBody>
+  options?: RequestOptions<ResponseBody, RequestBody>,
 ): Promise<FetcherReturn<ResponseBody>> => {
   const { errors, json, response } = await handleFetch<
     ResponseBody,

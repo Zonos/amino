@@ -130,5 +130,5 @@ export const ScreenIcon = forwardRef<SVGSVGElement, Props>(
         </defs>
       </IconBase>
     );
-  }
+  },
 );

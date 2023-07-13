@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { type SelectProps, Select } from 'src/components/select/Select';
@@ -8,7 +10,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { type IOption } from 'src/types/IOption';
-import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
   width: 412px;

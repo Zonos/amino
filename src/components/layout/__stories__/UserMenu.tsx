@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import styled from 'styled-components';
+
 import { DropdownAnimationInverse } from 'src/animations/DropdownAnimation';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
@@ -8,7 +10,6 @@ import { Surface } from 'src/components/surface/Surface';
 import { Text } from 'src/components/text/Text';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const MenuWrapper = styled.div<{ addSpacing: boolean }>`
   border-top: ${theme.border};

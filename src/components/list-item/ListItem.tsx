@@ -1,8 +1,9 @@
 import { type MouseEventHandler, type ReactNode, forwardRef } from 'react';
 
+import styled, { css } from 'styled-components';
+
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import styled, { css } from 'styled-components';
 
 interface AminoListItemProps {
   disabled?: boolean;
@@ -115,7 +116,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       selected,
       subtitle,
     },
-    ref
+    ref,
   ) => (
     <AminoListItem
       ref={ref}
@@ -138,5 +139,5 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       </TextContainer>
       {rightDecorator}
     </AminoListItem>
-  )
+  ),
 );

@@ -50,7 +50,7 @@ export const useGraphiqlFetcher = ({
     },
     {
       keepPreviousData: true,
-    }
+    },
   );
 
   const gqlFetcher: GraphiqlFetcher = useMemo(
@@ -58,7 +58,7 @@ export const useGraphiqlFetcher = ({
       const results = await mutate(
         url,
         async () => fetcher(params, options),
-        false
+        false,
       );
 
       if (results) {
@@ -66,7 +66,7 @@ export const useGraphiqlFetcher = ({
       }
       return results || { data: null };
     },
-    [fetcher, url]
+    [fetcher, url],
   );
 
   useEffect(() => {

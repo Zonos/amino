@@ -1,18 +1,19 @@
 import isEqual from 'lodash/isEqual';
-import type { FetcherError, SwrtParams } from 'src/types';
 import useSwr, { type Fetcher, type Key, type SWRConfiguration } from 'swr';
+
+import type { FetcherError, SwrtParams } from 'src/types';
 
 type UseSwrArgs<ResponseData> =
   | readonly [Key]
   | readonly [Key, Fetcher<SwrtParams<ResponseData>> | null]
   | readonly [
       Key,
-      SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined
+      SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined,
     ]
   | readonly [
       Key,
       Fetcher<SwrtParams<ResponseData>> | null,
-      SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined
+      SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined,
     ];
 
 type MergedArgs<ResponseData> = readonly [
@@ -23,13 +24,13 @@ type MergedArgs<ResponseData> = readonly [
     | undefined
     | null
   ),
-  SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined
+  SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined,
 ];
 
 type NormalizedArgs<ResponseData> = readonly [
   Key,
   Fetcher<SwrtParams<ResponseData>> | null,
-  SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined
+  SWRConfiguration<SwrtParams<ResponseData>, FetcherError> | undefined,
 ];
 
 type ObjectArgs<ResponseData> = {
@@ -39,7 +40,7 @@ type ObjectArgs<ResponseData> = {
 };
 
 const isSwrFetcher = <T>(
-  arg: MergedArgs<T>[1]
+  arg: MergedArgs<T>[1],
 ): arg is Fetcher<SwrtParams<T>> => typeof arg === 'function';
 
 /** SWR takes multiple function signatures, so here we convert them to a consistent format for usage. This logic is taken mostly from their source. */
@@ -79,6 +80,6 @@ export const useSwrt = <ResponseData = unknown>(
   return useSwr<SwrtParams<ResponseData>, FetcherError>(
     mergedArgs.key,
     mergedArgs.fetcher,
-    mergedArgs.config
+    mergedArgs.config,
   );
 };

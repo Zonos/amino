@@ -1,11 +1,12 @@
 import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
+import styled from 'styled-components';
+
 import { FileDuotoneIcon } from 'src/icons/FileDuotoneIcon';
 import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type UploadedFile } from 'src/types/UploadedFile';
-import styled from 'styled-components';
 
 import { ImageAvatar } from '../avatar/ImageAvatar';
 import { Button } from '../button/Button';

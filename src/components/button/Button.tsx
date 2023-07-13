@@ -5,13 +5,14 @@ import {
   useRef,
 } from 'react';
 
+import styled from 'styled-components';
+
 import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { Intent } from 'src/types/Intent';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
-import styled from 'styled-components';
 
 import { type IRippleActions, RippleGroup } from './RippleGroup';
 import { useRipple } from './useRipple';

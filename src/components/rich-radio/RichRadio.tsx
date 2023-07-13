@@ -1,10 +1,11 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
+import styled from 'styled-components';
+
 import { VStack } from 'src/components/stack/VStack';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { Text } from '../text/Text';
 

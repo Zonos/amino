@@ -8,11 +8,12 @@ import {
   useMemo,
 } from 'react';
 
+import styled from 'styled-components';
+
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
-import styled from 'styled-components';
 
 const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
   display: block;
@@ -287,11 +288,11 @@ export const FloatLabelInput = forwardRef<
       valuePrefix,
       ...props
     },
-    ref
+    ref,
   ) => {
     const testId = useMemo(
       () => getTestId({ componentName: 'input', name: label }),
-      [label]
+      [label],
     );
     const hasPrefix = !!prefix || !!valuePrefix;
     const hasValue = !!value || !!valuePrefix;
@@ -331,5 +332,5 @@ export const FloatLabelInput = forwardRef<
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );
-  }
+  },
 );

@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+
 import type { ToastProps } from 'src/components/toast/Toast';
 import { ToastContextProvider } from 'src/components/toast/ToastContext';
 

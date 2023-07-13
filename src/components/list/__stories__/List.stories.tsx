@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { type ListProps, List } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';

@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import type { FontWeight } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 type ColorList =
   | 'blue'

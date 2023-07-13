@@ -11,6 +11,7 @@ import {
   type GraphQLSchema,
   type ValueNode,
 } from 'graphql';
+
 import { theme } from 'src/styles/constants/theme';
 
 type GraphiQlColors = {
@@ -44,12 +45,12 @@ type GraphMatrixProps = {
   getDefaultScalarArgValue?(
     parentField: GraphQLField<unknown, unknown>,
     arg: GraphQLArgument | GraphQLInputField,
-    underlyingArgType: GraphQLLeafType
+    underlyingArgType: GraphQLLeafType,
   ): ValueNode;
   hideActions?: boolean;
   makeDefaultArg?(
     parentField: GraphQLField<unknown, unknown>,
-    arg: GraphQLArgument | GraphQLInputField
+    arg: GraphQLArgument | GraphQLInputField,
   ): boolean;
   onRunOperation?(name: string | null): void;
   onToggleExplorer?(): void;

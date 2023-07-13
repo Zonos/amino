@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
+import styled from 'styled-components';
+
 import { FilterIcon } from 'src/icons/FilterIcon';
 import { theme } from 'src/styles/constants/theme';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
-import styled from 'styled-components';
 
 import type { RowWithIndex } from '../pivot-table/PivotTable';
 import { MultiSelect } from '../select/MultiSelect';
@@ -76,7 +77,7 @@ export const Filter = ({
         label: column.key,
         value: column.key,
       })),
-    [columns]
+    [columns],
   );
 
   return (
@@ -102,7 +103,7 @@ export const Filter = ({
           }}
           options={hideColumnOptions}
           value={hideColumnOptions.filter(col =>
-            hiddenColumns.includes(col.value)
+            hiddenColumns.includes(col.value),
           )}
         />
       </StyledFilter>

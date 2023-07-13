@@ -1,8 +1,9 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { HStack } from 'src/components/stack/HStack';
 import styled from 'styled-components';
+
+import { HStack } from 'src/components/stack/HStack';
 
 const Actions = styled.div`
   z-index: 990;
@@ -38,11 +39,11 @@ export const CoverSheetActions = ({
         <Actions className={className}>
           <HStack>{children}</HStack>
         </Actions>,
-        div
+        div,
       );
     }
     throw Error(
-      `CoverSheetActions: Could not find Coversheet wrapper with id "${coverSheetActionId}"`
+      `CoverSheetActions: Could not find Coversheet wrapper with id "${coverSheetActionId}"`,
     );
   }
   return null;

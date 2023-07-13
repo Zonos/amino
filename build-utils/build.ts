@@ -26,7 +26,7 @@ const prepareEntries = (entries: string[] | string) =>
           ...prev,
           [current.replace(/\.tsx?$/, '').replace('src/', '')]: current,
         }),
-        {}
+        {},
       )
     : entries;
 
@@ -39,7 +39,7 @@ const prepareEntries = (entries: string[] | string) =>
  * }
  */
 const bundlePackage = async (
-  options: ConfigOptions & { output: OutputOptions }
+  options: ConfigOptions & { output: OutputOptions },
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     plugins: [
@@ -78,20 +78,27 @@ const bundlePackage = async (
     ...defaultOptions,
     ...options,
   };
+  let bundle: Awaited<ReturnType<typeof rollup>> | null = null;
 
   try {
-    const bundle = await rollup(configOptions);
+    bundle = await rollup(configOptions);
 
     const { output } = await bundle.write(configOptions.output);
+    /**
+     * close bundle connection to cleanup their external processes or services
+     * @ref https://rollupjs.org/javascript-api/#rollup-rollup
+     * */
+    await bundle.close();
     return output.filter(item => item.type === 'chunk') as OutputChunk[];
   } catch (err) {
+    bundle?.close();
     console.error('Error bundling:', err); // eslint-disable-line no-console
     return [];
   }
 };
 
 const generateAllModulesContent = async (
-  bundles: OutputChunk[]
+  bundles: OutputChunk[],
 ): Promise<string[]> =>
   bundles.flatMap(bundle => {
     const [, subFolderPath, fileName] =
@@ -140,7 +147,7 @@ const build = async () => {
   const bundledPackages = await Promise.all(configs.map(bundlePackage));
   const moduleContents = await Promise.all(
     // generate module contents
-    bundledPackages.map(generateAllModulesContent)
+    bundledPackages.map(generateAllModulesContent),
   );
 
   fs.writeFileSync(
@@ -149,7 +156,7 @@ const build = async () => {
     `${moduleContents
       .flat()
       .sort((a, b) => a.localeCompare(b))
-      .join('\n')}\n`
+      .join('\n')}\n`,
   );
 };
 

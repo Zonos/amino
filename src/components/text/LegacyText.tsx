@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 const Subtitle = styled.span`
   font-size: ${theme.fontSizeS};

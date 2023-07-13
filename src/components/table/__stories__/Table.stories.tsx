@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Badge } from 'src/components/badge/Badge';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
@@ -21,7 +23,6 @@ import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const StyledTable = styled(Table)`
   max-width: 1080px;
@@ -122,7 +123,7 @@ const Template: StoryFn<
     setCollapsedRows(
       collapsedRows.includes(index)
         ? collapsedRows.filter(x => x !== index)
-        : collapsedRows.concat(index)
+        : collapsedRows.concat(index),
     );
   return (
     <StyledTable>

@@ -1,4 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Card } from 'src/components/card/Card';
 import { type LayoutProps, Layout } from 'src/components/layout/Layout';
 import {
@@ -8,7 +10,6 @@ import {
 import { HStack } from 'src/components/stack/HStack';
 import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { NavigationGroup as NavigationGroupStory } from './NavigationGroup.stories';
 import { UserMenu } from './UserMenu';

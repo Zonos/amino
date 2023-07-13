@@ -18,5 +18,5 @@ export const FlagIconBase = forwardRef<SVGSVGElement, FlagIconBaseProps>(
     >
       {children}
     </svg>
-  )
+  ),
 );

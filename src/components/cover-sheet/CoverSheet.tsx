@@ -2,12 +2,13 @@ import { type ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-import styled from 'styled-components';
 
 import { Button } from '../button/Button';
 import { CoverSheetActions } from './CoverSheetActions';
@@ -90,7 +91,7 @@ export const CoverSheet = ({
     if (document.querySelectorAll(`[id='${actionWrapperId}']`).length > 1) {
       // eslint-disable-next-line no-console
       console.error(
-        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to a unique id.`
+        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to a unique id.`,
       );
     }
   }, [actionWrapperId]);
@@ -134,7 +135,7 @@ export const CoverSheet = ({
             </StyledDialog>
           )}
         </AnimatePresence>,
-        body
+        body,
       );
     }
   }

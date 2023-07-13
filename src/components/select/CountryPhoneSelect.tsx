@@ -8,6 +8,8 @@ import {
   components as RScomponents,
 } from 'react-select';
 
+import styled from 'styled-components';
+
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
@@ -15,7 +17,6 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { ICountryOption } from 'src/types/ICountry';
 import type { IOption } from 'src/types/IOption';
-import styled from 'styled-components';
 
 import { Select } from './Select';
 
@@ -58,12 +59,12 @@ type AdditionalProps = {
 const MenuList = <
   Option extends IOption,
   IsMulti extends false,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >(
-  props: MenuListProps<Option, IsMulti, Group>
+  props: MenuListProps<Option, IsMulti, Group>,
 ) => {
   const { selectProps } = props;
-  const { setMenuIsOpen } = selectProps as typeof props['selectProps'] &
+  const { setMenuIsOpen } = selectProps as (typeof props)['selectProps'] &
     AdditionalProps;
   const handleOutsideClick = useCallback(() => {
     setMenuIsOpen(false);
@@ -82,7 +83,7 @@ const MenuList = <
 export interface CountryPhoneSelectProps<
   Option extends IOption = IOption,
   IsMulti extends false = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'>,
     HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;

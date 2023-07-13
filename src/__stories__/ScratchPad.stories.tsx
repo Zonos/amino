@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/react';
-import { VStack } from 'src/components/stack/VStack';
 import styled from 'styled-components';
+
+import { VStack } from 'src/components/stack/VStack';
 
 const StyledWrapper = styled.div`
   width: 412px;

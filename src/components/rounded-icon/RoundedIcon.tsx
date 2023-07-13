@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types/Color';
 import type { Intent } from 'src/types/Intent';
-import styled from 'styled-components';
 
 type CSSProps = {
   background?: Color;

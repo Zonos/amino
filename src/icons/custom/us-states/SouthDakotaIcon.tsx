@@ -17,5 +17,5 @@ export const SouthDakotaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeWidth=".941"
       />
     </StateIconBase>
-  )
+  ),
 );

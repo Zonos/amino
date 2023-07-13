@@ -3,7 +3,7 @@ import { type MutableRefObject, useEffect, useState } from 'react';
 /** @desc Get the computed style of a component */
 const getComputedStyle = (
   element: HTMLTextAreaElement,
-  property: keyof CSSStyleDeclaration
+  property: keyof CSSStyleDeclaration,
 ) => window.getComputedStyle(element)[property] as string;
 
 type TextareaParams = {

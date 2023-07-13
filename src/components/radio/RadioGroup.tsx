@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 import { Radio } from './Radio';
 

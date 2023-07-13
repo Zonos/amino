@@ -1,8 +1,9 @@
 import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
 
+import styled from 'styled-components';
+
 import { SearchIcon } from 'src/icons/SearchIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import type { InputMode } from './input-type/_FloatLabelInput';
 

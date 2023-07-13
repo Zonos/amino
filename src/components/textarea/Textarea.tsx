@@ -5,9 +5,10 @@ import {
   useRef,
 } from 'react';
 
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
-import styled from 'styled-components';
 
 import { HelpText } from '../help-text/HelpText';
 
@@ -177,7 +178,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       width,
       ...props
     },
-    ref
+    ref,
   ) => {
     const hasValue = !!value;
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -229,5 +230,5 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <HelpText error={error} helpText={helpText} />
       </AminoInputWrapper>
     );
-  }
+  },
 );

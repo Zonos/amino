@@ -8,12 +8,13 @@ import {
 } from 'react-simple-maps';
 
 import { geoCentroid, geoDistance } from 'd3-geo';
+import styled from 'styled-components';
+import { feature } from 'topojson-client';
+
 import { theme } from 'src/styles/constants/theme';
 import { type ICountryOption } from 'src/types/ICountry';
 import { type IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
-import styled from 'styled-components';
-import { feature } from 'topojson-client';
 
 import { Skeleton } from '../skeleton/Skeleton';
 
@@ -80,7 +81,7 @@ export const ConnectionMap = ({
   const coordsForIso = useCallback(
     (iso: string): [number, number] => {
       const geo = geographies?.find(
-        g => getCountryCodeByName(g.properties?.name, countries) === iso
+        g => getCountryCodeByName(g.properties?.name, countries) === iso,
       );
       if (geo) {
         return geoCentroid(geo);
@@ -88,7 +89,7 @@ export const ConnectionMap = ({
 
       return [0, 0];
     },
-    [countries, geographies]
+    [countries, geographies],
   );
 
   const loading = !geographies || !countries.length || !from || !to;
@@ -158,7 +159,7 @@ export const ConnectionMap = ({
           {({ geographies: geos }) =>
             geos.map(geo => {
               const isConnectionCountry = [to, from].includes(
-                getCountryCodeByName(geo.properties.name, countries)
+                getCountryCodeByName(geo.properties.name, countries),
               );
               return (
                 <Geography

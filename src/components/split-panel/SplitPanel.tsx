@@ -75,7 +75,7 @@ export const SplitPanel = ({
 }: IProps) => {
   const childrenCount = Children.count(children);
   const [defaultSizes] = useState<number[]>(
-    normalizeSizes({ childrenCount, sizes })
+    normalizeSizes({ childrenCount, sizes }),
   );
 
   useEffect(() => {

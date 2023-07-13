@@ -119,5 +119,5 @@ export const ClassifyIcon = forwardRef<SVGSVGElement, Props>(
         </defs>
       </IconBase>
     );
-  }
+  },
 );

@@ -6,7 +6,7 @@ const cssContent = readFileSync(
   `build-utils/css/utils/__mocks__/getMatchedAminoVariables-file_with_comment.css`,
   {
     encoding: 'utf-8',
-  }
+  },
 );
 type UnitTestItem = {
   case: string;

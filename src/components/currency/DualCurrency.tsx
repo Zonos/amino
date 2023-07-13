@@ -1,6 +1,7 @@
+import styled, { css } from 'styled-components';
+
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled, { css } from 'styled-components';
 
 import { Currency } from './Currency';
 

@@ -1,8 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { type BadgeProps, Badge } from 'src/components/badge/Badge';
-import * as icons from 'src/icons/IconIndex';
 import { omitControls } from 'story-utils/omitControls';
 import styled from 'styled-components';
+
+import { type BadgeProps, Badge } from 'src/components/badge/Badge';
+import * as icons from 'src/icons/IconIndex';
 
 const omittedProps: (keyof BadgeProps)[] = ['iconRight', 'bold'];
 

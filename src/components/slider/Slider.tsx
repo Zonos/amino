@@ -1,7 +1,8 @@
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
-import styled from 'styled-components';
 
 const StyledSlider = styled(Root)`
   align-items: center;

@@ -2,11 +2,12 @@ import React, { type ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+
 import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-import styled from 'styled-components';
 
 const DialogLayout = styled.div`
   width: 100vw;
@@ -138,7 +139,7 @@ export const BaseDialog = ({
           </>
         )}
       </AnimatePresence>,
-      document.querySelector('body')!
+      document.querySelector('body')!,
     );
   }
   return null;

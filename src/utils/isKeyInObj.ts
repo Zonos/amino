@@ -4,8 +4,8 @@
  * */
 export const isKeyInObj = <
   T extends Record<string, unknown> = Record<string, unknown>,
-  K extends keyof T = keyof T
+  K extends keyof T = keyof T,
 >(
   obj: T,
-  key: string | number | symbol
+  key: string | number | symbol,
 ): key is K => key in obj;

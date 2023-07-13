@@ -70,5 +70,5 @@ test.each(testCases)(
   'returns truncated text correctly',
   ({ expected, ...params }) => {
     expect(truncateText(params)).toBe(expected);
-  }
+  },
 );

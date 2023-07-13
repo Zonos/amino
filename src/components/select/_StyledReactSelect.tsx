@@ -14,6 +14,8 @@ import type {
 import ReactSelect, { components as RScomponents } from 'react-select';
 import type Select from 'react-select/dist/declarations/src/Select';
 
+import styled, { css } from 'styled-components';
+
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
   type HelpTextProps,
@@ -27,7 +29,6 @@ import { theme } from 'src/styles/constants/theme';
 import type { IOption } from 'src/types/IOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
-import styled, { css } from 'styled-components';
 
 type AdditionalProps = {
   hasGroups?: boolean;
@@ -39,9 +40,9 @@ type AdditionalProps = {
 const ClearIndicator = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >(
-  props: ClearIndicatorProps<Option, IsMulti, Group>
+  props: ClearIndicatorProps<Option, IsMulti, Group>,
 ) => (
   <RScomponents.ClearIndicator {...props}>
     <RemoveCircleIcon size={19} />
@@ -51,9 +52,9 @@ const ClearIndicator = <
 const DropdownIndicator = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >(
-  props: DropdownIndicatorProps<Option, IsMulti, Group>
+  props: DropdownIndicatorProps<Option, IsMulti, Group>,
 ) => (
   <RScomponents.DropdownIndicator {...props}>
     <DoubleChevronIcon size={20} />
@@ -160,9 +161,9 @@ const StrongLabel = styled.strong`
 const Control = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >(
-  props: ControlProps<Option, IsMulti, Group>
+  props: ControlProps<Option, IsMulti, Group>,
 ) => {
   const {
     children,
@@ -178,7 +179,7 @@ const Control = <
     selectProps,
   } = props;
   const { icon, label, size, value } =
-    selectProps as typeof props['selectProps'] & AdditionalProps;
+    selectProps as (typeof props)['selectProps'] & AdditionalProps;
   return (
     <div
       ref={innerRef}
@@ -199,7 +200,7 @@ const Control = <
             : '',
           size,
           'react-select-control',
-        ].join(' ')
+        ].join(' '),
       )}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
@@ -261,7 +262,7 @@ const IconLabel = ({
 const MultiValueLabel = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >({
   children,
   ...props
@@ -274,7 +275,7 @@ const MultiValueLabel = <
 const MultiValueRemove = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >({
   innerProps,
 }: MultiValueRemoveProps<Option, IsMulti, Group>) => (
@@ -286,9 +287,9 @@ const MultiValueRemove = <
 export const CheckboxOptionComponent = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >(
-  props: OptionProps<Option, IsMulti, Group>
+  props: OptionProps<Option, IsMulti, Group>,
 ) => {
   const {
     children,
@@ -302,7 +303,7 @@ export const CheckboxOptionComponent = <
     isSelected,
     selectProps,
   } = props;
-  const { hasGroups } = selectProps as typeof props['selectProps'] &
+  const { hasGroups } = selectProps as (typeof props)['selectProps'] &
     AdditionalProps;
 
   const { color, ...style } = getStyles('option', props) as CSSProperties;
@@ -350,7 +351,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   }),
   // container
   control: (provided, state) => {
-    const { size } = state.selectProps as typeof state['selectProps'] &
+    const { size } = state.selectProps as (typeof state)['selectProps'] &
       AdditionalProps;
     return {
       ...provided,
@@ -444,7 +445,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
 export interface StyledReactSelectProps<
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 > extends Props<Option, IsMulti, Group>,
     HelpTextProps,
     AdditionalProps {
@@ -457,7 +458,7 @@ export interface StyledReactSelectProps<
 export const StyledReactSelect = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >({
   closeOnOutsideScroll = false,
   components,
@@ -480,7 +481,7 @@ export const StyledReactSelect = <
   };
   const testId = useMemo(
     () => getTestId({ componentName: 'select', name: label }),
-    [label]
+    [label],
   );
 
   const selectElement = useRef<Select<Option, IsMulti, Group>>(null);

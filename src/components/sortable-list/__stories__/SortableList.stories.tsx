@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { UserAvatar } from 'src/components/avatar/UserAvatar';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { SortableList } from 'src/components/sortable-list/SortableList';

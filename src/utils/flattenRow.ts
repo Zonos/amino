@@ -26,7 +26,7 @@ export const flattenRow = ({
                     currentVal,
                     prev: _prev,
                   }),
-                {}
+                {},
               )
             : arrayValue;
         return nestedRow;
@@ -49,7 +49,7 @@ export const flattenRow = ({
             }
           : newFlattenRow;
       },
-      {}
+      {},
     );
 
     return { ...prev, ...nestedObj };
@@ -77,7 +77,7 @@ export const flattenRow = ({
                         currentVal,
                         prev: _prev,
                       }),
-                    {}
+                    {},
                   )
                 : arrayValue;
             return nestedRow;
@@ -88,7 +88,7 @@ export const flattenRow = ({
       if (typeof parsedValue === 'object') {
         // Flatten the object
         const nestedObj: Record<string, string> = Object.entries(
-          parsedValue
+          parsedValue,
         ).reduce((pre, [nestedKey, nestedVal]) => {
           const newFlattenRow = flattenRow({
             currentVal: [nestedKey, nestedVal],

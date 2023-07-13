@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 const StyledCard = styled.div<{ spacing?: string }>`
   border: ${theme.border};

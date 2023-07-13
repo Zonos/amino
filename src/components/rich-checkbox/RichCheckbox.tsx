@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { VStack } from 'src/components/stack/VStack';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
-import styled from 'styled-components';
 
 import { Text } from '../text/Text';
 

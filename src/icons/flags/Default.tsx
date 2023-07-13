@@ -36,5 +36,5 @@ export const Default = forwardRef<SVGSVGElement, Props>(
         </defs>
       </FlagIconBase>
     );
-  }
+  },
 );

@@ -1,6 +1,7 @@
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
-import styled from 'styled-components';
 
 import { VStack } from '../stack/VStack';
 import { Text } from '../text/Text';

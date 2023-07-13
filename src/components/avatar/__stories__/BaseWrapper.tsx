@@ -1,5 +1,6 @@
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 export const BaseWrapper = styled.div`
   display: flex;

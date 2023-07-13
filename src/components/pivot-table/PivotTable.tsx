@@ -4,16 +4,17 @@ import DataGrid, {
   type DataGridHandle,
   type DataGridProps,
   type Renderers,
+  type RenderSortStatusProps,
   type SortColumn,
-  type SortStatusProps,
 } from 'react-data-grid';
+
+import styled from 'styled-components';
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
 import { addIndex } from 'src/utils/addIndex';
-import styled from 'styled-components';
 
 export type KeyValue = string | number;
 type RowData = Record<string, unknown>;
@@ -50,7 +51,7 @@ export type RowWithIndex<Row extends RowData = RowData> = Row & {
 type Props<
   TRow extends RowWithIndex,
   TSummaryRow extends unknown,
-  TRowKey extends KeyValue
+  TRowKey extends KeyValue,
 > = Omit<
   DataGridProps<TRow, TSummaryRow, TRowKey>,
   keyof OverrideProps<TRow, TSummaryRow>
@@ -102,7 +103,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
 export const PivotTable = <
   TRow extends RowWithIndex,
   TSummaryRow = unknown,
-  TRowKey extends KeyValue = KeyValue
+  TRowKey extends KeyValue = KeyValue,
 >({
   columns,
   onSortColumnsChange,
@@ -115,11 +116,11 @@ export const PivotTable = <
 }: Props<TRow, TSummaryRow, TRowKey>) => {
   const dataGridRef = useRef<DataGridHandle>(null);
   const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>(
-    _sortColumns || []
+    _sortColumns || [],
   );
 
   const renderSortStatus = useCallback(
-    ({ priority, sortDirection }: SortStatusProps) => {
+    ({ priority, sortDirection }: RenderSortStatusProps) => {
       if (!sortDirection) {
         return null;
       }
@@ -134,10 +135,10 @@ export const PivotTable = <
         </SortStatus>
       );
     },
-    []
+    [],
   );
   const defaultRenderers: Renderers<TRow, TSummaryRow> = {
-    sortStatus: renderSortStatus,
+    renderSortStatus,
     ..._renderers,
   };
   const modifiedColumns: Column<TRow, TSummaryRow>[] = [

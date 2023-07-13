@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import styled, { css } from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
-import styled, { css } from 'styled-components';
 
 export type ImageSize = 16 | 24 | 32 | 40 | 48 | 56 | 64;
 
@@ -54,10 +55,9 @@ const StyledAvatarBase = styled.div<AvartarBaseProps>`
   height: 100%;
   width: 100%;
 
-  ${props =>
-    css`
-      border-radius: ${avatarShapes[props.shape]};
-    `}
+  ${props => css`
+    border-radius: ${avatarShapes[props.shape]};
+  `}
 
   ${props =>
     props.backgroundUrl &&

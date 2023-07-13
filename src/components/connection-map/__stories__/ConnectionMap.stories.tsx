@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+import useSwr from 'swr';
+
 import { ConnectionMap } from 'src/components/connection-map/ConnectionMap';
 import { CountrySelect } from 'src/components/select/CountrySelect';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import type { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
-import styled from 'styled-components';
-import useSwr from 'swr';
 
 import { getCountryUrls } from '../../select/__stories__/getCountryUrls';
 import { useCountryOptions } from '../../select/__stories__/useCountryOptions';

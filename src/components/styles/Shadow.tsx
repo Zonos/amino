@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 const shadows = [
   { label: 'Inset', value: 'inset' },
@@ -12,7 +13,7 @@ const shadows = [
   { label: '2XL', value: 'larger' },
 ] as const;
 
-type ShadowIntensity = typeof shadows[number]['value'];
+type ShadowIntensity = (typeof shadows)[number]['value'];
 type AminoShadow = `--amino-shadow-${ShadowIntensity}`;
 
 interface ShadowProps {

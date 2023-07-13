@@ -1,6 +1,8 @@
 import { Fragment, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
@@ -10,7 +12,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { MinusIcon } from 'src/icons/MinusIcon';
 import { PlusIcon } from 'src/icons/PlusIcon';
 import type { Size } from 'src/types/Size';
-import styled from 'styled-components';
 
 const ComposerMeta: Meta = {
   component: () => <div />,
@@ -160,7 +161,7 @@ const Template: StoryFn<Props> = ({
   const selectOptions = getSelectOptions({ withValue });
   const buttonOptions = getButtonOptions();
   const renderDialogOptions = (
-    options: typeof inputOptions | typeof selectOptions | typeof buttonOptions
+    options: typeof inputOptions | typeof selectOptions | typeof buttonOptions,
   ) => (
     <StyledHStack spacing={8}>
       {options.map(x => (

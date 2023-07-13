@@ -19,7 +19,7 @@ type Return<T> = [value: T, setValue: (value: T) => void];
 
 export const useStorage = <
   TValue extends unknown,
-  TKey extends AminoStorageKey = AminoStorageKey
+  TKey extends AminoStorageKey = AminoStorageKey,
 >({
   defaultValue,
   json,
@@ -29,7 +29,7 @@ export const useStorage = <
   // we don't need useSwrt here since we only use swr for caching the storage value
   const { data } = useSwr<TValue | null>(
     key,
-    () => getStorageItem<TValue>({ json, key, type }) || null
+    () => getStorageItem<TValue>({ json, key, type }) || null,
   );
 
   const setValue = (value: TValue) =>

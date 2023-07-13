@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Make sure transformLogicConstant in LogicConstant work properly Case: 'Has 1 import': Has 1 import 1`] = `
+exports[`Make sure transformLogicConstant in LogicConstant work properly > Case: ''Has 1 import'' > Has 1 import 1`] = `
 "export const test = {
   key1: 'value1',
   key2: 'value2',
@@ -8,7 +8,7 @@ exports[`Make sure transformLogicConstant in LogicConstant work properly Case: '
 "
 `;
 
-exports[`Make sure transformLogicConstant in LogicConstant work properly Case: 'Has 2 imports': Has 2 imports 1`] = `
+exports[`Make sure transformLogicConstant in LogicConstant work properly > Case: ''Has 2 imports'' > Has 2 imports 1`] = `
 "export const test = {
   key1: 'value1',
   key2: 'value2',

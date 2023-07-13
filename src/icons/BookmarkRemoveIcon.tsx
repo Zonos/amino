@@ -19,5 +19,5 @@ export const BookmarkRemoveIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

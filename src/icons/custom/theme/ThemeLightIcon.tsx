@@ -72,5 +72,5 @@ export const ThemeLightIcon = forwardRef<SVGSVGElement, { className?: string }>(
         </defs>
       </ThemeIconBase>
     );
-  }
+  },
 );

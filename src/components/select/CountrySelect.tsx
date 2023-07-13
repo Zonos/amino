@@ -37,7 +37,7 @@ export const CountrySelect = <T extends string>({
           ...option,
           icon: <FlagIcon code={option.code as IFlag} iconScale="small" />,
         }
-      : []
+      : [],
   );
 
   const selected = filteredOptions.filter(x => x.value === value);

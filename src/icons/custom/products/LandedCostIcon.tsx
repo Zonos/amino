@@ -121,5 +121,5 @@ export const LandedCostIcon = forwardRef<SVGSVGElement, Props>(
         </defs>
       </IconBase>
     );
-  }
+  },
 );

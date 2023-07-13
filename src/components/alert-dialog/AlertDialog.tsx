@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
@@ -11,7 +13,6 @@ import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type Intent } from 'src/types/Intent';
 import { type Theme } from 'src/types/Theme';
-import styled from 'styled-components';
 
 const Content = styled.div`
   padding: ${theme.space24};

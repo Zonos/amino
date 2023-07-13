@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 
+import styled from 'styled-components';
+
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 
@@ -87,7 +88,7 @@ export const NumberInput = ({
                 onClick={() => {
                   inputRef.current?.stepUp();
                   inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true })
+                    new Event('input', { bubbles: true }),
                   );
                 }}
                 type="button"
@@ -98,7 +99,7 @@ export const NumberInput = ({
                 onClick={() => {
                   inputRef.current?.stepDown();
                   inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true })
+                    new Event('input', { bubbles: true }),
                   );
                 }}
                 type="button"

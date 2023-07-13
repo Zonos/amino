@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Case light theme 1`] = `
 "/* eslint-disable deprecation/deprecation */
@@ -691,6 +691,6 @@ export const theme = {
 
 export type ThemeKey = keyof typeof theme;
 
-export type ThemeValue = typeof theme[ThemeKey];
+export type ThemeValue = (typeof theme)[ThemeKey];
 "
 `;

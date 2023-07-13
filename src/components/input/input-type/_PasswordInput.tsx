@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
+import styled from 'styled-components';
+
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 

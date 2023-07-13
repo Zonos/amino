@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 
+import styled from 'styled-components';
+
 import { ClockIcon } from 'src/icons/ClockIcon';
 import { theme } from 'src/styles/constants/theme';
-import styled from 'styled-components';
 
 import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 
@@ -96,7 +97,7 @@ export const TimeInput = ({
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true })
+                    new Event('input', { bubbles: true }),
                   );
                 }}
                 type="button"

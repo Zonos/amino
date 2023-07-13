@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { BookIcon } from 'src/icons/BookIcon';
 import { CodeIcon } from 'src/icons/CodeIcon';
@@ -6,7 +8,6 @@ import { StarIcon } from 'src/icons/StarIcon';
 import { UserIcon } from 'src/icons/UserIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
-import styled from 'styled-components';
 
 import { devices } from '../../styles/devices';
 

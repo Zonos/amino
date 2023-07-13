@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { type SwitchProps, Switch } from 'src/components/switch/Switch';
 import { Default } from 'src/icons/flags/Default';
 

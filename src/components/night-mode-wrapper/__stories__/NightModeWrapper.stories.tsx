@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
+
 import { Card } from 'src/components/card/Card';
 import {
   type NightModeWrapperProps,

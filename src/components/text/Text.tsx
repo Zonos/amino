@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import styled from 'styled-components';
+
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
-import styled from 'styled-components';
 
 const Subtitle = styled.span`
   font-size: ${theme.fontSizeS};
@@ -25,7 +26,7 @@ export const textOthers = [
   'small-header',
   'input-label',
 ] as const;
-type OtherText = typeof textOthers[number];
+type OtherText = (typeof textOthers)[number];
 
 export const textOptions = [
   {
@@ -137,10 +138,10 @@ const [
   hintTextOption,
 ] = textOptions;
 
-type Size = typeof textOptions[number]['size'];
-type Type = typeof textOptions[number]['type'];
-export type FontWeight = typeof textOptions[number]['weight'] | 800;
-type Tag = typeof textOptions[number]['tag'];
+type Size = (typeof textOptions)[number]['size'];
+type Type = (typeof textOptions)[number]['type'];
+export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
+type Tag = (typeof textOptions)[number]['tag'];
 type TypographyOverrides = {
   color?: Color;
   fontSize?: Size;

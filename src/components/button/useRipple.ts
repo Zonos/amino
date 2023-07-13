@@ -15,7 +15,7 @@ type Props = {
 type Return = {
   /** Combines event handlers */
   getRippleHandlers(
-    otherEvents: Partial<IRippleEventHandlers>
+    otherEvents: Partial<IRippleEventHandlers>,
   ): IRippleEventHandlers;
   rippleEnabled: boolean;
 };
@@ -27,7 +27,7 @@ export const useRipple = ({
 }: Props): Return => {
   function useRippleHandler(
     rippleAction: keyof IRippleActions,
-    skipRippleAction = !rippleEnabled
+    skipRippleAction = !rippleEnabled,
   ) {
     return React.useCallback(
       (event: React.SyntheticEvent) => {
@@ -35,7 +35,7 @@ export const useRipple = ({
           rippleRef.current[rippleAction](event);
         }
       },
-      [rippleAction, skipRippleAction]
+      [rippleAction, skipRippleAction],
     );
   }
 
@@ -48,13 +48,13 @@ export const useRipple = ({
 
     return (otherEvents: Partial<IRippleEventHandlers>) => {
       const eventNames = Object.keys(
-        rippleHandlers
+        rippleHandlers,
       ) as (keyof IRippleEventHandlers)[];
       const wrappedEvents = eventNames.map(eventName => ({
         handler: (
           ev: React.FocusEvent<Element, Element> &
             React.MouseEvent<Element, MouseEvent> &
-            React.DragEvent<Element>
+            React.DragEvent<Element>,
         ) => {
           otherEvents[eventName]?.(ev);
           rippleHandlers[eventName](ev);

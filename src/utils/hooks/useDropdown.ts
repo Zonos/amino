@@ -4,7 +4,7 @@ import { autoUpdate, offset, useFloating } from '@floating-ui/react-dom';
 
 export const useDropdown = <
   WrapperRef extends HTMLElement = HTMLDivElement,
-  TriggerRef extends HTMLElement = HTMLButtonElement
+  TriggerRef extends HTMLElement = HTMLButtonElement,
 >() => {
   const [visible, setVisible] = useState(false);
 
@@ -31,7 +31,7 @@ export const useDropdown = <
         }
       }
     },
-    [visible]
+    [visible],
   );
 
   useEffect(() => {

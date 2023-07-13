@@ -1,9 +1,10 @@
 import type { ReactElement, ReactNode } from 'react';
 
+import styled, { css } from 'styled-components';
+
 import { Collapse } from 'src/components/collapse/Collapse';
 import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
-import styled, { css } from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;

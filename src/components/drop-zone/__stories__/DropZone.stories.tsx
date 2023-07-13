@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import type puppeteer from 'puppeteer';
+import type { Page } from 'puppeteer';
+
 import { DropZone as DropZoneComponent } from 'src/components/drop-zone/DropZone';
 import {
   ToastContext,
@@ -23,7 +24,7 @@ const DropZoneMeta: Meta = {
       type: 'figma',
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A72912&t=erzegCytT9AfSn9f-0',
     },
-    async puppeteerTest(page: puppeteer.Page) {
+    async puppeteerTest(page: Page) {
       const image = await page.screenshot({ fullPage: true });
       expect(image).toMatchImageSnapshot({
         customSnapshotsDir,

@@ -19,5 +19,5 @@ export const StateIconBase = forwardRef<SVGSVGElement, Props>(
     >
       {children}
     </svg>
-  )
+  ),
 );

@@ -25,5 +25,5 @@ export const ZonosIcon = forwardRef<SVGSVGElement, IconProps>(
         fill="currentColor"
       />
     </IconBase>
-  )
+  ),
 );

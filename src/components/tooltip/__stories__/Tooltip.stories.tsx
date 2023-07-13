@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
+
 import { type ButtonProps, Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
@@ -10,7 +12,6 @@ import { Text } from 'src/components/text/Text';
 import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
 import type { Theme } from 'src/types';
 import { truncateText } from 'src/utils/truncateText';
-import styled from 'styled-components';
 
 const TransparentCoverSheet = styled(CoverSheet)`
   /* framer-motion inlines the opacity style */

@@ -1,7 +1,8 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
 import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
 
 const StyledTableRow = styled.tr`
   &.with-hover:hover {
