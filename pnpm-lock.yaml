@@ -20,9 +20,6 @@ dependencies:
   '@floating-ui/react-dom':
     specifier: ^1.3.0
     version: 1.3.0(react-dom@17.0.2)(react@17.0.2)
-  '@graphiql/toolkit':
-    specifier: 0.8.x
-    version: 0.8.4(@types/node@17.0.45)(graphql@16.7.1)
   '@mui/material':
     specifier: ^5.14.0
     version: 5.14.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@17.0.41)(react-dom@17.0.2)(react@17.0.2)
@@ -94,6 +91,9 @@ devDependencies:
   '@graphiql/react':
     specifier: ^0.17.6
     version: 0.17.6(@codemirror/language@6.0.0)(@types/node@17.0.45)(@types/react@17.0.41)(graphql@16.7.1)(react-dom@17.0.2)(react-is@17.0.2)(react@17.0.2)
+  '@graphiql/toolkit':
+    specifier: ^0.8.4
+    version: 0.8.4(@types/node@17.0.45)(graphql@16.7.1)
   '@playwright/test':
     specifier: ^1.36.0
     version: 1.36.0
@@ -3999,6 +3999,7 @@ packages:
       meros: 1.3.0(@types/node@17.0.45)
     transitivePeerDependencies:
       - '@types/node'
+    dev: true
 
   /@graphql-typed-document-node/core@3.2.0(graphql@16.7.1):
     resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
@@ -4563,6 +4564,7 @@ packages:
   /@n1ru4l/push-pull-async-iterable-iterator@3.2.0:
     resolution: {integrity: sha512-3fkKj25kEjsfObL6IlKPAlHYPq/oYwUkkQ03zsTTiDjD7vg/RxjdiLeCydqtxHZP0JgsXL3D/X5oAkMGzuUp/Q==}
     engines: {node: '>=12'}
+    dev: true
 
   /@ndelangen/get-tarball@3.0.9:
     resolution: {integrity: sha512-9JKTEik4vq+yGosHYhZ1tiH/3WpUS0Nh0kej4Agndhox8pAdWhEx5knFVRcb/ya9knCRCs1rPxNrSXTDdfVqpA==}
@@ -6577,6 +6579,7 @@ packages:
 
   /@types/node@17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -10479,6 +10482,7 @@ packages:
   /graphql@16.7.1:
     resolution: {integrity: sha512-DRYR9tf+UGU0KOsMcKAlXeFfX89UiiIZ0dRU3mR0yJfu6OjZqUcp68NnFLnqQU5RexygFoDy1EW+ccOYcPfmHg==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+    dev: true
 
   /gunzip-maybe@1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
@@ -12220,6 +12224,7 @@ packages:
         optional: true
     dependencies:
       '@types/node': 17.0.45
+    dev: true
 
   /methods@1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
