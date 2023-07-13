@@ -41,7 +41,7 @@ describe('storage tests', () => {
       type: 'local',
     });
 
-    expect(result).toBe(p);
+    expect(result).toStrictEqual(p);
   });
 
   test(`Value is invalid`, () => {

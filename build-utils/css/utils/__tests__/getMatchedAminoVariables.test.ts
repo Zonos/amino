@@ -6,7 +6,7 @@ const cssContent = readFileSync(
   `build-utils/css/utils/__mocks__/getMatchedAminoVariables-file_with_comment.css`,
   {
     encoding: 'utf-8',
-  }
+  },
 );
 type UnitTestItem = {
   case: string;
@@ -342,5 +342,5 @@ const testCases: UnitTestItem[] = [
 ];
 
 test.each(testCases)(`Case $case`, ({ input, expected }) => {
-  expect(getMatchedAminoVariables(input)).toBe(expected);
+  expect(getMatchedAminoVariables(input)).toStrictEqual(expected);
 });

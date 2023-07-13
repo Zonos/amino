@@ -33,5 +33,5 @@ const testCases: UnitTest[] = [
 ];
 
 test.each(testCases)('test: $input', ({ expected, input }) => {
-  expect(input.map(addIndex)).toBe(expected);
+  expect(input.map(addIndex)).toStrictEqual(expected);
 });
