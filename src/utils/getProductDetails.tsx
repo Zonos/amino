@@ -32,7 +32,7 @@ export type ProductNames =
   | 'Dashboard';
 
 export const getProductDetails = (
-  product?: Products
+  product?: Products,
 ): {
   color: ColorPrefix;
   icon: JSX.Element;

@@ -19,5 +19,5 @@ export const ChevronUpCircleIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

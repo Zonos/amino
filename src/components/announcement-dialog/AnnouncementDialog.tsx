@@ -66,7 +66,7 @@ export const AnnouncementDialog = forwardRef<
       title,
       width,
     },
-    ref
+    ref,
   ) => {
     const [announcementSeen, setAnnouncementSeen] = useStorage<
       'seen' | '',
@@ -105,5 +105,5 @@ export const AnnouncementDialog = forwardRef<
         </Content>
       </BaseDialog>
     );
-  }
+  },
 );

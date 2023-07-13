@@ -19,5 +19,5 @@ export const RemoveIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

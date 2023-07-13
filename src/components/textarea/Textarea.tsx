@@ -177,7 +177,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       width,
       ...props
     },
-    ref
+    ref,
   ) => {
     const hasValue = !!value;
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -229,5 +229,5 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <HelpText error={error} helpText={helpText} />
       </AminoInputWrapper>
     );
-  }
+  },
 );

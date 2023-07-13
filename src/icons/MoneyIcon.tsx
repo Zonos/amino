@@ -19,5 +19,5 @@ export const MoneyIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

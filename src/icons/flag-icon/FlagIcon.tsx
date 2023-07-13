@@ -21,5 +21,5 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
     }
 
     return Icon ? <Icon ref={ref} height={24} width={32} /> : null;
-  }
+  },
 );

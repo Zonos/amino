@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import type puppeteer from 'puppeteer';
+import type { Page } from 'puppeteer';
 import { type ButtonProps, Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
@@ -17,7 +17,7 @@ const ButtonMeta: Meta = {
       type: 'figma',
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=81%3A1128&t=erzegCytT9AfSn9f-0',
     },
-    async puppeteerTest(page: puppeteer.Page) {
+    async puppeteerTest(page: Page) {
       // Hide loading spinners as their moving parts interfere with visual regression tests
       await page.$$eval('.loading', els => {
         for (let i = 0; i < els.length; i += 1) {

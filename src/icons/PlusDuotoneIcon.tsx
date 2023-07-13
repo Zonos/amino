@@ -19,5 +19,5 @@ export const PlusDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

@@ -19,5 +19,5 @@ export const TotalLandedCostIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

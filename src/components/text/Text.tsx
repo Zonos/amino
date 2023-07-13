@@ -25,7 +25,7 @@ export const textOthers = [
   'small-header',
   'input-label',
 ] as const;
-type OtherText = typeof textOthers[number];
+type OtherText = (typeof textOthers)[number];
 
 export const textOptions = [
   {
@@ -137,10 +137,10 @@ const [
   hintTextOption,
 ] = textOptions;
 
-type Size = typeof textOptions[number]['size'];
-type Type = typeof textOptions[number]['type'];
-export type FontWeight = typeof textOptions[number]['weight'] | 800;
-type Tag = typeof textOptions[number]['tag'];
+type Size = (typeof textOptions)[number]['size'];
+type Type = (typeof textOptions)[number]['type'];
+export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
+type Tag = (typeof textOptions)[number]['tag'];
 type TypographyOverrides = {
   color?: Color;
   fontSize?: Size;

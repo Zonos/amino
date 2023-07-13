@@ -76,7 +76,7 @@ export const Filter = ({
         label: column.key,
         value: column.key,
       })),
-    [columns]
+    [columns],
   );
 
   return (
@@ -102,7 +102,7 @@ export const Filter = ({
           }}
           options={hideColumnOptions}
           value={hideColumnOptions.filter(col =>
-            hiddenColumns.includes(col.value)
+            hiddenColumns.includes(col.value),
           )}
         />
       </StyledFilter>

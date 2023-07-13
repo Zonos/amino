@@ -16,5 +16,5 @@ export const NewHampshireIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeLinejoin="round"
       />
     </StateIconBase>
-  )
+  ),
 );

@@ -18,5 +18,5 @@ export const SearchDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
         fill="currentColor"
       />
     </IconBase>
-  )
+  ),
 );

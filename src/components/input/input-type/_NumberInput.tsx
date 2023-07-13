@@ -87,7 +87,7 @@ export const NumberInput = ({
                 onClick={() => {
                   inputRef.current?.stepUp();
                   inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true })
+                    new Event('input', { bubbles: true }),
                   );
                 }}
                 type="button"
@@ -98,7 +98,7 @@ export const NumberInput = ({
                 onClick={() => {
                   inputRef.current?.stepDown();
                   inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true })
+                    new Event('input', { bubbles: true }),
                   );
                 }}
                 type="button"

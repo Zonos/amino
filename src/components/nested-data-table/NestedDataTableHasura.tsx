@@ -33,7 +33,7 @@ export const NestedDataTableHasura = ({
 }: Props) => {
   const tableDataArr = useMemo(
     () => (Array.isArray(tableData) ? tableData : [tableData]),
-    [tableData]
+    [tableData],
   );
 
   const { currentPage, handlePagination } = useHasuraGqlPagination({

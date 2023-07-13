@@ -114,7 +114,7 @@ export const Checkbox = ({
 }: CheckboxProps) => {
   const testId = useMemo(
     () => getTestId({ componentName: 'checkbox', name: label }),
-    [label]
+    [label],
   );
   return (
     <CheckboxContainer

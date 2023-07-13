@@ -16,5 +16,5 @@ export const NevadaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeLinejoin="round"
       />
     </StateIconBase>
-  )
+  ),
 );

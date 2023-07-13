@@ -24,7 +24,7 @@ export const useHasuraGqlPagination = ({
   const offset =
     _offset && typeof _offset === 'string' ? parseInt(_offset, 10) : 0;
   const [currentPage, setCurrentPage] = useState(
-    Math.floor(offset / limit) + 1
+    Math.floor(offset / limit) + 1,
   );
 
   const handlePagination = useCallback(
@@ -41,17 +41,17 @@ export const useHasuraGqlPagination = ({
             // if only limit exist, replace the limit with the offset
             return match.replace(
               /(limit:\s*(\d+))/g,
-              `$1, offset: ${pageOffset}`
+              `$1, offset: ${pageOffset}`,
             );
           }
           return match;
-        }
+        },
       );
       setQuery(paginatedQuery);
       setCachingKey(`${actionName}?page=${page}`);
       setCurrentPage(page);
     },
-    [_limit, _offset, actionName, limit, query, setCachingKey, setQuery]
+    [_limit, _offset, actionName, limit, query, setCachingKey, setQuery],
   );
 
   return {

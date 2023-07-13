@@ -16,5 +16,5 @@ export const VirginiaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeLinejoin="round"
       />
     </StateIconBase>
-  )
+  ),
 );

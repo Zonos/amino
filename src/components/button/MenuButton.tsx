@@ -45,7 +45,7 @@ export const MenuButton = ({
         setOpen(false);
       }
     },
-    [setOpen]
+    [setOpen],
   );
 
   useEffect(() => {

@@ -17,5 +17,5 @@ export const DelawareIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeWidth=".947"
       />
     </StateIconBase>
-  )
+  ),
 );

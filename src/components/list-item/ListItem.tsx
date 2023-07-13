@@ -115,7 +115,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       selected,
       subtitle,
     },
-    ref
+    ref,
   ) => (
     <AminoListItem
       ref={ref}
@@ -138,5 +138,5 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       </TextContainer>
       {rightDecorator}
     </AminoListItem>
-  )
+  ),
 );

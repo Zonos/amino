@@ -13,5 +13,5 @@ export const ThemeIconBase = forwardRef<SVGSVGElement, Props>(
     >
       {children}
     </svg>
-  )
+  ),
 );

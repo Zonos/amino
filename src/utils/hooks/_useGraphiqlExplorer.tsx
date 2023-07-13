@@ -44,12 +44,12 @@ type GraphMatrixProps = {
   getDefaultScalarArgValue?(
     parentField: GraphQLField<unknown, unknown>,
     arg: GraphQLArgument | GraphQLInputField,
-    underlyingArgType: GraphQLLeafType
+    underlyingArgType: GraphQLLeafType,
   ): ValueNode;
   hideActions?: boolean;
   makeDefaultArg?(
     parentField: GraphQLField<unknown, unknown>,
-    arg: GraphQLArgument | GraphQLInputField
+    arg: GraphQLArgument | GraphQLInputField,
   ): boolean;
   onRunOperation?(name: string | null): void;
   onToggleExplorer?(): void;

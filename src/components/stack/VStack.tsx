@@ -1,7 +1,7 @@
 import { theme } from 'src/styles/constants/theme';
+import type { GridSpacing } from 'src/types';
 import styled from 'styled-components';
 
-import type { GridSpacing } from './GridSpacing';
 import { type StackProps, Stack } from './Stack';
 
 const StyledVStack = styled(Stack)<{ $spacing: GridSpacing }>`

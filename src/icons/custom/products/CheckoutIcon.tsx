@@ -121,5 +121,5 @@ export const CheckoutIcon = forwardRef<SVGSVGElement, Props>(
         </defs>
       </IconBase>
     );
-  }
+  },
 );

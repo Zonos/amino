@@ -19,5 +19,5 @@ export const ThreeDotDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

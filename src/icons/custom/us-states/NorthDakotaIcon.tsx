@@ -17,5 +17,5 @@ export const NorthDakotaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeWidth=".66"
       />
     </StateIconBase>
-  )
+  ),
 );

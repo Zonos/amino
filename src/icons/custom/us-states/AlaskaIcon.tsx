@@ -16,5 +16,5 @@ export const AlaskaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeLinejoin="round"
       />
     </StateIconBase>
-  )
+  ),
 );

@@ -19,5 +19,5 @@ export const CircleDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

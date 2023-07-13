@@ -69,7 +69,7 @@ const StyledTooltip = muiStyled(
         } as PopperProps
       }
     />
-  )
+  ),
 )(({ background }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: background ? theme[background] : theme.gray1200,

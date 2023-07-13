@@ -11,7 +11,7 @@ export const regions = [
   'South America',
 ] as const;
 
-type IRegion = typeof regions[number];
+type IRegion = (typeof regions)[number];
 
 /** @desc /api/address/getCountries */
 export interface ICountry<CountryCode extends string = string> {

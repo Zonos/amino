@@ -62,5 +62,5 @@ export const DashboardIcon = forwardRef<SVGSVGElement, Props>(
         </defs>
       </IconBase>
     );
-  }
+  },
 );

@@ -19,5 +19,5 @@ export const ExclamationMarkIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

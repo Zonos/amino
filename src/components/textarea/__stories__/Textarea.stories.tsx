@@ -40,7 +40,7 @@ const Template: StoryFn<TextareaProps> = ({
     const interval = setInterval(() => {
       // toggle between long and short content every 3 seconds
       setAutoAdjustContent(content =>
-        longContent === content ? shortContent : longContent
+        longContent === content ? shortContent : longContent,
       );
     }, 3000);
     return () => clearInterval(interval);

@@ -287,11 +287,11 @@ export const FloatLabelInput = forwardRef<
       valuePrefix,
       ...props
     },
-    ref
+    ref,
   ) => {
     const testId = useMemo(
       () => getTestId({ componentName: 'input', name: label }),
-      [label]
+      [label],
     );
     const hasPrefix = !!prefix || !!valuePrefix;
     const hasValue = !!value || !!valuePrefix;
@@ -331,5 +331,5 @@ export const FloatLabelInput = forwardRef<
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );
-  }
+  },
 );

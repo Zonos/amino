@@ -72,5 +72,5 @@ export const ThemeDarkIcon = forwardRef<SVGSVGElement, { className?: string }>(
         </defs>
       </ThemeIconBase>
     );
-  }
+  },
 );

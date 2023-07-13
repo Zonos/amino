@@ -80,11 +80,11 @@ export const TableData = <TRow extends Record<string, unknown>>({
               currentVal,
               prev,
             }),
-          {}
+          {},
         );
         return setupNestedData(row);
       }),
-    [flatten, tableDataArr]
+    [flatten, tableDataArr],
   );
 
   const [rows, setRows] = useState<RowWithIndex[]>(setUpRows());
@@ -143,7 +143,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
 
       return currentValue;
     },
-    [customColumnCells, customFlattenRow]
+    [customColumnCells, customFlattenRow],
   );
 
   const columns = useMemo(
@@ -158,12 +158,12 @@ export const TableData = <TRow extends Record<string, unknown>>({
             renderCell: customColumnCells?.[key] || renderTriggerFormater,
           },
         ]),
-    [customColumnCells, renderTriggerFormater, rows]
+    [customColumnCells, renderTriggerFormater, rows],
   );
 
   const filteredHiddenColumns: ColumnType[] = useMemo(() => {
     const filteredColumns = columns.filter(
-      column => !hiddenColumns.includes(column.key)
+      column => !hiddenColumns.includes(column.key),
     );
     return filteredColumns.map(column => ({
       ...column,

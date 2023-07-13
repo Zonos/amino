@@ -688,4 +688,4 @@ export const theme = {
 
 export type ThemeKey = keyof typeof theme;
 
-export type ThemeValue = typeof theme[ThemeKey];
+export type ThemeValue = (typeof theme)[ThemeKey];

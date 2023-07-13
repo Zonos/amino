@@ -89,7 +89,7 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
           id: 1,
         })}
         {Array.from({ length: itemQty }).map((_, index) =>
-          renderSplitItem({ id: index + 3 })
+          renderSplitItem({ id: index + 3 }),
         )}
       </StyledSplitPanel>
     </VStack>

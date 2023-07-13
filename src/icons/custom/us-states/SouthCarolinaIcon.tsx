@@ -16,5 +16,5 @@ export const SouthCarolinaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeLinejoin="round"
       />
     </StateIconBase>
-  )
+  ),
 );

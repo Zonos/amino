@@ -19,5 +19,5 @@ export const ChevronRightDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

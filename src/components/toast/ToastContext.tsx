@@ -8,7 +8,7 @@ import { type ToastProps, Toast } from './Toast';
 type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
 export type ToastContextFunctionType = (
   toast: ReactNode,
-  props?: BaseProps
+  props?: BaseProps,
 ) => void;
 type ToastType = {
   props?: Parameters<ToastContextFunctionType>[1];
@@ -23,7 +23,7 @@ export const ToastContext = createContext<ToastContextFunctionType>(
       toast,
     });
     defaultFunction();
-  }
+  },
 );
 
 type Props = {
@@ -46,7 +46,7 @@ export const ToastContextProvider = ({ children }: Props) => {
       // Each toast has a default lifetime of 6 seconds
       setTimeout(() => setToasts(t => t.slice(1)), props?.duration || 6000);
     },
-    [setToasts]
+    [setToasts],
   );
 
   return (

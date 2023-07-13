@@ -48,7 +48,7 @@ type DateInputEventHandler = (
       /** @desc The parsed value is always formatted `yyyy-mm-dd`. Ex: '2022-12-28' */
       value: `${number}-${number}-${number}` | '';
     };
-  }
+  },
 ) => void;
 
 type InputType<T extends HTMLInputTypeAttribute> = {

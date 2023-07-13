@@ -5,7 +5,7 @@ import DataGrid, {
   type DataGridProps,
   type Renderers,
   type RenderSortStatusProps,
-  type SortColumn
+  type SortColumn,
 } from 'react-data-grid';
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
@@ -50,7 +50,7 @@ export type RowWithIndex<Row extends RowData = RowData> = Row & {
 type Props<
   TRow extends RowWithIndex,
   TSummaryRow extends unknown,
-  TRowKey extends KeyValue
+  TRowKey extends KeyValue,
 > = Omit<
   DataGridProps<TRow, TSummaryRow, TRowKey>,
   keyof OverrideProps<TRow, TSummaryRow>
@@ -102,7 +102,7 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
 export const PivotTable = <
   TRow extends RowWithIndex,
   TSummaryRow = unknown,
-  TRowKey extends KeyValue = KeyValue
+  TRowKey extends KeyValue = KeyValue,
 >({
   columns,
   onSortColumnsChange,
@@ -115,7 +115,7 @@ export const PivotTable = <
 }: Props<TRow, TSummaryRow, TRowKey>) => {
   const dataGridRef = useRef<DataGridHandle>(null);
   const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>(
-    _sortColumns || []
+    _sortColumns || [],
   );
 
   const renderSortStatus = useCallback(
@@ -134,11 +134,11 @@ export const PivotTable = <
         </SortStatus>
       );
     },
-    []
+    [],
   );
   const defaultRenderers: Renderers<TRow, TSummaryRow> = {
     renderSortStatus,
-    ..._renderers
+    ..._renderers,
   };
   const modifiedColumns: Column<TRow, TSummaryRow>[] = [
     {
@@ -146,9 +146,9 @@ export const PivotTable = <
       key: '_itemIndex',
       name: '',
       sortable: false,
-      width: 60
+      width: 60,
     },
-    ...columns
+    ...columns,
   ];
 
   const sortedRows = useMemo((): readonly TRow[] => {

@@ -29,7 +29,7 @@ const ids = [
   'titleWithParagraphWithHeaderActions',
   'longSoloTitle',
 ] as const;
-type ID = typeof ids[number];
+type ID = (typeof ids)[number];
 const Template: StoryFn<typeof Banner> = ({
   footerActions,
   headerActions,

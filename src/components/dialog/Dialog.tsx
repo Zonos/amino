@@ -183,7 +183,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       themeOverride,
       width,
     },
-    ref
+    ref,
   ) => (
     <BaseDialog
       className={className}
@@ -218,5 +218,5 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </Footer>
       )}
     </BaseDialog>
-  )
+  ),
 );

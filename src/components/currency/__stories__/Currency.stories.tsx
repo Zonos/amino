@@ -29,7 +29,7 @@ PositiveValue.args = {
 };
 
 export const DifferentCurrencyFormatWithPositiveValue = CurrencyTemplate.bind(
-  {}
+  {},
 );
 DifferentCurrencyFormatWithPositiveValue.args = {
   amount: 2349000,
@@ -37,7 +37,7 @@ DifferentCurrencyFormatWithPositiveValue.args = {
 };
 
 export const DifferentCurrencyFormatWithNegativeValue = CurrencyTemplate.bind(
-  {}
+  {},
 );
 DifferentCurrencyFormatWithNegativeValue.args = {
   amount: -2349000,

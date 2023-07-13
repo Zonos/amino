@@ -22,5 +22,5 @@ export const IconBase = forwardRef<SVGSVGElement, Props>(
         {children}
       </svg>
     );
-  }
+  },
 );

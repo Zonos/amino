@@ -28,7 +28,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .click();
     await framePage.getByRole('button', { name: "Don't do action" }).click();
     await expect(
-      framePage.getByText('Default confirmation: not confirmed')
+      framePage.getByText('Default confirmation: not confirmed'),
     ).toBeVisible();
 
     await framePage
@@ -38,7 +38,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .getByRole('button', { exact: true, name: 'Do action' })
       .click();
     await expect(
-      framePage.getByText('Default confirmation: confirmed')
+      framePage.getByText('Default confirmation: confirmed'),
     ).toBeVisible();
 
     /** Click on danger confirmation */
@@ -47,7 +47,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .click();
     await framePage.getByRole('button', { name: "Don't do action" }).click();
     await expect(
-      framePage.getByText('Danger confirmation: not confirmed')
+      framePage.getByText('Danger confirmation: not confirmed'),
     ).toBeVisible();
     await framePage
       .getByRole('button', { name: 'Trigger danger confirmation' })
@@ -56,7 +56,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .getByRole('button', { exact: true, name: 'Do action' })
       .click();
     await expect(
-      framePage.getByText('Danger confirmation: confirmed')
+      framePage.getByText('Danger confirmation: confirmed'),
     ).toBeVisible();
 
     /** Click on warning confirmation */
@@ -65,7 +65,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .click();
     await framePage.getByRole('button', { name: "Don't do action" }).click();
     await expect(
-      framePage.getByText('Warning confirmation: not confirmed')
+      framePage.getByText('Warning confirmation: not confirmed'),
     ).toBeVisible();
     await framePage
       .getByRole('button', { name: 'Trigger warning confirmation' })
@@ -74,7 +74,7 @@ test.describe('Functionality of confirmation dialog', () => {
       .getByRole('button', { exact: true, name: 'Do action' })
       .click();
     await expect(
-      framePage.getByText('Warning confirmation: confirmed')
+      framePage.getByText('Warning confirmation: confirmed'),
     ).toBeVisible();
   });
 });

@@ -1,7 +1,7 @@
 import { useStorage } from './useStorage';
 
 export const useCurrentSchema = <TValue extends string>(
-  defaultSchema: TValue
+  defaultSchema: TValue,
 ) =>
   useStorage({
     defaultValue: defaultSchema,

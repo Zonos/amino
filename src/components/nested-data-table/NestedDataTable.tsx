@@ -54,7 +54,7 @@ type Props<TRow extends Record<string, unknown>> = {
 };
 
 export const NestedDataTable = <
-  TRow extends Record<string, unknown> | Record<string, unknown>
+  TRow extends Record<string, unknown> | Record<string, unknown>,
 >({
   currentPage,
   customColumnCells,
@@ -70,7 +70,7 @@ export const NestedDataTable = <
 }: Props<TRow>) => {
   const tableDataArr = useMemo(
     () => (Array.isArray(tableData) ? tableData : [tableData]),
-    [tableData]
+    [tableData],
   );
 
   const showPagination =

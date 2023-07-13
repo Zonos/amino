@@ -16,7 +16,7 @@ const GradientSquare = styled.div.attrs<GradientSquareType>(
       ${props.gradientEnd}
     )`,
     },
-  })
+  }),
 )<GradientSquareType>`
   width: 32px;
   height: 32px;
@@ -38,7 +38,7 @@ const colorForString = (stringInput: string, brightness: number) => {
     (acc, char) =>
       // eslint-disable-next-line no-bitwise
       char.charCodeAt(0) + ((acc << 5) - acc),
-    0
+    0,
   );
 
   return `hsl(${stringUniqueHash % 360}, 95%, ${brightness}%)`;
@@ -48,7 +48,7 @@ export const TextAvatar = ({ label }: TextAvatarProps) => (
   <GradientSquare
     gradientEnd={colorForString(
       (label && label.split('').reverse().join('')) || 'default label',
-      30
+      30,
     )}
     gradientStart={colorForString(label || 'default label', 75)}
   >

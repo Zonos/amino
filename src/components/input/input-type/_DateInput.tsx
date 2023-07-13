@@ -96,7 +96,7 @@ export const DateInput = ({
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true })
+                    new Event('input', { bubbles: true }),
                   );
                 }}
                 type="button"

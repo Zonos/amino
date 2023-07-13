@@ -12,7 +12,7 @@ test('Params in one line', () => {
     extractQueryParams({
       actionName: 'viewport_amount_subtotals_aggregate',
       query,
-    })
+    }),
   ).toMatchInlineSnapshot(`
     {
       "limit": "10",
@@ -36,7 +36,7 @@ test('Params in multiple lines', () => {
     extractQueryParams({
       actionName: 'viewport_amount_subtotals_aggregate',
       query,
-    })
+    }),
   ).toMatchInlineSnapshot(`
     {
       "limit": "10",

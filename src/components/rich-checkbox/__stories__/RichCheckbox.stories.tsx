@@ -26,7 +26,7 @@ const Template: StoryFn<RichCheckboxProps> = ({
           items.map(item => ({
             ...item,
             checked: item.value === value ? !item.checked : item.checked,
-          }))
+          })),
         )
       }
     />

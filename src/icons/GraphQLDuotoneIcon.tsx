@@ -22,5 +22,5 @@ export const GraphQLDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeWidth="2"
       />
     </IconBase>
-  )
+  ),
 );

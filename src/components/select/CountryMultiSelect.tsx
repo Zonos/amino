@@ -29,21 +29,21 @@ type AdditionalProps = {
 export const MenuList = <
   Option extends IOption,
   IsMulti extends boolean,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >({
   children,
   ...props
 }: MenuListProps<Option, IsMulti, Group>) => {
   const { getStyles, selectProps } = props;
   const { allSelected, toggleSelectAll } =
-    selectProps as typeof props['selectProps'] & AdditionalProps;
+    selectProps as (typeof props)['selectProps'] & AdditionalProps;
   return (
     <RScomponents.MenuList {...props}>
       <div
         style={
           getStyles(
             'option',
-            props as unknown as OptionProps<Option, IsMulti, Group>
+            props as unknown as OptionProps<Option, IsMulti, Group>,
           ) as CSSProperties
         }
       >
@@ -61,7 +61,7 @@ export const MenuList = <
 export interface CountryMultiSelectProps<
   Option extends IOption<string> = IOption<string>,
   IsMulti extends true = true,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
       Props<Option, IsMulti, Group>,
       'isMulti' | 'onChange' | 'options' | 'value'
@@ -87,7 +87,7 @@ export const CountryMultiSelect = <T extends string>({
 }: CountryMultiSelectProps<IOption<T>>) => {
   const countries = countryOptions.map(option => {
     const unavailableCountry = unavailableCountries.find(
-      x => x.code === option.code
+      x => x.code === option.code,
     );
     return {
       ...option,
@@ -97,7 +97,7 @@ export const CountryMultiSelect = <T extends string>({
     };
   });
   const unselectedOptions = countries.filter(
-    option => !value.includes(option.code) && !option.isDisabled
+    option => !value.includes(option.code) && !option.isDisabled,
   );
   const allSelected = !!value.length && !unselectedOptions.length;
   const additionalProps: AdditionalProps = {
@@ -106,7 +106,7 @@ export const CountryMultiSelect = <T extends string>({
       onChange(
         unselectedOptions.length
           ? value.concat(unselectedOptions.map(x => x.value))
-          : []
+          : [],
       ),
   };
   return (

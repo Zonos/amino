@@ -23,7 +23,7 @@ type RequiredProps = 'onChange' | 'options' | 'value';
 export interface MultiSelectProps<
   Option extends IOption = IOption,
   IsMulti extends true = true,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
     Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>>,
     HelpTextProps {
@@ -50,9 +50,9 @@ export type IGroupOption<Option extends IOption> = {
 const Group = <
   Option extends IOption,
   IsMulti extends true,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >(
-  props: GroupProps<Option, IsMulti, Group>
+  props: GroupProps<Option, IsMulti, Group>,
 ) => {
   const { children, getStyles, innerProps, label, options, selectProps } =
     props;
@@ -69,7 +69,7 @@ const Group = <
         style={
           getStyles(
             'option',
-            props as unknown as OptionProps<Option, IsMulti, Group>
+            props as unknown as OptionProps<Option, IsMulti, Group>,
           ) as CSSProperties
         }
       >
@@ -79,7 +79,7 @@ const Group = <
           onChange={() => {
             const changed = groupIsSelected
               ? currentValue.filter(
-                  option => !selected.find(x => x.value === option.value)
+                  option => !selected.find(x => x.value === option.value),
                 )
               : currentValue.concat(unselected);
             selectProps.onChange(
@@ -87,7 +87,7 @@ const Group = <
               {
                 action: groupIsSelected ? 'deselect-group' : 'select-group',
                 option: groupIsSelected ? selected : unselected,
-              } as unknown as ActionMeta<Option>
+              } as unknown as ActionMeta<Option>,
             );
           }}
         />
@@ -100,7 +100,7 @@ const Group = <
 
 export const MultiSelect = <
   Option extends IOption,
-  Group extends GroupBase<Option>
+  Group extends GroupBase<Option>,
 >({
   closeMenuOnSelect = false,
   hideSelectedOptions = true,

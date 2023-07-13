@@ -138,7 +138,7 @@ export const BaseDialog = ({
           </>
         )}
       </AnimatePresence>,
-      document.querySelector('body')!
+      document.querySelector('body')!,
     );
   }
   return null;

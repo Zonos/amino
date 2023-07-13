@@ -38,7 +38,7 @@ const CountryPhoneSelectTemplate: StoryFn<
 }: CountryPhoneSelectProps<ICountryOption>) => {
   const { dashboardUrl } = getCountryUrls();
   const [phoneCountry, setPhoneCountry] = useState<ICountryOption | null>(
-    _phoneCountry
+    _phoneCountry,
   );
   const [phone, setPhone] = useState(_phone);
   const countryOptions = useCountryOptions({

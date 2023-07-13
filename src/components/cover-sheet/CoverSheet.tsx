@@ -90,7 +90,7 @@ export const CoverSheet = ({
     if (document.querySelectorAll(`[id='${actionWrapperId}']`).length > 1) {
       // eslint-disable-next-line no-console
       console.error(
-        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to a unique id.`
+        `Duplicate id "${actionWrapperId}" detected in "CoverSheet" component. Please set "actionWrapperId" to a unique id.`,
       );
     }
   }, [actionWrapperId]);
@@ -134,7 +134,7 @@ export const CoverSheet = ({
             </StyledDialog>
           )}
         </AnimatePresence>,
-        body
+        body,
       );
     }
   }

@@ -38,11 +38,11 @@ export const CoverSheetActions = ({
         <Actions className={className}>
           <HStack>{children}</HStack>
         </Actions>,
-        div
+        div,
       );
     }
     throw Error(
-      `CoverSheetActions: Could not find Coversheet wrapper with id "${coverSheetActionId}"`
+      `CoverSheetActions: Could not find Coversheet wrapper with id "${coverSheetActionId}"`,
     );
   }
   return null;

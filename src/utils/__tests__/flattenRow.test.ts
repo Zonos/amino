@@ -88,7 +88,7 @@ test.only('flatten table row data', () => {
           currentVal,
           prev,
         }),
-      {}
+      {},
     );
     return row;
   });
@@ -352,7 +352,7 @@ test('flatten table row with complex data', () => {
           currentVal,
           prev,
         }),
-      {}
+      {},
     );
     return row;
   });

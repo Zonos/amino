@@ -122,7 +122,7 @@ const Template: StoryFn<
     setCollapsedRows(
       collapsedRows.includes(index)
         ? collapsedRows.filter(x => x !== index)
-        : collapsedRows.concat(index)
+        : collapsedRows.concat(index),
     );
   return (
     <StyledTable>

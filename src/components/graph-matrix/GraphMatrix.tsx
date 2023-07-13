@@ -78,7 +78,7 @@ type GraphMatrixProps = {
   onEditQuery: (query: string) => void;
   onEditVariables: (variables: string) => void;
   onResultData?: (
-    data: GraphiqlExecutionResult<ExecutionResultType> | null
+    data: GraphiqlExecutionResult<ExecutionResultType> | null,
   ) => void;
 };
 

@@ -2,10 +2,10 @@ import type { ICountryOption } from 'src/types/ICountry';
 
 export const getCountryCodeByName = (
   countryName: string,
-  countries: ICountryOption[]
+  countries: ICountryOption[],
 ) => {
   const foundCountryByDisplayName = countries.find(
-    country => country.displayName === countryName
+    country => country.displayName === countryName,
   );
 
   if (foundCountryByDisplayName) {
@@ -13,7 +13,7 @@ export const getCountryCodeByName = (
   }
 
   const foundCountryByPartialName = countries.find(country =>
-    country.displayName.includes(countryName)
+    country.displayName.includes(countryName),
   );
 
   if (foundCountryByPartialName) {

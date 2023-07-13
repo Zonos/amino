@@ -17,7 +17,7 @@ export default NestedDataTableMeta;
 type NestedDataTableProps = ComponentProps<typeof NestedDataTableComponent>;
 
 const Template: StoryFn<NestedDataTableProps> = (
-  props: NestedDataTableProps
+  props: NestedDataTableProps,
 ) => <NestedDataTableComponent {...props} />;
 
 export const NestedDataTableNoPagination = Template.bind({});

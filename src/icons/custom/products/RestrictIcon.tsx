@@ -145,5 +145,5 @@ export const RestrictIcon = forwardRef<SVGSVGElement, Props>(
         </defs>
       </IconBase>
     );
-  }
+  },
 );

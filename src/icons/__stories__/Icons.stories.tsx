@@ -40,7 +40,7 @@ const StyledIcon = styled.div<{ size?: number }>`
 `;
 
 // Check if string contain keyword of the sub icon type or not
-type IconsType = typeof icons[keyof typeof icons] & {
+type IconsType = (typeof icons)[keyof typeof icons] & {
   deprecated?: boolean;
   displayName?: string;
 };
@@ -66,7 +66,7 @@ export const Icons = ({
           .filter(({ iconName }) =>
             filter
               ? iconName.toLowerCase().includes(filter.toLowerCase())
-              : true
+              : true,
           )
           .map(({ deprecated, icon: IconComponent, iconName }) => {
             const isDeprecated = deprecated;

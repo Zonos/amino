@@ -22,24 +22,24 @@ type FetcherOpts = {
 };
 
 export type GraphiqlExecutionResult<
-  T extends ExecutionResultType = ExecutionResultType
+  T extends ExecutionResultType = ExecutionResultType,
 > = {
   data: ExecutionResult<T, ExecutionResultType>['data'];
 };
 
 export type GraphiqlFetcher = (
   graphQLParams: FetcherParams,
-  opts?: FetcherOpts
+  opts?: FetcherOpts,
 ) => Promise<GraphiqlExecutionResult>;
 
 export type HandleFetchFetcher = <
   ResponseBody extends unknown,
-  RequestBody = unknown
+  RequestBody = unknown,
 >(
   url: string,
   _opts?: RequestOptions<ResponseBody, RequestBody> & {
     logRequestIfError?: boolean;
-  }
+  },
 ) => Promise<HandleFetchReturn<ResponseBody>>;
 
 type IFetcher = (props: {

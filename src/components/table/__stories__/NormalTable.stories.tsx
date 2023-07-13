@@ -62,7 +62,7 @@ const Template: StoryFn<
     if (checked) {
       const selectedProducts: Record<string, boolean> = products.reduce(
         (prev, current) => ({ ...prev, [current.node.id]: checked }),
-        {}
+        {},
       );
       setSelectedProductIds(selectedProducts);
       setAllSelected(true);
@@ -110,16 +110,16 @@ const Template: StoryFn<
       <TableBody>
         {products.map(({ node }) => {
           const weight = node.measurements.find(
-            measurement => measurement?.type === 'WEIGHT'
+            measurement => measurement?.type === 'WEIGHT',
           )?.value;
           const height = node.measurements.find(
-            measurement => measurement?.type === 'HEIGHT'
+            measurement => measurement?.type === 'HEIGHT',
           )?.value;
           const length = node.measurements.find(
-            measurement => measurement?.type === 'LENGTH'
+            measurement => measurement?.type === 'LENGTH',
           )?.value;
           const width = node.measurements.find(
-            measurement => measurement?.type === 'WIDTH'
+            measurement => measurement?.type === 'WIDTH',
           )?.value;
           return (
             <TableRow key={node.id} active={!!selectedProductIds[node.id]}>

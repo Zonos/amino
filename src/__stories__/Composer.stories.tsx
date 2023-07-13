@@ -160,7 +160,7 @@ const Template: StoryFn<Props> = ({
   const selectOptions = getSelectOptions({ withValue });
   const buttonOptions = getButtonOptions();
   const renderDialogOptions = (
-    options: typeof inputOptions | typeof selectOptions | typeof buttonOptions
+    options: typeof inputOptions | typeof selectOptions | typeof buttonOptions,
   ) => (
     <StyledHStack spacing={8}>
       {options.map(x => (

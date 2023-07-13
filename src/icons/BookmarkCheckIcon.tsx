@@ -19,5 +19,5 @@ export const BookmarkCheckIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
     </IconBase>
-  )
+  ),
 );

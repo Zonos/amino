@@ -17,5 +17,5 @@ export const ArkansasIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeWidth=".872"
       />
     </StateIconBase>
-  )
+  ),
 );

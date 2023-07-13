@@ -61,7 +61,7 @@ export const GraphMatrix: StoryFn<typeof GraphMatrixComponent> = () => {
           },
           method: 'POST',
           mode: 'cors',
-        }
+        },
       );
       return json || { data: null };
     },

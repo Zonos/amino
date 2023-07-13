@@ -17,5 +17,5 @@ export const NebraskaIcon = forwardRef<SVGSVGElement, IconProps>(
         strokeWidth="1.056"
       />
     </StateIconBase>
-  )
+  ),
 );

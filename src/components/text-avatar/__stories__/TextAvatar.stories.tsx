@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 const codes = [...Array(250).keys()].map(
   n =>
     String.fromCharCode((n % 26) + 65).repeat(n % 40) +
-    String.fromCharCode(((n + 10) % 26) + 65)
+    String.fromCharCode(((n + 10) % 26) + 65),
 );
 
 const Template: StoryFn<TextAvatarProps> = () => (

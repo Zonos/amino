@@ -80,7 +80,7 @@ export const ConnectionMap = ({
   const coordsForIso = useCallback(
     (iso: string): [number, number] => {
       const geo = geographies?.find(
-        g => getCountryCodeByName(g.properties?.name, countries) === iso
+        g => getCountryCodeByName(g.properties?.name, countries) === iso,
       );
       if (geo) {
         return geoCentroid(geo);
@@ -88,7 +88,7 @@ export const ConnectionMap = ({
 
       return [0, 0];
     },
-    [countries, geographies]
+    [countries, geographies],
   );
 
   const loading = !geographies || !countries.length || !from || !to;
@@ -158,7 +158,7 @@ export const ConnectionMap = ({
           {({ geographies: geos }) =>
             geos.map(geo => {
               const isConnectionCountry = [to, from].includes(
-                getCountryCodeByName(geo.properties.name, countries)
+                getCountryCodeByName(geo.properties.name, countries),
               );
               return (
                 <Geography
