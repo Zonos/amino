@@ -17,7 +17,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   flex-direction: row;
   align-items: center;
   height: 32px;
-  padding: 0 ${theme.space8};
+  padding: ${theme.space4} ${theme.space8} ${theme.space4} 6px;
   color: ${theme.gray800};
   font-weight: 500;
   border-radius: ${theme.radius6};
@@ -75,8 +75,8 @@ const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
     `}
 `;
 const StyledGroupItemWrapper = styled(Collapse)`
-  padding-left: ${theme.space20};
-  margin-left: ${theme.space20};
+  padding-left: 18px;
+  margin-left: 15px;
   border-left: 1px solid ${theme.gray200};
 `;
 
