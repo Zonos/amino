@@ -93,7 +93,8 @@ const bundlePackage = async (
   } catch (err) {
     bundle?.close();
     console.error('Error bundling:', err); // eslint-disable-line no-console
-    return [];
+    // stop the process if there is an error
+    throw new Error('Error bundling');
   }
 };
 

@@ -1,17 +1,17 @@
-/**
-  @source "node_modules/graphiql/graphiql.css'"
- */
-
 /*!********************************************************************************************!*\
-  !*** START - css ../../../node_modules/css-loader/dist/cjs.js!../../graphiql-react/dist/style.css ***!
+  !*** css ../../../node_modules/css-loader/dist/cjs.js!../../graphiql-react/dist/style.css ***!
   \********************************************************************************************/
 .graphiql-container * {
   box-sizing: border-box;
+  font-variant-ligatures: none;
 }
 .graphiql-container,
 .CodeMirror-info,
 .CodeMirror-lint-tooltip,
-reach-portal {
+.graphiql-dialog,
+.graphiql-dialog-overlay,
+.graphiql-tooltip,
+[data-radix-popper-content-wrapper] {
   --color-primary: 320, 95%, 43%;
   --color-secondary: 242, 51%, 61%;
   --color-tertiary: 188, 100%, 36%;
@@ -62,7 +62,10 @@ reach-portal {
   body:not(.graphiql-light) .graphiql-container,
   body:not(.graphiql-light) .CodeMirror-info,
   body:not(.graphiql-light) .CodeMirror-lint-tooltip,
-  body:not(.graphiql-light) reach-portal {
+  body:not(.graphiql-light) .graphiql-dialog,
+  body:not(.graphiql-light) .graphiql-dialog-overlay,
+  body:not(.graphiql-light) .graphiql-tooltip,
+  body:not(.graphiql-light) [data-radix-popper-content-wrapper] {
     --color-primary: 338, 100%, 67%;
     --color-secondary: 243, 100%, 77%;
     --color-tertiary: 188, 100%, 44%;
@@ -79,7 +82,10 @@ reach-portal {
 body.graphiql-dark .graphiql-container,
 body.graphiql-dark .CodeMirror-info,
 body.graphiql-dark .CodeMirror-lint-tooltip,
-body.graphiql-dark reach-portal {
+body.graphiql-dark .graphiql-dialog,
+body.graphiql-dark .graphiql-dialog-overlay,
+body.graphiql-dark .graphiql-tooltip,
+body.graphiql-dark [data-radix-popper-content-wrapper] {
   --color-primary: 338, 100%, 67%;
   --color-secondary: 243, 100%, 77%;
   --color-tertiary: 188, 100%, 44%;
@@ -92,60 +98,44 @@ body.graphiql-dark reach-portal {
   --popover-box-shadow: none;
   --popover-border: 1px solid hsl(var(--color-neutral));
 }
-:is(
-    .graphiql-container,
-    .CodeMirror-info,
-    .CodeMirror-lint-tooltip,
-    reach-portal
-  ),
-:is(
-    .graphiql-container,
-    .CodeMirror-info,
-    .CodeMirror-lint-tooltip,
-    reach-portal
-  ):is(button) {
+.graphiql-container,
+.CodeMirror-info,
+.CodeMirror-lint-tooltip,
+.graphiql-dialog,
+.graphiql-container:is(button),
+.CodeMirror-info:is(button),
+.CodeMirror-lint-tooltip:is(button),
+.graphiql-dialog:is(button) {
   color: hsla(var(--color-neutral), 1);
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   font-weight: var(----font-weight-regular);
   line-height: var(--line-height);
 }
-:is(
-    .graphiql-container,
-    .CodeMirror-info,
-    .CodeMirror-lint-tooltip,
-    reach-portal
-  )
-  input {
+.graphiql-container input,
+.CodeMirror-info input,
+.CodeMirror-lint-tooltip input,
+.graphiql-dialog input {
   color: hsla(var(--color-neutral), 1);
   font-family: var(--font-family);
   font-size: var(--font-size-caption);
 }
-:is(
-    .graphiql-container,
-    .CodeMirror-info,
-    .CodeMirror-lint-tooltip,
-    reach-portal
-  )
-  input::placeholder {
+.graphiql-container input::placeholder,
+.CodeMirror-info input::placeholder,
+.CodeMirror-lint-tooltip input::placeholder,
+.graphiql-dialog input::placeholder {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
 }
-:is(
-    .graphiql-container,
-    .CodeMirror-info,
-    .CodeMirror-lint-tooltip,
-    reach-portal
-  )
-  a {
+.graphiql-container a,
+.CodeMirror-info a,
+.CodeMirror-lint-tooltip a,
+.graphiql-dialog a {
   color: hsl(var(--color-primary));
 }
-:is(
-    .graphiql-container,
-    .CodeMirror-info,
-    .CodeMirror-lint-tooltip,
-    reach-portal
-  )
-  a:focus {
+.graphiql-container a:focus,
+.CodeMirror-info a:focus,
+.CodeMirror-lint-tooltip a:focus,
+.graphiql-dialog a:focus {
   outline: hsl(var(--color-primary)) auto 1px;
 }
 .graphiql-un-styled,
@@ -205,33 +195,13 @@ button.graphiql-button {
 .graphiql-button-group > * + * {
   margin-left: var(--px-8);
 }
-:root {
-  --reach-dialog: 1;
-}
-[data-reach-dialog-overlay] {
-  background: hsla(0, 0%, 0%, 0.33);
+.graphiql-dialog-overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-}
-[data-reach-dialog-content] {
-  width: 50vw;
-  margin: 10vh auto;
-  background: white;
-  padding: 2rem;
-  outline: none;
-}
-[data-reach-dialog-overlay] {
-  align-items: center;
+  inset: 0;
   background-color: hsla(var(--color-neutral), var(--alpha-background-heavy));
-  display: flex;
-  justify-content: center;
   z-index: 10;
 }
-[data-reach-dialog-content] {
+.graphiql-dialog {
   background-color: hsl(var(--color-base));
   border: var(--popover-border);
   border-radius: var(--border-radius-12);
@@ -242,6 +212,11 @@ button.graphiql-button {
   overflow: auto;
   padding: 0;
   width: unset;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  z-index: 10;
 }
 .graphiql-dialog-close > svg {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
@@ -250,146 +225,7 @@ button.graphiql-button {
   padding: var(--px-12);
   width: var(--px-12);
 }
-:root {
-  --reach-listbox: 1;
-}
-[data-reach-listbox-popover] {
-  display: block;
-  position: absolute;
-  min-width: -moz-fit-content;
-  min-width: -webkit-min-content;
-  min-width: min-content;
-  padding: 0.25rem 0;
-  background: hsl(0, 0%, 100%);
-  outline: none;
-  border: solid 1px hsla(0, 0%, 0%, 0.25);
-}
-[data-reach-listbox-popover]:focus-within {
-  box-shadow: 0 0 4px Highlight;
-  outline: -webkit-focus-ring-color auto 4px;
-}
-[data-reach-listbox-popover][hidden] {
-  display: none;
-}
-[data-reach-listbox-list] {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-[data-reach-listbox-list]:focus {
-  box-shadow: none;
-  outline: none;
-}
-[data-reach-listbox-option] {
-  display: block;
-  margin: 0;
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
-  user-select: none;
-}
-[data-reach-listbox-option][data-current-nav] {
-  background: hsl(211, 81%, 46%);
-  color: #fff;
-}
-[data-reach-listbox-option][data-current-selected] {
-  font-weight: bolder;
-}
-[data-reach-listbox-option][data-current-selected][data-confirming] {
-  animation: flash 0.1s;
-  animation-iteration-count: 1;
-}
-[data-reach-listbox-option][aria-disabled='true'] {
-  opacity: 0.5;
-}
-[data-reach-listbox-button] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1px 10px 2px;
-  border: 1px solid;
-  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
-  cursor: default;
-  user-select: none;
-}
-[data-reach-listbox-button][aria-disabled='true'] {
-  opacity: 0.5;
-}
-[data-reach-listbox-arrow] {
-  margin-left: 0.5rem;
-  display: block;
-  font-size: 0.5em;
-}
-[data-reach-listbox-group-label] {
-  display: block;
-  margin: 0;
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
-  user-select: none;
-  font-weight: bolder;
-}
-@keyframes flash {
-  0% {
-    background: hsla(211, 81%, 36%, 1);
-    color: #fff;
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-    background: inherit;
-    color: inherit;
-  }
-  to {
-    background: hsla(211, 81%, 36%, 1);
-    color: #fff;
-    opacity: 1;
-  }
-}
-:root {
-  --reach-menu-button: 1;
-}
-[data-reach-menu] {
-  position: relative;
-}
-[data-reach-menu-popover] {
-  display: block;
-  position: absolute;
-}
-[data-reach-menu-popover][hidden] {
-  display: none;
-}
-[data-reach-menu-list],
-[data-reach-menu-items] {
-  display: block;
-  white-space: nowrap;
-  border: solid 1px hsla(0, 0%, 0%, 0.25);
-  background: hsla(0, 100%, 100%, 0.99);
-  outline: none;
-  padding: 1rem 0;
-  font-size: 85%;
-}
-[data-reach-menu-item] {
-  display: block;
-  user-select: none;
-}
-[data-reach-menu-item] {
-  cursor: pointer;
-  display: block;
-  color: inherit;
-  font: inherit;
-  text-decoration: initial;
-  padding: 5px 20px;
-}
-[data-reach-menu-item][data-selected] {
-  background: hsl(211, 81%, 36%);
-  color: #fff;
-  outline: none;
-}
-[data-reach-menu-item][aria-disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-[data-reach-listbox-popover],
-[data-reach-menu-list] {
+.graphiql-dropdown-content {
   background-color: hsl(var(--color-base));
   border: var(--popover-border);
   border-radius: var(--border-radius-8);
@@ -397,9 +233,15 @@ button.graphiql-button {
   font-size: inherit;
   max-width: 250px;
   padding: var(--px-4);
+  font-family: var(--font-family);
+  color: hsl(var(--color-neutral));
+  max-height: min(
+    calc(var(--radix-dropdown-menu-content-available-height) - 10px),
+    400px
+  );
+  overflow-y: scroll;
 }
-[data-reach-listbox-option],
-[data-reach-menu-item] {
+.graphiql-dropdown-item {
   border-radius: var(--border-radius-4);
   font-size: inherit;
   margin: var(--px-4);
@@ -407,24 +249,18 @@ button.graphiql-button {
   padding: var(--px-6) var(--px-8);
   text-overflow: ellipsis;
   white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  line-height: var(--line-height);
 }
-[data-reach-listbox-option][data-selected],
-[data-reach-menu-item][data-selected],
-[data-reach-listbox-option][data-current-nav],
-[data-reach-menu-item][data-current-nav],
-[data-reach-listbox-option]:hover,
-[data-reach-menu-item]:hover {
+.graphiql-dropdown-item[data-selected],
+.graphiql-dropdown-item[data-current-nav],
+.graphiql-dropdown-item:hover {
   background-color: hsla(var(--color-neutral), var(--alpha-background-light));
   color: inherit;
 }
-[data-reach-listbox-option]:not(:first-child),
-[data-reach-menu-item]:not(:first-child) {
+.graphiql-dropdown-item:not(:first-child) {
   margin-top: 0;
-}
-[data-reach-listbox-button] {
-  border: none;
-  cursor: pointer;
-  padding: 0;
 }
 :is(
     .graphiql-markdown-description,
@@ -708,22 +544,7 @@ button.graphiql-button {
     transform: rotate(360deg);
   }
 }
-:root {
-  --reach-tooltip: 1;
-}
-[data-reach-tooltip] {
-  z-index: 1;
-  pointer-events: none;
-  position: absolute;
-  padding: 0.25em 0.5em;
-  box-shadow: 2px 2px 10px #0000001a;
-  white-space: nowrap;
-  font-size: 85%;
-  background: #f0f0f0;
-  color: #444;
-  border: solid 1px #ccc;
-}
-[data-reach-tooltip] {
+.graphiql-tooltip {
   background: hsl(var(--color-base));
   border: var(--popover-border);
   border-radius: var(--border-radius-4);
@@ -731,9 +552,11 @@ button.graphiql-button {
   color: hsl(var(--color-neutral));
   font-size: inherit;
   padding: var(--px-4) var(--px-6);
+  font-family: var(--font-family);
 }
 .graphiql-tabs {
   display: flex;
+  align-items: center;
   overflow-x: auto;
   padding: var(--px-12);
 }
@@ -773,6 +596,13 @@ button.graphiql-tab-close > svg {
 .graphiql-history-header {
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-medium);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.graphiql-history-header button {
+  font-size: var(--font-size-inline-code);
+  padding: var(--px-6) var(--px-10);
 }
 .graphiql-history-items {
   margin: var(--px-16) 0 0;
@@ -911,51 +741,18 @@ a.graphiql-doc-explorer-type-name:focus {
 .graphiql-doc-explorer-root-type {
   color: hsl(var(--color-info));
 }
-:root {
-  --reach-combobox: 1;
-}
-[data-reach-combobox-popover] {
-  border: solid 1px hsla(0, 0%, 0%, 0.25);
-  background: hsla(0, 100%, 100%, 0.99);
-  font-size: 85%;
-}
-[data-reach-combobox-list] {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  user-select: none;
-}
-[data-reach-combobox-option] {
-  cursor: pointer;
-  margin: 0;
-  padding: 0.25rem 0.5rem;
-}
-[data-reach-combobox-option][aria-selected='true'] {
-  background: hsl(211, 10%, 95%);
-}
-[data-reach-combobox-option]:hover {
-  background: hsl(211, 10%, 92%);
-}
-[data-reach-combobox-option][aria-selected='true']:hover {
-  background: hsl(211, 10%, 90%);
-}
-[data-suggested-value] {
-  font-weight: 700;
-}
-[data-reach-combobox] {
+.graphiql-doc-explorer-search {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
 }
-[data-reach-combobox]:not([data-state='idle']) {
+.graphiql-doc-explorer-search:not([data-state='idle']) {
   border: var(--popover-border);
   border-radius: var(--border-radius-4);
   box-shadow: var(--popover-box-shadow);
   color: hsla(var(--color-neutral), 1);
 }
-[data-reach-combobox]:not([data-state='idle'])
+.graphiql-doc-explorer-search:not([data-state='idle'])
   .graphiql-doc-explorer-search-input {
   background: hsl(var(--color-base));
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 .graphiql-doc-explorer-search-input {
   align-items: center;
@@ -964,16 +761,16 @@ a.graphiql-doc-explorer-type-name:focus {
   display: flex;
   padding: var(--px-8) var(--px-12);
 }
-[data-reach-combobox-input] {
+.graphiql-doc-explorer-search [role='combobox'] {
   border: none;
   background-color: transparent;
   margin-left: var(--px-4);
   width: 100%;
 }
-[data-reach-combobox-input]:focus {
+.graphiql-doc-explorer-search [role='combobox']:focus {
   outline: none;
 }
-[data-reach-combobox-popover] {
+.graphiql-doc-explorer-search [role='listbox'] {
   background-color: hsl(var(--color-base));
   border: none;
   border-bottom-left-radius: var(--border-radius-4);
@@ -982,30 +779,32 @@ a.graphiql-doc-explorer-type-name:focus {
     hsla(var(--color-neutral), var(--alpha-background-heavy));
   max-height: 400px;
   overflow-y: auto;
-  position: relative;
-}
-[data-reach-combobox-list] {
+  margin: 0;
   font-size: var(--font-size-body);
   padding: var(--px-4);
+  position: relative;
 }
-[data-reach-combobox-option] {
+.graphiql-doc-explorer-search [role='option'] {
   border-radius: var(--border-radius-4);
   color: hsla(var(--color-neutral), var(--alpha-secondary));
   overflow-x: hidden;
   padding: var(--px-8) var(--px-12);
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 }
-[data-reach-combobox-option][data-highlighted] {
+.graphiql-doc-explorer-search [role='option'][data-headlessui-state='active'] {
   background-color: hsla(var(--color-neutral), var(--alpha-background-light));
 }
-[data-reach-combobox-option]:hover {
+.graphiql-doc-explorer-search [role='option']:hover {
   background-color: hsla(var(--color-neutral), var(--alpha-background-medium));
 }
-[data-reach-combobox-option][data-highlighted]:hover {
+.graphiql-doc-explorer-search
+  [role='option'][data-headlessui-state='active']:hover {
   background-color: hsla(var(--color-neutral), var(--alpha-background-heavy));
 }
-[data-reach-combobox-option] + [data-reach-combobox-option] {
+:is(.graphiql-doc-explorer-search [role='option'])
+  + :is(.graphiql-doc-explorer-search [role='option']) {
   margin-top: var(--px-4);
 }
 .graphiql-doc-explorer-search-type {
@@ -1065,7 +864,6 @@ a.graphiql-doc-explorer-field-name:focus {
   min-width: 0;
 }
 .graphiql-doc-explorer-search {
-  height: 100%;
   position: absolute;
   right: 0;
   top: 0;
@@ -1073,11 +871,11 @@ a.graphiql-doc-explorer-field-name:focus {
 .graphiql-doc-explorer-search:focus-within {
   left: 0;
 }
-.graphiql-doc-explorer-search [data-reach-combobox-input] {
+.graphiql-doc-explorer-search [role='combobox'] {
   height: 24px;
   width: 4ch;
 }
-.graphiql-doc-explorer-search [data-reach-combobox-input]:focus {
+.graphiql-doc-explorer-search [role='combobox']:focus {
   width: 100%;
 }
 a.graphiql-doc-explorer-back {
@@ -1516,23 +1314,23 @@ div.CodeMirror-dragcursors,
 span.CodeMirror-selectedtext {
   background: none;
 }
-.CodeMirror {
+.graphiql-container .CodeMirror {
   height: 100%;
   position: absolute;
   width: 100%;
 }
-.CodeMirror {
+.graphiql-container .CodeMirror {
   font-family: var(--font-family-mono);
 }
-.CodeMirror,
-.CodeMirror-gutters {
+.graphiql-container .CodeMirror,
+.graphiql-container .CodeMirror-gutters {
   background: none;
   background-color: var(--editor-background, hsl(var(--color-base)));
 }
-.CodeMirror-linenumber {
+.graphiql-container .CodeMirror-linenumber {
   padding: 0;
 }
-.CodeMirror-gutters {
+.graphiql-container .CodeMirror-gutters {
   border: none;
 }
 .cm-s-graphiql {
@@ -1590,15 +1388,15 @@ span.CodeMirror-selectedtext {
 .cm-s-graphiql .CodeMirror-linenumber {
   color: hsla(var(--color-neutral), var(--alpha-tertiary));
 }
-div.CodeMirror span.CodeMirror-matchingbracket,
-div.CodeMirror span.CodeMirror-nonmatchingbracket {
+.graphiql-container div.CodeMirror span.CodeMirror-matchingbracket,
+.graphiql-container div.CodeMirror span.CodeMirror-nonmatchingbracket {
   color: hsl(var(--color-warning));
 }
-.CodeMirror-selected,
-.CodeMirror-focused .CodeMirror-selected {
+.graphiql-container .CodeMirror-selected,
+.graphiql-container .CodeMirror-focused .CodeMirror-selected {
   background: hsla(var(--color-neutral), var(--alpha-background-heavy));
 }
-.CodeMirror-dialog {
+.graphiql-container .CodeMirror-dialog {
   background: inherit;
   color: inherit;
   left: 0;
@@ -1608,37 +1406,40 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   position: absolute;
   z-index: 6;
 }
-.CodeMirror-dialog-top {
+.graphiql-container .CodeMirror-dialog-top {
   border-bottom: 1px solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));
   padding-bottom: var(--px-12);
   top: 0;
 }
-.CodeMirror-dialog-bottom {
+.graphiql-container .CodeMirror-dialog-bottom {
   border-top: 1px solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));
   bottom: 0;
   padding-top: var(--px-12);
 }
-.CodeMirror-search-hint {
+.graphiql-container .CodeMirror-search-hint {
   display: none;
 }
-.CodeMirror-dialog input {
+.graphiql-container .CodeMirror-dialog input {
   border: 1px solid hsla(var(--color-neutral), var(--alpha-background-heavy));
   border-radius: var(--border-radius-4);
   padding: var(--px-4);
 }
-.CodeMirror-dialog input:focus {
+.graphiql-container .CodeMirror-dialog input:focus {
   outline: hsl(var(--color-primary)) solid 2px;
 }
-.cm-searching {
+.graphiql-container .cm-searching {
   background-color: hsla(var(--color-warning), var(--alpha-background-light));
   padding-bottom: 1.5px;
   padding-top: 0.5px;
 }
 .CodeMirror-foldmarker {
   color: #00f;
-  text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px,
+  text-shadow:
+    #b9f 1px 1px 2px,
+    #b9f -1px -1px 2px,
+    #b9f 1px -1px 2px,
     #b9f -1px 1px 2px;
   font-family: arial;
   line-height: 0.3;
@@ -1652,10 +1453,10 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {
-  content: '\25be';
+  content: '▾';
 }
 .CodeMirror-foldgutter-folded:after {
-  content: '\25b8';
+  content: '▸';
 }
 .CodeMirror-foldgutter {
   width: var(--px-12);
@@ -2039,16 +1840,15 @@ button.graphiql-execute-button > svg {
   margin: auto;
   width: var(--px-16);
 }
-.graphiql-toolbar-listbox,
 button.graphiql-toolbar-menu {
   display: block;
   height: var(--toolbar-width);
   width: var(--toolbar-width);
 }
-/*!********************************************************************************************!*\
-  !*** END - css ../../../node_modules/css-loader/dist/cjs.js!../../graphiql-react/dist/style.css ***!
-  \********************************************************************************************/
 
+/*!*********************************************************************************************************************!*\
+  !*** css ../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js!./style.css ***!
+  \*********************************************************************************************************************/
 /* Everything */
 .graphiql-container {
   background-color: hsl(var(--color-base));
@@ -2058,7 +1858,6 @@ button.graphiql-toolbar-menu {
   overflow: hidden;
   width: 100%;
 }
-
 /* The sidebar */
 .graphiql-container .graphiql-sidebar {
   display: flex;
@@ -2067,13 +1866,11 @@ button.graphiql-toolbar-menu {
   padding: var(--px-8);
   width: var(--sidebar-width);
 }
-
 .graphiql-container .graphiql-sidebar .graphiql-sidebar-section {
   display: flex;
   flex-direction: column;
   gap: var(--px-8);
 }
-
 .graphiql-container .graphiql-sidebar button {
   display: flex;
   align-items: center;
@@ -2082,7 +1879,6 @@ button.graphiql-toolbar-menu {
   height: calc(var(--sidebar-width) - (2 * var(--px-8)));
   width: calc(var(--sidebar-width) - (2 * var(--px-8)));
 }
-
 .graphiql-container .graphiql-sidebar button.active {
   color: hsla(var(--color-neutral), 1);
 }
@@ -2093,14 +1889,12 @@ button.graphiql-toolbar-menu {
   height: var(--px-20);
   width: var(--px-20);
 }
-
 /* The main content, i.e. everything except the sidebar */
 .graphiql-container .graphiql-main {
   display: flex;
   flex: 1;
   min-width: 0;
 }
-
 /* The current session and tabs */
 .graphiql-container .graphiql-sessions {
   background-color: hsla(var(--color-neutral), var(--alpha-background-light));
@@ -2114,7 +1908,6 @@ button.graphiql-toolbar-menu {
   margin-left: 0;
   min-width: 0;
 }
-
 /* The session header containing tabs and the logo */
 .graphiql-container .graphiql-session-header {
   align-items: center;
@@ -2122,11 +1915,10 @@ button.graphiql-toolbar-menu {
   justify-content: space-between;
   height: var(--session-header-height);
 }
-
 /* The button to add a new tab */
 button.graphiql-tab-add {
   height: 100%;
-  padding: 0 var(--px-4);
+  padding: var(--px-4);
 }
 button.graphiql-tab-add > svg {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
@@ -2134,16 +1926,11 @@ button.graphiql-tab-add > svg {
   height: var(--px-16);
   width: var(--px-16);
 }
-.graphiql-add-tab-wrapper {
-  padding: var(--px-12) 0;
-}
-
 /* The right-hand-side of the session header */
 .graphiql-container .graphiql-session-header-right {
-  align-items: stretch;
+  align-items: center;
   display: flex;
 }
-
 /* The GraphiQL logo */
 .graphiql-container .graphiql-logo {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
@@ -2151,20 +1938,17 @@ button.graphiql-tab-add > svg {
   font-weight: var(--font-weight-medium);
   padding: var(--px-12) var(--px-16);
 }
-
 /* Undo default link styling for the default GraphiQL logo link */
 .graphiql-container .graphiql-logo .graphiql-logo-link {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
   text-decoration: none;
 }
-
 /* The editor of the session */
 .graphiql-container .graphiql-session {
   display: flex;
   flex: 1;
   padding: 0 var(--px-8) var(--px-8);
 }
-
 /* All editors (query, variable, headers) */
 .graphiql-container .graphiql-editors {
   background-color: hsl(var(--color-base));
@@ -2177,31 +1961,22 @@ button.graphiql-tab-add > svg {
 .graphiql-container .graphiql-editors.full-height {
   margin-top: calc(var(--px-8) - var(--session-header-height));
 }
-
 /* The query editor and the toolbar */
 .graphiql-container .graphiql-query-editor {
   border-bottom: 1px solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));
-  display: flex;
-  flex: 1;
   padding: var(--px-16);
-}
-
-/* The query editor */
-.graphiql-container .graphiql-query-editor-wrapper {
+  column-gap: var(--px-16);
   display: flex;
-  flex: 1;
+  width: 100%;
 }
-
 /* The vertical toolbar next to the query editor */
 .graphiql-container .graphiql-toolbar {
-  margin-left: var(--px-16);
   width: var(--toolbar-width);
 }
 .graphiql-container .graphiql-toolbar > * + * {
   margin-top: var(--px-8);
 }
-
 /* The toolbar icons */
 .graphiql-toolbar-icon {
   color: hsla(var(--color-neutral), var(--alpha-tertiary));
@@ -2209,13 +1984,12 @@ button.graphiql-tab-add > svg {
   height: calc(var(--toolbar-width) - (var(--px-8) * 2));
   width: calc(var(--toolbar-width) - (var(--px-8) * 2));
 }
-
 /* The tab bar for editor tools */
 .graphiql-container .graphiql-editor-tools {
-  align-items: center;
   cursor: row-resize;
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  column-gap: var(--px-8);
   padding: var(--px-8);
 }
 .graphiql-container .graphiql-editor-tools button {
@@ -2224,58 +1998,48 @@ button.graphiql-tab-add > svg {
 .graphiql-container .graphiql-editor-tools button.active {
   color: hsla(var(--color-neutral), 1);
 }
-
 /* The tab buttons to switch between editor tools */
-.graphiql-container .graphiql-editor-tools-tabs {
-  cursor: auto;
-  display: flex;
-}
-.graphiql-container .graphiql-editor-tools-tabs > button {
+.graphiql-container
+  .graphiql-editor-tools
+  > button:not(.graphiql-toggle-editor-tools) {
   padding: var(--px-8) var(--px-12);
 }
-.graphiql-container .graphiql-editor-tools-tabs > button + button {
-  margin-left: var(--px-8);
+.graphiql-container .graphiql-editor-tools .graphiql-toggle-editor-tools {
+  margin-left: auto;
 }
-
 /* An editor tool, e.g. variable or header editor */
 .graphiql-container .graphiql-editor-tool {
   flex: 1;
   padding: var(--px-16);
 }
-
 /**
-* The way CodeMirror editors are styled they overflow their containing
-* element. For some OS-browser-combinations this might cause overlap issues,
-* setting the position of this to `relative` makes sure this element will
-* always be on top of any editors.
-*/
+   * The way CodeMirror editors are styled they overflow their containing
+   * element. For some OS-browser-combinations this might cause overlap issues,
+   * setting the position of this to `relative` makes sure this element will
+   * always be on top of any editors.
+   */
 .graphiql-container .graphiql-toolbar,
 .graphiql-container .graphiql-editor-tools,
 .graphiql-container .graphiql-editor-tool {
   position: relative;
 }
-
 /* The response view */
 .graphiql-container .graphiql-response {
   --editor-background: transparent;
   display: flex;
-  flex: 1;
+  width: 100%;
   flex-direction: column;
-  position: relative;
 }
-
 /* The results editor wrapping container */
 .graphiql-container .graphiql-response .result-window {
   position: relative;
   flex: 1;
 }
-
 /* The footer below the response view */
 .graphiql-container .graphiql-footer {
   border-top: 1px solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));
 }
-
 /* The plugin container */
 .graphiql-container .graphiql-plugin {
   border-left: 1px solid
@@ -2284,13 +2048,12 @@ button.graphiql-tab-add > svg {
   overflow-y: auto;
   padding: var(--px-16);
 }
-
 /* Generic drag bar for horizontal resizing */
-.graphiql-container .graphiql-horizontal-drag-bar {
+.graphiql-horizontal-drag-bar {
   width: var(--px-12);
   cursor: col-resize;
 }
-.graphiql-container .graphiql-horizontal-drag-bar:hover::after {
+.graphiql-horizontal-drag-bar:hover::after {
   border: var(--px-2) solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));
   border-radius: var(--border-radius-2);
@@ -2303,7 +2066,6 @@ button.graphiql-tab-add > svg {
   top: 37.5%;
   width: 0;
 }
-
 .graphiql-container .graphiql-chevron-icon {
   color: hsla(var(--color-neutral), var(--alpha-tertiary));
   display: block;
@@ -2311,7 +2073,6 @@ button.graphiql-tab-add > svg {
   margin: var(--px-12);
   width: var(--px-12);
 }
-
 /* Generic spin animation */
 .graphiql-spin {
   animation: spin 0.8s linear 0s infinite;
@@ -2324,23 +2085,21 @@ button.graphiql-tab-add > svg {
     transform: rotate(360deg);
   }
 }
-
 /* The header of the settings dialog */
-reach-portal .graphiql-dialog-header {
+.graphiql-dialog .graphiql-dialog-header {
   align-items: center;
   display: flex;
   justify-content: space-between;
   padding: var(--px-24);
 }
-
 /* The title of the settings dialog */
-reach-portal .graphiql-dialog-title {
+.graphiql-dialog .graphiql-dialog-title {
   font-size: var(--font-size-h3);
   font-weight: var(--font-weight-medium);
+  margin: 0;
 }
-
 /* A section inside the settings dialog */
-reach-portal .graphiql-dialog-section {
+.graphiql-dialog .graphiql-dialog-section {
   align-items: center;
   border-top: 1px solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));
@@ -2348,42 +2107,36 @@ reach-portal .graphiql-dialog-section {
   justify-content: space-between;
   padding: var(--px-24);
 }
-reach-portal .graphiql-dialog-section > :not(:first-child) {
+.graphiql-dialog .graphiql-dialog-section > :not(:first-child) {
   margin-left: var(--px-24);
 }
-
 /* The section title in the settings dialog */
-reach-portal .graphiql-dialog-section-title {
+.graphiql-dialog .graphiql-dialog-section-title {
   font-size: var(--font-size-h4);
   font-weight: var(--font-weight-medium);
 }
-
 /* The section caption in the settings dialog */
-reach-portal .graphiql-dialog-section-caption {
+.graphiql-dialog .graphiql-dialog-section-caption {
   color: hsla(var(--color-neutral), var(--alpha-secondary));
 }
-
-reach-portal .graphiql-warning-text {
+.graphiql-dialog .graphiql-warning-text {
   color: hsl(var(--color-warning));
   font-weight: var(--font-weight-medium);
 }
-
-reach-portal .graphiql-table {
+.graphiql-dialog .graphiql-table {
   border-collapse: collapse;
   width: 100%;
 }
-reach-portal .graphiql-table :is(th, td) {
+.graphiql-dialog .graphiql-table :is(th, td) {
   border: 1px solid hsla(var(--color-neutral), var(--alpha-background-heavy));
   padding: var(--px-8) var(--px-12);
 }
-
 /* A single key the short-key dialog */
-reach-portal .graphiql-key {
+.graphiql-dialog .graphiql-key {
   background-color: hsla(var(--color-neutral), var(--alpha-background-medium));
   border-radius: var(--border-radius-4);
   padding: var(--px-4);
 }
-
 /* Avoid showing native tooltips for icons with titles */
 .graphiql-container svg {
   pointer-events: none;

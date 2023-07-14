@@ -99,7 +99,7 @@ export type NavigationGroupProps = {
    */
   collapsed?: boolean;
   /** **NOTE**: Should be `NavigationItem` component in order to have proper styling. If you want to use `href`, WRAP the `anchor` tag outside of the `NavigationItem` component. */
-  content: ReactElement<NavigationItemProps> | HTMLAnchorElement;
+  content: ReactElement<NavigationItemProps> | ReactElement<HTMLAnchorElement>;
 };
 
 export const NavigationItem = ({

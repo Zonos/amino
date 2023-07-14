@@ -29,6 +29,8 @@ const config: StorybookConfig = {
           ...config.resolve?.alias,
           src: path.resolve(__dirname, '../src'),
           'story-utils': path.resolve(__dirname, './utils'),
+          // to test the bundled version in stories
+          dist: path.resolve(__dirname, '../dist'),
         },
       },
     };

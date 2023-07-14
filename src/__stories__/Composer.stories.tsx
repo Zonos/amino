@@ -48,7 +48,7 @@ const getInputOptions = ({
   withValue,
 }: {
   withValue: boolean;
-}): { label: `input-${Size}`; value: () => JSX.Element }[] => [
+}): { label: `input-${Size}`; value: () => React.JSX.Element }[] => [
   {
     label: 'input-sm',
     value: () => <InputOption size="sm" withValue={withValue} />,
@@ -86,7 +86,7 @@ const getSelectOptions = ({
   withValue,
 }: {
   withValue: boolean;
-}): { label: `select-${Size}`; value: () => JSX.Element }[] => [
+}): { label: `select-${Size}`; value: () => React.JSX.Element }[] => [
   {
     label: 'select-sm',
     value: () => <SelectOption size="sm" withValue={withValue} />,
@@ -112,7 +112,7 @@ const ButtonOption = ({ size }: { size: Size }) => (
 );
 const getButtonOptions = (): {
   label: `button-${Size}`;
-  value: () => JSX.Element;
+  value: () => React.JSX.Element;
 }[] => [
   {
     label: 'button-sm',

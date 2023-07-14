@@ -98,7 +98,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
 
   const renderTriggerFormater = useCallback(
     ({ column, onRowChange, row }: ColumnCell[0]) => {
-      const currentValue = row[column.key];
+      const currentValue = row[column.key] as ReactNode;
       // if the value is an array, render a button to expand the row
       if (Array.isArray(currentValue)) {
         const noItems = currentValue.length === 0;
