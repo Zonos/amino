@@ -35,7 +35,7 @@ export const getProductDetails = (
   product?: Products,
 ): {
   color: ColorPrefix;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   name: ProductNames;
 } => {
   switch (product) {
