@@ -1,6 +1,10 @@
 import { type ReactNode, useEffect, useState } from 'react';
 
-import { type ExecutionContextType, ToolbarButton } from '@graphiql/react';
+import {
+  type ExecutionContextType,
+  ToolbarButton,
+  Tooltip,
+} from '@graphiql/react';
 import type { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 import { GraphiQL } from 'graphiql';
 import { type GraphQLSchema } from 'graphql';
@@ -137,10 +141,7 @@ export const GraphMatrix = ({
     }
   }, [onResultData, resultData]);
 
-  const graphMatrixPlugin = useGraphiqlExplorer({
-    onEdit: onEditQuery,
-    query,
-  });
+  const graphMatrixPlugin = useGraphiqlExplorer({});
 
   // only show data if it's loading the schema
   if (!schema) {
@@ -194,7 +195,7 @@ export const GraphMatrix = ({
               storage={storage}
               toolbar={{
                 additionalContent: (
-                  <>
+                  <Tooltip.Provider>
                     <ToolbarButton
                       label={showTable ? 'Hide table' : 'Show table'}
                       onClick={() => setShowTable(!showTable)}
@@ -206,7 +207,7 @@ export const GraphMatrix = ({
                       )}
                     </ToolbarButton>
                     {customToolbar}
-                  </>
+                  </Tooltip.Provider>
                 ),
               }}
               variables={variables}
