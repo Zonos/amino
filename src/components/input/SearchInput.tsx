@@ -25,7 +25,7 @@ const StyledLabel = styled.label`
   width: ${theme.space40};
 `;
 
-const AminoInput = styled.input<{ hasText: boolean }>`
+const AminoInput = styled.input`
   padding-left: ${theme.space40};
   padding-right: ${theme.space16};
   height: 40px;
@@ -46,8 +46,8 @@ const AminoInput = styled.input<{ hasText: boolean }>`
   }
 
   /* The native X on the right of the input */
-  ::-webkit-search-cancel-button {
-    opacity: ${p => (p.hasText ? 1 : 0)} !important;
+  &:not([value=''])::-webkit-search-cancel-button {
+    opacity: 1 !important;
     cursor: pointer;
   }
 `;
@@ -99,7 +99,6 @@ export const SearchInput = ({
     <AminoInput
       autoFocus={autoFocus}
       disabled={disabled}
-      hasText={!!value}
       inputMode={inputMode}
       onChange={onChange}
       onKeyDown={onKeyDown}
