@@ -1,4 +1,4 @@
-import { type StorageProps, getStorageItem, setStorageItem } from '../storage';
+import { type StorageParams, getStorageItem, setStorageItem } from '../storage';
 import { useSwr } from './useSwr';
 
 type AminoLocalStorageKey = 'current-schema';
@@ -8,10 +8,10 @@ export type AminoStorageKey =
   | `amino:${AminoLocalStorageKey}`
   | (string & Record<never, never>);
 
-type Props<TValue extends unknown, TKey extends AminoStorageKey> = StorageProps<
-  TValue,
-  TKey
-> & {
+export type UseStorageParams<
+  TValue extends unknown,
+  TKey extends AminoStorageKey,
+> = StorageParams<TValue, TKey> & {
   defaultValue: TValue;
 };
 
@@ -25,7 +25,7 @@ export const useStorage = <
   json,
   key,
   type,
-}: Props<TValue, TKey>): Return<TValue> => {
+}: UseStorageParams<TValue, TKey>): Return<TValue> => {
   // we don't need useSwrt here since we only use swr for caching the storage value
   const { data } = useSwr<TValue | null>(
     key,

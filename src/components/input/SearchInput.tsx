@@ -44,6 +44,12 @@ const AminoInput = styled.input`
     background-color: ${theme.inputBackground};
     color: ${theme.textColor};
   }
+
+  /* The native X on the right of the input */
+  &:not([value=''])::-webkit-search-cancel-button {
+    opacity: 1 !important;
+    cursor: pointer;
+  }
 `;
 
 export type InputProps = {
