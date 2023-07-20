@@ -71,6 +71,12 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
       },
     },
+    {
+      files: ['**.test.ts'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
   ],
   rules: {
     /**
@@ -104,7 +110,6 @@ module.exports = {
     'deprecation/deprecation': 'warn',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
-    /** Typescript 4.0 changes */
     // Disable the base rule it can report incorrect errors
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],

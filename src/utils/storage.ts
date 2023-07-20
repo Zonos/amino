@@ -18,7 +18,7 @@ export type StorageParams<Value, Key extends string = string> = {
   type: StorageType;
 };
 
-type SetParams<Value> = StorageParams<Value> & {
+type SetParams<Value> = Omit<StorageParams<Value>, 'schema'> & {
   value: Value;
 };
 
@@ -56,17 +56,17 @@ export const getStorageItem = <Value extends unknown>({
   return rawValue as Value;
 };
 
-export const setStorageItem = <Value extends unknown>({
+export const setStorageItem = async <Value extends unknown>({
   json,
   key,
   type,
   value,
-}: SetParams<Value>): void => {
+}: SetParams<Value>) => {
   const storage = type === 'session' ? sessionStorage : localStorage;
 
   const setValue = json ? JSON.stringify(value) : String(value);
 
   storage.setItem(key, setValue);
 
-  mutate(key, value);
+  await mutate(key, value);
 };

@@ -100,6 +100,7 @@
     "@storybook/react": "^7.0.27",
     "@storybook/react-webpack5": "^7.0.27",
     "@storybook/theming": "^7.0.27",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/d3-geo": "^3.0.3",
     "@types/geojson": "^7946.0.10",
     "@types/glob": "^8.1.0",
