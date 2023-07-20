@@ -4,6 +4,8 @@ import { format, resolveConfig, resolveConfigFile } from 'prettier';
 import { night } from '../constants/_night';
 import { theme } from '../constants/theme';
 
+import { theme as aminoTheme } from '../../../src/styles/constants/theme';
+
 /**
  * Format css file using prettier api
  * @param content File content to format
@@ -61,7 +63,7 @@ export const generateNightThemeContent = async <
 
     /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
     .elevated {
-      --amino-hover-color: ${theme['gray-100']};
+      --amino-hover-color: ${aminoTheme.gray100};
     }
   }`;
 
