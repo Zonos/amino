@@ -7,6 +7,7 @@ import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
 import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
+import { theme } from 'src/styles/constants/theme';
 
 const DialogMeta: Meta = {
   argTypes: {
@@ -98,6 +99,37 @@ WithSubtitle.args = {
   width: 460,
 };
 WithSubtitle.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=3602%3A67909',
+  },
+};
+
+const HoverDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+
+  &:hover {
+    background-color: ${theme.hoverColor};
+  }
+`;
+
+export const WithHover = Template.bind({});
+WithHover.args = {
+  actions: (
+    <>
+      <Button intent="outline">Close</Button>
+      <Button intent="primary">Save</Button>
+    </>
+  ),
+  children: <HoverDiv>Hover me</HoverDiv>,
+  label: 'With subtitle',
+  subtitle:
+    'Choose your preferred units to be shown across the Zonos Dashboard.',
+  width: 460,
+};
+WithHover.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=3602%3A67909',

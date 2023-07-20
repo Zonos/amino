@@ -1,5 +1,6 @@
 import {
   type ChangeEventHandler,
+  type ComponentPropsWithRef,
   type KeyboardEventHandler,
   forwardRef,
 } from 'react';
@@ -56,7 +57,7 @@ const AminoInput = styled.input`
   }
 `;
 
-export type InputProps = {
+export type InputProps = Omit<ComponentPropsWithRef<'input'>, 'onChange'> & {
   autoFocus?: boolean;
 
   className?: string;

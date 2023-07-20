@@ -122,7 +122,7 @@ export const BaseDialog = ({
               <Popup
                 key="dialog"
                 animate={{ opacity: 1, scale: 1 }}
-                className={className}
+                className={[className || '', 'elevated'].join(' ')}
                 exit={{ opacity: 0, scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 noBorder={noBorder}

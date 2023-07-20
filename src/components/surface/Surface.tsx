@@ -40,29 +40,31 @@ type Props = {
 };
 
 export const Surface = ({ children, className, dense, depth }: Props) => {
+  const classes = [className || '', 'elevated'].join(' ');
+
   switch (depth) {
     case 'depth64':
       return (
-        <Depth64 className={className || ''} dense={dense}>
+        <Depth64 className={classes} dense={dense}>
           {children}
         </Depth64>
       );
     case 'depth16':
       return (
-        <Depth16 className={className || ''} dense={dense}>
+        <Depth16 className={classes} dense={dense}>
           {children}
         </Depth16>
       );
     case 'depth8':
       return (
-        <Depth8 className={className || ''} dense={dense}>
+        <Depth8 className={classes} dense={dense}>
           {children}
         </Depth8>
       );
     case 'depth4':
     default:
       return (
-        <Depth4 className={className || ''} dense={dense}>
+        <Depth4 className={classes} dense={dense}>
           {children}
         </Depth4>
       );

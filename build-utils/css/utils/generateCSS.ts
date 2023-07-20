@@ -23,9 +23,9 @@ export const formatCSS = async (content: string) => {
  * @returns formated css file
  */
 export const generateLightThemeContent = async <
-  T extends Record<string, string>
+  T extends Record<string, string>,
 >(
-  themeConstant: T
+  themeConstant: T,
 ) => {
   /** Generate file content */
   const content = Object.entries(themeConstant)
@@ -46,9 +46,9 @@ export const generateLightThemeContent = async <
  * @returns formated css file
  */
 export const generateNightThemeContent = async <
-  T extends Record<string, string>
+  T extends Record<string, string>,
 >(
-  themeConstant: T
+  themeConstant: T,
 ) => {
   /** Generate file content */
   const content = Object.entries(themeConstant)
@@ -58,6 +58,11 @@ export const generateNightThemeContent = async <
   const fullContent = `
   [data-theme='night'] {
     ${content}
+
+    /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
+    .elevated {
+      --amino-hover-color: var(--amino-gray-100);
+    }
   }`;
 
   return formatCSS(fullContent);
