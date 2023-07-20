@@ -61,7 +61,7 @@ export const generateNightThemeContent = async <
 
     /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
     .elevated {
-      --amino-hover-color: var(--amino-gray-100);
+      --amino-hover-color: ${theme['gray-100']};
     }
   }`;
 
