@@ -8,7 +8,7 @@ describe('useStorage', () => {
     localStorage.clear();
   });
 
-  test.only('should set an array of strings', async () => {
+  test('should set an array of strings', async () => {
     const { result } = renderHook(() =>
       useStorage({
         defaultValue: [],
