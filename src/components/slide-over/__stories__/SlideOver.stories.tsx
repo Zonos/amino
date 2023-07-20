@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import {
   type SlideOverProps,
   SlideOver,
 } from 'src/components/slide-over/SlideOver';
+import { theme } from 'src/styles/constants/theme';
 
 const SlideOverMeta: Meta = {
   component: SlideOver,
@@ -112,6 +114,36 @@ KitchenSinkSlideOver.args = {
   subtitle: 'With a subtitle',
 };
 KitchenSinkSlideOver.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
+  },
+};
+
+const HoverDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+
+  &:hover {
+    background-color: ${theme.hoverColor};
+  }
+`;
+
+export const WithHover = Template.bind({});
+WithHover.args = {
+  actions: (
+    <>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
+    </>
+  ),
+  children: <HoverDiv>Hover me</HoverDiv>,
+  label: 'Slideover title',
+  modal: true,
+  subtitle: 'With a subtitle',
+};
+WithHover.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',

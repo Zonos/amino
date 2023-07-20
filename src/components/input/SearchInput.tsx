@@ -1,4 +1,9 @@
-import type { ChangeEventHandler, KeyboardEventHandler } from 'react';
+import {
+  type ChangeEventHandler,
+  type ComponentPropsWithRef,
+  type KeyboardEventHandler,
+  forwardRef,
+} from 'react';
 
 import styled from 'styled-components';
 
@@ -52,7 +57,7 @@ const AminoInput = styled.input`
   }
 `;
 
-export type InputProps = {
+export type InputProps = Omit<ComponentPropsWithRef<'input'>, 'onChange'> & {
   autoFocus?: boolean;
 
   className?: string;
@@ -77,39 +82,45 @@ export type InputProps = {
   value: string | null;
 };
 
-export const SearchInput = ({
-  autoFocus,
-  className,
-  disabled,
-  inputMode,
-  onChange,
-  onKeyDown,
-  pattern,
-  placeholder,
-  readOnly,
-  required,
-  tabIndex,
-  value,
-  ...props
-}: InputProps) => (
-  <StyledWrapper className={className}>
-    <StyledLabel htmlFor={AminoInput}>
-      <SearchIcon color="gray600" size={20} />
-    </StyledLabel>
-    <AminoInput
-      autoFocus={autoFocus}
-      disabled={disabled}
-      inputMode={inputMode}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      pattern={pattern}
-      placeholder={placeholder || 'Search...'}
-      readOnly={readOnly}
-      required={required}
-      tabIndex={tabIndex}
-      type="search"
-      value={value || ''}
-      {...props}
-    />
-  </StyledWrapper>
+export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      autoFocus,
+      className,
+      disabled,
+      inputMode,
+      onChange,
+      onKeyDown,
+      pattern,
+      placeholder,
+      readOnly,
+      required,
+      tabIndex,
+      value,
+      ...props
+    },
+    ref,
+  ) => (
+    <StyledWrapper className={className}>
+      <StyledLabel htmlFor={AminoInput}>
+        <SearchIcon color="gray600" size={20} />
+      </StyledLabel>
+      <AminoInput
+        ref={ref}
+        autoFocus={autoFocus}
+        disabled={disabled}
+        inputMode={inputMode}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        pattern={pattern}
+        placeholder={placeholder || 'Search...'}
+        readOnly={readOnly}
+        required={required}
+        tabIndex={tabIndex}
+        type="search"
+        value={value || ''}
+        {...props}
+      />
+    </StyledWrapper>
+  ),
 );
