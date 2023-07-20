@@ -15,7 +15,7 @@ export type UseStorageParams<
   defaultValue: TValue;
 };
 
-type Return<T> = [value: T, setValue: (value: T) => void];
+type Return<T> = [value: T, setValue: (value: T) => Promise<void>];
 
 export const useStorage = <
   TValue extends unknown,
@@ -24,12 +24,13 @@ export const useStorage = <
   defaultValue,
   json,
   key,
+  schema,
   type,
 }: UseStorageParams<TValue, TKey>): Return<TValue> => {
   // we don't need useSwrt here since we only use swr for caching the storage value
   const { data } = useSwr<TValue | null>(
     key,
-    () => getStorageItem<TValue>({ json, key, type }) || null,
+    () => getStorageItem<TValue>({ json, key, schema, type }) || null,
   );
 
   const setValue = (value: TValue) =>
