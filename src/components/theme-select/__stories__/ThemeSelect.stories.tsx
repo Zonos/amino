@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {
   type Props,
   ThemeSelect as ThemeSelectComponent,
-} from '../ThemeSelect';
+} from 'src/components/theme-select/ThemeSelect';
 
 const ThemeSelectMeta: Meta = {
   component: ThemeSelectComponent,

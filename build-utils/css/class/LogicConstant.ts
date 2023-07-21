@@ -1,9 +1,8 @@
+import { type ConstantCustomizedComment } from 'build-utils/css/constants/logic/types/LogicConstantType';
+import { capitalize } from 'build-utils/css/utils/capitalize';
+import { formatTS } from 'build-utils/css/utils/formatTS';
 import { readFileSync, writeFileSync } from 'fs';
 import path from 'path';
-
-import { ConstantCustomizedComment } from '../constants/logic/types/LogicConstantType';
-import { capitalize } from '../utils/capitalize';
-import { formatTS } from '../utils/formatTS';
 
 type FileToParse = {
   /** @info file path to load (Need to be relative path - start from root of the project) */
@@ -11,9 +10,9 @@ type FileToParse = {
 };
 
 type ParsedFile = FileToParse & {
-  keyValueParsed: Record<string, string> | null;
   generateJsDocsFunction: ConstantCustomizedComment;
   hasJSDocsComment: boolean;
+  keyValueParsed: Record<string, string> | null;
   rootFolder: string;
 };
 
@@ -27,11 +26,11 @@ export class LogicConstant {
   constructor() {
     const rootFolder = process.cwd();
     this.#parsedFile = {
-      rootFolder,
       filePath: '',
-      keyValueParsed: null,
       generateJsDocsFunction: null,
       hasJSDocsComment: false,
+      keyValueParsed: null,
+      rootFolder,
     };
   }
 
@@ -108,7 +107,7 @@ export class LogicConstant {
   }
 
   generateConstantContent() {
-    const { keyValueParsed, generateJsDocsFunction, hasJSDocsComment } =
+    const { generateJsDocsFunction, hasJSDocsComment, keyValueParsed } =
       this.#parsedFile;
     if (keyValueParsed) {
       const contents = Object.entries(keyValueParsed).map(([key, value]) =>
@@ -120,7 +119,7 @@ export class LogicConstant {
           `'${key}': '${value}',`,
         ]
           .filter(Boolean)
-          .join('\n')
+          .join('\n'),
       );
       return contents.join('\n');
     }
@@ -140,7 +139,7 @@ export class LogicConstant {
       const formatedContent = await formatTS(fileContent);
       writeFileSync(
         `${rootFolder}/build-utils/css/constants/generated/_${fileName}.ts`,
-        formatedContent
+        formatedContent,
       );
     }
   }
@@ -162,20 +161,20 @@ export class LogicConstant {
    * - `string` when fileName is valid
    */
   static async _generateLogicConstFileContent(
-    fileName: string
+    fileName: string,
   ): Promise<string> {
     if (!this.camelCaseChecking(fileName)) {
       throw Error(
-        'File name needs to be in valid camelCase format with no extension and no underscore.'
+        'File name needs to be in valid camelCase format with no extension and no underscore.',
       );
     }
     const rootFolder = process.cwd();
     /** Read the template content */
     const templateContent = readFileSync(
       path.resolve(
-        `${rootFolder}/build-utils/css/class/template/logicConstant.tpl`
+        `${rootFolder}/build-utils/css/class/template/logicConstant.tpl`,
       ),
-      { encoding: 'utf-8' }
+      { encoding: 'utf-8' },
     );
     const newTemplateContent = templateContent
       .replace(/{{FileName}}/g, fileName)
@@ -199,7 +198,7 @@ export class LogicConstant {
     const rootFolder = process.cwd();
     writeFileSync(
       `${rootFolder}/build-utils/css/constants/logic/_${fileName}.ts`,
-      fileContent
+      fileContent,
     );
   }
 
@@ -210,7 +209,7 @@ export class LogicConstant {
    */
   static async transformImportedConstant(content: string) {
     const matchedImportLines = content.matchAll(
-      /import {\s+(\w+)\s+} from '(.+)';/gm
+      /import {\s+(\w+)\s+} from '(.+)';/gm,
     );
     const matchedArr = Array.from(matchedImportLines);
 
@@ -220,19 +219,19 @@ export class LogicConstant {
       /** Read generated file content */
       const fileContent = readFileSync(
         path.resolve(`${rootFolder}/build-utils/css/constants/${filePath}.ts`),
-        { encoding: 'utf-8' }
+        { encoding: 'utf-8' },
       );
       /** Extract only constant content */
       const matchAll = fileContent.matchAll(
-        /(?<=.+ = {\n +)((\n|.)+)(?=}.+)/gm
+        /(?<=.+ = {\n +)((\n|.)+)(?=}.+)/gm,
       );
       const matched = Array.from(matchAll);
       const result = matched
         .map(([extractedVariable]) => extractedVariable)
         .join('');
       return {
-        key: variable,
         data: result,
+        key: variable,
       };
     });
 
@@ -243,7 +242,7 @@ export class LogicConstant {
       .replace(
         /\.\.\.(\w+),/gm,
         (_g0, variable) =>
-          extractedConstants.find(item => item.key === variable)?.data || _g0
+          extractedConstants.find(item => item.key === variable)?.data || _g0,
       );
     return formatTS(result);
   }

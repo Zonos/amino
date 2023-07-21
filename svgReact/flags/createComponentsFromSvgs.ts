@@ -1,7 +1,6 @@
 import { execSync } from 'child_process';
-
-import { createIndexFile } from './createIndexFile';
-import { createReactSVGs } from './createReactSVGs';
+import { createIndexFile } from 'svgReact/flags/createIndexFile';
+import { createReactSVGs } from 'svgReact/flags/createReactSVGs';
 
 export const createComponentsFromSvgs = async () => {
   try {

@@ -1,4 +1,4 @@
-import { trim } from './trim';
+import { trim } from 'build-utils/css/utils/trim';
 
 /**
  * Extract armino key and value out of css file
@@ -7,14 +7,12 @@ import { trim } from './trim';
  */
 export const getMatchedAminoVariables = (content: string) => {
   const aminoVarMatched = content.matchAll(
-    /(\r|\n|\s)*(--amino-[a-zA-Z0-9-]+):(\s+(.|\r|\n)+?);/g
+    /(\r|\n|\s)*(--amino-[a-zA-Z0-9-]+):(\s+(.|\r|\n)+?);/g,
   );
   const matched = Array.from(aminoVarMatched);
-  const result = matched.map(([, , variable, value]) => {
-    return {
-      key: trim(variable),
-      value: trim(value),
-    };
-  });
+  const result = matched.map(([, , variable, value]) => ({
+    key: trim(variable),
+    value: trim(value),
+  }));
   return result;
 };

@@ -1,6 +1,8 @@
 export const red = {
   /** @info #FFEDEB  */
   'red-100': '#FFEDEB',
+  /** @info #49121F  */
+  'red-1000': '#49121F',
   /** @info #FDD3D0  */
   'red-200': '#FDD3D0',
   /** @info #FCB4B2  */
@@ -17,6 +19,4 @@ export const red = {
   'red-800': '#8C1D33',
   /** @info #641627  */
   'red-900': '#641627',
-  /** @info #49121F  */
-  'red-1000': '#49121F',
 } as const;

@@ -1,4 +1,4 @@
-import type { Intent } from './Intent';
+import type { Intent } from 'src/types/Intent';
 
 export type ConfirmDialogOpts = {
   confirmText: string;

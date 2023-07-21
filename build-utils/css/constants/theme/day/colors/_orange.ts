@@ -1,6 +1,8 @@
 export const orange = {
   /** @info #FFEFE0  */
   'orange-100': '#FFEFE0',
+  /** @info #441C13  */
+  'orange-1000': '#441C13',
   /** @info #FED7B8  */
   'orange-200': '#FED7B8',
   /** @info #FDC7A0  */
@@ -17,6 +19,4 @@ export const orange = {
   'orange-800': '#903A1D',
   /** @info #692C1C  */
   'orange-900': '#692C1C',
-  /** @info #441C13  */
-  'orange-1000': '#441C13',
 } as const;

@@ -1,17 +1,17 @@
-import { FileConfig } from './Config';
+import { type FileConfig } from 'svgReact/icons/types/Config';
 
 export type GenerateIconType = {
+  inputFolder: string;
   /**
    * @description test
    * */
   names: SvgList[];
-  inputFolder: string;
   outputFolder: FileConfig['inputFolderPath'];
 };
 
 export type SvgList = {
-  originalFileName: string;
+  componentName: string;
   /** New file name with extension .tsx */
   newFileName: `${string}.tsx`;
-  componentName: string;
+  originalFileName: string;
 };

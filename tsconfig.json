@@ -57,10 +57,13 @@
     }
   },
   "include": [
-    "./src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
     ".eslintrc.js",
     ".eslintrc.prod.js",
     "prettier.config.js",
-    ".storybook/utils"
+    ".storybook/utils",
+    "tsconfig.json",
+    "test-utils"
   ]
 }

@@ -1,9 +1,8 @@
 import { useMemo } from 'react';
 
+import { NestedDataTable } from 'src/components/nested-data-table/NestedDataTable';
 import { type flattenRow } from 'src/utils/flattenRow';
 import { useHasuraGqlPagination } from 'src/utils/hooks/action-pivot-table/useHasuraGqlPagination';
-
-import { NestedDataTable } from './NestedDataTable';
 
 type Props = {
   /**

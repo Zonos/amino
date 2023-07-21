@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 
+import { Currency } from 'src/components/currency/Currency';
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { Currency } from './Currency';
 
 type StyledProps = {
   isTabular: boolean;

@@ -12,8 +12,8 @@ export const optimizeSvgs = ({
     // eslint-disable-next-line no-console
     console.log(`Optimizing ${item} `);
     const optimizedSvg = optimize(readFileSync(item, { encoding: 'utf-8' }), {
-      path: item,
       multipass: true,
+      path: item,
 
       plugins: [
         {

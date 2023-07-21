@@ -4,7 +4,7 @@ import {
   type HandleFetchReturn,
   type RequestOptions,
   handleFetch,
-} from './handleFetch';
+} from 'src/utils/handleFetch';
 
 type FetcherParams = {
   operationName?: string | null;

@@ -3,11 +3,10 @@ import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types/StyledProps';
-
-import { Text } from '../text/Text';
 
 const StyledRichCheckbox = styled.button`
   position: relative;

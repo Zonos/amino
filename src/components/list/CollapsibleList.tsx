@@ -2,12 +2,11 @@ import { type ReactNode, useState } from 'react';
 
 import styled, { css } from 'styled-components';
 
+import { Collapse } from 'src/components/collapse/Collapse';
+import { type ListProps, List } from 'src/components/list/List';
+import { ListItem } from 'src/components/list-item/ListItem';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { Collapse } from '../collapse/Collapse';
-import { ListItem } from '../list-item/ListItem';
-import { type ListProps, List } from './List';
 
 const StyledCollapse = styled(Collapse)<{ $hasIcon: boolean }>`
   ${({ $hasIcon }) =>

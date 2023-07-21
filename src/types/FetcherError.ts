@@ -1,4 +1,4 @@
-import type { JsonError } from './JsonError';
+import type { JsonError } from 'src/types/JsonError';
 
 export interface FetcherError {
   errors: JsonError[];

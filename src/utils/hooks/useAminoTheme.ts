@@ -2,9 +2,8 @@ import { useEffect } from 'react';
 
 import type { Theme } from 'src/types';
 import { themeSchema } from 'src/types/Theme';
+import { useStorage } from 'src/utils/hooks/useStorage';
 import { getStorageItem } from 'src/utils/storage';
-
-import { useStorage } from './useStorage';
 
 type Params = {
   /** Whether to modify the HTML body */

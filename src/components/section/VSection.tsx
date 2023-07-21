@@ -2,12 +2,11 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
+import { SectionHeader } from 'src/components/section/_SectionHeader';
+import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
+import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
 import { theme } from 'src/styles/constants/theme';
-
-import { SectionHeader } from './_SectionHeader';
-import { SectionInnerWrapper } from './_SectionInnerWrapper';
-import { SectionSubheader } from './_SectionSubheader';
 
 const StyledSectionWrapper = styled.div`
   margin-bottom: ${theme.space40};

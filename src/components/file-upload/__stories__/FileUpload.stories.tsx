@@ -3,13 +3,12 @@ import { useContext, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import type { Page } from 'puppeteer';
 
+import { FileUpload as FileUploadComponent } from 'src/components/file-upload/FileUpload';
 import {
   ToastContext,
   ToastContextProvider,
 } from 'src/components/toast/ToastContext';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
-
-import { FileUpload as FileUploadComponent } from '../FileUpload';
 
 const FileUploadMeta: Meta = {
   component: FileUploadComponent,

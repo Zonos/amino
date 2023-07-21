@@ -1,13 +1,12 @@
 import fs from 'fs';
-
-import { getColorVariables } from './getColorVariables';
-import { GenerateIconType } from './types/TypeGenerateIcon';
+import { getColorVariables } from 'svgReact/icons/getColorVariables';
+import { type GenerateIconType } from 'svgReact/icons/types/TypeGenerateIcon';
 
 const addWrapper = (id: string) => `{\`${id}\`}`;
 
 export const createReactIconSVGs = ({
-  names,
   inputFolder,
+  names,
   outputFolder,
 }: GenerateIconType): void => {
   names.forEach(name => {
@@ -15,7 +14,7 @@ export const createReactIconSVGs = ({
       `${inputFolder}/${name.originalFileName}`,
       {
         encoding: 'utf8',
-      }
+      },
     );
     const isDuotone = name.componentName.includes('Duotone');
 
@@ -45,7 +44,7 @@ export const createReactIconSVGs = ({
 
     const svg = colorVariableContent
       .replace(/(?!\w):\w/g, attribute =>
-        attribute.replace(':', '').toUpperCase()
+        attribute.replace(':', '').toUpperCase(),
       )
       /** @desc Remove style props */
       .replace(/style="([^"]*)"/gi, '')

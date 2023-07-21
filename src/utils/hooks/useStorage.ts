@@ -1,5 +1,9 @@
-import { type StorageParams, getStorageItem, setStorageItem } from '../storage';
-import { useSwr } from './useSwr';
+import { useSwr } from 'src/utils/hooks/useSwr';
+import {
+  type StorageParams,
+  getStorageItem,
+  setStorageItem,
+} from 'src/utils/storage';
 
 type AminoLocalStorageKey = 'current-schema';
 

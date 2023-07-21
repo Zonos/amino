@@ -1,4 +1,4 @@
-import { type AvatarProps, AvatarBase } from './AvatarBase';
+import { type AvatarProps, AvatarBase } from 'src/components/avatar/AvatarBase';
 
 export type ImageAvatarProps = {
   imageUrl: string;

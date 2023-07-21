@@ -1,9 +1,9 @@
-import { night } from '../../constants/_night';
-import { theme } from '../../constants/theme';
+import { night } from 'build-utils/css/constants/_night';
+import { theme } from 'build-utils/css/constants/theme';
 import {
-  generateNightThemeContent,
   generateLightThemeContent,
-} from '../generateCSS';
+  generateNightThemeContent,
+} from 'build-utils/css/utils/generateCSS';
 
 test(`Case light theme:`, async () => {
   const result = await generateLightThemeContent(theme);

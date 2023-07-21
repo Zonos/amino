@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
+import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
-
-import { VStack } from '../stack/VStack';
-import { Text } from '../text/Text';
 
 const Wrapper = styled.div`
   display: grid;

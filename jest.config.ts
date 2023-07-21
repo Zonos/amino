@@ -1,7 +1,7 @@
 import type { JestConfigWithTsJest } from 'ts-jest/dist/types';
 
 const config: JestConfigWithTsJest = {
-  roots: ['<rootDir>'],
+  modulePathIgnorePatterns: ['dist', '__stories__', 'playwright'],
   modulePaths: [
     '<rootDir>',
     'build-utils/**/*.ts',
@@ -9,16 +9,16 @@ const config: JestConfigWithTsJest = {
     'src/**/*.tsx',
     '.storybook/**/*.ts',
   ],
-  // These modules needed to be transformed :shrug:
-  transformIgnorePatterns: ['/node_modules/(?!uuid|d3-.*|internmap)'],
-  modulePathIgnorePatterns: ['dist', '__stories__', 'playwright'],
+  roots: ['<rootDir>'],
   setupFilesAfterEnv: ['./jest/setupJest.ts'],
+  testEnvironment: 'jsdom',
   transform: {
+    '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
     '^.+\\.(js|jsx|ts|tsx)?$': ['ts-jest', { isolatedModules: true }],
     '^.+\\.svg$': 'jest-transformer-svg',
-    '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
   },
-  testEnvironment: 'jsdom',
+  // These modules needed to be transformed :shrug:
+  transformIgnorePatterns: ['/node_modules/(?!uuid|d3-.*|internmap)'],
 };
 
 export default config;

@@ -1,11 +1,13 @@
 import { execSync } from 'child_process';
 import { glob } from 'glob';
-
-import { optimizeSvgs } from '../build-utils/optimizeSvgs';
-import { SvgGenerateType, svgProcessPaths } from './config/path';
-import { createIndexFile } from './createIndexFile';
-import { createReactIconSVGs } from './createReactIconSVGs';
-import { SvgList } from './types/TypeGenerateIcon';
+import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
+import {
+  type SvgGenerateType,
+  svgProcessPaths,
+} from 'svgReact/icons/config/path';
+import { createIndexFile } from 'svgReact/icons/createIndexFile';
+import { createReactIconSVGs } from 'svgReact/icons/createReactIconSVGs';
+import { type SvgList } from 'svgReact/icons/types/TypeGenerateIcon';
 
 const log = (msg: string) => {
   // eslint-disable-next-line no-console
@@ -21,7 +23,7 @@ const pascalCased = (string: string) =>
     /** @desc Adding suffix Icon to file name */
     .replace(/\.svg/, 'Icon.svg');
 
-const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
+const generateSvgs = ({ inputFolderPath, svgFolder }: SvgGenerateType) => {
   const names: SvgList[] = glob
     .sync(`${__dirname}/${svgFolder}/**/*.svg`)
     /** @desc Filter and return only list of `${folder}/${filename}` or `${filename}` */
@@ -34,24 +36,24 @@ const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
       if (hasSubfolder) {
         const [folderName, type] = item.split('/');
         const fileName = pascalCased(
-          `${folderName}${type.replace(/(Line|Black)\.svg/, '.svg')}`
+          `${folderName}${type.replace(/(Line|Black)\.svg/, '.svg')}`,
         );
         return {
-          originalFileName: item,
+          componentName: fileName.replace('.svg', ''),
           newFileName: fileName.replace(
             '.svg',
-            '.tsx'
+            '.tsx',
           ) as SvgList['newFileName'],
-          componentName: fileName.replace('.svg', ''),
+          originalFileName: item,
         };
       }
 
       const [file] = item.split('/');
       const fileName = pascalCased(`${file}`);
       return {
-        originalFileName: item,
-        newFileName: fileName.replace('.svg', '.tsx') as SvgList['newFileName'],
         componentName: fileName.replace('.svg', ''),
+        newFileName: fileName.replace('.svg', '.tsx') as SvgList['newFileName'],
+        originalFileName: item,
       };
     })
     .filter(Boolean);
@@ -64,8 +66,8 @@ const generateSvgs = ({ svgFolder, inputFolderPath }: SvgGenerateType) => {
       log(`Generating react component for folder "${svgFolder}"`);
       /** @desc Generate svg react component */
       createReactIconSVGs({
-        names,
         inputFolder: `svgReact/icons/${svgFolder}`,
+        names,
         outputFolder: inputFolderPath,
       });
     } catch (err) {
@@ -95,7 +97,7 @@ createIndexFile({
 /** @desc Format generated svg react component and new IconIndex */
 execSync('pnpm svgs:format', { encoding: 'utf8' });
 
-svgProcessPaths.forEach(({ inputFolderPath, destFolder }) => {
+svgProcessPaths.forEach(({ destFolder, inputFolderPath }) => {
   log(`Cleaning up folder "${destFolder}" ...`);
   /** @desc Clean up all tsx/ts under icons folder (only file not folder) */
   execSync(`rm -rf ${destFolder}/*.tsx ${destFolder}/*.ts`, {

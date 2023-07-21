@@ -1,4 +1,4 @@
-import { generateSvgs } from './generateSvgs';
+import { generateSvgs } from 'svgReact/flags/generateSvgs';
 
 const run = async () => {
   await generateSvgs();

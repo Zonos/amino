@@ -13,15 +13,15 @@ export default defineConfig({
     },
   },
   test: {
+    environment: 'jsdom',
     exclude: [
       '**/node_modules/**',
       '**/__stories__/storyshots',
       '**/storyshots.test.ts',
       '**/dist',
     ],
-    include: ['**/*.test.ts'],
-    environment: 'jsdom',
     globals: true,
+    include: ['**/*.test.ts'],
     setupFiles: ['dotenv/config', 'test-utils/setup.ts'],
     snapshotFormat: {
       escapeString: false,

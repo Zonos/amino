@@ -2,13 +2,12 @@ import { type ReactNode, forwardRef } from 'react';
 
 import styled, { css } from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
+import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
-
-import { Button } from '../button/Button';
-import { BaseDialog } from './_BaseDialog';
 
 const Header = styled.div`
   padding: ${theme.space24};

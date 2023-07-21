@@ -1,4 +1,4 @@
-import { flattenRow } from '../flattenRow';
+import { flattenRow } from 'src/utils/flattenRow';
 
 test('flatten table row data', () => {
   const tableDataArr = [
