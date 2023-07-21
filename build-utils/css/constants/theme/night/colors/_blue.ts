@@ -1,8 +1,6 @@
 export const blue = {
   /** @info #1C2154  */
   'blue-100': '#1C2154',
-  /** @info #DEEDFE  */
-  'blue-1000': '#DEEDFE',
   /** @info #252E7E  */
   'blue-200': '#252E7E',
   /** @info #2C3BAF  */
@@ -19,4 +17,6 @@ export const blue = {
   'blue-800': '#AACBFC',
   /** @info #C5DDFD  */
   'blue-900': '#C5DDFD',
+  /** @info #DEEDFE  */
+  'blue-1000': '#DEEDFE',
 } as const;

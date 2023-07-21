@@ -1,8 +1,6 @@
 export const cyan = {
   /** @info #183339  */
   'cyan-100': '#183339',
-  /** @info #DBFFFE  */
-  'cyan-1000': '#DBFFFE',
   /** @info #245660  */
   'cyan-200': '#245660',
   /** @info #26707E  */
@@ -19,4 +17,6 @@ export const cyan = {
   'cyan-800': '#8FF6FA',
   /** @info #BAFDFD  */
   'cyan-900': '#BAFDFD',
+  /** @info #DBFFFE  */
+  'cyan-1000': '#DBFFFE',
 } as const;

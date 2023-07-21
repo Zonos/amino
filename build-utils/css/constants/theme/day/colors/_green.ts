@@ -1,8 +1,6 @@
 export const green = {
   /** @info #E0FFE3  */
   'green-100': '#E0FFE3',
-  /** @info #1C3626  */
-  'green-1000': '#1C3626',
   /** @info #C8FDCE  */
   'green-200': '#C8FDCE',
   /** @info #A9F9B5  */
@@ -19,4 +17,6 @@ export const green = {
   'green-800': '#266E3E',
   /** @info #245234  */
   'green-900': '#245234',
+  /** @info #1C3626  */
+  'green-1000': '#1C3626',
 } as const;

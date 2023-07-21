@@ -1,8 +1,6 @@
 export const purple = {
   /** @info #F4EEFF  */
   'purple-100': '#F4EEFF',
-  /** @info #3B1948  */
-  'purple-1000': '#3B1948',
   /** @info #E7D8FD  */
   'purple-200': '#E7D8FD',
   /** @info #DDC5FC  */
@@ -19,4 +17,6 @@ export const purple = {
   'purple-800': '#742498',
   /** @info #54206A  */
   'purple-900': '#54206A',
+  /** @info #3B1948  */
+  'purple-1000': '#3B1948',
 } as const;
