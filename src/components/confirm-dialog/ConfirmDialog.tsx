@@ -41,10 +41,6 @@ const Footer = styled.div`
   }
 `;
 
-const ConfirmationPrompt = styled.span`
-  opacity: 0.5;
-`;
-
 export type ConfirmDialogProps = {
   confirmText?: string;
   dismissText?: string;
