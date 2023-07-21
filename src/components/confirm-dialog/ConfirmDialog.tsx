@@ -7,9 +7,9 @@ import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
-import { HelpIcon } from 'src/icons/HelpIcon';
-import { WarningIcon } from 'src/icons/WarningIcon';
+import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon';
+import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
+import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Intent } from 'src/types/Intent';
 import type { Theme } from 'src/types/Theme';
@@ -41,10 +41,6 @@ const Footer = styled.div`
   }
 `;
 
-const ConfirmationPrompt = styled.span`
-  opacity: 0.5;
-`;
-
 export type ConfirmDialogProps = {
   confirmText?: string;
   dismissText?: string;
@@ -60,12 +56,16 @@ export type ConfirmDialogProps = {
 const getIconForIntent = (intent: Intent) => {
   switch (intent) {
     case 'danger':
-      return <ExclamationMarkIcon />;
+      return (
+        <ExclamationMarkDuotoneIcon color="red800" secondaryColor="red400" />
+      );
     case 'warning':
-      return <WarningIcon />;
+      return (
+        <WarningDuotoneIcon color="orange800" secondaryColor="orange400" />
+      );
     case 'info':
     default:
-      return <HelpIcon />;
+      return <HelpDuotoneIcon color="blue800" secondaryColor="blue400" />;
   }
 };
 
@@ -84,10 +84,14 @@ export const ConfirmDialog = ({
     <Content>
       <VStack spacing={16}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
-        <div>
-          <Text type="title">{label}</Text>
-          {subtitle && <ConfirmationPrompt>{subtitle}</ConfirmationPrompt>}
-        </div>
+        <VStack spacing={8}>
+          <Text type="subheader">{label}</Text>
+          {subtitle && (
+            <Text color="gray800" type="body">
+              {subtitle}
+            </Text>
+          )}
+        </VStack>
         <Footer>
           <Button intent="outline" onClick={dismissAction} size="md">
             {dismissText}
