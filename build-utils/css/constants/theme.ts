@@ -1,5 +1,6 @@
 import { spacing } from './theme/_spacing';
 import { variablesUsingColors } from './theme/_variablesUsingColors';
+import { hover } from './theme/day/_hover';
 import { shadow } from './theme/day/_shadow';
 import { blue } from './theme/day/colors/_blue';
 import { cyan } from './theme/day/colors/_cyan';
@@ -55,6 +56,9 @@ export const theme = {
 
   /* ONE OFF COLORS */
  ...oneOffColors,
+
+ /* BUTTON HOVER COLORS */
+ ...hover,
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',

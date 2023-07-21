@@ -174,13 +174,19 @@ const Template: StoryFn<ButtonProps> = props => (
 export const Default = Template.bind({});
 Default.args = {
   children: 'Example button',
-  intent: 'secondary',
+  intent: 'standard',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Example button',
   intent: 'primary',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  children: 'Example button',
+  intent: 'success',
 };
 
 export const Danger = Template.bind({});

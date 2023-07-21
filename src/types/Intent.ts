@@ -1,7 +1,7 @@
 export type Intent =
   | 'default'
   | 'primary'
-  | 'secondary'
+  | 'standard'
   | 'info'
   | 'success'
   | 'warning'

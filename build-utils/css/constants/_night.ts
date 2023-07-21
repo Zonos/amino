@@ -13,6 +13,7 @@ import { constraintDefinedAminoVar } from './utils';
 import { shadow } from './theme/night/_shadow';
 import { variablesUsingColors } from './theme/_variablesUsingColors';
 import { oneOffColors } from './theme/night/colors/_oneOffColors';
+import { hover } from './theme/night/_hover';
 
 export const night = constraintDefinedAminoVar(theme, {
   /* GLASS PALETTE */
@@ -50,4 +51,7 @@ export const night = constraintDefinedAminoVar(theme, {
 
   /* ONE OFF COLORS */
   ...oneOffColors,
+
+  /* BUTTON HOVER COLORS */
+  ...hover,
 });

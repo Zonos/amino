@@ -106,6 +106,17 @@
     inset 0px 1px 1px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.04),
     inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06),
     inset 0px 0px 8px rgba(0, 0, 0, 0.02);
+  --amino-shadow-button-primary: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(68, 94, 238, 0.4);
+  --amino-shadow-button-success: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(43, 156, 77, 0.4);
+  --amino-shadow-button-danger: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(217, 33, 65, 0.4);
+  --amino-shadow-button-warning: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(229, 89, 26, 0.4);
+  --amino-button-focus-ring: 0 0 0 2px var(--amino-blue-600);
+  --amino-shadow-button-standard: 0px 1px 3px 0px rgba(110, 110, 120, 0.12),
+    0px -2px 1px 1px rgba(0, 0, 0, 0.08) inset;
   --amino-space-negative-80: -5rem;
   --amino-space-negative-76: -4.75rem;
   --amino-space-negative-72: -4.5rem;
@@ -164,10 +175,10 @@
   --amino-primary: var(--amino-blue-600);
   --amino-primary-light: var(--amino-blue-500);
   --amino-primary-dark: var(--amino-blue-800);
-  --amino-success: var(--amino-green-300);
+  --amino-success: var(--amino-green-600);
   --amino-success-dark: var(--amino-green-700);
-  --amino-warning: var(--amino-amber-100);
-  --amino-warning-dark: var(--amino-amber-700);
+  --amino-warning: var(--amino-orange-600);
+  --amino-warning-dark: var(--amino-orange-600);
   --amino-glow-error: 0 0 0 1px var(--amino-red-600);
   --amino-glow-blue: 0 0 0 1px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-600);
@@ -182,6 +193,27 @@
   --amino-surface-color: var(--amino-gray-0);
   --amino-surface-color-secondary: var(--amino-gray-50);
   --amino-backdrop-color: var(--amino-gray-1200);
+  --amino-button-primary-hover: linear-gradient(
+    180deg,
+    #445eee 0%,
+    #364bd4 100%
+  );
+  --amino-button-success-hover: linear-gradient(
+    180deg,
+    #2b9c4d 0%,
+    #298549 100%
+  );
+  --amino-button-danger-hover: linear-gradient(
+    180deg,
+    #d92141 0%,
+    #b4223d 100%
+  );
+  --amino-button-warning-hover: linear-gradient(
+    180deg,
+    #e5591a 0%,
+    #b6471b 100%
+  );
+  --amino-button-standard-hover: linear-gradient(180deg, #fff 0%, #eaebed 100%);
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 232px;
   --amino-elevation-0: 0;
@@ -334,6 +366,19 @@
     inset 0px 2px 4px rgba(0, 0, 0, 0.24),
     inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.24),
     inset 0px 0px 8px rgba(0, 0, 0, 0.16);
+  --amino-shadow-button-primary: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 0px 0px 0.5px #000, 0px 1px 3px 0px rgba(95, 146, 246, 0.4);
+  --amino-shadow-button-success: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset, 0px 0px 0px 0.5px #000,
+    0px 1px 3px 0px rgba(86, 199, 111, 0.6);
+  --amino-shadow-button-danger: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(217, 33, 65, 0.4);
+  --amino-shadow-button-warning: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(229, 89, 26, 0.4);
+  --amino-button-focus-ring: 0 0 0 2px var(--amino-blue-600);
+  --amino-shadow-button-standard: 0px -1px 1px 0px rgba(0, 0, 0, 0.4) inset,
+    0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset,
+    0px 1px 3px 0px rgba(0, 0, 0, 0.8);
   --amino-border: 1px solid var(--amino-border-color);
   --amino-border-blue: 1px solid var(--amino-blue-500);
   --amino-border-red: 1px solid var(--amino-red-400);
@@ -351,10 +396,10 @@
   --amino-primary: var(--amino-blue-600);
   --amino-primary-light: var(--amino-blue-500);
   --amino-primary-dark: var(--amino-blue-800);
-  --amino-success: var(--amino-green-300);
+  --amino-success: var(--amino-green-600);
   --amino-success-dark: var(--amino-green-700);
-  --amino-warning: var(--amino-amber-100);
-  --amino-warning-dark: var(--amino-amber-700);
+  --amino-warning: var(--amino-orange-600);
+  --amino-warning-dark: var(--amino-orange-600);
   --amino-glow-error: 0 0 0 1px var(--amino-red-600);
   --amino-glow-blue: 0 0 0 1px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-600);
@@ -369,4 +414,29 @@
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
   --amino-backdrop-color: var(--amino-gray-0);
+  --amino-button-primary-hover: linear-gradient(
+    180deg,
+    #5f92f6 0%,
+    #89b2fa 100%
+  );
+  --amino-button-success-hover: linear-gradient(
+    180deg,
+    #56c76f 0%,
+    #7de490 100%
+  );
+  --amino-button-danger-hover: linear-gradient(
+    180deg,
+    #f95c67 0%,
+    #fa8b8b 100%
+  );
+  --amino-button-warning-hover: linear-gradient(
+    180deg,
+    #f88c53 0%,
+    #fca975 100%
+  );
+  --amino-button-standard-hover: linear-gradient(
+    180deg,
+    #1e1f26 0%,
+    #2e3038 100%
+  );
 }

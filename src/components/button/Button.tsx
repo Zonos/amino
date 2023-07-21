@@ -92,6 +92,11 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
     }
   }
 
+  &:focus {
+    box-shadow: ${theme.buttonFocusRing};
+    border: 1px solid ${theme.gray0};
+  }
+
   &:active {
     transform: scale(0.99);
   }
@@ -110,26 +115,27 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   }
 
   &[disabled] {
-    box-shadow: none;
-    &:not(.loading) {
-      opacity: 0.5;
-    }
+    cursor: not-allowed;
   }
 `;
 
 const Primary = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.primary};
+  background-color: ${p => getAminoColor(p.background) || theme.primary};
   color: ${p => getAminoColor(p.color) || theme.gray0};
+  box-shadow: ${theme.shadowButtonPrimary};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.blue400};
+      background-image: ${p =>
+        getAminoColor(p.hoverBackground) || theme.buttonPrimaryHover};
     }
-    &:active,
-    &:focus {
+    &:active {
       background: ${theme.blue700};
-      color: ${theme.gray0};
     }
+  }
+
+  &[disabled] {
+    background: ${theme.blue400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -137,63 +143,72 @@ const Primary = styled(AminoButton)`
   }
 `;
 
-const Secondary = styled(AminoButton)`
-  color: ${p => getAminoColor(p.color) || theme.textColor};
-  background: ${p => getAminoColor(p.background) || theme.gray100};
+const Success = styled(AminoButton)`
+  background-color: ${p => getAminoColor(p.background) || theme.success};
+  color: ${p => getAminoColor(p.color) || theme.gray0};
+  box-shadow: ${theme.shadowButtonSuccess};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.gray200};
+      background-image: ${p =>
+        getAminoColor(p.hoverBackground) || theme.buttonSuccessHover};
     }
     &:active {
-      background: ${theme.blue100};
-      color: ${theme.blue600};
-      svg path {
-        fill: currentColor;
-      }
+      background: ${theme.green700};
+    }
+  }
+
+  &[disabled] {
+    background: ${theme.green400};
+  }
+
+  ${StyledSpinnerWrapper} {
+    background: ${theme.success};
+  }
+`;
+
+const Standard = styled(AminoButton)`
+  color: ${p => getAminoColor(p.color) || theme.textColor};
+  background: ${p => getAminoColor(p.background) || theme.surfaceColor};
+  border: 1px solid ${theme.gray600}1F;
+  box-shadow: ${theme.shadowButtonStandard};
+
+  &:not([disabled]) {
+    &:hover {
+      background-image: ${p =>
+        getAminoColor(p.hoverBackground) || theme.buttonStandardHover};
+    }
+    &:active {
+      background: ${theme.gray100};
+    }
+  }
+
+  &[disabled] {
+    .content {
+      opacity: 0.6;
     }
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.gray100};
-  }
-
-  /** Night mode */
-  &.night {
-    color: ${theme.gray0};
-    background: ${theme.gray1000};
-
-    &:not([disabled]) {
-      &:hover {
-        background: ${p => getAminoColor(p.hoverBackground) || theme.gray900};
-      }
-      &:active,
-      &:focus {
-        background: ${theme.blue1000};
-        color: ${theme.blue300};
-        svg path {
-          fill: currentColor;
-        }
-      }
-    }
-
-    ${StyledSpinnerWrapper} {
-      background: ${theme.gray1000};
-    }
+    background: ${theme.surfaceColor};
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.red600};
+  background: ${p => getAminoColor(p.background) || theme.danger};
   color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.red400};
+      background-image: ${p =>
+        getAminoColor(p.hoverBackground) || theme.buttonDangerHover};
     }
     &:active {
       background: ${theme.red700};
     }
+  }
+  &[disabled] {
+    background: ${theme.red400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -202,16 +217,21 @@ const Danger = styled(AminoButton)`
 `;
 
 const Warning = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.orange600};
+  background: ${p => getAminoColor(p.background) || theme.warning};
   color: ${p => getAminoColor(p.color) || theme.gray0};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.orange400};
+      background-image: ${p =>
+        getAminoColor(p.hoverBackground) || theme.buttonWarningHover};
     }
     &:active {
       background: ${theme.orange700};
     }
+  }
+
+  &[disabled] {
+    background: ${theme.orange400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -310,12 +330,14 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
-type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | 'plain' | Intent;
+type IntentProps = 'link' | 'plain' | Intent;
+type ButtonStyleProps = 'outline' | 'subtle' | 'text';
 
 type ButtonBase = {
   background?: Color | 'inherit';
   /** @param borderColor only available for intent 'outline' */
   borderColor?: Color | 'inherit';
+  buttonStyle: ButtonStyleProps;
   children?: ReactNode;
   className?: string;
   color?: Color | 'inherit';
@@ -363,7 +385,7 @@ export function Button<T extends GroupTag = 'button'>({
   disabled = false,
   icon,
   iconRight,
-  intent = 'secondary',
+  intent = 'standard',
   loading = false,
   loadingText,
   noRipple = false,
@@ -377,9 +399,9 @@ export function Button<T extends GroupTag = 'button'>({
   const tag = _tag || 'button';
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
-      {!iconRight && icon}
-      {children}
-      {iconRight && icon}
+      <span className="content">{!iconRight && icon}</span>
+      <span className="content">{children}</span>
+      <span className="content">{iconRight && icon}</span>
       {intent !== 'plain' && loading && (
         <StyledSpinnerWrapper>
           <Spinner color={_spinnerColor} size={16} />
@@ -429,6 +451,13 @@ export function Button<T extends GroupTag = 'button'>({
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Primary>
       );
+    case 'success':
+      return (
+        <Success as={tag} {...buttonProps}>
+          {renderContent(spinnerColor)}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
+        </Success>
+      );
     case 'subtle':
       return (
         <Subtle as={tag} {...buttonProps}>
@@ -476,13 +505,13 @@ export function Button<T extends GroupTag = 'button'>({
           {renderContent(spinnerColor)}
         </PlainButton>
       );
-    case 'secondary':
+    case 'standard':
     default:
       return (
-        <Secondary as={tag} {...buttonProps}>
+        <Standard as={tag} {...buttonProps}>
           {renderContent(spinnerColor)}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
-        </Secondary>
+        </Standard>
       );
   }
 }

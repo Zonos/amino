@@ -314,6 +314,24 @@ export const theme = {
   /** @info 0px 1px 0px #FFFFFF, 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 0px 8px rgba(0, 0, 0, 0.02) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowInset: 'var(--amino-v3-shadow-inset)',
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonPrimary: 'var(--amino-shadow-button-primary)',
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonSuccess: 'var(--amino-shadow-button-success)',
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonDanger: 'var(--amino-shadow-button-danger)',
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonWarning: 'var(--amino-shadow-button-warning)',
+  /** @info 0 0 0 2px var(--amino-blue-600) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  buttonFocusRing: 'var(--amino-button-focus-ring)',
+  /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -2px 1px 1px rgba(0, 0, 0, 0.08) inset */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonStandard: 'var(--amino-shadow-button-standard)',
 
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */
@@ -497,16 +515,16 @@ export const theme = {
   /** @info var(--amino-blue-800) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   primaryDark: 'var(--amino-primary-dark)',
-  /** @info var(--amino-green-300) */
+  /** @info var(--amino-green-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   success: 'var(--amino-success)',
   /** @info var(--amino-green-700) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   successDark: 'var(--amino-success-dark)',
-  /** @info var(--amino-amber-100) */
+  /** @info var(--amino-orange-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   warning: 'var(--amino-warning)',
-  /** @info var(--amino-amber-700) */
+  /** @info var(--amino-orange-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   warningDark: 'var(--amino-warning-dark)',
 
@@ -557,6 +575,23 @@ export const theme = {
   /** @info var(--amino-gray-1200) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   backdropColor: 'var(--amino-backdrop-color)',
+
+  /* BUTTON HOVER COLORS */
+  /** @info linear-gradient(180deg, #445EEE 0%, #364BD4 100%) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  buttonPrimaryHover: 'var(--amino-button-primary-hover)',
+  /** @info linear-gradient(180deg, #2B9C4D 0%, #298549 100%) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  buttonSuccessHover: 'var(--amino-button-success-hover)',
+  /** @info linear-gradient(180deg, #D92141 0%, #B4223D 100%) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  buttonDangerHover: 'var(--amino-button-danger-hover)',
+  /** @info linear-gradient(180deg, #E5591A 0%, #B6471B 100%) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  buttonWarningHover: 'var(--amino-button-warning-hover)',
+  /** @info linear-gradient(180deg, #FFF 0%, #EAEBED 100%) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  buttonStandardHover: 'var(--amino-button-standard-hover)',
 
   /* LAYOUT STYLE */
   /** @info 55px */
