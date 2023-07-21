@@ -15,7 +15,7 @@ export const useGraphiqlStorage = ({
 }) => {
   const schemaToKebab = kebabCase(defaultSchema);
 
-  const [schema] = useCurrentSchema(schemaToKebab);
+  const { value: schema } = useCurrentSchema(schemaToKebab);
 
   // Force initial light theme
   useEffect(() => {

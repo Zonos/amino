@@ -68,14 +68,12 @@ export const AnnouncementDialog = forwardRef<
     },
     ref,
   ) => {
-    const [announcementSeen, setAnnouncementSeen] = useStorage<
-      'seen' | '',
-      string
-    >({
-      defaultValue: '',
-      key: `announcement:${announcementId}`,
-      type: 'local',
-    });
+    const { setValue: setAnnouncementSeen, value: announcementSeen } =
+      useStorage<'seen' | '', string>({
+        defaultValue: '',
+        key: `announcement:${announcementId}`,
+        type: 'local',
+      });
 
     return (
       <BaseDialog

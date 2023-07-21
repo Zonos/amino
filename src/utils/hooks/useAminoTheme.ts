@@ -28,7 +28,10 @@ export const useAminoTheme = (props?: Params) => {
     return storedValue ?? 'day';
   };
 
-  const [aminoTheme, setAminoTheme] = useStorage<Theme, 'amino:theme'>({
+  const { setValue: setAminoTheme, value: aminoTheme } = useStorage<
+    Theme,
+    'amino:theme'
+  >({
     defaultValue: getDefaultValue(),
     key: 'amino:theme',
     type: 'local',
