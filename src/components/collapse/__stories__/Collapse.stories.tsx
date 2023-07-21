@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
+import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
 import {
   type CollapseProps,
   Collapse as CollapseComponent,
 } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
+import { theme } from 'src/styles/constants/theme';
 
 const CollapseMeta: Meta = {
   argTypes: {
@@ -45,6 +47,10 @@ const StyledCollapseComponent = styled(CollapseComponent)`
 const ActionWrapper = styled.div`
   display: inline-flex;
   gap: 20px;
+`;
+
+const StyledBanner = styled(Banner)`
+  margin: ${theme.space16};
 `;
 
 const Template: StoryFn<CollapseProps> = ({
@@ -97,6 +103,25 @@ const Template: StoryFn<CollapseProps> = ({
       <CollapseContainer>
         <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
         <div>
+          Open by default (no border) - to test if the the `Collapse` will
+          collapse the margin with its children
+          <CollapseComponent
+            className={className}
+            collapsed={!open1}
+            collapseSize={collapseSize}
+          >
+            {children}
+            {moreItems && (
+              <>
+                <NavigationItem content="Item 4" />
+                <NavigationItem content="Item 5" />
+                <NavigationItem content="Item 6" />
+                <StyledBanner>Component has margin top & bottom</StyledBanner>
+              </>
+            )}
+          </CollapseComponent>
+        </div>
+        <div>
           Open by default
           <StyledCollapseComponent
             className={className}
@@ -109,6 +134,7 @@ const Template: StoryFn<CollapseProps> = ({
                 <NavigationItem content="Item 4" />
                 <NavigationItem content="Item 5" />
                 <NavigationItem content="Item 6" />
+                <StyledBanner>Component has margin top & bottom</StyledBanner>
               </>
             )}
           </StyledCollapseComponent>
@@ -138,6 +164,7 @@ export const Collapse = Template.bind({});
 Collapse.args = {
   children: (
     <>
+      <StyledBanner>Component has margin top & bottom</StyledBanner>
       <NavigationItem content="Item 1" isActive />
       <NavigationItem content="Item 2" />
       <NavigationItem content="Item 3" />
