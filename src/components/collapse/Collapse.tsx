@@ -105,7 +105,15 @@ export const Collapse = ({
       hideOverflow={hideOverflow}
       onTransitionEnd={handleTransitionEnd}
     >
-      <div ref={contentWrapperRef} style={{ position: 'relative' }}>
+      <div
+        ref={contentWrapperRef}
+        style={{
+          // if the child  component that has margin-top or the last component has margin-bottom. The child component will be collapsed with the parent component, which causing unexpected cut off
+          // and "overflow: auto", or some "padding" value (at least 1px) or "border" will make the margin will not be collapsed
+          overflow: 'auto',
+          position: 'relative',
+        }}
+      >
         {children}
       </div>
     </StyledCollapseWrapper>
