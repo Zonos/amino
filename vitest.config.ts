@@ -9,7 +9,9 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      'build-utils': path.resolve(__dirname, './build-utils'),
       src: path.resolve(__dirname, './src'),
+      svgReact: path.resolve(__dirname, './svgReact'),
       'test-utils': path.resolve(__dirname, './test-utils'),
     },
   },

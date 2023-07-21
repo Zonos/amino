@@ -9,7 +9,7 @@ describe('Make sure transformLogicConstant in LogicConstant work properly', () =
     {
       case: 'Has 1 import',
       content: `
-import { example1 } from '../class/__mocks__/transformLogicConstant-example_1';
+import { example1 } from 'build-utils/css/class/__mocks__/transformLogicConstant-example_1';
 
 export const test = {
   ...example1,
@@ -19,8 +19,8 @@ export const test = {
     {
       case: 'Has 2 imports',
       content: `
-import { example1 } from '../class/__mocks__/transformLogicConstant-example_1';
-import { example2 } from '../class/__mocks__/transformLogicConstant-example_2';
+import { example1 } from 'build-utils/css/class/__mocks__/transformLogicConstant-example_1';
+import { example2 } from 'build-utils/css/class/__mocks__/transformLogicConstant-example_2';
 
 export const test = {
   ...example1,

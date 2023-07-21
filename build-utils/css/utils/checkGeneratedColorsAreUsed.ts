@@ -30,7 +30,7 @@ export const checkGeneratedColorsAreUsed = async (theme: Theme) => {
     const constantName = colorConstant.replace('_', '').replace('.ts', '');
 
     const match = new RegExp(
-      `import { ${constantName} } from '.\\/theme\\/${theme}\\/colors\\/${colorConstantWithoutExt}';`,
+      `import { ${constantName} } from 'build-utils\\/css\\/constants\\/theme\\/${theme}\\/colors\\/${colorConstantWithoutExt}';`,
       'gm',
     ).test(themeContent);
     if (!match) {

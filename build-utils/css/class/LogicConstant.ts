@@ -221,7 +221,7 @@ export class LogicConstant {
       const rootFolder = process.cwd();
       /** Read generated file content */
       const fileContent = readFileSync(
-        path.resolve(`${rootFolder}/build-utils/css/constants/${filePath}.ts`),
+        path.resolve(`${rootFolder}/${filePath}.ts`),
         { encoding: 'utf-8' },
       );
       /** Extract only constant content */
