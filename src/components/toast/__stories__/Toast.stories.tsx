@@ -1,9 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { ToastConsumer } from 'src/components/toast/__stories__/ToastConsumer';
 import type { ToastProps } from 'src/components/toast/Toast';
 import { ToastContextProvider } from 'src/components/toast/ToastContext';
-
-import { ToastConsumer } from './ToastConsumer';
 
 const ToastMeta: Meta = {
   component: ToastContextProvider,

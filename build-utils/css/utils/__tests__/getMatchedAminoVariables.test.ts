@@ -1,6 +1,5 @@
+import { getMatchedAminoVariables } from 'build-utils/css/utils/getMatchedAminoVariables';
 import { readFileSync } from 'fs';
-
-import { getMatchedAminoVariables } from '../getMatchedAminoVariables';
 
 const cssContent = readFileSync(
   `build-utils/css/utils/__mocks__/getMatchedAminoVariables-file_with_comment.css`,
@@ -10,14 +9,13 @@ const cssContent = readFileSync(
 );
 type UnitTestItem = {
   case: string;
-  input: string;
   expected: ReturnType<typeof getMatchedAminoVariables>;
+  input: string;
 };
 
 const testCases: UnitTestItem[] = [
   {
     case: 'Real CSS contents',
-    input: cssContent,
     expected: [
       { key: '--amino-transition', value: 'all 0.2s ease-in-out 0s' },
       { key: '--amino-type-scale-base', value: '16px' },
@@ -338,9 +336,10 @@ const testCases: UnitTestItem[] = [
       },
       { key: '--amino-border-transparent', value: '1px solid transparent' },
     ],
+    input: cssContent,
   },
 ];
 
-test.each(testCases)(`Case $case`, ({ input, expected }) => {
+test.each(testCases)(`Case $case`, ({ expected, input }) => {
   expect(getMatchedAminoVariables(input)).toStrictEqual(expected);
 });

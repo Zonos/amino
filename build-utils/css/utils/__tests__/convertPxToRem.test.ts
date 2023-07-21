@@ -1,73 +1,73 @@
-import { convertPxToRem } from '../convertPxToRem';
+import { convertPxToRem } from 'build-utils/css/utils/convertPxToRem';
 
 type UnitTest = {
-  pixel: number;
-  fontBase?: number;
   expected: string;
+  fontBase?: number;
+  pixel: number;
 };
 const testCases: UnitTest[] = [
   {
-    pixel: 0,
-    fontBase: 16,
     expected: '0',
+    fontBase: 16,
+    pixel: 0,
   },
   {
-    pixel: 12,
-    fontBase: 16,
     expected: '0.75rem',
-  },
-  {
-    pixel: 14,
     fontBase: 16,
-    expected: '0.875rem',
-  },
-  {
-    pixel: 16,
-    fontBase: 16,
-    expected: '1rem',
-  },
-  {
-    pixel: 22,
-    fontBase: 16,
-    expected: '1.375rem',
-  },
-  {
-    pixel: 24,
-    fontBase: 16,
-    expected: '1.5rem',
-  },
-  {
     pixel: 12,
-    fontBase: 14,
-    expected: '0.857rem',
   },
   {
+    expected: '0.875rem',
+    fontBase: 16,
     pixel: 14,
-    fontBase: 14,
+  },
+  {
     expected: '1rem',
-  },
-  {
+    fontBase: 16,
     pixel: 16,
-    fontBase: 14,
-    expected: '1.143rem',
   },
   {
+    expected: '1.375rem',
+    fontBase: 16,
     pixel: 22,
-    fontBase: 14,
-    expected: '1.571rem',
   },
   {
+    expected: '1.5rem',
+    fontBase: 16,
     pixel: 24,
+  },
+  {
+    expected: '0.857rem',
     fontBase: 14,
+    pixel: 12,
+  },
+  {
+    expected: '1rem',
+    fontBase: 14,
+    pixel: 14,
+  },
+  {
+    expected: '1.143rem',
+    fontBase: 14,
+    pixel: 16,
+  },
+  {
+    expected: '1.571rem',
+    fontBase: 14,
+    pixel: 22,
+  },
+  {
     expected: '1.714rem',
+    fontBase: 14,
+    pixel: 24,
   },
 ];
 
 describe('Make sure convertPxToRem work properly', () => {
   test.each(testCases)(
     'fontBase: $fontBase - pixel: $pixel',
-    ({ pixel, fontBase, expected }) => {
+    ({ expected, fontBase, pixel }) => {
       expect(convertPxToRem(pixel, fontBase)).toBe(expected);
-    }
+    },
   );
 });

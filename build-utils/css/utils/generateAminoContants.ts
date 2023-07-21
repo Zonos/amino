@@ -1,7 +1,6 @@
+import { LogicConstant } from 'build-utils/css/class/LogicConstant';
+import { formatTS } from 'build-utils/css/utils/formatTS';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
-
-import { LogicConstant } from '../class/LogicConstant';
-import { formatTS } from './formatTS';
 
 /**
  * Replace all values, turn constants to object with usable css variable (with jsdocs)
@@ -10,14 +9,14 @@ import { formatTS } from './formatTS';
 export const generateConstantContent = async (content: string) => {
   /** Transform the content to typescript JSDocs friendly */
   const logicTransformedContent = await LogicConstant.transformImportedConstant(
-    content
+    content,
   );
 
   const result = logicTransformedContent
     /** @desc find and replace all key value pairs that have jsdocs comment above */
     .replace(
       /(?<=\/\*\*.*\/)(\n\s*)'?([a-zA-Z0-9-]+)'?:\s+['`](.*)['`],*/gm,
-      "$1'$2': 'var(--amino-$2)',"
+      "$1'$2': 'var(--amino-$2)',",
     )
     /**
      * @desc find and replace all key value pairs that don't have jsdocs comment above
@@ -25,20 +24,20 @@ export const generateConstantContent = async (content: string) => {
      */
     .replace(
       /(?<!\/\*\*.*\/)(\n\s*)'?([a-zA-Z0-9-]+)'?:\s+['`](.*)['`],*/gm,
-      "$1/** @info $3 */\n'$2': 'var(--amino-$2)',"
+      "$1/** @info $3 */\n'$2': 'var(--amino-$2)',",
     )
     /**
      * @desc find and add Warning comment into all key value pairs
      */
     .replace(
       /(?<=\/\*\*.*\/)(\n\s*)('?[a-zA-Z0-9-]+'?:.+,*)/gm,
-      "$1/* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */\n$2"
+      "$1/* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */\n$2",
     )
     /**
      * @desc convert key to camel case
      */
     .replace(/'\w+(-\w+)+':/gm, str =>
-      str.replace(/-(\w)/gm, (_, letter) => letter.toUpperCase())
+      str.replace(/-(\w)/gm, (_, letter) => letter.toUpperCase()),
     );
 
   /** @desc format file with TScript formater */
@@ -56,7 +55,7 @@ export const generateAminoConstants = async (destinationPath: string) => {
     `${rootFolder}/build-utils/css/constants/theme.ts`,
     {
       encoding: 'utf-8',
-    }
+    },
   );
 
   const formatedContent = await generateConstantContent(content);

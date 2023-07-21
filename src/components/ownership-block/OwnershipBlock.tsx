@@ -7,9 +7,8 @@ import { EyeDuotoneIcon } from 'src/icons/EyeDuotoneIcon';
 import { StarIcon } from 'src/icons/StarIcon';
 import { UserIcon } from 'src/icons/UserIcon';
 import { theme } from 'src/styles/constants/theme';
+import { devices } from 'src/styles/devices';
 import type { Theme } from 'src/types';
-
-import { devices } from '../../styles/devices';
 
 const Wrapper = styled.div`
   padding: 24px;

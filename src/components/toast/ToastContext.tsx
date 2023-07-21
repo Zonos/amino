@@ -3,7 +3,7 @@ import { type ReactNode, createContext, useCallback, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { type ToastProps, Toast } from './Toast';
+import { type ToastProps, Toast } from 'src/components/toast/Toast';
 
 type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
 export type ToastContextFunctionType = (

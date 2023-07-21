@@ -30,7 +30,7 @@ const defaultPerson: Person = {
 };
 
 export const Storage = () => {
-  const [value, setValue] = useStorage({
+  const { setValue, value } = useStorage({
     defaultValue: defaultPerson,
     json: true,
     key: 'amino:story:storage:test',

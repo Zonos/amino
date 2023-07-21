@@ -4,14 +4,13 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { type IntrospectionQuery, buildClientSchema } from 'graphql';
 import styled from 'styled-components';
 
+import { GraphMatrix as GraphMatrixComponent } from 'src/components/graph-matrix/GraphMatrix';
 import { HStack } from 'src/components/stack/HStack';
 import { Textarea } from 'src/components/textarea/Textarea';
 import { BookmarkIcon } from 'src/icons/BookmarkIcon';
 import { BookmarkOffIcon } from 'src/icons/BookmarkOffIcon';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
-
-import { GraphMatrix as GraphMatrixComponent } from '../GraphMatrix';
 
 const FileUploadMeta: Meta = {
   component: GraphMatrixComponent,

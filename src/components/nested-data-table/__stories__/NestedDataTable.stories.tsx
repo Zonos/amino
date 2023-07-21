@@ -3,11 +3,10 @@ import { type ComponentProps, useCallback } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
-
 import {
   type ColumnCell,
   NestedDataTable as NestedDataTableComponent,
-} from '../NestedDataTable';
+} from 'src/components/nested-data-table/NestedDataTable';
 
 const NestedDataTableMeta: Meta = {
   component: NestedDataTableComponent,

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
+import { type StackProps, Stack } from 'src/components/stack/Stack';
 import { theme } from 'src/styles/constants/theme';
 import type { GridSpacing } from 'src/types';
-
-import { type StackProps, Stack } from './Stack';
 
 const StyledHStack = styled(Stack)<{ $spacing: GridSpacing }>`
   grid-column-gap: ${p => theme[`space${p.$spacing}`]};

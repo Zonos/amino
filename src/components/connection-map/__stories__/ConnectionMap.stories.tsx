@@ -5,13 +5,12 @@ import styled from 'styled-components';
 import useSwr from 'swr';
 
 import { ConnectionMap } from 'src/components/connection-map/ConnectionMap';
+import { getCountryUrls } from 'src/components/select/__stories__/getCountryUrls';
+import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { CountrySelect } from 'src/components/select/CountrySelect';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import type { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
-
-import { getCountryUrls } from '../../select/__stories__/getCountryUrls';
-import { useCountryOptions } from '../../select/__stories__/useCountryOptions';
 
 const GEO_URL = '/zonos-countries-geojson.json';
 

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
+import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-
-import { Text } from '../text/Text';
 
 const StyledCurrency = styled.span`
   font-feature-settings: 'tnum' 1;

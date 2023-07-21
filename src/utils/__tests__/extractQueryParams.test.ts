@@ -1,4 +1,4 @@
-import { extractQueryParams } from '../_extractQueryParams';
+import { extractQueryParams } from 'src/utils/_extractQueryParams';
 
 test('Params in one line', () => {
   const query = `query MyQuery {

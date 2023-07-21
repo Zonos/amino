@@ -7,10 +7,9 @@ import {
 
 import styled from 'styled-components';
 
+import type { InputMode } from 'src/components/input/input-type/_FloatLabelInput';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import type { InputMode } from './input-type/_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

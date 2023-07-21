@@ -2,9 +2,8 @@ import { useEffect } from 'react';
 
 import type { Theme } from 'src/types';
 import { themeSchema } from 'src/types/Theme';
+import { useStorage } from 'src/utils/hooks/useStorage';
 import { getStorageItem } from 'src/utils/storage';
-
-import { useStorage } from './useStorage';
 
 type Params = {
   /** Whether to modify the HTML body */
@@ -29,7 +28,10 @@ export const useAminoTheme = (props?: Params) => {
     return storedValue ?? 'day';
   };
 
-  const [aminoTheme, setAminoTheme] = useStorage<Theme, 'amino:theme'>({
+  const { setValue: setAminoTheme, value: aminoTheme } = useStorage<
+    Theme,
+    'amino:theme'
+  >({
     defaultValue: getDefaultValue(),
     key: 'amino:theme',
     type: 'local',

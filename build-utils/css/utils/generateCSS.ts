@@ -1,10 +1,9 @@
+import { night } from 'build-utils/css/constants/_night';
+import { theme } from 'build-utils/css/constants/theme';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { format, resolveConfig, resolveConfigFile } from 'prettier';
 
-import { night } from '../constants/_night';
-import { theme } from '../constants/theme';
-
-import { theme as aminoTheme } from '../../../src/styles/constants/theme';
+import { theme as aminoTheme } from 'src/styles/constants/theme';
 
 /**
  * Format css file using prettier api

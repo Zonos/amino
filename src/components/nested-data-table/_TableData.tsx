@@ -9,16 +9,18 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
+import { Filter } from 'src/components/nested-data-table/_Filter';
+import {
+  type RowWithIndex,
+  PivotTable,
+} from 'src/components/pivot-table/PivotTable';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { ChevronRightCircleIcon } from 'src/icons/ChevronRightCircleIcon';
 import { theme } from 'src/styles/constants/theme';
 import { flattenRow } from 'src/utils/flattenRow';
 import { setupNestedData } from 'src/utils/setupNestedData';
 import { truncateText } from 'src/utils/truncateText';
-
-import { Button } from '../button/Button';
-import { type RowWithIndex, PivotTable } from '../pivot-table/PivotTable';
-import { Tooltip } from '../tooltip/Tooltip';
-import { Filter } from './_Filter';
 
 const StyledFilterWrapper = styled.div`
   display: flex;

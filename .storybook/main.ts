@@ -28,6 +28,7 @@ const config: StorybookConfig = {
         alias: {
           ...config.resolve?.alias,
           src: path.resolve(__dirname, '../src'),
+          svgReact: path.resolve(__dirname, '../svgReact'),
           'story-utils': path.resolve(__dirname, './utils'),
           // to test the bundled version in stories
           dist: path.resolve(__dirname, '../dist'),

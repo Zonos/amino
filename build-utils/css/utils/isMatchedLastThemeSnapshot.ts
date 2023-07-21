@@ -1,14 +1,13 @@
+import { convertToCssConstant } from 'build-utils/css/utils/convertToCssVariable';
+import { getMatchedAminoVariables } from 'build-utils/css/utils/getMatchedAminoVariables';
 import { readFileSync } from 'fs';
-
-import { convertToCssConstant } from './convertToCssVariable';
-import { getMatchedAminoVariables } from './getMatchedAminoVariables';
 
 export const getLastSnapshot = () =>
   readFileSync(
     `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`,
     {
       encoding: 'utf-8',
-    }
+    },
   );
 
 /**
@@ -16,11 +15,11 @@ export const getLastSnapshot = () =>
  * @returns string[] Array of where is mismatch
  */
 export const isMatchedLastThemeSnapshot = ({
-  theme,
   snapshotContent,
+  theme,
 }: {
-  theme: Record<string, string>;
   snapshotContent: string;
+  theme: Record<string, string>;
 }): string[] => {
   const convertedThemeVariable = convertToCssConstant(theme);
   const extractedAminoVariables = getMatchedAminoVariables(snapshotContent);

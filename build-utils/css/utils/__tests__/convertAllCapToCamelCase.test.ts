@@ -1,22 +1,22 @@
-import { convertPascalCaseToCamelCase } from '../convertPascalCaseToCamelCase';
+import { convertPascalCaseToCamelCase } from 'build-utils/css/utils/convertPascalCaseToCamelCase';
 
 type UnitTest = {
-  text: string;
   expected: string;
+  text: string;
 };
 const testCases: UnitTest[] = [
   {
-    text: 'TestCase',
     expected: 'testCase',
+    text: 'TestCase',
   },
   {
-    text: 'TestCase300',
     expected: 'testCase300',
+    text: 'TestCase300',
   },
 ];
 
 describe('Make sure convertPascalCaseToCamelCase work properly', () => {
-  test.each(testCases)('text "$text": "$expected"', ({ text, expected }) => {
+  test.each(testCases)('text "$text": "$expected"', ({ expected, text }) => {
     expect(convertPascalCaseToCamelCase(text)).toBe(expected);
   });
 });

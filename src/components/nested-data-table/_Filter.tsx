@@ -3,12 +3,11 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
+import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
+import { MultiSelect } from 'src/components/select/MultiSelect';
 import { FilterIcon } from 'src/icons/FilterIcon';
 import { theme } from 'src/styles/constants/theme';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
-
-import type { RowWithIndex } from '../pivot-table/PivotTable';
-import { MultiSelect } from '../select/MultiSelect';
 
 const StyledTriggerButton = styled.button`
   display: flex;

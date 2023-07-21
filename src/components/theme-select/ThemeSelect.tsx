@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+import { Card } from 'src/components/card/Card';
+import { Select } from 'src/components/select/Select';
+import { HStack } from 'src/components/stack/HStack';
+import { Text } from 'src/components/text/Text';
 import { ThemeDarkIcon } from 'src/icons/custom/theme/ThemeDarkIcon';
 import { ThemeLightIcon } from 'src/icons/custom/theme/ThemeLightIcon';
 import { NightIcon } from 'src/icons/NightIcon';
@@ -7,11 +11,6 @@ import { SunnyIcon } from 'src/icons/SunnyIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-
-import { Card } from '../card/Card';
-import { Select } from '../select/Select';
-import { HStack } from '../stack/HStack';
-import { Text } from '../text/Text';
 
 // Card style
 const ButtonStyled = styled.button<{ isActive: boolean }>`

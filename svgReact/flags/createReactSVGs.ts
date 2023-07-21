@@ -5,34 +5,36 @@ import {
   readFileSync,
   writeFileSync,
 } from 'fs';
-
-import { GenerateIconType, SvgList } from './types/TypeGenerateIcon';
+import {
+  type GenerateIconType,
+  type SvgList,
+} from 'svgReact/flags/types/TypeGenerateIcon';
 
 const addWrapper = (id: string) => `{\`${id}\`}`;
 
 const pascalCased = (string: string) =>
   string.charAt(0).toUpperCase() +
-  string.replace(/-([a-z])/g, letters => letters[1].toUpperCase()).slice(1);
+  string.replace(/-([a-z])/g, letters => letters[1]!.toUpperCase()).slice(1);
 
 const convertSvgsObj = (destFolder: string): SvgList[] =>
   readdirSync(destFolder).reduce<SvgList[]>(
     (accumulator, originalFileName) => [
       ...accumulator,
       {
-        originalFileName,
-        newFileName: pascalCased(originalFileName).replace('.svg', '.tsx'),
         componentName: pascalCased(originalFileName).replace('.svg', ''),
+        newFileName: pascalCased(originalFileName).replace('.svg', '.tsx'),
+        originalFileName,
       },
     ],
-    []
+    [],
   );
 
 export const generateComponentContent = ({
-  fileContent,
   componentName,
+  fileContent,
 }: {
-  fileContent: string;
   componentName: string;
+  fileContent: string;
 }) => {
   let result = fileContent;
   /** @desc We need to preserve the viewbox */
@@ -60,7 +62,7 @@ export const generateComponentContent = ({
 
   const svg = result
     .replace(/(?!\w):\w/g, attribute =>
-      attribute.replace(':', '').toUpperCase()
+      attribute.replace(':', '').toUpperCase(),
     )
     /** @desc Remove style props */
     .replace(/style="([^"]*)"/gi, '')
@@ -103,12 +105,12 @@ export const createReactSVGs = ({
       `${inputFolder}/${name.originalFileName}`,
       {
         encoding: 'utf8',
-      }
+      },
     );
 
     const component = generateComponentContent({
-      fileContent,
       componentName: name.componentName,
+      fileContent,
     });
 
     if (name.originalFileName.includes('.svg')) {

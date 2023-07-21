@@ -1,16 +1,16 @@
-import { spacing } from './theme/_spacing';
-import { variablesUsingColors } from './theme/_variablesUsingColors';
-import { shadow } from './theme/day/_shadow';
-import { blue } from './theme/day/colors/_blue';
-import { cyan } from './theme/day/colors/_cyan';
-import { glass } from './theme/day/colors/_glass';
-import { gray } from './theme/day/colors/_gray';
-import { green } from './theme/day/colors/_green';
-import { oneOffColors } from './theme/day/colors/_oneOffColors';
-import { orange } from './theme/day/colors/_orange';
-import { purple } from './theme/day/colors/_purple';
-import { red } from './theme/day/colors/_red';
-import { transparent } from './theme/day/colors/_transparent';
+import { spacing } from 'build-utils/css/constants/theme/_spacing';
+import { variablesUsingColors } from 'build-utils/css/constants/theme/_variablesUsingColors';
+import { shadow } from 'build-utils/css/constants/theme/day/_shadow';
+import { blue } from 'build-utils/css/constants/theme/day/colors/_blue';
+import { cyan } from 'build-utils/css/constants/theme/day/colors/_cyan';
+import { glass } from 'build-utils/css/constants/theme/day/colors/_glass';
+import { gray } from 'build-utils/css/constants/theme/day/colors/_gray';
+import { green } from 'build-utils/css/constants/theme/day/colors/_green';
+import { oneOffColors } from 'build-utils/css/constants/theme/day/colors/_oneOffColors';
+import { orange } from 'build-utils/css/constants/theme/day/colors/_orange';
+import { purple } from 'build-utils/css/constants/theme/day/colors/_purple';
+import { red } from 'build-utils/css/constants/theme/day/colors/_red';
+import { transparent } from 'build-utils/css/constants/theme/day/colors/_transparent';
 
 /* eslint-disable deprecation/deprecation */
 export const theme = {
@@ -54,7 +54,7 @@ export const theme = {
   ...variablesUsingColors,
 
   /* ONE OFF COLORS */
- ...oneOffColors,
+  ...oneOffColors,
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',
@@ -125,4 +125,4 @@ export const theme = {
 
 export type ThemeKey = keyof typeof theme;
 
-export type ThemeValue = typeof theme[ThemeKey];
+export type ThemeValue = (typeof theme)[ThemeKey];

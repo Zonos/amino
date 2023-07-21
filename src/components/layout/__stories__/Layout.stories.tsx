@@ -2,6 +2,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Card } from 'src/components/card/Card';
+import { NavigationGroup as NavigationGroupStory } from 'src/components/layout/__stories__/NavigationGroup.stories';
+import { UserMenu } from 'src/components/layout/__stories__/UserMenu';
 import { type LayoutProps, Layout } from 'src/components/layout/Layout';
 import {
   NavigationGroup,
@@ -10,9 +12,6 @@ import {
 import { HStack } from 'src/components/stack/HStack';
 import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { NavigationGroup as NavigationGroupStory } from './NavigationGroup.stories';
-import { UserMenu } from './UserMenu';
 
 const LayoutMeta: Meta = {
   argTypes: {

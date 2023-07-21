@@ -2,11 +2,13 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
+import {
+  type FloatLabelInputProps,
+  FloatLabelInput,
+} from 'src/components/input/input-type/_FloatLabelInput';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

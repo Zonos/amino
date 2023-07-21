@@ -2,8 +2,8 @@ import { type GravatarOptions, getGravatarUrl } from 'react-awesome-gravatar';
 
 import styled from 'styled-components';
 
-import type { ImageSize } from '../avatar/AvatarBase';
-import { UserAvatar } from '../avatar/UserAvatar';
+import type { ImageSize } from 'src/components/avatar/AvatarBase';
+import { UserAvatar } from 'src/components/avatar/UserAvatar';
 
 const Avatar = styled.img<{ size?: number }>`
   width: 100%;

@@ -28,4 +28,3 @@ export const gray = {
   /** @info #101116  */
   'gray-1200': '#101116',
 } as const;
-

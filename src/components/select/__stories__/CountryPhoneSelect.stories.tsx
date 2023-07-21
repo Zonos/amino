@@ -3,15 +3,14 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
+import { getCountryUrls } from 'src/components/select/__stories__/getCountryUrls';
+import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountryPhoneSelectProps,
   CountryPhoneSelect,
 } from 'src/components/select/CountryPhoneSelect';
 import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { ICountryOption } from 'src/types/ICountry';
-
-import { getCountryUrls } from './getCountryUrls';
-import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;

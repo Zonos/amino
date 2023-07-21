@@ -1,4 +1,4 @@
-import { getTestId } from '../getTestId';
+import { getTestId } from 'src/utils/getTestId';
 
 type TestCase = {
   case: string;

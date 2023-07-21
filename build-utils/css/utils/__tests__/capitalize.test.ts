@@ -1,25 +1,25 @@
-import { capitalize } from '../capitalize';
+import { capitalize } from 'build-utils/css/utils/capitalize';
 
 type UnitTest = {
-  text: string;
   expected: string;
+  text: string;
 };
 
 const testCases: UnitTest[] = [
   {
-    text: 'Some thing',
     expected: 'Some Thing',
+    text: 'Some thing',
   },
   {
-    text: 'SomeThing',
     expected: 'Something',
+    text: 'SomeThing',
   },
   {
-    text: 'Some_Thing',
     expected: 'Some_thing',
+    text: 'Some_Thing',
   },
 ];
 
-test.each(testCases)('$text', ({ text, expected }) => {
+test.each(testCases)('$text', ({ expected, text }) => {
   expect(capitalize(text)).toBe(expected);
 });

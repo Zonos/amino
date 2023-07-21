@@ -1,10 +1,9 @@
 import fs from 'fs';
-
-import { GenerateIndexContentType } from './config/path';
+import { type GenerateIndexContentType } from 'svgReact/icons/config/path';
 
 const generateContent = ({
-  inputFolderPath,
   destFolder,
+  inputFolderPath,
   titleComment,
 }: GenerateIndexContentType) => {
   const iconNames = fs

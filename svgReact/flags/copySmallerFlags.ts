@@ -1,6 +1,5 @@
 import { copyFile, existsSync, mkdirSync, statSync } from 'fs';
-
-import { countries } from './countries';
+import { countries } from 'svgReact/flags/countries';
 
 const getFilesizeInBytes = (filename: string) => {
   try {
@@ -28,7 +27,7 @@ export const copySmallerFlags = async ({
 }) => {
   if (!existsSync(firstFolder) || !existsSync(secondFolder)) {
     throw new Error(
-      `Either '${firstFolder}' or '${secondFolder}' doesn't exist`
+      `Either '${firstFolder}' or '${secondFolder}' doesn't exist`,
     );
   }
   return Promise.all(
@@ -54,7 +53,7 @@ export const copySmallerFlags = async ({
             }
             resolve(1);
           });
-        })
-    )
+        }),
+    ),
   );
 };

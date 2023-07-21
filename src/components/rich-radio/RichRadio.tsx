@@ -4,10 +4,9 @@ import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 import styled from 'styled-components';
 
 import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { Text } from '../text/Text';
 
 const StyledIcon = styled.div`
   position: absolute;

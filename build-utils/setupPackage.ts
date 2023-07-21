@@ -16,12 +16,12 @@ function main() {
   sourceObj.types = 'all.d.ts';
   fs.writeFileSync(
     `./dist/package.json`,
-    Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8')
+    Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8'),
   );
 
   fs.copyFileSync(
     path.resolve(`${path.dirname('')}/.npmignore`),
-    path.resolve(`${path.dirname('')}/dist/.npmignore`)
+    path.resolve(`${path.dirname('')}/dist/.npmignore`),
   );
 }
 

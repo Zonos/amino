@@ -1,9 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
+import { Text } from 'src/components/text/Text';
 import { ZonosLogoIcon } from 'src/icons/custom/ZonosLogoIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { Text } from '../text/Text';
 
 const Wrapper = styled.div`
   position: fixed;

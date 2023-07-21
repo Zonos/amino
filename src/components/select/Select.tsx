@@ -8,10 +8,9 @@ import type {
 } from 'react-select';
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
 import type { IOption } from 'src/types/IOption';
 import type { Size } from 'src/types/Size';
-
-import { StyledReactSelect } from './_StyledReactSelect';
 
 type RequiredProps = 'options' | 'value';
 

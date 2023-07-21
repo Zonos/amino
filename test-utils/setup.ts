@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { Mocked, vi } from 'vitest';
+import type fs from 'fs';
+import { type Mocked, vi } from 'vitest';
 
 const filesContent: Record<string, string> = {};
 

@@ -4,14 +4,13 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
+import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-
-import { Button } from '../button/Button';
-import { CoverSheetActions } from './CoverSheetActions';
 
 const StyledDialog = styled(motion.div)`
   z-index: 990;

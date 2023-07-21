@@ -1,26 +1,28 @@
-import { Plugin } from 'rollup';
+import { type Plugin } from 'rollup';
 import sizes from 'rollup-plugin-sizes';
 
 type ReportOptions = {
-  input: string; // entry name
+  // entry name
   data: {
     [key: string]: {
-      name: string;
       basedir: string | null;
+      name: string;
       path: string;
       size?: string;
     }[];
-  }; // entry name
+  };
+  input: string;
+  options: Options;
+  total: number;
+  // entry name
   totals: {
     name: string;
     size: number;
   }[];
-  total: number;
-  options: Options;
 };
 type Options = {
-  report?: (options: ReportOptions) => void;
   details: boolean;
+  report?: (options: ReportOptions) => void;
 };
 const customizedSizePlugin = (options: Options): Plugin => sizes(options);
 export default customizedSizePlugin;

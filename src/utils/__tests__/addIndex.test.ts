@@ -1,4 +1,4 @@
-import { addIndex } from '../addIndex';
+import { addIndex } from 'src/utils/addIndex';
 
 type UnitTest = {
   expected: ReturnType<typeof addIndex>[];

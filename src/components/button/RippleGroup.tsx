@@ -4,10 +4,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
+import { type RippleProps, Ripple } from 'src/components/button/_Ripple';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
-
-import { type RippleProps, Ripple } from './_Ripple';
 
 export interface IRippleActions {
   start: (event: React.SyntheticEvent) => void;

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
+import { Card } from 'src/components/card/Card';
+import { VStack } from 'src/components/stack/VStack';
 import { theme } from 'src/styles/constants/theme';
 import type { UnitedState } from 'src/types/UnitedStates';
-
-import { Card } from '../card/Card';
-import { VStack } from '../stack/VStack';
 
 const Wrapper = styled.div`
   display: flex;

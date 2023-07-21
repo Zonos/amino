@@ -19,10 +19,10 @@ describe('useStorage', () => {
       }),
     );
 
-    const getCurrentValue = () => result.current[0];
+    const getCurrentValue = () => result.current.value;
 
     // Assert initial state
-    const [initialValue, setValue] = result.current;
+    const { setValue, value: initialValue } = result.current;
 
     expect(initialValue).toStrictEqual([]);
 
@@ -57,10 +57,10 @@ describe('useStorage', () => {
       }),
     );
 
-    const getCurrentValue = () => result.current[0];
+    const getCurrentValue = () => result.current.value;
 
     // Assert initial state
-    const [initialValue, setValue] = result.current;
+    const { setValue, value: initialValue } = result.current;
 
     expect(initialValue).toBeNull();
 
