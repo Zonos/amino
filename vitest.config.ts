@@ -5,6 +5,7 @@ import { defineConfig } from 'vitest/config';
 process.env.TZ = 'America/Denver';
 
 export default defineConfig({
+  // @ts-ignore idk what is happening here the types are wrong somehow
   plugins: [react()],
   resolve: {
     alias: {

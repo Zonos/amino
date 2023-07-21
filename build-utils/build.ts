@@ -111,8 +111,8 @@ const generateAllModulesContent = async (
     // exclude all bundles that are not entry or just private components
     if (
       !bundle.isEntry ||
-      /^_+/.test(fileName) ||
-      /__tests__/.test(subFolderPath)
+      /^_+/.test(fileName!) ||
+      /__tests__/.test(subFolderPath!)
     ) {
       return [];
     }

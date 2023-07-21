@@ -32,7 +32,7 @@ module.exports = {
       /**
        * Turn off sort-keys for generated constants file (we don't want to sort because of comments, but want to do other linting)
        */
-      files: ['src/styles/constants/*.ts'],
+      files: ['src/styles/constants/*.ts', 'build-utils/css/constants/**'],
       rules: {
         'sort-destructure-keys/sort-destructure-keys': 'off',
         'sort-keys': 'off',

@@ -21,11 +21,11 @@ type ParsedFile = FileToParse & {
  * and consume and generate constant
  */
 export class LogicConstant {
-  #parsedFile: ParsedFile;
+  private parsedFile: ParsedFile;
 
   constructor() {
     const rootFolder = process.cwd();
-    this.#parsedFile = {
+    this.parsedFile = {
       filePath: '',
       generateJsDocsFunction: null,
       hasJSDocsComment: false,
@@ -34,7 +34,7 @@ export class LogicConstant {
     };
   }
 
-  #printError(msg: string) {
+  private printError(msg: string) {
     // eslint-disable-next-line no-console
     console.error(`File error '${__filename}': ${msg}`);
   }
@@ -44,34 +44,37 @@ export class LogicConstant {
    * @param {FileToParse}
    */
   async parse({ filePath }: FileToParse): Promise<boolean> {
-    this.#parsedFile.filePath = filePath;
+    this.parsedFile.filePath = filePath;
     if (filePath) {
-      const parsedFileValid = this.#checkValidParsedFile();
+      const parsedFileValid = this.checkValidParsedFile();
       if (!parsedFileValid) {
-        this.#printError(`Failed to parse file ${filePath}`);
+        this.printError(`Failed to parse file ${filePath}`);
       }
       return parsedFileValid;
     }
-    this.#printError('File path provided is invalid');
+    this.printError('File path provided is invalid');
     return false;
   }
 
-  #getFileName() {
-    const { filePath } = this.#parsedFile;
+  private getFileName() {
+    const { filePath } = this.parsedFile;
     return filePath.replace(/.+\/_?(.+)\.ts/gi, '$1');
   }
 
   /**
    * Check if file content satisfy naming rule for file before parsed or not
    */
-  async #checkValidParsedFile(): Promise<boolean> {
-    const { filePath, rootFolder } = this.#parsedFile;
+  private async checkValidParsedFile(): Promise<boolean> {
+    const { filePath, rootFolder } = this.parsedFile;
     /** Extract file name out of file path (without _) */
-    const fileName = this.#getFileName();
+    const fileName = this.getFileName();
     const pascalFileName = capitalize(fileName);
 
     try {
-      const importResult: object = await import(`${rootFolder}/${filePath}`);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const importResult: Record<string, any> = await import(
+        `${rootFolder}/${filePath}`
+      );
 
       /** Make sure function to generate content exist */
       const requiredGenerateContentFunction = `get${pascalFileName}ConstantKeyValuePairs`;
@@ -79,7 +82,7 @@ export class LogicConstant {
         throw Error(`${requiredGenerateContentFunction} function is required`);
       }
 
-      this.#parsedFile.keyValueParsed =
+      this.parsedFile.keyValueParsed =
         importResult[requiredGenerateContentFunction]();
 
       /** Make sure function to generate JSDocs exist */
@@ -88,7 +91,7 @@ export class LogicConstant {
       if (!importResult[requiredGenerateCommentFunction]) {
         throw Error(`${requiredGenerateCommentFunction} function is required`);
       }
-      this.#parsedFile.generateJsDocsFunction =
+      this.parsedFile.generateJsDocsFunction =
         importResult[requiredGenerateCommentFunction];
 
       /** Make sure `hasJSDocsComment` exist */
@@ -96,10 +99,10 @@ export class LogicConstant {
       if (importResult[requiredHasJSDocsFlag] === undefined) {
         throw Error(`'${requiredHasJSDocsFlag}' constant is required.`);
       }
-      this.#parsedFile.hasJSDocsComment = importResult[requiredHasJSDocsFlag];
+      this.parsedFile.hasJSDocsComment = importResult[requiredHasJSDocsFlag];
     } catch (ex) {
       if (ex instanceof Error) {
-        this.#printError(ex.message);
+        this.printError(ex.message);
         return false;
       }
     }
@@ -108,7 +111,7 @@ export class LogicConstant {
 
   generateConstantContent() {
     const { generateJsDocsFunction, hasJSDocsComment, keyValueParsed } =
-      this.#parsedFile;
+      this.parsedFile;
     if (keyValueParsed) {
       const contents = Object.entries(keyValueParsed).map(([key, value]) =>
         [
@@ -127,9 +130,9 @@ export class LogicConstant {
   }
 
   async generateConstantFile() {
-    const { rootFolder } = this.#parsedFile;
+    const { rootFolder } = this.parsedFile;
     const constantContent = this.generateConstantContent();
-    const fileName = this.#getFileName();
+    const fileName = this.getFileName();
     if (constantContent) {
       const fileContent = `
       export const ${fileName} = {

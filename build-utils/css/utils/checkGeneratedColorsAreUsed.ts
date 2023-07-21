@@ -3,8 +3,9 @@ import { type Theme } from 'build-utils/types/Theme';
 import { readFileSync } from 'fs';
 import { glob } from 'glob';
 
-const themeEntry = {
+const themeEntry: Record<Theme, string> = {
   day: 'theme.ts',
+  midnight: '_midnight.ts',
   night: '_night.ts',
 };
 

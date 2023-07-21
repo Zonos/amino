@@ -11,8 +11,8 @@ export const getMatchedAminoVariables = (content: string) => {
   );
   const matched = Array.from(aminoVarMatched);
   const result = matched.map(([, , variable, value]) => ({
-    key: trim(variable),
-    value: trim(value),
+    key: trim(variable!),
+    value: trim(value!),
   }));
   return result;
 };

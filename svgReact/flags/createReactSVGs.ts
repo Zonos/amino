@@ -14,7 +14,7 @@ const addWrapper = (id: string) => `{\`${id}\`}`;
 
 const pascalCased = (string: string) =>
   string.charAt(0).toUpperCase() +
-  string.replace(/-([a-z])/g, letters => letters[1].toUpperCase()).slice(1);
+  string.replace(/-([a-z])/g, letters => letters[1]!.toUpperCase()).slice(1);
 
 const convertSvgsObj = (destFolder: string): SvgList[] =>
   readdirSync(destFolder).reduce<SvgList[]>(
