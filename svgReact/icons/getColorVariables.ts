@@ -18,7 +18,9 @@ export const getColorVariables = ({
   const matches = Array.from(fillPropMatches);
   const fillColors = matches
     .map(x => x[2])
-    .sort((a, b) => (getHspFromColor(a).hsp < getHspFromColor(b).hsp ? -1 : 1));
+    .sort((a, b) =>
+      getHspFromColor(a!).hsp < getHspFromColor(b!).hsp ? -1 : 1,
+    );
   fillColors.forEach(color => {
     if (!/currentColor/g.test(content)) {
       /** @desc Replace the first color with the variable currentColor */
