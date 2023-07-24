@@ -52,10 +52,12 @@ const withTheme: Decorator = (Story, context) => {
 
   // Sync amino theme with storybook
   useEffect(() => {
-    if (previousStorybookTheme !== storybookTheme) {
-      if (!sameTheme && storybookTheme !== 'side-by-side') {
-        setAminoTheme(storybookTheme);
-      }
+    if (
+      previousStorybookTheme !== storybookTheme &&
+      !sameTheme &&
+      storybookTheme !== 'side-by-side'
+    ) {
+      setAminoTheme(storybookTheme);
     }
   }, [previousStorybookTheme, sameTheme, setAminoTheme, storybookTheme]);
 
