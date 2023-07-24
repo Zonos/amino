@@ -54,9 +54,7 @@ const bundlePackage = async (
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],
       }),
-      image({
-        // limit: 10000,
-      }),
+      image(),
       tsPlugin({
         tsconfigOverride: {
           compilerOptions: {
