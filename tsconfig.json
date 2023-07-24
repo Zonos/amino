@@ -20,6 +20,8 @@
     "typeRoots": ["node_modules/@types", "build-utils/types"],
     "verbatimModuleSyntax": true,
     "paths": {
+      "src/*": ["./src/*"],
+      "svgReact/*": ["./svgReact/*"],
       "story-utils/*": ["./.storybook/utils/*"]
     },
     "plugins": [

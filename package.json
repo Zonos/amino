@@ -12,11 +12,12 @@
     "not op_mini all"
   ],
   "scripts": {
-    "build:ci": "pnpm build:theme && ts-node build-utils/build.ts && pnpm build:dts",
+    "build:ci": "pnpm build:theme && pnpm build:ts && pnpm build:dts",
+    "build:ts": "ts-node build-utils/build.ts",
     "build:dts": "tspc -p ./tsconfig.emitDeclarationOnly.json",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
-    "build": "pnpm install && pnpm ci:concurrent && pnpm build:theme && ts-node build-utils/build.ts && pnpm build:dts",
+    "build": "pnpm install && pnpm ci:concurrent && pnpm build:theme && pnpm build:ts && pnpm build:dts",
     "ci:concurrent": "concurrently 'pnpm tsc' 'pnpm lint:prod' 'pnpm test:prod' --group --raw --success='all'",
     "ci": "pnpm tsc && pnpm lint:prod && pnpm test:prod",
     "dev:open": "concurrently 'pnpm storybook' 'pnpm proxy' 'pnpm open'",
