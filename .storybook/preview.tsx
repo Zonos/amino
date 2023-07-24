@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import 'src/styles/amino.css';
 import 'src/styles/reset.css';
@@ -10,6 +10,7 @@ import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
+import { usePrevious } from 'src/utils/hooks/usePrevious';
 
 import './storybook.css';
 
@@ -36,14 +37,6 @@ const SideBySideContainer = styled.div`
 `;
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
-
-const usePrevious = <T extends unknown>(value: T): T | undefined => {
-  const ref = useRef<T>();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
 
 const withTheme: Decorator = (Story, context) => {
   const [globals, updateGlobals] = useGlobals();
@@ -74,6 +67,24 @@ const withTheme: Decorator = (Story, context) => {
   }, [aminoTheme, sameTheme, storybookChanged, storybookTheme, updateGlobals]);
 
   if (storybookTheme === 'side-by-side') {
+    // Don't iframe this one because it reads local storage
+    if (context.title === 'Amino/ThemeSelect') {
+      return (
+        <SideBySideContainer>
+          <div data-theme="day">
+            <ThemeBlock left>
+              <Story {...context} />
+            </ThemeBlock>
+          </div>
+          <div data-theme="night">
+            <ThemeBlock>
+              <Story {...context} />
+            </ThemeBlock>
+          </div>
+        </SideBySideContainer>
+      );
+    }
+
     return (
       <SideBySideContainer>
         <iframe
