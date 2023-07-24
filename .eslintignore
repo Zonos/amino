@@ -4,3 +4,4 @@ svgReact/icons/svgs
 dist
 storybook-static
 src/all.ts
+!.storybook

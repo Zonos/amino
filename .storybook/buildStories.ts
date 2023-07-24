@@ -1,12 +1,8 @@
+import { capitalize } from 'build-utils/css/utils/capitalize';
 import { glob } from 'glob';
-import { capitalize } from '../build-utils/css/utils/capitalize';
 
 // https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
 type StorySpecifier = {
-  /**
-   * When auto-titling, what to prefix all generated titles with (default: '')
-   */
-  titlePrefix: string;
   /**
    * Where to start looking for story files
    */
@@ -17,6 +13,10 @@ type StorySpecifier = {
    * If unset, we use `** / *.@(mdx|stories.@(mdx|tsx|ts|jsx|js))` (no spaces)
    */
   files: string;
+  /**
+   * When auto-titling, what to prefix all generated titles with (default: '')
+   */
+  titlePrefix: string;
 };
 
 type StoryEntry = StorySpecifier & {
@@ -31,11 +31,11 @@ const pathRegex =
 
 // The titlePrefix defines the folder structure in the sidebar
 const getTitlePrefix = ({
-  folder,
   fileName,
+  folder,
 }: {
-  folder?: string;
   fileName: string;
+  folder?: string;
 }): string => {
   if (!folder) {
     return 'Amino';
@@ -61,15 +61,15 @@ const getTitlePrefix = ({
 const getStoryEntry = (storyPath: string): StoryEntry => {
   const matched = storyPath.match(pathRegex);
 
-  const { fullFolder, folder, fileName, fullFileName } = matched?.groups || {};
+  const { fileName, folder, fullFileName, fullFolder } = matched?.groups || {};
 
-  const titlePrefix = getTitlePrefix({ folder, fileName });
+  const titlePrefix = getTitlePrefix({ fileName: fileName ?? '', folder });
 
   return {
-    directory: fullFolder,
-    fileName,
+    directory: fullFolder ?? '',
+    fileName: fileName ?? '',
+    files: fullFileName ?? '',
     titlePrefix,
-    files: fullFileName,
   };
 };
 

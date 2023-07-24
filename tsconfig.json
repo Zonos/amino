@@ -60,10 +60,10 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".storybook/**/*",
     ".eslintrc.js",
     ".eslintrc.prod.js",
     "prettier.config.js",
-    ".storybook/utils",
     "tsconfig.json",
     "test-utils"
   ]

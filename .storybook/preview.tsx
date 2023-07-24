@@ -1,11 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
-import '../src/styles/amino.css';
-import { theme } from '../src/styles/constants/theme';
-import '../src/styles/reset.css';
-import '../src/styles/theme.css';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useEffect, useRef, useState } from 'react';
 
-import { Decorator, Preview } from '@storybook/react';
+import 'src/styles/amino.css';
+import 'src/styles/reset.css';
+import 'src/styles/theme.css';
+import { useGlobals } from '@storybook/addons';
+import { type Decorator, type Preview } from '@storybook/react';
+import styled from 'styled-components';
+
+import { theme } from 'src/styles/constants/theme';
+import type { Theme } from 'src/types';
+import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const ThemeBlock = styled.div<{
   left?: boolean;
@@ -28,10 +33,45 @@ const SideBySideContainer = styled.div`
   }
 `;
 
-const withTheme: Decorator = (Story, context) => {
-  const theme = context.parameters.theme || context.globals.theme;
+type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
-  if (theme === 'side-by-side') {
+const usePrevious = <T extends unknown>(value: T): T | undefined => {
+  const ref = useRef<T>();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
+
+const withTheme: Decorator = (Story, context) => {
+  const [globals, updateGlobals] = useGlobals();
+
+  const storybookTheme: StorybookTheme =
+    context.parameters.theme || globals.theme;
+
+  const { aminoTheme, setAminoTheme } = useAminoTheme({ root: true });
+  const previousStorybookTheme = usePrevious(storybookTheme);
+
+  const sameTheme = storybookTheme === aminoTheme;
+  const storybookChanged = previousStorybookTheme !== storybookTheme;
+
+  // Sync amino theme with storybook
+  useEffect(() => {
+    if (previousStorybookTheme !== storybookTheme) {
+      if (!sameTheme && storybookTheme !== 'side-by-side') {
+        setAminoTheme(storybookTheme);
+      }
+    }
+  }, [previousStorybookTheme, sameTheme, setAminoTheme, storybookTheme]);
+
+  // Sync storybook with amino
+  useEffect(() => {
+    if (!storybookChanged && !sameTheme && storybookTheme !== 'side-by-side') {
+      updateGlobals({ theme: aminoTheme });
+    }
+  }, [aminoTheme, sameTheme, storybookChanged, storybookTheme, updateGlobals]);
+
+  if (storybookTheme === 'side-by-side') {
     return (
       <SideBySideContainer>
         <div data-theme="day">
@@ -49,7 +89,7 @@ const withTheme: Decorator = (Story, context) => {
   }
 
   return (
-    <div data-theme={theme}>
+    <div data-theme={aminoTheme}>
       <ThemeBlock>
         <Story {...context} />
       </ThemeBlock>
@@ -58,43 +98,44 @@ const withTheme: Decorator = (Story, context) => {
 };
 
 const preview: Preview = {
-  decorators: [withTheme],
   argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
     className: {
       table: {
         disable: true,
       },
     },
-    children: {
-      table: {
-        disable: true,
+  },
+  decorators: [withTheme],
+  globalTypes: {
+    theme: {
+      defaultValue: 'day',
+      description: 'Global theme for components',
+      toolbar: {
+        defaultValue: 'day',
+        dynamicTitle: true,
+        icon: 'circlehollow',
+        items: [
+          { icon: 'circlehollow', title: 'Day', value: 'day' },
+          { icon: 'circle', title: 'Night', value: 'night' },
+          { icon: 'sidebar', title: 'Side by side', value: 'side-by-side' },
+        ],
+        onChange: (value: StorybookTheme) => value,
       },
     },
   },
   parameters: {
     // Display events in Actions panel
     actions: { argTypesRegex: /^on.*/ },
-    controls: { expanded: true, exclude: /^on.*/, sort: 'alpha' },
-    layout: 'fullscreen',
-  },
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      defaultValue: 'day',
-      toolbar: {
-        icon: 'circlehollow',
-        dynamicTitle: true,
-        items: [
-          { value: 'day', title: 'Day', icon: 'circlehollow' },
-          { value: 'night', title: 'Night', icon: 'circle' },
-          { value: 'side-by-side', title: 'Side by side', icon: 'sidebar' },
-        ],
-        defaultValue: 'day',
-        onChange: value => {
-          return value;
-        },
-      },
+    backgrounds: {
+      disable: true,
     },
+    controls: { exclude: /^on.*/, expanded: true, sort: 'alpha' },
+    layout: 'fullscreen',
   },
 };
 
