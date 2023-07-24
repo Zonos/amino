@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import 'src/styles/amino.css';
 import 'src/styles/reset.css';
@@ -9,8 +9,9 @@ import { type Decorator, type Preview } from '@storybook/react';
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
-import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
+
+import './storybook.css';
 
 const ThemeBlock = styled.div<{
   left?: boolean;
@@ -25,9 +26,10 @@ const ThemeBlock = styled.div<{
 `;
 
 const SideBySideContainer = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-around;
-  width: 100%;
   > * {
     flex: 1;
   }
@@ -74,16 +76,16 @@ const withTheme: Decorator = (Story, context) => {
   if (storybookTheme === 'side-by-side') {
     return (
       <SideBySideContainer>
-        <div data-theme="day">
-          <ThemeBlock left>
-            <Story {...context} />
-          </ThemeBlock>
-        </div>
-        <div data-theme="night">
-          <ThemeBlock>
-            <Story {...context} />
-          </ThemeBlock>
-        </div>
+        <iframe
+          height="100%"
+          src={`/iframe.html?globals=theme:day&id=${context.id}&viewMode=story`}
+          title="storybook-day"
+        />
+        <iframe
+          height="100%"
+          src={`/iframe.html?globals=theme:night&id=${context.id}&viewMode=story`}
+          title="storybook-night"
+        />
       </SideBySideContainer>
     );
   }
