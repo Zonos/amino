@@ -100,6 +100,9 @@ devDependencies:
   '@rollup/plugin-buble':
     specifier: ^1.0.2
     version: 1.0.2(rollup@3.26.2)
+  '@rollup/plugin-image':
+    specifier: ^3.0.2
+    version: 3.0.2(rollup@3.26.2)
   '@rollup/plugin-node-resolve':
     specifier: ^15.1.0
     version: 15.1.0(rollup@3.26.2)
@@ -307,9 +310,6 @@ devDependencies:
   rollup:
     specifier: ^3.26.2
     version: 3.26.2
-  rollup-plugin-img:
-    specifier: ^1.1.0
-    version: 1.1.0
   rollup-plugin-progress:
     specifier: ^1.1.2
     version: 1.1.2
@@ -5335,6 +5335,20 @@ packages:
       rollup: 3.26.2
     dev: true
 
+  /@rollup/plugin-image@3.0.2(rollup@3.26.2):
+    resolution: {integrity: sha512-eGVrD6lummWH5ENo9LWX3JY62uBb9okUNQ2htXkugrG6WjACrMUVhWvss+0wW3fwJWmFYpoEny3yL4spEdh15g==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.2(rollup@3.26.2)
+      mini-svg-data-uri: 1.4.4
+      rollup: 3.26.2
+    dev: true
+
   /@rollup/plugin-node-resolve@15.1.0(rollup@3.26.2):
     resolution: {integrity: sha512-xeZHCgsiZ9pzYVgAo9580eCGqwh/XCEUM9q6iQfGNocjgkufHAqC3exA+45URvhiYV8sBF9RlBai650eNs7AsA==}
     engines: {node: '>=14.0.0'}
@@ -9979,10 +9993,6 @@ packages:
       - supports-color
     dev: true
 
-  /estree-walker@0.6.1:
-    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
-    dev: true
-
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
     dev: true
@@ -12560,6 +12570,11 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
+    dev: true
+
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -14454,12 +14469,6 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-img@1.1.0:
-    resolution: {integrity: sha512-44JyY0wBQFNjM2pB7Yv1uUwMW4S1bjdnzLmUPShrDeACSMvn798i9ttwiBkfls+QjSY0qLrNqMacUTDX93Q0MA==}
-    dependencies:
-      rollup-pluginutils: 2.8.2
-    dev: true
-
   /rollup-plugin-progress@1.1.2:
     resolution: {integrity: sha512-6ehSZOMTZdAlRpe45kf56BnIOsDYC2GKWhGlK/Dh/Ae/AMUneMDyKdiv9ZlRrW/HVc986frTZcc2Zka+oF6W7Q==}
     dependencies:
@@ -14489,12 +14498,6 @@ packages:
       semver: 7.5.4
       tslib: 2.6.0
       typescript: 5.1.6
-    dev: true
-
-  /rollup-pluginutils@2.8.2:
-    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
-    dependencies:
-      estree-walker: 0.6.1
     dev: true
 
   /rollup@3.26.2:
