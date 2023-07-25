@@ -1,5 +1,5 @@
 import { useAlert } from 'src/components/alert-dialog/useAlert';
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { VStack } from 'src/components/stack/VStack';
 
 export const AlertConsumer = () => {

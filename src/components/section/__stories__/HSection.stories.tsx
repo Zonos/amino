@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 import { v4 } from 'uuid';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Card } from 'src/components/card/Card';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Input } from 'src/components/input/Input';

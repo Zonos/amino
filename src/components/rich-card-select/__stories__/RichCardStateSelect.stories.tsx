@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Dialog } from 'src/components/dialog/Dialog';
 import {
   type RichCardStateSelectProps,

@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Input } from 'src/components/input/Input';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { type VSectionProps, VSection } from 'src/components/section/VSection';

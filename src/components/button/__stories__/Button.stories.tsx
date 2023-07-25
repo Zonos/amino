@@ -105,6 +105,7 @@ const ButtonRow = ({
         intent={intent}
         loading={loading}
         onClick={e => e.preventDefault()}
+        outline={props.outline}
         tag="div"
       />
       <StyledButton
@@ -112,6 +113,7 @@ const ButtonRow = ({
         intent={intent}
         loading={loading}
         onClick={e => e.preventDefault()}
+        outline={props.outline}
         tag="div"
       >
         Div Button
@@ -123,6 +125,7 @@ const ButtonRow = ({
         intent={intent}
         loading={loading}
         onClick={e => e.preventDefault()}
+        outline={props.outline}
         tag="a"
       >
         Anchor tag Button
@@ -177,10 +180,24 @@ Default.args = {
   intent: 'standard',
 };
 
+export const DefaultOutline = Template.bind({});
+DefaultOutline.args = {
+  children: 'Example button',
+  intent: 'standard',
+  outline: true,
+};
+
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Example button',
   intent: 'primary',
+};
+
+export const PrimaryOutline = Template.bind({});
+PrimaryOutline.args = {
+  children: 'Example button',
+  intent: 'primary',
+  outline: true,
 };
 
 export const Success = Template.bind({});
@@ -189,10 +206,24 @@ Success.args = {
   intent: 'success',
 };
 
+export const SuccessOutline = Template.bind({});
+SuccessOutline.args = {
+  children: 'Example button',
+  intent: 'success',
+  outline: true,
+};
+
 export const Danger = Template.bind({});
 Danger.args = {
   children: 'Example button',
   intent: 'danger',
+};
+
+export const DangerOutline = Template.bind({});
+DangerOutline.args = {
+  children: 'Example button',
+  intent: 'danger',
+  outline: true,
 };
 
 export const Warning = Template.bind({});
@@ -201,10 +232,11 @@ Warning.args = {
   intent: 'warning',
 };
 
-export const Outline = Template.bind({});
-Outline.args = {
+export const WarningOutline = Template.bind({});
+WarningOutline.args = {
   children: 'Example button',
-  intent: 'outline',
+  intent: 'warning',
+  outline: true,
 };
 
 export const LinkButton = Template.bind({});
@@ -219,11 +251,11 @@ Subtle.args = {
   intent: 'subtle',
 };
 
-export const TextButton = Template.bind({});
-TextButton.args = {
-  children: 'Text Button',
-  intent: 'text',
-};
+// export const TextButton = Template.bind({});
+// TextButton.args = {
+//   children: 'Text Button',
+//   intent: 'text',
+// };
 
 export const PlainButton = Template.bind({});
 PlainButton.args = {

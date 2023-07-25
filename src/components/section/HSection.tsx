@@ -2,7 +2,7 @@ import { type ReactNode, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';

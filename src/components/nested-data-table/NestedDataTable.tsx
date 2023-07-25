@@ -3,7 +3,7 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';

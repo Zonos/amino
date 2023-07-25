@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { type ButtonProps, Button } from 'src/components/button/Button';
+import { type ButtonProps, Button } from 'src/components/button/LegacyButton';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Select } from 'src/components/select/Select';

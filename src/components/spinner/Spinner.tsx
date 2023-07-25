@@ -72,16 +72,32 @@ const AminoSpinner = styled.span<SpinnerProps>`
   }
 
   &.info {
-    border-top-color: ${theme.blue600};
+    border: ${p => p.size! / 8}px solid ${theme.blue100};
+    border-top-color: ${theme.primary};
+    &:before {
+      border-right-color: ${theme.blue100};
+    }
   }
   &.success {
-    border-top-color: ${theme.green600};
+    border: ${p => p.size! / 8}px solid ${theme.green100};
+    border-top-color: ${theme.success};
+    &:before {
+      border-right-color: ${theme.green100};
+    }
   }
   &.danger {
-    border-top-color: ${theme.red600};
+    border: ${p => p.size! / 8}px solid ${theme.red100};
+    border-top-color: ${theme.danger};
+    &:before {
+      border-right-color: ${theme.orange100};
+    }
   }
   &.warning {
-    border-top-color: ${theme.orange600};
+    border: ${p => p.size! / 8}px solid ${theme.orange100};
+    border-top-color: ${theme.warning};
+    &:before {
+      border-right-color: ${theme.orange100};
+    }
   }
 `;
 
