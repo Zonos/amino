@@ -39,19 +39,36 @@ const SideBySideContainer = styled.div`
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
 const withTheme: Decorator = (Story, context) => {
+  // Inside side-by-side iframe
+  const inSideBySide = window.location.href.includes('innerFrame=true');
+
   const [globals, updateGlobals] = useGlobals();
 
   const storybookTheme: StorybookTheme =
     context.parameters.theme || globals.theme;
 
-  const { aminoTheme, setAminoTheme } = useAminoTheme({ root: true });
+  const { aminoTheme, setAminoTheme } = useAminoTheme({
+    root: !inSideBySide,
+  });
   const previousStorybookTheme = usePrevious(storybookTheme);
 
   const sameTheme = storybookTheme === aminoTheme;
   const storybookChanged = previousStorybookTheme !== storybookTheme;
 
+  // Only set root once in the side by side iframe
+  useEffect(() => {
+    if (inSideBySide) {
+      document.documentElement.dataset.theme = storybookTheme;
+    }
+  }, [inSideBySide, storybookTheme]);
+
   // Sync amino theme with storybook
   useEffect(() => {
+    // Don't set from side-by-side iframe
+    if (inSideBySide) {
+      return;
+    }
+
     if (
       previousStorybookTheme !== storybookTheme &&
       !sameTheme &&
@@ -59,14 +76,32 @@ const withTheme: Decorator = (Story, context) => {
     ) {
       setAminoTheme(storybookTheme);
     }
-  }, [previousStorybookTheme, sameTheme, setAminoTheme, storybookTheme]);
+  }, [
+    inSideBySide,
+    previousStorybookTheme,
+    sameTheme,
+    setAminoTheme,
+    storybookTheme,
+  ]);
 
   // Sync storybook with amino
   useEffect(() => {
+    // Don't set from side-by-side iframe
+    if (inSideBySide) {
+      return;
+    }
+
     if (!storybookChanged && !sameTheme && storybookTheme !== 'side-by-side') {
       updateGlobals({ theme: aminoTheme });
     }
-  }, [aminoTheme, sameTheme, storybookChanged, storybookTheme, updateGlobals]);
+  }, [
+    aminoTheme,
+    inSideBySide,
+    sameTheme,
+    storybookChanged,
+    storybookTheme,
+    updateGlobals,
+  ]);
 
   if (storybookTheme === 'side-by-side') {
     // Don't iframe this one because it reads local storage
@@ -91,20 +126,20 @@ const withTheme: Decorator = (Story, context) => {
       <SideBySideContainer>
         <iframe
           height="100%"
-          src={`/iframe.html?globals=theme:day&id=${context.id}&viewMode=story`}
-          title="storybook-day"
+          src={`/iframe.html?globals=theme:day&id=${context.id}&viewMode=story&innerFrame=true`}
+          title="iframe-storybook-day"
         />
         <iframe
           height="100%"
-          src={`/iframe.html?globals=theme:night&id=${context.id}&viewMode=story`}
-          title="storybook-night"
+          src={`/iframe.html?globals=theme:night&id=${context.id}&viewMode=story&innerFrame=true`}
+          title="iframe-storybook-night"
         />
       </SideBySideContainer>
     );
   }
 
   return (
-    <div data-theme={aminoTheme}>
+    <div data-theme={inSideBySide ? storybookTheme : aminoTheme}>
       <ThemeBlock>
         <Story {...context} />
       </ThemeBlock>
