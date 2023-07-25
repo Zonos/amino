@@ -40,6 +40,8 @@ const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: ${theme.space12};
+  width: 100%;
+  height: 100%;
 `;
 
 const InstructionTextWrapper = styled.div`
