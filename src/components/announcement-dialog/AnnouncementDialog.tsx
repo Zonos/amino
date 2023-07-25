@@ -77,7 +77,7 @@ export const AnnouncementDialog = forwardRef<
 
     return (
       <BaseDialog
-        className={className}
+        className={[className || '', 'announcement-dialog'].join(' ')}
         closeOnBlur={closeOnBlur}
         closeOnEsc={closeOnEsc}
         data-theme={themeOverride}
