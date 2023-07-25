@@ -30,11 +30,12 @@ import type { IOption } from 'src/types/IOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 
-type AdditionalProps = {
+type AdditionalProps<Value> = {
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
   size?: Size;
+  customOption?: (value: Value) => ReactNode;
 };
 
 const ClearIndicator = <
@@ -179,7 +180,8 @@ const Control = <
     selectProps,
   } = props;
   const { icon, label, size, value } =
-    selectProps as (typeof props)['selectProps'] & AdditionalProps;
+    selectProps as (typeof props)['selectProps'] &
+      AdditionalProps<Option['value']>;
   return (
     <div
       ref={innerRef}
@@ -303,13 +305,30 @@ export const CheckboxOptionComponent = <
     isSelected,
     selectProps,
   } = props;
-  const { hasGroups } = selectProps as (typeof props)['selectProps'] &
-    AdditionalProps;
+  const { customOption, hasGroups } =
+    selectProps as (typeof props)['selectProps'] &
+      AdditionalProps<Option['value']>;
 
   const { color, ...style } = getStyles('option', props) as CSSProperties;
   if (hasGroups) {
     style.paddingLeft = 48;
   }
+
+  const renderContent = () => {
+    if (customOption) {
+      return customOption(data.value);
+    }
+
+    return (
+      <SelectedSingleOptionWrapper>
+        <IconLabel color={color} icon={data.icon}>
+          {children}
+        </IconLabel>
+        {isSelected && <CheckCircleIcon color="blue600" size={16} />}
+      </SelectedSingleOptionWrapper>
+    );
+  };
+
   return (
     <div ref={innerRef} {...innerProps}>
       <StyledSelectOptionWrapper
@@ -330,12 +349,7 @@ export const CheckboxOptionComponent = <
             onChange={() => {}}
           />
         ) : (
-          <SelectedSingleOptionWrapper>
-            <IconLabel color={color} icon={data.icon}>
-              {children}
-            </IconLabel>
-            {isSelected && <CheckCircleIcon color="blue600" size={16} />}
-          </SelectedSingleOptionWrapper>
+          renderContent()
         )}
       </StyledSelectOptionWrapper>
     </div>
@@ -352,7 +366,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // container
   control: (provided, state) => {
     const { size } = state.selectProps as (typeof state)['selectProps'] &
-      AdditionalProps;
+      AdditionalProps<IOption['value']>;
     return {
       ...provided,
       background: theme.inputBackground,
@@ -452,7 +466,7 @@ export interface StyledReactSelectProps<
   Group extends GroupBase<Option>,
 > extends Props<Option, IsMulti, Group>,
     HelpTextProps,
-    AdditionalProps {
+    AdditionalProps<Option['value']> {
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
@@ -466,6 +480,7 @@ export const StyledReactSelect = <
 >({
   closeOnOutsideScroll = false,
   components,
+  customOption,
   error,
   hasGroups,
   helpText,
@@ -477,7 +492,8 @@ export const StyledReactSelect = <
   styles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
-  const additionalProps: AdditionalProps = {
+  const additionalProps: AdditionalProps<Option['value']> = {
+    customOption,
     hasGroups,
     icon,
     label,
