@@ -345,7 +345,7 @@ export const CheckboxOptionComponent = <
 const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   clearIndicator: provided => ({
     ...provided,
-    color: `${theme.gray700}`,
+    color: theme.gray700,
     paddingLeft: 14,
     paddingRight: 4,
   }),
@@ -368,7 +368,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   },
   dropdownIndicator: provided => ({
     ...provided,
-    color: `${theme.gray900}`,
+    color: theme.gray900,
     paddingLeft: 4,
     paddingRight: 10,
   }),
@@ -380,7 +380,11 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // groupHeading
   // indicatorsContainer
   indicatorSeparator: provided => ({ ...provided, width: 0 }),
-  // input
+  input: provided => ({
+    ...provided,
+    color: theme.textColor,
+    opacity: 0.8,
+  }),
   // loadingIndicator
   // loadingMessage
   menu: provided => ({
