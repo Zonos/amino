@@ -63,12 +63,12 @@ const getStoryEntry = (storyPath: string): StoryEntry => {
 
   const { fileName, folder, fullFileName, fullFolder } = matched?.groups || {};
 
-  const titlePrefix = getTitlePrefix({ fileName: fileName ?? '', folder });
+  const titlePrefix = getTitlePrefix({ fileName: fileName || '', folder });
 
   return {
-    directory: fullFolder ?? '',
-    fileName: fileName ?? '',
-    files: fullFileName ?? '',
+    directory: fullFolder || '',
+    fileName: fileName || '',
+    files: fullFileName || '',
     titlePrefix,
   };
 };
