@@ -7,6 +7,7 @@ import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { type SelectProps, Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { type IOption } from 'src/types/IOption';
@@ -169,6 +170,47 @@ SelectWithDeveloperException.parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
   },
+};
+
+export const Customized = SelectTemplate.bind({});
+
+const customOption: SelectProps['customOption'] = (value: string | number) => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+    }}
+  >
+    <Text color="blue500" fontWeight={800}>
+      {value}
+    </Text>
+    <Text color="red500">{value}</Text>
+  </div>
+);
+
+Customized.args = {
+  customOption,
+  icon: <FileIcon size={20} />,
+  label: 'Currencies',
+  options: [
+    {
+      icon: <FileIcon size={14} />,
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+    {
+      icon: <FileIcon size={14} />,
+      label: 'European Euro (EUR)',
+      value: 'EUR',
+    },
+  ],
+  value: [
+    {
+      icon: <FileIcon size={14} />,
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+  ],
 };
 
 const CenteredDiv = styled.div`
