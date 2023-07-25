@@ -17,31 +17,7 @@ module.exports = {
   globals: {
     JSX: 'readonly',
   },
-  plugins: [
-    'vitest',
-    '@typescript-eslint',
-    'simple-import-sort',
-    'prettier',
-    'deprecation',
-    'sort-keys',
-    'typescript-custom-sort-keys',
-    'sort-destructure-keys',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
   overrides: [
-    {
-      files: ['./src/**/*'],
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-    },
     {
       /**
        * Disable no-undef on typescript file since the check it provides are already provided by Typescript without the need for configuration
@@ -56,7 +32,7 @@ module.exports = {
       /**
        * Turn off sort-keys for generated constants file (we don't want to sort because of comments, but want to do other linting)
        */
-      files: ['src/styles/constants/*.ts'],
+      files: ['src/styles/constants/*.ts', 'build-utils/css/constants/**'],
       rules: {
         'sort-destructure-keys/sort-destructure-keys': 'off',
         'sort-keys': 'off',
@@ -71,65 +47,40 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
       },
     },
+    {
+      files: ['**.test.ts'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: ['.storybook/**'],
+      rules: {
+        'no-relative-import-paths/no-relative-import-paths': 'off',
+      },
+    },
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2020,
+    project: './tsconfig.json',
+    sourceType: 'module',
+  },
+  plugins: [
+    'vitest',
+    '@typescript-eslint',
+    'simple-import-sort',
+    'prettier',
+    'deprecation',
+    'sort-keys',
+    'typescript-custom-sort-keys',
+    'sort-destructure-keys',
+    'no-relative-import-paths',
   ],
   rules: {
-    /**
-     * Sort object destructure keys. This rule autofix doesn't tie with comment like `sort-keys`
-     * @ref https://github.com/mthadley/eslint-plugin-sort-destructure-keys
-     */
-    'sort-destructure-keys/sort-destructure-keys': [
-      'warn',
-      { caseSensitive: false },
-    ],
-    'sort-keys': 'off',
-    /**
-     * Sort object keys (not included destructure object)
-     * @ref https://github.com/namnm/eslint-plugin-sort-keys
-     */
-    'sort-keys/sort-keys-fix': ['warn', 'asc'],
-    /**
-     * Sort all types/interface keys
-     * @ref https://github.com/prash471/eslint-plugin-typescript-custom-sort-keys
-     */
-    'typescript-custom-sort-keys/interface': [
-      'warn',
-      'asc',
-      {
-        caseSensitive: true,
-        showFunctionsAtEnd: true,
-      },
-    ],
-    'react/jsx-sort-props': ['error'],
-
-    'deprecation/deprecation': 'warn',
-    'react/jsx-props-no-spreading': 'off',
-    'react/react-in-jsx-scope': 'off',
-    /** Typescript 4.0 changes */
-    // Disable the base rule it can report incorrect errors
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error'],
-    // https://github.com/typescript-eslint/typescript-eslint/issues/2483
-    'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': ['error'],
-    /** End Typescript 4.0 changes */
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: true,
-      },
-    ],
-    '@typescript-eslint/no-explicit-any': 'error',
-    camelcase: 'off',
-    // Disable the base rule it can report incorrect errors
-    'no-unused-vars': 'off',
-    'no-unused-expressions': 'error',
-    '@typescript-eslint/no-unused-vars': [
-      'warn',
-      {
-        ignoreRestSiblings: true,
-        argsIgnorePattern: '^_',
-      },
-    ],
     '@typescript-eslint/consistent-type-imports': [
       'error',
       {
@@ -137,8 +88,20 @@ module.exports = {
         prefer: 'type-imports',
       },
     ],
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-shadow': ['error'],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
+    '@typescript-eslint/no-use-before-define': ['error'],
+    camelcase: 'off',
     // disable since sometime `this` doesn't need to be used in some util function in class
     'class-methods-use-this': 'off',
+    'deprecation/deprecation': 'warn',
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -147,6 +110,13 @@ module.exports = {
         jsx: 'never',
         ts: 'never',
         tsx: 'never',
+      },
+    ],
+    /** End Typescript 4.0 changes */
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
       },
     ],
     'import/no-internal-modules': [
@@ -161,18 +131,24 @@ module.exports = {
     'import/prefer-default-export': 'off',
     // For debugging ease
     'no-console': 'warn',
+    'no-relative-import-paths/no-relative-import-paths': 'warn',
+    'no-restricted-syntax': [
+      'error',
+      // https://stackoverflow.com/questions/42226436/how-can-i-turn-off-eslints-no-restricted-syntax-rule-just-for-forofstatement
+      'ForInStatement',
+      'LabeledStatement',
+      'WithStatement',
+    ],
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2483
+    'no-shadow': 'off',
     'no-underscore-dangle': 'off',
+    'no-unused-expressions': 'error',
+    // Disable the base rule it can report incorrect errors
+    'no-unused-vars': 'off',
+    // Disable the base rule it can report incorrect errors
+    'no-use-before-define': 'off',
     'prettier/prettier': 'error',
-    // Prettier takes care of this
-    'react/jsx-curly-newline': 'off',
-    'react/jsx-filename-extension': 'off',
-    // Prettier takes care of this
-    'react/jsx-indent': 'off',
-    // Prettier takes care of this
-    'react/jsx-one-expression-per-line': 'off',
-    // Prettier takes care of this
-    'react/jsx-wrap-multilines': 'off',
-    'react/prop-types': 'off',
+    'react/default-props-match-prop-types': 'off',
     'react/function-component-definition': [
       'error',
       {
@@ -180,14 +156,26 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'react/default-props-match-prop-types': 'off',
-    'react/require-default-props': 'off',
+    // Prettier takes care of this
+    'react/jsx-curly-newline': 'off',
+    'react/jsx-filename-extension': 'off',
+    // Prettier takes care of this
+    'react/jsx-indent': 'off',
     'react/jsx-no-useless-fragment': [
       'error',
       {
         allowExpressions: true,
       },
     ],
+    // Prettier takes care of this
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-sort-props': ['error'],
+    // Prettier takes care of this
+    'react/jsx-wrap-multilines': 'off',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': [
       'error',
@@ -195,13 +183,32 @@ module.exports = {
         groups: [['^react'], ['^@?w', '^(?!src)'], ['^(src)/'], ['((.|..)/)?']],
       },
     ],
+    /**
+     * Sort object destructure keys. This rule autofix doesn't tie with comment like `sort-keys`
+     * @ref https://github.com/mthadley/eslint-plugin-sort-destructure-keys
+     */
+    'sort-destructure-keys/sort-destructure-keys': [
+      'warn',
+      { caseSensitive: false },
+    ],
+    'sort-keys': 'off',
+    /**
+     * Sort object keys (not included destructure object)
+     * @ref https://github.com/namnm/eslint-plugin-sort-keys
+     */
+    'sort-keys/sort-keys-fix': ['warn', 'asc'],
     'storybook/use-storybook-expect': 'off',
-    'no-restricted-syntax': [
-      'error',
-      // https://stackoverflow.com/questions/42226436/how-can-i-turn-off-eslints-no-restricted-syntax-rule-just-for-forofstatement
-      'ForInStatement',
-      'LabeledStatement',
-      'WithStatement',
+    /**
+     * Sort all types/interface keys
+     * @ref https://github.com/prash471/eslint-plugin-typescript-custom-sort-keys
+     */
+    'typescript-custom-sort-keys/interface': [
+      'warn',
+      'asc',
+      {
+        caseSensitive: true,
+        showFunctionsAtEnd: true,
+      },
     ],
   },
   settings: {

@@ -4,12 +4,11 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Input } from 'src/components/input/Input';
-import { Text } from 'src/components/text/Text';
-
 import {
   type Props,
   ProfileIcon as ProfileIconComponent,
-} from '../ProfileIcon';
+} from 'src/components/profile-icon/ProfileIcon';
+import { Text } from 'src/components/text/Text';
 
 const ProfileIconMeta: Meta = {
   component: ProfileIconComponent,

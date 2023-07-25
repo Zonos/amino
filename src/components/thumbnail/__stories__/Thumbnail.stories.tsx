@@ -1,13 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import * as icons from 'src/icons/IconIndex';
-import { theme } from 'src/styles/constants/theme';
-
 import {
   type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
-} from '../Thumbnail';
+} from 'src/components/thumbnail/Thumbnail';
+import * as icons from 'src/icons/IconIndex';
+import { theme } from 'src/styles/constants/theme';
 
 const ThumbnailMeta: Meta = {
   argTypes: {

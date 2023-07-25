@@ -1,6 +1,5 @@
+import { generateConstantContent } from 'build-utils/css/utils/generateAminoContants';
 import { readFileSync } from 'fs';
-
-import { generateConstantContent } from '../generateAminoContants';
 
 const themeContent = readFileSync(`build-utils/css/constants/theme.ts`, {
   encoding: 'utf-8',

@@ -1,7 +1,7 @@
 import initStoryshots from '@storybook/addon-storyshots';
 import {
+  type PuppeteerTestConfig,
   puppeteerTest,
-  PuppeteerTestConfig,
 } from '@storybook/addon-storyshots-puppeteer';
 import { resolve } from 'path';
 
@@ -16,6 +16,7 @@ describe('Visual regression testing', () => {
     }),
   };
 
+  // eslint-disable-next-line no-console
   console.log('Puppeteer config: ', config);
 
   // https://github.com/storybookjs/storybook/tree/main/addons/storyshots/storyshots-puppeteer#puppeteertest

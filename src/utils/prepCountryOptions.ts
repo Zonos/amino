@@ -1,6 +1,5 @@
 import type { IGetCountriesResponse } from 'src/types/ICountry';
-
-import { countryPhoneCodes } from './countryPhoneCodes';
+import { countryPhoneCodes } from 'src/utils/countryPhoneCodes';
 
 export const prepCountryOptions = <CountryCode extends string = string>({
   json,

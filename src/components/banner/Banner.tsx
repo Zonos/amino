@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
@@ -11,8 +12,6 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Color, Intent } from 'src/types';
-
-import { Button } from '../button/Button';
 
 const StyledBanner = styled.div`
   border-radius: ${theme.radius6};

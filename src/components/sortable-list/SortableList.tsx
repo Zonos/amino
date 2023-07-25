@@ -12,7 +12,7 @@ import {
 import type { SortingStrategy } from '@dnd-kit/sortable/dist/types';
 import styled from 'styled-components';
 
-import type { DragEndEvent } from './SortableListDeps';
+import type { DragEndEvent } from 'src/components/sortable-list/SortableListDeps';
 
 const StyledSortableList = styled.div`
   display: flex;

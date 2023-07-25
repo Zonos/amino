@@ -182,6 +182,7 @@ exports[`Case light theme: 1`] = `
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-text-color: var(--amino-gray-1000);
+  --amino-text-color-secondary: var(--amino-gray-800);
   --amino-surface-color: var(--amino-gray-0);
   --amino-surface-color-secondary: var(--amino-gray-50);
   --amino-backdrop-color: var(--amino-gray-1200);
@@ -371,9 +372,15 @@ exports[`Case night theme: 1`] = `
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
   --amino-text-color: var(--amino-gray-1000);
+  --amino-text-color-secondary: var(--amino-gray-800);
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
   --amino-backdrop-color: var(--amino-gray-0);
+
+  /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
+  .elevated {
+    --amino-hover-color: var(--amino-gray-100);
+  }
 }
 "
 `;

@@ -11,6 +11,7 @@ import {
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import { MultiSelect } from 'src/components/select/MultiSelect';
 import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import {
   type ICountryOption,
@@ -18,8 +19,6 @@ import {
 } from 'src/types/ICountry';
 import type { IOption } from 'src/types/IOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
-
-import { MultiSelect } from './MultiSelect';
 
 type AdditionalProps = {
   allSelected: boolean;

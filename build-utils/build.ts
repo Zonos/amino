@@ -1,15 +1,19 @@
 import buble from '@rollup/plugin-buble';
+import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
+import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
 import { glob } from 'glob';
-import { InputOptions, OutputChunk, OutputOptions, rollup } from 'rollup';
-import image from 'rollup-plugin-img';
+import { dependencies, peerDependencies } from 'package.json';
+import {
+  type InputOptions,
+  type OutputChunk,
+  type OutputOptions,
+  rollup,
+} from 'rollup';
 import progress from 'rollup-plugin-progress';
 import tsPlugin from 'rollup-plugin-typescript2';
-
-import { dependencies, peerDependencies } from '../package.json';
-import sizes from './plugins/customized-rollup-plugin-sizes';
 
 type RollupOptions = InputOptions & { output?: OutputOptions };
 type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
@@ -42,14 +46,15 @@ const bundlePackage = async (
   options: ConfigOptions & { output: OutputOptions },
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
+    cache: false,
+    external: Object.keys(peerDependencies).concat(Object.keys(dependencies)),
+    maxParallelFileOps: 50,
     plugins: [
       nodeResolve({
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],
       }),
-      image({
-        limit: 10000,
-      }),
+      image(),
       tsPlugin({
         tsconfigOverride: {
           compilerOptions: {
@@ -61,18 +66,15 @@ const bundlePackage = async (
         exclude: 'node_modules/**',
         include: '**/*.{js,mjs,jsx,ts,tsx,vue}',
         transforms: {
-          modules: false,
           dangerousForOf: true,
           dangerousTaggedTemplateString: true,
+          modules: false,
         },
       }),
       terser(),
       progress({ clearLine: true }),
       sizes({ details: true }),
     ],
-    cache: false,
-    external: Object.keys(peerDependencies).concat(Object.keys(dependencies)),
-    maxParallelFileOps: 50,
   };
   const configOptions: ConfigOptions = {
     ...defaultOptions,
@@ -107,8 +109,8 @@ const generateAllModulesContent = async (
     // exclude all bundles that are not entry or just private components
     if (
       !bundle.isEntry ||
-      /^_+/.test(fileName) ||
-      /__tests__/.test(subFolderPath)
+      /^_+/.test(fileName!) ||
+      /__tests__/.test(subFolderPath!)
     ) {
       return [];
     }
@@ -129,14 +131,14 @@ const allModules = animationsModules
 const configs: ConfigOptions[] = [
   {
     input: prepareEntries(allModules),
+    maxParallelFileOps: 200,
     output: {
       dir: 'dist',
-      format: 'cjs',
-      sourcemap: false,
       exports: 'auto',
+      format: 'cjs',
       interop: 'auto',
+      sourcemap: false,
     },
-    maxParallelFileOps: 200,
   },
 ];
 

@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import {
   type Props,
   OwnershipBlock as OwnershipBlockComponent,
-} from '../OwnershipBlock';
+} from 'src/components/ownership-block/OwnershipBlock';
 
 const OwnershipBlockMeta: Meta = {
   component: OwnershipBlockComponent,

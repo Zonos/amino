@@ -2,9 +2,8 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
+import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-
-import { Text } from '../text/Text';
 
 const StyledSectionSubheader = styled(Text)`
   margin-top: ${theme.space8};

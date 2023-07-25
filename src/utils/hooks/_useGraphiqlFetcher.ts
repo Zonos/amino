@@ -8,8 +8,8 @@ import {
   type GraphiqlFetcher,
   type HandleFetchFetcher,
   graphiqlFetcher,
-} from '../_graphiqlFetcher';
-import { useSwr } from './useSwr';
+} from 'src/utils/_graphiqlFetcher';
+import { useSwr } from 'src/utils/hooks/useSwr';
 
 type Props = {
   // caching key (use cache if it's already loaded in swr)

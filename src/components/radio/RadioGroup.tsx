@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
+import { Radio } from 'src/components/radio/Radio';
 import { theme } from 'src/styles/constants/theme';
-
-import { Radio } from './Radio';
 
 const RadioContainer = styled.div`
   display: flex;

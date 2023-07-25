@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { BaseWrapper } from 'src/components/avatar/__stories__/BaseWrapper';
 import bigSvg from 'src/components/avatar/__stories__/resources/big.svg';
 import magentoSvg from 'src/components/avatar/__stories__/resources/magento.svg';
 import mivaSvg from 'src/components/avatar/__stories__/resources/miva.svg';
@@ -11,8 +12,6 @@ import {
   ImageAvatar as Avatar,
 } from 'src/components/avatar/ImageAvatar';
 import { HStack } from 'src/components/stack/HStack';
-
-import { BaseWrapper } from './BaseWrapper';
 
 const ImageAvatarMeta: Meta = {
   argTypes: {

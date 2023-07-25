@@ -119,6 +119,7 @@ export const SlideOver = ({
         <Popup
           key="slide-over"
           animate={{ opacity: 1, x: 0 }}
+          className="elevated"
           exit={{ opacity: 0, x: 300 }}
           initial={{ opacity: 0, x: 300 }}
           transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}

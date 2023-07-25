@@ -4,8 +4,8 @@ export type GenerateIconType = {
 };
 
 export type SvgList = {
-  originalFileName: string;
+  componentName: string;
   /** New file name with extension .tsx */
   newFileName: string;
-  componentName: string;
+  originalFileName: string;
 };

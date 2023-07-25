@@ -1,9 +1,8 @@
 import { execSync } from 'child_process';
-
-import { optimizeSvgs } from '../build-utils/optimizeSvgs';
-import { copySmallerFlags } from './copySmallerFlags';
-import { downloadFlagsAWS } from './downloadFlagsAWS';
-import { removeAWSErrorSvgs } from './removeAWSErrorSvgs';
+import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
+import { copySmallerFlags } from 'svgReact/flags/copySmallerFlags';
+import { downloadFlagsAWS } from 'svgReact/flags/downloadFlagsAWS';
+import { removeAWSErrorSvgs } from 'svgReact/flags/removeAWSErrorSvgs';
 
 export const generateSvgs = async () => {
   try {

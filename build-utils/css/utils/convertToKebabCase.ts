@@ -1,4 +1,4 @@
-import { convertPascalCaseToCamelCase } from './convertPascalCaseToCamelCase';
+import { convertPascalCaseToCamelCase } from 'build-utils/css/utils/convertPascalCaseToCamelCase';
 
 /**
  * Format color name to kebab-case

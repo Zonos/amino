@@ -1,22 +1,22 @@
-import { convertToKebabCase } from '../convertToKebabCase';
+import { convertToKebabCase } from 'build-utils/css/utils/convertToKebabCase';
 
 type UnitTest = {
-  text: string;
   expected: string;
+  text: string;
 };
 const testCases: UnitTest[] = [
   {
-    text: 'testCase',
     expected: 'test-case',
+    text: 'testCase',
   },
   {
-    text: 'AllCap',
     expected: 'all-cap',
+    text: 'AllCap',
   },
 ];
 
 describe('Make sure convertToKebabCase work properly', () => {
-  test.each(testCases)('text "$text": "$expected"', ({ text, expected }) => {
+  test.each(testCases)('text "$text": "$expected"', ({ expected, text }) => {
     expect(convertToKebabCase(text)).toBe(expected);
   });
 });

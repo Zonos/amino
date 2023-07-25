@@ -3,9 +3,8 @@ import type { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { SearchInput } from 'src/components/input/SearchInput';
+import { type NavigationGroupProps } from 'src/components/layout/NavigationGroup';
 import { theme } from 'src/styles/constants/theme';
-
-import { type NavigationGroupProps } from './NavigationGroup';
 
 const Footer = styled.div`
   box-sizing: border-box;

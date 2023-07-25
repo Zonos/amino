@@ -3,14 +3,13 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
+import { TableData } from 'src/components/nested-data-table/_TableData';
+import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
+import { RestState } from 'src/components/rest-state/RestState';
+import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import { type flattenRow } from 'src/utils/flattenRow';
-
-import { Button } from '../button/Button';
-import type { RowWithIndex } from '../pivot-table/PivotTable';
-import { RestState } from '../rest-state/RestState';
-import { Text } from '../text/Text';
-import { TableData } from './_TableData';
 
 const StyledPivotTableContentWrapper = styled.div`
   height: 100%;

@@ -1,4 +1,4 @@
-import { useStorage } from './useStorage';
+import { useStorage } from 'src/utils/hooks/useStorage';
 
 export const useCurrentSchema = <TValue extends string>(
   defaultSchema: TValue,

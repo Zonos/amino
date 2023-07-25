@@ -3,14 +3,13 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
+import { getCountryUrls } from 'src/components/select/__stories__/getCountryUrls';
+import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountrySelectProps,
   CountrySelect,
 } from 'src/components/select/CountrySelect';
 import type { ICountryOption } from 'src/types/ICountry';
-
-import { getCountryUrls } from './getCountryUrls';
-import { useCountryOptions } from './useCountryOptions';
 
 const StyledWrapper = styled.div`
   width: 412px;

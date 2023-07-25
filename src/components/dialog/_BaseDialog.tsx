@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import { Backdrop } from 'src/components/backdrop/Backdrop';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
-import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const DialogLayout = styled.div`
   width: 100vw;
@@ -60,7 +59,6 @@ export const BaseDialog = ({
   themeOverride,
   width,
 }: BaseDialogProps) => {
-  const { aminoTheme } = useAminoTheme();
   const mouseDownTarget = useRef<HTMLDivElement | null>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -93,14 +91,14 @@ export const BaseDialog = ({
               key="dialog-backdrop"
               ref={dialogBackdrop}
               animate={{ opacity: 0.65 }}
-              data-theme={themeOverride || aminoTheme}
+              data-theme={themeOverride}
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             />
             <DialogLayout
               ref={dialogRef}
-              data-theme={themeOverride || aminoTheme}
+              data-theme={themeOverride}
               onKeyDown={handleKeyDown}
               onMouseDown={e => {
                 // Store the target of the mouse down event so we can compare it to the target of the mouse up event
@@ -122,7 +120,7 @@ export const BaseDialog = ({
               <Popup
                 key="dialog"
                 animate={{ opacity: 1, scale: 1 }}
-                className={className}
+                className={[className || '', 'elevated'].join(' ')}
                 exit={{ opacity: 0, scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 noBorder={noBorder}

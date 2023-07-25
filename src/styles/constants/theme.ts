@@ -564,6 +564,9 @@ export const theme = {
   /** @info var(--amino-gray-1000) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   textColor: 'var(--amino-text-color)',
+  /** @info var(--amino-gray-800) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  textColorSecondary: 'var(--amino-text-color-secondary)',
 
   /* ONE OFF COLORS */
   /** @info var(--amino-gray-0) */

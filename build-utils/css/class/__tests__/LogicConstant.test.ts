@@ -1,6 +1,4 @@
-import { existsSync, unlinkSync } from 'fs';
-
-import { LogicConstant } from '../LogicConstant';
+import { LogicConstant } from 'build-utils/css/class/LogicConstant';
 
 describe('Make sure transformLogicConstant in LogicConstant work properly', () => {
   type UnitTest = {
@@ -11,7 +9,7 @@ describe('Make sure transformLogicConstant in LogicConstant work properly', () =
     {
       case: 'Has 1 import',
       content: `
-import { example1 } from '../class/__mocks__/transformLogicConstant-example_1';
+import { example1 } from 'build-utils/css/class/__mocks__/transformLogicConstant-example_1';
 
 export const test = {
   ...example1,
@@ -21,8 +19,8 @@ export const test = {
     {
       case: 'Has 2 imports',
       content: `
-import { example1 } from '../class/__mocks__/transformLogicConstant-example_1';
-import { example2 } from '../class/__mocks__/transformLogicConstant-example_2';
+import { example1 } from 'build-utils/css/class/__mocks__/transformLogicConstant-example_1';
+import { example2 } from 'build-utils/css/class/__mocks__/transformLogicConstant-example_2';
 
 export const test = {
   ...example1,
@@ -41,56 +39,56 @@ export const test = {
 
 describe('Make sure `camelCaseChecking` in LogicConstant work properly', () => {
   type UnitTest = {
-    text: string;
     expected: boolean;
+    text: string;
   };
   const testCases: UnitTest[] = [
     {
+      expected: false,
       text: '',
-      expected: false,
     },
     {
+      expected: false,
       text: 'PasCalCase',
-      expected: false,
     },
     {
+      expected: true,
       text: 'camelCase',
-      expected: true,
     },
     {
+      expected: true,
       text: 'camelcase',
-      expected: true,
     },
     {
+      expected: true,
       text: 'camelCaseWithNumber123',
-      expected: true,
     },
     {
+      expected: false,
       text: 'just_SnakeCase',
-      expected: false,
     },
     {
+      expected: false,
       text: 'Mix_SnakeCase_And_PasCal',
-      expected: false,
     },
     {
+      expected: false,
       text: '123camelCaseWithNumber',
-      expected: false,
     },
     {
-      text: 'camelCaseWithNumber123',
       expected: true,
+      text: 'camelCaseWithNumber123',
     },
     {
-      text: 'sp3c1alCh@r@ct3rCame',
       expected: false,
+      text: 'sp3c1alCh@r@ct3rCame',
     },
   ];
   test.each(testCases)(
     `text: $text - expected: $expected`,
-    async ({ text, expected }) => {
+    async ({ expected, text }) => {
       const result = LogicConstant.camelCaseChecking(text);
       expect(result).toBe(expected);
-    }
+    },
   );
 });

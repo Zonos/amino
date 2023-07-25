@@ -10,6 +10,10 @@ import { GraphiQL } from 'graphiql';
 import { type GraphQLSchema } from 'graphql';
 import styled from 'styled-components';
 
+import { GraphiqlContextWrapper } from 'src/components/graph-matrix/_GraphiqlContextWrapper';
+import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
+import { NestedDataTable } from 'src/components/nested-data-table/NestedDataTable';
+import { SplitPanel } from 'src/components/split-panel/SplitPanel';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -21,11 +25,6 @@ import type {
 import { useGraphiqlExplorer } from 'src/utils/hooks/_useGraphiqlExplorer';
 import { useGraphiqlFetcher } from 'src/utils/hooks/_useGraphiqlFetcher';
 import { useGraphiqlStorage } from 'src/utils/hooks/_useGraphiqlStorage';
-
-import { NestedDataTable } from '../nested-data-table/NestedDataTable';
-import { SplitPanel } from '../split-panel/SplitPanel';
-import { GraphiqlContextWrapper } from './_GraphiqlContextWrapper';
-import { Loading } from './_LoadingIcon';
 
 // These rules are !important because graphiql inlines their styles
 const StyledWrapper = styled.div`

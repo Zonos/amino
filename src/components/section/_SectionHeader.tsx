@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { Text } from '../text/Text';
+import { Text } from 'src/components/text/Text';
 
 const StyledSectionHeader = styled(Text)`
   flex: 1;

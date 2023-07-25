@@ -2,15 +2,14 @@ import { type ReactNode, useState } from 'react';
 
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
+import { Collapse } from 'src/components/collapse/Collapse';
+import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
+import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
+import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { Button } from '../button/Button';
-import { Collapse } from '../collapse/Collapse';
-import { Text } from '../text/Text';
-import { SectionInnerWrapper } from './_SectionInnerWrapper';
-import { SectionSubheader } from './_SectionSubheader';
 
 const StyledSectionWrapper = styled(HStack)`
   padding: ${theme.space8};

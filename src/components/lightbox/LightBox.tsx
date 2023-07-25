@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import type { Theme } from 'src/types/Theme';
-
-import { BaseDialog } from '../dialog/_BaseDialog';
 
 export type LightBoxProps = {
   children: ReactNode;

@@ -20,27 +20,47 @@ export default RichCardStateSelectMeta;
 const Template: StoryFn<RichCardStateSelectProps> = ({
   states,
 }: RichCardStateSelectProps) => {
+  const [open, setOpen] = useState(false);
   const [selectedState, setSelectedState] = useState<UnitedState | null>(null);
+
   return (
     <>
-      <RichCardStateSelect onClick={setSelectedState} states={states} />
+      <RichCardStateSelect
+        onClick={state => {
+          setSelectedState(state);
+          setOpen(true);
+        }}
+        states={states}
+      />
 
       <Dialog
         actions={
-          <>
-            <Button intent="outline" onClick={() => setSelectedState(null)}>
-              Close
-            </Button>
-
-            <Button intent="primary" onClick={() => setSelectedState(null)}>
-              Save {selectedState?.name} data
-            </Button>
-          </>
+          <Button
+            intent={selectedState?.highlighted ? 'danger' : 'primary'}
+            onClick={() => {
+              const foundState = states.find(
+                state => state.code === selectedState?.code,
+              );
+              if (foundState) {
+                foundState.highlighted = !foundState.highlighted;
+              }
+              setSelectedState(null);
+              setOpen(false);
+            }}
+          >
+            {selectedState?.highlighted ? 'Deselect' : 'Select'}
+          </Button>
         }
         label={`${selectedState?.name} label!`}
-        onClose={() => setSelectedState(null)}
-        open={!!selectedState}
+        leftActions={
+          <Button intent="outline" onClick={() => setOpen(false)}>
+            Close
+          </Button>
+        }
+        onClose={() => setOpen(false)}
+        open={open}
         subtitle={`This is a subtitle for ${selectedState?.name}`}
+        width={500}
       >
         This dialog is for {selectedState?.name}!
       </Dialog>

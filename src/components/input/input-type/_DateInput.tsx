@@ -2,10 +2,12 @@ import { useRef } from 'react';
 
 import styled from 'styled-components';
 
+import {
+  type FloatLabelInputProps,
+  FloatLabelInput,
+} from 'src/components/input/input-type/_FloatLabelInput';
 import { CalendarIcon } from 'src/icons/CalendarIcon';
 import { theme } from 'src/styles/constants/theme';
-
-import { type FloatLabelInputProps, FloatLabelInput } from './_FloatLabelInput';
 
 const StyledWrapper = styled.div`
   position: relative;

@@ -1,26 +1,26 @@
-import { FileConfig } from '../types/Config';
+import { type FileConfig } from 'svgReact/icons/types/Config';
 
 export const svgProcessPaths: FileConfig[] = [
   {
-    titleComment: 'Common',
-    svgFolder: 'svgs',
-    inputFolderPath: 'svgReact/icons/dist',
     destFolder: 'src/icons',
+    inputFolderPath: 'svgReact/icons/dist',
+    svgFolder: 'svgs',
+    titleComment: 'Common',
   },
   {
-    titleComment: 'Custom',
-    svgFolder: 'custom-svgs',
-    inputFolderPath: 'svgReact/icons/dist/custom',
     destFolder: 'src/icons/custom',
+    inputFolderPath: 'svgReact/icons/dist/custom',
+    svgFolder: 'custom-svgs',
+    titleComment: 'Custom',
   },
 ];
 
 export type SvgGenerateType = Pick<
-  typeof svgProcessPaths[number],
+  (typeof svgProcessPaths)[number],
   'svgFolder' | 'inputFolderPath'
 >;
 
 export type GenerateIndexContentType = Pick<
-  typeof svgProcessPaths[number],
+  (typeof svgProcessPaths)[number],
   'inputFolderPath' | 'destFolder' | 'titleComment'
 >;

@@ -4,15 +4,14 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Currency } from 'src/components/currency/Currency';
+import { type TableProps, Table } from 'src/components/table/Table';
+import { TableBody } from 'src/components/table/TableBody';
+import { TableCell } from 'src/components/table/TableCell';
+import { TableHead } from 'src/components/table/TableHead';
+import { TableRow } from 'src/components/table/TableRow';
 import { Text } from 'src/components/text/Text';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { truncateText } from 'src/utils/truncateText';
-
-import { type TableProps, Table } from '../Table';
-import { TableBody } from '../TableBody';
-import { TableCell } from '../TableCell';
-import { TableHead } from '../TableHead';
-import { TableRow } from '../TableRow';
 
 const NormalTableMeta: Meta = {
   component: Table,

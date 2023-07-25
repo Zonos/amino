@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import type { Storage } from '@graphiql/toolkit';
 import kebabCase from 'lodash/kebabCase';
 
-import { useCurrentSchema } from './useCurrentShema';
+import { useCurrentSchema } from 'src/utils/hooks/useCurrentShema';
 
 const whiteList = ['graphiql:theme', 'graphiql:shouldPersistHeaders'];
 
@@ -15,7 +15,7 @@ export const useGraphiqlStorage = ({
 }) => {
   const schemaToKebab = kebabCase(defaultSchema);
 
-  const [schema] = useCurrentSchema(schemaToKebab);
+  const { value: schema } = useCurrentSchema(schemaToKebab);
 
   // Force initial light theme
   useEffect(() => {

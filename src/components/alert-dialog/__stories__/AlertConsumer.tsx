@@ -3,9 +3,7 @@ import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 
 export const AlertConsumer = () => {
-  const defaultAlert = useAlert();
-  const dangerAlert = useAlert();
-  const warningAlert = useAlert();
+  const alert = useAlert();
 
   return (
     <VStack>
@@ -13,7 +11,7 @@ export const AlertConsumer = () => {
       <Button
         intent="primary"
         onClick={() =>
-          defaultAlert({
+          alert({
             dismissText: "Don't do action",
             intent: 'primary',
             label: 'Heads up',
@@ -28,7 +26,7 @@ export const AlertConsumer = () => {
       <Button
         intent="danger"
         onClick={() =>
-          dangerAlert({
+          alert({
             dismissText: "Don't do action",
             intent: 'danger',
             label: 'Heads up',
@@ -43,7 +41,7 @@ export const AlertConsumer = () => {
       <Button
         intent="warning"
         onClick={() =>
-          warningAlert({
+          alert({
             dismissText: "Don't do action",
             intent: 'warning',
             label: 'Heads up',

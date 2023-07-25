@@ -1,11 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { BaseWrapper } from 'src/components/avatar/__stories__/BaseWrapper';
 import {
   type UserAvatarProps,
   UserAvatar as Avatar,
 } from 'src/components/avatar/UserAvatar';
-
-import { BaseWrapper } from './BaseWrapper';
 
 const UserAvatarMeta: Meta = {
   argTypes: {

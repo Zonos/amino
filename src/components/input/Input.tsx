@@ -8,17 +8,19 @@ import type {
 
 import styled from 'styled-components';
 
-import { theme } from 'src/styles/constants/theme';
-
-import { type HelpTextProps, HelpText } from '../help-text/HelpText';
-import { DateInput } from './input-type/_DateInput';
+import {
+  type HelpTextProps,
+  HelpText,
+} from 'src/components/help-text/HelpText';
+import { DateInput } from 'src/components/input/input-type/_DateInput';
 import {
   type FloatLabelInputProps,
   FloatLabelInput,
-} from './input-type/_FloatLabelInput';
-import { NumberInput } from './input-type/_NumberInput';
-import { PasswordInput } from './input-type/_PasswordInput';
-import { TimeInput } from './input-type/_TimeInput';
+} from 'src/components/input/input-type/_FloatLabelInput';
+import { NumberInput } from 'src/components/input/input-type/_NumberInput';
+import { PasswordInput } from 'src/components/input/input-type/_PasswordInput';
+import { TimeInput } from 'src/components/input/input-type/_TimeInput';
+import { theme } from 'src/styles/constants/theme';
 
 const Fields = styled.div`
   border-radius: ${theme.radius6};

@@ -2,17 +2,16 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import styled from 'styled-components';
 
+import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
+import { Button } from 'src/components/button/Button';
+import { Spinner } from 'src/components/spinner/Spinner';
+import { Text } from 'src/components/text/Text';
+import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { FileDuotoneIcon } from 'src/icons/FileDuotoneIcon';
 import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type UploadedFile } from 'src/types/UploadedFile';
-
-import { ImageAvatar } from '../avatar/ImageAvatar';
-import { Button } from '../button/Button';
-import { Spinner } from '../spinner/Spinner';
-import { Text } from '../text/Text';
-import { Thumbnail } from '../thumbnail/Thumbnail';
 
 const Wrapper = styled.div<{ disabled: boolean }>`
   display: flex;
@@ -41,6 +40,8 @@ const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: ${theme.space12};
+  width: 100%;
+  height: 100%;
 `;
 
 const InstructionTextWrapper = styled.div`

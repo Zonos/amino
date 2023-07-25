@@ -1,8 +1,7 @@
 import { config } from 'dotenv';
 import { createWriteStream, existsSync, mkdirSync } from 'fs';
 import https from 'https'; // or 'https' for https:// URLs
-
-import { countries } from './countries';
+import { countries } from 'svgReact/flags/countries';
 
 config();
 
@@ -33,7 +32,7 @@ export const downloadFlagsAWS = ({
               resolve(1);
             });
           });
-        })
-    )
+        }),
+    ),
   );
 };

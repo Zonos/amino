@@ -1,4 +1,4 @@
-import { getHspFromColor } from '../getColorContrast';
+import { getHspFromColor } from 'svgReact/icons/getColorContrast';
 
 const colors = [
   { label: '--amino-green-l80', value: '#e5f9e5' },
