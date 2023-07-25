@@ -1,13 +1,9 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import path from 'path';
+
 import { getStories } from './buildStories';
 
-const config: StorybookConfig = {
-  stories: getStories(),
-  framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
-  },
+const storybookConfig: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -16,29 +12,34 @@ const config: StorybookConfig = {
     '@storybook/addon-storyshots-puppeteer',
     'storybook-addon-designs',
   ],
-  typescript: {
-    check: false,
-  },
-  webpackFinal: async config => {
-    return {
-      ...config,
-
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config.resolve?.alias,
-          src: path.resolve(__dirname, '../src'),
-          svgReact: path.resolve(__dirname, '../svgReact'),
-          'story-utils': path.resolve(__dirname, './utils'),
-          // to test the bundled version in stories
-          dist: path.resolve(__dirname, '../dist'),
-        },
-      },
-    };
-  },
-  staticDirs: ['../public'],
   docs: {
     autodocs: true,
   },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
+  staticDirs: ['../public'],
+  stories: getStories(),
+  typescript: {
+    check: false,
+  },
+  webpackFinal: async config => ({
+    ...config,
+
+    resolve: {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        '.storybook': path.resolve(__dirname, '.'),
+        // to test the bundled version in stories
+        dist: path.resolve(__dirname, '../dist'),
+        src: path.resolve(__dirname, '../src'),
+        'story-utils': path.resolve(__dirname, './utils'),
+        svgReact: path.resolve(__dirname, '../svgReact'),
+      },
+    },
+  }),
 };
-module.exports = config;
+
+export default storybookConfig;

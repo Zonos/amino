@@ -1,4 +1,5 @@
 import buble from '@rollup/plugin-buble';
+import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
@@ -11,7 +12,6 @@ import {
   type OutputOptions,
   rollup,
 } from 'rollup';
-import image from 'rollup-plugin-img';
 import progress from 'rollup-plugin-progress';
 import tsPlugin from 'rollup-plugin-typescript2';
 
@@ -54,9 +54,7 @@ const bundlePackage = async (
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],
       }),
-      image({
-        limit: 10000,
-      }),
+      image(),
       tsPlugin({
         tsconfigOverride: {
           compilerOptions: {

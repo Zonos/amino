@@ -1,6 +1,7 @@
-import avatarImg from 'svgReact/icons/custom-svgs/Avatar.svg';
-
 import { type AvatarProps, AvatarBase } from 'src/components/avatar/AvatarBase';
+
+// eslint-disable-next-line no-relative-import-paths/no-relative-import-paths
+import avatarImg from '../../../svgReact/icons/custom-svgs/Avatar.svg';
 
 export type UserAvatarProps = AvatarProps;
 

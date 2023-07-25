@@ -5,15 +5,24 @@ import { ThemeSelect } from '../ThemeSelect';
 
 # Theme
 
-At the root of your app, all you need to do is call `useAminoTheme({ root: true })`. This will automatically set a data attribute on the HTML body that matches the current theme. All children will inherit the theme.
+At the root of your app, all you need to do is call `useAminoTheme({ root: true })`. This will automatically set a data attribute on the HTML root element that matches the current theme. All children will inherit the theme.
 
 ```typescript
-import { useAminoTheme } from "@zonos/amino/utils/hooks/useAminoTheme";
-
+import { useAminoTheme } from '@zonos/amino/utils/hooks/useAminoTheme';
 
 export const Layout = () => {
   useAminoTheme({ root: true });
 
   return <div>{YOUR_CONTENT_HERE}</div>;
+};
+```
+
+# Wrapper
+
+To wrap elements with an explicit theme, just set `data-theme` on the HTML parent to `light` or `dark`.
+
+```typescript
+export const Wrapper = () => {
+  return <div data-theme="light">{YOUR_CONTENT_HERE}</div>;
 };
 ```

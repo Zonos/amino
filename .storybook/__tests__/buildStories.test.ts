@@ -1,4 +1,4 @@
-import { buildStories } from '../buildStories';
+import { buildStories } from '.storybook/buildStories';
 
 describe('Make sure buildStories works as expected', () => {
   test(`Should order by name for base folder 'src'`, () => {
@@ -124,7 +124,7 @@ describe('Make sure buildStories works as expected', () => {
     ];
 
     const paths = stories.map(
-      story => `${story.titlePrefix}/${story.fileName}`
+      story => `${story.titlePrefix}/${story.fileName}`,
     );
 
     expect(paths).toEqual(expectedPaths);
