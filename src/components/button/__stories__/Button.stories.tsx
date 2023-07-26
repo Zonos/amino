@@ -251,12 +251,6 @@ Subtle.args = {
   variant: 'subtle',
 };
 
-// export const TextButton = Template.bind({});
-// TextButton.args = {
-//   children: 'Text Button',
-//   intent: 'text',
-// };
-
 export const PlainButton = Template.bind({});
 PlainButton.args = {
   children: 'Plain button',
