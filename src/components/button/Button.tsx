@@ -97,7 +97,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 
   &:focus {
     box-shadow: ${theme.buttonFocusRing};
-    border: 1px solid ${theme.gray0};
+    border: 1px solid ${p => (p.outline ? '' : theme.gray0)};
   }
 
   &:active {
