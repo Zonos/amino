@@ -179,12 +179,10 @@
     #1e1f26 0%,
     #2e3038 100%
   );
-  --amino-spinner-border-color-black: rgba(255, 255, 255, 0.3);
-  --amino-spinner-border-top-color-black: #ffffff;
-  --amino-spinner-border-right-color-black: rgba(255, 255, 255, 0.3);
-  --amino-spinner-border-color-white: rgba(0, 0, 0, 0.3);
-  --amino-spinner-border-top-color-white: #0c0c0c;
-  --amino-spinner-border-right-color-white: rgba(0, 0, 0, 0.5);
+  --amino-spinner-track-black: rgba(255, 255, 255, 0.3);
+  --amino-spinner-stroke-black: #ffffff;
+  --amino-spinner-track-white: rgba(0, 0, 0, 0.3);
+  --amino-spinner-stroke-white: #0c0c0c;
 
   /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
   .elevated {

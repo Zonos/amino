@@ -215,12 +215,10 @@
     #b6471b 100%
   );
   --amino-button-standard-hover: linear-gradient(180deg, #fff 0%, #eaebed 100%);
-  --amino-spinner-border-color-black: rgba(0, 0, 0, 0.3);
-  --amino-spinner-border-top-color-black: #0c0c0c;
-  --amino-spinner-border-right-color-black: rgba(0, 0, 0, 0.5);
-  --amino-spinner-border-color-white: rgba(255, 255, 255, 0.3);
-  --amino-spinner-border-top-color-white: #ffffff;
-  --amino-spinner-border-right-color-white: rgba(255, 255, 255, 0.3);
+  --amino-spinner-track-black: rgba(0, 0, 0, 0.3);
+  --amino-spinner-stroke-black: #0c0c0c;
+  --amino-spinner-track-white: rgba(255, 255, 255, 0.3);
+  --amino-spinner-stroke-white: #ffffff;
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 232px;
   --amino-elevation-0: 0;
@@ -447,12 +445,10 @@
     #1e1f26 0%,
     #2e3038 100%
   );
-  --amino-spinner-border-color-black: rgba(255, 255, 255, 0.3);
-  --amino-spinner-border-top-color-black: #ffffff;
-  --amino-spinner-border-right-color-black: rgba(255, 255, 255, 0.3);
-  --amino-spinner-border-color-white: rgba(0, 0, 0, 0.3);
-  --amino-spinner-border-top-color-white: #0c0c0c;
-  --amino-spinner-border-right-color-white: rgba(0, 0, 0, 0.5);
+  --amino-spinner-track-black: rgba(255, 255, 255, 0.3);
+  --amino-spinner-stroke-black: #ffffff;
+  --amino-spinner-track-white: rgba(0, 0, 0, 0.3);
+  --amino-spinner-stroke-white: #0c0c0c;
 
   /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
   .elevated {

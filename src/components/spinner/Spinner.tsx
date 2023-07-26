@@ -23,64 +23,42 @@ const StyledSvg = styled.svg<{ size: number }>`
   }
 
   &.black {
-    border: ${p => p.size! / 8}px solid ${theme.spinnerBorderColorBlack};
-    border-top-color: ${theme.spinnerBorderTopColorBlack};
-    &::before {
-      border-right-color: ${theme.spinnerBorderRightColorBlack};
-    stroke: ${theme.gray1200};
+    stroke: ${theme.spinnerStrokeBlack};
 
     circle.track {
-      stroke: rgba(0, 0, 0, 0.3);
+      stroke: ${theme.spinnerTrackBlack};
     }
   }
   &.white {
-    border: ${p => p.size! / 8}px solid ${theme.spinnerBorderColorWhite};
-    border-top-color: ${theme.spinnerBorderTopColorWhite};
-    &::before {
-      border-right-color: ${theme.spinnerBorderRightColorWhite};
-    stroke: ${theme.gray0};
+    stroke: ${theme.spinnerStrokeWhite};
 
     circle.track {
-      stroke: rgba(255, 255, 255, 0.3);
+      stroke: ${theme.spinnerTrackWhite};
     }
   }
   &.info {
-    border: ${p => p.size! / 8}px solid ${theme.blue100};
-    border-top-color: ${theme.primary};
-    &:before {
-      border-right-color: ${theme.blue100};
-    }
-  }
-  &.success {
-    border: ${p => p.size! / 8}px solid ${theme.green100};
-    border-top-color: ${theme.success};
-    &:before {
-      border-right-color: ${theme.green100};
-    }
-  }
-  &.danger {
-    border: ${p => p.size! / 8}px solid ${theme.red100};
-    border-top-color: ${theme.danger};
-    &:before {
-      border-right-color: ${theme.orange100};
-    }
-  }
-  &.warning {
-    border: ${p => p.size! / 8}px solid ${theme.orange100};
-    border-top-color: ${theme.warning};
-    &:before {
-      border-right-color: ${theme.orange100};
-    }
     stroke: ${theme.blue600};
+    circle.track {
+      stroke: ${theme.blue100};
+    }
   }
   &.success {
     stroke: ${theme.green600};
+    circle.track {
+      stroke: ${theme.green100};
+    }
   }
   &.danger {
     stroke: ${theme.red600};
+    circle.track {
+      stroke: ${theme.red100};
+    }
   }
   &.warning {
     stroke: ${theme.orange600};
+    circle.track {
+      stroke: ${theme.orange100};
+    }
   }
 
   @keyframes rotate {
