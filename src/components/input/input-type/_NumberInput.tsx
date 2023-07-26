@@ -84,32 +84,34 @@ export const NumberInput = ({
         readOnly={readOnly}
         required={required}
         suffix={
-          suffix || (
-            <StyledActionWrapper>
-              <StyledButtonAction
-                onClick={() => {
-                  inputRef.current?.stepUp();
-                  inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true }),
-                  );
-                }}
-                type="button"
-              >
-                <ChevronUpIcon size={16} />
-              </StyledButtonAction>
-              <StyledButtonAction
-                onClick={() => {
-                  inputRef.current?.stepDown();
-                  inputRef.current?.dispatchEvent(
-                    new Event('input', { bubbles: true }),
-                  );
-                }}
-                type="button"
-              >
-                <ChevronDownIcon size={16} />
-              </StyledButtonAction>
-            </StyledActionWrapper>
-          )
+          suffix === null
+            ? null
+            : suffix || (
+                <StyledActionWrapper>
+                  <StyledButtonAction
+                    onClick={() => {
+                      inputRef.current?.stepUp();
+                      inputRef.current?.dispatchEvent(
+                        new Event('input', { bubbles: true }),
+                      );
+                    }}
+                    type="button"
+                  >
+                    <ChevronUpIcon size={16} />
+                  </StyledButtonAction>
+                  <StyledButtonAction
+                    onClick={() => {
+                      inputRef.current?.stepDown();
+                      inputRef.current?.dispatchEvent(
+                        new Event('input', { bubbles: true }),
+                      );
+                    }}
+                    type="button"
+                  >
+                    <ChevronDownIcon size={16} />
+                  </StyledButtonAction>
+                </StyledActionWrapper>
+              )
         }
         tabIndex={tabIndex}
         type="number"

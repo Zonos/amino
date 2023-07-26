@@ -1,105 +1,132 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
-import type { Intent } from 'src/types';
 
-const Rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  35%{
-    transform: rotate(360deg);
-  }
-  70% {
-    transform: rotate(697.5deg);
-  }
-  100% {
-    transform: rotate(720deg);
-  }
-`;
-
-const RotateInsideRing = keyframes`
-  65%, 75% {
-    transform: rotate(-45deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-`;
-
-const spinDuration = '1.5s';
-
-const AminoSpinner = styled.span<SpinnerProps>`
-  display: inline-block;
-  border: ${p => p.size! / 8}px solid ${theme.gray100};
-  border-top-color: ${theme.blue600};
-  animation: ${css`
-      ${Rotate}`} ${spinDuration} linear infinite;
-  border-radius: 50%;
-  transform: rotate(45deg);
+// Stop container from scrolling when it rotates
+const Wrapper = styled.div<{ size: number }>`
+  position: relative;
+  overflow: hidden;
   width: ${p => p.size}px;
   height: ${p => p.size}px;
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    top: -${p => p.size! / 8}px;
-    left: -${p => p.size! / 8}px;
-    width: ${p => p.size}px;
-    height: ${p => p.size}px;
-    border-radius: 50%;
-    border: ${p => p.size! / 8}px solid transparent;
-    border-right-color: ${theme.gray100};
-    z-index: 1;
-    animation: ${css`
-        ${RotateInsideRing}`} ${spinDuration} linear infinite;
+`;
+
+// Inspired by https://codesandbox.io/s/loading-spinner-and-background-1yqdo?file=/src/loadingspinner.less:0-65
+const StyledSvg = styled.svg<{ size: number }>`
+  position: absolute;
+  width: ${p => p.size}px;
+  height: ${p => p.size}px;
+
+  stroke: ${theme.blue600};
+
+  circle.track {
+    stroke: ${theme.gray200};
   }
 
   &.black {
-    border: ${p => p.size! / 8}px solid rgba(0, 0, 0, 0.3);
-    border-top-color: #0c0c0c;
-    &::before {
-      border-right-color: rgba(0, 0, 0, 0.5);
+    stroke: ${theme.gray1200};
+
+    circle.track {
+      stroke: rgba(0, 0, 0, 0.3);
     }
   }
-
   &.white {
-    border: ${p => p.size! / 8}px solid rgba(255, 255, 255, 0.3);
-    border-top-color: ${theme.gray0};
-    &::before {
-      border-right-color: rgba(255, 255, 255, 0.3);
+    stroke: ${theme.gray0};
+
+    circle.track {
+      stroke: rgba(255, 255, 255, 0.3);
     }
   }
-
   &.info {
-    border-top-color: ${theme.blue600};
+    stroke: ${theme.blue600};
   }
   &.success {
-    border-top-color: ${theme.green600};
+    stroke: ${theme.green600};
   }
   &.danger {
-    border-top-color: ${theme.red600};
+    stroke: ${theme.red600};
   }
   &.warning {
-    border-top-color: ${theme.orange600};
+    stroke: ${theme.orange600};
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+
+  animation: rotate 2s linear infinite;
+
+  circle:not(.track) {
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
   }
 `;
 
 export type SpinnerColor =
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'danger'
+  | 'warning'
   | 'black'
-  | 'white'
-  | Exclude<Intent, 'default' | 'error'>;
+  | 'white';
 
 export type SpinnerProps = {
   className?: string;
+  /**
+   * @default 'primary'
+   */
   color?: SpinnerColor;
+  /**
+   * @default 32
+   */
   size?: number;
 };
 
-export const Spinner = ({ className, color, size }: SpinnerProps) => (
-  <AminoSpinner
-    className={[className, color || ''].join(' ')}
-    color={color}
-    size={size || 32}
-  />
+export const Spinner = ({
+  className,
+  color = 'primary',
+  size = 32,
+}: SpinnerProps) => (
+  <Wrapper size={size}>
+    <StyledSvg
+      className={[className, color, 'amino-spinner'].join(' ')}
+      size={size}
+      viewBox="0 0 50 50"
+    >
+      <circle
+        className="track"
+        cx="25"
+        cy="25"
+        fill="none"
+        id="loading-spinner-circle"
+        r="20"
+        strokeWidth="5"
+      />
+      <circle
+        cx="25"
+        cy="25"
+        fill="none"
+        id="loading-spinner-circle"
+        r="20"
+        strokeWidth="5"
+      />
+    </StyledSvg>
+  </Wrapper>
 );
