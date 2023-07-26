@@ -114,7 +114,7 @@
     0px 1px 3px 0px rgba(217, 33, 65, 0.4);
   --amino-shadow-button-warning: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
     0px 1px 3px 0px rgba(229, 89, 26, 0.4);
-  --amino-button-focus-ring: 0 0 0 2px var(--amino-blue-600);
+  --amino-button-focus-ring: 0 0 0 3px var(--amino-blue-600);
   --amino-shadow-button-standard: 0px 1px 3px 0px rgba(110, 110, 120, 0.12),
     0px -2px 1px 1px rgba(0, 0, 0, 0.08) inset;
   --amino-space-negative-80: -5rem;
@@ -382,7 +382,7 @@
     0px 1px 3px 0px rgba(217, 33, 65, 0.4);
   --amino-shadow-button-warning: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
     0px 1px 3px 0px rgba(229, 89, 26, 0.4);
-  --amino-button-focus-ring: 0 0 0 2px var(--amino-blue-600);
+  --amino-button-focus-ring: 0 0 0 3px var(--amino-blue-600);
   --amino-shadow-button-standard: 0px -1px 1px 0px rgba(0, 0, 0, 0.4) inset,
     0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset,
     0px 1px 3px 0px rgba(0, 0, 0, 0.8);

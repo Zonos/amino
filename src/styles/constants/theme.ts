@@ -326,7 +326,7 @@ export const theme = {
   /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonWarning: 'var(--amino-shadow-button-warning)',
-  /** @info 0 0 0 2px var(--amino-blue-600) */
+  /** @info 0 0 0 3px var(--amino-blue-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonFocusRing: 'var(--amino-button-focus-ring)',
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -2px 1px 1px rgba(0, 0, 0, 0.08) inset */
