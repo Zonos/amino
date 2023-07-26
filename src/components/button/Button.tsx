@@ -15,9 +15,9 @@ import { useRipple } from 'src/components/button/useRipple';
 import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
-import type { Intent } from 'src/types/Intent';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
+import type { Variant } from 'src/types/Variant';
 
 const getAminoColor = (color?: Color | 'inherit') => {
   if (color === 'inherit') {
@@ -349,8 +349,6 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
-type IntentProps = 'subtle' | 'link' | 'plain' | Intent;
-
 type ButtonBase = {
   background?: Color | 'inherit';
   /** @param borderColor only available for intent 'outline' */
@@ -362,8 +360,6 @@ type ButtonBase = {
   hoverBackground?: Color | 'inherit';
   icon?: ReactNode;
   iconRight?: boolean;
-  /** @default 'secondary' */
-  intent?: IntentProps;
   /** @default false */
   loading?: boolean;
   loadingText?: string;
@@ -379,6 +375,8 @@ type ButtonBase = {
   tabIndex?: number;
   themeOverride?: Theme;
   type?: 'button' | 'reset' | 'submit';
+  /** @default 'secondary' */
+  variant?: Variant;
 };
 
 export type GroupTag = 'div' | 'a' | 'button';
@@ -403,7 +401,6 @@ export function Button<T extends GroupTag = 'button'>({
   disabled = false,
   icon,
   iconRight,
-  intent = 'standard',
   loading = false,
   loadingText,
   noRipple = false,
@@ -412,6 +409,7 @@ export function Button<T extends GroupTag = 'button'>({
   tag: _tag,
   themeOverride,
   type = 'button',
+  variant = 'standard',
   ...props
 }: ButtonProps<T>) {
   const tag = _tag || 'button';
@@ -420,7 +418,7 @@ export function Button<T extends GroupTag = 'button'>({
       <span className="content">{!iconRight && icon}</span>
       <span className="content">{children}</span>
       <span className="content">{iconRight && icon}</span>
-      {intent !== 'plain' && loading && (
+      {variant !== 'plain' && loading && (
         <StyledSpinnerWrapper>
           <Spinner color={_spinnerColor} size={16} />
           {loadingText}
@@ -444,7 +442,7 @@ export function Button<T extends GroupTag = 'button'>({
 
   const { getRippleHandlers, rippleEnabled } = useRipple({
     disabled: disabled || loading,
-    rippleEnabled: !noRipple && !['plain', 'text'].includes(intent),
+    rippleEnabled: !noRipple && !['plain', 'text'].includes(variant),
     rippleRef,
   });
 
@@ -461,7 +459,7 @@ export function Button<T extends GroupTag = 'button'>({
     ...getRippleHandlers(props),
   };
 
-  switch (intent) {
+  switch (variant) {
     case 'primary':
       return (
         <Primary as={tag} {...buttonProps}>
