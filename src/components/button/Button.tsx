@@ -42,6 +42,19 @@ const getPadding = (size?: Size) => {
   }
 };
 
+const getSpinnerSize = (size?: Size) => {
+  switch (size) {
+    case 'sm':
+      return 16;
+    case 'lg':
+    case 'xl':
+      return 24;
+    case 'md':
+    default:
+      return 20;
+  }
+};
+
 const StyledSpinnerWrapper = styled.span`
   position: absolute;
   top: 0;
@@ -105,12 +118,12 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 
   &:not(.only-icon).has-icon {
     &.icon-right {
-      svg {
+      svg:not(.amino-spinner) {
         margin-left: ${theme.space8};
         margin-right: 0;
       }
     }
-    svg {
+    svg:not(.amino-spinner) {
       margin-right: ${theme.space8};
       margin-left: 0;
     }
@@ -402,7 +415,7 @@ export function Button<T extends GroupTag = 'button'>({
       <span className="content">{iconRight && icon}</span>
       {variant !== 'plain' && loading && (
         <StyledSpinnerWrapper>
-          <Spinner color={_spinnerColor} size={16} />
+          <Spinner color={_spinnerColor} size={getSpinnerSize(size)} />
           {loadingText}
         </StyledSpinnerWrapper>
       )}
