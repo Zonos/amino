@@ -214,6 +214,10 @@ const Standard = styled(AminoButton)`
     }
   }
 
+  &:focus {
+    outline-color: ${p => (p.outline ? theme.gray300 : theme.gray100)};
+  }
+
   &[disabled] {
     .content {
       opacity: 0.6;
