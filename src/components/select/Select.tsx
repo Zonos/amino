@@ -35,6 +35,10 @@ export interface SelectProps<
    */
   value: Option[] | Option | null;
   /**
+   * An easier way to override the option rendering without having to use the typical component props and recreating all the styles.
+   */
+  customOption?: (value: Option['value']) => ReactNode;
+  /**
    * @example
    * onChange={changed => setExampleValue(changed?.value || null)}
    */
