@@ -596,6 +596,26 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonStandardHover: 'var(--amino-button-standard-hover)',
 
+  /* SPINNER COLORS */
+  /** @info rgba(0, 0, 0, 0.3) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spinnerBorderColorBlack: 'var(--amino-spinner-border-color-black)',
+  /** @info #0c0c0c */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spinnerBorderTopColorBlack: 'var(--amino-spinner-border-top-color-black)',
+  /** @info rgba(0, 0, 0, 0.5) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spinnerBorderRightColorBlack: 'var(--amino-spinner-border-right-color-black)',
+  /** @info rgba(255, 255, 255, 0.3) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spinnerBorderColorWhite: 'var(--amino-spinner-border-color-white)',
+  /** @info #FFFFFF */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spinnerBorderTopColorWhite: 'var(--amino-spinner-border-top-color-white)',
+  /** @info rgba(255, 255, 255, 0.3) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  spinnerBorderRightColorWhite: 'var(--amino-spinner-border-right-color-white)',
+
   /* LAYOUT STYLE */
   /** @info 55px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */

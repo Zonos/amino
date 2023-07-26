@@ -215,6 +215,12 @@
     #b6471b 100%
   );
   --amino-button-standard-hover: linear-gradient(180deg, #fff 0%, #eaebed 100%);
+  --amino-spinner-border-color-black: rgba(0, 0, 0, 0.3);
+  --amino-spinner-border-top-color-black: #0c0c0c;
+  --amino-spinner-border-right-color-black: rgba(0, 0, 0, 0.5);
+  --amino-spinner-border-color-white: rgba(255, 255, 255, 0.3);
+  --amino-spinner-border-top-color-white: #ffffff;
+  --amino-spinner-border-right-color-white: rgba(255, 255, 255, 0.3);
   --amino-appbar-height: 55px;
   --amino-sidebar-width: 232px;
   --amino-elevation-0: 0;

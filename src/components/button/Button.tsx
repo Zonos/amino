@@ -68,6 +68,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   justify-content: center;
   padding: 0 ${theme.space16};
   border-radius: ${theme.radius6};
+  border: 1px solid;
   transition: ${theme.transition};
   font-weight: 500;
   user-select: none;
@@ -125,15 +126,13 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 `;
 
 const Primary = styled(AminoButton)`
-  background-color: ${p =>
-    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.primary};
   color: ${p =>
     getAminoColor(p.color) || p.outline ? theme.primary : theme.gray0};
   box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonPrimary)};
-  ${p =>
-    p.outline
-      ? `border: 1px solid ${theme.blue300}; border-radius: ${theme.radius6};`
-      : ''}
+  background: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.primary};
+  border-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.primary : 'transparent'};
 
   &:not([disabled]) {
     &:hover {
@@ -148,6 +147,7 @@ const Primary = styled(AminoButton)`
 
   &[disabled] {
     background: ${p => (p.outline ? theme.gray0 : theme.blue400)};
+    border-color: ${theme.blue400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -156,16 +156,13 @@ const Primary = styled(AminoButton)`
 `;
 
 const Success = styled(AminoButton)`
-  background: ${p =>
-    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.success};
   color: ${p =>
     getAminoColor(p.color) || p.outline ? theme.success : theme.gray0};
   box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonSuccess)};
-
-  ${p =>
-    p.outline
-      ? `border: 1px solid ${theme.green300}; border-radius: ${theme.radius6};`
-      : ''}
+  border-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.success : 'transparent'};
+  background: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.success};
 
   &:not([disabled]) {
     &:hover {
@@ -179,6 +176,7 @@ const Success = styled(AminoButton)`
   }
   &[disabled] {
     background: ${p => (p.outline ? theme.gray0 : theme.green400)};
+    border-color: ${theme.green400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -189,7 +187,8 @@ const Success = styled(AminoButton)`
 const Standard = styled(AminoButton)`
   color: ${p => getAminoColor(p.color) || theme.textColor};
   background: ${p => getAminoColor(p.background) || theme.surfaceColor};
-  border: 1px solid ${p => (p.outline ? theme.gray300 : `${theme.gray600}1F`)};
+  border: 1px solid
+    ${p => (p.outline ? theme.gray300 : 'rgba(106, 109, 119, 0.12)')};
   box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonStandard)};
 
   &:not([disabled]) {
@@ -203,21 +202,24 @@ const Standard = styled(AminoButton)`
     }
   }
 
+  &[disabled] {
+    .content {
+      opacity: 0.6;
+    }
+  }
+
   ${StyledSpinnerWrapper} {
     background: ${theme.surfaceColor};
   }
 `;
 
 const Danger = styled(AminoButton)`
+  border-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.danger : 'transparent'};
   background: ${p =>
     getAminoColor(p.background) || p.outline ? theme.gray0 : theme.danger};
   color: ${p =>
     getAminoColor(p.color) || p.outline ? theme.danger : theme.gray0};
-
-  ${p =>
-    p.outline
-      ? `border: 1px solid ${theme.red300}; border-radius: ${theme.radius6};`
-      : ''}
 
   &:not([disabled]) {
     &:hover {
@@ -231,6 +233,7 @@ const Danger = styled(AminoButton)`
   }
   &[disabled] {
     background: ${p => (p.outline ? theme.gray0 : theme.red400)};
+    border-color: ${theme.red400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -239,6 +242,8 @@ const Danger = styled(AminoButton)`
 `;
 
 const Warning = styled(AminoButton)`
+  border-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.warning : 'transparent'};
   background: ${p =>
     getAminoColor(p.background) || p.outline ? theme.gray0 : theme.warning};
   color: ${p =>
@@ -262,6 +267,7 @@ const Warning = styled(AminoButton)`
 
   &[disabled] {
     background: ${p => (p.outline ? theme.gray0 : theme.orange400)};
+    border-color: ${theme.orange400};
   }
 
   ${StyledSpinnerWrapper} {
@@ -272,6 +278,7 @@ const Warning = styled(AminoButton)`
 const Subtle = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || 'none'};
   color: ${p => getAminoColor(p.color) || theme.textColorSecondary};
+  border-color: transparent;
 
   &:not([disabled]) {
     &:hover {
@@ -297,6 +304,7 @@ const PlainButton = AminoButton;
 
 const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.primary};
+  border-color: transparent;
 
   &:not([disabled]) {
     &:hover {
@@ -431,7 +439,11 @@ export function Button<T extends GroupTag = 'button'>({
   switch (variant) {
     case 'primary':
       return (
-        <Primary as={tag} {...buttonProps}>
+        <Primary
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(
             spinnerColor || buttonProps.outline ? 'info' : 'white',
           )}
@@ -440,7 +452,11 @@ export function Button<T extends GroupTag = 'button'>({
       );
     case 'success':
       return (
-        <Success as={tag} {...buttonProps}>
+        <Success
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(
             spinnerColor || buttonProps.outline ? 'success' : 'white',
           )}
@@ -449,7 +465,11 @@ export function Button<T extends GroupTag = 'button'>({
       );
     case 'warning':
       return (
-        <Warning as={tag} {...buttonProps}>
+        <Warning
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(
             spinnerColor || buttonProps.outline ? 'warning' : 'white',
           )}
@@ -458,7 +478,11 @@ export function Button<T extends GroupTag = 'button'>({
       );
     case 'danger':
       return (
-        <Danger as={tag} {...buttonProps}>
+        <Danger
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(
             spinnerColor || buttonProps.outline ? 'danger' : 'white',
           )}
@@ -467,28 +491,44 @@ export function Button<T extends GroupTag = 'button'>({
       );
     case 'subtle':
       return (
-        <Subtle as={tag} {...buttonProps}>
+        <Subtle
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(spinnerColor || 'black')}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Subtle>
       );
     case 'link':
       return (
-        <LinkButton as={tag} {...buttonProps}>
+        <LinkButton
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(spinnerColor || 'info')}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </LinkButton>
       );
     case 'plain':
       return (
-        <PlainButton as={tag} {...buttonProps}>
+        <PlainButton
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(spinnerColor)}
         </PlainButton>
       );
     case 'standard':
     default:
       return (
-        <Standard as={tag} {...buttonProps}>
+        <Standard
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(spinnerColor || 'black')}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Standard>

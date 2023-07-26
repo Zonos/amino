@@ -2,6 +2,7 @@ import { spacing } from 'build-utils/css/constants/theme/_spacing';
 import { variablesUsingColors } from 'build-utils/css/constants/theme/_variablesUsingColors';
 import { hover } from 'build-utils/css/constants/theme/day/_hover';
 import { shadow } from 'build-utils/css/constants/theme/day/_shadow';
+import { spinner } from 'build-utils/css/constants/theme/day/_spinner';
 import { blue } from 'build-utils/css/constants/theme/day/colors/_blue';
 import { cyan } from 'build-utils/css/constants/theme/day/colors/_cyan';
 import { glass } from 'build-utils/css/constants/theme/day/colors/_glass';
@@ -59,6 +60,9 @@ export const theme = {
 
   /* BUTTON HOVER COLORS */
   ...hover,
+
+  /* SPINNER COLORS */
+  ...spinner,
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',

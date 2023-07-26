@@ -56,18 +56,18 @@ const AminoSpinner = styled.span<SpinnerProps>`
   }
 
   &.black {
-    border: ${p => p.size! / 8}px solid rgba(0, 0, 0, 0.3);
-    border-top-color: #0c0c0c;
+    border: ${p => p.size! / 8}px solid ${theme.spinnerBorderColorBlack};
+    border-top-color: ${theme.spinnerBorderTopColorBlack};
     &::before {
-      border-right-color: rgba(0, 0, 0, 0.5);
+      border-right-color: ${theme.spinnerBorderRightColorBlack};
     }
   }
 
   &.white {
-    border: ${p => p.size! / 8}px solid rgba(255, 255, 255, 0.3);
-    border-top-color: ${theme.gray0};
+    border: ${p => p.size! / 8}px solid ${theme.spinnerBorderColorWhite};
+    border-top-color: ${theme.spinnerBorderTopColorWhite};
     &::before {
-      border-right-color: rgba(255, 255, 255, 0.3);
+      border-right-color: ${theme.spinnerBorderRightColorWhite};
     }
   }
 
