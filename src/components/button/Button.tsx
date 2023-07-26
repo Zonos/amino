@@ -132,7 +132,7 @@ const Primary = styled(AminoButton)`
   box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonPrimary)};
   ${p =>
     p.outline
-      ? 'border: 1px solid var(--amino-blue-300); border-radius: var(--amino-radius-6);'
+      ? `border: 1px solid ${theme.blue300}; border-radius: ${theme.radius6};`
       : ''}
 
   &:not([disabled]) {
