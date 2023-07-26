@@ -329,7 +329,7 @@ export const theme = {
   /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonWarning: 'var(--amino-shadow-button-warning)',
-  /** @info 0 0 0 2px var(--amino-blue-600) */
+  /** @info 0 0 0 3px var(--amino-blue-600) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonFocusRing: 'var(--amino-button-focus-ring)',
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -2px 1px 1px rgba(0, 0, 0, 0.08) inset */
@@ -602,22 +602,16 @@ export const theme = {
   /* SPINNER COLORS */
   /** @info rgba(0, 0, 0, 0.3) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spinnerBorderColorBlack: 'var(--amino-spinner-border-color-black)',
+  spinnerTrackBlack: 'var(--amino-spinner-track-black)',
   /** @info #0c0c0c */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spinnerBorderTopColorBlack: 'var(--amino-spinner-border-top-color-black)',
-  /** @info rgba(0, 0, 0, 0.5) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spinnerBorderRightColorBlack: 'var(--amino-spinner-border-right-color-black)',
+  spinnerStrokeBlack: 'var(--amino-spinner-stroke-black)',
   /** @info rgba(255, 255, 255, 0.3) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spinnerBorderColorWhite: 'var(--amino-spinner-border-color-white)',
+  spinnerTrackWhite: 'var(--amino-spinner-track-white)',
   /** @info #FFFFFF */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spinnerBorderTopColorWhite: 'var(--amino-spinner-border-top-color-white)',
-  /** @info rgba(255, 255, 255, 0.3) */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  spinnerBorderRightColorWhite: 'var(--amino-spinner-border-right-color-white)',
+  spinnerStrokeWhite: 'var(--amino-spinner-stroke-white)',
 
   /* LAYOUT STYLE */
   /** @info 55px */
