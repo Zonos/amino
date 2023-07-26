@@ -248,7 +248,7 @@ type FloatLabelInputType = {
   /** Determines if the input is required for form validation */
   required?: boolean;
   size?: Size;
-  /** A short string displayed at the end of the input */
+  /** A short string displayed at the end of the input. Set to `null` to disable */
   suffix?: ReactNode;
   tabIndex?: number;
   /** Determines input type (email, password, etc.) */
