@@ -119,14 +119,14 @@ const ButtonRow = ({
         Div Button
       </StyledButton>
       <StyledButton
+        disabled={disabled}
+        // @ts-expect-error The generic type of StyledButton is not being inferred correctly (styled-components bug)
+        href="#"
         loading={loading}
         onClick={e => e.preventDefault()}
         outline={props.outline}
         tag="a"
         variant={intent}
-        disabled={disabled}
-        // @ts-expect-error The generic type of StyledButton is not being inferred correctly (styled-components bug)
-        href="#"
       >
         Anchor tag Button
       </StyledButton>

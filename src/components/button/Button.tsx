@@ -137,15 +137,9 @@ const Primary = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => {
-        if (p.hoverBackground) {
-          return p.hoverBackground;
-        }
-        if (p.outline) {
-          return theme.blue100;
-        }
-        return theme.buttonPrimaryHover;
-      }};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.blue100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonPrimaryHover)};
     }
     &:active {
       background: ${p => (p.outline ? theme.blue200 : theme.blue700)};
@@ -175,16 +169,9 @@ const Success = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => {
-        if (p.hoverBackground) {
-          return getAminoColor(p.hoverBackground);
-        }
-        if (p.outline) {
-          return theme.green100;
-        }
-        return theme.buttonSuccessHover;
-      }};
-
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.green100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonSuccessHover)};
       &:active {
         background: ${p => (p.outline ? theme.green200 : theme.green700)};
       }
@@ -207,15 +194,9 @@ const Standard = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => {
-        if (p.hoverBackground) {
-          return p.hoverBackground;
-        }
-        if (p.outline) {
-          return theme.gray100;
-        }
-        return theme.buttonStandardHover;
-      }};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.gray100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonStandardHover)};
     }
     &:active {
       background: ${p => (p.outline ? theme.gray200 : theme.gray100)};
@@ -240,15 +221,9 @@ const Danger = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => {
-        if (p.hoverBackground) {
-          return p.hoverBackground;
-        }
-        if (p.outline) {
-          return theme.red100;
-        }
-        return theme.buttonDangerHover;
-      }};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.red100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonDangerHover)};
     }
     &:active {
       background: ${p => (p.outline ? theme.red200 : theme.red700)};
@@ -276,15 +251,9 @@ const Warning = styled(AminoButton)`
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => {
-        if (p.hoverBackground) {
-          return p.hoverBackground;
-        }
-        if (p.outline) {
-          return theme.orange100;
-        }
-        return theme.buttonWarningHover;
-      }};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.orange100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonWarningHover)};
     }
     &:active {
       background: ${p => (p.outline ? theme.orange200 : theme.orange700)};
