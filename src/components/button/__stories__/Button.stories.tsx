@@ -71,14 +71,14 @@ const ButtonRow = ({
         {...props}
         disabled={disabled}
         loading={loading}
-        variant={intent}
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
         icon={<CubeIcon size={16} />}
         loading={loading}
-        variant={intent}
+        variant={variant}
       />
       <Button
         {...props}
@@ -86,7 +86,7 @@ const ButtonRow = ({
         icon={<CubeIcon size={16} />}
         iconRight
         loading={loading}
-        variant={intent}
+        variant={variant}
       />
       <Button
         {...props}
@@ -95,7 +95,7 @@ const ButtonRow = ({
         disabled={disabled}
         icon={<CubeIcon size={16} />}
         loading={loading}
-        variant={intent}
+        variant={variant}
       />
       <Button
         /*  eslint-disable-next-line react/no-children-prop */
@@ -106,7 +106,7 @@ const ButtonRow = ({
         onClick={e => e.preventDefault()}
         outline={props.outline}
         tag="div"
-        variant={intent}
+        variant={variant}
       />
       <StyledButton
         disabled={disabled}
@@ -114,7 +114,7 @@ const ButtonRow = ({
         onClick={e => e.preventDefault()}
         outline={props.outline}
         tag="div"
-        variant={intent}
+        variant={variant}
       >
         Div Button
       </StyledButton>
@@ -126,7 +126,7 @@ const ButtonRow = ({
         onClick={e => e.preventDefault()}
         outline={props.outline}
         tag="a"
-        variant={intent}
+        variant={variant}
       >
         Anchor tag Button
       </StyledButton>
@@ -134,7 +134,7 @@ const ButtonRow = ({
         disabled={disabled}
         loading={loading}
         themeOverride="night"
-        variant={intent}
+        variant={variant}
         {...props}
       >
         Night
@@ -146,21 +146,21 @@ const ButtonRow = ({
         disabled={disabled}
         loading={loading}
         size="lg"
-        variant={intent}
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
         loading={loading}
         size="md"
-        variant={intent}
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
         loading={loading}
         size="sm"
-        variant={intent}
+        variant={variant}
       />
     </HWrapper>
   </div>
