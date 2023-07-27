@@ -30,7 +30,6 @@ const storybookConfig: StorybookConfig = {
   },
   webpackFinal: config => ({
     ...config,
-
     resolve: {
       ...config.resolve,
       alias: {
@@ -45,5 +44,4 @@ const storybookConfig: StorybookConfig = {
     },
   }),
 };
-
 export default storybookConfig;
