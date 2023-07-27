@@ -19,12 +19,16 @@ const storybookConfig: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
+  managerHead: head => `
+  <link rel="icon" type="image/png" href="https://zonos-docs.s3.us-east-1.amazonaws.com/amino-logo.png" sizes="192x192">
+  ${head}
+`,
   staticDirs: ['../public'],
   stories: getStories(),
   typescript: {
     check: false,
   },
-  webpackFinal: async config => ({
+  webpackFinal: config => ({
     ...config,
 
     resolve: {
