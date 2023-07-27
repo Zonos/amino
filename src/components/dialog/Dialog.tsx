@@ -3,11 +3,13 @@ import { type ReactNode, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
-import { BaseDialog } from 'src/components/dialog/_BaseDialog';
+import {
+  type BaseDialogProps,
+  BaseDialog,
+} from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { Theme } from 'src/types/Theme';
 
 const Header = styled.div`
   padding: ${theme.space24};
@@ -146,57 +148,20 @@ const Content = styled.div`
   // gradientOverflow
 `;
 
-export type DialogProps = {
+export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;
-  children: ReactNode;
-  className?: string;
-  /** Close when clicking outside dialog (on the backdrop)
-   * @default true
-   */
-  closeOnBlur?: boolean;
-  /** Close on pressing 'escape' key
-   * @default true
-   */
-  closeOnEsc?: boolean;
   label?: ReactNode;
   leftActions?: ReactNode;
-  noBorder?: boolean;
-  open: boolean;
   subtitle?: string;
-  themeOverride?: Theme;
-  width?: number;
   onClose: () => void;
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   (
-    {
-      actions,
-      children,
-      className,
-      closeOnBlur,
-      closeOnEsc,
-      label,
-      leftActions,
-      noBorder,
-      onClose,
-      open,
-      subtitle,
-      themeOverride,
-      width,
-    },
+    { actions, children, label, leftActions, onClose, subtitle, ...props },
     ref,
   ) => (
-    <BaseDialog
-      className={className}
-      closeOnBlur={closeOnBlur}
-      closeOnEsc={closeOnEsc}
-      data-theme={themeOverride}
-      noBorder={noBorder}
-      onClose={onClose}
-      open={open}
-      width={width}
-    >
+    <BaseDialog {...props} onClose={onClose}>
       <Header>
         <Title>
           <Text type="title">{label}</Text>

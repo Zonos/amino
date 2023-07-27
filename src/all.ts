@@ -25,6 +25,7 @@ import './components/cover-sheet/CoverSheetActions';
 import './components/currency/Currency';
 import './components/currency/DualCurrency';
 import './components/danger-zone/DangerZone';
+import './components/dialog/BaseDialog';
 import './components/dialog/Dialog';
 import './components/divider/Divider';
 import './components/drop-zone/DropZone';

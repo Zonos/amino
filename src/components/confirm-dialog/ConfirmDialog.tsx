@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
-import { BaseDialog } from 'src/components/dialog/_BaseDialog';
+import { BaseDialog } from 'src/components/dialog/BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
