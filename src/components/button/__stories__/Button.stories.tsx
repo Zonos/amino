@@ -61,7 +61,7 @@ const ButtonRow = ({
   disabled,
   label,
   loading,
-  variant: intent,
+  variant,
   ...props
 }: ButtonProps & { label: string }) => (
   <div>
