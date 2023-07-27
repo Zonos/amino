@@ -23,7 +23,7 @@ const InputMeta: Meta = {
     },
     prefix: {
       mapping: {
-        'No prefix': '',
+        'No prefix': null,
         'With icon': <CubeIcon size={20} />,
         'With text': 'USD',
       },
@@ -31,11 +31,11 @@ const InputMeta: Meta = {
     },
     suffix: {
       mapping: {
-        'No prefix': '',
+        'No suffix': null,
         'With icon': <CubeIcon size={20} />,
         'With text': 'USD',
       },
-      options: ['No prefix', 'With text', 'With icon'],
+      options: ['No suffix', 'With text', 'With icon'],
     },
   },
   component: Input,
