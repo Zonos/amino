@@ -163,7 +163,7 @@ export const Input = <T extends string>({
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix || inputSuffix}
+            suffix={suffix === null ? null : suffix || inputSuffix}
             tabIndex={tabIndex}
             value={value || ''}
             valuePrefix={valuePrefix}
