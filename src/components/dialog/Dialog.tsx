@@ -2,7 +2,7 @@ import { type ReactNode, forwardRef } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';

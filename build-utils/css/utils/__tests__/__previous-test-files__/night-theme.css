@@ -105,6 +105,19 @@
     inset 0px 2px 4px rgba(0, 0, 0, 0.24),
     inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.24),
     inset 0px 0px 8px rgba(0, 0, 0, 0.16);
+  --amino-shadow-button-primary: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 0px 0px 0.5px #000, 0px 1px 3px 0px rgba(95, 146, 246, 0.4);
+  --amino-shadow-button-success: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset, 0px 0px 0px 0.5px #000,
+    0px 1px 3px 0px rgba(86, 199, 111, 0.6);
+  --amino-shadow-button-danger: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(217, 33, 65, 0.4);
+  --amino-shadow-button-warning: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(229, 89, 26, 0.4);
+  --amino-button-focus-ring: 0 0 0 3px var(--amino-blue-600);
+  --amino-shadow-button-standard: 0px -1px 1px 0px rgba(0, 0, 0, 0.4) inset,
+    0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset,
+    0px 1px 3px 0px rgba(0, 0, 0, 0.8);
   --amino-border: 1px solid var(--amino-border-color);
   --amino-border-blue: 1px solid var(--amino-blue-500);
   --amino-border-red: 1px solid var(--amino-red-400);
@@ -122,10 +135,10 @@
   --amino-primary: var(--amino-blue-600);
   --amino-primary-light: var(--amino-blue-500);
   --amino-primary-dark: var(--amino-blue-800);
-  --amino-success: var(--amino-green-300);
+  --amino-success: var(--amino-green-600);
   --amino-success-dark: var(--amino-green-700);
-  --amino-warning: var(--amino-amber-100);
-  --amino-warning-dark: var(--amino-amber-700);
+  --amino-warning: var(--amino-orange-600);
+  --amino-warning-dark: var(--amino-orange-600);
   --amino-glow-error: 0 0 0 1px var(--amino-red-600);
   --amino-glow-blue: 0 0 0 1px var(--amino-primary);
   --amino-glow-cyan: 0 0 0 1px var(--amino-cyan-600);
@@ -141,6 +154,35 @@
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
   --amino-backdrop-color: var(--amino-gray-0);
+  --amino-button-primary-hover: linear-gradient(
+    180deg,
+    #5f92f6 0%,
+    #89b2fa 100%
+  );
+  --amino-button-success-hover: linear-gradient(
+    180deg,
+    #56c76f 0%,
+    #7de490 100%
+  );
+  --amino-button-danger-hover: linear-gradient(
+    180deg,
+    #f95c67 0%,
+    #fa8b8b 100%
+  );
+  --amino-button-warning-hover: linear-gradient(
+    180deg,
+    #f88c53 0%,
+    #fca975 100%
+  );
+  --amino-button-standard-hover: linear-gradient(
+    180deg,
+    #1e1f26 0%,
+    #2e3038 100%
+  );
+  --amino-spinner-track-black: rgba(255, 255, 255, 0.3);
+  --amino-spinner-stroke-black: #ffffff;
+  --amino-spinner-track-white: rgba(0, 0, 0, 0.3);
+  --amino-spinner-stroke-white: #0c0c0c;
 
   /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */
   .elevated {

@@ -1,6 +1,8 @@
 import { theme } from 'build-utils/css/constants/theme';
 import { variablesUsingColors } from 'build-utils/css/constants/theme/_variablesUsingColors';
+import { hover } from 'build-utils/css/constants/theme/night/_hover';
 import { shadow } from 'build-utils/css/constants/theme/night/_shadow';
+import { spinner } from 'build-utils/css/constants/theme/night/_spinner';
 import { blue } from 'build-utils/css/constants/theme/night/colors/_blue';
 import { cyan } from 'build-utils/css/constants/theme/night/colors/_cyan';
 import { glass } from 'build-utils/css/constants/theme/night/colors/_glass';
@@ -49,4 +51,10 @@ export const night = constraintDefinedAminoVar(theme, {
 
   /* ONE OFF COLORS */
   ...oneOffColors,
+
+  /* BUTTON HOVER COLORS */
+  ...hover,
+
+  /* SPINNER COLORS */
+  ...spinner,
 });

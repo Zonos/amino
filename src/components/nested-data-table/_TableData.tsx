@@ -9,7 +9,7 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Filter } from 'src/components/nested-data-table/_Filter';
 import {
   type RowWithIndex,

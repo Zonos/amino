@@ -10,6 +10,7 @@ import './components/backdrop/Backdrop';
 import './components/badge/Badge';
 import './components/banner/Banner';
 import './components/button/Button';
+import './components/button/LegacyButton';
 import './components/button/MenuButton';
 import './components/button/RippleGroup';
 import './components/button/useRipple';

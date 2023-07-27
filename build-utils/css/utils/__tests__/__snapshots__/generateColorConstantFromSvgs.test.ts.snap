@@ -112,10 +112,10 @@ exports[`Make sure all generated color constants matched previous snapshot > _va
   primary: 'var(--amino-blue-600)',
   'primary-light': 'var(--amino-blue-500)',
   'primary-dark': 'var(--amino-blue-800)',
-  success: 'var(--amino-green-300)',
+  success: 'var(--amino-green-600)',
   'success-dark': 'var(--amino-green-700)',
-  warning: 'var(--amino-amber-100)',
-  'warning-dark': 'var(--amino-amber-700)',
+  warning: 'var(--amino-orange-600)',
+  'warning-dark': 'var(--amino-orange-600)',
 
   /* GLOW COLOR */
   'glow-error': '0 0 0 1px var(--amino-red-600)',

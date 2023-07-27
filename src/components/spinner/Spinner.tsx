@@ -23,30 +23,42 @@ const StyledSvg = styled.svg<{ size: number }>`
   }
 
   &.black {
-    stroke: ${theme.gray1200};
+    stroke: ${theme.spinnerStrokeBlack};
 
     circle.track {
-      stroke: rgba(0, 0, 0, 0.3);
+      stroke: ${theme.spinnerTrackBlack};
     }
   }
   &.white {
-    stroke: ${theme.gray0};
+    stroke: ${theme.spinnerStrokeWhite};
 
     circle.track {
-      stroke: rgba(255, 255, 255, 0.3);
+      stroke: ${theme.spinnerTrackWhite};
     }
   }
   &.info {
     stroke: ${theme.blue600};
+    circle.track {
+      stroke: ${theme.blue100};
+    }
   }
   &.success {
     stroke: ${theme.green600};
+    circle.track {
+      stroke: ${theme.green100};
+    }
   }
   &.danger {
     stroke: ${theme.red600};
+    circle.track {
+      stroke: ${theme.red100};
+    }
   }
   &.warning {
     stroke: ${theme.orange600};
+    circle.track {
+      stroke: ${theme.orange100};
+    }
   }
 
   @keyframes rotate {

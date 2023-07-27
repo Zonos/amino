@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { ToastContext } from 'src/components/toast/ToastContext';

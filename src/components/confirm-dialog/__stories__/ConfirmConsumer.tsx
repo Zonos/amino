@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { useConfirm } from 'src/components/confirm-dialog/useConfirm';
 import { VStack } from 'src/components/stack/VStack';
 

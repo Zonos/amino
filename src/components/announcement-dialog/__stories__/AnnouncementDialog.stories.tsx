@@ -7,7 +7,7 @@ import {
   type AnnouncementDialogProps,
   AnnouncementDialog,
 } from 'src/components/announcement-dialog/AnnouncementDialog';
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 
