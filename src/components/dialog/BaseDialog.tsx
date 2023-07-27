@@ -63,6 +63,9 @@ export type BaseDialogProps = {
    */
   popupMotionProps?: MotionProps;
   themeOverride?: Theme;
+  /**
+   * @default 444
+   */
   width?: number;
   /**
    * Disable the backdrop color
@@ -85,7 +88,7 @@ export const BaseDialog = ({
   open,
   popupMotionProps,
   themeOverride,
-  width,
+  width = 444,
   withBackdrop = true,
   withBorder = true,
 }: BaseDialogProps) => {
@@ -106,10 +109,9 @@ export const BaseDialog = ({
       backdropRef.current?.focus();
     }
 
-    if (!document?.body) {
-      return;
+    if (document?.body) {
+      document.body.style.overflow = open ? 'hidden' : 'auto';
     }
-    document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
 
   const backdropMotionProps: MotionProps = withBackdrop
@@ -164,7 +166,7 @@ export const BaseDialog = ({
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
               }}
-              width={width || 444}
+              width={width}
               withBorder={withBorder}
             >
               {children}

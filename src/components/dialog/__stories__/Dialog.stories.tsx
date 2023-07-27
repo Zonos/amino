@@ -219,6 +219,26 @@ LongContentDialog.args = {
       ab explicabo consequuntur in necessitatibus officiis, minus distinctio
       consequatur debitis animi quaerat repellendus eius? A amet quae quibusdam
       laudantium.
+      <br />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore id fugit
+      ab explicabo consequuntur in necessitatibus officiis, minus distinctio
+      consequatur debitis animi quaerat repellendus eius? A amet quae quibusdam
+      laudantium.
+      <br />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore id fugit
+      ab explicabo consequuntur in necessitatibus officiis, minus distinctio
+      consequatur debitis animi quaerat repellendus eius? A amet quae quibusdam
+      laudantium.
+      <br />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore id fugit
+      ab explicabo consequuntur in necessitatibus officiis, minus distinctio
+      consequatur debitis animi quaerat repellendus eius? A amet quae quibusdam
+      laudantium.
+      <br />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore id fugit
+      ab explicabo consequuntur in necessitatibus officiis, minus distinctio
+      consequatur debitis animi quaerat repellendus eius? A amet quae quibusdam
+      laudantium.
     </div>
   ),
   label: 'Label',

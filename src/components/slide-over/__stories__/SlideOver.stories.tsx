@@ -20,8 +20,8 @@ const Template: StoryFn<SlideOverProps> = ({
   actions,
   children,
   label,
-  modal,
   subtitle,
+  withBackdrop,
 }: SlideOverProps) => {
   const [open, setOpen] = useState(false);
   return (
@@ -30,10 +30,10 @@ const Template: StoryFn<SlideOverProps> = ({
       <SlideOver
         actions={actions}
         label={label}
-        modal={modal}
         onClose={() => setOpen(false)}
         open={open}
         subtitle={subtitle}
+        withBackdrop={withBackdrop}
       >
         {children}
       </SlideOver>
@@ -45,7 +45,7 @@ export const BasicSlideOver = Template.bind({});
 BasicSlideOver.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
-  modal: false,
+  withBackdrop: false,
 };
 BasicSlideOver.parameters = {
   design: {
@@ -58,8 +58,8 @@ export const SlideOverWithSubtitle = Template.bind({});
 SlideOverWithSubtitle.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
-  modal: false,
   subtitle: 'With a subtitle',
+  withBackdrop: false,
 };
 SlideOverWithSubtitle.parameters = {
   design: {
@@ -78,7 +78,7 @@ SlideOverWithActions.args = {
   ),
   children: <div>Children</div>,
   label: 'Slideover title',
-  modal: false,
+  withBackdrop: false,
 };
 SlideOverWithActions.parameters = {
   design: {
@@ -91,7 +91,7 @@ export const ModalSlideOver = Template.bind({});
 ModalSlideOver.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
-  modal: true,
+  withBackdrop: true,
 };
 ModalSlideOver.parameters = {
   design: {
@@ -110,8 +110,8 @@ KitchenSinkSlideOver.args = {
   ),
   children: <div>Children</div>,
   label: 'Slideover title',
-  modal: true,
   subtitle: 'With a subtitle',
+  withBackdrop: true,
 };
 KitchenSinkSlideOver.parameters = {
   design: {
@@ -140,8 +140,8 @@ WithHover.args = {
   ),
   children: <HoverDiv>Hover me</HoverDiv>,
   label: 'Slideover title',
-  modal: true,
   subtitle: 'With a subtitle',
+  withBackdrop: true,
 };
 WithHover.parameters = {
   design: {
