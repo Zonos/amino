@@ -7,7 +7,7 @@ import {
   type AnnouncementDialogProps,
   AnnouncementDialog,
 } from 'src/components/announcement-dialog/AnnouncementDialog';
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 
@@ -56,7 +56,7 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
   const [open, setOpen] = useState(false);
   return (
     <CenteredDiv>
-      <Button onClick={() => setOpen(true)}>Open</Button>
+      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
       <StyledAnnouncementDialog
         {...rest}
         announcementId={announcementId}

@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
@@ -33,7 +33,7 @@ const StyledDialog = styled(motion.div)`
   }
 `;
 
-const StyledCloseButton = styled(Button)`
+const StyledCloseButton = styled(LegacyButton)`
   margin-right: ${theme.space24};
 `;
 const StyledHeader = styled(Text)`

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { BaseDialog } from 'src/components/dialog/_BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
@@ -90,9 +90,9 @@ export const AlertDialog = ({
           <AlertPrompt>{subtitle}</AlertPrompt>
         </div>
         <Footer>
-          <Button intent={intent} onClick={dismissAction}>
+          <LegacyButton intent={intent} onClick={dismissAction}>
             {dismissText}
-          </Button>
+          </LegacyButton>
         </Footer>
       </VStack>
     </Content>

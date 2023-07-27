@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
@@ -41,7 +41,7 @@ const Close = styled.div`
   justify-self: end;
 `;
 
-const CloseButton = styled(Button)`
+const CloseButton = styled(LegacyButton)`
   && {
     width: 20px;
   }

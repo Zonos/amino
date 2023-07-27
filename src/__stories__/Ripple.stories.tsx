@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import {
   type IRippleActions,
   RippleGroup,
@@ -64,9 +64,9 @@ export const Ripple: StoryFn<typeof RippleGroup> = props => {
         onChange={checked => setControlRippleEnabled(checked)}
       />
       {controlRippleEnabled && (
-        <Button onClick={() => setControlRippleEnabled(false)}>
+        <LegacyButton onClick={() => setControlRippleEnabled(false)}>
           This button should cause no memory leaks
-        </Button>
+        </LegacyButton>
       )}
     </VStack>
   );

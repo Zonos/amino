@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import {
   type MenuButtonProps,
   MenuButton,
@@ -31,13 +31,13 @@ const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => {
   return (
     <MenuButton
       action={
-        <Button
+        <LegacyButton
           icon={<ChevronDownIcon size={20} />}
           iconRight
           onClick={() => setOpen(!open)}
         >
           More...
-        </Button>
+        </LegacyButton>
       }
       open={open}
       setOpen={setOpen}

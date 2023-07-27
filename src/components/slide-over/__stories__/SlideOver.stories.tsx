@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import {
   type SlideOverProps,
   SlideOver,
@@ -26,7 +26,7 @@ const Template: StoryFn<SlideOverProps> = ({
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>open</Button>
+      <LegacyButton onClick={() => setOpen(true)}>open</LegacyButton>
       <SlideOver
         actions={actions}
         label={label}
@@ -72,8 +72,8 @@ export const SlideOverWithActions = Template.bind({});
 SlideOverWithActions.args = {
   actions: (
     <>
-      <Button>Action 1</Button>
-      <Button>Action 2</Button>
+      <LegacyButton>Action 1</LegacyButton>
+      <LegacyButton>Action 2</LegacyButton>
     </>
   ),
   children: <div>Children</div>,
@@ -104,8 +104,8 @@ export const KitchenSinkSlideOver = Template.bind({});
 KitchenSinkSlideOver.args = {
   actions: (
     <>
-      <Button>Action 1</Button>
-      <Button>Action 2</Button>
+      <LegacyButton>Action 1</LegacyButton>
+      <LegacyButton>Action 2</LegacyButton>
     </>
   ),
   children: <div>Children</div>,
@@ -134,8 +134,8 @@ export const WithHover = Template.bind({});
 WithHover.args = {
   actions: (
     <>
-      <Button>Action 1</Button>
-      <Button>Action 2</Button>
+      <LegacyButton>Action 1</LegacyButton>
+      <LegacyButton>Action 2</LegacyButton>
     </>
   ),
   children: <HoverDiv>Hover me</HoverDiv>,
