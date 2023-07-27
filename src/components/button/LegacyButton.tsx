@@ -359,7 +359,7 @@ export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
     tag?: T;
   };
 
-export function Button<T extends GroupTag = 'button'>({
+export function LegacyButton<T extends GroupTag = 'button'>({
   children,
   className,
   disabled = false,
