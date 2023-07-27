@@ -374,7 +374,7 @@ type ButtonBase = {
   tabIndex?: number;
   themeOverride?: Theme;
   type?: 'button' | 'reset' | 'submit';
-  /** @default 'secondary' */
+  /** @default 'standard' */
   variant?: Variant;
 };
 
