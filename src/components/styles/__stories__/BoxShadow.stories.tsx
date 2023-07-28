@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
 
-const StyleMeta: Meta = {
+const meta: Meta = {
   title: 'Box Shadows',
 };
 
-export default StyleMeta;
+export default meta;
 
 const shadows = [
   { label: 'Inset', value: 'inset' },

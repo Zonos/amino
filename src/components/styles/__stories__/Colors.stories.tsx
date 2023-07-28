@@ -8,7 +8,7 @@ import { theme } from 'src/styles/constants/theme';
 import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
 import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
-const StyleMeta: Meta = {
+const meta: Meta = {
   parameters: {
     design: {
       type: 'figma',
@@ -24,7 +24,7 @@ const StyleMeta: Meta = {
   title: 'Color Palette',
 };
 
-export default StyleMeta;
+export default meta;
 
 const Wrapper = styled.div`
   display: grid;

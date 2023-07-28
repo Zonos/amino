@@ -6,7 +6,6 @@ import { type TextProps, Text, textOptions } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 
 const StyledVStack = styled(VStack)`
-  background-color: white;
   border: 1px solid ${theme.gray200};
   padding: ${theme.space16};
   margin-bottom: ${theme.space24};
@@ -25,11 +24,11 @@ const Label = styled.div`
 
 const content = 'The quick brown fox jumps over the lazy';
 
-const StyleMeta: Meta = {
+const meta: Meta = {
   component: Text,
 };
 
-export default StyleMeta;
+export default meta;
 
 const Template: StoryFn<TextProps> = props => (
   <VStack spacing={8}>
@@ -55,7 +54,7 @@ const TextSizesLabel = styled.div`
   font-size: 14px;
 `;
 
-const TemplateTextSizes: StoryFn<TextProps> = props => (
+export const TextTypes: StoryFn<TextProps> = props => (
   <VStack spacing={8}>
     {textOptions.map(option => (
       <div key={option.type}>
@@ -67,8 +66,6 @@ const TemplateTextSizes: StoryFn<TextProps> = props => (
     ))}
   </VStack>
 );
-
-export const TextTypes = TemplateTextSizes.bind({});
 
 export const TextExample = Template.bind({});
 TextExample.args = {};
