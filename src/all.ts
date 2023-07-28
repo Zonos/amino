@@ -71,8 +71,6 @@ import './components/split-panel/SplitPanel';
 import './components/stack/HStack';
 import './components/stack/Stack';
 import './components/stack/VStack';
-import './components/styles/ColorPalette';
-import './components/styles/Shadow';
 import './components/surface/Surface';
 import './components/switch/Switch';
 import './components/table/Table';

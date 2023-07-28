@@ -6,13 +6,14 @@ import { useStorage } from 'src/utils/hooks/useStorage';
 import { getStorageItem } from 'src/utils/storage';
 
 type Params = {
-  /** Whether to modify the HTML body */
-  root: boolean;
+  /** Use with root to override a theme in localStorage */
+  override?: Theme;
+  /** Whether to modify the root HTML element */
+  root?: boolean;
 };
 
-export const useAminoTheme = (props?: Params) => {
-  const isRoot = !!props?.root;
-
+export const useAminoTheme = (params?: Params) => {
+  const { override, root } = params ?? {};
   // SWR cache is not initialized at first, so it would default to 'day' instead of the localStorage value.
   const getDefaultValue = () => {
     if (typeof window === 'undefined') {
@@ -38,10 +39,10 @@ export const useAminoTheme = (props?: Params) => {
   });
 
   useEffect(() => {
-    if (isRoot) {
-      document.documentElement.dataset.theme = aminoTheme;
+    if (root) {
+      document.documentElement.dataset.theme = override || aminoTheme;
     }
-  }, [aminoTheme, isRoot]);
+  }, [aminoTheme, override, root]);
 
-  return { aminoTheme, setAminoTheme };
+  return { aminoTheme: override || aminoTheme, setAminoTheme };
 };
