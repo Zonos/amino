@@ -59,9 +59,9 @@ const ButtonRowLabel = styled(Text)`
 
 const ButtonRow = ({
   disabled,
-  intent,
   label,
   loading,
+  variant,
   ...props
 }: ButtonProps & { label: string }) => (
   <div>
@@ -70,23 +70,23 @@ const ButtonRow = ({
       <Button<'button'>
         {...props}
         disabled={disabled}
-        intent={intent}
         loading={loading}
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
         icon={<CubeIcon size={16} />}
-        intent={intent}
         loading={loading}
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
         icon={<CubeIcon size={16} />}
         iconRight
-        intent={intent}
         loading={loading}
+        variant={variant}
       />
       <Button
         {...props}
@@ -94,25 +94,27 @@ const ButtonRow = ({
         children=""
         disabled={disabled}
         icon={<CubeIcon size={16} />}
-        intent={intent}
         loading={loading}
+        variant={variant}
       />
       <Button
         /*  eslint-disable-next-line react/no-children-prop */
         children=""
         disabled={disabled}
         icon={<CubeIcon size={16} />}
-        intent={intent}
         loading={loading}
         onClick={e => e.preventDefault()}
+        outline={props.outline}
         tag="div"
+        variant={variant}
       />
       <StyledButton
         disabled={disabled}
-        intent={intent}
         loading={loading}
         onClick={e => e.preventDefault()}
+        outline={props.outline}
         tag="div"
+        variant={variant}
       >
         Div Button
       </StyledButton>
@@ -120,18 +122,19 @@ const ButtonRow = ({
         disabled={disabled}
         // @ts-expect-error The generic type of StyledButton is not being inferred correctly (styled-components bug)
         href="#"
-        intent={intent}
         loading={loading}
         onClick={e => e.preventDefault()}
+        outline={props.outline}
         tag="a"
+        variant={variant}
       >
         Anchor tag Button
       </StyledButton>
       <Button
         disabled={disabled}
-        intent={intent}
         loading={loading}
         themeOverride="night"
+        variant={variant}
         {...props}
       >
         Night
@@ -141,23 +144,23 @@ const ButtonRow = ({
       <Button
         {...props}
         disabled={disabled}
-        intent={intent}
         loading={loading}
         size="lg"
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
-        intent={intent}
         loading={loading}
         size="md"
+        variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
-        intent={intent}
         loading={loading}
         size="sm"
+        variant={variant}
       />
     </HWrapper>
   </div>
@@ -174,53 +177,82 @@ const Template: StoryFn<ButtonProps> = props => (
 export const Default = Template.bind({});
 Default.args = {
   children: 'Example button',
-  intent: 'secondary',
+  variant: 'standard',
+};
+
+export const DefaultOutline = Template.bind({});
+DefaultOutline.args = {
+  children: 'Example button',
+  outline: true,
+  variant: 'standard',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Example button',
-  intent: 'primary',
+  variant: 'primary',
+};
+
+export const PrimaryOutline = Template.bind({});
+PrimaryOutline.args = {
+  children: 'Example button',
+  outline: true,
+  variant: 'primary',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  children: 'Example button',
+  variant: 'success',
+};
+
+export const SuccessOutline = Template.bind({});
+SuccessOutline.args = {
+  children: 'Example button',
+  outline: true,
+  variant: 'success',
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
   children: 'Example button',
-  intent: 'danger',
+  variant: 'danger',
+};
+
+export const DangerOutline = Template.bind({});
+DangerOutline.args = {
+  children: 'Example button',
+  outline: true,
+  variant: 'danger',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
   children: 'Example button',
-  intent: 'warning',
+  variant: 'warning',
 };
 
-export const Outline = Template.bind({});
-Outline.args = {
+export const WarningOutline = Template.bind({});
+WarningOutline.args = {
   children: 'Example button',
-  intent: 'outline',
+  outline: true,
+  variant: 'warning',
 };
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
   children: 'Link button',
-  intent: 'link',
+  variant: 'link',
 };
 
 export const Subtle = Template.bind({});
 Subtle.args = {
   children: 'Example button',
-  intent: 'subtle',
-};
-
-export const TextButton = Template.bind({});
-TextButton.args = {
-  children: 'Text Button',
-  intent: 'text',
+  variant: 'subtle',
 };
 
 export const PlainButton = Template.bind({});
 PlainButton.args = {
   children: 'Plain button',
-  intent: 'plain',
+  variant: 'plain',
 };

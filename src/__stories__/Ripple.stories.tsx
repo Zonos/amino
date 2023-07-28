@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import {
   type IRippleActions,
   RippleGroup,

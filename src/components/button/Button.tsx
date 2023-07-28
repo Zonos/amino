@@ -15,9 +15,9 @@ import { useRipple } from 'src/components/button/useRipple';
 import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
-import type { Intent } from 'src/types/Intent';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
+import type { Variant } from 'src/types/Variant';
 
 const getAminoColor = (color?: Color | 'inherit') => {
   if (color === 'inherit') {
@@ -64,7 +64,7 @@ const StyledSpinnerWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${theme.radius4};
+  border-radius: ${theme.radius6};
   gap: ${theme.space8};
 `;
 
@@ -81,6 +81,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   justify-content: center;
   padding: 0 ${theme.space16};
   border-radius: ${theme.radius6};
+  outline: 1px solid transparent;
   transition: ${theme.transition};
   font-weight: 500;
   user-select: none;
@@ -101,10 +102,14 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 
   &:active,
   &:focus {
-    outline: none;
     svg path:not([data-is-secondary-color]) {
       fill: currentColor;
     }
+  }
+
+  &:focus {
+    box-shadow: ${theme.buttonFocusRing};
+    outline: 1px solid ${p => (p.outline ? '' : theme.gray0)};
   }
 
   &:active {
@@ -125,207 +130,223 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   }
 
   &[disabled] {
-    box-shadow: none;
-    &:not(.loading) {
-      opacity: 0.5;
+    cursor: not-allowed;
+    .content {
+      opacity: ${p => (p.outline ? 0.6 : 1)};
     }
   }
 `;
 
 const Primary = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.primary};
-  color: ${p => getAminoColor(p.color) || theme.gray0};
+  color: ${p =>
+    getAminoColor(p.color) || p.outline ? theme.primary : theme.gray0};
+  box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonPrimary)};
+  background: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.primary};
+  outline-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.primary : 'transparent'};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.blue400};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.blue100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonPrimaryHover)};
     }
-    &:active,
-    &:focus {
-      background: ${theme.blue700};
-      color: ${theme.gray0};
+    &:active {
+      background: ${p => (p.outline ? theme.blue200 : theme.blue700)};
     }
   }
 
+  &[disabled] {
+    background: ${p => (p.outline ? theme.gray0 : theme.blue400)};
+    outline-color: ${theme.blue400};
+  }
+
   ${StyledSpinnerWrapper} {
-    background: ${theme.primary};
+    background: ${p => (p.outline ? theme.gray0 : theme.primary)};
   }
 `;
 
-const Secondary = styled(AminoButton)`
-  color: ${p => getAminoColor(p.color) || theme.textColor};
-  background: ${p => getAminoColor(p.background) || theme.gray100};
+const Success = styled(AminoButton)`
+  color: ${p =>
+    getAminoColor(p.color) || p.outline ? theme.success : theme.gray0};
+  box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonSuccess)};
+  outline-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.success : 'transparent'};
+  background: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.success};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.gray200};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.green100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonSuccessHover)};
+      &:active {
+        background: ${p => (p.outline ? theme.green200 : theme.green700)};
+      }
+    }
+  }
+  &[disabled] {
+    background: ${p => (p.outline ? theme.gray0 : theme.green400)};
+    outline-color: ${theme.green400};
+  }
+
+  ${StyledSpinnerWrapper} {
+    background: ${p => (p.outline ? theme.gray0 : theme.success)};
+  }
+`;
+
+const Standard = styled(AminoButton)`
+  color: ${p => getAminoColor(p.color) || theme.textColor};
+  background: ${p => getAminoColor(p.background) || theme.surfaceColor};
+  outline: 1px solid
+    ${p => (p.outline ? theme.gray300 : 'rgba(106, 109, 119, 0.12)')};
+  box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonStandard)};
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.gray100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonStandardHover)};
     }
     &:active {
-      background: ${theme.blue100};
-      color: ${theme.blue600};
-      svg path {
-        fill: currentColor;
-      }
+      background: ${p => (p.outline ? theme.gray200 : theme.gray100)};
+    }
+  }
+
+  &:focus {
+    outline-color: ${p => (p.outline ? theme.gray300 : theme.gray100)};
+  }
+
+  &[disabled] {
+    .content {
+      opacity: 0.6;
     }
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.gray100};
-  }
-
-  /** Night mode */
-  &.night {
-    color: ${theme.gray0};
-    background: ${theme.gray1000};
-
-    &:not([disabled]) {
-      &:hover {
-        background: ${p => getAminoColor(p.hoverBackground) || theme.gray900};
-      }
-      &:active,
-      &:focus {
-        background: ${theme.blue1000};
-        color: ${theme.blue300};
-        svg path {
-          fill: currentColor;
-        }
-      }
-    }
-
-    ${StyledSpinnerWrapper} {
-      background: ${theme.gray1000};
-    }
+    background: ${theme.surfaceColor};
   }
 `;
 
 const Danger = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.red600};
-  color: ${p => getAminoColor(p.color) || theme.gray0};
+  outline-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.danger : 'transparent'};
+  background: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.danger};
+  color: ${p =>
+    getAminoColor(p.color) || p.outline ? theme.danger : theme.gray0};
+  box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonDanger)};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.red400};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.red100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonDangerHover)};
     }
     &:active {
-      background: ${theme.red700};
+      background: ${p => (p.outline ? theme.red200 : theme.red700)};
     }
+  }
+  &[disabled] {
+    background: ${p => (p.outline ? theme.gray0 : theme.red400)};
+    outline-color: ${theme.red400};
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.red600};
+    background: ${p => (p.outline ? theme.gray0 : theme.red600)};
   }
 `;
 
 const Warning = styled(AminoButton)`
-  background: ${p => getAminoColor(p.background) || theme.orange600};
-  color: ${p => getAminoColor(p.color) || theme.gray0};
+  outline-color: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.warning : 'transparent'};
+  background: ${p =>
+    getAminoColor(p.background) || p.outline ? theme.gray0 : theme.warning};
+  color: ${p =>
+    getAminoColor(p.color) || p.outline ? theme.warning : theme.gray0};
+  box-shadow: ${p => (p.outline ? 'none' : theme.shadowButtonWarning)};
 
   &:not([disabled]) {
     &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.orange400};
+      background-color: ${p =>
+        getAminoColor(p.hoverBackground) || p.outline ? theme.orange100 : ''};
+      background-image: ${p => (p.outline ? '' : theme.buttonWarningHover)};
     }
     &:active {
-      background: ${theme.orange700};
+      background: ${p => (p.outline ? theme.orange200 : theme.orange700)};
     }
+  }
+
+  &[disabled] {
+    background: ${p => (p.outline ? theme.gray0 : theme.orange400)};
+    border-color: ${theme.orange400};
   }
 
   ${StyledSpinnerWrapper} {
-    background: ${theme.orange600};
-  }
-`;
-
-const Outline = styled(AminoButton)`
-  color: ${p => getAminoColor(p.color) || theme.textColor};
-  border: 1px solid ${p => getAminoColor(p.borderColor) || theme.gray200};
-
-  &:not([disabled]) {
-    &:hover {
-      background: linear-gradient(
-        180deg,
-        ${theme.gray0} 12.5%,
-        ${theme.gray100} 87.5%
-      );
-      background: ${p => p.hoverBackground && getAminoColor(p.hoverBackground)};
-      border: 1px solid ${theme.gray200};
-    }
-    &:active {
-      background: ${theme.blue100};
-      color: ${theme.blue600};
-      border: 1px solid ${theme.blue300};
-    }
-  }
-
-  ${StyledSpinnerWrapper} {
-    background: ${theme.gray0};
+    background: ${p => (p.outline ? theme.gray0 : theme.orange600)};
   }
 `;
 
 const Subtle = styled(AminoButton)`
   background: ${p => getAminoColor(p.background) || 'none'};
-  color: ${p => getAminoColor(p.color) || theme.gray800};
+  color: ${p => getAminoColor(p.color) || theme.textColorSecondary};
+  outline-color: transparent;
 
   &:not([disabled]) {
     &:hover {
       background: ${p => getAminoColor(p.hoverBackground) || theme.gray100};
     }
     &:active {
-      background: ${theme.blue100};
-      color: ${theme.blue600};
+      background: ${theme.gray200};
     }
   }
 
   &.loading {
     color: transparent;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${theme.blue600};
+  }
+
+  &[disabled] {
+    .content {
+      opacity: 0.6;
+    }
   }
 `;
 
-const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: ${p => getAminoColor(p.color) || theme.gray800};
-  height: 20px;
-  line-height: 20px;
-
-  &[disabled] {
-    color: ${theme.gray400};
-    &:not(.loading) {
-      opacity: inherit;
-    }
-  }
+const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
+  color: ${p => getAminoColor(p.color) || theme.primary};
 
   &:not([disabled]) {
     &:hover {
-      color: ${theme.gray700};
+      background: ${p => getAminoColor(p.hoverBackground) || theme.blue100};
     }
     &:active {
-      color: ${theme.gray1200};
+      background: ${theme.blue200};
     }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${theme.blue600};
   }
 
   &.loading {
     color: transparent;
+  }
+
+  &[disabled] {
+    .content {
+      opacity: 0.6;
+    }
   }
 `;
 
 const PlainButton = AminoButton;
-
-const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
-  color: ${p => getAminoColor(p.color) || theme.blue600};
-
-  &:not([disabled]) {
-    &:hover {
-      background: ${p => getAminoColor(p.hoverBackground) || theme.gray100};
-    }
-    &:active {
-      background: ${theme.blue100};
-      color: ${theme.blue800};
-    }
-  }
-
-  ${StyledSpinnerWrapper} {
-    background: ${theme.gray0};
-  }
-`;
-
-type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | 'plain' | Intent;
 
 type ButtonBase = {
   background?: Color | 'inherit';
@@ -338,8 +359,6 @@ type ButtonBase = {
   hoverBackground?: Color | 'inherit';
   icon?: ReactNode;
   iconRight?: boolean;
-  /** @default 'secondary' */
-  intent?: IntentProps;
   /** @default false */
   loading?: boolean;
   loadingText?: string;
@@ -348,12 +367,15 @@ type ButtonBase = {
    * @default false
    */
   noRipple?: boolean;
+  outline?: boolean;
   size?: Size;
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
   tabIndex?: number;
   themeOverride?: Theme;
   type?: 'button' | 'reset' | 'submit';
+  /** @default 'standard' */
+  variant?: Variant;
 };
 
 export type GroupTag = 'div' | 'a' | 'button';
@@ -378,7 +400,6 @@ export function Button<T extends GroupTag = 'button'>({
   disabled = false,
   icon,
   iconRight,
-  intent = 'secondary',
   loading = false,
   loadingText,
   noRipple = false,
@@ -387,15 +408,16 @@ export function Button<T extends GroupTag = 'button'>({
   tag: _tag,
   themeOverride,
   type = 'button',
+  variant = 'standard',
   ...props
 }: ButtonProps<T>) {
   const tag = _tag || 'button';
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
-      {!iconRight && icon}
-      {children}
-      {iconRight && icon}
-      {intent !== 'plain' && loading && (
+      <span className="content">{!iconRight && icon}</span>
+      <div className="content">{children}</div>
+      <span className="content">{iconRight && icon}</span>
+      {variant !== 'plain' && loading && (
         <StyledSpinnerWrapper>
           <Spinner color={_spinnerColor} size={getSpinnerSize(size)} />
           {loadingText}
@@ -419,7 +441,7 @@ export function Button<T extends GroupTag = 'button'>({
 
   const { getRippleHandlers, rippleEnabled } = useRipple({
     disabled: disabled || loading,
-    rippleEnabled: !noRipple && !['plain', 'text'].includes(intent),
+    rippleEnabled: !noRipple && !['plain', 'text'].includes(variant),
     rippleRef,
   });
 
@@ -436,68 +458,102 @@ export function Button<T extends GroupTag = 'button'>({
     ...getRippleHandlers(props),
   };
 
-  switch (intent) {
+  switch (variant) {
     case 'primary':
       return (
-        <Primary as={tag} {...buttonProps}>
-          {renderContent(spinnerColor || 'white')}
+        <Primary
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(
+            spinnerColor || buttonProps.outline ? 'info' : 'white',
+          )}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Primary>
       );
-    case 'subtle':
+    case 'success':
       return (
-        <Subtle as={tag} {...buttonProps}>
-          {renderContent(spinnerColor)}
+        <Success
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(
+            spinnerColor || buttonProps.outline ? 'success' : 'white',
+          )}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
-        </Subtle>
-      );
-    case 'outline':
-      return (
-        <Outline as={tag} {...buttonProps}>
-          {renderContent(spinnerColor)}
-          {rippleEnabled && <RippleGroup ref={rippleRef} />}
-        </Outline>
+        </Success>
       );
     case 'warning':
       return (
-        <Warning as={tag} {...buttonProps}>
-          {renderContent(spinnerColor || 'white')}
+        <Warning
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(
+            spinnerColor || buttonProps.outline ? 'warning' : 'white',
+          )}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Warning>
       );
     case 'danger':
       return (
-        <Danger as={tag} {...buttonProps}>
-          {renderContent(spinnerColor || 'white')}
+        <Danger
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(
+            spinnerColor || buttonProps.outline ? 'danger' : 'white',
+          )}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </Danger>
       );
-    case 'text':
+    case 'subtle':
       return (
-        <TextButton as={tag} {...buttonProps}>
-          {renderContent(spinnerColor)}
-        </TextButton>
+        <Subtle
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(spinnerColor || 'black')}
+          {rippleEnabled && <RippleGroup ref={rippleRef} />}
+        </Subtle>
       );
     case 'link':
       return (
-        <LinkButton as={tag} {...buttonProps}>
-          {renderContent(spinnerColor)}
+        <LinkButton
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(spinnerColor || 'info')}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
         </LinkButton>
       );
     case 'plain':
       return (
-        <PlainButton as={tag} {...buttonProps}>
+        <PlainButton
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
           {renderContent(spinnerColor)}
         </PlainButton>
       );
-    case 'secondary':
+    case 'standard':
     default:
       return (
-        <Secondary as={tag} {...buttonProps}>
-          {renderContent(spinnerColor)}
+        <Standard
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(spinnerColor || 'black')}
           {rippleEnabled && <RippleGroup ref={rippleRef} />}
-        </Secondary>
+        </Standard>
       );
   }
 }

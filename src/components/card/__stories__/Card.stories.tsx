@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { type CardProps, Card } from 'src/components/card/Card';
 import { theme } from 'src/styles/constants/theme';
 

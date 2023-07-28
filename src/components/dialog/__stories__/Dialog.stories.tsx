@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Badge } from 'src/components/badge/Badge';
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 import { theme } from 'src/styles/constants/theme';

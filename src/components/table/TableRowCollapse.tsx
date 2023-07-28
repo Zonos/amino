@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';

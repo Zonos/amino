@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import { z } from 'zod';
 
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Input } from 'src/components/input/Input';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';

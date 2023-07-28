@@ -3,7 +3,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
-import { Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/LegacyButton';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
