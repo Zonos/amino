@@ -6,7 +6,6 @@ import './components/announcement-dialog/AnnouncementDialog';
 import './components/avatar/AvatarBase';
 import './components/avatar/ImageAvatar';
 import './components/avatar/UserAvatar';
-import './components/backdrop/Backdrop';
 import './components/badge/Badge';
 import './components/banner/Banner';
 import './components/button/Button';
