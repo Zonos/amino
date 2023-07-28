@@ -24,9 +24,8 @@ const storybookConfig: StorybookConfig = {
   typescript: {
     check: false,
   },
-  webpackFinal: async config => ({
+  webpackFinal: config => ({
     ...config,
-
     resolve: {
       ...config.resolve,
       alias: {
@@ -41,5 +40,4 @@ const storybookConfig: StorybookConfig = {
     },
   }),
 };
-
 export default storybookConfig;

@@ -2,11 +2,13 @@ import { type ReactNode, forwardRef } from 'react';
 
 import styled from 'styled-components';
 
-import { BaseDialog } from 'src/components/dialog/_BaseDialog';
+import {
+  type BaseDialogProps,
+  BaseDialog,
+} from 'src/components/dialog/BaseDialog';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import type { Theme } from 'src/types/Theme';
 import { useStorage } from 'src/utils/hooks/useStorage';
 
 const Content = styled(VStack)`
@@ -22,27 +24,12 @@ const StyledImage = styled.div<{ imageWidth?: number }>`
   margin-bottom: ${theme.space16};
 `;
 
-export type AnnouncementDialogProps = {
+export type AnnouncementDialogProps = BaseDialogProps & {
   announcementId: string;
-  children: ReactNode;
-  className?: string;
-  /** Close when clicking outside dialog (on the backdrop)
-   * @default true
-   */
-  closeOnBlur?: boolean;
-  /** Close on pressing 'escape' key
-   * @default true
-   */
-  closeOnEsc?: boolean;
   image?: ReactNode;
   imageWidth?: number;
   label?: string;
-  noBorder?: boolean;
-  open?: boolean;
-  themeOverride?: Theme;
   title?: ReactNode;
-  width?: number;
-  onClose?: () => void;
 };
 
 export const AnnouncementDialog = forwardRef<
@@ -54,17 +41,13 @@ export const AnnouncementDialog = forwardRef<
       announcementId,
       children,
       className,
-      closeOnBlur,
-      closeOnEsc,
       image,
       imageWidth,
       label,
-      noBorder,
       onClose,
       open,
-      themeOverride,
       title,
-      width,
+      ...props
     },
     ref,
   ) => {
@@ -77,11 +60,8 @@ export const AnnouncementDialog = forwardRef<
 
     return (
       <BaseDialog
+        {...props}
         className={[className || '', 'announcement-dialog'].join(' ')}
-        closeOnBlur={closeOnBlur}
-        closeOnEsc={closeOnEsc}
-        data-theme={themeOverride}
-        noBorder={noBorder}
         onClose={() => {
           if (onClose) {
             onClose();
@@ -89,7 +69,6 @@ export const AnnouncementDialog = forwardRef<
           setAnnouncementSeen('seen');
         }}
         open={open || !announcementSeen}
-        width={width}
       >
         <StyledImage imageWidth={imageWidth}>{image}</StyledImage>
         <Content spacing={8}>

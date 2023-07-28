@@ -1,23 +1,25 @@
 import { type ReactNode } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { Backdrop } from 'src/components/backdrop/Backdrop';
+import {
+  type BaseDialogProps,
+  BaseDialog,
+} from 'src/components/dialog/BaseDialog';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { Theme } from 'src/types/Theme';
 
-const Popup = styled(motion.div)`
+const StyledBaseDialog = styled(BaseDialog)`
+  /* Override BaseDialog.Popup styles */
+  border-radius: 0;
+  max-height: none;
+  overflow: unset;
+  border: none;
+
   position: absolute;
-  z-index: 1001;
-  background: ${theme.surfaceColor};
-  width: 300px;
-  outline: none;
-  box-shadow: ${theme.v3ShadowXxl};
   height: 100vh;
   right: 0;
   top: 0;
@@ -83,70 +85,51 @@ const Footer = styled.div`
   }
 `;
 
-export type SlideOverProps = {
+export type SlideOverProps = BaseDialogProps & {
   actions?: ReactNode;
-  children: ReactNode;
   label?: string;
-  modal?: boolean;
-  open: boolean;
   subtitle?: ReactNode;
-  themeOverride?: Theme;
-  onClose: () => void;
 };
 
 export const SlideOver = ({
   actions,
   children,
   label,
-  modal = true,
   onClose,
-  open,
   subtitle,
-  themeOverride,
+  ...props
 }: SlideOverProps) => (
-  <AnimatePresence>
-    {open && (
-      <>
-        <Backdrop
-          key="dialog-backdrop"
-          animate={{ opacity: modal ? 0.65 : 0 }}
-          data-theme={themeOverride}
-          exit={{ opacity: 0 }}
-          initial={{ opacity: 0 }}
-          onClick={onClose}
-          transition={{ duration: 0.35 }}
-        />
-        <Popup
-          key="slide-over"
-          animate={{ opacity: 1, x: 0 }}
-          className="elevated"
-          exit={{ opacity: 0, x: 300 }}
-          initial={{ opacity: 0, x: 300 }}
-          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-        >
-          <SlideOverHeader>
-            {subtitle ? (
-              <VStack className="header-content" spacing={0}>
-                <Text type="title">{label}</Text>
-                {subtitle}
-              </VStack>
-            ) : (
-              <Text className="header-content" type="title">
-                {label}
-              </Text>
-            )}
-            <Close onClick={onClose}>
-              <RemoveIcon />
-            </Close>
-          </SlideOverHeader>
-          <SlideOverContent>{children}</SlideOverContent>
-          {actions && (
-            <Footer>
-              <HStack spacing={8}>{actions}</HStack>
-            </Footer>
-          )}
-        </Popup>
-      </>
+  <StyledBaseDialog
+    onClose={onClose}
+    popupMotionProps={{
+      animate: { opacity: 1, x: 0 },
+      exit: { opacity: 0, x: 300 },
+      initial: { opacity: 0, x: 300 },
+      transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },
+    }}
+    width={300}
+    {...props}
+  >
+    <SlideOverHeader>
+      {subtitle ? (
+        <VStack className="header-content" spacing={0}>
+          <Text type="title">{label}</Text>
+          {subtitle}
+        </VStack>
+      ) : (
+        <Text className="header-content" type="title">
+          {label}
+        </Text>
+      )}
+      <Close onClick={onClose}>
+        <RemoveIcon />
+      </Close>
+    </SlideOverHeader>
+    <SlideOverContent>{children}</SlideOverContent>
+    {actions && (
+      <Footer>
+        <HStack spacing={8}>{actions}</HStack>
+      </Footer>
     )}
-  </AnimatePresence>
+  </StyledBaseDialog>
 );
