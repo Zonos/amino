@@ -3,6 +3,7 @@
 exports[`Case light theme: 1`] = `
 ":root,
 [data-theme='day'] {
+  color-scheme: light;
   --amino-transition: all 0.2s ease-in-out 0s;
   --amino-type-scale-base: 16px;
   --amino-glass-0: #10111600;
@@ -270,6 +271,7 @@ exports[`Case light theme: 1`] = `
 
 exports[`Case night theme: 1`] = `
 "[data-theme='night'] {
+  color-scheme: dark;
   --amino-glass-0: #ffffff00;
   --amino-glass-50: #ffffff0a;
   --amino-glass-100: #ffffff21;
