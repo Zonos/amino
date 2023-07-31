@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import {
-  type ButtonProps,
+  type LegacyButtonProps,
   LegacyButton,
 } from 'src/components/button/LegacyButton';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
@@ -44,7 +44,7 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
-type ButtonPropWithTooltipOption = Omit<ButtonProps, 'background'> &
+type ButtonPropWithTooltipOption = Omit<LegacyButtonProps, 'background'> &
   Pick<TooltipProps, 'background' | 'themeOverride'>;
 
 const HeadingTooltip = ({
