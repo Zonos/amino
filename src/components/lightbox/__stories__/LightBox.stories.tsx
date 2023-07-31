@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { LightBox as LightBoxComponent } from 'src/components/lightbox/LightBox';
 
 const LightBoxMeta: Meta = {
@@ -33,7 +33,7 @@ export const LightBox: StoryFn<typeof LightBoxComponent> = ({
   const [open, setOpen] = useState(false);
   return (
     <CenteredDiv>
-      <Button onClick={() => setOpen(true)}>Open</Button>
+      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
 
       <LightBoxComponent
         {...rest}

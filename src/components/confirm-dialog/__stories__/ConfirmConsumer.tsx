@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { useConfirm } from 'src/components/confirm-dialog/useConfirm';
 import { VStack } from 'src/components/stack/VStack';
 
@@ -16,7 +16,7 @@ export const ConfirmConsumer = () => {
   return (
     <VStack>
       {/** Default Confirmation */}
-      <Button
+      <LegacyButton
         intent="primary"
         onClick={() =>
           defaultConfirm({
@@ -31,14 +31,14 @@ export const ConfirmConsumer = () => {
         }
       >
         Trigger default confirmation
-      </Button>
+      </LegacyButton>
       <div className="default-confirmation">
         <b>Default confirmation:</b>{' '}
         {defaultConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>
 
       {/** Danger Confirmation */}
-      <Button
+      <LegacyButton
         intent="danger"
         onClick={() =>
           dangerConfirm({
@@ -52,14 +52,14 @@ export const ConfirmConsumer = () => {
         }
       >
         Trigger danger confirmation
-      </Button>
+      </LegacyButton>
       <div className="warning-confirmation">
         <b>Danger confirmation:</b>{' '}
         {dangerConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>
 
       {/** Warning Confirmation */}
-      <Button
+      <LegacyButton
         intent="warning"
         onClick={() =>
           warningConfirm({
@@ -73,7 +73,7 @@ export const ConfirmConsumer = () => {
         }
       >
         Trigger warning confirmation
-      </Button>
+      </LegacyButton>
       <div>
         <b>Warning confirmation:</b>{' '}
         {warningConfirmOk ? 'confirmed' : 'not confirmed'}

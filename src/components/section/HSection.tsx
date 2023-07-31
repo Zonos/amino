@@ -2,7 +2,7 @@ import { type ReactNode, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';
@@ -17,7 +17,7 @@ const StyledSectionWrapper = styled(HStack)`
   grid-template-columns: 1fr 2fr;
 `;
 
-const StyledCollapseIndicator = styled(Button)`
+const StyledCollapseIndicator = styled(LegacyButton)`
   position: relative;
   margin-left: ${theme.space4};
   transition: 0.2s all ease;

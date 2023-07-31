@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Dialog } from 'src/components/dialog/Dialog';
 import {
   type RichCardStateSelectProps,
@@ -35,7 +35,7 @@ const Template: StoryFn<RichCardStateSelectProps> = ({
 
       <Dialog
         actions={
-          <Button
+          <LegacyButton
             intent={selectedState?.highlighted ? 'danger' : 'primary'}
             onClick={() => {
               const foundState = states.find(
@@ -49,13 +49,13 @@ const Template: StoryFn<RichCardStateSelectProps> = ({
             }}
           >
             {selectedState?.highlighted ? 'Deselect' : 'Select'}
-          </Button>
+          </LegacyButton>
         }
         label={`${selectedState?.name} label!`}
         leftActions={
-          <Button intent="outline" onClick={() => setOpen(false)}>
+          <LegacyButton intent="outline" onClick={() => setOpen(false)}>
             Close
-          </Button>
+          </LegacyButton>
         }
         onClose={() => setOpen(false)}
         open={open}

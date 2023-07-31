@@ -3,7 +3,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -55,7 +55,7 @@ const BrowseButton = styled.button<{ disabled: boolean }>`
   display: inline;
 `;
 
-const RemoveFileButton = styled(Button)`
+const RemoveFileButton = styled(LegacyButton)`
   margin-left: auto;
   padding: 0;
   path[data-is-secondary-color] {

@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 import { v4 } from 'uuid';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Card } from 'src/components/card/Card';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Input } from 'src/components/input/Input';
@@ -38,7 +38,9 @@ const Template: StoryFn<HSectionProps> = (props: HSectionProps) => {
         collapsible={collapsible}
         label="Collapsible HSection"
         sublabel={
-          <Button onClick={() => setRenderDelay(false)}>Reset delay</Button>
+          <LegacyButton onClick={() => setRenderDelay(false)}>
+            Reset delay
+          </LegacyButton>
         }
       >
         <VStack>
@@ -128,20 +130,24 @@ export const VariableList = () => {
         label="collapsible"
         onChange={e => setcollapsible(e.valueOf())}
       />
-      <Button onClick={() => setItems([])}>Clear</Button>
+      <LegacyButton onClick={() => setItems([])}>Clear</LegacyButton>
       <HSection collapsible={collapsible} label="Variable length list">
         <Input label="No padding input" onChange={() => null} value="value" />
         <VStack>
           {items.map((item, idx) => (
             <Card
               key={item}
-              actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
+              actions={
+                <LegacyButton onClick={() => removeItem(idx)}>
+                  Remove
+                </LegacyButton>
+              }
               label={item}
             >
               <Input label="An input" onChange={() => null} value="value" />
             </Card>
           ))}
-          <Button onClick={() => addItem()}>Add item</Button>
+          <LegacyButton onClick={() => addItem()}>Add item</LegacyButton>
         </VStack>
       </HSection>
       <HSection
@@ -153,13 +159,17 @@ export const VariableList = () => {
           {items.map((item, idx) => (
             <Card
               key={item}
-              actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
+              actions={
+                <LegacyButton onClick={() => removeItem(idx)}>
+                  Remove
+                </LegacyButton>
+              }
               label={item}
             >
               <Input label="An input" onChange={() => null} value="value" />
             </Card>
           ))}
-          <Button onClick={() => addItem()}>Add item</Button>
+          <LegacyButton onClick={() => addItem()}>Add item</LegacyButton>
         </VStack>
       </HSection>
     </StyledVStack>

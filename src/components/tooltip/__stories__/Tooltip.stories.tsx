@@ -3,7 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { type ButtonProps, Button } from 'src/components/button/LegacyButton';
+import {
+  type LegacyButtonProps,
+  LegacyButton,
+} from 'src/components/button/LegacyButton';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Select } from 'src/components/select/Select';
@@ -17,7 +20,7 @@ const TransparentCoverSheet = styled(CoverSheet)`
   /* framer-motion inlines the opacity style */
   opacity: 0.9 !important;
 `;
-const StyledButton = styled(Button)``;
+const StyledButton = styled(LegacyButton)``;
 const ButtonMeta: Meta = {
   component: Tooltip,
   parameters: {
@@ -41,7 +44,7 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
-type ButtonPropWithTooltipOption = Omit<ButtonProps, 'background'> &
+type ButtonPropWithTooltipOption = Omit<LegacyButtonProps, 'background'> &
   Pick<TooltipProps, 'background' | 'themeOverride'>;
 
 const HeadingTooltip = ({
@@ -88,16 +91,16 @@ const TopRow = ({
 }: ButtonPropWithTooltipOption) => (
   <>
     <HeadingTooltip background={background} themeOverride={themeOverride}>
-      <Button {...props}>Has heading</Button>
+      <LegacyButton {...props}>Has heading</LegacyButton>
     </HeadingTooltip>
     <WithoutHeadingTooltip
       background={background}
       subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated."
       themeOverride={themeOverride}
     >
-      <Button {...props} iconRight>
+      <LegacyButton {...props} iconRight>
         Without heading truncated subtitle
-      </Button>
+      </LegacyButton>
     </WithoutHeadingTooltip>
     <WithoutHeadingTooltip
       background={background}
@@ -198,9 +201,9 @@ const BottomRow = ({
         />
       ) : (
         <HeadingTooltip background={background} themeOverride={themeOverride}>
-          <Button {...props} onClick={() => setShowSelect(true)}>
+          <LegacyButton {...props} onClick={() => setShowSelect(true)}>
             Test select z-index
-          </Button>
+          </LegacyButton>
         </HeadingTooltip>
       )}
     </>
@@ -290,9 +293,9 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       <TransparentCoverSheet
         actions={
           <HeadingTooltip background={background} themeOverride={themeOverride}>
-            <Button {...props} disabled>
+            <LegacyButton {...props} disabled>
               Has heading
-            </Button>
+            </LegacyButton>
           </HeadingTooltip>
         }
         label="Coversheet"
@@ -310,9 +313,9 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       <Dialog
         actions={
           <HeadingTooltip background={background} themeOverride={themeOverride}>
-            <Button {...props} disabled>
+            <LegacyButton {...props} disabled>
               Has heading
-            </Button>
+            </LegacyButton>
           </HeadingTooltip>
         }
         onClose={() => setDialogOpen(false)}

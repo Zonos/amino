@@ -9,7 +9,7 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Filter } from 'src/components/nested-data-table/_Filter';
 import {
   type RowWithIndex,
@@ -108,7 +108,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
         return (
           <StyledExpandWrapper>
             <Tooltip showTooltip={noItems} subtitle="This list has no items.">
-              <Button
+              <LegacyButton
                 className={isExpanding ? 'expanding-button' : ''}
                 disabled={noItems}
                 icon={<ChevronRightCircleIcon />}

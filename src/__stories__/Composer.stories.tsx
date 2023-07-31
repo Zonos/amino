@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
@@ -106,9 +106,9 @@ const getSelectOptions = ({
 ];
 
 const ButtonOption = ({ size }: { size: Size }) => (
-  <Button intent="primary" size={size}>
+  <LegacyButton intent="primary" size={size}>
     button-{size}
-  </Button>
+  </LegacyButton>
 );
 const getButtonOptions = (): {
   label: `button-${Size}`;
@@ -186,22 +186,22 @@ const Template: StoryFn<Props> = ({
       <VStack>
         <StyledActions>
           Column
-          <Button
+          <LegacyButton
             disabled={!columns}
             icon={<MinusIcon size={16} />}
             onClick={() => setColumns(columns - 1)}
           />
-          <Button
+          <LegacyButton
             icon={<PlusIcon size={16} />}
             onClick={() => setColumns(columns + 1)}
           />
           Row
-          <Button
+          <LegacyButton
             disabled={!rows}
             icon={<MinusIcon size={16} />}
             onClick={() => setRows(rows - 1)}
           />
-          <Button
+          <LegacyButton
             icon={<PlusIcon size={16} />}
             onClick={() => setRows(rows + 1)}
           />
@@ -222,7 +222,7 @@ const Template: StoryFn<Props> = ({
                   {Component ? (
                     <Component />
                   ) : (
-                    <Button
+                    <LegacyButton
                       icon={<PlusIcon size={16} />}
                       onClick={() => setOpenRowCol(rowCol)}
                     />

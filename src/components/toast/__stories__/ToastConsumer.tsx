@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { ToastContext } from 'src/components/toast/ToastContext';
@@ -36,40 +36,40 @@ export const ToastConsumer = () => {
   return (
     <LeftCenteredDiv>
       <VStack>
-        <Button
+        <LegacyButton
           intent="secondary"
           onClick={() => notify('Default toast', { duration })}
         >
           Notify
-        </Button>
-        <Button
+        </LegacyButton>
+        <LegacyButton
           intent="success"
           onClick={() =>
             notify('Success toast', { duration, intent: 'success' })
           }
         >
           Success
-        </Button>
-        <Button
+        </LegacyButton>
+        <LegacyButton
           intent="danger"
           onClick={() => notify('Error toast', { duration, intent: 'error' })}
         >
           Error
-        </Button>
-        <Button
+        </LegacyButton>
+        <LegacyButton
           intent="warning"
           onClick={() =>
             notify('Warning toast', { duration, intent: 'warning' })
           }
         >
           Warning
-        </Button>
-        <Button
+        </LegacyButton>
+        <LegacyButton
           intent="primary"
           onClick={() => notify('Info toast', { duration, intent: 'info' })}
         >
           Information
-        </Button>
+        </LegacyButton>
         <CustomWrapper>
           <textarea
             cols={30}
@@ -83,9 +83,11 @@ export const ToastConsumer = () => {
             rows={5}
             value={message}
           />
-          <Button onClick={() => notify(message, { duration, intent: 'info' })}>
+          <LegacyButton
+            onClick={() => notify(message, { duration, intent: 'info' })}
+          >
             Display Custom
-          </Button>
+          </LegacyButton>
         </CustomWrapper>
         <Input
           label="Duration"

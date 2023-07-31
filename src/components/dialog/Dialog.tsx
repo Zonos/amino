@@ -2,7 +2,7 @@ import { type ReactNode, forwardRef } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import {
   type BaseDialogProps,
   BaseDialog,
@@ -33,7 +33,7 @@ const Title = styled.div`
   }
 `;
 
-const StyledCloseButton = styled(Button)`
+const StyledCloseButton = styled(LegacyButton)`
   padding: 0;
   path[data-is-secondary-color] {
     fill: ${theme.gray200};

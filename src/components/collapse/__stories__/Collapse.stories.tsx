@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Banner } from 'src/components/banner/Banner';
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import {
   type CollapseProps,
   Collapse as CollapseComponent,
@@ -83,22 +83,22 @@ const Template: StoryFn<CollapseProps> = ({
   return (
     <>
       <ActionWrapper>
-        <Button
+        <LegacyButton
           onClick={() => {
             setOpen1(!open1);
             setOpen2(!open2);
           }}
         >
           Toggle
-        </Button>
+        </LegacyButton>
 
-        <Button
+        <LegacyButton
           onClick={() => {
             setMoreItems(true);
           }}
         >
           Add more items
-        </Button>
+        </LegacyButton>
       </ActionWrapper>
       <CollapseContainer>
         <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>

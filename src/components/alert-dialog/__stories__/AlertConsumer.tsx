@@ -1,5 +1,5 @@
 import { useAlert } from 'src/components/alert-dialog/useAlert';
-import { Button } from 'src/components/button/LegacyButton';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { VStack } from 'src/components/stack/VStack';
 
 export const AlertConsumer = () => {
@@ -8,7 +8,7 @@ export const AlertConsumer = () => {
   return (
     <VStack>
       {/* Info  alert */}
-      <Button
+      <LegacyButton
         intent="primary"
         onClick={() =>
           alert({
@@ -21,9 +21,9 @@ export const AlertConsumer = () => {
         }
       >
         Trigger default alert
-      </Button>
+      </LegacyButton>
       {/* Danger alert */}
-      <Button
+      <LegacyButton
         intent="danger"
         onClick={() =>
           alert({
@@ -36,9 +36,9 @@ export const AlertConsumer = () => {
         }
       >
         Trigger danger alert
-      </Button>
+      </LegacyButton>
       {/* Warning alert */}
-      <Button
+      <LegacyButton
         intent="warning"
         onClick={() =>
           alert({
@@ -51,7 +51,7 @@ export const AlertConsumer = () => {
         }
       >
         Trigger warning alert
-      </Button>
+      </LegacyButton>
     </VStack>
   );
 };

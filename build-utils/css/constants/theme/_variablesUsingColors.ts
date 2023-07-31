@@ -41,4 +41,10 @@ export const variablesUsingColors = {
   'hover-color': 'var(--amino-gray-50)',
   'text-color': 'var(--amino-gray-1000)',
   'text-color-secondary': 'var(--amino-gray-800)',
+
+  /* BUTTON FOCUS */
+  'focus-button-standard':
+    '0px 0px 0px 1px var(--amino-transparent-gray-600) inset, var(--amino-button-focus-ring)',
+  'focus-button':
+    '0px 0px 0px 1px var(--amino-gray-0) inset, var(--amino-button-focus-ring)',
 } as const;
