@@ -10,11 +10,11 @@ export const shadow = {
   'shadow-button-primary':
     '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40), var(--amino-primary) inset',
   'shadow-button-success':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40)',
+    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40), var(--amino-success) inset',
   'shadow-button-danger':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40)',
+    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40), var(--amino-danger) inset',
   'shadow-button-warning':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40)',
+    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40), var(--amino-warning) inset',
   'button-focus-ring': '0 0 0 2px var(--amino-blue-600)',
   'shadow-button-standard':
     '0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset',

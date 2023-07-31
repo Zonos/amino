@@ -323,13 +323,13 @@ export const theme = {
   /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40), var(--amino-primary) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonPrimary: 'var(--amino-shadow-button-primary)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40) */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40), var(--amino-success) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonSuccess: 'var(--amino-shadow-button-success)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40) */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40), var(--amino-danger) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDanger: 'var(--amino-shadow-button-danger)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40) */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40), var(--amino-warning) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonWarning: 'var(--amino-shadow-button-warning)',
   /** @info 0 0 0 2px var(--amino-blue-600) */
