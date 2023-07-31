@@ -35,6 +35,7 @@ export const generateLightThemeContent = async <
 
   const fullContent = `
   :root, [data-theme="day"] {
+    color-scheme: light;
     ${content}
   }`;
 
@@ -58,6 +59,7 @@ export const generateNightThemeContent = async <
 
   const fullContent = `
   [data-theme='night'] {
+    color-scheme: dark;
     ${content}
 
     /* Fix for dark mode surface hover color. Dark mode surfaces have a lighter color than day mode inverted to see shadows better. */

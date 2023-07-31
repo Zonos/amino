@@ -5,7 +5,7 @@ export default create({
   appBorderRadius: 8,
   appContentBg: 'white',
   base: 'light',
-  brandImage: 'https://zonos-docs.s3.us-east-1.amazonaws.com/amino-logo.png',
+  brandImage: '/amino-logo.png',
   brandTitle: 'Building blocks for cross-border interfaces',
   brandUrl: 'https://amino.zonos.com',
 });
