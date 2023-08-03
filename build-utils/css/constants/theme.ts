@@ -106,6 +106,8 @@ export const theme = {
   'font-size-xl': '1.375rem',
   /** @info 18px */
   'font-size-l': '1.125rem',
+  /** @info 16px */
+  'font-size-base-docs': '1rem',
   /** @info 14px */
   'font-size-base': '0.875rem',
   /** @info 12px */
@@ -114,13 +116,20 @@ export const theme = {
   'font-size-xs': '0.625rem',
 
   /* LINE HEIGHT */
-  'line-height-3xl': '118%',
-  'line-height-2xl': '119%',
-  'line-height-xl': '127%',
-  'line-height-l': '133%',
-  'line-height-base': '114%',
-  'line-height-s': '133%',
-  'line-height-xs': '120%',
+  /** @info 48px */
+  'line-height-3xl': '3rem',
+  /** @info 40px */
+  'line-height-2xl': '2.5rem',
+  /** @info 32px */
+  'line-height-xl': '2rem',
+  /** @info 24px */
+  'line-height-l': '1.5rem',
+  /** @info 24px */
+  'line-height-base': '1.5rem',
+  /** @info 16px */
+  'line-height-s': '1rem',
+  /** @info 12px */
+  'line-height-xs': '0.75rem',
 
   /* FONTS */
   'font-sans': `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,

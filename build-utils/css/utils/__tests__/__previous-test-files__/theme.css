@@ -109,13 +109,13 @@
     inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06),
     inset 0px 0px 8px rgba(0, 0, 0, 0.02);
   --amino-shadow-button-primary: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-    0px 1px 3px 0px rgba(68, 94, 238, 0.4), var(--amino-primary) inset;
+    0px 1px 3px 0px rgba(68, 94, 238, 0.4);
   --amino-shadow-button-success: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-    0px 1px 3px 0px rgba(43, 156, 77, 0.4), var(--amino-success) inset;
+    0px 1px 3px 0px rgba(43, 156, 77, 0.4);
   --amino-shadow-button-danger: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-    0px 1px 3px 0px rgba(217, 33, 65, 0.4), var(--amino-danger) inset;
+    0px 1px 3px 0px rgba(217, 33, 65, 0.4);
   --amino-shadow-button-warning: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-    0px 1px 3px 0px rgba(229, 89, 26, 0.4), var(--amino-warning) inset;
+    0px 1px 3px 0px rgba(229, 89, 26, 0.4);
   --amino-button-focus-ring: 0 0 0 2px var(--amino-blue-600);
   --amino-shadow-button-standard: 0px 1px 3px 0px rgba(110, 110, 120, 0.12),
     0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
@@ -251,16 +251,17 @@
   --amino-font-size-2xl: 1.75rem;
   --amino-font-size-xl: 1.375rem;
   --amino-font-size-l: 1.125rem;
+  --amino-font-size-base-docs: 1rem;
   --amino-font-size-base: 0.875rem;
   --amino-font-size-s: 0.75rem;
   --amino-font-size-xs: 0.625rem;
-  --amino-line-height-3xl: 118%;
-  --amino-line-height-2xl: 119%;
-  --amino-line-height-xl: 127%;
-  --amino-line-height-l: 133%;
-  --amino-line-height-base: 114%;
-  --amino-line-height-s: 133%;
-  --amino-line-height-xs: 120%;
+  --amino-line-height-3xl: 3rem;
+  --amino-line-height-2xl: 2.5rem;
+  --amino-line-height-xl: 2rem;
+  --amino-line-height-l: 1.5rem;
+  --amino-line-height-base: 1.5rem;
+  --amino-line-height-s: 1rem;
+  --amino-line-height-xs: 0.75rem;
   --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
