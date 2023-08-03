@@ -358,6 +358,23 @@ const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   }
 `;
 
+const TextButton = styled(AminoButton)<
+  ButtonProps<GroupTag> & { href?: string }
+>`
+  color: ${p => (p.href ? theme.primary : theme.textColorSecondary)};
+  &:not([disabled]) {
+    &:hover {
+      color: ${p => (p.href ? theme.blue500 : theme.gray700)};
+    }
+  }
+  &[disabled] {
+    color: ${p => (p.href ? theme.blue300 : theme.gray300)};
+  }
+  &.loading {
+    color: transparent;
+  }
+`;
+
 const PlainButton = AminoButton;
 
 type ButtonBase = {
@@ -429,7 +446,7 @@ export function Button<T extends GroupTag = 'button'>({
       <span className="content">{!iconRight && icon}</span>
       <div className="content">{children}</div>
       <span className="content">{iconRight && icon}</span>
-      {variant !== 'plain' && loading && (
+      {variant !== 'plain' && variant !== 'text' && loading && (
         <StyledSpinnerWrapper>
           <Spinner color={_spinnerColor} size={getSpinnerSize(size)} />
           {loadingText}
@@ -554,6 +571,16 @@ export function Button<T extends GroupTag = 'button'>({
         >
           {renderContent(spinnerColor)}
         </PlainButton>
+      );
+    case 'text':
+      return (
+        <TextButton
+          as={tag}
+          tabIndex={tag === 'div' ? 0 : undefined}
+          {...buttonProps}
+        >
+          {renderContent(spinnerColor)}
+        </TextButton>
       );
     case 'standard':
     default:
