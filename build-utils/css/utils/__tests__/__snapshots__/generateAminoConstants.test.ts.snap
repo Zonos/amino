@@ -320,16 +320,16 @@ export const theme = {
   /** @info 0px 1px 0px #FFFFFF, 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 0px 8px rgba(0, 0, 0, 0.02) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowInset: 'var(--amino-v3-shadow-inset)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40), var(--amino-primary) inset */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonPrimary: 'var(--amino-shadow-button-primary)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40), var(--amino-success) inset */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonSuccess: 'var(--amino-shadow-button-success)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40), var(--amino-danger) inset */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDanger: 'var(--amino-shadow-button-danger)',
-  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40), var(--amino-warning) inset */
+  /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonWarning: 'var(--amino-shadow-button-warning)',
   /** @info 0 0 0 2px var(--amino-blue-600) */
@@ -702,6 +702,9 @@ export const theme = {
   /** @info 18px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeL: 'var(--amino-font-size-l)',
+  /** @info 16px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeBaseDocs: 'var(--amino-font-size-base-docs)',
   /** @info 14px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeBase: 'var(--amino-font-size-base)',
@@ -713,25 +716,25 @@ export const theme = {
   fontSizeXs: 'var(--amino-font-size-xs)',
 
   /* LINE HEIGHT */
-  /** @info 118% */
+  /** @info 48px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeight3xl: 'var(--amino-line-height-3xl)',
-  /** @info 119% */
+  /** @info 40px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeight2xl: 'var(--amino-line-height-2xl)',
-  /** @info 127% */
+  /** @info 32px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeightXl: 'var(--amino-line-height-xl)',
-  /** @info 133% */
+  /** @info 24px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeightL: 'var(--amino-line-height-l)',
-  /** @info 114% */
+  /** @info 24px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeightBase: 'var(--amino-line-height-base)',
-  /** @info 133% */
+  /** @info 16px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeightS: 'var(--amino-line-height-s)',
-  /** @info 120% */
+  /** @info 12px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   lineHeightXs: 'var(--amino-line-height-xs)',
 
