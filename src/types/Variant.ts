@@ -6,4 +6,5 @@ export type Variant =
   | 'danger'
   | 'subtle'
   | 'link'
-  | 'plain';
+  | 'plain'
+  | 'text';

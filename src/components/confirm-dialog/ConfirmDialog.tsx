@@ -87,7 +87,7 @@ export const ConfirmDialog = ({
         <VStack spacing={8}>
           <Text type="subheader">{label}</Text>
           {subtitle && (
-            <Text color="gray800" type="body">
+            <Text color="gray800" lineHeight="base" type="body">
               {subtitle}
             </Text>
           )}
