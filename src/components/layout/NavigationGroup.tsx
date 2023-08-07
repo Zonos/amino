@@ -13,6 +13,11 @@ const Wrapper = styled.div`
 const StyledNavigationItemIcon = styled.div``;
 const StyledNavigationContent = styled.div``;
 
+type StyledNavigationItemProps = StyledProps<{
+  icon: boolean;
+  isActive: boolean;
+}>;
+
 const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
   display: flex;
   flex-direction: row;
@@ -39,7 +44,7 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
     }
   }
   ${({ $icon }) =>
-    !!$icon &&
+    $icon &&
     css`
       ${StyledNavigationItemIcon} {
         flex-basis: 31px;
@@ -60,9 +65,9 @@ const StyledNavigationItem = styled.div<StyledNavigationItemProps>`
     `}
 `;
 
-const StyledItemWrapper = styled.div<StyledNavigationGroupItemProps>`
-  ${({ $collapsed }) =>
-    !$collapsed &&
+const StyledItemWrapper = styled.div<StyledProps<{ collapsed: boolean }>>`
+  ${p =>
+    !p.$collapsed &&
     css`
       ${StyledNavigationItem} {
         color: ${theme.gray1200};
@@ -81,13 +86,13 @@ const StyledGroupItemWrapper = styled(Collapse)`
   border-left: 1px solid ${theme.gray200};
 `;
 
-type StyledNavigationItemProps = StyledProps<NavigationItemProps>;
-type StyledNavigationGroupItemProps = StyledProps<NavigationGroupProps>;
-
 export type NavigationItemProps = {
   className?: string;
   content: ReactNode;
   icon?: ReactNode;
+  /**
+   * @default false
+   */
   isActive?: boolean;
 };
 
@@ -106,11 +111,10 @@ export const NavigationItem = ({
   className,
   content,
   icon,
-  isActive,
+  isActive = false,
 }: NavigationItemProps) => (
   <StyledNavigationItem
-    $content={content}
-    $icon={icon}
+    $icon={!!icon}
     $isActive={isActive}
     className={className}
   >

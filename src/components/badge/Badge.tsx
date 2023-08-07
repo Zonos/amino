@@ -22,7 +22,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   font-size: ${theme.fontSizeS};
   padding: 4px 8px;
   text-align: center;
-  border-radius: ${({ $rounded }) => ($rounded ? '20px' : theme.radius6)};
+  border-radius: ${p => (p.$rounded ? '20px' : theme.radius6)};
   background-color: ${theme.gray100};
   color: ${theme.gray800};
   align-items: center;
@@ -33,7 +33,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
     line-height: 16px;
   }
   svg {
-    order: ${({ $iconRight }) => ($iconRight ? '2' : '')};
+    order: ${p => (p.$iconRight ? '2' : '')};
   }
 
   &.bold {

@@ -60,7 +60,7 @@ type Props<
 
 type Comparator<TRow extends unknown> = (a: TRow, b: TRow) => number;
 
-type StyledWrapperProps = StyledProps<Props<RowWithIndex, unknown, KeyValue>>;
+type StyledWrapperProps = StyledProps<{ tableHeight?: string }>;
 
 const SortStatus = styled.span`
   display: flex;
