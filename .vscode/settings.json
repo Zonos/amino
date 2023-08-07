@@ -1,4 +1,9 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "javascript.preferences.importModuleSpecifier": "non-relative"
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  // Exclude compiled output
+  "search.exclude": {
+    "**/node_modules": true,
+    ".github/**/*.js": true
+  }
 }
