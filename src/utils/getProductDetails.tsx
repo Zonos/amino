@@ -2,12 +2,16 @@ import {
   CheckoutColorIcon,
   ClassifyColorIcon,
   ClearColorIcon,
+  CounterCompanionColorIcon,
   DashboardColorIcon,
+  DDPColorIcon,
+  DDUColorIcon,
   HelloColorIcon,
   LandedCostColorIcon,
   RateColorIcon,
   RestrictColorIcon,
   ScreenColorIcon,
+  TaxColorIcon,
 } from 'src/icons/IconIndex';
 import type { ColorPrefix } from 'src/types/Color';
 
@@ -20,7 +24,11 @@ export type Product =
   | 'screen'
   | 'checkout'
   | 'hello'
-  | 'dashboard';
+  | 'dashboard'
+  | 'ddp'
+  | 'ddu'
+  | 'tax'
+  | 'counter-companion';
 
 export type ProductName =
   | 'Landed Cost'
@@ -31,7 +39,11 @@ export type ProductName =
   | 'Screen'
   | 'Checkout'
   | 'Hello'
-  | 'Dashboard';
+  | 'Dashboard'
+  | 'DDP'
+  | 'DDU'
+  | 'Tax'
+  | 'Counter Companion';
 
 export const getProductDetails = (
   product: Product,
@@ -94,6 +106,30 @@ export const getProductDetails = (
         color: 'green',
         icon: <ScreenColorIcon />,
         name: 'Screen',
+      };
+    case 'ddp':
+      return {
+        color: 'blue',
+        icon: <DDPColorIcon />,
+        name: 'DDP',
+      };
+    case 'ddu':
+      return {
+        color: 'red',
+        icon: <DDUColorIcon />,
+        name: 'DDU',
+      };
+    case 'tax':
+      return {
+        color: 'green',
+        icon: <TaxColorIcon />,
+        name: 'Tax',
+      };
+    case 'counter-companion':
+      return {
+        color: 'purple',
+        icon: <CounterCompanionColorIcon />,
+        name: 'Counter Companion',
       };
 
     default:

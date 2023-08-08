@@ -55,7 +55,7 @@ export const transformSvgContent = ({
   // Make TSX friendly
   result = result
     // Remove style props
-    .replace(/style="([^"]*)"/gi, `style={{}}`)
+    .replace(/style="([^"]*)"/gi, ``)
     // Remove <svg>
     .replace(/<svg(.*?)>/gi, '')
     // Remove </svg>
