@@ -17,10 +17,16 @@ export const createComponentsFromSvgs = async () => {
     console.log(`Formatting SVGs...`);
     /** @desc Format generated svg react component and new IconIndex */
     try {
-      execSync('pnpm svgs:format', { encoding: 'utf8' });
+      execSync(
+        'pnpm eslint --fix svgReact/flags/dist --ext .tsx -c ./.eslintrc.prod.js',
+        { encoding: 'utf8' },
+      );
     } catch {
       /** @desc Run lint --fix the first time only fix part of the fixable erros, run it again to fix all */
-      execSync('pnpm svgs:format', { encoding: 'utf8' });
+      execSync(
+        'pnpm eslint --fix svgReact/flags/dist --ext .tsx -c ./.eslintrc.prod.js',
+        { encoding: 'utf8' },
+      );
     }
 
     /** @desc Clean up all tsx/ts under flags folder (only file not folder) */

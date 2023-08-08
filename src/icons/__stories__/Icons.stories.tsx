@@ -95,3 +95,22 @@ export const Icons = ({
     </VStack>
   );
 };
+
+const productIcons = Object.values<IconsType>(icons)
+  .filter(icon => icon.displayName?.includes('ColorIcon'))
+  .map(icon => ({
+    deprecated: !!icon.deprecated,
+    icon,
+    iconName: icon.displayName || '',
+  }));
+
+export const Products = () => (
+  <StyledWrapper>
+    {productIcons.map(({ icon: IconComponent, iconName }) => (
+      <StyledIcon key={iconName}>
+        <IconComponent size={50} />
+        <div>{iconName}</div>
+      </StyledIcon>
+    ))}
+  </StyledWrapper>
+);

@@ -44,7 +44,6 @@
     "start": "pnpm storybook build && pnpm storybook",
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build",
-    "svgs:format": "eslint --fix svgReact --ext .tsx -c ./.eslintrc.prod.js",
     "svgs:react:flags": "ts-node ./svgReact/flags/runCreateComponentsFromSvgs.ts",
     "svgs:react:icons": "ts-node ./svgReact/icons",
     "template:logic-constant": "ts-node build-utils/css/generateLogicConstTemplate.ts",

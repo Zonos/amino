@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import { getHspFromColor } from 'svgReact/icons/getColorContrast';
+import { getHspFromColor } from 'svgReact/build-utils/getColorContrast';
 
 export const sortColorMatch = (a: string, b: string) =>
   getHspFromColor(a).hsp < getHspFromColor(b).hsp ? 1 : -1;

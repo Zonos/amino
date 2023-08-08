@@ -270,3 +270,14 @@ export { WarningIcon } from './WarningIcon';
 export { AvatarIcon } from './custom/AvatarIcon';
 export { ZonosIcon } from './custom/ZonosIcon';
 export { ZonosLogoIcon } from './custom/ZonosLogoIcon';
+/** Product Icons */
+export { CheckoutColorIcon } from './custom/products/CheckoutColorIcon';
+export { ClassifyColorIcon } from './custom/products/ClassifyColorIcon';
+export { ClearColorIcon } from './custom/products/ClearColorIcon';
+export { DashboardColorIcon } from './custom/products/DashboardColorIcon';
+export { HelloColorIcon } from './custom/products/HelloColorIcon';
+export { InclusivePricingColorIcon } from './custom/products/InclusivePricingColorIcon';
+export { LandedCostColorIcon } from './custom/products/LandedCostColorIcon';
+export { RateColorIcon } from './custom/products/RateColorIcon';
+export { RestrictColorIcon } from './custom/products/RestrictColorIcon';
+export { ScreenColorIcon } from './custom/products/ScreenColorIcon';

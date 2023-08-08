@@ -1,59 +1,37 @@
 import fs from 'fs';
-import { getColorVariables } from 'svgReact/icons/getColorVariables';
-import { type GenerateIconType } from 'svgReact/icons/types/TypeGenerateIcon';
-
-const addWrapper = (id: string) => `{\`${id}\`}`;
+import path from 'path';
+import { transformSvgContent } from 'svgReact/build-utils/transformSvgContent';
+import type { GenerateIconType } from 'svgReact/icons/config/config';
 
 export const createReactIconSVGs = ({
   inputFolder,
+  keepColors,
   names,
   outputFolder,
 }: GenerateIconType): void => {
   names.forEach(name => {
-    let fileContent = fs.readFileSync(
+    const fileContent = fs.readFileSync(
       `${inputFolder}/${name.originalFileName}`,
       {
         encoding: 'utf8',
       },
     );
+
     const isDuotone = name.componentName.includes('Duotone');
 
-    /** @desc We need to preserve the viewbox */
-    const viewBoxMatches = fileContent.match(/viewBox="(.*?)"/g);
-    const viewBoxes = viewBoxMatches
-      ? viewBoxMatches.map(x => x.replace(/viewBox=/, '').replace(/"/g, ''))
-      : [];
-    const viewBox = viewBoxes.find(Boolean) || '0 0 24 24';
+    // Skip color replacing for static colors
+    const skipColorReplacing = keepColors;
+    if (skipColorReplacing) {
+      console.info(`Skip color replacing for ${name.originalFileName}`);
+    }
 
-    /** @desc We need our ids to be unique */
-    const maskIdMatches = fileContent.match(/id="(.*?)"/g);
-    const maskIds = maskIdMatches
-      ? maskIdMatches.map(x => x.replace(/id=/, '').replace(/"/g, ''))
-      : [];
-    maskIds.forEach((maskId, index) => {
-      const idRegex = new RegExp(`"${maskId}"`, 'gi');
-      const urlRegex = new RegExp(`"url\\(#${maskId}\\)"`, 'gi');
-      const newId = `\${ids[${index}]}`;
-      fileContent = fileContent
-        .replace(idRegex, `${addWrapper(newId)}`)
-        .replace(urlRegex, `${addWrapper(`url(#${newId})`)}`);
-    });
+    const { content, hasSecondaryColor, maskIds, viewBox } =
+      transformSvgContent({
+        content: fileContent,
+        isDuotone,
+        skipColorReplacing,
+      });
 
-    /** @desc Process color */
-    const colorVariableContent = getColorVariables({ fileContent, isDuotone });
-
-    const svg = colorVariableContent
-      .replace(/(?!\w):\w/g, attribute =>
-        attribute.replace(':', '').toUpperCase(),
-      )
-      /** @desc Remove style props */
-      .replace(/style="([^"]*)"/gi, '')
-      /** @desc Remove <svg > */
-      .replace(/<svg(.*?)>/gi, '')
-      /** @desc Remove </svg > */
-      .replace(/<\/svg>/gi, '');
-
-    const hasSecondaryColor = /secondaryColor/.test(colorVariableContent);
     const duotoneDefaultColor =
       isDuotone && hasSecondaryColor ? 'gray800' : 'gray400';
     const component = [
@@ -72,7 +50,7 @@ export const createReactIconSVGs = ({
       isDuotone
         ? `return (<IconBase ref={ref} size={size} color={color || '${duotoneDefaultColor}'} className={className} viewBox="${viewBox}">`
         : `return (<IconBase ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,
-      svg,
+      content,
       `</IconBase>`,
       `  );`,
       `});`,
@@ -80,11 +58,14 @@ export const createReactIconSVGs = ({
       .filter(Boolean)
       .join('\n');
     if (name.originalFileName.includes('.svg')) {
-      if (!fs.existsSync(outputFolder)) {
-        fs.mkdirSync(outputFolder, { recursive: true });
+      const filename = `${outputFolder}/${name.newFileName}`;
+      const parentDir = path.dirname(filename);
+
+      if (!fs.existsSync(parentDir)) {
+        fs.mkdirSync(parentDir, { recursive: true });
       }
 
-      fs.writeFileSync(`${outputFolder}/${name.newFileName}`, component);
+      fs.writeFileSync(filename, component);
     }
   });
 };

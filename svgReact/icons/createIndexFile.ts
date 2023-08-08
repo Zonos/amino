@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { type GenerateIndexContentType } from 'svgReact/icons/config/path';
+import { type GenerateIndexContentType } from 'svgReact/icons/config/config';
 
 const generateContent = ({
   destFolder,
