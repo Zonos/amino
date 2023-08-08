@@ -93,11 +93,7 @@ export const ToastConsumer = () => {
           />
           <Select
             label="Direction"
-            onChange={v => {
-              if (v) {
-                setDir(v);
-              }
-            }}
+            onChange={v => v && setDir(v)}
             options={[
               { label: 'top', value: 'top' },
               { label: 'bottom', value: 'bottom' },
