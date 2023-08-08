@@ -13,7 +13,7 @@ import type { Intent } from 'src/types';
 const AminoToast = styled(motion.div)`
   background: ${theme.gray100};
   z-index: 999999;
-  border-radius: ${theme.radius8};
+  border-radius: ${theme.radius10};
   color: ${theme.gray1000};
   box-shadow: ${theme.v3ShadowLarge};
   padding: ${theme.space16} ${theme.space24};
@@ -47,21 +47,64 @@ const AminoInfoToast = styled(AminoToast)`
   color: ${theme.blue800};
 `;
 
+export type Direction = 'top' | 'right' | 'bottom' | 'left';
+
 export type ToastProps = {
   children: ReactNode;
+  direction?: Direction;
   /** Dismiss delay (default 6000 ms) */
   duration?: number;
   intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
   toastKey: string;
 };
 
-export const Toast = ({ children, intent, toastKey }: ToastProps) => {
+export const Toast = ({
+  children,
+  direction,
+  intent,
+  toastKey,
+}: ToastProps) => {
+  const getDirection = () => {
+    switch (direction) {
+      case 'top':
+        return {
+          opacity: 0,
+          translateX: 0,
+          translateY: -10,
+        };
+      case 'bottom':
+        return {
+          opacity: 0,
+          translateX: 0,
+          translateY: 10,
+        };
+      case 'left':
+        return {
+          opacity: 0,
+          translateX: -10,
+          translateY: 0,
+        };
+      case 'right':
+      default:
+        return {
+          opacity: 0,
+          translateX: 10,
+          translateY: 0,
+        };
+    }
+  };
+
   const baseProps = {
-    animate: { opacity: 1, translateX: 0 },
-    exit: { opacity: 0 },
-    initial: { opacity: 0, translateX: 10 },
+    animate: {
+      opacity: 1,
+      translateX: 0,
+      translateY: 0,
+    },
+    exit: getDirection(),
+    initial: getDirection(),
     key: toastKey,
   };
+
   switch (intent) {
     case 'success':
       return (
