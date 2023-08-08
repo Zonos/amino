@@ -97,8 +97,10 @@ createIndexFile({
 /** @desc Format generated svg react component and new IconIndex */
 console.info('Linting ...');
 execSync(
-  'pnpm eslint --fix svgReact/icons/dist --ext .tsx -c ./.eslintrc.prod.js',
-  { encoding: 'utf8' },
+  'pnpm eslint --fix svgReact/icons/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
+  {
+    encoding: 'utf8',
+  },
 );
 
 svgProcessPaths.forEach(({ destFolder, inputFolderPath }) => {

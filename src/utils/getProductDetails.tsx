@@ -1,15 +1,17 @@
-import { CheckoutIcon } from 'src/icons/custom/products/CheckoutIcon';
-import { ClassifyIcon } from 'src/icons/custom/products/ClassifyIcon';
-import { ClearIcon } from 'src/icons/custom/products/ClearIcon';
-import { DashboardIcon } from 'src/icons/custom/products/DashboardIcon';
-import { HelloIcon } from 'src/icons/custom/products/HelloIcon';
-import { LandedCostIcon } from 'src/icons/custom/products/LandedCostIcon';
-import { RateIcon } from 'src/icons/custom/products/RateIcon';
-import { RestrictIcon } from 'src/icons/custom/products/RestrictIcon';
-import { ScreenIcon } from 'src/icons/custom/products/ScreenIcon';
+import {
+  CheckoutColorIcon,
+  ClassifyColorIcon,
+  ClearColorIcon,
+  DashboardColorIcon,
+  HelloColorIcon,
+  LandedCostColorIcon,
+  RateColorIcon,
+  RestrictColorIcon,
+  ScreenColorIcon,
+} from 'src/icons/IconIndex';
 import type { ColorPrefix } from 'src/types/Color';
 
-export type Products =
+export type Product =
   | 'landed-cost'
   | 'classify'
   | 'rate'
@@ -20,7 +22,7 @@ export type Products =
   | 'hello'
   | 'dashboard';
 
-export type ProductNames =
+export type ProductName =
   | 'Landed Cost'
   | 'Classify'
   | 'Rate'
@@ -32,72 +34,72 @@ export type ProductNames =
   | 'Dashboard';
 
 export const getProductDetails = (
-  product?: Products,
+  product: Product,
 ): {
   color: ColorPrefix;
   icon: React.JSX.Element;
-  name: ProductNames;
+  name: ProductName;
 } => {
   switch (product) {
     case 'checkout':
       return {
         color: 'orange',
-        icon: <CheckoutIcon />,
+        icon: <CheckoutColorIcon />,
         name: 'Checkout',
       };
     case 'classify':
       return {
         color: 'purple',
-        icon: <ClassifyIcon />,
+        icon: <ClassifyColorIcon />,
         name: 'Classify',
       };
     case 'clear':
       return {
         color: 'cyan',
-        icon: <ClearIcon />,
+        icon: <ClearColorIcon />,
         name: 'Clear',
       };
     case 'dashboard':
       return {
         color: 'blue',
-        icon: <DashboardIcon />,
+        icon: <DashboardColorIcon />,
         name: 'Dashboard',
       };
     case 'hello':
       return {
         color: 'green',
-        icon: <HelloIcon />,
+        icon: <HelloColorIcon />,
         name: 'Hello',
       };
     case 'landed-cost':
       return {
         color: 'red',
-        icon: <LandedCostIcon />,
+        icon: <LandedCostColorIcon />,
         name: 'Landed Cost',
       };
     case 'rate':
       return {
         color: 'blue',
-        icon: <RateIcon />,
+        icon: <RateColorIcon />,
         name: 'Rate',
       };
     case 'restrict':
       return {
         color: 'blue',
-        icon: <RestrictIcon />,
+        icon: <RestrictColorIcon />,
         name: 'Restrict',
       };
     case 'screen':
       return {
         color: 'green',
-        icon: <ScreenIcon />,
+        icon: <ScreenColorIcon />,
         name: 'Screen',
       };
 
     default:
       return {
         color: 'blue',
-        icon: <DashboardIcon />,
+        icon: <DashboardColorIcon />,
         name: 'Dashboard',
       };
   }

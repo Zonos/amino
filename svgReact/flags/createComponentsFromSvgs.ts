@@ -18,13 +18,13 @@ export const createComponentsFromSvgs = async () => {
     /** @desc Format generated svg react component and new IconIndex */
     try {
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist --ext .tsx -c ./.eslintrc.prod.js',
+        'pnpm eslint --fix svgReact/flags/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
         { encoding: 'utf8' },
       );
     } catch {
       /** @desc Run lint --fix the first time only fix part of the fixable erros, run it again to fix all */
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist --ext .tsx -c ./.eslintrc.prod.js',
+        'pnpm eslint --fix svgReact/flags/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
         { encoding: 'utf8' },
       );
     }
