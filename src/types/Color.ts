@@ -26,6 +26,7 @@ export type ColorContrast = (typeof colorContrasts)[number];
 export type ColorPrefix = (typeof colorPrefixes)[number];
 export type Color =
   | 'gray0'
+  | 'gray50'
   | 'glass0'
   | 'glass50'
   | `${ColorPrefix}${ColorContrast}`
