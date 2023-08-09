@@ -1,11 +1,43 @@
 import { execSync } from 'child_process';
+import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
+import { copySmallerFlags } from 'svgReact/flags/copySmallerFlags';
 import { createIndexFile } from 'svgReact/flags/createIndexFile';
-import { createReactSVGs } from 'svgReact/flags/createReactSVGs';
+import { createReactFlagSvgs } from 'svgReact/flags/createReactFlagSvgs';
+import { downloadFlagsAWS } from 'svgReact/flags/downloadFlagsAWS';
+import { removeAWSErrorSvgs } from 'svgReact/flags/removeAWSErrorSvgs';
 
-export const createComponentsFromSvgs = async () => {
+export const generateSvgs = async () => {
+  try {
+    /** @desc Dest folder */
+    await downloadFlagsAWS({ destFolder: './svgReact/flags/aws-flags' });
+
+    /** @desc Remove all AWS error svgs */
+    removeAWSErrorSvgs({ folderPath: './svgReact/flags/aws-flags' });
+
+    /** @desc Copy smaller flags size between AWS and Figma to "svgs" folder */
+    await copySmallerFlags({
+      destFolder: './svgReact/flags/svgs',
+      firstFolder: './svgReact/flags/aws-flags',
+      secondFolder: './svgReact/flags/figma-flags',
+    });
+
+    /** @desc Optimize flags in "svg" folder */
+    optimizeSvgs({
+      folderPath: `${__dirname}/svgs/**/*.svg`,
+    });
+
+    /** @desc Clean up distribution folder */
+    execSync('rm -rf svgReact/flags/dist', { encoding: 'utf-8' });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error(err);
+  }
+};
+
+const createComponentsFromSvgs = async () => {
   try {
     /** @desc Create svgs react component from input svgs */
-    createReactSVGs({
+    createReactFlagSvgs({
       inputFolder: './svgReact/flags/svgs',
       outputFolder: './svgReact/flags/dist',
     });
@@ -48,3 +80,10 @@ export const createComponentsFromSvgs = async () => {
     console.error(err);
   }
 };
+
+const run = async () => {
+  await generateSvgs();
+  await createComponentsFromSvgs();
+};
+
+run();

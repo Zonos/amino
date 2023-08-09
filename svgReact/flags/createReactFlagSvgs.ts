@@ -63,7 +63,7 @@ export const generateComponentContent = ({
     .join('\n');
 };
 
-export const createReactSVGs = ({
+export const createReactFlagSvgs = ({
   inputFolder,
   outputFolder,
 }: GenerateIconType) => {

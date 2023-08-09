@@ -7,7 +7,7 @@ import {
   svgProcessPaths,
 } from 'svgReact/icons/config/config';
 import { createIndexFile } from 'svgReact/icons/createIndexFile';
-import { createReactIconSVGs } from 'svgReact/icons/createReactIconSVGs';
+import { createReactIconSVGs } from 'svgReact/icons/createReactIconSvgs';
 
 const pascalCased = (string: string) =>
   string

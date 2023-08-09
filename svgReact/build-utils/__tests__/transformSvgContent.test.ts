@@ -1,5 +1,5 @@
 import { formatTS } from 'build-utils/css/utils/formatTS';
-import { generateComponentContent } from 'svgReact/flags/createReactSVGs';
+import { generateComponentContent } from 'svgReact/flags/createReactFlagSvgs';
 
 describe('Transforming SVG content', () => {
   test('CN.svg (mask xlink:href)', async () => {
