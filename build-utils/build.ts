@@ -45,7 +45,6 @@ const prepareEntries = (entries: string[] | string) =>
 const bundlePackage = async (
   options: ConfigOptions & { output: OutputOptions },
 ): Promise<OutputChunk[]> => {
-  const x = Object.keys(dependencies);
   const defaultOptions: RollupOptions = {
     cache: false,
     external: (Object.keys(peerDependencies) as string[]).concat(
