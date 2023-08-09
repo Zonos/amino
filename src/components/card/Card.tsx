@@ -10,6 +10,7 @@ const StyledCard = styled.div<{ spacing?: string }>`
   border: ${theme.border};
   border-radius: ${theme.radius6};
   padding: ${({ spacing }) => spacing || theme.space24};
+  background: ${theme.gray0};
 
   /** Dividers should stretch the whole width by default */
   hr {
@@ -20,7 +21,7 @@ const StyledCard = styled.div<{ spacing?: string }>`
   }
 `;
 
-const CardHeader = styled.header<{ spacing?: string }>`
+const CardHeader = styled.div<{ spacing?: string }>`
   margin: ${({ spacing }) =>
     spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24};
   padding: ${({ spacing }) => spacing || theme.space24};
@@ -38,7 +39,7 @@ const CardHeader = styled.header<{ spacing?: string }>`
   }
 `;
 
-const CardFooter = styled.footer<{ footerHeight?: number; spacing?: string }>`
+const CardFooter = styled.div<{ footerHeight?: number; spacing?: string }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
