@@ -47,7 +47,9 @@ const bundlePackage = async (
 ): Promise<OutputChunk[]> => {
   const defaultOptions: RollupOptions = {
     cache: false,
-    external: Object.keys(peerDependencies).concat(Object.keys(dependencies)),
+    external: (Object.keys(peerDependencies) as string[]).concat(
+      Object.keys(dependencies) as string[],
+    ),
     maxParallelFileOps: 50,
     plugins: [
       nodeResolve({

@@ -81,39 +81,3 @@ export const BasicBadge = Template.bind({});
 BasicBadge.args = {
   children: <span>Option</span>,
 };
-
-export const BlueBadge = Template.bind({});
-BlueBadge.args = {
-  children: <span>Option</span>,
-  color: 'blue',
-};
-
-export const GreenBadge = Template.bind({});
-GreenBadge.args = {
-  children: <span>Option</span>,
-  color: 'green',
-};
-
-export const RedBadge = Template.bind({});
-RedBadge.args = {
-  children: <span>Option</span>,
-  color: 'red',
-};
-
-export const OrangeBadge = Template.bind({});
-OrangeBadge.args = {
-  children: <span>Option</span>,
-  color: 'orange',
-};
-
-export const PurpleBadge = Template.bind({});
-PurpleBadge.args = {
-  children: <span>Option</span>,
-  color: 'purple',
-};
-
-export const CyanBadge = Template.bind({});
-CyanBadge.args = {
-  children: <span>Option</span>,
-  color: 'cyan',
-};

@@ -85,7 +85,7 @@ export const flattenRow = ({
         };
       }
 
-      if (typeof parsedValue === 'object') {
+      if (typeof parsedValue === 'object' && !!parsedValue) {
         // Flatten the object
         const nestedObj: Record<string, string> = Object.entries(
           parsedValue,

@@ -13,7 +13,7 @@ const StyledSlider = styled(Root)`
   user-select: none;
 `;
 
-const StyledTrack = styled(Track)<StyledProps<SliderProps>>`
+const StyledTrack = styled(Track)<StyledProps<{ size: SliderSize }>>`
   background-color: ${theme.gray200};
   border-radius: 20px;
   box-shadow: ${theme.v3ShadowInset};
@@ -33,7 +33,7 @@ const StyledRange = styled(Range)`
   position: absolute;
 `;
 
-const StyledThumb = styled(Thumb)<StyledProps<SliderProps>>`
+const StyledThumb = styled(Thumb)<StyledProps<{ size: SliderSize }>>`
   background: ${theme.gray0};
   border-radius: 20px;
   border: ${theme.border};
@@ -97,6 +97,8 @@ const IndicatorWrapper = styled.div`
   margin-top: calc(${theme.space24} + 10px);
 `;
 
+type SliderSize = 8 | 12;
+
 export type SliderProps = {
   className?: string;
   hideIndicator?: boolean;
@@ -106,7 +108,7 @@ export type SliderProps = {
    * How thick you want the progress look
    * @default 12
    * */
-  size?: 8 | 12;
+  size?: SliderSize;
   step?: number;
   /**
    * @default "%"
