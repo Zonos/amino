@@ -20,7 +20,7 @@ export const useCountryOptions = ({
   const requestCountries = useCallback(async () => {
     const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
     if (response.ok) {
-      const json: IGetCountriesResponse = await response.json();
+      const json = (await response.json()) as IGetCountriesResponse;
       const options = prepCountryOptions({ json });
       const countries = options.map(option => ({
         ...option,
