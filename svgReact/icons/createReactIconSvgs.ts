@@ -3,7 +3,7 @@ import path from 'path';
 import { transformSvgContent } from 'svgReact/build-utils/transformSvgContent';
 import type { GenerateIconType } from 'svgReact/icons/config/config';
 
-export const createReactIconSVGs = ({
+export const createReactIconSvgs = ({
   inputFolder,
   keepColors,
   names,

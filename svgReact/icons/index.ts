@@ -7,7 +7,7 @@ import {
   svgProcessPaths,
 } from 'svgReact/icons/config/config';
 import { createIndexFile } from 'svgReact/icons/createIndexFile';
-import { createReactIconSVGs } from 'svgReact/icons/createReactIconSvgs';
+import { createReactIconSvgs } from 'svgReact/icons/createReactIconSvgs';
 
 const pascalCased = (string: string) =>
   string
@@ -66,7 +66,7 @@ const generateSvgs = ({
 
       console.info(`Generating react component for folder "${svgFolder}"`);
       /** @desc Generate svg react component */
-      createReactIconSVGs({
+      createReactIconSvgs({
         inputFolder: `svgReact/icons/${svgFolder}`,
         keepColors,
         names,
