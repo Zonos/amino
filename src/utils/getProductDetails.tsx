@@ -52,7 +52,7 @@ export type ProductName =
 
 type Params = {
   /**
-   * @default 20
+   * @default 24
    */
   iconSize?: number;
   product?: Product;
@@ -66,7 +66,7 @@ type Return = {
 };
 
 export const getProductDetails = ({
-  iconSize = 20,
+  iconSize = 24,
   product,
 }: Params): Return => {
   switch (product) {
