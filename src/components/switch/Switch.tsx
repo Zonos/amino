@@ -97,28 +97,36 @@ export const Switch = ({
   labelDescription,
   onChange,
   subtitle,
-}: SwitchProps) => (
-  <SwitchContainer
-    checked={checked}
-    className={disabled ? 'disabled' : ''}
-    htmlFor={label}
-    onClick={() => !disabled && onChange(!checked)}
-  >
-    <AminoSwitchWrapper checked={checked}>
-      <AminoSwitch checked={checked} id={label} />
-    </AminoSwitchWrapper>
+}: SwitchProps) => {
+  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
 
-    <div>
-      <LabelWrapper>
-        {icon}
-        <StyledLabel type="input-label">
-          {label}
-          {labelDescription && (
-            <StyledLabelDescription>{labelDescription}</StyledLabelDescription>
-          )}
-        </StyledLabel>
-      </LabelWrapper>
-      {subtitle && <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>}
-    </div>
-  </SwitchContainer>
-);
+  return (
+    <SwitchContainer
+      checked={checked}
+      className={disabled ? 'disabled' : ''}
+      htmlFor={labelAsHtmlAttribute}
+      onClick={() => !disabled && onChange(!checked)}
+    >
+      <AminoSwitchWrapper checked={checked}>
+        <AminoSwitch checked={checked} id={labelAsHtmlAttribute} />
+      </AminoSwitchWrapper>
+
+      <div>
+        <LabelWrapper>
+          {icon}
+          <StyledLabel type="input-label">
+            {label}
+            {labelDescription && (
+              <StyledLabelDescription>
+                {labelDescription}
+              </StyledLabelDescription>
+            )}
+          </StyledLabel>
+        </LabelWrapper>
+        {subtitle && (
+          <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
+        )}
+      </div>
+    </SwitchContainer>
+  );
+};
