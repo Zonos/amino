@@ -81,7 +81,9 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   justify-content: center;
   padding: 0 ${theme.space16};
   border-radius: ${theme.radius6};
-  transition: ${theme.transition};
+  transition:
+    ${theme.transition},
+    visibility 0;
   font-weight: 500;
   user-select: none;
   font-family: ${theme.fontSans};
