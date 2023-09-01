@@ -106,11 +106,11 @@ export const FilterAmount = ({
 
   const handleToggle = (active: boolean) => {
     if (active) {
+      dispatchAmountFilterType(null);
+      dispatchAmounts({ amount1: null, amount2: null });
       setEditFilterBy(null);
       setEditingAmount1(null);
       setEditingAmount2(null);
-      dispatchAmountFilterType(null);
-      dispatchAmounts({ amount1: null, amount2: null });
     } else {
       dispatchAmountFilterType(editFilterBy);
       dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount2 });
@@ -142,11 +142,7 @@ export const FilterAmount = ({
       <InputWrapper>
         <ArrowRightIcon color="blue600" size={24} />
         <Input
-          onChange={e => {
-            console.log(e.target.valueAsNumber, e.target.value);
-            console.log({ e });
-            setEditingAmount1(e.target.valueAsNumber);
-          }}
+          onChange={e => setEditingAmount1(e.target.valueAsNumber)}
           type="number"
           value={editingAmount1 === null ? '' : String(editingAmount1)}
         />

@@ -29,10 +29,11 @@ export const FilterMultiSelect = <T extends string = string>({
 
   const handleToggle = (active: boolean) => {
     if (active) {
-      setEditingSelectedValues([]);
       onChange([]);
+      setEditingSelectedValues([]);
     } else {
       onChange(editingSelectedValues);
+      setEditingSelectedValues(value);
     }
   };
 

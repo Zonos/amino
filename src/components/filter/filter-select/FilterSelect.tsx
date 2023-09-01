@@ -7,19 +7,25 @@ import {
 import { Select } from 'src/components/select/Select';
 import type { IOption } from 'src/types/IOption';
 
-type FilterSelectProps<T extends string = string> = BaseFilterProps & {
-  options: IOption<T>[];
-  value: IOption<T> | null;
-  onChange: (value: IOption<T> | null) => void;
+type FilterSelectProps<
+  T extends string = string,
+  O extends IOption<string> = IOption<T>,
+> = BaseFilterProps & {
+  options: O[];
+  value: O | null;
+  onChange: (value: O | null) => void;
 };
 
-export const FilterSelect = <T extends string = string>({
+export const FilterSelect = <
+  T extends string = string,
+  O extends IOption<T> = IOption<T>,
+>({
   onChange,
   options,
   value,
   ...props
-}: FilterSelectProps<T>) => {
-  const [editingValue, setEditingValue] = useState<IOption<T> | null>(value);
+}: FilterSelectProps<T, O>) => {
+  const [editingValue, setEditingValue] = useState<O | null>(value);
 
   const handleApply = () => {
     onChange(editingValue);
@@ -28,8 +34,10 @@ export const FilterSelect = <T extends string = string>({
   const handleToggle = (active: boolean) => {
     if (active) {
       onChange(null);
+      setEditingValue(null);
     } else {
       onChange(editingValue);
+      setEditingValue(value || null);
     }
   };
 

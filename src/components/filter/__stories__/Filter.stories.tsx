@@ -10,6 +10,8 @@ import {
 import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/FilterMultiSelect';
 import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
+import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
+import type { ICountryOption } from 'src/types/ICountry';
 import type { IOption } from 'src/types/IOption';
 
 const meta: Meta = {
@@ -86,10 +88,28 @@ export const MultiSelect = () => {
       <div>{JSON.stringify({ selectedValues }, null, 2)}</div>
       <FilterMultiSelect
         dropdownTitle="Filter by option"
-        label="Select filter"
+        label="MultiSelect filter"
         onChange={v => setSelectedValues(v)}
         options={options}
         value={selectedValues}
+      />
+    </>
+  );
+};
+
+export const CountrySelect = () => {
+  const countries = useCountryOptions({});
+  const [country, setCountry] = useState<ICountryOption<string> | null>(null);
+
+  return (
+    <>
+      <div>{JSON.stringify({ value: country?.value }, null, 2)}</div>
+      <FilterSelect
+        dropdownTitle="Filter by country"
+        label="Country Select filter"
+        onChange={v => setCountry(v)}
+        options={countries}
+        value={country}
       />
     </>
   );
