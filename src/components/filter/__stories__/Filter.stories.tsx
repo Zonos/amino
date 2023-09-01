@@ -7,6 +7,7 @@ import {
   filterAmountReducer,
   initialFilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
+import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/FilterMultiSelect';
 import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
 import type { IOption } from 'src/types/IOption';
@@ -72,6 +73,23 @@ export const Select = () => {
         onChange={v => setValue(v)}
         options={options}
         value={value}
+      />
+    </>
+  );
+};
+
+export const MultiSelect = () => {
+  const [selectedValues, setSelectedValues] = useState<IOption<Option>[]>([]);
+
+  return (
+    <>
+      <div>{JSON.stringify({ selectedValues }, null, 2)}</div>
+      <FilterMultiSelect
+        dropdownTitle="Filter by option"
+        label="Select filter"
+        onChange={v => setSelectedValues(v)}
+        options={options}
+        value={selectedValues}
       />
     </>
   );
