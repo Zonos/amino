@@ -90,24 +90,19 @@ const ControlsWrapper = styled.div`
   gap: ${theme.space12};
 `;
 
-export type IChangeProps<T> = {
-  value: T | null;
-  onChange: (value: T | null) => void;
-};
-
-export type IBaseFilterProps = {
+export type BaseFilterProps = {
   className?: string;
   dropdownTitle: string;
   label: string;
 };
 
-type IUseFilterProps = {
+type UseFilterProps = {
   filterExists: boolean;
   onApply: () => void;
   onToggle: (active: boolean) => void;
 };
 
-export type IFilterProps = IBaseFilterProps & IUseFilterProps;
+export type FilterProps = BaseFilterProps & UseFilterProps;
 
 export const useFilter = ({
   className,
@@ -116,7 +111,7 @@ export const useFilter = ({
   label,
   onApply,
   onToggle,
-}: IFilterProps) => {
+}: FilterProps) => {
   const [active, setActive] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [filterText, setFilterText] = useState('Filter');

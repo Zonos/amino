@@ -1,25 +1,24 @@
 import { useEffect, useState } from 'react';
 
-import { type IOption } from '@zonos/amino/types/IOption';
-
 import {
-  type IBaseBadgeFilterProps,
-  type IChangeProps,
+  type BaseFilterProps,
   useFilter,
-} from 'src/components/ui/filters/useFilter';
-import { Select } from 'src/components/ui/Select';
+} from 'src/components/filter/useFilter';
+import { Select } from 'src/components/select/Select';
+import type { IOption } from 'src/types/IOption';
 
-type IBadgeFilterSelectProps<T extends string = string> = {
+type FilterSelectProps<T extends string = string> = BaseFilterProps & {
   options: IOption<T>[];
-} & IChangeProps<IOption<T>> &
-  IBaseBadgeFilterProps;
+  value: IOption<T> | null;
+  onChange: (value: IOption<T> | null) => void;
+};
 
-export const BadgeFilterSelect = <T extends string = string>({
+export const FilterSelect = <T extends string = string>({
   onChange,
   options,
   value,
   ...props
-}: IBadgeFilterSelectProps<T>) => {
+}: FilterSelectProps<T>) => {
   const [editingValue, setEditingValue] = useState<IOption<T> | null>(value);
 
   const handleApply = () => {

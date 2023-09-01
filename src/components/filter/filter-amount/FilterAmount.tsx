@@ -7,7 +7,7 @@ import type {
   FilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
 import {
-  type IBaseFilterProps,
+  type BaseFilterProps,
   useFilter,
 } from 'src/components/filter/useFilter';
 import { Input } from 'src/components/input/Input';
@@ -27,10 +27,10 @@ const InputWrapper = styled.div`
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 
-type FilterAmountProps = {
+type FilterAmountProps = BaseFilterProps & {
   dispatch: Dispatch<FilterAmountAction>;
   filter: FilterAmountState;
-} & IBaseFilterProps;
+};
 
 const options: { label: string; value: FilterAmountType }[] = [
   { label: 'is equal to', value: 'equal' },

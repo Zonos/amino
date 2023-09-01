@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import {
-  type IBaseFilterProps,
+  type BaseFilterProps,
   useFilter,
 } from 'src/components/filter/useFilter';
 import { Input } from 'src/components/input/Input';
 
-export type FilterTextProps = {
+export type FilterTextProps = BaseFilterProps & {
   value: string | null;
   onChange: (value: string | null) => void;
-} & IBaseFilterProps;
+};
 
 export const FilterText = ({
   dropdownTitle,
