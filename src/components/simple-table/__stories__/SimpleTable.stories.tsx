@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
@@ -11,7 +11,6 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
   type SimpleTableHeader,
-  type SimpleTableProps,
   SimpleTable,
 } from 'src/components/simple-table/SimpleTable';
 import { Text } from 'src/components/text/Text';
@@ -109,7 +108,7 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   },
 ];
 
-export const Basic: StoryFn<SimpleTableProps<DummyData>> = () => (
+export const Basic = () => (
   <SimpleTable
     headers={tableHeaders}
     items={items}
@@ -117,7 +116,7 @@ export const Basic: StoryFn<SimpleTableProps<DummyData>> = () => (
   />
 );
 
-export const Selectable: StoryFn<SimpleTableProps<DummyData>> = () => {
+export const Selectable = () => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
   const checkboxAllValue = selectedRowIndexes.length === items.length;
@@ -156,7 +155,7 @@ export const Selectable: StoryFn<SimpleTableProps<DummyData>> = () => {
   );
 };
 
-export const Loading: StoryFn<SimpleTableProps<DummyData>> = () => {
+export const Loading = () => {
   const [loading, setLoading] = useState(false);
 
   return (
@@ -173,56 +172,7 @@ export const Loading: StoryFn<SimpleTableProps<DummyData>> = () => {
   );
 };
 
-const HoverMenu = ({ item }: { item: DummyData }) => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <MenuButton
-      action={
-        <Button
-          icon={<ThreeDotIcon size={20} />}
-          onClick={e => {
-            e.stopPropagation();
-            setOpen(!open);
-          }}
-          size="sm"
-          variant="subtle"
-        />
-      }
-      open={open}
-      setOpen={setOpen}
-    >
-      <Menu>
-        <MenuItem
-          icon={<EditDuotoneIcon size={20} />}
-          onClick={e => {
-            e.stopPropagation();
-            alert(`Edit ${item.name}`);
-          }}
-        >
-          Edit
-        </MenuItem>
-        <MenuItem
-          icon={
-            <TrashCanDuotoneIcon
-              color="red600"
-              secondaryColor="red300"
-              size={20}
-            />
-          }
-          onClick={e => {
-            e.stopPropagation();
-            alert(`Delete ${item.name}`);
-          }}
-        >
-          <Text color="red600">Delete</Text>
-        </MenuItem>
-      </Menu>
-    </MenuButton>
-  );
-};
-
-export const Custom: StoryFn<SimpleTableProps<DummyData>> = () => {
+export const Custom = () => {
   type AugmentedDummyData = DummyData & {
     hoverField: null;
   };
@@ -231,6 +181,55 @@ export const Custom: StoryFn<SimpleTableProps<DummyData>> = () => {
     ...item,
     hoverField: null,
   }));
+
+  const HoverMenu = ({ item }: { item: DummyData }) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <MenuButton
+        action={
+          <Button
+            icon={<ThreeDotIcon size={20} />}
+            onClick={e => {
+              e.stopPropagation();
+              setOpen(!open);
+            }}
+            size="sm"
+            variant="subtle"
+          />
+        }
+        open={open}
+        setOpen={setOpen}
+      >
+        <Menu>
+          <MenuItem
+            icon={<EditDuotoneIcon size={20} />}
+            onClick={e => {
+              e.stopPropagation();
+              alert(`Edit ${item.name}`);
+            }}
+          >
+            Edit
+          </MenuItem>
+          <MenuItem
+            icon={
+              <TrashCanDuotoneIcon
+                color="red600"
+                secondaryColor="red300"
+                size={20}
+              />
+            }
+            onClick={e => {
+              e.stopPropagation();
+              alert(`Delete ${item.name}`);
+            }}
+          >
+            <Text color="red600">Delete</Text>
+          </MenuItem>
+        </Menu>
+      </MenuButton>
+    );
+  };
 
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders,

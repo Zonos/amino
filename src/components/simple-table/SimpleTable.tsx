@@ -134,9 +134,9 @@ export type SimpleTableProps<T extends object> = {
 };
 
 /**
- * Magical, mystical table
+ * A simple table that tries to cover all the use cases of a ... simple table.
  *
- * special classes:
+ * special CSS class names:
  * - 'row-hover-show': Shows only when the row is hovered
  * - 'cell-hover-show': Shows only when the cell is hovered
  */
