@@ -37,7 +37,7 @@ const StyledCollapse = styled(Collapse)`
 
 const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
   border-bottom: ${p => (!p.collapsed ? 'inherit' : 0)};
-  && {
+  &&& {
     height: ${p => (!p.collapsed ? 'inherit' : 0)};
   }
   > div {
