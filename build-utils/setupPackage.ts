@@ -8,7 +8,7 @@ function main() {
   const source = fs
     .readFileSync(path.resolve(`${path.dirname('')}/package.json`))
     .toString('utf-8');
-  const sourceObj = JSON.parse(source);
+  const sourceObj = JSON.parse(source) as Record<string, unknown>;
   sourceObj.scripts = {};
 
   sourceObj.devDependencies = {};

@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
-import useSwr from 'swr';
 
 import { ConnectionMap } from 'src/components/connection-map/ConnectionMap';
 import { getCountryUrls } from 'src/components/select/__stories__/getCountryUrls';
@@ -11,6 +10,7 @@ import { CountrySelect } from 'src/components/select/CountrySelect';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import type { IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
+import { useSwr } from 'src/utils/hooks/useSwr';
 
 const GEO_URL = '/zonos-countries-geojson.json';
 
@@ -45,7 +45,7 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
   const { dashboardUrl } = getCountryUrls();
   const { data: worldData } = useSwr<IGeoJsonWorld>(GEO_URL, async params => {
     const response = await fetch(params);
-    const json = await response.json();
+    const json = (await response.json()) as IGeoJsonWorld;
     return json;
   });
   const [from, setFrom] = useState(_from);

@@ -2,17 +2,12 @@ import { execSync } from 'child_process';
 import { glob } from 'glob';
 import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
 import {
-  type SvgGenerateType,
+  type FileConfig,
+  type SvgList,
   svgProcessPaths,
-} from 'svgReact/icons/config/path';
+} from 'svgReact/icons/config/config';
 import { createIndexFile } from 'svgReact/icons/createIndexFile';
-import { createReactIconSVGs } from 'svgReact/icons/createReactIconSVGs';
-import { type SvgList } from 'svgReact/icons/types/TypeGenerateIcon';
-
-const log = (msg: string) => {
-  // eslint-disable-next-line no-console
-  console.log(msg);
-};
+import { createReactIconSvgs } from 'svgReact/icons/createReactIconSvgs';
 
 const pascalCased = (string: string) =>
   string
@@ -23,7 +18,11 @@ const pascalCased = (string: string) =>
     /** @desc Adding suffix Icon to file name */
     .replace(/\.svg/, 'Icon.svg');
 
-const generateSvgs = ({ inputFolderPath, svgFolder }: SvgGenerateType) => {
+const generateSvgs = ({
+  inputFolderPath,
+  keepColors = false,
+  svgFolder,
+}: FileConfig) => {
   const names: SvgList[] = glob
     .sync(`${__dirname}/${svgFolder}/**/*.svg`)
     /** @desc Filter and return only list of `${folder}/${filename}` or `${filename}` */
@@ -35,9 +34,11 @@ const generateSvgs = ({ inputFolderPath, svgFolder }: SvgGenerateType) => {
       // if has sub folder, process with sub folder
       if (hasSubfolder) {
         const [folderName, type] = item.split('/');
+        const svgType = keepColors ? 'Color.svg' : type;
         const fileName = pascalCased(
-          `${folderName}${type!.replace(/(Line|Black)\.svg/, '.svg')}`,
+          `${folderName}${svgType!.replace(/(Line|Black)\.svg/, '.svg')}`,
         );
+
         return {
           componentName: fileName.replace('.svg', ''),
           newFileName: fileName.replace(
@@ -63,31 +64,30 @@ const generateSvgs = ({ inputFolderPath, svgFolder }: SvgGenerateType) => {
       /** @desc Optimize svg */
       optimizeSvgs({ folderPath: `${__dirname}/${svgFolder}/**/*.svg` });
 
-      log(`Generating react component for folder "${svgFolder}"`);
+      console.info(`Generating react component for folder "${svgFolder}"`);
       /** @desc Generate svg react component */
-      createReactIconSVGs({
+      createReactIconSvgs({
         inputFolder: `svgReact/icons/${svgFolder}`,
+        keepColors,
         names,
         outputFolder: inputFolderPath,
       });
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
+      console.error(err);
     }
   } else {
-    // eslint-disable-next-line no-console
-    console.log('No svg found!');
+    console.info('No svg found!');
   }
 };
 
-log('Cleaning up distribution folder ...');
+console.info('Cleaning up distribution folder ...');
 /** @desc Clean up distribution folder */
 execSync('rm -rf svgReact/icons/dist', { encoding: 'utf-8' });
 
 /** @desc Generte all svg components base on path configuration */
 svgProcessPaths.map(generateSvgs);
 
-log('Generating index file for generated svg react components ...');
+console.info('Generating index file for generated svg react components ...');
 /** @desc Generate index file for generated svg react components */
 createIndexFile({
   generatePath: [...svgProcessPaths],
@@ -95,22 +95,30 @@ createIndexFile({
 });
 
 /** @desc Format generated svg react component and new IconIndex */
-execSync('pnpm svgs:format', { encoding: 'utf8' });
+console.info('Linting ...');
+execSync(
+  'pnpm eslint --fix svgReact/icons/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
+  {
+    encoding: 'utf8',
+  },
+);
 
 svgProcessPaths.forEach(({ destFolder, inputFolderPath }) => {
-  log(`Cleaning up folder "${destFolder}" ...`);
-  /** @desc Clean up all tsx/ts under icons folder (only file not folder) */
-  execSync(`rm -rf ${destFolder}/*.tsx ${destFolder}/*.ts`, {
-    encoding: 'utf-8',
-  });
+  {
+    const cmd = `rm -rf ${destFolder}/*.tsx ${destFolder}/*.ts`;
+    console.info(cmd);
+    /** @desc Clean up all tsx/ts under icons folder (only file not folder) */
+    execSync(cmd, {
+      encoding: 'utf-8',
+    });
+  }
 
-  log(`Moving files from "${inputFolderPath}" to "${destFolder}"`);
-  /** @desc Move file from distribution folder over */
-  execSync(`mv ${inputFolderPath}/*.ts* ${destFolder}`, {
-    encoding: 'utf-8',
-  });
+  {
+    const cmd = `mv ${inputFolderPath}/*.ts* ${destFolder}`;
+    console.info(cmd);
+    /** @desc Move file from distribution folder over */
+    execSync(cmd, {
+      encoding: 'utf-8',
+    });
+  }
 });
-
-log('Linting ...');
-/** @desc Run autofix eslint */
-execSync('pnpm lint:prod --fix', { encoding: 'utf-8' });

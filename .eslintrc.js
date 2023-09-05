@@ -59,6 +59,12 @@ module.exports = {
         'no-relative-import-paths/no-relative-import-paths': 'off',
       },
     },
+    {
+      files: ['svgReact/**', 'build-utils/**'],
+      rules: {
+        'no-console': 'off',
+      },
+    },
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

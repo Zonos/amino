@@ -44,7 +44,9 @@ export const useGraphiqlFetcher = ({
       const result = await fetcher({
         operationName,
         query,
-        variables: variables ? JSON.parse(variables) : undefined,
+        variables: variables
+          ? (JSON.parse(variables) as Record<string, unknown>)
+          : undefined,
       });
       return { json: result };
     },

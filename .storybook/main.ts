@@ -19,7 +19,7 @@ const storybookConfig: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  staticDirs: ['../public'],
+  staticDirs: ['./public', '../public'],
   stories: getStories(),
   typescript: {
     check: false,

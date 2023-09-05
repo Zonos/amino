@@ -70,14 +70,14 @@ const StyledIcon = styled.div`
   justify-content: center;
 `;
 
+type StyledItemContentDivProps = StyledProps<{ icon: boolean }>;
+
 const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
   align-items: center;
   display: grid;
   grid-column-gap: ${theme.space24};
   ${({ $icon }) => $icon && `grid-template-columns: 30px 1fr;`}
 `;
-
-type StyledItemContentDivProps = StyledProps<RichCheckboxItemType>;
 
 type RichCheckboxItemType = {
   checked: boolean;

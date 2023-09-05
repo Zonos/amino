@@ -4,54 +4,36 @@ import styled from 'styled-components';
 
 import type { FontWeight } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-
-type ColorList =
-  | 'blue'
-  | 'cyan'
-  | 'gray'
-  | 'green'
-  | 'orange'
-  | 'purple'
-  | 'red';
-
-type Size = 'small' | 'large';
-
-export interface BadgeProps {
-  bold?: boolean;
-  children?: ReactNode | string;
-  className?: string;
-  color?: ColorList;
-  fontWeight?: FontWeight;
-  icon?: ReactNode;
-  iconRight?: boolean;
-  rounded?: boolean;
-  /**
-   * @default large
-   */
-  size?: Size;
-}
+import type { StyledProps } from 'src/types';
 
 const BadgeWrapper = styled.div`
   display: inline-block;
 `;
-const StyledBadge = styled.div<BadgeProps>`
+
+type StyledBadgeProps = {
+  fontWeight: FontWeight;
+  iconRight: boolean;
+  rounded: boolean;
+};
+
+const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   display: flex;
   gap: ${theme.space8};
   font-size: ${theme.fontSizeS};
-  padding: 2px 6px;
+  padding: 4px 8px;
   text-align: center;
-  border-radius: ${({ rounded }) => (rounded ? '20px' : theme.radius6)};
+  border-radius: ${p => (p.$rounded ? '20px' : theme.radius6)};
   background-color: ${theme.gray100};
   color: ${theme.gray800};
   align-items: center;
 
   p {
     margin: 0;
-    font-weight: ${p => p.fontWeight || '600'};
+    font-weight: ${p => p.$fontWeight};
     line-height: 16px;
   }
   svg {
-    order: ${({ iconRight }) => (iconRight ? '2' : '')};
+    order: ${p => (p.$iconRight ? '2' : '')};
   }
 
   &.bold {
@@ -64,8 +46,8 @@ const StyledBadge = styled.div<BadgeProps>`
   }
 
   // size
-  &.large {
-    padding: 4px 8px;
+  &.small {
+    padding: 2px 8px;
   }
 
   &.blue {
@@ -149,26 +131,56 @@ const StyledBadge = styled.div<BadgeProps>`
     }
   }
 `;
+
+type BadgeColor =
+  | 'blue'
+  | 'cyan'
+  | 'gray'
+  | 'green'
+  | 'orange'
+  | 'purple'
+  | 'red';
+
+type Size = 'small' | 'default';
+
+export interface BadgeProps {
+  bold?: boolean;
+  children?: ReactNode | string;
+  className?: string;
+  color?: BadgeColor;
+  /**
+   * @default 600
+   */
+  fontWeight?: FontWeight;
+  icon?: ReactNode;
+  /**
+   * @default false
+   */
+  iconRight?: boolean;
+  rounded?: boolean;
+  /**
+   * @default default
+   */
+  size?: Size;
+}
+
 export const Badge = ({
   bold,
   children,
   className,
   color = 'gray',
-  fontWeight,
+  fontWeight = 600,
   icon,
-  iconRight,
+  iconRight = false,
   rounded = false,
-  size = 'large',
+  size = 'default',
 }: BadgeProps) => (
   <BadgeWrapper className={className}>
     <StyledBadge
-      bold={!!bold}
+      $fontWeight={fontWeight}
+      $iconRight={iconRight}
+      $rounded={rounded}
       className={[color, size, bold ? 'bold' : ''].join(' ')}
-      color={color}
-      fontWeight={fontWeight}
-      iconRight={iconRight}
-      rounded={rounded}
-      size={size}
     >
       {icon}
       <p>{children}</p>

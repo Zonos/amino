@@ -21,7 +21,6 @@ const Backdrop = styled(motion.div)`
 `;
 
 const Popup = styled(motion.div)<{ width: number; withBorder: boolean }>`
-  position: relative;
   z-index: 1001;
   background: ${theme.surfaceColor};
   width: ${p => p.width}px;

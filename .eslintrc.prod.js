@@ -8,6 +8,7 @@ module.exports = {
       files: ['./svgReact/**/*', './build-utils/**/*'],
       rules: {
         'deprecation/deprecation': 'off',
+        'no-console': 'off',
       },
     },
   ],

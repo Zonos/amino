@@ -33,18 +33,18 @@ export const getStorageItem = <Value extends unknown>({
 
   if (!rawValue) return null;
 
-  let value = rawValue;
+  let parsedJson: unknown;
 
   if (json) {
     try {
-      value = JSON.parse(rawValue);
+      parsedJson = JSON.parse(rawValue);
     } catch {
       return null;
     }
   }
 
   if (schema) {
-    const parsed = schema.safeParse(value);
+    const parsed = schema.safeParse(parsedJson || rawValue);
 
     if (!parsed.success) {
       return null;
