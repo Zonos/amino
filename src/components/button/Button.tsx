@@ -89,6 +89,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   cursor: pointer;
   white-space: nowrap;
   padding: ${p => getPadding(p.size)};
+  width: fit-content;
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
