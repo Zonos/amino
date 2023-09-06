@@ -89,6 +89,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   cursor: pointer;
   white-space: nowrap;
   padding: ${p => getPadding(p.size)};
+  width: ${p => p.fitContentWidth && 'fit-content'};
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
@@ -385,6 +386,7 @@ type ButtonBase = {
   className?: string;
   color?: Color | 'inherit';
   disabled?: boolean;
+  fitContentWidth?: boolean;
   hoverBackground?: Color | 'inherit';
   icon?: ReactNode;
   iconRight?: boolean;

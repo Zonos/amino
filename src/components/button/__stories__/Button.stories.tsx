@@ -3,6 +3,7 @@ import type { Page } from 'puppeteer';
 import styled from 'styled-components';
 
 import { type ButtonProps, Button } from 'src/components/button/Button';
+import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -163,6 +164,25 @@ const ButtonRow = ({
         variant={variant}
       />
     </HWrapper>
+    <HStack>
+      <Button
+        {...props}
+        disabled={disabled}
+        loading={loading}
+        variant={variant}
+      >
+        Full width
+      </Button>
+      <Button
+        fitContentWidth
+        {...props}
+        disabled={disabled}
+        loading={loading}
+        variant={variant}
+      >
+        Fit content
+      </Button>
+    </HStack>
   </div>
 );
 
