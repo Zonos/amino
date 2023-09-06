@@ -282,6 +282,3 @@ PlainButton.args = {
   children: 'Plain button',
   variant: 'plain',
 };
-
-const BadTemplate: StoryFn<ButtonProps> = () => <Button>Test</Button>;
-export const Test = BadTemplate.bind({});
