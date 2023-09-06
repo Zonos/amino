@@ -429,7 +429,6 @@ export function Button<T extends GroupTag = 'button'>({
   children,
   className,
   disabled = false,
-  fitContentWidth,
   icon,
   iconRight,
   loading = false,
