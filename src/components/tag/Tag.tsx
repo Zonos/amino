@@ -20,25 +20,24 @@ export interface TagProps {
 const TagWrapper = styled.div<{ $size: TagSize }>`
   display: inline-flex;
   // default background color (gray)
-  background-color: ${theme.gray200};
-  border-radius: ${theme.radius6};
+  background-color: ${theme.gray100};
+  border-radius: ${theme.radius4};
 
   height: ${p => (p.$size === 'base' ? theme.space20 : theme.space24)};
 `;
 
 const StyledTagLeft = styled.button<Omit<TagProps, 'onClose'>>`
   display: inline-flex;
-  font-size: ${p => (p.size === 'base' ? theme.fontSizeS : theme.fontSizeBase)};
-  background-color: ${theme.gray200};
+  font-size: ${theme.fontSizeS};
+  background-color: ${theme.gray100};
   border-radius: ${theme.radius6} 0 0 ${theme.radius6};
-  gap: ${theme.space8};
   font-weight: normal;
-  padding: 0 ${theme.space8};
-
-  color: ${theme.gray800};
+  padding: ${p => (p.size === 'base' ? '2px 4px' : '4px 4px 4px 8px')};
+  gap: ${theme.space4};
+  color: ${theme.textColor};
   align-items: center;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   &:focus {
     outline: none;
   }
@@ -51,11 +50,11 @@ const StyledTagLeft = styled.button<Omit<TagProps, 'onClose'>>`
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
   }
 `;
-const StyledTagRight = styled.button`
-  border-radius: 0 ${theme.radius6} ${theme.radius6} 0;
+const StyledTagRight = styled.button<{ size: TagSize }>`
+  border-radius: ${theme.radius4};
   display: inline-flex;
   align-items: center;
-  padding: ${theme.space4};
+  padding: ${p => (p.size === 'base' ? '2px 3px' : '4px 5px')};
 `;
 
 const StyledRemoveBtn = styled.div`
@@ -85,7 +84,7 @@ export const Tag = ({
       {icon}
       <p>{children}</p>
     </StyledTagLeft>
-    <StyledTagRight onClick={onClose} type="button">
+    <StyledTagRight onClick={onClose} type="button" size={size}>
       <StyledRemoveBtn>
         <RemoveIcon size={14} />
       </StyledRemoveBtn>
