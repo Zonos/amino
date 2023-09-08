@@ -32,7 +32,10 @@ const StyledTagLeft = styled.button<Omit<TagProps, 'onClose'>>`
   background-color: ${theme.gray100};
   border-radius: ${theme.radius6} 0 0 ${theme.radius6};
   font-weight: normal;
-  padding: ${p => (p.size === 'base' ? `2px ${theme.space4}` : `${theme.space4} ${theme.space4} ${theme.space4} ${theme.space8}`)};
+  padding: ${p =>
+    p.size === 'base'
+      ? `2px ${theme.space4}`
+      : `${theme.space4} ${theme.space4} ${theme.space4} ${theme.space8}`};
   gap: ${theme.space4};
   color: ${theme.textColor};
   align-items: center;
@@ -84,7 +87,7 @@ export const Tag = ({
       {icon}
       <p>{children}</p>
     </StyledTagLeft>
-    <StyledTagRight onClick={onClose} type="button" size={size}>
+    <StyledTagRight onClick={onClose} size={size} type="button">
       <StyledRemoveBtn>
         <RemoveIcon size={14} />
       </StyledRemoveBtn>
