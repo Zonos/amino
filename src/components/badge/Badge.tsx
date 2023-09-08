@@ -18,7 +18,7 @@ type StyledBadgeProps = {
 
 const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   display: flex;
-  gap: ${theme.space8};
+  gap: ${theme.space4};
   font-size: ${theme.fontSizeS};
   padding: 4px 8px;
   text-align: center;
@@ -34,6 +34,8 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   }
   svg {
     order: ${p => (p.$iconRight ? '2' : '')};
+    height: 16px;
+    width: 16px;
   }
 
   &.bold {
@@ -47,7 +49,9 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
 
   // size
   &.small {
-    padding: 2px 8px;
+    padding: 2px ${theme.space4};
+    border-radius: ${theme.radius4};
+    gap: 2px;
   }
 
   &.blue {
