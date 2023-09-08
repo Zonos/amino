@@ -49,7 +49,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
 
   // size
   &.small {
-    padding: 2px 4px;
+    padding: 2px ${theme.space4};
     border-radius: ${theme.radius4};
     gap: 2px;
   }
