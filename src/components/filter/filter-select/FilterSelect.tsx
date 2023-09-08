@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 import {
   type BaseFilterProps,
-  useFilter,
-} from 'src/components/filter/useFilter';
+  useFilterWrapper,
+} from 'src/components/filter/useFilterWrapper';
 import { Select } from 'src/components/select/Select';
 import type { IOption } from 'src/types/IOption';
 
@@ -41,7 +41,7 @@ export const FilterSelect = <
     }
   };
 
-  const { renderWrapper, setFilterText } = useFilter({
+  const { renderWrapper, setFilterText } = useFilterWrapper({
     ...props,
     filterExists: editingValue !== null,
     onApply: handleApply,

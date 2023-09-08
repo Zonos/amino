@@ -104,7 +104,7 @@ type UseFilterProps = {
 
 export type FilterProps = BaseFilterProps & UseFilterProps;
 
-export const useFilter = ({
+export const useFilterWrapper = ({
   className,
   dropdownTitle,
   filterExists,

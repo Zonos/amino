@@ -2,19 +2,18 @@ import { useCallback, useEffect, useMemo } from 'react';
 
 import dayjs from 'dayjs';
 
-import { Input } from '@zonos/amino/components/input/Input';
-import type { IOption } from '@zonos/amino/types/IOption';
-
 import {
-  type ILastRangeDateUnit,
-  dateUnits,
-} from 'src/components/orders/all/OrderFilter/filterReducer';
-import type { IDateControlProps } from 'src/components/ui/filters/DateControls';
-import {
+  type _DateControlProps,
   DateControlsWrapper,
   defaultDateFormat,
-} from 'src/components/ui/filters/DateControls';
-import { Select } from 'src/components/ui/Select';
+} from 'src/components/filter/filter-date/DateControls';
+import {
+  type FilterDateLastRangeUnit,
+  dateUnits,
+} from 'src/components/filter/filter-date/filterDateReducer';
+import { Input } from 'src/components/input/Input';
+import { Select } from 'src/components/select/Select';
+import type { IOption } from 'src/types/IOption';
 
 const dateUnitOptions: IOption<'days' | 'months'>[] = dateUnits.map(x => ({
   label: x,
@@ -25,12 +24,12 @@ export const IsInTheLast = ({
   onChange,
   onChangeFilterText,
   value,
-}: IDateControlProps) => {
+}: _DateControlProps) => {
   const dateEnd = dayjs().format(defaultDateFormat);
 
   const { count, unit } = useMemo<{
     count: number;
-    unit: ILastRangeDateUnit;
+    unit: FilterDateLastRangeUnit;
   }>(
     () => ({
       count: value.lastCount,

@@ -232,7 +232,7 @@ export const SimpleTable = <T extends object>({
           {!!selectable.onHeaderCheckboxChange && (
             <HeaderColumn $textAlign="center">
               <Checkbox
-                checked={selectable.headerCheckboxValue || false}
+                checked={(!loading && selectable.headerCheckboxValue) || false}
                 disabled={loading}
                 onChange={selectable.onHeaderCheckboxChange}
               />

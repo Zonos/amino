@@ -1,35 +1,36 @@
 import { type Dispatch, useEffect, useState } from 'react';
 
+import { DateControl } from 'src/components/filter/filter-date/DateControls';
 import {
-  type IChangeFilterAction,
-  type IDateFilterData,
-  type IDateRangeType,
-  type IFilter,
-  initialDateData,
-} from 'src/components/orders/all/OrderFilter/filterReducer';
-import { DateControls } from 'src/components/ui/filters/DateControls';
+  type FilterDateAction,
+  type FilterDateData,
+  type FilterDateRangeType,
+  type FilterDateState,
+  initialFilterDateState,
+} from 'src/components/filter/filter-date/filterDateReducer';
 import {
-  type IBaseBadgeFilterProps,
-  useFilter,
-} from 'src/components/ui/filters/useFilter';
+  type BaseFilterProps,
+  useFilterWrapper,
+} from 'src/components/filter/useFilterWrapper';
 
-type IBadgeFilterDateProps = {
-  dispatch: Dispatch<IChangeFilterAction>;
-  filter: IFilter;
-} & IBaseBadgeFilterProps;
+type IBadgeFilterDateProps = BaseFilterProps & {
+  dispatch: Dispatch<FilterDateAction>;
+  filter: FilterDateState;
+};
 
-export const BadgeFilterDate = ({
+export const FilterDate = ({
   dispatch,
   dropdownTitle,
   filter,
   label,
 }: IBadgeFilterDateProps) => {
-  const [editingValue, setEditingValue] = useState<IDateFilterData>(
+  const [editingValue, setEditingValue] = useState<FilterDateData>(
     filter.dateData,
   );
-  const [rangeType, setRangeType] = useState<IDateRangeType>('is in the last');
+  const [rangeType, setRangeType] =
+    useState<FilterDateRangeType>('is in the last');
 
-  const dispatchDateValues = (value: IDateFilterData) => {
+  const dispatchDateValues = (value: FilterDateData) => {
     dispatch({
       name: 'dateRangeType',
       type: 'change',
@@ -63,13 +64,15 @@ export const BadgeFilterDate = ({
 
   const handleToggle = (active: boolean) => {
     if (active) {
-      dispatchDateValues(initialDateData);
+      dispatchDateValues(initialFilterDateState.dateData);
+      setEditingValue(initialFilterDateState.dateData);
     } else {
       dispatchDateValues(editingValue);
+      setEditingValue(filter.dateData);
     }
   };
 
-  const { renderWrapper, setFilterText } = useFilter({
+  const { renderWrapper, setFilterText } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!filter.dateData.dateBegin || !!filter.dateData.dateEnd,
     label,
@@ -82,7 +85,7 @@ export const BadgeFilterDate = ({
   }, [editingValue, rangeType]);
 
   return renderWrapper(
-    <DateControls
+    <DateControl
       onChange={setEditingValue}
       onChangeFilterText={setFilterText}
       rangeType={rangeType}

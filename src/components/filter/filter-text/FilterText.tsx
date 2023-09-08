@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 import {
   type BaseFilterProps,
-  useFilter,
-} from 'src/components/filter/useFilter';
+  useFilterWrapper,
+} from 'src/components/filter/useFilterWrapper';
 import { Input } from 'src/components/input/Input';
 
 export type FilterTextProps = BaseFilterProps & {
@@ -33,7 +33,7 @@ export const FilterText = ({
     onChange(editingValue);
   };
 
-  const { renderWrapper, setFilterText } = useFilter({
+  const { renderWrapper, setFilterText } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!value,
     label,

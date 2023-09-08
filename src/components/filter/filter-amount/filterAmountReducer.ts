@@ -5,6 +5,14 @@ import { changeDeepProperty } from 'src/utils/changeDeepProperty';
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 
+export const filterAmonutOptions: { label: string; value: FilterAmountType }[] =
+  [
+    { label: 'is equal to', value: 'equal' },
+    { label: 'is between', value: 'between' },
+    { label: 'is greater than', value: 'greater' },
+    { label: 'is less than', value: 'less' },
+  ];
+
 export type FilterAmountState = {
   amountFilterType: FilterAmountType | null;
   amountTotalMax: number | null;

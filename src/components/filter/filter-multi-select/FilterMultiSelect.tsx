@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
   type BaseFilterProps,
-  useFilter,
-} from 'src/components/filter/useFilter';
+  useFilterWrapper,
+} from 'src/components/filter/useFilterWrapper';
 import type { IOption } from 'src/types/IOption';
 
 type FilterMultiSelectProps<T extends string = string> = BaseFilterProps & {
@@ -37,7 +37,7 @@ export const FilterMultiSelect = <T extends string = string>({
     }
   };
 
-  const { renderWrapper, setFilterText } = useFilter({
+  const { renderWrapper, setFilterText } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!editingSelectedValues.length,
     label,

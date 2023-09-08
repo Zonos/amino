@@ -2,14 +2,15 @@ import { type Dispatch, useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
-import type {
-  FilterAmountAction,
-  FilterAmountState,
+import {
+  type FilterAmountAction,
+  type FilterAmountState,
+  filterAmonutOptions,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
 import {
   type BaseFilterProps,
-  useFilter,
-} from 'src/components/filter/useFilter';
+  useFilterWrapper,
+} from 'src/components/filter/useFilterWrapper';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
@@ -31,13 +32,6 @@ type FilterAmountProps = BaseFilterProps & {
   dispatch: Dispatch<FilterAmountAction>;
   filter: FilterAmountState;
 };
-
-const options: { label: string; value: FilterAmountType }[] = [
-  { label: 'is equal to', value: 'equal' },
-  { label: 'is between', value: 'between' },
-  { label: 'is greater than', value: 'greater' },
-  { label: 'is less than', value: 'less' },
-];
 
 export const FilterAmount = ({
   dispatch,
@@ -117,7 +111,7 @@ export const FilterAmount = ({
     }
   };
 
-  const { renderWrapper, setFilterText } = useFilter({
+  const { renderWrapper, setFilterText } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!filter.amountTotalMin || !!filter.amountTotalMax,
     label,
@@ -134,9 +128,9 @@ export const FilterAmount = ({
       <Select
         isClearable={false}
         onChange={opt => setEditFilterBy(opt?.value || null)}
-        options={options}
+        options={filterAmonutOptions}
         size="md"
-        value={options.filter(item => item.value === editFilterBy)}
+        value={filterAmonutOptions.filter(item => item.value === editFilterBy)}
       />
 
       <InputWrapper>

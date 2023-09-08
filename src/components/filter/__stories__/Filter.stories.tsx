@@ -7,6 +7,11 @@ import {
   filterAmountReducer,
   initialFilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
+import { FilterDate } from 'src/components/filter/filter-date/FilterDate';
+import {
+  filterDateReducer,
+  initialFilterDateState,
+} from 'src/components/filter/filter-date/filterDateReducer';
 import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/FilterMultiSelect';
 import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
@@ -80,6 +85,24 @@ export const Select = () => {
   );
 };
 
+export const CountrySelect = () => {
+  const countries = useCountryOptions({});
+  const [country, setCountry] = useState<ICountryOption<string> | null>(null);
+
+  return (
+    <>
+      <div>{JSON.stringify({ value: country?.value }, null, 2)}</div>
+      <FilterSelect
+        dropdownTitle="Filter by country"
+        label="Country Select filter"
+        onChange={v => setCountry(v)}
+        options={countries}
+        value={country}
+      />
+    </>
+  );
+};
+
 export const MultiSelect = () => {
   const [selectedValues, setSelectedValues] = useState<IOption<Option>[]>([]);
 
@@ -97,19 +120,20 @@ export const MultiSelect = () => {
   );
 };
 
-export const CountrySelect = () => {
-  const countries = useCountryOptions({});
-  const [country, setCountry] = useState<ICountryOption<string> | null>(null);
+export const Date = () => {
+  const [filter, dispatch] = useReducer(
+    filterDateReducer,
+    initialFilterDateState,
+  );
 
   return (
     <>
-      <div>{JSON.stringify({ value: country?.value }, null, 2)}</div>
-      <FilterSelect
-        dropdownTitle="Filter by country"
-        label="Country Select filter"
-        onChange={v => setCountry(v)}
-        options={countries}
-        value={country}
+      <div>{JSON.stringify({ filter }, null, 2)}</div>
+      <FilterDate
+        dispatch={dispatch}
+        dropdownTitle="Filter by date"
+        filter={filter}
+        label="Date filter"
       />
     </>
   );

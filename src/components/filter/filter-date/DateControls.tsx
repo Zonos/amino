@@ -1,21 +1,19 @@
-import dayjs from 'dayjs';
 import styled from 'styled-components';
 
-import { ArrowRightIcon } from '@zonos/amino/icons/ArrowRightIcon';
-import { theme } from '@zonos/amino/styles/constants/theme';
-
+import { IsAfter } from 'src/components/filter/filter-date/_DateControls/_IsAfter';
+import { IsBeforeOrOn } from 'src/components/filter/filter-date/_DateControls/_IsBeforeOrOn';
+import { IsBetween } from 'src/components/filter/filter-date/_DateControls/_IsBetween';
+import { IsEqualTo } from 'src/components/filter/filter-date/_DateControls/_IsEqualTo';
+import { IsInTheLast } from 'src/components/filter/filter-date/_DateControls/_IsInTheLast';
+import { IsOnOrAfter } from 'src/components/filter/filter-date/_DateControls/_IsOnOrAfter';
 import {
-  type IDateFilterData,
-  type IDateRangeType,
+  type FilterDateData,
+  type FilterDateRangeType,
   filterDateRanges,
-} from 'src/components/orders/all/OrderFilter/filterReducer';
-import { IsAfter } from 'src/components/ui/filters/_DateControls/_IsAfter';
-import { IsBeforeOrOn } from 'src/components/ui/filters/_DateControls/_IsBeforeOrOn';
-import { IsBetween } from 'src/components/ui/filters/_DateControls/_IsBetween';
-import { IsEqualTo } from 'src/components/ui/filters/_DateControls/_IsEqualTo';
-import { IsInTheLast } from 'src/components/ui/filters/_DateControls/_IsInTheLast';
-import { IsOnOrAfter } from 'src/components/ui/filters/_DateControls/_IsOnOrAfter';
-import { Select } from 'src/components/ui/Select';
+} from 'src/components/filter/filter-date/filterDateReducer';
+import { Select } from 'src/components/select/Select';
+import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
+import { theme } from 'src/styles/constants/theme';
 
 const ControlsValueWrapper = styled.div`
   display: flex;
@@ -27,44 +25,26 @@ const ControlsValueWrapper = styled.div`
   }
 `;
 
-export const DateControlsWrapper = styled.div`
-  width: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  gap: ${theme.space8};
-  align-items: center;
-`;
-
-export const formatDate = (date: string) => dayjs(date).format('MM/DD/YYYY');
-
-export const defaultDateFormat = `YYYY-MM-DD`;
-
 const optionsDate = filterDateRanges.map(r => ({
   label: r,
   value: r,
 }));
 
-export type IDateControlProps = {
-  value: IDateFilterData;
-  onChange: (value: IDateFilterData) => void;
+type DateControlProps = {
+  rangeType: FilterDateRangeType;
+  value: FilterDateData;
+  onChange: (value: FilterDateData) => void;
   onChangeFilterText: (text: string) => void;
+  setRangeType: (range: FilterDateRangeType) => void;
 };
 
-type IDateControlsProps = {
-  rangeType: IDateRangeType;
-  value: IDateFilterData;
-  onChange: (value: IDateFilterData) => void;
-  onChangeFilterText: (text: string) => void;
-  setRangeType: (range: IDateRangeType) => void;
-};
-
-export const DateControls = ({
+export const DateControl = ({
   onChange,
   onChangeFilterText,
   rangeType,
   setRangeType,
   value,
-}: IDateControlsProps) => {
+}: DateControlProps) => {
   const renderRangeControl = () => {
     switch (rangeType) {
       case 'is in the last':
