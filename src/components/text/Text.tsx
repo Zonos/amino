@@ -55,7 +55,7 @@ export const textOptions = [
     size: 'xl',
     tag: 'h4',
     type: 'title',
-    weight: 600,
+    weight: 500,
   },
   {
     label: 'Bold Subheader (L) • 18px (1.125rem)',

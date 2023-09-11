@@ -37,7 +37,7 @@ export const CoverSheetActions = ({
     if (div) {
       return createPortal(
         <Actions className={className}>
-          <HStack>{children}</HStack>
+          <HStack spacing={8}>{children}</HStack>
         </Actions>,
         div,
       );
