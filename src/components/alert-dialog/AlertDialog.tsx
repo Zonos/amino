@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 
-import type { Variant } from 'framer-motion';
 import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
@@ -9,11 +8,8 @@ import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon';
-import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
-import { HelpIcon } from 'src/icons/HelpIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
-import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type Intent } from 'src/types/Intent';
 import { type Theme } from 'src/types/Theme';

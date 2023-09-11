@@ -3,10 +3,6 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import {
-  Primary,
-  PrimaryOutline,
-} from 'src/components/button/__stories__/Button.stories';
 import { Button } from 'src/components/button/Button';
 import {
   type CoverSheetProps,
@@ -50,8 +46,8 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
             Toggle coversheet action portal
           </Button>
           <Button
-            intent="primary"
             onClick={() => setSecondCoversheetOpen(!secondCoversheetOpen)}
+            variant="primary"
           >
             Open second CoverSheet
           </Button>
