@@ -89,7 +89,9 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
 
   {
     align: 'center',
-    customRender: vegan => (
+    key: 'vegan',
+    name: 'Vegan',
+    renderCustom: vegan => (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         {vegan ? (
           <CheckmarkIcon color="green600" />
@@ -98,13 +100,11 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
         )}
       </div>
     ),
-    key: 'vegan',
-    name: 'Vegan',
   },
   {
-    customRender: value => value || <Text color="gray400">N/A</Text>,
     key: 'optionalField',
     name: 'Optional Field',
+    renderCustom: value => value || <Text color="gray400">N/A</Text>,
   },
 ];
 
@@ -234,14 +234,14 @@ export const Custom = () => {
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders,
     {
-      customRender: (_, item) => (
+      key: 'hoverField',
+      name: null,
+      noPadding: true,
+      renderCustom: (_, item) => (
         <div className="row-hover-show">
           <HoverMenu item={item} />
         </div>
       ),
-      key: 'hoverField',
-      name: null,
-      noPadding: true,
     },
   ];
 

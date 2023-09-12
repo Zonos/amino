@@ -30,7 +30,7 @@ export const Text = () => {
 
   return (
     <>
-      <div>{JSON.stringify({ value }, null, 2)}</div>
+      <pre>{JSON.stringify({ value }, null, 2)}</pre>
       <FilterText
         dropdownTitle="Filter by text"
         label="Text filter"
@@ -49,7 +49,7 @@ export const Amount = () => {
 
   return (
     <>
-      <div>{JSON.stringify({ filter }, null, 2)}</div>
+      <pre>{JSON.stringify({ filter }, null, 2)}</pre>
       <FilterAmount
         dispatch={dispatch}
         dropdownTitle="Filter by amount"
@@ -73,7 +73,7 @@ export const Select = () => {
 
   return (
     <>
-      <div>{JSON.stringify({ value }, null, 2)}</div>
+      <pre>{JSON.stringify({ value }, null, 2)}</pre>
       <FilterSelect
         dropdownTitle="Filter by option"
         label="Select filter"
@@ -91,7 +91,7 @@ export const CountrySelect = () => {
 
   return (
     <>
-      <div>{JSON.stringify({ value: country?.value }, null, 2)}</div>
+      <pre>{JSON.stringify({ value: country?.value }, null, 2)}</pre>
       <FilterSelect
         dropdownTitle="Filter by country"
         label="Country Select filter"
@@ -108,7 +108,7 @@ export const MultiSelect = () => {
 
   return (
     <>
-      <div>{JSON.stringify({ selectedValues }, null, 2)}</div>
+      <pre>{JSON.stringify({ selectedValues }, null, 2)}</pre>
       <FilterMultiSelect
         dropdownTitle="Filter by option"
         label="MultiSelect filter"
@@ -128,7 +128,7 @@ export const Date = () => {
 
   return (
     <>
-      <div>{JSON.stringify({ filter }, null, 2)}</div>
+      <pre>{JSON.stringify({ filter }, null, 2)}</pre>
       <FilterDate
         dispatch={dispatch}
         dropdownTitle="Filter by date"

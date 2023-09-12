@@ -86,7 +86,7 @@ export type SimpleTableHeader<T extends object> = {
     /** null means don't show a header for this column */
     name: string | null;
 
-    customRender?: (value: T[Key], item: T) => React.ReactNode;
+    renderCustom?: (value: T[Key], item: T) => React.ReactNode;
   } & SimpleTableHeaderBaseProps;
 }[keyof T extends React.Key ? keyof T : never];
 
@@ -157,13 +157,13 @@ export const SimpleTable = <T extends object>({
   const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
     const value = item[header.key];
 
-    return header.customRender ? (
+    return header.renderCustom ? (
       <RowColumn
         key={header.key}
         $noPadding={header.noPadding || false}
         $textAlign={header.align || 'start'}
       >
-        {header.customRender(value, item)}
+        {header.renderCustom(value, item)}
       </RowColumn>
     ) : (
       <RowColumn

@@ -7,7 +7,7 @@ import { SimpleTable } from '../SimpleTable';
 
 Create the table headers that specify how each column will be rendered. For more advanced usage, see the code in the `Docs` story.
 
-```typescript
+```jsx
 type DummyData = {
   age: number;
   id: number;
@@ -84,7 +84,7 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
     name: 'Vegan',
   },
   {
-    customRender: value => value || <Text color="gray400">N/A</Text>,
+    renderCustom: value => value || <Text color="gray400">N/A</Text>,
     key: 'optionalField',
     name: 'Optional Field',
   },
