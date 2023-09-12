@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
@@ -69,6 +69,18 @@ const getIconForIntent = (intent: Intent) => {
   }
 };
 
+const getButtonVariant = (intent: Intent) => {
+  switch (intent) {
+    case 'danger':
+      return 'danger';
+    case 'warning':
+      return 'warning';
+    case 'info':
+    default:
+      return 'primary';
+  }
+};
+
 export const ConfirmDialog = ({
   confirmAction,
   confirmText,
@@ -82,7 +94,7 @@ export const ConfirmDialog = ({
 }: ConfirmDialogProps) => (
   <BaseDialog data-theme={themeOverride} open={open} width={350}>
     <Content>
-      <VStack spacing={16}>
+      <VStack spacing={24}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
         <VStack spacing={8}>
           <Text type="subheader">{label}</Text>
@@ -93,12 +105,16 @@ export const ConfirmDialog = ({
           )}
         </VStack>
         <Footer>
-          <LegacyButton intent="outline" onClick={dismissAction} size="md">
+          <Button onClick={dismissAction} size="lg" variant="standard">
             {dismissText}
-          </LegacyButton>
-          <LegacyButton intent={intent} onClick={confirmAction} size="md">
+          </Button>
+          <Button
+            onClick={confirmAction}
+            size="lg"
+            variant={getButtonVariant(intent)}
+          >
             {confirmText}
-          </LegacyButton>
+          </Button>
         </Footer>
       </VStack>
     </Content>

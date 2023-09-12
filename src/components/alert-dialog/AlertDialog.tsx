@@ -2,14 +2,14 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/BaseDialog';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
-import { HelpIcon } from 'src/icons/HelpIcon';
-import { WarningIcon } from 'src/icons/WarningIcon';
+import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon';
+import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
+import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import { type Intent } from 'src/types/Intent';
 import { type Theme } from 'src/types/Theme';
@@ -42,7 +42,9 @@ const Footer = styled.div`
 `;
 
 const AlertPrompt = styled.span`
-  opacity: 0.5;
+  color: ${theme.textColorSecondary};
+  line-height: ${theme.lineHeightBase};
+  font-size: ${theme.fontSizeBase};
 `;
 
 export type AlertDialogProps = {
@@ -58,12 +60,28 @@ export type AlertDialogProps = {
 const getIconForIntent = (intent: Intent) => {
   switch (intent) {
     case 'danger':
-      return <ExclamationMarkIcon />;
+      return (
+        <ExclamationMarkDuotoneIcon color="red800" secondaryColor="red400" />
+      );
     case 'warning':
-      return <WarningIcon />;
+      return (
+        <WarningDuotoneIcon color="orange800" secondaryColor="orange400" />
+      );
     case 'info':
     default:
-      return <HelpIcon />;
+      return <HelpDuotoneIcon color="blue800" secondaryColor="blue400" />;
+  }
+};
+
+const getButtonVariant = (intent: Intent) => {
+  switch (intent) {
+    case 'danger':
+      return 'danger';
+    case 'warning':
+      return 'warning';
+    case 'info':
+    default:
+      return 'primary';
   }
 };
 
@@ -83,16 +101,20 @@ export const AlertDialog = ({
     width={350}
   >
     <Content>
-      <VStack spacing={16}>
+      <VStack spacing={24}>
         <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
-        <div>
-          <Text type="title">{label}</Text>
+        <VStack spacing={8}>
+          <Text type="subheader">{label}</Text>
           <AlertPrompt>{subtitle}</AlertPrompt>
-        </div>
+        </VStack>
         <Footer>
-          <LegacyButton intent={intent} onClick={dismissAction}>
+          <Button
+            onClick={dismissAction}
+            size="lg"
+            variant={getButtonVariant(intent)}
+          >
             {dismissText}
-          </LegacyButton>
+          </Button>
         </Footer>
       </VStack>
     </Content>

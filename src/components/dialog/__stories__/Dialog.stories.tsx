@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Badge } from 'src/components/badge/Badge';
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 import { theme } from 'src/styles/constants/theme';
@@ -55,7 +55,7 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
   const [open, setOpen] = useState(false);
   return (
     <CenteredDiv>
-      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledDialog
         {...rest}
         actions={actions}
@@ -75,8 +75,12 @@ export const BasicDialog = Template.bind({});
 BasicDialog.args = {
   actions: (
     <>
-      <LegacyButton intent="outline">Close</LegacyButton>
-      <LegacyButton intent="primary">Save</LegacyButton>
+      <Button size="md" variant="subtle">
+        Close
+      </Button>
+      <Button size="md" variant="primary">
+        Save
+      </Button>
     </>
   ),
   children: <div>Children</div>,
@@ -88,8 +92,12 @@ export const WithSubtitle = Template.bind({});
 WithSubtitle.args = {
   actions: (
     <>
-      <LegacyButton intent="outline">Close</LegacyButton>
-      <LegacyButton intent="primary">Save</LegacyButton>
+      <Button size="md" variant="subtle">
+        Close
+      </Button>
+      <Button size="md" variant="primary">
+        Save
+      </Button>
     </>
   ),
   children: <div>Children</div>,
@@ -119,8 +127,12 @@ export const WithHover = Template.bind({});
 WithHover.args = {
   actions: (
     <>
-      <LegacyButton intent="outline">Close</LegacyButton>
-      <LegacyButton intent="primary">Save</LegacyButton>
+      <Button size="md" variant="subtle">
+        Close
+      </Button>
+      <Button size="md" variant="primary">
+        Save
+      </Button>
     </>
   ),
   children: <HoverDiv>Hover me</HoverDiv>,
@@ -146,8 +158,12 @@ export const WithLink = Template.bind({});
 WithLink.args = {
   actions: (
     <>
-      <LegacyButton intent="outline">Close</LegacyButton>
-      <LegacyButton intent="primary">Save</LegacyButton>
+      <Button size="md" variant="subtle">
+        Close
+      </Button>
+      <Button size="md" variant="primary">
+        Save
+      </Button>
     </>
   ),
   children: (
@@ -158,9 +174,7 @@ WithLink.args = {
   label: (
     <StyledTitle>
       <span>StyledDialog title</span>
-      <Badge bold color="blue" rounded>
-        With a link
-      </Badge>
+      <Badge color="blue">With a link</Badge>
     </StyledTitle>
   ),
   width: 460,
@@ -170,13 +184,17 @@ export const WithLeftActions = Template.bind({});
 WithLeftActions.args = {
   actions: (
     <>
-      <LegacyButton intent="outline">Close</LegacyButton>
-      <LegacyButton intent="primary">Do something amazing</LegacyButton>
+      <Button size="md" variant="subtle">
+        Close
+      </Button>
+      <Button size="md" variant="primary">
+        Do something amazing
+      </Button>
     </>
   ),
   children: <div>Children</div>,
   label: 'StyledDialog title',
-  leftActions: <LegacyButton>Back</LegacyButton>,
+  leftActions: <Button size="md">Back</Button>,
   width: 650,
 };
 
@@ -184,8 +202,12 @@ export const LongContentDialog = Template.bind({});
 LongContentDialog.args = {
   actions: (
     <>
-      <LegacyButton intent="outline">Close</LegacyButton>
-      <LegacyButton intent="primary">Save</LegacyButton>
+      <Button size="md" variant="subtle">
+        Close
+      </Button>
+      <Button size="md" variant="primary">
+        Save
+      </Button>
     </>
   ),
   children: (
@@ -242,7 +264,7 @@ LongContentDialog.args = {
     </div>
   ),
   label: 'Label',
-  leftActions: <LegacyButton>Back</LegacyButton>,
+  leftActions: <Button size="md">Back</Button>,
   width: 500,
 };
 
@@ -252,14 +274,16 @@ export const WithInput = ({ height }: { height: number }) => {
 
   return (
     <CenteredDiv>
-      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledDialog
         actions={
           <>
-            <LegacyButton intent="outline" onClick={() => setOpen(false)}>
+            <Button onClick={() => setOpen(false)} size="md" variant="subtle">
               Close
-            </LegacyButton>
-            <LegacyButton intent="primary">Submit</LegacyButton>
+            </Button>
+            <Button size="md" variant="primary">
+              Submit
+            </Button>
           </>
         }
         height={height}
