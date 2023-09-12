@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import {
   type CoverSheetProps,
   CoverSheet,
@@ -37,37 +37,37 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
 
   return (
     <CenteredDiv>
-      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
+      <Button onClick={() => setOpen(true)}>Open</Button>
 
       <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>
         {children}
         <VStack>
-          <LegacyButton onClick={() => setActionPortalOpen(!actionPortalOpen)}>
+          <Button onClick={() => setActionPortalOpen(!actionPortalOpen)}>
             Toggle coversheet action portal
-          </LegacyButton>
-          <LegacyButton
-            intent="primary"
+          </Button>
+          <Button
             onClick={() => setSecondCoversheetOpen(!secondCoversheetOpen)}
+            variant="primary"
           >
             Open second CoverSheet
-          </LegacyButton>
-          <LegacyButton onClick={() => setToggleErrorCoversheetAction(true)}>
+          </Button>
+          <Button onClick={() => setToggleErrorCoversheetAction(true)}>
             Toggle error coversheet action (This will throw an error)
-          </LegacyButton>
+          </Button>
         </VStack>
         {actionPortalOpen && (
           <CoverSheetActions coverSheetActionId="__cover-sheet-actions">
-            <LegacyButton onClick={() => setActionPortalOpen(false)}>
+            <Button onClick={() => setActionPortalOpen(false)}>
               Remove coversheet actions
-            </LegacyButton>
-            <LegacyButton>Save (coversheet)</LegacyButton>
+            </Button>
+            <Button>Save (coversheet)</Button>
           </CoverSheetActions>
         )}
         {toggleErrorCoversheetAction && (
           <CoverSheetActions coverSheetActionId="non-existing-id">
-            <LegacyButton onClick={() => setToggleErrorCoversheetAction(false)}>
+            <Button onClick={() => setToggleErrorCoversheetAction(false)}>
               Remove coversheet actions
-            </LegacyButton>
+            </Button>
           </CoverSheetActions>
         )}
       </CoverSheet>
@@ -81,9 +81,9 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
         action <b>Action in second coversheet</b> should be positioned correctly
         at the top right of this coversheet
         <CoverSheetActions coverSheetActionId="second-cover-sheet">
-          <LegacyButton onClick={() => setSecondCoversheetOpen(false)}>
+          <Button onClick={() => setSecondCoversheetOpen(false)}>
             Action in second coversheet
-          </LegacyButton>
+          </Button>
         </CoverSheetActions>
       </CoverSheet>
     </CenteredDiv>
@@ -94,8 +94,8 @@ export const CoverSheetWithActions = Template.bind({});
 CoverSheetWithActions.args = {
   actions: (
     <>
-      <LegacyButton>Cancel</LegacyButton>
-      <LegacyButton>Save</LegacyButton>
+      <Button>Cancel</Button>
+      <Button variant="primary">Save</Button>
     </>
   ),
   children: <div />,

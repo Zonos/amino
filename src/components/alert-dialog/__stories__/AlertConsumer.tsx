@@ -1,5 +1,5 @@
 import { useAlert } from 'src/components/alert-dialog/useAlert';
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 
 export const AlertConsumer = () => {
@@ -8,8 +8,7 @@ export const AlertConsumer = () => {
   return (
     <VStack>
       {/* Info  alert */}
-      <LegacyButton
-        intent="primary"
+      <Button
         onClick={() =>
           alert({
             dismissText: "Don't do action",
@@ -19,12 +18,12 @@ export const AlertConsumer = () => {
             subtitle: 'You look nice today',
           })
         }
+        variant="primary"
       >
         Trigger default alert
-      </LegacyButton>
+      </Button>
       {/* Danger alert */}
-      <LegacyButton
-        intent="danger"
+      <Button
         onClick={() =>
           alert({
             dismissText: "Don't do action",
@@ -34,12 +33,12 @@ export const AlertConsumer = () => {
             subtitle: 'There was an error or something',
           })
         }
+        variant="danger"
       >
         Trigger danger alert
-      </LegacyButton>
+      </Button>
       {/* Warning alert */}
-      <LegacyButton
-        intent="warning"
+      <Button
         onClick={() =>
           alert({
             dismissText: "Don't do action",
@@ -49,9 +48,10 @@ export const AlertConsumer = () => {
             subtitle: 'This is your final warning',
           })
         }
+        variant="warning"
       >
         Trigger warning alert
-      </LegacyButton>
+      </Button>
     </VStack>
   );
 };

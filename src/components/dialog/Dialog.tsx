@@ -29,7 +29,6 @@ const Title = styled.div`
   > :not(button) {
     margin: 0;
     flex-grow: 1;
-    font-weight: 700;
   }
 `;
 

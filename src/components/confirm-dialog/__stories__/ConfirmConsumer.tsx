@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { useConfirm } from 'src/components/confirm-dialog/useConfirm';
 import { VStack } from 'src/components/stack/VStack';
 
@@ -16,8 +16,7 @@ export const ConfirmConsumer = () => {
   return (
     <VStack>
       {/** Default Confirmation */}
-      <LegacyButton
-        intent="primary"
+      <Button
         onClick={() =>
           defaultConfirm({
             confirmText: 'Do action',
@@ -29,17 +28,17 @@ export const ConfirmConsumer = () => {
               'This is the descriptive text about what the user is about to do',
           })
         }
+        variant="primary"
       >
         Trigger default confirmation
-      </LegacyButton>
+      </Button>
       <div className="default-confirmation">
         <b>Default confirmation:</b>{' '}
         {defaultConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>
 
       {/** Danger Confirmation */}
-      <LegacyButton
-        intent="danger"
+      <Button
         onClick={() =>
           dangerConfirm({
             confirmText: 'Do action',
@@ -50,17 +49,17 @@ export const ConfirmConsumer = () => {
             subtitle: 'This is the descriptive text about what just happened',
           })
         }
+        variant="danger"
       >
         Trigger danger confirmation
-      </LegacyButton>
+      </Button>
       <div className="warning-confirmation">
         <b>Danger confirmation:</b>{' '}
         {dangerConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>
 
       {/** Warning Confirmation */}
-      <LegacyButton
-        intent="warning"
+      <Button
         onClick={() =>
           warningConfirm({
             confirmText: 'Do action',
@@ -71,9 +70,10 @@ export const ConfirmConsumer = () => {
             subtitle: 'This is the descriptive text about what just happened',
           })
         }
+        variant="warning"
       >
         Trigger warning confirmation
-      </LegacyButton>
+      </Button>
       <div>
         <b>Warning confirmation:</b>{' '}
         {warningConfirmOk ? 'confirmed' : 'not confirmed'}

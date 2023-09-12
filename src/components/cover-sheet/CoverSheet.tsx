@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
@@ -33,8 +33,8 @@ const StyledDialog = styled(motion.div)`
   }
 `;
 
-const StyledCloseButton = styled(LegacyButton)`
-  margin-right: ${theme.space24};
+const StyledCloseButton = styled(Button)`
+  margin-right: ${theme.space16};
 `;
 const StyledHeader = styled(Text)`
   flex-grow: 1;
@@ -121,7 +121,7 @@ export const CoverSheet = ({
                   icon={<RemoveIcon size={20} />}
                   onClick={onClose}
                 />
-                <StyledHeader type="header">{label}</StyledHeader>
+                <StyledHeader type="subheader">{label}</StyledHeader>
                 <div id={actionWrapperId}>
                   {actions && (
                     <CoverSheetActions coverSheetActionId={actionWrapperId}>
