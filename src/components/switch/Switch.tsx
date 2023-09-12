@@ -7,13 +7,17 @@ import { theme } from 'src/styles/constants/theme';
 
 const AminoSwitch = styled.div<{ checked: boolean }>`
   background: ${theme.gray0};
-  height: 12px;
-  width: 12px;
+  box-shadow: ${p =>
+    p.checked
+      ? '0px -1px 1px 0px rgba(68, 94, 238, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.20)'
+      : '0px -1px 1px 0px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.20)'};
+  height: 14px;
+  width: 14px;
   border-radius: 50%;
   transition: ${theme.transition};
   position: absolute;
-  top: 2px;
-  left: ${p => (p.checked ? 'calc(100% - 14px)' : '2px')};
+  top: 1px;
+  left: ${p => (p.checked ? 'calc(100% - 15px)' : '1px')};
   [data-theme='night'] & {
     background: ${theme.gray1200};
   }
@@ -23,13 +27,14 @@ const AminoSwitchWrapper = styled.div<{
   checked: boolean;
 }>`
   margin-right: ${theme.space16};
-  width: 24px;
+  width: 32px;
   height: 16px;
-  min-width: 24px;
+  min-width: 32px;
   min-height: 16px;
   line-height: 16px;
   border-radius: 20px;
-  background: ${p => (p.checked ? theme.primary : theme.gray400)};
+  background: ${p => (p.checked ? theme.primary : theme.gray100)};
+  box-shadow: ${theme.v3ShadowInset};
   display: block;
   user-select: none;
   margin-right: ${theme.space16};
@@ -66,7 +71,10 @@ const SwitchContainer = styled.label<{
 
   &.disabled {
     ${AminoSwitchWrapper} {
-      background: ${p => (p.checked ? theme.gray300 : '')};
+      opacity: 0.6;
+    }
+    ${AminoSwitch} {
+      opacity: 0.95;
     }
     ${StyledLabel} {
       color: ${theme.gray600};
