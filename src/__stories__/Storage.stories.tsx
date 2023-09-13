@@ -8,6 +8,7 @@ import { Input } from 'src/components/input/Input';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { useStorage } from 'src/utils/hooks/useStorage';
+import type { StorageType } from 'src/utils/storage';
 
 const meta: Meta = {
   title: 'Storage',
@@ -30,12 +31,14 @@ const defaultPerson: Person = {
 };
 
 export const Storage = () => {
+  const [storageType, setStorageType] = useState<StorageType>('local');
+
   const { setValue, value } = useStorage({
     defaultValue: defaultPerson,
     json: true,
     key: 'amino:story:storage:test',
     schema,
-    type: 'local',
+    type: storageType,
   });
 
   const [input, setInput] = useState('');
@@ -47,11 +50,25 @@ export const Storage = () => {
   };
 
   const submitAsJson = () => {
-    setValue(JSON.parse(input) as Person);
+    try {
+      setValue(JSON.parse(input) as Person);
+    } catch (error) {
+      // eslint-disable-next-line no-alert
+      alert('Invalid JSON');
+    }
   };
 
   return (
     <VStack>
+      <div>
+        <select
+          onChange={e => setStorageType(e.target.value as StorageType)}
+          value={storageType}
+        >
+          <option value="local">Local Storage</option>
+          <option value="session">Session Storage</option>
+        </select>
+      </div>
       <div>
         Raw local storage value: <strong>{rawValue}</strong>
       </div>

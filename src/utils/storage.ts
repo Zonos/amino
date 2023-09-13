@@ -28,7 +28,10 @@ export const getStorageItem = <Value extends unknown>({
   schema,
   type,
 }: StorageParams<Value>): Value | null => {
-  const storage = type === 'session' ? sessionStorage : localStorage;
+  if (typeof window === 'undefined') return null;
+
+  const storage =
+    type === 'local' ? window.localStorage : window.sessionStorage;
   const rawValue = storage.getItem(key);
 
   if (!rawValue) return null;
@@ -75,11 +78,15 @@ export const setStorageItem = async <Value extends unknown>({
   type,
   value,
 }: SetParams<Value>) => {
-  const storage = type === 'session' ? sessionStorage : localStorage;
+  const storage =
+    type === 'session' ? window.sessionStorage : window.localStorage;
 
   const setValue = json ? JSON.stringify(value) : String(value);
 
   storage.setItem(key, setValue);
+
+  // Dispatch our internal event
+  window.dispatchEvent(new Event(`amino:storage-${type}`));
 
   await mutate(key, value);
 };

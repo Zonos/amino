@@ -6,6 +6,7 @@ import { useStorage } from 'src/utils/hooks/useStorage';
 describe('useStorage', () => {
   afterEach(() => {
     localStorage.clear();
+    sessionStorage.clear();
   });
 
   test('should set an array of strings', async () => {
@@ -53,7 +54,7 @@ describe('useStorage', () => {
         json: true,
         key: 'people-array',
         schema: person,
-        type: 'local',
+        type: 'session',
       }),
     );
 
