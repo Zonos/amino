@@ -17,12 +17,9 @@ const StyledRadio = styled.div<{
   justify-content: center;
   user-select: none;
   border: ${p => (!p.checked ? `1.5px solid ${theme.gray400}` : 'none')};
+  box-shadow: ${p => (p.checked ? theme.shadowButtonPrimary : 'none')};
   margin-right: ${theme.space8};
   transition: ${theme.transition};
-
-  &:active {
-    box-shadow: ${theme.glowBlue};
-  }
 
   svg {
     color: ${theme.gray0};
