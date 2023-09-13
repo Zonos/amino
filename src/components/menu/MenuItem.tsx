@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 
 import styled from 'styled-components';
 
@@ -30,7 +30,7 @@ export const StyledListItem = styled.li`
 type MenuItemProps = {
   children: ReactNode;
   icon?: ReactNode;
-  onClick?: () => void;
+  onClick?: MouseEventHandler;
 };
 
 export const MenuItem = ({ children, icon, onClick }: MenuItemProps) => (

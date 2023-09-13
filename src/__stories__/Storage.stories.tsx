@@ -56,7 +56,7 @@ export const Storage = () => {
         Raw local storage value: <strong>{rawValue}</strong>
       </div>
       <div>
-        Parsed Value: <strong>{JSON.stringify(value, null, 2)}</strong>
+        Parsed Value: <pre>{JSON.stringify(value, null, 2)}</pre>
       </div>
       <Input
         onChange={e => setInput(e.target.value)}

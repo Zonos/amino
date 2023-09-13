@@ -3,6 +3,7 @@ import {
   type ComponentPropsWithRef,
   type KeyboardEventHandler,
   forwardRef,
+  useId,
 } from 'react';
 
 import styled from 'styled-components';
@@ -99,27 +100,32 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
       ...props
     },
     ref,
-  ) => (
-    <StyledWrapper className={className}>
-      <StyledLabel htmlFor={AminoInput}>
-        <SearchIcon color="gray600" size={20} />
-      </StyledLabel>
-      <AminoInput
-        ref={ref}
-        autoFocus={autoFocus}
-        disabled={disabled}
-        inputMode={inputMode}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        pattern={pattern}
-        placeholder={placeholder || 'Search...'}
-        readOnly={readOnly}
-        required={required}
-        tabIndex={tabIndex}
-        type="search"
-        value={value || ''}
-        {...props}
-      />
-    </StyledWrapper>
-  ),
+  ) => {
+    const inputId = useId();
+
+    return (
+      <StyledWrapper className={className}>
+        <StyledLabel htmlFor={inputId}>
+          <SearchIcon color="gray600" size={20} />
+        </StyledLabel>
+        <AminoInput
+          ref={ref}
+          autoFocus={autoFocus}
+          disabled={disabled}
+          id={inputId}
+          inputMode={inputMode}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          pattern={pattern}
+          placeholder={placeholder || 'Search...'}
+          readOnly={readOnly}
+          required={required}
+          tabIndex={tabIndex}
+          type="search"
+          value={value || ''}
+          {...props}
+        />
+      </StyledWrapper>
+    );
+  },
 );

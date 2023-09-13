@@ -20,6 +20,7 @@ const ThemeBlock = styled.div<{
   border-right: ${props =>
     props.left ? `1px solid ${theme.gray500}` : 'none'};
   width: 100%;
+  height: 100%;
   overflow: auto;
   padding: ${theme.space16};
   background: ${theme.gray0};
@@ -108,16 +109,12 @@ const withTheme: Decorator = (Story, context) => {
     if (context.title === 'Amino/ThemeSelect') {
       return (
         <SideBySideContainer>
-          <div data-theme="day">
-            <ThemeBlock left>
-              <Story {...context} />
-            </ThemeBlock>
-          </div>
-          <div data-theme="night">
-            <ThemeBlock>
-              <Story {...context} />
-            </ThemeBlock>
-          </div>
+          <ThemeBlock data-theme="day">
+            <Story {...context} />
+          </ThemeBlock>
+          <ThemeBlock data-theme="night">
+            <Story {...context} />
+          </ThemeBlock>
         </SideBySideContainer>
       );
     }
@@ -139,11 +136,9 @@ const withTheme: Decorator = (Story, context) => {
   }
 
   return (
-    <div data-theme={inSideBySide ? storybookTheme : aminoTheme}>
-      <ThemeBlock>
-        <Story {...context} />
-      </ThemeBlock>
-    </div>
+    <ThemeBlock data-theme={inSideBySide ? storybookTheme : aminoTheme}>
+      <Story {...context} />
+    </ThemeBlock>
   );
 };
 
