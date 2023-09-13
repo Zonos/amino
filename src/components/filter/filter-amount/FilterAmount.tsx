@@ -93,7 +93,6 @@ export const FilterAmount = ({
         setNewFilterText(`Less than ${amount1String}`);
         break;
       default:
-        // Handle default case if necessary
         break;
     }
   };

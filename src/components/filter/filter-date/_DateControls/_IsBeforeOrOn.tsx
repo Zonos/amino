@@ -7,7 +7,7 @@ import {
   DateControlsWrapper,
   defaultDateFormat,
   formatDate,
-} from 'src/components/filter/filter-date/temp';
+} from 'src/components/filter/filter-date/dateUtils';
 import { Input } from 'src/components/input/Input';
 
 export const IsBeforeOrOn = ({
