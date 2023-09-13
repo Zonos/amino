@@ -1,0 +1,100 @@
+import { Meta } from '@storybook/blocks';
+import { SimpleTable } from '../SimpleTable';
+
+<Meta title="SimpleTable/Usage" component={SimpleTable} />
+
+# Usage
+
+Create the table headers that specify how each column will be rendered. For more advanced usage, see the code in the `Docs` story.
+
+```jsx
+type DummyData = {
+  age: number;
+  id: number;
+  name: string;
+  optionalField?: string;
+  vegan: boolean;
+};
+
+const items: DummyData[] = [
+  {
+    age: 24,
+    id: 1,
+    name: 'John',
+    optionalField: 'optional',
+    vegan: false,
+  },
+  {
+    age: 25,
+    id: 2,
+    name: 'Jane',
+    vegan: true,
+  },
+  {
+    age: 26,
+    id: 3,
+    name: 'Joe',
+    vegan: false,
+  },
+  {
+    age: 27,
+    id: 4,
+    name: 'Joan',
+    optionalField: 'idk',
+    vegan: true,
+  },
+  {
+    age: 28,
+    id: 5,
+    name: 'Jim',
+    vegan: false,
+  },
+  {
+    age: 26,
+    id: 29,
+    name: 'Cade',
+    optionalField: 'optional',
+    vegan: false,
+  },
+];
+
+const tableHeaders: SimpleTableHeader<DummyData>[] = [
+  {
+    key: 'name',
+    name: 'Name',
+  },
+  {
+    key: 'age',
+    name: 'Age',
+    width: 10,
+  },
+
+  {
+    align: 'center',
+    customRender: vegan => (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        {vegan ? (
+          <CheckmarkIcon color="green600" />
+        ) : (
+          <RemoveIcon color="red600" />
+        )}
+      </div>
+    ),
+    key: 'vegan',
+    name: 'Vegan',
+  },
+  {
+    renderCustom: value => value || <Text color="gray400">N/A</Text>,
+    key: 'optionalField',
+    name: 'Optional Field',
+  },
+];
+
+export const Basic = () => (
+  <SimpleTable
+    headers={tableHeaders}
+    items={items}
+    keyExtractor={item => String(item.id)}
+  />
+);
+```

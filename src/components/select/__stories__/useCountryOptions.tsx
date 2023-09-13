@@ -8,11 +8,20 @@ import {
 import type { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
+export const getCountryUrls = () => {
+  const dashboardUrl = process.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
+  if (!dashboardUrl) {
+    // eslint-disable-next-line no-console
+    console.error('Missing environment variable STORYBOOK_ZONOS_DASHBOARD_URL');
+  }
+  return { dashboardUrl };
+};
+
 export const useCountryOptions = ({
-  dashboardUrl,
+  dashboardUrl = getCountryUrls().dashboardUrl,
   iconScale = 'small',
 }: {
-  dashboardUrl: string | null;
+  dashboardUrl?: string | null;
   iconScale?: IFlagScale;
 }) => {
   const [countryOptions, setCountryOptions] = useState<ICountryOption[]>([]);

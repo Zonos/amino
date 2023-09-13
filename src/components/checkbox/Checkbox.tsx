@@ -113,6 +113,8 @@ export const Checkbox = ({
   onChange,
   subtitle,
 }: CheckboxProps) => {
+  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+
   const testId = useMemo(
     () => getTestId({ componentName: 'checkbox', name: label }),
     [label],
@@ -122,10 +124,10 @@ export const Checkbox = ({
       checked={checked}
       className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       data-testid={testId}
-      htmlFor={label}
+      htmlFor={labelAsHtmlAttribute}
       onClick={e => !disabled && onChange(!checked, e)}
     >
-      <AminoCheckbox checked={checked} id={label}>
+      <AminoCheckbox checked={checked} id={labelAsHtmlAttribute}>
         <AnimatePresence>
           {checked && (
             <AnimatedCheckIcon
