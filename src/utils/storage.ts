@@ -58,7 +58,7 @@ export const getStorageItem = <Value extends unknown>({
     return parsedJson as Value;
   }
 
-  // Could be a string union, in which case JSON parsing is unnecessary
+  // Could be something like a string union, in which case JSON parsing is unnecessary
   if (schema) {
     const parsed = schema.safeParse(rawValue);
 
