@@ -35,7 +35,6 @@ export const Storage = () => {
 
   const { setValue, value } = useStorage({
     defaultValue: defaultPerson,
-    json: true,
     key: 'amino:story:storage:test',
     schema,
     type: storageType,
@@ -46,10 +45,6 @@ export const Storage = () => {
   const rawValue = localStorage.getItem('amino:story:storage:test');
 
   const submit = () => {
-    setValue(input as unknown as Person);
-  };
-
-  const submitAsJson = () => {
     try {
       setValue(JSON.parse(input) as Person);
     } catch (error) {
@@ -77,13 +72,12 @@ export const Storage = () => {
       </div>
       <Input
         onChange={e => setInput(e.target.value)}
-        placeholder="Enter a value to set"
+        placeholder="Enter a JSON value to set"
         type="text"
         value={input}
       />
       <HStack>
-        <LegacyButton onClick={submit}>Set Value</LegacyButton>
-        <LegacyButton onClick={submitAsJson}>Set Value as JSON</LegacyButton>
+        <LegacyButton onClick={submit}>Set Value as JSON</LegacyButton>
       </HStack>
     </VStack>
   );

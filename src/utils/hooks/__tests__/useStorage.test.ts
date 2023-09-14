@@ -13,7 +13,6 @@ describe('useStorage', () => {
     const { result } = renderHook(() =>
       useStorage({
         defaultValue: [],
-        json: true,
         key: 'people-array',
         schema: z.array(z.string()),
         type: 'local',
@@ -51,7 +50,6 @@ describe('useStorage', () => {
     const { result } = renderHook(() =>
       useStorage({
         defaultValue: null,
-        json: true,
         key: 'people-array',
         schema: person,
         type: 'session',
@@ -121,11 +119,13 @@ describe('useStorage', () => {
   });
 
   test('Should parse a boolean without a schema', async () => {
+    const boolean = z.boolean();
+
     const { result } = renderHook(() =>
       useStorage({
         defaultValue: false,
-        json: true,
         key: 'boolean',
+        schema: boolean,
         type: 'session',
       }),
     );
@@ -149,8 +149,6 @@ describe('useStorage', () => {
       await setValue('ooga-booga' as unknown as boolean);
     });
 
-    // We have no schema, so it should just return the raw JSON parsed value
-    // Not sure why anyone would want this...
-    expect(getCurrentValue()).toBe('ooga-booga');
+    expect(getCurrentValue()).toBe(false);
   });
 });

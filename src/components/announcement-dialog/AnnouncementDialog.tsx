@@ -1,6 +1,7 @@
 import { type ReactNode, forwardRef } from 'react';
 
 import styled from 'styled-components';
+import { z } from 'zod';
 
 import {
   type BaseDialogProps,
@@ -55,6 +56,7 @@ export const AnnouncementDialog = forwardRef<
       useStorage<'seen' | '', string>({
         defaultValue: '',
         key: `announcement:${announcementId}`,
+        schema: z.enum(['seen', '']),
         type: 'local',
       });
 

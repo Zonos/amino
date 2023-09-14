@@ -50,7 +50,6 @@ export const useStorage = <
   TKey extends AminoStorageKey = AminoStorageKey,
 >({
   defaultValue,
-  json,
   key,
   schema,
   type,
@@ -58,15 +57,18 @@ export const useStorage = <
   const subscribe = useMemo(() => getStorageSubscription(type), [type]);
 
   // The snapshot function is only used to trigger re-renders, so we need simple string equality comparison
-  useSyncExternalStore(subscribe, () =>
-    type === 'local' ? localStorage.getItem(key) : sessionStorage.getItem(key),
+  useSyncExternalStore(
+    subscribe,
+    () =>
+      type === 'local'
+        ? localStorage.getItem(key)
+        : sessionStorage.getItem(key),
+    () => JSON.stringify(defaultValue),
   );
 
-  const currentValue =
-    getStorageItem<TValue>({ json, key, schema, type }) || null;
+  const currentValue = getStorageItem<TValue>({ key, schema, type }) || null;
 
-  const setValue = (value: TValue) =>
-    setStorageItem({ json, key, type, value });
+  const setValue = (value: TValue) => setStorageItem({ key, type, value });
 
   return { setValue, value: currentValue ?? defaultValue };
 };
