@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "5.1.15",
+  "version": "5.1.16",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -64,6 +64,7 @@
     "@mui/material": "^5.14.0",
     "@radix-ui/react-slider": "^1.1.2",
     "@types/topojson-client": "^3.1.1",
+    "clsx": "^2.0.0",
     "d3-geo": "^2.0.2",
     "fuse.js": "^6.6.2",
     "highlight.js": "^11.8.0",
@@ -184,6 +185,7 @@
     "@emotion/styled": "^11.x",
     "@graphiql/plugin-explorer": "^0.3",
     "@graphiql/react": "^0.19",
+    "dayjs": "*",
     "framer-motion": "^10.x",
     "graphiql": "^3.0.1",
     "graphql": "^16.x",
@@ -193,7 +195,6 @@
     "react-dom": "^17.x || ^18.x",
     "react-tooltip": "^4.x",
     "styled-components": "^5.x",
-    "swr": "2.x",
-    "dayjs": "*"
+    "swr": "2.x"
   }
 }
