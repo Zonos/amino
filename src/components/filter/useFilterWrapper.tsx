@@ -119,9 +119,19 @@ export const useFilterWrapper = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  const handleApply = () => {
+    setActive(true);
+    onApply();
+    setDropDownOpen(false);
+  };
+
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setDropDownOpen(false);
+    }
+
+    if (event.key === 'Enter') {
+      handleApply();
     }
   };
 
@@ -157,12 +167,6 @@ export const useFilterWrapper = ({
   const handleOpenDropdown = (e: ReactMouseEvent) => {
     e.stopPropagation();
     setDropDownOpen(true);
-  };
-
-  const handleApply = () => {
-    setActive(true);
-    onApply();
-    setDropDownOpen(false);
   };
 
   const handleToggle = () => {
@@ -220,6 +224,7 @@ export const useFilterWrapper = ({
   );
 
   return {
+    handleApplyFilter: handleApply,
     renderWrapper,
     setFilterText,
   };
