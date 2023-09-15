@@ -23,6 +23,16 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   }
 `;
 
+const AminoSwitchWithIcons = styled(AminoSwitch)<{ checked: boolean }>`
+  height: 28px;
+  width: 28px;
+  top: 2px;
+  left: ${p => (p.checked ? 'calc(100% - 30px)' : '2px')};
+  box-shadow:
+    0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 1px 3px 0px rgba(0, 0, 0, 0.4);
+`;
+
 const AminoSwitchWrapper = styled.div<{
   checked: boolean;
 }>`
@@ -33,12 +43,18 @@ const AminoSwitchWrapper = styled.div<{
   min-height: 16px;
   line-height: 16px;
   border-radius: 20px;
-  background: ${p => (p.checked ? theme.primary : theme.gray100)};
+  background: ${p => (p.checked ? theme.gray0 : theme.gray100)};
   box-shadow: ${theme.v3ShadowInset};
   display: block;
   user-select: none;
-  margin-right: ${theme.space16};
   position: relative;
+`;
+
+const AminoSwitchWrapperWithIcons = styled(AminoSwitchWrapper)`
+  width: 62px;
+  height: 32px;
+  min-width: 24px;
+  background: ${theme.gray50};
 `;
 
 const StyledLabel = styled(Text)`
@@ -87,26 +103,42 @@ const SwitchContainer = styled.label<{
   }
 `;
 
+const SwitchIcon = styled.div<{ left?: boolean }>`
+  position: absolute;
+  top: 6px;
+  left: ${p => (p.left ? '5.8px' : 'auto')};
+  right: ${p => (p.left ? 'auto' : '5.6px')};
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+`;
+
 export type SwitchProps = {
   checked: boolean;
   disabled?: boolean;
-  icon?: ReactNode;
   label?: string;
   labelDescription?: string;
+  labelIcon?: ReactNode;
   subtitle?: string;
+  switchIconLeft?: ReactNode;
+  switchIconRight?: ReactNode;
   onChange: (checked: boolean) => void;
 };
 
 export const Switch = ({
   checked,
   disabled,
-  icon,
   label,
   labelDescription,
+  labelIcon,
   onChange,
   subtitle,
+  switchIconLeft,
+  switchIconRight,
 }: SwitchProps) => {
   const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+  const hasIcons = Boolean(switchIconLeft || switchIconRight);
 
   return (
     <SwitchContainer
@@ -115,13 +147,20 @@ export const Switch = ({
       htmlFor={labelAsHtmlAttribute}
       onClick={() => !disabled && onChange(!checked)}
     >
-      <AminoSwitchWrapper checked={checked}>
-        <AminoSwitch checked={checked} id={labelAsHtmlAttribute} />
-      </AminoSwitchWrapper>
-
+      {hasIcons ? (
+        <AminoSwitchWrapperWithIcons checked={checked}>
+          <AminoSwitchWithIcons checked={checked} id={labelAsHtmlAttribute} />
+          <SwitchIcon left>{switchIconLeft}</SwitchIcon>
+          <SwitchIcon>{switchIconRight}</SwitchIcon>
+        </AminoSwitchWrapperWithIcons>
+      ) : (
+        <AminoSwitchWrapper checked={checked}>
+          <AminoSwitch checked={checked} id={labelAsHtmlAttribute} />
+        </AminoSwitchWrapper>
+      )}
       <div>
         <LabelWrapper>
-          {icon}
+          {labelIcon}
           <StyledLabel type="input-label">
             {label}
             {labelDescription && (

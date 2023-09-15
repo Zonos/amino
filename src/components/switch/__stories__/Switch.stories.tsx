@@ -4,10 +4,12 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { type SwitchProps, Switch } from 'src/components/switch/Switch';
 import { Default } from 'src/icons/flags/Default';
+import { LaptopIcon } from 'src/icons/LaptopIcon';
+import { MobileIcon } from 'src/icons/MobileIcon';
 
 const SwitchMeta: Meta = {
   argTypes: {
-    icon: {
+    labelIcon: {
       table: {
         disable: true,
       },
@@ -32,8 +34,8 @@ const Template: StoryFn<SwitchProps> = ({ checked, ...props }: SwitchProps) => {
 
 export const BasicSwitch = Template.bind({});
 BasicSwitch.args = {
-  icon: <Default height={12} width={16} />,
   label: 'Input label',
+  labelIcon: <Default height={12} width={16} />,
   subtitle: 'Subtitle here',
 };
 BasicSwitch.parameters = {
@@ -46,8 +48,8 @@ BasicSwitch.parameters = {
 export const DisabledBasicSwitch = Template.bind({});
 DisabledBasicSwitch.args = {
   disabled: true,
-  icon: <Default height={16} width={16} />,
   label: 'Input label',
+  labelIcon: <Default height={16} width={16} />,
   subtitle: 'Subtitle here',
 };
 DisabledBasicSwitch.parameters = {
@@ -68,14 +70,21 @@ BasicSwitchWithoutIcon.parameters = {
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
   },
 };
+
 export const BasicSwitchWithoutSubtitle = Template.bind({});
 BasicSwitchWithoutSubtitle.args = {
-  icon: <Default height={16} width={16} />,
   label: 'Input label',
+  labelIcon: <Default height={16} width={16} />,
 };
 BasicSwitchWithoutSubtitle.parameters = {
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
   },
+};
+
+export const SwitchWithIcons = Template.bind({});
+SwitchWithIcons.args = {
+  switchIconLeft: <MobileIcon />,
+  switchIconRight: <LaptopIcon />,
 };
