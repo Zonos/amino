@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import clsx from 'clsx';
 import styled from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
@@ -19,7 +20,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   top: 1px;
   left: ${p => (p.checked ? 'calc(100% - 15px)' : '1px')};
   [data-theme='night'] & {
-    background: ${theme.gray1200};
+    background: ${theme.gray200};
   }
 `;
 
@@ -116,6 +117,7 @@ const SwitchIcon = styled.div<{ left?: boolean }>`
 
 export type SwitchProps = {
   checked: boolean;
+  className?: string;
   disabled?: boolean;
   label?: string;
   labelDescription?: string;
@@ -128,6 +130,7 @@ export type SwitchProps = {
 
 export const Switch = ({
   checked,
+  className,
   disabled,
   label,
   labelDescription,
@@ -143,7 +146,7 @@ export const Switch = ({
   return (
     <SwitchContainer
       checked={checked}
-      className={disabled ? 'disabled' : ''}
+      className={clsx(className, { disabled })}
       htmlFor={labelAsHtmlAttribute}
       onClick={() => !disabled && onChange(!checked)}
     >
