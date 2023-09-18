@@ -28,8 +28,8 @@ export const FilterMultiSelect = <T extends string = string>({
     const text =
       editingSelectedValues.length > 1
         ? `${editingSelectedValues.length} selected`
-        : editingSelectedValues[0]?.label;
-    setFilterText(text || '');
+        : editingSelectedValues[0]?.label || '';
+    setFilterText(text);
     onChange(editingSelectedValues);
   };
 
