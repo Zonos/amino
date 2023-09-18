@@ -49,7 +49,7 @@ const Wrapper = styled.div<StyleProps>`
     height: 50%;
 
     path[data-is-secondary-color] {
-      fill: ${p => theme[`${p.color}300`]};
+      fill: ${p => theme[`${p.color}400`]};
     }
   }
 `;

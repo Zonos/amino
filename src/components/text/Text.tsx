@@ -34,14 +34,14 @@ export const textOptions = [
     size: '3xl',
     tag: 'h2',
     type: 'page-header', // default
-    weight: 900,
+    weight: 700,
   },
   {
     label: 'Header (2XL) · 28px (1.75rem)',
     size: '2xl',
     tag: 'h3',
     type: 'header', // default
-    weight: 700,
+    weight: 600,
   },
   {
     label: 'Description Header (2XL) · 28px (1.75rem)',
@@ -55,7 +55,7 @@ export const textOptions = [
     size: 'xl',
     tag: 'h4',
     type: 'title',
-    weight: 500,
+    weight: 600,
   },
   {
     label: 'Bold Subheader (L) • 18px (1.125rem)',

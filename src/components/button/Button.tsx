@@ -42,6 +42,31 @@ const getPadding = (size?: Size) => {
   }
 };
 
+const getRadius = (size?: Size) => {
+  switch (size) {
+    case 'sm':
+      return `${theme.radius6}`;
+    case 'lg':
+    case 'xl':
+      return `${theme.radius10}`;
+    case 'md':
+    default:
+      return `${theme.radius8}`;
+  }
+};
+
+const getFontWeight = (size?: Size) => {
+  switch (size) {
+    case 'lg':
+    case 'xl':
+      return 600;
+    case 'sm':
+    case 'md':
+    default:
+      return 500;
+  }
+};
+
 const getSpinnerSize = (size?: Size) => {
   switch (size) {
     case 'sm':
@@ -73,18 +98,18 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   outline: none;
   height: ${p => `var(--amino-size-${p.size})`};
   line-height: ${p => `var(--amino-size-${p.size})`};
-  font-size: 14px;
+  font-size: ${theme.fontSizeBase};
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 0 ${theme.space16};
-  border-radius: ${theme.radius6};
+  border-radius: ${p => getRadius(p.size)};
   transition:
     ${theme.transition},
     visibility 0;
-  font-weight: 500;
+  font-weight: ${p => getFontWeight(p.size)};
   user-select: none;
   font-family: ${theme.fontSans};
   letter-spacing: normal;
