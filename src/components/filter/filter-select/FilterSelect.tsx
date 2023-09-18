@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
   type BaseFilterProps,
+  type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import { Select } from 'src/components/select/Select';
@@ -27,30 +28,22 @@ export const FilterSelect = <
 }: FilterSelectProps<T, O>) => {
   const [editingValue, setEditingValue] = useState<O | null>(value);
 
-  const handleApply = () => {
+  const handleApply: FilterApplyCallback = setFilterText => {
     onChange(editingValue);
+    setFilterText(`is ${editingValue?.label || ''}`);
   };
 
-  const handleToggle = (active: boolean) => {
-    if (active) {
-      onChange(null);
-      setEditingValue(null);
-    } else {
-      onChange(editingValue);
-      setEditingValue(value || null);
-    }
+  const handleRemove = () => {
+    onChange(null);
+    setEditingValue(null);
   };
 
-  const { renderWrapper, setFilterText } = useFilterWrapper({
+  const { renderWrapper } = useFilterWrapper({
     ...props,
     filterExists: editingValue !== null,
     onApply: handleApply,
-    onToggle: handleToggle,
+    onRemove: handleRemove,
   });
-
-  useEffect(() => {
-    setFilterText(`is ${editingValue?.label || ''}`);
-  }, [setFilterText, editingValue?.label]);
 
   return renderWrapper(
     <Select

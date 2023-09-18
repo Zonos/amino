@@ -12,6 +12,12 @@ import { theme } from 'src/styles/constants/theme';
 
 const SlideOverMeta: Meta = {
   component: SlideOver,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/KQ4abEtUOTVtoEIm8mImZe/Dashboard?node-id=8905%3A168619',
+    },
+  },
 };
 
 export default SlideOverMeta;

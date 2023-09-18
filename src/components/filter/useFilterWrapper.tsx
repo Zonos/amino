@@ -96,10 +96,14 @@ export type BaseFilterProps = {
   label: string;
 };
 
+export type FilterApplyCallback = (
+  setFilterText: (newFilterText: string) => void,
+) => void;
+
 type UseFilterProps = {
   filterExists: boolean;
-  onApply: () => void;
-  onToggle: (active: boolean) => void;
+  onApply: FilterApplyCallback;
+  onRemove: () => void;
 };
 
 export type FilterProps = BaseFilterProps & UseFilterProps;
@@ -110,7 +114,7 @@ export const useFilterWrapper = ({
   filterExists,
   label,
   onApply,
-  onToggle,
+  onRemove,
 }: FilterProps) => {
   const [active, setActive] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -121,7 +125,7 @@ export const useFilterWrapper = ({
 
   const handleApply = () => {
     setActive(true);
-    onApply();
+    onApply(setFilterText);
     setDropDownOpen(false);
   };
 
@@ -174,7 +178,7 @@ export const useFilterWrapper = ({
       setDropDownOpen(true);
     } else {
       setActive(!active);
-      onToggle(active);
+      onRemove();
     }
   };
 

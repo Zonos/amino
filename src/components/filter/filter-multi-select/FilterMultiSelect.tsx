@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
   type BaseFilterProps,
+  type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import type { IOption } from 'src/types/IOption';
@@ -23,35 +24,27 @@ export const FilterMultiSelect = <T extends string = string>({
   const [editingSelectedValues, setEditingSelectedValues] =
     useState<IOption<T>[]>(value);
 
-  const handleApply = () => {
-    onChange(editingSelectedValues);
-  };
-
-  const handleToggle = (active: boolean) => {
-    if (active) {
-      onChange([]);
-      setEditingSelectedValues([]);
-    } else {
-      onChange(editingSelectedValues);
-      setEditingSelectedValues(value);
-    }
-  };
-
-  const { renderWrapper, setFilterText } = useFilterWrapper({
-    dropdownTitle,
-    filterExists: !!editingSelectedValues.length,
-    label,
-    onApply: handleApply,
-    onToggle: handleToggle,
-  });
-
-  useEffect(() => {
+  const handleApply: FilterApplyCallback = setFilterText => {
     const text =
       editingSelectedValues.length > 1
         ? `${editingSelectedValues.length} selected`
         : editingSelectedValues[0]?.label;
     setFilterText(text || '');
-  }, [setFilterText, editingSelectedValues]);
+    onChange(editingSelectedValues);
+  };
+
+  const handleRemove = () => {
+    onChange([]);
+    setEditingSelectedValues([]);
+  };
+
+  const { renderWrapper } = useFilterWrapper({
+    dropdownTitle,
+    filterExists: !!editingSelectedValues.length,
+    label,
+    onApply: handleApply,
+    onRemove: handleRemove,
+  });
 
   return renderWrapper(
     options.map(option => (

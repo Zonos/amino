@@ -91,7 +91,7 @@ export const CountrySelect = () => {
 
   return (
     <>
-      <pre>{JSON.stringify({ value: country?.value }, null, 2)}</pre>
+      <pre>{JSON.stringify({ value: country?.value || null }, null, 2)}</pre>
       <FilterSelect
         dropdownTitle="Filter by country"
         label="Country Select filter"
