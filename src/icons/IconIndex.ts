@@ -192,6 +192,7 @@ export { MonitorDuotoneIcon } from './MonitorDuotoneIcon';
 export { MonitorIcon } from './MonitorIcon';
 export { NightDuotoneIcon } from './NightDuotoneIcon';
 export { NightIcon } from './NightIcon';
+export { PaletteIcon } from './PaletteIcon';
 export { PauseCircleDuotoneIcon } from './PauseCircleDuotoneIcon';
 export { PauseCircleIcon } from './PauseCircleIcon';
 export { PercentBadgeDuotoneIcon } from './PercentBadgeDuotoneIcon';
