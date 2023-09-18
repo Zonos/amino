@@ -45,13 +45,6 @@ export const BasicSlideOver = Template.bind({});
 BasicSlideOver.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
-  withBackdrop: false,
-};
-BasicSlideOver.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
-  },
 };
 
 export const SlideOverWithSubtitle = Template.bind({});
@@ -59,13 +52,6 @@ SlideOverWithSubtitle.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
   subtitle: 'With a subtitle',
-  withBackdrop: false,
-};
-SlideOverWithSubtitle.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
-  },
 };
 
 export const SlideOverWithActions = Template.bind({});
@@ -78,26 +64,12 @@ SlideOverWithActions.args = {
   ),
   children: <div>Children</div>,
   label: 'Slideover title',
-  withBackdrop: false,
-};
-SlideOverWithActions.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A290',
-  },
 };
 
 export const ModalSlideOver = Template.bind({});
 ModalSlideOver.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
-  withBackdrop: true,
-};
-ModalSlideOver.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
-  },
 };
 
 export const KitchenSinkSlideOver = Template.bind({});
@@ -111,13 +83,6 @@ KitchenSinkSlideOver.args = {
   children: <div>Children</div>,
   label: 'Slideover title',
   subtitle: 'With a subtitle',
-  withBackdrop: true,
-};
-KitchenSinkSlideOver.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
-  },
 };
 
 const HoverDiv = styled.div`
@@ -141,11 +106,4 @@ WithHover.args = {
   children: <HoverDiv>Hover me</HoverDiv>,
   label: 'Slideover title',
   subtitle: 'With a subtitle',
-  withBackdrop: true,
-};
-WithHover.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/Amino-Stickers?node-id=510%3A270',
-  },
 };
