@@ -25,7 +25,7 @@ const StyledActiveIcon = styled.div`
   background: ${theme.blue600};
   content: ' ';
   border-radius: 50px;
-  padding: 5px;
+  padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,8 +87,8 @@ const StyledRadioGroup = styled(VStack)`
   }
   svg {
     color: ${theme.gray0};
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
   }
 `;
 const StyledTooltip = styled(ReactTooltip)`
