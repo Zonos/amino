@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { type InputProps, Input } from 'src/components/input/Input';
+import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { BagIcon } from 'src/icons/BagIcon';
@@ -89,6 +90,30 @@ NumberInput.args = {
   label: 'Example input',
   type: 'number',
   value: '123',
+};
+
+export const OnSameLine: StoryFn<InputProps> = ({ size }) => {
+  const [value, setValue] = useState('');
+  const [number, setNumber] = useState(0);
+
+  return (
+    <HStack>
+      <Input
+        label="Text"
+        onChange={e => setValue(e.target.value)}
+        size={size}
+        type="text"
+        value={value}
+      />
+      <Input
+        label="Number"
+        onChange={e => setNumber(e.target.valueAsNumber)}
+        size={size}
+        type="number"
+        value={number.toString()}
+      />
+    </HStack>
+  );
 };
 
 export const DateInput = Template.bind({});
