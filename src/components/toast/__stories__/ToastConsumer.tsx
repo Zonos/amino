@@ -6,7 +6,6 @@ import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
-import { Text } from 'src/components/text/Text';
 import type { Direction } from 'src/components/toast/Toast';
 import { ToastContext } from 'src/components/toast/ToastContext';
 import { theme } from 'src/styles/constants/theme';
@@ -134,7 +133,6 @@ export const ToastConsumer = () => {
             Display Custom
           </LegacyButton>
         </CustomWrapper>
-        <Text type="label">Duration</Text>
         <Input
           label="Duration"
           onChange={e => setDuration(+e.target.value)}
