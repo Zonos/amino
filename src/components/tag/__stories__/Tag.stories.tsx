@@ -8,6 +8,12 @@ import { CubeIcon } from 'src/icons/CubeIcon';
 
 const TagMeta: Meta = {
   component: Tag,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2628%3A59491&mode=dev',
+    },
+  },
 };
 
 export default TagMeta;
@@ -75,23 +81,11 @@ export const Default = Template.bind({});
 Default.args = {
   children: <span>HS code for Brazil</span>,
 };
-Default.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
-};
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: <span>HS code for Brazil</span>,
   icon: <CubeIcon size={16} />,
-};
-WithIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
 };
 
 export const Country = Template.bind({});
@@ -138,10 +132,4 @@ Country.args = {
     </svg>
   ),
   onClose: () => {},
-};
-Country.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A28',
-  },
 };
