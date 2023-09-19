@@ -1,29 +1,29 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
+import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
-export const PaletteDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
-  ({ className, color, size }, ref) => (
-    <IconBase
-      ref={ref}
-      className={className}
-      color={color}
-      size={size}
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M6.75 4C5.23122 4 4 5.23122 4 6.75V17.25C4 18.7688 5.23122 20 6.75 20H11.25C12.7688 20 14 18.7688 14 17.25V6.75C14 5.23122 12.7688 4 11.25 4H6.75Z"
-        fill="#C5C6CA"
-      />
-      <path
-        d="M13.377 5.00658C13.7083 5.41036 13.927 5.91019 13.9848 6.45797C14.0292 6.4565 14.0747 6.45582 14.1209 6.45613C14.592 6.45928 14.9261 6.56323 15.0816 6.72846L18.1615 10.0022C18.6209 10.4905 18.6133 11.2544 18.1442 11.7334L15.2141 14.7252C14.9243 15.0211 14.9293 15.496 15.2252 15.7858C15.5211 16.0756 15.996 16.0707 16.2858 15.7747L19.2158 12.7829C20.2479 11.7291 20.2647 10.0487 19.254 8.97439L16.1741 5.70063C15.5746 5.06343 14.6899 4.9599 14.1309 4.95616C13.8356 4.95419 13.5704 4.98004 13.377 5.00658Z"
-        fill="#4D505A"
-      />
-      <path
-        d="M9 16.25C9.69036 16.25 10.25 15.6904 10.25 15C10.25 14.3096 9.69036 13.75 9 13.75C8.30964 13.75 7.75 14.3096 7.75 15C7.75 15.6904 8.30964 16.25 9 16.25Z"
-        fill="#4D505A"
-      />
-    </IconBase>
-  ),
-);
+export const PaletteDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: Color }
+>(({ className, color, secondaryColor, size }, ref) => (
+  <IconBase
+    ref={ref}
+    className={className}
+    color={color || 'gray800'}
+    size={size}
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M6.75 4A2.75 2.75 0 0 0 4 6.75v10.5A2.75 2.75 0 0 0 6.75 20h4.5A2.75 2.75 0 0 0 14 17.25V6.75A2.75 2.75 0 0 0 11.25 4h-4.5Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+    />
+    <path
+      d="M13.377 5.007c.331.403.55.903.608 1.451.044-.002.09-.002.136-.002.471.003.805.107.96.272l3.08 3.274a1.25 1.25 0 0 1-.017 1.731l-2.93 2.992a.75.75 0 0 0 1.072 1.05l2.93-2.992a2.75 2.75 0 0 0 .038-3.809l-3.08-3.273c-.6-.638-1.484-.741-2.043-.745a5.353 5.353 0 0 0-.754.05ZM9 16.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"
+      fill="currentColor"
+    />
+  </IconBase>
+));
