@@ -613,6 +613,8 @@ import './icons/MonitorDuotoneIcon';
 import './icons/MonitorIcon';
 import './icons/NightDuotoneIcon';
 import './icons/NightIcon';
+import './icons/PaletteDuotoneIcon';
+import './icons/PaletteIcon';
 import './icons/PauseCircleDuotoneIcon';
 import './icons/PauseCircleIcon';
 import './icons/PercentBadgeDuotoneIcon';
