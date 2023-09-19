@@ -77,6 +77,7 @@ export const NumberInput = ({
         {...props}
         ref={inputRef}
         aria-label={label}
+        label={label}
         size={size}
         suffix={
           suffix === null

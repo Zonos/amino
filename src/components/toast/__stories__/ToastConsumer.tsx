@@ -136,7 +136,6 @@ export const ToastConsumer = () => {
         </CustomWrapper>
         <Text type="label">Duration</Text>
         <Input
-          // TODO: number input labels don't show up
           label="Duration"
           onChange={e => setDuration(+e.target.value)}
           type="number"
