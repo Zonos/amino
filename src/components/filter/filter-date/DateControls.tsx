@@ -10,6 +10,7 @@ import {
   type FilterDateData,
   type FilterDateRangeType,
   filterDateRanges,
+  initialFilterDateState,
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
@@ -119,7 +120,7 @@ export const DateControl = ({
       <Select
         isClearable={false}
         onChange={item => {
-          setRangeType(item?.value || 'is in the last');
+          setRangeType(item?.value || initialFilterDateState.dateRangeType);
         }}
         options={optionsDate}
         size="sm"

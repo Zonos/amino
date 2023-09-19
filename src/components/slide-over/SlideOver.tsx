@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
 import {
   type BaseDialogProps,
   BaseDialog,
@@ -18,18 +19,33 @@ const StyledBaseDialog = styled(BaseDialog)`
   max-height: none;
   overflow: unset;
   border: none;
+  background: transparent;
+  box-shadow: none;
 
   position: absolute;
   height: 100vh;
   right: 0;
   top: 0;
-  border-left: ${theme.border};
+`;
+
+const Wrapper = styled.div`
+  height: 100%;
+  margin: ${theme.space8};
+  border-radius: ${theme.space12};
+  background: ${theme.surfaceColor};
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: ${theme.v3ShadowXxl};
 `;
 
 const SlideOverHeader = styled.header`
-  padding: ${theme.space24};
+  padding: ${theme.space16};
   border-bottom: ${theme.border};
+
   display: flex;
+  gap: ${theme.space16};
   align-items: center;
 
   .header-content {
@@ -38,47 +54,21 @@ const SlideOverHeader = styled.header`
   }
 `;
 
-const Close = styled.div`
-  transition: all 100ms ease-in-out;
-  background: transparent;
-  border-radius: 32px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0.8;
-
-  &:hover {
-    background: ${theme.gray200};
-    opacity: 1;
-  }
-
-  svg {
-    width: 14px;
-    height: 14px;
-    fill: ${theme.textColor};
-    transition: all 100ms ease-in-out;
-  }
-`;
-
 const SlideOverContent = styled.div`
   padding: ${theme.space24};
   overflow-y: auto;
   overscroll-behavior: contain;
+  flex: 1;
 `;
 
 const Footer = styled.div`
   padding: ${theme.space24};
+  border-radius: ${theme.space12};
   border-top: ${theme.border};
   display: flex;
   align-items: center;
   justify-content: flex-end;
   background: ${theme.surfaceColorSecondary};
-  position: fixed;
-  bottom: 0;
-  width: 300px;
 
   & > div + div {
     margin-left: ${theme.space8};
@@ -110,26 +100,26 @@ export const SlideOver = ({
     width={300}
     {...props}
   >
-    <SlideOverHeader>
-      {subtitle ? (
-        <VStack className="header-content" spacing={0}>
-          <Text type="title">{label}</Text>
-          {subtitle}
-        </VStack>
-      ) : (
-        <Text className="header-content" type="title">
-          {label}
-        </Text>
+    <Wrapper>
+      <SlideOverHeader>
+        <Button icon={<RemoveIcon />} onClick={onClose} />
+        {subtitle ? (
+          <VStack className="header-content" spacing={0}>
+            <Text type="subheader">{label}</Text>
+            {subtitle}
+          </VStack>
+        ) : (
+          <Text className="header-content" type="subheader">
+            {label}
+          </Text>
+        )}
+      </SlideOverHeader>
+      <SlideOverContent>{children}</SlideOverContent>
+      {actions && (
+        <Footer>
+          <HStack spacing={8}>{actions}</HStack>
+        </Footer>
       )}
-      <Close onClick={onClose}>
-        <RemoveIcon />
-      </Close>
-    </SlideOverHeader>
-    <SlideOverContent>{children}</SlideOverContent>
-    {actions && (
-      <Footer>
-        <HStack spacing={8}>{actions}</HStack>
-      </Footer>
-    )}
+    </Wrapper>
   </StyledBaseDialog>
 );

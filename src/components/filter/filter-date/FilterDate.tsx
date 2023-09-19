@@ -27,8 +27,9 @@ export const FilterDate = ({
   const [editingValue, setEditingValue] = useState<FilterDateData>(
     filter.dateData,
   );
-  const [rangeType, setRangeType] =
-    useState<FilterDateRangeType>('is in the last');
+  const [rangeType, setRangeType] = useState<FilterDateRangeType>(
+    filter.dateRangeType,
+  );
 
   const dispatchDateValues = (value: FilterDateData) => {
     dispatch({
@@ -60,16 +61,27 @@ export const FilterDate = ({
 
   const handleApply = () => {
     dispatchDateValues(editingValue);
+    dispatch({
+      name: 'isActive',
+      type: 'change',
+      value: true,
+    });
   };
 
-  const handleToggle = (active: boolean) => {
-    if (active) {
-      dispatchDateValues(initialFilterDateState.dateData);
-      setEditingValue(initialFilterDateState.dateData);
-    } else {
-      dispatchDateValues(editingValue);
-      setEditingValue(filter.dateData);
-    }
+  const handleRemove = () => {
+    dispatch({
+      name: 'isActive',
+      type: 'change',
+      value: false,
+    });
+    dispatch({
+      name: 'dateRangeType',
+      type: 'change',
+      value: rangeType,
+    });
+    dispatchDateValues(initialFilterDateState.dateData);
+    setEditingValue(initialFilterDateState.dateData);
+    setRangeType(initialFilterDateState.dateRangeType);
   };
 
   const { renderWrapper, setFilterText } = useFilterWrapper({
@@ -77,7 +89,7 @@ export const FilterDate = ({
     filterExists: !!filter.dateData.dateBegin || !!filter.dateData.dateEnd,
     label,
     onApply: handleApply,
-    onToggle: handleToggle,
+    onRemove: handleRemove,
   });
 
   useEffect(() => {

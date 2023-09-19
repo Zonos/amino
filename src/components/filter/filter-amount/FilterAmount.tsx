@@ -1,14 +1,16 @@
-import { type Dispatch, useEffect, useState } from 'react';
+import { type Dispatch, useState } from 'react';
 
 import styled from 'styled-components';
 
 import {
   type FilterAmountAction,
   type FilterAmountState,
-  filterAmonutOptions,
+  filterAmountOptions,
+  initialFilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
 import {
   type BaseFilterProps,
+  type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import { Input } from 'src/components/input/Input';
@@ -39,14 +41,17 @@ export const FilterAmount = ({
   filter,
   label,
 }: FilterAmountProps) => {
-  const [editFilterBy, setEditFilterBy] = useState<FilterAmountType | null>(
+  const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
   );
-  const [editingAmount1, setEditingAmount1] = useState<number | null>(null);
-  const [editingAmount2, setEditingAmount2] = useState<number | null>(null);
-  const [newFilterText, setNewFilterText] = useState('');
+  const [editingAmount1, setEditingAmount1] = useState<number | null>(
+    filter.amountTotalMin,
+  );
+  const [editingAmount2, setEditingAmount2] = useState<number | null>(
+    filter.amountTotalMax,
+  );
 
-  const dispatchAmountFilterType = (value: FilterAmountType | null) => {
+  const dispatchAmountFilterType = (value: FilterAmountType) => {
     dispatch({
       name: 'amountFilterType',
       type: 'change',
@@ -70,66 +75,70 @@ export const FilterAmount = ({
     });
   };
 
-  const handleApply = () => {
-    dispatchAmountFilterType(editFilterBy);
+  const handleApply: FilterApplyCallback = setFilterText => {
+    dispatchAmountFilterType(filterType);
     const amount1String = `${editingAmount1?.toFixed(2) || 0}` || '';
     const amount2String = `${editingAmount2?.toFixed(2) || 0}` || '';
 
-    switch (editFilterBy) {
+    switch (filterType) {
       case 'between':
         dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount2 });
-        setNewFilterText(`Between ${amount1String} and ${amount2String}`);
+        setFilterText(`Between ${amount1String} and ${amount2String}`);
         break;
       case 'equal':
         dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount1 });
-        setNewFilterText(`Equal to ${amount1String}`);
+        setFilterText(`Equal to ${amount1String}`);
         break;
       case 'greater':
         dispatchAmounts({ amount1: editingAmount1, amount2: null });
-        setNewFilterText(`Greater than ${amount1String}`);
+        setFilterText(`Greater than ${amount1String}`);
         break;
       case 'less':
         dispatchAmounts({ amount1: null, amount2: editingAmount1 });
-        setNewFilterText(`Less than ${amount1String}`);
+        setFilterText(`Less than ${amount1String}`);
         break;
       default:
         break;
     }
+
+    dispatch({
+      name: 'isActive',
+      type: 'change',
+      value: true,
+    });
   };
 
-  const handleToggle = (active: boolean) => {
-    if (active) {
-      dispatchAmountFilterType(null);
-      dispatchAmounts({ amount1: null, amount2: null });
-      setEditFilterBy(null);
-      setEditingAmount1(null);
-      setEditingAmount2(null);
-    } else {
-      dispatchAmountFilterType(editFilterBy);
-      dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount2 });
-    }
+  const handleRemove = () => {
+    dispatch({
+      name: 'isActive',
+      type: 'change',
+      value: false,
+    });
+    dispatchAmountFilterType(initialFilterAmountState.amountFilterType);
+    dispatchAmounts({ amount1: null, amount2: null });
+    setFilterType(initialFilterAmountState.amountFilterType);
+    setEditingAmount1(0);
+    setEditingAmount2(0);
   };
 
-  const { renderWrapper, setFilterText } = useFilterWrapper({
+  const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: !!filter.amountTotalMin || !!filter.amountTotalMax,
+    filterExists: filter.isActive,
     label,
     onApply: handleApply,
-    onToggle: handleToggle,
+    onRemove: handleRemove,
   });
-
-  useEffect(() => {
-    setFilterText(newFilterText);
-  }, [setFilterText, newFilterText]);
 
   return renderWrapper(
     <>
       <Select
         isClearable={false}
-        onChange={opt => setEditFilterBy(opt?.value || null)}
-        options={filterAmonutOptions}
+        onChange={opt =>
+          setFilterType(opt?.value || initialFilterAmountState.amountFilterType)
+        }
+        options={filterAmountOptions}
         size="md"
-        value={filterAmonutOptions.filter(item => item.value === editFilterBy)}
+        value={filterAmountOptions.filter(item => item.value === filterType)}
       />
 
       <InputWrapper>
@@ -139,7 +148,7 @@ export const FilterAmount = ({
           type="number"
           value={editingAmount1 === null ? '' : String(editingAmount1)}
         />
-        {editFilterBy === 'between' && (
+        {filterType === 'between' && (
           <>
             and
             <Input
