@@ -247,6 +247,9 @@ type FloatLabelInputType = {
   readOnly?: boolean;
   /** Determines if the input is required for form validation */
   required?: boolean;
+  /**
+   * @default 'xl'
+   */
   size?: Size;
   /** A short string displayed at the end of the input. Set to `null` to disable */
   suffix?: ReactNode;
