@@ -44,7 +44,7 @@ const AminoSwitchWrapper = styled.div<{
   min-height: 16px;
   line-height: 16px;
   border-radius: 20px;
-  background: ${p => (p.checked ? theme.gray0 : theme.gray100)};
+  background: ${p => (p.checked ? theme.primary : theme.gray100)};
   box-shadow: ${theme.v3ShadowInset};
   display: block;
   user-select: none;

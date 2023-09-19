@@ -29,6 +29,7 @@ export type FilterDateData = {
 export type FilterDateState = {
   dateData: FilterDateData;
   dateRangeType: FilterDateRangeType;
+  isActive: boolean;
 };
 
 export const initialFilterDateState: FilterDateState = {
@@ -39,6 +40,7 @@ export const initialFilterDateState: FilterDateState = {
     lastUnit: 'days',
   },
   dateRangeType: 'is in the last',
+  isActive: false,
 };
 
 export type FilterDateAction =

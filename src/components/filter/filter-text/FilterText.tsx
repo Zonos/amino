@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
   type BaseFilterProps,
+  type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import { Input } from 'src/components/input/Input';
@@ -19,31 +20,23 @@ export const FilterText = ({
 }: FilterTextProps) => {
   const [editingValue, setEditingValue] = useState<string>(value || '');
 
-  const handleToggle = (active: boolean) => {
-    if (active) {
-      onChange(null);
-      setEditingValue('');
-    } else {
-      onChange(editingValue);
-      setEditingValue(value || '');
-    }
-  };
-
-  const handleApply = () => {
+  const handleApply: FilterApplyCallback = setFilterText => {
     onChange(editingValue);
+    setFilterText(editingValue);
   };
 
-  const { renderWrapper, setFilterText } = useFilterWrapper({
+  const handleRemove = () => {
+    onChange(null);
+    setEditingValue('');
+  };
+
+  const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!value,
     label,
     onApply: handleApply,
-    onToggle: handleToggle,
+    onRemove: handleRemove,
   });
-
-  useEffect(() => {
-    setFilterText(editingValue);
-  }, [setFilterText, editingValue]);
 
   return renderWrapper(
     <Input
