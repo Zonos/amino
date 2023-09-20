@@ -1,3 +1,5 @@
+import { type KeyboardEvent, useState } from 'react';
+
 import styled from 'styled-components';
 
 import { IsAfter } from 'src/components/filter/filter-date/_DateControls/_IsAfter';
@@ -46,6 +48,8 @@ export const DateControl = ({
   setRangeType,
   value,
 }: DateControlProps) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const renderRangeControl = () => {
     switch (rangeType) {
       case 'is in the last':
@@ -115,6 +119,14 @@ export const DateControl = ({
     }
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      if (menuOpen) {
+        event.stopPropagation();
+      }
+    }
+  };
+
   return (
     <>
       <Select
@@ -122,6 +134,9 @@ export const DateControl = ({
         onChange={item => {
           setRangeType(item?.value || initialFilterDateState.dateRangeType);
         }}
+        onKeyDown={handleKeyDown}
+        onMenuClose={() => setMenuOpen(false)}
+        onMenuOpen={() => setMenuOpen(true)}
         options={optionsDate}
         size="sm"
         value={optionsDate.filter(item => item.value === rangeType)}
