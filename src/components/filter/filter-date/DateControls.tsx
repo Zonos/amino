@@ -3,6 +3,7 @@ import { type KeyboardEvent, useState } from 'react';
 import styled from 'styled-components';
 
 import { IsAfter } from 'src/components/filter/filter-date/_DateControls/_IsAfter';
+import { IsBefore } from 'src/components/filter/filter-date/_DateControls/_IsBefore';
 import { IsBeforeOrOn } from 'src/components/filter/filter-date/_DateControls/_IsBeforeOrOn';
 import { IsBetween } from 'src/components/filter/filter-date/_DateControls/_IsBetween';
 import { IsEqualTo } from 'src/components/filter/filter-date/_DateControls/_IsEqualTo';
@@ -78,7 +79,7 @@ export const DateControl = ({
         );
       case 'is before':
         return (
-          <IsBeforeOrOn
+          <IsBefore
             onChange={onChange}
             onChangeFilterText={onChangeFilterText}
             value={value}

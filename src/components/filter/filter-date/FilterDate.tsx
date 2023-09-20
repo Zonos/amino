@@ -1,4 +1,4 @@
-import { type Dispatch, useEffect, useState } from 'react';
+import { type Dispatch, useState } from 'react';
 
 import { DateControl } from 'src/components/filter/filter-date/DateControls';
 import {
@@ -91,10 +91,6 @@ export const FilterDate = ({
     onApply: handleApply,
     onRemove: handleRemove,
   });
-
-  useEffect(() => {
-    setEditingValue(editingValue);
-  }, [editingValue, rangeType]);
 
   return renderWrapper(
     <DateControl
