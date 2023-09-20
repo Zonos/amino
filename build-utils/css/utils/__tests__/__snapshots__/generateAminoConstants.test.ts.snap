@@ -3,7 +3,7 @@
 exports[`Case light theme 1`] = `
 "/* eslint-disable deprecation/deprecation */
 export const theme = {
-  /** @info all 0.2s ease-in-out 0s */
+  /** @info all 0.2s ease-in-out 0s, visibility 0 */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   transition: 'var(--amino-transition)',
   /** @info 16px */

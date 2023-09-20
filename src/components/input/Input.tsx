@@ -85,7 +85,7 @@ export const Input = <T extends string>({
   prefix,
   readOnly,
   required,
-  size,
+  size = 'xl',
   suffix,
   tabIndex,
   type,

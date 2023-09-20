@@ -6,6 +6,12 @@ import { type RadioProps, Radio } from 'src/components/radio/Radio';
 
 const RadioMeta: Meta = {
   component: Radio,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=5869%3A108561&mode=dev',
+    },
+  },
 };
 
 export default RadioMeta;
@@ -29,10 +35,4 @@ const Template: StoryFn<RadioProps> = ({
 export const BasicRadio = Template.bind({});
 BasicRadio.args = {
   label: 'Example radio',
-};
-BasicRadio.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A122',
-  },
 };

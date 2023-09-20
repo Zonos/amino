@@ -21,6 +21,21 @@ const shortContent = `lorem ipsum dolor sit amet consectetur adipisicing elit. R
 
 export default TextAreaMeta;
 
+export const Basic: StoryFn<TextareaProps> = props => {
+  const [value, setValue] = useState('');
+
+  return (
+    <Textarea
+      {...props}
+      onChange={e => setValue(e.target.value)}
+      value={value}
+    />
+  );
+};
+Basic.args = {
+  placeholder: 'Type something',
+};
+
 const Template: StoryFn<TextareaProps> = ({
   error,
   helpText,
