@@ -26,7 +26,7 @@ export const IsBeforeOrOn = ({
     (val: string) => {
       onChange({
         dateBegin: null,
-        dateEnd: dayjs(val).add(1, 'days').format(defaultDateFormat),
+        dateEnd: dayjs(val).endOf('day').format(defaultDateFormat),
         lastCount: 5,
         lastUnit: 'days',
       });

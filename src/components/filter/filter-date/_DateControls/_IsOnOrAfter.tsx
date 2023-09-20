@@ -25,7 +25,7 @@ export const IsOnOrAfter = ({
   const handleChange = useCallback(
     (val: string) => {
       onChange({
-        dateBegin: dayjs(val).subtract(1, 'days').format(defaultDateFormat),
+        dateBegin: dayjs(val).startOf('day').format(defaultDateFormat),
         dateEnd: null,
         lastCount: 5,
         lastUnit: 'days',
