@@ -25,7 +25,7 @@ export const IsOnOrAfter = ({
   const handleChange = useCallback(
     (val: string) => {
       onChange({
-        dateBegin: dayjs(val).startOf('day').format(defaultDateFormat),
+        dateBegin: dayjs(val).subtract(1, 'days').format(defaultDateFormat),
         dateEnd: null,
         lastCount: 5,
         lastUnit: 'days',
@@ -40,8 +40,8 @@ export const IsOnOrAfter = ({
   }, [displayDate, onChangeFilterText]);
 
   useEffect(() => {
-    handleChange(date);
-  }, [date, handleChange]);
+    handleChange(displayDate);
+  }, [displayDate, handleChange]);
 
   return (
     <DateControlsWrapper>

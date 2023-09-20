@@ -26,7 +26,7 @@ export const IsBeforeOrOn = ({
     (val: string) => {
       onChange({
         dateBegin: null,
-        dateEnd: dayjs(val).endOf('day').format(defaultDateFormat),
+        dateEnd: dayjs(val).add(1, 'days').format(defaultDateFormat),
         lastCount: 5,
         lastUnit: 'days',
       });
@@ -40,8 +40,8 @@ export const IsBeforeOrOn = ({
   }, [displayDate, onChangeFilterText]);
 
   useEffect(() => {
-    handleChange(date);
-  }, [date, handleChange]);
+    handleChange(displayDate);
+  }, [displayDate, handleChange]);
 
   return (
     <DateControlsWrapper>
