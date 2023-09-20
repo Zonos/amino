@@ -13,7 +13,7 @@ const RadioMeta: Meta = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A122',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=74%3A848&mode=dev',
     },
   },
 };

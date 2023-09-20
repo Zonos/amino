@@ -19,6 +19,6 @@ export const Alert = Template.bind({});
 Alert.parameters = {
   design: {
     type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=279%3A34',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=355%3A6877&mode=dev',
   },
 };

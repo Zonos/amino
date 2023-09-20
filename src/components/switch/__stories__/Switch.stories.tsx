@@ -16,6 +16,12 @@ const SwitchMeta: Meta = {
     },
   },
   component: Switch,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=74%3A901&mode=dev',
+    },
+  },
 };
 
 export default SwitchMeta;
@@ -38,12 +44,6 @@ BasicSwitch.args = {
   labelIcon: <Default height={12} width={16} />,
   subtitle: 'Subtitle here',
 };
-BasicSwitch.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
-};
 
 export const DisabledBasicSwitch = Template.bind({});
 DisabledBasicSwitch.args = {
@@ -52,35 +52,17 @@ DisabledBasicSwitch.args = {
   labelIcon: <Default height={16} width={16} />,
   subtitle: 'Subtitle here',
 };
-DisabledBasicSwitch.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
-};
 
 export const BasicSwitchWithoutIcon = Template.bind({});
 BasicSwitchWithoutIcon.args = {
   label: 'Input label',
   subtitle: 'Subtitle here',
 };
-BasicSwitchWithoutIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
-};
 
 export const BasicSwitchWithoutSubtitle = Template.bind({});
 BasicSwitchWithoutSubtitle.args = {
   label: 'Input label',
   labelIcon: <Default height={16} width={16} />,
-};
-BasicSwitchWithoutSubtitle.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A49',
-  },
 };
 
 export const SwitchWithIcons = Template.bind({});

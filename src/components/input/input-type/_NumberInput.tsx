@@ -9,15 +9,18 @@ import {
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { Size } from 'src/types/Size';
 
 const StyledWrapper = styled.div`
   position: relative;
   width: 100%;
 `;
-const StyledActionWrapper = styled.div`
+const StyledActionWrapper = styled.div<{ $size: Size }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
 `;
 const StyledButtonAction = styled.button`
   padding: ${theme.radius4};
@@ -46,48 +49,41 @@ const AminoInput = styled(FloatLabelInput)`
   }
 `;
 
+const getIconSize = (size: Size) => {
+  switch (size) {
+    case 'sm':
+      return 10;
+    case 'md':
+      return 12;
+    case 'lg':
+      return 14;
+    case 'xl':
+    default:
+      return 16;
+  }
+};
+
 export const NumberInput = ({
-  autoFocus,
   className,
-  disabled,
-  error,
-  inputMode,
   label,
-  onChange,
-  onKeyDown,
-  pattern,
-  placeholder,
-  prefix,
-  readOnly,
-  required,
+  size = 'xl',
   suffix,
-  tabIndex,
-  value,
   ...props
 }: FloatLabelInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <StyledWrapper className={className}>
       <AminoInput
+        {...props}
         ref={inputRef}
         aria-label={label}
-        autoFocus={autoFocus}
-        disabled={disabled}
-        error={error}
-        inputMode={inputMode}
         label={label}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        pattern={pattern}
-        placeholder={placeholder}
-        prefix={prefix}
-        readOnly={readOnly}
-        required={required}
+        size={size}
         suffix={
           suffix === null
             ? null
             : suffix || (
-                <StyledActionWrapper>
+                <StyledActionWrapper $size={size}>
                   <StyledButtonAction
                     onClick={() => {
                       inputRef.current?.stepUp();
@@ -97,7 +93,7 @@ export const NumberInput = ({
                     }}
                     type="button"
                   >
-                    <ChevronUpIcon size={16} />
+                    <ChevronUpIcon size={getIconSize(size)} />
                   </StyledButtonAction>
                   <StyledButtonAction
                     onClick={() => {
@@ -108,15 +104,12 @@ export const NumberInput = ({
                     }}
                     type="button"
                   >
-                    <ChevronDownIcon size={16} />
+                    <ChevronDownIcon size={getIconSize(size)} />
                   </StyledButtonAction>
                 </StyledActionWrapper>
               )
         }
-        tabIndex={tabIndex}
         type="number"
-        value={value}
-        {...props}
       />
     </StyledWrapper>
   );

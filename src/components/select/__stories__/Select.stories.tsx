@@ -18,6 +18,12 @@ const StyledWrapper = styled.div`
 
 const SelectMeta: Meta = {
   component: Select,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=1723%3A27908&mode=dev',
+    },
+  },
 };
 
 export default SelectMeta;
@@ -66,7 +72,6 @@ const currencyOptions = [
 ];
 
 export const BasicSelect = SelectTemplate.bind({});
-
 BasicSelect.args = {
   label: 'Currencies',
   options: currencyOptions,
@@ -76,15 +81,7 @@ BasicSelect.args = {
   },
 };
 
-BasicSelect.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
-
 export const BasicSelectWithIcon = SelectTemplate.bind({});
-
 BasicSelectWithIcon.args = {
   error: true,
   helpText: 'This input is required',
@@ -97,15 +94,7 @@ BasicSelectWithIcon.args = {
   },
 };
 
-BasicSelectWithIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
-
 export const BasicSelectWithOptionIcon = SelectTemplate.bind({});
-
 BasicSelectWithOptionIcon.args = {
   icon: <FlagIcon code="AE" iconScale="medium" />,
   label: 'Currencies',
@@ -132,15 +121,7 @@ BasicSelectWithOptionIcon.args = {
   },
 };
 
-BasicSelectWithOptionIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
-
 export const SelectWithDeveloperException = SelectTemplate.bind({});
-
 SelectWithDeveloperException.args = {
   icon: <FileIcon size={20} />,
   label: 'Currencies',
@@ -163,13 +144,6 @@ SelectWithDeveloperException.args = {
       value: 'USD',
     },
   ],
-};
-
-SelectWithDeveloperException.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
 };
 
 export const Customized = SelectTemplate.bind({});
