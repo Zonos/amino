@@ -21,6 +21,6 @@ export const Toast = Template.bind({});
 Toast.parameters = {
   design: {
     type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A162',
+    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2481%3A43468&mode=dev',
   },
 };

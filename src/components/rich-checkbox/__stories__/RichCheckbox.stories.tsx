@@ -10,6 +10,12 @@ import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 
 const RichCheckboxMeta: Meta = {
   component: RichCheckbox,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=5869%3A108561&mode=dev',
+    },
+  },
 };
 
 export default RichCheckboxMeta;
@@ -57,12 +63,6 @@ BasicRichCheckbox.args = {
     },
   ],
 };
-BasicRichCheckbox.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
-  },
-};
 
 export const DefaultRichCheckbox = Template.bind({});
 DefaultRichCheckbox.args = {
@@ -89,10 +89,4 @@ DefaultRichCheckbox.args = {
       value: 'item3',
     },
   ],
-};
-DefaultRichCheckbox.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=245%3A181',
-  },
 };
