@@ -4,7 +4,7 @@ exports[`Case light theme: 1`] = `
 ":root,
 [data-theme='day'] {
   color-scheme: light;
-  --amino-transition: all 0.2s ease-in-out 0s, visibility 0;
+  --amino-transition: all 0.2s ease-in-out 0s, visibility 0s;
   --amino-type-scale-base: 16px;
   --amino-glass-0: #10111600;
   --amino-glass-50: #1011160a;
