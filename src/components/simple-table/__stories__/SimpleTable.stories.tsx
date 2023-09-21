@@ -147,9 +147,9 @@ export const Selectable = () => {
       selectable={{
         enabled: true,
         headerCheckboxValue: checkboxAllValue,
+        isRowChecked: (_, index) => selectedRowIndexes.includes(index),
         onHeaderCheckboxChange: handleCheckboxAllChange,
         onRowCheckboxChange: handleCheckboxRowChange,
-        selectedRowIndexes,
       }}
     />
   );

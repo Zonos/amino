@@ -120,7 +120,7 @@ export type SimpleTableProps<T extends object> = {
   selectable?: {
     enabled: boolean;
     headerCheckboxValue?: boolean;
-    selectedRowIndexes?: number[];
+    isRowChecked?: (item: T, index: number) => boolean;
     onHeaderCheckboxChange?: (checked: boolean) => void;
     onRowCheckboxChange?: (checked: boolean, index: number) => void;
   };
@@ -208,7 +208,7 @@ export const SimpleTable = <T extends object>({
         {selectable.enabled && (
           <RowColumn $noPadding={false} $textAlign="center">
             <Checkbox
-              checked={selectable.selectedRowIndexes?.includes(index) || false}
+              checked={selectable.isRowChecked?.(item, index) || false}
               onChange={checked =>
                 selectable.onRowCheckboxChange?.(checked, index)
               }
