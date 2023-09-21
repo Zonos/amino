@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import styled from 'styled-components';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
@@ -110,6 +112,7 @@ export type SimpleTableProps<T extends object> = {
    */
   noHoverBackground?: boolean;
 
+  renderFooter?: ReactNode;
   /**
    * @default false
    * Show checkbox on each row, and checkbox for toggling all in header
@@ -150,6 +153,7 @@ export const SimpleTable = <T extends object>({
   noHoverBackground = false,
   onRowClick,
   onRowHover,
+  renderFooter,
   selectable = {
     enabled: false,
   },
@@ -248,6 +252,7 @@ export const SimpleTable = <T extends object>({
         </HeaderRow>
       </Header>
       <tbody>{renderRows()}</tbody>
+      {renderFooter}
     </Table>
   );
 };

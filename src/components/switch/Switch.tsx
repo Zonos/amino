@@ -20,7 +20,7 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   top: 1px;
   left: ${p => (p.checked ? 'calc(100% - 15px)' : '1px')};
   [data-theme='night'] & {
-    background: ${theme.gray200};
+    background: ${theme.gray1200};
   }
 `;
 
@@ -32,6 +32,9 @@ const AminoSwitchWithIcons = styled(AminoSwitch)<{ checked: boolean }>`
   box-shadow:
     0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
     0px 1px 3px 0px rgba(0, 0, 0, 0.4);
+  [data-theme='night'] & {
+    background: ${theme.gray200};
+  }
 `;
 
 const AminoSwitchWrapper = styled.div<{

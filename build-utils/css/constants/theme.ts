@@ -16,7 +16,7 @@ import { transparent } from 'build-utils/css/constants/theme/day/colors/_transpa
 
 /* eslint-disable deprecation/deprecation */
 export const theme = {
-  transition: 'all 0.2s ease-in-out 0s, visibility 0',
+  transition: 'all 0.2s ease-in-out 0s, visibility 0s',
   'type-scale-base': '16px',
 
   /* GLASS PALETTE */
