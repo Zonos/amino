@@ -10,23 +10,21 @@ import {
 } from 'src/components/filter/filter-date/dateUtils';
 import { Input } from 'src/components/input/Input';
 
-export const IsOnOrAfter = ({
+export const IsBefore = ({
   onChange,
   onChangeFilterText,
   value,
 }: _DateControlProps) => {
   const date = useMemo(
-    () => value.dateBegin || dayjs().format(defaultDateFormat),
+    () => value.dateEnd || dayjs().format(defaultDateFormat),
     [value],
   );
-
-  const displayDate = dayjs(date).add(1, 'days').format(defaultDateFormat);
 
   const handleChange = useCallback(
     (val: string) => {
       onChange({
-        dateBegin: dayjs(val).subtract(1, 'days').format(defaultDateFormat),
-        dateEnd: null,
+        dateBegin: null,
+        dateEnd: val,
         lastCount: 5,
         lastUnit: 'days',
       });
@@ -35,13 +33,12 @@ export const IsOnOrAfter = ({
   );
 
   useEffect(() => {
-    const filterText = `Starting from ${formatDate(displayDate)}`;
-    onChangeFilterText(filterText);
-  }, [displayDate, onChangeFilterText]);
+    onChangeFilterText(`Before ${formatDate(date)}`);
+  }, [date, onChangeFilterText]);
 
   useEffect(() => {
-    handleChange(displayDate);
-  }, [displayDate, handleChange]);
+    handleChange(date);
+  }, [date, handleChange]);
 
   return (
     <DateControlsWrapper>
@@ -49,7 +46,7 @@ export const IsOnOrAfter = ({
         onChange={ev => handleChange(ev.target.value)}
         size="sm"
         type="date"
-        value={displayDate}
+        value={date}
       />
     </DateControlsWrapper>
   );

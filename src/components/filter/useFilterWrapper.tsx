@@ -135,6 +135,7 @@ export const useFilterWrapper = ({
     }
 
     if (event.key === 'Enter') {
+      // Inside inputs that handle enter need to apply first
       handleApply();
     }
   };
@@ -202,7 +203,7 @@ export const useFilterWrapper = ({
           )}
           <Text fontWeight={600}>{label}</Text>
         </ToggleWrapper>
-        {filterExists && (
+        {active && filterExists && (
           <StyledDropdownTrigger onClick={handleOpenDropdown}>
             <Text color="blue600" fontWeight={600}>
               {filterText}

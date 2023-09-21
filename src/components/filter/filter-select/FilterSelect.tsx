@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type KeyboardEvent, useState } from 'react';
 
 import {
   type BaseFilterProps,
@@ -27,6 +27,7 @@ export const FilterSelect = <
   ...props
 }: FilterSelectProps<T, O>) => {
   const [editingValue, setEditingValue] = useState<O | null>(value);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleApply: FilterApplyCallback = setFilterText => {
     onChange(editingValue);
@@ -45,10 +46,21 @@ export const FilterSelect = <
     onRemove: handleRemove,
   });
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      if (menuOpen) {
+        event.stopPropagation();
+      }
+    }
+  };
+
   return renderWrapper(
     <Select
       isClearable={false}
       onChange={setEditingValue}
+      onKeyDown={handleKeyDown}
+      onMenuClose={() => setMenuOpen(false)}
+      onMenuOpen={() => setMenuOpen(true)}
       options={options}
       size="sm"
       value={options.filter(item => item.value === editingValue?.value)}

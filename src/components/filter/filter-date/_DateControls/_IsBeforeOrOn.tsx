@@ -40,8 +40,8 @@ export const IsBeforeOrOn = ({
   }, [displayDate, onChangeFilterText]);
 
   useEffect(() => {
-    handleChange(date);
-  }, [date, handleChange]);
+    handleChange(displayDate);
+  }, [displayDate, handleChange]);
 
   return (
     <DateControlsWrapper>

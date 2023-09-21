@@ -1,4 +1,4 @@
-import { type Dispatch, useState } from 'react';
+import { type Dispatch, type KeyboardEvent, useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -50,6 +50,7 @@ export const FilterAmount = ({
   const [editingAmount2, setEditingAmount2] = useState<number | null>(
     filter.amountTotalMax,
   );
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const dispatchAmountFilterType = (value: FilterAmountType) => {
     dispatch({
@@ -121,6 +122,14 @@ export const FilterAmount = ({
     setEditingAmount2(0);
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      if (menuOpen) {
+        event.stopPropagation();
+      }
+    }
+  };
+
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
     filterExists: filter.isActive,
@@ -136,6 +145,9 @@ export const FilterAmount = ({
         onChange={opt =>
           setFilterType(opt?.value || initialFilterAmountState.amountFilterType)
         }
+        onKeyDown={handleKeyDown}
+        onMenuClose={() => setMenuOpen(false)}
+        onMenuOpen={() => setMenuOpen(true)}
         options={filterAmountOptions}
         size="md"
         value={filterAmountOptions.filter(item => item.value === filterType)}
