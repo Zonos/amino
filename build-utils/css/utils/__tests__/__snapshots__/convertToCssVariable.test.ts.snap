@@ -221,7 +221,7 @@ exports[`Theme content: 1`] = `
   "--amino-text-color": "var(--amino-gray-1000)",
   "--amino-text-color-secondary": "var(--amino-gray-800)",
   "--amino-toast-elevation": "var(--amino-elevation-500)",
-  "--amino-transition": "all 0.2s ease-in-out 0s",
+  "--amino-transition": "all 0.2s ease-in-out 0s, visibility 0s",
   "--amino-transparent-black": "#101116BB",
   "--amino-transparent-gray-600": "#6A6D771F",
   "--amino-transparent-white": "#FFFFFFBB",

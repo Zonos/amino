@@ -181,7 +181,7 @@ export const Banner = ({
             intentIcon: (
               <CheckCircleDuotoneIcon
                 color="blue800"
-                secondaryColor="blue300"
+                secondaryColor="blue400"
                 size={20}
               />
             ),
@@ -196,7 +196,7 @@ export const Banner = ({
             intentIcon: (
               <CheckCircleDuotoneIcon
                 color="green800"
-                secondaryColor="green300"
+                secondaryColor="green400"
                 size={20}
               />
             ),
@@ -211,7 +211,7 @@ export const Banner = ({
             intentIcon: (
               <WarningDuotoneIcon
                 color="orange800"
-                secondaryColor="orange300"
+                secondaryColor="orange400"
                 size={20}
               />
             ),
@@ -226,7 +226,7 @@ export const Banner = ({
             intentIcon: (
               <RemoveCircleDuotoneIcon
                 color="red800"
-                secondaryColor="red300"
+                secondaryColor="red400"
                 size={20}
               />
             ),
@@ -242,7 +242,7 @@ export const Banner = ({
             intentIcon: (
               <InfoDuotoneIcon
                 color="gray800"
-                secondaryColor="gray300"
+                secondaryColor="gray400"
                 size={20}
               />
             ),

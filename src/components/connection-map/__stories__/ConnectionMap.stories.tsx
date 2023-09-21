@@ -4,7 +4,6 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { ConnectionMap } from 'src/components/connection-map/ConnectionMap';
-import { getCountryUrls } from 'src/components/select/__stories__/getCountryUrls';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { CountrySelect } from 'src/components/select/CountrySelect';
 import { HStack } from 'src/components/stack/HStack';
@@ -42,7 +41,6 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
   from: _from,
   to: _to,
 }) => {
-  const { dashboardUrl } = getCountryUrls();
   const { data: worldData } = useSwr<IGeoJsonWorld>(GEO_URL, async params => {
     const response = await fetch(params);
     const json = (await response.json()) as IGeoJsonWorld;
@@ -50,9 +48,7 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
   });
   const [from, setFrom] = useState(_from);
   const [to, setTo] = useState(_to);
-  const countryOptions = useCountryOptions({
-    dashboardUrl,
-  });
+  const countryOptions = useCountryOptions({});
   return (
     <VStack>
       <ConnectionMap

@@ -25,16 +25,12 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   justify-content: center;
   user-select: none;
   margin-right: 8px;
-
-  &:active {
-    box-shadow: ${theme.glowBlue};
-  }
+  box-shadow: ${p => (p.checked ? theme.shadowButtonPrimary : 'none')};
 
   svg {
     color: ${theme.gray0};
-    box-shadow: ${theme.v3ShadowBase};
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 `;
 
@@ -68,10 +64,7 @@ const CheckboxContainer = styled.label<{ checked: boolean }>`
   &.disabled {
     ${AminoCheckbox} {
       background: ${p => (p.checked ? theme.blue200 : '')};
-      border: ${p =>
-        p.checked
-          ? `2px solid ${theme.blue200}`
-          : `1.5px solid ${theme.gray300}`};
+      border: ${p => (p.checked ? `none` : `1.5px solid ${theme.gray300}`)};
       &:active {
         box-shadow: none;
       }
@@ -113,6 +106,8 @@ export const Checkbox = ({
   onChange,
   subtitle,
 }: CheckboxProps) => {
+  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+
   const testId = useMemo(
     () => getTestId({ componentName: 'checkbox', name: label }),
     [label],
@@ -122,10 +117,10 @@ export const Checkbox = ({
       checked={checked}
       className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
       data-testid={testId}
-      htmlFor={label}
+      htmlFor={labelAsHtmlAttribute}
       onClick={e => !disabled && onChange(!checked, e)}
     >
-      <AminoCheckbox checked={checked} id={label}>
+      <AminoCheckbox checked={checked} id={labelAsHtmlAttribute}>
         <AnimatePresence>
           {checked && (
             <AnimatedCheckIcon

@@ -17,7 +17,6 @@ describe('storage tests', () => {
 
   test(`Value doesn't exist`, () => {
     const result = getStorageItem({
-      json: true,
       key: 'person',
       schema,
       type: 'local',
@@ -35,7 +34,6 @@ describe('storage tests', () => {
     localStorage.setItem('person', JSON.stringify(p));
 
     const result = getStorageItem({
-      json: true,
       key: 'person',
       schema,
       type: 'local',
@@ -53,7 +51,6 @@ describe('storage tests', () => {
     localStorage.setItem('person', JSON.stringify(almostAPerson));
 
     const result = getStorageItem({
-      json: true,
       key: 'person',
       schema,
       type: 'local',
@@ -92,5 +89,25 @@ describe('storage tests', () => {
     });
 
     expect(result).toBeNull();
+  });
+
+  test(`String enum is not JSON stringified`, () => {
+    const value = 'day';
+
+    const stringSchema = z.enum(['day', 'night', 'midnight']);
+
+    localStorage.setItem('theme', value);
+
+    const rawValue = localStorage.getItem('theme');
+
+    expect(rawValue).toBe('day');
+
+    const result = getStorageItem({
+      key: 'theme',
+      schema: stringSchema,
+      type: 'local',
+    });
+
+    expect(result).toBe('day');
   });
 });

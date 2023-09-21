@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { type InputProps, Input } from 'src/components/input/Input';
+import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { BagIcon } from 'src/icons/BagIcon';
@@ -42,7 +43,7 @@ const InputMeta: Meta = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A63',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=243%3A7661&mode=dev',
     },
   },
 };
@@ -89,6 +90,30 @@ NumberInput.args = {
   label: 'Example input',
   type: 'number',
   value: '123',
+};
+
+export const OnSameLine: StoryFn<InputProps> = ({ size }) => {
+  const [value, setValue] = useState('');
+  const [number, setNumber] = useState(0);
+
+  return (
+    <HStack>
+      <Input
+        label="Text"
+        onChange={e => setValue(e.target.value)}
+        size={size}
+        type="text"
+        value={value}
+      />
+      <Input
+        label="Number"
+        onChange={e => setNumber(e.target.valueAsNumber)}
+        size={size}
+        type="number"
+        value={number.toString()}
+      />
+    </HStack>
+  );
 };
 
 export const DateInput = Template.bind({});

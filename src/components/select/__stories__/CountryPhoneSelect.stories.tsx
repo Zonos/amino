@@ -3,7 +3,6 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { getCountryUrls } from 'src/components/select/__stories__/getCountryUrls';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountryPhoneSelectProps,
@@ -36,14 +35,11 @@ const CountryPhoneSelectTemplate: StoryFn<
   phoneCountry: _phoneCountry,
   ...props
 }: CountryPhoneSelectProps<ICountryOption>) => {
-  const { dashboardUrl } = getCountryUrls();
   const [phoneCountry, setPhoneCountry] = useState<ICountryOption | null>(
     _phoneCountry,
   );
   const [phone, setPhone] = useState(_phone);
-  const countryOptions = useCountryOptions({
-    dashboardUrl,
-  });
+  const countryOptions = useCountryOptions({});
   return (
     <CountryPhoneSelect
       {...props}
