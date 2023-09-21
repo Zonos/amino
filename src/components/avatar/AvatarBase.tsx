@@ -25,11 +25,11 @@ export type AvatarProps = {
 };
 
 type AvartarBaseProps = Required<AvatarProps> & {
+  backgroundColor?: string;
   backgroundPosition?: string;
   backgroundSize?: string;
   backgroundUrl?: string;
   children?: ReactNode;
-  backgroundColor?: string;
 };
 
 type WrapperProp = Required<StyledProps<AvatarProps>>;

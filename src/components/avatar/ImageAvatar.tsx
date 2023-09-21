@@ -1,6 +1,5 @@
 import { type AvatarProps, AvatarBase } from 'src/components/avatar/AvatarBase';
 
-
 export type ImageAvatarProps = {
   imageUrl: string;
 } & AvatarProps;
@@ -12,9 +11,9 @@ export const ImageAvatar = ({
   size = 32,
 }: ImageAvatarProps) => (
   <AvatarBase
+    backgroundColor="transparent"
     backgroundSize="contain"
     backgroundUrl={imageUrl}
-    backgroundColor='transparent'
     bordered={bordered}
     shape={shape}
     size={size}
