@@ -1,5 +1,11 @@
-import { type MouseEvent, type ReactNode, useMemo } from 'react';
+import {
+  type ComponentPropsWithoutRef,
+  type MouseEvent,
+  type ReactNode,
+  useMemo,
+} from 'react';
 
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -24,7 +30,6 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
   align-items: center;
   justify-content: center;
   user-select: none;
-  margin-right: 8px;
   box-shadow: ${p => (p.checked ? theme.shadowButtonPrimary : 'none')};
 
   svg {
@@ -32,6 +37,10 @@ const AminoCheckbox = styled.div<{ checked: boolean }>`
     width: 16px;
     height: 16px;
   }
+`;
+
+const InfoWrapper = styled.div`
+  margin-left: 8px;
 `;
 
 const StyledSubtitle = styled(Text)``;
@@ -85,8 +94,12 @@ const CheckboxContainer = styled.label<{ checked: boolean }>`
   }
 `;
 
-export type CheckboxProps = {
+export type CheckboxProps = Omit<
+  ComponentPropsWithoutRef<'label'>,
+  'onClick' | 'onChange'
+> & {
   checked: boolean;
+  className?: string;
   disabled?: boolean;
   icon?: ReactNode;
   label?: string;
@@ -98,6 +111,7 @@ export type CheckboxProps = {
 
 export const Checkbox = ({
   checked = false,
+  className,
   disabled,
   icon,
   label,
@@ -105,6 +119,7 @@ export const Checkbox = ({
   labelDescription,
   onChange,
   subtitle,
+  ...props
 }: CheckboxProps) => {
   const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
 
@@ -115,10 +130,16 @@ export const Checkbox = ({
   return (
     <CheckboxContainer
       checked={checked}
-      className={['amino-input-wrapper', disabled ? 'disabled' : ''].join(' ')}
+      className={clsx(className, 'amino-input-wrapper', { disabled })}
       data-testid={testId}
       htmlFor={labelAsHtmlAttribute}
-      onClick={e => !disabled && onChange(!checked, e)}
+      onClick={e => {
+        e.stopPropagation();
+        if (!disabled) {
+          onChange(!checked, e);
+        }
+      }}
+      {...props}
     >
       <AminoCheckbox checked={checked} id={labelAsHtmlAttribute}>
         <AnimatePresence>
@@ -134,24 +155,25 @@ export const Checkbox = ({
         </AnimatePresence>
       </AminoCheckbox>
 
-      {labelComponent || (
-        <div>
-          <LabelWrapper>
-            {icon}
-            <StyledLabel type="input-label">
-              {label}
-              {labelDescription && (
-                <StyledLabelDescription>
-                  {labelDescription}
-                </StyledLabelDescription>
-              )}
-            </StyledLabel>
-          </LabelWrapper>
-          {subtitle && (
-            <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
-          )}
-        </div>
-      )}
+      {labelComponent ||
+        (label && (
+          <InfoWrapper>
+            <LabelWrapper>
+              {icon}
+              <StyledLabel type="input-label">
+                {label}
+                {labelDescription && (
+                  <StyledLabelDescription>
+                    {labelDescription}
+                  </StyledLabelDescription>
+                )}
+              </StyledLabel>
+            </LabelWrapper>
+            {subtitle && (
+              <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
+            )}
+          </InfoWrapper>
+        ))}
     </CheckboxContainer>
   );
 };

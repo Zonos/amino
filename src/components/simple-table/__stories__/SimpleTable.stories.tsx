@@ -129,7 +129,11 @@ export const Selectable = () => {
     }
   };
 
-  const handleCheckboxRowChange = (value: boolean, index: number) => {
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
     if (value) {
       setSelectedRowIndexes([...selectedRowIndexes, index]);
     } else {
@@ -144,7 +148,9 @@ export const Selectable = () => {
       headers={tableHeaders}
       items={items}
       keyExtractor={item => String(item.id)}
+      onRowClick={() => alert('Clicked row')}
       selectable={{
+        anySelected: selectedRowIndexes.length > 0,
         enabled: true,
         headerCheckboxValue: checkboxAllValue,
         isRowChecked: (_, index) => selectedRowIndexes.includes(index),
@@ -181,6 +187,26 @@ export const Custom = () => {
     ...item,
     hoverField: null,
   }));
+
+  const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
+
+  const checkboxAllValue = selectedItemIds.length === items.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedItemIds.length === items.length) {
+      setSelectedItemIds([]);
+    } else {
+      setSelectedItemIds(items.map(item => item.id));
+    }
+  };
+
+  const handleCheckboxRowChange = (value: boolean, item: DummyData) => {
+    if (value) {
+      setSelectedItemIds([...selectedItemIds, item.id]);
+    } else {
+      setSelectedItemIds(selectedItemIds.filter(id => id !== item.id));
+    }
+  };
 
   const HoverMenu = ({ item }: { item: DummyData }) => {
     const [open, setOpen] = useState(false);
@@ -252,6 +278,14 @@ export const Custom = () => {
       keyExtractor={item => String(item.id)}
       onRowClick={item => {
         alert(`Clicked ${item.name}`);
+      }}
+      selectable={{
+        anySelected: selectedItemIds.length > 0,
+        enabled: true,
+        headerCheckboxValue: checkboxAllValue,
+        isRowChecked: item => selectedItemIds.includes(item.id),
+        onHeaderCheckboxChange: handleCheckboxAllChange,
+        onRowCheckboxChange: handleCheckboxRowChange,
       }}
     />
   );
