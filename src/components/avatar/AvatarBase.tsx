@@ -25,6 +25,7 @@ export type AvatarProps = {
 };
 
 type AvartarBaseProps = Required<AvatarProps> & {
+  backgroundColor?: string;
   backgroundPosition?: string;
   backgroundSize?: string;
   backgroundUrl?: string;
@@ -37,7 +38,6 @@ const Wrapper = styled.div<WrapperProp>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.gray100};
   border: ${p =>
     p.$bordered ? `${p.$size / 16}px solid ${theme.gray0}` : undefined};
 
@@ -51,7 +51,6 @@ const Wrapper = styled.div<WrapperProp>`
 `;
 
 const StyledAvatarBase = styled.div<AvartarBaseProps>`
-  background-color: ${theme.gray100};
   height: 100%;
   width: 100%;
 
@@ -66,6 +65,7 @@ const StyledAvatarBase = styled.div<AvartarBaseProps>`
       background-position: ${props.backgroundPosition || 'center'};
       background-repeat: no-repeat;
       background-size: ${props.backgroundSize};
+      background-color: ${props.backgroundColor || `${theme.gray100}`};
     `}
 `;
 
