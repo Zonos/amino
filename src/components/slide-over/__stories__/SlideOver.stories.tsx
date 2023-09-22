@@ -3,7 +3,9 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
+import { Button } from 'src/components/button/Button';
 import { LegacyButton } from 'src/components/button/LegacyButton';
+import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import {
   type SlideOverProps,
   SlideOver,
@@ -114,4 +116,46 @@ WithHover.args = {
   children: <HoverDiv>Hover me</HoverDiv>,
   label: 'Slideover title',
   subtitle: 'With a subtitle',
+};
+
+const StyledCoverSheet = styled(CoverSheet)`
+  z-index: 1100;
+`;
+
+export const WithCoverSheet: StoryFn<SlideOverProps> = ({
+  actions,
+  children,
+  label,
+  subtitle,
+  withBackdrop,
+  ...props
+}: SlideOverProps) => {
+  const [open, setOpen] = useState(false);
+  const [coverSheetOpen, setCoverSheetOpen] = useState(false);
+
+  return (
+    <>
+      <LegacyButton onClick={() => setOpen(true)}>open</LegacyButton>
+      <SlideOver
+        {...props}
+        actions={actions}
+        label={label}
+        onClose={() => setOpen(false)}
+        open={open}
+        subtitle={subtitle}
+        withBackdrop={withBackdrop}
+      >
+        <Button onClick={() => setCoverSheetOpen(true)}>
+          Open Cover Sheet
+        </Button>
+        <StyledCoverSheet
+          label="Cover sheet"
+          onClose={() => setCoverSheetOpen(false)}
+          open={coverSheetOpen}
+        >
+          <div>Content</div>
+        </StyledCoverSheet>
+      </SlideOver>
+    </>
+  );
 };
