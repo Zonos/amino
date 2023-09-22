@@ -18,6 +18,9 @@ type IBadgeFilterDateProps = BaseFilterProps & {
   filter: FilterDateState;
 };
 
+/**
+ * Assumes exclusive date range. Specific formats/ranges should be handled upstream.
+ */
 export const FilterDate = ({
   dispatch,
   dropdownTitle,
