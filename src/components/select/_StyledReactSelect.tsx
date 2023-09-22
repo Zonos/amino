@@ -417,9 +417,13 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // menuPortal
   multiValue: provided => ({
     ...provided,
-    background: theme.gray200,
-    fontWeight: 500,
+    alignItems: 'center',
+    background: theme.gray100,
+    borderRadius: theme.radius4,
+    fontWeight: 600,
+    maxHeight: 20,
     minWidth: 'inherit',
+    paddingRight: 2,
   }),
   multiValueLabel: provided => ({
     ...provided,
