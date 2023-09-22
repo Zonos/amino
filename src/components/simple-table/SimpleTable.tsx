@@ -131,10 +131,18 @@ export type SimpleTableProps<T extends object> = {
     anySelected?: boolean;
     enabled: boolean;
     headerCheckboxValue?: boolean;
+    /**
+     * Overrides custom handlers for more control
+     */
+    renderCustomHeaderCheckbox?: ReactNode;
     isRowCheckboxDisabled?: (item: T, index: number) => boolean;
     isRowChecked?: (item: T, index: number) => boolean;
     onHeaderCheckboxChange?: (checked: boolean) => void;
     onRowCheckboxChange?: (checked: boolean, item: T, index: number) => void;
+    /**
+     * Overrides custom handlers for more control
+     */
+    renderCustomRowCheckbox?: (item: T, index: number) => ReactNode;
   };
   /** Adding unique list keys */
   keyExtractor: (item: T) => string;
@@ -231,15 +239,17 @@ export const SimpleTable = <T extends object>({
       >
         {selectable.enabled && (
           <td>
-            <StyledCheckbox
-              checked={selectable.isRowChecked?.(item, index) || false}
-              disabled={
-                selectable.isRowCheckboxDisabled?.(item, index) || false
-              }
-              onChange={checked =>
-                selectable.onRowCheckboxChange?.(checked, item, index)
-              }
-            />
+            {selectable.renderCustomRowCheckbox?.(item, index) || (
+              <StyledCheckbox
+                checked={selectable.isRowChecked?.(item, index) || false}
+                disabled={
+                  selectable.isRowCheckboxDisabled?.(item, index) || false
+                }
+                onChange={checked =>
+                  selectable.onRowCheckboxChange?.(checked, item, index)
+                }
+              />
+            )}
           </td>
         )}
         {headers.map(header => renderHeader(header, item))}
@@ -262,11 +272,15 @@ export const SimpleTable = <T extends object>({
         <HeaderRow>
           {!!selectable.onHeaderCheckboxChange && (
             <th>
-              <StyledCheckbox
-                checked={(!loading && selectable.headerCheckboxValue) || false}
-                disabled={loading}
-                onChange={selectable.onHeaderCheckboxChange}
-              />
+              {selectable.renderCustomHeaderCheckbox || (
+                <StyledCheckbox
+                  checked={
+                    (!loading && selectable.headerCheckboxValue) || false
+                  }
+                  disabled={loading}
+                  onChange={selectable.onHeaderCheckboxChange}
+                />
+              )}
             </th>
           )}
           {headers.map(header => (
