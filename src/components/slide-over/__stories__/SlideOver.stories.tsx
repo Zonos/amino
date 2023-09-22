@@ -28,12 +28,14 @@ const Template: StoryFn<SlideOverProps> = ({
   label,
   subtitle,
   withBackdrop,
+  ...props
 }: SlideOverProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
       <LegacyButton onClick={() => setOpen(true)}>open</LegacyButton>
       <SlideOver
+        {...props}
         actions={actions}
         label={label}
         onClose={() => setOpen(false)}
