@@ -131,6 +131,7 @@ export type SimpleTableProps<T extends object> = {
     anySelected?: boolean;
     enabled: boolean;
     headerCheckboxValue?: boolean;
+    isRowCheckboxDisabled?: (item: T, index: number) => boolean;
     isRowChecked?: (item: T, index: number) => boolean;
     onHeaderCheckboxChange?: (checked: boolean) => void;
     onRowCheckboxChange?: (checked: boolean, item: T, index: number) => void;
@@ -215,11 +216,13 @@ export const SimpleTable = <T extends object>({
         clickable={!!onRowClick}
         onClick={() => {
           if (selectable.anySelected) {
-            selectable.onRowCheckboxChange?.(
-              !selectable.isRowChecked?.(item, index),
-              item,
-              index,
-            );
+            if (!selectable.isRowCheckboxDisabled?.(item, index)) {
+              selectable.onRowCheckboxChange?.(
+                !selectable.isRowChecked?.(item, index),
+                item,
+                index,
+              );
+            }
           } else {
             onRowClick?.(item);
           }
@@ -230,6 +233,9 @@ export const SimpleTable = <T extends object>({
           <td>
             <StyledCheckbox
               checked={selectable.isRowChecked?.(item, index) || false}
+              disabled={
+                selectable.isRowCheckboxDisabled?.(item, index) || false
+              }
               onChange={checked =>
                 selectable.onRowCheckboxChange?.(checked, item, index)
               }
