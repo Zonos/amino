@@ -190,13 +190,15 @@ export const Custom = () => {
 
   const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
 
-  const checkboxAllValue = selectedItemIds.length === items.length;
+  const nonCadeItems = items.filter(item => item.name !== 'Cade');
+
+  const checkboxAllValue = selectedItemIds.length === nonCadeItems.length;
 
   const handleCheckboxAllChange = () => {
-    if (selectedItemIds.length === items.length) {
+    if (selectedItemIds.length === nonCadeItems.length) {
       setSelectedItemIds([]);
     } else {
-      setSelectedItemIds(items.map(item => item.id));
+      setSelectedItemIds(nonCadeItems.map(item => item.id));
     }
   };
 
@@ -283,6 +285,7 @@ export const Custom = () => {
         anySelected: selectedItemIds.length > 0,
         enabled: true,
         headerCheckboxValue: checkboxAllValue,
+        isRowCheckboxDisabled: item => item.name === 'Cade',
         isRowChecked: item => selectedItemIds.includes(item.id),
         onHeaderCheckboxChange: handleCheckboxAllChange,
         onRowCheckboxChange: handleCheckboxRowChange,

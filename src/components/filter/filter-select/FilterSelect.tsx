@@ -41,7 +41,7 @@ export const FilterSelect = <
 
   const { renderWrapper } = useFilterWrapper({
     ...props,
-    filterExists: editingValue !== null,
+    filterExists: !!value,
     onApply: handleApply,
     onRemove: handleRemove,
   });

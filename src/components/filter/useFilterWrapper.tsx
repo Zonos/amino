@@ -195,7 +195,7 @@ export const useFilterWrapper = ({
         className={[className, active && 'active'].join(' ')}
         onClick={handleToggle}
       >
-        <ToggleWrapper active={active} hasFilter={filterExists}>
+        <ToggleWrapper active={active} hasFilter={active && filterExists}>
           {active ? (
             <MinusCircleDuotoneIcon size={16} />
           ) : (
