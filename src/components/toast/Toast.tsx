@@ -3,48 +3,156 @@ import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
-import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
-import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
-import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
+import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
+import { InfoIcon } from 'src/icons/InfoIcon';
+import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
+import { WarningIcon } from 'src/icons/WarningIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Intent } from 'src/types';
 
 const AminoToast = styled(motion.div)`
-  background: ${theme.gray100};
+  background: linear-gradient(
+      90deg,
+      rgba(148, 150, 158, 0.4) 0%,
+      rgba(148, 150, 158, 0) 50%
+    ),
+    ${theme.gray1200};
   z-index: 999999;
-  border-radius: ${theme.radius10};
-  color: ${theme.gray1000};
+  border-radius: ${theme.radius12};
+  color: ${theme.gray0};
   box-shadow: ${theme.v3ShadowLarge};
-  padding: ${theme.space16} ${theme.space24};
+  padding: ${theme.space16};
   display: flex;
   align-items: center;
-  gap: ${theme.space8};
+  gap: ${theme.space12};
   font-weight: 500;
   user-select: none;
 
   & + & {
     margin-top: ${theme.space24};
   }
+
+  & svg {
+    color: ${theme.gray500};
+  }
+
+  [data-theme='night'] & {
+    background: linear-gradient(
+        90deg,
+        rgba(148, 150, 158, 0.24) 0%,
+        rgba(148, 150, 158, 0) 50%
+      ),
+      ${theme.gray50};
+    color: ${theme.gray1200};
+
+    & svg {
+      color: ${theme.gray600};
+    }
+  }
 `;
 
 const AminoSuccessToast = styled(AminoToast)`
-  background-color: ${theme.green100};
-  color: ${theme.green800};
+  background: linear-gradient(
+      90deg,
+      rgba(86, 199, 111, 0.4) 0%,
+      rgba(86, 199, 111, 0) 50%
+    ),
+    ${theme.gray1200};
+
+  & svg {
+    color: ${theme.green500};
+  }
+
+  [data-theme='night'] & {
+    background: linear-gradient(
+        90deg,
+        rgba(86, 199, 111, 0.24) 0%,
+        rgba(86, 199, 111, 0) 50%
+      ),
+      ${theme.gray50};
+
+    & svg {
+      color: ${theme.green600};
+    }
+  }
 `;
 
 const AminoErrorToast = styled(AminoToast)`
-  background-color: ${theme.red100};
-  color: ${theme.red800};
+  background: linear-gradient(
+      90deg,
+      rgba(249, 92, 103, 0.4) 0%,
+      rgba(249, 92, 103, 0) 50%
+    ),
+    ${theme.gray1200};
+
+  & svg {
+    color: ${theme.red500};
+  }
+
+  [data-theme='night'] & {
+    background: linear-gradient(
+        90deg,
+        rgba(249, 92, 103, 0.24) 0%,
+        rgba(249, 92, 103, 0) 50%
+      ),
+      ${theme.gray50};
+
+    & svg {
+      color: ${theme.red600};
+    }
+  }
 `;
 
 const AminoWarningToast = styled(AminoToast)`
-  background-color: ${theme.orange100};
-  color: ${theme.orange800};
+  background: linear-gradient(
+      90deg,
+      rgba(248, 140, 83, 0.4) 0%,
+      rgba(248, 140, 83, 0) 50%
+    ),
+    ${theme.gray1200};
+
+  & svg {
+    color: ${theme.orange500};
+  }
+
+  [data-theme='night'] & {
+    background: linear-gradient(
+        90deg,
+        rgba(248, 140, 83, 0.24) 0%,
+        rgba(248, 140, 83, 0) 50%
+      ),
+      ${theme.gray50};
+
+    & svg {
+      color: ${theme.orange600};
+    }
+  }
 `;
+
 const AminoInfoToast = styled(AminoToast)`
-  background-color: ${theme.blue100};
-  color: ${theme.blue800};
+  background: linear-gradient(
+      90deg,
+      rgba(95, 146, 246, 0.4) 0%,
+      rgba(95, 146, 246, 0) 50%
+    ),
+    ${theme.gray1200};
+
+  & svg {
+    color: ${theme.blue500};
+  }
+
+  [data-theme='night'] & {
+    background: linear-gradient(
+        90deg,
+        rgba(95, 146, 246, 0.24) 0%,
+        rgba(95, 146, 246, 0) 50%
+      ),
+      ${theme.gray50};
+
+    & svg {
+      color: ${theme.blue600};
+    }
+  }
 `;
 
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
@@ -109,21 +217,21 @@ export const Toast = ({
     case 'success':
       return (
         <AminoSuccessToast layout {...baseProps}>
-          <CheckCircleDuotoneIcon color="green900" secondaryColor="green400" />
+          <CheckCircleIcon />
           {children}
         </AminoSuccessToast>
       );
     case 'error':
       return (
         <AminoErrorToast layout {...baseProps}>
-          <RemoveCircleDuotoneIcon color="red900" secondaryColor="red400" />
+          <RemoveCircleIcon />
           {children}
         </AminoErrorToast>
       );
     case 'warning':
       return (
         <AminoWarningToast layout {...baseProps}>
-          <WarningDuotoneIcon color="orange900" secondaryColor="orange400" />
+          <WarningIcon />
           {children}
         </AminoWarningToast>
       );
@@ -131,14 +239,14 @@ export const Toast = ({
     case 'info':
       return (
         <AminoInfoToast layout {...baseProps}>
-          <InfoDuotoneIcon color="blue900" secondaryColor="blue400" />
+          <InfoIcon />
           {children}
         </AminoInfoToast>
       );
     default:
       return (
         <AminoToast layout {...baseProps}>
-          <InfoDuotoneIcon color="gray900" secondaryColor="gray400" />
+          <InfoIcon />
           {children}
         </AminoToast>
       );
