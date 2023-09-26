@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useState } from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
@@ -11,6 +11,7 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
   type SimpleTableHeader,
+  type SimpleTableProps,
   SimpleTable,
 } from 'src/components/simple-table/SimpleTable';
 import { Text } from 'src/components/text/Text';
@@ -116,7 +117,7 @@ export const Basic = () => (
   />
 );
 
-export const Selectable = () => {
+export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
   const checkboxAllValue = selectedRowIndexes.length === items.length;
@@ -148,7 +149,7 @@ export const Selectable = () => {
       headers={tableHeaders}
       items={items}
       keyExtractor={item => String(item.id)}
-      onRowClick={() => alert('Clicked row')}
+      loading={loading}
       selectable={{
         anySelected: selectedRowIndexes.length > 0,
         enabled: true,

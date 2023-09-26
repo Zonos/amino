@@ -204,6 +204,11 @@ export const SimpleTable = <T extends object>({
     if (loading) {
       return [...Array(loadingItems + 1).keys()].map(n => (
         <Row key={n} clickable={false}>
+          {selectable.enabled && (
+            <td>
+              <Skeleton key={n} height={30} />
+            </td>
+          )}
           {headers.map(header => (
             <RowColumn
               key={header.key}
@@ -221,7 +226,10 @@ export const SimpleTable = <T extends object>({
       <Row
         key={keyExtractor(item)}
         className={!noHoverBackground ? 'with-hover' : ''}
-        clickable={!!onRowClick}
+        clickable={
+          !!onRowClick ||
+          (!!selectable.anySelected && !!selectable.onRowCheckboxChange)
+        }
         onClick={() => {
           if (selectable.anySelected) {
             if (!selectable.isRowCheckboxDisabled?.(item, index)) {
