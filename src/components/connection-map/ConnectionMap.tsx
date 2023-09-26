@@ -163,10 +163,10 @@ export const ConnectionMap = ({
               return (
                 <Geography
                   key={geo.rsmKey}
-                  fill={isConnectionCountry ? theme.blue100 : theme.gray400}
+                  fill={isConnectionCountry ? theme.blue100 : theme.gray0}
                   geography={geo}
-                  stroke={isConnectionCountry ? theme.blue300 : theme.gray500}
-                  strokeWidth={1}
+                  stroke={isConnectionCountry ? theme.blue400 : theme.gray200}
+                  strokeWidth={2}
                 />
               );
             })
