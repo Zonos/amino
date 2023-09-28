@@ -13,7 +13,7 @@ export const getColorVariables = ({
 }) => {
   let content = fileContent;
   const fillPropMatches = content.matchAll(
-    /<(path|rect).*?fill=(".*?").*?\/>/gm,
+    /<(path|rect|circle).*?fill=(".*?").*?\/>/gm,
   );
   const matches = Array.from(fillPropMatches);
   const fillColors = matches
