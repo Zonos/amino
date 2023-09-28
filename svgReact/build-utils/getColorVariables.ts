@@ -18,7 +18,6 @@ export const getColorVariables = ({
   );
   const matches = Array.from(fillPropMatches);
 
-  console.log({ matches });
   const fillColors = matches
     .map(x => x[2])
     .sort((a, b) =>
