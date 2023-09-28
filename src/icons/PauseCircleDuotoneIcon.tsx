@@ -17,15 +17,13 @@ export const PauseCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M10 8a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V9a1 1 0 0 1 1-1Zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V9a1 1 0 0 1 1-1Z"
+      d="M9.75 14a.75.75 0 0 0 1.5 0v-4a.75.75 0 0 0-1.5 0v4Zm3 0a.75.75 0 0 0 1.5 0v-4a.75.75 0 0 0-1.5 0v4Z"
       fill="currentColor"
       fillRule="evenodd"
     />

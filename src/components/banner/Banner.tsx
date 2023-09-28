@@ -14,7 +14,7 @@ import { theme } from 'src/styles/constants/theme';
 import type { Color, Intent } from 'src/types';
 
 const StyledBanner = styled.div`
-  border-radius: ${theme.radius6};
+  border-radius: ${theme.radius12};
   padding: ${theme.space16};
 `;
 
@@ -43,7 +43,7 @@ const Close = styled.div`
 
 const CloseButton = styled(LegacyButton)`
   && {
-    width: 20px;
+    width: 24px;
   }
 `;
 
@@ -72,28 +72,33 @@ const BannerFooter = styled.footer`
 `;
 
 const DefaultBanner = styled(StyledBanner)`
-  background: ${theme.gray100};
+  background: ${theme.gray50};
   color: ${theme.gray700};
+  border: 1px solid ${theme.gray100};
 `;
 
 const InfoBanner = styled(StyledBanner)`
   background: ${theme.blue100};
   color: ${theme.blue700};
+  border: 1px solid ${theme.blue200};
 `;
 
 const SuccessBanner = styled(StyledBanner)`
   background: ${theme.green100};
   color: ${theme.green700};
+  border: 1px solid ${theme.green200};
 `;
 
 const WarningBanner = styled(StyledBanner)`
   background: ${theme.orange100};
   color: ${theme.orange700};
+  border: 1px solid ${theme.orange200};
 `;
 
 const ErrorBanner = styled(StyledBanner)`
   background: ${theme.red100};
   color: ${theme.red700};
+  border: 1px solid ${theme.red200};
 `;
 
 export type BannerProps = {
@@ -179,10 +184,10 @@ export const Banner = ({
         <InfoBanner className={className}>
           {renderContent({
             intentIcon: (
-              <CheckCircleDuotoneIcon
+              <InfoDuotoneIcon
                 color="blue800"
                 secondaryColor="blue400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'blue800',
@@ -197,7 +202,7 @@ export const Banner = ({
               <CheckCircleDuotoneIcon
                 color="green800"
                 secondaryColor="green400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'green800',
@@ -212,7 +217,7 @@ export const Banner = ({
               <WarningDuotoneIcon
                 color="orange800"
                 secondaryColor="orange400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'orange800',
@@ -227,7 +232,7 @@ export const Banner = ({
               <RemoveCircleDuotoneIcon
                 color="red800"
                 secondaryColor="red400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'red800',
@@ -243,7 +248,7 @@ export const Banner = ({
               <InfoDuotoneIcon
                 color="gray800"
                 secondaryColor="gray400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'gray800',

@@ -13,8 +13,12 @@ export const ChevronLeftCircleIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
+        d="M12.445 15.255a.75.75 0 1 0 1.11-1.01L11.514 12l2.041-2.245a.75.75 0 0 0-1.11-1.01l-2.5 2.75a.75.75 0 0 0 0 1.01l2.5 2.75Z"
+        fill="currentColor"
+      />
+      <path
         clipRule="evenodd"
-        d="M20 12a8 8 0 1 0-16 0 8 8 0 0 0 16 0ZM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2Zm1.707 6.293a1 1 0 0 1 0 1.414L11.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414l-2.647-2.646a1.5 1.5 0 0 1 0-2.122l2.647-2.646a1 1 0 0 1 1.414 0Z"
+        d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-6.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z"
         fill="currentColor"
         fillRule="evenodd"
       />

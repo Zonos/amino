@@ -17,17 +17,13 @@ export const CartDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M3 3a1 1 0 0 1 1-1h1.047c.261 0 .52.05.763.147a3.11 3.11 0 0 1 1.895 2.278L7.82 5h9.914a3 3 0 0 1 2.977 3.372l-.5 4A3 3 0 0 1 17.234 15H9.766a3 3 0 0 1-2.977-2.628L6.012 6.16l-.268-1.343a1.11 1.11 0 0 0-.677-.813.055.055 0 0 0-.02-.004H4a1 1 0 0 1-1-1Z"
+      d="M4.75 4a.75.75 0 0 0 0 1.5h.188c.574 0 1.074.39 1.213.947l.11.44.781 6.444a2.75 2.75 0 0 0 2.73 2.419h6.956a2.75 2.75 0 0 0 2.73-2.42l.515-4.25A2.75 2.75 0 0 0 17.243 6H7.584a2.75 2.75 0 0 0-2.646-2H4.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M7 19a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm8 0a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z"
+      d="M18 18.75a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Zm-7 0a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z"
       fill="currentColor"
-      fillRule="evenodd"
     />
   </IconBase>
 ));

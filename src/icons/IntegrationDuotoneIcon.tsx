@@ -18,15 +18,15 @@ export const IntegrationDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M3 12a8 8 0 0 1 8-8h3.91A2.09 2.09 0 0 1 17 6.09v11.82A2.09 2.09 0 0 1 14.91 20H11a8 8 0 0 1-8-8Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M19.25 10.25h-3.5v-1.5h3.5a.75.75 0 0 1 0 1.5Zm0 6h-3.5v-1.5h3.5a.75.75 0 0 1 0 1.5Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M15 9a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Z"
-      fill="currentColor"
+      d="M4 12a7 7 0 0 1 7-7h4.728c.426 0 .772.346.772.772v12.456a.772.772 0 0 1-.772.772H11a7 7 0 0 1-7-7Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"
     />
   </IconBase>

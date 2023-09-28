@@ -17,17 +17,19 @@ export const TrashCanDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M5 6h14v13a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6Z"
+      d="M18.817 6.75H5.184l.913 10.733A2.75 2.75 0 0 0 8.837 20h6.326a2.75 2.75 0 0 0 2.74-2.517l.914-10.733Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M8 4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2H5a1 1 0 0 1 0-2h3V4Zm2 2h4V4h-4v2Zm0 7a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Zm4 0a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"
+      d="M4.75 8.25a.75.75 0 0 1 0-1.5h3.761a2.75 2.75 0 0 1 2.739-2.5h1.5a2.75 2.75 0 0 1 2.739 2.5h3.761a.75.75 0 0 1 0 1.5H4.75Zm9.225-1.5c-.116-.57-.62-1-1.225-1h-1.5c-.605 0-1.11.43-1.225 1h3.95Z"
       fill="currentColor"
       fillRule="evenodd"
+    />
+    <path
+      d="M10.5 13a.75.75 0 0 1 .75.75v2a.75.75 0 0 1-1.5 0v-2a.75.75 0 0 1 .75-.75Zm3.75.75a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0v-2Z"
+      fill="currentColor"
     />
   </IconBase>
 ));

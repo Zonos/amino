@@ -18,16 +18,14 @@ export const UserDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M4 17a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-2Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7Z"
-      fill="currentColor"
-      fillRule="evenodd"
+      d="M12 13.25c-4.586 0-6.753 1.9-7.733 3.64a1.903 1.903 0 0 0 .205 2.228c.477.562 1.236.882 2.035.882h10.986c.799 0 1.559-.32 2.035-.882a1.905 1.905 0 0 0 .206-2.228c-.98-1.74-3.148-3.64-7.734-3.64Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
   </IconBase>
 ));

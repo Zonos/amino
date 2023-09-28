@@ -17,13 +17,13 @@ export const PercentDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M10.5 6.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm9 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+      d="M8.25 5.5a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5Zm7.5 7.5a2.75 2.75 0 1 0 0 5.5 2.75 2.75 0 0 0 0-5.5Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
       clipRule="evenodd"
-      d="M18.6 3.2a1 1 0 0 1 .2 1.4l-12 16a1 1 0 0 1-1.6-1.2l12-16a1 1 0 0 1 1.4-.2Z"
+      d="M17.78 6.22a.75.75 0 0 1 0 1.06l-10.5 10.5a.75.75 0 0 1-1.06-1.06l10.5-10.5a.75.75 0 0 1 1.06 0Z"
       fill="currentColor"
       fillRule="evenodd"
     />

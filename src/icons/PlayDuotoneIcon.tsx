@@ -13,10 +13,8 @@ export const PlayDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        clipRule="evenodd"
-        d="M4 5.608c0-2.356 2.592-3.792 4.59-2.544l10.226 6.392c1.88 1.175 1.88 3.913 0 5.088L8.59 20.935C6.592 22.185 4 20.748 4 18.391V5.608Z"
+        d="M18.508 14.46c2.027-1.014 2.027-3.906 0-4.92L7.98 4.276C6.15 3.362 4 4.692 4 6.736v10.528c0 2.044 2.151 3.374 3.98 2.46l10.528-5.264Z"
         fill="currentColor"
-        fillRule="evenodd"
       />
     </IconBase>
   ),

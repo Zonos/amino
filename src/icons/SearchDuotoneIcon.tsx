@@ -1,22 +1,31 @@
 import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
+import { theme } from 'src/styles/constants/theme';
+import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
-export const SearchDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
-  ({ className, color, size }, ref) => (
-    <IconBase
-      ref={ref}
-      className={className}
-      color={color || 'gray400'}
-      size={size}
-      viewBox="0 0 24 24"
-    >
-      <circle cx="10" cy="10" fill="#C5C6CA" r="7" />
-      <path
-        d="m14.192 15.606 5.101 5.101a1 1 0 0 0 1.414-1.414l-5.1-5.1a7.043 7.043 0 0 1-1.415 1.413Z"
-        fill="currentColor"
-      />
-    </IconBase>
-  ),
-);
+export const SearchDuotoneIcon = forwardRef<
+  SVGSVGElement,
+  IconProps & { secondaryColor?: Color }
+>(({ className, color, secondaryColor, size }, ref) => (
+  <IconBase
+    ref={ref}
+    className={className}
+    color={color || 'gray800'}
+    size={size}
+    viewBox="0 0 24 24"
+  >
+    <path
+      clipRule="evenodd"
+      d="M10.75 5.5a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5ZM4 10.75a6.75 6.75 0 1 1 12.024 4.213l3.756 3.757a.75.75 0 1 1-1.06 1.06l-3.757-3.756A6.75 6.75 0 0 1 4 10.75Z"
+      fill="currentColor"
+      fillRule="evenodd"
+    />
+    <path
+      d="M10.75 4a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+    />
+  </IconBase>
+));

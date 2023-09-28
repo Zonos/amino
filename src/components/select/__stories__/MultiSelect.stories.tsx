@@ -102,7 +102,7 @@ ActiveMultiSelectWithCutoff.parameters = {
 export const ActiveMultiSelectWithCutoffWithIcon = MultiSelectTemplate.bind({});
 
 ActiveMultiSelectWithCutoffWithIcon.args = {
-  icon: <PlayCircleIcon size={20} />,
+  icon: <PlayCircleIcon size={24} />,
   label: 'Currencies',
   options: [
     {

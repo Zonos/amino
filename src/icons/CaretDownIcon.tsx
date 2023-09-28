@@ -13,10 +13,8 @@ export const CaretDownIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        clipRule="evenodd"
-        d="M6.075 10.006c-.849-.97-.16-2.487 1.129-2.487h9.592c1.289 0 1.978 1.517 1.129 2.487l-4.796 5.482a1.5 1.5 0 0 1-2.258 0l-4.796-5.482Z"
+        d="M8.26 9a1 1 0 0 0-.792 1.611l3.74 4.842a1 1 0 0 0 1.583 0l3.741-4.842A1 1 0 0 0 15.741 9H8.259Z"
         fill="currentColor"
-        fillRule="evenodd"
       />
     </IconBase>
   ),

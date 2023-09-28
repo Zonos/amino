@@ -109,12 +109,12 @@ const SwitchContainer = styled.label<{
 
 const SwitchIcon = styled.div<{ left?: boolean }>`
   position: absolute;
-  top: 6px;
-  left: ${p => (p.left ? '5.8px' : 'auto')};
-  right: ${p => (p.left ? 'auto' : '5.6px')};
+  top: 4px;
+  left: ${p => (p.left ? '4px' : 'auto')};
+  right: ${p => (p.left ? 'auto' : '4px')};
   svg {
-    height: 20px;
-    width: 20px;
+    height: 24px;
+    width: 24px;
   }
 `;
 

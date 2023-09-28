@@ -17,17 +17,13 @@ export const FileDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M8.053 2.817A3 3 0 0 1 10.11 2H17a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7.93a3 3 0 0 1 .943-2.183l3.11-2.93Z"
+      d="M7.75 3A2.75 2.75 0 0 0 5 5.75v12.5A2.75 2.75 0 0 0 7.75 21h8.5A2.75 2.75 0 0 0 19 18.25V9.59a1 1 0 0 0-.229-.637l-4.618-5.59a1 1 0 0 0-.77-.363H7.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M8.053 2.817A3 3 0 0 1 10.11 2h.09a1.1 1.1 0 0 1 1.1 1.1v2.785a3 3 0 0 1-3 3H5.085C4.485 8.885 4 8.399 4 7.8a2.7 2.7 0 0 1 .847-1.963l3.206-3.02Z"
+      d="M14.078 3.272a.75.75 0 0 0-1.328.478V8.5c0 .967.784 1.75 1.75 1.75h3.75a.75.75 0 0 0 .578-1.228l-4.75-5.75Z"
       fill="currentColor"
-      fillRule="evenodd"
     />
   </IconBase>
 ));

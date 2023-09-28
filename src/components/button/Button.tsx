@@ -117,13 +117,24 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   white-space: nowrap;
   padding: ${p => getPadding(p.size)};
   width: ${p => p.fitContentWidth && 'fit-content'};
+  text-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.02),
+    0px 1px 2px rgba(0, 0, 0, 0.04);
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
   }
 
+  .text {
+    padding: 0 ${theme.space4};
+  }
+
   &.only-icon {
     width: ${p => `var(--amino-size-${p.size})`};
+    padding: 0;
+  }
+
+  &.only-icon .text {
     padding: 0;
   }
 
@@ -145,13 +156,15 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
   &:not(.only-icon).has-icon {
     &.icon-right {
       svg:not(.amino-spinner) {
-        margin-left: ${theme.space8};
+        margin-left: 2px;
         margin-right: 0;
+        opacity: 80%;
       }
     }
     svg:not(.amino-spinner) {
-      margin-right: ${theme.space8};
+      margin-right: 2px;
       margin-left: 0;
+      opacity: 80%;
     }
   }
   &.loading {
@@ -473,7 +486,7 @@ export function Button<T extends GroupTag = 'button'>({
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
       <span className="content">{!iconRight && icon}</span>
-      <div className="content">{children}</div>
+      <div className="content text">{children}</div>
       <span className="content">{iconRight && icon}</span>
       {variant !== 'plain' && variant !== 'text' && loading && (
         <StyledSpinnerWrapper>

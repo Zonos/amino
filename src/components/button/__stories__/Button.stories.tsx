@@ -77,14 +77,14 @@ const ButtonRow = ({
       <Button
         {...props}
         disabled={disabled}
-        icon={<CubeIcon size={20} />}
+        icon={<CubeIcon size={24} />}
         loading={loading}
         variant={variant}
       />
       <Button
         {...props}
         disabled={disabled}
-        icon={<CubeIcon size={20} />}
+        icon={<CubeIcon size={24} />}
         iconRight
         loading={loading}
         variant={variant}
@@ -94,7 +94,7 @@ const ButtonRow = ({
         /*  eslint-disable-next-line react/no-children-prop */
         children=""
         disabled={disabled}
-        icon={<CubeIcon size={20} />}
+        icon={<CubeIcon size={24} />}
         loading={loading}
         variant={variant}
       />
@@ -102,7 +102,7 @@ const ButtonRow = ({
         /*  eslint-disable-next-line react/no-children-prop */
         children=""
         disabled={disabled}
-        icon={<CubeIcon size={20} />}
+        icon={<CubeIcon size={24} />}
         loading={loading}
         onClick={e => e.preventDefault()}
         outline={props.outline}

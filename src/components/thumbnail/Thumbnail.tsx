@@ -45,8 +45,8 @@ const Wrapper = styled.div<StyleProps>`
   svg {
     color: ${p => theme[`${p.color}800`]};
 
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
 
     path[data-is-secondary-color] {
       fill: ${p => theme[`${p.color}400`]};

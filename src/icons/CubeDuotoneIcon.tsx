@@ -17,15 +17,13 @@ export const CubeDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M10.658 2.553a3 3 0 0 1 2.684 0l6 3A3 3 0 0 1 21 8.236v7.528a3 3 0 0 1-1.658 2.683l-6 3a3 3 0 0 1-2.684 0l-6-3A3 3 0 0 1 3 15.764V8.236a3 3 0 0 1 1.658-2.683l6-3Z"
+      d="M12.41 4.112a1 1 0 0 0-.82 0l-7 3.154a1 1 0 0 0-.59.912v7.644a1 1 0 0 0 .59.912l7 3.153a1 1 0 0 0 .82 0l7-3.153a1 1 0 0 0 .59-.912V8.178a1 1 0 0 0-.59-.912l-7-3.154Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M5.106 7.553a1 1 0 0 1 1.341-.447L12 9.882l5.553-2.776a1 1 0 1 1 .894 1.788L13 11.618V19a1 1 0 1 1-2 0v-7.382L5.553 8.894a1 1 0 0 1-.447-1.341Z"
+      d="M5.32 8.148a.75.75 0 0 1 .996-.364L12 10.424l5.684-2.64a.75.75 0 0 1 .632 1.36L12.75 11.73V18a.75.75 0 0 1-1.5 0v-6.271L5.684 9.145a.75.75 0 0 1-.364-.997Z"
       fill="currentColor"
       fillRule="evenodd"
     />

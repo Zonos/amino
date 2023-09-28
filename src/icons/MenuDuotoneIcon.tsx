@@ -18,16 +18,14 @@ export const MenuDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M5 12a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M4 7.75A.75.75 0 0 1 4.75 7h14.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 7.75Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M5 7a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
-      fill="currentColor"
-      fillRule="evenodd"
+      d="M4.75 11a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H4.75Zm0 4a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H4.75Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
   </IconBase>
 ));

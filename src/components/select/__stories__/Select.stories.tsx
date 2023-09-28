@@ -85,7 +85,7 @@ export const BasicSelectWithIcon = SelectTemplate.bind({});
 BasicSelectWithIcon.args = {
   error: true,
   helpText: 'This input is required',
-  icon: <FileIcon size={20} />,
+  icon: <FileIcon size={24} />,
   label: 'Currencies',
   options: currencyOptions,
   value: {
@@ -123,23 +123,23 @@ BasicSelectWithOptionIcon.args = {
 
 export const SelectWithDeveloperException = SelectTemplate.bind({});
 SelectWithDeveloperException.args = {
-  icon: <FileIcon size={20} />,
+  icon: <FileIcon size={24} />,
   label: 'Currencies',
   options: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },
   ],
   value: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
@@ -164,23 +164,23 @@ const customOption: SelectProps['customOption'] = (value: string | number) => (
 
 Customized.args = {
   customOption,
-  icon: <FileIcon size={20} />,
+  icon: <FileIcon size={24} />,
   label: 'Currencies',
   options: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },
   ],
   value: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
@@ -267,12 +267,12 @@ export const SelectWithNumberOptions = () => {
   const [value, setValue] = useState<number>(1);
   const options = [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 1,
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'European Euro (EUR)',
       value: 2,
     },
@@ -280,7 +280,7 @@ export const SelectWithNumberOptions = () => {
   return (
     <div>
       <Select
-        icon={<FileIcon size={20} />}
+        icon={<FileIcon size={24} />}
         label="Currencies"
         onChange={item => item?.value && setValue(item.value)}
         options={options}

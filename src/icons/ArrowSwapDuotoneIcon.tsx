@@ -18,15 +18,15 @@ export const ArrowSwapDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M7.707 11.293a1 1 0 0 1 0 1.414L6.414 14H13a1 1 0 1 1 0 2H6.414l1.293 1.293a1 1 0 1 1-1.414 1.414l-2.647-2.646a1.5 1.5 0 0 1 0-2.122l2.647-2.646a1 1 0 0 1 1.414 0Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M15.822 12.284a.75.75 0 0 1 0-1.061l1.72-1.721H8.75a.75.75 0 1 1 0-1.5h8.793L15.82 6.28a.75.75 0 1 1 1.06-1.06l2.826 2.825a1 1 0 0 1 0 1.414l-2.824 2.825a.75.75 0 0 1-1.061 0Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M16.293 5.293a1 1 0 0 1 1.414 0l2.647 2.646a1.5 1.5 0 0 1 0 2.122l-2.647 2.646a1 1 0 0 1-1.414-1.414L17.586 10H11a1 1 0 1 1 0-2h6.586l-1.293-1.293a1 1 0 0 1 0-1.414Z"
-      fill="currentColor"
+      d="M8.178 11.716a.75.75 0 0 1 0 1.061l-1.72 1.721h8.792a.75.75 0 0 1 0 1.5H6.457L8.18 17.72a.75.75 0 1 1-1.06 1.06l-2.826-2.825a1 1 0 0 1 0-1.414l2.824-2.825a.75.75 0 0 1 1.061 0Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"
     />
   </IconBase>

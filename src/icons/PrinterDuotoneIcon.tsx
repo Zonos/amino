@@ -17,14 +17,12 @@ export const PrinterDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M3 11a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-5Z"
+      d="M17.25 18.25h-.864A2.501 2.501 0 0 1 14 20h-4a2.501 2.501 0 0 1-2.386-1.75H6.75A2.75 2.75 0 0 1 4 15.5V11a2.75 2.75 0 0 1 2.75-2.75h10.5A2.75 2.75 0 0 1 20 11v4.5a2.75 2.75 0 0 1-2.75 2.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      d="M9.5 3a2 2 0 0 0-2 2v3h9V5a2 2 0 0 0-2-2h-5Zm-1 11a1 1 0 0 0-1 1v4a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-4a1 1 0 0 0-1-1h-7Z"
+      d="M7.5 6.75A2.75 2.75 0 0 1 10.25 4h3.5a2.75 2.75 0 0 1 2.75 2.75v1.496H15V6.75c0-.69-.56-1.25-1.25-1.25h-3.5C9.56 5.5 9 6.06 9 6.75v1.496H7.5V6.75Zm1 6.5a1 1 0 0 0-1 1v3.25A2.5 2.5 0 0 0 10 20h4a2.5 2.5 0 0 0 2.5-2.5v-3.25a1 1 0 0 0-1-1h-7Z"
       fill="currentColor"
     />
   </IconBase>

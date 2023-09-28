@@ -18,16 +18,14 @@ export const MonitorDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M12 15.25a.75.75 0 0 1 .75.75v2.5H16a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5h3.25V16a.75.75 0 0 1 .75-.75Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M13 17v2h4a1 1 0 1 1 0 2H7a1 1 0 1 1 0-2h4v-2h2Z"
-      fill="currentColor"
-      fillRule="evenodd"
+      d="M6.75 4A2.75 2.75 0 0 0 4 6.75v7a2.75 2.75 0 0 0 2.75 2.75h10.5A2.75 2.75 0 0 0 20 13.75v-7A2.75 2.75 0 0 0 17.25 4H6.75Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
   </IconBase>
 ));

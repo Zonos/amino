@@ -17,12 +17,12 @@ export const LaptopDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v9.02H3V6Z"
+      d="M6.75 5A2.75 2.75 0 0 0 4 7.75v7.5h16v-7.5A2.75 2.75 0 0 0 17.25 5H6.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
-      d="M21 15.02a2 2 0 0 1 1.66 2.465l-.311 1.243A3 3 0 0 1 19.439 21H4.561a3 3 0 0 1-2.91-2.272l-.312-1.243A2 2 0 0 1 3 15.02L5 15h14l2 .02Z"
+      d="M4 13a1 1 0 0 0-1 1v2.25A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25V14a1 1 0 0 0-1-1h-4.97a2.75 2.75 0 0 0-1.816.684l-.389.342a1.25 1.25 0 0 1-1.65 0l-.39-.342A2.75 2.75 0 0 0 8.97 13H4Z"
       fill="currentColor"
     />
   </IconBase>
