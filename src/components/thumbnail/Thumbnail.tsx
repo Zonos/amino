@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import type { ImageSize } from 'src/components/avatar/AvatarBase';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { ColorPrefix } from 'src/types/Color';
 
 const thumbnailShapes = {
@@ -12,7 +13,7 @@ const thumbnailShapes = {
   square: '0px',
 } as const;
 
-export type ThumbnailProps = {
+export type ThumbnailProps = BaseProps & {
   /** @default 'gray' */
   color?: ColorPrefix;
   icon: ReactNode;
@@ -55,13 +56,20 @@ const Wrapper = styled.div<StyleProps>`
 `;
 
 export const Thumbnail = ({
+  className,
   color = 'gray',
   icon,
   intent = 'full',
   shape = 'round',
   size = 32,
 }: ThumbnailProps) => (
-  <Wrapper color={color} intent={intent} shape={shape} size={size}>
+  <Wrapper
+    className={className}
+    color={color}
+    intent={intent}
+    shape={shape}
+    size={size}
+  >
     {icon}
   </Wrapper>
 );
