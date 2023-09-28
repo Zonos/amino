@@ -1,15 +1,11 @@
 import { getColorVariables } from 'svgReact/build-utils/getColorVariables';
 
-test('BookmarkAdd', () => {
-  const fileContent = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 2a4 4 0 0 0-4 4v14c0 1.684 1.953 2.615 3.26 1.554l4.11-3.335a1 1 0 0 1 1.26 0l4.11 3.335c1.307 1.06 3.26.13 3.26-1.553V6a4 4 0 0 0-4-4H8Z" fill="#CACACE"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1V8a1 1 0 0 1 1-1Z" fill="#3D3D42"/></svg>
+test.only('BookmarkAdd', () => {
+  const fileContent = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="#C5C6CA" d="M7.75 3A2.75 2.75 0 0 0 5 5.75v14.278a1 1 0 0 0 1.562.827l4.735-3.22a1.25 1.25 0 0 1 1.406 0l4.735 3.22A1 1 0 0 0 19 20.028V5.75A2.75 2.75 0 0 0 16.25 3h-8.5Z"/><path fill="#4D505A" fill-rule="evenodd" d="M12 6.5a.75.75 0 0 1 .75.75v2h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2h-2a.75.75 0 0 1 0-1.5h2v-2A.75.75 0 0 1 12 6.5Z" clip-rule="evenodd"/></svg>
     `;
   const result = getColorVariables({ fileContent, isDuotone: true });
   expect(result).toMatchInlineSnapshot(`
-    "<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 2a4 4 0 0 0-4 4v14c0 1.684 1.953 2.615 3.26 1.554l4.11-3.335a1 1 0 0 1 1.26 0l4.11 3.335c1.307 1.06 3.26.13 3.26-1.553V6a4 4 0 0 0-4-4H8Z" fill={secondaryColor ? \`\${theme[secondaryColor]}\` : \`\${theme.gray400}\`} data-is-secondary-color="true" />
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1V8a1 1 0 0 1 1-1Z" fill="currentColor"/></svg>
+    "<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill={secondaryColor ? \`\${theme[secondaryColor]}\` : \`\${theme.gray400}\`} data-is-secondary-color="true"  d="M7.75 3A2.75 2.75 0 0 0 5 5.75v14.278a1 1 0 0 0 1.562.827l4.735-3.22a1.25 1.25 0 0 1 1.406 0l4.735 3.22A1 1 0 0 0 19 20.028V5.75A2.75 2.75 0 0 0 16.25 3h-8.5Z"/><path fill="currentColor" fill-rule="evenodd" d="M12 6.5a.75.75 0 0 1 .75.75v2h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2h-2a.75.75 0 0 1 0-1.5h2v-2A.75.75 0 0 1 12 6.5Z" clip-rule="evenodd"/></svg>
         "
   `);
 });
