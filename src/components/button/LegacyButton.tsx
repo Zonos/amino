@@ -15,6 +15,7 @@ import { useRipple } from 'src/components/button/useRipple';
 import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Intent } from 'src/types/Intent';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
@@ -314,12 +315,11 @@ const LinkButton = styled(AminoButton)<LegacyButtonProps<GroupTag>>`
 
 type IntentProps = 'outline' | 'subtle' | 'text' | 'link' | 'plain' | Intent;
 
-type ButtonBase = {
+type ButtonBase = BaseProps & {
   background?: Color | 'inherit';
   /** @param borderColor only available for intent 'outline' */
   borderColor?: Color | 'inherit';
   children?: ReactNode;
-  className?: string;
   color?: Color | 'inherit';
   disabled?: boolean;
   hoverBackground?: Color | 'inherit';

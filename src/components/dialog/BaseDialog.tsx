@@ -5,6 +5,7 @@ import { type MotionProps, AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 
 const Backdrop = styled(motion.div)`
@@ -34,9 +35,8 @@ const Popup = styled(motion.div)<{ width: number; withBorder: boolean }>`
   flex-direction: column;
 `;
 
-export type BaseDialogProps = {
+export type BaseDialogProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
    */

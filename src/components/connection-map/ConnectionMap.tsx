@@ -13,6 +13,7 @@ import { feature } from 'topojson-client';
 
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import { type ICountryOption } from 'src/types/ICountry';
 import { type IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
@@ -50,7 +51,7 @@ const getScale = (xDistance: number, yDistance: number) => {
   );
 };
 
-type Props = {
+type Props = BaseProps & {
   countries: ICountryOption[];
   from: string;
   height?: number;
@@ -59,6 +60,7 @@ type Props = {
 };
 
 export const ConnectionMap = ({
+  className,
   countries,
   from,
   height = 400,
@@ -144,7 +146,7 @@ export const ConnectionMap = ({
   }
 
   return (
-    <Map>
+    <Map className={className}>
       <ComposableMap
         height={height}
         projection="geoEqualEarth"

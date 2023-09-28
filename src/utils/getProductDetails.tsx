@@ -4,13 +4,13 @@ import {
   CheckoutColorIcon,
   ClassifyColorIcon,
   ClearColorIcon,
+  CollectColorIcon,
   CounterCompanionColorIcon,
   DashboardColorIcon,
-  DDPColorIcon,
-  DDUColorIcon,
   HelloColorIcon,
   InclusivePricingColorIcon,
   LandedCostColorIcon,
+  PrepayColorIcon,
   RateColorIcon,
   RestrictColorIcon,
   ScreenColorIcon,
@@ -24,8 +24,8 @@ export type Product =
   | 'clear'
   | 'counter-companion'
   | 'dashboard'
-  | 'ddp'
-  | 'ddu'
+  | 'prepay'
+  | 'collect'
   | 'hello'
   | 'inclusive-pricing'
   | 'landed-cost'
@@ -40,8 +40,8 @@ export type ProductName =
   | 'Clear'
   | 'Counter Companion'
   | 'Dashboard'
-  | 'DDP'
-  | 'DDU'
+  | 'Prepay'
+  | 'Collect'
   | 'Hello'
   | 'Inclusive Pricing'
   | 'Landed Cost'
@@ -141,19 +141,19 @@ export const getProductDetails = ({
         icon: <ScreenColorIcon size={iconSize} />,
         name: 'Screen',
       };
-    case 'ddp':
+    case 'prepay':
       return {
         color: 'blue',
         gradient: 'linear-gradient(270deg, #4560EE 32.33%, #65E4EF 126.81%)',
-        icon: <DDPColorIcon size={iconSize} />,
-        name: 'DDP',
+        icon: <PrepayColorIcon size={iconSize} />,
+        name: 'Prepay',
       };
-    case 'ddu':
+    case 'collect':
       return {
         color: 'red',
         gradient: 'linear-gradient(135deg, #DC2A54 46.38%, #D078FC 78.57%)',
-        icon: <DDUColorIcon size={iconSize} />,
-        name: 'DDU',
+        icon: <CollectColorIcon size={iconSize} />,
+        name: 'Collect',
       };
     case 'tax':
       return {

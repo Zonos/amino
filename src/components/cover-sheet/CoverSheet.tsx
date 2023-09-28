@@ -10,6 +10,7 @@ import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const StyledDialog = styled(motion.div)`
@@ -59,12 +60,11 @@ const Content = styled.div`
   padding: ${theme.space24};
 `;
 
-export type CoverSheetProps = {
+export type CoverSheetProps = BaseProps & {
   /** used for setting id of the wrapper of where the action will be located */
   actionWrapperId?: string;
   actions?: ReactNode;
   children: ReactNode;
-  className?: string;
   label: string;
   open: boolean;
   themeOverride?: Theme;

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const StyledCard = styled.div<{ spacing?: string }>`
   border: ${theme.border};
@@ -54,10 +55,9 @@ const CardFooter = styled.div<{ footerHeight?: number; spacing?: string }>`
   height: ${p => p.footerHeight && `${p.footerHeight}px`};
 `;
 
-export type CardProps = {
+export type CardProps = BaseProps & {
   actions?: ReactNode;
   children: ReactNode;
-  className?: string;
   footerActions?: ReactNode;
   footerContent?: ReactNode;
   footerHeight?: number;

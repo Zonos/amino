@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const StyledCurrency = styled.span`
   font-feature-settings: 'tnum' 1;
@@ -11,9 +12,8 @@ const StyledCurrency = styled.span`
   gap: ${theme.space4};
 `;
 
-type Props = {
+type Props = BaseProps & {
   amount: number;
-  className?: string;
   code: string;
 };
 

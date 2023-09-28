@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import { getTestId } from 'src/utils/getTestId';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
@@ -97,17 +98,17 @@ const CheckboxContainer = styled.label<{ checked: boolean }>`
 export type CheckboxProps = Omit<
   ComponentPropsWithoutRef<'label'>,
   'onClick' | 'onChange'
-> & {
-  checked: boolean;
-  className?: string;
-  disabled?: boolean;
-  icon?: ReactNode;
-  label?: string;
-  labelComponent?: ReactNode;
-  labelDescription?: string;
-  subtitle?: string;
-  onChange: (checked: boolean, event: MouseEvent<HTMLLabelElement>) => void;
-};
+> &
+  BaseProps & {
+    checked: boolean;
+    disabled?: boolean;
+    icon?: ReactNode;
+    label?: string;
+    labelComponent?: ReactNode;
+    labelDescription?: string;
+    subtitle?: string;
+    onChange: (checked: boolean, event: MouseEvent<HTMLLabelElement>) => void;
+  };
 
 export const Checkbox = ({
   checked = false,

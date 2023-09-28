@@ -12,6 +12,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Color, Theme } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const StyledVStack = styled(VStack)`
@@ -40,10 +41,9 @@ const ChildWrapper = styled.div`
   }
 `;
 
-export type TooltipProps = {
+export type TooltipProps = BaseProps & {
   background?: Color;
   children: ReactNode;
-  className?: string;
   open?: boolean;
   showTooltip: boolean;
   subtitle: ReactNode | string | null;

@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 interface AminoListItemProps {
   disabled?: boolean;
@@ -74,8 +75,7 @@ const Icon = styled.img`
   border-radius: ${theme.radius6};
 `;
 
-export type Props = {
-  className?: string;
+export type Props = BaseProps & {
   /** @description Decorater takes a React node, preferably an icon or an avatar */
   decorator?: ReactNode;
   disabled?: boolean;

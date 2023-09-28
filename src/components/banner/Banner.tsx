@@ -12,6 +12,7 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Color, Intent } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const StyledBanner = styled.div`
   border-radius: ${theme.radius12};
@@ -101,9 +102,8 @@ const ErrorBanner = styled(StyledBanner)`
   border: 1px solid ${theme.red200};
 `;
 
-export type BannerProps = {
+export type BannerProps = BaseProps & {
   children?: ReactNode;
-  className?: string;
   footerActions?: ReactNode;
   headerActions?: ReactNode;
   intent?: Exclude<Intent, 'danger' | 'secondary' | 'primary'>;

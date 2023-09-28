@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
 import { type StyledProps } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
 import { type Product, getProductDetails } from 'src/utils/getProductDetails';
 
@@ -43,9 +44,8 @@ const Wrapper = styled.div<StyledProps<GlowWrapperProps>>`
   }
 `;
 
-type Props = {
+type Props = BaseProps & {
   children?: ReactNode;
-  className?: string;
   /**
    * @default 'gray600'
    */

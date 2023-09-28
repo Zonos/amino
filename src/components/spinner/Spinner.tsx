@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 // Stop container from scrolling when it rotates
 const Wrapper = styled.div<{ size: number }>`
@@ -99,8 +100,7 @@ export type SpinnerColor =
   | 'black'
   | 'white';
 
-export type SpinnerProps = {
-  className?: string;
+export type SpinnerProps = BaseProps & {
   /**
    * @default 'primary'
    */

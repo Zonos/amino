@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const DividerHorizontal = styled.hr`
   margin: ${theme.space24} 0;
@@ -14,8 +15,7 @@ const DividerVertical = styled.hr`
   border-right: solid thin ${theme.borderColor};
 `;
 
-type Props = {
-  className?: string;
+type Props = BaseProps & {
   vertical?: boolean;
 };
 
