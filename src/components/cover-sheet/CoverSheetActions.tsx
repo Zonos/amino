@@ -4,14 +4,14 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 import { HStack } from 'src/components/stack/HStack';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Actions = styled.div`
   z-index: 990;
 `;
 
-export type CoverSheetProps = {
+export type CoverSheetProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   /**
    * Determine where to put this actions in the coversheet
    * @default id for coversheet component is `__cover-sheet-actions`

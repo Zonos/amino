@@ -6,6 +6,7 @@ import { LegacyButton } from 'src/components/button/LegacyButton';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 type WrapperProps = {
   disabled: boolean;
@@ -86,8 +87,7 @@ type UploadFileNoImage = {
   size?: string;
 };
 
-export type FileUploadProps = {
-  className?: string;
+export type FileUploadProps = BaseProps & {
   /**
    * This `disabled` state only applies when no file is selected
    * @default false

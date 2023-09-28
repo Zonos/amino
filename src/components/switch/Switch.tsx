@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const AminoSwitch = styled.div<{ checked: boolean }>`
   background: ${theme.gray0};
@@ -118,9 +119,8 @@ const SwitchIcon = styled.div<{ left?: boolean }>`
   }
 `;
 
-export type SwitchProps = {
+export type SwitchProps = BaseProps & {
   checked: boolean;
-  className?: string;
   disabled?: boolean;
   label?: string;
   labelDescription?: string;

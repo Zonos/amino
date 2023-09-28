@@ -16,6 +16,7 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { MinusCircleDuotoneIcon } from 'src/icons/MinusCircleDuotoneIcon';
 import { PlusCircleDuotoneIcon } from 'src/icons/PlusCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Wrapper = styled.div`
   position: relative;
@@ -90,8 +91,7 @@ const ControlsWrapper = styled.div`
   gap: ${theme.space12};
 `;
 
-export type BaseFilterProps = {
-  className?: string;
+export type BaseFilterProps = BaseProps & {
   dropdownTitle: string;
   label: string;
 };

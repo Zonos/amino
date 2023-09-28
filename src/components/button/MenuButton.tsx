@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { Surface } from 'src/components/surface/Surface';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Wrapper = styled.div`
   position: relative;
@@ -23,7 +24,7 @@ const AnimatedSurface = styled(Surface)`
   width: max-content;
 `;
 
-export type MenuButtonProps = {
+export type MenuButtonProps = BaseProps & {
   action: ReactNode;
   children: ReactNode;
   open: boolean;
@@ -33,6 +34,7 @@ export type MenuButtonProps = {
 export const MenuButton = ({
   action,
   children,
+  className,
   open,
   setOpen,
 }: MenuButtonProps) => {
@@ -58,7 +60,7 @@ export const MenuButton = ({
   }, [handleClick]);
 
   return (
-    <Wrapper ref={wrapperRef}>
+    <Wrapper ref={wrapperRef} className={className}>
       {action}
       {open && (
         <AnimatedSurface dense depth="depth16">

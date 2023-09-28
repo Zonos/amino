@@ -7,6 +7,7 @@ import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Table = styled.table`
   width: 100%;
@@ -97,8 +98,7 @@ export type SimpleTableHeader<T extends object> = {
   } & SimpleTableHeaderBaseProps;
 }[keyof T extends React.Key ? keyof T : never];
 
-export type SimpleTableProps<T extends object> = {
-  className?: string;
+export type SimpleTableProps<T extends object> = BaseProps & {
   headers: SimpleTableHeader<T>[];
   items: T[];
   /**

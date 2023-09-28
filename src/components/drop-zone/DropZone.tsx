@@ -11,6 +11,7 @@ import { FileDuotoneIcon } from 'src/icons/FileDuotoneIcon';
 import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import { type UploadedFile } from 'src/types/UploadedFile';
 
 const Wrapper = styled.div<{ disabled: boolean }>`
@@ -110,8 +111,7 @@ const UploadedFileInfoWrapper = styled.div`
   flex-direction: column;
 `;
 
-export type DropZoneProps = {
-  className?: string;
+export type DropZoneProps = BaseProps & {
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
