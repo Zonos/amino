@@ -104,7 +104,7 @@ export const DateInput = ({
                 }}
                 type="button"
               >
-                <CalendarIcon size={20} />
+                <CalendarIcon size={24} />
               </StyledButtonAction>
             </StyledActionWrapper>
           )

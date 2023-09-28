@@ -106,7 +106,7 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
     return (
       <StyledWrapper className={className}>
         <StyledLabel htmlFor={inputId}>
-          <SearchIcon color="gray600" size={20} />
+          <SearchIcon color="gray600" size={24} />
         </StyledLabel>
         <AminoInput
           ref={ref}

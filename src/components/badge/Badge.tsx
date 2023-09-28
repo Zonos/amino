@@ -20,7 +20,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   display: flex;
   gap: ${theme.space4};
   font-size: ${theme.fontSizeS};
-  padding: 4px 8px;
+  padding: 2px 8px;
   text-align: center;
   border-radius: ${p => (p.$rounded ? '20px' : theme.radius6)};
   background-color: ${theme.gray100};
@@ -30,12 +30,12 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   p {
     margin: 0;
     font-weight: ${p => p.$fontWeight};
-    line-height: 16px;
+    line-height: 20px;
   }
   svg {
     order: ${p => (p.$iconRight ? '2' : '')};
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
   }
 
   &.bold {
@@ -49,7 +49,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
 
   // size
   &.small {
-    padding: 2px ${theme.space4};
+    padding: 0px ${theme.space4};
     border-radius: ${theme.radius4};
     gap: 2px;
   }

@@ -17,15 +17,13 @@ export const FolderListDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M2 7a3 3 0 0 1 3-3h4.882c1.064 0 2.037.601 2.512 1.553a.81.81 0 0 0 .724.447H19a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7Z"
+      d="M5.75 5A2.75 2.75 0 0 0 3 7.75v8.5A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25V9.673a2.75 2.75 0 0 0-2.75-2.75h-5.635a.25.25 0 0 1-.223-.137l-.416-.824A1.75 1.75 0 0 0 10.414 5H5.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M7.99 11a1 1 0 0 1 1-1H9a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 11a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1Zm-4.01 4a1 1 0 0 1 1-1H9a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 15a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1Z"
+      d="M15.75 11a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5H15a.75.75 0 0 1 .75.75ZM15 15.75a.75.75 0 0 0 0-1.5h-2.5a.75.75 0 0 0 0 1.5H15Zm-5.5 0a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h.5Zm0-4a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h.5Z"
       fill="currentColor"
       fillRule="evenodd"
     />

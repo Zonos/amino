@@ -104,7 +104,7 @@ export const TimeInput = ({
                 }}
                 type="button"
               >
-                <ClockIcon size={20} />
+                <ClockIcon size={24} />
               </StyledButtonAction>
             </StyledActionWrapper>
           )

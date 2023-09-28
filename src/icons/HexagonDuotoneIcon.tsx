@@ -13,10 +13,8 @@ export const HexagonDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        clipRule="evenodd"
-        d="M21.788 10.5a3 3 0 0 1 0 3l-3.595 6.227a3 3 0 0 1-2.598 1.5h-7.19a3 3 0 0 1-2.599-1.5L2.211 13.5a3 3 0 0 1 0-3l3.595-6.227a3 3 0 0 1 2.599-1.5h7.19a3 3 0 0 1 2.598 1.5l3.595 6.227Z"
+        d="M9.045 4a2.75 2.75 0 0 0-2.51 1.625l-2.353 5.25a2.75 2.75 0 0 0 0 2.25l2.353 5.25A2.75 2.75 0 0 0 9.045 20h5.91a2.75 2.75 0 0 0 2.509-1.625l2.353-5.25a2.75 2.75 0 0 0 0-2.25l-2.353-5.25A2.75 2.75 0 0 0 14.954 4h-5.91Z"
         fill="currentColor"
-        fillRule="evenodd"
       />
     </IconBase>
   ),

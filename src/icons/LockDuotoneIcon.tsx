@@ -17,17 +17,13 @@ export const LockDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M4 12a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-6Z"
+      d="M7.75 9.5A2.75 2.75 0 0 0 5 12.25v5A2.75 2.75 0 0 0 7.75 20h8.5A2.75 2.75 0 0 0 19 17.25v-5a2.75 2.75 0 0 0-2.75-2.75h-8.5Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M11 5a1 1 0 0 0-1 1v3H8V6a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v3h-2V6a1 1 0 0 0-1-1h-2Zm1 9a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Z"
+      d="M10 6.75c0-.69.56-1.25 1.25-1.25h1.5c.69 0 1.25.56 1.25 1.25V9.5h1.5V6.75A2.75 2.75 0 0 0 12.75 4h-1.5A2.75 2.75 0 0 0 8.5 6.75V9.5H10V6.75Zm2.75 8a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0v-2Z"
       fill="currentColor"
-      fillRule="evenodd"
     />
   </IconBase>
 ));

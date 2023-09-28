@@ -46,7 +46,7 @@ const ClearIndicator = <
   props: ClearIndicatorProps<Option, IsMulti, Group>,
 ) => (
   <RScomponents.ClearIndicator {...props}>
-    <RemoveCircleIcon size={19} />
+    <RemoveCircleIcon size={24} />
   </RScomponents.ClearIndicator>
 );
 
@@ -58,7 +58,7 @@ const DropdownIndicator = <
   props: DropdownIndicatorProps<Option, IsMulti, Group>,
 ) => (
   <RScomponents.DropdownIndicator {...props}>
-    <DoubleChevronIcon size={20} />
+    <DoubleChevronIcon size={24} />
   </RScomponents.DropdownIndicator>
 );
 
@@ -324,7 +324,7 @@ export const CheckboxOptionComponent = <
         <IconLabel color={color} icon={data.icon}>
           {children}
         </IconLabel>
-        {isSelected && <CheckCircleIcon color="blue600" size={16} />}
+        {isSelected && <CheckCircleIcon color="blue600" size={24} />}
       </SelectedSingleOptionWrapper>
     );
   };

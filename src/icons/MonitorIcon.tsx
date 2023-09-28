@@ -14,7 +14,7 @@ export const MonitorIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6v2h4a1 1 0 1 1 0 2H7a1 1 0 1 1 0-2h4v-2H5a3 3 0 0 1-3-3V6Zm3-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H5Z"
+        d="M6.75 4A2.75 2.75 0 0 0 4 6.75v7a2.75 2.75 0 0 0 2.75 2.75h4.5v2H8A.75.75 0 0 0 8 20h8a.75.75 0 0 0 0-1.5h-3.25v-2h4.5A2.75 2.75 0 0 0 20 13.75v-7A2.75 2.75 0 0 0 17.25 4H6.75ZM5.5 6.75c0-.69.56-1.25 1.25-1.25h10.5c.69 0 1.25.56 1.25 1.25v7c0 .69-.56 1.25-1.25 1.25H6.75c-.69 0-1.25-.56-1.25-1.25v-7Z"
         fill="currentColor"
         fillRule="evenodd"
       />

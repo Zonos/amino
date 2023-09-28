@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import {
   type MenuButtonProps,
   MenuButton,
@@ -31,13 +31,13 @@ const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => {
   return (
     <MenuButton
       action={
-        <LegacyButton
-          icon={<ChevronDownIcon size={20} />}
+        <Button
+          icon={<ChevronDownIcon size={24} />}
           iconRight
           onClick={() => setOpen(!open)}
         >
           More...
-        </LegacyButton>
+        </Button>
       }
       open={open}
       setOpen={setOpen}
@@ -51,31 +51,31 @@ export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: (
     <Menu>
-      <MenuItem icon={<CodeIcon color="gray600" size={19} />}>
+      <MenuItem icon={<CodeIcon color="gray600" size={24} />}>
         View API details
       </MenuItem>
-      <MenuItem icon={<CartIcon color="gray600" size={19} />}>
+      <MenuItem icon={<CartIcon color="gray600" size={24} />}>
         Re-create customer cart
       </MenuItem>
-      <MenuItem icon={<MailIcon color="gray600" size={19} />}>
+      <MenuItem icon={<MailIcon color="gray600" size={24} />}>
         Re-send confirmation email
       </MenuItem>
-      <MenuItem icon={<UserIcon color="gray600" size={19} />}>
+      <MenuItem icon={<UserIcon color="gray600" size={24} />}>
         Blacklist customer
       </MenuItem>
-      <MenuItem icon={<ExternalIcon color="gray600" size={19} />}>
+      <MenuItem icon={<ExternalIcon color="gray600" size={24} />}>
         Open fraud tools
       </MenuItem>
-      <MenuItem icon={<CheckCircleIcon color="gray600" size={19} />}>
+      <MenuItem icon={<CheckCircleIcon color="gray600" size={24} />}>
         Approve
       </MenuItem>
-      <MenuItem icon={<RemoveCircleIcon color="gray600" size={19} />}>
+      <MenuItem icon={<RemoveCircleIcon color="gray600" size={24} />}>
         Deny
       </MenuItem>
-      <MenuItem icon={<SearchIcon color="gray600" size={19} />}>
+      <MenuItem icon={<SearchIcon color="gray600" size={24} />}>
         Investigate buyer
       </MenuItem>
-      <MenuItem icon={<EyeIcon color="gray600" size={19} />}>
+      <MenuItem icon={<EyeIcon color="gray600" size={24} />}>
         Request verification
       </MenuItem>
     </Menu>

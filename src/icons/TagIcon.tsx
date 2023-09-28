@@ -1,17 +1,10 @@
 import { forwardRef } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
-import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
-export const TagIcon = forwardRef<
-  SVGSVGElement,
-  IconProps & { secondaryColor?: Color }
->(({ className, color, secondaryColor, size }, ref) => {
-  const ids = useStableUniqueId(1);
-  return (
+export const TagIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ className, color, size }, ref) => (
     <IconBase
       ref={ref}
       className={className}
@@ -19,23 +12,16 @@ export const TagIcon = forwardRef<
       size={size}
       viewBox="0 0 24 24"
     >
-      <g clipPath={`url(#${ids[0]})`}>
-        <path
-          clipRule="evenodd"
-          d="M18.924 3.19a2 2 0 0 1 1.872 1.87l.388 6.206a3 3 0 0 1-.873 2.308l-6.932 6.932a3 3 0 0 1-4.243 0L3.48 14.85a3 3 0 0 1 0-4.242l6.932-6.932a3 3 0 0 1 2.309-.873l6.204.388ZM18.8 5.186l-6.205-.388a1 1 0 0 0-.77.29l-6.932 6.933a1 1 0 0 0 0 1.414l5.657 5.657a1 1 0 0 0 1.414 0l6.932-6.932a1 1 0 0 0 .291-.77L18.8 5.186ZM14.5 8a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
-          fill="currentColor"
-          fillRule="evenodd"
-        />
-      </g>
-      <defs>
-        <clipPath id={`${ids[0]}`}>
-          <path
-            d="M0 0h24v24H0z"
-            data-is-secondary-color="true"
-            fill={secondaryColor ? `${theme[secondaryColor]}` : '#fff'}
-          />
-        </clipPath>
-      </defs>
+      <path
+        d="M14.45 10.8a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z"
+        fill="currentColor"
+      />
+      <path
+        clipRule="evenodd"
+        d="M12.803 4a2.75 2.75 0 0 0-1.901.763l-6.043 5.782a2.75 2.75 0 0 0-.043 3.931l4.708 4.708a2.75 2.75 0 0 0 3.932-.043l5.781-6.042A2.75 2.75 0 0 0 20 11.197V5.75A1.75 1.75 0 0 0 18.25 4h-5.447Zm-.864 1.847a1.25 1.25 0 0 1 .864-.347h5.447a.25.25 0 0 1 .25.25v5.447c0 .322-.124.632-.347.865l-5.781 6.042a1.25 1.25 0 0 1-1.787.02l-4.709-4.708a1.25 1.25 0 0 1 .02-1.788l6.043-5.781Z"
+        fill="currentColor"
+        fillRule="evenodd"
+      />
     </IconBase>
-  );
-});
+  ),
+);
