@@ -39,7 +39,7 @@ const ToggleWrapper = styled.div<{ active: boolean; hasFilter: boolean }>`
   display: flex;
   align-items: center;
   gap: ${theme.space8};
-  padding: ${theme.space8};
+  padding: ${theme.space4} ${theme.space8};
   border-radius: 100px;
 
   border-top-right-radius: ${p => (p.hasFilter ? '0px' : '100px')};
@@ -57,7 +57,7 @@ const StyledDropdownTrigger = styled.div`
   display: flex;
   align-items: center;
   gap: ${theme.space8};
-  padding: ${theme.space8};
+  padding: ${theme.space4} ${theme.space8};
   border-radius: 100px;
 
   border-top-left-radius: 0px;
@@ -197,9 +197,17 @@ export const useFilterWrapper = ({
       >
         <ToggleWrapper active={active} hasFilter={active && filterExists}>
           {active ? (
-            <MinusCircleDuotoneIcon size={16} />
+            <MinusCircleDuotoneIcon
+              color="gray0"
+              secondaryColor="gray600"
+              size={24}
+            />
           ) : (
-            <PlusCircleDuotoneIcon size={16} />
+            <PlusCircleDuotoneIcon
+              color="gray0"
+              secondaryColor="gray600"
+              size={24}
+            />
           )}
           <Text fontWeight={600}>{label}</Text>
         </ToggleWrapper>
@@ -208,7 +216,7 @@ export const useFilterWrapper = ({
             <Text color="blue600" fontWeight={600}>
               {filterText}
             </Text>
-            <ChevronDownIcon size={16} />
+            <ChevronDownIcon size={24} />
           </StyledDropdownTrigger>
         )}
       </BadgeWrapper>
