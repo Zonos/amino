@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
+import {
+  type ExtendedRefs,
+  autoUpdate,
+  offset,
+  shift,
+  useFloating,
+} from '@floating-ui/react';
 
 type Params = {
   /**
@@ -13,19 +19,31 @@ type Params = {
   offsetMainAxis?: number;
 };
 
+type Return<
+  WrapperRef extends HTMLElement = HTMLDivElement,
+  TriggerRef extends HTMLElement = HTMLButtonElement,
+> = {
+  floatingStyles: React.CSSProperties;
+  refs: ExtendedRefs<TriggerRef>;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  visibility: 'visible' | 'hidden';
+  visible: boolean;
+  wrapperRef: React.RefObject<WrapperRef>;
+};
+
 export const useDropdown = <
   WrapperRef extends HTMLElement = HTMLDivElement,
   TriggerRef extends HTMLElement = HTMLButtonElement,
 >(
   params?: Params,
-) => {
+): Return<WrapperRef, TriggerRef> => {
   const { offsetCrossAxis = 0, offsetMainAxis = 0 } = params ?? {};
 
   const [visible, setVisible] = useState(false);
 
   const visibility: 'visible' | 'hidden' = visible ? 'visible' : 'hidden';
 
-  const wrapperRef = useRef<WrapperRef | null>(null);
+  const wrapperRef = useRef<WrapperRef>(null);
 
   const { floatingStyles, refs } = useFloating<TriggerRef>({
     middleware: [

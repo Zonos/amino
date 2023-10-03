@@ -50,7 +50,7 @@ export const MenuButton = ({
   closeOnSelect = true,
 }: MenuButtonProps) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
-    useDropdown({
+    useDropdown<HTMLDivElement, HTMLDivElement>({
       offsetCrossAxis: 0,
       offsetMainAxis: 0,
     });
