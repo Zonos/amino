@@ -27,7 +27,7 @@ const InputWrapper = styled.div`
     min-width: 24px;
   }
 
-  & .ArrowRightIcon {
+  & .arrow-right {
     margin-right: ${theme.space16};
   }
 `;
@@ -158,7 +158,7 @@ export const FilterAmount = ({
       />
 
       <InputWrapper>
-        <ArrowRightIcon className="ArrowRightIcon" color="blue600" size={24} />
+        <ArrowRightIcon className="arrow-right" color="blue600" size={24} />
         <Input
           onChange={e => setEditingAmount1(e.target.valueAsNumber)}
           size="md"
