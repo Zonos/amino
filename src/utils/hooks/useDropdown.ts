@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
   type ExtendedRefs,
+  type Placement,
   autoUpdate,
   offset,
   shift,
@@ -17,6 +18,10 @@ type Params = {
    * @default 0
    */
   offsetMainAxis?: number;
+  /**
+   * @default 'bottom-start'
+   */
+  placement?: Placement;
 };
 
 type Return<
@@ -37,7 +42,11 @@ export const useDropdown = <
 >(
   params?: Params,
 ): Return<WrapperRef, TriggerRef> => {
-  const { offsetCrossAxis = 0, offsetMainAxis = 0 } = params ?? {};
+  const {
+    offsetCrossAxis = 0,
+    offsetMainAxis = 0,
+    placement = 'bottom-start',
+  } = params ?? {};
 
   const [visible, setVisible] = useState(false);
 
@@ -53,6 +62,7 @@ export const useDropdown = <
         mainAxis: offsetMainAxis,
       }),
     ],
+    placement,
     whileElementsMounted: autoUpdate,
   });
 
