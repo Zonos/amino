@@ -1,4 +1,10 @@
-import { useState } from 'react';
+/* eslint-disable no-alert */
+import {
+  type MouseEventHandler,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
@@ -22,30 +28,27 @@ import { UserIcon } from 'src/icons/UserIcon';
 
 const MenuButtonMeta: Meta = {
   component: MenuButton,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A89',
+    },
+  },
 };
 
 export default MenuButtonMeta;
 
-const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => {
-  const [open, setOpen] = useState(true);
-  return (
-    <MenuButton
-      action={
-        <Button
-          icon={<ChevronDownIcon size={24} />}
-          iconRight
-          onClick={() => setOpen(!open)}
-        >
-          More...
-        </Button>
-      }
-      open={open}
-      setOpen={setOpen}
-    >
-      {children}
-    </MenuButton>
-  );
-};
+const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => (
+  <MenuButton
+    action={
+      <Button icon={<ChevronDownIcon size={24} />} iconRight>
+        More...
+      </Button>
+    }
+  >
+    {children}
+  </MenuButton>
+);
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
@@ -81,12 +84,6 @@ WithIcon.args = {
     </Menu>
   ),
 };
-WithIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A89',
-  },
-};
 
 export const WithoutIcon = Template.bind({});
 WithoutIcon.args = {
@@ -104,9 +101,73 @@ WithoutIcon.args = {
     </Menu>
   ),
 };
-WithoutIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A89',
-  },
+
+export const Draggable = () => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 300, y: 300 });
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  const handleMouseDown: MouseEventHandler<HTMLDivElement> = e => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+    setOffset({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
+  };
+
+  // Wrap above in useCallback
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging) return;
+      setPosition({
+        x: e.clientX - offset.x,
+        y: e.clientY - offset.y,
+      });
+    },
+    [isDragging, offset.x, offset.y],
+  );
+
+  const handleMouseUp = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [handleMouseMove, handleMouseUp]);
+
+  return (
+    <div
+      onBlur={() => setIsDragging(false)}
+      onMouseDown={handleMouseDown}
+      role="button"
+      style={{
+        left: `${position.x}px`,
+        position: 'absolute',
+        top: `${position.y}px`,
+      }}
+      tabIndex={-1}
+    >
+      <MenuButton
+        action={
+          <Button icon={<ChevronDownIcon size={24} />} iconRight>
+            More...
+          </Button>
+        }
+      >
+        <MenuItem>View API details</MenuItem>
+        <MenuItem onClick={() => alert('ok')}>Something else</MenuItem>
+      </MenuButton>
+    </div>
+  );
 };

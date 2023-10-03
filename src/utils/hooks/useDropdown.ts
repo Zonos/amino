@@ -1,19 +1,40 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { autoUpdate, offset, useFloating } from '@floating-ui/react-dom';
+import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
+
+type Params = {
+  /**
+   * @default 0
+   */
+  offsetCrossAxis?: number;
+  /**
+   * @default 0
+   */
+  offsetMainAxis?: number;
+};
 
 export const useDropdown = <
   WrapperRef extends HTMLElement = HTMLDivElement,
   TriggerRef extends HTMLElement = HTMLButtonElement,
->() => {
+>(
+  params?: Params,
+) => {
+  const { offsetCrossAxis = 0, offsetMainAxis = 0 } = params ?? {};
+
   const [visible, setVisible] = useState(false);
 
   const visibility: 'visible' | 'hidden' = visible ? 'visible' : 'hidden';
 
   const wrapperRef = useRef<WrapperRef | null>(null);
 
-  const { refs, strategy, x, y } = useFloating<TriggerRef>({
-    middleware: [offset(10)],
+  const { floatingStyles, refs } = useFloating<TriggerRef>({
+    middleware: [
+      shift(),
+      offset({
+        crossAxis: offsetCrossAxis,
+        mainAxis: offsetMainAxis,
+      }),
+    ],
     whileElementsMounted: autoUpdate,
   });
 
@@ -24,7 +45,7 @@ export const useDropdown = <
       // Open and left-click
       if (visible && e.button === 0) {
         // Click outside
-        if (!wrapperRef.current?.contains(target)) {
+        if (!wrapperRef?.current?.contains(target)) {
           e.preventDefault();
           e.stopPropagation();
           setVisible(false);
@@ -46,12 +67,9 @@ export const useDropdown = <
   }, [handleClick]);
 
   return {
-    floatingRef: refs.setFloating,
-    left: x ? x - 94 : 0,
-    position: strategy,
-    reference: refs.setReference,
+    floatingStyles,
+    refs,
     setVisible,
-    top: y || '',
     visibility,
     visible,
     wrapperRef,
