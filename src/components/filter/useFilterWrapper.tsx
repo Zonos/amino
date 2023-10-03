@@ -73,13 +73,13 @@ const DropdownWrapper = styled.div`
   z-index: 1;
   min-width: 400px;
   position: absolute;
-  border-radius: 14px;
-  border: ${theme.border};
-  background-color: ${theme.gray0};
+  border-radius: ${theme.radius12};
+  background-color: ${theme.surfaceColor};
+  box-shadow: ${theme.v3ShadowXl};
   padding: ${theme.space24};
   display: flex;
   flex-direction: column;
-  gap: ${theme.space16};
+  gap: ${theme.space24};
   outline: none;
   max-height: 600px;
   overflow: auto;
@@ -88,7 +88,7 @@ const DropdownWrapper = styled.div`
 const ControlsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${theme.space12};
+  gap: ${theme.space8};
 `;
 
 export type BaseFilterProps = BaseProps & {
@@ -228,7 +228,7 @@ export const useFilterWrapper = ({
         >
           <Text type="bold-subheader">{dropdownTitle}</Text>
           <ControlsWrapper>{control}</ControlsWrapper>
-          <Button onClick={handleApply} variant="primary">
+          <Button onClick={handleApply} size="md" variant="primary">
             Apply
           </Button>
         </DropdownWrapper>

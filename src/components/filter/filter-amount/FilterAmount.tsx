@@ -26,6 +26,10 @@ const InputWrapper = styled.div`
   svg {
     min-width: 24px;
   }
+
+  & .ArrowRightIcon {
+    margin-right: ${theme.space16};
+  }
 `;
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
@@ -154,9 +158,10 @@ export const FilterAmount = ({
       />
 
       <InputWrapper>
-        <ArrowRightIcon color="blue600" size={24} />
+        <ArrowRightIcon className="ArrowRightIcon" color="blue600" size={24} />
         <Input
           onChange={e => setEditingAmount1(e.target.valueAsNumber)}
+          size="md"
           type="number"
           value={editingAmount1 === null ? '' : String(editingAmount1)}
         />
@@ -165,6 +170,7 @@ export const FilterAmount = ({
             and
             <Input
               onChange={e => setEditingAmount2(e.target.valueAsNumber)}
+              size="md"
               type="number"
               value={editingAmount2 === null ? '' : String(editingAmount2)}
             />
