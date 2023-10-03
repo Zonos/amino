@@ -59,7 +59,7 @@ const InputDecorator = styled.div`
   line-height: ${theme.fontSizeS};
   font-weight: 500;
   background: transparent;
-  padding: 0 ${theme.space16};
+  padding: 0 6px;
   font-weight: 700;
   flex-basis: 50px;
   display: flex;

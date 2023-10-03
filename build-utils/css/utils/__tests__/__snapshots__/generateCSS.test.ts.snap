@@ -195,7 +195,7 @@ exports[`Case light theme: 1`] = `
   --amino-page-background: var(--amino-gray-0);
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
-  --amino-text-color: var(--amino-gray-1000);
+  --amino-text-color: var(--amino-gray-1200);
   --amino-text-color-secondary: var(--amino-gray-800);
   --amino-focus-button-standard: 0px 0px 0px 1px
       var(--amino-transparent-gray-600) inset,
@@ -440,7 +440,7 @@ exports[`Case night theme: 1`] = `
   --amino-page-background: var(--amino-gray-0);
   --amino-border-color: var(--amino-gray-200);
   --amino-hover-color: var(--amino-gray-50);
-  --amino-text-color: var(--amino-gray-1000);
+  --amino-text-color: var(--amino-gray-1200);
   --amino-text-color-secondary: var(--amino-gray-800);
   --amino-focus-button-standard: 0px 0px 0px 1px
       var(--amino-transparent-gray-600) inset,
