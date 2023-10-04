@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   display: inline-flex;
 `;
 
+const DropdownWrapper = styled.div`
+  z-index: 10;
+`;
+
 const AnimatedSurface = styled.div`
   background: ${theme.surfaceColor};
   border: ${theme.border};
@@ -89,7 +93,7 @@ export const MenuButton = ({
       >
         {action}
       </div>
-      <div
+      <DropdownWrapper
         ref={refs.setFloating}
         style={{
           ...floatingStyles,
@@ -110,7 +114,7 @@ export const MenuButton = ({
             {children}
           </AnimatedSurface>
         )}
-      </div>
+      </DropdownWrapper>
     </Wrapper>
   );
 };
