@@ -60,7 +60,7 @@ module.exports = {
       },
     },
     {
-      files: ['svgReact/**', 'build-utils/**'],
+      files: ['svgReact/**', 'build-utils/**', '__stories__/**'],
       rules: {
         'no-console': 'off',
       },

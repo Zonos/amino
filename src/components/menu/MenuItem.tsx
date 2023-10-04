@@ -3,6 +3,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 export const StyledListItem = styled.li`
   display: flex;
@@ -27,14 +28,19 @@ export const StyledListItem = styled.li`
   }
 `;
 
-type MenuItemProps = {
+type MenuItemProps = BaseProps & {
   children: ReactNode;
   icon?: ReactNode;
   onClick?: MouseEventHandler;
 };
 
-export const MenuItem = ({ children, icon, onClick }: MenuItemProps) => (
-  <StyledListItem onClick={onClick}>
+export const MenuItem = ({
+  children,
+  className,
+  icon,
+  onClick,
+}: MenuItemProps) => (
+  <StyledListItem className={className} onClick={onClick}>
     {icon}
     {children}
   </StyledListItem>

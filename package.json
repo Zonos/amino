@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "5.1.36",
+  "version": "5.1.37",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -60,7 +60,7 @@
     "@dnd-kit/modifiers": "^6.0.1",
     "@dnd-kit/sortable": "^7.0.2",
     "@dnd-kit/utilities": "^3.2.1",
-    "@floating-ui/react-dom": "^2.0.1",
+    "@floating-ui/react": "^0.26.0",
     "@mui/material": "^5.14.0",
     "@radix-ui/react-slider": "^1.1.2",
     "@types/topojson-client": "^3.1.1",

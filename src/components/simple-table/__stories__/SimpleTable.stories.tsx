@@ -211,54 +211,40 @@ export const Custom = () => {
     }
   };
 
-  const HoverMenu = ({ item }: { item: DummyData }) => {
-    const [open, setOpen] = useState(false);
-
-    return (
-      <MenuButton
-        action={
-          <Button
-            icon={<ThreeDotIcon size={20} />}
-            onClick={e => {
-              e.stopPropagation();
-              setOpen(!open);
-            }}
-            size="sm"
-            variant="subtle"
-          />
-        }
-        open={open}
-        setOpen={setOpen}
-      >
-        <Menu>
-          <MenuItem
-            icon={<EditDuotoneIcon size={20} />}
-            onClick={e => {
-              e.stopPropagation();
-              alert(`Edit ${item.name}`);
-            }}
-          >
-            Edit
-          </MenuItem>
-          <MenuItem
-            icon={
-              <TrashCanDuotoneIcon
-                color="red600"
-                secondaryColor="red300"
-                size={20}
-              />
-            }
-            onClick={e => {
-              e.stopPropagation();
-              alert(`Delete ${item.name}`);
-            }}
-          >
-            <Text color="red600">Delete</Text>
-          </MenuItem>
-        </Menu>
-      </MenuButton>
-    );
-  };
+  const HoverMenu = ({ item }: { item: DummyData }) => (
+    <MenuButton
+      action={
+        <Button icon={<ThreeDotIcon size={20} />} size="sm" variant="subtle" />
+      }
+    >
+      <Menu>
+        <MenuItem
+          icon={<EditDuotoneIcon size={20} />}
+          onClick={e => {
+            e.stopPropagation();
+            alert(`Edit ${item.name}`);
+          }}
+        >
+          Edit
+        </MenuItem>
+        <MenuItem
+          icon={
+            <TrashCanDuotoneIcon
+              color="red600"
+              secondaryColor="red300"
+              size={20}
+            />
+          }
+          onClick={e => {
+            e.stopPropagation();
+            alert(`Delete ${item.name}`);
+          }}
+        >
+          <Text color="red600">Delete</Text>
+        </MenuItem>
+      </Menu>
+    </MenuButton>
+  );
 
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders,
