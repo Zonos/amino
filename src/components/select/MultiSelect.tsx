@@ -15,12 +15,12 @@ import type {
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
-import type { IOption } from 'src/types/IOption';
+import type { Option as OptionBase } from 'src/types/Option';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
 export interface MultiSelectProps<
-  Option extends IOption = IOption,
+  Option extends OptionBase = OptionBase,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
@@ -38,16 +38,16 @@ export interface MultiSelectProps<
   value: PropsValue<Option>;
 }
 
-export type IGroupOption<Option extends IOption> = {
+export type GroupOption<Option extends OptionBase> = {
   data: Option;
   index: 0;
   isDisabled: false;
   isSelected: false;
   type: 'option';
-} & IOption;
+} & OptionBase;
 
 const Group = <
-  Option extends IOption,
+  Option extends OptionBase,
   IsMulti extends true,
   Group extends GroupBase<Option>,
 >(
@@ -56,7 +56,7 @@ const Group = <
   const { children, getStyles, innerProps, label, options, selectProps } =
     props;
   const currentValue = selectProps.value as MultiValue<Option>;
-  const groupOptions = options as unknown as IGroupOption<Option>[];
+  const groupOptions = options as unknown as GroupOption<Option>[];
   const available = groupOptions.filter(x => !x.isDisabled);
   const unselected = available.filter(x => !x.isSelected).map(x => x.data);
   const selected = available.filter(x => x.isSelected).map(x => x.data);
@@ -98,7 +98,7 @@ const Group = <
 };
 
 export const MultiSelect = <
-  Option extends IOption,
+  Option extends OptionBase,
   Group extends GroupBase<Option>,
 >({
   closeMenuOnSelect = false,

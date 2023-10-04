@@ -16,8 +16,8 @@ import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInp
 import { Select } from 'src/components/select/Select';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { ICountryOption } from 'src/types/ICountry';
-import type { IOption } from 'src/types/IOption';
+import type { CountryOption } from 'src/types/Country';
+import type { Option as BaseOption } from 'src/types/Option';
 
 const OptionLabel = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ type AdditionalProps = {
 };
 
 const MenuList = <
-  Option extends IOption,
+  Option extends BaseOption,
   IsMulti extends false,
   Group extends GroupBase<Option>,
 >(
@@ -80,24 +80,24 @@ const MenuList = <
 };
 
 export interface CountryPhoneSelectProps<
-  Option extends IOption = IOption,
+  Option extends BaseOption = BaseOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'>,
     HelpTextProps {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
-  countryOptions: ICountryOption[];
+  countryOptions: CountryOption[];
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
   phone: string;
-  phoneCountry: ICountryOption | null;
+  phoneCountry: CountryOption | null;
   styles?: StylesConfig<Option, IsMulti, Group>;
   setPhone: (changed: string) => void;
-  setPhoneCountry: (changed: ICountryOption | null) => void;
+  setPhoneCountry: (changed: CountryOption | null) => void;
 }
 
-const formatOptionLabel = (option: ICountryOption) => (
+const formatOptionLabel = (option: CountryOption) => (
   <OptionLabel>
     {option.displayName}
     <PhoneCodeLabel>{option.phoneCode.join(', ')}</PhoneCodeLabel>
@@ -113,7 +113,7 @@ export const CountryPhoneSelect = ({
   setPhone,
   setPhoneCountry,
   ...props
-}: CountryPhoneSelectProps<ICountryOption>) => {
+}: CountryPhoneSelectProps<CountryOption>) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const additionalProps: AdditionalProps = {
     setMenuIsOpen,

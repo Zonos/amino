@@ -6,11 +6,11 @@ import {
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import { Select } from 'src/components/select/Select';
-import type { IOption } from 'src/types/IOption';
+import type { Option } from 'src/types/Option';
 
 type FilterSelectProps<
   T extends string = string,
-  O extends IOption<string> = IOption<T>,
+  O extends Option<string> = Option<T>,
 > = BaseFilterProps & {
   options: O[];
   value: O | null;
@@ -19,7 +19,7 @@ type FilterSelectProps<
 
 export const FilterSelect = <
   T extends string = string,
-  O extends IOption<T> = IOption<T>,
+  O extends Option<T> = Option<T>,
 >({
   onChange,
   options,

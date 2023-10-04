@@ -10,7 +10,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import { type IOption } from 'src/types/IOption';
+import { type Option } from 'src/types/Option';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -199,7 +199,7 @@ const StyledVStack = styled(VStack)`
 `;
 
 export const ScrollableDialogSelect = () => {
-  const [value, setValue] = useState<IOption | null>({
+  const [value, setValue] = useState<Option | null>({
     label: 'US Dollar (USD)',
     value: 'USD',
   });

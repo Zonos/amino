@@ -8,7 +8,7 @@ import {
   type CountrySelectProps,
   CountrySelect,
 } from 'src/components/select/CountrySelect';
-import type { ICountryOption } from 'src/types/ICountry';
+import type { CountryOption } from 'src/types/Country';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -34,7 +34,7 @@ const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
   const countryOptions = useCountryOptions({});
   const [typedValue, setTypedValue] = useState<RandomCountryCode | null>(null);
   const stronglyTypedCountries =
-    countryOptions as ICountryOption<RandomCountryCode>[];
+    countryOptions as CountryOption<RandomCountryCode>[];
   return (
     <>
       <CountrySelect

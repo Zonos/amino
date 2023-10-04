@@ -7,7 +7,7 @@ import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import type { StackProps } from 'src/components/stack/Stack';
-import type { IOption } from 'src/types/IOption';
+import type { Option } from 'src/types/Option';
 
 const HStackMeta: Meta = {
   args: {
@@ -25,7 +25,7 @@ const options = [
   'Gollum',
   'Not sure how to answer that question',
   '*confused noises*',
-].map<IOption>(v => ({
+].map<Option>(v => ({
   label: v,
   value: v,
 }));

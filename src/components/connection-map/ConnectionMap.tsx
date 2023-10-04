@@ -14,8 +14,8 @@ import { feature } from 'topojson-client';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import { type ICountryOption } from 'src/types/ICountry';
-import { type IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
+import { type CountryOption } from 'src/types/Country';
+import { type GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
 
 const Map = styled.div`
@@ -52,11 +52,11 @@ const getScale = (xDistance: number, yDistance: number) => {
 };
 
 type Props = BaseProps & {
-  countries: ICountryOption[];
+  countries: CountryOption[];
   from: string;
   height?: number;
   to: string;
-  worldData: IGeoJsonWorld | null;
+  worldData: GeoJsonWorld | null;
 };
 
 export const ConnectionMap = ({

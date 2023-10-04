@@ -34,7 +34,7 @@ const StyledWrapper = styled.div`
   height: 100%;
 `;
 
-type IProps = {
+type SplitPanelProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: any;
   className?: string;
@@ -72,7 +72,7 @@ export const SplitPanel = ({
   onSetSizes,
   sizes = [1],
   ...props
-}: IProps) => {
+}: SplitPanelProps) => {
   const childrenCount = Children.count(children);
   const [defaultSizes] = useState<number[]>(
     normalizeSizes({ childrenCount, sizes }),
