@@ -95,6 +95,11 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': 'error',
+    /**
+     * This rule fixes the side effect of import types only with inline types.
+     * Ref: https://typescript-eslint.io/rules/no-import-type-side-effects
+     */
+    '@typescript-eslint/no-import-type-side-effects': 'error',
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-unused-vars': [
       'warn',

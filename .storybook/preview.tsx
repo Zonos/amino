@@ -5,7 +5,7 @@ import 'src/styles/amino.css';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
 import { useGlobals } from '@storybook/addons';
-import { type Decorator, type Preview } from '@storybook/react';
+import type { Decorator, Preview } from '@storybook/react';
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';

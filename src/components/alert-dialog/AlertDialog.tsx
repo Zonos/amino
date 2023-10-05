@@ -11,8 +11,8 @@ import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import { type Intent } from 'src/types/Intent';
-import { type Theme } from 'src/types/Theme';
+import type { Intent } from 'src/types/Intent';
+import type { Theme } from 'src/types/Theme';
 
 const Content = styled.div`
   padding: ${theme.space24};

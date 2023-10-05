@@ -9,7 +9,7 @@ import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import { type flattenRow } from 'src/utils/flattenRow';
+import type { flattenRow } from 'src/utils/flattenRow';
 
 const StyledPivotTableContentWrapper = styled.div`
   height: 100%;

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { Collapse } from 'src/components/collapse/Collapse';
 import { theme } from 'src/styles/constants/theme';
-import { type StyledProps } from 'src/types/StyledProps';
+import type { StyledProps } from 'src/types/StyledProps';
 
 const Wrapper = styled.div`
   display: flex;
