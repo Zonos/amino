@@ -15,12 +15,12 @@ import type {
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
-import type { Option as OptionBase } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
 export interface MultiSelectProps<
-  Option extends OptionBase = OptionBase,
+  Option extends SelectOption = SelectOption,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
@@ -38,16 +38,16 @@ export interface MultiSelectProps<
   value: PropsValue<Option>;
 }
 
-export type GroupOption<Option extends OptionBase> = {
+export type GroupOption<Option extends SelectOption> = {
   data: Option;
   index: 0;
   isDisabled: false;
   isSelected: false;
   type: 'option';
-} & OptionBase;
+} & SelectOption;
 
 const Group = <
-  Option extends OptionBase,
+  Option extends SelectOption,
   IsMulti extends true,
   Group extends GroupBase<Option>,
 >(
@@ -98,7 +98,7 @@ const Group = <
 };
 
 export const MultiSelect = <
-  Option extends OptionBase,
+  Option extends SelectOption,
   Group extends GroupBase<Option>,
 >({
   closeMenuOnSelect = false,

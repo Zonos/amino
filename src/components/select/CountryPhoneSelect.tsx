@@ -17,7 +17,7 @@ import { Select } from 'src/components/select/Select';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { CountryOption } from 'src/types/Country';
-import type { Option as BaseOption } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 
 const OptionLabel = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ type AdditionalProps = {
 };
 
 const MenuList = <
-  Option extends BaseOption,
+  Option extends SelectOption,
   IsMulti extends false,
   Group extends GroupBase<Option>,
 >(
@@ -80,7 +80,7 @@ const MenuList = <
 };
 
 export interface CountryPhoneSelectProps<
-  Option extends BaseOption = BaseOption,
+  Option extends SelectOption = SelectOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'>,

@@ -1,4 +1,4 @@
-import type { Option } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 
 export const regions = [
   'Africa',
@@ -29,7 +29,7 @@ export interface Country<CountryCode extends string = string> {
 }
 export interface CountryOption<CountryCode extends string = string>
   extends Country<CountryCode>,
-    Option<CountryCode> {
+    SelectOption<CountryCode> {
   phoneCode: string[];
 }
 export interface RegionCountryOption {

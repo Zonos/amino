@@ -17,7 +17,7 @@ import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import type { CountryOption } from 'src/types/Country';
-import type { Option } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 
 const meta: Meta = {
   title: 'Filters',
@@ -62,14 +62,14 @@ export const Amount = () => {
 
 type FruitOption = 'Orange' | 'Apple' | 'Banana';
 
-const options: Option<FruitOption>[] = [
+const options: SelectOption<FruitOption>[] = [
   { label: 'Orange', value: 'Orange' },
   { label: 'Apple', value: 'Apple' },
   { label: 'Banana', value: 'Banana' },
 ];
 
 export const Select = () => {
-  const [value, setValue] = useState<Option<FruitOption> | null>(null);
+  const [value, setValue] = useState<SelectOption<FruitOption> | null>(null);
 
   return (
     <>
@@ -104,9 +104,9 @@ export const CountrySelect = () => {
 };
 
 export const MultiSelect = () => {
-  const [selectedValues, setSelectedValues] = useState<Option<FruitOption>[]>(
-    [],
-  );
+  const [selectedValues, setSelectedValues] = useState<
+    SelectOption<FruitOption>[]
+  >([]);
 
   return (
     <>

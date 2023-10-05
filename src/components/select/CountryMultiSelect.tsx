@@ -14,7 +14,7 @@ import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { type CountryOption, type UnavailableCountry } from 'src/types/Country';
-import type { Option as OptionBase } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
 type AdditionalProps = {
@@ -23,7 +23,7 @@ type AdditionalProps = {
 };
 
 export const MenuList = <
-  Option extends OptionBase,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -55,7 +55,7 @@ export const MenuList = <
 };
 
 export interface CountryMultiSelectProps<
-  Option extends OptionBase<string> = OptionBase<string>,
+  Option extends SelectOption<string> = SelectOption<string>,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<
@@ -80,7 +80,7 @@ export const CountryMultiSelect = <T extends string>({
   unavailableCountries,
   value,
   ...props
-}: CountryMultiSelectProps<OptionBase<T>>) => {
+}: CountryMultiSelectProps<SelectOption<T>>) => {
   const countries = countryOptions.map(option => {
     const unavailableCountry = unavailableCountries.find(
       x => x.code === option.code,

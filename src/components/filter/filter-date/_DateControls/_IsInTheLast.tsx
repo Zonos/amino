@@ -13,12 +13,14 @@ import {
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
-import type { Option } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 
-const dateUnitOptions: Option<FilterDateLastRangeUnit>[] = dateUnits.map(x => ({
-  label: x,
-  value: x,
-}));
+const dateUnitOptions: SelectOption<FilterDateLastRangeUnit>[] = dateUnits.map(
+  x => ({
+    label: x,
+    value: x,
+  }),
+);
 
 export const IsInTheLast = ({
   onChange,

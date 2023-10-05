@@ -9,13 +9,13 @@ import type {
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
-import type { Option as BaseOption } from 'src/types/Option';
+import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 
 type RequiredProps = 'options' | 'value';
 
 export interface SelectProps<
-  Option extends BaseOption = BaseOption,
+  Option extends SelectOption = SelectOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
@@ -46,7 +46,7 @@ export interface SelectProps<
 }
 
 export const Select = <
-  Option extends BaseOption,
+  Option extends SelectOption,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   isClearable = true,
