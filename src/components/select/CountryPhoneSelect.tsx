@@ -79,12 +79,11 @@ const MenuList = <
   return <RScomponents.MenuList {...props} />;
 };
 
-export interface CountryPhoneSelectProps<
+export type CountryPhoneSelectProps<
   Option extends SelectOption = SelectOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'>,
-    HelpTextProps {
+> = {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   countryOptions: CountryOption[];
   hasGroups?: boolean;
@@ -95,7 +94,8 @@ export interface CountryPhoneSelectProps<
   styles?: StylesConfig<Option, IsMulti, Group>;
   setPhone: (changed: string) => void;
   setPhoneCountry: (changed: CountryOption | null) => void;
-}
+} & Omit<Props<Option, IsMulti, Group>, 'isMulti' | 'onChange' | 'value'> &
+  HelpTextProps;
 
 const formatOptionLabel = (option: CountryOption) => (
   <OptionLabel>

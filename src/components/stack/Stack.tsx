@@ -14,13 +14,13 @@ type DivProps = Omit<
   | 'children'
 >;
 
-export interface StackProps extends DivProps {
+export type StackProps = {
   /** @default 'unset' */
   alignment?: GridAlignment;
   children: ReactNode;
   /** @default 24 */
   spacing?: GridSpacing;
-}
+} & DivProps;
 /**
  * A stack
  *

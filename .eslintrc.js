@@ -87,6 +87,7 @@ module.exports = {
     'no-relative-import-paths',
   ],
   rules: {
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/consistent-type-imports': [
       'error',
       {
@@ -173,6 +174,7 @@ module.exports = {
         allowExpressions: true,
       },
     ],
+
     // Prettier takes care of this
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-props-no-spreading': 'off',
