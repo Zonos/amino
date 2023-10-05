@@ -468,18 +468,18 @@ const localStyles: StylesConfig<
   }),
 };
 
-export interface StyledReactSelectProps<
+export type StyledReactSelectProps<
   Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
-> extends Props<Option, IsMulti, Group>,
-    HelpTextProps,
-    AdditionalProps<Option['value']> {
+> = {
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
-}
+} & Props<Option, IsMulti, Group> &
+  HelpTextProps &
+  AdditionalProps<Option['value']>;
 
 export const StyledReactSelect = <
   Option extends SelectOption,

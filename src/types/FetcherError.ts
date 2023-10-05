@@ -1,6 +1,6 @@
 import type { JsonError } from 'src/types/JsonError';
 
-export interface FetcherError {
+export type FetcherError = {
   errors: JsonError[];
   status: number;
-}
+};

@@ -18,12 +18,12 @@ const StyledSortableSection = styled.div`
   flex-grow: 1;
 `;
 
-export interface SortableListItemProps {
+export type SortableListItemProps = {
   children: ReactNode;
   handleIconSize?: number;
   id: string;
   useHandle?: boolean;
-}
+};
 
 /** @description This must be a direct child of SortableList */
 export const SortableListItem = ({

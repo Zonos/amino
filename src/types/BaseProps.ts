@@ -1,7 +1,7 @@
 /**
  * All components props should extend this interface.
  */
-export interface BaseProps {
+export type BaseProps = {
   /** For styled-components styling */
   className?: string;
-}
+};

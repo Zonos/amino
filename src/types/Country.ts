@@ -14,7 +14,7 @@ export const regions = [
 type Region = (typeof regions)[number];
 
 /** @desc /api/address/getCountries */
-export interface Country<CountryCode extends string = string> {
+export type Country<CountryCode extends string = string> = {
   active: boolean;
   code: CountryCode;
   code3: string | null;
@@ -26,21 +26,20 @@ export interface Country<CountryCode extends string = string> {
   region: Region;
   upsCode: string | null;
   zipRegex: string | null;
-}
-export interface CountryOption<CountryCode extends string = string>
-  extends Country<CountryCode>,
-    SelectOption<CountryCode> {
+};
+export type CountryOption<CountryCode extends string = string> = {
   phoneCode: string[];
-}
-export interface RegionCountryOption {
+} & Country<CountryCode> &
+  SelectOption<CountryCode>;
+export type RegionCountryOption = {
   label: Region;
   options: CountryOption[];
-}
-export interface UnavailableCountry {
+};
+export type UnavailableCountry = {
   code: string;
   message: string;
-}
+};
 /** @desc /api/address/getCountries */
-export interface GetCountriesResponse<CountryCode extends string = string> {
+export type GetCountriesResponse<CountryCode extends string = string> = {
   [key: string]: Country<CountryCode>;
-}
+};

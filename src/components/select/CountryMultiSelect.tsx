@@ -54,15 +54,11 @@ export const MenuList = <
   );
 };
 
-export interface CountryMultiSelectProps<
+export type CountryMultiSelectProps<
   Option extends SelectOption<string> = SelectOption<string>,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<
-      Props<Option, IsMulti, Group>,
-      'isMulti' | 'onChange' | 'options' | 'value'
-    >,
-    HelpTextProps {
+> = {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   countryOptions: CountryOption<Option['value']>[];
   icon?: ReactNode;
@@ -71,7 +67,11 @@ export interface CountryMultiSelectProps<
   unavailableCountries: UnavailableCountry[];
   value: Option['value'][];
   onChange: (countryCodes: Option['value'][]) => void;
-}
+} & Omit<
+  Props<Option, IsMulti, Group>,
+  'isMulti' | 'onChange' | 'options' | 'value'
+> &
+  HelpTextProps;
 
 export const CountryMultiSelect = <T extends string>({
   countryOptions,

@@ -23,9 +23,9 @@ const shadows = [
 type ShadowIntensity = (typeof shadows)[number]['value'];
 type AminoShadow = `--amino-shadow-${ShadowIntensity}`;
 
-interface ShadowProps {
+type ShadowProps = {
   shadow: AminoShadow;
-}
+};
 const StyledBoxShadowWrapper = styled.div<ShadowProps>`
   margin-bottom: ${theme.space40};
   box-shadow: var(${props => props.shadow});

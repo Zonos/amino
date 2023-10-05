@@ -8,9 +8,9 @@ import { type RippleProps, Ripple } from 'src/components/button/_Ripple';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 
-export interface RippleActions {
+export type RippleActions = {
   start: (event: React.SyntheticEvent) => void;
-}
+};
 
 const rippleAnimation = (opacity: number) => keyframes`
   0% {

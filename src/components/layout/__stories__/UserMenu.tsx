@@ -112,11 +112,11 @@ const StyledVStack = styled(VStack)`
   min-width: 145.17px;
 `;
 
-interface Props {
+type UserMenuProps = {
   addSpacing?: boolean;
-}
+};
 
-export const UserMenu = ({ addSpacing = true }: Props) => {
+export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
   const [open, setOpen] = useState(false);
 
   return (

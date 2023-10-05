@@ -6,11 +6,11 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-interface AminoListItemProps {
+type AminoListItemProps = {
   disabled?: boolean;
   selected?: boolean;
   withClick?: boolean;
-}
+};
 
 const AminoListItem = styled.div<AminoListItemProps>`
   padding: ${theme.space8} ${theme.space16};

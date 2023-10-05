@@ -19,13 +19,11 @@ import type { SelectOption } from 'src/types/SelectOption';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
-export interface MultiSelectProps<
+export type MultiSelectProps<
   Option extends SelectOption = SelectOption,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
-    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>>,
-    HelpTextProps {
+> = {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -36,7 +34,9 @@ export interface MultiSelectProps<
    * value: { label: string; value: string; }[];
    */
   value: PropsValue<Option>;
-}
+} & Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps> &
+  Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
+  HelpTextProps;
 
 export type GroupOption<Option extends SelectOption> = {
   data: Option;

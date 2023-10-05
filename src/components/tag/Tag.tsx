@@ -7,7 +7,7 @@ import { theme } from 'src/styles/constants/theme';
 
 type TagSize = 'base' | 'lg';
 
-export interface TagProps {
+export type TagProps = {
   children?: ReactNode | string;
   className?: string;
   icon?: ReactNode;
@@ -15,7 +15,7 @@ export interface TagProps {
   size?: TagSize;
   onClick?: () => void;
   onClose: () => void;
-}
+};
 
 const TagWrapper = styled.div<{ $size: TagSize }>`
   display: inline-flex;
