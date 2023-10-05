@@ -38,8 +38,12 @@ const MenuButtonMeta: Meta = {
 
 export default MenuButtonMeta;
 
-const Template: StoryFn<MenuButtonProps> = ({ children }: MenuButtonProps) => (
+const Template: StoryFn<MenuButtonProps> = ({
+  children,
+  ...props
+}: MenuButtonProps) => (
   <MenuButton
+    {...props}
     action={
       <Button icon={<ChevronDownIcon size={24} />} iconRight>
         More...
@@ -102,7 +106,7 @@ WithoutIcon.args = {
   ),
 };
 
-export const Draggable = () => {
+export const Draggable: StoryFn<MenuButtonProps> = props => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 300, y: 300 });
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -159,6 +163,7 @@ export const Draggable = () => {
       tabIndex={-1}
     >
       <MenuButton
+        {...props}
         action={
           <Button icon={<ChevronDownIcon size={24} />} iconRight>
             More...

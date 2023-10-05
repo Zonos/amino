@@ -5,10 +5,10 @@ import { defineConfig } from 'vitest/config';
 process.env.TZ = 'America/Denver';
 
 export default defineConfig({
-  // @ts-ignore idk what is happening here the types are wrong somehow
   plugins: [react()],
   resolve: {
     alias: {
+      '.storybook': path.resolve(__dirname, './.storybook'),
       'build-utils': path.resolve(__dirname, './build-utils'),
       src: path.resolve(__dirname, './src'),
       svgReact: path.resolve(__dirname, './svgReact'),
