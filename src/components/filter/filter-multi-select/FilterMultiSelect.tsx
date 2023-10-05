@@ -6,12 +6,12 @@ import {
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
 type FilterMultiSelectProps<T extends string = string> = BaseFilterProps & {
-  options: IOption<T>[];
-  value: IOption<T>[];
-  onChange: (value: IOption<T>[]) => void;
+  options: SelectOption<T>[];
+  value: SelectOption<T>[];
+  onChange: (value: SelectOption<T>[]) => void;
 };
 
 export const FilterMultiSelect = <T extends string = string>({
@@ -22,7 +22,7 @@ export const FilterMultiSelect = <T extends string = string>({
   value,
 }: FilterMultiSelectProps<T>) => {
   const [editingSelectedValues, setEditingSelectedValues] =
-    useState<IOption<T>[]>(value);
+    useState<SelectOption<T>[]>(value);
 
   const handleApply: FilterApplyCallback = setFilterText => {
     const text =

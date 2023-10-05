@@ -1,24 +1,21 @@
 import { type SelectProps, Select } from 'src/components/select/Select';
-import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import type { ICountryOption } from 'src/types/ICountry';
+import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import type { CountryOption } from 'src/types/Country';
 
 type CountrySelectType<T extends string> = {
   autoFocus?: SelectProps['autoFocus'];
-  countryOptions: ICountryOption<T>[];
+  countryOptions: CountryOption<T>[];
   label?: string;
-  onChange: SelectProps<ICountryOption<T>>['onChange'];
+  onChange: SelectProps<CountryOption<T>>['onChange'];
   placeholder?: string;
   value: T | null;
 
-  filter?: (country: ICountryOption<T>) => boolean;
+  filter?: (country: CountryOption<T>) => boolean;
 };
 
 export type CountrySelectProps<T extends string = string> =
   CountrySelectType<T> &
-    Omit<
-      SelectProps<ICountryOption<T>>,
-      keyof CountrySelectType<T> | 'options'
-    >;
+    Omit<SelectProps<CountryOption<T>>, keyof CountrySelectType<T> | 'options'>;
 
 export const CountrySelect = <T extends string>({
   autoFocus,
@@ -30,11 +27,11 @@ export const CountrySelect = <T extends string>({
   value,
   ...props
 }: CountrySelectProps<T>) => {
-  const filteredOptions: ICountryOption<T>[] = countryOptions.flatMap(option =>
+  const filteredOptions: CountryOption<T>[] = countryOptions.flatMap(option =>
     filter(option)
       ? {
           ...option,
-          icon: <FlagIcon code={option.code as IFlag} iconScale="small" />,
+          icon: <FlagIcon code={option.code as Flag} iconScale="small" />,
         }
       : [],
   );
@@ -46,7 +43,7 @@ export const CountrySelect = <T extends string>({
       autoFocus={autoFocus}
       icon={
         <FlagIcon
-          code={firstCountry ? (firstCountry.value as IFlag) : 'Default'}
+          code={firstCountry ? (firstCountry.value as Flag) : 'Default'}
           iconScale="medium"
         />
       }

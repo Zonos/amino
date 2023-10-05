@@ -13,9 +13,9 @@ import {
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
-const dateUnitOptions: IOption<FilterDateLastRangeUnit>[] = dateUnits.map(
+const dateUnitOptions: SelectOption<FilterDateLastRangeUnit>[] = dateUnits.map(
   x => ({
     label: x,
     value: x,

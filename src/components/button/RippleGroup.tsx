@@ -8,7 +8,7 @@ import { type RippleProps, Ripple } from 'src/components/button/_Ripple';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 
-export interface IRippleActions {
+export interface RippleActions {
   start: (event: React.SyntheticEvent) => void;
 }
 
@@ -93,7 +93,7 @@ export type RippleGroupProps = {
   opacity?: number;
 };
 
-export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
+export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
   ({ color, duration = 200, opacity = 0.12 }, ref) => {
     const [ripples, setRipples] = React.useState<RippleItem[]>([]);
 
@@ -101,7 +101,7 @@ export const RippleGroup = React.forwardRef<IRippleActions, RippleGroupProps>(
 
     const removeRipple = () => setRipples(oldRipples => oldRipples.slice(1));
 
-    const start = React.useCallback<IRippleActions['start']>(
+    const start = React.useCallback<RippleActions['start']>(
       event => {
         if (container.current) {
           const rippleProps: RippleProps = {

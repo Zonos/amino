@@ -1,4 +1,4 @@
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
 export const regions = [
   'Africa',
@@ -11,10 +11,10 @@ export const regions = [
   'South America',
 ] as const;
 
-type IRegion = (typeof regions)[number];
+type Region = (typeof regions)[number];
 
 /** @desc /api/address/getCountries */
-export interface ICountry<CountryCode extends string = string> {
+export interface Country<CountryCode extends string = string> {
   active: boolean;
   code: CountryCode;
   code3: string | null;
@@ -23,24 +23,24 @@ export interface ICountry<CountryCode extends string = string> {
   fraudRisk: number;
   languageCode: string | null;
   numericCode: string | null;
-  region: IRegion;
+  region: Region;
   upsCode: string | null;
   zipRegex: string | null;
 }
-export interface ICountryOption<CountryCode extends string = string>
-  extends ICountry<CountryCode>,
-    IOption<CountryCode> {
+export interface CountryOption<CountryCode extends string = string>
+  extends Country<CountryCode>,
+    SelectOption<CountryCode> {
   phoneCode: string[];
 }
-export interface IRegionCountryOption {
-  label: IRegion;
-  options: ICountryOption[];
+export interface RegionCountryOption {
+  label: Region;
+  options: CountryOption[];
 }
-export interface IUnavailableCountry {
+export interface UnavailableCountry {
   code: string;
   message: string;
 }
 /** @desc /api/address/getCountries */
-export interface IGetCountriesResponse<CountryCode extends string = string> {
-  [key: string]: ICountry<CountryCode>;
+export interface GetCountriesResponse<CountryCode extends string = string> {
+  [key: string]: Country<CountryCode>;
 }

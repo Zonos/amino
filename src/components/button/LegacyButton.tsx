@@ -8,7 +8,7 @@ import {
 import styled from 'styled-components';
 
 import {
-  type IRippleActions,
+  type RippleActions,
   RippleGroup,
 } from 'src/components/button/RippleGroup';
 import { useRipple } from 'src/components/button/useRipple';
@@ -402,7 +402,7 @@ export function LegacyButton<T extends GroupTag = 'button'>({
     .filter(Boolean)
     .join(' ');
 
-  const rippleRef = useRef<IRippleActions>(null);
+  const rippleRef = useRef<RippleActions>(null);
 
   const { getRippleHandlers, rippleEnabled } = useRipple({
     disabled: disabled || loading,

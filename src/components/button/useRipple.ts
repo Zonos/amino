@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { IRippleActions } from 'src/components/button/RippleGroup';
+import type { RippleActions } from 'src/components/button/RippleGroup';
 
 interface IRippleEventHandlers {
   onMouseDown: React.MouseEventHandler;
@@ -9,7 +9,7 @@ interface IRippleEventHandlers {
 type Props = {
   disabled: boolean;
   rippleEnabled: boolean;
-  rippleRef: React.RefObject<IRippleActions>;
+  rippleRef: React.RefObject<RippleActions>;
 };
 
 type Return = {
@@ -26,7 +26,7 @@ export const useRipple = ({
   rippleRef,
 }: Props): Return => {
   function useRippleHandler(
-    rippleAction: keyof IRippleActions,
+    rippleAction: keyof RippleActions,
     skipRippleAction = !rippleEnabled,
   ) {
     return React.useCallback(

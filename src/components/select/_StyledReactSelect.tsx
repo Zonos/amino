@@ -26,7 +26,7 @@ import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 
@@ -39,7 +39,7 @@ type AdditionalProps<Value> = {
 };
 
 const ClearIndicator = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
@@ -51,7 +51,7 @@ const ClearIndicator = <
 );
 
 const DropdownIndicator = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
@@ -160,7 +160,7 @@ const StrongLabel = styled.strong`
 `;
 
 const Control = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
@@ -262,7 +262,7 @@ const IconLabel = ({
 );
 
 const MultiValueLabel = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -275,7 +275,7 @@ const MultiValueLabel = <
 );
 
 const MultiValueRemove = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -287,7 +287,7 @@ const MultiValueRemove = <
 );
 
 export const CheckboxOptionComponent = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
@@ -356,7 +356,11 @@ export const CheckboxOptionComponent = <
   );
 };
 
-const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
+const localStyles: StylesConfig<
+  SelectOption,
+  boolean,
+  GroupBase<SelectOption>
+> = {
   clearIndicator: provided => ({
     ...provided,
     color: theme.gray700,
@@ -366,7 +370,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // container
   control: (provided, state) => {
     const { size } = state.selectProps as (typeof state)['selectProps'] &
-      AdditionalProps<IOption['value']>;
+      AdditionalProps<SelectOption['value']>;
     return {
       ...provided,
       background: theme.inputBackground,
@@ -465,7 +469,7 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
 };
 
 export interface StyledReactSelectProps<
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 > extends Props<Option, IsMulti, Group>,
@@ -478,7 +482,7 @@ export interface StyledReactSelectProps<
 }
 
 export const StyledReactSelect = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({

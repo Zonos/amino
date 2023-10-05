@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { LegacyButton } from 'src/components/button/LegacyButton';
 import {
-  type IRippleActions,
+  type RippleActions,
   RippleGroup,
 } from 'src/components/button/RippleGroup';
 import { useRipple } from 'src/components/button/useRipple';
@@ -42,7 +42,7 @@ const StyledDiv = styled.div`
 `;
 
 export const Ripple: StoryFn<typeof RippleGroup> = props => {
-  const rippleRef = useRef<IRippleActions>(null);
+  const rippleRef = useRef<RippleActions>(null);
   const [controlRippleEnabled, setControlRippleEnabled] = useState(true);
 
   const { getRippleHandlers, rippleEnabled } = useRipple({
