@@ -10,10 +10,10 @@ import {
 } from 'react-select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
-import type { HelpTextProps } from 'src/components/help-text/HelpText';
+import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import type { CountryOption, UnavailableCountry } from 'src/types/Country';
+import { type CountryOption, type UnavailableCountry } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 

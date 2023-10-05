@@ -1,4 +1,4 @@
-import type { night } from 'build-utils/css/constants/_night';
+import { type night } from 'build-utils/css/constants/_night';
 import { theme as lightTheme } from 'build-utils/css/constants/theme';
 import { isMatchedLastThemeSnapshot } from 'build-utils/css/utils/isMatchedLastThemeSnapshot';
 

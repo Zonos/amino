@@ -5,7 +5,7 @@ import {
   generateThemeCapture,
 } from 'build-utils/css/utils/generateCSS';
 import { logging } from 'build-utils/css/utils/logging';
-import type { Theme } from 'build-utils/types/Theme';
+import { type Theme } from 'build-utils/types/Theme';
 
 const logError = ({
   theme,

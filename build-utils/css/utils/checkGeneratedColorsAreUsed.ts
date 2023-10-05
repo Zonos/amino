@@ -1,5 +1,5 @@
 import { logging } from 'build-utils/css/utils/logging';
-import type { Theme } from 'build-utils/types/Theme';
+import { type Theme } from 'build-utils/types/Theme';
 import { readFileSync } from 'fs';
 import { glob } from 'glob';
 

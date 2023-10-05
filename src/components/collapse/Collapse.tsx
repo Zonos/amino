@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import type { CollapseProps as MuiCollapseProps } from '@mui/material/Collapse';
 import MuiCollapse from '@mui/material/Collapse';

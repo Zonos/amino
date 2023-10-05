@@ -12,7 +12,7 @@ import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { UploadedFile } from 'src/types/UploadedFile';
+import { type UploadedFile } from 'src/types/UploadedFile';
 
 const Wrapper = styled.div<{ disabled: boolean }>`
   display: flex;

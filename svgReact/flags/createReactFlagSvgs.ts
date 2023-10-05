@@ -6,9 +6,9 @@ import {
   writeFileSync,
 } from 'fs';
 import { transformSvgContent } from 'svgReact/build-utils/transformSvgContent';
-import type {
-  GenerateIconType,
-  SvgList,
+import {
+  type GenerateIconType,
+  type SvgList,
 } from 'svgReact/flags/types/TypeGenerateIcon';
 
 const pascalCased = (string: string) =>
