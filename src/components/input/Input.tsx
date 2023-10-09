@@ -45,7 +45,7 @@ const Fields = styled.div<{ size?: Size }>`
   }
 `;
 
-const AminoInputWrapper = styled.div<{ size?: Size; width?: number }>`
+const AminoInputWrapper = styled.div<{ width?: number }>`
   position: relative;
   width: ${p => (p.width ? `${p.width}px` : '100%')};
 
@@ -75,7 +75,6 @@ type InputType<T extends HTMLInputTypeAttribute> = {
   onChange: T extends 'date'
     ? DateInputEventHandler
     : ChangeEventHandler<HTMLInputElement>;
-  size: Size;
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
 } & Omit<FloatLabelInputProps, 'onChange'> &
@@ -241,7 +240,6 @@ export const Input = <T extends string>({
   return (
     <AminoInputWrapper
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
-      size={size}
       width={width}
     >
       <Fields size={size}>{renderInput()}</Fields>
