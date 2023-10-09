@@ -12,7 +12,7 @@ import { theme } from 'src/styles/constants/theme';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
 
 const Fields = styled.div`
-  border-radius: ${theme.radius6};
+  border-radius: ${theme.radius12};
   border: ${theme.border};
   position: relative;
   &:hover {
@@ -29,7 +29,7 @@ const StyledBorder = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    border-radius: ${theme.radius6};
+    border-radius: ${theme.radius12};
   }
 `;
 

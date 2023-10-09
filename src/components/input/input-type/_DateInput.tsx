@@ -20,7 +20,7 @@ const StyledActionWrapper = styled.div`
 `;
 const StyledButtonAction = styled.button`
   padding: 6px;
-  border-radius: ${theme.radius4};
+  border-radius: 50%;
   transition: ${theme.transition};
 
   &:hover {
