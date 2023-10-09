@@ -30,6 +30,20 @@ import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 
+const getRadius = ($size?: Size) => {
+  switch ($size) {
+    case 'sm':
+      return `${theme.radius6}`;
+    case 'lg':
+      return `${theme.radius10}`;
+    case 'xl':
+      return `${theme.radius12}`;
+    case 'md':
+    default:
+      return `${theme.radius8}`;
+  }
+};
+
 type AdditionalProps<Value> = {
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -375,7 +389,7 @@ const localStyles: StylesConfig<
       ...provided,
       background: theme.inputBackground,
       borderColor: `${theme.gray200}`,
-      borderRadius: 6,
+      borderRadius: getRadius(size),
       boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
       color: theme.gray800,
       cursor: 'pointer',
