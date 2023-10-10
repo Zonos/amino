@@ -10,7 +10,7 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-storyshots',
     '@storybook/addon-storyshots-puppeteer',
-    'storybook-addon-designs',
+    '@storybook/addon-designs',
   ],
   docs: {
     autodocs: true,
