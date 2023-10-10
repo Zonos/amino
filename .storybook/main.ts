@@ -16,6 +16,7 @@ const storybookConfig: StorybookConfig = {
     autodocs: true,
   },
   framework: {
+    // NextJS uses webpack internally, so we want to match that environment as close as possible
     name: '@storybook/react-webpack5',
     options: {},
   },
