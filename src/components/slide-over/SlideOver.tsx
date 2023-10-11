@@ -87,7 +87,7 @@ export const SlideOver = ({
   label,
   onClose,
   subtitle,
-  width,
+  width = 444,
   ...props
 }: SlideOverProps) => (
   <StyledBaseDialog
