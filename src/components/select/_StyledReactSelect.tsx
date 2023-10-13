@@ -355,6 +355,7 @@ export const CheckboxOptionComponent = <
       >
         {selectProps.isMulti ? (
           <Checkbox
+            allowPropagation
             checked={isSelected}
             disabled={isDisabled}
             icon={data.icon}
