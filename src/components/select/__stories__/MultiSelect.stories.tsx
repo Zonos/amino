@@ -22,6 +22,12 @@ const SelectMeta: Meta = {
       </StyledWrapper>
     ),
   ],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
+    },
+  },
 };
 
 export default SelectMeta;
@@ -31,11 +37,54 @@ const MultiSelectTemplate: StoryFn<MultiSelectProps> = ({
   ...props
 }: MultiSelectProps) => {
   const [value, setValue] = useState(_value);
-  return <MultiSelect {...props} onChange={setValue} value={value} />;
+  return (
+    <MultiSelect
+      {...props}
+      hideSelectedOptions={false}
+      menuIsOpen
+      onChange={setValue}
+      value={value}
+    />
+  );
+};
+
+export const Basic = MultiSelectTemplate.bind({});
+Basic.args = {
+  label: 'Currencies',
+  options: [
+    {
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+    {
+      label: 'European Euro (EUR)',
+      value: 'EUR',
+    },
+    {
+      label: 'Japanese Yen (JPY)',
+      value: 'JPY',
+    },
+    {
+      label: 'British Pound (GBP)',
+      value: 'GBP',
+    },
+    {
+      label: 'Swiss Frank (CHF)',
+      value: 'CHF',
+    },
+    {
+      label: 'Australian Dollar (AUD)',
+      value: 'AUD',
+    },
+    {
+      label: 'New Zealand Dollar (NZD)',
+      value: 'NZD',
+    },
+  ],
+  value: [],
 };
 
 export const ActiveMultiSelectWithCutoff = MultiSelectTemplate.bind({});
-
 ActiveMultiSelectWithCutoff.args = {
   label: 'Currencies',
   options: [
@@ -92,15 +141,7 @@ ActiveMultiSelectWithCutoff.args = {
   ],
 };
 
-ActiveMultiSelectWithCutoff.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
-
 export const ActiveMultiSelectWithCutoffWithIcon = MultiSelectTemplate.bind({});
-
 ActiveMultiSelectWithCutoffWithIcon.args = {
   icon: <PlayCircleIcon size={24} />,
   label: 'Currencies',
@@ -156,11 +197,4 @@ ActiveMultiSelectWithCutoffWithIcon.args = {
       value: 'NZD',
     },
   ],
-};
-
-ActiveMultiSelectWithCutoffWithIcon.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
 };

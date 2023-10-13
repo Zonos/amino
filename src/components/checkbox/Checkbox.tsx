@@ -100,6 +100,11 @@ export type CheckboxProps = Omit<
   'onClick' | 'onChange'
 > &
   BaseProps & {
+    /**
+     * Don't stop propagation of the click event
+     * @default false
+     */
+    allowPropagation?: boolean;
     checked: boolean;
     disabled?: boolean;
     icon?: ReactNode;
@@ -111,6 +116,7 @@ export type CheckboxProps = Omit<
   };
 
 export const Checkbox = ({
+  allowPropagation = false,
   checked = false,
   className,
   disabled,
@@ -135,7 +141,9 @@ export const Checkbox = ({
       data-testid={testId}
       htmlFor={labelAsHtmlAttribute}
       onClick={e => {
-        e.stopPropagation();
+        if (!allowPropagation) {
+          e.stopPropagation();
+        }
         if (!disabled) {
           onChange(!checked, e);
         }
