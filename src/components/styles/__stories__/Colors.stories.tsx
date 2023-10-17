@@ -41,13 +41,13 @@ const ColorWrapper = styled.div`
 `;
 
 const StyledColorIntensity = styled.div<{
+  $background: Color;
   $color: Color;
-  background: Color;
 }>`
   color: ${p => theme[p.$color]};
   font-size: ${theme.fontSizeS};
   padding: ${theme.space24};
-  background: ${p => theme[p.background]};
+  background: ${p => theme[p.$background]};
 `;
 
 export const ColorPalette = () => (
@@ -64,8 +64,8 @@ export const ColorPalette = () => (
             return (
               <div key={aminoColor}>
                 <StyledColorIntensity
+                  $background={aminoColor}
                   $color={Number(value) <= 500 ? 'gray1200' : 'gray0'}
-                  background={aminoColor}
                 >
                   <Text>{value}</Text>
                 </StyledColorIntensity>

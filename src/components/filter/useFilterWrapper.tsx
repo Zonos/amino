@@ -35,7 +35,7 @@ const BadgeWrapper = styled.div`
   }
 `;
 
-const ToggleWrapper = styled.div<{ active: boolean; hasFilter: boolean }>`
+const ToggleWrapper = styled.div<{ $active: boolean; $hasFilter: boolean }>`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -43,10 +43,11 @@ const ToggleWrapper = styled.div<{ active: boolean; hasFilter: boolean }>`
   padding: ${theme.space4} ${theme.space8};
   border-radius: 100px;
 
-  border-top-right-radius: ${p => (p.hasFilter ? '0px' : '100px')};
-  border-bottom-right-radius: ${p => (p.hasFilter ? '0px' : '100px')};
+  border-top-right-radius: ${p => (p.$hasFilter ? '0px' : '100px')};
+  border-bottom-right-radius: ${p => (p.$hasFilter ? '0px' : '100px')};
 
-  border-right: 1px solid ${p => (p.active ? theme.borderColor : theme.gray200)};
+  border-right: 1px solid
+    ${p => (p.$active ? theme.borderColor : theme.gray200)};
 
   &:hover {
     background-color: ${theme.gray100};
@@ -195,7 +196,7 @@ export const useFilterWrapper = ({
         className={[className, active && 'active'].join(' ')}
         onClick={handleToggle}
       >
-        <ToggleWrapper active={active} hasFilter={active && filterExists}>
+        <ToggleWrapper $active={active} $hasFilter={active && filterExists}>
           {active ? (
             <MinusCircleDuotoneIcon
               color="gray0"

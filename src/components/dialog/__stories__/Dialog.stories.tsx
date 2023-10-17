@@ -33,8 +33,8 @@ const DialogMeta: Meta = {
 
 export default DialogMeta;
 
-const StyledDialog = styled(Dialog)<{ height: number }>`
-  height: ${p => p.height}px;
+const StyledDialog = styled(Dialog)<{ $height: number }>`
+  height: ${p => p.$height}px;
 `;
 
 const CenteredDiv = styled.div`
@@ -276,6 +276,7 @@ export const WithInput = ({ height }: { height: number }) => {
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledDialog
+        $height={height}
         actions={
           <>
             <Button onClick={() => setOpen(false)} size="md" variant="subtle">
@@ -286,7 +287,6 @@ export const WithInput = ({ height }: { height: number }) => {
             </Button>
           </>
         }
-        height={height}
         label="With an input"
         onClose={() => setOpen(false)}
         open={open}

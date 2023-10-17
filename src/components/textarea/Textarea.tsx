@@ -120,9 +120,9 @@ const StyledTextarea = styled.textarea<TextareaType>`
   }
 `;
 
-const AminoInputWrapper = styled.div<{ width?: number }>`
+const AminoInputWrapper = styled.div<{ $width?: number }>`
   position: relative;
-  width: ${p => (p.width ? `${p.width}px` : '100%')};
+  width: ${p => (p.$width ? `${p.$width}px` : '100%')};
 
   &.disabled {
     * {
@@ -191,10 +191,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <AminoInputWrapper
+        $width={width}
         className={`amino-input-wrapper ${className || ''} ${
           disabled ? 'disabled' : ''
         }`}
-        width={width}
       >
         <Fields onClick={() => textareaRef?.current?.focus()}>
           <StyledTextarea

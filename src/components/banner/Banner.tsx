@@ -20,16 +20,16 @@ const StyledBanner = styled.div`
 `;
 
 const Container = styled.div<{
-  onlyContent: boolean;
-  withoutCloseButton: boolean;
+  $onlyContent: boolean;
+  $withoutCloseButton: boolean;
 }>`
   display: grid;
-  align-items: ${p => (p.onlyContent ? 'start' : 'center')};
+  align-items: ${p => (p.$onlyContent ? 'start' : 'center')};
   grid-template-areas:
     'icon header close'
     '. content .';
   grid-template-columns: 32px auto ${p =>
-      p.withoutCloseButton ? '0px' : '32px'};
+      p.$withoutCloseButton ? '0px' : '32px'};
 `;
 
 const Icon = styled.div`
@@ -48,9 +48,9 @@ const CloseButton = styled(LegacyButton)`
   }
 `;
 
-const Header = styled.div<{ color: Color }>`
+const Header = styled.div<{ $color: Color }>`
   grid-area: header;
-  color: ${p => theme[p.color]};
+  color: ${p => theme[p.$color]};
 `;
 
 const Content = styled.div`
@@ -155,7 +155,7 @@ export const Banner = ({
     ].filter(Boolean);
 
     return (
-      <Container onlyContent={onlyContent} withoutCloseButton={!onClose}>
+      <Container $onlyContent={onlyContent} $withoutCloseButton={!onClose}>
         <Icon>{intentIcon}</Icon>
         {onClose && (
           <Close>
@@ -167,7 +167,7 @@ export const Banner = ({
           </Close>
         )}
 
-        <Header color={removeIconColor}>{header}</Header>
+        <Header $color={removeIconColor}>{header}</Header>
 
         {content && (
           <Content>

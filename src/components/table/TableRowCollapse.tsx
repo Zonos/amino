@@ -35,10 +35,10 @@ const StyledCollapse = styled(Collapse)`
   }
 `;
 
-const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
-  border-bottom: ${p => (!p.collapsed ? 'inherit' : 0)};
+const CollapsibleCell = styled(TableCell)<{ $collapsed: boolean }>`
+  border-bottom: ${p => (!p.$collapsed ? 'inherit' : 0)};
   &&& {
-    height: ${p => (!p.collapsed ? 'inherit' : 0)};
+    height: ${p => (!p.$collapsed ? 'inherit' : 0)};
   }
   > div {
     width: 100%;
@@ -96,7 +96,7 @@ export const TableRowCollapse = ({
       </StyledTableRow>
       {collapsible && (
         <TableRow>
-          <CollapsibleCell collapsed={collapsed} colSpan={100}>
+          <CollapsibleCell $collapsed={collapsed} colSpan={100}>
             <StyledCollapse collapsed={collapsed}>{children}</StyledCollapse>
           </CollapsibleCell>
         </TableRow>

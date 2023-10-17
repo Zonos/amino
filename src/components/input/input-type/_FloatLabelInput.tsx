@@ -30,7 +30,7 @@ const getRadius = ($size?: Size) => {
   }
 };
 
-const StyledLabelInput = styled.label<{ $size: Size; hasPrefix: boolean }>`
+const StyledLabelInput = styled.label<{ $size: Size }>`
   display: block;
   max-height: 0;
   pointer-events: none;
@@ -310,7 +310,6 @@ export const FloatLabelInput = forwardRef<
       () => getTestId({ componentName: 'input', name: label }),
       [label],
     );
-    const hasPrefix = !!prefix || !!valuePrefix;
     const hasValue = !!value || !!valuePrefix;
     return (
       <StyledLabelWrapper className={`${className || ''} ${size}`}>
@@ -344,11 +343,7 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        <StyledLabelInput
-          $size={size}
-          data-label={label}
-          hasPrefix={hasPrefix}
-        />
+        <StyledLabelInput $size={size} data-label={label} />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );

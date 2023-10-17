@@ -23,6 +23,11 @@ const AnnouncementDialogMeta: Meta = {
         disable: true,
       },
     },
+    height: {
+      control: {
+        type: 'number',
+      },
+    },
   },
   component: AnnouncementDialog,
   parameters: {
@@ -35,8 +40,10 @@ const AnnouncementDialogMeta: Meta = {
 
 export default AnnouncementDialogMeta;
 
-const StyledAnnouncementDialog = styled(AnnouncementDialog)<{ height: number }>`
-  height: ${p => p.height}px;
+const StyledAnnouncementDialog = styled(AnnouncementDialog)<{
+  $height: number;
+}>`
+  height: ${p => p.$height}px;
 `;
 
 const CenteredDiv = styled.div`
@@ -49,6 +56,7 @@ const CenteredDiv = styled.div`
 const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
   announcementId,
   children,
+  height,
   label,
   width,
   ...rest
@@ -59,6 +67,7 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
       <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
       <StyledAnnouncementDialog
         {...rest}
+        $height={height}
         announcementId={announcementId}
         label={label}
         onClose={() => setOpen(false)}

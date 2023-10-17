@@ -26,7 +26,7 @@ const StyledWrapper = styled.div`
   padding-bottom: 20px;
 `;
 
-const StyledIcon = styled.div<{ size?: number }>`
+const StyledIcon = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +79,6 @@ export const Icons = ({
                   /Solid/.test(iconName) ? 'solid' : '',
                   /Duotone/.test(iconName) ? 'duotone' : '',
                 ].join(' ')}
-                size={size}
               >
                 <IconComponent
                   color={color}

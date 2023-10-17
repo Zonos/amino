@@ -183,12 +183,12 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
 };
 
 const StyledChevronRightIcon = styled(ChevronRightIcon)<{
-  collapsed: boolean;
+  $collapsed: boolean;
 }>`
   color: ${theme.gray600};
   transition: ${theme.transition};
 
-  transform: ${({ collapsed }) => (collapsed ? 'rotate(0)' : 'rotate(-90deg)')};
+  transform: ${p => (p.$collapsed ? 'rotate(0)' : 'rotate(-90deg)')};
 `;
 
 const Container = styled.div`
@@ -234,7 +234,7 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
               })
             }
           >
-            <StyledChevronRightIcon collapsed={collapsed[index]!} />
+            <StyledChevronRightIcon $collapsed={collapsed[index]!} />
             <Text>Item {index + 1}</Text>
           </ItemLabel>
           <Collapse collapsed={collapsed[index]!}>

@@ -53,11 +53,11 @@ const StyledTagLeft = styled.button<Omit<TagProps, 'onClose'>>`
     order: ${({ iconRight }) => (iconRight ? '2' : '')};
   }
 `;
-const StyledTagRight = styled.button<{ size: TagSize }>`
+const StyledTagRight = styled.button<{ $size: TagSize }>`
   border-radius: ${theme.radius4};
   display: inline-flex;
   align-items: center;
-  padding: ${p => (p.size === 'base' ? '2px 3px' : '4px 5px')};
+  padding: ${p => (p.$size === 'base' ? '2px 3px' : '4px 5px')};
 `;
 
 const StyledRemoveBtn = styled.div`
@@ -87,7 +87,7 @@ export const Tag = ({
       {icon}
       <p>{children}</p>
     </StyledTagLeft>
-    <StyledTagRight onClick={onClose} size={size} type="button">
+    <StyledTagRight $size={size} onClick={onClose} type="button">
       <StyledRemoveBtn>
         <RemoveIcon size={14} />
       </StyledRemoveBtn>
