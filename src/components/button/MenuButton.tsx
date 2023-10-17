@@ -18,14 +18,12 @@ const DropdownWrapper = styled.div`
 
 const AnimatedSurface = styled.div`
   background: ${theme.surfaceColor};
-  border: ${theme.border};
-  padding: ${theme.space24};
-  border-radius: ${theme.radius6};
+  border-radius: ${theme.radius12};
   box-shadow: ${theme.v3ShadowLarge};
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  padding: ${theme.radius6} 0;
-  margin-top: ${theme.space8};
+  padding: ${theme.space8};
+  margin-top: ${theme.space4};
   right: 0;
   min-width: 100%;
   width: max-content;

@@ -8,11 +8,12 @@ import type { BaseProps } from 'src/types/BaseProps';
 export const StyledListItem = styled.li`
   display: flex;
   align-items: center;
-  padding: 0 ${theme.space16};
-  height: 36px;
-  line-height: 36px;
+  padding: ${theme.space8};
+  line-height: 24px;
   user-select: none;
   cursor: pointer;
+  border-radius: ${theme.radius6};
+  font-size: ${theme.fontSizeBase};
 
   &:hover {
     background: ${theme.hoverColor};
@@ -24,7 +25,13 @@ export const StyledListItem = styled.li`
   }
 
   svg {
-    margin-right: 12px;
+    margin-right: ${theme.space8};
+  }
+
+  [data-theme='night'] & {
+    &:hover {
+      background: ${theme.gray100};
+    }
   }
 `;
 
