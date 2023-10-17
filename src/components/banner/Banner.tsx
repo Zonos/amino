@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { LegacyButton } from 'src/components/button/LegacyButton';
-import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
@@ -19,7 +18,8 @@ const StyledBanner = styled.div`
   padding: ${theme.space16};
 
   .amino-button {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       filter: brightness(1.1);
     }
   }
@@ -71,7 +71,7 @@ const ActionsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: ${theme.space8};
-`
+`;
 
 const BannerHeader = styled.header`
   display: flex;

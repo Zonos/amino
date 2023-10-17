@@ -4,11 +4,11 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Banner } from 'src/components/banner/Banner';
+import { Button } from 'src/components/button/Button';
 import { LegacyButton } from 'src/components/button/LegacyButton';
 import { VStack } from 'src/components/stack/VStack';
+import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
-import { Button } from "src/components/button/Button";
-import { ArrowRightIcon } from "src/icons/ArrowRightIcon";
 
 const BannerStories: Meta = {
   component: Banner,
@@ -332,8 +332,8 @@ export const Basic: StoryFn<typeof Banner> = props => (
         Contact us
       </Button>
     }
-    onClose={() => null}
     intent="warning"
+    onClose={() => null}
     title="Lots of words about how Cade is a great engineer. He works diligently and tirelessly through day and night, rain or shine, to make sure that the code he writes is the best it can be. He is a great asset to the team and we are lucky to have him."
   />
 );
