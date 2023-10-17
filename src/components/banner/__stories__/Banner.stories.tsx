@@ -7,9 +7,17 @@ import { Banner } from 'src/components/banner/Banner';
 import { LegacyButton } from 'src/components/button/LegacyButton';
 import { VStack } from 'src/components/stack/VStack';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import { Button } from "src/components/button/Button";
+import { ArrowRightIcon } from "src/icons/ArrowRightIcon";
 
 const BannerStories: Meta = {
   component: Banner,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A56507',
+    },
+  },
 };
 
 export default BannerStories;
@@ -31,6 +39,7 @@ const ids = [
   'longSoloTitle',
 ] as const;
 type ID = (typeof ids)[number];
+
 const Template: StoryFn<typeof Banner> = ({
   footerActions,
   headerActions,
@@ -178,12 +187,6 @@ DefaultBanner.args = {
     </LegacyButton>
   ),
 };
-DefaultBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=776%3A12439',
-  },
-};
 
 export const InfoBanner = Template.bind({});
 InfoBanner.args = {
@@ -215,12 +218,6 @@ InfoBanner.args = {
     </LegacyButton>
   ),
   intent: 'info',
-};
-InfoBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A56507',
-  },
 };
 
 export const SuccessBanner = Template.bind({});
@@ -254,12 +251,6 @@ SuccessBanner.args = {
   ),
   intent: 'success',
 };
-SuccessBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A57333',
-  },
-};
 
 export const WarningBanner = Template.bind({});
 WarningBanner.args = {
@@ -291,12 +282,6 @@ WarningBanner.args = {
     </LegacyButton>
   ),
   intent: 'warning',
-};
-WarningBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A58159',
-  },
 };
 
 export const ErrorBanner = Template.bind({});
@@ -330,9 +315,25 @@ ErrorBanner.args = {
   ),
   intent: 'error',
 };
-ErrorBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A58985',
-  },
-};
+
+export const Basic: StoryFn<typeof Banner> = props => (
+  <Banner
+    {...props}
+    headerActions={
+      <Button
+        href="https://zonos.com/contact-support"
+        icon={<ArrowRightIcon />}
+        iconRight
+        outline
+        tag="a"
+        target="_blank"
+        variant="warning"
+      >
+        Contact us
+      </Button>
+    }
+    onClose={() => null}
+    intent="warning"
+    title="Lots of words about how Cade is a great engineer. He works diligently and tirelessly through day and night, rain or shine, to make sure that the code he writes is the best it can be. He is a great asset to the team and we are lucky to have him."
+  />
+);

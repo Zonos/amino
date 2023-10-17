@@ -17,6 +17,12 @@ import type { BaseProps } from 'src/types/BaseProps';
 const StyledBanner = styled.div`
   border-radius: ${theme.radius12};
   padding: ${theme.space16};
+
+  .amino-button {
+    &:hover, &:focus {
+      filter: brightness(1.1);
+    }
+  }
 `;
 
 const Container = styled.div<{
@@ -61,15 +67,23 @@ const Content = styled.div`
   gap: 16px;
 `;
 
+const ActionsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${theme.space8};
+`
+
 const BannerHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: ${theme.space12};
 `;
 
 const BannerFooter = styled.footer`
   display: flex;
   align-items: center;
+  gap: ${theme.space12};
 `;
 
 const DefaultBanner = styled(StyledBanner)`
@@ -136,14 +150,14 @@ export const Banner = ({
           <Text color={removeIconColor} type="label">
             {title}
           </Text>
-          {headerActions && <HStack spacing={8}>{headerActions}</HStack>}
+          {headerActions && <ActionsWrapper>{headerActions}</ActionsWrapper>}
         </BannerHeader>
       );
 
     const renderFooter = () =>
       footerActions && (
         <BannerFooter>
-          <HStack spacing={8}>{footerActions}</HStack>
+          <ActionsWrapper>{footerActions}</ActionsWrapper>
         </BannerFooter>
       );
 
@@ -178,6 +192,7 @@ export const Banner = ({
       </Container>
     );
   };
+
   switch (intent) {
     case 'info':
       return (
