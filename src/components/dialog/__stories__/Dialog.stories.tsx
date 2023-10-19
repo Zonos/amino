@@ -47,10 +47,10 @@ const CenteredDiv = styled.div`
 const Template: StoryFn<DialogProps & { height: number }> = ({
   actions,
   children,
+  height,
   label,
   leftActions,
   width,
-  height,
   ...rest
 }) => {
   const [open, setOpen] = useState(false);
