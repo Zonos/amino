@@ -50,6 +50,7 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
   label,
   leftActions,
   width,
+  height,
   ...rest
 }) => {
   const [open, setOpen] = useState(false);
@@ -58,6 +59,7 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
       <Button onClick={() => setOpen(true)}>Open</Button>
       <StyledDialog
         {...rest}
+        $height={height}
         actions={actions}
         label={label}
         leftActions={leftActions}
