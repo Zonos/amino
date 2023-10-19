@@ -143,7 +143,7 @@ type Type = (typeof textOptions)[number]['type'];
 export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
 type Tag = (typeof textOptions)[number]['tag'];
 type TypographyOverrides = {
-  color?: Color | 'textColorSecondary';
+  color?: Color | 'textColorSecondary' | 'textColor';
   fontSize?: Size;
   fontWeight?: FontWeight;
   lineHeight?: Size;
