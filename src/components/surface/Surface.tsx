@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { theme } from 'src/styles/constants/theme';
 import type { Depth } from 'src/types/Depth';
 
-const SurfaceBase = styled.div<{ dense?: boolean }>`
+const SurfaceBase = styled.div<{ $dense: boolean }>`
   background: ${theme.surfaceColor};
   padding: ${theme.space24};
   color: ${theme.textColor};
-  border-radius: ${p => (p.dense ? theme.radius6 : theme.radius8)};
+  border-radius: ${p => (p.$dense ? theme.radius6 : theme.radius8)};
 `;
 
 // shadow small
@@ -35,36 +35,44 @@ const Depth64 = styled(SurfaceBase)`
 type Props = {
   children: ReactNode;
   className?: string;
+  /**
+   * @default false
+   */
   dense?: boolean;
   depth?: Depth;
 };
 
-export const Surface = ({ children, className, dense, depth }: Props) => {
+export const Surface = ({
+  children,
+  className,
+  dense = false,
+  depth,
+}: Props) => {
   const classes = [className || '', 'elevated'].join(' ');
 
   switch (depth) {
     case 'depth64':
       return (
-        <Depth64 className={classes} dense={dense}>
+        <Depth64 $dense={dense} className={classes}>
           {children}
         </Depth64>
       );
     case 'depth16':
       return (
-        <Depth16 className={classes} dense={dense}>
+        <Depth16 $dense={dense} className={classes}>
           {children}
         </Depth16>
       );
     case 'depth8':
       return (
-        <Depth8 className={classes} dense={dense}>
+        <Depth8 $dense={dense} className={classes}>
           {children}
         </Depth8>
       );
     case 'depth4':
     default:
       return (
-        <Depth4 className={classes} dense={dense}>
+        <Depth4 $dense={dense} className={classes}>
           {children}
         </Depth4>
       );

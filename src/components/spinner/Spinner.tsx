@@ -4,18 +4,18 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
 // Stop container from scrolling when it rotates
-const Wrapper = styled.div<{ size: number }>`
+const Wrapper = styled.div<{ $size: number }>`
   position: relative;
   overflow: hidden;
-  width: ${p => p.size}px;
-  height: ${p => p.size}px;
+  width: ${p => p.$size}px;
+  height: ${p => p.$size}px;
 `;
 
 // Inspired by https://codesandbox.io/s/loading-spinner-and-background-1yqdo?file=/src/loadingspinner.less:0-65
-const StyledSvg = styled.svg<{ size: number }>`
+const StyledSvg = styled.svg<{ $size: number }>`
   position: absolute;
-  width: ${p => p.size}px;
-  height: ${p => p.size}px;
+  width: ${p => p.$size}px;
+  height: ${p => p.$size}px;
 
   stroke: ${theme.blue600};
 
@@ -116,10 +116,10 @@ export const Spinner = ({
   color = 'primary',
   size = 32,
 }: SpinnerProps) => (
-  <Wrapper size={size}>
+  <Wrapper $size={size}>
     <StyledSvg
+      $size={size}
       className={[className, color, 'amino-spinner'].join(' ')}
-      size={size}
       viewBox="0 0 50 50"
     >
       <circle

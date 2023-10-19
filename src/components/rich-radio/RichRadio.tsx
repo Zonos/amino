@@ -31,7 +31,7 @@ const StyledActiveIcon = styled.div`
   justify-content: center;
 `;
 
-const StyledItem = styled.button<{ itemHeight: number }>`
+const StyledItem = styled.button<{ $itemHeight: number }>`
   position: relative;
   appearance: none;
   background: ${theme.gray0};
@@ -44,7 +44,7 @@ const StyledItem = styled.button<{ itemHeight: number }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: ${({ itemHeight }) => itemHeight}px;
+  height: ${p => p.$itemHeight}px;
   &:hover {
     background: ${theme.gray100};
     border: 1px solid ${theme.gray200};
@@ -148,10 +148,10 @@ export const RichRadio = <T extends string>({
       {items.map(item => (
         <StyledItem
           key={item.value}
+          $itemHeight={itemHeight}
           data-disabled={item.disabled}
           data-state={item.value === selectedValue ? 'checked' : ''}
           data-tip={item.tooltip}
-          itemHeight={itemHeight}
           onClick={() => {
             handleChange(item.value);
           }}

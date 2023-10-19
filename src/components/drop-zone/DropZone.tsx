@@ -14,19 +14,19 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { type UploadedFile } from 'src/types/UploadedFile';
 
-const Wrapper = styled.div<{ disabled: boolean }>`
+const Wrapper = styled.div<{ $disabled: boolean }>`
   display: flex;
   flex-direction: column;
   gap: ${theme.space16};
-  opacity: ${p => (p.disabled ? 0.5 : 1)};
-  cursor: ${p => (p.disabled ? 'not-allowed' : 'auto')};
+  opacity: ${p => (p.$disabled ? 0.5 : 1)};
+  cursor: ${p => (p.$disabled ? 'not-allowed' : 'auto')};
 `;
 
 const UploadWrapper = styled.div<{
-  error?: boolean;
+  $error?: boolean;
 }>`
   border: 2px dashed;
-  border-color: ${({ error }) => (error ? theme.danger : theme.borderColor)};
+  border-color: ${p => (p.$error ? theme.danger : theme.borderColor)};
   border-radius: ${theme.radius12};
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@ const InstructionTextWrapper = styled.div`
   align-items: center;
 `;
 
-const BrowseButton = styled.button<{ disabled: boolean }>`
+const BrowseButton = styled.button`
   display: inline;
 `;
 
@@ -228,7 +228,7 @@ export const DropZone = ({
     return (
       <>
         {!uploadedMaxFiles && (
-          <UploadWrapper error={error}>{renderUpload()}</UploadWrapper>
+          <UploadWrapper $error={error}>{renderUpload()}</UploadWrapper>
         )}
         {!!uploadedFiles.length && (
           <UploadedFilesWrapper>{renderFiles()}</UploadedFilesWrapper>
@@ -238,7 +238,7 @@ export const DropZone = ({
   };
 
   return (
-    <Wrapper className={className} disabled={disabled}>
+    <Wrapper $disabled={disabled} className={className}>
       {renderContent()}
     </Wrapper>
   );

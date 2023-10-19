@@ -17,21 +17,21 @@ import { getTestId } from 'src/utils/getTestId';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
 
-const AminoCheckbox = styled.div<{ checked: boolean }>`
+const AminoCheckbox = styled.div<{ $checked: boolean }>`
   width: 16px;
   height: 16px;
   min-width: 16px;
   min-height: 16px;
   line-height: 16px;
   border-radius: ${theme.radius4};
-  background: ${p => (p.checked ? theme.primary : theme.inputBackground)};
-  border: ${p => (!p.checked ? `1.5px solid ${theme.gray400}` : 'none')};
+  background: ${p => (p.$checked ? theme.primary : theme.inputBackground)};
+  border: ${p => (!p.$checked ? `1.5px solid ${theme.gray400}` : 'none')};
   transition: all 150ms ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-shadow: ${p => (p.checked ? theme.shadowButtonPrimary : 'none')};
+  box-shadow: ${p => (p.$checked ? theme.shadowButtonPrimary : 'none')};
 
   svg {
     color: ${theme.gray0};
@@ -65,7 +65,7 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const CheckboxContainer = styled.label<{ checked: boolean }>`
+const CheckboxContainer = styled.label<{ $checked: boolean }>`
   display: flex;
   flex-direction: row;
   user-select: none;
@@ -73,8 +73,8 @@ const CheckboxContainer = styled.label<{ checked: boolean }>`
 
   &.disabled {
     ${AminoCheckbox} {
-      background: ${p => (p.checked ? theme.blue200 : '')};
-      border: ${p => (p.checked ? `none` : `1.5px solid ${theme.gray300}`)};
+      background: ${p => (p.$checked ? theme.blue200 : '')};
+      border: ${p => (p.$checked ? `none` : `1.5px solid ${theme.gray300}`)};
       &:active {
         box-shadow: none;
       }
@@ -136,7 +136,7 @@ export const Checkbox = ({
   );
   return (
     <CheckboxContainer
-      checked={checked}
+      $checked={checked}
       className={clsx(className, 'amino-input-wrapper', { disabled })}
       data-testid={testId}
       htmlFor={labelAsHtmlAttribute}
@@ -150,7 +150,7 @@ export const Checkbox = ({
       }}
       {...props}
     >
-      <AminoCheckbox checked={checked} id={labelAsHtmlAttribute}>
+      <AminoCheckbox $checked={checked} id={labelAsHtmlAttribute}>
         <AnimatePresence>
           {checked && (
             <AnimatedCheckIcon
