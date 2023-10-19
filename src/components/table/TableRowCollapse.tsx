@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';
@@ -35,17 +35,17 @@ const StyledCollapse = styled(Collapse)`
   }
 `;
 
-const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
-  border-bottom: ${p => (!p.collapsed ? 'inherit' : 0)};
+const CollapsibleCell = styled(TableCell)<{ $collapsed: boolean }>`
+  border-bottom: ${p => (!p.$collapsed ? 'inherit' : 0)};
   &&& {
-    height: ${p => (!p.collapsed ? 'inherit' : 0)};
+    height: ${p => (!p.$collapsed ? 'inherit' : 0)};
   }
   > div {
     width: 100%;
   }
 `;
 
-const CollapseButton = styled(LegacyButton)`
+const CollapseButton = styled(Button)`
   svg {
     transition: ${theme.transition};
 
@@ -89,14 +89,14 @@ export const TableRowCollapse = ({
           {collapsible && (
             <CollapseButton
               icon={<ChevronUpIcon className={collapsed ? 'collapsed' : ''} />}
-              intent="plain"
+              variant="plain"
             />
           )}
         </TableCell>
       </StyledTableRow>
       {collapsible && (
         <TableRow>
-          <CollapsibleCell collapsed={collapsed} colSpan={100}>
+          <CollapsibleCell $collapsed={collapsed} colSpan={100}>
             <StyledCollapse collapsed={collapsed}>{children}</StyledCollapse>
           </CollapsibleCell>
         </TableRow>

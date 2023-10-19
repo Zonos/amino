@@ -5,19 +5,19 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 
 const StyledRadio = styled.div<{
-  checked: boolean;
+  $checked: boolean;
 }>`
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: ${p => (p.checked ? theme.primary : theme.inputBackground)};
+  background: ${p => (p.$checked ? theme.primary : theme.inputBackground)};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: ${p => (!p.checked ? `1.5px solid ${theme.gray400}` : 'none')};
-  box-shadow: ${p => (p.checked ? theme.shadowButtonPrimary : 'none')};
+  border: ${p => (!p.$checked ? `1.5px solid ${theme.gray400}` : 'none')};
+  box-shadow: ${p => (p.$checked ? theme.shadowButtonPrimary : 'none')};
   margin-right: ${theme.space8};
   transition: ${theme.transition};
 
@@ -33,8 +33,8 @@ const StyledText = styled(Text)`
 `;
 
 const RadioContainer = styled.div<{
-  checked: boolean;
-  disabled?: boolean;
+  $checked: boolean;
+  $disabled?: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -45,7 +45,7 @@ const RadioContainer = styled.div<{
   &.disabled {
     cursor: not-allowed;
     & > div {
-      background: ${p => p.checked && theme.blue300};
+      background: ${p => p.$checked && theme.blue300};
       cursor: not-allowed;
     }
     label {
@@ -58,7 +58,7 @@ const RadioContainer = styled.div<{
     flex-direction: column;
     cursor: pointer;
     margin-bottom: 0;
-    color: ${props => (props.disabled ? theme.gray300 : 'black')};
+    color: ${props => (props.$disabled ? theme.gray300 : 'black')};
   }
 `;
 
@@ -71,12 +71,12 @@ export type RadioProps = {
 
 export const Radio = ({ checked, disabled, label, onChange }: RadioProps) => (
   <RadioContainer
-    checked={checked}
+    $checked={checked}
+    $disabled={disabled}
     className={disabled ? 'disabled' : ''}
-    disabled={disabled}
     onClick={() => !disabled && onChange(!checked)}
   >
-    <StyledRadio checked={checked}>
+    <StyledRadio $checked={checked}>
       <AnimatePresence>
         {checked && (
           <motion.svg

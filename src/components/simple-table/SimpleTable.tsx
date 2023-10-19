@@ -31,9 +31,9 @@ const HeaderColumn = styled.th<StyledProps<StyledHeaderColumn>>`
   text-align: ${p => p.$textAlign};
 `;
 
-const Row = styled.tr<{ clickable: boolean }>`
+const Row = styled.tr<{ $clickable: boolean }>`
   height: 48px;
-  cursor: ${p => (p.clickable ? 'pointer' : 'auto')};
+  cursor: ${p => (p.$clickable ? 'pointer' : 'auto')};
   & {
     border-bottom: ${theme.border};
   }
@@ -203,7 +203,7 @@ export const SimpleTable = <T extends object>({
   const renderRows = () => {
     if (loading) {
       return [...Array(loadingItems + 1).keys()].map(n => (
-        <Row key={n} clickable={false}>
+        <Row key={n} $clickable={false}>
           {selectable.enabled && (
             <td>
               <Skeleton key={n} height={30} />
@@ -225,11 +225,11 @@ export const SimpleTable = <T extends object>({
     return items.map((item, index) => (
       <Row
         key={keyExtractor(item)}
-        className={!noHoverBackground ? 'with-hover' : ''}
-        clickable={
+        $clickable={
           !!onRowClick ||
           (!!selectable.anySelected && !!selectable.onRowCheckboxChange)
         }
+        className={!noHoverBackground ? 'with-hover' : ''}
         onClick={() => {
           if (selectable.anySelected) {
             if (!selectable.isRowCheckboxDisabled?.(item, index)) {

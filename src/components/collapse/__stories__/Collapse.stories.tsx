@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
-import { LegacyButton } from 'src/components/button/LegacyButton';
 import { type CollapseProps, Collapse } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { Text } from 'src/components/text/Text';
@@ -112,22 +111,22 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
   return (
     <>
       <ActionWrapper>
-        <LegacyButton
+        <Button
           onClick={() => {
             setOpen1(!open1);
             setOpen2(!open2);
           }}
         >
           Toggle
-        </LegacyButton>
+        </Button>
 
-        <LegacyButton
+        <Button
           onClick={() => {
             setMoreItems(true);
           }}
         >
           Add more items
-        </LegacyButton>
+        </Button>
       </ActionWrapper>
       <CollapseContainer>
         <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
@@ -183,12 +182,12 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
 };
 
 const StyledChevronRightIcon = styled(ChevronRightIcon)<{
-  collapsed: boolean;
+  $collapsed: boolean;
 }>`
   color: ${theme.gray600};
   transition: ${theme.transition};
 
-  transform: ${({ collapsed }) => (collapsed ? 'rotate(0)' : 'rotate(-90deg)')};
+  transform: ${p => (p.$collapsed ? 'rotate(0)' : 'rotate(-90deg)')};
 `;
 
 const Container = styled.div`
@@ -234,7 +233,7 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
               })
             }
           >
-            <StyledChevronRightIcon collapsed={collapsed[index]!} />
+            <StyledChevronRightIcon $collapsed={collapsed[index]!} />
             <Text>Item {index + 1}</Text>
           </ItemLabel>
           <Collapse collapsed={collapsed[index]!}>

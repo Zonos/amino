@@ -50,9 +50,9 @@ const StyledSidebar = styled.nav`
   background: ${theme.sidebarColor};
 `;
 
-const ContentGrid = styled.div<{ hasHeader: boolean }>`
+const ContentGrid = styled.div<{ $hasHeader: boolean }>`
   height: ${p =>
-    p.hasHeader ? `calc(100vh - ${theme.appbarHeight})` : '100vh'};
+    p.$hasHeader ? `calc(100vh - ${theme.appbarHeight})` : '100vh'};
   display: grid;
   grid-template-columns: ${theme.sidebarWidth} 1fr;
 `;
@@ -105,7 +105,7 @@ export const Layout = ({
 }: LayoutProps) => (
   <AminoLayout>
     {!!headerContent && <Header>{headerContent}</Header>}
-    <ContentGrid hasHeader={!!headerContent}>
+    <ContentGrid $hasHeader={!!headerContent}>
       <StyledSidebar>
         <SidebarContent>
           {!!logoSidebar && (

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
+import { type Color, type StyledProps } from 'src/types';
 
 const Subtitle = styled.span`
   font-size: ${theme.fontSizeS};
@@ -143,20 +143,22 @@ type Type = (typeof textOptions)[number]['type'];
 export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
 type Tag = (typeof textOptions)[number]['tag'];
 type TypographyOverrides = {
-  color?: Color | 'textColorSecondary';
+  color?: Color | 'textColorSecondary' | 'textColor';
   fontSize?: Size;
   fontWeight?: FontWeight;
   lineHeight?: Size;
 };
 type TypeDefaultProp = { isUppercase?: Boolean; size: Size };
 
-const Typography = styled.h1<TypographyOverrides & TypeDefaultProp>`
-  font-size: ${p => `var(--amino-font-size-${p.fontSize || p.size})`};
-  font-weight: ${p => p.fontWeight};
-  line-height: ${p => `var(--amino-line-height-${p.lineHeight || p.size})`};
+const Typography = styled.h1<
+  StyledProps<TypographyOverrides & TypeDefaultProp>
+>`
+  font-size: ${p => `var(--amino-font-size-${p.$fontSize || p.$size})`};
+  font-weight: ${p => p.$fontWeight};
+  line-height: ${p => `var(--amino-line-height-${p.$lineHeight || p.$size})`};
   margin: 0;
-  color: ${props => props.color && theme[props.color]};
-  text-transform: ${props => props.isUppercase && 'uppercase'};
+  color: ${props => props.$color && theme[props.$color]};
+  text-transform: ${props => props.$isUppercase && 'uppercase'};
 
   svg {
     display: inline-block;
@@ -199,14 +201,14 @@ export const Text = ({
     size: Size;
   }) => (
     <Typography
+      $color={color}
+      $fontSize={fontSize}
+      $fontWeight={_fontWeight}
+      $isUppercase={!!_isUppercase}
+      $lineHeight={lineHeight}
+      $size={size}
       as={as}
       className={className}
-      color={color}
-      fontSize={fontSize}
-      fontWeight={_fontWeight}
-      isUppercase={!!_isUppercase}
-      lineHeight={lineHeight}
-      size={size}
       title={title}
     >
       {children}

@@ -37,17 +37,17 @@ const getRadius = (size?: Size) => {
   }
 };
 
-const Fields = styled.div<{ size?: Size }>`
-  border-radius: ${p => getRadius(p.size)};
+const Fields = styled.div<{ $size?: Size }>`
+  border-radius: ${p => getRadius(p.$size)};
   border: ${theme.border};
   &:hover {
     border: 1px solid ${theme.gray300};
   }
 `;
 
-const AminoInputWrapper = styled.div<{ width?: number }>`
+const AminoInputWrapper = styled.div<{ $width?: number }>`
   position: relative;
-  width: ${p => (p.width ? `${p.width}px` : '100%')};
+  width: ${p => (p.$width ? `${p.$width}px` : '100%')};
 
   & > div {
     flex-direction: row;
@@ -239,10 +239,10 @@ export const Input = <T extends string>({
   };
   return (
     <AminoInputWrapper
+      $width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
-      width={width}
     >
-      <Fields size={size}>{renderInput()}</Fields>
+      <Fields $size={size}>{renderInput()}</Fields>
 
       <HelpText error={error} helpText={helpText} />
     </AminoInputWrapper>

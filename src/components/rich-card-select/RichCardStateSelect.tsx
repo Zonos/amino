@@ -21,7 +21,7 @@ const RegionWrapper = styled.div`
   gap: 16px;
 `;
 
-const StateCard = styled(Card)<{ highlighted: boolean | undefined }>`
+const StateCard = styled(Card)<{ $highlighted?: boolean }>`
   min-width: 180px;
   display: flex;
   gap: 24px;
@@ -30,13 +30,13 @@ const StateCard = styled(Card)<{ highlighted: boolean | undefined }>`
   font-weight: 500;
   flex: 0 0 180px;
   font-size: ${theme.fontSizeS};
-  color: ${p => p.highlighted && theme.blue600};
-  background-color: ${p => p.highlighted && theme.blue100};
-  border: ${p => p.highlighted && `1px solid ${theme.blue400}`};
+  color: ${p => p.$highlighted && theme.blue600};
+  background-color: ${p => p.$highlighted && theme.blue100};
+  border: ${p => p.$highlighted && `1px solid ${theme.blue400}`};
 
   svg > path {
-    stroke: ${p => p.highlighted && theme.blue600};
-    fill: ${p => p.highlighted && theme.blue200};
+    stroke: ${p => p.$highlighted && theme.blue600};
+    fill: ${p => p.$highlighted && theme.blue200};
   }
 `;
 
@@ -64,7 +64,7 @@ export const RichCardStateSelect = ({
                   <button onClick={() => onClick(state)} type="button">
                     <StateCard
                       key={state.code}
-                      highlighted={state.highlighted}
+                      $highlighted={state.highlighted}
                       spacing="10px"
                     >
                       {state.icon}

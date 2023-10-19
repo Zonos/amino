@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
-import { LegacyButton } from 'src/components/button/LegacyButton';
 import { VStack } from 'src/components/stack/VStack';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
@@ -60,13 +59,13 @@ const Template: StoryFn<typeof Banner> = ({
     <StyledVStack>
       <Banner
         footerActions={
-          <LegacyButton
+          <Button
             color="inherit"
-            intent="outline"
             onClick={() => setOpenIds(ids.filter(Boolean))}
+            outline
           >
             Open Banners
-          </LegacyButton>
+          </Button>
         }
         intent={intent}
       />
@@ -128,14 +127,14 @@ const Template: StoryFn<typeof Banner> = ({
               rel="noreferrer"
               target="_blank"
             >
-              <LegacyButton
+              <Button
                 background="inherit"
                 borderColor="gray1200"
                 color="inherit"
-                intent="outline"
+                outline
               >
                 View additional details
-              </LegacyButton>
+              </Button>
             </a>
           }
           intent={intent}
@@ -161,30 +160,30 @@ export const DefaultBanner = Template.bind({});
 DefaultBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="gray400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="gray400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
 };
 
@@ -192,30 +191,30 @@ export const InfoBanner = Template.bind({});
 InfoBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="blue400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="blue400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'info',
 };
@@ -224,30 +223,30 @@ export const SuccessBanner = Template.bind({});
 SuccessBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="green400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="green400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'success',
 };
@@ -256,30 +255,30 @@ export const WarningBanner = Template.bind({});
 WarningBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="orange400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="orange400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'warning',
 };
@@ -288,30 +287,25 @@ export const ErrorBanner = Template.bind({});
 ErrorBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
-        background="inherit"
-        borderColor="red400"
-        color="inherit"
-        intent="outline"
-      >
+      <Button background="inherit" borderColor="red400" color="inherit" outline>
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="red400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'error',
 };

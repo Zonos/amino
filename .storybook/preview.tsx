@@ -14,11 +14,7 @@ import { usePrevious } from 'src/utils/hooks/usePrevious';
 
 import './storybook.css';
 
-const ThemeBlock = styled.div<{
-  left?: boolean;
-}>`
-  border-right: ${props =>
-    props.left ? `1px solid ${theme.gray500}` : 'none'};
+const ThemeBlock = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;

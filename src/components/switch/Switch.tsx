@@ -7,10 +7,10 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-const AminoSwitch = styled.div<{ checked: boolean }>`
+const AminoSwitch = styled.div<{ $checked: boolean }>`
   background: ${theme.gray0};
   box-shadow: ${p =>
-    p.checked
+    p.$checked
       ? '0px -1px 1px 0px rgba(68, 94, 238, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.20)'
       : '0px -1px 1px 0px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.20)'};
   height: 14px;
@@ -19,17 +19,17 @@ const AminoSwitch = styled.div<{ checked: boolean }>`
   transition: ${theme.transition};
   position: absolute;
   top: 1px;
-  left: ${p => (p.checked ? 'calc(100% - 15px)' : '1px')};
+  left: ${p => (p.$checked ? 'calc(100% - 15px)' : '1px')};
   [data-theme='night'] & {
     background: ${theme.gray1200};
   }
 `;
 
-const AminoSwitchWithIcons = styled(AminoSwitch)<{ checked: boolean }>`
+const AminoSwitchWithIcons = styled(AminoSwitch)<{ $checked: boolean }>`
   height: 28px;
   width: 28px;
   top: 2px;
-  left: ${p => (p.checked ? 'calc(100% - 30px)' : '2px')};
+  left: ${p => (p.$checked ? 'calc(100% - 30px)' : '2px')};
   box-shadow:
     0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
     0px 1px 3px 0px rgba(0, 0, 0, 0.4);
@@ -39,7 +39,7 @@ const AminoSwitchWithIcons = styled(AminoSwitch)<{ checked: boolean }>`
 `;
 
 const AminoSwitchWrapper = styled.div<{
-  checked: boolean;
+  $checked: boolean;
 }>`
   margin-right: ${theme.space16};
   width: 32px;
@@ -48,7 +48,7 @@ const AminoSwitchWrapper = styled.div<{
   min-height: 16px;
   line-height: 16px;
   border-radius: 20px;
-  background: ${p => (p.checked ? theme.primary : theme.gray100)};
+  background: ${p => (p.$checked ? theme.primary : theme.gray100)};
   box-shadow: ${theme.v3ShadowInset};
   display: block;
   user-select: none;
@@ -83,9 +83,7 @@ const LabelWrapper = styled.div`
   }
 `;
 
-const SwitchContainer = styled.label<{
-  checked: boolean;
-}>`
+const SwitchContainer = styled.label`
   display: flex;
   flex-direction: row;
   cursor: pointer;
@@ -108,11 +106,11 @@ const SwitchContainer = styled.label<{
   }
 `;
 
-const SwitchIcon = styled.div<{ left?: boolean }>`
+const SwitchIcon = styled.div<{ $left?: boolean }>`
   position: absolute;
   top: 4px;
-  left: ${p => (p.left ? '4px' : 'auto')};
-  right: ${p => (p.left ? 'auto' : '4px')};
+  left: ${p => (p.$left ? '4px' : 'auto')};
+  right: ${p => (p.$left ? 'auto' : '4px')};
   svg {
     height: 24px;
     width: 24px;
@@ -148,20 +146,19 @@ export const Switch = ({
 
   return (
     <SwitchContainer
-      checked={checked}
       className={clsx(className, { disabled })}
       htmlFor={labelAsHtmlAttribute}
       onClick={() => !disabled && onChange(!checked)}
     >
       {hasIcons ? (
-        <AminoSwitchWrapperWithIcons checked={checked}>
-          <AminoSwitchWithIcons checked={checked} id={labelAsHtmlAttribute} />
-          <SwitchIcon left>{switchIconLeft}</SwitchIcon>
+        <AminoSwitchWrapperWithIcons $checked={checked}>
+          <AminoSwitchWithIcons $checked={checked} id={labelAsHtmlAttribute} />
+          <SwitchIcon $left>{switchIconLeft}</SwitchIcon>
           <SwitchIcon>{switchIconRight}</SwitchIcon>
         </AminoSwitchWrapperWithIcons>
       ) : (
-        <AminoSwitchWrapper checked={checked}>
-          <AminoSwitch checked={checked} id={labelAsHtmlAttribute} />
+        <AminoSwitchWrapper $checked={checked}>
+          <AminoSwitch $checked={checked} id={labelAsHtmlAttribute} />
         </AminoSwitchWrapper>
       )}
       <div>

@@ -29,10 +29,10 @@ export const ToastContext = createContext<ToastContextFunctionType>(
 );
 
 const ToastsWrapper = styled.div<{
-  location?: { bottom: string; left: string };
+  $location?: { bottom: string; left: string };
 }>`
-  bottom: ${p => p.location?.bottom || ''};
-  left: ${p => p.location?.left || ''};
+  bottom: ${p => p.$location?.bottom || ''};
+  left: ${p => p.$location?.left || ''};
 `;
 
 type Props = {
@@ -83,7 +83,7 @@ export const ToastContextProvider = ({ children }: Props) => {
       <ToastContext.Provider value={setupToasts}>
         {children}
         <div className="toast-container">
-          <ToastsWrapper className="toasts-wrapper" location={toastLocation}>
+          <ToastsWrapper $location={toastLocation} className="toasts-wrapper">
             <AnimatePresence>
               {toasts.map(({ props, toast, uuid }) => {
                 const key = `toast-${toast}-${uuid}`;

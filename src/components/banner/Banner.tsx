@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
@@ -26,16 +26,16 @@ const StyledBanner = styled.div`
 `;
 
 const Container = styled.div<{
-  onlyContent: boolean;
-  withoutCloseButton: boolean;
+  $onlyContent: boolean;
+  $withoutCloseButton: boolean;
 }>`
   display: grid;
-  align-items: ${p => (p.onlyContent ? 'start' : 'center')};
+  align-items: ${p => (p.$onlyContent ? 'start' : 'center')};
   grid-template-areas:
     'icon header close'
     '. content .';
   grid-template-columns: 32px auto ${p =>
-      p.withoutCloseButton ? '0px' : '32px'};
+      p.$withoutCloseButton ? '0px' : '32px'};
 `;
 
 const Icon = styled.div`
@@ -48,15 +48,15 @@ const Close = styled.div`
   justify-self: end;
 `;
 
-const CloseButton = styled(LegacyButton)`
+const CloseButton = styled(Button)`
   && {
     width: 24px;
   }
 `;
 
-const Header = styled.div<{ color: Color }>`
+const Header = styled.div<{ $color: Color }>`
   grid-area: header;
-  color: ${p => theme[p.color]};
+  color: ${p => theme[p.$color]};
 `;
 
 const Content = styled.div`
@@ -169,19 +169,19 @@ export const Banner = ({
     ].filter(Boolean);
 
     return (
-      <Container onlyContent={onlyContent} withoutCloseButton={!onClose}>
+      <Container $onlyContent={onlyContent} $withoutCloseButton={!onClose}>
         <Icon>{intentIcon}</Icon>
         {onClose && (
           <Close>
             <CloseButton
               icon={<RemoveIcon color={removeIconColor} size={20} />}
-              intent="text"
               onClick={onClose}
+              variant="text"
             />
           </Close>
         )}
 
-        <Header color={removeIconColor}>{header}</Header>
+        <Header $color={removeIconColor}>{header}</Header>
 
         {content && (
           <Content>

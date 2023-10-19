@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { type SelectProps, Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
@@ -207,7 +207,7 @@ export const ScrollableDialogSelect = () => {
 
   return (
     <CenteredDiv>
-      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog label="Selects" onClose={() => setOpen(false)} open={open}>
         <StyledVStack>
           <span>
