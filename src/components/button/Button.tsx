@@ -498,6 +498,7 @@ export function Button<T extends GroupTag = 'button'>({
   );
 
   const buttonClassName = [
+    'amino-button',
     className || '',
     icon && !children ? 'only-icon' : '',
     iconRight ? 'icon-right' : '',
