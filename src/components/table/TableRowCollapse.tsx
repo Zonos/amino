@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';
@@ -45,7 +45,7 @@ const CollapsibleCell = styled(TableCell)<{ collapsed: boolean }>`
   }
 `;
 
-const CollapseButton = styled(LegacyButton)`
+const CollapseButton = styled(Button)`
   svg {
     transition: ${theme.transition};
 
@@ -89,7 +89,7 @@ export const TableRowCollapse = ({
           {collapsible && (
             <CollapseButton
               icon={<ChevronUpIcon className={collapsed ? 'collapsed' : ''} />}
-              intent="plain"
+              variant="plain"
             />
           )}
         </TableCell>

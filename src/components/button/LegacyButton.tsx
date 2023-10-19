@@ -56,7 +56,7 @@ const StyledSpinnerWrapper = styled.span`
   gap: ${theme.space8};
 `;
 
-const AminoButton = styled.button<LegacyButtonProps<GroupTag>>`
+const AminoButton = styled.button<ButtonProps<GroupTag>>`
   position: relative;
   outline: none;
   height: ${p => `var(--amino-size-${p.size})`};
@@ -267,7 +267,7 @@ const Subtle = styled(AminoButton)`
   }
 `;
 
-const TextButton = styled(AminoButton)<LegacyButtonProps<GroupTag>>`
+const TextButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.gray800};
   height: 20px;
   line-height: 20px;
@@ -295,7 +295,7 @@ const TextButton = styled(AminoButton)<LegacyButtonProps<GroupTag>>`
 
 const PlainButton = AminoButton;
 
-const LinkButton = styled(AminoButton)<LegacyButtonProps<GroupTag>>`
+const LinkButton = styled(AminoButton)<ButtonProps<GroupTag>>`
   color: ${p => getAminoColor(p.color) || theme.blue600};
 
   &:not([disabled]) {
@@ -353,7 +353,7 @@ type MyHtmlElement<T extends GroupTag> = T extends 'a'
   ? HTMLDivElement
   : HTMLButtonElement;
 
-export type LegacyButtonProps<T extends GroupTag = 'button'> = ButtonBase &
+export type ButtonProps<T extends GroupTag = 'button'> = ButtonBase &
   Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'> & {
     onClick?: MouseEventHandler<MyHtmlElement<T>>;
     tag?: T;
@@ -375,7 +375,7 @@ export function LegacyButton<T extends GroupTag = 'button'>({
   themeOverride,
   type = 'button',
   ...props
-}: LegacyButtonProps<T>) {
+}: ButtonProps<T>) {
   const tag = _tag || 'button';
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
@@ -416,10 +416,10 @@ export function LegacyButton<T extends GroupTag = 'button'>({
     size,
   };
 
-  const buttonProps: LegacyButtonProps = {
+  const buttonProps: ButtonProps = {
     type,
     ...baseProps,
-    ...(props as LegacyButtonProps),
+    ...(props as ButtonProps),
     ...getRippleHandlers(props),
   };
 

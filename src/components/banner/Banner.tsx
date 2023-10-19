@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
@@ -48,7 +48,7 @@ const Close = styled.div`
   justify-self: end;
 `;
 
-const CloseButton = styled(LegacyButton)`
+const CloseButton = styled(Button)`
   && {
     width: 24px;
   }
@@ -175,8 +175,8 @@ export const Banner = ({
           <Close>
             <CloseButton
               icon={<RemoveIcon color={removeIconColor} size={20} />}
-              intent="text"
               onClick={onClose}
+              variant="text"
             />
           </Close>
         )}

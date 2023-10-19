@@ -2,7 +2,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -47,7 +47,7 @@ const UploadedFileInfoWrapper = styled.div`
   align-items: center;
 `;
 
-const RemoveFileButton = styled(LegacyButton)`
+const RemoveFileButton = styled(Button)`
   margin-left: auto;
   padding: 0;
   path[data-is-secondary-color] {
@@ -171,9 +171,9 @@ export const FileUpload = ({
     <StyledFileInput {...getRootProps()}>
       <input {...getInputProps()} />
       <ContentWrapper>
-        <LegacyButton loading={loading} onClick={open} spinnerColor="black">
+        <Button loading={loading} onClick={open} spinnerColor="black">
           Browse
-        </LegacyButton>
+        </Button>
         {renderText()}
       </ContentWrapper>
     </StyledFileInput>

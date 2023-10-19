@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import type { StackProps } from 'src/components/stack/Stack';
 import { VStack } from 'src/components/stack/VStack';
@@ -23,11 +23,7 @@ const Template: StoryFn<StoryProps> = ({
 }: StoryProps) => (
   <VStack alignment={alignment} spacing={spacing}>
     {[...Array(numberOfChildren).keys()].map(n => (
-      <Card
-        key={n}
-        footerActions={<LegacyButton>Do it</LegacyButton>}
-        label={`Card ${n}`}
-      >
+      <Card key={n} footerActions={<Button>Do it</Button>} label={`Card ${n}`}>
         <p>Some text</p>
       </Card>
     ))}

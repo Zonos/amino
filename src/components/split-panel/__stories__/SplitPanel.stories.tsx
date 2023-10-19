@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { SplitPanel as SplitPanelComponent } from 'src/components/split-panel/SplitPanel';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -58,10 +58,10 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   return (
     <VStack>
       <StyledWrapper>
-        <LegacyButton onClick={() => setIsCollapse(!isCollapse)}>
+        <Button onClick={() => setIsCollapse(!isCollapse)}>
           {isCollapse ? `Collapse all (Except the first one)` : `Expand all`}
-        </LegacyButton>
-        <LegacyButton
+        </Button>
+        <Button
           onClick={() => {
             setSizes([!collapseFirstItem ? 0 : 0.2]);
             setCollapseFirstItem(!collapseFirstItem);
@@ -70,16 +70,14 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
           {!collapseFirstItem
             ? `Collapse first item`
             : `Expand first item to random width`}
-        </LegacyButton>
-        <LegacyButton onClick={() => setItemQty(itemQty + 1)}>
-          Add item
-        </LegacyButton>
-        <LegacyButton
+        </Button>
+        <Button onClick={() => setItemQty(itemQty + 1)}>Add item</Button>
+        <Button
           disabled={itemQty === 0}
           onClick={() => setItemQty(itemQty - 1)}
         >
           Remove item
-        </LegacyButton>
+        </Button>
       </StyledWrapper>
       <StyledSplitPanel
         collapseAll={isCollapse}

@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
@@ -44,40 +44,37 @@ export const ToastConsumer = () => {
   return (
     <LeftCenteredDiv>
       <VStack>
-        <LegacyButton
-          intent="secondary"
-          onClick={() => notify('Default toast', { duration })}
-        >
+        <Button onClick={() => notify('Default toast', { duration })}>
           Notify
-        </LegacyButton>
-        <LegacyButton
-          intent="success"
+        </Button>
+        <Button
           onClick={() =>
             notify('Success toast', { duration, intent: 'success' })
           }
+          variant="success"
         >
           Success
-        </LegacyButton>
-        <LegacyButton
-          intent="danger"
+        </Button>
+        <Button
           onClick={() => notify('Error toast', { duration, intent: 'error' })}
+          variant="danger"
         >
           Error
-        </LegacyButton>
-        <LegacyButton
-          intent="warning"
+        </Button>
+        <Button
           onClick={() =>
             notify('Warning toast', { duration, intent: 'warning' })
           }
+          variant="warning"
         >
           Warning
-        </LegacyButton>
-        <LegacyButton
-          intent="primary"
+        </Button>
+        <Button
           onClick={() => notify('Info toast', { duration, intent: 'info' })}
+          variant="primary"
         >
           Information
-        </LegacyButton>
+        </Button>
         <CustomWrapper>
           <textarea
             cols={30}
@@ -114,7 +111,7 @@ export const ToastConsumer = () => {
             type="text"
             value={verticalOffset}
           />
-          <LegacyButton
+          <Button
             onClick={() =>
               notify(
                 message,
@@ -131,7 +128,7 @@ export const ToastConsumer = () => {
             }
           >
             Display Custom
-          </LegacyButton>
+          </Button>
         </CustomWrapper>
         <Input
           label="Duration"

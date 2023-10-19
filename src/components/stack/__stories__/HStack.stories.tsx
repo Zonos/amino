@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
@@ -55,11 +55,7 @@ Selects.args = {
 export const Cards = Template.bind({});
 Cards.args = {
   renderChild: k => (
-    <Card
-      key={k}
-      footerActions={<LegacyButton>Do it</LegacyButton>}
-      label={`Card ${k}`}
-    >
+    <Card key={k} footerActions={<Button>Do it</Button>} label={`Card ${k}`}>
       <p>Some text</p>
     </Card>
   ),
