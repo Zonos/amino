@@ -56,6 +56,9 @@ const themes: { label: string; value: Theme }[] = [
 export type Props = {
   className?: string;
   disabled?: boolean;
+  /**
+   * @default select
+   */
   type?: 'cards' | 'select' | 'toggle';
 };
 

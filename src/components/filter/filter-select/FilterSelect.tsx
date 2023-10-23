@@ -8,7 +8,7 @@ import {
 import { Select } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
 
-type FilterSelectProps<
+export type FilterSelectProps<
   T extends string = string,
   O extends SelectOption<string> = SelectOption<T>,
 > = BaseFilterProps & {

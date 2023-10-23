@@ -34,7 +34,7 @@ const InputWrapper = styled.div`
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 
-type FilterAmountProps = BaseFilterProps & {
+export type FilterAmountProps = BaseFilterProps & {
   dispatch: Dispatch<FilterAmountAction>;
   filter: FilterAmountState;
 };
