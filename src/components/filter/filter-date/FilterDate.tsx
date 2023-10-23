@@ -13,7 +13,7 @@ import {
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 
-type BadgeFilterDateProps = BaseFilterProps & {
+export type FilterDateProps = BaseFilterProps & {
   dispatch: Dispatch<FilterDateAction>;
   filter: FilterDateState;
 };
@@ -26,7 +26,7 @@ export const FilterDate = ({
   dropdownTitle,
   filter,
   label,
-}: BadgeFilterDateProps) => {
+}: FilterDateProps) => {
   const [editingValue, setEditingValue] = useState<FilterDateData>(
     filter.dateData,
   );
