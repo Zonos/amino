@@ -3,6 +3,7 @@ import type { Page } from 'puppeteer';
 import styled from 'styled-components';
 
 import { type ButtonProps, Button } from 'src/components/button/Button';
+import { LegacyButton } from 'src/components/button/LegacyButton';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
@@ -68,6 +69,8 @@ const ButtonRow = ({
   <div>
     <ButtonRowLabel type="bold-subheader">{label}</ButtonRowLabel>
     <HWrapper>
+      <LegacyButton intent="outline">Hey</LegacyButton>
+      <LegacyButton>Hey</LegacyButton>
       <Button<'button'>
         {...props}
         disabled={disabled}
