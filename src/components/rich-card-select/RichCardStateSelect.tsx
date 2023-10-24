@@ -40,15 +40,15 @@ const StateCard = styled(Card)<{ $highlighted?: boolean }>`
   }
 `;
 
-export type RichCardStateSelectProps = {
-  states: UnitedState[];
-  onClick: (selectedState: UnitedState) => void;
+export type RichCardStateSelectProps<T extends UnitedState = UnitedState> = {
+  states: T[];
+  onClick: (selectedState: T) => void;
 };
 
-export const RichCardStateSelect = ({
+export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
   onClick,
   states,
-}: RichCardStateSelectProps) => {
+}: RichCardStateSelectProps<T>) => {
   const regions = Array.from(new Set(states.map(state => state.region)));
 
   return (
