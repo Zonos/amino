@@ -8,11 +8,12 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import type { SelectOption } from 'src/types/SelectOption';
 
-type FilterMultiSelectProps<T extends string = string> = BaseFilterProps & {
-  options: SelectOption<T>[];
-  value: SelectOption<T>[];
-  onChange: (value: SelectOption<T>[]) => void;
-};
+export type FilterMultiSelectProps<T extends string = string> =
+  BaseFilterProps & {
+    options: SelectOption<T>[];
+    value: SelectOption<T>[];
+    onChange: (value: SelectOption<T>[]) => void;
+  };
 
 export const FilterMultiSelect = <T extends string = string>({
   dropdownTitle,
