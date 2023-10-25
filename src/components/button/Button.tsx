@@ -154,6 +154,10 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
     transform: scale(0.99);
   }
 
+  &.loading .content {
+    visibility: hidden;
+  }
+
   &:not(.only-icon).has-icon {
     &.icon-right {
       svg:not(.amino-spinner) {
@@ -167,9 +171,6 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
       margin-left: 0;
       opacity: 80%;
     }
-  }
-  &.loading {
-    color: transparent;
   }
 
   &[disabled] {

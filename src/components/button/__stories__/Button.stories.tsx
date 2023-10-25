@@ -153,6 +153,7 @@ const ButtonRow = ({
         {...props}
         disabled={disabled}
         loading={loading}
+        loadingText="Loading..."
         size="md"
         variant={variant}
       />
