@@ -115,6 +115,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
             icon={<RemoveCircleDuotoneIcon size={24} />}
             noRipple
             onClick={onClose}
+            variant="subtle"
           />
         </Title>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}

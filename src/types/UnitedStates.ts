@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type UnitedStatesCodes =
+export type UnitedStatesCode =
   | 'AL'
   | 'AK'
   | 'AZ'
@@ -52,7 +52,7 @@ export type UnitedStatesCodes =
   | 'WI'
   | 'WY';
 
-type UnitedStatesNames =
+type UnitedStatesName =
   | 'Alabama'
   | 'Alaska'
   | 'Arizona'
@@ -107,9 +107,9 @@ type UnitedStatesNames =
 type UnitedStatesRegions = 'West' | 'Midwest' | 'South' | 'Northeast';
 
 export type UnitedState = {
-  code: UnitedStatesCodes;
+  code: UnitedStatesCode;
   highlighted?: boolean;
   icon: ReactNode;
-  name: UnitedStatesNames;
+  name: UnitedStatesName;
   region: UnitedStatesRegions;
 };
