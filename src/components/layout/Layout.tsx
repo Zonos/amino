@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { SearchInput } from 'src/components/input/SearchInput';
 import { type NavigationGroupProps } from 'src/components/layout/NavigationGroup';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Footer = styled.div`
   box-sizing: border-box;
@@ -65,7 +66,7 @@ const AminoLayout = styled.main`
 const Content = styled.div`
   height: inherit;
   overflow-y: auto;
-  padding: ${theme.space24};
+  padding: ${theme.space32};
   box-sizing: border-box;
 `;
 
@@ -86,7 +87,7 @@ type SearchInputProps = {
   value: string;
 };
 
-export type LayoutProps = {
+export type LayoutProps = BaseProps & {
   content: ReactNode;
   footer: ReactNode;
   headerContent?: ReactNode;
@@ -96,6 +97,7 @@ export type LayoutProps = {
 };
 
 export const Layout = ({
+  className,
   content,
   footer,
   headerContent,
@@ -103,11 +105,13 @@ export const Layout = ({
   searchInput,
   sidebar,
 }: LayoutProps) => (
-  <AminoLayout>
-    {!!headerContent && <Header>{headerContent}</Header>}
+  <AminoLayout className={className}>
+    {!!headerContent && (
+      <Header className="amino-layout-header">{headerContent}</Header>
+    )}
     <ContentGrid $hasHeader={!!headerContent}>
-      <StyledSidebar>
-        <SidebarContent>
+      <StyledSidebar className="amino-layout-sidebar">
+        <SidebarContent className="amino-layout-sidebar-content">
           {!!logoSidebar && (
             <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
           )}
@@ -122,9 +126,9 @@ export const Layout = ({
           {sidebar}
         </SidebarContent>
 
-        <Footer>{footer}</Footer>
+        <Footer className="amino-layout-sidebar-footer">{footer}</Footer>
       </StyledSidebar>
-      <Content>{content}</Content>
+      <Content className="amino-layout-content">{content}</Content>
     </ContentGrid>
   </AminoLayout>
 );
