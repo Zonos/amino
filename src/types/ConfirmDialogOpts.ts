@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import type { Intent } from 'src/types/Intent';
 
 export type ConfirmDialogOpts = {
@@ -5,6 +7,6 @@ export type ConfirmDialogOpts = {
   dismissText: string;
   intent: Intent;
   label: string;
-  subtitle?: string;
+  subtitle?: ReactNode;
   onConfirm: (ok: boolean) => void;
 };

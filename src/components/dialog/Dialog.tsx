@@ -98,7 +98,7 @@ export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;
   label?: ReactNode;
   leftActions?: ReactNode;
-  subtitle?: string;
+  subtitle?: ReactNode;
   onClose: () => void;
 };
 
