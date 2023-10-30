@@ -106,12 +106,10 @@ export const Layout = ({
   sidebar,
 }: LayoutProps) => (
   <AminoLayout className={className}>
-    {!!headerContent && (
-      <Header className="amino-layout-header">{headerContent}</Header>
-    )}
+    {!!headerContent && <Header>{headerContent}</Header>}
     <ContentGrid $hasHeader={!!headerContent}>
-      <StyledSidebar className="amino-layout-sidebar">
-        <SidebarContent className="amino-layout-sidebar-content">
+      <StyledSidebar>
+        <SidebarContent>
           {!!logoSidebar && (
             <StyledLogoSidebar>{logoSidebar}</StyledLogoSidebar>
           )}
@@ -126,9 +124,9 @@ export const Layout = ({
           {sidebar}
         </SidebarContent>
 
-        <Footer className="amino-layout-sidebar-footer">{footer}</Footer>
+        <Footer>{footer}</Footer>
       </StyledSidebar>
-      <Content className="amino-layout-content">{content}</Content>
+      <Content>{content}</Content>
     </ContentGrid>
   </AminoLayout>
 );
