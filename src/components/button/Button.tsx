@@ -150,7 +150,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
     outline: none;
   }
 
-  &:active {
+  &:active:not([disabled]) {
     transform: scale(0.99);
   }
 
