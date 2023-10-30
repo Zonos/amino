@@ -175,9 +175,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
 
   &[disabled] {
     cursor: not-allowed;
-    .content {
-      opacity: ${p => (p.outline ? 0.6 : 1)};
-    }
+    opacity: ${p => (p.outline ? 0.6 : 1)};
   }
 `;
 
@@ -206,8 +204,11 @@ const Primary = styled(AminoButton)`
   }
 
   &[disabled] {
-    background: ${p => (p.outline ? 'transparent' : theme.blue400)};
-    box-shadow: ${p => (p.outline ? `0px 0px 0px 1px ${theme.blue400}` : '')};
+    background: ${p => (p.outline ? 'transparent' : theme.gray400)};
+    box-shadow: ${p =>
+      p.outline
+        ? `0px 0px 0px 1px ${theme.primary} inset`
+        : theme.shadowButtonDisabled};
   }
 
   ${StyledSpinnerWrapper} {
@@ -240,8 +241,11 @@ const Success = styled(AminoButton)`
     }
   }
   &[disabled] {
-    background: ${p => (p.outline ? 'transparent' : theme.green400)};
-    box-shadow: ${p => (p.outline ? `0px 0px 0px 1px ${theme.green400}` : '')};
+    background: ${p => (p.outline ? 'transparent' : theme.gray400)};
+    box-shadow: ${p =>
+      p.outline
+        ? `0px 0px 0px 1px ${theme.success} inset`
+        : theme.shadowButtonDisabled};
   }
 
   ${StyledSpinnerWrapper} {
@@ -310,8 +314,11 @@ const Danger = styled(AminoButton)`
     }
   }
   &[disabled] {
-    background: ${p => (p.outline ? 'transparent' : theme.red400)};
-    box-shadow: ${p => (p.outline ? `0px 0px 0px 1px ${theme.red400}` : '')};
+    background: ${p => (p.outline ? 'transparent' : theme.gray400)};
+    box-shadow: ${p =>
+      p.outline
+        ? `0px 0px 0px 1px ${theme.danger} inset`
+        : theme.shadowButtonDisabled};
   }
 
   ${StyledSpinnerWrapper} {
@@ -345,8 +352,11 @@ const Warning = styled(AminoButton)`
   }
 
   &[disabled] {
-    background: ${p => (p.outline ? 'transparent' : theme.orange400)};
-    box-shadow: ${p => (p.outline ? `0px 0px 0px 1px ${theme.orange400}` : '')};
+    background: ${p => (p.outline ? 'transparent' : theme.gray400)};
+    box-shadow: ${p =>
+      p.outline
+        ? `0px 0px 0px 1px ${theme.warning} inset`
+        : theme.shadowButtonDisabled};
   }
 
   ${StyledSpinnerWrapper} {
