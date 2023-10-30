@@ -46,7 +46,7 @@ const Template: StoryFn<MenuButtonProps> = ({
     {...props}
     action={
       <Button icon={<ChevronDownIcon size={24} />} iconRight>
-        More...
+        A big ol Menu Button...
       </Button>
     }
   >
@@ -104,6 +104,17 @@ WithoutIcon.args = {
       <MenuItem>Request verification</MenuItem>
     </Menu>
   ),
+};
+
+export const SmallerOptions = Template.bind({});
+SmallerOptions.args = {
+  children: (
+    <Menu>
+      <MenuItem>A</MenuItem>
+      <MenuItem>B</MenuItem>
+    </Menu>
+  ),
+  closeOnMouseLeave: false,
 };
 
 export const Draggable: StoryFn<MenuButtonProps> = props => {
