@@ -335,6 +335,9 @@ export const theme = {
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonStandard: 'var(--amino-shadow-button-standard)',
+  /** @info 0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonDisabled: 'var(--amino-shadow-button-disabled)',
 
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */

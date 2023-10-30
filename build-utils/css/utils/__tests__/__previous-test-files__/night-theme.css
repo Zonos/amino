@@ -129,6 +129,10 @@
     0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset,
     0px 1px 3px 0px rgba(0, 0, 0, 0.8),
     0px 0px 0px 1px rgba(148, 150, 158, 0.12) inset;
+  --amino-shadow-button-disabled: 0px 0px 0px 1px #000,
+    0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset,
+    0px 1px 3px 0px rgba(255, 255, 255, 0);
   --amino-border: 1px solid var(--amino-border-color);
   --amino-border-blue: 1px solid var(--amino-blue-500);
   --amino-border-red: 1px solid var(--amino-red-400);
