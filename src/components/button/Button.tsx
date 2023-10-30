@@ -440,6 +440,9 @@ type ButtonBase = BaseProps & {
    */
   noRipple?: boolean;
   outline?: boolean;
+  /**
+   * @default 'sm'
+   */
   size?: Size;
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];

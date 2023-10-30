@@ -42,7 +42,7 @@ const StyledHeader = styled(Text)`
 `;
 const Header = styled.header`
   border-bottom: ${theme.border};
-  padding: ${theme.space16} ${theme.space24};
+  padding: ${theme.space16} ${theme.space32};
   display: flex;
   align-items: center;
   height: 64px;
@@ -57,7 +57,7 @@ const Header = styled.header`
 `;
 
 const Content = styled.div`
-  padding: ${theme.space24};
+  padding: ${theme.space56};
 `;
 
 export type CoverSheetProps = BaseProps & {

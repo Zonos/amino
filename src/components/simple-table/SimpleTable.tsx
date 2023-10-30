@@ -19,7 +19,7 @@ const Header = styled.thead`
 
 const HeaderRow = styled.tr`
   border-bottom: ${theme.border};
-  height: 48px;
+  height: 56px;
 `;
 
 type StyledHeaderColumn = {
@@ -54,7 +54,7 @@ type StyledRowColumn = {
   textAlign: SimpleTableHeaderBaseProps['align'];
 };
 const RowColumn = styled.td<StyledProps<StyledRowColumn>>`
-  padding: ${p => (!p.$noPadding ? theme.space16 : undefined)};
+  padding: ${p => (!p.$noPadding ? theme.space12 : undefined)};
   text-align: ${p => p.$textAlign};
 
   &:not(:hover) {
@@ -65,7 +65,7 @@ const RowColumn = styled.td<StyledProps<StyledRowColumn>>`
 `;
 
 const StyledCheckbox = styled(Checkbox)`
-  padding: ${theme.space16};
+  padding: ${theme.space12};
   display: inline-flex;
 `;
 
