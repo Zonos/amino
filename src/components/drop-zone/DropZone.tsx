@@ -3,7 +3,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
-import { Button } from 'src/components/button/Button';
+import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -56,39 +56,8 @@ const BrowseButton = styled.button`
   display: inline;
 `;
 
-const RemoveFileButton = styled(Button)`
+const RemoveFileButton = styled(ButtonIcon)`
   margin-left: auto;
-  padding: 0;
-  path[data-is-secondary-color] {
-    fill: ${theme.gray200};
-  }
-
-  && {
-    &,
-    &:focus,
-    &:hover,
-    &:active {
-      color: ${theme.gray800};
-      background: transparent;
-    }
-    &:hover {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray300};
-      }
-    }
-    &:active,
-    &:focus {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray400};
-      }
-    }
-  }
-
-  :active,
-  :focus {
-    outline: none;
-    box-shadow: unset;
-  }
 `;
 
 const UploadedFilesWrapper = styled.div`
@@ -202,9 +171,11 @@ export const DropZone = ({
           )}
         </UploadedFileInfoWrapper>
         {onRemoveFile && (
-          <RemoveFileButton onClick={() => onRemoveFile(index)}>
-            <RemoveCircleDuotoneIcon size={20} />
-          </RemoveFileButton>
+          <RemoveFileButton
+            icon={<RemoveCircleDuotoneIcon size={20} />}
+            onClick={() => onRemoveFile(index)}
+            variant="text"
+          />
         )}
       </UploadedFileRow>
     ));
