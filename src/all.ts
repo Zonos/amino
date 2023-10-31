@@ -9,6 +9,7 @@ import './components/avatar/UserAvatar';
 import './components/badge/Badge';
 import './components/banner/Banner';
 import './components/button/Button';
+import './components/button/ButtonIcon';
 import './components/button/MenuButton';
 import './components/button/RippleGroup';
 import './components/button/useRipple';

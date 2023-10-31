@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   type ExtendedRefs,
   type Placement,
+  type UseFloatingOptions,
   autoUpdate,
   offset,
   shift,
@@ -10,6 +11,11 @@ import {
 } from '@floating-ui/react';
 
 type Params = {
+  /**
+   * Passed to `useFloating`.
+   * @link https://floating-ui.com/docs/useFloating
+   */
+  floatingOptions?: Partial<UseFloatingOptions>;
   /**
    * @default 0
    */
@@ -43,6 +49,7 @@ export const useDropdown = <
   params?: Params,
 ): Return<WrapperRef, TriggerRef> => {
   const {
+    floatingOptions = {},
     offsetCrossAxis = 0,
     offsetMainAxis = 0,
     placement = 'bottom-start',
@@ -64,6 +71,7 @@ export const useDropdown = <
     ],
     placement,
     whileElementsMounted: autoUpdate,
+    ...floatingOptions,
   });
 
   const handleClick = useCallback(

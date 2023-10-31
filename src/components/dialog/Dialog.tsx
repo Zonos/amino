@@ -2,7 +2,7 @@ import { type ReactNode, forwardRef } from 'react';
 
 import styled from 'styled-components';
 
-import { Button } from 'src/components/button/Button';
+import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
   type BaseDialogProps,
   BaseDialog,
@@ -29,34 +29,6 @@ const Title = styled.div`
   > :not(button) {
     margin: 0;
     flex-grow: 1;
-  }
-`;
-
-const StyledCloseButton = styled(Button)`
-  padding: 0;
-  path[data-is-secondary-color] {
-    fill: ${theme.gray200};
-  }
-
-  && {
-    &,
-    &:focus,
-    &:hover,
-    &:active {
-      color: ${theme.gray800};
-      background: transparent;
-    }
-    &:hover {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray300};
-      }
-    }
-    &:active,
-    &:focus {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray400};
-      }
-    }
   }
 `;
 
@@ -98,7 +70,7 @@ export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;
   label?: ReactNode;
   leftActions?: ReactNode;
-  subtitle?: string;
+  subtitle?: ReactNode;
   onClose: () => void;
 };
 
@@ -111,11 +83,11 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       <Header>
         <Title>
           <Text type="title">{label}</Text>
-          <StyledCloseButton
+          <ButtonIcon
             icon={<RemoveCircleDuotoneIcon size={24} />}
             noRipple
             onClick={onClose}
-            variant="subtle"
+            variant="text"
           />
         </Title>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}

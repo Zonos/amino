@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 
 const DropdownWrapper = styled.div`
   z-index: 10;
+  min-width: 100%;
 `;
 
 const AnimatedSurface = styled.div`

@@ -150,7 +150,7 @@ const AminoButton = styled.button<ButtonProps<GroupTag>>`
     outline: none;
   }
 
-  &:active {
+  &:active:not([disabled]) {
     transform: scale(0.99);
   }
 
@@ -417,7 +417,7 @@ const TextButton = styled(AminoButton)<
   color: ${p => (p.href ? theme.primary : theme.textColorSecondary)};
   &:not([disabled]) {
     &:hover {
-      color: ${p => (p.href ? theme.blue500 : theme.gray700)};
+      color: ${p => (p.href ? theme.blue500 : theme.gray500)};
     }
   }
   &[disabled] {
