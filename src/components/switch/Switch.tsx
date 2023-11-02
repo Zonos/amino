@@ -56,10 +56,12 @@ const AminoSwitchWrapper = styled.div<{
 `;
 
 const AminoSwitchWrapperWithIcons = styled(AminoSwitchWrapper)`
-  width: 62px;
-  height: 32px;
-  min-width: 24px;
-  background: ${theme.gray50};
+  && {
+    width: 62px;
+    height: 32px;
+    min-width: 24px;
+    background: ${theme.gray50};
+  }
 `;
 
 const StyledLabel = styled(Text)`
