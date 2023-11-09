@@ -5,7 +5,10 @@ import styled from 'styled-components';
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import { useDropdown } from 'src/utils/hooks/useDropdown';
+import {
+  type UseDropdownParams,
+  useDropdown,
+} from 'src/utils/hooks/useDropdown';
 
 const Wrapper = styled.div`
   position: relative;
@@ -43,6 +46,7 @@ export type MenuButtonProps = BaseProps & {
    * @default true
    */
   closeOnSelect?: boolean;
+  dropdownOptions?: UseDropdownParams;
 };
 
 export const MenuButton = ({
@@ -51,11 +55,13 @@ export const MenuButton = ({
   className,
   closeOnMouseLeave = true,
   closeOnSelect = true,
+  dropdownOptions,
 }: MenuButtonProps) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
     useDropdown<HTMLDivElement, HTMLDivElement>({
       offsetCrossAxis: 0,
       offsetMainAxis: 0,
+      ...dropdownOptions,
     });
 
   const handleMouseLeave = () => {
