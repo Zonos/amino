@@ -54,7 +54,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
       withClick &&
       !selected &&
       css`
-        background-color: ${theme.gray100};
+        background-color: ${theme.hoverColor};
         cursor: pointer;
       `}
   }
