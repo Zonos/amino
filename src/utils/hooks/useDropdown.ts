@@ -10,7 +10,7 @@ import {
   useFloating,
 } from '@floating-ui/react';
 
-type Params = {
+export type UseDropdownParams = {
   /**
    * Passed to `useFloating`.
    * @link https://floating-ui.com/docs/useFloating
@@ -46,7 +46,7 @@ export const useDropdown = <
   WrapperRef extends HTMLElement = HTMLDivElement,
   TriggerRef extends HTMLElement = HTMLButtonElement,
 >(
-  params?: Params,
+  params?: UseDropdownParams,
 ): Return<WrapperRef, TriggerRef> => {
   const {
     floatingOptions = {},

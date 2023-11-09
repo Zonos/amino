@@ -127,7 +127,7 @@ export type BannerProps = BaseProps & {
 
 export const Banner = ({
   children,
-  className = '',
+  className,
   footerActions,
   headerActions,
   intent,
