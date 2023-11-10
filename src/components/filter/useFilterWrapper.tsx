@@ -104,6 +104,10 @@ export type FilterApplyCallback = (
 type UseFilterProps = {
   filterExists: boolean;
   onApply: FilterApplyCallback;
+  /**
+   * When the menu is closed without applying.
+   */
+  onClose: () => void;
   onRemove: () => void;
 };
 
@@ -115,6 +119,7 @@ export const useFilterWrapper = ({
   filterExists,
   label,
   onApply,
+  onClose,
   onRemove,
 }: FilterProps) => {
   const [active, setActive] = useState(false);
@@ -133,6 +138,7 @@ export const useFilterWrapper = ({
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setDropDownOpen(false);
+      onClose();
     }
 
     if (event.key === 'Enter') {
@@ -141,11 +147,15 @@ export const useFilterWrapper = ({
     }
   };
 
-  const handleClick = useCallback(({ target }: MouseEvent) => {
-    if (target instanceof Element && !dropdownRef.current?.contains(target)) {
-      setDropDownOpen(false);
-    }
-  }, []);
+  const handleClick = useCallback(
+    ({ target }: MouseEvent) => {
+      if (target instanceof Element && !dropdownRef.current?.contains(target)) {
+        setDropDownOpen(false);
+        onClose();
+      }
+    },
+    [onClose],
+  );
 
   useEffect(() => {
     document.querySelector('body')?.addEventListener('mousedown', handleClick);

@@ -39,10 +39,15 @@ export const FilterSelect = <
     setEditingValue(null);
   };
 
+  const handleClose = () => {
+    setEditingValue(value);
+  };
+
   const { renderWrapper } = useFilterWrapper({
     ...props,
     filterExists: !!value,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 

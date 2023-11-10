@@ -10,6 +10,7 @@ import {
 } from 'src/components/filter/filter-date/filterDateReducer';
 import {
   type BaseFilterProps,
+  type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 
@@ -33,6 +34,8 @@ export const FilterDate = ({
   const [rangeType, setRangeType] = useState<FilterDateRangeType>(
     filter.dateRangeType,
   );
+
+  const [editingFilterText, setEditingFilterText] = useState<string>('');
 
   const dispatchDateValues = (value: FilterDateData) => {
     dispatch({
@@ -62,13 +65,14 @@ export const FilterDate = ({
     });
   };
 
-  const handleApply = () => {
+  const handleApply: FilterApplyCallback = setFilterText => {
     dispatchDateValues(editingValue);
     dispatch({
       name: 'isActive',
       type: 'change',
       value: true,
     });
+    setFilterText(editingFilterText);
   };
 
   const handleRemove = () => {
@@ -87,18 +91,28 @@ export const FilterDate = ({
     setRangeType(initialFilterDateState.dateRangeType);
   };
 
-  const { renderWrapper, setFilterText } = useFilterWrapper({
+  const handleClose = () => {
+    setEditingValue(filter.dateData);
+    setRangeType(filter.dateRangeType);
+  };
+
+  const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!filter.dateData.dateBegin || !!filter.dateData.dateEnd,
     label,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
+
+  const handleChangeFilterText = (text: string) => {
+    setEditingFilterText(text);
+  };
 
   return renderWrapper(
     <DateControl
       onChange={setEditingValue}
-      onChangeFilterText={setFilterText}
+      onChangeFilterText={handleChangeFilterText}
       rangeType={rangeType}
       setRangeType={setRangeType}
       value={editingValue}
