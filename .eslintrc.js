@@ -13,6 +13,7 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended',
     'plugin:vitest/recommended',
+    'plugin:css-modules/recommended',
   ],
   globals: {
     JSX: 'readonly',
@@ -85,6 +86,7 @@ module.exports = {
     'typescript-custom-sort-keys',
     'sort-destructure-keys',
     'no-relative-import-paths',
+    'css-modules',
   ],
   rules: {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
@@ -108,6 +110,9 @@ module.exports = {
     camelcase: 'off',
     // disable since sometime `this` doesn't need to be used in some util function in class
     'class-methods-use-this': 'off',
+    // css module linting
+    'css-modules/no-undef-class': [2, { camelCase: true }],
+    'css-modules/no-unused-class': [2, { camelCase: true }],
     'deprecation/deprecation': 'warn',
     'import/extensions': [
       'error',

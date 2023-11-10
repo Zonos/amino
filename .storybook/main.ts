@@ -11,6 +11,7 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-storyshots',
     '@storybook/addon-storyshots-puppeteer',
     '@storybook/addon-designs',
+    '@storybook/addon-styling-webpack',
   ],
   docs: {
     autodocs: true,
