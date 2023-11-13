@@ -11,6 +11,33 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-storyshots',
     '@storybook/addon-storyshots-puppeteer',
     '@storybook/addon-designs',
+    '@storybook/addon-styling-webpack',
+    // addons to configure to use scss modules in storybook
+    {
+      name: '@storybook/addon-styling-webpack',
+
+      options: {
+        rules: [
+          {
+            sideEffects: true,
+            test: /\.css|scss$/,
+            use: [
+              'style-loader',
+              'css-loader',
+              {
+                loader: 'sass-loader',
+                options: {
+                  sassOptions: {
+                    // includes paths for scss imports so we just need to import the file name. Ex: @use 'theme';
+                    includePaths: [`${process.cwd()}/src/styles`],
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
   docs: {
     autodocs: true,

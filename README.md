@@ -39,10 +39,22 @@ $ pnpm dev:open
 ## Documentation
 
 ### - Available features in Amino:
-
 - [Style generation (generate style constants and css file)](./build-utils/css/README.md)
 - [Icon component generation process (generate optimized react components based on SVG downloaded from Figma/any sources)](./svgReact/icons/README.md)
 - [Flag component generation process (generate optimized react components for flag svgs from smallest svg size of AWS and Figma)](./svgReact/flags/README.md)
+
+### - Feature in progress
+- Fully replaced styled component with SCSS modules to utilize server component and server side rendering of React and NextJS**
+
+#### - CSS modules conversion process
+1. Make sure you're running `pnpm dev` so that you will have the script watch and have your incoming scss type file generated.
+2. Go to the component you want to convert and open the file
+3. Add a scss file with this format `[Component].module.scss`. Ex: If I want to convert `Layout.ts` component, the scss file will be named `Layout.module.scss`
+4. Open Github copilot chat and ask this:
+   ```
+   Rewrite this code to use css module instead of styled component. Make sure all the theme variables that are used in styled component, use scss variable with prefix $amino instead (ex: $amino-v3-shadow-base)
+   ```
+5. Copilot will give you the scss file content and the new code suggestion, you now just need to filter and adjust it a bit
 
 ### - Configuration
 
@@ -83,6 +95,7 @@ To run the visual tests (with puppeteer), you must have storybook open and runni
   pnpm version:major
   ```
 
+### - Replace full visual,
 ### - Naming rule for auto-importing suggestion
 
 After project is bundled, all files that started with `"_"` will always be available, but VS Code will not suggest the path for the auto import suggestion.
