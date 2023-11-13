@@ -39,11 +39,16 @@ export const FilterMultiSelect = <T extends string = string>({
     setEditingSelectedValues([]);
   };
 
+  const handleClose = () => {
+    setEditingSelectedValues(value);
+  };
+
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: !!editingSelectedValues.length,
+    filterExists: !!value.length,
     label,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 

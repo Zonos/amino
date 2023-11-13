@@ -134,11 +134,18 @@ export const FilterAmount = ({
     }
   };
 
+  const handleClose = () => {
+    setFilterType(filter.amountFilterType);
+    setEditingAmount1(filter.amountTotalMin);
+    setEditingAmount2(filter.amountTotalMax);
+  };
+
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
     filterExists: filter.isActive,
     label,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 
