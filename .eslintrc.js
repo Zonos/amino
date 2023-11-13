@@ -143,7 +143,11 @@ module.exports = {
     'import/prefer-default-export': 'off',
     // For debugging ease
     'no-console': 'warn',
-    'no-relative-import-paths/no-relative-import-paths': 'warn',
+    'no-relative-import-paths/no-relative-import-paths': [
+      'warn',
+      // Allow to import from same folder for importing scss modules
+      { allowSameFolder: true },
+    ],
     'no-restricted-syntax': [
       'error',
       // https://stackoverflow.com/questions/42226436/how-can-i-turn-off-eslints-no-restricted-syntax-rule-just-for-forofstatement

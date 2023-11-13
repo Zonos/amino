@@ -2,16 +2,19 @@ import buble from '@rollup/plugin-buble';
 import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
+import autoprefixer from 'autoprefixer';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
 import { glob } from 'glob';
 import { dependencies, peerDependencies } from 'package.json';
+import path from 'path';
 import {
   type InputOptions,
   type OutputChunk,
   type OutputOptions,
   rollup,
 } from 'rollup';
+import postcss from 'rollup-plugin-postcss';
 import progress from 'rollup-plugin-progress';
 import tsPlugin from 'rollup-plugin-typescript2';
 
@@ -62,6 +65,26 @@ const bundlePackage = async (
           compilerOptions: {
             module: 'esnext',
           },
+        },
+      }),
+      // preprocess the scss
+      postcss({
+        autoModules: true,
+        extract: false,
+        minimize: true,
+        modules: {
+          // scope class with amino prefix
+          generateScopedName: 'Amino_[name]__[local]--[hash:base64:5]',
+          // add prefix before hashing so the class will be unique
+          hashPrefix: 'zonos-amino',
+        },
+        plugins: [autoprefixer()],
+        use: {
+          less: null,
+          sass: {
+            includePaths: [path.resolve(__dirname, '../src/styles')],
+          },
+          stylus: null,
         },
       }),
       buble({
@@ -128,7 +151,13 @@ const styleModules = glob.sync('src/styles/**/*.ts');
 const allModules = animationsModules
   .concat(iconsModules, utilsModules, componentsModules, styleModules)
   /** Exclude dev folders */
-  .filter(item => !item.includes('__tests__') && !item.includes('__stories__'));
+  .filter(
+    item =>
+      !item.includes('__tests__') &&
+      !item.includes('__stories__') &&
+      // no declaration files
+      !item.includes('.d.ts'),
+  );
 
 const configs: ConfigOptions[] = [
   {
