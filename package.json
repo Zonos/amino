@@ -31,7 +31,7 @@
     "postbuild:dts": "echo 'done build dts'",
     "postbuild:prep:publish": "echo 'done building for publishing'",
     "postbuild:theme": "echo 'done generating styles'",
-    "postbuild": "cp -r ./src/styles/*.css ./dist && cp -r ./src/styles/*.scss ./dist &&  && pnpm build:prep:publish",
+    "postbuild": "cp -r ./src/styles/*.css ./dist && cp -r ./src/styles/*.scss ./dist && pnpm build:prep:publish",
     "prebuild:ci": "pnpm prebuild",
     "prebuild:dts": "echo 'building dts'",
     "prebuild:prep:publish": "echo 'building for publishing'",
