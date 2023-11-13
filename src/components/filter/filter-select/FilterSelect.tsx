@@ -1,18 +1,26 @@
-import { type KeyboardEvent, useState } from 'react';
+import { type KeyboardEvent, useMemo, useState } from 'react';
 
 import {
   type BaseFilterProps,
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
-import { Select } from 'src/components/select/Select';
+import { type SelectProps, Select } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
+
+type CustomSelectProps<
+  T extends string = string,
+  O extends SelectOption<string> = SelectOption<T>,
+> = Omit<SelectProps<O>, 'onChange' | 'value' | 'options'>;
 
 export type FilterSelectProps<
   T extends string = string,
   O extends SelectOption<string> = SelectOption<T>,
 > = BaseFilterProps & {
   options: O[];
+  selectProps?:
+    | CustomSelectProps<T, O>
+    | ((editingValue: O | null) => CustomSelectProps<T, O>);
   value: O | null;
   onChange: (value: O | null) => void;
 };
@@ -23,6 +31,7 @@ export const FilterSelect = <
 >({
   onChange,
   options,
+  selectProps,
   value,
   ...props
 }: FilterSelectProps<T, O>) => {
@@ -59,6 +68,14 @@ export const FilterSelect = <
     }
   };
 
+  const selectPropsResolved = useMemo(
+    () =>
+      typeof selectProps === 'function'
+        ? selectProps(editingValue)
+        : selectProps,
+    [editingValue, selectProps],
+  );
+
   return renderWrapper(
     <Select
       isClearable={false}
@@ -69,6 +86,7 @@ export const FilterSelect = <
       options={options}
       size="sm"
       value={options.filter(item => item.value === editingValue?.value)}
+      {...selectPropsResolved}
     />,
   );
 };
