@@ -8,16 +8,16 @@ This script is primarily created for generating accessible style constants and c
 ## **Table of contents**
 
 - [**Build styles process**](#build-styles-process)
+  - [**Table of contents**](#table-of-contents)
   - [**Generating dynamic constant process**](#generating-dynamic-constant-process)
-    - [Overview](#overview-1)
-    - [When you run the script, it will:](#when-you-run-the-script-it-will-1)
-    - [How to:](#how-to-1)
-      - [Create a logic file](#create-a-logic-file)
+    - [Overview](#overview)
+    - [When you run the script, it will:](#when-you-run-the-script-it-will)
+    - [How to:](#how-to)
       - [Import generated file in theme file (`theme.ts` | `_night.ts`)](#import-generated-file-in-theme-file-themets--_nightts)
   - [**Building process**](#building-process)
-    - [Overview](#overview-2)
-    - [When you run the script, it will:](#when-you-run-the-script-it-will-2)
-    - [How to](#how-to-2)
+    - [Overview](#overview-1)
+    - [When you run the script, it will:](#when-you-run-the-script-it-will-1)
+    - [How to](#how-to-1)
       - [Deprecate a variable](#deprecate-a-variable)
       - [Add/adjust variable](#addadjust-variable)
       - [Update new theme](#update-new-theme)
@@ -35,46 +35,10 @@ This script is primarily created for generating accessible style constants and c
 1. Read through all the files in `build-utils/css/constants/logic`, class `LogicConstant` in `build-utils/css/class` will:
 
    - Parse the given file.
-   - Validate the file and throw error message if the file doesn't have specific function or constant.
-   - Generate constant variables based on the logic provided in the function with pattern `get{{CapitalizedFileNameNoUnderScore}}ConstantKeyValuePairs`. Adding @jsdocs comment if `hasJSDocsComment` is `true`, and the logic for the JSDocs comment will be a function with convention `get{{CapitalizedFileName}}ConstantCustomizedComment`.
-   - Put the generated file at `build-utils/css/constants/generated`
 
-2. All theme files in `build-utils/css/constants/*.ts` now can import the generated files in `build-utils/css/constants/generated` by using spread variables (Ex: `...space`). Then when you command `pnpm build:theme`, the process will use static function `transformImportedConstant` in class `LogicConstant` to convert/transform the file `theme.ts` into typescript jsdocs friendly (it basically will find all import lines in `theme.ts` and import them, then replace the spread value with content in each imported file).
+2. All theme files in `build-utils/css/constants/*.ts` now can import the styled files in `build-utils/css/constants/theme/*.ts` by using spread variables (Ex: `...space`). Then when you command `pnpm build:theme`, the process will use static function `transformImportedConstant` in class `LogicConstant` to convert/transform the file `theme.ts` into typescript jsdocs friendly (it basically will find all import lines in `theme.ts` and import them, then replace the spread value with content in each imported file).
 
 ### How to:
-
-#### Create a logic file
-
-<details>
-
-1. Run the command below to generate the dummy content for your new dynamic constant logic.
-   ```
-   pnpm template:logic-constant yourFileName
-   ```
-2.  The generated file now will be located at `build-utils/css/constants/logic` with name `_yourFileName.ts`.
-3.  Put logic of how you want the key/value pair in constant to look like in function `get{{CapitalizedFileName}}ConstantKeyValuePairs`.
-   Ex:
-
-    ````
-    export const getYourFileNameConstantKeyValuePairs: ConstantKeyValuePairsType = () => {
-        const contentArr: Record<string, string> = {};
-
-        /** Put logic here to generate constant key value pairs */
-        for (let i=0; i<5; i++) {
-            // this will return a constant looks like `{"key-1": "value-1", "key-2": "value-2", ...}.
-            contentArr[`key-${i}`] = `value-${i}`;
-        }
-        return contentArr;
-    };
-
-    ````
-
-4.  Put logic of how you want @jsdocs tag to be generated to look like with each key/value pair in constant in function `getYourFileNameConstantCustomizedComment`. Leave it as it is if you want it to use the default one.
-   Ex:
-   `` export const getYourFileNameConstantCustomizedComment: ConstantCustomizedComment = ({ key, value, }) => { /** Put logic here to generate jsdocs string for each line in constant */ return `${key}: ${value}`; }; ``
-5.  Turn the flag `hasJSDocsComment` on or off wether to enable showing jsdocs.
-6.  Run command `'pnpm build:logic-constant'` to generate the file. New files with exact same name will be generated at `build-utils/css/constants/generated`
-</details>
 
 #### Import generated file in theme file (`theme.ts` | `_night.ts`)
 
@@ -134,6 +98,9 @@ Main command for this is just `pnpm build`. This would trigger the tests for the
 3. Generate theme css capture (These captures will be used for unit testing when running `pnpm test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
    - Generate light theme css capture get from `build-utils/css/constants/theme.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`
    - Generate night theme css capture get from `build-utils/css/constants/_night.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/night-theme.css`
+
+3. Generate scss file (theme.scss)
+   - Get contents from `build-utils/css/constants/theme.ts`, get key, format and generate scss variables and put in `src/styles` folder
 
 ### How to
 
