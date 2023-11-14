@@ -1,16 +1,9 @@
 import styled from 'styled-components';
 
-import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 import { getAminoColor } from 'src/utils/getAminoColor';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: ${theme.space8};
-`;
 
 const Base = styled.div`
   width: ${theme.space56};
@@ -52,16 +45,15 @@ const Bar = styled.div<{
   border-radius: ${theme.radius8};
 `;
 
-export type ProgressBarProps = {
+export type ProgressBarProps = BaseProps & {
   colorStyle?: 'greenToRed' | 'redToGreen' | Color;
   progress?: number;
-  showText?: boolean;
 };
 
 export const ProgressBar = ({
+  className,
   colorStyle = 'blue600',
   progress = 0,
-  showText = false,
 }: ProgressBarProps) => {
   const validateProgress = () => {
     if (progress < 0) {
@@ -76,11 +68,8 @@ export const ProgressBar = ({
   const validatedProgress = validateProgress();
 
   return (
-    <Wrapper>
-      <Base>
-        <Bar colorStyle={colorStyle} progress={validatedProgress} />
-      </Base>
-      {showText && <Text type="caption">{validatedProgress}/100</Text>}
-    </Wrapper>
+    <Base className={className}>
+      <Bar colorStyle={colorStyle} progress={validatedProgress} />
+    </Base>
   );
 };

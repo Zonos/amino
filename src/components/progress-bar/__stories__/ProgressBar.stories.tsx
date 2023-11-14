@@ -15,17 +15,12 @@ export default ProgressBarMeta;
 export const Template: StoryFn<ProgressBarProps> = ({
   colorStyle = 'blue600',
   progress = 0,
-  showText = false,
 }: ProgressBarProps) => (
   <VStack spacing={8}>
-    <ProgressBar colorStyle={colorStyle} progress={20} showText={showText} />
-    <ProgressBar colorStyle={colorStyle} progress={50} showText={showText} />
-    <ProgressBar colorStyle={colorStyle} progress={80} showText={showText} />
-    <ProgressBar
-      colorStyle={colorStyle}
-      progress={progress}
-      showText={showText}
-    />
+    <ProgressBar colorStyle={colorStyle} progress={20} />
+    <ProgressBar colorStyle={colorStyle} progress={50} />
+    <ProgressBar colorStyle={colorStyle} progress={80} />
+    <ProgressBar colorStyle={colorStyle} progress={progress} />
   </VStack>
 );
 
