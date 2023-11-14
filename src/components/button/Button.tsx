@@ -19,16 +19,7 @@ import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
 import type { Variant } from 'src/types/Variant';
-
-const getAminoColor = (color?: Color | 'inherit') => {
-  if (color === 'inherit') {
-    return 'inherit';
-  }
-  if (color) {
-    return theme[color];
-  }
-  return undefined;
-};
+import { getAminoColor } from 'src/utils/getAminoColor';
 
 const getPadding = (size?: Size) => {
   switch (size) {
