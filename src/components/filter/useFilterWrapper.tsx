@@ -82,14 +82,13 @@ const DropdownWrapper = styled.div`
   flex-direction: column;
   gap: ${theme.space24};
   outline: none;
-  max-height: 600px;
-  overflow: auto;
 `;
 
 const ControlsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${theme.space8};
+  max-height: 400px;
 `;
 
 export type BaseFilterProps = BaseProps & {

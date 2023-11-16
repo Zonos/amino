@@ -131,6 +131,33 @@ export const MultiSelect = () => {
   );
 };
 
+const optionsNumbers: SelectOption<number>[] = Array.from(
+  { length: 100 },
+  (_, i) => ({
+    label: `Option ${i}`,
+    value: i,
+  }),
+);
+
+export const MultiSelectWithManyOptions = () => {
+  const [selectedValues, setSelectedValues] = useState<SelectOption<number>[]>(
+    [],
+  );
+
+  return (
+    <>
+      <pre>{JSON.stringify({ selectedValues }, null, 2)}</pre>
+      <FilterMultiSelect
+        dropdownTitle="Filter by option"
+        label="MultiSelect filter"
+        onChange={v => setSelectedValues(v)}
+        options={optionsNumbers}
+        value={selectedValues}
+      />
+    </>
+  );
+};
+
 export const Date = () => {
   const [filter, dispatch] = useReducer(
     filterDateReducer,

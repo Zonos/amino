@@ -67,12 +67,12 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
               {states
                 .filter(state => state.region === region)
                 .map(state => (
-                  <button onClick={() => onClick(state)} type="button">
-                    <StateCard
-                      key={state.code}
-                      $highlighted={state.highlighted}
-                      spacing="10px"
-                    >
+                  <button
+                    key={state.code}
+                    onClick={() => onClick(state)}
+                    type="button"
+                  >
+                    <StateCard $highlighted={state.highlighted} spacing="10px">
                       {state.icon}
                       {state.name}
                     </StateCard>

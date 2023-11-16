@@ -155,6 +155,8 @@ const allModules = animationsModules
     item =>
       !item.includes('__tests__') &&
       !item.includes('__stories__') &&
+      // no IconIndex, must import from individual file as we have no tree shaking
+      !item.includes('IconIndex') &&
       // no declaration files
       !item.includes('.d.ts'),
   );
