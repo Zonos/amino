@@ -575,7 +575,6 @@ import './icons/HexagonDuotoneIcon';
 import './icons/HexagonIcon';
 import './icons/HomeDuotoneIcon';
 import './icons/HomeIcon';
-import './icons/IconIndex';
 import './icons/ImageDuotoneIcon';
 import './icons/ImageIcon';
 import './icons/ImportDuotoneIcon';
