@@ -5,6 +5,7 @@ import { type MotionProps, AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 
 const Backdrop = styled(motion.div)`
@@ -20,23 +21,22 @@ const Backdrop = styled(motion.div)`
   color: ${theme.textColor};
 `;
 
-const Popup = styled(motion.div)<{ width: number; withBorder: boolean }>`
+const Popup = styled(motion.div)<{ $width: number; $withBorder: boolean }>`
   z-index: 1001;
   background: ${theme.surfaceColor};
-  width: ${p => p.width}px;
+  width: ${p => p.$width}px;
   max-height: 90vh;
   border-radius: ${theme.radius12};
   outline: none;
   box-shadow: ${theme.v3ShadowXxl};
-  border: ${p => p.withBorder && theme.border};
+  border: ${p => p.$withBorder && theme.border};
   overflow: hidden;
   display: flex;
   flex-direction: column;
 `;
 
-export type BaseDialogProps = {
+export type BaseDialogProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   /** Close when clicking outside dialog (on the backdrop)
    * @default true
    */
@@ -160,13 +160,13 @@ export const BaseDialog = ({
             <Popup
               {...combinedPopupMotionProps}
               key="dialog"
+              $width={width}
+              $withBorder={withBorder}
               className={[className || '', 'elevated'].join(' ')}
               onClick={e => {
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
               }}
-              width={width}
-              withBorder={withBorder}
             >
               {children}
             </Popup>

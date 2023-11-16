@@ -14,9 +14,9 @@ import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 // Card style
-const ButtonStyled = styled.button<{ isActive: boolean }>`
-  border: ${p => `2px solid ${p.isActive ? theme.blue400 : 'transparent'}`};
-  color: ${p => (p.isActive ? theme.primary : theme.textColor)};
+const ButtonStyled = styled.button<{ $isActive: boolean }>`
+  border: ${p => `2px solid ${p.$isActive ? theme.blue400 : 'transparent'}`};
+  color: ${p => (p.$isActive ? theme.primary : theme.textColor)};
   border-radius: ${theme.radius8};
 
   &:not([disabled]) {
@@ -56,6 +56,9 @@ const themes: { label: string; value: Theme }[] = [
 export type Props = {
   className?: string;
   disabled?: boolean;
+  /**
+   * @default select
+   */
   type?: 'cards' | 'select' | 'toggle';
 };
 
@@ -84,8 +87,8 @@ export const ThemeSelect = ({
       {type === 'cards' && (
         <HStack className={className}>
           <ButtonStyled
+            $isActive={aminoTheme === 'day'}
             data-theme="day"
-            isActive={aminoTheme === 'day'}
             onClick={() => setAminoTheme('day')}
             type="button"
           >
@@ -96,8 +99,8 @@ export const ThemeSelect = ({
           </ButtonStyled>
 
           <ButtonStyled
+            $isActive={aminoTheme === 'night'}
             data-theme="night"
-            isActive={aminoTheme === 'night'}
             onClick={() => setAminoTheme('night')}
             type="button"
           >

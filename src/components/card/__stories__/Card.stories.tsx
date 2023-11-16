@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { type CardProps, Card } from 'src/components/card/Card';
 import { theme } from 'src/styles/constants/theme';
 
@@ -46,9 +46,9 @@ BasicCard.parameters = {
 
 export const CardWithActions = Template.bind({});
 CardWithActions.args = {
-  actions: <LegacyButton>Title action</LegacyButton>,
+  actions: <Button>Title action</Button>,
   children: 'Card contents',
-  footerActions: <LegacyButton>Footer action</LegacyButton>,
+  footerActions: <Button>Footer action</Button>,
   label: 'My hot card',
 };
 CardWithActions.parameters = {
@@ -63,8 +63,8 @@ CardWithFooter.args = {
   children: 'content',
   footerActions: (
     <>
-      <LegacyButton>footer action 1</LegacyButton>
-      <LegacyButton>footer action 2</LegacyButton>
+      <Button>footer action 1</Button>
+      <Button>footer action 2</Button>
     </>
   ),
   footerContent: 'footer content',

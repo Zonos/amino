@@ -3,7 +3,7 @@ import type { Column } from 'react-data-grid';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
@@ -109,29 +109,29 @@ export const NestedDataTable = <
         {/* Only show pagination if handlePagination and currentPage is provided */}
         {!!showPagination && (
           <StyledTableActionWrapper>
-            <LegacyButton
+            <Button
               disabled={currentPage === 1 || !hasPreviousPage}
-              intent="outline"
               onClick={() => {
                 if (hasPreviousPage) {
                   handlePagination(currentPage - 1);
                 }
               }}
+              outline
             >
               Previous page
-            </LegacyButton>
+            </Button>
             {currentPage}
-            <LegacyButton
+            <Button
               disabled={!hasNextPage}
-              intent="outline"
               onClick={() => {
                 if (hasNextPage) {
                   handlePagination(currentPage + 1);
                 }
               }}
+              outline
             >
               Next page
-            </LegacyButton>
+            </Button>
           </StyledTableActionWrapper>
         )}
       </StyledTableHeader>

@@ -17,17 +17,13 @@ export const RefreshDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M3 11a1 1 0 0 1 1 1 8 8 0 0 0 13.292 6H16a1 1 0 1 1 0-2h3a1.5 1.5 0 0 1 1.5 1.5v3a1 1 0 1 1-2 0v-.9A9.963 9.963 0 0 1 12 22C6.477 22 2 17.523 2 12a1 1 0 0 1 1-1Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
+      d="M11.752 5.307a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h2.546c2.9 0 5.25 2.35 5.25 5.25v.25a.75.75 0 0 0 1.5 0V13a6.75 6.75 0 0 0-6.75-6.75h-2.546l1.048-.943Z"
+      fill="currentColor"
     />
     <path
-      clipRule="evenodd"
-      d="M5.5 4.4v-.9a1 1 0 0 0-2 0v3A1.5 1.5 0 0 0 5 8h3a1 1 0 0 0 0-2H6.708A8 8 0 0 1 20 12a1 1 0 1 0 2 0c0-5.523-4.477-10-10-10a9.963 9.963 0 0 0-6.5 2.4Z"
-      fill="currentColor"
-      fillRule="evenodd"
+      d="M5.5 10.75a.75.75 0 0 0-1.5 0V11a6.75 6.75 0 0 0 6.75 6.75h2.546l-1.048.942a.75.75 0 1 0 1.004 1.116l2.5-2.25a.75.75 0 0 0 0-1.116l-2.5-2.25a.75.75 0 1 0-1.004 1.115l1.048.943H10.75A5.25 5.25 0 0 1 5.5 11v-.25Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
   </IconBase>
 ));

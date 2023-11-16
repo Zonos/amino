@@ -87,17 +87,18 @@ export const SlideOver = ({
   label,
   onClose,
   subtitle,
+  width = 444,
   ...props
 }: SlideOverProps) => (
   <StyledBaseDialog
     onClose={onClose}
     popupMotionProps={{
       animate: { x: 0 },
-      exit: { x: 300 },
-      initial: { x: 300 },
+      exit: { x: width },
+      initial: { x: width },
       transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },
     }}
-    width={300}
+    width={width}
     {...props}
   >
     <Wrapper>

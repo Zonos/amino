@@ -1,22 +1,22 @@
 import * as React from 'react';
 
-import type { IRippleActions } from 'src/components/button/RippleGroup';
+import type { RippleActions } from 'src/components/button/RippleGroup';
 
-interface IRippleEventHandlers {
+type RippleEventHandlers = {
   onMouseDown: React.MouseEventHandler;
-}
+};
 
 type Props = {
   disabled: boolean;
   rippleEnabled: boolean;
-  rippleRef: React.RefObject<IRippleActions>;
+  rippleRef: React.RefObject<RippleActions>;
 };
 
 type Return = {
   /** Combines event handlers */
   getRippleHandlers(
-    otherEvents: Partial<IRippleEventHandlers>,
-  ): IRippleEventHandlers;
+    otherEvents: Partial<RippleEventHandlers>,
+  ): RippleEventHandlers;
   rippleEnabled: boolean;
 };
 
@@ -26,7 +26,7 @@ export const useRipple = ({
   rippleRef,
 }: Props): Return => {
   function useRippleHandler(
-    rippleAction: keyof IRippleActions,
+    rippleAction: keyof RippleActions,
     skipRippleAction = !rippleEnabled,
   ) {
     return React.useCallback(
@@ -42,14 +42,14 @@ export const useRipple = ({
   const handleMouseDown = useRippleHandler('start');
 
   const getRippleHandlers = React.useMemo(() => {
-    const rippleHandlers: IRippleEventHandlers = {
+    const rippleHandlers: RippleEventHandlers = {
       onMouseDown: handleMouseDown,
     };
 
-    return (otherEvents: Partial<IRippleEventHandlers>) => {
+    return (otherEvents: Partial<RippleEventHandlers>) => {
       const eventNames = Object.keys(
         rippleHandlers,
-      ) as (keyof IRippleEventHandlers)[];
+      ) as (keyof RippleEventHandlers)[];
       const wrappedEvents = eventNames.map(eventName => ({
         handler: (
           ev: React.FocusEvent<Element, Element> &
@@ -65,7 +65,7 @@ export const useRipple = ({
       return wrappedEvents.reduce((acc, current) => {
         acc[current.name] = current.handler;
         return acc;
-      }, {} as IRippleEventHandlers);
+      }, {} as RippleEventHandlers);
     };
   }, [handleMouseDown]);
 

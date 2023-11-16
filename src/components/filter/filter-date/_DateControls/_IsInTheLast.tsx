@@ -13,20 +13,20 @@ import {
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
-const dateUnitOptions: IOption<'days' | 'months'>[] = dateUnits.map(x => ({
-  label: x,
-  value: x,
-}));
+const dateUnitOptions: SelectOption<FilterDateLastRangeUnit>[] = dateUnits.map(
+  x => ({
+    label: x,
+    value: x,
+  }),
+);
 
 export const IsInTheLast = ({
   onChange,
   onChangeFilterText,
   value,
 }: _DateControlProps) => {
-  const dateEnd = dayjs().format(defaultDateFormat);
-
   const { count, unit } = useMemo<{
     count: number;
     unit: FilterDateLastRangeUnit;
@@ -40,50 +40,43 @@ export const IsInTheLast = ({
 
   const handleChangeUnit = useCallback(
     (newUnit: (typeof dateUnitOptions)[number]['value']) => {
-      if (newUnit === 'days') {
-        const dateBegin = dayjs()
-          .subtract(value.lastCount, value.lastUnit)
-          .format(defaultDateFormat);
-        onChange({
-          dateBegin,
-          dateEnd,
-          lastCount: count,
-          lastUnit: newUnit,
-        });
-      } else {
-        // months
-        const dateBegin = dayjs()
-          .subtract(1, 'months')
-          .format(defaultDateFormat);
-        onChange({
-          dateBegin,
-          dateEnd,
-          lastCount: count,
-          lastUnit: newUnit,
-        });
-      }
+      const dateBegin = dayjs()
+        .subtract(count, newUnit)
+        .format(defaultDateFormat);
+      onChange({
+        dateBegin,
+        dateEnd: null,
+        lastCount: count,
+        lastUnit: newUnit,
+      });
     },
-    [count, dateEnd, onChange, value.lastCount, value.lastUnit],
+    [count, onChange],
   );
 
   const handleChangeCount = useCallback(
     (newCount: number) => {
       const dateBegin = dayjs()
-        .subtract(newCount, 'days')
+        .subtract(newCount, unit)
         .format(defaultDateFormat);
       onChange({
         dateBegin,
-        dateEnd,
+        dateEnd: null,
         lastCount: newCount,
         lastUnit: unit,
       });
     },
-    [dateEnd, onChange, unit],
+    [onChange, unit],
   );
 
   useEffect(() => {
-    handleChangeCount(5);
-  }, [handleChangeCount]);
+    const dateBegin = dayjs().subtract(count, unit).format(defaultDateFormat);
+    onChange({
+      dateBegin,
+      dateEnd: null,
+      lastCount: count,
+      lastUnit: unit,
+    });
+  }, [count, onChange, unit]);
 
   useEffect(() => {
     const filterText = `Last ${count} ${unit}`;

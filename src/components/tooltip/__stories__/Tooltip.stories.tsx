@@ -3,10 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import {
-  type LegacyButtonProps,
-  LegacyButton,
-} from 'src/components/button/LegacyButton';
+import { type ButtonProps, Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Select } from 'src/components/select/Select';
@@ -20,7 +17,7 @@ const TransparentCoverSheet = styled(CoverSheet)`
   /* framer-motion inlines the opacity style */
   opacity: 0.9 !important;
 `;
-const StyledButton = styled(LegacyButton)``;
+const StyledButton = styled(Button)``;
 const ButtonMeta: Meta = {
   component: Tooltip,
   parameters: {
@@ -44,7 +41,7 @@ const VWrapper = styled.div`
 
 export default ButtonMeta;
 
-type ButtonPropWithTooltipOption = Omit<LegacyButtonProps, 'background'> &
+type ButtonPropWithTooltipOption = Omit<ButtonProps, 'background'> &
   Pick<TooltipProps, 'background' | 'themeOverride'>;
 
 const HeadingTooltip = ({
@@ -91,16 +88,16 @@ const TopRow = ({
 }: ButtonPropWithTooltipOption) => (
   <>
     <HeadingTooltip background={background} themeOverride={themeOverride}>
-      <LegacyButton {...props}>Has heading</LegacyButton>
+      <Button {...props}>Has heading</Button>
     </HeadingTooltip>
     <WithoutHeadingTooltip
       background={background}
       subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated."
       themeOverride={themeOverride}
     >
-      <LegacyButton {...props} iconRight>
+      <Button {...props} iconRight>
         Without heading truncated subtitle
-      </LegacyButton>
+      </Button>
     </WithoutHeadingTooltip>
     <WithoutHeadingTooltip
       background={background}
@@ -201,9 +198,9 @@ const BottomRow = ({
         />
       ) : (
         <HeadingTooltip background={background} themeOverride={themeOverride}>
-          <LegacyButton {...props} onClick={() => setShowSelect(true)}>
+          <Button {...props} onClick={() => setShowSelect(true)}>
             Test select z-index
-          </LegacyButton>
+          </Button>
         </HeadingTooltip>
       )}
     </>
@@ -293,9 +290,9 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       <TransparentCoverSheet
         actions={
           <HeadingTooltip background={background} themeOverride={themeOverride}>
-            <LegacyButton {...props} disabled>
+            <Button {...props} disabled>
               Has heading
-            </LegacyButton>
+            </Button>
           </HeadingTooltip>
         }
         label="Coversheet"
@@ -313,9 +310,9 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       <Dialog
         actions={
           <HeadingTooltip background={background} themeOverride={themeOverride}>
-            <LegacyButton {...props} disabled>
+            <Button {...props} disabled>
               Has heading
-            </LegacyButton>
+            </Button>
           </HeadingTooltip>
         }
         onClose={() => setDialogOpen(false)}
@@ -335,41 +332,41 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
 
 export const Default = Template.bind({});
 Default.args = {
-  intent: 'secondary',
+  variant: 'standard',
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  intent: 'primary',
+  variant: 'primary',
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  intent: 'danger',
+  variant: 'danger',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  intent: 'warning',
+  variant: 'warning',
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-  intent: 'outline',
+  outline: true,
 };
 
 export const LinkButton = Template.bind({});
 LinkButton.args = {
-  intent: 'link',
+  variant: 'link',
 };
 
 export const Subtle = Template.bind({});
 Subtle.args = {
-  intent: 'subtle',
+  variant: 'subtle',
 };
 
 export const TextButton = Template.bind({});
 TextButton.args = {
   children: 'Back',
-  intent: 'text',
+  variant: 'text',
 };

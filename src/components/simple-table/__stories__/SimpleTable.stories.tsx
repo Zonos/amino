@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useState } from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
@@ -11,6 +11,7 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
   type SimpleTableHeader,
+  type SimpleTableProps,
   SimpleTable,
 } from 'src/components/simple-table/SimpleTable';
 import { Text } from 'src/components/text/Text';
@@ -116,7 +117,7 @@ export const Basic = () => (
   />
 );
 
-export const Selectable = () => {
+export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
   const checkboxAllValue = selectedRowIndexes.length === items.length;
@@ -129,7 +130,11 @@ export const Selectable = () => {
     }
   };
 
-  const handleCheckboxRowChange = (value: boolean, index: number) => {
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
     if (value) {
       setSelectedRowIndexes([...selectedRowIndexes, index]);
     } else {
@@ -144,12 +149,14 @@ export const Selectable = () => {
       headers={tableHeaders}
       items={items}
       keyExtractor={item => String(item.id)}
+      loading={loading}
       selectable={{
+        anySelected: selectedRowIndexes.length > 0,
         enabled: true,
         headerCheckboxValue: checkboxAllValue,
+        isRowChecked: (_, index) => selectedRowIndexes.includes(index),
         onHeaderCheckboxChange: handleCheckboxAllChange,
         onRowCheckboxChange: handleCheckboxRowChange,
-        selectedRowIndexes,
       }}
     />
   );
@@ -182,54 +189,62 @@ export const Custom = () => {
     hoverField: null,
   }));
 
-  const HoverMenu = ({ item }: { item: DummyData }) => {
-    const [open, setOpen] = useState(false);
+  const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
 
-    return (
-      <MenuButton
-        action={
-          <Button
-            icon={<ThreeDotIcon size={20} />}
-            onClick={e => {
-              e.stopPropagation();
-              setOpen(!open);
-            }}
-            size="sm"
-            variant="subtle"
-          />
-        }
-        open={open}
-        setOpen={setOpen}
-      >
-        <Menu>
-          <MenuItem
-            icon={<EditDuotoneIcon size={20} />}
-            onClick={e => {
-              e.stopPropagation();
-              alert(`Edit ${item.name}`);
-            }}
-          >
-            Edit
-          </MenuItem>
-          <MenuItem
-            icon={
-              <TrashCanDuotoneIcon
-                color="red600"
-                secondaryColor="red300"
-                size={20}
-              />
-            }
-            onClick={e => {
-              e.stopPropagation();
-              alert(`Delete ${item.name}`);
-            }}
-          >
-            <Text color="red600">Delete</Text>
-          </MenuItem>
-        </Menu>
-      </MenuButton>
-    );
+  const nonCadeItems = items.filter(item => item.name !== 'Cade');
+
+  const checkboxAllValue = selectedItemIds.length === nonCadeItems.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedItemIds.length === nonCadeItems.length) {
+      setSelectedItemIds([]);
+    } else {
+      setSelectedItemIds(nonCadeItems.map(item => item.id));
+    }
   };
+
+  const handleCheckboxRowChange = (value: boolean, item: DummyData) => {
+    if (value) {
+      setSelectedItemIds([...selectedItemIds, item.id]);
+    } else {
+      setSelectedItemIds(selectedItemIds.filter(id => id !== item.id));
+    }
+  };
+
+  const HoverMenu = ({ item }: { item: DummyData }) => (
+    <MenuButton
+      action={
+        <Button icon={<ThreeDotIcon size={20} />} size="sm" variant="subtle" />
+      }
+    >
+      <Menu>
+        <MenuItem
+          icon={<EditDuotoneIcon size={20} />}
+          onClick={e => {
+            e.stopPropagation();
+            alert(`Edit ${item.name}`);
+          }}
+        >
+          Edit
+        </MenuItem>
+        <MenuItem
+          icon={
+            <TrashCanDuotoneIcon
+              color="red600"
+              secondaryColor="red300"
+              size={20}
+            />
+          }
+          onClick={e => {
+            e.stopPropagation();
+            alert(`Delete ${item.name}`);
+          }}
+        >
+          <Text color="red600">Delete</Text>
+        </MenuItem>
+      </Menu>
+    </MenuButton>
+  );
 
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders,
@@ -252,6 +267,15 @@ export const Custom = () => {
       keyExtractor={item => String(item.id)}
       onRowClick={item => {
         alert(`Clicked ${item.name}`);
+      }}
+      selectable={{
+        anySelected: selectedItemIds.length > 0,
+        enabled: true,
+        headerCheckboxValue: checkboxAllValue,
+        isRowCheckboxDisabled: item => item.name === 'Cade',
+        isRowChecked: item => selectedItemIds.includes(item.id),
+        onHeaderCheckboxChange: handleCheckboxAllChange,
+        onRowCheckboxChange: handleCheckboxRowChange,
       }}
     />
   );

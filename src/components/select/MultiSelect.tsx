@@ -15,17 +15,15 @@ import type {
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
-export interface MultiSelectProps<
-  Option extends IOption = IOption,
+export type MultiSelectProps<
+  Option extends SelectOption = SelectOption,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
-    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>>,
-    HelpTextProps {
+> = {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -36,18 +34,20 @@ export interface MultiSelectProps<
    * value: { label: string; value: string; }[];
    */
   value: PropsValue<Option>;
-}
+} & Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps> &
+  Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
+  HelpTextProps;
 
-export type IGroupOption<Option extends IOption> = {
+export type GroupOption<Option extends SelectOption> = {
   data: Option;
   index: 0;
   isDisabled: false;
   isSelected: false;
   type: 'option';
-} & IOption;
+} & SelectOption;
 
 const Group = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends true,
   Group extends GroupBase<Option>,
 >(
@@ -56,7 +56,7 @@ const Group = <
   const { children, getStyles, innerProps, label, options, selectProps } =
     props;
   const currentValue = selectProps.value as MultiValue<Option>;
-  const groupOptions = options as unknown as IGroupOption<Option>[];
+  const groupOptions = options as unknown as GroupOption<Option>[];
   const available = groupOptions.filter(x => !x.isDisabled);
   const unselected = available.filter(x => !x.isSelected).map(x => x.data);
   const selected = available.filter(x => x.isSelected).map(x => x.data);
@@ -98,7 +98,7 @@ const Group = <
 };
 
 export const MultiSelect = <
-  Option extends IOption,
+  Option extends SelectOption,
   Group extends GroupBase<Option>,
 >({
   closeMenuOnSelect = false,

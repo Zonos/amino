@@ -33,7 +33,7 @@ const Template: StoryFn = ({ className }) => {
       <a href="/" onClick={mockUrlChange}>
         <NavigationItem
           content="Home"
-          icon={<HomeIcon size={20} />}
+          icon={<HomeIcon size={24} />}
           isActive={pathname === '/'}
         />
       </a>
@@ -44,7 +44,7 @@ const Template: StoryFn = ({ className }) => {
           <a href="/quoter/create" onClick={mockUrlChange}>
             <NavigationItem
               content="Quoter"
-              icon={<TotalLandedCostIcon size={20} />}
+              icon={<TotalLandedCostIcon size={24} />}
             />
           </a>
         }
@@ -70,7 +70,7 @@ const Template: StoryFn = ({ className }) => {
           <a href="/classify/create" onClick={mockUrlChange}>
             <NavigationItem
               content="Classify"
-              icon={<IntegrationIcon size={20} />}
+              icon={<IntegrationIcon size={24} />}
             />
           </a>
         }

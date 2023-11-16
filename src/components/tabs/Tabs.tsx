@@ -90,8 +90,8 @@ const Tab = styled(BaseTab)`
   }
 `;
 
-const SubtleTabs = styled(BaseTabs)<{ align: TabsProps['align'] }>`
-  justify-content: ${p => p.align};
+const SubtleTabs = styled(BaseTabs)<{ $align: TabsProps['align'] }>`
+  justify-content: ${p => p.$align};
   gap: ${theme.space24};
   border-bottom: 1px solid ${theme.gray200};
 `;
@@ -126,7 +126,7 @@ export const Tabs = ({
 }: TabsProps) => {
   if (subtle) {
     return (
-      <SubtleTabs align={align} className={className}>
+      <SubtleTabs $align={align} className={className}>
         {items.map(item => (
           <SubtleTab
             key={item}

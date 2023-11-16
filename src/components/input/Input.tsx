@@ -21,18 +21,33 @@ import { NumberInput } from 'src/components/input/input-type/_NumberInput';
 import { PasswordInput } from 'src/components/input/input-type/_PasswordInput';
 import { TimeInput } from 'src/components/input/input-type/_TimeInput';
 import { theme } from 'src/styles/constants/theme';
+import type { Size } from 'src/types/Size';
 
-const Fields = styled.div`
-  border-radius: ${theme.radius6};
+const getRadius = (size?: Size) => {
+  switch (size) {
+    case 'sm':
+      return `${theme.radius6}`;
+    case 'lg':
+      return `${theme.radius10}`;
+    case 'xl':
+      return `${theme.radius12}`;
+    case 'md':
+    default:
+      return `${theme.radius8}`;
+  }
+};
+
+const Fields = styled.div<{ $size?: Size }>`
+  border-radius: ${p => getRadius(p.$size)};
   border: ${theme.border};
   &:hover {
     border: 1px solid ${theme.gray300};
   }
 `;
 
-const AminoInputWrapper = styled.div<{ width?: number }>`
+const AminoInputWrapper = styled.div<{ $width?: number }>`
   position: relative;
-  width: ${p => (p.width ? `${p.width}px` : '100%')};
+  width: ${p => (p.$width ? `${p.$width}px` : '100%')};
 
   & > div {
     flex-direction: row;
@@ -224,10 +239,10 @@ export const Input = <T extends string>({
   };
   return (
     <AminoInputWrapper
+      $width={width}
       className={`amino-input-wrapper ${disabled ? 'disabled' : ''}`}
-      width={width}
     >
-      <Fields>{renderInput()}</Fields>
+      <Fields $size={size}>{renderInput()}</Fields>
 
       <HelpText error={error} helpText={helpText} />
     </AminoInputWrapper>

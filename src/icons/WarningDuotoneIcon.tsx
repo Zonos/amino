@@ -17,17 +17,13 @@ export const WarningDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M9.377 4.661c1.143-2.057 4.102-2.057 5.245 0l6.601 11.882c1.111 2-.335 4.457-2.622 4.457H5.399c-2.288 0-3.734-2.457-2.623-4.457L9.377 4.661Z"
+      d="M14.46 5.492c-1.014-2.027-3.906-2.027-4.92 0L4.276 16.02c-.914 1.83.416 3.98 2.46 3.98h10.528c2.044 0 3.374-2.151 2.46-3.98L14.46 5.492Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M12 8a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V9a1 1 0 0 1 1-1Zm0 6.99a1 1 0 0 1 1 1V16a1 1 0 1 1-2 0v-.01a1 1 0 0 1 1-1Z"
+      d="M12.75 10a.75.75 0 0 0-1.5 0v2.5a.75.75 0 0 0 1.5 0V10Zm0 5.5a.75.75 0 0 0-1.5 0v.5a.75.75 0 0 0 1.5 0v-.5Z"
       fill="currentColor"
-      fillRule="evenodd"
     />
   </IconBase>
 ));

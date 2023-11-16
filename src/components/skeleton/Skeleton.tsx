@@ -3,11 +3,11 @@ import type { ReactNode } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-export type SkeletonProps = {
+export type SkeletonProps = BaseProps & {
   animation?: boolean;
   children?: ReactNode;
-  className?: string;
   height?: number;
   width?: number;
 };

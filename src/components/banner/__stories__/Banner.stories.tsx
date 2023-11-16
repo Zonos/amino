@@ -4,12 +4,19 @@ import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Banner } from 'src/components/banner/Banner';
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
+import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 
 const BannerStories: Meta = {
   component: Banner,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A56507',
+    },
+  },
 };
 
 export default BannerStories;
@@ -31,6 +38,7 @@ const ids = [
   'longSoloTitle',
 ] as const;
 type ID = (typeof ids)[number];
+
 const Template: StoryFn<typeof Banner> = ({
   footerActions,
   headerActions,
@@ -51,13 +59,13 @@ const Template: StoryFn<typeof Banner> = ({
     <StyledVStack>
       <Banner
         footerActions={
-          <LegacyButton
+          <Button
             color="inherit"
-            intent="outline"
             onClick={() => setOpenIds(ids.filter(Boolean))}
+            outline
           >
             Open Banners
-          </LegacyButton>
+          </Button>
         }
         intent={intent}
       />
@@ -119,14 +127,14 @@ const Template: StoryFn<typeof Banner> = ({
               rel="noreferrer"
               target="_blank"
             >
-              <LegacyButton
+              <Button
                 background="inherit"
                 borderColor="gray1200"
                 color="inherit"
-                intent="outline"
+                outline
               >
                 View additional details
-              </LegacyButton>
+              </Button>
             </a>
           }
           intent={intent}
@@ -152,187 +160,174 @@ export const DefaultBanner = Template.bind({});
 DefaultBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="gray400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="gray400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
-};
-DefaultBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=776%3A12439',
-  },
 };
 
 export const InfoBanner = Template.bind({});
 InfoBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="blue400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="blue400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'info',
-};
-InfoBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A56507',
-  },
 };
 
 export const SuccessBanner = Template.bind({});
 SuccessBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="green400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="green400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'success',
-};
-SuccessBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A57333',
-  },
 };
 
 export const WarningBanner = Template.bind({});
 WarningBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
+      <Button
         background="inherit"
         borderColor="orange400"
         color="inherit"
-        intent="outline"
+        outline
       >
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="orange400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'warning',
-};
-WarningBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A58159',
-  },
 };
 
 export const ErrorBanner = Template.bind({});
 ErrorBanner.args = {
   footerActions: (
     <>
-      <LegacyButton
-        background="inherit"
-        borderColor="red400"
-        color="inherit"
-        intent="outline"
-      >
+      <Button background="inherit" borderColor="red400" color="inherit" outline>
         View status
-      </LegacyButton>
-      <LegacyButton color="inherit" intent="subtle">
+      </Button>
+      <Button color="inherit" variant="subtle">
         Dismiss
-      </LegacyButton>
+      </Button>
     </>
   ),
   headerActions: (
-    <LegacyButton
+    <Button
       background="inherit"
       borderColor="red400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
-      intent="outline"
+      outline
     >
       Details
-    </LegacyButton>
+    </Button>
   ),
   intent: 'error',
 };
-ErrorBanner.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2612%3A58985',
-  },
-};
+
+export const Basic: StoryFn<typeof Banner> = props => (
+  <Banner
+    {...props}
+    headerActions={
+      <Button
+        href="https://zonos.com/contact-support"
+        icon={<ArrowRightIcon />}
+        iconRight
+        outline
+        tag="a"
+        target="_blank"
+        variant="warning"
+      >
+        Contact us
+      </Button>
+    }
+    intent="warning"
+    onClose={() => null}
+    title="Lots of words about how Cade is a great engineer. He works diligently and tirelessly through day and night, rain or shine, to make sure that the code he writes is the best it can be. He is a great asset to the team and we are lucky to have him."
+  />
+);

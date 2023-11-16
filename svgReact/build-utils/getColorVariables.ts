@@ -12,10 +12,12 @@ export const getColorVariables = ({
   isDuotone: boolean;
 }) => {
   let content = fileContent;
+  // Every tag (except svg) with a fill attribute
   const fillPropMatches = content.matchAll(
-    /<(path|rect).*?fill=(".*?").*?\/>/gm,
+    /<(\w+\b(?<!\bsvg)).*?fill=(".*?").*?\/>/gm,
   );
   const matches = Array.from(fillPropMatches);
+
   const fillColors = matches
     .map(x => x[2])
     .sort((a, b) =>

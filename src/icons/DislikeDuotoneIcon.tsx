@@ -17,15 +17,13 @@ export const DislikeDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M14.372 19.133a2 2 0 0 1-1.648.867h-2.14a2 2 0 0 1-2-2v-2H6.2a2 2 0 0 1-1.967-2.36l1.466-8A2 2 0 0 1 7.667 4H15a2 2 0 0 1 2 2v8.69a2 2 0 0 1-.352 1.133l-2.276 3.31Z"
+      d="M11.445 19a2.75 2.75 0 0 0 1.906-.768l2.305-2.217a2.75 2.75 0 0 0 .844-1.982V7.75A2.75 2.75 0 0 0 13.75 5H7.86c-1.292 0-2.41.9-2.687 2.162L4.05 12.296a2.75 2.75 0 0 0 2.686 3.339H8.25a.25.25 0 0 1 .25.25v1.365c0 .966.784 1.75 1.75 1.75h1.195Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M19 15a1 1 0 0 1-1-1V5a1 1 0 1 1 2 0v9a1 1 0 0 1-1 1Z"
+      d="M19.25 14.5a.75.75 0 0 1-.75-.75v-8a.75.75 0 0 1 1.5 0v8a.75.75 0 0 1-.75.75Z"
       fill="currentColor"
       fillRule="evenodd"
     />

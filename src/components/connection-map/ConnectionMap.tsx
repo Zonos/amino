@@ -13,8 +13,9 @@ import { feature } from 'topojson-client';
 
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { theme } from 'src/styles/constants/theme';
-import { type ICountryOption } from 'src/types/ICountry';
-import { type IGeoJsonWorld } from 'src/types/IGeoJsonWorld';
+import type { BaseProps } from 'src/types/BaseProps';
+import { type CountryOption } from 'src/types/Country';
+import { type GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
 
 const Map = styled.div`
@@ -50,15 +51,16 @@ const getScale = (xDistance: number, yDistance: number) => {
   );
 };
 
-type Props = {
-  countries: ICountryOption[];
+type Props = BaseProps & {
+  countries: CountryOption[];
   from: string;
   height?: number;
   to: string;
-  worldData: IGeoJsonWorld | null;
+  worldData: GeoJsonWorld | null;
 };
 
 export const ConnectionMap = ({
+  className,
   countries,
   from,
   height = 400,
@@ -144,7 +146,7 @@ export const ConnectionMap = ({
   }
 
   return (
-    <Map>
+    <Map className={className}>
       <ComposableMap
         height={height}
         projection="geoEqualEarth"
@@ -163,10 +165,10 @@ export const ConnectionMap = ({
               return (
                 <Geography
                   key={geo.rsmKey}
-                  fill={isConnectionCountry ? theme.blue100 : theme.gray400}
+                  fill={isConnectionCountry ? theme.blue100 : theme.gray0}
                   geography={geo}
-                  stroke={isConnectionCountry ? theme.blue300 : theme.gray500}
-                  strokeWidth={1}
+                  stroke={isConnectionCountry ? theme.blue400 : theme.gray200}
+                  strokeWidth={2}
                 />
               );
             })

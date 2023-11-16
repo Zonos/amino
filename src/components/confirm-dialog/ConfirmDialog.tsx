@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/BaseDialog';
-import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon';
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
@@ -69,6 +69,18 @@ const getIconForIntent = (intent: Intent) => {
   }
 };
 
+const getColorForIntent = (intent: Intent) => {
+  switch (intent) {
+    case 'danger':
+      return 'red';
+    case 'warning':
+      return 'orange';
+    case 'info':
+    default:
+      return 'blue';
+  }
+};
+
 const getButtonVariant = (intent: Intent) => {
   switch (intent) {
     case 'danger':
@@ -95,7 +107,11 @@ export const ConfirmDialog = ({
   <BaseDialog data-theme={themeOverride} open={open} width={350}>
     <Content>
       <VStack spacing={24}>
-        <RoundedIcon intent={intent}>{getIconForIntent(intent)}</RoundedIcon>
+        <Thumbnail
+          color={getColorForIntent(intent)}
+          icon={getIconForIntent(intent)}
+          size={40}
+        />
         <VStack spacing={8}>
           <Text type="subheader">{label}</Text>
           {subtitle && (

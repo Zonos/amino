@@ -2,7 +2,13 @@ import * as github from '@actions/github';
 import * as core from '@actions/core';
 import { PullRequestEvent } from '@octokit/webhooks-types';
 
-const engineerPool = ['evad1n', 'ckgardner', 'goodpickle', 'Thienhuynh95'];
+const engineerPool = [
+  'evad1n',
+  'ckgardner',
+  'goodpickle',
+  'Thienhuynh95',
+  'nick-lanners',
+];
 
 async function run() {
   try {

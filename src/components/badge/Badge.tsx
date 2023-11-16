@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import type { FontWeight } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const BadgeWrapper = styled.div`
   display: inline-block;
@@ -20,7 +21,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   display: flex;
   gap: ${theme.space4};
   font-size: ${theme.fontSizeS};
-  padding: 4px 8px;
+  padding: 2px 8px;
   text-align: center;
   border-radius: ${p => (p.$rounded ? '20px' : theme.radius6)};
   background-color: ${theme.gray100};
@@ -30,12 +31,12 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
   p {
     margin: 0;
     font-weight: ${p => p.$fontWeight};
-    line-height: 16px;
+    line-height: 20px;
   }
   svg {
     order: ${p => (p.$iconRight ? '2' : '')};
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
   }
 
   &.bold {
@@ -49,7 +50,7 @@ const StyledBadge = styled.div<StyledProps<StyledBadgeProps>>`
 
   // size
   &.small {
-    padding: 2px ${theme.space4};
+    padding: 0px ${theme.space4};
     border-radius: ${theme.radius4};
     gap: 2px;
   }
@@ -147,10 +148,9 @@ type BadgeColor =
 
 type Size = 'small' | 'default';
 
-export interface BadgeProps {
+export type BadgeProps = BaseProps & {
   bold?: boolean;
   children?: ReactNode | string;
-  className?: string;
   color?: BadgeColor;
   /**
    * @default 600
@@ -166,7 +166,7 @@ export interface BadgeProps {
    * @default default
    */
   size?: Size;
-}
+};
 
 export const Badge = ({
   bold,

@@ -58,17 +58,8 @@ export const Filter = ({
   hiddenColumns: string[];
   setHiddenColumns: (hiddenColumns: string[]) => void;
 }) => {
-  const {
-    floatingRef,
-    left,
-    position,
-    reference,
-    setVisible,
-    top,
-    visibility,
-    visible,
-    wrapperRef,
-  } = useDropdown();
+  const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
+    useDropdown();
 
   const hideColumnOptions = useMemo(
     () =>
@@ -81,16 +72,17 @@ export const Filter = ({
 
   return (
     <StyledFilterWrapper ref={wrapperRef}>
-      <StyledTriggerButton ref={reference} onClick={() => setVisible(!visible)}>
+      <StyledTriggerButton
+        ref={refs.setReference}
+        onClick={() => setVisible(!visible)}
+      >
         <FilterIcon size={16} /> Filter
       </StyledTriggerButton>
       <StyledFilter
-        ref={floatingRef}
+        ref={refs.setFloating}
         style={{
-          left,
+          ...floatingStyles,
           opacity: visibility === 'visible' ? 1 : 0,
-          position,
-          top,
           zIndex: visibility === 'visible' ? 1 : -1,
         }}
       >

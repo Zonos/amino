@@ -7,6 +7,7 @@ import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Table = styled.table`
   width: 100%;
@@ -18,7 +19,7 @@ const Header = styled.thead`
 
 const HeaderRow = styled.tr`
   border-bottom: ${theme.border};
-  height: 48px;
+  height: 56px;
 `;
 
 type StyledHeaderColumn = {
@@ -30,9 +31,9 @@ const HeaderColumn = styled.th<StyledProps<StyledHeaderColumn>>`
   text-align: ${p => p.$textAlign};
 `;
 
-const Row = styled.tr<{ clickable: boolean }>`
+const Row = styled.tr<{ $clickable: boolean }>`
   height: 48px;
-  cursor: ${p => (p.clickable ? 'pointer' : 'auto')};
+  cursor: ${p => (p.$clickable ? 'pointer' : 'auto')};
   & {
     border-bottom: ${theme.border};
   }
@@ -53,7 +54,7 @@ type StyledRowColumn = {
   textAlign: SimpleTableHeaderBaseProps['align'];
 };
 const RowColumn = styled.td<StyledProps<StyledRowColumn>>`
-  padding: ${p => (!p.$noPadding ? theme.space16 : undefined)};
+  padding: ${p => (!p.$noPadding ? theme.space12 : undefined)};
   text-align: ${p => p.$textAlign};
 
   &:not(:hover) {
@@ -61,6 +62,11 @@ const RowColumn = styled.td<StyledProps<StyledRowColumn>>`
       visibility: collapse;
     }
   }
+`;
+
+const StyledCheckbox = styled(Checkbox)`
+  padding: ${theme.space12};
+  display: inline-flex;
 `;
 
 type SimpleTableHeaderBaseProps = {
@@ -92,8 +98,7 @@ export type SimpleTableHeader<T extends object> = {
   } & SimpleTableHeaderBaseProps;
 }[keyof T extends React.Key ? keyof T : never];
 
-export type SimpleTableProps<T extends object> = {
-  className?: string;
+export type SimpleTableProps<T extends object> = BaseProps & {
   headers: SimpleTableHeader<T>[];
   items: T[];
   /**
@@ -111,18 +116,33 @@ export type SimpleTableProps<T extends object> = {
    * Disable hover background color effect on rows
    */
   noHoverBackground?: boolean;
-
+  /**
+   * Component places at the bottom of the table
+   */
   renderFooter?: ReactNode;
   /**
    * @default false
    * Show checkbox on each row, and checkbox for toggling all in header
    */
   selectable?: {
+    /**
+     * If this is true, then onRowClick will call onRowCheckboxChange with the opposite of the current value
+     */
+    anySelected?: boolean;
     enabled: boolean;
     headerCheckboxValue?: boolean;
-    selectedRowIndexes?: number[];
+    /**
+     * Overrides custom handlers for more control
+     */
+    renderCustomHeaderCheckbox?: ReactNode;
+    isRowCheckboxDisabled?: (item: T, index: number) => boolean;
+    isRowChecked?: (item: T, index: number) => boolean;
     onHeaderCheckboxChange?: (checked: boolean) => void;
-    onRowCheckboxChange?: (checked: boolean, index: number) => void;
+    onRowCheckboxChange?: (checked: boolean, item: T, index: number) => void;
+    /**
+     * Overrides custom handlers for more control
+     */
+    renderCustomRowCheckbox?: (item: T, index: number) => ReactNode;
   };
   /** Adding unique list keys */
   keyExtractor: (item: T) => string;
@@ -183,7 +203,12 @@ export const SimpleTable = <T extends object>({
   const renderRows = () => {
     if (loading) {
       return [...Array(loadingItems + 1).keys()].map(n => (
-        <Row key={n} clickable={false}>
+        <Row key={n} $clickable={false}>
+          {selectable.enabled && (
+            <td>
+              <Skeleton key={n} height={30} />
+            </td>
+          )}
           {headers.map(header => (
             <RowColumn
               key={header.key}
@@ -200,20 +225,40 @@ export const SimpleTable = <T extends object>({
     return items.map((item, index) => (
       <Row
         key={keyExtractor(item)}
+        $clickable={
+          !!onRowClick ||
+          (!!selectable.anySelected && !!selectable.onRowCheckboxChange)
+        }
         className={!noHoverBackground ? 'with-hover' : ''}
-        clickable={!!onRowClick}
-        onClick={() => onRowClick?.(item)}
+        onClick={() => {
+          if (selectable.anySelected) {
+            if (!selectable.isRowCheckboxDisabled?.(item, index)) {
+              selectable.onRowCheckboxChange?.(
+                !selectable.isRowChecked?.(item, index),
+                item,
+                index,
+              );
+            }
+          } else {
+            onRowClick?.(item);
+          }
+        }}
         onMouseEnter={() => onRowHover?.(item)}
       >
         {selectable.enabled && (
-          <RowColumn $noPadding={false} $textAlign="center">
-            <Checkbox
-              checked={selectable.selectedRowIndexes?.includes(index) || false}
-              onChange={checked =>
-                selectable.onRowCheckboxChange?.(checked, index)
-              }
-            />
-          </RowColumn>
+          <td>
+            {selectable.renderCustomRowCheckbox?.(item, index) || (
+              <StyledCheckbox
+                checked={selectable.isRowChecked?.(item, index) || false}
+                disabled={
+                  selectable.isRowCheckboxDisabled?.(item, index) || false
+                }
+                onChange={checked =>
+                  selectable.onRowCheckboxChange?.(checked, item, index)
+                }
+              />
+            )}
+          </td>
         )}
         {headers.map(header => renderHeader(header, item))}
       </Row>
@@ -223,7 +268,7 @@ export const SimpleTable = <T extends object>({
   return (
     <Table className={className}>
       <colgroup>
-        {!!selectable.onHeaderCheckboxChange && <col />}
+        {!!selectable.onHeaderCheckboxChange && <col width={0} />}
         {headers.map(header => (
           <col
             key={header.key}
@@ -234,13 +279,17 @@ export const SimpleTable = <T extends object>({
       <Header>
         <HeaderRow>
           {!!selectable.onHeaderCheckboxChange && (
-            <HeaderColumn $textAlign="center">
-              <Checkbox
-                checked={(!loading && selectable.headerCheckboxValue) || false}
-                disabled={loading}
-                onChange={selectable.onHeaderCheckboxChange}
-              />
-            </HeaderColumn>
+            <th>
+              {selectable.renderCustomHeaderCheckbox || (
+                <StyledCheckbox
+                  checked={
+                    (!loading && selectable.headerCheckboxValue) || false
+                  }
+                  disabled={loading}
+                  onChange={selectable.onHeaderCheckboxChange}
+                />
+              )}
+            </th>
           )}
           {headers.map(header => (
             <HeaderColumn key={header.key} $textAlign={header.align || 'start'}>

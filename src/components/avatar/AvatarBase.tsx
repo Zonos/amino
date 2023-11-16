@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
 import type { StyledProps } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 export type ImageSize = 16 | 24 | 32 | 40 | 48 | 56 | 64;
 
@@ -15,6 +16,13 @@ export const avatarShapes = {
 
 type AvatarShape = keyof typeof avatarShapes;
 
+type AvatarStyleProps = {
+  backgroundColor?: string;
+  backgroundPosition?: string;
+  backgroundSize?: string;
+  backgroundUrl?: string;
+};
+
 export type AvatarProps = {
   /** @default false */
   bordered?: boolean;
@@ -24,15 +32,25 @@ export type AvatarProps = {
   size?: ImageSize;
 };
 
-type AvartarBaseProps = Required<AvatarProps> & {
-  backgroundColor?: string;
-  backgroundPosition?: string;
-  backgroundSize?: string;
-  backgroundUrl?: string;
-  children?: ReactNode;
+export type FullAvatarProps = BaseProps & {
+  /** @default false */
+  bordered?: boolean;
+  /** @default round */
+  shape?: AvatarShape;
+  /** @default 32 px */
+  size?: ImageSize;
 };
 
-type WrapperProp = Required<StyledProps<AvatarProps>>;
+type AvatarBaseProps = BaseProps & {
+  children?: ReactNode;
+} & Required<AvatarProps> &
+  AvatarStyleProps;
+
+type WrapperProp = StyledProps<{
+  bordered: boolean;
+  shape: AvatarShape;
+  size: ImageSize;
+}>;
 
 const Wrapper = styled.div<WrapperProp>`
   display: flex;
@@ -50,27 +68,56 @@ const Wrapper = styled.div<WrapperProp>`
     `}
 `;
 
-const StyledAvatarBase = styled.div<AvartarBaseProps>`
+type StyledAvatarProps = StyledProps<
+  AvatarStyleProps & {
+    shape: AvatarShape;
+  }
+>;
+
+const StyledAvatarBase = styled.div<StyledAvatarProps>`
   height: 100%;
   width: 100%;
 
   ${props => css`
-    border-radius: ${avatarShapes[props.shape]};
+    border-radius: ${avatarShapes[props.$shape]};
   `}
 
   ${props =>
-    props.backgroundUrl &&
+    props.$backgroundUrl &&
     css`
-      background-image: url(${props.backgroundUrl});
-      background-position: ${props.backgroundPosition || 'center'};
+      background-image: url(${props.$backgroundUrl});
+      background-position: ${props.$backgroundPosition || 'center'};
       background-repeat: no-repeat;
-      background-size: ${props.backgroundSize};
-      background-color: ${props.backgroundColor || `${theme.gray100}`};
+      background-size: ${props.$backgroundSize};
+      background-color: ${props.$backgroundColor || `${theme.gray100}`};
     `}
 `;
 
-export const AvatarBase = ({ children, ...rest }: AvartarBaseProps) => (
-  <Wrapper $bordered={rest.bordered} $shape={rest.shape} $size={rest.size}>
-    {children || <StyledAvatarBase {...rest} />}
+export const AvatarBase = ({
+  backgroundColor,
+  backgroundPosition,
+  backgroundSize,
+  backgroundUrl,
+  bordered,
+  children,
+  className,
+  shape,
+  size,
+}: AvatarBaseProps) => (
+  <Wrapper
+    $bordered={bordered}
+    $shape={shape}
+    $size={size}
+    className={className}
+  >
+    {children || (
+      <StyledAvatarBase
+        $backgroundColor={backgroundColor}
+        $backgroundPosition={backgroundPosition}
+        $backgroundSize={backgroundSize}
+        $backgroundUrl={backgroundUrl}
+        $shape={shape}
+      />
+    )}
   </Wrapper>
 );

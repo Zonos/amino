@@ -11,7 +11,7 @@ import { Text } from 'src/components/text/Text';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 import { theme } from 'src/styles/constants/theme';
 
-const MenuWrapper = styled.div<{ addSpacing: boolean }>`
+const MenuWrapper = styled.div`
   border-top: ${theme.border};
   position: relative;
   display: flex;
@@ -28,11 +28,11 @@ const MenuWrapper = styled.div<{ addSpacing: boolean }>`
   }
 `;
 
-const UserInfo = styled.button<{ addSpacing: boolean }>`
+const UserInfo = styled.button<{ $addSpacing: boolean }>`
   width: 100%;
   border-radius: ${theme.radius6};
   box-sizing: border-box;
-  padding: ${p => p.addSpacing && theme.space24};
+  padding: ${p => p.$addSpacing && theme.space24};
   transition: ${theme.transition};
   background: transparent;
   display: flex;
@@ -112,17 +112,17 @@ const StyledVStack = styled(VStack)`
   min-width: 145.17px;
 `;
 
-interface Props {
+type UserMenuProps = {
   addSpacing?: boolean;
-}
+};
 
-export const UserMenu = ({ addSpacing = true }: Props) => {
+export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <MenuWrapper addSpacing={addSpacing}>
+    <MenuWrapper>
       <UserInfo
-        addSpacing={addSpacing}
+        $addSpacing={addSpacing}
         onClick={() => setOpen(!open)}
         type="button"
       >

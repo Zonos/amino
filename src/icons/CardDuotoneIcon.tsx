@@ -17,17 +17,13 @@ export const CardDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M2 7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7Z"
+      d="M5.75 5A2.75 2.75 0 0 0 3 7.75v8.5A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25v-8.5A2.75 2.75 0 0 0 18.25 5H5.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M4 9a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm2 6a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Z"
+      d="M5.75 8.5a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H5.75Zm1.5 5.5a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5h-4Z"
       fill="currentColor"
-      fillRule="evenodd"
     />
   </IconBase>
 ));

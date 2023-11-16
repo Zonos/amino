@@ -1,70 +1,125 @@
-import { type ReactNode, useCallback, useEffect, useRef } from 'react';
+import { type ReactNode } from 'react';
 
 import styled from 'styled-components';
 
 import { DropdownAnimation } from 'src/animations/DropdownAnimation';
-import { Surface } from 'src/components/surface/Surface';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
+import {
+  type UseDropdownParams,
+  useDropdown,
+} from 'src/utils/hooks/useDropdown';
 
 const Wrapper = styled.div`
   position: relative;
+  display: inline-flex;
 `;
 
-const AnimatedSurface = styled(Surface)`
+const DropdownWrapper = styled.div`
+  z-index: 10;
+  min-width: 100%;
+`;
+
+const AnimatedSurface = styled.div`
+  background: ${theme.surfaceColor};
+  border-radius: ${theme.radius12};
+  box-shadow: ${theme.v3ShadowLarge};
   animation: ${DropdownAnimation} 250ms ease-in-out;
   animation-fill-mode: both;
-  border: ${theme.border};
-  z-index: 10;
-  position: absolute;
-  padding: ${theme.radius6} 0;
-  margin-top: ${theme.space8};
+  padding: ${theme.space8};
+  margin-top: ${theme.space4};
   right: 0;
   min-width: 100%;
   width: max-content;
 `;
 
-export type MenuButtonProps = {
+export type MenuButtonProps = BaseProps & {
   action: ReactNode;
   children: ReactNode;
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  /**
+   * Close the menu when the mouse leaves the dropdown/parent.
+   * @default true
+   */
+  closeOnMouseLeave?: boolean;
+  /**
+   * Close the menu when clicking anywhere in the the dropdown.
+   * @default true
+   */
+  closeOnSelect?: boolean;
+  dropdownOptions?: UseDropdownParams;
 };
 
 export const MenuButton = ({
   action,
   children,
-  open,
-  setOpen,
+  className,
+  closeOnMouseLeave = true,
+  closeOnSelect = true,
+  dropdownOptions,
 }: MenuButtonProps) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
+    useDropdown<HTMLDivElement, HTMLDivElement>({
+      offsetCrossAxis: 0,
+      offsetMainAxis: 0,
+      ...dropdownOptions,
+    });
 
-  const handleClick = useCallback(
-    (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+  const handleMouseLeave = () => {
+    if (closeOnMouseLeave) {
+      setVisible(false);
+    }
+  };
 
-      if (!wrapperRef?.current?.contains(target)) {
-        setOpen(false);
-      }
-    },
-    [setOpen],
-  );
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, [handleClick]);
+  const handleClickChildren = () => {
+    if (closeOnSelect) {
+      setVisible(false);
+    }
+  };
 
   return (
-    <Wrapper ref={wrapperRef}>
-      {action}
-      {open && (
-        <AnimatedSurface dense depth="depth16">
-          {children}
-        </AnimatedSurface>
-      )}
+    <Wrapper
+      ref={wrapperRef}
+      className={className}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        ref={refs.setReference}
+        onClick={e => {
+          e.stopPropagation();
+          setVisible(true);
+        }}
+        onKeyDown={e => {
+          if (e.key === 'Enter') {
+            setVisible(true);
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        {action}
+      </div>
+      <DropdownWrapper
+        ref={refs.setFloating}
+        style={{
+          ...floatingStyles,
+          visibility,
+        }}
+      >
+        {visible && (
+          <AnimatedSurface
+            onClick={handleClickChildren}
+            onKeyDown={e => {
+              if (e.key === 'Enter') {
+                handleClickChildren();
+              }
+            }}
+            role="button"
+            tabIndex={-1}
+          >
+            {children}
+          </AnimatedSurface>
+        )}
+      </DropdownWrapper>
     </Wrapper>
   );
 };

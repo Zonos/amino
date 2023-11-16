@@ -8,8 +8,8 @@ import {
   type CountryPhoneSelectProps,
   CountryPhoneSelect,
 } from 'src/components/select/CountryPhoneSelect';
-import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import type { ICountryOption } from 'src/types/ICountry';
+import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import type { CountryOption } from 'src/types/Country';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -29,13 +29,13 @@ const CountryPhoneSelectMeta: Meta = {
 export default CountryPhoneSelectMeta;
 
 const CountryPhoneSelectTemplate: StoryFn<
-  CountryPhoneSelectProps<ICountryOption>
+  CountryPhoneSelectProps<CountryOption>
 > = ({
   phone: _phone,
   phoneCountry: _phoneCountry,
   ...props
-}: CountryPhoneSelectProps<ICountryOption>) => {
-  const [phoneCountry, setPhoneCountry] = useState<ICountryOption | null>(
+}: CountryPhoneSelectProps<CountryOption>) => {
+  const [phoneCountry, setPhoneCountry] = useState<CountryOption | null>(
     _phoneCountry,
   );
   const [phone, setPhone] = useState(_phone);
@@ -46,7 +46,7 @@ const CountryPhoneSelectTemplate: StoryFn<
       countryOptions={countryOptions}
       icon={
         <FlagIcon
-          code={(phoneCountry?.code as IFlag) || 'Default'}
+          code={(phoneCountry?.code as Flag) || 'Default'}
           iconScale="medium"
         />
       }

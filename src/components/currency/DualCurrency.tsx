@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { Currency } from 'src/components/currency/Currency';
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 type StyledProps = {
   isTabular: boolean;
@@ -32,8 +33,7 @@ const DualCurrencyWrapper = styled.div<StyledProps>`
     `};
 `;
 
-type Props = {
-  className?: string;
+type Props = BaseProps & {
   conversionRate?: number;
   foreignCode: string;
   isTabular?: boolean;

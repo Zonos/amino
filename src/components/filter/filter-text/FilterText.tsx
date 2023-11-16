@@ -30,11 +30,16 @@ export const FilterText = ({
     setEditingValue('');
   };
 
+  const handleClose = () => {
+    setEditingValue(value || '');
+  };
+
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
     filterExists: !!value,
     label,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 

@@ -3,14 +3,14 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { type SelectProps, Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import { type IOption } from 'src/types/IOption';
+import { type SelectOption } from 'src/types/SelectOption';
 
 const StyledWrapper = styled.div`
   width: 412px;
@@ -85,7 +85,7 @@ export const BasicSelectWithIcon = SelectTemplate.bind({});
 BasicSelectWithIcon.args = {
   error: true,
   helpText: 'This input is required',
-  icon: <FileIcon size={20} />,
+  icon: <FileIcon size={24} />,
   label: 'Currencies',
   options: currencyOptions,
   value: {
@@ -123,23 +123,23 @@ BasicSelectWithOptionIcon.args = {
 
 export const SelectWithDeveloperException = SelectTemplate.bind({});
 SelectWithDeveloperException.args = {
-  icon: <FileIcon size={20} />,
+  icon: <FileIcon size={24} />,
   label: 'Currencies',
   options: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },
   ],
   value: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
@@ -164,23 +164,23 @@ const customOption: SelectProps['customOption'] = (value: string | number) => (
 
 Customized.args = {
   customOption,
-  icon: <FileIcon size={20} />,
+  icon: <FileIcon size={24} />,
   label: 'Currencies',
   options: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'European Euro (EUR)',
       value: 'EUR',
     },
   ],
   value: [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 'USD',
     },
@@ -199,7 +199,7 @@ const StyledVStack = styled(VStack)`
 `;
 
 export const ScrollableDialogSelect = () => {
-  const [value, setValue] = useState<IOption | null>({
+  const [value, setValue] = useState<SelectOption | null>({
     label: 'US Dollar (USD)',
     value: 'USD',
   });
@@ -207,7 +207,7 @@ export const ScrollableDialogSelect = () => {
 
   return (
     <CenteredDiv>
-      <LegacyButton onClick={() => setOpen(true)}>Open</LegacyButton>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog label="Selects" onClose={() => setOpen(false)} open={open}>
         <StyledVStack>
           <span>
@@ -267,12 +267,12 @@ export const SelectWithNumberOptions = () => {
   const [value, setValue] = useState<number>(1);
   const options = [
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'US Dollar (USD)',
       value: 1,
     },
     {
-      icon: <FileIcon size={14} />,
+      icon: <FileIcon size={24} />,
       label: 'European Euro (EUR)',
       value: 2,
     },
@@ -280,7 +280,7 @@ export const SelectWithNumberOptions = () => {
   return (
     <div>
       <Select
-        icon={<FileIcon size={20} />}
+        icon={<FileIcon size={24} />}
         label="Currencies"
         onChange={item => item?.value && setValue(item.value)}
         options={options}

@@ -14,7 +14,7 @@ export const ChevronRightDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M9.293 17.707a1 1 0 0 1 0-1.414L13.586 12 9.293 7.707a1 1 0 0 1 1.414-1.414l4.93 4.93a1.1 1.1 0 0 1 0 1.555l-4.93 4.93a1 1 0 0 1-1.414 0Z"
+        d="M9.97 7.97a.75.75 0 0 1 1.06 0l3.5 3.5a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 1 1-1.06-1.06L12.94 12 9.97 9.03a.75.75 0 0 1 0-1.06Z"
         fill="currentColor"
         fillRule="evenodd"
       />

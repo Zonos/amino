@@ -3,11 +3,12 @@ import { type ReactNode } from 'react';
 import type { CollapseProps as MuiCollapseProps } from '@mui/material/Collapse';
 import MuiCollapse from '@mui/material/Collapse';
 
+import type { BaseProps } from 'src/types/BaseProps';
+
 // https://mui.com/material-ui/api/collapse
 
-export type CollapseProps = {
+export type CollapseProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   /**
    * Size when collapsed
    * @default 0

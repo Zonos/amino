@@ -2,7 +2,7 @@ import { type ReactNode, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';
@@ -17,7 +17,7 @@ const StyledSectionWrapper = styled(HStack)`
   grid-template-columns: 1fr 2fr;
 `;
 
-const StyledCollapseIndicator = styled(LegacyButton)`
+const StyledCollapseIndicator = styled(Button)`
   position: relative;
   margin-left: ${theme.space4};
   transition: 0.2s all ease;
@@ -108,9 +108,9 @@ export const HSection = ({
                 <StyledCollapseIndicator
                   className={collapsed ? 'collapsed' : ''}
                   icon={<ChevronUpIcon />}
-                  intent="plain"
                   onClick={() => setCollapsed(!collapsed)}
                   size="sm"
+                  variant="plain"
                 />
               </TitleDiv>
             ) : (

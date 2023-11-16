@@ -16,6 +16,7 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { MinusCircleDuotoneIcon } from 'src/icons/MinusCircleDuotoneIcon';
 import { PlusCircleDuotoneIcon } from 'src/icons/PlusCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Wrapper = styled.div`
   position: relative;
@@ -34,18 +35,19 @@ const BadgeWrapper = styled.div`
   }
 `;
 
-const ToggleWrapper = styled.div<{ active: boolean; hasFilter: boolean }>`
+const ToggleWrapper = styled.div<{ $active: boolean; $hasFilter: boolean }>`
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: ${theme.space8};
-  padding: ${theme.space8};
+  padding: ${theme.space4} ${theme.space8};
   border-radius: 100px;
 
-  border-top-right-radius: ${p => (p.hasFilter ? '0px' : '100px')};
-  border-bottom-right-radius: ${p => (p.hasFilter ? '0px' : '100px')};
+  border-top-right-radius: ${p => (p.$hasFilter ? '0px' : '100px')};
+  border-bottom-right-radius: ${p => (p.$hasFilter ? '0px' : '100px')};
 
-  border-right: 1px solid ${p => (p.active ? theme.borderColor : theme.gray200)};
+  border-right: 1px solid
+    ${p => (p.$active ? theme.borderColor : theme.gray200)};
 
   &:hover {
     background-color: ${theme.gray100};
@@ -57,7 +59,7 @@ const StyledDropdownTrigger = styled.div`
   display: flex;
   align-items: center;
   gap: ${theme.space8};
-  padding: ${theme.space8};
+  padding: ${theme.space4} ${theme.space8};
   border-radius: 100px;
 
   border-top-left-radius: 0px;
@@ -72,26 +74,24 @@ const DropdownWrapper = styled.div`
   z-index: 1;
   min-width: 400px;
   position: absolute;
-  border-radius: 14px;
-  border: ${theme.border};
-  background-color: ${theme.gray0};
+  border-radius: ${theme.radius12};
+  background-color: ${theme.surfaceColor};
+  box-shadow: ${theme.v3ShadowXl};
   padding: ${theme.space24};
   display: flex;
   flex-direction: column;
-  gap: ${theme.space16};
+  gap: ${theme.space24};
   outline: none;
-  max-height: 600px;
-  overflow: auto;
 `;
 
 const ControlsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${theme.space12};
+  gap: ${theme.space8};
+  max-height: 400px;
 `;
 
-export type BaseFilterProps = {
-  className?: string;
+export type BaseFilterProps = BaseProps & {
   dropdownTitle: string;
   label: string;
 };
@@ -103,6 +103,10 @@ export type FilterApplyCallback = (
 type UseFilterProps = {
   filterExists: boolean;
   onApply: FilterApplyCallback;
+  /**
+   * When the menu is closed without applying.
+   */
+  onClose: () => void;
   onRemove: () => void;
 };
 
@@ -114,6 +118,7 @@ export const useFilterWrapper = ({
   filterExists,
   label,
   onApply,
+  onClose,
   onRemove,
 }: FilterProps) => {
   const [active, setActive] = useState(false);
@@ -132,6 +137,7 @@ export const useFilterWrapper = ({
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
       setDropDownOpen(false);
+      onClose();
     }
 
     if (event.key === 'Enter') {
@@ -140,11 +146,15 @@ export const useFilterWrapper = ({
     }
   };
 
-  const handleClick = useCallback(({ target }: MouseEvent) => {
-    if (target instanceof Element && !dropdownRef.current?.contains(target)) {
-      setDropDownOpen(false);
-    }
-  }, []);
+  const handleClick = useCallback(
+    ({ target }: MouseEvent) => {
+      if (target instanceof Element && !dropdownRef.current?.contains(target)) {
+        setDropDownOpen(false);
+        onClose();
+      }
+    },
+    [onClose],
+  );
 
   useEffect(() => {
     document.querySelector('body')?.addEventListener('mousedown', handleClick);
@@ -195,11 +205,19 @@ export const useFilterWrapper = ({
         className={[className, active && 'active'].join(' ')}
         onClick={handleToggle}
       >
-        <ToggleWrapper active={active} hasFilter={filterExists}>
+        <ToggleWrapper $active={active} $hasFilter={active && filterExists}>
           {active ? (
-            <MinusCircleDuotoneIcon size={16} />
+            <MinusCircleDuotoneIcon
+              color="gray0"
+              secondaryColor="gray600"
+              size={24}
+            />
           ) : (
-            <PlusCircleDuotoneIcon size={16} />
+            <PlusCircleDuotoneIcon
+              color="gray0"
+              secondaryColor="gray600"
+              size={24}
+            />
           )}
           <Text fontWeight={600}>{label}</Text>
         </ToggleWrapper>
@@ -208,7 +226,7 @@ export const useFilterWrapper = ({
             <Text color="blue600" fontWeight={600}>
               {filterText}
             </Text>
-            <ChevronDownIcon size={16} />
+            <ChevronDownIcon size={24} />
           </StyledDropdownTrigger>
         )}
       </BadgeWrapper>
@@ -220,7 +238,7 @@ export const useFilterWrapper = ({
         >
           <Text type="bold-subheader">{dropdownTitle}</Text>
           <ControlsWrapper>{control}</ControlsWrapper>
-          <Button onClick={handleApply} variant="primary">
+          <Button onClick={handleApply} size="md" variant="primary">
             Apply
           </Button>
         </DropdownWrapper>

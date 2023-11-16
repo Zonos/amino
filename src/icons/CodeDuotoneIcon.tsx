@@ -18,15 +18,15 @@ export const CodeDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M7.707 7.293a1 1 0 0 1 0 1.414L4.414 12l3.293 3.293a1 1 0 1 1-1.414 1.414l-3.647-3.646a1.5 1.5 0 0 1 0-2.122l.707.707-.707-.707 3.647-3.646a1 1 0 0 1 1.414 0Zm8.586 0a1 1 0 0 1 1.414 0l3.646 3.646a1.5 1.5 0 0 1 0 2.122l-3.646 3.646a1 1 0 0 1-1.414-1.414L19.586 12l-3.293-3.293a1 1 0 0 1 0-1.414Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M13.397 5.015a.75.75 0 0 1 .589.882l-2.5 12.5a.75.75 0 0 1-1.471-.294l2.5-12.5a.75.75 0 0 1 .882-.588Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M14.07 4.034a1 1 0 0 1 .708 1.225l-3.624 13.523a1 1 0 0 1-1.932-.518l3.624-13.523a1 1 0 0 1 1.224-.707Z"
-      fill="currentColor"
+      d="M8.8 8.24a.75.75 0 0 1-.04 1.06L5.852 12l2.908 2.7a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 0 1 1.06.04Zm6.4 0a.75.75 0 0 1 1.06-.04l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.908-2.7-2.908-2.7a.75.75 0 0 1-.04-1.06Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"
     />
   </IconBase>

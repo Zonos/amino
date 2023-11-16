@@ -1,20 +1,29 @@
 import { useState } from 'react';
 
+import styled from 'styled-components';
+
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
   type BaseFilterProps,
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
-import type { IOption } from 'src/types/IOption';
+import { VStack } from 'src/components/stack/VStack';
+import type { SelectOption } from 'src/types/SelectOption';
 
-type FilterMultiSelectProps<T extends string = string> = BaseFilterProps & {
-  options: IOption<T>[];
-  value: IOption<T>[];
-  onChange: (value: IOption<T>[]) => void;
-};
+const VStackStyled = styled(VStack)`
+  max-height: 400px;
+  overflow-y: auto;
+`;
 
-export const FilterMultiSelect = <T extends string = string>({
+export type FilterMultiSelectProps<T extends string | number = string> =
+  BaseFilterProps & {
+    options: SelectOption<T>[];
+    value: SelectOption<T>[];
+    onChange: (value: SelectOption<T>[]) => void;
+  };
+
+export const FilterMultiSelect = <T extends string | number = string>({
   dropdownTitle,
   label,
   onChange,
@@ -22,7 +31,7 @@ export const FilterMultiSelect = <T extends string = string>({
   value,
 }: FilterMultiSelectProps<T>) => {
   const [editingSelectedValues, setEditingSelectedValues] =
-    useState<IOption<T>[]>(value);
+    useState<SelectOption<T>[]>(value);
 
   const handleApply: FilterApplyCallback = setFilterText => {
     const text =
@@ -38,32 +47,39 @@ export const FilterMultiSelect = <T extends string = string>({
     setEditingSelectedValues([]);
   };
 
+  const handleClose = () => {
+    setEditingSelectedValues(value);
+  };
+
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: !!editingSelectedValues.length,
+    filterExists: !!value.length,
     label,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 
   return renderWrapper(
-    options.map(option => (
-      <Checkbox
-        key={option.value}
-        checked={
-          editingSelectedValues.some(x => x.value === option.value) || false
-        }
-        label={option.label}
-        onChange={() => {
-          if (editingSelectedValues.some(x => x.value === option.value)) {
-            setEditingSelectedValues(
-              editingSelectedValues.filter(x => x.value !== option.value),
-            );
-          } else {
-            setEditingSelectedValues([...editingSelectedValues, option]);
+    <VStackStyled spacing={8}>
+      {options.map(option => (
+        <Checkbox
+          key={option.value}
+          checked={
+            editingSelectedValues.some(x => x.value === option.value) || false
           }
-        }}
-      />
-    )),
+          label={option.label}
+          onChange={() => {
+            if (editingSelectedValues.some(x => x.value === option.value)) {
+              setEditingSelectedValues(
+                editingSelectedValues.filter(x => x.value !== option.value),
+              );
+            } else {
+              setEditingSelectedValues([...editingSelectedValues, option]);
+            }
+          }}
+        />
+      ))}
+    </VStackStyled>,
   );
 };

@@ -82,9 +82,9 @@ export const PasswordInput = ({
               type="button"
             >
               {inputType === 'password' ? (
-                <EyeIcon size={20} />
+                <EyeIcon size={24} />
               ) : (
-                <EyeOffIcon size={20} />
+                <EyeOffIcon size={24} />
               )}
             </StyledButtonAction>
           )

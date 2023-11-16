@@ -18,4 +18,6 @@ export const shadow = {
   'button-focus-ring': '0 0 0 2px var(--amino-blue-600)',
   'shadow-button-standard':
     '0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset',
+  'shadow-button-disabled':
+    '0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset',
 } as const;
