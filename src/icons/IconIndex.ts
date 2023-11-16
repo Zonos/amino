@@ -262,6 +262,8 @@ export { TriangleDuotoneIcon } from './TriangleDuotoneIcon';
 export { TriangleIcon } from './TriangleIcon';
 export { TruckDuotoneIcon } from './TruckDuotoneIcon';
 export { TruckIcon } from './TruckIcon';
+export { UFODuotoneIcon } from './UFODuotoneIcon';
+export { UFOIcon } from './UFOIcon';
 export { UserDuotoneIcon } from './UserDuotoneIcon';
 export { UserIcon } from './UserIcon';
 export { UtahDuotoneIcon } from './UtahDuotoneIcon';
