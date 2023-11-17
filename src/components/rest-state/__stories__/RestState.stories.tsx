@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import {
   type RestStateProps,
   RestState,
@@ -30,7 +30,7 @@ BasicRestState.args = {
 
 export const WithImage = Template.bind({});
 WithImage.args = {
-  action: <LegacyButton>Click me!</LegacyButton>,
+  action: <Button>Click me!</Button>,
   icon: 'https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg',
   label: 'Amino!',
   subtitle: 'Woohooooo I LOVE CHICKEN',

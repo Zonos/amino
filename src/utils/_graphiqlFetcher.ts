@@ -42,7 +42,7 @@ export type HandleFetchFetcher = <
   },
 ) => Promise<HandleFetchReturn<ResponseBody>>;
 
-type IFetcher = (props: {
+type Fetcher = (props: {
   customFetcher: HandleFetchFetcher | null;
   url: string | null;
 }) => GraphiqlFetcher;
@@ -51,7 +51,7 @@ type IFetcher = (props: {
  * Graphiql fetcher to send a GraphQl request
  * @param url url to fetch
  */
-export const graphiqlFetcher: IFetcher =
+export const graphiqlFetcher: Fetcher =
   ({ customFetcher, url }) =>
   async (params, options) => {
     if (!url || !params.query) {

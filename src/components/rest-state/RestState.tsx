@@ -40,7 +40,7 @@ export type RestStateProps = {
   className?: string;
   icon?: string;
   label: string;
-  subtitle?: string;
+  subtitle?: ReactNode;
 };
 
 export const RestState = ({

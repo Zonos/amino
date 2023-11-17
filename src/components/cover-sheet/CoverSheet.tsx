@@ -10,6 +10,7 @@ import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const StyledDialog = styled(motion.div)`
@@ -41,7 +42,7 @@ const StyledHeader = styled(Text)`
 `;
 const Header = styled.header`
   border-bottom: ${theme.border};
-  padding: ${theme.space16} ${theme.space24};
+  padding: ${theme.space16} ${theme.space32};
   display: flex;
   align-items: center;
   height: 64px;
@@ -56,15 +57,14 @@ const Header = styled.header`
 `;
 
 const Content = styled.div`
-  padding: ${theme.space24};
+  padding: ${theme.space56};
 `;
 
-export type CoverSheetProps = {
+export type CoverSheetProps = BaseProps & {
   /** used for setting id of the wrapper of where the action will be located */
   actionWrapperId?: string;
   actions?: ReactNode;
   children: ReactNode;
-  className?: string;
   label: string;
   open: boolean;
   themeOverride?: Theme;

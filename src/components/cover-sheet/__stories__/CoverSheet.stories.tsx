@@ -24,6 +24,35 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
+export const Basic: StoryFn<CoverSheetProps> = ({
+  children,
+  ...props
+}: CoverSheetProps) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <CenteredDiv>
+      <Button onClick={() => setOpen(true)}>Open</Button>
+      <CoverSheet
+        {...props}
+        actions={<Button variant="primary">Click me</Button>}
+        label="Cover sheet"
+        onClose={() => setOpen(false)}
+        open={open}
+      >
+        <p>
+          Bacon ipsum dolor amet drumstick sausage pig beef picanha leberkas ham
+          hock doner pork venison t-bone ground round pork belly biltong. Shank
+          doner capicola spare ribs cow andouille. Cupim pancetta chislic rump
+          beef beef ribs, pork short loin filet mignon pork belly pastrami.
+          Ribeye turkey shank pork belly shankle. Ground round cow beef ribs,
+          chicken tongue salami chislic drumstick cupim ribeye shankle rump pork
+          chop. Chuck pork chop ball tip bacon cupim landjaeger.
+        </p>
+      </CoverSheet>
+    </CenteredDiv>
+  );
+};
+
 const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
   actionPortalOpen: _actionPortalOpen = false,
   children,

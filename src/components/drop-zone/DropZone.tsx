@@ -3,7 +3,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -11,21 +11,22 @@ import { FileDuotoneIcon } from 'src/icons/FileDuotoneIcon';
 import { FileUploadDuotoneIcon } from 'src/icons/FileUploadDuotoneIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import { type UploadedFile } from 'src/types/UploadedFile';
 
-const Wrapper = styled.div<{ disabled: boolean }>`
+const Wrapper = styled.div<{ $disabled: boolean }>`
   display: flex;
   flex-direction: column;
   gap: ${theme.space16};
-  opacity: ${p => (p.disabled ? 0.5 : 1)};
-  cursor: ${p => (p.disabled ? 'not-allowed' : 'auto')};
+  opacity: ${p => (p.$disabled ? 0.5 : 1)};
+  cursor: ${p => (p.$disabled ? 'not-allowed' : 'auto')};
 `;
 
 const UploadWrapper = styled.div<{
-  error?: boolean;
+  $error?: boolean;
 }>`
   border: 2px dashed;
-  border-color: ${({ error }) => (error ? theme.danger : theme.borderColor)};
+  border-color: ${p => (p.$error ? theme.danger : theme.borderColor)};
   border-radius: ${theme.radius12};
   display: flex;
   flex-direction: column;
@@ -51,43 +52,12 @@ const InstructionTextWrapper = styled.div`
   align-items: center;
 `;
 
-const BrowseButton = styled.button<{ disabled: boolean }>`
+const BrowseButton = styled.button`
   display: inline;
 `;
 
-const RemoveFileButton = styled(LegacyButton)`
+const RemoveFileButton = styled(ButtonIcon)`
   margin-left: auto;
-  padding: 0;
-  path[data-is-secondary-color] {
-    fill: ${theme.gray200};
-  }
-
-  && {
-    &,
-    &:focus,
-    &:hover,
-    &:active {
-      color: ${theme.gray800};
-      background: transparent;
-    }
-    &:hover {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray300};
-      }
-    }
-    &:active,
-    &:focus {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray400};
-      }
-    }
-  }
-
-  :active,
-  :focus {
-    outline: none;
-    box-shadow: unset;
-  }
 `;
 
 const UploadedFilesWrapper = styled.div`
@@ -110,8 +80,7 @@ const UploadedFileInfoWrapper = styled.div`
   flex-direction: column;
 `;
 
-export type DropZoneProps = {
-  className?: string;
+export type DropZoneProps = BaseProps & {
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
@@ -202,9 +171,11 @@ export const DropZone = ({
           )}
         </UploadedFileInfoWrapper>
         {onRemoveFile && (
-          <RemoveFileButton onClick={() => onRemoveFile(index)}>
-            <RemoveCircleDuotoneIcon size={20} />
-          </RemoveFileButton>
+          <RemoveFileButton
+            icon={<RemoveCircleDuotoneIcon size={20} />}
+            onClick={() => onRemoveFile(index)}
+            variant="text"
+          />
         )}
       </UploadedFileRow>
     ));
@@ -228,7 +199,7 @@ export const DropZone = ({
     return (
       <>
         {!uploadedMaxFiles && (
-          <UploadWrapper error={error}>{renderUpload()}</UploadWrapper>
+          <UploadWrapper $error={error}>{renderUpload()}</UploadWrapper>
         )}
         {!!uploadedFiles.length && (
           <UploadedFilesWrapper>{renderFiles()}</UploadedFilesWrapper>
@@ -238,7 +209,7 @@ export const DropZone = ({
   };
 
   return (
-    <Wrapper className={className} disabled={disabled}>
+    <Wrapper $disabled={disabled} className={className}>
       {renderContent()}
     </Wrapper>
   );

@@ -12,7 +12,7 @@ import { theme } from 'src/styles/constants/theme';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
 
 const Fields = styled.div`
-  border-radius: ${theme.radius6};
+  border-radius: ${theme.radius12};
   border: ${theme.border};
   position: relative;
   &:hover {
@@ -29,7 +29,7 @@ const StyledBorder = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    border-radius: ${theme.radius6};
+    border-radius: ${theme.radius12};
   }
 `;
 
@@ -120,9 +120,9 @@ const StyledTextarea = styled.textarea<TextareaType>`
   }
 `;
 
-const AminoInputWrapper = styled.div<{ width?: number }>`
+const AminoInputWrapper = styled.div<{ $width?: number }>`
   position: relative;
-  width: ${p => (p.width ? `${p.width}px` : '100%')};
+  width: ${p => (p.$width ? `${p.$width}px` : '100%')};
 
   &.disabled {
     * {
@@ -191,10 +191,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <AminoInputWrapper
+        $width={width}
         className={`amino-input-wrapper ${className || ''} ${
           disabled ? 'disabled' : ''
         }`}
-        width={width}
       >
         <Fields onClick={() => textareaRef?.current?.focus()}>
           <StyledTextarea

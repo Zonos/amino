@@ -18,10 +18,10 @@ const Content = styled(VStack)`
   flex-grow: 1;
 `;
 
-const StyledImage = styled.div<{ imageWidth?: number }>`
-  width: ${props => `${props.imageWidth}px` || '100%'};
+const StyledImage = styled.div<{ $imageWidth?: number }>`
+  width: ${props => `${props.$imageWidth}px` || '100%'};
   height: auto;
-  margin: ${props => (props.imageWidth ? '0 auto' : 'unset')};
+  margin: ${props => (props.$imageWidth ? '0 auto' : 'unset')};
   margin-bottom: ${theme.space16};
 `;
 
@@ -72,7 +72,7 @@ export const AnnouncementDialog = forwardRef<
         }}
         open={open || !announcementSeen}
       >
-        <StyledImage imageWidth={imageWidth}>{image}</StyledImage>
+        <StyledImage $imageWidth={imageWidth}>{image}</StyledImage>
         <Content spacing={8}>
           <Text color="blue600" type="label">
             {label}

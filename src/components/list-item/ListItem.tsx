@@ -4,12 +4,13 @@ import styled, { css } from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-interface AminoListItemProps {
+type AminoListItemProps = {
   disabled?: boolean;
   selected?: boolean;
   withClick?: boolean;
-}
+};
 
 const AminoListItem = styled.div<AminoListItemProps>`
   padding: ${theme.space8} ${theme.space16};
@@ -53,7 +54,7 @@ const AminoListItem = styled.div<AminoListItemProps>`
       withClick &&
       !selected &&
       css`
-        background-color: ${theme.gray100};
+        background-color: ${theme.hoverColor};
         cursor: pointer;
       `}
   }
@@ -74,8 +75,7 @@ const Icon = styled.img`
   border-radius: ${theme.radius6};
 `;
 
-export type Props = {
-  className?: string;
+export type Props = BaseProps & {
   /** @description Decorater takes a React node, preferably an icon or an avatar */
   decorator?: ReactNode;
   disabled?: boolean;

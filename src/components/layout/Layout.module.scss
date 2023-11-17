@@ -1,0 +1,78 @@
+@use 'theme';
+
+.aminoLayout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.contentGrid {
+  height: theme.$amino-appbar-height;
+  display: grid;
+  grid-template-columns: theme.$amino-sidebar-width 1fr;
+}
+
+.styledSidebar {
+  border-right: theme.$amino-border;
+  width: theme.$amino-sidebar-width;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 1fr calc(39px + theme.$amino-space-24 * 2);
+  height: inherit;
+  background: theme.$amino-sidebar-color;
+}
+
+.sidebarContent {
+  padding: theme.$amino-space-16;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchInputWrapper {
+  margin-bottom: theme.$amino-space-40;
+}
+
+.styledLogoSidebar {
+  margin-bottom: theme.$amino-space-24;
+}
+
+.styledSearchInput {
+  border: 0;
+  svg {
+    color: theme.$amino-gray-1200;
+  }
+  input {
+    background-color: theme.$amino-gray-100;
+    border: 0;
+    ::placeholder {
+      color: theme.$amino-gray-1200;
+    }
+  }
+}
+
+.content {
+  height: inherit;
+  overflow-y: auto;
+  padding: theme.$amino-space-32;
+  box-sizing: border-box;
+}
+
+.header {
+  background: theme.$amino-header-color;
+  box-shadow: theme.$amino-v3-shadow-base;
+  border-bottom: theme.$amino-border;
+  height: theme.$amino-appbar-height;
+  z-index: theme.$amino-appbar-elevation;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.footer {
+  box-sizing: border-box;
+  width: theme.$amino-sidebar-width;
+}

@@ -17,12 +17,12 @@ const SortableListMeta: Meta = {
 
 export default SortableListMeta;
 
-interface IListItemData {
+type ListItemData = {
   id: string;
   name: string;
-}
+};
 
-const listItemData: IListItemData[] = [
+const listItemData: ListItemData[] = [
   { id: '1', name: 'Henry' },
   { id: '2', name: 'Frank' },
   { id: '3', name: 'Jess' },
@@ -31,7 +31,7 @@ const listItemData: IListItemData[] = [
 ];
 
 const Template: StoryFn = () => {
-  const [listItems, setListItems] = useState<IListItemData[]>([]);
+  const [listItems, setListItems] = useState<ListItemData[]>([]);
 
   useEffect(() => {
     setListItems(listItemData);
@@ -68,7 +68,7 @@ const Template: StoryFn = () => {
 export const WithoutHandle = Template.bind({});
 
 const WithHandleTemplate: StoryFn = () => {
-  const [listItems, setListItems] = useState<IListItemData[]>([]);
+  const [listItems, setListItems] = useState<ListItemData[]>([]);
 
   useEffect(() => {
     setListItems(listItemData);

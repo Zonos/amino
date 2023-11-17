@@ -16,8 +16,9 @@ import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/Fil
 import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
-import type { ICountryOption } from 'src/types/ICountry';
-import type { IOption } from 'src/types/IOption';
+import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import type { CountryOption } from 'src/types/Country';
+import type { SelectOption } from 'src/types/SelectOption';
 
 const meta: Meta = {
   title: 'Filters',
@@ -60,16 +61,16 @@ export const Amount = () => {
   );
 };
 
-type Option = 'Orange' | 'Apple' | 'Banana';
+type FruitOption = 'Orange' | 'Apple' | 'Banana';
 
-const options: IOption<Option>[] = [
+const options: SelectOption<FruitOption>[] = [
   { label: 'Orange', value: 'Orange' },
   { label: 'Apple', value: 'Apple' },
   { label: 'Banana', value: 'Banana' },
 ];
 
 export const Select = () => {
-  const [value, setValue] = useState<IOption<Option> | null>(null);
+  const [value, setValue] = useState<SelectOption<FruitOption> | null>(null);
 
   return (
     <>
@@ -87,7 +88,7 @@ export const Select = () => {
 
 export const CountrySelect = () => {
   const countries = useCountryOptions({});
-  const [country, setCountry] = useState<ICountryOption<string> | null>(null);
+  const [country, setCountry] = useState<CountryOption<string> | null>(null);
 
   return (
     <>
@@ -97,6 +98,14 @@ export const CountrySelect = () => {
         label="Country Select filter"
         onChange={v => setCountry(v)}
         options={countries}
+        selectProps={option => ({
+          icon: (
+            <FlagIcon
+              code={option ? (option.value as Flag) : 'Default'}
+              iconScale="medium"
+            />
+          ),
+        })}
         value={country}
       />
     </>
@@ -104,7 +113,9 @@ export const CountrySelect = () => {
 };
 
 export const MultiSelect = () => {
-  const [selectedValues, setSelectedValues] = useState<IOption<Option>[]>([]);
+  const [selectedValues, setSelectedValues] = useState<
+    SelectOption<FruitOption>[]
+  >([]);
 
   return (
     <>
@@ -114,6 +125,33 @@ export const MultiSelect = () => {
         label="MultiSelect filter"
         onChange={v => setSelectedValues(v)}
         options={options}
+        value={selectedValues}
+      />
+    </>
+  );
+};
+
+const optionsNumbers: SelectOption<number>[] = Array.from(
+  { length: 100 },
+  (_, i) => ({
+    label: `Option ${i}`,
+    value: i,
+  }),
+);
+
+export const MultiSelectWithManyOptions = () => {
+  const [selectedValues, setSelectedValues] = useState<SelectOption<number>[]>(
+    [],
+  );
+
+  return (
+    <>
+      <pre>{JSON.stringify({ selectedValues }, null, 2)}</pre>
+      <FilterMultiSelect
+        dropdownTitle="Filter by option"
+        label="MultiSelect filter"
+        onChange={v => setSelectedValues(v)}
+        options={optionsNumbers}
         value={selectedValues}
       />
     </>

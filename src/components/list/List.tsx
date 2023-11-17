@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const StyledList = styled.section<ListProps>`
   display: flex;
@@ -24,9 +25,8 @@ const StyledList = styled.section<ListProps>`
     `}
 `;
 
-export type ListProps = {
+export type ListProps = BaseProps & {
   children?: ReactNode;
-  className?: string;
   withBorder?: boolean;
   withNegativeMargin?: boolean;
 };

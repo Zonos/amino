@@ -18,14 +18,16 @@ export const EditDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="m13.982 5.458 4.414 4.415-8.414 8.414-4.415-4.414 8.415-8.415Z"
-      data-is-secondary-color="true"
-      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      d="M13 19.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5h-5.5a.75.75 0 0 1-.75-.75Z"
+      fill="currentColor"
       fillRule="evenodd"
     />
     <path
-      d="m5.567 13.873-.9.9a3 3 0 0 0-.79 1.394l-.825 3.3a1.1 1.1 0 0 0 1.334 1.335l3.3-.825a3 3 0 0 0 1.394-.79l.901-.9-4.414-4.414Zm8.414-8.415 4.415 4.414 1.586-1.586a2 2 0 0 0 0-2.828l-1.586-1.586a2 2 0 0 0-2.829 0l-1.586 1.586Z"
-      fill="currentColor"
+      clipRule="evenodd"
+      d="M16.687 5.527a1.75 1.75 0 0 0-2.475 0l-8.777 8.777a2.75 2.75 0 0 0-.742 1.36l-.677 3.112a1 1 0 0 0 1.19 1.19l3.112-.677a2.75 2.75 0 0 0 1.36-.743l8.777-8.777a1.75 1.75 0 0 0 0-2.475l-1.768-1.767Z"
+      data-is-secondary-color="true"
+      fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
+      fillRule="evenodd"
     />
   </IconBase>
 ));

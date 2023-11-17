@@ -17,15 +17,13 @@ export const LineDownDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Z"
+      d="M6.75 4A2.75 2.75 0 0 0 4 6.75v10.5A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4H6.75Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M5 6a1 1 0 0 1 1-1h3a8 8 0 0 1 8 8v2.586l.293-.293a1 1 0 0 1 1.414 1.414l-1.646 1.647a1.5 1.5 0 0 1-2.122 0l-1.646-1.647a1 1 0 0 1 1.414-1.414l.293.293V13a6 6 0 0 0-6-6H6a1 1 0 0 1-1-1Z"
+      d="M6.25 7.25A.75.75 0 0 1 7 6.5h1.251a6.75 6.75 0 0 1 6.75 6.75v2.043l1.722-1.722a.75.75 0 1 1 1.06 1.06l-2.825 2.826a1 1 0 0 1-1.414 0l-2.824-2.824a.75.75 0 0 1 1.06-1.061l1.721 1.72V13.25c0-2.9-2.35-5.25-5.25-5.25H7a.75.75 0 0 1-.75-.75Z"
       fill="currentColor"
       fillRule="evenodd"
     />

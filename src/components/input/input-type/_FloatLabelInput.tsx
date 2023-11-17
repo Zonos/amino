@@ -12,10 +12,25 @@ import styled from 'styled-components';
 
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 
-const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
+const getRadius = ($size?: Size) => {
+  switch ($size) {
+    case 'sm':
+      return `${theme.radius6}`;
+    case 'lg':
+      return `${theme.radius10}`;
+    case 'xl':
+      return `${theme.radius12}`;
+    case 'md':
+    default:
+      return `${theme.radius8}`;
+  }
+};
+
+const StyledLabelInput = styled.label<{ $size: Size }>`
   display: block;
   max-height: 0;
   pointer-events: none;
@@ -41,7 +56,7 @@ const StyledLabelInput = styled.label<{ hasPrefix: boolean }>`
     right: 0;
     top: 0;
     bottom: 0;
-    border-radius: ${theme.radius6};
+    border-radius: ${p => getRadius(p.$size)};
   }
   /** disabled state */
   .disabled & {
@@ -58,7 +73,7 @@ const InputDecorator = styled.div`
   line-height: ${theme.fontSizeS};
   font-weight: 500;
   background: transparent;
-  padding: 0 ${theme.space16};
+  padding: 0 6px;
   font-weight: 700;
   flex-basis: 50px;
   display: flex;
@@ -101,7 +116,7 @@ const AminoInput = styled.input<TypeInput>`
   outline: none;
   transition: ${theme.transition};
   width: 100%;
-  border-radius: ${theme.radius6};
+  border-radius: ${p => getRadius(p.$size)};
   background: ${theme.inputBackground};
   border: 0;
   order: 2;
@@ -166,13 +181,13 @@ const AminoInput = styled.input<TypeInput>`
   }
 `;
 
-const StyledLabelWrapper = styled.div`
+const StyledLabelWrapper = styled.div<{ $size?: Size }>`
   position: relative;
   display: flex;
   flex-direction: row;
   width: 100%;
   background: ${theme.inputBackground};
-  border-radius: ${theme.radius6};
+  border-radius: ${p => getRadius(p.$size)};
 
   &.sm ${AminoInput}.has-label {
     padding-top: 13px;
@@ -218,10 +233,8 @@ export type InputMode =
   | 'text'
   | 'url';
 
-type FloatLabelInputType = {
+type FloatLabelInputType = BaseProps & {
   autoFocus?: boolean;
-
-  className?: string;
 
   disabled?: boolean;
 
@@ -297,7 +310,6 @@ export const FloatLabelInput = forwardRef<
       () => getTestId({ componentName: 'input', name: label }),
       [label],
     );
-    const hasPrefix = !!prefix || !!valuePrefix;
     const hasValue = !!value || !!valuePrefix;
     return (
       <StyledLabelWrapper className={`${className || ''} ${size}`}>
@@ -331,7 +343,7 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        <StyledLabelInput data-label={label} hasPrefix={hasPrefix} />
+        <StyledLabelInput $size={size} data-label={label} />
         {suffix && <InputSuffix>{suffix}</InputSuffix>}
       </StyledLabelWrapper>
     );

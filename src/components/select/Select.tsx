@@ -9,18 +9,16 @@ import type {
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 
 type RequiredProps = 'options' | 'value';
 
-export interface SelectProps<
-  Option extends IOption = IOption,
+export type SelectProps<
+  Option extends SelectOption = SelectOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps>,
-    Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>>,
-    HelpTextProps {
+> = {
   /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
@@ -43,10 +41,12 @@ export interface SelectProps<
    * onChange={changed => setExampleValue(changed?.value || null)}
    */
   onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
-}
+} & Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps> &
+  Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
+  HelpTextProps;
 
 export const Select = <
-  Option extends IOption,
+  Option extends SelectOption,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   isClearable = true,

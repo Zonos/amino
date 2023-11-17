@@ -13,10 +13,8 @@ export const CaretLeftIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        clipRule="evenodd"
-        d="M13.994 6.074c.97-.849 2.487-.16 2.487 1.129v9.592c0 1.29-1.518 1.978-2.487 1.13l-5.482-4.797a1.5 1.5 0 0 1 0-2.258l5.482-4.796Z"
+        d="M15 8.51a1 1 0 0 0-1.612-.792l-4.84 3.74a1 1 0 0 0 0 1.583l4.84 3.741A1 1 0 0 0 15 15.991V8.509Z"
         fill="currentColor"
-        fillRule="evenodd"
       />
     </IconBase>
   ),

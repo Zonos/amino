@@ -76,7 +76,7 @@ const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
   align-items: center;
   display: grid;
   grid-column-gap: ${theme.space24};
-  ${({ $icon }) => $icon && `grid-template-columns: 30px 1fr;`}
+  ${p => p.$icon && `grid-template-columns: 30px 1fr;`}
 `;
 
 type RichCheckboxItemType = {

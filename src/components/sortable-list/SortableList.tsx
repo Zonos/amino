@@ -20,12 +20,12 @@ const StyledSortableList = styled.div`
   gap: 5px;
 `;
 
-export interface SortableListProps {
+export type SortableListProps = {
   children: ReactNode;
   itemIds: string[];
   sortingStrategy?: SortingStrategy;
   handleDragEnd: (e: DragEndEvent) => void;
-}
+};
 
 export const SortableList = ({
   children,

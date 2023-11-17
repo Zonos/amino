@@ -1,0 +1,10 @@
+export declare const aminoLayout: string;
+export declare const content: string;
+export declare const contentGrid: string;
+export declare const footer: string;
+export declare const header: string;
+export declare const searchInputWrapper: string;
+export declare const sidebarContent: string;
+export declare const styledLogoSidebar: string;
+export declare const styledSearchInput: string;
+export declare const styledSidebar: string;

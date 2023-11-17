@@ -17,15 +17,13 @@ export const CheckCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M15.707 9.293a1 1 0 0 1 0 1.414l-3.646 3.647a1.5 1.5 0 0 1-2.122 0l-1.646-1.647a1 1 0 1 1 1.414-1.414L11 12.586l3.293-3.293a1 1 0 0 1 1.414 0Z"
+      d="M15.21 9.158a.75.75 0 0 1 .132 1.053l-3.326 4.276a1 1 0 0 1-1.497.093l-1.8-1.8a.75.75 0 0 1 1.061-1.06l1.4 1.399 2.978-3.83a.75.75 0 0 1 1.053-.131Z"
       fill="currentColor"
       fillRule="evenodd"
     />

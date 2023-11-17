@@ -1,7 +1,7 @@
-import { type ICountryOption, regions } from 'src/types/ICountry';
+import { type CountryOption, regions } from 'src/types/Country';
 
 export const prepRegionCountryOptions = <T extends string = string>(
-  countries: ICountryOption<T>[],
+  countries: CountryOption<T>[],
 ) =>
   regions.map(region => ({
     label: region,

@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { type VSectionProps, VSection } from 'src/components/section/VSection';
@@ -62,8 +62,8 @@ export const VSectionWithActions = Template.bind({});
 VSectionWithActions.args = {
   actions: (
     <>
-      <LegacyButton size="md">Receipt</LegacyButton>
-      <LegacyButton size="md">Cancel order</LegacyButton>
+      <Button size="md">Receipt</Button>
+      <Button size="md">Cancel order</Button>
     </>
   ),
   children: (

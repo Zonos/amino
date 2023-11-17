@@ -13,8 +13,12 @@ export const CardIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
+        d="M7.25 14a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5h-4Z"
+        fill="currentColor"
+      />
+      <path
         clipRule="evenodd"
-        d="M2 7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7Zm3-1a1 1 0 0 0-1 1v1h16V7a1 1 0 0 0-1-1H5Zm15 4H4v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7ZM6 15a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Z"
+        d="M3 7.75A2.75 2.75 0 0 1 5.75 5h12.5A2.75 2.75 0 0 1 21 7.75v8.5A2.75 2.75 0 0 1 18.25 19H5.75A2.75 2.75 0 0 1 3 16.25v-8.5ZM5.75 6.5c-.69 0-1.25.56-1.25 1.25v.75h15v-.75c0-.69-.56-1.25-1.25-1.25H5.75ZM4.5 16.25V10h15v6.25c0 .69-.56 1.25-1.25 1.25H5.75c-.69 0-1.25-.56-1.25-1.25Z"
         fill="currentColor"
         fillRule="evenodd"
       />

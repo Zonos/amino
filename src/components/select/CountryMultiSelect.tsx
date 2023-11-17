@@ -12,12 +12,9 @@ import {
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { MultiSelect } from 'src/components/select/MultiSelect';
-import { type IFlag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import {
-  type ICountryOption,
-  type IUnavailableCountry,
-} from 'src/types/ICountry';
-import type { IOption } from 'src/types/IOption';
+import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { type CountryOption, type UnavailableCountry } from 'src/types/Country';
+import type { SelectOption } from 'src/types/SelectOption';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 
 type AdditionalProps = {
@@ -26,7 +23,7 @@ type AdditionalProps = {
 };
 
 export const MenuList = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -57,24 +54,24 @@ export const MenuList = <
   );
 };
 
-export interface CountryMultiSelectProps<
-  Option extends IOption<string> = IOption<string>,
+export type CountryMultiSelectProps<
+  Option extends SelectOption<string> = SelectOption<string>,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<
-      Props<Option, IsMulti, Group>,
-      'isMulti' | 'onChange' | 'options' | 'value'
-    >,
-    HelpTextProps {
+> = {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
-  countryOptions: ICountryOption<Option['value']>[];
+  countryOptions: CountryOption<Option['value']>[];
   icon?: ReactNode;
   label?: string;
   styles?: StylesConfig<Option, IsMulti, Group>;
-  unavailableCountries: IUnavailableCountry[];
+  unavailableCountries: UnavailableCountry[];
   value: Option['value'][];
   onChange: (countryCodes: Option['value'][]) => void;
-}
+} & Omit<
+  Props<Option, IsMulti, Group>,
+  'isMulti' | 'onChange' | 'options' | 'value'
+> &
+  HelpTextProps;
 
 export const CountryMultiSelect = <T extends string>({
   countryOptions,
@@ -83,14 +80,14 @@ export const CountryMultiSelect = <T extends string>({
   unavailableCountries,
   value,
   ...props
-}: CountryMultiSelectProps<IOption<T>>) => {
+}: CountryMultiSelectProps<SelectOption<T>>) => {
   const countries = countryOptions.map(option => {
     const unavailableCountry = unavailableCountries.find(
       x => x.code === option.code,
     );
     return {
       ...option,
-      icon: <FlagIcon code={option.code as IFlag} iconScale="small" />,
+      icon: <FlagIcon code={option.code as Flag} iconScale="small" />,
       isDisabled: !!unavailableCountry,
       labelDescription: unavailableCountry?.message,
     };

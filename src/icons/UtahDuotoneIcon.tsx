@@ -13,10 +13,8 @@ export const UtahDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        clipRule="evenodd"
-        d="M3.579 4.923A2 2 0 0 1 5.578 3h7.883a2 2 0 0 1 2 2v.462h3.254a2 2 0 0 1 2 1.954l.261 11.539a2 2 0 0 1-2 2.045H5.04a2 2 0 0 1-1.998-2.077l.538-14Z"
+        d="M7.617 4a2.75 2.75 0 0 0-2.744 2.56l-.724 10.5A2.75 2.75 0 0 0 6.893 20h10.263a2.75 2.75 0 0 0 2.747-2.876l-.316-6.91a2.75 2.75 0 0 0-2.747-2.625h-2.09a.25.25 0 0 1-.25-.25V5.75A1.75 1.75 0 0 0 12.75 4H7.617Z"
         fill="currentColor"
-        fillRule="evenodd"
       />
     </IconBase>
   ),

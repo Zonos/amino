@@ -13,6 +13,7 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended',
     'plugin:vitest/recommended',
+    'plugin:css-modules/recommended',
   ],
   globals: {
     JSX: 'readonly',
@@ -60,7 +61,7 @@ module.exports = {
       },
     },
     {
-      files: ['svgReact/**', 'build-utils/**'],
+      files: ['svgReact/**', 'build-utils/**', '__stories__/**'],
       rules: {
         'no-console': 'off',
       },
@@ -85,8 +86,10 @@ module.exports = {
     'typescript-custom-sort-keys',
     'sort-destructure-keys',
     'no-relative-import-paths',
+    'css-modules',
   ],
   rules: {
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/consistent-type-imports': [
       'error',
       {
@@ -107,6 +110,9 @@ module.exports = {
     camelcase: 'off',
     // disable since sometime `this` doesn't need to be used in some util function in class
     'class-methods-use-this': 'off',
+    // css module linting
+    'css-modules/no-undef-class': [2, { camelCase: true }],
+    'css-modules/no-unused-class': [2, { camelCase: true }],
     'deprecation/deprecation': 'warn',
     'import/extensions': [
       'error',
@@ -137,7 +143,11 @@ module.exports = {
     'import/prefer-default-export': 'off',
     // For debugging ease
     'no-console': 'warn',
-    'no-relative-import-paths/no-relative-import-paths': 'warn',
+    'no-relative-import-paths/no-relative-import-paths': [
+      'warn',
+      // Allow to import from same folder for importing scss modules
+      { allowSameFolder: true },
+    ],
     'no-restricted-syntax': [
       'error',
       // https://stackoverflow.com/questions/42226436/how-can-i-turn-off-eslints-no-restricted-syntax-rule-just-for-forofstatement
@@ -173,6 +183,7 @@ module.exports = {
         allowExpressions: true,
       },
     ],
+
     // Prettier takes care of this
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-props-no-spreading': 'off',

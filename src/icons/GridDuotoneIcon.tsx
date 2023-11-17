@@ -17,17 +17,13 @@ export const GridDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M13 5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V5ZM3 15a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4Zm10 0a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4Z"
+      d="M14.75 4A1.75 1.75 0 0 0 13 5.75v3.5c0 .966.784 1.75 1.75 1.75h3.5A1.75 1.75 0 0 0 20 9.25v-3.5A1.75 1.75 0 0 0 18.25 4h-3.5Zm0 9A1.75 1.75 0 0 0 13 14.75v3.5c0 .966.784 1.75 1.75 1.75h3.5A1.75 1.75 0 0 0 20 18.25v-3.5A1.75 1.75 0 0 0 18.25 13h-3.5Zm-9 0A1.75 1.75 0 0 0 4 14.75v3.5c0 .966.784 1.75 1.75 1.75h3.5A1.75 1.75 0 0 0 11 18.25v-3.5A1.75 1.75 0 0 0 9.25 13h-3.5Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      clipRule="evenodd"
-      d="M3 5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Z"
+      d="M5.75 4A1.75 1.75 0 0 0 4 5.75v3.5c0 .966.784 1.75 1.75 1.75h3.5A1.75 1.75 0 0 0 11 9.25v-3.5A1.75 1.75 0 0 0 9.25 4h-3.5Z"
       fill="currentColor"
-      fillRule="evenodd"
     />
   </IconBase>
 ));

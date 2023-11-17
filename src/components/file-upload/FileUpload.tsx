@@ -2,10 +2,12 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
+import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 type WrapperProps = {
   disabled: boolean;
@@ -46,39 +48,8 @@ const UploadedFileInfoWrapper = styled.div`
   align-items: center;
 `;
 
-const RemoveFileButton = styled(LegacyButton)`
+const RemoveFileButton = styled(ButtonIcon)`
   margin-left: auto;
-  padding: 0;
-  path[data-is-secondary-color] {
-    fill: ${theme.gray200};
-  }
-
-  && {
-    &,
-    &:focus,
-    &:hover,
-    &:active {
-      color: ${theme.gray800};
-      background: transparent;
-    }
-    &:hover {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray300};
-      }
-    }
-    &:active,
-    &:focus {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray400};
-      }
-    }
-  }
-
-  :active,
-  :focus {
-    outline: none;
-    box-shadow: unset;
-  }
 `;
 
 type UploadFileNoImage = {
@@ -86,8 +57,7 @@ type UploadFileNoImage = {
   size?: string;
 };
 
-export type FileUploadProps = {
-  className?: string;
+export type FileUploadProps = BaseProps & {
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
@@ -171,9 +141,9 @@ export const FileUpload = ({
     <StyledFileInput {...getRootProps()}>
       <input {...getInputProps()} />
       <ContentWrapper>
-        <LegacyButton loading={loading} onClick={open} spinnerColor="black">
+        <Button loading={loading} onClick={open} spinnerColor="black">
           Browse
-        </LegacyButton>
+        </Button>
         {renderText()}
       </ContentWrapper>
     </StyledFileInput>
@@ -183,9 +153,11 @@ export const FileUpload = ({
     <Wrapper className={className} disabled={disabled} error={error}>
       {renderContent()}
       {onRemoveFile && uploadedFile && (
-        <RemoveFileButton onClick={() => onRemoveFile()}>
-          <RemoveCircleDuotoneIcon size={20} />
-        </RemoveFileButton>
+        <RemoveFileButton
+          icon={<RemoveCircleDuotoneIcon size={20} />}
+          onClick={() => onRemoveFile()}
+          variant="text"
+        />
       )}
     </Wrapper>
   );

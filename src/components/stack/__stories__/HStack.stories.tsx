@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import type { StackProps } from 'src/components/stack/Stack';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
 const HStackMeta: Meta = {
   args: {
@@ -25,7 +25,7 @@ const options = [
   'Gollum',
   'Not sure how to answer that question',
   '*confused noises*',
-].map<IOption>(v => ({
+].map<SelectOption>(v => ({
   label: v,
   value: v,
 }));
@@ -55,11 +55,7 @@ Selects.args = {
 export const Cards = Template.bind({});
 Cards.args = {
   renderChild: k => (
-    <Card
-      key={k}
-      footerActions={<LegacyButton>Do it</LegacyButton>}
-      label={`Card ${k}`}
-    >
+    <Card key={k} footerActions={<Button>Do it</Button>} label={`Card ${k}`}>
       <p>Some text</p>
     </Card>
   ),

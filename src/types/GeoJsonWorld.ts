@@ -6,18 +6,18 @@ import type {
   Transform,
 } from 'topojson-specification';
 
-type IProperties = {
+type Properties = {
   name: string;
 };
 
-type IGeometry = (Polygon | MultiPolygon) & { properties: IProperties };
+type Geometry = (Polygon | MultiPolygon) & { properties: Properties };
 
-export type IGeoJsonWorld = {
+export type GeoJsonWorld = {
   arcs: Arc[];
   bbox: BBox;
   objects: {
     countries: {
-      geometries: IGeometry[];
+      geometries: Geometry[];
       type: 'GeometryCollection';
     };
   };

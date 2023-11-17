@@ -1,20 +1,77 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { autoUpdate, offset, useFloating } from '@floating-ui/react-dom';
+import {
+  type ExtendedRefs,
+  type Placement,
+  type UseFloatingOptions,
+  autoUpdate,
+  offset,
+  shift,
+  useFloating,
+} from '@floating-ui/react';
+
+export type UseDropdownParams = {
+  /**
+   * Passed to `useFloating`.
+   * @link https://floating-ui.com/docs/useFloating
+   */
+  floatingOptions?: Partial<UseFloatingOptions>;
+  /**
+   * @default 0
+   */
+  offsetCrossAxis?: number;
+  /**
+   * @default 0
+   */
+  offsetMainAxis?: number;
+  /**
+   * @default 'bottom-start'
+   */
+  placement?: Placement;
+};
+
+type Return<
+  WrapperRef extends HTMLElement = HTMLDivElement,
+  TriggerRef extends HTMLElement = HTMLButtonElement,
+> = {
+  floatingStyles: React.CSSProperties;
+  refs: ExtendedRefs<TriggerRef>;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  visibility: 'visible' | 'hidden';
+  visible: boolean;
+  wrapperRef: React.RefObject<WrapperRef>;
+};
 
 export const useDropdown = <
   WrapperRef extends HTMLElement = HTMLDivElement,
   TriggerRef extends HTMLElement = HTMLButtonElement,
->() => {
+>(
+  params?: UseDropdownParams,
+): Return<WrapperRef, TriggerRef> => {
+  const {
+    floatingOptions = {},
+    offsetCrossAxis = 0,
+    offsetMainAxis = 0,
+    placement = 'bottom-start',
+  } = params ?? {};
+
   const [visible, setVisible] = useState(false);
 
   const visibility: 'visible' | 'hidden' = visible ? 'visible' : 'hidden';
 
-  const wrapperRef = useRef<WrapperRef | null>(null);
+  const wrapperRef = useRef<WrapperRef>(null);
 
-  const { refs, strategy, x, y } = useFloating<TriggerRef>({
-    middleware: [offset(10)],
+  const { floatingStyles, refs } = useFloating<TriggerRef>({
+    middleware: [
+      shift(),
+      offset({
+        crossAxis: offsetCrossAxis,
+        mainAxis: offsetMainAxis,
+      }),
+    ],
+    placement,
     whileElementsMounted: autoUpdate,
+    ...floatingOptions,
   });
 
   const handleClick = useCallback(
@@ -24,7 +81,7 @@ export const useDropdown = <
       // Open and left-click
       if (visible && e.button === 0) {
         // Click outside
-        if (!wrapperRef.current?.contains(target)) {
+        if (!wrapperRef?.current?.contains(target)) {
           e.preventDefault();
           e.stopPropagation();
           setVisible(false);
@@ -46,12 +103,9 @@ export const useDropdown = <
   }, [handleClick]);
 
   return {
-    floatingRef: refs.setFloating,
-    left: x ? x - 94 : 0,
-    position: strategy,
-    reference: refs.setReference,
+    floatingStyles,
+    refs,
     setVisible,
-    top: y || '',
     visibility,
     visible,
     wrapperRef,

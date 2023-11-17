@@ -3,7 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
+import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import {
   type SlideOverProps,
   SlideOver,
@@ -28,12 +29,14 @@ const Template: StoryFn<SlideOverProps> = ({
   label,
   subtitle,
   withBackdrop,
+  ...props
 }: SlideOverProps) => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <LegacyButton onClick={() => setOpen(true)}>open</LegacyButton>
+      <Button onClick={() => setOpen(true)}>open</Button>
       <SlideOver
+        {...props}
         actions={actions}
         label={label}
         onClose={() => setOpen(false)}
@@ -64,8 +67,8 @@ export const SlideOverWithActions = Template.bind({});
 SlideOverWithActions.args = {
   actions: (
     <>
-      <LegacyButton>Action 1</LegacyButton>
-      <LegacyButton>Action 2</LegacyButton>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
     </>
   ),
   children: <div>Children</div>,
@@ -82,8 +85,8 @@ export const KitchenSinkSlideOver = Template.bind({});
 KitchenSinkSlideOver.args = {
   actions: (
     <>
-      <LegacyButton>Action 1</LegacyButton>
-      <LegacyButton>Action 2</LegacyButton>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
     </>
   ),
   children: <div>Children</div>,
@@ -105,11 +108,53 @@ export const WithHover = Template.bind({});
 WithHover.args = {
   actions: (
     <>
-      <LegacyButton>Action 1</LegacyButton>
-      <LegacyButton>Action 2</LegacyButton>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
     </>
   ),
   children: <HoverDiv>Hover me</HoverDiv>,
   label: 'Slideover title',
   subtitle: 'With a subtitle',
+};
+
+const StyledCoverSheet = styled(CoverSheet)`
+  z-index: 1100;
+`;
+
+export const WithCoverSheet: StoryFn<SlideOverProps> = ({
+  actions,
+  children,
+  label,
+  subtitle,
+  withBackdrop,
+  ...props
+}: SlideOverProps) => {
+  const [open, setOpen] = useState(false);
+  const [coverSheetOpen, setCoverSheetOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>open</Button>
+      <SlideOver
+        {...props}
+        actions={actions}
+        label={label}
+        onClose={() => setOpen(false)}
+        open={open}
+        subtitle={subtitle}
+        withBackdrop={withBackdrop}
+      >
+        <Button onClick={() => setCoverSheetOpen(true)}>
+          Open Cover Sheet
+        </Button>
+        <StyledCoverSheet
+          label="Cover sheet"
+          onClose={() => setCoverSheetOpen(false)}
+          open={coverSheetOpen}
+        >
+          <div>Content</div>
+        </StyledCoverSheet>
+      </SlideOver>
+    </>
+  );
 };

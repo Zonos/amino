@@ -2,8 +2,7 @@ import type { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
-import { HStack } from 'src/components/stack/HStack';
+import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
@@ -12,23 +11,31 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Color, Intent } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const StyledBanner = styled.div`
-  border-radius: ${theme.radius6};
+  border-radius: ${theme.radius12};
   padding: ${theme.space16};
+
+  .amino-button {
+    &:hover,
+    &:focus {
+      filter: brightness(1.1);
+    }
+  }
 `;
 
 const Container = styled.div<{
-  onlyContent: boolean;
-  withoutCloseButton: boolean;
+  $onlyContent: boolean;
+  $withoutCloseButton: boolean;
 }>`
   display: grid;
-  align-items: ${p => (p.onlyContent ? 'start' : 'center')};
+  align-items: ${p => (p.$onlyContent ? 'start' : 'center')};
   grid-template-areas:
     'icon header close'
     '. content .';
   grid-template-columns: 32px auto ${p =>
-      p.withoutCloseButton ? '0px' : '32px'};
+      p.$withoutCloseButton ? '0px' : '32px'};
 `;
 
 const Icon = styled.div`
@@ -41,15 +48,15 @@ const Close = styled.div`
   justify-self: end;
 `;
 
-const CloseButton = styled(LegacyButton)`
+const CloseButton = styled(Button)`
   && {
-    width: 20px;
+    width: 24px;
   }
 `;
 
-const Header = styled.div<{ color: Color }>`
+const Header = styled.div<{ $color: Color }>`
   grid-area: header;
-  color: ${p => theme[p.color]};
+  color: ${p => theme[p.$color]};
 `;
 
 const Content = styled.div`
@@ -60,45 +67,57 @@ const Content = styled.div`
   gap: 16px;
 `;
 
+const ActionsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${theme.space8};
+`;
+
 const BannerHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: ${theme.space12};
 `;
 
 const BannerFooter = styled.footer`
   display: flex;
   align-items: center;
+  gap: ${theme.space12};
 `;
 
 const DefaultBanner = styled(StyledBanner)`
-  background: ${theme.gray100};
+  background: ${theme.gray50};
   color: ${theme.gray700};
+  border: 1px solid ${theme.gray100};
 `;
 
 const InfoBanner = styled(StyledBanner)`
   background: ${theme.blue100};
   color: ${theme.blue700};
+  border: 1px solid ${theme.blue200};
 `;
 
 const SuccessBanner = styled(StyledBanner)`
   background: ${theme.green100};
   color: ${theme.green700};
+  border: 1px solid ${theme.green200};
 `;
 
 const WarningBanner = styled(StyledBanner)`
   background: ${theme.orange100};
   color: ${theme.orange700};
+  border: 1px solid ${theme.orange200};
 `;
 
 const ErrorBanner = styled(StyledBanner)`
   background: ${theme.red100};
   color: ${theme.red700};
+  border: 1px solid ${theme.red200};
 `;
 
-export type BannerProps = {
+export type BannerProps = BaseProps & {
   children?: ReactNode;
-  className?: string;
   footerActions?: ReactNode;
   headerActions?: ReactNode;
   intent?: Exclude<Intent, 'danger' | 'secondary' | 'primary'>;
@@ -108,7 +127,7 @@ export type BannerProps = {
 
 export const Banner = ({
   children,
-  className = '',
+  className,
   footerActions,
   headerActions,
   intent,
@@ -131,14 +150,14 @@ export const Banner = ({
           <Text color={removeIconColor} type="label">
             {title}
           </Text>
-          {headerActions && <HStack spacing={8}>{headerActions}</HStack>}
+          {headerActions && <ActionsWrapper>{headerActions}</ActionsWrapper>}
         </BannerHeader>
       );
 
     const renderFooter = () =>
       footerActions && (
         <BannerFooter>
-          <HStack spacing={8}>{footerActions}</HStack>
+          <ActionsWrapper>{footerActions}</ActionsWrapper>
         </BannerFooter>
       );
 
@@ -150,19 +169,19 @@ export const Banner = ({
     ].filter(Boolean);
 
     return (
-      <Container onlyContent={onlyContent} withoutCloseButton={!onClose}>
+      <Container $onlyContent={onlyContent} $withoutCloseButton={!onClose}>
         <Icon>{intentIcon}</Icon>
         {onClose && (
           <Close>
             <CloseButton
               icon={<RemoveIcon color={removeIconColor} size={20} />}
-              intent="text"
               onClick={onClose}
+              variant="text"
             />
           </Close>
         )}
 
-        <Header color={removeIconColor}>{header}</Header>
+        <Header $color={removeIconColor}>{header}</Header>
 
         {content && (
           <Content>
@@ -173,16 +192,17 @@ export const Banner = ({
       </Container>
     );
   };
+
   switch (intent) {
     case 'info':
       return (
         <InfoBanner className={className}>
           {renderContent({
             intentIcon: (
-              <CheckCircleDuotoneIcon
+              <InfoDuotoneIcon
                 color="blue800"
                 secondaryColor="blue400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'blue800',
@@ -197,7 +217,7 @@ export const Banner = ({
               <CheckCircleDuotoneIcon
                 color="green800"
                 secondaryColor="green400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'green800',
@@ -212,7 +232,7 @@ export const Banner = ({
               <WarningDuotoneIcon
                 color="orange800"
                 secondaryColor="orange400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'orange800',
@@ -227,7 +247,7 @@ export const Banner = ({
               <RemoveCircleDuotoneIcon
                 color="red800"
                 secondaryColor="red400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'red800',
@@ -243,7 +263,7 @@ export const Banner = ({
               <InfoDuotoneIcon
                 color="gray800"
                 secondaryColor="gray400"
-                size={20}
+                size={24}
               />
             ),
             removeIconColor: 'gray800',

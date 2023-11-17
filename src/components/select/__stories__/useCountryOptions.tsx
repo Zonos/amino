@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import {
-  type IFlag,
-  type IFlagScale,
+  type Flag,
+  type FlagScale,
   FlagIcon,
 } from 'src/icons/flag-icon/FlagIcon';
-import type { ICountryOption, IGetCountriesResponse } from 'src/types/ICountry';
+import type { CountryOption, GetCountriesResponse } from 'src/types/Country';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
 export const getCountryUrls = () => {
@@ -22,18 +22,18 @@ export const useCountryOptions = ({
   iconScale = 'small',
 }: {
   dashboardUrl?: string | null;
-  iconScale?: IFlagScale;
+  iconScale?: FlagScale;
 }) => {
-  const [countryOptions, setCountryOptions] = useState<ICountryOption[]>([]);
+  const [countryOptions, setCountryOptions] = useState<CountryOption[]>([]);
 
   const requestCountries = useCallback(async () => {
     const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
     if (response.ok) {
-      const json = (await response.json()) as IGetCountriesResponse;
+      const json = (await response.json()) as GetCountriesResponse;
       const options = prepCountryOptions({ json });
       const countries = options.map(option => ({
         ...option,
-        icon: <FlagIcon code={option.code as IFlag} iconScale={iconScale} />,
+        icon: <FlagIcon code={option.code as Flag} iconScale={iconScale} />,
       }));
       setCountryOptions(countries);
     }

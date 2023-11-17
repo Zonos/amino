@@ -13,10 +13,8 @@ export const DiamondDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        clipRule="evenodd"
-        d="M9.879 3.707a3 3 0 0 1 4.242 0l6.172 6.172a3 3 0 0 1 0 4.242l-6.171 6.172a3 3 0 0 1-4.243 0L3.707 14.12a3 3 0 0 1 0-4.242L9.88 3.707Z"
+        d="M13.945 4.754a2.75 2.75 0 0 0-3.89 0l-5.303 5.303a2.75 2.75 0 0 0 0 3.89l5.304 5.303a2.75 2.75 0 0 0 3.889 0l5.303-5.304a2.75 2.75 0 0 0 0-3.889l-5.303-5.303Z"
         fill="currentColor"
-        fillRule="evenodd"
       />
     </IconBase>
   ),

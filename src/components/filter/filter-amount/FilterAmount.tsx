@@ -26,11 +26,15 @@ const InputWrapper = styled.div`
   svg {
     min-width: 24px;
   }
+
+  & .arrow-right {
+    margin-right: ${theme.space16};
+  }
 `;
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 
-type FilterAmountProps = BaseFilterProps & {
+export type FilterAmountProps = BaseFilterProps & {
   dispatch: Dispatch<FilterAmountAction>;
   filter: FilterAmountState;
 };
@@ -130,11 +134,18 @@ export const FilterAmount = ({
     }
   };
 
+  const handleClose = () => {
+    setFilterType(filter.amountFilterType);
+    setEditingAmount1(filter.amountTotalMin);
+    setEditingAmount2(filter.amountTotalMax);
+  };
+
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
     filterExists: filter.isActive,
     label,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 
@@ -154,9 +165,10 @@ export const FilterAmount = ({
       />
 
       <InputWrapper>
-        <ArrowRightIcon color="blue600" size={24} />
+        <ArrowRightIcon className="arrow-right" color="blue600" size={24} />
         <Input
           onChange={e => setEditingAmount1(e.target.valueAsNumber)}
+          size="md"
           type="number"
           value={editingAmount1 === null ? '' : String(editingAmount1)}
         />
@@ -165,6 +177,7 @@ export const FilterAmount = ({
             and
             <Input
               onChange={e => setEditingAmount2(e.target.valueAsNumber)}
+              size="md"
               type="number"
               value={editingAmount2 === null ? '' : String(editingAmount2)}
             />

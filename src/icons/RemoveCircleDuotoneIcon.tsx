@@ -17,15 +17,13 @@ export const RemoveCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M8.293 8.293a1 1 0 0 1 1.414 0L12 10.586l2.293-2.293a1 1 0 1 1 1.414 1.414L13.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L12 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 12 8.293 9.707a1 1 0 0 1 0-1.414Z"
+      d="M14.475 9.525a.75.75 0 0 1 0 1.06L13.061 12l1.414 1.414a.75.75 0 1 1-1.06 1.06L12 13.062l-1.414 1.414a.75.75 0 0 1-1.06-1.06L10.94 12l-1.415-1.414a.75.75 0 0 1 1.061-1.06L12 10.938l1.414-1.414a.75.75 0 0 1 1.061 0Z"
       fill="currentColor"
       fillRule="evenodd"
     />

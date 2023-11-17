@@ -4,6 +4,7 @@ import {
   generateCSS,
   generateThemeCapture,
 } from 'build-utils/css/utils/generateCSS';
+import { generateSCSS } from 'build-utils/css/utils/generateSCSS';
 import { logging } from 'build-utils/css/utils/logging';
 import { type Theme } from 'build-utils/types/Theme';
 
@@ -40,6 +41,9 @@ const logError = ({
 
   /** Generate theme css file to  */
   await generateCSS('src/styles');
+
+  /** Generate theme scss file to  */
+  await generateSCSS('src/styles');
 
   /** Generate theme snapshots after checked and current theme.css is overwritten */
   await generateThemeCapture();

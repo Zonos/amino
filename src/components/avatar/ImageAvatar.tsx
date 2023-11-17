@@ -1,11 +1,15 @@
-import { type AvatarProps, AvatarBase } from 'src/components/avatar/AvatarBase';
+import {
+  type FullAvatarProps,
+  AvatarBase,
+} from 'src/components/avatar/AvatarBase';
 
 export type ImageAvatarProps = {
   imageUrl: string;
-} & AvatarProps;
+} & FullAvatarProps;
 
 export const ImageAvatar = ({
   bordered = false,
+  className,
   imageUrl,
   shape = 'round',
   size = 32,
@@ -15,6 +19,7 @@ export const ImageAvatar = ({
     backgroundSize="contain"
     backgroundUrl={imageUrl}
     bordered={bordered}
+    className={className}
     shape={shape}
     size={size}
   />

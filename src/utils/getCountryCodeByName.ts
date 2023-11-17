@@ -1,8 +1,8 @@
-import type { ICountryOption } from 'src/types/ICountry';
+import type { CountryOption } from 'src/types/Country';
 
 export const getCountryCodeByName = (
   countryName: string,
-  countries: ICountryOption[],
+  countries: CountryOption[],
 ) => {
   const foundCountryByDisplayName = countries.find(
     country => country.displayName === countryName,

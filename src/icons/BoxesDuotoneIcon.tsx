@@ -17,14 +17,12 @@ export const BoxesDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      clipRule="evenodd"
-      d="M6.333 5a2 2 0 0 1 2-2h7.334a2 2 0 0 1 2 2v4.578H18a2 2 0 0 1 2 2V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.422a2 2 0 0 1 2-2h.333V5Z"
+      d="M8.25 4A1.75 1.75 0 0 0 6.5 5.75V10c0 .174.025.342.072.5H5.75A1.75 1.75 0 0 0 4 12.25v6c0 .966.784 1.75 1.75 1.75h12.5A1.75 1.75 0 0 0 20 18.25v-6a1.75 1.75 0 0 0-1.75-1.75h-.823c.048-.158.073-.326.073-.5V5.75A1.75 1.75 0 0 0 15.75 4h-7.5Z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
-      fillRule="evenodd"
     />
     <path
-      d="M6 9.578a2 2 0 0 0-2 2h7v2.2a1 1 0 1 0 2 0v-2.2h7a2 2 0 0 0-2-2H6ZM17.667 5H13v.778a1 1 0 1 1-2 0V5H6.333a2 2 0 0 1 2-2h7.334a2 2 0 0 1 2 2Z"
+      d="M8.25 4a.75.75 0 0 0 0 1.5h3v1.25a.75.75 0 1 0 1.5 0V5.5h3a.75.75 0 0 0 0-1.5h-7.5Zm-2.5 6.5a.75.75 0 0 0 0 1.5h5.5v2.25a.75.75 0 0 0 1.5 0V12h5.5a.75.75 0 0 0 0-1.5H5.75Z"
       fill="currentColor"
     />
   </IconBase>

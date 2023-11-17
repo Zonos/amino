@@ -4,7 +4,7 @@ import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
-export const DDPColorIcon = forwardRef<SVGSVGElement, IconProps>(
+export const PrepayColorIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, size }, ref) => {
     const ids = useStableUniqueId(6);
     return (

@@ -1,28 +1,37 @@
-import { type KeyboardEvent, useState } from 'react';
+import { type KeyboardEvent, useMemo, useState } from 'react';
 
 import {
   type BaseFilterProps,
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
-import { Select } from 'src/components/select/Select';
-import type { IOption } from 'src/types/IOption';
+import { type SelectProps, Select } from 'src/components/select/Select';
+import type { SelectOption } from 'src/types/SelectOption';
 
-type FilterSelectProps<
+type CustomSelectProps<
   T extends string = string,
-  O extends IOption<string> = IOption<T>,
+  O extends SelectOption<string> = SelectOption<T>,
+> = Omit<SelectProps<O>, 'onChange' | 'value' | 'options'>;
+
+export type FilterSelectProps<
+  T extends string = string,
+  O extends SelectOption<string> = SelectOption<T>,
 > = BaseFilterProps & {
   options: O[];
+  selectProps?:
+    | CustomSelectProps<T, O>
+    | ((editingValue: O | null) => CustomSelectProps<T, O>);
   value: O | null;
   onChange: (value: O | null) => void;
 };
 
 export const FilterSelect = <
   T extends string = string,
-  O extends IOption<T> = IOption<T>,
+  O extends SelectOption<T> = SelectOption<T>,
 >({
   onChange,
   options,
+  selectProps,
   value,
   ...props
 }: FilterSelectProps<T, O>) => {
@@ -39,10 +48,15 @@ export const FilterSelect = <
     setEditingValue(null);
   };
 
+  const handleClose = () => {
+    setEditingValue(value);
+  };
+
   const { renderWrapper } = useFilterWrapper({
     ...props,
-    filterExists: editingValue !== null,
+    filterExists: !!value,
     onApply: handleApply,
+    onClose: handleClose,
     onRemove: handleRemove,
   });
 
@@ -54,6 +68,14 @@ export const FilterSelect = <
     }
   };
 
+  const selectPropsResolved = useMemo(
+    () =>
+      typeof selectProps === 'function'
+        ? selectProps(editingValue)
+        : selectProps,
+    [editingValue, selectProps],
+  );
+
   return renderWrapper(
     <Select
       isClearable={false}
@@ -64,6 +86,7 @@ export const FilterSelect = <
       options={options}
       size="sm"
       value={options.filter(item => item.value === editingValue?.value)}
+      {...selectPropsResolved}
     />,
   );
 };

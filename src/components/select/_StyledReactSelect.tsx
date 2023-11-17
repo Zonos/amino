@@ -26,9 +26,23 @@ import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
-import type { IOption } from 'src/types/IOption';
+import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
+
+const getRadius = ($size?: Size) => {
+  switch ($size) {
+    case 'sm':
+      return `${theme.radius6}`;
+    case 'lg':
+      return `${theme.radius10}`;
+    case 'xl':
+      return `${theme.radius12}`;
+    case 'md':
+    default:
+      return `${theme.radius8}`;
+  }
+};
 
 type AdditionalProps<Value> = {
   hasGroups?: boolean;
@@ -39,26 +53,26 @@ type AdditionalProps<Value> = {
 };
 
 const ClearIndicator = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
   props: ClearIndicatorProps<Option, IsMulti, Group>,
 ) => (
   <RScomponents.ClearIndicator {...props}>
-    <RemoveCircleIcon size={19} />
+    <RemoveCircleIcon size={24} />
   </RScomponents.ClearIndicator>
 );
 
 const DropdownIndicator = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
   props: DropdownIndicatorProps<Option, IsMulti, Group>,
 ) => (
   <RScomponents.DropdownIndicator {...props}>
-    <DoubleChevronIcon size={20} />
+    <DoubleChevronIcon size={24} />
   </RScomponents.DropdownIndicator>
 );
 
@@ -160,7 +174,7 @@ const StrongLabel = styled.strong`
 `;
 
 const Control = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
@@ -262,7 +276,7 @@ const IconLabel = ({
 );
 
 const MultiValueLabel = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -275,7 +289,7 @@ const MultiValueLabel = <
 );
 
 const MultiValueRemove = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -287,7 +301,7 @@ const MultiValueRemove = <
 );
 
 export const CheckboxOptionComponent = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >(
@@ -324,7 +338,7 @@ export const CheckboxOptionComponent = <
         <IconLabel color={color} icon={data.icon}>
           {children}
         </IconLabel>
-        {isSelected && <CheckCircleIcon color="blue600" size={16} />}
+        {isSelected && <CheckCircleIcon color="blue600" size={24} />}
       </SelectedSingleOptionWrapper>
     );
   };
@@ -341,6 +355,7 @@ export const CheckboxOptionComponent = <
       >
         {selectProps.isMulti ? (
           <Checkbox
+            allowPropagation
             checked={isSelected}
             disabled={isDisabled}
             icon={data.icon}
@@ -356,7 +371,11 @@ export const CheckboxOptionComponent = <
   );
 };
 
-const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
+const localStyles: StylesConfig<
+  SelectOption,
+  boolean,
+  GroupBase<SelectOption>
+> = {
   clearIndicator: provided => ({
     ...provided,
     color: theme.gray700,
@@ -366,12 +385,12 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // container
   control: (provided, state) => {
     const { size } = state.selectProps as (typeof state)['selectProps'] &
-      AdditionalProps<IOption['value']>;
+      AdditionalProps<SelectOption['value']>;
     return {
       ...provided,
       background: theme.inputBackground,
       borderColor: `${theme.gray200}`,
-      borderRadius: 6,
+      borderRadius: getRadius(size),
       boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
       color: theme.gray800,
       cursor: 'pointer',
@@ -417,9 +436,13 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   // menuPortal
   multiValue: provided => ({
     ...provided,
-    background: theme.gray200,
-    fontWeight: 500,
+    alignItems: 'center',
+    background: theme.gray100,
+    borderRadius: theme.radius4,
+    fontWeight: 600,
+    maxHeight: 20,
     minWidth: 'inherit',
+    paddingRight: 2,
   }),
   multiValueLabel: provided => ({
     ...provided,
@@ -460,21 +483,21 @@ const localStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   }),
 };
 
-export interface StyledReactSelectProps<
-  Option extends IOption,
+export type StyledReactSelectProps<
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
-> extends Props<Option, IsMulti, Group>,
-    HelpTextProps,
-    AdditionalProps<Option['value']> {
+> = {
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
-}
+} & Props<Option, IsMulti, Group> &
+  HelpTextProps &
+  AdditionalProps<Option['value']>;
 
 export const StyledReactSelect = <
-  Option extends IOption,
+  Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({

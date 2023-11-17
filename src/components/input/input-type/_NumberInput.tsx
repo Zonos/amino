@@ -6,8 +6,8 @@ import {
   type FloatLabelInputProps,
   FloatLabelInput,
 } from 'src/components/input/input-type/_FloatLabelInput';
-import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
-import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
+import { CaretDownIcon } from 'src/icons/CaretDownIcon';
+import { CaretUpIcon } from 'src/icons/CaretUpIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
 
@@ -23,7 +23,7 @@ const StyledActionWrapper = styled.div<{ $size: Size }>`
   height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
 `;
 const StyledButtonAction = styled.button`
-  padding: ${theme.radius4};
+  padding: ${theme.space0} ${theme.space4};
   border-radius: ${theme.radius4};
   transition: ${theme.transition};
 
@@ -52,14 +52,14 @@ const AminoInput = styled(FloatLabelInput)`
 const getIconSize = (size: Size) => {
   switch (size) {
     case 'sm':
-      return 10;
-    case 'md':
-      return 12;
-    case 'lg':
       return 14;
+    case 'md':
+      return 16;
+    case 'lg':
+      return 18;
     case 'xl':
     default:
-      return 16;
+      return 20;
   }
 };
 
@@ -93,7 +93,7 @@ export const NumberInput = ({
                     }}
                     type="button"
                   >
-                    <ChevronUpIcon size={getIconSize(size)} />
+                    <CaretUpIcon size={getIconSize(size)} />
                   </StyledButtonAction>
                   <StyledButtonAction
                     onClick={() => {
@@ -104,7 +104,7 @@ export const NumberInput = ({
                     }}
                     type="button"
                   >
-                    <ChevronDownIcon size={getIconSize(size)} />
+                    <CaretDownIcon size={getIconSize(size)} />
                   </StyledButtonAction>
                 </StyledActionWrapper>
               )

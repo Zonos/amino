@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import { z } from 'zod';
 
-import { LegacyButton } from 'src/components/button/LegacyButton';
+import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
@@ -77,7 +77,7 @@ export const Storage = () => {
         value={input}
       />
       <HStack>
-        <LegacyButton onClick={submit}>Set Value as JSON</LegacyButton>
+        <Button onClick={submit}>Set Value as JSON</Button>
       </HStack>
     </VStack>
   );

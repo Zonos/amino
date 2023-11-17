@@ -3,11 +3,11 @@ import { forwardRef } from 'react';
 // eslint-disable-next-line import/no-internal-modules
 import * as flags from 'src/icons/flags/FlagIndex';
 
-export type IFlag = keyof typeof flags;
-export type IFlagScale = 'small' | 'medium' | 'large';
+export type Flag = keyof typeof flags;
+export type FlagScale = 'small' | 'medium' | 'large';
 
-export type FlagIconProps = { iconScale: IFlagScale } & {
-  code: IFlag;
+export type FlagIconProps = { iconScale: FlagScale } & {
+  code: Flag;
 };
 
 export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
