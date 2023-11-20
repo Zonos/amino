@@ -1,21 +1,19 @@
 import { type ReactNode } from 'react';
 
-import {
-  CheckoutColorIcon,
-  ClassifyColorIcon,
-  ClearColorIcon,
-  CollectColorIcon,
-  CounterCompanionColorIcon,
-  DashboardColorIcon,
-  HelloColorIcon,
-  InclusivePricingColorIcon,
-  LandedCostColorIcon,
-  PrepayColorIcon,
-  RateColorIcon,
-  RestrictColorIcon,
-  ScreenColorIcon,
-  TaxColorIcon,
-} from 'src/icons/IconIndex';
+import { CheckoutColorIcon } from 'src/icons/custom/products/CheckoutColorIcon';
+import { ClassifyColorIcon } from 'src/icons/custom/products/ClassifyColorIcon';
+import { ClearColorIcon } from 'src/icons/custom/products/ClearColorIcon';
+import { CollectColorIcon } from 'src/icons/custom/products/CollectColorIcon';
+import { CounterCompanionColorIcon } from 'src/icons/custom/products/CounterCompanionColorIcon';
+import { DashboardColorIcon } from 'src/icons/custom/products/DashboardColorIcon';
+import { HelloColorIcon } from 'src/icons/custom/products/HelloColorIcon';
+import { InclusivePricingColorIcon } from 'src/icons/custom/products/InclusivePricingColorIcon';
+import { LandedCostColorIcon } from 'src/icons/custom/products/LandedCostColorIcon';
+import { PrepayColorIcon } from 'src/icons/custom/products/PrepayColorIcon';
+import { RateColorIcon } from 'src/icons/custom/products/RateColorIcon';
+import { RestrictColorIcon } from 'src/icons/custom/products/RestrictColorIcon';
+import { ScreenColorIcon } from 'src/icons/custom/products/ScreenColorIcon';
+import { TaxColorIcon } from 'src/icons/custom/products/TaxColorIcon';
 import type { ColorPrefix } from 'src/types/Color';
 
 export type Product =

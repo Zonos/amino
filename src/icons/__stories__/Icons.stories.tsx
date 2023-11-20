@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import * as icons from 'src/icons/IconIndex';
+import * as icons from 'src/icons/_IconIndex';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';

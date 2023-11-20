@@ -61,8 +61,9 @@ module.exports = {
       },
     },
     {
-      files: ['svgReact/**', 'build-utils/**', '__stories__/**'],
+      files: ['svgReact/**', 'build-utils/**', '**/__stories__/**'],
       rules: {
+        'import/no-internal-modules': 'off',
         'no-console': 'off',
       },
     },
@@ -135,7 +136,11 @@ module.exports = {
       'error',
       {
         // allow to access to index.ts if that's types folder
-        forbid: ['**/src/!(types)/**/index.ts*', '**/src/index.ts*'],
+        forbid: [
+          '**/src/!(types)/**/index.ts*',
+          '**/src/index.ts*',
+          '**/src/icons/_IconIndex*',
+        ],
       },
     ],
     // Typescript takes care of this

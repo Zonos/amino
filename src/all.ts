@@ -378,7 +378,6 @@ import './icons/flags/ET';
 import './icons/flags/FI';
 import './icons/flags/FJ';
 import './icons/flags/FK';
-import './icons/flags/FlagIndex';
 import './icons/flags/FM';
 import './icons/flags/FO';
 import './icons/flags/FR';
