@@ -5,7 +5,7 @@ import {
   type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
 } from 'src/components/thumbnail/Thumbnail';
-import * as icons from 'src/icons/IconIndex';
+import * as icons from 'src/icons/_IconIndex';
 import { theme } from 'src/styles/constants/theme';
 
 const ThumbnailMeta: Meta = {

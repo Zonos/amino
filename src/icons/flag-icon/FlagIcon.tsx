@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 // eslint-disable-next-line import/no-internal-modules
-import * as flags from 'src/icons/flags/FlagIndex';
+import * as flags from 'src/icons/flags/_FlagIndex';
 
 export type Flag = keyof typeof flags;
 export type FlagScale = 'small' | 'medium' | 'large';

@@ -3,7 +3,7 @@ import { omitControls } from 'story-utils/omitControls';
 import styled from 'styled-components';
 
 import { type BadgeProps, Badge } from 'src/components/badge/Badge';
-import * as icons from 'src/icons/IconIndex';
+import * as icons from 'src/icons/_IconIndex';
 
 const omittedProps: (keyof BadgeProps)[] = ['iconRight', 'bold'];
 
