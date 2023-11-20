@@ -5,8 +5,5 @@
     "emitDeclarationOnly": true
   },
   "include": ["./src"],
-  "exclude": ["**/_*", "**/*IconIndex*"],
-  "buildOptions": {
-    "verbose": true
-  }
+  "exclude": ["**/_*"]
 }
