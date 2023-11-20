@@ -696,6 +696,8 @@ import './icons/TriangleDuotoneIcon';
 import './icons/TriangleIcon';
 import './icons/TruckDuotoneIcon';
 import './icons/TruckIcon';
+import './icons/UFODuotoneIcon';
+import './icons/UFOIcon';
 import './icons/UserDuotoneIcon';
 import './icons/UserIcon';
 import './icons/UtahDuotoneIcon';
