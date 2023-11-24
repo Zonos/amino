@@ -1,0 +1,43 @@
+@use 'theme';
+
+.card {
+  border: theme.$amino-border;
+  border-radius: theme.$amino-radius-6;
+  padding: theme.$amino-space-24;
+  background: theme.$amino-gray-0;
+
+  hr {
+    margin-left: theme.$amino-space-negative-24;
+    margin-right: theme.$amino-space-negative-24;
+  }
+}
+
+.cardHeader {
+  margin: theme.$amino-space-negative-24;
+  padding: theme.$amino-space-24;
+  display: flex;
+  align-items: center;
+  margin-bottom: theme.$amino-space-24;
+  border-bottom: theme.$amino-border;
+  height: 65px;
+  line-height: 65px;
+  user-select: none;
+
+  h5 {
+    margin-bottom: 0;
+    flex: 1;
+  }
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: theme.$amino-space-negative-24;
+  padding: theme.$amino-space-24;
+  border-top: theme.$amino-border;
+  background: theme.$amino-surface-color-secondary;
+  margin-top: theme.$amino-space-24;
+  border-bottom-left-radius: theme.$amino-radius-8;
+  border-bottom-right-radius: theme.$amino-radius-8;
+}
