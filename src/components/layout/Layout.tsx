@@ -31,16 +31,16 @@ export const Layout = ({
   searchInput,
   sidebar,
 }: LayoutProps) => (
-  <main className={[className, layoutStyles.aminoLayout].join(' ')}>
+  <main
+    className={[className, layoutStyles.aminoLayout].join(' ')}
+    style={{
+      '--height': headerContent ? `calc(100vh - ${theme.appbarHeight})` : '',
+    }}
+  >
     {!!headerContent && (
       <header className={layoutStyles.header}>{headerContent}</header>
     )}
-    <div
-      className={layoutStyles.contentGrid}
-      style={{
-        height: headerContent ? `calc(100vh - ${theme.appbarHeight})` : '100vh',
-      }}
-    >
+    <div className={layoutStyles.contentGrid}>
       <nav className={layoutStyles.styledSidebar}>
         <div className={layoutStyles.sidebarContent}>
           {!!logoSidebar && (

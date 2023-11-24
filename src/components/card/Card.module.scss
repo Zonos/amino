@@ -1,23 +1,29 @@
 @use 'theme';
 
+$padding-spacing: var(--padding-spacing, theme.$amino-space-24);
+$margin-bottom: var(--margin-bottom, theme.$amino-space-24);
+$margin-top: var(--margin-top, theme.$amino-space-24);
+$margin: var(--margin, theme.$amino-space-negative-24);
+$footer-height: var(--footer-height, 65px);
+
 .card {
   border: theme.$amino-border;
   border-radius: theme.$amino-radius-6;
-  padding: theme.$amino-space-24;
+  padding: $padding-spacing;
   background: theme.$amino-gray-0;
 
   hr {
-    margin-left: theme.$amino-space-negative-24;
-    margin-right: theme.$amino-space-negative-24;
+    margin-left: $margin;
+    margin-right: $margin;
   }
 }
 
 .cardHeader {
-  margin: theme.$amino-space-negative-24;
-  padding: theme.$amino-space-24;
+  margin: $margin;
+  margin-bottom: $margin-bottom;
+  padding: $padding-spacing;
   display: flex;
   align-items: center;
-  margin-bottom: theme.$amino-space-24;
   border-bottom: theme.$amino-border;
   height: 65px;
   line-height: 65px;
@@ -33,11 +39,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: theme.$amino-space-negative-24;
-  padding: theme.$amino-space-24;
+  margin: $margin;
+  padding: $padding-spacing;
   border-top: theme.$amino-border;
   background: theme.$amino-surface-color-secondary;
-  margin-top: theme.$amino-space-24;
+  margin-top: $margin-top;
   border-bottom-left-radius: theme.$amino-radius-8;
   border-bottom-right-radius: theme.$amino-radius-8;
+  height: $footer-height;
 }

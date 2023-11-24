@@ -1,10 +1,9 @@
-// Card.tsx
-
 import type { ReactNode } from 'react';
+
+import clsx from 'clsx';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Card.module.scss';
@@ -27,21 +26,20 @@ export const Card = ({
   footerContent,
   footerHeight,
   label,
-  spacing = theme.space24,
+  spacing,
 }: CardProps) => (
   <div
-    className={`${styles.card} ${className || ''}`}
-    style={{ padding: spacing }}
+    className={clsx(className, styles.card)}
+    style={{
+      '--footer-height': footerHeight ? `${footerHeight}px` : '',
+      '--margin': spacing ? `calc(${spacing} * -1)` : '',
+      '--margin-bottom': spacing || '',
+      '--margin-top': spacing || '',
+      '--padding-spacing': spacing || '',
+    }}
   >
     {label && (
-      <div
-        className={styles.cardHeader}
-        style={{
-          margin: spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24,
-          marginBottom: spacing || theme.space24,
-          padding: spacing || theme.space24,
-        }}
-      >
+      <div className={styles.cardHeader}>
         <Text type="subheader">{label}</Text>
 
         <HStack spacing={8}>{actions}</HStack>
@@ -49,15 +47,7 @@ export const Card = ({
     )}
     {children}
     {(footerActions || footerContent) && (
-      <div
-        className={styles.cardFooter}
-        style={{
-          height: footerHeight && `${footerHeight}px`,
-          margin: spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24,
-          marginTop: spacing || theme.space24,
-          padding: spacing || theme.space24,
-        }}
-      >
+      <div className={styles.cardFooter}>
         <div>{footerContent}</div>
         <HStack spacing={8}>{footerActions}</HStack>
       </div>
