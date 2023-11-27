@@ -1,12 +1,14 @@
 @use 'theme';
 
+$height: var(--height);
+
 .aminoLayout {
   height: 100vh;
   overflow: hidden;
 }
 
 .contentGrid {
-  height: theme.$amino-appbar-height;
+  height: $height;
   display: grid;
   grid-template-columns: theme.$amino-sidebar-width 1fr;
 }
