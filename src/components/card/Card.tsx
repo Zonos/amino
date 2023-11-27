@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Card.module.scss';
@@ -31,11 +32,11 @@ export const Card = ({
   <div
     className={clsx(className, styles.card)}
     style={{
-      '--footer-height': footerHeight ? `${footerHeight}px` : '',
-      '--margin': spacing ? `calc(${spacing} * -1)` : '',
-      '--margin-bottom': spacing || '',
-      '--margin-top': spacing || '',
-      '--padding-spacing': spacing || '',
+      '--footer-height': footerHeight ? `${footerHeight}px` : '65px',
+      '--margin': spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24,
+      '--margin-bottom': spacing || theme.space24,
+      '--margin-top': spacing || theme.space24,
+      '--padding-spacing': spacing || theme.space24,
     }}
   >
     {label && (

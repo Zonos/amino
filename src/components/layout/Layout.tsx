@@ -34,7 +34,9 @@ export const Layout = ({
   <main
     className={[className, layoutStyles.aminoLayout].join(' ')}
     style={{
-      '--height': headerContent ? `calc(100vh - ${theme.appbarHeight})` : '',
+      '--height': headerContent
+        ? `calc(100vh - ${theme.appbarHeight})`
+        : '100vh',
     }}
   >
     {!!headerContent && (

@@ -1,6 +1,6 @@
 @use 'theme';
 
-$height: var(--height, '100vh');
+$height: var(--height);
 
 .aminoLayout {
   height: 100vh;
