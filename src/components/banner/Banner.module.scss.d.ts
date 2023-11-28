@@ -1,0 +1,14 @@
+export declare const actionsWrapper: string;
+export declare const bannerFooter: string;
+export declare const bannerHeader: string;
+export declare const close: string;
+export declare const closeButton: string;
+export declare const container: string;
+export declare const content: string;
+export declare const defaultBanner: string;
+export declare const errorBanner: string;
+export declare const header: string;
+export declare const icon: string;
+export declare const infoBanner: string;
+export declare const successBanner: string;
+export declare const warningBanner: string;
