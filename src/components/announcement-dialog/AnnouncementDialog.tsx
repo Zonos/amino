@@ -1,6 +1,5 @@
-import { type ReactNode, forwardRef } from 'react';
+import React, { type ReactNode, forwardRef } from 'react';
 
-import styled from 'styled-components';
 import { z } from 'zod';
 
 import {
@@ -9,21 +8,9 @@ import {
 } from 'src/components/dialog/BaseDialog';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 import { useStorage } from 'src/utils/hooks/useStorage';
 
-const Content = styled(VStack)`
-  padding: ${theme.space16} ${theme.space24};
-  overflow-y: auto;
-  flex-grow: 1;
-`;
-
-const StyledImage = styled.div<{ $imageWidth?: number }>`
-  width: ${props => `${props.$imageWidth}px` || '100%'};
-  height: auto;
-  margin: ${props => (props.$imageWidth ? '0 auto' : 'unset')};
-  margin-bottom: ${theme.space16};
-`;
+import styles from './AnnouncementDialog.module.scss';
 
 export type AnnouncementDialogProps = BaseDialogProps & {
   announcementId: string;
@@ -72,8 +59,16 @@ export const AnnouncementDialog = forwardRef<
         }}
         open={open || !announcementSeen}
       >
-        <StyledImage $imageWidth={imageWidth}>{image}</StyledImage>
-        <Content spacing={8}>
+        <div
+          className={styles.styledImage}
+          style={{
+            '--image-margin': imageWidth ? '0 auto' : 'unset',
+            '--image-width': imageWidth ? `${imageWidth}px` : '100%',
+          }}
+        >
+          {image}
+        </div>
+        <VStack className={styles.content} spacing={8}>
           <Text color="blue600" type="label">
             {label}
           </Text>
@@ -81,7 +76,7 @@ export const AnnouncementDialog = forwardRef<
           <div ref={ref}>
             <Text color="gray800">{children}</Text>
           </div>
-        </Content>
+        </VStack>
       </BaseDialog>
     );
   },

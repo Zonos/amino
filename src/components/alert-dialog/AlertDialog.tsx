@@ -1,6 +1,4 @@
-import type { ReactNode } from 'react';
-
-import styled from 'styled-components';
+import { type ReactNode } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/BaseDialog';
@@ -10,42 +8,10 @@ import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon';
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
-import { theme } from 'src/styles/constants/theme';
 import { type Intent } from 'src/types/Intent';
 import { type Theme } from 'src/types/Theme';
 
-const Content = styled.div`
-  padding: ${theme.space24};
-
-  & > div {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const Footer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: ${theme.space24};
-
-  & > button + button {
-    margin-left: ${theme.space8};
-  }
-
-  button {
-    flex: 1;
-  }
-`;
-
-const AlertPrompt = styled.span`
-  color: ${theme.textColorSecondary};
-  line-height: ${theme.lineHeightBase};
-  font-size: ${theme.fontSizeBase};
-`;
+import styles from './AlertDialog.module.scss';
 
 export type AlertDialogProps = {
   dismissText: string;
@@ -112,7 +78,7 @@ export const AlertDialog = ({
     open={open}
     width={350}
   >
-    <Content>
+    <div className={styles.aminoContent}>
       <VStack spacing={24}>
         <Thumbnail
           color={getColorForIntent(intent)}
@@ -121,9 +87,9 @@ export const AlertDialog = ({
         />
         <VStack spacing={8}>
           <Text type="subheader">{label}</Text>
-          <AlertPrompt>{subtitle}</AlertPrompt>
+          <span className={styles.aminoAlertPrompt}>{subtitle}</span>
         </VStack>
-        <Footer>
+        <div className={styles.aminoFooter}>
           <Button
             onClick={dismissAction}
             size="lg"
@@ -131,8 +97,8 @@ export const AlertDialog = ({
           >
             {dismissText}
           </Button>
-        </Footer>
+        </div>
       </VStack>
-    </Content>
+    </div>
   </BaseDialog>
 );
