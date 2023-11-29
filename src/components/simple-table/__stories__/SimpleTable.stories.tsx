@@ -117,6 +117,17 @@ export const Basic = () => (
   />
 );
 
+const link = 'https://letmegooglethat.com';
+
+export const WithLink = () => (
+  <SimpleTable
+    getRowLink={item => `${link}/?q=${item.name}`}
+    headers={tableHeaders}
+    items={items}
+    keyExtractor={item => String(item.id)}
+  />
+);
+
 export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -163,7 +174,7 @@ export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
 };
 
 export const Loading = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
     <>
