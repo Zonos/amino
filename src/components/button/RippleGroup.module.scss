@@ -1,0 +1,39 @@
+@use 'theme';
+
+$color: var(--color);
+$duration: var(--duration);
+$opacity: var(--opacity);
+
+.rippleRoot {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+
+  .ripple {
+    overflow: hidden;
+    position: absolute;
+    border-radius: 50%;
+    opacity: $opacity;
+    transform: scale(4);
+    animation: rippleAnimation $duration ease-out;
+    background-color: $color;
+  }
+}
+
+@keyframes rippleAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0.1;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: $opacity;
+  }
+}
