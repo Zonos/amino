@@ -10,5 +10,6 @@ export declare const errorBanner: string;
 export declare const header: string;
 export declare const icon: string;
 export declare const infoBanner: string;
+export declare const styledBanner: string;
 export declare const successBanner: string;
 export declare const warningBanner: string;

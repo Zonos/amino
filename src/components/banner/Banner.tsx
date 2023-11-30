@@ -169,6 +169,8 @@ export const Banner = ({
 
   const bannerClass = intent ? styles[`${intent}Banner`] : styles.defaultBanner;
   return (
-    <div className={clsx([bannerClass, className])}>{renderContent()}</div>
+    <div className={clsx([styles.styledBanner, bannerClass, className])}>
+      {renderContent()}
+    </div>
   );
 };
