@@ -1,6 +1,7 @@
 import {
   type ComponentPropsWithoutRef,
   type HTMLAttributes,
+  type MouseEventHandler,
   type ReactNode,
   useRef,
 } from 'react';
@@ -56,13 +57,27 @@ type ButtonBase = BaseProps & {
   variant?: Variant;
 };
 
+/** These types are a bit cobbled together to allow for the polymorphic tag names.
+ * It may be a good idea to look into refactoring this funcitonality
+ */
+
 export type GroupTag = 'div' | 'a' | 'button';
 
 const DEFAULT_TAG = 'button' as const;
 
-type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> = ButtonBase & {
-  tag?: T | GroupTag;
-} & (ComponentPropsWithoutRef<T> & HTMLAttributes<HTMLElement>);
+type MyHtmlElement<T extends GroupTag> = T extends 'a'
+  ? HTMLAnchorElement
+  : T extends 'button'
+  ? HTMLButtonElement
+  : HTMLElement;
+
+export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
+  ButtonBase & {
+    href?: T extends 'a' ? string : never;
+    onClick?: MouseEventHandler<MyHtmlElement<T>>;
+    tag?: T | GroupTag;
+  } & (Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'> &
+      HTMLAttributes<HTMLElement>);
 
 export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   children,
