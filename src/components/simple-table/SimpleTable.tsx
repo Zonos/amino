@@ -1,65 +1,89 @@
 import type { ReactNode } from 'react';
 
+import clsx from 'clsx';
 import styled from 'styled-components';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import type { StyledProps } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
 
-const Table = styled.table`
+const TableStyled = styled.table`
   width: 100%;
-`;
 
-const Header = styled.thead`
-  text-transform: uppercase;
-`;
+  > thead {
+    text-transform: uppercase;
 
-const HeaderRow = styled.tr`
-  border-bottom: ${theme.border};
-  height: 56px;
-`;
+    > tr {
+      border-bottom: ${theme.border};
+      height: 56px;
 
-type StyledHeaderColumn = {
-  textAlign: SimpleTableHeaderBaseProps['align'];
-};
-const HeaderColumn = styled.th<StyledProps<StyledHeaderColumn>>`
-  padding: ${theme.space16};
-  white-space: nowrap;
-  text-align: ${p => p.$textAlign};
-`;
+      > th {
+        padding: ${theme.space16};
+        white-space: nowrap;
 
-const Row = styled.tr<{ $clickable: boolean }>`
-  height: 48px;
-  cursor: ${p => (p.$clickable ? 'pointer' : 'auto')};
-  & {
-    border-bottom: ${theme.border};
-  }
-
-  &.with-hover:hover {
-    background-color: ${theme.gray50};
-  }
-
-  &:not(:hover) {
-    .row-hover-show {
-      visibility: collapse;
+        &.noPadding {
+          padding: 0;
+        }
+      }
     }
   }
-`;
 
-type StyledRowColumn = {
-  noPadding: boolean;
-  textAlign: SimpleTableHeaderBaseProps['align'];
-};
-const RowColumn = styled.td<StyledProps<StyledRowColumn>>`
-  padding: ${p => (!p.$noPadding ? theme.space12 : undefined)};
-  text-align: ${p => p.$textAlign};
+  > tbody {
+    > tr {
+      height: 48px;
 
-  &:not(:hover) {
-    .cell-hover-show {
-      visibility: collapse;
+      & {
+        border-bottom: ${theme.border};
+      }
+
+      &.withHover:hover {
+        background-color: ${theme.gray50};
+      }
+
+      &.clickable {
+        cursor: pointer;
+      }
+
+      &:not(:hover) {
+        .row-hover-show {
+          visibility: collapse;
+        }
+      }
+
+      > td {
+        padding: ${theme.space12};
+
+        &.noPadding {
+          padding: 0;
+        }
+
+        &.loading {
+          text-align: center;
+        }
+
+        &:not(:hover) {
+          .cell-hover-show {
+            visibility: collapse;
+          }
+        }
+
+        &.cellLink {
+          padding: 0;
+
+          > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: ${theme.space12};
+
+            &.noPadding {
+              padding: 0;
+            }
+          }
+        }
+      }
     }
   }
 `;
@@ -144,6 +168,10 @@ export type SimpleTableProps<T extends object> = BaseProps & {
      */
     renderCustomRowCheckbox?: (item: T, index: number) => ReactNode;
   };
+  /**
+   * Will make the whole row (each td) an anchor tag so native link functionality exists. If clicking just navigates, use this over onRowClick.
+   */
+  getRowLink?: (item: T) => string;
   /** Adding unique list keys */
   keyExtractor: (item: T) => string;
   /**
@@ -165,6 +193,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
  */
 export const SimpleTable = <T extends object>({
   className,
+  getRowLink,
   headers,
   items,
   keyExtractor,
@@ -181,92 +210,121 @@ export const SimpleTable = <T extends object>({
   const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
     const value = item[header.key];
 
+    const renderContent = (content: ReactNode) => {
+      if (getRowLink) {
+        return (
+          <td key={header.key} className="cellLink">
+            <a
+              className={clsx({
+                noPadding: header.noPadding,
+              })}
+              href={getRowLink(item)}
+              style={{
+                textAlign: header.align || 'start',
+              }}
+            >
+              {content}
+            </a>
+          </td>
+        );
+      }
+
+      return (
+        <td
+          key={header.key}
+          className={clsx({
+            noPadding: header.noPadding,
+          })}
+          style={{
+            textAlign: header.align || 'start',
+          }}
+        >
+          {content}
+        </td>
+      );
+    };
+
     return header.renderCustom ? (
-      <RowColumn
-        key={header.key}
-        $noPadding={header.noPadding || false}
-        $textAlign={header.align || 'start'}
-      >
-        {header.renderCustom(value, item)}
-      </RowColumn>
+      <>{renderContent(header.renderCustom(value, item))}</>
     ) : (
-      <RowColumn
-        key={header.key}
-        $noPadding={header.noPadding || false}
-        $textAlign={header.align || 'start'}
-      >
-        {String(value)}
-      </RowColumn>
+      <>{renderContent(String(value))}</>
     );
   };
 
   const renderRows = () => {
     if (loading) {
       return [...Array(loadingItems + 1).keys()].map(n => (
-        <Row key={n} $clickable={false}>
+        <tr key={n}>
           {selectable.enabled && (
             <td>
               <Skeleton key={n} height={30} />
             </td>
           )}
           {headers.map(header => (
-            <RowColumn
+            <td
               key={header.key}
-              $noPadding={!!header.noPadding}
-              $textAlign="center"
+              className={clsx({
+                loading: true,
+                noPadding: header.noPadding,
+              })}
             >
               <Skeleton key={n} height={30} />
-            </RowColumn>
+            </td>
           ))}
-        </Row>
+        </tr>
       ));
     }
 
-    return items.map((item, index) => (
-      <Row
-        key={keyExtractor(item)}
-        $clickable={
-          !!onRowClick ||
-          (!!selectable.anySelected && !!selectable.onRowCheckboxChange)
-        }
-        className={!noHoverBackground ? 'with-hover' : ''}
-        onClick={() => {
-          if (selectable.anySelected) {
-            if (!selectable.isRowCheckboxDisabled?.(item, index)) {
-              selectable.onRowCheckboxChange?.(
-                !selectable.isRowChecked?.(item, index),
-                item,
-                index,
-              );
+    return items.map((item, index) => {
+      const clickable =
+        !!onRowClick ||
+        (!!selectable.anySelected && !!selectable.onRowCheckboxChange);
+
+      return (
+        <tr
+          key={keyExtractor(item)}
+          className={clsx({
+            clickable,
+            withHover: !noHoverBackground,
+          })}
+          onClick={() => {
+            if (selectable.anySelected) {
+              if (!selectable.isRowCheckboxDisabled?.(item, index)) {
+                selectable.onRowCheckboxChange?.(
+                  !selectable.isRowChecked?.(item, index),
+                  item,
+                  index,
+                );
+              }
+            } else {
+              onRowClick?.(item);
             }
-          } else {
-            onRowClick?.(item);
-          }
-        }}
-        onMouseEnter={() => onRowHover?.(item)}
-      >
-        {selectable.enabled && (
-          <td>
-            {selectable.renderCustomRowCheckbox?.(item, index) || (
-              <StyledCheckbox
-                checked={selectable.isRowChecked?.(item, index) || false}
-                disabled={
-                  selectable.isRowCheckboxDisabled?.(item, index) || false
-                }
-                onChange={checked =>
-                  selectable.onRowCheckboxChange?.(checked, item, index)
-                }
-              />
-            )}
-          </td>
-        )}
-        {headers.map(header => renderHeader(header, item))}
-      </Row>
-    ));
+          }}
+          onMouseEnter={() => onRowHover?.(item)}
+        >
+          {selectable.enabled && (
+            <td className="noPadding">
+              {selectable.renderCustomRowCheckbox?.(item, index) || (
+                <StyledCheckbox
+                  checked={selectable.isRowChecked?.(item, index) || false}
+                  disabled={
+                    selectable.isRowCheckboxDisabled?.(item, index) || false
+                  }
+                  onChange={checked =>
+                    selectable.onRowCheckboxChange?.(checked, item, index)
+                  }
+                />
+              )}
+            </td>
+          )}
+          {headers.map(header => renderHeader(header, item))}
+        </tr>
+      );
+    });
   };
 
   return (
-    <Table className={className}>
+    <TableStyled className={className}>
       <colgroup>
         {!!selectable.onHeaderCheckboxChange && <col width={0} />}
         {headers.map(header => (
@@ -276,10 +334,10 @@ export const SimpleTable = <T extends object>({
           />
         ))}
       </colgroup>
-      <Header>
-        <HeaderRow>
+      <thead>
+        <tr>
           {!!selectable.onHeaderCheckboxChange && (
-            <th>
+            <th className="noPadding">
               {selectable.renderCustomHeaderCheckbox || (
                 <StyledCheckbox
                   checked={
@@ -292,16 +350,21 @@ export const SimpleTable = <T extends object>({
             </th>
           )}
           {headers.map(header => (
-            <HeaderColumn key={header.key} $textAlign={header.align || 'start'}>
+            <th
+              key={header.key}
+              style={{
+                textAlign: header.align || 'start',
+              }}
+            >
               <Text color="gray800" type="small-header">
                 {header.name}
               </Text>
-            </HeaderColumn>
+            </th>
           ))}
-        </HeaderRow>
-      </Header>
+        </tr>
+      </thead>
       <tbody>{renderRows()}</tbody>
       {renderFooter}
-    </Table>
+    </TableStyled>
   );
 };

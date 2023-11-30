@@ -22,6 +22,10 @@ export type FilterSelectProps<
     | CustomSelectProps<T, O>
     | ((editingValue: O | null) => CustomSelectProps<T, O>);
   value: O | null;
+  /**
+   * @default `is ${value.label}`
+   */
+  getFilterText?: (value: O) => string;
   onChange: (value: O | null) => void;
 };
 
@@ -29,6 +33,7 @@ export const FilterSelect = <
   T extends string = string,
   O extends SelectOption<T> = SelectOption<T>,
 >({
+  getFilterText = v => `is ${v.label}`,
   onChange,
   options,
   selectProps,
@@ -40,7 +45,10 @@ export const FilterSelect = <
 
   const handleApply: FilterApplyCallback = setFilterText => {
     onChange(editingValue);
-    setFilterText(`is ${editingValue?.label || ''}`);
+    if (editingValue) {
+      const filterText = getFilterText(editingValue);
+      setFilterText(filterText);
+    }
   };
 
   const handleRemove = () => {
