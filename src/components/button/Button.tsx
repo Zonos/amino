@@ -78,8 +78,7 @@ export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
     href?: T extends 'a' ? string : never;
     onClick?: MouseEventHandler<MyHtmlElement<T>>;
     tag?: T | GroupTag;
-  } & (Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'> &
-      HTMLAttributes<HTMLElement>);
+  } & Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'>;
 
 export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   children,
@@ -156,10 +155,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     size,
   };
 
-  const buttonProps: ButtonProps = {
+  const buttonProps = {
     type,
     ...baseProps,
-    ...(props as ButtonProps),
+    ...(props as HTMLAttributes<HTMLElement>),
     ...getRippleHandlers(props),
   };
 
@@ -305,8 +304,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   return (
     <Tag
-      className={buttonClassName}
       style={{
+        ...style,
         '--amino-button-background-color': getBackgroundColor(),
         '--amino-button-color': getColor(),
         '--amino-button-disabled-opacity': outline ? 0.6 : 1,
@@ -316,10 +315,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         '--amino-button-radius': getRadius(),
         '--amino-button-size': `var(--amino-size-${size})`,
         '--amino-button-width': props.fitContentWidth ? 'fit-content' : '',
-        ...style,
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
-      type={type}
       {...buttonProps}
     >
       {renderContent(spinnerColor || getDefaultSpinnerColor())}
