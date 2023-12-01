@@ -1,15 +1,14 @@
 @use 'theme';
-@use 'sass:meta';
 
-$buttonSize: var(--button-size);
-$buttonWidth: var(--button-width);
-$disabledOpacity: var(--disabled-opacity);
-$buttonPadding: var(--button-padding);
-$buttonRadius: var(--button-radius);
-$buttonFontWeight: var(--button-font-weight);
-$aminoColor: var(--amino-color, null);
-$backgroundColor: var(--amino-background-color, null);
-$hoverBackgroundColor: var(--hover-background-color);
+$button-size: var(--amino-button-size);
+$button-width: var(--amino-button-width);
+$disabled-opacity: var(--amino-disabled-opacity);
+$button-padding: var(--amino-button-padding);
+$button-radius: var(--amino-button-radius);
+$button-font-weight: var(--amino-button-font-weight);
+$amino-color: var(--amino-button-color);
+$background-color: var(--amino-button-background-color);
+$hover-background-color: var(--amino-button-hover-background-color);
 
 .spinnerWrapper {
   position: absolute;
@@ -25,15 +24,15 @@ $hoverBackgroundColor: var(--hover-background-color);
 }
 
 .aminoButton {
-  background: $backgroundColor;
-  color: $aminoColor;
-  padding: $buttonPadding;
-  font-weight: $buttonFontWeight;
-  border-radius: $buttonRadius;
+  background: $background-color;
+  color: $amino-color;
+  padding: $button-padding;
+  font-weight: $button-font-weight;
+  border-radius: $button-radius;
   position: relative;
   outline: none;
-  height: $buttonSize;
-  line-height: $buttonSize;
+  height: $button-size;
+  line-height: $button-size;
   font-size: theme.$amino-font-size-base;
   box-sizing: border-box;
   display: flex;
@@ -48,7 +47,7 @@ $hoverBackgroundColor: var(--hover-background-color);
   letter-spacing: normal;
   cursor: pointer;
   white-space: nowrap;
-  width: $buttonWidth;
+  width: $button-width;
   text-shadow:
     0px 2px 4px rgba(0, 0, 0, 0.02),
     0px 1px 2px rgba(0, 0, 0, 0.04);
@@ -62,7 +61,7 @@ $hoverBackgroundColor: var(--hover-background-color);
   }
 
   &.onlyIcon {
-    width: $buttonSize;
+    width: $button-size;
     padding: 0;
   }
 
@@ -106,13 +105,13 @@ $hoverBackgroundColor: var(--hover-background-color);
 
   &:not([disabled]) {
     &:hover {
-      background-image: $hoverBackgroundColor;
+      background-image: $hover-background-color;
     }
   }
 
   &[disabled] {
     cursor: not-allowed;
-    opacity: $disabledOpacity;
+    opacity: $disabled-opacity;
   }
 
   &.primaryButton {

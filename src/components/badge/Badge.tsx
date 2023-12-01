@@ -49,22 +49,24 @@ export const Badge = ({
   iconRight = false,
   rounded = false,
   size = 'default',
+  style,
 }: BadgeProps) => (
   <div
-    className={clsx([styles.badgeWrapper, className])}
+    className={clsx(styles.badgeWrapper, className)}
     style={{
-      '--border-radius': rounded ? '20px' : theme.radius6,
-      '--font-weight': fontWeight,
-      '--order': iconRight ? '2' : '',
+      ...style,
+      '--amino-badge-border-radius': rounded ? '20px' : theme.radius6,
+      '--amino-badge-font-weight': fontWeight,
+      '--amino-badge-order': iconRight ? '2' : '',
     }}
   >
     <div
-      className={clsx([
+      className={clsx(
         styles.styledBadge,
         color !== 'gray' ? styles[color] : '',
         size === 'small' ? styles[size] : '',
         bold ? styles.bold : '',
-      ])}
+      )}
     >
       {icon}
       <p>{children}</p>

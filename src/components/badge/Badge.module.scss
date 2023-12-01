@@ -1,8 +1,8 @@
 @use 'theme';
 
-$borderRadius: var(--border-radius);
-$fontWeight: var(--font-weight);
-$order: var(--order);
+$border-radius: var(--amino-badge-border-radius);
+$font-weight: var(--amino-badge-font-weight);
+$order: var(--amino-badge-order);
 
 .badgeWrapper {
   display: inline-block;
@@ -17,8 +17,8 @@ $order: var(--order);
   background-color: theme.$amino-gray-100;
   color: theme.$amino-gray-800;
   align-items: center;
-  border-radius: $borderRadius;
-  font-weight: $fontWeight;
+  border-radius: $border-radius;
+  font-weight: $font-weight;
   order: $order;
 
   p {

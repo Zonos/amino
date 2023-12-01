@@ -1,0 +1,27 @@
+@use 'theme';
+
+.buttonIcon {
+  padding: 0;
+  path[data-is-secondary-color] {
+    fill: theme.$amino-gray-200;
+  }
+
+  &,
+  &:focus,
+  &:hover,
+  &:active {
+    color: theme.$amino-gray-800 !important;
+    background: transparent !important;
+  }
+  &:hover {
+    path[data-is-secondary-color] {
+      fill: theme.$amino-gray-300 !important;
+    }
+  }
+  &:active,
+  &:focus {
+    path[data-is-secondary-color] {
+      fill: theme.$amino-gray-400 !important;
+    }
+  }
+}

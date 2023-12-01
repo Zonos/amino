@@ -8,12 +8,13 @@ import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon';
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 import { type Intent } from 'src/types/Intent';
 import { type Theme } from 'src/types/Theme';
 
 import styles from './AlertDialog.module.scss';
 
-export type AlertDialogProps = {
+export type AlertDialogProps = BaseProps & {
   dismissText: string;
   intent: Intent;
   label: string;
@@ -69,6 +70,7 @@ export const AlertDialog = ({
   intent,
   label,
   open,
+  style,
   subtitle,
   themeOverride,
 }: AlertDialogProps) => (
@@ -76,6 +78,7 @@ export const AlertDialog = ({
     data-theme={themeOverride}
     onClose={dismissAction}
     open={open}
+    style={style}
     width={350}
   >
     <div className={styles.aminoContent}>

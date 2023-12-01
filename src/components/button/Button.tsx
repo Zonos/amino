@@ -69,11 +69,12 @@ type MyHtmlElement<T extends GroupTag> = T extends 'a'
   ? HTMLAnchorElement
   : T extends 'button'
   ? HTMLButtonElement
-  : HTMLElement;
+  : HTMLDivElement;
 
 // source: https://stackoverflow.com/questions/55969769/typing-a-dynamic-tag-in-react-with-typescript#:~:text=I%20don%27t%20see,the%20div%20tag.
 export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
   ButtonBase & {
+    // Temporary fix for using styled components on Button. Remove after moving all buttons to CSS modules in the dashboard.
     href?: T extends 'a' ? string : never;
     onClick?: MouseEventHandler<MyHtmlElement<T>>;
     tag?: T | GroupTag;
@@ -92,6 +93,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   outline = false,
   size = 'sm',
   spinnerColor,
+  style,
   tag = DEFAULT_TAG,
   themeOverride,
   type = 'button',
@@ -127,7 +129,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     </>
   );
 
-  const buttonClassName = clsx([
+  const buttonClassName = clsx(
     'amino-button',
     styles.aminoButton,
     variant === 'plain' ? '' : styles[`${variant}Button`],
@@ -138,7 +140,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     icon ? styles.hasIcon : '',
     loading ? styles.loading : '',
     themeOverride,
-  ]);
+  );
 
   const rippleRef = useRef<RippleActions>(null);
 
@@ -271,11 +273,9 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'standard':
         return theme.buttonStandardHover;
       case 'subtle':
-        return `linear-gradient(${theme.gray100}, ${theme.gray100})`;
+        return theme.gray100;
       case 'link':
-        return `linear-gradient(${theme.blue100}, ${theme.blue100})`;
-      case 'text':
-        return `linear-gradient(${theme.gray500}, ${theme.gray500})`;
+        return theme.blue100;
       default:
         return '';
     }
@@ -307,15 +307,16 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     <Tag
       className={buttonClassName}
       style={{
-        '--amino-background-color': getBackgroundColor(),
-        '--amino-color': getColor(),
-        '--button-font-weight': getFontWeight(),
-        '--button-padding': getPadding(),
-        '--button-radius': getRadius(),
-        '--button-size': `var(--amino-size-${size})`,
-        '--button-width': props.fitContentWidth ? 'fit-content' : '',
-        '--disabled-opacity': outline ? 0.6 : 1,
-        '--hover-background-color': getHoverBackground(),
+        '--amino-button-background-color': getBackgroundColor(),
+        '--amino-button-color': getColor(),
+        '--amino-button-disabled-opacity': outline ? 0.6 : 1,
+        '--amino-button-font-weight': getFontWeight(),
+        '--amino-button-hover-background-color': getHoverBackground(),
+        '--amino-button-padding': getPadding(),
+        '--amino-button-radius': getRadius(),
+        '--amino-button-size': `var(--amino-size-${size})`,
+        '--amino-button-width': props.fitContentWidth ? 'fit-content' : '',
+        ...style,
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
       type={type}

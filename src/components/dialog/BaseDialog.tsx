@@ -86,6 +86,7 @@ export const BaseDialog = ({
   onClose,
   open,
   popupMotionProps,
+  style,
   themeOverride,
   width = 444,
   withBackdrop = true,
@@ -154,6 +155,7 @@ export const BaseDialog = ({
               // reset the mouse down target
               mouseDownTarget.current = null;
             }}
+            style={style}
             tabIndex={-1}
             transition={{ duration: 0.3 }}
           >

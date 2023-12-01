@@ -1,14 +1,17 @@
 @use 'theme';
 
-$container-align-items: var(--container-align-items);
-$container-grid-template-columns: var(--container-grid-template-columns);
-$header-color: var(--header-color);
+$container-align-items: var(--amino-banner-container-align-items);
+$container-grid-template-columns: var(
+  --amino-banner-container-grid-template-columns
+);
+$header-color: var(--amino-banner-header-color);
 
 .styledBanner {
   border-radius: theme.$amino-radius-12;
   padding: theme.$amino-space-16;
-  [class~='amino-button'] {
-    & :hover,
+
+  :global(.amino-button) {
+    &:hover,
     &:focus {
       filter: brightness(1.1);
     }

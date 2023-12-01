@@ -44,6 +44,7 @@ export type FullAvatarProps = BaseProps & {
 
 type AvatarBaseProps = BaseProps & {
   children?: ReactNode;
+  style?: React.CSSProperties;
 } & Required<AvatarProps> &
   AvatarStyleProps;
 
@@ -57,10 +58,12 @@ export const AvatarBase = ({
   className,
   shape,
   size,
+  style,
 }: AvatarBaseProps) => (
   <div
-    className={clsx([styles.wrapper, className])}
+    className={clsx(styles.wrapper, className)}
     style={{
+      ...style,
       '--background-color': backgroundColor || `${theme.gray100}`,
       '--background-image': `url(${backgroundUrl})`,
       '--background-position': backgroundPosition || 'center',

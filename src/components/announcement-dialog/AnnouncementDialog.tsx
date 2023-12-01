@@ -1,4 +1,4 @@
-import React, { type ReactNode, forwardRef } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 
 import { z } from 'zod';
 
@@ -34,6 +34,7 @@ export const AnnouncementDialog = forwardRef<
       label,
       onClose,
       open,
+      style,
       title,
       ...props
     },
@@ -58,16 +59,17 @@ export const AnnouncementDialog = forwardRef<
           setAnnouncementSeen('seen');
         }}
         open={open || !announcementSeen}
+        style={{
+          '--amino-announcement-dialog-image-margin': imageWidth
+            ? '0 auto'
+            : 'unset',
+          '--amino-announcement-dialog-image-width': imageWidth
+            ? `${imageWidth}px`
+            : '100%',
+          ...style,
+        }}
       >
-        <div
-          className={styles.styledImage}
-          style={{
-            '--image-margin': imageWidth ? '0 auto' : 'unset',
-            '--image-width': imageWidth ? `${imageWidth}px` : '100%',
-          }}
-        >
-          {image}
-        </div>
+        <div className={styles.styledImage}>{image}</div>
         <VStack className={styles.content} spacing={8}>
           <Text color="blue600" type="label">
             {label}

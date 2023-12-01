@@ -13,6 +13,7 @@ export const ImageAvatar = ({
   imageUrl,
   shape = 'round',
   size = 32,
+  style,
 }: ImageAvatarProps) => (
   <AvatarBase
     backgroundColor="transparent"
@@ -22,5 +23,6 @@ export const ImageAvatar = ({
     className={className}
     shape={shape}
     size={size}
+    style={style}
   />
 );

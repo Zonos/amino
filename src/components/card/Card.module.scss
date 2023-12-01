@@ -1,10 +1,10 @@
 @use 'theme';
 
-$padding-spacing: var(--padding-spacing);
-$margin-bottom: var(--margin-bottom);
-$margin-top: var(--margin-top);
-$margin: var(--margin);
-$footer-height: var(--footer-height);
+$padding-spacing: var(--amino-card-padding-spacing);
+$margin-bottom: var(--amino-card-margin-bottom);
+$margin-top: var(--amino-card-margin-top);
+$margin: var(--amino-card-margin);
+$footer-height: var(--amino-card-footer-height);
 
 .card {
   border: theme.$amino-border;

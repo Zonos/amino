@@ -30,6 +30,7 @@ export const Banner = ({
   headerActions,
   intent,
   onClose,
+  style,
   title,
 }: BannerProps) => {
   const getIntentProps = (): {
@@ -130,17 +131,20 @@ export const Banner = ({
       <div
         className={styles.container}
         style={{
-          '--container-align-items': onlyContent ? 'start' : 'center',
-          '--container-grid-template-columns': `32px auto ${
+          '--amino-banner-container-align-items': onlyContent
+            ? 'start'
+            : 'center',
+          '--amino-banner-container-grid-template-columns': `32px auto ${
             !onClose ? '0px' : '32px'
           }`,
+          '--amino-banner-header-color': intentProps.removeIconColor,
         }}
       >
         <div className={styles.icon}>{intentProps.intentIcon}</div>
         {onClose && (
           <div className={styles.close}>
             <Button
-              className={styles.closeButton}
+              className={clsx(styles.closeButton)}
               icon={
                 <RemoveIcon color={intentProps.removeIconColor} size={20} />
               }
@@ -150,12 +154,7 @@ export const Banner = ({
           </div>
         )}
 
-        <div
-          className={styles.header}
-          style={{ '--header-color': intentProps.removeIconColor }}
-        >
-          {header}
-        </div>
+        <div className={styles.header}>{header}</div>
 
         {content && (
           <div className={styles.content}>
@@ -169,7 +168,10 @@ export const Banner = ({
 
   const bannerClass = intent ? styles[`${intent}Banner`] : styles.defaultBanner;
   return (
-    <div className={clsx([styles.styledBanner, bannerClass, className])}>
+    <div
+      className={clsx(styles.styledBanner, bannerClass, className)}
+      style={style}
+    >
       {renderContent()}
     </div>
   );

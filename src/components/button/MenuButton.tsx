@@ -33,6 +33,7 @@ export const MenuButton = ({
   closeOnMouseLeave = true,
   closeOnSelect = true,
   dropdownOptions,
+  style,
 }: MenuButtonProps) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
     useDropdown<HTMLDivElement, HTMLDivElement>({
@@ -56,8 +57,9 @@ export const MenuButton = ({
   return (
     <div
       ref={wrapperRef}
-      className={clsx([styles.wrapper, className])}
+      className={clsx(styles.wrapper, className)}
       onMouseLeave={handleMouseLeave}
+      style={style}
     >
       <div
         ref={refs.setReference}

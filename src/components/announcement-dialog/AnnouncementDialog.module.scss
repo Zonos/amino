@@ -1,7 +1,7 @@
 @use 'theme';
 
-$image-width: var(--image-width);
-$image-margin: var(--image-margin);
+$image-width: var(--amino-announcement-dialog-image-width);
+$image-margin: var(--amino-announcement-dialog-image-margin);
 
 .content {
   padding: theme.$amino-space-16 theme.$amino-space-24;

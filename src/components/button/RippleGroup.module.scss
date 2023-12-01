@@ -1,8 +1,8 @@
 @use 'theme';
 
-$color: var(--color);
-$duration: var(--duration);
-$opacity: var(--opacity);
+$color: var(--amino-ripple-group-color);
+$duration: var(--amino-ripple-group-duration);
+$opacity: var(--amino-ripple-group-opacity);
 
 .rippleRoot {
   overflow: hidden;
