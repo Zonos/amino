@@ -44,7 +44,6 @@ export type FullAvatarProps = BaseProps & {
 
 type AvatarBaseProps = BaseProps & {
   children?: ReactNode;
-  style?: React.CSSProperties;
 } & Required<AvatarProps> &
   AvatarStyleProps;
 
@@ -64,14 +63,17 @@ export const AvatarBase = ({
     className={clsx(styles.wrapper, className)}
     style={{
       ...style,
-      '--background-color': backgroundColor || `${theme.gray100}`,
-      '--background-image': `url(${backgroundUrl})`,
-      '--background-position': backgroundPosition || 'center',
-      '--background-size': backgroundSize || '',
-      '--border': bordered ? `${size / 16}px solid ${theme.gray0}` : '',
-      '--border-radius': avatarShapes[shape],
-      '--height': `${size}px`,
-      '--width': `${size}px`,
+      '--amino-avatar-base-background-color':
+        backgroundColor || `${theme.gray100}`,
+      '--amino-avatar-base-background-image': `url(${backgroundUrl})`,
+      '--amino-avatar-base-background-position': backgroundPosition || 'center',
+      '--amino-avatar-base-background-size': backgroundSize || '',
+      '--amino-avatar-base-border': bordered
+        ? `${size / 16}px solid ${theme.gray0}`
+        : '',
+      '--amino-avatar-base-border-radius': avatarShapes[shape],
+      '--amino-avatar-base-height': `${size}px`,
+      '--amino-avatar-base-width': `${size}px`,
     }}
   >
     {children || <div className={styles.styledAvatarBase} />}
