@@ -60,13 +60,13 @@ export const AnnouncementDialog = forwardRef<
         }}
         open={open || !announcementSeen}
         style={{
+          ...style,
           '--amino-announcement-dialog-image-margin': imageWidth
             ? '0 auto'
             : 'unset',
           '--amino-announcement-dialog-image-width': imageWidth
             ? `${imageWidth}px`
             : '100%',
-          ...style,
         }}
       >
         <div className={styles.styledImage}>{image}</div>
