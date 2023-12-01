@@ -44,7 +44,6 @@ export type FullAvatarProps = BaseProps & {
 
 type AvatarBaseProps = BaseProps & {
   children?: ReactNode;
-  style?: React.CSSProperties;
 } & Required<AvatarProps> &
   AvatarStyleProps;
 
