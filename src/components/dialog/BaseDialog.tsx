@@ -1,39 +1,14 @@
 import React, { type ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
+import clsx from 'clsx';
 import { type MotionProps, AnimatePresence, motion } from 'framer-motion';
-import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 
-const Backdrop = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${theme.textColor};
-`;
-
-const Popup = styled(motion.div)<{ $width: number; $withBorder: boolean }>`
-  z-index: 1001;
-  background: ${theme.surfaceColor};
-  width: ${p => p.$width}px;
-  max-height: 90vh;
-  border-radius: ${theme.radius12};
-  outline: none;
-  box-shadow: ${theme.v3ShadowXxl};
-  border: ${p => p.$withBorder && theme.border};
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-`;
+import styles from './BaseDialog.module.scss';
 
 export type BaseDialogProps = BaseProps & {
   children: ReactNode;
@@ -134,7 +109,8 @@ export const BaseDialog = ({
     return createPortal(
       <AnimatePresence>
         {open && (
-          <Backdrop
+          <motion.div
+            className={clsx(styles.backdrop, className)}
             {...backdropMotionProps}
             key="dialog-backdrop"
             ref={backdropRef}
@@ -155,24 +131,26 @@ export const BaseDialog = ({
               // reset the mouse down target
               mouseDownTarget.current = null;
             }}
-            style={style}
+            style={{
+              ...style,
+              '--amino-base-dialog-border': withBorder ? theme.border : '',
+              '--amino-base-dialog-width': `${width}px`,
+            }}
             tabIndex={-1}
             transition={{ duration: 0.3 }}
           >
-            <Popup
+            <motion.div
               {...combinedPopupMotionProps}
               key="dialog"
-              $width={width}
-              $withBorder={withBorder}
-              className={[className || '', 'elevated'].join(' ')}
+              className={clsx(className, styles.popup, 'elevated')}
               onClick={e => {
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
               }}
             >
               {children}
-            </Popup>
-          </Backdrop>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>,
       document.querySelector('body')!,

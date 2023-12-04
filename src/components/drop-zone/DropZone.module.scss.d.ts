@@ -1,0 +1,9 @@
+export declare const browseButton: string;
+export declare const contentWrapper: string;
+export declare const instructionTextWrapper: string;
+export declare const removeFileButton: string;
+export declare const uploadedFileInfoWrapper: string;
+export declare const uploadedFileRow: string;
+export declare const uploadedFilesWrapper: string;
+export declare const uploadWrapper: string;
+export declare const wrapper: string;

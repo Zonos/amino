@@ -7,8 +7,8 @@ import {
   Marker,
 } from 'react-simple-maps';
 
+import clsx from 'clsx';
 import { geoCentroid, geoDistance } from 'd3-geo';
-import styled from 'styled-components';
 import { feature } from 'topojson-client';
 
 import { Skeleton } from 'src/components/skeleton/Skeleton';
@@ -18,24 +18,7 @@ import { type CountryOption } from 'src/types/Country';
 import { type GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
 
-const Map = styled.div`
-  background: ${theme.gray50};
-  border-radius: ${theme.radius12};
-  overflow: hidden;
-
-  * {
-    outline: none;
-  }
-`;
-
-const MapSkeleton = styled(Skeleton)`
-  box-sizing: border-box;
-  border-radius: ${theme.radius12};
-  width: 100%;
-  /* 50% padding is 100% of width, ratio is 33%, so half */
-  padding: 16.5%;
-  margin: 0;
-`;
+import styles from './ConnectionMap.module.scss';
 
 const getScale = (xDistance: number, yDistance: number) => {
   // Account for large vertical distances not being scaled properly relative to horizntal distances because our viewport width is much greater than height
@@ -64,6 +47,7 @@ export const ConnectionMap = ({
   countries,
   from,
   height = 400,
+  style,
   to,
   worldData,
 }: Props) => {
@@ -142,11 +126,11 @@ export const ConnectionMap = ({
   }, [coordsForIso, to, from, loading]);
 
   if (loading) {
-    return <MapSkeleton height={height} />;
+    return <Skeleton className={styles.mapSkeleton} height={height} />;
   }
 
   return (
-    <Map className={className}>
+    <div className={clsx(styles.map, className)} style={style}>
       <ComposableMap
         height={height}
         projection="geoEqualEarth"
@@ -197,6 +181,6 @@ export const ConnectionMap = ({
           <circle fill={theme.blue600} r={2} />
         </Marker>
       </ComposableMap>
-    </Map>
+    </div>
   );
 };

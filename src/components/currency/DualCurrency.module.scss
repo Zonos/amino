@@ -1,0 +1,16 @@
+@use 'theme';
+
+$width: var(--amino-dual-currency-width);
+$font-variant-numeric: var(--amino-dual-currency-font-variant-numeric);
+$display: var(--amino-dual-currency-display);
+$grid-template-columns: var(--amino-dual-currency-grid-template-columns);
+
+.dualCurrencyWrapper {
+  align-items: center;
+  justify-items: right;
+  grid-column-gap: theme.$amino-space-8;
+  width: $width;
+  font-variant-numeric: $font-variant-numeric;
+  display: $display;
+  grid-template-columns: $grid-template-columns;
+}

@@ -1,6 +1,6 @@
 import { type ReactNode, forwardRef } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
@@ -9,62 +9,8 @@ import {
 } from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const Header = styled.div`
-  padding: ${theme.space24};
-  padding-bottom: ${theme.space16};
-  border-top-left-radius: ${theme.radius12};
-  border-top-right-radius: ${theme.radius12};
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.space12};
-`;
-
-const Title = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-
-  > :not(button) {
-    margin: 0;
-    flex-grow: 1;
-  }
-`;
-
-const StyledActionBaseWrapper = styled.div`
-  flex-grow: 1;
-  display: flex;
-`;
-
-const StyledLeftActionWrapper = styled(StyledActionBaseWrapper)`
-  justify-content: flex-start;
-  display: flex;
-  gap: ${theme.space8};
-`;
-const StyledRightActionWrapper = styled(StyledActionBaseWrapper)`
-  justify-content: flex-end;
-  display: flex;
-  gap: ${theme.space8};
-`;
-
-const Footer = styled.div`
-  padding: ${theme.space24};
-  display: flex;
-  align-items: center;
-  border-bottom-left-radius: ${theme.radius12};
-  border-bottom-right-radius: ${theme.radius12};
-
-  & > div + div {
-    margin-left: ${theme.space8};
-  }
-`;
-
-const Content = styled.div`
-  padding: ${theme.space8} ${theme.space24};
-  overflow-y: auto;
-  flex-grow: 1;
-`;
+import styles from './Dialog.module.scss';
 
 export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;
@@ -76,12 +22,21 @@ export type DialogProps = BaseDialogProps & {
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   (
-    { actions, children, label, leftActions, onClose, subtitle, ...props },
+    {
+      actions,
+      children,
+      label,
+      leftActions,
+      onClose,
+      style,
+      subtitle,
+      ...props
+    },
     ref,
   ) => (
     <BaseDialog {...props} onClose={onClose}>
-      <Header>
-        <Title>
+      <div className={styles.header}>
+        <div className={styles.title}>
           <Text type="title">{label}</Text>
           <ButtonIcon
             icon={<RemoveCircleDuotoneIcon size={24} />}
@@ -89,19 +44,35 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
             onClick={onClose}
             variant="text"
           />
-        </Title>
+        </div>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}
-      </Header>
-      <Content ref={ref}>{children}</Content>
+      </div>
+      <div ref={ref} className={styles.content}>
+        {children}
+      </div>
       {(actions || leftActions) && (
-        <Footer>
+        <div className={styles.footer}>
           {leftActions && (
-            <StyledLeftActionWrapper>{leftActions}</StyledLeftActionWrapper>
+            <div
+              className={clsx(
+                styles.styledActionBaseWrapper,
+                styles.styledLeftActionWrapper,
+              )}
+            >
+              {leftActions}
+            </div>
           )}
           {actions && (
-            <StyledRightActionWrapper>{actions}</StyledRightActionWrapper>
+            <div
+              className={clsx(
+                styles.styledActionBaseWrapper,
+                styles.styledRightActionWrapper,
+              )}
+            >
+              {actions}
+            </div>
           )}
-        </Footer>
+        </div>
       )}
     </BaseDialog>
   ),

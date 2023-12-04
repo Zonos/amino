@@ -1,0 +1,13 @@
+@use 'theme';
+
+.dividerHorizontal {
+  margin: theme.$amino-space-24 0;
+  border-color: theme.$amino-border-color;
+}
+
+.dividerVertical {
+  margin: 0 theme.$amino-space-24;
+  height: auto;
+  align-self: stretch;
+  border-right: solid thin theme.$amino-border-color;
+}

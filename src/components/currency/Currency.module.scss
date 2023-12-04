@@ -1,0 +1,9 @@
+@use 'theme';
+
+.styledCurrency {
+  font-feature-settings: 'tnum' 1;
+  /** Make it not break line */
+  white-space: nowrap;
+  display: flex;
+  gap: theme.$amino-space-4;
+}

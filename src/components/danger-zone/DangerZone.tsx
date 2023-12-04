@@ -1,17 +1,19 @@
-import styled from 'styled-components';
+import type { ReactNode } from 'react';
 
-import { Card } from 'src/components/card/Card';
-import { theme } from 'src/styles/constants/theme';
+import clsx from 'clsx';
 
-export const DangerZone = styled(Card)`
-  border-color: ${theme.red200};
-  box-shadow: 0px 1px 5px rgba(255, 0, 0, 0.19);
+import { type CardProps, Card } from 'src/components/card/Card';
+import type { BaseProps } from 'src/types/BaseProps';
 
-  header {
-    border-color: ${theme.red200};
-  }
+import styles from './DangerZone.module.scss';
 
-  h4 {
-    color: ${theme.red600};
-  }
-`;
+export const DangerZone = ({
+  children,
+  className,
+  style,
+  ...props
+}: BaseProps & CardProps & { children: ReactNode }) => (
+  <Card className={clsx(styles.dangerZone, className)} style={style} {...props}>
+    {children}
+  </Card>
+);

@@ -1,0 +1,90 @@
+@use 'theme';
+
+$background: var(--amino-checkbox-background);
+$border: var(--amino-checkbox-border); 
+$box-shadow: var(--amino-checkbox-box-shadow);
+$disabled-background: var(--amino-checkbox-disabled-background);
+$disabled-border: var(--amino-checkbox-disabled-border);
+
+.aminoCheckbox {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  line-height: 16px;
+  border-radius: theme.$amino-radius-4;
+  background: $background;
+  border: $border;
+  transition: all 150ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  box-shadow: $box-shadow;
+
+  &.checked {
+    background: theme.$amino-primary;
+    border: none;
+    box-shadow: theme.$amino-shadow-button-primary;
+  }
+
+  svg {
+    color: theme.$amino-gray-0;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.infoWrapper {
+  margin-left: 8px;
+}
+
+.styledLabelDescription {
+  margin-left: 4px;
+  color: theme.$amino-gray-600;
+}
+
+.styledLabel {
+  margin-bottom: 0 !important;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+
+  svg {
+    margin-right: 4px;
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+  cursor: pointer;
+
+  &.disabled {
+    .aminoCheckbox {
+      background: $disabled-background;
+      border: $disabled-border;
+      box-shadow: none;
+    }
+
+    .styledLabel {
+      color: theme.$amino-gray-600;
+    }
+
+    .styledSubtitle {
+      color: theme.$amino-gray-400;
+    }
+
+    .labelWrapper {
+      svg {
+        opacity: 0.6;
+      }
+    }
+
+    cursor: not-allowed;
+  }
+}

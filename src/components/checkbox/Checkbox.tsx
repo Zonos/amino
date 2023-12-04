@@ -1,5 +1,6 @@
 import {
   type ComponentPropsWithoutRef,
+  type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
   useMemo,
@@ -7,7 +8,6 @@ import {
 
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import styled from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
@@ -15,85 +15,9 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getTestId } from 'src/utils/getTestId';
 
+import styles from './Checkbox.module.scss';
+
 const AnimatedCheckIcon = motion(CheckmarkIcon);
-
-const AminoCheckbox = styled.div<{ $checked: boolean }>`
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  min-height: 16px;
-  line-height: 16px;
-  border-radius: ${theme.radius4};
-  background: ${p => (p.$checked ? theme.primary : theme.inputBackground)};
-  border: ${p => (!p.$checked ? `1.5px solid ${theme.gray400}` : 'none')};
-  transition: all 150ms ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  box-shadow: ${p => (p.$checked ? theme.shadowButtonPrimary : 'none')};
-
-  svg {
-    color: ${theme.gray0};
-    width: 16px;
-    height: 16px;
-  }
-`;
-
-const InfoWrapper = styled.div`
-  margin-left: 8px;
-`;
-
-const StyledSubtitle = styled(Text)``;
-
-const StyledLabelDescription = styled.span`
-  margin-left: 4px;
-  color: ${theme.gray600};
-`;
-
-const StyledLabel = styled(Text)`
-  margin-bottom: 0;
-`;
-
-const LabelWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  line-height: 16px;
-
-  svg {
-    margin-right: 4px;
-  }
-`;
-
-const CheckboxContainer = styled.label<{ $checked: boolean }>`
-  display: flex;
-  flex-direction: row;
-  user-select: none;
-  cursor: pointer;
-
-  &.disabled {
-    ${AminoCheckbox} {
-      background: ${p => (p.$checked ? theme.blue200 : '')};
-      border: ${p => (p.$checked ? `none` : `1.5px solid ${theme.gray300}`)};
-      &:active {
-        box-shadow: none;
-      }
-    }
-    ${StyledLabel} {
-      color: ${theme.gray600};
-    }
-    ${StyledSubtitle} {
-      color: ${theme.gray400};
-    }
-    ${LabelWrapper} {
-      svg {
-        opacity: 0.6;
-      }
-    }
-
-    cursor: not-allowed;
-  }
-`;
 
 export type CheckboxProps = Omit<
   ComponentPropsWithoutRef<'label'>,
@@ -112,7 +36,10 @@ export type CheckboxProps = Omit<
     labelComponent?: ReactNode;
     labelDescription?: string;
     subtitle?: string;
-    onChange: (checked: boolean, event: MouseEvent<HTMLLabelElement>) => void;
+    onChange: (
+      checked: boolean,
+      event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>,
+    ) => void;
   };
 
 export const Checkbox = ({
@@ -125,6 +52,7 @@ export const Checkbox = ({
   labelComponent,
   labelDescription,
   onChange,
+  style,
   subtitle,
   ...props
 }: CheckboxProps) => {
@@ -134,23 +62,56 @@ export const Checkbox = ({
     () => getTestId({ componentName: 'checkbox', name: label }),
     [label],
   );
+
+  const handleChange = (
+    e: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>,
+  ) => {
+    if (!allowPropagation) {
+      e.stopPropagation();
+    }
+    if (!disabled) {
+      onChange(!checked, e);
+    }
+  };
+
   return (
-    <CheckboxContainer
-      $checked={checked}
-      className={clsx(className, 'amino-input-wrapper', { disabled })}
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+    <label
+      className={clsx(
+        className,
+        styles.checkboxContainer,
+        'amino-input-wrapper',
+        disabled ? styles.disabled : '',
+      )}
       data-testid={testId}
       htmlFor={labelAsHtmlAttribute}
       onClick={e => {
-        if (!allowPropagation) {
-          e.stopPropagation();
+        handleChange(e);
+      }}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === 'Space') {
+          handleChange(e);
         }
-        if (!disabled) {
-          onChange(!checked, e);
-        }
+      }}
+      style={{
+        ...style,
+        '--amino-checkbox-background': checked
+          ? theme.primary
+          : theme.inputBackground,
+        '--amino-checkbox-border': !checked
+          ? `1.5px solid ${theme.gray400}`
+          : 'none',
+        '--amino-checkbox-box-shadow': checked
+          ? theme.shadowButtonPrimary
+          : 'none',
+        '--amino-checkbox-disabled-background': checked ? theme.blue200 : '',
+        '--amino-checkbox-disabled-border': checked
+          ? `none`
+          : `1.5px solid ${theme.gray300}`,
       }}
       {...props}
     >
-      <AminoCheckbox $checked={checked} id={labelAsHtmlAttribute}>
+      <div className={styles.aminoCheckbox} id={labelAsHtmlAttribute}>
         <AnimatePresence>
           {checked && (
             <AnimatedCheckIcon
@@ -162,27 +123,29 @@ export const Checkbox = ({
             />
           )}
         </AnimatePresence>
-      </AminoCheckbox>
+      </div>
 
       {labelComponent ||
         (label && (
-          <InfoWrapper>
-            <LabelWrapper>
+          <div className={styles.infoWrapper}>
+            <div className={styles.labelWrapper}>
               {icon}
-              <StyledLabel type="input-label">
+              <Text className={styles.styledLabel} type="input-label">
                 {label}
                 {labelDescription && (
-                  <StyledLabelDescription>
+                  <span className={styles.styledLabelDescription}>
                     {labelDescription}
-                  </StyledLabelDescription>
+                  </span>
                 )}
-              </StyledLabel>
-            </LabelWrapper>
+              </Text>
+            </div>
             {subtitle && (
-              <StyledSubtitle type="subtitle">{subtitle}</StyledSubtitle>
+              <Text className={styles.styledSubtitle} type="subtitle">
+                {subtitle}
+              </Text>
             )}
-          </InfoWrapper>
+          </div>
         ))}
-    </CheckboxContainer>
+    </label>
   );
 };

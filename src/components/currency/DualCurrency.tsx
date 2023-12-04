@@ -1,37 +1,15 @@
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
 import { Currency } from 'src/components/currency/Currency';
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
+
+import styles from './DualCurrency.module.scss';
 
 type StyledProps = {
   isTabular: boolean;
   width?: string;
 };
-
-const tableCss = css<StyledProps>`
-  font-variant-numeric: tabular-nums;
-  display: grid;
-  grid-template-columns: 1.25fr 0fr 1.25fr;
-`;
-
-const inlineCss = css`
-  display: flex;
-`;
-
-const DualCurrencyWrapper = styled.div<StyledProps>`
-  display: flex;
-  align-items: center;
-  justify-items: right;
-  ${p => (p.isTabular ? tableCss : inlineCss)}
-  grid-column-gap: ${theme.space8};
-  ${p =>
-    p.width &&
-    css`
-      width: p.width;
-    `};
-`;
 
 type Props = BaseProps & {
   conversionRate?: number;
@@ -51,6 +29,7 @@ export const DualCurrency = ({
   localeCode = 'USD',
   showForeign = true,
   showLocale = true,
+  style,
   value,
   width,
 }: Props) => {
@@ -74,15 +53,24 @@ export const DualCurrency = ({
 
   if (showForeignCurrency && showLocaleCurrency && !isSameCode) {
     return (
-      <DualCurrencyWrapper
-        className={className}
-        isTabular={isTabular}
-        width={width?.toString()}
+      <div
+        className={clsx(styles.dualCurrencyWrapper, className)}
+        style={{
+          ...style,
+          '--amino-dual-currency-display': isTabular ? 'grid' : 'flex',
+          '--amino-dual-currency-font-variant-numberic': isTabular
+            ? 'tabular-nums'
+            : '',
+          '--amino-dual-currency-grid-template-columns': isTabular
+            ? '1.25fr 0fr 1.25fr'
+            : '',
+          '--amino-dual-currency-width': width?.toString() || '',
+        }}
       >
         {renderLocaleCurrency()}
         <ArrowSwapIcon size={12} />
         {renderForeignCurrency()}
-      </DualCurrencyWrapper>
+      </div>
     );
   }
 

@@ -1,8 +1,10 @@
 import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
+import clsx from 'clsx';
 import styled from 'styled-components';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
+import { Button } from 'src/components/button/Button';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
@@ -13,6 +15,8 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { type UploadedFile } from 'src/types/UploadedFile';
+
+import styles from './DropZone.module.scss';
 
 const Wrapper = styled.div<{ $disabled: boolean }>`
   display: flex;
@@ -122,6 +126,7 @@ export const DropZone = ({
   loadingText = 'Uploading file(s)...',
   noIcon = false,
   onRemoveFile,
+  style,
   uploadedFiles,
 }: DropZoneProps) => {
   const maxFiles = dropzoneOptions.maxFiles || 0;
@@ -135,32 +140,37 @@ export const DropZone = ({
 
   const renderUpload = () => (
     // The role gets set to button despite setting `noClick`, so override it as `undefined`
-    <ContentWrapper {...getRootProps()} role={undefined}>
+    <div className={styles.contentWrapper} {...getRootProps()} role={undefined}>
       <input {...getInputProps()} />
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
-      <InstructionTextWrapper>
+      <div className={styles.instructionTextWrapper}>
         <Text type="label">
           {instructionText} or{' '}
-          <BrowseButton disabled={disabled} onClick={open} type="button">
+          <button
+            className={styles.browseButton}
+            disabled={disabled}
+            onClick={open}
+            type="button"
+          >
             <Text color="blue600" type="label">
               browse
             </Text>
-          </BrowseButton>
+          </button>
         </Text>
         {helpText && <Text type="caption">{helpText}</Text>}
-      </InstructionTextWrapper>
-    </ContentWrapper>
+      </div>
+    </div>
   );
 
   const renderFiles = () =>
     uploadedFiles.map((file, index) => (
-      <UploadedFileRow key={file.name}>
+      <div key={file.name} className={styles.uploadedFileRow}>
         {file.imageUrl ? (
           <ImageAvatar imageUrl={file.imageUrl} shape="rounded" />
         ) : (
           <FileDuotoneIcon />
         )}
-        <UploadedFileInfoWrapper>
+        <div className={styles.uploadedFileInfoWrapper}>
           <Text color="gray1200" type="label">
             {file.name}
           </Text>
@@ -169,15 +179,16 @@ export const DropZone = ({
               {file.size}
             </Text>
           )}
-        </UploadedFileInfoWrapper>
+        </div>
         {onRemoveFile && (
-          <RemoveFileButton
+          <ButtonIcon
+            className={styles.removeFileButton}
             icon={<RemoveCircleDuotoneIcon size={20} />}
             onClick={() => onRemoveFile(index)}
             variant="text"
           />
         )}
-      </UploadedFileRow>
+      </div>
     ));
 
   const uploadedMaxFiles = maxFiles !== 0 && uploadedFiles.length >= maxFiles;
@@ -185,31 +196,42 @@ export const DropZone = ({
   const renderContent = () => {
     if (loading) {
       return (
-        <UploadWrapper>
-          <ContentWrapper>
+        <div className={styles.uploadWrapper}>
+          <div className={styles.contentWrapper}>
             <Spinner />
             <Text color="gray800" type="label">
               {loadingText}
             </Text>
-          </ContentWrapper>
-        </UploadWrapper>
+          </div>
+        </div>
       );
     }
 
     return (
       <>
         {!uploadedMaxFiles && (
-          <UploadWrapper $error={error}>{renderUpload()}</UploadWrapper>
+          <div className={styles.uploadWrapper}>{renderUpload()}</div>
         )}
         {!!uploadedFiles.length && (
-          <UploadedFilesWrapper>{renderFiles()}</UploadedFilesWrapper>
+          <div className={styles.uploadedFilesWrapper}>{renderFiles()}</div>
         )}
       </>
     );
   };
 
   return (
-    <Wrapper $disabled={disabled} className={className}>
+    <Wrapper
+      $disabled={disabled}
+      className={clsx(styles.wrapper, className)}
+      style={{
+        ...style,
+        '--amino-drop-zone-border-color': error
+          ? theme.danger
+          : theme.borderColor,
+        '--amino-drop-zone-cursor': disabled ? 'not-allowed' : 'auto',
+        '--amino-drop-zone-opacity': disabled ? 0.5 : 1,
+      }}
+    >
       {renderContent()}
     </Wrapper>
   );

@@ -1,0 +1,30 @@
+@use 'theme';
+
+$width: var(--amino-base-dialog-width);
+$border: var(--amino-base-dialog-border);
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: theme.$amino-text-color;
+}
+
+.popup {
+  z-index: 1001;
+  background: theme.$amino-surface-color;
+  width: $width;
+  border-radius: theme.$amino-radius-12;
+  outline: none;
+  box-shadow: theme.$amino-v3-shadow-xxl;
+  border: $border;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
