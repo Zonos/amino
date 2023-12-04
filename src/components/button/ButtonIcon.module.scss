@@ -10,18 +10,18 @@
   &:focus,
   &:hover,
   &:active {
-    color: theme.$amino-gray-800 !important;
-    background: transparent !important;
+    color: theme.$amino-gray-800;
+    background: transparent;
   }
   &:hover {
     path[data-is-secondary-color] {
-      fill: theme.$amino-gray-300 !important;
+      fill: theme.$amino-gray-300;
     }
   }
   &:active,
   &:focus {
     path[data-is-secondary-color] {
-      fill: theme.$amino-gray-400 !important;
+      fill: theme.$amino-gray-400;
     }
   }
 }
