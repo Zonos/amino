@@ -1,0 +1,17 @@
+@use 'theme';
+
+$image-width: var(--amino-announcement-dialog-image-width);
+$image-margin: var(--amino-announcement-dialog-image-margin);
+
+.content {
+  padding: theme.$amino-space-16 theme.$amino-space-24;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.styledImage {
+  width: $image-width;
+  height: auto;
+  margin: $image-margin;
+  margin-bottom: theme.$amino-space-16;
+}

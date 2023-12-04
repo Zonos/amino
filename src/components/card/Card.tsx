@@ -28,15 +28,19 @@ export const Card = ({
   footerHeight,
   label,
   spacing,
+  style,
 }: CardProps) => (
   <div
     className={clsx(className, styles.card)}
     style={{
-      '--footer-height': footerHeight ? `${footerHeight}px` : '65px',
-      '--margin': spacing ? `calc(${spacing} * -1)` : theme.spaceNegative24,
-      '--margin-bottom': spacing || theme.space24,
-      '--margin-top': spacing || theme.space24,
-      '--padding-spacing': spacing || theme.space24,
+      ...style,
+      '--amino-card-footer-height': footerHeight ? `${footerHeight}px` : '65px',
+      '--amino-card-margin': spacing
+        ? `calc(${spacing} * -1)`
+        : theme.spaceNegative24,
+      '--amino-card-margin-bottom': spacing || theme.space24,
+      '--amino-card-margin-top': spacing || theme.space24,
+      '--amino-card-padding-spacing': spacing || theme.space24,
     }}
   >
     {label && (

@@ -13,6 +13,7 @@ export const UserAvatar = ({
   className,
   shape = 'round',
   size = 32,
+  style,
 }: UserAvatarProps) => (
   <AvatarBase
     backgroundPosition="bottom"
@@ -22,5 +23,6 @@ export const UserAvatar = ({
     className={className}
     shape={shape}
     size={size}
+    style={style}
   />
 );

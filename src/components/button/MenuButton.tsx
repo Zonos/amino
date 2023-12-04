@@ -1,37 +1,14 @@
 import { type ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { DropdownAnimation } from 'src/animations/DropdownAnimation';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import {
   type UseDropdownParams,
   useDropdown,
 } from 'src/utils/hooks/useDropdown';
 
-const Wrapper = styled.div`
-  position: relative;
-  display: inline-flex;
-`;
-
-const DropdownWrapper = styled.div`
-  z-index: 10;
-  min-width: 100%;
-`;
-
-const AnimatedSurface = styled.div`
-  background: ${theme.surfaceColor};
-  border-radius: ${theme.radius12};
-  box-shadow: ${theme.v3ShadowLarge};
-  animation: ${DropdownAnimation} 250ms ease-in-out;
-  animation-fill-mode: both;
-  padding: ${theme.space8};
-  margin-top: ${theme.space4};
-  right: 0;
-  min-width: 100%;
-  width: max-content;
-`;
+import styles from './MenuButton.module.scss';
 
 export type MenuButtonProps = BaseProps & {
   action: ReactNode;
@@ -56,6 +33,7 @@ export const MenuButton = ({
   closeOnMouseLeave = true,
   closeOnSelect = true,
   dropdownOptions,
+  style,
 }: MenuButtonProps) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
     useDropdown<HTMLDivElement, HTMLDivElement>({
@@ -77,10 +55,11 @@ export const MenuButton = ({
   };
 
   return (
-    <Wrapper
+    <div
       ref={wrapperRef}
-      className={className}
+      className={clsx(styles.wrapper, className)}
       onMouseLeave={handleMouseLeave}
+      style={style}
     >
       <div
         ref={refs.setReference}
@@ -98,15 +77,17 @@ export const MenuButton = ({
       >
         {action}
       </div>
-      <DropdownWrapper
+      <div
         ref={refs.setFloating}
+        className={styles.dropdownWrapper}
         style={{
           ...floatingStyles,
           visibility,
         }}
       >
         {visible && (
-          <AnimatedSurface
+          <div
+            className={styles.animatedSurface}
             onClick={handleClickChildren}
             onKeyDown={e => {
               if (e.key === 'Enter') {
@@ -117,9 +98,9 @@ export const MenuButton = ({
             tabIndex={-1}
           >
             {children}
-          </AnimatedSurface>
+          </div>
         )}
-      </DropdownWrapper>
-    </Wrapper>
+      </div>
+    </div>
   );
 };

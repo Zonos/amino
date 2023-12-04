@@ -1,0 +1,31 @@
+@use 'theme';
+
+$background-color: var(--amino-avater-base-background-color);
+$background-image: var(--amino-avater-base-background-image);
+$background-size: var(--amino-avater-base-background-size);
+$background-position: var(--amino-avater-base-background-position);
+$border: var(--amino-avater-base-border);
+$border-radius: var(--amino-avater-base-border-radius);
+$height: var(--amino-avater-base-height);
+$width: var(--amino-avater-base-width);
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: $border;
+  border-radius: $border-radius;
+  height: $height;
+  width: $width;
+}
+
+.styledAvatarBase {
+  height: 100%;
+  width: 100%;
+  border-radius: $border-radius;
+  background-color: $background-color;
+  background-image: $background-image;
+  background-size: $background-size;
+  background-position: $background-position;
+  background-repeat: no-repeat;
+}

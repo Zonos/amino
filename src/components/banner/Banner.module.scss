@@ -1,0 +1,106 @@
+@use 'theme';
+
+$container-align-items: var(--amino-banner-container-align-items);
+$container-grid-template-columns: var(
+  --amino-banner-container-grid-template-columns
+);
+$header-color: var(--amino-banner-header-color);
+
+.styledBanner {
+  border-radius: theme.$amino-radius-12;
+  padding: theme.$amino-space-16;
+
+  :global(.amino-button) {
+    &:hover,
+    &:focus {
+      filter: brightness(1.1);
+    }
+  }
+
+  &.defaultBanner {
+    background: theme.$amino-gray-50;
+    color: theme.$amino-gray-700;
+    border: 1px solid theme.$amino-gray-100;
+  }
+
+  &.infoBanner {
+    background: theme.$amino-blue-100;
+    color: theme.$amino-blue-700;
+    border: 1px solid theme.$amino-blue-200;
+  }
+
+  &.successBanner {
+    background: theme.$amino-green-100;
+    color: theme.$amino-green-700;
+    border: 1px solid theme.$amino-green-200;
+  }
+
+  &.warningBanner {
+    background: theme.$amino-orange-100;
+    color: theme.$amino-orange-700;
+    border: 1px solid theme.$amino-orange-200;
+  }
+
+  &.errorBanner {
+    background: theme.$amino-red-100;
+    color: theme.$amino-red-700;
+    border: 1px solid theme.$amino-red-200;
+  }
+}
+
+.container {
+  display: grid;
+  align-items: $container-align-items;
+  grid-template-areas:
+    'icon header close'
+    '. content .';
+  grid-template-columns: $container-grid-template-columns;
+}
+
+.icon {
+  grid-area: icon;
+  justify-self: start;
+}
+
+.close {
+  grid-area: close;
+  justify-self: end;
+}
+
+.closeButton {
+  & {
+    width: 24px;
+  }
+}
+
+.header {
+  grid-area: header;
+  color: $header-color;
+}
+
+.content {
+  grid-area: content;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: theme.$amino-space-16;
+}
+
+.actionsWrapper {
+  display: flex;
+  align-items: center;
+  gap: theme.$amino-space-8;
+}
+
+.bannerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: theme.$amino-space-12;
+}
+
+.bannerFooter {
+  display: flex;
+  align-items: center;
+  gap: theme.$amino-space-12;
+}

@@ -1,19 +1,27 @@
 import { useEffect } from 'react';
 
 export type RippleProps = {
+  className: string;
   /** duration of the ripple */
   duration: number;
-  style: {
+  rippleStyle: {
     height: number;
     left: number;
     top: number;
     width: number;
   };
+  style?: React.CSSProperties;
   /** Removes the ripple */
   destroy: () => void;
 };
 
-export const Ripple = ({ destroy, duration, style }: RippleProps) => {
+export const Ripple = ({
+  className,
+  destroy,
+  duration,
+  rippleStyle,
+  style,
+}: RippleProps) => {
   useEffect(() => {
     const id = setTimeout(() => {
       destroy();
@@ -26,12 +34,13 @@ export const Ripple = ({ destroy, duration, style }: RippleProps) => {
 
   return (
     <span
-      className="ripple"
+      className={className}
       style={{
-        height: `${style.height}px`,
-        left: `${style.left}px`,
-        top: `${style.top}px`,
-        width: `${style.width}px`,
+        ...style,
+        height: `${rippleStyle.height}px`,
+        left: `${rippleStyle.left}px`,
+        top: `${rippleStyle.top}px`,
+        width: `${rippleStyle.width}px`,
       }}
     />
   );

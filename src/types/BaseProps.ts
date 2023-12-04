@@ -4,4 +4,5 @@
 export type BaseProps = {
   /** For styled-components styling */
   className?: string;
+  style?: React.CSSProperties;
 };
