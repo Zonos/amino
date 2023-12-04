@@ -1,7 +1,5 @@
 import clsx from 'clsx';
-import styled from 'styled-components';
 
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Divider.module.scss';

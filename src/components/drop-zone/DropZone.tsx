@@ -1,10 +1,8 @@
 import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import clsx from 'clsx';
-import styled from 'styled-components';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
-import { Button } from 'src/components/button/Button';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
@@ -17,72 +15,6 @@ import type { BaseProps } from 'src/types/BaseProps';
 import { type UploadedFile } from 'src/types/UploadedFile';
 
 import styles from './DropZone.module.scss';
-
-const Wrapper = styled.div<{ $disabled: boolean }>`
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.space16};
-  opacity: ${p => (p.$disabled ? 0.5 : 1)};
-  cursor: ${p => (p.$disabled ? 'not-allowed' : 'auto')};
-`;
-
-const UploadWrapper = styled.div<{
-  $error?: boolean;
-}>`
-  border: 2px dashed;
-  border-color: ${p => (p.$error ? theme.danger : theme.borderColor)};
-  border-radius: ${theme.radius12};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ContentWrapper = styled.div`
-  padding: ${theme.space16};
-  outline: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: ${theme.space12};
-  width: 100%;
-  height: 100%;
-`;
-
-const InstructionTextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.space4};
-  align-items: center;
-`;
-
-const BrowseButton = styled.button`
-  display: inline;
-`;
-
-const RemoveFileButton = styled(ButtonIcon)`
-  margin-left: auto;
-`;
-
-const UploadedFilesWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${theme.space4};
-`;
-
-const UploadedFileRow = styled.div`
-  border: ${theme.border};
-  border-radius: ${theme.space12};
-  padding: ${theme.space16};
-  display: flex;
-  justify-content: flex-start;
-  gap: ${theme.space12};
-`;
-
-const UploadedFileInfoWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export type DropZoneProps = BaseProps & {
   /**
@@ -220,8 +152,7 @@ export const DropZone = ({
   };
 
   return (
-    <Wrapper
-      $disabled={disabled}
+    <div
       className={clsx(styles.wrapper, className)}
       style={{
         ...style,
@@ -233,6 +164,6 @@ export const DropZone = ({
       }}
     >
       {renderContent()}
-    </Wrapper>
+    </div>
   );
 };
