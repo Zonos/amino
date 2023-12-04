@@ -1,27 +1,16 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-const DividerHorizontal = styled.hr`
-  margin: ${theme.space24} 0;
-  border-color: ${theme.borderColor};
-`;
-
-const DividerVertical = styled.hr`
-  margin: 0 ${theme.space24};
-  height: auto;
-  align-self: stretch;
-  border-right: solid thin ${theme.borderColor};
-`;
+import styles from './Divider.module.scss';
 
 type Props = BaseProps & {
   vertical?: boolean;
 };
 
-export const Divider = ({ className, vertical = false }: Props) =>
+export const Divider = ({ className, style, vertical = false }: Props) =>
   vertical ? (
-    <DividerVertical className={className} />
+    <hr className={clsx(styles.dividerVertical, className)} style={style} />
   ) : (
-    <DividerHorizontal className={className} />
+    <hr className={clsx(styles.dividerHorizontal, className)} style={style} />
   );

@@ -1,0 +1,20 @@
+@use 'theme';
+
+.map {
+  background: theme.$amino-gray-50;
+  border-radius: theme.$amino-radius-12;
+  overflow: hidden;
+
+  * {
+    outline: none;
+  }
+}
+
+.mapSkeleton {
+  box-sizing: border-box;
+  border-radius: theme.$amino-radius-12;
+  width: 100%;
+  /* 50% padding is 100% of width, ratio is 33%, so half */
+  padding: 16.5%;
+  margin: 0;
+}

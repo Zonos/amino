@@ -27,12 +27,14 @@ export const Collapse = ({
   collapsed = false,
   collapseSize = 0,
   orientation,
+  style,
 }: CollapseProps) => (
   <MuiCollapse
     className={className}
     collapsedSize={collapseSize}
     in={!collapsed}
     orientation={orientation}
+    style={style}
   >
     {children}
   </MuiCollapse>

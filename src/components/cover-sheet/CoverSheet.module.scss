@@ -1,0 +1,50 @@
+@use 'theme';
+
+.dialog {
+  z-index: 990;
+  outline: none;
+  overflow-y: auto;
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+  background: theme.$amino-page-background;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  color: theme.$amino-text-color;
+
+  @media print {
+    height: unset;
+    min-height: 100vh;
+    position: absolute;
+  }
+}
+
+.closeButton {
+  margin-right: theme.$amino-space-16;
+}
+
+.header {
+  flex-grow: 1;
+}
+
+.headerContainer {
+  border-bottom: theme.$amino-border;
+  padding: theme.$amino-space-16 theme.$amino-space-32;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: theme.$amino-page-background;
+
+  @media print {
+    display: none;
+  }
+}
+
+.content {
+  padding: theme.$amino-space-56;
+}
