@@ -44,8 +44,8 @@ $disabled-border: var(--amino-checkbox-disabled-border);
   color: theme.$amino-gray-600;
 }
 
-.styledLabel {
-  margin-bottom: 0 !important;
+.styledLabel.styledLabel {
+  margin-bottom: 0;
 }
 
 .labelWrapper {
