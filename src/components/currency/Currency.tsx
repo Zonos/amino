@@ -2,6 +2,7 @@ import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
+import { formatCurrency } from 'src/utils/formatCurrency';
 
 import styles from './Currency.module.scss';
 
@@ -11,14 +12,10 @@ type Props = BaseProps & {
 };
 
 export const Currency = ({ amount, className, code, style }: Props) => {
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
-  const formattedCurrency = new Intl.NumberFormat(`en-US`, {
-    currency: code,
-    style: 'currency',
-  })
-    .format(amount)
-    // Remove currency symbols because that's how we want to show it. There is no option to do this when usinge `style: 'currency'`
-    .replace(/[^0-9.-]+/g, '');
+  const formattedCurrency = formatCurrency({
+    code,
+    value: amount,
+  });
 
   const isNegative = amount < 0;
 
