@@ -32,7 +32,7 @@ type DateControlProps = BaseProps & {
   setRangeType: (range: FilterDateRangeType) => void;
 };
 
-export const DateControl = ({
+export const DateControls = ({
   onChange,
   onChangeFilterText,
   rangeType,
