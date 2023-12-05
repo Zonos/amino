@@ -27,6 +27,7 @@ export const FilterDate = ({
   dropdownTitle,
   filter,
   label,
+  style,
 }: FilterDateProps) => {
   const [editingValue, setEditingValue] = useState<FilterDateData>(
     filter.dateData,
@@ -115,6 +116,7 @@ export const FilterDate = ({
       onChangeFilterText={handleChangeFilterText}
       rangeType={rangeType}
       setRangeType={setRangeType}
+      style={style}
       value={editingValue}
     />,
   );

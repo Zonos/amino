@@ -1,16 +1,12 @@
+import type { ReactNode } from 'react';
+
+import clsx from 'clsx';
 import dayjs from 'dayjs';
-import styled from 'styled-components';
 
 import type { FilterDateData } from 'src/components/filter/filter-date/filterDateReducer';
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-export const DateControlsWrapper = styled.div`
-  width: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  gap: ${theme.space8};
-  align-items: center;
-`;
+import styles from './DateControls.module.scss';
 
 export type _DateControlProps = {
   value: FilterDateData;
@@ -21,3 +17,13 @@ export type _DateControlProps = {
 export const formatDate = (date: string) => dayjs(date).format('MM/DD/YYYY');
 
 export const defaultDateFormat = `YYYY-MM-DD`;
+
+export const DateControlsWrapper = ({
+  children,
+  className,
+  style,
+}: BaseProps & { children: ReactNode }) => (
+  <div className={clsx(styles.dateControlsWrapper, className)} style={style}>
+    {children}
+  </div>
+);

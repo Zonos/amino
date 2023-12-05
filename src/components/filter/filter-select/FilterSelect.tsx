@@ -37,6 +37,7 @@ export const FilterSelect = <
   onChange,
   options,
   selectProps,
+  style,
   value,
   ...props
 }: FilterSelectProps<T, O>) => {
@@ -93,6 +94,7 @@ export const FilterSelect = <
       onMenuOpen={() => setMenuOpen(true)}
       options={options}
       size="sm"
+      style={style}
       value={options.filter(item => item.value === editingValue?.value)}
       {...selectPropsResolved}
     />,

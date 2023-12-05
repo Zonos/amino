@@ -1,7 +1,5 @@
 import { type Dispatch, type KeyboardEvent, useState } from 'react';
 
-import styled from 'styled-components';
-
 import {
   type FilterAmountAction,
   type FilterAmountState,
@@ -16,21 +14,8 @@ import {
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${theme.space8};
-
-  svg {
-    min-width: 24px;
-  }
-
-  & .arrow-right {
-    margin-right: ${theme.space16};
-  }
-`;
+import styles from './FilterAmount.module.scss';
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 
@@ -44,6 +29,7 @@ export const FilterAmount = ({
   dropdownTitle,
   filter,
   label,
+  style,
 }: FilterAmountProps) => {
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
@@ -161,10 +147,11 @@ export const FilterAmount = ({
         onMenuOpen={() => setMenuOpen(true)}
         options={filterAmountOptions}
         size="md"
+        style={style}
         value={filterAmountOptions.filter(item => item.value === filterType)}
       />
 
-      <InputWrapper>
+      <div className={styles.inputWrapper}>
         <ArrowRightIcon className="arrow-right" color="blue600" size={24} />
         <Input
           onChange={e => setEditingAmount1(e.target.valueAsNumber)}
@@ -183,7 +170,7 @@ export const FilterAmount = ({
             />
           </>
         )}
-      </InputWrapper>
+      </div>
     </>,
   );
 };

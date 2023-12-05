@@ -16,6 +16,7 @@ export const FilterText = ({
   dropdownTitle,
   label,
   onChange,
+  style,
   value,
 }: FilterTextProps) => {
   const [editingValue, setEditingValue] = useState<string>(value || '');
@@ -47,6 +48,7 @@ export const FilterText = ({
     <Input
       onChange={e => setEditingValue(e.target.value)}
       size="sm"
+      style={style}
       type="text"
       value={editingValue}
     />,

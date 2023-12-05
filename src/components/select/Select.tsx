@@ -9,6 +9,7 @@ import type {
 
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 
@@ -43,7 +44,8 @@ export type SelectProps<
   onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
 } & Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps> &
   Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
-  HelpTextProps;
+  HelpTextProps &
+  BaseProps;
 
 export const Select = <
   Option extends SelectOption,
@@ -51,6 +53,7 @@ export const Select = <
 >({
   isClearable = true,
   label,
+  style,
   value,
   ...props
 }: SelectProps<Option, false, Group>) => {
@@ -65,6 +68,7 @@ export const Select = <
       isClearable={isClearable}
       isMulti={false}
       label={label}
+      style={style}
       value={value}
     />
   );

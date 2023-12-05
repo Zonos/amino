@@ -1,7 +1,5 @@
 import { type KeyboardEvent, useState } from 'react';
 
-import styled from 'styled-components';
-
 import { IsAfter } from 'src/components/filter/filter-date/_DateControls/_IsAfter';
 import { IsBefore } from 'src/components/filter/filter-date/_DateControls/_IsBefore';
 import { IsBeforeOrOn } from 'src/components/filter/filter-date/_DateControls/_IsBeforeOrOn';
@@ -17,24 +15,16 @@ import {
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const ControlsValueWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${theme.space16};
-
-  > svg {
-    flex-shrink: 0;
-  }
-`;
+import styles from './DateControls.module.scss';
 
 const optionsDate = filterDateRanges.map(r => ({
   label: r,
   value: r,
 }));
 
-type DateControlProps = {
+type DateControlProps = BaseProps & {
   rangeType: FilterDateRangeType;
   value: FilterDateData;
   onChange: (value: FilterDateData) => void;
@@ -47,6 +37,7 @@ export const DateControl = ({
   onChangeFilterText,
   rangeType,
   setRangeType,
+  style,
   value,
 }: DateControlProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -140,12 +131,13 @@ export const DateControl = ({
         onMenuOpen={() => setMenuOpen(true)}
         options={optionsDate}
         size="sm"
+        style={style}
         value={optionsDate.filter(item => item.value === rangeType)}
       />
-      <ControlsValueWrapper>
+      <div className={styles.controlsValueWrapper} style={style}>
         <ArrowRightIcon color="blue600" />
         {renderRangeControl()}
-      </ControlsValueWrapper>
+      </div>
     </>
   );
 };

@@ -1,65 +1,14 @@
-import styled, { keyframes } from 'styled-components';
-
 import { Text } from 'src/components/text/Text';
 import { ZonosLogoIcon } from 'src/icons/custom/ZonosLogoIcon';
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: ${theme.space12};
-`;
+import styles from './_LoadingIcon.module.scss';
 
-const Rotate = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
-const StyledIcon = styled(ZonosLogoIcon)`
-  animation: ${Rotate} 2s linear infinite;
-`;
-
-const StyledText = styled(Text)`
-  position: relative;
-
-  &:after {
-    position: absolute;
-    animation: dots 1200ms linear infinite;
-    content: '';
-  }
-
-  @keyframes dots {
-    0%,
-    20% {
-      content: '.';
-    }
-    40% {
-      content: '..';
-    }
-    60% {
-      content: '...';
-    }
-    90%,
-    100% {
-      content: '';
-    }
-  }
-`;
-
-export const Loading = () => (
-  <Wrapper>
-    <StyledIcon size={64} />
-    <StyledText type="bold-subheader">Loading</StyledText>
-  </Wrapper>
+export const Loading = ({ style }: BaseProps) => (
+  <div className={styles.wrapper} style={style}>
+    <ZonosLogoIcon className={styles.styledIcon} size={64} />
+    <Text className={styles.styledText} type="bold-subheader">
+      Loading
+    </Text>
+  </div>
 );
