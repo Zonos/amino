@@ -275,6 +275,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.gray100;
       case 'link':
         return theme.blue100;
+      case 'text':
+        return theme.gray500;
       default:
         return '';
     }
@@ -314,6 +316,15 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         '--amino-button-padding': getPadding(),
         '--amino-button-radius': getRadius(),
         '--amino-button-size': `var(--amino-size-${size})`,
+        '--amino-button-text-button-color': props.href
+          ? theme.primary
+          : theme.textColorSecondary,
+        '--amino-button-text-button-disabled-color': props.href
+          ? theme.blue300
+          : theme.gray300,
+        '--amino-button-text-button-hover-color': props.href
+          ? theme.blue500
+          : theme.gray500,
         '--amino-button-width': props.fitContentWidth ? 'fit-content' : '',
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
