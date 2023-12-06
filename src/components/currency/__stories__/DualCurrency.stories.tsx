@@ -53,7 +53,7 @@ PositiveValue.args = {
 export const DifferentCurrencyFormatWithPositiveValue =
   DualCurrencyTemplate.bind({});
 DifferentCurrencyFormatWithPositiveValue.args = {
-  conversionRate: 20300,
+  conversionRate: 20_300,
   foreignCode: 'VND',
   isTabular: false,
   localeCode: 'CAD',
@@ -63,7 +63,7 @@ DifferentCurrencyFormatWithPositiveValue.args = {
 export const DifferentCurrencyFormatWithNegativeValue =
   DualCurrencyTemplate.bind({});
 DifferentCurrencyFormatWithNegativeValue.args = {
-  conversionRate: 20300,
+  conversionRate: 20_300,
   foreignCode: 'VND',
   isTabular: false,
   localeCode: 'CAD',

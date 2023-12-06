@@ -711,6 +711,7 @@ import './utils/changeDeepProperty';
 import './utils/changeDeepPropertyAtIndex';
 import './utils/countryPhoneCodes';
 import './utils/flattenRow';
+import './utils/formatCurrency';
 import './utils/getAminoColor';
 import './utils/getCountryCodeByName';
 import './utils/getFuzzySearch';
