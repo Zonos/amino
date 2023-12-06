@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import {
   type FloatLabelInputProps,
@@ -8,46 +8,9 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';
-import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
 
-const StyledWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-const StyledActionWrapper = styled.div<{ $size: Size }>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: ${p => `calc(var(--amino-size-${p.$size}) - 2px)`};
-`;
-const StyledButtonAction = styled.button`
-  padding: ${theme.space0} ${theme.space4};
-  border-radius: ${theme.radius4};
-  transition: ${theme.transition};
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.04);
-  }
-  &:active {
-    background: rgba(0, 0, 0, 0.1);
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-const AminoInput = styled(FloatLabelInput)`
-  && input {
-    padding-right: ${theme.space40};
-    appearance: textfield;
-
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-    }
-  }
-`;
+import styles from './_NumberInput.module.scss';
 
 const getIconSize = (size: Size) => {
   switch (size) {
@@ -67,24 +30,33 @@ export const NumberInput = ({
   className,
   label,
   size = 'xl',
+  style,
   suffix,
   ...props
 }: FloatLabelInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <StyledWrapper className={className}>
-      <AminoInput
+    <div
+      className={clsx(styles.styledWrapper, className)}
+      style={{
+        ...style,
+        '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
+      }}
+    >
+      <FloatLabelInput
         {...props}
         ref={inputRef}
         aria-label={label}
+        className={styles.aminoInput}
         label={label}
         size={size}
         suffix={
           suffix === null
             ? null
             : suffix || (
-                <StyledActionWrapper $size={size}>
-                  <StyledButtonAction
+                <div className={styles.styledActionWrapper}>
+                  <button
+                    className={styles.styledButtonAction}
                     onClick={() => {
                       inputRef.current?.stepUp();
                       inputRef.current?.dispatchEvent(
@@ -94,8 +66,9 @@ export const NumberInput = ({
                     type="button"
                   >
                     <CaretUpIcon size={getIconSize(size)} />
-                  </StyledButtonAction>
-                  <StyledButtonAction
+                  </button>
+                  <button
+                    className={styles.styledButtonAction}
                     onClick={() => {
                       inputRef.current?.stepDown();
                       inputRef.current?.dispatchEvent(
@@ -105,12 +78,12 @@ export const NumberInput = ({
                     type="button"
                   >
                     <CaretDownIcon size={getIconSize(size)} />
-                  </StyledButtonAction>
-                </StyledActionWrapper>
+                  </button>
+                </div>
               )
         }
         type="number"
       />
-    </StyledWrapper>
+    </div>
   );
 };

@@ -1,0 +1,196 @@
+@use 'theme';
+
+$border-radius: var(--amino-float-label-input-border-radius);
+$height: var(--amino-float-label-input-height);
+
+.styledLabelInput {
+  display: block;
+  max-height: 0;
+  pointer-events: none;
+  order: 1;
+  &::before {
+    content: attr(data-label);
+    color: theme.$amino-gray-800;
+    position: absolute;
+    font-size: theme.$amino-font-size-base;
+    line-height: theme.$amino-font-size-base;
+    display: inline-block;
+    filter: blur(0);
+    transform-origin: left top;
+    transition: theme.$amino-transition;
+    margin-left: theme.$amino-space-16;
+    top: calc(50% - theme.$amino-font-size-base / 2);
+    z-index: 1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: $border-radius;
+  }
+
+  /**disabled state */
+  :global(.disabled) & {
+    pointer-events: inherit;
+    ::after {
+      cursor: not-allowed;
+      z-index: 1;
+    }
+  }
+}
+
+.inputDecorator {
+  font-size: theme.$amino-font-size-s;
+  line-height: theme.$amino-font-size-s;
+  font-weight: 700;
+  background: transparent;
+  padding: 0 6px;
+  flex-basis: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &.inputPrefix {
+    border-top-left-radius: theme.$amino-radius-6;
+    border-bottom-left-radius: theme.$amino-radius-6;
+  }
+
+  &.inputSuffix {
+    order: 3;
+    border-top-right-radius: theme.$amino-radius-6;
+    border-bottom-right-radius: theme.$amino-radius-6;
+  }
+}
+
+.inputValuePrefix {
+  display: flex;
+  order: 2;
+  align-items: flex-end;
+  padding-left: theme.$amino-space-16;
+  padding-right: theme.$amino-space-4;
+  padding-bottom: theme.$amino-space-8;
+  color: theme.$amino-gray-800;
+  white-space: nowrap;
+}
+
+.aminoInput {
+  height: $height;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0 theme.$amino-space-16;
+  outline: none;
+  transition: theme.$amino-transition;
+  width: 100%;
+  border-radius: $border-radius;
+  background: theme.$amino-input-background;
+  border: 0;
+  order: 2;
+  font-weight: 500;
+
+  :-internal-autofill-selected {
+    border-radius: theme.$amino-radius-6 0 0 theme.$amino-radius-6;
+    & + label + div {
+      background-color: #e8f0fe;
+    }
+  }
+
+  &:global(.has-label) {
+    padding: theme.$amino-space-16 theme.$amino-space-4 theme.$amino-space-8
+      theme.$amino-space-16;
+    &:global(.has-input-prefix) {
+      padding-left: 0;
+      & + .styledLabelInput::before {
+        margin-left: 0;
+      }
+    }
+  }
+  &:not(:global(.has-label)) {
+    ::placeholder {
+      opacity: 0.6;
+    }
+  }
+  &:global(.has-value-prefix) {
+    padding-left: theme.$amino-space-8;
+  }
+
+  ::placeholder {
+    transition: theme.$amino-transition;
+    opacity: 0;
+  }
+
+  &:focus {
+    outline: none;
+    & + .styledLabelInput::after {
+      box-shadow: theme.$amino-glow-blue;
+    }
+  }
+
+  &:global(.has-error) + .styledLabelInput::after {
+    box-shadow: theme.$amino-glow-error;
+  }
+
+  &:global(.has-content),
+  &:focus {
+    &::placeholder {
+      opacity: 0.6;
+    }
+    & + .styledLabelInput::before {
+      top: 11px;
+      transform: scale(0.8);
+    }
+  }
+
+  &:-webkit-autofill,
+  &:-moz-autofill {
+    background-color: theme.$amino-input-background;
+    color: theme.$amino-text-color;
+  }
+}
+
+.styledLabelWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: theme.$amino-input-background;
+  border-radius: $border-radius;
+
+  &:global(.sm) .aminoInput:global(.has-label) {
+    padding-top: 13px;
+    padding-bottom: 0;
+
+    &:focus,
+    &:global(.has-content) {
+      & + .styledLabelInput::before {
+        top: 2px;
+      }
+    }
+  }
+
+  &:global(.md) .aminoInput:global(.has-label) {
+    padding-top: 20px;
+
+    &:focus,
+    &:global(.has-content) {
+      & + .styledLabelInput::before {
+        top: 6px;
+      }
+    }
+  }
+
+  &:global(.lg) .aminoInput:global(.has-label) {
+    &:focus,
+    &:global(.has-content) {
+      & + .styledLabelInput::before {
+        top: 10px;
+      }
+    }
+  }
+
+  &:global(.xl) .aminoInput:global(.has-label) {
+    padding-bottom: 2px;
+  }
+}

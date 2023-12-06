@@ -1,59 +1,14 @@
 import { useRef } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import {
   type FloatLabelInputProps,
   FloatLabelInput,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { ClockIcon } from 'src/icons/ClockIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-const StyledActionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const StyledButtonAction = styled.button`
-  padding: 6px;
-  border-radius: 50%;
-  transition: ${theme.transition};
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.04);
-  }
-  &:active {
-    background: rgba(0, 0, 0, 0.1);
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-const AminoInput = styled(FloatLabelInput)`
-  && input {
-    padding-right: ${theme.space40};
-    appearance: textfield;
-    &::-webkit-inner-spin-button,
-    &::-webkit-calendar-picker-indicator {
-      display: none;
-      -webkit-appearance: none;
-    }
-
-    &::-webkit-datetime-edit-fields-wrapper {
-      transition: 0.5s all ease;
-    }
-    &:not(:focus):not(.has-content) {
-      &::-webkit-datetime-edit-fields-wrapper {
-        color: transparent;
-      }
-    }
-  }
-`;
+import styles from './_TimeInput.module.scss';
 
 export const TimeInput = ({
   autoFocus,
@@ -69,6 +24,7 @@ export const TimeInput = ({
   prefix,
   readOnly,
   required,
+  style,
   suffix,
   tabIndex,
   value,
@@ -76,11 +32,12 @@ export const TimeInput = ({
 }: FloatLabelInputProps) => {
   const inputRef = useRef<HTMLInputElement & { showPicker: () => void }>(null);
   return (
-    <StyledWrapper className={className}>
-      <AminoInput
+    <div className={clsx(styles.styledWrapper, className)} style={style}>
+      <FloatLabelInput
         ref={inputRef}
         aria-label={label}
         autoFocus={autoFocus}
+        className={styles.aminoInput}
         disabled={disabled}
         error={error}
         inputMode={inputMode}
@@ -94,8 +51,9 @@ export const TimeInput = ({
         required={required}
         suffix={
           suffix || (
-            <StyledActionWrapper>
-              <StyledButtonAction
+            <div className={styles.styledActionWrapper}>
+              <button
+                className={styles.styledButtonAction}
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
@@ -105,8 +63,8 @@ export const TimeInput = ({
                 type="button"
               >
                 <ClockIcon size={24} />
-              </StyledButtonAction>
-            </StyledActionWrapper>
+              </button>
+            </div>
           )
         }
         tabIndex={tabIndex}
@@ -114,6 +72,6 @@ export const TimeInput = ({
         value={value}
         {...props}
       />
-    </StyledWrapper>
+    </div>
   );
 };

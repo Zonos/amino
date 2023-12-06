@@ -1,0 +1,46 @@
+@use 'theme';
+
+.styledWrapper {
+  position: relative;
+  border: theme.$amino-border;
+  border-radius: theme.$amino-radius-6;
+  width: 100%;
+}
+
+.styledLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: theme.$amino-space-40;
+}
+
+.aminoInput {
+  padding-left: theme.$amino-space-40;
+  padding-right: theme.$amino-space-16;
+  height: 40px;
+  font-weight: 500;
+  line-height: 40px;
+  border-radius: theme.$amino-radius-6;
+  outline: none;
+  width: 100%;
+  background: theme.$amino-input-background;
+  :focus {
+    outline: none;
+    box-shadow: theme.$amino-glow-blue;
+  }
+  &:-webkit-autofill,
+  &:-moz-autofill {
+    background-color: theme.$amino-input-background;
+    color: theme.$amino-text-color;
+  }
+
+  /* The native X on the right of the input */
+  &:not([value=''])::-webkit-search-cancel-button {
+    opacity: 1 !important;
+    cursor: pointer;
+  }
+}
