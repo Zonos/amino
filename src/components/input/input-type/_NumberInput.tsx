@@ -30,7 +30,6 @@ export const NumberInput = ({
   className,
   label,
   size = 'xl',
-  style,
   suffix,
   ...props
 }: FloatLabelInputProps) => {
@@ -39,7 +38,6 @@ export const NumberInput = ({
     <div
       className={clsx(styles.styledWrapper, className)}
       style={{
-        ...style,
         '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
       }}
     >

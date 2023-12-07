@@ -24,7 +24,6 @@ export const TimeInput = ({
   prefix,
   readOnly,
   required,
-  style,
   suffix,
   tabIndex,
   value,
@@ -32,7 +31,7 @@ export const TimeInput = ({
 }: FloatLabelInputProps) => {
   const inputRef = useRef<HTMLInputElement & { showPicker: () => void }>(null);
   return (
-    <div className={clsx(styles.styledWrapper, className)} style={style}>
+    <div className={clsx(styles.styledWrapper, className)}>
       <FloatLabelInput
         ref={inputRef}
         aria-label={label}

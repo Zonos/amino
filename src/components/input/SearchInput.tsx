@@ -51,7 +51,6 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       readOnly,
       required,
-      style,
       tabIndex,
       value,
       ...props
@@ -61,7 +60,7 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
     const inputId = useId();
 
     return (
-      <div className={clsx(styles.styledWrapper, className)} style={style}>
+      <div className={clsx(styles.styledWrapper, className)}>
         {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
         <label className={styles.styledLabel} htmlFor={inputId}>
           <SearchIcon color="gray600" size={24} />

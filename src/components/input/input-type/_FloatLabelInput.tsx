@@ -92,7 +92,6 @@ export const FloatLabelInput = forwardRef<
       readOnly,
       required,
       size = 'xl',
-      style,
       suffix,
       tabIndex,
       type,
@@ -124,7 +123,6 @@ export const FloatLabelInput = forwardRef<
       <div
         className={clsx(className, size, styles.styledLabelWrapper)}
         style={{
-          ...style,
           '--amino-float-label-input-border-radius': getRadius(),
           '--amino-float-label-input-height': `calc(var(--amino-size-${size}) - 2px)`,
         }}

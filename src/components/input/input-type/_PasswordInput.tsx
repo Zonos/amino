@@ -25,7 +25,6 @@ export const PasswordInput = ({
   prefix,
   readOnly,
   required,
-  style,
   suffix,
   tabIndex,
   value,
@@ -33,7 +32,7 @@ export const PasswordInput = ({
 }: FloatLabelInputProps) => {
   const [inputType, setInputType] = useState('password');
   return (
-    <div className={clsx(styles.styledWrapper, className)} style={style}>
+    <div className={clsx(styles.styledWrapper, className)}>
       <FloatLabelInput
         aria-label={label}
         autoFocus={autoFocus}

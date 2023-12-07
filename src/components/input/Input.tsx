@@ -225,7 +225,6 @@ export const Input = <T extends string>({
         styles.aminoInputWrapper,
       )}
       style={{
-        ...style,
         '--amino-input-border-radius': getRadius(),
         '--amino-input-width': width ? `${width}px` : '100%',
       }}
