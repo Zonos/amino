@@ -1,7 +1,6 @@
 @use 'theme';
 
 $width: var(--amino-base-dialog-width);
-$border: var(--amino-base-dialog-border);
 
 .backdrop {
   width: 100vw;
@@ -23,7 +22,6 @@ $border: var(--amino-base-dialog-border);
   border-radius: theme.$amino-radius-12;
   outline: none;
   box-shadow: theme.$amino-v3-shadow-xxl;
-  border: $border;
   overflow: hidden;
   display: flex;
   flex-direction: column;

@@ -16,7 +16,7 @@ import type { BaseProps } from 'src/types/BaseProps';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const StyledVStack = styled(VStack)`
-  padding-top: 3px;
+  padding: ${theme.space0};
 `;
 
 const NoTooltipWrapper = styled.div``;
@@ -74,7 +74,9 @@ const StyledTooltip = muiStyled(
 )(({ background }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: background ? theme[background] : theme.gray1200,
+    borderRadius: theme.radius10,
     boxShadow: theme.v3ShadowLarge,
+    padding: theme.space12,
   },
   [`&[data-theme='night']`]: {
     [`.${tooltipClasses.tooltip}`]: {
