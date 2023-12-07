@@ -514,7 +514,6 @@ export const StyledReactSelect = <
   menuPosition = 'fixed',
   placeholder,
   size = 'xl',
-  style,
   styles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
@@ -551,7 +550,6 @@ export const StyledReactSelect = <
     <StyledSelectWrapper
       className={[error ? 'has-error' : ''].join(' ')}
       data-testid={testId}
-      style={style}
     >
       <ReactSelect<Option, IsMulti, Group>
         ref={selectElement}

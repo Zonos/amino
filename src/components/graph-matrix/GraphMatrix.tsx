@@ -62,7 +62,6 @@ export const GraphMatrix = ({
   query = '',
   schema,
   schemaName,
-  style,
   url,
   variables = '',
 }: GraphMatrixProps) => {
@@ -142,7 +141,7 @@ export const GraphMatrix = ({
   };
 
   return (
-    <div className={styles.styledWrapper} style={style}>
+    <div className={styles.styledWrapper}>
       <SplitPanel
         collapseAll={!showTable}
         onSetSizes={setSplitPanelSizes}

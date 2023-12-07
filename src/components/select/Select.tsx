@@ -53,7 +53,6 @@ export const Select = <
 >({
   isClearable = true,
   label,
-  style,
   value,
   ...props
 }: SelectProps<Option, false, Group>) => {
@@ -68,7 +67,6 @@ export const Select = <
       isClearable={isClearable}
       isMulti={false}
       label={label}
-      style={style}
       value={value}
     />
   );
