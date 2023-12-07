@@ -29,7 +29,6 @@ export const FilterAmount = ({
   dropdownTitle,
   filter,
   label,
-  style,
 }: FilterAmountProps) => {
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
@@ -147,7 +146,6 @@ export const FilterAmount = ({
         onMenuOpen={() => setMenuOpen(true)}
         options={filterAmountOptions}
         size="md"
-        style={style}
         value={filterAmountOptions.filter(item => item.value === filterType)}
       />
 

@@ -37,7 +37,6 @@ export const DateControls = ({
   onChangeFilterText,
   rangeType,
   setRangeType,
-  style,
   value,
 }: DateControlProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -131,10 +130,9 @@ export const DateControls = ({
         onMenuOpen={() => setMenuOpen(true)}
         options={optionsDate}
         size="sm"
-        style={style}
         value={optionsDate.filter(item => item.value === rangeType)}
       />
-      <div className={styles.controlsValueWrapper} style={style}>
+      <div className={styles.controlsValueWrapper}>
         <ArrowRightIcon color="blue600" />
         {renderRangeControl()}
       </div>

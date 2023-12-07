@@ -23,7 +23,6 @@ export const FilterMultiSelect = <T extends string | number = string>({
   label,
   onChange,
   options,
-  style,
   value,
 }: FilterMultiSelectProps<T>) => {
   const [editingSelectedValues, setEditingSelectedValues] =
@@ -57,7 +56,7 @@ export const FilterMultiSelect = <T extends string | number = string>({
   });
 
   return renderWrapper(
-    <VStack className={styles.vStackStyled} spacing={8} style={style}>
+    <VStack className={styles.vStackStyled} spacing={8}>
       {options.map(option => (
         <Checkbox
           key={option.value}
