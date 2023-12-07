@@ -74,9 +74,9 @@ const StyledTooltip = muiStyled(
 )(({ background }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: background ? theme[background] : theme.gray1200,
+    borderRadius: theme.radius10,
     boxShadow: theme.v3ShadowLarge,
     padding: theme.space12,
-    borderRadius: theme.radius10,
   },
   [`&[data-theme='night']`]: {
     [`.${tooltipClasses.tooltip}`]: {
@@ -100,7 +100,7 @@ export const Tooltip = ({
   const { aminoTheme } = useAminoTheme();
   if (showTooltip) {
     return (
-      <StyledTooltip 
+      <StyledTooltip
         {...rest}
         background={background}
         className={className}
