@@ -1,15 +1,13 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const StyledHelpText = styled.div`
-  margin-top: ${theme.space8};
-`;
+import styles from './HelpText.module.scss';
 
-export type HelpTextProps = {
+export type HelpTextProps = BaseProps & {
   /**
    * Is this an error state.
    */
@@ -20,27 +18,36 @@ export type HelpTextProps = {
   helpText?: ReactNode;
 };
 
-export const HelpText = ({ error, helpText }: HelpTextProps) => {
+export const HelpText = ({
+  className,
+  error,
+  helpText,
+  style,
+}: HelpTextProps) => {
   if (helpText) {
     if (error && typeof helpText === 'string') {
       return (
-        <StyledHelpText>
+        <div className={clsx(className, styles.styledHelpText)} style={style}>
           <Text color="red700" type="caption">
             {helpText}
           </Text>
-        </StyledHelpText>
+        </div>
       );
     }
 
     if (typeof helpText === 'string') {
       return (
-        <StyledHelpText>
+        <div className={clsx(className, styles.styledHelpText)} style={style}>
           <Text type="caption">{helpText}</Text>
-        </StyledHelpText>
+        </div>
       );
     }
 
-    return <StyledHelpText>{helpText}</StyledHelpText>;
+    return (
+      <div className={clsx(className, styles.styledHelpText)} style={style}>
+        {helpText}
+      </div>
+    );
   }
   return null;
 };

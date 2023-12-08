@@ -33,7 +33,7 @@ import './components/file-upload/FileUpload';
 import './components/filter/filter-amount/FilterAmount';
 import './components/filter/filter-amount/filterAmountReducer';
 import './components/filter/filter-date/DateControls';
-import './components/filter/filter-date/dateUtils';
+import './components/filter/filter-date/DateControlsWrapper';
 import './components/filter/filter-date/FilterDate';
 import './components/filter/filter-date/filterDateReducer';
 import './components/filter/filter-multi-select/FilterMultiSelect';
