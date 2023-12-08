@@ -39,6 +39,7 @@ import './components/filter/filter-date/filterDateReducer';
 import './components/filter/filter-multi-select/FilterMultiSelect';
 import './components/filter/filter-select/FilterSelect';
 import './components/filter/filter-text/FilterText';
+import './components/filter/FilterWrapper';
 import './components/filter/useFilterWrapper';
 import './components/glow/GlowWrapper';
 import './components/graph-matrix/GraphMatrix';
