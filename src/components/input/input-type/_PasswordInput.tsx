@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import {
   type FloatLabelInputProps,
@@ -8,34 +8,8 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-const StyledButtonAction = styled.button`
-  padding: 6px;
-  border-radius: 50%;
-  transition: ${theme.transition};
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.04);
-  }
-  &:active {
-    background: rgba(0, 0, 0, 0.1);
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-
-const AminoInput = styled(FloatLabelInput)`
-  input {
-    padding-right: ${theme.space40};
-  }
-`;
+import styles from './_Password.module.scss';
 
 export const PasswordInput = ({
   autoFocus,
@@ -58,10 +32,11 @@ export const PasswordInput = ({
 }: FloatLabelInputProps) => {
   const [inputType, setInputType] = useState('password');
   return (
-    <StyledWrapper className={className}>
-      <AminoInput
+    <div className={clsx(styles.styledWrapper, className)}>
+      <FloatLabelInput
         aria-label={label}
         autoFocus={autoFocus}
+        className={styles.aminoInput}
         disabled={disabled}
         error={error}
         inputMode={inputMode}
@@ -75,7 +50,8 @@ export const PasswordInput = ({
         required={required}
         suffix={
           suffix || (
-            <StyledButtonAction
+            <button
+              className={styles.styledButtonAction}
               onClick={() =>
                 setInputType(inputType === 'password' ? 'text' : 'password')
               }
@@ -86,7 +62,7 @@ export const PasswordInput = ({
               ) : (
                 <EyeOffIcon size={24} />
               )}
-            </StyledButtonAction>
+            </button>
           )
         }
         tabIndex={tabIndex}
@@ -94,6 +70,6 @@ export const PasswordInput = ({
         value={value}
         {...props}
       />
-    </StyledWrapper>
+    </div>
   );
 };
