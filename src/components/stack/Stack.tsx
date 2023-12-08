@@ -3,6 +3,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import type { GridAlignment, GridSpacing } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 type DivProps = Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -20,7 +21,8 @@ export type StackProps = {
   children: ReactNode;
   /** @default 24 */
   spacing?: GridSpacing;
-} & DivProps;
+} & DivProps &
+  BaseProps;
 /**
  * A stack
  *

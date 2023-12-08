@@ -1,6 +1,6 @@
 import { type Dispatch, useState } from 'react';
 
-import { DateControl } from 'src/components/filter/filter-date/DateControls';
+import { DateControls } from 'src/components/filter/filter-date/DateControls';
 import {
   type FilterDateAction,
   type FilterDateData,
@@ -110,7 +110,7 @@ export const FilterDate = ({
   };
 
   return renderWrapper(
-    <DateControl
+    <DateControls
       onChange={setEditingValue}
       onChangeFilterText={handleChangeFilterText}
       rangeType={rangeType}
