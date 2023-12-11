@@ -1,31 +1,14 @@
 import { type ReactNode, useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
-import styled from 'styled-components';
-
 import { Button } from 'src/components/button/Button';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 import { type flattenRow } from 'src/utils/flattenRow';
 
-const StyledPivotTableContentWrapper = styled.div`
-  height: 100%;
-`;
-const StyledTableHeader = styled.div`
-  display: flex;
-  align-items: center;
-  padding: ${theme.space8};
-`;
-const StyledTableActionWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: center;
-  gap: ${theme.space8};
-`;
+import styles from './NestedDataTable.module.scss';
 
 type ColumnType<TRow> = Column<TRow, Record<string, unknown>>;
 export type ColumnCell<TRow extends Record<string, unknown>> = NonNullable<
@@ -103,12 +86,12 @@ export const NestedDataTable = <
   };
 
   return (
-    <StyledPivotTableContentWrapper>
-      <StyledTableHeader>
+    <div className={styles.styledPivotTableContentWrapper}>
+      <div className={styles.styledTableHeader}>
         {!!title && <Text type="header">{title}</Text>}
         {/* Only show pagination if handlePagination and currentPage is provided */}
         {!!showPagination && (
-          <StyledTableActionWrapper>
+          <div className={styles.styledTableActionWrapper}>
             <Button
               disabled={currentPage === 1 || !hasPreviousPage}
               onClick={() => {
@@ -132,11 +115,11 @@ export const NestedDataTable = <
             >
               Next page
             </Button>
-          </StyledTableActionWrapper>
+          </div>
         )}
-      </StyledTableHeader>
+      </div>
 
       {renderTable()}
-    </StyledPivotTableContentWrapper>
+    </div>
   );
 };

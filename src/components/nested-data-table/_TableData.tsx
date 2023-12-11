@@ -7,8 +7,6 @@ import {
 } from 'react';
 import type { Column } from 'react-data-grid';
 
-import styled from 'styled-components';
-
 import { Button } from 'src/components/button/Button';
 import { Filter } from 'src/components/nested-data-table/_Filter';
 import {
@@ -17,40 +15,11 @@ import {
 } from 'src/components/pivot-table/PivotTable';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { ChevronRightCircleIcon } from 'src/icons/ChevronRightCircleIcon';
-import { theme } from 'src/styles/constants/theme';
 import { flattenRow } from 'src/utils/flattenRow';
 import { setupNestedData } from 'src/utils/setupNestedData';
 import { truncateText } from 'src/utils/truncateText';
 
-const StyledFilterWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: var(--amino-space-12);
-`;
-
-const StyledExpandWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  svg {
-    transition: 0.3s all ease;
-  }
-  .expanding-button {
-    svg {
-      transform: rotate(90deg);
-    }
-  }
-`;
-
-const StyledTableWrapper = styled.div`
-  .expanding {
-    background-color: ${theme.gray50};
-  }
-  & & {
-    padding: ${theme.space4} ${theme.space12} ${theme.space24};
-  }
-`;
+import styles from './_TableData.module.scss';
 
 type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
 
@@ -106,7 +75,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
         const noItems = currentValue.length === 0;
         const isExpanding = row._expandedKey === column.key;
         return (
-          <StyledExpandWrapper>
+          <div className={styles.styledExpandWrapper}>
             <Tooltip showTooltip={noItems} subtitle="This list has no items.">
               <Button
                 className={isExpanding ? 'expanding-button' : ''}
@@ -122,7 +91,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
                 variant="subtle"
               />
             </Tooltip>
-          </StyledExpandWrapper>
+          </div>
         );
       }
       if (row._expandedData && row._expandedData.length > 0) {
@@ -183,8 +152,8 @@ export const TableData = <TRow extends Record<string, unknown>>({
   }, [columns, hiddenColumns]);
 
   return (
-    <StyledTableWrapper>
-      <StyledFilterWrapper>
+    <div className={styles.styledTableWrapper}>
+      <div className={styles.styledFilterWrapper}>
         {!noFilter && (
           <Filter
             columns={columns}
@@ -192,7 +161,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
             setHiddenColumns={setHiddenColumns}
           />
         )}
-      </StyledFilterWrapper>
+      </div>
       <PivotTable
         columns={filteredHiddenColumns}
         defaultColumnOptions={{
@@ -245,6 +214,6 @@ export const TableData = <TRow extends Record<string, unknown>>({
         rows={rows}
         tableHeight="100%"
       />
-    </StyledTableWrapper>
+    </div>
   );
 };

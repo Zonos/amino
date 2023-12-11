@@ -1,79 +1,11 @@
 import { type MouseEventHandler, type ReactNode, forwardRef } from 'react';
 
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-type AminoListItemProps = {
-  disabled?: boolean;
-  selected?: boolean;
-  withClick?: boolean;
-};
-
-const AminoListItem = styled.div<AminoListItemProps>`
-  padding: ${theme.space8} ${theme.space16};
-  display: flex;
-  flex-direction: row;
-  gap: ${theme.space16};
-  align-items: center;
-  min-height: ${theme.sizeXl};
-  border-radius: ${theme.radius8};
-  line-height: 16px;
-
-  .___icon-wrapper {
-    display: none;
-    &.has-icon {
-      display: inline-block;
-    }
-  }
-
-  ${({ disabled, selected }) =>
-    !disabled &&
-    selected &&
-    css`
-      background-color: ${theme.blue100};
-      * {
-        color: ${theme.blue800};
-      }
-    `}
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      * {
-        color: ${theme.gray600};
-      }
-      cursor: not-allowed;
-    `}
-
-  :hover {
-    ${({ disabled, selected, withClick }) =>
-      !disabled &&
-      withClick &&
-      !selected &&
-      css`
-        background-color: ${theme.hoverColor};
-        cursor: pointer;
-      `}
-  }
-`;
-
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  flex-grow: 1;
-`;
-
-const Icon = styled.img`
-  margin-right: ${theme.space16};
-  width: 32px;
-  height: 32px;
-  border-radius: ${theme.radius6};
-`;
+import styles from './ListItem.module.scss';
 
 export type Props = BaseProps & {
   /** @description Decorater takes a React node, preferably an icon or an avatar */
@@ -96,7 +28,7 @@ const ListIcon = ({
   label: string;
 }) => {
   if (icon) {
-    return <Icon alt={label} src={icon} />;
+    return <img alt={label} className={styles.icon} src={icon} />;
   }
   if (iconComponent) {
     return <>{iconComponent}</>;
@@ -118,26 +50,28 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
     },
     ref,
   ) => (
-    <AminoListItem
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div
       ref={ref}
-      className={className}
-      disabled={disabled}
+      className={clsx(
+        className,
+        styles.aminoListItem,
+        disabled && styles.disabled,
+        selected && styles.selected,
+        !!onClick && styles.withClick,
+      )}
       onClick={e => !disabled && onClick && onClick(e)}
-      selected={selected}
-      withClick={!!onClick}
     >
-      <div
-        className={['___icon-wrapper', decorator ? 'has-icon' : ''].join(' ')}
-      >
+      <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>
         {decorator}
         <ListIcon label={typeof label === 'string' ? label : ''} />
       </div>
 
-      <TextContainer>
+      <div className={styles.textContainer}>
         <Text type="label">{label}</Text>
         {subtitle && <Text type="caption">{subtitle}</Text>}
-      </TextContainer>
+      </div>
       {rightDecorator}
-    </AminoListItem>
+    </div>
   ),
 );

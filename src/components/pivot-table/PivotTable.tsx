@@ -8,13 +8,11 @@ import DataGrid, {
   type SortColumn,
 } from 'react-data-grid';
 
-import styled from 'styled-components';
-
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
-import { theme } from 'src/styles/constants/theme';
-import type { StyledProps } from 'src/types';
 import { addIndex } from 'src/utils/addIndex';
+
+import styles from './PivotTable.module.scss';
 
 export type KeyValue = string | number;
 type RowData = Record<string, unknown>;
@@ -60,40 +58,6 @@ type Props<
 
 type Comparator<TRow extends unknown> = (a: TRow, b: TRow) => number;
 
-type StyledWrapperProps = StyledProps<{ tableHeight?: string }>;
-
-const SortStatus = styled.span`
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledWrapper = styled.div<StyledWrapperProps>`
-  height: ${props =>
-    props.$tableHeight ? props.$tableHeight : 'calc(100vh - 145px)'};
-  min-height: ${props => props.$tableHeight};
-  position: relative;
-  .data-grid {
-    block-size: 100%;
-    border-radius: 8px;
-    background-color: inherit;
-    .rdg-row {
-      background-color: ${theme.gray0};
-      color: ${theme.textColor};
-    }
-    .rdg-header-row,
-    .rdg-summary-row {
-      background-color: ${theme.gray100};
-      color: ${theme.textColor};
-      font-weight: 700;
-    }
-    .rdg-cell {
-      border: 1px solid ${theme.gray200};
-    }
-  }
-`;
-
 /**
  * Awesome data grid
  * @repo https://github.com/adazzle/react-data-grid
@@ -125,14 +89,14 @@ export const PivotTable = <
         return null;
       }
       return (
-        <SortStatus>
+        <span className={styles.sortStatus}>
           {sortDirection === 'ASC' ? (
             <ChevronUpIcon color="gray900" />
           ) : (
             <ChevronDownIcon color="gray900" />
           )}
           <span>{priority}</span>
-        </SortStatus>
+        </span>
       );
     },
     [],
@@ -198,7 +162,13 @@ export const PivotTable = <
   }, [rows, sortColumns]);
 
   return (
-    <StyledWrapper $tableHeight={tableHeight}>
+    <div
+      className={styles.styledWrapper}
+      style={{
+        '--amino-pivot-table-height': tableHeight || 'calc(100vh - 145px)',
+        '--amino-pivot-table-min-height': tableHeight || '',
+      }}
+    >
       <DataGrid
         ref={dataGridRef}
         className="data-grid"
@@ -210,6 +180,6 @@ export const PivotTable = <
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
-    </StyledWrapper>
+    </div>
   );
 };

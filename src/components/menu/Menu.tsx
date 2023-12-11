@@ -1,16 +1,17 @@
-import styled from 'styled-components';
+import type { ReactNode } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
+import clsx from 'clsx';
 
-export const Menu = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+import type { BaseProps } from 'src/types/BaseProps';
 
-  hr {
-    border: 0;
-    border-bottom: ${theme.border};
-    margin-top: ${theme.radius6};
-    margin-bottom: ${theme.radius6};
-  }
-`;
+import styles from './Menu.module.scss';
+
+export const Menu = ({
+  children,
+  className,
+  style,
+}: BaseProps & { children?: ReactNode }) => (
+  <div className={clsx(className, styles.menu)} style={style}>
+    {children}
+  </div>
+);
