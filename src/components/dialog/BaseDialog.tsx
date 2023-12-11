@@ -135,7 +135,7 @@ export const BaseDialog = ({
             <motion.div
               {...combinedPopupMotionProps}
               key="dialog"
-              className={clsx(className, styles.popup, 'elevated')}
+              className={clsx(styles.popup, 'elevated')}
               onClick={e => {
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
