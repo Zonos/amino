@@ -26,6 +26,7 @@ import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
@@ -494,7 +495,8 @@ export type StyledReactSelectProps<
   styles?: StylesConfig<Option, IsMulti, Group>;
 } & Props<Option, IsMulti, Group> &
   HelpTextProps &
-  AdditionalProps<Option['value']>;
+  AdditionalProps<Option['value']> &
+  BaseProps;
 
 export const StyledReactSelect = <
   Option extends SelectOption,

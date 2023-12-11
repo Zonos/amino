@@ -1,0 +1,36 @@
+@use 'theme';
+
+$padding: var(--amino-glow-wrapper-padding);
+$border-radius: var(--amino-glow-wrapper-border-radius);
+$background: var(--amino-glow-wrapper-background);
+$y: var(--y, 0);
+$x: var(--x, 0);
+
+.wrapper {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  padding: $padding;
+  box-shadow: inset 0px 0px 1px 1px theme.$amino-gray-200;
+  border-radius: $border-radius;
+
+  ::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    width: min(100%, 400px);
+    height: min(100%, 400px);
+    top: calc($y * 1px - min(50%, calc(400px / 2)));
+    left: calc($x * 1px - min(50%, calc(400px / 2)));
+    background: $background;
+    filter: blur(20px);
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+
+  :hover {
+    ::after {
+      opacity: 1;
+    }
+  }
+}

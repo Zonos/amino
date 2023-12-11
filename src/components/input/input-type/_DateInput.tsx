@@ -1,59 +1,14 @@
 import { useRef } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import {
   type FloatLabelInputProps,
   FloatLabelInput,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CalendarIcon } from 'src/icons/CalendarIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledWrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
-const StyledActionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const StyledButtonAction = styled.button`
-  padding: 6px;
-  border-radius: 50%;
-  transition: ${theme.transition};
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.04);
-  }
-  &:active {
-    background: rgba(0, 0, 0, 0.1);
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-
-const AminoInput = styled(FloatLabelInput)`
-  && input {
-    padding-right: ${theme.space40};
-    appearance: textfield;
-    &::-webkit-inner-spin-button,
-    &::-webkit-calendar-picker-indicator {
-      display: none;
-      -webkit-appearance: none;
-    }
-
-    &::-webkit-datetime-edit-fields-wrapper {
-      transition: 0.5s all ease;
-    }
-    &:not(:focus):not(.has-content) {
-      &::-webkit-datetime-edit-fields-wrapper {
-        opacity: 0;
-      }
-    }
-  }
-`;
+import styles from './_DateInput.module.scss';
 
 export const DateInput = ({
   autoFocus,
@@ -76,11 +31,12 @@ export const DateInput = ({
 }: FloatLabelInputProps) => {
   const inputRef = useRef<HTMLInputElement & { showPicker: () => void }>(null);
   return (
-    <StyledWrapper className={className}>
-      <AminoInput
+    <div className={clsx(styles.styledWrapper, className)}>
+      <FloatLabelInput
         ref={inputRef}
         aria-label={label}
         autoFocus={autoFocus}
+        className={styles.aminoInput}
         disabled={disabled}
         error={error}
         inputMode={inputMode}
@@ -94,8 +50,9 @@ export const DateInput = ({
         required={required}
         suffix={
           suffix || (
-            <StyledActionWrapper>
-              <StyledButtonAction
+            <div className={styles.styledActionWrapper}>
+              <button
+                className={styles.styledButtonAction}
                 onClick={() => {
                   inputRef.current?.showPicker();
                   inputRef.current?.dispatchEvent(
@@ -105,8 +62,8 @@ export const DateInput = ({
                 type="button"
               >
                 <CalendarIcon size={24} />
-              </StyledButtonAction>
-            </StyledActionWrapper>
+              </button>
+            </div>
           )
         }
         tabIndex={tabIndex}
@@ -114,6 +71,6 @@ export const DateInput = ({
         value={value}
         {...props}
       />
-    </StyledWrapper>
+    </div>
   );
 };

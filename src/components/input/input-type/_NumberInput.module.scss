@@ -1,0 +1,42 @@
+@use 'theme';
+
+$height: var(--amino-number-input-height);
+
+.styledWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.styledActionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: $height;
+}
+
+.styledButtonAction {
+  padding: theme.$amino-space-0 theme.$amino-space-4;
+  border-radius: theme.$amino-radius-4;
+  transition: theme.$amino-transition;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.aminoInput {
+  & input {
+    padding-right: theme.$amino-space-40;
+    appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+      -webkit-appearance: none;
+    }
+  }
+}

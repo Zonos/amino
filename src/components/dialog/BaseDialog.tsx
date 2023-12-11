@@ -4,7 +4,6 @@ import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import { type MotionProps, AnimatePresence, motion } from 'framer-motion';
 
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 
@@ -46,10 +45,6 @@ export type BaseDialogProps = BaseProps & {
    * @default true
    */
   withBackdrop?: boolean;
-  /**
-   * @default true
-   */
-  withBorder?: boolean;
   onClose?: () => void;
 };
 
@@ -65,7 +60,6 @@ export const BaseDialog = ({
   themeOverride,
   width = 444,
   withBackdrop = true,
-  withBorder = true,
 }: BaseDialogProps) => {
   const mouseDownTarget = useRef<HTMLDivElement | null>(null);
 
@@ -133,7 +127,6 @@ export const BaseDialog = ({
             }}
             style={{
               ...style,
-              '--amino-base-dialog-border': withBorder ? theme.border : '',
               '--amino-base-dialog-width': `${width}px`,
             }}
             tabIndex={-1}

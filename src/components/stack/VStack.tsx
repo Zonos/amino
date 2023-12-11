@@ -15,8 +15,13 @@ const StyledVStack = styled(Stack)<{ $spacing: GridSpacing }>`
  * @param alignment - Optional alignment
  * @param spacing - Optional spacing between elements
  */
-export const VStack = ({ children, spacing = 24, ...props }: StackProps) => (
-  <StyledVStack $spacing={spacing} {...props}>
+export const VStack = ({
+  children,
+  spacing = 24,
+  style,
+  ...props
+}: StackProps) => (
+  <StyledVStack $spacing={spacing} style={style} {...props}>
     {children}
   </StyledVStack>
 );

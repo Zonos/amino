@@ -1,48 +1,13 @@
 import { type ReactNode, useEffect, useMemo, useRef } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
-import { type StyledProps } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
+import { getAminoColor } from 'src/utils/getAminoColor';
 import { type Product, getProductDetails } from 'src/utils/getProductDetails';
 
-type GlowWrapperProps = {
-  gradient: string;
-  radius: number;
-  size: number;
-};
-
-const Wrapper = styled.div<StyledProps<GlowWrapperProps>>`
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
-  padding: ${p => p.$size}px;
-  box-shadow: inset 0px 0px 1px 1px ${theme.gray200};
-  border-radius: ${p => p.$radius}px;
-
-  &::after {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    width: min(100%, 400px);
-    height: min(100%, 400px);
-    top: calc(var(--y, 0) * 1px - min(50%, calc(400px / 2)));
-    left: calc(var(--x, 0) * 1px - min(50%, calc(400px / 2)));
-    background: ${p => p.$gradient};
-    filter: blur(20px);
-
-    transition: opacity 0.5s;
-    opacity: 0;
-  }
-
-  :hover {
-    &::after {
-      opacity: 1;
-    }
-  }
-`;
+import styles from './GlowWrapper.module.scss';
 
 type Props = BaseProps & {
   children?: ReactNode;
@@ -73,20 +38,17 @@ export const GlowWrapper = ({
   product,
   radius = 6,
   size = 1,
+  style,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const gradient = useMemo(() => {
     if (!product) {
-      return `radial-gradient(
-        circle,
-        ${theme[glowColor]} 0%,
-        white 70%
-      );`;
+      return null;
     }
 
     return getProductDetails({ product }).gradient;
-  }, [glowColor, product]);
+  }, [product]);
 
   useEffect(() => {
     const { current } = ref;
@@ -105,14 +67,19 @@ export const GlowWrapper = ({
   }, []);
 
   return (
-    <Wrapper
+    <div
       ref={ref}
-      $gradient={gradient}
-      $radius={radius}
-      $size={size}
-      className={className}
+      className={clsx(styles.wrapper, className)}
+      style={{
+        ...style,
+        '--amino-glow-wrapper-background':
+          gradient ||
+          `radial-gradient(circle, ${getAminoColor(glowColor)} 0%, white 70%)`,
+        '--amino-glow-wrapper-border-radius': `${radius}px`,
+        '--amino-glow-wrapper-padding': `${size}px`,
+      }}
     >
       {children}
-    </Wrapper>
+    </div>
   );
 };
