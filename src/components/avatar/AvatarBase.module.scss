@@ -1,13 +1,13 @@
 @use 'theme';
 
-$background-color: var(--amino-avater-base-background-color);
-$background-image: var(--amino-avater-base-background-image);
-$background-size: var(--amino-avater-base-background-size);
-$background-position: var(--amino-avater-base-background-position);
-$border: var(--amino-avater-base-border);
-$border-radius: var(--amino-avater-base-border-radius);
-$height: var(--amino-avater-base-height);
-$width: var(--amino-avater-base-width);
+$background-color: var(--amino-avatar-base-background-color);
+$background-image: var(--amino-avatar-base-background-image);
+$background-size: var(--amino-avatar-base-background-size);
+$background-position: var(--amino-avatar-base-background-position);
+$border: var(--amino-avatar-base-border);
+$border-radius: var(--amino-avatar-base-border-radius);
+$height: var(--amino-avatar-base-height);
+$width: var(--amino-avatar-base-width);
 
 .wrapper {
   display: flex;
