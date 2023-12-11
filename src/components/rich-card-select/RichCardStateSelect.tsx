@@ -1,44 +1,11 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Card } from 'src/components/card/Card';
 import { VStack } from 'src/components/stack/VStack';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UnitedState } from 'src/types/UnitedStates';
 
-const RegionLabel = styled.div`
-  font-weight: bold;
-`;
-
-const RegionWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${theme.space8};
-`;
-
-const StateCard = styled(Card)<{ $highlighted?: boolean }>`
-  cursor: pointer;
-  width: 180px;
-  display: flex;
-  gap: 24px;
-  height: fit-content;
-  align-items: center;
-  font-weight: 500;
-  flex: 0 0 180px;
-  font-size: ${theme.fontSizeS};
-  color: ${p => p.$highlighted && theme.blue600};
-  background-color: ${p => p.$highlighted && theme.blue100};
-  border: ${p => p.$highlighted && `2px solid ${theme.blue400}`};
-
-  &:hover {
-    background-color: ${p => !p.$highlighted && theme.gray50};
-  }
-
-  svg > path {
-    stroke: ${p => p.$highlighted && theme.blue600};
-    fill: ${p => p.$highlighted && theme.blue200};
-  }
-`;
+import styles from './RichCardStateSelect.module.scss';
 
 export type RichCardStateSelectProps<T extends UnitedState = UnitedState> =
   BaseProps & {
@@ -62,8 +29,8 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
       {regions.map(region => (
         <div key={region}>
           <VStack spacing={16}>
-            <RegionLabel>{region}</RegionLabel>
-            <RegionWrapper>
+            <div className={styles.regionLabel}>{region}</div>
+            <div className={styles.regionWrapper}>
               {states
                 .filter(state => state.region === region)
                 .map(state => (
@@ -72,13 +39,19 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
                     onClick={() => onClick(state)}
                     type="button"
                   >
-                    <StateCard $highlighted={state.highlighted} spacing="10px">
+                    <Card
+                      className={clsx(
+                        styles.stateCard,
+                        state.highlighted && styles.highlighted,
+                      )}
+                      spacing="10px"
+                    >
                       {state.icon}
                       {state.name}
-                    </StateCard>
+                    </Card>
                   </button>
                 ))}
-            </RegionWrapper>
+            </div>
           </VStack>
         </div>
       ))}
