@@ -9,6 +9,9 @@ $button-font-weight: var(--amino-button-font-weight);
 $amino-color: var(--amino-button-color);
 $background-color: var(--amino-button-background-color);
 $hover-background-color: var(--amino-button-hover-background-color);
+$text-button-color: var(--amino-button-text-button-color);
+$text-button-hover-color: var(--amino-button-text-button-hover-color);
+$text-button-disabled-color: var(--amino-button-text-button-disabled-color);
 
 .spinnerWrapper {
   position: absolute;
@@ -353,18 +356,14 @@ $hover-background-color: var(--amino-button-hover-background-color);
   }
 
   &.textButton {
+    color: $text-button-color;
     &:not([disabled]) {
-      &:active {
-        background: theme.$amino-gray-100;
-      }
-      &:focus {
-        box-shadow: theme.$amino-button-focus-ring;
+      &:hover {
+        color: $text-button-hover-color;
       }
     }
     &[disabled] {
-      .content {
-        opacity: 0.6;
-      }
+      color: $text-button-disabled-color;
     }
     &.loading {
       color: transparent;

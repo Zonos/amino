@@ -8,7 +8,6 @@ import {
 import type { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 import { GraphiQL } from 'graphiql';
 import { type GraphQLSchema } from 'graphql';
-import styled from 'styled-components';
 
 import { GraphiqlContextWrapper } from 'src/components/graph-matrix/_GraphiqlContextWrapper';
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
@@ -16,7 +15,7 @@ import { NestedDataTable } from 'src/components/nested-data-table/NestedDataTabl
 import { SplitPanel } from 'src/components/split-panel/SplitPanel';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type {
   ExecutionResultType,
   GraphiqlExecutionResult,
@@ -26,42 +25,9 @@ import { useGraphiqlExplorer } from 'src/utils/hooks/_useGraphiqlExplorer';
 import { useGraphiqlFetcher } from 'src/utils/hooks/_useGraphiqlFetcher';
 import { useGraphiqlStorage } from 'src/utils/hooks/_useGraphiqlStorage';
 
-// These rules are !important because graphiql inlines their styles
-const StyledWrapper = styled.div`
-  height: 100%;
-  .graphiql-tab > .graphiql-tab-button {
-    outline: none;
-  }
-  .docExplorerWrap {
-    /* Built-in plugin height is set to 100% which prevents the plugin bar scrolling */
-    height: auto !important;
-    /* Don't cap explorer width */
-    width: auto !important;
-  }
-  .graphiql-explorer-graphql-arguments {
-    svg {
-      display: inline-block;
-    }
-  }
+import styles from './GraphMatrix.module.scss';
 
-  .graphiql-explorer-root > div {
-    overflow: auto !important;
-  }
-`;
-
-const StyleTableWrap = styled.div`
-  height: 100%;
-`;
-
-const StyledPivotTableWrapper = styled.div`
-  height: 100vh;
-  overflow: auto;
-  padding: 0 ${theme.space12};
-  display: flex;
-  flex-direction: column;
-`;
-
-type GraphMatrixProps = {
+type GraphMatrixProps = BaseProps & {
   // Toolbar item. You can add your own toolbar item and use the built in <GraphMatrix.ToolbarButton>
   customToolbar?: ReactNode;
   /**
@@ -154,7 +120,7 @@ export const GraphMatrix = ({
 
     if (actionResultList) {
       return (
-        <StyledPivotTableWrapper>
+        <div className={styles.styledPivotTableWrapper}>
           {actionResultList.map(([actionName, actionResult]) => {
             if (Array.isArray(actionResult) || actionResult) {
               return (
@@ -168,20 +134,20 @@ export const GraphMatrix = ({
             }
             return null;
           })}
-        </StyledPivotTableWrapper>
+        </div>
       );
     }
     return null;
   };
 
   return (
-    <StyledWrapper>
+    <div className={styles.styledWrapper}>
       <SplitPanel
         collapseAll={!showTable}
         onSetSizes={setSplitPanelSizes}
         sizes={splitPanelSizes}
       >
-        <StyleTableWrap>
+        <div className={styles.styledTableWrap}>
           {isClientRendering && (
             <GraphiQL
               fetcher={graphiqlFetcher}
@@ -219,10 +185,10 @@ export const GraphMatrix = ({
               </GraphiqlContextWrapper>
             </GraphiQL>
           )}
-        </StyleTableWrap>
+        </div>
         {renderTableData()}
       </SplitPanel>
-    </StyledWrapper>
+    </div>
   );
 };
 

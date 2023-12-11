@@ -6,56 +6,12 @@ import {
   useId,
 } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import type { InputMode } from 'src/components/input/input-type/_FloatLabelInput';
 import { SearchIcon } from 'src/icons/SearchIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledWrapper = styled.div`
-  position: relative;
-  border: ${theme.border};
-  border-radius: ${theme.radius6};
-  width: 100%;
-`;
-
-const StyledLabel = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${theme.space40};
-`;
-
-const AminoInput = styled.input`
-  padding-left: ${theme.space40};
-  padding-right: ${theme.space16};
-  height: 40px;
-  font-weight: 500;
-  line-height: 40px;
-  border-radius: ${theme.radius6};
-  outline: none;
-  width: 100%;
-  background: ${theme.inputBackground};
-  :focus {
-    outline: none;
-    box-shadow: ${theme.glowBlue};
-  }
-  &:-webkit-autofill,
-  &:-moz-autofill {
-    background-color: ${theme.inputBackground};
-    color: ${theme.textColor};
-  }
-
-  /* The native X on the right of the input */
-  &:not([value=''])::-webkit-search-cancel-button {
-    opacity: 1 !important;
-    cursor: pointer;
-  }
-`;
+import styles from './SearchInput.module.scss';
 
 export type InputProps = Omit<ComponentPropsWithRef<'input'>, 'onChange'> & {
   autoFocus?: boolean;
@@ -104,13 +60,16 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
     const inputId = useId();
 
     return (
-      <StyledWrapper className={className}>
-        <StyledLabel htmlFor={inputId}>
+      <div className={clsx(styles.styledWrapper, className)}>
+        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+        <label className={styles.styledLabel} htmlFor={inputId}>
           <SearchIcon color="gray600" size={24} />
-        </StyledLabel>
-        <AminoInput
+        </label>
+        <input
           ref={ref}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
+          className={styles.aminoInput}
           disabled={disabled}
           id={inputId}
           inputMode={inputMode}
@@ -125,7 +84,7 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
           value={value || ''}
           {...props}
         />
-      </StyledWrapper>
+      </div>
     );
   },
 );

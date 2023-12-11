@@ -1,0 +1,49 @@
+@use 'theme';
+
+.styledWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.styledActionWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.styledButtonAction {
+  padding: 6px;
+  border-radius: 50%;
+  transition: theme.$amino-transition;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.aminoInput {
+  & input {
+    padding-right: theme.$amino-space-40;
+    appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-datetime-edit-fields-wrapper {
+      transition: 0.5s all ease;
+    }
+    &:not(:focus):not(:global(.has-content)) {
+      &::-webkit-datetime-edit-fields-wrapper {
+        opacity: 0;
+      }
+    }
+  }
+}
