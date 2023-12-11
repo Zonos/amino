@@ -81,6 +81,7 @@ export const Checkbox = ({
         className,
         styles.checkboxContainer,
         'amino-input-wrapper',
+        { disabled },
         disabled ? styles.disabled : '',
       )}
       data-testid={testId}
