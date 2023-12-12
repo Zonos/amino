@@ -77,7 +77,6 @@ export const Checkbox = ({
   return (
     <label
       className={className}
-      data-testid={testId}
       htmlFor={labelAsHtmlAttribute}
       style={{
         ...style,
@@ -103,6 +102,7 @@ export const Checkbox = ({
           'amino-input-wrapper',
           disabled ? styles.disabled : '',
         )}
+        data-testid={testId}
         onClick={e => {
           handleChange(e);
         }}
