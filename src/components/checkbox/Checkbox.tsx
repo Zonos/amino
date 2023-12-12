@@ -75,24 +75,10 @@ export const Checkbox = ({
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <label
-      className={clsx(
-        className,
-        styles.checkboxContainer,
-        'amino-input-wrapper',
-        disabled ? styles.disabled : '',
-      )}
+      className={className}
       data-testid={testId}
       htmlFor={labelAsHtmlAttribute}
-      onClick={e => {
-        handleChange(e);
-      }}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === 'Space') {
-          handleChange(e);
-        }
-      }}
       style={{
         ...style,
         '--amino-checkbox-background': checked
@@ -111,41 +97,59 @@ export const Checkbox = ({
       }}
       {...props}
     >
-      <div className={styles.aminoCheckbox} id={labelAsHtmlAttribute}>
-        <AnimatePresence>
-          {checked && (
-            <AnimatedCheckIcon
-              key="checkbox"
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1 }}
-              initial={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-            />
-          )}
-        </AnimatePresence>
-      </div>
-
-      {labelComponent ||
-        (label && (
-          <div className={styles.infoWrapper}>
-            <div className={styles.labelWrapper}>
-              {icon}
-              <Text className={styles.styledLabel} type="input-label">
-                {label}
-                {labelDescription && (
-                  <span className={styles.styledLabelDescription}>
-                    {labelDescription}
-                  </span>
-                )}
-              </Text>
-            </div>
-            {subtitle && (
-              <Text className={styles.styledSubtitle} type="subtitle">
-                {subtitle}
-              </Text>
+      <div
+        className={clsx(
+          styles.checkboxContainer,
+          'amino-input-wrapper',
+          disabled ? styles.disabled : '',
+        )}
+        onClick={e => {
+          handleChange(e);
+        }}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === 'Space') {
+            handleChange(e);
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        <div className={styles.aminoCheckbox} id={labelAsHtmlAttribute}>
+          <AnimatePresence>
+            {checked && (
+              <AnimatedCheckIcon
+                key="checkbox"
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+              />
             )}
-          </div>
-        ))}
+          </AnimatePresence>
+        </div>
+
+        {labelComponent ||
+          (label && (
+            <div className={styles.infoWrapper}>
+              <div className={styles.labelWrapper}>
+                {icon}
+                <Text className={styles.styledLabel} type="input-label">
+                  {label}
+                  {labelDescription && (
+                    <span className={styles.styledLabelDescription}>
+                      {labelDescription}
+                    </span>
+                  )}
+                </Text>
+              </div>
+              {subtitle && (
+                <Text className={styles.styledSubtitle} type="subtitle">
+                  {subtitle}
+                </Text>
+              )}
+            </div>
+          ))}
+      </div>
     </label>
   );
 };

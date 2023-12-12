@@ -50,7 +50,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
     },
     ref,
   ) => (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       ref={ref}
       className={clsx(
@@ -61,6 +61,8 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
         !!onClick && styles.withClick,
       )}
       onClick={e => !disabled && onClick && onClick(e)}
+      role="button"
+      tabIndex={0}
     >
       <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>
         {decorator}

@@ -1,7 +1,5 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './MenuItem.module.scss';
@@ -19,13 +17,16 @@ export const MenuItem = ({
   onClick,
   style,
 }: MenuItemProps) => (
-  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-  <li
-    className={clsx(className, styles.styledListItem)}
-    onClick={onClick}
-    style={style}
-  >
-    {icon}
-    {children}
+  <li className={className} style={style}>
+    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+    <div
+      className={styles.styledListItem}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+    >
+      {icon}
+      {children}
+    </div>
   </li>
 );
