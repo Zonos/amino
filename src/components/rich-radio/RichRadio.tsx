@@ -1,12 +1,15 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
+import clsx from 'clsx';
 import styled from 'styled-components';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
+
+import styles from './RichRadio.module.scss';
 
 const StyledIcon = styled.div`
   position: absolute;
@@ -144,11 +147,14 @@ export const RichRadio = <T extends string>({
   };
 
   return (
-    <StyledRadioGroup className={className} spacing={16}>
+    <VStack className={clsx(className, styles.styledRadioGroup)} spacing={16}>
       {items.map(item => (
-        <StyledItem
+        <button
           key={item.value}
-          $itemHeight={itemHeight}
+          className={clsx(
+            styles.styledItem,
+            itemHeight === 40 && styles.smallItem,
+          )}
           data-disabled={item.disabled}
           data-state={item.value === selectedValue ? 'checked' : ''}
           data-tip={item.tooltip}
@@ -158,8 +164,9 @@ export const RichRadio = <T extends string>({
           type="button"
         >
           {item.tooltip && (
-            <StyledTooltip
+            <ReactTooltip
               arrowColor="transparent"
+              className={styles.styledTooltip}
               effect="solid"
               {...item.tooltipSetting}
             />
@@ -168,22 +175,26 @@ export const RichRadio = <T extends string>({
             renderCustomText(item)
           ) : (
             <div>
-              <Label type="label">{item.label}</Label>
+              <Text className={styles.label} type="label">
+                {item.label}
+              </Text>
               {item.subtitle && (
-                <Subtitle color="gray900" type="body">
+                <Text className={styles.subtitle} color="gray900" type="body">
                   {item.subtitle}
-                </Subtitle>
+                </Text>
               )}
             </div>
           )}
-          {!!icon && <StyledIcon>{icon || <CheckmarkIcon />}</StyledIcon>}
-          {item.value === selectedValue && (
-            <StyledActiveIcon>
-              {activeIcon || <CheckmarkIcon />}
-            </StyledActiveIcon>
+          {!!icon && (
+            <div className={styles.styledIcon}>{icon || <CheckmarkIcon />}</div>
           )}
-        </StyledItem>
+          {item.value === selectedValue && (
+            <div className={styles.styledActiveIcon}>
+              {activeIcon || <CheckmarkIcon />}
+            </div>
+          )}
+        </button>
       ))}
-    </StyledRadioGroup>
+    </VStack>
   );
 };

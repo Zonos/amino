@@ -1,0 +1,90 @@
+@use 'theme';
+
+.styledIcon {
+  position: absolute;
+  content: ' ';
+  right: theme.$amino-space-16;
+  background: theme.$amino-gray-400;
+  border-radius: 50px;
+  padding: 5px;
+  svg {
+    color: theme.$amino-gray-0;
+  }
+}
+
+.styledActiveIcon {
+  position: absolute;
+  right: theme.$amino-space-16;
+  background: theme.$amino-blue-600;
+  content: ' ';
+  border-radius: 50px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.styledItem {
+  position: relative;
+  appearance: none;
+  background: theme.$amino-gray-0;
+  padding: theme.$amino-space-16;
+  padding-right: calc(theme.$amino-space-40 + 10px);
+  border: theme.$amino-border;
+  border-radius: theme.$amino-radius-6;
+  text-align: left;
+  transition: all 150ms ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 64px;
+
+  &:hover {
+    background: theme.$amino-gray-100;
+    border: 1px solid theme.$amino-gray-200;
+    .styledIcon {
+      background: theme.$amino-gray-600;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid theme.$amino-blue-400;
+    box-shadow: 0 0 0 1px theme.$amino-blue-400;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &.smallItem {
+    height: 40px;
+  }
+}
+
+.label {
+  color: theme.$amino-text-color;
+  line-height: 24px;
+  [data-state='checked'] & {
+    color: theme.$amino-primary;
+  }
+}
+
+.styledRadioGroup {
+  .styledItem[data-state='checked'] {
+    background: theme.$amino-blue-100;
+    border: 1px solid theme.$amino-blue-400;
+    box-shadow: 0 0 0 1px theme.$amino-blue-400;
+    color: theme.$amino-blue-700;
+    .subtitle {
+      color: theme.$amino-blue-600;
+    }
+  }
+}
+
+.styledTooltip.styledTooltip {
+  max-width: 350px;
+  border-radius: 10px;
+}
