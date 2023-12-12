@@ -82,6 +82,11 @@
       color: theme.$amino-blue-600;
     }
   }
+  svg {
+    color: theme.$amino-gray-0;
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .styledTooltip.styledTooltip {

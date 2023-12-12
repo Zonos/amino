@@ -1,0 +1,41 @@
+@use 'theme';
+
+$background: var(--amino-rounded-icon-background);
+$color: var(--amino-rounded-icon-color);
+
+.iconWrapper {
+  width: theme.$amino-space-32;
+  height: theme.$amino-space-32;
+  background: $background;
+  color: $color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+
+  svg {
+    width: theme.$amino-space-20;
+    height: theme.$amino-space-20;
+  }
+
+  &.primary {
+    background: theme.$amino-blue-100;
+    color: theme.$amino-blue-600;
+  }
+
+  &.danger {
+    background: theme.$amino-red-100;
+    color: theme.$amino-red-600;
+  }
+
+  &.warning {
+    background: theme.$amino-orange-100;
+    color: theme.$amino-orange-600;
+  }
+
+  &.success {
+    background: theme.$amino-green-100;
+    color: theme.$amino-green-600;
+  }
+}
+
