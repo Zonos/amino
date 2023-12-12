@@ -1,6 +1,6 @@
 import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
@@ -9,48 +9,7 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-type WrapperProps = {
-  disabled: boolean;
-  error: boolean;
-};
-
-const Wrapper = styled.div<WrapperProps>`
-  display: flex;
-  justify-content: flex-start;
-  padding: ${theme.space8} ${theme.space12};
-  border-radius: ${theme.radius10};
-  border: ${theme.border};
-  border-color: ${({ error }) => (error ? theme.danger : theme.borderColor)};
-
-  opacity: ${p => (p.disabled ? 0.5 : 1)};
-  cursor: ${p => (p.disabled ? 'not-allowed' : 'auto')};
-`;
-
-const StyledFileInput = styled.div`
-  outline: none;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: ${theme.space12};
-`;
-
-const UploadedFileInfoWrapper = styled.div`
-  display: flex;
-  gap: ${theme.space4};
-  align-items: center;
-`;
-
-const RemoveFileButton = styled(ButtonIcon)`
-  margin-left: auto;
-`;
+import styles from './FileUpload.module.scss';
 
 type UploadFileNoImage = {
   name: string;
@@ -94,6 +53,7 @@ export const FileUpload = ({
   loading,
   loadingText = 'Uploading...',
   onRemoveFile,
+  style,
   uploadedFile,
 }: FileUploadProps) => {
   const { getInputProps, getRootProps, open } = useDropzone({
@@ -109,7 +69,7 @@ export const FileUpload = ({
       const { name, size } = uploadedFile;
 
       return (
-        <UploadedFileInfoWrapper>
+        <div className={styles.uploadedFileInfoWrapper}>
           <Text color="gray1200" type="label">
             {name}
           </Text>
@@ -118,7 +78,7 @@ export const FileUpload = ({
               {size}
             </Text>
           )}
-        </UploadedFileInfoWrapper>
+        </div>
       );
     }
 
@@ -138,27 +98,38 @@ export const FileUpload = ({
   };
 
   const renderContent = () => (
-    <StyledFileInput {...getRootProps()}>
+    <div className={styles.styledFileInput} {...getRootProps()}>
       <input {...getInputProps()} />
-      <ContentWrapper>
+      <div className={styles.contentWrapper}>
         <Button loading={loading} onClick={open} spinnerColor="black">
           Browse
         </Button>
         {renderText()}
-      </ContentWrapper>
-    </StyledFileInput>
+      </div>
+    </div>
   );
 
   return (
-    <Wrapper className={className} disabled={disabled} error={error}>
+    <div
+      className={clsx(styles.wrapper, className)}
+      style={{
+        ...style,
+        '--amino-file-upload-border-color': error
+          ? theme.danger
+          : theme.borderColor,
+        '--amino-file-upload-cursor': disabled ? 'not-allowed' : 'auto',
+        '--amino-file-upload-opacity': disabled ? 0.5 : 1,
+      }}
+    >
       {renderContent()}
       {onRemoveFile && uploadedFile && (
-        <RemoveFileButton
+        <ButtonIcon
+          className={styles.removeFileButton}
           icon={<RemoveCircleDuotoneIcon size={20} />}
           onClick={() => onRemoveFile()}
           variant="text"
         />
       )}
-    </Wrapper>
+    </div>
   );
 };

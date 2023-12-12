@@ -1,14 +1,12 @@
 import { useContext, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import type { Page } from 'puppeteer';
 
 import { FileUpload as FileUploadComponent } from 'src/components/file-upload/FileUpload';
 import {
   ToastContext,
   ToastContextProvider,
 } from 'src/components/toast/ToastContext';
-import { customSnapshotsDir } from 'src/utils/_snapshotsFolder';
 
 const FileUploadMeta: Meta = {
   component: FileUploadComponent,
@@ -23,12 +21,6 @@ const FileUploadMeta: Meta = {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=72%3A819&t=erzegCytT9AfSn9f-0',
-    },
-    async puppeteerTest(page: Page) {
-      const image = await page.screenshot({ fullPage: true });
-      expect(image).toMatchImageSnapshot({
-        customSnapshotsDir,
-      });
     },
   },
 };

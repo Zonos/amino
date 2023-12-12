@@ -17,12 +17,7 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
-    exclude: [
-      '**/node_modules/**',
-      '**/__stories__/storyshots',
-      '**/storyshots.test.ts',
-      '**/dist',
-    ],
+    exclude: ['**/node_modules/**', '**/dist'],
     globals: true,
     include: ['**/*.test.ts'],
     setupFiles: ['dotenv/config', 'test-utils/setup.ts'],

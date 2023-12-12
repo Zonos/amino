@@ -13,6 +13,11 @@ export type FlagIconProps = { iconScale: FlagScale } & {
 export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
   ({ code, iconScale }, ref) => {
     const Icon = flags[code];
+    // The props sometimes need to get typecast upstream, so we need to check
+    if (!Icon) {
+      return null;
+    }
+
     if (iconScale === 'small') {
       return <Icon ref={ref} height={12} width={16} />;
     }
@@ -20,6 +25,6 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
       return <Icon ref={ref} height={15} width={20} />;
     }
 
-    return Icon ? <Icon ref={ref} height={24} width={32} /> : null;
+    return <Icon ref={ref} height={24} width={32} />;
   },
 );

@@ -12,12 +12,22 @@ import styled from 'styled-components';
 
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
-import { InputValuePrefix } from 'src/components/input/input-type/_FloatLabelInput';
 import { Select } from 'src/components/select/Select';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
+
+const InputValuePrefix = styled.div`
+  display: flex;
+  order: 2;
+  align-items: flex-end;
+  padding-left: ${theme.space16};
+  padding-right: ${theme.space4};
+  padding-bottom: ${theme.space8};
+  color: ${theme.gray800};
+  white-space: nowrap;
+`;
 
 const OptionLabel = styled.div`
   display: flex;
