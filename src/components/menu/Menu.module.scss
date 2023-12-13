@@ -1,0 +1,14 @@
+@use 'theme';
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  hr {
+    border: 0;
+    border-bottom: theme.$amino-border;
+    margin-top: theme.$amino-radius-6;
+    margin-bottom: theme.$amino-radius-6;
+  }
+}

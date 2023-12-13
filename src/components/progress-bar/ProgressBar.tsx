@@ -1,49 +1,11 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getAminoColor } from 'src/utils/getAminoColor';
 
-const Base = styled.div`
-  width: ${theme.space56};
-  height: ${theme.space8};
-  background-color: ${theme.gray100};
-  border-radius: ${theme.radius8};
-  z-index: 0;
-`;
-
-const Bar = styled.div<{
-  colorStyle: 'greenToRed' | 'redToGreen' | Color;
-  progress: number;
-}>`
-  width: ${p => p.progress}%;
-  height: ${theme.space8};
-  background-color: ${p => {
-    switch (p.colorStyle) {
-      case 'greenToRed':
-        if (p.progress <= 20) {
-          return theme.green600;
-        }
-        if (p.progress >= 80) {
-          return theme.red600;
-        }
-        return theme.orange600;
-      case 'redToGreen':
-        if (p.progress <= 20) {
-          return theme.red600;
-        }
-        if (p.progress >= 80) {
-          return theme.green600;
-        }
-        return theme.orange600;
-      default:
-        return getAminoColor(p.colorStyle);
-    }
-  }};
-  z-index: 1;
-  border-radius: ${theme.radius8};
-`;
+import styles from './ProgressBar.module.scss';
 
 export type ProgressBarProps = BaseProps & {
   colorStyle?: 'greenToRed' | 'redToGreen' | Color;
@@ -67,9 +29,37 @@ export const ProgressBar = ({
 
   const validatedProgress = validateProgress();
 
+  const getBarColor = () => {
+    switch (colorStyle) {
+      case 'greenToRed':
+        if (validatedProgress <= 20) {
+          return theme.green600;
+        }
+        if (validatedProgress >= 80) {
+          return theme.red600;
+        }
+        return theme.orange600;
+      case 'redToGreen':
+        if (validatedProgress <= 20) {
+          return theme.red600;
+        }
+        if (validatedProgress >= 80) {
+          return theme.green600;
+        }
+        return theme.orange600;
+      default:
+        return getAminoColor(colorStyle);
+    }
+  };
   return (
-    <Base className={className}>
-      <Bar colorStyle={colorStyle} progress={validatedProgress} />
-    </Base>
+    <div
+      className={clsx(className, styles.base)}
+      style={{
+        '--amino-progress-bar-background-color': getBarColor() || '',
+        '--amino-progress-bar-width': `${validatedProgress}%`,
+      }}
+    >
+      <div className={styles.bar} />
+    </div>
   );
 };

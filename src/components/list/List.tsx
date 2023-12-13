@@ -1,29 +1,10 @@
 import type { ReactNode } from 'react';
 
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-const StyledList = styled.section<ListProps>`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  ${({ withBorder }) =>
-    withBorder &&
-    css`
-      padding: ${theme.space8};
-      border: 1px solid ${theme.gray200};
-      border-radius: ${theme.radius12};
-    `}
-
-  ${({ withNegativeMargin }) =>
-    withNegativeMargin &&
-    css`
-      margin: ${theme.spaceNegative24};
-    `}
-`;
+import styles from './List.module.scss';
 
 export type ListProps = BaseProps & {
   children?: ReactNode;
@@ -34,14 +15,19 @@ export type ListProps = BaseProps & {
 export const List = ({
   children,
   className,
+  style,
   withBorder,
   withNegativeMargin,
 }: ListProps) => (
-  <StyledList
-    className={className}
-    withBorder={withBorder}
-    withNegativeMargin={withNegativeMargin}
+  <section
+    className={clsx(
+      className,
+      styles.styledList,
+      withBorder && styles.withBorder,
+      withNegativeMargin && styles.withNegativeMargin,
+    )}
+    style={style}
   >
     {children}
-  </StyledList>
+  </section>
 );
