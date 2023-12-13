@@ -5,13 +5,14 @@ import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const CollectColorIcon = forwardRef<SVGSVGElement, IconProps>(
-  ({ className, color, size }, ref) => {
+  ({ className, color, inline, size }, ref) => {
     const ids = useStableUniqueId(5);
     return (
       <IconBase
         ref={ref}
         className={className}
         color={color}
+        inline={inline}
         size={size}
         viewBox="0 0 24 24"
       >

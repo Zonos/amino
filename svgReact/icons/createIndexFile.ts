@@ -46,5 +46,5 @@ export const createIndexFile = ({
     ...generatePath.map(generateContent),
   ].join('\n');
 
-  fs.writeFileSync(`${target}/IconIndex.ts`, mergedContent);
+  fs.writeFileSync(`${target}/_IconIndex.ts`, mergedContent);
 };

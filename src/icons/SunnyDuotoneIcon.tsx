@@ -8,11 +8,12 @@ import type { IconProps } from 'src/types/IconProps';
 export const SunnyDuotoneIcon = forwardRef<
   SVGSVGElement,
   IconProps & { secondaryColor?: Color }
->(({ className, color, secondaryColor, size }, ref) => (
+>(({ className, color, inline, secondaryColor, size }, ref) => (
   <IconBase
     ref={ref}
     className={className}
     color={color || 'gray800'}
+    inline={inline}
     size={size}
     viewBox="0 0 24 24"
   >
