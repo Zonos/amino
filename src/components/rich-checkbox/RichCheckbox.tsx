@@ -1,83 +1,12 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
-import { theme } from 'src/styles/constants/theme';
-import { type StyledProps } from 'src/types/StyledProps';
 
-const StyledRichCheckbox = styled.button`
-  position: relative;
-  appearance: none;
-  background: ${theme.gray0};
-  padding: ${theme.space16};
-  padding-right: ${theme.space40};
-  border: ${theme.border};
-  border-radius: ${theme.radius6};
-  text-align: left;
-  transition: all 150ms ease-in-out;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  &:hover {
-    background: ${theme.gray100};
-    border: 1px solid ${theme.gray200};
-  }
-
-  &:focus {
-    outline: none;
-    border: 1px solid ${theme.blue300};
-  }
-`;
-
-const Label = styled(Text)`
-  line-height: 24px;
-  [data-state='checked'] & {
-    color: ${theme.primary};
-  }
-`;
-
-const Subtitle = styled(Text)`
-  [data-state='checked'] & {
-    color: ${theme.primary};
-  }
-`;
-
-const StyledVStack = styled(VStack)`
-  button[data-state='checked'] {
-    background: ${theme.blue100};
-    border: 1px solid ${theme.blue300};
-    color: ${theme.blue600};
-  }
-  svg {
-    color: ${theme.gray0};
-    width: 12px;
-    height: 12px;
-  }
-`;
-
-const StyledIcon = styled.div`
-  position: absolute;
-  right: ${theme.space16};
-  background: ${theme.blue600};
-  content: ' ';
-  border-radius: 50px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-type StyledItemContentDivProps = StyledProps<{ icon: boolean }>;
-
-const StyledItemContentDiv = styled.div<StyledItemContentDivProps>`
-  align-items: center;
-  display: grid;
-  grid-column-gap: ${theme.space24};
-  ${p => p.$icon && `grid-template-columns: 30px 1fr;`}
-`;
+import styles from './RichCheckbox.module.scss';
 
 type RichCheckboxItemType = {
   checked: boolean;
@@ -93,33 +22,43 @@ export type RichCheckboxProps = {
 };
 
 export const RichCheckbox = ({ items, onClick }: RichCheckboxProps) => (
-  <StyledVStack spacing={16}>
+  <VStack className={styles.styledVStack} spacing={16}>
     {items.map(item => {
       const { checked, icon, label, subtitle, value } = item;
       return (
-        <StyledRichCheckbox
+        <button
           key={value}
+          className={styles.styledRichCheckbox}
           data-state={checked ? 'checked' : ''}
           onClick={e => onClick(e.currentTarget.value)}
           type="button"
           value={value}
         >
-          <StyledItemContentDiv $icon={!!icon}>
+          <div
+            className={clsx(
+              styles.styledItemContentDiv,
+              !!icon && styles.hasIcon,
+            )}
+          >
             {icon && icon}
             <VStack spacing={0}>
-              <Label color="gray1200" type="label">
+              <Text className={styles.label} color="gray1200" type="label">
                 {label}
-              </Label>
-              {subtitle && <Subtitle color="gray700">{subtitle}</Subtitle>}
+              </Text>
+              {subtitle && (
+                <Text className={styles.subtitle} color="gray700">
+                  {subtitle}
+                </Text>
+              )}
             </VStack>
-          </StyledItemContentDiv>
+          </div>
           {checked && (
-            <StyledIcon>
+            <div className={styles.styledIcon}>
               <CheckmarkIcon />
-            </StyledIcon>
+            </div>
           )}
-        </StyledRichCheckbox>
+        </button>
       );
     })}
-  </StyledVStack>
+  </VStack>
 );

@@ -1,0 +1,6 @@
+@use 'theme';
+
+.radioContainer {
+  display: flex;
+  gap: theme.$amino-space-8;
+}
