@@ -1,0 +1,31 @@
+@use 'theme';
+
+.styledListItem {
+  display: flex;
+  align-items: center;
+  padding: theme.$amino-space-8;
+  line-height: 24px;
+  user-select: none;
+  cursor: pointer;
+  border-radius: theme.$amino-radius-6;
+  font-size: theme.$amino-font-size-base;
+
+  &:hover {
+    background: theme.$amino-hover-color;
+  }
+
+  a {
+    width: 100%;
+    display: block;
+  }
+
+  svg {
+    margin-right: theme.$amino-space-8;
+  }
+
+  [data-theme='night'] & {
+    &:hover {
+      background: theme.$amino-gray-100;
+    }
+  }
+}

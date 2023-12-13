@@ -1,0 +1,12 @@
+@use 'theme';
+
+$max-width: var(--amino-profile-icon-max-width);
+
+.avatar {
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  height: auto;
+  max-width: $max-width;
+}

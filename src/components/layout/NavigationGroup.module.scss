@@ -1,0 +1,68 @@
+@use 'theme';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.styledNavigationItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  padding: theme.$amino-space-4 theme.$amino-space-8 theme.$amino-space-4 6px;
+  color: theme.$amino-gray-800;
+  font-size: theme.$amino-font-size-base;
+  font-weight: 500;
+  border-radius: theme.$amino-radius-6;
+  &:hover {
+    background-color: theme.$amino-hover-color;
+    color: theme.$amino-gray-1200;
+    svg {
+      color: theme.$amino-gray-800;
+    }
+  }
+  svg {
+    color: theme.$amino-gray-600;
+    height: theme.$amino-space-24;
+    width: theme.$amino-space-24;
+  }
+  &.styledNavigationContent {
+    flex-grow: 1;
+    & > * {
+      height: 100%;
+    }
+  }
+  &.styledNavigationItemIcon {
+    flex-basis: theme.$amino-space-32;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  &.active {
+    background-color: theme.$amino-gray-100;
+    color: theme.$amino-gray-1200;
+    font-weight: 600;
+    svg {
+      color: theme.$amino-gray-1200;
+    }
+  }
+}
+
+.styledItemWrapper {
+  &.collapsed {
+    .styledNavigationItem {
+      &:hover {
+        background-color: transparent;
+      }
+      svg {
+        color: theme.$amino-gray-1200;
+      }
+    }
+  }
+}
+
+.styledGroupItemWrapper {
+  padding-left: theme.$amino-space-20;
+  margin-left: 17px;
+  border-left: 1px solid theme.$amino-gray-200;
+}

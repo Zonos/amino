@@ -1,62 +1,13 @@
 import { type ReactNode, useState } from 'react';
 
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
 import { Collapse } from 'src/components/collapse/Collapse';
 import { type ListProps, List } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledCollapse = styled(Collapse)<{ $hasIcon: boolean }>`
-  ${({ $hasIcon }) =>
-    $hasIcon &&
-    css`
-      .___icon-wrapper {
-        width: 32px;
-        display: inline-block;
-      }
-    `}
-`;
-
-const StyledPrimaryListItem = styled(ListItem)<{ $hasIcon: boolean }>`
-  ${({ $hasIcon }) =>
-    !$hasIcon &&
-    css`
-      .___icon-wrapper {
-        display: none;
-      }
-    `}
-
-  svg {
-    transition: ${theme.transition};
-
-    &.collapsed {
-      opacity: 1;
-      transform: rotate(180deg);
-    }
-  }
-`;
-
-const StyledList = styled(List)<ListProps>`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  ${({ withBorder }) =>
-    withBorder &&
-    css`
-      padding: ${theme.space8};
-      border: 1px solid ${theme.gray200};
-      border-radius: ${theme.radius12};
-    `}
-
-  ${({ withNegativeMargin }) =>
-    withNegativeMargin &&
-    css`
-      margin: ${theme.spaceNegative24};
-    `}
-`;
+import styles from './CollapsibleList.module.scss';
 
 export type CollapsibleListProps = ListProps & {
   icon?: ReactNode;
@@ -74,6 +25,7 @@ export const CollapsibleList = ({
   className,
   icon,
   startExpanded,
+  style,
   title,
   withBorder,
   withNegativeMargin,
@@ -81,23 +33,35 @@ export const CollapsibleList = ({
   const [collapsed, setCollapsed] = useState(!startExpanded);
 
   return (
-    <StyledList
-      className={className}
+    <List
+      className={clsx(
+        className,
+        styles.styledList,
+        withBorder && styles.withBorder,
+        withNegativeMargin && styles.withNegativeMargin,
+      )}
+      style={{
+        ...style,
+        '--amino-collapsible-list-collapse-icon-display': icon
+          ? 'inline-block'
+          : '',
+        '--amino-collapsible-list-primary-icon-display': icon ? '' : 'none',
+      }}
       withBorder={withBorder}
       withNegativeMargin={withNegativeMargin}
     >
-      <StyledPrimaryListItem
-        $hasIcon={!!icon}
+      <ListItem
+        className={clsx(styles.styledPrimaryListItem)}
         decorator={icon}
         label={title}
         onClick={() => setCollapsed(!collapsed)}
         rightDecorator={
-          <ChevronUpIcon className={collapsed ? 'collapsed' : ''} />
+          <ChevronUpIcon className={collapsed ? styles.collapsed : ''} />
         }
       />
-      <StyledCollapse $hasIcon={!!icon} collapsed={collapsed}>
+      <Collapse className={styles.styledCollapse} collapsed={collapsed}>
         {children}
-      </StyledCollapse>
-    </StyledList>
+      </Collapse>
+    </List>
   );
 };
