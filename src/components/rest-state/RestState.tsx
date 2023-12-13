@@ -1,39 +1,10 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledRestState = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  & > * {
-    text-align: center;
-    max-width: 500px;
-  }
-`;
-
-const Icon = styled.img`
-  width: 100px;
-  height: auto;
-  margin-bottom: ${theme.space16};
-`;
-
-const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${theme.space8};
-`;
-
-const Action = styled.div`
-  margin-top: ${theme.space24};
-  margin-bottom: ${theme.space8};
-`;
+import styles from './RestState.module.scss';
 
 export type RestStateProps = {
   action?: ReactNode;
@@ -50,12 +21,12 @@ export const RestState = ({
   label,
   subtitle,
 }: RestStateProps) => (
-  <StyledRestState className={className}>
-    {icon ? <Icon src={icon} /> : null}
-    <TextWrapper>
+  <div className={clsx(className, styles.styledRestState)}>
+    {icon ? <img alt={label} className={styles.icon} src={icon} /> : null}
+    <div className={styles.textWrapper}>
       <Text type="title">{label}</Text>
       {subtitle && <Text type="subtitle">{subtitle}</Text>}
-      {action ? <Action>{action}</Action> : null}
-    </TextWrapper>
-  </StyledRestState>
+      {action ? <div className={styles.action}>{action}</div> : null}
+    </div>
+  </div>
 );

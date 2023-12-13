@@ -1,66 +1,10 @@
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import styled from 'styled-components';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 
-const StyledRadio = styled.div<{
-  $checked: boolean;
-}>`
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: ${p => (p.$checked ? theme.primary : theme.inputBackground)};
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  border: ${p => (!p.$checked ? `1.5px solid ${theme.gray400}` : 'none')};
-  box-shadow: ${p => (p.$checked ? theme.shadowButtonPrimary : 'none')};
-  margin-right: ${theme.space8};
-  transition: ${theme.transition};
-
-  svg {
-    color: ${theme.gray0};
-    width: 8px;
-    height: 8px;
-  }
-`;
-
-const StyledText = styled(Text)`
-  margin-bottom: 0;
-`;
-
-const RadioContainer = styled.div<{
-  $checked: boolean;
-  $disabled?: boolean;
-}>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-
-  &.disabled {
-    cursor: not-allowed;
-    & > div {
-      background: ${p => p.$checked && theme.blue300};
-      cursor: not-allowed;
-    }
-    label {
-      cursor: not-allowed;
-    }
-  }
-
-  label {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    margin-bottom: 0;
-    color: ${props => (props.$disabled ? theme.gray300 : 'black')};
-  }
-`;
+import styles from './Radio.module.scss';
 
 export type RadioProps = {
   checked: boolean;
@@ -70,13 +14,22 @@ export type RadioProps = {
 };
 
 export const Radio = ({ checked, disabled, label, onChange }: RadioProps) => (
-  <RadioContainer
-    $checked={checked}
-    $disabled={disabled}
-    className={disabled ? 'disabled' : ''}
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+  <div
+    className={clsx(styles.radioContainer, disabled && 'disabled')}
     onClick={() => !disabled && onChange(!checked)}
+    style={{
+      '--amino-radio-background': checked
+        ? theme.primary
+        : theme.inputBackground,
+      '--amino-radio-border': !checked
+        ? `1.5px solid ${theme.gray400}`
+        : 'none',
+      '--amino-radio-box-shadow': checked ? theme.shadowButtonPrimary : 'none',
+      '--amino-radio-container-background': checked ? theme.blue300 : '',
+    }}
   >
-    <StyledRadio $checked={checked}>
+    <div className={styles.styledRadio}>
       <AnimatePresence>
         {checked && (
           <motion.svg
@@ -92,7 +45,11 @@ export const Radio = ({ checked, disabled, label, onChange }: RadioProps) => (
           </motion.svg>
         )}
       </AnimatePresence>
-    </StyledRadio>
-    {label && <StyledText type="input-label">{label}</StyledText>}
-  </RadioContainer>
+    </div>
+    {label && (
+      <Text className={styles.styledText} type="input-label">
+        {label}
+      </Text>
+    )}
+  </div>
 );

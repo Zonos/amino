@@ -18,8 +18,9 @@ test.describe('Checkbox', () => {
   });
 
   test('Disabled class state', async () => {
-    await expect(framePage.getByTestId('amino--input-label')).toHaveClass(
-      /disabled/,
+    await expect(framePage.getByTestId('amino--input-label')).toHaveCSS(
+      'cursor',
+      'not-allowed',
     );
   });
 });

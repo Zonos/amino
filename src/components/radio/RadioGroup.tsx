@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Radio } from 'src/components/radio/Radio';
-import { theme } from 'src/styles/constants/theme';
 
-const RadioContainer = styled.div`
-  display: flex;
-  gap: ${theme.space8};
-`;
+import styles from './RadioGroup.module.scss';
 
 export type RadioGroupItem<T extends string = string> = {
   label: string;
@@ -57,5 +53,5 @@ export const RadioGroup = <T extends string = string>({
     />
   ));
 
-  return <RadioContainer className={className}>{radios}</RadioContainer>;
+  return <div className={clsx(className, styles.radioContainer)}>{radios}</div>;
 };
