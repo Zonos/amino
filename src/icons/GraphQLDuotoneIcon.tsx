@@ -4,12 +4,12 @@ import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const GraphQLDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
-  ({ className, color, inline, size }, ref) => (
+  ({ className, color, inlineBlock, size }, ref) => (
     <IconBase
       ref={ref}
       className={className}
       color={color || 'gray400'}
-      inline={inline}
+      inlineBlock={inlineBlock}
       size={size}
       viewBox="0 0 24 24"
     >

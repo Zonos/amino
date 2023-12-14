@@ -8,12 +8,12 @@ import type { IconProps } from 'src/types/IconProps';
 export const CheckCircleDuotoneIcon = forwardRef<
   SVGSVGElement,
   IconProps & { secondaryColor?: Color }
->(({ className, color, inline, secondaryColor, size }, ref) => (
+>(({ className, color, inlineBlock, secondaryColor, size }, ref) => (
   <IconBase
     ref={ref}
     className={className}
     color={color || 'gray800'}
-    inline={inline}
+    inlineBlock={inlineBlock}
     size={size}
     viewBox="0 0 24 24"
   >
