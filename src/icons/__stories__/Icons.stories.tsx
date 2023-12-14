@@ -48,7 +48,7 @@ type IconsType = (typeof icons)[keyof typeof icons] & {
 
 export const Icons = ({
   color,
-  inline,
+  inlineBlock,
   secondaryColor,
   size,
 }: IconProps & { secondaryColor?: Color }) => {
@@ -83,7 +83,7 @@ export const Icons = ({
               >
                 <IconComponent
                   color={color}
-                  inline={inline}
+                  inlineBlock={inlineBlock}
                   secondaryColor={secondaryColor}
                   size={size}
                 />
