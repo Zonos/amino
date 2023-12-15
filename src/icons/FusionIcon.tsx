@@ -4,11 +4,12 @@ import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const FusionIcon = forwardRef<SVGSVGElement, IconProps>(
-  ({ className, color, size }, ref) => (
+  ({ className, color, inlineBlock, size }, ref) => (
     <IconBase
       ref={ref}
       className={className}
       color={color}
+      inlineBlock={inlineBlock}
       size={size}
       viewBox="0 0 24 24"
     >

@@ -44,12 +44,12 @@ export const createReactIconSvgs = ({
       maskIds.length &&
         `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
       hasSecondaryColor
-        ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: Color}>(({ size, color, className, secondaryColor}, ref) => {`
-        : `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps>(({ size, color, className }, ref) => {`,
+        ? `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps & {secondaryColor?: Color}>(({ size, color, className, secondaryColor, inlineBlock}, ref) => {`
+        : `export const ${name.componentName} = forwardRef<SVGSVGElement, IconProps>(({ size, color, className, inlineBlock }, ref) => {`,
       maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
       isDuotone
-        ? `return (<IconBase ref={ref} size={size} color={color || '${duotoneDefaultColor}'} className={className} viewBox="${viewBox}">`
-        : `return (<IconBase ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,
+        ? `return (<IconBase inlineBlock={inlineBlock} ref={ref} size={size} color={color || '${duotoneDefaultColor}'} className={className} viewBox="${viewBox}">`
+        : `return (<IconBase inlineBlock={inlineBlock} ref={ref} size={size} color={color} className={className} viewBox="${viewBox}">`,
       content,
       `</IconBase>`,
       `  );`,

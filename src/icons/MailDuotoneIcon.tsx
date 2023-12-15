@@ -8,11 +8,12 @@ import type { IconProps } from 'src/types/IconProps';
 export const MailDuotoneIcon = forwardRef<
   SVGSVGElement,
   IconProps & { secondaryColor?: Color }
->(({ className, color, secondaryColor, size }, ref) => (
+>(({ className, color, inlineBlock, secondaryColor, size }, ref) => (
   <IconBase
     ref={ref}
     className={className}
     color={color || 'gray800'}
+    inlineBlock={inlineBlock}
     size={size}
     viewBox="0 0 24 24"
   >
