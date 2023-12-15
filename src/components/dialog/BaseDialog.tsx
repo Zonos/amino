@@ -104,7 +104,7 @@ export const BaseDialog = ({
       <AnimatePresence>
         {open && (
           <motion.div
-            className={clsx(styles.backdrop, className)}
+            className={styles.backdrop}
             {...backdropMotionProps}
             key="dialog-backdrop"
             ref={backdropRef}
@@ -135,7 +135,7 @@ export const BaseDialog = ({
             <motion.div
               {...combinedPopupMotionProps}
               key="dialog"
-              className={clsx(styles.popup, 'elevated')}
+              className={clsx(className, styles.popup, 'elevated')}
               onClick={e => {
                 // Prevent dialog from closing when clicking in the dialog
                 e.stopPropagation();
