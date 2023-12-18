@@ -17,6 +17,7 @@ test.describe('Checkbox', () => {
     await framePage.waitForEvent('load');
   });
 
+  // We have upstream dependencies on this `disabled` class
   test('Disabled class state', async () => {
     await expect(framePage.getByTestId('amino--input-label')).toHaveClass(
       /disabled/,
