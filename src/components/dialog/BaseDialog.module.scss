@@ -18,6 +18,7 @@ $width: var(--amino-base-dialog-width);
 .popup {
   z-index: 1001;
   background: theme.$amino-surface-color;
+  max-height: 90vh;
   width: $width;
   border-radius: theme.$amino-radius-12;
   outline: none;
