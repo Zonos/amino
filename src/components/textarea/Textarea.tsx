@@ -72,7 +72,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
     margin-top: ${theme.space24};
     padding: 0 4px ${theme.space8} ${theme.space16};
 
-    ::placeholder {
+    &::placeholder {
       opacity: 0;
     }
 
@@ -101,7 +101,7 @@ const StyledTextarea = styled.textarea<TextareaType>`
     }
   }
 
-  ::placeholder {
+  &::placeholder {
     transition: ${theme.transition};
     color: ${theme.gray400};
     font-weight: 400;

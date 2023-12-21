@@ -35,7 +35,7 @@ $height: var(--amino-float-label-input-height);
   /**disabled state */
   :global(.disabled) & {
     pointer-events: inherit;
-    ::after {
+    &::after {
       cursor: not-allowed;
       z-index: 1;
     }
@@ -52,7 +52,7 @@ $height: var(--amino-float-label-input-height);
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   &.inputPrefix {
     border-top-left-radius: theme.$amino-radius-6;
     border-bottom-left-radius: theme.$amino-radius-6;
@@ -108,7 +108,7 @@ $height: var(--amino-float-label-input-height);
     }
   }
   &:not(:global(.has-label)) {
-    ::placeholder {
+    &::placeholder {
       opacity: 0.6;
     }
   }
@@ -116,7 +116,7 @@ $height: var(--amino-float-label-input-height);
     padding-left: theme.$amino-space-8;
   }
 
-  ::placeholder {
+  &::placeholder {
     transition: theme.$amino-transition;
     opacity: 0;
   }
