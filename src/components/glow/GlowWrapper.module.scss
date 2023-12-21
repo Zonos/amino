@@ -14,7 +14,7 @@ $x: var(--x, 0);
   box-shadow: inset 0px 0px 1px 1px theme.$amino-gray-200;
   border-radius: $border-radius;
 
-  ::after {
+  &::after {
     content: '';
     z-index: -1;
     position: absolute;
@@ -28,8 +28,8 @@ $x: var(--x, 0);
     opacity: 0;
   }
 
-  :hover {
-    ::after {
+  &:hover {
+    &::after {
       opacity: 1;
     }
   }

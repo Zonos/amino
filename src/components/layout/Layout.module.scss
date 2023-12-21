@@ -49,7 +49,7 @@ $height: var(--height);
   input {
     background-color: theme.$amino-gray-100;
     border: 0;
-    ::placeholder {
+    &::placeholder {
       color: theme.$amino-gray-1200;
     }
   }
