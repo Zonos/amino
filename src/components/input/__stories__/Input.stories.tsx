@@ -61,6 +61,12 @@ const Template: StoryFn<InputProps> = ({ value: _value, ...props }) => {
       />
       <Input
         {...props}
+        onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
+        value=""
+      />
+      <Input
+        {...props}
         disabled
         onChange={e => setValue(e.target.value)}
         value={value}
