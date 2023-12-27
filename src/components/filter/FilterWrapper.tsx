@@ -23,7 +23,6 @@ type FilterWrapperProps = BaseProps & {
   filterText: string;
   hasFilter: boolean;
   label: string;
-  ref: RefObject<HTMLDivElement>;
   handleApply: () => void;
   handleKeyDown: (event: KeyboardEvent) => void;
   handleOpenDropdown: (e: MouseEvent) => void;
@@ -44,11 +43,9 @@ export const FilterWrapper = ({
   handleToggle,
   hasFilter,
   label,
-  ref,
   style,
 }: FilterWrapperProps) => (
   <div
-    ref={ref}
     className={clsx(className, styles.filterWrapper)}
     style={{
       ...style,
