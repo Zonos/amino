@@ -117,17 +117,6 @@ export const Basic = () => (
   />
 );
 
-const link = 'https://letmegooglethat.com';
-
-export const WithLink = () => (
-  <SimpleTable
-    getRowLink={item => `${link}/?q=${item.name}`}
-    headers={tableHeaders}
-    items={items}
-    keyExtractor={item => String(item.id)}
-  />
-);
-
 export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -161,6 +150,53 @@ export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
       items={items}
       keyExtractor={item => String(item.id)}
       loading={loading}
+      selectable={{
+        anySelected: selectedRowIndexes.length > 0,
+        enabled: true,
+        headerCheckboxValue: checkboxAllValue,
+        isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+        onHeaderCheckboxChange: handleCheckboxAllChange,
+        onRowCheckboxChange: handleCheckboxRowChange,
+      }}
+    />
+  );
+};
+
+const link = 'https://letmegooglethat.com';
+
+export const WithLink = () => {
+  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+
+  const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedRowIndexes.length === items.length) {
+      setSelectedRowIndexes([]);
+    } else {
+      setSelectedRowIndexes(items.map((_, index) => index));
+    }
+  };
+
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
+    if (value) {
+      setSelectedRowIndexes([...selectedRowIndexes, index]);
+    } else {
+      setSelectedRowIndexes(
+        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+      );
+    }
+  };
+
+  return (
+    <SimpleTable
+      getRowLink={item => `${link}/?q=${item.name}`}
+      headers={tableHeaders}
+      items={items}
+      keyExtractor={item => String(item.id)}
       selectable={{
         anySelected: selectedRowIndexes.length > 0,
         enabled: true,
