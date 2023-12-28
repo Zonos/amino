@@ -2,6 +2,7 @@ import { useReducer, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
 
+import { Button } from 'src/components/button/Button';
 import { FilterAmount } from 'src/components/filter/filter-amount/FilterAmount';
 import {
   filterAmountReducer,
@@ -17,8 +18,11 @@ import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { RemoveIcon } from 'src/icons/RemoveIcon';
 import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
+
+import styles from './Filter.stories.module.scss';
 
 const meta: Meta = {
   title: 'Filters',
@@ -174,5 +178,60 @@ export const Date = () => {
         label="Date filter"
       />
     </>
+  );
+};
+
+const optionsLong: SelectOption<FruitOption>[] = [
+  {
+    label:
+      'Orange - A lot of words like a really long product description maybe',
+    value: 'Orange',
+  },
+  {
+    label:
+      'Apple - A lot of words like a really long product description maybe',
+    value: 'Apple',
+  },
+  {
+    label:
+      'Banana - A lot of words like a really long product description maybe',
+    value: 'Banana',
+  },
+];
+
+export const TextTruncation = () => {
+  const [value1, setValue1] = useState<SelectOption<FruitOption> | null>(null);
+  const [value2, setValue2] = useState<SelectOption<FruitOption> | null>(null);
+  const [value3, setValue3] = useState<SelectOption<FruitOption> | null>(null);
+
+  return (
+    <div className={styles.filterBar}>
+      <div className={styles.filterBarFilters}>
+        <FilterSelect
+          dropdownTitle="Filter by option"
+          label="Select filter"
+          onChange={v => setValue1(v)}
+          options={optionsLong}
+          value={value1}
+        />
+        <FilterSelect
+          dropdownTitle="Filter by option"
+          label="Select filter"
+          onChange={v => setValue2(v)}
+          options={optionsLong}
+          value={value2}
+        />
+        <FilterSelect
+          dropdownTitle="Filter by option"
+          label="Select filter"
+          onChange={v => setValue3(v)}
+          options={optionsLong}
+          value={value3}
+        />
+      </div>
+      <Button icon={<RemoveIcon />} onClick={() => null} variant="subtle">
+        Clear filters
+      </Button>
+    </div>
   );
 };

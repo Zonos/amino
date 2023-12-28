@@ -48,7 +48,6 @@ export const useFilterWrapper = ({
   const [filterText, setFilterText] = useState('Filter');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleApply = () => {
     setActive(true);
@@ -123,7 +122,6 @@ export const useFilterWrapper = ({
 
   const renderWrapper = (control: ReactNode) => (
     <FilterWrapper
-      ref={wrapperRef}
       active={active}
       className={className}
       dropDownOpen={dropDownOpen}

@@ -1,0 +1,22 @@
+@use 'theme';
+
+.filterBar {
+  padding: theme.$amino-space-8 0;
+  border-bottom: theme.$amino-border;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterBarFilters {
+  display: flex;
+  gap: theme.$amino-space-8;
+
+  /* TEMP: FILTER TEXT WRAPPING this should be done in amino, but currently we are version locked */
+  > div > div > div:last-child {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

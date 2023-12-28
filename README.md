@@ -38,6 +38,11 @@ $ pnpm dev:open
 
 ## Documentation
 
+### CSS modules
+
+We use [`typed-scss-modules`](https://www.npmjs.com/package/typed-scss-modules) to generate types for our scss modules. It will watch `.scss` files in the background and update them, but any file additions will require you to run `build:scss:types`.
+
+
 ### - Available features in Amino:
 - [Style generation (generate style constants and css file)](./build-utils/css/README.md)
 - [Icon component generation process (generate optimized react components based on SVG downloaded from Figma/any sources)](./svgReact/icons/README.md)
