@@ -211,7 +211,7 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
-      if (getRowLink) {
+      if (getRowLink && !selectable.anySelected) {
         return (
           <td key={header.key} className="cellLink">
             <a
