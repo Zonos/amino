@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, Fragment } from 'react';
 
 import clsx from 'clsx';
 import styled from 'styled-components';
@@ -213,7 +213,7 @@ export const SimpleTable = <T extends object>({
     const renderContent = (content: ReactNode) => {
       if (getRowLink && !selectable.anySelected) {
         return (
-          <td key={header.key} className="cellLink">
+          <td className="cellLink">
             <a
               className={clsx({
                 noPadding: header.noPadding,
@@ -231,7 +231,6 @@ export const SimpleTable = <T extends object>({
 
       return (
         <td
-          key={header.key}
           className={clsx({
             noPadding: header.noPadding,
           })}
@@ -317,7 +316,9 @@ export const SimpleTable = <T extends object>({
               )}
             </td>
           )}
-          {headers.map(header => renderHeader(header, item))}
+          {headers.map(header => (
+            <Fragment key={header.key}>{renderHeader(header, item)}</Fragment>
+          ))}
         </tr>
       );
     });
