@@ -7,8 +7,8 @@
 
 .styledNavigationItem {
   display: flex;
-  flex-direction: row;
   align-items: center;
+  gap: theme.$amino-space-8;
   height: 32px;
   padding: theme.$amino-space-4 theme.$amino-space-8 theme.$amino-space-4 6px;
   color: theme.$amino-gray-800;
