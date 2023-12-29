@@ -15,7 +15,7 @@ export const CheckmarkDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M16.709 7.907a.75.75 0 0 1 .134 1.052l-5.234 6.774a1 1 0 0 1-1.501.093l-2.89-2.909a.75.75 0 1 1 1.064-1.057l2.488 2.505 4.886-6.324a.75.75 0 0 1 1.053-.134Z"
+        d="M17.456 7.404a.75.75 0 0 1 .14 1.052l-6.5 8.5a.75.75 0 0 1-1.126.074l-4-4a.75.75 0 0 1 1.06-1.06l3.395 3.394 5.98-7.82a.75.75 0 0 1 1.05-.14Z"
         fill="currentColor"
         fillRule="evenodd"
       />
