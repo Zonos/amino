@@ -52,6 +52,7 @@ const Template: StoryFn = ({ className }) => {
         <a href="/quoter/create" onClick={mockUrlChange}>
           <NavigationItem
             content="Create"
+            icon={<TotalLandedCostIcon size={24} />}
             isActive={pathname.includes('/quoter/create')}
           />
         </a>
