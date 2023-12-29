@@ -116,9 +116,9 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
-      <span className={styles.content}>{!iconRight && icon}</span>
+      {!iconRight && <span className={styles.content}>{icon}</span>}
       <div className={clsx(styles.content, styles.text)}>{children}</div>
-      <span className={styles.content}>{iconRight && icon}</span>
+      {iconRight && <span className={styles.content}>{icon}</span>}
       {variant !== 'plain' && variant !== 'text' && loading && (
         <span className={styles.spinnerWrapper}>
           <Spinner color={_spinnerColor} size={getSpinnerSize()} />
