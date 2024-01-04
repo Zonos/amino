@@ -116,10 +116,12 @@ describe('getDualCurrency', () => {
     {
       expected: {
         foreign: {
+          amount: -49.482899999999994,
           code: 'CAD',
           value: '-49.48',
         },
         local: {
+          amount: -40.23,
           code: 'USD',
           value: '-40.23',
         },
@@ -134,10 +136,12 @@ describe('getDualCurrency', () => {
     {
       expected: {
         foreign: {
+          amount: 5.2029000000000005,
           code: 'CAD',
           value: '5.20',
         },
         local: {
+          amount: 4.23,
           code: 'USD',
           value: '4.23',
         },
@@ -152,10 +156,12 @@ describe('getDualCurrency', () => {
     {
       expected: {
         foreign: {
+          amount: 2_603_069,
           code: 'VND',
           value: '2,603,069',
         },
         local: {
+          amount: 128.23,
           code: 'CAD',
           value: '128.23',
         },
@@ -170,10 +176,12 @@ describe('getDualCurrency', () => {
     {
       expected: {
         foreign: {
+          amount: -2_603_069,
           code: 'VND',
           value: '-2,603,069',
         },
         local: {
+          amount: -128.23,
           code: 'CAD',
           value: '-128.23',
         },
