@@ -209,21 +209,21 @@ export const TextTruncation = () => {
       <div className={styles.filterBarFilters}>
         <FilterSelect
           dropdownTitle="Filter by option"
-          label="Select filter"
+          label="Select&nbsp;filter"
           onChange={v => setValue1(v)}
           options={optionsLong}
           value={value1}
         />
         <FilterSelect
           dropdownTitle="Filter by option"
-          label="Select filter"
+          label="Select&nbsp;filter"
           onChange={v => setValue2(v)}
           options={optionsLong}
           value={value2}
         />
         <FilterSelect
           dropdownTitle="Filter by option"
-          label="Select filter"
+          label="Select&nbsp;filter"
           onChange={v => setValue3(v)}
           options={optionsLong}
           value={value3}

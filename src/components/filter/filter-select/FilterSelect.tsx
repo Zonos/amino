@@ -7,6 +7,7 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import { type SelectProps, Select } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
+import { truncateText } from 'src/utils/truncateText';
 
 type CustomSelectProps<
   T extends string = string,
@@ -17,6 +18,7 @@ export type FilterSelectProps<
   T extends string = string,
   O extends SelectOption<string> = SelectOption<T>,
 > = BaseFilterProps & {
+  filterTextCharacterLimit?: number;
   options: O[];
   selectProps?:
     | CustomSelectProps<T, O>
@@ -33,6 +35,7 @@ export const FilterSelect = <
   T extends string = string,
   O extends SelectOption<T> = SelectOption<T>,
 >({
+  filterTextCharacterLimit = 20,
   getFilterText = v => `is ${v.label}`,
   onChange,
   options,
@@ -47,7 +50,9 @@ export const FilterSelect = <
     onChange(editingValue);
     if (editingValue) {
       const filterText = getFilterText(editingValue);
-      setFilterText(filterText);
+      setFilterText(
+        truncateText({ length: filterTextCharacterLimit, text: filterText }),
+      );
     }
   };
 
