@@ -86,7 +86,7 @@ const ExpandedListItem = ({
         <DualCurrency
           conversionRate={conversionRate}
           foreignCode={foreignCode}
-          showForeign={showForeign}
+          hideForeign={!showForeign}
           value={value}
         />
       </Text>
@@ -175,7 +175,7 @@ const Template: StoryFn<
                   <DualCurrency
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    showForeign={showForeign}
+                    hideForeign={!showForeign}
                     value={27898.74}
                   />
                 </Text>
@@ -192,8 +192,8 @@ const Template: StoryFn<
                 <DualCurrency
                   conversionRate={conversionRate}
                   foreignCode={foreignCode}
+                  hideForeign={!showForeign}
                   isTabular={false}
-                  showForeign={showForeign}
                   value={27898.74}
                 />
               </Text>
@@ -242,7 +242,7 @@ const Template: StoryFn<
                   <DualCurrency
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    showForeign={showForeign}
+                    hideForeign={!showForeign}
                     value={891.23}
                   />
                 </Text>

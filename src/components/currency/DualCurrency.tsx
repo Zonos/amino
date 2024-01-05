@@ -3,55 +3,86 @@ import clsx from 'clsx';
 import { Currency } from 'src/components/currency/Currency';
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
 import type { BaseProps } from 'src/types/BaseProps';
+import { getDualCurrency } from 'src/utils/formatCurrency';
 
 import styles from './DualCurrency.module.scss';
 
-type StyledProps = {
-  isTabular: boolean;
-  width?: string;
-};
-
 type Props = BaseProps & {
   conversionRate?: number;
-  foreignCode: string;
+  /**
+   * @default 'USD'
+   */
+  foreignCode?: string;
+  /**
+   * @default false
+   */
+  hideForeign?: boolean;
+  /**
+   * @default false
+   */
+  hideLocal?: boolean;
   isTabular?: boolean;
-  localeCode?: string;
-  showForeign?: boolean;
-  showLocale?: boolean;
+  /**
+   * @default 'USD'
+   */
+  localCode?: string;
   value: number;
-} & Partial<StyledProps>;
+  /**
+   * For when the value is already in the foreign currency, and the conversion needs to be reversed.
+   * The rate can stay the same.
+   * @default false
+   */
+  valueIsForeign?: boolean;
+};
 
+/**
+ * Can go both ways.
+ */
 export const DualCurrency = ({
   className,
   conversionRate,
   foreignCode = 'USD',
-  isTabular = true,
-  localeCode = 'USD',
-  showForeign = true,
-  showLocale = true,
+  hideForeign = false,
+  hideLocal = false,
+  isTabular = false,
+  localCode = 'USD',
   style,
   value,
-  width,
+  valueIsForeign = false,
 }: Props) => {
-  const renderLocaleCurrency = (currencyClassName?: string) => (
-    <Currency amount={value} className={currencyClassName} code={localeCode} />
-  );
+  const { foreign, local } = getDualCurrency({
+    conversionRate,
+    foreignCode,
+    localCode,
+    value,
+    valueIsForeign,
+  });
 
-  const convertedValue = conversionRate ? value * conversionRate : value;
+  const renderLocalCurrency = () => {
+    if (!local) {
+      return null;
+    }
 
-  const renderForeignCurrency = (currencyClassName?: string) => (
-    <Currency
-      amount={convertedValue}
-      className={currencyClassName}
-      code={foreignCode}
-    />
-  );
+    return (
+      <Currency amount={local.amount} className={className} code={localCode} />
+    );
+  };
 
-  const showLocaleCurrency = localeCode && showLocale;
-  const showForeignCurrency = foreignCode && showForeign && conversionRate;
-  const isSameCode = localeCode === foreignCode;
+  const renderForeignCurrency = () => {
+    if (!foreign) {
+      return null;
+    }
 
-  if (showForeignCurrency && showLocaleCurrency && !isSameCode) {
+    return (
+      <Currency
+        amount={foreign.amount}
+        className={className}
+        code={foreignCode}
+      />
+    );
+  };
+
+  if (local && foreign && !hideLocal && !hideForeign) {
     return (
       <div
         className={clsx(styles.dualCurrencyWrapper, className)}
@@ -64,22 +95,22 @@ export const DualCurrency = ({
           '--amino-dual-currency-grid-template-columns': isTabular
             ? '1.25fr 0fr 1.25fr'
             : '',
-          '--amino-dual-currency-width': width?.toString() || '',
         }}
       >
-        {renderLocaleCurrency()}
+        {renderLocalCurrency()}
         <ArrowSwapIcon size={12} />
         {renderForeignCurrency()}
       </div>
     );
   }
 
-  if (isSameCode || showLocaleCurrency) {
-    return renderLocaleCurrency(className);
+  if (local && !hideLocal) {
+    return renderLocalCurrency();
   }
 
-  if (showForeignCurrency) {
-    return renderForeignCurrency(className);
+  if (foreign && !hideForeign) {
+    return renderForeignCurrency();
   }
+
   return null;
 };

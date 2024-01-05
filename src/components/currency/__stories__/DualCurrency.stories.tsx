@@ -1,6 +1,4 @@
-import React from 'react';
-
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 
@@ -12,60 +10,80 @@ export default DualCurrencyMeta;
 
 type DualCurrencyProps = Parameters<typeof DualCurrency>[number];
 
-const DualCurrencyTemplate: StoryFn<DualCurrencyProps> = ({
-  conversionRate,
-  foreignCode,
-  localeCode,
-  value,
-}: DualCurrencyProps) => (
-  <div
-    style={{
-      display: 'inline-block',
-    }}
-  >
-    <DualCurrency
-      conversionRate={conversionRate}
-      foreignCode={foreignCode}
-      localeCode={localeCode}
-      value={value}
-    />
-  </div>
-);
-
-export const NegativeValue = DualCurrencyTemplate.bind({});
-NegativeValue.args = {
-  conversionRate: 1.23,
-  foreignCode: 'CAD',
-  isTabular: false,
-  localeCode: 'USD',
-  value: -40.23,
+export const NegativeValue: StoryObj<DualCurrencyProps> = {
+  args: {
+    conversionRate: 1.23,
+    foreignCode: 'CAD',
+    localCode: 'USD',
+    value: -40.23,
+  },
 };
 
-export const PositiveValue = DualCurrencyTemplate.bind({});
-PositiveValue.args = {
-  conversionRate: 1.23,
-  foreignCode: 'CAD',
-  isTabular: false,
-  localeCode: 'USD',
-  value: 4.23,
+export const PositiveValue: StoryObj<DualCurrencyProps> = {
+  args: {
+    conversionRate: 1.23,
+    foreignCode: 'CAD',
+    localCode: 'USD',
+    value: 4.23,
+  },
 };
 
-export const DifferentCurrencyFormatWithPositiveValue =
-  DualCurrencyTemplate.bind({});
-DifferentCurrencyFormatWithPositiveValue.args = {
-  conversionRate: 20_300,
-  foreignCode: 'VND',
-  isTabular: false,
-  localeCode: 'CAD',
-  value: 128.23,
+export const DifferentCurrencyFormatWithPositiveValue: StoryObj<DualCurrencyProps> =
+  {
+    args: {
+      conversionRate: 20_300,
+      foreignCode: 'VND',
+      localCode: 'CAD',
+      value: 128.23,
+    },
+  };
+
+export const DifferentCurrencyFormatWithNegativeValue: StoryObj<DualCurrencyProps> =
+  {
+    args: {
+      conversionRate: 20_300,
+      foreignCode: 'VND',
+      localCode: 'CAD',
+      value: -128.23,
+    },
+  };
+
+export const NoRate: StoryObj<DualCurrencyProps> = {
+  args: {
+    foreignCode: 'CRC',
+    localCode: 'USD',
+    value: 0,
+  },
 };
 
-export const DifferentCurrencyFormatWithNegativeValue =
-  DualCurrencyTemplate.bind({});
-DifferentCurrencyFormatWithNegativeValue.args = {
-  conversionRate: 20_300,
-  foreignCode: 'VND',
-  isTabular: false,
-  localeCode: 'CAD',
-  value: -128.23,
+export const ForeignValue: StoryObj<DualCurrencyProps> = {
+  args: {
+    conversionRate: 1.456,
+    foreignCode: 'CAD',
+    localCode: 'USD',
+    value: 100,
+    valueIsForeign: true,
+  },
+};
+
+export const ForeignValueHidden: StoryObj<DualCurrencyProps> = {
+  args: {
+    conversionRate: 1.456,
+    foreignCode: 'CAD',
+    hideForeign: true,
+    localCode: 'USD',
+    value: 100,
+    valueIsForeign: true,
+  },
+};
+
+export const LocalValueHidden: StoryObj<DualCurrencyProps> = {
+  args: {
+    conversionRate: 1.456,
+    foreignCode: 'CAD',
+    hideLocal: true,
+    localCode: 'USD',
+    value: 100,
+    valueIsForeign: true,
+  },
 };

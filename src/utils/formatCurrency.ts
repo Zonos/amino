@@ -32,21 +32,35 @@ export const formatCurrency = ({
 };
 
 type DualCurrencyParams = {
-  conversionRate: number | null;
-  foreignCode: string | null;
-  localCode: string;
+  conversionRate?: number;
+  /**
+   * @default 'USD'
+   */
+  foreignCode?: string;
+  /**
+   * @default 'USD'
+   */
+  localCode?: string;
   value: number;
+  /**
+   * For when the value is already in the foreign currency, and the conversion needs to be reversed.
+   * The rate can stay the same.
+   * @default false
+   */
+  valueIsForeign?: boolean;
 };
 
 type DualCurrency = {
   foreign: {
+    amount: number;
     code: string;
     value: string;
   } | null;
   local: {
+    amount: number;
     code: string;
     value: string;
-  };
+  } | null;
 };
 
 /**
@@ -54,29 +68,53 @@ type DualCurrency = {
  */
 export const getDualCurrency = ({
   conversionRate,
-  foreignCode,
-  localCode,
+  foreignCode = 'USD',
+  localCode = 'USD',
   value,
+  valueIsForeign = false,
 }: DualCurrencyParams): DualCurrency => {
-  const convertedValue = conversionRate ? value * conversionRate : value;
+  const getLocalValue = () => {
+    if (!conversionRate) {
+      return valueIsForeign ? null : value;
+    }
 
-  const localCurrency = {
-    code: localCode,
-    value: formatCurrency({
-      code: localCode,
-      value,
-    }),
+    return valueIsForeign ? value / conversionRate : value;
   };
 
-  const foreignCurrency = foreignCode
-    ? {
-        code: foreignCode,
-        value: formatCurrency({
+  const getForeignValue = () => {
+    if (!conversionRate) {
+      return valueIsForeign ? value : null;
+    }
+
+    return valueIsForeign ? value : value * conversionRate;
+  };
+
+  const localValue = getLocalValue();
+  const foreignValue = getForeignValue();
+
+  const localCurrency =
+    localValue !== null
+      ? {
+          amount: localValue,
+          code: localCode,
+          value: formatCurrency({
+            code: localCode,
+            value: localValue,
+          }),
+        }
+      : null;
+
+  const foreignCurrency =
+    foreignValue !== null
+      ? {
+          amount: foreignValue,
           code: foreignCode,
-          value: convertedValue,
-        }),
-      }
-    : null;
+          value: formatCurrency({
+            code: foreignCode,
+            value: foreignValue,
+          }),
+        }
+      : null;
 
   return {
     foreign: foreignCurrency,
