@@ -220,7 +220,7 @@ export const Loading = () => {
         items={items}
         keyExtractor={item => String(item.id)}
         loading={loading}
-        loadingItems={8}
+        loadingItems={items.length}
       />
     </>
   );
