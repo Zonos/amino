@@ -19,6 +19,7 @@ export type CoverSheetProps = BaseProps & {
   actionWrapperId?: string;
   actions?: ReactNode;
   children: ReactNode;
+  headerComponent?: ReactNode;
   label: string;
   open: boolean;
   themeOverride?: Theme;
@@ -30,6 +31,7 @@ export const CoverSheet = ({
   actionWrapperId = '__cover-sheet-actions',
   children,
   className,
+  headerComponent,
   label,
   onClose,
   open,
@@ -73,14 +75,11 @@ export const CoverSheet = ({
               transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             >
               <header className={styles.headerContainer}>
-                <Button
-                  className={styles.closeButton}
-                  icon={<RemoveIcon size={20} />}
-                  onClick={onClose}
-                />
-                <Text className={styles.header} type="subheader">
-                  {label}
-                </Text>
+                <div className={styles.header}>
+                  <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
+                  <Text type="subheader">{label}</Text>
+                </div>
+                <div className={styles.headerComponent}>{headerComponent}</div>
                 <div id={actionWrapperId}>
                   {actions && (
                     <CoverSheetActions coverSheetActionId={actionWrapperId}>
