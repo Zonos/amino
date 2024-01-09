@@ -2,21 +2,10 @@ import type { ReactNode } from 'react';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import styled from 'styled-components';
 
 import { DragIcon } from 'src/icons/DragIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledSortableListItem = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: ${theme.space24};
-`;
-
-const StyledSortableSection = styled.div`
-  flex-grow: 1;
-`;
+import styles from './SortableListItem.module.scss';
 
 export type SortableListItemProps = {
   children: ReactNode;
@@ -43,18 +32,23 @@ export const SortableListItem = ({
   return (
     <div ref={setNodeRef}>
       {useHandle ? (
-        <StyledSortableListItem style={style}>
-          <StyledSortableSection>{children}</StyledSortableSection>
+        <div className={styles.styledSortableListItem} style={style}>
+          <div className={styles.styledSortableSection}>{children}</div>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <div {...listeners} {...attributes}>
             <DragIcon size={handleIconSize} />
           </div>
-        </StyledSortableListItem>
+        </div>
       ) : (
         // eslint-disable-next-line react/jsx-props-no-spreading
-        <StyledSortableListItem style={style} {...listeners} {...attributes}>
-          <StyledSortableSection>{children}</StyledSortableSection>
-        </StyledSortableListItem>
+        <div
+          className={styles.styledSortableListItem}
+          style={style}
+          {...listeners}
+          {...attributes}
+        >
+          <div className={styles.styledSortableSection}>{children}</div>
+        </div>
       )}
     </div>
   );

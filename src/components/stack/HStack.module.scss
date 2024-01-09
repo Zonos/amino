@@ -1,0 +1,6 @@
+$gap: var(--amino-h-stack-gap);
+
+.styledHStack {
+  grid-column-gap: $gap;
+  grid-auto-flow: column;
+}

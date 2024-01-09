@@ -1,0 +1,115 @@
+@use 'theme';
+
+$color: var(--amino-styled-react-select-color);
+
+.iconWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: theme.$amino-gray-700;
+  padding: 10px;
+}
+
+.styledFloatedLabel {
+  position: absolute;
+  transition: theme.$amino-transition;
+  font-size: theme.$amino-font-size-base;
+  line-height: theme.$amino-font-size-base;
+  transform-origin: left top;
+  left: 14px;
+  .hasIcon & {
+    left: 42px;
+  }
+  top: calc(50% - theme.$amino-font-size-base / 2);
+  .hasLabel & {
+    & + div {
+      align-self: flex-end;
+    }
+  }
+  .hasValue &,
+  .isFocused & {
+    top: 11px;
+    transform: scale(0.8);
+  }
+
+  // Size modify
+
+  // sm
+  .sm.hasLabel & {
+    & + div {
+      margin-bottom: -6px;
+    }
+  }
+  .sm.hasValue &,
+  .sm.isFocused & {
+    top: 2px;
+  }
+
+  // md
+  .md.hasLabel & {
+    & + div {
+      margin-bottom: -2px;
+    }
+  }
+  .md.hasLabel &,
+  .md.isFocused & {
+    top: 6px;
+  }
+
+  // lg
+  .lg.hasValue &,
+  .lg.isFocused & {
+    top: 10px;
+  }
+
+  // xl
+  .xl.hasLabel & {
+    & + div {
+      margin-bottom: 3px;
+    }
+  }
+  .xl.hasValue &,
+  .xl.isFocused & {
+    top: 11px;
+  }
+}
+
+.styledSelectWrapper {
+  .reactSelectControl + div {
+    z-index: 20;
+  }
+
+  &.hasError .reactSelectControl {
+    box-shadow: theme.$amino-glow-error;
+  }
+}
+
+.strongLabel {
+  font-weight: 600;
+}
+
+.checkboxOptionIconWrapper {
+  display: flex;
+  align-items: center;
+  color: $color;
+  svg {
+    margin-right: 4px;
+    color: theme.$amino-gray-1200;
+  }
+}
+
+.styledSelectOptionWrapper {
+  &:not(.isDisabled) {
+    &.isFocused,
+    &:hover {
+      /* The styles are inlined on this component from emotion, so we must override */
+      background-color: theme.$amino-gray-100 !important;
+    }
+  }
+}
+
+.selectedSingleOptionWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

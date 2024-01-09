@@ -1,20 +1,18 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const StyledSectionInnerWrapper = styled.header`
-  display: flex;
-  align-items: center;
-  margin-bottom: ${theme.space24};
-  align-items: flex-start;
-`;
+import styles from './_SectionInnerWrapper.module.scss';
 
-type Props = { children: ReactNode; className?: string };
+type Props = BaseProps & { children: ReactNode };
 
-export const SectionInnerWrapper = ({ children, className }: Props) => (
-  <StyledSectionInnerWrapper className={className || ''}>
+export const SectionInnerWrapper = ({ children, className, style }: Props) => (
+  <header
+    className={clsx(className, styles.styledSectionInnerWrapper)}
+    style={style}
+  >
     {children}
-  </StyledSectionInnerWrapper>
+  </header>
 );

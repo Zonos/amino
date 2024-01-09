@@ -1,13 +1,8 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { type StackProps, Stack } from 'src/components/stack/Stack';
-import { theme } from 'src/styles/constants/theme';
-import type { GridSpacing } from 'src/types';
 
-const StyledVStack = styled(Stack)<{ $spacing: GridSpacing }>`
-  grid-row-gap: ${p => theme[`space${p.$spacing}`]};
-  grid-auto-flow: row;
-`;
+import styles from './VStack.module.scss';
 
 /**
  * A vertical stack
@@ -17,11 +12,16 @@ const StyledVStack = styled(Stack)<{ $spacing: GridSpacing }>`
  */
 export const VStack = ({
   children,
+  className,
   spacing = 24,
   style,
   ...props
 }: StackProps) => (
-  <StyledVStack $spacing={spacing} style={style} {...props}>
+  <Stack
+    className={clsx(className, styles.styledVStack)}
+    style={{ ...style, '--amino-v-stack-gap': `${spacing}px` }}
+    {...props}
+  >
     {children}
-  </StyledVStack>
+  </Stack>
 );

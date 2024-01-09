@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { theme } from 'src/styles/constants/theme';
 import { type Color, type StyledProps } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 const Subtitle = styled.span`
   font-size: ${theme.fontSizeS};
@@ -168,7 +169,7 @@ const Typography = styled.h1<
 
 type TextStyle = Type | OtherText;
 
-export type TextProps = {
+export type TextProps = BaseProps & {
   children: ReactNode;
   className?: string;
   isUppercase?: boolean;
@@ -185,6 +186,7 @@ export const Text = ({
   fontWeight,
   isUppercase,
   lineHeight,
+  style,
   tag,
   title,
   type,
@@ -209,6 +211,7 @@ export const Text = ({
       $size={size}
       as={as}
       className={className}
+      style={style}
       title={title}
     >
       {children}

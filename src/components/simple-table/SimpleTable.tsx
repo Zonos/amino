@@ -1,97 +1,13 @@
 import { type ReactNode, Fragment } from 'react';
 
 import clsx from 'clsx';
-import styled from 'styled-components';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 
-const TableStyled = styled.table`
-  width: 100%;
-
-  > thead {
-    text-transform: uppercase;
-
-    > tr {
-      border-bottom: ${theme.border};
-      height: 56px;
-
-      > th {
-        padding: ${theme.space16};
-        white-space: nowrap;
-
-        &.noPadding {
-          padding: 0;
-        }
-      }
-    }
-  }
-
-  > tbody {
-    > tr {
-      height: 48px;
-
-      & {
-        border-bottom: ${theme.border};
-      }
-
-      &.withHover:hover {
-        background-color: ${theme.gray50};
-      }
-
-      &.clickable {
-        cursor: pointer;
-      }
-
-      &:not(:hover) {
-        .row-hover-show {
-          visibility: collapse;
-        }
-      }
-
-      > td {
-        padding: ${theme.space12};
-
-        &.noPadding {
-          padding: 0;
-        }
-
-        &.loading {
-          text-align: center;
-        }
-
-        &:not(:hover) {
-          .cell-hover-show {
-            visibility: collapse;
-          }
-        }
-
-        &.cellLink {
-          padding: 0;
-
-          > a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            padding: ${theme.space12};
-
-            &.noPadding {
-              padding: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-const StyledCheckbox = styled(Checkbox)`
-  padding: ${theme.space12};
-  display: inline-flex;
-`;
+import styles from './SimpleTable.module.scss';
 
 type SimpleTableHeaderBaseProps = {
   /**
@@ -213,11 +129,9 @@ export const SimpleTable = <T extends object>({
     const renderContent = (content: ReactNode) => {
       if (getRowLink && !selectable.anySelected) {
         return (
-          <td className="cellLink">
+          <td className={styles.cellLink}>
             <a
-              className={clsx({
-                noPadding: header.noPadding,
-              })}
+              className={clsx(header.noPadding && styles.noPadding)}
               href={getRowLink(item)}
               style={{
                 textAlign: header.align || 'start',
@@ -231,9 +145,7 @@ export const SimpleTable = <T extends object>({
 
       return (
         <td
-          className={clsx({
-            noPadding: header.noPadding,
-          })}
+          className={clsx(header.noPadding && styles.noPadding)}
           style={{
             textAlign: header.align || 'start',
           }}
@@ -262,10 +174,10 @@ export const SimpleTable = <T extends object>({
           {headers.map(header => (
             <td
               key={header.key}
-              className={clsx({
-                loading: true,
-                noPadding: header.noPadding,
-              })}
+              className={clsx(
+                styles.loading,
+                header.noPadding && styles.noPadding,
+              )}
             >
               <Skeleton key={n} height={30} />
             </td>
@@ -282,10 +194,10 @@ export const SimpleTable = <T extends object>({
       return (
         <tr
           key={keyExtractor(item)}
-          className={clsx({
-            clickable,
-            withHover: !noHoverBackground,
-          })}
+          className={clsx(
+            clickable && styles.clickable,
+            !noHoverBackground && styles.withHover,
+          )}
           onClick={() => {
             if (selectable.anySelected) {
               if (!selectable.isRowCheckboxDisabled?.(item, index)) {
@@ -302,10 +214,11 @@ export const SimpleTable = <T extends object>({
           onMouseEnter={() => onRowHover?.(item)}
         >
           {selectable.enabled && (
-            <td className="noPadding">
+            <td className={styles.noPadding}>
               {selectable.renderCustomRowCheckbox?.(item, index) || (
-                <StyledCheckbox
+                <Checkbox
                   checked={selectable.isRowChecked?.(item, index) || false}
+                  className={styles.styledCheckbox}
                   disabled={
                     selectable.isRowCheckboxDisabled?.(item, index) || false
                   }
@@ -325,7 +238,7 @@ export const SimpleTable = <T extends object>({
   };
 
   return (
-    <TableStyled className={className}>
+    <table className={clsx(className, styles.tableStyled)}>
       <colgroup>
         {!!selectable.onHeaderCheckboxChange && <col width={0} />}
         {headers.map(header => (
@@ -338,12 +251,13 @@ export const SimpleTable = <T extends object>({
       <thead>
         <tr>
           {!!selectable.onHeaderCheckboxChange && (
-            <th className="noPadding">
+            <th className={styles.noPadding}>
               {selectable.renderCustomHeaderCheckbox || (
-                <StyledCheckbox
+                <Checkbox
                   checked={
                     (!loading && selectable.headerCheckboxValue) || false
                   }
+                  className={styles.styledCheckbox}
                   disabled={loading}
                   onChange={selectable.onHeaderCheckboxChange}
                 />
@@ -366,6 +280,6 @@ export const SimpleTable = <T extends object>({
       </thead>
       <tbody>{renderRows()}</tbody>
       {renderFooter}
-    </TableStyled>
+    </table>
   );
 };

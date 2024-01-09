@@ -1,0 +1,85 @@
+@use 'theme';
+
+.tableStyled {
+  width: 100%;
+
+  > thead {
+    text-transform: uppercase;
+
+    > tr {
+      border-bottom: theme.$amino-border;
+      height: 56px;
+
+      > th {
+        padding: 16px;
+        white-space: nowrap;
+
+        &.noPadding {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  > tbody {
+    > tr {
+      height: 48px;
+
+      & {
+        border-bottom: theme.$amino-border;
+      }
+
+      &.withHover:hover {
+        background-color: theme.$amino-gray-50;
+      }
+
+      &.clickable {
+        cursor: pointer;
+      }
+
+      &:not(:hover) {
+        .row-hover-show {
+          visibility: collapse;
+        }
+      }
+
+      > td {
+        padding: 12px;
+
+        &.noPadding {
+          padding: 0;
+        }
+
+        &.loading {
+          text-align: center;
+        }
+
+        &:not(:hover) {
+          .cell-hover-show {
+            visibility: collapse;
+          }
+        }
+
+        &.cellLink {
+          padding: 0;
+
+          > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 12px;
+
+            &.noPadding {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.styledCheckbox {
+  padding: 12px;
+  display: inline-flex;
+}
