@@ -1,7 +1,9 @@
 @use 'theme';
 
 $border-top-right-radius: var(--amino-filter-wrapper-border-top-right-radius);
-$border-bottom-right-radius: var(--amino-filter-wrapper-border-bottom-right-radius);
+$border-bottom-right-radius: var(
+  --amino-filter-wrapper-border-bottom-right-radius
+);
 $border-right-color: var(--amino-filter-wrapper-border-right-color);
 
 .filterWrapper {
@@ -31,9 +33,9 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   border-top-right-radius: $border-top-right-radius;
   border-bottom-right-radius: $border-bottom-right-radius;
   border-right: 1px solid $border-right-color;
-  
+
   &:hover {
-    background-color: theme.$amino-gray-100;
+    background-color: theme.$amino-hover-color;
   }
 }
 
@@ -48,7 +50,7 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   border-bottom-left-radius: 0px;
 
   &:hover {
-    background-color: theme.$amino-gray-100;
+    background-color: theme.$amino-hover-color;
   }
 }
 
@@ -70,5 +72,5 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   display: flex;
   flex-direction: column;
   gap: theme.$amino-space-8;
-  max-height: 400px;;
+  max-height: 400px;
 }

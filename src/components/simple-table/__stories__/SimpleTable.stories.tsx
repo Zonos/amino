@@ -220,7 +220,7 @@ export const Loading = () => {
         items={items}
         keyExtractor={item => String(item.id)}
         loading={loading}
-        loadingItems={8}
+        loadingItems={items.length}
       />
     </>
   );
@@ -263,6 +263,7 @@ export const Custom = () => {
       action={
         <Button icon={<ThreeDotIcon size={20} />} size="sm" variant="subtle" />
       }
+      closeOnMouseLeave={false}
     >
       <Menu>
         <MenuItem

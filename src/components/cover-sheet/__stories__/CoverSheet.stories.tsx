@@ -1,21 +1,18 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
+import { MenuButton } from 'src/components/button/MenuButton';
 import {
   type CoverSheetProps,
   CoverSheet,
 } from 'src/components/cover-sheet/CoverSheet';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
+import { Menu } from 'src/components/menu/Menu';
+import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
-
-const CoverSheetMeta: Meta = {
-  component: CoverSheet,
-};
-
-export default CoverSheetMeta;
 
 const CenteredDiv = styled.div`
   height: 100%;
@@ -24,8 +21,11 @@ const CenteredDiv = styled.div`
   align-items: center;
 `;
 
-export const Basic: StoryFn<CoverSheetProps> = ({
+const Story: StoryFn<CoverSheetProps> = ({
   children,
+  label = 'Cover sheet',
+  onClose,
+  open: _open,
   ...props
 }: CoverSheetProps) => {
   const [open, setOpen] = useState(false);
@@ -33,11 +33,11 @@ export const Basic: StoryFn<CoverSheetProps> = ({
     <CenteredDiv>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <CoverSheet
-        {...props}
         actions={<Button variant="primary">Click me</Button>}
-        label="Cover sheet"
+        label={label}
         onClose={() => setOpen(false)}
         open={open}
+        {...props}
       >
         <p>
           Bacon ipsum dolor amet drumstick sausage pig beef picanha leberkas ham
@@ -51,6 +51,35 @@ export const Basic: StoryFn<CoverSheetProps> = ({
       </CoverSheet>
     </CenteredDiv>
   );
+};
+
+const CoverSheetMeta: Meta = {
+  component: Story,
+};
+
+export default CoverSheetMeta;
+
+export const Basic: StoryObj<CoverSheetProps> = {};
+
+export const CustomHeader: StoryObj<CoverSheetProps> = {
+  args: {
+    headerComponent: (
+      <MenuButton action={<Button variant="primary">Open</Button>}>
+        <Menu>
+          <MenuItem>View API details</MenuItem>
+          <MenuItem>Re-create customer cart</MenuItem>
+          <MenuItem>Re-send confirmation email</MenuItem>
+          <MenuItem>Blacklist customer</MenuItem>
+          <MenuItem>Open fraud tools</MenuItem>
+          <MenuItem>Approve</MenuItem>
+          <MenuItem>Deny</MenuItem>
+          <MenuItem>Investigate buyer</MenuItem>
+          <MenuItem>Request verification</MenuItem>
+        </Menu>
+      </MenuButton>
+    ),
+    label: 'Custom header',
+  },
 };
 
 const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({

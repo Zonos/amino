@@ -164,7 +164,7 @@ export const SimpleTable = <T extends object>({
 
   const renderRows = () => {
     if (loading) {
-      return [...Array(loadingItems + 1).keys()].map(n => (
+      return [...Array(loadingItems).keys()].map(n => (
         <tr key={n}>
           {selectable.enabled && (
             <td>
