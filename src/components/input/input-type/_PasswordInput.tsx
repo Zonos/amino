@@ -9,7 +9,7 @@ import {
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 
-import styles from './_Password.module.scss';
+import styles from './_PasswordInput.module.scss';
 
 export const PasswordInput = ({
   autoFocus,

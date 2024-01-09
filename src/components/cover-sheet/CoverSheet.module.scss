@@ -21,18 +21,17 @@
   }
 }
 
-.closeButton {
-  margin-right: theme.$amino-space-16;
-}
-
 .header {
-  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: theme.$amino-space-16;
 }
 
 .headerContainer {
   border-bottom: theme.$amino-border;
   padding: theme.$amino-space-16 theme.$amino-space-32;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 64px;
   position: sticky;
@@ -43,6 +42,13 @@
   @media print {
     display: none;
   }
+}
+
+.headerComponent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .content {
