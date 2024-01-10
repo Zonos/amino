@@ -1,40 +1,14 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Depth } from 'src/types/Depth';
 
-const SurfaceBase = styled.div<{ $dense: boolean }>`
-  background: ${theme.surfaceColor};
-  padding: ${theme.space24};
-  color: ${theme.textColor};
-  border-radius: ${p => (p.$dense ? theme.radius6 : theme.radius8)};
-`;
+import styles from './Surface.module.scss';
 
-// shadow small
-const Depth4 = styled(SurfaceBase)`
-  box-shadow: ${theme.v3ShadowBase};
-  border: ${theme.border};
-`;
-
-// shadow medium
-const Depth8 = styled(SurfaceBase)`
-  box-shadow: ${theme.v3ShadowMedium};
-`;
-
-const Depth16 = styled(SurfaceBase)`
-  box-shadow: ${theme.v3ShadowLarge};
-`;
-
-// shadow xl
-const Depth64 = styled(SurfaceBase)`
-  box-shadow: ${theme.v3ShadowXl};
-`;
-
-type Props = {
+type Props = BaseProps & {
   children: ReactNode;
-  className?: string;
   /**
    * @default false
    */
@@ -46,35 +20,20 @@ export const Surface = ({
   children,
   className,
   dense = false,
-  depth,
+  depth = 'depth4',
+  style,
 }: Props) => {
-  const classes = [className || '', 'elevated'].join(' ');
+  const classes = clsx(
+    className,
+    styles.surfaceBase,
+    'elevated',
+    dense && styles.dense,
+    depth && styles[depth],
+  );
 
-  switch (depth) {
-    case 'depth64':
-      return (
-        <Depth64 $dense={dense} className={classes}>
-          {children}
-        </Depth64>
-      );
-    case 'depth16':
-      return (
-        <Depth16 $dense={dense} className={classes}>
-          {children}
-        </Depth16>
-      );
-    case 'depth8':
-      return (
-        <Depth8 $dense={dense} className={classes}>
-          {children}
-        </Depth8>
-      );
-    case 'depth4':
-    default:
-      return (
-        <Depth4 $dense={dense} className={classes}>
-          {children}
-        </Depth4>
-      );
-  }
+  return (
+    <div className={classes} style={style}>
+      {children}
+    </div>
+  );
 };

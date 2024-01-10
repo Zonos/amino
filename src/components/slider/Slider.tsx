@@ -1,101 +1,7 @@
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
-import type { StyledProps } from 'src/types';
-
-const StyledSlider = styled(Root)`
-  align-items: center;
-  display: flex;
-  height: 12px;
-  position: relative;
-  touch-action: none;
-  user-select: none;
-`;
-
-const StyledTrack = styled(Track)<StyledProps<{ size: SliderSize }>>`
-  background-color: ${theme.gray200};
-  border-radius: 20px;
-  box-shadow: ${theme.v3ShadowInset};
-  flex-grow: 1;
-  height: ${p => p.$size && `${p.$size}px`};
-  position: relative;
-  & + span {
-    transition: 0.3s all ease;
-  }
-`;
-
-const StyledRange = styled(Range)`
-  background-color: ${theme.primary};
-  transition: 0.3s all ease;
-  border-radius: 9999px;
-  height: 100%;
-  position: absolute;
-`;
-
-const StyledThumb = styled(Thumb)<StyledProps<{ size: SliderSize }>>`
-  background: ${theme.gray0};
-  border-radius: 20px;
-  border: ${theme.border};
-  box-shadow: ${theme.v3ShadowBase};
-  display: block;
-  height: ${p => p.$size && `${p.$size * 2}px`};
-  width: ${p => p.$size && `${p.$size * 2}px`};
-
-  [data-theme='night'] & {
-    background: ${theme.gray1200};
-  }
-
-  cursor: pointer;
-
-  &:focus,
-  &:active {
-    background: ${theme.gray100};
-    border-color: ${theme.primary};
-    box-shadow: ${theme.glowBlue};
-    outline: none;
-  }
-`;
-
-const SliderWrapper = styled.div<StyledProps<{ hideIndicator: boolean }>>`
-  position: relative;
-  height: ${p => !p.$hideIndicator && `calc(56px + ${theme.space24} + 10px)`};
-`;
-
-const Indicator = styled.div`
-  align-items: center;
-  background: ${theme.blue100};
-  border-bottom-left-radius: ${theme.radius6};
-  border-bottom-right-radius: ${theme.radius6};
-  color: ${theme.blue800};
-  display: flex;
-  font-weight: 500;
-  height: 32px;
-  justify-content: center;
-  position: relative;
-  user-select: none;
-  width: 48px;
-
-  span {
-    margin-top: -8px;
-  }
-`;
-
-const UpTriangle = styled.div`
-  border-bottom: 24px solid ${theme.blue100};
-  border-left: 24px solid transparent;
-  border-right: 24px solid transparent;
-  border-top-left-radius: ${theme.radius6};
-  border-top-right-radius: ${theme.radius6};
-  height: 0;
-  width: 0;
-  width: 48px;
-`;
-
-const IndicatorWrapper = styled.div`
-  margin-left: -12px;
-  margin-top: calc(${theme.space24} + 10px);
-`;
+import styles from './Slider.module.scss';
 
 type SliderSize = 8 | 12;
 
@@ -129,31 +35,40 @@ export const Slider = ({
   suffix = '%',
   value,
 }: SliderProps) => (
-  <SliderWrapper $hideIndicator={hideIndicator} className={className}>
-    <StyledSlider
+  <div
+    className={clsx(className, styles.sliderWrapper)}
+    style={{
+      '--amino-slider-styled-thumb-height': `${size * 2}px`,
+      '--amino-slider-styled-thumb-width': `${size * 2}px`,
+      '--amino-slider-styled-track-height': `${size}px`,
+      '--amino-slider-wrapper-height': !hideIndicator ? '90px' : '',
+    }}
+  >
+    <Root
+      className={styles.styledSlider}
       max={max}
       min={min}
       onValueChange={([val]) => val !== undefined && onChange(val)}
       step={step}
       value={[value]}
     >
-      <StyledTrack $size={size}>
-        <StyledRange />
-      </StyledTrack>
+      <Track className={styles.styledTrack}>
+        <Range className={styles.styledRange} />
+      </Track>
 
-      <StyledThumb $size={size}>
+      <Thumb className={styles.styledThumb}>
         {!hideIndicator && (
-          <IndicatorWrapper>
-            <UpTriangle />
-            <Indicator>
+          <div className={styles.indicatorWrapper}>
+            <div className={styles.upTriangle} />
+            <div className={styles.indicator}>
               <span>
                 {value}
                 {suffix}
               </span>
-            </Indicator>
-          </IndicatorWrapper>
+            </div>
+          </div>
         )}
-      </StyledThumb>
-    </StyledSlider>
-  </SliderWrapper>
+      </Thumb>
+    </Root>
+  </div>
 );

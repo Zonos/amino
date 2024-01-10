@@ -10,15 +10,10 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import type { SortingStrategy } from '@dnd-kit/sortable/dist/types';
-import styled from 'styled-components';
 
 import type { DragEndEvent } from 'src/components/sortable-list/SortableListDeps';
 
-const StyledSortableList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
+import styles from './SortableList.module.scss';
 
 export type SortableListProps = {
   children: ReactNode;
@@ -39,7 +34,7 @@ export const SortableList = ({
     onDragEnd={handleDragEnd}
   >
     <SortableContext items={itemIds} strategy={sortingStrategy}>
-      <StyledSortableList>{children}</StyledSortableList>
+      <div className={styles.styledSortableList}>{children}</div>
     </SortableContext>
   </DndContext>
 );

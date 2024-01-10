@@ -1,16 +1,13 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { SectionHeader } from 'src/components/section/_SectionHeader';
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledSectionWrapper = styled.div`
-  margin-bottom: ${theme.space40};
-`;
+import styles from './VSection.module.scss';
 
 export type VSectionProps = {
   actions?: ReactNode;
@@ -27,7 +24,7 @@ export const VSection = ({
   label,
   sublabel = '',
 }: VSectionProps) => (
-  <StyledSectionWrapper className={className || ''}>
+  <div className={clsx(className, styles.styledSectionWrapper)}>
     {label && (
       <SectionInnerWrapper>
         <SectionHeader>
@@ -39,5 +36,5 @@ export const VSection = ({
       </SectionInnerWrapper>
     )}
     <div>{children}</div>
-  </StyledSectionWrapper>
+  </div>
 );

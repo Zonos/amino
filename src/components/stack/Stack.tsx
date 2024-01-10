@@ -1,9 +1,11 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import type { GridAlignment, GridSpacing } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+
+import styles from './Stack.module.scss';
 
 type DivProps = Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -23,21 +25,24 @@ export type StackProps = {
   spacing?: GridSpacing;
 } & DivProps &
   BaseProps;
+
 /**
  * A stack
  *
  * @param alignment - Optional alignment
  */
-const StyledStack = styled.div<{ $alignment?: GridAlignment }>`
-  display: grid;
-  grid-auto-columns: minmax(0, 1fr);
-  & > * {
-    justify-self: ${p => p.$alignment || 'unset'};
-  }
-`;
-
-export const Stack = ({ alignment, children, ...otherProps }: StackProps) => (
-  <StyledStack $alignment={alignment} {...otherProps}>
+export const Stack = ({
+  alignment,
+  children,
+  className,
+  style,
+  ...otherProps
+}: StackProps) => (
+  <div
+    className={clsx(className, styles.styledStack)}
+    style={{ ...style, '--amino-stack-alignment': alignment || 'unset' }}
+    {...otherProps}
+  >
     {children}
-  </StyledStack>
+  </div>
 );

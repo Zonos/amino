@@ -14,7 +14,7 @@ import type {
 import ReactSelect, { components as RScomponents } from 'react-select';
 import type Select from 'react-select/dist/declarations/src/Select';
 
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
@@ -30,6 +30,8 @@ import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
+
+import styles from './_StyledReactSelect.module.scss';
 
 const getRadius = ($size?: Size) => {
   switch ($size) {
@@ -77,103 +79,6 @@ const DropdownIndicator = <
   </RScomponents.DropdownIndicator>
 );
 
-const IconWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: ${theme.gray700};
-  padding: 10px;
-`;
-
-const StyledFloatedLabel = styled.label<{ $size?: Size }>`
-  position: absolute;
-  transition: ${theme.transition};
-  font-size: ${theme.fontSizeBase};
-  line-height: ${theme.fontSizeBase};
-  transform-origin: left top;
-  left: calc(${theme.space16} - 2px);
-  .has-icon & {
-    left: calc(${theme.space40} + 2px);
-  }
-  top: calc(50% - ${theme.fontSizeBase} / 2);
-  .has-label & {
-    & + div {
-      align-self: flex-end;
-    }
-  }
-  .has-value &,
-  .is-focused & {
-    top: calc(${theme.space8} + 3px);
-    transform: scale(0.8);
-  }
-
-  /* Size modify */
-  ${({ $size }) =>
-    $size === 'sm' &&
-    css`
-      .${$size}.has-label & {
-        & + div {
-          margin-bottom: -6px;
-        }
-      }
-      .${$size}.has-value &,
-      .${$size}.is-focused & {
-        top: 2px;
-      }
-    `}
-
-  ${({ $size }) =>
-    $size === 'md' &&
-    css`
-      .${$size}.has-label & {
-        & + div {
-          margin-bottom: -2px;
-        }
-      }
-      .${$size}.has-value &,
-      .${$size}.is-focused & {
-        top: 6px;
-      }
-    `}
-
-  ${({ $size }) =>
-    $size === 'lg' &&
-    css`
-      .${$size}.has-value &,
-      .${$size}.is-focused & {
-        top: 10px;
-      }
-    `}
-
-  ${({ $size }) =>
-    $size === 'xl' &&
-    css`
-      .${$size}.has-label & {
-        & + div {
-          margin-bottom: 3px;
-        }
-      }
-      .${$size}.has-value &,
-      .${$size}.is-focused & {
-        top: 11px;
-      }
-    `}
-`;
-
-const StyledSelectWrapper = styled.div`
-  .react-select-control + div {
-    z-index: 20;
-  }
-
-  &.has-error .react-select-control {
-    box-shadow: ${theme.glowError};
-  }
-`;
-
-const StrongLabel = styled.strong`
-  font-weight: 600;
-`;
-
 const Control = <
   Option extends SelectOption,
   IsMulti extends boolean,
@@ -209,57 +114,35 @@ const Control = <
         },
         [
           className,
-          hasValue ? 'has-value' : '',
-          icon ? 'has-icon' : '',
-          isFocused ? 'is-focused' : '',
+          hasValue && styles.hasValue,
+          icon && styles.hasIcon,
+          isFocused && styles.isFocused,
           label || (Array.isArray(value) && value.length > 1)
-            ? 'has-label'
+            ? styles.hasLabel
             : '',
-          size,
+          size && styles[size],
+          styles.reactSelectControl,
           'react-select-control',
         ].join(' '),
       )}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
-      {icon && <IconWrapper>{icon}</IconWrapper>}
+      {icon && <div className={styles.iconWrapper}>{icon}</div>}
 
-      <StyledFloatedLabel $size={size}>
+      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+      <label className={styles.styledFloatedLabel}>
         {label}{' '}
         {Array.isArray(value) && value.length > 1 && (
-          <StrongLabel>({value.length} selected)</StrongLabel>
+          <strong className={styles.strongLabel}>
+            ({value.length} selected)
+          </strong>
         )}
-      </StyledFloatedLabel>
+      </label>
       {children}
     </div>
   );
 };
-
-const CheckboxOptionIconWrapper = styled.div<{ $color?: string }>`
-  display: flex;
-  align-items: center;
-  color: ${p => p.$color || 'inherit'};
-  svg {
-    margin-right: 4px;
-    color: ${theme.gray1200};
-  }
-`;
-
-const StyledSelectOptionWrapper = styled.div`
-  &:not(.is-disabled) {
-    &.is-focused,
-    &:hover {
-      /* The styles are inlined on this component from emotion, so we must override */
-      background-color: ${theme.gray100} !important;
-    }
-  }
-`;
-
-const SelectedSingleOptionWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 const IconLabel = ({
   children,
@@ -270,10 +153,13 @@ const IconLabel = ({
   color?: string;
   icon?: ReactNode;
 }) => (
-  <CheckboxOptionIconWrapper $color={color}>
+  <div
+    className={styles.checkboxOptionIconWrapper}
+    style={{ '--amino-styled-react-select-color': color || 'inherit' }}
+  >
     {icon}
     {children}
-  </CheckboxOptionIconWrapper>
+  </div>
 );
 
 const MultiValueLabel = <
@@ -335,22 +221,23 @@ export const CheckboxOptionComponent = <
     }
 
     return (
-      <SelectedSingleOptionWrapper>
+      <div className={styles.selectedSingleOptionWrapper}>
         <IconLabel color={color} icon={data.icon}>
           {children}
         </IconLabel>
         {isSelected && <CheckCircleIcon color="blue600" size={24} />}
-      </SelectedSingleOptionWrapper>
+      </div>
     );
   };
 
   return (
     <div ref={innerRef} {...innerProps}>
-      <StyledSelectOptionWrapper
+      <div
         className={[
           className,
-          isFocused ? 'is-focused' : '',
-          isDisabled ? 'is-disabled' : '',
+          styles.styledSelectOptionWrapper,
+          isFocused && styles.isFocused,
+          isDisabled && styles.isDisabled,
         ].join(' ')}
         style={style}
       >
@@ -367,7 +254,7 @@ export const CheckboxOptionComponent = <
         ) : (
           renderContent()
         )}
-      </StyledSelectOptionWrapper>
+      </div>
     </div>
   );
 };
@@ -514,7 +401,7 @@ export const StyledReactSelect = <
   menuPosition = 'fixed',
   placeholder,
   size = 'xl',
-  styles,
+  style,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps<Option['value']> = {
@@ -547,8 +434,8 @@ export const StyledReactSelect = <
   }, [closeOnOutsideScroll]);
 
   return (
-    <StyledSelectWrapper
-      className={[error ? 'has-error' : ''].join(' ')}
+    <div
+      className={clsx(styles.styledSelectWrapper, error && styles.hasError)}
       data-testid={testId}
     >
       <ReactSelect<Option, IsMulti, Group>
@@ -588,7 +475,7 @@ export const StyledReactSelect = <
         placeholder={placeholder || ''}
         styles={
           {
-            ...styles,
+            ...style,
             ...localStyles,
           } as StylesConfig<Option, IsMulti, Group>
         }
@@ -596,6 +483,6 @@ export const StyledReactSelect = <
         {...additionalProps}
       />
       <HelpText error={error} helpText={helpText} />
-    </StyledSelectWrapper>
+    </div>
   );
 };
