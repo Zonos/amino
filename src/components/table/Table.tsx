@@ -1,23 +1,26 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-const StyledTable = styled.table`
-  width: 100%;
-`;
+import type { BaseProps } from 'src/types/BaseProps';
 
-export type TableProps = {
+import styles from './Table.module.scss';
+
+export type TableProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   size?: 'medium' | 'small';
 };
 
-export const Table = ({ children, className, size = 'medium' }: TableProps) => (
-  <StyledTable
-    className={[className, `Amino-table-size-${size}`]
-      .filter(Boolean)
-      .join(' ')}
+export const Table = ({
+  children,
+  className,
+  size = 'medium',
+  style,
+}: TableProps) => (
+  <table
+    className={clsx(className, styles.styledTable, `Amino-table-size-${size}`)}
+    style={style}
   >
     {children}
-  </StyledTable>
+  </table>
 );

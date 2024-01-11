@@ -1,24 +1,12 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { theme } from 'src/styles/constants/theme';
-import { type Color, type StyledProps } from 'src/types';
+import { type Color } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const Subtitle = styled.span`
-  font-size: ${theme.fontSizeS};
-  line-height: 16px;
-  color: ${theme.gray900};
-`;
-const InputLabel = styled.span`
-  color: ${theme.gray1200};
-  display: block;
-  font-family: ${theme.fontSans};
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  margin-bottom: ${theme.space8};
-`;
+import styles from './Text.module.scss';
 
 export const textOthers = [
   'code',
@@ -148,29 +136,11 @@ type TypographyOverrides = {
   fontWeight?: FontWeight;
   lineHeight?: Size;
 };
-type TypeDefaultProp = { isUppercase?: Boolean; size: Size };
-
-const Typography = styled.h1<
-  StyledProps<TypographyOverrides & TypeDefaultProp>
->`
-  font-size: ${p => `var(--amino-font-size-${p.$fontSize || p.$size})`};
-  font-weight: ${p => p.$fontWeight};
-  line-height: ${p => `var(--amino-line-height-${p.$lineHeight || p.$size})`};
-  margin: 0;
-  color: ${props => props.$color && theme[props.$color]};
-  text-transform: ${props => props.$isUppercase && 'uppercase'};
-
-  svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
-`;
 
 type TextStyle = Type | OtherText;
 
-export type TextProps = {
+export type TextProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   isUppercase?: boolean;
   tag?: Tag;
   title?: string;
@@ -185,6 +155,7 @@ export const Text = ({
   fontWeight,
   isUppercase,
   lineHeight,
+  style,
   tag,
   title,
   type,
@@ -199,21 +170,37 @@ export const Text = ({
     fontWeight: FontWeight;
     isUppercase?: boolean;
     size: Size;
-  }) => (
-    <Typography
-      $color={color}
-      $fontSize={fontSize}
-      $fontWeight={_fontWeight}
-      $isUppercase={!!_isUppercase}
-      $lineHeight={lineHeight}
-      $size={size}
-      as={as}
-      className={className}
-      title={title}
-    >
-      {children}
-    </Typography>
-  );
+  }) => {
+    const typographyProps = {
+      className: clsx(className, styles.typography),
+      style: {
+        ...style,
+        '--amino-text-color': color ? theme[color] : '',
+        '--amino-text-font-size': `var(--amino-font-size-${fontSize || size})`,
+        '--amino-text-font-weight': _fontWeight || '',
+        '--amino-text-line-height': `var(--amino-line-height-${
+          lineHeight || size
+        })`,
+        '--amino-text-transform': _isUppercase ? 'uppercase' : '',
+      },
+      title,
+    };
+
+    switch (as) {
+      case 'h2':
+        return <h2 {...typographyProps}>{children}</h2>;
+      case 'h3':
+        return <h3 {...typographyProps}>{children}</h3>;
+      case 'h4':
+        return <h4 {...typographyProps}>{children}</h4>;
+      case 'h5':
+        return <h5 {...typographyProps}>{children}</h5>;
+      case 'span':
+      default:
+        return <span {...typographyProps}>{children}</span>;
+    }
+  };
+
   switch (type) {
     case 'page-header':
       return renderTypography({
@@ -302,15 +289,15 @@ export const Text = ({
       });
     case 'subtitle':
       return (
-        <Subtitle className={className} title={title}>
+        <span className={clsx(className, styles.subTitle)} title={title}>
           {children}
-        </Subtitle>
+        </span>
       );
     case 'input-label':
       return (
-        <InputLabel className={className} title={title}>
+        <span className={clsx(className, styles.inputLabel)} title={title}>
           {children}
-        </InputLabel>
+        </span>
       );
     case 'body':
     default:

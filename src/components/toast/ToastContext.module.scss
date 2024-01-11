@@ -1,0 +1,7 @@
+$bottom: var(--amino-toast-context-bottom);
+$left: var(--amino-toast-context-left);
+
+.toastsWrapper {
+  bottom: $bottom;
+  left: $left;
+}

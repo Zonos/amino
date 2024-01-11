@@ -1,0 +1,26 @@
+@use 'theme';
+
+.styledVStack {
+  padding: 0;
+}
+
+.hiddenSpan {
+  display: none;
+}
+
+.childWrapper {
+  position: relative;
+
+  [disabled] + .hiddenSpan {
+    display: block;
+    cursor: not-allowed;
+    /** @desc avoid showing tooltip on top of dialog or coversheet */
+    z-index: 10;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

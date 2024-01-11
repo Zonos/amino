@@ -5,137 +5,12 @@ import {
   useRef,
 } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { HelpText } from 'src/components/help-text/HelpText';
-import { theme } from 'src/styles/constants/theme';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
 
-const Fields = styled.div`
-  border-radius: ${theme.radius12};
-  border: ${theme.border};
-  position: relative;
-  &:hover {
-    border: 1px solid ${theme.gray300};
-  }
-`;
-
-const StyledBorder = styled.div`
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    border-radius: ${theme.radius12};
-  }
-`;
-
-const StyledLabelInput = styled.label`
-  color: ${theme.gray800};
-  font-size: ${theme.fontSizeBase};
-  line-height: ${theme.fontSizeBase};
-  position: absolute;
-  filter: blur(0);
-  top: calc(${theme.fontSizeBase} + 6px);
-  transform-origin: left top;
-  transition: ${theme.transition};
-  left: ${theme.space16};
-  z-index: 3;
-`;
-
-const StyledTextarea = styled.textarea<TextareaType>`
-  box-sizing: border-box;
-  position: relative;
-  padding: 0 ${theme.space16};
-  padding-top: ${theme.space8};
-  outline: none;
-  order: 2;
-  width: 100%;
-  border-radius: ${theme.radius6};
-  background: ${theme.inputBackground};
-  border: 0;
-  font-size: ${theme.fontSizeBase};
-  font-weight: 500;
-  z-index: 2;
-  display: block;
-
-  :-internal-autofill-selected {
-    border-radius: ${theme.radius6} 0 0 ${theme.radius6};
-    && + label + div {
-      background-color: #e8f0fe;
-    }
-  }
-  &.has-label {
-    margin-top: ${theme.space24};
-    padding: 0 4px ${theme.space8} ${theme.space16};
-
-    &::placeholder {
-      opacity: 0;
-    }
-
-    &.has-content,
-    &:focus {
-      &::placeholder {
-        opacity: 0.6;
-      }
-      & + ${StyledLabelInput} {
-        top: 11px;
-        transform: scale(0.8);
-        & + ${StyledBorder} {
-          &::before {
-            content: '';
-            position: absolute;
-            z-index: 2;
-            left: 0;
-            top: 0;
-            height: 25px;
-            right: 0;
-            background: ${theme.inputBackground};
-            border-radius: ${theme.radius6};
-          }
-        }
-      }
-    }
-  }
-
-  &::placeholder {
-    transition: ${theme.transition};
-    color: ${theme.gray400};
-    font-weight: 400;
-    opacity: 0.6;
-  }
-
-  :focus {
-    outline: none;
-    & ~ ${StyledBorder}::after {
-      box-shadow: ${theme.glowBlue};
-    }
-  }
-
-  &.has-error ~ ${StyledBorder}::after {
-    box-shadow: ${theme.glowError};
-  }
-`;
-
-const AminoInputWrapper = styled.div<{ $width?: number }>`
-  position: relative;
-  width: ${p => (p.$width ? `${p.$width}px` : '100%')};
-
-  &.disabled {
-    * {
-      cursor: not-allowed;
-    }
-    ${Fields} {
-      opacity: 0.4;
-    }
-    ${StyledTextarea} {
-      user-select: none;
-    }
-  }
-`;
+import styles from './Textarea.module.scss';
 
 type TextareaAdjustableHeightType = {
   /**
@@ -190,14 +65,23 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     });
 
     return (
-      <AminoInputWrapper
-        $width={width}
-        className={`amino-input-wrapper ${className || ''} ${
-          disabled ? 'disabled' : ''
-        }`}
+      <div
+        className={clsx(
+          className,
+          styles.aminoInputWrapper,
+          'amino-input-wrapper',
+          disabled && styles.disabled,
+        )}
+        style={{ '--amino-textarea-width': width || '100%' }}
       >
-        <Fields onClick={() => textareaRef?.current?.focus()}>
-          <StyledTextarea
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+        <div
+          className={styles.fields}
+          onClick={() => textareaRef?.current?.focus()}
+          role="button"
+          tabIndex={0}
+        >
+          <textarea
             ref={node => {
               if (ref && typeof ref === 'function') {
                 ref(node);
@@ -207,27 +91,30 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               }
               textareaRef.current = node;
             }}
-            className={[
-              error ? 'has-error' : '',
-              label ? 'has-label' : '',
-              hasValue ? 'has-content' : '',
-            ].join(' ')}
+            className={clsx(
+              styles.styledTextarea,
+              error && styles.hasError,
+              label && styles.hasLabel,
+              hasValue && styles.hasContent,
+            )}
             disabled={disabled}
-            label={label}
             rows={rows}
             value={value}
             {...props}
           />
-          <StyledLabelInput
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+          <label
+            className={styles.styledLabelInput}
             data-label={label}
+            htmlFor={textareaRef?.current?.id}
             onClick={() => textareaRef?.current?.focus()}
           >
             {label}
-          </StyledLabelInput>
-          <StyledBorder />
-        </Fields>
+          </label>
+          <div className={styles.styledBorder} />
+        </div>
         <HelpText error={error} helpText={helpText} />
-      </AminoInputWrapper>
+      </div>
     );
   },
 );

@@ -1,0 +1,96 @@
+@use 'theme';
+
+$align: var(--amino-tabs-align);
+
+.baseTabs {
+  display: flex;
+  align-items: center;
+
+  &.aminoTabs {
+    border: theme.$amino-border;
+    border-radius: theme.$amino-radius-8;
+  }
+
+  &.subtleTabs {
+    justify-content: $align;
+    gap: 24px;
+    border-bottom: 1px solid theme.$amino-gray-200;
+  }
+}
+
+.baseTab {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  padding: 12px 0;
+  transition: theme.$amino-transition;
+  color: theme.$amino-gray-800;
+
+  &::after {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    content: '';
+    background-color: theme.$amino-gray-200;
+    transition: theme.$amino-transition;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+  }
+
+  &.isSelected {
+    color: theme.$amino-primary;
+
+    &::after {
+      background-color: theme.$amino-primary;
+      transform: scaleX(1);
+    }
+  }
+
+  &:not(.isSelected):hover {
+    color: theme.$amino-gray-1000;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:not(.isSelected):active {
+    color: theme.$amino-gray-1000;
+
+    &::after {
+      background-color: theme.$amino-gray-300;
+      transform: scaleX(1);
+    }
+  }
+
+  &.tab {
+    flex: 1;
+    font-weight: 500;
+
+    &::after {
+      height: 4px;
+    }
+
+    &:first-of-type::after {
+      border-bottom-left-radius: theme.$amino-radius-8;
+    }
+
+    &:last-of-type::after {
+      border-bottom-right-radius: theme.$amino-radius-8;
+    }
+
+    & + & {
+      border-left: theme.$amino-border;
+    }
+
+    &:not(.isSelected):hover {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    &:not(.isSelected):active {
+      background: rgba(0, 0, 0, 0.08);
+    }
+  }
+}

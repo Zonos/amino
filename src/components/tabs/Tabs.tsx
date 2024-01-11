@@ -1,102 +1,8 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 
-const BaseTabs = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const BaseTab = styled.div`
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-  text-align: center;
-  padding: ${theme.space12} 0;
-  transition: ${theme.transition};
-  color: ${theme.gray800};
-
-  &::after {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    content: '';
-    background-color: ${theme.gray200};
-    transition: ${theme.transition};
-    height: 2px;
-    width: 100%;
-    transform: scaleX(0);
-  }
-
-  &.is-selected {
-    color: ${theme.primary};
-
-    &::after {
-      background-color: ${theme.primary};
-      transform: scaleX(1);
-    }
-  }
-
-  &:not(.is-selected):hover {
-    color: ${theme.gray1000};
-
-    &::after {
-      transform: scaleX(1);
-    }
-  }
-
-  &:not(.is-selected):active {
-    color: ${theme.gray1000};
-
-    &::after {
-      background-color: ${theme.gray300};
-      transform: scaleX(1);
-    }
-  }
-`;
-
-const AminoTabs = styled(BaseTabs)`
-  border: ${theme.border};
-  border-radius: ${theme.radius8};
-`;
-
-const Tab = styled(BaseTab)`
-  flex: 1;
-  font-weight: 500;
-
-  &::after {
-    height: 4px;
-  }
-
-  &:first-of-type::after {
-    border-bottom-left-radius: ${theme.radius8};
-  }
-
-  &:last-of-type::after {
-    border-bottom-right-radius: ${theme.radius8};
-  }
-
-  & + & {
-    border-left: ${theme.border};
-  }
-
-  &:not(.is-selected):hover {
-    background: rgba(0, 0, 0, 0.03);
-  }
-
-  &:not(.is-selected):active {
-    background: rgba(0, 0, 0, 0.08);
-  }
-`;
-
-const SubtleTabs = styled(BaseTabs)<{ $align: TabsProps['align'] }>`
-  justify-content: ${p => p.$align};
-  gap: ${theme.space24};
-  border-bottom: 1px solid ${theme.gray200};
-`;
-
-const SubtleTab = BaseTab;
+import styles from './Tabs.module.scss';
 
 export type TabsProps = {
   /**
@@ -126,31 +32,47 @@ export const Tabs = ({
 }: TabsProps) => {
   if (subtle) {
     return (
-      <SubtleTabs $align={align} className={className}>
+      <div
+        className={clsx(className, styles.baseTabs, styles.subtleTabs)}
+        style={{ '--amino-tabs-align': align }}
+      >
         {items.map(item => (
-          <SubtleTab
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+          <div
             key={item}
-            className={selected === items.indexOf(item) ? 'is-selected' : ''}
+            className={clsx(
+              styles.baseTab,
+              selected === items.indexOf(item) && styles.isSelected,
+            )}
             onClick={() => onChange(items.indexOf(item))}
+            role="button"
+            tabIndex={0}
           >
             <Text type="label">{item}</Text>
-          </SubtleTab>
+          </div>
         ))}
-      </SubtleTabs>
+      </div>
     );
   }
 
   return (
-    <AminoTabs className={className}>
+    <div className={clsx(className, styles.baseTabs, styles.aminoTabs)}>
       {items.map(item => (
-        <Tab
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+        <div
           key={item}
-          className={selected === items.indexOf(item) ? 'is-selected' : ''}
+          className={clsx(
+            styles.baseTab,
+            styles.tab,
+            selected === items.indexOf(item) && styles.isSelected,
+          )}
           onClick={() => onChange(items.indexOf(item))}
+          role="button"
+          tabIndex={0}
         >
           {item}
-        </Tab>
+        </div>
       ))}
-    </AminoTabs>
+    </div>
   );
 };

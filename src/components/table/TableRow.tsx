@@ -1,30 +1,14 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const StyledTableRow = styled.tr`
-  &.with-hover:hover {
-    background-color: ${theme.gray50};
-  }
-  th {
-    color: ${theme.gray800};
-    text-transform: uppercase;
-    & > * {
-      font-size: ${theme.fontSizeS};
-    }
-  }
-  /** Only affect on tr inside tbody */
-  tbody &.active {
-    background: ${theme.gray50};
-  }
-`;
+import styles from './TableRow.module.scss';
 
-export type TableRowProps = {
+export type TableRowProps = BaseProps & {
   active?: boolean;
   children: ReactNode;
-  className?: string;
   onClick?: MouseEventHandler<HTMLTableRowElement>;
   withHover?: boolean;
 };
@@ -34,18 +18,21 @@ export function TableRow({
   children,
   className,
   onClick,
+  style,
   withHover,
 }: TableRowProps) {
   return (
-    <StyledTableRow
-      className={[
-        className || '',
-        active ? 'active' : '',
-        withHover ? 'with-hover' : '',
-      ].join(' ')}
+    <tr
+      className={clsx(
+        className,
+        styles.styledTableRow,
+        active && styles.active,
+        withHover && styles.withHover,
+      )}
       onClick={onClick}
+      style={style}
     >
       {children}
-    </StyledTableRow>
+    </tr>
   );
 }

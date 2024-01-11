@@ -1,0 +1,62 @@
+@use 'theme';
+
+.tagWrapper {
+  display: inline-flex;
+  // default background color (gray)
+  background-color: theme.$amino-gray-100;
+  border-radius: theme.$amino-radius-4;
+  height: 24px;
+
+  &.base {
+    height: 20px;
+  }
+}
+
+.styledTagLeft {
+  display: inline-flex;
+  font-size: theme.$amino-font-size-s;
+  background-color: theme.$amino-gray-100;
+  border-radius: theme.$amino-radius-6 0 0 theme.$amino-radius-6;
+  font-weight: normal;
+  padding: 4px 4px 4px 8px;
+  gap: 4px;
+  color: theme.$amino-text-color;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+  &:focus {
+    outline: none;
+  }
+  p {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  &.iconRight svg {
+    order: 2;
+  }
+
+  .base & {
+    padding: 2px 4px;
+  }
+}
+
+.styledTagRight {
+  border-radius: theme.$amino-radius-4;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 5px;
+
+  .base & {
+    padding: 2px 3px;
+  }
+}
+
+.styledRemoveBtn {
+  display: flex;
+
+  .styledTagRight:hover & {
+    background-color: theme.$amino-gray-300;
+    border-radius: 50%;
+  }
+}

@@ -1,32 +1,10 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const Subtitle = styled.span`
-  font-size: ${theme.fontSizeS};
-  line-height: 16px;
-  color: ${theme.gray900};
-`;
-
-const SmallHeader = styled.span`
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  opacity: 0.5;
-  text-transform: uppercase;
-`;
-
-const InputLabel = styled.span`
-  color: ${theme.gray1200};
-  display: block;
-  font-family: ${theme.fontSans};
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  margin-bottom: ${theme.space8};
-`;
+import styles from './LegacyText.module.scss';
 
 type LegacyTextStyle =
   | 'h1'
@@ -41,9 +19,8 @@ type LegacyTextStyle =
   | 'small-header'
   | 'input-label';
 
-export type LegacyTextProps = {
+export type LegacyTextProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   title?: string;
   type?: LegacyTextStyle;
 };
@@ -51,68 +28,81 @@ export type LegacyTextProps = {
 export const LegacyText = ({
   children,
   className,
+  style,
   title,
   type,
 }: LegacyTextProps) => {
   switch (type) {
     case 'h1':
       return (
-        <h1 className={className} title={title}>
+        <h1 className={className} style={style} title={title}>
           {children}
         </h1>
       );
     case 'h2':
       return (
-        <h2 className={className} title={title}>
+        <h2 className={className} style={style} title={title}>
           {children}
         </h2>
       );
     case 'h3':
       return (
-        <h3 className={className} title={title}>
+        <h3 className={className} style={style} title={title}>
           {children}
         </h3>
       );
     case 'h4':
       return (
-        <h4 className={className} title={title}>
+        <h4 className={className} style={style} title={title}>
           {children}
         </h4>
       );
     case 'h5':
       return (
-        <h5 className={className} title={title}>
+        <h5 className={className} style={style} title={title}>
           {children}
         </h5>
       );
     case 'h6':
       return (
-        <h6 className={className} title={title}>
+        <h6 className={className} style={style} title={title}>
           {children}
         </h6>
       );
     case 'subtitle':
       return (
-        <Subtitle className={className} title={title}>
+        <span
+          className={clsx(className, styles.subtitle)}
+          style={style}
+          title={title}
+        >
           {children}
-        </Subtitle>
+        </span>
       );
     case 'small-header':
       return (
-        <SmallHeader className={className} title={title}>
+        <span
+          className={clsx(className, styles.smallHeader)}
+          style={style}
+          title={title}
+        >
           {children}
-        </SmallHeader>
+        </span>
       );
     case 'input-label':
       return (
-        <InputLabel className={className} title={title}>
+        <span
+          className={clsx(className, styles.inputLabel)}
+          style={style}
+          title={title}
+        >
           {children}
-        </InputLabel>
+        </span>
       );
     case 'p':
     default:
       return (
-        <p className={className} title={title}>
+        <p className={className} style={style} title={title}>
           {children}
         </p>
       );

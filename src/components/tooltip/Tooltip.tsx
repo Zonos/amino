@@ -6,7 +6,6 @@ import MuiTooltip, {
   type TooltipProps as MuiTooltipProps,
   tooltipClasses,
 } from '@mui/material/Tooltip';
-import styled from 'styled-components';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -15,31 +14,7 @@ import type { Color, Theme } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
-const StyledVStack = styled(VStack)`
-  padding: ${theme.space0};
-`;
-
-const NoTooltipWrapper = styled.div``;
-
-const HiddenSpan = styled.span`
-  display: none;
-`;
-
-const ChildWrapper = styled.div`
-  position: relative;
-  [disabled] + ${HiddenSpan} {
-    display: block;
-    cursor: not-allowed;
-    /** @desc avoid showing tooltip on top of dialog or coversheet */
-    z-index: 10;
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-`;
+import styles from './Tooltip.module.scss';
 
 export type TooltipProps = BaseProps & {
   background?: Color;
@@ -72,13 +47,13 @@ const StyledTooltip = muiStyled(
     />
   ),
 )(({ background }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
+  [`&& .${tooltipClasses.tooltip}`]: {
     backgroundColor: background ? theme[background] : theme.gray1200,
     borderRadius: theme.radius10,
     boxShadow: theme.v3ShadowLarge,
     padding: theme.space12,
   },
-  [`&[data-theme='night']`]: {
+  [`&&[data-theme='night']`]: {
     [`.${tooltipClasses.tooltip}`]: {
       backgroundColor: background ? theme[background] : theme.gray50,
     },
@@ -107,7 +82,7 @@ export const Tooltip = ({
         dataTheme={themeOverride || aminoTheme}
         open={open}
         title={
-          <StyledVStack spacing={8}>
+          <VStack className={styles.styledVStack} spacing={8}>
             {title && (
               <Text isUppercase={false} type="small-header">
                 {title}
@@ -118,16 +93,23 @@ export const Tooltip = ({
             ) : (
               subtitle
             )}
-          </StyledVStack>
+          </VStack>
         }
       >
-        <ChildWrapper as={tag}>
-          {children}
-          <HiddenSpan />
-        </ChildWrapper>
+        {tag === 'span' ? (
+          <span className={styles.childWrapper}>
+            {children}
+            <span className={styles.hiddenSpan} />
+          </span>
+        ) : (
+          <div className={styles.childWrapper}>
+            {children}
+            <span className={styles.hiddenSpan} />
+          </div>
+        )}
       </StyledTooltip>
     );
   }
 
-  return <NoTooltipWrapper as={tag}>{children}</NoTooltipWrapper>;
+  return tag === 'span' ? <span>{children}</span> : <div>{children}</div>;
 };

@@ -1,0 +1,39 @@
+@use 'theme';
+
+$align: var(--amino-table-cell-align);
+$border-bottom: var(--amino-table-cell-border-bottom);
+$padding: var(--amino-table-cell-padding);
+
+.styledTableCell {
+  font-variant-numeric: tabular-nums;
+  text-align: $align;
+  border-bottom: $border-bottom;
+  /* Reset space for display inline-block */
+  font-size: 0;
+  padding: $padding;
+
+  &.defaultPadding {
+    padding: 0;
+    &:first-of-type {
+      padding-left: 16px;
+    }
+    &:last-of-type {
+      padding-right: 16px;
+    }
+  }
+
+  > * {
+    font-size: theme.$amino-font-size-base;
+  }
+
+  :global(.Amino-table-size-medium) & {
+    height: 56px;
+  }
+  :global(.Amino-table-size-small) & {
+    height: 48px;
+  }
+}
+
+.inlineWrapper {
+  display: inline-block;
+}

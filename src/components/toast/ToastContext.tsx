@@ -1,10 +1,12 @@
 import { type ReactNode, createContext, useCallback, useState } from 'react';
 
+import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
-import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
 import { type ToastProps, Toast } from 'src/components/toast/Toast';
+
+import styles from './ToastContext.module.scss';
 
 type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
 export type ToastContextFunctionType = (
@@ -27,13 +29,6 @@ export const ToastContext = createContext<ToastContextFunctionType>(
     defaultFunction();
   },
 );
-
-const ToastsWrapper = styled.div<{
-  $location?: { bottom: string; left: string };
-}>`
-  bottom: ${p => p.$location?.bottom || ''};
-  left: ${p => p.$location?.left || ''};
-`;
 
 type Props = {
   children: ReactNode;
@@ -82,8 +77,14 @@ export const ToastContextProvider = ({ children }: Props) => {
     <AnimatePresence>
       <ToastContext.Provider value={setupToasts}>
         {children}
-        <div className="toast-container">
-          <ToastsWrapper $location={toastLocation} className="toasts-wrapper">
+        <div
+          className="toast-container"
+          style={{
+            '--amino-toast-context-bottom': toastLocation.bottom || '40px',
+            '--amino-toast-context-left': toastLocation.left || '',
+          }}
+        >
+          <div className={clsx(styles.toastsWrapper, 'toasts-wrapper')}>
             <AnimatePresence>
               {toasts.map(({ props, toast, uuid }) => {
                 const key = `toast-${toast}-${uuid}`;
@@ -99,7 +100,7 @@ export const ToastContextProvider = ({ children }: Props) => {
                 );
               })}
             </AnimatePresence>
-          </ToastsWrapper>
+          </div>
         </div>
       </ToastContext.Provider>
     </AnimatePresence>

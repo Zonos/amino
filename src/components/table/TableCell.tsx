@@ -1,8 +1,11 @@
 import type { ReactNode } from 'react';
 
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
+
+import styles from './TableCell.module.scss';
 
 type StyledProps = {
   align?: 'center' | 'justify' | 'left' | 'right';
@@ -10,51 +13,8 @@ type StyledProps = {
   padding?: string;
 };
 
-const defaultPadding = css`
-  padding: 0;
-  &:first-of-type {
-    padding-left: ${theme.space16};
-  }
-  &:last-of-type {
-    padding-right: ${theme.space16};
-  }
-`;
-
-const paddingCss = css<StyledProps>`
-  ${p =>
-    p.padding
-      ? css`
-          padding: ${p.padding};
-        `
-      : defaultPadding}
-`;
-
-const StyledTableCell = styled.td<StyledProps>`
-  font-variant-numeric: tabular-nums;
-  text-align: ${p => p.align};
-  border-bottom: ${p => p.borderBottom || `1px solid ${theme.gray200}`};
-  /* Reset space for display inline-block */
-  font-size: 0;
-  > * {
-    font-size: ${theme.fontSizeBase};
-  }
-
-  .Amino-table-size-medium & {
-    height: 56px;
-  }
-  .Amino-table-size-small & {
-    height: 48px;
-  }
-  ${paddingCss}
-`;
-
-const InlineWrapper = styled.div<StyledProps>`
-  display: inline-block;
-`;
-
-export type TableCellProps = {
+export type TableCellProps = BaseProps & {
   children?: ReactNode;
-  className?: string;
   colSpan?: number;
   tag?: 'td' | 'th';
 } & StyledProps;
@@ -66,16 +26,31 @@ export const TableCell = ({
   className,
   colSpan,
   padding,
+  style,
   tag,
-}: TableCellProps) => (
-  <StyledTableCell
-    align={align}
-    as={tag}
-    borderBottom={borderBottom}
-    className={className}
-    colSpan={colSpan}
-    padding={padding}
-  >
-    <InlineWrapper>{children}</InlineWrapper>
-  </StyledTableCell>
-);
+}: TableCellProps) => {
+  const tableProps = {
+    align,
+    className: clsx(
+      className,
+      styles.styledTableCell,
+      !padding && styles.defaultPadding,
+    ),
+    colSpan,
+    style: {
+      ...style,
+      '--amino-table-cell-align': align,
+      '--amino-table-cell-border-bottom':
+        borderBottom || `1px solid ${theme.gray200}`,
+      '--amino-table-cell-padding': padding || '',
+    },
+  };
+
+  const innerWrapper = <div className={styles.inlineWrapper}>{children}</div>;
+
+  return tag === 'th' ? (
+    <th {...tableProps}>{innerWrapper}</th>
+  ) : (
+    <td {...tableProps}>{innerWrapper}</td>
+  );
+};

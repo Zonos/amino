@@ -1,63 +1,18 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import styled, { css } from 'styled-components';
+import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
-import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
-type StyleProps = {
-  collapsed: boolean;
-  collapsible: boolean;
-};
+import styles from './TableRowCollapse.module.scss';
 
-const StyledTableRow = styled(TableRow)<StyleProps>`
-  ${p =>
-    !p.collapsed &&
-    css`
-      td {
-        border-bottom: 0;
-      }
-    `}
-  ${p =>
-    p.collapsible &&
-    css`
-      cursor: pointer;
-    `}
-`;
-
-const StyledCollapse = styled(Collapse)`
-  > div {
-    padding-bottom: ${theme.space16};
-  }
-`;
-
-const CollapsibleCell = styled(TableCell)<{ $collapsed: boolean }>`
-  border-bottom: ${p => (!p.$collapsed ? 'inherit' : 0)};
-  &&& {
-    height: ${p => (!p.$collapsed ? 'inherit' : 0)};
-  }
-  > div {
-    width: 100%;
-  }
-`;
-
-const CollapseButton = styled(Button)`
-  svg {
-    transition: ${theme.transition};
-
-    &.collapsed {
-      transform: rotate(180deg);
-    }
-  }
-`;
-
-export type TableRowCollapseProps = {
+export type TableRowCollapseProps = BaseProps & {
   children?: ReactNode;
-  className?: string;
   /**
    * @param collapsed
    * @default false
@@ -73,32 +28,43 @@ export const TableRowCollapse = ({
   collapsed = false,
   onToggleCollapse,
   rowContent,
+  style,
 }: TableRowCollapseProps) => {
   const collapsible = !!children;
   return (
     <>
-      <StyledTableRow
-        className={className}
-        collapsed={collapsed}
-        collapsible={collapsible}
+      <TableRow
+        className={clsx(
+          className,
+          styles.styledTableRow,
+          collapsed && styles.collapsed,
+          collapsible && styles.collapsible,
+        )}
         onClick={e => collapsible && onToggleCollapse(e)}
         withHover={collapsible}
       >
         {rowContent}
         <TableCell align="right">
           {collapsible && (
-            <CollapseButton
-              icon={<ChevronUpIcon className={collapsed ? 'collapsed' : ''} />}
+            <Button
+              className={styles.collapseButton}
+              icon={<ChevronUpIcon />}
               variant="plain"
             />
           )}
         </TableCell>
-      </StyledTableRow>
+      </TableRow>
       {collapsible && (
         <TableRow>
-          <CollapsibleCell $collapsed={collapsed} colSpan={100}>
-            <StyledCollapse collapsed={collapsed}>{children}</StyledCollapse>
-          </CollapsibleCell>
+          <TableCell className={styles.collapsibleCell} colSpan={100}>
+            <Collapse
+              className={styles.styledCollapse}
+              collapsed={collapsed}
+              style={style}
+            >
+              {children}
+            </Collapse>
+          </TableCell>
         </TableRow>
       )}
     </>
