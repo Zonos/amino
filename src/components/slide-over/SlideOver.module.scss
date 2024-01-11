@@ -1,0 +1,63 @@
+@use 'theme';
+
+.styledBaseDialog {
+  /* Override BaseDialog.Popup styles */
+  border-radius: 0;
+  max-height: none;
+  overflow: unset;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  position: absolute;
+  height: 100vh;
+  right: 0;
+  top: 0;
+}
+
+.wrapper {
+  height: 100%;
+  margin: 8px;
+  border-radius: 12px;
+  background: theme.$amino-surface-color;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: theme.$amino-v3-shadow-xxl;
+}
+
+.slideOverHeader {
+  padding: 16px;
+  border-bottom: theme.$amino-border;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  .header-content {
+    margin: 0;
+    flex: 1;
+  }
+}
+
+.slideOverContent {
+  padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  flex: 1;
+}
+
+.footer {
+  padding: 24px;
+  border-radius: 12px;
+  border-top: theme.$amino-border;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: theme.$amino-surface-color-secondary;
+
+  & > div + div {
+    margin-left: 8px;
+  }
+}

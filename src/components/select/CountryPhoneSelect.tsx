@@ -8,58 +8,14 @@ import {
   components as RScomponents,
 } from 'react-select';
 
-import styled from 'styled-components';
-
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
-import { theme } from 'src/styles/constants/theme';
 import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
 
-const InputValuePrefix = styled.div`
-  display: flex;
-  order: 2;
-  align-items: flex-end;
-  padding-left: ${theme.space16};
-  padding-right: ${theme.space4};
-  padding-bottom: ${theme.space8};
-  color: ${theme.gray800};
-  white-space: nowrap;
-`;
-
-const OptionLabel = styled.div`
-  display: flex;
-`;
-
-const PhoneCodeLabel = styled.div`
-  margin-left: 4px;
-  color: ${theme.gray700};
-`;
-
-const StyledPrefix = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  svg {
-    border-radius: 2px;
-
-    &:last-child {
-      z-index: 1;
-      position: absolute;
-      top: -2px;
-      left: 20px;
-    }
-  }
-`;
-
-const StyledInputWrapper = styled.div`
-  ${InputValuePrefix} {
-    padding-left: 14px;
-  }
-`;
+import styles from './CountryPhoneSelect.module.scss';
 
 type AdditionalProps = {
   setMenuIsOpen: (isOpen: boolean) => void;
@@ -108,10 +64,10 @@ export type CountryPhoneSelectProps<
   HelpTextProps;
 
 const formatOptionLabel = (option: CountryOption) => (
-  <OptionLabel>
+  <div className={styles.optionLabel}>
     {option.displayName}
-    <PhoneCodeLabel>{option.phoneCode.join(', ')}</PhoneCodeLabel>
-  </OptionLabel>
+    <div className={styles.phoneCodeLabel}>{option.phoneCode.join(', ')}</div>
+  </div>
 );
 
 export const CountryPhoneSelect = ({
@@ -134,20 +90,26 @@ export const CountryPhoneSelect = ({
 
   return (
     <>
-      <StyledInputWrapper>
+      <div className={styles.styledInputWrapper}>
         <Input
           label={label}
           onChange={e => setPhone(e.target.value)}
           prefix={
-            <StyledPrefix onClick={() => setMenuIsOpen(!menuIsOpen)}>
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+            <div
+              className={styles.styledPrefix}
+              onClick={() => setMenuIsOpen(!menuIsOpen)}
+              role="button"
+              tabIndex={0}
+            >
               {icon}
               <ChevronDownIcon size={19} />
-            </StyledPrefix>
+            </div>
           }
           value={phone}
           valuePrefix={valuePrefix}
         />
-      </StyledInputWrapper>
+      </div>
       <Select
         {...props}
         components={{ Control: () => null, MenuList }}

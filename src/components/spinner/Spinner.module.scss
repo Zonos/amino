@@ -1,0 +1,92 @@
+@use 'theme';
+
+$height: var(--amino-spinner-height);
+$width: var(--amino-spinner-width);
+
+// Stop container from scrolling when it rotates
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  width: $width;
+  height: $height;
+}
+
+// Inspired by https://codesandbox.io/s/loading-spinner-and-background-1yqdo?file=/src/loadingspinner.less:0-65
+.styledSvg {
+  position: absolute;
+  width: $width;
+  height: $height;
+
+  stroke: theme.$amino-blue-600;
+
+  circle.track {
+    stroke: theme.$amino-gray-200;
+  }
+
+  &.black {
+    stroke: theme.$amino-spinner-stroke-black;
+
+    circle.track {
+      stroke: theme.$amino-spinner-track-black;
+    }
+  }
+  &.white {
+    stroke: theme.$amino-spinner-stroke-white;
+
+    circle.track {
+      stroke: theme.$amino-spinner-track-white;
+    }
+  }
+  &.info {
+    stroke: theme.$amino-blue-600;
+    circle.track {
+      stroke: theme.$amino-blue-100;
+    }
+  }
+  &.success {
+    stroke: theme.$amino-green-600;
+    circle.track {
+      stroke: theme.$amino-green-100;
+    }
+  }
+  &.danger {
+    stroke: theme.$amino-red-600;
+    circle.track {
+      stroke: theme.$amino-red-100;
+    }
+  }
+  &.warning {
+    stroke: theme.$amino-orange-600;
+    circle.track {
+      stroke: theme.$amino-orange-100;
+    }
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+
+  animation: rotate 2s linear infinite;
+
+  circle:not(.track) {
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+}

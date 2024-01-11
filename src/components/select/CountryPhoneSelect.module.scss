@@ -1,0 +1,44 @@
+@use 'theme';
+
+.inputValuePrefix {
+  display: flex;
+  order: 2;
+  align-items: flex-end;
+  padding-left: 16px;
+  padding-right: 4px;
+  padding-bottom: 8px;
+  color: theme.$amino-gray-800;
+  white-space: nowrap;
+}
+
+.optionLabel {
+  display: flex;
+}
+
+.phoneCodeLabel {
+  margin-left: 4px;
+  color: theme.$amino-gray-700;
+}
+
+.styledPrefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  svg {
+    border-radius: 2px;
+
+    &:last-child {
+      z-index: 1;
+      position: absolute;
+      top: -2px;
+      left: 20px;
+    }
+  }
+}
+
+.styledInputWrapper {
+  .inputValuePrefix {
+    padding-left: 14px;
+  }
+}

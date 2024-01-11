@@ -1,0 +1,10 @@
+.styledSortableListItem {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.styledSortableSection {
+  flex-grow: 1;
+}

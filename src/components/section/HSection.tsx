@@ -1,6 +1,6 @@
 import { type ReactNode, useState } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';
@@ -9,56 +9,8 @@ import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledSectionWrapper = styled(HStack)`
-  padding: ${theme.space8};
-  margin-bottom: ${theme.space40};
-  grid-template-columns: 1fr 2fr;
-`;
-
-const StyledCollapseIndicator = styled(Button)`
-  position: relative;
-  margin-left: ${theme.space4};
-  transition: 0.2s all ease;
-  background: transparent;
-
-  && {
-    &:hover {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray300};
-      }
-    }
-    &:active,
-    &:focus {
-      path[data-is-secondary-color] {
-        fill: ${theme.gray400};
-      }
-    }
-
-    &:active,
-    &:focus,
-    &:hover {
-      background: transparent;
-      color: ${theme.gray800};
-    }
-
-    &.collapsed {
-      transform: rotate(90deg);
-    }
-  }
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const TitleDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+import styles from './HSection.module.scss';
 
 export type HSectionProps = {
   children: ReactNode;
@@ -93,35 +45,39 @@ export const HSection = ({
       <div>{children}</div>
     );
   return (
-    <StyledSectionWrapper className={className || ''}>
+    <HStack className={clsx(className, styles.styledSectionWrapper)}>
       {label && (
         <SectionInnerWrapper>
-          <StyledDiv>
+          <div className={styles.styledDiv}>
             {collapsible ? (
-              <TitleDiv
+              <div
+                className={styles.titleDiv}
                 onClick={() => setCollapsed(!collapsed)}
                 onKeyDown={() => null}
                 role="button"
                 tabIndex={0}
               >
                 <Text type="title">{label}</Text>
-                <StyledCollapseIndicator
-                  className={collapsed ? 'collapsed' : ''}
+                <Button
+                  className={clsx(
+                    styles.styledCollapseIndicator,
+                    collapsed && styles.collapsed,
+                  )}
                   icon={<ChevronUpIcon />}
                   onClick={() => setCollapsed(!collapsed)}
                   size="sm"
                   variant="plain"
                 />
-              </TitleDiv>
+              </div>
             ) : (
               <Text type="title">{label}</Text>
             )}
 
             {sublabel && <SectionSubheader>{sublabel}</SectionSubheader>}
-          </StyledDiv>
+          </div>
         </SectionInnerWrapper>
       )}
       {renderContent()}
-    </StyledSectionWrapper>
+    </HStack>
   );
 };

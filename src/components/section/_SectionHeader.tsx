@@ -1,20 +1,20 @@
 import type { ReactNode } from 'react';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
+import type { BaseProps } from 'src/types/BaseProps';
 
-const StyledSectionHeader = styled(Text)`
-  flex: 1;
-  flex-direction: column;
-  display: flex;
-  flex: auto;
-`;
+import styles from './_SectionHeader.module.scss';
 
-type Props = { children: ReactNode; className?: string };
+type Props = BaseProps & { children: ReactNode };
 
-export const SectionHeader = ({ children, className }: Props) => (
-  <StyledSectionHeader className={className || ''} type="title">
+export const SectionHeader = ({ children, className, style }: Props) => (
+  <Text
+    className={clsx(className, styles.styledSectionHeader)}
+    style={style}
+    type="title"
+  >
     {children}
-  </StyledSectionHeader>
+  </Text>
 );

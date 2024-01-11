@@ -1,0 +1,13 @@
+export declare const aminoSwitch: string;
+export declare const aminoSwitchWithIcons: string;
+export declare const aminoSwitchWrapper: string;
+export declare const aminoSwitchWrapperWithIcons: string;
+export declare const checked: string;
+export declare const disabled: string;
+export declare const labelWrapper: string;
+export declare const left: string;
+export declare const styledLabel: string;
+export declare const styledLabelDescription: string;
+export declare const styledSubtitle: string;
+export declare const switchContainer: string;
+export declare const switchIcon: string;

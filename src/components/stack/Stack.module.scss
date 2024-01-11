@@ -1,0 +1,10 @@
+$alignment: var(--amino-stack-alignment);
+
+.styledStack {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+
+  & > * {
+    justify-self: $alignment;
+  }
+}

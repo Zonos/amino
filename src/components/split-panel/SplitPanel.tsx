@@ -7,7 +7,11 @@ import {
 } from 'react';
 import Split from 'react-split-it';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
+
+import type { BaseProps } from 'src/types/BaseProps';
+
+import styles from './SplitPanel.module.scss';
 
 const normalizeSizes = ({
   childrenCount,
@@ -28,16 +32,9 @@ const normalizeSizes = ({
   return sizes.map(size => size / total);
 };
 
-const StyledWrapper = styled.div`
-  display: block;
-  width: 100%;
-  height: 100%;
-`;
-
-type SplitPanelProps = {
+type SplitPanelProps = BaseProps & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: any;
-  className?: string;
   collapseAll?: boolean;
   direction?: 'horizontal' | 'vertical';
   /**
@@ -71,6 +68,7 @@ export const SplitPanel = ({
   gutterSize = 3,
   onSetSizes,
   sizes = [1],
+  style,
   ...props
 }: SplitPanelProps) => {
   const childrenCount = Children.count(children);
@@ -94,7 +92,7 @@ export const SplitPanel = ({
   }, [childrenCount, collapseAll, defaultSizes, onSetSizes]);
 
   return (
-    <StyledWrapper className={className}>
+    <div className={clsx(className, styles.styledWrapper)} style={style}>
       <Split
         direction={direction}
         gutterSize={!collapseAll ? gutterSize : 0}
@@ -104,6 +102,6 @@ export const SplitPanel = ({
       >
         {children}
       </Split>
-    </StyledWrapper>
+    </div>
   );
 };
