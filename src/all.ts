@@ -1,4 +1,3 @@
-import './animations/DropdownAnimation';
 import './components/alert-dialog/AlertContext';
 import './components/alert-dialog/AlertDialog';
 import './components/alert-dialog/useAlert';
