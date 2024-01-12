@@ -1,32 +1,4 @@
-import styled from 'styled-components';
-
-import { theme } from 'src/styles/constants/theme';
-
-type GradientSquareType = {
-  gradientEnd: string;
-  gradientStart: string;
-};
-
-// Used in store list, and when too many classes are generated styled-components complains. This is their recommended solution to make the changes styles inline, rather than generating a CSS class for each one.
-const GradientSquare = styled.div.attrs<GradientSquareType>(props => ({
-  style: {
-    background: `linear-gradient(
-      137deg,
-      ${props.gradientStart},
-      ${props.gradientEnd}
-    )`,
-  },
-}))<GradientSquareType>`
-  width: 32px;
-  height: 32px;
-  border-radius: ${theme.radius6};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  color: ${theme.gray1000};
-  font-weight: 500;
-`;
+import styles from './TextAvatar.module.scss';
 
 export type TextAvatarProps = {
   label: string;
@@ -44,13 +16,19 @@ const colorForString = (stringInput: string, brightness: number) => {
 };
 
 export const TextAvatar = ({ label }: TextAvatarProps) => (
-  <GradientSquare
-    gradientEnd={colorForString(
-      (label && label.split('').reverse().join('')) || 'default label',
-      30,
-    )}
-    gradientStart={colorForString(label || 'default label', 75)}
+  <div
+    className={styles.gradientSquare}
+    style={{
+      '--amino-text-avatar-gradient-end': colorForString(
+        (label && label.split('').reverse().join('')) || 'default label',
+        30,
+      ),
+      '--amino-text-avatar-gradient-start': colorForString(
+        label || 'default label',
+        75,
+      ),
+    }}
   >
     {(label && label[0]?.toUpperCase()) || 'D'}
-  </GradientSquare>
+  </div>
 );

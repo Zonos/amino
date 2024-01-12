@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
@@ -9,38 +9,10 @@ import { ThemeDarkIcon } from 'src/icons/custom/theme/ThemeDarkIcon';
 import { ThemeLightIcon } from 'src/icons/custom/theme/ThemeLightIcon';
 import { NightIcon } from 'src/icons/NightIcon';
 import { SunnyIcon } from 'src/icons/SunnyIcon';
-import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
-// Card style
-const ButtonStyled = styled.button<{ $isActive: boolean }>`
-  border: ${p => `2px solid ${p.$isActive ? theme.blue400 : 'transparent'}`};
-  color: ${p => (p.$isActive ? theme.primary : theme.textColor)};
-  border-radius: ${theme.radius8};
-
-  &:not([disabled]) {
-    &:active,
-    &:focus {
-      outline: none;
-    }
-  }
-`;
-
-const ThemeCard = styled(Card)`
-  background: ${theme.gray0};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: ${theme.space16};
-
-  svg {
-    height: 64px;
-    width: 110px;
-    box-shadow: ${theme.v3ShadowLarge};
-    margin-bottom: ${theme.space16};
-  }
-`;
+import styles from './ThemeSelect.module.scss';
 
 const themes: { label: string; value: Theme }[] = [
   {
@@ -86,29 +58,35 @@ export const ThemeSelect = ({
     <>
       {type === 'cards' && (
         <HStack className={className}>
-          <ButtonStyled
-            $isActive={aminoTheme === 'day'}
+          <button
+            className={clsx(
+              styles.buttonStyled,
+              aminoTheme === 'day' && styles.isActive,
+            )}
             data-theme="day"
             onClick={() => setAminoTheme('day')}
             type="button"
           >
-            <ThemeCard>
+            <Card className={styles.themeCard}>
               <ThemeLightIcon />
               <Text type="bold-label">Light</Text>
-            </ThemeCard>
-          </ButtonStyled>
+            </Card>
+          </button>
 
-          <ButtonStyled
-            $isActive={aminoTheme === 'night'}
+          <button
+            className={clsx(
+              styles.buttonStyled,
+              aminoTheme === 'night' && styles.isActive,
+            )}
             data-theme="night"
             onClick={() => setAminoTheme('night')}
             type="button"
           >
-            <ThemeCard>
+            <Card className={styles.themeCard}>
               <ThemeDarkIcon />
               <Text type="bold-label">Dark</Text>
-            </ThemeCard>
-          </ButtonStyled>
+            </Card>
+          </button>
         </HStack>
       )}
 

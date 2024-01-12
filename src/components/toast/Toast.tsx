@@ -1,159 +1,15 @@
 import type { ReactNode } from 'react';
 
+import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 
 import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { InfoIcon } from 'src/icons/InfoIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
-import { theme } from 'src/styles/constants/theme';
 import type { Intent } from 'src/types';
 
-const AminoToast = styled(motion.div)`
-  background: linear-gradient(
-      90deg,
-      rgba(148, 150, 158, 0.4) 0%,
-      rgba(148, 150, 158, 0) 50%
-    ),
-    ${theme.gray1200};
-  z-index: 999999;
-  border-radius: ${theme.radius12};
-  color: ${theme.gray0};
-  box-shadow: ${theme.v3ShadowLarge};
-  padding: ${theme.space16};
-  display: flex;
-  align-items: center;
-  gap: ${theme.space12};
-  font-weight: 500;
-  user-select: none;
-
-  & + & {
-    margin-top: ${theme.space24};
-  }
-
-  & svg {
-    color: ${theme.gray500};
-  }
-
-  [data-theme='night'] & {
-    background: linear-gradient(
-        90deg,
-        rgba(148, 150, 158, 0.24) 0%,
-        rgba(148, 150, 158, 0) 50%
-      ),
-      ${theme.gray50};
-    color: ${theme.gray1200};
-
-    & svg {
-      color: ${theme.gray600};
-    }
-  }
-`;
-
-const AminoSuccessToast = styled(AminoToast)`
-  background: linear-gradient(
-      90deg,
-      rgba(86, 199, 111, 0.4) 0%,
-      rgba(86, 199, 111, 0) 50%
-    ),
-    ${theme.gray1200};
-
-  & svg {
-    color: ${theme.green500};
-  }
-
-  [data-theme='night'] & {
-    background: linear-gradient(
-        90deg,
-        rgba(86, 199, 111, 0.24) 0%,
-        rgba(86, 199, 111, 0) 50%
-      ),
-      ${theme.gray50};
-
-    & svg {
-      color: ${theme.green600};
-    }
-  }
-`;
-
-const AminoErrorToast = styled(AminoToast)`
-  background: linear-gradient(
-      90deg,
-      rgba(249, 92, 103, 0.4) 0%,
-      rgba(249, 92, 103, 0) 50%
-    ),
-    ${theme.gray1200};
-
-  & svg {
-    color: ${theme.red500};
-  }
-
-  [data-theme='night'] & {
-    background: linear-gradient(
-        90deg,
-        rgba(249, 92, 103, 0.24) 0%,
-        rgba(249, 92, 103, 0) 50%
-      ),
-      ${theme.gray50};
-
-    & svg {
-      color: ${theme.red600};
-    }
-  }
-`;
-
-const AminoWarningToast = styled(AminoToast)`
-  background: linear-gradient(
-      90deg,
-      rgba(248, 140, 83, 0.4) 0%,
-      rgba(248, 140, 83, 0) 50%
-    ),
-    ${theme.gray1200};
-
-  & svg {
-    color: ${theme.orange500};
-  }
-
-  [data-theme='night'] & {
-    background: linear-gradient(
-        90deg,
-        rgba(248, 140, 83, 0.24) 0%,
-        rgba(248, 140, 83, 0) 50%
-      ),
-      ${theme.gray50};
-
-    & svg {
-      color: ${theme.orange600};
-    }
-  }
-`;
-
-const AminoInfoToast = styled(AminoToast)`
-  background: linear-gradient(
-      90deg,
-      rgba(95, 146, 246, 0.4) 0%,
-      rgba(95, 146, 246, 0) 50%
-    ),
-    ${theme.gray1200};
-
-  & svg {
-    color: ${theme.blue500};
-  }
-
-  [data-theme='night'] & {
-    background: linear-gradient(
-        90deg,
-        rgba(95, 146, 246, 0.24) 0%,
-        rgba(95, 146, 246, 0) 50%
-      ),
-      ${theme.gray50};
-
-    & svg {
-      color: ${theme.blue600};
-    }
-  }
-`;
+import styles from './Toast.module.scss';
 
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
 
@@ -213,42 +69,31 @@ export const Toast = ({
     key: toastKey,
   };
 
-  switch (intent) {
-    case 'success':
-      return (
-        <AminoSuccessToast layout {...baseProps}>
-          <CheckCircleIcon />
-          {children}
-        </AminoSuccessToast>
-      );
-    case 'error':
-      return (
-        <AminoErrorToast layout {...baseProps}>
-          <RemoveCircleIcon />
-          {children}
-        </AminoErrorToast>
-      );
-    case 'warning':
-      return (
-        <AminoWarningToast layout {...baseProps}>
-          <WarningIcon />
-          {children}
-        </AminoWarningToast>
-      );
+  const parseIntent = () => {
+    switch (intent) {
+      case 'success':
+        return { class: styles.aminoSuccessToast, icon: <CheckCircleIcon /> };
+      case 'error':
+        return { class: styles.aminoErrorToast, icon: <RemoveCircleIcon /> };
+      case 'warning':
+        return { class: styles.aminoWarningToast, icon: <WarningIcon /> };
+      case 'info':
+        return { class: styles.aminoInfoToast, icon: <InfoIcon /> };
+      default:
+        return { class: styles.aminoToast, icon: <InfoIcon /> };
+    }
+  };
 
-    case 'info':
-      return (
-        <AminoInfoToast layout {...baseProps}>
-          <InfoIcon />
-          {children}
-        </AminoInfoToast>
-      );
-    default:
-      return (
-        <AminoToast layout {...baseProps}>
-          <InfoIcon />
-          {children}
-        </AminoToast>
-      );
-  }
+  const intentValues = parseIntent();
+
+  return (
+    <motion.div
+      className={clsx(styles.aminoToast, intentValues.class)}
+      layout
+      {...baseProps}
+    >
+      {intentValues.icon}
+      {children}
+    </motion.div>
+  );
 };

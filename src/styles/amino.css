@@ -138,7 +138,9 @@ h6 {
 .amino-dialog-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 400ms, transform 400ms;
+  transition:
+    opacity 400ms,
+    transform 400ms;
   animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
@@ -148,7 +150,9 @@ h6 {
 .amino-dialog-exit-active {
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 200ms, transform 200ms;
+  transition:
+    opacity 200ms,
+    transform 200ms;
   animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }

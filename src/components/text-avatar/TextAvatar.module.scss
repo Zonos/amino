@@ -1,0 +1,17 @@
+@use 'theme';
+
+$gradient-start: var(--amino-text-avatar-gradient-start);
+$gradient-end: var(--amino-text-avatar-gradient-end);
+
+.gradientSquare {
+  width: 32px;
+  height: 32px;
+  border-radius: theme.$amino-radius-6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  color: theme.$amino-gray-1000;
+  font-weight: 500;
+  background: linear-gradient(137deg, $gradient-start, $gradient-end);
+}
