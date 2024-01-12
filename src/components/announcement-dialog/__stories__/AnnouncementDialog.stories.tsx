@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import {
   type AnnouncementDialogProps,
@@ -10,6 +9,8 @@ import {
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
+
+import styles from './AnnouncementDialog.stories.module.scss';
 
 const AnnouncementDialogMeta: Meta = {
   argTypes: {
@@ -40,19 +41,6 @@ const AnnouncementDialogMeta: Meta = {
 
 export default AnnouncementDialogMeta;
 
-const StyledAnnouncementDialog = styled(AnnouncementDialog)<{
-  $height: number;
-}>`
-  height: ${p => p.$height}px;
-`;
-
-const CenteredDiv = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
   announcementId,
   children,
@@ -63,11 +51,14 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <CenteredDiv>
+    <div
+      className={styles.centeredDiv}
+      style={{ '--amino-announcement-dialog-stories-height': `${height}px` }}
+    >
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <StyledAnnouncementDialog
+      <AnnouncementDialog
+        className={styles.styledAnnouncementDialog}
         {...rest}
-        $height={height}
         announcementId={announcementId}
         label={label}
         onClose={() => setOpen(false)}
@@ -75,8 +66,8 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
         width={width}
       >
         {children}
-      </StyledAnnouncementDialog>
-    </CenteredDiv>
+      </AnnouncementDialog>
+    </div>
   );
 };
 
@@ -87,7 +78,7 @@ BasicDialog.args = {
     <>
       This cool feature has moved locations.{' '}
       <Text fontWeight={600}>
-        Go to settings <ArrowRightIcon size={16} /> Cool Feature{' '}
+        Go to settings <ArrowRightIcon inlineBlock size={16} /> Cool Feature{' '}
       </Text>
       to use the updated feature.
     </>

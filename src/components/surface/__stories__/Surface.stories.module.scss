@@ -1,0 +1,7 @@
+@use 'theme';
+
+.hoverCard {
+  &:hover {
+    background-color: theme.$amino-hover-color
+  }
+}

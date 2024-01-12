@@ -1,0 +1,15 @@
+@use 'theme';
+
+.hoverDiv {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+
+  &:hover {
+    background-color: theme.$amino-hover-color;
+  }
+}
+
+.styledCoverSheet {
+  z-index: 1100;
+}

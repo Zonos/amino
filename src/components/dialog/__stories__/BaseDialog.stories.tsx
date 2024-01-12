@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { BaseDialog } from 'src/components/dialog/BaseDialog';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
+
+import styles from './BaseDialog.stories.module.scss';
 
 const DialogMeta: Meta = {
   argTypes: {
@@ -22,19 +23,10 @@ const DialogMeta: Meta = {
 
 export default DialogMeta;
 
-const CenteredDiv = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-`;
-
 const Template: StoryFn<typeof BaseDialog> = ({ children, width, ...rest }) => {
   const [open, setOpen] = useState(false);
   return (
-    <CenteredDiv>
+    <div className={styles.centeredDiv}>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Card label="I am a card">
         <Text type="subheader">Here is some other content</Text>
@@ -47,7 +39,7 @@ const Template: StoryFn<typeof BaseDialog> = ({ children, width, ...rest }) => {
       >
         {children}
       </BaseDialog>
-    </CenteredDiv>
+    </div>
   );
 };
 

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
@@ -9,7 +8,8 @@ import {
   type SlideOverProps,
   SlideOver,
 } from 'src/components/slide-over/SlideOver';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './SlideOver.stories.module.scss';
 
 const SlideOverMeta: Meta = {
   component: SlideOver,
@@ -94,16 +94,6 @@ KitchenSinkSlideOver.args = {
   subtitle: 'With a subtitle',
 };
 
-const HoverDiv = styled.div`
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-
-  &:hover {
-    background-color: ${theme.hoverColor};
-  }
-`;
-
 export const WithHover = Template.bind({});
 WithHover.args = {
   actions: (
@@ -112,14 +102,10 @@ WithHover.args = {
       <Button>Action 2</Button>
     </>
   ),
-  children: <HoverDiv>Hover me</HoverDiv>,
+  children: <div className={styles.hoverDiv}>Hover me</div>,
   label: 'Slideover title',
   subtitle: 'With a subtitle',
 };
-
-const StyledCoverSheet = styled(CoverSheet)`
-  z-index: 1100;
-`;
 
 export const WithCoverSheet: StoryFn<SlideOverProps> = ({
   actions,
@@ -147,13 +133,14 @@ export const WithCoverSheet: StoryFn<SlideOverProps> = ({
         <Button onClick={() => setCoverSheetOpen(true)}>
           Open Cover Sheet
         </Button>
-        <StyledCoverSheet
+        <CoverSheet
+          className={styles.styledCoverSheet}
           label="Cover sheet"
           onClose={() => setCoverSheetOpen(false)}
           open={coverSheetOpen}
         >
           <div>Content</div>
-        </StyledCoverSheet>
+        </CoverSheet>
       </SlideOver>
     </>
   );

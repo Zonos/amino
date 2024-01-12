@@ -1,0 +1,27 @@
+@use 'theme';
+
+.styledWrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.styledSplitPanel {
+  :global(.pane) {
+    &:last-child,
+    &:last-child > div {
+      border-radius: 0 8px 8px 0;
+    }
+    &:first-child,
+    &:first-child > div {
+      border-radius: 8px 0 0 8px;
+    }
+  }
+}
+
+.styledItem {
+  border: 1px solid theme.$amino-gray-300;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

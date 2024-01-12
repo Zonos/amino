@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
@@ -14,12 +13,7 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
 
-const CenteredDiv = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import styles from './CoverSheet.stories.module.scss';
 
 const Story: StoryFn<CoverSheetProps> = ({
   children,
@@ -30,7 +24,7 @@ const Story: StoryFn<CoverSheetProps> = ({
 }: CoverSheetProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <CenteredDiv>
+    <div className={styles.centeredDiv}>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <CoverSheet
         actions={<Button variant="primary">Click me</Button>}
@@ -49,7 +43,7 @@ const Story: StoryFn<CoverSheetProps> = ({
           chop. Chuck pork chop ball tip bacon cupim landjaeger.
         </p>
       </CoverSheet>
-    </CenteredDiv>
+    </div>
   );
 };
 
@@ -94,7 +88,7 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
     useState(false);
 
   return (
-    <CenteredDiv>
+    <div className={styles.centeredDiv}>
       <Button onClick={() => setOpen(true)}>Open</Button>
 
       <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>
@@ -144,7 +138,7 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
           </Button>
         </CoverSheetActions>
       </CoverSheet>
-    </CenteredDiv>
+    </div>
   );
 };
 

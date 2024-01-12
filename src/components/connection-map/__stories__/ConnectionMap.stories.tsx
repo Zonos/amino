@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { ConnectionMap } from 'src/components/connection-map/ConnectionMap';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
@@ -11,20 +10,17 @@ import { VStack } from 'src/components/stack/VStack';
 import type { GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { useSwr } from 'src/utils/hooks/useSwr';
 
-const GEO_URL = '/zonos-countries-geojson.json';
+import styles from './ConnectionMap.stories.module.scss';
 
-const StyledWrapper = styled.div`
-  max-width: 1080px;
-  margin: 0 auto;
-`;
+const GEO_URL = '/zonos-countries-geojson.json';
 
 const CountrySelectMeta: Meta = {
   component: ConnectionMap,
   decorators: [
     Component => (
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         <Component />
-      </StyledWrapper>
+      </div>
     ),
   ],
   parameters: {

@@ -1,0 +1,17 @@
+@use 'theme';
+
+.leftCenteredDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.customWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border: theme.$amino-border-blue;
+  border-radius: 6px;
+  gap: 10px;
+}

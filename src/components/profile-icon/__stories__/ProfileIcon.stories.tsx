@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Input } from 'src/components/input/Input';
 import {
@@ -10,39 +9,29 @@ import {
 } from 'src/components/profile-icon/ProfileIcon';
 import { Text } from 'src/components/text/Text';
 
+import styles from './ProfileIcon.stories.module.scss';
+
 const ProfileIconMeta: Meta = {
   component: ProfileIconComponent,
 };
 
 export default ProfileIconMeta;
 
-const Wrapper = styled.div`
-  height: auto;
-  max-width: 400px;
-  margin: 0 auto;
-`;
-
-const FlexWrap = styled.div`
-  display: flex;
-  gap: 24px;
-  align-items: center;
-`;
-
 const Template: StoryFn<Props> = () => {
   const [email, setEmail] = useState('');
   return (
-    <Wrapper>
-      <FlexWrap>
+    <div className={styles.wrapper}>
+      <div className={styles.flexWrap}>
         <ProfileIconComponent email={email} />
         <Input
           onChange={e => setEmail(e.target.value)}
           placeholder="Email"
           value={email}
         />
-      </FlexWrap>
+      </div>
 
       <Text fontSize="s">Enter your email to see your associated gravatar</Text>
-    </Wrapper>
+    </div>
   );
 };
 

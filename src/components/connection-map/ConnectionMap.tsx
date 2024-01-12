@@ -18,7 +18,7 @@ import { type CountryOption } from 'src/types/Country';
 import { type GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
 
-import styles from './ConnectionMap.module.scss';
+import styles from './ConnectionMapStories.module.scss';
 
 const getScale = (xDistance: number, yDistance: number) => {
   // Account for large vertical distances not being scaled properly relative to horizntal distances because our viewport width is much greater than height

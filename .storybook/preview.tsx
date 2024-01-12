@@ -6,32 +6,12 @@ import 'src/styles/reset.css';
 import 'src/styles/theme.css';
 import { useGlobals } from '@storybook/addons';
 import { type Decorator, type Preview } from '@storybook/react';
-import styled from 'styled-components';
 
-import { theme } from 'src/styles/constants/theme';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
 
 import './storybook.css';
-
-const ThemeBlock = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding: ${theme.space16};
-  background: ${theme.gray0};
-  color: ${theme.textColor};
-`;
-
-const SideBySideContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  > * {
-    flex: 1;
-  }
-`;
+import styles from './preview.module.scss';
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
@@ -104,19 +84,19 @@ const withTheme: Decorator = (Story, context) => {
     // Don't iframe this one because it reads local storage
     if (context.title === 'Amino/ThemeSelect') {
       return (
-        <SideBySideContainer>
-          <ThemeBlock data-theme="day">
+        <div className={styles.sideBySideContainer}>
+          <div className={styles.themeBlock} data-theme="day">
             <Story {...context} />
-          </ThemeBlock>
-          <ThemeBlock data-theme="night">
+          </div>
+          <div className={styles.themeBlock} data-theme="night">
             <Story {...context} />
-          </ThemeBlock>
-        </SideBySideContainer>
+          </div>
+        </div>
       );
     }
 
     return (
-      <SideBySideContainer>
+      <div className={styles.sideBySideContainer}>
         <iframe
           height="100%"
           src={`/iframe.html?globals=theme:day&id=${context.id}&viewMode=story&innerFrame=true`}
@@ -127,14 +107,17 @@ const withTheme: Decorator = (Story, context) => {
           src={`/iframe.html?globals=theme:night&id=${context.id}&viewMode=story&innerFrame=true`}
           title="iframe-storybook-night"
         />
-      </SideBySideContainer>
+      </div>
     );
   }
 
   return (
-    <ThemeBlock data-theme={inSideBySide ? storybookTheme : aminoTheme}>
+    <div
+      className={styles.themeBlock}
+      data-theme={inSideBySide ? storybookTheme : aminoTheme}
+    >
       <Story {...context} />
-    </ThemeBlock>
+    </div>
   );
 };
 

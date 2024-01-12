@@ -1,0 +1,20 @@
+@use 'theme';
+
+.themeBlock {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  background: theme.$amino-gray-0;
+  color: theme.$amino-text-color;
+}
+
+.sideBySideContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  > * {
+    flex: 1;
+  }
+}

@@ -1,10 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import {
   type Props,
   ThemeSelect as ThemeSelectComponent,
 } from 'src/components/theme-select/ThemeSelect';
+
+import styles from './ThemeSelect.stories.module.scss';
 
 const ThemeSelectMeta: Meta = {
   component: ThemeSelectComponent,
@@ -12,16 +13,10 @@ const ThemeSelectMeta: Meta = {
 
 export default ThemeSelectMeta;
 
-const Wrapper = styled.div`
-  height: auto;
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
 const Template: StoryFn = ({ type }: Props) => (
-  <Wrapper>
+  <div className={styles.wrapper}>
     <ThemeSelectComponent type={type} />
-  </Wrapper>
+  </div>
 );
 
 export const Default = Template.bind({});

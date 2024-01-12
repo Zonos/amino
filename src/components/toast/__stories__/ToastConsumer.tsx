@@ -1,33 +1,15 @@
 import { useContext, useState } from 'react';
 
-import styled from 'styled-components';
-
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import type { Direction } from 'src/components/toast/Toast';
 import { ToastContext } from 'src/components/toast/ToastContext';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './ToastConsumer.stories.module.scss';
 
 const useNotify = () => useContext(ToastContext);
-
-// Toasts appear in the middle, so don't hide controls
-const LeftCenteredDiv = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const CustomWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: ${theme.space8};
-  border: ${theme.borderBlue};
-  border-radius: ${theme.radius6};
-  gap: 10px;
-`;
 
 export const ToastConsumer = () => {
   const notify = useNotify();
@@ -42,7 +24,7 @@ export const ToastConsumer = () => {
   const [verticalOffset, setVerticalOffset] = useState('');
 
   return (
-    <LeftCenteredDiv>
+    <div className={styles.leftCenteredDiv}>
       <VStack>
         <Button onClick={() => notify('Default toast', { duration })}>
           Notify
@@ -75,7 +57,7 @@ export const ToastConsumer = () => {
         >
           Information
         </Button>
-        <CustomWrapper>
+        <div className={styles.customWrapper}>
           <textarea
             cols={30}
             onChange={v => setMessage(v.target.value)}
@@ -129,7 +111,7 @@ export const ToastConsumer = () => {
           >
             Display Custom
           </Button>
-        </CustomWrapper>
+        </div>
         <Input
           label="Duration"
           onChange={e => setDuration(+e.target.value)}
@@ -137,6 +119,6 @@ export const ToastConsumer = () => {
           value={String(duration)}
         />
       </VStack>
-    </LeftCenteredDiv>
+    </div>
   );
 };

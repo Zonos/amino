@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
 import { VStack } from 'src/components/stack/VStack';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+
+import styles from './Banner.stories.module.scss';
 
 const BannerStories: Meta = {
   component: Banner,
@@ -20,11 +21,6 @@ const BannerStories: Meta = {
 };
 
 export default BannerStories;
-
-const StyledVStack = styled(VStack)`
-  max-width: 1080px;
-  margin: 0 auto;
-`;
 
 const ids = [
   'withTitle',
@@ -56,7 +52,7 @@ const Template: StoryFn<typeof Banner> = ({
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum massa nisi, quis fringilla ante facilisis et. Maecenas risus est, mollis pulvinar metus vitae.';
 
   return (
-    <StyledVStack>
+    <VStack className={styles.styledVStack}>
       <Banner
         footerActions={
           <Button
@@ -152,7 +148,7 @@ const Template: StoryFn<typeof Banner> = ({
           sentence.
         </Banner>
       )}
-    </StyledVStack>
+    </VStack>
   );
 };
 

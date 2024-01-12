@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Badge } from 'src/components/badge/Badge';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
@@ -22,47 +22,8 @@ import { ImportDuotoneIcon } from 'src/icons/ImportDuotoneIcon';
 import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
-import { theme } from 'src/styles/constants/theme';
 
-const StyledTable = styled(Table)`
-  max-width: 1080px;
-  margin: 0 auto;
-`;
-const LeftIconLabel = styled.div`
-  display: flex;
-  align-items: center;
-  span {
-    margin-left: 12px;
-  }
-`;
-const RightIconLabel = styled.div`
-  display: flex;
-  align-items: center;
-  span {
-    margin-right: 12px;
-  }
-`;
-
-const ExpandedItemCard = styled.div`
-  padding: ${theme.space24};
-  padding-left: 44px;
-  border: ${theme.border};
-  border-radius: ${theme.radius6};
-`;
-const ExpandedTableCard = styled(ExpandedItemCard)`
-  padding: 8px;
-  padding-left: 44px;
-`;
-
-const AttributesWrapper = styled.div`
-  margin-top: 32px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-`;
-const AttributeLabel = styled(VStack)`
-  width: 177px;
-`;
+import styles from './Table.stories.module.scss';
 
 const ExpandedListItem = ({
   conversionRate,
@@ -126,7 +87,7 @@ const Template: StoryFn<
         : collapsedRows.concat(index),
     );
   return (
-    <StyledTable>
+    <Table className={styles.styledTable}>
       <colgroup>
         <col />
         <col width="20%" />
@@ -155,20 +116,20 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <LeftIconLabel>
+                <div className={styles.leftIconLabel}>
                   <RoundedIcon>
                     <ImageDuotoneIcon />
                   </RoundedIcon>
                   <Text fontWeight={500}>
                     Huka One Running Shoe - Women&apos;s
                   </Text>
-                </LeftIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right">
-                <RightIconLabel>
+                <div className={styles.rightIconLabel}>
                   <Text fontWeight={500}>6404.11.0000</Text>
                   <ClassifyIcon color="purple600" size={14} />
-                </RightIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right">
                 <Text fontWeight={500}>
@@ -183,7 +144,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <ExpandedItemCard>
+          <div className={styles.expandedItemCard}>
             <VStack spacing={8}>
               <Text type="bold-label">
                 Huka One Running Shoe - Women&apos;s
@@ -198,7 +159,7 @@ const Template: StoryFn<
                 />
               </Text>
             </VStack>
-            <AttributesWrapper>
+            <div className={styles.attributesWrapper}>
               {[
                 { label: 'sku', value: '123SFS12' },
                 { label: 'Country of Origin', value: 'United States' },
@@ -209,7 +170,11 @@ const Template: StoryFn<
                 { label: 'Width', value: '45 in' },
                 { label: 'Height', value: '11 in' },
               ].map(option => (
-                <AttributeLabel key={option.label} spacing={8}>
+                <VStack
+                  key={option.label}
+                  className={styles.attributeLabel}
+                  spacing={8}
+                >
                   <Text
                     color="gray700"
                     fontWeight={600}
@@ -219,10 +184,10 @@ const Template: StoryFn<
                     {option.label}
                   </Text>
                   <Text>{option.value}</Text>
-                </AttributeLabel>
+                </VStack>
               ))}
-            </AttributesWrapper>
-          </ExpandedItemCard>
+            </div>
+          </div>
         </TableRowCollapse>
         <TableRowCollapse
           collapsed={collapsedRows.includes(1)}
@@ -230,12 +195,12 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <LeftIconLabel>
+                <div className={styles.leftIconLabel}>
                   <RoundedIcon>
                     <TruckDuotoneIcon />
                   </RoundedIcon>
                   <Text fontWeight={500}>Custom</Text>
-                </LeftIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right" colSpan={2}>
                 <Text fontWeight={500}>
@@ -250,7 +215,9 @@ const Template: StoryFn<
             </>
           }
         >
-          <ExpandedTableCard>
+          <div
+            className={clsx(styles.expandedTableCard, styles.expandedItemCard)}
+          >
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -271,7 +238,7 @@ const Template: StoryFn<
                 ))}
               </TableBody>
             </Table>
-          </ExpandedTableCard>
+          </div>
         </TableRowCollapse>
         <TableRowCollapse
           collapsed={collapsedRows.includes(2)}
@@ -279,7 +246,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <LeftIconLabel>
+                <div className={styles.leftIconLabel}>
                   <RoundedIcon background="blue100">
                     <ImportDuotoneIcon
                       color="blue900"
@@ -287,7 +254,7 @@ const Template: StoryFn<
                     />
                   </RoundedIcon>
                   <Text fontWeight={500}>Duties</Text>
-                </LeftIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right" colSpan={2}>
                 <Text fontWeight={500}>$0.55</Text>
@@ -295,7 +262,9 @@ const Template: StoryFn<
             </>
           }
         >
-          <ExpandedTableCard>
+          <div
+            className={clsx(styles.expandedItemCard, styles.expandedTableCard)}
+          >
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -316,7 +285,7 @@ const Template: StoryFn<
                 ))}
               </TableBody>
             </Table>
-          </ExpandedTableCard>
+          </div>
         </TableRowCollapse>
         <TableRowCollapse
           collapsed={collapsedRows.includes(3)}
@@ -324,7 +293,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <LeftIconLabel>
+                <div className={styles.leftIconLabel}>
                   <RoundedIcon background="red100">
                     <ShoppingListDuotoneIcon
                       color="red900"
@@ -332,7 +301,7 @@ const Template: StoryFn<
                     />
                   </RoundedIcon>
                   <Text fontWeight={500}>Fees</Text>
-                </LeftIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right" colSpan={2}>
                 <Text fontWeight={500}>$10.71</Text>
@@ -340,7 +309,9 @@ const Template: StoryFn<
             </>
           }
         >
-          <ExpandedTableCard>
+          <div
+            className={clsx(styles.expandedItemCard, styles.expandedTableCard)}
+          >
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -365,7 +336,7 @@ const Template: StoryFn<
                 ))}
               </TableBody>
             </Table>
-          </ExpandedTableCard>
+          </div>
         </TableRowCollapse>
         <TableRowCollapse
           collapsed={collapsedRows.includes(4)}
@@ -373,7 +344,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <LeftIconLabel>
+                <div className={styles.leftIconLabel}>
                   <RoundedIcon background="green100">
                     <CoinsDuotoneIcon
                       color="green900"
@@ -381,7 +352,7 @@ const Template: StoryFn<
                     />
                   </RoundedIcon>
                   <Text fontWeight={500}>Taxes</Text>
-                </LeftIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right">
                 <Badge color="orange" fontWeight={600}>
@@ -394,7 +365,9 @@ const Template: StoryFn<
             </>
           }
         >
-          <ExpandedTableCard>
+          <div
+            className={clsx(styles.expandedItemCard, styles.expandedTableCard)}
+          >
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -419,7 +392,7 @@ const Template: StoryFn<
                 ))}
               </TableBody>
             </Table>
-          </ExpandedTableCard>
+          </div>
         </TableRowCollapse>
         <TableRowCollapse
           collapsed={collapsedRows.includes(5)}
@@ -427,12 +400,12 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell colSpan={2}>
-                <LeftIconLabel>
+                <div className={styles.leftIconLabel}>
                   <RoundedIcon background="orange100">
                     <WarningIcon color="orange900" />
                   </RoundedIcon>
                   <Text fontWeight={500}>No children (cannot expand)</Text>
-                </LeftIconLabel>
+                </div>
               </TableCell>
               <TableCell align="right">
                 <Text fontWeight={500}>$0.00</Text>
@@ -451,7 +424,7 @@ const Template: StoryFn<
           </TableCell>
         </TableRow>
       </TableFooter>
-    </StyledTable>
+    </Table>
   );
 };
 

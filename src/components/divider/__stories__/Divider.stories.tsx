@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Card } from 'src/components/card/Card';
 import { Divider } from 'src/components/divider/Divider';
@@ -9,7 +9,8 @@ import { ArrowLeftIcon } from 'src/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
 import { CircleIcon } from 'src/icons/CircleIcon';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Divider.stories.module.scss';
 
 const DividerMeta: Meta = {
   component: Divider,
@@ -17,111 +18,57 @@ const DividerMeta: Meta = {
 
 export default DividerMeta;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const ColumnWrapper = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-const RowInset = styled.div`
-  padding: ${theme.space8};
-  border: ${theme.border};
-  border-radius: ${theme.radius6};
-  display: flex;
-  justify-content: space-evenly;
-`;
-
-const Row = styled(RowInset)`
-  padding: 0;
-  /* Put padding inside each item to allow the divider to be full size */
-  > svg {
-    margin: ${theme.space8};
-  }
-`;
-
-const ColumnInset = styled.div`
-  padding: ${theme.space8};
-  border: ${theme.border};
-  border-radius: ${theme.radius6};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-`;
-
-const Column = styled(ColumnInset)`
-  padding: 0;
-  /* Put padding inside each item to allow the divider to be full size */
-  > svg {
-    margin: ${theme.space8};
-  }
-`;
-
-// These dividers have custom styling to not appear inset when the container has the padding. There are multiple approaches to make it full size, as demonstrated here.
-
-const StyledDividerVertical = styled(Divider)`
-  margin: ${theme.spaceNegative8} 0;
-`;
-
-const StyledDividerHorizontal = styled(Divider)`
-  margin: 0 ${theme.spaceNegative8};
-`;
-
 export const Basic = () => (
-  <Wrapper>
-    <Wrapper>
+  <div className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <Text type="title">Vertical</Text>
-      <Row>
+      <div className={clsx(styles.rowInset, styles.row)}>
         <ArrowLeftIcon />
         <Divider vertical />
         <CircleIcon />
         <Divider vertical />
         <ArrowRightIcon />
-      </Row>
-      <RowInset>
+      </div>
+      <div className={styles.rowInset}>
         <ArrowLeftIcon />
         <Divider vertical />
         <CircleIcon />
         <Divider vertical />
         <ArrowRightIcon />
-      </RowInset>
-      <RowInset>
+      </div>
+      <div className={styles.rowInset}>
         <ArrowLeftIcon />
-        <StyledDividerVertical vertical />
+        <Divider className={styles.styledDividerVertical} vertical />
         <CircleIcon />
-        <StyledDividerVertical vertical />
+        <Divider className={styles.styledDividerVertical} vertical />
         <ArrowRightIcon />
-      </RowInset>
-    </Wrapper>
+      </div>
+    </div>
     <Text type="title">Horizontal</Text>
-    <ColumnWrapper>
-      <Column>
+    <div className={styles.columnWrapper}>
+      <div className={clsx(styles.columnInset, styles.column)}>
         <ArrowUpIcon />
         <Divider />
         <CircleIcon />
         <Divider />
         <ArrowDownIcon />
-      </Column>
-      <ColumnInset>
+      </div>
+      <div className={styles.columnInset}>
         <ArrowUpIcon />
         <Divider />
         <CircleIcon />
         <Divider />
         <ArrowDownIcon />
-      </ColumnInset>
-      <ColumnInset>
+      </div>
+      <div className={styles.columnInset}>
         <ArrowUpIcon />
-        <StyledDividerHorizontal />
+        <Divider className={styles.styledDividerHorizontal} />
         <CircleIcon />
-        <StyledDividerHorizontal />
+        <Divider className={styles.styledDividerHorizontal} />
         <ArrowDownIcon />
-      </ColumnInset>
-    </ColumnWrapper>
-  </Wrapper>
+      </div>
+    </div>
+  </div>
 );
 
 export const InCard = () => (

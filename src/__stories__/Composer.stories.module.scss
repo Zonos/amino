@@ -1,0 +1,10 @@
+.styledActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.styledHStack {
+  grid-auto-columns: 200px;
+  align-items: center;
+}

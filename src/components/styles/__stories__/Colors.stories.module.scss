@@ -1,0 +1,25 @@
+@use 'theme';
+
+$color: var(--amino-colors-stories-color);
+$background: var(--amino-colors-stories-background);
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(33% - 24px));
+  gap: 24px;
+  align-items: center;
+}
+
+.colorWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.styledColorIntensity {
+  color: $color;
+  font-size: theme.$amino-font-size-s;
+  padding: 24px;
+  background: $background;
+}

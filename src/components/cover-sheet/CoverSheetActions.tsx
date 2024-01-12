@@ -1,14 +1,12 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { HStack } from 'src/components/stack/HStack';
 import type { BaseProps } from 'src/types/BaseProps';
 
-const Actions = styled.div`
-  z-index: 990;
-`;
+import styles from './CoverSheetActions.module.scss';
 
 export type CoverSheetProps = BaseProps & {
   children: ReactNode;
@@ -36,9 +34,9 @@ export const CoverSheetActions = ({
     const div = document.querySelector(`#${coverSheetActionId}`);
     if (div) {
       return createPortal(
-        <Actions className={className}>
+        <div className={clsx(className, styles.actions)}>
           <HStack spacing={8}>{children}</HStack>
-        </Actions>,
+        </div>,
         div,
       );
     }

@@ -1,12 +1,12 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import {
   type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
 } from 'src/components/thumbnail/Thumbnail';
 import * as icons from 'src/icons/_IconIndex';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Thumbnail.stories.module.scss';
 
 const ThumbnailMeta: Meta = {
   argTypes: {
@@ -39,18 +39,11 @@ type StoryProps = Omit<ThumbnailProps, 'shape' | 'icon'> & {
   icon: keyof typeof icons;
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${theme.space24};
-`;
-
 const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
   const Icon = icons[icon];
 
   return (
-    <Wrapper>
+    <div className={styles.wrapper}>
       <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
       <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
       <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
@@ -67,7 +60,7 @@ const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
         intent="outline"
         shape="square"
       />
-    </Wrapper>
+    </div>
   );
 };
 

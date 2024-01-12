@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import {
   type MultiSelectProps,
@@ -9,17 +8,15 @@ import {
 } from 'src/components/select/MultiSelect';
 import { PlayCircleIcon } from 'src/icons/PlayCircleIcon';
 
-const StyledWrapper = styled.div`
-  width: 412px;
-`;
+import styles from './MultiSelect.stories.module.scss';
 
 const SelectMeta: Meta = {
   component: MultiSelect,
   decorators: [
     Component => (
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         <Component />
-      </StyledWrapper>
+      </div>
     ),
   ],
   parameters: {

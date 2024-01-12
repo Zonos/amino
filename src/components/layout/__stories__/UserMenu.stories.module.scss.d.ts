@@ -1,0 +1,10 @@
+export declare const addSpacing: string;
+export declare const animatedSurface: string;
+export declare const avatar: string;
+export declare const dropdownAnimation: string;
+export declare const dropdownAnimationInverse: string;
+export declare const menuWrapper: string;
+export declare const storeItem: string;
+export declare const styledSubtitle: string;
+export declare const styledVStack: string;
+export declare const userInfo: string;

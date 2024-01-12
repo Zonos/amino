@@ -1,44 +1,22 @@
 import { useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { type FlagIconProps, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import * as flags from 'src/icons/flags/_FlagIndex';
-import { theme } from 'src/styles/constants/theme';
 import type { IconProps } from 'src/types/IconProps';
+
+import styles from './Flags.stories.module.scss';
 
 const meta: Meta = {
   component: FlagIcon,
 };
 
 export default meta;
-
-const StyledWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: ${theme.space40};
-  grid-column-gap: ${theme.space24};
-  padding-bottom: 20px;
-`;
-
-const StyledIcon = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: ${theme.v3ShadowBase};
-  padding: ${theme.space16};
-  &.deprecated {
-    div {
-      text-decoration: line-through;
-    }
-  }
-`;
 
 // Check if string contain keyword of the sub icon type or not
 type IconsType = (typeof flags)[keyof typeof flags] & {
@@ -58,7 +36,7 @@ export const Flags = ({ size }: IconProps) => {
   return (
     <VStack>
       <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         {iicons
           .filter(({ iconName }) =>
             filter
@@ -68,14 +46,20 @@ export const Flags = ({ size }: IconProps) => {
           .map(({ deprecated, icon: IconComponent, iconName }) => {
             const isDeprecated = deprecated;
             return (
-              <StyledIcon key={iconName}>
+              <div
+                key={iconName}
+                className={clsx(
+                  styles.styledIcon,
+                  isDeprecated && styles.deprecated,
+                )}
+              >
                 <IconComponent height={size || 20} width={size || 20} />
                 <div>{iconName}</div>
                 {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
-              </StyledIcon>
+              </div>
             );
           })}
-      </StyledWrapper>
+      </div>
     </VStack>
   );
 };

@@ -1,10 +1,7 @@
-import styled from 'styled-components';
+import type { ReactNode } from 'react';
 
-import { theme } from 'src/styles/constants/theme';
+import styles from './BaseWrapper.module.scss';
 
-export const BaseWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${theme.space24};
-`;
+export const BaseWrapper = ({ children }: { children: ReactNode }) => (
+  <div className={styles.baseWrapper}>{children}</div>
+);

@@ -1,9 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { omitControls } from 'story-utils/omitControls';
-import styled from 'styled-components';
 
 import { type BadgeProps, Badge } from 'src/components/badge/Badge';
 import * as icons from 'src/icons/_IconIndex';
+
+import styles from './Badge.stories.module.scss';
 
 const omittedProps: (keyof BadgeProps)[] = ['iconRight', 'bold'];
 
@@ -28,11 +29,6 @@ const BadgeMeta: Meta = {
 };
 
 export default BadgeMeta;
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
 
 type StoryProps = Omit<BadgeProps, 'iconRight' | 'icon' | 'bold'> & {
   icon: keyof typeof icons;
@@ -42,7 +38,7 @@ const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
   const Icon = icons[icon];
 
   return (
-    <StyledWrapper>
+    <div className={styles.styledWrapper}>
       <div>
         <h3>Normal</h3>
         <Badge {...props}>{children}</Badge>
@@ -73,7 +69,7 @@ const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
           {children}
         </Badge>
       </div>
-    </StyledWrapper>
+    </div>
   );
 };
 

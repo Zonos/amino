@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import {
   type SpinnerProps,
@@ -7,31 +6,24 @@ import {
 } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 
+import styles from './Spinner.stories.module.scss';
+
 const SpinnerMeta: Meta = {
   component: SpinnerComponent,
 };
 
 export default SpinnerMeta;
 
-const Wrapper = styled.div`
-  width: min-content;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
-
 const Template: StoryFn<SpinnerProps> = ({
   color,
   size,
   ...props
 }: SpinnerProps) => (
-  <Wrapper>
+  <div className={styles.wrapper}>
     <SpinnerComponent color={color} size={size && size - 10} {...props} />
     <SpinnerComponent color={color} size={size} {...props} />
     <SpinnerComponent color={color} size={size && size + 10} {...props} />
-  </Wrapper>
+  </div>
 );
 
 export const Spinner = Template.bind({});
@@ -39,21 +31,14 @@ Spinner.args = {
   size: 32,
 };
 
-const ScrollableWrapper = styled.div`
-  border: ${theme.border};
-  margin: 100px;
-  display: flex;
-  overflow: scroll;
-`;
-
 export const InsideContainer: StoryFn<SpinnerProps> = ({
   color,
   size,
   ...props
 }: SpinnerProps) => (
-  <ScrollableWrapper>
+  <div className={styles.scrollableWrapper}>
     <SpinnerComponent color={color} size={60} {...props} />
-  </ScrollableWrapper>
+  </div>
 );
 
 export const White: StoryFn<SpinnerProps> = ({

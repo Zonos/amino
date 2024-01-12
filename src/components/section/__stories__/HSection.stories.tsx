@@ -1,6 +1,5 @@
 import { useEffect, useState } from '@storybook/addons';
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 import { v4 } from 'uuid';
 
 import { Button } from 'src/components/button/Button';
@@ -10,6 +9,8 @@ import { Input } from 'src/components/input/Input';
 import { type HSectionProps, HSection } from 'src/components/section/HSection';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+
+import styles from './HSection.stories.module.scss';
 
 const HSectionMeta: Meta = {
   component: HSection,
@@ -101,10 +102,6 @@ CollapsedByDefault.args = {
   Itaque blanditiis corporis incidunt doloribus assumenda eos.`,
 };
 
-const StyledVStack = styled(VStack)`
-  max-width: 600px;
-`;
-
 export const VariableList = () => {
   const [collapsible, setcollapsible] = useState(true);
   const [items, setItems] = useState<string[]>(['Couch']);
@@ -122,7 +119,7 @@ export const VariableList = () => {
   };
 
   return (
-    <StyledVStack>
+    <VStack className={styles.styledVStack}>
       <Checkbox
         checked={collapsible}
         label="collapsible"
@@ -162,6 +159,6 @@ export const VariableList = () => {
           <Button onClick={() => addItem()}>Add item</Button>
         </VStack>
       </HSection>
-    </StyledVStack>
+    </VStack>
   );
 };
