@@ -1,44 +1,22 @@
 import { useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import * as icons from 'src/icons/_IconIndex';
-import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
+
+import styles from './Icons.stories.module.scss';
 
 const IconsMeta: Meta = {
   component: icons.MailDuotoneIcon,
 };
 
 export default IconsMeta;
-
-const StyledWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: ${theme.space40};
-  grid-column-gap: ${theme.space24};
-  padding-bottom: 20px;
-`;
-
-const StyledIcon = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: ${theme.v3ShadowBase};
-  padding: ${theme.space16};
-  &.deprecated {
-    div {
-      text-decoration: line-through;
-    }
-  }
-`;
 
 // Check if string contain keyword of the sub icon type or not
 type IconsType = (typeof icons)[keyof typeof icons] & {
@@ -63,7 +41,7 @@ export const Icons = ({
   return (
     <VStack>
       <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         {iicons
           .filter(({ iconName }) =>
             filter
@@ -73,13 +51,14 @@ export const Icons = ({
           .map(({ deprecated, icon: IconComponent, iconName }) => {
             const isDeprecated = deprecated;
             return (
-              <StyledIcon
+              <div
                 key={iconName}
-                className={[
-                  isDeprecated ? 'deprecated' : '',
-                  /Solid/.test(iconName) ? 'solid' : '',
-                  /Duotone/.test(iconName) ? 'duotone' : '',
-                ].join(' ')}
+                className={clsx(
+                  styles.styledIcon,
+                  isDeprecated && styles.deprecated,
+                  /Solid/.test(iconName) && 'solid',
+                  /Duotone/.test(iconName) && 'duotone',
+                )}
               >
                 <IconComponent
                   color={color}
@@ -89,10 +68,10 @@ export const Icons = ({
                 />
                 <div>{iconName}</div>
                 {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
-              </StyledIcon>
+              </div>
             );
           })}
-      </StyledWrapper>
+      </div>
     </VStack>
   );
 };
@@ -106,12 +85,12 @@ const productIcons = Object.values<IconsType>(icons)
   }));
 
 export const Products = () => (
-  <StyledWrapper>
+  <div className={styles.styledWrapper}>
     {productIcons.map(({ icon: IconComponent, iconName }) => (
-      <StyledIcon key={iconName}>
+      <div key={iconName} className={styles.styledIcon}>
         <IconComponent size={50} />
         <div>{iconName}</div>
-      </StyledIcon>
+      </div>
     ))}
-  </StyledWrapper>
+  </div>
 );

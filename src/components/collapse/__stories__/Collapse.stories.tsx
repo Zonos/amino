@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
+import clsx from 'clsx';
 
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
@@ -10,7 +10,8 @@ import { type CollapseProps, Collapse } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { Text } from 'src/components/text/Text';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Collapse.stories.module.scss';
 
 const CollapseMeta: Meta = {
   argTypes: {
@@ -33,14 +34,6 @@ const CollapseMeta: Meta = {
 
 export default CollapseMeta;
 
-const BasicWrapper = styled.div`
-  border: ${theme.border};
-  background: ${theme.gray100};
-  margin: 20px;
-  padding: 20px;
-  display: flex;
-`;
-
 export const Basic: StoryFn<CollapseProps> = props => {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -48,33 +41,13 @@ export const Basic: StoryFn<CollapseProps> = props => {
     <>
       <Button onClick={() => setCollapsed(!collapsed)}>Toggle</Button>
       <Collapse collapsed={collapsed} {...props}>
-        <BasicWrapper>
+        <div className={styles.basicWrapper}>
           <Text>Some text</Text>
-        </BasicWrapper>
+        </div>
       </Collapse>
     </>
   );
 };
-
-const CollapseContainer = styled.div`
-  margin: 20px;
-  display: flex;
-  gap: 40px;
-`;
-
-const RandomCollapseWrapper = styled.div`
-  border: 1px solid gray;
-  border-radius: 6px;
-`;
-
-const ActionWrapper = styled.div`
-  display: inline-flex;
-  gap: 20px;
-`;
-
-const StyledBanner = styled(Banner)`
-  margin: ${theme.space16};
-`;
 
 export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
   const [open1, setOpen1] = useState(true);
@@ -101,7 +74,9 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
 
   const children = (
     <>
-      <StyledBanner>Component has margin top & bottom</StyledBanner>
+      <Banner className={styles.styledBanner}>
+        Component has margin top & bottom
+      </Banner>
       <NavigationItem content="Item 1" isActive />
       <NavigationItem content="Item 2" />
       <NavigationItem content="Item 3" />
@@ -110,7 +85,7 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
 
   return (
     <>
-      <ActionWrapper>
+      <div className={styles.actionWrapper}>
         <Button
           onClick={() => {
             setOpen1(!open1);
@@ -127,8 +102,8 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         >
           Add more items
         </Button>
-      </ActionWrapper>
-      <CollapseContainer>
+      </div>
+      <div className={styles.collapseContainer}>
         <p>Collapse size: {collapseSize ? `${collapseSize}px` : '0px'}</p>
         <div>
           Open by default (no border) - to test if the the `Collapse` will
@@ -140,7 +115,9 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
                 <NavigationItem content="Item 4" />
                 <NavigationItem content="Item 5" />
                 <NavigationItem content="Item 6" />
-                <StyledBanner>Component has margin top & bottom</StyledBanner>
+                <Banner className={styles.styledBanner}>
+                  Component has margin top & bottom
+                </Banner>
               </>
             )}
           </Collapse>
@@ -148,23 +125,25 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         <div>
           Open by default
           <Collapse collapsed={!open1} collapseSize={collapseSize}>
-            <RandomCollapseWrapper>
+            <div className={styles.randomCollapseWrapper}>
               {children}
               {moreItems && (
                 <>
                   <NavigationItem content="Item 4" />
                   <NavigationItem content="Item 5" />
                   <NavigationItem content="Item 6" />
-                  <StyledBanner>Component has margin top & bottom</StyledBanner>
+                  <Banner className={styles.styledBanner}>
+                    Component has margin top & bottom
+                  </Banner>
                 </>
               )}
-            </RandomCollapseWrapper>
+            </div>
           </Collapse>
         </div>
         <div>
           Closed by default
           <Collapse collapsed={!open2} collapseSize={collapseSize}>
-            <RandomCollapseWrapper>
+            <div className={styles.randomCollapseWrapper}>
               {children}
               {moreItems && (
                 <>
@@ -173,40 +152,13 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
                   <NavigationItem content="Item 6" />
                 </>
               )}
-            </RandomCollapseWrapper>
+            </div>
           </Collapse>
         </div>
-      </CollapseContainer>
+      </div>
     </>
   );
 };
-
-const StyledChevronRightIcon = styled(ChevronRightIcon)<{
-  $collapsed: boolean;
-}>`
-  color: ${theme.gray600};
-  transition: ${theme.transition};
-
-  transform: ${p => (p.$collapsed ? 'rotate(0)' : 'rotate(-90deg)')};
-`;
-
-const Container = styled.div`
-  width: 500px;
-  height: 300px;
-  border: ${theme.border};
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-`;
-
-const ItemWrapper = styled.div`
-  padding-left: 16px;
-`;
-
-const ItemLabel = styled.div`
-  cursor: pointer;
-  display: flex;
-  gap: 8px;
-`;
 
 type Item = Item[] | null;
 
@@ -222,9 +174,11 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
   return (
     <>
       {items.map((item, index) => (
-        <ItemWrapper>
-          <ItemLabel
+        <div className={styles.itemWrapper}>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+          <div
             key={index}
+            className={styles.itemLabel}
             onClick={() =>
               setCollapsed(prev => {
                 const next = [...prev];
@@ -232,14 +186,21 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
                 return next;
               })
             }
+            role="button"
+            tabIndex={0}
           >
-            <StyledChevronRightIcon $collapsed={collapsed[index]!} />
+            <ChevronRightIcon
+              className={clsx(
+                styles.styledChevronRightIcon,
+                collapsed[index] && styles.collapsed,
+              )}
+            />
             <Text>Item {index + 1}</Text>
-          </ItemLabel>
+          </div>
           <Collapse collapsed={collapsed[index]!}>
             <DropdownNavItem items={item} />
           </Collapse>
-        </ItemWrapper>
+        </div>
       ))}
     </>
   );
@@ -260,7 +221,7 @@ const items: Item[] = [
 ];
 
 export const DropdownNav: StoryFn<CollapseProps> = () => (
-  <Container>
+  <div className={styles.container}>
     <DropdownNavItem items={items} />
-  </Container>
+  </div>
 );

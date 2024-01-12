@@ -1,45 +1,19 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { SplitPanel as SplitPanelComponent } from 'src/components/split-panel/SplitPanel';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './SplitPanel.stories.module.scss';
 
 const SplitPanelMeta: Meta = {
   component: SplitPanelComponent,
 };
 
 export default SplitPanelMeta;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  gap: ${theme.space12};
-`;
-
-const StyledSplitPanel = styled(SplitPanelComponent)`
-  .pane {
-    &:last-child,
-    &:last-child > div {
-      border-radius: 0 ${theme.radius8} ${theme.radius8} 0;
-    }
-    &:first-child,
-    &:first-child > div {
-      border-radius: ${theme.radius8} 0 0 ${theme.radius8};
-    }
-  }
-`;
-
-const StyledItem = styled.div`
-  border: 1px solid ${theme.gray300};
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 type SplitPanelProps = Parameters<typeof SplitPanelComponent>[0];
 
@@ -50,14 +24,14 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   const [sizes, setSizes] = useState<number[]>([0.2, 0.8]);
 
   const renderSplitItem = ({ id }: { id: number }) => (
-    <StyledItem key={id}>
+    <div key={id} className={styles.styledItem}>
       <Text type="header">{id}</Text>
-    </StyledItem>
+    </div>
   );
 
   return (
     <VStack>
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         <Button onClick={() => setIsCollapse(!isCollapse)}>
           {isCollapse ? `Collapse all (Except the first one)` : `Expand all`}
         </Button>
@@ -78,8 +52,9 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
         >
           Remove item
         </Button>
-      </StyledWrapper>
-      <StyledSplitPanel
+      </div>
+      <SplitPanelComponent
+        className={styles.styledSplitPanel}
         collapseAll={isCollapse}
         {...props}
         onSetSizes={setSizes}
@@ -91,7 +66,7 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
         {Array.from({ length: itemQty }).map((_, index) =>
           renderSplitItem({ id: index + 3 }),
         )}
-      </StyledSplitPanel>
+      </SplitPanelComponent>
     </VStack>
   );
 };

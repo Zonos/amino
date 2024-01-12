@@ -1,7 +1,6 @@
 import { Fragment, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
@@ -13,22 +12,13 @@ import { MinusIcon } from 'src/icons/MinusIcon';
 import { PlusIcon } from 'src/icons/PlusIcon';
 import type { Size } from 'src/types/Size';
 
+import styles from './Composer.stories.module.scss';
+
 const ComposerMeta: Meta = {
   component: () => <div />,
 };
 
 export default ComposerMeta;
-
-const StyledActions = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`;
-
-const StyledHStack = styled(HStack)`
-  grid-auto-columns: 200px;
-  align-items: center;
-`;
 
 const InputOption = ({
   size,
@@ -163,7 +153,7 @@ const Template: StoryFn<Props> = ({
   const renderDialogOptions = (
     options: typeof inputOptions | typeof selectOptions | typeof buttonOptions,
   ) => (
-    <StyledHStack spacing={8}>
+    <HStack className={styles.styledHStack} spacing={8}>
       {options.map(x => (
         // eslint-disable-next-line
         <div
@@ -179,12 +169,12 @@ const Template: StoryFn<Props> = ({
           <x.value />
         </div>
       ))}
-    </StyledHStack>
+    </HStack>
   );
   return (
     <>
       <VStack>
-        <StyledActions>
+        <div className={styles.styledActions}>
           Column
           <Button
             disabled={!columns}
@@ -205,10 +195,10 @@ const Template: StoryFn<Props> = ({
             icon={<PlusIcon size={16} />}
             onClick={() => setRows(rows + 1)}
           />
-        </StyledActions>
+        </div>
 
         {range(rows).map(row => (
-          <StyledHStack key={row} spacing={8}>
+          <HStack key={row} className={styles.styledHStack} spacing={8}>
             {range(columns).map(column => {
               const rowCol = `${column}-${row}`;
               const Component = [
@@ -230,7 +220,7 @@ const Template: StoryFn<Props> = ({
                 </Fragment>
               );
             })}
-          </StyledHStack>
+          </HStack>
         ))}
       </VStack>
       <Dialog

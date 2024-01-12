@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
@@ -10,9 +9,7 @@ import {
 } from 'src/components/select/CountrySelect';
 import type { CountryOption } from 'src/types/Country';
 
-const StyledWrapper = styled.div`
-  width: 412px;
-`;
+import styles from './CountrySelect.stories.module.scss';
 
 type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';
 
@@ -20,9 +17,9 @@ const CountrySelectMeta: Meta = {
   component: CountrySelect,
   decorators: [
     Component => (
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         <Component />
-      </StyledWrapper>
+      </div>
     ),
   ],
 };

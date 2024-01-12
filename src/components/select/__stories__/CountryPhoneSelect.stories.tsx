@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
@@ -11,17 +10,15 @@ import {
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { CountryOption } from 'src/types/Country';
 
-const StyledWrapper = styled.div`
-  width: 412px;
-`;
+import styles from './CountryPhoneSelect.stories.module.scss';
 
 const CountryPhoneSelectMeta: Meta = {
   component: CountryPhoneSelect,
   decorators: [
     Component => (
-      <StyledWrapper>
+      <div className={styles.styledWrapper}>
         <Component />
-      </StyledWrapper>
+      </div>
     ),
   ],
 };

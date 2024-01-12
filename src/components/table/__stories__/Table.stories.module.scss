@@ -1,0 +1,45 @@
+@use 'theme';
+
+.styledTable {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.leftIconLabel {
+  display: flex;
+  align-items: center;
+  span {
+    margin-left: 12px;
+  }
+}
+
+.rightIconLabel {
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 12px;
+  }
+}
+
+.expandedItemCard {
+  padding: 24px;
+  padding-left: 44px;
+  border: theme.$amino-border;
+  border-radius: 6px;
+
+  &.expandedTableCard {
+    padding: 8px;
+    padding-left: 44px;
+  }
+}
+
+.attributesWrapper {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.attributeLabel {
+  width: 177px;
+}

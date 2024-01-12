@@ -1,83 +1,27 @@
 import type { Meta } from '@storybook/react';
-import styled from 'styled-components';
 
 import { VStack } from 'src/components/stack/VStack';
 
-const StyledWrapper = styled.div`
-  width: 412px;
-  border: 1px solid gray;
-`;
-
-const ValueContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-wrap: nowrap;
-  padding: 2px 8px;
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
-`;
-
-const MultiValue = styled.div`
-  background-color: hsl(0, 0%, 90%);
-  border-radius: 2px;
-  display: flex;
-  margin: 2px;
-  box-sizing: border-box;
-`;
-
-const Label = styled.div`
-  border-radius: 2px;
-  color: hsl(0, 0%, 20%);
-  font-size: 85%;
-  padding: 3px;
-  padding-left: 6px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  box-sizing: border-box;
-`;
-
-const Remove = styled.div`
-  align-items: center;
-  border-radius: 2px;
-  display: flex;
-  padding-left: 4px;
-  padding-right: 4px;
-  box-sizing: border-box;
-`;
-
-const Container = styled.div`
-  display: flex;
-  overflow: hidden;
-`;
-
-const SecondMultiValue = styled.div`
-  background-color: hsl(0, 0%, 90%);
-  border-radius: 2px;
-  display: flex;
-  margin: 2px;
-  box-sizing: border-box;
-`;
+import styles from './ScratchPad.stories.module.scss';
 
 const Option = ({ label }: { label: string }) => (
-  <MultiValue>
-    <Label>{label}</Label>
-    <Remove>X</Remove>
-  </MultiValue>
+  <div className={styles.multiValue}>
+    <div className={styles.label}>{label}</div>
+    <div className={styles.remove}>X</div>
+  </div>
 );
 
 const SecondOption = ({ label }: { label: string }) => (
-  <SecondMultiValue>
-    <Label>{label}</Label>
-    <Remove>X</Remove>
-  </SecondMultiValue>
+  <div className={styles.secondMultiValue}>
+    <div className={styles.label}>{label}</div>
+    <div className={styles.remove}>X</div>
+  </div>
 );
 
 export const ScratchPad = () => (
   <VStack>
-    <StyledWrapper>
-      <ValueContainer>
+    <div className={styles.styledWrapper}>
+      <div className={styles.valueContainer}>
         <Option label="France" />
         <Option label="Germany" />
         <Option label="Algeria" />
@@ -87,10 +31,10 @@ export const ScratchPad = () => (
         <Option label="Greenland" />
         <Option label="Iceland" />
         <Option label="United States" />
-      </ValueContainer>
-    </StyledWrapper>
-    <StyledWrapper>
-      <Container>
+      </div>
+    </div>
+    <div className={styles.styledWrapper}>
+      <div className={styles.container}>
         <SecondOption label="France" />
         <SecondOption label="Germany" />
         <SecondOption label="Algeria" />
@@ -100,8 +44,8 @@ export const ScratchPad = () => (
         <SecondOption label="Greenland" />
         <SecondOption label="Iceland" />
         <SecondOption label="United States" />
-      </Container>
-    </StyledWrapper>
+      </div>
+    </div>
   </VStack>
 );
 

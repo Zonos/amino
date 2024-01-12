@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
@@ -12,9 +11,7 @@ import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { type SelectOption } from 'src/types/SelectOption';
 
-const StyledWrapper = styled.div`
-  width: 412px;
-`;
+import styles from './Select.stories.module.scss';
 
 const SelectMeta: Meta = {
   component: Select,
@@ -34,9 +31,9 @@ const SelectTemplate: StoryFn<SelectProps> = ({
 }: SelectProps) => {
   const [value, setValue] = useState(_value);
   return (
-    <StyledWrapper>
+    <div className={styles.styledWrapper}>
       <Select {...props} onChange={setValue} value={value} />
-    </StyledWrapper>
+    </div>
   );
 };
 
@@ -187,17 +184,6 @@ Customized.args = {
   ],
 };
 
-const CenteredDiv = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledVStack = styled(VStack)`
-  margin: 10px 0;
-`;
-
 export const ScrollableDialogSelect = () => {
   const [value, setValue] = useState<SelectOption | null>({
     label: 'US Dollar (USD)',
@@ -206,10 +192,10 @@ export const ScrollableDialogSelect = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <CenteredDiv>
+    <div className={styles.centeredDiv}>
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog label="Selects" onClose={() => setOpen(false)} open={open}>
-        <StyledVStack>
+        <VStack className={styles.styledVStack}>
           <span>
             Bacon ipsum dolor amet tongue ham hock pork chop, burgdoggen shank
             beef ribs beef buffalo cupim pork loin pastrami drumstick boudin.
@@ -257,9 +243,9 @@ export const ScrollableDialogSelect = () => {
             options={currencyOptions}
             value={value}
           />
-        </StyledVStack>
+        </VStack>
       </Dialog>
-    </CenteredDiv>
+    </div>
   );
 };
 

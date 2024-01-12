@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
 import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Dialog.stories.module.scss';
 
 const DialogMeta: Meta = {
   argTypes: {
@@ -33,17 +33,6 @@ const DialogMeta: Meta = {
 
 export default DialogMeta;
 
-const StyledDialog = styled(Dialog)<{ $height: number }>`
-  height: ${p => p.$height}px;
-`;
-
-const CenteredDiv = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Template: StoryFn<DialogProps & { height: number }> = ({
   actions,
   children,
@@ -55,11 +44,14 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <CenteredDiv>
+    <div
+      className={styles.centeredDiv}
+      style={{ '--amino-dialog-stories-height': height }}
+    >
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <StyledDialog
+      <Dialog
+        className={styles.styledDialog}
         {...rest}
-        $height={height}
         actions={actions}
         label={label}
         leftActions={leftActions}
@@ -68,8 +60,8 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
         width={width}
       >
         {children}
-      </StyledDialog>
-    </CenteredDiv>
+      </Dialog>
+    </div>
   );
 };
 
@@ -115,16 +107,6 @@ WithSubtitle.parameters = {
   },
 };
 
-const HoverDiv = styled.div`
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-
-  &:hover {
-    background-color: ${theme.hoverColor};
-  }
-`;
-
 export const WithHover = Template.bind({});
 WithHover.args = {
   actions: (
@@ -137,7 +119,7 @@ WithHover.args = {
       </Button>
     </>
   ),
-  children: <HoverDiv>Hover me</HoverDiv>,
+  children: <div className={styles.hoverDiv}>Hover me</div>,
   label: 'With subtitle',
   subtitle:
     'Choose your preferred units to be shown across the Zonos Dashboard.',
@@ -149,12 +131,6 @@ WithHover.parameters = {
     url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=3602%3A67909',
   },
 };
-
-const StyledTitle = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
 
 export const WithLink = Template.bind({});
 WithLink.args = {
@@ -174,10 +150,10 @@ WithLink.args = {
     </div>
   ),
   label: (
-    <StyledTitle>
+    <div className={styles.styledTitle}>
       <span>StyledDialog title</span>
       <Badge color="blue">With a link</Badge>
-    </StyledTitle>
+    </div>
   ),
   width: 460,
 };
@@ -275,10 +251,12 @@ export const WithInput = ({ height }: { height: number }) => {
   const [value, setValue] = useState('');
 
   return (
-    <CenteredDiv>
+    <div
+      className={styles.centeredDiv}
+      style={{ '--amino-dialog-stories-height': height }}
+    >
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <StyledDialog
-        $height={height}
+      <Dialog
         actions={
           <>
             <Button onClick={() => setOpen(false)} size="md" variant="subtle">
@@ -289,6 +267,7 @@ export const WithInput = ({ height }: { height: number }) => {
             </Button>
           </>
         }
+        className={styles.styledDialog}
         label="With an input"
         onClose={() => setOpen(false)}
         open={open}
@@ -299,7 +278,7 @@ export const WithInput = ({ height }: { height: number }) => {
           onChange={e => setValue(e.target.value)}
           value={value}
         />
-      </StyledDialog>
-    </CenteredDiv>
+      </Dialog>
+    </div>
   );
 };

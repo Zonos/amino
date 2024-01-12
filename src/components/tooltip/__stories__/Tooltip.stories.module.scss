@@ -1,0 +1,16 @@
+.transparentCoverSheet {
+  /* framer-motion inlines the opacity style */
+  opacity: 0.9 !important;
+}
+
+.hWrapper {
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+}
+
+.vWrapper {
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+}

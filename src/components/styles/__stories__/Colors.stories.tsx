@@ -1,10 +1,11 @@
 import type { Meta } from '@storybook/react';
-import styled from 'styled-components';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
+
+import styles from './Colors.stories.module.scss';
 
 const meta: Meta = {
   parameters: {
@@ -18,34 +19,10 @@ const meta: Meta = {
 
 export default meta;
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, calc(33% - ${theme.space24}));
-  gap: ${theme.space24};
-  align-items: center;
-`;
-
-const ColorWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: ${theme.space24};
-  text-align: center;
-`;
-
-const StyledColorIntensity = styled.div<{
-  $background: Color;
-  $color: Color;
-}>`
-  color: ${p => theme[p.$color]};
-  font-size: ${theme.fontSizeS};
-  padding: ${theme.space24};
-  background: ${p => theme[p.$background]};
-`;
-
 export const ColorPalette = () => (
-  <Wrapper>
+  <div className={styles.wrapper}>
     {colorPrefixes.map(color => (
-      <ColorWrapper key={color}>
+      <div key={color} className={styles.colorWrapper}>
         <Text type="title">{color.toUpperCase()}</Text>
         <VStack spacing={0}>
           {(color !== 'gray' && color !== 'glass'
@@ -54,18 +31,22 @@ export const ColorPalette = () => (
           ).map(value => {
             const aminoColor: Color = `${color}${value}` as Color;
             return (
-              <div key={aminoColor}>
-                <StyledColorIntensity
-                  $background={aminoColor}
-                  $color={Number(value) <= 500 ? 'gray1200' : 'gray0'}
-                >
+              <div
+                key={aminoColor}
+                style={{
+                  '--amino-colors-stories-background': theme[aminoColor],
+                  '--amino-colors-stories-color':
+                    Number(value) <= 500 ? theme.gray1200 : theme.gray0,
+                }}
+              >
+                <div className={styles.styledColorIntensity}>
                   <Text>{value}</Text>
-                </StyledColorIntensity>
+                </div>
               </div>
             );
           })}
         </VStack>
-      </ColorWrapper>
+      </div>
     ))}
-  </Wrapper>
+  </div>
 );

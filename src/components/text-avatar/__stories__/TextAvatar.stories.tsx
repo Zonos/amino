@@ -1,23 +1,17 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import {
   type TextAvatarProps,
   TextAvatar as TextAvatarComponent,
 } from 'src/components/text-avatar/TextAvatar';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './TextAvatar.stories.module.scss';
 
 const TextAvatarMeta: Meta = {
   component: TextAvatarComponent,
 };
 
 export default TextAvatarMeta;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${theme.space16};
-`;
 
 // Just a crazy function to make unique strings
 const codes = [...Array(250).keys()].map(
@@ -27,11 +21,11 @@ const codes = [...Array(250).keys()].map(
 );
 
 const Template: StoryFn<TextAvatarProps> = () => (
-  <Wrapper>
+  <div className={styles.wrapper}>
     {codes.map(n => (
       <TextAvatarComponent key={n} label={n} />
     ))}
-  </Wrapper>
+  </div>
 );
 
 export const TextAvatar = Template.bind({});

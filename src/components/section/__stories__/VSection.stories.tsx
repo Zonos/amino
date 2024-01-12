@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
@@ -7,7 +6,8 @@ import { ListItem } from 'src/components/list-item/ListItem';
 import { type VSectionProps, VSection } from 'src/components/section/VSection';
 import { VStack } from 'src/components/stack/VStack';
 import { CartIcon } from 'src/icons/CartIcon';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './VSection.stories.module.scss';
 
 const VSectionMeta: Meta = {
   component: VSection,
@@ -19,14 +19,10 @@ const Template: StoryFn<VSectionProps> = (props: VSectionProps) => (
   <VSection {...props} />
 );
 
-const StyledDiv = styled.div`
-  border: 1px solid ${theme.gray1200};
-`;
-
 export const BasicVSection = Template.bind({});
 BasicVSection.args = {
   children: (
-    <StyledDiv>
+    <div className={styles.styledDiv}>
       <h2>VSection Contents</h2>
       <p>
         Bacon ipsum dolor amet salami bresaola flank burgdoggen strip steak.
@@ -46,7 +42,7 @@ BasicVSection.args = {
         ham ball tip pork ham hock brisket salami. Chicken picanha salami, rump
         frankfurter ground round pork belly kevin.
       </p>
-    </StyledDiv>
+    </div>
   ),
   label: 'My VSection',
   sublabel: 'Sublabel',

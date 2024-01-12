@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Button } from 'src/components/button/Button';
 import {
@@ -11,35 +10,14 @@ import {
 import { useRipple } from 'src/components/button/useRipple';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { VStack } from 'src/components/stack/VStack';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Ripple.stories.module.scss';
 
 const RippleMeta: Meta = {
   component: RippleGroup,
 };
 
 export default RippleMeta;
-
-const BackgroundDiv = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.3;
-  background-size: 400% 400%;
-`;
-
-const StyledDiv = styled.div`
-  position: relative;
-  cursor: crosshair;
-  border: ${theme.border};
-  border-radius: ${theme.radius6};
-  width: 400px;
-  height: 400px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 export const Ripple: StoryFn<typeof RippleGroup> = props => {
   const rippleRef = useRef<RippleActions>(null);
@@ -53,11 +31,11 @@ export const Ripple: StoryFn<typeof RippleGroup> = props => {
 
   return (
     <VStack>
-      <StyledDiv {...getRippleHandlers({})}>
-        <BackgroundDiv />
+      <div className={styles.styledDiv} {...getRippleHandlers({})}>
+        <div className={styles.backgroundDiv} />
         <div>Click me!</div>
         {rippleEnabled && <RippleGroup ref={rippleRef} {...props} />}
-      </StyledDiv>
+      </div>
       <Checkbox
         checked={controlRippleEnabled}
         label="Ripple enabled"

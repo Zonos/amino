@@ -1,0 +1,15 @@
+@use 'theme';
+
+$box-shadow: var(--amino-box-shadow-stories-box-shadow);
+
+.styledBoxShadowWrapper {
+  margin-bottom: 40px;
+  box-shadow: $box-shadow;
+  background: theme.$amino-gray-100;
+  padding: 16px 24px;
+}
+
+.styledWrapper {
+  background: theme.$amino-gray-0;
+  padding: 8px 24px;
+}

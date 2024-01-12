@@ -1,0 +1,22 @@
+@use 'theme';
+
+.hWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 16px 0;
+  align-items: center;
+}
+
+.vWrapper {
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+}
+
+.buttonRowLabel {
+  border-bottom: 1px solid theme.$amino-gray-1200;
+  margin-bottom: 8px;
+}
+

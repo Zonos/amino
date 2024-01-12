@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
+
+import styles from './Checkbox.stories.module.scss';
 
 const CheckboxMeta: Meta = {
   component: Checkbox,
@@ -15,15 +16,6 @@ const CheckboxMeta: Meta = {
     },
   },
 };
-
-const LabelComponent = styled.div`
-  width: 422px;
-
-  a {
-    color: -webkit-link;
-    text-decoration: underline;
-  }
-`;
 
 export default CheckboxMeta;
 
@@ -72,7 +64,7 @@ CheckboxWithSubstitueLabel.args = {
   icon: <Default height={16} width={16} />,
   label: 'Input label',
   labelComponent: (
-    <LabelComponent>
+    <div className={styles.labelComponent}>
       I have read and agree to the{' '}
       <a
         href="https://docs.zonos.com/legal"
@@ -106,6 +98,6 @@ CheckboxWithSubstitueLabel.args = {
         Tariff
       </a>
       .
-    </LabelComponent>
+    </div>
   ),
 };

@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 import { type IntrospectionQuery, buildClientSchema } from 'graphql';
-import styled from 'styled-components';
 
 import { GraphMatrix as GraphMatrixComponent } from 'src/components/graph-matrix/GraphMatrix';
 import { HStack } from 'src/components/stack/HStack';
@@ -11,6 +10,8 @@ import { BookmarkIcon } from 'src/icons/BookmarkIcon';
 import { BookmarkOffIcon } from 'src/icons/BookmarkOffIcon';
 import { handleFetch } from 'src/utils/handleFetch';
 import { useSwr } from 'src/utils/hooks/useSwr';
+
+import styles from './GraphMatrix.stories.module.scss';
 
 const FileUploadMeta: Meta = {
   component: GraphMatrixComponent,
@@ -23,18 +24,6 @@ const FileUploadMeta: Meta = {
 };
 
 export default FileUploadMeta;
-
-const LoadingWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledWrapper = styled.div`
-  height: 100%;
-`;
 
 export const GraphMatrix: StoryFn<typeof GraphMatrixComponent> = () => {
   const [query, setQuery] = useState('');
@@ -75,15 +64,15 @@ export const GraphMatrix: StoryFn<typeof GraphMatrixComponent> = () => {
   }, [schemaData]);
 
   if (schemaLoading) {
-    return <LoadingWrapper>Loading schema...</LoadingWrapper>;
+    return <div className={styles.loadingWrapper}>Loading schema...</div>;
   }
 
   if (!fetchedSchema) {
-    return <LoadingWrapper>Fail to load schema</LoadingWrapper>;
+    return <div className={styles.loadingWrapper}>Fail to load schema</div>;
   }
 
   return (
-    <StyledWrapper>
+    <div className={styles.styledWrapper}>
       <HStack>
         <Textarea
           label="Query"
@@ -106,7 +95,9 @@ export const GraphMatrix: StoryFn<typeof GraphMatrixComponent> = () => {
               {toolbarState ? <BookmarkIcon /> : <BookmarkOffIcon />}
             </GraphMatrixComponent.ToolbarButton>
           }
-          loadingComponent={<LoadingWrapper>Loading...</LoadingWrapper>}
+          loadingComponent={
+            <div className={styles.loadingWrapper}>Loading...</div>
+          }
           onEditQuery={setQuery}
           onEditVariables={setVariables}
           query={query}
@@ -116,6 +107,6 @@ export const GraphMatrix: StoryFn<typeof GraphMatrixComponent> = () => {
           variables={variables}
         />
       )}
-    </StyledWrapper>
+    </div>
   );
 };

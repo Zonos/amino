@@ -1,0 +1,12 @@
+$height: var(--amino-announcement-dialog-stories-height);
+
+.styledAnnouncementDialog {
+  height: $height;
+}
+
+.centeredDiv {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

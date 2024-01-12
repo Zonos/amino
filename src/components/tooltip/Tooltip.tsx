@@ -47,13 +47,13 @@ const StyledTooltip = muiStyled(
     />
   ),
 )(({ background }) => ({
-  [`&& .${tooltipClasses.tooltip}`]: {
+  [`& .${tooltipClasses.tooltip}.${tooltipClasses.tooltip}`]: {
     backgroundColor: background ? theme[background] : theme.gray1200,
     borderRadius: theme.radius10,
     boxShadow: theme.v3ShadowLarge,
     padding: theme.space12,
   },
-  [`&&[data-theme='night']`]: {
+  [`&[data-theme='night']`]: {
     [`.${tooltipClasses.tooltip}`]: {
       backgroundColor: background ? theme[background] : theme.gray50,
     },
@@ -73,6 +73,10 @@ export const Tooltip = ({
   ...rest
 }: TooltipProps) => {
   const { aminoTheme } = useAminoTheme();
+
+  // Text styles are overwriting MuiTooltip styles, causing text to be incorrect color
+  const textColor = themeOverride === 'night' ? 'gray1200' : 'gray0';
+
   if (showTooltip) {
     return (
       <StyledTooltip
@@ -84,12 +88,14 @@ export const Tooltip = ({
         title={
           <VStack className={styles.styledVStack} spacing={8}>
             {title && (
-              <Text isUppercase={false} type="small-header">
+              <Text color={textColor} isUppercase={false} type="small-header">
                 {title}
               </Text>
             )}
             {typeof subtitle === 'string' ? (
-              <Text type="caption">{subtitle}</Text>
+              <Text color={textColor} type="caption">
+                {subtitle}
+              </Text>
             ) : (
               subtitle
             )}

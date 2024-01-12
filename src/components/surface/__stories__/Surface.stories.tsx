@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Card } from 'src/components/card/Card';
 import { Surface as SurfaceComponent } from 'src/components/surface/Surface';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Surface.stories.module.scss';
 
 const StyleMeta: Meta = {
   component: SurfaceComponent,
@@ -12,17 +12,11 @@ const StyleMeta: Meta = {
 
 export default StyleMeta;
 
-const HoverCard = styled(Card)`
-  &:hover {
-    background-color: ${theme.hoverColor};
-  }
-`;
-
 const Template: StoryFn = () => (
   <SurfaceComponent>
-    <HoverCard>
+    <Card className={styles.hoverCard}>
       <Text>Hello</Text>
-    </HoverCard>
+    </Card>
   </SurfaceComponent>
 );
 

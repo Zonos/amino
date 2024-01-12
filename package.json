@@ -15,7 +15,7 @@
     "build:ci": "pnpm build:theme && pnpm build:scss:types && pnpm build:ts && pnpm build:dts",
     "build:dts": "tspc -p ./tsconfig.emitDeclarationOnly.json",
     "build:prep:publish": "ts-node build-utils/setupPackage.ts",
-    "build:scss:types": "pnpm typed-scss-modules src/components --implementation sass --includePaths src/styles",
+    "build:scss:types": "pnpm typed-scss-modules src/ --implementation sass --includePaths src/styles",
     "build:theme": "ts-node build-utils/css/buildTheme.ts",
     "build:ts": "ts-node build-utils/build.ts",
     "build": "pnpm install && pnpm ci:concurrent && pnpm build:theme && pnpm build:ts && pnpm build:dts",
@@ -112,7 +112,6 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "@types/react-simple-maps": "^3.0.0",
-    "@types/styled-components": "5.1.26",
     "@types/topojson-specification": "^1.0.2",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
@@ -166,7 +165,6 @@
     "storybook": "^7.5.1",
     "storybook-addon-designs": "7.0.0-beta.2",
     "style-loader": "^3.3.3",
-    "styled-components": "5.3.5",
     "svgo": "^3.0.2",
     "swr": "^2.2.0",
     "ts-node": "^10.9.1",
@@ -193,7 +191,6 @@
     "react": "^17.x || ^18.x",
     "react-dom": "^17.x || ^18.x",
     "react-tooltip": "^4.x",
-    "styled-components": "^5.x",
     "swr": "2.x"
   }
 }

@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Card } from 'src/components/card/Card';
 import { NavigationGroup as NavigationGroupStory } from 'src/components/layout/__stories__/NavigationGroup.stories';
@@ -11,7 +10,8 @@ import {
 } from 'src/components/layout/NavigationGroup';
 import { HStack } from 'src/components/stack/HStack';
 import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
-import { theme } from 'src/styles/constants/theme';
+
+import styles from './Layout.stories.module.scss';
 
 const LayoutMeta: Meta = {
   argTypes: {
@@ -84,14 +84,6 @@ const Template: StoryFn<LayoutProps> = ({
   />
 );
 
-const StyledHeader = styled.div`
-  padding: 0 ${theme.space24};
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: ${theme.space24};
-`;
-
 export const BasicLayout = Template.bind({});
 BasicLayout.args = {
   content: (
@@ -100,9 +92,9 @@ BasicLayout.args = {
     </HStack>
   ),
   headerContent: (
-    <StyledHeader>
+    <div className={styles.styledHeader}>
       <ZonosIcon size={110} />
-    </StyledHeader>
+    </div>
   ),
 };
 

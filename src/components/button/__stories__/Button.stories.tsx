@@ -1,14 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import styled from 'styled-components';
 
 import { type ButtonProps, Button } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';
-import { theme } from 'src/styles/constants/theme';
 
-// To test interaction with styled components
-const StyledButton = styled(Button)``;
+import styles from './Button.stories.module.scss';
 
 const ButtonMeta: Meta = {
   component: Button,
@@ -22,25 +19,6 @@ const ButtonMeta: Meta = {
 
 export default ButtonMeta;
 
-const HWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: ${theme.space24};
-  margin: ${theme.space16} 0;
-  align-items: center;
-`;
-const VWrapper = styled.div`
-  display: flex;
-  gap: 40px;
-  flex-direction: column;
-`;
-
-const ButtonRowLabel = styled(Text)`
-  border-bottom: 1px solid ${theme.gray1200};
-  margin-bottom: ${theme.space8};
-`;
-
 const ButtonRow = ({
   disabled,
   label,
@@ -49,8 +27,10 @@ const ButtonRow = ({
   ...props
 }: ButtonProps & { label: string }) => (
   <div>
-    <ButtonRowLabel type="bold-subheader">{label}</ButtonRowLabel>
-    <HWrapper>
+    <Text className={styles.buttonRowLabel} type="bold-subheader">
+      {label}
+    </Text>
+    <div className={styles.hWrapper}>
       <Button<'button'>
         {...props}
         disabled={disabled}
@@ -92,7 +72,7 @@ const ButtonRow = ({
         tag="div"
         variant={variant}
       />
-      <StyledButton
+      <Button
         disabled={disabled}
         loading={loading}
         onClick={e => e.preventDefault()}
@@ -101,8 +81,8 @@ const ButtonRow = ({
         variant={variant}
       >
         Div Button
-      </StyledButton>
-      <StyledButton
+      </Button>
+      <Button
         disabled={disabled}
         href="#"
         loading={loading}
@@ -112,7 +92,7 @@ const ButtonRow = ({
         variant={variant}
       >
         Anchor tag Button
-      </StyledButton>
+      </Button>
       <Button
         disabled={disabled}
         loading={loading}
@@ -122,8 +102,8 @@ const ButtonRow = ({
       >
         Night
       </Button>
-    </HWrapper>
-    <HWrapper>
+    </div>
+    <div className={styles.hWrapper}>
       <Button
         {...props}
         disabled={disabled}
@@ -146,7 +126,7 @@ const ButtonRow = ({
         size="sm"
         variant={variant}
       />
-    </HWrapper>
+    </div>
     <HStack>
       <Button
         {...props}
@@ -170,11 +150,11 @@ const ButtonRow = ({
 );
 
 const Template: StoryFn<ButtonProps> = props => (
-  <VWrapper>
+  <div className={styles.vWrapper}>
     <ButtonRow {...props} label="Default" />
     <ButtonRow {...props} disabled label="Disabled" />
     <ButtonRow {...props} label="Loading" loading />
-  </VWrapper>
+  </div>
 );
 
 export const Default = Template.bind({});
