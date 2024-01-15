@@ -34,7 +34,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     },
     ref,
   ) => (
-    <BaseDialog {...props} onClose={onClose}>
+    <BaseDialog {...props} onClose={onClose} style={style}>
       <div className={styles.header}>
         <div className={styles.title}>
           <Text type="title">{label}</Text>

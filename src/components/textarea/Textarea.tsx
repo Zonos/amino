@@ -48,6 +48,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       label,
       maxRows,
       rows,
+      style,
       value,
       width,
       ...props
@@ -72,7 +73,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           'amino-input-wrapper',
           disabled && styles.disabled,
         )}
-        style={{ '--amino-textarea-width': width || '100%' }}
+        style={{ ...style, '--amino-textarea-width': width || '100%' }}
       >
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <div

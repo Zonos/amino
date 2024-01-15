@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import { Radio } from 'src/components/radio/Radio';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './RadioGroup.module.scss';
 
@@ -11,8 +12,7 @@ export type RadioGroupItem<T extends string = string> = {
   value: T;
 };
 
-export type RadioGroupProps<T extends string = string> = {
-  className?: string;
+export type RadioGroupProps<T extends string = string> = BaseProps & {
   disabled?: boolean;
   initialValue?: string;
   items: RadioGroupItem<T>[];
@@ -25,6 +25,7 @@ export const RadioGroup = <T extends string = string>({
   initialValue,
   items,
   onChange,
+  style,
 }: RadioGroupProps<T>) => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -53,5 +54,9 @@ export const RadioGroup = <T extends string = string>({
     />
   ));
 
-  return <div className={clsx(className, styles.radioContainer)}>{radios}</div>;
+  return (
+    <div className={clsx(className, styles.radioContainer)} style={style}>
+      {radios}
+    </div>
+  );
 };

@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './RichCheckbox.module.scss';
 
@@ -16,13 +17,22 @@ type RichCheckboxItemType = {
   value: string;
 };
 
-export type RichCheckboxProps = {
+export type RichCheckboxProps = BaseProps & {
   items: RichCheckboxItemType[];
   onClick: (newVal: string) => void;
 };
 
-export const RichCheckbox = ({ items, onClick }: RichCheckboxProps) => (
-  <VStack className={styles.styledVStack} spacing={16}>
+export const RichCheckbox = ({
+  className,
+  items,
+  onClick,
+  style,
+}: RichCheckboxProps) => (
+  <VStack
+    className={clsx(className, styles.styledVStack)}
+    spacing={16}
+    style={style}
+  >
     {items.map(item => {
       const { checked, icon, label, subtitle, value } = item;
       return (

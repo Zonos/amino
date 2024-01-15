@@ -15,6 +15,7 @@ import type {
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { type HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
@@ -23,7 +24,7 @@ export type MultiSelectProps<
   Option extends SelectOption = SelectOption,
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> = {
+> = BaseProps & {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   hasGroups?: boolean;
   icon?: ReactNode;

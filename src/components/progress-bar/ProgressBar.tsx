@@ -16,6 +16,7 @@ export const ProgressBar = ({
   className,
   colorStyle = 'blue600',
   progress = 0,
+  style,
 }: ProgressBarProps) => {
   const validateProgress = () => {
     if (progress < 0) {
@@ -55,6 +56,7 @@ export const ProgressBar = ({
     <div
       className={clsx(className, styles.base)}
       style={{
+        ...style,
         '--amino-progress-bar-background-color': getBarColor() || '',
         '--amino-progress-bar-width': `${validatedProgress}%`,
       }}
