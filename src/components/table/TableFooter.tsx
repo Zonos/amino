@@ -1,10 +1,17 @@
 import type { ReactNode } from 'react';
 
-export type TableFooterProps = {
+import type { BaseProps } from 'src/types/BaseProps';
+
+export type TableFooterProps = BaseProps & {
   children: ReactNode;
-  className?: string;
 };
 
-export const TableFooter = ({ children, className }: TableFooterProps) => (
-  <tfoot className={className}>{children}</tfoot>
+export const TableFooter = ({
+  children,
+  className,
+  style,
+}: TableFooterProps) => (
+  <tfoot className={className} style={style}>
+    {children}
+  </tfoot>
 );

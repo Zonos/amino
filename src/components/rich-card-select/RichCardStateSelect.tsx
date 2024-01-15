@@ -17,6 +17,7 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
   className,
   onClick,
   states,
+  style,
 }: RichCardStateSelectProps<T>) => {
   const regions = Array.from(new Set(states.map(state => state.region)));
 
@@ -25,7 +26,7 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
   regions.sort((a, b) => regionOrder.indexOf(a) - regionOrder.indexOf(b));
 
   return (
-    <VStack className={className} spacing={24}>
+    <VStack className={className} spacing={24} style={style}>
       {regions.map(region => (
         <div key={region}>
           <VStack spacing={16}>

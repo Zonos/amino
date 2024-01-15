@@ -3,11 +3,11 @@ import type { ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 
 import { Collapse } from 'src/components/collapse/Collapse';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './NavigationGroup.module.scss';
 
-export type NavigationItemProps = {
-  className?: string;
+export type NavigationItemProps = BaseProps & {
   content: ReactNode;
   icon?: ReactNode;
   /**
@@ -16,9 +16,8 @@ export type NavigationItemProps = {
   isActive?: boolean;
 };
 
-export type NavigationGroupProps = {
+export type NavigationGroupProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   /**
    * @default false
    */
@@ -32,6 +31,7 @@ export const NavigationItem = ({
   content,
   icon,
   isActive = false,
+  style,
 }: NavigationItemProps) => (
   <div
     className={clsx(
@@ -39,6 +39,7 @@ export const NavigationItem = ({
       styles.styledNavigationItem,
       isActive && styles.active,
     )}
+    style={style}
   >
     {icon && <div className={styles.styledNavigationItemIcon}>{icon}</div>}
     {content}
@@ -50,8 +51,9 @@ export const NavigationGroup = ({
   className,
   collapsed = false,
   content,
+  style,
 }: NavigationGroupProps) => (
-  <div className={clsx(className, styles.wrapper)}>
+  <div className={clsx(className, styles.wrapper)} style={style}>
     <div
       className={clsx(styles.styledItemWrapper, !collapsed && styles.collapsed)}
     >

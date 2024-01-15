@@ -6,6 +6,7 @@ import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
+import type { BaseProps } from 'src/types/BaseProps';
 import { type flattenRow } from 'src/utils/flattenRow';
 
 import styles from './NestedDataTable.module.scss';
@@ -18,7 +19,7 @@ export type CustomColumnCells<TRow extends Record<string, unknown>> = {
   [key in keyof TRow]?: ColumnCell<TRow>;
 };
 
-type Props<TRow extends Record<string, unknown>> = {
+type Props<TRow extends Record<string, unknown>> = BaseProps & {
   currentPage?: number;
   customColumnCells?: CustomColumnCells<TRow>;
   /**
@@ -48,6 +49,7 @@ export const NestedDataTable = <
   isFetching,
   loadingComponent,
   restState,
+  style,
   tableData,
   title,
 }: Props<TRow>) => {
@@ -86,7 +88,7 @@ export const NestedDataTable = <
   };
 
   return (
-    <div className={styles.styledPivotTableContentWrapper}>
+    <div className={styles.styledPivotTableContentWrapper} style={style}>
       <div className={styles.styledTableHeader}>
         {!!title && <Text type="header">{title}</Text>}
         {/* Only show pagination if handlePagination and currentPage is provided */}

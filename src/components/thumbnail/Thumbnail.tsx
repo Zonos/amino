@@ -34,6 +34,7 @@ export const Thumbnail = ({
   intent = 'full',
   shape = 'round',
   size = 32,
+  style,
 }: ThumbnailProps) => (
   <div
     className={clsx(
@@ -43,6 +44,7 @@ export const Thumbnail = ({
       intent === 'outline' && styles.outline,
     )}
     style={{
+      ...style,
       '--amino-thumbnail-background-color': theme[`${color}100`],
       '--amino-thumbnail-border-radius': thumbnailShapes[shape],
       '--amino-thumbnail-size': `${size}px`,

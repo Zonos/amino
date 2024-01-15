@@ -1,5 +1,7 @@
 import type { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
+import clsx from 'clsx';
+
 import { SearchInput } from 'src/components/input/SearchInput';
 import { type NavigationGroupProps } from 'src/components/layout/NavigationGroup';
 import { theme } from 'src/styles/constants/theme';
@@ -30,11 +32,13 @@ export const Layout = ({
   logoSidebar,
   searchInput,
   sidebar,
+  style,
 }: LayoutProps) => (
   <main
-    className={[className, layoutStyles.aminoLayout].join(' ')}
+    className={clsx(className, layoutStyles.aminoLayout)}
     style={{
-      '--height': headerContent
+      ...style,
+      '--amino-layout-height': headerContent
         ? `calc(100vh - ${theme.appbarHeight})`
         : '100vh',
     }}

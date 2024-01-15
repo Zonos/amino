@@ -46,6 +46,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       onClick,
       rightDecorator,
       selected,
+      style,
       subtitle,
     },
     ref,
@@ -62,6 +63,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(
       )}
       onClick={e => !disabled && onClick && onClick(e)}
       role="button"
+      style={style}
       tabIndex={0}
     >
       <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>

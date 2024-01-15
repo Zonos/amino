@@ -3,14 +3,14 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 
 import { RemoveIcon } from 'src/icons/RemoveIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Tag.module.scss';
 
 type TagSize = 'base' | 'lg';
 
-export type TagProps = {
+export type TagProps = BaseProps & {
   children?: ReactNode | string;
-  className?: string;
   icon?: ReactNode;
   iconRight?: boolean;
   size?: TagSize;
@@ -26,6 +26,7 @@ export const Tag = ({
   onClick,
   onClose,
   size = 'base',
+  style,
 }: TagProps) => (
   <div
     className={clsx(
@@ -33,6 +34,7 @@ export const Tag = ({
       styles.tagWrapper,
       size === 'base' && styles.base,
     )}
+    style={style}
   >
     <button
       className={clsx(styles.styledTagLeft, iconRight && styles.iconRight)}

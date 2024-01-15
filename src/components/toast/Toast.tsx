@@ -8,12 +8,13 @@ import { InfoIcon } from 'src/icons/InfoIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import type { Intent } from 'src/types';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Toast.module.scss';
 
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
 
-export type ToastProps = {
+export type ToastProps = BaseProps & {
   children: ReactNode;
   direction?: Direction;
   /** Dismiss delay (default 6000 ms) */
@@ -26,6 +27,7 @@ export const Toast = ({
   children,
   direction,
   intent,
+  style,
   toastKey,
 }: ToastProps) => {
   const getDirection = () => {
@@ -90,6 +92,7 @@ export const Toast = ({
     <motion.div
       className={clsx(styles.aminoToast, intentValues.class)}
       layout
+      style={style}
       {...baseProps}
     >
       {intentValues.icon}

@@ -3,22 +3,31 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Radio.module.scss';
 
-export type RadioProps = {
+export type RadioProps = BaseProps & {
   checked: boolean;
   disabled?: boolean;
   label?: string;
   onChange: (checked: boolean) => void;
 };
 
-export const Radio = ({ checked, disabled, label, onChange }: RadioProps) => (
+export const Radio = ({
+  checked,
+  className,
+  disabled,
+  label,
+  onChange,
+  style,
+}: RadioProps) => (
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
   <div
-    className={clsx(styles.radioContainer, disabled && 'disabled')}
+    className={clsx(className, styles.radioContainer, disabled && 'disabled')}
     onClick={() => !disabled && onChange(!checked)}
     style={{
+      ...style,
       '--amino-radio-background': checked
         ? theme.primary
         : theme.inputBackground,

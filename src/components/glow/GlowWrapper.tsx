@@ -55,8 +55,14 @@ export const GlowWrapper = ({
     const onMouseMove = (e: MouseEvent) => {
       if (current) {
         const { x, y } = current.getBoundingClientRect();
-        current.style.setProperty('--x', (e.clientX - x).toString());
-        current.style.setProperty('--y', (e.clientY - y).toString());
+        current.style.setProperty(
+          '--amino-glow-wrapper-x',
+          (e.clientX - x).toString(),
+        );
+        current.style.setProperty(
+          '--amino-glow-wrapper-y',
+          (e.clientY - y).toString(),
+        );
       }
     };
 

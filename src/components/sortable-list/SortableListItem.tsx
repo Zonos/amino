@@ -4,10 +4,11 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 import { DragIcon } from 'src/icons/DragIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './SortableListItem.module.scss';
 
-export type SortableListItemProps = {
+export type SortableListItemProps = BaseProps & {
   children: ReactNode;
   handleIconSize?: number;
   id: string;
@@ -19,12 +20,14 @@ export const SortableListItem = ({
   children,
   handleIconSize = 20,
   id,
+  style,
   useHandle,
 }: SortableListItemProps) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 
-  const style = {
+  const listItemStyle = {
+    ...style,
     transform: CSS.Transform.toString(transform),
     transition,
   };
@@ -32,7 +35,7 @@ export const SortableListItem = ({
   return (
     <div ref={setNodeRef}>
       {useHandle ? (
-        <div className={styles.styledSortableListItem} style={style}>
+        <div className={styles.styledSortableListItem} style={listItemStyle}>
           <div className={styles.styledSortableSection}>{children}</div>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <div {...listeners} {...attributes}>

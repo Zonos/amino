@@ -27,6 +27,7 @@ export const Switch = ({
   labelDescription,
   labelIcon,
   onChange,
+  style,
   subtitle,
   switchIconLeft,
   switchIconRight,
@@ -44,6 +45,7 @@ export const Switch = ({
       )}
       htmlFor={labelAsHtmlAttribute}
       onClick={() => !disabled && onChange(!checked)}
+      style={style}
     >
       {hasIcons ? (
         <div

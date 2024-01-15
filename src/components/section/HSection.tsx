@@ -9,12 +9,12 @@ import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './HSection.module.scss';
 
-export type HSectionProps = {
+export type HSectionProps = BaseProps & {
   children: ReactNode;
-  className?: string;
   /**
    * @info Initial collapse state. **Note**: only have effect when `collapsible` is specified
    * @default false
@@ -35,6 +35,7 @@ export const HSection = ({
   collapseByDefault = false,
   collapsible = false,
   label,
+  style,
   sublabel = '',
 }: HSectionProps) => {
   const [collapsed, setCollapsed] = useState(collapseByDefault);
@@ -45,7 +46,10 @@ export const HSection = ({
       <div>{children}</div>
     );
   return (
-    <HStack className={clsx(className, styles.styledSectionWrapper)}>
+    <HStack
+      className={clsx(className, styles.styledSectionWrapper)}
+      style={style}
+    >
       {label && (
         <SectionInnerWrapper>
           <div className={styles.styledDiv}>
