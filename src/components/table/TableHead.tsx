@@ -1,10 +1,13 @@
 import type { ReactNode } from 'react';
 
-export type TableHeadProps = {
+import type { BaseProps } from 'src/types/BaseProps';
+
+export type TableHeadProps = BaseProps & {
   children: ReactNode;
-  className?: string;
 };
 
-export const TableHead = ({ children, className }: TableHeadProps) => (
-  <thead className={className}>{children}</thead>
+export const TableHead = ({ children, className, style }: TableHeadProps) => (
+  <thead className={className} style={style}>
+    {children}
+  </thead>
 );

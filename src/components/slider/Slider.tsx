@@ -1,12 +1,13 @@
 import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
 import clsx from 'clsx';
 
+import type { BaseProps } from 'src/types/BaseProps';
+
 import styles from './Slider.module.scss';
 
 type SliderSize = 8 | 12;
 
-export type SliderProps = {
-  className?: string;
+export type SliderProps = BaseProps & {
   hideIndicator?: boolean;
   max?: number;
   min?: number;
@@ -32,12 +33,14 @@ export const Slider = ({
   onChange,
   size = 12,
   step,
+  style,
   suffix = '%',
   value,
 }: SliderProps) => (
   <div
     className={clsx(className, styles.sliderWrapper)}
     style={{
+      ...style,
       '--amino-slider-styled-thumb-height': `${size * 2}px`,
       '--amino-slider-styled-thumb-width': `${size * 2}px`,
       '--amino-slider-styled-track-height': `${size}px`,

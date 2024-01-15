@@ -3,8 +3,8 @@
 $padding: var(--amino-glow-wrapper-padding);
 $border-radius: var(--amino-glow-wrapper-border-radius);
 $background: var(--amino-glow-wrapper-background);
-$y: var(--y, 0);
-$x: var(--x, 0);
+$y: var(--amino-glow-wrapper-y, 0);
+$x: var(--amino-glow-wrapper-x, 0);
 
 .wrapper {
   z-index: 1;

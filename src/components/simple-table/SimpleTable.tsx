@@ -122,6 +122,7 @@ export const SimpleTable = <T extends object>({
   selectable = {
     enabled: false,
   },
+  style,
 }: SimpleTableProps<T>) => {
   const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
     const value = item[header.key];
@@ -238,7 +239,7 @@ export const SimpleTable = <T extends object>({
   };
 
   return (
-    <table className={clsx(className, styles.tableStyled)}>
+    <table className={clsx(className, styles.tableStyled)} style={style}>
       <colgroup>
         {!!selectable.onHeaderCheckboxChange && <col width={0} />}
         {headers.map(header => (

@@ -21,6 +21,7 @@ export const CoverSheetActions = ({
   children,
   className,
   coverSheetActionId,
+  style,
 }: CoverSheetProps) => {
   const [coverSheetReady, setCoverSheetReady] = useState(false);
 
@@ -34,7 +35,7 @@ export const CoverSheetActions = ({
     const div = document.querySelector(`#${coverSheetActionId}`);
     if (div) {
       return createPortal(
-        <div className={clsx(className, styles.actions)}>
+        <div className={clsx(className, styles.actions)} style={style}>
           <HStack spacing={8}>{children}</HStack>
         </div>,
         div,

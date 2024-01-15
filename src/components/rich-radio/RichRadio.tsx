@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './RichRadio.module.scss';
 
@@ -18,9 +19,8 @@ export type RichRadioItemType<T extends string> = {
   value: T;
 };
 
-export type RichRadioProps<T extends string = string> = {
+export type RichRadioProps<T extends string = string> = BaseProps & {
   activeIcon?: ReactNode;
-  className?: string;
   icon?: ReactNode;
   /**
    * @param itemHeight
@@ -41,6 +41,7 @@ export const RichRadio = <T extends string>({
   items,
   onChange,
   renderCustomText,
+  style,
   value,
 }: RichRadioProps<T>) => {
   const [selectedValue, setSelectedValue] = useState(value);
@@ -55,7 +56,11 @@ export const RichRadio = <T extends string>({
   };
 
   return (
-    <VStack className={clsx(className, styles.styledRadioGroup)} spacing={16}>
+    <VStack
+      className={clsx(className, styles.styledRadioGroup)}
+      spacing={16}
+      style={style}
+    >
       {items.map(item => (
         <button
           key={item.value}

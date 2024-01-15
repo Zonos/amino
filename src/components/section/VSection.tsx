@@ -6,13 +6,13 @@ import { SectionHeader } from 'src/components/section/_SectionHeader';
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './VSection.module.scss';
 
-export type VSectionProps = {
+export type VSectionProps = BaseProps & {
   actions?: ReactNode;
   children: ReactNode;
-  className?: string;
   label?: ReactNode;
   sublabel?: ReactNode;
 };
@@ -22,9 +22,10 @@ export const VSection = ({
   children,
   className,
   label,
+  style,
   sublabel = '',
 }: VSectionProps) => (
-  <div className={clsx(className, styles.styledSectionWrapper)}>
+  <div className={clsx(className, styles.styledSectionWrapper)} style={style}>
     {label && (
       <SectionInnerWrapper>
         <SectionHeader>

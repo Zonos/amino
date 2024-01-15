@@ -10,6 +10,7 @@ import DataGrid, {
 
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 import { addIndex } from 'src/utils/addIndex';
 
 import styles from './PivotTable.module.scss';
@@ -50,10 +51,11 @@ type Props<
   TRow extends RowWithIndex,
   TSummaryRow extends unknown,
   TRowKey extends KeyValue,
-> = Omit<
-  DataGridProps<TRow, TSummaryRow, TRowKey>,
-  keyof OverrideProps<TRow, TSummaryRow>
-> &
+> = BaseProps &
+  Omit<
+    DataGridProps<TRow, TSummaryRow, TRowKey>,
+    keyof OverrideProps<TRow, TSummaryRow>
+  > &
   OverrideProps<TRow, TSummaryRow>;
 
 type Comparator<TRow extends unknown> = (a: TRow, b: TRow) => number;
@@ -75,6 +77,7 @@ export const PivotTable = <
   rows,
   /** If the change want to make for this handler */
   sortColumns: _sortColumns = [],
+  style,
   tableHeight,
   ...rest
 }: Props<TRow, TSummaryRow, TRowKey>) => {
@@ -165,6 +168,7 @@ export const PivotTable = <
     <div
       className={styles.styledWrapper}
       style={{
+        ...style,
         '--amino-pivot-table-height': tableHeight || 'calc(100vh - 145px)',
         '--amino-pivot-table-min-height': tableHeight || '',
       }}

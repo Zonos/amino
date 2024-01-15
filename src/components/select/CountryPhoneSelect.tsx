@@ -12,6 +12,7 @@ import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
 
@@ -49,7 +50,7 @@ export type CountryPhoneSelectProps<
   Option extends SelectOption = SelectOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> = {
+> = BaseProps & {
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   countryOptions: CountryOption[];
   hasGroups?: boolean;

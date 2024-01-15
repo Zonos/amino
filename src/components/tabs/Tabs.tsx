@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Tabs.module.scss';
 
-export type TabsProps = {
+export type TabsProps = BaseProps & {
   /**
    * Only applies to subtle design
    * Align tabs horizontally.
    * @default 'start'
    */
   align?: 'start' | 'center' | 'end';
-  className?: string;
   items: string[];
   selected: number;
   /**
@@ -28,13 +28,14 @@ export const Tabs = ({
   items,
   onChange,
   selected,
+  style,
   subtle = false,
 }: TabsProps) => {
   if (subtle) {
     return (
       <div
         className={clsx(className, styles.baseTabs, styles.subtleTabs)}
-        style={{ '--amino-tabs-align': align }}
+        style={{ ...style, '--amino-tabs-align': align }}
       >
         {items.map(item => (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -56,7 +57,10 @@ export const Tabs = ({
   }
 
   return (
-    <div className={clsx(className, styles.baseTabs, styles.aminoTabs)}>
+    <div
+      className={clsx(className, styles.baseTabs, styles.aminoTabs)}
+      style={style}
+    >
       {items.map(item => (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div

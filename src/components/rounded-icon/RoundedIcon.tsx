@@ -3,15 +3,15 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 
 import { theme } from 'src/styles/constants/theme';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
 import type { Intent } from 'src/types/Intent';
 
 import styles from './RoundedIcon.module.scss';
 
-export type RoundedIconProps = {
+export type RoundedIconProps = BaseProps & {
   background?: Color;
   children: ReactNode;
-  className?: string;
   color?: Color;
   intent?: Intent;
 };
@@ -22,6 +22,7 @@ export const RoundedIcon = ({
   className,
   color,
   intent,
+  style,
 }: RoundedIconProps) => {
   const getIntentClass = () => {
     switch (intent) {
@@ -39,6 +40,7 @@ export const RoundedIcon = ({
     <div
       className={clsx(className, styles.iconWrapper, getIntentClass())}
       style={{
+        ...style,
         '--amino-rounded-icon-background': background
           ? theme[background]
           : theme.gray200,

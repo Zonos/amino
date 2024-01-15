@@ -1,5 +1,6 @@
 import { type SelectProps, Select } from 'src/components/select/Select';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import type { BaseProps } from 'src/types/BaseProps';
 import type { CountryOption } from 'src/types/Country';
 
 type CountrySelectType<T extends string> = {
@@ -15,6 +16,7 @@ type CountrySelectType<T extends string> = {
 
 export type CountrySelectProps<T extends string = string> =
   CountrySelectType<T> &
+    BaseProps &
     Omit<SelectProps<CountryOption<T>>, keyof CountrySelectType<T> | 'options'>;
 
 export const CountrySelect = <T extends string>({
