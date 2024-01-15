@@ -98,7 +98,7 @@ export const Checkbox = ({
     >
       <div
         className={clsx(styles.checkboxContainer, 'amino-input-wrapper', {
-          disabled,
+          [styles.disabled]: disabled,
         })}
         data-testid={testId}
         onClick={e => {
