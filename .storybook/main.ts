@@ -21,7 +21,14 @@ const storybookConfig: StorybookConfig = {
             test: /\.css|scss$/,
             use: [
               'style-loader',
-              'css-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: {
+                    localIdentName: 'Amino_[name]__[local]--[hash:base64:5]',
+                  },
+                },
+              },
               {
                 loader: 'sass-loader',
                 options: {
