@@ -101,6 +101,7 @@ export const Checkbox = ({
           styles.checkboxContainer,
           'amino-input-wrapper',
           disabled && styles.disabled,
+          disabled && 'disabled',
         )}
         data-testid={testId}
         onClick={e => {
