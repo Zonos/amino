@@ -32,7 +32,7 @@ export type SimpleTableHeader<T extends object> = {
     /** The key for each record that the header corresponds to */
     key: Key;
     /** null means don't show a header for this column */
-    name: string | null;
+    name: ReactNode | null;
 
     renderCustom?: (value: T[Key], item: T) => React.ReactNode;
   } & SimpleTableHeaderBaseProps;
@@ -268,13 +268,18 @@ export const SimpleTable = <T extends object>({
           {headers.map(header => (
             <th
               key={header.key}
+              className={clsx(header.noPadding && styles.noPadding)}
               style={{
                 textAlign: header.align || 'start',
               }}
             >
-              <Text color="gray800" type="small-header">
-                {header.name}
-              </Text>
+              {typeof header.name === 'string' ? (
+                <Text color="gray800" type="small-header">
+                  {header.name}
+                </Text>
+              ) : (
+                header.name
+              )}
             </th>
           ))}
         </tr>
