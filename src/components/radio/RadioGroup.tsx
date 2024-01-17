@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 
@@ -8,7 +8,7 @@ import type { BaseProps } from 'src/types/BaseProps';
 import styles from './RadioGroup.module.scss';
 
 export type RadioGroupItem<T extends string = string> = {
-  label: string;
+  label: ReactNode;
   value: T;
 };
 
@@ -39,7 +39,7 @@ export const RadioGroup = <T extends string = string>({
 
   const radios = items.map((el, index) => (
     <Radio
-      key={el.label}
+      key={el.value}
       checked={index === activeIndex}
       disabled={disabled}
       label={el.label}
