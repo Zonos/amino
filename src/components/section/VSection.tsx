@@ -28,10 +28,18 @@ export const VSection = ({
   <div className={clsx(className, styles.styledSectionWrapper)} style={style}>
     {label && (
       <SectionInnerWrapper>
-        <SectionHeader>
-          {label}
-          <SectionSubheader>{sublabel}</SectionSubheader>
-        </SectionHeader>
+        <div>
+          {typeof label === 'string' ? (
+            <SectionHeader>{label}</SectionHeader>
+          ) : (
+            label
+          )}
+          {typeof sublabel === 'string' ? (
+            <SectionSubheader>{sublabel}</SectionSubheader>
+          ) : (
+            sublabel
+          )}
+        </div>
 
         <HStack spacing={8}>{actions}</HStack>
       </SectionInnerWrapper>

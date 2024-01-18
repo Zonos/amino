@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -10,7 +12,7 @@ import styles from './Radio.module.scss';
 export type RadioProps = BaseProps & {
   checked: boolean;
   disabled?: boolean;
-  label?: string;
+  label?: ReactNode;
   onChange: (checked: boolean) => void;
 };
 
