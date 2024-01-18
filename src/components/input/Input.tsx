@@ -220,6 +220,7 @@ export const Input = <T extends string>({
   return (
     <div
       className={clsx(
+        className,
         'amino-input-wrapper',
         disabled && 'disabled',
         styles.aminoInputWrapper,
