@@ -123,12 +123,7 @@ const Template: StoryFn<typeof Banner> = ({
               rel="noreferrer"
               target="_blank"
             >
-              <Button
-                background="inherit"
-                borderColor="gray1200"
-                color="inherit"
-                outline
-              >
+              <Button background="inherit" color="inherit" outline>
                 View additional details
               </Button>
             </a>
@@ -156,12 +151,7 @@ export const DefaultBanner = Template.bind({});
 DefaultBanner.args = {
   footerActions: (
     <>
-      <Button
-        background="inherit"
-        borderColor="gray400"
-        color="inherit"
-        outline
-      >
+      <Button background="inherit" color="inherit" outline>
         View status
       </Button>
       <Button color="inherit" variant="subtle">
@@ -172,7 +162,6 @@ DefaultBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="gray400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
@@ -187,12 +176,7 @@ export const InfoBanner = Template.bind({});
 InfoBanner.args = {
   footerActions: (
     <>
-      <Button
-        background="inherit"
-        borderColor="blue400"
-        color="inherit"
-        outline
-      >
+      <Button background="inherit" color="inherit" outline>
         View status
       </Button>
       <Button color="inherit" variant="subtle">
@@ -203,7 +187,6 @@ InfoBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="blue400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
@@ -219,12 +202,7 @@ export const SuccessBanner = Template.bind({});
 SuccessBanner.args = {
   footerActions: (
     <>
-      <Button
-        background="inherit"
-        borderColor="green400"
-        color="inherit"
-        outline
-      >
+      <Button background="inherit" color="inherit" outline>
         View status
       </Button>
       <Button color="inherit" variant="subtle">
@@ -235,7 +213,6 @@ SuccessBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="green400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
@@ -251,12 +228,7 @@ export const WarningBanner = Template.bind({});
 WarningBanner.args = {
   footerActions: (
     <>
-      <Button
-        background="inherit"
-        borderColor="orange400"
-        color="inherit"
-        outline
-      >
+      <Button background="inherit" color="inherit" outline>
         View status
       </Button>
       <Button color="inherit" variant="subtle">
@@ -267,7 +239,6 @@ WarningBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="orange400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight
@@ -283,7 +254,7 @@ export const ErrorBanner = Template.bind({});
 ErrorBanner.args = {
   footerActions: (
     <>
-      <Button background="inherit" borderColor="red400" color="inherit" outline>
+      <Button background="inherit" color="inherit" outline>
         View status
       </Button>
       <Button color="inherit" variant="subtle">
@@ -294,7 +265,6 @@ ErrorBanner.args = {
   headerActions: (
     <Button
       background="inherit"
-      borderColor="red400"
       color="inherit"
       icon={<ChevronDownIcon size={20} />}
       iconRight

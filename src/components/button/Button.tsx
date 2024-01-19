@@ -26,8 +26,6 @@ import styles from './Button.module.scss';
 
 type ButtonBase = BaseProps & {
   background?: Color | 'inherit';
-  /** @param borderColor only available for intent 'outline' */
-  borderColor?: Color | 'inherit';
   children?: ReactNode;
   color?: Color | 'inherit';
   disabled?: boolean;

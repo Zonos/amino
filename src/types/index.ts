@@ -7,6 +7,5 @@ export type { IconProps } from './IconProps';
 export type { Intent } from './Intent';
 export type { JsonError } from './JsonError';
 export type { NoInfer } from './NoInfer';
-export type { StyledProps } from './StyledProps';
 export type { SwrtParams } from './SwrtParams';
 export type { Theme } from './Theme';
