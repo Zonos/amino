@@ -74,6 +74,7 @@
     "react-select": "^5.7.4",
     "react-simple-maps": "^3.0.0",
     "react-split-it": "^2.0.0",
+    "react-window": "^1.8.10",
     "topojson-client": "^3.1.0",
     "uuid": "^9.0.0",
     "zod": "^3.22.3"
@@ -112,6 +113,7 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "@types/react-simple-maps": "^3.0.0",
+    "@types/react-window": "^1.8.8",
     "@types/topojson-specification": "^1.0.2",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.5.0",

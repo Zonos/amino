@@ -1,0 +1,34 @@
+@use 'theme';
+
+.virtualList {
+  padding: theme.$amino-space-24;
+  border: theme.$amino-border;
+  border-radius: theme.$amino-radius-12;
+  max-height: 360px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: theme.$amino-space-16;
+}
+
+.checkboxCountry {
+  padding-left: theme.$amino-space-24;
+  width: calc(100% - 48px);
+
+  div[class*='Amino_Checkbox'] {
+    gap: theme.$amino-space-8;
+  }
+}
+
+.checkboxLabelWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
