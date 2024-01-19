@@ -38,7 +38,7 @@
       }
 
       &:not(:hover) {
-        .row-hover-show {
+        :global(.row-hover-show) {
           visibility: collapse;
         }
       }
@@ -55,7 +55,7 @@
         }
 
         &:not(:hover) {
-          .cell-hover-show {
+          :global(.cell-hover-show) {
             visibility: collapse;
           }
         }
