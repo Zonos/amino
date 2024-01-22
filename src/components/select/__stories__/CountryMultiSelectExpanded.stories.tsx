@@ -10,6 +10,18 @@ import {
   CountryMultiSelectExpanded,
 } from 'src/components/select/CountryMultiSelectExpanded';
 
+const renderBadge = (label: string) => {
+  if (label.startsWith('A')) {
+    return <Badge color="orange">Starts with A</Badge>;
+  }
+
+  if (label.startsWith('B')) {
+    return <Badge color="purple">Starts with B</Badge>;
+  }
+
+  return null;
+};
+
 const Template = (props: CountryMultiSelectExpandedProps) => {
   const [value, setValue] = useState<ICountryMultiSelectExpandedOption[]>([]);
   const countryOptions = useCountryOptions({});
@@ -21,13 +33,10 @@ const Template = (props: CountryMultiSelectExpandedProps) => {
         icon: x.icon,
         label: x.displayName,
         region: x.region,
-        // rightDecorator: 'dog',
-        // rightDecorator: x.code === 'AF' ? <Badge>Cool</Badge> : undefined,
+        rightDecorator: () => renderBadge(x.displayName),
       })),
     [countryOptions],
   );
-
-  console.log({ countries });
 
   return (
     <CountryMultiSelectExpanded
@@ -35,6 +44,9 @@ const Template = (props: CountryMultiSelectExpandedProps) => {
       countries={countries}
       onChange={setValue}
       selectedCountries={value}
+      style={{
+        width: '500px',
+      }}
     />
   );
 };

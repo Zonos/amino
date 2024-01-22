@@ -1,9 +1,11 @@
 import { type ReactNode, useMemo } from 'react';
 import { type ListChildComponentProps, FixedSizeList } from 'react-window';
 
+import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
+import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 
@@ -32,8 +34,6 @@ const Row = <TCountryCode extends string = string>({
     selectedCountries,
   } = data;
 
-  console.log('Render row');
-
   const style = {
     ...baseStyle,
     height:
@@ -54,7 +54,7 @@ const Row = <TCountryCode extends string = string>({
         : `calc(${baseStyle.width} - ${LIST_PADDING}px)`,
   };
 
-  // Selet all
+  // Select all
   if (index === 0) {
     return (
       <Checkbox
@@ -132,13 +132,14 @@ const Row = <TCountryCode extends string = string>({
           className={styles.checkboxLabelWrapper}
           style={{
             opacity: country.disabled ? 0.5 : 1,
+            paddingRight: LIST_PADDING * 2,
           }}
         >
           <div>
             {country.icon}
             {country.label}
           </div>
-          {country.rightDecorator}
+          {country.rightDecorator?.()}
         </div>
       }
       onChange={checked => {
@@ -165,7 +166,11 @@ export type ICountryMultiSelectExpandedOption<
   icon: ReactNode;
   label: string;
   region: string;
-  rightDecorator?: ReactNode;
+  /**
+   * Having this as a ReactNode breaks storybook somehow. I have no idea, but it needs to be a function instead...
+   * @returns
+   */
+  rightDecorator?: () => ReactNode;
 };
 
 type ICountryMultiSelectExpandedRegion<TCountryCode extends string = string> = {
@@ -175,7 +180,7 @@ type ICountryMultiSelectExpandedRegion<TCountryCode extends string = string> = {
 
 export type CountryMultiSelectExpandedProps<
   TCountryCode extends string = string,
-> = {
+> = BaseProps & {
   countries: ICountryMultiSelectExpandedOption<TCountryCode>[];
   selectedCountries: ICountryMultiSelectExpandedOption<TCountryCode>[];
   onChange: (
@@ -189,9 +194,11 @@ export type CountryMultiSelectExpandedProps<
 export const CountryMultiSelectExpanded = <
   TCountryCode extends string = string,
 >({
+  className,
   countries,
   onChange,
   selectedCountries,
+  style,
 }: CountryMultiSelectExpandedProps<TCountryCode>) => {
   const flattenedItems = useMemo(() => {
     const regions: ICountryMultiSelectExpandedRegion<TCountryCode>[] =
@@ -219,11 +226,9 @@ export const CountryMultiSelectExpanded = <
     [countries, selectedCountries.length],
   );
 
-  console.log('render');
-
   return (
     <FixedSizeList<IVirtualContext<TCountryCode>>
-      className={styles.virtualList}
+      className={clsx(className, styles.virtualList)}
       height={360}
       itemCount={flattenedItems.length}
       itemData={{
@@ -233,8 +238,9 @@ export const CountryMultiSelectExpanded = <
         onChange,
         selectedCountries,
       }}
-      itemSize={24}
+      itemSize={40}
       overscanCount={10}
+      style={style}
       width="100%"
     >
       {Row<TCountryCode>}

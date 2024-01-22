@@ -22,7 +22,7 @@ type AdditionalProps = {
   toggleSelectAll: () => void;
 };
 
-export const MenuList = <
+const MenuList = <
   Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
@@ -45,7 +45,7 @@ export const MenuList = <
       >
         <Checkbox
           checked={allSelected}
-          label="Rest of world"
+          label="Select all"
           onChange={toggleSelectAll}
         />
       </div>

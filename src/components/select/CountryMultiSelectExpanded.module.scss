@@ -16,12 +16,18 @@
   padding-left: theme.$amino-space-24;
   width: calc(100% - 48px);
 
+  > div {
+    align-items: center;
+  }
+
   div[class*='Amino_Checkbox'] {
     gap: theme.$amino-space-8;
   }
 }
 
 .checkboxLabelWrapper {
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
