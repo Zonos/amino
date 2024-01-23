@@ -1,0 +1,64 @@
+@use 'theme';
+
+.dropdownWrapper {
+  width: calc(100% - 32px);
+}
+
+.styledInput {
+  div[class*='Amino__FloatLabelInput-module__inputPrefix'] {
+    justify-content: flex-start;
+    margin-right: 8px;
+    max-width: 50%;
+    flex-basis: content;
+  }
+
+  label[class*='Amino__FloatLabelInput-module__styledLabelInput'] {
+    &::before {
+      transition-property: top, transform;
+    }
+  }
+}
+
+.prefixContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  overflow: hidden;
+
+  button:focus {
+    outline: none;
+  }
+}
+
+.prefixTag {
+  background-color: theme.$amino-gray-100;
+  padding: 0 4px;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80px;
+    padding: 2px 0;
+  }
+
+  &:hover {
+    background-color: theme.$amino-gray-200;
+  }
+}
+
+.suffixActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  button:focus {
+    outline: none;
+  }
+}

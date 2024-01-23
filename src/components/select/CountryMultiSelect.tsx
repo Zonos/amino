@@ -115,7 +115,6 @@ export const CountryMultiSelect = <T extends string>({
       onChange={changed => onChange(changed.map(x => x.value))}
       options={prepRegionCountryOptions(countries)}
       value={countries.filter(x => value.includes(x.code))}
-      // @ts-ignore additional props in selectProps
       {...additionalProps}
     />
   );

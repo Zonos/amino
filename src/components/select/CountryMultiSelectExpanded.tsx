@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
+import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
@@ -60,6 +61,7 @@ const Row = <TCountryCode extends string = string>({
       <Checkbox
         key="select-all"
         checked={allSelected}
+        className={styles.checkbox}
         label="Select all"
         onChange={checked => {
           if (checked) {
@@ -92,6 +94,7 @@ const Row = <TCountryCode extends string = string>({
       <Checkbox
         key={region.label}
         checked={regionSelected}
+        className={styles.checkbox}
         label={region.label}
         onChange={checked => {
           if (checked) {
@@ -123,7 +126,7 @@ const Row = <TCountryCode extends string = string>({
     <Checkbox
       key={country.code}
       checked={selectedCountries.some(x => x.code === country.code)}
-      className={styles.checkboxCountry}
+      className={clsx(styles.checkboxCountry, styles.checkbox)}
       disabled={country.disabled}
       icon={country.icon}
       label={country.label}
@@ -225,6 +228,14 @@ export const CountryMultiSelectExpanded = <
       selectedCountries.length,
     [countries, selectedCountries.length],
   );
+
+  if (!countries.length) {
+    return (
+      <div className={clsx(className, styles.virtualList)}>
+        <Text color="textColorSecondary">No countries</Text>
+      </div>
+    );
+  }
 
   return (
     <FixedSizeList<IVirtualContext<TCountryCode>>

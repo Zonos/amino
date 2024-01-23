@@ -9,15 +9,17 @@ import {
 } from 'src/components/select/CountryMultiSelect';
 import type { CountryOption } from 'src/types/Country';
 
-import styles from './CountryMultiSelect.stories.module.scss';
-
 type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';
 
 const CountryMultiSelectMeta: Meta = {
   component: CountryMultiSelect,
   decorators: [
     Component => (
-      <div className={styles.styledWrapper}>
+      <div
+        style={{
+          width: 412,
+        }}
+      >
         <Component />
       </div>
     ),
@@ -39,6 +41,7 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
       <CountryMultiSelect
         {...props}
         countryOptions={countryOptions}
+        menuIsOpen
         onChange={setValue}
         unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
         value={value}

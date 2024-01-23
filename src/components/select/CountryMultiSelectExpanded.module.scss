@@ -12,9 +12,39 @@
   gap: theme.$amino-space-16;
 }
 
+.checkbox {
+  &::before {
+    content: '';
+    z-index: -1;
+    display: block;
+    width: calc(100% - 48px);
+    overflow: hidden;
+    position: absolute;
+    padding: 16px;
+    border-radius: 6px;
+    top: -8px;
+    left: -10px;
+  }
+
+  &:hover {
+    &::before {
+      background: theme.$amino-hover-color;
+    }
+  }
+
+  > div {
+    height: 24px;
+  }
+}
+
 .checkboxCountry {
   padding-left: theme.$amino-space-24;
   width: calc(100% - 48px);
+
+  &::before {
+    top: -4px;
+    left: 12px;
+  }
 
   > div {
     align-items: center;
