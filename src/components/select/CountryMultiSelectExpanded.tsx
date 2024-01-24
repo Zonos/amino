@@ -170,7 +170,7 @@ export type ICountryMultiSelectExpandedOption<
   label: string;
   region: string;
   /**
-   * Having this as a ReactNode breaks storybook somehow. I have no idea, but it needs to be a function instead...
+   * Having this as a ReactNode breaks storybook (and only storybook, it works fine elsewhere) somehow. I have no idea, but it needs to be a function instead...
    * @returns
    */
   rightDecorator?: () => ReactNode;

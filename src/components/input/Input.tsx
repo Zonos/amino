@@ -36,7 +36,7 @@ type DateInputEventHandler = (
 
 type InputType<T extends HTMLInputTypeAttribute> = {
   inputPrefix?: ReactNode;
-  /** Need to pass the ref here to preserve generics, as forwardRef doesn't let
+  /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
    * @link https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
    */
   inputRef?: MutableRefObject<HTMLInputElement | null>;
