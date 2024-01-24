@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
+import { useMergeRefs } from '@floating-ui/react';
 import clsx from 'clsx';
 
 import {
@@ -26,62 +27,60 @@ const getIconSize = (size: Size) => {
   }
 };
 
-export const NumberInput = ({
-  className,
-  label,
-  size = 'xl',
-  suffix,
-  ...props
-}: FloatLabelInputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  return (
-    <div
-      className={clsx(styles.styledWrapper, className)}
-      style={{
-        '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
-      }}
-    >
-      <FloatLabelInput
-        {...props}
-        ref={inputRef}
-        aria-label={label}
-        className={styles.aminoInput}
-        label={label}
-        size={size}
-        suffix={
-          suffix === null
-            ? null
-            : suffix || (
-                <div className={styles.styledActionWrapper}>
-                  <button
-                    className={styles.styledButtonAction}
-                    onClick={() => {
-                      inputRef.current?.stepUp();
-                      inputRef.current?.dispatchEvent(
-                        new Event('input', { bubbles: true }),
-                      );
-                    }}
-                    type="button"
-                  >
-                    <CaretUpIcon size={getIconSize(size)} />
-                  </button>
-                  <button
-                    className={styles.styledButtonAction}
-                    onClick={() => {
-                      inputRef.current?.stepDown();
-                      inputRef.current?.dispatchEvent(
-                        new Event('input', { bubbles: true }),
-                      );
-                    }}
-                    type="button"
-                  >
-                    <CaretDownIcon size={getIconSize(size)} />
-                  </button>
-                </div>
-              )
-        }
-        type="number"
-      />
-    </div>
-  );
-};
+export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
+  ({ className, label, size = 'xl', suffix, ...props }, ref) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const mergedRef = useMergeRefs([ref, inputRef]);
+
+    return (
+      <div
+        className={clsx(styles.styledWrapper, className)}
+        style={{
+          '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
+        }}
+      >
+        <FloatLabelInput
+          {...props}
+          ref={mergedRef}
+          aria-label={label}
+          className={styles.aminoInput}
+          label={label}
+          size={size}
+          suffix={
+            suffix === null
+              ? null
+              : suffix || (
+                  <div className={styles.styledActionWrapper}>
+                    <button
+                      className={styles.styledButtonAction}
+                      onClick={() => {
+                        inputRef.current?.stepUp();
+                        inputRef.current?.dispatchEvent(
+                          new Event('input', { bubbles: true }),
+                        );
+                      }}
+                      type="button"
+                    >
+                      <CaretUpIcon size={getIconSize(size)} />
+                    </button>
+                    <button
+                      className={styles.styledButtonAction}
+                      onClick={() => {
+                        inputRef.current?.stepDown();
+                        inputRef.current?.dispatchEvent(
+                          new Event('input', { bubbles: true }),
+                        );
+                      }}
+                      type="button"
+                    >
+                      <CaretDownIcon size={getIconSize(size)} />
+                    </button>
+                  </div>
+                )
+          }
+          type="number"
+        />
+      </div>
+    );
+  },
+);

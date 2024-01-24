@@ -3,6 +3,7 @@ import type {
   ChangeEventHandler,
   HTMLInputTypeAttribute,
   InputHTMLAttributes,
+  MutableRefObject,
   ReactNode,
 } from 'react';
 
@@ -35,6 +36,10 @@ type DateInputEventHandler = (
 
 type InputType<T extends HTMLInputTypeAttribute> = {
   inputPrefix?: ReactNode;
+  /** Need to pass the ref here to preserve generics, as forwardRef doesn't let
+   * @link https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
+   */
+  inputRef?: MutableRefObject<HTMLInputElement | null>;
   inputSuffix?: ReactNode;
   onChange: T extends 'date'
     ? DateInputEventHandler
@@ -55,6 +60,7 @@ export const Input = <T extends string>({
   helpText,
   inputMode,
   inputPrefix,
+  inputRef,
   inputSuffix,
   label,
   onChange,
@@ -79,6 +85,7 @@ export const Input = <T extends string>({
       case 'password':
         return (
           <PasswordInput
+            ref={inputRef}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
@@ -104,6 +111,7 @@ export const Input = <T extends string>({
       case 'datetime-local':
         return (
           <DateInput
+            ref={inputRef}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
@@ -129,6 +137,7 @@ export const Input = <T extends string>({
       case 'number':
         return (
           <NumberInput
+            ref={inputRef}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
@@ -154,6 +163,7 @@ export const Input = <T extends string>({
       case 'time':
         return (
           <TimeInput
+            ref={inputRef}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
@@ -178,6 +188,7 @@ export const Input = <T extends string>({
       default:
         return (
           <FloatLabelInput
+            ref={inputRef}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}

@@ -119,6 +119,7 @@ export const FloatLabelInput = forwardRef<
           return `${theme.radius8}`;
       }
     };
+
     return (
       <div
         className={clsx(className, size, styles.styledLabelWrapper)}
