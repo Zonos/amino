@@ -16,12 +16,6 @@
     max-width: 50%;
     flex-basis: content;
   }
-
-  label[class*='Amino__FloatLabelInput-module__styledLabelInput'] {
-    &::before {
-      transition-property: top, transform;
-    }
-  }
 }
 
 .prefixContainer {
@@ -62,6 +56,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  :global(.select-icon) {
+    svg:first-child {
+      margin-bottom: -10px;
+    }
+  }
 }
 
 .dropdownWrapper {

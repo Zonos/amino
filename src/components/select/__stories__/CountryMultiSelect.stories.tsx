@@ -41,7 +41,6 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
       <CountryMultiSelect
         {...props}
         countryOptions={countryOptions}
-        menuIsOpen
         onChange={setValue}
         unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
         value={value}

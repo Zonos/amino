@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import { Input } from 'src/components/input/Input';
@@ -32,10 +32,11 @@ export const CountryMultiSelectDropdown = <
   selectedCountries,
   style,
 }: CountryMultiSelectDropdownProps<TCountryCode>) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [searchText, setSearchText] = useState('');
 
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
-    useDropdown<HTMLDivElement, HTMLButtonElement>({
+    useDropdown<HTMLDivElement, HTMLDivElement>({
       offsetCrossAxis: 0,
       offsetMainAxis: 5,
       startOpen: isOpen,
@@ -75,10 +76,12 @@ export const CountryMultiSelectDropdown = <
       <div className={styles.prefixContainer}>
         {selectedCountries.map(country => (
           <button
+            key={country.code}
             className={styles.prefixTag}
-            onClick={() =>
-              onChange(selectedCountries.filter(x => x.code !== country.code))
-            }
+            onClick={e => {
+              e.stopPropagation();
+              onChange(selectedCountries.filter(x => x.code !== country.code));
+            }}
             type="button"
           >
             {country.icon}
@@ -98,23 +101,37 @@ export const CountryMultiSelectDropdown = <
     return `Select countries (${selectedCountries.length} selected)`;
   };
 
+  const handleToggle = () => {
+    setVisible(!visible);
+    if (document.activeElement !== inputRef.current) {
+      inputRef.current?.focus();
+    }
+  };
+
   return (
     <div ref={wrapperRef} className={className} style={style}>
-      <button
+      <div
         ref={refs.setReference}
         className={styles.triggerWrapper}
-        onClick={() => setVisible(!visible)}
-        type="button"
+        onClick={handleToggle}
+        onKeyDown={e => {
+          if (e.key === 'Enter') {
+            handleToggle();
+          }
+        }}
+        role="button"
+        tabIndex={0}
       >
         <Input
           autoComplete="off"
           className={styles.styledInput}
           inputPrefix={renderSelected()}
+          inputRef={inputRef}
           inputSuffix="dog"
           label={renderLabel()}
           onChange={e => setSearchText(e.target.value)}
           suffix={
-            <div className={styles.suffixActions}>
+            <div className={styles.suffixActions} tabIndex={-1}>
               {!!selectedCountries.length && (
                 <Button
                   icon={<RemoveCircleIcon />}
@@ -122,7 +139,7 @@ export const CountryMultiSelectDropdown = <
                   variant="text"
                 />
               )}
-              <div>
+              <div className="select-icon">
                 <ChevronUpIcon size={20} />
                 <ChevronDownIcon size={20} />
               </div>
@@ -131,7 +148,7 @@ export const CountryMultiSelectDropdown = <
           type="text"
           value={searchText}
         />
-      </button>
+      </div>
 
       <div
         ref={refs.setFloating}
