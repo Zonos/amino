@@ -16,22 +16,29 @@ import { useDropdown } from 'src/utils/hooks/useDropdown';
 
 import styles from './CountryMultiSelectDropdown.module.scss';
 
+export type CountryMultiSelectDropdownProps<
+  TCountryCode extends string = string,
+> = CountryMultiSelectExpandedProps<TCountryCode> & {
+  isOpen?: boolean;
+};
+
 export const CountryMultiSelectDropdown = <
   TCountryCode extends string = string,
 >({
   className,
   countries,
+  isOpen = false,
   onChange,
   selectedCountries,
   style,
-}: CountryMultiSelectExpandedProps<TCountryCode>) => {
+}: CountryMultiSelectDropdownProps<TCountryCode>) => {
   const [searchText, setSearchText] = useState('');
 
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
     useDropdown<HTMLDivElement, HTMLDivElement>({
       offsetCrossAxis: 0,
       offsetMainAxis: 5,
-      startOpen: true,
+      startOpen: isOpen,
     });
 
   const searchCountries = useCallback(

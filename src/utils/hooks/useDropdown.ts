@@ -60,7 +60,7 @@ export const useDropdown = <
 
   const [visible, setVisible] = useState(startOpen);
 
-  const visibility: 'visible' | 'hidden' = visible ? 'visible' : 'hidden';
+  const visibility = visible ? 'visible' : 'hidden';
 
   const wrapperRef = useRef<WrapperRef>(null);
 

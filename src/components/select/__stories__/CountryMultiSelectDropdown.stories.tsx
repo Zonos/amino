@@ -30,6 +30,7 @@ const CountryMultiSelectTemplate = () => {
   return (
     <CountryMultiSelectDropdown
       countries={countries}
+      isOpen
       onChange={setValue}
       selectedCountries={value}
     />
