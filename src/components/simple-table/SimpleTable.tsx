@@ -143,7 +143,7 @@ export const SimpleTable = <T extends object>({
         return (
           <td className={styles.cellLink}>
             <LinkComponent
-              // className={clsx(header.noPadding && styles.noPadding)}
+              className={clsx(header.noPadding && styles.noPadding)}
               href={getRowLink(item)}
               style={{
                 textAlign: header.align || 'start',
