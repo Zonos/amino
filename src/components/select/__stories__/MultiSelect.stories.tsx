@@ -8,13 +8,15 @@ import {
 } from 'src/components/select/MultiSelect';
 import { PlayCircleIcon } from 'src/icons/PlayCircleIcon';
 
-import styles from './MultiSelect.stories.module.scss';
-
 const SelectMeta: Meta = {
   component: MultiSelect,
   decorators: [
     Component => (
-      <div className={styles.styledWrapper}>
+      <div
+        style={{
+          width: 412,
+        }}
+      >
         <Component />
       </div>
     ),

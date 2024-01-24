@@ -9,15 +9,17 @@ import {
 } from 'src/components/select/CountrySelect';
 import type { CountryOption } from 'src/types/Country';
 
-import styles from './CountrySelect.stories.module.scss';
-
 type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';
 
 const CountrySelectMeta: Meta = {
   component: CountrySelect,
   decorators: [
     Component => (
-      <div className={styles.styledWrapper}>
+      <div
+        style={{
+          width: 412,
+        }}
+      >
         <Component />
       </div>
     ),
