@@ -50,10 +50,23 @@ const storybookConfig: StorybookConfig = {
   framework: {
     // NextJS uses webpack internally, so we want to match that environment as close as possible
     name: '@storybook/react-webpack5',
-    options: {},
+    options: {
+      builder: {
+        useSWC: true,
+      },
+    },
   },
   staticDirs: ['./public', '../public'],
   stories: getStories(),
+  swc: () => ({
+    jsc: {
+      transform: {
+        react: {
+          runtime: 'automatic',
+        },
+      },
+    },
+  }),
   typescript: {
     check: false,
   },
