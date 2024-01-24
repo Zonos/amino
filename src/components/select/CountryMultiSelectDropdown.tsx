@@ -35,7 +35,7 @@ export const CountryMultiSelectDropdown = <
   const [searchText, setSearchText] = useState('');
 
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
-    useDropdown<HTMLDivElement, HTMLDivElement>({
+    useDropdown<HTMLDivElement, HTMLButtonElement>({
       offsetCrossAxis: 0,
       offsetMainAxis: 5,
       startOpen: isOpen,
@@ -100,14 +100,19 @@ export const CountryMultiSelectDropdown = <
 
   return (
     <div ref={wrapperRef} className={className} style={style}>
-      <div ref={refs.setReference}>
+      <button
+        ref={refs.setReference}
+        className={styles.triggerWrapper}
+        onClick={() => setVisible(!visible)}
+        type="button"
+      >
         <Input
+          autoComplete="off"
           className={styles.styledInput}
           inputPrefix={renderSelected()}
           inputSuffix="dog"
           label={renderLabel()}
           onChange={e => setSearchText(e.target.value)}
-          onFocus={() => setVisible(true)}
           suffix={
             <div className={styles.suffixActions}>
               {!!selectedCountries.length && (
@@ -117,16 +122,16 @@ export const CountryMultiSelectDropdown = <
                   variant="text"
                 />
               )}
-              <button onClick={() => setVisible(true)} type="button">
+              <div>
                 <ChevronUpIcon size={20} />
                 <ChevronDownIcon size={20} />
-              </button>
+              </div>
             </div>
           }
           type="text"
           value={searchText}
         />
-      </div>
+      </button>
 
       <div
         ref={refs.setFloating}

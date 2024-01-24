@@ -1,7 +1,12 @@
 @use 'theme';
 
-.dropdownWrapper {
-  width: calc(100% - 32px);
+.triggerWrapper {
+  width: 100%;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .styledInput {
@@ -57,8 +62,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
 
-  button:focus {
-    outline: none;
-  }
+.dropdownWrapper {
+  width: calc(100% - 32px);
 }
