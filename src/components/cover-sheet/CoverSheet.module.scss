@@ -1,9 +1,11 @@
 @use 'theme';
 
-.dialog {
-  z-index: 990;
+.coverSheet {
+  // Override BaseDialog
+  border-radius: 0;
+  max-height: 100vh;
+
   outline: none;
-  overflow-y: auto;
   box-sizing: border-box;
   overscroll-behavior: contain;
   background: theme.$amino-page-background;
@@ -13,18 +15,13 @@
   width: 100vw;
   height: 100vh;
   color: theme.$amino-text-color;
+  border: theme.$amino-border;
 
   @media print {
     height: unset;
     min-height: 100vh;
     position: absolute;
   }
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: theme.$amino-space-16;
 }
 
 .headerContainer {
@@ -44,6 +41,12 @@
   }
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  gap: theme.$amino-space-16;
+}
+
 .headerComponent {
   position: absolute;
   top: 50%;
@@ -53,4 +56,5 @@
 
 .content {
   padding: theme.$amino-space-56;
+  overflow: auto;
 }

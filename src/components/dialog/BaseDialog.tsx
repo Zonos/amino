@@ -64,8 +64,12 @@ export const BaseDialog = ({
   const mouseDownTarget = useRef<HTMLDivElement | null>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (onClose && closeOnEsc && event.key === 'Escape') {
-      onClose();
+    if (event.key === 'Escape') {
+      // Prevent other dialogs from closing
+      event.stopPropagation();
+      if (onClose && closeOnEsc) {
+        onClose();
+      }
     }
   };
 
@@ -100,54 +104,58 @@ export const BaseDialog = ({
   };
 
   if (typeof document !== 'undefined') {
-    return createPortal(
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className={styles.backdrop}
-            {...backdropMotionProps}
-            key="dialog-backdrop"
-            ref={backdropRef}
-            data-theme={themeOverride}
-            onKeyDown={handleKeyDown}
-            onMouseDown={e => {
-              // Store the target of the mouse down event so we can compare it to the target of the mouse up event
-              mouseDownTarget.current = e.target as HTMLDivElement;
-            }}
-            onMouseUp={e => {
-              const isSameTarget = e.target === mouseDownTarget.current;
-              const shouldClose =
-                onClose && closeOnBlur && e.target === backdropRef.current;
-              // only want to trigger close if key down and key up targets are the same and the clicking is on the overlay
-              if (isSameTarget && shouldClose) {
-                onClose();
-              }
-              // reset the mouse down target
-              mouseDownTarget.current = null;
-            }}
-            style={{
-              ...style,
-              '--amino-base-dialog-width': `${width}px`,
-            }}
-            tabIndex={-1}
-            transition={{ duration: 0.3 }}
-          >
+    const body = document.querySelector('body');
+    if (body) {
+      return createPortal(
+        <AnimatePresence>
+          {open && (
             <motion.div
-              {...combinedPopupMotionProps}
-              key="dialog"
-              className={clsx(className, styles.popup, 'elevated')}
-              onClick={e => {
-                // Prevent dialog from closing when clicking in the dialog
-                e.stopPropagation();
+              className={styles.backdrop}
+              {...backdropMotionProps}
+              key="dialog-backdrop"
+              ref={backdropRef}
+              data-theme={themeOverride}
+              onKeyDown={handleKeyDown}
+              onMouseDown={e => {
+                // Store the target of the mouse down event so we can compare it to the target of the mouse up event
+                mouseDownTarget.current = e.target as HTMLDivElement;
               }}
+              onMouseUp={e => {
+                const isSameTarget = e.target === mouseDownTarget.current;
+                const shouldClose =
+                  onClose && closeOnBlur && e.target === backdropRef.current;
+                // only want to trigger close if key down and key up targets are the same and the clicking is on the overlay
+                if (isSameTarget && shouldClose) {
+                  onClose();
+                }
+                // reset the mouse down target
+                mouseDownTarget.current = null;
+              }}
+              style={{
+                ...style,
+                '--amino-base-dialog-width': `${width}px`,
+              }}
+              tabIndex={-1}
+              transition={{ duration: 0.3 }}
             >
-              {children}
+              <motion.div
+                {...combinedPopupMotionProps}
+                key="dialog"
+                className={clsx(className, styles.popup, 'elevated')}
+                onClick={e => {
+                  // Prevent dialog from closing when clicking in the dialog
+                  e.stopPropagation();
+                }}
+              >
+                {children}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>,
-      document.querySelector('body')!,
-    );
+          )}
+        </AnimatePresence>,
+        body,
+      );
+    }
   }
+
   return null;
 };
