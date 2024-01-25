@@ -61,7 +61,7 @@ export const CoverSheet = ({
         animate: { translateY: 0 },
         exit: { translateY: '100vh' },
         initial: { translateY: '100vh' },
-        transition: { duration: 0.5, ease: [0.5, 0.5, 0.4, 1] },
+        transition: { duration: 0.5, ease: [0, 0, 0, 1] },
       }}
       {...props}
     >
