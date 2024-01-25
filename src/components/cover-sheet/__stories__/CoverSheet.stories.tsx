@@ -33,6 +33,7 @@ const Story: StoryFn<CoverSheetProps> = ({
         open={open}
         {...props}
       >
+        {children}
         <p>
           Bacon ipsum dolor amet drumstick sausage pig beef picanha leberkas ham
           hock doner pork venison t-bone ground round pork belly biltong. Shank
@@ -159,4 +160,14 @@ CoverSheetNoActions.args = {
   actionPortalOpen: true,
   children: <div />,
   label: 'Label',
+};
+
+export const Scrollable: StoryObj<CoverSheetProps> = {
+  args: {
+    children: (
+      <div className={styles.longDiv}>
+        Nothing to see here, keep scrolling!!
+      </div>
+    ),
+  },
 };

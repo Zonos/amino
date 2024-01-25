@@ -11,7 +11,7 @@ import styles from './CoverSheetActions.module.scss';
 export type CoverSheetProps = BaseProps & {
   children: ReactNode;
   /**
-   * Determine where to put this actions in the coversheet
+   * Determine where to put these actions in the coversheet
    * @default id for coversheet component is `__cover-sheet-actions`
    * */
   coverSheetActionId: string;
