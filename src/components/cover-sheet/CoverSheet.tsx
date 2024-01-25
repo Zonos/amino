@@ -82,43 +82,4 @@ export const CoverSheet = ({
       <div className={styles.content}>{children}</div>
     </BaseDialog>
   );
-
-  // if (typeof document !== 'undefined') {
-  //   const body = document.querySelector('body');
-  //   if (body) {
-  //     return createPortal(
-  //       <AnimatePresence>
-  //         {open && (
-  //           <motion.div
-  //             animate={{ translateY: 0 }}
-  //             className={clsx(styles.dialog, className)}
-  //             data-theme={themeOverride}
-  //             exit={{ translateY: '100vh' }}
-  //             initial={{ translateY: '100vh' }}
-  //             style={style}
-  //             transition={{ duration: 0.5, ease: [0.5, 0.5, 0.47, 0.85] }}
-  //           >
-  //             <header className={styles.headerContainer}>
-  //               <div className={styles.header}>
-  //                 <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
-  //                 <Text type="subheader">{label}</Text>
-  //               </div>
-  //               <div className={styles.headerComponent}>{headerComponent}</div>
-  //               <div id={actionWrapperId}>
-  //                 {actions && (
-  //                   <CoverSheetActions coverSheetActionId={actionWrapperId}>
-  //                     {actions}
-  //                   </CoverSheetActions>
-  //                 )}
-  //               </div>
-  //             </header>
-  //             <div className={styles.content}>{children}</div>
-  //           </motion.div>
-  //         )}
-  //       </AnimatePresence>,
-  //       body,
-  //     );
-  //   }
-  // }
-  // return null;
 };

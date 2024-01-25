@@ -6,7 +6,6 @@
   max-height: 100vh;
 
   outline: none;
-  overflow-y: auto;
   box-sizing: border-box;
   overscroll-behavior: contain;
   background: theme.$amino-page-background;
@@ -57,4 +56,5 @@
 
 .content {
   padding: theme.$amino-space-56;
+  overflow: auto;
 }
