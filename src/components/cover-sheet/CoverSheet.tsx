@@ -1,29 +1,25 @@
 import { type ReactNode, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { Button } from 'src/components/button/Button';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
+import {
+  type BaseDialogProps,
+  BaseDialog,
+} from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-import type { Theme } from 'src/types';
-import type { BaseProps } from 'src/types/BaseProps';
-import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 import styles from './CoverSheet.module.scss';
 
-export type CoverSheetProps = BaseProps & {
-  /** used for setting id of the wrapper of where the action will be located */
+export type CoverSheetProps = BaseDialogProps & {
+  /**
+   * used for setting id of the wrapper of where the action will be located */
   actionWrapperId?: string;
   actions?: ReactNode;
-  children: ReactNode;
   headerComponent?: ReactNode;
   label: string;
-  open: boolean;
-  themeOverride?: Theme;
-  onClose: () => void;
 };
 
 export const CoverSheet = ({
@@ -35,11 +31,8 @@ export const CoverSheet = ({
   label,
   onClose,
   open,
-  style,
-  themeOverride,
+  ...props
 }: CoverSheetProps) => {
-  const { aminoTheme } = useAminoTheme();
-
   useEffect(() => {
     if (typeof document === 'undefined') {
       return;
@@ -59,42 +52,73 @@ export const CoverSheet = ({
     document.body.style.overflow = open ? 'hidden' : 'auto';
   }, [open]);
 
-  if (typeof document !== 'undefined') {
-    const body = document.querySelector('body');
-    if (body) {
-      return createPortal(
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              animate={{ opacity: 1, translateY: 0 }}
-              className={clsx(styles.dialog, className)}
-              data-theme={themeOverride || aminoTheme}
-              exit={{ opacity: 0, translateY: 5 }}
-              initial={{ opacity: 0, translateY: 10 }}
-              style={style}
-              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <header className={styles.headerContainer}>
-                <div className={styles.header}>
-                  <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
-                  <Text type="subheader">{label}</Text>
-                </div>
-                <div className={styles.headerComponent}>{headerComponent}</div>
-                <div id={actionWrapperId}>
-                  {actions && (
-                    <CoverSheetActions coverSheetActionId={actionWrapperId}>
-                      {actions}
-                    </CoverSheetActions>
-                  )}
-                </div>
-              </header>
-              <div className={styles.content}>{children}</div>
-            </motion.div>
+  return (
+    <BaseDialog
+      className={clsx(styles.coverSheet, className)}
+      onClose={onClose}
+      open={open}
+      popupMotionProps={{
+        animate: { translateY: 0 },
+        exit: { translateY: '100vh' },
+        initial: { translateY: '100vh' },
+        transition: { duration: 0.5, ease: [0.5, 0.5, 0.4, 1] },
+      }}
+      {...props}
+    >
+      <header className={styles.headerContainer}>
+        <div className={styles.header}>
+          <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
+          <Text type="subheader">{label}</Text>
+        </div>
+        <div className={styles.headerComponent}>{headerComponent}</div>
+        <div id={actionWrapperId}>
+          {actions && (
+            <CoverSheetActions coverSheetActionId={actionWrapperId}>
+              {actions}
+            </CoverSheetActions>
           )}
-        </AnimatePresence>,
-        body,
-      );
-    }
-  }
-  return null;
+        </div>
+      </header>
+      <div className={styles.content}>{children}</div>
+    </BaseDialog>
+  );
+
+  // if (typeof document !== 'undefined') {
+  //   const body = document.querySelector('body');
+  //   if (body) {
+  //     return createPortal(
+  //       <AnimatePresence>
+  //         {open && (
+  //           <motion.div
+  //             animate={{ translateY: 0 }}
+  //             className={clsx(styles.dialog, className)}
+  //             data-theme={themeOverride}
+  //             exit={{ translateY: '100vh' }}
+  //             initial={{ translateY: '100vh' }}
+  //             style={style}
+  //             transition={{ duration: 0.5, ease: [0.5, 0.5, 0.47, 0.85] }}
+  //           >
+  //             <header className={styles.headerContainer}>
+  //               <div className={styles.header}>
+  //                 <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
+  //                 <Text type="subheader">{label}</Text>
+  //               </div>
+  //               <div className={styles.headerComponent}>{headerComponent}</div>
+  //               <div id={actionWrapperId}>
+  //                 {actions && (
+  //                   <CoverSheetActions coverSheetActionId={actionWrapperId}>
+  //                     {actions}
+  //                   </CoverSheetActions>
+  //                 )}
+  //               </div>
+  //             </header>
+  //             <div className={styles.content}>{children}</div>
+  //           </motion.div>
+  //         )}
+  //       </AnimatePresence>,
+  //       body,
+  //     );
+  //   }
+  // }
+  // return null;
 };
