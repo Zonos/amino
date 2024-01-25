@@ -64,8 +64,12 @@ export const BaseDialog = ({
   const mouseDownTarget = useRef<HTMLDivElement | null>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (onClose && closeOnEsc && event.key === 'Escape') {
-      onClose();
+    if (event.key === 'Escape') {
+      // Prevent other dialogs from closing
+      event.stopPropagation();
+      if (onClose && closeOnEsc) {
+        onClose();
+      }
     }
   };
 
