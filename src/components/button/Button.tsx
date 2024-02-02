@@ -26,8 +26,6 @@ import styles from './Button.module.scss';
 
 type ButtonBase = BaseProps & {
   background?: Color | 'inherit';
-  /** @param borderColor only available for intent 'outline' */
-  borderColor?: Color | 'inherit';
   children?: ReactNode;
   color?: Color | 'inherit';
   disabled?: boolean;
@@ -81,9 +79,13 @@ export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
   } & Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'>;
 
 export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
+  background,
   children,
   className,
+  color,
   disabled = false,
+  fitContentWidth,
+  hoverBackground,
   icon,
   iconRight,
   loading = false,
@@ -234,8 +236,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   };
 
   const getColor = () => {
-    if (props.color) {
-      return getAminoColor(props.color) || '';
+    if (color) {
+      return getAminoColor(color) || '';
     }
     switch (variant) {
       case 'primary':
@@ -256,8 +258,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   };
 
   const getHoverBackground = () => {
-    if (props.hoverBackground && props.hoverBackground !== 'inherit') {
-      const aminoColor = getAminoColor(props.hoverBackground);
+    if (hoverBackground && hoverBackground !== 'inherit') {
+      const aminoColor = getAminoColor(hoverBackground);
       return `linear-gradient(${aminoColor}, ${aminoColor})`;
     }
     switch (variant) {
@@ -283,8 +285,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   };
 
   const getBackgroundColor = () => {
-    if (props.background) {
-      return getAminoColor(props.background) || '';
+    if (background) {
+      return getAminoColor(background) || '';
     }
     switch (variant) {
       case 'primary':
@@ -325,7 +327,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         '--amino-button-text-button-hover-color': props.href
           ? theme.blue500
           : theme.gray500,
-        '--amino-button-width': props.fitContentWidth ? 'fit-content' : '',
+        '--amino-button-width': fitContentWidth ? 'fit-content' : '',
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
       {...buttonProps}

@@ -6,6 +6,7 @@ import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { ReactComponent } from 'src/types/ReactComponent';
 
 import styles from './SimpleTable.module.scss';
 
@@ -39,6 +40,13 @@ export type SimpleTableHeader<T extends object> = {
 }[keyof T extends React.Key ? keyof T : never];
 
 export type SimpleTableProps<T extends object> = BaseProps & {
+  /**
+   * Custom component for the link. Defaults to <a>
+   */
+  CustomLinkComponent?: ReactComponent<{
+    children: ReactNode;
+    href: string;
+  }>;
   headers: SimpleTableHeader<T>[];
   items: T[];
   /**
@@ -109,6 +117,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
  */
 export const SimpleTable = <T extends object>({
   className,
+  CustomLinkComponent,
   getRowLink,
   headers,
   items,
@@ -129,9 +138,11 @@ export const SimpleTable = <T extends object>({
 
     const renderContent = (content: ReactNode) => {
       if (getRowLink && !selectable.anySelected) {
+        const LinkComponent = CustomLinkComponent || 'a';
+
         return (
           <td className={styles.cellLink}>
-            <a
+            <LinkComponent
               className={clsx(header.noPadding && styles.noPadding)}
               href={getRowLink(item)}
               style={{
@@ -139,7 +150,7 @@ export const SimpleTable = <T extends object>({
               }}
             >
               {content}
-            </a>
+            </LinkComponent>
           </td>
         );
       }

@@ -7,17 +7,14 @@ import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './TableCell.module.scss';
 
-type StyledProps = {
+export type TableCellProps = BaseProps & {
   align?: 'center' | 'justify' | 'left' | 'right';
   borderBottom?: string;
-  padding?: string;
-};
-
-export type TableCellProps = BaseProps & {
   children?: ReactNode;
   colSpan?: number;
+  padding?: string;
   tag?: 'td' | 'th';
-} & StyledProps;
+};
 
 export const TableCell = ({
   align = 'left',

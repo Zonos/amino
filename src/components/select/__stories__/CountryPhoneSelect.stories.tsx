@@ -10,13 +10,15 @@ import {
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { CountryOption } from 'src/types/Country';
 
-import styles from './CountryPhoneSelect.stories.module.scss';
-
 const CountryPhoneSelectMeta: Meta = {
   component: CountryPhoneSelect,
   decorators: [
     Component => (
-      <div className={styles.styledWrapper}>
+      <div
+        style={{
+          width: 412,
+        }}
+      >
         <Component />
       </div>
     ),

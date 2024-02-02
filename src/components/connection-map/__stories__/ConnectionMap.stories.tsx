@@ -10,15 +10,17 @@ import { VStack } from 'src/components/stack/VStack';
 import type { GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { useSwr } from 'src/utils/hooks/useSwr';
 
-import styles from './ConnectionMap.stories.module.scss';
-
 const GEO_URL = '/zonos-countries-geojson.json';
 
 const CountrySelectMeta: Meta = {
   component: ConnectionMap,
   decorators: [
     Component => (
-      <div className={styles.styledWrapper}>
+      <div
+        style={{
+          width: 412,
+        }}
+      >
         <Component />
       </div>
     ),
