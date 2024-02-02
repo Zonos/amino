@@ -81,7 +81,7 @@ export const ToastContextProvider = ({ children }: Props) => {
           className="toast-container"
           style={{
             '--amino-toast-context-bottom': toastLocation.bottom || '40px',
-            '--amino-toast-context-left': toastLocation.left || '',
+            '--amino-toast-context-left': toastLocation.left || 'auto',
           }}
         >
           <div className={clsx(styles.toastsWrapper, 'toasts-wrapper')}>

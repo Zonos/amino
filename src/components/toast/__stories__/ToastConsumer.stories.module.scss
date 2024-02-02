@@ -1,16 +1,15 @@
 @use 'theme';
 
-.leftCenteredDiv {
+.wrapper {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 .customWrapper {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 16px;
   border: theme.$amino-border-blue;
   border-radius: 6px;
   gap: 10px;

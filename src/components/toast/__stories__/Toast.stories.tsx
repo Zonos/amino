@@ -10,9 +10,8 @@ const ToastMeta: Meta = {
 
 export default ToastMeta;
 
-const Template: StoryFn<ToastProps> = ({ children }: ToastProps) => (
+const Template: StoryFn<ToastProps> = () => (
   <ToastContextProvider>
-    {children}
     <ToastConsumer />
   </ToastContextProvider>
 );
