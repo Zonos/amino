@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect } from 'react';
 
-import 'src/styles/amino.css';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
+import 'src/styles/amino.css';
 import { useGlobals } from '@storybook/addons';
 import { type Decorator, type Preview } from '@storybook/react';
 
