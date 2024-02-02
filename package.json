@@ -172,7 +172,7 @@
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.6.0",
     "typed-scss-modules": "^7.1.4",
-    "typescript": "5.2.2",
+    "typescript": "5.3.3",
     "typescript-transform-paths": "^3.4.6",
     "vite": "^5.0.11",
     "vitest": "^1.1.3"
