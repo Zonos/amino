@@ -690,13 +690,13 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radius12: 'var(--amino-radius-12)',
 
-  /** @info 34px */
+  /** @info 30px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSize3xl: 'var(--amino-font-size-3xl)',
-  /** @info 28px  */
+  /** @info 24px  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSize2xl: 'var(--amino-font-size-2xl)',
-  /** @info 22px */
+  /** @info 20px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeXl: 'var(--amino-font-size-xl)',
   /** @info 18px */
@@ -705,13 +705,13 @@ export const theme = {
   /** @info 16px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeBaseDocs: 'var(--amino-font-size-base-docs)',
-  /** @info 14px */
+  /** @info 13px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeBase: 'var(--amino-font-size-base)',
   /** @info 12px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeS: 'var(--amino-font-size-s)',
-  /** @info 10px */
+  /** @info 11px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   fontSizeXs: 'var(--amino-font-size-xs)',
 
