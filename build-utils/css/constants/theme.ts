@@ -98,22 +98,22 @@ export const theme = {
   /** @info 12px */
   'radius-12': '0.75rem',
 
-  /** @info 34px */
-  'font-size-3xl': '2.125rem',
-  /** @info 28px  */
-  'font-size-2xl': '1.75rem',
-  /** @info 22px */
-  'font-size-xl': '1.375rem',
+  /** @info 30px */
+  'font-size-3xl': '1.875rem',
+  /** @info 24px  */
+  'font-size-2xl': '1.5rem',
+  /** @info 20px */
+  'font-size-xl': '1.25rem',
   /** @info 18px */
   'font-size-l': '1.125rem',
   /** @info 16px */
   'font-size-base-docs': '1rem',
-  /** @info 14px */
-  'font-size-base': '0.875rem',
+  /** @info 13px */
+  'font-size-base': '0.813rem',
   /** @info 12px */
   'font-size-s': '0.75rem',
-  /** @info 10px */
-  'font-size-xs': '0.625rem',
+  /** @info 11px */
+  'font-size-xs': '0.688rem',
 
   /* LINE HEIGHT */
   /** @info 48px */

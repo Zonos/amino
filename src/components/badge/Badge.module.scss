@@ -12,7 +12,7 @@ $order: var(--amino-badge-order);
   display: flex;
   gap: theme.$amino-space-4;
   font-size: theme.$amino-font-size-s;
-  padding: 2px 8px;
+  padding: 3px 8px;
   text-align: center;
   background-color: theme.$amino-gray-100;
   color: theme.$amino-gray-800;
@@ -20,10 +20,11 @@ $order: var(--amino-badge-order);
   border-radius: $border-radius;
   font-weight: $font-weight;
   order: $order;
+  border: 1px solid theme.$amino-gray-200;
 
   p {
     margin: 0;
-    line-height: 20px;
+    line-height: 16px;
   }
   svg {
     height: 20px;
@@ -33,6 +34,7 @@ $order: var(--amino-badge-order);
   &.bold {
     // bold config default (gray)
     background-color: theme.$amino-gray-600;
+    border: 1px solid theme.$amino-gray-600;
     color: theme.$amino-gray-100;
     & svg {
       color: theme.$amino-gray-100;
@@ -41,7 +43,7 @@ $order: var(--amino-badge-order);
 
   // size
   &.small {
-    padding: 0px theme.$amino-space-4;
+    padding: 1px theme.$amino-space-4;
     border-radius: theme.$amino-radius-4;
     gap: 2px;
   }
@@ -49,10 +51,12 @@ $order: var(--amino-badge-order);
   &.blue {
     // color config
     background-color: theme.$amino-blue-100;
+    border: 1px solid theme.$amino-blue-200;
     color: theme.$amino-blue-800;
     &.bold {
       // bold config
       background-color: theme.$amino-blue-600;
+      border: 1px solid theme.$amino-blue-600;
       color: theme.$amino-blue-100;
       & svg {
         color: theme.$amino-blue-100;
@@ -63,10 +67,12 @@ $order: var(--amino-badge-order);
   &.green {
     // color config
     background-color: theme.$amino-green-100;
+    border: 1px solid theme.$amino-green-200;
     color: theme.$amino-green-800;
     &.bold {
       // bold config
       background-color: theme.$amino-green-600;
+      border: 1px solid theme.$amino-green-600;
       color: theme.$amino-green-100;
       & svg {
         color: theme.$amino-green-100;
@@ -77,10 +83,12 @@ $order: var(--amino-badge-order);
   &.red {
     // color config
     background-color: theme.$amino-red-100;
+    border: 1px solid theme.$amino-red-200;
     color: theme.$amino-red-800;
     &.bold {
       // bold config
       background-color: theme.$amino-red-600;
+      border: 1px solid theme.$amino-red-600;
       color: theme.$amino-red-100;
       & svg {
         color: theme.$amino-red-100;
@@ -91,10 +99,12 @@ $order: var(--amino-badge-order);
   &.orange {
     // color config
     background-color: theme.$amino-orange-100;
+    border: 1px solid theme.$amino-orange-200;
     color: theme.$amino-orange-800;
     &.bold {
       // bold config
       background-color: theme.$amino-orange-600;
+      border: 1px solid theme.$amino-orange-600;
       color: theme.$amino-orange-100;
       & svg {
         color: theme.$amino-orange-100;
@@ -105,10 +115,12 @@ $order: var(--amino-badge-order);
   &.purple {
     // color config
     background-color: theme.$amino-purple-100;
+    border: 1px solid theme.$amino-purple-200;
     color: theme.$amino-purple-800;
     &.bold {
       // bold config
       background-color: theme.$amino-purple-600;
+      border: 1px solid theme.$amino-purple-600;
       color: theme.$amino-purple-100;
       & svg {
         color: theme.$amino-purple-100;
@@ -119,10 +131,12 @@ $order: var(--amino-badge-order);
   &.cyan {
     // color config
     background-color: theme.$amino-cyan-100;
+    border: 1px solid theme.$amino-cyan-200;
     color: theme.$amino-cyan-800;
     &.bold {
       // bold config
       background-color: theme.$amino-cyan-600;
+      border: 1px solid theme.$amino-cyan-600;
       color: theme.$amino-cyan-100;
     }
   }

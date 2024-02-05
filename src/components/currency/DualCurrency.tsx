@@ -98,7 +98,7 @@ export const DualCurrency = ({
         }}
       >
         {renderLocalCurrency()}
-        <ArrowSwapIcon size={12} />
+        <ArrowSwapIcon color="gray800" size={12} />
         {renderForeignCurrency()}
       </div>
     );

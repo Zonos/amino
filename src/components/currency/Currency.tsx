@@ -24,7 +24,7 @@ export const Currency = ({ amount, className, code, style }: Props) => {
       <Text color={isNegative ? 'red600' : 'gray1200'} type="label">
         {formattedCurrency}
       </Text>
-      <Text color={isNegative ? 'red400' : 'gray700'}>
+      <Text color={isNegative ? 'red600' : 'gray700'}>
         {code.toUpperCase()}
       </Text>
     </span>
