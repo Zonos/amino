@@ -1,22 +1,22 @@
 export const blue = {
-  /** @info #DEEDFE  */
+  /** @info #E7F6FE  */
   'blue-100': '#E7F6FE',
-  /** @info #C5DDFD  */
+  /** @info #C9E6FD  */
   'blue-200': '#C9E6FD',
-  /** @info #AACBFC  */
+  /** @info #A8CEFA  */
   'blue-300': '#A8CEFA',
-  /** @info #89B2FA  */
+  /** @info #92B6F7  */
   'blue-400': '#92B6F7',
-  /** @info #5F92F6  */
+  /** @info #7292F3  */
   'blue-500': '#7292F3',
   /** @info #445EEE  */
   'blue-600': '#445EEE',
-  /** @info #364BD4  */
+  /** @info #3843C2  */
   'blue-700': '#3843C2',
-  /** @info #2C3BAF  */
+  /** @info #2E3D94  */
   'blue-800': '#2E3D94',
-  /** @info #252E7E  */
+  /** @info #212F68  */
   'blue-900': '#212F68',
-  /** @info #1C2154  */
+  /** @info #152141  */
   'blue-1000': '#152141',
 } as const;

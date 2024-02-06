@@ -1,22 +1,22 @@
 export const purple = {
-  /** @info #F4EEFF  */
+  /** @info #EDEBFF  */
   'purple-100': '#EDEBFF',
-  /** @info #E7D8FD  */
+  /** @info #DCD2FE  */
   'purple-200': '#DCD2FE',
-  /** @info #DDC5FC  */
+  /** @info #CEB5FD  */
   'purple-300': '#CEB5FD',
-  /** @info #CEA9FA  */
+  /** @info #C699FA  */
   'purple-400': '#C699FA',
-  /** @info #BD82F8  */
+  /** @info #BB6FF6  */
   'purple-500': '#BB6FF6',
-  /** @info #AB30EE  */
+  /** @info #AB26ED  */
   'purple-600': '#AB26ED',
-  /** @info #922BC5  */
+  /** @info #901CCA  */
   'purple-700': '#901CCA',
-  /** @info #742498  */
+  /** @info #6E1E99  */
   'purple-800': '#6E1E99',
-  /** @info #54206A  */
+  /** @info #471D68  */
   'purple-900': '#471D68',
-  /** @info #3B1948  */
+  /** @info #2C1844  */
   'purple-1000': '#2C1844',
 } as const;

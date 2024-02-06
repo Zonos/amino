@@ -1,22 +1,22 @@
 export const green = {
-  /** @info #E0FFE3  */
+  /** @info #DEFDE8  */
   'green-100': '#DEFDE8',
-  /** @info #C8FDCE  */
+  /** @info #AFF8C3  */
   'green-200': '#AFF8C3',
-  /** @info #A9F9B5  */
+  /** @info #81EF98  */
   'green-300': '#81EF98',
-  /** @info #7DE490  */
+  /** @info #5BDC70  */
   'green-400': '#5BDC70',
-  /** @info #56C76F  */
+  /** @info #4AC959  */
   'green-500': '#4AC959',
-  /** @info #2B9C4D  */
+  /** @info #2CA03F  */
   'green-600': '#2CA03F',
-  /** @info #298549  */
+  /** @info #288129  */
   'green-700': '#288129',
-  /** @info #266E3E  */
+  /** @info #246627  */
   'green-800': '#246627',
-  /** @info #245234  */
+  /** @info #1D4920  */
   'green-900': '#1D4920',
-  /** @info #1C3626  */
+  /** @info #153219  */
   'green-1000': '#153219',
 } as const;

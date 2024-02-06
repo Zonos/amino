@@ -1,22 +1,22 @@
 export const cyan = {
-  /** @info #DBFFFE  */
+  /** @info #D6FFFE  */
   'cyan-100': '#D6FFFE',
-  /** @info #BAFDFD  */
+  /** @info #C0F2F2  */
   'cyan-200': '#C0F2F2',
-  /** @info #8FF6FA  */
+  /** @info #9BE7E9  */
   'cyan-300': '#9BE7E9',
-  /** @info #65E6EF  */
+  /** @info #66D5DB  */
   'cyan-400': '#66D5DB',
-  /** @info #4EC6D4  */
+  /** @info #3EC4D0  */
   'cyan-500': '#3EC4D0',
-  /** @info #37A5B4  */
+  /** @info #2CA0AF  */
   'cyan-600': '#2CA0AF',
-  /** @info #2C8896  */
+  /** @info #29818E  */
   'cyan-700': '#29818E',
-  /** @info #26707E  */
+  /** @info #25646F  */
   'cyan-800': '#25646F',
-  /** @info #245660  */
+  /** @info #1D464E  */
   'cyan-900': '#1D464E',
-  /** @info #183339  */
+  /** @info #152D32  */
   'cyan-1000': '#152D32',
 } as const;
