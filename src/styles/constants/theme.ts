@@ -592,6 +592,9 @@ export const theme = {
   /** @info var(--amino-gray-1200) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   backdropColor: 'var(--amino-backdrop-color)',
+  /** @info var(--amino-gray-0) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  raisedSurfaceColor: 'var(--amino-raised-surface-color)',
 
   /* BUTTON HOVER COLORS */
   /** @info linear-gradient(180deg, #445EEE 0%, #364BD4 100%) */

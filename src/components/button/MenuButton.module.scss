@@ -12,7 +12,7 @@
 }
 
 .animatedSurface {
-  background: theme.$amino-surface-color;
+  background: theme.$amino-raised-surface-color;
   border-radius: theme.$amino-radius-12;
   box-shadow: theme.$amino-v3-shadow-large;
   animation: DropdownAnimation 250ms ease-in-out;
