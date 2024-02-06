@@ -29,6 +29,7 @@ export const ColorPalette = () => (
             ? colorContrasts
             : ['0', '50', ...colorContrasts, '1100', '1200']
           ).map(value => {
+            console.log({ value }, Number(value) <= 500);
             const aminoColor: Color = `${color}${value}` as Color;
             return (
               <div
