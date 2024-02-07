@@ -83,6 +83,7 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
     name: 'Name',
   },
   {
+    align: 'end',
     key: 'age',
     name: 'Age',
     width: 10,
@@ -211,6 +212,31 @@ export const WithLink = () => {
 
 export const Loading = () => {
   const [loading, setLoading] = useState(true);
+  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+
+  const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedRowIndexes.length === items.length) {
+      setSelectedRowIndexes([]);
+    } else {
+      setSelectedRowIndexes(items.map((_, index) => index));
+    }
+  };
+
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
+    if (value) {
+      setSelectedRowIndexes([...selectedRowIndexes, index]);
+    } else {
+      setSelectedRowIndexes(
+        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+      );
+    }
+  };
 
   return (
     <>
@@ -221,6 +247,14 @@ export const Loading = () => {
         keyExtractor={item => String(item.id)}
         loading={loading}
         loadingItems={items.length}
+        selectable={{
+          anySelected: selectedRowIndexes.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
       />
     </>
   );

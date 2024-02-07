@@ -10,6 +10,18 @@ import type { ReactComponent } from 'src/types/ReactComponent';
 
 import styles from './SimpleTable.module.scss';
 
+const getFlexAlignment = (alignment: SimpleTableHeaderBaseProps['align']) => {
+  switch (alignment) {
+    case 'center':
+      return 'center';
+    case 'end':
+      return 'flex-end';
+    case 'start':
+    default:
+      return 'flex-start';
+  }
+};
+
 type SimpleTableHeaderBaseProps = {
   /**
    * Text alignment for a column
@@ -197,7 +209,20 @@ export const SimpleTable = <T extends object>({
                 header.noPadding && styles.noPadding,
               )}
             >
-              <Skeleton key={n} height={loadingSkeletonHeight} />
+              <div
+                className={styles.skeletonCellWrapper}
+                style={{
+                  justifyContent: getFlexAlignment(header.align),
+                }}
+              >
+                <Skeleton
+                  key={n}
+                  height={loadingSkeletonHeight}
+                  style={{
+                    width: '50%',
+                  }}
+                />
+              </div>
             </td>
           ))}
         </tr>
