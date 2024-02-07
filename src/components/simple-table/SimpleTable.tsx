@@ -10,6 +10,18 @@ import type { ReactComponent } from 'src/types/ReactComponent';
 
 import styles from './SimpleTable.module.scss';
 
+const getFlexAlignment = (alignment: SimpleTableHeaderBaseProps['align']) => {
+  switch (alignment) {
+    case 'center':
+      return 'center';
+    case 'end':
+      return 'flex-end';
+    case 'start':
+    default:
+      return 'flex-start';
+  }
+};
+
 type SimpleTableHeaderBaseProps = {
   /**
    * Text alignment for a column
@@ -59,6 +71,11 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    * @default 10
    */
   loadingItems?: number;
+  /**
+   * Height of loading skeleton
+   * @default 13
+   */
+  loadingSkeletonHeight?: number;
   /**
    * @default false,
    * Disable hover background color effect on rows
@@ -124,6 +141,7 @@ export const SimpleTable = <T extends object>({
   keyExtractor,
   loading = false,
   loadingItems = 10,
+  loadingSkeletonHeight = 13,
   noHoverBackground = false,
   onRowClick,
   onRowHover,
@@ -180,7 +198,7 @@ export const SimpleTable = <T extends object>({
         <tr key={n}>
           {selectable.enabled && (
             <td>
-              <Skeleton key={n} height={30} />
+              <Skeleton key={n} height={loadingSkeletonHeight} />
             </td>
           )}
           {headers.map(header => (
@@ -191,7 +209,20 @@ export const SimpleTable = <T extends object>({
                 header.noPadding && styles.noPadding,
               )}
             >
-              <Skeleton key={n} height={30} />
+              <div
+                className={styles.skeletonCellWrapper}
+                style={{
+                  justifyContent: getFlexAlignment(header.align),
+                }}
+              >
+                <Skeleton
+                  key={n}
+                  height={loadingSkeletonHeight}
+                  style={{
+                    width: '50%',
+                  }}
+                />
+              </div>
             </td>
           ))}
         </tr>

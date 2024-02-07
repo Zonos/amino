@@ -18,8 +18,11 @@ $background: var(--amino-colors-stories-background);
 }
 
 .styledColorIntensity {
-  color: $color;
   font-size: theme.$amino-font-size-s;
   padding: 24px;
   background: $background;
+
+  span {
+    color: $color;
+  }
 }

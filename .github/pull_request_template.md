@@ -1,8 +1,7 @@
-## Jira issue
+## Linear issue
 
-<!-- [Jira issue description](url) -->
 <!-- Example:
-[3106 - Loup Charmant - Need dashboard switched from Hello](https://myzonos.atlassian.net/browse/DM-550)
+[Update Catalog CSV import to support multiple HS codes per item](https://linear.app/zonos/issue/FE-730/update-catalog-csv-import-to-support-multiple-hs-codes-per-item)
 -->
 
 ## Description
