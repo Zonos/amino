@@ -16,9 +16,9 @@ $width: var(--amino-skeleton-width);
 .skeletonWrapper {
   height: $height;
   width: $width;
-  border-radius: theme.$amino-radius-6;
+  border-radius: 20px;
   position: relative;
-  background: theme.$amino-gray-200;
+  background: theme.$amino-gray-100;
   overflow: hidden;
 
   &.animation {

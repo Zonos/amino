@@ -180,7 +180,7 @@ export const SimpleTable = <T extends object>({
         <tr key={n}>
           {selectable.enabled && (
             <td>
-              <Skeleton key={n} height={30} />
+              <Skeleton key={n} height={14} />
             </td>
           )}
           {headers.map(header => (
@@ -191,7 +191,7 @@ export const SimpleTable = <T extends object>({
                 header.noPadding && styles.noPadding,
               )}
             >
-              <Skeleton key={n} height={30} />
+              <Skeleton key={n} height={14} />
             </td>
           ))}
         </tr>
