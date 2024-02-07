@@ -61,7 +61,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
   loadingItems?: number;
   /**
    * Height of loading skeleton
-   * @default 14
+   * @default 13
    */
   loadingSkeletonHeight?: number;
   /**
@@ -129,7 +129,7 @@ export const SimpleTable = <T extends object>({
   keyExtractor,
   loading = false,
   loadingItems = 10,
-  loadingSkeletonHeight = 14,
+  loadingSkeletonHeight = 13,
   noHoverBackground = false,
   onRowClick,
   onRowHover,
