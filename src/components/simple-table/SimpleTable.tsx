@@ -60,6 +60,11 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    */
   loadingItems?: number;
   /**
+   * Height of loading skeleton
+   * @default 14
+   */
+  loadingSkeletonHeight?: number;
+  /**
    * @default false,
    * Disable hover background color effect on rows
    */
@@ -124,6 +129,7 @@ export const SimpleTable = <T extends object>({
   keyExtractor,
   loading = false,
   loadingItems = 10,
+  loadingSkeletonHeight = 14,
   noHoverBackground = false,
   onRowClick,
   onRowHover,
@@ -180,7 +186,7 @@ export const SimpleTable = <T extends object>({
         <tr key={n}>
           {selectable.enabled && (
             <td>
-              <Skeleton key={n} height={14} />
+              <Skeleton key={n} height={loadingSkeletonHeight} />
             </td>
           )}
           {headers.map(header => (
@@ -191,7 +197,7 @@ export const SimpleTable = <T extends object>({
                 header.noPadding && styles.noPadding,
               )}
             >
-              <Skeleton key={n} height={14} />
+              <Skeleton key={n} height={loadingSkeletonHeight} />
             </td>
           ))}
         </tr>
