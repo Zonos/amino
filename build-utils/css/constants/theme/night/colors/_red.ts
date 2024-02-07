@@ -1,22 +1,22 @@
 export const red = {
-  /** @info #49121F  */
-  'red-100': '#49121F',
-  /** @info #641627  */
-  'red-200': '#641627',
-  /** @info #8C1D33  */
-  'red-300': '#8C1D33',
-  /** @info #B4223D  */
-  'red-400': '#B4223D',
-  /** @info #D92141  */
-  'red-500': '#D92141',
-  /** @info #F95C67  */
-  'red-600': '#F95C67',
-  /** @info #FA8B8B  */
-  'red-700': '#FA8B8B',
-  /** @info #FCB4B2  */
-  'red-800': '#FCB4B2',
-  /** @info #FDD3D0  */
-  'red-900': '#FDD3D0',
-  /** @info #FFEDEB  */
-  'red-1000': '#FFEDEB',
+  /** @info #481419  */
+  'red-100': '#481419',
+  /** @info #6C1B26  */
+  'red-200': '#6C1B26',
+  /** @info #922033  */
+  'red-300': '#922033',
+  /** @info #BC2442  */
+  'red-400': '#BC2442',
+  /** @info #DE314F  */
+  'red-500': '#DE314F',
+  /** @info #EB5C6C  */
+  'red-600': '#EB5C6C',
+  /** @info #F4868B  */
+  'red-700': '#F4868B',
+  /** @info #FAA9A9  */
+  'red-800': '#FAA9A9',
+  /** @info #FDD0CE  */
+  'red-900': '#FDD0CE',
+  /** @info #FFECEB  */
+  'red-1000': '#FFECEB',
 } as const;
