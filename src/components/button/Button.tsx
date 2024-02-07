@@ -298,7 +298,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'danger':
         return theme.danger;
       case 'standard':
-        return theme.surfaceColor;
+        return theme.raisedSurfaceColor;
       case 'subtle':
         return 'none';
       default:
