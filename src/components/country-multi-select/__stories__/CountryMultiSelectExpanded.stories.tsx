@@ -94,9 +94,7 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
         width: '632px',
       }}
       {...props}
-      countries={countries}
-      onChange={setValue}
-      renderToggle={
+      actions={
         <Toggle
           onChange={setToggle}
           options={[
@@ -106,6 +104,8 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
           value={toggle}
         />
       }
+      countries={countries}
+      onChange={setValue}
       selectedCountries={value}
     />
   );

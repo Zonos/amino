@@ -40,13 +40,13 @@ type ICountryMultiSelectExpandedRegion<TCountryCode extends string = string> = {
 export type CountryMultiSelectExpandedProps<
   TCountryCode extends string = string,
 > = BaseProps & {
+  actions?: ReactNode;
   countries: ICountryMultiSelectExpandedOption<TCountryCode>[];
   /**
    * Remove the top header part
    * @default false
    */
   noHeader?: boolean;
-  renderToggle?: ReactNode;
   selectedCountries: ICountryMultiSelectExpandedOption<TCountryCode>[];
   /**
    * No search bar
@@ -64,11 +64,11 @@ export type CountryMultiSelectExpandedProps<
 export const CountryMultiSelectExpanded = <
   TCountryCode extends string = string,
 >({
+  actions,
   className,
   countries,
   noHeader = false,
   onChange,
-  renderToggle,
   selectedCountries,
   style,
   withoutSearch = false,
@@ -300,10 +300,10 @@ export const CountryMultiSelectExpanded = <
             </label>
           )}
 
-          {renderToggle}
+          {actions && <div className={styles.headerActions}>{actions}</div>}
         </div>
 
-        <Divider noMargin />
+        {(!!actions || !withoutSearch) && <Divider noMargin />}
 
         {renderSelector()}
       </div>

@@ -9,6 +9,7 @@ export declare const componentWrapper: string;
 export declare const countriesWrapper: string;
 export declare const groupWrapper: string;
 export declare const header: string;
+export declare const headerActions: string;
 export declare const hoverWrapper: string;
 export declare const noCountriesWrapper: string;
 export declare const searchInput: string;

@@ -59,7 +59,6 @@ export const Toggle = <TValue extends string | number>({
       selectedRef.current?.getBoundingClientRect() || null,
     );
     setAnimationRect(nextAnimationRect);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (

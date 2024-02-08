@@ -44,6 +44,10 @@
   }
 }
 
+.headerActions {
+  padding: 4px 0;
+}
+
 .selectionWrapper {
   display: flex;
   flex-direction: column;
@@ -100,7 +104,6 @@
   }
 }
 
-// Countries should wrap to 2 lines when wide enough and to a single line when narrow. They should be sorted alphabetically with options to be grouped by continent/group or shipping zone.
 .countriesWrapper {
   padding-left: 24px;
   display: grid;
