@@ -1,6 +1,6 @@
 @use 'theme';
 
-.aminoContent {
+.content {
   padding: theme.$amino-space-24;
 
   & > div {
@@ -11,12 +11,11 @@
   }
 }
 
-.aminoFooter {
+.footer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: theme.$amino-space-24;
 
   & > button + button {
     margin-left: theme.$amino-space-8;
@@ -25,10 +24,4 @@
   button {
     flex: 1;
   }
-}
-
-.aminoAlertPrompt {
-  color: theme.$amino-text-color-secondary;
-  line-height: theme.$amino-line-height-base;
-  font-size: theme.$amino-font-size-base;
 }

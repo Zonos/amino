@@ -28,6 +28,8 @@ export type UseDropdownParams = {
    * @default 'bottom-start'
    */
   placement?: Placement;
+
+  startOpen?: boolean;
 };
 
 type Return<
@@ -53,11 +55,12 @@ export const useDropdown = <
     offsetCrossAxis = 0,
     offsetMainAxis = 0,
     placement = 'bottom-start',
+    startOpen = false,
   } = params ?? {};
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(startOpen);
 
-  const visibility: 'visible' | 'hidden' = visible ? 'visible' : 'hidden';
+  const visibility = visible ? 'visible' : 'hidden';
 
   const wrapperRef = useRef<WrapperRef>(null);
 
