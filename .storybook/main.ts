@@ -9,7 +9,6 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-designs',
-    '@storybook/addon-styling-webpack',
     // addons to configure to use scss modules in storybook
     {
       name: '@storybook/addon-styling-webpack',
@@ -18,7 +17,12 @@ const storybookConfig: StorybookConfig = {
         rules: [
           {
             sideEffects: true,
-            test: /\.css|scss$/,
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader'],
+          },
+          {
+            sideEffects: true,
+            test: /\.module.scss$/,
             use: [
               'style-loader',
               {

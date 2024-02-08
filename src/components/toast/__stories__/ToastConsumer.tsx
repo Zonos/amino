@@ -24,7 +24,7 @@ export const ToastConsumer = () => {
   const [verticalOffset, setVerticalOffset] = useState('');
 
   return (
-    <div className={styles.leftCenteredDiv}>
+    <div className={styles.wrapper}>
       <VStack>
         <Button onClick={() => notify('Default toast', { duration })}>
           Notify

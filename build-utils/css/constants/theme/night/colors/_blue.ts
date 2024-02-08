@@ -1,22 +1,22 @@
 export const blue = {
-  /** @info #1C2154  */
-  'blue-100': '#1C2154',
-  /** @info #252E7E  */
-  'blue-200': '#252E7E',
-  /** @info #2C3BAF  */
-  'blue-300': '#2C3BAF',
-  /** @info #364BD4  */
-  'blue-400': '#364BD4',
+  /** @info #152141  */
+  'blue-100': '#152141',
+  /** @info #212F68  */
+  'blue-200': '#212F68',
+  /** @info #2E3D94  */
+  'blue-300': '#2E3D94',
+  /** @info #3843C2  */
+  'blue-400': '#3843C2',
   /** @info #445EEE  */
   'blue-500': '#445EEE',
-  /** @info #5F92F6  */
-  'blue-600': '#5F92F6',
-  /** @info #89B2FA  */
-  'blue-700': '#89B2FA',
-  /** @info #AACBFC  */
-  'blue-800': '#AACBFC',
-  /** @info #C5DDFD  */
-  'blue-900': '#C5DDFD',
-  /** @info #DEEDFE  */
-  'blue-1000': '#DEEDFE',
+  /** @info #7292F3  */
+  'blue-600': '#7292F3',
+  /** @info #92B6F7  */
+  'blue-700': '#92B6F7',
+  /** @info #A8CEFA  */
+  'blue-800': '#A8CEFA',
+  /** @info #C9E6FD  */
+  'blue-900': '#C9E6FD',
+  /** @info #E7F6FE  */
+  'blue-1000': '#E7F6FE',
 } as const;

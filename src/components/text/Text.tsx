@@ -270,7 +270,7 @@ export const Text = ({
       return renderTypography({
         as: tag || smallheaderOption.tag,
         fontWeight: fontWeight || smallheaderOption.weight,
-        isUppercase: typeof isUppercase === 'boolean' ? isUppercase : true,
+        isUppercase,
         size: smallheaderOption.size,
       });
     case 'caption':

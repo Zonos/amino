@@ -16,8 +16,8 @@ const testCases: UnitTestItem[] = [
     input: `
       --amino-type-scale-base: 16px;
       --amino-new-key: 2.125rem;
-      --amino-font-size-2xl: 1.75rem;
-      --amino-font-size-xl: 1.375rem;
+      --amino-font-size-2xl: 1.5rem;
+      --amino-font-size-xl: 1.25rem;
       --amino-font-size-l: 1.125rem;`,
     theme: lightTheme,
   },
@@ -31,7 +31,7 @@ const testCases: UnitTestItem[] = [
     input: `
       --amino-type-scale-base: 16px;
       --amino-new-key: 2.125rem;
-      --amino-font-size-2xl: 1.75rem;
+      --amino-font-size-2xl: 1.5rem;
       --amino-new-key-2: 1.375rem;
 
       --amino-font-size-l: 1.125rem;
@@ -41,26 +41,26 @@ const testCases: UnitTestItem[] = [
   {
     case: `Key found but value is different`,
     expected: [
-      "'2.100rem' was value of key '--amino-font-size-3xl' in last snapshot. Received: '2.125rem'",
+      "'2.100rem' was value of key '--amino-font-size-3xl' in last snapshot. Received: '1.875rem'",
     ],
     input: `
       --amino-type-scale-base: 16px;
       --amino-font-size-3xl: 2.100rem;
-      --amino-font-size-2xl: 1.75rem;
-      --amino-font-size-xl: 1.375rem;
+      --amino-font-size-2xl: 1.5rem;
+      --amino-font-size-xl: 1.25rem;
       --amino-font-size-l: 1.125rem;`,
     theme: lightTheme,
   },
   {
     case: `2 keys found but value is different`,
     expected: [
-      "'2.100rem' was value of key '--amino-font-size-3xl' in last snapshot. Received: '2.125rem'",
-      "'1.300rem' was value of key '--amino-font-size-xl' in last snapshot. Received: '1.375rem'",
+      "'2.100rem' was value of key '--amino-font-size-3xl' in last snapshot. Received: '1.875rem'",
+      "'1.300rem' was value of key '--amino-font-size-xl' in last snapshot. Received: '1.25rem'",
     ],
     input: `
       --amino-type-scale-base: 16px;
       --amino-font-size-3xl: 2.100rem;
-      --amino-font-size-2xl: 1.75rem;
+      --amino-font-size-2xl: 1.5rem;
       --amino-font-size-xl: 1.300rem;
       --amino-font-size-l: 1.125rem;`,
     theme: lightTheme,
@@ -68,9 +68,9 @@ const testCases: UnitTestItem[] = [
   {
     case: `Mixes (value and key are different)`,
     expected: [
-      "'2.100rem' was value of key '--amino-font-size-3xl' in last snapshot. Received: '2.125rem'",
+      "'2.100rem' was value of key '--amino-font-size-3xl' in last snapshot. Received: '1.875rem'",
       "Found variable '--amino-brand-new-key' in last snapshot",
-      "'1.300rem' was value of key '--amino-font-size-xl' in last snapshot. Received: '1.375rem'",
+      "'1.300rem' was value of key '--amino-font-size-xl' in last snapshot. Received: '1.25rem'",
     ],
     input: `
       --amino-type-scale-base: 16px;

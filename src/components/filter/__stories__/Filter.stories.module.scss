@@ -13,7 +13,6 @@
   display: flex;
   gap: theme.$amino-space-8;
 
-  /* TEMP: FILTER TEXT WRAPPING this should be done in amino, but currently we are version locked */
   > div > div > div:last-child {
     overflow-x: hidden;
     white-space: nowrap;
