@@ -1,7 +1,6 @@
 @use 'theme';
 
 .wrapper {
-  max-width: 632px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -20,6 +19,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.componentHeaderWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 .searchInput {

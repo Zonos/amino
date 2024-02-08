@@ -4,6 +4,7 @@ export declare const checkboxLabelWrapper: string;
 export declare const checkboxWrapper: string;
 export declare const collapseButton: string;
 export declare const collapsed: string;
+export declare const componentHeaderWrapper: string;
 export declare const componentWrapper: string;
 export declare const countriesWrapper: string;
 export declare const header: string;

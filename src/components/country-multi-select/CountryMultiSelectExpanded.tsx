@@ -1,5 +1,4 @@
 import { type ReactNode, useCallback, useMemo, useState } from 'react';
-import { type ListChildComponentProps, FixedSizeList } from 'react-window';
 
 import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
@@ -7,7 +6,6 @@ import groupBy from 'lodash/groupBy';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { Divider } from 'src/components/divider/Divider';
-import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
@@ -15,8 +13,6 @@ import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
-
-type Variant = 'search' | 'search-toggle' | 'toggle' | 'none';
 
 export type ICountryMultiSelectExpandedOption<
   TCountryCode extends string = string,
@@ -50,11 +46,13 @@ export type CountryMultiSelectExpandedProps<
    * @default false
    */
   noHeader?: boolean;
+  renderToggle?: ReactNode;
   selectedCountries: ICountryMultiSelectExpandedOption<TCountryCode>[];
   /**
-   * @default 'search
+   * No search bar
+   * @default false
    */
-  variant?: Variant;
+  withoutSearch?: boolean;
   onChange: (
     countries: ICountryMultiSelectExpandedOption<TCountryCode>[],
   ) => void;
@@ -70,9 +68,10 @@ export const CountryMultiSelectExpanded = <
   countries,
   noHeader = false,
   onChange,
+  renderToggle,
   selectedCountries,
   style,
-  variant = 'search',
+  withoutSearch = false,
 }: CountryMultiSelectExpandedProps<TCountryCode>) => {
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
@@ -82,7 +81,7 @@ export const CountryMultiSelectExpanded = <
       const { fuzzySearch } = getFuzzySearch({
         array: countries,
         options: {
-          keys: ['label', 'code'],
+          keys: ['label', 'code', 'group'],
           threshold: 0.1,
         },
       });
@@ -111,7 +110,7 @@ export const CountryMultiSelectExpanded = <
         }),
       );
 
-    return grouped;
+    return grouped.sort((a, b) => a.label.localeCompare(b.label));
   }, [shownCountries]);
 
   const allSelected = useMemo(
@@ -284,17 +283,23 @@ export const CountryMultiSelectExpanded = <
       )}
 
       <div className={styles.componentWrapper}>
-        <label className={styles.searchInput} htmlFor="search">
-          <SearchIcon size={24} />
-          <input
-            autoComplete="off"
-            id="search"
-            onChange={e => setSearchText(e.target.value)}
-            placeholder="Search..."
-            type="text"
-            value={searchText}
-          />
-        </label>
+        <div className={styles.componentHeaderWrapper}>
+          {!withoutSearch && (
+            <label className={styles.searchInput} htmlFor="search">
+              <SearchIcon size={24} />
+              <input
+                autoComplete="off"
+                id="search"
+                onChange={e => setSearchText(e.target.value)}
+                placeholder="Search..."
+                type="text"
+                value={searchText}
+              />
+            </label>
+          )}
+
+          {renderToggle}
+        </div>
 
         <Divider noMargin />
 
