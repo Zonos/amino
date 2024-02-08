@@ -63,7 +63,16 @@
   flex-direction: column;
 }
 
+.hoverWrapper {
+  border-radius: 6px;
+
+  &:hover {
+    background-color: theme.$amino-hover-color;
+  }
+}
+
 .groupWrapper {
+  padding: 8px;
   width: 100%;
   display: flex;
   justify-content: space-between;

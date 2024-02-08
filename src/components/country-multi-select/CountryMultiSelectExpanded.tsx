@@ -166,8 +166,8 @@ export const CountryMultiSelectExpanded = <
           const groupCollapsed = !expandedGroups.includes(group.label);
 
           return (
-            <div key={group.label} className={styles.checkboxWrapper}>
-              <div className={styles.groupWrapper}>
+            <div key={group.label}>
+              <div className={clsx(styles.groupWrapper, styles.hoverWrapper)}>
                 <Checkbox
                   checked={groupSelected}
                   label={group.label}
@@ -228,6 +228,7 @@ export const CountryMultiSelectExpanded = <
                       className={clsx(
                         styles.checkboxWrapper,
                         styles.checkboxCountry,
+                        !country.disabled && styles.hoverWrapper,
                       )}
                       disabled={country.disabled}
                       icon={country.icon}
