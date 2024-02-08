@@ -37,16 +37,13 @@
 .selectedSlider {
   z-index: 1;
   position: absolute;
-  transition: theme.$amino-transition;
-
   background-color: theme.$amino-surface-color;
+  height: 100%;
 
   /* Light/Shadows/Button */
   box-shadow:
     0px 1px 3px 0px rgba(110, 110, 120, 0.12),
     0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset,
     0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset;
-
   border-radius: 6px;
-  height: 100%;
 }

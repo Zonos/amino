@@ -7,56 +7,29 @@ import type { SelectOption } from 'src/types/SelectOption';
 
 import styles from './Toggle.module.scss';
 
-const getIntermediateRect = (start: DOMRect, end: DOMRect) => {
-  // Left to right
-  if (start.left < end.left) {
-    return {
-      left: start.left,
-      width: end.right - start.left,
-    };
-  }
-
-  // Right to left
-  return {
-    left: end.left,
-    width: start.right - end.left,
-  };
-};
-
 const getAnimationRect = (
   wrapperRect: DOMRect | null,
   newRect: DOMRect | null,
-  previousRect: DOMRect | null,
 ): IAnimationRect => {
   if (!newRect || !wrapperRect) {
     return {
-      finalLeft: 0,
-      finalWidth: 0,
-      intermediateLeft: 0,
-      intermediateWidth: 0,
+      left: 0,
+      width: 0,
     };
   }
 
-  // Right to left or left to right
-  const { left: intermediateLeft, width: intermediateWidth } =
-    getIntermediateRect(previousRect || newRect, newRect);
-
-  const finalWidth = newRect.width;
-  const finalLeft = newRect.left - wrapperRect.left;
+  const { width } = newRect;
+  const left = newRect.left - wrapperRect.left;
 
   return {
-    finalLeft,
-    finalWidth,
-    intermediateLeft: intermediateLeft - wrapperRect.left,
-    intermediateWidth,
+    left,
+    width,
   };
 };
 
 type IAnimationRect = {
-  finalLeft: number;
-  finalWidth: number;
-  intermediateLeft: number;
-  intermediateWidth: number;
+  left: number;
+  width: number;
 };
 
 export type ToggleProps<TValue extends string | number = string> = {
@@ -75,22 +48,17 @@ export const Toggle = <TValue extends string | number>({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const selectedRef = useRef<HTMLButtonElement>(null);
 
-  const [previousRect, setPreviousRect] = useState<DOMRect | null>(null);
   const [animationRect, setAnimationRect] = useState<IAnimationRect>({
-    finalLeft: 0,
-    finalWidth: 0,
-    intermediateLeft: 0,
-    intermediateWidth: 0,
+    left: 0,
+    width: 0,
   });
 
   useEffect(() => {
     const nextAnimationRect = getAnimationRect(
       wrapperRef.current?.getBoundingClientRect() || null,
       selectedRef.current?.getBoundingClientRect() || null,
-      previousRect,
     );
     setAnimationRect(nextAnimationRect);
-    setPreviousRect(selectedRef.current?.getBoundingClientRect() || null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
@@ -99,12 +67,14 @@ export const Toggle = <TValue extends string | number>({
       <div ref={wrapperRef} className={styles.wrapper}>
         <motion.div
           animate={{
-            width: [animationRect.intermediateWidth, animationRect.finalWidth],
-            x: [animationRect.intermediateLeft, animationRect.finalLeft],
+            width: animationRect.width,
+            x: animationRect.left,
           }}
           className={styles.selectedSlider}
           initial={false}
-          transition={{ bounce: 0, duration: 0.2, stiffness: 100 }}
+          transition={{
+            duration: 0.2,
+          }}
         />
         {options.map(option => (
           <button
