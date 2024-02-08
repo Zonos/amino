@@ -1,0 +1,133 @@
+@use 'theme';
+
+.wrapper {
+  max-width: 632px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.componentWrapper {
+  border: theme.$amino-border;
+  border-radius: 12px;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.searchInput {
+  padding: 8px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  > input {
+    flex-grow: 1;
+    padding: 0 4px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.selectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.noCountriesWrapper {
+  padding: 8px;
+}
+
+.checkboxWrapper {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.regionWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapseButton {
+  cursor: pointer;
+  transition: theme.$amino-transition;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.collapsed {
+    transform: rotate(180deg);
+  }
+}
+
+// Countries should wrap to 2 lines when wide enough and to a single line when narrow. They should be sorted alphabetically with options to be grouped by continent/region or shipping zone.
+.countriesWrapper {
+  padding-left: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.checkbox {
+  &::before {
+    content: '';
+    z-index: -1;
+    display: block;
+    width: calc(100% - 48px);
+    overflow: hidden;
+    position: absolute;
+    padding: 16px;
+    border-radius: 6px;
+    top: -8px;
+    left: -10px;
+  }
+
+  &:hover {
+    &::before {
+      background: theme.$amino-hover-color;
+    }
+  }
+
+  > div {
+    height: 24px;
+  }
+}
+
+.checkboxCountry {
+  > div {
+    align-items: center;
+  }
+
+  div[class*='Amino_Checkbox'] {
+    gap: theme.$amino-space-8;
+  }
+}
+
+.checkboxLabelWrapper {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}

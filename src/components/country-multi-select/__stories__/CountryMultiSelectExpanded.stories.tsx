@@ -3,12 +3,12 @@ import { useMemo, useState } from 'react';
 import type { Meta } from '@storybook/react';
 
 import { Badge } from 'src/components/badge/Badge';
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountryMultiSelectExpandedProps,
   type ICountryMultiSelectExpandedOption,
   CountryMultiSelectExpanded,
-} from 'src/components/select/CountryMultiSelectExpanded';
+} from 'src/components/country-multi-select/CountryMultiSelectExpanded';
+import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 
 const renderBadge = (label: string) => {
   if (label.startsWith('A')) {
@@ -30,9 +30,9 @@ const Template = (props: CountryMultiSelectExpandedProps) => {
     () =>
       countryOptions.map<ICountryMultiSelectExpandedOption>(x => ({
         code: x.code,
+        group: x.region,
         icon: x.icon,
         label: x.displayName,
-        region: x.region,
         rightDecorator: () => renderBadge(x.displayName),
       })),
     [countryOptions],

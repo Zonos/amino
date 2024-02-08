@@ -24,6 +24,12 @@ const CountryMultiSelectMeta: Meta = {
       </div>
     ),
   ],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=7597%3A129851&mode=dev',
+    },
+  },
 };
 
 export default CountryMultiSelectMeta;
@@ -58,12 +64,3 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
 };
 
 export const BasicCountryMultiSelect = CountryMultiSelectTemplate.bind({});
-
-BasicCountryMultiSelect.args = {};
-
-BasicCountryMultiSelect.parameters = {
-  design: {
-    type: 'figma',
-    url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
-  },
-};
