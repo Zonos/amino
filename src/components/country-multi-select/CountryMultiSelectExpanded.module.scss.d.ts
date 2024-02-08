@@ -1,15 +1,15 @@
-export declare const checkbox: string;
 export declare const checkboxCountry: string;
 export declare const checkboxLabelWrapper: string;
 export declare const checkboxWrapper: string;
 export declare const collapseButton: string;
 export declare const collapsed: string;
+export declare const collapseIcon: string;
 export declare const componentHeaderWrapper: string;
 export declare const componentWrapper: string;
 export declare const countriesWrapper: string;
+export declare const groupWrapper: string;
 export declare const header: string;
 export declare const noCountriesWrapper: string;
-export declare const regionWrapper: string;
 export declare const searchInput: string;
 export declare const selectionWrapper: string;
 export declare const wrapper: string;

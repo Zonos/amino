@@ -142,7 +142,6 @@ export const CountryMultiSelectExpanded = <
         <div className={styles.checkboxWrapper}>
           <Checkbox
             checked={allSelected}
-            className={styles.checkbox}
             label="Select all"
             onChange={checked => {
               if (checked) {
@@ -151,7 +150,6 @@ export const CountryMultiSelectExpanded = <
                 onChange([]);
               }
             }}
-            style={style}
           />
         </div>
         {groups.map(group => {
@@ -169,10 +167,9 @@ export const CountryMultiSelectExpanded = <
 
           return (
             <div key={group.label} className={styles.checkboxWrapper}>
-              <div className={styles.regionWrapper}>
+              <div className={styles.groupWrapper}>
                 <Checkbox
                   checked={groupSelected}
-                  className={styles.checkbox}
                   label={group.label}
                   onChange={checked => {
                     if (checked) {
@@ -192,17 +189,10 @@ export const CountryMultiSelectExpanded = <
                       onChange(newselectedCountries);
                     }
                   }}
-                  style={style}
                 />
 
-                <Text color="textColorSecondary">
-                  {numSelectedInGroup}/{group.countries.length}
-                </Text>
                 <button
-                  className={clsx(
-                    styles.collapseButton,
-                    groupCollapsed && styles.collapsed,
-                  )}
+                  className={styles.collapseButton}
                   onClick={() => {
                     if (expandedGroups.includes(group.label)) {
                       setExpandedGroups(
@@ -214,7 +204,16 @@ export const CountryMultiSelectExpanded = <
                   }}
                   type="button"
                 >
-                  <ChevronDownIcon size={24} />
+                  <Text color="textColorSecondary">
+                    {numSelectedInGroup}/{group.countries.length}
+                  </Text>
+                  <ChevronDownIcon
+                    className={clsx(
+                      styles.collapseIcon,
+                      groupCollapsed && styles.collapsed,
+                    )}
+                    size={24}
+                  />
                 </button>
               </div>
 
@@ -229,7 +228,6 @@ export const CountryMultiSelectExpanded = <
                       className={clsx(
                         styles.checkboxWrapper,
                         styles.checkboxCountry,
-                        styles.checkbox,
                       )}
                       disabled={country.disabled}
                       icon={country.icon}
@@ -285,11 +283,14 @@ export const CountryMultiSelectExpanded = <
       <div className={styles.componentWrapper}>
         <div className={styles.componentHeaderWrapper}>
           {!withoutSearch && (
-            <label className={styles.searchInput} htmlFor="search">
+            <label
+              className={styles.searchInput}
+              htmlFor="country-multi-select-search"
+            >
               <SearchIcon size={24} />
               <input
                 autoComplete="off"
-                id="search"
+                id="country-multi-select-search"
                 onChange={e => setSearchText(e.target.value)}
                 placeholder="Search..."
                 type="text"

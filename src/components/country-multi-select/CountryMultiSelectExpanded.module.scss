@@ -61,57 +61,40 @@
   flex-direction: column;
 }
 
-.regionWrapper {
+.groupWrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 }
 
 .collapseButton {
+  flex-grow: 1;
   cursor: pointer;
-  transition: theme.$amino-transition;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
 
   &:focus {
     outline: none;
   }
+}
 
+.collapseIcon {
+  transition: theme.$amino-transition;
   &.collapsed {
     transform: rotate(180deg);
   }
 }
 
-// Countries should wrap to 2 lines when wide enough and to a single line when narrow. They should be sorted alphabetically with options to be grouped by continent/region or shipping zone.
+// Countries should wrap to 2 lines when wide enough and to a single line when narrow. They should be sorted alphabetically with options to be grouped by continent/group or shipping zone.
 .countriesWrapper {
   padding-left: 24px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 8px;
-}
-
-.checkbox {
-  &::before {
-    content: '';
-    z-index: -1;
-    display: block;
-    width: calc(100% - 48px);
-    overflow: hidden;
-    position: absolute;
-    padding: 16px;
-    border-radius: 6px;
-    top: -8px;
-    left: -10px;
-  }
-
-  &:hover {
-    &::before {
-      background: theme.$amino-hover-color;
-    }
-  }
-
-  > div {
-    height: 24px;
-  }
 }
 
 .checkboxCountry {
