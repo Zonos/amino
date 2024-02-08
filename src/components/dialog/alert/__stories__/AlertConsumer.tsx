@@ -1,5 +1,5 @@
-import { useAlert } from 'src/components/alert-dialog/useAlert';
 import { Button } from 'src/components/button/Button';
+import { useAlert } from 'src/components/dialog/alert/useAlert';
 import { VStack } from 'src/components/stack/VStack';
 
 export const AlertConsumer = () => {

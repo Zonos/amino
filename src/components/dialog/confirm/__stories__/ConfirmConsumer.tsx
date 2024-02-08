@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { Button } from 'src/components/button/Button';
-import { useConfirm } from 'src/components/confirm-dialog/useConfirm';
+import { useConfirm } from 'src/components/dialog/confirm/useConfirm';
 import { VStack } from 'src/components/stack/VStack';
 
 export const ConfirmConsumer = () => {
@@ -9,16 +9,14 @@ export const ConfirmConsumer = () => {
   const [dangerConfirmOk, setDangerConfirmOk] = useState(false);
   const [warningConfirmOk, setWarningConfirmOk] = useState(false);
 
-  const defaultConfirm = useConfirm();
-  const dangerConfirm = useConfirm();
-  const warningConfirm = useConfirm();
+  const confirm = useConfirm();
 
   return (
     <VStack>
       {/** Default Confirmation */}
       <Button
         onClick={() =>
-          defaultConfirm({
+          confirm({
             confirmText: 'Do action',
             dismissText: "Don't do action",
             intent: 'primary',
@@ -40,7 +38,7 @@ export const ConfirmConsumer = () => {
       {/** Danger Confirmation */}
       <Button
         onClick={() =>
-          dangerConfirm({
+          confirm({
             confirmText: 'Do action',
             dismissText: "Don't do action",
             intent: 'danger',
@@ -61,7 +59,7 @@ export const ConfirmConsumer = () => {
       {/** Warning Confirmation */}
       <Button
         onClick={() =>
-          warningConfirm({
+          confirm({
             confirmText: 'Do action',
             dismissText: "Don't do action",
             intent: 'warning',
