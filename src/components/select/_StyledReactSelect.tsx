@@ -40,7 +40,7 @@ const getRadius = ($size?: Size) => {
     case 'lg':
       return `${theme.radius10}`;
     case 'xl':
-      return `${theme.radius12}`;
+      return `${theme.radius10}`;
     case 'md':
     default:
       return `${theme.radius8}`;
@@ -276,10 +276,12 @@ const localStyles: StylesConfig<
       AdditionalProps<SelectOption['value']>;
     return {
       ...provided,
-      background: theme.inputBackground,
-      borderColor: `${theme.gray200}`,
+      background: theme.raisedSurfaceColor,
+      border: 'none',
       borderRadius: getRadius(size),
-      boxShadow: state.isFocused ? `${theme.glowBlue}` : '',
+      boxShadow: state.isFocused
+        ? `${theme.shadowSelectActive}`
+        : `${theme.shadowSelectBase}`,
       color: theme.gray800,
       cursor: 'pointer',
       flexWrap: 'inherit',

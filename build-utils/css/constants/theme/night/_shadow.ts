@@ -20,4 +20,10 @@ export const shadow = {
     '0px 0px 0px 1px #000, 0px -1px 1px 0px rgba(0, 0, 0, 0.40) inset, 0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.80), 0px 0px 0px 1px rgba(148, 150, 158, 0.12) inset',
   'shadow-button-disabled':
     '0px 0px 0px 1px #000, 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset, 0px 1px 3px 0px rgba(255, 255, 255, 0.)',
+  'shadow-select-base':
+    '0px 0px 0px 1px #000, 0px -1px 1px 0px rgba(0, 0, 0, 0.40) inset, 0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.80), 0px 0px 0px 1px rgba(148, 150, 158, 0.12) inset',
+  'shadow-select-active':
+    '0px 0px 0px 1px #000, 0px -1px 1px 1px rgba(114, 146, 243, 0.24) inset, 0px 0px 0px 1px #7292F3 inset, 0px 1px 3px 0px rgba(114, 146, 243, 0.40)',
+  'shadow-select-error':
+    '0px 0px 0px 1px #000, 0px -1px 1px 1px rgba(235, 92, 108, 0.24) inset, 0px 0px 0px 1px #EB5C6C inset, 0px 1px 3px 0px rgba(235, 92, 108, 0.60)',
 } as const;

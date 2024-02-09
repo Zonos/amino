@@ -4,10 +4,13 @@ $color: var(--amino-styled-react-select-color);
 
 .iconWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   color: theme.$amino-gray-700;
-  padding: 10px;
+  margin-left: var(--amino-space-8);
+  margin-right: -2px;
+  height: 24px;
+  width: 24px;
 }
 
 .styledFloatedLabel {
@@ -18,7 +21,7 @@ $color: var(--amino-styled-react-select-color);
   transform-origin: left top;
   left: 14px;
   .hasIcon & {
-    left: 42px;
+    left: 44px;
   }
   top: calc(50% - theme.$amino-font-size-base / 2);
   .hasLabel & {
@@ -80,7 +83,7 @@ $color: var(--amino-styled-react-select-color);
   }
 
   &.hasError .reactSelectControl {
-    box-shadow: theme.$amino-glow-error;
+    box-shadow: theme.$amino-shadow-select-error !important;
   }
 }
 
