@@ -1,0 +1,136 @@
+@use 'theme';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.componentWrapper {
+  border: theme.$amino-border;
+  border-radius: 12px;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.componentHeaderWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchInput {
+  padding: 8px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  > input {
+    flex-grow: 1;
+    padding: 0 4px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.headerActions {
+  padding: 4px 0;
+}
+
+.selectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.noCountriesWrapper {
+  padding: 8px;
+}
+
+.checkboxWrapper {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hoverWrapper {
+  border-radius: 6px;
+
+  &:hover {
+    background-color: theme.$amino-hover-color;
+  }
+}
+
+.groupWrapper {
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.collapseButton {
+  flex-grow: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.collapseIcon {
+  transition: theme.$amino-transition;
+  &.collapsed {
+    transform: rotate(180deg);
+  }
+}
+
+.countriesWrapper {
+  padding-left: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.checkboxCountry {
+  > div {
+    align-items: center;
+  }
+
+  div[class*='Amino_Checkbox'] {
+    gap: theme.$amino-space-8;
+  }
+}
+
+.checkboxLabelWrapper {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}

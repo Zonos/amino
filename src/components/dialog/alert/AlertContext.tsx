@@ -1,6 +1,6 @@
 import { type ReactNode, createContext, useCallback, useState } from 'react';
 
-import { AlertDialog } from 'src/components/alert-dialog/AlertDialog';
+import { AlertDialog } from 'src/components/dialog/alert/AlertDialog';
 import type { AlertDialogOpts } from 'src/types/AlertDialogOpts';
 
 export const AlertContext = createContext((opts: AlertDialogOpts) => {

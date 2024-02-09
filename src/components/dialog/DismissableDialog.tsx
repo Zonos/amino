@@ -1,6 +1,5 @@
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { Button } from 'src/components/button/Button';
 import { BaseDialog } from 'src/components/dialog/BaseDialog';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -9,17 +8,17 @@ import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-import { type Intent } from 'src/types/Intent';
-import { type Theme } from 'src/types/Theme';
+import type { Intent } from 'src/types/Intent';
+import type { Theme } from 'src/types/Theme';
 
-import styles from './AlertDialog.module.scss';
+import styles from './DismissableDialog.module.scss';
 
-export type AlertDialogProps = BaseProps & {
-  dismissText: string;
+export type DismissableDialogProps = BaseProps & {
+  actions?: ReactNode;
   intent: Intent;
   label: string;
   open: boolean;
-  subtitle: ReactNode;
+  subtitle?: ReactNode;
   themeOverride?: Theme;
   dismissAction: () => void;
 };
@@ -52,7 +51,7 @@ const getColorForIntent = (intent: Intent) => {
   }
 };
 
-const getButtonVariant = (intent: Intent) => {
+export const _dismissableDialogGetButtonVariant = (intent: Intent) => {
   switch (intent) {
     case 'danger':
       return 'danger';
@@ -64,16 +63,16 @@ const getButtonVariant = (intent: Intent) => {
   }
 };
 
-export const AlertDialog = ({
+export const DismissableDialog = ({
+  actions,
   dismissAction,
-  dismissText,
   intent,
   label,
   open,
   style,
   subtitle,
   themeOverride,
-}: AlertDialogProps) => (
+}: DismissableDialogProps) => (
   <BaseDialog
     data-theme={themeOverride}
     onClose={dismissAction}
@@ -81,7 +80,7 @@ export const AlertDialog = ({
     style={style}
     width={350}
   >
-    <div className={styles.aminoContent}>
+    <div className={styles.content}>
       <VStack spacing={24}>
         <Thumbnail
           color={getColorForIntent(intent)}
@@ -90,17 +89,13 @@ export const AlertDialog = ({
         />
         <VStack spacing={8}>
           <Text type="subheader">{label}</Text>
-          <span className={styles.aminoAlertPrompt}>{subtitle}</span>
+          {subtitle && (
+            <Text color="gray800" lineHeight="base" type="body">
+              {subtitle}
+            </Text>
+          )}
         </VStack>
-        <div className={styles.aminoFooter}>
-          <Button
-            onClick={dismissAction}
-            size="lg"
-            variant={getButtonVariant(intent)}
-          >
-            {dismissText}
-          </Button>
-        </div>
+        <div className={styles.footer}>{actions}</div>
       </VStack>
     </div>
   </BaseDialog>
