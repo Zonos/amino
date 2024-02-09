@@ -43,6 +43,10 @@ export type CountryMultiSelectExpandedProps<
   actions?: ReactNode;
   countries: ICountryMultiSelectExpandedOption<TCountryCode>[];
   /**
+   * @default 380
+   */
+  maxHeight?: number;
+  /**
    * Remove the top header part
    * @default false
    */
@@ -67,6 +71,7 @@ export const CountryMultiSelectExpanded = <
   actions,
   className,
   countries,
+  maxHeight = 380,
   noHeader = false,
   onChange,
   selectedCountries,
@@ -138,7 +143,12 @@ export const CountryMultiSelectExpanded = <
     }
 
     return (
-      <div className={styles.selectionWrapper}>
+      <div
+        className={styles.selectionWrapper}
+        style={{
+          maxHeight: `${maxHeight}px`,
+        }}
+      >
         <div className={styles.checkboxWrapper}>
           <Checkbox
             checked={allSelected}
