@@ -341,6 +341,15 @@ export const theme = {
   /** @info 0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDisabled: 'var(--amino-shadow-button-disabled)',
+  /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowSelectBase: 'var(--amino-shadow-select-base)',
+  /** @info 0px 1px 3px 0px rgba(68, 94, 238, 0.40), 0px 0px 0px 1px #445EEE inset, 0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowSelectActive: 'var(--amino-shadow-select-active)',
+  /** @info 0px 1px 3px 0px rgba(221, 49, 78, 0.40), 0px 0px 0px 1px #DD314E inset, 0px -1px 1px 1px rgba(221, 49, 78, 0.12) inset */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowSelectError: 'var(--amino-shadow-select-error)',
 
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */
