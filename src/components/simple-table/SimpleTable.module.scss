@@ -4,10 +4,10 @@
   width: 100%;
 
   > thead {
-    text-transform: uppercase;
+    text-transform: none;
 
     > tr {
-      border-bottom: theme.$amino-border;
+      border-bottom: theme.$amino-border-subtle;
       height: 56px;
 
       > th {
@@ -26,7 +26,7 @@
       height: 48px;
 
       & {
-        border-bottom: theme.$amino-border;
+        border-bottom: theme.$amino-border-subtle;
       }
 
       &.withHover:hover {
