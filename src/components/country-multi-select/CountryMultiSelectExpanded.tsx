@@ -43,6 +43,10 @@ export type CountryMultiSelectExpandedProps<
   actions?: ReactNode;
   countries: CountryMultiSelectExpandedOption<CountryCode>[];
   /**
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * @default 380
    */
   maxHeight?: number;
@@ -68,6 +72,7 @@ export const CountryMultiSelectExpanded = <
   actions,
   className,
   countries,
+  disabled = false,
   maxHeight = 380,
   noHeader = false,
   onChange,
@@ -278,7 +283,10 @@ export const CountryMultiSelectExpanded = <
   };
 
   return (
-    <div className={clsx(styles.wrapper, className)} style={style}>
+    <div
+      className={clsx(styles.wrapper, className, disabled && styles.disabled)}
+      style={style}
+    >
       {!noHeader && (
         <div className={styles.header}>
           <Text type="bold-label">Countries and Regions</Text>
