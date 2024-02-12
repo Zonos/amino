@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Badge } from 'src/components/badge/Badge';
 import {
+  type CountryMultiSelectExpandedOption,
   type CountryMultiSelectExpandedProps,
-  type ICountryMultiSelectExpandedOption,
   CountryMultiSelectExpanded,
 } from 'src/components/country-multi-select/CountryMultiSelectExpanded';
 import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
@@ -26,11 +26,11 @@ const renderBadge = (label: string) => {
 const Template = (props: CountryMultiSelectExpandedProps) => {
   const countryOptions = useCountryOptions({});
 
-  const [value, setValue] = useState<ICountryMultiSelectExpandedOption[]>([]);
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
   const countries = useMemo(
     () =>
-      countryOptions.map<ICountryMultiSelectExpandedOption>(x => ({
+      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
         code: x.code,
         disabled: x.displayName.startsWith('C'),
         group: x.region,
@@ -66,20 +66,18 @@ export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
 export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
   const countryOptions = useCountryOptions({});
 
-  const [value, setValue] = useState<ICountryMultiSelectExpandedOption[]>([]);
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
   const [toggle, setToggle] = useState<string>('1');
 
   const countries = useMemo(() => {
-    const options = countryOptions.map<ICountryMultiSelectExpandedOption>(
-      x => ({
-        code: x.code,
-        disabled: x.displayName.startsWith('C'),
-        group: x.region,
-        icon: x.icon,
-        label: x.displayName,
-        rightDecorator: () => renderBadge(x.displayName),
-      }),
-    );
+    const options = countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
+      code: x.code,
+      disabled: x.displayName.startsWith('C'),
+      group: x.region,
+      icon: x.icon,
+      label: x.displayName,
+      rightDecorator: () => renderBadge(x.displayName),
+    }));
 
     if (toggle === '1') {
       return options;
@@ -114,12 +112,12 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
 export const WidthAdjustable = (props: CountryMultiSelectExpandedProps) => {
   const countryOptions = useCountryOptions({});
 
-  const [value, setValue] = useState<ICountryMultiSelectExpandedOption[]>([]);
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
   const [width, setWidth] = useState(632);
 
   const countries = useMemo(
     () =>
-      countryOptions.map<ICountryMultiSelectExpandedOption>(x => ({
+      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
         code: x.code,
         disabled: x.displayName.startsWith('C'),
         group: x.region,
