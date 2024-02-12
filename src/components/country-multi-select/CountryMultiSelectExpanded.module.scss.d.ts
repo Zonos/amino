@@ -7,6 +7,7 @@ export declare const collapseIcon: string;
 export declare const componentHeaderWrapper: string;
 export declare const componentWrapper: string;
 export declare const countriesWrapper: string;
+export declare const disabled: string;
 export declare const groupWrapper: string;
 export declare const header: string;
 export declare const headerActions: string;
