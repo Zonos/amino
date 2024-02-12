@@ -15,6 +15,7 @@
   font-size: theme.$amino-font-size-base;
   font-weight: 500;
   border-radius: theme.$amino-radius-6;
+  margin-bottom: 2px;
   &:hover {
     background-color: theme.$amino-hover-color;
     color: theme.$amino-gray-1000;
@@ -67,10 +68,4 @@
   padding-left: theme.$amino-space-12;
   margin-left: 15px;
   border-left: 1px solid theme.$amino-border-color;
-}
-
-.styledChildItems {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }

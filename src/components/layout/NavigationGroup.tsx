@@ -60,7 +60,7 @@ export const NavigationGroup = ({
       {content}
     </div>
     <Collapse className={styles.styledGroupItemWrapper} collapsed={collapsed}>
-      <div className={styles.styledChildItems}>{children}</div>
+      {children}
     </Collapse>
   </div>
 );
