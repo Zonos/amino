@@ -24,6 +24,7 @@ exports[`Theme content: 1`] = `
   "--amino-border-orange": "1px solid var(--amino-orange-400)",
   "--amino-border-purple": "1px solid var(--amino-purple-400)",
   "--amino-border-red": "1px solid var(--amino-red-400)",
+  "--amino-border-subtle": "1px solid var(--amino-gray-100)",
   "--amino-border-transparent": "1px solid transparent",
   "--amino-button-danger-hover": "linear-gradient(180deg, #D92141 0%, #B4223D 100%)",
   "--amino-button-focus-ring": "0 0 0 2px var(--amino-blue-600)",

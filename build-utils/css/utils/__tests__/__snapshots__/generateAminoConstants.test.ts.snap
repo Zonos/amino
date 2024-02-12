@@ -505,6 +505,9 @@ export const theme = {
   /** @info 1px solid transparent */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   borderTransparent: 'var(--amino-border-transparent)',
+  /** @info 1px solid var(--amino-gray-100) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  borderSubtle: 'var(--amino-border-subtle)',
 
   /* LAYOUT STYLE */
   /** @info var(--amino-gray-0) */

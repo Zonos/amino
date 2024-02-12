@@ -38,7 +38,7 @@ export const TableCell = ({
       ...style,
       '--amino-table-cell-align': align,
       '--amino-table-cell-border-bottom':
-        borderBottom || `1px solid ${theme.gray200}`,
+        borderBottom || `${theme.borderSubtle}`,
       '--amino-table-cell-padding': padding || '',
     },
   };
