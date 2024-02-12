@@ -58,7 +58,7 @@ export const RichRadio = <T extends string>({
   return (
     <VStack
       className={clsx(className, styles.styledRadioGroup)}
-      spacing={16}
+      spacing={8}
       style={style}
     >
       {items.map(item => (

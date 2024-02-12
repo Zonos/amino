@@ -181,6 +181,7 @@
   --amino-border-purple: 1px solid var(--amino-purple-400);
   --amino-border-amber: 1px solid var(--amino-amber-400);
   --amino-border-transparent: 1px solid transparent;
+  --amino-border-subtle: 1px solid var(--amino-gray-100);
   --amino-sidebar-color: var(--amino-gray-0);
   --amino-header-color: var(--amino-gray-0);
   --amino-danger: var(--amino-red-600);

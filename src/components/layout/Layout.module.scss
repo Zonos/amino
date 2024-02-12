@@ -14,7 +14,7 @@ $height: var(--amino-layout-height);
 }
 
 .styledSidebar {
-  border-right: theme.$amino-border;
+  border-right: theme.$amino-border-subtle;
   width: theme.$amino-sidebar-width;
   box-sizing: border-box;
   display: grid;
@@ -31,6 +31,7 @@ $height: var(--amino-layout-height);
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .searchInputWrapper {

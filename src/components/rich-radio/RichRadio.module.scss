@@ -27,11 +27,11 @@
 .styledItem {
   position: relative;
   appearance: none;
-  background: theme.$amino-gray-0;
+  background: none;
   padding: theme.$amino-space-16;
   padding-right: calc(theme.$amino-space-40 + 10px);
   border: theme.$amino-border;
-  border-radius: theme.$amino-radius-6;
+  border-radius: theme.$amino-radius-8;
   text-align: left;
   transition: all 150ms ease-in-out;
   display: flex;
@@ -74,10 +74,8 @@
 
 .styledRadioGroup {
   .styledItem[data-state='checked'] {
-    background: theme.$amino-blue-100;
-    border: 1px solid theme.$amino-blue-400;
-    box-shadow: 0 0 0 1px theme.$amino-blue-400;
-    color: theme.$amino-blue-700;
+    box-shadow: theme.$amino-shadow-select-active;
+    color: theme.$amino-blue-600;
     .subtitle {
       color: theme.$amino-blue-600;
     }

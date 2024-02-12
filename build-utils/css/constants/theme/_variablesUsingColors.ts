@@ -9,6 +9,7 @@ export const variablesUsingColors = {
   'border-purple': '1px solid var(--amino-purple-400)',
   'border-amber': '1px solid var(--amino-amber-400)',
   'border-transparent': '1px solid transparent',
+  'border-subtle': '1px solid var(--amino-gray-100)',
 
   /* LAYOUT STYLE */
   'sidebar-color': 'var(--amino-gray-0)',

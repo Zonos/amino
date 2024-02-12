@@ -9,15 +9,15 @@
   display: flex;
   align-items: center;
   gap: theme.$amino-space-8;
-  height: 32px;
-  padding: theme.$amino-space-4 theme.$amino-space-8 theme.$amino-space-4 6px;
+  height: 28px;
+  padding: theme.$amino-space-4 theme.$amino-space-8;
   color: theme.$amino-gray-800;
   font-size: theme.$amino-font-size-base;
   font-weight: 500;
   border-radius: theme.$amino-radius-6;
   &:hover {
     background-color: theme.$amino-hover-color;
-    color: theme.$amino-gray-1200;
+    color: theme.$amino-gray-1000;
     svg {
       color: theme.$amino-gray-800;
     }
@@ -26,6 +26,7 @@
     color: theme.$amino-gray-600;
     height: theme.$amino-space-24;
     width: theme.$amino-space-24;
+    margin-left: theme.$amino-space-negative-4;
   }
   &.styledNavigationContent {
     flex-grow: 1;
@@ -41,7 +42,7 @@
   &.active {
     background-color: theme.$amino-gray-100;
     color: theme.$amino-gray-1200;
-    font-weight: 600;
+
     svg {
       color: theme.$amino-gray-1200;
     }
@@ -51,6 +52,7 @@
 .styledItemWrapper {
   &.collapsed {
     .styledNavigationItem {
+      color: theme.$amino-text-color;
       &:hover {
         background-color: transparent;
       }
@@ -62,7 +64,13 @@
 }
 
 .styledGroupItemWrapper {
-  padding-left: theme.$amino-space-20;
-  margin-left: 17px;
-  border-left: 1px solid theme.$amino-gray-200;
+  padding-left: theme.$amino-space-12;
+  margin-left: 15px;
+  border-left: 1px solid theme.$amino-border-color;
+}
+
+.styledChildItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }

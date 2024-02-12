@@ -18,7 +18,8 @@
   padding: 4px 12px;
   border-radius: 6px;
   transition: theme.$amino-transition;
-
+  font-size: theme.$amino-font-size-base;
+  font-weight: 500;
   color: theme.$amino-text-color-secondary;
 
   &:focus {
@@ -26,7 +27,7 @@
   }
 
   &:hover:not(.selected) {
-    opacity: 0.6;
+    color: theme.$amino-text-color;
   }
 
   &.selected {
@@ -37,13 +38,10 @@
 .selectedSlider {
   z-index: 1;
   position: absolute;
-  background-color: theme.$amino-surface-color;
+  background-color: theme.$amino-raised-surface-color;
   height: 100%;
 
   /* Light/Shadows/Button */
-  box-shadow:
-    0px 1px 3px 0px rgba(110, 110, 120, 0.12),
-    0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset,
-    0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset;
+  box-shadow: theme.$amino-shadow-button-standard;
   border-radius: 6px;
 }
