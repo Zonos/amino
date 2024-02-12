@@ -14,10 +14,10 @@ import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 
-export type ICountryMultiSelectExpandedOption<
-  TCountryCode extends string = string,
+export type CountryMultiSelectExpandedOption<
+  CountryCode extends string = string,
 > = {
-  code: TCountryCode;
+  code: CountryCode;
   disabled?: boolean;
   /**
    * Key to group by
@@ -32,16 +32,20 @@ export type ICountryMultiSelectExpandedOption<
   rightDecorator?: () => ReactNode;
 };
 
-type ICountryMultiSelectExpandedRegion<TCountryCode extends string = string> = {
-  countries: ICountryMultiSelectExpandedOption<TCountryCode>[];
+type ICountryMultiSelectExpandedRegion<CountryCode extends string = string> = {
+  countries: CountryMultiSelectExpandedOption<CountryCode>[];
   label: string;
 };
 
 export type CountryMultiSelectExpandedProps<
-  TCountryCode extends string = string,
+  CountryCode extends string = string,
 > = BaseProps & {
   actions?: ReactNode;
-  countries: ICountryMultiSelectExpandedOption<TCountryCode>[];
+  countries: CountryMultiSelectExpandedOption<CountryCode>[];
+  /**
+   * @default false
+   */
+  disabled?: boolean;
   /**
    * @default 380
    */
@@ -51,33 +55,31 @@ export type CountryMultiSelectExpandedProps<
    * @default false
    */
   noHeader?: boolean;
-  selectedCountries: ICountryMultiSelectExpandedOption<TCountryCode>[];
+  selectedCountries: CountryMultiSelectExpandedOption<CountryCode>[];
   /**
    * No search bar
    * @default false
    */
   withoutSearch?: boolean;
   onChange: (
-    countries: ICountryMultiSelectExpandedOption<TCountryCode>[],
+    countries: CountryMultiSelectExpandedOption<CountryCode>[],
   ) => void;
 };
 
-/**
- * Use the country flags with `flagType: 'amino'` otherwise the flags are slow to load when re-rendering
- */
 export const CountryMultiSelectExpanded = <
-  TCountryCode extends string = string,
+  CountryCode extends string = string,
 >({
   actions,
   className,
   countries,
+  disabled = false,
   maxHeight = 380,
   noHeader = false,
   onChange,
   selectedCountries,
   style,
   withoutSearch = false,
-}: CountryMultiSelectExpandedProps<TCountryCode>) => {
+}: CountryMultiSelectExpandedProps<CountryCode>) => {
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
 
@@ -96,7 +98,7 @@ export const CountryMultiSelectExpanded = <
     [countries],
   );
 
-  const shownCountries: ICountryMultiSelectExpandedOption<TCountryCode>[] =
+  const shownCountries: CountryMultiSelectExpandedOption<CountryCode>[] =
     useMemo(() => {
       if (searchText === '') {
         return countries;
@@ -107,7 +109,7 @@ export const CountryMultiSelectExpanded = <
     }, [countries, searchCountries, searchText]);
 
   const groups = useMemo(() => {
-    const grouped: ICountryMultiSelectExpandedRegion<TCountryCode>[] =
+    const grouped: ICountryMultiSelectExpandedRegion<CountryCode>[] =
       Object.entries(groupBy(shownCountries, 'group')).map(
         ([group, groupCountries]) => ({
           countries: groupCountries,
@@ -281,7 +283,10 @@ export const CountryMultiSelectExpanded = <
   };
 
   return (
-    <div className={clsx(styles.wrapper, className)} style={style}>
+    <div
+      className={clsx(styles.wrapper, className, disabled && styles.disabled)}
+      style={style}
+    >
       {!noHeader && (
         <div className={styles.header}>
           <Text type="bold-label">Countries and Regions</Text>
