@@ -44,6 +44,8 @@ const Template = (props: CountryMultiSelectExpandedProps) => {
   return (
     <CountryMultiSelectExpanded
       style={{
+        overflow: 'auto',
+        resize: 'both',
         width: '632px',
       }}
       {...props}
@@ -72,7 +74,7 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
   const countries = useMemo(() => {
     const options = countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
       code: x.code,
-      disabled: x.displayName.startsWith('C'),
+      disabled: x.region === 'Africa',
       group: x.region,
       icon: x.icon,
       label: x.displayName,
@@ -89,6 +91,8 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
   return (
     <CountryMultiSelectExpanded
       style={{
+        overflow: 'auto',
+        resize: 'both',
         width: '632px',
       }}
       {...props}
@@ -106,46 +110,5 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
       onChange={setValue}
       selectedCountries={value}
     />
-  );
-};
-
-export const WidthAdjustable = (props: CountryMultiSelectExpandedProps) => {
-  const countryOptions = useCountryOptions({});
-
-  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
-  const [width, setWidth] = useState(632);
-
-  const countries = useMemo(
-    () =>
-      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
-        code: x.code,
-        disabled: x.displayName.startsWith('C'),
-        group: x.region,
-        icon: x.icon,
-        label: x.displayName,
-        rightDecorator: () => renderBadge(x.displayName),
-      })),
-    [countryOptions],
-  );
-
-  return (
-    <div>
-      <input
-        max="1000"
-        min="300"
-        onChange={e => setWidth(parseInt(e.target.value, 10))}
-        type="range"
-        value={width}
-      />
-      <CountryMultiSelectExpanded
-        style={{
-          width: `${width}px`,
-        }}
-        {...props}
-        countries={countries}
-        onChange={setValue}
-        selectedCountries={value}
-      />
-    </div>
   );
 };
