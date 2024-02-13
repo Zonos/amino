@@ -63,7 +63,7 @@ const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
       />
     </BaseWrapper>
     {platformList.map(platform => (
-      <BaseWrapper>
+      <BaseWrapper key={platform}>
         <Avatar
           bordered={bordered}
           imageUrl={`${platform}`}
