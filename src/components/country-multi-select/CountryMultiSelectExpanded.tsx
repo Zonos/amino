@@ -32,7 +32,7 @@ export type CountryMultiSelectExpandedOption<
   rightDecorator?: () => ReactNode;
 };
 
-type ICountryMultiSelectExpandedRegion<CountryCode extends string = string> = {
+type CountryMultiSelectExpandedRegion<CountryCode extends string = string> = {
   countries: CountryMultiSelectExpandedOption<CountryCode>[];
   label: string;
 };
@@ -109,7 +109,7 @@ export const CountryMultiSelectExpanded = <
     }, [countries, searchCountries, searchText]);
 
   const groups = useMemo(() => {
-    const grouped: ICountryMultiSelectExpandedRegion<CountryCode>[] =
+    const grouped: CountryMultiSelectExpandedRegion<CountryCode>[] =
       Object.entries(groupBy(shownCountries, 'group')).map(
         ([group, groupCountries]) => ({
           countries: groupCountries,
@@ -134,6 +134,10 @@ export const CountryMultiSelectExpanded = <
       </div>
     );
   }
+
+  const numSelectableCountries = countries.filter(
+    country => !country.disabled,
+  ).length;
 
   const renderSelector = () => {
     if (!shownCountries.length) {
@@ -173,6 +177,10 @@ export const CountryMultiSelectExpanded = <
 
           const numSelectedInGroup = group.countries.filter(country =>
             selectedCountries.some(x => x.code === country.code),
+          ).length;
+
+          const numSelectableInGroup = group.countries.filter(
+            country => !country.disabled,
           ).length;
 
           const groupCollapsed = !expandedGroups.includes(group.label);
@@ -217,7 +225,7 @@ export const CountryMultiSelectExpanded = <
                   type="button"
                 >
                   <Text color="textColorSecondary">
-                    {numSelectedInGroup}/{group.countries.length}
+                    {numSelectedInGroup}/{numSelectableInGroup}
                   </Text>
                   <ChevronDownIcon
                     className={clsx(
@@ -291,7 +299,7 @@ export const CountryMultiSelectExpanded = <
         <div className={styles.header}>
           <Text type="bold-label">Countries and Regions</Text>
           <Text color="textColorSecondary" type="label">
-            {selectedCountries.length} of {countries.length} selected
+            {selectedCountries.length} of {numSelectableCountries} selected
           </Text>
         </div>
       )}
