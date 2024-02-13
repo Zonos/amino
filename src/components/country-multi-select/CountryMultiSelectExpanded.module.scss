@@ -115,8 +115,12 @@
 .countriesWrapper {
   padding-left: 24px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 8px;
+  // 1-2 columns
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%/2, max(300px, 100%/3)), 1fr)
+  );
 }
 
 .checkboxCountry {

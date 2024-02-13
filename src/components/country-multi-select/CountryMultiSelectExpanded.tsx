@@ -169,12 +169,6 @@ export const CountryMultiSelectExpanded = <
           />
         </div>
         {groups.map(group => {
-          const groupSelected = group.countries.every(
-            country =>
-              country.disabled ||
-              selectedCountries.some(x => x.code === country.code),
-          );
-
           const numSelectedInGroup = group.countries.filter(country =>
             selectedCountries.some(x => x.code === country.code),
           ).length;
@@ -183,6 +177,14 @@ export const CountryMultiSelectExpanded = <
             country => !country.disabled,
           ).length;
 
+          const groupSelected =
+            !!numSelectableInGroup &&
+            group.countries.every(
+              country =>
+                country.disabled ||
+                selectedCountries.some(x => x.code === country.code),
+            );
+
           const groupCollapsed = !expandedGroups.includes(group.label);
 
           return (
@@ -190,6 +192,7 @@ export const CountryMultiSelectExpanded = <
               <div className={clsx(styles.groupWrapper, styles.hoverWrapper)}>
                 <Checkbox
                   checked={groupSelected}
+                  disabled={!numSelectableInGroup}
                   label={group.label}
                   onChange={checked => {
                     if (checked) {

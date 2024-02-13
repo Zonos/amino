@@ -277,8 +277,9 @@ const localStyles: StylesConfig<
     return {
       ...provided,
       background: theme.raisedSurfaceColor,
-      border: 'none',
+      borderColor: 'unset',
       borderRadius: getRadius(size),
+      borderWidth: 0,
       boxShadow: state.isFocused
         ? `${theme.shadowSelectActive}`
         : `${theme.shadowSelectBase}`,
