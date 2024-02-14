@@ -46,6 +46,7 @@
 .slideOverContent {
   padding: 24px;
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
   flex: 1;
 }

@@ -1,7 +1,5 @@
 import { type ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import {
   type BaseDialogProps,

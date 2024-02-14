@@ -116,8 +116,8 @@ WithHover.args = {
 export const WithCoverSheet: StoryFn<SlideOverProps> = ({
   actions,
   children,
-  label,
-  subtitle,
+  label = 'With cover sheet',
+  subtitle = 'Slide over should remain open on escape',
   withBackdrop,
   ...props
 }: SlideOverProps) => {
@@ -137,11 +137,10 @@ export const WithCoverSheet: StoryFn<SlideOverProps> = ({
         withBackdrop={withBackdrop}
       >
         <Button onClick={() => setCoverSheetOpen(true)}>
-          Open Cover Sheet (slide over should remain open on escape)
+          Open Cover Sheet
         </Button>
         <CoverSheet
           className={styles.styledCoverSheet}
-          // closeOnEsc={false}
           label="Cover sheet"
           onClose={() => setCoverSheetOpen(false)}
           open={coverSheetOpen}
