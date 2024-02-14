@@ -7,7 +7,7 @@ import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { Divider } from 'src/components/divider/Divider';
 import { Text } from 'src/components/text/Text';
-import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
+import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
@@ -230,7 +230,7 @@ export const CountryMultiSelectExpanded = <
                   <Text color="textColorSecondary">
                     {numSelectedInGroup}/{numSelectableInGroup}
                   </Text>
-                  <ChevronDownIcon
+                  <ChevronUpIcon
                     className={clsx(
                       styles.collapseIcon,
                       groupCollapsed && styles.collapsed,
