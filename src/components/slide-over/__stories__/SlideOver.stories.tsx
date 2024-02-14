@@ -137,11 +137,11 @@ export const WithCoverSheet: StoryFn<SlideOverProps> = ({
         withBackdrop={withBackdrop}
       >
         <Button onClick={() => setCoverSheetOpen(true)}>
-          Open Cover Sheet (should not close on escape)
+          Open Cover Sheet (slide over should remain open on escape)
         </Button>
         <CoverSheet
           className={styles.styledCoverSheet}
-          closeOnEsc={false}
+          // closeOnEsc={false}
           label="Cover sheet"
           onClose={() => setCoverSheetOpen(false)}
           open={coverSheetOpen}
