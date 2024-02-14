@@ -166,8 +166,8 @@ export const CoverSheetNoCloseButton = Template.bind({});
 CoverSheetNoCloseButton.args = {
   actionPortalOpen: true,
   children: <div />,
+  hideCloseButton: true,
   label: 'Label',
-  showCloseButton: false,
 };
 
 export const Scrollable: StoryObj<CoverSheetProps> = {
