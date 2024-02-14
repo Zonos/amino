@@ -20,6 +20,7 @@ export type CoverSheetProps = BaseDialogProps & {
   actions?: ReactNode;
   headerComponent?: ReactNode;
   label: string;
+  showCloseButton?: boolean;
 };
 
 export const CoverSheet = ({
@@ -31,6 +32,7 @@ export const CoverSheet = ({
   label,
   onClose,
   open,
+  showCloseButton = true,
   ...props
 }: CoverSheetProps) => {
   useEffect(() => {
@@ -67,7 +69,9 @@ export const CoverSheet = ({
     >
       <header className={styles.headerContainer}>
         <div className={styles.header}>
-          <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
+          {showCloseButton && (
+            <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
+          )}
           <Text type="subheader">{label}</Text>
         </div>
         <div className={styles.headerComponent}>{headerComponent}</div>

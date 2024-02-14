@@ -162,6 +162,14 @@ CoverSheetNoActions.args = {
   label: 'Label',
 };
 
+export const CoverSheetNoCloseButton = Template.bind({});
+CoverSheetNoCloseButton.args = {
+  actionPortalOpen: true,
+  children: <div />,
+  label: 'Label',
+  showCloseButton: false,
+};
+
 export const Scrollable: StoryObj<CoverSheetProps> = {
   args: {
     children: (
