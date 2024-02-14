@@ -16,12 +16,14 @@ import styles from './SlideOver.module.scss';
 
 export type SlideOverProps = BaseDialogProps & {
   actions?: ReactNode;
+  bottomActions?: ReactNode;
   label?: string;
   subtitle?: ReactNode;
 };
 
 export const SlideOver = ({
   actions,
+  bottomActions,
   children,
   label,
   onClose,
@@ -43,28 +45,23 @@ export const SlideOver = ({
   >
     <div className={styles.wrapper}>
       <header className={styles.slideOverHeader}>
-        <Button icon={<RemoveIcon />} onClick={onClose} />
-        {subtitle ? (
-          <VStack
-            className={clsx(styles.headerContent, 'header-content')}
-            spacing={0}
-          >
+        <div>
+          <Button icon={<RemoveIcon />} onClick={onClose} />
+          {subtitle ? (
+            <VStack spacing={0}>
+              <Text type="subheader">{label}</Text>
+              {subtitle}
+            </VStack>
+          ) : (
             <Text type="subheader">{label}</Text>
-            {subtitle}
-          </VStack>
-        ) : (
-          <Text
-            className={clsx(styles.headerContent, 'header-content')}
-            type="subheader"
-          >
-            {label}
-          </Text>
-        )}
+          )}
+        </div>
+        {actions && <div>{actions}</div>}
       </header>
       <div className={styles.slideOverContent}>{children}</div>
-      {actions && (
+      {bottomActions && (
         <div className={styles.footer}>
-          <HStack spacing={8}>{actions}</HStack>
+          <HStack spacing={8}>{bottomActions}</HStack>
         </div>
       )}
     </div>

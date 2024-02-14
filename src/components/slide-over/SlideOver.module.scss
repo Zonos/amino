@@ -34,10 +34,12 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  justify-content: space-between;
 
-  .header-content {
-    margin: 0;
-    flex: 1;
+  > div {
+    display: flex;
+    gap: 16px;
+    align-items: center;
   }
 }
 
@@ -50,8 +52,7 @@
 
 .footer {
   padding: 24px;
-  border-radius: 12px;
-  border-top: theme.$amino-border;
+  border-radius: 0 0 12px 12px;
   display: flex;
   align-items: center;
   justify-content: flex-end;

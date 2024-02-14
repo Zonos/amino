@@ -75,8 +75,14 @@ SlideOverWithActions.args = {
   label: 'Slideover title',
 };
 
-export const ModalSlideOver = Template.bind({});
-ModalSlideOver.args = {
+export const SlideOverWithBottomActions = Template.bind({});
+SlideOverWithBottomActions.args = {
+  bottomActions: (
+    <>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
+    </>
+  ),
   children: <div>Children</div>,
   label: 'Slideover title',
 };
