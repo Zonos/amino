@@ -75,8 +75,14 @@ SlideOverWithActions.args = {
   label: 'Slideover title',
 };
 
-export const ModalSlideOver = Template.bind({});
-ModalSlideOver.args = {
+export const SlideOverWithBottomActions = Template.bind({});
+SlideOverWithBottomActions.args = {
+  bottomActions: (
+    <>
+      <Button>Action 1</Button>
+      <Button>Action 2</Button>
+    </>
+  ),
   children: <div>Children</div>,
   label: 'Slideover title',
 };
@@ -110,8 +116,8 @@ WithHover.args = {
 export const WithCoverSheet: StoryFn<SlideOverProps> = ({
   actions,
   children,
-  label,
-  subtitle,
+  label = 'With cover sheet',
+  subtitle = 'Slide over should remain open on escape',
   withBackdrop,
   ...props
 }: SlideOverProps) => {
@@ -131,11 +137,10 @@ export const WithCoverSheet: StoryFn<SlideOverProps> = ({
         withBackdrop={withBackdrop}
       >
         <Button onClick={() => setCoverSheetOpen(true)}>
-          Open Cover Sheet (should not close on escape)
+          Open Cover Sheet
         </Button>
         <CoverSheet
           className={styles.styledCoverSheet}
-          closeOnEsc={false}
           label="Cover sheet"
           onClose={() => setCoverSheetOpen(false)}
           open={coverSheetOpen}
