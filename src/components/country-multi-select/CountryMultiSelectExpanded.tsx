@@ -1,13 +1,21 @@
-import { type ReactNode, useCallback, useMemo, useState } from 'react';
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
 
+import { Button } from 'src/components/button/Button';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { Divider } from 'src/components/divider/Divider';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
+import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
@@ -127,6 +135,13 @@ export const CountryMultiSelectExpanded = <
     [countries, selectedCountries.length],
   );
 
+  useEffect(() => {
+    // Expand all groups when searching
+    if (searchText) {
+      setExpandedGroups(groups.map(group => group.label));
+    }
+  }, [groups, searchText]);
+
   if (!countries.length) {
     return (
       <div className={clsx(className)}>
@@ -155,19 +170,21 @@ export const CountryMultiSelectExpanded = <
           maxHeight: `${maxHeight}px`,
         }}
       >
-        <div className={styles.checkboxWrapper}>
-          <Checkbox
-            checked={allSelected}
-            label="Select all"
-            onChange={checked => {
-              if (checked) {
-                onChange(countries.filter(country => !country.disabled));
-              } else {
-                onChange([]);
-              }
-            }}
-          />
-        </div>
+        {!searchText && (
+          <div className={styles.checkboxWrapper}>
+            <Checkbox
+              checked={allSelected}
+              label="Select all"
+              onChange={checked => {
+                if (checked) {
+                  onChange(countries.filter(country => !country.disabled));
+                } else {
+                  onChange([]);
+                }
+              }}
+            />
+          </div>
+        )}
         {groups.map(group => {
           const numSelectedInGroup = group.countries.filter(country =>
             selectedCountries.some(x => x.code === country.code),
@@ -323,6 +340,13 @@ export const CountryMultiSelectExpanded = <
                 type="text"
                 value={searchText}
               />
+              {searchText && (
+                <Button
+                  icon={<RemoveCircleIcon size={24} />}
+                  onClick={() => setSearchText('')}
+                  variant="text"
+                />
+              )}
             </label>
           )}
 
