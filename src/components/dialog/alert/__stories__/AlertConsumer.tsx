@@ -12,7 +12,7 @@ export const AlertConsumer = () => {
         onClick={() =>
           alert({
             dismissText: "Don't do action",
-            intent: 'primary',
+            intent: 'info',
             label: 'Heads up',
             onDismiss: () => {},
             subtitle: 'You look nice today',

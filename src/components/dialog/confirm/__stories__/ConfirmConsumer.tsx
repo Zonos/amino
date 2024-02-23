@@ -19,7 +19,7 @@ export const ConfirmConsumer = () => {
           confirm({
             confirmText: 'Do action',
             dismissText: "Don't do action",
-            intent: 'primary',
+            intent: 'info',
             label: 'Are you sure?',
             onConfirm: setDefaultConfirmOk,
             subtitle:

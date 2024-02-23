@@ -8,14 +8,15 @@ import { ExclamationMarkDuotoneIcon } from 'src/icons/ExclamationMarkDuotoneIcon
 import { HelpDuotoneIcon } from 'src/icons/HelpDuotoneIcon';
 import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { Intent } from 'src/types/Intent';
 import type { Theme } from 'src/types/Theme';
 
 import styles from './DismissableDialog.module.scss';
 
+export type DismissableDialogIntent = 'danger' | 'warning' | 'info';
+
 export type DismissableDialogProps = BaseProps & {
   actions?: ReactNode;
-  intent: Intent;
+  intent: DismissableDialogIntent;
   label: string;
   open: boolean;
   subtitle?: ReactNode;
@@ -23,7 +24,7 @@ export type DismissableDialogProps = BaseProps & {
   dismissAction: () => void;
 };
 
-const getIconForIntent = (intent: Intent) => {
+const getIconForIntent = (intent: DismissableDialogIntent) => {
   switch (intent) {
     case 'danger':
       return (
@@ -39,7 +40,7 @@ const getIconForIntent = (intent: Intent) => {
   }
 };
 
-const getColorForIntent = (intent: Intent) => {
+const getColorForIntent = (intent: DismissableDialogIntent) => {
   switch (intent) {
     case 'danger':
       return 'red';
@@ -51,7 +52,9 @@ const getColorForIntent = (intent: Intent) => {
   }
 };
 
-export const _dismissableDialogGetButtonVariant = (intent: Intent) => {
+export const _dismissableDialogGetButtonVariant = (
+  intent: DismissableDialogIntent,
+) => {
   switch (intent) {
     case 'danger':
       return 'danger';

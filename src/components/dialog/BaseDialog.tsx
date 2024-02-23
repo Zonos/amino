@@ -138,7 +138,6 @@ export const BaseDialog = ({
                 mouseDownTarget.current = null;
               }}
               style={{
-                ...style,
                 '--amino-base-dialog-width': `${width}px`,
               }}
               tabIndex={-1}
@@ -152,6 +151,7 @@ export const BaseDialog = ({
                   // Prevent dialog from closing when clicking in the dialog
                   e.stopPropagation();
                 }}
+                style={style}
               >
                 {children}
               </motion.div>

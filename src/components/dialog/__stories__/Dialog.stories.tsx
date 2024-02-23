@@ -4,6 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
+import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 
@@ -278,6 +279,74 @@ export const WithInput = ({ height }: { height: number }) => {
           onChange={e => setValue(e.target.value)}
           value={value}
         />
+      </Dialog>
+    </div>
+  );
+};
+
+export const Nested = () => {
+  const [firstOpen, setFirstOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
+  const [thirdOpen, setThirdOpen] = useState(false);
+
+  return (
+    <div className={styles.centeredDiv}>
+      <Button onClick={() => setFirstOpen(true)}>Open</Button>
+      <Dialog
+        actions={
+          <>
+            <Button
+              onClick={() => setFirstOpen(false)}
+              size="md"
+              variant="subtle"
+            >
+              Close
+            </Button>
+            <Button size="md" variant="primary">
+              Submit
+            </Button>
+          </>
+        }
+        label="With an input"
+        onClose={() => setFirstOpen(false)}
+        open={firstOpen}
+        style={{
+          maxHeight: '600px',
+        }}
+        width={460}
+      >
+        <Button onClick={() => setSecondOpen(true)}>Open</Button>
+
+        <CoverSheet
+          label="Cover sheet"
+          onClose={() => setSecondOpen(false)}
+          open={secondOpen}
+        >
+          <Button onClick={() => setThirdOpen(true)}>Open</Button>
+
+          <Dialog
+            actions={
+              <>
+                <Button
+                  onClick={() => setThirdOpen(false)}
+                  size="md"
+                  variant="subtle"
+                >
+                  Close
+                </Button>
+                <Button size="md" variant="primary">
+                  Submit
+                </Button>
+              </>
+            }
+            label="With an input"
+            onClose={() => setThirdOpen(false)}
+            open={thirdOpen}
+            width={460}
+          >
+            матрёшка
+          </Dialog>
+        </CoverSheet>
       </Dialog>
     </div>
   );
