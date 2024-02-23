@@ -12,7 +12,7 @@ import type { Theme } from 'src/types/Theme';
 
 import styles from './DismissableDialog.module.scss';
 
-type DismissableDialogIntent = 'danger' | 'warning' | 'info';
+export type DismissableDialogIntent = 'danger' | 'warning' | 'info';
 
 export type DismissableDialogProps = BaseProps & {
   actions?: ReactNode;

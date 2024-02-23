@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 
-import type { Intent } from 'src/types/Intent';
+import type { DismissableDialogIntent } from 'src/components/dialog/DismissableDialog';
 
 export type ConfirmDialogOpts = {
   confirmText: string;
   dismissText: string;
-  intent: Intent;
+  intent: DismissableDialogIntent;
   label: string;
   subtitle?: ReactNode;
   onConfirm: (ok: boolean) => void;
