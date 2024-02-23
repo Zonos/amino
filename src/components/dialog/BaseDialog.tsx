@@ -35,6 +35,11 @@ export type BaseDialogProps = BaseProps & {
    * }
    */
   popupMotionProps?: MotionProps;
+  /**
+   * the selector for the root element to append the dialog to
+   * @default 'body'
+   */
+  rootSelector?: string;
   themeOverride?: Theme;
   /**
    * @default 444
@@ -56,6 +61,7 @@ export const BaseDialog = ({
   onClose,
   open,
   popupMotionProps,
+  rootSelector,
   style,
   themeOverride,
   width = 444,
@@ -104,7 +110,7 @@ export const BaseDialog = ({
   };
 
   if (typeof document !== 'undefined') {
-    const body = document.querySelector('body');
+    const body = document.querySelector(rootSelector || 'body');
     if (body) {
       return createPortal(
         <AnimatePresence>
