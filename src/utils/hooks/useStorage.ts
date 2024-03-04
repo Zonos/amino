@@ -1,4 +1,4 @@
-import { useMemo, useSyncExternalStore } from 'react';
+import { useCallback, useMemo, useSyncExternalStore } from 'react';
 
 import {
   type StorageParams,
@@ -68,7 +68,10 @@ export const useStorage = <
 
   const currentValue = getStorageItem<TValue>({ key, schema, type }) || null;
 
-  const setValue = (value: TValue) => setStorageItem({ key, type, value });
+  const setValue = useCallback(
+    (value: TValue) => setStorageItem({ key, type, value }),
+    [key, type],
+  );
 
   return { setValue, value: currentValue ?? defaultValue };
 };
