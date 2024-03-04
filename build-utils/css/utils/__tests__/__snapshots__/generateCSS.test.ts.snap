@@ -216,8 +216,9 @@ exports[`Case light theme: 1`] = `
     var(--amino-button-focus-ring);
   --amino-surface-color: var(--amino-gray-0);
   --amino-surface-color-secondary: var(--amino-gray-50);
-  --amino-backdrop-color: var(--amino-gray-1200);
+  --amino-backdrop-color: #000000;
   --amino-raised-surface-color: var(--amino-gray-0);
+  --amino-raised-color-secondary: var(--amino-gray-50);
   --amino-button-primary-hover: linear-gradient(
     180deg,
     #445eee 0%,
@@ -478,8 +479,9 @@ exports[`Case night theme: 1`] = `
     var(--amino-button-focus-ring);
   --amino-surface-color: var(--amino-gray-50);
   --amino-surface-color-secondary: var(--amino-gray-100);
-  --amino-backdrop-color: var(--amino-gray-0);
+  --amino-backdrop-color: #000000;
   --amino-raised-surface-color: #2c2e3899;
+  --amino-raised-color-secondary: var(--amino-gray-0);
   --amino-button-primary-hover: linear-gradient(
     180deg,
     #5f92f6 0%,
