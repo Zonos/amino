@@ -175,13 +175,13 @@ export const Text = ({
       className: clsx(className, styles.typography),
       style: {
         ...style,
-        '--amino-text-color': color ? theme[color] : '',
+        '--amino-text-color': color ? theme[color] : 'inherit',
         '--amino-text-font-size': `var(--amino-font-size-${fontSize || size})`,
         '--amino-text-font-weight': _fontWeight || '',
         '--amino-text-line-height': `var(--amino-line-height-${
           lineHeight || size
         })`,
-        '--amino-text-transform': _isUppercase ? 'uppercase' : '',
+        '--amino-text-transform': _isUppercase ? 'uppercase' : 'inherit',
       },
       title,
     };

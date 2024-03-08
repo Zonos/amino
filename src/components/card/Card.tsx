@@ -34,7 +34,7 @@ export const Card = ({
     className={clsx(className, styles.card)}
     style={{
       ...style,
-      '--amino-card-footer-height': footerHeight ? `${footerHeight}px` : '',
+      '--amino-card-footer-height': footerHeight ? `${footerHeight}px` : 'auto',
       '--amino-card-margin': spacing
         ? `calc(${spacing} * -1)`
         : theme.spaceNegative24,
