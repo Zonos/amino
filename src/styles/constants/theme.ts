@@ -299,22 +299,22 @@ export const theme = {
   transparentGray600: 'var(--amino-transparent-gray-600)',
 
   /* BOX SHADOW */
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 1px 2px rgba(10, 10, 11, 0.06), 0px 1px 3px rgba(10, 10, 11, 0.1) */
+  /** @info 0px 1px 3px 0px rgba(10, 10, 11, 0.1), 0px 1px 2px rgba(10, 10, 11, 0.06), 0px 0px 0px 1px rgba(110, 110, 120, 0.1) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowBase: 'var(--amino-v3-shadow-base)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 4px 6px rgba(10, 10, 11, 0.1), 0px 2px 4px rgba(10, 10, 11, 0.06) */
+  /** @info 0px 2px 4px 0px rgba(10, 10, 11, 0.06), 0px 4px 6px rgba(10, 10, 11, 0.1), 0px 0px 0px 1px rgba(110, 110, 120, 0.1) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowMedium: 'var(--amino-v3-shadow-medium)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 10px 15px rgba(10, 10, 11, 0.1), 0px 4px 6px rgba(10, 10, 11, 0.05) */
+  /** @info 0px 4px 6px 0px rgba(10, 10, 11, 0.05), 0px 10px 15px rgba(10, 10, 11, 0.1), 0px 0px 0px 1px rgba(110, 110, 120, 0.1) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowLarge: 'var(--amino-v3-shadow-large)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 20px 25px rgba(10, 10, 11, 0.1), 0px 10px 10px rgba(12, 12, 13, 0.04) */
+  /** @info 0px 10px 10px 0px rgba(12, 12, 13, 0.04), 0px 20px 25px rgba(10, 10, 11, 0.1), 0px 0px 0px 1px rgba(110, 110, 120, 0.1) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowXl: 'var(--amino-v3-shadow-xl)',
-  /** @info 0px 0px 0px 1px rgba(110, 110, 120, 0.1), 0px 32px 50px rgba(10, 10, 11, 0.24) */
+  /** @info 0px 32px 50px 0px rgba(10, 10, 11, 0.24), 0px 0px 0px 1px rgba(110, 110, 120, 0.1) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowXxl: 'var(--amino-v3-shadow-xxl)',
-  /** @info 0px 1px 0px #FFFFFF, 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 0px 8px rgba(0, 0, 0, 0.02) */
+  /** @info 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 1px 0px 0px rgba(255, 255, 255, 1), inset 0px 0px 8px rgba(0, 0, 0, 0.02), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowInset: 'var(--amino-v3-shadow-inset)',
   /** @info 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40) */
