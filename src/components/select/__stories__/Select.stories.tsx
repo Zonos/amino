@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
+import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { type SelectProps, Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
@@ -13,22 +14,7 @@ import { type SelectOption } from 'src/types/SelectOption';
 
 import styles from './Select.stories.module.scss';
 
-const SelectMeta: Meta = {
-  component: Select,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=1723%3A27908&mode=dev',
-    },
-  },
-};
-
-export default SelectMeta;
-
-const SelectTemplate: StoryFn<SelectProps> = ({
-  value: _value,
-  ...props
-}: SelectProps) => {
+const Template = ({ value: _value, ...props }: SelectProps) => {
   const [value, setValue] = useState(_value);
   return (
     <div className={styles.styledWrapper}>
@@ -36,6 +22,19 @@ const SelectTemplate: StoryFn<SelectProps> = ({
     </div>
   );
 };
+
+const SelectMeta: Meta<SelectProps> = {
+  component: Select,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=1723%3A27908&mode=dev',
+    },
+  },
+  render: Template,
+};
+
+export default SelectMeta;
 
 const currencyOptions = [
   {
@@ -68,82 +67,58 @@ const currencyOptions = [
   },
 ];
 
-export const BasicSelect = SelectTemplate.bind({});
-BasicSelect.args = {
-  label: 'Currencies',
-  options: currencyOptions,
-  value: {
-    label: 'US Dollar (USD)',
-    value: 'USD',
-  },
-};
-
-export const BasicSelectWithIcon = SelectTemplate.bind({});
-BasicSelectWithIcon.args = {
-  error: true,
-  helpText: 'This input is required',
-  icon: <FileIcon size={24} />,
-  label: 'Currencies',
-  options: currencyOptions,
-  value: {
-    label: 'US Dollar (USD)',
-    value: 'USD',
-  },
-};
-
-export const BasicSelectWithOptionIcon = SelectTemplate.bind({});
-BasicSelectWithOptionIcon.args = {
-  icon: <FlagIcon code="AE" iconScale="medium" />,
-  label: 'Currencies',
-  options: [
-    {
-      icon: <FlagIcon code="AE" iconScale="small" />,
+export const BasicSelect: StoryObj<SelectProps> = {
+  args: {
+    label: 'Currencies',
+    options: currencyOptions,
+    value: {
       label: 'US Dollar (USD)',
       value: 'USD',
     },
-    {
-      icon: <FlagIcon code="AD" iconScale="medium" />,
-      label: 'European Euro (EUR)',
-      value: 'EUR',
-    },
-    {
-      icon: <FlagIcon code="AE" iconScale="large" />,
-      label: 'European Euro (EUR)',
-      value: 'EUR',
-    },
-  ],
-  value: {
-    label: 'US Dollar (USD)',
-    value: 'USD',
   },
 };
 
-export const SelectWithDeveloperException = SelectTemplate.bind({});
-SelectWithDeveloperException.args = {
-  icon: <FileIcon size={24} />,
-  label: 'Currencies',
-  options: [
-    {
-      icon: <FileIcon size={24} />,
+export const BasicSelectWithIcon: StoryObj<SelectProps> = {
+  args: {
+    error: true,
+    helpText: 'This input is required',
+    icon: <FileIcon size={24} />,
+    label: 'Currencies',
+    options: currencyOptions,
+    value: {
       label: 'US Dollar (USD)',
       value: 'USD',
     },
-    {
-      icon: <FileIcon size={24} />,
-      label: 'European Euro (EUR)',
-      value: 'EUR',
-    },
-  ],
-  value: [
-    {
-      icon: <FileIcon size={24} />,
-      label: 'US Dollar (USD)',
-      value: 'USD',
-    },
-  ],
+  },
 };
 
-export const Customized = SelectTemplate.bind({});
+export const BasicSelectWithOptionIcon: StoryObj<SelectProps> = {
+  args: {
+    icon: <FlagIcon code="AE" iconScale="medium" />,
+    label: 'Currencies',
+    options: [
+      {
+        icon: <FlagIcon code="AE" iconScale="small" />,
+        label: 'US Dollar (USD)',
+        value: 'USD',
+      },
+      {
+        icon: <FlagIcon code="AD" iconScale="medium" />,
+        label: 'European Euro (EUR)',
+        value: 'EUR',
+      },
+      {
+        icon: <FlagIcon code="AE" iconScale="large" />,
+        label: 'European Euro (EUR)',
+        value: 'EUR',
+      },
+    ],
+    value: {
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+  },
+};
 
 const customOption: SelectProps['customOption'] = (value: string | number) => (
   <div
@@ -159,29 +134,54 @@ const customOption: SelectProps['customOption'] = (value: string | number) => (
   </div>
 );
 
-Customized.args = {
-  customOption,
-  icon: <FileIcon size={24} />,
-  label: 'Currencies',
-  options: [
-    {
-      icon: <FileIcon size={24} />,
-      label: 'US Dollar (USD)',
-      value: 'USD',
-    },
-    {
-      icon: <FileIcon size={24} />,
-      label: 'European Euro (EUR)',
-      value: 'EUR',
-    },
-  ],
-  value: [
-    {
-      icon: <FileIcon size={24} />,
-      label: 'US Dollar (USD)',
-      value: 'USD',
-    },
-  ],
+export const Customized: StoryObj<SelectProps> = {
+  args: {
+    customOption,
+    icon: <FileIcon size={24} />,
+    label: 'Currencies',
+    options: [
+      {
+        icon: <FileIcon size={24} />,
+        label: 'US Dollar (USD)',
+        value: 'USD',
+      },
+      {
+        icon: <FileIcon size={24} />,
+        label: 'European Euro (EUR)',
+        value: 'EUR',
+      },
+    ],
+    value: [
+      {
+        icon: <FileIcon size={24} />,
+        label: 'US Dollar (USD)',
+        value: 'USD',
+      },
+    ],
+  },
+};
+
+export const Disabled = ({
+  label = 'Currencies',
+  value: _value,
+  ...props
+}: SelectProps) => {
+  const [value, setValue] = useState(_value);
+  const [disabled, setDisabled] = useState(false);
+
+  return (
+    <VStack className={styles.styledWrapper}>
+      <Checkbox checked={disabled} label="Disabled" onChange={setDisabled} />
+      <Select
+        {...props}
+        isDisabled={disabled}
+        label={label}
+        onChange={setValue}
+        options={currencyOptions}
+        value={value}
+      />
+    </VStack>
+  );
 };
 
 export const ScrollableDialogSelect = () => {

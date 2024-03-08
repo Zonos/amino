@@ -77,6 +77,10 @@ $color: var(--amino-styled-react-select-color);
   }
 }
 
+.isDisabled {
+  opacity: 0.5;
+}
+
 .styledSelectWrapper {
   .reactSelectControl + div {
     z-index: 20;

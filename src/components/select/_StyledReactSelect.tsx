@@ -89,42 +89,34 @@ const Control = <
   const {
     children,
     className,
-    cx,
     getStyles,
     hasValue,
     innerProps,
     innerRef,
     isDisabled,
     isFocused,
-    menuIsOpen,
     selectProps,
   } = props;
   const { icon, label, size, value } =
     selectProps as (typeof props)['selectProps'] &
       AdditionalProps<Option['value']>;
+
   return (
     <div
       ref={innerRef}
-      className={cx(
-        {
-          control: true,
-          'control--is-disabled': isDisabled,
-          'control--is-focused': isFocused,
-          'control--menu-is-open': menuIsOpen,
-        },
-        [
-          className,
-          hasValue && styles.hasValue,
-          icon && styles.hasIcon,
-          isFocused && styles.isFocused,
-          label || (Array.isArray(value) && value.length > 1)
-            ? styles.hasLabel
-            : '',
-          size && styles[size],
-          styles.reactSelectControl,
-          'react-select-control',
-        ].join(' '),
-      )}
+      className={clsx([
+        className,
+        hasValue && styles.hasValue,
+        icon && styles.hasIcon,
+        isFocused && styles.isFocused,
+        isDisabled && styles.isDisabled,
+        label || (Array.isArray(value) && value.length > 1)
+          ? styles.hasLabel
+          : '',
+        size && styles[size],
+        styles.reactSelectControl,
+        'react-select-control',
+      ])}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
@@ -276,7 +268,7 @@ const localStyles: StylesConfig<
       AdditionalProps<SelectOption['value']>;
     return {
       ...provided,
-      background: theme.raisedSurfaceColor,
+      backgroundColor: theme.raisedSurfaceColor,
       borderColor: 'unset',
       borderRadius: getRadius(size),
       borderWidth: 0,

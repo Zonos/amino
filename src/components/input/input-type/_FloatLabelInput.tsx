@@ -28,6 +28,20 @@ export type InputMode =
   | 'text'
   | 'url';
 
+export const getFloatLabelRadius = (size: Size) => {
+  switch (size) {
+    case 'sm':
+      return `${theme.radius6}`;
+    case 'lg':
+      return `${theme.radius10}`;
+    case 'xl':
+      return `${theme.radius12}`;
+    case 'md':
+    default:
+      return `${theme.radius8}`;
+  }
+};
+
 type FloatLabelInputType = BaseProps & {
   autoFocus?: boolean;
 
@@ -106,25 +120,12 @@ export const FloatLabelInput = forwardRef<
       [label],
     );
     const hasValue = !!value || !!valuePrefix;
-    const getRadius = () => {
-      switch (size) {
-        case 'sm':
-          return `${theme.radius6}`;
-        case 'lg':
-          return `${theme.radius10}`;
-        case 'xl':
-          return `${theme.radius12}`;
-        case 'md':
-        default:
-          return `${theme.radius8}`;
-      }
-    };
 
     return (
       <div
         className={clsx(className, size, styles.styledLabelWrapper)}
         style={{
-          '--amino-float-label-input-border-radius': getRadius(),
+          '--amino-float-label-input-border-radius': getFloatLabelRadius(size),
           '--amino-float-label-input-height': `calc(var(--amino-size-${size}) - 2px)`,
         }}
       >
