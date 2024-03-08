@@ -55,6 +55,7 @@
 }
 
 .content {
+  flex-grow: 1;
   padding: theme.$amino-space-56;
   overflow: auto;
 }
