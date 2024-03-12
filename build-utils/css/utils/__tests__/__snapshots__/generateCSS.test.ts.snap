@@ -137,7 +137,7 @@ exports[`Case light theme: 1`] = `
   --amino-shadow-select-error: 0px 1px 3px 0px rgba(221, 49, 78, 0.4),
     0px 0px 0px 1px #dd314e inset,
     0px -1px 1px 1px rgba(221, 49, 78, 0.12) inset;
-  --amino-disabled-opacity: 0.6;
+  --amino-opacity-disabled: 0.6;
   --amino-space-negative-80: -5rem;
   --amino-space-negative-76: -4.75rem;
   --amino-space-negative-72: -4.5rem;

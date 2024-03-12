@@ -351,7 +351,7 @@ export const theme = {
   /* MISC */
   /** @info 0.6 */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  disabledOpacity: 'var(--amino-disabled-opacity)',
+  opacityDisabled: 'var(--amino-opacity-disabled)',
 
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */

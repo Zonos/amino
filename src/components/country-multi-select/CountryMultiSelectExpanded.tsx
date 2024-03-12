@@ -17,6 +17,7 @@ import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
+import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 
@@ -277,7 +278,9 @@ export const CountryMultiSelectExpanded = <
                         <div
                           className={styles.checkboxLabelWrapper}
                           style={{
-                            opacity: country.disabled ? 0.5 : 1,
+                            opacity: country.disabled
+                              ? theme.opacityDisabled
+                              : 1,
                           }}
                         >
                           <div>

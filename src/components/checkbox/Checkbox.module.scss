@@ -29,7 +29,7 @@ $disabled-border: var(--amino-checkbox-disabled-border);
 
     .labelWrapper {
       svg {
-        opacity: 0.6;
+        opacity: theme.$amino-opacity-disabled;
       }
     }
 

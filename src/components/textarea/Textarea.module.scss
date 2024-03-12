@@ -120,7 +120,7 @@ $width: var(--amino-textarea-width);
       cursor: not-allowed;
     }
     .fields {
-      opacity: 0.4;
+      opacity: theme.$amino-opacity-disabled;
     }
     .styledTextarea {
       user-select: none;

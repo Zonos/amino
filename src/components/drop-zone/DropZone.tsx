@@ -160,7 +160,7 @@ export const DropZone = ({
           ? theme.danger
           : theme.borderColor,
         '--amino-drop-zone-cursor': disabled ? 'not-allowed' : 'auto',
-        '--amino-drop-zone-opacity': disabled ? 0.5 : 1,
+        '--amino-drop-zone-opacity': disabled ? theme.opacityDisabled : 1,
       }}
     >
       {renderContent()}

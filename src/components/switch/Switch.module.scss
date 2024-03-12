@@ -95,7 +95,7 @@
 
   &.disabled {
     .aminoSwitchWrapper {
-      opacity: 0.6;
+      opacity: theme.$amino-opacity-disabled;
     }
     .aminoSwitch {
       opacity: 0.95;

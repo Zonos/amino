@@ -1,3 +1,3 @@
 export const misc = {
-  'disabled-opacity': '0.6',
+  'opacity-disabled': '0.6',
 };

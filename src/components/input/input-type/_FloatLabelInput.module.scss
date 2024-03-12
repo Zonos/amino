@@ -109,7 +109,7 @@ $height: var(--amino-float-label-input-height);
   }
   &:not(:global(.has-label)) {
     &::placeholder {
-      opacity: 0.6;
+      opacity: theme.$amino-opacity-disabled;
     }
   }
   &:global(.has-value-prefix) {
@@ -135,7 +135,7 @@ $height: var(--amino-float-label-input-height);
   &:global(.has-content),
   &:focus {
     &::placeholder {
-      opacity: 0.6;
+      opacity: theme.$amino-opacity-disabled;
     }
     & + .styledLabelInput::before {
       top: 11px;

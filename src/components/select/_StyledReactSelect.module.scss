@@ -78,7 +78,7 @@ $color: var(--amino-styled-react-select-color);
 }
 
 .isDisabled {
-  opacity: 0.5;
+  opacity: theme.$amino-opacity-disabled;
 }
 
 .styledSelectWrapper {
