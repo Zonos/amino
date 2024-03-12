@@ -43,7 +43,11 @@ export const Tabs = ({
             key={item}
             className={clsx(
               styles.baseTab,
-              selected === items.indexOf(item) && styles.isSelected,
+              selected === items.indexOf(item) && [
+                styles.isSelected,
+                // Used for external styling
+                'is-selected',
+              ],
             )}
             onClick={() => onChange(items.indexOf(item))}
             role="button"
@@ -68,7 +72,11 @@ export const Tabs = ({
           className={clsx(
             styles.baseTab,
             styles.tab,
-            selected === items.indexOf(item) && styles.isSelected,
+            selected === items.indexOf(item) && [
+              styles.isSelected,
+              // Used for external styling
+              'is-selected',
+            ],
           )}
           onClick={() => onChange(items.indexOf(item))}
           role="button"
