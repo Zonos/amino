@@ -6,7 +6,7 @@
   gap: 12px;
 
   &.disabled {
-    opacity: 0.5;
+    opacity: theme.$amino-opacity-disabled;
     cursor: not-allowed;
 
     > * {

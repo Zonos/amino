@@ -348,6 +348,11 @@ export const theme = {
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectError: 'var(--amino-shadow-select-error)',
 
+  /* MISC */
+  /** @info 0.6 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  opacityDisabled: 'var(--amino-opacity-disabled)',
+
   /* SPACING */
   /** @info space-negative-80: -5rem (-80px) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */

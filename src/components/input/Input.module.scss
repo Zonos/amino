@@ -22,6 +22,6 @@ $width: var(--amino-input-width);
   }
 
   &:global(.disabled) {
-    opacity: 0.4;
+    opacity: theme.$amino-opacity-disabled;
   }
 }

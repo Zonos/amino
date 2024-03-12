@@ -1,5 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Make sure all generated color constants matched previous snapshot > _misc.ts 1`] = `
+"export const misc = {
+  'opacity-disabled': '0.6',
+};
+"
+`;
+
 exports[`Make sure all generated color constants matched previous snapshot > _spacing.ts 1`] = `
 "export const spacing = {
   /** @info space-negative-80: -5rem (-80px) */

@@ -120,6 +120,7 @@ exports[`Theme content: 1`] = `
   "--amino-line-height-s": "1rem",
   "--amino-line-height-xl": "2rem",
   "--amino-line-height-xs": "0.75rem",
+  "--amino-opacity-disabled": "0.6",
   "--amino-orange-100": "#FFF1E0",
   "--amino-orange-1000": "#401D12",
   "--amino-orange-200": "#FCDAB8",

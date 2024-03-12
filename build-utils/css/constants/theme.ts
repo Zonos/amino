@@ -1,3 +1,4 @@
+import { misc } from 'build-utils/css/constants/theme/_misc';
 import { spacing } from 'build-utils/css/constants/theme/_spacing';
 import { variablesUsingColors } from 'build-utils/css/constants/theme/_variablesUsingColors';
 import { hover } from 'build-utils/css/constants/theme/day/_hover';
@@ -48,6 +49,9 @@ export const theme = {
 
   /* BOX SHADOW */
   ...shadow,
+
+  /* MISC */
+  ...misc,
 
   /* SPACING */
   ...spacing,

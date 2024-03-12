@@ -42,6 +42,7 @@ import './components/filter/filter-select/FilterSelect';
 import './components/filter/filter-text/FilterText';
 import './components/filter/FilterWrapper';
 import './components/filter/useFilterWrapper';
+import './components/flex/Flex';
 import './components/glow/GlowWrapper';
 import './components/graph-matrix/GraphMatrix';
 import './components/help-text/HelpText';

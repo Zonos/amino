@@ -118,7 +118,7 @@ export const FileUpload = ({
           ? theme.danger
           : theme.borderColor,
         '--amino-file-upload-cursor': disabled ? 'not-allowed' : 'auto',
-        '--amino-file-upload-opacity': disabled ? 0.5 : 1,
+        '--amino-file-upload-opacity': disabled ? theme.opacityDisabled : 1,
       }}
     >
       {renderContent()}

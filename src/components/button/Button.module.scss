@@ -2,7 +2,6 @@
 
 $button-size: var(--amino-button-size);
 $button-width: var(--amino-button-width);
-$disabled-opacity: var(--amino-disabled-opacity);
 $button-padding: var(--amino-button-padding);
 $button-radius: var(--amino-button-radius);
 $button-font-weight: var(--amino-button-font-weight);
@@ -114,7 +113,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
 
   &[disabled] {
     cursor: not-allowed;
-    opacity: $disabled-opacity;
+    opacity: theme.$amino-opacity-disabled;
   }
 
   &.primaryButton {
@@ -220,7 +219,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
     &[disabled] {
       .content {
-        opacity: 0.6;
+        opacity: theme.$amino-opacity-disabled;
       }
     }
 
@@ -334,7 +333,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
     &[disabled] {
       .content {
-        opacity: 0.6;
+        opacity: theme.$amino-opacity-disabled;
       }
     }
   }
@@ -350,7 +349,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
     &[disabled] {
       .content {
-        opacity: 0.6;
+        opacity: theme.$amino-opacity-disabled;
       }
     }
   }

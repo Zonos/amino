@@ -1,7 +1,5 @@
 import type {
-  ChangeEvent,
   ChangeEventHandler,
-  HTMLInputTypeAttribute,
   InputHTMLAttributes,
   MutableRefObject,
   ReactNode,
@@ -25,34 +23,23 @@ import { theme } from 'src/styles/constants/theme';
 
 import styles from './Input.module.scss';
 
-type DateInputEventHandler = (
-  e: Omit<ChangeEvent<HTMLInputElement>, 'target'> & {
-    target: Omit<EventTarget, 'value'> & {
-      /** @desc The parsed value is always formatted `yyyy-mm-dd`. Ex: '2022-12-28' */
-      value: `${number}-${number}-${number}` | '';
-    };
-  },
-) => void;
-
-type InputType<T extends HTMLInputTypeAttribute> = {
+type InputType = {
   inputPrefix?: ReactNode;
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
    * @link https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
    */
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   inputSuffix?: ReactNode;
-  onChange: T extends 'date'
-    ? DateInputEventHandler
-    : ChangeEventHandler<HTMLInputElement>;
+  onChange: ChangeEventHandler<HTMLInputElement>;
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
 } & Omit<FloatLabelInputProps, 'onChange'> &
   HelpTextProps;
 
-export type InputProps<T extends string = string> = InputType<T> &
-  Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType<T>>;
+export type InputProps = InputType &
+  Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
 
-export const Input = <T extends string>({
+export const Input = ({
   autoFocus,
   className,
   disabled,
@@ -79,7 +66,7 @@ export const Input = <T extends string>({
   valuePrefix,
   width,
   ...props
-}: InputProps<T>) => {
+}: InputProps) => {
   const renderInput = () => {
     switch (type) {
       case 'password':

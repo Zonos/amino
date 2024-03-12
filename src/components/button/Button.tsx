@@ -312,7 +312,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         ...style,
         '--amino-button-background-color': getBackgroundColor(),
         '--amino-button-color': getColor(),
-        '--amino-button-disabled-opacity': outline ? 0.6 : 1,
         '--amino-button-font-weight': getFontWeight(),
         '--amino-button-hover-background-color': getHoverBackground(),
         '--amino-button-padding': getPadding(),
