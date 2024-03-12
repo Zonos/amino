@@ -45,6 +45,7 @@ exports[`Theme content: 1`] = `
   "--amino-danger": "var(--amino-red-600)",
   "--amino-danger-dark": "var(--amino-red-700)",
   "--amino-dialog-elevation": "var(--amino-elevation-400)",
+  "--amino-disabled-opacity": "0.6",
   "--amino-elevation-0": "0",
   "--amino-elevation-100": "100",
   "--amino-elevation-200": "200",
