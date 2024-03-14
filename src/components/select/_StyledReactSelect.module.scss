@@ -13,70 +13,6 @@ $color: var(--amino-styled-react-select-color);
   width: 24px;
 }
 
-.styledFloatedLabel {
-  position: absolute;
-  transition: theme.$amino-transition;
-  font-size: theme.$amino-font-size-base;
-  line-height: theme.$amino-font-size-base;
-  transform-origin: left top;
-  left: 14px;
-  .hasIcon & {
-    left: 44px;
-  }
-  top: calc(50% - theme.$amino-font-size-base / 2);
-  .hasLabel & {
-    & + div {
-      align-self: flex-end;
-    }
-  }
-  .hasValue &,
-  .isFocused & {
-    top: 11px;
-    transform: scale(0.8);
-  }
-
-  // Size modify
-
-  // sm
-  .sm.hasLabel & {
-    & + div {
-      margin-bottom: -6px;
-    }
-  }
-  .sm.hasValue &,
-  .sm.isFocused & {
-    top: 2px;
-  }
-
-  // md
-  .md.hasLabel & {
-    & + div {
-      margin-bottom: -2px;
-    }
-  }
-  .md.hasValue &,
-  .md.isFocused & {
-    top: 6px;
-  }
-
-  // lg
-  .lg.hasValue &,
-  .lg.isFocused & {
-    top: 10px;
-  }
-
-  // xl
-  .xl.hasLabel & {
-    & + div {
-      margin-bottom: 3px;
-    }
-  }
-  .xl.hasValue &,
-  .xl.isFocused & {
-    top: 11px;
-  }
-}
-
 .styledSelectWrapper {
   .reactSelectControl + div {
     z-index: 20;
@@ -115,4 +51,18 @@ $color: var(--amino-styled-react-select-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.valueContainer {
+  flex-grow: 1;
+  padding: 4px 8px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &.valueContainerLarge {
+    flex-direction: column;
+    gap: 4px;
+  }
 }

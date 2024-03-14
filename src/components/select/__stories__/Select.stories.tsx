@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { type SelectProps, Select } from 'src/components/select/Select';
+import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { FileIcon } from 'src/icons/FileIcon';
@@ -32,7 +34,7 @@ const SelectTemplate: StoryFn<SelectProps> = ({
   const [value, setValue] = useState(_value);
   return (
     <div className={styles.styledWrapper}>
-      <Select {...props} onChange={setValue} value={value} />
+      <Select {...props} menuIsOpen onChange={setValue} value={value} />
     </div>
   );
 };
@@ -275,4 +277,125 @@ export const SelectWithNumberOptions = () => {
       Selected value: {value} (typeof value: {typeof value})
     </div>
   );
+};
+
+export const Variants: StoryObj<SelectProps> = {
+  args: {
+    label: 'Label',
+  },
+  render: ({ ...props }) => {
+    console.log('WHAT THE HECK');
+    const [value, setValue] = useState<number>(1);
+
+    const options = [
+      {
+        icon: <FileIcon size={24} />,
+        label: 'US Dollar (USD)',
+        value: 1,
+      },
+      {
+        icon: <FileIcon size={24} />,
+        label: 'European Euro (EUR)',
+        value: 2,
+      },
+    ];
+
+    const handleChange = (item: SelectOption | null) => {
+      if (item?.value) {
+        setValue(item.value);
+      }
+    };
+
+    const valueProp = options.find(option => option.value === value) || null;
+
+    return (
+      <div
+        style={{
+          display: 'grid',
+          gap: '16px',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          width: '100%',
+        }}
+      >
+        <VStack>
+          <Text>Inline label</Text>
+          <Select
+            {...props}
+            onChange={handleChange}
+            options={options}
+            size="sm"
+            value={valueProp}
+          />
+          <Select
+            {...props}
+            onChange={handleChange}
+            options={options}
+            size="md"
+            value={valueProp}
+          />
+          <Select
+            {...props}
+            onChange={handleChange}
+            options={options}
+            size="lg"
+            value={valueProp}
+          />
+        </VStack>
+        <VStack>
+          <Text>No label</Text>
+          <Select
+            {...props}
+            label={undefined}
+            onChange={handleChange}
+            options={options}
+            size="sm"
+            value={valueProp}
+          />
+          <Select
+            {...props}
+            label={undefined}
+            onChange={handleChange}
+            options={options}
+            size="md"
+            value={valueProp}
+          />
+          <Select
+            {...props}
+            label={undefined}
+            onChange={handleChange}
+            options={options}
+            size="lg"
+            value={valueProp}
+          />
+        </VStack>
+        <VStack>
+          <Text>Icon</Text>
+          <Select
+            {...props}
+            label={undefined}
+            onChange={handleChange}
+            options={options}
+            size="sm"
+            value={valueProp}
+          />
+          <Select
+            {...props}
+            label={undefined}
+            onChange={handleChange}
+            options={options}
+            size="md"
+            value={valueProp}
+          />
+          <Select
+            {...props}
+            label={undefined}
+            onChange={handleChange}
+            options={options}
+            size="lg"
+            value={valueProp}
+          />
+        </VStack>
+      </div>
+    );
+  },
 };

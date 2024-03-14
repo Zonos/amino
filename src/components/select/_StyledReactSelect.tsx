@@ -4,14 +4,16 @@ import type {
   ControlProps,
   DropdownIndicatorProps,
   GroupBase,
+  MenuProps,
   MultiValueGenericProps,
   MultiValueRemoveProps,
   OptionProps,
   Props,
   SelectComponentsConfig,
   StylesConfig,
+  ValueContainerProps,
 } from 'react-select';
-import ReactSelect, { components as RScomponents } from 'react-select';
+import ReactSelect, { components as ReactSelectComponents } from 'react-select';
 import type Select from 'react-select/dist/declarations/src/Select';
 
 import clsx from 'clsx';
@@ -21,6 +23,7 @@ import {
   type HelpTextProps,
   HelpText,
 } from 'src/components/help-text/HelpText';
+import { Text } from 'src/components/text/Text';
 import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
@@ -33,8 +36,8 @@ import { getTestId } from 'src/utils/getTestId';
 
 import styles from './_StyledReactSelect.module.scss';
 
-const getRadius = ($size?: Size) => {
-  switch ($size) {
+const getRadius = (size?: Size) => {
+  switch (size) {
     case 'sm':
       return `${theme.radius6}`;
     case 'lg':
@@ -47,6 +50,18 @@ const getRadius = ($size?: Size) => {
   }
 };
 
+const getSize = (size?: Size) => {
+  switch (size) {
+    case 'sm':
+      return `${theme.sizeSm}`;
+    case 'lg':
+      return `${theme.sizeXl}`;
+    case 'md':
+    default:
+      return `${theme.sizeMd}`;
+  }
+};
+
 type AdditionalProps<Value> = {
   hasGroups?: boolean;
   icon?: ReactNode;
@@ -55,215 +70,7 @@ type AdditionalProps<Value> = {
   customOption?: (value: Value) => ReactNode;
 };
 
-const ClearIndicator = <
-  Option extends SelectOption,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option>,
->(
-  props: ClearIndicatorProps<Option, IsMulti, Group>,
-) => (
-  <RScomponents.ClearIndicator {...props}>
-    <RemoveCircleIcon size={24} />
-  </RScomponents.ClearIndicator>
-);
-
-const DropdownIndicator = <
-  Option extends SelectOption,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option>,
->(
-  props: DropdownIndicatorProps<Option, IsMulti, Group>,
-) => (
-  <RScomponents.DropdownIndicator {...props}>
-    <DoubleChevronIcon size={24} />
-  </RScomponents.DropdownIndicator>
-);
-
-const Control = <
-  Option extends SelectOption,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option>,
->(
-  props: ControlProps<Option, IsMulti, Group>,
-) => {
-  const {
-    children,
-    className,
-    cx,
-    getStyles,
-    hasValue,
-    innerProps,
-    innerRef,
-    isDisabled,
-    isFocused,
-    menuIsOpen,
-    selectProps,
-  } = props;
-  const { icon, label, size, value } =
-    selectProps as (typeof props)['selectProps'] &
-      AdditionalProps<Option['value']>;
-  return (
-    <div
-      ref={innerRef}
-      className={cx(
-        {
-          control: true,
-          'control--is-disabled': isDisabled,
-          'control--is-focused': isFocused,
-          'control--menu-is-open': menuIsOpen,
-        },
-        [
-          className,
-          hasValue && styles.hasValue,
-          icon && styles.hasIcon,
-          isFocused && styles.isFocused,
-          label || (Array.isArray(value) && value.length > 1)
-            ? styles.hasLabel
-            : '',
-          size && styles[size],
-          styles.reactSelectControl,
-          'react-select-control',
-        ].join(' '),
-      )}
-      style={getStyles('control', props) as CSSProperties}
-      {...innerProps}
-    >
-      {icon && <div className={styles.iconWrapper}>{icon}</div>}
-
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label className={styles.styledFloatedLabel}>
-        {label}{' '}
-        {Array.isArray(value) && value.length > 1 && (
-          <strong className={styles.strongLabel}>
-            ({value.length} selected)
-          </strong>
-        )}
-      </label>
-      {children}
-    </div>
-  );
-};
-
-const IconLabel = ({
-  children,
-  color,
-  icon,
-}: {
-  children: ReactNode;
-  color?: string;
-  icon?: ReactNode;
-}) => (
-  <div
-    className={styles.checkboxOptionIconWrapper}
-    style={{ '--amino-styled-react-select-color': color || 'inherit' }}
-  >
-    {icon}
-    {children}
-  </div>
-);
-
-const MultiValueLabel = <
-  Option extends SelectOption,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option>,
->({
-  children,
-  ...props
-}: MultiValueGenericProps<Option, IsMulti, Group>) => (
-  <RScomponents.MultiValueLabel {...props}>
-    <IconLabel icon={props.data.icon}>{children}</IconLabel>
-  </RScomponents.MultiValueLabel>
-);
-
-const MultiValueRemove = <
-  Option extends SelectOption,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option>,
->({
-  innerProps,
-}: MultiValueRemoveProps<Option, IsMulti, Group>) => (
-  <div {...innerProps} role="button">
-    <RemoveIcon size={14} />
-  </div>
-);
-
-export const CheckboxOptionComponent = <
-  Option extends SelectOption,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option>,
->(
-  props: OptionProps<Option, IsMulti, Group>,
-) => {
-  const {
-    children,
-    className,
-    data,
-    getStyles,
-    innerProps,
-    innerRef,
-    isDisabled,
-    isFocused,
-    isSelected,
-    selectProps,
-  } = props;
-  const { customOption, hasGroups } =
-    selectProps as (typeof props)['selectProps'] &
-      AdditionalProps<Option['value']>;
-
-  const { color, ...style } = getStyles('option', props) as CSSProperties;
-  if (hasGroups) {
-    style.paddingLeft = 48;
-  }
-
-  const renderContent = () => {
-    if (customOption) {
-      return customOption(data.value);
-    }
-
-    return (
-      <div className={styles.selectedSingleOptionWrapper}>
-        <IconLabel color={color} icon={data.icon}>
-          {children}
-        </IconLabel>
-        {isSelected && <CheckCircleIcon color="blue600" size={24} />}
-      </div>
-    );
-  };
-
-  return (
-    <div ref={innerRef} {...innerProps}>
-      <div
-        className={[
-          className,
-          styles.styledSelectOptionWrapper,
-          isFocused && styles.isFocused,
-          isDisabled && styles.isDisabled,
-        ].join(' ')}
-        style={style}
-      >
-        {selectProps.isMulti ? (
-          <Checkbox
-            allowPropagation
-            checked={isSelected}
-            disabled={isDisabled}
-            icon={data.icon}
-            label={data.label}
-            labelDescription={data.labelDescription}
-            onChange={() => {}}
-          />
-        ) : (
-          renderContent()
-        )}
-      </div>
-    </div>
-  );
-};
-
-const localStyles: StylesConfig<
-  SelectOption,
-  boolean,
-  GroupBase<SelectOption>
-> = {
+const localStyles: StylesConfig = {
   clearIndicator: provided => ({
     ...provided,
     color: theme.gray700,
@@ -286,8 +93,8 @@ const localStyles: StylesConfig<
       color: theme.gray800,
       cursor: 'pointer',
       flexWrap: 'inherit',
-      height: `var(--amino-size-${size})`,
-      minHeight: `var(--amino-size-${size})`,
+      height: getSize(size),
+      minHeight: getSize(size),
     };
   },
   dropdownIndicator: provided => ({
@@ -374,14 +181,293 @@ const localStyles: StylesConfig<
   }),
 };
 
+const ClearIndicator = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>(
+  props: ClearIndicatorProps<Option, IsMulti, Group>,
+) => (
+  <ReactSelectComponents.ClearIndicator {...props}>
+    <RemoveCircleIcon size={24} />
+  </ReactSelectComponents.ClearIndicator>
+);
+
+const DropdownIndicator = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>(
+  props: DropdownIndicatorProps<Option, IsMulti, Group>,
+) => (
+  <ReactSelectComponents.DropdownIndicator {...props}>
+    <DoubleChevronIcon size={24} />
+  </ReactSelectComponents.DropdownIndicator>
+);
+
+const Control = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>(
+  props: ControlProps<Option, IsMulti, Group>,
+) => {
+  const {
+    children,
+    className,
+    cx,
+    getStyles,
+    hasValue,
+    innerProps,
+    innerRef,
+    isDisabled,
+    isFocused,
+    menuIsOpen,
+    selectProps,
+  } = props;
+  const { icon, label, size, value } =
+    selectProps as (typeof props)['selectProps'] &
+      AdditionalProps<Option['value']>;
+  return (
+    <div
+      ref={innerRef}
+      className={cx(
+        {
+          control: true,
+          'control--is-disabled': isDisabled,
+          'control--is-focused': isFocused,
+          'control--menu-is-open': menuIsOpen,
+        },
+        [
+          className,
+          hasValue && styles.hasValue,
+          icon && styles.hasIcon,
+          isFocused && styles.isFocused,
+          label || (Array.isArray(value) && value.length > 1)
+            ? styles.hasLabel
+            : '',
+          size && styles[size],
+          styles.reactSelectControl,
+          'react-select-control',
+        ].join(' '),
+      )}
+      style={getStyles('control', props) as CSSProperties}
+      {...innerProps}
+    >
+      {icon && <div className={styles.iconWrapper}>{icon}</div>}
+
+      {Array.isArray(value) && value.length > 1 && (
+        <strong className={styles.strongLabel}>
+          ({value.length} selected)
+        </strong>
+      )}
+      {children}
+    </div>
+  );
+};
+
+const IconLabel = ({
+  children,
+  color,
+  icon,
+}: {
+  children: ReactNode;
+  color?: string;
+  icon?: ReactNode;
+}) => (
+  <div
+    className={styles.checkboxOptionIconWrapper}
+    style={{ '--amino-styled-react-select-color': color || 'inherit' }}
+  >
+    {icon}
+    {children}
+  </div>
+);
+
+const MultiValueLabel = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>({
+  children,
+  ...props
+}: MultiValueGenericProps<Option, IsMulti, Group>) => (
+  <ReactSelectComponents.MultiValueLabel {...props}>
+    <IconLabel icon={props.data.icon}>{children}</IconLabel>
+  </ReactSelectComponents.MultiValueLabel>
+);
+
+const MultiValueRemove = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>({
+  innerProps,
+}: MultiValueRemoveProps<Option, IsMulti, Group>) => (
+  <div {...innerProps} role="button">
+    <RemoveIcon size={14} />
+  </div>
+);
+
+const Menu = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>({
+  children,
+  ...props
+}: MenuProps<Option, IsMulti, Group>) => (
+  <>
+    <div>Hallo!</div>
+    <ReactSelectComponents.Menu {...props}>
+      {children}
+    </ReactSelectComponents.Menu>
+  </>
+);
+
+const ValueContainer = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>({
+  children,
+  className,
+  icon,
+  label,
+  size,
+  ...props
+}: ValueContainerProps<Option, IsMulti, Group> & {
+  icon?: ReactNode;
+  label?: string;
+  size: Exclude<Size, 'xl'>;
+}) => {
+  const _value = props.getValue();
+  const value = Array.isArray(_value) ? _value[0] : _value;
+
+  const renderColon = () => {
+    if (!value) {
+      return null;
+    }
+
+    return ': ';
+  };
+
+  const renderLabel = () => {
+    if (!label) {
+      return null;
+    }
+
+    if (size === 'lg') {
+      return <Text color="textColorSecondary">{label}</Text>;
+    }
+
+    return (
+      <Text color="textColorSecondary">
+        {label}
+        {renderColon()}
+      </Text>
+    );
+  };
+
+  return (
+    <div
+      // {...props}
+      className={clsx(
+        className,
+        styles.valueContainer,
+        size === 'lg' && styles.valueContainerLarge,
+      )}
+    >
+      {renderLabel()}
+      {children}
+    </div>
+  );
+};
+
+const CheckboxOptionComponent = <
+  Option extends SelectOption,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option>,
+>(
+  props: OptionProps<Option, IsMulti, Group>,
+) => {
+  const {
+    children,
+    className,
+    data,
+    getStyles,
+    innerProps,
+    innerRef,
+    isDisabled,
+    isFocused,
+    isSelected,
+    selectProps,
+  } = props;
+  const { customOption, hasGroups } =
+    selectProps as (typeof props)['selectProps'] &
+      AdditionalProps<Option['value']>;
+
+  const { color, ...style } = getStyles('option', props) as CSSProperties;
+  if (hasGroups) {
+    style.paddingLeft = 48;
+  }
+
+  const renderContent = () => {
+    if (customOption) {
+      return customOption(data.value);
+    }
+
+    return (
+      <div className={styles.selectedSingleOptionWrapper}>
+        <IconLabel color={color} icon={data.icon}>
+          {children}
+        </IconLabel>
+        {isSelected && <CheckCircleIcon color="blue600" size={24} />}
+      </div>
+    );
+  };
+
+  return (
+    <div ref={innerRef} {...innerProps}>
+      <div
+        className={[
+          className,
+          styles.styledSelectOptionWrapper,
+          isFocused && styles.isFocused,
+          isDisabled && styles.isDisabled,
+        ].join(' ')}
+        style={style}
+      >
+        {selectProps.isMulti ? (
+          <Checkbox
+            allowPropagation
+            checked={isSelected}
+            disabled={isDisabled}
+            icon={data.icon}
+            label={data.label}
+            labelDescription={data.labelDescription}
+            onChange={() => {}}
+          />
+        ) : (
+          renderContent()
+        )}
+      </div>
+    </div>
+  );
+};
+
 export type StyledReactSelectProps<
   Option extends SelectOption,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 > = {
+  /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
-  size?: Size;
+  /**
+   * @default 'md'
+   */
+  size?: Exclude<Size, 'xl'>;
   styles?: StylesConfig<Option, IsMulti, Group>;
 } & Props<Option, IsMulti, Group> &
   HelpTextProps &
@@ -403,8 +489,8 @@ export const StyledReactSelect = <
   label,
   menuPosition = 'fixed',
   placeholder,
-  size = 'xl',
-  style,
+  size = 'md',
+  styles: passedStyles,
   ...props
 }: StyledReactSelectProps<Option, IsMulti, Group>) => {
   const additionalProps: AdditionalProps<Option['value']> = {
@@ -457,7 +543,7 @@ export const StyledReactSelect = <
             // IndicatorSeparator,
             // Input,
             // LoadingIndicator,
-            // Menu,
+            Menu,
             // MenuList,
             // MenuPortal,
             // LoadingMessage,
@@ -470,7 +556,14 @@ export const StyledReactSelect = <
             // Placeholder,
             // SelectContainer,
             // SingleValue,
-            // ValueContainer,
+            ValueContainer: _props => (
+              <ValueContainer
+                icon={icon}
+                label={label}
+                size={size}
+                {..._props}
+              />
+            ),
             ...components,
           } as SelectComponentsConfig<Option, IsMulti, Group>
         }
@@ -478,8 +571,8 @@ export const StyledReactSelect = <
         placeholder={placeholder || ''}
         styles={
           {
-            ...style,
             ...localStyles,
+            ...passedStyles,
           } as StylesConfig<Option, IsMulti, Group>
         }
         {...props}

@@ -28,7 +28,10 @@ const CountrySelectMeta: Meta = {
 
 export default CountrySelectMeta;
 
-const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
+const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({
+  label = 'Country',
+  ...props
+}) => {
   const [value, setValue] = useState<string | null>(null);
   const countryOptions = useCountryOptions({});
   const [typedValue, setTypedValue] = useState<RandomCountryCode | null>(null);
@@ -37,6 +40,7 @@ const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
   return (
     <>
       <CountrySelect
+        label={label}
         {...props}
         countryOptions={countryOptions}
         onChange={option => setValue(option?.value || null)}
