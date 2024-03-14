@@ -11,7 +11,11 @@ $gradient-end: var(--amino-text-avatar-gradient-end);
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  color: theme.$amino-gray-1000;
+  color: theme.$amino-gray-0;
   font-weight: 500;
   background: linear-gradient(137deg, $gradient-start, $gradient-end);
+
+  [data-theme='night'] & {
+    color: theme.$amino-gray-1200;
+  }
 }

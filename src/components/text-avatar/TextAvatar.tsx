@@ -12,7 +12,7 @@ const colorForString = (stringInput: string, brightness: number) => {
     0,
   );
 
-  return `hsl(${stringUniqueHash % 360}, 95%, ${brightness}%)`;
+  return `hsl(${stringUniqueHash % 360}, 80%, ${brightness}%)`;
 };
 
 export const TextAvatar = ({ label }: TextAvatarProps) => (
@@ -21,11 +21,11 @@ export const TextAvatar = ({ label }: TextAvatarProps) => (
     style={{
       '--amino-text-avatar-gradient-end': colorForString(
         (label && label.split('').reverse().join('')) || 'default label',
-        30,
+        40,
       ),
       '--amino-text-avatar-gradient-start': colorForString(
         label || 'default label',
-        75,
+        45,
       ),
     }}
   >

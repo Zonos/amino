@@ -39,7 +39,8 @@ $align: var(--amino-tabs-align);
     transform: scaleX(0);
   }
 
-  &.isSelected {
+  &.isSelected,
+  &.isSelected > span {
     color: theme.$amino-primary;
 
     &::after {
