@@ -326,7 +326,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         '--amino-button-text-button-hover-color': props.href
           ? theme.blue500
           : theme.gray500,
-        '--amino-button-width': fitContentWidth ? 'fit-content' : '',
+        '--amino-button-width': fitContentWidth ? 'fit-content' : 'auto',
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
       {...buttonProps}
