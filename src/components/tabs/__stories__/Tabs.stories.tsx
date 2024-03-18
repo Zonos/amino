@@ -1,4 +1,5 @@
-import { useState } from '@storybook/addons';
+import { useState } from 'react';
+
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { VStack } from 'src/components/stack/VStack';

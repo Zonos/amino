@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { useEffect } from '@storybook/addons';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {

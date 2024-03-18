@@ -129,4 +129,30 @@ describe('Make sure buildStories works as expected', () => {
 
     expect(paths).toEqual(expectedPaths);
   });
+
+  test('MDX Docs', () => {
+    const stories = buildStories([
+      '../src/components/simple-table/__stories__/SimpleTable.mdx',
+      '../src/components/theme-select/__stories__/ThemeSelect.mdx',
+      '../src/components/mdx/mdx-related-content/__stories__/MdxRelatedContent.stories.tsx',
+      '../src/components/layout/__stories__/NavigationGroup.stories.tsx',
+      '../src/components/checkbox/__stories__/Checkbox.stories.tsx',
+      '../src/components/alert-dialog/__stories__/Alert.stories.tsx',
+    ]);
+
+    const expectedPaths = [
+      'Amino/Alert-Dialog/Alert',
+      'Amino/Checkbox',
+      'Amino/Layout/NavigationGroup',
+      'Amino/mdx/MdxRelatedContent',
+      'Amino/SimpleTable',
+      'Amino/ThemeSelect',
+    ];
+
+    const paths = stories.map(
+      story => `${story.titlePrefix}/${story.fileName}`,
+    );
+
+    expect(paths).toEqual(expectedPaths);
+  });
 });

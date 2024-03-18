@@ -47,6 +47,7 @@ const storybookConfig: StorybookConfig = {
         ],
       },
     },
+    '@storybook/addon-webpack5-compiler-swc',
   ],
   docs: {
     autodocs: true,
@@ -55,9 +56,7 @@ const storybookConfig: StorybookConfig = {
     // NextJS uses webpack internally, so we want to match that environment as close as possible
     name: '@storybook/react-webpack5',
     options: {
-      builder: {
-        useSWC: true,
-      },
+      builder: {},
     },
   },
   staticDirs: ['./public', '../public'],
