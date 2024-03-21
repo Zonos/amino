@@ -65,6 +65,7 @@
     ".eslintrc.prod.js",
     "prettier.config.js",
     "tsconfig.json",
-    "test-utils"
+    "test-utils",
+    "postcss.config.js"
   ]
 }

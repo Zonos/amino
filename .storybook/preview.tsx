@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
 import 'src/styles/amino.css';
-import { useGlobals } from '@storybook/addons';
+import { useGlobals } from '@storybook/preview-api';
 import { type Decorator, type Preview } from '@storybook/react';
 
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
