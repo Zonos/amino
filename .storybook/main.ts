@@ -26,10 +26,9 @@ const storybookConfig: StorybookConfig = {
     ...config,
     server: {
       ...config.server,
+      // For some reason, our local-ssl-proxy confuses vite, and it tries to go to port 6006 (passed from storybook), so correct it here
       hmr: {
-        clientPort: 6007,
         port: 6007,
-        // protocol: 'ws',
       },
     },
   }),
