@@ -28,14 +28,6 @@ export default defineConfig({
       'test-utils': path.resolve(__dirname, './test-utils'),
     },
   },
-  server: {
-    hmr: {
-      // protocol:
-      clientPort: 6007,
-      port: 6007,
-      protocol: 'ws',
-    },
-  },
   test: {
     environment: 'jsdom',
     exclude: ['**/node_modules/**', '**/dist'],

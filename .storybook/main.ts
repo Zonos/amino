@@ -19,17 +19,19 @@ const storybookConfig: StorybookConfig = {
   },
   staticDirs: ['./public', '../public'],
   stories: getStories(),
-  swc: () => ({
-    jsc: {
-      transform: {
-        react: {
-          runtime: 'automatic',
-        },
-      },
-    },
-  }),
   typescript: {
     check: false,
   },
+  viteFinal: config => ({
+    ...config,
+    server: {
+      ...config.server,
+      hmr: {
+        clientPort: 6007,
+        port: 6007,
+        // protocol: 'ws',
+      },
+    },
+  }),
 };
 export default storybookConfig;
