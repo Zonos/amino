@@ -1,4 +1,5 @@
-import { useEffect, useState } from '@storybook/addons';
+import { useEffect, useState } from 'react';
+
 import type { Meta, StoryFn } from '@storybook/react';
 import { v4 } from 'uuid';
 

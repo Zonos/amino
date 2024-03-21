@@ -27,7 +27,7 @@ type StoryEntry = StorySpecifier & {
 const removedPrefixes = /(components|icons|styles)\//;
 
 const pathRegex =
-  /(?<fullFolder>..\/src(\/(?<folder>.*))?\/__stories__)\/(?<fullFileName>(?<fileName>.*)\.stories\.(tsx|mdx))/i;
+  /(?<fullFolder>..\/src(\/(?<folder>.*))?\/__stories__)\/(?<fullFileName>(?<fileName>.*)\.(mdx|stories\.tsx))/i;
 
 // The titlePrefix defines the folder structure in the sidebar
 const getTitlePrefix = ({
@@ -88,7 +88,7 @@ export const buildStories = (stories: string[]) =>
     });
 
 export const getStories = () => {
-  const stories = glob.sync('../src/**/__stories__/*.stories.{tsx,mdx}', {
+  const stories = glob.sync('../src/**/__stories__/*.{stories.tsx,mdx}', {
     cwd: __dirname,
   });
   const storyPaths = buildStories(stories);
