@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/react-vite';
 import path from 'path';
 
 import { getStories } from './buildStories';
@@ -9,56 +9,14 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-designs',
-    // addons to configure to use scss modules in storybook
-    {
-      name: '@storybook/addon-styling-webpack',
-
-      options: {
-        rules: [
-          {
-            sideEffects: true,
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-          },
-          {
-            sideEffects: true,
-            test: /\.module.scss$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: {
-                    localIdentName: 'Amino_[name]__[local]--[hash:base64:5]',
-                  },
-                },
-              },
-              {
-                loader: 'sass-loader',
-                options: {
-                  sassOptions: {
-                    // includes paths for scss imports so we just need to import the file name. Ex: @use 'theme';
-                    includePaths: [`${process.cwd()}/src/styles`],
-                  },
-                },
-              },
-            ],
-          },
-        ],
-      },
-    },
-    '@storybook/addon-webpack5-compiler-swc',
   ],
+  core: {
+    builder: '@storybook/builder-vite',
+  },
   docs: {
     autodocs: true,
   },
-  framework: {
-    // NextJS uses webpack internally, so we want to match that environment as close as possible
-    name: '@storybook/react-webpack5',
-    options: {
-      builder: {},
-    },
-  },
+  framework: '@storybook/react-vite',
   staticDirs: ['./public', '../public'],
   stories: getStories(),
   swc: () => ({
@@ -73,8 +31,20 @@ const storybookConfig: StorybookConfig = {
   typescript: {
     check: false,
   },
-  webpackFinal: config => ({
+  viteFinal: config => ({
     ...config,
+    css: {
+      ...config.css,
+      // includes paths for scss imports so we just need to import the file name. Ex: @use 'theme';
+      preprocessorOptions: {
+        includePaths: [`${process.cwd()}/src/styles`],
+        loadPaths: [`${process.cwd()}/src/styles`],
+        scss: {
+          additionalData: `@use 'theme' as *;`,
+          includePaths: [path.resolve(__dirname, '../src/styles')],
+        },
+      },
+    },
     resolve: {
       ...config.resolve,
       alias: {
