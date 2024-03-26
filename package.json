@@ -173,6 +173,7 @@
     "typed-scss-modules": "^7.1.4",
     "typescript": "5.4.2",
     "typescript-transform-paths": "^3.4.6",
+    "vite": "^5.2.6",
     "vitest": "^1.4.0"
   },
   "peerDependencies": {
