@@ -18,19 +18,20 @@ const meta: Meta = {
 
 export default meta;
 
-// Check if string contain keyword of the sub icon type or not
-type IconsType = (typeof flags)[keyof typeof flags] & {
+type FlagType = (typeof flags)[keyof typeof flags] & {
+  __docgenInfo?: {
+    displayName?: string;
+  };
   deprecated?: boolean;
-  displayName?: string;
 };
 
 export const Flags = ({ size }: IconProps) => {
   const [filter, setFilter] = useState('');
-  const iicons = Object.values<IconsType>(flags)
+  const iicons = Object.values<FlagType>(flags)
     .map(icon => ({
       deprecated: !!icon.deprecated,
       icon,
-      iconName: icon.displayName || '',
+      iconName: icon.__docgenInfo?.displayName || '',
     }))
     .filter(icon => icon.iconName);
   return (
