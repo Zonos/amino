@@ -18,10 +18,11 @@ const IconsMeta: Meta = {
 
 export default IconsMeta;
 
-// Check if string contain keyword of the sub icon type or not
-type IconsType = (typeof icons)[keyof typeof icons] & {
+type IconType = (typeof icons)[keyof typeof icons] & {
+  __docgenInfo?: {
+    displayName?: string;
+  };
   deprecated?: boolean;
-  displayName?: string;
 };
 
 export const Icons = ({
@@ -31,13 +32,14 @@ export const Icons = ({
   size,
 }: IconProps & { secondaryColor?: Color }) => {
   const [filter, setFilter] = useState('');
-  const iicons = Object.values<IconsType>(icons)
+  const iicons = Object.values<IconType>(icons)
     .map(icon => ({
       deprecated: !!icon.deprecated,
       icon,
-      iconName: icon.displayName || '',
+      iconName: icon.__docgenInfo?.displayName || '',
     }))
     .filter(icon => icon.iconName);
+
   return (
     <VStack>
       <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
@@ -76,12 +78,12 @@ export const Icons = ({
   );
 };
 
-const productIcons = Object.values<IconsType>(icons)
-  .filter(icon => icon.displayName?.includes('ColorIcon'))
+const productIcons = Object.values<IconType>(icons)
+  .filter(icon => icon.__docgenInfo?.displayName?.includes('ColorIcon'))
   .map(icon => ({
     deprecated: !!icon.deprecated,
     icon,
-    iconName: icon.displayName || '',
+    iconName: icon.__docgenInfo?.displayName || '',
   }));
 
 export const Products = () => (
