@@ -7,10 +7,7 @@ process.env.TZ = 'America/Denver';
 export default defineConfig({
   css: {
     preprocessorOptions: {
-      includePaths: [path.resolve(__dirname, './src/styles')],
-      loadPaths: [path.resolve(__dirname, './src/styles')],
       scss: {
-        additionalData: `@use 'theme' as *;`,
         includePaths: [path.resolve(__dirname, './src/styles')],
       },
     },
