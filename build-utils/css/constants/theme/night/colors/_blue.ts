@@ -10,9 +10,9 @@ export const blue = {
   /** @info #445EEE  */
   'blue-500': '#445EEE',
   /** @info #7292F3  */
-  'blue-600': '#7292F3',
+  'blue-600': '#5A80F1',
   /** @info #92B6F7  */
-  'blue-700': '#92B6F7',
+  'blue-700': '#7FA9F5',
   /** @info #A8CEFA  */
   'blue-800': '#A8CEFA',
   /** @info #C9E6FD  */

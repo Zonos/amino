@@ -6,9 +6,9 @@ export const green = {
   /** @info #81EF98  */
   'green-300': '#81EF98',
   /** @info #5BDC70  */
-  'green-400': '#5BDC70',
+  'green-400': '#57DB6C',
   /** @info #4AC959  */
-  'green-500': '#4AC959',
+  'green-500': '#39C049',
   /** @info #2CA03F  */
   'green-600': '#2CA03F',
   /** @info #288129  */
