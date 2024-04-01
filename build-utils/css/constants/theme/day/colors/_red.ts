@@ -6,7 +6,7 @@ export const red = {
   /** @info #FAA9A9  */
   'red-300': '#FAA9A9',
   /** @info #F4868B  */
-  'red-400': '#F4868B',
+  'red-400': '#F37C82',
   /** @info #EB5C6C  */
   'red-500': '#EB5C6C',
   /** @info #DE314F  */

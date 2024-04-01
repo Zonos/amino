@@ -10,9 +10,9 @@ export const orange = {
   /** @info #E5591A  */
   'orange-500': '#E5591A',
   /** @info #F58849  */
-  'orange-600': '#F58849',
+  'orange-600': '#F47A34',
   /** @info #F7A96D  */
-  'orange-700': '#F7A96D',
+  'orange-700': '#F7A464',
   /** @info #F5C193  */
   'orange-800': '#F5C193',
   /** @info #FCDAB8  */

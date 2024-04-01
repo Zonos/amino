@@ -8,7 +8,7 @@ export const purple = {
   /** @info #C699FA  */
   'purple-400': '#C699FA',
   /** @info #BB6FF6  */
-  'purple-500': '#BB6FF6',
+  'purple-500': '#B25CF5',
   /** @info #AB26ED  */
   'purple-600': '#AB26ED',
   /** @info #901CCA  */

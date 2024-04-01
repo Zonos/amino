@@ -6,9 +6,9 @@ export const orange = {
   /** @info #F5C193  */
   'orange-300': '#F5C193',
   /** @info #F7A96D  */
-  'orange-400': '#F7A96D',
+  'orange-400': '#F7A464',
   /** @info #F58849  */
-  'orange-500': '#F58849',
+  'orange-500': '#F47A34',
   /** @info #E5591A  */
   'orange-600': '#E5591A',
   /** @info #BD3C1C  */

@@ -10,9 +10,9 @@ export const green = {
   /** @info #2CA03F  */
   'green-500': '#2CA03F',
   /** @info #4AC959  */
-  'green-600': '#4AC959',
+  'green-600': '#39C049',
   /** @info #5BDC70  */
-  'green-700': '#5BDC70',
+  'green-700': '#57DB6C',
   /** @info #81EF98  */
   'green-800': '#81EF98',
   /** @info #AFF8C3  */

@@ -14,7 +14,7 @@ export const gray = {
   /** @info #676C7E  */
   'gray-500': '#676C7E',
   /** @info #8E92A4  */
-  'gray-600': '#8E92A4',
+  'gray-600': '#888D9F',
   /** @info #A7A9B9  */
   'gray-700': '#A7A9B9',
   /** @info #BFC0CE  */
