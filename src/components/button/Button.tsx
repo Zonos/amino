@@ -248,7 +248,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'text':
       case 'standard':
       default:
-        return 'white';
+        return 'black';
     }
   };
 
