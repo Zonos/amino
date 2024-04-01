@@ -21,6 +21,7 @@ import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
 import type { Variant } from 'src/types/Variant';
 import { getAminoColor } from 'src/utils/getAminoColor';
+import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 import styles from './Button.module.scss';
 
@@ -164,6 +165,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     ...getRippleHandlers(props),
   };
 
+  const { aminoTheme } = useAminoTheme();
+
+  const isNightTheme = aminoTheme === 'night';
+
   const getPadding = () => {
     switch (size) {
       case 'sm':
@@ -208,20 +213,32 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         if (outline) {
           return 'info';
         }
+        if (isNightTheme) {
+          return 'black';
+        }
         return 'white';
       case 'success':
         if (outline) {
           return 'success';
+        }
+        if (isNightTheme) {
+          return 'black';
         }
         return 'white';
       case 'warning':
         if (outline) {
           return 'warning';
         }
+        if (isNightTheme) {
+          return 'black';
+        }
         return 'white';
       case 'danger':
         if (outline) {
           return 'danger';
+        }
+        if (isNightTheme) {
+          return 'black';
         }
         return 'white';
       case 'link':
@@ -231,7 +248,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'text':
       case 'standard':
       default:
-        return 'black';
+        return 'white';
     }
   };
 
