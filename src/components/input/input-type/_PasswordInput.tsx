@@ -2,6 +2,7 @@ import { forwardRef, useState } from 'react';
 
 import clsx from 'clsx';
 
+import { Button } from 'src/components/button/Button';
 import {
   type FloatLabelInputProps,
   FloatLabelInput,
@@ -55,19 +56,20 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           required={required}
           suffix={
             suffix || (
-              <button
+              <Button
                 className={styles.styledButtonAction}
+                icon={
+                  inputType === 'password' ? (
+                    <EyeIcon size={24} />
+                  ) : (
+                    <EyeOffIcon size={24} />
+                  )
+                }
                 onClick={() =>
                   setInputType(inputType === 'password' ? 'text' : 'password')
                 }
-                type="button"
-              >
-                {inputType === 'password' ? (
-                  <EyeIcon size={24} />
-                ) : (
-                  <EyeOffIcon size={24} />
-                )}
-              </button>
+                variant="subtle"
+              />
             )
           }
           tabIndex={tabIndex}
