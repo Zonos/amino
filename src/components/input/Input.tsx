@@ -2,7 +2,6 @@ import type {
   ChangeEventHandler,
   InputHTMLAttributes,
   MutableRefObject,
-  ReactNode,
 } from 'react';
 
 import clsx from 'clsx';
@@ -24,12 +23,10 @@ import { theme } from 'src/styles/constants/theme';
 import styles from './Input.module.scss';
 
 type InputType = {
-  inputPrefix?: ReactNode;
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
    * @link https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
    */
   inputRef?: MutableRefObject<HTMLInputElement | null>;
-  inputSuffix?: ReactNode;
   onChange: ChangeEventHandler<HTMLInputElement>;
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
@@ -46,9 +43,7 @@ export const Input = ({
   error,
   helpText,
   inputMode,
-  inputPrefix,
   inputRef,
-  inputSuffix,
   label,
   onChange,
   onKeyDown,
@@ -83,11 +78,11 @@ export const Input = ({
             onKeyDown={onKeyDown}
             pattern={pattern}
             placeholder={placeholder}
-            prefix={prefix || inputPrefix}
+            prefix={prefix}
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix || inputSuffix}
+            suffix={suffix}
             tabIndex={tabIndex}
             value={value || ''}
             valuePrefix={valuePrefix}
@@ -109,11 +104,11 @@ export const Input = ({
             onKeyDown={onKeyDown}
             pattern={pattern}
             placeholder={placeholder}
-            prefix={prefix || inputPrefix}
+            prefix={prefix}
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix || inputSuffix}
+            suffix={suffix}
             tabIndex={tabIndex}
             type={type}
             value={value || ''}
@@ -135,11 +130,11 @@ export const Input = ({
             onKeyDown={onKeyDown}
             pattern={pattern}
             placeholder={placeholder}
-            prefix={prefix || inputPrefix}
+            prefix={prefix}
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix === null ? null : suffix || inputSuffix}
+            suffix={suffix}
             tabIndex={tabIndex}
             value={value || ''}
             valuePrefix={valuePrefix}
@@ -161,11 +156,11 @@ export const Input = ({
             onKeyDown={onKeyDown}
             pattern={pattern}
             placeholder={placeholder}
-            prefix={prefix || inputPrefix}
+            prefix={prefix}
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix || inputSuffix}
+            suffix={suffix}
             tabIndex={tabIndex}
             value={value || ''}
             valuePrefix={valuePrefix}
@@ -186,11 +181,11 @@ export const Input = ({
             onKeyDown={onKeyDown}
             pattern={pattern}
             placeholder={placeholder}
-            prefix={prefix || inputPrefix}
+            prefix={prefix}
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix || inputSuffix}
+            suffix={suffix}
             tabIndex={tabIndex}
             type={type}
             value={value || ''}

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import clsx from 'clsx';
 
 import { Card } from 'src/components/card/Card';
@@ -40,6 +42,7 @@ export const ThemeSelect = ({
   type = 'select',
 }: Props) => {
   const { aminoTheme, setAminoTheme } = useAminoTheme();
+  const [checked, setChecked] = useState<boolean>(false);
 
   const getIcon = () => {
     switch (aminoTheme) {
@@ -52,7 +55,11 @@ export const ThemeSelect = ({
     }
   };
 
-  const checked = aminoTheme === 'day';
+  // This logic is necessary because on the server the theme is always 'day', which casuses SSR hydration mismatch issues
+  useEffect(() => {
+    // This code will only run on the client side
+    setChecked(aminoTheme === 'day');
+  }, [aminoTheme]);
 
   return (
     <>

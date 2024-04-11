@@ -68,7 +68,6 @@ export const Toast = ({
     },
     exit: getDirection(),
     initial: getDirection(),
-    key: toastKey,
   };
 
   const parseIntent = () => {
@@ -94,6 +93,7 @@ export const Toast = ({
       layout
       style={style}
       {...baseProps}
+      key={toastKey}
     >
       {intentValues.icon}
       {children}
