@@ -12,16 +12,6 @@ import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 
 const InputMeta: Meta = {
   argTypes: {
-    inputPrefix: {
-      table: {
-        disable: true,
-      },
-    },
-    inputSuffix: {
-      table: {
-        disable: true,
-      },
-    },
     prefix: {
       mapping: {
         'No prefix': null,
