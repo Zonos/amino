@@ -134,7 +134,7 @@ export const Input = ({
             readOnly={readOnly}
             required={required}
             size={size}
-            suffix={suffix === null ? null : suffix}
+            suffix={suffix}
             tabIndex={tabIndex}
             value={value || ''}
             valuePrefix={valuePrefix}
