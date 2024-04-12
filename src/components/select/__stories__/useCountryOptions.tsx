@@ -27,7 +27,11 @@ export const useCountryOptions = ({
   const [countryOptions, setCountryOptions] = useState<CountryOption[]>([]);
 
   const requestCountries = useCallback(async () => {
-    const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
+    const response = await fetch(`${dashboardUrl}/api/address/getCountries`, {
+      headers: {
+        'cache-control': 'no-cache',
+      },
+    });
     if (response.ok) {
       const json = (await response.json()) as GetCountriesResponse;
       const options = prepCountryOptions({ json });
