@@ -9,7 +9,7 @@ import type { CountryOption, GetCountriesResponse } from 'src/types/Country';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
 export const getCountryUrls = () => {
-  const dashboardUrl = process.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
+  const dashboardUrl = import.meta.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
   if (!dashboardUrl) {
     // eslint-disable-next-line no-console
     console.error('Missing environment variable STORYBOOK_ZONOS_DASHBOARD_URL');
