@@ -9,7 +9,7 @@ import type { CountryOption, GetCountriesResponse } from 'src/types/Country';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 
 export const getCountryUrls = () => {
-  const dashboardUrl = process.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
+  const dashboardUrl = import.meta.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
   if (!dashboardUrl) {
     // eslint-disable-next-line no-console
     console.error('Missing environment variable STORYBOOK_ZONOS_DASHBOARD_URL');
@@ -27,7 +27,11 @@ export const useCountryOptions = ({
   const [countryOptions, setCountryOptions] = useState<CountryOption[]>([]);
 
   const requestCountries = useCallback(async () => {
-    const response = await fetch(`${dashboardUrl}/api/address/getCountries`);
+    const response = await fetch(`${dashboardUrl}/api/address/getCountries`, {
+      headers: {
+        'cache-control': 'no-cache',
+      },
+    });
     if (response.ok) {
       const json = (await response.json()) as GetCountriesResponse;
       const options = prepCountryOptions({ json });

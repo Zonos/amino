@@ -417,9 +417,7 @@ export const StyledReactSelect = <
     if (closeOnOutsideScroll) {
       return (e: Event) => {
         if (e.target instanceof HTMLElement) {
-          return (
-            !selectElement.current?.menuListRef?.isEqualNode(e.target) ?? true
-          );
+          return !selectElement.current?.menuListRef?.isEqualNode(e.target);
         }
         return true;
       };
