@@ -8,8 +8,8 @@ import {
   type CountryMultiSelectExpandedProps,
   CountryMultiSelectExpanded,
 } from 'src/components/country-multi-select/CountryMultiSelectExpanded';
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { Toggle } from 'src/components/toggle/Toggle';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 const renderBadge = (label: string) => {
   if (label.startsWith('A')) {

@@ -16,11 +16,11 @@ import {
 import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/FilterMultiSelect';
 import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 import styles from './Filter.stories.module.scss';
 

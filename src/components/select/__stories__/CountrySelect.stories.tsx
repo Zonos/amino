@@ -2,12 +2,12 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountrySelectProps,
   CountrySelect,
 } from 'src/components/select/CountrySelect';
 import type { CountryOption } from 'src/types/Country';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';
 

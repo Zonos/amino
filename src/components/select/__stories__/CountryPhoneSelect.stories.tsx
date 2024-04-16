@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountryPhoneSelectProps,
   CountryPhoneSelect,
 } from 'src/components/select/CountryPhoneSelect';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { CountryOption } from 'src/types/Country';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 const CountryPhoneSelectMeta: Meta = {
   component: CountryPhoneSelect,
