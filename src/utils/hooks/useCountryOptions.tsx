@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { z } from 'zod';
 
 import type { SelectOption } from 'src/types/SelectOption';
@@ -6,7 +7,7 @@ import { useSwrt } from 'src/utils/hooks/useSwrt';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
 import { getShouldUpdateStorageItem } from 'src/utils/storage';
 
-import { useStorage } from './useStorage';
+import { useStorageWithLifetime } from './useStorage';
 
 export const regions = [
   'Africa',
@@ -68,9 +69,10 @@ export const useCountryOptions = <TCountryCode extends string>(
   dashboardUrl: string,
 ) => {
   const { setValue: setCountryOptionsStorage, value: storedCountryOptions } =
-    useStorage({
+    useStorageWithLifetime({
       defaultValue: [],
       key: '__zn_country_options',
+      lifetime: dayjs().endOf('week'),
       schema,
       type: 'local',
     });
