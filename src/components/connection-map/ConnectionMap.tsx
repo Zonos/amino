@@ -14,9 +14,9 @@ import { feature } from 'topojson-client';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import { type CountryOption } from 'src/types/Country';
 import { type GeoJsonWorld } from 'src/types/GeoJsonWorld';
 import { getCountryCodeByName } from 'src/utils/getCountryCodeByName';
+import { type CountryOption } from 'src/utils/hooks/useCountryOptions';
 
 import styles from './ConnectionMapStories.module.scss';
 

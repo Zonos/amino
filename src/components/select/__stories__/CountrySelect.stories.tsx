@@ -7,7 +7,7 @@ import {
   type CountrySelectProps,
   CountrySelect,
 } from 'src/components/select/CountrySelect';
-import type { CountryOption } from 'src/types/Country';
+import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 type RandomCountryCode = 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AT';

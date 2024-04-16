@@ -1,10 +1,6 @@
 import { z } from 'zod';
 
-import {
-  type CountryOption,
-  type GetCountriesResponse,
-  regions,
-} from 'src/types/Country';
+import type { SelectOption } from 'src/types/SelectOption';
 import { fetcher } from 'src/utils/handleFetch';
 import { useSwrt } from 'src/utils/hooks/useSwrt';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
@@ -12,24 +8,61 @@ import { getShouldUpdateStorageItem } from 'src/utils/storage';
 
 import { useStorage } from './useStorage';
 
-const schema = z.array(
-  z.object({
-    active: z.boolean(),
-    code: z.string(),
-    code3: z.string().nullable(),
-    currencyCode: z.string(),
-    displayName: z.string(),
-    fraudRisk: z.number(),
-    label: z.string(),
-    languageCode: z.string().nullable(),
-    numericCode: z.string().nullable(),
-    phoneCode: z.array(z.string()),
-    region: z.enum(regions),
-    upsCode: z.string().nullable(),
-    value: z.string(),
-    zipRegex: z.string().nullable(),
-  }),
-);
+export const regions = [
+  'Africa',
+  'Americas',
+  'Asia',
+  'Central America',
+  'Europe',
+  'North America',
+  'Oceania',
+  'South America',
+] as const;
+
+type Region = (typeof regions)[number];
+
+const schemaCountry = z.object({
+  active: z.boolean(),
+  code: z.string(),
+  code3: z.string().nullable(),
+  currencyCode: z.string(),
+  displayName: z.string(),
+  fraudRisk: z.number(),
+  label: z.string(),
+  languageCode: z.string().nullable(),
+  numericCode: z.string().nullable(),
+  phoneCode: z.array(z.string()),
+  region: z.enum(regions),
+  upsCode: z.string().nullable(),
+  value: z.string(),
+  zipRegex: z.string().nullable(),
+});
+
+const schema = z.array(schemaCountry);
+
+/** @desc /api/address/getCountries */
+export type Country<CountryCode extends string = string> = z.infer<
+  typeof schemaCountry
+> & {
+  code: CountryCode;
+};
+
+export type CountryOption<CountryCode extends string = string> = {
+  phoneCode: string[];
+} & Country<CountryCode> &
+  SelectOption<CountryCode>;
+export type RegionCountryOption = {
+  label: Region;
+  options: CountryOption[];
+};
+export type UnavailableCountry = {
+  code: string;
+  message: string;
+};
+/** @desc /api/address/getCountries */
+export type GetCountriesResponse<CountryCode extends string = string> = {
+  [key: string]: Country<CountryCode>;
+};
 
 export const useCountryOptions = <TCountryCode extends string>(
   dashboardUrl: string,

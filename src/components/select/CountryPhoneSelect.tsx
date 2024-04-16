@@ -13,8 +13,8 @@ import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
+import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 
 import styles from './CountryPhoneSelect.module.scss';
 
