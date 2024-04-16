@@ -1,6 +1,7 @@
 import { useReducer, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import { Button } from 'src/components/button/Button';
 import { FilterAmount } from 'src/components/filter/filter-amount/FilterAmount';
@@ -91,7 +92,8 @@ export const Select = () => {
 };
 
 export const CountrySelect = () => {
-  const countries = useCountryOptions();
+  const { dashboardUrl } = getCountryUrls();
+  const countries = useCountryOptions(dashboardUrl);
   const [country, setCountry] = useState<CountryOption<string> | null>(null);
 
   return (

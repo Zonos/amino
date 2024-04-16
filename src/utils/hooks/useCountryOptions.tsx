@@ -1,4 +1,3 @@
-import { getCountryUrls } from 'story-utils/getCountryUrls';
 import { z } from 'zod';
 
 import {
@@ -33,7 +32,7 @@ const schema = z.array(
 );
 
 export const useCountryOptions = <TCountryCode extends string>(
-  dashboardUrl?: string,
+  dashboardUrl: string,
 ) => {
   const { setValue: setCountryOptionsStorage, value: storedCountryOptions } =
     useStorage({
@@ -49,9 +48,8 @@ export const useCountryOptions = <TCountryCode extends string>(
     type: 'local',
   });
 
-  const url = dashboardUrl || getCountryUrls().dashboardUrl;
   const { data } = useSwrt<CountryOption<TCountryCode>[]>(
-    `${url}/api/address/getCountries`,
+    `${dashboardUrl}/api/address/getCountries`,
     {
       fetcher: async (args: TCountryCode) => {
         if (shouldUpdate || !storedCountryOptions) {

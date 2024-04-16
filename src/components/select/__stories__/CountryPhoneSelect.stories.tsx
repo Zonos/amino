@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import {
   type CountryPhoneSelectProps,
@@ -38,7 +39,8 @@ const CountryPhoneSelectTemplate: StoryFn<
     _phoneCountry,
   );
   const [phone, setPhone] = useState(_phone);
-  const countryOptions = useCountryOptions();
+  const { dashboardUrl } = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
   return (
     <CountryPhoneSelect
       {...props}

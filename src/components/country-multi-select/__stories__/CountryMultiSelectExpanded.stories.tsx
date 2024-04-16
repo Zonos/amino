@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import { Badge } from 'src/components/badge/Badge';
 import {
@@ -24,7 +25,8 @@ const renderBadge = (label: string) => {
 };
 
 const Template = (props: CountryMultiSelectExpandedProps) => {
-  const countryOptions = useCountryOptions();
+  const { dashboardUrl } = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
@@ -66,7 +68,8 @@ export default CountryMultiSelectMeta;
 export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
 
 export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
-  const countryOptions = useCountryOptions();
+  const { dashboardUrl } = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
   const [toggle, setToggle] = useState<string>('1');

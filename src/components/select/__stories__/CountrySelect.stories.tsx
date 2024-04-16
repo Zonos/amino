@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import {
   type CountrySelectProps,
@@ -30,7 +31,8 @@ export default CountrySelectMeta;
 
 const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
   const [value, setValue] = useState<string | null>(null);
-  const countryOptions = useCountryOptions();
+  const { dashboardUrl } = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
   const [typedValue, setTypedValue] = useState<RandomCountryCode | null>(null);
   const stronglyTypedCountries =
     countryOptions as CountryOption<RandomCountryCode>[];
