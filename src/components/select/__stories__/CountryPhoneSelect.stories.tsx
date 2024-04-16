@@ -38,7 +38,7 @@ const CountryPhoneSelectTemplate: StoryFn<
     _phoneCountry,
   );
   const [phone, setPhone] = useState(_phone);
-  const countryOptions = useCountryOptions({});
+  const countryOptions = useCountryOptions();
   return (
     <CountryPhoneSelect
       {...props}

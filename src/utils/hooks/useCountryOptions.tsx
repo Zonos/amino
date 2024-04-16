@@ -8,22 +8,9 @@ import {
 import { fetcher } from 'src/utils/handleFetch';
 import { useSwrt } from 'src/utils/hooks/useSwrt';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
-import {
-  getShouldUpdateStorageItem,
-  getStorageItem,
-  setStorageItem,
-} from 'src/utils/storage';
+import { getShouldUpdateStorageItem } from 'src/utils/storage';
 
-type CountryCode = string;
-
-export const getCountryUrls = () => {
-  const dashboardUrl = import.meta.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
-  if (!dashboardUrl) {
-    // eslint-disable-next-line no-console
-    console.error('Missing environment variable STORYBOOK_ZONOS_DASHBOARD_URL');
-  }
-  return { dashboardUrl };
-};
+import { useStorage } from './useStorage';
 
 const schema = z.array(
   z.object({
@@ -44,44 +31,54 @@ const schema = z.array(
   }),
 );
 
-export const useCountryOptions = ({
-  dashboardUrl = getCountryUrls().dashboardUrl,
-}: {
-  dashboardUrl?: string | null;
-}) => {
-  const storedData = getStorageItem({
-    key: '__zn_country_options',
-    schema,
-    type: 'local',
-  });
+export const getCountryUrls = () => {
+  const dashboardUrl = import.meta.env.STORYBOOK_ZONOS_DASHBOARD_URL || null;
+  if (!dashboardUrl) {
+    // eslint-disable-next-line no-console
+    console.error('Missing environment variable STORYBOOK_ZONOS_DASHBOARD_URL');
+  }
+  return { dashboardUrl };
+};
+
+export const useCountryOptions = <TCountryCode extends string>(
+  dashboardUrl?: string,
+) => {
+  const { setValue: setCountryOptionsStorage, value: storedCountryOptions } =
+    useStorage({
+      defaultValue: [],
+      key: '__zn_country_options',
+      schema,
+      type: 'local',
+    });
+
   const shouldUpdate = getShouldUpdateStorageItem({
     key: '__zn_country_options',
     schema: z.string(),
     type: 'local',
   });
 
-  const { data } = useSwrt<CountryOption<CountryCode>[]>(
-    `${dashboardUrl}/api/address/getCountries`,
-    async (args: string) => {
-      if (shouldUpdate || !storedData) {
-        const { json, response } = await fetcher<
-          GetCountriesResponse<CountryCode>
-        >(args, {
-          headers: {
-            'cache-control': 'no-cache',
-          },
-        });
-        const options = json ? prepCountryOptions<CountryCode>({ json }) : [];
-        setStorageItem({
-          key: '__zn_country_options',
-          type: 'local',
-          value: JSON.stringify(options),
-        });
-        return { json: options, response };
-      }
+  const url = dashboardUrl || getCountryUrls().dashboardUrl;
+  const { data } = useSwrt<CountryOption<TCountryCode>[]>(
+    `${url}/api/address/getCountries`,
+    {
+      fetcher: async (args: TCountryCode) => {
+        if (shouldUpdate || !storedCountryOptions) {
+          const { json, response } = await fetcher<
+            GetCountriesResponse<TCountryCode>
+          >(args, {
+            headers: {
+              'cache-control': 'no-cache',
+            },
+          });
+          const options = json
+            ? prepCountryOptions<TCountryCode>({ json })
+            : [];
+          setCountryOptionsStorage(options);
+          return { json: options, response };
+        }
 
-      const countryArray: CountryOption<CountryCode>[] = storedData || [];
-      return { json: countryArray, response: null };
+        return { json: storedCountryOptions, response: null };
+      },
     },
   );
   return data?.json || [];

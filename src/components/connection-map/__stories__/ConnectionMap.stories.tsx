@@ -46,7 +46,7 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
   });
   const [from, setFrom] = useState(_from);
   const [to, setTo] = useState(_to);
-  const countryOptions = useCountryOptions({});
+  const countryOptions = useCountryOptions();
   return (
     <VStack>
       <ConnectionMap

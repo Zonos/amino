@@ -91,7 +91,7 @@ export const Select = () => {
 };
 
 export const CountrySelect = () => {
-  const countries = useCountryOptions({});
+  const countries = useCountryOptions();
   const [country, setCountry] = useState<CountryOption<string> | null>(null);
 
   return (

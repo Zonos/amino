@@ -24,7 +24,7 @@ const renderBadge = (label: string) => {
 };
 
 const Template = (props: CountryMultiSelectExpandedProps) => {
-  const countryOptions = useCountryOptions({});
+  const countryOptions = useCountryOptions();
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
@@ -66,7 +66,7 @@ export default CountryMultiSelectMeta;
 export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
 
 export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
-  const countryOptions = useCountryOptions({});
+  const countryOptions = useCountryOptions();
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
   const [toggle, setToggle] = useState<string>('1');

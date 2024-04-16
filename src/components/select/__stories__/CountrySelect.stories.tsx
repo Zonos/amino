@@ -30,7 +30,7 @@ export default CountrySelectMeta;
 
 const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
   const [value, setValue] = useState<string | null>(null);
-  const countryOptions = useCountryOptions({});
+  const countryOptions = useCountryOptions();
   const [typedValue, setTypedValue] = useState<RandomCountryCode | null>(null);
   const stronglyTypedCountries =
     countryOptions as CountryOption<RandomCountryCode>[];
