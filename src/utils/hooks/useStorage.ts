@@ -5,6 +5,7 @@ import type { Dayjs } from 'dayjs';
 import {
   type StorageParams,
   type StorageType,
+  getShouldUpdateStorageItem,
   getStorageItem,
   setStorageItem,
   setStorageItemWithLifetime,
@@ -104,7 +105,15 @@ export const useStorageWithLifetime = <
     () => JSON.stringify(defaultValue),
   );
 
-  const currentValue = getStorageItem<TValue>({ key, schema, type }) || null;
+  const shouldUpdate = getShouldUpdateStorageItem({
+    key,
+    schema,
+    type,
+  });
+
+  const currentValue = shouldUpdate
+    ? null
+    : getStorageItem<TValue>({ key, schema, type }) || null;
 
   const setValue = useCallback(
     (value: TValue) =>

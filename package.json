@@ -103,7 +103,7 @@
     "@storybook/react": "^8.0.4",
     "@storybook/react-vite": "^8.0.4",
     "@storybook/theming": "^8.0.4",
-    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/react": "^15.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
     "@types/d3-geo": "^3.0.3",
     "@types/geojson": "^7946.0.10",

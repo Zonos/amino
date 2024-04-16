@@ -2,18 +2,18 @@ import { z } from 'zod';
 
 import { getStorageItem } from 'src/utils/storage';
 
+const schema = z.object({
+  age: z.number(),
+  name: z.string(),
+});
+
+type Person = z.infer<typeof schema>;
+
 describe('storage tests', () => {
   beforeEach(() => {
     localStorage.clear();
     sessionStorage.clear();
   });
-
-  const schema = z.object({
-    age: z.number(),
-    name: z.string(),
-  });
-
-  type Person = z.infer<typeof schema>;
 
   test(`Value doesn't exist`, () => {
     const result = getStorageItem({

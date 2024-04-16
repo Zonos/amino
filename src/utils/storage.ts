@@ -1,5 +1,5 @@
 import dayjs, { type Dayjs } from 'dayjs';
-import type { Schema } from 'zod';
+import { type Schema, z } from 'zod';
 
 export type StorageType = 'session' | 'local';
 
@@ -52,7 +52,7 @@ export const getStorageItem = <Value extends unknown>({
   }
 };
 
-export const setStorageItem = async <Value extends unknown>({
+export const setStorageItem = <Value extends unknown>({
   key,
   type,
   value,
@@ -72,12 +72,16 @@ export const setStorageItem = async <Value extends unknown>({
   window.dispatchEvent(new Event(`amino:storage-${type}`));
 };
 
-export const setStorageItemWithLifetime = async <Value extends unknown>({
+export const setStorageItemWithLifetime = <Value extends unknown>({
   key,
   lifetime,
   type,
   value,
 }: SetParams<Value> & { lifetime: Dayjs }) => {
+  if (!isClientSide) {
+    throw new Error('Cannot set storage outside client');
+  }
+
   const storage =
     type === 'session' ? window.sessionStorage : window.localStorage;
 
@@ -85,15 +89,13 @@ export const setStorageItemWithLifetime = async <Value extends unknown>({
 
   const valueIsTruthy = !!value;
 
-  if (isClientSide) {
-    if (valueIsTruthy) {
-      storage.setItem(key, valueToSet);
-      storage.setItem(`${key}_update_after`, lifetime.format('YYYY-MM-DD'));
-    } else {
-      // Remove the item
-      storage.removeItem(key);
-      storage.removeItem(`${key}_update_after`);
-    }
+  if (valueIsTruthy) {
+    storage.setItem(key, valueToSet);
+    storage.setItem(`${key}_update_after`, lifetime.format('YYYY-MM-DD'));
+  } else {
+    // Remove the item
+    storage.removeItem(key);
+    storage.removeItem(`${key}_update_after`);
   }
 
   // Dispatch our internal event
@@ -102,12 +104,11 @@ export const setStorageItemWithLifetime = async <Value extends unknown>({
 
 export const getShouldUpdateStorageItem = <Value extends unknown>({
   key,
-  schema,
   type,
 }: StorageParams<Value>) => {
   const storedUpdateAfter = getStorageItem({
     key: `${key}_update_after`,
-    schema,
+    schema: z.string(),
     type,
   });
 

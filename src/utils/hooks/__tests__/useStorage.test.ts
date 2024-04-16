@@ -1,7 +1,8 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
+import dayjs from 'dayjs';
 import { z } from 'zod';
 
-import { useStorage } from 'src/utils/hooks/useStorage';
+import { useStorage, useStorageWithLifetime } from 'src/utils/hooks/useStorage';
 
 describe('useStorage', () => {
   afterEach(() => {
@@ -150,5 +151,63 @@ describe('useStorage', () => {
     });
 
     expect(getCurrentValue()).toBe(false);
+  });
+});
+
+describe.only('storage tests with lifetime', () => {
+  test('idk', async () => {
+    const person = z.object({
+      age: z.number(),
+      name: z.string(),
+    });
+
+    const { rerender, result } = renderHook(() =>
+      useStorageWithLifetime({
+        defaultValue: null,
+        key: 'people-array',
+        lifetime: dayjs().add(4, 'days'),
+        schema: person,
+        type: 'session',
+      }),
+    );
+
+    const getCurrentValue = () => result.current.value;
+
+    // Assert initial state
+    const { setValue, value: initialValue } = result.current;
+
+    expect(initialValue).toBeNull();
+
+    await act(() => {
+      setValue({
+        age: 12,
+        name: 'John',
+      });
+    });
+
+    // Assert the updated state
+    expect(getCurrentValue()).toStrictEqual({
+      age: 12,
+      name: 'John',
+    });
+
+    // Valid time
+    vi.setSystemTime(dayjs().add(2, 'days').format());
+
+    rerender();
+
+    // Should still be valid
+    expect(getCurrentValue()).toStrictEqual({
+      age: 12,
+      name: 'John',
+    });
+
+    // Fake time
+    vi.setSystemTime(dayjs().add(1, 'weeks').format());
+
+    rerender();
+
+    // Should have expired and be null
+    expect(getCurrentValue()).toBeNull();
   });
 });
