@@ -1,4 +1,4 @@
-import { type DistributiveOmit } from '@emotion/react';
+import type { DistributiveOmit } from '@emotion/react';
 
 import type { DeepRecursiveDepth } from 'src/types/deep/deep';
 import type { DeepReducerWithArrayActions } from 'src/types/deep/DeepReducerActions';

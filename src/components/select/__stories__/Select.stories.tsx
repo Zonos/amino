@@ -10,7 +10,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import { type SelectOption } from 'src/types/SelectOption';
+import type { SelectOption } from 'src/types/SelectOption';
 
 import styles from './Select.stories.module.scss';
 

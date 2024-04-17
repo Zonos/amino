@@ -1,4 +1,4 @@
-import { type ConstantCustomizedComment } from 'build-utils/css/constants/logic/types/LogicConstantType';
+import type { ConstantCustomizedComment } from 'build-utils/css/constants/logic/types/LogicConstantType';
 import { capitalize } from 'build-utils/css/utils/capitalize';
 import { formatTS } from 'build-utils/css/utils/formatTS';
 import { readFileSync, writeFileSync } from 'fs';
