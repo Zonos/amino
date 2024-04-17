@@ -18,8 +18,8 @@ import clsx from 'clsx';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';

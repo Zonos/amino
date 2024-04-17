@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Card as CardComponent } from 'src/components/card/Card';
-import { type SkeletonProps, Skeleton } from 'src/components/skeleton/Skeleton';
+import { Skeleton, type SkeletonProps } from 'src/components/skeleton/Skeleton';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import type { GridSpacing } from 'src/types/GridSpacing';

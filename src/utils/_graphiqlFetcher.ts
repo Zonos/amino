@@ -1,9 +1,9 @@
 import type { DocumentNode, ExecutionResult } from 'graphql';
 
 import {
+  handleFetch,
   type HandleFetchReturn,
   type RequestOptions,
-  handleFetch,
 } from 'src/utils/handleFetch';
 
 type FetcherParams = {

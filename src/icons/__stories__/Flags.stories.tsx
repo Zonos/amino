@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { SearchInput } from 'src/components/input/SearchInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { type FlagIconProps, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import * as flags from 'src/icons/flags/_FlagIndex';
 import type { IconProps } from 'src/types/IconProps';
 

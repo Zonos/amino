@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import { type IntrospectionQuery, buildClientSchema } from 'graphql';
+import { buildClientSchema, type IntrospectionQuery } from 'graphql';
 
 import { GraphMatrix as GraphMatrixComponent } from 'src/components/graph-matrix/GraphMatrix';
 import { HStack } from 'src/components/stack/HStack';

@@ -5,7 +5,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
-import { type DialogProps, Dialog } from 'src/components/dialog/Dialog';
+import { Dialog, type DialogProps } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 
 import styles from './Dialog.stories.module.scss';

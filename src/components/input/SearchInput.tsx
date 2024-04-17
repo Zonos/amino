@@ -1,8 +1,8 @@
 import {
   type ChangeEventHandler,
   type ComponentPropsWithRef,
-  type KeyboardEventHandler,
   forwardRef,
+  type KeyboardEventHandler,
   useId,
 } from 'react';
 

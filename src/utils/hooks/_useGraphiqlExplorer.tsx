@@ -1,6 +1,6 @@
 import {
-  type GraphiQLExplorerPluginProps,
   explorerPlugin,
+  type GraphiQLExplorerPluginProps,
 } from '@graphiql/plugin-explorer';
 
 import { theme } from 'src/styles/constants/theme';

@@ -10,8 +10,8 @@ import type { Column } from 'react-data-grid';
 import { Button } from 'src/components/button/Button';
 import { Filter } from 'src/components/nested-data-table/_Filter';
 import {
-  type RowWithIndex,
   PivotTable,
+  type RowWithIndex,
 } from 'src/components/pivot-table/PivotTable';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { ChevronRightCircleIcon } from 'src/icons/ChevronRightCircleIcon';

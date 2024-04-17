@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { type ToggleProps, Toggle } from 'src/components/toggle/Toggle';
+import { Toggle, type ToggleProps } from 'src/components/toggle/Toggle';
 
 const Template = (props: ToggleProps) => {
   const [value, setValue] = useState<string>('1');

@@ -1,4 +1,4 @@
-import { type GravatarOptions, getGravatarUrl } from 'react-awesome-gravatar';
+import { getGravatarUrl, type GravatarOptions } from 'react-awesome-gravatar';
 
 import type { ImageSize } from 'src/components/avatar/AvatarBase';
 import { UserAvatar } from 'src/components/avatar/UserAvatar';

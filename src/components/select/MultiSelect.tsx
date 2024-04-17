@@ -13,7 +13,7 @@ import type {
 } from 'react-select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
-import { type HelpTextProps } from 'src/components/help-text/HelpText';
+import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';

@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type TextAvatarProps,
   TextAvatar as TextAvatarComponent,
+  type TextAvatarProps,
 } from 'src/components/text-avatar/TextAvatar';
 
 import styles from './TextAvatar.stories.module.scss';

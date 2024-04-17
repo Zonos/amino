@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { CheckoutColorIcon } from 'src/icons/custom/products/CheckoutColorIcon';
 import { ClassifyColorIcon } from 'src/icons/custom/products/ClassifyColorIcon';

@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import type { PopperProps } from '@mui/material';
 import { styled as muiStyled } from '@mui/material/styles';
 import MuiTooltip, {
-  type TooltipProps as MuiTooltipProps,
   tooltipClasses,
+  type TooltipProps as MuiTooltipProps,
 } from '@mui/material/Tooltip';
 import clsx from 'clsx';
 

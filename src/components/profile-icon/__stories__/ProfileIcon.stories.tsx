@@ -4,8 +4,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Input } from 'src/components/input/Input';
 import {
-  type Props,
   ProfileIcon as ProfileIconComponent,
+  type Props,
 } from 'src/components/profile-icon/ProfileIcon';
 import { Text } from 'src/components/text/Text';
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { type RadioProps, Radio } from 'src/components/radio/Radio';
+import { Radio, type RadioProps } from 'src/components/radio/Radio';
 
 const RadioMeta: Meta = {
   component: Radio,

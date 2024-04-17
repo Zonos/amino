@@ -8,8 +8,8 @@ import {
   defaultDateFormat,
 } from 'src/components/filter/filter-date/DateControlsWrapper';
 import {
-  type FilterDateLastRangeUnit,
   dateUnits,
+  type FilterDateLastRangeUnit,
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';

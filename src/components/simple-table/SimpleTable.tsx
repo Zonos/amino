@@ -1,4 +1,4 @@
-import { type ReactNode, Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 
 import clsx from 'clsx';
 

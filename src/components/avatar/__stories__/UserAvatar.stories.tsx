@@ -2,8 +2,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { BaseWrapper } from 'src/components/avatar/__stories__/BaseWrapper';
 import {
-  type UserAvatarProps,
   UserAvatar as Avatar,
+  type UserAvatarProps,
 } from 'src/components/avatar/UserAvatar';
 
 const UserAvatarMeta: Meta = {

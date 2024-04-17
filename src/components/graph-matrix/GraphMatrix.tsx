@@ -7,7 +7,7 @@ import {
 } from '@graphiql/react';
 import type { CodeMirrorEditor } from '@graphiql/react/types/editor/types';
 import { GraphiQL } from 'graphiql';
-import { type GraphQLSchema } from 'graphql';
+import type { GraphQLSchema } from 'graphql';
 
 import { GraphiqlContextWrapper } from 'src/components/graph-matrix/_GraphiqlContextWrapper';
 import { Loading } from 'src/components/graph-matrix/_LoadingIcon';

@@ -10,8 +10,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import {
-  type MenuButtonProps,
   MenuButton,
+  type MenuButtonProps,
 } from 'src/components/button/MenuButton';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';

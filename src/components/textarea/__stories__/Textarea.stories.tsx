@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
-import { type TextareaProps, Textarea } from 'src/components/textarea/Textarea';
+import { Textarea, type TextareaProps } from 'src/components/textarea/Textarea';
 
 import styles from './Textarea.stories.module.scss';
 

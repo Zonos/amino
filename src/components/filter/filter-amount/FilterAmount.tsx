@@ -2,8 +2,8 @@ import { type Dispatch, type KeyboardEvent, useState } from 'react';
 
 import {
   type FilterAmountAction,
-  type FilterAmountState,
   filterAmountOptions,
+  type FilterAmountState,
   initialFilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
 import {

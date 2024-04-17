@@ -3,7 +3,7 @@ import type { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 
 import { SearchInput } from 'src/components/input/SearchInput';
-import { type NavigationGroupProps } from 'src/components/layout/NavigationGroup';
+import type { NavigationGroupProps } from 'src/components/layout/NavigationGroup';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 

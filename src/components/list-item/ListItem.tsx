@@ -1,4 +1,4 @@
-import { type MouseEventHandler, type ReactNode, forwardRef } from 'react';
+import { forwardRef, type MouseEventHandler, type ReactNode } from 'react';
 
 import clsx from 'clsx';
 

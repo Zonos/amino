@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
+import { Checkbox, type CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
 
 import styles from './Checkbox.stories.module.scss';

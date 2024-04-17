@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-  type ExtendedRefs,
-  type Placement,
-  type UseFloatingOptions,
   autoUpdate,
+  type ExtendedRefs,
   offset,
+  type Placement,
   shift,
   useFloating,
+  type UseFloatingOptions,
 } from '@floating-ui/react';
 
 export type UseDropdownParams = {

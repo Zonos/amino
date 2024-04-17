@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { type ButtonProps, Button } from 'src/components/button/Button';
+import { Button, type ButtonProps } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
+import { Tooltip, type TooltipProps } from 'src/components/tooltip/Tooltip';
 import type { Theme } from 'src/types';
 import { truncateText } from 'src/utils/truncateText';
 

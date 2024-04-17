@@ -4,8 +4,8 @@ import { useMergeRefs } from '@floating-ui/react';
 import clsx from 'clsx';
 
 import {
-  type FloatLabelInputProps,
   FloatLabelInput,
+  type FloatLabelInputProps,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CalendarIcon } from 'src/icons/CalendarIcon';
 

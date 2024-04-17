@@ -1,11 +1,11 @@
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import clsx from 'clsx';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import {
-  type UseDropdownParams,
   useDropdown,
+  type UseDropdownParams,
 } from 'src/utils/hooks/useDropdown';
 
 import styles from './MenuButton.module.scss';

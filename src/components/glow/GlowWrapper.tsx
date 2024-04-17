@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
 import { getAminoColor } from 'src/utils/getAminoColor';
-import { type Product, getProductDetails } from 'src/utils/getProductDetails';
+import { getProductDetails, type Product } from 'src/utils/getProductDetails';
 
 import styles from './GlowWrapper.module.scss';
 

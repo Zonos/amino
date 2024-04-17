@@ -1,10 +1,10 @@
-import { type ReactNode, createContext, useCallback, useState } from 'react';
+import { createContext, type ReactNode, useCallback, useState } from 'react';
 
 import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { type ToastProps, Toast } from 'src/components/toast/Toast';
+import { Toast, type ToastProps } from 'src/components/toast/Toast';
 
 import styles from './ToastContext.module.scss';
 

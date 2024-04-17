@@ -13,7 +13,7 @@ import {
   RippleGroup,
 } from 'src/components/button/RippleGroup';
 import { useRipple } from 'src/components/button/useRipple';
-import { type SpinnerProps, Spinner } from 'src/components/spinner/Spinner';
+import { Spinner, type SpinnerProps } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 import type { Color } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';

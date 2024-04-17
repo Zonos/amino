@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Currency } from 'src/components/currency/Currency';
-import { type TableProps, Table } from 'src/components/table/Table';
+import { Table, type TableProps } from 'src/components/table/Table';
 import { TableBody } from 'src/components/table/TableBody';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableHead } from 'src/components/table/TableHead';
