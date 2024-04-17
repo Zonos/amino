@@ -5,8 +5,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import {
-  SlideOver,
   type SlideOverProps,
+  SlideOver,
 } from 'src/components/slide-over/SlideOver';
 
 import styles from './SlideOver.stories.module.scss';

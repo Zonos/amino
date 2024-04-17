@@ -6,8 +6,8 @@ import {
   type ExecutionResultType,
   type GraphiqlExecutionResult,
   type GraphiqlFetcher,
-  graphiqlFetcher,
   type HandleFetchFetcher,
+  graphiqlFetcher,
 } from 'src/utils/_graphiqlFetcher';
 import { useSwr } from 'src/utils/hooks/useSwr';
 

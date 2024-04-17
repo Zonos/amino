@@ -3,8 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  CollapsibleList,
   type CollapsibleListProps,
+  CollapsibleList,
 } from 'src/components/list/CollapsibleList';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';

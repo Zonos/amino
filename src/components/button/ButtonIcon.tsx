@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { Button, type ButtonProps } from 'src/components/button/Button';
+import { type ButtonProps, Button } from 'src/components/button/Button';
 
 import styles from './ButtonIcon.module.scss';
 

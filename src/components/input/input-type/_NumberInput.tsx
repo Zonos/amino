@@ -4,8 +4,8 @@ import { useMergeRefs } from '@floating-ui/react';
 import clsx from 'clsx';
 
 import {
-  FloatLabelInput,
   type FloatLabelInputProps,
+  FloatLabelInput,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';

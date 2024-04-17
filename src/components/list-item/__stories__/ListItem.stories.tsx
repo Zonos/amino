@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { List } from 'src/components/list/List';
-import { ListItem, type Props } from 'src/components/list-item/ListItem';
+import { type Props, ListItem } from 'src/components/list-item/ListItem';
 import { ArrowDownIcon } from 'src/icons/ArrowDownIcon';
 
 const ListItemMeta: Meta = {

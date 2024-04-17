@@ -1,4 +1,4 @@
-import { Select, type SelectProps } from 'src/components/select/Select';
+import { type SelectProps, Select } from 'src/components/select/Select';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { CountryOption } from 'src/utils/hooks/useCountryOptions';

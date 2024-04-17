@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  Thumbnail as ThumbnailComponent,
   type ThumbnailProps,
+  Thumbnail as ThumbnailComponent,
 } from 'src/components/thumbnail/Thumbnail';
 import * as icons from 'src/icons/_IconIndex';
 

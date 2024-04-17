@@ -9,8 +9,8 @@ import { IsInTheLast } from 'src/components/filter/filter-date/_DateControls/_Is
 import { IsOnOrAfter } from 'src/components/filter/filter-date/_DateControls/_IsOnOrAfter';
 import {
   type FilterDateData,
-  filterDateRanges,
   type FilterDateRangeType,
+  filterDateRanges,
   initialFilterDateState,
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Select } from 'src/components/select/Select';

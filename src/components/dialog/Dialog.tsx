@@ -1,11 +1,11 @@
-import { forwardRef, type ReactNode } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 
 import clsx from 'clsx';
 
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
-  BaseDialog,
   type BaseDialogProps,
+  BaseDialog,
 } from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';

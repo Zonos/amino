@@ -1,4 +1,4 @@
-import { forwardRef, type ReactNode } from 'react';
+import { type ReactNode, forwardRef } from 'react';
 
 type FlagIconBaseProps = {
   children: ReactNode;

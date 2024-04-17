@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Ripple, type RippleProps } from 'src/components/button/_Ripple';
+import { type RippleProps, Ripple } from 'src/components/button/_Ripple';
 import type { Color } from 'src/types';
 import { getAminoColor } from 'src/utils/getAminoColor';
 

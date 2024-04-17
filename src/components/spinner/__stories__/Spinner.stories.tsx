@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  Spinner as SpinnerComponent,
   type SpinnerProps,
+  Spinner as SpinnerComponent,
 } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 

@@ -10,9 +10,9 @@ import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
-  SimpleTable,
   type SimpleTableHeader,
   type SimpleTableProps,
+  SimpleTable,
 } from 'src/components/simple-table/SimpleTable';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';

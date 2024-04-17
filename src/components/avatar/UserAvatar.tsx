@@ -1,6 +1,6 @@
 import {
-  AvatarBase,
   type FullAvatarProps,
+  AvatarBase,
 } from 'src/components/avatar/AvatarBase';
 
 // eslint-disable-next-line no-relative-import-paths/no-relative-import-paths

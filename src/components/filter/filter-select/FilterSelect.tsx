@@ -5,7 +5,7 @@ import {
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
-import { Select, type SelectProps } from 'src/components/select/Select';
+import { type SelectProps, Select } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
 import { truncateText } from 'src/utils/truncateText';
 

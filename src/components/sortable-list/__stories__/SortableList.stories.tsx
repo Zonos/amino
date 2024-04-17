@@ -6,8 +6,8 @@ import { UserAvatar } from 'src/components/avatar/UserAvatar';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { SortableList } from 'src/components/sortable-list/SortableList';
 import {
-  arrayMove,
   type DragEndEvent,
+  arrayMove,
 } from 'src/components/sortable-list/SortableListDeps';
 import { SortableListItem } from 'src/components/sortable-list/SortableListItem';
 

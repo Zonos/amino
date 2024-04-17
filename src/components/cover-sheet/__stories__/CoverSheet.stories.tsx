@@ -5,8 +5,8 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
 import {
-  CoverSheet,
   type CoverSheetProps,
+  CoverSheet,
 } from 'src/components/cover-sheet/CoverSheet';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import { Menu } from 'src/components/menu/Menu';

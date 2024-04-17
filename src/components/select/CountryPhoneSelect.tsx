@@ -1,11 +1,11 @@
 import { type ReactNode, useCallback, useEffect, useState } from 'react';
 import {
-  components as RScomponents,
   type GroupBase,
   type MenuListProps,
   type Props,
   type SelectComponentsConfig,
   type StylesConfig,
+  components as RScomponents,
 } from 'react-select';
 
 import type { HelpTextProps } from 'src/components/help-text/HelpText';

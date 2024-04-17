@@ -3,7 +3,7 @@ import { type ReactNode, useState } from 'react';
 import clsx from 'clsx';
 
 import { Collapse } from 'src/components/collapse/Collapse';
-import { List, type ListProps } from 'src/components/list/List';
+import { type ListProps, List } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 

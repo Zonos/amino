@@ -1,6 +1,6 @@
 import {
-  AvatarBase,
   type FullAvatarProps,
+  AvatarBase,
 } from 'src/components/avatar/AvatarBase';
 
 export type ImageAvatarProps = {

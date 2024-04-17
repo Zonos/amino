@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import {
-  useDropdown,
   type UseDropdownParams,
+  useDropdown,
 } from 'src/utils/hooks/useDropdown';
 
 import styles from './MenuButton.module.scss';

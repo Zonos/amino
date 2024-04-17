@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 
 import { Button } from 'src/components/button/Button';
 import {
-  BaseDialog,
   type BaseDialogProps,
+  BaseDialog,
 } from 'src/components/dialog/BaseDialog';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';

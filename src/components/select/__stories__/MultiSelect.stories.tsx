@@ -3,8 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  MultiSelect,
   type MultiSelectProps,
+  MultiSelect,
 } from 'src/components/select/MultiSelect';
 import { PlayCircleIcon } from 'src/icons/PlayCircleIcon';
 

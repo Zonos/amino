@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Button, type ButtonProps } from 'src/components/button/Button';
+import { type ButtonProps, Button } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { CubeIcon } from 'src/icons/CubeIcon';

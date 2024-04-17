@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
-import { Collapse, type CollapseProps } from 'src/components/collapse/Collapse';
+import { type CollapseProps, Collapse } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { Text } from 'src/components/text/Text';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';

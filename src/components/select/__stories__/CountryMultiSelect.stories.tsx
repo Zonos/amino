@@ -4,8 +4,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import {
-  CountryMultiSelect,
   type CountryMultiSelectProps,
+  CountryMultiSelect,
 } from 'src/components/select/CountryMultiSelect';
 import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';

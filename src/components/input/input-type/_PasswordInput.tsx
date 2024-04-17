@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import {
-  FloatLabelInput,
   type FloatLabelInputProps,
+  FloatLabelInput,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';

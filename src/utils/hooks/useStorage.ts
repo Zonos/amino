@@ -3,12 +3,12 @@ import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import type { Dayjs } from 'dayjs';
 
 import {
+  type StorageParams,
+  type StorageType,
   getShouldUpdateStorageItem,
   getStorageItem,
   setStorageItem,
   setStorageItemWithLifetime,
-  type StorageParams,
-  type StorageType,
 } from 'src/utils/storage';
 
 type AminoLocalStorageKey = 'current-schema';

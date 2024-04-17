@@ -4,8 +4,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import {
-  CountryPhoneSelect,
   type CountryPhoneSelectProps,
+  CountryPhoneSelect,
 } from 'src/components/select/CountryPhoneSelect';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { CountryOption } from 'src/utils/hooks/useCountryOptions';

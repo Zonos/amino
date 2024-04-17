@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { GraphiQL, type GraphiQLProps } from 'graphiql';
+import { type GraphiQLProps, GraphiQL } from 'graphiql';
 
 export const Graphiql = (props: GraphiQLProps) => (
   <Suspense fallback={null}>
