@@ -154,8 +154,8 @@ describe('useStorage', () => {
   });
 });
 
-describe.only('storage tests with lifetime', () => {
-  test('idk', async () => {
+describe('storage tests with lifetime', () => {
+  test('expired lifetime', async () => {
     const person = z.object({
       age: z.number(),
       name: z.string(),
