@@ -15,9 +15,40 @@ module.exports = {
     'plugin:vitest/recommended',
     'plugin:css-modules/recommended',
   ],
+  plugins: [
+    'vitest',
+    '@typescript-eslint',
+    'simple-import-sort',
+    'prettier',
+    'deprecation',
+    'sort-keys',
+    'typescript-custom-sort-keys',
+    'sort-destructure-keys',
+    'no-relative-import-paths',
+    'css-modules',
+  ],
+  // eslint-disable-next-line sort-keys/sort-keys-fix
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2020,
+    project: './tsconfig.json',
+    sourceType: 'module',
+  },
+  // eslint-disable-next-line sort-keys/sort-keys-fix
   globals: {
     JSX: 'readonly',
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: [__dirname],
+      },
+    },
+  },
+  // eslint-disable-next-line sort-keys/sort-keys-fix
   overrides: [
     {
       /**
@@ -67,27 +98,6 @@ module.exports = {
         'no-console': 'off',
       },
     },
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2020,
-    project: './tsconfig.json',
-    sourceType: 'module',
-  },
-  plugins: [
-    'vitest',
-    '@typescript-eslint',
-    'simple-import-sort',
-    'prettier',
-    'deprecation',
-    'sort-keys',
-    'typescript-custom-sort-keys',
-    'sort-destructure-keys',
-    'no-relative-import-paths',
-    'css-modules',
   ],
   rules: {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
@@ -233,12 +243,5 @@ module.exports = {
         showFunctionsAtEnd: true,
       },
     ],
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        paths: [__dirname],
-      },
-    },
   },
 };
