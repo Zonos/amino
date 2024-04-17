@@ -1,4 +1,4 @@
-import type { CountryOption } from 'src/types/Country';
+import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 
 export const getCountryCodeByName = (
   countryName: string,

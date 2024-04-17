@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import { ConnectionMap } from 'src/components/connection-map/ConnectionMap';
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { CountrySelect } from 'src/components/select/CountrySelect';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import type { GeoJsonWorld } from 'src/types/GeoJsonWorld';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 import { useSwr } from 'src/utils/hooks/useSwr';
 
 const GEO_URL = '/zonos-countries-geojson.json';
@@ -46,7 +47,8 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
   });
   const [from, setFrom] = useState(_from);
   const [to, setTo] = useState(_to);
-  const countryOptions = useCountryOptions({});
+  const { dashboardUrl } = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
   return (
     <VStack>
       <ConnectionMap

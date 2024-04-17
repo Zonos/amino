@@ -1,6 +1,7 @@
 import { useReducer, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import { Button } from 'src/components/button/Button';
 import { FilterAmount } from 'src/components/filter/filter-amount/FilterAmount';
@@ -16,11 +17,11 @@ import {
 import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/FilterMultiSelect';
 import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
 import { FilterText } from 'src/components/filter/filter-text/FilterText';
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-import type { CountryOption } from 'src/types/Country';
 import type { SelectOption } from 'src/types/SelectOption';
+import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 import styles from './Filter.stories.module.scss';
 
@@ -91,7 +92,8 @@ export const Select = () => {
 };
 
 export const CountrySelect = () => {
-  const countries = useCountryOptions({});
+  const { dashboardUrl } = getCountryUrls();
+  const countries = useCountryOptions(dashboardUrl);
   const [country, setCountry] = useState<CountryOption<string> | null>(null);
 
   return (

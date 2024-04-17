@@ -1,5 +1,5 @@
-import { mutate } from 'swr';
-import type { Schema } from 'zod';
+import dayjs, { type Dayjs } from 'dayjs';
+import { type Schema, z } from 'zod';
 
 export type StorageType = 'session' | 'local';
 
@@ -15,13 +15,14 @@ export type StorageParams<Value, Key extends string = string> = {
 type SetParams<Value> = Omit<StorageParams<Value>, 'schema'> & {
   value: Value;
 };
+const isClientSide = typeof window !== 'undefined';
 
 export const getStorageItem = <Value extends unknown>({
   key,
   schema,
   type,
 }: StorageParams<Value>): Value | null => {
-  if (typeof window === 'undefined') return null;
+  if (!isClientSide) return null;
 
   const storage =
     type === 'local' ? window.localStorage : window.sessionStorage;
@@ -51,11 +52,15 @@ export const getStorageItem = <Value extends unknown>({
   }
 };
 
-export const setStorageItem = async <Value extends unknown>({
+export const setStorageItem = <Value extends unknown>({
   key,
   type,
   value,
 }: SetParams<Value>) => {
+  if (!isClientSide) {
+    throw new Error('Cannot set storage outside client');
+  }
+
   const storage =
     type === 'session' ? window.sessionStorage : window.localStorage;
 
@@ -65,6 +70,52 @@ export const setStorageItem = async <Value extends unknown>({
 
   // Dispatch our internal event
   window.dispatchEvent(new Event(`amino:storage-${type}`));
+};
 
-  await mutate(key, value);
+export const setStorageItemWithLifetime = <Value extends unknown>({
+  key,
+  lifetime,
+  type,
+  value,
+}: SetParams<Value> & { lifetime: Dayjs }) => {
+  if (!isClientSide) {
+    throw new Error('Cannot set storage outside client');
+  }
+
+  const storage =
+    type === 'session' ? window.sessionStorage : window.localStorage;
+
+  const valueToSet = typeof value === 'string' ? value : JSON.stringify(value);
+
+  const valueIsTruthy = !!value;
+
+  if (valueIsTruthy) {
+    storage.setItem(key, valueToSet);
+    storage.setItem(`${key}_update_after`, lifetime.format('YYYY-MM-DD'));
+  } else {
+    // Remove the item
+    storage.removeItem(key);
+    storage.removeItem(`${key}_update_after`);
+  }
+
+  // Dispatch our internal event
+  window.dispatchEvent(new Event(`amino:storage-${type}`));
+};
+
+export const getShouldUpdateStorageItem = <Value extends unknown>({
+  key,
+  type,
+}: StorageParams<Value>) => {
+  const storedUpdateAfter = getStorageItem({
+    key: `${key}_update_after`,
+    schema: z.string(),
+    type,
+  });
+
+  if (typeof storedUpdateAfter === 'string') {
+    const updateAfterDate = dayjs(storedUpdateAfter);
+    return dayjs().isAfter(updateAfterDate);
+  }
+
+  return true;
 };

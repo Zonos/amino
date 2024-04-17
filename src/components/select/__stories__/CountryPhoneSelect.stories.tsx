@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import { getCountryUrls } from 'story-utils/getCountryUrls';
 
-import { useCountryOptions } from 'src/components/select/__stories__/useCountryOptions';
 import {
   type CountryPhoneSelectProps,
   CountryPhoneSelect,
 } from 'src/components/select/CountryPhoneSelect';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import type { CountryOption } from 'src/types/Country';
+import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
+import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 const CountryPhoneSelectMeta: Meta = {
   component: CountryPhoneSelect,
@@ -38,7 +39,8 @@ const CountryPhoneSelectTemplate: StoryFn<
     _phoneCountry,
   );
   const [phone, setPhone] = useState(_phone);
-  const countryOptions = useCountryOptions({});
+  const { dashboardUrl } = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
   return (
     <CountryPhoneSelect
       {...props}

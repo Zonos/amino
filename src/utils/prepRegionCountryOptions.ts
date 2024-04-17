@@ -1,4 +1,4 @@
-import { type CountryOption, regions } from 'src/types/Country';
+import { type CountryOption, regions } from 'src/utils/hooks/useCountryOptions';
 
 export const prepRegionCountryOptions = <T extends string = string>(
   countries: CountryOption<T>[],

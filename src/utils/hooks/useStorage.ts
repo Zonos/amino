@@ -1,10 +1,14 @@
 import { useCallback, useMemo, useSyncExternalStore } from 'react';
 
+import type { Dayjs } from 'dayjs';
+
 import {
   type StorageParams,
   type StorageType,
+  getShouldUpdateStorageItem,
   getStorageItem,
   setStorageItem,
+  setStorageItemWithLifetime,
 } from 'src/utils/storage';
 
 type AminoLocalStorageKey = 'current-schema';
@@ -45,6 +49,7 @@ export type UseStorageParams<
 > = StorageParams<TValue, TKey> & {
   defaultValue: TValue;
 };
+
 export const useStorage = <
   TValue extends unknown,
   TKey extends AminoStorageKey = AminoStorageKey,
@@ -71,6 +76,49 @@ export const useStorage = <
   const setValue = useCallback(
     (value: TValue) => setStorageItem({ key, type, value }),
     [key, type],
+  );
+
+  return { setValue, value: currentValue ?? defaultValue };
+};
+
+export const useStorageWithLifetime = <
+  TValue extends unknown,
+  TKey extends AminoStorageKey = AminoStorageKey,
+>({
+  defaultValue,
+  key,
+  lifetime,
+  schema,
+  type,
+}: UseStorageParams<TValue, TKey> & {
+  lifetime: Dayjs;
+}) => {
+  const subscribe = useMemo(() => getStorageSubscription(type), [type]);
+
+  // The snapshot function is only used to trigger re-renders, so we need simple string equality comparison
+  useSyncExternalStore(
+    subscribe,
+    () =>
+      type === 'local'
+        ? localStorage.getItem(key)
+        : sessionStorage.getItem(key),
+    () => JSON.stringify(defaultValue),
+  );
+
+  const shouldUpdate = getShouldUpdateStorageItem({
+    key,
+    schema,
+    type,
+  });
+
+  const currentValue = shouldUpdate
+    ? null
+    : getStorageItem<TValue>({ key, schema, type }) || null;
+
+  const setValue = useCallback(
+    (value: TValue) =>
+      setStorageItemWithLifetime({ key, lifetime, type, value }),
+    [key, type, lifetime],
   );
 
   return { setValue, value: currentValue ?? defaultValue };
