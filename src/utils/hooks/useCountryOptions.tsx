@@ -5,7 +5,6 @@ import type { SelectOption } from 'src/types/SelectOption';
 import { fetcher } from 'src/utils/handleFetch';
 import { useSwrt } from 'src/utils/hooks/useSwrt';
 import { prepCountryOptions } from 'src/utils/prepCountryOptions';
-import { getShouldUpdateStorageItem } from 'src/utils/storage';
 
 import { useStorageWithLifetime } from './useStorage';
 
@@ -77,21 +76,19 @@ export const useCountryOptions = <TCountryCode extends string>(
       type: 'local',
     });
 
-  const shouldUpdate = getShouldUpdateStorageItem({
-    key: '__zn_country_options',
-    schema: z.string(),
-    type: 'local',
-  });
-
   const { data } = useSwrt<CountryOption<TCountryCode>[]>(
     `${dashboardUrl}/api/address/getCountries`,
     {
       fetcher: async (args: TCountryCode) => {
-        if (shouldUpdate || !storedCountryOptions) {
+        if (!storedCountryOptions.length) {
           const { json, response } = await fetcher<
             GetCountriesResponse<TCountryCode>
           >(args, {
             headers: {
+              /**
+               * This header is required to prevent CORS web cache poisoning
+               * @link https://stackoverflow.com/questions/70018833/vercel-cache-cors-headers-issue-for-multiple-domains
+               */
               'cache-control': 'no-cache',
             },
           });
