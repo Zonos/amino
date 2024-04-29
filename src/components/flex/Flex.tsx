@@ -8,7 +8,7 @@ import styles from './Flex.module.scss';
 
 export type FlexProps = BaseProps & {
   /**
-   * @default 'center'
+   * @default 'stretch'
    */
   alignItems?: CSSProperties['alignItems'];
   children: ReactNode;
@@ -35,7 +35,7 @@ export type FlexProps = BaseProps & {
    */
   gap?: number;
   /**
-   * @default 'space-between'
+   * @default 'flex-start'
    */
   justifyContent?: CSSProperties['justifyContent'];
   /**
