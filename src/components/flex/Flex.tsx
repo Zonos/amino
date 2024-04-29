@@ -53,7 +53,7 @@ export const Flex = ({
   flexWrap = 'nowrap',
   gap = 8,
   justifyContent = 'flex-start',
-  padding,
+  padding = 0,
   style,
 }: FlexProps) => (
   <div
@@ -66,7 +66,7 @@ export const Flex = ({
       '--dashboard-flex-wrapper-flex-wrap': flexWrap,
       '--dashboard-flex-wrapper-gap': `${gap}px`,
       '--dashboard-flex-wrapper-justify-content': justifyContent,
-      '--dashboard-flex-wrapper-padding': `${padding || 0}px`,
+      '--dashboard-flex-wrapper-padding': `${padding}px`,
     }}
   >
     {children}
