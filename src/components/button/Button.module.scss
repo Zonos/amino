@@ -377,7 +377,6 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       &:hover,
       &:active {
         color: $text-button-hover-color;
-        background: transparent;
       }
     }
     &[disabled] {
