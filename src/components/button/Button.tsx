@@ -242,6 +242,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         }
         return 'white';
       case 'link':
+      case 'inlineLink':
         return 'info';
       case 'plain':
       case 'subtle':
@@ -263,6 +264,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'danger':
         return theme.gray0;
       case 'link':
+      case 'inlineLink':
         return theme.primary;
       case 'subtle':
         return theme.textColorSecondary;
@@ -317,6 +319,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'standard':
         return theme.raisedSurfaceColor;
       case 'subtle':
+      case 'inlineLink':
         return 'none';
       default:
         return '';

@@ -228,6 +228,15 @@ LinkButton.args = {
   variant: 'link',
 };
 
+export const InlineLinkButton = Template.bind({});
+InlineLinkButton.args = {
+  children: 'Inline link button',
+  // @ts-expect-error Storybook struggles with our dynamic prop types
+  href: '#',
+  tag: 'a',
+  variant: 'inlineLink',
+};
+
 export const Subtle = Template.bind({});
 Subtle.args = {
   children: 'Example button',

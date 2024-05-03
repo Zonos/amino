@@ -370,6 +370,22 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
   }
 
+  &.inlineLinkButton {
+    padding: 0;
+    display: inline-flex;
+    &:not([disabled]) {
+      &:hover, &:active {
+        color: $text-button-hover-color;
+        background: transparent;
+      }
+    }
+    &[disabled] {
+      .content {
+        opacity: theme.$amino-opacity-disabled;
+      }    
+    }
+  }
+
   &.textButton {
     color: $text-button-color;
     &:not([disabled]) {
