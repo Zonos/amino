@@ -148,7 +148,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   const { getRippleHandlers, rippleEnabled } = useRipple({
     disabled: disabled || loading,
-    rippleEnabled: !noRipple && !['plain', 'text'].includes(variant),
+    rippleEnabled:
+      !noRipple && !['plain', 'text', 'inlineLink'].includes(variant),
     rippleRef,
   });
 

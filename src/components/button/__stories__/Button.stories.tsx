@@ -2,7 +2,9 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { type ButtonProps, Button } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
+import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
 import styles from './Button.stories.module.scss';
@@ -254,3 +256,29 @@ PlainButton.args = {
   children: 'Plain button',
   variant: 'plain',
 };
+
+export const InlineLinkButtonStory: StoryFn<ButtonProps> = () => (
+  <VStack>
+    <Text>
+      Look at this inline link:
+      <Button
+        href="#"
+        icon={<ArrowRightIcon />}
+        iconRight
+        tag="a"
+        variant="inlineLink"
+      >
+        Learn more
+      </Button>
+    </Text>
+
+    <Text>
+      Look at
+      <Button href="#" iconRight tag="a" variant="inlineLink">
+        this link
+      </Button>
+      in a sentence
+    </Text>
+  </VStack>
+);
+InlineLinkButtonStory.storyName = 'Inline Link Button';

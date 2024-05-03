@@ -373,8 +373,10 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   &.inlineLinkButton {
     padding: 0;
     display: inline-flex;
+    height: fit-content;
     &:not([disabled]) {
-      &:hover, &:active {
+      &:hover,
+      &:active {
         color: $text-button-hover-color;
         background: transparent;
       }
@@ -382,7 +384,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     &[disabled] {
       .content {
         opacity: theme.$amino-opacity-disabled;
-      }    
+      }
     }
   }
 
