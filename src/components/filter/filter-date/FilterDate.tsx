@@ -1,4 +1,4 @@
-import { type Dispatch, useState } from 'react';
+import { type Dispatch, useCallback, useState } from 'react';
 
 import { DateControls } from 'src/components/filter/filter-date/DateControls';
 import {
@@ -37,7 +37,38 @@ export const FilterDate = ({
 
   const [editingFilterText, setEditingFilterText] = useState<string>('');
 
-  const dispatchDateValues = (value: FilterDateData) => {
+  const dispatchDateValues = useCallback(
+    (value: FilterDateData) => {
+      dispatch({
+        name: 'dateRangeType',
+        type: 'change',
+        value: rangeType,
+      });
+      dispatch({
+        name: 'dateData.dateBegin',
+        type: 'change',
+        value: value.dateBegin || null,
+      });
+      dispatch({
+        name: 'dateData.dateEnd',
+        type: 'change',
+        value: value.dateEnd || null,
+      });
+      dispatch({
+        name: 'dateData.lastCount',
+        type: 'change',
+        value: value.lastCount,
+      });
+      dispatch({
+        name: 'dateData.lastUnit',
+        type: 'change',
+        value: value.lastUnit,
+      });
+    },
+    [dispatch, rangeType],
+  );
+
+  const handleApplyEditingState = useCallback(() => {
     dispatch({
       name: 'dateRangeType',
       type: 'change',
@@ -46,34 +77,51 @@ export const FilterDate = ({
     dispatch({
       name: 'dateData.dateBegin',
       type: 'change',
-      value: value.dateBegin || null,
+      value: editingValue.dateBegin || null,
     });
     dispatch({
       name: 'dateData.dateEnd',
       type: 'change',
-      value: value.dateEnd || null,
+      value: editingValue.dateEnd || null,
     });
     dispatch({
       name: 'dateData.lastCount',
       type: 'change',
-      value: value.lastCount,
+      value: editingValue.lastCount,
     });
     dispatch({
       name: 'dateData.lastUnit',
       type: 'change',
-      value: value.lastUnit,
+      value: editingValue.lastUnit,
     });
-  };
-
-  const handleApply: FilterApplyCallback = setFilterText => {
-    dispatchDateValues(editingValue);
     dispatch({
       name: 'isActive',
       type: 'change',
       value: true,
     });
-    setFilterText(editingFilterText);
-  };
+  }, [
+    dispatch,
+    editingValue.dateBegin,
+    editingValue.dateEnd,
+    editingValue.lastCount,
+    editingValue.lastUnit,
+    rangeType,
+  ]);
+
+  const handleApplyFilterText: FilterApplyCallback = useCallback(
+    setFilterText => {
+      setFilterText(editingFilterText);
+    },
+    [editingFilterText],
+  );
+
+  const handleApply: FilterApplyCallback = useCallback(
+    setFilterText => {
+      handleApplyEditingState();
+      handleApplyFilterText(setFilterText);
+    },
+    [handleApplyEditingState, handleApplyFilterText],
+  );
 
   const handleRemove = () => {
     dispatch({
@@ -98,11 +146,18 @@ export const FilterDate = ({
 
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: !!filter.dateData.dateBegin || !!filter.dateData.dateEnd,
+    isActive: filter.isActive,
     label,
     onApply: handleApply,
+    onApplyFilterText: handleApplyFilterText,
     onClose: handleClose,
     onRemove: handleRemove,
+    setActive: active =>
+      dispatch({
+        name: 'isActive',
+        type: 'change',
+        value: active,
+      }),
   });
 
   const handleChangeFilterText = (text: string) => {

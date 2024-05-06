@@ -89,8 +89,7 @@ export const IsInTheLast = ({
         min={1}
         onChange={ev => handleChangeCount(parseFloat(ev.target.value))}
         size="sm"
-        // eslint-disable-next-line react/jsx-no-useless-fragment -- needed to get rid of number input arrows
-        suffix={<></>}
+        suffix={null}
         type="number"
         value={String(count)}
       />

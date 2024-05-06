@@ -1,7 +1,9 @@
 import cloneDeep from 'lodash/cloneDeep';
+import { z } from 'zod';
 
 import type { DeepReducerActions } from 'src/types/deep/DeepReducerActions';
 import { changeDeepProperty } from 'src/utils/changeDeepProperty';
+import { getCurrentStateUrl, setStateUrl } from 'src/utils/hooks/useStateUrl';
 
 export type FilterDateType = 'equal' | 'between' | 'greater' | 'less';
 
@@ -71,4 +73,106 @@ export const filterDateReducer = (
     default:
       return action;
   }
+};
+
+export const filterDateReducerUrl =
+  (prefixKey?: string) =>
+  (state: FilterDateState, action: FilterDateAction): FilterDateState => {
+    const prefix = prefixKey ? `${prefixKey}Filter` : 'filter';
+
+    const newState = filterDateReducer(state, action);
+
+    // Sync with URL
+    if (newState.isActive) {
+      setStateUrl({
+        name: `${prefix}DateBegin`,
+        value: newState.dateData.dateBegin,
+      });
+      setStateUrl({
+        name: `${prefix}DateEnd`,
+        value: newState.dateData.dateEnd,
+      });
+      setStateUrl({
+        name: `${prefix}DateRangeType`,
+        value: newState.dateRangeType,
+      });
+      if (newState.dateRangeType === 'is in the last') {
+        setStateUrl({
+          name: `${prefix}DateLastCount`,
+          value: newState.dateData.lastCount,
+        });
+        setStateUrl({
+          name: `${prefix}DateLastUnit`,
+          value: newState.dateData.lastUnit,
+        });
+      }
+    } else {
+      setStateUrl({
+        name: `${prefix}DateBegin`,
+        value: null,
+      });
+      setStateUrl({
+        name: `${prefix}DateEnd`,
+        value: null,
+      });
+      setStateUrl({
+        name: `${prefix}DateRangeType`,
+        value: null,
+      });
+      setStateUrl({
+        name: `${prefix}DateLastCount`,
+        value: null,
+      });
+      setStateUrl({
+        name: `${prefix}DateLastUnit`,
+        value: null,
+      });
+    }
+
+    return newState;
+  };
+
+export const getInitialFilterDateStateUrl = (
+  prefixKey?: string,
+): FilterDateState => {
+  const prefix = prefixKey ? `${prefixKey}Filter` : 'filter';
+
+  const dateRangeType = getCurrentStateUrl({
+    name: `${prefix}DateRangeType`,
+    schema: z.enum(filterDateRanges),
+  });
+
+  const state: Omit<FilterDateState, 'isActive'> = {
+    dateData: {
+      dateBegin:
+        getCurrentStateUrl({
+          name: `${prefix}DateBegin`,
+          schema: z.string().date(),
+        }) || null,
+      dateEnd:
+        getCurrentStateUrl({
+          name: `${prefix}DateEnd`,
+          schema: z.string().date(),
+        }) || null,
+      lastCount:
+        getCurrentStateUrl({
+          name: `${prefix}DateLastCount`,
+          schema: z.number(),
+        }) || 5,
+      lastUnit:
+        getCurrentStateUrl({
+          name: `${prefix}DateLastUnit`,
+          schema: z.enum(dateUnits),
+        }) || 'days',
+    },
+    dateRangeType: dateRangeType || 'is in the last',
+  };
+
+  // If the date range type is set then let's assume active
+  const isActive = !!dateRangeType;
+
+  return {
+    ...state,
+    isActive,
+  };
 };

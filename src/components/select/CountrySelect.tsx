@@ -10,7 +10,6 @@ type CountrySelectType<T extends string> = {
   onChange: SelectProps<CountryOption<T>>['onChange'];
   placeholder?: string;
   value: T | null;
-
   filter?: (country: CountryOption<T>) => boolean;
 };
 
