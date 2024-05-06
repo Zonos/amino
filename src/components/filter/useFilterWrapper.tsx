@@ -22,13 +22,18 @@ export type FilterApplyCallback = (
 ) => void;
 
 type UseFilterProps = {
-  filterExists: boolean;
+  isActive: boolean;
   onApply: FilterApplyCallback;
+  /**
+   * This is called in a use effect to allow for initial states from URL, needs to be memoized.
+   */
+  onApplyFilterText: FilterApplyCallback;
   /**
    * When the menu is closed without applying.
    */
   onClose: () => void;
   onRemove: () => void;
+  setActive?: (active: boolean) => void;
 };
 
 export type FilterProps = BaseFilterProps & UseFilterProps;
@@ -36,21 +41,21 @@ export type FilterProps = BaseFilterProps & UseFilterProps;
 export const useFilterWrapper = ({
   className,
   dropdownTitle,
-  filterExists,
+  isActive,
   label,
   onApply,
+  onApplyFilterText,
   onClose,
   onRemove,
+  setActive,
   style,
 }: FilterProps) => {
-  const [active, setActive] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [filterText, setFilterText] = useState('Filter');
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleApply = () => {
-    setActive(true);
     onApply(setFilterText);
     setDropDownOpen(false);
   };
@@ -70,11 +75,13 @@ export const useFilterWrapper = ({
   const handleClick = useCallback(
     ({ target }: MouseEvent) => {
       if (target instanceof Element && !dropdownRef.current?.contains(target)) {
-        setDropDownOpen(false);
-        onClose();
+        if (dropDownOpen) {
+          setDropDownOpen(false);
+          onClose();
+        }
       }
     },
-    [onClose],
+    [dropDownOpen, onClose],
   );
 
   useEffect(() => {
@@ -106,23 +113,24 @@ export const useFilterWrapper = ({
   };
 
   const handleToggle = () => {
-    if (!filterExists) {
-      setDropDownOpen(true);
-    } else {
-      setActive(!active);
+    if (isActive) {
+      setActive?.(false);
       onRemove();
+    } else {
+      setDropDownOpen(true);
     }
   };
 
+  // The state can be derived from the URL, which causes the initial state to be applied. We need to reapply the filter in those situations.
   useEffect(() => {
-    if (!filterExists) {
-      setActive(false);
+    if (isActive) {
+      onApplyFilterText(setFilterText);
     }
-  }, [filterExists]);
+  }, [isActive, onApplyFilterText]);
 
   const renderWrapper = (control: ReactNode) => (
     <FilterWrapper
-      active={active}
+      active={isActive}
       className={className}
       dropDownOpen={dropDownOpen}
       dropdownRef={dropdownRef}
@@ -132,7 +140,7 @@ export const useFilterWrapper = ({
       handleKeyDown={handleKeyDown}
       handleOpenDropdown={handleOpenDropdown}
       handleToggle={handleToggle}
-      hasFilter={active && filterExists}
+      hasFilter={isActive}
       label={label}
       style={style}
     >

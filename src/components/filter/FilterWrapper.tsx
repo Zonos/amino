@@ -92,19 +92,20 @@ export const FilterWrapper = ({
         </div>
       )}
     </div>
-    {dropDownOpen && (
-      <div
-        ref={dropdownRef}
-        className={styles.dropdownWrapper}
-        onKeyDown={handleKeyDown}
-        tabIndex={-1}
-      >
-        <Text type="bold-subheader">{dropdownTitle}</Text>
-        <div className={styles.controlsWrapper}>{children}</div>
-        <Button onClick={handleApply} size="md" variant="primary">
-          Apply
-        </Button>
-      </div>
-    )}
+    <div
+      ref={dropdownRef}
+      className={styles.dropdownWrapper}
+      onKeyDown={handleKeyDown}
+      style={{
+        display: dropDownOpen ? 'flex' : 'none',
+      }}
+      tabIndex={-1}
+    >
+      <Text type="bold-subheader">{dropdownTitle}</Text>
+      <div className={styles.controlsWrapper}>{children}</div>
+      <Button onClick={handleApply} size="md" variant="primary">
+        Apply
+      </Button>
+    </div>
   </div>
 );

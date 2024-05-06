@@ -10,7 +10,7 @@ describe('useStorage', () => {
     sessionStorage.clear();
   });
 
-  test('should set an array of strings', async () => {
+  test('should set an array of strings', () => {
     const { result } = renderHook(() =>
       useStorage({
         defaultValue: [],
@@ -27,22 +27,22 @@ describe('useStorage', () => {
 
     expect(initialValue).toStrictEqual([]);
 
-    await act(async () => {
-      await setValue(['John']);
+    act(() => {
+      setValue(['John']);
     });
 
     // Assert the updated state
     expect(getCurrentValue()).toStrictEqual(['John']);
 
     // Manually mangle local storage
-    await act(async () => {
-      await setValue('ooga-booga' as unknown as string[]);
+    act(() => {
+      setValue('ooga-booga' as unknown as string[]);
     });
 
     expect(getCurrentValue()).toStrictEqual([]);
   });
 
-  test('should set a complex object', async () => {
+  test('should set a complex object', () => {
     const person = z.object({
       age: z.number(),
       name: z.string(),
@@ -64,8 +64,8 @@ describe('useStorage', () => {
 
     expect(initialValue).toBeNull();
 
-    await act(async () => {
-      await setValue({
+    act(() => {
+      setValue({
         age: 12,
         name: 'John',
       });
@@ -78,14 +78,14 @@ describe('useStorage', () => {
     });
 
     // Manually mangle local storage
-    await act(async () => {
-      await setValue('ooga-booga' as unknown as z.infer<typeof person>);
+    act(() => {
+      setValue('ooga-booga' as unknown as z.infer<typeof person>);
     });
 
     expect(getCurrentValue()).toBeNull();
   });
 
-  test('Should validate a string union without a json parse', async () => {
+  test('Should validate a string union without a json parse', () => {
     const fruit = z.enum(['apple', 'orange', 'banana']);
 
     const { result } = renderHook(() =>
@@ -104,22 +104,22 @@ describe('useStorage', () => {
 
     expect(initialValue).toBe('apple');
 
-    await act(async () => {
-      await setValue('banana');
+    act(() => {
+      setValue('banana');
     });
 
     // Assert the updated state
     expect(getCurrentValue()).toBe('banana');
 
     // Manually mangle local storage
-    await act(async () => {
-      await setValue('ooga-booga' as unknown as z.infer<typeof fruit>);
+    act(() => {
+      setValue('ooga-booga' as unknown as z.infer<typeof fruit>);
     });
 
     expect(getCurrentValue()).toBe('apple');
   });
 
-  test('Should parse a boolean without a schema', async () => {
+  test('Should parse a boolean without a schema', () => {
     const boolean = z.boolean();
 
     const { result } = renderHook(() =>
@@ -138,16 +138,16 @@ describe('useStorage', () => {
 
     expect(initialValue).toBe(false);
 
-    await act(async () => {
-      await setValue(true);
+    act(() => {
+      setValue(true);
     });
 
     // Assert the updated state
     expect(getCurrentValue()).toBe(true);
 
     // Manually mangle local storage
-    await act(async () => {
-      await setValue('ooga-booga' as unknown as boolean);
+    act(() => {
+      setValue('ooga-booga' as unknown as boolean);
     });
 
     expect(getCurrentValue()).toBe(false);
@@ -155,7 +155,7 @@ describe('useStorage', () => {
 });
 
 describe('storage tests with lifetime', () => {
-  test('expired lifetime', async () => {
+  test('expired lifetime', () => {
     const person = z.object({
       age: z.number(),
       name: z.string(),
@@ -178,7 +178,7 @@ describe('storage tests with lifetime', () => {
 
     expect(initialValue).toBeNull();
 
-    await act(() => {
+    act(() => {
       setValue({
         age: 12,
         name: 'John',

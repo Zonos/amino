@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
@@ -14,8 +14,8 @@ import styles from './FilterMultiSelect.module.scss';
 export type FilterMultiSelectProps<T extends string | number = string> =
   BaseFilterProps & {
     options: SelectOption<T>[];
-    value: SelectOption<T>[];
-    onChange: (value: SelectOption<T>[]) => void;
+    value: T[];
+    onChange: (value: T[]) => void;
   };
 
 export const FilterMultiSelect = <T extends string | number = string>({
@@ -26,16 +26,29 @@ export const FilterMultiSelect = <T extends string | number = string>({
   value,
 }: FilterMultiSelectProps<T>) => {
   const [editingSelectedValues, setEditingSelectedValues] =
-    useState<SelectOption<T>[]>(value);
+    useState<T[]>(value);
 
-  const handleApply: FilterApplyCallback = setFilterText => {
-    const text =
-      editingSelectedValues.length > 1
-        ? `${editingSelectedValues.length} selected`
-        : editingSelectedValues[0]?.label || '';
-    setFilterText(text);
-    onChange(editingSelectedValues);
-  };
+  const handleApplyFilterText: FilterApplyCallback = useCallback(
+    setFilterText => {
+      if (editingSelectedValues.length === 1) {
+        const singleOption = options.find(
+          option => option.value === editingSelectedValues[0],
+        );
+        setFilterText(singleOption?.label || '1 selected');
+      } else {
+        setFilterText(`${editingSelectedValues.length} selected`);
+      }
+    },
+    [editingSelectedValues, options],
+  );
+
+  const handleApply: FilterApplyCallback = useCallback(
+    setFilterText => {
+      onChange(editingSelectedValues);
+      handleApplyFilterText(setFilterText);
+    },
+    [editingSelectedValues, handleApplyFilterText, onChange],
+  );
 
   const handleRemove = () => {
     onChange([]);
@@ -48,9 +61,10 @@ export const FilterMultiSelect = <T extends string | number = string>({
 
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: !!value.length,
+    isActive: !!value.length,
     label,
     onApply: handleApply,
+    onApplyFilterText: handleApplyFilterText,
     onClose: handleClose,
     onRemove: handleRemove,
   });
@@ -60,17 +74,18 @@ export const FilterMultiSelect = <T extends string | number = string>({
       {options.map(option => (
         <Checkbox
           key={option.value}
-          checked={
-            editingSelectedValues.some(x => x.value === option.value) || false
-          }
+          checked={editingSelectedValues.some(x => x === option.value) || false}
           label={option.label}
           onChange={() => {
-            if (editingSelectedValues.some(x => x.value === option.value)) {
+            if (editingSelectedValues.some(x => x === option.value)) {
               setEditingSelectedValues(
-                editingSelectedValues.filter(x => x.value !== option.value),
+                editingSelectedValues.filter(x => x !== option.value),
               );
             } else {
-              setEditingSelectedValues([...editingSelectedValues, option]);
+              setEditingSelectedValues([
+                ...editingSelectedValues,
+                option.value,
+              ]);
             }
           }}
         />

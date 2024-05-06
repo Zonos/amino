@@ -29,7 +29,7 @@ export default defineConfig({
     environment: 'jsdom',
     exclude: ['**/node_modules/**', '**/dist'],
     globals: true,
-    include: ['**/*.test.ts'],
+    include: ['**/*.test.ts', '**/*.test.tsx'],
     setupFiles: ['dotenv/config', 'test-utils/setup.ts'],
     snapshotFormat: {
       escapeString: false,

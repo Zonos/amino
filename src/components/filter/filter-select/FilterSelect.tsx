@@ -1,4 +1,4 @@
-import { type KeyboardEvent, useMemo, useState } from 'react';
+import { type KeyboardEvent, useCallback, useMemo, useState } from 'react';
 
 import {
   type BaseFilterProps,
@@ -23,12 +23,12 @@ export type FilterSelectProps<
   selectProps?:
     | CustomSelectProps<T, O>
     | ((editingValue: O | null) => CustomSelectProps<T, O>);
-  value: O | null;
+  value: T | null;
   /**
    * @default `is ${value.label}`
    */
   getFilterText?: (value: O) => string;
-  onChange: (value: O | null) => void;
+  onChange: (value: T | null) => void;
 };
 
 export const FilterSelect = <
@@ -36,25 +36,51 @@ export const FilterSelect = <
   O extends SelectOption<T> = SelectOption<T>,
 >({
   filterTextCharacterLimit = 20,
-  getFilterText = v => `is ${v.label}`,
+  getFilterText: _getFilterText,
   onChange,
   options,
   selectProps,
   value,
   ...props
 }: FilterSelectProps<T, O>) => {
-  const [editingValue, setEditingValue] = useState<O | null>(value);
+  const [editingValue, setEditingValue] = useState<T | null>(value);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleApply: FilterApplyCallback = setFilterText => {
-    onChange(editingValue);
-    if (editingValue) {
-      const filterText = getFilterText(editingValue);
-      setFilterText(
-        truncateText({ length: filterTextCharacterLimit, text: filterText }),
-      );
-    }
-  };
+  const getFilterText = useMemo(
+    () => _getFilterText || ((v: O) => `is ${v.label}`),
+    [_getFilterText],
+  );
+
+  const selectedOption = useMemo(
+    () => options.find(item => item.value === editingValue) || null,
+    [editingValue, options],
+  );
+
+  const handleApplyFilterText: FilterApplyCallback = useCallback(
+    setFilterText => {
+      if (editingValue) {
+        const option = options.find(item => item.value === editingValue);
+        if (option) {
+          const filterText = getFilterText(option);
+          setFilterText(
+            truncateText({
+              length: filterTextCharacterLimit,
+              text: filterText,
+            }),
+          );
+        }
+      }
+    },
+    [editingValue, filterTextCharacterLimit, getFilterText, options],
+  );
+
+  const handleApply: FilterApplyCallback = useCallback(
+    setFilterText => {
+      onChange(editingValue);
+      handleApplyFilterText(setFilterText);
+    },
+    [editingValue, handleApplyFilterText, onChange],
+  );
 
   const handleRemove = () => {
     onChange(null);
@@ -67,8 +93,9 @@ export const FilterSelect = <
 
   const { renderWrapper } = useFilterWrapper({
     ...props,
-    filterExists: !!value,
+    isActive: !!value,
     onApply: handleApply,
+    onApplyFilterText: handleApplyFilterText,
     onClose: handleClose,
     onRemove: handleRemove,
   });
@@ -84,21 +111,21 @@ export const FilterSelect = <
   const selectPropsResolved = useMemo(
     () =>
       typeof selectProps === 'function'
-        ? selectProps(editingValue)
+        ? selectProps(selectedOption)
         : selectProps,
-    [editingValue, selectProps],
+    [selectProps, selectedOption],
   );
 
   return renderWrapper(
     <Select
       isClearable={false}
-      onChange={setEditingValue}
+      onChange={o => setEditingValue(o?.value || null)}
       onKeyDown={handleKeyDown}
       onMenuClose={() => setMenuOpen(false)}
       onMenuOpen={() => setMenuOpen(true)}
       options={options}
       size="sm"
-      value={options.filter(item => item.value === editingValue?.value)}
+      value={options.filter(item => item.value === editingValue)}
       {...selectPropsResolved}
     />,
   );

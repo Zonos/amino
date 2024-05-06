@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import {
   type BaseFilterProps,
@@ -20,10 +20,20 @@ export const FilterText = ({
 }: FilterTextProps) => {
   const [editingValue, setEditingValue] = useState<string>(value || '');
 
-  const handleApply: FilterApplyCallback = setFilterText => {
-    onChange(editingValue);
-    setFilterText(editingValue);
-  };
+  const handleApplyFilterText: FilterApplyCallback = useCallback(
+    setFilterText => {
+      setFilterText(editingValue);
+    },
+    [editingValue],
+  );
+
+  const handleApply: FilterApplyCallback = useCallback(
+    setFilterText => {
+      onChange(editingValue);
+      handleApplyFilterText(setFilterText);
+    },
+    [editingValue, handleApplyFilterText, onChange],
+  );
 
   const handleRemove = () => {
     onChange(null);
@@ -36,9 +46,10 @@ export const FilterText = ({
 
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: !!value,
+    isActive: !!value,
     label,
     onApply: handleApply,
+    onApplyFilterText: handleApplyFilterText,
     onClose: handleClose,
     onRemove: handleRemove,
   });

@@ -1,4 +1,9 @@
-import { type Dispatch, type KeyboardEvent, useState } from 'react';
+import {
+  type Dispatch,
+  type KeyboardEvent,
+  useCallback,
+  useState,
+} from 'react';
 
 import {
   type FilterAmountAction,
@@ -41,62 +46,88 @@ export const FilterAmount = ({
   );
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const dispatchAmountFilterType = (value: FilterAmountType) => {
-    dispatch({
-      name: 'amountFilterType',
-      type: 'change',
-      value,
-    });
-  };
+  const dispatchAmounts = useCallback(
+    (values: { amount1: number | null; amount2: number | null }) => {
+      dispatch({
+        name: 'amountTotalMin',
+        type: 'change',
+        value: values.amount1,
+      });
+      dispatch({
+        name: 'amountTotalMax',
+        type: 'change',
+        value: values.amount2,
+      });
+    },
+    [dispatch],
+  );
 
-  const dispatchAmounts = (values: {
-    amount1: number | null;
-    amount2: number | null;
-  }) => {
-    dispatch({
-      name: 'amountTotalMin',
-      type: 'change',
-      value: values.amount1,
-    });
-    dispatch({
-      name: 'amountTotalMax',
-      type: 'change',
-      value: values.amount2,
-    });
-  };
+  const handleApplyFilterText: FilterApplyCallback = useCallback(
+    setFilterText => {
+      const amount1String = `${editingAmount1?.toFixed(2) || 0}` || '';
+      const amount2String = `${editingAmount2?.toFixed(2) || 0}` || '';
 
-  const handleApply: FilterApplyCallback = setFilterText => {
-    dispatchAmountFilterType(filterType);
-    const amount1String = `${editingAmount1?.toFixed(2) || 0}` || '';
-    const amount2String = `${editingAmount2?.toFixed(2) || 0}` || '';
+      switch (filterType) {
+        case 'between':
+          setFilterText(`Between ${amount1String} and ${amount2String}`);
+          break;
+        case 'equal':
+          setFilterText(`Equal to ${amount1String}`);
+          break;
+        case 'greater':
+          setFilterText(`Greater than ${amount1String}`);
+          break;
+        case 'less':
+          setFilterText(`Less than ${amount1String}`);
+          break;
+        default:
+          break;
+      }
+    },
+    [editingAmount1, editingAmount2, filterType],
+  );
 
-    switch (filterType) {
-      case 'between':
-        dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount2 });
-        setFilterText(`Between ${amount1String} and ${amount2String}`);
-        break;
-      case 'equal':
-        dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount1 });
-        setFilterText(`Equal to ${amount1String}`);
-        break;
-      case 'greater':
-        dispatchAmounts({ amount1: editingAmount1, amount2: null });
-        setFilterText(`Greater than ${amount1String}`);
-        break;
-      case 'less':
-        dispatchAmounts({ amount1: null, amount2: editingAmount1 });
-        setFilterText(`Less than ${amount1String}`);
-        break;
-      default:
-        break;
-    }
+  const handleApply: FilterApplyCallback = useCallback(
+    setFilterText => {
+      dispatch({
+        name: 'amountFilterType',
+        type: 'change',
+        value: filterType,
+      });
 
-    dispatch({
-      name: 'isActive',
-      type: 'change',
-      value: true,
-    });
-  };
+      switch (filterType) {
+        case 'between':
+          dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount2 });
+          break;
+        case 'equal':
+          dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount1 });
+          break;
+        case 'greater':
+          dispatchAmounts({ amount1: editingAmount1, amount2: null });
+          break;
+        case 'less':
+          dispatchAmounts({ amount1: null, amount2: editingAmount1 });
+          break;
+        default:
+          break;
+      }
+
+      dispatch({
+        name: 'isActive',
+        type: 'change',
+        value: true,
+      });
+      handleApplyFilterText(setFilterText);
+    },
+    [
+      dispatch,
+      dispatchAmounts,
+      editingAmount1,
+      editingAmount2,
+      filterType,
+      handleApplyFilterText,
+    ],
+  );
 
   const handleRemove = () => {
     dispatch({
@@ -104,7 +135,11 @@ export const FilterAmount = ({
       type: 'change',
       value: false,
     });
-    dispatchAmountFilterType(initialFilterAmountState.amountFilterType);
+    dispatch({
+      name: 'amountFilterType',
+      type: 'change',
+      value: initialFilterAmountState.amountFilterType,
+    });
     dispatchAmounts({ amount1: null, amount2: null });
     setFilterType(initialFilterAmountState.amountFilterType);
     setEditingAmount1(0);
@@ -127,11 +162,18 @@ export const FilterAmount = ({
 
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
-    filterExists: filter.isActive,
+    isActive: filter.isActive,
     label,
     onApply: handleApply,
+    onApplyFilterText: handleApplyFilterText,
     onClose: handleClose,
     onRemove: handleRemove,
+    setActive: active =>
+      dispatch({
+        name: 'isActive',
+        type: 'change',
+        value: active,
+      }),
   });
 
   return renderWrapper(
