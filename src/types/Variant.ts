@@ -1,10 +1,11 @@
 export type Variant =
-  | 'standard'
-  | 'primary'
-  | 'success'
-  | 'warning'
   | 'danger'
-  | 'subtle'
+  | 'inlineLink'
   | 'link'
   | 'plain'
-  | 'text';
+  | 'primary'
+  | 'standard'
+  | 'subtle'
+  | 'success'
+  | 'text'
+  | 'warning';

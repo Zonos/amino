@@ -4,6 +4,7 @@ export declare const content: string;
 export declare const dangerButton: string;
 export declare const hasIcon: string;
 export declare const iconRight: string;
+export declare const inlineLinkButton: string;
 export declare const linkButton: string;
 export declare const loading: string;
 export declare const onlyIcon: string;
