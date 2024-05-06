@@ -53,20 +53,31 @@ export const setStateUrl = <Value>({
   value: Value | null;
 }) => {
   const urlParams = new URLSearchParams(window.location.search);
-  const valueToSet = typeof value === 'string' ? value : JSON.stringify(value);
 
-  if (value === null) {
-    urlParams.delete(name);
-  } else {
-    urlParams.set(name, valueToSet);
-  }
+  try {
+    if (typeof value === 'object') {
+      if (value === null || Object.keys(value).length === 0) {
+        urlParams.delete(name);
+        return;
+      }
+    }
 
-  if (urlParams.toString() === '') {
-    // Just remove the ? if there are no params
-    window.history.replaceState(null, '', window.location.pathname);
-    return;
+    const valueToSet =
+      typeof value === 'string' ? value : JSON.stringify(value);
+
+    if (value === null) {
+      urlParams.delete(name);
+    } else {
+      urlParams.set(name, valueToSet);
+    }
+  } finally {
+    if (urlParams.toString() === '') {
+      // Just remove the ? if there are no params
+      window.history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.history.replaceState(null, '', `?${urlParams.toString()}`);
+    }
   }
-  window.history.replaceState(null, '', `?${urlParams.toString()}`);
 };
 
 /**
@@ -85,16 +96,7 @@ export const useStateUrl = <Value>({
 
   const setState = useCallback(
     (newValue: Value | null) => {
-      // Account for empty object/array
-      if (typeof newValue === 'object') {
-        if (newValue === null) {
-          setStateUrl({ name, value: null });
-        } else if (Object.keys(newValue).length === 0) {
-          setStateUrl({ name, value: null });
-        }
-      } else {
-        setStateUrl({ name, value: newValue });
-      }
+      setStateUrl({ name, value: newValue });
       _setState(newValue);
     },
     [name],

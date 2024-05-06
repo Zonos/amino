@@ -127,6 +127,17 @@ describe('setStateUrl', () => {
     expect(value).toBe('[1,2,3]');
   });
 
+  test('array (empty)', () => {
+    setStateUrl({
+      name: 'key1',
+      value: [],
+    });
+
+    const value = new URLSearchParams(window.location.search).get('key1');
+
+    expect(value).toBeNull();
+  });
+
   test('object', () => {
     setStateUrl({
       name: 'key1',
