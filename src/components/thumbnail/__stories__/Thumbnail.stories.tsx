@@ -1,5 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { HStack } from 'src/components/stack/HStack';
 import {
   type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
@@ -43,24 +44,26 @@ const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
   const Icon = icons[icon];
 
   return (
-    <div className={styles.wrapper}>
-      <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
-      <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
-      <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
-      <ThumbnailComponent {...props} icon={<Icon />} intent="outline" />
-      <ThumbnailComponent
-        {...props}
-        icon={<Icon />}
-        intent="outline"
-        shape="rounded"
-      />
-      <ThumbnailComponent
-        {...props}
-        icon={<Icon />}
-        intent="outline"
-        shape="square"
-      />
-    </div>
+    <HStack>
+      <div className={styles.wrapper}>
+        <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
+        <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
+        <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
+        <ThumbnailComponent {...props} icon={<Icon />} intent="outline" />
+        <ThumbnailComponent
+          {...props}
+          icon={<Icon />}
+          intent="outline"
+          shape="rounded"
+        />
+        <ThumbnailComponent
+          {...props}
+          icon={<Icon />}
+          intent="outline"
+          shape="square"
+        />
+      </div>
+    </HStack>
   );
 };
 
