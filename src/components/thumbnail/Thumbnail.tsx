@@ -17,6 +17,7 @@ const thumbnailShapes = {
 
 export type ThumbnailProps = BaseProps & {
   /** @default 'gray' */
+  /** @description automatically applies a color scheme based on the color passed */
   color?: ColorPrefix;
   icon: ReactNode;
   /** @default 'full' */
