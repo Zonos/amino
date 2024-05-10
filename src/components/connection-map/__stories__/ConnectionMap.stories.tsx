@@ -40,11 +40,14 @@ const ConnectionMapTemplate: StoryFn<{ from: string; to: string }> = ({
   from: _from,
   to: _to,
 }) => {
-  const { data: worldData } = useSwr<GeoJsonWorld>(GEO_URL, async params => {
-    const response = await fetch(params);
-    const json = (await response.json()) as GeoJsonWorld;
-    return json;
-  });
+  const { data: worldData } = useSwr<GeoJsonWorld>(
+    GEO_URL,
+    async (params: RequestInfo) => {
+      const response = await fetch(params);
+      const json = (await response.json()) as GeoJsonWorld;
+      return json;
+    },
+  );
   const [from, setFrom] = useState(_from);
   const [to, setTo] = useState(_to);
   const { dashboardUrl } = getCountryUrls();
