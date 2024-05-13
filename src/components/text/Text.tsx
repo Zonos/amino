@@ -127,7 +127,7 @@ const [
 ] = textOptions;
 
 type Size = (typeof textOptions)[number]['size'];
-type Type = (typeof textOptions)[number]['type'];
+export type FontType = (typeof textOptions)[number]['type'];
 export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
 type Tag = (typeof textOptions)[number]['tag'];
 type TypographyOverrides = {
@@ -137,7 +137,7 @@ type TypographyOverrides = {
   lineHeight?: Size;
 };
 
-type TextStyle = Type | OtherText;
+type TextStyle = FontType | OtherText;
 
 export type TextProps = BaseProps & {
   children: ReactNode;
