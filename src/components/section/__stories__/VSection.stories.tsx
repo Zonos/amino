@@ -5,11 +5,18 @@ import { Input } from 'src/components/input/Input';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { type VSectionProps, VSection } from 'src/components/section/VSection';
 import { VStack } from 'src/components/stack/VStack';
+import { textOptions } from 'src/components/text/Text';
 import { CartIcon } from 'src/icons/CartIcon';
 
 import styles from './VSection.stories.module.scss';
 
 const VSectionMeta: Meta = {
+  argTypes: {
+    labelType: {
+      control: { type: 'select' },
+      options: textOptions.map(x => x.type),
+    },
+  },
   component: VSection,
 };
 

@@ -2,18 +2,20 @@ import type { ReactNode } from 'react';
 
 import clsx from 'clsx';
 
-import { SectionHeader } from 'src/components/section/_SectionHeader';
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
+import type { FontType } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 
+import { SectionHeader } from './_SectionHeader';
 import styles from './VSection.module.scss';
 
 export type VSectionProps = BaseProps & {
   actions?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   label?: ReactNode;
+  labelType?: FontType;
   sublabel?: ReactNode;
 };
 
@@ -22,6 +24,7 @@ export const VSection = ({
   children,
   className,
   label,
+  labelType = 'title',
   style,
   sublabel = '',
 }: VSectionProps) => (
@@ -30,7 +33,7 @@ export const VSection = ({
       <SectionInnerWrapper>
         <div>
           {typeof label === 'string' ? (
-            <SectionHeader>{label}</SectionHeader>
+            <SectionHeader type={labelType}>{label}</SectionHeader>
           ) : (
             label
           )}
@@ -44,6 +47,6 @@ export const VSection = ({
         <HStack spacing={8}>{actions}</HStack>
       </SectionInnerWrapper>
     )}
-    <div>{children}</div>
+    {children && <div>{children}</div>}
   </div>
 );
