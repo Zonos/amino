@@ -2,6 +2,7 @@ import {
   type Dispatch,
   type KeyboardEvent,
   useCallback,
+  useMemo,
   useState,
 } from 'react';
 
@@ -38,25 +39,25 @@ export const FilterAmount = ({
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
   );
-  const [editingAmount1, setEditingAmount1] = useState<number | null>(
+  const [editingAmountMin, setEditingAmountMin] = useState<number | null>(
     filter.amountTotalMin,
   );
-  const [editingAmount2, setEditingAmount2] = useState<number | null>(
+  const [editingAmountMax, setEditingAmountMax] = useState<number | null>(
     filter.amountTotalMax,
   );
   const [menuOpen, setMenuOpen] = useState(false);
 
   const dispatchAmounts = useCallback(
-    (values: { amount1: number | null; amount2: number | null }) => {
+    (values: { amountMax: number | null; amountMin: number | null }) => {
       dispatch({
         name: 'amountTotalMin',
         type: 'change',
-        value: values.amount1,
+        value: values.amountMin,
       });
       dispatch({
         name: 'amountTotalMax',
         type: 'change',
-        value: values.amount2,
+        value: values.amountMax,
       });
     },
     [dispatch],
@@ -64,27 +65,27 @@ export const FilterAmount = ({
 
   const handleApplyFilterText: FilterApplyCallback = useCallback(
     setFilterText => {
-      const amount1String = `${editingAmount1?.toFixed(2) || 0}` || '';
-      const amount2String = `${editingAmount2?.toFixed(2) || 0}` || '';
+      const amountMinString = `${editingAmountMin?.toFixed(2) || 0}` || '';
+      const amountMaxString = `${editingAmountMax?.toFixed(2) || 0}` || '';
 
       switch (filterType) {
         case 'between':
-          setFilterText(`Between ${amount1String} and ${amount2String}`);
+          setFilterText(`Between ${amountMinString} and ${amountMaxString}`);
           break;
         case 'equal':
-          setFilterText(`Equal to ${amount1String}`);
+          setFilterText(`Equal to ${amountMinString}`);
           break;
         case 'greater':
-          setFilterText(`Greater than ${amount1String}`);
+          setFilterText(`Greater than ${amountMinString}`);
           break;
         case 'less':
-          setFilterText(`Less than ${amount1String}`);
+          setFilterText(`Less than ${amountMaxString}`);
           break;
         default:
           break;
       }
     },
-    [editingAmount1, editingAmount2, filterType],
+    [editingAmountMax, editingAmountMin, filterType],
   );
 
   const handleApply: FilterApplyCallback = useCallback(
@@ -97,16 +98,22 @@ export const FilterAmount = ({
 
       switch (filterType) {
         case 'between':
-          dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount2 });
+          dispatchAmounts({
+            amountMax: editingAmountMax,
+            amountMin: editingAmountMin,
+          });
           break;
         case 'equal':
-          dispatchAmounts({ amount1: editingAmount1, amount2: editingAmount1 });
+          dispatchAmounts({
+            amountMax: editingAmountMin,
+            amountMin: editingAmountMin,
+          });
           break;
         case 'greater':
-          dispatchAmounts({ amount1: editingAmount1, amount2: null });
+          dispatchAmounts({ amountMax: null, amountMin: editingAmountMin });
           break;
         case 'less':
-          dispatchAmounts({ amount1: null, amount2: editingAmount1 });
+          dispatchAmounts({ amountMax: editingAmountMax, amountMin: null });
           break;
         default:
           break;
@@ -122,8 +129,8 @@ export const FilterAmount = ({
     [
       dispatch,
       dispatchAmounts,
-      editingAmount1,
-      editingAmount2,
+      editingAmountMax,
+      editingAmountMin,
       filterType,
       handleApplyFilterText,
     ],
@@ -140,10 +147,10 @@ export const FilterAmount = ({
       type: 'change',
       value: initialFilterAmountState.amountFilterType,
     });
-    dispatchAmounts({ amount1: null, amount2: null });
+    dispatchAmounts({ amountMax: null, amountMin: null });
     setFilterType(initialFilterAmountState.amountFilterType);
-    setEditingAmount1(0);
-    setEditingAmount2(0);
+    setEditingAmountMin(0);
+    setEditingAmountMax(0);
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -156,9 +163,35 @@ export const FilterAmount = ({
 
   const handleClose = () => {
     setFilterType(filter.amountFilterType);
-    setEditingAmount1(filter.amountTotalMin);
-    setEditingAmount2(filter.amountTotalMax);
+    setEditingAmountMin(filter.amountTotalMin);
+    setEditingAmountMax(filter.amountTotalMax);
   };
+
+  const handleSetFirstValue = (value: number) => {
+    switch (filterType) {
+      case 'less':
+        setEditingAmountMax(value);
+        break;
+      case 'equal':
+      case 'between':
+      case 'greater':
+      default:
+        setEditingAmountMin(value);
+        break;
+    }
+  };
+
+  const firstInputValue = useMemo(() => {
+    switch (filterType) {
+      case 'less':
+        return editingAmountMax === null ? '' : String(editingAmountMax);
+      case 'equal':
+      case 'between':
+      case 'greater':
+      default:
+        return editingAmountMin === null ? '' : String(editingAmountMin);
+    }
+  }, [editingAmountMax, editingAmountMin, filterType]);
 
   const { renderWrapper } = useFilterWrapper({
     dropdownTitle,
@@ -194,19 +227,19 @@ export const FilterAmount = ({
       <div className={styles.inputWrapper}>
         <ArrowRightIcon className="arrow-right" color="blue600" size={24} />
         <Input
-          onChange={e => setEditingAmount1(e.target.valueAsNumber)}
+          onChange={e => handleSetFirstValue(e.target.valueAsNumber)}
           size="md"
           type="number"
-          value={editingAmount1 === null ? '' : String(editingAmount1)}
+          value={firstInputValue}
         />
         {filterType === 'between' && (
           <>
             and
             <Input
-              onChange={e => setEditingAmount2(e.target.valueAsNumber)}
+              onChange={e => setEditingAmountMax(e.target.valueAsNumber)}
               size="md"
               type="number"
-              value={editingAmount2 === null ? '' : String(editingAmount2)}
+              value={editingAmountMax === null ? '' : String(editingAmountMax)}
             />
           </>
         )}
