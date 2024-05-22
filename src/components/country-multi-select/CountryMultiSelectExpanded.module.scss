@@ -25,6 +25,10 @@
   border-radius: 12px;
   padding: 8px;
 
+  &:global(.error) {
+    border-color: theme.$amino-danger;
+  }
+
   display: flex;
   flex-direction: column;
   gap: 4px;

@@ -13,6 +13,10 @@ import { Button } from 'src/components/button/Button';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { Divider } from 'src/components/divider/Divider';
+import {
+  type HelpTextProps,
+  HelpText,
+} from 'src/components/help-text/HelpText';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
@@ -48,32 +52,33 @@ type CountryMultiSelectExpandedRegion<CountryCode extends string = string> = {
 
 export type CountryMultiSelectExpandedProps<
   CountryCode extends string = string,
-> = BaseProps & {
-  actions?: ReactNode;
-  countries: CountryMultiSelectExpandedOption<CountryCode>[];
-  /**
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * @default 380
-   */
-  maxHeight?: number;
-  /**
-   * Remove the top header part
-   * @default false
-   */
-  noHeader?: boolean;
-  selectedCountries: CountryMultiSelectExpandedOption<CountryCode>[];
-  /**
-   * No search bar
-   * @default false
-   */
-  withoutSearch?: boolean;
-  onChange: (
-    countries: CountryMultiSelectExpandedOption<CountryCode>[],
-  ) => void;
-};
+> = BaseProps &
+  HelpTextProps & {
+    actions?: ReactNode;
+    countries: CountryMultiSelectExpandedOption<CountryCode>[];
+    /**
+     * @default false
+     */
+    disabled?: boolean;
+    /**
+     * @default 380
+     */
+    maxHeight?: number;
+    /**
+     * Remove the top header part
+     * @default false
+     */
+    noHeader?: boolean;
+    selectedCountries: CountryMultiSelectExpandedOption<CountryCode>[];
+    /**
+     * No search bar
+     * @default false
+     */
+    withoutSearch?: boolean;
+    onChange: (
+      countries: CountryMultiSelectExpandedOption<CountryCode>[],
+    ) => void;
+  };
 
 export const CountryMultiSelectExpanded = <
   CountryCode extends string = string,
@@ -82,6 +87,8 @@ export const CountryMultiSelectExpanded = <
   className,
   countries,
   disabled = false,
+  error = false,
+  helpText,
   maxHeight = 380,
   noHeader = false,
   onChange,
@@ -327,7 +334,9 @@ export const CountryMultiSelectExpanded = <
         </div>
       )}
 
-      <div className={styles.componentWrapper}>
+      <HelpText error={error} helpText={helpText} withoutMargin />
+
+      <div className={clsx(styles.componentWrapper, error && 'error')}>
         <div className={styles.componentHeaderWrapper}>
           {!withoutSearch && (
             <label
