@@ -65,8 +65,8 @@ export const FilterAmount = ({
 
   const handleApplyFilterText: FilterApplyCallback = useCallback(
     setFilterText => {
-      const amountMinString = `${editingAmountMin?.toFixed(2) || 0}` || '';
-      const amountMaxString = `${editingAmountMax?.toFixed(2) || 0}` || '';
+      const amountMinString = `${editingAmountMin?.toFixed(2) || 0}`;
+      const amountMaxString = `${editingAmountMax?.toFixed(2) || 0}`;
 
       switch (filterType) {
         case 'between':

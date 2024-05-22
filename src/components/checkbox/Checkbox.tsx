@@ -9,6 +9,10 @@ import {
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import {
+  type HelpTextProps,
+  HelpText,
+} from 'src/components/help-text/HelpText';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
@@ -19,11 +23,34 @@ import styles from './Checkbox.module.scss';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
 
+const getBackgroundColor = (checked: boolean, error: boolean) => {
+  if (checked) {
+    if (error) {
+      return theme.danger;
+    }
+    return theme.primary;
+  }
+
+  return theme.inputBackground;
+};
+
+const getBorder = (checked: boolean, error: boolean) => {
+  if (checked) {
+    return 'none';
+  }
+
+  if (error) {
+    return `1.5px solid ${theme.danger}`;
+  }
+  return `1.5px solid ${theme.gray400}`;
+};
+
 export type CheckboxProps = Omit<
   ComponentPropsWithoutRef<'label'>,
   'onClick' | 'onChange'
 > &
-  BaseProps & {
+  BaseProps &
+  HelpTextProps & {
     /**
      * Don't stop propagation of the click event
      * @default false
@@ -47,6 +74,8 @@ export const Checkbox = ({
   checked = false,
   className,
   disabled,
+  error = false,
+  helpText,
   icon,
   label,
   labelComponent,
@@ -80,12 +109,8 @@ export const Checkbox = ({
       htmlFor={labelAsHtmlAttribute}
       style={{
         ...style,
-        '--amino-checkbox-background': checked
-          ? theme.primary
-          : theme.inputBackground,
-        '--amino-checkbox-border': !checked
-          ? `1.5px solid ${theme.gray400}`
-          : 'none',
+        '--amino-checkbox-background': getBackgroundColor(checked, error),
+        '--amino-checkbox-border': getBorder(checked, error),
         '--amino-checkbox-box-shadow': checked
           ? theme.shadowButtonPrimary
           : 'none',
@@ -151,6 +176,8 @@ export const Checkbox = ({
             </div>
           ))}
       </div>
+
+      <HelpText error={error} helpText={helpText} />
     </label>
   );
 };

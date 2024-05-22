@@ -4,6 +4,10 @@ import clsx from 'clsx';
 
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
+import {
+  type HelpTextProps,
+  HelpText,
+} from 'src/components/help-text/HelpText';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -16,36 +20,35 @@ import type { UploadedFile } from 'src/types/UploadedFile';
 
 import styles from './DropZone.module.scss';
 
-export type DropZoneProps = BaseProps & {
-  /**
-   * This `disabled` state only applies when no file is selected
-   * @default false
-   * */
-  disabled?: boolean;
-  dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
-  error?: boolean;
-  helpText?: string;
-  /**
-   * Text to display in empty state
-   * @default 'Drop your file(s) here'
-   * */
-  instructionText?: string;
-  loading?: boolean;
-  /**
-   * Text to show while loading state is active
-   * @default 'Uploading file(s)...''
-   */
-  loadingText?: string;
-  /**
-   * Whether to show the icon in file upload
-   * @default false
-   * */
-  noIcon?: boolean;
-  /** Display file info if uploaded file property has data */
-  uploadedFiles: UploadedFile[];
-  /** When the remove icon is clicked on an individual file */
-  onRemoveFile: (index: number) => void;
-};
+export type DropZoneProps = BaseProps &
+  HelpTextProps & {
+    /**
+     * This `disabled` state only applies when no file is selected
+     * @default false
+     * */
+    disabled?: boolean;
+    dropzoneOptions: Omit<DropzoneOptions, 'disabled'>;
+    /**
+     * Text to display in empty state
+     * @default 'Drop your file(s) here'
+     * */
+    instructionText?: string;
+    loading?: boolean;
+    /**
+     * Text to show while loading state is active
+     * @default 'Uploading file(s)...''
+     */
+    loadingText?: string;
+    /**
+     * Whether to show the icon in file upload
+     * @default false
+     * */
+    noIcon?: boolean;
+    /** Display file info if uploaded file property has data */
+    uploadedFiles: UploadedFile[];
+    /** When the remove icon is clicked on an individual file */
+    onRemoveFile: (index: number) => void;
+  };
 
 export const DropZone = ({
   className,
@@ -89,7 +92,7 @@ export const DropZone = ({
             </Text>
           </button>
         </Text>
-        {helpText && <Text type="caption">{helpText}</Text>}
+        <HelpText error={error} helpText={helpText} />
       </div>
     </div>
   );

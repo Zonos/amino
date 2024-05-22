@@ -53,12 +53,6 @@ $disabled-border: var(--amino-checkbox-disabled-border);
   user-select: none;
   box-shadow: $box-shadow;
 
-  &.checked {
-    background: theme.$amino-primary;
-    border: none;
-    box-shadow: theme.$amino-shadow-button-primary;
-  }
-
   svg {
     color: theme.$amino-gray-0;
     width: 16px;

@@ -1,23 +1,11 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
 import { Default } from 'src/icons/flags/Default';
 
 import styles from './Checkbox.stories.module.scss';
-
-const CheckboxMeta: Meta = {
-  component: Checkbox,
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=74%3A856&mode=dev',
-    },
-  },
-};
-
-export default CheckboxMeta;
 
 const Template: StoryFn<CheckboxProps> = ({
   checked,
@@ -33,71 +21,90 @@ const Template: StoryFn<CheckboxProps> = ({
   );
 };
 
-export const BasicCheckbox = Template.bind({});
-BasicCheckbox.args = {
-  icon: <Default height={12} width={16} />,
-  label: 'Input label',
-  subtitle: 'Subtitle here',
+const CheckboxMeta: Meta<CheckboxProps> = {
+  component: Checkbox,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=74%3A856&mode=dev',
+    },
+  },
+  render: Template,
 };
 
-export const DisabledBasicCheckbox = Template.bind({});
-DisabledBasicCheckbox.args = {
-  disabled: true,
-  icon: <Default height={16} width={16} />,
-  label: 'Input label',
-  subtitle: 'Subtitle here',
+export default CheckboxMeta;
+
+export const BasicCheckbox: StoryObj<CheckboxProps> = {
+  args: {
+    icon: <Default height={12} width={16} />,
+    label: 'Input label',
+    subtitle: 'Subtitle here',
+  },
 };
 
-export const BasicCheckboxWithoutIcon = Template.bind({});
-BasicCheckboxWithoutIcon.args = {
-  label: 'Input label',
-  subtitle: 'Subtitle here',
-};
-export const BasicCheckboxWithoutSubtitle = Template.bind({});
-BasicCheckboxWithoutSubtitle.args = {
-  icon: <Default height={16} width={16} />,
-  label: 'Input label',
+export const DisabledBasicCheckbox: StoryObj<CheckboxProps> = {
+  args: {
+    disabled: true,
+    icon: <Default height={16} width={16} />,
+    label: 'Input label',
+    subtitle: 'Subtitle here',
+  },
 };
 
-export const CheckboxWithSubstitueLabel = Template.bind({});
-CheckboxWithSubstitueLabel.args = {
-  icon: <Default height={16} width={16} />,
-  label: 'Input label',
-  labelComponent: (
-    <div className={styles.labelComponent}>
-      I have read and agree to the{' '}
-      <a
-        href="https://docs.zonos.com/legal"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Zonos terms of service
-      </a>
-      ,{' '}
-      <a
-        href="https://www.ups.com/assets/resources/media/UTA_with_EUR.pdf"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        UPS Technology Agreement
-      </a>
-      ,{' '}
-      <a
-        href="https://www.ups.com/assets/resources/media/en_US/daily_rates.pdf"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        UPS Rate and Service Guideline
-      </a>
-      , and{' '}
-      <a
-        href="https://www.ups.com/assets/resources/media/terms_service_us.pdf"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Tariff
-      </a>
-      .
-    </div>
-  ),
+export const BasicCheckboxWithoutIcon: StoryObj<CheckboxProps> = {
+  args: {
+    label: 'Input label',
+    subtitle: 'Subtitle here',
+  },
+};
+
+export const BasicCheckboxWithoutSubtitle: StoryObj<CheckboxProps> = {
+  args: {
+    icon: <Default height={16} width={16} />,
+    label: 'Input label',
+  },
+};
+
+export const CheckboxWithSubstituteLabel: StoryObj<CheckboxProps> = {
+  args: {
+    icon: <Default height={16} width={16} />,
+    label: 'Input label',
+    labelComponent: (
+      <div className={styles.labelComponent}>
+        I have read and agree to the{' '}
+        <a
+          href="https://docs.zonos.com/legal"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Zonos terms of service
+        </a>
+        ,{' '}
+        <a
+          href="https://www.ups.com/assets/resources/media/UTA_with_EUR.pdf"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          UPS Technology Agreement
+        </a>
+        ,{' '}
+        <a
+          href="https://www.ups.com/assets/resources/media/en_US/daily_rates.pdf"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          UPS Rate and Service Guideline
+        </a>
+        , and{' '}
+        <a
+          href="https://www.ups.com/assets/resources/media/terms_service_us.pdf"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Tariff
+        </a>
+        .
+      </div>
+    ),
+  },
 };
