@@ -4,6 +4,7 @@ export declare const aminoSwitchWrapper: string;
 export declare const aminoSwitchWrapperWithIcons: string;
 export declare const checked: string;
 export declare const disabled: string;
+export declare const infoWrapper: string;
 export declare const labelWrapper: string;
 export declare const left: string;
 export declare const styledLabel: string;
