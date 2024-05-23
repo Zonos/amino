@@ -35,6 +35,8 @@ export const Switch = ({
   const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
   const hasIcons = Boolean(switchIconLeft || switchIconRight);
 
+  const hasLabel = Boolean(label || labelIcon || labelDescription || subtitle);
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <label
@@ -53,6 +55,7 @@ export const Switch = ({
             styles.aminoSwitchWrapper,
             styles.aminoSwitchWrapperWithIcons,
             checked && styles.checked,
+            !hasLabel && styles.withoutLabel,
           )}
         >
           <div
@@ -70,7 +73,11 @@ export const Switch = ({
         </div>
       ) : (
         <div
-          className={clsx(styles.aminoSwitchWrapper, checked && styles.checked)}
+          className={clsx(
+            styles.aminoSwitchWrapper,
+            checked && styles.checked,
+            !hasLabel && styles.withoutLabel,
+          )}
         >
           <div
             className={clsx(styles.aminoSwitch, checked && styles.checked)}

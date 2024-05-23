@@ -60,6 +60,10 @@
   &.checked {
     background: theme.$amino-primary;
   }
+
+  &.withoutLabel {
+    margin-right: 0;
+  }
 }
 
 .aminoSwitchWrapperWithIcons.aminoSwitchWrapperWithIcons {

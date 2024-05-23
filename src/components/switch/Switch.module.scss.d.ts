@@ -11,3 +11,4 @@ export declare const styledLabelDescription: string;
 export declare const styledSubtitle: string;
 export declare const switchContainer: string;
 export declare const switchIcon: string;
+export declare const withoutLabel: string;
