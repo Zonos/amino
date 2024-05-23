@@ -55,7 +55,6 @@ export const Switch = ({
             styles.aminoSwitchWrapper,
             styles.aminoSwitchWrapperWithIcons,
             checked && styles.checked,
-            !hasLabel && styles.withoutLabel,
           )}
         >
           <div
@@ -73,11 +72,7 @@ export const Switch = ({
         </div>
       ) : (
         <div
-          className={clsx(
-            styles.aminoSwitchWrapper,
-            checked && styles.checked,
-            !hasLabel && styles.withoutLabel,
-          )}
+          className={clsx(styles.aminoSwitchWrapper, checked && styles.checked)}
         >
           <div
             className={clsx(styles.aminoSwitch, checked && styles.checked)}
@@ -85,24 +80,26 @@ export const Switch = ({
           />
         </div>
       )}
-      <div>
-        <div className={styles.labelWrapper}>
-          {labelIcon}
-          <Text className={styles.styledLabel} type="input-label">
-            {label}
-            {labelDescription && (
-              <span className={styles.styledLabelDescription}>
-                {labelDescription}
-              </span>
-            )}
-          </Text>
+      {hasLabel && (
+        <div className={styles.infoWrapper}>
+          <div className={styles.labelWrapper}>
+            {labelIcon}
+            <Text className={styles.styledLabel} type="input-label">
+              {label}
+              {labelDescription && (
+                <span className={styles.styledLabelDescription}>
+                  {labelDescription}
+                </span>
+              )}
+            </Text>
+          </div>
+          {subtitle && (
+            <Text className={styles.styledSubtitle} type="subtitle">
+              {subtitle}
+            </Text>
+          )}
         </div>
-        {subtitle && (
-          <Text className={styles.styledSubtitle} type="subtitle">
-            {subtitle}
-          </Text>
-        )}
-      </div>
+      )}
     </label>
   );
 };
