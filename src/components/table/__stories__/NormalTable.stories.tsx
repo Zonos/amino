@@ -137,13 +137,17 @@ const Template: StoryFn<
               </TableCell>
               <TableCell padding="0 8px">
                 <Tooltip
-                  showTooltip={!!node.name && node.name.length > 25}
-                  subtitle={node.name}
+                  disabled={node.name.length <= 25}
+                  triggerComponent={
+                    <>
+                      {truncateText({
+                        length: 20,
+                        text: node.name || '',
+                      })}
+                    </>
+                  }
                 >
-                  {truncateText({
-                    length: 20,
-                    text: node.name || '',
-                  })}
+                  {node.name}
                 </Tooltip>
                 <div>
                   <Text fontSize="s">
@@ -156,13 +160,17 @@ const Template: StoryFn<
               </TableCell>
               <TableCell padding="0 8px">
                 <Tooltip
-                  showTooltip={!!node.sku && node.sku.length > 15}
-                  subtitle={node.sku}
+                  disabled={node?.sku.length <= 15}
+                  triggerComponent={
+                    <>
+                      {truncateText({
+                        length: 20,
+                        text: node.sku || '',
+                      })}
+                    </>
+                  }
                 >
-                  {truncateText({
-                    length: 20,
-                    text: node.sku || '',
-                  })}
+                  {node.sku}
                 </Tooltip>
               </TableCell>
               <TableCell padding="0 8px">{weight}</TableCell>

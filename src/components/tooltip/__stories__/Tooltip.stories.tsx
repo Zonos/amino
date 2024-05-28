@@ -1,20 +1,42 @@
 import { useEffect, useRef, useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { type ButtonProps, Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/Button';
 import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog } from 'src/components/dialog/Dialog';
+import { Flex } from 'src/components/flex/Flex';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
+import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import type { Theme } from 'src/types';
-import { truncateText } from 'src/utils/truncateText';
+import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
-import styles from './Tooltip.stories.module.scss';
+const Template: StoryFn<TooltipProps> = props => {
+  const { aminoTheme } = useAminoTheme();
 
-const ButtonMeta: Meta = {
+  return (
+    <Flex flexDirection="column" gap={40}>
+      <Flex>
+        <Text type="bold-label">Default:</Text>
+        <Tooltip {...props} />
+      </Flex>
+      <Flex>
+        <Text type="bold-label">Inverse theme:</Text>
+        <Tooltip
+          {...props}
+          themeOverride={aminoTheme === 'night' ? 'day' : 'night'}
+        />
+      </Flex>
+    </Flex>
+  );
+};
+
+const meta: Meta<TooltipProps> = {
   component: Tooltip,
   parameters: {
     design: {
@@ -22,186 +44,64 @@ const ButtonMeta: Meta = {
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=196%3A10758&t=2qWmuoXr8klMzpYH-0',
     },
   },
+  render: Template,
 };
 
-export default ButtonMeta;
+export default meta;
 
-type ButtonPropWithTooltipOption = Omit<ButtonProps, 'background'> &
-  Pick<TooltipProps, 'background' | 'themeOverride'>;
-
-const HeadingTooltip = ({
-  children,
-  subtitle = 'This is an example of a tooltip with a heading. Tooltips with a heading can have three lines total.',
-  themeOverride,
-  ...props
-}: Partial<TooltipProps>) => (
-  <Tooltip
-    {...props}
-    showTooltip
-    subtitle={subtitle}
-    themeOverride={themeOverride}
-    title="Tooltip with Heading"
-  >
-    {children}
-  </Tooltip>
-);
-
-const WithoutHeadingTooltip = ({
-  children,
-  subtitle = 'Tooltips should stay under 128 characters and be limited to two lines. This example shows a tooltip with the max amount of characters.',
-  ...props
-}: Partial<TooltipProps>) => (
-  <Tooltip
-    {...props}
-    showTooltip
-    subtitle={
-      typeof subtitle === 'string'
-        ? truncateText({
-            addEllipsis: false,
-            length: 128,
-            text: subtitle,
-          })
-        : subtitle
-    }
-    themeOverride={props.themeOverride}
-  >
-    {children}
-  </Tooltip>
-);
-
-const TopRow = ({
-  background,
-  themeOverride,
-  ...props
-}: ButtonPropWithTooltipOption) => (
-  <>
-    <HeadingTooltip background={background} themeOverride={themeOverride}>
-      <Button {...props}>Has heading</Button>
-    </HeadingTooltip>
-    <WithoutHeadingTooltip
-      background={background}
-      subtitle="This example shows a tooltip with enough characters to fill an alphabet soup when you are sick and then share some with your friends, so it should be truncated."
-      themeOverride={themeOverride}
-    >
-      <Button {...props} iconRight>
-        Without heading truncated subtitle
-      </Button>
-    </WithoutHeadingTooltip>
-    <WithoutHeadingTooltip
-      background={background}
-      themeOverride={themeOverride}
-    >
-      <Button {...props} onClick={e => e.preventDefault()}>
-        Without heading
-      </Button>
-    </WithoutHeadingTooltip>
-  </>
-);
-
-const BottomRow = ({
-  background,
-  themeOverride,
-  toggleCoversheet,
-  toggleDialog,
-  ...props
-}: ButtonPropWithTooltipOption & {
-  toggleCoversheet: () => void;
-  toggleDialog: () => void;
-}) => {
-  const [showSelect, setShowSelect] = useState(false);
-
-  return (
-    <>
-      <Tooltip
-        background={background}
-        showTooltip
-        subtitle={
-          <VStack>
-            <Text>A</Text>
-            <Text>Custom</Text>
-            <Text>Subtitle</Text>
-          </VStack>
-        }
-        themeOverride={themeOverride}
-      >
-        <Button {...props} onClick={toggleCoversheet}>
-          Test coversheet z-index
-        </Button>
-      </Tooltip>
-      <Tooltip
-        background={background}
-        showTooltip
-        subtitle={
-          <VStack>
-            <Text>A</Text>
-            <Text>Custom</Text>
-            <Text>Subtitle</Text>
-          </VStack>
-        }
-        themeOverride={themeOverride}
-      >
-        <Button {...props} onClick={toggleDialog}>
-          Test dialog z-index
-        </Button>
-      </Tooltip>
-      {showSelect ? (
-        <Select
-          label="currencies"
-          menuIsOpen
-          onChange={option => !option && setShowSelect(false)}
-          options={[
-            {
-              label: 'US Dollar (USD)',
-              value: 'USD',
-            },
-            {
-              label: 'European Euro (EUR)',
-              value: 'EUR',
-            },
-            {
-              label: 'Japanese Yen (JPY)',
-              value: 'JPY',
-            },
-            {
-              label: 'British Pound (GBP)',
-              value: 'GBP',
-            },
-            {
-              label: 'Swiss Frank (CHF)',
-              value: 'CHF',
-            },
-            {
-              label: 'Australian Dollar (AUD)',
-              value: 'AUD',
-            },
-            {
-              label: 'New Zealand Dollar (NZD)',
-              value: 'NZD',
-            },
-          ]}
-          value={{
-            label: 'US Dollar (USD)',
-            value: 'USD',
-          }}
-        />
-      ) : (
-        <HeadingTooltip background={background} themeOverride={themeOverride}>
-          <Button {...props} onClick={() => setShowSelect(true)}>
-            Test select z-index
-          </Button>
-        </HeadingTooltip>
-      )}
-    </>
-  );
+export const Basic: StoryObj<TooltipProps> = {
+  args: {
+    children: 'This is a tooltip',
+    triggerComponent: <Text>Hover over me</Text>,
+  },
 };
 
-const Template: StoryFn<ButtonPropWithTooltipOption> = ({
-  background,
-  ...props
-}) => {
+export const Element: StoryObj<TooltipProps> = {
+  args: {
+    children: (
+      <Flex flexDirection="column">
+        <Text>A</Text>
+        <Text>B</Text>
+      </Flex>
+    ),
+    triggerComponent: <InfoIcon />,
+  },
+};
+
+export const Complex: StoryObj<TooltipProps> = {
+  args: {
+    children: (
+      <Flex flexDirection="column">
+        <Flex>
+          <Thumbnail icon={<InfoIcon />} />
+          <Text>Hello children</Text>
+        </Flex>
+        <Flex>
+          <Thumbnail icon={<InfoIcon />} />
+          <Text>Hello children</Text>
+        </Flex>
+        <Button
+          href="https://mui.com/material-ui/react-tooltip"
+          icon={<ArrowRightIcon />}
+          iconRight
+          rel="noopener noreferrer"
+          tag="a"
+          target="_blank"
+          variant="link"
+        >
+          Link
+        </Button>
+      </Flex>
+    ),
+    triggerComponent: <InfoIcon />,
+  },
+};
+
+export const TestingZIndex: StoryFn<TooltipProps> = props => {
   const [coversheetOpen, setCoversheetOpen] = useState(false);
   const [themeOverride, setThemeOverride] = useState<Theme>('day');
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [showSelect, setShowSelect] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -215,75 +115,109 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
 
   return (
     <>
-      <div ref={wrapperRef} className={styles.vWrapper}>
-        <VStack spacing={8}>
-          <div className={styles.hWrapper}>
-            <TopRow
-              background={background}
-              themeOverride={themeOverride}
-              {...props}
+      <Flex flexDirection="column">
+        <Flex>
+          <Tooltip
+            {...props}
+            themeOverride={themeOverride}
+            triggerComponent={
+              <Button onClick={() => setCoversheetOpen(!coversheetOpen)}>
+                Test coversheet z-index
+              </Button>
+            }
+          >
+            <VStack>
+              <Text>A</Text>
+              <Text>Custom</Text>
+              <Text>Subtitle</Text>
+            </VStack>
+          </Tooltip>
+        </Flex>
+        <Flex>
+          <Tooltip
+            {...props}
+            themeOverride={themeOverride}
+            triggerComponent={
+              <Button onClick={() => setDialogOpen(!dialogOpen)}>
+                Test dialog z-index
+              </Button>
+            }
+          >
+            <VStack>
+              <Text>A</Text>
+              <Text>Custom</Text>
+              <Text>Subtitle</Text>
+            </VStack>
+          </Tooltip>
+        </Flex>
+
+        <Flex>
+          {showSelect ? (
+            <Select
+              label="currencies"
+              menuIsOpen
+              onChange={option => !option && setShowSelect(false)}
+              options={[
+                {
+                  label: 'US Dollar (USD)',
+                  value: 'USD',
+                },
+                {
+                  label: 'European Euro (EUR)',
+                  value: 'EUR',
+                },
+                {
+                  label: 'Japanese Yen (JPY)',
+                  value: 'JPY',
+                },
+                {
+                  label: 'British Pound (GBP)',
+                  value: 'GBP',
+                },
+                {
+                  label: 'Swiss Frank (CHF)',
+                  value: 'CHF',
+                },
+                {
+                  label: 'Australian Dollar (AUD)',
+                  value: 'AUD',
+                },
+                {
+                  label: 'New Zealand Dollar (NZD)',
+                  value: 'NZD',
+                },
+              ]}
+              value={{
+                label: 'US Dollar (USD)',
+                value: 'USD',
+              }}
             />
-          </div>
-          <div className={styles.hWrapper}>
-            <BottomRow
-              background={background}
-              themeOverride={themeOverride}
+          ) : (
+            <Tooltip
               {...props}
-              toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
-              toggleDialog={() => setDialogOpen(!dialogOpen)}
-            />
-          </div>
-        </VStack>
-        <VStack spacing={8}>
-          <div className={styles.hWrapper}>
-            <TopRow
-              background={background}
               themeOverride={themeOverride}
-              {...props}
-              disabled
-            />
-          </div>
-          <div className={styles.hWrapper}>
-            <BottomRow
-              background={background}
-              themeOverride={themeOverride}
-              {...props}
-              disabled
-              toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
-              toggleDialog={() => setDialogOpen(!dialogOpen)}
-            />
-          </div>
-        </VStack>
-        <VStack spacing={8}>
-          <div className={styles.hWrapper}>
-            <TopRow
-              background={background}
-              themeOverride={themeOverride}
-              {...props}
-              loading
-            />
-          </div>
-          <div className={styles.hWrapper}>
-            <BottomRow
-              background={background}
-              themeOverride={themeOverride}
-              {...props}
-              loading
-              toggleCoversheet={() => setCoversheetOpen(!coversheetOpen)}
-              toggleDialog={() => setDialogOpen(!dialogOpen)}
-            />
-          </div>
-        </VStack>
-      </div>
+              triggerComponent={
+                <Button onClick={() => setShowSelect(true)}>
+                  Test select z-index
+                </Button>
+              }
+            >
+              Hey
+            </Tooltip>
+          )}
+        </Flex>
+      </Flex>
+
       <CoverSheet
         actions={
-          <HeadingTooltip background={background} themeOverride={themeOverride}>
-            <Button {...props} disabled>
-              Has heading
-            </Button>
-          </HeadingTooltip>
+          <Tooltip
+            {...props}
+            themeOverride={themeOverride}
+            triggerComponent={<Button disabled>Has heading</Button>}
+          >
+            Heya
+          </Tooltip>
         }
-        className={styles.transparentCoverSheet}
         label="Coversheet"
         onClose={() => setCoversheetOpen(false)}
         open={coversheetOpen}
@@ -298,11 +232,13 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       </CoverSheet>
       <Dialog
         actions={
-          <HeadingTooltip background={background} themeOverride={themeOverride}>
-            <Button {...props} disabled>
-              Has heading
-            </Button>
-          </HeadingTooltip>
+          <Tooltip
+            {...props}
+            themeOverride={themeOverride}
+            triggerComponent={<Button disabled>Has heading</Button>}
+          >
+            Heya
+          </Tooltip>
         }
         onClose={() => setDialogOpen(false)}
         open={dialogOpen}
@@ -317,45 +253,4 @@ const Template: StoryFn<ButtonPropWithTooltipOption> = ({
       </Dialog>
     </>
   );
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  variant: 'standard',
-};
-
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: 'primary',
-};
-
-export const Danger = Template.bind({});
-Danger.args = {
-  variant: 'danger',
-};
-
-export const Warning = Template.bind({});
-Warning.args = {
-  variant: 'warning',
-};
-
-export const Outline = Template.bind({});
-Outline.args = {
-  outline: true,
-};
-
-export const LinkButton = Template.bind({});
-LinkButton.args = {
-  variant: 'link',
-};
-
-export const Subtle = Template.bind({});
-Subtle.args = {
-  variant: 'subtle',
-};
-
-export const TextButton = Template.bind({});
-TextButton.args = {
-  children: 'Back',
-  variant: 'text',
 };
