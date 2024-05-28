@@ -1,11 +1,11 @@
 import { logging } from 'build-utils/css/utils/logging';
-import type { Theme } from 'build-utils/types/Theme';
 import { readFileSync } from 'fs';
 import { glob } from 'glob';
 
+import type { Theme } from 'src/types';
+
 const themeEntry: Record<Theme, string> = {
   day: 'theme.ts',
-  midnight: '_midnight.ts',
   night: '_night.ts',
 };
 
