@@ -26,6 +26,10 @@ const Template: StoryFn<TooltipProps> = props => {
         <Tooltip {...props} />
       </Flex>
       <Flex>
+        <Text type="bold-label">Match theme:</Text>
+        <Tooltip {...props} themeOverride={null} />
+      </Flex>
+      <Flex>
         <Text type="bold-label">Inverse theme:</Text>
         <Tooltip
           {...props}

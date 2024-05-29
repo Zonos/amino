@@ -36,11 +36,11 @@ export type TooltipProps = BaseProps & {
    */
   subtitle?: ReactNode;
   /**
-   * Set to `undefined` to use current theme. Our default tooltips are designed to be dark.
+   * Set to `null` to use current theme. Our default tooltips are designed to be dark.
    *
    * @default 'night'
    */
-  themeOverride?: Theme;
+  themeOverride?: Theme | null;
   /**
    * The content of the tooltip.
    */
