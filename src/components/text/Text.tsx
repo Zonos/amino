@@ -18,11 +18,18 @@ type OtherText = (typeof textOthers)[number];
 
 export const textOptions = [
   {
-    label: 'Page Header (3XL) · 34px (2.125rem)',
+    label: 'Page Header (3XL) · 30px (1.875rem)',
     size: '3xl',
-    tag: 'h2',
+    tag: 'h1',
     type: 'page-header', // default
     weight: 700,
+  },
+  {
+    label: 'Secondary Page Header (3XL) · 30px (1.875rem)',
+    size: '3xl',
+    tag: 'h2',
+    type: 'secondary-page-header', // default
+    weight: 500,
   },
   {
     label: 'Header (2XL) · 28px (1.75rem)',
@@ -112,6 +119,7 @@ export const textOptions = [
 
 const [
   pageHeaderOption,
+  secondaryPageHeaderOption,
   headerOption,
   descriptionHeaderOption,
   titleOption,
@@ -187,6 +195,8 @@ export const Text = ({
     };
 
     switch (as) {
+      case 'h1':
+        return <h1 {...typographyProps}>{children}</h1>;
       case 'h2':
         return <h2 {...typographyProps}>{children}</h2>;
       case 'h3':
@@ -208,6 +218,13 @@ export const Text = ({
         fontWeight: fontWeight || pageHeaderOption.weight,
         isUppercase,
         size: pageHeaderOption.size,
+      });
+    case 'secondary-page-header':
+      return renderTypography({
+        as: tag || secondaryPageHeaderOption.tag,
+        fontWeight: fontWeight || secondaryPageHeaderOption.weight,
+        isUppercase,
+        size: secondaryPageHeaderOption.size,
       });
     case 'header':
       return renderTypography({
