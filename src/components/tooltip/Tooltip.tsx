@@ -67,6 +67,7 @@ const StyledTooltip = muiStyled(
   ),
 )(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
+    // Reset MUI styles
     all: 'revert',
     backgroundColor: theme.gray0,
     borderRadius: theme.radius10,
