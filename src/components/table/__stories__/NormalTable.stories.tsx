@@ -136,10 +136,7 @@ const Template: StoryFn<
                 />
               </TableCell>
               <TableCell padding="0 8px">
-                <Tooltip
-                  showTooltip={!!node.name && node.name.length > 25}
-                  subtitle={node.name}
-                >
+                <Tooltip disabled={node.name.length <= 25} title={node.name}>
                   {truncateText({
                     length: 20,
                     text: node.name || '',
@@ -155,10 +152,7 @@ const Template: StoryFn<
                 </div>
               </TableCell>
               <TableCell padding="0 8px">
-                <Tooltip
-                  showTooltip={!!node.sku && node.sku.length > 15}
-                  subtitle={node.sku}
-                >
+                <Tooltip disabled={node?.sku.length <= 15} title={node.sku}>
                   {truncateText({
                     length: 20,
                     text: node.sku || '',
