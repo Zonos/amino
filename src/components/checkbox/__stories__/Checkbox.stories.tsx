@@ -3,6 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
+import { Flex } from 'src/components/flex/Flex';
+import { Text } from 'src/components/text/Text';
 import { Default } from 'src/icons/flags/Default';
 
 import styles from './Checkbox.stories.module.scss';
@@ -13,11 +15,14 @@ const Template: StoryFn<CheckboxProps> = ({
 }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(checked);
   return (
-    <Checkbox
-      {...props}
-      checked={isChecked}
-      onChange={() => setIsChecked(!isChecked)}
-    />
+    <Flex>
+      <Checkbox
+        {...props}
+        checked={isChecked}
+        onChange={() => setIsChecked(!isChecked)}
+      />
+      <Text>Some text</Text>
+    </Flex>
   );
 };
 
@@ -33,13 +38,16 @@ const CheckboxMeta: Meta<CheckboxProps> = {
 };
 
 export default CheckboxMeta;
-
 export const BasicCheckbox: StoryObj<CheckboxProps> = {
   args: {
     icon: <Default height={12} width={16} />,
     label: 'Input label',
     subtitle: 'Subtitle here',
   },
+};
+
+export const NoLabel: StoryObj<CheckboxProps> = {
+  args: {},
 };
 
 export const DisabledBasicCheckbox: StoryObj<CheckboxProps> = {

@@ -35,6 +35,8 @@ export const Switch = ({
   const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
   const hasIcons = Boolean(switchIconLeft || switchIconRight);
 
+  const hasLabel = Boolean(label || labelIcon || labelDescription || subtitle);
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <label
@@ -78,24 +80,26 @@ export const Switch = ({
           />
         </div>
       )}
-      <div>
-        <div className={styles.labelWrapper}>
-          {labelIcon}
-          <Text className={styles.styledLabel} type="input-label">
-            {label}
-            {labelDescription && (
-              <span className={styles.styledLabelDescription}>
-                {labelDescription}
-              </span>
-            )}
-          </Text>
+      {hasLabel && (
+        <div className={styles.infoWrapper}>
+          <div className={styles.labelWrapper}>
+            {labelIcon}
+            <Text className={styles.styledLabel} type="input-label">
+              {label}
+              {labelDescription && (
+                <span className={styles.styledLabelDescription}>
+                  {labelDescription}
+                </span>
+              )}
+            </Text>
+          </div>
+          {subtitle && (
+            <Text className={styles.styledSubtitle} type="subtitle">
+              {subtitle}
+            </Text>
+          )}
         </div>
-        {subtitle && (
-          <Text className={styles.styledSubtitle} type="subtitle">
-            {subtitle}
-          </Text>
-        )}
-      </div>
+      )}
     </label>
   );
 };

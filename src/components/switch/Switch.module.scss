@@ -44,7 +44,6 @@
 }
 
 .aminoSwitchWrapper {
-  margin-right: 16px;
   width: 32px;
   height: 16px;
   min-width: 32px;
@@ -60,6 +59,10 @@
   &.checked {
     background: theme.$amino-primary;
   }
+}
+
+.infoWrapper {
+  margin-left: 16px;
 }
 
 .aminoSwitchWrapperWithIcons.aminoSwitchWrapperWithIcons {
