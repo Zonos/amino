@@ -51,33 +51,60 @@ export default meta;
 
 export const Basic: StoryObj<TooltipProps> = {
   args: {
-    children: 'This is a tooltip',
-    triggerComponent: <Text>Hover over me</Text>,
+    children: <Text>Hover over me</Text>,
+    title: 'This is a tooltip',
+  },
+};
+
+export const WithSubtitle: StoryObj<TooltipProps> = {
+  args: {
+    children: <Text>Hover over me</Text>,
+    subtitle: 'This is a subtitle',
+    title: 'This is a tooltip',
+  },
+};
+
+export const SubtitleOnly: StoryObj<TooltipProps> = {
+  args: {
+    children: <Text>Hover over me</Text>,
+    subtitle: 'This is a subtitle',
   },
 };
 
 export const Element: StoryObj<TooltipProps> = {
   args: {
-    children: (
+    children: <InfoIcon />,
+    title: (
       <Flex flexDirection="column">
         <Text>A</Text>
         <Text>B</Text>
       </Flex>
     ),
-    triggerComponent: <InfoIcon />,
+  },
+};
+
+export const PlainText: StoryObj<TooltipProps> = {
+  args: {
+    children: <InfoIcon />,
+    title: (
+      <Flex flexDirection="column">
+        <strong>I am strong</strong>
+      </Flex>
+    ),
   },
 };
 
 export const Complex: StoryObj<TooltipProps> = {
   args: {
-    children: (
+    children: <InfoIcon />,
+    title: (
       <Flex flexDirection="column">
-        <Flex>
-          <Thumbnail icon={<InfoIcon />} />
+        <Flex alignItems="center">
+          <Thumbnail icon={<InfoIcon />} shape="rounded" />
           <Text>Hello children</Text>
         </Flex>
-        <Flex>
-          <Thumbnail icon={<InfoIcon />} />
+        <Flex alignItems="center">
+          <Thumbnail icon={<InfoIcon />} shape="rounded" />
           <Text>Hello children</Text>
         </Flex>
         <Button
@@ -93,7 +120,6 @@ export const Complex: StoryObj<TooltipProps> = {
         </Button>
       </Flex>
     ),
-    triggerComponent: <InfoIcon />,
   },
 };
 
@@ -120,34 +146,34 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
           <Tooltip
             {...props}
             themeOverride={themeOverride}
-            triggerComponent={
-              <Button onClick={() => setCoversheetOpen(!coversheetOpen)}>
-                Test coversheet z-index
-              </Button>
+            title={
+              <VStack>
+                <Text>A</Text>
+                <Text>Custom</Text>
+                <Text>Subtitle</Text>
+              </VStack>
             }
           >
-            <VStack>
-              <Text>A</Text>
-              <Text>Custom</Text>
-              <Text>Subtitle</Text>
-            </VStack>
+            <Button onClick={() => setCoversheetOpen(!coversheetOpen)}>
+              Test coversheet z-index
+            </Button>
           </Tooltip>
         </Flex>
         <Flex>
           <Tooltip
             {...props}
             themeOverride={themeOverride}
-            triggerComponent={
-              <Button onClick={() => setDialogOpen(!dialogOpen)}>
-                Test dialog z-index
-              </Button>
+            title={
+              <VStack>
+                <Text>A</Text>
+                <Text>Custom</Text>
+                <Text>Subtitle</Text>
+              </VStack>
             }
           >
-            <VStack>
-              <Text>A</Text>
-              <Text>Custom</Text>
-              <Text>Subtitle</Text>
-            </VStack>
+            <Button onClick={() => setDialogOpen(!dialogOpen)}>
+              Test dialog z-index
+            </Button>
           </Tooltip>
         </Flex>
 
@@ -193,16 +219,10 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
               }}
             />
           ) : (
-            <Tooltip
-              {...props}
-              themeOverride={themeOverride}
-              triggerComponent={
-                <Button onClick={() => setShowSelect(true)}>
-                  Test select z-index
-                </Button>
-              }
-            >
-              Hey
+            <Tooltip {...props} themeOverride={themeOverride} title="Hey">
+              <Button onClick={() => setShowSelect(true)}>
+                Test select z-index
+              </Button>
             </Tooltip>
           )}
         </Flex>
@@ -210,12 +230,8 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
 
       <CoverSheet
         actions={
-          <Tooltip
-            {...props}
-            themeOverride={themeOverride}
-            triggerComponent={<Button disabled>Has heading</Button>}
-          >
-            Heya
+          <Tooltip {...props} themeOverride={themeOverride} title="Heya">
+            <Button disabled>Has heading</Button>
           </Tooltip>
         }
         label="Coversheet"
@@ -232,12 +248,8 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
       </CoverSheet>
       <Dialog
         actions={
-          <Tooltip
-            {...props}
-            themeOverride={themeOverride}
-            triggerComponent={<Button disabled>Has heading</Button>}
-          >
-            Heya
+          <Tooltip {...props} themeOverride={themeOverride} title="Heya">
+            <Button disabled>Has heading</Button>
           </Tooltip>
         }
         onClose={() => setDialogOpen(false)}

@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import type { PopperProps } from '@mui/material';
 import { styled as muiStyled } from '@mui/material/styles';
@@ -7,6 +7,7 @@ import MuiTooltip, {
   tooltipClasses,
 } from '@mui/material/Tooltip';
 
+import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
@@ -15,7 +16,7 @@ import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 export type TooltipProps = BaseProps & {
   /**
-   * The content of the tooltip.
+   * The component that will trigger the tooltip.
    */
   children: ReactNode;
   /**
@@ -30,11 +31,20 @@ export type TooltipProps = BaseProps & {
    * @default false
    */
   open?: boolean;
+  /**
+   *
+   */
+  subtitle?: ReactNode;
+  /**
+   * Set to `undefined` to use current theme. Our default tooltips are designed to be dark.
+   *
+   * @default 'night'
+   */
   themeOverride?: Theme;
   /**
-   * The component that will trigger the tooltip.
+   * The content of the tooltip.
    */
-  triggerComponent: ReactElement;
+  title?: ReactNode;
 } & Partial<Omit<MuiTooltipProps, 'children'>>;
 
 const StyledTooltip = muiStyled(
@@ -57,9 +67,11 @@ const StyledTooltip = muiStyled(
   ),
 )(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
+    all: 'revert',
     backgroundColor: theme.gray0,
     borderRadius: theme.radius10,
     boxShadow: theme.v3ShadowLarge,
+    color: theme.textColor,
     padding: theme.space12,
   },
   [`&[data-theme='night']`]: {
@@ -74,21 +86,26 @@ export const Tooltip = ({
   className,
   disabled = false,
   open,
-  themeOverride,
-  title: _title,
-  triggerComponent,
+  subtitle,
+  themeOverride = 'night',
+  title,
   ...rest
 }: TooltipProps) => {
   const { aminoTheme } = useAminoTheme();
 
   const renderTooltip = () => (
-    <div>
-      {typeof children === 'string' ? (
-        <Text type="caption">{children}</Text>
+    <Flex flexDirection="column" gap={8}>
+      {typeof title === 'string' ? (
+        <Text type="small-header">{title}</Text>
       ) : (
-        <>{children}</>
+        <>{title}</>
       )}
-    </div>
+      {typeof subtitle === 'string' ? (
+        <Text type="caption">{subtitle}</Text>
+      ) : (
+        <>{subtitle}</>
+      )}
+    </Flex>
   );
 
   if (!disabled) {
@@ -100,10 +117,10 @@ export const Tooltip = ({
         open={open}
         title={renderTooltip()}
       >
-        <div>{triggerComponent}</div>
+        <div>{children}</div>
       </StyledTooltip>
     );
   }
 
-  return triggerComponent;
+  return children;
 };

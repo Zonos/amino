@@ -136,18 +136,11 @@ const Template: StoryFn<
                 />
               </TableCell>
               <TableCell padding="0 8px">
-                <Tooltip
-                  disabled={node.name.length <= 25}
-                  triggerComponent={
-                    <>
-                      {truncateText({
-                        length: 20,
-                        text: node.name || '',
-                      })}
-                    </>
-                  }
-                >
-                  {node.name}
+                <Tooltip disabled={node.name.length <= 25} title={node.name}>
+                  {truncateText({
+                    length: 20,
+                    text: node.name || '',
+                  })}
                 </Tooltip>
                 <div>
                   <Text fontSize="s">
@@ -159,18 +152,11 @@ const Template: StoryFn<
                 </div>
               </TableCell>
               <TableCell padding="0 8px">
-                <Tooltip
-                  disabled={node?.sku.length <= 15}
-                  triggerComponent={
-                    <>
-                      {truncateText({
-                        length: 20,
-                        text: node.sku || '',
-                      })}
-                    </>
-                  }
-                >
-                  {node.sku}
+                <Tooltip disabled={node?.sku.length <= 15} title={node.sku}>
+                  {truncateText({
+                    length: 20,
+                    text: node.sku || '',
+                  })}
                 </Tooltip>
               </TableCell>
               <TableCell padding="0 8px">{weight}</TableCell>
