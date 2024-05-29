@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
@@ -13,7 +13,6 @@ import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { InfoIcon } from 'src/icons/InfoIcon';
-import type { Theme } from 'src/types';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const Template: StoryFn<TooltipProps> = props => {
@@ -24,6 +23,10 @@ const Template: StoryFn<TooltipProps> = props => {
       <Flex>
         <Text type="bold-label">Default:</Text>
         <Tooltip {...props} />
+      </Flex>
+      <Flex>
+        <Text type="bold-label">Match theme:</Text>
+        <Tooltip {...props} themeOverride={null} />
       </Flex>
       <Flex>
         <Text type="bold-label">Inverse theme:</Text>
@@ -125,19 +128,8 @@ export const Complex: StoryObj<TooltipProps> = {
 
 export const TestingZIndex: StoryFn<TooltipProps> = props => {
   const [coversheetOpen, setCoversheetOpen] = useState(false);
-  const [themeOverride, setThemeOverride] = useState<Theme>('day');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (wrapperRef.current) {
-      const themeAttribute = wrapperRef.current
-        .closest('[data-theme]')
-        ?.getAttribute('data-theme');
-      setThemeOverride((themeAttribute as Theme) || 'day');
-    }
-  }, []);
 
   return (
     <>
@@ -145,7 +137,6 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
         <Flex>
           <Tooltip
             {...props}
-            themeOverride={themeOverride}
             title={
               <VStack>
                 <Text>A</Text>
@@ -162,7 +153,6 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
         <Flex>
           <Tooltip
             {...props}
-            themeOverride={themeOverride}
             title={
               <VStack>
                 <Text>A</Text>
@@ -219,7 +209,7 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
               }}
             />
           ) : (
-            <Tooltip {...props} themeOverride={themeOverride} title="Hey">
+            <Tooltip {...props} title="Hey">
               <Button onClick={() => setShowSelect(true)}>
                 Test select z-index
               </Button>
@@ -230,7 +220,7 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
 
       <CoverSheet
         actions={
-          <Tooltip {...props} themeOverride={themeOverride} title="Heya">
+          <Tooltip {...props} title="Heya">
             <Button disabled>Has heading</Button>
           </Tooltip>
         }
@@ -248,7 +238,7 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
       </CoverSheet>
       <Dialog
         actions={
-          <Tooltip {...props} themeOverride={themeOverride} title="Heya">
+          <Tooltip {...props} title="Heya">
             <Button disabled>Has heading</Button>
           </Tooltip>
         }
