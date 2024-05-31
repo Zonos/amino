@@ -1,7 +1,7 @@
 @use 'theme';
 
 .styledTableRow {
-  &.with-hover:hover {
+  &.withHover:hover {
     background-color: theme.$amino-gray-50;
   }
   th {
