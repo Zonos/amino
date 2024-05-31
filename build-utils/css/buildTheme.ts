@@ -6,7 +6,8 @@ import {
 } from 'build-utils/css/utils/generateCSS';
 import { generateSCSS } from 'build-utils/css/utils/generateSCSS';
 import { logging } from 'build-utils/css/utils/logging';
-import type { Theme } from 'build-utils/types/Theme';
+
+import type { Theme } from 'src/types';
 
 const logError = ({
   theme,

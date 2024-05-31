@@ -76,7 +76,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
         const isExpanding = row._expandedKey === column.key;
         return (
           <div className={styles.styledExpandWrapper}>
-            <Tooltip showTooltip={noItems} subtitle="This list has no items.">
+            <Tooltip disabled={!noItems} title="This list has no items.">
               <Button
                 className={isExpanding ? 'expanding-button' : ''}
                 disabled={noItems}

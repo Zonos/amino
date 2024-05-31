@@ -62,7 +62,7 @@ describe('storage tests', () => {
   test(`String enum`, () => {
     const value = 'day';
 
-    const stringSchema = z.enum(['day', 'night', 'midnight']);
+    const stringSchema = z.enum(['day', 'night']);
 
     localStorage.setItem('theme', value);
 
@@ -78,7 +78,7 @@ describe('storage tests', () => {
   test(`String enum invalid`, () => {
     const value = 'twilight';
 
-    const stringSchema = z.enum(['day', 'night', 'midnight']);
+    const stringSchema = z.enum(['day', 'night']);
 
     localStorage.setItem('theme', value);
 
@@ -94,7 +94,7 @@ describe('storage tests', () => {
   test(`String enum is not JSON stringified`, () => {
     const value = 'day';
 
-    const stringSchema = z.enum(['day', 'night', 'midnight']);
+    const stringSchema = z.enum(['day', 'night']);
 
     localStorage.setItem('theme', value);
 
