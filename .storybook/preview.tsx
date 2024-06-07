@@ -134,7 +134,9 @@ const preview: Preview = {
       },
     },
   },
+
   decorators: [withTheme],
+
   globalTypes: {
     theme: {
       defaultValue: 'day',
@@ -152,6 +154,7 @@ const preview: Preview = {
       },
     },
   },
+
   parameters: {
     // Display events in Actions panel
     actions: { argTypesRegex: /^on.*/ },
@@ -161,6 +164,8 @@ const preview: Preview = {
     controls: { exclude: /^on.*/, expanded: true, sort: 'alpha' },
     layout: 'fullscreen',
   },
+
+  tags: ['autodocs'],
 };
 
 export default preview;

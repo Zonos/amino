@@ -10,9 +10,7 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-designs',
   ],
   core: {},
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -21,6 +19,7 @@ const storybookConfig: StorybookConfig = {
   stories: getStories(),
   typescript: {
     check: false,
+    reactDocgen: 'react-docgen-typescript',
   },
   viteFinal: config => ({
     ...config,
