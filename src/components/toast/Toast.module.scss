@@ -18,10 +18,6 @@
   font-weight: 500;
   user-select: none;
 
-  & + & {
-    margin-top: 24px;
-  }
-
   & svg {
     color: theme.$amino-gray-500;
   }

@@ -4,4 +4,9 @@ $left: var(--amino-toast-context-left);
 .toastsWrapper {
   bottom: $bottom;
   left: $left;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
