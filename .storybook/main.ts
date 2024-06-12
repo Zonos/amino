@@ -10,9 +10,7 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-designs',
   ],
   core: {},
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -21,6 +19,7 @@ const storybookConfig: StorybookConfig = {
   stories: getStories(),
   typescript: {
     check: false,
+    reactDocgen: 'react-docgen-typescript',
   },
   viteFinal: config => ({
     ...config,
@@ -28,8 +27,8 @@ const storybookConfig: StorybookConfig = {
       ...config.server,
       hmr: {
         ...(typeof config.server?.hmr === 'object' ? config.server?.hmr : {}),
-        // For some reason, our local-ssl-proxy confuses vite, and it tries to go to port 6006 (passed from storybook), so correct it here
-        clientPort: 6007,
+        // Caddy reverse proxy supports websockets
+        clientPort: 443,
       },
     },
   }),

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
+import { Flex } from 'src/components/flex/Flex';
 import { type ToastProps, Toast } from 'src/components/toast/Toast';
 
 import styles from './ToastContext.module.scss';
@@ -74,35 +75,34 @@ export const ToastContextProvider = ({ children }: Props) => {
   );
 
   return (
-    <AnimatePresence>
-      <ToastContext.Provider value={setupToasts}>
-        {children}
-        <div
-          className="toast-container"
-          style={{
-            '--amino-toast-context-bottom': toastLocation.bottom || '40px',
-            '--amino-toast-context-left': toastLocation.left || 'auto',
-          }}
-        >
-          <div className={clsx(styles.toastsWrapper, 'toasts-wrapper')}>
-            <AnimatePresence>
-              {toasts.map(({ props, toast, uuid }) => {
-                const key = `toast-${toast}-${uuid}`;
-                return (
+    <ToastContext.Provider value={setupToasts}>
+      {children}
+      <div
+        className="toast-container"
+        style={{
+          '--amino-toast-context-bottom': toastLocation.bottom || '40px',
+          '--amino-toast-context-left': toastLocation.left || 'auto',
+        }}
+      >
+        <div className={clsx(styles.toastsWrapper, 'toasts-wrapper')}>
+          <AnimatePresence>
+            {toasts.map(({ props, toast, uuid }) => {
+              const key = `toast-${toast}-${uuid}`;
+              return (
+                <Flex key={key}>
                   <Toast
-                    key={key}
                     direction={props?.direction}
                     intent={props?.intent}
                     toastKey={key}
                   >
                     {toast}
                   </Toast>
-                );
-              })}
-            </AnimatePresence>
-          </div>
+                </Flex>
+              );
+            })}
+          </AnimatePresence>
         </div>
-      </ToastContext.Provider>
-    </AnimatePresence>
+      </div>
+    </ToastContext.Provider>
   );
 };

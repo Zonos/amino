@@ -29,7 +29,7 @@ In the terminal, run the following:
 $ pnpm dev
 ```
 
-To also open the browser to the page (https://dev.amino.zonos.com:6007), you can use:
+To also open the browser to the page (https://dev.amino.zonos.com), you can use:
 ```sh
 $ pnpm dev:open
 ```
