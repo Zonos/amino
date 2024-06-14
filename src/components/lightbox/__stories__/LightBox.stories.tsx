@@ -3,9 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
+import { Flex } from 'src/components/flex/Flex';
 import { LightBox as LightBoxComponent } from 'src/components/lightbox/LightBox';
-
-import styles from './LightBox.stories.module.scss';
 
 const LightBoxMeta: Meta = {
   component: LightBoxComponent,
@@ -26,7 +25,13 @@ export const LightBox: StoryFn<typeof LightBoxComponent> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={styles.centeredDiv}>
+    <Flex
+      alignItems="center"
+      justifyContent="center"
+      style={{
+        height: '100%',
+      }}
+    >
       <Button onClick={() => setOpen(true)}>Open</Button>
 
       <LightBoxComponent
@@ -37,6 +42,6 @@ export const LightBox: StoryFn<typeof LightBoxComponent> = ({
       >
         <img alt="logo" src="logo.png" />
       </LightBoxComponent>
-    </div>
+    </Flex>
   );
 };

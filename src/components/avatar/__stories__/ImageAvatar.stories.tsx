@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { BaseWrapper } from 'src/components/avatar/__stories__/BaseWrapper';
 import bigSvg from 'src/components/avatar/__stories__/resources/big.svg';
 import magentoSvg from 'src/components/avatar/__stories__/resources/magento.svg';
 import mivaSvg from 'src/components/avatar/__stories__/resources/miva.svg';
@@ -11,6 +10,7 @@ import {
   type ImageAvatarProps,
   ImageAvatar as Avatar,
 } from 'src/components/avatar/ImageAvatar';
+import { Flex } from 'src/components/flex/Flex';
 import { HStack } from 'src/components/stack/HStack';
 
 const ImageAvatarMeta: Meta = {
@@ -42,7 +42,7 @@ const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
   size,
 }: ImageAvatarProps) => (
   <HStack>
-    <BaseWrapper>
+    <Flex alignItems="center" flexDirection="column" gap={24}>
       <Avatar
         bordered={bordered}
         imageUrl={imageUrl}
@@ -61,9 +61,9 @@ const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
         shape="square"
         size={size}
       />
-    </BaseWrapper>
+    </Flex>
     {platformList.map(platform => (
-      <BaseWrapper key={platform}>
+      <Flex key={platform} alignItems="center" flexDirection="column" gap={24}>
         <Avatar
           bordered={bordered}
           imageUrl={`${platform}`}
@@ -82,7 +82,7 @@ const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
           shape="square"
           size={size}
         />
-      </BaseWrapper>
+      </Flex>
     ))}
   </HStack>
 );

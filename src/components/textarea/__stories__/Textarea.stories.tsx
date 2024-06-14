@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import { type TextareaProps, Textarea } from 'src/components/textarea/Textarea';
-
-import styles from './Textarea.stories.module.scss';
 
 const TextAreaMeta: Meta = {
   component: Textarea,
@@ -69,11 +68,7 @@ const Template: StoryFn<TextareaProps> = ({
       <div>
         <Text type="bold-label">No label:</Text>
 
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
-          {' '}
+        <Flex gap={10}>
           <Textarea
             ref={textareaRef}
             error={error}
@@ -83,15 +78,12 @@ const Template: StoryFn<TextareaProps> = ({
             value=""
           />
           <Input onChange={() => {}} value="" />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">No label, has content:</Text>
 
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             helpText={helpText}
@@ -102,15 +94,12 @@ const Template: StoryFn<TextareaProps> = ({
             onChange={e => setValue(e.target.value)}
             value={value?.toString() || ''}
           />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">No placeholder:</Text>
 
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             helpText={helpText}
@@ -119,14 +108,11 @@ const Template: StoryFn<TextareaProps> = ({
             value=""
           />
           <Input label={label} onChange={() => {}} value="" />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">Long content:</Text>
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             helpText={helpText}
@@ -136,14 +122,11 @@ const Template: StoryFn<TextareaProps> = ({
             value={longContent}
           />
           <Input label={label} onChange={() => {}} value="" />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">Empty:</Text>
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             helpText={helpText}
@@ -158,14 +141,11 @@ const Template: StoryFn<TextareaProps> = ({
             placeholder={placeholder}
             value=""
           />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">Editable:</Text>
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             helpText={helpText}
@@ -179,14 +159,11 @@ const Template: StoryFn<TextareaProps> = ({
             onChange={e => setValue(e.target.value)}
             value={value?.toString() || ''}
           />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">Expandable (maxRow 5 | maxRow 3):</Text>
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             expandable
@@ -206,14 +183,11 @@ const Template: StoryFn<TextareaProps> = ({
             placeholder={placeholder}
             value={autoAdjustContent}
           />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">Read only:</Text>
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             error={error}
             helpText={helpText}
@@ -228,14 +202,11 @@ const Template: StoryFn<TextareaProps> = ({
             onChange={e => setValue(e.target.value)}
             value={value?.toString() || ''}
           />
-        </div>
+        </Flex>
       </div>
       <div>
         <Text type="bold-label">Disabled:</Text>
-        <div
-          className={styles.styledGroup}
-          style={{ display: 'flex', gap: '10px' }}
-        >
+        <Flex gap={10}>
           <Textarea
             disabled
             error={error}
@@ -252,7 +223,7 @@ const Template: StoryFn<TextareaProps> = ({
             onChange={e => setValue(e.target.value)}
             value={value?.toString() || ''}
           />
-        </div>
+        </Flex>
       </div>
     </div>
   );

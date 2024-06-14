@@ -59,7 +59,6 @@ import './components/menu/MenuItem';
 import './components/nested-data-table/NestedDataTable';
 import './components/nested-data-table/NestedDataTableHasura';
 import './components/pivot-table/PivotTable';
-import './components/profile-icon/ProfileIcon';
 import './components/progress-bar/ProgressBar';
 import './components/radio/Radio';
 import './components/radio/RadioGroup';
