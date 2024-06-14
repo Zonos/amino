@@ -21,4 +21,8 @@ $flex-wrapper-flex-wrap: var(--amino-flex-wrapper-flex-wrap);
   &.fullWidth {
     width: 100%;
   }
+
+  &.fullHeight {
+    height: 100%;
+  }
 }

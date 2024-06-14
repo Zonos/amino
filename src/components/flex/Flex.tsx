@@ -33,6 +33,10 @@ export type FlexProps = BaseProps & {
   /**
    * @default false
    */
+  fullHeight?: boolean;
+  /**
+   * @default false
+   */
   fullWidth?: boolean;
   /**
    * @default 8
@@ -55,6 +59,7 @@ export const Flex = ({
   className,
   flexDirection = 'row',
   flexWrap = 'nowrap',
+  fullHeight = false,
   fullWidth = false,
   gap = 8,
   justifyContent = 'flex-start',
@@ -66,6 +71,7 @@ export const Flex = ({
       className,
       styles.flexWrapper,
       fullWidth && styles.fullWidth,
+      fullHeight && styles.fullHeight,
     )}
     style={{
       ...style,

@@ -8,7 +8,7 @@ const Template: StoryFn<FlexProps> = ({ children, ...props }) => (
   <Flex>
     <Flex {...props}>
       <Button>I am feeling very flexy today</Button>
-      <Text>I am feeling very flexy today.</Text>
+      <Text>I am feeling very flexy today</Text>
     </Flex>
   </Flex>
 );
@@ -32,3 +32,21 @@ export const FullWidth: StoryObj<FlexProps> = {
     fullWidth: true,
   },
 };
+
+export const Centered: StoryFn<FlexProps> = ({
+  alignItems = 'center',
+  fullHeight = true,
+  fullWidth = true,
+  justifyContent = 'center',
+  ...props
+}) => (
+  <Flex
+    {...props}
+    alignItems={alignItems}
+    fullHeight={fullHeight}
+    fullWidth={fullWidth}
+    justifyContent={justifyContent}
+  >
+    <Text>I am feeling very flexy today</Text>
+  </Flex>
+);
