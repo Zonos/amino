@@ -31,6 +31,14 @@ export type FlexProps = BaseProps & {
   flexDirection?: CSSProperties['flexDirection'];
   flexWrap?: CSSProperties['flexWrap'];
   /**
+   * @default false
+   */
+  fullHeight?: boolean;
+  /**
+   * @default false
+   */
+  fullWidth?: boolean;
+  /**
    * @default 8
    */
   gap?: number;
@@ -51,22 +59,29 @@ export const Flex = ({
   className,
   flexDirection = 'row',
   flexWrap = 'nowrap',
+  fullHeight = false,
+  fullWidth = false,
   gap = 8,
   justifyContent = 'flex-start',
   padding = 0,
   style,
 }: FlexProps) => (
   <div
-    className={clsx(className, styles.flexWrapper)}
+    className={clsx(
+      className,
+      styles.flexWrapper,
+      fullWidth && styles.fullWidth,
+      fullHeight && styles.fullHeight,
+    )}
     style={{
       ...style,
-      '--dashboard-flex-wrapper-align-items': alignItems,
-      '--dashboard-flex-wrapper-flex-children': childrenFlex,
-      '--dashboard-flex-wrapper-flex-direction': flexDirection,
-      '--dashboard-flex-wrapper-flex-wrap': flexWrap,
-      '--dashboard-flex-wrapper-gap': `${gap}px`,
-      '--dashboard-flex-wrapper-justify-content': justifyContent,
-      '--dashboard-flex-wrapper-padding': `${padding}px`,
+      '--amino-flex-wrapper-align-items': alignItems,
+      '--amino-flex-wrapper-flex-children': childrenFlex,
+      '--amino-flex-wrapper-flex-direction': flexDirection,
+      '--amino-flex-wrapper-flex-wrap': flexWrap,
+      '--amino-flex-wrapper-gap': `${gap}px`,
+      '--amino-flex-wrapper-justify-content': justifyContent,
+      '--amino-flex-wrapper-padding': `${padding}px`,
     }}
   >
     {children}

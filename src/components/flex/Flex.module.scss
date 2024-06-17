@@ -1,10 +1,10 @@
-$justify-content: var(--dashboard-flex-wrapper-justify-content);
-$align-items: var(--dashboard-flex-wrapper-align-items);
-$flex-direction: var(--dashboard-flex-wrapper-flex-direction);
-$gap: var(--dashboard-flex-wrapper-gap);
-$padding: var(--dashboard-flex-wrapper-padding);
-$children-flex: var(--dashboard-flex-wrapper-flex-children);
-$flex-wrapper-flex-wrap: var(--dashboard-flex-wrapper-flex-wrap);
+$justify-content: var(--amino-flex-wrapper-justify-content);
+$align-items: var(--amino-flex-wrapper-align-items);
+$flex-direction: var(--amino-flex-wrapper-flex-direction);
+$gap: var(--amino-flex-wrapper-gap);
+$padding: var(--amino-flex-wrapper-padding);
+$children-flex: var(--amino-flex-wrapper-flex-children);
+$flex-wrapper-flex-wrap: var(--amino-flex-wrapper-flex-wrap);
 
 .flexWrapper {
   display: flex;
@@ -16,5 +16,13 @@ $flex-wrapper-flex-wrap: var(--dashboard-flex-wrapper-flex-wrap);
   flex-wrap: $flex-wrapper-flex-wrap;
   > * {
     flex: $children-flex;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.fullHeight {
+    height: 100%;
   }
 }

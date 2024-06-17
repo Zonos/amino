@@ -1,11 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Flex } from 'src/components/flex/Flex';
 import {
   type Props,
   ThemeSelect as ThemeSelectComponent,
 } from 'src/components/theme-select/ThemeSelect';
-
-import styles from './ThemeSelect.stories.module.scss';
 
 const ThemeSelectMeta: Meta = {
   component: ThemeSelectComponent,
@@ -14,9 +13,9 @@ const ThemeSelectMeta: Meta = {
 export default ThemeSelectMeta;
 
 const Template: StoryFn = ({ type }: Props) => (
-  <div className={styles.wrapper}>
+  <Flex alignItems="center" justifyContent="center">
     <ThemeSelectComponent type={type} />
-  </div>
+  </Flex>
 );
 
 export const Default = Template.bind({});

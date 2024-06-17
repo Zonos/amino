@@ -1,11 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Flex } from 'src/components/flex/Flex';
 import {
   type TextAvatarProps,
   TextAvatar as TextAvatarComponent,
 } from 'src/components/text-avatar/TextAvatar';
-
-import styles from './TextAvatar.stories.module.scss';
 
 const TextAvatarMeta: Meta = {
   component: TextAvatarComponent,
@@ -21,11 +20,11 @@ const codes = [...Array(250).keys()].map(
 );
 
 const Template: StoryFn<TextAvatarProps> = () => (
-  <div className={styles.wrapper}>
+  <Flex flexWrap="wrap" gap={16}>
     {codes.map(n => (
       <TextAvatarComponent key={n} label={n} />
     ))}
-  </div>
+  </Flex>
 );
 
 export const TextAvatar = Template.bind({});

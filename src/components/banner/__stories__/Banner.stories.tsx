@@ -8,8 +8,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 
-import styles from './Banner.stories.module.scss';
-
 const BannerStories: Meta = {
   component: Banner,
   parameters: {
@@ -52,7 +50,12 @@ const Template: StoryFn<typeof Banner> = ({
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum massa nisi, quis fringilla ante facilisis et. Maecenas risus est, mollis pulvinar metus vitae.';
 
   return (
-    <VStack className={styles.styledVStack}>
+    <VStack
+      style={{
+        margin: 'auto',
+        maxWidth: '1080px',
+      }}
+    >
       <Banner
         footerActions={
           <Button

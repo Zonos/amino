@@ -1,10 +1,10 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { BaseWrapper } from 'src/components/avatar/__stories__/BaseWrapper';
 import {
   type UserAvatarProps,
   UserAvatar as Avatar,
 } from 'src/components/avatar/UserAvatar';
+import { Flex } from 'src/components/flex/Flex';
 
 const UserAvatarMeta: Meta = {
   argTypes: {
@@ -24,11 +24,11 @@ const UserAvatarTemplate: StoryFn<UserAvatarProps> = ({
   bordered,
   size,
 }: UserAvatarProps) => (
-  <BaseWrapper>
+  <Flex alignItems="center" flexDirection="column" gap={24}>
     <Avatar bordered={bordered} shape="round" size={size} />
     <Avatar bordered={bordered} shape="rounded" size={size} />
     <Avatar bordered={bordered} shape="square" size={size} />
-  </BaseWrapper>
+  </Flex>
 );
 
 export const UserAvatar = UserAvatarTemplate.bind({});

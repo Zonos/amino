@@ -1,13 +1,11 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { HStack } from 'src/components/stack/HStack';
+import { Flex } from 'src/components/flex/Flex';
 import {
   type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
 } from 'src/components/thumbnail/Thumbnail';
 import * as icons from 'src/icons/_IconIndex';
-
-import styles from './Thumbnail.stories.module.scss';
 
 const ThumbnailMeta: Meta = {
   argTypes: {
@@ -44,26 +42,24 @@ const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
   const Icon = icons[icon];
 
   return (
-    <HStack>
-      <div className={styles.wrapper}>
-        <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
-        <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
-        <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
-        <ThumbnailComponent {...props} icon={<Icon />} intent="outline" />
-        <ThumbnailComponent
-          {...props}
-          icon={<Icon />}
-          intent="outline"
-          shape="rounded"
-        />
-        <ThumbnailComponent
-          {...props}
-          icon={<Icon />}
-          intent="outline"
-          shape="square"
-        />
-      </div>
-    </HStack>
+    <Flex alignItems="center" flexDirection="column" gap={24}>
+      <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
+      <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
+      <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
+      <ThumbnailComponent {...props} icon={<Icon />} intent="outline" />
+      <ThumbnailComponent
+        {...props}
+        icon={<Icon />}
+        intent="outline"
+        shape="rounded"
+      />
+      <ThumbnailComponent
+        {...props}
+        icon={<Icon />}
+        intent="outline"
+        shape="square"
+      />
+    </Flex>
   );
 };
 
