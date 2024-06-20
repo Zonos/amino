@@ -1,10 +1,16 @@
 import { type ReactNode, createContext, useCallback, useState } from 'react';
 
 import { ConfirmDialog } from 'src/components/dialog/confirm/ConfirmDialog';
-import type { ConfirmDialogOpts } from 'src/types/ConfirmDialogOpts';
+import type { DismissableDialogBaseArgs } from 'src/components/dialog/DismissableDialog';
 
-export const ConfirmContext = createContext((opts: ConfirmDialogOpts) => {
-  const defaultFunction = (options: ConfirmDialogOpts) => options;
+export type ConfirmDialogArgs = DismissableDialogBaseArgs & {
+  confirmText: string;
+  dismissText: string;
+  onConfirm: (ok: boolean) => void;
+};
+
+export const ConfirmContext = createContext((opts: ConfirmDialogArgs) => {
+  const defaultFunction = (options: ConfirmDialogArgs) => options;
   defaultFunction(opts);
 });
 
@@ -13,10 +19,10 @@ type Props = {
 };
 
 export const ConfirmContextProvider = ({ children }: Props) => {
-  const [dialog, setDialog] = useState<ConfirmDialogOpts | null>();
+  const [dialog, setDialog] = useState<ConfirmDialogArgs | null>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const confirm = useCallback((opts: ConfirmDialogOpts) => {
+  const confirm = useCallback((opts: ConfirmDialogArgs) => {
     setDialog(opts);
     setIsOpen(true);
   }, []);

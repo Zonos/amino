@@ -14,15 +14,19 @@ import styles from './DismissableDialog.module.scss';
 
 export type DismissableDialogIntent = 'danger' | 'warning' | 'info';
 
-export type DismissableDialogProps = BaseProps & {
-  actions?: ReactNode;
+export type DismissableDialogBaseArgs = {
   intent: DismissableDialogIntent;
   label: string;
-  open: boolean;
   subtitle?: ReactNode;
-  themeOverride?: Theme;
-  dismissAction: () => void;
 };
+
+export type DismissableDialogProps = BaseProps &
+  DismissableDialogBaseArgs & {
+    actions?: ReactNode;
+    open: boolean;
+    themeOverride?: Theme;
+    dismissAction: () => void;
+  };
 
 const getIconForIntent = (intent: DismissableDialogIntent) => {
   switch (intent) {
