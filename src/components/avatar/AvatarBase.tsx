@@ -11,7 +11,7 @@ export type ImageSize = 16 | 24 | 32 | 40 | 48 | 56 | 64;
 
 export const avatarShapes = {
   round: '50%',
-  rounded: '10px',
+  rounded: '', // custom calculation based on size
   square: '0px',
 } as const;
 
@@ -71,7 +71,8 @@ export const AvatarBase = ({
       '--amino-avatar-base-border': bordered
         ? `${size / 16}px solid ${theme.gray0}`
         : '',
-      '--amino-avatar-base-border-radius': avatarShapes[shape],
+      '--amino-avatar-base-border-radius':
+        shape === 'rounded' ? `${(size / 8 - 1) * 2}px` : avatarShapes[shape],
       '--amino-avatar-base-height': `${size}px`,
       '--amino-avatar-base-width': `${size}px`,
     }}
