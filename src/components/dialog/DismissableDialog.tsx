@@ -18,6 +18,10 @@ export type DismissableDialogBaseArgs = {
   intent: DismissableDialogIntent;
   label: string;
   subtitle?: ReactNode;
+  /**
+   * @default 350
+   */
+  width?: number;
 };
 
 export type DismissableDialogProps = BaseProps &
@@ -79,13 +83,14 @@ export const DismissableDialog = ({
   style,
   subtitle,
   themeOverride,
+  width = 350,
 }: DismissableDialogProps) => (
   <BaseDialog
     data-theme={themeOverride}
     onClose={dismissAction}
     open={open}
     style={style}
-    width={350}
+    width={width}
   >
     <div className={styles.content}>
       <VStack spacing={24}>
