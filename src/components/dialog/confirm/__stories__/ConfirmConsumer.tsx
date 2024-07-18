@@ -24,6 +24,7 @@ export const ConfirmConsumer = () => {
             onConfirm: setDefaultConfirmOk,
             subtitle:
               'This is the descriptive text about what the user is about to do',
+            width: 500,
           })
         }
         variant="primary"
