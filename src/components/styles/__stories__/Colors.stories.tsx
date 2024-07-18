@@ -27,7 +27,7 @@ export const ColorPalette = () => (
         <VStack spacing={0}>
           {(color !== 'gray' && color !== 'glass'
             ? colorContrasts
-            : ['0', '50', ...colorContrasts, '1100', '1200']
+            : ['0', ...colorContrasts, '1000']
           ).map(value => {
             const aminoColor: Color = `${color}${value}` as Color;
             return (
@@ -36,7 +36,7 @@ export const ColorPalette = () => (
                 style={{
                   '--amino-colors-stories-background': theme[aminoColor],
                   '--amino-colors-stories-color':
-                    Number(value) <= 500 ? theme.gray1200 : theme.gray0,
+                    Number(value) <= 500 ? theme.gray1000 : theme.gray0,
                 }}
               >
                 <div className={styles.styledColorIntensity}>

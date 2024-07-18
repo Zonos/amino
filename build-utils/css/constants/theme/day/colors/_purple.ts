@@ -1,22 +1,24 @@
 export const purple = {
-  /** @info #EDEBFF  */
-  'purple-100': '#EDEBFF',
-  /** @info #DCD2FE  */
-  'purple-200': '#DCD2FE',
-  /** @info #CEB5FD  */
-  'purple-300': '#CEB5FD',
-  /** @info #C699FA  */
-  'purple-400': '#C699FA',
-  /** @info #BB6FF6  */
-  'purple-500': '#B25CF5',
-  /** @info #AB26ED  */
-  'purple-600': '#AB26ED',
-  /** @info #901CCA  */
-  'purple-700': '#901CCA',
-  /** @info #6E1E99  */
-  'purple-800': '#6E1E99',
-  /** @info #471D68  */
-  'purple-900': '#471D68',
-  /** @info #2C1844  */
-  'purple-1000': '#2C1844',
+  /** @info #FCF0FF  */
+  'purple-50': '#FCF0FF',
+  /** @info #FAE8FF  */
+  'purple-100': '#FAE8FF',
+  /** @info #F4D4FF  */
+  'purple-200': '#F4D4FF',
+  /** @info #E9B2FF  */
+  'purple-300': '#E9B2FF',
+  /** @info #D782FE  */
+  'purple-400': '#D782FE',
+  /** @info #C052FA  */
+  'purple-500': '#C052FA',
+  /** @info #A126ED  */
+  'purple-600': '#A126ED',
+  /** @info #871ED2  */
+  'purple-700': '#871ED2',
+  /** @info #6C1EAB  */
+  'purple-800': '#6C1EAB',
+  /** @info #4E1881  */
+  'purple-900': '#4E1881',
+  /** @info #2F055C  */
+  'purple-950': '#2F055C',
 } as const;

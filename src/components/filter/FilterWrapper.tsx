@@ -64,7 +64,7 @@ export const FilterWrapper = ({
       className={clsx(active && 'active', styles.badgeWrapper)}
       onClick={handleToggle}
     >
-      <div className={styles.toggleWrapper}>
+      <div className={clsx(active && 'active', styles.toggleWrapper)}>
         {active ? (
           <MinusCircleDuotoneIcon
             color="gray0"
@@ -78,16 +78,16 @@ export const FilterWrapper = ({
             size={24}
           />
         )}
-        <Text fontWeight={600}>{label}</Text>
+        <Text className={styles.filterTitle} fontWeight={600}>
+          {label}
+        </Text>
       </div>
       {hasFilter && (
         <div
           className={styles.styledDropdownTrigger}
           onClick={handleOpenDropdown}
         >
-          <Text color="blue600" fontWeight={600}>
-            {filterText}
-          </Text>
+          <Text className={styles.filterText}>{filterText}</Text>
           <ChevronDownIcon size={24} />
         </div>
       )}

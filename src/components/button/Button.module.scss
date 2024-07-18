@@ -51,8 +51,8 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   white-space: nowrap;
   width: $button-width;
   text-shadow:
-    0px 2px 4px rgba(0, 0, 0, 0.06),
-    0px 1px 2px rgba(0, 0, 0, 0.04);
+    0px 2px 4px rgba(0, 0, 0, 0.04),
+    0px 1px 2px rgba(0, 0, 0, 0.02);
 
   svg path:not([data-is-secondary-color]) {
     fill: currentColor;
@@ -120,12 +120,12 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     box-shadow: theme.$amino-shadow-button-primary;
 
     [data-theme='night'] & {
-      color: theme.$amino-gray-1200;
+      color: theme.$amino-text-color;
     }
 
     &:not([disabled]) {
       &:active {
-        background: theme.$amino-blue-700;
+        background: theme.$amino-blue-600;
       }
       &:focus {
         box-shadow: theme.$amino-focus-button;
@@ -147,11 +147,11 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       background: transparent;
       &:not([disabled]) {
         &:hover {
-          background-color: theme.$amino-blue-100;
+          background-color: theme.$amino-blue-50;
           background-image: unset;
         }
         &:active {
-          background: theme.$amino-blue-200;
+          background: theme.$amino-blue-100;
         }
       }
       &[disabled] {
@@ -168,12 +168,12 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     box-shadow: theme.$amino-shadow-button-success;
 
     [data-theme='night'] & {
-      color: theme.$amino-gray-1200;
+      color: theme.$amino-text-color;
     }
 
     &:not([disabled]) {
       &:active {
-        background: theme.$amino-green-700;
+        background: theme.$amino-green-600;
       }
       &:focus {
         box-shadow:
@@ -197,11 +197,11 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       background: transparent;
       &:not([disabled]) {
         &:hover {
-          background-color: theme.$amino-green-100;
+          background-color: theme.$amino-green-50;
           background-image: unset;
         }
         &:active {
-          background: theme.$amino-green-200;
+          background: theme.$amino-green-100;
         }
       }
       &[disabled] {
@@ -250,12 +250,12 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     box-shadow: theme.$amino-shadow-button-danger;
 
     [data-theme='night'] & {
-      color: theme.$amino-gray-1200;
+      color: theme.$amino-gray-1000;
     }
 
     &:not([disabled]) {
       &:active {
-        background: theme.$amino-red-700;
+        background: theme.$amino-red-600;
       }
       &:focus {
         box-shadow: theme.$amino-focus-button;
@@ -275,11 +275,11 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       background: transparent;
       &:not([disabled]) {
         &:hover {
-          background-color: theme.$amino-red-100;
+          background-color: theme.$amino-red-50;
           background-image: unset;
         }
         &:active {
-          background: theme.$amino-red-200;
+          background: theme.$amino-red-100;
         }
       }
       &[disabled] {
@@ -296,12 +296,12 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     box-shadow: theme.$amino-shadow-button-warning;
 
     [data-theme='night'] & {
-      color: theme.$amino-gray-1200;
+      color: theme.$amino-gray-1000;
     }
 
     &:not([disabled]) {
       &:active {
-        background: theme.$amino-orange-700;
+        background: theme.$amino-orange-600;
       }
       &:focus {
         box-shadow: theme.$amino-focus-button;
@@ -321,11 +321,11 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       background: transparent;
       &:not([disabled]) {
         &:hover {
-          background-color: theme.$amino-orange-100;
+          background-color: theme.$amino-orange-50;
           background-image: unset;
         }
         &:active {
-          background: theme.$amino-orange-200;
+          background: theme.$amino-orange-100;
         }
       }
       &[disabled] {

@@ -16,6 +16,6 @@ $gradient-end: var(--amino-text-avatar-gradient-end);
   background: linear-gradient(137deg, $gradient-start, $gradient-end);
 
   [data-theme='night'] & {
-    color: theme.$amino-gray-1200;
+    color: theme.$amino-gray-1000;
   }
 }

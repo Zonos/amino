@@ -1,22 +1,24 @@
 export const red = {
-  /** @info #FFEDEB  */
-  'red-100': '#FFECEB',
-  /** @info #FDD0CE  */
-  'red-200': '#FDD0CE',
-  /** @info #FAA9A9  */
-  'red-300': '#FAA9A9',
-  /** @info #F4868B  */
-  'red-400': '#F37C82',
-  /** @info #EB5C6C  */
-  'red-500': '#EB5C6C',
-  /** @info #DE314F  */
-  'red-600': '#DE314F',
-  /** @info #BC2442  */
-  'red-700': '#BC2442',
-  /** @info #922033  */
-  'red-800': '#922033',
-  /** @info #6C1B26  */
-  'red-900': '#6C1B26',
-  /** @info #481419  */
-  'red-1000': '#481419',
+  /** @info #FFECEB  */
+  'red-50': '#FFECEB',
+  /** @info #FEE5E5  */
+  'red-100': '#FEE5E5',
+  /** @info #FCCFD0  */
+  'red-200': '#FCCFD0',
+  /** @info #FAA7AB  */
+  'red-300': '#FAA7AB',
+  /** @info #F67681  */
+  'red-400': '#F67681',
+  /** @info #EE4559  */
+  'red-500': '#EE4559',
+  /** @info #DD314B  */
+  'red-600': '#DD314B',
+  /** @info #B81835  */
+  'red-700': '#B81835',
+  /** @info #9A1734  */
+  'red-800': '#9A1734',
+  /** @info #75142D  */
+  'red-900': '#75142D',
+  /** @info #49081A  */
+  'red-950': '#49081A',
 } as const;

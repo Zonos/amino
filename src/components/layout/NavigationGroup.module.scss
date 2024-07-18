@@ -42,10 +42,10 @@
   }
   &.active {
     background-color: theme.$amino-gray-100;
-    color: theme.$amino-gray-1200;
+    color: theme.$amino-gray-1000;
 
     svg {
-      color: theme.$amino-gray-1200;
+      color: theme.$amino-gray-1000;
     }
   }
 }
@@ -58,7 +58,7 @@
         background-color: transparent;
       }
       svg {
-        color: theme.$amino-gray-1200;
+        color: theme.$amino-gray-1000;
       }
     }
   }

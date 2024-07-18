@@ -10,9 +10,9 @@ $order: var(--amino-badge-order);
 
 .styledBadge {
   display: flex;
-  gap: theme.$amino-space-4;
+  gap: theme.$amino-space-0;
   font-size: theme.$amino-font-size-s;
-  padding: 3px 8px;
+  padding: 3px 4px;
   text-align: center;
   background-color: theme.$amino-gray-100;
   color: theme.$amino-gray-800;
@@ -25,6 +25,8 @@ $order: var(--amino-badge-order);
   p {
     margin: 0;
     line-height: 16px;
+    padding-left: var(--amino-space-4);
+    padding-right: var(--amino-space-4);
   }
   svg {
     height: 20px;
@@ -33,9 +35,10 @@ $order: var(--amino-badge-order);
 
   &.bold {
     // bold config default (gray)
-    background-color: theme.$amino-gray-600;
-    border: 1px solid theme.$amino-gray-600;
+    background-color: theme.$amino-gray-1000;
+    border: 1px solid theme.$amino-gray-900;
     color: theme.$amino-gray-100;
+
     & svg {
       color: theme.$amino-gray-100;
     }
@@ -45,99 +48,161 @@ $order: var(--amino-badge-order);
   &.small {
     padding: 1px theme.$amino-space-4;
     border-radius: theme.$amino-radius-4;
-    gap: 2px;
+    gap: 0px;
+
+    & p {
+      padding-left: var(--amino-space-4);
+      padding-right: var(--amino-space-4);
+    }
   }
 
   &.blue {
     // color config
-    background-color: theme.$amino-blue-100;
+    background-color: theme.$amino-blue-50;
     border: 1px solid theme.$amino-blue-200;
     color: theme.$amino-blue-800;
     &.bold {
       // bold config
-      background-color: theme.$amino-blue-600;
+      background-color: theme.$amino-blue-500;
       border: 1px solid theme.$amino-blue-600;
-      color: theme.$amino-blue-100;
+      color: theme.$amino-gray-0;
+
+      [data-theme='night'] & {
+        color: theme.$amino-gray-1000;
+
+        & svg {
+          color: theme.$amino-gray-1000;
+        }
+      }
+
       & svg {
-        color: theme.$amino-blue-100;
+        color: theme.$amino-gray-0;
       }
     }
   }
 
   &.green {
     // color config
-    background-color: theme.$amino-green-100;
+    background-color: theme.$amino-green-50;
     border: 1px solid theme.$amino-green-200;
     color: theme.$amino-green-800;
     &.bold {
       // bold config
-      background-color: theme.$amino-green-600;
+      background-color: theme.$amino-green-500;
       border: 1px solid theme.$amino-green-600;
-      color: theme.$amino-green-100;
+      color: theme.$amino-gray-0;
+
+      [data-theme='night'] & {
+        color: theme.$amino-gray-1000;
+
+        & svg {
+          color: theme.$amino-gray-1000;
+        }
+      }
+
       & svg {
-        color: theme.$amino-green-100;
+        color: theme.$amino-gray-0;
       }
     }
   }
 
   &.red {
     // color config
-    background-color: theme.$amino-red-100;
+    background-color: theme.$amino-red-50;
     border: 1px solid theme.$amino-red-200;
     color: theme.$amino-red-800;
     &.bold {
       // bold config
-      background-color: theme.$amino-red-600;
+      background-color: theme.$amino-red-500;
       border: 1px solid theme.$amino-red-600;
-      color: theme.$amino-red-100;
+      color: theme.$amino-gray-0;
+
+      [data-theme='night'] & {
+        color: theme.$amino-gray-1000;
+
+        & svg {
+          color: theme.$amino-gray-1000;
+        }
+      }
+
       & svg {
-        color: theme.$amino-red-100;
+        color: theme.$amino-gray-0;
       }
     }
   }
 
   &.orange {
     // color config
-    background-color: theme.$amino-orange-100;
+    background-color: theme.$amino-orange-50;
     border: 1px solid theme.$amino-orange-200;
     color: theme.$amino-orange-800;
     &.bold {
       // bold config
-      background-color: theme.$amino-orange-600;
+      background-color: theme.$amino-orange-500;
       border: 1px solid theme.$amino-orange-600;
-      color: theme.$amino-orange-100;
+      color: theme.$amino-gray-0;
+
+      [data-theme='night'] & {
+        color: theme.$amino-gray-1000;
+
+        & svg {
+          color: theme.$amino-gray-1000;
+        }
+      }
+
       & svg {
-        color: theme.$amino-orange-100;
+        color: theme.$amino-gray-0;
       }
     }
   }
 
   &.purple {
     // color config
-    background-color: theme.$amino-purple-100;
+    background-color: theme.$amino-purple-50;
     border: 1px solid theme.$amino-purple-200;
     color: theme.$amino-purple-800;
     &.bold {
       // bold config
-      background-color: theme.$amino-purple-600;
+      background-color: theme.$amino-purple-500;
       border: 1px solid theme.$amino-purple-600;
-      color: theme.$amino-purple-100;
+      color: theme.$amino-gray-0;
+
+      [data-theme='night'] & {
+        color: theme.$amino-gray-1000;
+
+        & svg {
+          color: theme.$amino-gray-1000;
+        }
+      }
+
       & svg {
-        color: theme.$amino-purple-100;
+        color: theme.$amino-gray-0;
       }
     }
   }
 
   &.cyan {
     // color config
-    background-color: theme.$amino-cyan-100;
+    background-color: theme.$amino-cyan-50;
     border: 1px solid theme.$amino-cyan-200;
     color: theme.$amino-cyan-800;
     &.bold {
       // bold config
       background-color: theme.$amino-cyan-600;
-      border: 1px solid theme.$amino-cyan-600;
-      color: theme.$amino-cyan-100;
+      border: 1px solid theme.$amino-cyan-700;
+      color: theme.$amino-gray-0;
+
+      [data-theme='night'] & {
+        color: theme.$amino-gray-0;
+
+        & svg {
+          color: theme.$amino-gray-0;
+        }
+      }
+
+      & svg {
+        color: theme.$amino-gray-0;
+      }
     }
   }
 }

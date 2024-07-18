@@ -1,22 +1,24 @@
 export const green = {
-  /** @info #DEFDE8  */
-  'green-100': '#DEFDE8',
-  /** @info #AFF8C3  */
-  'green-200': '#AFF8C3',
-  /** @info #81EF98  */
-  'green-300': '#81EF98',
-  /** @info #5BDC70  */
-  'green-400': '#57DB6C',
-  /** @info #4AC959  */
-  'green-500': '#39C049',
-  /** @info #2CA03F  */
-  'green-600': '#2CA03F',
-  /** @info #288129  */
-  'green-700': '#288129',
-  /** @info #246627  */
-  'green-800': '#246627',
-  /** @info #1D4920  */
-  'green-900': '#1D4920',
-  /** @info #153219  */
-  'green-1000': '#153219',
+  /** @info #F0FAEF  */
+  'green-50': '#F0FAEF',
+  /** @info #E0F8E0  */
+  'green-100': '#E0F8E0',
+  /** @info #C3EFC5  */
+  'green-200': '#C3EFC5',
+  /** @info #93E29A  */
+  'green-300': '#93E29A',
+  /** @info #5DCB6A  */
+  'green-400': '#5DCB6A',
+  /** @info #37B04A  */
+  'green-500': '#37B04A',
+  /** @info #2CA041  */
+  'green-600': '#2CA041',
+  /** @info #237234  */
+  'green-700': '#237234',
+  /** @info #205B2F  */
+  'green-800': '#205B2F',
+  /** @info #1C4B29  */
+  'green-900': '#1C4B29',
+  /** @info #0A2914  */
+  'green-950': '#0A2914',
 } as const;

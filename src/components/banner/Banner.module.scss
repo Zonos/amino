@@ -19,31 +19,31 @@ $header-color: var(--amino-banner-header-color);
 
   &.defaultBanner {
     background: theme.$amino-gray-50;
-    color: theme.$amino-gray-700;
-    border: 1px solid theme.$amino-gray-100;
+    color: theme.$amino-gray-800;
+    border: 1px solid theme.$amino-gray-200;
   }
 
   &.infoBanner {
-    background: theme.$amino-blue-100;
-    color: theme.$amino-blue-700;
+    background: theme.$amino-blue-50;
+    color: theme.$amino-blue-800;
     border: 1px solid theme.$amino-blue-200;
   }
 
   &.successBanner {
-    background: theme.$amino-green-100;
-    color: theme.$amino-green-700;
+    background: theme.$amino-green-50;
+    color: theme.$amino-green-800;
     border: 1px solid theme.$amino-green-200;
   }
 
   &.warningBanner {
-    background: theme.$amino-orange-100;
-    color: theme.$amino-orange-700;
+    background: theme.$amino-orange-50;
+    color: theme.$amino-orange-800;
     border: 1px solid theme.$amino-orange-200;
   }
 
   &.errorBanner {
-    background: theme.$amino-red-100;
-    color: theme.$amino-red-700;
+    background: theme.$amino-red-50;
+    color: theme.$amino-red-800;
     border: 1px solid theme.$amino-red-200;
   }
 }
@@ -76,6 +76,7 @@ $header-color: var(--amino-banner-header-color);
 .header {
   grid-area: header;
   color: $header-color;
+  font-size: theme.$amino-font-size-base;
 }
 
 .content {
@@ -83,7 +84,8 @@ $header-color: var(--amino-banner-header-color);
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  gap: theme.$amino-space-16;
+  gap: theme.$amino-space-8;
+  font-size: theme.$amino-font-size-base;
 }
 
 .actionsWrapper {
@@ -103,4 +105,5 @@ $header-color: var(--amino-banner-header-color);
   display: flex;
   align-items: center;
   gap: theme.$amino-space-12;
+  margin-top: theme.$amino-space-8;
 }
