@@ -1,16 +1,18 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { type ButtonProps, Button } from 'src/components/button/Button';
+import { Button } from 'src/components/button/Button';
 import { ButtonGroup } from 'src/components/button/button-group/ButtonGroup';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
-import { EditIcon } from 'src/icons/EditIcon';
-import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
-import { StarsIcon } from 'src/icons/StarsIcon';
+import {
+  ArrowSwapIcon,
+  EditIcon,
+  RemoveCircleIcon,
+  StarsIcon,
+} from 'src/icons/_IconIndex';
 
-const ButtonGroupMeta: Meta = {
-  component: Button,
+const meta: Meta<typeof ButtonGroup> = {
+  component: ButtonGroup,
   parameters: {
     design: {
       type: 'figma',
@@ -19,52 +21,52 @@ const ButtonGroupMeta: Meta = {
   },
 };
 
-export default ButtonGroupMeta;
+export default meta;
 
-const Template: StoryFn<ButtonProps> = () => (
-  <VStack spacing={40}>
-    <VStack spacing={16}>
-      <Text type="title">2 Buttons</Text>
-      <ButtonGroup>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-      </ButtonGroup>
-      <ButtonGroup>
-        <Button icon={<EditIcon />} />
-        <Button icon={<RemoveCircleIcon />} />
-      </ButtonGroup>
+type Story = StoryObj<typeof ButtonGroup>;
+
+const icons = [
+  <EditIcon />,
+  <RemoveCircleIcon />,
+  <ArrowSwapIcon />,
+  <StarsIcon />,
+];
+
+const createButtonStory = (numButtons: number): Story => ({
+  render: () => (
+    <VStack spacing={40}>
+      <VStack spacing={16}>
+        <Text type="title">{numButtons} Buttons</Text>
+
+        {/* Text buttons */}
+        <ButtonGroup>
+          {Array.from({ length: numButtons }, (_, i) => (
+            <Button key={i}>Button {i + 1}</Button>
+          ))}
+        </ButtonGroup>
+
+        {/* Mixture of text and icon buttons */}
+        <ButtonGroup>
+          {Array.from({ length: numButtons }, (_, i) =>
+            i % 2 !== 0 ? (
+              <Button key={i} icon={icons[i % icons.length]} />
+            ) : (
+              <Button key={i}>Button {i + 1}</Button>
+            ),
+          )}
+        </ButtonGroup>
+
+        {/* Icon buttons */}
+        <ButtonGroup>
+          {icons.slice(0, numButtons).map(icon => (
+            <Button key={icon.key} icon={icon} />
+          ))}
+        </ButtonGroup>
+      </VStack>
     </VStack>
+  ),
+});
 
-    <VStack spacing={16}>
-      <Text type="title">3 Buttons</Text>
-      <ButtonGroup>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button>Button 3</Button>
-      </ButtonGroup>
-      <ButtonGroup>
-        <Button icon={<EditIcon />} />
-        <Button icon={<RemoveCircleIcon />} />
-        <Button icon={<ArrowSwapIcon />} />
-      </ButtonGroup>
-    </VStack>
-
-    <VStack spacing={16}>
-      <Text type="title">4 Buttons</Text>
-      <ButtonGroup>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-        <Button>Button 3</Button>
-        <Button>Button 4</Button>
-      </ButtonGroup>
-      <ButtonGroup>
-        <Button icon={<EditIcon />} />
-        <Button icon={<RemoveCircleIcon />} />
-        <Button icon={<ArrowSwapIcon />} />
-        <Button icon={<StarsIcon />} />
-      </ButtonGroup>
-    </VStack>
-  </VStack>
-);
-
-export const Default = Template.bind({});
+export const TwoButtons: Story = createButtonStory(2);
+export const ThreeButtons: Story = createButtonStory(3);
+export const FourButtons: Story = createButtonStory(4);
