@@ -32,7 +32,6 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   border-radius: 100px;
   border-top-right-radius: $border-top-right-radius;
   border-bottom-right-radius: $border-bottom-right-radius;
-  border-right: 0px solid $border-right-color;
 
   &:hover {
     background-color: theme.$amino-hover-color;
