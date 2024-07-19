@@ -44,7 +44,7 @@ $slider-wrapper-height: var(--amino-slider-wrapper-height);
   width: $styled-thumb-width;
 
   [data-theme='night'] & {
-    background: theme.$amino-gray-1200;
+    background: theme.$amino-gray-1000;
   }
 
   cursor: pointer;

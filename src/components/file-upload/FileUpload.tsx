@@ -70,7 +70,7 @@ export const FileUpload = ({
 
       return (
         <div className={styles.uploadedFileInfoWrapper}>
-          <Text color="gray1200" type="label">
+          <Text color="gray1000" type="label">
             {name}
           </Text>
           {size && (

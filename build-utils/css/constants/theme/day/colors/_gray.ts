@@ -1,30 +1,28 @@
 export const gray = {
   /** @info white  */
   'gray-0': '#FFFFFF',
-  /** @info #F6F6F8  */
-  'gray-50': '#F6F6F8',
-  /** @info #EBEBF0  */
-  'gray-100': '#EBEBF0',
-  /** @info #D9DAE3  */
-  'gray-200': '#D9DAE3',
-  /** @info #BFC0CE  */
-  'gray-300': '#BFC0CE',
-  /** @info #A7A9B9  */
-  'gray-400': '#A7A9B9',
-  /** @info #8E92A4  */
-  'gray-500': '#888D9F',
-  /** @info #676C7E  */
-  'gray-600': '#676C7E',
-  /** @info #575C6B  */
-  'gray-700': '#575C6B',
-  /** @info #484C5B  */
-  'gray-800': '#484C5B',
-  /** @info #383A48  */
-  'gray-900': '#383A48',
-  /** @info #2A2C37  */
-  'gray-1000': '#2A2C37',
-  /** @info #1A1C23  */
-  'gray-1100': '#1A1C23',
-  /** @info #101116  */
-  'gray-1200': '#101116',
+  /** @info #F4F5F6  */
+  'gray-50': '#F4F5F6',
+  /** @info #E8EAEE  */
+  'gray-100': '#E8EAEE',
+  /** @info #DFE2E7  */
+  'gray-200': '#DFE2E7',
+  /** @info #BCC3CD  */
+  'gray-300': '#BCC3CD',
+  /** @info #8A95A8  */
+  'gray-400': '#8A95A8',
+  /** @info #68748D  */
+  'gray-500': '#68748D',
+  /** @info #555D72  */
+  'gray-600': '#555D72',
+  /** @info #454C5E  */
+  'gray-700': '#454C5E',
+  /** @info #343846  */
+  'gray-800': '#343846',
+  /** @info #272A35  */
+  'gray-900': '#272A35',
+  /** @info #1E2029  */
+  'gray-950': '#1E2029',
+  /** @info #0F1015  */
+  'gray-1000': '#0F1015',
 } as const;
