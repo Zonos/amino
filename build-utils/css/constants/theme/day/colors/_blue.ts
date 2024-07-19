@@ -7,7 +7,7 @@ export const blue = {
   'blue-200': '#C2D6FB',
   /** @info #98B6F8  */
   'blue-300': '#98B6F8',
-  /** @info #92B6F7  */
+  /** @info #678FF3  */
   'blue-400': '#678FF3',
   /** @info #446FEE  */
   'blue-500': '#446FEE',

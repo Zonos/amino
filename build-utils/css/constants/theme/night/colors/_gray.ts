@@ -23,6 +23,6 @@ export const gray = {
   'gray-900': '#E8EAEE',
   /** @info #F4F5F6  */
   'gray-950': '#F4F5F6',
-  /** @info #F6F6F8  */
+  /** @info #FFFFFF  */
   'gray-1000': '#FFFFFF',
 } as const;
