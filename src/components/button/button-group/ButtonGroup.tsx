@@ -5,6 +5,9 @@ import { Flex } from 'src/components/flex/Flex';
 import styles from './ButtonGroup.module.scss';
 
 type ButtonGroupProps = {
+  /**
+   * @note The children of the ButtonGroup component must be Amino Button components
+   */
   children: ReactNode;
 };
 
