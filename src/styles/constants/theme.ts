@@ -102,7 +102,7 @@ export const theme = {
   /** @info #98B6F8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue300: 'var(--amino-blue-300)',
-  /** @info #92B6F7  */
+  /** @info #678FF3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue400: 'var(--amino-blue-400)',
   /** @info #446FEE  */
