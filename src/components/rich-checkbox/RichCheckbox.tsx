@@ -52,7 +52,7 @@ export const RichCheckbox = ({
           >
             {icon && icon}
             <VStack spacing={0}>
-              <Text className={styles.label} color="gray1200" type="label">
+              <Text className={styles.label} color="gray1000" type="label">
                 {label}
               </Text>
               {subtitle && (

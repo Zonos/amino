@@ -4,11 +4,11 @@ import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
-import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
-import { InfoDuotoneIcon } from 'src/icons/InfoDuotoneIcon';
-import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
+import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
+import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
+import { WarningIcon } from 'src/icons/WarningIcon';
 import type { Color, Intent } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
 
@@ -40,58 +40,28 @@ export const Banner = ({
     switch (intent) {
       case 'info':
         return {
-          intentIcon: (
-            <InfoDuotoneIcon
-              color="blue800"
-              secondaryColor="blue400"
-              size={24}
-            />
-          ),
+          intentIcon: <InfoIcon color="blue800" size={24} />,
           removeIconColor: 'blue800',
         };
       case 'success':
         return {
-          intentIcon: (
-            <CheckCircleDuotoneIcon
-              color="green800"
-              secondaryColor="green400"
-              size={24}
-            />
-          ),
+          intentIcon: <CheckCircleIcon color="green800" size={24} />,
           removeIconColor: 'green800',
         };
       case 'warning':
         return {
-          intentIcon: (
-            <WarningDuotoneIcon
-              color="orange800"
-              secondaryColor="orange400"
-              size={24}
-            />
-          ),
+          intentIcon: <WarningIcon color="orange800" size={24} />,
           removeIconColor: 'orange800',
         };
       case 'error':
         return {
-          intentIcon: (
-            <RemoveCircleDuotoneIcon
-              color="red800"
-              secondaryColor="red400"
-              size={24}
-            />
-          ),
+          intentIcon: <ExclamationMarkIcon color="red800" size={24} />,
           removeIconColor: 'red800',
         };
       case 'default':
       default:
         return {
-          intentIcon: (
-            <InfoDuotoneIcon
-              color="gray800"
-              secondaryColor="gray400"
-              size={24}
-            />
-          ),
+          intentIcon: <InfoIcon color="gray800" size={24} />,
           removeIconColor: 'gray800',
         };
     }

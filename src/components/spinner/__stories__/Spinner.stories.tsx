@@ -47,7 +47,7 @@ export const White: StoryFn<SpinnerProps> = ({
   ...props
 }: SpinnerProps) => (
   <>
-    {[theme.gray1200, theme.blue600, theme.red600, theme.green600].map(
+    {[theme.gray1000, theme.blue600, theme.red600, theme.green600].map(
       color => (
         <div
           style={{

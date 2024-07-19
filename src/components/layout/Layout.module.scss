@@ -42,13 +42,13 @@ $height: var(--amino-layout-height);
 .styledSearchInput {
   border: 0;
   svg {
-    color: theme.$amino-gray-1200;
+    color: theme.$amino-gray-1000;
   }
   input {
     background-color: theme.$amino-gray-100;
     border: 0;
     &::placeholder {
-      color: theme.$amino-gray-1200;
+      color: theme.$amino-gray-1000;
     }
   }
 }

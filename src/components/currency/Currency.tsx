@@ -21,7 +21,7 @@ export const Currency = ({ amount, className, code, style }: Props) => {
 
   return (
     <span className={clsx(styles.styledCurrency, className)} style={style}>
-      <Text color={isNegative ? 'red600' : 'gray1200'} type="label">
+      <Text color={isNegative ? 'red600' : 'gray1000'} type="label">
         {formattedCurrency}
       </Text>
       <Text color={isNegative ? 'red600' : 'gray700'}>

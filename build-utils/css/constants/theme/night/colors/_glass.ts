@@ -22,9 +22,7 @@ export const glass = {
   /** @info #FFFFFFD8 */
   'glass-900': '#FFFFFFD8',
   /** @info #FFFFFFEA */
-  'glass-1000': '#FFFFFFEA',
+  'glass-950': '#FFFFFFEA',
   /** @info #FFFFFFF4 */
-  'glass-1100': '#FFFFFFF4',
-  /** @info #FFFFFFFA */
-  'glass-1200': '#FFFFFFFA',
+  'glass-1000': '#FFFFFFF4',
 } as const;

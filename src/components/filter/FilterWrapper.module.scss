@@ -27,15 +27,18 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: theme.$amino-space-8;
-  padding: theme.$amino-space-4 theme.$amino-space-8;
+  gap: theme.$amino-space-0;
+  padding: theme.$amino-space-4 theme.$amino-space-4;
   border-radius: 100px;
   border-top-right-radius: $border-top-right-radius;
   border-bottom-right-radius: $border-bottom-right-radius;
-  border-right: 1px solid $border-right-color;
 
   &:hover {
     background-color: theme.$amino-hover-color;
+  }
+
+  &:global(.active) {
+    border-right: 1px solid $border-right-color;
   }
 }
 
@@ -43,8 +46,8 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: theme.$amino-space-8;
-  padding: theme.$amino-space-4 theme.$amino-space-8;
+  gap: theme.$amino-space-0;
+  padding: theme.$amino-space-4 theme.$amino-space-4;
   border-radius: 100px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -52,6 +55,18 @@ $border-right-color: var(--amino-filter-wrapper-border-right-color);
   &:hover {
     background-color: theme.$amino-hover-color;
   }
+}
+
+.filterTitle {
+  padding-left: var(--amino-space-4);
+  padding-right: var(--amino-space-4);
+}
+
+.filterText {
+  color: var(--amino-primary);
+  font-weight: 600;
+  padding-left: var(--amino-space-4);
+  padding-right: var(--amino-space-4);
 }
 
 .dropdownWrapper {

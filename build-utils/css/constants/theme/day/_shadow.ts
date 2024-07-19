@@ -8,16 +8,16 @@ export const shadow = {
   'v3-shadow-inset':
     '0px 2px 4px rgba(0, 0, 0, 0.04), 0px 1px 0px 0px rgba(255, 255, 255, 1), inset 0px 0px 8px rgba(0, 0, 0, 0.02), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04)',
   'shadow-button-primary':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(68, 94, 238, 0.40)',
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(68, 111, 238, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset',
   'shadow-button-success':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(43, 156, 77, 0.40)',
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(55, 176, 74, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset',
   'shadow-button-danger':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(217, 33, 65, 0.40)',
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(238, 69, 89, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset',
   'shadow-button-warning':
-    '0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 1px 3px 0px rgba(229, 89, 26, 0.40)',
-  'button-focus-ring': '0 0 0 2px var(--amino-blue-600)',
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(236, 111, 35, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset',
+  'button-focus-ring': '0 0 0 2px var(--amino-blue-500)',
   'shadow-button-standard':
-    '0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset',
+    '0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset, 0px 1px 3px 0px rgba(110, 110, 120, 0.12)',
   'shadow-button-disabled':
     '0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset',
   'shadow-select-base':

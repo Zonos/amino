@@ -1,22 +1,24 @@
 export const blue = {
-  /** @info #152141  */
-  'blue-100': '#152141',
-  /** @info #212F68  */
-  'blue-200': '#212F68',
-  /** @info #2E3D94  */
-  'blue-300': '#2E3D94',
-  /** @info #3843C2  */
-  'blue-400': '#3843C2',
-  /** @info #445EEE  */
-  'blue-500': '#445EEE',
-  /** @info #7292F3  */
-  'blue-600': '#5A80F1',
-  /** @info #92B6F7  */
-  'blue-700': '#7FA9F5',
-  /** @info #A8CEFA  */
-  'blue-800': '#A8CEFA',
-  /** @info #C9E6FD  */
-  'blue-900': '#C9E6FD',
-  /** @info #E7F6FE  */
-  'blue-1000': '#E7F6FE',
+  /** @info #1A1F51  */
+  'blue-50': '#1A1F51',
+  /** @info #232E85  */
+  'blue-100': '#232E85',
+  /** @info #2438A9  */
+  'blue-200': '#2438A9',
+  /** @info #2544D0  */
+  'blue-300': '#2544D0',
+  /** @info #2E55E2  */
+  'blue-400': '#2E55E2',
+  /** @info #446FEE  */
+  'blue-500': '#446FEE',
+  /** @info #678FF3  */
+  'blue-600': '#678FF3',
+  /** @info #98B6F8  */
+  'blue-700': '#98B6F8',
+  /** @info #C2D6FB  */
+  'blue-800': '#C2D6FB',
+  /** @info #DAE7FC  */
+  'blue-900': '#DAE7FC',
+  /** @info #E7F0FE  */
+  'blue-950': '#E7F0FE',
 } as const;

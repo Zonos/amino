@@ -6,7 +6,7 @@
       rgba(148, 150, 158, 0.4) 0%,
       rgba(148, 150, 158, 0) 50%
     ),
-    theme.$amino-gray-1200;
+    theme.$amino-gray-1000;
   z-index: 999999;
   border-radius: theme.$amino-radius-12;
   color: theme.$amino-gray-0;
@@ -29,7 +29,7 @@
         rgba(148, 150, 158, 0) 50%
       ),
       theme.$amino-gray-50;
-    color: theme.$amino-gray-1200;
+    color: theme.$amino-gray-1000;
 
     & svg {
       color: theme.$amino-gray-600;
@@ -42,7 +42,7 @@
         rgba(86, 199, 111, 0.4) 0%,
         rgba(86, 199, 111, 0) 50%
       ),
-      theme.$amino-gray-1200;
+      theme.$amino-gray-1000;
 
     & svg {
       color: theme.$amino-green-500;
@@ -68,7 +68,7 @@
         rgba(249, 92, 103, 0.4) 0%,
         rgba(249, 92, 103, 0) 50%
       ),
-      theme.$amino-gray-1200;
+      theme.$amino-gray-1000;
 
     & svg {
       color: theme.$amino-red-500;
@@ -94,7 +94,7 @@
         rgba(248, 140, 83, 0.4) 0%,
         rgba(248, 140, 83, 0) 50%
       ),
-      theme.$amino-gray-1200;
+      theme.$amino-gray-1000;
 
     & svg {
       color: theme.$amino-orange-500;
@@ -120,7 +120,7 @@
         rgba(95, 146, 246, 0.4) 0%,
         rgba(95, 146, 246, 0) 50%
       ),
-      theme.$amino-gray-1200;
+      theme.$amino-gray-1000;
 
     & svg {
       color: theme.$amino-blue-500;

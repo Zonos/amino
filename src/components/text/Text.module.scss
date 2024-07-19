@@ -9,11 +9,11 @@ $text-transform: var(--amino-text-transform);
 .subTitle {
   font-size: theme.$amino-font-size-s;
   line-height: 16px;
-  color: theme.$amino-gray-900;
+  color: theme.$amino-gray-800;
 }
 
 .inputLabel {
-  color: theme.$amino-gray-1200;
+  color: theme.$amino-gray-1000;
   display: block;
   font-family: theme.$amino-font-sans;
   font-size: 14px;
