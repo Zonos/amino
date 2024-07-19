@@ -6,6 +6,10 @@
 
   > * {
     border-right: none;
+
+    &:focus {
+      z-index: 100;
+    }
   }
 
   > *:not(:first-child) {

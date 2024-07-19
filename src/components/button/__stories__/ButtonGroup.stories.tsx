@@ -3,6 +3,11 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { type ButtonProps, Button } from 'src/components/button/Button';
 import { ButtonGroup } from 'src/components/button/button-group/ButtonGroup';
 import { VStack } from 'src/components/stack/VStack';
+import { Text } from 'src/components/text/Text';
+import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
+import { EditIcon } from 'src/icons/EditIcon';
+import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
+import { StarsIcon } from 'src/icons/StarsIcon';
 
 const ButtonGroupMeta: Meta = {
   component: Button,
@@ -16,32 +21,50 @@ const ButtonGroupMeta: Meta = {
 
 export default ButtonGroupMeta;
 
-const Template: StoryFn<ButtonProps> = args => (
+const Template: StoryFn<ButtonProps> = () => (
   <VStack spacing={40}>
-    <ButtonGroup>
-      <Button {...args}>Button 1</Button>
-      <Button {...args}>Button 2</Button>
-    </ButtonGroup>
-    <ButtonGroup>
-      <Button {...args}>Button 1</Button>
-      <Button {...args}>Button 2</Button>
-      <Button {...args}>Button 3</Button>
-    </ButtonGroup>
-    <ButtonGroup>
-      <Button {...args}>Button 1</Button>
-      <Button {...args}>Button 2</Button>
-      <Button {...args}>Button 3</Button>
-      <Button {...args}>Button 4</Button>
-    </ButtonGroup>
+    <VStack spacing={16}>
+      <Text type="title">2 Buttons</Text>
+      <ButtonGroup>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button icon={<EditIcon />} />
+        <Button icon={<RemoveCircleIcon />} />
+      </ButtonGroup>
+    </VStack>
+
+    <VStack spacing={16}>
+      <Text type="title">3 Buttons</Text>
+      <ButtonGroup>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button>Button 3</Button>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button icon={<EditIcon />} />
+        <Button icon={<RemoveCircleIcon />} />
+        <Button icon={<ArrowSwapIcon />} />
+      </ButtonGroup>
+    </VStack>
+
+    <VStack spacing={16}>
+      <Text type="title">4 Buttons</Text>
+      <ButtonGroup>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button>Button 3</Button>
+        <Button>Button 4</Button>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button icon={<EditIcon />} />
+        <Button icon={<RemoveCircleIcon />} />
+        <Button icon={<ArrowSwapIcon />} />
+        <Button icon={<StarsIcon />} />
+      </ButtonGroup>
+    </VStack>
   </VStack>
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  variant: 'standard',
-};
-
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: 'primary',
-};
