@@ -1,14 +1,12 @@
 @use 'theme';
 
 .buttonGroup {
-  border-radius: 6px;
+  border-radius: theme.$amino-radius-6;
   width: fit-content;
 
   > * {
-    border-right: none;
-
     &:focus {
-      z-index: 100;
+      z-index: 1;
     }
   }
 
@@ -21,9 +19,5 @@
   > *:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-
-  > *:last-child {
-    border-right: none;
   }
 }
