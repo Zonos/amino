@@ -19,7 +19,7 @@
   height: 100%;
   margin: 8px;
   border-radius: 12px;
-  background: theme.$amino-surface-color;
+  background: theme.$amino-page-background;
 
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: theme.$amino-surface-color-secondary;
+  background: theme.$amino-page-background;
 
   & > div + div {
     margin-left: 8px;
