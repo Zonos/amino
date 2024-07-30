@@ -91,7 +91,7 @@ export const setStorageItemWithLifetime = <Value extends unknown>({
 
   if (valueIsTruthy) {
     storage.setItem(key, valueToSet);
-    storage.setItem(`${key}_update_after`, lifetime.format('YYYY-MM-DD'));
+    storage.setItem(`${key}_update_after`, lifetime.format());
   } else {
     // Remove the item
     storage.removeItem(key);
