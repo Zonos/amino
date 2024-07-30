@@ -16,6 +16,7 @@ export const AlertConsumer = () => {
             label: 'Heads up',
             onDismiss: () => {},
             subtitle: 'You look nice today',
+            width: 500,
           })
         }
         variant="primary"
@@ -31,6 +32,7 @@ export const AlertConsumer = () => {
             label: 'Heads up',
             onDismiss: () => {},
             subtitle: 'There was an error or something',
+            width: 800,
           })
         }
         variant="danger"

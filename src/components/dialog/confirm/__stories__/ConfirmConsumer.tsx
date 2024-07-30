@@ -41,11 +41,12 @@ export const ConfirmConsumer = () => {
         onClick={() =>
           confirm({
             confirmText: 'Do action',
-            dismissText: "Don't do action",
+            dismissText: "Don't do action (for real!)",
             intent: 'danger',
             label: 'Are you sure?',
             onConfirm: setDangerConfirmOk,
             subtitle: 'This is the descriptive text about what just happened',
+            width: 800,
           })
         }
         variant="danger"

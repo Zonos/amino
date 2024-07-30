@@ -21,6 +21,7 @@ export const AlertDialog = ({
       <Button
         onClick={dismissAction}
         size="lg"
+        style={{ gridColumn: 'span 2' }}
         variant={_dismissableDialogGetButtonVariant(props.intent)}
       >
         {dismissText}
