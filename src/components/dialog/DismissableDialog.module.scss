@@ -12,16 +12,7 @@
 }
 
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-
-  & > button + button {
-    margin-left: theme.$amino-space-8;
-  }
-
-  button {
-    flex: 1;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
