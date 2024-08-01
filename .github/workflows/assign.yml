@@ -9,7 +9,7 @@ jobs:
     name: Auto add assignees/reviewers
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/auto-assign
         env:
           GITHUB_TOKEN: ${{ github.token }}

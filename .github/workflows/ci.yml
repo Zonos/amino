@@ -6,13 +6,13 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9.x
-      - uses: actions/setup-node@v3
+          version: 8.x
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - run: pnpm install
       - run: pnpm build:ci
@@ -20,13 +20,13 @@ jobs:
   Lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9.x
-      - uses: actions/setup-node@v3
+          version: 8.x
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - run: pnpm install
       - run: pnpm lint:prod
@@ -35,13 +35,13 @@ jobs:
     name: Check types
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9.x
-      - uses: actions/setup-node@v3
+          version: 8.x
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - run: pnpm install
       # Build the types for the scss files and make sure they are up to date
@@ -52,13 +52,13 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9.x
-      - uses: actions/setup-node@v3
+          version: 8.x
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - run: pnpm install
       - run: pnpm test:prod
