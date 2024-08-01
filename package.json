@@ -1,10 +1,14 @@
 {
   "name": "@zonos/amino",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
   "private": false,
+  "homepage": "https://amino.zonos.com",
+  "engines": {
+    "node": "^20"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -73,7 +77,7 @@
     "react-split-it": "^2.0.0",
     "topojson-client": "^3.1.0",
     "uuid": "^9.0.0",
-    "zod": "^3.23.5"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",

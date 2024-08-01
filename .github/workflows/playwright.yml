@@ -14,7 +14,7 @@ jobs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
       - name: Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -25,13 +25,13 @@ jobs:
     timeout-minutes: 60
     runs-on: macos-12
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9.x
-      - uses: actions/setup-node@v3
+          version: 8.x
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
@@ -40,7 +40,7 @@ jobs:
         id: playwright-version
         run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'])")" >> $GITHUB_ENV
       - name: Cache playwright binaries
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: playwright-cache
         with:
           path: ~/Library/Caches/ms-playwright

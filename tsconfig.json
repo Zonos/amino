@@ -66,6 +66,7 @@
     "prettier.config.js",
     "tsconfig.json",
     "test-utils",
-    "postcss.config.js"
+    "postcss.config.js",
+    "vite.config.mts"
   ]
 }
