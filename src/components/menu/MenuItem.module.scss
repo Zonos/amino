@@ -1,5 +1,12 @@
 @use 'theme';
 
+.disabled {
+  .styledListItem {
+    cursor: not-allowed;
+    opacity: theme.$amino-opacity-disabled;
+  }
+}
+
 .styledListItem {
   display: flex;
   align-items: center;

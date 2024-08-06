@@ -4,20 +4,29 @@
   border-radius: theme.$amino-radius-6;
   width: fit-content;
 
-  > * {
+  > *,
+  :global(.menu-button-action) *,
+  :global(.tooltip-wrapper) * {
     &:focus {
       z-index: 1;
     }
   }
 
   > *:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    margin-left: -1px;
+    &,
+    :global(.menu-button-action) *,
+    :global(.tooltip-wrapper) * {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: -1px;
+    }
   }
-  
   > *:not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    &,
+    :global(.menu-button-action) *,
+    :global(.tooltip-wrapper) * {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 }

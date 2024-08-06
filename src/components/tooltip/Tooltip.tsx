@@ -118,7 +118,7 @@ export const Tooltip = ({
         open={open}
         title={renderTooltip()}
       >
-        <div>{children}</div>
+        <div className="tooltip-wrapper">{children}</div>
       </StyledTooltip>
     );
   }

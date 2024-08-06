@@ -1,7 +1,11 @@
+import { Tooltip } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { ButtonGroup } from 'src/components/button/button-group/ButtonGroup';
+import { MenuButton } from 'src/components/button/MenuButton';
+import { Menu } from 'src/components/menu/Menu';
+import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import {
@@ -61,6 +65,42 @@ const createButtonStory = (numButtons: number): Story => ({
           {icons.slice(0, numButtons).map(icon => (
             <Button key={icon.key} icon={icon} />
           ))}
+        </ButtonGroup>
+
+        {/* Mixture of menu button and button */}
+        <ButtonGroup>
+          {Array.from({ length: numButtons }, (_, i) =>
+            i % 2 !== 0 ? (
+              <MenuButton action={<Button>Menu button</Button>}>
+                <Menu>
+                  <MenuItem>Menu 1</MenuItem>
+                  <MenuItem>Menu 2</MenuItem>
+                  <MenuItem>Menu 3</MenuItem>
+                </Menu>
+              </MenuButton>
+            ) : (
+              <Button key={i}>Button {i + 1}</Button>
+            ),
+          )}
+        </ButtonGroup>
+
+        {/* Mixture of tooltip button and menu button */}
+        <ButtonGroup>
+          {Array.from({ length: numButtons }, (_, i) =>
+            i % 2 !== 0 ? (
+              <MenuButton action={<Button>Menu button</Button>}>
+                <Menu>
+                  <MenuItem>Menu 1</MenuItem>
+                  <MenuItem>Menu 2</MenuItem>
+                  <MenuItem>Menu 3</MenuItem>
+                </Menu>
+              </MenuButton>
+            ) : (
+              <Tooltip title="Tooltip">
+                <Button key={i}>Tooltip Button {i + 1}</Button>
+              </Tooltip>
+            ),
+          )}
         </ButtonGroup>
       </VStack>
     </VStack>
