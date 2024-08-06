@@ -39,11 +39,11 @@ export const FilterAmount = ({
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
   );
-  const [editingAmountMin, setEditingAmountMin] = useState<number | null>(
-    filter.amountTotalMin,
+  const [editingAmountMin, setEditingAmountMin] = useState<string | null>(
+    filter.amountTotalMin ? String(filter.amountTotalMin.toFixed(2)) : null,
   );
-  const [editingAmountMax, setEditingAmountMax] = useState<number | null>(
-    filter.amountTotalMax,
+  const [editingAmountMax, setEditingAmountMax] = useState<string | null>(
+    filter.amountTotalMax ? String(filter.amountTotalMax.toFixed(2)) : null,
   );
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -65,8 +65,12 @@ export const FilterAmount = ({
 
   const handleApplyFilterText: FilterApplyCallback = useCallback(
     setFilterText => {
-      const amountMinString = `${editingAmountMin?.toFixed(2) || 0}`;
-      const amountMaxString = `${editingAmountMax?.toFixed(2) || 0}`;
+      const amountMinString = editingAmountMin
+        ? `${parseFloat(editingAmountMin).toFixed(2)}`
+        : '0';
+      const amountMaxString = editingAmountMax
+        ? `${parseFloat(editingAmountMax).toFixed(2)}`
+        : '0';
 
       switch (filterType) {
         case 'between':
@@ -99,21 +103,27 @@ export const FilterAmount = ({
       switch (filterType) {
         case 'between':
           dispatchAmounts({
-            amountMax: editingAmountMax,
-            amountMin: editingAmountMin,
+            amountMax: editingAmountMax ? parseFloat(editingAmountMax) : null,
+            amountMin: editingAmountMin ? parseFloat(editingAmountMin) : null,
           });
           break;
         case 'equal':
           dispatchAmounts({
-            amountMax: editingAmountMin,
-            amountMin: editingAmountMin,
+            amountMax: editingAmountMin ? parseFloat(editingAmountMin) : null,
+            amountMin: editingAmountMin ? parseFloat(editingAmountMin) : null,
           });
           break;
         case 'greater':
-          dispatchAmounts({ amountMax: null, amountMin: editingAmountMin });
+          dispatchAmounts({
+            amountMax: null,
+            amountMin: editingAmountMin ? parseFloat(editingAmountMin) : null,
+          });
           break;
         case 'less':
-          dispatchAmounts({ amountMax: editingAmountMax, amountMin: null });
+          dispatchAmounts({
+            amountMax: editingAmountMax ? parseFloat(editingAmountMax) : null,
+            amountMin: null,
+          });
           break;
         default:
           break;
@@ -149,8 +159,8 @@ export const FilterAmount = ({
     });
     dispatchAmounts({ amountMax: null, amountMin: null });
     setFilterType(initialFilterAmountState.amountFilterType);
-    setEditingAmountMin(0);
-    setEditingAmountMax(0);
+    setEditingAmountMin('0');
+    setEditingAmountMax('0');
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -163,11 +173,15 @@ export const FilterAmount = ({
 
   const handleClose = () => {
     setFilterType(filter.amountFilterType);
-    setEditingAmountMin(filter.amountTotalMin);
-    setEditingAmountMax(filter.amountTotalMax);
+    setEditingAmountMin(
+      filter.amountTotalMin ? String(filter.amountTotalMin) : null,
+    );
+    setEditingAmountMax(
+      filter.amountTotalMax ? String(filter.amountTotalMax) : null,
+    );
   };
 
-  const handleSetFirstValue = (value: number) => {
+  const handleSetFirstValue = (value: string) => {
     switch (filterType) {
       case 'less':
         setEditingAmountMax(value);
@@ -227,7 +241,7 @@ export const FilterAmount = ({
       <div className={styles.inputWrapper}>
         <ArrowRightIcon className="arrow-right" color="blue600" size={24} />
         <Input
-          onChange={e => handleSetFirstValue(e.target.valueAsNumber)}
+          onChange={e => handleSetFirstValue(e.target.value)}
           size="md"
           type="number"
           value={firstInputValue}
@@ -236,7 +250,7 @@ export const FilterAmount = ({
           <>
             and
             <Input
-              onChange={e => setEditingAmountMax(e.target.valueAsNumber)}
+              onChange={e => setEditingAmountMax(e.target.value)}
               size="md"
               type="number"
               value={editingAmountMax === null ? '' : String(editingAmountMax)}
