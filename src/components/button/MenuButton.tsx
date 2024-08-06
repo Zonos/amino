@@ -63,6 +63,7 @@ export const MenuButton = ({
     >
       <div
         ref={refs.setReference}
+        className="menu-button-action"
         onClick={e => {
           e.stopPropagation();
           setVisible(true);
