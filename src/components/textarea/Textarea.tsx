@@ -70,7 +70,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       additionalHeight: actions ? actionsRef.current?.clientHeight : 0,
       maxRows,
       ref: textareaRef,
-      shouldExpand: !!expandable || !!actions,
+      shouldExpand: !!expandable,
       textareaValue: value?.toString() || '',
     });
 
