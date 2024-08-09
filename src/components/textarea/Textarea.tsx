@@ -7,6 +7,7 @@ import {
 
 import clsx from 'clsx';
 
+import { Flex } from 'src/components/flex/Flex';
 import { HelpText } from 'src/components/help-text/HelpText';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
 
@@ -15,7 +16,7 @@ import styles from './Textarea.module.scss';
 type TextareaAdjustableHeightType = {
   /**
    * @param expandable
-   * @desc if set to true, the textarea will expand to fit the content
+   * @desc if set to true, the textarea will expand to fit the content. Always true if actions are passed.
    */
   expandable?: boolean;
   /**
@@ -27,6 +28,11 @@ type TextareaAdjustableHeightType = {
 };
 
 type TextareaType = {
+  /**
+   * @param actions
+   * @desc actions to be displayed in a footer within the textarea
+   */
+  actions?: ReactNode;
   error?: boolean;
   helpText?: ReactNode;
   label?: string;
@@ -40,6 +46,7 @@ export type TextareaProps = TextareaType &
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
+      actions,
       className,
       disabled,
       error,
@@ -57,11 +64,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const hasValue = !!value;
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+    const actionsRef = useRef<HTMLDivElement | null>(null);
 
     useHeightAdjustTextarea({
+      additionalHeight: actions ? actionsRef.current?.clientHeight : 0,
       maxRows,
       ref: textareaRef,
-      shouldExpand: !!expandable,
+      shouldExpand: !!expandable || !!actions,
       textareaValue: value?.toString() || '',
     });
 
@@ -115,6 +124,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           <div className={styles.styledBorder} />
         </div>
         <HelpText error={error} helpText={helpText} />
+        {actions && (
+          <div ref={actionsRef} className={styles.actions}>
+            <Flex alignItems="center" fullHeight justifyContent="flex-end">
+              {actions}
+            </Flex>
+          </div>
+        )}
       </div>
     );
   },
