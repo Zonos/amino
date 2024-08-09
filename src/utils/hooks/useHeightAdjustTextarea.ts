@@ -7,6 +7,7 @@ const getComputedStyle = (
 ) => window.getComputedStyle(element)[property] as string;
 
 type TextareaParams = {
+  additionalHeight?: number;
   initialRows?: number;
   // when expanding textarea, it will expand up to maxRows
   maxRows?: number;
@@ -20,6 +21,7 @@ type TextareaParams = {
  * expand the height of textarea up to `maxRows` and then it will add scroll bar.
  */
 export const useHeightAdjustTextarea = ({
+  additionalHeight = 0,
   initialRows = 2,
   maxRows = 5,
   ref,
@@ -52,14 +54,26 @@ export const useHeightAdjustTextarea = ({
     textarea.style.height = '0';
 
     // raise the textarea height when it's less max number of rows height
-    if (textarea.scrollHeight <= maxHeightToScroll) {
-      const adjustedHeight = Math.max(originalHeight, textarea.scrollHeight);
+    // raise the textarea height when it's less max number of rows height
+    if (textarea.scrollHeight + additionalHeight <= maxHeightToScroll) {
+      const adjustedHeight = Math.max(
+        originalHeight,
+        textarea.scrollHeight + additionalHeight,
+      );
 
       textarea.style.height = `${adjustedHeight}px`;
       textarea.style.overflow = 'hidden';
     } else {
-      textarea.style.height = `${maxHeightToScroll}px`;
+      textarea.style.height = `${maxHeightToScroll + additionalHeight}px`;
       textarea.style.overflow = 'auto';
     }
-  }, [ref, maxRows, textareaValue, shouldExpand, originalHeight, initialRows]);
+  }, [
+    ref,
+    maxRows,
+    textareaValue,
+    shouldExpand,
+    originalHeight,
+    initialRows,
+    additionalHeight,
+  ]);
 };

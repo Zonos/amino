@@ -1,3 +1,4 @@
+export declare const actions: string;
 export declare const aminoInputWrapper: string;
 export declare const disabled: string;
 export declare const fields: string;

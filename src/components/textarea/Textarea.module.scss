@@ -111,6 +111,21 @@ $width: var(--amino-textarea-width);
   }
 }
 
+.actions {
+  background: theme.$amino-page-background;
+  // use radius 16 to allow expandable icon to show
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  bottom: 1px;
+  height: 58px;
+  left: 1px;
+  padding: 0 16px;
+  position: absolute;
+  right: 1px;
+  text-align: right;
+  z-index: 3;
+}
+
 .aminoInputWrapper {
   position: relative;
   width: $width;

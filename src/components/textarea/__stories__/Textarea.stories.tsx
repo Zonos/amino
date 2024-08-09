@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
@@ -32,11 +33,13 @@ Basic.args = {
 };
 
 const Template: StoryFn<TextareaProps> = ({
+  actions,
   error,
   helpText,
   label,
   placeholder,
   value: _value,
+  ...rest
 }: TextareaProps) => {
   const [value, setValue] = useState(_value);
   const [autoAdjustContent, setAutoAdjustContent] = useState(longContent);
@@ -70,7 +73,9 @@ const Template: StoryFn<TextareaProps> = ({
 
         <Flex gap={10}>
           <Textarea
+            {...rest}
             ref={textareaRef}
+            actions={actions}
             error={error}
             helpText={helpText}
             onChange={() => {}}
@@ -85,6 +90,8 @@ const Template: StoryFn<TextareaProps> = ({
 
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             helpText={helpText}
             onChange={e => setValue(e.target.value)}
@@ -101,6 +108,8 @@ const Template: StoryFn<TextareaProps> = ({
 
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             helpText={helpText}
             label={label}
@@ -114,6 +123,8 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Long content:</Text>
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             helpText={helpText}
             label={label}
@@ -128,6 +139,8 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Empty:</Text>
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             helpText={helpText}
             label={label}
@@ -147,6 +160,8 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Editable:</Text>
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             helpText={helpText}
             label={label}
@@ -165,6 +180,8 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Expandable (maxRow 5 | maxRow 3):</Text>
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             expandable
             helpText={helpText}
@@ -174,6 +191,8 @@ const Template: StoryFn<TextareaProps> = ({
             value={autoAdjustContent}
           />
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             expandable
             helpText={helpText}
@@ -189,6 +208,8 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Read only:</Text>
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             error={error}
             helpText={helpText}
             label={label}
@@ -208,6 +229,8 @@ const Template: StoryFn<TextareaProps> = ({
         <Text type="bold-label">Disabled:</Text>
         <Flex gap={10}>
           <Textarea
+            {...rest}
+            actions={actions}
             disabled
             error={error}
             helpText={helpText}
@@ -239,6 +262,19 @@ Default.args = {
 export const WithHelpText = Template.bind({});
 WithHelpText.args = {
   helpText: '* This field is required',
+  label: 'Description',
+  placeholder: 'Please fill out the description',
+  value: 'HS code for Brazil',
+};
+
+export const WithActions = Template.bind({});
+WithActions.args = {
+  actions: (
+    <Flex>
+      <Button>Clear</Button>
+      <Button variant="primary">Save</Button>
+    </Flex>
+  ),
   label: 'Description',
   placeholder: 'Please fill out the description',
   value: 'HS code for Brazil',
