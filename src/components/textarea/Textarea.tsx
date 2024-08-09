@@ -16,7 +16,7 @@ import styles from './Textarea.module.scss';
 type TextareaAdjustableHeightType = {
   /**
    * @param expandable
-   * @desc if set to true, the textarea will expand to fit the content. Always true if actions are passed.
+   * @desc if set to true, the textarea will expand to fit the content.
    */
   expandable?: boolean;
   /**
