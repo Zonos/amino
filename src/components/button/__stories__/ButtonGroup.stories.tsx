@@ -1,4 +1,3 @@
-import { Tooltip } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
@@ -8,6 +7,7 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
 import {
   ArrowSwapIcon,
   EditIcon,

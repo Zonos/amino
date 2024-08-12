@@ -6,7 +6,7 @@
 
   > *,
   :global(.menu-button-action) *,
-  :global(.tooltip-wrapper) * {
+  > :global(.tooltip-wrapper) * {
     &:focus {
       z-index: 1;
     }
@@ -15,7 +15,7 @@
   > *:not(:first-child) {
     &,
     :global(.menu-button-action) *,
-    :global(.tooltip-wrapper) * {
+    &:global(.tooltip-wrapper) * {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       margin-left: -1px;
@@ -24,7 +24,7 @@
   > *:not(:last-child) {
     &,
     :global(.menu-button-action) *,
-    :global(.tooltip-wrapper) * {
+    &:global(.tooltip-wrapper) * {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
