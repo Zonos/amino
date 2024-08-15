@@ -20,6 +20,7 @@ export type LayoutProps = BaseProps & {
   footer: ReactNode;
   headerContent?: ReactNode;
   logoSidebar?: ReactNode;
+  noPaddingContent?: boolean;
   searchInput?: SearchInputProps;
   sidebar: ReactElement<NavigationGroupProps[] | NavigationGroupProps>;
 };
@@ -30,6 +31,7 @@ export const Layout = ({
   footer,
   headerContent,
   logoSidebar,
+  noPaddingContent,
   searchInput,
   sidebar,
   style,
@@ -66,7 +68,14 @@ export const Layout = ({
 
         <div className={layoutStyles.footer}>{footer}</div>
       </nav>
-      <div className={layoutStyles.content}>{content}</div>
+      <div
+        className={clsx(
+          layoutStyles.content,
+          noPaddingContent && layoutStyles.noPadding,
+        )}
+      >
+        {content}
+      </div>
     </div>
   </main>
 );
