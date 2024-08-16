@@ -58,6 +58,9 @@ $height: var(--amino-layout-height);
   overflow-y: auto;
   padding: theme.$amino-space-32;
   box-sizing: border-box;
+  &.noPadding {
+    padding: 0;
+  }
 }
 
 .header {
