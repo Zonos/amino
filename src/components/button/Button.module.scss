@@ -214,7 +214,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
   }
 
-  &.standardButton {
+  &.standardButton, &.invertedButton {
     box-shadow: theme.$amino-shadow-button-standard;
 
     &:not([disabled]) {

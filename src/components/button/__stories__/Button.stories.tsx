@@ -96,11 +96,11 @@ const ButtonRow = ({
         Anchor tag Button
       </Button>
       <Button
+        {...props}
         disabled={disabled}
         loading={loading}
         themeOverride="night"
         variant={variant}
-        {...props}
       >
         Night
       </Button>
@@ -246,6 +246,12 @@ export const PlainButton = Template.bind({});
 PlainButton.args = {
   children: 'Plain button',
   variant: 'plain',
+};
+
+export const InvertedButton = Template.bind({});
+InvertedButton.args = {
+  children: 'Inverted button',
+  variant: 'inverted',
 };
 
 export const InlineLinkButtonStory: StoryFn<ButtonProps> = () => (
