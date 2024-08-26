@@ -1,6 +1,7 @@
 export type Variant =
   | 'danger'
   | 'inlineLink'
+  | 'inverted'
   | 'link'
   | 'plain'
   | 'primary'
