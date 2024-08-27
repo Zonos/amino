@@ -141,7 +141,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     iconRight ? styles.iconRight : '',
     icon ? styles.hasIcon : '',
     loading ? styles.loading : '',
-    themeOverride,
   );
 
   const rippleRef = useRef<RippleActions>(null);
@@ -168,7 +167,16 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   const { aminoTheme } = useAminoTheme();
 
-  const isNightTheme = aminoTheme === 'night';
+  const getButtonTheme = () => {
+    const initialTheme = themeOverride || aminoTheme;
+    if (variant === 'inverted') {
+      return initialTheme === 'day' ? 'night' : 'day';
+    }
+    return initialTheme;
+  };
+
+  const currentTheme = getButtonTheme();
+  const isNightTheme = currentTheme === 'night';
 
   const getPadding = () => {
     switch (size) {
@@ -249,6 +257,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'subtle':
       case 'text':
       case 'standard':
+      case 'inverted':
       default:
         return 'black';
     }
@@ -272,6 +281,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'plain':
       case 'text':
       case 'standard':
+      case 'inverted':
       default:
         return theme.textColor;
     }
@@ -292,6 +302,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'danger':
         return theme.buttonDangerHover;
       case 'standard':
+      case 'inverted':
         return theme.buttonStandardHover;
       case 'subtle':
         return theme.gray100;
@@ -317,6 +328,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.warning;
       case 'danger':
         return theme.danger;
+      case 'inverted':
+        return theme.gray0;
       case 'standard':
         return theme.raisedSurfaceColor;
       case 'subtle':
@@ -329,6 +342,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   return (
     <Tag
+      data-theme={currentTheme}
       style={{
         ...style,
         '--amino-button-background-color': getBackgroundColor(),
