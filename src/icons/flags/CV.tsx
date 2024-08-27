@@ -8,57 +8,30 @@ type Props = {
   width: number;
 };
 export const CV = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
-  const ids = useStableUniqueId(3);
+  const ids = useStableUniqueId(1);
   return (
-    <FlagIconBase ref={ref} height={height} viewBox="0 0 16 12" width={width}>
-      <g clipPath={`url(#${ids[2]})`}>
-        <mask
-          height="12"
-          id={`${ids[0]}`}
-          maskUnits="userSpaceOnUse"
-          width="16"
-          x="0"
-          y="0"
-        >
-          <path d="M0 0h16v12H0z" fill="#fff" />
-        </mask>
-        <g mask={`url(#${ids[0]})`}>
-          <path
-            clipRule="evenodd"
-            d="M0 0v12h16V0H0Z"
-            fill="#4141DB"
-            fillRule="evenodd"
-          />
-          <mask
-            height="12"
-            id={`${ids[1]}`}
-            maskUnits="userSpaceOnUse"
-            width="16"
-            x="0"
-            y="0"
-          >
-            <path
-              clipRule="evenodd"
-              d="M0 0v12h16V0H0Z"
-              fill="#fff"
-              fillRule="evenodd"
-            />
-          </mask>
-          <g mask={`url(#${ids[1]})`}>
-            <path d="M0 6.5h-.5v2h17v-2H0Z" fill="#F90000" stroke="#F7FCFF" />
-            <path
-              clipRule="evenodd"
-              d="M5.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"
-              stroke="#FFDE00"
-            />
-          </g>
-        </g>
-      </g>
+    <FlagIconBase ref={ref} height={height} viewBox="0 0 640 480" width={width}>
       <defs>
-        <clipPath id={`${ids[2]}`}>
-          <rect fill="#fff" height="12" rx="1" width="16" />
+        <clipPath id={`${ids[0]}`}>
+          <path d="M-123.4 0h682.6v512h-682.6z" fillOpacity=".7" />
         </clipPath>
       </defs>
+      <g
+        clipPath={`url(#${ids[0]})`}
+        fillRule="evenodd"
+        transform="translate(115.7) scale(.94)"
+      >
+        <path d="M-123.4 233H723v206h-846.5z" fill="#fff" />
+        <path
+          d="M-122.8 0h846v256.6h-846zm.3 385.9h852.1V512h-852.1z"
+          fill="#081873"
+        />
+        <path d="M-122.5 302.6h846v39.6h-846z" fill="#de3929" />
+        <path
+          d="m131 399.2 6.6 20.4H159l-17.4 12.7 6.6 20.5L131 440l-17.4 12.7 6.7-20.5-17.4-12.7h21.5M317 250.4l6.7 20.5H345l-17.4 12.6 6.6 20.5-17.4-12.7-17.4 12.7 6.6-20.5-17.4-12.6h21.6m-222 64.4 6.6 20.5h21.5L99 368.6l6.7 20.4-17.4-12.6L70.9 389l6.6-20.4-17.4-12.7h21.5M317 329.5l6.7 20.4H345l-17.4 12.7 6.6 20.4-17.4-12.6-17.4 12.7 6.6-20.5-17.4-12.7h21.6m-40.5-161.7 6.7 20.4H298l-17.4 12.7 6.6 20.5-17.4-12.7-17.4 12.7 6.7-20.5-17.5-12.7h21.6m-64.5-45.2 6.7 20.5h21.5l-17.4 12.6 6.6 20.5-17.4-12.6-17.4 12.6 6.7-20.5-17.4-12.6H192m-64.5 2.9 6.7 20.5h21.5l-17.4 12.6 6.7 20.5-17.5-12.7-17.4 12.7 6.7-20.5-17.4-12.6H121m-34.8 43.2 6.6 20.5h21.6l-17.5 12.6 6.7 20.5-17.4-12.7-17.4 12.7 6.6-20.5L58 271h21.5m119.2 149.4 6.7 20.5h21.5l-17.4 12.6 6.7 20.5-17.5-12.7-17.4 12.7 6.7-20.5-17.4-12.6H192m82.2-41.7 6.6 20.4h21.5L285 432.3l6.7 20.5-17.4-12.7-17.5 12.7 6.7-20.5-17.4-12.7h21.5"
+          fill="#ffce08"
+        />
+      </g>
     </FlagIconBase>
   );
 });
