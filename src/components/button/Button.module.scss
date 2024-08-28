@@ -214,7 +214,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
   }
 
-  &.standardButton, &.invertedButton {
+  &.standardButton {
     box-shadow: theme.$amino-shadow-button-standard;
 
     &:not([disabled]) {
@@ -243,6 +243,27 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
           background: theme.$amino-gray-200;
         }
       }
+    }
+  }
+
+  &.invertedButton {
+    background: theme.$amino-gray-1000;
+    color: theme.$amino-gray-0;
+    box-shadow: theme.$amino-shadow-button-standard;
+
+    &:not([disabled]) {
+      &:active {
+        background: theme.$amino-gray-100;
+      }
+      &:focus {
+        box-shadow: theme.$amino-focus-button;
+      }
+    }
+    &[disabled] {
+      box-shadow: theme.$amino-shadow-button-disabled;
+    }
+    & .spinnerWrapper {
+      background: theme.$amino-gray-1000;
     }
   }
 

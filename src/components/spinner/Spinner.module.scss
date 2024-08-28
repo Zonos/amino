@@ -36,6 +36,14 @@ $width: var(--amino-spinner-width);
     circle.track {
       stroke: theme.$amino-spinner-track-white;
     }
+
+    [data-theme='night'] & {
+      stroke: theme.$amino-spinner-stroke-black;
+
+      circle.track {
+        stroke: theme.$amino-spinner-track-black;
+      }
+    }
   }
   &.info {
     stroke: theme.$amino-blue-600;
