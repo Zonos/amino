@@ -252,8 +252,11 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     box-shadow: theme.$amino-shadow-button-standard;
 
     &:not([disabled]) {
+      &:hover {
+        background: theme.$amino-gray-900;
+      }
       &:active {
-        background: theme.$amino-gray-100;
+        background: theme.$amino-gray-600;
       }
       &:focus {
         box-shadow: theme.$amino-focus-button;
