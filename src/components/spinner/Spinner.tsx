@@ -10,6 +10,7 @@ export type SpinnerColor =
   | 'success'
   | 'danger'
   | 'warning'
+  | 'inverted'
   | 'black'
   | 'white';
 

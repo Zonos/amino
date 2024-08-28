@@ -30,13 +30,15 @@ $width: var(--amino-spinner-width);
       stroke: theme.$amino-spinner-track-black;
     }
   }
-  &.white {
+  &.white,
+  &.inverted {
     stroke: theme.$amino-spinner-stroke-white;
 
     circle.track {
       stroke: theme.$amino-spinner-track-white;
     }
-
+  }
+  &.inverted {
     [data-theme='night'] & {
       stroke: theme.$amino-spinner-stroke-black;
 
