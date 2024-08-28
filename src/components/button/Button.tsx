@@ -21,7 +21,6 @@ import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
 import type { Variant } from 'src/types/Variant';
 import { getAminoColor } from 'src/utils/getAminoColor';
-import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 import styles from './Button.module.scss';
 
@@ -165,13 +164,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     ...getRippleHandlers(props),
   };
 
-  const { aminoTheme } = useAminoTheme({ override: themeOverride });
-  const invertedTheme = aminoTheme === 'day' ? 'night' : 'day';
-
-  const currentTheme =
-    themeOverride || (variant === 'inverted' && invertedTheme) || aminoTheme;
-  const isNightTheme = currentTheme === 'night';
-
   const getPadding = () => {
     switch (size) {
       case 'sm':
@@ -216,33 +208,23 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         if (outline) {
           return 'info';
         }
-        if (isNightTheme) {
-          return 'black';
-        }
         return 'white';
       case 'success':
         if (outline) {
           return 'success';
-        }
-        if (isNightTheme) {
-          return 'black';
         }
         return 'white';
       case 'warning':
         if (outline) {
           return 'warning';
         }
-        if (isNightTheme) {
-          return 'black';
-        }
         return 'white';
       case 'danger':
         if (outline) {
           return 'danger';
         }
-        if (isNightTheme) {
-          return 'black';
-        }
+        return 'white';
+      case 'inverted':
         return 'white';
       case 'link':
       case 'inlineLink':
@@ -251,7 +233,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'subtle':
       case 'text':
       case 'standard':
-      case 'inverted':
       default:
         return 'black';
     }
@@ -266,6 +247,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'success':
       case 'warning':
       case 'danger':
+      case 'inverted':
         return theme.gray0;
       case 'link':
       case 'inlineLink':
@@ -275,7 +257,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'plain':
       case 'text':
       case 'standard':
-      case 'inverted':
       default:
         return theme.textColor;
     }
@@ -296,7 +277,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'danger':
         return theme.buttonDangerHover;
       case 'standard':
-      case 'inverted':
         return theme.buttonStandardHover;
       case 'subtle':
         return theme.gray100;
@@ -304,6 +284,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.blue100;
       case 'text':
         return theme.gray500;
+      case 'inverted':
+        return theme.gray100;
       default:
         return '';
     }
@@ -336,7 +318,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   return (
     <Tag
-      data-theme={currentTheme}
+      data-theme={themeOverride}
       style={{
         ...style,
         '--amino-button-background-color': getBackgroundColor(),
