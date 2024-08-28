@@ -1,0 +1,5 @@
+$border-radius: var(--border-radius, 7px);
+
+.flag {
+  border-radius: $border-radius;
+}

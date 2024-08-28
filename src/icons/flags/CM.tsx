@@ -1,54 +1,33 @@
 import { forwardRef } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
 };
-export const CM = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
-  const ids = useStableUniqueId(2);
-  return (
-    <FlagIconBase ref={ref} height={height} viewBox="0 0 640 480" width={width}>
-      <path d="M0 0h213.3v480H0z" fill="#007a5e" />
-      <path d="M213.3 0h213.4v480H213.3z" fill="#ce1126" />
-      <path d="M426.7 0H640v480H426.7z" fill="#fcd116" />
-      <g fill="#fcd116" transform="translate(320 240) scale(7.1111)">
-        <g id={`${ids[0]}`}>
-          <path d="M0-8-2.5-.4 1.3.9z" id={`${ids[1]}`} />
-          <use
-            height="100%"
-            transform="scale(-1 1)"
-            width="100%"
-            xlinkHref={`#${ids[1]}`}
-          />
-        </g>
-        <use
-          height="100%"
-          transform="rotate(72)"
-          width="100%"
-          xlinkHref={`#${ids[0]}`}
-        />
-        <use
-          height="100%"
-          transform="rotate(144)"
-          width="100%"
-          xlinkHref={`#${ids[0]}`}
-        />
-        <use
-          height="100%"
-          transform="rotate(-144)"
-          width="100%"
-          xlinkHref={`#${ids[0]}`}
-        />
-        <use
-          height="100%"
-          transform="rotate(-72)"
-          width="100%"
-          xlinkHref={`#${ids[0]}`}
-        />
-      </g>
+export const CM = forwardRef<SVGSVGElement, Props>(
+  ({ borderRadius, height, width }, ref) => (
+    <FlagIconBase
+      ref={ref}
+      borderRadius={borderRadius}
+      height={height}
+      viewBox="0 0 24 25"
+      width={width}
+    >
+      <path
+        d="M8 4.111v17.333h8V4.111H8Zm5.255 10.393L12 13.594l-1.255.91.48-1.474-1.255-.912h1.55l.48-1.475.48 1.475h1.55l-1.255.911.48 1.475Z"
+        fill="#CC212D"
+      />
+      <path
+        d="M2.667 4.111A2.667 2.667 0 0 0 0 6.778v12a2.667 2.667 0 0 0 2.667 2.666H8V4.111H2.667Z"
+        fill="#288541"
+      />
+      <path
+        d="M21.333 4.111H16v17.333h5.333A2.667 2.667 0 0 0 24 18.778v-12a2.667 2.667 0 0 0-2.667-2.667Zm-8.854 8.007L12 10.643l-.48 1.475H9.97l1.255.912-.48 1.474 1.255-.91 1.255.91-.48-1.474 1.255-.912h-1.55Z"
+        fill="#FEE833"
+      />
     </FlagIconBase>
-  );
-});
+  ),
+);
