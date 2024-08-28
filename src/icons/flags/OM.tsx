@@ -4,74 +4,49 @@ import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
 };
-export const OM = forwardRef<SVGSVGElement, Props>(({ height, width }, ref) => {
-  const ids = useStableUniqueId(3);
-  return (
-    <FlagIconBase ref={ref} height={height} viewBox="0 0 16 12" width={width}>
-      <g clipPath={`url(#${ids[2]})`}>
-        <mask
-          height="12"
-          id={`${ids[0]}`}
-          maskUnits="userSpaceOnUse"
-          width="16"
-          x="0"
-          y="0"
-        >
-          <path d="M0 0h16v12H0z" fill="#fff" />
-        </mask>
-        <g mask={`url(#${ids[0]})`}>
+export const OM = forwardRef<SVGSVGElement, Props>(
+  ({ borderRadius, height, width }, ref) => {
+    const ids = useStableUniqueId(1);
+    return (
+      <FlagIconBase
+        ref={ref}
+        borderRadius={borderRadius}
+        height={height}
+        viewBox="0 0 24 24"
+        width={width}
+      >
+        <g clipPath={`url(#${ids[0]})`}>
           <path
-            clipRule="evenodd"
-            d="M0 0v12h16V0H0Z"
-            fill="#F50101"
-            fillRule="evenodd"
+            d="M5.333 20.667h16A2.667 2.667 0 0 0 24 18v-2.667H5.333v5.334Z"
+            fill="green"
           />
-          <mask
-            height="12"
-            id={`${ids[1]}`}
-            maskUnits="userSpaceOnUse"
-            width="16"
-            x="0"
-            y="0"
-          >
-            <path
-              clipRule="evenodd"
-              d="M0 0v12h16V0H0Z"
-              fill="#fff"
-              fillRule="evenodd"
-            />
-          </mask>
-          <g mask={`url(#${ids[1]})`}>
-            <path
-              clipRule="evenodd"
-              d="M0 0v4h16V0H0Z"
-              fill="#F7FCFF"
-              fillRule="evenodd"
-            />
-            <path
-              clipRule="evenodd"
-              d="M0 8v4h16V8H0Z"
-              fill="#5EAA22"
-              fillRule="evenodd"
-            />
-            <path d="M0 0h6v12H0z" fill="#F50101" />
-            <path
-              clipRule="evenodd"
-              d="M5.385 1.017C5.39.97 5.332.953 5.308.993a19.138 19.138 0 0 1-1.385 2v-.459c-.07-.077-.299-.286-.299-.286V1.79l.412-.373L3.471 1l-.597.417.451.373v.458c0 .22-.273.286-.273.286l-.05.404a18.687 18.687 0 0 1-1.315-1.924c-.023-.041-.083-.022-.076.025a6.71 6.71 0 0 0 .68 2.06h-.123v-.017a.043.043 0 0 0-.044-.043H1.07a.043.043 0 0 0-.043.043v.663c0 .024.02.044.043.044h1.054c.024 0 .044-.02.044-.044v-.348H2.3a.3.3 0 0 0 .27.18c.084.13.175.26.275.388-.229-.023-1.74-.151-1.74.398 0 .328.368.502.829.592L.83 5.952c-.033.03-.007.08.036.07a7.128 7.128 0 0 0 2.2-.977h.029a.68.68 0 0 0 .55-.258c.914.745 1.947 1.09 2.396 1.213.046.013.071-.047.032-.075A13.586 13.586 0 0 1 4.048 4.18l.022-.026c.171-.202.32-.41.45-.619a.298.298 0 0 0 .124-.138h.133v.348c0 .024.02.044.043.044h1.054c.024 0 .044-.02.044-.044v-.663a.043.043 0 0 0-.044-.043H4.82a.043.043 0 0 0-.029.01 6.178 6.178 0 0 0 .594-2.032Zm-.608 2.081v-.02l-.01.02h.01Zm-1.957.183c0 .133-.11.241-.244.241a.243.243 0 0 1-.245-.241c0-.134.11-.242.245-.242s.244.108.244.242Zm1.304 0c0 .133.11.241.245.241a.243.243 0 0 0 .245-.241.243.243 0 0 0-.245-.242.243.243 0 0 0-.245.242Z"
-              fill="#F7FCFF"
-              fillRule="evenodd"
-            />
-          </g>
+          <path
+            d="M21.333 3.333h-16v5.334H24V6a2.667 2.667 0 0 0-2.667-2.667Z"
+            fill="#EEE"
+          />
+          <path
+            d="M24 8.667H6V3.333H2.667A2.667 2.667 0 0 0 0 6v12a2.667 2.667 0 0 0 2.667 2.667H6v-5.334h18V8.667Z"
+            fill="#DB161B"
+          />
+          <path
+            d="M2.417 5.635c.208.378.208.526.148.56-.06.033-.159-.06-.367-.438-.209-.378-.448-.897-.388-.93.06-.034.398.431.607.808Zm1.26-.232c-.208.378-.328.711-.268.744.06.034.278-.246.487-.623.208-.378.329-.711.268-.745-.06-.033-.279.246-.487.624Zm-.375.608-.198-.948-.019-.004c.069-.033.123-.084.123-.158 0-.107-.098-.193-.219-.193-.12 0-.218.087-.218.193 0 .072.05.129.116.162l-.189.958.604-.01Z"
+            fill="#EEE"
+          />
+          <path
+            d="M4.469 7.844c-.181-.15-.9-.773-1.241-1.144.03-.107.049-.221.041-.344h.012v.005h.594v.115h.729v-.354h-.73v.115h-.593v.005h-.02v-.18h-.542v.18H2.5v.01h-.427v-.146h-.688v.385h.688v-.145H2.5v.01h.184l-.024.25s-.693.03-.879.06c-.458.073-.312.209.063.334.173.057.345.08.507.089a6.474 6.474 0 0 1-.934.776c-.146.083-.146.187.135.125.273-.06.903-.617 1.123-.899l.19-.008c.1-.004.179-.066.246-.149.284.337.842.836 1.066.972.24.146.352.143.436.129.085-.014.043-.035-.144-.19Z"
+            fill="#EEE"
+          />
         </g>
-      </g>
-      <defs>
-        <clipPath id={`${ids[2]}`}>
-          <rect fill="#fff" height="12" rx="1" width="16" />
-        </clipPath>
-      </defs>
-    </FlagIconBase>
-  );
-});
+        <defs>
+          <clipPath id={`${ids[0]}`}>
+            <path d="M0 0h24v24H0z" fill="#fff" />
+          </clipPath>
+        </defs>
+      </FlagIconBase>
+    );
+  },
+);
