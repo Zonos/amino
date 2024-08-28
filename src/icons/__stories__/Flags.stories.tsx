@@ -8,7 +8,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { type FlagIconProps, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import * as flags from 'src/icons/flags/_FlagIndex';
-import type { IconProps } from 'src/types/IconProps';
 
 import styles from './Flags.stories.module.scss';
 
@@ -18,6 +17,28 @@ const meta: Meta = {
 
 export default meta;
 
+const getSize = (iconScale: 'small' | 'medium' | 'large') => {
+  switch (iconScale) {
+    case 'small':
+      return 16;
+    case 'medium':
+      return 20;
+    case 'large':
+      return 32;
+    default:
+      return 20;
+  }
+};
+
+const getBorderRadius = (iconScale: 'small' | 'medium' | 'large') => {
+  switch (iconScale) {
+    case 'large':
+      return 11;
+    default:
+      return undefined;
+  }
+};
+
 type FlagType = (typeof flags)[keyof typeof flags] & {
   __docgenInfo?: {
     displayName?: string;
@@ -25,7 +46,7 @@ type FlagType = (typeof flags)[keyof typeof flags] & {
   deprecated?: boolean;
 };
 
-export const Flags = ({ size }: IconProps) => {
+export const Flags = ({ iconScale }: FlagIconProps) => {
   const [filter, setFilter] = useState('');
   const iicons = Object.values<FlagType>(flags)
     .map(icon => ({
@@ -34,6 +55,9 @@ export const Flags = ({ size }: IconProps) => {
       iconName: icon.__docgenInfo?.displayName || '',
     }))
     .filter(icon => icon.iconName);
+
+  const size = getSize(iconScale);
+
   return (
     <VStack>
       <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
@@ -54,7 +78,11 @@ export const Flags = ({ size }: IconProps) => {
                   isDeprecated && styles.deprecated,
                 )}
               >
-                <IconComponent height={size || 20} width={size || 20} />
+                <IconComponent
+                  borderRadius={getBorderRadius(iconScale)}
+                  height={size}
+                  width={size}
+                />
                 <div>{iconName}</div>
                 {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
               </div>
