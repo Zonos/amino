@@ -19,12 +19,12 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
     }
 
     if (iconScale === 'small') {
-      return <Icon ref={ref} height={12} width={16} />;
+      return <Icon ref={ref} height={16} width={16} />;
     }
     if (iconScale === 'medium') {
-      return <Icon ref={ref} height={15} width={20} />;
+      return <Icon ref={ref} height={20} width={20} />;
     }
 
-    return <Icon ref={ref} height={24} width={32} />;
+    return <Icon ref={ref} height={32} width={32} />;
   },
 );
