@@ -165,17 +165,11 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     ...getRippleHandlers(props),
   };
 
-  const { aminoTheme } = useAminoTheme();
+  const { aminoTheme } = useAminoTheme({ override: themeOverride });
+  const invertedTheme = aminoTheme === 'day' ? 'night' : 'day';
 
-  const getButtonTheme = () => {
-    const initialTheme = themeOverride || aminoTheme;
-    if (variant === 'inverted') {
-      return initialTheme === 'day' ? 'night' : 'day';
-    }
-    return initialTheme;
-  };
-
-  const currentTheme = getButtonTheme();
+  const currentTheme =
+    themeOverride || (variant === 'inverted' && invertedTheme) || aminoTheme;
   const isNightTheme = currentTheme === 'night';
 
   const getPadding = () => {

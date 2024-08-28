@@ -102,7 +102,7 @@ const ButtonRow = ({
         themeOverride="night"
         variant={variant}
       >
-        Night
+        Night override
       </Button>
     </div>
     <div className={styles.hWrapper}>
