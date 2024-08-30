@@ -21,6 +21,6 @@ We have two sources for the flags AWS & Figma:
 
 ## Creating SVGs
 
-1. Figma icons should be the source of truth. If the number of countries is updated in Figma, update the country list in `./svgReact/flags/countries.ts` with the downloaded Figma icons.
+1. Figma icons should be the source of truth. If country code list from the internal graph is out number the Figma flags, give the missing one to the designer to add more flags to match up. If Figma is out number country code list, update `internalCountryCodes` constant in `./svgReact/flags/countries.ts` with `countryCode` constant from `graphql.internal.types.ts` so that it would only generate flags based on the internal graph country code list.
 2. The component name is based on the filename so clean it up using the `Batch Rename` VS code plugin (or rename using shell commands). The filename needs to just be the country ISO code (the same as the aws-flags). Some Figma flags have duplicate ISO codes so try to use the same one that was there before and delete the duplicates.
 3. Run `pnpm svgs:react:flags`
