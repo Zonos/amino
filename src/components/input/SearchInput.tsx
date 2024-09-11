@@ -57,33 +57,34 @@ export const SearchInput = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const inputId = useId();
+    const id = useId();
 
     return (
       <div className={clsx(styles.styledWrapper, className)}>
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label className={styles.styledLabel} htmlFor={inputId}>
-          <SearchIcon color="gray600" size={24} />
+        <label className={styles.styledLabel} htmlFor={id}>
+          <div className={styles.icon}>
+            <SearchIcon color="gray600" size={24} />
+          </div>
+          <input
+            ref={ref}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
+            className={styles.aminoInput}
+            disabled={disabled}
+            id={id}
+            inputMode={inputMode}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            pattern={pattern}
+            placeholder={placeholder || 'Search...'}
+            readOnly={readOnly}
+            required={required}
+            tabIndex={tabIndex}
+            type="search"
+            value={value || ''}
+            {...props}
+          />
         </label>
-        <input
-          ref={ref}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus}
-          className={styles.aminoInput}
-          disabled={disabled}
-          id={inputId}
-          inputMode={inputMode}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          pattern={pattern}
-          placeholder={placeholder || 'Search...'}
-          readOnly={readOnly}
-          required={required}
-          tabIndex={tabIndex}
-          type="search"
-          value={value || ''}
-          {...props}
-        />
       </div>
     );
   },

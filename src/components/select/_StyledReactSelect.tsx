@@ -122,15 +122,14 @@ const Control = <
     >
       {icon && <div className={styles.iconWrapper}>{icon}</div>}
 
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label className={styles.styledFloatedLabel}>
+      <div className={styles.styledFloatedLabel}>
         {label}{' '}
         {Array.isArray(value) && value.length > 1 && (
           <strong className={styles.strongLabel}>
             ({value.length} selected)
           </strong>
         )}
-      </label>
+      </div>
       {children}
     </div>
   );

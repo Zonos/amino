@@ -8,6 +8,11 @@
 }
 
 .styledLabel {
+  display: flex;
+  position: relative;
+}
+
+.icon {
   position: absolute;
   top: 0;
   left: 0;

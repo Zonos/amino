@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, useId } from 'react';
 
 import clsx from 'clsx';
 
@@ -32,7 +32,7 @@ export const Switch = ({
   switchIconLeft,
   switchIconRight,
 }: SwitchProps) => {
-  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+  const id = useId();
   const hasIcons = Boolean(switchIconLeft || switchIconRight);
 
   const hasLabel = Boolean(label || labelIcon || labelDescription || subtitle);
@@ -45,10 +45,16 @@ export const Switch = ({
         styles.switchContainer,
         disabled && styles.disabled,
       )}
-      htmlFor={labelAsHtmlAttribute}
+      htmlFor={id}
       onClick={() => !disabled && onChange(!checked)}
       style={style}
     >
+      <input
+        checked={checked}
+        id={id}
+        style={{ display: 'none' }}
+        type="checkbox"
+      />
       {hasIcons ? (
         <div
           className={clsx(
@@ -63,7 +69,7 @@ export const Switch = ({
               styles.aminoSwitchWithIcons,
               checked && styles.checked,
             )}
-            id={labelAsHtmlAttribute}
+            id={id}
           />
           <div className={clsx(styles.switchIcon, styles.left)}>
             {switchIconLeft}
@@ -76,7 +82,7 @@ export const Switch = ({
         >
           <div
             className={clsx(styles.aminoSwitch, checked && styles.checked)}
-            id={labelAsHtmlAttribute}
+            id={id}
           />
         </div>
       )}

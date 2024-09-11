@@ -2,6 +2,7 @@ import {
   type ReactNode,
   type TextareaHTMLAttributes,
   forwardRef,
+  useId,
   useRef,
 } from 'react';
 
@@ -62,6 +63,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref,
   ) => {
+    const id = useId();
     const hasValue = !!value;
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const actionsRef = useRef<HTMLDivElement | null>(null);
@@ -108,16 +110,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               hasValue && styles.hasContent,
             )}
             disabled={disabled}
+            id={id}
             rows={rows}
             value={value}
             {...props}
           />
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
           <label
             className={styles.styledLabelInput}
             data-label={label}
-            htmlFor={textareaRef?.current?.id}
-            onClick={() => textareaRef?.current?.focus()}
+            htmlFor={props.id || id}
           >
             {label}
           </label>

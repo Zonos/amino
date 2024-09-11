@@ -8,8 +8,9 @@ $height: var(--amino-float-label-input-height);
   max-height: 0;
   pointer-events: none;
   order: 1;
-  &::before {
-    content: attr(data-label);
+
+  span {
+    content: inherit;
     color: theme.$amino-gray-800;
     position: absolute;
     font-size: theme.$amino-font-size-base;
@@ -22,6 +23,7 @@ $height: var(--amino-float-label-input-height);
     top: calc(50% - theme.$amino-font-size-base / 2);
     z-index: 1;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -102,7 +104,7 @@ $height: var(--amino-float-label-input-height);
       theme.$amino-space-16;
     &:global(.has-input-prefix) {
       padding-left: 0;
-      & + .styledLabelInput::before {
+      & + .styledLabelInput span {
         margin-left: 0;
       }
     }
@@ -137,7 +139,7 @@ $height: var(--amino-float-label-input-height);
     &::placeholder {
       opacity: theme.$amino-opacity-disabled;
     }
-    & + .styledLabelInput::before {
+    & + .styledLabelInput span {
       top: 11px;
       transform: scale(0.8);
     }
@@ -164,7 +166,7 @@ $height: var(--amino-float-label-input-height);
 
     &:focus,
     &:global(.has-content) {
-      & + .styledLabelInput::before {
+      & + .styledLabelInput span {
         top: 2px;
       }
     }
@@ -175,7 +177,7 @@ $height: var(--amino-float-label-input-height);
 
     &:focus,
     &:global(.has-content) {
-      & + .styledLabelInput::before {
+      & + .styledLabelInput span {
         top: 6px;
       }
     }
@@ -184,7 +186,7 @@ $height: var(--amino-float-label-input-height);
   &:global(.lg) .aminoInput:global(.has-label) {
     &:focus,
     &:global(.has-content) {
-      & + .styledLabelInput::before {
+      & + .styledLabelInput span {
         top: 10px;
       }
     }

@@ -3,6 +3,7 @@ import {
   type KeyboardEvent,
   type MouseEvent,
   type ReactNode,
+  useId,
   useMemo,
 } from 'react';
 
@@ -85,7 +86,7 @@ export const Checkbox = ({
   subtitle,
   ...props
 }: CheckboxProps) => {
-  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+  const id = useId();
 
   const testId = useMemo(
     () => getTestId({ componentName: 'checkbox', name: label }),
@@ -106,7 +107,7 @@ export const Checkbox = ({
   return (
     <label
       className={className}
-      htmlFor={labelAsHtmlAttribute}
+      htmlFor={id}
       style={{
         ...style,
         '--amino-checkbox-background': getBackgroundColor(checked, error),
@@ -121,6 +122,12 @@ export const Checkbox = ({
       }}
       {...props}
     >
+      <input
+        checked={checked}
+        id={id}
+        style={{ display: 'none' }}
+        type="checkbox"
+      />
       <div
         className={clsx(
           styles.checkboxContainer,
@@ -140,7 +147,7 @@ export const Checkbox = ({
         role="button"
         tabIndex={0}
       >
-        <div className={styles.aminoCheckbox} id={labelAsHtmlAttribute}>
+        <div className={styles.aminoCheckbox}>
           <AnimatePresence>
             {checked && (
               <AnimatedCheckIcon

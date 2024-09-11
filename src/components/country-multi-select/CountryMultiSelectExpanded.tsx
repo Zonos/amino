@@ -2,6 +2,7 @@ import {
   type ReactNode,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useState,
 } from 'react';
@@ -96,6 +97,8 @@ export const CountryMultiSelectExpanded = <
   style,
   withoutSearch = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
+  const id = useId();
+
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
 
@@ -339,14 +342,11 @@ export const CountryMultiSelectExpanded = <
       <div className={clsx(styles.componentWrapper, error && 'error')}>
         <div className={styles.componentHeaderWrapper}>
           {!withoutSearch && (
-            <label
-              className={styles.searchInput}
-              htmlFor="country-multi-select-search"
-            >
+            <label className={styles.searchInput} htmlFor={id}>
               <SearchIcon size={24} />
               <input
                 autoComplete="off"
-                id="country-multi-select-search"
+                id={id}
                 onChange={e => setSearchText(e.target.value)}
                 placeholder="Search..."
                 type="text"

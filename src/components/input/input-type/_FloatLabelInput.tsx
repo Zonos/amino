@@ -5,6 +5,7 @@ import {
   type KeyboardEventHandler,
   type ReactNode,
   forwardRef,
+  useId,
   useMemo,
 } from 'react';
 
@@ -96,6 +97,7 @@ export const FloatLabelInput = forwardRef<
       className,
       disabled,
       error,
+      id: _id,
       inputMode,
       label,
       onChange,
@@ -115,11 +117,14 @@ export const FloatLabelInput = forwardRef<
     },
     ref,
   ) => {
+    const inputId = useId();
     const testId = useMemo(
       () => getTestId({ componentName: 'input', name: label }),
       [label],
     );
     const hasValue = !!value || !!valuePrefix;
+
+    const id = _id || inputId;
 
     return (
       <div
@@ -152,7 +157,7 @@ export const FloatLabelInput = forwardRef<
           )}
           data-testid={testId}
           disabled={disabled}
-          id={label}
+          id={id}
           inputMode={inputMode}
           onChange={onChange}
           onKeyDown={onKeyDown}
@@ -165,8 +170,9 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label className={styles.styledLabelInput} data-label={label} />
+        <label className={styles.styledLabelInput} htmlFor={id}>
+          <span>{label}</span>
+        </label>
         {suffix && (
           <div className={clsx(styles.inputDecorator, styles.inputSuffix)}>
             {suffix}
