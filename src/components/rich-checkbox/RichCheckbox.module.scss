@@ -28,13 +28,13 @@
 .label {
   line-height: 24px;
   [data-state='checked'] & {
-    color: theme.$amino-primary;
+    color: theme.$amino-blue-600;
   }
 }
 
 .subtitle {
   [data-state='checked'] & {
-    color: theme.$amino-primary;
+    color: theme.$amino-blue-600;
   }
 }
 

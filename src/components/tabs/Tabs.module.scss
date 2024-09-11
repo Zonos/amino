@@ -41,10 +41,10 @@ $align: var(--amino-tabs-align);
 
   &.isSelected,
   &.isSelected > span {
-    color: theme.$amino-primary;
+    color: theme.$amino-blue-600;
 
     &::after {
-      background-color: theme.$amino-primary;
+      background-color: theme.$amino-blue-600;
       transform: scaleX(1);
     }
   }
