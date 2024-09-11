@@ -364,6 +364,9 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
 
   &.subtleButton {
     &:not([disabled]) {
+      &:hover {
+        background: theme.$amino-gray-50;
+      }
       &:active {
         background: theme.$amino-gray-100;
       }
@@ -379,9 +382,13 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   }
 
   &.linkButton {
+    color: theme.$amino-blue-600;
     &:not([disabled]) {
       &:active {
-        background: theme.$amino-blue-200;
+        background: theme.$amino-blue-100;
+      }
+      &:hover {
+        background: theme.$amino-blue-50;
       }
       &:focus {
         box-shadow: theme.$amino-button-focus-ring;
@@ -397,6 +404,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   &.inlineLinkButton {
     padding: 0;
     display: inline-flex;
+    color: theme.$amino-blue-600;
     &:not([disabled]) {
       &:hover,
       &:active {
