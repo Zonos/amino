@@ -297,7 +297,7 @@ export const Custom = () => {
       action={
         <Button icon={<ThreeDotIcon size={20} />} size="sm" variant="subtle" />
       }
-      closeOnMouseLeave={false}
+      noCloseOnMouseLeave
     >
       <Menu>
         <MenuItem
