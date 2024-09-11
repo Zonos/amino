@@ -12,7 +12,6 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
-import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 export type TooltipProps = BaseProps & {
   /**
@@ -40,7 +39,7 @@ export type TooltipProps = BaseProps & {
    *
    * @default 'night'
    */
-  themeOverride?: Theme | null;
+  themeOverride?: Theme;
   /**
    * The content of the tooltip.
    */
@@ -92,8 +91,6 @@ export const Tooltip = ({
   title,
   ...rest
 }: TooltipProps) => {
-  const { aminoTheme } = useAminoTheme();
-
   const renderTooltip = () => (
     <Flex flexDirection="column" gap={8}>
       {typeof title === 'string' ? (
@@ -114,7 +111,7 @@ export const Tooltip = ({
       <StyledTooltip
         {...rest}
         className={className}
-        dataTheme={themeOverride || aminoTheme}
+        dataTheme={themeOverride}
         open={open}
         title={renderTooltip()}
       >
