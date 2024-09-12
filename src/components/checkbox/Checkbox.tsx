@@ -125,7 +125,7 @@ export const Checkbox = ({
     >
       <input
         checked={checked}
-        className={globalStyles.inputHidden}
+        className={clsx(globalStyles.inputHidden, disabled && 'disabled')}
         data-testid={testId}
         id={id}
         onChange={handleChange}
