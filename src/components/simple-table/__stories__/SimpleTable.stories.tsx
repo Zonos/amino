@@ -118,6 +118,31 @@ export const Basic = () => (
   />
 );
 
+export const Long = () => (
+  <SimpleTable
+    headers={tableHeaders}
+    items={items.flatMap(item => [
+      item,
+      {
+        ...item,
+        id: item.id + 100,
+        name: `${item.name} 2`,
+      },
+      {
+        ...item,
+        id: item.id + 200,
+        name: `${item.name} 3`,
+      },
+      {
+        ...item,
+        id: item.id + 300,
+        name: `${item.name} 4`,
+      },
+    ])}
+    keyExtractor={item => String(item.id)}
+  />
+);
+
 export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
