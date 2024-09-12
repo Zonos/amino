@@ -3,6 +3,7 @@ import { type ReactNode, useId } from 'react';
 import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
+import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Switch.module.scss';
@@ -38,21 +39,23 @@ export const Switch = ({
   const hasLabel = Boolean(label || labelIcon || labelDescription || subtitle);
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <label
       className={clsx(
         className,
         styles.switchContainer,
+        globalStyles.focusableLabel,
         disabled && styles.disabled,
       )}
       htmlFor={id}
-      onClick={() => !disabled && onChange(!checked)}
       style={style}
     >
       <input
         checked={checked}
         id={id}
-        style={{ display: 'none' }}
+        onChange={() => !disabled && onChange(!checked)}
+        onKeyDown={e => e.key === 'Enter' && !disabled && onChange(!checked)}
+        style={{ width: '0px' }}
+        tabIndex={0}
         type="checkbox"
       />
       {hasIcons ? (

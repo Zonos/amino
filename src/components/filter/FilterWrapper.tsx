@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import type { KeyboardEvent, MouseEvent, ReactNode, RefObject } from 'react';
 
 import clsx from 'clsx';
@@ -10,6 +8,7 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { MinusCircleDuotoneIcon } from 'src/icons/MinusCircleDuotoneIcon';
 import { PlusCircleDuotoneIcon } from 'src/icons/PlusCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
+import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './FilterWrapper.module.scss';
@@ -60,42 +59,47 @@ export const FilterWrapper = ({
         : '100px',
     }}
   >
-    <div
-      className={clsx(active && 'active', styles.badgeWrapper)}
-      onClick={handleToggle}
-    >
-      <div className={clsx(active && 'active', styles.toggleWrapper)}>
-        {active ? (
-          <MinusCircleDuotoneIcon
-            color="gray0"
-            secondaryColor="gray600"
-            size={24}
-          />
-        ) : (
-          <PlusCircleDuotoneIcon
-            color="gray0"
-            secondaryColor="gray600"
-            size={24}
-          />
-        )}
-        <Text className={styles.filterTitle} fontWeight={600}>
-          {label}
-        </Text>
-      </div>
+    <div className={clsx(active && 'active', styles.badgeWrapper)}>
+      <button
+        className={globalStyles.focusable}
+        onClick={handleToggle}
+        type="button"
+      >
+        <div className={clsx(active && 'active', styles.toggleWrapper)}>
+          {active ? (
+            <MinusCircleDuotoneIcon
+              color="gray0"
+              secondaryColor="gray600"
+              size={24}
+            />
+          ) : (
+            <PlusCircleDuotoneIcon
+              color="gray0"
+              secondaryColor="gray600"
+              size={24}
+            />
+          )}
+          <Text className={styles.filterTitle} fontWeight={600}>
+            {label}
+          </Text>
+        </div>
+      </button>
       {hasFilter && (
-        <div
-          className={styles.styledDropdownTrigger}
+        <button
+          className={clsx(styles.styledDropdownTrigger, globalStyles.focusable)}
           onClick={handleOpenDropdown}
+          type="button"
         >
           <Text className={styles.filterText}>{filterText}</Text>
           <ChevronDownIcon size={24} />
-        </div>
+        </button>
       )}
     </div>
     <div
       ref={dropdownRef}
       className={styles.dropdownWrapper}
       onKeyDown={handleKeyDown}
+      role="menu"
       style={{
         display: dropDownOpen ? 'flex' : 'none',
       }}

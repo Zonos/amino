@@ -1,4 +1,4 @@
-import { type MouseEventHandler, type ReactNode, forwardRef } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 
 import clsx from 'clsx';
 
@@ -12,7 +12,7 @@ export type Props = BaseProps & {
   decorator?: ReactNode;
   disabled?: boolean;
   label: ReactNode;
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler;
   rightDecorator?: ReactNode;
   selected?: boolean;
   subtitle?: ReactNode;
@@ -36,46 +36,38 @@ const ListIcon = ({
   return null;
 };
 
-export const ListItem = forwardRef<HTMLDivElement, Props>(
-  (
-    {
+export const ListItem = ({
+  className,
+  decorator,
+  disabled,
+  label,
+  onClick,
+  rightDecorator,
+  selected,
+  style,
+  subtitle,
+}: Props) => (
+  <button
+    className={clsx(
       className,
-      decorator,
-      disabled,
-      label,
-      onClick,
-      rightDecorator,
-      selected,
-      style,
-      subtitle,
-    },
-    ref,
-  ) => (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div
-      ref={ref}
-      className={clsx(
-        className,
-        styles.aminoListItem,
-        disabled && styles.disabled,
-        selected && styles.selected,
-        !!onClick && styles.withClick,
-      )}
-      onClick={e => !disabled && onClick && onClick(e)}
-      role="button"
-      style={style}
-      tabIndex={0}
-    >
-      <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>
-        {decorator}
-        <ListIcon label={typeof label === 'string' ? label : ''} />
-      </div>
-
-      <div className={styles.textContainer}>
-        <Text type="label">{label}</Text>
-        {subtitle && <Text type="caption">{subtitle}</Text>}
-      </div>
-      {rightDecorator}
+      styles.aminoListItem,
+      disabled && styles.disabled,
+      selected && styles.selected,
+      !!onClick && styles.withClick,
+    )}
+    onClick={e => !disabled && onClick?.(e)}
+    style={style}
+    type="button"
+  >
+    <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>
+      {decorator}
+      <ListIcon label={typeof label === 'string' ? label : ''} />
     </div>
-  ),
+
+    <div className={styles.textContainer}>
+      <Text type="label">{label}</Text>
+      {subtitle && <Text type="caption">{subtitle}</Text>}
+    </div>
+    {rightDecorator}
+  </button>
 );

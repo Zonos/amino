@@ -49,11 +49,14 @@ $align: var(--amino-tabs-align);
     }
   }
 
-  &:not(.isSelected):hover {
-    color: theme.$amino-gray-1000;
+  &:not(.isSelected) {
+    &:hover,
+    &:focus {
+      color: theme.$amino-gray-1000;
 
-    &::after {
-      transform: scaleX(1);
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 

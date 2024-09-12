@@ -175,8 +175,7 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
     <>
       {items.map((item, index) => (
         <div className={styles.itemWrapper}>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-          <div
+          <button
             key={index}
             className={styles.itemLabel}
             onClick={() =>
@@ -186,8 +185,7 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
                 return next;
               })
             }
-            role="button"
-            tabIndex={0}
+            type="button"
           >
             <ChevronRightIcon
               className={clsx(
@@ -196,7 +194,7 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
               )}
             />
             <Text>Item {index + 1}</Text>
-          </div>
+          </button>
           <Collapse collapsed={collapsed[index]!}>
             <DropdownNavItem items={item} />
           </Collapse>

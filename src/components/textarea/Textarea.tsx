@@ -86,12 +86,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
         style={{ ...style, '--amino-textarea-width': width || '100%' }}
       >
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-        <div
+        <button
           className={styles.fields}
           onClick={() => textareaRef?.current?.focus()}
-          role="button"
-          tabIndex={0}
+          type="button"
         >
           <textarea
             ref={node => {
@@ -123,7 +121,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {label}
           </label>
           <div className={styles.styledBorder} />
-        </div>
+        </button>
         <HelpText error={error} helpText={helpText} />
         {actions && (
           <div ref={actionsRef} className={styles.actions}>

@@ -16,18 +16,15 @@ const RadioMeta: Meta = {
 
 export default RadioMeta;
 
-const Template: StoryFn<RadioProps> = ({
-  checked: initialChecked,
-  disabled,
-  label,
-}: RadioProps) => {
-  const [checked, setChecked] = useState(initialChecked);
+const Template: StoryFn<RadioProps> = ({ disabled, label }: RadioProps) => {
+  const [checked, setChecked] = useState(false);
   return (
     <Radio
       checked={checked}
       disabled={disabled}
       label={label}
       onChange={e => setChecked(e)}
+      value="example"
     />
   );
 };
