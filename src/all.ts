@@ -71,7 +71,6 @@ import './components/rounded-icon/RoundedIcon';
 import './components/section/HSection';
 import './components/section/VSection';
 import './components/select/CountryMultiSelect';
-import './components/select/CountryPhoneSelect';
 import './components/select/CountrySelect';
 import './components/select/MultiSelect';
 import './components/select/Select';
