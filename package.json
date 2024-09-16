@@ -9,6 +9,7 @@
   "engines": {
     "node": "^20"
   },
+  "packageManager": "pnpm@8.15.8",
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -89,6 +90,7 @@
     "@graphiql/react": "^0.19.0",
     "@graphiql/toolkit": "^0.8.4",
     "@playwright/test": "^1.40.1",
+    "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-buble": "^1.0.2",
     "@rollup/plugin-image": "^3.0.2",
     "@rollup/plugin-node-resolve": "^15.1.0",
