@@ -127,8 +127,9 @@ export const FloatLabelInput = forwardRef<
     const id = _id || inputId;
 
     return (
-      <div
+      <label
         className={clsx(className, size, styles.styledLabelWrapper)}
+        htmlFor={id}
         style={{
           '--amino-float-label-input-border-radius': getFloatLabelRadius(size),
           '--amino-float-label-input-height': `calc(var(--amino-size-${size}) - 2px)`,
@@ -170,15 +171,15 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        <label className={styles.styledLabelInput} htmlFor={id}>
+        <div className={styles.styledLabelInput}>
           <span>{label}</span>
-        </label>
+        </div>
         {suffix && (
           <div className={clsx(styles.inputDecorator, styles.inputSuffix)}>
             {suffix}
           </div>
         )}
-      </div>
+      </label>
     );
   },
 );
