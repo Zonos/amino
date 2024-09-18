@@ -128,7 +128,16 @@ export const FloatLabelInput = forwardRef<
 
     return (
       <label
-        className={clsx(className, size, styles.styledLabelWrapper)}
+        className={clsx(
+          styles.styledLabelWrapper,
+          size,
+          error && 'has-error',
+          label && 'has-label',
+          hasValue && 'has-content',
+          prefix && 'has-input-prefix',
+          valuePrefix && 'has-value-prefix',
+          className,
+        )}
         htmlFor={id}
         style={{
           '--amino-float-label-input-border-radius': getFloatLabelRadius(size),
@@ -148,14 +157,7 @@ export const FloatLabelInput = forwardRef<
           aria-label={label}
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
-          className={clsx(
-            error && 'has-error',
-            label && 'has-label',
-            hasValue && 'has-content',
-            prefix && 'has-input-prefix',
-            valuePrefix && 'has-value-prefix',
-            styles.aminoInput,
-          )}
+          className={clsx(styles.aminoInput)}
           data-testid={testId}
           disabled={disabled}
           id={id}
@@ -171,7 +173,7 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        <div className={styles.styledLabelInput}>
+        <div className={styles.floatingLabel}>
           <span>{label}</span>
         </div>
         {suffix && (

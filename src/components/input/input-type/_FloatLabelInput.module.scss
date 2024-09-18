@@ -66,50 +66,9 @@ $height: var(--amino-float-label-input-height);
       }
     }
 
-    &:global(.has-label) {
-      padding: theme.$amino-space-16 theme.$amino-space-4 theme.$amino-space-8
-        theme.$amino-space-16;
-      &:global(.has-input-prefix) {
-        padding-left: 0;
-        & + .styledLabelInput span {
-          margin-left: 0;
-        }
-      }
-    }
-    &:not(:global(.has-label)) {
-      &::placeholder {
-        opacity: theme.$amino-opacity-disabled;
-      }
-    }
-    &:global(.has-value-prefix) {
-      padding-left: theme.$amino-space-8;
-    }
-
     &::placeholder {
       transition: theme.$amino-transition;
       opacity: 0;
-    }
-
-    &:focus {
-      outline: none;
-      & + .styledLabelInput::after {
-        box-shadow: theme.$amino-glow-blue;
-      }
-    }
-
-    &:global(.has-error) + .styledLabelInput::after {
-      box-shadow: theme.$amino-glow-error;
-    }
-
-    &:global(.has-content),
-    &:focus {
-      &::placeholder {
-        opacity: theme.$amino-opacity-disabled;
-      }
-      & + .styledLabelInput span {
-        top: 11px;
-        transform: scale(0.8);
-      }
     }
 
     &:-webkit-autofill,
@@ -119,7 +78,7 @@ $height: var(--amino-float-label-input-height);
     }
   }
 
-  .styledLabelInput {
+  .floatingLabel {
     display: block;
     max-height: 0;
     pointer-events: none;
@@ -150,6 +109,7 @@ $height: var(--amino-float-label-input-height);
       border-radius: $border-radius;
     }
 
+    // Checks for disabled on the parent (Input)
     :global(.disabled) & {
       pointer-events: inherit;
       &::after {
@@ -159,14 +119,66 @@ $height: var(--amino-float-label-input-height);
     }
   }
 
-  &:global(.sm) {
-    .aminoInput:global(.has-label) {
-      padding-top: 13px;
-      padding-bottom: 0;
+  &:has(input:focus) {
+    box-shadow: theme.$amino-glow-blue;
+  }
 
-      &:focus,
-      &:global(.has-content) {
-        & + .styledLabelInput span {
+  &:global(.has-error),
+  &:global(.has-error):has(input:focus) {
+    box-shadow: theme.$amino-glow-error;
+  }
+
+  &:global(.has-content),
+  &:focus-within {
+    .aminoInput {
+      &::placeholder {
+        opacity: theme.$amino-opacity-disabled;
+      }
+      & + .floatingLabel span {
+        top: 11px;
+        transform: scale(0.8);
+      }
+    }
+  }
+
+  &:global(.has-value-prefix) {
+    .aminoInput {
+      padding-left: theme.$amino-space-8;
+    }
+  }
+
+  &:not(:global(.has-label)) {
+    &::placeholder {
+      opacity: theme.$amino-opacity-disabled;
+    }
+  }
+
+  &:global(.has-label) {
+    .aminoInput {
+      padding: theme.$amino-space-16 theme.$amino-space-4 theme.$amino-space-8
+        theme.$amino-space-16;
+    }
+
+    &:global(.has-input-prefix) {
+      .aminoInput {
+        padding-left: 0;
+        & + .floatingLabel span {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  &:global(.sm) {
+    &:global(.has-label) {
+      .aminoInput {
+        padding-top: 13px;
+        padding-bottom: 0;
+      }
+
+      &:global(.has-content),
+      :focus-within {
+        .floatingLabel span {
           top: 2px;
         }
       }
@@ -179,12 +191,14 @@ $height: var(--amino-float-label-input-height);
   }
 
   &:global(.md) {
-    .aminoInput:global(.has-label) {
-      padding-top: 20px;
+    &:global(.has-label) {
+      .aminoInput {
+        padding-top: 20px;
+      }
 
-      &:focus,
-      &:global(.has-content) {
-        & + .styledLabelInput span {
+      &:global(.has-content),
+      :focus-within {
+        .floatingLabel span {
           top: 6px;
         }
       }
@@ -196,10 +210,14 @@ $height: var(--amino-float-label-input-height);
   }
 
   &:global(.lg) {
-    .aminoInput:global(.has-label) {
-      &:focus,
-      &:global(.has-content) {
-        & + .styledLabelInput span {
+    &:global(.has-label) {
+      .aminoInput {
+        padding-top: 20px;
+      }
+
+      &:global(.has-content),
+      :focus-within {
+        .floatingLabel span {
           top: 6px;
         }
       }
@@ -211,8 +229,10 @@ $height: var(--amino-float-label-input-height);
   }
 
   &:global(.xl) {
-    .aminoInput:global(.has-label) {
-      padding-bottom: 2px;
+    &:global(.has-label) {
+      .aminoInput {
+        padding-bottom: 2px;
+      }
     }
   }
 }
