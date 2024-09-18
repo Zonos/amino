@@ -1,4 +1,4 @@
-import { type ReactNode, Fragment } from 'react';
+import { type ReactNode, Fragment, useEffect, useRef, useState } from 'react';
 
 import clsx from 'clsx';
 
@@ -47,7 +47,14 @@ export type SimpleTableHeader<T extends object> = {
     /** null means don't show a header for this column */
     name: ReactNode | null;
 
-    renderCustom?: (value: T[Key], item: T) => React.ReactNode;
+    renderCustom?: (props: {
+      item: T;
+      value: T[Key];
+      /**
+       * Width of the column in pixels, will be updated when the window resizes
+       */
+      width: number | null;
+    }) => React.ReactNode;
   } & SimpleTableHeaderBaseProps;
 }[keyof T extends React.Key ? keyof T : never];
 
@@ -151,7 +158,47 @@ export const SimpleTable = <T extends object>({
   },
   style,
 }: SimpleTableProps<T>) => {
-  const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
+  const tableRef = useRef<HTMLTableElement | null>(null);
+  const [headerWidths, setHeaderWidths] = useState<number[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const changeColumnWidths = () => {
+      timeoutRef.current = setTimeout(() => {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+        // Update column widths from the parent table
+        setHeaderWidths(() => {
+          const newWidths: number[] = [];
+          tableRef.current?.querySelectorAll('th').forEach(th => {
+            // set widths of each th to the width of the th to header widths
+            const { width } = th.getBoundingClientRect();
+            newWidths.push(parseFloat(width.toFixed(2)));
+          });
+          return newWidths;
+        });
+      }, 1000);
+    };
+    if (tableRef.current) {
+      // Update column widths on resize
+      window.addEventListener('resize', changeColumnWidths);
+      changeColumnWidths();
+    }
+    return () => {
+      // Cleanup event listener
+      window.removeEventListener('resize', changeColumnWidths);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const renderHeader = (
+    header: SimpleTableHeader<T>,
+    item: T,
+    index: number,
+  ) => {
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
@@ -186,7 +233,15 @@ export const SimpleTable = <T extends object>({
     };
 
     return header.renderCustom ? (
-      <>{renderContent(header.renderCustom(value, item))}</>
+      <>
+        {renderContent(
+          header.renderCustom({
+            item,
+            value,
+            width: headerWidths[index + 1] || null,
+          }),
+        )}
+      </>
     ) : (
       <>{renderContent(String(value))}</>
     );
@@ -272,8 +327,10 @@ export const SimpleTable = <T extends object>({
               )}
             </td>
           )}
-          {headers.map(header => (
-            <Fragment key={header.key}>{renderHeader(header, item)}</Fragment>
+          {headers.map((header, _index) => (
+            <Fragment key={header.key}>
+              {renderHeader(header, item, _index)}
+            </Fragment>
           ))}
         </tr>
       );
@@ -281,7 +338,11 @@ export const SimpleTable = <T extends object>({
   };
 
   return (
-    <table className={clsx(className, styles.tableStyled)} style={style}>
+    <table
+      ref={tableRef}
+      className={clsx(className, styles.tableStyled)}
+      style={style}
+    >
       <colgroup>
         {!!selectable.onHeaderCheckboxChange && <col width={0} />}
         {headers.map(header => (

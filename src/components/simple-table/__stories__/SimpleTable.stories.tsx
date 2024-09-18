@@ -93,9 +93,9 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
     align: 'center',
     key: 'vegan',
     name: 'Vegan',
-    renderCustom: vegan => (
+    renderCustom: ({ value }) => (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        {vegan ? (
+        {value ? (
           <CheckmarkIcon color="green600" />
         ) : (
           <RemoveIcon color="red600" />
@@ -106,7 +106,7 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   {
     key: 'optionalField',
     name: 'Optional Field',
-    renderCustom: value => value || <Text color="gray400">N/A</Text>,
+    renderCustom: ({ value }) => value || <Text color="gray400">N/A</Text>,
   },
 ];
 
@@ -117,6 +117,97 @@ export const Basic = () => (
     keyExtractor={item => String(item.id)}
   />
 );
+
+export const WithHeaderWidthChangeInfo: StoryFn<SimpleTableProps<object>> = ({
+  loading,
+}) => {
+  const _tableHeadersWithWidth: SimpleTableHeader<DummyData>[] = [
+    {
+      key: 'name',
+      name: 'Name',
+      renderCustom: ({ width }) => (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {width}px
+        </div>
+      ),
+    },
+    {
+      align: 'end',
+      key: 'age',
+      name: 'Age',
+      renderCustom: ({ width }) => (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {width}px
+        </div>
+      ),
+      width: 10,
+    },
+    {
+      align: 'center',
+      key: 'vegan',
+      name: 'Vegan',
+      renderCustom: ({ width }) => (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {width}px
+        </div>
+      ),
+    },
+    {
+      key: 'optionalField',
+      name: 'Optional Field',
+      renderCustom: ({ width }) => (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {width}px
+        </div>
+      ),
+    },
+  ];
+  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+
+  const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedRowIndexes.length === items.length) {
+      setSelectedRowIndexes([]);
+    } else {
+      setSelectedRowIndexes(items.map((_, index) => index));
+    }
+  };
+
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
+    if (value) {
+      setSelectedRowIndexes([...selectedRowIndexes, index]);
+    } else {
+      setSelectedRowIndexes(
+        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+      );
+    }
+  };
+
+  return (
+    <>
+      <h1>Resize screen to see changes</h1>
+      <SimpleTable
+        headers={_tableHeadersWithWidth}
+        items={items}
+        keyExtractor={item => String(item.id)}
+        loading={loading}
+        selectable={{
+          anySelected: selectedRowIndexes.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
+      />
+    </>
+  );
+};
 
 export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
@@ -334,7 +425,7 @@ export const Custom = () => {
       key: 'hoverField',
       name: null,
       noPadding: true,
-      renderCustom: (_, item) => (
+      renderCustom: ({ item }) => (
         <div className="row-hover-show">
           <HoverMenu item={item} />
         </div>
