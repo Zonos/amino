@@ -3,24 +3,60 @@
 .tagWrapper {
   display: inline-flex;
   // default background color (gray)
-  background-color: theme.$amino-gray-100;
-  border-radius: theme.$amino-radius-4;
-  height: 24px;
+  background-color: theme.$amino-gray-50;
+  border-radius: theme.$amino-radius-6;
+  color: theme.$amino-text-color;
+  border: 1px solid theme.$amino-gray-200;
 
   &.base {
     height: 20px;
+  }
+
+  &.highlight {
+    background-color: theme.$amino-blue-50;
+    color: theme.$amino-blue-800;
+    border: 1px solid theme.$amino-blue-600;
+  }
+
+  &.error {
+    background-color: theme.$amino-red-50;
+    color: theme.$amino-red-800;
+    border: 1px solid theme.$amino-red-200;
+
+    &.highlight{
+      border: 1px solid theme.$amino-red-600;
+    }
+  }
+
+  &:hover {
+    background-color: theme.$amino-gray-100;
+    .styledTagRight {
+      background-color: theme.$amino-gray-100;
+    }
+
+    &.highlight {
+      background-color: theme.$amino-blue-100;
+      .styledTagRight {
+        background-color: theme.$amino-blue-100;
+      }
+    }
+
+    &.error {
+      background-color: theme.$amino-red-100;
+      .styledTagRight {
+        background-color: theme.$amino-red-100;
+      }
+    }
   }
 }
 
 .styledTagLeft {
   display: inline-flex;
   font-size: theme.$amino-font-size-s;
-  background-color: theme.$amino-gray-100;
   border-radius: theme.$amino-radius-6 0 0 theme.$amino-radius-6;
   font-weight: normal;
   padding: 4px 4px 4px 8px;
   gap: 4px;
-  color: theme.$amino-text-color;
   align-items: center;
   text-align: center;
   font-weight: 600;
@@ -42,7 +78,7 @@
 }
 
 .styledTagRight {
-  border-radius: theme.$amino-radius-4;
+  border-radius: theme.$amino-radius-6;
   display: inline-flex;
   align-items: center;
   padding: 4px 5px;
@@ -54,9 +90,4 @@
 
 .styledRemoveBtn {
   display: flex;
-
-  .styledTagRight:hover & {
-    background-color: theme.$amino-gray-300;
-    border-radius: 50%;
-  }
 }
