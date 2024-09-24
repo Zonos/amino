@@ -22,7 +22,7 @@ const MultiInputMeta: Meta = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=2628%3A59491&mode=dev',
+      url: 'https://www.figma.com/design/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=8536-6023&node-type=frame&t=ewUS1Ga25z210DP5-0',
     },
   },
 };
