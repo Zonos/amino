@@ -48,6 +48,7 @@ import './components/glow/GlowWrapper';
 import './components/graph-matrix/GraphMatrix';
 import './components/help-text/HelpText';
 import './components/input/Input';
+import './components/input/MultiInput';
 import './components/input/SearchInput';
 import './components/layout/Layout';
 import './components/layout/NavigationGroup';
