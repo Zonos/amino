@@ -11,14 +11,12 @@ describe('Make sure buildStories works as expected', () => {
       '../src/components/text-avatar/__stories__/TextAvatar.stories.tsx',
       '../src/__stories__/Composer.stories.tsx',
       '../src/components/toast/__stories__/Toast.stories.tsx',
-      '../src/__stories__/ScratchPad.stories.tsx',
     ]);
     expect(stories.map(story => `${story.directory}/${story.files}`))
       .toMatchInlineSnapshot(`
       [
         "../src/__stories__/Composer.stories.tsx",
         "../src/icons/__stories__/AllIcons.stories.tsx",
-        "../src/__stories__/ScratchPad.stories.tsx",
         "../src/components/tag/__stories__/Tag.stories.tsx",
         "../src/components/text/__stories__/Typography.stories.tsx",
         "../src/components/text-avatar/__stories__/TextAvatar.stories.tsx",
@@ -72,7 +70,6 @@ describe('Make sure buildStories works as expected', () => {
       '../src/components/stack/__stories__/VStack.stories.tsx',
       '../src/components/text-avatar/__stories__/TextAvatar.stories.tsx',
       '../src/components/text/__stories__/Typography.stories.tsx',
-      '../src/__stories__/ScratchPad.stories.tsx',
       '../src/components/toast/__stories__/Toast.stories.tsx',
       '../src/components/toast/__stories__/ToastConsumer.stories.tsx',
     ]);
@@ -81,7 +78,6 @@ describe('Make sure buildStories works as expected', () => {
       [
         "../src/__stories__/Composer.stories.tsx",
         "../src/icons/__stories__/AllIcons.stories.tsx",
-        "../src/__stories__/ScratchPad.stories.tsx",
         "../src/components/slide-over/__stories__/SlideOver.stories.tsx",
         "../src/components/slider/__stories__/Slider.stories.tsx",
         "../src/components/sortable-list/__stories__/SortableList.stories.tsx",
