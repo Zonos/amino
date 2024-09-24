@@ -15,6 +15,7 @@ import styles from './MultiInput.module.scss';
 
 export type MultiInputProps = {
   className?: string;
+  placeholder?: string;
   style?: React.CSSProperties;
   tags: string[];
   setHasValidationError?: (hasValidationError: boolean) => void;
@@ -24,6 +25,7 @@ export type MultiInputProps = {
 
 export const MultiInput = ({
   className,
+  placeholder = '',
   setHasValidationError,
   setTags,
   style,
@@ -136,7 +138,7 @@ export const MultiInput = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}
-        placeholder={!tags.length ? 'Enter email' : ''}
+        placeholder={!tags.length ? placeholder : ''}
         value={inputValue}
       />
     </Flex>
