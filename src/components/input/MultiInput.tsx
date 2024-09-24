@@ -30,13 +30,6 @@ export const MultiInput = ({
     null,
   );
 
-  // If a tag is highlighted, blur the input
-  // useEffect(() => {
-  //   if (highlightedTagIndex !== -1 && inputRef.current) {
-  //     inputRef.current.blur();
-  //   }
-  // }, [highlightedTagIndex]);
-
   useEffect(() => {
     if (setHasValidationError && tagValidation) {
       const hasInvalidTags = tags.some(tag => !tagValidation(tag));
