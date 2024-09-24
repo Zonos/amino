@@ -6,12 +6,16 @@ import {
   useState,
 } from 'react';
 
+import clsx from 'clsx';
+
 import { Flex } from 'src/components/flex/Flex';
 import { Tag } from 'src/components/tag/Tag';
 
 import styles from './MultiInput.module.scss';
 
 export type MultiInputProps = {
+  className?: string;
+  style?: React.CSSProperties;
   tags: string[];
   setHasValidationError?: (hasValidationError: boolean) => void;
   setTags: (tags: string[]) => void;
@@ -19,8 +23,10 @@ export type MultiInputProps = {
 };
 
 export const MultiInput = ({
+  className,
   setHasValidationError,
   setTags,
+  style,
   tags,
   tagValidation,
 }: MultiInputProps) => {
@@ -99,9 +105,10 @@ export const MultiInput = ({
   return (
     <Flex
       alignItems="center"
-      className={styles.tagInputWrapper}
+      className={clsx([className, styles.tagInputWrapper])}
       flexWrap="wrap"
       gap={4}
+      style={style}
     >
       {tags.map((tag, index) => {
         const invalid = !!(tagValidation && !tagValidation(tag));
