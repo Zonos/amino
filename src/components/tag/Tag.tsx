@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 import clsx from 'clsx';
 
@@ -9,20 +9,27 @@ import styles from './Tag.module.scss';
 
 type TagSize = 'base' | 'lg';
 
-export type TagProps = BaseProps & {
-  children?: ReactNode | string;
-  icon?: ReactNode;
-  iconRight?: boolean;
-  size?: TagSize;
-  onClick?: () => void;
-  onClose: () => void;
-};
+type TagIntent = 'default' | 'error';
+
+export type TagProps = BaseProps &
+  HTMLAttributes<HTMLDivElement> & {
+    children?: ReactNode | string;
+    highlighted?: boolean;
+    icon?: ReactNode;
+    iconRight?: boolean;
+    intent?: TagIntent;
+    size?: TagSize;
+    onClick?: () => void;
+    onClose: () => void;
+  };
 
 export const Tag = ({
   children,
   className,
+  highlighted = false,
   icon,
   iconRight,
+  intent = 'default',
   onClick,
   onClose,
   size = 'base',
@@ -33,6 +40,8 @@ export const Tag = ({
       className,
       styles.tagWrapper,
       size === 'base' && styles.base,
+      intent !== 'default' ? styles[intent] : '',
+      highlighted && styles.highlight,
     )}
     style={style}
   >

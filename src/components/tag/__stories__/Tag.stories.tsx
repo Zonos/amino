@@ -7,6 +7,14 @@ import { type TagProps, Tag } from 'src/components/tag/Tag';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
 const TagMeta: Meta = {
+  argTypes: {
+    intent: {
+      control: {
+        options: ['default', 'highlight', 'error'],
+        type: 'radio',
+      },
+    },
+  },
   component: Tag,
   parameters: {
     design: {
@@ -22,6 +30,7 @@ const Template: StoryFn<TagProps> = ({
   children,
   icon,
   iconRight,
+  intent,
   onClose,
 }: TagProps) => {
   const [tagSectionClicked, settagSectionClicked] = useState<
@@ -46,6 +55,7 @@ const Template: StoryFn<TagProps> = ({
         <Tag
           icon={icon}
           iconRight={iconRight}
+          intent={intent}
           onClick={() => settagSectionClicked('whole')}
           onClose={() => {
             settagSectionClicked('close');
@@ -63,6 +73,7 @@ const Template: StoryFn<TagProps> = ({
         <Tag
           icon={icon}
           iconRight={iconRight}
+          intent={intent} // Pass intent prop
           onClick={() => settagSectionClicked('whole')}
           onClose={() => {
             settagSectionClicked('close');
@@ -131,5 +142,6 @@ Country.args = {
       </g>
     </svg>
   ),
+  intent: 'default',
   onClose: () => {},
 };

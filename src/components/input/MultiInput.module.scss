@@ -1,0 +1,23 @@
+@use 'theme';
+
+.tagInputWrapper.tagInputWrapper {
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  overflow-x: auto;
+
+  .tagInput {
+    border: none;
+    outline: none;
+    padding: 5px;
+    min-width: 100px;
+    flex: 1 1 auto;
+    min-width: 50px;
+    flex-grow: 1;
+    font-size: theme.$amino-font-size-base;
+    font-weight: 500;
+  }
+}
+
+
+
