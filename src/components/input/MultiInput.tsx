@@ -58,7 +58,7 @@ export const MultiInput = ({
 
   // Handle key events (Enter, Space, Comma) to create a tag
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === 'Enter' || e.key === ',' || e.key === ' ') {
+    if ((e.key === 'Enter' || e.key === ',' || e.key === ' ') && inputValue) {
       e.preventDefault();
       addTag();
     } else if (e.key === 'Backspace') {
@@ -123,11 +123,6 @@ export const MultiInput = ({
               intent={intent}
               onClick={() => setHighlightedTagIndex(index)}
               onClose={() => removeTag(index)}
-              onKeyDown={e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  setHighlightedTagIndex(index);
-                }
-              }}
               size="lg"
             >
               {tag}

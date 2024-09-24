@@ -23,7 +23,7 @@
     color: theme.$amino-red-800;
     border: 1px solid theme.$amino-red-200;
 
-    &.highlight{
+    &.highlight {
       border: 1px solid theme.$amino-red-600;
     }
   }
@@ -52,20 +52,19 @@
 
 .styledTagLeft {
   display: inline-flex;
-  font-size: theme.$amino-font-size-s;
+  font-size: theme.$amino-font-size-base;
   border-radius: theme.$amino-radius-6 0 0 theme.$amino-radius-6;
   font-weight: normal;
   padding: 4px 4px 4px 8px;
   gap: 4px;
   align-items: center;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   &:focus {
     outline: none;
   }
   p {
     margin: 0;
-    font-weight: 600;
   }
 
   &.iconRight svg {

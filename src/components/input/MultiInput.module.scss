@@ -12,9 +12,10 @@
     padding: 5px;
     min-width: 100px;
     flex: 1 1 auto;
-    font-size: inherit;
     min-width: 50px;
     flex-grow: 1;
+    font-size: theme.$amino-font-size-base;
+    font-weight: 500;
   }
 }
 
