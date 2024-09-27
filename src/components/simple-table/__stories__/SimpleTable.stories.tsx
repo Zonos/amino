@@ -29,6 +29,7 @@ export default meta;
 
 type DummyData = {
   age: number;
+  disabledText?: string;
   id: number;
   name: string;
   optionalField?: string;
@@ -38,6 +39,7 @@ type DummyData = {
 const items: DummyData[] = [
   {
     age: 24,
+    disabledText: 'Disabled link',
     id: 1,
     name: 'John',
     optionalField: 'optional',
@@ -45,18 +47,21 @@ const items: DummyData[] = [
   },
   {
     age: 25,
+    disabledText: 'Disabled link',
     id: 2,
     name: 'Jane',
     vegan: true,
   },
   {
     age: 26,
+    disabledText: 'Disabled link',
     id: 3,
     name: 'Joe',
     vegan: false,
   },
   {
     age: 27,
+    disabledText: 'Disabled link',
     id: 4,
     name: 'Joan',
     optionalField: 'idk',
@@ -64,12 +69,14 @@ const items: DummyData[] = [
   },
   {
     age: 28,
+    disabledText: 'Disabled link',
     id: 5,
     name: 'Jim',
     vegan: false,
   },
   {
     age: 26,
+    disabledText: 'Disabled link',
     id: 29,
     name: 'Cade',
     optionalField: 'optional',
@@ -88,7 +95,6 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
     name: 'Age',
     width: 10,
   },
-
   {
     align: 'center',
     key: 'vegan',
@@ -102,6 +108,11 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
         )}
       </div>
     ),
+  },
+  {
+    disabledLink: true,
+    key: 'disabledText',
+    name: 'Disabled Text',
   },
   {
     key: 'optionalField',

@@ -30,6 +30,11 @@ type SimpleTableHeaderBaseProps = {
   align?: 'start' | 'center' | 'end';
   /**
    * @default false
+   * Disable link routing on cells
+   */
+  disabledLink?: boolean;
+  /**
+   * @default false
    * Disable padding on cells
    */
   noPadding?: boolean;
@@ -161,7 +166,7 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
-      if (getRowLink && !selectable.anySelected) {
+      if (getRowLink && !selectable.anySelected && !header.disabledLink) {
         const LinkComponent = CustomLinkComponent || 'a';
 
         return (
