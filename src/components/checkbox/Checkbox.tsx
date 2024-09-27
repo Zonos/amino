@@ -1,8 +1,9 @@
 import {
+  type ChangeEvent,
   type ComponentPropsWithoutRef,
   type KeyboardEvent,
-  type MouseEvent,
   type ReactNode,
+  useId,
   useMemo,
 } from 'react';
 
@@ -16,6 +17,7 @@ import {
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
+import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getTestId } from 'src/utils/getTestId';
 
@@ -65,7 +67,7 @@ export type CheckboxProps = Omit<
     subtitle?: string;
     onChange: (
       checked: boolean,
-      event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>,
+      event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
     ) => void;
   };
 
@@ -85,7 +87,7 @@ export const Checkbox = ({
   subtitle,
   ...props
 }: CheckboxProps) => {
-  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+  const id = useId();
 
   const testId = useMemo(
     () => getTestId({ componentName: 'checkbox', name: label }),
@@ -93,7 +95,7 @@ export const Checkbox = ({
   );
 
   const handleChange = (
-    e: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>,
+    e: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
   ) => {
     if (!allowPropagation) {
       e.stopPropagation();
@@ -105,8 +107,8 @@ export const Checkbox = ({
 
   return (
     <label
-      className={className}
-      htmlFor={labelAsHtmlAttribute}
+      className={clsx(globalStyles.focusableLabel, className)}
+      htmlFor={id}
       style={{
         ...style,
         '--amino-checkbox-background': getBackgroundColor(checked, error),
@@ -121,6 +123,20 @@ export const Checkbox = ({
       }}
       {...props}
     >
+      <input
+        checked={checked}
+        className={clsx(globalStyles.inputHidden, disabled && 'disabled')}
+        data-testid={testId}
+        id={id}
+        onChange={handleChange}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === 'Space') {
+            handleChange(e);
+          }
+        }}
+        tabIndex={0}
+        type="checkbox"
+      />
       <div
         className={clsx(
           styles.checkboxContainer,
@@ -128,19 +144,8 @@ export const Checkbox = ({
           disabled && styles.disabled,
           disabled && 'disabled',
         )}
-        data-testid={testId}
-        onClick={e => {
-          handleChange(e);
-        }}
-        onKeyDown={e => {
-          if (e.key === 'Enter' || e.key === 'Space') {
-            handleChange(e);
-          }
-        }}
-        role="button"
-        tabIndex={0}
       >
-        <div className={styles.aminoCheckbox} id={labelAsHtmlAttribute}>
+        <div className={styles.aminoCheckbox}>
           <AnimatePresence>
             {checked && (
               <AnimatedCheckIcon

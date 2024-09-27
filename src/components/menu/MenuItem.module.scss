@@ -8,6 +8,7 @@
 }
 
 .styledListItem {
+  width: 100%;
   display: flex;
   align-items: center;
   padding: theme.$amino-space-8;
@@ -19,6 +20,10 @@
 
   &:hover {
     background: theme.$amino-hover-color;
+  }
+
+  &:active {
+    outline: none;
   }
 
   a {

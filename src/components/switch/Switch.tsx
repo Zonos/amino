@@ -1,8 +1,9 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, useId } from 'react';
 
 import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
+import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Switch.module.scss';
@@ -32,23 +33,31 @@ export const Switch = ({
   switchIconLeft,
   switchIconRight,
 }: SwitchProps) => {
-  const labelAsHtmlAttribute = label?.replace(/\s/g, '-').toLowerCase();
+  const id = useId();
   const hasIcons = Boolean(switchIconLeft || switchIconRight);
 
   const hasLabel = Boolean(label || labelIcon || labelDescription || subtitle);
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <label
       className={clsx(
         className,
         styles.switchContainer,
+        globalStyles.focusableLabel,
         disabled && styles.disabled,
       )}
-      htmlFor={labelAsHtmlAttribute}
-      onClick={() => !disabled && onChange(!checked)}
+      htmlFor={id}
       style={style}
     >
+      <input
+        checked={checked}
+        id={id}
+        onChange={() => !disabled && onChange(!checked)}
+        onKeyDown={e => e.key === 'Enter' && !disabled && onChange(!checked)}
+        style={{ width: '0px' }}
+        tabIndex={0}
+        type="checkbox"
+      />
       {hasIcons ? (
         <div
           className={clsx(
@@ -63,7 +72,7 @@ export const Switch = ({
               styles.aminoSwitchWithIcons,
               checked && styles.checked,
             )}
-            id={labelAsHtmlAttribute}
+            id={id}
           />
           <div className={clsx(styles.switchIcon, styles.left)}>
             {switchIconLeft}
@@ -76,7 +85,7 @@ export const Switch = ({
         >
           <div
             className={clsx(styles.aminoSwitch, checked && styles.checked)}
-            id={labelAsHtmlAttribute}
+            id={id}
           />
         </div>
       )}

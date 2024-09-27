@@ -1,0 +1,28 @@
+@use 'theme';
+
+// Utility classes
+
+.focusable {
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: theme.$amino-glow-blue;
+  }
+}
+
+.focusableLabel {
+  &:has(input:focus-visible) {
+    box-shadow: theme.$amino-glow-blue;
+  }
+}
+
+.inputHidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}

@@ -9,6 +9,7 @@ import { Text } from 'src/components/text/Text';
 import { BagIcon } from 'src/icons/BagIcon';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { SearchIcon } from 'src/icons/SearchIcon';
 
 const InputMeta: Meta = {
   argTypes: {
@@ -58,6 +59,12 @@ const Template: StoryFn<InputProps> = ({ value: _value, ...props }) => {
       <Input
         {...props}
         disabled
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      />
+      <Input
+        {...props}
+        label={undefined}
         onChange={e => setValue(e.target.value)}
         value={value}
       />
@@ -209,6 +216,25 @@ export const DynamicErrorAndHelpText: StoryFn<InputProps> = ({
         helpText={hasError ? 'This field is required' : 'Enter some stuff'}
         onChange={e => setValue(e.target.value)}
         value={value}
+      />
+      <Text type="bold-subheader">
+        Value: <Text type="code">{value || '--'}</Text>
+      </Text>
+    </VStack>
+  );
+};
+
+export const Search: StoryFn<InputProps> = ({ value: _value, ...props }) => {
+  const [value, setValue] = useState(_value);
+
+  return (
+    <VStack>
+      <Input
+        {...props}
+        onChange={e => setValue(e.target.value)}
+        placeholder="Search..."
+        value={value}
+        valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
       <Text type="bold-subheader">
         Value: <Text type="code">{value || '--'}</Text>

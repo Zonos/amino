@@ -40,10 +40,11 @@
     &::-webkit-datetime-edit-fields-wrapper {
       transition: 0.5s all ease;
     }
-    &:not(:focus):not(:global(.has-content)) {
-      &::-webkit-datetime-edit-fields-wrapper {
-        color: transparent;
-      }
+  }
+
+  &:not(:focus-within):not(:global(.has-content)) {
+    input::-webkit-datetime-edit-fields-wrapper {
+      opacity: 0;
     }
   }
 }

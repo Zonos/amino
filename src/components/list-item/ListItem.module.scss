@@ -26,6 +26,13 @@
     }
   }
 
+  &:active,
+  &:focus,
+  &:hover {
+    outline: none;
+    background-color: theme.$amino-hover-color;
+  }
+
   &.disabled {
     color: theme.$amino-gray-600;
     cursor: not-allowed;

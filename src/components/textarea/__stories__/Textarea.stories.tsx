@@ -22,6 +22,7 @@ export const Basic: StoryFn<TextareaProps> = props => {
 
   return (
     <Textarea
+      label="Label"
       {...props}
       onChange={e => setValue(e.target.value)}
       value={value}

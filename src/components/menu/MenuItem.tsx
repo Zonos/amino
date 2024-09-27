@@ -22,15 +22,13 @@ export const MenuItem = ({
   style,
 }: MenuItemProps) => (
   <li className={clsx(className, disabled && styles.disabled)} style={style}>
-    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-    <div
+    <button
       className={styles.styledListItem}
       onClick={e => !disabled && onClick?.(e)}
-      role="button"
-      tabIndex={0}
+      type="button"
     >
       {icon}
       {children}
-    </div>
+    </button>
   </li>
 );

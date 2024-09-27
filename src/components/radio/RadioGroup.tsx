@@ -51,6 +51,7 @@ export const RadioGroup = <T extends string = string>({
           }
         }
       }}
+      value={el.value}
     />
   ));
 

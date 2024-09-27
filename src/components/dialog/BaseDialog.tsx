@@ -11,14 +11,14 @@ import styles from './BaseDialog.module.scss';
 
 export type BaseDialogProps = BaseProps & {
   children: ReactNode;
-  /** Close when clicking outside dialog (on the backdrop)
-   * @default true
+  /** Don't close when clicking outside dialog (on the backdrop)
+   * @default false
    */
-  closeOnBlur?: boolean;
-  /** Close on pressing 'escape' key
-   * @default true
+  noCloseOnBlur?: boolean;
+  /** Don't close on pressing 'escape' key
+   * @default false
    */
-  closeOnEsc?: boolean;
+  noCloseOnEsc?: boolean;
   open: boolean;
   /**
    * framer-motion props for the popup container.
@@ -47,7 +47,7 @@ export type BaseDialogProps = BaseProps & {
   width?: number;
   /**
    * Disable the backdrop color
-   * @default true
+   * @default false
    */
   withBackdrop?: boolean;
   onClose?: () => void;
@@ -56,8 +56,8 @@ export type BaseDialogProps = BaseProps & {
 export const BaseDialog = ({
   children,
   className,
-  closeOnBlur = true,
-  closeOnEsc = true,
+  noCloseOnBlur = false,
+  noCloseOnEsc = false,
   onClose,
   open,
   popupMotionProps,
@@ -65,7 +65,7 @@ export const BaseDialog = ({
   style,
   themeOverride,
   width = 444,
-  withBackdrop = true,
+  withBackdrop = false,
 }: BaseDialogProps) => {
   const mouseDownTarget = useRef<HTMLDivElement | null>(null);
 
@@ -73,7 +73,7 @@ export const BaseDialog = ({
     if (event.key === 'Escape') {
       // Prevent other dialogs from closing
       event.stopPropagation();
-      if (onClose && closeOnEsc) {
+      if (onClose && !noCloseOnEsc) {
         onClose();
       }
     }
@@ -129,7 +129,7 @@ export const BaseDialog = ({
               onMouseUp={e => {
                 const isSameTarget = e.target === mouseDownTarget.current;
                 const shouldClose =
-                  onClose && closeOnBlur && e.target === backdropRef.current;
+                  onClose && !noCloseOnBlur && e.target === backdropRef.current;
                 // only want to trigger close if key down and key up targets are the same and the clicking is on the overlay
                 if (isSameTarget && shouldClose) {
                   onClose();

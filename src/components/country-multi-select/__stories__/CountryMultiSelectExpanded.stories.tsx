@@ -10,6 +10,7 @@ import {
   CountryMultiSelectExpanded,
 } from 'src/components/country-multi-select/CountryMultiSelectExpanded';
 import { Toggle } from 'src/components/toggle/Toggle';
+import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 const renderBadge = (label: string) => {
@@ -32,14 +33,19 @@ const Template = (props: CountryMultiSelectExpandedProps) => {
 
   const countries = useMemo(
     () =>
-      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
-        code: x.code,
-        disabled: x.displayName.startsWith('C'),
-        group: x.region,
-        icon: x.icon,
-        label: x.displayName,
-        rightDecorator: () => renderBadge(x.displayName),
-      })),
+      countryOptions
+        .map<CountryMultiSelectExpandedOption>(x => ({
+          code: x.code,
+          disabled: x.displayName.startsWith('C'),
+          group: x.region,
+          // Storybook doesn't handle directly passing the component well (it blows up and freezes), so we need to make it a function (works upstream just fine...)
+          // eslint-disable-next-line react/no-unstable-nested-components
+          icon: () => <FlagIcon code={x.code as Flag} iconScale="small" />,
+          label: x.displayName,
+          rightDecorator: () => renderBadge(x.displayName),
+        }))
+        // Verify sorting by messing it up here
+        .sort((a, b) => b.label.localeCompare(a.label)),
     [countryOptions],
   );
 
