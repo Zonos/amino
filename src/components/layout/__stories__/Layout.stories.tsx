@@ -72,14 +72,12 @@ const Template: StoryFn<LayoutProps> = ({
   content,
   headerContent,
   logoSidebar,
-  searchInput,
 }: LayoutProps) => (
   <Layout
     content={content}
     footer={<UserMenu />}
     headerContent={headerContent}
     logoSidebar={logoSidebar}
-    searchInput={searchInput}
     sidebar={<NavigationGroupStory />}
   />
 );

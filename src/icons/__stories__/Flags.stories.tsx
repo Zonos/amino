@@ -3,11 +3,12 @@ import { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import clsx from 'clsx';
 
-import { SearchInput } from 'src/components/input/SearchInput';
+import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { type FlagIconProps, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import * as flags from 'src/icons/flags/_FlagIndex';
+import { SearchIcon } from 'src/icons/SearchIcon';
 
 import styles from './Flags.stories.module.scss';
 
@@ -60,7 +61,14 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
 
   return (
     <VStack>
-      <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
+      <Input
+        onChange={e => setFilter(e.target.value)}
+        placeholder="Search..."
+        size="lg"
+        type="search"
+        value={filter}
+        valuePrefix={<SearchIcon color="gray600" size={24} />}
+      />
       <div className={styles.styledWrapper}>
         {iicons
           .filter(({ iconName }) =>

@@ -37,10 +37,8 @@ $height: var(--amino-float-label-input-height);
   .inputValuePrefix {
     display: flex;
     order: 2;
-    align-items: flex-end;
-    padding-left: theme.$amino-space-16;
-    padding-right: theme.$amino-space-4;
-    padding-bottom: 11px;
+    align-items: center;
+    padding-left: 8px;
     color: theme.$amino-gray-800;
     white-space: nowrap;
   }
@@ -119,13 +117,15 @@ $height: var(--amino-float-label-input-height);
     }
   }
 
-  &:has(input:focus) {
-    box-shadow: theme.$amino-glow-blue;
-  }
+  &:not(:global(.no-border)) {
+    &:has(input:focus) {
+      box-shadow: theme.$amino-glow-blue;
+    }
 
-  &:global(.has-error),
-  &:global(.has-error):has(input:focus) {
-    box-shadow: theme.$amino-glow-error;
+    &:global(.has-error),
+    &:global(.has-error):has(input:focus) {
+      box-shadow: theme.$amino-glow-error;
+    }
   }
 
   &:global(.has-content),
@@ -159,6 +159,11 @@ $height: var(--amino-float-label-input-height);
         theme.$amino-space-16;
     }
 
+    .inputValuePrefix {
+      align-items: flex-end;
+      padding-bottom: 11px;
+    }
+
     &:global(.has-input-prefix) {
       .aminoInput {
         padding-left: 0;
@@ -182,11 +187,11 @@ $height: var(--amino-float-label-input-height);
           top: 2px;
         }
       }
-    }
 
-    .inputValuePrefix {
-      padding-bottom: 0;
-      margin-bottom: -1px;
+      .inputValuePrefix {
+        padding-bottom: 0;
+        margin-bottom: -1px;
+      }
     }
   }
 
@@ -202,10 +207,10 @@ $height: var(--amino-float-label-input-height);
           top: 6px;
         }
       }
-    }
 
-    .inputValuePrefix {
-      padding-bottom: 4px;
+      .inputValuePrefix {
+        padding-bottom: 4px;
+      }
     }
   }
 
@@ -221,10 +226,10 @@ $height: var(--amino-float-label-input-height);
           top: 6px;
         }
       }
-    }
 
-    .inputValuePrefix {
-      padding-bottom: 10px;
+      .inputValuePrefix {
+        padding-bottom: 10px;
+      }
     }
   }
 

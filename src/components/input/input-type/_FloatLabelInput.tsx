@@ -53,6 +53,11 @@ type FloatLabelInputType = BaseProps & {
   /** A label that will be displayed above the input */
   label?: string;
 
+  /**
+   * @default false
+   */
+  noBorder?: boolean;
+
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: ChangeEventHandler<HTMLInputElement>;
 
@@ -100,6 +105,7 @@ export const FloatLabelInput = forwardRef<
       id: _id,
       inputMode,
       label,
+      noBorder = false,
       onChange,
       onKeyDown,
       pattern,
@@ -131,6 +137,7 @@ export const FloatLabelInput = forwardRef<
         className={clsx(
           styles.styledLabelWrapper,
           size,
+          noBorder && 'no-border',
           error && 'has-error',
           label && 'has-label',
           hasValue && 'has-content',
