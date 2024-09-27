@@ -35,12 +35,7 @@ export const Tabs = ({
   if (subtle) {
     return (
       <div
-        className={clsx(
-          className,
-          styles.baseTabs,
-
-          styles.subtleTabs,
-        )}
+        className={clsx(className, styles.baseTabs, styles.subtleTabs)}
         style={{ ...style, '--amino-tabs-align': align }}
       >
         {items.map(item => (
