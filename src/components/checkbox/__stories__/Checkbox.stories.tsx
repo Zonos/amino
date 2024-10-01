@@ -19,7 +19,7 @@ const Template: StoryFn<CheckboxProps> = ({
       <Checkbox
         {...props}
         checked={isChecked}
-        onChange={() => setIsChecked(!isChecked)}
+        onChange={x => setIsChecked(x)}
       />
       <Text>Some text</Text>
     </Flex>

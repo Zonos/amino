@@ -106,9 +106,11 @@ export const Checkbox = ({
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- When inside the table, the click event is on the label and we need to prevent propagation.
     <label
-      className={clsx(globalStyles.focusableLabel, className)}
+      className={clsx(globalStyles.focusableLabel, styles.wrapper, className)}
       htmlFor={id}
+      onClick={e => !allowPropagation && e.stopPropagation()}
       style={{
         ...style,
         '--amino-checkbox-background': getBackgroundColor(checked, error),
