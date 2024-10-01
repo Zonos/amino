@@ -338,8 +338,7 @@ export const Custom = () => {
       <Menu>
         <MenuItem
           icon={<EditDuotoneIcon size={20} />}
-          onClick={e => {
-            e.stopPropagation();
+          onClick={() => {
             alert(`Edit ${item.name}`);
           }}
         >
@@ -353,8 +352,7 @@ export const Custom = () => {
               size={20}
             />
           }
-          onClick={e => {
-            e.stopPropagation();
+          onClick={() => {
             alert(`Delete ${item.name}`);
           }}
         >

@@ -252,9 +252,10 @@ export const SimpleTable = <T extends object>({
             clickable && styles.clickable,
             !noHoverBackground && styles.withHover,
           )}
-          onClick={() => {
+          onClick={e => {
             if (selectable.anySelected) {
               if (!selectable.isRowCheckboxDisabled?.(item, index)) {
+                e.preventDefault();
                 selectable.onRowCheckboxChange?.(
                   !selectable.isRowChecked?.(item, index),
                   item,
@@ -268,11 +269,10 @@ export const SimpleTable = <T extends object>({
           onMouseEnter={() => onRowHover?.(item)}
         >
           {selectable.enabled && (
-            <td className={styles.noPadding}>
+            <td>
               {selectable.renderCustomRowCheckbox?.(item, index) || (
                 <Checkbox
                   checked={selectable.isRowChecked?.(item, index) || false}
-                  className={styles.styledCheckbox}
                   disabled={
                     selectable.isRowCheckboxDisabled?.(item, index) || false
                   }

@@ -6,3 +6,4 @@ export declare const labelWrapper: string;
 export declare const styledLabel: string;
 export declare const styledLabelDescription: string;
 export declare const styledSubtitle: string;
+export declare const wrapper: string;

@@ -6,11 +6,19 @@ $box-shadow: var(--amino-checkbox-box-shadow);
 $disabled-background: var(--amino-checkbox-disabled-background);
 $disabled-border: var(--amino-checkbox-disabled-border);
 
+.wrapper {
+  cursor: pointer;
+}
+
 .checkboxContainer {
   display: flex;
   flex-direction: row;
-  user-select: none;
-  cursor: pointer;
+
+  &,
+  * {
+    user-select: none;
+    pointer-events: none;
+  }
 
   &.disabled {
     .aminoCheckbox {
