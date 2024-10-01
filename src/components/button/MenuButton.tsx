@@ -48,7 +48,12 @@ export const MenuButton = ({
     }
   };
 
-  const handleClickChildren = () => {
+  const handleClickChildren = (
+    e:
+      | React.MouseEvent<HTMLDivElement, MouseEvent>
+      | React.KeyboardEvent<HTMLDivElement>,
+  ) => {
+    e.stopPropagation();
     if (!noCloseOnSelect) {
       setVisible(false);
     }
@@ -92,7 +97,7 @@ export const MenuButton = ({
             onClick={handleClickChildren}
             onKeyDown={e => {
               if (e.key === 'Enter') {
-                handleClickChildren();
+                handleClickChildren(e);
               }
             }}
             role="button"
