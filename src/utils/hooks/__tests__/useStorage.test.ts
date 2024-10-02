@@ -153,7 +153,7 @@ describe('useStorage', () => {
     expect(getCurrentValue()).toBe(false);
   });
 
-  test.only('Should parse a boolean with default value true', () => {
+  test('Should parse a boolean with default value true', () => {
     const boolean = z.boolean();
 
     const { result } = renderHook(() =>
