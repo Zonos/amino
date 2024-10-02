@@ -119,7 +119,7 @@ describe('useStorage', () => {
     expect(getCurrentValue()).toBe('apple');
   });
 
-  test('Should parse a boolean without a schema', () => {
+  test('Should parse a boolean', () => {
     const boolean = z.boolean();
 
     const { result } = renderHook(() =>
@@ -151,6 +151,40 @@ describe('useStorage', () => {
     });
 
     expect(getCurrentValue()).toBe(false);
+  });
+
+  test.only('Should parse a boolean with default value true', () => {
+    const boolean = z.boolean();
+
+    const { result } = renderHook(() =>
+      useStorage({
+        defaultValue: true,
+        key: 'boolean',
+        schema: boolean,
+        type: 'session',
+      }),
+    );
+
+    const getCurrentValue = () => result.current.value;
+
+    // Assert initial state
+    const { setValue, value: initialValue } = result.current;
+
+    expect(initialValue).toBe(true);
+
+    act(() => {
+      setValue(false);
+    });
+
+    // Assert the updated state
+    expect(getCurrentValue()).toBe(false);
+
+    // Manually mangle local storage
+    act(() => {
+      setValue('ooga-booga' as unknown as boolean);
+    });
+
+    expect(getCurrentValue()).toBe(true);
   });
 });
 
