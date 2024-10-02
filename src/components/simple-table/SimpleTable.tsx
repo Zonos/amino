@@ -293,12 +293,13 @@ export const SimpleTable = <T extends object>({
 
   return (
     <div
-      className={styles.tableContainer}
+      className={clsx(styles.tableContainer, className)}
       style={{
         maxHeight,
+        ...style,
       }}
     >
-      <table className={clsx(className, styles.tableStyled)} style={style}>
+      <table className={styles.tableStyled}>
         <colgroup>
           {!!selectable.onHeaderCheckboxChange && <col width={0} />}
           {headers.map(header => (
