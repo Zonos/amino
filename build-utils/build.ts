@@ -1,3 +1,4 @@
+import alias from '@rollup/plugin-alias';
 import buble from '@rollup/plugin-buble';
 import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -55,6 +56,11 @@ const bundlePackage = async (
     ),
     maxParallelFileOps: 50,
     plugins: [
+      alias({
+        entries: [
+          { find: 'src', replacement: path.resolve(__dirname, '../src') },
+        ],
+      }),
       nodeResolve({
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],

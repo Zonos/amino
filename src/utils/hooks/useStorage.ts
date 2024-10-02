@@ -71,7 +71,7 @@ export const useStorage = <
     () => JSON.stringify(defaultValue),
   );
 
-  const currentValue = getStorageItem<TValue>({ key, schema, type }) || null;
+  const currentValue = getStorageItem<TValue>({ key, schema, type }) ?? null;
 
   const setValue = useCallback(
     (value: TValue) => setStorageItem({ key, type, value }),
@@ -113,7 +113,7 @@ export const useStorageWithLifetime = <
 
   const currentValue = shouldUpdate
     ? null
-    : getStorageItem<TValue>({ key, schema, type }) || null;
+    : getStorageItem<TValue>({ key, schema, type }) ?? null;
 
   const setValue = useCallback(
     (value: TValue) =>

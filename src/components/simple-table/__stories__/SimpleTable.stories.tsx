@@ -129,6 +129,31 @@ export const Basic = () => (
   />
 );
 
+export const Long = () => (
+  <SimpleTable
+    headers={tableHeaders}
+    items={items.flatMap(item => [
+      item,
+      {
+        ...item,
+        id: item.id + 100,
+        name: `${item.name} 2`,
+      },
+      {
+        ...item,
+        id: item.id + 200,
+        name: `${item.name} 3`,
+      },
+      {
+        ...item,
+        id: item.id + 300,
+        name: `${item.name} 4`,
+      },
+    ])}
+    keyExtractor={item => String(item.id)}
+  />
+);
+
 export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -276,10 +301,29 @@ export const Custom = () => {
     hoverField: null;
   };
 
-  const augmentedItems: AugmentedDummyData[] = items.map(item => ({
-    ...item,
-    hoverField: null,
-  }));
+  const augmentedItems: AugmentedDummyData[] = items
+    .flatMap(item => [
+      item,
+      {
+        ...item,
+        id: item.id + 100,
+        name: `${item.name} 2`,
+      },
+      {
+        ...item,
+        id: item.id + 200,
+        name: `${item.name} 3`,
+      },
+      {
+        ...item,
+        id: item.id + 300,
+        name: `${item.name} 4`,
+      },
+    ])
+    .map(item => ({
+      ...item,
+      hoverField: null,
+    }));
 
   const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
 
@@ -308,13 +352,12 @@ export const Custom = () => {
       action={
         <Button icon={<ThreeDotIcon size={20} />} size="sm" variant="subtle" />
       }
-      closeOnMouseLeave={false}
+      noCloseOnMouseLeave
     >
       <Menu>
         <MenuItem
           icon={<EditDuotoneIcon size={20} />}
-          onClick={e => {
-            e.stopPropagation();
+          onClick={() => {
             alert(`Edit ${item.name}`);
           }}
         >
@@ -328,8 +371,7 @@ export const Custom = () => {
               size={20}
             />
           }
-          onClick={e => {
-            e.stopPropagation();
+          onClick={() => {
             alert(`Delete ${item.name}`);
           }}
         >

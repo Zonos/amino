@@ -82,6 +82,11 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    */
   loadingSkeletonHeight?: number;
   /**
+   * Maximum height of the table.
+   * @default '100%
+   */
+  maxHeight?: string;
+  /**
    * @default false,
    * Disable hover background color effect on rows
    */
@@ -147,6 +152,7 @@ export const SimpleTable = <T extends object>({
   loading = false,
   loadingItems = 10,
   loadingSkeletonHeight = 13,
+  maxHeight = '100%',
   noHoverBackground = false,
   onRowClick,
   onRowHover,
@@ -246,9 +252,10 @@ export const SimpleTable = <T extends object>({
             clickable && styles.clickable,
             !noHoverBackground && styles.withHover,
           )}
-          onClick={() => {
+          onClick={e => {
             if (selectable.anySelected) {
               if (!selectable.isRowCheckboxDisabled?.(item, index)) {
+                e.preventDefault();
                 selectable.onRowCheckboxChange?.(
                   !selectable.isRowChecked?.(item, index),
                   item,
@@ -262,11 +269,10 @@ export const SimpleTable = <T extends object>({
           onMouseEnter={() => onRowHover?.(item)}
         >
           {selectable.enabled && (
-            <td className={styles.noPadding}>
+            <td>
               {selectable.renderCustomRowCheckbox?.(item, index) || (
                 <Checkbox
                   checked={selectable.isRowChecked?.(item, index) || false}
-                  className={styles.styledCheckbox}
                   disabled={
                     selectable.isRowCheckboxDisabled?.(item, index) || false
                   }
@@ -286,53 +292,63 @@ export const SimpleTable = <T extends object>({
   };
 
   return (
-    <table className={clsx(className, styles.tableStyled)} style={style}>
-      <colgroup>
-        {!!selectable.onHeaderCheckboxChange && <col width={0} />}
-        {headers.map(header => (
-          <col
-            key={header.key}
-            width={header.width !== undefined ? `${header.width}%` : undefined}
-          />
-        ))}
-      </colgroup>
-      <thead>
-        <tr>
-          {!!selectable.onHeaderCheckboxChange && (
-            <th className={styles.noPadding}>
-              {selectable.renderCustomHeaderCheckbox || (
-                <Checkbox
-                  checked={
-                    (!loading && selectable.headerCheckboxValue) || false
-                  }
-                  className={styles.styledCheckbox}
-                  disabled={loading}
-                  onChange={selectable.onHeaderCheckboxChange}
-                />
-              )}
-            </th>
-          )}
+    <div
+      className={clsx(styles.tableContainer, className)}
+      style={{
+        maxHeight,
+        ...style,
+      }}
+    >
+      <table className={styles.tableStyled}>
+        <colgroup>
+          {!!selectable.onHeaderCheckboxChange && <col width={0} />}
           {headers.map(header => (
-            <th
+            <col
               key={header.key}
-              className={clsx(header.noPadding && styles.noPadding)}
-              style={{
-                textAlign: header.align || 'start',
-              }}
-            >
-              {typeof header.name === 'string' ? (
-                <Text color="gray800" type="small-header">
-                  {header.name}
-                </Text>
-              ) : (
-                header.name
-              )}
-            </th>
+              width={
+                header.width !== undefined ? `${header.width}%` : undefined
+              }
+            />
           ))}
-        </tr>
-      </thead>
-      <tbody>{renderRows()}</tbody>
-      {renderFooter}
-    </table>
+        </colgroup>
+        <thead>
+          <tr>
+            {!!selectable.onHeaderCheckboxChange && (
+              <th className={styles.noPadding}>
+                {selectable.renderCustomHeaderCheckbox || (
+                  <Checkbox
+                    checked={
+                      (!loading && selectable.headerCheckboxValue) || false
+                    }
+                    className={styles.styledCheckbox}
+                    disabled={loading}
+                    onChange={selectable.onHeaderCheckboxChange}
+                  />
+                )}
+              </th>
+            )}
+            {headers.map(header => (
+              <th
+                key={header.key}
+                className={clsx(header.noPadding && styles.noPadding)}
+                style={{
+                  textAlign: header.align || 'start',
+                }}
+              >
+                {typeof header.name === 'string' ? (
+                  <Text color="gray800" type="small-header">
+                    {header.name}
+                  </Text>
+                ) : (
+                  header.name
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>{renderRows()}</tbody>
+        {renderFooter}
+      </table>
+    </div>
   );
 };

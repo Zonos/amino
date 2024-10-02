@@ -37,19 +37,17 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
       {open && (
         <Surface className={styles.animatedSurface} dense depth="depth16">
           <Menu>
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-            <div
+            <button
               className={styles.storeItem}
               onClick={() => {}}
-              role="button"
-              tabIndex={0}
+              type="button"
             >
               <TextAvatar label="Default" />
               <VStack spacing={0}>
                 <strong>Test Store</strong>
                 <Text type="subtitle">Click to switch...</Text>
               </VStack>
-            </div>
+            </button>
 
             <div className={styles.storeItem}>
               <TextAvatar label="Zonos" />

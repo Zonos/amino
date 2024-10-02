@@ -19,7 +19,7 @@ export type SelectProps<
   Option extends SelectOption = SelectOption,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
-> = {
+> = BaseProps & {
   /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
@@ -44,8 +44,7 @@ export type SelectProps<
   onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
 } & Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps> &
   Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
-  HelpTextProps &
-  BaseProps;
+  HelpTextProps;
 
 export const Select = <
   Option extends SelectOption,

@@ -27,6 +27,10 @@ type InputType = {
    * @link https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
    */
   inputRef?: MutableRefObject<HTMLInputElement | null>;
+  /**
+   * @default false
+   */
+  noBorder?: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
@@ -45,6 +49,7 @@ export const Input = ({
   inputMode,
   inputRef,
   label,
+  noBorder = false,
   onChange,
   onKeyDown,
   pattern,
@@ -69,11 +74,11 @@ export const Input = ({
           <PasswordInput
             ref={inputRef}
             autoFocus={autoFocus}
-            className={className}
             disabled={disabled}
             error={error}
             inputMode={inputMode}
             label={label}
+            noBorder={noBorder}
             onChange={onChange}
             onKeyDown={onKeyDown}
             pattern={pattern}
@@ -95,11 +100,11 @@ export const Input = ({
           <DateInput
             ref={inputRef}
             autoFocus={autoFocus}
-            className={className}
             disabled={disabled}
             error={error}
             inputMode={inputMode}
             label={label}
+            noBorder={noBorder}
             onChange={onChange}
             onKeyDown={onKeyDown}
             pattern={pattern}
@@ -121,11 +126,11 @@ export const Input = ({
           <NumberInput
             ref={inputRef}
             autoFocus={autoFocus}
-            className={className}
             disabled={disabled}
             error={error}
             inputMode={inputMode}
             label={label}
+            noBorder={noBorder}
             onChange={onChange}
             onKeyDown={onKeyDown}
             pattern={pattern}
@@ -147,11 +152,11 @@ export const Input = ({
           <TimeInput
             ref={inputRef}
             autoFocus={autoFocus}
-            className={className}
             disabled={disabled}
             error={error}
             inputMode={inputMode}
             label={label}
+            noBorder={noBorder}
             onChange={onChange}
             onKeyDown={onKeyDown}
             pattern={pattern}
@@ -177,6 +182,7 @@ export const Input = ({
             error={error}
             inputMode={inputMode}
             label={label}
+            noBorder={noBorder}
             onChange={onChange}
             onKeyDown={onKeyDown}
             pattern={pattern}
@@ -213,6 +219,7 @@ export const Input = ({
   return (
     <div
       className={clsx(
+        className,
         'amino-input-wrapper',
         disabled && 'disabled',
         styles.aminoInputWrapper,
@@ -220,9 +227,10 @@ export const Input = ({
       style={{
         '--amino-input-border-radius': getRadius(),
         '--amino-input-width': width ? `${width}px` : '100%',
+        ...style,
       }}
     >
-      <div className={styles.fields}>{renderInput()}</div>
+      <div className={clsx(!noBorder && styles.fields)}>{renderInput()}</div>
 
       <HelpText error={error} helpText={helpText} />
     </div>

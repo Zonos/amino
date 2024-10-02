@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
+import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './Tabs.module.scss';
@@ -38,11 +39,11 @@ export const Tabs = ({
         style={{ ...style, '--amino-tabs-align': align }}
       >
         {items.map(item => (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-          <div
+          <button
             key={item}
             className={clsx(
               styles.baseTab,
+              globalStyles.focusable,
               selected === items.indexOf(item) && [
                 styles.isSelected,
                 // Used for external styling
@@ -50,11 +51,10 @@ export const Tabs = ({
               ],
             )}
             onClick={() => onChange(items.indexOf(item))}
-            role="button"
-            tabIndex={0}
+            type="button"
           >
             <Text type="label">{item}</Text>
-          </div>
+          </button>
         ))}
       </div>
     );
@@ -66,11 +66,11 @@ export const Tabs = ({
       style={style}
     >
       {items.map(item => (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-        <div
+        <button
           key={item}
           className={clsx(
             styles.baseTab,
+            globalStyles.focusable,
             styles.tab,
             selected === items.indexOf(item) && [
               styles.isSelected,
@@ -79,11 +79,10 @@ export const Tabs = ({
             ],
           )}
           onClick={() => onChange(items.indexOf(item))}
-          role="button"
-          tabIndex={0}
+          type="button"
         >
           {item}
-        </div>
+        </button>
       ))}
     </div>
   );

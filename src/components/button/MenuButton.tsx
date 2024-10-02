@@ -13,26 +13,26 @@ import styles from './MenuButton.module.scss';
 export type MenuButtonProps = BaseProps & {
   action: ReactNode;
   children: ReactNode;
+  dropdownOptions?: UseDropdownParams;
   /**
    * Close the menu when the mouse leaves the dropdown/parent.
-   * @default true
+   * @default false
    */
-  closeOnMouseLeave?: boolean;
+  noCloseOnMouseLeave?: boolean;
   /**
    * Close the menu when clicking anywhere in the the dropdown.
-   * @default true
+   * @default false
    */
-  closeOnSelect?: boolean;
-  dropdownOptions?: UseDropdownParams;
+  noCloseOnSelect?: boolean;
 };
 
 export const MenuButton = ({
   action,
   children,
   className,
-  closeOnMouseLeave = true,
-  closeOnSelect = true,
   dropdownOptions,
+  noCloseOnMouseLeave = false,
+  noCloseOnSelect = false,
   style,
 }: MenuButtonProps) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
@@ -43,13 +43,18 @@ export const MenuButton = ({
     });
 
   const handleMouseLeave = () => {
-    if (closeOnMouseLeave) {
+    if (!noCloseOnMouseLeave) {
       setVisible(false);
     }
   };
 
-  const handleClickChildren = () => {
-    if (closeOnSelect) {
+  const handleClickChildren = (
+    e:
+      | React.MouseEvent<HTMLDivElement, MouseEvent>
+      | React.KeyboardEvent<HTMLDivElement>,
+  ) => {
+    e.stopPropagation();
+    if (!noCloseOnSelect) {
       setVisible(false);
     }
   };
@@ -92,7 +97,7 @@ export const MenuButton = ({
             onClick={handleClickChildren}
             onKeyDown={e => {
               if (e.key === 'Enter') {
-                handleClickChildren();
+                handleClickChildren(e);
               }
             }}
             role="button"

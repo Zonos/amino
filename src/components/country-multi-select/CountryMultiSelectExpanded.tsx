@@ -2,6 +2,7 @@ import {
   type ReactNode,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useState,
 } from 'react';
@@ -36,7 +37,7 @@ export type CountryMultiSelectExpandedOption<
    * Key to group by
    */
   group: string;
-  icon: ReactNode;
+  icon: ReactNode | (() => ReactNode);
   label: string;
   /**
    * Having this as a ReactNode breaks storybook (and only storybook, it works fine elsewhere) somehow. I have no idea, but it needs to be a function instead...
@@ -96,13 +97,20 @@ export const CountryMultiSelectExpanded = <
   style,
   withoutSearch = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
+  const id = useId();
+
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+
+  const sortedCountries = useMemo(
+    () => countries.sort((a, b) => a.label.localeCompare(b.label)),
+    [countries],
+  );
 
   const searchCountries = useCallback(
     (searchTerm: string) => {
       const { fuzzySearch } = getFuzzySearch({
-        array: countries,
+        array: sortedCountries,
         options: {
           keys: ['label', 'code', 'group'],
           threshold: 0.1,
@@ -111,18 +119,18 @@ export const CountryMultiSelectExpanded = <
 
       return fuzzySearch.search(searchTerm);
     },
-    [countries],
+    [sortedCountries],
   );
 
   const shownCountries: CountryMultiSelectExpandedOption<CountryCode>[] =
     useMemo(() => {
       if (searchText === '') {
-        return countries;
+        return sortedCountries;
       }
 
       const results = searchCountries(searchText);
       return results.map(x => x.item);
-    }, [countries, searchCountries, searchText]);
+    }, [sortedCountries, searchCountries, searchText]);
 
   const groups = useMemo(() => {
     const grouped: CountryMultiSelectExpandedRegion<CountryCode>[] =
@@ -138,9 +146,9 @@ export const CountryMultiSelectExpanded = <
 
   const allSelected = useMemo(
     () =>
-      countries.filter(country => !country.disabled).length ===
+      sortedCountries.filter(country => !country.disabled).length ===
       selectedCountries.length,
-    [countries, selectedCountries.length],
+    [sortedCountries, selectedCountries.length],
   );
 
   useEffect(() => {
@@ -150,7 +158,7 @@ export const CountryMultiSelectExpanded = <
     }
   }, [groups, searchText]);
 
-  if (!countries.length) {
+  if (!sortedCountries.length) {
     return (
       <div className={clsx(className)}>
         <Text color="textColorSecondary">No countries</Text>
@@ -158,7 +166,7 @@ export const CountryMultiSelectExpanded = <
     );
   }
 
-  const numSelectableCountries = countries.filter(
+  const numSelectableCountries = sortedCountries.filter(
     country => !country.disabled,
   ).length;
 
@@ -185,7 +193,9 @@ export const CountryMultiSelectExpanded = <
               label="Select all"
               onChange={checked => {
                 if (checked) {
-                  onChange(countries.filter(country => !country.disabled));
+                  onChange(
+                    sortedCountries.filter(country => !country.disabled),
+                  );
                 } else {
                   onChange([]);
                 }
@@ -267,50 +277,57 @@ export const CountryMultiSelectExpanded = <
 
               <Collapse collapsed={groupCollapsed}>
                 <div className={styles.countriesWrapper}>
-                  {group.countries.map(country => (
-                    <Checkbox
-                      key={country.code}
-                      checked={selectedCountries.some(
-                        x => x.code === country.code,
-                      )}
-                      className={clsx(
-                        styles.checkboxWrapper,
-                        styles.checkboxCountry,
-                        !country.disabled && styles.hoverWrapper,
-                      )}
-                      disabled={country.disabled}
-                      icon={country.icon}
-                      label={country.label}
-                      labelComponent={
-                        <div
-                          className={styles.checkboxLabelWrapper}
-                          style={{
-                            opacity: country.disabled
-                              ? theme.opacityDisabled
-                              : 1,
-                          }}
-                        >
-                          <div>
-                            {country.icon}
-                            {country.label}
+                  {group.countries.map(country => {
+                    const icon =
+                      typeof country.icon === 'function'
+                        ? country.icon()
+                        : country.icon;
+
+                    return (
+                      <Checkbox
+                        key={country.code}
+                        checked={selectedCountries.some(
+                          x => x.code === country.code,
+                        )}
+                        className={clsx(
+                          styles.checkboxWrapper,
+                          styles.checkboxCountry,
+                          !country.disabled && styles.hoverWrapper,
+                        )}
+                        disabled={country.disabled}
+                        label={country.label}
+                        labelComponent={
+                          <div
+                            className={styles.checkboxLabelWrapper}
+                            style={{
+                              marginLeft: 8,
+                              opacity: country.disabled
+                                ? theme.opacityDisabled
+                                : 1,
+                            }}
+                          >
+                            <div>
+                              {icon}
+                              {country.label}
+                            </div>
+                            {country.rightDecorator?.()}
                           </div>
-                          {country.rightDecorator?.()}
-                        </div>
-                      }
-                      onChange={checked => {
-                        if (checked) {
-                          onChange([...selectedCountries, country]);
-                        } else {
-                          onChange(
-                            selectedCountries.filter(
-                              selectedCountry =>
-                                selectedCountry.code !== country.code,
-                            ),
-                          );
                         }
-                      }}
-                    />
-                  ))}
+                        onChange={checked => {
+                          if (checked) {
+                            onChange([...selectedCountries, country]);
+                          } else {
+                            onChange(
+                              selectedCountries.filter(
+                                selectedCountry =>
+                                  selectedCountry.code !== country.code,
+                              ),
+                            );
+                          }
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               </Collapse>
             </div>
@@ -339,14 +356,11 @@ export const CountryMultiSelectExpanded = <
       <div className={clsx(styles.componentWrapper, error && 'error')}>
         <div className={styles.componentHeaderWrapper}>
           {!withoutSearch && (
-            <label
-              className={styles.searchInput}
-              htmlFor="country-multi-select-search"
-            >
+            <label className={styles.searchInput} htmlFor={id}>
               <SearchIcon size={24} />
               <input
                 autoComplete="off"
-                id="country-multi-select-search"
+                id={id}
                 onChange={e => setSearchText(e.target.value)}
                 placeholder="Search..."
                 type="text"

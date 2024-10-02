@@ -5,6 +5,7 @@ import {
   type KeyboardEventHandler,
   type ReactNode,
   forwardRef,
+  useId,
   useMemo,
 } from 'react';
 
@@ -52,6 +53,11 @@ type FloatLabelInputType = BaseProps & {
   /** A label that will be displayed above the input */
   label?: string;
 
+  /**
+   * @default false
+   */
+  noBorder?: boolean;
+
   /** Input on changed. Required since all inputs must be fully controlled */
   onChange: ChangeEventHandler<HTMLInputElement>;
 
@@ -96,8 +102,10 @@ export const FloatLabelInput = forwardRef<
       className,
       disabled,
       error,
+      id: _id,
       inputMode,
       label,
+      noBorder = false,
       onChange,
       onKeyDown,
       pattern,
@@ -115,15 +123,29 @@ export const FloatLabelInput = forwardRef<
     },
     ref,
   ) => {
+    const inputId = useId();
     const testId = useMemo(
       () => getTestId({ componentName: 'input', name: label }),
       [label],
     );
     const hasValue = !!value || !!valuePrefix;
 
+    const id = _id || inputId;
+
     return (
-      <div
-        className={clsx(className, size, styles.styledLabelWrapper)}
+      <label
+        className={clsx(
+          styles.styledLabelWrapper,
+          size,
+          noBorder && 'no-border',
+          error && 'has-error',
+          label && 'has-label',
+          hasValue && 'has-content',
+          prefix && 'has-input-prefix',
+          valuePrefix && 'has-value-prefix',
+          className,
+        )}
+        htmlFor={id}
         style={{
           '--amino-float-label-input-border-radius': getFloatLabelRadius(size),
           '--amino-float-label-input-height': `calc(var(--amino-size-${size}) - 2px)`,
@@ -142,17 +164,10 @@ export const FloatLabelInput = forwardRef<
           aria-label={label}
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
-          className={clsx(
-            error && 'has-error',
-            label && 'has-label',
-            hasValue && 'has-content',
-            prefix && 'has-input-prefix',
-            valuePrefix && 'has-value-prefix',
-            styles.aminoInput,
-          )}
+          className={clsx(styles.aminoInput)}
           data-testid={testId}
           disabled={disabled}
-          id={label}
+          id={id}
           inputMode={inputMode}
           onChange={onChange}
           onKeyDown={onKeyDown}
@@ -165,14 +180,15 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label className={styles.styledLabelInput} data-label={label} />
+        <div className={styles.floatingLabel}>
+          <span>{label}</span>
+        </div>
         {suffix && (
           <div className={clsx(styles.inputDecorator, styles.inputSuffix)}>
             {suffix}
           </div>
         )}
-      </div>
+      </label>
     );
   },
 );

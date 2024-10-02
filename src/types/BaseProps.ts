@@ -1,5 +1,5 @@
 /**
- * All components props should extend this interface.
+ * All components props should extend this.
  */
 export type BaseProps = {
   className?: string;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta } from '@storybook/react';
 import clsx from 'clsx';
 
-import { SearchInput } from 'src/components/input/SearchInput';
+import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import * as icons from 'src/icons/_IconIndex';
@@ -42,7 +42,14 @@ export const Icons = ({
 
   return (
     <VStack>
-      <SearchInput onChange={e => setFilter(e.target.value)} value={filter} />
+      <Input
+        onChange={e => setFilter(e.target.value)}
+        placeholder="Search..."
+        size="lg"
+        type="search"
+        value={filter}
+        valuePrefix={<icons.SearchIcon color="gray600" size={24} />}
+      />
       <div className={styles.styledWrapper}>
         {iicons
           .filter(({ iconName }) =>

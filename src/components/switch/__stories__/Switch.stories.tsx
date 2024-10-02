@@ -9,8 +9,8 @@ import { Default } from 'src/icons/flags/Default';
 import { LaptopIcon } from 'src/icons/LaptopIcon';
 import { MobileIcon } from 'src/icons/MobileIcon';
 
-const Template: StoryFn<SwitchProps> = ({ checked, ...props }: SwitchProps) => {
-  const [isChecked, setIsChecked] = useState(checked);
+const Template: StoryFn<SwitchProps> = ({ ...props }: SwitchProps) => {
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <Flex>

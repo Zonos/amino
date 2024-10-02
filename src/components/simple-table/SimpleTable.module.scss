@@ -1,7 +1,14 @@
 @use 'theme';
 
+.tableContainer {
+  width: 100%;
+  overflow: auto;
+}
+
 .tableStyled {
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 
   > thead {
     text-transform: none;
@@ -11,8 +18,12 @@
       height: 48px;
 
       > th {
+        position: sticky;
+        top: 0px;
+        background-color: theme.$amino-gray-0;
         padding: 12px;
         white-space: nowrap;
+        border-bottom: theme.$amino-border-subtle;
 
         &.noPadding {
           padding: 0;
@@ -24,10 +35,6 @@
   > tbody {
     > tr {
       height: 48px;
-
-      & {
-        border-bottom: theme.$amino-border-subtle;
-      }
 
       &.withHover:hover {
         background-color: theme.$amino-hover-color;
@@ -44,6 +51,7 @@
       }
 
       > td {
+        border-bottom: theme.$amino-border-subtle;
         padding: 12px;
 
         &.noPadding {

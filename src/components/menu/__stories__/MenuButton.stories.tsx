@@ -128,7 +128,7 @@ export const HasDisabledItem: Story = {
           action={
             <Button>Menu button ({isDisabled ? 'Disabled' : 'Enabled'})</Button>
           }
-          closeOnMouseLeave={false}
+          noCloseOnMouseLeave
         >
           <Menu>
             <MenuItem disabled={isDisabled} onClick={() => alert('Alert')}>
@@ -150,7 +150,7 @@ export const SmallerOptions: Story = {
         <MenuItem>B</MenuItem>
       </Menu>
     ),
-    closeOnMouseLeave: false,
+    noCloseOnMouseLeave: true,
   },
   render: Template,
 };
