@@ -7,8 +7,8 @@ $color: var(--amino-styled-react-select-color);
   justify-content: space-evenly;
   align-items: center;
   color: theme.$amino-gray-700;
-  margin-left: var(--amino-space-8);
-  margin-right: -2px;
+  margin-left: 0px;
+  margin-right: 0px;
   height: 24px;
   width: 24px;
 }
@@ -19,11 +19,12 @@ $color: var(--amino-styled-react-select-color);
   font-size: theme.$amino-font-size-base;
   line-height: theme.$amino-font-size-base;
   transform-origin: left top;
-  left: 14px;
+  left: 12px;
   .hasIcon & {
     left: 44px;
   }
   top: calc(50% - theme.$amino-font-size-base / 2);
+
   .hasLabel & {
     & + div {
       align-self: flex-end;
@@ -37,32 +38,18 @@ $color: var(--amino-styled-react-select-color);
 
   // Size modify
 
-  // sm
-  .sm.hasLabel & {
-    & + div {
-      margin-bottom: -6px;
+  // Hide floating label for sm and md sizes
+  .sm,
+  .md {
+    .styledFloatedLabel {
+      display: none;
     }
-  }
-  .sm.hasValue &,
-  .sm.isFocused & {
-    top: 2px;
-  }
-
-  // md
-  .md.hasLabel & {
-    & + div {
-      margin-bottom: -2px;
-    }
-  }
-  .md.hasValue &,
-  .md.isFocused & {
-    top: 6px;
   }
 
   // lg
   .lg.hasValue &,
   .lg.isFocused & {
-    top: 10px;
+    top: 9px;
   }
 
   // xl
@@ -73,7 +60,7 @@ $color: var(--amino-styled-react-select-color);
   }
   .xl.hasValue &,
   .xl.isFocused & {
-    top: 11px;
+    top: 10px;
   }
 }
 

@@ -24,7 +24,7 @@ export const CountrySelect = <T extends string>({
   filter = Boolean,
   label = 'Select country',
   onChange,
-  placeholder,
+  placeholder = 'Select country',
   value,
   ...props
 }: CountrySelectProps<T>) => {
