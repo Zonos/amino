@@ -29,19 +29,23 @@ const MultiInputMeta: Meta = {
 
 export default MultiInputMeta;
 
-const Template: StoryFn<
-  MultiInputProps & {
-    setTags: React.Dispatch<React.SetStateAction<string[]>>;
-    tags: string[];
-  }
-> = ({ setTags, tags, tagValidation, ...props }) => {
+const Template: StoryFn<MultiInputProps> = ({
+  inputValue,
+  setInputValue,
+  setTags,
+  tags,
+  tagValidation,
+  ...props
+}) => {
   const [hasValidationError, setHasValidationError] = useState(false);
 
   return (
     <VStack>
       <MultiInput
         {...props}
+        inputValue={inputValue}
         setHasValidationError={setHasValidationError}
+        setInputValue={setInputValue}
         setTags={setTags}
         tags={tags}
         tagValidation={tagValidation}
@@ -51,6 +55,8 @@ const Template: StoryFn<
           Some tags are invalid
         </Text>
       )}
+      <Text>Current tags: {tags.join(', ')}</Text>
+      <Text>Current input: {inputValue}</Text>
     </VStack>
   );
 };
@@ -58,7 +64,16 @@ const Template: StoryFn<
 const ParentComponent: StoryFn<MultiInputProps> = args => {
   const { tags: initalTags } = args;
   const [tags, setTags] = useState(initalTags || []);
-  return <Template {...args} setTags={setTags} tags={tags} />;
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <Template
+      {...args}
+      inputValue={inputValue}
+      setInputValue={setInputValue}
+      setTags={setTags}
+      tags={tags}
+    />
+  );
 };
 
 export const BasicMultiInput = ParentComponent.bind({});

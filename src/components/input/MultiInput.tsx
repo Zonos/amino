@@ -15,24 +15,27 @@ import styles from './MultiInput.module.scss';
 
 export type MultiInputProps = {
   className?: string;
+  inputValue: string;
   placeholder?: string;
   style?: React.CSSProperties;
   tags: string[];
   setHasValidationError?: (hasValidationError: boolean) => void;
+  setInputValue: (input: string) => void;
   setTags: (tags: string[]) => void;
   tagValidation?: (tag: string) => boolean;
 };
 
 export const MultiInput = ({
   className,
+  inputValue,
   placeholder = '',
   setHasValidationError,
+  setInputValue,
   setTags,
   style,
   tags,
   tagValidation,
 }: MultiInputProps) => {
-  const [inputValue, setInputValue] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
   const [highlightedTagIndex, setHighlightedTagIndex] = useState<number | null>(
     null,
