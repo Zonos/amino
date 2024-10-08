@@ -11,6 +11,7 @@ import styles from './BaseDialog.module.scss';
 
 export type BaseDialogProps = BaseProps & {
   children: ReactNode;
+  fullWindowWidth?: boolean;
   /** Don't close when clicking outside dialog (on the backdrop)
    * @default false
    */
@@ -56,6 +57,7 @@ export type BaseDialogProps = BaseProps & {
 export const BaseDialog = ({
   children,
   className,
+  fullWindowWidth,
   noCloseOnBlur = false,
   noCloseOnEsc = false,
   onClose,
@@ -138,7 +140,9 @@ export const BaseDialog = ({
                 mouseDownTarget.current = null;
               }}
               style={{
-                '--amino-base-dialog-width': `${width}px`,
+                '--amino-base-dialog-width': fullWindowWidth
+                  ? '100%'
+                  : `${width}px`,
               }}
               tabIndex={-1}
               transition={{ duration: 0.3 }}

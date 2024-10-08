@@ -113,6 +113,13 @@ WithHover.args = {
   subtitle: 'With a subtitle',
 };
 
+export const FullWindowWidth = Template.bind({});
+FullWindowWidth.args = {
+  children: <div>Children</div>,
+  fullWindowWidth: true,
+  label: 'Slideover title',
+};
+
 export const WithCoverSheet: StoryFn<SlideOverProps> = ({
   actions,
   children,
