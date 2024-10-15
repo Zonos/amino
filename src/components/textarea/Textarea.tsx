@@ -16,14 +16,14 @@ import styles from './Textarea.module.scss';
 
 type TextareaAdjustableHeightType = {
   /**
-   * @param expandable
-   * @desc if set to true, the textarea will expand to fit the content.
+   * @param disableExpand
+   * @desc if set to true, the textarea will not expand to fit the content.
    */
-  expandable?: boolean;
+  disableExpand?: boolean;
   /**
    * @param maxRows
-   * @desc max rows that the textarea can expand to when expandable is set. If nothing is passed, it defaults to 5
-   * @default 5
+   * @desc max rows that the textarea can expand to when disableExpand is not set. If nothing is passed, it defaults to 5
+   * @default 20 (large)
    */
   maxRows?: number;
 };
@@ -50,8 +50,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       actions,
       className,
       disabled,
+      disableExpand,
       error,
-      expandable,
       helpText,
       label,
       maxRows,
@@ -69,10 +69,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const actionsRef = useRef<HTMLDivElement | null>(null);
 
     useHeightAdjustTextarea({
-      additionalHeight: actions ? actionsRef.current?.clientHeight : 0,
       maxRows,
       ref: textareaRef,
-      shouldExpand: !!expandable,
+      shouldExpand: !disableExpand,
       textareaValue: value?.toString() || '',
     });
 
@@ -113,16 +112,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             value={value}
             {...props}
           />
-          <label
-            className={styles.styledLabelInput}
-            data-label={label}
-            htmlFor={props.id || id}
-          >
-            {label}
-          </label>
-          <div className={styles.styledBorder} />
+          {label && (
+            <label
+              className={styles.styledLabelInput}
+              data-label={label}
+              htmlFor={props.id || id}
+            >
+              {label}
+            </label>
+          )}
         </button>
-        <HelpText error={error} helpText={helpText} />
         {actions && (
           <div ref={actionsRef} className={styles.actions}>
             <Flex alignItems="center" fullHeight justifyContent="flex-end">
@@ -130,6 +129,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </Flex>
           </div>
         )}
+        <HelpText error={error} helpText={helpText} />
       </div>
     );
   },
