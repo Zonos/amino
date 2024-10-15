@@ -2,67 +2,58 @@
 
 $width: var(--amino-textarea-width);
 
-.fields {
-  width: 100%;
-  border-radius: theme.$amino-radius-12;
-  border: theme.$amino-border;
+.textareaWrapper {
+  width: $width;
+}
+
+.aminoInputWrapper {
   position: relative;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid theme.$amino-border-color;
+  border-radius: theme.$amino-radius-12;
+
+  &.disabled {
+    * {
+      cursor: not-allowed;
+    }
+    .fields {
+      opacity: theme.$amino-opacity-disabled;
+    }
+    .styledTextarea {
+      user-select: none;
+    }
+  }
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+
   &:hover {
-    border: 1px solid theme.$amino-gray-300;
+    border-color: theme.$amino-gray-300;
   }
-}
-
-.styledBorder {
-  &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    border-radius: theme.$amino-radius-12;
-  }
-}
-
-.styledLabelInput {
-  color: theme.$amino-gray-800;
-  font-size: theme.$amino-font-size-base;
-  line-height: theme.$amino-font-size-base;
-  position: absolute;
-  filter: blur(0);
-  top: calc(theme.$amino-font-size-base + 6px);
-  transform-origin: left top;
-  transition: theme.$amino-transition;
-  left: 16px;
-  z-index: 3;
 }
 
 .styledTextarea {
+  flex-grow: 1;
   box-sizing: border-box;
-  position: relative;
-  padding: 0 16px;
-  padding-top: 8px;
+  padding: 8px 16px;
   outline: none;
-  order: 2;
   width: 100%;
-  border-radius: theme.$amino-radius-6;
-  background: theme.$amino-input-background;
-  border: 0;
+  border: none;
   font-size: theme.$amino-font-size-base;
   font-weight: 500;
-  z-index: 2;
-  display: block;
+  resize: none;
+  min-height: 50px;
+  background: theme.$amino-input-background;
 
-  :-internal-autofill-selected {
-    border-radius: theme.$amino-radius-6 0 0 theme.$amino-radius-6;
-    & + label + div {
-      background-color: #e8f0fe;
-    }
-  }
   &.hasLabel {
     margin-top: 24px;
-    padding: 0 4px 8px 16px;
+    padding-top: 0;
 
     &::placeholder {
       opacity: 0;
@@ -76,19 +67,6 @@ $width: var(--amino-textarea-width);
       & + .styledLabelInput {
         top: 11px;
         transform: scale(0.8);
-        & + .styledBorder {
-          &::before {
-            content: '';
-            position: absolute;
-            z-index: 2;
-            left: 0;
-            top: 0;
-            height: 25px;
-            right: 0;
-            background: theme.$amino-input-background;
-            border-radius: theme.$amino-radius-6;
-          }
-        }
       }
     }
   }
@@ -102,9 +80,6 @@ $width: var(--amino-textarea-width);
 
   &:focus {
     outline: none;
-    & ~ .styledBorder::after {
-      box-shadow: theme.$amino-glow-blue;
-    }
   }
 
   &.hasError ~ .styledBorder::after {
@@ -112,34 +87,33 @@ $width: var(--amino-textarea-width);
   }
 }
 
-.actions {
-  background: theme.$amino-page-background;
-  // use radius 16 to allow expandable icon to show
-  border-bottom-right-radius: 16px;
-  border-bottom-left-radius: 16px;
-  bottom: 1px;
-  height: 58px;
-  left: 1px;
-  padding: 0 16px;
+.styledLabelInput {
+  color: theme.$amino-gray-800;
+  font-size: theme.$amino-font-size-base;
+  line-height: theme.$amino-font-size-base;
   position: absolute;
-  right: 1px;
-  text-align: right;
-  z-index: 3;
+  top: calc(theme.$amino-font-size-base + 6px);
+  left: 16px;
+  transform-origin: left top;
+  transition: theme.$amino-transition;
 }
 
-.aminoInputWrapper {
-  position: relative;
-  width: $width;
-
-  &.disabled {
-    * {
-      cursor: not-allowed;
-    }
-    .fields {
-      opacity: theme.$amino-opacity-disabled;
-    }
-    .styledTextarea {
-      user-select: none;
-    }
+.styledBorder {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: theme.$amino-radius-12;
   }
+}
+
+.actions {
+  background: theme.$amino-page-background;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

@@ -23,7 +23,7 @@ type TextareaParams = {
 export const useHeightAdjustTextarea = ({
   additionalHeight = 0,
   initialRows = 2,
-  maxRows = 5,
+  maxRows = 20,
   ref,
   shouldExpand,
   textareaValue,

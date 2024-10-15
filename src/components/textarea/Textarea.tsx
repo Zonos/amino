@@ -16,14 +16,14 @@ import styles from './Textarea.module.scss';
 
 type TextareaAdjustableHeightType = {
   /**
-   * @param expandable
-   * @desc if set to true, the textarea will expand to fit the content.
+   * @param disableExpand
+   * @desc if set to true, the textarea will not expand to fit the content.
    */
-  expandable?: boolean;
+  disableExpand?: boolean;
   /**
    * @param maxRows
-   * @desc max rows that the textarea can expand to when expandable is set. If nothing is passed, it defaults to 5
-   * @default 5
+   * @desc max rows that the textarea can expand to when disableExpand is not set. If nothing is passed, it defaults to 5
+   * @default 20 (large)
    */
   maxRows?: number;
 };
@@ -50,8 +50,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       actions,
       className,
       disabled,
+      disableExpand,
       error,
-      expandable,
       helpText,
       label,
       maxRows,
@@ -69,68 +69,77 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const actionsRef = useRef<HTMLDivElement | null>(null);
 
     useHeightAdjustTextarea({
-      additionalHeight: actions ? actionsRef.current?.clientHeight : 0,
       maxRows,
       ref: textareaRef,
-      shouldExpand: !!expandable,
+      shouldExpand: !disableExpand,
       textareaValue: value?.toString() || '',
     });
 
     return (
-      <div
-        className={clsx(
-          className,
-          styles.aminoInputWrapper,
-          'amino-input-wrapper',
-          disabled && styles.disabled,
-        )}
+      <Flex
+        className={styles.textareaWrapper}
+        flexDirection="column"
+        gap={4}
+        justifyContent="space-between"
         style={{ ...style, '--amino-textarea-width': width || '100%' }}
       >
-        <button
-          className={styles.fields}
-          onClick={() => textareaRef?.current?.focus()}
-          type="button"
+        <div
+          className={clsx(
+            className,
+            styles.aminoInputWrapper,
+            'amino-input-wrapper',
+            disabled && styles.disabled,
+          )}
         >
-          <textarea
-            ref={node => {
-              if (ref && typeof ref === 'function') {
-                ref(node);
-              } else if (ref) {
-                // eslint-disable-next-line no-param-reassign
-                ref.current = node;
-              }
-              textareaRef.current = node;
-            }}
-            className={clsx(
-              styles.styledTextarea,
-              error && styles.hasError,
-              label && styles.hasLabel,
-              hasValue && styles.hasContent,
-            )}
-            disabled={disabled}
-            id={id}
-            rows={rows}
-            value={value}
-            {...props}
-          />
-          <label
-            className={styles.styledLabelInput}
-            data-label={label}
-            htmlFor={props.id || id}
+          <button
+            className={styles.fields}
+            onClick={() => textareaRef?.current?.focus()}
+            type="button"
           >
-            {label}
-          </label>
-          <div className={styles.styledBorder} />
-        </button>
-        <HelpText error={error} helpText={helpText} />
-        {actions && (
-          <div ref={actionsRef} className={styles.actions}>
-            <Flex alignItems="center" fullHeight justifyContent="flex-end">
-              {actions}
-            </Flex>
-          </div>
-        )}
-      </div>
+            <textarea
+              ref={node => {
+                if (ref && typeof ref === 'function') {
+                  ref(node);
+                } else if (ref) {
+                  // eslint-disable-next-line no-param-reassign
+                  ref.current = node;
+                }
+                textareaRef.current = node;
+              }}
+              className={clsx(
+                styles.styledTextarea,
+                error && styles.hasError,
+                label && styles.hasLabel,
+                hasValue && styles.hasContent,
+              )}
+              disabled={disabled}
+              id={id}
+              rows={rows}
+              value={value}
+              {...props}
+            />
+            {label && (
+              <label
+                className={styles.styledLabelInput}
+                data-label={label}
+                htmlFor={props.id || id}
+              >
+                {label}
+              </label>
+            )}
+          </button>
+
+          {actions && (
+            <div ref={actionsRef} className={styles.actions}>
+              <Flex alignItems="center" fullHeight justifyContent="flex-end">
+                {actions}
+              </Flex>
+            </div>
+          )}
+        </div>
+
+        <HelpText error={error} helpText={helpText} withoutMargin />
+      </Flex>
     );
   },
 );

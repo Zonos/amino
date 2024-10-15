@@ -8,3 +8,4 @@ export declare const hasLabel: string;
 export declare const styledBorder: string;
 export declare const styledLabelInput: string;
 export declare const styledTextarea: string;
+export declare const textareaWrapper: string;

@@ -177,14 +177,36 @@ const Template: StoryFn<TextareaProps> = ({
           />
         </Flex>
       </div>
+
       <div>
-        <Text type="bold-label">Expandable (maxRow 5 | maxRow 3):</Text>
+        <Text type="bold-label">Disabled expand:</Text>
+        <Flex gap={10}>
+          <Textarea
+            {...rest}
+            actions={actions}
+            disableExpand
+            error={error}
+            helpText={helpText}
+            label={label}
+            onChange={e => setValue(e.target.value)}
+            placeholder={placeholder}
+            value={value}
+          />
+          <Input
+            label={label}
+            onChange={e => setValue(e.target.value)}
+            value={value?.toString() || ''}
+          />
+        </Flex>
+      </div>
+
+      <div>
+        <Text type="bold-label">maxRow 5 | maxRow 3:</Text>
         <Flex gap={10}>
           <Textarea
             {...rest}
             actions={actions}
             error={error}
-            expandable
             helpText={helpText}
             label={label}
             onChange={e => setAutoAdjustContent(e.target.value)}
@@ -195,7 +217,6 @@ const Template: StoryFn<TextareaProps> = ({
             {...rest}
             actions={actions}
             error={error}
-            expandable
             helpText={helpText}
             label={label}
             maxRows={3}
