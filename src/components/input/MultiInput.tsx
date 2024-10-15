@@ -1,5 +1,6 @@
 import {
   type ChangeEvent,
+  type ClipboardEvent,
   type KeyboardEvent,
   useEffect,
   useRef,
@@ -10,8 +11,14 @@ import clsx from 'clsx';
 
 import { Flex } from 'src/components/flex/Flex';
 import { Tag } from 'src/components/tag/Tag';
+import {
+  parseStringIntoTags,
+  symbolDelimiters,
+} from 'src/utils/multiinput/parseStringIntoTags';
 
 import styles from './MultiInput.module.scss';
+
+const inputKeyPressDelimiters = [...symbolDelimiters, ' ', 'Enter'];
 
 export type MultiInputProps = {
   className?: string;
@@ -62,7 +69,7 @@ export const MultiInput = ({
 
   // Handle key events (Enter, Space, Comma) to create a tag
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if ((e.key === 'Enter' || e.key === ',' || e.key === ' ') && inputValue) {
+    if (inputKeyPressDelimiters.includes(e.key) && inputValue) {
       e.preventDefault();
       addTag();
     } else if (e.key === 'Backspace') {
@@ -99,6 +106,14 @@ export const MultiInput = ({
     setInputValue(e.target.value);
   };
 
+  const handlePaste = (e: ClipboardEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    const pasteData = e.clipboardData.getData('text');
+    const newTags = parseStringIntoTags(pasteData);
+    setTags([...tags, ...newTags]);
+    setInputValue('');
+  };
+
   // Focus cursor after the tags in the input
   const handleFocus = (): void => {
     if (inputRef.current) {
@@ -122,7 +137,9 @@ export const MultiInput = ({
         const intent = invalid ? 'error' : 'default';
 
         return (
-          <Flex key={tag} alignItems="center" gap={0}>
+          // User could add duplicate tags, so we need to use index as key
+          // eslint-disable-next-line react/no-array-index-key
+          <Flex key={tag + index} alignItems="center" gap={0}>
             <Tag
               highlighted={highlighted}
               intent={intent}
@@ -141,6 +158,7 @@ export const MultiInput = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
         placeholder={!tags.length ? placeholder : ''}
         value={inputValue}
       />
