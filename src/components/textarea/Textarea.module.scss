@@ -85,6 +85,10 @@ $width: var(--amino-textarea-width);
   &.hasError ~ .styledBorder::after {
     box-shadow: theme.$amino-glow-error;
   }
+
+  &.hasActions:not([rows]){
+    min-height: 5em;
+  }
 }
 
 .styledLabelInput {

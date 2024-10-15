@@ -2,6 +2,7 @@ export declare const actions: string;
 export declare const aminoInputWrapper: string;
 export declare const disabled: string;
 export declare const fields: string;
+export declare const hasActions: string;
 export declare const hasContent: string;
 export declare const hasError: string;
 export declare const hasLabel: string;

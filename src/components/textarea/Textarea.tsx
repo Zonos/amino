@@ -111,6 +111,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 error && styles.hasError,
                 label && styles.hasLabel,
                 hasValue && styles.hasContent,
+                !!actions && styles.hasActions,
               )}
               disabled={disabled}
               id={id}
