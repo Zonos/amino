@@ -2,13 +2,17 @@
 
 $width: var(--amino-textarea-width);
 
+.textareaWrapper {
+  width: $width;
+}
+
 .aminoInputWrapper {
   position: relative;
-  width: $width;
-  border: 1px solid theme.$amino-border-color;
-  border-radius: theme.$amino-radius-12;
   padding: 0;
   overflow: hidden;
+  width: 100%;
+  border: 1px solid theme.$amino-border-color;
+  border-radius: theme.$amino-radius-12;
 
   &.disabled {
     * {

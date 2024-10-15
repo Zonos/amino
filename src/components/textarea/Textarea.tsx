@@ -76,61 +76,70 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     });
 
     return (
-      <div
-        className={clsx(
-          className,
-          styles.aminoInputWrapper,
-          'amino-input-wrapper',
-          disabled && styles.disabled,
-        )}
+      <Flex
+        className={styles.textareaWrapper}
+        flexDirection="column"
+        gap={4}
+        justifyContent="space-between"
         style={{ ...style, '--amino-textarea-width': width || '100%' }}
       >
-        <button
-          className={styles.fields}
-          onClick={() => textareaRef?.current?.focus()}
-          type="button"
-        >
-          <textarea
-            ref={node => {
-              if (ref && typeof ref === 'function') {
-                ref(node);
-              } else if (ref) {
-                // eslint-disable-next-line no-param-reassign
-                ref.current = node;
-              }
-              textareaRef.current = node;
-            }}
-            className={clsx(
-              styles.styledTextarea,
-              error && styles.hasError,
-              label && styles.hasLabel,
-              hasValue && styles.hasContent,
-            )}
-            disabled={disabled}
-            id={id}
-            rows={rows}
-            value={value}
-            {...props}
-          />
-          {label && (
-            <label
-              className={styles.styledLabelInput}
-              data-label={label}
-              htmlFor={props.id || id}
-            >
-              {label}
-            </label>
+        <div
+          className={clsx(
+            className,
+            styles.aminoInputWrapper,
+            'amino-input-wrapper',
+            disabled && styles.disabled,
           )}
-        </button>
-        {actions && (
-          <div ref={actionsRef} className={styles.actions}>
-            <Flex alignItems="center" fullHeight justifyContent="flex-end">
-              {actions}
-            </Flex>
-          </div>
-        )}
-        <HelpText error={error} helpText={helpText} />
-      </div>
+        >
+          <button
+            className={styles.fields}
+            onClick={() => textareaRef?.current?.focus()}
+            type="button"
+          >
+            <textarea
+              ref={node => {
+                if (ref && typeof ref === 'function') {
+                  ref(node);
+                } else if (ref) {
+                  // eslint-disable-next-line no-param-reassign
+                  ref.current = node;
+                }
+                textareaRef.current = node;
+              }}
+              className={clsx(
+                styles.styledTextarea,
+                error && styles.hasError,
+                label && styles.hasLabel,
+                hasValue && styles.hasContent,
+              )}
+              disabled={disabled}
+              id={id}
+              rows={rows}
+              value={value}
+              {...props}
+            />
+            {label && (
+              <label
+                className={styles.styledLabelInput}
+                data-label={label}
+                htmlFor={props.id || id}
+              >
+                {label}
+              </label>
+            )}
+          </button>
+
+          {actions && (
+            <div ref={actionsRef} className={styles.actions}>
+              <Flex alignItems="center" fullHeight justifyContent="flex-end">
+                {actions}
+              </Flex>
+            </div>
+          )}
+        </div>
+
+        <HelpText error={error} helpText={helpText} withoutMargin />
+      </Flex>
     );
   },
 );
