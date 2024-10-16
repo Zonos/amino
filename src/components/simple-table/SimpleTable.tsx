@@ -171,7 +171,7 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
-      // We want to truncate all cells except for the ones that have a row-hover-show child
+      // We want to truncate all cells except for the ones that have a row-hover-show child or disableTruncate
       const hasRowHoverShowChild = React.Children.toArray(content).some(
         child => {
           if (React.isValidElement(child)) {
