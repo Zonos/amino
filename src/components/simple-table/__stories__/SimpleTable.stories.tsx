@@ -371,7 +371,6 @@ export const Custom = () => {
       dropdownOptions={{
         placement: 'bottom-end',
       }}
-      noCloseOnMouseLeave
     >
       <Menu>
         <MenuItem
