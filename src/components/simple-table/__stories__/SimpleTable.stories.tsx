@@ -7,6 +7,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
+import { Divider } from 'src/components/divider/Divider';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
@@ -299,6 +300,8 @@ export const Loading = () => {
 
 export const Custom = () => {
   const [disableTruncate, setDisableTruncate] = useState(false);
+  const [viewOneRow, setViewOneRow] = useState(false);
+
   type AugmentedDummyData = DummyData & {
     hoverField: null;
     truncateText?: string;
@@ -334,6 +337,10 @@ export const Custom = () => {
       hoverField: null,
     }));
 
+  const displayedItems = viewOneRow
+    ? augmentedItems.slice(0, 1)
+    : augmentedItems;
+
   const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
 
   const nonCadeItems = items.filter(item => item.name !== 'Cade');
@@ -364,6 +371,7 @@ export const Custom = () => {
       dropdownOptions={{
         placement: 'bottom-end',
       }}
+      noCloseOnMouseLeave
     >
       <Menu>
         <MenuItem
@@ -407,9 +415,9 @@ export const Custom = () => {
       width: 30,
     },
     {
+      align: 'end',
       key: 'hoverField',
-      name: null,
-      noPadding: true,
+      name: '',
       renderCustom: (_, item) => (
         <div className="row-hover-show">
           <HoverMenu item={item} />
@@ -419,22 +427,32 @@ export const Custom = () => {
   ];
 
   return (
-    <SimpleTable
-      headers={augmentedHeaders}
-      items={augmentedItems}
-      keyExtractor={item => String(item.id)}
-      onRowClick={item => {
-        alert(`Clicked ${item.name}`);
-      }}
-      selectable={{
-        anySelected: selectedItemIds.length > 0,
-        enabled: true,
-        headerCheckboxValue: checkboxAllValue,
-        isRowCheckboxDisabled: item => item.name === 'Cade',
-        isRowChecked: item => selectedItemIds.includes(item.id),
-        onHeaderCheckboxChange: handleCheckboxAllChange,
-        onRowCheckboxChange: handleCheckboxRowChange,
-      }}
-    />
+    <>
+      <Checkbox
+        checked={viewOneRow}
+        label="View one row"
+        onChange={setViewOneRow}
+      />
+
+      <Divider />
+
+      <SimpleTable
+        headers={augmentedHeaders}
+        items={displayedItems}
+        keyExtractor={item => String(item.id)}
+        onRowClick={item => {
+          alert(`Clicked ${item.name}`);
+        }}
+        selectable={{
+          anySelected: selectedItemIds.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowCheckboxDisabled: item => item.name === 'Cade',
+          isRowChecked: item => selectedItemIds.includes(item.id),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
+      />
+    </>
   );
 };

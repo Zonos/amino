@@ -1,4 +1,4 @@
-import { type ReactNode, Fragment } from 'react';
+import React, { type ReactNode, Fragment } from 'react';
 
 import clsx from 'clsx';
 
@@ -171,13 +171,27 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
+      // We want to truncate all cells except for the ones that have a row-hover-show child
+      const hasRowHoverShowChild = React.Children.toArray(content).some(
+        child => {
+          if (React.isValidElement(child)) {
+            return /row-hover-show|cell-hover-show/.test(child.props.className);
+          }
+          return false;
+        },
+      );
+
       if (getRowLink && !selectable.anySelected && !header.disabledLink) {
         const LinkComponent = CustomLinkComponent || 'a';
 
         return (
           <td className={styles.cellLink}>
             <LinkComponent
-              className={clsx(header.noPadding && styles.noPadding)}
+              className={clsx(
+                header.noPadding && styles.noPadding,
+                (header.disableTruncate || hasRowHoverShowChild) &&
+                  styles.noTruncate,
+              )}
               href={getRowLink(item)}
               style={{
                 textAlign: header.align || 'start',
@@ -193,7 +207,8 @@ export const SimpleTable = <T extends object>({
         <td
           className={clsx(
             header.noPadding && styles.noPadding,
-            header.disableTruncate && styles.noTruncate,
+            (header.disableTruncate || hasRowHoverShowChild) &&
+              styles.noTruncate,
           )}
           style={{
             textAlign: header.align || 'start',
