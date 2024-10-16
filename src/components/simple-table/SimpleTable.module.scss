@@ -54,6 +54,16 @@
         border-bottom: theme.$amino-border-subtle;
         padding: 12px;
 
+        max-width: 0;        
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.noTruncate {
+          max-width: unset;
+          white-space: unset;
+        }
+
         &.noPadding {
           padding: 0;
         }

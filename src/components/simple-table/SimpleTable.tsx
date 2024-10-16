@@ -29,6 +29,11 @@ type SimpleTableHeaderBaseProps = {
    */
   align?: 'start' | 'center' | 'end';
   /**
+   * Disable truncating cell content
+   * @default false
+   */
+  disableTruncate?: boolean;
+  /**
    * @default false
    * Disable link routing on cells
    */
@@ -186,7 +191,10 @@ export const SimpleTable = <T extends object>({
 
       return (
         <td
-          className={clsx(header.noPadding && styles.noPadding)}
+          className={clsx(
+            header.noPadding && styles.noPadding,
+            header.disableTruncate && styles.noTruncate,
+          )}
           style={{
             textAlign: header.align || 'start',
           }}

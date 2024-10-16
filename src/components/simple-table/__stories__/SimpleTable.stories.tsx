@@ -29,10 +29,11 @@ export default meta;
 
 type DummyData = {
   age: number;
-  disabledText?: string;
+  disabledText: string;
   id: number;
   name: string;
   optionalField?: string;
+  truncateText?: string;
   vegan: boolean;
 };
 
@@ -297,9 +298,14 @@ export const Loading = () => {
 };
 
 export const Custom = () => {
+  const [disableTruncate, setDisableTruncate] = useState(false);
   type AugmentedDummyData = DummyData & {
     hoverField: null;
+    truncateText?: string;
   };
+
+  const truncateText =
+    'This is a long string that should be truncated. '.repeat(5);
 
   const augmentedItems: AugmentedDummyData[] = items
     .flatMap(item => [
@@ -308,16 +314,19 @@ export const Custom = () => {
         ...item,
         id: item.id + 100,
         name: `${item.name} 2`,
+        truncateText,
       },
       {
         ...item,
         id: item.id + 200,
         name: `${item.name} 3`,
+        truncateText,
       },
       {
         ...item,
         id: item.id + 300,
         name: `${item.name} 4`,
+        truncateText,
       },
     ])
     .map(item => ({
@@ -385,6 +394,18 @@ export const Custom = () => {
 
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders,
+    {
+      disableTruncate,
+      key: 'truncateText',
+      name: (
+        <Checkbox
+          checked={disableTruncate}
+          label="Disable truncate"
+          onChange={setDisableTruncate}
+        />
+      ),
+      width: 30,
+    },
     {
       key: 'hoverField',
       name: null,
