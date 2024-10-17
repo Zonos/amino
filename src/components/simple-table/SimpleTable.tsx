@@ -225,9 +225,9 @@ export const SimpleTable = <T extends object>({
             subtitle={content}
           >
             {/* Child div required for proper truncating */}
-            <div className={cellClassNames} style={cellStyle}>
+            <span className={cellClassNames} style={cellStyle}>
               {content}
-            </div>
+            </span>
           </Tooltip>
         </td>
       );
