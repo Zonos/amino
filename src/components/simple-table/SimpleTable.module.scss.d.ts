@@ -1,8 +1,8 @@
-export declare const cellLink: string;
+export declare const allowTextWrap: string;
 export declare const clickable: string;
 export declare const loading: string;
 export declare const noPadding: string;
-export declare const noTruncate: string;
+export declare const shouldTruncate: string;
 export declare const skeletonCellWrapper: string;
 export declare const styledCheckbox: string;
 export declare const tableContainer: string;

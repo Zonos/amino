@@ -30,6 +30,7 @@ $ pnpm dev
 ```
 
 To also open the browser to the page (https://dev.amino.zonos.com), you can use:
+
 ```sh
 $ pnpm dev:open
 ```
@@ -42,16 +43,18 @@ $ pnpm dev:open
 
 We use [`typed-scss-modules`](https://www.npmjs.com/package/typed-scss-modules) to generate types for our scss modules. It will watch `.scss` files in the background and update them, but any file additions will require you to run `build:scss:types`.
 
-
 ### - Available features in Amino:
+
 - [Style generation (generate style constants and css file)](./build-utils/css/README.md)
 - [Icon component generation process (generate optimized react components based on SVG downloaded from Figma/any sources)](./svgReact/icons/README.md)
 - [Flag component generation process (generate optimized react components for flag svgs from smallest svg size of AWS and Figma)](./svgReact/flags/README.md)
 
 ### - Feature in progress
-- Fully replaced styled component with SCSS modules to utilize server component and server side rendering of React and NextJS**
+
+- Fully replaced styled component with SCSS modules to utilize server component and server side rendering of React and NextJS\*\*
 
 #### - CSS modules conversion process
+
 1. Make sure you're running `pnpm dev` so that you will have the script watch and have your incoming scss type file generated.
 2. Go to the component you want to convert and open the file
 3. Add a scss file with this format `[Component].module.scss`. Ex: If I want to convert `Layout.ts` component, the scss file will be named `Layout.module.scss`
@@ -85,7 +88,7 @@ To run the visual tests (with puppeteer), you must have storybook open and runni
 2. Make sure you have no pending changes on your source control, otherwise when you run the following versioning command in step 3, it will error out and you will have to start over.
 
 3. Once the PR is approved, determine which version you want to add to the release (patch, minor, major) and run the command below.
-**Note**: When running these commands it will build the project, run the tests, and increase the version in the `package.json` file according to the version type you choose. It will also create a tag for you automatically. **(be aware that the `all.ts` file may change and you need to push it to the PR along with the version)**
+   **Note**: When running these commands it will build the project, run the tests, and increase the version in the `package.json` file according to the version type you choose. It will also create a tag for you automatically. **(be aware that the `all.ts` file may change and you need to push it to the PR along with the version)**
 
 - Patch
   ```
@@ -100,7 +103,6 @@ To run the visual tests (with puppeteer), you must have storybook open and runni
   pnpm version:major
   ```
 
-### - Replace full visual,
 ### - Naming rule for auto-importing suggestion
 
 After project is bundled, all files that started with `"_"` will always be available, but VS Code will not suggest the path for the auto import suggestion.
