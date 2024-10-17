@@ -409,7 +409,7 @@ export const Custom = () => {
   );
 
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
-    ...tableHeaders,
+    ...tableHeaders.filter(header => header?.key !== 'truncateText'),
     {
       disableTruncate,
       key: 'truncateText',
@@ -420,7 +420,6 @@ export const Custom = () => {
           onChange={setDisableTruncate}
         />
       ),
-      width: 30,
     },
     {
       align: 'end',
