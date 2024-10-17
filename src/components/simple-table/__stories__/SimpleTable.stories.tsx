@@ -38,6 +38,10 @@ type DummyData = {
   vegan: boolean;
 };
 
+const truncateText = 'This is a long string that should be truncated. '.repeat(
+  5,
+);
+
 const items: DummyData[] = [
   {
     age: 24,
@@ -45,6 +49,7 @@ const items: DummyData[] = [
     id: 1,
     name: 'John',
     optionalField: 'optional',
+    truncateText,
     vegan: false,
   },
   {
@@ -52,6 +57,7 @@ const items: DummyData[] = [
     disabledText: 'Disabled link',
     id: 2,
     name: 'Jane',
+    truncateText,
     vegan: true,
   },
   {
@@ -59,6 +65,7 @@ const items: DummyData[] = [
     disabledText: 'Disabled link',
     id: 3,
     name: 'Joe',
+    truncateText,
     vegan: false,
   },
   {
@@ -67,6 +74,7 @@ const items: DummyData[] = [
     id: 4,
     name: 'Joan',
     optionalField: 'idk',
+    truncateText,
     vegan: true,
   },
   {
@@ -74,6 +82,7 @@ const items: DummyData[] = [
     disabledText: 'Disabled link',
     id: 5,
     name: 'Jim',
+    truncateText,
     vegan: false,
   },
   {
@@ -82,6 +91,7 @@ const items: DummyData[] = [
     id: 29,
     name: 'Cade',
     optionalField: 'optional',
+    truncateText,
     vegan: false,
   },
 ];
@@ -110,6 +120,11 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
         )}
       </div>
     ),
+  },
+  {
+    key: 'truncateText',
+    name: 'Truncate Text',
+    width: 15,
   },
   {
     disabledLink: true,
@@ -307,9 +322,6 @@ export const Custom = () => {
     truncateText?: string;
   };
 
-  const truncateText =
-    'This is a long string that should be truncated. '.repeat(5);
-
   const augmentedItems: AugmentedDummyData[] = items
     .flatMap(item => [
       item,
@@ -317,19 +329,16 @@ export const Custom = () => {
         ...item,
         id: item.id + 100,
         name: `${item.name} 2`,
-        truncateText,
       },
       {
         ...item,
         id: item.id + 200,
         name: `${item.name} 3`,
-        truncateText,
       },
       {
         ...item,
         id: item.id + 300,
         name: `${item.name} 4`,
-        truncateText,
       },
     ])
     .map(item => ({

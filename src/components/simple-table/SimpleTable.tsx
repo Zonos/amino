@@ -181,21 +181,24 @@ export const SimpleTable = <T extends object>({
         },
       );
 
+      const cellClassNames = clsx(
+        header.noPadding && styles.noPadding,
+        (header.disableTruncate || hasRowHoverShowChild) && styles.noTruncate,
+      );
+
+      const cellStyle = {
+        textAlign: header.align || 'start',
+      };
+
       if (getRowLink && !selectable.anySelected && !header.disabledLink) {
         const LinkComponent = CustomLinkComponent || 'a';
 
         return (
           <td className={styles.cellLink}>
             <LinkComponent
-              className={clsx(
-                header.noPadding && styles.noPadding,
-                (header.disableTruncate || hasRowHoverShowChild) &&
-                  styles.noTruncate,
-              )}
+              className={cellClassNames}
               href={getRowLink(item)}
-              style={{
-                textAlign: header.align || 'start',
-              }}
+              style={cellStyle}
             >
               {content}
             </LinkComponent>
@@ -204,16 +207,7 @@ export const SimpleTable = <T extends object>({
       }
 
       return (
-        <td
-          className={clsx(
-            header.noPadding && styles.noPadding,
-            (header.disableTruncate || hasRowHoverShowChild) &&
-              styles.noTruncate,
-          )}
-          style={{
-            textAlign: header.align || 'start',
-          }}
-        >
+        <td className={cellClassNames} style={cellStyle}>
           {content}
         </td>
       );
