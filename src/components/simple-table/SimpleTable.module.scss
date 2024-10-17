@@ -8,6 +8,7 @@
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+  font-size: theme.$amino-font-size-base;
 
   > thead {
     text-transform: none;
@@ -51,48 +52,45 @@
 
       > td {
         border-bottom: theme.$amino-border-subtle;
-        padding: 12px;
+        padding: 0;
 
-        max-width: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        > :first-child {
+          display: block;
+          height: 100%;
+          width: 100%;
+          padding: 12px;
+          white-space: nowrap;
 
-        &.noTruncate {
-          max-width: 100%;
-          white-space: unset;
-          overflow: unset;
-        }
+          &.noPadding {
+            padding: 0;
+          }
 
-        &.noPadding {
-          padding: 0;
-        }
+          &.allowTextWrap {
+            white-space: normal;
+          }
 
-        &.loading {
-          text-align: center;
-        }
+          &.loading {
+            text-align: center;
+          }
 
-        &:not(:hover) {
-          :global(.cell-hover-show) {
-            visibility: collapse;
+          &.skeletonCellWrapper {
+            display: flex;
+          }
+
+          &:not(:hover) {
+            :global(.cell-hover-show) {
+              visibility: collapse;
+            }
           }
         }
 
-        &.cellLink {
-          padding: 0;
-
-          > a {
-            display: block;
-            height: 100%;
-            width: 100%;
-            white-space: nowrap;
+        &.shouldTruncate {
+          max-width: 0;
+          > :first-child {
+            // Truncating the first child will cover most cases.
+            // For custom rendered cells, these 3 properties may need to be apply to deeply nested children on a per need basis.
             overflow: hidden;
             text-overflow: ellipsis;
-            padding: 12px;
-
-            &.noPadding {
-              padding: 0;
-            }
           }
         }
       }
@@ -105,6 +103,4 @@
   display: inline-flex;
 }
 
-.skeletonCellWrapper {
-  display: flex;
-}
+

@@ -124,7 +124,7 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   {
     key: 'truncateText',
     name: 'Truncate Text',
-    width: 15,
+    textWrapMethod: 'truncate',
   },
   {
     disabledLink: true,
@@ -314,7 +314,7 @@ export const Loading = () => {
 };
 
 export const Custom = () => {
-  const [disableTruncate, setDisableTruncate] = useState(false);
+  const [shouldTruncate, setShouldTruncate] = useState(true);
   const [viewOneRow, setViewOneRow] = useState(false);
 
   type AugmentedDummyData = DummyData & {
@@ -411,15 +411,15 @@ export const Custom = () => {
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders.filter(header => header?.key !== 'truncateText'),
     {
-      disableTruncate,
       key: 'truncateText',
       name: (
         <Checkbox
-          checked={disableTruncate}
-          label="Disable truncate"
-          onChange={setDisableTruncate}
+          checked={shouldTruncate}
+          label="Truncate text"
+          onChange={setShouldTruncate}
         />
       ),
+      textWrapMethod: shouldTruncate ? 'truncate' : 'normal',
     },
     {
       align: 'end',
