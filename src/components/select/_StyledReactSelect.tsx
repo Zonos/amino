@@ -101,6 +101,8 @@ const Control = <
     selectProps as (typeof props)['selectProps'] &
       AdditionalProps<Option['value']>;
 
+  const showLabel = size === 'lg' || size === 'xl';
+
   return (
     <div
       ref={innerRef}
@@ -110,9 +112,7 @@ const Control = <
         icon && styles.hasIcon,
         isFocused && styles.isFocused,
         isDisabled && styles.isDisabled,
-        label || (Array.isArray(value) && value.length > 1)
-          ? styles.hasLabel
-          : '',
+        showLabel && label ? styles.hasLabel : '',
         size && styles[size],
         styles.reactSelectControl,
         'react-select-control',
@@ -122,14 +122,16 @@ const Control = <
     >
       {icon && <div className={styles.iconWrapper}>{icon}</div>}
 
-      <div className={styles.styledFloatedLabel}>
-        {label}{' '}
-        {Array.isArray(value) && value.length > 1 && (
-          <strong className={styles.strongLabel}>
-            ({value.length} selected)
-          </strong>
-        )}
-      </div>
+      {showLabel && label && (
+        <div className={styles.styledFloatedLabel}>
+          {label}{' '}
+          {Array.isArray(value) && value.length > 1 && (
+            <strong className={styles.strongLabel}>
+              ({value.length} selected)
+            </strong>
+          )}
+        </div>
+      )}
       {children}
     </div>
   );
@@ -258,8 +260,8 @@ const localStyles: StylesConfig<
   clearIndicator: provided => ({
     ...provided,
     color: theme.gray700,
-    paddingLeft: 14,
-    paddingRight: 4,
+    paddingLeft: 0,
+    paddingRight: 0,
   }),
   // container
   control: (provided, state) => {
@@ -277,15 +279,17 @@ const localStyles: StylesConfig<
       color: theme.gray800,
       cursor: 'pointer',
       flexWrap: 'inherit',
+      gap: 8,
       height: `var(--amino-size-${size})`,
       minHeight: `var(--amino-size-${size})`,
+      padding: '0 8px',
     };
   },
   dropdownIndicator: provided => ({
     ...provided,
     color: theme.gray900,
     paddingLeft: 4,
-    paddingRight: 10,
+    paddingRight: 0,
   }),
   group: provided => ({
     ...provided,
@@ -298,7 +302,11 @@ const localStyles: StylesConfig<
   input: provided => ({
     ...provided,
     color: theme.textColor,
-    opacity: 0.8,
+    fontSize: theme.fontSizeBase,
+    fontWeight: 500,
+    marginLeft: 0,
+    marginRight: 0,
+    paddingLeft: 4,
   }),
   // loadingIndicator
   // loadingMessage
@@ -344,25 +352,42 @@ const localStyles: StylesConfig<
     paddingRight: 12,
     paddingTop: 7,
   }),
-  placeholder: provided => ({
-    ...provided,
-    '.has-label.is-focused &': {
-      opacity: 1,
-    },
-    opacity: 0,
-  }),
+  placeholder: (provided, state) => {
+    const { size } = state.selectProps as (typeof state)['selectProps'] &
+      AdditionalProps<SelectOption['value']>;
+    return {
+      ...provided,
+      color: theme.textColorSecondary,
+      fontSize: theme.fontSizeBase,
+      marginLeft: 0,
+      marginRight: 0,
+      opacity: size === 'lg' || size === 'xl' ? 0 : 1,
+      paddingLeft: 4,
+      paddingRight: 4,
+    };
+  },
   singleValue: provided => ({
     ...provided,
     color: theme.textColor,
+    fontSize: theme.fontSizeBase,
     fontWeight: 500,
+    marginLeft: 0,
+    marginRight: 0,
+    paddingLeft: 4,
+    paddingRight: 4,
   }),
-  valueContainer: provided => ({
-    ...provided,
-    '.has-icon &': { paddingLeft: 0 },
-    flexWrap: 'nowrap',
-    padding: 'unset',
-    paddingLeft: 12,
-  }),
+  valueContainer: (provided, state) => {
+    const { size } = state.selectProps as (typeof state)['selectProps'] &
+      AdditionalProps<SelectOption['value']>;
+    return {
+      ...provided,
+      '.has-icon &': { paddingLeft: 0 },
+      flexWrap: 'nowrap',
+      padding: 'unset',
+      paddingBottom: size === 'lg' || size === 'xl' ? 2 : 0,
+      width: '100%',
+    };
+  },
 };
 
 export type StyledReactSelectProps<

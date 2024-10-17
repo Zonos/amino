@@ -69,8 +69,9 @@ const currencyOptions = [
 
 export const BasicSelect: StoryObj<SelectProps> = {
   args: {
-    label: 'Currencies',
+    label: 'Currency',
     options: currencyOptions,
+    placeholder: 'Select currency',
     value: {
       label: 'US Dollar (USD)',
       value: 'USD',
@@ -83,8 +84,9 @@ export const BasicSelectWithIcon: StoryObj<SelectProps> = {
     error: true,
     helpText: 'This input is required',
     icon: <FileIcon size={24} />,
-    label: 'Currencies',
+    label: 'Currency',
     options: currencyOptions,
+    placeholder: 'Select a currency',
     value: {
       label: 'US Dollar (USD)',
       value: 'USD',
@@ -95,7 +97,7 @@ export const BasicSelectWithIcon: StoryObj<SelectProps> = {
 export const BasicSelectWithOptionIcon: StoryObj<SelectProps> = {
   args: {
     icon: <FlagIcon code="AE" iconScale="medium" />,
-    label: 'Currencies',
+    label: 'Currency',
     options: [
       {
         icon: <FlagIcon code="AE" iconScale="small" />,
@@ -113,6 +115,7 @@ export const BasicSelectWithOptionIcon: StoryObj<SelectProps> = {
         value: 'EUR',
       },
     ],
+    placeholder: 'Select currency',
     value: {
       label: 'US Dollar (USD)',
       value: 'USD',
@@ -151,6 +154,7 @@ export const Customized: StoryObj<SelectProps> = {
         value: 'EUR',
       },
     ],
+    placeholder: 'Select currency',
     value: [
       {
         icon: <FileIcon size={24} />,
@@ -235,12 +239,14 @@ export const ScrollableDialogSelect = () => {
             label="Close on scroll"
             onChange={setValue}
             options={currencyOptions}
+            placeholder="Select currency"
             value={value}
           />
           <Select
             label="Normal"
             onChange={setValue}
             options={currencyOptions}
+            placeholder="Select currency"
             value={value}
           />
         </VStack>
