@@ -2,7 +2,6 @@
 
 .tableContainer {
   width: 100%;
-  overflow: auto;
 }
 
 .tableStyled {
@@ -53,6 +52,17 @@
       > td {
         border-bottom: theme.$amino-border-subtle;
         padding: 12px;
+
+        max-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.noTruncate {
+          max-width: 100%;
+          white-space: unset;
+          overflow: unset;
+        }
 
         &.noPadding {
           padding: 0;

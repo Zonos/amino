@@ -1,4 +1,4 @@
-import { type ReactNode, Fragment } from 'react';
+import React, { type ReactNode, Fragment } from 'react';
 
 import clsx from 'clsx';
 
@@ -28,6 +28,11 @@ type SimpleTableHeaderBaseProps = {
    * @default 'start'
    */
   align?: 'start' | 'center' | 'end';
+  /**
+   * Disable truncating cell content
+   * @default false
+   */
+  disableTruncate?: boolean;
   /**
    * @default false
    * Disable link routing on cells
@@ -166,13 +171,27 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
+      // We want to truncate all cells except for the ones that have a row-hover-show child or disableTruncate
+      const hasRowHoverShowChild = React.Children.toArray(content).some(
+        child => {
+          if (React.isValidElement(child)) {
+            return /row-hover-show|cell-hover-show/.test(child.props.className);
+          }
+          return false;
+        },
+      );
+
       if (getRowLink && !selectable.anySelected && !header.disabledLink) {
         const LinkComponent = CustomLinkComponent || 'a';
 
         return (
           <td className={styles.cellLink}>
             <LinkComponent
-              className={clsx(header.noPadding && styles.noPadding)}
+              className={clsx(
+                header.noPadding && styles.noPadding,
+                (header.disableTruncate || hasRowHoverShowChild) &&
+                  styles.noTruncate,
+              )}
               href={getRowLink(item)}
               style={{
                 textAlign: header.align || 'start',
@@ -186,7 +205,11 @@ export const SimpleTable = <T extends object>({
 
       return (
         <td
-          className={clsx(header.noPadding && styles.noPadding)}
+          className={clsx(
+            header.noPadding && styles.noPadding,
+            (header.disableTruncate || hasRowHoverShowChild) &&
+              styles.noTruncate,
+          )}
           style={{
             textAlign: header.align || 'start',
           }}

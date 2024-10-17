@@ -7,6 +7,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
+import { Divider } from 'src/components/divider/Divider';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
@@ -29,10 +30,11 @@ export default meta;
 
 type DummyData = {
   age: number;
-  disabledText?: string;
+  disabledText: string;
   id: number;
   name: string;
   optionalField?: string;
+  truncateText?: string;
   vegan: boolean;
 };
 
@@ -297,9 +299,16 @@ export const Loading = () => {
 };
 
 export const Custom = () => {
+  const [disableTruncate, setDisableTruncate] = useState(false);
+  const [viewOneRow, setViewOneRow] = useState(false);
+
   type AugmentedDummyData = DummyData & {
     hoverField: null;
+    truncateText?: string;
   };
+
+  const truncateText =
+    'This is a long string that should be truncated. '.repeat(5);
 
   const augmentedItems: AugmentedDummyData[] = items
     .flatMap(item => [
@@ -308,22 +317,29 @@ export const Custom = () => {
         ...item,
         id: item.id + 100,
         name: `${item.name} 2`,
+        truncateText,
       },
       {
         ...item,
         id: item.id + 200,
         name: `${item.name} 3`,
+        truncateText,
       },
       {
         ...item,
         id: item.id + 300,
         name: `${item.name} 4`,
+        truncateText,
       },
     ])
     .map(item => ({
       ...item,
       hoverField: null,
     }));
+
+  const displayedItems = viewOneRow
+    ? augmentedItems.slice(0, 1)
+    : augmentedItems;
 
   const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
 
@@ -386,9 +402,21 @@ export const Custom = () => {
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders,
     {
+      disableTruncate,
+      key: 'truncateText',
+      name: (
+        <Checkbox
+          checked={disableTruncate}
+          label="Disable truncate"
+          onChange={setDisableTruncate}
+        />
+      ),
+      width: 30,
+    },
+    {
+      align: 'end',
       key: 'hoverField',
-      name: null,
-      noPadding: true,
+      name: '',
       renderCustom: (_, item) => (
         <div className="row-hover-show">
           <HoverMenu item={item} />
@@ -398,22 +426,32 @@ export const Custom = () => {
   ];
 
   return (
-    <SimpleTable
-      headers={augmentedHeaders}
-      items={augmentedItems}
-      keyExtractor={item => String(item.id)}
-      onRowClick={item => {
-        alert(`Clicked ${item.name}`);
-      }}
-      selectable={{
-        anySelected: selectedItemIds.length > 0,
-        enabled: true,
-        headerCheckboxValue: checkboxAllValue,
-        isRowCheckboxDisabled: item => item.name === 'Cade',
-        isRowChecked: item => selectedItemIds.includes(item.id),
-        onHeaderCheckboxChange: handleCheckboxAllChange,
-        onRowCheckboxChange: handleCheckboxRowChange,
-      }}
-    />
+    <>
+      <Checkbox
+        checked={viewOneRow}
+        label="View one row"
+        onChange={setViewOneRow}
+      />
+
+      <Divider />
+
+      <SimpleTable
+        headers={augmentedHeaders}
+        items={displayedItems}
+        keyExtractor={item => String(item.id)}
+        onRowClick={item => {
+          alert(`Clicked ${item.name}`);
+        }}
+        selectable={{
+          anySelected: selectedItemIds.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowCheckboxDisabled: item => item.name === 'Cade',
+          isRowChecked: item => selectedItemIds.includes(item.id),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
+      />
+    </>
   );
 };
