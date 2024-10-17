@@ -172,8 +172,6 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
-      // We want to truncate cells only if truncateText is true
-
       const hasRowHoverShowChild = React.Children.toArray(content).some(
         child => {
           if (React.isValidElement(child)) {
@@ -183,6 +181,7 @@ export const SimpleTable = <T extends object>({
         },
       );
 
+      // If the cell has a child that should only show on hover, don't allow truncating
       const tdClassNames = clsx(
         header.textWrapMethod === 'truncate' &&
           !hasRowHoverShowChild &&
