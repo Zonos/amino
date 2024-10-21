@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { ReactComponent } from 'src/types/ReactComponent';
 
@@ -29,11 +30,6 @@ type SimpleTableHeaderBaseProps = {
    */
   align?: 'start' | 'center' | 'end';
   /**
-   * Disable truncating cell content
-   * @default false
-   */
-  disableTruncate?: boolean;
-  /**
    * @default false
    * Disable link routing on cells
    */
@@ -43,6 +39,11 @@ type SimpleTableHeaderBaseProps = {
    * Disable padding on cells
    */
   noPadding?: boolean;
+  /**
+   * Determines cell content wrapping method
+   * @default 'nowrap'
+   */
+  textWrapMethod?: 'truncate' | 'normal' | 'nowrap';
   /**
    * Minimum width of column in percent
    * @default undefined
@@ -171,7 +172,6 @@ export const SimpleTable = <T extends object>({
     const value = item[header.key];
 
     const renderContent = (content: ReactNode) => {
-      // We want to truncate all cells except for the ones that have a row-hover-show child or disableTruncate
       const hasRowHoverShowChild = React.Children.toArray(content).some(
         child => {
           if (React.isValidElement(child)) {
@@ -181,40 +181,54 @@ export const SimpleTable = <T extends object>({
         },
       );
 
+      // If the cell has a child that should only show on hover, don't allow truncating
+      const tdClassNames = clsx(
+        header.textWrapMethod === 'truncate' &&
+          !hasRowHoverShowChild &&
+          styles.shouldTruncate,
+      );
+
+      const cellClassNames = clsx(
+        header.noPadding && styles.noPadding,
+        header.textWrapMethod === 'normal' && styles.allowTextWrap,
+      );
+
+      const cellStyle = {
+        textAlign: header.align || 'start',
+      };
+
       if (getRowLink && !selectable.anySelected && !header.disabledLink) {
         const LinkComponent = CustomLinkComponent || 'a';
 
         return (
-          <td className={styles.cellLink}>
-            <LinkComponent
-              className={clsx(
-                header.noPadding && styles.noPadding,
-                (header.disableTruncate || hasRowHoverShowChild) &&
-                  styles.noTruncate,
-              )}
-              href={getRowLink(item)}
-              style={{
-                textAlign: header.align || 'start',
-              }}
+          <td className={tdClassNames}>
+            <Tooltip
+              disabled={header.textWrapMethod !== 'truncate'}
+              subtitle={content}
             >
-              {content}
-            </LinkComponent>
+              <LinkComponent
+                className={cellClassNames}
+                href={getRowLink(item)}
+                style={cellStyle}
+              >
+                {content}
+              </LinkComponent>
+            </Tooltip>
           </td>
         );
       }
 
       return (
-        <td
-          className={clsx(
-            header.noPadding && styles.noPadding,
-            (header.disableTruncate || hasRowHoverShowChild) &&
-              styles.noTruncate,
-          )}
-          style={{
-            textAlign: header.align || 'start',
-          }}
-        >
-          {content}
+        <td className={tdClassNames}>
+          <Tooltip
+            disabled={header.textWrapMethod !== 'truncate'}
+            subtitle={content}
+          >
+            {/* Child div required for proper truncating */}
+            <span className={cellClassNames} style={cellStyle}>
+              {content}
+            </span>
+          </Tooltip>
         </td>
       );
     };
@@ -232,7 +246,9 @@ export const SimpleTable = <T extends object>({
         <tr key={n}>
           {selectable.enabled && (
             <td>
-              <Skeleton key={n} height={loadingSkeletonHeight} />
+              <div>
+                <Skeleton key={n} height={loadingSkeletonHeight} />
+              </div>
             </td>
           )}
           {headers.map(header => (
