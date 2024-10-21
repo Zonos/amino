@@ -123,8 +123,8 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   },
   {
     key: 'truncateText',
-    minWidth: 300,
-    name: 'Truncate Text (min 300px)',
+    minWidth: 150,
+    name: 'Truncate Text (min 150px)',
     textWrapMethod: 'truncate',
   },
   {

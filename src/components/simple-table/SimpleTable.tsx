@@ -344,11 +344,12 @@ export const SimpleTable = <T extends object>({
           {headers.map(header => (
             <col
               key={header.key}
-              width={
-                header.minWidth !== undefined
-                  ? `${header.minWidth}px`
-                  : undefined
-              }
+              style={{
+                minWidth:
+                  header.minWidth !== undefined
+                    ? `${header.minWidth}px`
+                    : undefined,
+              }}
             />
           ))}
         </colgroup>
