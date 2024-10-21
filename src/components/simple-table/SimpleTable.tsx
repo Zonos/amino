@@ -35,6 +35,11 @@ type SimpleTableHeaderBaseProps = {
    */
   disabledLink?: boolean;
   /**
+   * @default 0
+   * Minimum width of column in pixels
+   */
+  minWidth?: number;
+  /**
    * @default false
    * Disable padding on cells
    */
@@ -44,11 +49,6 @@ type SimpleTableHeaderBaseProps = {
    * @default 'nowrap'
    */
   textWrapMethod?: 'truncate' | 'normal' | 'nowrap';
-  /**
-   * Minimum width of column in percent
-   * @default undefined
-   */
-  width?: number;
 };
 
 export type SimpleTableHeader<T extends object> = {
@@ -345,7 +345,9 @@ export const SimpleTable = <T extends object>({
             <col
               key={header.key}
               width={
-                header.width !== undefined ? `${header.width}%` : undefined
+                header.minWidth !== undefined
+                  ? `${header.minWidth}px`
+                  : undefined
               }
             />
           ))}
