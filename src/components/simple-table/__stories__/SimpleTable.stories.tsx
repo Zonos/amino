@@ -35,6 +35,7 @@ type DummyData = {
   name: string;
   optionalField?: string;
   truncateText?: string;
+  truncateText2?: string;
   vegan: boolean;
 };
 
@@ -105,7 +106,6 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
     align: 'end',
     key: 'age',
     name: 'Age',
-    width: 10,
   },
   {
     align: 'center',
@@ -123,7 +123,14 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   },
   {
     key: 'truncateText',
-    name: 'Truncate Text',
+    minWidth: 150,
+    name: 'Truncate Text (min 150px)',
+    textWrapMethod: 'truncate',
+  },
+  {
+    key: 'truncateText2',
+    name: 'Truncate Text 2',
+    renderCustom: (_, item) => item.truncateText,
     textWrapMethod: 'truncate',
   },
   {
