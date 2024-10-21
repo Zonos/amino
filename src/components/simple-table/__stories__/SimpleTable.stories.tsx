@@ -101,6 +101,7 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   {
     key: 'name',
     name: 'Name',
+    width: 1,
   },
   {
     align: 'end',
