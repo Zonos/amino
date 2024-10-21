@@ -23,6 +23,20 @@ const getFlexAlignment = (alignment: SimpleTableHeaderBaseProps['align']) => {
   }
 };
 
+const getTooltipPlacement = (
+  alignment: SimpleTableHeaderBaseProps['align'],
+) => {
+  switch (alignment) {
+    case 'center':
+      return 'bottom';
+    case 'end':
+      return 'bottom-end';
+    case 'start':
+    default:
+      return 'bottom-start';
+  }
+};
+
 type SimpleTableHeaderBaseProps = {
   /**
    * Text alignment for a column
@@ -49,6 +63,11 @@ type SimpleTableHeaderBaseProps = {
    * @default 'nowrap'
    */
   textWrapMethod?: 'truncate' | 'normal' | 'nowrap';
+  /**
+   * Width of column in percent
+   * @default undefined
+   */
+  width?: number;
 };
 
 export type SimpleTableHeader<T extends object> = {
@@ -188,6 +207,10 @@ export const SimpleTable = <T extends object>({
           styles.shouldTruncate,
       );
 
+      const containerStyle = {
+        '--amino-cell-min-width': `${header.minWidth || 0}px`,
+      };
+
       const cellClassNames = clsx(
         header.noPadding && styles.noPadding,
         header.textWrapMethod === 'normal' && styles.allowTextWrap,
@@ -197,13 +220,16 @@ export const SimpleTable = <T extends object>({
         textAlign: header.align || 'start',
       };
 
+      const tooltipPlacement = getTooltipPlacement(header.align);
+
       if (getRowLink && !selectable.anySelected && !header.disabledLink) {
         const LinkComponent = CustomLinkComponent || 'a';
 
         return (
-          <td className={tdClassNames}>
+          <td className={tdClassNames} style={containerStyle}>
             <Tooltip
               disabled={header.textWrapMethod !== 'truncate'}
+              placement={tooltipPlacement}
               subtitle={content}
             >
               <LinkComponent
@@ -219,7 +245,7 @@ export const SimpleTable = <T extends object>({
       }
 
       return (
-        <td className={tdClassNames}>
+        <td className={tdClassNames} style={containerStyle}>
           <Tooltip
             disabled={header.textWrapMethod !== 'truncate'}
             subtitle={content}
@@ -350,6 +376,9 @@ export const SimpleTable = <T extends object>({
                     ? `${header.minWidth}px`
                     : undefined,
               }}
+              width={
+                header.width !== undefined ? `${header.width}%` : undefined
+              }
             />
           ))}
         </colgroup>

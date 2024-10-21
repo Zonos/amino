@@ -1,5 +1,7 @@
 @use 'theme';
 
+$cellMinWidth: var(--amino-cell-min-width);
+
 .tableContainer {
   width: 100%;
 }
@@ -85,7 +87,8 @@
         }
 
         &.shouldTruncate {
-          max-width: 0;
+          max-width: $cellMinWidth;
+          min-width: $cellMinWidth;
           > :first-child {
             // Truncating the first child will cover most cases.
             // For custom rendered cells, these 3 properties may need to be apply to deeply nested children on a per need basis.
