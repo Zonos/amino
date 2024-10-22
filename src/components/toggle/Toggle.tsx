@@ -76,7 +76,7 @@ export const Toggle = <TValue extends SelectValue>({
       selectedRef.current?.getBoundingClientRect() || null,
     );
     setAnimationRect(nextAnimationRect);
-  }, [value]);
+  }, [value, size]);
 
   return (
     <div
