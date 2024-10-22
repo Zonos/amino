@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { type ToggleProps, Toggle } from 'src/components/toggle/Toggle';
 
-const Template = (props: ToggleProps) => {
-  const [value, setValue] = useState<string>('1');
+const Template = ({ value: initialValue, ...props }: ToggleProps) => {
+  const [value, setValue] = useState<string>(initialValue || '1');
 
   return <Toggle {...props} onChange={setValue} value={value} />;
 };
@@ -40,5 +40,30 @@ export const Multiple: StoryObj<ToggleProps> = {
       { label: 'Super long option', value: '3' },
       { label: 'Option 4', value: '4' },
     ],
+  },
+};
+
+export const FullWidth: StoryObj<ToggleProps> = {
+  args: {
+    fullWidth: true,
+    options: [
+      { label: 'Option 1', value: '1' },
+      { label: 'X', value: '2' },
+      { label: 'Super long option', value: '3' },
+      { label: 'Option 4', value: '4' },
+    ],
+  },
+};
+
+export const DifferentSelection: StoryObj<ToggleProps> = {
+  args: {
+    fullWidth: true,
+    options: [
+      { label: 'Option 1', value: '1' },
+      { label: 'X', value: '2' },
+      { label: 'Super long option', value: '3' },
+      { label: 'Option 4', value: '4' },
+    ],
+    value: '3',
   },
 };

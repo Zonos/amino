@@ -2,6 +2,18 @@
 
 .shrinkWrapper {
   display: inline-flex;
+
+  &.fullWidth {
+    width: 100%;
+
+    .wrapper {
+      width: 100%;
+
+      button {
+        flex-grow: 1;
+      }
+    }
+  }
 }
 
 .wrapper {
@@ -17,7 +29,6 @@
   cursor: pointer;
   padding: 4px 12px;
   border-radius: 6px;
-  transition: theme.$amino-transition;
   font-size: theme.$amino-font-size-base;
   font-weight: 500;
   color: theme.$amino-text-color-secondary;

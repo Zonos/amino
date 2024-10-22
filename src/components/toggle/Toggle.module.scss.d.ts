@@ -1,3 +1,4 @@
+export declare const fullWidth: string;
 export declare const optionWrapper: string;
 export declare const selected: string;
 export declare const selectedSlider: string;

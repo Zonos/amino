@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
+import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
 
 import styles from './Toggle.module.scss';
@@ -32,8 +33,12 @@ type IAnimationRect = {
   width: number;
 };
 
-export type ToggleProps<TValue extends string | number = string> = {
-  className?: string;
+export type ToggleProps<TValue extends string | number = string> = BaseProps & {
+  /**
+   * If true, the toggle will take up the full width of its parent.
+   * @default false
+   */
+  fullWidth?: boolean;
   options: SelectOption<TValue>[];
   value: TValue;
   onChange: (value: TValue) => void;
@@ -41,8 +46,10 @@ export type ToggleProps<TValue extends string | number = string> = {
 
 export const Toggle = <TValue extends string | number>({
   className,
+  fullWidth = false,
   onChange,
   options,
+  style,
   value,
 }: ToggleProps<TValue>) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -53,6 +60,9 @@ export const Toggle = <TValue extends string | number>({
     width: 0,
   });
 
+  // This prevents the slider from animating when the component first mounts
+  const [firstAnimationComplete, setFirstAnimationComplete] = useState(false);
+
   useEffect(() => {
     const nextAnimationRect = getAnimationRect(
       wrapperRef.current?.getBoundingClientRect() || null,
@@ -62,7 +72,14 @@ export const Toggle = <TValue extends string | number>({
   }, [value]);
 
   return (
-    <div className={styles.shrinkWrapper}>
+    <div
+      className={clsx(
+        className,
+        styles.shrinkWrapper,
+        fullWidth && styles.fullWidth,
+      )}
+      style={style}
+    >
       <div ref={wrapperRef} className={styles.wrapper}>
         <motion.div
           animate={{
@@ -71,25 +88,31 @@ export const Toggle = <TValue extends string | number>({
           }}
           className={styles.selectedSlider}
           initial={false}
+          onAnimationComplete={() => {
+            setFirstAnimationComplete(true);
+          }}
           transition={{
-            duration: 0.2,
+            duration: !firstAnimationComplete ? 0 : 0.2,
           }}
         />
-        {options.map(option => (
-          <button
-            key={option.value}
-            ref={option.value === value ? selectedRef : null}
-            className={clsx([
-              styles.optionWrapper,
-              className,
-              option.value === value && styles.selected,
-            ])}
-            onClick={() => onChange(option.value)}
-            type="button"
-          >
-            {option.label}
-          </button>
-        ))}
+        {options.map(option => {
+          const isSelected = option.value === value;
+
+          return (
+            <button
+              key={option.value}
+              ref={isSelected ? selectedRef : null}
+              className={clsx([
+                styles.optionWrapper,
+                isSelected && styles.selected,
+              ])}
+              onClick={() => onChange(option.value)}
+              type="button"
+            >
+              {option.label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
