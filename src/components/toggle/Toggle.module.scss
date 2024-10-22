@@ -56,4 +56,28 @@
       }
     }
   }
+
+  &:global(.sm) {
+    .optionWrapper {
+      padding: 6px 12px;
+    }
+  }
+
+  &:global(.md) {
+    .optionWrapper {
+      padding: 10px 12px;
+    }
+  }
+
+  &:global(.lg) {
+    .optionWrapper {
+      padding: 14px 14px;
+    }
+  }
+
+  &:global(.xl) {
+    .optionWrapper {
+      padding: 18px 16px;
+    }
+  }
 }

@@ -10,13 +10,14 @@ import type {
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { SelectOption } from 'src/types/SelectOption';
+import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 
 type RequiredProps = 'options' | 'value';
 
 export type SelectProps<
-  Option extends SelectOption = SelectOption,
+  V extends SelectValue = SelectValue,
+  Option = SelectOption<V>,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > = BaseProps & {
@@ -36,7 +37,7 @@ export type SelectProps<
   /**
    * An easier way to override the option rendering without having to use the typical component props and recreating all the styles.
    */
-  customOption?: (value: Option['value']) => ReactNode;
+  customOption?: (value: V) => ReactNode;
   /**
    * @example
    * onChange={changed => setExampleValue(changed?.value || null)}
@@ -47,14 +48,15 @@ export type SelectProps<
   HelpTextProps;
 
 export const Select = <
-  Option extends SelectOption,
+  V extends SelectValue,
+  Option extends SelectOption<V>,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   isClearable = true,
   label,
   value,
   ...props
-}: SelectProps<Option, false, Group>) => {
+}: SelectProps<V, Option, false, Group>) => {
   if (Array.isArray(value) && value.length > 1) {
     throw Error(
       `Only one selection allowed for '${label}' select (${value.length}) selected.`,

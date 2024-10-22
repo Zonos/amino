@@ -4,7 +4,8 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
 import type { BaseProps } from 'src/types/BaseProps';
-import type { SelectOption } from 'src/types/SelectOption';
+import type { SelectOption, SelectValue } from 'src/types/SelectOption';
+import type { Size } from 'src/types/Size';
 
 import styles from './Toggle.module.scss';
 
@@ -33,22 +34,28 @@ type IAnimationRect = {
   width: number;
 };
 
-export type ToggleProps<TValue extends string | number = string> = BaseProps & {
-  /**
-   * If true, the toggle will take up the full width of its parent.
-   * @default false
-   */
-  fullWidth?: boolean;
-  options: SelectOption<TValue>[];
-  value: TValue;
-  onChange: (value: TValue) => void;
-};
+export type ToggleProps<TValue extends SelectValue = SelectValue> =
+  BaseProps & {
+    /**
+     * If true, the toggle will take up the full width of its parent.
+     * @default false
+     */
+    fullWidth?: boolean;
+    options: SelectOption<TValue>[];
+    /**
+     * @default 'sm'
+     */
+    size?: Size;
+    value: TValue;
+    onChange: (value: TValue) => void;
+  };
 
-export const Toggle = <TValue extends string | number>({
+export const Toggle = <TValue extends SelectValue>({
   className,
   fullWidth = false,
   onChange,
   options,
+  size = 'sm',
   style,
   value,
 }: ToggleProps<TValue>) => {
@@ -69,7 +76,7 @@ export const Toggle = <TValue extends string | number>({
       selectedRef.current?.getBoundingClientRect() || null,
     );
     setAnimationRect(nextAnimationRect);
-  }, [value]);
+  }, [value, size]);
 
   return (
     <div
@@ -77,6 +84,7 @@ export const Toggle = <TValue extends string | number>({
         className,
         styles.shrinkWrapper,
         fullWidth && styles.fullWidth,
+        size,
       )}
       style={style}
     >
