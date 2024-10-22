@@ -120,7 +120,7 @@ export const BasicSelectWithOptionIcon: StoryObj<SelectProps> = {
   },
 };
 
-const customOption: SelectProps['customOption'] = (value: string | number) => (
+const customOption: SelectProps['customOption'] = value => (
   <div
     style={{
       display: 'flex',

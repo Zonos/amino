@@ -7,7 +7,7 @@ type CountrySelectType<T extends string> = {
   autoFocus?: SelectProps['autoFocus'];
   countryOptions: CountryOption<T>[];
   label?: string;
-  onChange: SelectProps<CountryOption<T>>['onChange'];
+  onChange: SelectProps<T, CountryOption<T>>['onChange'];
   placeholder?: string;
   value: T | null;
   filter?: (country: CountryOption<T>) => boolean;
@@ -16,7 +16,10 @@ type CountrySelectType<T extends string> = {
 export type CountrySelectProps<T extends string = string> =
   CountrySelectType<T> &
     BaseProps &
-    Omit<SelectProps<CountryOption<T>>, keyof CountrySelectType<T> | 'options'>;
+    Omit<
+      SelectProps<T, CountryOption<T>>,
+      keyof CountrySelectType<T> | 'options'
+    >;
 
 export const CountrySelect = <T extends string>({
   autoFocus,

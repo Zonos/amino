@@ -16,7 +16,8 @@ import type { Size } from 'src/types/Size';
 type RequiredProps = 'options' | 'value';
 
 export type SelectProps<
-  Option extends SelectOption = SelectOption,
+  V extends string | number | null = string | number | null,
+  Option = SelectOption<V>,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > = BaseProps & {
@@ -36,7 +37,7 @@ export type SelectProps<
   /**
    * An easier way to override the option rendering without having to use the typical component props and recreating all the styles.
    */
-  customOption?: (value: Option['value']) => ReactNode;
+  customOption?: (value: V) => ReactNode;
   /**
    * @example
    * onChange={changed => setExampleValue(changed?.value || null)}
@@ -47,14 +48,15 @@ export type SelectProps<
   HelpTextProps;
 
 export const Select = <
-  Option extends SelectOption,
+  V extends string | number | null,
+  Option extends SelectOption<V>,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   isClearable = true,
   label,
   value,
   ...props
-}: SelectProps<Option, false, Group>) => {
+}: SelectProps<V, Option, false, Group>) => {
   if (Array.isArray(value) && value.length > 1) {
     throw Error(
       `Only one selection allowed for '${label}' select (${value.length}) selected.`,

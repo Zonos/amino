@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 
-export type SelectOption<V extends string | number | null = string | number> = {
+export type SelectOption<
+  V extends string | number | null = string | number | null,
+> = {
   icon?: ReactNode;
   isDisabled?: boolean;
   label: string;

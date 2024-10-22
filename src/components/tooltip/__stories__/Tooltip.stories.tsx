@@ -13,6 +13,7 @@ import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
 import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { InfoIcon } from 'src/icons/InfoIcon';
+import type { SelectOption } from 'src/types/SelectOption';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 const Template: StoryFn<TooltipProps> = props => {
@@ -126,6 +127,37 @@ export const Complex: StoryObj<TooltipProps> = {
   },
 };
 
+const currencyOptions: SelectOption<string>[] = [
+  {
+    label: 'US Dollar (USD)',
+    value: 'USD',
+  },
+  {
+    label: 'European Euro (EUR)',
+    value: 'EUR',
+  },
+  {
+    label: 'Japanese Yen (JPY)',
+    value: 'JPY',
+  },
+  {
+    label: 'British Pound (GBP)',
+    value: 'GBP',
+  },
+  {
+    label: 'Swiss Frank (CHF)',
+    value: 'CHF',
+  },
+  {
+    label: 'Australian Dollar (AUD)',
+    value: 'AUD',
+  },
+  {
+    label: 'New Zealand Dollar (NZD)',
+    value: 'NZD',
+  },
+];
+
 export const TestingZIndex: StoryFn<TooltipProps> = props => {
   const [coversheetOpen, setCoversheetOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -173,40 +205,8 @@ export const TestingZIndex: StoryFn<TooltipProps> = props => {
               label="currencies"
               menuIsOpen
               onChange={option => !option && setShowSelect(false)}
-              options={[
-                {
-                  label: 'US Dollar (USD)',
-                  value: 'USD',
-                },
-                {
-                  label: 'European Euro (EUR)',
-                  value: 'EUR',
-                },
-                {
-                  label: 'Japanese Yen (JPY)',
-                  value: 'JPY',
-                },
-                {
-                  label: 'British Pound (GBP)',
-                  value: 'GBP',
-                },
-                {
-                  label: 'Swiss Frank (CHF)',
-                  value: 'CHF',
-                },
-                {
-                  label: 'Australian Dollar (AUD)',
-                  value: 'AUD',
-                },
-                {
-                  label: 'New Zealand Dollar (NZD)',
-                  value: 'NZD',
-                },
-              ]}
-              value={{
-                label: 'US Dollar (USD)',
-                value: 'USD',
-              }}
+              options={currencyOptions}
+              value={currencyOptions.filter(o => o.value === 'USD')}
             />
           ) : (
             <Tooltip {...props} title="Hey">

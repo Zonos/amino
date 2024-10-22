@@ -12,7 +12,7 @@ import { truncateText } from 'src/utils/truncateText';
 type CustomSelectProps<
   T extends string = string,
   O extends SelectOption<string> = SelectOption<T>,
-> = Omit<SelectProps<O>, 'onChange' | 'value' | 'options'>;
+> = Omit<SelectProps<T, O>, 'onChange' | 'value' | 'options'>;
 
 export type FilterSelectProps<
   T extends string = string,
