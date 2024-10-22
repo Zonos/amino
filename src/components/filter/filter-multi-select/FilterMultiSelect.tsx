@@ -7,18 +7,18 @@ import {
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import { VStack } from 'src/components/stack/VStack';
-import type { SelectOption } from 'src/types/SelectOption';
+import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 
 import styles from './FilterMultiSelect.module.scss';
 
-export type FilterMultiSelectProps<T extends string | number = string> =
+export type FilterMultiSelectProps<T extends SelectValue = SelectValue> =
   BaseFilterProps & {
     options: SelectOption<T>[];
     value: T[];
     onChange: (value: T[]) => void;
   };
 
-export const FilterMultiSelect = <T extends string | number = string>({
+export const FilterMultiSelect = <T extends SelectValue = SelectValue>({
   dropdownTitle,
   label,
   onChange,

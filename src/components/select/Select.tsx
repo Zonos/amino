@@ -10,13 +10,13 @@ import type {
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { SelectOption } from 'src/types/SelectOption';
+import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 
 type RequiredProps = 'options' | 'value';
 
 export type SelectProps<
-  V extends string | number | null = string | number | null,
+  V extends SelectValue = SelectValue,
   Option = SelectOption<V>,
   IsMulti extends false = false,
   Group extends GroupBase<Option> = GroupBase<Option>,
@@ -48,7 +48,7 @@ export type SelectProps<
   HelpTextProps;
 
 export const Select = <
-  V extends string | number | null,
+  V extends SelectValue,
   Option extends SelectOption<V>,
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
