@@ -27,7 +27,7 @@ import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { SelectOption } from 'src/types/SelectOption';
+import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 
@@ -366,7 +366,8 @@ const localStyles: StylesConfig<
 };
 
 export type StyledReactSelectProps<
-  Option extends SelectOption,
+  V extends SelectValue,
+  Option extends SelectOption<V>,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 > = {
@@ -380,7 +381,8 @@ export type StyledReactSelectProps<
   BaseProps;
 
 export const StyledReactSelect = <
-  Option extends SelectOption,
+  V extends SelectValue,
+  Option extends SelectOption<V>,
   IsMulti extends boolean,
   Group extends GroupBase<Option>,
 >({
@@ -397,8 +399,8 @@ export const StyledReactSelect = <
   size = 'xl',
   style,
   ...props
-}: StyledReactSelectProps<Option, IsMulti, Group>) => {
-  const additionalProps: AdditionalProps<Option['value']> = {
+}: StyledReactSelectProps<V, Option, IsMulti, Group>) => {
+  const additionalProps: AdditionalProps<V> = {
     customOption,
     hasGroups,
     icon,
