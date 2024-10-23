@@ -19,6 +19,11 @@ export type TooltipProps = BaseProps & {
    */
   children: ReactNode;
   /**
+   * The delay in milliseconds before showing the tooltip.
+   * @default 0
+   */
+  delay?: number;
+  /**
    * Whether the tooltip should be shown.
    *
    * Leave as undefined to remain uncontrolled.
@@ -45,7 +50,6 @@ export type TooltipProps = BaseProps & {
    */
   title?: ReactNode;
 } & Partial<Omit<MuiTooltipProps, 'children'>>;
-
 const StyledTooltip = muiStyled(
   ({
     className,
@@ -59,14 +63,12 @@ const StyledTooltip = muiStyled(
         {
           ...props.PopperProps,
           'data-theme': dataTheme,
-          // PopperProps by default, would not allow the data-theme attribute to be passed
         } as PopperProps
       }
     />
   ),
 )(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    // Reset MUI styles
     all: 'revert',
     backgroundColor: theme.gray0,
     borderRadius: theme.radius10,
@@ -84,6 +86,7 @@ const StyledTooltip = muiStyled(
 export const Tooltip = ({
   children,
   className,
+  delay = 0,
   disabled = false,
   open,
   subtitle,
@@ -112,6 +115,8 @@ export const Tooltip = ({
         {...rest}
         className={className}
         dataTheme={themeOverride}
+        enterDelay={delay}
+        enterNextDelay={delay}
         open={open}
         title={renderTooltip()}
       >

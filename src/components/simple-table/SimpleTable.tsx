@@ -37,6 +37,8 @@ const getTooltipPlacement = (
   }
 };
 
+const tooltipDelay = 800;
+
 type SimpleTableHeaderBaseProps = {
   /**
    * Text alignment for a column
@@ -228,6 +230,7 @@ export const SimpleTable = <T extends object>({
         return (
           <td className={tdClassNames} style={containerStyle}>
             <Tooltip
+              delay={tooltipDelay}
               disabled={header.textWrapMethod !== 'truncate'}
               placement={tooltipPlacement}
               subtitle={content}
@@ -247,7 +250,9 @@ export const SimpleTable = <T extends object>({
       return (
         <td className={tdClassNames} style={containerStyle}>
           <Tooltip
+            delay={tooltipDelay}
             disabled={header.textWrapMethod !== 'truncate'}
+            placement={tooltipPlacement}
             subtitle={content}
           >
             {/* Child div required for proper truncating */}
