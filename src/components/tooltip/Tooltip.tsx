@@ -19,11 +19,6 @@ export type TooltipProps = BaseProps & {
    */
   children: ReactNode;
   /**
-   * The delay in milliseconds before showing the tooltip.
-   * @default 0
-   */
-  delay?: number;
-  /**
    * Whether the tooltip should be shown.
    *
    * Leave as undefined to remain uncontrolled.
@@ -86,7 +81,6 @@ const StyledTooltip = muiStyled(
 export const Tooltip = ({
   children,
   className,
-  delay = 0,
   disabled = false,
   open,
   subtitle,
@@ -115,8 +109,6 @@ export const Tooltip = ({
         {...rest}
         className={className}
         dataTheme={themeOverride}
-        enterDelay={delay}
-        enterNextDelay={delay}
         open={open}
         title={renderTooltip()}
       >
