@@ -45,6 +45,7 @@ export type TooltipProps = BaseProps & {
    */
   title?: ReactNode;
 } & Partial<Omit<MuiTooltipProps, 'children'>>;
+
 const StyledTooltip = muiStyled(
   ({
     className,
@@ -58,12 +59,14 @@ const StyledTooltip = muiStyled(
         {
           ...props.PopperProps,
           'data-theme': dataTheme,
+          // PopperProps by default, would not allow the data-theme attribute to be passed
         } as PopperProps
       }
     />
   ),
 )(() => ({
   [`& .${tooltipClasses.tooltip}`]: {
+    // Reset MUI styles
     all: 'revert',
     backgroundColor: theme.gray0,
     borderRadius: theme.radius10,
