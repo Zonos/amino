@@ -405,6 +405,8 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     padding: 0;
     display: inline-flex;
     color: theme.$amino-blue-600;
+    line-height: inherit;
+
     &:not([disabled]) {
       &:hover,
       &:active {
