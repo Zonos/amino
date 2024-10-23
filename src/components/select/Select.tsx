@@ -63,7 +63,7 @@ export const Select = <
     );
   }
   return (
-    <StyledReactSelect<Option, false, Group>
+    <StyledReactSelect<V, Option, false, Group>
       {...props}
       isClearable={isClearable}
       isMulti={false}

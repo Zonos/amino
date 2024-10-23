@@ -16,7 +16,7 @@ import { Checkbox } from 'src/components/checkbox/Checkbox';
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
 import type { BaseProps } from 'src/types/BaseProps';
-import type { SelectOption } from 'src/types/SelectOption';
+import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 
 type RequiredProps = 'onChange' | 'options' | 'value';
 
@@ -99,14 +99,15 @@ const Group = <
 };
 
 export const MultiSelect = <
-  Option extends SelectOption,
+  V extends SelectValue,
+  Option extends SelectOption<V>,
   Group extends GroupBase<Option>,
 >({
   closeMenuOnSelect = false,
   hideSelectedOptions = true,
   ...props
 }: MultiSelectProps<Option, true, Group>) => (
-  <StyledReactSelect<Option, true, Group>
+  <StyledReactSelect<V, Option, true, Group>
     {...props}
     closeMenuOnSelect={closeMenuOnSelect}
     components={{ Group, ...props.components }}
