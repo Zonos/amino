@@ -7,6 +7,7 @@ $height: var(--amino-float-label-input-height);
   position: relative;
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100%;
   background: theme.$amino-input-background;
   border-radius: $border-radius;
@@ -182,7 +183,7 @@ $height: var(--amino-float-label-input-height);
       }
 
       &:global(.has-content),
-      :focus-within {
+      &:focus-within {
         .floatingLabel span {
           top: 2px;
         }
@@ -202,7 +203,7 @@ $height: var(--amino-float-label-input-height);
       }
 
       &:global(.has-content),
-      :focus-within {
+      &:focus-within {
         .floatingLabel span {
           top: 6px;
         }
@@ -221,7 +222,7 @@ $height: var(--amino-float-label-input-height);
       }
 
       &:global(.has-content),
-      :focus-within {
+      &:focus-within {
         .floatingLabel span {
           top: 6px;
         }
