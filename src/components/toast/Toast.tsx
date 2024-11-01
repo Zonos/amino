@@ -20,6 +20,8 @@ export type ToastProps = BaseProps & {
   /** Dismiss delay (default 6000 ms) */
   duration?: number;
   intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
+  /** If true, toast will be shown in the persistent stack */
+  isPersistent?: boolean;
   toastKey: string;
 };
 
@@ -27,6 +29,7 @@ export const Toast = ({
   children,
   direction,
   intent,
+  isPersistent,
   style,
   toastKey,
 }: ToastProps) => {
@@ -89,9 +92,15 @@ export const Toast = ({
 
   return (
     <motion.div
-      className={clsx(styles.aminoToast, intentValues.class)}
+      className={clsx(
+        styles.aminoToast,
+        intentValues.class,
+        isPersistent && styles.persistentToast,
+      )}
       layout
-      style={style}
+      style={{
+        ...style,
+      }}
       {...baseProps}
       key={toastKey}
     >

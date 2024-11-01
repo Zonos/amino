@@ -57,6 +57,17 @@ export const ToastConsumer = () => {
         >
           Information
         </Button>
+        <Button
+          onClick={() =>
+            notify('Persistent toast', {
+              duration: Infinity,
+              intent: 'error',
+              isPersistent: true,
+            })
+          }
+        >
+          Add Persistent Toast
+        </Button>
         <div className={styles.customWrapper}>
           <textarea
             cols={30}

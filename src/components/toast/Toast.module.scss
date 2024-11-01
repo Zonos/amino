@@ -17,6 +17,15 @@
   gap: 12px;
   font-weight: 500;
   user-select: none;
+  flex: 1;
+
+  &.persistentToast {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+  }
 
   & svg {
     color: theme.$amino-gray-500;

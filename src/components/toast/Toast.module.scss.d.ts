@@ -3,3 +3,4 @@ export declare const aminoInfoToast: string;
 export declare const aminoSuccessToast: string;
 export declare const aminoToast: string;
 export declare const aminoWarningToast: string;
+export declare const persistentToast: string;

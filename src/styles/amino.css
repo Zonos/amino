@@ -180,9 +180,10 @@ h6 {
 .toast-container {
   display: flex;
   justify-content: center;
-}
-.toasts-wrapper {
+  flex-direction: column;
   position: fixed;
+  left: 0;
+  right: 0;
   z-index: 9999999;
   bottom: var(--amino-space-40);
 }
