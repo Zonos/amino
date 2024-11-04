@@ -3,10 +3,15 @@
 $bottom: var(--amino-toast-context-bottom);
 $left: var(--amino-toast-context-left);
 $persistentHeight: var(--amino-toast-persistent-height);
-
 .toastContainer {
   bottom: $bottom;
   left: $left;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: fixed;
+  z-index: 9999999;
+  width: 100%;
 }
 
 .toastsWrapper {
@@ -16,13 +21,18 @@ $persistentHeight: var(--amino-toast-persistent-height);
   gap: 16px;
 }
 
+.regularToastsWrapper {
+  margin-bottom: 16px;
+}
+
 .persistentToastsWrapper {
   z-index: 1000;
-  height: $persistentHeight;
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   margin: 0 auto;
   position: relative;
+  max-height: 60vh;
+  min-height: $persistentHeight;
 
   // Add hover effect for persistent toasts
   &:hover {
@@ -58,6 +68,7 @@ $persistentHeight: var(--amino-toast-persistent-height);
       opacity: 0;
       filter: brightness(2);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: bottom center;
 
       &:nth-of-type(1) {
         bottom: 0;

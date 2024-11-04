@@ -59,11 +59,23 @@ export const ToastConsumer = () => {
         </Button>
         <Button
           onClick={() =>
-            notify('Persistent toast', {
-              duration: Infinity,
-              intent: 'error',
-              isPersistent: true,
-            })
+            notify(
+              <>
+                {
+                  'Some vague error happened: Error: Field "userProfl" does not exist on type "Query". Did you mean "userProfile"? [Location: line 3, column 5]. To learn more,'
+                }{' '}
+                <a href="https://www.google.com">Click here</a>
+              </>,
+              {
+                actions: (
+                  <Button outline variant="danger">
+                    Request support
+                  </Button>
+                ),
+                intent: 'error',
+                isPersistent: true,
+              },
+            )
           }
         >
           Add Persistent Toast

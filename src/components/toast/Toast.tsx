@@ -3,9 +3,12 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
+import { Button } from 'src/components/button/Button';
+import { Flex } from 'src/components/flex/Flex';
 import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { InfoIcon } from 'src/icons/InfoIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
+import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import type { Intent } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
@@ -15,6 +18,7 @@ import styles from './Toast.module.scss';
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
 
 export type ToastProps = BaseProps & {
+  actions?: ReactNode;
   children: ReactNode;
   direction?: Direction;
   /** Dismiss delay (default 6000 ms) */
@@ -23,13 +27,17 @@ export type ToastProps = BaseProps & {
   /** If true, toast will be shown in the persistent stack */
   isPersistent?: boolean;
   toastKey: string;
+  /** Only used for persistent toasts */
+  onDismiss?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const Toast = ({
+  actions,
   children,
   direction,
   intent,
   isPersistent,
+  onDismiss,
   style,
   toastKey,
 }: ToastProps) => {
@@ -104,8 +112,24 @@ export const Toast = ({
       {...baseProps}
       key={toastKey}
     >
-      {intentValues.icon}
-      {children}
+      <Flex alignItems="flex-start" gap={12} justifyContent="space-between">
+        <Flex gap={12}>
+          <div>{intentValues.icon}</div>
+          <div>{children}</div>
+        </Flex>
+
+        <Flex alignItems="flex-start" gap={12}>
+          {actions}
+
+          {isPersistent && (
+            <Button
+              icon={<RemoveIcon size={28} />}
+              onClick={e => onDismiss?.(e)}
+              variant="plain"
+            />
+          )}
+        </Flex>
+      </Flex>
     </motion.div>
   );
 };
