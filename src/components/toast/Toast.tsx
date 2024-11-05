@@ -123,10 +123,10 @@ export const Toast = ({
 
           {isPersistent && (
             <Button
+              className={styles.dismissButton}
               icon={<RemoveIcon />}
               onClick={e => onDismiss?.(e)}
               variant="plain"
-              className={styles.dismissButton}
             />
           )}
         </Flex>
