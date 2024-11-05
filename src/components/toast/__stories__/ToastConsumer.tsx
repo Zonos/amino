@@ -59,10 +59,17 @@ export const ToastConsumer = () => {
         </Button>
         <Button
           onClick={() =>
+            notify('Short persisting', { duration, isPersistent: true })
+          }
+        >
+          Short persisting
+        </Button>
+        <Button
+          onClick={() =>
             notify(
               <>
                 {
-                  'Some vague error happened: Error: Field "userProfl" does not exist on type "Query". Did you mean "userProfile"? [Location: line 3, column 5]. To learn more,'
+                  'Long persisting example: Error: Field "userProfl" does not exist on type "Query". Did you mean "userProfile"? [Location: line 3, column 5]. To learn more,'
                 }{' '}
                 <a href="https://www.google.com">Click here</a>
               </>,
@@ -78,7 +85,7 @@ export const ToastConsumer = () => {
             )
           }
         >
-          Add Persistent Toast
+          Long persisting
         </Button>
         <div className={styles.customWrapper}>
           <textarea

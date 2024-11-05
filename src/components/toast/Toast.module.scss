@@ -24,6 +24,10 @@
     }
   }
 
+  .dismissButton {
+    height: 24px;
+  }
+
   & svg {
     color: theme.$amino-gray-500;
   }
