@@ -176,13 +176,3 @@ h6 {
 .no-scroll {
   overflow: hidden;
 }
-
-.toast-container {
-  display: flex;
-  justify-content: center;
-}
-.toasts-wrapper {
-  position: fixed;
-  z-index: 9999999;
-  bottom: var(--amino-space-40);
-}

@@ -57,6 +57,33 @@ export const ToastConsumer = () => {
         >
           Information
         </Button>
+        <Button
+          onClick={() =>
+            notify('Short persisting', { duration, isPersistent: true })
+          }
+        >
+          Short persisting
+        </Button>
+        <Button
+          onClick={() =>
+            notify(
+              `Long persisting example: Error: Field "userProfl" does not exist
+                on type "Query". Did you mean "userProfile"? [Location: line 3,
+                column 5].`,
+              {
+                actions: (
+                  <Button outline variant="danger">
+                    Request support
+                  </Button>
+                ),
+                intent: 'error',
+                isPersistent: true,
+              },
+            )
+          }
+        >
+          Long persisting
+        </Button>
         <div className={styles.customWrapper}>
           <textarea
             cols={30}

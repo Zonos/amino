@@ -99,3 +99,4 @@ snapshots
 _private_*
 
 !.vscode
+.cursorignore

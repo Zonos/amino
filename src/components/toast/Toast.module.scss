@@ -12,11 +12,21 @@
   color: theme.$amino-gray-0;
   box-shadow: theme.$amino-v3-shadow-large;
   padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
   font-weight: 500;
   user-select: none;
+  flex: 1;
+
+  &.persistentToast {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+  }
+
+  .dismissButton {
+    height: 24px;
+  }
 
   & svg {
     color: theme.$amino-gray-500;
