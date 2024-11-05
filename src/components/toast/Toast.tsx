@@ -118,7 +118,7 @@ export const Toast = ({
           <div>{children}</div>
         </Flex>
 
-        <Flex alignItems="flex-start" gap={12}>
+        <Flex alignItems="flex-start" className="toast-actions" gap={12}>
           {actions}
 
           {isPersistent && (

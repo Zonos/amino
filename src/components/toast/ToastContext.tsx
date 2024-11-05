@@ -91,22 +91,26 @@ export const ToastContextProvider = ({ children }: Props) => {
     [addToast],
   );
 
-  const dismissPersistentToast = useCallback((toastId: string) => {
+  const dismissPersistentToast = (toastId: string) => {
     setPersistentToasts(current => current.filter(t => t.uuid !== toastId));
-  }, []);
+  };
 
-  const dismissClicked = useCallback(
-    (e: React.MouseEvent, toastId: string) => {
-      e.stopPropagation();
-      dismissPersistentToast(toastId);
-    },
-    [dismissPersistentToast],
-  );
+  const dismissClicked = (e: React.MouseEvent, toastId: string) => {
+    e.stopPropagation();
+    dismissPersistentToast(toastId);
+  };
 
-  const clearAllClicked = useCallback(() => {
+  const clearAllClicked = () => {
     setPersistentToasts([]);
     setExpandedToasts(false);
-  }, [setPersistentToasts, setExpandedToasts]);
+  };
+
+  const toggleExpanded = (e: React.MouseEvent | React.KeyboardEvent) => {
+    const actionsElement = e.currentTarget.querySelector('.toast-actions');
+    if (actionsElement && !actionsElement.contains(e.target as Node)) {
+      setExpandedToasts(prev => !prev);
+    }
+  };
 
   const firstToastRef = useRef<HTMLDivElement>(null);
   const [firstToastHeight, setFirstToastHeight] = useState(0);
@@ -123,7 +127,7 @@ export const ToastContextProvider = ({ children }: Props) => {
     <ToastContext.Provider value={setupToasts}>
       {children}
       <div
-        className={clsx('toast-container', styles.toastContainer)}
+        className={styles.toastContainer}
         style={{
           '--amino-toast-context-bottom': toastLocation.bottom || '40px',
           '--amino-toast-context-left': toastLocation.left || 'auto',
@@ -161,7 +165,6 @@ export const ToastContextProvider = ({ children }: Props) => {
             styles.toastsWrapper,
             styles.persistentToastsWrapper,
             expandedToasts && styles.expanded,
-            'toasts-wrapper',
           )}
         >
           {!!persistentToasts.length && (
@@ -182,10 +185,10 @@ export const ToastContextProvider = ({ children }: Props) => {
                   key={key}
                   ref={index === 0 ? firstToastRef : null} // Only ref the first toast
                   className={styles.persistentToast}
-                  onClick={() => setExpandedToasts(!expandedToasts)}
+                  onClick={toggleExpanded}
                   onKeyDown={e => {
                     if (e.key === 'Enter' || e.key === ' ') {
-                      setExpandedToasts(!expandedToasts);
+                      toggleExpanded(e);
                     }
                   }}
                   role="button"
