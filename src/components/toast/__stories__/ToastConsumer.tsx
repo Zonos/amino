@@ -67,12 +67,9 @@ export const ToastConsumer = () => {
         <Button
           onClick={() =>
             notify(
-              <>
-                {
-                  'Long persisting example: Error: Field "userProfl" does not exist on type "Query". Did you mean "userProfile"? [Location: line 3, column 5]. To learn more,'
-                }{' '}
-                <a href="https://www.google.com">Click here</a>
-              </>,
+              `Long persisting example: Error: Field "userProfl" does not exist
+                on type "Query". Did you mean "userProfile"? [Location: line 3,
+                column 5].`,
               {
                 actions: (
                   <Button outline variant="danger">

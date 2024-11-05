@@ -201,7 +201,7 @@ export const ToastContextProvider = ({ children }: Props) => {
                       toastKey={key}
                       {...props}
                     >
-                      {toast}
+                      {index === 0 || expandedToasts ? toast : ''}
                     </Toast>
                   </Flex>
                 </div>
