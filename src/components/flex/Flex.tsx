@@ -66,8 +66,10 @@ export const Flex = ({
   justifyContent = 'flex-start',
   padding = 0,
   style,
+  ...rest
 }: FlexProps) => (
   <div
+    {...rest}
     className={clsx(
       className,
       styles.flexWrapper,
