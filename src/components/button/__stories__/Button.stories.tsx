@@ -66,6 +66,7 @@ const ButtonRow = ({
       <Button
         /*  eslint-disable-next-line react/no-children-prop */
         children=""
+        color={props.color}
         disabled={disabled}
         icon={<CubeIcon size={24} />}
         loading={loading}
@@ -75,6 +76,7 @@ const ButtonRow = ({
         variant={variant}
       />
       <Button
+        color={props.color}
         disabled={disabled}
         loading={loading}
         onClick={e => e.preventDefault()}
@@ -85,6 +87,7 @@ const ButtonRow = ({
         Div Button
       </Button>
       <Button
+        color={props.color}
         disabled={disabled}
         href="#"
         loading={loading}
