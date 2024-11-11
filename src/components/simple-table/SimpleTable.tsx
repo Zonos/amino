@@ -99,6 +99,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
   bordered?: boolean;
   /**
    * @default false
+   * @note Setting collapsible with selectable will result in unexpected behavior
    * Enable rows to collapse and expand with more information
    */
   collapsible?: {
@@ -147,6 +148,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
   renderFooter?: ReactNode;
   /**
    * @default false
+   * @note Setting collapsible with selectable will result in unexpected behavior
    * Show checkbox on each row, and checkbox for toggling all in header
    */
   selectable?: {
@@ -179,6 +181,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    * Callback for clicking anywhere on row.
    *
    * If having buttons in the table, remember to call e.stopPropagation() to prevent this from firing.
+   * @note Setting onRowClick with collapsible will result in unexpected behavior
    */
   onRowClick?: (item: T) => void;
   /** Callback for hovering anywhere on row */
