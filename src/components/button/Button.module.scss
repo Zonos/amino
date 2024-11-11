@@ -382,7 +382,6 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   }
 
   &.linkButton {
-    color: theme.$amino-blue-600;
     &:not([disabled]) {
       &:active {
         background: theme.$amino-blue-100;
@@ -404,7 +403,6 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   &.inlineLinkButton {
     padding: 0;
     display: inline-flex;
-    color: theme.$amino-blue-600;
     line-height: inherit;
 
     &:not([disabled]) {
