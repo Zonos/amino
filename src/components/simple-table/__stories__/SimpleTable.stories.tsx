@@ -351,6 +351,31 @@ export const Bordered = () => {
 };
 
 export const Collapsible = () => {
+  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+
+  const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedRowIndexes.length === items.length) {
+      setSelectedRowIndexes([]);
+    } else {
+      setSelectedRowIndexes(items.map((_, index) => index));
+    }
+  };
+
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
+    if (value) {
+      setSelectedRowIndexes([...selectedRowIndexes, index]);
+    } else {
+      setSelectedRowIndexes(
+        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+      );
+    }
+  };
   const collapseContent = items.map(item => ({
     content: (
       <table style={{ width: '100%' }}>
@@ -392,6 +417,26 @@ export const Collapsible = () => {
         headers={tableHeaders}
         items={items}
         keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Selectable</Text>
+      <SimpleTable
+        bordered
+        collapsible={{
+          collapseContent,
+          enabled: true,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+        selectable={{
+          anySelected: selectedRowIndexes.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
       />
     </>
   );
