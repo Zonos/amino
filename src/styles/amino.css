@@ -77,7 +77,7 @@ html {
 
 body {
   font-family: var(--amino-font-sans);
-  font-size: var(--amino-text-base);
+  font-size: var(--amino-font-size-base);
   background: var(--amino-page-background);
   height: 100%;
   width: 100%;
@@ -121,7 +121,7 @@ h4 {
 }
 
 h5 {
-  font-size: var(--amino-text-base);
+  font-size: var(--amino-font-size-base);
   font-weight: 400;
 }
 
