@@ -157,8 +157,8 @@ const ButtonRow = ({
 const Template: StoryFn<ButtonProps> = props => (
   <div className={styles.vWrapper}>
     <ButtonRow {...props} label="Default" />
-    {/* <ButtonRow {...props} disabled label="Disabled" />
-    <ButtonRow {...props} label="Loading" loading /> */}
+    <ButtonRow {...props} disabled label="Disabled" />
+    <ButtonRow {...props} label="Loading" loading />
   </div>
 );
 
