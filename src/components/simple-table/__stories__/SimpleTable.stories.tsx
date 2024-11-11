@@ -386,7 +386,7 @@ export const Collapsible = () => {
         </tr>
         <tr>
           <td style={{ border: 'none' }}>{item.name}</td>
-          <td>{item.age}</td>
+          <td style={{ border: 'none' }}>{item.age}</td>
           <td style={{ border: 'none' }}>{item.vegan}</td>
         </tr>
       </table>

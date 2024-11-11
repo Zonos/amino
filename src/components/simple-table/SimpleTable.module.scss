@@ -152,14 +152,18 @@ $cellMinWidth: var(--amino-cell-min-width);
       > tr {
         height: unset;
 
+        &:not(.collapsed) {
+          td {
+            border-bottom: theme.$amino-border-subtle;
+          }
+        }
         &.collapsed {
+          & + tr > td {
+            border: 0;
+          }
           + tr > td > :first-child {
             padding: 0;
           }
-        }
-
-        &:not(.collapsed) + tr {
-          border-bottom: theme.$amino-border-subtle;
         }
       }
     }
