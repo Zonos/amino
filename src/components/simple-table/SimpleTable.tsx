@@ -1,9 +1,10 @@
-import React, { type ReactNode, Fragment } from 'react';
+import React, { type ReactNode, Fragment, useState } from 'react';
 
 import clsx from 'clsx';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
+import { TableRowCollapse } from 'src/components/table/TableRowCollapse';
 import { Text } from 'src/components/text/Text';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import type { BaseProps } from 'src/types/BaseProps';
@@ -91,6 +92,28 @@ export type SimpleTableProps<T extends object> = BaseProps & {
     children: ReactNode;
     href: string;
   }>;
+  /**
+   * @default false
+   * Use bordered variant of table
+   */
+  bordered?: boolean;
+  /**
+   * @default false
+   * Enable rows to collapse and expand with more information
+   */
+  collapsible?: {
+    /**
+     * Content to show when row is expanded
+     */
+    collapseContent?: {
+      content: ReactNode;
+      /**
+       * @note Key must match the key of the item it is expanding from
+       */
+      key: string;
+    }[];
+    enabled: boolean;
+  };
   headers: SimpleTableHeader<T>[];
   items: T[];
   /**
@@ -170,7 +193,11 @@ export type SimpleTableProps<T extends object> = BaseProps & {
  * - 'cell-hover-show': Shows only when the cell is hovered
  */
 export const SimpleTable = <T extends object>({
+  bordered = false,
   className,
+  collapsible = {
+    enabled: false,
+  },
   CustomLinkComponent,
   getRowLink,
   headers,
@@ -189,6 +216,13 @@ export const SimpleTable = <T extends object>({
   },
   style,
 }: SimpleTableProps<T>) => {
+  const [expandedItemIds, setExpandedItemIds] = useState<string[]>([]);
+  const toggleItem = (id: string) =>
+    setExpandedItemIds(
+      expandedItemIds.includes(id)
+        ? expandedItemIds.filter(x => x !== id)
+        : expandedItemIds.concat(id),
+    );
   const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
     const value = item[header.key];
 
@@ -312,6 +346,53 @@ export const SimpleTable = <T extends object>({
       ));
     }
 
+    if (collapsible.enabled && collapsible.collapseContent?.length) {
+      return items.map((item, index) => {
+        const key = keyExtractor(item);
+        const collapsed = !expandedItemIds.includes(key);
+        return (
+          <TableRowCollapse
+            key={key}
+            className={clsx(
+              !noHoverBackground && styles.withHover,
+              collapsed && styles.collapsed,
+            )}
+            collapsed={collapsed}
+            onToggleCollapse={() => toggleItem(key)}
+            rowContent={
+              <>
+                {selectable.enabled && (
+                  <td>
+                    {selectable.renderCustomRowCheckbox?.(item, index) || (
+                      <Checkbox
+                        checked={
+                          selectable.isRowChecked?.(item, index) || false
+                        }
+                        disabled={
+                          selectable.isRowCheckboxDisabled?.(item, index) ||
+                          false
+                        }
+                        onChange={checked =>
+                          selectable.onRowCheckboxChange?.(checked, item, index)
+                        }
+                      />
+                    )}
+                  </td>
+                )}
+                {headers.map(header => (
+                  <Fragment key={header.key}>
+                    {renderHeader(header, item)}
+                  </Fragment>
+                ))}
+              </>
+            }
+          >
+            {collapsible.collapseContent?.find(x => x.key === key)?.content}
+          </TableRowCollapse>
+        );
+      });
+    }
+
     return items.map((item, index) => {
       const clickable =
         !!onRowClick ||
@@ -371,7 +452,14 @@ export const SimpleTable = <T extends object>({
         ...style,
       }}
     >
-      <table className={styles.tableStyled}>
+      <table
+        className={clsx(
+          collapsible.enabled && styles.collapsible,
+          styles.tableStyled,
+          bordered && styles.bordered,
+          headers.every(header => !header.name) && styles.noHeaders,
+        )}
+      >
         <colgroup>
           {!!selectable.onHeaderCheckboxChange && <col width={0} />}
           {headers.map(header => (
@@ -388,6 +476,7 @@ export const SimpleTable = <T extends object>({
               }
             />
           ))}
+          {collapsible.enabled && <col />}
         </colgroup>
         <thead>
           <tr>
@@ -422,6 +511,7 @@ export const SimpleTable = <T extends object>({
                 )}
               </th>
             ))}
+            {collapsible.enabled && <th />}
           </tr>
         </thead>
         <tbody>{renderRows()}</tbody>

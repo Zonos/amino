@@ -321,6 +321,82 @@ export const Loading = () => {
   );
 };
 
+export const Bordered = () => {
+  const augmentedHeaders: SimpleTableHeader<DummyData>[] = tableHeaders
+    .filter(Boolean)
+    .map(header => ({
+      ...header,
+      minWidth: header.minWidth || 50,
+      name: null,
+    }));
+  return (
+    <>
+      <Text type="header">With headers</Text>
+      <SimpleTable
+        bordered
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Without headers</Text>
+      <SimpleTable
+        bordered
+        headers={augmentedHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+    </>
+  );
+};
+
+export const Collapsible = () => {
+  const collapseContent = items.map(item => ({
+    content: (
+      <table style={{ width: '100%' }}>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Vegan</th>
+        </tr>
+        <tr>
+          <td style={{ border: 'none' }}>{item.name}</td>
+          <td>{item.age}</td>
+          <td style={{ border: 'none' }}>{item.vegan}</td>
+        </tr>
+      </table>
+    ),
+    key: String(item.id),
+  }));
+
+  return (
+    <>
+      <Text type="header">Normal</Text>
+      <SimpleTable
+        collapsible={{
+          collapseContent,
+          enabled: true,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Bordered</Text>
+      <SimpleTable
+        bordered
+        collapsible={{
+          collapseContent,
+          enabled: true,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+    </>
+  );
+};
+
 export const Custom = () => {
   const [shouldTruncate, setShouldTruncate] = useState(true);
   const [viewOneRow, setViewOneRow] = useState(false);
