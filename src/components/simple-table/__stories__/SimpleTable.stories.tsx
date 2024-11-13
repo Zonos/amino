@@ -147,11 +147,24 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
 ];
 
 export const Basic = () => (
-  <SimpleTable
-    headers={tableHeaders}
-    items={items}
-    keyExtractor={item => String(item.id)}
-  />
+  <>
+    <Text type="header">With hover</Text>
+    <SimpleTable
+      className="with-hover"
+      headers={tableHeaders}
+      items={items}
+      keyExtractor={item => String(item.id)}
+    />
+    <Divider />
+    <Text type="header">Without hover</Text>
+    <SimpleTable
+      className="no-hover"
+      headers={tableHeaders}
+      items={items}
+      keyExtractor={item => String(item.id)}
+      noHoverBackground
+    />
+  </>
 );
 
 export const Long = () => (
@@ -398,6 +411,7 @@ export const Collapsible = () => {
     <>
       <Text type="header">Normal</Text>
       <SimpleTable
+        className="normal-table"
         collapsible={{
           collapseContent,
           enabled: true,
@@ -410,6 +424,7 @@ export const Collapsible = () => {
       <Text type="header">Bordered</Text>
       <SimpleTable
         bordered
+        className="bordered-table"
         collapsible={{
           collapseContent,
           enabled: true,
@@ -422,6 +437,7 @@ export const Collapsible = () => {
       <Text type="header">Selectable</Text>
       <SimpleTable
         bordered
+        className="selectable-table"
         collapsible={{
           collapseContent,
           enabled: true,
