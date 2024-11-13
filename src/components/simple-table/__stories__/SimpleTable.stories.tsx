@@ -147,11 +147,24 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
 ];
 
 export const Basic = () => (
-  <SimpleTable
-    headers={tableHeaders}
-    items={items}
-    keyExtractor={item => String(item.id)}
-  />
+  <>
+    <Text type="header">With hover</Text>
+    <SimpleTable
+      className="with-hover"
+      headers={tableHeaders}
+      items={items}
+      keyExtractor={item => String(item.id)}
+    />
+    <Divider />
+    <Text type="header">Without hover</Text>
+    <SimpleTable
+      className="no-hover"
+      headers={tableHeaders}
+      items={items}
+      keyExtractor={item => String(item.id)}
+      noHoverBackground
+    />
+  </>
 );
 
 export const Long = () => (
@@ -308,6 +321,130 @@ export const Loading = () => {
         keyExtractor={item => String(item.id)}
         loading={loading}
         loadingItems={items.length}
+        selectable={{
+          anySelected: selectedRowIndexes.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
+      />
+    </>
+  );
+};
+
+export const Bordered = () => {
+  const augmentedHeaders: SimpleTableHeader<DummyData>[] = tableHeaders
+    .filter(Boolean)
+    .map(header => ({
+      ...header,
+      minWidth: header.minWidth || 50,
+      name: null,
+    }));
+  return (
+    <>
+      <Text type="header">With headers</Text>
+      <SimpleTable
+        bordered
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Without headers</Text>
+      <SimpleTable
+        bordered
+        headers={augmentedHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+    </>
+  );
+};
+
+export const Collapsible = () => {
+  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+
+  const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+  const handleCheckboxAllChange = () => {
+    if (selectedRowIndexes.length === items.length) {
+      setSelectedRowIndexes([]);
+    } else {
+      setSelectedRowIndexes(items.map((_, index) => index));
+    }
+  };
+
+  const handleCheckboxRowChange = (
+    value: boolean,
+    item: DummyData,
+    index: number,
+  ) => {
+    if (value) {
+      setSelectedRowIndexes([...selectedRowIndexes, index]);
+    } else {
+      setSelectedRowIndexes(
+        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+      );
+    }
+  };
+  const collapseContent = items.map(item => ({
+    content: (
+      <table style={{ width: '100%' }}>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Vegan</th>
+        </tr>
+        <tr>
+          <td style={{ border: 'none' }}>{item.name}</td>
+          <td style={{ border: 'none' }}>{item.age}</td>
+          <td style={{ border: 'none' }}>{item.vegan}</td>
+        </tr>
+      </table>
+    ),
+    key: String(item.id),
+  }));
+
+  return (
+    <>
+      <Text type="header">Normal</Text>
+      <SimpleTable
+        className="normal-table"
+        collapsible={{
+          collapseContent,
+          enabled: true,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Bordered</Text>
+      <SimpleTable
+        bordered
+        className="bordered-table"
+        collapsible={{
+          collapseContent,
+          enabled: true,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Selectable</Text>
+      <SimpleTable
+        bordered
+        className="selectable-table"
+        collapsible={{
+          collapseContent,
+          enabled: true,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
         selectable={{
           anySelected: selectedRowIndexes.length > 0,
           enabled: true,
