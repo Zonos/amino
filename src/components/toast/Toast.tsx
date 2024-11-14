@@ -112,7 +112,7 @@ export const Toast = ({
       {...baseProps}
       key={toastKey}
     >
-      <Flex alignItems="flex-start" gap={12} justifyContent="space-between">
+      <Flex alignItems="center" gap={12} justifyContent="space-between">
         <Flex gap={12}>
           <div>{intentValues.icon}</div>
           <div>{children}</div>
