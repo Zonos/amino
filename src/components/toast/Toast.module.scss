@@ -17,6 +17,13 @@
   flex: 1;
   line-height: 24px;
 
+  .toastContent {
+    align-self: center;
+    .toastIcon {
+      align-self: flex-start;
+    }
+  }
+
   &.persistentToast {
     cursor: pointer;
 

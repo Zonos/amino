@@ -5,3 +5,5 @@ export declare const aminoToast: string;
 export declare const aminoWarningToast: string;
 export declare const dismissButton: string;
 export declare const persistentToast: string;
+export declare const toastContent: string;
+export declare const toastIcon: string;

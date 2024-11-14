@@ -66,6 +66,21 @@ export const ToastConsumer = () => {
         </Button>
         <Button
           onClick={() =>
+            notify('Short persisting with error', {
+              actions: (
+                <Button outline variant="danger">
+                  Request support
+                </Button>
+              ),
+              intent: 'error',
+              isPersistent: true,
+            })
+          }
+        >
+          Short persisting with error
+        </Button>
+        <Button
+          onClick={() =>
             notify(
               `Long persisting example: Error: Field "userProfl" does not exist
                 on type "Query". Did you mean "userProfile"? [Location: line 3,
