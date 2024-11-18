@@ -23,6 +23,10 @@ export type ToastProps = BaseProps & {
   direction?: Direction;
   /** Dismiss delay (default 6000 ms) */
   duration?: number;
+  /** Pass a unique identifier for the toast (used for dismissing)
+   * @default uuid created in Amino
+   */
+  id?: string;
   intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
   /** If true, toast will be shown in the persistent stack */
   isPersistent?: boolean;
