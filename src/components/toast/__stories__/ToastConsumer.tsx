@@ -12,7 +12,7 @@ import styles from './ToastConsumer.stories.module.scss';
 const useNotify = () => useContext(ToastContext);
 
 export const ToastConsumer = () => {
-  const notify = useNotify();
+  const { dismissToast, notify } = useNotify();
 
   const [message, setMessage] = useState('Your custom message');
   const [duration, setDuration] = useState(6000);
@@ -87,10 +87,15 @@ export const ToastConsumer = () => {
                 column 5].`,
               {
                 actions: (
-                  <Button outline variant="danger">
-                    Request support
+                  <Button
+                    onClick={() => dismissToast('long-persisting')}
+                    outline
+                    variant="danger"
+                  >
+                    External dismiss
                   </Button>
                 ),
+                id: 'long-persisting',
                 intent: 'error',
                 isPersistent: true,
               },

@@ -3,6 +3,7 @@ import {
   createContext,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -24,14 +25,21 @@ export type ToastContextFunctionType = (
   props?: BaseProps,
   location?: { bottom?: string; left?: string },
 ) => void;
+
 type ToastType = {
   isPersistent?: boolean;
   props?: Parameters<ToastContextFunctionType>[1];
   toast: Parameters<ToastContextFunctionType>[0];
   uuid: string;
 };
-export const ToastContext = createContext<ToastContextFunctionType>(
-  (toast, props) => {
+export const ToastContext = createContext<{
+  notify: ToastContextFunctionType;
+  dismissToast: (toastId: string) => void;
+}>({
+  dismissToast: _toastId => {
+    // This function is for the context type definition purpose.
+  },
+  notify: (toast, props) => {
     //  This function is for the context type definition purpose.
     const defaultFunction = () => ({
       props,
@@ -39,7 +47,7 @@ export const ToastContext = createContext<ToastContextFunctionType>(
     });
     defaultFunction();
   },
-);
+});
 
 type Props = {
   children: ReactNode;
@@ -64,7 +72,7 @@ export const ToastContextProvider = ({ children }: Props) => {
         isPersistent: props?.isPersistent,
         props,
         toast,
-        uuid: uuidv4(),
+        uuid: props?.id || uuidv4(),
       };
 
       if (props?.isPersistent) {
@@ -91,13 +99,17 @@ export const ToastContextProvider = ({ children }: Props) => {
     [addToast],
   );
 
-  const dismissPersistentToast = (toastId: string) => {
-    setPersistentToasts(current => current.filter(t => t.uuid !== toastId));
-  };
+  const dismissToast = useCallback(
+    (toastId: string) => {
+      setToasts(current => current.filter(t => t.uuid !== toastId));
+      setPersistentToasts(current => current.filter(t => t.uuid !== toastId));
+    },
+    [setPersistentToasts],
+  );
 
   const dismissClicked = (e: React.MouseEvent, toastId: string) => {
     e.stopPropagation();
-    dismissPersistentToast(toastId);
+    dismissToast(toastId);
   };
 
   const clearAllClicked = () => {
@@ -123,8 +135,13 @@ export const ToastContextProvider = ({ children }: Props) => {
     }
   }, [firstToast]); // Only re-measure when first toast changes
 
+  const contextValue = useMemo(
+    () => ({ dismissToast, notify: setupToasts }),
+    [dismissToast, setupToasts],
+  );
+
   return (
-    <ToastContext.Provider value={setupToasts}>
+    <ToastContext.Provider value={contextValue}>
       {children}
       <div
         className={styles.toastContainer}

@@ -30,7 +30,7 @@ export default FileUploadMeta;
 const useNotify = () => useContext(ToastContext);
 
 export const FileUpload: StoryFn<typeof FileUploadComponent> = props => {
-  const notify = useNotify();
+  const { notify } = useNotify();
 
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState(false);

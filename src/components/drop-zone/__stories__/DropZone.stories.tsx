@@ -30,7 +30,7 @@ export default DropZoneMeta;
 const useNotify = () => useContext(ToastContext);
 
 export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
-  const notify = useNotify();
+  const { notify } = useNotify();
 
   const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState(false);
