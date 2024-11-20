@@ -34,8 +34,12 @@ type ToastType = {
 };
 export const ToastContext = createContext<{
   notify: ToastContextFunctionType;
+  dismissAllToasts: () => void;
   dismissToast: (toastId: string) => void;
 }>({
+  dismissAllToasts: () => {
+    // This function is for the context type definition purpose.
+  },
   dismissToast: _toastId => {
     // This function is for the context type definition purpose.
   },
@@ -112,10 +116,11 @@ export const ToastContextProvider = ({ children }: Props) => {
     dismissToast(toastId);
   };
 
-  const clearAllClicked = () => {
+  const dismissAllToasts = useCallback(() => {
     setPersistentToasts([]);
+    setToasts([]);
     setExpandedToasts(false);
-  };
+  }, [setPersistentToasts, setToasts, setExpandedToasts]);
 
   const toggleExpanded = (e: React.MouseEvent | React.KeyboardEvent) => {
     const actionsElement = e.currentTarget.querySelector('.toast-actions');
@@ -136,8 +141,8 @@ export const ToastContextProvider = ({ children }: Props) => {
   }, [firstToast]); // Only re-measure when first toast changes
 
   const contextValue = useMemo(
-    () => ({ dismissToast, notify: setupToasts }),
-    [dismissToast, setupToasts],
+    () => ({ dismissAllToasts, dismissToast, notify: setupToasts }),
+    [dismissAllToasts, dismissToast, setupToasts],
   );
 
   return (
@@ -188,7 +193,7 @@ export const ToastContextProvider = ({ children }: Props) => {
             <Button
               className={styles.clearAllButton}
               icon={<RemoveIcon />}
-              onClick={clearAllClicked}
+              onClick={dismissAllToasts}
               variant="text"
             >
               Clear all

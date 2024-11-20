@@ -1,6 +1,9 @@
 import { useContext, useState } from 'react';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { Button } from 'src/components/button/Button';
+import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
@@ -12,7 +15,7 @@ import styles from './ToastConsumer.stories.module.scss';
 const useNotify = () => useContext(ToastContext);
 
 export const ToastConsumer = () => {
-  const { dismissToast, notify } = useNotify();
+  const { dismissAllToasts, dismissToast, notify } = useNotify();
 
   const [message, setMessage] = useState('Your custom message');
   const [duration, setDuration] = useState(6000);
@@ -80,27 +83,34 @@ export const ToastConsumer = () => {
           Short persisting with error
         </Button>
         <Button
-          onClick={() =>
+          onClick={() => {
+            const uniqueId = uuidv4();
             notify(
               `Long persisting example: Error: Field "userProfl" does not exist
                 on type "Query". Did you mean "userProfile"? [Location: line 3,
                 column 5].`,
               {
                 actions: (
-                  <Button
-                    onClick={() => dismissToast('long-persisting')}
-                    outline
-                    variant="danger"
-                  >
-                    External dismiss
-                  </Button>
+                  <Flex flexDirection="column">
+                    <Button
+                      onClick={() => dismissToast(uniqueId)}
+                      outline
+                      variant="danger"
+                    >
+                      External dismiss
+                    </Button>
+
+                    <Button onClick={dismissAllToasts} outline variant="danger">
+                      Dismiss all
+                    </Button>
+                  </Flex>
                 ),
-                id: 'long-persisting',
+                id: uniqueId,
                 intent: 'error',
                 isPersistent: true,
               },
-            )
-          }
+            );
+          }}
         >
           Long persisting
         </Button>
