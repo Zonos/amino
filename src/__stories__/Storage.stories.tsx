@@ -65,7 +65,7 @@ export const Storage = () => {
         </select>
       </div>
       <div>
-        Raw local storage value: <strong>{rawValue}</strong>
+        Raw storage value: <strong>{rawValue}</strong>
       </div>
       <div>
         Parsed Value: <pre>{JSON.stringify(value, null, 2)}</pre>
