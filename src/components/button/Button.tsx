@@ -3,7 +3,10 @@ import {
   type HTMLAttributes,
   type MouseEventHandler,
   type ReactNode,
+  useEffect,
+  useMemo,
   useRef,
+  useState,
 } from 'react';
 
 import clsx from 'clsx';
@@ -21,6 +24,7 @@ import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
 import type { Variant } from 'src/types/Variant';
 import { getAminoColor } from 'src/utils/getAminoColor';
+import { getTestId } from 'src/utils/getTestId';
 
 import styles from './Button.module.scss';
 
@@ -49,6 +53,7 @@ type ButtonBase = BaseProps & {
   /** Color for the spinner when in a loading state */
   spinnerColor?: SpinnerProps['color'];
   tabIndex?: number;
+  testId?: string;
   themeOverride?: Theme;
   type?: 'button' | 'reset' | 'submit';
   /** @default 'standard' */
@@ -96,12 +101,30 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   spinnerColor,
   style,
   tag = DEFAULT_TAG,
+  testId,
   themeOverride,
   type = 'button',
   variant = 'standard',
   ...props
 }: ButtonProps<T>) {
+  const buttonRef = useRef<MyHtmlElement<T>>(null);
   const Tag: GroupTag = tag;
+  const [buttonText, setButtonText] = useState('');
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      setButtonText(buttonRef.current.textContent || '');
+    }
+  }, [buttonRef.current?.textContent]);
+
+  const defaultTestId = useMemo(
+    () =>
+      getTestId({
+        componentName: 'button',
+        name: buttonText,
+      }),
+    [buttonText],
+  );
 
   const getSpinnerSize = () => {
     switch (size) {
@@ -318,6 +341,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   return (
     <Tag
+      ref={buttonRef as unknown as GroupTag}
+      data-testid={testId || defaultTestId}
       data-theme={themeOverride}
       style={{
         ...style,
