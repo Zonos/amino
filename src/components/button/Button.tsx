@@ -3,7 +3,7 @@ import {
   type HTMLAttributes,
   type MouseEventHandler,
   type ReactNode,
-  useEffect,
+  useCallback,
   useMemo,
   useRef,
   useState,
@@ -107,15 +107,12 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   variant = 'standard',
   ...props
 }: ButtonProps<T>) {
-  const buttonRef = useRef<MyHtmlElement<T>>(null);
   const Tag: GroupTag = tag;
   const [buttonText, setButtonText] = useState('');
 
-  useEffect(() => {
-    if (buttonRef.current) {
-      setButtonText(buttonRef.current.textContent || '');
-    }
-  }, [buttonRef.current?.textContent]);
+  const handleButtonText = useCallback((node: Element | null) => {
+    setButtonText(node?.textContent || '');
+  }, []);
 
   const defaultTestId = useMemo(
     () =>
@@ -341,7 +338,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   return (
     <Tag
-      ref={buttonRef as unknown as GroupTag}
+      ref={handleButtonText}
       data-testid={testId || defaultTestId}
       data-theme={themeOverride}
       style={{
