@@ -1,9 +1,8 @@
-import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 
 import clsx from 'clsx';
 
 import type { BaseProps } from 'src/types/BaseProps';
-import { getTestId } from 'src/utils/getTestId';
 import {
   type UseDropdownParams,
   useDropdown,
@@ -25,8 +24,8 @@ export type MenuButtonProps = BaseProps & {
    * @default false
    */
   noCloseOnSelect?: boolean;
-  testId?: string;
 };
+
 export const MenuButton = ({
   action,
   children,
@@ -35,27 +34,7 @@ export const MenuButton = ({
   noCloseOnMouseLeave = false,
   noCloseOnSelect = false,
   style,
-  testId,
 }: MenuButtonProps) => {
-  const actionRef = useRef<HTMLDivElement>(null);
-
-  const [actionText, setActionText] = useState('');
-
-  useEffect(() => {
-    if (actionRef.current) {
-      setActionText(actionRef.current.textContent || '');
-    }
-  }, [actionRef.current?.textContent]);
-
-  const defaultTestId = useMemo(
-    () =>
-      getTestId({
-        componentName: 'button',
-        name: actionText,
-      }),
-    [actionText],
-  );
-
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
     useDropdown<HTMLDivElement, HTMLDivElement>({
       offsetCrossAxis: 0,
@@ -102,9 +81,7 @@ export const MenuButton = ({
         role="button"
         tabIndex={0}
       >
-        <div ref={actionRef} data-testid={testId || defaultTestId}>
-          {action}
-        </div>
+        {action}
       </div>
       <div
         ref={refs.setFloating}
