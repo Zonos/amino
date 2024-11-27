@@ -98,7 +98,6 @@ import './components/table/TableRowCollapse';
 import './components/tabs/Tabs';
 import './components/tag/Tag';
 import './components/text-avatar/TextAvatar';
-import './components/text/LegacyText';
 import './components/text/Text';
 import './components/textarea/Textarea';
 import './components/theme-select/ThemeSelect';
