@@ -22,6 +22,7 @@ export type FilterApplyCallback = (
 ) => void;
 
 type UseFilterProps = {
+  initialFilterText?: string;
   isActive: boolean;
   onApply: FilterApplyCallback;
   /**
@@ -41,6 +42,7 @@ export type FilterProps = BaseFilterProps & UseFilterProps;
 export const useFilterWrapper = ({
   className,
   dropdownTitle,
+  initialFilterText = 'Filter',
   isActive,
   label,
   onApply,
@@ -51,7 +53,7 @@ export const useFilterWrapper = ({
   style,
 }: FilterProps) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
-  const [filterText, setFilterText] = useState('Filter');
+  const [filterText, setFilterText] = useState(initialFilterText);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 

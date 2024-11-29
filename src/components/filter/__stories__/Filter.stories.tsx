@@ -375,3 +375,31 @@ export const SelectWithReducer = () => {
     </>
   );
 };
+
+/**
+ * initialize the Filter with a value
+ * Properly display the initial value
+ */
+export const SelectWithInitialValue = () => {
+  const [value, setValue] = useStateUrl<FruitOption | null>({
+    initialValue: 'ORANGE',
+    name: 'filterSelect',
+    schema: z.enum(fruitOptions).nullable(),
+  });
+
+  const selectedOption = options.find(o => o.value === value) || null;
+
+  return (
+    <>
+      <pre>{window.location.search}</pre>
+      <pre>{JSON.stringify({ selectedOption }, null, 2)}</pre>
+      <FilterSelect
+        dropdownTitle="Filter by option"
+        label="Select filter"
+        onChange={setValue}
+        options={options}
+        value={value}
+      />
+    </>
+  );
+};
