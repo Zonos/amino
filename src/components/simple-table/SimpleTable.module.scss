@@ -62,6 +62,7 @@ $cellMinWidth: var(--amino-cell-min-width);
         padding: 12px;
         white-space: nowrap;
         border-bottom: theme.$amino-border-subtle;
+        z-index: 1;
 
         &.noPadding {
           padding: 0;
@@ -98,6 +99,14 @@ $cellMinWidth: var(--amino-cell-min-width);
           width: 100%;
           padding: 12px;
           white-space: nowrap;
+
+          &:global(.tooltip-wrapper) {
+            padding: 12px 0;
+
+            > a {
+              padding: 12px;
+            }
+          }
 
           &.noPadding {
             padding: 0;

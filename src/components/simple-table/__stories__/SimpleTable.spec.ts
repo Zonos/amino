@@ -2,6 +2,7 @@ import test, { type Page, expect } from '@playwright/test';
 
 test.describe('SimpleTable', () => {
   let framePage: Page;
+
   test.beforeEach(async ({ page }) => {
     const testTitle = test.info().title;
     page.goto('/');
@@ -179,6 +180,44 @@ test.describe('SimpleTable', () => {
           .first(),
       ).toBeVisible();
       await expect(framePage.locator('thead').nth(1)).toBeVisible();
+    });
+  });
+
+  test.describe('sticky header z-index', () => {
+    test('Long', async () => {
+      // Set z-index to 1
+      const cell = framePage.locator(
+        'tr:nth-child(1) > td:nth-child(4) > div > span',
+      );
+      await cell.evaluate(el => {
+        // eslint-disable-next-line no-param-reassign
+        el.style.zIndex = '1';
+        // eslint-disable-next-line no-param-reassign
+        el.style.position = 'relative';
+      });
+
+      // Scroll the page a bit
+      await framePage.evaluate(() => {
+        document.querySelector('#storybook-root > div')?.scrollBy(0, 50);
+      });
+
+      // Expect to be not visible
+      await expect(cell).not.toBeVisible();
+    });
+  });
+
+  test.describe('text truncation', () => {
+    test('With Link', async () => {
+      await framePage
+        .locator('tr:nth-child(1) > td:nth-child(6) > .tooltip-wrapper')
+        // Top left click
+        .click({
+          position: { x: 1, y: 1 },
+          timeout: 5000,
+        });
+
+      // Expect link to be clicked (https://letmegooglethat.com/?q=John)
+      await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
 });
