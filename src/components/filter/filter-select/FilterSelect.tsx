@@ -93,6 +93,7 @@ export const FilterSelect = <
 
   const { renderWrapper } = useFilterWrapper({
     ...props,
+    initialFilterText: value ? `is ${value}` : undefined,
     isActive: !!value,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,
