@@ -184,7 +184,7 @@ test.describe('SimpleTable', () => {
   });
 
   test.describe('sticky header z-index', () => {
-    test.only('Long', async () => {
+    test('Long', async () => {
       // Set z-index to 1
       const cell = framePage.locator(
         'tr:nth-child(1) > td:nth-child(4) > div > span',
@@ -220,7 +220,7 @@ test.describe('SimpleTable', () => {
   });
 
   test.describe('text truncation', () => {
-    test.only('With Link', async () => {
+    test('With Link', async () => {
       await framePage
         .locator('tr:nth-child(1) > td:nth-child(6) > .tooltip-wrapper')
         // Top left click
