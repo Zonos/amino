@@ -146,6 +146,12 @@ $cellMinWidth: var(--amino-cell-min-width);
   }
 
   &.collapsible {
+    tr > td:last-child {
+      width: 40px;
+      > div {
+        padding: 0;
+      }
+    }
     &.bordered {
       tr:nth-last-child(2).collapsed td:first-child {
         border-bottom-left-radius: 12px;
