@@ -6,6 +6,9 @@ import { defineConfig, devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
+// eslint-disable-next-line no-console
+console.info('PLAYWRIGHT_TEST_BASE_URL', process.env.PLAYWRIGHT_TEST_BASE_URL);
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -89,7 +92,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-    actionTimeout: 0,
+    actionTimeout: 20000,
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || 'https://localhost:6007',
 

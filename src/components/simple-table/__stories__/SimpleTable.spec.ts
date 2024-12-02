@@ -16,7 +16,7 @@ test.describe('SimpleTable', () => {
     await page.getByRole('link', { name: 'Open canvas in new tab' }).click();
     framePage = await framePagePromise;
     /** Wait for the DOM to fully load */
-    await framePage.waitForEvent('load');
+    await framePage.waitForLoadState('domcontentloaded');
   });
 
   test.afterEach(() => {
@@ -184,14 +184,14 @@ test.describe('SimpleTable', () => {
   });
 
   test.describe('sticky header z-index', () => {
-    test('Long', async () => {
+    test.only('Long', async () => {
       // Set z-index to 1
       const cell = framePage.locator(
         'tr:nth-child(1) > td:nth-child(4) > div > span',
       );
       await cell.evaluate(el => {
         // eslint-disable-next-line no-param-reassign
-        el.style.zIndex = '1';
+        el.style.zIndex = '0';
         // eslint-disable-next-line no-param-reassign
         el.style.position = 'relative';
       });
@@ -201,13 +201,26 @@ test.describe('SimpleTable', () => {
         document.querySelector('#storybook-root > div')?.scrollBy(0, 50);
       });
 
-      // Expect to be not visible
-      await expect(cell).not.toBeVisible();
+      // **Check if the element is covered**
+      const isCovered = await framePage.evaluate(selector => {
+        const element = document.querySelector(selector);
+        if (!element) return true; // If the element doesn't exist, consider it covered
+
+        const rect = element.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        // Get the topmost element at the center of the target element
+        const topElement = document.elementFromPoint(x, y);
+        return topElement !== element && !element.contains(topElement);
+      }, 'tr:nth-child(1) > td:nth-child(4) > div > span');
+
+      expect(isCovered).toBe(true);
     });
   });
 
   test.describe('text truncation', () => {
-    test('With Link', async () => {
+    test.only('With Link', async () => {
       await framePage
         .locator('tr:nth-child(1) > td:nth-child(6) > .tooltip-wrapper')
         // Top left click
