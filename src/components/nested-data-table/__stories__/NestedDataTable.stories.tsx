@@ -2,7 +2,7 @@ import { type ComponentProps, useCallback } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Loading } from 'src/components/graph-matrix/_LoadingIcon';
+import { Loading } from 'src/components/nested-data-table/__stories__/_LoadingIcon';
 import {
   type ColumnCell,
   NestedDataTable as NestedDataTableComponent,
