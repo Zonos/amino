@@ -225,11 +225,12 @@ test.describe('SimpleTable', () => {
         .locator('tr:nth-child(1) > td:nth-child(6) > .tooltip-wrapper')
         // Top left click
         .click({
-          position: { x: 1, y: 1 },
+          position: { x: 5, y: 5 },
           timeout: 5000,
         });
 
       // Expect link to be clicked (https://letmegooglethat.com/?q=John)
+      await framePage.waitForLoadState('domcontentloaded');
       await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
