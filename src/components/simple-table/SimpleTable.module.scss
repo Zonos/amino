@@ -62,6 +62,7 @@ $cellMinWidth: var(--amino-cell-min-width);
         padding: 12px;
         white-space: nowrap;
         border-bottom: theme.$amino-border-subtle;
+        z-index: 1;
 
         &.noPadding {
           padding: 0;
@@ -98,6 +99,14 @@ $cellMinWidth: var(--amino-cell-min-width);
           width: 100%;
           padding: 12px;
           white-space: nowrap;
+
+          &:global(.tooltip-wrapper) {
+            padding: 12px 0;
+
+            > a {
+              padding: 12px;
+            }
+          }
 
           &.noPadding {
             padding: 0;
@@ -137,6 +146,12 @@ $cellMinWidth: var(--amino-cell-min-width);
   }
 
   &.collapsible {
+    tr > td:last-child {
+      width: 40px;
+      > div {
+        padding: 0;
+      }
+    }
     &.bordered {
       tr:nth-last-child(2).collapsed td:first-child {
         border-bottom-left-radius: 12px;

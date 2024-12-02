@@ -2,6 +2,7 @@ import test, { type Page, expect } from '@playwright/test';
 
 test.describe('SimpleTable', () => {
   let framePage: Page;
+
   test.beforeEach(async ({ page }) => {
     const testTitle = test.info().title;
     page.goto('/');
@@ -15,7 +16,7 @@ test.describe('SimpleTable', () => {
     await page.getByRole('link', { name: 'Open canvas in new tab' }).click();
     framePage = await framePagePromise;
     /** Wait for the DOM to fully load */
-    await framePage.waitForEvent('load');
+    await framePage.waitForLoadState('domcontentloaded');
   });
 
   test.afterEach(() => {
@@ -179,6 +180,58 @@ test.describe('SimpleTable', () => {
           .first(),
       ).toBeVisible();
       await expect(framePage.locator('thead').nth(1)).toBeVisible();
+    });
+  });
+
+  test.describe('sticky header z-index', () => {
+    test('Long', async () => {
+      // Set z-index to 1
+      const cell = framePage.locator(
+        'tr:nth-child(1) > td:nth-child(4) > div > span',
+      );
+      await cell.evaluate(el => {
+        // eslint-disable-next-line no-param-reassign
+        el.style.zIndex = '0';
+        // eslint-disable-next-line no-param-reassign
+        el.style.position = 'relative';
+      });
+
+      // Scroll the page a bit
+      await framePage.evaluate(() => {
+        document.querySelector('#storybook-root > div')?.scrollBy(0, 50);
+      });
+
+      // **Check if the element is covered**
+      const isCovered = await framePage.evaluate(selector => {
+        const element = document.querySelector(selector);
+        if (!element) return true; // If the element doesn't exist, consider it covered
+
+        const rect = element.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        // Get the topmost element at the center of the target element
+        const topElement = document.elementFromPoint(x, y);
+        return topElement !== element && !element.contains(topElement);
+      }, 'tr:nth-child(1) > td:nth-child(4) > div > span');
+
+      expect(isCovered).toBe(true);
+    });
+  });
+
+  test.describe('text truncation', () => {
+    test('With Link', async () => {
+      await framePage
+        .locator('tr:nth-child(1) > td:nth-child(6) > .tooltip-wrapper')
+        // Top left click
+        .click({
+          position: { x: 5, y: 5 },
+          timeout: 5000,
+        });
+
+      // Expect link to be clicked (https://letmegooglethat.com/?q=John)
+      await framePage.waitForLoadState('domcontentloaded');
+      await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
 });
