@@ -145,6 +145,8 @@ export const ToastContextProvider = ({ children }: Props) => {
     [dismissAllToasts, dismissToast, setupToasts],
   );
 
+  const hasPersistentToasts = persistentToasts.length > 0;
+
   return (
     <ToastContext.Provider value={contextValue}>
       {children}
@@ -154,14 +156,17 @@ export const ToastContextProvider = ({ children }: Props) => {
           '--amino-toast-context-bottom': toastLocation.bottom || '40px',
           '--amino-toast-context-left': toastLocation.left || 'auto',
           '--amino-toast-persistent-height':
-            persistentToasts.length > 0 && !expandedToasts
+            hasPersistentToasts && !expandedToasts
               ? `${firstToastHeight + 40}px`
               : 'unset',
         }}
       >
         {/* Non-persistent toasts */}
         <div
-          className={clsx(styles.toastsWrapper, styles.regularToastsWrapper)}
+          className={clsx(
+            styles.toastsWrapper,
+            hasPersistentToasts && styles.toastWrapperAdjust,
+          )}
         >
           <AnimatePresence>
             {toasts.map(({ props, toast, uuid }) => {
