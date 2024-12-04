@@ -356,7 +356,7 @@ export const SimpleTable = <T extends object>({
             className={clsx(
               !noHoverBackground && styles.withHover,
               collapsed && styles.collapsed,
-              collapseContent && styles.hasContent,
+              rowCollapseContent && styles.hasContent,
             )}
             collapsed={collapsed}
             onToggleCollapse={() => {
