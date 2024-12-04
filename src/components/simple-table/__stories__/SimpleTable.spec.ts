@@ -94,7 +94,11 @@ test.describe('SimpleTable', () => {
         .first()
         .click();
       await expect(
-        framePage.locator('table > tr:nth-child(2) > td:nth-child(2)').first(),
+        framePage
+          .locator(
+            'div.normal-table > table > tbody > tr:nth-child(2) > td table > thead > tr ',
+          )
+          .first(),
       ).toBeVisible();
       await framePage
         .locator('tr:nth-child(7) > td:nth-child(4) > .tooltip-wrapper')
@@ -103,7 +107,7 @@ test.describe('SimpleTable', () => {
       await expect(
         framePage
           .locator(
-            'tr:nth-child(8) .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > tr:nth-child(2) > td:nth-child(2)',
+            'tr:nth-child(8) .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > thead > tr',
           )
           .first(),
       ).toBeVisible();
@@ -115,7 +119,7 @@ test.describe('SimpleTable', () => {
         .click();
       await expect(
         framePage.locator(
-          '.bordered-table tbody > tr:nth-child(2) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > tr:nth-child(2) > td:nth-child(2)',
+          '.bordered-table tbody > tr:nth-child(2) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > thead > tr',
         ),
       ).toBeVisible();
 
@@ -126,7 +130,7 @@ test.describe('SimpleTable', () => {
         .click();
       await expect(
         framePage.locator(
-          '.bordered-table tbody > tr:nth-child(6) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > tr:nth-child(2) > td:nth-child(2)',
+          '.bordered-table tbody > tr:nth-child(6) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > thead > tr',
         ),
       ).toBeVisible();
 
@@ -136,7 +140,7 @@ test.describe('SimpleTable', () => {
         .click();
       await expect(
         framePage.locator(
-          '.selectable-table tbody > tr:nth-child(12) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > tr:nth-child(2) > td:nth-child(2)',
+          '.selectable-table tbody > tr:nth-child(12) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > thead > tr',
         ),
       ).toBeVisible();
       await framePage
@@ -146,7 +150,7 @@ test.describe('SimpleTable', () => {
         .click();
       await expect(
         framePage.locator(
-          '.selectable-table tbody > tr:nth-child(4) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > tr:nth-child(2) > td:nth-child(2)',
+          '.selectable-table tbody > tr:nth-child(4) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > thead > tr',
         ),
       ).toBeVisible();
       await framePage
@@ -165,7 +169,7 @@ test.describe('SimpleTable', () => {
         .click();
       await expect(
         framePage.locator(
-          '.selectable-table tbody > tr:nth-child(8) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > tr:nth-child(2) > td:nth-child(2)',
+          '.selectable-table tbody > tr:nth-child(8) .MuiCollapse-root > .MuiCollapse-wrapper > .MuiCollapse-wrapperInner > table > thead > tr',
         ),
       ).toBeVisible();
     });
@@ -179,6 +183,47 @@ test.describe('SimpleTable', () => {
           .first(),
       ).toBeVisible();
       await expect(framePage.locator('thead').nth(1)).toBeVisible();
+    });
+  });
+
+  test.describe('Ensure onRowClick works with Collapsible', () => {
+    test('On Row Click', async () => {
+      framePage.once('dialog', dialog => {
+        expect(dialog.message()).toBe('Clicked John');
+        dialog.dismiss().catch(() => {});
+      });
+      await framePage.locator('.tooltip-wrapper').first().click();
+      framePage.once('dialog', dialog => {
+        expect(dialog.message()).toBe('Clicked John');
+        dialog.dismiss().catch(() => {});
+      });
+      await framePage
+        .locator('.collapsible tbody > tr > td:nth-child(4) > .tooltip-wrapper')
+        .first()
+        .click();
+      await expect(
+        framePage
+          .getByRole('cell', { name: 'Name Age Vegan John' })
+          ?.locator('div')
+          ?.nth(2),
+      ).toBeVisible();
+    });
+  });
+
+  test.describe('Ensure Collapse chevron is fixed width', () => {
+    test('Collapsible', async () => {
+      await expect(
+        framePage.locator('.normal-table tr > td:last-child').first(),
+      ).toHaveCSS('width', '48px');
+
+      await expect(
+        framePage.locator('.bordered-table tr > td:last-child').first(),
+        // bordered will have 1px border on the right
+      ).toHaveCSS('width', '49px');
+
+      await expect(
+        framePage.locator('.selectable-table tr > td:last-child').first(),
+      ).toHaveCSS('width', '49px');
     });
   });
 });
