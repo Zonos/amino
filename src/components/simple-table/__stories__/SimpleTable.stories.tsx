@@ -168,173 +168,82 @@ export const Basic: StoryObj = {
         noHoverBackground
       />
     </>
-  )
-}
-
-export const Long = () => (
-  <SimpleTable
-    headers={tableHeaders}
-    items={items.flatMap(item => [
-      item,
-      {
-        ...item,
-        id: item.id + 100,
-        name: `${item.name} 2`,
-      },
-      {
-        ...item,
-        id: item.id + 200,
-        name: `${item.name} 3`,
-      },
-      {
-        ...item,
-        id: item.id + 300,
-        name: `${item.name} 4`,
-      },
-      {
-        ...item,
-        id: item.id + 400,
-        name: `${item.name} 5`,
-      },
-      {
-        ...item,
-        id: item.id + 500,
-        name: `${item.name} 6`,
-      },
-    ])}
-    keyExtractor={item => String(item.id)}
-  />
-);
-
-export const Selectable: StoryFn<SimpleTableProps<object>> = ({ loading }) => {
-  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
-
-  const checkboxAllValue = selectedRowIndexes.length === items.length;
-
-  const handleCheckboxAllChange = () => {
-    if (selectedRowIndexes.length === items.length) {
-      setSelectedRowIndexes([]);
-    } else {
-      setSelectedRowIndexes(items.map((_, index) => index));
-    }
-  };
-
-  const handleCheckboxRowChange = (
-    value: boolean,
-    item: DummyData,
-    index: number,
-  ) => {
-    if (value) {
-      setSelectedRowIndexes([...selectedRowIndexes, index]);
-    } else {
-      setSelectedRowIndexes(
-        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
-      );
-    }
-  };
-
-  return (
-    <SimpleTable
-      headers={tableHeaders}
-      items={items}
-      keyExtractor={item => String(item.id)}
-      loading={loading}
-      selectable={{
-        anySelected: selectedRowIndexes.length > 0,
-        enabled: true,
-        headerCheckboxValue: checkboxAllValue,
-        isRowChecked: (_, index) => selectedRowIndexes.includes(index),
-        onHeaderCheckboxChange: handleCheckboxAllChange,
-        onRowCheckboxChange: handleCheckboxRowChange,
-      }}
-    />
-  );
+  ),
 };
 
-const link = 'https://letmegooglethat.com';
-
-export const WithLink = () => {
-  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
-
-  const checkboxAllValue = selectedRowIndexes.length === items.length;
-
-  const handleCheckboxAllChange = () => {
-    if (selectedRowIndexes.length === items.length) {
-      setSelectedRowIndexes([]);
-    } else {
-      setSelectedRowIndexes(items.map((_, index) => index));
-    }
-  };
-
-  const handleCheckboxRowChange = (
-    value: boolean,
-    item: DummyData,
-    index: number,
-  ) => {
-    if (value) {
-      setSelectedRowIndexes([...selectedRowIndexes, index]);
-    } else {
-      setSelectedRowIndexes(
-        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
-      );
-    }
-  };
-
-  return (
+export const Long: StoryObj = {
+  tags: ['tested'],
+  render: () => (
     <SimpleTable
-      getRowLink={item => `${link}/?q=${item.name}`}
       headers={tableHeaders}
-      items={items}
+      items={items.flatMap(item => [
+        item,
+        {
+          ...item,
+          id: item.id + 100,
+          name: `${item.name} 2`,
+        },
+        {
+          ...item,
+          id: item.id + 200,
+          name: `${item.name} 3`,
+        },
+        {
+          ...item,
+          id: item.id + 300,
+          name: `${item.name} 4`,
+        },
+        {
+          ...item,
+          id: item.id + 400,
+          name: `${item.name} 5`,
+        },
+        {
+          ...item,
+          id: item.id + 500,
+          name: `${item.name} 6`,
+        },
+      ])}
       keyExtractor={item => String(item.id)}
-      selectable={{
-        anySelected: selectedRowIndexes.length > 0,
-        enabled: true,
-        headerCheckboxValue: checkboxAllValue,
-        isRowChecked: (_, index) => selectedRowIndexes.includes(index),
-        onHeaderCheckboxChange: handleCheckboxAllChange,
-        onRowCheckboxChange: handleCheckboxRowChange,
-      }}
     />
-  );
+  ),
 };
 
-export const Loading = () => {
-  const [loading, setLoading] = useState(true);
-  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+export const Selectable: StoryObj<SimpleTableProps<object>> = {
+  tags: ['tested'],
+  render: ({ loading }) => {
+    const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
-  const checkboxAllValue = selectedRowIndexes.length === items.length;
+    const checkboxAllValue = selectedRowIndexes.length === items.length;
 
-  const handleCheckboxAllChange = () => {
-    if (selectedRowIndexes.length === items.length) {
-      setSelectedRowIndexes([]);
-    } else {
-      setSelectedRowIndexes(items.map((_, index) => index));
-    }
-  };
+    const handleCheckboxAllChange = () => {
+      if (selectedRowIndexes.length === items.length) {
+        setSelectedRowIndexes([]);
+      } else {
+        setSelectedRowIndexes(items.map((_, index) => index));
+      }
+    };
 
-  const handleCheckboxRowChange = (
-    value: boolean,
-    item: DummyData,
-    index: number,
-  ) => {
-    if (value) {
-      setSelectedRowIndexes([...selectedRowIndexes, index]);
-    } else {
-      setSelectedRowIndexes(
-        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
-      );
-    }
-  };
+    const handleCheckboxRowChange = (
+      value: boolean,
+      item: DummyData,
+      index: number,
+    ) => {
+      if (value) {
+        setSelectedRowIndexes([...selectedRowIndexes, index]);
+      } else {
+        setSelectedRowIndexes(
+          selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+        );
+      }
+    };
 
-  return (
-    <>
-      <Checkbox checked={loading} label="Loading" onChange={setLoading} />
+    return (
       <SimpleTable
         headers={tableHeaders}
         items={items}
         keyExtractor={item => String(item.id)}
         loading={loading}
-        loadingItems={items.length}
         selectable={{
           anySelected: selectedRowIndexes.length > 0,
           enabled: true,
@@ -344,377 +253,494 @@ export const Loading = () => {
           onRowCheckboxChange: handleCheckboxRowChange,
         }}
       />
-    </>
-  );
-};
-
-export const Bordered = () => {
-  const augmentedHeaders: SimpleTableHeader<DummyData>[] = tableHeaders
-    .filter(Boolean)
-    .map(header => ({
-      ...header,
-      minWidth: header.minWidth || 50,
-      name: null,
-    }));
-  return (
-    <>
-      <Text type="header">With headers</Text>
-      <SimpleTable
-        bordered
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-      />
-      <Divider />
-      <Text type="header">Without headers</Text>
-      <SimpleTable
-        bordered
-        headers={augmentedHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-      />
-    </>
-  );
-};
-
-export const Collapsible = () => {
-  const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
-  const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
-  const toggleItem = (id: string) =>
-    setExpandedItemKeys(
-      expandedItemKeys.includes(id)
-        ? expandedItemKeys.filter(x => x !== id)
-        : expandedItemKeys.concat(id),
     );
-
-  const checkboxAllValue = selectedRowIndexes.length === items.length;
-
-  const handleCheckboxAllChange = () => {
-    if (selectedRowIndexes.length === items.length) {
-      setSelectedRowIndexes([]);
-    } else {
-      setSelectedRowIndexes(items.map((_, index) => index));
-    }
-  };
-
-  const handleCheckboxRowChange = (
-    value: boolean,
-    item: DummyData,
-    index: number,
-  ) => {
-    if (value) {
-      setSelectedRowIndexes([...selectedRowIndexes, index]);
-    } else {
-      setSelectedRowIndexes(
-        selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
-      );
-    }
-  };
-  const collapseContent = items.map(item => ({
-    content: (
-      <table style={{ width: '100%' }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Vegan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style={{ border: 'none' }}>{item.name}</td>
-            <td style={{ border: 'none' }}>{item.age}</td>
-            <td style={{ border: 'none' }}>{item.vegan}</td>
-          </tr>
-        </tbody>
-      </table>
-    ),
-    key: String(item.id),
-  }));
-
-  const adjustedCollapseContent = collapseContent.filter(
-    (_, index) => index !== 3,
-  );
-
-  return (
-    <>
-      <Text type="header">Normal</Text>
-      <SimpleTable
-        className="normal-table"
-        collapsible={{
-          collapseContent,
-          enabled: true,
-          expandedItemKeys,
-          toggleItem,
-        }}
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-      />
-      <Divider />
-      <Text type="header">Bordered</Text>
-      <SimpleTable
-        bordered
-        className="bordered-table"
-        collapsible={{
-          collapseContent: adjustedCollapseContent,
-          enabled: true,
-          expandedItemKeys,
-          toggleItem,
-        }}
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-      />
-      <Divider />
-      <Text type="header">Selectable</Text>
-      <SimpleTable
-        bordered
-        className="selectable-table"
-        collapsible={{
-          collapseContent,
-          enabled: true,
-          expandedItemKeys,
-          toggleItem,
-        }}
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-        selectable={{
-          anySelected: selectedRowIndexes.length > 0,
-          enabled: true,
-          headerCheckboxValue: checkboxAllValue,
-          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
-          onHeaderCheckboxChange: handleCheckboxAllChange,
-          onRowCheckboxChange: handleCheckboxRowChange,
-        }}
-      />
-    </>
-  );
+  },
 };
 
-export const Custom = () => {
-  const [shouldTruncate, setShouldTruncate] = useState(true);
-  const [viewOneRow, setViewOneRow] = useState(false);
+const link = 'https://letmegooglethat.com';
 
-  type AugmentedDummyData = DummyData & {
-    countryCode: Flag;
-    hoverField: null;
-    truncateText?: string;
-  };
+export const WithLink: StoryObj = {
+  tags: ['tested'],
+  render: () => {
+    const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
-  const augmentedItems: AugmentedDummyData[] = items
-    .flatMap(item => [
-      {
-        ...item,
-        countryCode: 'HK' as Flag,
-      },
-      {
-        ...item,
-        countryCode: 'US' as Flag,
-        id: item.id + 100,
-        name: `${item.name} 2`,
-      },
-      {
-        ...item,
-        countryCode: 'CA' as Flag,
-        id: item.id + 200,
-        name: `${item.name} 3`,
-      },
-      {
-        ...item,
-        countryCode: 'GB' as Flag,
-        id: item.id + 300,
-        name: `${item.name} 4`,
-      },
-    ])
-    .map(item => ({
-      ...item,
-      hoverField: null,
-    }));
+    const checkboxAllValue = selectedRowIndexes.length === items.length;
 
-  const displayedItems = viewOneRow
-    ? augmentedItems.slice(0, 1)
-    : augmentedItems;
-
-  const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
-
-  const nonCadeItems = items.filter(item => item.name !== 'Cade');
-
-  const checkboxAllValue = selectedItemIds.length === nonCadeItems.length;
-
-  const handleCheckboxAllChange = () => {
-    if (selectedItemIds.length === nonCadeItems.length) {
-      setSelectedItemIds([]);
-    } else {
-      setSelectedItemIds(nonCadeItems.map(item => item.id));
-    }
-  };
-
-  const handleCheckboxRowChange = (value: boolean, item: DummyData) => {
-    if (value) {
-      setSelectedItemIds([...selectedItemIds, item.id]);
-    } else {
-      setSelectedItemIds(selectedItemIds.filter(id => id !== item.id));
-    }
-  };
-
-  const HoverMenu = ({ item }: { item: DummyData }) => (
-    <MenuButton
-      action={
-        <Button icon={<ThreeDotIcon size={20} />} size="sm" variant="subtle" />
+    const handleCheckboxAllChange = () => {
+      if (selectedRowIndexes.length === items.length) {
+        setSelectedRowIndexes([]);
+      } else {
+        setSelectedRowIndexes(items.map((_, index) => index));
       }
-      dropdownOptions={{
-        placement: 'bottom-end',
-      }}
-    >
-      <Menu>
-        <MenuItem
-          icon={<EditDuotoneIcon size={20} />}
-          onClick={() => {
-            alert(`Edit ${item.name}`);
-          }}
-        >
-          Edit
-        </MenuItem>
-        <MenuItem
-          icon={
-            <TrashCanDuotoneIcon
-              color="red600"
-              secondaryColor="red300"
-              size={20}
-            />
-          }
-          onClick={() => {
-            alert(`Delete ${item.name}`);
-          }}
-        >
-          <Text color="red600">Delete</Text>
-        </MenuItem>
-      </Menu>
-    </MenuButton>
-  );
+    };
 
-  const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
-    ...tableHeaders.filter(header => header?.key !== 'truncateText'),
-    {
-      align: 'start',
-      key: 'countryCode',
-      name: 'Country',
-      renderCustom: countryCode => (
-        <FlagIcon code={countryCode} iconScale="large" />
-      ),
-    },
-    {
-      key: 'truncateText',
-      name: (
-        <Checkbox
-          checked={shouldTruncate}
-          label="Truncate text"
-          onChange={setShouldTruncate}
-        />
-      ),
-      textWrapMethod: shouldTruncate ? 'truncate' : 'normal',
-    },
-    {
-      align: 'end',
-      key: 'hoverField',
-      name: '',
-      renderCustom: (_, item) => (
-        <div className="row-hover-show">
-          <HoverMenu item={item} />
-        </div>
-      ),
-    },
-  ];
+    const handleCheckboxRowChange = (
+      value: boolean,
+      item: DummyData,
+      index: number,
+    ) => {
+      if (value) {
+        setSelectedRowIndexes([...selectedRowIndexes, index]);
+      } else {
+        setSelectedRowIndexes(
+          selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+        );
+      }
+    };
 
-  return (
-    <>
-      <Checkbox
-        checked={viewOneRow}
-        label="View one row"
-        onChange={setViewOneRow}
-      />
-
-      <Divider />
-
+    return (
       <SimpleTable
-        headers={augmentedHeaders}
-        items={displayedItems}
+        getRowLink={item => `${link}/?q=${item.name}`}
+        headers={tableHeaders}
+        items={items}
         keyExtractor={item => String(item.id)}
-        onRowClick={item => {
-          alert(`Clicked ${item.name}`);
-        }}
         selectable={{
-          anySelected: selectedItemIds.length > 0,
+          anySelected: selectedRowIndexes.length > 0,
           enabled: true,
           headerCheckboxValue: checkboxAllValue,
-          isRowCheckboxDisabled: item => item.name === 'Cade',
-          isRowChecked: item => selectedItemIds.includes(item.id),
+          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
           onHeaderCheckboxChange: handleCheckboxAllChange,
           onRowCheckboxChange: handleCheckboxRowChange,
         }}
       />
-    </>
-  );
+    );
+  },
 };
 
-export const OnRowClick = () => {
-  const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
-  const toggleItem = (id: string) =>
-    setExpandedItemKeys(
-      expandedItemKeys.includes(id)
-        ? expandedItemKeys.filter(x => x !== id)
-        : expandedItemKeys.concat(id),
-    );
-  const collapseContent = items.map(item => ({
-    content: (
-      <table style={{ width: '100%' }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Vegan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style={{ border: 'none' }}>{item.name}</td>
-            <td style={{ border: 'none' }}>{item.age}</td>
-            <td style={{ border: 'none' }}>{item.vegan}</td>
-          </tr>
-        </tbody>
-      </table>
-    ),
-    key: String(item.id),
-  }));
+export const Loading: StoryObj = {
+  render: () => {
+    const [loading, setLoading] = useState(true);
+    const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
-  return (
-    <>
-      <Text type="header">Normal table</Text>
-      <SimpleTable
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-        onRowClick={item => {
-          alert(`Clicked ${item.name}`);
+    const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+    const handleCheckboxAllChange = () => {
+      if (selectedRowIndexes.length === items.length) {
+        setSelectedRowIndexes([]);
+      } else {
+        setSelectedRowIndexes(items.map((_, index) => index));
+      }
+    };
+
+    const handleCheckboxRowChange = (
+      value: boolean,
+      item: DummyData,
+      index: number,
+    ) => {
+      if (value) {
+        setSelectedRowIndexes([...selectedRowIndexes, index]);
+      } else {
+        setSelectedRowIndexes(
+          selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+        );
+      }
+    };
+
+    return (
+      <>
+        <Checkbox checked={loading} label="Loading" onChange={setLoading} />
+        <SimpleTable
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+          loading={loading}
+          loadingItems={items.length}
+          selectable={{
+            anySelected: selectedRowIndexes.length > 0,
+            enabled: true,
+            headerCheckboxValue: checkboxAllValue,
+            isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+            onHeaderCheckboxChange: handleCheckboxAllChange,
+            onRowCheckboxChange: handleCheckboxRowChange,
+          }}
+        />
+      </>
+    );
+  },
+};
+
+export const Bordered: StoryObj = {
+  render: () => {
+    const augmentedHeaders: SimpleTableHeader<DummyData>[] = tableHeaders
+      .filter(Boolean)
+      .map(header => ({
+        ...header,
+        minWidth: header.minWidth || 50,
+        name: null,
+      }));
+    return (
+      <>
+        <Text type="header">With headers</Text>
+        <SimpleTable
+          bordered
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+        />
+        <Divider />
+        <Text type="header">Without headers</Text>
+        <SimpleTable
+          bordered
+          headers={augmentedHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+        />
+      </>
+    );
+  },
+};
+
+export const Collapsible: StoryObj = {
+  tags: ['tested'],
+  render: () => {
+    const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+    const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
+    const toggleItem = (id: string) =>
+      setExpandedItemKeys(
+        expandedItemKeys.includes(id)
+          ? expandedItemKeys.filter(x => x !== id)
+          : expandedItemKeys.concat(id),
+      );
+
+    const checkboxAllValue = selectedRowIndexes.length === items.length;
+
+    const handleCheckboxAllChange = () => {
+      if (selectedRowIndexes.length === items.length) {
+        setSelectedRowIndexes([]);
+      } else {
+        setSelectedRowIndexes(items.map((_, index) => index));
+      }
+    };
+
+    const handleCheckboxRowChange = (
+      value: boolean,
+      item: DummyData,
+      index: number,
+    ) => {
+      if (value) {
+        setSelectedRowIndexes([...selectedRowIndexes, index]);
+      } else {
+        setSelectedRowIndexes(
+          selectedRowIndexes.filter(selectedIndex => selectedIndex !== index),
+        );
+      }
+    };
+    const collapseContent = items.map(item => ({
+      content: (
+        <table style={{ width: '100%' }}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Vegan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ border: 'none' }}>{item.name}</td>
+              <td style={{ border: 'none' }}>{item.age}</td>
+              <td style={{ border: 'none' }}>{item.vegan}</td>
+            </tr>
+          </tbody>
+        </table>
+      ),
+      key: String(item.id),
+    }));
+
+    const adjustedCollapseContent = collapseContent.filter(
+      (_, index) => index !== 3,
+    );
+
+    return (
+      <>
+        <Text type="header">Normal</Text>
+        <SimpleTable
+          className="normal-table"
+          collapsible={{
+            collapseContent,
+            enabled: true,
+            expandedItemKeys,
+            toggleItem,
+          }}
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+        />
+        <Divider />
+        <Text type="header">Bordered</Text>
+        <SimpleTable
+          bordered
+          className="bordered-table"
+          collapsible={{
+            collapseContent: adjustedCollapseContent,
+            enabled: true,
+            expandedItemKeys,
+            toggleItem,
+          }}
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+        />
+        <Divider />
+        <Text type="header">Selectable</Text>
+        <SimpleTable
+          bordered
+          className="selectable-table"
+          collapsible={{
+            collapseContent,
+            enabled: true,
+            expandedItemKeys,
+            toggleItem,
+          }}
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+          selectable={{
+            anySelected: selectedRowIndexes.length > 0,
+            enabled: true,
+            headerCheckboxValue: checkboxAllValue,
+            isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+            onHeaderCheckboxChange: handleCheckboxAllChange,
+            onRowCheckboxChange: handleCheckboxRowChange,
+          }}
+        />
+      </>
+    );
+  },
+};
+
+export const Custom: StoryObj = {
+  tags: ['tested'],
+  render: () => {
+    const [shouldTruncate, setShouldTruncate] = useState(true);
+    const [viewOneRow, setViewOneRow] = useState(false);
+
+    type AugmentedDummyData = DummyData & {
+      countryCode: Flag;
+      hoverField: null;
+      truncateText?: string;
+    };
+
+    const augmentedItems: AugmentedDummyData[] = items
+      .flatMap(item => [
+        {
+          ...item,
+          countryCode: 'HK' as Flag,
+        },
+        {
+          ...item,
+          countryCode: 'US' as Flag,
+          id: item.id + 100,
+          name: `${item.name} 2`,
+        },
+        {
+          ...item,
+          countryCode: 'CA' as Flag,
+          id: item.id + 200,
+          name: `${item.name} 3`,
+        },
+        {
+          ...item,
+          countryCode: 'GB' as Flag,
+          id: item.id + 300,
+          name: `${item.name} 4`,
+        },
+      ])
+      .map(item => ({
+        ...item,
+        hoverField: null,
+      }));
+
+    const displayedItems = viewOneRow
+      ? augmentedItems.slice(0, 1)
+      : augmentedItems;
+
+    const [selectedItemIds, setSelectedItemIds] = useState<number[]>([]);
+
+    const nonCadeItems = items.filter(item => item.name !== 'Cade');
+
+    const checkboxAllValue = selectedItemIds.length === nonCadeItems.length;
+
+    const handleCheckboxAllChange = () => {
+      if (selectedItemIds.length === nonCadeItems.length) {
+        setSelectedItemIds([]);
+      } else {
+        setSelectedItemIds(nonCadeItems.map(item => item.id));
+      }
+    };
+
+    const handleCheckboxRowChange = (value: boolean, item: DummyData) => {
+      if (value) {
+        setSelectedItemIds([...selectedItemIds, item.id]);
+      } else {
+        setSelectedItemIds(selectedItemIds.filter(id => id !== item.id));
+      }
+    };
+
+    const HoverMenu = ({ item }: { item: DummyData }) => (
+      <MenuButton
+        action={
+          <Button
+            icon={<ThreeDotIcon size={20} />}
+            size="sm"
+            variant="subtle"
+          />
+        }
+        dropdownOptions={{
+          placement: 'bottom-end',
         }}
-      />
-      <Divider />
-      <Text type="header">Collapsible table</Text>
-      <SimpleTable
-        className="collapsible"
-        collapsible={{
-          collapseContent,
-          enabled: true,
-          expandedItemKeys,
-          toggleItem,
-        }}
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-        onRowClick={item => alert(`Clicked ${item.name}`)}
-      />
-    </>
-  );
+      >
+        <Menu>
+          <MenuItem
+            icon={<EditDuotoneIcon size={20} />}
+            onClick={() => {
+              alert(`Edit ${item.name}`);
+            }}
+          >
+            Edit
+          </MenuItem>
+          <MenuItem
+            icon={
+              <TrashCanDuotoneIcon
+                color="red600"
+                secondaryColor="red300"
+                size={20}
+              />
+            }
+            onClick={() => {
+              alert(`Delete ${item.name}`);
+            }}
+          >
+            <Text color="red600">Delete</Text>
+          </MenuItem>
+        </Menu>
+      </MenuButton>
+    );
+
+    const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
+      ...tableHeaders.filter(header => header?.key !== 'truncateText'),
+      {
+        align: 'start',
+        key: 'countryCode',
+        name: 'Country',
+        renderCustom: countryCode => (
+          <FlagIcon code={countryCode} iconScale="large" />
+        ),
+      },
+      {
+        key: 'truncateText',
+        name: (
+          <Checkbox
+            checked={shouldTruncate}
+            label="Truncate text"
+            onChange={setShouldTruncate}
+          />
+        ),
+        textWrapMethod: shouldTruncate ? 'truncate' : 'normal',
+      },
+      {
+        align: 'end',
+        key: 'hoverField',
+        name: '',
+        renderCustom: (_, item) => (
+          <div className="row-hover-show">
+            <HoverMenu item={item} />
+          </div>
+        ),
+      },
+    ];
+
+    return (
+      <>
+        <Checkbox
+          checked={viewOneRow}
+          label="View one row"
+          onChange={setViewOneRow}
+        />
+
+        <Divider />
+
+        <SimpleTable
+          headers={augmentedHeaders}
+          items={displayedItems}
+          keyExtractor={item => String(item.id)}
+          onRowClick={item => {
+            alert(`Clicked ${item.name}`);
+          }}
+          selectable={{
+            anySelected: selectedItemIds.length > 0,
+            enabled: true,
+            headerCheckboxValue: checkboxAllValue,
+            isRowCheckboxDisabled: item => item.name === 'Cade',
+            isRowChecked: item => selectedItemIds.includes(item.id),
+            onHeaderCheckboxChange: handleCheckboxAllChange,
+            onRowCheckboxChange: handleCheckboxRowChange,
+          }}
+        />
+      </>
+    );
+  },
+};
+
+export const OnRowClick: StoryObj = {
+  tags: ['tested'],
+  render: () => {
+    const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
+    const toggleItem = (id: string) =>
+      setExpandedItemKeys(
+        expandedItemKeys.includes(id)
+          ? expandedItemKeys.filter(x => x !== id)
+          : expandedItemKeys.concat(id),
+      );
+    const collapseContent = items.map(item => ({
+      content: (
+        <table style={{ width: '100%' }}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Vegan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ border: 'none' }}>{item.name}</td>
+              <td style={{ border: 'none' }}>{item.age}</td>
+              <td style={{ border: 'none' }}>{item.vegan}</td>
+            </tr>
+          </tbody>
+        </table>
+      ),
+      key: String(item.id),
+    }));
+
+    return (
+      <>
+        <Text type="header">Normal table</Text>
+        <SimpleTable
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+          onRowClick={item => {
+            alert(`Clicked ${item.name}`);
+          }}
+        />
+        <Divider />
+        <Text type="header">Collapsible table</Text>
+        <SimpleTable
+          className="collapsible"
+          collapsible={{
+            collapseContent,
+            enabled: true,
+            expandedItemKeys,
+            toggleItem,
+          }}
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+          onRowClick={item => alert(`Clicked ${item.name}`)}
+        />
+      </>
+    );
+  },
 };

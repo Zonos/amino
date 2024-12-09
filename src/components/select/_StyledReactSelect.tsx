@@ -12,7 +12,6 @@ import type {
   StylesConfig,
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
-import type Select from 'react-select/dist/declarations/src/Select';
 
 import clsx from 'clsx';
 
@@ -32,6 +31,7 @@ import type { Size } from 'src/types/Size';
 import { getTestId } from 'src/utils/getTestId';
 
 import styles from './_StyledReactSelect.module.scss';
+import type Select from 'node_modules/react-select/dist/declarations/src/Select';
 
 const getRadius = ($size?: Size) => {
   switch ($size) {
