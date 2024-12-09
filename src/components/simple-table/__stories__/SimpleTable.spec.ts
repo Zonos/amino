@@ -234,4 +234,22 @@ test.describe('SimpleTable', () => {
       await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
+
+  test.describe('text truncation link clickbox', () => {
+    test('With Link', async () => {
+      await framePage
+        .locator('.tooltip-wrapper', { hasText: 'Not long enough' })
+        .first()
+        // Top left click
+        .click({
+          // Click at right end of the text
+          position: { x: 100, y: 5 },
+          timeout: 5000,
+        });
+
+      // Expect link to be clicked (https://letmegooglethat.com/?q=John)
+      await framePage.waitForLoadState('domcontentloaded');
+      await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
+    });
+  });
 });

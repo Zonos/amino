@@ -219,12 +219,14 @@ export const SimpleTable = <T extends object>({
   style,
 }: SimpleTableProps<T>) => {
   const [expandedItemIds, setExpandedItemIds] = useState<string[]>([]);
+
   const toggleItem = (id: string) =>
     setExpandedItemIds(
       expandedItemIds.includes(id)
         ? expandedItemIds.filter(x => x !== id)
         : expandedItemIds.concat(id),
     );
+
   const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
     const value = item[header.key];
 

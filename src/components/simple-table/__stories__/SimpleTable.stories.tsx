@@ -18,6 +18,7 @@ import {
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { EditDuotoneIcon } from 'src/icons/EditDuotoneIcon';
+import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { ThreeDotIcon } from 'src/icons/ThreeDotIcon';
 import { TrashCanDuotoneIcon } from 'src/icons/TrashCanDuotoneIcon';
@@ -50,7 +51,7 @@ const items: DummyData[] = [
     id: 1,
     name: 'John',
     optionalField: 'optional',
-    truncateText,
+    truncateText: 'Not long enough',
     vegan: false,
   },
   {
@@ -473,25 +474,32 @@ export const Custom = () => {
   const [viewOneRow, setViewOneRow] = useState(false);
 
   type AugmentedDummyData = DummyData & {
+    countryCode: Flag;
     hoverField: null;
     truncateText?: string;
   };
 
   const augmentedItems: AugmentedDummyData[] = items
     .flatMap(item => [
-      item,
       {
         ...item,
+        countryCode: 'HK' as Flag,
+      },
+      {
+        ...item,
+        countryCode: 'US' as Flag,
         id: item.id + 100,
         name: `${item.name} 2`,
       },
       {
         ...item,
+        countryCode: 'CA' as Flag,
         id: item.id + 200,
         name: `${item.name} 3`,
       },
       {
         ...item,
+        countryCode: 'GB' as Flag,
         id: item.id + 300,
         name: `${item.name} 4`,
       },
@@ -565,6 +573,14 @@ export const Custom = () => {
 
   const augmentedHeaders: SimpleTableHeader<AugmentedDummyData>[] = [
     ...tableHeaders.filter(header => header?.key !== 'truncateText'),
+    {
+      align: 'start',
+      key: 'countryCode',
+      name: 'Country',
+      renderCustom: countryCode => (
+        <FlagIcon code={countryCode} iconScale="large" />
+      ),
+    },
     {
       key: 'truncateText',
       name: (
