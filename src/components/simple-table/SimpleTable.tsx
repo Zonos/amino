@@ -1,4 +1,4 @@
-import React, { type ReactNode, Fragment, useState } from 'react';
+import React, { type ReactNode, Fragment } from 'react';
 
 import clsx from 'clsx';
 
@@ -99,7 +99,6 @@ export type SimpleTableProps<T extends object> = BaseProps & {
   bordered?: boolean;
   /**
    * @default false
-   * @note Setting collapsible with onRowClick could result in unexpected behavior
    * Enable rows to collapse and expand with more information
    */
   collapsible?: {
@@ -114,6 +113,8 @@ export type SimpleTableProps<T extends object> = BaseProps & {
       key: string;
     }[];
     enabled: boolean;
+    expandedItemKeys: string[];
+    toggleItem: (key: string) => void;
   };
   headers: SimpleTableHeader<T>[];
   items: T[];
@@ -180,7 +181,6 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    * Callback for clicking anywhere on row.
    *
    * If having buttons in the table, remember to call e.stopPropagation() to prevent this from firing.
-   * @note Setting onRowClick with collapsible will result in unexpected behavior
    */
   onRowClick?: (item: T) => void;
   /** Callback for hovering anywhere on row */
@@ -199,6 +199,8 @@ export const SimpleTable = <T extends object>({
   className,
   collapsible = {
     enabled: false,
+    expandedItemKeys: [],
+    toggleItem: () => {},
   },
   CustomLinkComponent,
   getRowLink,
@@ -218,13 +220,6 @@ export const SimpleTable = <T extends object>({
   },
   style,
 }: SimpleTableProps<T>) => {
-  const [expandedItemIds, setExpandedItemIds] = useState<string[]>([]);
-  const toggleItem = (id: string) =>
-    setExpandedItemIds(
-      expandedItemIds.includes(id)
-        ? expandedItemIds.filter(x => x !== id)
-        : expandedItemIds.concat(id),
-    );
   const renderHeader = (header: SimpleTableHeader<T>, item: T) => {
     const value = item[header.key];
 
@@ -349,18 +344,25 @@ export const SimpleTable = <T extends object>({
     }
 
     if (collapsible.enabled && collapsible.collapseContent?.length) {
+      const { collapseContent, expandedItemKeys, toggleItem } = collapsible;
       return items.map((item, index) => {
         const key = keyExtractor(item);
-        const collapsed = !expandedItemIds.includes(key);
+        const collapsed = !expandedItemKeys.includes(key);
+        const rowCollapseContent = collapseContent?.find(x => x.key === key)
+          ?.content;
         return (
           <TableRowCollapse
             key={key}
             className={clsx(
               !noHoverBackground && styles.withHover,
               collapsed && styles.collapsed,
+              rowCollapseContent && styles.hasContent,
             )}
             collapsed={collapsed}
-            onToggleCollapse={() => toggleItem(key)}
+            onToggleCollapse={() => {
+              toggleItem(key);
+              onRowClick?.(item);
+            }}
             rowContent={
               <>
                 {selectable.enabled && (
@@ -389,7 +391,7 @@ export const SimpleTable = <T extends object>({
               </>
             }
           >
-            {collapsible.collapseContent?.find(x => x.key === key)?.content}
+            {rowCollapseContent}
           </TableRowCollapse>
         );
       });
