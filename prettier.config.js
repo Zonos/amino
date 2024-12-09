@@ -1,19 +1,23 @@
-/** @type {import("prettier").Options} */
-module.exports = {
+/**
+ * @type {import("prettier").Config}
+ */
+const config = {
   tabWidth: 2,
   printWidth: 80,
-  proseWrap: 'preserve',
+  proseWrap: "preserve",
   semi: true,
-  trailingComma: 'all',
+  trailingComma: "all",
   singleQuote: true,
-  arrowParens: 'avoid',
+  arrowParens: "avoid",
   overrides: [
     {
       files:
-        '{*.js?(on),*.y?(a)ml,.*.js?(on),.*.y?(a)ml,*.md,.prettierrc,.stylelintrc,.babelrc}',
+        "{*.js?(on),*.y?(a)ml,.*.js?(on),.*.y?(a)ml,*.md,.prettierrc,.stylelintrc,.babelrc}",
       options: {
         tabWidth: 2,
       },
     },
   ],
 };
+
+export default config;

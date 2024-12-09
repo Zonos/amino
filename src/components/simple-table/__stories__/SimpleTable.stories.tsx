@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
@@ -147,26 +147,29 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
   },
 ];
 
-export const Basic = () => (
-  <>
-    <Text type="header">With hover</Text>
-    <SimpleTable
-      className="with-hover"
-      headers={tableHeaders}
-      items={items}
-      keyExtractor={item => String(item.id)}
-    />
-    <Divider />
-    <Text type="header">Without hover</Text>
-    <SimpleTable
-      className="no-hover"
-      headers={tableHeaders}
-      items={items}
-      keyExtractor={item => String(item.id)}
-      noHoverBackground
-    />
-  </>
-);
+export const Basic: StoryObj = {
+  tags: ['tested'],
+  render: () => (
+    <>
+      <Text type="header">With hover</Text>
+      <SimpleTable
+        className="with-hover"
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+      />
+      <Divider />
+      <Text type="header">Without hover</Text>
+      <SimpleTable
+        className="no-hover"
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+        noHoverBackground
+      />
+    </>
+  )
+}
 
 export const Long = () => (
   <SimpleTable

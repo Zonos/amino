@@ -35,6 +35,7 @@ const CheckboxMeta: Meta<CheckboxProps> = {
     },
   },
   render: Template,
+  tags: ['tested'],
 };
 
 export default CheckboxMeta;

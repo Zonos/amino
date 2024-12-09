@@ -10,7 +10,7 @@
     "jsx": "react-jsx",
     "lib": ["es2015", "es2016", "es2017", "dom"],
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "outDir": "dist",
     "resolveJsonModule": true,
     "sourceMap": true,
@@ -63,10 +63,10 @@
     ".storybook/**/*",
     ".eslintrc.js",
     ".eslintrc.prod.js",
-    "prettier.config.js",
+    "prettier.config.mjs",
     "tsconfig.json",
     "test-utils",
-    "postcss.config.js",
-    "vite.config.mts"
+    "vite.config.mts",
+    "postcss.config.mts"
   ]
 }
