@@ -376,6 +376,13 @@ export const Bordered = () => {
 
 export const Collapsible = () => {
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+  const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
+  const toggleItem = (id: string) =>
+    setExpandedItemKeys(
+      expandedItemKeys.includes(id)
+        ? expandedItemKeys.filter(x => x !== id)
+        : expandedItemKeys.concat(id),
+    );
 
   const checkboxAllValue = selectedRowIndexes.length === items.length;
 
@@ -403,20 +410,28 @@ export const Collapsible = () => {
   const collapseContent = items.map(item => ({
     content: (
       <table style={{ width: '100%' }}>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Vegan</th>
-        </tr>
-        <tr>
-          <td style={{ border: 'none' }}>{item.name}</td>
-          <td style={{ border: 'none' }}>{item.age}</td>
-          <td style={{ border: 'none' }}>{item.vegan}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Vegan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ border: 'none' }}>{item.name}</td>
+            <td style={{ border: 'none' }}>{item.age}</td>
+            <td style={{ border: 'none' }}>{item.vegan}</td>
+          </tr>
+        </tbody>
       </table>
     ),
     key: String(item.id),
   }));
+
+  const adjustedCollapseContent = collapseContent.filter(
+    (_, index) => index !== 3,
+  );
 
   return (
     <>
@@ -426,6 +441,8 @@ export const Collapsible = () => {
         collapsible={{
           collapseContent,
           enabled: true,
+          expandedItemKeys,
+          toggleItem,
         }}
         headers={tableHeaders}
         items={items}
@@ -437,8 +454,10 @@ export const Collapsible = () => {
         bordered
         className="bordered-table"
         collapsible={{
-          collapseContent,
+          collapseContent: adjustedCollapseContent,
           enabled: true,
+          expandedItemKeys,
+          toggleItem,
         }}
         headers={tableHeaders}
         items={items}
@@ -452,6 +471,8 @@ export const Collapsible = () => {
         collapsible={{
           collapseContent,
           enabled: true,
+          expandedItemKeys,
+          toggleItem,
         }}
         headers={tableHeaders}
         items={items}
@@ -630,6 +651,66 @@ export const Custom = () => {
           onHeaderCheckboxChange: handleCheckboxAllChange,
           onRowCheckboxChange: handleCheckboxRowChange,
         }}
+      />
+    </>
+  );
+};
+
+export const OnRowClick = () => {
+  const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
+  const toggleItem = (id: string) =>
+    setExpandedItemKeys(
+      expandedItemKeys.includes(id)
+        ? expandedItemKeys.filter(x => x !== id)
+        : expandedItemKeys.concat(id),
+    );
+  const collapseContent = items.map(item => ({
+    content: (
+      <table style={{ width: '100%' }}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Vegan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ border: 'none' }}>{item.name}</td>
+            <td style={{ border: 'none' }}>{item.age}</td>
+            <td style={{ border: 'none' }}>{item.vegan}</td>
+          </tr>
+        </tbody>
+      </table>
+    ),
+    key: String(item.id),
+  }));
+
+  return (
+    <>
+      <Text type="header">Normal table</Text>
+      <SimpleTable
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+        onRowClick={item => {
+          alert(`Clicked ${item.name}`);
+        }}
+      />
+      <Divider />
+      <Text type="header">Collapsible table</Text>
+      <SimpleTable
+        className="collapsible"
+        collapsible={{
+          collapseContent,
+          enabled: true,
+          expandedItemKeys,
+          toggleItem,
+        }}
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+        onRowClick={item => alert(`Clicked ${item.name}`)}
       />
     </>
   );

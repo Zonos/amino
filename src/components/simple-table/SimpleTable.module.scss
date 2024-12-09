@@ -175,7 +175,7 @@ $cellMinWidth: var(--amino-cell-min-width);
             border-bottom: theme.$amino-border-subtle;
           }
         }
-        &.collapsed {
+        &.collapsed.hasContent {
           & + tr > td {
             border: 0;
           }
