@@ -1,4 +1,4 @@
-export const iconsList = [
+export const commonIconsList = [
   'AIDuotoneIcon',
   'AIIcon',
   'ArrowDownDuotoneIcon',
@@ -119,6 +119,8 @@ export const iconsList = [
   'EditIcon',
   'ExclamationMarkDuotoneIcon',
   'ExclamationMarkIcon',
+  'ExportDuotoneIcon',
+  'ExportIcon',
   'ExternalDuotoneIcon',
   'ExternalIcon',
   'EyeDuotoneIcon',
@@ -295,9 +297,13 @@ export const iconsList = [
   'WarningIcon',
 ] as const;
 
-export const iconsListCustom = ['AvatarIcon', 'ZonosIcon', 'ZonosLogoIcon'];
+export const customIconsList = [
+  'AvatarIcon',
+  'ZonosIcon',
+  'ZonosLogoIcon',
+] as const;
 
-export const iconsListProducts = [
+export const productIconsList = [
   'CheckoutColorIcon',
   'ClassifyColorIcon',
   'ClearColorIcon',
@@ -312,4 +318,4 @@ export const iconsListProducts = [
   'RestrictColorIcon',
   'ScreenColorIcon',
   'TaxColorIcon',
-];
+] as const;

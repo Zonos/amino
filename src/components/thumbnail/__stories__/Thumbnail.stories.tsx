@@ -7,13 +7,13 @@ import {
   Thumbnail as ThumbnailComponent,
   type ThumbnailProps,
 } from 'src/components/thumbnail/Thumbnail';
-import { iconsList } from 'src/icons/__stories__/IconsList';
+import { commonIconsList } from 'src/icons/__stories__/IconsList';
 
 const ThumbnailMeta: Meta = {
   argTypes: {
     icon: {
       control: { type: 'select' },
-      options: iconsList,
+      options: commonIconsList,
     },
     shape: {
       // We are showing all shapes already
@@ -37,7 +37,7 @@ const ThumbnailMeta: Meta = {
 export default ThumbnailMeta;
 
 type StoryProps = Omit<ThumbnailProps, 'shape' | 'icon'> & {
-  icon: keyof typeof iconsList;
+  icon: keyof typeof commonIconsList;
 };
 
 const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {

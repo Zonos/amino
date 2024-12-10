@@ -1,10 +1,11 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
+import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
-import { iconsList, iconsListProducts } from 'src/icons/__stories__/IconsList';
+import { commonIconsList } from 'src/icons/__stories__/IconsList';
 import { MailDuotoneIcon } from 'src/icons/MailDuotoneIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { Color } from 'src/types/Color';
@@ -24,15 +25,32 @@ export const Icons = ({
   secondaryColor,
   size,
 }: IconProps & { secondaryColor?: Color }) => {
+  const [iconsToLoad, setIconsToLoad] = useState<string[]>([]);
   const [filter, setFilter] = useState('');
-  const iicons = iconsList
-    .slice(0, 10)
+
+  // This is a hack to prevent the server from overloading when requesting all the icons
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // eslint-disable-next-line no-console
+      console.info('Loading more icons...');
+      setIconsToLoad(prevIcons => {
+        const newIcons = commonIconsList.slice(0, prevIcons.length + 50);
+        if (newIcons.length >= commonIconsList.length) {
+          clearInterval(interval);
+        }
+        return newIcons;
+      });
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, [iconsToLoad.length]);
+
+  const iicons = iconsToLoad
     .map(icon => ({
       iconName: icon,
     }))
     .filter(icon => icon.iconName);
 
-  console.log(iconsList, { iicons });
   return (
     <VStack>
       <Input
@@ -51,21 +69,31 @@ export const Icons = ({
               : true,
           )
           .map(({ iconName }) => {
-            const IconComponent = lazy(
-              () => import(`src/icons/${iconName}.tsx`),
+            const IconComponent = lazy(() =>
+              import(`src/icons/${iconName}.tsx`).then(module => ({
+                default: module[iconName],
+              })),
             );
 
-            console.log({ IconComponent });
-
             return (
-              <Suspense fallback={<div>Loading...</div>} key={iconName}>
-                <IconComponent
-                  color={color}
-                  inlineBlock={inlineBlock}
-                  secondaryColor={secondaryColor}
-                  size={size}
-                />
-              </Suspense>
+              <div
+                className={clsx(
+                  styles.styledIcon,
+                  /Solid/.test(iconName) && 'solid',
+                  /Duotone/.test(iconName) && 'duotone',
+                )}
+                key={iconName}
+              >
+                <Suspense fallback={<div>Loading...</div>} key={iconName}>
+                  <IconComponent
+                    color={color}
+                    inlineBlock={inlineBlock}
+                    secondaryColor={secondaryColor}
+                    size={size}
+                  />
+                </Suspense>
+                <div>{iconName}</div>
+              </div>
             );
           })}
       </div>

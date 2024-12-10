@@ -6,7 +6,10 @@ import {
   type SvgList,
   svgProcessPaths,
 } from 'svgReact/icons/config/config';
-import { createIndexFile } from 'svgReact/icons/createIndexFile';
+import {
+  createIndexFile,
+  createIndexKeyFile,
+} from 'svgReact/icons/createIndexFile';
 import { createReactIconSvgs } from 'svgReact/icons/createReactIconSvgs';
 
 const pascalCased = (string: string) =>
@@ -24,9 +27,9 @@ const generateSvgs = ({
   svgFolder,
 }: FileConfig) => {
   const names: SvgList[] = glob
-    .sync(`${__dirname}/${svgFolder}/**/*.svg`)
+    .sync(`${import.meta.dirname}/${svgFolder}/**/*.svg`)
     /** @desc Filter and return only list of `${folder}/${filename}` or `${filename}` */
-    .map(item => item.replace(`${__dirname}/${svgFolder}/`, ''))
+    .map(item => item.replace(`${import.meta.dirname}/${svgFolder}/`, ''))
     .filter(Boolean)
     /** @desc Preprocessing file */
     .map(item => {
@@ -59,10 +62,17 @@ const generateSvgs = ({
     })
     .filter(Boolean);
 
+  console.log(
+    `${import.meta.dirname}/${svgFolder}/**/*.svg`,
+    import.meta.dirname,
+  );
+
   if (names.length > 0) {
     try {
       /** @desc Optimize svg */
-      optimizeSvgs({ folderPath: `${__dirname}/${svgFolder}/**/*.svg` });
+      optimizeSvgs({
+        folderPath: `${import.meta.dirname}/${svgFolder}/**/*.svg`,
+      });
 
       console.info(`Generating react component for folder "${svgFolder}"`);
       /** @desc Generate svg react component */
@@ -91,15 +101,15 @@ console.log({ svgProcessPaths });
 
 console.info('Generating index file for generated svg react components ...');
 /** @desc Generate index file for generated svg react components */
-createIndexFile({
+createIndexKeyFile({
   generatePath: [...svgProcessPaths],
-  target: 'svgReact/icons/dist',
+  target: 'src/icons/__stories__/IconsList.ts',
 });
 
 /** @desc Format generated svg react component and new IconIndex */
 console.info('Linting ...');
 execSync(
-  'pnpm eslint --fix svgReact/icons/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
+  'pnpm eslint --fix svgReact/icons/dist/**/*.tsx -c ./eslint.config.prod.js',
   {
     encoding: 'utf8',
   },

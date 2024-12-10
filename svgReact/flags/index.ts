@@ -23,7 +23,7 @@ export const generateSvgs = async () => {
 
     /** @desc Optimize flags in "svg" folder */
     optimizeSvgs({
-      folderPath: `${__dirname}/svgs/**/*.svg`,
+      folderPath: `${import.meta.dirname}/svgs/**/*.svg`,
     });
 
     /** @desc Clean up distribution folder */
@@ -48,14 +48,18 @@ const createComponentsFromSvgs = async () => {
     /** @desc Format generated svg react component and new IconIndex */
     try {
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
-        { encoding: 'utf8' },
+        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.js',
+        {
+          encoding: 'utf8',
+        },
       );
     } catch {
-      /** @desc Run lint --fix the first time only fix part of the fixable erros, run it again to fix all */
+      /** @desc Run lint --fix the first time only fix part of the fixable errors, run it again to fix all */
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
-        { encoding: 'utf8' },
+        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.js',
+        {
+          encoding: 'utf8',
+        },
       );
     }
 

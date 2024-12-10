@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import fs from 'fs';
 import type { GenerateIndexContentType } from 'svgReact/icons/config/config';
 
@@ -44,4 +45,48 @@ export const createIndexFile = ({
   const mergedContent = [...generatePath.map(generateContent)].join('\n');
 
   fs.writeFileSync(`${target}/_IconIndex.ts`, mergedContent);
+};
+
+/**
+ * Just the keys, not the components. Meant to be used with dynamic imports
+ */
+export const createIndexKeyFile = ({
+  generatePath,
+  target,
+}: {
+  generatePath: GenerateIndexContentType[];
+  /**
+   * @desc location to save the file
+   * @example svgReact/icons/dist
+   * */
+  target: string;
+}) => {
+  console.info(`Generating ${target}`);
+
+  const mergedContent = generatePath
+    .flatMap(x => {
+      const iconNames = fs
+        .readdirSync(x.inputFolderPath)
+        .filter(name => !/index/i.test(name) && name.includes('.'));
+
+      const block = `export const ${x.titleComment}IconsList = [${iconNames
+        .map(name => {
+          const [componentName] = name.split('.');
+          return `'${componentName}'`;
+        })
+        .join(', ')}] as const;`;
+
+      return block;
+    })
+    .join('\n\n');
+
+  fs.writeFileSync(target, mergedContent);
+
+  console.info('Linting ...');
+
+  execSync(`pnpm eslint --fix ${target} -c ./eslint.config.prod.js`, {
+    encoding: 'utf8',
+  });
+
+  console.info(`Generated ${target}`);
 };

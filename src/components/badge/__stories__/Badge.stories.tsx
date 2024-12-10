@@ -5,7 +5,7 @@ import { omitControls } from 'story-utils/omitControls';
 
 import { Badge, type BadgeProps } from 'src/components/badge/Badge';
 import { Flex } from 'src/components/flex/Flex';
-import { iconsList } from 'src/icons/__stories__/IconsList';
+import { commonIconsList } from 'src/icons/__stories__/IconsList';
 
 const omittedProps: (keyof BadgeProps)[] = ['iconRight', 'bold'];
 
@@ -14,7 +14,7 @@ const BadgeMeta: Meta = {
     ...omitControls<BadgeProps>(omittedProps),
     icon: {
       control: { type: 'select' },
-      options: iconsList,
+      options: commonIconsList,
     },
   },
   args: {
@@ -32,7 +32,7 @@ const BadgeMeta: Meta = {
 export default BadgeMeta;
 
 type StoryProps = Omit<BadgeProps, 'iconRight' | 'icon' | 'bold'> & {
-  icon: keyof typeof iconsList;
+  icon: keyof typeof commonIconsList;
 };
 
 const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
