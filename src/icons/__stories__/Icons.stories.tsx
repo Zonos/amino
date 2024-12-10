@@ -26,11 +26,13 @@ export const Icons = ({
 }: IconProps & { secondaryColor?: Color }) => {
   const [filter, setFilter] = useState('');
   const iicons = iconsList
+    .slice(0, 10)
     .map(icon => ({
       iconName: icon,
     }))
     .filter(icon => icon.iconName);
 
+  console.log(iconsList, { iicons });
   return (
     <VStack>
       <Input
@@ -49,10 +51,20 @@ export const Icons = ({
               : true,
           )
           .map(({ iconName }) => {
-            const IconComponent = lazy(() => import(`src/icons/${iconName}`));
+            const IconComponent = lazy(
+              () => import(`src/icons/${iconName}.tsx`),
+            );
+
+            console.log({ IconComponent });
+
             return (
               <Suspense fallback={<div>Loading...</div>} key={iconName}>
-                <IconComponent color={color} size={size} />
+                <IconComponent
+                  color={color}
+                  inlineBlock={inlineBlock}
+                  secondaryColor={secondaryColor}
+                  size={size}
+                />
               </Suspense>
             );
           })}

@@ -119,8 +119,6 @@ export const iconsList = [
   'EditIcon',
   'ExclamationMarkDuotoneIcon',
   'ExclamationMarkIcon',
-  'toneIcon',
-  'n',
   'ExternalDuotoneIcon',
   'ExternalIcon',
   'EyeDuotoneIcon',
@@ -295,7 +293,7 @@ export const iconsList = [
   'UtahIcon',
   'WarningDuotoneIcon',
   'WarningIcon',
-];
+] as const;
 
 export const iconsListCustom = ['AvatarIcon', 'ZonosIcon', 'ZonosLogoIcon'];
 

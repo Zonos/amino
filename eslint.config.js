@@ -96,11 +96,7 @@ export default tseslint.config(
         'error',
         {
           // allow to access to index.ts if that's types folder
-          forbid: [
-            '**/src/!(types)/**/index.ts*',
-            '**/src/index.ts*',
-            '**/src/icons/_IconIndex*',
-          ],
+          forbid: ['**/src/!(types)/**/index.ts*', '**/src/index.ts*'],
         },
       ],
       // Typescript takes care of this
