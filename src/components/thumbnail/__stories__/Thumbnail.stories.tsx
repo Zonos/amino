@@ -2,8 +2,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Flex } from 'src/components/flex/Flex';
 import {
-  type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
+  type ThumbnailProps,
 } from 'src/components/thumbnail/Thumbnail';
 import * as icons from 'src/icons/_IconIndex';
 

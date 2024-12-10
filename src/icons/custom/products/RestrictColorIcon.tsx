@@ -9,10 +9,10 @@ export const RestrictColorIcon = forwardRef<SVGSVGElement, IconProps>(
     const ids = useStableUniqueId(7);
     return (
       <IconBase
-        ref={ref}
         className={className}
         color={color}
         inlineBlock={inlineBlock}
+        ref={ref}
         size={size}
         viewBox="0 0 24 24"
       >

@@ -53,7 +53,7 @@ const createButtonStory = (numButtons: number): Story => ({
         <ButtonGroup>
           {Array.from({ length: numButtons }, (_, i) =>
             i % 2 !== 0 ? (
-              <Button key={i} icon={icons[i % icons.length]} />
+              <Button icon={icons[i % icons.length]} key={i} />
             ) : (
               <Button key={i}>Button {i + 1}</Button>
             ),
@@ -63,7 +63,7 @@ const createButtonStory = (numButtons: number): Story => ({
         {/* Icon buttons */}
         <ButtonGroup>
           {icons.slice(0, numButtons).map(icon => (
-            <Button key={icon.key} icon={icon} />
+            <Button icon={icon} key={icon.key} />
           ))}
         </ButtonGroup>
 

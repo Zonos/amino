@@ -4,8 +4,8 @@ import { useMergeRefs } from '@floating-ui/react';
 import clsx from 'clsx';
 
 import {
-  type FloatLabelInputProps,
   FloatLabelInput,
+  type FloatLabelInputProps,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';
@@ -41,10 +41,10 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       >
         <FloatLabelInput
           {...props}
-          ref={mergedRef}
           aria-label={label}
           className={styles.aminoInput}
           label={label}
+          ref={mergedRef}
           size={size}
           suffix={
             suffix === null

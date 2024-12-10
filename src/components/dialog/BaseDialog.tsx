@@ -2,7 +2,7 @@ import React, { type ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import clsx from 'clsx';
-import { type MotionProps, AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, type MotionProps } from 'framer-motion';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
@@ -120,9 +120,8 @@ export const BaseDialog = ({
             <motion.div
               className={styles.backdrop}
               {...backdropMotionProps}
-              key="dialog-backdrop"
-              ref={backdropRef}
               data-theme={themeOverride}
+              key="dialog-backdrop"
               onKeyDown={handleKeyDown}
               onMouseDown={e => {
                 // Store the target of the mouse down event so we can compare it to the target of the mouse up event
@@ -139,6 +138,7 @@ export const BaseDialog = ({
                 // reset the mouse down target
                 mouseDownTarget.current = null;
               }}
+              ref={backdropRef}
               style={{
                 '--amino-base-dialog-width': fullWindowWidth
                   ? '100%'
@@ -149,8 +149,8 @@ export const BaseDialog = ({
             >
               <motion.div
                 {...combinedPopupMotionProps}
-                key="dialog"
                 className={clsx(className, styles.popup, 'elevated')}
+                key="dialog"
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog
                   e.stopPropagation();

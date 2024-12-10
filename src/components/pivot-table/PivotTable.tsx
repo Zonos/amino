@@ -29,7 +29,7 @@ export type ColumnProps<TRow extends RowData, TSummaryRow = unknown> = Exclude<
 > &
   OverrideColumn<TRow>;
 
-type OverrideProps<TRow extends RowData, TSummaryRow extends unknown> = {
+type OverrideProps<TRow extends RowData, TSummaryRow> = {
   columns: ColumnProps<TRow, TSummaryRow>[];
   rows: TRow[];
   /**
@@ -49,7 +49,7 @@ export type RowWithIndex<Row extends RowData = RowData> = Row & {
 
 type Props<
   TRow extends RowWithIndex,
-  TSummaryRow extends unknown,
+  TSummaryRow,
   TRowKey extends KeyValue,
 > = BaseProps &
   Omit<
@@ -58,7 +58,7 @@ type Props<
   > &
   OverrideProps<TRow, TSummaryRow>;
 
-type Comparator<TRow extends unknown> = (a: TRow, b: TRow) => number;
+type Comparator<TRow> = (a: TRow, b: TRow) => number;
 
 /**
  * Awesome data grid
@@ -174,14 +174,13 @@ export const PivotTable = <
       }}
     >
       <DataGrid
-        ref={dataGridRef}
         className="data-grid"
         columns={modifiedColumns}
         onSortColumnsChange={onSortColumnsChange || setSortColumns}
+        ref={dataGridRef}
         renderers={defaultRenderers}
         rows={sortedRows}
         sortColumns={sortColumns}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       />
     </div>

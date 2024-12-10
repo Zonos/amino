@@ -37,13 +37,12 @@ export const SortableListItem = ({
       {useHandle ? (
         <div className={styles.styledSortableListItem} style={listItemStyle}>
           <div className={styles.styledSortableSection}>{children}</div>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          {}
           <div {...listeners} {...attributes}>
             <DragIcon size={handleIconSize} />
           </div>
         </div>
       ) : (
-        // eslint-disable-next-line react/jsx-props-no-spreading
         <div
           className={styles.styledSortableListItem}
           style={style}

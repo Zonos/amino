@@ -1,7 +1,7 @@
 import {
+  forwardRef,
   type ReactNode,
   type TextareaHTMLAttributes,
-  forwardRef,
   useId,
   useRef,
 } from 'react';
@@ -97,15 +97,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             type="button"
           >
             <textarea
-              ref={node => {
-                if (ref && typeof ref === 'function') {
-                  ref(node);
-                } else if (ref) {
-                  // eslint-disable-next-line no-param-reassign
-                  ref.current = node;
-                }
-                textareaRef.current = node;
-              }}
               className={clsx(
                 styles.styledTextarea,
                 error && styles.hasError,
@@ -115,6 +106,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               )}
               disabled={disabled}
               id={id}
+              ref={node => {
+                if (ref && typeof ref === 'function') {
+                  ref(node);
+                } else if (ref) {
+                  ref.current = node;
+                }
+                textareaRef.current = node;
+              }}
               rows={rows}
               value={value}
               {...props}
@@ -131,7 +130,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </button>
 
           {actions && (
-            <div ref={actionsRef} className={styles.actions}>
+            <div className={styles.actions} ref={actionsRef}>
               <Flex alignItems="center" fullHeight justifyContent="flex-end">
                 {actions}
               </Flex>

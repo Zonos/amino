@@ -6,8 +6,8 @@ import { UserAvatar } from 'src/components/avatar/UserAvatar';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { SortableList } from 'src/components/sortable-list/SortableList';
 import {
-  type DragEndEvent,
   arrayMove,
+  type DragEndEvent,
 } from 'src/components/sortable-list/SortableListDeps';
 import { SortableListItem } from 'src/components/sortable-list/SortableListItem';
 
@@ -57,7 +57,7 @@ const Template: StoryFn = () => {
       itemIds={listItems.map(i => i.id)}
     >
       {listItems.map(item => (
-        <SortableListItem key={item.id} id={item.id}>
+        <SortableListItem id={item.id} key={item.id}>
           <ListItem label={item.name} selected />
         </SortableListItem>
       ))}
@@ -94,7 +94,7 @@ const WithHandleTemplate: StoryFn = () => {
       itemIds={listItems.map(i => i.id)}
     >
       {listItems.map(item => (
-        <SortableListItem key={item.id} id={item.id} useHandle>
+        <SortableListItem id={item.id} key={item.id} useHandle>
           <ListItem
             decorator={<UserAvatar shape="round" size={16} />}
             label={item.name}

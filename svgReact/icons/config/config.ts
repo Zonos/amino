@@ -1,3 +1,6 @@
+import { __dirname } from 'build-utils/build';
+import path from 'path';
+
 export type FileConfig = {
   /**
    * @desc Folder path destination for the file
@@ -9,7 +12,8 @@ export type FileConfig = {
    * @desc Input path that all generated file located
    * @example svgReact/icons/dist
    */
-  inputFolderPath: `svgReact/icons/dist${string}` | `src/icons${string}`;
+  // inputFolderPath: `svgReact/icons/dist${string}` | `src/icons${string}`;
+  inputFolderPath: string;
   /**
    * Static colors or not
    * @default false
@@ -26,7 +30,8 @@ export type FileConfig = {
 export const svgProcessPaths: FileConfig[] = [
   {
     destFolder: 'src/icons',
-    inputFolderPath: 'svgReact/icons/dist',
+    // inputFolderPath: 'svgReact/icons/dist',
+    inputFolderPath: path.resolve(__dirname, 'svgReact/icons/dist'),
     svgFolder: 'svgs',
     titleComment: 'Common',
   },

@@ -5,8 +5,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from 'src/components/button/Button';
 import { Dialog } from 'src/components/dialog/Dialog';
 import {
-  type RichCardStateSelectProps,
   RichCardStateSelect,
+  type RichCardStateSelectProps,
 } from 'src/components/rich-card-select/RichCardStateSelect';
 import type { UnitedState } from 'src/types/UnitedStates';
 import { unitedStates } from 'src/utils/unitedStates';

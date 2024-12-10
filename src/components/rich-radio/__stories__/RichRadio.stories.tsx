@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type RichRadioProps,
   RichRadio,
+  type RichRadioProps,
 } from 'src/components/rich-radio/RichRadio';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';

@@ -1,12 +1,12 @@
 import type { CSSProperties, ReactNode } from 'react';
 import {
+  components as RScomponents,
   type GroupBase,
   type MenuListProps,
   type OptionProps,
   type Props,
   type SelectComponentsConfig,
   type StylesConfig,
-  components as RScomponents,
 } from 'react-select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';

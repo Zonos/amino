@@ -1,3 +1,4 @@
+import { __dirname } from 'build-utils/build';
 import { execSync } from 'child_process';
 import { glob } from 'glob';
 import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
@@ -86,6 +87,8 @@ execSync('rm -rf svgReact/icons/dist', { encoding: 'utf-8' });
 
 /** @desc Generte all svg components base on path configuration */
 svgProcessPaths.map(generateSvgs);
+
+console.log({ svgProcessPaths });
 
 console.info('Generating index file for generated svg react components ...');
 /** @desc Generate index file for generated svg react components */

@@ -66,11 +66,11 @@ export const Radio = ({
         <AnimatePresence>
           {checked && (
             <motion.svg
-              key="radio"
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.5 }}
               fill="currentColor"
               initial={{ opacity: 0, scale: 1.5 }}
+              key="radio"
               transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
               viewBox="0 0 10 10"
             >

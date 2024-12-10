@@ -1,3 +1,4 @@
+import { __dirname } from 'build-utils/build';
 import { execSync } from 'child_process';
 import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
 import { copySmallerFlags } from 'svgReact/flags/copySmallerFlags';

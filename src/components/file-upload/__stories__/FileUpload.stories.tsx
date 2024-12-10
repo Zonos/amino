@@ -40,7 +40,7 @@ export const FileUpload: StoryFn<typeof FileUploadComponent> = props => {
       {...props}
       dropzoneOptions={{
         // maxSize: 25 << 20,
-        // eslint-disable-next-line no-bitwise
+
         maxSize: 2 << 10,
         onDrop: (acceptedFiles, rejections) => {
           setError(!!rejections.length);

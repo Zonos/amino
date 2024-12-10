@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type SliderProps,
   Slider as SliderComponent,
+  type SliderProps,
 } from 'src/components/slider/Slider';
 import { VStack } from 'src/components/stack/VStack';
 

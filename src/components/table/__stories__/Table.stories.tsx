@@ -7,7 +7,7 @@ import { Badge } from 'src/components/badge/Badge';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
-import { type TableProps, Table } from 'src/components/table/Table';
+import { Table, type TableProps } from 'src/components/table/Table';
 import { TableBody } from 'src/components/table/TableBody';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableFooter } from 'src/components/table/TableFooter';
@@ -171,8 +171,8 @@ const Template: StoryFn<
                 { label: 'Height', value: '11 in' },
               ].map(option => (
                 <VStack
-                  key={option.label}
                   className={styles.attributeLabel}
+                  key={option.label}
                   spacing={8}
                 >
                   <Text
@@ -228,9 +228,9 @@ const Template: StoryFn<
                   { label: 'Buffer', value: 5.0 },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
-                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
+                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}
@@ -275,9 +275,9 @@ const Template: StoryFn<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
-                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
+                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}
@@ -326,9 +326,9 @@ const Template: StoryFn<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
-                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
+                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}
@@ -382,9 +382,9 @@ const Template: StoryFn<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
-                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
+                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}

@@ -1,4 +1,4 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable sort-keys/sort-keys-fix */
 export const theme = {
   /** @info all 0.2s ease-in-out 0s, visibility 0s */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */

@@ -15,8 +15,8 @@ import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { Divider } from 'src/components/divider/Divider';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
@@ -285,7 +285,6 @@ export const CountryMultiSelectExpanded = <
 
                     return (
                       <Checkbox
-                        key={country.code}
                         checked={selectedCountries.some(
                           x => x.code === country.code,
                         )}
@@ -295,6 +294,7 @@ export const CountryMultiSelectExpanded = <
                           !country.disabled && styles.hoverWrapper,
                         )}
                         disabled={country.disabled}
+                        key={country.code}
                         label={country.label}
                         labelComponent={
                           <div

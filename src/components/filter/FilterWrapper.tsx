@@ -96,9 +96,9 @@ export const FilterWrapper = ({
       )}
     </div>
     <div
-      ref={dropdownRef}
       className={styles.dropdownWrapper}
       onKeyDown={handleKeyDown}
+      ref={dropdownRef}
       role="menu"
       style={{
         display: dropDownOpen ? 'flex' : 'none',

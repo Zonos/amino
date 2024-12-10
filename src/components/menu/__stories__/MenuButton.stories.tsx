@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import {
   type MouseEventHandler,
   useCallback,
@@ -10,8 +9,8 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import {
-  type MenuButtonProps,
   MenuButton,
+  type MenuButtonProps,
 } from 'src/components/button/MenuButton';
 import { Flex } from 'src/components/flex/Flex';
 import { Menu } from 'src/components/menu/Menu';

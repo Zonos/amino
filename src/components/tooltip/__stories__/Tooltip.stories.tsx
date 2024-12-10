@@ -10,7 +10,7 @@ import { Select } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
-import { type TooltipProps, Tooltip } from 'src/components/tooltip/Tooltip';
+import { Tooltip, type TooltipProps } from 'src/components/tooltip/Tooltip';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { InfoIcon } from 'src/icons/InfoIcon';
 import type { SelectOption } from 'src/types/SelectOption';

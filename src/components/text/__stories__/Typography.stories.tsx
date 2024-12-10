@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { VStack } from 'src/components/stack/VStack';
-import { type TextProps, Text, textOptions } from 'src/components/text/Text';
+import { Text, textOptions, type TextProps } from 'src/components/text/Text';
 
 import styles from './Typography.stories.module.scss';
 
@@ -16,7 +16,7 @@ export default meta;
 const Template: StoryFn<TextProps> = props => (
   <VStack spacing={8}>
     {textOptions.map(option => (
-      <VStack key={option.type} className={styles.styledVStack}>
+      <VStack className={styles.styledVStack} key={option.type}>
         <Text type={option.type} {...props}>
           {content}
         </Text>

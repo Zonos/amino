@@ -36,6 +36,11 @@ export default tseslint.config(
   pluginImport.flatConfigs.recommended,
   ...pluginStorybook.configs['flat/recommended'],
   {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -48,13 +53,13 @@ export default tseslint.config(
     plugins: {
       'css-modules': pluginCssModules,
       'no-relative-import-paths': pluginNoRelativeImports,
+      pluginJsxA11y,
       pluginTypescriptSortKeys,
       react: pluginReact,
       'react-hooks': pluginReactHooks,
       'simple-import-sort': pluginImportSort,
       'sort-destructure-keys': pluginSortDestructureKeys,
       'sort-keys': pluginSortKeys,
-      pluginJsxA11y,
     },
     rules: {
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
@@ -82,6 +87,7 @@ export default tseslint.config(
       'class-methods-use-this': 'off',
       'css-modules/no-undef-class': [2, { camelCase: true }],
       'css-modules/no-unused-class': [2, { camelCase: true }],
+      'import/extensions': 'off',
       'import/extensions': [
         'error',
         'ignorePackages',
@@ -191,7 +197,6 @@ export default tseslint.config(
        */
       'sort-keys/sort-keys-fix': ['warn', 'asc'],
       'storybook/use-storybook-expect': 'off',
-      'import/extensions': 'off',
     },
   },
   {
@@ -208,6 +213,12 @@ export default tseslint.config(
     files: ['**/*.graphql.*.ts'],
     rules: {
       '@typescript-eslint/no-unused-expressions': 'off',
+    },
+  },
+  {
+    files: ['build-utils/css/constants/theme/**'],
+    rules: {
+      'sort-keys/sort-keys-fix': 'off',
     },
   },
 );

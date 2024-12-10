@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { type RippleProps, Ripple } from 'src/components/button/_Ripple';
+import { Ripple, type RippleProps } from 'src/components/button/_Ripple';
 import type { Color } from 'src/types';
 import { getAminoColor } from 'src/utils/getAminoColor';
 
@@ -95,8 +95,8 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
 
     return (
       <span
-        ref={container}
         className={styles.rippleRoot}
+        ref={container}
         style={{
           ...style,
           '--amino-ripple-group-color': getAminoColor(color) || 'currentColor',
@@ -107,10 +107,10 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
         <AnimatePresence>
           {ripples.map(r => (
             <motion.div
-              key={r.key}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               initial={{ opacity: 1 }}
+              key={r.key}
             >
               {r.element}
             </motion.div>

@@ -1,10 +1,10 @@
 import {
   type ChangeEventHandler,
+  forwardRef,
   type HTMLInputTypeAttribute,
   type InputHTMLAttributes,
   type KeyboardEventHandler,
   type ReactNode,
-  forwardRef,
   useId,
   useMemo,
 } from 'react';
@@ -160,10 +160,6 @@ export const FloatLabelInput = forwardRef<
           <div className={styles.inputValuePrefix}>{valuePrefix}</div>
         )}
         <input
-          ref={ref}
-          aria-label={label}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus}
           className={clsx(styles.aminoInput)}
           data-testid={testId}
           disabled={disabled}
@@ -174,10 +170,14 @@ export const FloatLabelInput = forwardRef<
           pattern={pattern}
           placeholder={placeholder}
           readOnly={readOnly}
+          ref={ref}
           required={required}
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
+          aria-label={label}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus={autoFocus}
           {...props}
         />
         <div className={styles.floatingLabel}>

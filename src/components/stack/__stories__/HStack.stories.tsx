@@ -55,7 +55,7 @@ Selects.args = {
 export const Cards = Template.bind({});
 Cards.args = {
   renderChild: k => (
-    <Card key={k} footerActions={<Button>Do it</Button>} label={`Card ${k}`}>
+    <Card footerActions={<Button>Do it</Button>} key={k} label={`Card ${k}`}>
       <p>Some text</p>
     </Card>
   ),

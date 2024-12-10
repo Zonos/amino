@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { omitControls } from 'story-utils/omitControls';
 
-import { type BadgeProps, Badge } from 'src/components/badge/Badge';
+import { Badge, type BadgeProps } from 'src/components/badge/Badge';
 import { Flex } from 'src/components/flex/Flex';
 import * as icons from 'src/icons/_IconIndex';
 

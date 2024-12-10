@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import {
-  type UseDropdownParams,
   useDropdown,
+  type UseDropdownParams,
 } from 'src/utils/hooks/useDropdown';
 
 import styles from './MenuButton.module.scss';
@@ -61,13 +61,12 @@ export const MenuButton = ({
 
   return (
     <div
-      ref={wrapperRef}
       className={clsx(styles.wrapper, className)}
       onMouseLeave={handleMouseLeave}
+      ref={wrapperRef}
       style={style}
     >
       <div
-        ref={refs.setReference}
         className="menu-button-action"
         onClick={e => {
           e.stopPropagation();
@@ -78,14 +77,15 @@ export const MenuButton = ({
             setVisible(true);
           }
         }}
+        ref={refs.setReference}
         role="button"
         tabIndex={0}
       >
         {action}
       </div>
       <div
-        ref={refs.setFloating}
         className={styles.dropdownWrapper}
+        ref={refs.setFloating}
         style={{
           ...floatingStyles,
           visibility,

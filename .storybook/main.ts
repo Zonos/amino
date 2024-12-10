@@ -31,9 +31,6 @@ const storybookConfig: StorybookConfig = {
         // Caddy reverse proxy supports websockets
         clientPort: 443,
       },
-      warmup: {
-        clientFiles: ['./src/icons/*'],
-      },
     },
   }),
 };

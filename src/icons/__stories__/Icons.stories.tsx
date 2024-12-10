@@ -1,29 +1,22 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
-import { Text } from 'src/components/text/Text';
-import * as icons from 'src/icons/_IconIndex';
+import { iconsList, iconsListProducts } from 'src/icons/__stories__/IconsList';
+import { MailDuotoneIcon } from 'src/icons/MailDuotoneIcon';
+import { SearchIcon } from 'src/icons/SearchIcon';
 import type { Color } from 'src/types';
 import type { IconProps } from 'src/types/IconProps';
 
 import styles from './Icons.stories.module.scss';
 
 const IconsMeta: Meta = {
-  component: icons.MailDuotoneIcon,
+  component: MailDuotoneIcon,
 };
 
 export default IconsMeta;
-
-type IconType = (typeof icons)[keyof typeof icons] & {
-  __docgenInfo?: {
-    displayName?: string;
-  };
-  deprecated?: boolean;
-};
 
 export const Icons = ({
   color,
@@ -32,11 +25,9 @@ export const Icons = ({
   size,
 }: IconProps & { secondaryColor?: Color }) => {
   const [filter, setFilter] = useState('');
-  const iicons = Object.values<IconType>(icons)
+  const iicons = iconsList
     .map(icon => ({
-      deprecated: !!icon.deprecated,
-      icon,
-      iconName: icon.__docgenInfo?.displayName || '',
+      iconName: icon,
     }))
     .filter(icon => icon.iconName);
 
@@ -48,7 +39,7 @@ export const Icons = ({
         size="lg"
         type="search"
         value={filter}
-        valuePrefix={<icons.SearchIcon color="gray600" size={24} />}
+        valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
       <div className={styles.styledWrapper}>
         {iicons
@@ -57,27 +48,12 @@ export const Icons = ({
               ? iconName.toLowerCase().includes(filter.toLowerCase())
               : true,
           )
-          .map(({ deprecated, icon: IconComponent, iconName }) => {
-            const isDeprecated = deprecated;
+          .map(({ iconName }) => {
+            const IconComponent = lazy(() => import(`src/icons/${iconName}`));
             return (
-              <div
-                key={iconName}
-                className={clsx(
-                  styles.styledIcon,
-                  isDeprecated && styles.deprecated,
-                  /Solid/.test(iconName) && 'solid',
-                  /Duotone/.test(iconName) && 'duotone',
-                )}
-              >
-                <IconComponent
-                  color={color}
-                  inlineBlock={inlineBlock}
-                  secondaryColor={secondaryColor}
-                  size={size}
-                />
-                <div>{iconName}</div>
-                {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
-              </div>
+              <Suspense fallback={<div>Loading...</div>} key={iconName}>
+                <IconComponent color={color} size={size} />
+              </Suspense>
             );
           })}
       </div>
@@ -85,21 +61,20 @@ export const Icons = ({
   );
 };
 
-const productIcons = Object.values<IconType>(icons)
-  .filter(icon => icon.__docgenInfo?.displayName?.includes('ColorIcon'))
-  .map(icon => ({
-    deprecated: !!icon.deprecated,
-    icon,
-    iconName: icon.__docgenInfo?.displayName || '',
-  }));
+// const productIcons = iconsListProducts
+//   .filter(icon => icon.includes('ColorIcon'))
+//   .map(icon => ({
+//     icon,
+//     iconName: icon || '',
+//   }));
 
-export const Products = () => (
-  <div className={styles.styledWrapper}>
-    {productIcons.map(({ icon: IconComponent, iconName }) => (
-      <div key={iconName} className={styles.styledIcon}>
-        <IconComponent size={50} />
-        <div>{iconName}</div>
-      </div>
-    ))}
-  </div>
-);
+// export const Products = () => (
+//   <div className={styles.styledWrapper}>
+//     {productIcons.map(({ icon: IconComponent, iconName }) => (
+//       <div key={iconName} className={styles.styledIcon}>
+//         <IconComponent size={50} />
+//         <div>{iconName}</div>
+//       </div>
+//     ))}
+//   </div>
+// );

@@ -1,17 +1,17 @@
 import type { JsonError, NoInfer } from 'src/types';
 
-export type HandleFetchReturn<ResponseBody extends unknown> = {
+export type HandleFetchReturn<ResponseBody> = {
   errors: JsonError[];
   json: NoInfer<ResponseBody> | null;
   response: Response | null;
 };
 
-export type FetcherReturn<ResponseBody extends unknown> = {
+export type FetcherReturn<ResponseBody> = {
   json: NoInfer<ResponseBody> | null;
   response: Response | null;
 };
 
-const getResponseBody = async <ResponseBody extends unknown>({
+const getResponseBody = async <ResponseBody>({
   response,
   shouldLog = true,
   shouldThrow = false,
@@ -35,7 +35,7 @@ const getResponseBody = async <ResponseBody extends unknown>({
   }
 };
 
-export const handleRequest = async <ResponseBody extends unknown>(
+export const handleRequest = async <ResponseBody>(
   url: string,
   options?: RequestInit,
 ): Promise<HandleFetchReturn<ResponseBody>> => {
@@ -95,10 +95,7 @@ export type RequestOptions<ResponseBody, RequestBody> = {
   testExpectedData?: (data: ResponseBody) => boolean;
 } & Omit<RequestInit, 'body'>;
 
-export const handleFetch = async <
-  ResponseBody extends unknown,
-  RequestBody = unknown,
->(
+export const handleFetch = async <ResponseBody, RequestBody = unknown>(
   url: string,
   _opts?: RequestOptions<ResponseBody, RequestBody> & {
     logRequestIfError?: boolean;
@@ -112,10 +109,7 @@ export const handleFetch = async <
   return handleRequest<ResponseBody>(url, options);
 };
 
-export const fetcher = async <
-  ResponseBody extends unknown,
-  RequestBody = unknown,
->(
+export const fetcher = async <ResponseBody, RequestBody = unknown>(
   url: string,
   options?: RequestOptions<ResponseBody, RequestBody>,
 ): Promise<FetcherReturn<ResponseBody>> => {
@@ -129,7 +123,6 @@ export const fetcher = async <
     !response?.ok ||
     ['pollUntil', 'failedData'].includes(firstError?.type || '')
   ) {
-    // eslint-disable-next-line no-throw-literal
     throw { errors, status: response?.status };
   }
 

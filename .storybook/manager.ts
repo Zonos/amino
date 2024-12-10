@@ -1,7 +1,7 @@
 import { addons } from '@storybook/manager-api';
 import {
-  type TagBadgeParameters,
   defaultConfig,
+  type TagBadgeParameters,
 } from 'storybook-addon-tag-badges';
 
 import storybookTheme from './storybookTheme';

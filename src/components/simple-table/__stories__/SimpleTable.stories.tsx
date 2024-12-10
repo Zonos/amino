@@ -1,5 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable react/no-unstable-nested-components */
 import { useState } from 'react';
 
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
@@ -11,9 +9,9 @@ import { Divider } from 'src/components/divider/Divider';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import {
+  SimpleTable,
   type SimpleTableHeader,
   type SimpleTableProps,
-  SimpleTable,
 } from 'src/components/simple-table/SimpleTable';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
@@ -148,7 +146,6 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
 ];
 
 export const Basic: StoryObj = {
-  tags: ['tested'],
   render: () => (
     <>
       <Text type="header">With hover</Text>
@@ -169,10 +166,10 @@ export const Basic: StoryObj = {
       />
     </>
   ),
+  tags: ['tested'],
 };
 
 export const Long: StoryObj = {
-  tags: ['tested'],
   render: () => (
     <SimpleTable
       headers={tableHeaders}
@@ -207,10 +204,10 @@ export const Long: StoryObj = {
       keyExtractor={item => String(item.id)}
     />
   ),
+  tags: ['tested'],
 };
 
 export const Selectable: StoryObj<SimpleTableProps<object>> = {
-  tags: ['tested'],
   render: ({ loading }) => {
     const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -255,12 +252,12 @@ export const Selectable: StoryObj<SimpleTableProps<object>> = {
       />
     );
   },
+  tags: ['tested'],
 };
 
 const link = 'https://letmegooglethat.com';
 
 export const WithLink: StoryObj = {
-  tags: ['tested'],
   render: () => {
     const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -305,6 +302,7 @@ export const WithLink: StoryObj = {
       />
     );
   },
+  tags: ['tested'],
 };
 
 export const Loading: StoryObj = {
@@ -391,7 +389,6 @@ export const Bordered: StoryObj = {
 };
 
 export const Collapsible: StoryObj = {
-  tags: ['tested'],
   render: () => {
     const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
     const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
@@ -507,10 +504,10 @@ export const Collapsible: StoryObj = {
       </>
     );
   },
+  tags: ['tested'],
 };
 
 export const Custom: StoryObj = {
-  tags: ['tested'],
   render: () => {
     const [shouldTruncate, setShouldTruncate] = useState(true);
     const [viewOneRow, setViewOneRow] = useState(false);
@@ -680,10 +677,10 @@ export const Custom: StoryObj = {
       </>
     );
   },
+  tags: ['tested'],
 };
 
 export const OnRowClick: StoryObj = {
-  tags: ['tested'],
   render: () => {
     const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
     const toggleItem = (id: string) =>
@@ -743,4 +740,5 @@ export const OnRowClick: StoryObj = {
       </>
     );
   },
+  tags: ['tested'],
 };

@@ -22,7 +22,7 @@ export default meta;
 export const ColorPalette = () => (
   <div className={styles.wrapper}>
     {colorPrefixes.map(color => (
-      <div key={color} className={styles.colorWrapper}>
+      <div className={styles.colorWrapper} key={color}>
         <Text type="title">{color.toUpperCase()}</Text>
         <VStack spacing={0}>
           {(color !== 'gray' && color !== 'glass'

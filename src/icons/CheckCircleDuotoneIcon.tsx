@@ -10,10 +10,10 @@ export const CheckCircleDuotoneIcon = forwardRef<
   IconProps & { secondaryColor?: Color }
 >(({ className, color, inlineBlock, secondaryColor, size }, ref) => (
   <IconBase
-    ref={ref}
     className={className}
     color={color || 'gray800'}
     inlineBlock={inlineBlock}
+    ref={ref}
     size={size}
     viewBox="0 0 24 24"
   >

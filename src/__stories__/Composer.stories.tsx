@@ -155,7 +155,6 @@ const Template: StoryFn<Props> = ({
   ) => (
     <HStack className={styles.styledHStack} spacing={8}>
       {options.map(x => (
-        // eslint-disable-next-line
         <div
           key={x.label}
           onClick={() => {
@@ -198,7 +197,7 @@ const Template: StoryFn<Props> = ({
         </div>
 
         {range(rows).map(row => (
-          <HStack key={row} className={styles.styledHStack} spacing={8}>
+          <HStack className={styles.styledHStack} key={row} spacing={8}>
             {range(columns).map(column => {
               const rowCol = `${column}-${row}`;
               const Component = [
