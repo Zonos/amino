@@ -60,18 +60,12 @@
     "version:patch": "pnpm build && pnpm version patch -m 'Bump version %s' && pnpm push:tags"
   },
   "dependencies": {
-    "@dnd-kit/core": "^6.0.8",
-    "@dnd-kit/modifiers": "^6.0.1",
-    "@dnd-kit/sortable": "^7.0.2",
-    "@dnd-kit/utilities": "^3.2.1",
     "@floating-ui/react": "^0.26.0",
     "@mui/material": "^5.14.0",
-    "@radix-ui/react-slider": "^1.1.2",
     "@types/topojson-client": "^3.1.1",
     "clsx": "^2.0.0",
     "d3-geo": "^2.0.2",
     "fuse.js": "^6.6.2",
-    "pretty-bytes": "^6.1.0",
     "react-data-grid": "7.0.0-beta.34",
     "react-dropzone": "^12.1.0",
     "react-select": "^5.7.4",

@@ -38,8 +38,6 @@ const prepareEntries = (entries: string[] | string) =>
       )
     : entries;
 
-console.log(import.meta);
-
 /**
  * Bundle package
  * @param options option to configure parcel to bundle package, `input` is required. Use default option if it's not specified

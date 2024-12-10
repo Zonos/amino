@@ -1,4 +1,3 @@
-import { __dirname } from 'build-utils/build';
 import { capitalize } from 'build-utils/css/utils/capitalize';
 import { glob } from 'glob';
 
