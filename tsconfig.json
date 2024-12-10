@@ -61,12 +61,12 @@
     "**/*.ts",
     "**/*.tsx",
     ".storybook/**/*",
-    ".eslintrc.js",
-    ".eslintrc.prod.js",
+    "eslint.config.prod.js",
     "prettier.config.mjs",
     "tsconfig.json",
     "test-utils",
     "vite.config.mts",
-    "postcss.config.mts"
+    "postcss.config.mts",
+    "eslint.config.js"
   ]
 }
