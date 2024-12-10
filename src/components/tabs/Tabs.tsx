@@ -40,7 +40,6 @@ export const Tabs = ({
       >
         {items.map(item => (
           <button
-            key={item}
             className={clsx(
               styles.baseTab,
               globalStyles.focusable,
@@ -50,6 +49,7 @@ export const Tabs = ({
                 'is-selected',
               ],
             )}
+            key={item}
             onClick={() => onChange(items.indexOf(item))}
             type="button"
           >
@@ -67,7 +67,6 @@ export const Tabs = ({
     >
       {items.map(item => (
         <button
-          key={item}
           className={clsx(
             styles.baseTab,
             globalStyles.focusable,
@@ -78,6 +77,7 @@ export const Tabs = ({
               'is-selected',
             ],
           )}
+          key={item}
           onClick={() => onChange(items.indexOf(item))}
           type="button"
         >

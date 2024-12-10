@@ -17,7 +17,7 @@ type SetParams<Value> = Omit<StorageParams<Value>, 'schema'> & {
 };
 const isClientSide = typeof window !== 'undefined';
 
-export const getStorageItem = <Value extends unknown>({
+export const getStorageItem = <Value>({
   key,
   schema,
   type,
@@ -52,7 +52,7 @@ export const getStorageItem = <Value extends unknown>({
   }
 };
 
-export const setStorageItem = <Value extends unknown>({
+export const setStorageItem = <Value>({
   key,
   type,
   value,
@@ -72,7 +72,7 @@ export const setStorageItem = <Value extends unknown>({
   window.dispatchEvent(new Event(`amino:storage-${type}`));
 };
 
-export const setStorageItemWithLifetime = <Value extends unknown>({
+export const setStorageItemWithLifetime = <Value>({
   key,
   lifetime,
   type,
@@ -102,7 +102,7 @@ export const setStorageItemWithLifetime = <Value extends unknown>({
   window.dispatchEvent(new Event(`amino:storage-${type}`));
 };
 
-export const getShouldUpdateStorageItem = <Value extends unknown>({
+export const getShouldUpdateStorageItem = <Value>({
   key,
   type,
 }: StorageParams<Value>) => {

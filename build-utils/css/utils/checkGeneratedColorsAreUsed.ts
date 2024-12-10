@@ -2,7 +2,7 @@ import { logging } from 'build-utils/css/utils/logging';
 import { readFileSync } from 'fs';
 import { glob } from 'glob';
 
-import type { Theme } from 'src/types';
+import type { Theme } from 'src/types/Theme';
 
 const themeEntry: Record<Theme, string> = {
   day: 'theme.ts',

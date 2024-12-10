@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import {
-  type FloatLabelInputProps,
   FloatLabelInput,
+  type FloatLabelInputProps,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
@@ -39,7 +39,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
     return (
       <div className={clsx(styles.styledWrapper, className)}>
         <FloatLabelInput
-          ref={ref}
           aria-label={label}
           autoFocus={autoFocus}
           className={styles.aminoInput}
@@ -53,6 +52,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           placeholder={placeholder}
           prefix={prefix}
           readOnly={readOnly}
+          ref={ref}
           required={required}
           suffix={
             suffix || (

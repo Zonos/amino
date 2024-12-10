@@ -4,8 +4,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import {
-  type AnnouncementDialogProps,
   AnnouncementDialog,
+  type AnnouncementDialogProps,
 } from 'src/components/dialog/announcement/AnnouncementDialog';
 import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';

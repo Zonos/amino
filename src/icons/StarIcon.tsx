@@ -6,10 +6,10 @@ import type { IconProps } from 'src/types/IconProps';
 export const StarIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, inlineBlock, size }, ref) => (
     <IconBase
-      ref={ref}
       className={className}
       color={color}
       inlineBlock={inlineBlock}
+      ref={ref}
       size={size}
       viewBox="0 0 24 24"
     >

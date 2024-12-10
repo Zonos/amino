@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { type StackProps, Stack } from 'src/components/stack/Stack';
+import { Stack, type StackProps } from 'src/components/stack/Stack';
 
 import styles from './HStack.module.scss';
 

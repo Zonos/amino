@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type UserAvatarProps,
   UserAvatar as Avatar,
+  type UserAvatarProps,
 } from 'src/components/avatar/UserAvatar';
 import { Flex } from 'src/components/flex/Flex';
 

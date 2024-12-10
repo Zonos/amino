@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect } from 'react';
 
 import 'src/styles/reset.css';

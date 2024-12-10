@@ -1,6 +1,6 @@
-import * as github from '@actions/github';
 import * as core from '@actions/core';
-import { PullRequestEvent } from '@octokit/webhooks-types';
+import * as github from '@actions/github';
+import type { PullRequestEvent } from '@octokit/webhooks-types';
 
 const engineerPool = [
   'evad1n',
@@ -12,7 +12,7 @@ const engineerPool = [
 
 async function run() {
   try {
-    const { payload, issue } = github.context;
+    const { issue, payload } = github.context;
     const { pull_request } = payload as PullRequestEvent;
 
     if (!pull_request) {
@@ -21,7 +21,7 @@ async function run() {
 
     const author = pull_request.user.login;
 
-    const { owner, repo, number: issue_number } = issue;
+    const { number: issue_number, owner, repo } = issue;
 
     if (!process.env.GITHUB_TOKEN) {
       throw new Error('No github token');
@@ -41,10 +41,10 @@ async function run() {
     console.log('Trying to add assignees: ', JSON.stringify([author]));
 
     const result = await client.issues.addAssignees({
+      assignees: [author],
+      issue_number,
       owner,
       repo,
-      issue_number,
-      assignees: [author],
     });
 
     core.debug('Response: ' + JSON.stringify(result));

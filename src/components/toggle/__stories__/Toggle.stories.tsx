@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
-import { type ToggleProps, Toggle } from 'src/components/toggle/Toggle';
+import { Toggle, type ToggleProps } from 'src/components/toggle/Toggle';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 
 const Template = ({ value: initialValue, ...props }: ToggleProps) => {

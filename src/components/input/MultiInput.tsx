@@ -138,8 +138,8 @@ export const MultiInput = ({
 
         return (
           // User could add duplicate tags, so we need to use index as key
-          // eslint-disable-next-line react/no-array-index-key
-          <Flex key={tag + index} alignItems="center" gap={0}>
+
+          <Flex alignItems="center" gap={0} key={tag + index}>
             <Tag
               highlighted={highlighted}
               intent={intent}
@@ -153,13 +153,13 @@ export const MultiInput = ({
         );
       })}
       <input
-        ref={inputRef}
         className={styles.tagInput}
         onChange={handleInputChange}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}
         onPaste={handlePaste}
         placeholder={!tags.length ? placeholder : ''}
+        ref={inputRef}
         value={inputValue}
       />
     </Flex>

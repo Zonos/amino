@@ -1,4 +1,4 @@
-import React, { type ReactNode, Fragment } from 'react';
+import React, { Fragment, type ReactNode } from 'react';
 
 import clsx from 'clsx';
 
@@ -311,17 +311,17 @@ export const SimpleTable = <T extends object>({
           {selectable.enabled && (
             <td>
               <div>
-                <Skeleton key={n} height={loadingSkeletonHeight} />
+                <Skeleton height={loadingSkeletonHeight} key={n} />
               </div>
             </td>
           )}
           {headers.map(header => (
             <td
-              key={header.key}
               className={clsx(
                 styles.loading,
                 header.noPadding && styles.noPadding,
               )}
+              key={header.key}
             >
               <div
                 className={styles.skeletonCellWrapper}
@@ -330,8 +330,8 @@ export const SimpleTable = <T extends object>({
                 }}
               >
                 <Skeleton
-                  key={n}
                   height={loadingSkeletonHeight}
+                  key={n}
                   style={{
                     width: '50%',
                   }}
@@ -352,13 +352,13 @@ export const SimpleTable = <T extends object>({
           ?.content;
         return (
           <TableRowCollapse
-            key={key}
             className={clsx(
               !noHoverBackground && styles.withHover,
               collapsed && styles.collapsed,
               rowCollapseContent && styles.hasContent,
             )}
             collapsed={collapsed}
+            key={key}
             onToggleCollapse={() => {
               toggleItem(key);
               onRowClick?.(item);
@@ -404,11 +404,11 @@ export const SimpleTable = <T extends object>({
 
       return (
         <tr
-          key={keyExtractor(item)}
           className={clsx(
             clickable && styles.clickable,
             !noHoverBackground && styles.withHover,
           )}
+          key={keyExtractor(item)}
           onClick={e => {
             if (selectable.anySelected) {
               if (!selectable.isRowCheckboxDisabled?.(item, index)) {
@@ -500,8 +500,8 @@ export const SimpleTable = <T extends object>({
             )}
             {headers.map(header => (
               <th
-                key={header.key}
                 className={clsx(header.noPadding && styles.noPadding)}
+                key={header.key}
                 style={{
                   textAlign: header.align || 'start',
                 }}

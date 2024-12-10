@@ -1,6 +1,6 @@
 import {
-  type ReactNode,
   createContext,
+  type ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
-import { type ToastProps, Toast } from 'src/components/toast/Toast';
+import { Toast, type ToastProps } from 'src/components/toast/Toast';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 
 import styles from './ToastContext.module.scss';
@@ -209,15 +209,15 @@ export const ToastContextProvider = ({ children }: Props) => {
               const key = `persistent-toast-${toast}-${uuid}`;
               return (
                 <div
-                  key={key}
-                  ref={index === 0 ? firstToastRef : null} // Only ref the first toast
                   className={styles.persistentToast}
+                  key={key}
                   onClick={toggleExpanded}
                   onKeyDown={e => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       toggleExpanded(e);
                     }
                   }}
+                  ref={index === 0 ? firstToastRef : null} // Only ref the first toast
                   role="button"
                   tabIndex={0}
                 >

@@ -2,8 +2,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Flex } from 'src/components/flex/Flex';
 import {
-  type TextAvatarProps,
   TextAvatar as TextAvatarComponent,
+  type TextAvatarProps,
 } from 'src/components/text-avatar/TextAvatar';
 
 const TextAvatarMeta: Meta = {

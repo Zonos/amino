@@ -49,7 +49,7 @@ export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
       dropzoneOptions={{
         maxFiles: 2,
         // 2 KB
-        // eslint-disable-next-line no-bitwise
+
         maxSize: 2 << 10,
         multiple: true,
         onDrop: (acceptedFiles, rejections) => {

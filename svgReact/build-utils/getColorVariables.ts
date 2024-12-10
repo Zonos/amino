@@ -1,4 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
 import { getHspFromColor } from 'svgReact/build-utils/getColorContrast';
 
 export const sortColorMatch = (a: string, b: string) =>

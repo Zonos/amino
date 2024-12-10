@@ -12,14 +12,14 @@ import type {
   StylesConfig,
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
-import type Select from 'react-select/dist/declarations/src/Select';
 
 import clsx from 'clsx';
+import type Select from 'node_modules/react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
@@ -103,7 +103,6 @@ const Control = <
 
   return (
     <div
-      ref={innerRef}
       className={clsx([
         className,
         hasValue && styles.hasValue,
@@ -117,6 +116,7 @@ const Control = <
         styles.reactSelectControl,
         'react-select-control',
       ])}
+      ref={innerRef}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
@@ -433,7 +433,6 @@ export const StyledReactSelect = <
       data-testid={testId}
     >
       <ReactSelect<Option, IsMulti, Group>
-        ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}
         components={
           {
@@ -467,6 +466,7 @@ export const StyledReactSelect = <
         }
         menuPosition={menuPosition}
         placeholder={placeholder || ''}
+        ref={selectElement}
         styles={
           {
             ...style,

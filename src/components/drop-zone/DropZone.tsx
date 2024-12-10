@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
@@ -99,7 +99,7 @@ export const DropZone = ({
 
   const renderFiles = () =>
     uploadedFiles.map((file, index) => (
-      <div key={file.name} className={styles.uploadedFileRow}>
+      <div className={styles.uploadedFileRow} key={file.name}>
         {file.imageUrl ? (
           <ImageAvatar imageUrl={file.imageUrl} shape="rounded" />
         ) : (

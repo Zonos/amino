@@ -11,6 +11,7 @@ const ConfirmMeta: Meta = {
       url: 'https://www.figma.com/file/WnKnmG7L3Q74hqPsw4rbEE/Amino-2.0?node-id=357%3A6936&mode=dev',
     },
   },
+  tags: ['tested'],
 };
 
 export default ConfirmMeta;

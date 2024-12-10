@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { type ButtonProps, Button } from 'src/components/button/Button';
+import { Button, type ButtonProps } from 'src/components/button/Button';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -56,7 +56,6 @@ const ButtonRow = ({
       />
       <Button
         {...props}
-        /*  eslint-disable-next-line react/no-children-prop */
         children=""
         disabled={disabled}
         icon={<CubeIcon size={24} />}
@@ -64,7 +63,6 @@ const ButtonRow = ({
         variant={variant}
       />
       <Button
-        /*  eslint-disable-next-line react/no-children-prop */
         children=""
         color={props.color}
         disabled={disabled}

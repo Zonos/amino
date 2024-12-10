@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Flex } from 'src/components/flex/Flex';
-import { type SwitchProps, Switch } from 'src/components/switch/Switch';
+import { Switch, type SwitchProps } from 'src/components/switch/Switch';
 import { Text } from 'src/components/text/Text';
 import { Default } from 'src/icons/flags/Default';
 import { LaptopIcon } from 'src/icons/LaptopIcon';

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import clsx from 'clsx';
 
-import { type CardProps, Card } from 'src/components/card/Card';
+import { Card, type CardProps } from 'src/components/card/Card';
 import type { BaseProps } from 'src/types/BaseProps';
 
 import styles from './DangerZone.module.scss';

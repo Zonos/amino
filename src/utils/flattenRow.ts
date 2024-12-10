@@ -104,7 +104,7 @@ export const flattenRow = ({
 
         return { ...prev, ...nestedObj };
       }
-    } catch (err) {
+    } catch {
       // ignore
     }
   }

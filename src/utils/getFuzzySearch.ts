@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 
-export const getFuzzySearch = <T extends unknown>({
+export const getFuzzySearch = <T>({
   array,
   index,
   options,

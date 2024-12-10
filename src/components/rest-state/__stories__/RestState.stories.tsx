@@ -2,8 +2,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
 import {
-  type RestStateProps,
   RestState,
+  type RestStateProps,
 } from 'src/components/rest-state/RestState';
 
 const RestStateMeta: Meta = {

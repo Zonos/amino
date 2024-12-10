@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
+import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
 
 export const CodeDuotoneIcon = forwardRef<
@@ -10,10 +10,10 @@ export const CodeDuotoneIcon = forwardRef<
   IconProps & { secondaryColor?: Color }
 >(({ className, color, inlineBlock, secondaryColor, size }, ref) => (
   <IconBase
-    ref={ref}
     className={className}
     color={color || 'gray800'}
     inlineBlock={inlineBlock}
+    ref={ref}
     size={size}
     viewBox="0 0 24 24"
   >

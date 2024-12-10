@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type RoundedIconProps,
   RoundedIcon,
+  type RoundedIconProps,
 } from 'src/components/rounded-icon/RoundedIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 

@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type ProgressBarProps,
   ProgressBar,
+  type ProgressBarProps,
 } from 'src/components/progress-bar/ProgressBar';
 import { VStack } from 'src/components/stack/VStack';
 

@@ -7,7 +7,7 @@ import { Button } from 'src/components/button/Button';
 import { Card } from 'src/components/card/Card';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Input } from 'src/components/input/Input';
-import { type HSectionProps, HSection } from 'src/components/section/HSection';
+import { HSection, type HSectionProps } from 'src/components/section/HSection';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 
@@ -132,8 +132,8 @@ export const VariableList = () => {
         <VStack>
           {items.map((item, idx) => (
             <Card
-              key={item}
               actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
+              key={item}
               label={item}
             >
               <Input label="An input" onChange={() => null} value="value" />
@@ -150,8 +150,8 @@ export const VariableList = () => {
         <VStack>
           {items.map((item, idx) => (
             <Card
-              key={item}
               actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
+              key={item}
               label={item}
             >
               <Input label="An input" onChange={() => null} value="value" />

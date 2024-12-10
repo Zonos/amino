@@ -6,7 +6,7 @@ import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
-import { type TextareaProps, Textarea } from 'src/components/textarea/Textarea';
+import { Textarea, type TextareaProps } from 'src/components/textarea/Textarea';
 
 const TextAreaMeta: Meta = {
   component: Textarea,
@@ -75,12 +75,12 @@ const Template: StoryFn<TextareaProps> = ({
         <Flex gap={10}>
           <Textarea
             {...rest}
-            ref={textareaRef}
             actions={actions}
             error={error}
             helpText={helpText}
             onChange={() => {}}
             placeholder={placeholder}
+            ref={textareaRef}
             value=""
           />
           <Input onChange={() => {}} value="" />

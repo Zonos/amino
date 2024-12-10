@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { VStack } from 'src/components/stack/VStack';
-import { type TagProps, Tag } from 'src/components/tag/Tag';
+import { Tag, type TagProps } from 'src/components/tag/Tag';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
 const TagMeta: Meta = {

@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
 
-// eslint-disable-next-line import/no-internal-modules
 import * as flags from 'src/icons/flags/_FlagIndex';
 
 export type Flag = keyof typeof flags;
@@ -19,12 +18,12 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
     }
 
     if (iconScale === 'small') {
-      return <Icon ref={ref} height={16} width={16} />;
+      return <Icon height={16} ref={ref} width={16} />;
     }
     if (iconScale === 'medium') {
-      return <Icon ref={ref} height={20} width={20} />;
+      return <Icon height={20} ref={ref} width={20} />;
     }
 
-    return <Icon ref={ref} borderRadius={11} height={32} width={32} />;
+    return <Icon borderRadius={11} height={32} ref={ref} width={32} />;
   },
 );

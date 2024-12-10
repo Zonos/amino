@@ -2,8 +2,8 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import clsx from 'clsx';
 
-import type { GridAlignment, GridSpacing } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { GridAlignment, GridSpacing } from 'src/types/GridSpacing';
 
 import styles from './Stack.module.scss';
 

@@ -4,7 +4,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Currency } from 'src/components/currency/Currency';
-import { type TableProps, Table } from 'src/components/table/Table';
+import { Table, type TableProps } from 'src/components/table/Table';
 import { TableBody } from 'src/components/table/TableBody';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableHead } from 'src/components/table/TableHead';
@@ -122,7 +122,7 @@ const Template: StoryFn<
             measurement => measurement?.type === 'WIDTH',
           )?.value;
           return (
-            <TableRow key={node.id} active={!!selectedProductIds[node.id]}>
+            <TableRow active={!!selectedProductIds[node.id]} key={node.id}>
               <TableCell padding="0 8px">
                 <Checkbox
                   checked={!!selectedProductIds[node.id]}

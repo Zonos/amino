@@ -1,10 +1,10 @@
-import { type ReactNode, forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
 import { z } from 'zod';
 
 import {
-  type BaseDialogProps,
   BaseDialog,
+  type BaseDialogProps,
 } from 'src/components/dialog/BaseDialog';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';

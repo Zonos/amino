@@ -3,8 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type RichCheckboxProps,
   RichCheckbox,
+  type RichCheckboxProps,
 } from 'src/components/rich-checkbox/RichCheckbox';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
 

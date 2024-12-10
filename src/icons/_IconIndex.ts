@@ -1,4 +1,3 @@
-/* eslint-disable deprecation/deprecation */
 /** Common */
 export { AIDuotoneIcon } from './AIDuotoneIcon';
 export { AIIcon } from './AIIcon';

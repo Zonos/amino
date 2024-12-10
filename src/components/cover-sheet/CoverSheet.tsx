@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { Button } from 'src/components/button/Button';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import {
-  type BaseDialogProps,
   BaseDialog,
+  type BaseDialogProps,
 } from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';

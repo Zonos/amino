@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
-import { type FlexProps, Flex } from 'src/components/flex/Flex';
+import { Flex, type FlexProps } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
 
 const Template: StoryFn<FlexProps> = ({ children, ...props }) => (

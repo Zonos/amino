@@ -8,8 +8,8 @@ import {
 
 import {
   type FilterAmountAction,
-  type FilterAmountState,
   filterAmountOptions,
+  type FilterAmountState,
   initialFilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
 import {

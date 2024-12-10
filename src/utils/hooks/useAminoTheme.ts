@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import type { Theme } from 'src/types';
-import { themeSchema } from 'src/types/Theme';
+import { type Theme, themeSchema } from 'src/types/Theme';
 import { useStorage } from 'src/utils/hooks/useStorage';
 
 type Params = {

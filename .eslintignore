@@ -1,8 +1,0 @@
-node_modules
-svgReact/flags/svgs
-svgReact/icons/svgs
-dist
-!svgReact/*/dist
-storybook-static
-src/all.ts
-!.storybook

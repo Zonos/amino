@@ -3,8 +3,8 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
-  type MultiInputProps,
   MultiInput,
+  type MultiInputProps,
 } from 'src/components/input/MultiInput';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -47,8 +47,8 @@ const Template: StoryFn<MultiInputProps> = ({
         setHasValidationError={setHasValidationError}
         setInputValue={setInputValue}
         setTags={setTags}
-        tags={tags}
         tagValidation={tagValidation}
+        tags={tags}
       />
       {hasValidationError && (
         <Text color={hasValidationError && 'red600'}>

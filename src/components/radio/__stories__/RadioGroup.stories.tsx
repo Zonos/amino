@@ -3,9 +3,9 @@ import { useState } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import {
+  RadioGroup,
   type RadioGroupItem,
   type RadioGroupProps,
-  RadioGroup,
 } from 'src/components/radio/RadioGroup';
 
 const RadioMeta: Meta = {

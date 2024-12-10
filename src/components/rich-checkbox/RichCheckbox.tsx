@@ -37,9 +37,9 @@ export const RichCheckbox = ({
       const { checked, icon, label, subtitle, value } = item;
       return (
         <button
-          key={value}
           className={styles.styledRichCheckbox}
           data-state={checked ? 'checked' : ''}
+          key={value}
           onClick={e => onClick(e.currentTarget.value)}
           type="button"
           value={value}

@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { type FlagIconProps, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import * as flags from 'src/icons/flags/_FlagIndex';
 import { SearchIcon } from 'src/icons/SearchIcon';
 
@@ -80,11 +80,11 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
             const isDeprecated = deprecated;
             return (
               <div
-                key={iconName}
                 className={clsx(
                   styles.styledIcon,
                   isDeprecated && styles.deprecated,
                 )}
+                key={iconName}
               >
                 <IconComponent
                   borderRadius={getBorderRadius(iconScale)}

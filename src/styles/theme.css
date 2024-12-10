@@ -257,49 +257,49 @@
   --amino-spinner-stroke-black: #0c0c0c;
   --amino-spinner-track-white: rgba(255, 255, 255, 0.3);
   --amino-spinner-stroke-white: #ffffff;
+  --amino-appbar-elevation: var(--amino-elevation-500);
   --amino-appbar-height: 55px;
-  --amino-sidebar-width: 232px;
+  --amino-dialog-elevation: var(--amino-elevation-400);
   --amino-elevation-0: 0;
   --amino-elevation-100: 100;
   --amino-elevation-200: 200;
   --amino-elevation-300: 300;
   --amino-elevation-400: 400;
   --amino-elevation-500: 500;
-  --amino-dialog-elevation: var(--amino-elevation-400);
-  --amino-toast-elevation: var(--amino-elevation-500);
-  --amino-appbar-elevation: var(--amino-elevation-500);
-  --amino-size-xl: 56px;
-  --amino-size-lg: 48px;
-  --amino-size-md: 40px;
-  --amino-size-sm: 32px;
-  --amino-radius-4: 0.25rem;
-  --amino-radius-6: 0.375rem;
-  --amino-radius-8: 0.5rem;
-  --amino-radius-10: 0.625rem;
-  --amino-radius-12: 0.75rem;
-  --amino-font-size-3xl: 1.875rem;
-  --amino-font-size-2xl: 1.5rem;
-  --amino-font-size-xl: 1.25rem;
-  --amino-font-size-l: 1.125rem;
-  --amino-font-size-base-docs: 1rem;
-  --amino-font-size-base: 0.813rem;
-  --amino-font-size-s: 0.75rem;
-  --amino-font-size-xs: 0.688rem;
-  --amino-line-height-3xl: 3rem;
-  --amino-line-height-2xl: 2.5rem;
-  --amino-line-height-xl: 2rem;
-  --amino-line-height-l: 1.5rem;
-  --amino-line-height-base: 1.5rem;
-  --amino-line-height-s: 1rem;
-  --amino-line-height-xs: 0.75rem;
-  --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  --amino-font-harmonized-codes: 'Fira Code', var(--amino-font-sans);
   --amino-font-mono: Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco,
     Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
     Courier New, monospace;
-  --amino-font-harmonized-codes: 'Fira Code', var(--amino-font-sans);
+  --amino-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  --amino-font-size-2xl: 1.5rem;
+  --amino-font-size-3xl: 1.875rem;
+  --amino-font-size-base: 0.813rem;
+  --amino-font-size-base-docs: 1rem;
+  --amino-font-size-l: 1.125rem;
+  --amino-font-size-s: 0.75rem;
+  --amino-font-size-xl: 1.25rem;
+  --amino-font-size-xs: 0.688rem;
   --amino-input-background: inherit;
+  --amino-line-height-2xl: 2.5rem;
+  --amino-line-height-3xl: 3rem;
+  --amino-line-height-base: 1.5rem;
+  --amino-line-height-l: 1.5rem;
+  --amino-line-height-s: 1rem;
+  --amino-line-height-xl: 2rem;
+  --amino-line-height-xs: 0.75rem;
+  --amino-radius-10: 0.625rem;
+  --amino-radius-12: 0.75rem;
+  --amino-radius-4: 0.25rem;
+  --amino-radius-6: 0.375rem;
+  --amino-radius-8: 0.5rem;
+  --amino-sidebar-width: 232px;
+  --amino-size-lg: 48px;
+  --amino-size-md: 40px;
+  --amino-size-sm: 32px;
+  --amino-size-xl: 56px;
+  --amino-toast-elevation: var(--amino-elevation-500);
 }
 
 /* Night theme */
