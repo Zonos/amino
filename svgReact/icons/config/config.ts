@@ -1,4 +1,3 @@
-import { __dirname } from 'build-utils/build';
 import path from 'path';
 
 export type FileConfig = {

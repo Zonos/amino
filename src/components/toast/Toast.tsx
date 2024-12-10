@@ -10,8 +10,8 @@ import { InfoIcon } from 'src/icons/InfoIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
-import type { Intent } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { Intent } from 'src/types/Intent';
 
 import styles from './Toast.module.scss';
 

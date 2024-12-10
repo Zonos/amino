@@ -18,7 +18,7 @@ import {
 import { useRipple } from 'src/components/button/useRipple';
 import { Spinner, type SpinnerProps } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
+import type { Color } from 'src/types/Color';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';

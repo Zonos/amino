@@ -7,7 +7,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { iconsList, iconsListProducts } from 'src/icons/__stories__/IconsList';
 import { MailDuotoneIcon } from 'src/icons/MailDuotoneIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
-import type { Color } from 'src/types';
+import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
 
 import styles from './Icons.stories.module.scss';

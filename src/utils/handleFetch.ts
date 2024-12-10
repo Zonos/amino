@@ -1,4 +1,8 @@
-import type { JsonError, NoInfer } from 'src/types';
+export type JsonError = {
+  errorId?: number;
+  message: string;
+  type: string;
+};
 
 export type HandleFetchReturn<ResponseBody> = {
   errors: JsonError[];

@@ -10,8 +10,8 @@ import MuiTooltip, {
 import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import type { Theme } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { Theme } from 'src/types/Theme';
 
 export type TooltipProps = BaseProps & {
   /**

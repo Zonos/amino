@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
+import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
 
 export const ArrowSwapDuotoneIcon = forwardRef<
