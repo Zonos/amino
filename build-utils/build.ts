@@ -3,6 +3,7 @@ import buble from '@rollup/plugin-buble';
 import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
 import autoprefixer from 'autoprefixer';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
@@ -17,7 +18,6 @@ import {
 } from 'rollup';
 import postcss from 'rollup-plugin-postcss';
 import progress from 'rollup-plugin-progress';
-import tsPlugin from 'rollup-plugin-typescript2';
 
 type RollupOptions = InputOptions & { output?: OutputOptions };
 type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
@@ -37,6 +37,8 @@ const prepareEntries = (entries: string[] | string) =>
         {},
       )
     : entries;
+
+console.log(import.meta);
 
 /**
  * Bundle package
@@ -58,7 +60,10 @@ const bundlePackage = async (
     plugins: [
       alias({
         entries: [
-          { find: 'src', replacement: path.resolve(__dirname, '../src') },
+          {
+            find: 'src',
+            replacement: path.resolve(import.meta.dirname, '../src'),
+          },
         ],
       }),
       nodeResolve({
@@ -66,13 +71,7 @@ const bundlePackage = async (
         resolveOnly: [''],
       }),
       image(),
-      tsPlugin({
-        tsconfigOverride: {
-          compilerOptions: {
-            module: 'esnext',
-          },
-        },
-      }),
+      typescript(),
       // preprocess the scss
       postcss({
         autoModules: true,
@@ -88,7 +87,7 @@ const bundlePackage = async (
         use: {
           less: null,
           sass: {
-            includePaths: [path.resolve(__dirname, '../src/styles')],
+            includePaths: [path.resolve(import.meta.dirname, '../src/styles')],
           },
           stylus: null,
         },

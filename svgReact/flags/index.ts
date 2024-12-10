@@ -1,4 +1,3 @@
-import { __dirname } from 'build-utils/build';
 import { execSync } from 'child_process';
 import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';
 import { copySmallerFlags } from 'svgReact/flags/copySmallerFlags';
@@ -30,7 +29,6 @@ export const generateSvgs = async () => {
     /** @desc Clean up distribution folder */
     execSync('rm -rf svgReact/flags/dist', { encoding: 'utf-8' });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
   }
 };
@@ -46,8 +44,7 @@ const createComponentsFromSvgs = async () => {
     /** @desc Generate index file for generated svg react components */
     createIndexFile(`./svgReact/flags/dist`);
 
-    // eslint-disable-next-line no-console
-    console.log(`Formatting SVGs...`);
+    console.info(`Formatting SVGs...`);
     /** @desc Format generated svg react component and new IconIndex */
     try {
       execSync(
@@ -67,17 +64,14 @@ const createComponentsFromSvgs = async () => {
       encoding: 'utf-8',
     });
 
-    // eslint-disable-next-line no-console
-    console.log(`Moving output files to src...`);
+    console.info(`Moving output files to src...`);
     /** @desc Move file from distribution folder over */
     execSync('mv svgReact/flags/dist/* src/icons/flags', { encoding: 'utf-8' });
 
-    // eslint-disable-next-line no-console
-    console.log(`Linting all files...`);
+    console.info(`Linting all files...`);
     /** @desc Run autofix eslint */
     execSync('pnpm lint:prod --fix', { encoding: 'utf-8' });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
   }
 };

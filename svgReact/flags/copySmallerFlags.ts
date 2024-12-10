@@ -45,10 +45,8 @@ export const copySmallerFlags = async ({
 
           copyFile(file, `${destFolder}/${code}.svg`, (err: unknown) => {
             if (err) {
-              // eslint-disable-next-line no-console
               console.log('Error Found:', err);
             } else {
-              // eslint-disable-next-line no-console
               console.log(`${file} smaller`);
             }
             resolve(1);

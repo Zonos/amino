@@ -1,4 +1,4 @@
-import base from './eslint.config.mjs';
+import base from './eslint.config.js';
 
 /**
  * @type {import("eslint").Linter.Config}
@@ -12,7 +12,7 @@ export default [
     },
   },
   {
-    files: ['./svgReact/**/*', './build-utils/**/*', '__stories__/**'],
+    files: ['svgReact/**', './build-utils/**/*', '__stories__/**'],
     rules: {
       'no-console': 'off',
     },

@@ -27,6 +27,7 @@ export default tseslint.config(
       'storybook-static',
       'src/all.ts',
       '!.storybook',
+      '.github',
     ],
   },
   eslint.configs.recommended,
@@ -36,11 +37,6 @@ export default tseslint.config(
   pluginImport.flatConfigs.recommended,
   ...pluginStorybook.configs['flat/recommended'],
   {
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -52,8 +48,8 @@ export default tseslint.config(
     },
     plugins: {
       'css-modules': pluginCssModules,
+      'jsx-a11y': pluginJsxA11y,
       'no-relative-import-paths': pluginNoRelativeImports,
-      pluginJsxA11y,
       pluginTypescriptSortKeys,
       react: pluginReact,
       'react-hooks': pluginReactHooks,
@@ -88,16 +84,6 @@ export default tseslint.config(
       'css-modules/no-undef-class': [2, { camelCase: true }],
       'css-modules/no-unused-class': [2, { camelCase: true }],
       'import/extensions': 'off',
-      'import/extensions': [
-        'error',
-        'ignorePackages',
-        {
-          js: 'never',
-          jsx: 'never',
-          ts: 'never',
-          tsx: 'never',
-        },
-      ],
       'import/no-extraneous-dependencies': [
         'error',
         {
@@ -198,6 +184,11 @@ export default tseslint.config(
       'sort-keys/sort-keys-fix': ['warn', 'asc'],
       'storybook/use-storybook-expect': 'off',
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
   {
     files: ['__tests__/**'], // or any other pattern
@@ -219,6 +210,12 @@ export default tseslint.config(
     files: ['build-utils/css/constants/theme/**'],
     rules: {
       'sort-keys/sort-keys-fix': 'off',
+    },
+  },
+  {
+    files: ['svgReact/**'],
+    rules: {
+      'no-console': 'off',
     },
   },
 );

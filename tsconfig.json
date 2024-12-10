@@ -62,11 +62,12 @@
     "**/*.tsx",
     ".storybook/**/*",
     "eslint.config.prod.js",
-    "prettier.config.mjs",
+    "prettier.config.js",
     "tsconfig.json",
     "test-utils",
     "vite.config.mts",
     "postcss.config.mts",
-    "eslint.config.js"
+    "eslint.config.js",
+    "babel.config.js"
   ]
 }

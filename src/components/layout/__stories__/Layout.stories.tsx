@@ -59,9 +59,9 @@ const LayoutMeta: Meta = {
     docs: { source: { type: 'code' } },
   },
   subcomponents: {
-    // @ts-ignore subcomponents don't seem to be working
+    // @ts-expect-error subcomponents don't seem to be working
     NavigationGroup,
-    // @ts-ignore subcomponents don't seem to be working
+    // @ts-expect-error subcomponents don't seem to be working
     NavigationItem,
   },
 };

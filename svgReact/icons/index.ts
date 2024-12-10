@@ -1,4 +1,3 @@
-import { __dirname } from 'build-utils/build';
 import { execSync } from 'child_process';
 import { glob } from 'glob';
 import { optimizeSvgs } from 'svgReact/build-utils/optimizeSvgs';

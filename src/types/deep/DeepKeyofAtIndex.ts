@@ -10,7 +10,7 @@ type DeepKeyofObjAndArray<
 > = DeepRecursionLimited<
   Depth,
   {
-    [K in Extract<keyof T, string>]: T[K] []
+    [K in Extract<keyof T, string>]: T[K] extends unknown[]
       ? T[K][number] extends object
         ? `${K}[number].${DeepKeyofObjAndArray<T[K][number], DeepPrev[Depth]>}`
         : `${K}[number]`
@@ -46,7 +46,7 @@ export type DeepPropertyTypeAtIndex<
   KeyPath extends `${infer Top}.${infer Rest}`
     ? Top extends `${infer ArrayField}[number]`
       ? ArrayField extends keyof T
-        ? T[ArrayField] []
+        ? T[ArrayField] extends unknown[]
           ? T[ArrayField][number] extends object
             ? Rest extends DeepKeyofObjAndArray<
                 T[ArrayField][number],
@@ -70,7 +70,7 @@ export type DeepPropertyTypeAtIndex<
       : never
     : KeyPath extends `${infer ArrayField}[number]`
     ? ArrayField extends keyof T
-      ? T[ArrayField] []
+      ? T[ArrayField] extends unknown[]
         ? T[ArrayField][number]
         : never
       : never
