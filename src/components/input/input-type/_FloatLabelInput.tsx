@@ -160,6 +160,8 @@ export const FloatLabelInput = forwardRef<
           <div className={styles.inputValuePrefix}>{valuePrefix}</div>
         )}
         <input
+          aria-label={label}
+          autoFocus={autoFocus}
           className={clsx(styles.aminoInput)}
           data-testid={testId}
           disabled={disabled}
@@ -175,9 +177,6 @@ export const FloatLabelInput = forwardRef<
           tabIndex={tabIndex}
           type={type || 'text'}
           value={value || ''}
-          aria-label={label}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus}
           {...props}
         />
         <div className={styles.floatingLabel}>

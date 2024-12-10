@@ -84,6 +84,8 @@ export default tseslint.config(
       'css-modules/no-undef-class': [2, { camelCase: true }],
       'css-modules/no-unused-class': [2, { camelCase: true }],
       'import/extensions': 'off',
+      // False positives
+      'import/named': 'off',
       'import/no-extraneous-dependencies': [
         'error',
         {
@@ -207,7 +209,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['build-utils/css/constants/theme/**'],
+    files: ['build-utils/css/constants/theme/**', 'src/styles/constants/**'],
     rules: {
       'sort-keys/sort-keys-fix': 'off',
     },
