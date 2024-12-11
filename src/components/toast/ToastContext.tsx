@@ -215,6 +215,7 @@ export const ToastContextProvider = ({ children }: Props) => {
           <AnimatePresence>
             {persistentToasts.map(({ props, toast, uuid }, index) => {
               const key = `persistent-toast-${toast}-${uuid}`;
+              const showContent = index === 0 || expandedToasts;
               return (
                 <div
                   key={key}
@@ -231,15 +232,16 @@ export const ToastContextProvider = ({ children }: Props) => {
                 >
                   <Flex fullWidth>
                     <Toast
+                      {...props}
+                      actions={showContent ? props?.actions : undefined}
                       isPersistent
                       onDismiss={e => {
                         props?.onDismiss?.(e);
                         dismissClicked(e, uuid);
                       }}
                       toastKey={key}
-                      {...props}
                     >
-                      {index === 0 || expandedToasts ? toast : ''}
+                      {showContent ? toast : ''}
                     </Toast>
                   </Flex>
                 </div>
