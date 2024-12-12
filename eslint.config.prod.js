@@ -1,4 +1,4 @@
-import base from './eslint.config.js';
+import base from './eslint.config.mjs';
 
 /**
  * @type {import("eslint").Linter.Config}

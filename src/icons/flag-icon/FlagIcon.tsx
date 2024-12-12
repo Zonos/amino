@@ -26,7 +26,10 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
 
     const renderIcon = () => {
       const Icon = lazy(() =>
-        import(`../flags/${code}`).then(module => ({
+        import(
+          /* @vite-ignore */
+          `../flags/${code}`
+        ).then(module => ({
           default: module[code],
         })),
       );

@@ -24,7 +24,7 @@ export const generateSvgs = async () => {
 
     /** @desc Optimize flags in "svg" folder */
     optimizeSvgs({
-      folderPath: `${import.meta.dirname}/svgs/**/*.svg`,
+      folderPath: `${__dirname}/svgs/**/*.svg`,
     });
 
     /** @desc Clean up distribution folder */

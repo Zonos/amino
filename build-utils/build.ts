@@ -55,12 +55,13 @@ const bundlePackage = async (
       Object.keys(dependencies) as string[],
     ),
     maxParallelFileOps: 50,
+    output: {},
     plugins: [
       alias({
         entries: [
           {
             find: 'src',
-            replacement: path.resolve(import.meta.dirname, '../src'),
+            replacement: path.resolve(__dirname, '../src'),
           },
         ],
       }),
@@ -85,7 +86,7 @@ const bundlePackage = async (
         use: {
           less: null,
           sass: {
-            includePaths: [path.resolve(import.meta.dirname, '../src/styles')],
+            includePaths: [path.resolve(__dirname, '../src/styles')],
           },
           stylus: null,
         },
@@ -96,7 +97,7 @@ const bundlePackage = async (
         transforms: {
           dangerousForOf: true,
           dangerousTaggedTemplateString: true,
-          modules: false,
+          modules: true,
         },
       }),
       terser(),

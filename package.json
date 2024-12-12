@@ -4,7 +4,6 @@
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
-  "type": "module",
   "private": false,
   "homepage": "https://amino.zonos.com",
   "engines": {
@@ -158,6 +157,7 @@
     "swr": "^2.2.5",
     "ts-patch": "3.0.1",
     "ts-toolbelt": "^9.6.0",
+    "tslib": "^2.8.1",
     "tsx": "^4.19.2",
     "typed-scss-modules": "^7.1.4",
     "typescript": "5.4.5",

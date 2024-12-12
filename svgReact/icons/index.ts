@@ -24,9 +24,9 @@ const generateSvgs = ({
   svgFolder,
 }: FileConfig) => {
   const names: SvgList[] = glob
-    .sync(`${import.meta.dirname}/${svgFolder}/**/*.svg`)
+    .sync(`${__dirname}/${svgFolder}/**/*.svg`)
     /** @desc Filter and return only list of `${folder}/${filename}` or `${filename}` */
-    .map(item => item.replace(`${import.meta.dirname}/${svgFolder}/`, ''))
+    .map(item => item.replace(`${__dirname}/${svgFolder}/`, ''))
     .filter(Boolean)
     /** @desc Preprocessing file */
     .map(item => {
@@ -67,7 +67,7 @@ const generateSvgs = ({
     try {
       /** @desc Optimize svg */
       optimizeSvgs({
-        folderPath: `${import.meta.dirname}/${svgFolder}/**/*.svg`,
+        folderPath: `${__dirname}/${svgFolder}/**/*.svg`,
       });
 
       console.info(`Generating react component for folder "${svgFolder}"`);
