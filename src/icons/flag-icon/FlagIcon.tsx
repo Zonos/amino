@@ -26,7 +26,7 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
 
     const renderIcon = () => {
       const Icon = lazy(() =>
-        import(`src/icons/flags/${code}.tsx`).then(module => ({
+        import(`../flags/${code}`).then(module => ({
           default: module[code],
         })),
       );
