@@ -4,7 +4,9 @@ test.describe('Checkbox', () => {
   let framePage: Page;
   test.beforeEach(async ({ page }) => {
     page.goto('/');
-    await page.getByRole('button', { exact: true, name: 'Checkbox' }).click();
+    await page
+      .getByRole('button', { exact: true, name: 'Checkbox Tested' })
+      .click();
     await page
       .getByRole('link', { exact: true, name: 'Disabled Basic Checkbox' })
       .click();
