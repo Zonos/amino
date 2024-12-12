@@ -1,4 +1,5 @@
 import { type CSSProperties, type ReactNode, useMemo, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import type {
   ClearIndicatorProps,
   ControlProps,
@@ -197,6 +198,13 @@ export const CheckboxOptionComponent = <
     isSelected,
     selectProps,
   } = props;
+
+  // We can have a lot of options, and with things like country select, the icons are a lot to load.
+  const { inView, ref } = useInView({
+    fallbackInView: true,
+    triggerOnce: true,
+  });
+
   const { customOption, hasGroups } =
     selectProps as (typeof props)['selectProps'] &
       AdditionalProps<Option['value']>;
@@ -212,10 +220,12 @@ export const CheckboxOptionComponent = <
     }
 
     return (
-      <div className={styles.selectedSingleOptionWrapper}>
-        <IconLabel color={color} icon={data.icon}>
-          {children}
-        </IconLabel>
+      <div className={styles.selectedSingleOptionWrapper} ref={ref}>
+        {inView && (
+          <IconLabel color={color} icon={data.icon}>
+            {children}
+          </IconLabel>
+        )}
         {isSelected && <CheckCircleIcon color="blue600" size={24} />}
       </div>
     );

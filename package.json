@@ -67,6 +67,7 @@
     "fuse.js": "^6.6.2",
     "react-data-grid": "7.0.0-beta.34",
     "react-dropzone": "^12.1.0",
+    "react-intersection-observer": "^9.13.1",
     "react-select": "^5.7.4",
     "react-simple-maps": "^3.0.0",
     "react-split-it": "^2.0.0",
