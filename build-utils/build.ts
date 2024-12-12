@@ -122,7 +122,7 @@ const bundlePackage = async (
     return output.filter(item => item.type === 'chunk') as OutputChunk[];
   } catch (err) {
     bundle?.close();
-    console.error('Error bundling:', err); // eslint-disable-line no-console
+    console.error('Error bundling:', err);
     // stop the process if there is an error
     throw new Error('Error bundling');
   }
