@@ -72,6 +72,14 @@ export const ToastContextProvider = ({ children }: Props) => {
 
   const addToast = useCallback<ToastContextFunctionType>(
     (toast, props) => {
+      // Skip if an ID is provided that already exists in either toast list
+      if (
+        props?.id &&
+        [...toasts, ...persistentToasts].some(t => t.uuid === props.id)
+      ) {
+        return;
+      }
+
       const newToast = {
         isPersistent: props?.isPersistent,
         props,
@@ -87,7 +95,7 @@ export const ToastContextProvider = ({ children }: Props) => {
         setTimeout(() => setToasts(t => t.slice(1)), props?.duration || 6000);
       }
     },
-    [setToasts, setPersistentToasts],
+    [setToasts, setPersistentToasts, toasts, persistentToasts],
   );
 
   const setupToasts = useCallback<ToastContextFunctionType>(
@@ -207,6 +215,7 @@ export const ToastContextProvider = ({ children }: Props) => {
           <AnimatePresence>
             {persistentToasts.map(({ props, toast, uuid }, index) => {
               const key = `persistent-toast-${toast}-${uuid}`;
+              const showContent = index === 0 || expandedToasts;
               return (
                 <div
                   key={key}
@@ -223,15 +232,16 @@ export const ToastContextProvider = ({ children }: Props) => {
                 >
                   <Flex fullWidth>
                     <Toast
+                      {...props}
+                      actions={showContent ? props?.actions : undefined}
                       isPersistent
                       onDismiss={e => {
                         props?.onDismiss?.(e);
                         dismissClicked(e, uuid);
                       }}
                       toastKey={key}
-                      {...props}
                     >
-                      {index === 0 || expandedToasts ? toast : ''}
+                      {showContent ? toast : ''}
                     </Toast>
                   </Flex>
                 </div>

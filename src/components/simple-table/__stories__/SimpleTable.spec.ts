@@ -27,7 +27,7 @@ test.describe('SimpleTable', () => {
   test.describe('Ensure Selectable works', () => {
     test('Selectable', async () => {
       const checkbox1 = framePage
-        .getByRole('row', { name: 'John 24 This is a long string' })
+        .getByRole('row', { name: 'John 24 Not long enough' })
         .locator('label');
       await checkbox1.click();
       await expect(checkbox1).toBeChecked();
