@@ -78,6 +78,7 @@ export default tseslint.config(
         },
       ],
       '@typescript-eslint/no-use-before-define': ['error'],
+      'arrow-body-style': ['error', 'as-needed'],
       camelcase: 'off',
       // disable since sometime `this` doesn't need to be used in some util function in class
       'class-methods-use-this': 'off',
@@ -86,6 +87,7 @@ export default tseslint.config(
       'import/extensions': 'off',
       // False positives
       'import/named': 'off',
+      'import/newline-after-import': 'error',
       'import/no-extraneous-dependencies': [
         'error',
         {
@@ -211,7 +213,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['svgReact/**'],
+    files: ['svgReact/**', 'build-utils/**'],
     rules: {
       'no-console': 'off',
     },

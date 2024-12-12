@@ -5,6 +5,7 @@ import { createIndexFile } from 'svgReact/flags/createIndexFile';
 import { createReactFlagSvgs } from 'svgReact/flags/createReactFlagSvgs';
 import { downloadFlagsAWS } from 'svgReact/flags/downloadFlagsAWS';
 import { removeAWSErrorSvgs } from 'svgReact/flags/removeAWSErrorSvgs';
+import { createIndexKeyFile } from 'svgReact/icons/createIndexFile';
 
 export const generateSvgs = async () => {
   try {
@@ -43,6 +44,16 @@ const createComponentsFromSvgs = async () => {
 
     /** @desc Generate index file for generated svg react components */
     createIndexFile(`./svgReact/flags/dist`);
+    createIndexKeyFile({
+      generatePath: [
+        {
+          destFolder: 'src/icons/flags',
+          inputFolderPath: './svgReact/flags/dist',
+          titleComment: 'flagIcons',
+        },
+      ],
+      target: 'src/icons/__stories__/FlagsList.ts',
+    });
 
     console.info(`Formatting SVGs...`);
     /** @desc Format generated svg react component and new IconIndex */

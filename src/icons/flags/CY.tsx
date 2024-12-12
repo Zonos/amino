@@ -4,9 +4,9 @@ import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
-  borderRadius?: number;
   height: number;
   width: number;
+  borderRadius?: number;
 };
 export const CY = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {

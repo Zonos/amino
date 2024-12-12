@@ -32,20 +32,20 @@ export const svgProcessPaths: FileConfig[] = [
     // inputFolderPath: 'svgReact/icons/dist',
     inputFolderPath: path.resolve(import.meta.dirname, 'svgReact/icons/dist'),
     svgFolder: 'svgs',
-    titleComment: 'common',
+    titleComment: 'commonIcons',
   },
   {
     destFolder: 'src/icons/custom',
     inputFolderPath: 'svgReact/icons/dist/custom',
     svgFolder: 'custom-svgs',
-    titleComment: 'custom',
+    titleComment: 'customIcons',
   },
   {
     destFolder: 'src/icons/custom/products',
     inputFolderPath: 'svgReact/icons/dist/custom/products',
     keepColors: true,
     svgFolder: 'custom-svgs/products',
-    titleComment: 'product',
+    titleComment: 'productIcons',
   },
 ];
 

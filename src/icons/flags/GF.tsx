@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 
 type Props = {
-  borderRadius?: number;
   height: number;
   width: number;
+  borderRadius?: number;
 };
 export const GF = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => (

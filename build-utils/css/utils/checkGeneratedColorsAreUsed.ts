@@ -1,4 +1,3 @@
-import { logging } from 'build-utils/css/utils/logging';
 import { readFileSync } from 'fs';
 import { glob } from 'glob';
 
@@ -16,7 +15,7 @@ export const checkGeneratedColorsAreUsed = async (theme: Theme) => {
   const rootDir = process.cwd();
   const generatedColorPath = `${rootDir}/build-utils/css/constants/theme/${theme}/colors`;
   const themeFilePath = `${rootDir}/build-utils/css/constants/${themeEntry[theme]}`;
-  logging(
+  console.info(
     `Checking generated colors are used in 'build-utils/css/constants/${themeEntry[theme]}' ...`,
   );
   /** Get the list of generated colors */

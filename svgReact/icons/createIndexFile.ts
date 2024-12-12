@@ -65,11 +65,11 @@ export const createIndexKeyFile = ({
 
   const mergedContent = generatePath
     .flatMap(x => {
-      const iconNames = fs
+      const fileNames = fs
         .readdirSync(x.inputFolderPath)
         .filter(name => !/index/i.test(name) && name.includes('.'));
 
-      const block = `export const ${x.titleComment}IconsList = [${iconNames
+      const block = `export const ${x.titleComment}List = [${fileNames
         .map(name => {
           const [componentName] = name.split('.');
           return `'${componentName}'`;

@@ -45,12 +45,6 @@ export const Icons = ({
     return () => clearInterval(interval);
   }, [iconsToLoad.length]);
 
-  const iicons = iconsToLoad
-    .map(icon => ({
-      iconName: icon,
-    }))
-    .filter(icon => icon.iconName);
-
   return (
     <VStack>
       <Input
@@ -62,13 +56,13 @@ export const Icons = ({
         valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
       <div className={styles.styledWrapper}>
-        {iicons
-          .filter(({ iconName }) =>
+        {iconsToLoad
+          .filter(iconName =>
             filter
               ? iconName.toLowerCase().includes(filter.toLowerCase())
               : true,
           )
-          .map(({ iconName }) => {
+          .map(iconName => {
             const IconComponent = lazy(() =>
               import(`src/icons/${iconName}.tsx`).then(module => ({
                 default: module[iconName],
