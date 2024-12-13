@@ -160,6 +160,7 @@ export const FloatLabelInput = forwardRef<
           <div className={styles.inputValuePrefix}>{valuePrefix}</div>
         )}
         <input
+          ref={ref}
           aria-label={label}
           autoFocus={autoFocus}
           className={clsx(styles.aminoInput)}
@@ -172,7 +173,6 @@ export const FloatLabelInput = forwardRef<
           pattern={pattern}
           placeholder={placeholder}
           readOnly={readOnly}
-          ref={ref}
           required={required}
           tabIndex={tabIndex}
           type={type || 'text'}

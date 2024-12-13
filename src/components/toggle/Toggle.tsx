@@ -88,7 +88,7 @@ export const Toggle = <TValue extends SelectValue>({
       )}
       style={style}
     >
-      <div className={styles.wrapper} ref={wrapperRef}>
+      <div ref={wrapperRef} className={styles.wrapper}>
         <motion.div
           animate={{
             width: animationRect.width,
@@ -108,13 +108,13 @@ export const Toggle = <TValue extends SelectValue>({
 
           return (
             <button
+              key={option.value}
+              ref={isSelected ? selectedRef : null}
               className={clsx([
                 styles.optionWrapper,
                 isSelected && styles.selected,
               ])}
-              key={option.value}
               onClick={() => onChange(option.value)}
-              ref={isSelected ? selectedRef : null}
               type="button"
             >
               {option.label}

@@ -338,9 +338,9 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   return (
     <Tag
+      ref={handleButtonText}
       data-testid={testId || defaultTestId}
       data-theme={themeOverride}
-      ref={handleButtonText}
       style={{
         ...style,
         '--amino-button-background-color': getBackgroundColor(),

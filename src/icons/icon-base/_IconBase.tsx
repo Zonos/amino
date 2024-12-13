@@ -8,11 +8,11 @@ type Props = { children: ReactNode; viewBox?: string } & IconProps;
 export const IconBase = forwardRef<SVGSVGElement, Props>(
   ({ children, className, color, inlineBlock, size = 24, viewBox }, ref) => (
     <svg
+      ref={ref}
       className={className}
       color={color && `${theme[color]}`}
       fill="none"
       height={size}
-      ref={ref}
       style={{ display: inlineBlock ? 'inline-block' : 'block' }}
       viewBox={viewBox || `0 0 24 24`}
       width={size}

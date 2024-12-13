@@ -63,7 +63,7 @@ const ImageAvatarTemplate: StoryFn<ImageAvatarProps> = ({
       />
     </Flex>
     {platformList.map(platform => (
-      <Flex alignItems="center" flexDirection="column" gap={24} key={platform}>
+      <Flex key={platform} alignItems="center" flexDirection="column" gap={24}>
         <Avatar
           bordered={bordered}
           imageUrl={`${platform}`}

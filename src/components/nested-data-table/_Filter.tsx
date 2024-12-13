@@ -30,18 +30,18 @@ export const Filter = ({
   );
 
   return (
-    <div className={styles.styledFilterWrapper} ref={wrapperRef}>
+    <div ref={wrapperRef} className={styles.styledFilterWrapper}>
       <button
+        ref={refs.setReference}
         className={styles.styledTriggerButton}
         onClick={() => setVisible(!visible)}
-        ref={refs.setReference}
         type="button"
       >
         <FilterIcon size={16} /> Filter
       </button>
       <div
-        className={styles.styledFilter}
         ref={refs.setFloating}
+        className={styles.styledFilter}
         style={{
           ...floatingStyles,
           opacity: visibility === 'visible' ? 1 : 0,

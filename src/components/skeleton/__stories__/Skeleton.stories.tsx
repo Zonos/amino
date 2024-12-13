@@ -29,7 +29,7 @@ const Template: StoryFn<
 > = ({ height, numberOfChildren, spacing, width }) => (
   <VStack spacing={spacing}>
     {[...Array(numberOfChildren).keys()].map(n => (
-      <Skeleton height={height} key={n} width={width} />
+      <Skeleton key={n} height={height} width={width} />
     ))}
   </VStack>
 );
@@ -50,7 +50,7 @@ export const Card: StoryFn<
   >
     <VStack spacing={spacing}>
       {[...Array(numberOfChildren).keys()].map(n => (
-        <Skeleton height={height} key={n} width={width} />
+        <Skeleton key={n} height={height} width={width} />
       ))}
     </VStack>
   </CardComponent>

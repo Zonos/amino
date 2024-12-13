@@ -13,9 +13,9 @@ export const OM = forwardRef<SVGSVGElement, Props>(
     const ids = useStableUniqueId(1);
     return (
       <FlagIconBase
+        ref={ref}
         borderRadius={borderRadius}
         height={height}
-        ref={ref}
         viewBox="0 0 24 24"
         width={width}
       >

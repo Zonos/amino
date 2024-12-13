@@ -23,7 +23,7 @@ const Template: StoryFn<StoryProps> = ({
 }: StoryProps) => (
   <VStack alignment={alignment} spacing={spacing}>
     {[...Array(numberOfChildren).keys()].map(n => (
-      <Card footerActions={<Button>Do it</Button>} key={n} label={`Card ${n}`}>
+      <Card key={n} footerActions={<Button>Do it</Button>} label={`Card ${n}`}>
         <p>Some text</p>
       </Card>
     ))}

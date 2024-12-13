@@ -13,9 +13,9 @@ type FlagIconBaseProps = {
 export const FlagIconBase = forwardRef<SVGSVGElement, FlagIconBaseProps>(
   ({ borderRadius, children, height, viewBox, width }, ref) => (
     <svg
+      ref={ref}
       className={styles.flag}
       height={height}
-      ref={ref}
       style={
         borderRadius
           ? {

@@ -63,6 +63,7 @@ export const RichRadio = <T extends string>({
     >
       {items.map(item => (
         <button
+          key={item.value}
           className={clsx(
             styles.styledItem,
             itemHeight === 40 && styles.smallItem,
@@ -70,7 +71,6 @@ export const RichRadio = <T extends string>({
           data-disabled={item.disabled}
           data-state={item.value === selectedValue ? 'checked' : ''}
           data-tip={item.tooltip}
-          key={item.value}
           onClick={() => {
             handleChange(item.value);
           }}

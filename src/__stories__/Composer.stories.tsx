@@ -197,7 +197,7 @@ const Template: StoryFn<Props> = ({
         </div>
 
         {range(rows).map(row => (
-          <HStack className={styles.styledHStack} key={row} spacing={8}>
+          <HStack key={row} className={styles.styledHStack} spacing={8}>
             {range(columns).map(column => {
               const rowCol = `${column}-${row}`;
               const Component = [

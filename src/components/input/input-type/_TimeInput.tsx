@@ -42,6 +42,7 @@ export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
     return (
       <div className={clsx(styles.styledWrapper, className)}>
         <FloatLabelInput
+          ref={mergedRef}
           aria-label={label}
           autoFocus={autoFocus}
           className={styles.aminoInput}
@@ -55,7 +56,6 @@ export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           placeholder={placeholder}
           prefix={prefix}
           readOnly={readOnly}
-          ref={mergedRef}
           required={required}
           suffix={
             suffix || (

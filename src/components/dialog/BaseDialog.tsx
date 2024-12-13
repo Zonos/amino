@@ -120,8 +120,9 @@ export const BaseDialog = ({
             <motion.div
               className={styles.backdrop}
               {...backdropMotionProps}
-              data-theme={themeOverride}
               key="dialog-backdrop"
+              ref={backdropRef}
+              data-theme={themeOverride}
               onKeyDown={handleKeyDown}
               onMouseDown={e => {
                 // Store the target of the mouse down event so we can compare it to the target of the mouse up event
@@ -138,7 +139,6 @@ export const BaseDialog = ({
                 // reset the mouse down target
                 mouseDownTarget.current = null;
               }}
-              ref={backdropRef}
               style={{
                 '--amino-base-dialog-width': fullWindowWidth
                   ? '100%'
@@ -149,8 +149,8 @@ export const BaseDialog = ({
             >
               <motion.div
                 {...combinedPopupMotionProps}
-                className={clsx(className, styles.popup, 'elevated')}
                 key="dialog"
+                className={clsx(className, styles.popup, 'elevated')}
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog
                   e.stopPropagation();

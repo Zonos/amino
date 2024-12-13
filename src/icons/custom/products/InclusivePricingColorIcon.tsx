@@ -9,10 +9,10 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
     const ids = useStableUniqueId(6);
     return (
       <IconBase
+        ref={ref}
         className={className}
         color={color}
         inlineBlock={inlineBlock}
-        ref={ref}
         size={size}
         viewBox="0 0 24 24"
       >

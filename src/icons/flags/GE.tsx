@@ -10,9 +10,9 @@ type Props = {
 export const GE = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => (
     <FlagIconBase
+      ref={ref}
       borderRadius={borderRadius}
       height={height}
-      ref={ref}
       viewBox="0 0 640 480"
       width={width}
     >

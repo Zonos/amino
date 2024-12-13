@@ -73,8 +73,8 @@ export const FilterMultiSelect = <T extends SelectValue = SelectValue>({
     <VStack className={styles.vStackStyled} spacing={8}>
       {options.map(option => (
         <Checkbox
-          checked={editingSelectedValues.some(x => x === option.value) || false}
           key={option.value}
+          checked={editingSelectedValues.some(x => x === option.value) || false}
           label={option.label}
           onChange={() => {
             if (editingSelectedValues.some(x => x === option.value)) {

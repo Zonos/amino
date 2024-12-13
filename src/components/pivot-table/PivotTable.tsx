@@ -174,10 +174,10 @@ export const PivotTable = <
       }}
     >
       <DataGrid
+        ref={dataGridRef}
         className="data-grid"
         columns={modifiedColumns}
         onSortColumnsChange={onSortColumnsChange || setSortColumns}
-        ref={dataGridRef}
         renderers={defaultRenderers}
         rows={sortedRows}
         sortColumns={sortColumns}

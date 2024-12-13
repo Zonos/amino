@@ -218,15 +218,15 @@ export const ToastContextProvider = ({ children }: Props) => {
               const showContent = index === 0 || expandedToasts;
               return (
                 <div
-                  className={styles.persistentToast}
                   key={key}
+                  ref={index === 0 ? firstToastRef : null} // Only ref the first toast
+                  className={styles.persistentToast}
                   onClick={toggleExpanded}
                   onKeyDown={e => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       toggleExpanded(e);
                     }
                   }}
-                  ref={index === 0 ? firstToastRef : null} // Only ref the first toast
                   role="button"
                   tabIndex={0}
                 >

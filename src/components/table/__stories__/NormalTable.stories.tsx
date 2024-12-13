@@ -122,7 +122,7 @@ const Template: StoryFn<
             measurement => measurement?.type === 'WIDTH',
           )?.value;
           return (
-            <TableRow active={!!selectedProductIds[node.id]} key={node.id}>
+            <TableRow key={node.id} active={!!selectedProductIds[node.id]}>
               <TableCell padding="0 8px">
                 <Checkbox
                   checked={!!selectedProductIds[node.id]}

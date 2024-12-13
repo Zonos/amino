@@ -75,12 +75,12 @@ const Template: StoryFn<TextareaProps> = ({
         <Flex gap={10}>
           <Textarea
             {...rest}
+            ref={textareaRef}
             actions={actions}
             error={error}
             helpText={helpText}
             onChange={() => {}}
             placeholder={placeholder}
-            ref={textareaRef}
             value=""
           />
           <Input onChange={() => {}} value="" />

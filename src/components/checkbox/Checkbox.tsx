@@ -150,10 +150,10 @@ export const Checkbox = ({
           <AnimatePresence>
             {checked && (
               <AnimatedCheckIcon
+                key="checkbox"
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1 }}
                 initial={{ opacity: 0, scale: 0.5 }}
-                key="checkbox"
                 transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
               />
             )}

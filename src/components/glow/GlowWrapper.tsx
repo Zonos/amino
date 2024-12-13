@@ -74,8 +74,8 @@ export const GlowWrapper = ({
 
   return (
     <div
-      className={clsx(styles.wrapper, className)}
       ref={ref}
+      className={clsx(styles.wrapper, className)}
       style={{
         ...style,
         '--amino-glow-wrapper-background':

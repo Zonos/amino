@@ -150,7 +150,12 @@ export default tseslint.config(
       // Prettier takes care of this
       'react/jsx-one-expression-per-line': 'off',
       'react/jsx-props-no-spreading': 'off',
-      'react/jsx-sort-props': ['error'],
+      'react/jsx-sort-props': [
+        'error',
+        {
+          reservedFirst: true,
+        },
+      ],
       // Prettier takes care of this
       'react/jsx-wrap-multilines': 'off',
       'react/prop-types': 'off',

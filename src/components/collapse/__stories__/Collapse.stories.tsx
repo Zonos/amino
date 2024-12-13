@@ -175,8 +175,8 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
       {items.map((item, index) => (
         <div className={styles.itemWrapper}>
           <button
-            className={styles.itemLabel}
             key={index}
+            className={styles.itemLabel}
             onClick={() =>
               setCollapsed(prev => {
                 const next = [...prev];

@@ -51,6 +51,7 @@ export const _CountryMultiSelectExpandedOptionComponent = <T extends string>({
 
   return (
     <Checkbox
+      key={country.code}
       checked={isChecked}
       className={clsx(
         styles.checkboxWrapper,
@@ -58,7 +59,6 @@ export const _CountryMultiSelectExpandedOptionComponent = <T extends string>({
         !country.disabled && styles.hoverWrapper,
       )}
       disabled={country.disabled}
-      key={country.code}
       label={country.label}
       labelComponent={
         <div

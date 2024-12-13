@@ -72,6 +72,7 @@ export const Input = ({
       case 'password':
         return (
           <PasswordInput
+            ref={inputRef}
             autoFocus={autoFocus}
             disabled={disabled}
             error={error}
@@ -84,7 +85,6 @@ export const Input = ({
             placeholder={placeholder}
             prefix={prefix}
             readOnly={readOnly}
-            ref={inputRef}
             required={required}
             size={size}
             suffix={suffix}
@@ -98,6 +98,7 @@ export const Input = ({
       case 'datetime-local':
         return (
           <DateInput
+            ref={inputRef}
             autoFocus={autoFocus}
             disabled={disabled}
             error={error}
@@ -110,7 +111,6 @@ export const Input = ({
             placeholder={placeholder}
             prefix={prefix}
             readOnly={readOnly}
-            ref={inputRef}
             required={required}
             size={size}
             suffix={suffix}
@@ -124,6 +124,7 @@ export const Input = ({
       case 'number':
         return (
           <NumberInput
+            ref={inputRef}
             autoFocus={autoFocus}
             disabled={disabled}
             error={error}
@@ -136,7 +137,6 @@ export const Input = ({
             placeholder={placeholder}
             prefix={prefix}
             readOnly={readOnly}
-            ref={inputRef}
             required={required}
             size={size}
             suffix={suffix}
@@ -150,6 +150,7 @@ export const Input = ({
       case 'time':
         return (
           <TimeInput
+            ref={inputRef}
             autoFocus={autoFocus}
             disabled={disabled}
             error={error}
@@ -162,7 +163,6 @@ export const Input = ({
             placeholder={placeholder}
             prefix={prefix}
             readOnly={readOnly}
-            ref={inputRef}
             required={required}
             size={size}
             suffix={suffix}
@@ -175,6 +175,7 @@ export const Input = ({
       default:
         return (
           <FloatLabelInput
+            ref={inputRef}
             autoFocus={autoFocus}
             className={className}
             disabled={disabled}
@@ -188,7 +189,6 @@ export const Input = ({
             placeholder={placeholder}
             prefix={prefix}
             readOnly={readOnly}
-            ref={inputRef}
             required={required}
             size={size}
             suffix={suffix}

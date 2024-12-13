@@ -280,9 +280,9 @@ export const CountryMultiSelectExpanded = <
 
                     return (
                       <_CountryMultiSelectExpandedOptionComponent
+                        key={country.code}
                         country={country}
                         isChecked={isChecked}
-                        key={country.code}
                         onChange={onChangeCountry}
                       ></_CountryMultiSelectExpandedOptionComponent>
                     );

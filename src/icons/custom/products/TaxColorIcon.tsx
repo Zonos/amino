@@ -9,10 +9,10 @@ export const TaxColorIcon = forwardRef<SVGSVGElement, IconProps>(
     const ids = useStableUniqueId(5);
     return (
       <IconBase
+        ref={ref}
         className={className}
         color={color}
         inlineBlock={inlineBlock}
-        ref={ref}
         size={size}
         viewBox="0 0 24 24"
       >

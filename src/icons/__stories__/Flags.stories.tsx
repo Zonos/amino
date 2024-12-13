@@ -87,8 +87,8 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
             );
 
             return (
-              <div className={clsx(styles.styledIcon)} key={iconName}>
-                <Suspense fallback={<div>Loading...</div>} key={iconName}>
+              <div key={iconName} className={clsx(styles.styledIcon)}>
+                <Suspense key={iconName} fallback={<div>Loading...</div>}>
                   <IconComponent
                     borderRadius={getBorderRadius(iconScale)}
                     height={size}

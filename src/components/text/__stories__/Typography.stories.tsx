@@ -16,7 +16,7 @@ export default meta;
 const Template: StoryFn<TextProps> = props => (
   <VStack spacing={8}>
     {textOptions.map(option => (
-      <VStack className={styles.styledVStack} key={option.type}>
+      <VStack key={option.type} className={styles.styledVStack}>
         <Text type={option.type} {...props}>
           {content}
         </Text>

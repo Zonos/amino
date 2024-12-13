@@ -95,8 +95,8 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
 
     return (
       <span
-        className={styles.rippleRoot}
         ref={container}
+        className={styles.rippleRoot}
         style={{
           ...style,
           '--amino-ripple-group-color': getAminoColor(color) || 'currentColor',
@@ -107,10 +107,10 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
         <AnimatePresence>
           {ripples.map(r => (
             <motion.div
+              key={r.key}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               initial={{ opacity: 1 }}
-              key={r.key}
             >
               {r.element}
             </motion.div>

@@ -47,7 +47,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </div>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </div>
-      <div className={styles.content} ref={ref}>
+      <div ref={ref} className={styles.content}>
         {children}
       </div>
       {(actions || leftActions) && (

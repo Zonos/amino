@@ -97,6 +97,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             type="button"
           >
             <textarea
+              ref={node => {
+                if (ref && typeof ref === 'function') {
+                  ref(node);
+                } else if (ref) {
+                  ref.current = node;
+                }
+                textareaRef.current = node;
+              }}
               className={clsx(
                 styles.styledTextarea,
                 error && styles.hasError,
@@ -106,14 +114,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               )}
               disabled={disabled}
               id={id}
-              ref={node => {
-                if (ref && typeof ref === 'function') {
-                  ref(node);
-                } else if (ref) {
-                  ref.current = node;
-                }
-                textareaRef.current = node;
-              }}
               rows={rows}
               value={value}
               {...props}
@@ -130,7 +130,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </button>
 
           {actions && (
-            <div className={styles.actions} ref={actionsRef}>
+            <div ref={actionsRef} className={styles.actions}>
               <Flex alignItems="center" fullHeight justifyContent="flex-end">
                 {actions}
               </Flex>

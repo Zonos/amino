@@ -7,7 +7,7 @@ export const ThemeLightIcon = forwardRef<SVGSVGElement, { className?: string }>(
   ({ className }, ref) => {
     const ids = useStableUniqueId(1);
     return (
-      <ThemeIconBase className={className} ref={ref}>
+      <ThemeIconBase ref={ref} className={className}>
         <g clipPath={`url(#${ids[0]})`}>
           <rect fill="#fff" height="64" rx="4" width="110" />
           <rect fill="#EAEBED" height="8" rx="2" width="40" x="7.999" y="33" />

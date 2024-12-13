@@ -99,7 +99,7 @@ export const DropZone = ({
 
   const renderFiles = () =>
     uploadedFiles.map((file, index) => (
-      <div className={styles.uploadedFileRow} key={file.name}>
+      <div key={file.name} className={styles.uploadedFileRow}>
         {file.imageUrl ? (
           <ImageAvatar imageUrl={file.imageUrl} shape="rounded" />
         ) : (

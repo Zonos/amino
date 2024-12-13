@@ -24,7 +24,7 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   const [sizes, setSizes] = useState<number[]>([0.2, 0.8]);
 
   const renderSplitItem = ({ id }: { id: number }) => (
-    <div className={styles.styledItem} key={id}>
+    <div key={id} className={styles.styledItem}>
       <Text type="header">{id}</Text>
     </div>
   );

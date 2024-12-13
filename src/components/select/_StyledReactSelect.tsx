@@ -104,6 +104,7 @@ const Control = <
 
   return (
     <div
+      ref={innerRef}
       className={clsx([
         className,
         hasValue && styles.hasValue,
@@ -117,7 +118,6 @@ const Control = <
         styles.reactSelectControl,
         'react-select-control',
       ])}
-      ref={innerRef}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
@@ -220,7 +220,7 @@ export const CheckboxOptionComponent = <
     }
 
     return (
-      <div className={styles.selectedSingleOptionWrapper} ref={ref}>
+      <div ref={ref} className={styles.selectedSingleOptionWrapper}>
         {inView && (
           <IconLabel color={color} icon={data.icon}>
             {children}
@@ -443,6 +443,7 @@ export const StyledReactSelect = <
       data-testid={testId}
     >
       <ReactSelect<Option, IsMulti, Group>
+        ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}
         components={
           {
@@ -476,7 +477,6 @@ export const StyledReactSelect = <
         }
         menuPosition={menuPosition}
         placeholder={placeholder || ''}
-        ref={selectElement}
         styles={
           {
             ...style,

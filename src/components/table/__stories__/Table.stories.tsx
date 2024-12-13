@@ -171,8 +171,8 @@ const Template: StoryFn<
                 { label: 'Height', value: '11 in' },
               ].map(option => (
                 <VStack
-                  className={styles.attributeLabel}
                   key={option.label}
+                  className={styles.attributeLabel}
                   spacing={8}
                 >
                   <Text
@@ -228,9 +228,9 @@ const Template: StoryFn<
                   { label: 'Buffer', value: 5.0 },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}
@@ -275,9 +275,9 @@ const Template: StoryFn<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}
@@ -326,9 +326,9 @@ const Template: StoryFn<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}
@@ -382,9 +382,9 @@ const Template: StoryFn<
                   },
                 ].map(({ label, value }) => (
                   <ExpandedListItem
+                    key={label}
                     conversionRate={conversionRate}
                     foreignCode={foreignCode}
-                    key={label}
                     label={label}
                     showForeign={showForeign}
                     value={value}

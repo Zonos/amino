@@ -41,10 +41,10 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       >
         <FloatLabelInput
           {...props}
+          ref={mergedRef}
           aria-label={label}
           className={styles.aminoInput}
           label={label}
-          ref={mergedRef}
           size={size}
           suffix={
             suffix === null

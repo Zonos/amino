@@ -132,8 +132,8 @@ export const VariableList = () => {
         <VStack>
           {items.map((item, idx) => (
             <Card
-              actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
               key={item}
+              actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
               label={item}
             >
               <Input label="An input" onChange={() => null} value="value" />
@@ -150,8 +150,8 @@ export const VariableList = () => {
         <VStack>
           {items.map((item, idx) => (
             <Card
-              actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
               key={item}
+              actions={<Button onClick={() => removeItem(idx)}>Remove</Button>}
               label={item}
             >
               <Input label="An input" onChange={() => null} value="value" />

@@ -71,14 +71,14 @@ export const Icons = ({
 
             return (
               <div
+                key={iconName}
                 className={clsx(
                   styles.styledIcon,
                   /Solid/.test(iconName) && 'solid',
                   /Duotone/.test(iconName) && 'duotone',
                 )}
-                key={iconName}
               >
-                <Suspense fallback={<div>Loading...</div>} key={iconName}>
+                <Suspense key={iconName} fallback={<div>Loading...</div>}>
                   <IconComponent
                     color={color}
                     inlineBlock={inlineBlock}

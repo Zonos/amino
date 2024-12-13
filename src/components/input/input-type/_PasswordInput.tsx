@@ -39,6 +39,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
     return (
       <div className={clsx(styles.styledWrapper, className)}>
         <FloatLabelInput
+          ref={ref}
           aria-label={label}
           autoFocus={autoFocus}
           className={styles.aminoInput}
@@ -52,7 +53,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           placeholder={placeholder}
           prefix={prefix}
           readOnly={readOnly}
-          ref={ref}
           required={required}
           suffix={
             suffix || (
