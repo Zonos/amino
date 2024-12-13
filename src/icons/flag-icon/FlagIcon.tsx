@@ -10,9 +10,6 @@ export type FlagIconProps = { iconScale: FlagScale } & {
   code: Flag;
 };
 
-const getDynamicImportPath = (code: string) =>
-  'src/icons/flags/'.concat(code).concat('.tsx');
-
 export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
   ({ code, iconScale }, ref) => {
     const flagSizeProps = () => {
@@ -27,9 +24,11 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
       }
     };
 
+    const dynamicImportPath = 'src/icons/flags/'.concat(code).concat('.tsx');
+
     const renderIcon = () => {
       const Icon = lazy(() =>
-        import(getDynamicImportPath(code)).then(module => ({
+        import(dynamicImportPath).then(module => ({
           default: module[code],
         })),
       );
