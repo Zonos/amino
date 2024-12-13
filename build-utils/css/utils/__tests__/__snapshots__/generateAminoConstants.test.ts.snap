@@ -661,17 +661,13 @@ exports[`Case light theme 1`] = `
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   spinnerStrokeWhite: 'var(--amino-spinner-stroke-white)',
 
-  /** @info 500 */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  appbarElevation: 'var(--amino-appbar-elevation)',
-
   /* LAYOUT STYLE */
   /** @info 55px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   appbarHeight: 'var(--amino-appbar-height)',
-  /** @info 400 */
+  /** @info 232px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  dialogElevation: 'var(--amino-dialog-elevation)',
+  sidebarWidth: 'var(--amino-sidebar-width)',
   /** @info 0 */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   elevation0: 'var(--amino-elevation-0)',
@@ -690,76 +686,29 @@ exports[`Case light theme 1`] = `
   /** @info 500 */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   elevation500: 'var(--amino-elevation-500)',
-  /** @info 'Fira Code', var(--amino-font-sans) */
+  /** @info 400 */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontHarmonizedCodes: 'var(--amino-font-harmonized-codes)',
-  /** @info Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace */
+  dialogElevation: 'var(--amino-dialog-elevation)',
+  /** @info 500 */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontMono: 'var(--amino-font-mono)',
+  toastElevation: 'var(--amino-toast-elevation)',
+  /** @info 500 */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  appbarElevation: 'var(--amino-appbar-elevation)',
 
-  /* FONTS */
-  /** @info 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif */
+  /* BUTTON SIZE */
+  /** @info 56px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSans: 'var(--amino-font-sans)',
-  /** @info 24px  */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSize2xl: 'var(--amino-font-size-2xl)',
-
-  /** @info 30px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSize3xl: 'var(--amino-font-size-3xl)',
-  /** @info 13px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSizeBase: 'var(--amino-font-size-base)',
-  /** @info 16px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSizeBaseDocs: 'var(--amino-font-size-base-docs)',
-  /** @info 18px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSizeL: 'var(--amino-font-size-l)',
-  /** @info 12px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSizeS: 'var(--amino-font-size-s)',
-  /** @info 20px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSizeXl: 'var(--amino-font-size-xl)',
-  /** @info 11px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  fontSizeXs: 'var(--amino-font-size-xs)',
-
-  /* OTHER */
-  /** @info inherit */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  inputBackground: 'var(--amino-input-background)',
-  /** @info 40px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeight2xl: 'var(--amino-line-height-2xl)',
-
-  /* LINE HEIGHT */
+  sizeXl: 'var(--amino-size-xl)',
   /** @info 48px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeight3xl: 'var(--amino-line-height-3xl)',
-  /** @info 24px */
+  sizeLg: 'var(--amino-size-lg)',
+  /** @info 40px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeightBase: 'var(--amino-line-height-base)',
-  /** @info 24px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeightL: 'var(--amino-line-height-l)',
-  /** @info 16px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeightS: 'var(--amino-line-height-s)',
+  sizeMd: 'var(--amino-size-md)',
   /** @info 32px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeightXl: 'var(--amino-line-height-xl)',
-  /** @info 12px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  lineHeightXs: 'var(--amino-line-height-xs)',
-  /** @info 10px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius10: 'var(--amino-radius-10)',
-  /** @info 12px */
-  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  radius12: 'var(--amino-radius-12)',
+  sizeSm: 'var(--amino-size-sm)',
 
   /* BORDER RADIUS */
   /** @info 4px */
@@ -771,26 +720,76 @@ exports[`Case light theme 1`] = `
   /** @info 8px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   radius8: 'var(--amino-radius-8)',
-  /** @info 232px */
+  /** @info 10px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sidebarWidth: 'var(--amino-sidebar-width)',
+  radius10: 'var(--amino-radius-10)',
+  /** @info 12px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  radius12: 'var(--amino-radius-12)',
+
+  /** @info 30px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSize3xl: 'var(--amino-font-size-3xl)',
+  /** @info 24px  */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSize2xl: 'var(--amino-font-size-2xl)',
+  /** @info 20px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeXl: 'var(--amino-font-size-xl)',
+  /** @info 18px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeL: 'var(--amino-font-size-l)',
+  /** @info 16px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeBaseDocs: 'var(--amino-font-size-base-docs)',
+  /** @info 13px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeBase: 'var(--amino-font-size-base)',
+  /** @info 12px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeS: 'var(--amino-font-size-s)',
+  /** @info 11px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontSizeXs: 'var(--amino-font-size-xs)',
+
+  /* LINE HEIGHT */
   /** @info 48px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeLg: 'var(--amino-size-lg)',
+  lineHeight3xl: 'var(--amino-line-height-3xl)',
   /** @info 40px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeMd: 'var(--amino-size-md)',
+  lineHeight2xl: 'var(--amino-line-height-2xl)',
   /** @info 32px */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeSm: 'var(--amino-size-sm)',
+  lineHeightXl: 'var(--amino-line-height-xl)',
+  /** @info 24px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  lineHeightL: 'var(--amino-line-height-l)',
+  /** @info 24px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  lineHeightBase: 'var(--amino-line-height-base)',
+  /** @info 16px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  lineHeightS: 'var(--amino-line-height-s)',
+  /** @info 12px */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  lineHeightXs: 'var(--amino-line-height-xs)',
 
-  /* BUTTON SIZE */
-  /** @info 56px */
+  /* FONTS */
+  /** @info 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  sizeXl: 'var(--amino-size-xl)',
-  /** @info 500 */
+  fontSans: 'var(--amino-font-sans)',
+  /** @info Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  toastElevation: 'var(--amino-toast-elevation)',
+  fontMono: 'var(--amino-font-mono)',
+  /** @info 'Fira Code', var(--amino-font-sans) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  fontHarmonizedCodes: 'var(--amino-font-harmonized-codes)',
+
+  /* OTHER */
+  /** @info inherit */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  inputBackground: 'var(--amino-input-background)',
 } as const;
 
 export type ThemeKey = keyof typeof theme;

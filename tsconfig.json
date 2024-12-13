@@ -61,7 +61,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".storybook/**/*",
-    "eslint.config.prod.js",
+    "eslint.config.prod.mjs",
     "prettier.config.mjs",
     "tsconfig.json",
     "test-utils",

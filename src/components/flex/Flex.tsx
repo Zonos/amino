@@ -36,13 +36,13 @@ export type FlexProps = BaseProps &
      */
     fullHeight?: boolean;
     /**
-     * @default false
-     */
-    fullWidth?: boolean;
-    /**
      * @default 8
      */
     gap?: number;
+    /**
+     * @default false
+     */
+    fullWidth?: boolean;
     /**
      * @default 'flex-start'
      */
