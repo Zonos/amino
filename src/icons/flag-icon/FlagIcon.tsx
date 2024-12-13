@@ -10,7 +10,8 @@ export type FlagIconProps = { iconScale: FlagScale } & {
   code: Flag;
 };
 
-const dynamicImportFileExtension = '.tsx';
+const dynamicImportFileExtension =
+  process.env.NODE_ENV === 'development' ? '.tsx' : '';
 
 export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
   ({ code, iconScale }, ref) => {
