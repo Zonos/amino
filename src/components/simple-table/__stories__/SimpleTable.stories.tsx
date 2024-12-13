@@ -23,6 +23,8 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { ThreeDotIcon } from 'src/icons/ThreeDotIcon';
 import { TrashCanDuotoneIcon } from 'src/icons/TrashCanDuotoneIcon';
 
+import styles from './SimpleTable.stories.module.scss';
+
 const meta: Meta = {
   component: SimpleTable,
 };
@@ -298,6 +300,13 @@ export const WithLink = () => {
 export const Loading = () => {
   const [loading, setLoading] = useState(true);
   const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
+  const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
+  const toggleItem = (id: string) =>
+    setExpandedItemKeys(
+      expandedItemKeys.includes(id)
+        ? expandedItemKeys.filter(x => x !== id)
+        : expandedItemKeys.concat(id),
+    );
 
   const checkboxAllValue = selectedRowIndexes.length === items.length;
 
@@ -327,6 +336,49 @@ export const Loading = () => {
     <>
       <Checkbox checked={loading} label="Loading" onChange={setLoading} />
       <SimpleTable
+        headers={tableHeaders}
+        items={items}
+        keyExtractor={item => String(item.id)}
+        loading={loading}
+        loadingItems={items.length}
+        selectable={{
+          anySelected: selectedRowIndexes.length > 0,
+          enabled: true,
+          headerCheckboxValue: checkboxAllValue,
+          isRowChecked: (_, index) => selectedRowIndexes.includes(index),
+          onHeaderCheckboxChange: handleCheckboxAllChange,
+          onRowCheckboxChange: handleCheckboxRowChange,
+        }}
+      />
+      <Divider />
+      <SimpleTable
+        bordered
+        collapsible={{
+          collapseContent: items.map(item => ({
+            content: (
+              <table className={styles.collapseTable}>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Vegan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{item.name}</td>
+                    <td>{item.age}</td>
+                    <td>{item.vegan}</td>
+                  </tr>
+                </tbody>
+              </table>
+            ),
+            key: String(item.id),
+          })),
+          enabled: true,
+          expandedItemKeys,
+          toggleItem,
+        }}
         headers={tableHeaders}
         items={items}
         keyExtractor={item => String(item.id)}
@@ -409,7 +461,7 @@ export const Collapsible = () => {
   };
   const collapseContent = items.map(item => ({
     content: (
-      <table style={{ width: '100%' }}>
+      <table className={styles.collapseTable}>
         <thead>
           <tr>
             <th>Name</th>
@@ -419,9 +471,9 @@ export const Collapsible = () => {
         </thead>
         <tbody>
           <tr>
-            <td style={{ border: 'none' }}>{item.name}</td>
-            <td style={{ border: 'none' }}>{item.age}</td>
-            <td style={{ border: 'none' }}>{item.vegan}</td>
+            <td>{item.name}</td>
+            <td>{item.age}</td>
+            <td>{item.vegan}</td>
           </tr>
         </tbody>
       </table>
@@ -666,7 +718,7 @@ export const OnRowClick = () => {
     );
   const collapseContent = items.map(item => ({
     content: (
-      <table style={{ width: '100%' }}>
+      <table className={styles.collapseTable}>
         <thead>
           <tr>
             <th>Name</th>
@@ -676,9 +728,9 @@ export const OnRowClick = () => {
         </thead>
         <tbody>
           <tr>
-            <td style={{ border: 'none' }}>{item.name}</td>
-            <td style={{ border: 'none' }}>{item.age}</td>
-            <td style={{ border: 'none' }}>{item.vegan}</td>
+            <td>{item.name}</td>
+            <td>{item.age}</td>
+            <td>{item.vegan}</td>
           </tr>
         </tbody>
       </table>
