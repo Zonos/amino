@@ -26,6 +26,7 @@
 
   &.persistentToast {
     cursor: pointer;
+    user-select: auto;
 
     &:hover {
       transform: scale(0.95);
