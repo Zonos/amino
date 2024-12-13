@@ -13,38 +13,21 @@ import groupBy from 'lodash/groupBy';
 import { Button } from 'src/components/button/Button';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
+import type { CountryMultiSelectExpandedOption } from 'src/components/country-multi-select/CountryMultiSelectExpandedOption';
+import { _CountryMultiSelectExpandedOptionComponent } from 'src/components/country-multi-select/CountryMultiSelectExpandedOption';
 import { Divider } from 'src/components/divider/Divider';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
-
-export type CountryMultiSelectExpandedOption<
-  CountryCode extends string = string,
-> = {
-  code: CountryCode;
-  disabled?: boolean;
-  /**
-   * Key to group by
-   */
-  group: string;
-  icon: ReactNode | (() => ReactNode);
-  label: string;
-  /**
-   * Having this as a ReactNode breaks storybook (and only storybook, it works fine elsewhere) somehow. I have no idea, but it needs to be a function instead...
-   * @returns
-   */
-  rightDecorator?: () => ReactNode;
-};
 
 type CountryMultiSelectExpandedRegion<CountryCode extends string = string> = {
   countries: CountryMultiSelectExpandedOption<CountryCode>[];
@@ -70,15 +53,15 @@ export type CountryMultiSelectExpandedProps<
      * @default false
      */
     noHeader?: boolean;
+    onChange: (
+      countries: CountryMultiSelectExpandedOption<CountryCode>[],
+    ) => void;
     selectedCountries: CountryMultiSelectExpandedOption<CountryCode>[];
     /**
      * No search bar
      * @default false
      */
     withoutSearch?: boolean;
-    onChange: (
-      countries: CountryMultiSelectExpandedOption<CountryCode>[],
-    ) => void;
   };
 
 export const CountryMultiSelectExpanded = <
@@ -278,54 +261,30 @@ export const CountryMultiSelectExpanded = <
               <Collapse collapsed={groupCollapsed}>
                 <div className={styles.countriesWrapper}>
                   {group.countries.map(country => {
-                    const icon =
-                      typeof country.icon === 'function'
-                        ? country.icon()
-                        : country.icon;
+                    const isChecked = selectedCountries.some(
+                      x => x.code === country.code,
+                    );
+
+                    const onChangeCountry = (checked: boolean) => {
+                      if (checked) {
+                        onChange([...selectedCountries, country]);
+                      } else {
+                        onChange(
+                          selectedCountries.filter(
+                            selectedCountry =>
+                              selectedCountry.code !== country.code,
+                          ),
+                        );
+                      }
+                    };
 
                     return (
-                      <Checkbox
+                      <_CountryMultiSelectExpandedOptionComponent
                         key={country.code}
-                        checked={selectedCountries.some(
-                          x => x.code === country.code,
-                        )}
-                        className={clsx(
-                          styles.checkboxWrapper,
-                          styles.checkboxCountry,
-                          !country.disabled && styles.hoverWrapper,
-                        )}
-                        disabled={country.disabled}
-                        label={country.label}
-                        labelComponent={
-                          <div
-                            className={styles.checkboxLabelWrapper}
-                            style={{
-                              marginLeft: 8,
-                              opacity: country.disabled
-                                ? theme.opacityDisabled
-                                : 1,
-                            }}
-                          >
-                            <div>
-                              {icon}
-                              {country.label}
-                            </div>
-                            {country.rightDecorator?.()}
-                          </div>
-                        }
-                        onChange={checked => {
-                          if (checked) {
-                            onChange([...selectedCountries, country]);
-                          } else {
-                            onChange(
-                              selectedCountries.filter(
-                                selectedCountry =>
-                                  selectedCountry.code !== country.code,
-                              ),
-                            );
-                          }
-                        }}
-                      />
+                        country={country}
+                        isChecked={isChecked}
+                        onChange={onChangeCountry}
+                      ></_CountryMultiSelectExpandedOptionComponent>
                     );
                   })}
                 </div>

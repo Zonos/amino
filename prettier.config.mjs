@@ -1,11 +1,7 @@
-/** @type {import("prettier").Options} */
-module.exports = {
-  tabWidth: 2,
-  printWidth: 80,
-  proseWrap: 'preserve',
-  semi: true,
-  trailingComma: 'all',
-  singleQuote: true,
+/**
+ * @type {import("prettier").Config}
+ */
+const config = {
   arrowParens: 'avoid',
   overrides: [
     {
@@ -16,4 +12,12 @@ module.exports = {
       },
     },
   ],
+  printWidth: 80,
+  proseWrap: 'preserve',
+  semi: true,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'all',
 };
+
+export default config;

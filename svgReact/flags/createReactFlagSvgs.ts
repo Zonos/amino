@@ -47,10 +47,11 @@ export const generateComponentContent = ({
     maskIds.length &&
       `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
     `type Props = {`,
+    `borderRadius?: number;`,
     `height: number;`,
     `width: number;`,
-    `borderRadius?: number;`,
     `};`,
+    ``,
     `export const ${componentName} = forwardRef<SVGSVGElement, Props>(({ height, width, borderRadius }, ref) => {`,
     maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
     `return (`,

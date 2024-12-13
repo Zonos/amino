@@ -11,8 +11,8 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
@@ -64,11 +64,11 @@ export type CheckboxProps = Omit<
     label?: string;
     labelComponent?: ReactNode;
     labelDescription?: string;
-    subtitle?: string;
     onChange: (
       checked: boolean,
       event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
     ) => void;
+    subtitle?: string;
   };
 
 export const Checkbox = ({
@@ -106,7 +106,6 @@ export const Checkbox = ({
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- When inside the table, the click event is on the label and we need to prevent propagation.
     <label
       className={clsx(globalStyles.focusableLabel, styles.wrapper, className)}
       htmlFor={id}

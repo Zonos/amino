@@ -11,7 +11,7 @@ import { ThemeDarkIcon } from 'src/icons/custom/theme/ThemeDarkIcon';
 import { ThemeLightIcon } from 'src/icons/custom/theme/ThemeLightIcon';
 import { NightIcon } from 'src/icons/NightIcon';
 import { SunnyIcon } from 'src/icons/SunnyIcon';
-import type { Theme } from 'src/types';
+import type { Theme } from 'src/types/Theme';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 import styles from './ThemeSelect.module.scss';

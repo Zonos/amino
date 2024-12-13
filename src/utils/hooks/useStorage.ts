@@ -3,12 +3,12 @@ import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import type { Dayjs } from 'dayjs';
 
 import {
-  type StorageParams,
-  type StorageType,
   getShouldUpdateStorageItem,
   getStorageItem,
   setStorageItem,
   setStorageItemWithLifetime,
+  type StorageParams,
+  type StorageType,
 } from 'src/utils/storage';
 
 type AminoLocalStorageKey = 'current-schema';
@@ -44,14 +44,14 @@ const getStorageSubscription = (type: StorageType) => {
 };
 
 export type UseStorageParams<
-  TValue extends unknown,
+  TValue,
   TKey extends AminoStorageKey,
 > = StorageParams<TValue, TKey> & {
   defaultValue: TValue;
 };
 
 export const useStorage = <
-  TValue extends unknown,
+  TValue,
   TKey extends AminoStorageKey = AminoStorageKey,
 >({
   defaultValue,
@@ -82,7 +82,7 @@ export const useStorage = <
 };
 
 export const useStorageWithLifetime = <
-  TValue extends unknown,
+  TValue,
   TKey extends AminoStorageKey = AminoStorageKey,
 >({
   defaultValue,
@@ -113,7 +113,7 @@ export const useStorageWithLifetime = <
 
   const currentValue = shouldUpdate
     ? null
-    : getStorageItem<TValue>({ key, schema, type }) ?? null;
+    : (getStorageItem<TValue>({ key, schema, type }) ?? null);
 
   const setValue = useCallback(
     (value: TValue) =>

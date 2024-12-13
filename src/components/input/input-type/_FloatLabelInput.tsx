@@ -1,10 +1,10 @@
 import {
   type ChangeEventHandler,
+  forwardRef,
   type HTMLInputTypeAttribute,
   type InputHTMLAttributes,
   type KeyboardEventHandler,
   type ReactNode,
-  forwardRef,
   useId,
   useMemo,
 } from 'react';
@@ -162,7 +162,6 @@ export const FloatLabelInput = forwardRef<
         <input
           ref={ref}
           aria-label={label}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           className={clsx(styles.aminoInput)}
           data-testid={testId}

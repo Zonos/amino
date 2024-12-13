@@ -2,8 +2,6 @@ import { theme } from 'build-utils/css/constants/theme';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { format, resolveConfig, resolveConfigFile } from 'prettier';
 
-import { logging } from './logging';
-
 /**
  * Format scss file using prettier api
  * @param content File content to format
@@ -53,5 +51,5 @@ export const generateSCSS = async (destinationPath: string) => {
   `);
   /** @desc write to destination */
   writeFileSync(`${path}/theme.scss`, content);
-  logging(`Generated theme scss file to ${path}/theme.scss`);
+  console.info(`Generated theme scss file to ${path}/theme.scss`);
 };

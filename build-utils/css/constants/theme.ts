@@ -15,7 +15,6 @@ import { purple } from 'build-utils/css/constants/theme/day/colors/_purple';
 import { red } from 'build-utils/css/constants/theme/day/colors/_red';
 import { transparent } from 'build-utils/css/constants/theme/day/colors/_transparent';
 
-/* eslint-disable deprecation/deprecation */
 export const theme = {
   transition: 'all 0.2s ease-in-out 0s, visibility 0s',
   'type-scale-base': '16px',

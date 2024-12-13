@@ -2,7 +2,9 @@ import alias from '@rollup/plugin-alias';
 import buble from '@rollup/plugin-buble';
 import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
 import autoprefixer from 'autoprefixer';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
@@ -17,7 +19,6 @@ import {
 } from 'rollup';
 import postcss from 'rollup-plugin-postcss';
 import progress from 'rollup-plugin-progress';
-import tsPlugin from 'rollup-plugin-typescript2';
 
 type RollupOptions = InputOptions & { output?: OutputOptions };
 type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
@@ -55,10 +56,23 @@ const bundlePackage = async (
       Object.keys(dependencies) as string[],
     ),
     maxParallelFileOps: 50,
+    output: {},
     plugins: [
+      replace({
+        delimiters: ['', ''],
+        include: ['**/FlagIcon.tsx'],
+        preventAssignment: true,
+        values: {
+          '.tsx': ``,
+          'src/icons/flags/': '../flags/',
+        },
+      }),
       alias({
         entries: [
-          { find: 'src', replacement: path.resolve(__dirname, '../src') },
+          {
+            find: 'src',
+            replacement: path.resolve(__dirname, '../src'),
+          },
         ],
       }),
       nodeResolve({
@@ -66,13 +80,7 @@ const bundlePackage = async (
         resolveOnly: [''],
       }),
       image(),
-      tsPlugin({
-        tsconfigOverride: {
-          compilerOptions: {
-            module: 'esnext',
-          },
-        },
-      }),
+      typescript(),
       // preprocess the scss
       postcss({
         autoModules: true,
@@ -99,7 +107,7 @@ const bundlePackage = async (
         transforms: {
           dangerousForOf: true,
           dangerousTaggedTemplateString: true,
-          modules: false,
+          modules: true,
         },
       }),
       terser(),
@@ -125,7 +133,7 @@ const bundlePackage = async (
     return output.filter(item => item.type === 'chunk') as OutputChunk[];
   } catch (err) {
     bundle?.close();
-    console.error('Error bundling:', err); // eslint-disable-line no-console
+    console.error('Error bundling:', err);
     // stop the process if there is an error
     throw new Error('Error bundling');
   }

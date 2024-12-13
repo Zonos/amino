@@ -24,12 +24,12 @@ export type MultiInputProps = {
   className?: string;
   inputValue: string;
   placeholder?: string;
-  style?: React.CSSProperties;
-  tags: string[];
   setHasValidationError?: (hasValidationError: boolean) => void;
   setInputValue: (input: string) => void;
   setTags: (tags: string[]) => void;
+  style?: React.CSSProperties;
   tagValidation?: (tag: string) => boolean;
+  tags: string[];
 };
 
 export const MultiInput = ({
@@ -138,7 +138,7 @@ export const MultiInput = ({
 
         return (
           // User could add duplicate tags, so we need to use index as key
-          // eslint-disable-next-line react/no-array-index-key
+
           <Flex key={tag + index} alignItems="center" gap={0}>
             <Tag
               highlighted={highlighted}

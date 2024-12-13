@@ -14,10 +14,10 @@ export type SwitchProps = BaseProps & {
   label?: string;
   labelDescription?: string;
   labelIcon?: ReactNode;
+  onChange: (checked: boolean) => void;
   subtitle?: string;
   switchIconLeft?: ReactNode;
   switchIconRight?: ReactNode;
-  onChange: (checked: boolean) => void;
 };
 
 export const Switch = ({

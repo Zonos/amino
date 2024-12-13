@@ -47,8 +47,7 @@ export const Storage = () => {
   const submit = () => {
     try {
       setValue(JSON.parse(input) as Person);
-    } catch (error) {
-      // eslint-disable-next-line no-alert
+    } catch {
       alert('Invalid JSON');
     }
   };

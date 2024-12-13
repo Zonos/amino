@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from 'src/components/button/Button';
-import { type CardProps, Card } from 'src/components/card/Card';
+import { Card, type CardProps } from 'src/components/card/Card';
 import { theme } from 'src/styles/constants/theme';
 
 const CardMeta: Meta = {

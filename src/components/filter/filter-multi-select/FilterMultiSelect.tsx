@@ -13,9 +13,9 @@ import styles from './FilterMultiSelect.module.scss';
 
 export type FilterMultiSelectProps<T extends SelectValue = SelectValue> =
   BaseFilterProps & {
+    onChange: (value: T[]) => void;
     options: SelectOption<T>[];
     value: T[];
-    onChange: (value: T[]) => void;
   };
 
 export const FilterMultiSelect = <T extends SelectValue = SelectValue>({

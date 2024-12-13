@@ -1,13 +1,13 @@
 import { Button } from 'src/components/button/Button';
 import {
-  type DismissableDialogProps,
   _dismissableDialogGetButtonVariant,
   DismissableDialog,
+  type DismissableDialogProps,
 } from 'src/components/dialog/DismissableDialog';
 
 export type AlertDialogProps = DismissableDialogProps & {
-  dismissText: string;
   dismissAction: () => void;
+  dismissText: string;
 };
 
 export const AlertDialog = ({

@@ -7,7 +7,7 @@ import { Badge } from 'src/components/badge/Badge';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
 import { RoundedIcon } from 'src/components/rounded-icon/RoundedIcon';
 import { VStack } from 'src/components/stack/VStack';
-import { type TableProps, Table } from 'src/components/table/Table';
+import { Table, type TableProps } from 'src/components/table/Table';
 import { TableBody } from 'src/components/table/TableBody';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableFooter } from 'src/components/table/TableFooter';

@@ -13,11 +13,10 @@ const getRgbFromColor = (color: string) => {
     .slice(1)
     .replace(color.length < 5 ? /./g : '', '$&$&')}`;
   return {
-    // eslint-disable-next-line no-bitwise
     b: rgbColor & 255,
-    // eslint-disable-next-line no-bitwise
+
     g: (rgbColor >> 8) & 255,
-    // eslint-disable-next-line no-bitwise
+
     r: rgbColor >> 16,
   };
 };

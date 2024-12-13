@@ -7,8 +7,8 @@ import shopifySvg from 'src/components/avatar/__stories__/resources/shopify.svg'
 import volusionSvg from 'src/components/avatar/__stories__/resources/volusion.svg';
 import woocommerceSvg from 'src/components/avatar/__stories__/resources/woocommerce.svg';
 import {
-  type ImageAvatarProps,
   ImageAvatar as Avatar,
+  type ImageAvatarProps,
 } from 'src/components/avatar/ImageAvatar';
 import { Flex } from 'src/components/flex/Flex';
 import { HStack } from 'src/components/stack/HStack';

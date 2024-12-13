@@ -155,7 +155,6 @@ const Template: StoryFn<Props> = ({
   ) => (
     <HStack className={styles.styledHStack} spacing={8}>
       {options.map(x => (
-        // eslint-disable-next-line
         <div
           key={x.label}
           onClick={() => {

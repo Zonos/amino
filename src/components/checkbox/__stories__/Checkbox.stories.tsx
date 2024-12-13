@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
-import { type CheckboxProps, Checkbox } from 'src/components/checkbox/Checkbox';
+import { Checkbox, type CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
 import { Default } from 'src/icons/flags/Default';
@@ -35,6 +35,7 @@ const CheckboxMeta: Meta<CheckboxProps> = {
     },
   },
   render: Template,
+  tags: ['tested'],
 };
 
 export default CheckboxMeta;

@@ -1,4 +1,4 @@
-import { type ReactNode, forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
 import { theme } from 'src/styles/constants/theme';
 import type { IconProps } from 'src/types/IconProps';

@@ -10,9 +10,7 @@ export type TextAvatarProps = {
 
 const colorForString = (stringInput: string, brightness: number) => {
   const stringUniqueHash = Array.from(stringInput).reduce(
-    (acc, char) =>
-      // eslint-disable-next-line no-bitwise
-      char.charCodeAt(0) + ((acc << 5) - acc),
+    (acc, char) => char.charCodeAt(0) + ((acc << 5) - acc),
     0,
   );
 

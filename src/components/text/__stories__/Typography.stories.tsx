@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { VStack } from 'src/components/stack/VStack';
-import { type TextProps, Text, textOptions } from 'src/components/text/Text';
+import { Text, textOptions, type TextProps } from 'src/components/text/Text';
 
 import styles from './Typography.stories.module.scss';
 

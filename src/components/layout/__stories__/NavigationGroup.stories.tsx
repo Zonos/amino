@@ -15,7 +15,7 @@ const NavigationGroupMeta: Meta = {
   parameters: {
     docs: { source: { type: 'code' } },
   },
-  // @ts-ignore subcomponents don't seem to be working
+  // @ts-expect-error subcomponents don't seem to be working
   subcomponents: { NavigationItem },
 };
 

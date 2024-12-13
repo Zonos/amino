@@ -3,7 +3,7 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { Card } from 'src/components/card/Card';
 import { NavigationGroup as NavigationGroupStory } from 'src/components/layout/__stories__/NavigationGroup.stories';
 import { UserMenu } from 'src/components/layout/__stories__/UserMenu';
-import { type LayoutProps, Layout } from 'src/components/layout/Layout';
+import { Layout, type LayoutProps } from 'src/components/layout/Layout';
 import {
   NavigationGroup,
   NavigationItem,
@@ -59,9 +59,9 @@ const LayoutMeta: Meta = {
     docs: { source: { type: 'code' } },
   },
   subcomponents: {
-    // @ts-ignore subcomponents don't seem to be working
+    // @ts-expect-error subcomponents don't seem to be working
     NavigationGroup,
-    // @ts-ignore subcomponents don't seem to be working
+    // @ts-expect-error subcomponents don't seem to be working
     NavigationItem,
   },
 };

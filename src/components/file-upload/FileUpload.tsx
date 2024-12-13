@@ -36,9 +36,9 @@ export type FileUploadProps = BaseProps & {
    * @default 'Uploading...''
    */
   loadingText?: string;
+  onRemoveFile?: () => void;
   /** Display file info if uploaded file property has data */
   uploadedFile: UploadFileNoImage | null;
-  onRemoveFile?: () => void;
 };
 
 /**

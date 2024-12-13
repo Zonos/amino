@@ -1,7 +1,17 @@
 import isEqual from 'lodash/isEqual';
 import useSwr, { type Fetcher, type Key, type SWRConfiguration } from 'swr';
 
-import type { FetcherError, SwrtParams } from 'src/types';
+import type { JsonError } from 'src/utils/handleFetch';
+
+type SwrtParams<T> = {
+  json: T | null;
+  response: Response | null;
+};
+
+type FetcherError = {
+  errors: JsonError[];
+  status: number;
+};
 
 type UseSwrArgs<ResponseData> =
   | readonly [Key]

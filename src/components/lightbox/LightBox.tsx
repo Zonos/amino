@@ -1,6 +1,6 @@
 import {
-  type BaseDialogProps,
   BaseDialog,
+  type BaseDialogProps,
 } from 'src/components/dialog/BaseDialog';
 
 export type LightBoxProps = BaseDialogProps & {

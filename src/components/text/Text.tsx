@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import clsx from 'clsx';
 
 import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { Color } from 'src/types/Color';
 
 import styles from './Text.module.scss';
 

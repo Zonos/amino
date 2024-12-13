@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
 import { theme } from 'src/styles/constants/theme';
-import type { Color } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { Color } from 'src/types/Color';
 import { getAminoColor } from 'src/utils/getAminoColor';
 
 import styles from './ProgressBar.module.scss';

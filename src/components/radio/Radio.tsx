@@ -14,8 +14,8 @@ export type RadioProps = BaseProps & {
   checked: boolean;
   disabled?: boolean;
   label?: ReactNode;
-  value: string;
   onChange: (checked: boolean) => void;
+  value: string;
 };
 
 export const Radio = ({
