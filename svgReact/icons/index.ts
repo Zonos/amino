@@ -104,7 +104,7 @@ createIndexKeyFile({
 /** @desc Format generated svg react component and new IconIndex */
 console.info('Linting ...');
 execSync(
-  'pnpm eslint --fix svgReact/icons/dist/**/*.tsx src/icons/**/*.tsx -c ./eslint.config.prod.js',
+  'pnpm eslint --fix svgReact/icons/dist/**/*.tsx src/icons/**/*.tsx -c ./eslint.config.prod.mjs',
   {
     encoding: 'utf8',
   },

@@ -1,3 +1,4 @@
+export { _FlagIndex } from './_FlagIndex';
 export { AD } from './AD';
 export { AE } from './AE';
 export { AF } from './AF';

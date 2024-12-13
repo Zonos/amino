@@ -84,7 +84,7 @@ export const createIndexKeyFile = ({
 
   console.info('Linting ...');
 
-  execSync(`pnpm eslint --fix ${target} -c ./eslint.config.prod.js`, {
+  execSync(`pnpm eslint --fix ${target} -c ./eslint.config.prod.mjs`, {
     encoding: 'utf8',
   });
 

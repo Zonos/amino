@@ -59,7 +59,7 @@ const createComponentsFromSvgs = async () => {
     /** @desc Format generated svg react component and new IconIndex */
     try {
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.js',
+        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.mjs',
         {
           encoding: 'utf8',
         },
@@ -67,7 +67,7 @@ const createComponentsFromSvgs = async () => {
     } catch {
       /** @desc Run lint --fix the first time only fix part of the fixable errors, run it again to fix all */
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.js',
+        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.mjs',
         {
           encoding: 'utf8',
         },
