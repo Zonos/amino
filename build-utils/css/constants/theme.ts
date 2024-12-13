@@ -66,64 +66,28 @@ export const theme = {
 
   /* SPINNER COLORS */
   ...spinner,
-  /** @info 500 */
-  'appbar-elevation': 'var(--amino-elevation-500)',
 
   /* LAYOUT STYLE */
   'appbar-height': '55px',
-  /** @info 400 */
-  'dialog-elevation': 'var(--amino-elevation-400)',
+  'sidebar-width': '232px',
   'elevation-0': '0',
   'elevation-100': '100',
   'elevation-200': '200',
   'elevation-300': '300',
   'elevation-400': '400',
   'elevation-500': '500',
-  'font-harmonized-codes': `'Fira Code', var(--amino-font-sans)`,
-  'font-mono': `Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace`,
+  /** @info 400 */
+  'dialog-elevation': 'var(--amino-elevation-400)',
+  /** @info 500 */
+  'toast-elevation': 'var(--amino-elevation-500)',
+  /** @info 500 */
+  'appbar-elevation': 'var(--amino-elevation-500)',
 
-  /* FONTS */
-  'font-sans': `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
-  /** @info 24px  */
-  'font-size-2xl': '1.5rem',
-
-  /** @info 30px */
-  'font-size-3xl': '1.875rem',
-  /** @info 13px */
-  'font-size-base': '0.813rem',
-  /** @info 16px */
-  'font-size-base-docs': '1rem',
-  /** @info 18px */
-  'font-size-l': '1.125rem',
-  /** @info 12px */
-  'font-size-s': '0.75rem',
-  /** @info 20px */
-  'font-size-xl': '1.25rem',
-  /** @info 11px */
-  'font-size-xs': '0.688rem',
-
-  /* OTHER */
-  'input-background': 'inherit',
-  /** @info 40px */
-  'line-height-2xl': '2.5rem',
-
-  /* LINE HEIGHT */
-  /** @info 48px */
-  'line-height-3xl': '3rem',
-  /** @info 24px */
-  'line-height-base': '1.5rem',
-  /** @info 24px */
-  'line-height-l': '1.5rem',
-  /** @info 16px */
-  'line-height-s': '1rem',
-  /** @info 32px */
-  'line-height-xl': '2rem',
-  /** @info 12px */
-  'line-height-xs': '0.75rem',
-  /** @info 10px */
-  'radius-10': '0.625rem',
-  /** @info 12px */
-  'radius-12': '0.75rem',
+  /* BUTTON SIZE */
+  'size-xl': '56px',
+  'size-lg': '48px',
+  'size-md': '40px',
+  'size-sm': '32px',
 
   /* BORDER RADIUS */
   /** @info 4px */
@@ -132,15 +96,51 @@ export const theme = {
   'radius-6': '0.375rem',
   /** @info 8px */
   'radius-8': '0.5rem',
-  'sidebar-width': '232px',
-  'size-lg': '48px',
-  'size-md': '40px',
-  'size-sm': '32px',
+  /** @info 10px */
+  'radius-10': '0.625rem',
+  /** @info 12px */
+  'radius-12': '0.75rem',
 
-  /* BUTTON SIZE */
-  'size-xl': '56px',
-  /** @info 500 */
-  'toast-elevation': 'var(--amino-elevation-500)',
+  /** @info 30px */
+  'font-size-3xl': '1.875rem',
+  /** @info 24px  */
+  'font-size-2xl': '1.5rem',
+  /** @info 20px */
+  'font-size-xl': '1.25rem',
+  /** @info 18px */
+  'font-size-l': '1.125rem',
+  /** @info 16px */
+  'font-size-base-docs': '1rem',
+  /** @info 13px */
+  'font-size-base': '0.813rem',
+  /** @info 12px */
+  'font-size-s': '0.75rem',
+  /** @info 11px */
+  'font-size-xs': '0.688rem',
+
+  /* LINE HEIGHT */
+  /** @info 48px */
+  'line-height-3xl': '3rem',
+  /** @info 40px */
+  'line-height-2xl': '2.5rem',
+  /** @info 32px */
+  'line-height-xl': '2rem',
+  /** @info 24px */
+  'line-height-l': '1.5rem',
+  /** @info 24px */
+  'line-height-base': '1.5rem',
+  /** @info 16px */
+  'line-height-s': '1rem',
+  /** @info 12px */
+  'line-height-xs': '0.75rem',
+
+  /* FONTS */
+  'font-sans': `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif`,
+  'font-mono': `Operator Mono, MonoLisa, Dank Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace`,
+  'font-harmonized-codes': `'Fira Code', var(--amino-font-sans)`,
+
+  /* OTHER */
+  'input-background': 'inherit',
 } as const;
 
 export type ThemeKey = keyof typeof theme;

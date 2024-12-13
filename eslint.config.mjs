@@ -212,7 +212,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['build-utils/css/constants/theme/**', 'src/styles/constants/**'],
+    files: ['build-utils/css/constants/**', 'src/styles/constants/**'],
     rules: {
       'sort-keys/sort-keys-fix': 'off',
     },

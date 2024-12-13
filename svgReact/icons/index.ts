@@ -30,6 +30,7 @@ const generateSvgs = ({
     .filter(Boolean)
     /** @desc Preprocessing file */
     .map(item => {
+      // Only traverse 1 level of folder
       if (item.split('/').length > 2) {
         return null;
       }
