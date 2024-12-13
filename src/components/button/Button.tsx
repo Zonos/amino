@@ -71,8 +71,8 @@ const DEFAULT_TAG = 'button' as const;
 type MyHtmlElement<T extends GroupTag> = T extends 'a'
   ? HTMLAnchorElement
   : T extends 'button'
-  ? HTMLButtonElement
-  : HTMLDivElement;
+    ? HTMLButtonElement
+    : HTMLDivElement;
 
 // source: https://stackoverflow.com/questions/55969769/typing-a-dynamic-tag-in-react-with-typescript#:~:text=I%20don%27t%20see,the%20div%20tag.
 export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =

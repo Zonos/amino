@@ -64,11 +64,11 @@ export type CheckboxProps = Omit<
     label?: string;
     labelComponent?: ReactNode;
     labelDescription?: string;
-    subtitle?: string;
     onChange: (
       checked: boolean,
       event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
     ) => void;
+    subtitle?: string;
   };
 
 export const Checkbox = ({

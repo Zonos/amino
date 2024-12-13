@@ -24,12 +24,12 @@ export type MultiInputProps = {
   className?: string;
   inputValue: string;
   placeholder?: string;
-  style?: React.CSSProperties;
-  tags: string[];
   setHasValidationError?: (hasValidationError: boolean) => void;
   setInputValue: (input: string) => void;
   setTags: (tags: string[]) => void;
+  style?: React.CSSProperties;
   tagValidation?: (tag: string) => boolean;
+  tags: string[];
 };
 
 export const MultiInput = ({

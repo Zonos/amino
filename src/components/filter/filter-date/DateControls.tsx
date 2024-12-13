@@ -25,11 +25,11 @@ const optionsDate = filterDateRanges.map(r => ({
 }));
 
 type DateControlProps = BaseProps & {
-  rangeType: FilterDateRangeType;
-  value: FilterDateData;
   onChange: (value: FilterDateData) => void;
   onChangeFilterText: (text: string) => void;
+  rangeType: FilterDateRangeType;
   setRangeType: (range: FilterDateRangeType) => void;
+  value: FilterDateData;
 };
 
 export const DateControls = ({

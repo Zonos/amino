@@ -27,9 +27,9 @@ export type DismissableDialogBaseArgs = {
 export type DismissableDialogProps = BaseProps &
   DismissableDialogBaseArgs & {
     actions?: ReactNode;
+    dismissAction: () => void;
     open: boolean;
     themeOverride?: Theme;
-    dismissAction: () => void;
   };
 
 const getIconForIntent = (intent: DismissableDialogIntent) => {

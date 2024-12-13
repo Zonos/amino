@@ -44,10 +44,10 @@ export type DropZoneProps = BaseProps &
      * @default false
      * */
     noIcon?: boolean;
-    /** Display file info if uploaded file property has data */
-    uploadedFiles: UploadedFile[];
     /** When the remove icon is clicked on an individual file */
     onRemoveFile: (index: number) => void;
+    /** Display file info if uploaded file property has data */
+    uploadedFiles: UploadedFile[];
   };
 
 export const DropZone = ({

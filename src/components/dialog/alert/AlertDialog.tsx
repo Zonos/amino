@@ -6,8 +6,8 @@ import {
 } from 'src/components/dialog/DismissableDialog';
 
 export type AlertDialogProps = DismissableDialogProps & {
-  dismissText: string;
   dismissAction: () => void;
+  dismissText: string;
 };
 
 export const AlertDialog = ({

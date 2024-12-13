@@ -30,9 +30,9 @@ export type ToastProps = BaseProps & {
   intent?: Extract<Intent, 'success' | 'warning' | 'error' | 'info'>;
   /** If true, toast will be shown in the persistent stack */
   isPersistent?: boolean;
-  toastKey: string;
   /** Only used for persistent toasts */
   onDismiss?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  toastKey: string;
 };
 
 export const Toast = ({

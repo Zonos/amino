@@ -15,8 +15,8 @@ type DeepKeyofObjAndArray<
         ? `${K}[number].${DeepKeyofObjAndArray<T[K][number], DeepPrev[Depth]>}`
         : `${K}[number]`
       : T[K] extends object
-      ? `${K}.${DeepKeyofObjAndArray<T[K], DeepPrev[Depth]>}`
-      : K;
+        ? `${K}.${DeepKeyofObjAndArray<T[K], DeepPrev[Depth]>}`
+        : K;
   }[Extract<keyof T, string>]
 >;
 
@@ -30,8 +30,8 @@ export type DeepKeyofAtIndex<
   >]: Path extends `${string}[number]${string}`
     ? Path
     : Path extends `${string}[number]`
-    ? Path
-    : never;
+      ? Path
+      : never;
 }[DeepKeyofObjAndArray<T, Depth>];
 
 /**
@@ -62,19 +62,19 @@ export type DeepPropertyTypeAtIndex<
           : never
         : never
       : Top extends keyof T
-      ? T[Top] extends object
-        ? Rest extends DeepKeyofObjAndArray<T[Top], DeepPrev[Depth]>
-          ? DeepPropertyTypeAtIndex<T[Top], Rest, DeepPrev[Depth]>
+        ? T[Top] extends object
+          ? Rest extends DeepKeyofObjAndArray<T[Top], DeepPrev[Depth]>
+            ? DeepPropertyTypeAtIndex<T[Top], Rest, DeepPrev[Depth]>
+            : never
           : never
         : never
-      : never
     : KeyPath extends `${infer ArrayField}[number]`
-    ? ArrayField extends keyof T
-      ? T[ArrayField] extends unknown[]
-        ? T[ArrayField][number]
+      ? ArrayField extends keyof T
+        ? T[ArrayField] extends unknown[]
+          ? T[ArrayField][number]
+          : never
         : never
-      : never
-    : KeyPath extends keyof T
-    ? T[KeyPath]
-    : never
+      : KeyPath extends keyof T
+        ? T[KeyPath]
+        : never
 >;

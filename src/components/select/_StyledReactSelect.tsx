@@ -49,11 +49,11 @@ const getRadius = ($size?: Size) => {
 };
 
 type AdditionalProps<Value> = {
+  customOption?: (value: Value) => ReactNode;
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
   size?: Size;
-  customOption?: (value: Value) => ReactNode;
 };
 
 const ClearIndicator = <

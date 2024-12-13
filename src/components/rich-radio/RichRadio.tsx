@@ -28,9 +28,9 @@ export type RichRadioProps<T extends string = string> = BaseProps & {
    */
   itemHeight?: 40 | 64;
   items: RichRadioItemType<T>[];
-  value: T | null;
   onChange: (value: T) => void;
   renderCustomText?: (option: RichRadioItemType<T>) => ReactNode;
+  value: T | null;
 };
 
 export const RichRadio = <T extends string>({

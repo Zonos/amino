@@ -19,16 +19,16 @@ export type FilterSelectProps<
   O extends SelectOption<string> = SelectOption<T>,
 > = BaseFilterProps & {
   filterTextCharacterLimit?: number;
-  options: O[];
-  selectProps?:
-    | CustomSelectProps<T, O>
-    | ((editingValue: O | null) => CustomSelectProps<T, O>);
-  value: T | null;
   /**
    * @default `is ${value.label}`
    */
   getFilterText?: (value: O) => string;
   onChange: (value: T | null) => void;
+  options: O[];
+  selectProps?:
+    | CustomSelectProps<T, O>
+    | ((editingValue: O | null) => CustomSelectProps<T, O>);
+  value: T | null;
 };
 
 export const FilterSelect = <

@@ -9,8 +9,8 @@ import styles from './RichCardStateSelect.module.scss';
 
 export type RichCardStateSelectProps<T extends UnitedState = UnitedState> =
   BaseProps & {
-    states: T[];
     onClick: (selectedState: T) => void;
+    states: T[];
   };
 
 export const RichCardStateSelect = <T extends UnitedState = UnitedState>({

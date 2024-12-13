@@ -66,10 +66,10 @@ export type CountryMultiSelectProps<
   countryOptions: CountryOption<Option['value']>[];
   icon?: ReactNode;
   label?: string;
+  onChange: (countryCodes: Option['value'][]) => void;
   styles?: StylesConfig<Option, IsMulti, Group>;
   unavailableCountries: UnavailableCountry[];
   value: Option['value'][];
-  onChange: (countryCodes: Option['value'][]) => void;
 } & Omit<
   Props<Option, IsMulti, Group>,
   'isMulti' | 'onChange' | 'options' | 'value'

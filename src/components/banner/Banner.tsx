@@ -20,8 +20,8 @@ export type BannerProps = BaseProps & {
   footerActions?: ReactNode;
   headerActions?: ReactNode;
   intent?: Exclude<Intent, 'danger' | 'secondary' | 'primary'>;
-  title?: ReactNode;
   onClose?: () => void;
+  title?: ReactNode;
 };
 
 export const Banner = ({

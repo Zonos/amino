@@ -20,12 +20,12 @@ type FilterWrapperProps = BaseProps & {
   dropdownRef: RefObject<HTMLDivElement>;
   dropdownTitle: string;
   filterText: string;
-  hasFilter: boolean;
-  label: string;
   handleApply: () => void;
   handleKeyDown: (event: KeyboardEvent) => void;
   handleOpenDropdown: (e: MouseEvent) => void;
   handleToggle: () => void;
+  hasFilter: boolean;
+  label: string;
 };
 
 export const FilterWrapper = ({

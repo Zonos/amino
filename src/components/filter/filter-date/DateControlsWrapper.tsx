@@ -9,9 +9,9 @@ import type { BaseProps } from 'src/types/BaseProps';
 import styles from './DateControls.module.scss';
 
 export type _DateControlProps = {
-  value: FilterDateData;
   onChange: (value: FilterDateData) => void;
   onChangeFilterText: (text: string) => void;
+  value: FilterDateData;
 };
 
 export const formatDate = (date: string) => dayjs(date).format('MM/DD/YYYY');

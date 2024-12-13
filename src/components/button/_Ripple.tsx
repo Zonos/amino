@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 export type RippleProps = {
   className: string;
+  /** Removes the ripple */
+  destroy: () => void;
   /** duration of the ripple */
   duration: number;
   rippleStyle: {
@@ -11,8 +13,6 @@ export type RippleProps = {
     width: number;
   };
   style?: React.CSSProperties;
-  /** Removes the ripple */
-  destroy: () => void;
 };
 
 export const Ripple = ({

@@ -53,15 +53,15 @@ export type CountryMultiSelectExpandedProps<
      * @default false
      */
     noHeader?: boolean;
+    onChange: (
+      countries: CountryMultiSelectExpandedOption<CountryCode>[],
+    ) => void;
     selectedCountries: CountryMultiSelectExpandedOption<CountryCode>[];
     /**
      * No search bar
      * @default false
      */
     withoutSearch?: boolean;
-    onChange: (
-      countries: CountryMultiSelectExpandedOption<CountryCode>[],
-    ) => void;
   };
 
 export const CountryMultiSelectExpanded = <

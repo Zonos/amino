@@ -27,9 +27,9 @@ export type CountryMultiSelectExpandedOption<
 };
 
 type Props<T extends string> = {
+  country: CountryMultiSelectExpandedOption<T>;
   isChecked: boolean;
   onChange: (checked: boolean) => void;
-  country: CountryMultiSelectExpandedOption<T>;
 };
 
 export const _CountryMultiSelectExpandedOptionComponent = <T extends string>({

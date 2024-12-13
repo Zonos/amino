@@ -33,9 +33,9 @@ type ToastType = {
   uuid: string;
 };
 export const ToastContext = createContext<{
-  notify: ToastContextFunctionType;
   dismissAllToasts: () => void;
   dismissToast: (toastId: string) => void;
+  notify: ToastContextFunctionType;
 }>({
   dismissAllToasts: () => {
     // This function is for the context type definition purpose.

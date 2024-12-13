@@ -20,6 +20,7 @@ export type BaseDialogProps = BaseProps & {
    * @default false
    */
   noCloseOnEsc?: boolean;
+  onClose?: () => void;
   open: boolean;
   /**
    * framer-motion props for the popup container.
@@ -51,7 +52,6 @@ export type BaseDialogProps = BaseProps & {
    * @default false
    */
   withBackdrop?: boolean;
-  onClose?: () => void;
 };
 
 export const BaseDialog = ({

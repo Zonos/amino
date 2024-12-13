@@ -14,7 +14,7 @@ import pluginSortKeys from 'eslint-plugin-sort-keys';
 import pluginStorybook from 'eslint-plugin-storybook';
 import pluginTypescriptSortKeys from 'eslint-plugin-typescript-sort-keys';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import tseslint, { parser } from 'typescript-eslint';
 
 export default tseslint.config(
   {
@@ -41,6 +41,7 @@ export default tseslint.config(
       globals: {
         ...globals.browser,
       },
+      parser: parser,
       parserOptions: {
         project: true,
         tsconfigRootDir: import.meta.dirname,
@@ -50,12 +51,12 @@ export default tseslint.config(
       'css-modules': pluginCssModules,
       'jsx-a11y': pluginJsxA11y,
       'no-relative-import-paths': pluginNoRelativeImports,
-      pluginTypescriptSortKeys,
       react: pluginReact,
       'react-hooks': pluginReactHooks,
       'simple-import-sort': pluginImportSort,
       'sort-destructure-keys': pluginSortDestructureKeys,
       'sort-keys': pluginSortKeys,
+      'typescript-sort-keys': pluginTypescriptSortKeys,
     },
     rules: {
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
@@ -181,13 +182,14 @@ export default tseslint.config(
         'warn',
         { caseSensitive: false },
       ],
-      'sort-keys': 'off',
       /**
        * Sort object keys (not included destructure object)
        * @ref https://github.com/namnm/eslint-plugin-sort-keys
        */
       'sort-keys/sort-keys-fix': ['warn', 'asc'],
       'storybook/use-storybook-expect': 'off',
+      'typescript-sort-keys/interface': 'error',
+      'typescript-sort-keys/string-enum': 'error',
     },
     settings: {
       react: {

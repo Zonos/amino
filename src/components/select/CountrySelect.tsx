@@ -6,11 +6,11 @@ import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 type CountrySelectType<T extends string> = {
   autoFocus?: SelectProps['autoFocus'];
   countryOptions: CountryOption<T>[];
+  filter?: (country: CountryOption<T>) => boolean;
   label?: string;
   onChange: SelectProps<T, CountryOption<T>>['onChange'];
   placeholder?: string;
   value: T | null;
-  filter?: (country: CountryOption<T>) => boolean;
 };
 
 export type CountrySelectProps<T extends string = string> =

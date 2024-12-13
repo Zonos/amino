@@ -16,8 +16,8 @@ export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;
   label?: ReactNode;
   leftActions?: ReactNode;
-  subtitle?: ReactNode;
   onClose: () => void;
+  subtitle?: ReactNode;
 };
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(

@@ -6,10 +6,10 @@ import {
 } from 'src/components/dialog/DismissableDialog';
 
 export type ConfirmDialogProps = DismissableDialogProps & {
-  confirmText: string;
-  dismissText: string;
   confirmAction: () => void;
+  confirmText: string;
   dismissAction: () => void;
+  dismissText: string;
 };
 
 export const ConfirmDialog = ({

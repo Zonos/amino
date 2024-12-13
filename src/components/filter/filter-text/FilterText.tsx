@@ -8,8 +8,8 @@ import {
 import { Input } from 'src/components/input/Input';
 
 export type FilterTextProps = BaseFilterProps & {
-  value: string | null;
   onChange: (value: string | null) => void;
+  value: string | null;
 };
 
 export const FilterText = ({

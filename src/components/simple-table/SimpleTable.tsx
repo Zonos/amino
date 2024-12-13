@@ -116,8 +116,14 @@ export type SimpleTableProps<T extends object> = BaseProps & {
     expandedItemKeys: string[];
     toggleItem: (key: string) => void;
   };
+  /**
+   * Will make the whole row (each td) an anchor tag so native link functionality exists. If clicking just navigates, use this over onRowClick.
+   */
+  getRowLink?: (item: T) => string;
   headers: SimpleTableHeader<T>[];
   items: T[];
+  /** Adding unique list keys */
+  keyExtractor: (item: T) => string;
   /**
    * Render loading skeleton
    * @default false
@@ -143,6 +149,12 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    * Disable hover background color effect on rows
    */
   noHoverBackground?: boolean;
+  /**
+   * Callback for clicking anywhere on row.
+   *
+   * If having buttons in the table, remember to call e.stopPropagation() to prevent this from firing.
+   */
+  onRowClick?: (item: T) => void;
   /**
    * Component places at the bottom of the table
    */
@@ -171,18 +183,6 @@ export type SimpleTableProps<T extends object> = BaseProps & {
      */
     renderCustomRowCheckbox?: (item: T, index: number) => ReactNode;
   };
-  /**
-   * Will make the whole row (each td) an anchor tag so native link functionality exists. If clicking just navigates, use this over onRowClick.
-   */
-  getRowLink?: (item: T) => string;
-  /** Adding unique list keys */
-  keyExtractor: (item: T) => string;
-  /**
-   * Callback for clicking anywhere on row.
-   *
-   * If having buttons in the table, remember to call e.stopPropagation() to prevent this from firing.
-   */
-  onRowClick?: (item: T) => void;
   /** Callback for hovering anywhere on row */
   onRowHover?: (item: T) => void;
 };
@@ -348,8 +348,9 @@ export const SimpleTable = <T extends object>({
       return items.map((item, index) => {
         const key = keyExtractor(item);
         const collapsed = !expandedItemKeys.includes(key);
-        const rowCollapseContent = collapseContent?.find(x => x.key === key)
-          ?.content;
+        const rowCollapseContent = collapseContent?.find(
+          x => x.key === key,
+        )?.content;
         return (
           <TableRowCollapse
             key={key}
