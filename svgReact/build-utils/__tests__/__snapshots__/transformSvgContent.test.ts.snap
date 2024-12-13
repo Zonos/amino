@@ -5,9 +5,9 @@ exports[`Transforming SVG content > AL.svg (mask xlink:href) 1`] = `
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
-  borderRadius?: number;
 };
 export const AL = forwardRef<SVGSVGElement, Props>(
   ({ height, width, borderRadius }, ref) => {
@@ -43,9 +43,9 @@ exports[`Transforming SVG content > CN.svg (data:image) 1`] = `
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
-  borderRadius?: number;
 };
 export const CN = forwardRef<SVGSVGElement, Props>(
   ({ height, width, borderRadius }, ref) => {
@@ -116,9 +116,9 @@ exports[`Transforming SVG content > CN.svg (mask xlink:href) 1`] = `
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
-  borderRadius?: number;
 };
 export const CN = forwardRef<SVGSVGElement, Props>(
   ({ height, width, borderRadius }, ref) => {
@@ -177,9 +177,9 @@ exports[`Transforming SVG content > With data:image (data:image) 1`] = `
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
-  borderRadius?: number;
 };
 export const CN = forwardRef<SVGSVGElement, Props>(
   ({ height, width, borderRadius }, ref) => {
@@ -250,9 +250,9 @@ exports[`Transforming SVG content > style prop (mask-type:alpha) 1`] = `
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
 import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 type Props = {
+  borderRadius?: number;
   height: number;
   width: number;
-  borderRadius?: number;
 };
 export const CN = forwardRef<SVGSVGElement, Props>(
   ({ height, width, borderRadius }, ref) => {

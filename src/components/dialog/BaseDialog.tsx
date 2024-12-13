@@ -2,7 +2,7 @@ import React, { type ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 import clsx from 'clsx';
-import { type MotionProps, AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, type MotionProps } from 'framer-motion';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
@@ -20,6 +20,7 @@ export type BaseDialogProps = BaseProps & {
    * @default false
    */
   noCloseOnEsc?: boolean;
+  onClose?: () => void;
   open: boolean;
   /**
    * framer-motion props for the popup container.
@@ -51,7 +52,6 @@ export type BaseDialogProps = BaseProps & {
    * @default false
    */
   withBackdrop?: boolean;
-  onClose?: () => void;
 };
 
 export const BaseDialog = ({

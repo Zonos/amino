@@ -418,7 +418,8 @@ exports[`Case night theme: 1`] = `
   --amino-v3-shadow-inset: 0px 2px 4px rgba(0, 0, 0, 0.24),
     0px 1px 0px rgba(17, 17, 20, 1), inset 0px 0px 8px rgba(0, 0, 0, 0.16),
     inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.24),
-    inset 0px 2px 4px rgba(0, 0, 0, 0.24), inset 0px 1px 1px rgba(0, 0, 0, 0.24),
+    inset 0px 2px 4px rgba(0, 0, 0, 0.24),
+    inset 0px 1px 1px rgba(0, 0, 0, 0.24),
     0px 0px 6px rgba(255, 255, 255, 0.08),
     0px 0px 0px 1px rgba(255, 255, 255, 0.12);
   --amino-shadow-button-primary: 0px 1px 3px 0px rgba(68, 111, 238, 0.4),

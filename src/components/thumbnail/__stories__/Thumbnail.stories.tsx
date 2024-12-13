@@ -1,17 +1,19 @@
+import { lazy, Suspense } from 'react';
+
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Flex } from 'src/components/flex/Flex';
 import {
-  type ThumbnailProps,
   Thumbnail as ThumbnailComponent,
+  type ThumbnailProps,
 } from 'src/components/thumbnail/Thumbnail';
-import * as icons from 'src/icons/_IconIndex';
+import { commonIconsList } from 'src/icons/__stories__/IconsList';
 
 const ThumbnailMeta: Meta = {
   argTypes: {
     icon: {
       control: { type: 'select' },
-      options: Object.keys(icons),
+      options: commonIconsList,
     },
     shape: {
       // We are showing all shapes already
@@ -35,27 +37,39 @@ const ThumbnailMeta: Meta = {
 export default ThumbnailMeta;
 
 type StoryProps = Omit<ThumbnailProps, 'shape' | 'icon'> & {
-  icon: keyof typeof icons;
+  icon: keyof typeof commonIconsList;
 };
 
 const Template: StoryFn<StoryProps> = ({ icon, ...props }) => {
-  const Icon = icons[icon];
+  const renderIcon = () => {
+    const IconComponent = lazy(() =>
+      import(`src/icons/${String(icon)}.tsx`).then(module => ({
+        default: module[icon],
+      })),
+    );
+
+    return (
+      <Suspense fallback={<div>O</div>}>
+        <IconComponent />
+      </Suspense>
+    );
+  };
 
   return (
     <Flex alignItems="center" flexDirection="column" gap={24}>
-      <ThumbnailComponent {...props} icon={<Icon />} shape="round" />
-      <ThumbnailComponent {...props} icon={<Icon />} shape="rounded" />
-      <ThumbnailComponent {...props} icon={<Icon />} shape="square" />
-      <ThumbnailComponent {...props} icon={<Icon />} intent="outline" />
+      <ThumbnailComponent {...props} icon={renderIcon()} shape="round" />
+      <ThumbnailComponent {...props} icon={renderIcon()} shape="rounded" />
+      <ThumbnailComponent {...props} icon={renderIcon()} shape="square" />
+      <ThumbnailComponent {...props} icon={renderIcon()} intent="outline" />
       <ThumbnailComponent
         {...props}
-        icon={<Icon />}
+        icon={renderIcon()}
         intent="outline"
         shape="rounded"
       />
       <ThumbnailComponent
         {...props}
-        icon={<Icon />}
+        icon={renderIcon()}
         intent="outline"
         shape="square"
       />

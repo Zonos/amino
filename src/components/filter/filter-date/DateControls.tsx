@@ -9,8 +9,8 @@ import { IsInTheLast } from 'src/components/filter/filter-date/_DateControls/_Is
 import { IsOnOrAfter } from 'src/components/filter/filter-date/_DateControls/_IsOnOrAfter';
 import {
   type FilterDateData,
-  type FilterDateRangeType,
   filterDateRanges,
+  type FilterDateRangeType,
   initialFilterDateState,
 } from 'src/components/filter/filter-date/filterDateReducer';
 import { Select } from 'src/components/select/Select';
@@ -25,11 +25,11 @@ const optionsDate = filterDateRanges.map(r => ({
 }));
 
 type DateControlProps = BaseProps & {
-  rangeType: FilterDateRangeType;
-  value: FilterDateData;
   onChange: (value: FilterDateData) => void;
   onChangeFilterText: (text: string) => void;
+  rangeType: FilterDateRangeType;
   setRangeType: (range: FilterDateRangeType) => void;
+  value: FilterDateData;
 };
 
 export const DateControls = ({

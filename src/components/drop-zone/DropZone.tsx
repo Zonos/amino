@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
@@ -44,10 +44,10 @@ export type DropZoneProps = BaseProps &
      * @default false
      * */
     noIcon?: boolean;
-    /** Display file info if uploaded file property has data */
-    uploadedFiles: UploadedFile[];
     /** When the remove icon is clicked on an individual file */
     onRemoveFile: (index: number) => void;
+    /** Display file info if uploaded file property has data */
+    uploadedFiles: UploadedFile[];
   };
 
 export const DropZone = ({

@@ -24,9 +24,18 @@ export type SelectProps<
   /** Close the select dropdown menu when scrolling outside of menu to prevent graphical jank */
   closeOnOutsideScroll?: boolean;
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  /**
+   * An easier way to override the option rendering without having to use the typical component props and recreating all the styles.
+   */
+  customOption?: (value: V) => ReactNode;
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
+  /**
+   * @example
+   * onChange={changed => setExampleValue(changed?.value || null)}
+   */
+  onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
   size?: Size;
   styles?: StylesConfig<Option, IsMulti, Group>;
   /**
@@ -34,15 +43,6 @@ export type SelectProps<
    * value={options.filter(x => x.value === exampleValue)}
    */
   value: Option[] | Option | null;
-  /**
-   * An easier way to override the option rendering without having to use the typical component props and recreating all the styles.
-   */
-  customOption?: (value: V) => ReactNode;
-  /**
-   * @example
-   * onChange={changed => setExampleValue(changed?.value || null)}
-   */
-  onChange: (changed: Option | null, actionMeta: ActionMeta<Option>) => void;
 } & Omit<Props<Option, IsMulti, Group>, 'isMulti' | RequiredProps> &
   Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
   HelpTextProps;

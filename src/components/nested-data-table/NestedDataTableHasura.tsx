@@ -12,13 +12,13 @@ type Props = {
   customFlattenRow?: typeof flattenRow;
   isFetching: boolean;
   query: string;
-  tableData: Record<string, unknown> | Record<string, unknown>[];
-  title: string;
   /**
    * @param cachingKey key to be used for caching response in Swr
    */
   setCachingKey: (cachingKey: string) => void;
   setQuery: (query: string) => void;
+  tableData: Record<string, unknown> | Record<string, unknown>[];
+  title: string;
 };
 
 export const NestedDataTableHasura = ({

@@ -5,7 +5,7 @@ import {
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
-import { type SelectProps, Select } from 'src/components/select/Select';
+import { Select, type SelectProps } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
 import { truncateText } from 'src/utils/truncateText';
 
@@ -19,16 +19,16 @@ export type FilterSelectProps<
   O extends SelectOption<string> = SelectOption<T>,
 > = BaseFilterProps & {
   filterTextCharacterLimit?: number;
-  options: O[];
-  selectProps?:
-    | CustomSelectProps<T, O>
-    | ((editingValue: O | null) => CustomSelectProps<T, O>);
-  value: T | null;
   /**
    * @default `is ${value.label}`
    */
   getFilterText?: (value: O) => string;
   onChange: (value: T | null) => void;
+  options: O[];
+  selectProps?:
+    | CustomSelectProps<T, O>
+    | ((editingValue: O | null) => CustomSelectProps<T, O>);
+  value: T | null;
 };
 
 export const FilterSelect = <

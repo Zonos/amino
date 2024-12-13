@@ -1,4 +1,4 @@
-import { type ReactNode, forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 
 import styles from './_FlagIconBase.module.scss';
 

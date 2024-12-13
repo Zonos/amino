@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import { useEffect, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
@@ -6,7 +5,7 @@ import clsx from 'clsx';
 
 import { Banner } from 'src/components/banner/Banner';
 import { Button } from 'src/components/button/Button';
-import { type CollapseProps, Collapse } from 'src/components/collapse/Collapse';
+import { Collapse, type CollapseProps } from 'src/components/collapse/Collapse';
 import { NavigationItem } from 'src/components/layout/NavigationGroup';
 import { Text } from 'src/components/text/Text';
 import { ChevronRightIcon } from 'src/icons/ChevronRightIcon';
@@ -108,7 +107,7 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         <div>
           Open by default (no border) - to test if the the `Collapse` will
           collapse the margin with its children
-          <Collapse collapsed={!open1} collapseSize={collapseSize}>
+          <Collapse collapseSize={collapseSize} collapsed={!open1}>
             {children}
             {moreItems && (
               <>
@@ -124,7 +123,7 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         </div>
         <div>
           Open by default
-          <Collapse collapsed={!open1} collapseSize={collapseSize}>
+          <Collapse collapseSize={collapseSize} collapsed={!open1}>
             <div className={styles.randomCollapseWrapper}>
               {children}
               {moreItems && (
@@ -142,7 +141,7 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         </div>
         <div>
           Closed by default
-          <Collapse collapsed={!open2} collapseSize={collapseSize}>
+          <Collapse collapseSize={collapseSize} collapsed={!open2}>
             <div className={styles.randomCollapseWrapper}>
               {children}
               {moreItems && (

@@ -18,9 +18,9 @@ export type TagProps = BaseProps &
     icon?: ReactNode;
     iconRight?: boolean;
     intent?: TagIntent;
-    size?: TagSize;
     onClick?: () => void;
     onClose: () => void;
+    size?: TagSize;
   };
 
 export const Tag = ({

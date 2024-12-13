@@ -1,9 +1,11 @@
+import { lazy, Suspense } from 'react';
+
 import type { Meta, StoryFn } from '@storybook/react';
 import { omitControls } from 'story-utils/omitControls';
 
-import { type BadgeProps, Badge } from 'src/components/badge/Badge';
+import { Badge, type BadgeProps } from 'src/components/badge/Badge';
 import { Flex } from 'src/components/flex/Flex';
-import * as icons from 'src/icons/_IconIndex';
+import { commonIconsList } from 'src/icons/__stories__/IconsList';
 
 const omittedProps: (keyof BadgeProps)[] = ['iconRight', 'bold'];
 
@@ -12,7 +14,7 @@ const BadgeMeta: Meta = {
     ...omitControls<BadgeProps>(omittedProps),
     icon: {
       control: { type: 'select' },
-      options: Object.keys(icons),
+      options: commonIconsList,
     },
   },
   args: {
@@ -30,11 +32,23 @@ const BadgeMeta: Meta = {
 export default BadgeMeta;
 
 type StoryProps = Omit<BadgeProps, 'iconRight' | 'icon' | 'bold'> & {
-  icon: keyof typeof icons;
+  icon: keyof typeof commonIconsList;
 };
 
 const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
-  const Icon = icons[icon];
+  const renderIcon = () => {
+    const IconComponent = lazy(() =>
+      import(`src/icons/${String(icon)}.tsx`).then(module => ({
+        default: module[icon],
+      })),
+    );
+
+    return (
+      <Suspense fallback={<div>O</div>}>
+        <IconComponent />
+      </Suspense>
+    );
+  };
 
   return (
     <Flex flexDirection="column" gap={20}>
@@ -43,12 +57,12 @@ const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
         <Badge {...props}>{children}</Badge>
       </div>
       <div>
-        <Badge icon={<Icon />} {...props}>
+        <Badge icon={renderIcon()} {...props}>
           {children}
         </Badge>
       </div>
       <div>
-        <Badge icon={<Icon />} iconRight {...props}>
+        <Badge icon={renderIcon()} iconRight {...props}>
           {children}
         </Badge>
       </div>
@@ -59,12 +73,12 @@ const Template: StoryFn<StoryProps> = ({ children, icon, ...props }) => {
         </Badge>
       </div>
       <div>
-        <Badge bold icon={<Icon />} {...props}>
+        <Badge bold icon={renderIcon()} {...props}>
           {children}
         </Badge>
       </div>
       <div>
-        <Badge bold icon={<Icon />} iconRight {...props}>
+        <Badge bold icon={renderIcon()} iconRight {...props}>
           {children}
         </Badge>
       </div>

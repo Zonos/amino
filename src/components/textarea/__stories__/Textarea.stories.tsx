@@ -6,7 +6,7 @@ import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
-import { type TextareaProps, Textarea } from 'src/components/textarea/Textarea';
+import { Textarea, type TextareaProps } from 'src/components/textarea/Textarea';
 
 const TextAreaMeta: Meta = {
   component: Textarea,

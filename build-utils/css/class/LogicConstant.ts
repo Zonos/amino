@@ -35,7 +35,6 @@ export class LogicConstant {
   }
 
   private printError(msg: string) {
-    // eslint-disable-next-line no-console
     console.error(`File error '${__filename}': ${msg}`);
   }
 

@@ -8,12 +8,10 @@ import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
-import {
-  ArrowSwapIcon,
-  EditIcon,
-  RemoveCircleIcon,
-  StarsIcon,
-} from 'src/icons/_IconIndex';
+import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
+import { EditIcon } from 'src/icons/EditIcon';
+import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
+import { StarsIcon } from 'src/icons/StarsIcon';
 
 const meta: Meta<typeof ButtonGroup> = {
   component: ButtonGroup,

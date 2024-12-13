@@ -1,4 +1,5 @@
 import { type CSSProperties, type ReactNode, useMemo, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 import type {
   ClearIndicatorProps,
   ControlProps,
@@ -12,14 +13,14 @@ import type {
   StylesConfig,
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
-import type Select from 'react-select/dist/declarations/src/Select';
 
 import clsx from 'clsx';
+import type Select from 'node_modules/react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
@@ -48,11 +49,11 @@ const getRadius = ($size?: Size) => {
 };
 
 type AdditionalProps<Value> = {
+  customOption?: (value: Value) => ReactNode;
   hasGroups?: boolean;
   icon?: ReactNode;
   label?: string;
   size?: Size;
-  customOption?: (value: Value) => ReactNode;
 };
 
 const ClearIndicator = <
@@ -197,6 +198,13 @@ export const CheckboxOptionComponent = <
     isSelected,
     selectProps,
   } = props;
+
+  // We can have a lot of options, and with things like country select, the icons are a lot to load.
+  const { inView, ref } = useInView({
+    fallbackInView: true,
+    triggerOnce: true,
+  });
+
   const { customOption, hasGroups } =
     selectProps as (typeof props)['selectProps'] &
       AdditionalProps<Option['value']>;
@@ -212,10 +220,12 @@ export const CheckboxOptionComponent = <
     }
 
     return (
-      <div className={styles.selectedSingleOptionWrapper}>
-        <IconLabel color={color} icon={data.icon}>
-          {children}
-        </IconLabel>
+      <div ref={ref} className={styles.selectedSingleOptionWrapper}>
+        {inView && (
+          <IconLabel color={color} icon={data.icon}>
+            {children}
+          </IconLabel>
+        )}
         {isSelected && <CheckCircleIcon color="blue600" size={24} />}
       </div>
     );

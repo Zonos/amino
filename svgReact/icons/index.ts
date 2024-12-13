@@ -6,7 +6,7 @@ import {
   type SvgList,
   svgProcessPaths,
 } from 'svgReact/icons/config/config';
-import { createIndexFile } from 'svgReact/icons/createIndexFile';
+import { createIndexKeyFile } from 'svgReact/icons/createIndexFile';
 import { createReactIconSvgs } from 'svgReact/icons/createReactIconSvgs';
 
 const pascalCased = (string: string) =>
@@ -30,7 +30,12 @@ const generateSvgs = ({
     .filter(Boolean)
     /** @desc Preprocessing file */
     .map(item => {
-      const hasSubfolder = item.split('/').length > 1;
+      // Only traverse 1 level of folder
+      if (item.split('/').length > 2) {
+        return null;
+      }
+
+      const hasSubfolder = item.split('/').length === 2;
       // if has sub folder, process with sub folder
       if (hasSubfolder) {
         const [folderName, type] = item.split('/');
@@ -62,7 +67,9 @@ const generateSvgs = ({
   if (names.length > 0) {
     try {
       /** @desc Optimize svg */
-      optimizeSvgs({ folderPath: `${__dirname}/${svgFolder}/**/*.svg` });
+      optimizeSvgs({
+        folderPath: `${__dirname}/${svgFolder}/**/*.svg`,
+      });
 
       console.info(`Generating react component for folder "${svgFolder}"`);
       /** @desc Generate svg react component */
@@ -89,15 +96,15 @@ svgProcessPaths.map(generateSvgs);
 
 console.info('Generating index file for generated svg react components ...');
 /** @desc Generate index file for generated svg react components */
-createIndexFile({
+createIndexKeyFile({
   generatePath: [...svgProcessPaths],
-  target: 'svgReact/icons/dist',
+  target: 'src/icons/__stories__/IconsList.ts',
 });
 
 /** @desc Format generated svg react component and new IconIndex */
 console.info('Linting ...');
 execSync(
-  'pnpm eslint --fix svgReact/icons/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
+  'pnpm eslint --fix svgReact/icons/dist/**/*.tsx src/icons/**/*.tsx -c ./eslint.config.prod.mjs',
   {
     encoding: 'utf8',
   },

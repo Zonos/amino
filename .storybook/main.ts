@@ -8,6 +8,7 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-designs',
+    'storybook-addon-tag-badges',
   ],
   core: {},
   docs: {},

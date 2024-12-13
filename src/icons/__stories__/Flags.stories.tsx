@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
 import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
-import { Text } from 'src/components/text/Text';
-import { type FlagIconProps, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
-import * as flags from 'src/icons/flags/_FlagIndex';
+import { flagIconsList } from 'src/icons/__stories__/FlagsList';
+import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 
 import styles from './Flags.stories.module.scss';
@@ -40,22 +39,26 @@ const getBorderRadius = (iconScale: 'small' | 'medium' | 'large') => {
   }
 };
 
-type FlagType = (typeof flags)[keyof typeof flags] & {
-  __docgenInfo?: {
-    displayName?: string;
-  };
-  deprecated?: boolean;
-};
-
 export const Flags = ({ iconScale }: FlagIconProps) => {
+  const [iconsToLoad, setIconsToLoad] = useState<string[]>([]);
   const [filter, setFilter] = useState('');
-  const iicons = Object.values<FlagType>(flags)
-    .map(icon => ({
-      deprecated: !!icon.deprecated,
-      icon,
-      iconName: icon.__docgenInfo?.displayName || '',
-    }))
-    .filter(icon => icon.iconName);
+
+  // This is a hack to prevent the server from overloading when requesting all the icons
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // eslint-disable-next-line no-console
+      console.info('Loading more icons...');
+      setIconsToLoad(prevIcons => {
+        const newIcons = flagIconsList.slice(0, prevIcons.length + 50);
+        if (newIcons.length >= flagIconsList.length) {
+          clearInterval(interval);
+        }
+        return newIcons;
+      });
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, [iconsToLoad.length]);
 
   const size = getSize(iconScale);
 
@@ -70,29 +73,29 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
         valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
       <div className={styles.styledWrapper}>
-        {iicons
-          .filter(({ iconName }) =>
+        {iconsToLoad
+          .filter(iconName =>
             filter
               ? iconName.toLowerCase().includes(filter.toLowerCase())
               : true,
           )
-          .map(({ deprecated, icon: IconComponent, iconName }) => {
-            const isDeprecated = deprecated;
+          .map(iconName => {
+            const IconComponent = lazy(() =>
+              import(`src/icons/flags/${iconName}.tsx`).then(module => ({
+                default: module[iconName],
+              })),
+            );
+
             return (
-              <div
-                key={iconName}
-                className={clsx(
-                  styles.styledIcon,
-                  isDeprecated && styles.deprecated,
-                )}
-              >
-                <IconComponent
-                  borderRadius={getBorderRadius(iconScale)}
-                  height={size}
-                  width={size}
-                />
+              <div key={iconName} className={clsx(styles.styledIcon)}>
+                <Suspense key={iconName} fallback={<div>Loading...</div>}>
+                  <IconComponent
+                    borderRadius={getBorderRadius(iconScale)}
+                    height={size}
+                    width={size}
+                  />
+                </Suspense>
                 <div>{iconName}</div>
-                {isDeprecated && <Text type="small-header">(Deprecated)</Text>}
               </div>
             );
           })}

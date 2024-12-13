@@ -41,13 +41,13 @@ export type ToggleProps<TValue extends SelectValue = SelectValue> =
      * @default false
      */
     fullWidth?: boolean;
+    onChange: (value: TValue) => void;
     options: SelectOption<TValue>[];
     /**
      * @default 'sm'
      */
     size?: Size;
     value: TValue;
-    onChange: (value: TValue) => void;
   };
 
 export const Toggle = <TValue extends SelectValue>({

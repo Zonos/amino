@@ -9,8 +9,6 @@ export const optimizeSvgs = ({
   folderPath: string;
 }) => {
   glob.sync(folderPath).forEach(item => {
-    // eslint-disable-next-line no-console
-    console.log(`Optimizing ${item} `);
     const optimizedSvg = optimize(readFileSync(item, { encoding: 'utf-8' }), {
       multipass: true,
       path: item,

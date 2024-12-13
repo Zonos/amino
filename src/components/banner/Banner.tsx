@@ -9,8 +9,9 @@ import { ExclamationMarkIcon } from 'src/icons/ExclamationMarkIcon';
 import { InfoIcon } from 'src/icons/InfoIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
-import type { Color, Intent } from 'src/types';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { Color } from 'src/types/Color';
+import type { Intent } from 'src/types/Intent';
 
 import styles from './Banner.module.scss';
 
@@ -19,8 +20,8 @@ export type BannerProps = BaseProps & {
   footerActions?: ReactNode;
   headerActions?: ReactNode;
   intent?: Exclude<Intent, 'danger' | 'secondary' | 'primary'>;
-  title?: ReactNode;
   onClose?: () => void;
+  title?: ReactNode;
 };
 
 export const Banner = ({

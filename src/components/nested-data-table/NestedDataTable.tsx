@@ -27,6 +27,7 @@ type Props<TRow extends Record<string, unknown>> = BaseProps & {
    * @description Custom flattenRow function, if not provided, the default flattenRow (flattenRow - "src/utils/flattenRow.ts") will be used
    */
   customFlattenRow?: typeof flattenRow;
+  handlePagination?: (page: number) => void;
   hasNextPage?: boolean;
   hasPreviousPage?: boolean;
   isFetching: boolean;
@@ -34,7 +35,6 @@ type Props<TRow extends Record<string, unknown>> = BaseProps & {
   restState?: ReactNode;
   tableData: TRow[];
   title?: string;
-  handlePagination?: (page: number) => void;
 };
 
 export const NestedDataTable = <

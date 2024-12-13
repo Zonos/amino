@@ -5,6 +5,7 @@ import { createIndexFile } from 'svgReact/flags/createIndexFile';
 import { createReactFlagSvgs } from 'svgReact/flags/createReactFlagSvgs';
 import { downloadFlagsAWS } from 'svgReact/flags/downloadFlagsAWS';
 import { removeAWSErrorSvgs } from 'svgReact/flags/removeAWSErrorSvgs';
+import { createIndexKeyFile } from 'svgReact/icons/createIndexFile';
 
 export const generateSvgs = async () => {
   try {
@@ -29,7 +30,6 @@ export const generateSvgs = async () => {
     /** @desc Clean up distribution folder */
     execSync('rm -rf svgReact/flags/dist', { encoding: 'utf-8' });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
   }
 };
@@ -44,20 +44,33 @@ const createComponentsFromSvgs = async () => {
 
     /** @desc Generate index file for generated svg react components */
     createIndexFile(`./svgReact/flags/dist`);
+    createIndexKeyFile({
+      generatePath: [
+        {
+          destFolder: 'src/icons/flags',
+          inputFolderPath: './svgReact/flags/dist',
+          titleComment: 'flagIcons',
+        },
+      ],
+      target: 'src/icons/__stories__/FlagsList.ts',
+    });
 
-    // eslint-disable-next-line no-console
-    console.log(`Formatting SVGs...`);
+    console.info(`Formatting SVGs...`);
     /** @desc Format generated svg react component and new IconIndex */
     try {
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
-        { encoding: 'utf8' },
+        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.mjs',
+        {
+          encoding: 'utf8',
+        },
       );
     } catch {
-      /** @desc Run lint --fix the first time only fix part of the fixable erros, run it again to fix all */
+      /** @desc Run lint --fix the first time only fix part of the fixable errors, run it again to fix all */
       execSync(
-        'pnpm eslint --fix svgReact/flags/dist --ext .ts,.tsx -c ./.eslintrc.prod.js',
-        { encoding: 'utf8' },
+        'pnpm eslint --fix svgReact/flags/dist -c ./eslint.config.prod.mjs',
+        {
+          encoding: 'utf8',
+        },
       );
     }
 
@@ -66,17 +79,14 @@ const createComponentsFromSvgs = async () => {
       encoding: 'utf-8',
     });
 
-    // eslint-disable-next-line no-console
-    console.log(`Moving output files to src...`);
+    console.info(`Moving output files to src...`);
     /** @desc Move file from distribution folder over */
     execSync('mv svgReact/flags/dist/* src/icons/flags', { encoding: 'utf-8' });
 
-    // eslint-disable-next-line no-console
-    console.log(`Linting all files...`);
+    console.info(`Linting all files...`);
     /** @desc Run autofix eslint */
     execSync('pnpm lint:prod --fix', { encoding: 'utf-8' });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
   }
 };

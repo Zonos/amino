@@ -1,15 +1,15 @@
 import { Button } from 'src/components/button/Button';
 import {
-  type DismissableDialogProps,
   _dismissableDialogGetButtonVariant,
   DismissableDialog,
+  type DismissableDialogProps,
 } from 'src/components/dialog/DismissableDialog';
 
 export type ConfirmDialogProps = DismissableDialogProps & {
-  confirmText: string;
-  dismissText: string;
   confirmAction: () => void;
+  confirmText: string;
   dismissAction: () => void;
+  dismissText: string;
 };
 
 export const ConfirmDialog = ({

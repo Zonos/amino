@@ -24,8 +24,8 @@ export type DeepKeyof<
     [K in Extract<keyof T, string>]: T[K] extends Array<unknown>
       ? K
       : T[K] extends object
-      ? `${K}${Delimiter}${DeepKeyof<T[K], DeepPrev[Depth]>}`
-      : K;
+        ? `${K}${Delimiter}${DeepKeyof<T[K], DeepPrev[Depth]>}`
+        : K;
   }[Extract<keyof T, string>]
 >;
 
@@ -47,6 +47,6 @@ export type DeepPropertyType<
         : never
       : never
     : KeyPath extends keyof T
-    ? T[KeyPath]
-    : never
+      ? T[KeyPath]
+      : never
 >;

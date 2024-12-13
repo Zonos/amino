@@ -1,6 +1,6 @@
 import {
-  type ReactNode,
   createContext,
+  type ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
-import { type ToastProps, Toast } from 'src/components/toast/Toast';
+import { Toast, type ToastProps } from 'src/components/toast/Toast';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 
 import styles from './ToastContext.module.scss';
@@ -33,9 +33,9 @@ type ToastType = {
   uuid: string;
 };
 export const ToastContext = createContext<{
-  notify: ToastContextFunctionType;
   dismissAllToasts: () => void;
   dismissToast: (toastId: string) => void;
+  notify: ToastContextFunctionType;
 }>({
   dismissAllToasts: () => {
     // This function is for the context type definition purpose.

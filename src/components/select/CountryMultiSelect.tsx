@@ -1,12 +1,12 @@
 import type { CSSProperties, ReactNode } from 'react';
 import {
+  components as RScomponents,
   type GroupBase,
   type MenuListProps,
   type OptionProps,
   type Props,
   type SelectComponentsConfig,
   type StylesConfig,
-  components as RScomponents,
 } from 'react-select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
@@ -66,10 +66,10 @@ export type CountryMultiSelectProps<
   countryOptions: CountryOption<Option['value']>[];
   icon?: ReactNode;
   label?: string;
+  onChange: (countryCodes: Option['value'][]) => void;
   styles?: StylesConfig<Option, IsMulti, Group>;
   unavailableCountries: UnavailableCountry[];
   value: Option['value'][];
-  onChange: (countryCodes: Option['value'][]) => void;
 } & Omit<
   Props<Option, IsMulti, Group>,
   'isMulti' | 'onChange' | 'options' | 'value'

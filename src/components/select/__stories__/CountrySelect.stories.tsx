@@ -4,8 +4,8 @@ import type { Meta, StoryFn } from '@storybook/react';
 import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import {
-  type CountrySelectProps,
   CountrySelect,
+  type CountrySelectProps,
 } from 'src/components/select/CountrySelect';
 import {
   type CountryOption,

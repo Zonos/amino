@@ -7,13 +7,13 @@ import type {
 import clsx from 'clsx';
 
 import {
-  type HelpTextProps,
   HelpText,
+  type HelpTextProps,
 } from 'src/components/help-text/HelpText';
 import { DateInput } from 'src/components/input/input-type/_DateInput';
 import {
-  type FloatLabelInputProps,
   FloatLabelInput,
+  type FloatLabelInputProps,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { NumberInput } from 'src/components/input/input-type/_NumberInput';
 import { PasswordInput } from 'src/components/input/input-type/_PasswordInput';

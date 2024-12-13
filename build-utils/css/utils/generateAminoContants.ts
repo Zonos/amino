@@ -8,9 +8,8 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
  */
 export const generateConstantContent = async (content: string) => {
   /** Transform the content to typescript JSDocs friendly */
-  const logicTransformedContent = await LogicConstant.transformImportedConstant(
-    content,
-  );
+  const logicTransformedContent =
+    await LogicConstant.transformImportedConstant(content);
 
   const result = logicTransformedContent
     /** @desc find and replace all key value pairs that have jsdocs comment above */

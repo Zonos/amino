@@ -1,4 +1,4 @@
-import test, { type Page, expect } from '@playwright/test';
+import test, { expect, type Page } from '@playwright/test';
 
 test.describe('SimpleTable', () => {
   let framePage: Page;
@@ -235,9 +235,8 @@ test.describe('SimpleTable', () => {
         'tr:nth-child(1) > td:nth-child(4) > div > span',
       );
       await cell.evaluate(el => {
-        // eslint-disable-next-line no-param-reassign
         el.style.zIndex = '0';
-        // eslint-disable-next-line no-param-reassign
+
         el.style.position = 'relative';
       });
 

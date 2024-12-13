@@ -1,7 +1,7 @@
 import {
+  forwardRef,
   type ReactNode,
   type TextareaHTMLAttributes,
-  forwardRef,
   useId,
   useRef,
 } from 'react';
@@ -101,7 +101,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 if (ref && typeof ref === 'function') {
                   ref(node);
                 } else if (ref) {
-                  // eslint-disable-next-line no-param-reassign
                   ref.current = node;
                 }
                 textareaRef.current = node;

@@ -14,13 +14,13 @@ export type TabsProps = BaseProps & {
    */
   align?: 'start' | 'center' | 'end';
   items: string[];
+  onChange: (selectedTab: number) => void;
   selected: number;
   /**
    * Use the subtle design
    * @default false
    */
   subtle?: boolean;
-  onChange: (selectedTab: number) => void;
 };
 
 export const Tabs = ({

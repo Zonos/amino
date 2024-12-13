@@ -5,10 +5,10 @@ import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import { Badge } from 'src/components/badge/Badge';
 import {
-  type CountryMultiSelectExpandedOption,
-  type CountryMultiSelectExpandedProps,
   CountryMultiSelectExpanded,
+  type CountryMultiSelectExpandedProps,
 } from 'src/components/country-multi-select/CountryMultiSelectExpanded';
+import type { CountryMultiSelectExpandedOption } from 'src/components/country-multi-select/CountryMultiSelectExpandedOption';
 import { Toggle } from 'src/components/toggle/Toggle';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
@@ -39,7 +39,7 @@ const Template = (props: CountryMultiSelectExpandedProps) => {
           disabled: x.displayName.startsWith('C'),
           group: x.region,
           // Storybook doesn't handle directly passing the component well (it blows up and freezes), so we need to make it a function (works upstream just fine...)
-          // eslint-disable-next-line react/no-unstable-nested-components
+
           icon: () => <FlagIcon code={x.code as Flag} iconScale="small" />,
           label: x.displayName,
           rightDecorator: () => renderBadge(x.displayName),
