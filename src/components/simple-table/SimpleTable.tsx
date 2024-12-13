@@ -339,6 +339,7 @@ export const SimpleTable = <T extends object>({
               </div>
             </td>
           ))}
+          {collapsible.enabled && <td />}
         </tr>
       ));
     }

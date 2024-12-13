@@ -167,7 +167,8 @@ $cellMinWidth: var(--amino-cell-min-width);
       * {
         transition: theme.$amino-transition;
       }
-      > tr {
+
+      > tr:not(:has(.loading)) {
         height: unset;
 
         &:not(.collapsed) {
