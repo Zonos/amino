@@ -24,12 +24,10 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
       }
     };
 
-    // const dynamicImportPath = 'src/icons/flags/'.concat(code).concat('.tsx');
-    const dynamicImportPath = `../flags/${code}.tsx`;
-
     const renderIcon = () => {
       const Icon = lazy(() =>
-        import(dynamicImportPath).then(module => ({
+        // This exact string format is necessary to be used by the build script plugin for replacing dynamic imports
+        import(`src/icons/flags/` + code + `.tsx`).then(module => ({
           default: module[code],
         })),
       );
