@@ -24,7 +24,8 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
       }
     };
 
-    const dynamicImportPath = 'src/icons/flags/'.concat(code).concat('.tsx');
+    // const dynamicImportPath = 'src/icons/flags/'.concat(code).concat('.tsx');
+    const dynamicImportPath = `../flags/${code}.tsx`;
 
     const renderIcon = () => {
       const Icon = lazy(() =>
