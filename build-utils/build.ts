@@ -63,8 +63,8 @@ const bundlePackage = async (
         include: ['**/FlagIcon.tsx'],
         preventAssignment: true,
         values: {
-          [`.tsx`]: `''`,
-          ['`src/icons/flags/`']: '`../flags/`',
+          '.tsx': ``,
+          'src/icons/flags/': '../flags/',
         },
       }),
       alias({
