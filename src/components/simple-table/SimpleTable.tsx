@@ -155,6 +155,8 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    * If having buttons in the table, remember to call e.stopPropagation() to prevent this from firing.
    */
   onRowClick?: (item: T) => void;
+  /** Callback for hovering anywhere on row */
+  onRowHover?: (item: T) => void;
   /**
    * Component places at the bottom of the table
    */
@@ -170,10 +172,6 @@ export type SimpleTableProps<T extends object> = BaseProps & {
     anySelected?: boolean;
     enabled: boolean;
     headerCheckboxValue?: boolean;
-    /**
-     * Overrides custom handlers for more control
-     */
-    renderCustomHeaderCheckbox?: ReactNode;
     isRowCheckboxDisabled?: (item: T, index: number) => boolean;
     isRowChecked?: (item: T, index: number) => boolean;
     onHeaderCheckboxChange?: (checked: boolean) => void;
@@ -181,10 +179,12 @@ export type SimpleTableProps<T extends object> = BaseProps & {
     /**
      * Overrides custom handlers for more control
      */
+    renderCustomHeaderCheckbox?: ReactNode;
+    /**
+     * Overrides custom handlers for more control
+     */
     renderCustomRowCheckbox?: (item: T, index: number) => ReactNode;
   };
-  /** Callback for hovering anywhere on row */
-  onRowHover?: (item: T) => void;
 };
 
 /**
