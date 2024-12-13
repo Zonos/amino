@@ -14,6 +14,7 @@ import './components/checkbox/Checkbox';
 import './components/collapse/Collapse';
 import './components/connection-map/ConnectionMap';
 import './components/country-multi-select/CountryMultiSelectExpanded';
+import './components/country-multi-select/CountryMultiSelectExpandedOption';
 import './components/cover-sheet/CoverSheet';
 import './components/cover-sheet/CoverSheetActions';
 import './components/currency/Currency';

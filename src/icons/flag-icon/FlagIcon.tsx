@@ -10,6 +10,8 @@ export type FlagIconProps = { iconScale: FlagScale } & {
   code: Flag;
 };
 
+const dynamicImportFileExtension = '.tsx';
+
 export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
   ({ code, iconScale }, ref) => {
     const flagSizeProps = () => {
@@ -26,12 +28,11 @@ export const FlagIcon = forwardRef<SVGSVGElement, FlagIconProps>(
 
     const renderIcon = () => {
       const Icon = lazy(() =>
-        import(
-          /* @vite-ignore */
-          `../flags/${code}`
-        ).then(module => ({
-          default: module[code],
-        })),
+        import(`../flags/${code}`.concat(dynamicImportFileExtension)).then(
+          module => ({
+            default: module[code],
+          }),
+        ),
       );
 
       // The props sometimes need to get typecast upstream, so we need to check

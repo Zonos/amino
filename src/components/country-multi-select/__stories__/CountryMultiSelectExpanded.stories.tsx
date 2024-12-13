@@ -6,9 +6,9 @@ import { getCountryUrls } from 'story-utils/getCountryUrls';
 import { Badge } from 'src/components/badge/Badge';
 import {
   CountryMultiSelectExpanded,
-  type CountryMultiSelectExpandedOption,
   type CountryMultiSelectExpandedProps,
 } from 'src/components/country-multi-select/CountryMultiSelectExpanded';
+import type { CountryMultiSelectExpandedOption } from 'src/components/country-multi-select/CountryMultiSelectExpandedOption';
 import { Toggle } from 'src/components/toggle/Toggle';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';

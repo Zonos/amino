@@ -2,6 +2,7 @@ import alias from '@rollup/plugin-alias';
 import buble from '@rollup/plugin-buble';
 import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import autoprefixer from 'autoprefixer';
@@ -57,6 +58,14 @@ const bundlePackage = async (
     maxParallelFileOps: 50,
     output: {},
     plugins: [
+      replace({
+        delimiters: ['', ''],
+        include: ['**/FlagIcon.tsx'],
+        preventAssignment: false,
+        values: {
+          [`'.tsx'`]: `''`,
+        },
+      }),
       alias({
         entries: [
           {
