@@ -9,7 +9,7 @@ on:
 jobs:
   test_setup:
     name: Test setup
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
@@ -23,7 +23,10 @@ jobs:
   test_e2e:
     needs: test_setup
     timeout-minutes: 60
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.49.1
+      options: --user 1001
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -33,22 +36,6 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
-      # https://playwrightsolutions.com/playwright-github-action-to-cache-the-browser-binaries/
-      - name: Get installed Playwright version
-        id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').devDependencies['@playwright/test'])")" >> $GITHUB_ENV
-      - name: Cache playwright binaries
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/Library/Caches/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-        # Install browsers
-      - run: pnpm playwright install --with-deps
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-        # Install system requirement for installed browsers
-      - run: pnpm playwright install-deps
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
       - name: Run Playwright tests
         run: pnpm playwright test
         env:
