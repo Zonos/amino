@@ -74,7 +74,7 @@ export const BasicCheckboxWithoutSubtitle: StoryObj<CheckboxProps> = {
   },
 };
 
-export const CheckboxWithSubstituteLabel: StoryObj<CheckboxProps> = {
+export const CheckboxWithComplexSubtitle: StoryObj<CheckboxProps> = {
   args: {
     helpText: 'This is help text',
     icon: <Default height={16} width={16} />,

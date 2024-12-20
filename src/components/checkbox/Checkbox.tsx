@@ -57,6 +57,7 @@ export type CheckboxProps = Omit<
     disabled?: boolean;
     icon?: ReactNode;
     label?: string;
+    labelComponent?: ReactNode;
     labelDescription?: string;
     onChange: (
       checked: boolean,
@@ -73,6 +74,7 @@ export const Checkbox = ({
   helpText,
   icon,
   label,
+  labelComponent,
   labelDescription,
   onChange,
   style,
@@ -148,21 +150,22 @@ export const Checkbox = ({
           </AnimatePresence>
         </div>
 
-        {label && (
-          <div className={styles.infoWrapper}>
-            <div className={styles.labelWrapper}>
-              {icon}
-              <Text className={styles.styledLabel} type="input-label">
-                {label}
-                {labelDescription && (
-                  <span className={styles.styledLabelDescription}>
-                    {labelDescription}
-                  </span>
-                )}
-              </Text>
+        {labelComponent ||
+          (label && (
+            <div className={styles.infoWrapper}>
+              <div className={styles.labelWrapper}>
+                {icon}
+                <Text className={styles.styledLabel} type="input-label">
+                  {label}
+                  {labelDescription && (
+                    <span className={styles.styledLabelDescription}>
+                      {labelDescription}
+                    </span>
+                  )}
+                </Text>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
       </div>
 
       {subtitle && (
