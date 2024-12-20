@@ -53,11 +53,6 @@ export type CheckboxProps = Omit<
 > &
   BaseProps &
   HelpTextProps & {
-    /**
-     * Don't stop propagation of the click event
-     * @default false
-     */
-    allowPropagation?: boolean;
     checked: boolean;
     disabled?: boolean;
     icon?: ReactNode;
@@ -68,11 +63,10 @@ export type CheckboxProps = Omit<
       checked: boolean,
       event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
     ) => void;
-    subtitle?: string;
+    subtitle?: ReactNode;
   };
 
 export const Checkbox = ({
-  allowPropagation = false,
   checked = false,
   className,
   disabled,
@@ -97,9 +91,6 @@ export const Checkbox = ({
   const handleChange = (
     e: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
   ) => {
-    if (!allowPropagation) {
-      e.stopPropagation();
-    }
     if (!disabled) {
       onChange(!checked, e);
     }
@@ -109,7 +100,6 @@ export const Checkbox = ({
     <label
       className={clsx(globalStyles.focusableLabel, styles.wrapper, className)}
       htmlFor={id}
-      onClick={e => !allowPropagation && e.stopPropagation()}
       style={{
         ...style,
         '--amino-checkbox-background': getBackgroundColor(checked, error),
@@ -174,14 +164,15 @@ export const Checkbox = ({
                   )}
                 </Text>
               </div>
-              {subtitle && (
-                <Text className={styles.styledSubtitle} type="subtitle">
-                  {subtitle}
-                </Text>
-              )}
             </div>
           ))}
       </div>
+
+      {subtitle && (
+        <div className={styles.styledSubtitle}>
+          <Text type="subtitle">{subtitle}</Text>
+        </div>
+      )}
 
       <HelpText error={error} helpText={helpText} />
     </label>
