@@ -1,4 +1,4 @@
-import React, { Fragment, type ReactNode } from 'react';
+import React, { Fragment, type ReactNode, useRef } from 'react';
 
 import clsx from 'clsx';
 
@@ -400,6 +400,7 @@ export const SimpleTable = <T extends object>({
     }
 
     return items.map((item, index) => {
+      const checkboxRef = useRef<HTMLTableCellElement>(null);
       const clickable =
         !!onRowClick ||
         (!!selectable.anySelected && !!selectable.onRowCheckboxChange);
@@ -412,7 +413,10 @@ export const SimpleTable = <T extends object>({
             !noHoverBackground && styles.withHover,
           )}
           onClick={e => {
-            if (selectable.anySelected) {
+            if (
+              selectable.anySelected ||
+              checkboxRef.current?.contains(e.target as Node)
+            ) {
               if (!selectable.isRowCheckboxDisabled?.(item, index)) {
                 e.preventDefault();
                 selectable.onRowCheckboxChange?.(
@@ -428,7 +432,7 @@ export const SimpleTable = <T extends object>({
           onMouseEnter={() => onRowHover?.(item)}
         >
           {selectable.enabled && (
-            <td>
+            <td ref={checkboxRef}>
               {selectable.renderCustomRowCheckbox?.(item, index) || (
                 <Checkbox
                   checked={selectable.isRowChecked?.(item, index) || false}

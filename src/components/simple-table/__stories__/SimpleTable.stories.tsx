@@ -243,6 +243,9 @@ export const Selectable: StoryObj<SimpleTableProps<object>> = {
         items={items}
         keyExtractor={item => String(item.id)}
         loading={loading}
+        onRowClick={() => {
+          alert(`Should not see this on checkbox click`);
+        }}
         selectable={{
           anySelected: selectedRowIndexes.length > 0,
           enabled: true,
