@@ -250,6 +250,7 @@ export const SimpleTable = <T extends object>({
         <SimpleTableRow
           key={key}
           CustomLinkComponent={CustomLinkComponent}
+          bordered={bordered}
           collapsible={collapsible}
           getRowLink={getRowLink}
           headers={headers}

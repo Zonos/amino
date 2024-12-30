@@ -2,104 +2,102 @@
 
 $cellMinWidth: var(--amino-cell-min-width);
 
-table {
+.styledTr {
+  height: 48px;
+
   &.bordered {
-    tr:nth-last-child(2).collapsed td:first-child {
+    &:nth-last-child(2).collapsed td:first-child {
       border-bottom-left-radius: 12px;
     }
-    tr:nth-last-child(2).collapsed td:last-child {
+    &:nth-last-child(2).collapsed td:last-child {
       border-bottom-right-radius: 12px;
     }
   }
 
-  tr {
-    height: 48px;
+  &.withHover:hover {
+    background-color: theme.$amino-hover-color;
+  }
 
-    &.withHover:hover {
-      background-color: theme.$amino-hover-color;
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &:not(:hover) {
+    :global(.row-hover-show) {
+      visibility: collapse;
     }
+  }
 
-    &.clickable {
-      cursor: pointer;
-    }
+  > td {
+    border-bottom: theme.$amino-border-subtle;
+    padding: 0;
 
-    &:not(:hover) {
-      :global(.row-hover-show) {
-        visibility: collapse;
-      }
-    }
+    > :first-child {
+      display: block;
+      height: 100%;
+      width: 100%;
+      padding: 12px;
+      white-space: nowrap;
 
-    > td {
-      border-bottom: theme.$amino-border-subtle;
-      padding: 0;
+      &:global(.tooltip-wrapper) {
+        padding: 0;
 
-      > :first-child {
-        display: block;
-        height: 100%;
-        width: 100%;
-        padding: 12px;
-        white-space: nowrap;
-
-        &:global(.tooltip-wrapper) {
-          padding: 0;
-
-          > a {
-            padding: 12px;
-            width: 100%;
-            height: 100%;
-          }
-
-          span {
-            padding: 12px;
-            width: 100%;
-            height: 100%;
-          }
+        > a {
+          padding: 12px;
+          width: 100%;
+          height: 100%;
         }
 
-        &.noPadding {
-          padding: 0;
-        }
-
-        &.allowTextWrap {
-          white-space: normal;
-        }
-
-        &.loading {
-          text-align: center;
-        }
-
-        &:not(:hover) {
-          :global(.cell-hover-show) {
-            visibility: collapse;
-          }
+        span {
+          padding: 12px;
+          width: 100%;
+          height: 100%;
         }
       }
 
-      &.shouldTruncate {
-        max-width: $cellMinWidth;
-        min-width: $cellMinWidth;
-        > :first-child {
-          // Truncating the first child will cover most cases.
-          // For custom rendered cells, these 3 properties may need to be apply to deeply nested children on a per need basis.
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
-
-    &:not(.collapsed) {
-      td {
-        border-bottom: theme.$amino-border-subtle;
-      }
-    }
-
-    &.collapsed.hasContent {
-      & + tr > td {
-        border: 0;
-      }
-      + tr > td > :first-child {
+      &.noPadding {
         padding: 0;
       }
+
+      &.allowTextWrap {
+        white-space: normal;
+      }
+
+      &.loading {
+        text-align: center;
+      }
+
+      &:not(:hover) {
+        :global(.cell-hover-show) {
+          visibility: collapse;
+        }
+      }
+    }
+
+    &.shouldTruncate {
+      max-width: $cellMinWidth;
+      min-width: $cellMinWidth;
+      > :first-child {
+        // Truncating the first child will cover most cases.
+        // For custom rendered cells, these 3 properties may need to be apply to deeply nested children on a per need basis.
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  &:not(.collapsed) {
+    td {
+      border-bottom: theme.$amino-border-subtle;
+    }
+  }
+
+  &.collapsed.hasContent {
+    & + tr > td {
+      border: 0;
+    }
+    + tr > td > :first-child {
+      padding: 0;
     }
   }
 }
