@@ -1,5 +1,7 @@
 import { type Dispatch, useCallback, useState } from 'react';
 
+import dayjs from 'dayjs';
+
 import { DateControls } from 'src/components/filter/filter-date/DateControls';
 import {
   type FilterDateAction,
@@ -13,6 +15,8 @@ import {
   type FilterApplyCallback,
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
+
+import { defaultDateFormat } from './DateControlsWrapper';
 
 export type FilterDateProps = BaseFilterProps & {
   dispatch: Dispatch<FilterDateAction>;
@@ -37,6 +41,39 @@ export const FilterDate = ({
 
   const [editingFilterText, setEditingFilterText] = useState<string>('');
 
+  // adjusts the date to set the filter to be inclusive of the entered value
+  const getAdjustedDate = ({
+    date,
+    type,
+  }: {
+    date: string | null;
+    type: 'begin' | 'end';
+  }) => {
+    switch (rangeType) {
+      case 'is between':
+      case 'is equal to':
+        if (type === 'begin') {
+          return dayjs(date).subtract(1, 'days').format(defaultDateFormat);
+        }
+        if (type === 'end') {
+          return dayjs(date).add(1, 'days').format(defaultDateFormat);
+        }
+        return date;
+      case 'is on or after':
+        if (type === 'end') {
+          return date;
+        }
+        return dayjs(date).subtract(1, 'days').format(defaultDateFormat);
+      case 'is before or on':
+        if (type === 'begin') {
+          return date;
+        }
+        return dayjs(date).add(1, 'days').format(defaultDateFormat);
+      default:
+        return date;
+    }
+  };
+
   const dispatchDateValues = useCallback(
     (value: FilterDateData) => {
       dispatch({
@@ -47,12 +84,13 @@ export const FilterDate = ({
       dispatch({
         name: 'dateData.dateBegin',
         type: 'change',
-        value: value.dateBegin || null,
+        value:
+          getAdjustedDate({ date: value.dateBegin, type: 'begin' }) || null,
       });
       dispatch({
         name: 'dateData.dateEnd',
         type: 'change',
-        value: value.dateEnd || null,
+        value: getAdjustedDate({ date: value.dateEnd, type: 'end' }) || null,
       });
       dispatch({
         name: 'dateData.lastCount',
@@ -77,12 +115,12 @@ export const FilterDate = ({
     dispatch({
       name: 'dateData.dateBegin',
       type: 'change',
-      value: editingValue.dateBegin || null,
+      value: getAdjustedDate({ date: editingValue.dateBegin, type: 'begin' }),
     });
     dispatch({
       name: 'dateData.dateEnd',
       type: 'change',
-      value: editingValue.dateEnd || null,
+      value: getAdjustedDate({ date: editingValue.dateEnd, type: 'end' }),
     });
     dispatch({
       name: 'dateData.lastCount',

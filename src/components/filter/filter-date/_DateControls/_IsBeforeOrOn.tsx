@@ -20,13 +20,11 @@ export const IsBeforeOrOn = ({
     [value],
   );
 
-  const displayDate = dayjs(date).subtract(1, 'days').format(defaultDateFormat);
-
   const handleChange = useCallback(
     (val: string) => {
       onChange({
         dateBegin: null,
-        dateEnd: dayjs(val).add(1, 'days').format(defaultDateFormat),
+        dateEnd: val,
         lastCount: 5,
         lastUnit: 'days',
       });
@@ -35,13 +33,13 @@ export const IsBeforeOrOn = ({
   );
 
   useEffect(() => {
-    const filterText = `Ending on ${formatDate(displayDate)}`;
+    const filterText = `Ending on ${formatDate(date)}`;
     onChangeFilterText(filterText);
-  }, [displayDate, onChangeFilterText]);
+  }, [date, onChangeFilterText]);
 
   useEffect(() => {
-    handleChange(displayDate);
-  }, [displayDate, handleChange]);
+    handleChange(date);
+  }, [date, handleChange]);
 
   return (
     <DateControlsWrapper>
@@ -49,7 +47,7 @@ export const IsBeforeOrOn = ({
         onChange={ev => handleChange(ev.target.value)}
         size="sm"
         type="date"
-        value={displayDate}
+        value={date}
       />
     </DateControlsWrapper>
   );

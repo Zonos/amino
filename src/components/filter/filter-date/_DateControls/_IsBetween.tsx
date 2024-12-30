@@ -19,25 +19,17 @@ export const IsBetween = ({
 }: _DateControlProps) => {
   const { dateBegin, dateEnd } = useMemo(
     () => ({
-      dateBegin:
-        value.dateBegin ||
-        dayjs().subtract(1, 'days').format(defaultDateFormat),
-      dateEnd:
-        value.dateEnd || dayjs().add(1, 'days').format(defaultDateFormat),
+      dateBegin: value.dateBegin || dayjs().format(defaultDateFormat),
+      dateEnd: value.dateEnd || dayjs().format(defaultDateFormat),
     }),
     [value],
   );
 
-  const displayDateEnd = dayjs(dateEnd)
-    .subtract(1, 'days')
-    .format(defaultDateFormat);
-  const displayDateBegin = dayjs(dateBegin)
-    .add(1, 'days')
-    .format(defaultDateFormat);
-
+  const displayDateEnd = dateEnd;
+  const displayDateBegin = dateBegin;
   const handleChangeDateBegin = (val: string) => {
     onChange({
-      dateBegin: dayjs(val).subtract(1, 'days').format(defaultDateFormat),
+      dateBegin: val,
       dateEnd,
       lastCount: 5,
       lastUnit: 'days',
@@ -47,7 +39,7 @@ export const IsBetween = ({
   const handleChangeDateEnd = (val: string) => {
     onChange({
       dateBegin,
-      dateEnd: dayjs(val).add(1, 'days').format(defaultDateFormat),
+      dateEnd: val,
       lastCount: 5,
       lastUnit: 'days',
     });
