@@ -107,8 +107,6 @@ export const FilterDate = ({
   );
 
   const handleApplyEditingState = useCallback(() => {
-    console.log(editingValue.dateBegin, editingValue.dateEnd);
-
     dispatch({
       name: 'dateRangeType',
       type: 'change',
