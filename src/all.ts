@@ -75,6 +75,7 @@ import './components/select/CountrySelect';
 import './components/select/MultiSelect';
 import './components/select/Select';
 import './components/simple-table/SimpleTable';
+import './components/simple-table/SimpleTableRow';
 import './components/skeleton/Skeleton';
 import './components/slide-over/SlideOver';
 import './components/spinner/Spinner';
