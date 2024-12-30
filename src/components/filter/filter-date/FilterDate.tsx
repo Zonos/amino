@@ -60,8 +60,14 @@ export const FilterDate = ({
         }
         return date;
       case 'is on or after':
+        if (type === 'end') {
+          return date;
+        }
         return dayjs(date).subtract(1, 'days').format(defaultDateFormat);
       case 'is before or on':
+        if (type === 'begin') {
+          return date;
+        }
         return dayjs(date).add(1, 'days').format(defaultDateFormat);
       default:
         return date;
@@ -78,12 +84,13 @@ export const FilterDate = ({
       dispatch({
         name: 'dateData.dateBegin',
         type: 'change',
-        value: getAdjustedDate({ date: value.dateBegin, type: 'begin' }),
+        value:
+          getAdjustedDate({ date: value.dateBegin, type: 'begin' }) || null,
       });
       dispatch({
         name: 'dateData.dateEnd',
         type: 'change',
-        value: getAdjustedDate({ date: value.dateEnd, type: 'end' }),
+        value: getAdjustedDate({ date: value.dateEnd, type: 'end' }) || null,
       });
       dispatch({
         name: 'dateData.lastCount',
@@ -100,6 +107,8 @@ export const FilterDate = ({
   );
 
   const handleApplyEditingState = useCallback(() => {
+    console.log(editingValue.dateBegin, editingValue.dateEnd);
+
     dispatch({
       name: 'dateRangeType',
       type: 'change',
