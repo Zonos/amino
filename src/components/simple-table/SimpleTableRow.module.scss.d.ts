@@ -1,0 +1,9 @@
+export declare const allowTextWrap: string;
+export declare const bordered: string;
+export declare const clickable: string;
+export declare const collapsed: string;
+export declare const hasContent: string;
+export declare const loading: string;
+export declare const noPadding: string;
+export declare const shouldTruncate: string;
+export declare const withHover: string;
