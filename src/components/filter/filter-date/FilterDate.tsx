@@ -42,7 +42,13 @@ export const FilterDate = ({
   const [editingFilterText, setEditingFilterText] = useState<string>('');
 
   // adjusts the date to set the filter to be inclusive of the entered value
-  const getAdjustedDate = (date: string, type: 'begin' | 'end') => {
+  const getAdjustedDate = ({
+    date,
+    type,
+  }: {
+    date: string | null;
+    type: 'begin' | 'end';
+  }) => {
     switch (rangeType) {
       case 'is between':
       case 'is equal to':
@@ -72,15 +78,12 @@ export const FilterDate = ({
       dispatch({
         name: 'dateData.dateBegin',
         type: 'change',
-        value:
-          dayjs(value.dateBegin)
-            .subtract(1, 'days')
-            .format(defaultDateFormat) || null,
+        value: getAdjustedDate({ date: value.dateBegin, type: 'begin' }),
       });
       dispatch({
         name: 'dateData.dateEnd',
         type: 'change',
-        value: getAdjustedDate(value.dateEnd || '', 'end'),
+        value: getAdjustedDate({ date: value.dateEnd, type: 'end' }),
       });
       dispatch({
         name: 'dateData.lastCount',
@@ -105,17 +108,12 @@ export const FilterDate = ({
     dispatch({
       name: 'dateData.dateBegin',
       type: 'change',
-      value:
-        dayjs(editingValue.dateBegin)
-          .subtract(1, 'days')
-          .format(defaultDateFormat) || null,
+      value: getAdjustedDate({ date: editingValue.dateBegin, type: 'begin' }),
     });
     dispatch({
       name: 'dateData.dateEnd',
       type: 'change',
-      value:
-        dayjs(editingValue.dateEnd).add(1, 'days').format(defaultDateFormat) ||
-        null,
+      value: getAdjustedDate({ date: editingValue.dateEnd, type: 'end' }),
     });
     dispatch({
       name: 'dateData.lastCount',
