@@ -243,21 +243,26 @@ export const SimpleTable = <T extends object>({
       ));
     }
 
-    return items.map((item, index) => (
-      <SimpleTableRow
-        CustomLinkComponent={CustomLinkComponent}
-        collapsible={collapsible}
-        getRowLink={getRowLink}
-        headers={headers}
-        index={index}
-        item={item}
-        keyExtractor={keyExtractor}
-        noHoverBackground={noHoverBackground}
-        onRowClick={onRowClick}
-        onRowHover={onRowHover}
-        selectable={selectable}
-      />
-    ));
+    return items.map((item, index) => {
+      const key = keyExtractor(item);
+
+      return (
+        <SimpleTableRow
+          key={key}
+          CustomLinkComponent={CustomLinkComponent}
+          collapsible={collapsible}
+          getRowLink={getRowLink}
+          headers={headers}
+          index={index}
+          item={item}
+          noHoverBackground={noHoverBackground}
+          onRowClick={onRowClick}
+          onRowHover={onRowHover}
+          rowKey={key}
+          selectable={selectable}
+        />
+      );
+    });
   };
 
   return (

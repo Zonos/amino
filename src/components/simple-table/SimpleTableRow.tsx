@@ -36,10 +36,10 @@ type SimpleTableRowProps<T extends object> = {
   headers: SimpleTableHeader<T>[];
   index: number;
   item: T;
-  keyExtractor: SimpleTableProps<T>['keyExtractor'];
   noHoverBackground: boolean;
   onRowClick?: (item: T) => void;
   onRowHover?: (item: T) => void;
+  rowKey: string;
   selectable: SimpleTableProps<T>['selectable'];
 };
 
@@ -50,13 +50,12 @@ export const SimpleTableRow = <T extends object>({
   headers,
   index,
   item,
-  keyExtractor,
   noHoverBackground,
   onRowClick,
   onRowHover,
+  rowKey,
   selectable,
 }: SimpleTableRowProps<T>) => {
-  const key = keyExtractor(item);
   const checkboxRef = useRef<HTMLTableCellElement>(null);
 
   const renderHeader = (header: SimpleTableHeader<T>) => {
@@ -168,14 +167,14 @@ export const SimpleTableRow = <T extends object>({
 
   if (collapsible?.enabled && collapsible.collapseContent?.length) {
     const { collapseContent, expandedItemKeys, toggleItem } = collapsible;
-    const collapsed = !expandedItemKeys.includes(key);
+    const collapsed = !expandedItemKeys.includes(rowKey);
     const rowCollapseContent = collapseContent?.find(
-      x => x.key === key,
+      x => x.key === rowKey,
     )?.content;
 
     return (
       <TableRowCollapse
-        key={key}
+        key={rowKey}
         className={clsx(
           !noHoverBackground && styles.withHover,
           collapsed && styles.collapsed,
@@ -183,7 +182,7 @@ export const SimpleTableRow = <T extends object>({
         )}
         collapsed={collapsed}
         onToggleCollapse={() => {
-          toggleItem(key);
+          toggleItem(rowKey);
           onRowClick?.(item);
         }}
         rowContent={renderRowContent()}
@@ -199,6 +198,7 @@ export const SimpleTableRow = <T extends object>({
 
   return (
     <tr
+      key={rowKey}
       className={clsx(
         clickable && styles.clickable,
         !noHoverBackground && styles.withHover,
