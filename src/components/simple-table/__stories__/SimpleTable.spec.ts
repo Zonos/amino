@@ -26,15 +26,17 @@ test.describe('SimpleTable', () => {
 
   test.describe('Ensure Selectable works', () => {
     test('Selectable', async () => {
-      const checkbox1 = framePage
-        .getByRole('row', { name: 'John 24 Not long enough' })
-        .locator('label');
+      const row1 = framePage.getByRole('row', {
+        name: 'John 24 Not long enough',
+      });
+      const checkbox1 = row1.locator('label');
       await checkbox1.click();
       await expect(checkbox1).toBeChecked();
 
-      const checkbox2 = framePage
-        .getByRole('row', { name: 'Joan 27 This is a long string' })
-        .locator('label');
+      const row2 = framePage.getByRole('row', {
+        name: 'Joan 27 This is a long string',
+      });
+      const checkbox2 = row2.locator('label');
       await checkbox2.click();
       await expect(checkbox2).toBeChecked();
 
@@ -53,6 +55,25 @@ test.describe('SimpleTable', () => {
           .getByRole('row', { name: 'Cade 26 This is a long string' })
           .locator('label'),
       ).toBeChecked();
+
+      await row1.click();
+
+      // Try to trigger row click and verify no action occurs
+      framePage.once('dialog', () => {
+        throw new Error('Dialog should not appear when row is selected');
+      });
+
+      // select all then unselect all and verify onClick works again
+      await checkboxAll.click();
+      await checkboxAll.click();
+
+      await expect(checkbox1).not.toBeChecked();
+      await expect(checkbox2).not.toBeChecked();
+
+      framePage.once('dialog', async dialog => {
+        expect(dialog.message()).toBe('Clicked John');
+        await dialog.dismiss();
+      });
     });
   });
 
@@ -294,39 +315,6 @@ test.describe('SimpleTable', () => {
       // Expect link to be clicked (https://letmegooglethat.com/?q=John)
       await framePage.waitForLoadState('domcontentloaded');
       await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
-    });
-  });
-
-  test.describe('Row click behavior with multiple selections', () => {
-    test('disables onRowClick when multiple checkboxes are selected', async () => {
-      // First select multiple checkboxes
-      const checkbox1 = framePage
-        .getByRole('row', { name: 'John 24 Not long enough' })
-        .locator('label');
-      const checkbox2 = framePage
-        .getByRole('row', { name: 'Joan 27 This is a long string' })
-        .locator('label');
-
-      await checkbox1.click();
-      await checkbox2.click();
-
-      // Verify both are checked
-      await expect(checkbox1).toBeChecked();
-      await expect(checkbox2).toBeChecked();
-
-      // Try to click a row that has onRowClick handler
-      await framePage.locator('.tooltip-wrapper').first().click();
-
-      // Dialog should NOT appear (since onRowClick should be disabled)
-      // We can verify this by adding a small delay and checking that no dialog appeared
-      await framePage.waitForTimeout(100);
-
-      // Get all dialogs that appeared (should be empty)
-      const dialogs = await framePage.evaluate(
-        () => document.querySelectorAll('dialog').length,
-      );
-
-      expect(dialogs).toBe(0);
     });
   });
 });
