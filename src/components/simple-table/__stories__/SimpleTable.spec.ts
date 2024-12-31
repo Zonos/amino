@@ -296,4 +296,37 @@ test.describe('SimpleTable', () => {
       await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
+
+  test.describe('Row click behavior with multiple selections', () => {
+    test('disables onRowClick when multiple checkboxes are selected', async () => {
+      // First select multiple checkboxes
+      const checkbox1 = framePage
+        .getByRole('row', { name: 'John 24 Not long enough' })
+        .locator('label');
+      const checkbox2 = framePage
+        .getByRole('row', { name: 'Joan 27 This is a long string' })
+        .locator('label');
+
+      await checkbox1.click();
+      await checkbox2.click();
+
+      // Verify both are checked
+      await expect(checkbox1).toBeChecked();
+      await expect(checkbox2).toBeChecked();
+
+      // Try to click a row that has onRowClick handler
+      await framePage.locator('.tooltip-wrapper').first().click();
+
+      // Dialog should NOT appear (since onRowClick should be disabled)
+      // We can verify this by adding a small delay and checking that no dialog appeared
+      await framePage.waitForTimeout(100);
+
+      // Get all dialogs that appeared (should be empty)
+      const dialogs = await framePage.evaluate(
+        () => document.querySelectorAll('dialog').length,
+      );
+
+      expect(dialogs).toBe(0);
+    });
+  });
 });
