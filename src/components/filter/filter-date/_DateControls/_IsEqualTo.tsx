@@ -20,13 +20,11 @@ export const IsEqualTo = ({
     [value],
   );
 
-  const displayDate = dayjs(date).add(1, 'days').format(defaultDateFormat);
-
   const handleChange = useCallback(
     (val: string) => {
       onChange({
-        dateBegin: dayjs(val).subtract(1, 'days').format(defaultDateFormat),
-        dateEnd: dayjs(val).add(1, 'days').format(defaultDateFormat),
+        dateBegin: val,
+        dateEnd: val,
         lastCount: 5,
         lastUnit: 'days',
       });
@@ -35,12 +33,12 @@ export const IsEqualTo = ({
   );
 
   useEffect(() => {
-    onChangeFilterText(`On ${formatDate(displayDate)}`);
-  }, [displayDate, onChangeFilterText]);
+    onChangeFilterText(`On ${formatDate(date)}`);
+  }, [date, onChangeFilterText]);
 
   useEffect(() => {
-    handleChange(displayDate);
-  }, [displayDate, handleChange]);
+    handleChange(date);
+  }, [date, handleChange]);
 
   return (
     <DateControlsWrapper>
@@ -48,7 +46,7 @@ export const IsEqualTo = ({
         onChange={ev => handleChange(ev.target.value)}
         size="sm"
         type="date"
-        value={displayDate}
+        value={date}
       />
     </DateControlsWrapper>
   );
