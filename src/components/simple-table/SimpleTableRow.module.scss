@@ -63,10 +63,6 @@ $cellMinWidth: var(--amino-cell-min-width);
         white-space: normal;
       }
 
-      &.loading {
-        text-align: center;
-      }
-
       &:not(:hover) {
         :global(.cell-hover-show) {
           visibility: collapse;
