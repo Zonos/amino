@@ -31,6 +31,7 @@ const tooltipDelay = 800;
 
 type SimpleTableRowProps<T extends object> = {
   CustomLinkComponent?: SimpleTableProps<T>['CustomLinkComponent'];
+  bordered: SimpleTableProps<T>['bordered'];
   collapsible: SimpleTableProps<T>['collapsible'];
   getRowLink?: (item: T) => string;
   headers: SimpleTableHeader<T>[];
@@ -44,6 +45,7 @@ type SimpleTableRowProps<T extends object> = {
 };
 
 export const SimpleTableRow = <T extends object>({
+  bordered,
   collapsible,
   CustomLinkComponent,
   getRowLink,
@@ -176,9 +178,11 @@ export const SimpleTableRow = <T extends object>({
       <TableRowCollapse
         key={rowKey}
         className={clsx(
+          styles.styledTr,
           !noHoverBackground && styles.withHover,
           collapsed && styles.collapsed,
           rowCollapseContent && styles.hasContent,
+          bordered && styles.bordered,
         )}
         collapsed={collapsed}
         onToggleCollapse={() => {
@@ -200,8 +204,10 @@ export const SimpleTableRow = <T extends object>({
     <tr
       key={rowKey}
       className={clsx(
+        styles.styledTr,
         clickable && styles.clickable,
         !noHoverBackground && styles.withHover,
+        bordered && styles.bordered,
       )}
       onClick={e => {
         if (

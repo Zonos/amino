@@ -10,9 +10,17 @@
   border-spacing: 0;
   font-size: theme.$amino-font-size-base;
 
-  tr > td {
-    &.skeletonCellWrapper {
-      display: flex;
+  > tbody {
+    > tr {
+      height: 48px;
+      > td {
+        &.skeletonCellWrapper {
+          display: flex;
+        }
+        &.loading {
+          padding: 12px;
+        }
+      }
     }
   }
 
