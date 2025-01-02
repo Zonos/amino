@@ -11,14 +11,13 @@
   font-size: theme.$amino-font-size-base;
 
   > tbody {
+    // Loading row
     > tr {
       height: 48px;
-      > td {
-        &.skeletonCellWrapper {
+      > td.loading {
+        padding: 12px;
+        .skeletonCellWrapper {
           display: flex;
-        }
-        &.loading {
-          padding: 12px;
         }
       }
     }

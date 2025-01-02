@@ -208,7 +208,7 @@ export const SimpleTable = <T extends object>({
       return [...Array(loadingItems).keys()].map(n => (
         <tr key={n}>
           {selectable.enabled && (
-            <td>
+            <td className={styles.loading}>
               <div>
                 <Skeleton key={n} height={loadingSkeletonHeight} />
               </div>
@@ -232,7 +232,7 @@ export const SimpleTable = <T extends object>({
                   key={n}
                   height={loadingSkeletonHeight}
                   style={{
-                    width: '50%',
+                    width: '70%',
                   }}
                 />
               </div>
