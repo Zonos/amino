@@ -46,12 +46,18 @@ $cellMinWidth: var(--amino-cell-min-width);
           padding: 12px;
           width: 100%;
           height: 100%;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         span {
           padding: 12px;
           width: 100%;
           height: 100%;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
 
@@ -73,6 +79,7 @@ $cellMinWidth: var(--amino-cell-min-width);
     &.shouldTruncate {
       max-width: $cellMinWidth;
       min-width: $cellMinWidth;
+
       > :first-child {
         // Truncating the first child will cover most cases.
         // For custom rendered cells, these 3 properties may need to be apply to deeply nested children on a per need basis.
