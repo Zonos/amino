@@ -801,3 +801,71 @@ export const OnRowClick: StoryObj = {
   },
   tags: ['tested'],
 };
+
+export const TextWrapMethods: StoryObj = {
+  render: () => {
+    const longText =
+      'This is a very long text that should demonstrate different wrapping behaviors. '.repeat(
+        3,
+      );
+
+    const sampleData = [1, 2, 3].map(id => ({
+      extra: longText,
+      id: `${id} ${longText}`,
+      text: longText,
+    }));
+
+    const createHeaders = (
+      method: 'normal' | 'truncate' | 'nowrap',
+    ): SimpleTableHeader<{ extra: string; id: string; text: string }>[] => [
+      {
+        key: 'id',
+        name: `Text Wrap: ${method}`,
+        textWrapMethod: method,
+        width: 34,
+      },
+      {
+        key: 'text',
+        name: 'Text',
+        textWrapMethod: method,
+      },
+      {
+        key: 'extra',
+        name: 'Text',
+        textWrapMethod: method,
+      },
+    ];
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div data-test-id="normal-table">
+          <Text type="header">Normal</Text>
+          <SimpleTable
+            headers={createHeaders('normal')}
+            items={sampleData}
+            keyExtractor={item => String(item.id)}
+          />
+        </div>
+
+        <div data-test-id="truncate-table">
+          <Text type="header">Truncate</Text>
+          <SimpleTable
+            headers={createHeaders('truncate')}
+            items={sampleData}
+            keyExtractor={item => String(item.id)}
+          />
+        </div>
+
+        <div data-test-id="nowrap-table">
+          <Text type="header">Nowrap</Text>
+          <SimpleTable
+            headers={createHeaders('nowrap')}
+            items={sampleData}
+            keyExtractor={item => String(item.id)}
+          />
+        </div>
+      </div>
+    );
+  },
+  tags: ['tested'],
+};

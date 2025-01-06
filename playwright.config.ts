@@ -1,10 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+dotenv.config();
 
 // eslint-disable-next-line no-console
 console.info('PLAYWRIGHT_TEST_BASE_URL', process.env.PLAYWRIGHT_TEST_BASE_URL);

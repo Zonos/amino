@@ -317,4 +317,56 @@ test.describe('SimpleTable', () => {
       await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
+
+  test.describe('text wrap methods', () => {
+    test('Text Wrap Methods', async () => {
+      // Wait for cell with long text to be visible
+      const normalTable = framePage.locator('[data-test-id="normal-table"]');
+      const truncateTable = framePage.locator(
+        '[data-test-id="truncate-table"]',
+      );
+      const nowrapTable = framePage.locator('[data-test-id="nowrap-table"]');
+
+      await normalTable.waitFor();
+
+      // Test normal wrapping
+      const normalCell = normalTable
+        .locator('tbody tr')
+        .first()
+        .locator('td')
+        .first();
+      await expect(normalCell).toHaveCSS('white-space', 'normal');
+      await expect(normalCell).not.toHaveCSS('text-overflow', 'ellipsis');
+      await expect(normalCell).not.toHaveCSS('overflow', 'hidden');
+
+      const normalCellBounds = await normalCell.boundingBox();
+      expect(normalCellBounds?.height).toBeGreaterThan(50); // Height indicates multiple lines
+
+      // Test truncating
+      const truncateCell = truncateTable
+        .locator('tbody tr')
+        .first()
+        .locator('td > :first-child')
+        .first();
+
+      await expect(truncateCell).toHaveCSS('white-space', 'nowrap');
+      await expect(truncateCell).toHaveCSS('text-overflow', 'ellipsis');
+      await expect(truncateCell).toHaveCSS('overflow', 'hidden');
+      // There is no good way to verify truncation with ellipsis is actually displayed
+
+      // Test nowrap
+      const nowrapCell = nowrapTable
+        .locator('tbody tr')
+        .first()
+        .locator('td > :first-child')
+        .first();
+      await expect(nowrapCell).toHaveCSS('white-space', 'nowrap');
+      await expect(nowrapCell).not.toHaveCSS('text-overflow', 'ellipsis');
+      await expect(nowrapCell).not.toHaveCSS('overflow', 'hidden');
+
+      const nowrapCellBounds = await nowrapCell.boundingBox();
+      const viewportSize = await framePage.viewportSize();
+      expect(nowrapCellBounds?.width).toBeGreaterThan(viewportSize?.width || 0);
+    });
+  });
 });
