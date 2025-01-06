@@ -321,16 +321,13 @@ test.describe('SimpleTable', () => {
   test.describe('text wrap methods', () => {
     test('Text Wrap Methods', async () => {
       // Wait for cell with long text to be visible
-      await framePage
-        .locator('tr td', { hasText: 'This is a very long text' })
-        .first()
-        .waitFor({
-          state: 'visible',
-        });
+      await framePage.locator('[data-test-id="normal-table"]').waitFor();
+      await framePage.locator('[data-test-id="truncate-table"]').waitFor();
+      await framePage.locator('[data-test-id="nowrap-table"]').waitFor();
 
       // Test normal wrapping
       const normalCell = framePage
-        .locator('[data-testid="normal-table"]')
+        .locator('[data-test-id="normal-table"]')
         .locator('tbody tr')
         .first()
         .locator('td')
@@ -345,7 +342,7 @@ test.describe('SimpleTable', () => {
 
       // Test truncating
       const truncateCell = framePage
-        .locator('[data-testid="truncate-table"]')
+        .locator('[data-test-id="truncate-table"]')
         .locator('tbody tr')
         .first()
         .locator('td')
@@ -361,7 +358,7 @@ test.describe('SimpleTable', () => {
 
       // Test nowrap
       const nowrapCell = framePage
-        .locator('[data-testid="nowrap-table"]')
+        .locator('[data-test-id="nowrap-table"]')
         .locator('tbody tr')
         .first()
         .locator('td')

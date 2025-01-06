@@ -837,7 +837,7 @@ export const TextWrapMethods: StoryObj = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        <div data-testid="normal-table">
+        <div data-test-id="normal-table">
           <Text type="header">Normal</Text>
           <SimpleTable
             headers={createHeaders('normal')}
@@ -846,7 +846,7 @@ export const TextWrapMethods: StoryObj = {
           />
         </div>
 
-        <div data-testid="truncate-table">
+        <div data-test-id="truncate-table">
           <Text type="header">Truncate</Text>
           <SimpleTable
             headers={createHeaders('truncate')}
@@ -855,7 +855,7 @@ export const TextWrapMethods: StoryObj = {
           />
         </div>
 
-        <div data-testid="nowrap-table">
+        <div data-test-id="nowrap-table">
           <Text type="header">Nowrap</Text>
           <SimpleTable
             headers={createHeaders('nowrap')}
