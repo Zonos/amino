@@ -321,13 +321,16 @@ test.describe('SimpleTable', () => {
   test.describe('text wrap methods', () => {
     test('Text Wrap Methods', async () => {
       // Wait for cell with long text to be visible
-      await framePage.locator('[data-test-id="normal-table"]').waitFor();
-      await framePage.locator('[data-test-id="truncate-table"]').waitFor();
-      await framePage.locator('[data-test-id="nowrap-table"]').waitFor();
+      const normalTable = framePage.locator('[data-test-id="normal-table"]');
+      const truncateTable = framePage.locator(
+        '[data-test-id="truncate-table"]',
+      );
+      const nowrapTable = framePage.locator('[data-test-id="nowrap-table"]');
+
+      await normalTable.waitFor();
 
       // Test normal wrapping
-      const normalCell = framePage
-        .locator('[data-test-id="normal-table"]')
+      const normalCell = normalTable
         .locator('tbody tr')
         .first()
         .locator('td')
@@ -341,11 +344,10 @@ test.describe('SimpleTable', () => {
       expect(normalCellBounds?.height).toBeGreaterThan(50); // Height indicates multiple lines
 
       // Test truncating
-      const truncateCell = framePage
-        .locator('[data-test-id="truncate-table"]')
+      const truncateCell = truncateTable
         .locator('tbody tr')
         .first()
-        .locator('td')
+        .locator('td > :first-child')
         .first();
       await expect(truncateCell).toHaveCSS('white-space', 'nowrap');
       await expect(truncateCell).toHaveCSS('text-overflow', 'ellipsis');
@@ -357,11 +359,10 @@ test.describe('SimpleTable', () => {
       expect(computedStyle).toBe('ellipsis');
 
       // Test nowrap
-      const nowrapCell = framePage
-        .locator('[data-test-id="nowrap-table"]')
+      const nowrapCell = nowrapTable
         .locator('tbody tr')
         .first()
-        .locator('td')
+        .locator('td > :first-child')
         .first();
       await expect(nowrapCell).toHaveCSS('white-space', 'nowrap');
       await expect(nowrapCell).not.toHaveCSS('text-overflow', 'ellipsis');
