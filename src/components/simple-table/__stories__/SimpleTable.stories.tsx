@@ -840,6 +840,7 @@ export const TextWrapMethods: StoryObj = {
         <div>
           <Text type="header">Normal</Text>
           <SimpleTable
+            data-testid="normal-table"
             headers={createHeaders('normal')}
             items={sampleData}
             keyExtractor={item => String(item.id)}
@@ -849,6 +850,7 @@ export const TextWrapMethods: StoryObj = {
         <div>
           <Text type="header">Truncate</Text>
           <SimpleTable
+            data-testid="truncate-table"
             headers={createHeaders('truncate')}
             items={sampleData}
             keyExtractor={item => String(item.id)}
@@ -858,6 +860,7 @@ export const TextWrapMethods: StoryObj = {
         <div>
           <Text type="header">Nowrap</Text>
           <SimpleTable
+            data-testid="nowrap-table"
             headers={createHeaders('nowrap')}
             items={sampleData}
             keyExtractor={item => String(item.id)}

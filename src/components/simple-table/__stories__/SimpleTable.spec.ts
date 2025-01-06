@@ -317,4 +317,65 @@ test.describe('SimpleTable', () => {
       await expect(framePage.url()).toBe('https://letmegooglethat.com/?q=John');
     });
   });
+
+  test.describe('text wrap methods', () => {
+    test('Text Wrap Methods', async () => {
+      // Wait for cell with long text to be visible
+      await framePage
+        .locator('tr td', { hasText: 'This is a very long text' })
+        .first()
+        .waitFor({
+          state: 'visible',
+        });
+
+      // Test normal wrapping
+      const normalCell = framePage
+        .locator('[data-testid="normal-wrap-table"]')
+        .locator('tbody tr')
+        .first()
+        .locator('td')
+        .first();
+      await expect(normalCell).toHaveCSS('white-space', 'normal');
+      await expect(normalCell).not.toHaveCSS('text-overflow', 'ellipsis');
+      await expect(normalCell).not.toHaveCSS('overflow', 'hidden');
+
+      // Test truncate wrapping
+      const truncateCell = framePage
+        .locator('[data-testid="truncate-wrap-table"]')
+        .locator('tbody tr')
+        .first()
+        .locator('td')
+        .first();
+      await expect(truncateCell).toHaveCSS('white-space', 'nowrap');
+      await expect(truncateCell).toHaveCSS('text-overflow', 'ellipsis');
+      await expect(truncateCell).toHaveCSS('overflow', 'hidden');
+
+      // Test nowrap
+      const nowrapCell = framePage
+        .locator('[data-testid="nowrap-wrap-table"]')
+        .locator('tbody tr')
+        .first()
+        .locator('td')
+        .first();
+      await expect(nowrapCell).toHaveCSS('white-space', 'nowrap');
+      await expect(nowrapCell).not.toHaveCSS('text-overflow', 'ellipsis');
+      await expect(nowrapCell).not.toHaveCSS('overflow', 'hidden');
+
+      // Verify content width differences
+      const normalCellWidth = await normalCell.evaluate(el => el.offsetWidth);
+      const truncateCellWidth = await truncateCell.evaluate(
+        el => el.offsetWidth,
+      );
+      const nowrapCellWidth = await nowrapCell.evaluate(el => el.offsetWidth);
+
+      // Normal should be smaller than nowrap (due to wrapping)
+      expect(normalCellWidth).toBeLessThan(nowrapCellWidth);
+
+      // Truncate should be equal to normal or smaller
+      expect(truncateCellWidth).toBeLessThanOrEqual(normalCellWidth);
+
+      // Nowrap should be the widest
+      expect(nowrapCellWidth).toBeGreaterThan(truncateCellWidth);
+    });
+  });
 });
