@@ -330,7 +330,7 @@ test.describe('SimpleTable', () => {
 
       // Test normal wrapping
       const normalCell = framePage
-        .locator('[data-testid="normal-wrap-table"]')
+        .locator('[data-testid="normal-table"]')
         .locator('tbody tr')
         .first()
         .locator('td')
@@ -339,9 +339,13 @@ test.describe('SimpleTable', () => {
       await expect(normalCell).not.toHaveCSS('text-overflow', 'ellipsis');
       await expect(normalCell).not.toHaveCSS('overflow', 'hidden');
 
-      // Test truncate wrapping
+      // Verify text wraps to multiple lines
+      const normalCellBounds = await normalCell.boundingBox();
+      expect(normalCellBounds?.height).toBeGreaterThan(50); // Height indicates multiple lines
+
+      // Test truncating
       const truncateCell = framePage
-        .locator('[data-testid="truncate-wrap-table"]')
+        .locator('[data-testid="truncate-table"]')
         .locator('tbody tr')
         .first()
         .locator('td')
@@ -350,9 +354,14 @@ test.describe('SimpleTable', () => {
       await expect(truncateCell).toHaveCSS('text-overflow', 'ellipsis');
       await expect(truncateCell).toHaveCSS('overflow', 'hidden');
 
+      const computedStyle = await truncateCell.evaluate(
+        element => window.getComputedStyle(element).textOverflow,
+      );
+      expect(computedStyle).toBe('ellipsis');
+
       // Test nowrap
       const nowrapCell = framePage
-        .locator('[data-testid="nowrap-wrap-table"]')
+        .locator('[data-testid="nowrap-table"]')
         .locator('tbody tr')
         .first()
         .locator('td')
@@ -361,21 +370,10 @@ test.describe('SimpleTable', () => {
       await expect(nowrapCell).not.toHaveCSS('text-overflow', 'ellipsis');
       await expect(nowrapCell).not.toHaveCSS('overflow', 'hidden');
 
-      // Verify content width differences
-      const normalCellWidth = await normalCell.evaluate(el => el.offsetWidth);
-      const truncateCellWidth = await truncateCell.evaluate(
-        el => el.offsetWidth,
-      );
-      const nowrapCellWidth = await nowrapCell.evaluate(el => el.offsetWidth);
-
-      // Normal should be smaller than nowrap (due to wrapping)
-      expect(normalCellWidth).toBeLessThan(nowrapCellWidth);
-
-      // Truncate should be equal to normal or smaller
-      expect(truncateCellWidth).toBeLessThanOrEqual(normalCellWidth);
-
-      // Nowrap should be the widest
-      expect(nowrapCellWidth).toBeGreaterThan(truncateCellWidth);
+      // Verify content extends beyond viewport
+      const nowrapCellBounds = await nowrapCell.boundingBox();
+      const viewportSize = await framePage.viewportSize();
+      expect(nowrapCellBounds?.width).toBeGreaterThan(viewportSize?.width || 0);
     });
   });
 });
