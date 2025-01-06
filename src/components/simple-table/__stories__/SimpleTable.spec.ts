@@ -339,7 +339,6 @@ test.describe('SimpleTable', () => {
       await expect(normalCell).not.toHaveCSS('text-overflow', 'ellipsis');
       await expect(normalCell).not.toHaveCSS('overflow', 'hidden');
 
-      // Verify text wraps to multiple lines
       const normalCellBounds = await normalCell.boundingBox();
       expect(normalCellBounds?.height).toBeGreaterThan(50); // Height indicates multiple lines
 
@@ -349,14 +348,11 @@ test.describe('SimpleTable', () => {
         .first()
         .locator('td > :first-child')
         .first();
+
       await expect(truncateCell).toHaveCSS('white-space', 'nowrap');
       await expect(truncateCell).toHaveCSS('text-overflow', 'ellipsis');
       await expect(truncateCell).toHaveCSS('overflow', 'hidden');
-
-      const computedStyle = await truncateCell.evaluate(
-        element => window.getComputedStyle(element).textOverflow,
-      );
-      expect(computedStyle).toBe('ellipsis');
+      // There is no good way to verify truncation with ellipsis
 
       // Test nowrap
       const nowrapCell = nowrapTable
@@ -368,7 +364,6 @@ test.describe('SimpleTable', () => {
       await expect(nowrapCell).not.toHaveCSS('text-overflow', 'ellipsis');
       await expect(nowrapCell).not.toHaveCSS('overflow', 'hidden');
 
-      // Verify content extends beyond viewport
       const nowrapCellBounds = await nowrapCell.boundingBox();
       const viewportSize = await framePage.viewportSize();
       expect(nowrapCellBounds?.width).toBeGreaterThan(viewportSize?.width || 0);

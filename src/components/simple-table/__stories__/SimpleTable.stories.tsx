@@ -822,6 +822,7 @@ export const TextWrapMethods: StoryObj = {
         key: 'id',
         name: `Text Wrap: ${method}`,
         textWrapMethod: method,
+        width: 34,
       },
       {
         key: 'text',
