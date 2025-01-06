@@ -352,7 +352,7 @@ test.describe('SimpleTable', () => {
       await expect(truncateCell).toHaveCSS('white-space', 'nowrap');
       await expect(truncateCell).toHaveCSS('text-overflow', 'ellipsis');
       await expect(truncateCell).toHaveCSS('overflow', 'hidden');
-      // There is no good way to verify truncation with ellipsis
+      // There is no good way to verify truncation with ellipsis is actually displayed
 
       // Test nowrap
       const nowrapCell = nowrapTable
