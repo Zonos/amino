@@ -135,7 +135,7 @@ $height: var(--amino-float-label-input-height);
       &::placeholder {
         opacity: theme.$amino-opacity-disabled;
       }
-      & + .floatingLabel span {
+      & ~ .floatingLabel span {
         top: 11px;
         transform: scale(0.8);
       }
@@ -168,7 +168,7 @@ $height: var(--amino-float-label-input-height);
     &:global(.has-input-prefix) {
       .aminoInput {
         padding-left: 0;
-        & + .floatingLabel span {
+        & ~ .floatingLabel span {
           margin-left: 0;
         }
       }
