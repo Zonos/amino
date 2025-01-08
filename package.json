@@ -175,8 +175,8 @@
     "graphql": "^16.x",
     "graphql-request": "~5.1.0",
     "lodash": "^4.17.21",
-    "react": "^17.x || ^18.x",
-    "react-dom": "^17.x || ^18.x",
+    "react": "^18.x || ^19.x",
+    "react-dom": "^18.x || ^19.x",
     "react-tooltip": "^4.x",
     "swr": "2.x"
   }
