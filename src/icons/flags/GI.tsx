@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const GI = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(1);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -22,7 +21,7 @@ export const GI = forwardRef<SVGSVGElement, Props>(
         <path d="M0 0h640v480H0z" fill="#da000c" />
         <path d="M0 0h640v321.6H0z" fill="#fff" />
         <g stroke="#000" transform="translate(-160) scale(1.875)">
-          <g fill="#da000c" id={`${ids[0]}`} strokeLinecap="square">
+          <g fill="#da000c" id={`${uniqueId}-0`} strokeLinecap="square">
             <path d="M196.6 116.3h64v44h-64z" fill="#000" stroke="none" />
             <path d="M229.8 153.9h-39l-8.7 5.7v6h47.7m-16.3-37c5.6 0 10.2 4.7 10.2 10.5v14.7h7.3v-56h-40.3v56h12.6v-14.7c0-5.6 4.5-10.5 10.2-10.5z" />
             <path d="M204.5 60h18.6v34h-18.6z" fill="#000" stroke="none" />
@@ -33,7 +32,7 @@ export const GI = forwardRef<SVGSVGElement, Props>(
             height="100%"
             transform="matrix(-1 0 0 1 512 0)"
             width="100%"
-            xlinkHref={`#${ids[0]}`}
+            xlinkHref={`#${uniqueId}-0`}
           />
           <g fill="#f8d80e">
             <g strokeLinecap="round">

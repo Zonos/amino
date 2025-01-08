@@ -1,12 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, inlineBlock, size }, ref) => {
-    const ids = useStableUniqueId(7);
+    const uniqueId = useId();
     return (
       <IconBase
         ref={ref}
@@ -18,7 +17,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
       >
         <mask
           height="18"
-          id={`${ids[0]}`}
+          id={`${uniqueId}-0`}
           maskUnits="userSpaceOnUse"
           style={{ maskType: 'alpha' }}
           width="18"
@@ -26,26 +25,26 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
           y="3"
         >
           <path
-            d="m20.966 20.041-2.296-7.834a.757.757 0 0 1 0-.418l2.296-7.834a.747.747 0 0 0-.925-.924l-7.834 2.295a.755.755 0 0 1-.418 0L3.955 3.034a.747.747 0 0 0-.924.925l2.295 7.834c.04.136.04.282 0 .418l-2.295 7.834a.747.747 0 0 0 .924.924l7.834-2.296a.755.755 0 0 1 .418 0l7.834 2.296a.747.747 0 0 0 .925-.924v-.004Z"
-            fill={`url(#${ids[6]})`}
+            d="m20.966 20.041-2.296-7.834a.76.76 0 0 1 0-.418l2.296-7.834a.747.747 0 0 0-.925-.924l-7.834 2.295a.76.76 0 0 1-.418 0L3.955 3.034a.747.747 0 0 0-.924.925l2.295 7.834c.04.136.04.282 0 .418l-2.295 7.834a.747.747 0 0 0 .924.924l7.834-2.296a.76.76 0 0 1 .418 0l7.834 2.296a.747.747 0 0 0 .925-.924z"
+            fill={`url(#${uniqueId}-6)`}
           />
         </mask>
-        <g mask={`url(#${ids[0]})`}>
-          <g filter={`url(#${ids[1]})`}>
+        <g mask={`url(#${uniqueId}-0)`}>
+          <g filter={`url(#${uniqueId}-1)`}>
             <circle cx="6.5" cy="6.5" fill="#B004A4" r="6.5" />
           </g>
-          <g filter={`url(#${ids[2]})`}>
+          <g filter={`url(#${uniqueId}-2)`}>
             <circle cx="17.5" cy="6.5" fill="#FEBD10" r="6.5" />
           </g>
-          <g filter={`url(#${ids[3]})`}>
+          <g filter={`url(#${uniqueId}-3)`}>
             <circle cx="17.5" cy="17.5" fill="#98C729" r="6.5" />
           </g>
-          <g filter={`url(#${ids[4]})`}>
+          <g filter={`url(#${uniqueId}-4)`}>
             <circle cx="6.5" cy="17.5" fill="#536CFE" r="6.5" />
           </g>
-          <g filter={`url(#${ids[5]})`}>
+          <g filter={`url(#${uniqueId}-5)`}>
             <path
-              d="m16.485 16.022-1.149-3.918a.394.394 0 0 1 0-.208l1.149-3.918a.372.372 0 0 0-.463-.462l-3.918 1.148a.394.394 0 0 1-.208 0L7.978 7.516a.372.372 0 0 0-.462.462l1.148 3.918a.394.394 0 0 1 0 .208l-1.148 3.918a.372.372 0 0 0 .462.463l3.918-1.149a.394.394 0 0 1 .208 0l3.918 1.149a.372.372 0 0 0 .463-.463Z"
+              d="m16.485 16.022-1.149-3.918a.4.4 0 0 1 0-.208l1.149-3.918a.372.372 0 0 0-.463-.462l-3.918 1.148a.4.4 0 0 1-.208 0L7.978 7.516a.372.372 0 0 0-.462.462l1.148 3.918a.4.4 0 0 1 0 .208l-1.148 3.918a.372.372 0 0 0 .462.463l3.918-1.149a.4.4 0 0 1 .208 0l3.918 1.149a.372.372 0 0 0 .463-.463"
               fill="#F9D984"
             />
           </g>
@@ -55,7 +54,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21"
-            id={`${ids[1]}`}
+            id={`${uniqueId}-1`}
             width="21"
             x="-4"
             y="-4"
@@ -75,7 +74,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21"
-            id={`${ids[2]}`}
+            id={`${uniqueId}-2`}
             width="21"
             x="7"
             y="-4"
@@ -95,7 +94,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21"
-            id={`${ids[3]}`}
+            id={`${uniqueId}-3`}
             width="21"
             x="7"
             y="7"
@@ -115,7 +114,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21"
-            id={`${ids[4]}`}
+            id={`${uniqueId}-4`}
             width="21"
             x="-4"
             y="7"
@@ -135,7 +134,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="13"
-            id={`${ids[5]}`}
+            id={`${uniqueId}-5`}
             width="13"
             x="5.5"
             y="5.5"
@@ -156,7 +155,7 @@ export const DashboardColorIcon = forwardRef<SVGSVGElement, IconProps>(
             cy="0"
             gradientTransform="matrix(-8.9982 -9.00008 9.53138 -9.52939 11.998 12)"
             gradientUnits="userSpaceOnUse"
-            id={`${ids[6]}`}
+            id={`${uniqueId}-6`}
             r="1"
           >
             <stop stopColor="#B003A4" />

@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const JO = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(1);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -20,12 +19,12 @@ export const JO = forwardRef<SVGSVGElement, Props>(
         width={width}
       >
         <defs>
-          <clipPath id={`${ids[0]}`}>
+          <clipPath id={`${uniqueId}-0`}>
             <path d="M-117.8 0h682.6v512h-682.6z" fillOpacity=".7" />
           </clipPath>
         </defs>
         <g
-          clipPath={`url(#${ids[0]})`}
+          clipPath={`url(#${uniqueId}-0)`}
           transform="translate(110.5) scale(.9375)"
         >
           <g fillRule="evenodd" strokeWidth="1pt">

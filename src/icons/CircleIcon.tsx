@@ -15,7 +15,7 @@ export const CircleIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Z"
+        d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13"
         fill="currentColor"
         fillRule="evenodd"
       />

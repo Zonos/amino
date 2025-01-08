@@ -18,7 +18,7 @@ export const ImportDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M20 16a2.75 2.75 0 0 0-2.75-2.75H6.75A2.75 2.75 0 0 0 4 16v1.25A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25V16Z"
+      d="M20 16a2.75 2.75 0 0 0-2.75-2.75H6.75A2.75 2.75 0 0 0 4 16v1.25A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />

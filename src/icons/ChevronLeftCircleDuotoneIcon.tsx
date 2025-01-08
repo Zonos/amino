@@ -18,13 +18,13 @@ export const ChevronLeftCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
       clipRule="evenodd"
-      d="M13.505 15.305a.75.75 0 0 1-1.06-.05l-2.5-2.75a.75.75 0 0 1 0-1.01l2.5-2.75a.75.75 0 0 1 1.11 1.01L11.514 12l2.041 2.245a.75.75 0 0 1-.05 1.06Z"
+      d="M13.505 15.305a.75.75 0 0 1-1.06-.05l-2.5-2.75a.75.75 0 0 1 0-1.01l2.5-2.75a.75.75 0 0 1 1.11 1.01L11.514 12l2.041 2.245a.75.75 0 0 1-.05 1.06"
       fill="currentColor"
       fillRule="evenodd"
     />

@@ -15,7 +15,7 @@ export const MinusDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M18 12a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1 0-1.5h10.5A.75.75 0 0 1 18 12Z"
+        d="M18 12a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1 0-1.5h10.5A.75.75 0 0 1 18 12"
         fill="currentColor"
         fillRule="evenodd"
       />

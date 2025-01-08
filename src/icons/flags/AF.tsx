@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const AF = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(1);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -49,7 +48,7 @@ export const AF = forwardRef<SVGSVGElement, Props>(
             fill="none"
           />
           <path d="M315.4 210.3h1v7.1h-1z" />
-          <g id={`${ids[0]}`}>
+          <g id={`${uniqueId}-0`}>
             <path d="M257.3 186.5c-1.2-2-2.7 2.8-7.8 6.3-2.3 1.6-4 5.9-4 8.7 0 2 .2 3.9 0 5.8-.1 1.1-1.4 3.8-.5 4.5 2.2 1.6 5.1 5.4 6.4 6.7 1.2 1 2.2-5.3 3-8 1-3 .6-6.7 3.2-9.4 1.8-2 6.4-3.8 6-4.6l-6.3-10z" />
             <path
               d="M257 201.9a10 10 0 0 0-1.6-2.6 6.1 6.1 0 0 0-2.4-1.8 5.3 5.3 0 0 1-2.4-1.5 3.6 3.6 0 0 1-.8-1.5 5.9 5.9 0 0 1 0-2l-.3.3c-2.3 1.6-4 5.9-4 8.7a28.5 28.5 0 0 0 0 2.3c.2.5.3 1 .6 1.3l1.1.8 2.7.7a7.1 7.1 0 0 1 2.6 2 10.5 10.5 0 0 1 1.8 2.6l.2-.8c.8-2.7.7-5.9 2.6-8.5z"
@@ -124,7 +123,7 @@ export const AF = forwardRef<SVGSVGElement, Props>(
             transform="scale(-1 1)"
             width="100%"
             x="-600"
-            xlinkHref={`#${ids[0]}`}
+            xlinkHref={`#${uniqueId}-0`}
           />
           <g stroke="none">
             <path d="M328.5 286.6c0 1.2.2 2.2 1 3.1a19 19 0 0 0-13.8 1.1c-1.8.8-4-1-1.9-2.7 3-2.3 9.7-1 14.7-1.5zm-57.5 0a7 7 0 0 1-.4 3c4.4-1.7 9.1-.2 13.6 1.6 3 1.3 3.3-1 2.8-1.7a6.5 6.5 0 0 0-5-2.9h-11zm3.8-21.7c-1.3-.5-2.7 0-4 1.4-4.3 4.2-9.4 8.3-13.5 11.6-1.5 1.3-3 3.7 3.4 6 .3.2 5 2 8 2 1.3 0 1.3 1.8 1 2.3-.5 1-.1 1.4-1.1 2.3-1.1 1 0 2.1 1 1.3 3.6-3.2 9.6-1.1 15.3.7 1.4.4 3.8.3 3.8-1.6 0-2 1.5-3.4 2.4-3.5 2.4.4 14 .5 17.5.1 2-.3 2.2 2.9 3.3 4 .8.9 3.7 1.1 5.8.2 4-1.8 10-1.8 12.5 0 1 .7 1.9 0 1.3-.7-.8-1-.7-1.6-1.1-2.4-1-2-.2-2.4.8-2.5 11-1.5 14.6-5.2 11.2-8.3-4.4-3.8-9.2-7.7-13.4-12.2-1.2-1.2-2-1.7-4.3-.7a66.5 66.5 0 0 1-25.3 5.9 76 76 0 0 1-24.6-5.8z" />

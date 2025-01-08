@@ -18,12 +18,12 @@ export const ChartDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M6.75 10A2.75 2.75 0 0 0 4 12.75v4.5A2.75 2.75 0 0 0 6.75 20h1.5A2.75 2.75 0 0 0 11 17.25v-4.5A2.75 2.75 0 0 0 8.25 10h-1.5Z"
+      d="M6.75 10A2.75 2.75 0 0 0 4 12.75v4.5A2.75 2.75 0 0 0 6.75 20h1.5A2.75 2.75 0 0 0 11 17.25v-4.5A2.75 2.75 0 0 0 8.25 10z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
-      d="M15.75 4A2.75 2.75 0 0 0 13 6.75v10.5A2.75 2.75 0 0 0 15.75 20h1.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4h-1.5Z"
+      d="M15.75 4A2.75 2.75 0 0 0 13 6.75v10.5A2.75 2.75 0 0 0 15.75 20h1.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4z"
       fill="currentColor"
     />
   </IconBase>

@@ -1,12 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, inlineBlock, size }, ref) => {
-    const ids = useStableUniqueId(6);
+    const uniqueId = useId();
     return (
       <IconBase
         ref={ref}
@@ -16,10 +15,10 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
         size={size}
         viewBox="0 0 24 24"
       >
-        <g clipPath={`url(#${ids[5]})`}>
+        <g clipPath={`url(#${uniqueId}-5)`}>
           <mask
             height="18"
-            id={`${ids[0]}`}
+            id={`${uniqueId}-0`}
             maskUnits="userSpaceOnUse"
             style={{ maskType: 'alpha' }}
             width="22"
@@ -33,25 +32,25 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
               fillRule="evenodd"
             />
           </mask>
-          <g mask={`url(#${ids[0]})`}>
+          <g mask={`url(#${uniqueId}-0)`}>
             <path
-              d="M6.503 6.576A7.775 7.775 0 1 0 17.5 17.57 7.775 7.775 0 0 0 6.503 6.576Z"
-              fill={`url(#${ids[1]})`}
+              d="M6.503 6.576A7.775 7.775 0 1 0 17.5 17.57 7.775 7.775 0 0 0 6.503 6.576"
+              fill={`url(#${uniqueId}-1)`}
             />
             <path
-              d="M8.92 15.154a4.358 4.358 0 0 0 6.162 0l.002-.002 3.007 3.007c.587.587 1.554.5 2.04-.172 2.99-4.1 2.494-9.945-1.49-13.46-3.76-3.317-9.523-3.32-13.28 0C1.377 8.042.879 13.896 3.87 17.993a1.345 1.345 0 0 0 2.04.17l3.007-3.006.002-.003Z"
-              fill={`url(#${ids[2]})`}
+              d="M8.92 15.154a4.36 4.36 0 0 0 6.162 0l.002-.002 3.007 3.007c.587.587 1.554.5 2.04-.172 2.99-4.1 2.494-9.945-1.49-13.46-3.76-3.317-9.523-3.32-13.28 0C1.377 8.042.879 13.896 3.87 17.993a1.345 1.345 0 0 0 2.04.17l3.007-3.006z"
+              fill={`url(#${uniqueId}-2)`}
             />
             <g opacity=".5">
-              <g filter={`url(#${ids[3]})`}>
+              <g filter={`url(#${uniqueId}-3)`}>
                 <path
-                  d="M6.503 5.162A7.775 7.775 0 1 0 17.5 16.157 7.775 7.775 0 0 0 6.503 5.162Z"
+                  d="M6.503 5.162A7.775 7.775 0 1 0 17.5 16.157 7.775 7.775 0 0 0 6.503 5.162"
                   fill="#3B093F"
                 />
               </g>
-              <g filter={`url(#${ids[4]})`}>
+              <g filter={`url(#${uniqueId}-4)`}>
                 <path
-                  d="M6.503 6.576A7.775 7.775 0 1 0 17.5 17.57 7.775 7.775 0 0 0 6.503 6.576Z"
+                  d="M6.503 6.576A7.775 7.775 0 1 0 17.5 17.57 7.775 7.775 0 0 0 6.503 6.576"
                   fill="#FFE37D"
                 />
               </g>
@@ -61,7 +60,7 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
         <defs>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[1]}`}
+            id={`${uniqueId}-1`}
             x1="11.954"
             x2="11.785"
             y1="13.638"
@@ -72,7 +71,7 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
           </linearGradient>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[2]}`}
+            id={`${uniqueId}-2`}
             x1="13.03"
             x2="14.045"
             y1="8.03"
@@ -85,7 +84,7 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21.55"
-            id={`${ids[3]}`}
+            id={`${uniqueId}-3`}
             width="21.55"
             x="1.226"
             y="-.116"
@@ -105,7 +104,7 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="19.55"
-            id={`${ids[4]}`}
+            id={`${uniqueId}-4`}
             width="19.55"
             x="2.226"
             y="2.299"
@@ -121,7 +120,7 @@ export const CounterCompanionColorIcon = forwardRef<SVGSVGElement, IconProps>(
               stdDeviation="1"
             />
           </filter>
-          <clipPath id={`${ids[5]}`}>
+          <clipPath id={`${uniqueId}-5`}>
             <path d="M24 0v24H0V0z" fill="#fff" />
           </clipPath>
         </defs>

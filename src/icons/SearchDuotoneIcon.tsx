@@ -19,12 +19,12 @@ export const SearchDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M10.75 5.5a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5ZM4 10.75a6.75 6.75 0 1 1 12.024 4.213l3.756 3.757a.75.75 0 1 1-1.06 1.06l-3.757-3.756A6.75 6.75 0 0 1 4 10.75Z"
+      d="M10.75 5.5a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5M4 10.75a6.75 6.75 0 1 1 12.024 4.213l3.756 3.757a.75.75 0 1 1-1.06 1.06l-3.757-3.756A6.75 6.75 0 0 1 4 10.75"
       fill="currentColor"
       fillRule="evenodd"
     />
     <path
-      d="M10.75 4a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5Z"
+      d="M10.75 4a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />

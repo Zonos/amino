@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const GD = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(4);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -20,20 +19,20 @@ export const GD = forwardRef<SVGSVGElement, Props>(
         width={width}
       >
         <defs>
-          <g id={`${ids[0]}`}>
-            <g id={`${ids[1]}`}>
+          <g id={`${uniqueId}-0`}>
+            <g id={`${uniqueId}-1`}>
               <path
                 d="M0-1v1h.5"
                 fill="#fcd116"
-                id={`${ids[2]}`}
+                id={`${uniqueId}-2`}
                 transform="rotate(18 0 -1)"
               />
-              <use transform="scale(-1 1)" xlinkHref={`#${ids[2]}`} />
+              <use transform="scale(-1 1)" xlinkHref={`#${uniqueId}-2`} />
             </g>
-            <use transform="rotate(72)" xlinkHref={`#${ids[1]}`} />
-            <use transform="rotate(144)" xlinkHref={`#${ids[1]}`} />
-            <use transform="rotate(216)" xlinkHref={`#${ids[1]}`} />
-            <use transform="rotate(288)" xlinkHref={`#${ids[1]}`} />
+            <use transform="rotate(72)" xlinkHref={`#${uniqueId}-1`} />
+            <use transform="rotate(144)" xlinkHref={`#${uniqueId}-1`} />
+            <use transform="rotate(216)" xlinkHref={`#${uniqueId}-1`} />
+            <use transform="rotate(288)" xlinkHref={`#${uniqueId}-1`} />
           </g>
         </defs>
         <path d="M0 0h640v480H0z" fill="#ce1126" />
@@ -44,28 +43,28 @@ export const GD = forwardRef<SVGSVGElement, Props>(
           height="100%"
           transform="matrix(52.8 0 0 52.8 320 240)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(-30.3)"
           width="100%"
           x="-100"
-          xlinkHref={`#${ids[3]}`}
+          xlinkHref={`#${uniqueId}-3`}
         />
         <use
           height="100%"
-          id={`${ids[3]}`}
+          id={`${uniqueId}-3`}
           transform="matrix(31.2 0 0 31.2 320 33.6)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(30.3)"
           width="100%"
           x="100"
-          xlinkHref={`#${ids[3]}`}
+          xlinkHref={`#${uniqueId}-3`}
         />
         <path
           d="M102.3 240.7a80.4 80.4 0 0 0 33.5 33.2 111 111 0 0 0-11.3-45l-22.2 11.8z"
@@ -80,20 +79,20 @@ export const GD = forwardRef<SVGSVGElement, Props>(
           transform="translate(-30.3 414.6)"
           width="100%"
           x="-100"
-          xlinkHref={`#${ids[3]}`}
+          xlinkHref={`#${uniqueId}-3`}
         />
         <use
           height="100%"
           transform="matrix(31.2 0 0 31.2 320 448.2)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(30.3 414.6)"
           width="100%"
           x="100"
-          xlinkHref={`#${ids[3]}`}
+          xlinkHref={`#${uniqueId}-3`}
         />
       </FlagIconBase>
     );

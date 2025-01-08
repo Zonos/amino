@@ -19,13 +19,13 @@ export const RightPanelOpenDuotoneIcon = forwardRef<
   >
     <path d="M0 0h24v24H0z" fill="#fff" />
     <path
-      d="M14 6.5H5.5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1H14v-11Z"
+      d="M14 6.5H5.5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1H14z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
       clipRule="evenodd"
-      d="M3 7.75A2.75 2.75 0 0 1 5.75 5h12.5A2.75 2.75 0 0 1 21 7.75v8.5A2.75 2.75 0 0 1 18.25 19H5.75A2.75 2.75 0 0 1 3 16.25v-8.5ZM14 6.5v11H5.75c-.69 0-1.25-.56-1.25-1.25v-8.5c0-.69.56-1.25 1.25-1.25H14Z"
+      d="M3 7.75A2.75 2.75 0 0 1 5.75 5h12.5A2.75 2.75 0 0 1 21 7.75v8.5A2.75 2.75 0 0 1 18.25 19H5.75A2.75 2.75 0 0 1 3 16.25zM14 6.5v11H5.75c-.69 0-1.25-.56-1.25-1.25v-8.5c0-.69.56-1.25 1.25-1.25z"
       fill="currentColor"
       fillRule="evenodd"
     />

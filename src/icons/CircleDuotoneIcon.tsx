@@ -13,7 +13,7 @@ export const CircleDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       size={size}
       viewBox="0 0 24 24"
     >
-      <path d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z" fill="currentColor" />
+      <path d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16" fill="currentColor" />
     </IconBase>
   ),
 );

@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const MY = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(1);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -20,42 +19,42 @@ export const MY = forwardRef<SVGSVGElement, Props>(
         width={width}
       >
         <path d="M0 0h640v480H0z" fill="#cc0001" />
-        <path d="M0 445.8h640V480H0z" fill="#fff" id={`${ids[0]}`} />
+        <path d="M0 445.8h640V480H0z" fill="#fff" id={`${uniqueId}-0`} />
         <use
           height="100%"
           transform="translate(0 -68.6)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(0 -137.2)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(0 -205.8)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(0 -274.3)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(0 -343)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <use
           height="100%"
           transform="translate(0 -411.5)"
           width="100%"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
         />
         <path d="M0 0h372.6v274.3H0z" fill="#010066" />
         <g fill="#fc0">

@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const IN = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(4);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -26,10 +25,10 @@ export const IN = forwardRef<SVGSVGElement, Props>(
           <circle fill="#008" r="20" />
           <circle fill="#fff" r="17.5" />
           <circle fill="#008" r="3.5" />
-          <g id={`${ids[0]}`}>
-            <g id={`${ids[1]}`}>
-              <g id={`${ids[2]}`}>
-                <g fill="#008" id={`${ids[3]}`}>
+          <g id={`${uniqueId}-0`}>
+            <g id={`${uniqueId}-1`}>
+              <g id={`${uniqueId}-2`}>
+                <g fill="#008" id={`${uniqueId}-3`}>
                   <circle r=".9" transform="rotate(7.5 -8.8 133.5)" />
                   <path d="M0 17.5.6 7 0 2l-.6 5L0 17.5z" />
                 </g>
@@ -37,34 +36,34 @@ export const IN = forwardRef<SVGSVGElement, Props>(
                   height="100%"
                   transform="rotate(15)"
                   width="100%"
-                  xlinkHref={`#${ids[3]}`}
+                  xlinkHref={`#${uniqueId}-3`}
                 />
               </g>
               <use
                 height="100%"
                 transform="rotate(30)"
                 width="100%"
-                xlinkHref={`#${ids[2]}`}
+                xlinkHref={`#${uniqueId}-2`}
               />
             </g>
             <use
               height="100%"
               transform="rotate(60)"
               width="100%"
-              xlinkHref={`#${ids[1]}`}
+              xlinkHref={`#${uniqueId}-1`}
             />
           </g>
           <use
             height="100%"
             transform="rotate(120)"
             width="100%"
-            xlinkHref={`#${ids[0]}`}
+            xlinkHref={`#${uniqueId}-0`}
           />
           <use
             height="100%"
             transform="rotate(-120)"
             width="100%"
-            xlinkHref={`#${ids[0]}`}
+            xlinkHref={`#${uniqueId}-0`}
           />
         </g>
       </FlagIconBase>

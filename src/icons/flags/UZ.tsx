@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const UZ = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(5);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -26,50 +25,70 @@ export const UZ = forwardRef<SVGSVGElement, Props>(
         <circle cx="134.4" cy="76.8" fill="#fff" r="57.6" />
         <circle cx="153.6" cy="76.8" fill="#0099b5" r="57.6" />
         <g fill="#fff" transform="matrix(1.92 0 0 1.92 261.1 122.9)">
-          <g id={`${ids[0]}`}>
-            <g id={`${ids[1]}`}>
-              <g id={`${ids[2]}`}>
-                <g id={`${ids[3]}`}>
-                  <path d="M0-6-1.9-.3 1 .7" id={`${ids[4]}`} />
+          <g id={`${uniqueId}-0`}>
+            <g id={`${uniqueId}-1`}>
+              <g id={`${uniqueId}-2`}>
+                <g id={`${uniqueId}-3`}>
+                  <path d="M0-6-1.9-.3 1 .7" id={`${uniqueId}-4`} />
                   <use
                     height="100%"
                     transform="scale(-1 1)"
                     width="100%"
-                    xlinkHref={`#${ids[4]}`}
+                    xlinkHref={`#${uniqueId}-4`}
                   />
                 </g>
                 <use
                   height="100%"
                   transform="rotate(72)"
                   width="100%"
-                  xlinkHref={`#${ids[3]}`}
+                  xlinkHref={`#${uniqueId}-3`}
                 />
               </g>
               <use
                 height="100%"
                 transform="rotate(-72)"
                 width="100%"
-                xlinkHref={`#${ids[3]}`}
+                xlinkHref={`#${uniqueId}-3`}
               />
               <use
                 height="100%"
                 transform="rotate(144)"
                 width="100%"
-                xlinkHref={`#${ids[2]}`}
+                xlinkHref={`#${uniqueId}-2`}
               />
             </g>
-            <use height="100%" width="100%" xlinkHref={`#${ids[1]}`} y="-24" />
-            <use height="100%" width="100%" xlinkHref={`#${ids[1]}`} y="-48" />
+            <use
+              height="100%"
+              width="100%"
+              xlinkHref={`#${uniqueId}-1`}
+              y="-24"
+            />
+            <use
+              height="100%"
+              width="100%"
+              xlinkHref={`#${uniqueId}-1`}
+              y="-48"
+            />
           </g>
-          <use height="100%" width="100%" x="24" xlinkHref={`#${ids[0]}`} />
-          <use height="100%" width="100%" x="48" xlinkHref={`#${ids[0]}`} />
-          <use height="100%" width="100%" x="-48" xlinkHref={`#${ids[1]}`} />
-          <use height="100%" width="100%" x="-24" xlinkHref={`#${ids[1]}`} />
+          <use height="100%" width="100%" x="24" xlinkHref={`#${uniqueId}-0`} />
+          <use height="100%" width="100%" x="48" xlinkHref={`#${uniqueId}-0`} />
+          <use
+            height="100%"
+            width="100%"
+            x="-48"
+            xlinkHref={`#${uniqueId}-1`}
+          />
           <use
             height="100%"
             width="100%"
             x="-24"
-            xlinkHref={`#${ids[1]}`}
+            xlinkHref={`#${uniqueId}-1`}
+          />
+          <use
+            height="100%"
+            width="100%"
+            x="-24"
+            xlinkHref={`#${uniqueId}-1`}
             y="-24"
           />
         </g>

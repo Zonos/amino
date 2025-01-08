@@ -18,13 +18,13 @@ export const MobileDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M7.75 3A2.75 2.75 0 0 0 5 5.75v12.5A2.75 2.75 0 0 0 7.75 21h8.5A2.75 2.75 0 0 0 19 18.25V5.75A2.75 2.75 0 0 0 16.25 3h-8.5Z"
+      d="M7.75 3A2.75 2.75 0 0 0 5 5.75v12.5A2.75 2.75 0 0 0 7.75 21h8.5A2.75 2.75 0 0 0 19 18.25V5.75A2.75 2.75 0 0 0 16.25 3z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
       clipRule="evenodd"
-      d="M10.5 16.25a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Z"
+      d="M10.5 16.25a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75"
       fill="currentColor"
       fillRule="evenodd"
     />
