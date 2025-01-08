@@ -48,7 +48,7 @@
     "storybook:build": "storybook build",
     "storybook:dev": "storybook dev -p 6006 --no-open",
     "svgs:react:flags": "tsx ./svgReact/flags",
-    "svgs:react:icons": "tsx ./svgReact/icons ",
+    "svgs:react:icons": "tsx ./svgReact/icons",
     "template:logic-constant": "tsx build-utils/css/generateLogicConstTemplate.ts",
     "test:prod": "vitest run",
     "test:pw": "playwright test",
