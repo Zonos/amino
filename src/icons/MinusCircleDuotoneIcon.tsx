@@ -18,13 +18,13 @@ export const MinusCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
       clipRule="evenodd"
-      d="M8.5 12a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5h-5.5A.75.75 0 0 1 8.5 12Z"
+      d="M8.5 12a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5h-5.5A.75.75 0 0 1 8.5 12"
       fill="currentColor"
       fillRule="evenodd"
     />

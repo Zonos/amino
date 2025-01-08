@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const TF = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(1);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -23,7 +22,7 @@ export const TF = forwardRef<SVGSVGElement, Props>(
           <path
             d="m0-21 12.3 38L-20-6.5h40L-12.3 17z"
             fill="#fff"
-            id={`${ids[0]}`}
+            id={`${uniqueId}-0`}
           />
         </defs>
         <path d="M0 0h640v480H0z" fill="#002395" />
@@ -39,7 +38,7 @@ export const TF = forwardRef<SVGSVGElement, Props>(
           transform="scale(1.2)"
           width="100%"
           x="416"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
           y="362"
         />
         <use
@@ -47,7 +46,7 @@ export const TF = forwardRef<SVGSVGElement, Props>(
           transform="scale(1.2)"
           width="100%"
           x="371"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
           y="328"
         />
         <use
@@ -55,7 +54,7 @@ export const TF = forwardRef<SVGSVGElement, Props>(
           transform="scale(1.2)"
           width="100%"
           x="461"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
           y="328"
         />
         <use
@@ -63,7 +62,7 @@ export const TF = forwardRef<SVGSVGElement, Props>(
           transform="scale(1.2)"
           width="100%"
           x="333"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
           y="227"
         />
         <use
@@ -71,7 +70,7 @@ export const TF = forwardRef<SVGSVGElement, Props>(
           transform="scale(1.2)"
           width="100%"
           x="499"
-          xlinkHref={`#${ids[0]}`}
+          xlinkHref={`#${uniqueId}-0`}
           y="227"
         />
       </FlagIconBase>

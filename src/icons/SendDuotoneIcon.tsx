@@ -19,7 +19,7 @@ export const SendDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="m10.876 13.492-6.297-2.795c-.831-.369-.778-1.566.083-1.86L18.689 4.05a1 1 0 0 1 1.276 1.25l-4.452 14.017c-.276.868-1.473.946-1.859.12l-2.778-5.945Zm8.374-8.42Z"
+      d="m10.876 13.492-6.297-2.795c-.831-.369-.778-1.566.083-1.86L18.689 4.05a1 1 0 0 1 1.276 1.25l-4.452 14.017c-.276.868-1.473.946-1.859.12zm8.374-8.42"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"

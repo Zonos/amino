@@ -1,12 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, inlineBlock, size }, ref) => {
-    const ids = useStableUniqueId(5);
+    const uniqueId = useId();
     return (
       <IconBase
         ref={ref}
@@ -18,7 +17,7 @@ export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
       >
         <mask
           height="20"
-          id={`${ids[0]}`}
+          id={`${uniqueId}-0`}
           maskUnits="userSpaceOnUse"
           style={{ maskType: 'alpha' }}
           width="19"
@@ -27,30 +26,30 @@ export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
         >
           <path
             clipRule="evenodd"
-            d="M6.257 2.5h9.386c.49 0 .944.263 1.188.686l4.693 8.128c.244.423.244.949 0 1.372l-4.693 8.128a1.377 1.377 0 0 1-1.188.686H6.257c-.492 0-.945-.263-1.189-.686l-.548-.948a1.371 1.371 0 0 1 .217-1.657l.589-.589A7.928 7.928 0 0 1 3 12a7.93 7.93 0 0 1 2.326-5.62l-.589-.589a1.378 1.378 0 0 1-.217-1.657l.548-.948A1.377 1.377 0 0 1 6.257 2.5Z"
+            d="M6.257 2.5h9.386c.49 0 .944.263 1.188.686l4.693 8.128c.244.423.244.949 0 1.372l-4.693 8.128a1.38 1.38 0 0 1-1.188.686H6.257c-.492 0-.945-.263-1.189-.686l-.548-.948a1.37 1.37 0 0 1 .217-1.657l.589-.589A7.93 7.93 0 0 1 3 12a7.93 7.93 0 0 1 2.326-5.62l-.589-.589a1.38 1.38 0 0 1-.217-1.657l.548-.948A1.38 1.38 0 0 1 6.257 2.5"
             fill="#FFE37D"
             fillRule="evenodd"
           />
         </mask>
-        <g mask={`url(#${ids[0]})`}>
+        <g mask={`url(#${uniqueId}-0)`}>
           <path
-            d="M10.954 19.953a7.953 7.953 0 1 0 0-15.906 7.953 7.953 0 0 0 0 15.906Z"
-            fill={`url(#${ids[1]})`}
+            d="M10.954 19.953a7.953 7.953 0 1 0 0-15.906 7.953 7.953 0 0 0 0 15.906"
+            fill={`url(#${uniqueId}-1)`}
           />
           <path
-            d="M15.646 2.5h-9.39c-.49 0-.94.263-1.188.686l-.548.948a1.378 1.378 0 0 0 .217 1.657L7.796 8.85A4.439 4.439 0 0 0 6.489 12c0 1.23.5 2.346 1.307 3.15l-3.059 3.06a1.371 1.371 0 0 0-.217 1.657l.548.948c.244.423.697.686 1.189.686h9.386c.49 0 .94-.263 1.188-.686l4.693-8.128a1.377 1.377 0 0 0 0-1.372L16.83 3.186a1.373 1.373 0 0 0-1.188-.686h.003Z"
-            fill={`url(#${ids[2]})`}
+            d="M15.646 2.5h-9.39c-.49 0-.94.263-1.188.686l-.548.948a1.38 1.38 0 0 0 .217 1.657L7.796 8.85A4.44 4.44 0 0 0 6.489 12c0 1.23.5 2.346 1.307 3.15l-3.059 3.06a1.37 1.37 0 0 0-.217 1.657l.548.948c.244.423.697.686 1.189.686h9.386c.49 0 .94-.263 1.188-.686l4.693-8.128a1.38 1.38 0 0 0 0-1.372L16.83 3.186a1.37 1.37 0 0 0-1.188-.686h.003Z"
+            fill={`url(#${uniqueId}-2)`}
           />
           <g opacity=".5">
-            <g filter={`url(#${ids[3]})`}>
+            <g filter={`url(#${uniqueId}-3)`}>
               <path
-                d="M11.903 19.953a7.953 7.953 0 1 0 0-15.906 7.953 7.953 0 0 0 0 15.906Z"
+                d="M11.903 19.953a7.953 7.953 0 1 0 0-15.906 7.953 7.953 0 0 0 0 15.906"
                 fill="#4F1D0A"
               />
             </g>
-            <g filter={`url(#${ids[4]})`}>
+            <g filter={`url(#${uniqueId}-4)`}>
               <path
-                d="M10.954 19.953a7.953 7.953 0 1 0 0-15.906 7.953 7.953 0 0 0 0 15.906Z"
+                d="M10.954 19.953a7.953 7.953 0 1 0 0-15.906 7.953 7.953 0 0 0 0 15.906"
                 fill="#FFE37D"
               />
             </g>
@@ -59,7 +58,7 @@ export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
         <defs>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[1]}`}
+            id={`${uniqueId}-1`}
             x1="8.638"
             x2="4.04"
             y1="11.973"
@@ -70,7 +69,7 @@ export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
           </linearGradient>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[2]}`}
+            id={`${uniqueId}-2`}
             x1="11.715"
             x2="23.44"
             y1="12"
@@ -83,7 +82,7 @@ export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21.907"
-            id={`${ids[3]}`}
+            id={`${uniqueId}-3`}
             width="21.907"
             x=".95"
             y="1.046"
@@ -103,7 +102,7 @@ export const CheckoutColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="19.907"
-            id={`${ids[4]}`}
+            id={`${uniqueId}-4`}
             width="19.907"
             x="1"
             y="2.046"

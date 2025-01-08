@@ -18,12 +18,12 @@ export const CardDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M5.75 5A2.75 2.75 0 0 0 3 7.75v8.5A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25v-8.5A2.75 2.75 0 0 0 18.25 5H5.75Z"
+      d="M5.75 5A2.75 2.75 0 0 0 3 7.75v8.5A2.75 2.75 0 0 0 5.75 19h12.5A2.75 2.75 0 0 0 21 16.25v-8.5A2.75 2.75 0 0 0 18.25 5z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
-      d="M5.75 8.5a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H5.75Zm1.5 5.5a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5h-4Z"
+      d="M5.75 8.5a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5zm1.5 5.5a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5z"
       fill="currentColor"
     />
   </IconBase>

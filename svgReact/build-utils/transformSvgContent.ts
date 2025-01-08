@@ -30,7 +30,7 @@ export const transformSvgContent = ({
     const idRegex = new RegExp(`"${maskId}"`, 'gi');
     const urlRegex = new RegExp(`"url\\(#${maskId}\\)"`, 'gi');
     const hrefRegex = new RegExp(`xlink:href="#${maskId}"`, 'gi');
-    const newId = `\${ids[${index}]}`;
+    const newId = `\${uniqueId}-${index}`;
     result = result
       .replace(idRegex, `${addWrapper(newId)}`)
       .replace(urlRegex, `${addWrapper(`url(#${newId})`)}`)

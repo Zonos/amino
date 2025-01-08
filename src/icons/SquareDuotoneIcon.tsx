@@ -14,7 +14,7 @@ export const SquareDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        d="M6.75 4A2.75 2.75 0 0 0 4 6.75v10.5A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4H6.75Z"
+        d="M6.75 4A2.75 2.75 0 0 0 4 6.75v10.5A2.75 2.75 0 0 0 6.75 20h10.5A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4z"
         fill="currentColor"
       />
     </IconBase>

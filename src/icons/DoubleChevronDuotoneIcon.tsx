@@ -19,14 +19,14 @@ export const DoubleChevronDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M16.03 14.22a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 1 1 1.06-1.06L12 17.19l2.97-2.97a.75.75 0 0 1 1.06 0Z"
+      d="M16.03 14.22a.75.75 0 0 1 0 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 1 1 1.06-1.06L12 17.19l2.97-2.97a.75.75 0 0 1 1.06 0"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M7.97 9.78a.75.75 0 0 1 0-1.06l3.5-3.5a.75.75 0 0 1 1.06 0l3.5 3.5a.75.75 0 0 1-1.06 1.06L12 6.81 9.03 9.78a.75.75 0 0 1-1.06 0Z"
+      d="M7.97 9.78a.75.75 0 0 1 0-1.06l3.5-3.5a.75.75 0 0 1 1.06 0l3.5 3.5a.75.75 0 0 1-1.06 1.06L12 6.81 9.03 9.78a.75.75 0 0 1-1.06 0"
       fill="currentColor"
       fillRule="evenodd"
     />

@@ -1,12 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, inlineBlock, size }, ref) => {
-    const ids = useStableUniqueId(5);
+    const uniqueId = useId();
     return (
       <IconBase
         ref={ref}
@@ -18,7 +17,7 @@ export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
       >
         <mask
           height="22"
-          id={`${ids[0]}`}
+          id={`${uniqueId}-0`}
           maskUnits="userSpaceOnUse"
           style={{ maskType: 'alpha' }}
           width="22"
@@ -27,30 +26,30 @@ export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
         >
           <path
             clipRule="evenodd"
-            d="M11.458 2.584c0-.965 1.166-1.446 1.848-.765l8.876 8.872a1.083 1.083 0 0 1 0 1.533l-9.955 9.958a1.083 1.083 0 0 1-1.533 0L1.82 13.307c-.685-.682-.2-1.848.765-1.848h2.589a6.28 6.28 0 0 1 6.28-6.281h.003V2.584Z"
+            d="M11.458 2.584c0-.965 1.166-1.446 1.848-.765l8.876 8.872a1.083 1.083 0 0 1 0 1.533l-9.955 9.958a1.083 1.083 0 0 1-1.533 0L1.82 13.307c-.685-.682-.2-1.848.765-1.848h2.589a6.28 6.28 0 0 1 6.28-6.281h.003z"
             fill="#FFE37D"
             fillRule="evenodd"
           />
         </mask>
-        <g mask={`url(#${ids[0]})`}>
+        <g mask={`url(#${uniqueId}-0)`}>
           <path
-            d="M11.455 17.74a6.28 6.28 0 0 0 6.28-6.28 6.28 6.28 0 1 0-12.56 0 6.28 6.28 0 0 0 6.28 6.28Z"
-            fill={`url(#${ids[1]})`}
+            d="M11.455 17.74a6.28 6.28 0 0 0 6.28-6.28 6.28 6.28 0 1 0-12.56 0 6.28 6.28 0 0 0 6.28 6.28"
+            fill={`url(#${uniqueId}-1)`}
           />
           <path
-            d="M13.306 1.82c-.682-.682-1.848-.201-1.848.764v5.354a3.519 3.519 0 0 0-3.52 3.521H2.586c-.966 0-1.45 1.166-.765 1.848l8.873 8.875a1.083 1.083 0 0 0 1.533 0l9.955-9.958a1.083 1.083 0 0 0 0-1.533l-8.876-8.872Z"
-            fill={`url(#${ids[2]})`}
+            d="M13.306 1.82c-.682-.682-1.848-.201-1.848.764v5.354a3.52 3.52 0 0 0-3.52 3.521H2.586c-.966 0-1.45 1.166-.765 1.848l8.873 8.875a1.083 1.083 0 0 0 1.533 0l9.955-9.958a1.083 1.083 0 0 0 0-1.533z"
+            fill={`url(#${uniqueId}-2)`}
           />
           <g opacity=".5">
-            <g filter={`url(#${ids[3]})`}>
+            <g filter={`url(#${uniqueId}-3)`}>
               <path
-                d="M11.455 18.863a6.28 6.28 0 0 0 6.28-6.281 6.28 6.28 0 1 0-12.56 0 6.28 6.28 0 0 0 6.28 6.281Z"
+                d="M11.455 18.863a6.28 6.28 0 0 0 6.28-6.281 6.28 6.28 0 1 0-12.56 0 6.28 6.28 0 0 0 6.28 6.281"
                 fill="#053326"
               />
             </g>
-            <g filter={`url(#${ids[4]})`}>
+            <g filter={`url(#${uniqueId}-4)`}>
               <path
-                d="M11.455 17.74a6.28 6.28 0 0 0 6.28-6.28 6.28 6.28 0 1 0-12.56 0 6.28 6.28 0 0 0 6.28 6.28Z"
+                d="M11.455 17.74a6.28 6.28 0 0 0 6.28-6.28 6.28 6.28 0 1 0-12.56 0 6.28 6.28 0 0 0 6.28 6.28"
                 fill="#FFE37D"
               />
             </g>
@@ -59,7 +58,7 @@ export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
         <defs>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[1]}`}
+            id={`${uniqueId}-1`}
             x1="10.686"
             x2="7.657"
             y1="10.819"
@@ -70,7 +69,7 @@ export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
           </linearGradient>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[2]}`}
+            id={`${uniqueId}-2`}
             x1="14.857"
             x2="4.264"
             y1="14.814"
@@ -83,7 +82,7 @@ export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="16.563"
-            id={`${ids[3]}`}
+            id={`${uniqueId}-3`}
             width="16.56"
             x="3.175"
             y="4.3"
@@ -103,7 +102,7 @@ export const HelloColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="16.563"
-            id={`${ids[4]}`}
+            id={`${uniqueId}-4`}
             width="16.56"
             x="3.175"
             y="3.178"

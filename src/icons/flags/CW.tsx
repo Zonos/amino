@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const CW = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(2);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -20,15 +19,15 @@ export const CW = forwardRef<SVGSVGElement, Props>(
         width={width}
       >
         <defs>
-          <clipPath id={`${ids[0]}`}>
+          <clipPath id={`${uniqueId}-0`}>
             <path d="M0 0h682.7v512H0z" fillOpacity=".7" />
           </clipPath>
           <path
             d="m0-1 .2.7H1L.3 0l.2.7L0 .4l-.6.4.2-.7-.5-.4h.7z"
-            id={`${ids[1]}`}
+            id={`${uniqueId}-1`}
           />
         </defs>
-        <g clipPath={`url(#${ids[0]})`} transform="scale(.94)">
+        <g clipPath={`url(#${uniqueId}-0)`} transform="scale(.94)">
           <path d="M0 0h768v512H0z" fill="#002b7f" />
           <path d="M0 320h768v64H0z" fill="#f9e814" />
           <use
@@ -37,7 +36,7 @@ export const CW = forwardRef<SVGSVGElement, Props>(
             transform="scale(42.67)"
             width="13500"
             x="2"
-            xlinkHref={`#${ids[1]}`}
+            xlinkHref={`#${uniqueId}-1`}
             y="2"
           />
           <use
@@ -46,7 +45,7 @@ export const CW = forwardRef<SVGSVGElement, Props>(
             transform="scale(56.9)"
             width="13500"
             x="3"
-            xlinkHref={`#${ids[1]}`}
+            xlinkHref={`#${uniqueId}-1`}
             y="3"
           />
         </g>

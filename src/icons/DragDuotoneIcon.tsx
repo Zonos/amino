@@ -19,14 +19,14 @@ export const DragDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M6 14a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 14Z"
+      d="M6 14a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 14"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"
     />
     <path
       clipRule="evenodd"
-      d="M6 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 10Z"
+      d="M6 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 10"
       fill="currentColor"
       fillRule="evenodd"
     />

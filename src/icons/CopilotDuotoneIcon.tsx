@@ -25,7 +25,7 @@ export const CopilotDuotoneIcon = forwardRef<
       fillRule="evenodd"
     />
     <path
-      d="M13.967 18.722a.75.75 0 0 0-.42-1.44 5.528 5.528 0 0 1-3.094 0 .75.75 0 0 0-.42 1.44 7.03 7.03 0 0 0 3.934 0Z"
+      d="M13.967 18.722a.75.75 0 0 0-.42-1.44 5.53 5.53 0 0 1-3.094 0 .75.75 0 0 0-.42 1.44 7.03 7.03 0 0 0 3.934 0"
       fill="currentColor"
     />
   </IconBase>

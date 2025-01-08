@@ -1,14 +1,13 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { ThemeIconBase } from 'src/icons/icon-base/_ThemeIconBase';
 
 export const ThemeLightIcon = forwardRef<SVGSVGElement, { className?: string }>(
   ({ className }, ref) => {
-    const ids = useStableUniqueId(1);
+    const uniqueId = useId();
     return (
       <ThemeIconBase ref={ref} className={className}>
-        <g clipPath={`url(#${ids[0]})`}>
+        <g clipPath={`url(#${uniqueId}-0)`}>
           <rect fill="#fff" height="64" rx="4" width="110" />
           <rect fill="#EAEBED" height="8" rx="2" width="40" x="7.999" y="33" />
           <rect fill="#EAEBED" height="8" rx="2" width="80" x="65" y="17" />
@@ -66,7 +65,7 @@ export const ThemeLightIcon = forwardRef<SVGSVGElement, { className?: string }>(
           <rect fill="#EAEBED" height="4" rx="2" width="4" x="101.889" y="63" />
         </g>
         <defs>
-          <clipPath id={ids[0]}>
+          <clipPath id={`${uniqueId}-0`}>
             <rect fill="#fff" height="64" rx="4" width="110" />
           </clipPath>
         </defs>

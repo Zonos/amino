@@ -18,13 +18,13 @@ export const PlusCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
       clipRule="evenodd"
-      d="M12 8.5a.75.75 0 0 1 .75.75v2h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2h-2a.75.75 0 0 1 0-1.5h2v-2A.75.75 0 0 1 12 8.5Z"
+      d="M12 8.5a.75.75 0 0 1 .75.75v2h2a.75.75 0 0 1 0 1.5h-2v2a.75.75 0 0 1-1.5 0v-2h-2a.75.75 0 0 1 0-1.5h2v-2A.75.75 0 0 1 12 8.5"
       fill="currentColor"
       fillRule="evenodd"
     />

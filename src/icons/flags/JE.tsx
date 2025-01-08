@@ -1,7 +1,6 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 
 type Props = {
   borderRadius?: number;
@@ -10,7 +9,7 @@ type Props = {
 };
 export const JE = forwardRef<SVGSVGElement, Props>(
   ({ borderRadius, height, width }, ref) => {
-    const ids = useStableUniqueId(2);
+    const uniqueId = useId();
     return (
       <FlagIconBase
         ref={ref}
@@ -20,11 +19,14 @@ export const JE = forwardRef<SVGSVGElement, Props>(
         width={width}
       >
         <defs>
-          <clipPath id={`${ids[0]}`}>
+          <clipPath id={`${uniqueId}-0`}>
             <path d="M-5.3-6h40v30h-40z" fillOpacity=".7" />
           </clipPath>
         </defs>
-        <g clipPath={`url(#${ids[0]})`} transform="matrix(.75 0 0 .75 4 2.3)">
+        <g
+          clipPath={`url(#${uniqueId}-0)`}
+          transform="matrix(.75 0 0 .75 4 2.3)"
+        >
           <path d="M-10.3-6h50v30h-50z" fill="#fff" />
           <path
             d="M-10.3-6v2L11.6 9l-21.8 13v2H-7l21.8-13 21.7 13h3.2v-2L18 9 39.8-4v-2h-3.3L14.7 7-7-6h-3.2z"
@@ -44,7 +46,7 @@ export const JE = forwardRef<SVGSVGElement, Props>(
               stroke="#000"
               strokeWidth=".1"
             />
-            <g id={`${ids[1]}`} stroke="#000">
+            <g id={`${uniqueId}-1`} stroke="#000">
               <g fill="#f9dd16" strokeWidth=".1">
                 <path d="M130.7 32.2c-.4 0-.4.5-.5.5.8 0 1.2-.3 1.4-.7v.6c.6-.2.8-.7.6-1l.7.2c-.4-.3-.1-1-.8-1.4.2 0 .6.2.8.5-.1-.7-.2-1.1-.8-1.5h.5a.9.9 0 0 1-.4-.8c0-.4-.2-.4-.6-.3l-1.8.1c-1 0-2 0-2.8-.6 1.3.6 3-.6 3-1.5 0-1-1.4-2-4-1.4-2.6.6-5.8.4-5.8-.5s2.3-1 3.5-.8c1.2.2 2 .3 4.2-.5-.5.2-2.3.3-3.7-.1s-4.8-.4-4.8 1.4c0 1.9 3.6 1.7 6.8 1.2 1.8-.2 2.8 0 2.8.5 0 .6-1.7.8-3 .7a10 10 0 0 0-4.1.3c-1.3.4-2.2 0-3.6.3-.7 0-2.4 0-3.2-1.4-.5.4-2 1.1-2.3 1.9-.3.6 0 1.3.4 2 .6.8-.3.7-1 .7-.8 0-2 0-2.6-.8-.6-.6-1.3-1.1-1.9-.7-.3.3 0 .6.2.5l.8.2a1 1 0 0 0-1 .1c-.3.2 0 .6.3.5.2-.1.7-.2 1 0-.3 0-.7 0-.8.2s0 .4.3.4c.6 0 .7.4 1.3.3a.9.9 0 0 0-.7.4c.6-.3 1.1.4 1.8.2-.2.1-.7.4-.7.6.4-.5 3.2.4 3.2-.7l-.1.8c.3-.2 1.4-.3 1.8-1 0 .2 0 .5-.2.6.3 0 .8-.2 1.3-.9.2-.3.2-.5.2-.7.5 0 .8-.1 1.2-.4.4-.3.8.3 1.5-.2.6-.4 1.2 0 1.6-.2.3-.2.8 0 1.2-.2s1 .1 1.6-.4c1 .4 2.3 1 5.2.5 1.6-.3 2.2.3 2.2 1 0 .6-.4.6-.6.6-1 .1-1.3-.3-1.7-.2-.2.1-.4.5 0 .7-.3.1-.3.4-.1.5s.5 0 .8-.1c-.4.1-.7.4-.5.7.1.2.4.3.7 0 .3-.4.8-.7 1.2-.7zm-18.6-8c-.8-.3-1-.3-.9.4 0 .3.3.7.5.9 0-.3.1-1 .4-1.2z" />
                 <path d="M114.8 24.3c.8-.4 1.1-.4.9.3 0 .3-.3.7-.5.9 0-.3 0-1-.4-1.2z" />
@@ -75,13 +77,13 @@ export const JE = forwardRef<SVGSVGElement, Props>(
               height="18"
               transform="matrix(.9 0 0 .9 11.6 13.7)"
               width="30"
-              xlinkHref={`#${ids[1]}`}
+              xlinkHref={`#${uniqueId}-1`}
             />
             <use
               height="18"
               transform="matrix(.67 0 0 .75 39.2 27.5)"
               width="30"
-              xlinkHref={`#${ids[1]}`}
+              xlinkHref={`#${uniqueId}-1`}
             />
           </g>
         </g>

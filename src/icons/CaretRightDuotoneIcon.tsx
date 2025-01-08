@@ -14,7 +14,7 @@ export const CaretRightDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        d="M9 15.99a1 1 0 0 0 1.611.792l4.842-3.74a1 1 0 0 0 0-1.583L10.61 7.718A1 1 0 0 0 9 8.509v7.482Z"
+        d="M9 15.99a1 1 0 0 0 1.611.792l4.842-3.74a1 1 0 0 0 0-1.583L10.61 7.718A1 1 0 0 0 9 8.509z"
         fill="currentColor"
       />
     </IconBase>

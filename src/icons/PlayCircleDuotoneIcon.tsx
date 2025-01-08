@@ -18,7 +18,7 @@ export const PlayCircleDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"
+      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />

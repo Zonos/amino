@@ -307,7 +307,6 @@ import './icons/FileUploadIcon';
 import './icons/FilterDuotoneIcon';
 import './icons/FilterIcon';
 import './icons/flag-icon/FlagIcon';
-import './icons/flag-icon/useStableUniqueId';
 import './icons/flags/AD';
 import './icons/flags/AE';
 import './icons/flags/AF';

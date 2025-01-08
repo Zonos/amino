@@ -1,12 +1,11 @@
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
-import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';
 import { IconBase } from 'src/icons/icon-base/_IconBase';
 import type { IconProps } from 'src/types/IconProps';
 
 export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
   ({ className, color, inlineBlock, size }, ref) => {
-    const ids = useStableUniqueId(6);
+    const uniqueId = useId();
     return (
       <IconBase
         ref={ref}
@@ -18,7 +17,7 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
       >
         <mask
           height="22"
-          id={`${ids[0]}`}
+          id={`${uniqueId}-0`}
           maskUnits="userSpaceOnUse"
           style={{ maskType: 'alpha' }}
           width="24"
@@ -27,30 +26,30 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
         >
           <path
             clipRule="evenodd"
-            d="M17.484 3.78A7.71 7.71 0 0 0 12 1.5a7.71 7.71 0 0 0-5.494 2.291l-.66-.66a1.333 1.333 0 0 0-1.886 0L2.032 5.06a5.905 5.905 0 0 0 0 8.349l9.025 9.025a1.333 1.333 0 0 0 1.886 0l9.025-9.025a5.905 5.905 0 0 0 0-8.35L20.03 3.122a1.332 1.332 0 0 0-1.886 0l-.66.66Z"
-            fill={`url(#${ids[1]})`}
+            d="M17.484 3.78A7.7 7.7 0 0 0 12 1.5a7.7 7.7 0 0 0-5.494 2.291l-.66-.66a1.333 1.333 0 0 0-1.886 0L2.032 5.06a5.905 5.905 0 0 0 0 8.349l9.025 9.025a1.333 1.333 0 0 0 1.886 0l9.025-9.025a5.905 5.905 0 0 0 0-8.35L20.03 3.122a1.33 1.33 0 0 0-1.886 0l-.66.66Z"
+            fill={`url(#${uniqueId}-1)`}
             fillRule="evenodd"
           />
         </mask>
-        <g mask={`url(#${ids[0]})`}>
+        <g mask={`url(#${uniqueId}-0)`}>
           <path
-            d="M12 16.967A7.733 7.733 0 1 0 12 1.5a7.733 7.733 0 0 0 0 15.467Z"
-            fill={`url(#${ids[2]})`}
+            d="M12 16.967A7.733 7.733 0 1 0 12 1.5a7.733 7.733 0 0 0 0 15.467"
+            fill={`url(#${uniqueId}-2)`}
           />
           <path
-            d="m15.08 6.185-.016-.016a4.334 4.334 0 0 0-6.128 0l-.026.026-3.064-3.064a1.333 1.333 0 0 0-1.886 0L2.032 5.06a5.905 5.905 0 0 0 0 8.349l9.025 9.025a1.333 1.333 0 0 0 1.886 0l9.025-9.025a5.905 5.905 0 0 0 0-8.35L20.03 3.122a1.332 1.332 0 0 0-1.886 0L15.08 6.185Z"
-            fill={`url(#${ids[3]})`}
+            d="m15.08 6.185-.016-.016a4.334 4.334 0 0 0-6.128 0l-.026.026-3.064-3.064a1.333 1.333 0 0 0-1.886 0L2.032 5.06a5.905 5.905 0 0 0 0 8.349l9.025 9.025a1.333 1.333 0 0 0 1.886 0l9.025-9.025a5.905 5.905 0 0 0 0-8.35L20.03 3.122a1.33 1.33 0 0 0-1.886 0z"
+            fill={`url(#${uniqueId}-3)`}
           />
           <g opacity=".5">
-            <g filter={`url(#${ids[4]})`}>
+            <g filter={`url(#${uniqueId}-4)`}>
               <path
-                d="M11 17.967A7.733 7.733 0 1 0 11 2.5a7.733 7.733 0 0 0 0 15.467Z"
+                d="M11 17.967A7.733 7.733 0 1 0 11 2.5a7.733 7.733 0 0 0 0 15.467"
                 fill="#3B093F"
               />
             </g>
-            <g filter={`url(#${ids[5]})`}>
+            <g filter={`url(#${uniqueId}-5)`}>
               <path
-                d="M12 16.967A7.733 7.733 0 1 0 12 1.5a7.733 7.733 0 0 0 0 15.467Z"
+                d="M12 16.967A7.733 7.733 0 1 0 12 1.5a7.733 7.733 0 0 0 0 15.467"
                 fill="#FFE37D"
               />
             </g>
@@ -59,7 +58,7 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
         <defs>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[1]}`}
+            id={`${uniqueId}-1`}
             x1="11.937"
             x2="-4.689"
             y1="9.3"
@@ -70,7 +69,7 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
           </linearGradient>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[2]}`}
+            id={`${uniqueId}-2`}
             x1="12.689"
             x2="16.8"
             y1="8.659"
@@ -81,7 +80,7 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
           </linearGradient>
           <linearGradient
             gradientUnits="userSpaceOnUse"
-            id={`${ids[3]}`}
+            id={`${uniqueId}-3`}
             x1="12"
             x2="12"
             y1="7.5"
@@ -94,7 +93,7 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="21.467"
-            id={`${ids[4]}`}
+            id={`${uniqueId}-4`}
             width="21.467"
             x=".267"
             y="-.5"
@@ -114,7 +113,7 @@ export const InclusivePricingColorIcon = forwardRef<SVGSVGElement, IconProps>(
             colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
             height="19.467"
-            id={`${ids[5]}`}
+            id={`${uniqueId}-5`}
             width="19.467"
             x="2.267"
             y="-.5"

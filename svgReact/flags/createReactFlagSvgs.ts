@@ -42,10 +42,10 @@ export const generateComponentContent = ({
   });
 
   return [
-    `import { forwardRef } from 'react';`,
+    maskIds.length
+      ? `import { forwardRef, useId } from 'react';`
+      : `import { forwardRef } from 'react';`,
     `import { FlagIconBase } from 'src/icons/flag-icon/_FlagIconBase';`,
-    maskIds.length &&
-      `import { useStableUniqueId } from 'src/icons/flag-icon/useStableUniqueId';`,
     `type Props = {`,
     `borderRadius?: number;`,
     `height: number;`,
@@ -53,7 +53,7 @@ export const generateComponentContent = ({
     `};`,
     ``,
     `export const ${componentName} = forwardRef<SVGSVGElement, Props>(({ height, width, borderRadius }, ref) => {`,
-    maskIds.length && `const ids = useStableUniqueId(${maskIds.length});`,
+    maskIds.length && `const uniqueId = useId();`,
     `return (`,
     `<FlagIconBase height={height} width={width} ref={ref} viewBox="${viewBox}" borderRadius={borderRadius} >`,
     content,

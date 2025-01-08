@@ -18,7 +18,7 @@ export const LoginDuotoneIcon = forwardRef<
     viewBox="0 0 24 24"
   >
     <path
-      d="M12 4a2.75 2.75 0 0 0-2.75 2.75v10.5A2.75 2.75 0 0 0 12 20h5.25A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4H12Z"
+      d="M12 4a2.75 2.75 0 0 0-2.75 2.75v10.5A2.75 2.75 0 0 0 12 20h5.25A2.75 2.75 0 0 0 20 17.25V6.75A2.75 2.75 0 0 0 17.25 4z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
