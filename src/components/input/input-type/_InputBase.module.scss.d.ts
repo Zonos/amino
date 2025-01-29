@@ -1,0 +1,11 @@
+export declare const input: string;
+export declare const inputWrapper: string;
+export declare const label: string;
+export declare const lg: string;
+export declare const md: string;
+export declare const prefix: string;
+export declare const sm: string;
+export declare const suffix: string;
+export declare const textInputWrapper: string;
+export declare const valuePrefix: string;
+export declare const xl: string;

@@ -3,6 +3,15 @@
 .styledWrapper {
   position: relative;
   width: 100%;
+  input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
 }
 
 .styledActionWrapper {
@@ -27,24 +36,12 @@
   }
 }
 
-.aminoInput {
-  & input {
-    padding-right: theme.$amino-space-40;
-    appearance: textfield;
-    &::-webkit-inner-spin-button,
-    &::-webkit-calendar-picker-indicator {
-      display: none;
-      -webkit-appearance: none;
-    }
+.input {
+  padding-right: theme.$amino-space-40;
+  appearance: textfield;
 
-    &::-webkit-datetime-edit-fields-wrapper {
-      transition: 0.5s all ease;
-    }
-  }
-
-  &:not(:focus-within):not(:global(.has-content)) {
-    input::-webkit-datetime-edit-fields-wrapper {
-      opacity: 0;
-    }
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
   }
 }

@@ -25,7 +25,7 @@ export const CountrySelect = <T extends string>({
   autoFocus,
   countryOptions,
   filter = Boolean,
-  label = 'Select country',
+  label,
   onChange,
   placeholder,
   value,

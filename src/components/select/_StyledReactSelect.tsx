@@ -22,7 +22,7 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
-import { CheckCircleIcon } from 'src/icons/CheckCircleIcon';
+import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { DoubleChevronIcon } from 'src/icons/DoubleChevronIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
@@ -122,15 +122,6 @@ const Control = <
       {...innerProps}
     >
       {icon && <div className={styles.iconWrapper}>{icon}</div>}
-
-      <div className={styles.styledFloatedLabel}>
-        {label}{' '}
-        {Array.isArray(value) && value.length > 1 && (
-          <strong className={styles.strongLabel}>
-            ({value.length} selected)
-          </strong>
-        )}
-      </div>
       {children}
     </div>
   );
@@ -226,7 +217,7 @@ export const CheckboxOptionComponent = <
             {children}
           </IconLabel>
         )}
-        {isSelected && <CheckCircleIcon color="blue600" size={24} />}
+        {isSelected && <CheckmarkIcon color="blue600" size={24} />}
       </div>
     );
   };
@@ -333,9 +324,7 @@ const getMergedStyles = <
   }),
   menuList: (provided, state) => ({
     ...provided,
-    paddingLeft: 8,
-    paddingRight: 8,
-    paddingTop: 8,
+    padding: 8,
     ...stylesProp?.menuList?.(provided, state),
   }),
   // menuPortal
@@ -375,7 +364,10 @@ const getMergedStyles = <
     '.has-label.is-focused &': {
       opacity: 1,
     },
-    opacity: 0,
+    color: 'var(--amino-text-disabled)',
+    fontSize: 'var(--amino-font-size-base)',
+    fontWeight: 400,
+    opacity: 1,
     ...stylesProp?.placeholder?.(provided, state),
   }),
   singleValue: (provided, state) => ({
@@ -425,7 +417,7 @@ export const StyledReactSelect = <
   label,
   menuPosition = 'fixed',
   placeholder,
-  size = 'xl',
+  size = 'md',
   style,
   ...props
 }: StyledReactSelectProps<V, Option, IsMulti, Group>) => {
@@ -463,6 +455,7 @@ export const StyledReactSelect = <
       className={clsx(styles.styledSelectWrapper, error && styles.hasError)}
       data-testid={testId}
     >
+      {label && <label className={styles.hasLabel}>{label}</label>}
       <ReactSelect<Option, IsMulti, Group>
         ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}

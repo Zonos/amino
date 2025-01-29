@@ -13,68 +13,20 @@ $color: var(--amino-styled-react-select-color);
   width: 24px;
 }
 
-.styledFloatedLabel {
-  position: absolute;
-  transition: theme.$amino-transition;
-  font-size: theme.$amino-font-size-base;
-  line-height: theme.$amino-font-size-base;
-  transform-origin: left top;
-  left: 14px;
-  .hasIcon & {
-    left: 44px;
-  }
-  top: calc(50% - theme.$amino-font-size-base / 2);
-  .hasLabel & {
-    & + div {
-      align-self: flex-end;
-    }
-  }
-  .hasValue &,
-  .isFocused & {
-    top: 11px;
-    transform: scale(0.8);
-  }
+.hasLabel {
+  color: theme.$amino-text-color-secondary;
+  display: block;
+  margin-bottom: 8px;
+}
 
-  // Size modify
+.hasIcon {
+  display: flex;
+  align-items: center;
+}
 
-  // sm
-  .sm.hasLabel & {
-    & + div {
-      margin-bottom: -6px;
-    }
-  }
-  .sm.hasValue &,
-  .sm.isFocused & {
-    top: 2px;
-  }
-
-  // md
-  .md.hasLabel & {
-    & + div {
-      margin-bottom: -2px;
-    }
-  }
-  .md.hasValue &,
-  .md.isFocused & {
-    top: 6px;
-  }
-
-  // lg
-  .lg.hasValue &,
-  .lg.isFocused & {
-    top: 10px;
-  }
-
-  // xl
-  .xl.hasLabel & {
-    & + div {
-      margin-bottom: 3px;
-    }
-  }
-  .xl.hasValue &,
-  .xl.isFocused & {
-    top: 11px;
-  }
+.hasValue {
+  display: flex;
+  align-items: center;
 }
 
 .isDisabled {
@@ -110,7 +62,11 @@ $color: var(--amino-styled-react-select-color);
     &.isFocused,
     &:hover {
       /* The styles are inlined on this component from emotion, so we must override */
-      background-color: theme.$amino-gray-100 !important;
+      background-color: theme.$amino-gray-50 !important;
+
+      [data-theme='night'] & {
+        background-color: theme.$amino-gray-100 !important;
+      }
     }
   }
 }
@@ -119,4 +75,20 @@ $color: var(--amino-styled-react-select-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.sm {
+  height: 32px;
+}
+
+.md {
+  height: 40px;
+}
+
+.lg {
+  height: 48px;
+}
+
+.xl {
+  height: 56px;
 }

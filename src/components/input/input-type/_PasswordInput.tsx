@@ -4,15 +4,15 @@ import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import {
-  FloatLabelInput,
-  type FloatLabelInputProps,
-} from 'src/components/input/input-type/_FloatLabelInput';
+  InputBase,
+  type InputBaseProps,
+} from 'src/components/input/input-type/_InputBase';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 
 import styles from './_PasswordInput.module.scss';
 
-export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
+export const PasswordInput = forwardRef<HTMLInputElement, InputBaseProps>(
   (
     {
       autoFocus,
@@ -38,7 +38,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
     const [inputType, setInputType] = useState('password');
     return (
       <div className={clsx(styles.styledWrapper, className)}>
-        <FloatLabelInput
+        <InputBase
           ref={ref}
           aria-label={label}
           autoFocus={autoFocus}

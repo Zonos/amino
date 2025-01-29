@@ -48,6 +48,7 @@ const Template: StoryFn<InputProps> = ({ value: _value, ...props }) => {
       <Input
         {...props}
         onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
         value={value}
       />
       <Input
@@ -60,12 +61,14 @@ const Template: StoryFn<InputProps> = ({ value: _value, ...props }) => {
         {...props}
         disabled
         onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
         value={value}
       />
       <Input
         {...props}
         label={undefined}
         onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
         value={value}
       />
       <Text type="bold-subheader">
@@ -138,6 +141,7 @@ DateInputClamped.args = {
 export const DateTimeInput = Template.bind({});
 DateTimeInput.args = {
   label: 'Datetime input',
+  placeholder: 'placeholder',
   type: 'datetime-local',
   value: '1995-09-08 09:21:00',
 };

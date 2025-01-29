@@ -1,25 +1,10 @@
 @use 'theme';
 
-$border-radius: var(--amino-input-border-radius);
 $width: var(--amino-input-width);
-
-.fields {
-  border-radius: $border-radius;
-  border: theme.$amino-border;
-  &:hover {
-    border: 1px solid theme.$amino-gray-300;
-  }
-}
 
 .aminoInputWrapper {
   position: relative;
   width: $width;
-
-  & > div {
-    flex-direction: row;
-    align-items: center;
-    display: flex;
-  }
 
   &:global(.disabled) {
     opacity: theme.$amino-opacity-disabled;

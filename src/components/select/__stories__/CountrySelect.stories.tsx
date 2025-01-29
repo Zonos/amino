@@ -44,6 +44,7 @@ const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
         {...props}
         countryOptions={countryOptions}
         onChange={option => setValue(option?.value || null)}
+        placeholder="Select a country"
         value={value}
       />
       <br />
@@ -51,6 +52,7 @@ const CountrySelectTemplate: StoryFn<CountrySelectProps> = ({ ...props }) => {
       <CountrySelect
         countryOptions={stronglyTypedCountries}
         onChange={option => setTypedValue(option?.value || null)}
+        placeholder="Select a country"
         value={typedValue}
       />
     </>
