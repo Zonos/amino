@@ -23,7 +23,7 @@ export const LightDuotoneIcon = forwardRef<
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
-      d="M15 16.001H9v2.25c0 .966.784 1.75 1.75 1.75h2.5A1.75 1.75 0 0 0 15 18.25V16Z"
+      d="M15 16.001H9v2.25c0 .966.784 1.75 1.75 1.75h2.5A1.75 1.75 0 0 0 15 18.25z"
       fill="currentColor"
     />
   </IconBase>

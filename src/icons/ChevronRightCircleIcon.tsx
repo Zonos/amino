@@ -14,7 +14,7 @@ export const ChevronRightCircleIcon = forwardRef<SVGSVGElement, IconProps>(
       viewBox="0 0 24 24"
     >
       <path
-        d="M11.555 8.745a.75.75 0 0 0-1.11 1.01L12.486 12l-2.041 2.245a.75.75 0 0 0 1.11 1.01l2.5-2.75a.75.75 0 0 0 0-1.01z"
+        d="M11.555 8.746a.75.75 0 0 0-1.11 1.009L12.486 12l-2.041 2.246a.75.75 0 0 0 1.11 1.008l2.5-2.75a.75.75 0 0 0 0-1.008z"
         fill="currentColor"
       />
       <path

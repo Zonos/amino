@@ -26,7 +26,7 @@ export const SendDuotoneIcon = forwardRef<
     />
     <path
       clipRule="evenodd"
-      d="M14.46 9.897a.75.75 0 0 1 0 1.06l-1.93 1.93a.75.75 0 0 1-1.06-1.06l1.929-1.93a.75.75 0 0 1 1.06 0Z"
+      d="M14.46 9.897a.75.75 0 0 1 0 1.06l-1.93 1.93a.75.75 0 0 1-1.06-1.06l1.929-1.93a.75.75 0 0 1 1.06 0"
       fill="currentColor"
       fillRule="evenodd"
     />

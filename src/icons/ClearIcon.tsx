@@ -20,7 +20,7 @@ export const ClearIcon = forwardRef<SVGSVGElement, IconProps>(
         fillRule="evenodd"
       />
       <path
-        d="M15.36 5.858a.75.75 0 1 0-.72 1.315 5.53 5.53 0 0 1 2.187 2.188.75.75 0 0 0 1.315-.721 7.03 7.03 0 0 0-2.781-2.782Z"
+        d="M15.36 5.858a.75.75 0 1 0-.72 1.315 5.53 5.53 0 0 1 2.187 2.188.75.75 0 0 0 1.315-.721 7.03 7.03 0 0 0-2.781-2.782"
         fill="currentColor"
       />
     </IconBase>
