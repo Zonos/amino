@@ -11,6 +11,11 @@ $height: var(--amino-float-label-input-height);
   width: 100%;
   background: theme.$amino-input-background;
   border-radius: $border-radius;
+  border: 1px solid theme.$amino-border-color;
+
+  &:hover {
+    border-color: theme.$amino-gray-300;
+  }
 
   .inputDecorator {
     font-size: theme.$amino-font-size-s;

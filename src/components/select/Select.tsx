@@ -53,6 +53,7 @@ export const Select = <
   Group extends GroupBase<Option> = GroupBase<Option>,
 >({
   isClearable = true,
+  isSearchable = false,
   label,
   value,
   ...props
@@ -67,6 +68,7 @@ export const Select = <
       {...props}
       isClearable={isClearable}
       isMulti={false}
+      isSearchable={isSearchable}
       label={label}
       value={value}
     />

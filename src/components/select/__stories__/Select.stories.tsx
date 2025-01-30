@@ -10,6 +10,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { MoneyIcon } from 'src/icons/MoneyIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { SelectOption } from 'src/types/SelectOption';
 
@@ -70,8 +71,10 @@ const currencyOptions = [
 
 export const BasicSelect: StoryObj<SelectProps> = {
   args: {
+    isSearchable: true,
     label: 'Currencies',
     options: currencyOptions,
+    placeholder: 'Select a currency',
     value: {
       label: 'US Dollar (USD)',
       value: 'USD',
@@ -83,9 +86,10 @@ export const BasicSelectWithIcon: StoryObj<SelectProps> = {
   args: {
     error: true,
     helpText: 'This input is required',
-    icon: <FileIcon size={24} />,
+    icon: <MoneyIcon size={24} />,
     label: 'Currencies',
     options: currencyOptions,
+    placeholder: 'Select a currency',
     value: {
       label: 'US Dollar (USD)',
       value: 'USD',

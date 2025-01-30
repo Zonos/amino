@@ -21,6 +21,7 @@ import { TimeInput } from 'src/components/input/input-type/_TimeInput';
 import { theme } from 'src/styles/constants/theme';
 
 import styles from './Input.module.scss';
+import { InputBase } from './input-type/_InputBase';
 
 type InputType = {
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
@@ -57,7 +58,7 @@ export const Input = ({
   prefix,
   readOnly,
   required,
-  size = 'xl',
+  size = 'md',
   style,
   suffix,
   tabIndex,
@@ -172,9 +173,36 @@ export const Input = ({
             {...props}
           />
         );
-      default:
+      case 'float':
         return (
           <FloatLabelInput
+            ref={inputRef}
+            autoFocus={autoFocus}
+            className={className}
+            disabled={disabled}
+            error={error}
+            inputMode={inputMode}
+            label={label}
+            noBorder={noBorder}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            pattern={pattern}
+            placeholder={placeholder}
+            prefix={prefix}
+            readOnly={readOnly}
+            required={required}
+            size={size}
+            suffix={suffix}
+            tabIndex={tabIndex}
+            type={type}
+            value={value || ''}
+            valuePrefix={valuePrefix}
+            {...props}
+          />
+        );
+      default:
+        return (
+          <InputBase
             ref={inputRef}
             autoFocus={autoFocus}
             className={className}
@@ -230,7 +258,7 @@ export const Input = ({
         ...style,
       }}
     >
-      <div className={clsx(!noBorder && styles.fields)}>{renderInput()}</div>
+      {renderInput()}
 
       <HelpText error={error} helpText={helpText} />
     </div>

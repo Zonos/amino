@@ -12,7 +12,6 @@ export declare const reactSelectControl: string;
 export declare const selectedSingleOptionWrapper: string;
 export declare const sm: string;
 export declare const strongLabel: string;
-export declare const styledFloatedLabel: string;
 export declare const styledSelectOptionWrapper: string;
 export declare const styledSelectWrapper: string;
 export declare const xl: string;
