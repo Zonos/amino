@@ -23,7 +23,7 @@ export const PlayCircleDuotoneIcon = forwardRef<
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
     />
     <path
-      d="M9.75 10.142v3.716c0 .525.552.866 1.021.631l3.716-1.858a.706.706 0 0 0 0-1.262L10.771 9.51a.706.706 0 0 0-1.021.631Z"
+      d="M9.75 10.142v3.716c0 .525.552.866 1.021.631l3.716-1.858a.706.706 0 0 0 0-1.262L10.771 9.51a.706.706 0 0 0-1.021.631"
       fill="currentColor"
     />
   </IconBase>

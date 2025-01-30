@@ -24,7 +24,7 @@ export const ChevronDownCircleDuotoneIcon = forwardRef<
     />
     <path
       clipRule="evenodd"
-      d="M15.305 10.495a.75.75 0 0 1-.05 1.06l-2.75 2.5a.75.75 0 0 1-1.01 0l-2.75-2.5a.75.75 0 0 1 1.01-1.11L12 12.486l2.245-2.04a.75.75 0 0 1 1.06.05Z"
+      d="M15.305 10.496a.75.75 0 0 1-.05 1.059l-2.75 2.5a.75.75 0 0 1-1.01 0l-2.75-2.5a.75.75 0 0 1 1.01-1.11L12 12.486l2.246-2.04a.75.75 0 0 1 1.059.05"
       fill="currentColor"
       fillRule="evenodd"
     />

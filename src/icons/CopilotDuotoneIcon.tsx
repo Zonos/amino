@@ -19,7 +19,7 @@ export const CopilotDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M16.42 17.483a.994.994 0 0 0 1.429-.022 8 8 0 1 0-11.698 0 .994.994 0 0 0 1.43.022l2.895-2.896c.938.554 2.11.554 3.048 0l2.895 2.896Z"
+      d="M16.42 17.483a.994.994 0 0 0 1.429-.022 8 8 0 1 0-11.698 0 .994.994 0 0 0 1.43.022l2.895-2.896c.938.554 2.11.554 3.048 0z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"

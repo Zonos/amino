@@ -15,7 +15,7 @@ export const ChevronUpCircleDuotoneIcon = forwardRef<SVGSVGElement, IconProps>(
     >
       <path
         clipRule="evenodd"
-        d="M8.695 13.505a.75.75 0 0 1 .05-1.06l2.75-2.5a.75.75 0 0 1 1.01 0l2.75 2.5a.75.75 0 0 1-1.01 1.11L12 11.514l-2.245 2.04a.75.75 0 0 1-1.06-.05Z"
+        d="M8.695 13.505a.75.75 0 0 1 .05-1.06l2.75-2.5a.75.75 0 0 1 1.01 0l2.75 2.5a.75.75 0 0 1-1.01 1.11L12 11.514l-2.245 2.04a.75.75 0 0 1-1.06-.05"
         fill="currentColor"
         fillRule="evenodd"
       />
