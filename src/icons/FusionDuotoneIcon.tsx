@@ -19,7 +19,7 @@ export const FusionDuotoneIcon = forwardRef<
   >
     <path
       clipRule="evenodd"
-      d="M4.045 6.641a4.75 4.75 0 0 0 0 6.718l7.248 7.248a1 1 0 0 0 1.414 0l7.248-7.248a4.75 4.75 0 0 0 0-6.718L17.834 4.52a1 1 0 0 0-1.415 0l-2.895 2.895a3 3 0 0 0-3.048 0L7.58 4.52a1 1 0 0 0-1.415 0l-2.12 2.12Z"
+      d="M4.045 6.641a4.75 4.75 0 0 0 0 6.718l7.248 7.248a1 1 0 0 0 1.414 0l7.248-7.248a4.75 4.75 0 0 0 0-6.718L17.834 4.52a1 1 0 0 0-1.415 0l-2.895 2.895a3 3 0 0 0-3.048 0L7.58 4.52a1 1 0 0 0-1.415 0z"
       data-is-secondary-color="true"
       fill={secondaryColor ? `${theme[secondaryColor]}` : `${theme.gray400}`}
       fillRule="evenodd"
