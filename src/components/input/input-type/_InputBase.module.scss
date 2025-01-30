@@ -9,6 +9,15 @@
   background: transparent;
   flex: none;
 
+  &:has(input:focus) {
+    border-color: theme.$amino-gray-400;
+  }
+
+  &:global(.has-error),
+  &:global(.has-error):has(input:focus) {
+    border-color: theme.$amino-red-600;
+  }
+
   .input {
     background: theme.$amino-input-background;
     height: inherit;
@@ -57,6 +66,10 @@
   margin-bottom: theme.$amino-space-8;
   color: theme.$amino-text-color-secondary;
   flex: none;
+
+  &:global(.has-error) {
+    color: theme.$amino-red-700;
+  }
 }
 
 .textInputWrapper {

@@ -84,11 +84,16 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
     ref,
   ) => (
     <div className={styles.textInputWrapper}>
-      {label && <label className={styles.label}>{label}</label>}
+      {label && (
+        <label className={clsx(styles.label, error && 'has-error')}>
+          {label}
+        </label>
+      )}
       <div
         className={clsx(
           styles.inputWrapper,
           size && styles[`${size}`],
+          error && 'has-error',
           className,
         )}
       >
