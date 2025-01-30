@@ -3,11 +3,7 @@
 .styledWrapper {
   position: relative;
   width: 100%;
-  input[type='datetime-local']::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-  }
-
+  input[type='datetime-local']::-webkit-calendar-picker-indicator,
   input[type='date']::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
