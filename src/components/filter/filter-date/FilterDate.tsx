@@ -49,6 +49,9 @@ export const FilterDate = ({
     date: string | null;
     type: 'begin' | 'end';
   }) => {
+    if (!date) {
+      return null;
+    }
     switch (rangeType) {
       case 'is between':
       case 'is equal to':
