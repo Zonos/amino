@@ -116,14 +116,12 @@
     inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06),
     inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04);
   --amino-shadow-button-primary: 0px 0px 0px 1px var(----amino-primary, #4f79f2),
-    0px 0px 0px 4px rgba(0, 0, 0, 0),
     0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset,
     0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset,
     0px 2px 2px -1px rgba(47, 54, 159, 0.24),
     0px 4px 4px -2px rgba(47, 54, 159, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0);
   --amino-shadow-button-primary-focus: 0px 0px 0px 1px
       var(----amino-primary, #4f79f2),
-    0px 0px 0px 4px rgba(0, 0, 0, 0),
     0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset,
     0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset,
     0px 2px 2px -1px rgba(47, 54, 159, 0.24),

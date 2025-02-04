@@ -159,7 +159,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
 
     &.outline {
       color: theme.$amino-primary;
-      box-shadow: 0px 0px 0px 1px theme.$amino-primary inset;
+      box-shadow: 0px 0px 0px 1px theme.$amino-primary;
       background: transparent;
       &:not([disabled]) {
         &:hover {
@@ -172,10 +172,13 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       }
       &[disabled] {
         background: transparent;
-        box-shadow: 0px 0px 0px 1px theme.$amino-primary inset;
+        box-shadow: 0px 0px 0px 1px theme.$amino-primary;
       }
       & .spinnerWrapper {
         background: transparent;
+      }
+      &::before {
+        content: none;
       }
     }
   }
@@ -193,7 +196,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       }
       &:focus {
         box-shadow:
-          0px 0px 0px 1px theme.$amino-success inset,
+          0px 0px 0px 1px theme.$amino-success,
           theme.$amino-button-focus-ring;
       }
     }

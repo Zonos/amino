@@ -8,9 +8,9 @@ export const shadow = {
   'v3-shadow-inset':
     ' 0px 2px 4px rgba(0, 0, 0, 0.24), 0px 1px 0px rgba(17, 17, 20, 1), inset 0px 0px 8px rgba(0, 0, 0, 0.16), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.24), inset 0px 2px 4px rgba(0, 0, 0, 0.24),  inset 0px 1px 1px rgba(0, 0, 0, 0.24), 0px 0px 6px rgba(255, 255, 255, 0.08), 0px 0px 0px 1px rgba(255, 255, 255, 0.12);',
   'shadow-button-primary':
-    '0px 0px 0px 1px var(----amino-primary, #4F79F2), 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset, 0px 2px 2px -1px rgba(47, 54, 159, 0.24), 0px 4px 4px -2px rgba(47, 54, 159, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
+    '0px 0px 0px 1px var(----amino-primary, #4F79F2), 0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset, 0px 2px 2px -1px rgba(47, 54, 159, 0.24), 0px 4px 4px -2px rgba(47, 54, 159, 0.12), 0px 0px 0px 4px rgba(255, 255, 255, 0.00)',
   'shadow-button-primary-focus':
-    '0px 0px 0px 1px var(----amino-primary, #4F79F2), 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset, 0px 2px 2px -1px rgba(47, 54, 159, 0.24), 0px 4px 4px -2px rgba(47, 54, 159, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.08)',
+    '0px 0px 0px 1px var(----amino-primary, #4F79F2), 0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset, 0px 2px 2px -1px rgba(47, 54, 159, 0.24), 0px 4px 4px -2px rgba(47, 54, 159, 0.12), 0px 0px 0px 4px rgba(255, 255, 255, 0.12)',
   'shadow-button-success':
     '0px 1px 3px 0px rgba(55, 176, 74, 0.40), 0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset, 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 0px 0px 0.5px #000',
   'shadow-button-danger':
