@@ -6,12 +6,12 @@
   .wrapper {
     position: relative;
     border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.06);
+    background-color: rgba(5, 10, 40, 0.06);
     height: 32px;
     display: flex;
 
     [data-theme='night'] & {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: rgba(220, 225, 255, 0.1);
     }
   }
 

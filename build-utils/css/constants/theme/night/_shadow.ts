@@ -19,11 +19,11 @@ export const shadow = {
     '0px 1px 3px 0px rgba(236, 111, 35, 0.40), 0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset, 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset, 0px 0px 0px 0.5px #000',
   'button-focus-ring': '0 0 0 2px var(--amino-blue-500)',
   'shadow-raised-standard':
-    '0px -1px 2px 0px rgba(255, 255, 255, 0.06), 0px 1px 1px -0.5px rgba(0, 0, 0, 0.12), 0px 2px 2px -1px rgba(0, 0, 0, 0.12), 0px 4px 4px -2px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 0.16), 0px 0px 0px 4px rgba(255, 255, 255, 0.00)',
+    '0px -1px 2px 0px rgba(220, 225, 255, 0.06), 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(220, 225, 255, 0.16), 0px 0px 0px 4px rgba(220, 225, 255, 0.00)',
   'shadow-raised-active':
-    '0px -1px 2px 0px rgba(255, 255, 255, 0.06), 0px 1px 1px -0.5px rgba(0, 0, 0, 0.12), 0px 2px 2px -1px rgba(0, 0, 0, 0.12), 0px 4px 4px -2px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 0.16), 0px 0px 0px 4px rgba(255, 255, 255, 0.00)',
+    '0px -1px 2px 0px rgba(220, 225, 255, 0.06), 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(220, 225, 255, 0.16), 0px 0px 0px 4px rgba(220, 225, 255, 0.00)',
   'shadow-raised-focus':
-    '0px -1px 2px 0px rgba(255, 255, 255, 0.06), 0px 1px 1px -0.5px rgba(0, 0, 0, 0.12), 0px 2px 2px -1px rgba(0, 0, 0, 0.12), 0px 4px 4px -2px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 0.16), 0px 0px 0px 4px rgba(255, 255, 255, 0.12)',
+    '0px -1px 2px 0px rgba(220, 225, 255, 0.06), 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(220, 225, 255, 0.16), 0px 0px 0px 4px rgba(220, 225, 255, 0.12)',
   'shadow-raised-error':
     '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(246, 92, 109, 0.00)',
   'shadow-raised-error-focus':
