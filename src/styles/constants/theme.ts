@@ -376,6 +376,9 @@ export const theme = {
   /** @info 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowInputErrorFocus: 'var(--amino-shadow-input-error-focus)',
+  /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowSelectBase: 'var(--amino-shadow-select-base)',
   /** @info 0px 1px 3px 0px rgba(68, 94, 238, 0.40), 0px 0px 0px 1px #445EEE inset, 0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectActive: 'var(--amino-shadow-select-active)',
