@@ -366,10 +366,10 @@ const getMergedStyles = <
     '.has-label.is-focused &': {
       opacity: 1,
     },
-    color: 'var(--amino-text-color)',
+    color: 'var(--amino-gray-500)',
     fontSize: 'var(--amino-font-size-base)',
     fontWeight: 400,
-    opacity: 0.6,
+    opacity: 1,
     ...stylesProp?.placeholder?.(provided, state),
   }),
   singleValue: (provided, state) => ({

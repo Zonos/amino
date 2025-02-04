@@ -367,10 +367,10 @@ exports[`Case light theme 1`] = `
   /** @info 0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDisabled: 'var(--amino-shadow-button-disabled)',
-  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
+  /** @info 0px 0px 0px 1px var(--amino-gray-200), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowInputBase: 'var(--amino-shadow-input-base)',
-  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.08) */
+  /** @info 0px 0px 0px 1px var(--amino-gray-300), 0px 0px 0px 4px rgba(0, 0, 0, 0.08) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowInputFocus: 'var(--amino-shadow-input-focus)',
   /** @info 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00) */

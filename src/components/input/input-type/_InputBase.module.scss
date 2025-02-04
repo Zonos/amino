@@ -34,8 +34,7 @@
     font-weight: 500;
 
     &::placeholder {
-      color: theme.$amino-text-color;
-      opacity: 0.6;
+      color: theme.$amino-gray-500;
       font-weight: 400;
     }
   }

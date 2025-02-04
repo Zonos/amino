@@ -31,9 +31,9 @@ export const shadow = {
   'shadow-button-disabled':
     '0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset',
   'shadow-input-base':
-    '0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
+    '0px 0px 0px 1px var(--amino-gray-200), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
   'shadow-input-focus':
-    '0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.08)',
+    '0px 0px 0px 1px var(--amino-gray-300), 0px 0px 0px 4px rgba(0, 0, 0, 0.08)',
   'shadow-input-error':
     '0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00)',
   'shadow-input-error-focus':
