@@ -8,6 +8,7 @@ export declare const isDisabled: string;
 export declare const isFocused: string;
 export declare const lg: string;
 export declare const md: string;
+export declare const menuIsOpen: string;
 export declare const reactSelectControl: string;
 export declare const selectedSingleOptionWrapper: string;
 export declare const sm: string;

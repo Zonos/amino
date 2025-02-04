@@ -343,15 +343,36 @@ export const theme = {
   /** @info 0 0 0 2px var(--amino-blue-500) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonFocusRing: 'var(--amino-button-focus-ring)',
-  /** @info 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset, 0px 1px 3px 0px rgba(110, 110, 120, 0.12) */
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowButtonStandard: 'var(--amino-shadow-button-standard)',
+  shadowRaisedStandard: 'var(--amino-shadow-raised-standard)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedActive: 'var(--amino-shadow-raised-active)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.08) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedFocus: 'var(--amino-shadow-raised-focus)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedError: 'var(--amino-shadow-raised-error)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedErrorFocus: 'var(--amino-shadow-raised-error-focus)',
   /** @info 0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDisabled: 'var(--amino-shadow-button-disabled)',
-  /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
+  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowSelectBase: 'var(--amino-shadow-select-base)',
+  shadowInputBase: 'var(--amino-shadow-input-base)',
+  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.08) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputFocus: 'var(--amino-shadow-input-focus)',
+  /** @info 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputError: 'var(--amino-shadow-input-error)',
+  /** @info 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputErrorFocus: 'var(--amino-shadow-input-error-focus)',
   /** @info 0px 1px 3px 0px rgba(68, 94, 238, 0.40), 0px 0px 0px 1px #445EEE inset, 0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectActive: 'var(--amino-shadow-select-active)',
@@ -640,7 +661,7 @@ export const theme = {
   /** @info linear-gradient(180deg, #EC6F23 0%, #E5611A 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonWarningHover: 'var(--amino-button-warning-hover)',
-  /** @info linear-gradient(180deg, #FFFFFF 0%, #E8EAEE 100%); */
+  /** @info linear-gradient(180deg, var(--amino-gray-0) 0%, var(--amino-gray-50) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonStandardHover: 'var(--amino-button-standard-hover)',
 

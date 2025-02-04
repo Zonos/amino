@@ -38,8 +38,28 @@ $color: var(--amino-styled-react-select-color);
     z-index: 20;
   }
 
-  &.hasError .reactSelectControl {
-    box-shadow: theme.$amino-shadow-select-error !important;
+  .reactSelectControl {
+    &.isFocused {
+      box-shadow: theme.$amino-shadow-raised-standard !important;
+
+      &:not(.menuIsOpen) {
+        box-shadow: theme.$amino-shadow-raised-focus !important;
+      }
+    }
+  }
+
+  &.hasError {
+    .hasLabel {
+      color: theme.$amino-red-600;
+    }
+
+    .reactSelectControl {
+      box-shadow: theme.$amino-shadow-raised-error !important;
+
+      &.isFocused:not(.menuIsOpen) {
+        box-shadow: theme.$amino-shadow-raised-error-focus !important;
+      }
+    }
   }
 }
 

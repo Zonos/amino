@@ -128,14 +128,32 @@
     0px 1px 3px 0px rgba(236, 111, 35, 0.4),
     0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset;
   --amino-button-focus-ring: 0 0 0 2px var(--amino-blue-500);
-  --amino-shadow-button-standard: 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
-    0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset,
-    0px 1px 3px 0px rgba(110, 110, 120, 0.12);
+  --amino-shadow-raised-standard: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08),
+    0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0);
+  --amino-shadow-raised-active: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08),
+    0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0);
+  --amino-shadow-raised-focus: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08),
+    0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.08);
+  --amino-shadow-raised-error: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08),
+    0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
+    0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0);
+  --amino-shadow-raised-error-focus: 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08),
+    0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
+    0px 0px 0px 1px var(--amino-red-600),
+    0px 0px 0px 4px rgba(221, 49, 75, 0.12);
   --amino-shadow-button-disabled: 0px 1px 3px 0px rgba(16, 17, 22, 0.2),
     0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset;
-  --amino-shadow-select-base: 0px 1px 3px 0px rgba(110, 110, 120, 0.12),
-    0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
-    0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset;
+  --amino-shadow-input-base: 0px 0px 0px 1px rgba(0, 0, 0, 0.16),
+    0px 0px 0px 4px rgba(0, 0, 0, 0);
+  --amino-shadow-input-focus: 0px 0px 0px 1px rgba(0, 0, 0, 0.16),
+    0px 0px 0px 4px rgba(0, 0, 0, 0.08);
+  --amino-shadow-input-error: 0px 0px 0px 1px var(--amino-red-600),
+    0px 0px 0px 4px rgba(221, 49, 75, 0);
+  --amino-shadow-input-error-focus: 0px 0px 0px 1px var(--amino-red-600),
+    0px 0px 0px 4px rgba(221, 49, 75, 0.12);
   --amino-shadow-select-active: 0px 1px 3px 0px rgba(68, 94, 238, 0.4),
     0px 0px 0px 1px #445eee inset,
     0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset;
@@ -250,8 +268,8 @@
   );
   --amino-button-standard-hover: linear-gradient(
     180deg,
-    #ffffff 0%,
-    #e8eaee 100%
+    var(--amino-gray-0) 0%,
+    var(--amino-gray-50) 100%
   );
   --amino-spinner-track-black: rgba(0, 0, 0, 0.3);
   --amino-spinner-stroke-black: #0c0c0c;

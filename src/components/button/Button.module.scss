@@ -215,14 +215,14 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   }
 
   &.standardButton {
-    box-shadow: theme.$amino-shadow-button-standard;
+    box-shadow: theme.$amino-shadow-raised-standard;
 
     &:not([disabled]) {
       &:active {
         background: theme.$amino-gray-100;
       }
       &:focus {
-        box-shadow: theme.$amino-focus-button;
+        box-shadow: theme.$amino-shadow-raised-focus;
       }
     }
     &[disabled] {
@@ -233,14 +233,21 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
 
     &.outline {
       background: transparent;
-      box-shadow: 0px 0px 0px 1px theme.$amino-gray-300 inset;
+      box-shadow: theme.$amino-shadow-input-base;
       &:not([disabled]) {
         &:hover {
-          background-color: theme.$amino-gray-100;
+          background-color: rgba(0, 0, 0, 0.04);
           background-image: unset;
+
+          [data-theme='night'] & {
+            background-color: rgba(255, 255, 255, 0.08);
+          }
         }
         &:active {
-          background: theme.$amino-gray-200;
+          background: theme.$amino-gray-100;
+        }
+        &:focus {
+          box-shadow: theme.$amino-shadow-input-focus;
         }
       }
     }
@@ -249,7 +256,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
   &.invertedButton {
     background: theme.$amino-gray-1000;
     color: theme.$amino-gray-0;
-    box-shadow: theme.$amino-shadow-button-standard;
+    box-shadow: theme.$amino-shadow-raised-standard;
 
     &:not([disabled]) {
       &:hover {
@@ -259,7 +266,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
         background: theme.$amino-gray-600;
       }
       &:focus {
-        box-shadow: theme.$amino-focus-button;
+        box-shadow: theme.$amino-shadow-raised-focus;
       }
     }
     &[disabled] {

@@ -4,5 +4,5 @@ export const hover = {
   'button-danger-hover': 'linear-gradient(180deg, #EE4559 0%, #DD314B 100%)',
   'button-warning-hover': 'linear-gradient(180deg, #EC6F23 0%, #E5611A 100%)',
   'button-standard-hover':
-    'linear-gradient(180deg, #272A3599 0%, #494C5780 100%)',
+    'linear-gradient(180deg, var(--amino-gray-50) 0%, var(--amino-gray-100) 100%)',
 } as const;

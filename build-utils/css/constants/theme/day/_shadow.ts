@@ -16,12 +16,26 @@ export const shadow = {
   'shadow-button-warning':
     '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(236, 111, 35, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset',
   'button-focus-ring': '0 0 0 2px var(--amino-blue-500)',
-  'shadow-button-standard':
-    '0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset, 0px 1px 3px 0px rgba(110, 110, 120, 0.12)',
+  'shadow-raised-standard':
+    '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
+  'shadow-raised-active':
+    '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
+  'shadow-raised-focus':
+    '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.08)',
+  'shadow-raised-error':
+    '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00)',
+  'shadow-raised-error-focus':
+    '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12)',
   'shadow-button-disabled':
     '0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset',
-  'shadow-select-base':
-    '0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset',
+  'shadow-input-base':
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
+  'shadow-input-focus':
+    '0px 0px 0px 1px rgba(0, 0, 0, 0.16), 0px 0px 0px 4px rgba(0, 0, 0, 0.08)',
+  'shadow-input-error':
+    '0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00)',
+  'shadow-input-error-focus':
+    '0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12)',
   'shadow-select-active':
     '0px 1px 3px 0px rgba(68, 94, 238, 0.40), 0px 0px 0px 1px #445EEE inset, 0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset',
   'shadow-select-error':

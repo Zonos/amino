@@ -5,17 +5,20 @@
   align-items: center;
   width: 100%;
   border-radius: var(--amino-input-border-radius);
-  border: 1px solid theme.$amino-gray-200;
+  box-shadow: theme.$amino-shadow-input-base;
   background: transparent;
   flex: none;
 
-  &:has(input:focus) {
-    border-color: theme.$amino-gray-400;
+  &:has(.input:focus) {
+    box-shadow: theme.$amino-shadow-input-focus;
   }
 
-  &:global(.has-error),
-  &:global(.has-error):has(input:focus) {
-    border-color: theme.$amino-red-600;
+  &:global(.has-error) {
+    box-shadow: theme.$amino-shadow-input-error;
+  }
+
+  &:global(.has-error):has(.input:focus) {
+    box-shadow: theme.$amino-shadow-input-error-focus;
   }
 
   .input {
@@ -24,13 +27,16 @@
     padding: 0 theme.$amino-space-16;
     outline: none;
     width: 100%;
-    border: 0;
+
+    border: none;
     border-radius: inherit;
     background: transparent;
     font-weight: 500;
 
     &::placeholder {
-      color: theme.$amino-gray-600;
+      color: theme.$amino-text-color;
+      opacity: 0.6;
+      font-weight: 400;
     }
   }
 
@@ -68,7 +74,7 @@
   flex: none;
 
   &:global(.has-error) {
-    color: theme.$amino-red-700;
+    color: theme.$amino-red-600;
   }
 }
 
