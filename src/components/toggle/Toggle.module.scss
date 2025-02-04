@@ -6,9 +6,13 @@
   .wrapper {
     position: relative;
     border-radius: 6px;
-    background-color: theme.$amino-gray-50;
-
+    background-color: rgba(0, 0, 0, 0.06);
+    height: 32px;
     display: flex;
+
+    [data-theme='night'] & {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
   }
 
   .selectedSlider {
@@ -16,9 +20,10 @@
     position: absolute;
     background-color: theme.$amino-raised-surface-color;
     height: 100%;
-
+    margin-top: 1px;
     /* Light/Shadows/Button */
-    box-shadow: theme.$amino-shadow-button-standard;
+    box-shadow: theme.$amino-shadow-raised-standard;
+    height: 30px;
     border-radius: 6px;
   }
 
