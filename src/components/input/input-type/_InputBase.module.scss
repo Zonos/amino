@@ -47,8 +47,13 @@
     align-items: center;
   }
 
+  .prefix {
+    padding-right: 0;
+    margin-right: -8px;
+  }
+
   .valuePrefix {
-    padding-left: theme.$amino-space-8;
+    padding-left: theme.$amino-space-12;
     color: theme.$amino-gray-800;
     white-space: nowrap;
   }
