@@ -123,12 +123,28 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       color: theme.$amino-text-color;
     }
 
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 50%
+      );
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
     &:not([disabled]) {
       &:active {
         background: theme.$amino-blue-600;
       }
       &:focus {
-        box-shadow: theme.$amino-focus-button;
+        box-shadow: theme.$amino-shadow-button-primary-focus;
       }
     }
 
