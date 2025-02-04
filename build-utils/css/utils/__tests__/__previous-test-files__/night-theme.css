@@ -116,14 +116,15 @@
     0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset,
     0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset,
     0px 2px 2px -1px rgba(47, 54, 159, 0.24),
-    0px 4px 4px -2px rgba(47, 54, 159, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0);
+    0px 4px 4px -2px rgba(47, 54, 159, 0.12),
+    0px 0px 0px 4px rgba(255, 255, 255, 0);
   --amino-shadow-button-primary-focus: 0px 0px 0px 1px
       var(----amino-primary, #4f79f2),
     0px 1px 0px 0px rgba(255, 255, 255, 0.08) inset,
     0px -1px 0px 0px rgba(255, 255, 255, 0.04) inset,
     0px 2px 2px -1px rgba(47, 54, 159, 0.24),
     0px 4px 4px -2px rgba(47, 54, 159, 0.12),
-    0px 0px 0px 4px rgba(0, 0, 0, 0.08);
+    0px 0px 0px 4px rgba(255, 255, 255, 0.12);
   --amino-shadow-button-success: 0px 1px 3px 0px rgba(55, 176, 74, 0.4),
     0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset,
     0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset, 0px 0px 0px 0.5px #000;
