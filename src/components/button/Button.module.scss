@@ -158,9 +158,6 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       & .spinnerWrapper {
         background: transparent;
       }
-      &::before {
-        content: none;
-      }
     }
   }
 
@@ -208,9 +205,6 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       }
       & .spinnerWrapper {
         background: transparent;
-      }
-      &::before {
-        content: none;
       }
     }
   }

@@ -5,11 +5,6 @@
   box-shadow: theme.$amino-shadow-raised-standard;
   width: fit-content;
 
-  // Remove shadows from child buttons
-  > * {
-    box-shadow: none !important;
-  }
-
   > *,
   :global(.menu-button-action) *,
   > :global(.tooltip-wrapper) > * {
