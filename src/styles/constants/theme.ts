@@ -328,27 +328,63 @@ export const theme = {
   /** @info 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 1px 0px 0px rgba(255, 255, 255, 1), inset 0px 0px 8px rgba(0, 0, 0, 0.02), inset 0px 0px 0px 0.5px rgba(0, 0, 0, 0.06), inset 0px 2px 4px rgba(0, 0, 0, 0.04), inset 0px 1px 1px rgba(0, 0, 0, 0.04) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   v3ShadowInset: 'var(--amino-v3-shadow-inset)',
-  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(68, 111, 238, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset */
+  /** @info 0px 0px 0px 1px var(--amino-primary), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.0), 0px -1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px 2px 2px -1px rgba(47, 54, 159, 0.24), 0px 4px 4px -2px rgba(47, 54, 159, 0.12) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonPrimary: 'var(--amino-shadow-button-primary)',
-  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(55, 176, 74, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset */
+  /** @info 0px 0px 0px 1px var(--amino-primary), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.08) inset, 0px 2px 2px -1px rgba(47, 54, 159, 0.24), 0px 4px 4px -2px rgba(47, 54, 159, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonPrimaryFocus: 'var(--amino-shadow-button-primary-focus)',
+  /** @info 0px 0px 0px 1px var(--amino-green-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(1, 87, 31, 0.24), 0px 4px 4px -2px rgba(1, 87, 31, 0.12) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonSuccess: 'var(--amino-shadow-button-success)',
-  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(238, 69, 89, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset */
+  /** @info 0px 0px 0px 1px var(--amino-green-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(1, 87, 31, 0.24), 0px 4px 4px -2px rgba(1, 87, 31, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonSuccessFocus: 'var(--amino-shadow-button-success-focus)',
+  /** @info 0px 0px 0px 1px var(--amino-red-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(138, 2, 13, 0.24), 0px 4px 4px -2px rgba(138, 2, 13, 0.12) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDanger: 'var(--amino-shadow-button-danger)',
-  /** @info 0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset, 0px 1px 3px 0px rgba(236, 111, 35, 0.40), 0px -1px 1px 0px rgba(0, 0, 0, 0.20) inset */
+  /** @info 0px 0px 0px 1px var(--amino-red-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(138, 2, 13, 0.24), 0px 4px 4px -2px rgba(138, 2, 13, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonDangerFocus: 'var(--amino-shadow-button-danger-focus)',
+  /** @info 0px 0px 0px 1px var(--amino-orange-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(123, 41, 5, 0.24), 0px 4px 4px -2px rgba(123, 41, 5, 0.12) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonWarning: 'var(--amino-shadow-button-warning)',
+  /** @info 0px 0px 0px 1px var(--amino-orange-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(123, 41, 5, 0.24), 0px 4px 4px -2px rgba(123, 41, 5, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowButtonWarningFocus: 'var(--amino-shadow-button-warning-focus)',
   /** @info 0 0 0 2px var(--amino-blue-500) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonFocusRing: 'var(--amino-button-focus-ring)',
-  /** @info 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset, 0px 1px 3px 0px rgba(110, 110, 120, 0.12) */
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
-  shadowButtonStandard: 'var(--amino-shadow-button-standard)',
-  /** @info 0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset */
+  shadowRaisedStandard: 'var(--amino-shadow-raised-standard)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedActive: 'var(--amino-shadow-raised-active)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.08) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedFocus: 'var(--amino-shadow-raised-focus)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedError: 'var(--amino-shadow-raised-error)',
+  /** @info 0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowRaisedErrorFocus: 'var(--amino-shadow-raised-error-focus)',
+  /** @info 0px 0px 0px 1px var(--amino-gray-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(0, 0, 0, 0.24), 0px 4px 4px -2px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowButtonDisabled: 'var(--amino-shadow-button-disabled)',
+  /** @info 0px 0px 0px 1px var(--amino-gray-200), 0px 0px 0px 4px rgba(0, 0, 0, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputBase: 'var(--amino-shadow-input-base)',
+  /** @info 0px 0px 0px 1px var(--amino-gray-300), 0px 0px 0px 4px rgba(0, 0, 0, 0.08) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputFocus: 'var(--amino-shadow-input-focus)',
+  /** @info 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.00) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputError: 'var(--amino-shadow-input-error)',
+  /** @info 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12) */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  shadowInputErrorFocus: 'var(--amino-shadow-input-error-focus)',
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectBase: 'var(--amino-shadow-select-base)',
@@ -640,7 +676,7 @@ export const theme = {
   /** @info linear-gradient(180deg, #EC6F23 0%, #E5611A 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonWarningHover: 'var(--amino-button-warning-hover)',
-  /** @info linear-gradient(180deg, #FFFFFF 0%, #E8EAEE 100%); */
+  /** @info linear-gradient(180deg, var(--amino-gray-0) 0%, var(--amino-gray-50) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonStandardHover: 'var(--amino-button-standard-hover)',
 

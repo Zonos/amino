@@ -96,6 +96,7 @@ const Control = <
     innerRef,
     isDisabled,
     isFocused,
+    menuIsOpen,
     selectProps,
   } = props;
   const { icon, label, size, value } =
@@ -111,6 +112,7 @@ const Control = <
         icon && styles.hasIcon,
         isFocused && styles.isFocused,
         isDisabled && styles.isDisabled,
+        menuIsOpen && styles.menuIsOpen,
         label || (Array.isArray(value) && value.length > 1)
           ? styles.hasLabel
           : '',
@@ -276,8 +278,8 @@ const getMergedStyles = <
       borderRadius: getRadius(size),
       borderWidth: 0,
       boxShadow: state.isFocused
-        ? `${theme.shadowSelectActive}`
-        : `${theme.shadowSelectBase}`,
+        ? `${theme.shadowRaisedFocus}`
+        : `${theme.shadowRaisedStandard}`,
       color: theme.gray800,
       cursor: 'pointer',
       flexWrap: 'inherit',
@@ -364,7 +366,7 @@ const getMergedStyles = <
     '.has-label.is-focused &': {
       opacity: 1,
     },
-    color: 'var(--amino-text-disabled)',
+    color: 'var(--amino-gray-500)',
     fontSize: 'var(--amino-font-size-base)',
     fontWeight: 400,
     opacity: 1,

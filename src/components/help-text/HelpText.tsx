@@ -38,7 +38,7 @@ export const HelpText = ({
           className={clsx(className, !withoutMargin && styles.styledHelpText)}
           style={style}
         >
-          <Text color="red700" type="caption">
+          <Text color="red600" type="caption">
             {helpText}
           </Text>
         </div>
