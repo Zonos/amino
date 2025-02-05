@@ -35,7 +35,7 @@ export const shadow = {
   'shadow-raised-error-focus':
     '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px var(--amino-red-600), 0px 0px 0px 4px rgba(221, 49, 75, 0.12)',
   'shadow-button-disabled':
-    '0px 1px 3px 0px rgba(16, 17, 22, 0.2), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset',
+    '0px 0px 0px 1px var(--amino-gray-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(0, 0, 0, 0.24), 0px 4px 4px -2px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
   'shadow-input-base':
     '0px 0px 0px 1px var(--amino-gray-200), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',
   'shadow-input-focus':

@@ -180,8 +180,12 @@
     0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
     0px 0px 0px 1px var(--amino-red-600),
     0px 0px 0px 4px rgba(221, 49, 75, 0.12);
-  --amino-shadow-button-disabled: 0px 1px 3px 0px rgba(16, 17, 22, 0.2),
-    0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset;
+  --amino-shadow-button-disabled: 0px 0px 0px 1px var(--amino-gray-500),
+    0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset,
+    0px 0px 0px 4px rgba(0, 0, 0, 0),
+    0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset,
+    0px 2px 2px -1px rgba(0, 0, 0, 0.24), 0px 4px 4px -2px rgba(0, 0, 0, 0.12),
+    0px 0px 0px 4px rgba(0, 0, 0, 0);
   --amino-shadow-input-base: 0px 0px 0px 1px var(--amino-gray-200),
     0px 0px 0px 4px rgba(0, 0, 0, 0);
   --amino-shadow-input-focus: 0px 0px 0px 1px var(--amino-gray-300),
@@ -545,10 +549,12 @@
     0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08),
     0px 0px 0px 1px var(--amino-red-600),
     0px 0px 0px 4px rgba(246, 92, 109, 0.32);
-  --amino-shadow-button-disabled: 0px 0px 0px 1px #000,
-    0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-    0px 0px 0px 1px rgba(255, 255, 255, 0.08) inset,
-    0px 1px 3px 0px rgba(255, 255, 255, 0);
+  --amino-shadow-button-disabled: 0px 0px 0px 1px var(--amino-gray-500),
+    0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset,
+    0px 0px 0px 4px rgba(0, 0, 0, 0),
+    0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset,
+    0px 2px 2px -1px rgba(0, 0, 0, 0.24), 0px 4px 4px -2px rgba(0, 0, 0, 0.12),
+    0px 0px 0px 4px rgba(0, 0, 0, 0);
   --amino-shadow-input-base: 0px 0px 0px 1px var(--amino-gray-200),
     0px 0px 0px 4px rgba(220, 225, 255, 0);
   --amino-shadow-input-focus: 0px 0px 0px 1px var(--amino-gray-300),

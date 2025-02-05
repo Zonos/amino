@@ -130,7 +130,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
 
     &[disabled] {
-      background: theme.$amino-gray-400;
+      background: theme.$amino-gray-500;
       box-shadow: theme.$amino-shadow-button-disabled;
     }
 
@@ -181,7 +181,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
 
     &[disabled] {
-      background: theme.$amino-gray-400;
+      background: theme.$amino-gray-500;
       box-shadow: theme.$amino-shadow-button-disabled;
     }
 
@@ -299,7 +299,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       }
     }
     &[disabled] {
-      background: theme.$amino-gray-400;
+      background: theme.$amino-gray-500;
       box-shadow: theme.$amino-shadow-button-disabled;
     }
     & .spinnerWrapper {
@@ -348,7 +348,7 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
       }
     }
     &[disabled] {
-      background: theme.$amino-gray-400;
+      background: theme.$amino-gray-500;
       box-shadow: theme.$amino-shadow-button-disabled;
     }
     & .spinnerWrapper {
