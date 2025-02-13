@@ -31,9 +31,12 @@
   }
 }
 
-.aminoInput {
-  & input {
-    padding-right: theme.$amino-space-40;
-    appearance: textfield;
+.input {
+  padding-right: theme.$amino-space-40;
+  appearance: textfield;
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
   }
 }

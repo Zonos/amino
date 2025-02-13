@@ -4,14 +4,14 @@ import { useMergeRefs } from '@floating-ui/react';
 import clsx from 'clsx';
 
 import {
-  FloatLabelInput,
-  type FloatLabelInputProps,
-} from 'src/components/input/input-type/_FloatLabelInput';
-import { CalendarIcon } from 'src/icons/CalendarIcon';
+  InputBase,
+  type InputBaseProps,
+} from 'src/components/input/input-simple/input-type/_InputBase';
+import { ClockIcon } from 'src/icons/ClockIcon';
 
-import styles from './_DateInput.module.scss';
+import styles from './_TimeInput.module.scss';
 
-export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
+export const TimeInput = forwardRef<HTMLInputElement, InputBaseProps>(
   (
     {
       autoFocus,
@@ -41,7 +41,7 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
 
     return (
       <div className={clsx(styles.styledWrapper, className)}>
-        <FloatLabelInput
+        <InputBase
           ref={mergedRef}
           aria-label={label}
           autoFocus={autoFocus}
@@ -69,13 +69,13 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
                   }}
                   type="button"
                 >
-                  <CalendarIcon size={24} />
+                  <ClockIcon size={24} />
                 </button>
               </div>
             )
           }
           tabIndex={tabIndex}
-          type="date"
+          type="time"
           value={value}
           {...props}
         />

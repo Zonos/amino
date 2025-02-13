@@ -32,15 +32,12 @@
   }
 }
 
-.aminoInput {
-  & input {
-    padding-right: theme.$amino-space-40;
-    appearance: textfield;
-  }
+.input {
+  padding-right: theme.$amino-space-40;
+  appearance: textfield;
 
-  &:not(:focus-within):not(:global(.has-content)) {
-    input::-webkit-datetime-edit-fields-wrapper {
-      opacity: 0;
-    }
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
   }
 }

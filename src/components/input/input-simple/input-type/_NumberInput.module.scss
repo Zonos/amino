@@ -1,24 +1,22 @@
 @use 'theme';
 
+$height: var(--amino-number-input-height);
+
 .styledWrapper {
   position: relative;
   width: 100%;
-  input[type='datetime-local']::-webkit-calendar-picker-indicator,
-  input[type='date']::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-  }
 }
 
 .styledActionWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: $height;
 }
 
 .styledButtonAction {
-  padding: 6px;
-  border-radius: 50%;
+  padding: theme.$amino-space-0 theme.$amino-space-4;
+  border-radius: theme.$amino-radius-4;
   transition: theme.$amino-transition;
 
   &:hover {
@@ -36,11 +34,9 @@
   & input {
     padding-right: theme.$amino-space-40;
     appearance: textfield;
-  }
-
-  &:not(:focus-within):not(:global(.has-content)) {
-    input::-webkit-datetime-edit-fields-wrapper {
-      opacity: 0;
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+      -webkit-appearance: none;
     }
   }
 }

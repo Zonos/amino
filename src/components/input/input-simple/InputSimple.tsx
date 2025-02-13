@@ -10,17 +10,14 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
-import { DateInput } from 'src/components/input/input-type/_DateInput';
-import {
-  FloatLabelInput,
-  type FloatLabelInputProps,
-} from 'src/components/input/input-type/_FloatLabelInput';
-import { NumberInput } from 'src/components/input/input-type/_NumberInput';
-import { PasswordInput } from 'src/components/input/input-type/_PasswordInput';
-import { TimeInput } from 'src/components/input/input-type/_TimeInput';
+import { DateInput } from 'src/components/input/input-simple/input-type/_DateInput';
+import { NumberInput } from 'src/components/input/input-simple/input-type/_NumberInput';
+import { PasswordInput } from 'src/components/input/input-simple/input-type/_PasswordInput';
+import { TimeInput } from 'src/components/input/input-simple/input-type/_TimeInput';
 import { theme } from 'src/styles/constants/theme';
 
-import styles from './Input.module.scss';
+import { InputBase, type InputBaseProps } from './input-type/_InputBase';
+import styles from './InputSimple.module.scss';
 
 type InputType = {
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
@@ -34,13 +31,13 @@ type InputType = {
   onChange: ChangeEventHandler<HTMLInputElement>;
   /** A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
   width?: number;
-} & Omit<FloatLabelInputProps, 'onChange'> &
+} & Omit<InputBaseProps, 'onChange'> &
   HelpTextProps;
 
 export type InputProps = InputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
 
-export const Input = ({
+export const InputSimple = ({
   autoFocus,
   className,
   disabled,
@@ -57,7 +54,7 @@ export const Input = ({
   prefix,
   readOnly,
   required,
-  size = 'xl',
+  size = 'md',
   style,
   suffix,
   tabIndex,
@@ -174,7 +171,7 @@ export const Input = ({
         );
       default:
         return (
-          <FloatLabelInput
+          <InputBase
             ref={inputRef}
             autoFocus={autoFocus}
             className={className}
@@ -230,7 +227,7 @@ export const Input = ({
         ...style,
       }}
     >
-      <div className={clsx(!noBorder && styles.fields)}>{renderInput()}</div>
+      {renderInput()}
 
       <HelpText error={error} helpText={helpText} />
     </div>
