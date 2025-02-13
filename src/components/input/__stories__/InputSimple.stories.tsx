@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Input, type InputProps } from 'src/components/input/Input';
+import {
+  type InputProps,
+  InputSimple,
+} from 'src/components/input/input-simple/InputSimple';
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
@@ -30,7 +33,7 @@ const InputMeta: Meta = {
       options: ['No suffix', 'With text', 'With icon'],
     },
   },
-  component: Input,
+  component: InputSimple,
   parameters: {
     design: {
       type: 'figma',
@@ -45,27 +48,30 @@ const Template: StoryFn<InputProps> = ({ value: _value, ...props }) => {
   const [value, setValue] = useState(_value);
   return (
     <VStack>
-      <Input
+      <InputSimple
         {...props}
         onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
         value={value}
       />
-      <Input
+      <InputSimple
         {...props}
         onChange={e => setValue(e.target.value)}
         placeholder="Placeholder text"
         value=""
       />
-      <Input
+      <InputSimple
         {...props}
         disabled
         onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
         value={value}
       />
-      <Input
+      <InputSimple
         {...props}
         label={undefined}
         onChange={e => setValue(e.target.value)}
+        placeholder="Placeholder text"
         value={value}
       />
       <Text type="bold-subheader">
@@ -101,14 +107,14 @@ export const OnSameLine: StoryFn<InputProps> = ({ size }) => {
 
   return (
     <HStack>
-      <Input
+      <InputSimple
         label="Text"
         onChange={e => setValue(e.target.value)}
         size={size}
         type="text"
         value={value}
       />
-      <Input
+      <InputSimple
         label="Number"
         onChange={e => setNumber(e.target.valueAsNumber)}
         size={size}
@@ -211,7 +217,7 @@ export const DynamicErrorAndHelpText: StoryFn<InputProps> = ({
   const hasError = value?.length === 0;
   return (
     <VStack>
-      <Input
+      <InputSimple
         {...props}
         error={hasError}
         helpText={hasError ? 'This field is required' : 'Enter some stuff'}
@@ -230,7 +236,7 @@ export const Search: StoryFn<InputProps> = ({ value: _value, ...props }) => {
 
   return (
     <VStack>
-      <Input
+      <InputSimple
         {...props}
         onChange={e => setValue(e.target.value)}
         placeholder="Search..."

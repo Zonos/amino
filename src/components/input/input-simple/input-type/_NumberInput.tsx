@@ -4,9 +4,9 @@ import { useMergeRefs } from '@floating-ui/react';
 import clsx from 'clsx';
 
 import {
-  FloatLabelInput,
-  type FloatLabelInputProps,
-} from 'src/components/input/input-type/_FloatLabelInput';
+  InputBase,
+  type InputBaseProps,
+} from 'src/components/input/input-simple/input-type/_InputBase';
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';
 import type { Size } from 'src/types/Size';
@@ -27,7 +27,7 @@ const getIconSize = (size: Size) => {
   }
 };
 
-export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
+export const NumberInput = forwardRef<HTMLInputElement, InputBaseProps>(
   ({ className, label, size = 'xl', suffix, ...props }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const mergedRef = useMergeRefs([ref, inputRef]);
@@ -39,7 +39,7 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
         }}
       >
-        <FloatLabelInput
+        <InputBase
           {...props}
           ref={mergedRef}
           aria-label={label}

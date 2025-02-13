@@ -47,6 +47,7 @@ import './components/filter/useFilterWrapper';
 import './components/flex/Flex';
 import './components/glow/GlowWrapper';
 import './components/help-text/HelpText';
+import './components/input/input-simple/InputSimple';
 import './components/input/Input';
 import './components/input/MultiInput';
 import './components/layout/Layout';

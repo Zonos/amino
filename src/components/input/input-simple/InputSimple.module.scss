@@ -1,0 +1,12 @@
+@use 'theme';
+
+$width: var(--amino-input-width);
+
+.aminoInputWrapper {
+  position: relative;
+  width: $width;
+
+  &:global(.disabled) {
+    opacity: theme.$amino-opacity-disabled;
+  }
+}
