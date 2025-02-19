@@ -123,7 +123,7 @@ export type SimpleTableProps<T extends object> = BaseProps & {
    */
   loadingSkeletonHeight?: number;
   /**
-   * Maximum height of the table.
+   * Maximum height of the table. Required for the sticky header to work correctly.
    * @default '100%
    */
   maxHeight?: string;
