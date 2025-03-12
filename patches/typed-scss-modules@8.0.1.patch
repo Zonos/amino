@@ -1,0 +1,67 @@
+diff --git a/dist/lib/sass/file-to-class-names.js b/dist/lib/sass/file-to-class-names.js
+index 6c728e51554c1217e8e36c7133657210427fda94..23fc66ad7d009b3b5d5da9a901491ab12d8fe156 100644
+--- a/dist/lib/sass/file-to-class-names.js
++++ b/dist/lib/sass/file-to-class-names.js
+@@ -30,7 +30,7 @@ const NAME_FORMATS_WITH_TRANSFORMER = Object.keys(transformersMap);
+ exports.NAME_FORMATS = [...NAME_FORMATS_WITH_TRANSFORMER, "all"];
+ exports.nameFormatDefault = "camel";
+ const fileToClassNames = (file, { additionalData, includePaths = [], nameFormat: rawNameFormat, implementation, aliases, aliasPrefixes, importer, } = {}) => __awaiter(void 0, void 0, void 0, function* () {
+-    const { renderSync } = (0, implementations_1.getImplementation)(implementation);
++    const { compile } = (0, implementations_1.getImplementation)(implementation);
+     const nameFormat = (typeof rawNameFormat === "string" ? [rawNameFormat] : rawNameFormat);
+     const nameFormats = nameFormat
+         ? nameFormat.includes("all")
+@@ -38,11 +38,10 @@ const fileToClassNames = (file, { additionalData, includePaths = [], nameFormat:
+             : nameFormat
+         : [exports.nameFormatDefault];
+     const data = fs_1.default.readFileSync(file).toString();
+-    const result = renderSync({
+-        file,
++    const result = compile(file, {
+         data: additionalData ? `${additionalData}\n${data}` : data,
+-        includePaths,
+-        importer: (0, importer_1.customImporters)({ aliases, aliasPrefixes, importer }),
++        loadPaths: includePaths,
++        importers: (0, importer_1.customImporters)({ aliases, aliasPrefixes, importer }),
+     });
+     const classNames = yield (0, source_to_class_names_1.sourceToClassNames)(result.css, file);
+     const transformers = nameFormats.map((item) => transformersMap[item]);
+diff --git a/dist/lib/sass/importer.js b/dist/lib/sass/importer.js
+index 86e14a793221e07ef78873b9cabe20ab17771ce3..ad116c182efd319527d3d072b879015f55cf304d 100644
+--- a/dist/lib/sass/importer.js
++++ b/dist/lib/sass/importer.js
+@@ -1,21 +1,18 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.customImporters = exports.aliasImporter = void 0;
++const { pathToFileURL } = require('url');
+ /**
+  * Construct a SASS importer to create aliases for imports.
+  */
+ const aliasImporter = ({ aliases, aliasPrefixes }) => (url) => {
+     if (url in aliases) {
+         const file = aliases[url];
+-        return {
+-            file,
+-        };
++        return new URL(file, pathToFileURL('node_modules'));
+     }
+     const prefixMatch = Object.keys(aliasPrefixes).find((prefix) => url.startsWith(prefix));
+     if (prefixMatch) {
+-        return {
+-            file: aliasPrefixes[prefixMatch] + url.substr(prefixMatch.length),
+-        };
++        return new URL(aliasPrefixes[prefixMatch] + url.substr(prefixMatch.length), pathToFileURL('node_modules'));
+     }
+     return null;
+ };
+@@ -27,7 +24,8 @@ exports.aliasImporter = aliasImporter;
+  *  - Given custom SASS importer(s), append to the list of importers.
+  */
+ const customImporters = ({ aliases = {}, aliasPrefixes = {}, importer, }) => {
+-    const importers = [(0, exports.aliasImporter)({ aliases, aliasPrefixes })];
++    const findFileUrl = (0, exports.aliasImporter)({ aliases, aliasPrefixes })
++    const importers = [{ findFileUrl }]
+     if (typeof importer === "function") {
+         importers.push(importer);
+     }
