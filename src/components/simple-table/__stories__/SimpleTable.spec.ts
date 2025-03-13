@@ -263,7 +263,7 @@ test.describe('SimpleTable', () => {
 
       // Scroll the page a bit
       await framePage.evaluate(() => {
-        document.querySelector('#storybook-root > div')?.scrollBy(0, 50);
+        document.querySelector('#storybook-root > div > div')?.scrollBy(0, 50);
       });
 
       // **Check if the element is covered**
