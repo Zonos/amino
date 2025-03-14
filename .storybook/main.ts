@@ -74,6 +74,9 @@ const storybookConfig: StorybookConfig = {
   },
   webpackFinal: config => ({
     ...config,
+    infrastructureLogging: {
+      level: 'warn',
+    },
     resolve: {
       ...config.resolve,
       alias: {

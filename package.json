@@ -53,6 +53,7 @@
     "test:prod": "vitest run",
     "test:pw": "playwright test",
     "test:sb": "test-storybook",
+    "test:all": "pnpm test:prod && pnpm test:pw && pnpm test:sb",
     "test": "vitest",
     "tsc": "tsc --noEmit",
     "version:major": "pnpm build && pnpm version major -m 'Bump version %s' && pnpm push:tags",
