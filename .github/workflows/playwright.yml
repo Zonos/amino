@@ -36,6 +36,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
+      - name: Install browsers
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: pnpm playwright test
         env:
