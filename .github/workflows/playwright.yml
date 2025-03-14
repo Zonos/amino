@@ -2,9 +2,9 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [main, build/storybook-fixes]
+    branches: [build/storybook-fixes]
   pull_request:
-    branches: [main, build/storybook-fixes]
+    branches: [main]
 
 jobs:
   test_setup:
