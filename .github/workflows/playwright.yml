@@ -25,7 +25,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1
+      image: mcr.microsoft.com/playwright:v1.51.0
       options: --user 1001
     steps:
       - uses: actions/checkout@v4
@@ -36,8 +36,6 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install
-      - name: Install browsers
-        run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: pnpm playwright test
         env:
