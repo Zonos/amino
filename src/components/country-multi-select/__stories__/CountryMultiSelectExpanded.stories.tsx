@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import { Badge } from 'src/components/badge/Badge';
 import {
@@ -11,6 +10,7 @@ import {
 import type { CountryMultiSelectExpandedOption } from 'src/components/country-multi-select/CountryMultiSelectExpandedOption';
 import { Toggle } from 'src/components/toggle/Toggle';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { getCountryUrls } from 'src/utils/getCountryUrls';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
 const renderBadge = (label: string) => {
@@ -26,7 +26,7 @@ const renderBadge = (label: string) => {
 };
 
 const Template = (props: CountryMultiSelectExpandedProps) => {
-  const { dashboardUrl } = getCountryUrls();
+  const dashboardUrl = getCountryUrls();
   const countryOptions = useCountryOptions(dashboardUrl);
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
@@ -74,7 +74,7 @@ export default CountryMultiSelectMeta;
 export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
 
 export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
-  const { dashboardUrl } = getCountryUrls();
+  const dashboardUrl = getCountryUrls();
   const countryOptions = useCountryOptions(dashboardUrl);
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);

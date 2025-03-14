@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import { getCountryUrls } from 'story-utils/getCountryUrls';
 
 import {
   CountryMultiSelect,
   type CountryMultiSelectProps,
 } from 'src/components/select/CountryMultiSelect';
+import { getCountryUrls } from 'src/utils/getCountryUrls';
 import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 
@@ -39,7 +39,7 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
   props: CountryMultiSelectProps,
 ) => {
   const [value, setValue] = useState<string[]>([]);
-  const { dashboardUrl } = getCountryUrls();
+  const dashboardUrl = getCountryUrls();
   const countryOptions = useCountryOptions(dashboardUrl);
   const [typedValue, setTypedValue] = useState<RandomCountryCode[]>([]);
   const stronglyTypedCountries =
