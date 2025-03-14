@@ -1,18 +1,9 @@
-import react from '@vitejs/plugin-react';
 import path from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 process.env.TZ = 'America/Denver';
 
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        includePaths: [path.resolve(__dirname, './src/styles')],
-      },
-    },
-  },
-  plugins: [react()],
   resolve: {
     alias: {
       '.storybook': path.resolve(__dirname, './.storybook'),
@@ -27,9 +18,14 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
-    exclude: ['**/node_modules/**', '**/dist'],
+    exclude: [
+      '**/node_modules/**',
+      '**/__stories__/storyshots',
+      '**/storyshots.test.ts',
+      '**/dist',
+    ],
     globals: true,
-    include: ['**/*.test.ts', '**/*.test.tsx'],
+    include: ['**/*.test.ts'],
     setupFiles: ['dotenv/config', 'test-utils/setup.ts'],
     snapshotFormat: {
       escapeString: false,

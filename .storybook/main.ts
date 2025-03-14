@@ -1,4 +1,5 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/react-webpack5';
+import path from 'path';
 
 import { getStories } from './buildStories';
 
@@ -9,27 +10,80 @@ const storybookConfig: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-designs',
     'storybook-addon-tag-badges',
+    '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-styling-webpack',
+
+      options: {
+        rules: [
+          {
+            sideEffects: true,
+            test: /\.css|scss$/,
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: {
+                    localIdentName: 'Amino_[name]__[local]--[hash:base64:5]',
+                  },
+                },
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sassOptions: {
+                    // includes paths for scss imports so we just need to import the file name. Ex: @use 'theme';
+                    loadPaths: [`${process.cwd()}/src/styles`],
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+    },
+    '@storybook/addon-webpack5-compiler-swc',
   ],
-  core: {},
-  docs: {},
   framework: {
-    name: '@storybook/react-vite',
-    options: {},
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        useSWC: true,
+      },
+    },
   },
-  staticDirs: ['./public', '../public'],
   stories: getStories(),
+  swc: () => ({
+    jsc: {
+      transform: {
+        react: {
+          runtime: 'automatic',
+        },
+      },
+    },
+  }),
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      propFilter: prop =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+      shouldExtractLiteralValuesFromEnum: true,
+    },
   },
-  viteFinal: config => ({
+  webpackFinal: config => ({
     ...config,
-    server: {
-      ...config.server,
-      hmr: {
-        ...(typeof config.server?.hmr === 'object' ? config.server?.hmr : {}),
-        // Caddy reverse proxy supports websockets
-        clientPort: 443,
+    resolve: {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        '.storybook': path.resolve(__dirname, '.'),
+        // to test the bundled version in stories
+        dist: path.resolve(__dirname, '../dist'),
+        src: path.resolve(__dirname, '../src'),
+        'story-utils': path.resolve(__dirname, './utils'),
+        svgReact: path.resolve(__dirname, '../svgReact'),
       },
     },
   }),

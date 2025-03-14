@@ -93,8 +93,8 @@ test.describe('SimpleTable', () => {
       const row1 = framePage.locator('.with-hover tbody > tr').first();
       const row2 = framePage.locator('.no-hover tbody > tr').first();
 
-      await expect(row1).toHaveClass(/_withHover_.+/);
-      await expect(row2).not.toHaveClass(/_withHover_.+/);
+      await expect(row1).toHaveClass(/_withHover.+/);
+      await expect(row2).not.toHaveClass(/_withHover.+/);
     });
   });
 
