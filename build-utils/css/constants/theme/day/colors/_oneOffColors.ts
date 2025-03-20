@@ -4,4 +4,5 @@ export const oneOffColors = {
   'backdrop-color': '#000000',
   'raised-surface-color': 'var(--amino-gray-0)',
   'raised-color-secondary': 'var(--amino-gray-50)',
+  'pure-background-color': '#FFFFFF',
 } as const;

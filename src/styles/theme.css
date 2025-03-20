@@ -289,6 +289,7 @@
   --amino-backdrop-color: #000000;
   --amino-raised-surface-color: var(--amino-gray-0);
   --amino-raised-color-secondary: var(--amino-gray-50);
+  --amino-pure-background-color: #ffffff;
   --amino-button-primary-hover: linear-gradient(
     180deg,
     #446fee 0%,
@@ -618,6 +619,7 @@
   --amino-backdrop-color: #000000;
   --amino-raised-surface-color: #272a3599;
   --amino-raised-color-secondary: var(--amino-gray-0);
+  --amino-pure-background-color: #000000;
   --amino-button-primary-hover: linear-gradient(
     180deg,
     #446fee 0%,
