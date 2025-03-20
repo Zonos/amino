@@ -137,6 +137,7 @@ exports[`Theme content: 1`] = `
   "--amino-primary": "var(--amino-blue-500)",
   "--amino-primary-dark": "var(--amino-blue-800)",
   "--amino-primary-light": "var(--amino-blue-400)",
+  "--amino-pure-background-color": "#FFFFFF",
   "--amino-purple-100": "#FAE8FF",
   "--amino-purple-200": "#F4D4FF",
   "--amino-purple-300": "#E9B2FF",
