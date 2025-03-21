@@ -665,6 +665,9 @@ exports[`Case light theme 1`] = `
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   raisedColorSecondary: 'var(--amino-raised-color-secondary)',
+  /** @info #FFFFFF */
+  /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
+  pureBackgroundColor: 'var(--amino-pure-background-color)',
 
   /* BUTTON HOVER COLORS */
   /** @info linear-gradient(180deg, #446FEE 0%, #2E55E2 100%) */
