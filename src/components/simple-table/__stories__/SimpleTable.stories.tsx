@@ -204,6 +204,7 @@ export const Long: StoryObj = {
         },
       ])}
       keyExtractor={item => String(item.id)}
+      maxHeight="1000px"
     />
   ),
   tags: ['tested'],

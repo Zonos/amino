@@ -100,3 +100,4 @@ _private_*
 
 !.vscode
 .cursorignore
+*storybook.log

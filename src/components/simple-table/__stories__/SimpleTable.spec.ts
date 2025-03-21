@@ -93,8 +93,8 @@ test.describe('SimpleTable', () => {
       const row1 = framePage.locator('.with-hover tbody > tr').first();
       const row2 = framePage.locator('.no-hover tbody > tr').first();
 
-      await expect(row1).toHaveClass(/_withHover_.+/);
-      await expect(row2).not.toHaveClass(/_withHover_.+/);
+      await expect(row1).toHaveClass(/_withHover.+/);
+      await expect(row2).not.toHaveClass(/_withHover.+/);
     });
   });
 
@@ -263,7 +263,7 @@ test.describe('SimpleTable', () => {
 
       // Scroll the page a bit
       await framePage.evaluate(() => {
-        document.querySelector('#storybook-root > div')?.scrollBy(0, 50);
+        document.querySelector('#storybook-root > div > div')?.scrollBy(0, 50);
       });
 
       // **Check if the element is covered**

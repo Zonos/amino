@@ -2,7 +2,6 @@ import { useReducer } from 'react';
 
 import type { Meta } from '@storybook/react';
 import cloneDeep from 'lodash/cloneDeep';
-import { getCountryUrls } from 'story-utils/getCountryUrls';
 import { z } from 'zod';
 
 import { Button } from 'src/components/button/Button';
@@ -22,6 +21,7 @@ import { FilterText } from 'src/components/filter/filter-text/FilterText';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import type { SelectOption } from 'src/types/SelectOption';
+import { getCountryUrls } from 'src/utils/getCountryUrls';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 import { useStateUrl } from 'src/utils/hooks/useStateUrl';
 
@@ -107,7 +107,7 @@ export const Select = () => {
 };
 
 export const CountrySelect = () => {
-  const { dashboardUrl } = getCountryUrls();
+  const dashboardUrl = getCountryUrls();
   const countries = useCountryOptions(dashboardUrl);
   const [country, setCountry] = useStateUrl<string | null>({
     initialValue: null,
@@ -336,7 +336,7 @@ const reducerSelect = (
  * There was a problem where the reducer was causing infinite re-renders. This is due to the object value nature of reducers.
  */
 export const SelectWithReducer = () => {
-  const { dashboardUrl } = getCountryUrls();
+  const dashboardUrl = getCountryUrls();
   const countries = useCountryOptions(dashboardUrl);
 
   const [value, dispatch] = useReducer(reducerSelect, {

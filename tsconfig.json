@@ -65,7 +65,7 @@
     "prettier.config.mjs",
     "tsconfig.json",
     "test-utils",
-    "vite.config.mts",
+    "vitest.config.ts",
     "postcss.config.mts",
     "eslint.config.mjs",
     "babel.config.js"

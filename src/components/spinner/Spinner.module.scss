@@ -19,6 +19,8 @@ $width: var(--amino-spinner-width);
 
   stroke: theme.$amino-blue-600;
 
+  animation: rotate 2s linear infinite;
+
   circle.track {
     stroke: theme.$amino-gray-200;
   }
@@ -92,8 +94,6 @@ $width: var(--amino-spinner-width);
       stroke-dashoffset: -124;
     }
   }
-
-  animation: rotate 2s linear infinite;
 
   circle:not(.track) {
     stroke-linecap: round;
