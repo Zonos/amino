@@ -4,6 +4,7 @@ export declare const hasIcon: string;
 export declare const hasLabel: string;
 export declare const hasValue: string;
 export declare const iconWrapper: string;
+export declare const inputLabel: string;
 export declare const isDisabled: string;
 export declare const isFocused: string;
 export declare const lg: string;
