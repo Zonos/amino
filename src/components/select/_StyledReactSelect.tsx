@@ -457,7 +457,7 @@ export const StyledReactSelect = <
       className={clsx(styles.styledSelectWrapper, error && styles.hasError)}
       data-testid={testId}
     >
-      {label && <label className={styles.hasLabel}>{label}</label>}
+      {label && <label className={styles.inputLabel}>{label}</label>}
       <ReactSelect<Option, IsMulti, Group>
         ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}
