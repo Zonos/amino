@@ -46,17 +46,6 @@ export const BasicCheckbox: StoryObj<CheckboxProps> = {
     label: 'Input label',
     subtitle: 'Subtitle here',
   },
-  play: async ({ canvasElement }) => {
-    // https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
-    // https://storybook.js.org/docs/writing-tests/component-testing
-    // https://testing-library.com/docs/
-    // https://storybook.js.org/docs/writing-tests/test-runner#disabling-tests
-    const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole('checkbox'), { delay: 500 });
-    expect(canvas.getByRole('checkbox')).toBeChecked();
-    await userEvent.click(canvas.getByRole('checkbox'), { delay: 500 });
-    expect(canvas.getByRole('checkbox')).not.toBeChecked();
-  },
 };
 
 export const NoLabel: StoryObj<CheckboxProps> = {
@@ -122,4 +111,19 @@ export const CheckboxWithComplexSubtitle: StoryObj<CheckboxProps> = {
       </div>
     ),
   },
+};
+
+export const TestedCheckbox: StoryObj<CheckboxProps> = {
+  play: async ({ canvasElement }) => {
+    // https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
+    // https://storybook.js.org/docs/writing-tests/component-testing
+    // https://testing-library.com/docs/
+    // https://storybook.js.org/docs/writing-tests/test-runner#disabling-tests
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('checkbox'), { delay: 500 });
+    expect(canvas.getByRole('checkbox')).toBeChecked();
+    await userEvent.click(canvas.getByRole('checkbox'), { delay: 500 });
+    expect(canvas.getByRole('checkbox')).not.toBeChecked();
+  },
+  render: BasicCheckbox.render,
 };
