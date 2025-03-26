@@ -3,7 +3,6 @@ import * as github from '@actions/github';
 import type { PullRequestEvent } from '@octokit/webhooks-types';
 
 const engineerPool = [
-  'evad1n',
   'ckgardner',
   'goodpickle',
   'Thienhuynh95',
