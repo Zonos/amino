@@ -39,6 +39,7 @@ export type UnitedStatesCode =
   | 'OK'
   | 'OR'
   | 'PA'
+  | 'PR'
   | 'RI'
   | 'SC'
   | 'SD'
@@ -91,6 +92,7 @@ type UnitedStatesName =
   | 'Oklahoma'
   | 'Oregon'
   | 'Pennsylvania'
+  | 'Puerto Rico'
   | 'Rhode Island'
   | 'South Carolina'
   | 'South Dakota'
@@ -104,7 +106,12 @@ type UnitedStatesName =
   | 'Wisconsin'
   | 'Wyoming';
 
-type UnitedStatesRegions = 'West' | 'Midwest' | 'South' | 'Northeast';
+type UnitedStatesRegions =
+  | 'Midwest'
+  | 'Northeast'
+  | 'South'
+  | 'Territories'
+  | 'West';
 
 export type UnitedState = {
   code: UnitedStatesCode;

@@ -48,6 +48,7 @@ import { WashingtonIcon } from 'src/icons/custom/us-states/WashingtonIcon';
 import { WestVirginiaIcon } from 'src/icons/custom/us-states/WestVirginiaIcon';
 import { WisconsinIcon } from 'src/icons/custom/us-states/WisconsinIcon';
 import { WyomingIcon } from 'src/icons/custom/us-states/WyomingIcon';
+import { PuertoRicoIcon } from 'src/icons/custom/us-states/WyomingIcon copy';
 import type { UnitedState } from 'src/types/UnitedStates';
 
 export const unitedStates: UnitedState[] = [
@@ -317,6 +318,13 @@ export const unitedStates: UnitedState[] = [
     icon: <PennsylvaniaIcon />,
     name: 'Pennsylvania',
     region: 'Northeast',
+  },
+  {
+    code: 'PR',
+    highlighted: false,
+    icon: <PuertoRicoIcon />,
+    name: 'Puerto Rico',
+    region: 'Territories',
   },
   {
     code: 'RI',
