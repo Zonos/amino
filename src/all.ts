@@ -273,7 +273,7 @@ import './icons/custom/us-states/VirginiaIcon';
 import './icons/custom/us-states/WashingtonIcon';
 import './icons/custom/us-states/WestVirginiaIcon';
 import './icons/custom/us-states/WisconsinIcon';
-import './icons/custom/us-states/WyomingIcon copy';
+import './icons/custom/us-states/PuertoRicoIcon';
 import './icons/custom/us-states/WyomingIcon';
 import './icons/custom/ZonosIcon';
 import './icons/custom/ZonosLogoIcon';
