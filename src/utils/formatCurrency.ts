@@ -20,7 +20,7 @@ export const formatCurrency = ({
   // Pass undefined to use the user's locale (can be seen using navigator.language)
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
   const formattedCurrency = new Intl.NumberFormat(
-    navigator.language || 'en-US',
+    navigator?.language || 'en-US',
     {
       currency: code,
       style: 'currency',
