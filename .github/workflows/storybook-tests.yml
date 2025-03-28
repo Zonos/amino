@@ -1,0 +1,22 @@
+name: Storybook Tests
+
+on: deployment_status
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: pnpm
+      - name: Install Playwright
+        run: pnpm dlx playwright install --with-deps
+      - name: Run Storybook tests
+        run: pnpm test:sb
+        env:
+          TARGET_URL: '${{ github.event.deployment_status.target_url }}'
