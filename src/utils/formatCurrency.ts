@@ -19,32 +19,19 @@ export const formatCurrency = ({
 }: FormatCurrencyParams): string => {
   // Pass undefined to use the user's locale (can be seen using navigator.language)
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
-  try {
-    const formattedCurrency = new Intl.NumberFormat(
-      navigator?.language || 'en-US',
-      {
-        currency: code,
-        style: 'currency',
-        ...options,
-      },
-    )
-      .format(value)
-      // Remove currency symbols because that's how we want to show it. There is no option to do this when using `style: 'currency'`
-      .replace(/[^0-9.\-,]+/g, '');
+  const formattedCurrency = new Intl.NumberFormat(
+    navigator.language.replace(/@.+/, ''),
+    {
+      currency: code,
+      style: 'currency',
+      ...options,
+    },
+  )
+    .format(value)
+    // Remove currency symbols because that's how we want to show it. There is no option to do this when using `style: 'currency'`
+    .replace(/[^0-9.\-,]+/g, '');
 
-    return formattedCurrency;
-  } catch {
-    throw new Error(
-      JSON.stringify([
-        navigator?.language || 'en-US',
-        {
-          currency: code,
-          style: 'currency',
-          ...options,
-        },
-      ]),
-    );
-  }
+  return formattedCurrency;
 };
 
 type DualCurrencyParams = {
