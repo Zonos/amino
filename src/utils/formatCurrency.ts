@@ -33,9 +33,17 @@ export const formatCurrency = ({
       .replace(/[^0-9.\-,]+/g, '');
 
     return formattedCurrency;
-  } catch (error) {
-    console.error(error);
-    return '0.00';
+  } catch {
+    throw new Error(
+      JSON.stringify([
+        navigator?.language || 'en-US',
+        {
+          currency: code,
+          style: 'currency',
+          ...options,
+        },
+      ]),
+    );
   }
 };
 
