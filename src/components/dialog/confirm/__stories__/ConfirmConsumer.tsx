@@ -31,7 +31,7 @@ export const ConfirmConsumer = () => {
       >
         Trigger default confirmation
       </Button>
-      <div className="default-confirmation">
+      <div className="default-confirmation" data-testid="default-confirmation">
         <b>Default confirmation:</b>{' '}
         {defaultConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>
@@ -41,7 +41,7 @@ export const ConfirmConsumer = () => {
         onClick={() =>
           confirm({
             confirmText: 'Do action',
-            dismissText: "Don't do action (for real!)",
+            dismissText: "Don't do action",
             intent: 'danger',
             label: 'Are you sure?',
             onConfirm: setDangerConfirmOk,
@@ -53,7 +53,7 @@ export const ConfirmConsumer = () => {
       >
         Trigger danger confirmation
       </Button>
-      <div className="warning-confirmation">
+      <div className="danger-confirmation" data-testid="danger-confirmation">
         <b>Danger confirmation:</b>{' '}
         {dangerConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>
@@ -74,7 +74,7 @@ export const ConfirmConsumer = () => {
       >
         Trigger warning confirmation
       </Button>
-      <div>
+      <div data-testid="warning-confirmation">
         <b>Warning confirmation:</b>{' '}
         {warningConfirmOk ? 'confirmed' : 'not confirmed'}
       </div>

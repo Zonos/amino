@@ -20,6 +20,12 @@ export type TableRowCollapseProps = BaseProps & {
   collapsed?: boolean;
   onToggleCollapse: MouseEventHandler<HTMLTableRowElement>;
   rowContent: ReactNode;
+  /**
+   * @param rowKey
+   * @default undefined
+   * @note Only used for testing
+   */
+  rowKey?: string;
 };
 
 export const TableRowCollapse = ({
@@ -28,6 +34,7 @@ export const TableRowCollapse = ({
   collapsed = false,
   onToggleCollapse,
   rowContent,
+  rowKey,
   style,
 }: TableRowCollapseProps) => {
   const collapsible = !!children;
@@ -41,6 +48,7 @@ export const TableRowCollapse = ({
           collapsible && styles.collapsible,
         )}
         onClick={e => collapsible && onToggleCollapse(e)}
+        rowTestId={`amino--row-${rowKey}`}
         withHover={collapsible}
       >
         {rowContent}
@@ -55,7 +63,7 @@ export const TableRowCollapse = ({
         </TableCell>
       </TableRow>
       {collapsible && (
-        <TableRow>
+        <TableRow rowTestId={`amino--collapse-${rowKey}`}>
           <TableCell className={styles.collapsibleCell} colSpan={100}>
             <Collapse
               className={styles.styledCollapse}

@@ -133,6 +133,9 @@ devDependencies:
   '@storybook/theming':
     specifier: ^8.6.4
     version: 8.6.4(storybook@8.6.4)
+  '@storybook/types':
+    specifier: ^8.6.11
+    version: 8.6.11(storybook@8.6.4)
   '@testing-library/react':
     specifier: ^15.0.2
     version: 15.0.7(@types/react@18.2.15)(react-dom@18.3.1)(react@18.3.1)
@@ -3732,6 +3735,14 @@ packages:
 
   /@storybook/theming@8.6.4(storybook@8.6.4):
     resolution: {integrity: sha512-g9Ns4uenC9oAWETaJ/tEKEIPMdS+CqjNWZz5Wbw1bLNhXwADZgKrVqawzZi64+bYYtQ+i8VCTjPoFa6s2eHiDQ==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+    dependencies:
+      storybook: 8.6.4(prettier@3.4.2)
+    dev: true
+
+  /@storybook/types@8.6.11(storybook@8.6.4):
+    resolution: {integrity: sha512-Rg8n6cATtZEZtJxxRhMArpbLKoYOHT/eAZTQH5Il3k4JQUUKEyUlTA/3qVnbU3RTGpaLgpiwMDzc9lOd/fdKDQ==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:

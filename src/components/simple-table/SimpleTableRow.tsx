@@ -151,6 +151,7 @@ export const SimpleTableRow = <T extends object>({
           {selectable?.renderCustomRowCheckbox?.(item, index) || (
             <Checkbox
               checked={selectable?.isRowChecked?.(item, index) || false}
+              data-testid={`amino--row-checkbox-${rowKey}`}
               disabled={
                 selectable?.isRowCheckboxDisabled?.(item, index) || false
               }
@@ -190,6 +191,7 @@ export const SimpleTableRow = <T extends object>({
           onRowClick?.(item);
         }}
         rowContent={renderRowContent()}
+        rowKey={rowKey}
       >
         {rowCollapseContent}
       </TableRowCollapse>
@@ -209,6 +211,7 @@ export const SimpleTableRow = <T extends object>({
         !noHoverBackground && styles.withHover,
         bordered && styles.bordered,
       )}
+      data-testid={`amino--row-${rowKey}`}
       onClick={e => {
         if (
           selectable?.anySelected ||
