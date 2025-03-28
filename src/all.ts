@@ -262,6 +262,7 @@ import './icons/custom/us-states/OhioIcon';
 import './icons/custom/us-states/OklahomaIcon';
 import './icons/custom/us-states/OregonIcon';
 import './icons/custom/us-states/PennsylvaniaIcon';
+import './icons/custom/us-states/PuertoRicoIcon';
 import './icons/custom/us-states/RhodeIslandIcon';
 import './icons/custom/us-states/SouthCarolinaIcon';
 import './icons/custom/us-states/SouthDakotaIcon';

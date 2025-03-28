@@ -120,6 +120,7 @@ export const FilterSelect = <
   return renderWrapper(
     <Select
       isClearable={false}
+      isSearchable
       onChange={o => setEditingValue(o?.value || null)}
       onKeyDown={handleKeyDown}
       onMenuClose={() => setMenuOpen(false)}

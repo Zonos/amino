@@ -19,11 +19,10 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
   states,
   style,
 }: RichCardStateSelectProps<T>) => {
-  const regions = Array.from(new Set(states.map(state => state.region)));
-
-  const regionOrder = ['West', 'Midwest', 'South', 'Northeast'];
-
-  regions.sort((a, b) => regionOrder.indexOf(a) - regionOrder.indexOf(b));
+  const regionOrder = ['West', 'Midwest', 'South', 'Northeast', 'Territories'];
+  const regions = regionOrder.filter(region =>
+    states.some(state => state.region === region),
+  );
 
   return (
     <VStack className={className} spacing={24} style={style}>

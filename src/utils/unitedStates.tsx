@@ -36,6 +36,7 @@ import { OhioIcon } from 'src/icons/custom/us-states/OhioIcon';
 import { OklahomaIcon } from 'src/icons/custom/us-states/OklahomaIcon';
 import { OregonIcon } from 'src/icons/custom/us-states/OregonIcon';
 import { PennsylvaniaIcon } from 'src/icons/custom/us-states/PennsylvaniaIcon';
+import { PuertoRicoIcon } from 'src/icons/custom/us-states/PuertoRicoIcon';
 import { RhodeIslandIcon } from 'src/icons/custom/us-states/RhodeIslandIcon';
 import { SouthCarolinaIcon } from 'src/icons/custom/us-states/SouthCarolinaIcon';
 import { SouthDakotaIcon } from 'src/icons/custom/us-states/SouthDakotaIcon';
@@ -317,6 +318,13 @@ export const unitedStates: UnitedState[] = [
     icon: <PennsylvaniaIcon />,
     name: 'Pennsylvania',
     region: 'Northeast',
+  },
+  {
+    code: 'PR',
+    highlighted: false,
+    icon: <PuertoRicoIcon />,
+    name: 'Puerto Rico',
+    region: 'Territories',
   },
   {
     code: 'RI',

@@ -68,12 +68,11 @@ const Template: StoryFn<RichCardStateSelectProps> = ({
   );
 };
 
-const usStates = [...unitedStates];
-const modifiedState = usStates.find(state => state.code === 'CA');
+const modifiedState = unitedStates.find(state => state.code === 'CA');
 if (modifiedState) {
   modifiedState.highlighted = true;
 }
 
 export const BasicRichCardStateSelect = Template.bind({});
-BasicRichCardStateSelect.args = { states: usStates };
+BasicRichCardStateSelect.args = { states: unitedStates };
 BasicRichCardStateSelect.parameters = {};
