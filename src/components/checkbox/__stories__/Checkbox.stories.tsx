@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 
 import { Checkbox, type CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Flex } from 'src/components/flex/Flex';
@@ -110,4 +111,19 @@ export const CheckboxWithComplexSubtitle: StoryObj<CheckboxProps> = {
       </div>
     ),
   },
+};
+
+export const TestedCheckbox: StoryObj<CheckboxProps> = {
+  play: async ({ canvasElement }) => {
+    // https://storybook.js.org/docs/writing-stories/play-function#working-with-the-canvas
+    // https://storybook.js.org/docs/writing-tests/component-testing
+    // https://testing-library.com/docs/
+    // https://storybook.js.org/docs/writing-tests/test-runner
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('checkbox'), { delay: 500 });
+    expect(canvas.getByRole('checkbox')).toBeChecked();
+    await userEvent.click(canvas.getByRole('checkbox'), { delay: 500 });
+    expect(canvas.getByRole('checkbox')).not.toBeChecked();
+  },
+  render: BasicCheckbox.render,
 };

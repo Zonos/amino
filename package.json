@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "5.5.24",
+  "version": "5.5.25",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -105,6 +105,7 @@
     "@storybook/test": "^8.6.4",
     "@storybook/test-runner": "^0.22.0",
     "@storybook/theming": "^8.6.4",
+    "@storybook/types": "^8.6.11",
     "@testing-library/react": "^15.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
     "@types/d3-geo": "^3.0.3",

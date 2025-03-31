@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, fn, userEvent, within } from '@storybook/test';
 
 import { Button } from 'src/components/button/Button';
 import { MenuButton } from 'src/components/button/MenuButton';
@@ -25,6 +26,7 @@ import styles from './SimpleTable.stories.module.scss';
 
 const meta: Meta = {
   component: SimpleTable,
+  tags: ['tested'],
 };
 
 export default meta;
@@ -148,30 +150,66 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
 ];
 
 export const Basic: StoryObj = {
+  play: async ({ canvasElement }) => {
+    const withHoverTable = canvasElement.querySelector('.with-hover');
+    const noHoverTable = canvasElement.querySelector('.no-hover');
+    const row1 = withHoverTable?.querySelector('tbody > tr');
+    const row2 = noHoverTable?.querySelector('tbody > tr');
+    if (!row1 || !row2) {
+      throw new Error('Row not found');
+    }
+    await userEvent.hover(row1);
+    expect(row1).toHaveClass(/withHover.+/);
+    await userEvent.hover(row2);
+    expect(row2).not.toHaveClass(/withHover.+/);
+  },
   render: () => (
     <>
-      <Text type="header">With hover</Text>
-      <SimpleTable
-        className="with-hover"
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-      />
+      <div className="with-hover">
+        <Text type="header">With hover</Text>
+        <SimpleTable
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+        />
+      </div>
       <Divider />
-      <Text type="header">Without hover</Text>
-      <SimpleTable
-        className="no-hover"
-        headers={tableHeaders}
-        items={items}
-        keyExtractor={item => String(item.id)}
-        noHoverBackground
-      />
+      <div className="no-hover">
+        <Text type="header">Without hover</Text>
+        <SimpleTable
+          headers={tableHeaders}
+          items={items}
+          keyExtractor={item => String(item.id)}
+          noHoverBackground
+        />
+      </div>
     </>
   ),
-  tags: ['tested'],
 };
 
 export const Long: StoryObj = {
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('sticky header z-index', () => {
+      const row1 = canvas.getByTestId('amino--row-1');
+      const cell = row1.querySelector('td:nth-child(4) > div > span');
+      document.querySelector('#storybook-root > div > div')?.scrollBy(0, 50);
+
+      const isCovered = (element: Element | null) => {
+        if (!element) return true; // If the element doesn't exist, consider it covered
+
+        const rect = element.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        // Get the topmost element at the center of the target element
+        const topElement = document.elementFromPoint(x, y);
+        return topElement !== element && !element.contains(topElement);
+      };
+
+      expect(isCovered(cell)).toBe(true);
+    });
+  },
   render: () => (
     <SimpleTable
       headers={tableHeaders}
@@ -207,10 +245,57 @@ export const Long: StoryObj = {
       maxHeight="1000px"
     />
   ),
-  tags: ['tested'],
 };
 
 export const Selectable: StoryObj<SimpleTableProps<object>> = {
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    global.alert = fn();
+    await step('Check first box', async () => {
+      const checkbox = canvas.getByTestId('amino--row-checkbox-1');
+      await userEvent.click(checkbox);
+      expect(checkbox.querySelector('input')).toBeChecked();
+    });
+    await step('Check another box', async () => {
+      const checkbox = canvas.getByTestId('amino--row-checkbox-4');
+      await userEvent.click(checkbox);
+      expect(checkbox.querySelector('input')).toBeChecked();
+    });
+    await step('Uncheck first box', async () => {
+      const checkbox = canvas.getByTestId('amino--row-checkbox-1');
+      await userEvent.click(checkbox);
+      expect(checkbox.querySelector('input')).not.toBeChecked();
+    });
+    await step('Select all', async () => {
+      const checkbox = canvas.getByTestId('amino--header-checkbox');
+      await userEvent.click(checkbox);
+      const checkbox1 = canvas.getByTestId('amino--row-checkbox-1');
+      const checkbox2 = canvas.getByTestId('amino--row-checkbox-4');
+      const checkbox3 = canvas.getByTestId('amino--row-checkbox-29');
+      expect(checkbox1.querySelector('input')).toBeChecked();
+      expect(checkbox2.querySelector('input')).toBeChecked();
+      expect(checkbox3.querySelector('input')).toBeChecked();
+    });
+    await step(
+      'Try to trigger row click and verify no action occurs',
+      async () => {
+        const row = canvas.getByTestId('amino--row-1');
+        await userEvent.click(row);
+        expect(global.alert).not.toHaveBeenCalled();
+      },
+    );
+    await step(
+      'Select all then unselect all and verify onClick works again',
+      async () => {
+        const checkbox = canvas.getByTestId('amino--header-checkbox');
+        const row = canvas.getByTestId('amino--row-1');
+        await userEvent.click(checkbox);
+        await userEvent.click(checkbox);
+        await userEvent.click(row);
+        expect(global.alert).toHaveBeenCalled();
+      },
+    );
+  },
   render: ({ loading }) => {
     const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -258,12 +343,19 @@ export const Selectable: StoryObj<SimpleTableProps<object>> = {
       />
     );
   },
-  tags: ['tested'],
 };
 
 const link = 'https://letmegooglethat.com';
 
 export const WithLink: StoryObj = {
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('Ensure CustomLink works', async () => {
+      const row = canvas.getByTestId('amino--row-1');
+      await userEvent.click(row, { delay: 500 });
+      expect(row.querySelector('a')).toHaveAttribute('href', `${link}/?q=John`);
+    });
+  },
   render: () => {
     const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
 
@@ -308,7 +400,6 @@ export const WithLink: StoryObj = {
       />
     );
   },
-  tags: ['tested'],
 };
 
 export const Loading: StoryObj = {
@@ -415,6 +506,12 @@ export const Loading: StoryObj = {
 };
 
 export const Bordered: StoryObj = {
+  play: async ({ canvasElement }) => {
+    const header1 = canvasElement.querySelector('.with-headers thead');
+    const header2 = canvasElement.querySelector('.no-headers thead');
+    expect(header1).toBeVisible();
+    expect(header2).not.toBeVisible();
+  },
   render: () => {
     const augmentedHeaders: SimpleTableHeader<DummyData>[] = tableHeaders
       .filter(Boolean)
@@ -428,6 +525,7 @@ export const Bordered: StoryObj = {
         <Text type="header">With headers</Text>
         <SimpleTable
           bordered
+          className="with-headers"
           headers={tableHeaders}
           items={items}
           keyExtractor={item => String(item.id)}
@@ -436,6 +534,7 @@ export const Bordered: StoryObj = {
         <Text type="header">Without headers</Text>
         <SimpleTable
           bordered
+          className="no-headers"
           headers={augmentedHeaders}
           items={items}
           keyExtractor={item => String(item.id)}
@@ -446,6 +545,68 @@ export const Bordered: StoryObj = {
 };
 
 export const Collapsible: StoryObj = {
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('Ensure collapsible works', async () => {
+      await step('Normal', async () => {
+        const row1 = canvas.getByTestId('amino--row-1');
+        await userEvent.click(row1, { delay: 500 });
+        expect(canvas.getByTestId('amino--collapse-1')).not.toHaveStyle({
+          height: '0px',
+        });
+
+        const row2 = canvas.getByTestId('amino--row-4');
+        await userEvent.click(row2, { delay: 500 });
+        expect(canvas.getByTestId('amino--collapse-4')).not.toHaveStyle({
+          height: '0px',
+        });
+      });
+
+      await step('Bordered', async () => {
+        const row1 = canvas.getByTestId('amino--row-101');
+        await userEvent.click(row1, { delay: 500 });
+        expect(canvas.getByTestId('amino--collapse-101')).not.toHaveStyle({
+          height: '0px',
+        });
+
+        const row2 = canvas.getByTestId('amino--row-105');
+        await userEvent.click(row2, { delay: 500 });
+        expect(canvas.getByTestId('amino--collapse-105')).not.toHaveStyle({
+          height: '0px',
+        });
+      });
+
+      await step('Selectable', async () => {
+        const row1 = canvas.getByTestId('amino--row-201');
+        await userEvent.click(row1, { delay: 500 });
+        expect(canvas.getByTestId('amino--collapse-201')).not.toHaveStyle({
+          height: '0px',
+        });
+
+        const row2 = canvas.getByTestId('amino--row-204');
+        await userEvent.click(row2, { delay: 500 });
+        expect(canvas.getByTestId('amino--collapse-204')).not.toHaveStyle({
+          height: '0px',
+        });
+      });
+    });
+
+    await step('Ensure Collapse chevron is fixed width', async () => {
+      const row1 = canvas.getByTestId('amino--row-1');
+      const chevron1 = row1.querySelector('td:last-child');
+      expect(chevron1).toHaveStyle({ width: '48px' });
+
+      const row2 = canvas.getByTestId('amino--row-101');
+      const chevron2 = row2.querySelector('td:last-child');
+      // bordered will have 1px border on the right
+      expect(chevron2).toHaveStyle({ width: '49px' });
+
+      const row3 = canvas.getByTestId('amino--row-201');
+      const chevron3 = row3.querySelector('td:last-child');
+      expect(chevron3).toHaveStyle({ width: '49px' });
+    });
+  },
   render: () => {
     const [selectedRowIndexes, setSelectedRowIndexes] = useState<number[]>([]);
     const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
@@ -502,9 +663,9 @@ export const Collapsible: StoryObj = {
       key: String(item.id),
     }));
 
-    const adjustedCollapseContent = collapseContent.filter(
-      (_, index) => index !== 3,
-    );
+    const adjustedCollapseContent = collapseContent
+      .map(item => ({ ...item, key: String(Number(item.key) + 100) }))
+      .filter((_, index) => index !== 3);
 
     return (
       <>
@@ -533,7 +694,7 @@ export const Collapsible: StoryObj = {
             toggleItem,
           }}
           headers={tableHeaders}
-          items={items}
+          items={items.map(item => ({ ...item, id: item.id + 100 }))}
           keyExtractor={item => String(item.id)}
         />
         <Divider />
@@ -542,13 +703,16 @@ export const Collapsible: StoryObj = {
           bordered
           className="selectable-table"
           collapsible={{
-            collapseContent,
+            collapseContent: collapseContent.map(item => ({
+              ...item,
+              key: String(Number(item.key) + 200),
+            })),
             enabled: true,
             expandedItemKeys,
             toggleItem,
           }}
           headers={tableHeaders}
-          items={items}
+          items={items.map(item => ({ ...item, id: item.id + 200 }))}
           keyExtractor={item => String(item.id)}
           selectable={{
             anySelected: selectedRowIndexes.length > 0,
@@ -562,10 +726,16 @@ export const Collapsible: StoryObj = {
       </>
     );
   },
-  tags: ['tested'],
 };
 
 export const Custom: StoryObj = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    global.alert = fn();
+    const row1 = canvas.getByTestId('amino--row-1');
+    await userEvent.click(row1);
+    expect(global.alert).toHaveBeenCalled();
+  },
   render: () => {
     const [shouldTruncate, setShouldTruncate] = useState(true);
     const [viewOneRow, setViewOneRow] = useState(false);
@@ -735,10 +905,22 @@ export const Custom: StoryObj = {
       </>
     );
   },
-  tags: ['tested'],
 };
 
-export const OnRowClick: StoryObj = {
+export const OnRowClick: StoryObj<typeof SimpleTable> = {
+  play: async ({ canvasElement }) => {
+    global.alert = fn();
+    const canvas = within(canvasElement);
+    const row1 = canvas.getByTestId('amino--row-1');
+    const row2 = canvas.getByTestId('amino--row-101');
+    await userEvent.click(row1);
+    expect(global.alert).toHaveBeenCalled();
+    await userEvent.click(row2, { delay: 500 });
+    expect(global.alert).toHaveBeenCalled();
+    expect(canvas.getByTestId('amino--collapse-101')).not.toHaveStyle({
+      height: '0px',
+    });
+  },
   render: () => {
     const [expandedItemKeys, setExpandedItemKeys] = useState<string[]>([]);
 
@@ -768,7 +950,7 @@ export const OnRowClick: StoryObj = {
           </tbody>
         </table>
       ),
-      key: String(item.id),
+      key: String(item.id + 100),
     }));
 
     return (
@@ -793,17 +975,57 @@ export const OnRowClick: StoryObj = {
             toggleItem,
           }}
           headers={tableHeaders}
-          items={items}
+          items={items.map(item => ({ ...item, id: item.id + 100 }))}
           keyExtractor={item => String(item.id)}
-          onRowClick={item => alert(`Clicked ${item.name}`)}
+          onRowClick={item => {
+            alert(`Clicked ${item.name}`);
+          }}
         />
       </>
     );
   },
-  tags: ['tested'],
 };
 
 export const TextWrapMethods: StoryObj = {
+  play: async ({ canvasElement, step }) => {
+    await step('Text wrap methods', async () => {
+      const canvas = within(canvasElement);
+      await step('Normal', async () => {
+        const normalCell = canvas
+          .getByTestId('normal-table')
+          .querySelector('tbody tr:first-child td:first-child');
+        expect(normalCell).toHaveStyle({
+          whiteSpace: 'normal',
+        });
+        expect(normalCell).not.toHaveStyle({
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        });
+      });
+      await step('Truncate', async () => {
+        const truncateCell = canvas
+          .getByTestId('truncate-table')
+          .querySelector('tbody tr:first-child td > :first-child');
+        expect(truncateCell).toHaveStyle({
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        });
+      });
+      await step('Nowrap', async () => {
+        const nowrapCell = canvas
+          .getByTestId('nowrap-table')
+          .querySelector('tbody tr:first-child td > :first-child');
+        expect(nowrapCell).toHaveStyle({
+          whiteSpace: 'nowrap',
+        });
+        expect(nowrapCell).not.toHaveStyle({
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        });
+      });
+    });
+  },
   render: () => {
     const longText =
       'This is a very long text that should demonstrate different wrapping behaviors. '.repeat(
@@ -839,7 +1061,7 @@ export const TextWrapMethods: StoryObj = {
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        <div data-test-id="normal-table">
+        <div data-testid="normal-table">
           <Text type="header">Normal</Text>
           <SimpleTable
             headers={createHeaders('normal')}
@@ -848,7 +1070,7 @@ export const TextWrapMethods: StoryObj = {
           />
         </div>
 
-        <div data-test-id="truncate-table">
+        <div data-testid="truncate-table">
           <Text type="header">Truncate</Text>
           <SimpleTable
             headers={createHeaders('truncate')}
@@ -857,7 +1079,7 @@ export const TextWrapMethods: StoryObj = {
           />
         </div>
 
-        <div data-test-id="nowrap-table">
+        <div data-testid="nowrap-table">
           <Text type="header">Nowrap</Text>
           <SimpleTable
             headers={createHeaders('nowrap')}
@@ -868,5 +1090,4 @@ export const TextWrapMethods: StoryObj = {
       </div>
     );
   },
-  tags: ['tested'],
 };

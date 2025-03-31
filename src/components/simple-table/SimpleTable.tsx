@@ -310,6 +310,7 @@ export const SimpleTable = <T extends object>({
                       (!loading && selectable.headerCheckboxValue) || false
                     }
                     className={styles.styledCheckbox}
+                    data-testid="amino--header-checkbox"
                     disabled={loading}
                     onChange={selectable.onHeaderCheckboxChange}
                   />
