@@ -197,37 +197,37 @@ exports[`Case light theme 1`] = `
   red950: 'var(--amino-red-950)',
 
   /* ORANGE PALETTE */
-  /** @info #FEF4E7  */
+  /** @info #3F160B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange50: 'var(--amino-orange-50)',
-  /** @info #FDEBD7  */
+  /** @info #763018  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange100: 'var(--amino-orange-100)',
-  /** @info #F9D3AF  */
+  /** @info #923C1A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange200: 'var(--amino-orange-200)',
-  /** @info #F5B27C  */
+  /** @info #B74A17  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange300: 'var(--amino-orange-300)',
-  /** @info #F08E47  */
+  /** @info #E5611A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange400: 'var(--amino-orange-400)',
   /** @info #EC6F23  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange500: 'var(--amino-orange-500)',
-  /** @info #E5611A  */
+  /** @info #F08E47  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange600: 'var(--amino-orange-600)',
-  /** @info #B74A17  */
+  /** @info #F5B27C  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange700: 'var(--amino-orange-700)',
-  /** @info #923C1A  */
+  /** @info #F9D3AF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange800: 'var(--amino-orange-800)',
-  /** @info #763018  */
+  /** @info #FDEBD7  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange900: 'var(--amino-orange-900)',
-  /** @info #3F160B  */
+  /** @info #FEF4E7  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange950: 'var(--amino-orange-950)',
 
@@ -391,10 +391,10 @@ exports[`Case light theme 1`] = `
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectBase: 'var(--amino-shadow-select-base)',
-  /** @info 0px 1px 3px 0px rgba(68, 94, 238, 0.40), 0px 0px 0px 1px #445EEE inset, 0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset */
+  /** @info 0px 1px 3px 0px oklch(64.68% 0.21157 249.91 / 0.04), 0px 0px 0px 1px var(--amino-blue-500) inset, 0px -1px 1px 1px oklch(64.68% 0.21157 249.91 / 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectActive: 'var(--amino-shadow-select-active)',
-  /** @info 0px 1px 3px 0px rgba(221, 49, 78, 0.40), 0px 0px 0px 1px #DD314E inset, 0px -1px 1px 1px rgba(221, 49, 78, 0.12) inset */
+  /** @info 0px 1px 3px 0px oklch(64% 0.277 24.49 / 0.04), 0px 0px 0px 1px var(--amino-red-500) inset, 0px -1px 1px 1px oklch(64% 0.277 24.49 / 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectError: 'var(--amino-shadow-select-error)',
 
@@ -656,7 +656,7 @@ exports[`Case light theme 1`] = `
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
-  /** @info #000000 */
+  /** @info oklch(0% 0 0) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   backdropColor: 'var(--amino-backdrop-color)',
   /** @info var(--amino-gray-0) */
@@ -665,7 +665,7 @@ exports[`Case light theme 1`] = `
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   raisedColorSecondary: 'var(--amino-raised-color-secondary)',
-  /** @info #FFFFFF */
+  /** @info oklch(98.16% 0.001972 243.25) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   pureBackgroundColor: 'var(--amino-pure-background-color)',
 
@@ -679,7 +679,7 @@ exports[`Case light theme 1`] = `
   /** @info linear-gradient(180deg, oklch(64% 0.277 24.49) 0%, oklch(59.01% 0.271 26.85) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonDangerHover: 'var(--amino-button-danger-hover)',
-  /** @info linear-gradient(180deg, #EC6F23 0%, #E5611A 100%) */
+  /** @info linear-gradient(180deg, oklch(66.98% 0.236 39.73) 0%, oklch(71% 0.225 46.37) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonWarningHover: 'var(--amino-button-warning-hover)',
   /** @info linear-gradient(180deg, var(--amino-gray-0) 0%, var(--amino-gray-50) 100%) */

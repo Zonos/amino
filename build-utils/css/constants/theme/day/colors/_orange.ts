@@ -1,24 +1,24 @@
 export const orange = {
-  /** @info #FEF4E7  */
-  'orange-50': '#FEF4E7',
-  /** @info #FDEBD7  */
-  'orange-100': '#FDEBD7',
-  /** @info #F9D3AF  */
-  'orange-200': '#F9D3AF',
-  /** @info #F5B27C  */
-  'orange-300': '#F5B27C',
-  /** @info #F08E47  */
-  'orange-400': '#F08E47',
-  /** @info #EC6F23  */
-  'orange-500': '#EC6F23',
-  /** @info #E5611A  */
-  'orange-600': '#E5611A',
-  /** @info #B74A17  */
-  'orange-700': '#B74A17',
-  /** @info #923C1A  */
-  'orange-800': '#923C1A',
-  /** @info #763018  */
-  'orange-900': '#763018',
   /** @info #3F160B  */
-  'orange-950': '#3F160B',
+  'orange-50': 'oklch(97% 0.018 69.58)',
+  /** @info #763018  */
+  'orange-100': 'oklch(95.49% 0.043 72.48)',
+  /** @info #923C1A  */
+  'orange-200': 'oklch(89% 0.087 68.88)',
+  /** @info #B74A17  */
+  'orange-300': 'oklch(84.49% 0.141 64.61)',
+  /** @info #E5611A  */
+  'orange-400': 'oklch(77.17% 0.194 53.72)',
+  /** @info #EC6F23  */
+  'orange-500': 'oklch(71% 0.225 46.37)',
+  /** @info #F08E47  */
+  'orange-600': 'oklch(66.98% 0.236 39.73)',
+  /** @info #F5B27C  */
+  'orange-700': 'oklch(57.39% 0.212 37.13)',
+  /** @info #F9D3AF  */
+  'orange-800': 'oklch(48.63% 0.175 36.28)',
+  /** @info #FDEBD7  */
+  'orange-900': 'oklch(42.21% 0.142 37.49)',
+  /** @info #FEF4E7  */
+  'orange-950': 'oklch(26.5% 0.095 35.49)',
 } as const;
