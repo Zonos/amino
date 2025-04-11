@@ -667,13 +667,13 @@ export const theme = {
   pureBackgroundColor: 'var(--amino-pure-background-color)',
 
   /* BUTTON HOVER COLORS */
-  /** @info linear-gradient(180deg, #446FEE 0%, #2E55E2 100%) */
+  /** @info linear-gradient(180deg, oklch(64.68% 0.212 249.91) 0%, oklch(58.35% 0.229 255.29) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonPrimaryHover: 'var(--amino-button-primary-hover)',
-  /** @info linear-gradient(180deg, #37B04A 0%, #2CA041 100%) */
+  /** @info linear-gradient(180deg, oklch(66.08% 0.216 152.99) 0%, oklch(59.24% 0.199 152.47) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonSuccessHover: 'var(--amino-button-success-hover)',
-  /** @info linear-gradient(180deg, #EE4559 0%, #DD314B 100%) */
+  /** @info linear-gradient(180deg, oklch(64% 0.277 24.49) 0%, oklch(59.01% 0.271 26.85) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonDangerHover: 'var(--amino-button-danger-hover)',
   /** @info linear-gradient(180deg, #EC6F23 0%, #E5611A 100%) */

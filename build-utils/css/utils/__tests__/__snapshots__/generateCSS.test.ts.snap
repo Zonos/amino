@@ -32,17 +32,17 @@ exports[`Case light theme: 1`] = `
   --amino-gray-900: #272a35;
   --amino-gray-950: #1e2029;
   --amino-gray-1000: #0f1015;
-  --amino-blue-50: #e7f0fe;
-  --amino-blue-100: #dae7fc;
-  --amino-blue-200: #c2d6fb;
-  --amino-blue-300: #98b6f8;
-  --amino-blue-400: #678ff3;
-  --amino-blue-500: #446fee;
-  --amino-blue-600: #2e55e2;
-  --amino-blue-700: #2544d0;
-  --amino-blue-800: #2438a9;
-  --amino-blue-900: #232e85;
-  --amino-blue-950: #1a1f51;
+  --amino-blue-50: oklch(97.12% 0.017 239.88);
+  --amino-blue-100: oklch(93.57% 0.038 240.3);
+  --amino-blue-200: oklch(88% 0.066 237.49);
+  --amino-blue-300: oklch(82.5% 0.111 235.48);
+  --amino-blue-400: oklch(74.05% 0.161 240.58);
+  --amino-blue-500: oklch(64.68% 0.212 249.91);
+  --amino-blue-600: oklch(58.35% 0.229 255.29);
+  --amino-blue-700: oklch(52.4% 0.229 258.03);
+  --amino-blue-800: oklch(45.12% 0.192 259.15);
+  --amino-blue-900: oklch(39.8% 0.148 258.07);
+  --amino-blue-950: oklch(29.35% 0.094 259.83);
   --amino-cyan-50: #e6fefd;
   --amino-cyan-100: #d6fffe;
   --amino-cyan-200: #c0f2f2;
@@ -54,17 +54,17 @@ exports[`Case light theme: 1`] = `
   --amino-cyan-800: #25646f;
   --amino-cyan-900: #1d464e;
   --amino-cyan-950: #152d32;
-  --amino-red-50: #ffeceb;
-  --amino-red-100: #fee5e5;
-  --amino-red-200: #fccfd0;
-  --amino-red-300: #faa7ab;
-  --amino-red-400: #f67681;
-  --amino-red-500: #ee4559;
-  --amino-red-600: #dd314b;
-  --amino-red-700: #b81835;
-  --amino-red-800: #9a1734;
-  --amino-red-900: #75142d;
-  --amino-red-950: #49081a;
+  --amino-red-50: oklch(97.06% 0.019 11.85);
+  --amino-red-100: oklch(93.34% 0.045 12.87);
+  --amino-red-200: oklch(88% 0.076 14.35);
+  --amino-red-300: oklch(80.64% 0.143 16.12);
+  --amino-red-400: oklch(72% 0.223 19.87);
+  --amino-red-500: oklch(64% 0.277 24.49);
+  --amino-red-600: oklch(59.01% 0.271 26.85);
+  --amino-red-700: oklch(52.01% 0.239 27.19);
+  --amino-red-800: oklch(44.01% 0.202 26.52);
+  --amino-red-900: oklch(39% 0.175 24.75);
+  --amino-red-950: oklch(25.5% 0.11 25.17);
   --amino-orange-50: #fef4e7;
   --amino-orange-100: #fdebd7;
   --amino-orange-200: #f9d3af;
@@ -76,17 +76,17 @@ exports[`Case light theme: 1`] = `
   --amino-orange-800: #923c1a;
   --amino-orange-900: #763018;
   --amino-orange-950: #3f160b;
-  --amino-green-50: #f0faef;
-  --amino-green-100: #e0f8e0;
-  --amino-green-200: #c3efc5;
-  --amino-green-300: #93e29a;
-  --amino-green-400: #5dcb6a;
-  --amino-green-500: #37b04a;
-  --amino-green-600: #2ca041;
-  --amino-green-700: #237234;
-  --amino-green-800: #205b2f;
-  --amino-green-900: #1c4b29;
-  --amino-green-950: #0a2914;
+  --amino-green-50: oklch(97% 0.023 155);
+  --amino-green-100: oklch(95.68% 0.047 155);
+  --amino-green-200: oklch(89% 0.088 155);
+  --amino-green-300: oklch(83% 0.152 155);
+  --amino-green-400: oklch(76.79% 0.211 154.62);
+  --amino-green-500: oklch(66.08% 0.216 152.99);
+  --amino-green-600: oklch(59.24% 0.199 152.47);
+  --amino-green-700: oklch(49.98% 0.158 153.7);
+  --amino-green-800: oklch(42.71% 0.126 154.23);
+  --amino-green-900: oklch(37.57% 0.103 155.77);
+  --amino-green-950: oklch(25.32% 0.072 155.78);
   --amino-purple-50: #fcf0ff;
   --amino-purple-100: #fae8ff;
   --amino-purple-200: #f4d4ff;
@@ -295,18 +295,18 @@ exports[`Case light theme: 1`] = `
   --amino-pure-background-color: #ffffff;
   --amino-button-primary-hover: linear-gradient(
     180deg,
-    #446fee 0%,
-    #2e55e2 100%
+    oklch(64.68% 0.212 249.91) 0%,
+    oklch(58.35% 0.229 255.29) 100%
   );
   --amino-button-success-hover: linear-gradient(
     180deg,
-    #37b04a 0%,
-    #2ca041 100%
+    oklch(66.08% 0.216 152.99) 0%,
+    oklch(59.24% 0.199 152.47) 100%
   );
   --amino-button-danger-hover: linear-gradient(
     180deg,
-    #ee4559 0%,
-    #dd314b 100%
+    oklch(64% 0.277 24.49) 0%,
+    oklch(59.01% 0.271 26.85) 100%
   );
   --amino-button-warning-hover: linear-gradient(
     180deg,
@@ -398,17 +398,17 @@ exports[`Case night theme: 1`] = `
   --amino-gray-900: #e8eaee;
   --amino-gray-950: #f4f5f6;
   --amino-gray-1000: #ffffff;
-  --amino-blue-50: #1a1f51;
-  --amino-blue-100: #232e85;
-  --amino-blue-200: #2438a9;
-  --amino-blue-300: #2544d0;
-  --amino-blue-400: #2e55e2;
-  --amino-blue-500: #446fee;
-  --amino-blue-600: #678ff3;
-  --amino-blue-700: #98b6f8;
-  --amino-blue-800: #c2d6fb;
-  --amino-blue-900: #dae7fc;
-  --amino-blue-950: #e7f0fe;
+  --amino-blue-50: oklch(29.35% 0.094 259.83);
+  --amino-blue-100: oklch(39.8% 0.148 258.07);
+  --amino-blue-200: oklch(45.12% 0.192 259.15);
+  --amino-blue-300: oklch(52.4% 0.229 258.03);
+  --amino-blue-400: oklch(58.35% 0.229 255.29);
+  --amino-blue-500: oklch(64.68% 0.212 249.91);
+  --amino-blue-600: oklch(74.05% 0.161 240.58);
+  --amino-blue-700: oklch(82.5% 0.111 235.48);
+  --amino-blue-800: oklch(88% 0.066 237.49);
+  --amino-blue-900: oklch(93.57% 0.038 240.3);
+  --amino-blue-950: oklch(97.12% 0.017 239.88);
   --amino-cyan-50: #152d32;
   --amino-cyan-100: #1d464e;
   --amino-cyan-200: #25646f;
@@ -420,17 +420,17 @@ exports[`Case night theme: 1`] = `
   --amino-cyan-800: #c0f2f2;
   --amino-cyan-900: #d6fffe;
   --amino-cyan-950: #e6fefd;
-  --amino-red-50: #49081a;
-  --amino-red-100: #75142d;
-  --amino-red-200: #9a1734;
-  --amino-red-300: #b81835;
-  --amino-red-400: #dd314b;
-  --amino-red-500: #ee4559;
-  --amino-red-600: #f67681;
-  --amino-red-700: #faa7ab;
-  --amino-red-800: #fccfd0;
-  --amino-red-900: #fee5e5;
-  --amino-red-950: #ffeceb;
+  --amino-red-50: oklch(25.5% 0.11 25.17);
+  --amino-red-100: oklch(39% 0.175 24.75);
+  --amino-red-200: oklch(44.01% 0.202 26.52);
+  --amino-red-300: oklch(52.01% 0.239 27.19);
+  --amino-red-400: oklch(59.01% 0.271 26.85);
+  --amino-red-500: oklch(64% 0.277 24.49);
+  --amino-red-600: oklch(72% 0.223 19.87);
+  --amino-red-700: oklch(80.64% 0.143 16.12);
+  --amino-red-800: oklch(88% 0.076 14.35);
+  --amino-red-900: oklch(93.34% 0.045 12.87);
+  --amino-red-950: oklch(97.06% 0.019 11.85);
   --amino-orange-50: #3f160b;
   --amino-orange-100: #763018;
   --amino-orange-200: #923c1a;
@@ -442,17 +442,17 @@ exports[`Case night theme: 1`] = `
   --amino-orange-800: #f9d3af;
   --amino-orange-900: #fdebd7;
   --amino-orange-950: #fef4e7;
-  --amino-green-50: #0a2914;
-  --amino-green-100: #1c4b29;
-  --amino-green-200: #205b2f;
-  --amino-green-300: #237234;
-  --amino-green-400: #2ca041;
-  --amino-green-500: #37b04a;
-  --amino-green-600: #5dcb6a;
-  --amino-green-700: #93e29a;
-  --amino-green-800: #c3efc5;
-  --amino-green-900: #e0f8e0;
-  --amino-green-950: #f0faef;
+  --amino-green-50: oklch(25.32% 0.072 155.78);
+  --amino-green-100: oklch(37.57% 0.103 155.77);
+  --amino-green-200: oklch(42.71% 0.126 154.23);
+  --amino-green-300: oklch(49.98% 0.158 153.7);
+  --amino-green-400: oklch(59.24% 0.199 152.47);
+  --amino-green-500: oklch(66.08% 0.216 152.99);
+  --amino-green-600: oklch(76.79% 0.211 154.62);
+  --amino-green-700: oklch(83% 0.152 155);
+  --amino-green-800: oklch(89% 0.088 155);
+  --amino-green-900: oklch(95.68% 0.047 155);
+  --amino-green-950: oklch(97% 0.023 155);
   --amino-purple-50: #2f055c;
   --amino-purple-100: #4e1881;
   --amino-purple-200: #6c1eab;
@@ -627,18 +627,18 @@ exports[`Case night theme: 1`] = `
   --amino-pure-background-color: #000000;
   --amino-button-primary-hover: linear-gradient(
     180deg,
-    #446fee 0%,
-    #2e55e2 100%
+    oklch(64.68% 0.212 249.91) 0%,
+    oklch(58.35% 0.229 255.29) 100%
   );
   --amino-button-success-hover: linear-gradient(
     180deg,
-    #37b04a 0%,
-    #2ca041 100%
+    oklch(66.08% 0.216 152.99) 0%,
+    oklch(59.24% 0.199 152.47) 100%
   );
   --amino-button-danger-hover: linear-gradient(
     180deg,
-    #ee4559 0%,
-    #dd314b 100%
+    oklch(64% 0.277 24.49) 0%,
+    oklch(59.01% 0.271 26.85) 100%
   );
   --amino-button-warning-hover: linear-gradient(
     180deg,
