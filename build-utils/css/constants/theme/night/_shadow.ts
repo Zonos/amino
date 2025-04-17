@@ -47,7 +47,7 @@ export const shadow = {
   'shadow-select-base':
     '0px 0px 0px 1px #000, 0px -1px 1px 0px rgba(0, 0, 0, 0.40) inset, 0px 0px 2px 1px rgba(255, 255, 255, 0.08) inset, 0px 1px 3px 0px rgba(0, 0, 0, 0.80), 0px 0px 0px 1px rgba(148, 150, 158, 0.12) inset',
   'shadow-select-active':
-    '0px 0px 0px 1px #000, 0px -1px 1px 1px oklch(64.68% 0.212 249.91 / 0.24) inset, 0px 0px 0px 1px var(--amino-blue-500) inset, 0px 1px 3px 0px oklch(64.68% 0.212 249.91 / 0.40)',
+    '0px 0px 0px 1px #000, 0px -1px 1px 1px rgba(62%, 0.226011, 249.91, 0.24) inset, 0px 0px 0px 1px var(--amino-blue-500) inset, 0px 1px 3px 0px rgba(62%, 0.226011, 249.91, 0.40)',
   'shadow-select-error':
-    '0px 0px 0px 1px #000, 0px -1px 1px 1px oklch(64% 0.277 24.49 / 0.24) inset, 0px 0px 0px 1px var(--amino-red-500) inset, 0px 1px 3px 0px oklch(64% 0.277 24.49 / 0.60)',
+    '0px 0px 0px 1px #000, 0px -1px 1px 1px rgba(64%, 0.277484, 24.49, 0.24) inset, 0px 0px 0px 1px var(--amino-red-500) inset, 0px 1px 3px 0px rgba(64%, 0.277484, 24.49, 0.60)',
 } as const;
