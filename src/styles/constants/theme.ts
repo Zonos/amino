@@ -51,250 +51,250 @@ export const theme = {
   /** @info white  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray0: 'var(--amino-gray-0)',
-  /** @info #F4F5F6  */
+  /** @info #F0F2F4  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray50: 'var(--amino-gray-50)',
-  /** @info #E8EAEE  */
+  /** @info #E3E4E8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray100: 'var(--amino-gray-100)',
-  /** @info #DFE2E7  */
+  /** @info #C8CAD2  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray200: 'var(--amino-gray-200)',
-  /** @info #BCC3CD  */
+  /** @info #ABAEB5  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray300: 'var(--amino-gray-300)',
-  /** @info #8A95A8  */
+  /** @info #9598A2  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray400: 'var(--amino-gray-400)',
-  /** @info #68748D  */
+  /** @info #7D7F8C  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray500: 'var(--amino-gray-500)',
-  /** @info #555D72  */
+  /** @info #6A6E7A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray600: 'var(--amino-gray-600)',
-  /** @info #454C5E  */
+  /** @info #585A65  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray700: 'var(--amino-gray-700)',
-  /** @info #343846  */
+  /** @info #454751  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray800: 'var(--amino-gray-800)',
-  /** @info #272A35  */
+  /** @info #32353E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray900: 'var(--amino-gray-900)',
-  /** @info #1E2029  */
+  /** @info #1F212A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray950: 'var(--amino-gray-950)',
-  /** @info #0F1015  */
+  /** @info #101117  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   gray1000: 'var(--amino-gray-1000)',
 
   /* BLUE PALETTE */
-  /** @info #E7F0FE  */
+  /** @info #ECF7FF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue50: 'var(--amino-blue-50)',
-  /** @info #DAE7FC  */
+  /** @info #D2ECFF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue100: 'var(--amino-blue-100)',
-  /** @info #C2D6FB  */
+  /** @info #A8DCFE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue200: 'var(--amino-blue-200)',
-  /** @info #98B6F8  */
+  /** @info #56C4FF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue300: 'var(--amino-blue-300)',
-  /** @info #678FF3  */
+  /** @info #00A8F8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue400: 'var(--amino-blue-400)',
-  /** @info #446FEE  */
+  /** @info #0089EA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue500: 'var(--amino-blue-500)',
-  /** @info #2E55E2  */
+  /** @info #006CD3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue600: 'var(--amino-blue-600)',
-  /** @info #2544D0  */
+  /** @info #0055BA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue700: 'var(--amino-blue-700)',
-  /** @info #2438A9  */
+  /** @info #00439F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue800: 'var(--amino-blue-800)',
-  /** @info #232E85  */
+  /** @info #003172  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue900: 'var(--amino-blue-900)',
-  /** @info #1A1F51  */
+  /** @info #072047  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   blue950: 'var(--amino-blue-950)',
 
   /* CYAN PALETTE */
-  /** @info #E6FEFD  */
+  /** @info #E9F9F8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan50: 'var(--amino-cyan-50)',
-  /** @info #D6FFFE  */
+  /** @info #B8FAF5  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan100: 'var(--amino-cyan-100)',
-  /** @info #C0F2F2  */
+  /** @info #7BEAE3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan200: 'var(--amino-cyan-200)',
-  /** @info #9BE7E9  */
+  /** @info #00D5D1  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan300: 'var(--amino-cyan-300)',
-  /** @info #66D5DB  */
+  /** @info #00BCBA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan400: 'var(--amino-cyan-400)',
-  /** @info #3EC4D0  */
+  /** @info #00A0A1  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan500: 'var(--amino-cyan-500)',
-  /** @info #2CA0AF  */
+  /** @info #007F80  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan600: 'var(--amino-cyan-600)',
-  /** @info #29818E  */
+  /** @info #00686A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan700: 'var(--amino-cyan-700)',
-  /** @info #25646F  */
+  /** @info #005559  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan800: 'var(--amino-cyan-800)',
-  /** @info #1D464E  */
+  /** @info #003E40  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan900: 'var(--amino-cyan-900)',
-  /** @info #152D32  */
+  /** @info #00272A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   cyan950: 'var(--amino-cyan-950)',
 
   /* RED PALETTE */
-  /** @info #FFECEB  */
+  /** @info #FFF1F2  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red50: 'var(--amino-red-50)',
-  /** @info #FEE5E5  */
+  /** @info #FFDFE1  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red100: 'var(--amino-red-100)',
-  /** @info #FCCFD0  */
+  /** @info #FFC2C6  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red200: 'var(--amino-red-200)',
-  /** @info #FAA7AB  */
+  /** @info #FF939B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red300: 'var(--amino-red-300)',
-  /** @info #F67681  */
+  /** @info #FF616B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red400: 'var(--amino-red-400)',
-  /** @info #EE4559  */
+  /** @info #FF2237  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red500: 'var(--amino-red-500)',
-  /** @info #DD314B  */
+  /** @info #D00017  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red600: 'var(--amino-red-600)',
-  /** @info #B81835  */
+  /** @info #AD000F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red700: 'var(--amino-red-700)',
-  /** @info #9A1734  */
+  /** @info #94000F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red800: 'var(--amino-red-800)',
-  /** @info #75142D  */
+  /** @info #6A000C  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red900: 'var(--amino-red-900)',
-  /** @info #49081A  */
+  /** @info #470005  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red950: 'var(--amino-red-950)',
 
   /* ORANGE PALETTE */
-  /** @info #FEF4E7  */
+  /** @info #FDF3E8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange50: 'var(--amino-orange-50)',
-  /** @info #FDEBD7  */
+  /** @info #FFE7CA  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange100: 'var(--amino-orange-100)',
-  /** @info #F9D3AF  */
+  /** @info #FFD29F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange200: 'var(--amino-orange-200)',
-  /** @info #F5B27C  */
+  /** @info #FFBA77  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange300: 'var(--amino-orange-300)',
-  /** @info #F08E47  */
+  /** @info #FF9B55  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange400: 'var(--amino-orange-400)',
-  /** @info #EC6F23  */
+  /** @info #FF7D35  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange500: 'var(--amino-orange-500)',
-  /** @info #E5611A  */
+  /** @info #E74F00  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange600: 'var(--amino-orange-600)',
-  /** @info #B74A17  */
+  /** @info #B73500  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange700: 'var(--amino-orange-700)',
-  /** @info #923C1A  */
+  /** @info #972800  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange800: 'var(--amino-orange-800)',
-  /** @info #763018  */
+  /** @info #6E1D00  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange900: 'var(--amino-orange-900)',
-  /** @info #3F160B  */
+  /** @info #460C00  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   orange950: 'var(--amino-orange-950)',
 
   /* GREEN PALETTE */
-  /** @info #F0FAEF  */
+  /** @info #EAFAEE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green50: 'var(--amino-green-50)',
-  /** @info #E0F8E0  */
+  /** @info #C9F9D8  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green100: 'var(--amino-green-100)',
-  /** @info #C3EFC5  */
+  /** @info #99EAB5  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green200: 'var(--amino-green-200)',
-  /** @info #93E29A  */
+  /** @info #63D591  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green300: 'var(--amino-green-300)',
-  /** @info #5DCB6A  */
+  /** @info #00C46F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green400: 'var(--amino-green-400)',
-  /** @info #37B04A  */
+  /** @info #00A859  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green500: 'var(--amino-green-500)',
-  /** @info #2CA041  */
+  /** @info #008544  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green600: 'var(--amino-green-600)',
-  /** @info #237234  */
+  /** @info #006D3A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green700: 'var(--amino-green-700)',
-  /** @info #205B2F  */
+  /** @info #005A2F  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green800: 'var(--amino-green-800)',
-  /** @info #1C4B29  */
+  /** @info #004123  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green900: 'var(--amino-green-900)',
-  /** @info #0A2914  */
+  /** @info #002A15  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   green950: 'var(--amino-green-950)',
 
   /* PURPLE */
-  /** @info #FCF0FF  */
+  /** @info #F9F2FD  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple50: 'var(--amino-purple-50)',
-  /** @info #FAE8FF  */
+  /** @info #F3DFFF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple100: 'var(--amino-purple-100)',
-  /** @info #F4D4FF  */
+  /** @info #E8C4FE  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple200: 'var(--amino-purple-200)',
-  /** @info #E9B2FF  */
+  /** @info #D998FF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple300: 'var(--amino-purple-300)',
-  /** @info #D782FE  */
+  /** @info #C96DFF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple400: 'var(--amino-purple-400)',
-  /** @info #C052FA  */
+  /** @info #B43AFF  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple500: 'var(--amino-purple-500)',
-  /** @info #A126ED  */
+  /** @info #9817E2  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple600: 'var(--amino-purple-600)',
-  /** @info #871ED2  */
+  /** @info #7F00C0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple700: 'var(--amino-purple-700)',
-  /** @info #6C1EAB  */
+  /** @info #6A089A  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple800: 'var(--amino-purple-800)',
-  /** @info #4E1881  */
+  /** @info #4C126B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple900: 'var(--amino-purple-900)',
-  /** @info #2F055C  */
+  /** @info #34084E  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   purple950: 'var(--amino-purple-950)',
 
@@ -388,10 +388,10 @@ export const theme = {
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectBase: 'var(--amino-shadow-select-base)',
-  /** @info 0px 1px 3px 0px rgba(68, 94, 238, 0.40), 0px 0px 0px 1px #445EEE inset, 0px -1px 1px 1px rgba(68, 94, 238, 0.12) inset */
+  /** @info 0px 1px 3px 0px oklch(62% 0.226011 249.91 / 0.04), 0px 0px 0px 1px var(--amino-blue-500) inset, 0px -1px 1px 1px oklch(62% 0.226011 249.91 / 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectActive: 'var(--amino-shadow-select-active)',
-  /** @info 0px 1px 3px 0px rgba(221, 49, 78, 0.40), 0px 0px 0px 1px #DD314E inset, 0px -1px 1px 1px rgba(221, 49, 78, 0.12) inset */
+  /** @info 0px 1px 3px 0px oklch(64% 0.277484 24.49 / 0.04), 0px 0px 0px 1px var(--amino-red-500) inset, 0px -1px 1px 1px oklch(64% 0.277484 24.49 / 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectError: 'var(--amino-shadow-select-error)',
 
@@ -653,7 +653,7 @@ export const theme = {
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   surfaceColorSecondary: 'var(--amino-surface-color-secondary)',
-  /** @info #000000 */
+  /** @info oklch(0% 0 0) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   backdropColor: 'var(--amino-backdrop-color)',
   /** @info var(--amino-gray-0) */
@@ -662,21 +662,21 @@ export const theme = {
   /** @info var(--amino-gray-50) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   raisedColorSecondary: 'var(--amino-raised-color-secondary)',
-  /** @info #FFFFFF */
+  /** @info oklch(98% 0.001972 243.25) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   pureBackgroundColor: 'var(--amino-pure-background-color)',
 
   /* BUTTON HOVER COLORS */
-  /** @info linear-gradient(180deg, #446FEE 0%, #2E55E2 100%) */
+  /** @info linear-gradient(180deg, var(--amino-blue-500) 0%, var(--amino-blue-600) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonPrimaryHover: 'var(--amino-button-primary-hover)',
-  /** @info linear-gradient(180deg, #37B04A 0%, #2CA041 100%) */
+  /** @info linear-gradient(180deg, var(--amino-green-500) 0%, var(--amino-green-600) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonSuccessHover: 'var(--amino-button-success-hover)',
-  /** @info linear-gradient(180deg, #EE4559 0%, #DD314B 100%) */
+  /** @info linear-gradient(180deg, var(--amino-red-500) 0%, var(--amino-red-600) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonDangerHover: 'var(--amino-button-danger-hover)',
-  /** @info linear-gradient(180deg, #EC6F23 0%, #E5611A 100%) */
+  /** @info linear-gradient(180deg, var(--amino-orange-500) 0%, var(--amino-orange-600) 100%) */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   buttonWarningHover: 'var(--amino-button-warning-hover)',
   /** @info linear-gradient(180deg, var(--amino-gray-0) 0%, var(--amino-gray-50) 100%) */

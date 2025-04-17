@@ -19,7 +19,7 @@
 
   &:not(.disabled) {
     &.selected {
-      background-color: theme.$amino-blue-100;
+      background-color: theme.$amino-blue-50;
       * {
         color: theme.$amino-blue-800;
       }

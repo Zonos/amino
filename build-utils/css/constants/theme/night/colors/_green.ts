@@ -1,24 +1,24 @@
 export const green = {
-  /** @info #0A2914  */
-  'green-50': '#0A2914',
-  /** @info #1C4B29  */
-  'green-100': '#1C4B29',
-  /** @info #205B2F  */
-  'green-200': '#205B2F',
-  /** @info #237234  */
-  'green-300': '#237234',
-  /** @info #2CA041  */
-  'green-400': '#2CA041',
-  /** @info #37B04A  */
-  'green-500': '#37B04A',
-  /** @info #5DCB6A  */
-  'green-600': '#5DCB6A',
-  /** @info #93E29A  */
-  'green-700': '#93E29A',
-  /** @info #C3EFC5  */
-  'green-800': '#C3EFC5',
-  /** @info #E0F8E0  */
-  'green-900': '#E0F8E0',
-  /** @info #F0FAEF  */
-  'green-950': '#F0FAEF',
+  /** @info #002A15  */
+  'green-50': 'oklch(25% 0.070757 155.78)',
+  /** @info #004123  */
+  'green-100': 'oklch(33% 0.091183 155.77)',
+  /** @info #005A2F  */
+  'green-200': 'oklch(41% 0.121278 154.23)',
+  /** @info #006D3A  */
+  'green-300': 'oklch(47% 0.148899 153.7)',
+  /** @info #008544  */
+  'green-400': 'oklch(54% 0.181753 152.47)',
+  /** @info #00A859  */
+  'green-500': 'oklch(64% 0.2083 152.99)',
+  /** @info #00C46F  */
+  'green-600': 'oklch(72% 0.198803 154.62)',
+  /** @info #63D591  */
+  'green-700': 'oklch(79% 0.143365 155)',
+  /** @info #99EAB5  */
+  'green-800': 'oklch(87% 0.108534 155)',
+  /** @info #C9F9D8  */
+  'green-900': 'oklch(94% 0.066871 155)',
+  /** @info #EAFAEE  */
+  'green-950': 'oklch(97% 0.023 155)',
 } as const;

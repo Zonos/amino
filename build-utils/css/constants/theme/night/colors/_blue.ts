@@ -1,24 +1,24 @@
 export const blue = {
-  /** @info #1A1F51  */
-  'blue-50': '#1A1F51',
-  /** @info #232E85  */
-  'blue-100': '#232E85',
-  /** @info #2438A9  */
-  'blue-200': '#2438A9',
-  /** @info #2544D0  */
-  'blue-300': '#2544D0',
-  /** @info #2E55E2  */
-  'blue-400': '#2E55E2',
-  /** @info #446FEE  */
-  'blue-500': '#446FEE',
-  /** @info #678FF3  */
-  'blue-600': '#678FF3',
-  /** @info #98B6F8  */
-  'blue-700': '#98B6F8',
-  /** @info #C2D6FB  */
-  'blue-800': '#C2D6FB',
-  /** @info #DAE7FC  */
-  'blue-900': '#DAE7FC',
-  /** @info #E7F0FE  */
-  'blue-950': '#E7F0FE',
+  /** @info #072047  */
+  'blue-50': 'oklch(25% 0.080185 259.83)',
+  /** @info #003172  */
+  'blue-100': 'oklch(33% 0.122779 258.07)',
+  /** @info #00439F  */
+  'blue-200': 'oklch(41% 0.173938 259.15)',
+  /** @info #0055BA  */
+  'blue-300': 'oklch(47% 0.205528 258.03)',
+  /** @info #006CD3  */
+  'blue-400': 'oklch(54% 0.211254 255.29)',
+  /** @info #0089EA  */
+  'blue-500': 'oklch(62% 0.226011 249.91)',
+  /** @info #00A8F8  */
+  'blue-600': 'oklch(70% 0.188568 240.58)',
+  /** @info #56C4FF  */
+  'blue-700': 'oklch(82% 0.111111 235.48)',
+  /** @info #A8DCFE  */
+  'blue-800': 'oklch(88% 0.066667 237.49)',
+  /** @info #D2ECFF  */
+  'blue-900': 'oklch(93% 0.041011 240.3)',
+  /** @info #ECF7FF  */
+  'blue-950': 'oklch(97% 0.017389 239.88)',
 } as const;
