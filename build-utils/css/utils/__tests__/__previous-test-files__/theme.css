@@ -198,12 +198,12 @@
     0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset,
     0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset;
   --amino-shadow-select-active: 0px 1px 3px 0px
-      rgba(62%, 0.226011, 249.91, 0.04),
+      oklch(62% 0.226011 249.91 / 0.04),
     0px 0px 0px 1px var(--amino-blue-500) inset,
-    0px -1px 1px 1px rgba(62%, 0.226011, 249.91, 0.12) inset;
-  --amino-shadow-select-error: 0px 1px 3px 0px rgba(64%, 0.277484, 24.49, 0.04),
+    0px -1px 1px 1px oklch(62% 0.226011 249.91 / 0.12) inset;
+  --amino-shadow-select-error: 0px 1px 3px 0px oklch(64% 0.277484 24.49 / 0.04),
     0px 0px 0px 1px var(--amino-red-500) inset,
-    0px -1px 1px 1px rgba(64%, 0.277484, 24.49, 0.12) inset;
+    0px -1px 1px 1px oklch(64% 0.277484 24.49 / 0.12) inset;
   --amino-opacity-disabled: 0.6;
   --amino-space-negative-80: -5rem;
   --amino-space-negative-76: -4.75rem;

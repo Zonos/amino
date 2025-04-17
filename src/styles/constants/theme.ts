@@ -388,10 +388,10 @@ export const theme = {
   /** @info 0px 1px 3px 0px rgba(110, 110, 120, 0.12), 0px -1px 1px 1px rgba(0, 0, 0, 0.08) inset, 0px 0px 0px 1px rgba(106, 109, 119, 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectBase: 'var(--amino-shadow-select-base)',
-  /** @info 0px 1px 3px 0px rgba(62%, 0.226011, 249.91, 0.04), 0px 0px 0px 1px var(--amino-blue-500) inset, 0px -1px 1px 1px rgba(62%, 0.226011, 249.91, 0.12) inset */
+  /** @info 0px 1px 3px 0px oklch(62% 0.226011 249.91 / 0.04), 0px 0px 0px 1px var(--amino-blue-500) inset, 0px -1px 1px 1px oklch(62% 0.226011 249.91 / 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectActive: 'var(--amino-shadow-select-active)',
-  /** @info 0px 1px 3px 0px rgba(64%, 0.277484, 24.49, 0.04), 0px 0px 0px 1px var(--amino-red-500) inset, 0px -1px 1px 1px rgba(64%, 0.277484, 24.49, 0.12) inset */
+  /** @info 0px 1px 3px 0px oklch(64% 0.277484 24.49 / 0.04), 0px 0px 0px 1px var(--amino-red-500) inset, 0px -1px 1px 1px oklch(64% 0.277484 24.49 / 0.12) inset */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   shadowSelectError: 'var(--amino-shadow-select-error)',
 
