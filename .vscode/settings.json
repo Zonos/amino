@@ -11,4 +11,24 @@
     "editor.formatOnSave": true,
     "editor.suggest.showIssues": true
   },
+  "github.copilot.chat.testGeneration.instructions": [
+    {
+      "file": ".github/test-instructions.md"
+    }
+  ],
+  "github.copilot.chat.reviewSelection.instructions": [
+    {
+      "file": ".github/code-review-instructions.md"
+    }
+  ],
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "file": ".github/commit-message-instructions.md"
+    }
+  ],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    {
+      "file": ".github/pull-request-instructions.md"
+    }
+  ]
 }
