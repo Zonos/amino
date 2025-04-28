@@ -146,8 +146,7 @@ export function parseInterface(
       });
     }
 
-    // Determine if this is a generic interface
-    const genericMatch = extendsClause.match(/<.*>/);
+    // Determine the final interface name, accounting for generics
     let finalName = interfaceName;
 
     // If the interface has generic type parameters, include them in the name

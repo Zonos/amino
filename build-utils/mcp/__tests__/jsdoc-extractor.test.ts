@@ -86,7 +86,7 @@ export const Button = ({
           throw new Error('Invalid file path');
         }
         if (mockFileSystem[filePath]) {
-          return mockFileSystem[filePath];
+          return mockFileSystem[filePath] || '';
         }
         throw new Error(`File not found: ${filePath}`);
       },
@@ -108,8 +108,8 @@ export const Button = ({
 
     vi.mocked(path.basename).mockImplementation((filePath: string): string => {
       const parts = filePath.split('/');
-      // Ensure we never return undefined
-      return parts[parts.length - 1] || '';
+      const lastPart = parts.length > 0 ? parts[parts.length - 1] : '';
+      return lastPart || '';
     });
 
     vi.mocked(path.relative).mockImplementation(
@@ -158,7 +158,7 @@ export const Button = ({
 
       expect(comments).toHaveLength(1);
       expect(comments[0]).toHaveProperty('description');
-      expect(comments[0]?.description).toContain(
+      expect(comments[0]?.description ?? '').toContain(
         'Button component for user interactions',
       );
     });
