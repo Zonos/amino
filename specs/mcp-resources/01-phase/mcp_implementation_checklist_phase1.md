@@ -94,7 +94,7 @@ This checklist tracks the progress of Phase 1 (MVP) implementation for the Model
 
 ## Build Process Integration
 
-- [ ] 6.1 Add extraction step to build process
+- [x] 6.1 Add extraction step to build process
   - **Notes:** Run extractors during build
   - **Testing:** Verify integration with build pipeline
   - **Priority:** Medium

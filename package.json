@@ -19,11 +19,12 @@
   "scripts": {
     "build:ci": "pnpm build:theme && pnpm build:scss:types && pnpm build:ts && pnpm build:dts",
     "build:dts": "tspc -p ./tsconfig.emitDeclarationOnly.json",
+    "build:mcp": "tsx build-utils/mcp/build-integration.ts",
     "build:prep:publish": "tsx build-utils/setupPackage.ts",
     "build:scss:types": "pnpm typed-scss-modules src/ --implementation sass --includePaths src/styles",
     "build:theme": "tsx build-utils/css/buildTheme.ts",
     "build:ts": "tsx build-utils/build.ts",
-    "build": "pnpm install && pnpm ci:concurrent && pnpm build:theme && pnpm build:ts && pnpm build:dts",
+    "build": "pnpm install && pnpm ci:concurrent && pnpm build:theme && pnpm build:ts && pnpm build:dts && pnpm build:mcp",
     "ci:concurrent": "concurrently 'pnpm tsc' 'pnpm lint:prod' 'pnpm test:prod' --group --raw --success='all'",
     "ci": "pnpm tsc && pnpm lint:prod && pnpm test:prod",
     "dev:open": "concurrently 'pnpm dev' 'pnpm open'",
