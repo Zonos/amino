@@ -113,6 +113,12 @@ export type ComponentWithInterface = ComponentMetadata & {
 export type JSDocExtractorOptions = {
   /** Directory paths to scan for components */
   componentDirs: string[];
+  /** Directories to exclude from component scanning */
+  excludeDirs?: string[];
+  /** File patterns to include/exclude (glob patterns) */
+  filePatterns?: string[];
+  /** Whether to include components marked as @private */
+  includePrivate?: boolean;
   /** Output directory for documentation files */
   outputDir: string;
   /** Whether to use verbose logging */

@@ -99,12 +99,12 @@ This checklist tracks the progress of Phase 1 (MVP) implementation for the Model
   - **Testing:** Verify integration with build pipeline
   - **Priority:** Medium
 
-- [ ] 6.2 Configure extraction options
+- [x] 6.2 Configure extraction options
   - **Notes:** Basic configuration for MVP
   - **Testing:** Test with different configurations
   - **Priority:** Medium
 
-- [ ] 6.3 Set up logging system
+- [x] 6.3 Set up logging system
   - **Notes:** Basic logging of extraction process
   - **Testing:** Verify log output
   - **Priority:** Low
