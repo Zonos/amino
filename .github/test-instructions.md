@@ -1,5 +1,7 @@
 # Test Guidelines
 
+When writing tests, always run the tests to make sure they pass. Additionally, always run the tests without the watch mode so it doesn't hang up the terminal.
+
 ## Setup
 ```typescript
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';

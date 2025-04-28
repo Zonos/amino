@@ -113,7 +113,7 @@ Our format extends the base m-yoshiro/storybook-mcp implementation in several ke
 
 1. **TypeScript Interfaces** - Full TypeScript interface definitions extracted from component source code
 2. **Props Documentation** - Comprehensive documentation for component props including types, defaults, and descriptions
-3. **Examples** - Code examples showing common usage patterns
+3. **JSDoc Examples** - Code examples from component JSDoc comments using @example tags
 4. **Categories and Tags** - Organizational metadata for improved discoverability
 5. **Storybook Links** - Direct links to component documentation in Storybook
 
@@ -123,7 +123,7 @@ The documentation extractor will:
 
 1. Parse TypeScript files to extract interfaces and types
 2. Extract JSDoc comments for descriptions
-3. Identify examples from Storybook stories
+3. Extract examples from JSDoc @example tags
 4. Generate JSON files in the specified format
 5. Create index files for efficient lookup
 

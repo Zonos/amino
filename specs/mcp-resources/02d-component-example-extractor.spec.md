@@ -2,293 +2,132 @@
 
 ## Overview
 
-This document outlines our strategy for extracting component examples from Storybook stories for the MCP documentation system. The example extractor will retrieve usage examples, prop configurations, and interactive demonstrations that showcase how Amino components should be used.
+This document outlines our strategy for extracting component examples from JSDoc comments for the MCP documentation system. As part of our focused implementation approach, JSDoc example extraction represents our first priority, with the Storybook story extraction potentially being implemented in a later phase.
+
+## Decision
+
+We have decided to **use JSDoc @example tags** as the primary source for component examples as part of our phased implementation approach. This decision allows us to deliver valuable documentation quickly while establishing the foundation for our documentation system.
+
+## Rationale
+
+1. **Implementation Simplicity**: JSDoc example extraction is significantly simpler to implement compared to parsing complex Storybook story patterns.
+
+2. **Direct Control**: Authors have direct control over which examples appear in documentation by explicitly marking them in component files.
+
+3. **Co-location**: Examples live alongside component code and type definitions, creating a single source of truth.
+
+4. **Integration with Initial Extractor**: JSDoc examples naturally integrate with our first-phase JSDoc comment extractor, creating a cohesive initial implementation.
+
+5. **Clear Documentation Path**: By standardizing on JSDoc examples, we establish a clear path for component documentation that aligns with existing documentation practices.
+
+6. **Focused Delivery**: Implementing JSDoc example extraction first allows us to deliver a viable documentation system quickly, with enhancements to follow in later phases.
 
 ## Approach
 
-We will implement a dedicated component example extractor that analyzes Storybook story files to extract representative examples of component usage. This extractor will complement the type information from the TypeScript interface parser and the documentation from the JSDoc comment extractor.
+We will implement a dedicated component example extractor that analyzes JSDoc comments for `@example` tags and extracts structured examples for documentation:
+
+1. **JSDoc Integration**: Leverage the existing JSDoc comment extractor to identify example blocks.
+
+2. **Example Parsing**: Parse example code blocks with appropriate syntax highlighting.
+
+3. **Props Identification**: When possible, identify props used in example code.
+
+4. **Example Organization**: Group examples by component and variant.
+
+5. **Integration with Documentation System**: Structure examples to integrate with the broader documentation system.
 
 ## Implementation Strategy
 
-Our implementation will focus on extracting component examples from Storybook stories using the following approach:
+Our implementation will focus on extracting JSDoc examples as part of the JSDoc comment extraction process:
 
-1. **Story File Discovery**: Locate story files associated with components using standard naming conventions.
+1. **Example Identification**: Locate `@example` tags within JSDoc comments as part of the main JSDoc extraction process.
 
-2. **Story Parsing**: Extract stories using static analysis of story files, focusing on both CSF (Component Story Format) and MDX format stories.
+2. **Example Extraction**: Extract example code blocks and accompanying descriptions.
 
-3. **Props Extraction**: Identify the props used in each story to showcase different component configurations.
+3. **Code Formatting**: Format examples with proper syntax highlighting and indentation.
 
-4. **Example Code Generation**: Create clean, representative code examples from the story implementations.
+4. **Example Metadata**: Extract metadata like example names/descriptions from comments.
 
-5. **Variant Organization**: Group stories by variants to showcase different use cases for each component.
-
-6. **Integration with Documentation System**: Structure the extracted examples to integrate with the broader documentation system.
+5. **Example Integration**: Link examples to components and their properties.
 
 ## Core Components
 
-### 1. Story File Discovery Module
+### 1. Example Extraction Module
 
-This module will locate story files associated with components:
+This module will extract examples from JSDoc comments as part of our phase 1 implementation:
 
-```typescript
-import { glob } from 'glob';
-import { resolve, basename } from 'path';
-import { ComponentInfo } from '../types';
+- Extract `@example` tags from JSDoc comments during the JSDoc extraction process
+- Parse each example to separate description from code
+- Create structured example objects with name, description, and code
+- Support multiline code blocks within JSDoc comments
+- Detect language/syntax of examples for proper highlighting
 
-export async function findComponentStories(
-  componentInfo: ComponentInfo
-): Promise<string[]> {
-  const { name, directory } = componentInfo;
-  
-  // Look for stories in common locations
-  const storyPatterns = [
-    // Component-specific stories
-    `${directory}/**/${name}.stories.@(tsx|jsx|ts|js|mdx)`,
-    `${directory}/**/__stories__/${name}.stories.@(tsx|jsx|ts|js|mdx)`,
-    
-    // Stories in the root stories directory
-    `src/__stories__/${name}.stories.@(tsx|jsx|ts|js|mdx)`
-  ];
-  
-  // Find all matching story files
-  const storyFiles = await Promise.all(
-    storyPatterns.map(pattern => glob(pattern))
-  );
-  
-  // Flatten and filter unique paths
-  return [...new Set(storyFiles.flat())];
-}
-```
+### 2. Example Formatter Module
 
-### 2. Story Parser Module
+This module will format examples for documentation:
 
-This module will extract stories from story files:
+- Generate unique identifiers for each example
+- Format examples with proper indentation and syntax highlighting
+- Extract prop usage information from example code where possible
+- Categorize examples by their purpose or demonstrated functionality
+- Prepare examples in a format suitable for documentation output
+
+## JSDoc Example Format
+
+To maintain consistency in documentation, we'll standardize on the following JSDoc example format:
 
 ```typescript
-import * as ts from 'typescript';
-import { readFileSync } from 'fs';
-import { ComponentExample } from '../types';
-
-export function extractStoriesFromFile(filePath: string): ComponentExample[] {
-  const examples: ComponentExample[] = [];
-  
-  // Handle different file formats
-  if (filePath.endsWith('.mdx')) {
-    examples.push(...extractMDXStories(filePath));
-  } else {
-    examples.push(...extractCSFStories(filePath));
-  }
-  
-  return examples;
-}
-
-function extractCSFStories(filePath: string): ComponentExample[] {
-  // Read and parse the file
-  const fileContent = readFileSync(filePath, 'utf8');
-  const sourceFile = ts.createSourceFile(
-    filePath,
-    fileContent,
-    ts.ScriptTarget.Latest,
-    true
-  );
-  
-  // Find export declarations that represent stories
-  const examples: ComponentExample[] = [];
-  ts.forEachChild(sourceFile, node => {
-    if (ts.isExportDeclaration(node) || 
-        (ts.isVariableStatement(node) && 
-         hasExportModifier(node))) {
-      const example = extractExampleFromNode(node, fileContent);
-      if (example) {
-        examples.push(example);
-      }
-    }
-  });
-  
-  return examples;
-}
-
-function extractMDXStories(filePath: string): ComponentExample[] {
-  // Implementation for MDX story extraction
-  // This will require parsing MDX format which combines JSX and Markdown
-  // ...
-}
-```
-
-### 3. Example Generator Module
-
-This module will create clean code examples from stories:
-
-```typescript
-import { ComponentExample } from '../types';
-
-export function generateCodeExample(
-  storyNode: ts.Node,
-  sourceCode: string
-): ComponentExample {
-  // Extract the story function body
-  const storyCode = extractStoryFunction(storyNode, sourceCode);
-  
-  // Extract story metadata
-  const storyName = getStoryName(storyNode);
-  const storyDescription = getStoryDescription(storyNode);
-  
-  // Extract props used in the story
-  const props = extractPropsFromStory(storyNode);
-  
-  // Clean up the code for presentation
-  const cleanedCode = cleanCodeForExample(storyCode);
-  
-  return {
-    name: storyName,
-    description: storyDescription,
-    code: cleanedCode,
-    props
-  };
-}
-```
-
-### 4. Integration Module
-
-This module will integrate the extracted examples with the component documentation:
-
-```typescript
-import { ComponentDocumentation, ComponentExample } from '../types';
-
-export function integrateExamplesWithDocumentation(
-  documentation: ComponentDocumentation,
-  examples: ComponentExample[]
-): ComponentDocumentation {
-  // Group examples by variant
-  const groupedExamples = groupExamplesByVariant(examples);
-  
-  // Add examples to documentation
-  return {
-    ...documentation,
-    examples: groupedExamples
-  };
-}
-```
-
-## Handling Different Story Formats
-
-### Component Story Format (CSF)
-
-For modern CSF stories:
-
-```typescript
-function extractCSFStories(sourceFile: ts.SourceFile): ComponentExample[] {
-  const examples: ComponentExample[] = [];
-  
-  // Find default export for component metadata
-  const defaultExport = findDefaultExport(sourceFile);
-  const componentMetadata = extractComponentMetadata(defaultExport);
-  
-  // Find named exports for individual stories
-  const namedExports = findNamedExports(sourceFile);
-  
-  // Process each story export
-  for (const storyExport of namedExports) {
-    const example = processStoryExport(storyExport, componentMetadata);
-    if (example) {
-      examples.push(example);
-    }
-  }
-  
-  return examples;
-}
-```
-
-### MDX Format
-
-For MDX format stories:
-
-```typescript
-function extractMDXStories(filePath: string): ComponentExample[] {
-  // Read MDX content
-  const mdxContent = readFileSync(filePath, 'utf8');
-  
-  // Use a custom MDX parser or adapt an existing one
-  const parsedMDX = parseMDX(mdxContent);
-  
-  // Extract stories from the parsed MDX
-  const examples = extractStoriesFromMDX(parsedMDX);
-  
-  return examples;
-}
+/**
+ * Button component for user interactions.
+ * 
+ * @example Basic button
+ * <Button>Click me</Button>
+ * 
+ * @example Primary button with icon
+ * <Button variant="primary" leftIcon={<Icon name="check" />}>
+ *   Submit
+ * </Button>
+ * 
+ * @example Disabled button
+ * <Button disabled>Cannot click</Button>
+ */
+export const Button = ({ variant, size, children, ...rest }: ButtonProps): React.ReactElement => {
+  // Component implementation
+};
 ```
 
 ## Integration with Documentation Pipeline
 
-The component example extractor will integrate with the broader documentation pipeline as follows:
+The JSDoc example extractor will integrate with the broader documentation pipeline as follows:
 
-1. After type information and JSDoc comments are extracted, the example extractor processes story files.
-2. Examples are organized by variant and use case.
-3. The example data is combined with type information and JSDoc comments.
-4. The combined data provides comprehensive documentation including practical usage examples.
+1. The JSDoc comment extractor processes source files to extract JSDoc comments.
+2. The example extractor identifies and processes `@example` tags within these comments.
+3. Examples are formatted and organized for documentation.
+4. Example data is combined with type information and other JSDoc comments.
+5. The combined data provides comprehensive documentation including practical usage examples.
 
-## Handling Edge Cases
+## Phase 2 Considerations (Future)
 
-### Stories without Explicit Props
+In future phases, we may consider enhancing our example extraction approach:
 
-For stories that don't explicitly define props:
+1. **Storybook Integration**: Evaluate the implementation of a Storybook story parser to supplement JSDoc examples with interactive examples from our Storybook stories.
 
-```typescript
-function extractImplicitProps(storyNode: ts.Node): Record<string, unknown> {
-  const props: Record<string, unknown> = {};
-  
-  // Analyze the JSX to extract prop values
-  ts.forEachChild(storyNode, node => {
-    if (isJsxAttribute(node)) {
-      const propName = node.name.text;
-      const propValue = evaluatePropValue(node.initializer);
-      props[propName] = propValue;
-    }
-  });
-  
-  return props;
-}
-```
+2. **Enhanced Example Analysis**: Improve the analysis of example code to better extract prop usage patterns and component relationships.
 
-### Dynamic Stories
+3. **Interactive Examples**: Add support for interactive examples that can be rendered in documentation.
 
-For stories that use dynamic props or controls:
-
-```typescript
-function handleDynamicProps(storyNode: ts.Node): Record<string, unknown> {
-  // Look for args patterns in the story
-  const argsPattern = findArgsPattern(storyNode);
-  if (argsPattern) {
-    return extractArgsObject(argsPattern);
-  }
-  
-  // Look for control usage
-  const controlsUsage = findControlsUsage(storyNode);
-  if (controlsUsage) {
-    return extractControlValues(controlsUsage);
-  }
-  
-  return {};
-}
-```
-
-## Performance Considerations
-
-To ensure optimal performance of the example extractor:
-
-1. **Caching**: Cache extracted examples for files that haven't changed.
-2. **Selective Processing**: Only process story files for components being documented.
-3. **Parallel Processing**: Process multiple story files in parallel where possible.
+4. **Example Validation**: Implement validation of examples to ensure they follow best practices and use correct props.
 
 ## Next Steps
 
-1. Implement the story file discovery module in `build-utils/mcp/extractors/example-discovery.ts`
-2. Develop the story parser with support for CSF and MDX formats
-3. Create the example generator for clean code examples
-4. Implement the integration with the documentation system
-5. Add tests for various story formats used in Amino components
+1. Implement the JSDoc example extraction as part of the JSDoc comment extractor
+2. Create documentation and guidelines for authoring JSDoc examples
+3. Update component files to include standardized examples
+4. Test the extraction with various example formats
+5. Integrate with the main documentation pipeline
+6. Plan for phase 2 enhancements
 
 ## References
 
-- [Storybook Component Story Format](https://storybook.js.org/docs/react/api/csf)
-- [MDX Documentation](https://mdxjs.com/docs/)
+- [JSDoc Documentation](https://jsdoc.app/)
+- [TypeScript JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)

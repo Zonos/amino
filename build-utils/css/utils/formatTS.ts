@@ -1,14 +1,35 @@
-import { format, resolveConfig, resolveConfigFile } from 'prettier';
+/**
+ * TypeScript code formatter utility
+ * Applies consistent formatting to TypeScript code using Prettier
+ */
+
+import type { Options } from 'prettier';
+import { format } from 'prettier';
 
 /**
- * Format css file using prettier api
- * @param content File content to format
- * */
-export const formatTS = async (content: string) => {
-  const configFile = await resolveConfigFile();
-  const options = (await resolveConfig(configFile || '')) || {};
-  return format(content, {
-    ...options,
-    parser: 'typescript',
-  });
-};
+ * Format TypeScript code according to project standards
+ *
+ * @param code - The TypeScript code to format
+ * @param options - Optional Prettier options to override defaults
+ * @returns Formatted TypeScript code
+ */
+export async function formatTS(
+  code: string,
+  options: Partial<Options> = {},
+): Promise<string> {
+  try {
+    // Get Prettier configuration from project config
+    const prettierConfig = await import('../../../prettier.config.mjs');
+
+    // Apply formatting with project config and any overrides
+    return format(code, {
+      ...prettierConfig.default,
+      ...options,
+      parser: 'typescript',
+    });
+  } catch (error) {
+    console.error('Error formatting TypeScript code:', error);
+    // Return original code if formatting fails
+    return code;
+  }
+}

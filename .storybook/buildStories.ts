@@ -1,5 +1,5 @@
-import { capitalize } from 'build-utils/css/utils/capitalize';
 import { glob } from 'glob';
+import capitalize from 'lodash/capitalize';
 
 // https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
 type StorySpecifier = {

@@ -46,7 +46,7 @@ describe('formatCurrency', () => {
   });
 });
 
-describe('formatCurrency (langauge code: it)', () => {
+describe('formatCurrency (language code: it)', () => {
   beforeAll(() => {
     // Mock navigator.language
     const mockNavigatorLanguage = 'it';

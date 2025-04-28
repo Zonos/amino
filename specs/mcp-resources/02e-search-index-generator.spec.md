@@ -2,374 +2,127 @@
 
 ## Overview
 
-This document outlines our strategy for generating a search index from component documentation for the MCP documentation system. The search index generator will create efficient data structures to enable fast and relevant searching across component names, descriptions, props, and examples.
+This document outlines our strategy for creating an efficient search index for component documentation in the MCP server implementation. The search index generator will produce optimized data structures that enable fast, relevant search across component metadata, props, and examples.
 
 ## Approach
 
-We will implement a dedicated search index generator that processes the structured documentation data from the TypeScript interface parser, JSDoc comment extractor, and component example extractor. This generator will create optimized search indices that support various query types and relevance-based ranking of results.
+We will implement a dedicated search index generator that processes component documentation and creates specialized indices for different search scenarios. This component will focus on producing compact, efficient search indices that support the performance requirements of the MCP server.
 
 ## Implementation Strategy
 
-Our implementation will focus on creating efficient search indices using the following approach:
+Our implementation will focus on creating a customized inverted index structure optimized for component documentation using the following approach:
 
-1. **Document Aggregation**: Combine component documentation from multiple extractors into a unified format.
+1. **Text Processing**: Implement tokenization, normalization, and indexing of component text content.
 
-2. **Text Processing**: Apply text normalization, tokenization, and stemming to enhance search quality.
+2. **Field-Specific Indexing**: Create specialized indices for component names, descriptions, props, and examples.
 
-3. **Index Creation**: Generate inverted indices for efficient term-based lookups.
+3. **Relevance Scoring**: Implement a scoring system that prioritizes matches based on field importance.
 
-4. **Relevance Scoring**: Implement algorithms for ranking search results based on relevance.
+4. **Search Optimization**: Support prefix matching, fuzzy matching, and exact matching with appropriate optimizations.
 
-5. **Search Optimization**: Create specialized indices for common search patterns.
-
-6. **Index Serialization**: Serialize indices to JSON for efficient storage and retrieval.
+5. **Index Serialization**: Create compact, serialized representations of search indices.
 
 ## Core Components
 
-### 1. Document Processor
-
-This module will prepare documentation for indexing:
-
-```typescript
-import { ComponentDocumentation } from '../types';
-import { SearchDocument } from './types';
-
-export function processDocumentsForIndexing(
-  components: ComponentDocumentation[]
-): SearchDocument[] {
-  return components.map(component => ({
-    id: component.name,
-    name: component.name,
-    description: component.description,
-    category: component.category,
-    props: Object.entries(component.props).map(([name, prop]) => ({
-      name,
-      description: prop.description,
-      type: prop.type
-    })),
-    examples: component.examples.map(example => ({
-      title: example.name,
-      description: example.description,
-      code: example.code
-    }))
-  }));
-}
-```
-
-### 2. Text Processor
+### 1. Text Processing Module
 
 This module will handle text normalization and tokenization:
 
-```typescript
-export function processText(text: string): string[] {
-  // Convert to lowercase
-  const lowercased = text.toLowerCase();
-  
-  // Remove special characters
-  const cleaned = lowercased.replace(/[^\w\s]/g, ' ');
-  
-  // Split into tokens
-  const tokens = cleaned.split(/\s+/).filter(Boolean);
-  
-  // Apply stemming
-  const stemmed = tokens.map(token => stemWord(token));
-  
-  // Remove duplicates and stopwords
-  return [...new Set(stemmed)].filter(token => !isStopword(token));
-}
+- Implement tokenization for component text fields
+- Apply text normalization (lowercase, stemming, etc.)
+- Handle special cases like camelCase and kebab-case identifiers
+- Generate n-grams for substring matching
+- Remove stop words specific to component documentation
 
-function stemWord(word: string): string {
-  // Basic stemming implementation
-  // In production, use a library like stemmer or natural
-  
-  // Remove common suffixes
-  if (word.endsWith('ing')) return word.slice(0, -3);
-  if (word.endsWith('ed')) return word.slice(0, -2);
-  if (word.endsWith('s')) return word.slice(0, -1);
-  
-  return word;
-}
+### 2. Indexing Module
 
-function isStopword(word: string): boolean {
-  const stopwords = new Set([
-    'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'with'
-  ]);
-  
-  return stopwords.has(word);
-}
-```
+This module will build the search index structures:
 
-### 3. Inverted Index Builder
+- Create inverted indices mapping terms to components
+- Build specialized indices for different field types
+- Implement prefix trie structures for autocomplete
+- Generate field-specific indices (names, props, descriptions)
+- Include metadata for relevance scoring
 
-This module will create the inverted index:
+### 3. Scoring Module
 
-```typescript
-import { SearchDocument } from './types';
+This module will implement relevance scoring for search results:
 
-interface InvertedIndex {
-  [term: string]: {
-    documentIds: string[];
-    positions: {
-      [documentId: string]: number[];
-    };
-  };
-}
+- Define field weights (names > props > descriptions)
+- Implement TF-IDF based scoring
+- Add position-based relevance factors
+- Include exact match bonuses
+- Support recency factors for newer components
 
-export function buildInvertedIndex(documents: SearchDocument[]): InvertedIndex {
-  const index: InvertedIndex = {};
-  
-  documents.forEach(document => {
-    // Process document fields
-    const fields = [
-      { text: document.name, weight: 10 },
-      { text: document.description, weight: 5 },
-      ...document.props.map(prop => ({ 
-        text: `${prop.name} ${prop.description} ${prop.type}`,
-        weight: 3
-      })),
-      ...document.examples.map(example => ({
-        text: `${example.title} ${example.description}`,
-        weight: 2
-      }))
-    ];
-    
-    // Process each field
-    fields.forEach(field => {
-      const tokens = processText(field.text);
-      
-      // Update index for each token
-      tokens.forEach((token, position) => {
-        if (!index[token]) {
-          index[token] = {
-            documentIds: [],
-            positions: {}
-          };
-        }
-        
-        // Add document to token's documents list
-        if (!index[token].documentIds.includes(document.id)) {
-          index[token].documentIds.push(document.id);
-        }
-        
-        // Record position of token in document
-        if (!index[token].positions[document.id]) {
-          index[token].positions[document.id] = [];
-        }
-        index[token].positions[document.id].push(position);
-      });
-    });
-  });
-  
-  return index;
-}
-```
+### 4. Search Query Processing
 
-### 4. Search Engine
+This module will handle search query execution:
 
-This module will handle search queries using the inverted index:
+- Parse and normalize search queries
+- Execute multi-stage search pipeline
+- Handle prefix and fuzzy matching
+- Apply relevance scoring
+- Return ranked results
 
-```typescript
-import { SearchDocument } from './types';
+### 5. Index Serialization
 
-export function searchIndex(
-  query: string,
-  index: InvertedIndex,
-  documents: SearchDocument[]
-): SearchResult[] {
-  // Process the query
-  const queryTokens = processText(query);
-  
-  // Find matching documents
-  const matchingDocumentScores = new Map<string, number>();
-  
-  // Score each query token
-  queryTokens.forEach(token => {
-    const indexEntry = index[token];
-    
-    if (indexEntry) {
-      indexEntry.documentIds.forEach(docId => {
-        // Calculate score for this token in this document
-        const score = calculateScore(token, docId, indexEntry, query);
-        
-        // Update document score
-        const currentScore = matchingDocumentScores.get(docId) || 0;
-        matchingDocumentScores.set(docId, currentScore + score);
-      });
-    }
-  });
-  
-  // Sort results by score
-  const results = Array.from(matchingDocumentScores.entries())
-    .map(([docId, score]) => ({
-      document: documents.find(doc => doc.id === docId)!,
-      score
-    }))
-    .sort((a, b) => b.score - a.score);
-  
-  return results;
-}
+This module will handle conversion to JSON-serializable format:
 
-function calculateScore(
-  token: string,
-  documentId: string,
-  indexEntry: IndexEntry,
-  query: string
-): number {
-  // Calculate TF (term frequency)
-  const termFrequency = indexEntry.positions[documentId].length;
-  
-  // Calculate IDF (inverse document frequency)
-  const documentCount = /* total number of documents */;
-  const documentFrequency = indexEntry.documentIds.length;
-  const inverseDocumentFrequency = Math.log(documentCount / documentFrequency);
-  
-  // Calculate TF-IDF score
-  const tfIdf = termFrequency * inverseDocumentFrequency;
-  
-  // Adjust score based on position (matches at the beginning are more important)
-  const positionBoost = calculatePositionBoost(indexEntry.positions[documentId]);
-  
-  // Adjust score if the token is an exact match to a component name
-  const exactMatchBoost = token === documentId.toLowerCase() ? 5 : 1;
-  
-  return tfIdf * positionBoost * exactMatchBoost;
-}
-```
+- Create optimized representation of indices
+- Compress index structures where possible
+- Format indices for efficient client-side use
+- Structure output for incremental loading
 
-### 5. Index Serializer
+## Search Features
 
-This module will serialize the index for storage:
+The search index will support the following search features:
 
-```typescript
-import { writeFileSync } from 'fs';
-import { InvertedIndex, SearchDocument } from './types';
+1. **Component Name Search**: High-precision matching on component names
+2. **Prop Name Search**: Finding components by their prop names
+3. **Description Search**: Full-text search in component descriptions
+4. **Tag and Category Search**: Finding components by tags or categories
+5. **Example Code Search**: Searching within component example code
+6. **Prefix Matching**: Support for partial word searches (auto-complete)
+7. **Fuzzy Matching**: Tolerance for typos and spelling variations
 
-export function serializeIndices(
-  index: InvertedIndex,
-  documents: SearchDocument[],
-  outputPath: string
-): void {
-  // Create the serializable index data
-  const indexData = {
-    version: '1.0.0',
-    documents,
-    index
-  };
-  
-  // Write to file
-  writeFileSync(
-    outputPath,
-    JSON.stringify(indexData, null, 2),
-    'utf8'
-  );
-}
-```
+## Performance Considerations
 
-## Specialized Indices
+To ensure optimal search performance:
 
-To optimize for common search patterns, we'll create specialized indices:
-
-### Component Name Index
-
-```typescript
-function createNameIndex(documents: SearchDocument[]): NameIndex {
-  const nameIndex: NameIndex = {};
-  
-  documents.forEach(doc => {
-    // Create mappings for full name
-    nameIndex[doc.name.toLowerCase()] = doc.id;
-    
-    // Create mappings for partial names (prefix search)
-    for (let i = 1; i <= doc.name.length; i++) {
-      const prefix = doc.name.slice(0, i).toLowerCase();
-      if (!nameIndex[prefix]) {
-        nameIndex[prefix] = [];
-      }
-      if (Array.isArray(nameIndex[prefix])) {
-        nameIndex[prefix].push(doc.id);
-      }
-    }
-  });
-  
-  return nameIndex;
-}
-```
-
-### Category Index
-
-```typescript
-function createCategoryIndex(documents: SearchDocument[]): CategoryIndex {
-  const categoryIndex: CategoryIndex = {};
-  
-  documents.forEach(doc => {
-    if (!doc.category) return;
-    
-    if (!categoryIndex[doc.category]) {
-      categoryIndex[doc.category] = [];
-    }
-    
-    categoryIndex[doc.category].push(doc.id);
-  });
-  
-  return categoryIndex;
-}
-```
-
-### Props Index
-
-```typescript
-function createPropsIndex(documents: SearchDocument[]): PropsIndex {
-  const propsIndex: PropsIndex = {};
-  
-  documents.forEach(doc => {
-    doc.props.forEach(prop => {
-      const propKey = prop.name.toLowerCase();
-      
-      if (!propsIndex[propKey]) {
-        propsIndex[propKey] = [];
-      }
-      
-      propsIndex[propKey].push({
-        componentId: doc.id,
-        propDescription: prop.description
-      });
-    });
-  });
-  
-  return propsIndex;
-}
-```
+1. **Index Size Optimization**: Minimize index size for quick loading
+2. **Search Execution Speed**: Optimize for <10ms search execution time
+3. **Memory Usage**: Balance between performance and memory consumption
+4. **Incremental Updates**: Support for updating only changed components
 
 ## Integration with Documentation Pipeline
 
 The search index generator will integrate with the broader documentation pipeline as follows:
 
-1. All extractors (TypeScript interface parser, JSDoc comment extractor, component example extractor) complete their work.
-2. The search index generator receives the combined documentation.
-3. Multiple indices are generated for different search scenarios.
-4. The indices are serialized to JSON files as part of the documentation output.
-5. The indices are available for client-side search or API-based search.
+1. After component documentation is extracted and processed, the search index generator receives the aggregated documentation
+2. The generator creates optimized search indices from this documentation
+3. The indices are serialized as part of the documentation output
+4. The MCP server uses these indices for search functionality
 
-## Performance Considerations
+## Search Algorithm Selection
 
-To ensure optimal performance of the search index generator:
+We'll implement a multi-stage search algorithm:
 
-1. **Incremental Updates**: Only rebuild indices for components that have changed.
-2. **Selective Indexing**: Include only necessary fields to keep indices compact.
-3. **Parallel Processing**: Generate different types of indices in parallel.
-4. **Compression**: Apply techniques to reduce index size without compromising search quality.
+1. **Stage 1**: Exact matches on component names
+2. **Stage 2**: Prefix matches on component names
+3. **Stage 3**: Exact matches on prop names and tags
+4. **Stage 4**: Full-text matches on descriptions
+5. **Stage 5**: Fuzzy matches as fallback
 
 ## Next Steps
 
-1. Implement the document processor in `build-utils/mcp/search/document-processor.ts`
-2. Create the text processing module with tokenization and stemming
-3. Implement the inverted index builder
-4. Develop the search functionality
-5. Create the index serialization module
-6. Add tests for search performance and relevance
+1. Implement the text processing module in `build-utils/mcp/generators/search-text-processor.ts`
+2. Create the indexing module for building search indices
+3. Implement the scoring system for relevance ranking
+4. Develop the serialization format for efficient storage
+5. Create test suite with various search scenarios
 
 ## References
 
-- [Information Retrieval: Inverted Index](https://en.wikipedia.org/wiki/Inverted_index)
-- [TF-IDF Scoring](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
-- [Stemming Algorithms](https://en.wikipedia.org/wiki/Stemming)
+- [Inverted Index (Wikipedia)](https://en.wikipedia.org/wiki/Inverted_index)
+- [TF-IDF (Wikipedia)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+- [Trie Data Structure (Wikipedia)](https://en.wikipedia.org/wiki/Trie)
