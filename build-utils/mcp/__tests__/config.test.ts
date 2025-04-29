@@ -136,7 +136,9 @@ describe('config', () => {
         validateConfiguration({ componentDirs: [] }).componentDirs,
       ).toEqual(DEFAULT_CONFIG.componentDirs);
       expect(
-        validateConfiguration({ componentDirs: null as unknown as string[] | undefined }).componentDirs,
+        validateConfiguration({
+          componentDirs: null as unknown as string[] | undefined,
+        }).componentDirs,
       ).toEqual(DEFAULT_CONFIG.componentDirs);
     });
 
@@ -154,7 +156,9 @@ describe('config', () => {
         DEFAULT_CONFIG.outputDir,
       );
       expect(
-        validateConfiguration({ outputDir: null as unknown as string | undefined }).outputDir,
+        validateConfiguration({
+          outputDir: null as unknown as string | undefined,
+        }).outputDir,
       ).toBe(DEFAULT_CONFIG.outputDir);
     });
 
@@ -164,12 +168,15 @@ describe('config', () => {
         validateConfiguration({ includePrivate: true }).includePrivate,
       ).toBe(true);
 
-      expect(validateConfiguration({ verbose: 'yes' as unknown as boolean | undefined }).verbose).toBe(
-        DEFAULT_CONFIG.verbose,
-      );
       expect(
-        validateConfiguration({ includePrivate: 'yes' as unknown as boolean | undefined })
-          .includePrivate,
+        validateConfiguration({
+          verbose: 'yes' as unknown as boolean | undefined,
+        }).verbose,
+      ).toBe(DEFAULT_CONFIG.verbose);
+      expect(
+        validateConfiguration({
+          includePrivate: 'yes' as unknown as boolean | undefined,
+        }).includePrivate,
       ).toBe(DEFAULT_CONFIG.includePrivate);
     });
 
