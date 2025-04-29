@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Make sure transformLogicConstant in LogicConstant work properly > Case: ''Has 1 import'' > Has 1 import 1`] = `
+"export const test = {
+  key1: 'value1',
+  key2: 'value2',
+} as const;
+"
+`;
+
+exports[`Make sure transformLogicConstant in LogicConstant work properly > Case: ''Has 2 imports'' > Has 2 imports 1`] = `
+"export const test = {
+  key1: 'value1',
+  key2: 'value2',
+
+  /** Example 2 */
+  keyExample21: 'value Example2 1',
+  keyExample22: 'value Example2 2',
+} as const;
+"
+`;
