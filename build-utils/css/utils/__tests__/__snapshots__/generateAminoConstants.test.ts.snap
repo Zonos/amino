@@ -162,37 +162,37 @@ exports[`Case light theme 1`] = `
   cyan950: 'var(--amino-cyan-950)',
 
   /* RED PALETTE */
-  /** @info #FFF1F2  */
+  /** @info #FFF1F3  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red50: 'var(--amino-red-50)',
-  /** @info #FFDFE1  */
+  /** @info #FFDDE0  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red100: 'var(--amino-red-100)',
-  /** @info #FFC2C6  */
+  /** @info #FBC1C6  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red200: 'var(--amino-red-200)',
-  /** @info #FF939B  */
+  /** @info #FF8D98  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red300: 'var(--amino-red-300)',
-  /** @info #FF616B  */
+  /** @info #FF5464  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red400: 'var(--amino-red-400)',
-  /** @info #FF2237  */
+  /** @info #E7293C  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red500: 'var(--amino-red-500)',
-  /** @info #D00017  */
+  /** @info #C41524  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red600: 'var(--amino-red-600)',
-  /** @info #AD000F  */
+  /** @info #A3101B  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red700: 'var(--amino-red-700)',
-  /** @info #94000F  */
+  /** @info #8B0C18  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red800: 'var(--amino-red-800)',
-  /** @info #6A000C  */
+  /** @info #620812  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red900: 'var(--amino-red-900)',
-  /** @info #470005  */
+  /** @info #410509  */
   /* THIS IS GENERATED VARIABLE! DON'T TOUCH IT!!! */
   red950: 'var(--amino-red-950)',
 
