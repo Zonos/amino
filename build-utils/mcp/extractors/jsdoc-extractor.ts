@@ -219,8 +219,70 @@ export function extractComponentDocumentation(
     // Extract JSDoc comments from the main file
     const comments = extractJSDocComments(mainFile, options.verbose);
 
-    // For Phase 1, we focus on the top-level component comment only (usually the first JSDoc comment)
-    const topLevelComment = comments.length > 0 ? comments[0] : undefined;
+    // Process all comments to merge them together
+    let mergedComment: JSDocComment | undefined;
+
+    if (comments.length > 0) {
+      // Look for the most comprehensive component documentation
+      // Prioritize comments on exported functions and classes that have examples
+      const mainComponentComment = comments.find(comment => {
+        // Check if it's likely a component comment by checking for keywords
+        const isComponentComment =
+          comment.description.toLowerCase().includes('component') ||
+          comment.tags.some(tag => tag.name === 'example');
+
+        return isComponentComment;
+      });
+
+      // If we found a main component comment, use it; otherwise use the longest comment
+      if (mainComponentComment) {
+        mergedComment = mainComponentComment;
+      } else {
+        // If no obvious component comment, use the longest/most detailed one
+        mergedComment = comments.sort(
+          (a, b) =>
+            b.description.length +
+            b.tags.length -
+            (a.description.length + a.tags.length),
+        )[0];
+      }
+
+      // Collect all example tags from all comments
+      if (mergedComment) {
+        // Find unique example tags across all comments
+        const allExampleTags = comments
+          .flatMap(comment =>
+            comment.tags.filter(tag => tag.name === 'example'),
+          )
+          .filter(
+            (tag, index, self) =>
+              index === self.findIndex(t => t.text === tag.text),
+          );
+
+        // If we have extra examples, add them to our merged comment
+        if (
+          allExampleTags.length >
+          mergedComment.tags.filter(tag => tag.name === 'example').length
+        ) {
+          // Get only the non-example tags from the merged comment
+          const nonExampleTags = mergedComment.tags.filter(
+            tag => tag.name !== 'example',
+          );
+
+          // Combine non-example tags with all example tags
+          mergedComment = {
+            ...mergedComment,
+            tags: [...nonExampleTags, ...allExampleTags],
+          };
+        }
+      }
+
+      if (options.verbose) {
+        console.log(
+          `Found ${comments.length} JSDoc comments for component ${componentName}`,
+        );
+      }
+    }
 
     // Correctly format the component name: use PascalCase for name, lowercase for ID
     // Convert kebab-case or snake_case to PascalCase
@@ -230,7 +292,7 @@ export function extractComponentDocumentation(
       .join('');
 
     return {
-      comment: topLevelComment,
+      comment: mergedComment,
       filePath: path.relative(process.cwd(), mainFile),
       id: componentName.toLowerCase(),
       name: formattedComponentName,
