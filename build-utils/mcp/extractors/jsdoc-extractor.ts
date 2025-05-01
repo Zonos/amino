@@ -180,7 +180,7 @@ export function extractComponentDocumentation(
 
     let mainFile: string | null = null;
 
-    // Try to find the main file using the patterns
+    // Try each possible file pattern
     for (const pattern of possibleFilePatterns) {
       const filePath = path.join(componentDir, pattern);
       if (fs.existsSync(filePath)) {
@@ -189,8 +189,8 @@ export function extractComponentDocumentation(
       }
     }
 
-    // If no main file found with patterns, try to find any .tsx or .ts file in the directory
-    if (!mainFile) {
+    // If no file found, search through the files
+    if (!mainFile && fs.existsSync(componentDir)) {
       const files = fs.readdirSync(componentDir);
       const tsxFiles = files.filter(
         file => file.endsWith('.tsx') || file.endsWith('.ts'),
@@ -222,11 +222,16 @@ export function extractComponentDocumentation(
     // For Phase 1, we focus on the top-level component comment only (usually the first JSDoc comment)
     const topLevelComment = comments.length > 0 ? comments[0] : undefined;
 
+    // Correctly format the component name: use PascalCase for name, lowercase for ID
+    // Convert first letter to uppercase to ensure proper component naming
+    const formattedComponentName =
+      componentName.charAt(0).toUpperCase() + componentName.slice(1);
+
     return {
       comment: topLevelComment,
       filePath: path.relative(process.cwd(), mainFile),
       id: componentName.toLowerCase(),
-      name: componentName,
+      name: formattedComponentName,
       path: path.relative(process.cwd(), componentDir),
     };
   } catch (error) {
