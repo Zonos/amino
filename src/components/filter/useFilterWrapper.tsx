@@ -39,6 +39,131 @@ type UseFilterProps = {
 
 export type FilterProps = BaseFilterProps & UseFilterProps;
 
+/**
+ * A custom hook that provides state management and behavior for filter components.
+ * It works with the FilterWrapper component to create consistent filtering experiences.
+ *
+ * The hook handles filter state, dropdown behavior, keyboard interactions, and filter application.
+ * It returns methods to manage filter state and a renderWrapper function to render the FilterWrapper component.
+ *
+ * @example Basic filter with select options
+ * ```tsx
+ * const [isFilterActive, setIsFilterActive] = useState(false);
+ * const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+ *
+ * const {
+ *   renderWrapper,
+ *   setFilterText
+ * } = useFilterWrapper({
+ *   dropdownTitle: "Status",
+ *   isActive: isFilterActive,
+ *   label: "Status",
+ *   setActive: setIsFilterActive,
+ *   initialFilterText: "All statuses",
+ *   onApply: (setFilterText) => {
+ *     // Update filter text and apply the filter
+ *     setFilterText(selectedOption ? selectedOption.label : "All statuses");
+ *     applyFilter(selectedOption?.value);
+ *   },
+ *   onApplyFilterText: (setFilterText) => {
+ *     // Update text only (for URL-derived state)
+ *     setFilterText(selectedOption ? selectedOption.label : "All statuses");
+ *   },
+ *   onClose: () => {
+ *     // Handle dropdown close without applying
+ *   },
+ *   onRemove: () => {
+ *     // Clear filter when removed
+ *     setSelectedOption(null);
+ *     applyFilter(null);
+ *   }
+ * });
+ *
+ * // Use the renderWrapper function to create the filter UI
+ * const statusFilter = renderWrapper(
+ *   <FilterSelect
+ *     options={statusOptions}
+ *     value={selectedOption}
+ *     onChange={setSelectedOption}
+ *   />
+ * );
+ * ```
+ *
+ * @example Date range filter
+ * ```tsx
+ * const [isDateFilterActive, setIsDateFilterActive] = useState(false);
+ * const [startDate, setStartDate] = useState<Date | null>(null);
+ * const [endDate, setEndDate] = useState<Date | null>(null);
+ *
+ * const formatDateForDisplay = (date: Date) => {
+ *   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+ * };
+ *
+ * const {
+ *   renderWrapper
+ * } = useFilterWrapper({
+ *   dropdownTitle: "Date Range",
+ *   isActive: isDateFilterActive,
+ *   label: "Date",
+ *   setActive: setIsDateFilterActive,
+ *   initialFilterText: "All time",
+ *   onApply: (setFilterText) => {
+ *     if (startDate && endDate) {
+ *       const dateRangeText = `${formatDateForDisplay(startDate)} - ${formatDateForDisplay(endDate)}`;
+ *       setFilterText(dateRangeText);
+ *       applyDateRangeFilter(startDate, endDate);
+ *     }
+ *   },
+ *   onApplyFilterText: (setFilterText) => {
+ *     if (startDate && endDate) {
+ *       setFilterText(`${formatDateForDisplay(startDate)} - ${formatDateForDisplay(endDate)}`);
+ *     }
+ *   },
+ *   onClose: () => {
+ *     // Optional cleanup when closing without applying
+ *   },
+ *   onRemove: () => {
+ *     setStartDate(null);
+ *     setEndDate(null);
+ *     applyDateRangeFilter(null, null);
+ *   }
+ * });
+ *
+ * const dateFilter = renderWrapper(
+ *   <FilterDate
+ *     startDate={startDate}
+ *     endDate={endDate}
+ *     onStartDateChange={setStartDate}
+ *     onEndDateChange={setEndDate}
+ *   />
+ * );
+ * ```
+ *
+ * @example Multiple filters in a filter bar
+ * ```tsx
+ * // First, create your individual filters using useFilterWrapper
+ * const statusFilter =  useFilterWrapper implementation ;
+ * const dateFilter =  useFilterWrapper implementation ;
+ * const searchFilter =  useFilterWrapper implementation ;
+ *
+ * // Then render them together in a filter bar
+ * return (
+ *   <div style={{ display: 'flex', gap: '8px' }}>
+ *     {statusFilter}
+ *     {dateFilter}
+ *     {searchFilter}
+ *
+ *     <Button
+ *       onClick={resetAllFilters}
+ *       variant="ghost"
+ *       size="sm"
+ *     >
+ *       Clear All
+ *     </Button>
+ *   </div>
+ * );
+ * ```
+ */
 export const useFilterWrapper = ({
   className,
   dropdownTitle,

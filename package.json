@@ -19,7 +19,8 @@
   "scripts": {
     "build:ci": "pnpm build:theme && pnpm build:scss:types && pnpm build:ts && pnpm build:dts",
     "build:dts": "tspc -p ./tsconfig.emitDeclarationOnly.json",
-    "extract:mcp-data": "tsx build-utils/mcp/build-integration.ts",
+    "extract:mcp": "tsx build-utils/mcp/build-integration.ts",
+    "extract:mcp:verbose": "tsx build-utils/mcp/build-integration.ts --verbose",
     "build:prep:publish": "tsx build-utils/setupPackage.ts",
     "build:scss:types": "pnpm typed-scss-modules src/ --implementation sass --includePaths src/styles",
     "build:theme": "tsx build-utils/css/buildTheme.ts",

@@ -32,33 +32,117 @@ const normalizeSizes = ({
   return sizes.map(size => size / total);
 };
 
-type SplitPanelProps = BaseProps & {
+export type SplitPanelProps = BaseProps & {
+  /**
+   * Content to render within the split panels
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: any;
+  /**
+   * Whether to collapse all panels except the first one
+   * @default false
+   */
   collapseAll?: boolean;
+  /**
+   * Direction in which the panels should be split
+   * @default 'horizontal'
+   */
   direction?: 'horizontal' | 'vertical';
   /**
-   * @param gutterSize The size of the gutter in pixels
-   * @default 10
+   * Size of the resize gutter between panels in pixels
+   * @default 3
    */
   gutterSize?: number;
+  /**
+   * Whether to display a line in the gutter
+   * @default false
+   */
   lineBar?: boolean;
   /**
-   * @param minSize The minumum size in css pixel
+   * Minimum size of each panel in pixels
    * @default 10
    */
   minSize?: number;
+  /**
+   * Callback function invoked when panel sizes change
+   */
   onSetSizes?: Dispatch<SetStateAction<number[]>>;
   /**
-   * @param sizes The initial sizes of the panes
-   * @default 1 (make sure the sum of all sizes is 1)
+   * Initial sizes of panels as proportions, where the sum should equal 1
+   * @default [1]
    */
   sizes?: number[];
 };
 
 /**
- * Split panel component
- * @ref https://greggman.github.io/react-split-it/
+ * SplitPanel component creates resizable panels with draggable dividers.
+ * It allows users to adjust the relative sizes of content sections either
+ * horizontally or vertically.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <SplitPanel>
+ *   <div>Left panel content</div>
+ *   <div>Right panel content</div>
+ * </SplitPanel>
+ * ```
+ *
+ * @example With custom initial sizes
+ * ```tsx
+ * <SplitPanel sizes={[0.7, 0.3]}>
+ *   <div>Larger panel (70%)</div>
+ *   <div>Smaller panel (30%)</div>
+ * </SplitPanel>
+ * ```
+ *
+ * @example Vertical split
+ * ```tsx
+ * <SplitPanel direction="vertical" sizes={[0.4, 0.6]}>
+ *   <div>Top panel</div>
+ *   <div>Bottom panel</div>
+ * </SplitPanel>
+ * ```
+ *
+ * @example With state management
+ * ```tsx
+ * const [sizes, setSizes] = useState([0.5, 0.5]);
+ *
+ * <SplitPanel
+ *   sizes={sizes}
+ *   onSetSizes={setSizes}
+ * >
+ *   <div>Panel 1</div>
+ *   <div>Panel 2</div>
+ * </SplitPanel>
+ * ```
+ *
+ * @example With collapsible panels
+ * ```tsx
+ * const [collapsed, setCollapsed] = useState(false);
+ *
+ * <>
+ *   <Button onClick={() => setCollapsed(!collapsed)}>
+ *     {collapsed ? 'Expand' : 'Collapse'}
+ *   </Button>
+ *
+ *   <SplitPanel
+ *     collapseAll={collapsed}
+ *     sizes={[0.3, 0.7]}
+ *   >
+ *     <div>Navigation panel</div>
+ *     <div>Content panel</div>
+ *   </SplitPanel>
+ * </>
+ * ```
+ *
+ * @example With multiple panels
+ * ```tsx
+ * <SplitPanel sizes={[0.2, 0.5, 0.3]}>
+ *   <div>Left sidebar</div>
+ *   <div>Main content</div>
+ *   <div>Right sidebar</div>
+ * </SplitPanel>
+ * ```
  */
 export const SplitPanel = ({
   children,

@@ -23,6 +23,10 @@ export type FileUploadProps = BaseProps & {
    * */
   disabled?: boolean;
   dropzoneOptions: Omit<DropzoneOptions, 'disabled' | 'multiple'>;
+  /**
+   * Display error state with red border
+   * @default false
+   */
   error?: boolean;
   /**
    * Text to display in empty state
@@ -30,19 +34,93 @@ export type FileUploadProps = BaseProps & {
    * */
   instructionText?: string;
 
+  /**
+   * Show loading state
+   * @default false
+   */
   loading?: boolean;
   /**
    * Text to show while loading state is active
-   * @default 'Uploading...''
+   * @default 'Uploading...'
    */
   loadingText?: string;
+  /**
+   * Function called when the remove button is clicked
+   */
   onRemoveFile?: () => void;
-  /** Display file info if uploaded file property has data */
+  /**
+   * Display file info if uploaded file property has data
+   */
   uploadedFile: UploadFileNoImage | null;
 };
 
 /**
- * Single file input
+ * FileUpload component provides a drag-and-drop interface for uploading single files.
+ * It displays file information once uploaded and supports loading states.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <FileUpload
+ *   dropzoneOptions={{
+ *     maxSize: 5 * 1024 * 1024, // 5MB
+ *     onDrop: (acceptedFiles) => {
+ *       const file = acceptedFiles[0];
+ *       if (file) {
+ *         setUploadedFile({ name: file.name, size: `${file.size} bytes` });
+ *       }
+ *     }
+ *   }}
+ *   uploadedFile={null}
+ * />
+ * ```
+ *
+ * @example With a file already uploaded
+ * ```tsx
+ * <FileUpload
+ *   dropzoneOptions={{
+ *     maxSize: 5 * 1024 * 1024,
+ *     onDrop: (acceptedFiles) => {
+ *       // Handle file drop
+ *     }
+ *   }}
+ *   uploadedFile={{ name: 'document.pdf', size: '1.2 MB' }}
+ *   onRemoveFile={() => setUploadedFile(null)}
+ * />
+ * ```
+ *
+ * @example With custom instruction text and error state
+ * ```tsx
+ * <FileUpload
+ *   dropzoneOptions={{
+ *     accept: {
+ *       'image/*': ['.jpg', '.jpeg', '.png']
+ *     },
+ *     onDrop: (acceptedFiles, rejections) => {
+ *       // Handle file drop and rejection
+ *       setError(rejections.length > 0);
+ *     }
+ *   }}
+ *   error={hasError}
+ *   instructionText="Drop image files here"
+ *   uploadedFile={uploadedFile}
+ * />
+ * ```
+ *
+ * @example With loading state
+ * ```tsx
+ * <FileUpload
+ *   dropzoneOptions={{
+ *     onDrop: (acceptedFiles) => {
+ *       // Start upload
+ *       setLoading(true);
+ *       uploadFile(acceptedFiles[0]).then(() => setLoading(false));
+ *     }
+ *   }}
+ *   loading={isLoading}
+ *   loadingText="Uploading file..."
+ *   uploadedFile={uploadedFile}
+ * />
+ * ```
  */
 export const FileUpload = ({
   className,

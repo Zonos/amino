@@ -20,6 +20,78 @@ export type SwitchProps = BaseProps & {
   switchIconRight?: ReactNode;
 };
 
+/**
+ * Switch component provides a toggle control for binary options.
+ * It allows users to turn options on or off with a single action.
+ *
+ * @example Basic usage
+ * const [enabled, setEnabled] = useState(false);
+ *
+ * <Switch
+ *   checked={enabled}
+ *   onChange={setEnabled}
+ * />
+ *
+ * @example With label
+ * <Switch
+ *   label="Notifications"
+ *   checked={notificationsEnabled}
+ *   onChange={setNotificationsEnabled}
+ * />
+ *
+ * @example With label description
+ * <Switch
+ *   label="Dark mode"
+ *   labelDescription="(Applies to all users)"
+ *   checked={darkMode}
+ *   onChange={setDarkMode}
+ * />
+ *
+ * @example With subtitle
+ * <Switch
+ *   label="Auto-save"
+ *   subtitle="Automatically save changes as you type"
+ *   checked={autoSave}
+ *   onChange={setAutoSave}
+ * />
+ *
+ * @example Disabled state
+ * <Switch
+ *   label="Premium feature"
+ *   checked={true}
+ *   onChange={() => {}}
+ *   disabled
+ * />
+ *
+ * @example With label icon
+ * <Switch
+ *   label="Wi-Fi"
+ *   labelIcon={<WifiIcon size={16} />}
+ *   checked={wifiEnabled}
+ *   onChange={setWifiEnabled}
+ * />
+ *
+ * @example With switch icons
+ * <Switch
+ *   label="Sound"
+ *   switchIconLeft={<SoundOffIcon size={12} />}
+ *   switchIconRight={<SoundOnIcon size={12} />}
+ *   checked={soundEnabled}
+ *   onChange={setSoundEnabled}
+ * />
+ *
+ * @example Complete example with all properties
+ * <Switch
+ *   label="Location services"
+ *   labelDescription="(Optional)"
+ *   labelIcon={<LocationIcon size={16} />}
+ *   subtitle="Allow the app to access your current location"
+ *   switchIconLeft={<CloseIcon size={12} />}
+ *   switchIconRight={<CheckmarkIcon size={12} />}
+ *   checked={locationEnabled}
+ *   onChange={setLocationEnabled}
+ * />
+ */
 export const Switch = ({
   checked,
   className,

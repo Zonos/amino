@@ -8,16 +8,105 @@ import type { BaseProps } from 'src/types/BaseProps';
 import styles from './ListItem.module.scss';
 
 export type Props = BaseProps & {
-  /** @description Decorater takes a React node, preferably an icon or an avatar */
+  /**
+   * Element to display before the label, typically an icon or avatar
+   */
   decorator?: ReactNode;
+  /**
+   * Whether the list item is disabled and cannot be interacted with
+   * @default false
+   */
   disabled?: boolean;
+  /**
+   * Primary text or element to display in the list item
+   */
   label: ReactNode;
+  /**
+   * Function to call when the list item is clicked
+   */
   onClick?: MouseEventHandler;
+  /**
+   * Element to display after the label and subtitle, typically a badge or action
+   */
   rightDecorator?: ReactNode;
+  /**
+   * Whether the list item is visually selected/active
+   * @default false
+   */
   selected?: boolean;
+  /**
+   * Secondary text or element to display below the label
+   */
   subtitle?: ReactNode;
 };
 
+/**
+ * ListItem component represents an interactive item in a list with optional
+ * decorators, label, subtitle, and selection states.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <List>
+ *   <ListItem
+ *     label="Settings"
+ *     onClick={() => navigate('/settings')}
+ *   />
+ *   <ListItem
+ *     label="Profile"
+ *     onClick={() => navigate('/profile')}
+ *   />
+ * </List>
+ * ```
+ *
+ * @example With icons and subtitles
+ * ```tsx
+ * <ListItem
+ *   decorator={<SettingsIcon size={24} />}
+ *   label="Account Settings"
+ *   subtitle="User preferences and security options"
+ *   onClick={handleSettingsClick}
+ * />
+ * ```
+ *
+ * @example With selection state
+ * ```tsx
+ * const [selected, setSelected] = useState('settings');
+ *
+ * <List>
+ *   <ListItem
+ *     decorator={<HomeIcon size={24} />}
+ *     label="Dashboard"
+ *     selected={selected === 'dashboard'}
+ *     onClick={() => setSelected('dashboard')}
+ *   />
+ *   <ListItem
+ *     decorator={<SettingsIcon size={24} />}
+ *     label="Settings"
+ *     selected={selected === 'settings'}
+ *     onClick={() => setSelected('settings')}
+ *   />
+ * </List>
+ * ```
+ *
+ * @example With right decorator
+ * ```tsx
+ * <ListItem
+ *   label="Notifications"
+ *   rightDecorator={<Badge>3</Badge>}
+ *   onClick={handleNotificationsClick}
+ * />
+ * ```
+ *
+ * @example Disabled state
+ * ```tsx
+ * <ListItem
+ *   label="Premium Feature"
+ *   subtitle="Upgrade your plan to access"
+ *   disabled={true}
+ *   onClick={handlePremiumClick}
+ * />
+ * ```
+ */
 const ListIcon = ({
   icon,
   iconComponent,

@@ -28,6 +28,103 @@ type FilterWrapperProps = BaseProps & {
   label: string;
 };
 
+/**
+ * FilterWrapper provides a standardized UI for creating filters in data views.
+ * It displays a toggle button to activate the filter, a dropdown to select filter options,
+ * and includes the apply button to confirm filter selections.
+ *
+ * This component is typically used with other filtering components like FilterDate,
+ * FilterSelect, etc., and is designed to work with the useFilterWrapper hook for state
+ * management.
+ *
+ * @example Basic usage with useFilterWrapper hook
+ * ```tsx
+ * const {
+ *   renderWrapper,
+ *   setFilterText
+ * } = useFilterWrapper({
+ *   dropdownTitle: "Status Filter",
+ *   isActive: isStatusFilterActive,
+ *   label: "Status",
+ *   setActive: setIsStatusFilterActive,
+ *   initialFilterText: "All statuses",
+ *   onApply: (setFilterText) => {
+ *     setFilterText(selectedStatus ? selectedStatus.label : "All statuses");
+ *     onFilterApplied(selectedStatus?.value);
+ *   },
+ *   onApplyFilterText: (setFilterText) => {
+ *     setFilterText(selectedStatus ? selectedStatus.label : "All statuses");
+ *   },
+ *   onClose: () => {},
+ *   onRemove: () => {
+ *     setSelectedStatus(undefined);
+ *     onFilterApplied(undefined);
+ *   }
+ * });
+ *
+ * return renderWrapper(
+ *   <FilterSelect
+ *     options={[
+ *       { label: "Active", value: "active" },
+ *       { label: "Pending", value: "pending" },
+ *       { label: "Inactive", value: "inactive" }
+ *     ]}
+ *     onChange={setSelectedStatus}
+ *     value={selectedStatus}
+ *   />
+ * );
+ * ```
+ *
+ * @example With date filter
+ * ```tsx
+ * const {
+ *   renderWrapper,
+ *   setFilterText
+ * } = useFilterWrapper({
+ *   dropdownTitle: "Date Range",
+ *   isActive: isDateFilterActive,
+ *   label: "Date",
+ *   setActive: setIsDateFilterActive,
+ *   initialFilterText: "All dates",
+ *   onApply: (setFilterText) => {
+ *     if (startDate && endDate) {
+ *       const formattedText = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+ *       setFilterText(formattedText);
+ *       onFilterApplied({ startDate, endDate });
+ *     }
+ *   },
+ *   onApplyFilterText: (setFilterText) => {
+ *     if (startDate && endDate) {
+ *       setFilterText(`${formatDate(startDate)} - ${formatDate(endDate)}`);
+ *     }
+ *   },
+ *   onClose: () => {},
+ *   onRemove: () => {
+ *     setStartDate(undefined);
+ *     setEndDate(undefined);
+ *     onFilterApplied({ startDate: null, endDate: null });
+ *   }
+ * });
+ *
+ * return renderWrapper(
+ *   <FilterDate
+ *     startDate={startDate}
+ *     endDate={endDate}
+ *     onStartDateChange={setStartDate}
+ *     onEndDateChange={setEndDate}
+ *   />
+ * );
+ * ```
+ *
+ * @example Multiple filters in a filter bar
+ * ```tsx
+ * <div style={{ display: 'flex', gap: '8px' }}>
+ *   {statusFilterWrapper}
+ *   {dateFilterWrapper}
+ *   {textFilterWrapper}
+ * </div>
+ * ```
+ */
 export const FilterWrapper = ({
   active,
   children,

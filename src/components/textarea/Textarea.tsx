@@ -16,34 +16,123 @@ import styles from './Textarea.module.scss';
 
 type TextareaAdjustableHeightType = {
   /**
-   * @param disableExpand
-   * @desc if set to true, the textarea will not expand to fit the content.
+   * If set to true, the textarea will not expand to fit the content
+   * @default false
    */
   disableExpand?: boolean;
   /**
-   * @param maxRows
-   * @desc max rows that the textarea can expand to when disableExpand is not set. If nothing is passed, it defaults to 5
-   * @default 20 (large)
+   * Max rows that the textarea can expand to when disableExpand is not set
+   * @default 20
    */
   maxRows?: number;
 };
 
 type TextareaType = {
   /**
-   * @param actions
-   * @desc actions to be displayed in a footer within the textarea
+   * Actions to be displayed in a footer within the textarea
    */
   actions?: ReactNode;
+  /**
+   * Sets the error state styling with red border
+   * @default false
+   */
   error?: boolean;
+  /**
+   * Help text to be displayed below the textarea
+   */
   helpText?: ReactNode;
+  /**
+   * Label text to be displayed above the textarea
+   */
   label?: string;
-  /** @desc A value (in px) that will determine how wide the input is. If nothing is passed, it defaults to 100% */
+  /**
+   * A value (in px) that will determine how wide the input is
+   * @default 100%
+   */
   width?: number;
 } & TextareaAdjustableHeightType;
 
 export type TextareaProps = TextareaType &
   Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children'>;
 
+/**
+ * Textarea component provides a multi-line text input field with support for labels,
+ * help text, error states, and auto-expanding height.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const [value, setValue] = useState('');
+ *
+ * <Textarea
+ *   label="Description"
+ *   placeholder="Enter description..."
+ *   value={value}
+ *   onChange={e => setValue(e.target.value)}
+ * />
+ * ```
+ *
+ * @example With error state and help text
+ * ```tsx
+ * <Textarea
+ *   label="Description"
+ *   placeholder="Enter description..."
+ *   value={value}
+ *   onChange={handleChange}
+ *   error={!value.trim() && isSubmitted}
+ *   helpText="This field is required"
+ * />
+ * ```
+ *
+ * @example With custom width and actions
+ * ```tsx
+ * <Textarea
+ *   label="Comments"
+ *   width={500}
+ *   value={comments}
+ *   onChange={handleCommentsChange}
+ *   actions={
+ *     <Flex>
+ *       <Button onClick={handleClear}>Clear</Button>
+ *       <Button variant="primary" onClick={handleSave}>Save</Button>
+ *     </Flex>
+ *   }
+ * />
+ * ```
+ *
+ * @example With disabled expand and maximum rows
+ * ```tsx
+ * <Textarea
+ *   label="Limited Input"
+ *   value={value}
+ *   onChange={handleChange}
+ *   disableExpand={false}
+ *   maxRows={5}
+ * />
+ * ```
+ *
+ * @example Disabled state
+ * ```tsx
+ * <Textarea
+ *   label="Read-only Content"
+ *   value="This content cannot be edited"
+ *   disabled={true}
+ * />
+ * ```
+ *
+ * @example With form integration
+ * ```tsx
+ * <form onSubmit={handleSubmit}>
+ *   <Textarea
+ *     label="Cover Letter"
+ *     name="coverLetter"
+ *     value={formData.coverLetter}
+ *     onChange={e => setFormData({...formData, coverLetter: e.target.value})}
+ *     required
+ *   />
+ *   <Button type="submit">Submit</Button>
+ * </form>
+ * ```
+ */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {

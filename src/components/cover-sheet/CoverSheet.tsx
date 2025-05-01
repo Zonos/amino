@@ -15,14 +15,121 @@ import styles from './CoverSheet.module.scss';
 
 export type CoverSheetProps = BaseDialogProps & {
   /**
-   * used for setting id of the wrapper of where the action will be located */
+   * Unique ID for the action wrapper element where CoverSheetActions will be portaled into
+   * @default '__cover-sheet-actions'
+   */
   actionWrapperId?: string;
+  /**
+   * Actions to display in the sheet header, typically buttons
+   */
   actions?: ReactNode;
+  /**
+   * Custom component to render in the header area
+   */
   headerComponent?: ReactNode;
+  /**
+   * Whether to hide the close button in the header
+   * @default false
+   */
   hideCloseButton?: boolean;
+  /**
+   * Title text to display in the header
+   */
   label: string;
 };
 
+/**
+ * CoverSheet component provides a sliding panel that covers the current view
+ * from the bottom of the screen. It's commonly used for displaying additional
+ * content or actions without navigating away from the current page.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const [open, setOpen] = useState(false);
+ *
+ * <Button onClick={() => setOpen(true)}>Open Cover Sheet</Button>
+ *
+ * <CoverSheet
+ *   label="Details"
+ *   open={open}
+ *   onClose={() => setOpen(false)}
+ * >
+ *   <p>Content goes here...</p>
+ * </CoverSheet>
+ * ```
+ *
+ * @example With action buttons
+ * ```tsx
+ * <CoverSheet
+ *   label="Edit Profile"
+ *   open={isOpen}
+ *   onClose={handleClose}
+ *   actions={
+ *     <>
+ *       <Button onClick={handleCancel}>Cancel</Button>
+ *       <Button variant="primary" onClick={handleSave}>Save</Button>
+ *     </>
+ *   }
+ * >
+ *   <form>
+ *    <fields>
+ *   </form>
+ * </CoverSheet>
+ * ```
+ *
+ * @example With custom header component
+ * ```tsx
+ * <CoverSheet
+ *   label="Advanced Settings"
+ *   open={isOpen}
+ *   onClose={handleClose}
+ *   headerComponent={
+ *     <MenuButton action={<Button variant="primary">Actions</Button>}>
+ *       <Menu>
+ *         <MenuItem onClick={handleExport}>Export</MenuItem>
+ *         <MenuItem onClick={handleImport}>Import</MenuItem>
+ *       </Menu>
+ *     </MenuButton>
+ *   }
+ * >
+ *   <p>Content goes here...</p>
+ * </CoverSheet>
+ * ```
+ *
+ * @example Without close button
+ * ```tsx
+ * <CoverSheet
+ *   label="Terms of Service"
+ *   open={isOpen}
+ *   onClose={handleClose}
+ *   hideCloseButton={true}
+ *   actions={<Button onClick={handleClose}>I Understand</Button>}
+ * >
+ *   <p>Terms and conditions content...</p>
+ * </CoverSheet>
+ * ```
+ *
+ * @example With dynamic actions using CoverSheetActions
+ * ```tsx
+ * const [open, setOpen] = useState(false);
+ *
+ * <CoverSheet
+ *   label="Document Actions"
+ *   open={open}
+ *   onClose={() => setOpen(false)}
+ *   actionWrapperId="document-actions"
+ * >
+ *   <p>Select documents to perform actions on them.</p>
+ *
+ *   {selectedDocuments.length > 0 && (
+ *     <CoverSheetActions coverSheetActionId="document-actions">
+ *       <Button onClick={handleDelete}>Delete Selected</Button>
+ *       <Button variant="primary" onClick={handleDownload}>Download</Button>
+ *     </CoverSheetActions>
+ *   )}
+ * </CoverSheet>
+ * ```
+ */
 export const CoverSheet = ({
   actions,
   actionWrapperId = '__cover-sheet-actions',

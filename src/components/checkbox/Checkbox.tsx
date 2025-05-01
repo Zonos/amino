@@ -66,6 +66,78 @@ export type CheckboxProps = Omit<
     subtitle?: ReactNode;
   };
 
+/**
+ * Checkbox component that allows users to select one or more options.
+ * Features include custom styling, animations, and support for various states.
+ *
+ * @example Basic checkbox
+ * <Checkbox
+ *   label="Accept terms and conditions"
+ *   checked={isChecked}
+ *   onChange={setIsChecked}
+ * />
+ *
+ * @example With help text
+ * <Checkbox
+ *   label="Subscribe to newsletter"
+ *   checked={subscribed}
+ *   onChange={setSubscribed}
+ *   helpText="You'll receive updates about our products"
+ * />
+ *
+ * @example With error state
+ * <Checkbox
+ *   label="I agree to terms and conditions"
+ *   checked={agreed}
+ *   onChange={setAgreed}
+ *   error={true}
+ *   helpText="You must agree to the terms to continue"
+ * />
+ *
+ * @example Disabled state
+ * <Checkbox
+ *   label="Premium features"
+ *   checked={hasPremium}
+ *   onChange={setHasPremium}
+ *   disabled={true}
+ * />
+ *
+ * @example With icon
+ * <Checkbox
+ *   label="Enable notifications"
+ *   checked={notificationsEnabled}
+ *   onChange={setNotificationsEnabled}
+ *   icon={<BellIcon size={16} />}
+ * />
+ *
+ * @example With subtitle
+ * <Checkbox
+ *   label="Enable dark mode"
+ *   checked={darkMode}
+ *   onChange={setDarkMode}
+ *   subtitle="Changes the appearance of the application"
+ * />
+ *
+ * @example With label description
+ * <Checkbox
+ *   label="Remember me"
+ *   labelDescription="(Optional)"
+ *   checked={rememberMe}
+ *   onChange={setRememberMe}
+ * />
+ *
+ * @example With custom label component
+ * <Checkbox
+ *   labelComponent={
+ *     <div style={{ display: 'flex', alignItems: 'center' }}>
+ *       <Text>Custom label</Text>
+ *       <Text color="red500" style={{ marginLeft: '8px' }}>*</Text>
+ *     </div>
+ *   }
+ *   checked={customLabel}
+ *   onChange={setCustomLabel}
+ * />
+ */
 export const Checkbox = ({
   checked = false,
   className,

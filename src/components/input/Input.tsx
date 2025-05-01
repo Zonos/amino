@@ -40,6 +40,99 @@ type InputType = {
 export type InputProps = InputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
 
+/**
+ * Input component that supports various input types with features like floating labels,
+ * prefixes, suffixes, and different states (error, disabled, etc.).
+ *
+ * @example Basic text input
+ * <Input
+ *   label="Username"
+ *   placeholder="Enter your username"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Password input
+ * <Input
+ *   type="password"
+ *   label="Password"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Number input
+ * <Input
+ *   type="number"
+ *   label="Age"
+ *   onChange={e => setValue(e.target.valueAsNumber)}
+ *   value={value}
+ * />
+ *
+ * @example Date input
+ * <Input
+ *   type="date"
+ *   label="Birth Date"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With help text
+ * <Input
+ *   label="Email"
+ *   helpText="We'll never share your email"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With error state
+ * <Input
+ *   label="Username"
+ *   error={true}
+ *   helpText="Username is required"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With prefix icon
+ * <Input
+ *   label="Search"
+ *   prefix={<SearchIcon />}
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With suffix
+ * <Input
+ *   label="Weight"
+ *   suffix="kg"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Value prefix (for partial content)
+ * <Input
+ *   label="Phone"
+ *   valuePrefix="+1"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Disabled state
+ * <Input
+ *   label="Username"
+ *   disabled
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Required field
+ * <Input
+ *   label="Email"
+ *   required
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ */
 export const Input = ({
   autoFocus,
   className,

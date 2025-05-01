@@ -65,6 +65,52 @@ type InputBaseType = BaseProps & {
 export type InputBaseProps = InputBaseType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputBaseType>;
 
+/**
+ * An internal base input component used primarily by InputSimple.
+ * Provides the core functionality for input rendering with label, prefix, suffix, and value prefix.
+ *
+ * This component serves as the foundation for most specialized input types.
+ *
+ * @example Basic usage
+ * <InputBase
+ *   label="Name"
+ *   onChange={handleChange}
+ *   value={value}
+ * />
+ *
+ * @example With prefix and suffix
+ * <InputBase
+ *   label="Username"
+ *   prefix={<UserIcon />}
+ *   suffix="@example.com"
+ *   onChange={handleChange}
+ *   value={value}
+ * />
+ *
+ * @example With error state
+ * <InputBase
+ *   label="Email"
+ *   error={true}
+ *   onChange={handleChange}
+ *   value={value}
+ * />
+ *
+ * @example With value prefix
+ * <InputBase
+ *   label="Phone"
+ *   valuePrefix="+1"
+ *   onChange={handleChange}
+ *   value={value}
+ * />
+ *
+ * @example With different sizes
+ * <InputBase
+ *   size="sm"
+ *   label="Small Input"
+ *   onChange={handleChange}
+ *   value={value}
+ * />
+ */
 export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
   (
     {

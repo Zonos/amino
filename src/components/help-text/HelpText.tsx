@@ -9,21 +9,81 @@ import styles from './HelpText.module.scss';
 
 export type HelpTextProps = BaseProps & {
   /**
-   * This an error state.
+   * Whether to display the help text in error state (red color)
    * @default false
    */
   error?: boolean;
   /**
-   * Shows below input. Use in conjunction with `error` to show feedback about error.
+   * Content to display as help text
+   * Can be a string or ReactNode for custom formatting
    */
   helpText?: ReactNode;
   /**
-   * Removes top margin from the component.
+   * Whether to remove the top margin from the component
    * @default false
    */
   withoutMargin?: boolean;
 };
 
+/**
+ * HelpText component provides contextual assistance text, typically used
+ * below form inputs to show validation messages or helpful information.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <Input
+ *   label="Email"
+ *   value={email}
+ *   onChange={handleEmailChange}
+ * />
+ * <HelpText helpText="We'll never share your email with anyone else." />
+ * ```
+ *
+ * @example Error state
+ * ```tsx
+ * <Input
+ *   label="Password"
+ *   type="password"
+ *   value={password}
+ *   onChange={handlePasswordChange}
+ *   error={!!passwordError}
+ * />
+ * <HelpText
+ *   error={!!passwordError}
+ *   helpText={passwordError || "Password must be at least 8 characters"}
+ * />
+ * ```
+ *
+ * @example Without margin
+ * ```tsx
+ * <Textarea
+ *   label="Description"
+ *   value={description}
+ *   onChange={handleDescriptionChange}
+ * />
+ * <HelpText
+ *   helpText="Maximum 200 characters"
+ *   withoutMargin
+ * />
+ * ```
+ *
+ * @example Custom ReactNode content
+ * ```tsx
+ * <Input
+ *   label="API Key"
+ *   value={apiKey}
+ *   onChange={handleApiKeyChange}
+ * />
+ * <HelpText
+ *   helpText={
+ *     <div className="custom-help-text">
+ *       <InfoIcon size={12} />
+ *       <span>Find your API key in your account settings</span>
+ *     </div>
+ *   }
+ * />
+ * ```
+ */
 export const HelpText = ({
   className,
   error = false,

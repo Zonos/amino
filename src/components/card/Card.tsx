@@ -19,6 +19,62 @@ export type CardProps = BaseProps & {
   spacing?: string;
 };
 
+/**
+ * Card component provides a container with optional header, content area, and footer.
+ * It's commonly used to group related information and controls.
+ *
+ * @example Basic card
+ * <Card label="Basic Card">
+ *   This is the content of the card.
+ * </Card>
+ *
+ * @example Card with header actions
+ * <Card
+ *   label="Card With Actions"
+ *   actions={<Button>Edit</Button>}
+ * >
+ *   Card content with header action button.
+ * </Card>
+ *
+ * @example Card with footer
+ * <Card
+ *   label="Card With Footer"
+ *   footerContent="Footer information"
+ *   footerActions={<Button>Save</Button>}
+ * >
+ *   Card content with footer.
+ * </Card>
+ *
+ * @example Card with multiple footer actions
+ * <Card
+ *   label="Card With Multiple Actions"
+ *   footerActions={
+ *     <>
+ *       <Button variant="subtle">Cancel</Button>
+ *       <Button variant="primary">Submit</Button>
+ *     </>
+ *   }
+ * >
+ *   Card with multiple action buttons in the footer.
+ * </Card>
+ *
+ * @example Card with custom footer height
+ * <Card
+ *   label="Card With Custom Footer Height"
+ *   footerContent="This footer has a fixed height"
+ *   footerHeight={120}
+ * >
+ *   Card with a fixed height footer.
+ * </Card>
+ *
+ * @example Card with custom spacing
+ * <Card
+ *   label="Card With Custom Spacing"
+ *   spacing="16px"
+ * >
+ *   Card content with custom internal spacing.
+ * </Card>
+ */
 export const Card = ({
   actions,
   children,

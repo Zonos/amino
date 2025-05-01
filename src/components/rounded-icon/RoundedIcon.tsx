@@ -16,6 +16,51 @@ export type RoundedIconProps = BaseProps & {
   intent?: Intent;
 };
 
+/**
+ * RoundedIcon component displays an icon or element inside a circular or rounded background,
+ * supporting color, intent, and background customization. Useful for avatars, status indicators,
+ * or decorative iconography in lists, buttons, and cards.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <RoundedIcon>
+ *   <TruckDuotoneIcon />
+ * </RoundedIcon>
+ * ```
+ *
+ * @example With intent color
+ * ```tsx
+ * <RoundedIcon intent="primary">
+ *   <TruckDuotoneIcon />
+ * </RoundedIcon>
+ * ```
+ *
+ * @example With custom background and icon color
+ * ```tsx
+ * <RoundedIcon background="gray1000" color="purple400">
+ *   <TruckDuotoneIcon />
+ * </RoundedIcon>
+ * ```
+ *
+ * @example With success intent
+ * ```tsx
+ * <RoundedIcon intent="success">
+ *   <TruckDuotoneIcon />
+ * </RoundedIcon>
+ * ```
+ *
+ * @example In a list item
+ * ```tsx
+ * <ListItem
+ *   decorator={
+ *     <RoundedIcon intent="warning">
+ *       <AlertIcon />
+ *     </RoundedIcon>
+ *   }
+ *   label="Warning"
+ * />
+ * ```
+ */
 export const RoundedIcon = ({
   background,
   children,

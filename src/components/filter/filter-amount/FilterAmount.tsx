@@ -30,6 +30,52 @@ export type FilterAmountProps = BaseFilterProps & {
   filter: FilterAmountState;
 };
 
+/**
+ * FilterAmount provides a specialized filter interface for numeric amount values.
+ * It allows users to filter by equal to, between, greater than, or less than specific amounts.
+ * Integrates with the filter wrapper system for consistent behavior across filters.
+ *
+ * @example Basic usage with a reducer
+ * ```tsx
+ * const [filter, dispatch] = useReducer(filterAmountReducer, initialFilterAmountState);
+ *
+ * <FilterAmount
+ *   dispatch={dispatch}
+ *   dropdownTitle="Amount"
+ *   filter={filter}
+ *   label="Amount"
+ * />
+ * ```
+ *
+ * @example With specific initial filter value
+ * ```tsx
+ * const [filter, dispatch] = useReducer(filterAmountReducer, {
+ *   ...initialFilterAmountState,
+ *   amountFilterType: 'greater',
+ *   amountTotalMin: 100
+ * });
+ *
+ * <FilterAmount
+ *   dispatch={dispatch}
+ *   dropdownTitle="Price"
+ *   filter={filter}
+ *   label="Price"
+ * />
+ * ```
+ *
+ * @example As part of a filter group
+ * ```tsx
+ * <FilterWrapper>
+ *   <FilterAmount
+ *     dispatch={dispatch}
+ *     dropdownTitle="Total"
+ *     filter={filter}
+ *     label="Total Amount"
+ *   />
+ *   <OtherFilters... />
+ * </FilterWrapper>
+ * ```
+ */
 export const FilterAmount = ({
   dispatch,
   dropdownTitle,

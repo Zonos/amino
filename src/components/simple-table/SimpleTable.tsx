@@ -171,11 +171,99 @@ export type SimpleTableProps<T extends object> = BaseProps & {
 };
 
 /**
- * A simple table that tries to cover all the use cases of a ... simple table.
+ * SimpleTable provides a flexible, accessible table component for displaying tabular data.
+ * It supports features like selectable rows, collapsible rows, custom cell rendering, loading skeletons,
+ * and sticky headers. Designed for use cases where you need a straightforward but powerful table UI.
  *
- * special CSS class names:
- * - 'row-hover-show': Shows only when the row is hovered
- * - 'cell-hover-show': Shows only when the cell is hovered
+ * @example Basic usage
+ * ```tsx
+ * type User = { id: number; name: string; age: number };
+ * const headers: SimpleTableHeader<User>[] = [
+ *   { key: 'name', name: 'Name' },
+ *   { key: 'age', name: 'Age' },
+ * ];
+ * const users: User[] = [
+ *   { id: 1, name: 'Alice', age: 30 },
+ *   { id: 2, name: 'Bob', age: 25 },
+ * ];
+ * <SimpleTable
+ *   headers={headers}
+ *   items={users}
+ *   keyExtractor={user => String(user.id)}
+ * />
+ * ```
+ *
+ * @example With selectable rows
+ * ```tsx
+ * const [selected, setSelected] = useState<number[]>([]);
+ * <SimpleTable
+ *   headers={headers}
+ *   items={users}
+ *   keyExtractor={user => String(user.id)}
+ *   selectable={{
+ *     enabled: true,
+ *     isRowChecked: (item) => selected.includes(item.id),
+ *     onRowCheckboxChange: (checked, item) => {
+ *       setSelected(checked
+ *         ? [...selected, item.id]
+ *         : selected.filter(id => id !== item.id)
+ *       );
+ *     },
+ *   }}
+ * />
+ * ```
+ *
+ * @example With collapsible rows
+ * ```tsx
+ * <SimpleTable
+ *   headers={headers}
+ *   items={users}
+ *   keyExtractor={user => String(user.id)}
+ *   collapsible={{
+ *     enabled: true,
+ *     expandedItemKeys: expandedKeys,
+ *     toggleItem: key => setExpandedKeys(keys =>
+ *       keys.includes(key) ? keys.filter(k => k !== key) : [...keys, key]
+ *     ),
+ *     collapseContent: users.map(user => ({
+ *       key: String(user.id),
+ *       content: <div>More info about {user.name}</div>,
+ *     })),
+ *   }}
+ * />
+ * ```
+ *
+ * @example With custom cell rendering
+ * ```tsx
+ * const headers: SimpleTableHeader<User>[] = [
+ *   { key: 'name', name: 'Name' },
+ *   {
+ *     key: 'age',
+ *     name: 'Age',
+ *     renderCustom: (age) => <Text color={age > 25 ? 'green600' : 'red600'}>{age}</Text>,
+ *   },
+ * ];
+ * ```
+ *
+ * @example With loading skeleton
+ * ```tsx
+ * <SimpleTable
+ *   headers={headers}
+ *   items={[]}
+ *   keyExtractor={user => String(user.id)}
+ *   loading
+ * />
+ * ```
+ *
+ * @example With row click handler
+ * ```tsx
+ * <SimpleTable
+ *   headers={headers}
+ *   items={users}
+ *   keyExtractor={user => String(user.id)}
+ *   onRowClick={user => alert(`Clicked: ${user.name}`)}
+ * />
+ * ```
  */
 export const SimpleTable = <T extends object>({
   bordered = false,

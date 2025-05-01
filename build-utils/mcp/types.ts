@@ -61,6 +61,8 @@ export type ComponentMetadata = {
 export type ComponentDocumentation = {
   /** Top-level component JSDoc comment */
   comment?: JSDocComment;
+  /** Path to the component's main file */
+  filePath?: string;
   /** Component ID (typically kebab-case version of name) */
   id: string;
   /** Component name */

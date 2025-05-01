@@ -92,6 +92,53 @@ type FloatLabelInputType = BaseProps & {
 export type FloatLabelInputProps = FloatLabelInputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof FloatLabelInputType>;
 
+/**
+ * Internal input component that implements a floating label pattern.
+ * The label floats above the input when the input has value or is focused.
+ *
+ * This component is used internally by the Input component and supports various
+ * decoration options like prefix, suffix, and valuePrefix.
+ *
+ * @example Basic usage
+ * <FloatLabelInput
+ *   label="Username"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With error state
+ * <FloatLabelInput
+ *   label="Email"
+ *   error={true}
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With prefix and suffix
+ * <FloatLabelInput
+ *   label="Search"
+ *   prefix={<SearchIcon />}
+ *   suffix={<ClearIcon onClick={clearSearch} />}
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With value prefix (for partial content)
+ * <FloatLabelInput
+ *   label="Phone Number"
+ *   valuePrefix="+1"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With different sizes
+ * <FloatLabelInput
+ *   size="sm"
+ *   label="Small Input"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ */
 export const FloatLabelInput = forwardRef<
   HTMLInputElement,
   FloatLabelInputProps

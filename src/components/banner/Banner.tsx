@@ -24,6 +24,77 @@ export type BannerProps = BaseProps & {
   title?: ReactNode;
 };
 
+/**
+ * Banner component displays prominent messages or notifications with different intents.
+ * Use banners to communicate important information, status updates, or required actions.
+ *
+ * @example Basic banner
+ * <Banner title="Information">
+ *   This is a basic banner with important information.
+ * </Banner>
+ *
+ * @example With different intents
+ * <Banner intent="info" title="Information">
+ *   This contains helpful information for the user.
+ * </Banner>
+ *
+ * <Banner intent="success" title="Success">
+ *   The operation was completed successfully.
+ * </Banner>
+ *
+ * <Banner intent="warning" title="Warning">
+ *   This action will have side effects.
+ * </Banner>
+ *
+ * <Banner intent="error" title="Error">
+ *   There was a problem completing the operation.
+ * </Banner>
+ *
+ * @example With close button
+ * <Banner
+ *   intent="info"
+ *   title="System Notification"
+ *   onClose={() => setVisible(false)}
+ * >
+ *   The system will be undergoing maintenance in two hours.
+ * </Banner>
+ *
+ * @example With header actions
+ * <Banner
+ *   intent="info"
+ *   title="New feature available"
+ *   headerActions={
+ *     <Button variant="link" size="small">Learn more</Button>
+ *   }
+ * >
+ *   Try out our new reporting dashboard.
+ * </Banner>
+ *
+ * @example With footer actions
+ * <Banner
+ *   intent="warning"
+ *   title="Update required"
+ *   footerActions={
+ *     <>
+ *       <Button variant="standard" size="small">Remind me later</Button>
+ *       <Button variant="primary" size="small">Update now</Button>
+ *     </>
+ *   }
+ * >
+ *   Your software needs to be updated to the latest version.
+ * </Banner>
+ *
+ * @example With both title and content
+ * <Banner intent="success" title="Order placed">
+ *   <Text>Your order #12345 has been placed successfully.</Text>
+ *   <Text>You will receive a confirmation email shortly.</Text>
+ * </Banner>
+ *
+ * @example Content only (no title)
+ * <Banner intent="info">
+ *   This is a simple notification message without a title.
+ * </Banner>
+ */
 export const Banner = ({
   children,
   className,

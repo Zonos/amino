@@ -162,15 +162,50 @@ export function extractComponentDocumentation(
     // Extract component name from directory path
     const componentName = path.basename(componentDir);
 
-    // Find the main component file (typically index.ts or index.tsx)
-    const indexFiles = ['index.tsx', 'index.ts'];
-    let mainFile = null;
+    // Find the main component file using various common naming patterns
+    const possibleFilePatterns = [
+      // Index files (most common pattern)
+      'index.tsx',
+      'index.ts',
+      // Files named after the component (CamelCase)
+      `${componentName}.tsx`,
+      `${componentName}.ts`,
+      // Files with lowercase names
+      `${componentName.toLowerCase()}.tsx`,
+      `${componentName.toLowerCase()}.ts`,
+      // Files with dash-case names
+      `${componentName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}.tsx`,
+      `${componentName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}.ts`,
+    ];
 
-    for (const file of indexFiles) {
-      const filePath = path.join(componentDir, file);
+    let mainFile: string | null = null;
+
+    // Try to find the main file using the patterns
+    for (const pattern of possibleFilePatterns) {
+      const filePath = path.join(componentDir, pattern);
       if (fs.existsSync(filePath)) {
         mainFile = filePath;
         break;
+      }
+    }
+
+    // If no main file found with patterns, try to find any .tsx or .ts file in the directory
+    if (!mainFile) {
+      const files = fs.readdirSync(componentDir);
+      const tsxFiles = files.filter(
+        file => file.endsWith('.tsx') || file.endsWith('.ts'),
+      );
+
+      // Check if there's any TypeScript file (excluding test and story files)
+      const mainTsxFile = tsxFiles.find(
+        file =>
+          !file.includes('.test.') &&
+          !file.includes('.spec.') &&
+          !file.includes('.stories.'),
+      );
+
+      if (mainTsxFile) {
+        mainFile = path.join(componentDir, mainTsxFile);
       }
     }
 
@@ -189,6 +224,7 @@ export function extractComponentDocumentation(
 
     return {
       comment: topLevelComment,
+      filePath: path.relative(process.cwd(), mainFile),
       id: componentName.toLowerCase(),
       name: componentName,
       path: path.relative(process.cwd(), componentDir),

@@ -155,6 +155,55 @@ export type TextProps = BaseProps & {
   type?: TextStyle;
 } & TypographyOverrides;
 
+/**
+ * Text component that provides consistent typography styles across the application.
+ * It offers various presets for different text styles, sizes, weights, and colors.
+ *
+ * @example Basic usage with default (body) type
+ * <Text>This is body text</Text>
+ *
+ * @example Page Header
+ * <Text type="page-header">Main Page Title</Text>
+ *
+ * @example Header
+ * <Text type="header">Section Title</Text>
+ *
+ * @example Subheader
+ * <Text type="subheader">Subsection Title</Text>
+ *
+ * @example Body text
+ * <Text type="body">This is the main content text of your application.</Text>
+ *
+ * @example Label
+ * <Text type="label">Field label</Text>
+ *
+ * @example Caption
+ * <Text type="caption">Small caption text</Text>
+ *
+ * @example With custom color
+ * <Text color="blue600">Blue text</Text>
+ *
+ * @example With custom weight
+ * <Text fontWeight={700}>Bold text</Text>
+ *
+ * @example With uppercase
+ * <Text isUppercase>This will be uppercase</Text>
+ *
+ * @example Custom HTML tag
+ * <Text tag="h2" type="title">Custom heading level</Text>
+ *
+ * @example Code style
+ * <Text type="code">const example = "code snippet";</Text>
+ *
+ * @example Input label
+ * <Text type="input-label">Input field label</Text>
+ *
+ * @example With custom font size
+ * <Text fontSize="xl">Larger text</Text>
+ *
+ * @example With custom line height
+ * <Text lineHeight="l">Text with increased line height</Text>
+ */
 export const Text = ({
   children,
   className,

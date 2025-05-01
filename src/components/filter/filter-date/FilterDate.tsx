@@ -24,7 +24,60 @@ export type FilterDateProps = BaseFilterProps & {
 };
 
 /**
- * Assumes exclusive date range. Specific formats/ranges should be handled upstream.
+ * FilterDate provides an interface for filtering by date ranges.
+ * It supports various range types such as "is between", "is equal to", "is on or after", and "is before or on".
+ * The component handles date formatting, adjustments, and integrates with the filter wrapper system.
+ *
+ * @example Basic usage with a reducer
+ * ```tsx
+ * const [filter, dispatch] = useReducer(filterDateReducer, initialFilterDateState);
+ *
+ * <FilterDate
+ *   dispatch={dispatch}
+ *   dropdownTitle="Date Range"
+ *   filter={filter}
+ *   label="Date"
+ * />
+ * ```
+ *
+ * @example With specific initial date filter
+ * ```tsx
+ * const [filter, dispatch] = useReducer(filterDateReducer, {
+ *   ...initialFilterDateState,
+ *   dateRangeType: 'is on or after',
+ *   dateData: {
+ *     ...initialFilterDateState.dateData,
+ *     dateBegin: '2025-01-01'
+ *   }
+ * });
+ *
+ * <FilterDate
+ *   dispatch={dispatch}
+ *   dropdownTitle="Created"
+ *   filter={filter}
+ *   label="Creation Date"
+ * />
+ * ```
+ *
+ * @example With "last N days" filtering
+ * ```tsx
+ * const [filter, dispatch] = useReducer(filterDateReducer, {
+ *   ...initialFilterDateState,
+ *   dateRangeType: 'last',
+ *   dateData: {
+ *     ...initialFilterDateState.dateData,
+ *     lastCount: 30,
+ *     lastUnit: 'days'
+ *   }
+ * });
+ *
+ * <FilterDate
+ *   dispatch={dispatch}
+ *   dropdownTitle="Recent"
+ *   filter={filter}
+ *   label="Recent Activity"
+ * />
+ * ```
  */
 export const FilterDate = ({
   dispatch,

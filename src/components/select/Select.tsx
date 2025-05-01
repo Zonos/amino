@@ -47,6 +47,100 @@ export type SelectProps<
   Required<Pick<Props<Option, IsMulti, Group>, RequiredProps>> &
   HelpTextProps;
 
+/**
+ * Select component that allows users to select one option from a dropdown list.
+ * It's a wrapper around react-select with Amino styling and additional features.
+ *
+ * @example Basic usage
+ * <Select
+ *   label="Currency"
+ *   options={[
+ *     { label: 'US Dollar (USD)', value: 'USD' },
+ *     { label: 'Euro (EUR)', value: 'EUR' },
+ *     { label: 'British Pound (GBP)', value: 'GBP' }
+ *   ]}
+ *   value={{ label: 'US Dollar (USD)', value: 'USD' }}
+ *   onChange={(option) => setValue(option)}
+ * />
+ *
+ * @example With search functionality
+ * <Select
+ *   label="Currency"
+ *   options={currencyOptions}
+ *   value={selectedCurrency}
+ *   onChange={(option) => setSelectedCurrency(option)}
+ *   isSearchable={true}
+ *   placeholder="Search for a currency..."
+ * />
+ *
+ * @example With icon
+ * <Select
+ *   label="Currency"
+ *   icon={<MoneyIcon size={24} />}
+ *   options={currencyOptions}
+ *   value={selectedCurrency}
+ *   onChange={(option) => setSelectedCurrency(option)}
+ * />
+ *
+ * @example With error state
+ * <Select
+ *   label="Currency"
+ *   options={currencyOptions}
+ *   value={selectedCurrency}
+ *   onChange={(option) => setSelectedCurrency(option)}
+ *   error={true}
+ *   helpText="Please select a currency"
+ * />
+ *
+ * @example With option icons
+ * <Select
+ *   label="Country"
+ *   options={[
+ *     { label: 'United States', value: 'US', icon: <FlagIcon code="US" iconScale="small" /> },
+ *     { label: 'Canada', value: 'CA', icon: <FlagIcon code="CA" iconScale="small" /> },
+ *     { label: 'Mexico', value: 'MX', icon: <FlagIcon code="MX" iconScale="small" /> }
+ *   ]}
+ *   value={selectedCountry}
+ *   onChange={(option) => setSelectedCountry(option)}
+ * />
+ *
+ * @example With custom option rendering
+ * <Select
+ *   label="Currency"
+ *   options={currencyOptions}
+ *   value={selectedCurrency}
+ *   onChange={(option) => setSelectedCurrency(option)}
+ *   customOption={(value) => (
+ *     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+ *       <span>{value}</span>
+ *       <span style={{ color: 'gray' }}>Rate: 1.0</span>
+ *     </div>
+ *   )}
+ * />
+ *
+ * @example With custom styles
+ * <Select
+ *   label="Currency"
+ *   options={currencyOptions}
+ *   value={selectedCurrency}
+ *   onChange={(option) => setSelectedCurrency(option)}
+ *   styles={{
+ *     menu: (base) => ({
+ *       ...base,
+ *       background: theme.blue100,
+ *     }),
+ *   }}
+ * />
+ *
+ * @example In a dialog with scrolling
+ * <Select
+ *   label="Currency"
+ *   options={currencyOptions}
+ *   value={selectedCurrency}
+ *   onChange={(option) => setSelectedCurrency(option)}
+ *   closeOnOutsideScroll={true}
+ * />
+ */
 export const Select = <
   V extends SelectValue,
   Option extends SelectOption<V>,

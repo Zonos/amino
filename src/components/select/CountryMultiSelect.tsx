@@ -62,13 +62,39 @@ export type CountryMultiSelectProps<
   IsMulti extends true = true,
   Group extends GroupBase<Option> = GroupBase<Option>,
 > = {
+  /**
+   * Custom components to override default react-select components
+   */
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
+  /**
+   * Array of country options to display in the select
+   */
   countryOptions: CountryOption<Option['value']>[];
+  /**
+   * Optional icon to display in the select control
+   */
   icon?: ReactNode;
+  /**
+   * Label for the select field
+   * @default 'Select countries'
+   */
   label?: string;
+  /**
+   * Handler called when selection changes
+   * @param countryCodes Array of country codes that are selected
+   */
   onChange: (countryCodes: Option['value'][]) => void;
+  /**
+   * Custom styles to override default react-select styles
+   */
   styles?: StylesConfig<Option, IsMulti, Group>;
+  /**
+   * Array of countries that should appear disabled with optional explanatory messages
+   */
   unavailableCountries: UnavailableCountry[];
+  /**
+   * Array of country codes that are currently selected
+   */
   value: Option['value'][];
 } & Omit<
   Props<Option, IsMulti, Group>,
@@ -76,6 +102,53 @@ export type CountryMultiSelectProps<
 > &
   HelpTextProps;
 
+/**
+ * A multi-select component specialized for selecting multiple countries.
+ * Displays country flags alongside names, organizes countries by region, and includes a "Select all" option.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+ * const { countryOptions } = useCountryOptions();
+ *
+ * <CountryMultiSelect
+ *   countryOptions={countryOptions}
+ *   onChange={setSelectedCountries}
+ *   unavailableCountries={[]}
+ *   value={selectedCountries}
+ * />
+ * ```
+ *
+ * @example With unavailable countries
+ * ```tsx
+ * const [selectedCountries, setSelectedCountries] = useState<string[]>(['US', 'CA']);
+ * const { countryOptions } = useCountryOptions();
+ * const unavailableCountries = [
+ *   { code: 'GB', message: 'Coming soon' },
+ *   { code: 'AU', message: 'Not supported' }
+ * ];
+ *
+ * <CountryMultiSelect
+ *   countryOptions={countryOptions}
+ *   label="Shipping Countries"
+ *   onChange={setSelectedCountries}
+ *   unavailableCountries={unavailableCountries}
+ *   value={selectedCountries}
+ * />
+ * ```
+ *
+ * @example With error state
+ * ```tsx
+ * <CountryMultiSelect
+ *   countryOptions={countryOptions}
+ *   error={!selectedCountries.length}
+ *   helpText={!selectedCountries.length ? 'At least one country is required' : undefined}
+ *   onChange={setSelectedCountries}
+ *   unavailableCountries={[]}
+ *   value={selectedCountries}
+ * />
+ * ```
+ */
 export const CountryMultiSelect = <T extends string>({
   countryOptions,
   label = 'Select countries',

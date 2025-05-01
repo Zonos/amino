@@ -61,10 +61,106 @@ type Props<
 type Comparator<TRow> = (a: TRow, b: TRow) => number;
 
 /**
- * Awesome data grid
- * @repo https://github.com/adazzle/react-data-grid
- * @documentation https://adazzle.github.io/react-data-grid/#/grouping
- * @example https://github.com/adazzle/react-data-grid/tree/main/website
+ * PivotTable component renders tabular data with advanced features like sorting, indexing, and custom renderers.
+ * Built on top of react-data-grid with added functionality and styling consistent with Amino design.
+ *
+ * @example Basic usage
+ * const columns = [
+ *   { key: 'id', name: 'ID', width: 80 },
+ *   { key: 'name', name: 'Name', width: 200 },
+ *   { key: 'email', name: 'Email', width: 200 },
+ *   { key: 'status', name: 'Status', width: 120 }
+ * ];
+ *
+ * const rows = [
+ *   { id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active' },
+ *   { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' },
+ *   { id: 3, name: 'Bob Johnson', email: 'bob@example.com', status: 'Active' }
+ * ];
+ *
+ * <PivotTable
+ *   columns={columns}
+ *   rows={rows}
+ * />
+ *
+ * @example With custom height
+ * <PivotTable
+ *   columns={columns}
+ *   rows={rows}
+ *   tableHeight="400px"
+ * />
+ *
+ * @example With sorting
+ * const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);
+ *
+ * <PivotTable
+ *   columns={columns}
+ *   rows={rows}
+ *   sortColumns={sortColumns}
+ *   onSortColumnsChange={setSortColumns}
+ * />
+ *
+ * @example With custom cell renderer
+ * const columns = [
+ *   { key: 'id', name: 'ID' },
+ *   { key: 'name', name: 'Name' },
+ *   {
+ *     key: 'status',
+ *     name: 'Status',
+ *     renderCell: ({ row }) => (
+ *       <Badge
+ *         color={row.status === 'Active' ? 'success' : 'warning'}
+ *       >
+ *         {row.status}
+ *       </Badge>
+ *     )
+ *   }
+ * ];
+ *
+ * <PivotTable columns={columns} rows={rows} />
+ *
+ * @example With row selection
+ * const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(new Set());
+ *
+ * <PivotTable
+ *   columns={columns}
+ *   rows={rows}
+ *   selectedRows={selectedRows}
+ *   onSelectedRowsChange={setSelectedRows}
+ * />
+ *
+ * @example With expandable rows
+ * // This example assumes you have configured the Master Detail view
+ * // with the appropriate row renderer in the renderers prop
+ * const rows = [
+ *   {
+ *     id: 1,
+ *     name: 'John Doe',
+ *     _expandedKey: 'orders',
+ *     _expandedData: [
+ *       { id: 101, product: 'Widget', price: 19.99 },
+ *       { id: 102, product: 'Gadget', price: 24.99 }
+ *     ]
+ *   },
+ *   // ... more rows
+ * ];
+ *
+ * <PivotTable
+ *   columns={columns}
+ *   rows={rows}
+ *   expandableRows
+ * />
+ *
+ * @example With header filters
+ * <PivotTable
+ *   columns={columns.map(col => ({
+ *     ...col,
+ *     headerRenderer: props => (
+ *       <FilterHeader {...props} onFilterChange={handleFilterChange} />
+ *     )
+ *   }))}
+ *   rows={filteredRows}
+ * />
  */
 export const PivotTable = <
   TRow extends RowWithIndex,
