@@ -223,9 +223,11 @@ export function extractComponentDocumentation(
     const topLevelComment = comments.length > 0 ? comments[0] : undefined;
 
     // Correctly format the component name: use PascalCase for name, lowercase for ID
-    // Convert first letter to uppercase to ensure proper component naming
-    const formattedComponentName =
-      componentName.charAt(0).toUpperCase() + componentName.slice(1);
+    // Convert kebab-case or snake_case to PascalCase
+    const formattedComponentName = componentName
+      .split(/[-_]/)
+      .map(segment => segment.charAt(0).toUpperCase() + segment.slice(1))
+      .join('');
 
     return {
       comment: topLevelComment,
