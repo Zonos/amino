@@ -189,7 +189,7 @@ export function extractComponentDocumentation(
       }
     }
 
-    // If no file found, search through the files
+    // If no file found by primary patterns, search through all files in the directory
     if (!mainFile && fs.existsSync(componentDir)) {
       const files = fs.readdirSync(componentDir);
       const tsxFiles = files.filter(
@@ -197,15 +197,24 @@ export function extractComponentDocumentation(
       );
 
       // Check if there's any TypeScript file (excluding test and story files)
-      const mainTsxFile = tsxFiles.find(
+      const regularTsxFiles = tsxFiles.filter(
         file =>
           !file.includes('.test.') &&
           !file.includes('.spec.') &&
-          !file.includes('.stories.'),
+          !file.includes('.stories.') &&
+          !file.includes('.module.') &&
+          !file.includes('.d.ts'),
       );
 
-      if (mainTsxFile) {
-        mainFile = path.join(componentDir, mainTsxFile);
+      // First search for files that might be the primary component
+      // Check for Base files first, as they often contain the main component docs
+      const baseFile = regularTsxFiles.find(file => file.includes('Base'));
+      if (baseFile) {
+        mainFile = path.join(componentDir, baseFile);
+      } else if (regularTsxFiles.length > 0) {
+        // If no Base file, just use the first available file
+        const firstFile = regularTsxFiles[0]!; // Non-null assertion since we've checked length
+        mainFile = path.join(componentDir, firstFile);
       }
     }
 
@@ -218,6 +227,36 @@ export function extractComponentDocumentation(
 
     // Extract JSDoc comments from the main file
     const comments = extractJSDocComments(mainFile, options.verbose);
+
+    // If no comments found in the main file but there are other files, try them too
+    if (comments.length === 0 && fs.existsSync(componentDir)) {
+      const files = fs
+        .readdirSync(componentDir)
+        .filter(
+          file =>
+            (file.endsWith('.tsx') || file.endsWith('.ts')) &&
+            !file.endsWith('.d.ts') &&
+            !file.includes('.test.') &&
+            !file.includes('.spec.') &&
+            !file.includes('.stories.') &&
+            file !== path.basename(mainFile),
+        );
+
+      // Try each file until we find comments
+      for (const file of files) {
+        const filePath = path.join(componentDir, file);
+        const fileComments = extractJSDocComments(filePath, options.verbose);
+        if (fileComments.length > 0) {
+          comments.push(...fileComments);
+          if (options.verbose) {
+            console.log(
+              `Found ${fileComments.length} JSDoc comments in additional file ${file}`,
+            );
+          }
+          break;
+        }
+      }
+    }
 
     // Process all comments to merge them together
     let mergedComment: JSDocComment | undefined;
