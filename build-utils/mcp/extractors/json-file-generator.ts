@@ -107,13 +107,21 @@ export function generateComponentFiles(
       }
 
       // Generate component documentation structure
+      const description = component.comment?.description || '';
+      const tags = Array.isArray(component.comment?.tags)
+        ? component.comment.tags.map(tag => ({
+            name: tag.name,
+            text: tag.text,
+          }))
+        : [];
+
       const componentData = {
-        description: component.comment?.description || '',
+        description,
         generatedAt: new Date().toISOString(),
         id: component.id,
         name: component.name,
         path: component.path,
-        tags: component.comment?.tags || [],
+        tags,
       };
 
       // Write the component file

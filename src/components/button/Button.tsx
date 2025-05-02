@@ -137,22 +137,47 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   children,
   className,
   color,
+  /** Whether the button is disabled */
   disabled = false,
+  /** Makes the button width fit its content */
   fitContentWidth,
   hoverBackground,
+  /** Icon to display in the button */
   icon,
+  /** Whether to show the icon on the right side */
   iconRight,
+  /** Shows a loading spinner */
   loading = false,
+  /** Text to show when loading */
   loadingText,
+  /** Disables ripple effect on click */
   noRipple = false,
+  /** Shows an outlined version of the button */
   outline = false,
+  /**
+   * Size of the button
+   * @default 'sm'
+   */
   size = 'sm',
+  /** Color of the spinner when loading */
   spinnerColor,
   style,
+  /**
+   * HTML element tag to use
+   * @default 'button'
+   */
   tag = DEFAULT_TAG,
   testId,
   themeOverride,
+  /**
+   * HTML button type attribute
+   * @default 'button'
+   */
   type = 'button',
+  /**
+   * Visual style variant of the button
+   * @default 'standard'
+   */
   variant = 'standard',
   ...props
 }: ButtonProps<T>) {
