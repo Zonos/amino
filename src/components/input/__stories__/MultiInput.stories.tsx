@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
+import { Badge } from 'src/components/badge/Badge';
+import { Flex } from 'src/components/flex/Flex';
 import {
+  defaultInputKeyPressDelimiters,
   MultiInput,
   type MultiInputProps,
 } from 'src/components/input/MultiInput';
@@ -31,10 +34,12 @@ export default MultiInputMeta;
 
 const Template: StoryFn<MultiInputProps> = ({
   inputValue,
+  keyPressDelimiters = defaultInputKeyPressDelimiters,
   setInputValue,
   setTags,
   tags,
   tagValidation,
+  textWrapDelimiters = [],
   ...props
 }) => {
   const [hasValidationError, setHasValidationError] = useState(false);
@@ -44,17 +49,41 @@ const Template: StoryFn<MultiInputProps> = ({
       <MultiInput
         {...props}
         inputValue={inputValue}
+        keyPressDelimiters={keyPressDelimiters}
         setHasValidationError={setHasValidationError}
         setInputValue={setInputValue}
         setTags={setTags}
         tagValidation={tagValidation}
         tags={tags}
+        textWrapDelimiters={textWrapDelimiters}
       />
       {hasValidationError && (
         <Text color={hasValidationError && 'red600'}>
           Some tags are invalid
         </Text>
       )}
+
+      {keyPressDelimiters.length > 0 && (
+        <Flex alignItems="flex-end">
+          Keypress delimiters:{' '}
+          {keyPressDelimiters?.map((d, index) => (
+            <Badge key={d + index} size="small">
+              {d}
+            </Badge>
+          ))}
+        </Flex>
+      )}
+      {textWrapDelimiters.length > 0 && (
+        <Flex alignItems="flex-end">
+          Text wrap delimiters:{' '}
+          {textWrapDelimiters?.map((d, index) => (
+            <Badge key={d + index} size="small">
+              {d}
+            </Badge>
+          ))}
+        </Flex>
+      )}
+
       <Text>Current tags: {tags.join(', ')}</Text>
       <Text>Current input: {inputValue}</Text>
     </VStack>
@@ -88,4 +117,17 @@ MultiInputWithEmailValidation.args = {
     return emailRegex.test(email);
   },
   tags: ['test@zonos.com', 'bad-email'],
+};
+
+export const MultiInputWithTextWrapDelimiters = ParentComponent.bind({});
+MultiInputWithTextWrapDelimiters.args = {
+  keyPressDelimiters: [],
+  tags: ['example', 'tags'],
+  textWrapDelimiters: [':'],
+};
+
+export const MultiInputWithAllDelimiters = ParentComponent.bind({});
+MultiInputWithAllDelimiters.args = {
+  tags: ['example', 'tags'],
+  textWrapDelimiters: [':'],
 };
