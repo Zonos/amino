@@ -1,0 +1,40 @@
+{
+  "description": "FileUpload component provides a drag-and-drop interface for uploading single files.\nIt displays file information once uploaded and supports loading states.",
+  "id": "file-upload",
+  "name": "FileUpload",
+  "path": "src/components/file-upload",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<FileUpload\ndropzoneOptions={{\nmaxSize: 5 * 1024 * 1024, // 5MB\nonDrop: (acceptedFiles) => {\nconst file = acceptedFiles[0];\nif (file) {\nsetUploadedFile({ name: file.name, size: `${file.size} bytes` });\n}\n}\n}}\nuploadedFile={null}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With a file already uploaded\n<FileUpload\ndropzoneOptions={{\nmaxSize: 5 * 1024 * 1024,\nonDrop: (acceptedFiles) => {\n// Handle file drop\n}\n}}\nuploadedFile={{ name: 'document.pdf', size: '1.2 MB' }}\nonRemoveFile={() => setUploadedFile(null)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom instruction text and error state\n<FileUpload\ndropzoneOptions={{\naccept: {\n'image/*': ['.jpg', '.jpeg', '.png']\n},\nonDrop: (acceptedFiles, rejections) => {\n// Handle file drop and rejection\nsetError(rejections.length > 0);\n}\n}}\nerror={hasError}\ninstructionText=\"Drop image files here\"\nuploadedFile={uploadedFile}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With loading state\n<FileUpload\ndropzoneOptions={{\nonDrop: (acceptedFiles) => {\n// Start upload\nsetLoading(true);\nuploadFile(acceptedFiles[0]).then(() => setLoading(false));\n}\n}}\nloading={isLoading}\nloadingText=\"Uploading file...\"\nuploadedFile={uploadedFile}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<FileUpload\ndropzoneOptions={{\nmaxSize: 5 * 1024 * 1024, // 5MB\nonDrop: (acceptedFiles) => {\nconst file = acceptedFiles[0];\nif (file) {\nsetUploadedFile({ name: file.name, size: `${file.size} bytes` });\n}\n}\n}}\nuploadedFile={null}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With a file already uploaded\n<FileUpload\ndropzoneOptions={{\nmaxSize: 5 * 1024 * 1024,\nonDrop: (acceptedFiles) => {\n// Handle file drop\n}\n}}\nuploadedFile={{ name: 'document.pdf', size: '1.2 MB' }}\nonRemoveFile={() => setUploadedFile(null)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom instruction text and error state\n<FileUpload\ndropzoneOptions={{\naccept: {\n'image/*': ['.jpg', '.jpeg', '.png']\n},\nonDrop: (acceptedFiles, rejections) => {\n// Handle file drop and rejection\nsetError(rejections.length > 0);\n}\n}}\nerror={hasError}\ninstructionText=\"Drop image files here\"\nuploadedFile={uploadedFile}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With loading state\n<FileUpload\ndropzoneOptions={{\nonDrop: (acceptedFiles) => {\n// Start upload\nsetLoading(true);\nuploadFile(acceptedFiles[0]).then(() => setLoading(false));\n}\n}}\nloading={isLoading}\nloadingText=\"Uploading file...\"\nuploadedFile={uploadedFile}\n/>"
+    }
+  ]
+}

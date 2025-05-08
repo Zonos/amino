@@ -1,0 +1,64 @@
+{
+  "description": "PivotTable component renders tabular data with advanced features like sorting, indexing, and custom renderers.\nBuilt on top of react-data-grid with added functionality and styling consistent with Amino design.",
+  "id": "pivot-table",
+  "name": "PivotTable",
+  "path": "src/components/pivot-table",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst columns = [\n{ key: 'id', name: 'ID', width: 80 },\n{ key: 'name', name: 'Name', width: 200 },\n{ key: 'email', name: 'Email', width: 200 },\n{ key: 'status', name: 'Status', width: 120 }\n];\n\nconst rows = [\n{ id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active' },\n{ id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' },\n{ id: 3, name: 'Bob Johnson', email: 'bob@example.com', status: 'Active' }\n];\n\n<PivotTable\ncolumns={columns}\nrows={rows}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom height\n<PivotTable\ncolumns={columns}\nrows={rows}\ntableHeight=\"400px\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With sorting\nconst [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);\n\n<PivotTable\ncolumns={columns}\nrows={rows}\nsortColumns={sortColumns}\nonSortColumnsChange={setSortColumns}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom cell renderer\nconst columns = [\n{ key: 'id', name: 'ID' },\n{ key: 'name', name: 'Name' },\n{\nkey: 'status',\nname: 'Status',\nrenderCell: ({ row }) => (\n<Badge\ncolor={row.status === 'Active' ? 'success' : 'warning'}\n>\n{row.status}\n</Badge>\n)\n}\n];\n\n<PivotTable columns={columns} rows={rows} />"
+    },
+    {
+      "name": "example",
+      "text": "With row selection\nconst [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(new Set());\n\n<PivotTable\ncolumns={columns}\nrows={rows}\nselectedRows={selectedRows}\nonSelectedRowsChange={setSelectedRows}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With expandable rows\n// This example assumes you have configured the Master Detail view\n// with the appropriate row renderer in the renderers prop\nconst rows = [\n{\nid: 1,\nname: 'John Doe',\n_expandedKey: 'orders',\n_expandedData: [\n{ id: 101, product: 'Widget', price: 19.99 },\n{ id: 102, product: 'Gadget', price: 24.99 }\n]\n},\n// ... more rows\n];\n\n<PivotTable\ncolumns={columns}\nrows={rows}\nexpandableRows\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With header filters\n<PivotTable\ncolumns={columns.map(col => ({\n...col,\nheaderRenderer: props => (\n<FilterHeader {...props} onFilterChange={handleFilterChange} />\n)\n}))}\nrows={filteredRows}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst columns = [\n{ key: 'id', name: 'ID', width: 80 },\n{ key: 'name', name: 'Name', width: 200 },\n{ key: 'email', name: 'Email', width: 200 },\n{ key: 'status', name: 'Status', width: 120 }\n];\n\nconst rows = [\n{ id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active' },\n{ id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' },\n{ id: 3, name: 'Bob Johnson', email: 'bob@example.com', status: 'Active' }\n];\n\n<PivotTable\ncolumns={columns}\nrows={rows}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom height\n<PivotTable\ncolumns={columns}\nrows={rows}\ntableHeight=\"400px\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With sorting\nconst [sortColumns, setSortColumns] = useState<readonly SortColumn[]>([]);\n\n<PivotTable\ncolumns={columns}\nrows={rows}\nsortColumns={sortColumns}\nonSortColumnsChange={setSortColumns}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom cell renderer\nconst columns = [\n{ key: 'id', name: 'ID' },\n{ key: 'name', name: 'Name' },\n{\nkey: 'status',\nname: 'Status',\nrenderCell: ({ row }) => (\n<Badge\ncolor={row.status === 'Active' ? 'success' : 'warning'}\n>\n{row.status}\n</Badge>\n)\n}\n];\n\n<PivotTable columns={columns} rows={rows} />"
+    },
+    {
+      "name": "example",
+      "text": "With row selection\nconst [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(new Set());\n\n<PivotTable\ncolumns={columns}\nrows={rows}\nselectedRows={selectedRows}\nonSelectedRowsChange={setSelectedRows}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With expandable rows\n// This example assumes you have configured the Master Detail view\n// with the appropriate row renderer in the renderers prop\nconst rows = [\n{\nid: 1,\nname: 'John Doe',\n_expandedKey: 'orders',\n_expandedData: [\n{ id: 101, product: 'Widget', price: 19.99 },\n{ id: 102, product: 'Gadget', price: 24.99 }\n]\n},\n// ... more rows\n];\n\n<PivotTable\ncolumns={columns}\nrows={rows}\nexpandableRows\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With header filters\n<PivotTable\ncolumns={columns.map(col => ({\n...col,\nheaderRenderer: props => (\n<FilterHeader {...props} onFilterChange={handleFilterChange} />\n)\n}))}\nrows={filteredRows}\n/>"
+    }
+  ]
+}

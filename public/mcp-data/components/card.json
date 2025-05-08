@@ -1,0 +1,56 @@
+{
+  "description": "Card component provides a container with optional header, content area, and footer.\nIt's commonly used to group related information and controls.",
+  "id": "card",
+  "name": "Card",
+  "path": "src/components/card",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic card\n<Card label=\"Basic Card\">\nThis is the content of the card.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with header actions\n<Card\nlabel=\"Card With Actions\"\nactions={<Button>Edit</Button>}\n>\nCard content with header action button.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with footer\n<Card\nlabel=\"Card With Footer\"\nfooterContent=\"Footer information\"\nfooterActions={<Button>Save</Button>}\n>\nCard content with footer.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with multiple footer actions\n<Card\nlabel=\"Card With Multiple Actions\"\nfooterActions={\n<>\n<Button variant=\"subtle\">Cancel</Button>\n<Button variant=\"primary\">Submit</Button>\n</>\n}\n>\nCard with multiple action buttons in the footer.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with custom footer height\n<Card\nlabel=\"Card With Custom Footer Height\"\nfooterContent=\"This footer has a fixed height\"\nfooterHeight={120}\n>\nCard with a fixed height footer.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with custom spacing\n<Card\nlabel=\"Card With Custom Spacing\"\nspacing=\"16px\"\n>\nCard content with custom internal spacing.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Basic card\n<Card label=\"Basic Card\">\nThis is the content of the card.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with header actions\n<Card\nlabel=\"Card With Actions\"\nactions={<Button>Edit</Button>}\n>\nCard content with header action button.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with footer\n<Card\nlabel=\"Card With Footer\"\nfooterContent=\"Footer information\"\nfooterActions={<Button>Save</Button>}\n>\nCard content with footer.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with multiple footer actions\n<Card\nlabel=\"Card With Multiple Actions\"\nfooterActions={\n<>\n<Button variant=\"subtle\">Cancel</Button>\n<Button variant=\"primary\">Submit</Button>\n</>\n}\n>\nCard with multiple action buttons in the footer.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with custom footer height\n<Card\nlabel=\"Card With Custom Footer Height\"\nfooterContent=\"This footer has a fixed height\"\nfooterHeight={120}\n>\nCard with a fixed height footer.\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Card with custom spacing\n<Card\nlabel=\"Card With Custom Spacing\"\nspacing=\"16px\"\n>\nCard content with custom internal spacing.\n</Card>"
+    }
+  ]
+}

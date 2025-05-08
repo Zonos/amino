@@ -1,0 +1,72 @@
+{
+  "description": "Checkbox component that allows users to select one or more options.\nFeatures include custom styling, animations, and support for various states.",
+  "id": "checkbox",
+  "name": "Checkbox",
+  "path": "src/components/checkbox",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic checkbox\n<Checkbox\nlabel=\"Accept terms and conditions\"\nchecked={isChecked}\nonChange={setIsChecked}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With help text\n<Checkbox\nlabel=\"Subscribe to newsletter\"\nchecked={subscribed}\nonChange={setSubscribed}\nhelpText=\"You'll receive updates about our products\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<Checkbox\nlabel=\"I agree to terms and conditions\"\nchecked={agreed}\nonChange={setAgreed}\nerror={true}\nhelpText=\"You must agree to the terms to continue\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Checkbox\nlabel=\"Premium features\"\nchecked={hasPremium}\nonChange={setHasPremium}\ndisabled={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Checkbox\nlabel=\"Enable notifications\"\nchecked={notificationsEnabled}\nonChange={setNotificationsEnabled}\nicon={<BellIcon size={16} />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Checkbox\nlabel=\"Enable dark mode\"\nchecked={darkMode}\nonChange={setDarkMode}\nsubtitle=\"Changes the appearance of the application\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label description\n<Checkbox\nlabel=\"Remember me\"\nlabelDescription=\"(Optional)\"\nchecked={rememberMe}\nonChange={setRememberMe}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom label component\n<Checkbox\nlabelComponent={\n<div style={{ display: 'flex', alignItems: 'center' }}>\n<Text>Custom label</Text>\n<Text color=\"red500\" style={{ marginLeft: '8px' }}>*</Text>\n</div>\n}\nchecked={customLabel}\nonChange={setCustomLabel}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic checkbox\n<Checkbox\nlabel=\"Accept terms and conditions\"\nchecked={isChecked}\nonChange={setIsChecked}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With help text\n<Checkbox\nlabel=\"Subscribe to newsletter\"\nchecked={subscribed}\nonChange={setSubscribed}\nhelpText=\"You'll receive updates about our products\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<Checkbox\nlabel=\"I agree to terms and conditions\"\nchecked={agreed}\nonChange={setAgreed}\nerror={true}\nhelpText=\"You must agree to the terms to continue\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Checkbox\nlabel=\"Premium features\"\nchecked={hasPremium}\nonChange={setHasPremium}\ndisabled={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Checkbox\nlabel=\"Enable notifications\"\nchecked={notificationsEnabled}\nonChange={setNotificationsEnabled}\nicon={<BellIcon size={16} />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Checkbox\nlabel=\"Enable dark mode\"\nchecked={darkMode}\nonChange={setDarkMode}\nsubtitle=\"Changes the appearance of the application\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label description\n<Checkbox\nlabel=\"Remember me\"\nlabelDescription=\"(Optional)\"\nchecked={rememberMe}\nonChange={setRememberMe}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom label component\n<Checkbox\nlabelComponent={\n<div style={{ display: 'flex', alignItems: 'center' }}>\n<Text>Custom label</Text>\n<Text color=\"red500\" style={{ marginLeft: '8px' }}>*</Text>\n</div>\n}\nchecked={customLabel}\nonChange={setCustomLabel}\n/>"
+    }
+  ]
+}

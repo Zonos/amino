@@ -1,0 +1,56 @@
+{
+  "description": "DropZone component provides a drag-and-drop interface for file uploads.\nIt supports single or multiple file uploads, image previews, and various states\nincluding loading, error, and success.",
+  "id": "drop-zone",
+  "name": "DropZone",
+  "path": "src/components/drop-zone",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [files, setFiles] = useState<UploadedFile[]>([]);\n\nconst handleDrop = useCallback((acceptedFiles: File[]) => {\nconst newFiles = acceptedFiles.map(file => ({\nname: file.name,\nsize: `${(file.size / 1024).toFixed(2)} KB`,\nfile\n}));\n\nsetFiles(prevFiles => [...prevFiles, ...newFiles]);\n}, []);\n\nconst handleRemoveFile = (index: number) => {\nsetFiles(prevFiles => prevFiles.filter((_, i) => i !== index));\n};\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\naccept: {'image/*': []}\n}}\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With validation and error state\nconst [files, setFiles] = useState<UploadedFile[]>([]);\nconst [error, setError] = useState(false);\nconst [errorText, setErrorText] = useState('');\n\nconst handleDrop = useCallback((acceptedFiles: File[]) => {\nif (acceptedFiles.some(file => file.size > 1024 * 1024)) {\nsetError(true);\nsetErrorText('File size must be less than 1MB');\nreturn;\n}\n\nsetError(false);\nsetErrorText('');\n// Process files...\n}, []);\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\nmaxSize: 1024 * 1024\n}}\nerror={error}\nhelpText={errorText}\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With image previews\nconst [files, setFiles] = useState<UploadedFile[]>([]);\n\nconst handleDrop = useCallback((acceptedFiles: File[]) => {\nconst newFiles = acceptedFiles.map(file => {\nconst imageUrl = URL.createObjectURL(file);\n\nreturn {\nname: file.name,\nsize: `${(file.size / 1024).toFixed(2)} KB`,\nfile,\nimageUrl\n};\n});\n\nsetFiles(prevFiles => [...prevFiles, ...newFiles]);\n}, []);\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\naccept: {'image/*': []}\n}}\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With loading state\nconst [files, setFiles] = useState<UploadedFile[]>([]);\nconst [loading, setLoading] = useState(false);\n\nconst handleDrop = useCallback(async (acceptedFiles: File[]) => {\nsetLoading(true);\n\ntry {\n// Simulate upload\nawait new Promise(resolve => setTimeout(resolve, 2000));\n\nconst newFiles = acceptedFiles.map(file => ({\nname: file.name,\nsize: `${(file.size / 1024).toFixed(2)} KB`,\nfile\n}));\n\nsetFiles(prevFiles => [...prevFiles, ...newFiles]);\n} finally {\nsetLoading(false);\n}\n}, []);\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop\n}}\nloading={loading}\nloadingText=\"Uploading your files...\"\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With file type restrictions\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\naccept: {\n'application/pdf': ['.pdf'],\n'application/msword': ['.doc', '.docx']\n},\nmaxFiles: 5\n}}\ninstructionText=\"Drop PDF or Word documents here\"\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled state\n<DropZone\ndisabled={true}\ndropzoneOptions={{\nonDrop: handleDrop\n}}\ninstructionText=\"File uploads are currently disabled\"\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [files, setFiles] = useState<UploadedFile[]>([]);\n\nconst handleDrop = useCallback((acceptedFiles: File[]) => {\nconst newFiles = acceptedFiles.map(file => ({\nname: file.name,\nsize: `${(file.size / 1024).toFixed(2)} KB`,\nfile\n}));\n\nsetFiles(prevFiles => [...prevFiles, ...newFiles]);\n}, []);\n\nconst handleRemoveFile = (index: number) => {\nsetFiles(prevFiles => prevFiles.filter((_, i) => i !== index));\n};\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\naccept: {'image/*': []}\n}}\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With validation and error state\nconst [files, setFiles] = useState<UploadedFile[]>([]);\nconst [error, setError] = useState(false);\nconst [errorText, setErrorText] = useState('');\n\nconst handleDrop = useCallback((acceptedFiles: File[]) => {\nif (acceptedFiles.some(file => file.size > 1024 * 1024)) {\nsetError(true);\nsetErrorText('File size must be less than 1MB');\nreturn;\n}\n\nsetError(false);\nsetErrorText('');\n// Process files...\n}, []);\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\nmaxSize: 1024 * 1024\n}}\nerror={error}\nhelpText={errorText}\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With image previews\nconst [files, setFiles] = useState<UploadedFile[]>([]);\n\nconst handleDrop = useCallback((acceptedFiles: File[]) => {\nconst newFiles = acceptedFiles.map(file => {\nconst imageUrl = URL.createObjectURL(file);\n\nreturn {\nname: file.name,\nsize: `${(file.size / 1024).toFixed(2)} KB`,\nfile,\nimageUrl\n};\n});\n\nsetFiles(prevFiles => [...prevFiles, ...newFiles]);\n}, []);\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\naccept: {'image/*': []}\n}}\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With loading state\nconst [files, setFiles] = useState<UploadedFile[]>([]);\nconst [loading, setLoading] = useState(false);\n\nconst handleDrop = useCallback(async (acceptedFiles: File[]) => {\nsetLoading(true);\n\ntry {\n// Simulate upload\nawait new Promise(resolve => setTimeout(resolve, 2000));\n\nconst newFiles = acceptedFiles.map(file => ({\nname: file.name,\nsize: `${(file.size / 1024).toFixed(2)} KB`,\nfile\n}));\n\nsetFiles(prevFiles => [...prevFiles, ...newFiles]);\n} finally {\nsetLoading(false);\n}\n}, []);\n\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop\n}}\nloading={loading}\nloadingText=\"Uploading your files...\"\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With file type restrictions\n<DropZone\ndropzoneOptions={{\nonDrop: handleDrop,\naccept: {\n'application/pdf': ['.pdf'],\n'application/msword': ['.doc', '.docx']\n},\nmaxFiles: 5\n}}\ninstructionText=\"Drop PDF or Word documents here\"\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled state\n<DropZone\ndisabled={true}\ndropzoneOptions={{\nonDrop: handleDrop\n}}\ninstructionText=\"File uploads are currently disabled\"\nonRemoveFile={handleRemoveFile}\nuploadedFiles={files}\n/>"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "description": "Tabs component allows users to navigate between different views or sections within the same context.\nAvailable in standard and subtle design variations.",
+  "id": "tabs",
+  "name": "Tabs",
+  "path": "src/components/tabs",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedTab, setSelectedTab] = useState(0);\n\n<Tabs\nitems={['Overview', 'Details', 'Settings']}\nselected={selectedTab}\nonChange={setSelectedTab}\n/>\n\n{selectedTab === 0 && <div>Overview content</div>}\n{selectedTab === 1 && <div>Details content</div>}\n{selectedTab === 2 && <div>Settings content</div>}"
+    },
+    {
+      "name": "example",
+      "text": "Subtle design\n<Tabs\nitems={['Today', 'This Week', 'This Month', 'All Time']}\nselected={selectedTab}\nonChange={setSelectedTab}\nsubtle\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Subtle tabs with center alignment\n<Tabs\nitems={['Personal', 'Business', 'Enterprise']}\nselected={selectedTab}\nonChange={setSelectedTab}\nsubtle\nalign=\"center\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Subtle tabs with end alignment\n<Tabs\nitems={['Day', 'Week', 'Month']}\nselected={selectedTab}\nonChange={setSelectedTab}\nsubtle\nalign=\"end\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<Tabs\nitems={['Active', 'Completed', 'Archived']}\nselected={selectedTab}\nonChange={setSelectedTab}\nclassName=\"custom-tabs\"\nstyle={{ marginBottom: '24px' }}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedTab, setSelectedTab] = useState(0);\n\n<Tabs\nitems={['Overview', 'Details', 'Settings']}\nselected={selectedTab}\nonChange={setSelectedTab}\n/>\n\n{selectedTab === 0 && <div>Overview content</div>}\n{selectedTab === 1 && <div>Details content</div>}\n{selectedTab === 2 && <div>Settings content</div>}"
+    },
+    {
+      "name": "example",
+      "text": "Subtle design\n<Tabs\nitems={['Today', 'This Week', 'This Month', 'All Time']}\nselected={selectedTab}\nonChange={setSelectedTab}\nsubtle\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Subtle tabs with center alignment\n<Tabs\nitems={['Personal', 'Business', 'Enterprise']}\nselected={selectedTab}\nonChange={setSelectedTab}\nsubtle\nalign=\"center\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Subtle tabs with end alignment\n<Tabs\nitems={['Day', 'Week', 'Month']}\nselected={selectedTab}\nonChange={setSelectedTab}\nsubtle\nalign=\"end\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<Tabs\nitems={['Active', 'Completed', 'Archived']}\nselected={selectedTab}\nonChange={setSelectedTab}\nclassName=\"custom-tabs\"\nstyle={{ marginBottom: '24px' }}\n/>"
+    }
+  ]
+}

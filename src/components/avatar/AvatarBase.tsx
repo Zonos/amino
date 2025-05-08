@@ -54,8 +54,9 @@ type AvatarBaseProps = BaseProps & {
  * This component is not typically used directly. Instead, use one of the specialized
  * avatar components like ImageAvatar or UserAvatar that build upon this base.
  *
+ * @component Avatar
+ *
  * @example Custom avatar implementation
- * ```tsx
  * <AvatarBase
  *   backgroundColor={theme.blue100}
  *   bordered={true}
@@ -64,10 +65,8 @@ type AvatarBaseProps = BaseProps & {
  * >
  *   <Text fontWeight={700} textAlign="center">AB</Text>
  * </AvatarBase>
- * ```
  *
  * @example Background image with custom styling
- * ```tsx
  * <AvatarBase
  *   backgroundUrl="https://example.com/image.jpg"
  *   backgroundSize="cover"
@@ -75,10 +74,8 @@ type AvatarBaseProps = BaseProps & {
  *   shape="square"
  *   size={64}
  * />
- * ```
  *
  * @example Avatar with child content
- * ```tsx
  * <AvatarBase
  *   size={40}
  *   shape="round"
@@ -86,7 +83,6 @@ type AvatarBaseProps = BaseProps & {
  * >
  *   <IconUser size={24} color="gray600" />
  * </AvatarBase>
- * ```
  */
 export const AvatarBase = ({
   backgroundColor,

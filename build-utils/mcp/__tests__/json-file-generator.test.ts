@@ -318,15 +318,12 @@ describe('JSON File Generator', () => {
     it('should output description and tags from JSDoc comment if present', () => {
       const docs: ComponentDocumentation[] = [
         {
-          id: 'button',
-          name: 'Button',
-          path: 'src/components/button',
           comment: {
             description: 'Button component for forms and actions.',
             location: {
-              startLine: 1,
               endLine: 10,
               filePath: 'src/components/button/index.tsx',
+              startLine: 1,
             },
             tags: [
               { name: 'example', text: '<Button>Click me</Button>' },
@@ -334,12 +331,29 @@ describe('JSON File Generator', () => {
             ],
             text: '/** Button component for forms and actions. */',
           },
+          id: 'button',
+          name: 'Button',
+          path: 'src/components/button',
         },
       ];
       jsonFileGenerator.generateComponentFiles(docs, '/output', false);
       const call = vi.mocked(fs.writeFileSync).mock.calls[0];
-      const written = JSON.parse(call[1]);
-      expect(written.description).toBe('Button component for forms and actions.');
+      if (!call) {
+        throw new Error('Expected fs.writeFileSync to be called');
+      }
+      // Explicitly cast to string to fix the type error
+      const content = call[1] as string;
+      const written = JSON.parse(content) as {
+        description: string;
+        generatedAt: string;
+        id: string;
+        name: string;
+        path: string;
+        tags: Array<{ name: string; text: string }>;
+      };
+      expect(written.description).toBe(
+        'Button component for forms and actions.',
+      );
       expect(written.tags).toEqual([
         { name: 'example', text: '<Button>Click me</Button>' },
         { name: 'param', text: 'variant Button variant' },
@@ -356,7 +370,19 @@ describe('JSON File Generator', () => {
       ];
       jsonFileGenerator.generateComponentFiles(docs, '/output', false);
       const call = vi.mocked(fs.writeFileSync).mock.calls[0];
-      const written = JSON.parse(call[1]);
+      if (!call) {
+        throw new Error('Expected fs.writeFileSync to be called');
+      }
+      // Explicitly cast to string to fix the type error
+      const content = call[1] as string;
+      const written = JSON.parse(content) as {
+        description: string;
+        generatedAt: string;
+        id: string;
+        name: string;
+        path: string;
+        tags: Array<{ name: string; text: string }>;
+      };
       expect(written.description).toBe('');
       expect(written.tags).toEqual([]);
     });
@@ -364,26 +390,34 @@ describe('JSON File Generator', () => {
     it('should always output tags as array of objects with name and text', () => {
       const docs: ComponentDocumentation[] = [
         {
-          id: 'text',
-          name: 'Text',
-          path: 'src/components/text',
           comment: {
             description: 'Text component',
             location: {
-              startLine: 1,
               endLine: 5,
               filePath: 'src/components/text/index.tsx',
+              startLine: 1,
             },
             tags: [],
             text: '/** Text component */',
           },
+          id: 'text',
+          name: 'Text',
+          path: 'src/components/text',
         },
       ];
       jsonFileGenerator.generateComponentFiles(docs, '/output', false);
       const call = vi.mocked(fs.writeFileSync).mock.calls[0];
-      const written = JSON.parse(call[1]);
+      if (!call) {
+        throw new Error('Expected fs.writeFileSync to be called');
+      }
+      // Explicitly cast to string to fix the type error
+      const content = call[1] as string;
+      const written = JSON.parse(content) as {
+        description: string;
+        tags: Array<{ name: string; text: string }>;
+      };
       expect(Array.isArray(written.tags)).toBe(true);
-      written.tags.forEach(tag => {
+      written.tags.forEach((tag: { name: string; text: string }) => {
         expect(typeof tag.name).toBe('string');
         expect(typeof tag.text).toBe('string');
       });

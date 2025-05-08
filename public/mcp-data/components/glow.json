@@ -1,0 +1,28 @@
+{
+  "description": "GlowWrapper component adds an interactive glowing border effect to its children.\nThe glow follows the user's mouse movement, creating a dynamic highlight effect.\nIt can use either a custom color or product-specific gradients.",
+  "id": "glow",
+  "name": "Glow",
+  "path": "src/components/glow",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<GlowWrapper>\n<Card label=\"Content\">Card with glow effect</Card>\n</GlowWrapper>"
+    },
+    {
+      "name": "example",
+      "text": "With custom color\n<GlowWrapper glowColor=\"blue500\" size={2}>\n<Card label=\"Blue Glow\">Card with blue glow</Card>\n</GlowWrapper>"
+    },
+    {
+      "name": "example",
+      "text": "With product-specific colors\n<GlowWrapper product=\"checkout\">\n<Card label=\"Checkout\">Checkout product card</Card>\n</GlowWrapper>"
+    },
+    {
+      "name": "example",
+      "text": "Custom radius\n<GlowWrapper radius={12} size={2}>\n<div className=\"custom-content\">\nContent with larger radius glow\n</div>\n</GlowWrapper>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple items with product-specific glows\n<div className=\"products-grid\">\n<GlowWrapper product=\"classify\">\n<ProductCard product=\"classify\" />\n</GlowWrapper>\n\n<GlowWrapper product=\"clear\">\n<ProductCard product=\"clear\" />\n</GlowWrapper>\n\n<GlowWrapper product=\"dashboard\">\n<ProductCard product=\"dashboard\" />\n</GlowWrapper>\n</div>"
+    }
+  ]
+}

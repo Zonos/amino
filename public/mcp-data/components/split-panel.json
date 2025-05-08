@@ -1,0 +1,56 @@
+{
+  "description": "SplitPanel component creates resizable panels with draggable dividers.\nIt allows users to adjust the relative sizes of content sections either\nhorizontally or vertically.",
+  "id": "split-panel",
+  "name": "SplitPanel",
+  "path": "src/components/split-panel",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<SplitPanel>\n<div>Left panel content</div>\n<div>Right panel content</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "With custom initial sizes\n<SplitPanel sizes={[0.7, 0.3]}>\n<div>Larger panel (70%)</div>\n<div>Smaller panel (30%)</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "Vertical split\n<SplitPanel direction=\"vertical\" sizes={[0.4, 0.6]}>\n<div>Top panel</div>\n<div>Bottom panel</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "With state management\nconst [sizes, setSizes] = useState([0.5, 0.5]);\n\n<SplitPanel\nsizes={sizes}\nonSetSizes={setSizes}\n>\n<div>Panel 1</div>\n<div>Panel 2</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "With collapsible panels\nconst [collapsed, setCollapsed] = useState(false);\n\n<>\n<Button onClick={() => setCollapsed(!collapsed)}>\n{collapsed ? 'Expand' : 'Collapse'}\n</Button>\n\n<SplitPanel\ncollapseAll={collapsed}\nsizes={[0.3, 0.7]}\n>\n<div>Navigation panel</div>\n<div>Content panel</div>\n</SplitPanel>\n</>"
+    },
+    {
+      "name": "example",
+      "text": "With multiple panels\n<SplitPanel sizes={[0.2, 0.5, 0.3]}>\n<div>Left sidebar</div>\n<div>Main content</div>\n<div>Right sidebar</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<SplitPanel>\n<div>Left panel content</div>\n<div>Right panel content</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "With custom initial sizes\n<SplitPanel sizes={[0.7, 0.3]}>\n<div>Larger panel (70%)</div>\n<div>Smaller panel (30%)</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "Vertical split\n<SplitPanel direction=\"vertical\" sizes={[0.4, 0.6]}>\n<div>Top panel</div>\n<div>Bottom panel</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "With state management\nconst [sizes, setSizes] = useState([0.5, 0.5]);\n\n<SplitPanel\nsizes={sizes}\nonSetSizes={setSizes}\n>\n<div>Panel 1</div>\n<div>Panel 2</div>\n</SplitPanel>"
+    },
+    {
+      "name": "example",
+      "text": "With collapsible panels\nconst [collapsed, setCollapsed] = useState(false);\n\n<>\n<Button onClick={() => setCollapsed(!collapsed)}>\n{collapsed ? 'Expand' : 'Collapse'}\n</Button>\n\n<SplitPanel\ncollapseAll={collapsed}\nsizes={[0.3, 0.7]}\n>\n<div>Navigation panel</div>\n<div>Content panel</div>\n</SplitPanel>\n</>"
+    },
+    {
+      "name": "example",
+      "text": "With multiple panels\n<SplitPanel sizes={[0.2, 0.5, 0.3]}>\n<div>Left sidebar</div>\n<div>Main content</div>\n<div>Right sidebar</div>\n</SplitPanel>"
+    }
+  ]
+}

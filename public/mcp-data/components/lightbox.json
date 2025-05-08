@@ -1,0 +1,40 @@
+{
+  "description": "LightBox component provides a modal view for displaying images, videos, or other media\ncontent with a darkened background overlay.",
+  "id": "lightbox",
+  "name": "Lightbox",
+  "path": "src/components/lightbox",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(true)}>Open Image</Button>\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\n>\n<img src=\"/path/to/image.jpg\" alt=\"Preview\" />\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "With custom width\nconst [open, setOpen] = useState(false);\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\nwidth={800}\n>\n<img src=\"/path/to/image.jpg\" alt=\"Preview\" style={{ maxWidth: '100%' }} />\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "With video content\nconst [open, setOpen] = useState(false);\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\n>\n<video\ncontrols\nwidth=\"100%\"\nautoPlay\n>\n<source src=\"/path/to/video.mp4\" type=\"video/mp4\" />\nYour browser does not support the video tag.\n</video>\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "With carousel of images\nconst [open, setOpen] = useState(false);\nconst [currentIndex, setCurrentIndex] = useState(0);\nconst images = ['/image1.jpg', '/image2.jpg', '/image3.jpg'];\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\n>\n<div style={{ display: 'flex', alignItems: 'center' }}>\n<Button\nicon={<ArrowLeftIcon />}\nonClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}\ndisabled={currentIndex === 0}\nvariant=\"plain\"\n/>\n<img\nsrc={images[currentIndex]}\nalt={`Image ${currentIndex + 1}`}\nstyle={{ maxWidth: '90%', maxHeight: '80vh' }}\n/>\n<Button\nicon={<ArrowRightIcon />}\nonClick={() => setCurrentIndex(prev => Math.min(images.length - 1, prev + 1))}\ndisabled={currentIndex === images.length - 1}\nvariant=\"plain\"\n/>\n</div>\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(true)}>Open Image</Button>\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\n>\n<img src=\"/path/to/image.jpg\" alt=\"Preview\" />\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "With custom width\nconst [open, setOpen] = useState(false);\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\nwidth={800}\n>\n<img src=\"/path/to/image.jpg\" alt=\"Preview\" style={{ maxWidth: '100%' }} />\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "With video content\nconst [open, setOpen] = useState(false);\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\n>\n<video\ncontrols\nwidth=\"100%\"\nautoPlay\n>\n<source src=\"/path/to/video.mp4\" type=\"video/mp4\" />\nYour browser does not support the video tag.\n</video>\n</LightBox>"
+    },
+    {
+      "name": "example",
+      "text": "With carousel of images\nconst [open, setOpen] = useState(false);\nconst [currentIndex, setCurrentIndex] = useState(0);\nconst images = ['/image1.jpg', '/image2.jpg', '/image3.jpg'];\n\n<LightBox\nopen={open}\nonClose={() => setOpen(false)}\n>\n<div style={{ display: 'flex', alignItems: 'center' }}>\n<Button\nicon={<ArrowLeftIcon />}\nonClick={() => setCurrentIndex(prev => Math.max(0, prev - 1))}\ndisabled={currentIndex === 0}\nvariant=\"plain\"\n/>\n<img\nsrc={images[currentIndex]}\nalt={`Image ${currentIndex + 1}`}\nstyle={{ maxWidth: '90%', maxHeight: '80vh' }}\n/>\n<Button\nicon={<ArrowRightIcon />}\nonClick={() => setCurrentIndex(prev => Math.min(images.length - 1, prev + 1))}\ndisabled={currentIndex === images.length - 1}\nvariant=\"plain\"\n/>\n</div>\n</LightBox>"
+    }
+  ]
+}

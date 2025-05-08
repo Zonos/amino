@@ -12,6 +12,8 @@ export type ImageAvatarProps = {
  * Use this component when you need to show profile pictures, product images, or any custom image
  * in an avatar format.
  *
+ * @component Avatar
+ *
  * @example Basic usage
  * ```tsx
  * <ImageAvatar

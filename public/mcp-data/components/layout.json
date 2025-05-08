@@ -1,0 +1,64 @@
+{
+  "description": "Layout component provides the main application layout structure with\nconfigurable header, sidebar navigation, content area, and footer.",
+  "id": "layout",
+  "name": "Layout",
+  "path": "src/components/layout",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage with header\n<Layout\nheaderContent={<div className=\"header\">Header Content</div>}\nsidebar={<NavigationGroup content={<NavigationItem content=\"Home\" />} />}\ncontent={<div className=\"content\">Main content area</div>}\nfooter={<div className=\"footer\">Footer content</div>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Without header, with logo in sidebar\n<Layout\nlogoSidebar={<img src=\"logo.png\" alt=\"Logo\" />}\nsidebar={\n<>\n<NavigationItem content=\"Dashboard\" icon={<DashboardIcon />} />\n<NavigationGroup\ncontent={<NavigationItem content=\"Settings\" icon={<SettingsIcon />} />}\n>\n<NavigationItem content=\"Profile\" />\n<NavigationItem content=\"Preferences\" />\n</NavigationGroup>\n</>\n}\ncontent={<MainContent />}\nfooter={<UserMenu />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With no content padding\n<Layout\nnoPaddingContent\nsidebar={<Navigation />}\ncontent={<FullWidthDashboard />}\nfooter={<Footer />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With search in header\n<Layout\nheaderContent={\n<div className=\"header\">\n<Logo />\n<Input\nplaceholder=\"Search...\"\nonChange={handleSearch}\nvalue={searchQuery}\n/>\n<UserControls />\n</div>\n}\nsidebar={<SideNavigation />}\ncontent={<PageContent />}\nfooter={<VersionInfo />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage with header\n<Layout\nheaderContent={<div className=\"header\">Header Content</div>}\nsidebar={<NavigationGroup content={<NavigationItem content=\"Home\" />} />}\ncontent={<div className=\"content\">Main content area</div>}\nfooter={<div className=\"footer\">Footer content</div>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Without header, with logo in sidebar\n<Layout\nlogoSidebar={<img src=\"logo.png\" alt=\"Logo\" />}\nsidebar={\n<>\n<NavigationItem content=\"Dashboard\" icon={<DashboardIcon />} />\n<NavigationGroup\ncontent={<NavigationItem content=\"Settings\" icon={<SettingsIcon />} />}\n>\n<NavigationItem content=\"Profile\" />\n<NavigationItem content=\"Preferences\" />\n</NavigationGroup>\n</>\n}\ncontent={<MainContent />}\nfooter={<UserMenu />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With no content padding\n<Layout\nnoPaddingContent\nsidebar={<Navigation />}\ncontent={<FullWidthDashboard />}\nfooter={<Footer />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With search in header\n<Layout\nheaderContent={\n<div className=\"header\">\n<Logo />\n<Input\nplaceholder=\"Search...\"\nonChange={handleSearch}\nvalue={searchQuery}\n/>\n<UserControls />\n</div>\n}\nsidebar={<SideNavigation />}\ncontent={<PageContent />}\nfooter={<VersionInfo />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<NavigationItem\ncontent=\"Dashboard\"\nicon={<DashboardIcon size={24} />}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Active state\n<NavigationItem\ncontent=\"Settings\"\nicon={<SettingsIcon size={24} />}\nisActive={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With anchor tag for navigation\n<a href=\"/dashboard\">\n<NavigationItem\ncontent=\"Dashboard\"\nicon={<DashboardIcon size={24} />}\nisActive={currentPath === '/dashboard'}\n/>\n</a>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<NavigationGroup\ncontent={\n<NavigationItem\ncontent=\"Settings\"\nicon={<SettingsIcon size={24} />}\n/>\n}\n>\n<NavigationItem content=\"Profile\" />\n<NavigationItem content=\"Preferences\" />\n<NavigationItem content=\"Security\" />\n</NavigationGroup>"
+    },
+    {
+      "name": "example",
+      "text": "With links and active state\n<NavigationGroup\ncollapsed={!pathname.includes('/settings')}\ncontent={\n<a href=\"/settings\">\n<NavigationItem\ncontent=\"Settings\"\nicon={<SettingsIcon size={24} />}\n/>\n</a>\n}\n>\n<a href=\"/settings/profile\">\n<NavigationItem\ncontent=\"Profile\"\nisActive={pathname === '/settings/profile'}\n/>\n</a>\n<a href=\"/settings/preferences\">\n<NavigationItem\ncontent=\"Preferences\"\nisActive={pathname === '/settings/preferences'}\n/>\n</a>\n</NavigationGroup>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple groups in navigation\n<>\n<NavigationGroup\ncollapsed={!pathname.includes('/dashboard')}\ncontent={\n<a href=\"/dashboard\">\n<NavigationItem\ncontent=\"Dashboard\"\nicon={<DashboardIcon size={24} />}\n/>\n</a>\n}\n>\n<a href=\"/dashboard/analytics\">\n<NavigationItem content=\"Analytics\" />\n</a>\n<a href=\"/dashboard/reports\">\n<NavigationItem content=\"Reports\" />\n</a>\n</NavigationGroup>\n\n<NavigationGroup\ncollapsed={!pathname.includes('/settings')}\ncontent={\n<a href=\"/settings\">\n<NavigationItem\ncontent=\"Settings\"\nicon={<SettingsIcon size={24} />}\n/>\n</a>\n}\n>\n<a href=\"/settings/profile\">\n<NavigationItem content=\"Profile\" />\n</a>\n<a href=\"/settings/account\">\n<NavigationItem content=\"Account\" />\n</a>\n</NavigationGroup>\n</>"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "description": "Textarea component provides a multi-line text input field with support for labels,\nhelp text, error states, and auto-expanding height.",
+  "id": "textarea",
+  "name": "Textarea",
+  "path": "src/components/textarea",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [value, setValue] = useState('');\n\n<Textarea\nlabel=\"Description\"\nplaceholder=\"Enter description...\"\nvalue={value}\nonChange={e => setValue(e.target.value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state and help text\n<Textarea\nlabel=\"Description\"\nplaceholder=\"Enter description...\"\nvalue={value}\nonChange={handleChange}\nerror={!value.trim() && isSubmitted}\nhelpText=\"This field is required\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom width and actions\n<Textarea\nlabel=\"Comments\"\nwidth={500}\nvalue={comments}\nonChange={handleCommentsChange}\nactions={\n<Flex>\n<Button onClick={handleClear}>Clear</Button>\n<Button variant=\"primary\" onClick={handleSave}>Save</Button>\n</Flex>\n}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled expand and maximum rows\n<Textarea\nlabel=\"Limited Input\"\nvalue={value}\nonChange={handleChange}\ndisableExpand={false}\nmaxRows={5}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Textarea\nlabel=\"Read-only Content\"\nvalue=\"This content cannot be edited\"\ndisabled={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With form integration\n<form onSubmit={handleSubmit}>\n<Textarea\nlabel=\"Cover Letter\"\nname=\"coverLetter\"\nvalue={formData.coverLetter}\nonChange={e => setFormData({...formData, coverLetter: e.target.value})}\nrequired\n/>\n<Button type=\"submit\">Submit</Button>\n</form>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [value, setValue] = useState('');\n\n<Textarea\nlabel=\"Description\"\nplaceholder=\"Enter description...\"\nvalue={value}\nonChange={e => setValue(e.target.value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state and help text\n<Textarea\nlabel=\"Description\"\nplaceholder=\"Enter description...\"\nvalue={value}\nonChange={handleChange}\nerror={!value.trim() && isSubmitted}\nhelpText=\"This field is required\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom width and actions\n<Textarea\nlabel=\"Comments\"\nwidth={500}\nvalue={comments}\nonChange={handleCommentsChange}\nactions={\n<Flex>\n<Button onClick={handleClear}>Clear</Button>\n<Button variant=\"primary\" onClick={handleSave}>Save</Button>\n</Flex>\n}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled expand and maximum rows\n<Textarea\nlabel=\"Limited Input\"\nvalue={value}\nonChange={handleChange}\ndisableExpand={false}\nmaxRows={5}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Textarea\nlabel=\"Read-only Content\"\nvalue=\"This content cannot be edited\"\ndisabled={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With form integration\n<form onSubmit={handleSubmit}>\n<Textarea\nlabel=\"Cover Letter\"\nname=\"coverLetter\"\nvalue={formData.coverLetter}\nonChange={e => setFormData({...formData, coverLetter: e.target.value})}\nrequired\n/>\n<Button type=\"submit\">Submit</Button>\n</form>"
+    }
+  ]
+}

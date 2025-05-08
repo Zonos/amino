@@ -1,0 +1,32 @@
+{
+  "description": "A data table component that can display nested data structures with pagination support.\nAutomatically extracts and displays nested object properties in a tabular format,\nwith support for custom cell rendering and pagination controls.",
+  "id": "nested-data-table",
+  "name": "NestedDataTable",
+  "path": "src/components/nested-data-table",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\ntype User = {\nid: number;\nname: string;\ndetails: {\nemail: string;\nphone: string;\n};\n};\n\nconst [users, setUsers] = useState<User[]>([]);\nconst [loading, setLoading] = useState(true);\n\nuseEffect(() => {\nfetchUsers().then(data => {\nsetUsers(data);\nsetLoading(false);\n});\n}, []);\n\n<NestedDataTable\nisFetching={loading}\ntableData={users}\ntitle=\"User List\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom cell rendering\n<NestedDataTable\ncustomColumnCells={{\nname: props => <strong>{props.row.name}</strong>,\n'details.email': props => <a href={`mailto:${props.row.details.email}`}>{props.row.details.email}</a>\n}}\nisFetching={loading}\ntableData={users}\ntitle=\"User List with Custom Formatting\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With pagination\nconst [page, setPage] = useState(1);\nconst [hasMore, setHasMore] = useState(true);\n\n<NestedDataTable\ncurrentPage={page}\nhandlePagination={setPage}\nhasNextPage={hasMore}\nhasPreviousPage={page > 1}\nisFetching={loading}\ntableData={users}\ntitle=\"Paginated User List\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\ntype User = {\nid: number;\nname: string;\ndetails: {\nemail: string;\nphone: string;\n};\n};\n\nconst [users, setUsers] = useState<User[]>([]);\nconst [loading, setLoading] = useState(true);\n\nuseEffect(() => {\nfetchUsers().then(data => {\nsetUsers(data);\nsetLoading(false);\n});\n}, []);\n\n<NestedDataTable\nisFetching={loading}\ntableData={users}\ntitle=\"User List\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom cell rendering\n<NestedDataTable\ncustomColumnCells={{\nname: props => <strong>{props.row.name}</strong>,\n'details.email': props => <a href={`mailto:${props.row.details.email}`}>{props.row.details.email}</a>\n}}\nisFetching={loading}\ntableData={users}\ntitle=\"User List with Custom Formatting\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With pagination\nconst [page, setPage] = useState(1);\nconst [hasMore, setHasMore] = useState(true);\n\n<NestedDataTable\ncurrentPage={page}\nhandlePagination={setPage}\nhasNextPage={hasMore}\nhasPreviousPage={page > 1}\nisFetching={loading}\ntableData={users}\ntitle=\"Paginated User List\"\n/>"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "description": "Skeleton displays a placeholder block to indicate loading content.\nIt can be used to mimic the shape of text, cards, or other UI elements while data is loading.\nSupports custom width, height, animation, and children for more advanced skeleton states.",
+  "id": "skeleton",
+  "name": "Skeleton",
+  "path": "src/components/skeleton",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Skeleton height={20} width={200} />"
+    },
+    {
+      "name": "example",
+      "text": "Animated skeleton\n<Skeleton animation height={32} width={300} />"
+    },
+    {
+      "name": "example",
+      "text": "Skeleton inside a card\n<Card label=\"Loading...\">\n<Skeleton height={24} width={180} />\n<Skeleton height={16} width={220} />\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "With children (content overlay)\n<Skeleton height={100} width={400}>\n<Text color=\"gray600\" type=\"subheader\">\nGenerating report...\n</Text>\n</Skeleton>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple skeleton lines\n<VStack spacing={8}>\n<Skeleton height={16} width={180} />\n<Skeleton height={16} width={220} />\n<Skeleton height={16} width={200} />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Skeleton height={20} width={200} />"
+    },
+    {
+      "name": "example",
+      "text": "Animated skeleton\n<Skeleton animation height={32} width={300} />"
+    },
+    {
+      "name": "example",
+      "text": "Skeleton inside a card\n<Card label=\"Loading...\">\n<Skeleton height={24} width={180} />\n<Skeleton height={16} width={220} />\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "With children (content overlay)\n<Skeleton height={100} width={400}>\n<Text color=\"gray600\" type=\"subheader\">\nGenerating report...\n</Text>\n</Skeleton>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple skeleton lines\n<VStack spacing={8}>\n<Skeleton height={16} width={180} />\n<Skeleton height={16} width={220} />\n<Skeleton height={16} width={200} />\n</VStack>"
+    }
+  ]
+}

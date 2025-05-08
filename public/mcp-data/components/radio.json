@@ -1,0 +1,56 @@
+{
+  "description": "Radio component provides a single radio button for use in forms or as part of a RadioGroup.\nIt includes an animated selection indicator and optional label.",
+  "id": "radio",
+  "name": "Radio",
+  "path": "src/components/radio",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [checked, setChecked] = useState(false);\n\n<Radio\nchecked={checked}\nonChange={setChecked}\nvalue=\"option1\"\nlabel=\"Select this option\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled state\n<Radio\nchecked={true}\ndisabled={true}\nonChange={() => {}}\nvalue=\"disabled-option\"\nlabel=\"This option cannot be changed\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With ReactNode label\n<Radio\nchecked={checked}\nonChange={setChecked}\nvalue=\"option-with-jsx\"\nlabel={<>Custom <strong>formatted</strong> label</>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "In a form\n<form onSubmit={handleSubmit}>\n<Radio\nchecked={formData.agreeToTerms}\nonChange={(checked) => setFormData({...formData, agreeToTerms: checked})}\nvalue=\"agree\"\nlabel=\"I agree to the terms and conditions\"\n/>\n<Button type=\"submit\">Submit</Button>\n</form>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [checked, setChecked] = useState(false);\n\n<Radio\nchecked={checked}\nonChange={setChecked}\nvalue=\"option1\"\nlabel=\"Select this option\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled state\n<Radio\nchecked={true}\ndisabled={true}\nonChange={() => {}}\nvalue=\"disabled-option\"\nlabel=\"This option cannot be changed\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With ReactNode label\n<Radio\nchecked={checked}\nonChange={setChecked}\nvalue=\"option-with-jsx\"\nlabel={<>Custom <strong>formatted</strong> label</>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "In a form\n<form onSubmit={handleSubmit}>\n<Radio\nchecked={formData.agreeToTerms}\nonChange={(checked) => setFormData({...formData, agreeToTerms: checked})}\nvalue=\"agree\"\nlabel=\"I agree to the terms and conditions\"\n/>\n<Button type=\"submit\">Submit</Button>\n</form>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selected, setSelected] = useState('option1');\n\nconst options = [\n{ label: 'Option One', value: 'option1' },\n{ label: 'Option Two', value: 'option2' },\n{ label: 'Option Three', value: 'option3' }\n];\n\n<RadioGroup\nitems={options}\ninitialValue={selected}\nonChange={setSelected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled state\n<RadioGroup\nitems={[\n{ label: 'Yes', value: 'yes' },\n{ label: 'No', value: 'no' }\n]}\ninitialValue=\"yes\"\nonChange={handleChange}\ndisabled={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styled labels\nconst customOptions = [\n{\nlabel: <span><strong>Business</strong> - For commercial use</span>,\nvalue: 'business'\n},\n{\nlabel: <span><strong>Personal</strong> - For individual use</span>,\nvalue: 'personal'\n}\n];\n\n<RadioGroup\nitems={customOptions}\ninitialValue=\"business\"\nonChange={handleAccountTypeChange}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With type-safe values using generics\ntype ShippingMethod = 'standard' | 'express' | 'overnight';\n\nconst [shipping, setShipping] = useState<ShippingMethod>('standard');\n\nconst shippingOptions: RadioGroupItem<ShippingMethod>[] = [\n{ label: 'Standard (3-5 days)', value: 'standard' },\n{ label: 'Express (2-3 days)', value: 'express' },\n{ label: 'Overnight (1 day)', value: 'overnight' }\n];\n\n<RadioGroup<ShippingMethod>\nitems={shippingOptions}\ninitialValue={shipping}\nonChange={setShipping}\n/>"
+    }
+  ]
+}

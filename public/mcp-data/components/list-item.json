@@ -1,0 +1,48 @@
+{
+  "description": "ListItem component represents an interactive item in a list with optional\ndecorators, label, subtitle, and selection states.",
+  "id": "list-item",
+  "name": "ListItem",
+  "path": "src/components/list-item",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<List>\n<ListItem\nlabel=\"Settings\"\nonClick={() => navigate('/settings')}\n/>\n<ListItem\nlabel=\"Profile\"\nonClick={() => navigate('/profile')}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With icons and subtitles\n<ListItem\ndecorator={<SettingsIcon size={24} />}\nlabel=\"Account Settings\"\nsubtitle=\"User preferences and security options\"\nonClick={handleSettingsClick}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With selection state\nconst [selected, setSelected] = useState('settings');\n\n<List>\n<ListItem\ndecorator={<HomeIcon size={24} />}\nlabel=\"Dashboard\"\nselected={selected === 'dashboard'}\nonClick={() => setSelected('dashboard')}\n/>\n<ListItem\ndecorator={<SettingsIcon size={24} />}\nlabel=\"Settings\"\nselected={selected === 'settings'}\nonClick={() => setSelected('settings')}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With right decorator\n<ListItem\nlabel=\"Notifications\"\nrightDecorator={<Badge>3</Badge>}\nonClick={handleNotificationsClick}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<ListItem\nlabel=\"Premium Feature\"\nsubtitle=\"Upgrade your plan to access\"\ndisabled={true}\nonClick={handlePremiumClick}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<List>\n<ListItem\nlabel=\"Settings\"\nonClick={() => navigate('/settings')}\n/>\n<ListItem\nlabel=\"Profile\"\nonClick={() => navigate('/profile')}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With icons and subtitles\n<ListItem\ndecorator={<SettingsIcon size={24} />}\nlabel=\"Account Settings\"\nsubtitle=\"User preferences and security options\"\nonClick={handleSettingsClick}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With selection state\nconst [selected, setSelected] = useState('settings');\n\n<List>\n<ListItem\ndecorator={<HomeIcon size={24} />}\nlabel=\"Dashboard\"\nselected={selected === 'dashboard'}\nonClick={() => setSelected('dashboard')}\n/>\n<ListItem\ndecorator={<SettingsIcon size={24} />}\nlabel=\"Settings\"\nselected={selected === 'settings'}\nonClick={() => setSelected('settings')}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With right decorator\n<ListItem\nlabel=\"Notifications\"\nrightDecorator={<Badge>3</Badge>}\nonClick={handleNotificationsClick}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<ListItem\nlabel=\"Premium Feature\"\nsubtitle=\"Upgrade your plan to access\"\ndisabled={true}\nonClick={handlePremiumClick}\n/>"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "description": "Banner component displays prominent messages or notifications with different intents.\nUse banners to communicate important information, status updates, or required actions.",
+  "id": "banner",
+  "name": "Banner",
+  "path": "src/components/banner",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic banner\n<Banner title=\"Information\">\nThis is a basic banner with important information.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With different intents\n<Banner intent=\"info\" title=\"Information\">\nThis contains helpful information for the user.\n</Banner>\n\n<Banner intent=\"success\" title=\"Success\">\nThe operation was completed successfully.\n</Banner>\n\n<Banner intent=\"warning\" title=\"Warning\">\nThis action will have side effects.\n</Banner>\n\n<Banner intent=\"error\" title=\"Error\">\nThere was a problem completing the operation.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With close button\n<Banner\nintent=\"info\"\ntitle=\"System Notification\"\nonClose={() => setVisible(false)}\n>\nThe system will be undergoing maintenance in two hours.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With header actions\n<Banner\nintent=\"info\"\ntitle=\"New feature available\"\nheaderActions={\n<Button variant=\"link\" size=\"small\">Learn more</Button>\n}\n>\nTry out our new reporting dashboard.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With footer actions\n<Banner\nintent=\"warning\"\ntitle=\"Update required\"\nfooterActions={\n<>\n<Button variant=\"standard\" size=\"small\">Remind me later</Button>\n<Button variant=\"primary\" size=\"small\">Update now</Button>\n</>\n}\n>\nYour software needs to be updated to the latest version.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With both title and content\n<Banner intent=\"success\" title=\"Order placed\">\n<Text>Your order #12345 has been placed successfully.</Text>\n<Text>You will receive a confirmation email shortly.</Text>\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "Content only (no title)\n<Banner intent=\"info\">\nThis is a simple notification message without a title.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "Basic banner\n<Banner title=\"Information\">\nThis is a basic banner with important information.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With different intents\n<Banner intent=\"info\" title=\"Information\">\nThis contains helpful information for the user.\n</Banner>\n\n<Banner intent=\"success\" title=\"Success\">\nThe operation was completed successfully.\n</Banner>\n\n<Banner intent=\"warning\" title=\"Warning\">\nThis action will have side effects.\n</Banner>\n\n<Banner intent=\"error\" title=\"Error\">\nThere was a problem completing the operation.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With close button\n<Banner\nintent=\"info\"\ntitle=\"System Notification\"\nonClose={() => setVisible(false)}\n>\nThe system will be undergoing maintenance in two hours.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With header actions\n<Banner\nintent=\"info\"\ntitle=\"New feature available\"\nheaderActions={\n<Button variant=\"link\" size=\"small\">Learn more</Button>\n}\n>\nTry out our new reporting dashboard.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With footer actions\n<Banner\nintent=\"warning\"\ntitle=\"Update required\"\nfooterActions={\n<>\n<Button variant=\"standard\" size=\"small\">Remind me later</Button>\n<Button variant=\"primary\" size=\"small\">Update now</Button>\n</>\n}\n>\nYour software needs to be updated to the latest version.\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "With both title and content\n<Banner intent=\"success\" title=\"Order placed\">\n<Text>Your order #12345 has been placed successfully.</Text>\n<Text>You will receive a confirmation email shortly.</Text>\n</Banner>"
+    },
+    {
+      "name": "example",
+      "text": "Content only (no title)\n<Banner intent=\"info\">\nThis is a simple notification message without a title.\n</Banner>"
+    }
+  ]
+}

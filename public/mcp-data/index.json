@@ -1,0 +1,285 @@
+{
+  "components": [
+    {
+      "id": "avatar",
+      "name": "Avatar",
+      "path": "src/components/avatar"
+    },
+    {
+      "id": "badge",
+      "name": "Badge",
+      "path": "src/components/badge"
+    },
+    {
+      "id": "banner",
+      "name": "Banner",
+      "path": "src/components/banner"
+    },
+    {
+      "id": "button",
+      "name": "Button",
+      "path": "src/components/button"
+    },
+    {
+      "id": "card",
+      "name": "Card",
+      "path": "src/components/card"
+    },
+    {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "path": "src/components/checkbox"
+    },
+    {
+      "id": "collapse",
+      "name": "Collapse",
+      "path": "src/components/collapse"
+    },
+    {
+      "id": "connection-map",
+      "name": "ConnectionMap",
+      "path": "src/components/connection-map"
+    },
+    {
+      "id": "country-multi-select",
+      "name": "CountryMultiSelect",
+      "path": "src/components/country-multi-select"
+    },
+    {
+      "id": "cover-sheet",
+      "name": "CoverSheet",
+      "path": "src/components/cover-sheet"
+    },
+    {
+      "id": "currency",
+      "name": "Currency",
+      "path": "src/components/currency"
+    },
+    {
+      "id": "danger-zone",
+      "name": "DangerZone",
+      "path": "src/components/danger-zone"
+    },
+    {
+      "id": "dialog",
+      "name": "Dialog",
+      "path": "src/components/dialog"
+    },
+    {
+      "id": "divider",
+      "name": "Divider",
+      "path": "src/components/divider"
+    },
+    {
+      "id": "drop-zone",
+      "name": "DropZone",
+      "path": "src/components/drop-zone"
+    },
+    {
+      "id": "file-upload",
+      "name": "FileUpload",
+      "path": "src/components/file-upload"
+    },
+    {
+      "id": "filter",
+      "name": "Filter",
+      "path": "src/components/filter"
+    },
+    {
+      "id": "flex",
+      "name": "Flex",
+      "path": "src/components/flex"
+    },
+    {
+      "id": "glow",
+      "name": "Glow",
+      "path": "src/components/glow"
+    },
+    {
+      "id": "help-text",
+      "name": "HelpText",
+      "path": "src/components/help-text"
+    },
+    {
+      "id": "input",
+      "name": "Input",
+      "path": "src/components/input"
+    },
+    {
+      "id": "layout",
+      "name": "Layout",
+      "path": "src/components/layout"
+    },
+    {
+      "id": "lightbox",
+      "name": "Lightbox",
+      "path": "src/components/lightbox"
+    },
+    {
+      "id": "list",
+      "name": "List",
+      "path": "src/components/list"
+    },
+    {
+      "id": "list-item",
+      "name": "ListItem",
+      "path": "src/components/list-item"
+    },
+    {
+      "id": "menu",
+      "name": "Menu",
+      "path": "src/components/menu"
+    },
+    {
+      "id": "nested-data-table",
+      "name": "NestedDataTable",
+      "path": "src/components/nested-data-table"
+    },
+    {
+      "id": "pivot-table",
+      "name": "PivotTable",
+      "path": "src/components/pivot-table"
+    },
+    {
+      "id": "progress-bar",
+      "name": "ProgressBar",
+      "path": "src/components/progress-bar"
+    },
+    {
+      "id": "radio",
+      "name": "Radio",
+      "path": "src/components/radio"
+    },
+    {
+      "id": "rest-state",
+      "name": "RestState",
+      "path": "src/components/rest-state"
+    },
+    {
+      "id": "rich-card-select",
+      "name": "RichCardSelect",
+      "path": "src/components/rich-card-select"
+    },
+    {
+      "id": "rich-checkbox",
+      "name": "RichCheckbox",
+      "path": "src/components/rich-checkbox"
+    },
+    {
+      "id": "rich-radio",
+      "name": "RichRadio",
+      "path": "src/components/rich-radio"
+    },
+    {
+      "id": "rounded-icon",
+      "name": "RoundedIcon",
+      "path": "src/components/rounded-icon"
+    },
+    {
+      "id": "section",
+      "name": "Section",
+      "path": "src/components/section"
+    },
+    {
+      "id": "select",
+      "name": "Select",
+      "path": "src/components/select"
+    },
+    {
+      "id": "simple-table",
+      "name": "SimpleTable",
+      "path": "src/components/simple-table"
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "path": "src/components/skeleton"
+    },
+    {
+      "id": "slide-over",
+      "name": "SlideOver",
+      "path": "src/components/slide-over"
+    },
+    {
+      "id": "spinner",
+      "name": "Spinner",
+      "path": "src/components/spinner"
+    },
+    {
+      "id": "split-panel",
+      "name": "SplitPanel",
+      "path": "src/components/split-panel"
+    },
+    {
+      "id": "stack",
+      "name": "Stack",
+      "path": "src/components/stack"
+    },
+    {
+      "id": "surface",
+      "name": "Surface",
+      "path": "src/components/surface"
+    },
+    {
+      "id": "switch",
+      "name": "Switch",
+      "path": "src/components/switch"
+    },
+    {
+      "id": "table",
+      "name": "Table",
+      "path": "src/components/table"
+    },
+    {
+      "id": "tabs",
+      "name": "Tabs",
+      "path": "src/components/tabs"
+    },
+    {
+      "id": "tag",
+      "name": "Tag",
+      "path": "src/components/tag"
+    },
+    {
+      "id": "text",
+      "name": "Text",
+      "path": "src/components/text"
+    },
+    {
+      "id": "text-avatar",
+      "name": "TextAvatar",
+      "path": "src/components/text-avatar"
+    },
+    {
+      "id": "textarea",
+      "name": "Textarea",
+      "path": "src/components/textarea"
+    },
+    {
+      "id": "theme-select",
+      "name": "ThemeSelect",
+      "path": "src/components/theme-select"
+    },
+    {
+      "id": "thumbnail",
+      "name": "Thumbnail",
+      "path": "src/components/thumbnail"
+    },
+    {
+      "id": "toast",
+      "name": "Toast",
+      "path": "src/components/toast"
+    },
+    {
+      "id": "toggle",
+      "name": "Toggle",
+      "path": "src/components/toggle"
+    },
+    {
+      "id": "tooltip",
+      "name": "Tooltip",
+      "path": "src/components/tooltip"
+    }
+  ],
+  "totalComponents": 56
+}

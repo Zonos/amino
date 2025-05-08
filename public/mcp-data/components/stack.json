@@ -1,0 +1,96 @@
+{
+  "description": "HStack component arranges children horizontally with consistent spacing.\nIt's a specialized version of Stack that automatically sets horizontal layout.",
+  "id": "stack",
+  "name": "Stack",
+  "path": "src/components/stack",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic stack\n<Stack spacing={16}>\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "With different spacing values\n<Stack spacing={8}>\n<div>Closely spaced items</div>\n<div>With 8px gap</div>\n</Stack>\n\n<Stack spacing={24}>\n<div>Standard spacing</div>\n<div>With 24px gap</div>\n</Stack>\n\n<Stack spacing={32}>\n<div>Widely spaced items</div>\n<div>With 32px gap</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "With alignment\n<Stack alignment=\"center\">\n<div>Centered content</div>\n<div>Also centered</div>\n</Stack>\n\n<Stack alignment=\"end\">\n<div>Right/end aligned content</div>\n<div>Also right/end aligned</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "With custom className\n<Stack className=\"custom-stack\" spacing={16}>\n<div>Custom styled stack</div>\n<div>With additional classes</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "Combining with other components\n<Stack spacing={16}>\n<Card>First card</Card>\n<Card>Second card</Card>\n<Button>Action button</Button>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic horizontal layout\n<HStack>\n<div>Left item</div>\n<div>Middle item</div>\n<div>Right item</div>\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "Custom spacing\n<HStack spacing={8}>\n<Button>Save</Button>\n<Button>Cancel</Button>\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "With center alignment\n<HStack alignment=\"center\">\n<Badge>New</Badge>\n<Text>Product title</Text>\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "With space between items\n<HStack alignment=\"space-between\">\n<div>Left aligned</div>\n<div>Right aligned</div>\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "With buttons and consistent spacing\n<HStack spacing={16}>\n<Button variant=\"primary\">Submit</Button>\n<Button variant=\"standard\">Cancel</Button>\n<Button variant=\"link\">Learn more</Button>\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "Form actions layout\n<HStack alignment=\"end\" spacing={8}>\n<Button variant=\"primary\">Save</Button>\n<Button variant=\"standard\">Cancel</Button>\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic stack\n<Stack spacing={16}>\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "With different spacing values\n<Stack spacing={8}>\n<div>Closely spaced items</div>\n<div>With 8px gap</div>\n</Stack>\n\n<Stack spacing={24}>\n<div>Standard spacing</div>\n<div>With 24px gap</div>\n</Stack>\n\n<Stack spacing={32}>\n<div>Widely spaced items</div>\n<div>With 32px gap</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "With alignment\n<Stack alignment=\"center\">\n<div>Centered content</div>\n<div>Also centered</div>\n</Stack>\n\n<Stack alignment=\"end\">\n<div>Right/end aligned content</div>\n<div>Also right/end aligned</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "With custom className\n<Stack className=\"custom-stack\" spacing={16}>\n<div>Custom styled stack</div>\n<div>With additional classes</div>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "Combining with other components\n<Stack spacing={16}>\n<Card>First card</Card>\n<Card>Second card</Card>\n<Button>Action button</Button>\n</Stack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic vertical layout\n<VStack>\n<div>Top item</div>\n<div>Middle item</div>\n<div>Bottom item</div>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Custom spacing\n<VStack spacing={16}>\n<Text type=\"header\">Section Title</Text>\n<Text>Description text for this section that explains what it does.</Text>\n<Button>Action</Button>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With center alignment\n<VStack alignment=\"center\">\n<Badge>Featured</Badge>\n<Text>Product name</Text>\n<Text>$19.99</Text>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Form layout\n<VStack spacing={12}>\n<Input label=\"Name\" />\n<Input label=\"Email\" />\n<Input label=\"Password\" type=\"password\" />\n<Checkbox label=\"I agree to terms\" />\n<Button variant=\"primary\">Sign up</Button>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Content sections\n<VStack spacing={32}>\n<Card>Section 1 content</Card>\n<Card>Section 2 content</Card>\n<Card>Section 3 content</Card>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With different spacing for visual hierarchy\n<VStack spacing={8}>\n<Text type=\"bold-subheader\">Group Title</Text>\n<VStack spacing={4}>\n<Text>Item 1</Text>\n<Text>Item 2</Text>\n<Text>Item 3</Text>\n</VStack>\n</VStack>"
+    }
+  ]
+}

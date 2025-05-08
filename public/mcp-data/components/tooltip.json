@@ -1,0 +1,72 @@
+{
+  "description": "Tooltip component displays informative text when users hover over, focus on, or tap an element.\nIt supports titles, subtitles, and customization of placement and theme.",
+  "id": "tooltip",
+  "name": "Tooltip",
+  "path": "src/components/tooltip",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic tooltip\n<Tooltip title=\"More information\">\n<Button>Hover me</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Tooltip\ntitle=\"User profile\"\nsubtitle=\"View and edit your personal information\"\n>\n<Avatar>JD</Avatar>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With placement\n<Tooltip title=\"Top placement\" placement=\"top\">\n<span>Hover me</span>\n</Tooltip>\n\n<Tooltip title=\"Bottom placement\" placement=\"bottom\">\n<span>Hover me</span>\n</Tooltip>\n\n<Tooltip title=\"Left placement\" placement=\"left\">\n<span>Hover me</span>\n</Tooltip>\n\n<Tooltip title=\"Right placement\" placement=\"right\">\n<span>Hover me</span>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "Controlled tooltip\nconst [isOpen, setIsOpen] = useState(false);\n\n<Button onClick={() => setIsOpen(!isOpen)}>\nToggle tooltip\n</Button>\n\n<Tooltip\ntitle=\"This tooltip is controlled programmatically\"\nopen={isOpen}\n>\n<span>Hover won't affect this tooltip</span>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled tooltip\n<Tooltip\ntitle=\"This won't show\"\ndisabled={true}\n>\n<Button>Hover me (no tooltip)</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With custom theme\n<Tooltip\ntitle=\"Custom theme\"\nthemeOverride=\"day\"\n>\n<Button>Hover me</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With arrow\n<Tooltip\ntitle=\"Tooltip with arrow\"\narrow\n>\n<Button>Hover me</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With JSX content\n<Tooltip\ntitle={\n<div>\n<Text type=\"bold-label\">Custom content</Text>\n<div>With formatting</div>\n</div>\n}\n>\n<Button>Hover for rich content</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "Basic tooltip\n<Tooltip title=\"More information\">\n<Button>Hover me</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Tooltip\ntitle=\"User profile\"\nsubtitle=\"View and edit your personal information\"\n>\n<Avatar>JD</Avatar>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With placement\n<Tooltip title=\"Top placement\" placement=\"top\">\n<span>Hover me</span>\n</Tooltip>\n\n<Tooltip title=\"Bottom placement\" placement=\"bottom\">\n<span>Hover me</span>\n</Tooltip>\n\n<Tooltip title=\"Left placement\" placement=\"left\">\n<span>Hover me</span>\n</Tooltip>\n\n<Tooltip title=\"Right placement\" placement=\"right\">\n<span>Hover me</span>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "Controlled tooltip\nconst [isOpen, setIsOpen] = useState(false);\n\n<Button onClick={() => setIsOpen(!isOpen)}>\nToggle tooltip\n</Button>\n\n<Tooltip\ntitle=\"This tooltip is controlled programmatically\"\nopen={isOpen}\n>\n<span>Hover won't affect this tooltip</span>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled tooltip\n<Tooltip\ntitle=\"This won't show\"\ndisabled={true}\n>\n<Button>Hover me (no tooltip)</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With custom theme\n<Tooltip\ntitle=\"Custom theme\"\nthemeOverride=\"day\"\n>\n<Button>Hover me</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With arrow\n<Tooltip\ntitle=\"Tooltip with arrow\"\narrow\n>\n<Button>Hover me</Button>\n</Tooltip>"
+    },
+    {
+      "name": "example",
+      "text": "With JSX content\n<Tooltip\ntitle={\n<div>\n<Text type=\"bold-label\">Custom content</Text>\n<div>With formatting</div>\n</div>\n}\n>\n<Button>Hover for rich content</Button>\n</Tooltip>"
+    }
+  ]
+}

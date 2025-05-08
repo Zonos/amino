@@ -1,0 +1,80 @@
+{
+  "description": "Badge component used to highlight information, show status, or categorize content.\nAvailable in different colors, sizes, and styles to fit various use cases.",
+  "id": "badge",
+  "name": "Badge",
+  "path": "src/components/badge",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic badge\n<Badge>New</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With different colors\n<Badge color=\"blue\">Info</Badge>\n<Badge color=\"green\">Success</Badge>\n<Badge color=\"red\">Error</Badge>\n<Badge color=\"orange\">Warning</Badge>\n<Badge color=\"purple\">Beta</Badge>\n<Badge color=\"cyan\">Update</Badge>\n<Badge color=\"gray\">Default</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Badge icon={<CheckmarkIcon />}>Verified</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With right aligned icon\n<Badge icon={<ArrowRightIcon />} iconRight>View more</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Small size\n<Badge size=\"small\">Tag</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Bold style (inverted colors)\n<Badge bold>Featured</Badge>\n<Badge bold color=\"green\">Approved</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With rounded corners\n<Badge rounded>Status</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Custom font weight\n<Badge fontWeight={800}>Important</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Combining multiple props\n<Badge\ncolor=\"purple\"\nbold\nicon={<StarIcon />}\nrounded\nsize=\"small\"\n>\nFeatured\n</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Basic badge\n<Badge>New</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With different colors\n<Badge color=\"blue\">Info</Badge>\n<Badge color=\"green\">Success</Badge>\n<Badge color=\"red\">Error</Badge>\n<Badge color=\"orange\">Warning</Badge>\n<Badge color=\"purple\">Beta</Badge>\n<Badge color=\"cyan\">Update</Badge>\n<Badge color=\"gray\">Default</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Badge icon={<CheckmarkIcon />}>Verified</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With right aligned icon\n<Badge icon={<ArrowRightIcon />} iconRight>View more</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Small size\n<Badge size=\"small\">Tag</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Bold style (inverted colors)\n<Badge bold>Featured</Badge>\n<Badge bold color=\"green\">Approved</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "With rounded corners\n<Badge rounded>Status</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Custom font weight\n<Badge fontWeight={800}>Important</Badge>"
+    },
+    {
+      "name": "example",
+      "text": "Combining multiple props\n<Badge\ncolor=\"purple\"\nbold\nicon={<StarIcon />}\nrounded\nsize=\"small\"\n>\nFeatured\n</Badge>"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "description": "RoundedIcon component displays an icon or element inside a circular or rounded background,\nsupporting color, intent, and background customization. Useful for avatars, status indicators,\nor decorative iconography in lists, buttons, and cards.",
+  "id": "rounded-icon",
+  "name": "RoundedIcon",
+  "path": "src/components/rounded-icon",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<RoundedIcon>\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "With intent color\n<RoundedIcon intent=\"primary\">\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "With custom background and icon color\n<RoundedIcon background=\"gray1000\" color=\"purple400\">\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "With success intent\n<RoundedIcon intent=\"success\">\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "In a list item\n<ListItem\ndecorator={\n<RoundedIcon intent=\"warning\">\n<AlertIcon />\n</RoundedIcon>\n}\nlabel=\"Warning\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<RoundedIcon>\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "With intent color\n<RoundedIcon intent=\"primary\">\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "With custom background and icon color\n<RoundedIcon background=\"gray1000\" color=\"purple400\">\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "With success intent\n<RoundedIcon intent=\"success\">\n<TruckDuotoneIcon />\n</RoundedIcon>"
+    },
+    {
+      "name": "example",
+      "text": "In a list item\n<ListItem\ndecorator={\n<RoundedIcon intent=\"warning\">\n<AlertIcon />\n</RoundedIcon>\n}\nlabel=\"Warning\"\n/>"
+    }
+  ]
+}

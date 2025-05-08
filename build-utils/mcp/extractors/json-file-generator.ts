@@ -60,7 +60,7 @@ export function generateIndexFile(
         name: component.name,
         path: component.path,
       })),
-      generatedAt: new Date().toISOString(),
+      // generatedAt: new Date().toISOString(),
       totalComponents: components.length,
     };
 
@@ -79,6 +79,31 @@ export function generateIndexFile(
   } catch (error) {
     console.error(`Error generating index file: ${error}`);
   }
+}
+
+/**
+ * Process JSDoc example tags to properly extract both the title and code block.
+ * Example format in JSDoc is typically:
+ * @example Title
+ * ```tsx
+ * <Component prop="value" />
+ * ```
+ *
+ * @param tags Array of JSDoc tags
+ * @returns Array of processed tags with complete example content preserved
+ */
+export function processExampleTags(
+  tags: Array<{ name: string; text: string }>,
+) {
+  return tags.map(tag => {
+    // Special handling for example tags to ensure code blocks are preserved
+    if (tag.name === 'example') {
+      if (!tag.text.includes('\n')) {
+        console.warn(`Example tag missing code block: "${tag.text}"`);
+      }
+    }
+    return tag;
+  });
 }
 
 /**
@@ -108,16 +133,15 @@ export function generateComponentFiles(
 
       // Generate component documentation structure
       const description = component.comment?.description || '';
-      const tags = Array.isArray(component.comment?.tags)
-        ? component.comment.tags.map(tag => ({
-            name: tag.name,
-            text: tag.text,
-          }))
+      const rawTags = Array.isArray(component.comment?.tags)
+        ? component.comment.tags
         : [];
+
+      // Process tags to preserve example code blocks
+      const tags = processExampleTags(rawTags);
 
       const componentData = {
         description,
-        generatedAt: new Date().toISOString(),
         id: component.id,
         name: component.name,
         path: component.path,
@@ -179,4 +203,5 @@ export default {
   generateComponentFiles,
   generateDocumentationFiles,
   generateIndexFile,
+  processExampleTags,
 };

@@ -1,0 +1,60 @@
+{
+  "description": "SimpleTable provides a flexible, accessible table component for displaying tabular data.\nIt supports features like selectable rows, collapsible rows, custom cell rendering, loading skeletons,\nand sticky headers. Designed for use cases where you need a straightforward but powerful table UI.",
+  "id": "simple-table",
+  "name": "SimpleTable",
+  "path": "src/components/simple-table",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\ntype User = { id: number; name: string; age: number };\nconst headers: SimpleTableHeader<User>[] = [\n{ key: 'name', name: 'Name' },\n{ key: 'age', name: 'Age' },\n];\nconst users: User[] = [\n{ id: 1, name: 'Alice', age: 30 },\n{ id: 2, name: 'Bob', age: 25 },\n];\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With selectable rows\nconst [selected, setSelected] = useState<number[]>([]);\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\nselectable={{\nenabled: true,\nisRowChecked: (item) => selected.includes(item.id),\nonRowCheckboxChange: (checked, item) => {\nsetSelected(checked\n? [...selected, item.id]\n: selected.filter(id => id !== item.id)\n);\n},\n}}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With collapsible rows\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\ncollapsible={{\nenabled: true,\nexpandedItemKeys: expandedKeys,\ntoggleItem: key => setExpandedKeys(keys =>\nkeys.includes(key) ? keys.filter(k => k !== key) : [...keys, key]\n),\ncollapseContent: users.map(user => ({\nkey: String(user.id),\ncontent: <div>More info about {user.name}</div>,\n})),\n}}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom cell rendering\nconst headers: SimpleTableHeader<User>[] = [\n{ key: 'name', name: 'Name' },\n{\nkey: 'age',\nname: 'Age',\nrenderCustom: (age) => <Text color={age > 25 ? 'green600' : 'red600'}>{age}</Text>,\n},\n];"
+    },
+    {
+      "name": "example",
+      "text": "With loading skeleton\n<SimpleTable\nheaders={headers}\nitems={[]}\nkeyExtractor={user => String(user.id)}\nloading\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With row click handler\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\nonRowClick={user => alert(`Clicked: ${user.name}`)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\ntype User = { id: number; name: string; age: number };\nconst headers: SimpleTableHeader<User>[] = [\n{ key: 'name', name: 'Name' },\n{ key: 'age', name: 'Age' },\n];\nconst users: User[] = [\n{ id: 1, name: 'Alice', age: 30 },\n{ id: 2, name: 'Bob', age: 25 },\n];\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With selectable rows\nconst [selected, setSelected] = useState<number[]>([]);\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\nselectable={{\nenabled: true,\nisRowChecked: (item) => selected.includes(item.id),\nonRowCheckboxChange: (checked, item) => {\nsetSelected(checked\n? [...selected, item.id]\n: selected.filter(id => id !== item.id)\n);\n},\n}}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With collapsible rows\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\ncollapsible={{\nenabled: true,\nexpandedItemKeys: expandedKeys,\ntoggleItem: key => setExpandedKeys(keys =>\nkeys.includes(key) ? keys.filter(k => k !== key) : [...keys, key]\n),\ncollapseContent: users.map(user => ({\nkey: String(user.id),\ncontent: <div>More info about {user.name}</div>,\n})),\n}}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom cell rendering\nconst headers: SimpleTableHeader<User>[] = [\n{ key: 'name', name: 'Name' },\n{\nkey: 'age',\nname: 'Age',\nrenderCustom: (age) => <Text color={age > 25 ? 'green600' : 'red600'}>{age}</Text>,\n},\n];"
+    },
+    {
+      "name": "example",
+      "text": "With loading skeleton\n<SimpleTable\nheaders={headers}\nitems={[]}\nkeyExtractor={user => String(user.id)}\nloading\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With row click handler\n<SimpleTable\nheaders={headers}\nitems={users}\nkeyExtractor={user => String(user.id)}\nonRowClick={user => alert(`Clicked: ${user.name}`)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Used internally by SimpleTable\n<SimpleTable\nheaders={headers}\nitems={items}\nkeyExtractor={item => String(item.id)}\n/>"
+    }
+  ]
+}

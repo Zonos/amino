@@ -1,0 +1,24 @@
+{
+  "description": "An expanded view component for selecting multiple countries, organized by regions.\nFeatures include search functionality, group selection, and individual country selection.",
+  "id": "country-multi-select",
+  "name": "CountryMultiSelect",
+  "path": "src/components/country-multi-select",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedCountries, setSelectedCountries] = useState<CountryMultiSelectExpandedOption[]>([]);\nconst countries = [\n{\ncode: 'US',\ngroup: 'North America',\nicon: <FlagIcon code=\"US\" />,\nlabel: 'United States'\n},\n{\ncode: 'CA',\ngroup: 'North America',\nicon: <FlagIcon code=\"CA\" />,\nlabel: 'Canada'\n}\n];\n\n<CountryMultiSelectExpanded\ncountries={countries}\nonChange={setSelectedCountries}\nselectedCountries={selectedCountries}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled countries\nconst countries = [\n{\ncode: 'US',\ngroup: 'North America',\nicon: <FlagIcon code=\"US\" />,\nlabel: 'United States'\n},\n{\ncode: 'CA',\ndisabled: true,\ngroup: 'North America',\nicon: <FlagIcon code=\"CA\" />,\nlabel: 'Canada'\n}\n];\n\n<CountryMultiSelectExpanded\ncountries={countries}\nonChange={setSelectedCountries}\nselectedCountries={selectedCountries}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom actions\n<CountryMultiSelectExpanded\nactions={\n<Button onClick={() => console.log('Custom action')} size=\"small\">\nCustom Action\n</Button>\n}\ncountries={countries}\nonChange={setSelectedCountries}\nselectedCountries={selectedCountries}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<CountryMultiSelectExpanded\ncountries={countries}\nerror={!selectedCountries.length}\nhelpText={!selectedCountries.length ? 'At least one country is required' : undefined}\nonChange={setSelectedCountries}\nselectedCountries={selectedCountries}\n/>"
+    }
+  ]
+}

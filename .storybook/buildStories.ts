@@ -26,8 +26,9 @@ type StoryEntry = StorySpecifier & {
 // We don't want to show these folders in the sidebar
 const removedPrefixes = /(components|icons|styles)\//;
 
+// Refactored to avoid named capture groups
 const pathRegex =
-  /(?<fullFolder>..\/src(\/(?<folder>.*))?\/__stories__)\/(?<fullFileName>(?<fileName>.*)\.(mdx|stories\.tsx))/i;
+  /(\.\.\/src(?:\/(.*))?\/(?:__stories__))\/((.*)\.(mdx|stories\.tsx))/i;
 
 // The titlePrefix defines the folder structure in the sidebar
 const getTitlePrefix = ({
@@ -61,14 +62,27 @@ const getTitlePrefix = ({
 const getStoryEntry = (storyPath: string): StoryEntry => {
   const matched = storyPath.match(pathRegex);
 
-  const { fileName, folder, fullFileName, fullFolder } = matched?.groups || {};
+  if (!matched) {
+    return {
+      directory: '',
+      fileName: '',
+      files: '',
+      titlePrefix: '',
+    };
+  }
 
-  const titlePrefix = getTitlePrefix({ fileName: fileName || '', folder });
+  // Extracting from indexed capture groups instead of named groups
+  const fullFolder = matched[1] || '';
+  const folder = matched[2];
+  const fullFileName = matched[3] || '';
+  const fileName = matched[4] || '';
+
+  const titlePrefix = getTitlePrefix({ fileName, folder });
 
   return {
-    directory: fullFolder || '',
-    fileName: fileName || '',
-    files: fullFileName || '',
+    directory: fullFolder,
+    fileName,
+    files: fullFileName,
     titlePrefix,
   };
 };

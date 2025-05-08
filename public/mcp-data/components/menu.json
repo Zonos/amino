@@ -1,0 +1,56 @@
+{
+  "description": "Menu component provides a container for dropdown menu items.\nIt's typically used with MenuItem components and the MenuButton component.",
+  "id": "menu",
+  "name": "Menu",
+  "path": "src/components/menu",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Menu>\n<MenuItem>Profile settings</MenuItem>\n<MenuItem>Account settings</MenuItem>\n<MenuItem>Help</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "With MenuButton\n<MenuButton action={<Button>Options</Button>}>\n<Menu>\n<MenuItem onClick={handleEdit}>Edit</MenuItem>\n<MenuItem onClick={handleDelete}>Delete</MenuItem>\n</Menu>\n</MenuButton>"
+    },
+    {
+      "name": "example",
+      "text": "With icons\n<Menu>\n<MenuItem icon={<EditIcon />}>Edit</MenuItem>\n<MenuItem icon={<TrashIcon />}>Delete</MenuItem>\n<MenuItem icon={<CopyIcon />}>Duplicate</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled items\n<Menu>\n<MenuItem>Edit</MenuItem>\n<MenuItem disabled>Delete</MenuItem>\n<MenuItem>Duplicate</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Menu>\n<MenuItem>Profile settings</MenuItem>\n<MenuItem>Account settings</MenuItem>\n<MenuItem>Help</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "With MenuButton\n<MenuButton action={<Button>Options</Button>}>\n<Menu>\n<MenuItem onClick={handleEdit}>Edit</MenuItem>\n<MenuItem onClick={handleDelete}>Delete</MenuItem>\n</Menu>\n</MenuButton>"
+    },
+    {
+      "name": "example",
+      "text": "With icons\n<Menu>\n<MenuItem icon={<EditIcon />}>Edit</MenuItem>\n<MenuItem icon={<TrashIcon />}>Delete</MenuItem>\n<MenuItem icon={<CopyIcon />}>Duplicate</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled items\n<Menu>\n<MenuItem>Edit</MenuItem>\n<MenuItem disabled>Delete</MenuItem>\n<MenuItem>Duplicate</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Menu>\n<MenuItem onClick={handleClick}>Settings</MenuItem>\n<MenuItem onClick={handleLogout}>Logout</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "With icons\n<Menu>\n<MenuItem icon={<SettingsIcon />} onClick={handleSettings}>\nSettings\n</MenuItem>\n<MenuItem icon={<LogoutIcon />} onClick={handleLogout}>\nLogout\n</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Menu>\n<MenuItem onClick={handleEdit}>Edit</MenuItem>\n<MenuItem disabled onClick={handleDelete}>\nDelete\n</MenuItem>\n</Menu>"
+    },
+    {
+      "name": "example",
+      "text": "With MenuButton\n<MenuButton action={<Button size=\"sm\">Actions</Button>}>\n<Menu>\n<MenuItem onClick={() => handleAction('view')}>\nView Details\n</MenuItem>\n<MenuItem onClick={() => handleAction('edit')}>\nEdit Item\n</MenuItem>\n<MenuItem disabled={!canDelete} onClick={() => handleAction('delete')}>\nDelete Item\n</MenuItem>\n</Menu>\n</MenuButton>"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "description": "Dialog component displays important content in a modal window that requires user attention or interaction.\nIt includes a header with title, optional subtitle, content area, and an optional footer with actions.",
+  "id": "dialog",
+  "name": "Dialog",
+  "path": "src/components/dialog",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic dialog\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Dialog Title\"\n>\n<Text>This is the dialog content.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With actions\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Confirmation\"\nactions={\n<>\n<Button onClick={() => setIsOpen(false)}>Cancel</Button>\n<Button variant=\"primary\" onClick={handleConfirm}>Confirm</Button>\n</>\n}\n>\n<Text>Are you sure you want to proceed with this action?</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Account Settings\"\nsubtitle=\"Manage your personal information and preferences\"\n>\n<VStack spacing={16}>\n<Input label=\"Name\" value={name} onChange={(e) => setName(e.target.value)} />\n<Input label=\"Email\" value={email} onChange={(e) => setEmail(e.target.value)} />\n</VStack>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With left actions\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Edit Item\"\nleftActions={<Button variant=\"danger\">Delete</Button>}\nactions={\n<>\n<Button onClick={() => setIsOpen(false)}>Cancel</Button>\n<Button variant=\"primary\">Save</Button>\n</>\n}\n>\n<Text>Edit the item details here.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "Non-modal dialog\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Help Information\"\nmodal={false}\n>\n<Text>This dialog doesn't block interaction with elements behind it.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With custom width\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Wide Dialog\"\nstyle={{ '--amino-dialog-width': '800px' }}\n>\n<Text>This dialog has a custom width.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "Basic dialog\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Dialog Title\"\n>\n<Text>This is the dialog content.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With actions\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Confirmation\"\nactions={\n<>\n<Button onClick={() => setIsOpen(false)}>Cancel</Button>\n<Button variant=\"primary\" onClick={handleConfirm}>Confirm</Button>\n</>\n}\n>\n<Text>Are you sure you want to proceed with this action?</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Account Settings\"\nsubtitle=\"Manage your personal information and preferences\"\n>\n<VStack spacing={16}>\n<Input label=\"Name\" value={name} onChange={(e) => setName(e.target.value)} />\n<Input label=\"Email\" value={email} onChange={(e) => setEmail(e.target.value)} />\n</VStack>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With left actions\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Edit Item\"\nleftActions={<Button variant=\"danger\">Delete</Button>}\nactions={\n<>\n<Button onClick={() => setIsOpen(false)}>Cancel</Button>\n<Button variant=\"primary\">Save</Button>\n</>\n}\n>\n<Text>Edit the item details here.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "Non-modal dialog\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Help Information\"\nmodal={false}\n>\n<Text>This dialog doesn't block interaction with elements behind it.</Text>\n</Dialog>"
+    },
+    {
+      "name": "example",
+      "text": "With custom width\n<Dialog\nopen={isOpen}\nonClose={() => setIsOpen(false)}\nlabel=\"Wide Dialog\"\nstyle={{ '--amino-dialog-width': '800px' }}\n>\n<Text>This dialog has a custom width.</Text>\n</Dialog>"
+    }
+  ]
+}

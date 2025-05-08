@@ -1,0 +1,32 @@
+{
+  "description": "FilterWrapper provides a standardized UI for creating filters in data views.\nIt displays a toggle button to activate the filter, a dropdown to select filter options,\nand includes the apply button to confirm filter selections.\n\nThis component is typically used with other filtering components like FilterDate,\nFilterSelect, etc., and is designed to work with the useFilterWrapper hook for state\nmanagement.",
+  "id": "filter",
+  "name": "Filter",
+  "path": "src/components/filter",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage with useFilterWrapper hook\nconst {\nrenderWrapper,\nsetFilterText\n} = useFilterWrapper({\ndropdownTitle: \"Status Filter\",\nisActive: isStatusFilterActive,\nlabel: \"Status\",\nsetActive: setIsStatusFilterActive,\ninitialFilterText: \"All statuses\",\nonApply: (setFilterText) => {\nsetFilterText(selectedStatus ? selectedStatus.label : \"All statuses\");\nonFilterApplied(selectedStatus?.value);\n},\nonApplyFilterText: (setFilterText) => {\nsetFilterText(selectedStatus ? selectedStatus.label : \"All statuses\");\n},\nonClose: () => {},\nonRemove: () => {\nsetSelectedStatus(undefined);\nonFilterApplied(undefined);\n}\n});\n\nreturn renderWrapper(\n<FilterSelect\noptions={[\n{ label: \"Active\", value: \"active\" },\n{ label: \"Pending\", value: \"pending\" },\n{ label: \"Inactive\", value: \"inactive\" }\n]}\nonChange={setSelectedStatus}\nvalue={selectedStatus}\n/>\n);"
+    },
+    {
+      "name": "example",
+      "text": "With date filter\nconst {\nrenderWrapper,\nsetFilterText\n} = useFilterWrapper({\ndropdownTitle: \"Date Range\",\nisActive: isDateFilterActive,\nlabel: \"Date\",\nsetActive: setIsDateFilterActive,\ninitialFilterText: \"All dates\",\nonApply: (setFilterText) => {\nif (startDate && endDate) {\nconst formattedText = `${formatDate(startDate)} - ${formatDate(endDate)}`;\nsetFilterText(formattedText);\nonFilterApplied({ startDate, endDate });\n}\n},\nonApplyFilterText: (setFilterText) => {\nif (startDate && endDate) {\nsetFilterText(`${formatDate(startDate)} - ${formatDate(endDate)}`);\n}\n},\nonClose: () => {},\nonRemove: () => {\nsetStartDate(undefined);\nsetEndDate(undefined);\nonFilterApplied({ startDate: null, endDate: null });\n}\n});\n\nreturn renderWrapper(\n<FilterDate\nstartDate={startDate}\nendDate={endDate}\nonStartDateChange={setStartDate}\nonEndDateChange={setEndDate}\n/>\n);"
+    },
+    {
+      "name": "example",
+      "text": "Multiple filters in a filter bar\n<div style={{ display: 'flex', gap: '8px' }}>\n{statusFilterWrapper}\n{dateFilterWrapper}\n{textFilterWrapper}\n</div>"
+    },
+    {
+      "name": "example",
+      "text": "Basic filter with select options\nconst [isFilterActive, setIsFilterActive] = useState(false);\nconst [selectedOption, setSelectedOption] = useState<Option | null>(null);\n\nconst {\nrenderWrapper,\nsetFilterText\n} = useFilterWrapper({\ndropdownTitle: \"Status\",\nisActive: isFilterActive,\nlabel: \"Status\",\nsetActive: setIsFilterActive,\ninitialFilterText: \"All statuses\",\nonApply: (setFilterText) => {\n// Update filter text and apply the filter\nsetFilterText(selectedOption ? selectedOption.label : \"All statuses\");\napplyFilter(selectedOption?.value);\n},\nonApplyFilterText: (setFilterText) => {\n// Update text only (for URL-derived state)\nsetFilterText(selectedOption ? selectedOption.label : \"All statuses\");\n},\nonClose: () => {\n// Handle dropdown close without applying\n},\nonRemove: () => {\n// Clear filter when removed\nsetSelectedOption(null);\napplyFilter(null);\n}\n});\n\n// Use the renderWrapper function to create the filter UI\nconst statusFilter = renderWrapper(\n<FilterSelect\noptions={statusOptions}\nvalue={selectedOption}\nonChange={setSelectedOption}\n/>\n);"
+    },
+    {
+      "name": "example",
+      "text": "Date range filter\nconst [isDateFilterActive, setIsDateFilterActive] = useState(false);\nconst [startDate, setStartDate] = useState<Date | null>(null);\nconst [endDate, setEndDate] = useState<Date | null>(null);\n\nconst formatDateForDisplay = (date: Date) => {\nreturn date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });\n};\n\nconst {\nrenderWrapper\n} = useFilterWrapper({\ndropdownTitle: \"Date Range\",\nisActive: isDateFilterActive,\nlabel: \"Date\",\nsetActive: setIsDateFilterActive,\ninitialFilterText: \"All time\",\nonApply: (setFilterText) => {\nif (startDate && endDate) {\nconst dateRangeText = `${formatDateForDisplay(startDate)} - ${formatDateForDisplay(endDate)}`;\nsetFilterText(dateRangeText);\napplyDateRangeFilter(startDate, endDate);\n}\n},\nonApplyFilterText: (setFilterText) => {\nif (startDate && endDate) {\nsetFilterText(`${formatDateForDisplay(startDate)} - ${formatDateForDisplay(endDate)}`);\n}\n},\nonClose: () => {\n// Optional cleanup when closing without applying\n},\nonRemove: () => {\nsetStartDate(null);\nsetEndDate(null);\napplyDateRangeFilter(null, null);\n}\n});\n\nconst dateFilter = renderWrapper(\n<FilterDate\nstartDate={startDate}\nendDate={endDate}\nonStartDateChange={setStartDate}\nonEndDateChange={setEndDate}\n/>\n);"
+    },
+    {
+      "name": "example",
+      "text": "Multiple filters in a filter bar\n// First, create your individual filters using useFilterWrapper\nconst statusFilter =  useFilterWrapper implementation ;\nconst dateFilter =  useFilterWrapper implementation ;\nconst searchFilter =  useFilterWrapper implementation ;\n\n// Then render them together in a filter bar\nreturn (\n<div style={{ display: 'flex', gap: '8px' }}>\n{statusFilter}\n{dateFilter}\n{searchFilter}\n\n<Button\nonClick={resetAllFilters}\nvariant=\"ghost\"\nsize=\"sm\"\n>\nClear All\n</Button>\n</div>\n);"
+    }
+  ]
+}
