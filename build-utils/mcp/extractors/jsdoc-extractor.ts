@@ -262,17 +262,31 @@ function enhanceComponentExamples(
     const indexTsFile = path.join(componentDir, 'index.ts');
 
     // Find any files with the component name pattern
-    const allFiles = fs
-      .readdirSync(componentDir)
-      .filter(
-        file =>
-          (file.endsWith('.tsx') || file.endsWith('.ts')) &&
-          !file.endsWith('.d.ts') &&
-          !file.includes('.test.') &&
-          !file.includes('.spec.') &&
-          !file.includes('.stories.'),
-      )
-      .map(file => path.join(componentDir, file));
+    // Handle both string filenames and Dirent objects from fs.readdirSync
+    let allFiles: string[] = [];
+    try {
+      const dirEntries = fs.readdirSync(componentDir);
+
+      allFiles = Array.from(dirEntries)
+        .map(entry => {
+          const fileName = typeof entry === 'string' ? entry : entry.name;
+
+          // Check if the file is a relevant TypeScript file
+          if (
+            (fileName.endsWith('.tsx') || fileName.endsWith('.ts')) &&
+            !fileName.endsWith('.d.ts') &&
+            !fileName.includes('.test.') &&
+            !fileName.includes('.spec.') &&
+            !fileName.includes('.stories.')
+          ) {
+            return path.join(componentDir, fileName);
+          }
+          return null;
+        })
+        .filter((file): file is string => file !== null);
+    } catch (error) {
+      console.error(`Error reading directory ${componentDir}:`, error);
+    }
 
     // Prioritize main component files
     const filesToCheck = [
@@ -388,17 +402,24 @@ export function extractComponentDocumentation(
     let allFiles: string[] = [];
     if (fs.existsSync(componentDir)) {
       const files = fs.readdirSync(componentDir);
-      allFiles = files
-        .filter(
-          file =>
-            (file.endsWith('.tsx') || file.endsWith('.ts')) &&
-            !file.endsWith('.d.ts') &&
-            !file.includes('.test.') &&
-            !file.includes('.spec.') &&
-            !file.includes('.stories.') &&
-            !file.includes('.module.'),
-        )
-        .map(file => path.join(componentDir, file));
+
+      // Process the entries which could be either strings or Dirent objects
+      allFiles = Array.from(files)
+        .filter(file => {
+          const fileName = typeof file === 'string' ? file : file.name;
+          return (
+            (fileName.endsWith('.tsx') || fileName.endsWith('.ts')) &&
+            !fileName.endsWith('.d.ts') &&
+            !fileName.includes('.test.') &&
+            !fileName.includes('.spec.') &&
+            !fileName.includes('.stories.') &&
+            !fileName.includes('.module.')
+          );
+        })
+        .map(file => {
+          const fileName = typeof file === 'string' ? file : file.name;
+          return path.join(componentDir, fileName);
+        });
     }
 
     if (allFiles.length === 0) {
@@ -636,43 +657,3 @@ export function extractComponentDocumentation(
     return null;
   }
 }
-
-/**
- * Scans component directories and extracts JSDoc documentation for all components
- * @param options Extraction options
- * @returns Array of component documentation
- */
-export function extractAllComponentsDocumentation(
-  options: JSDocExtractorOptions,
-): ComponentDocumentation[] {
-  const allComponents: ComponentDocumentation[] = [];
-
-  for (const componentDir of options.componentDirs) {
-    if (!fs.existsSync(componentDir)) {
-      console.warn(`Component directory does not exist: ${componentDir}`);
-      continue;
-    }
-
-    // Get all subdirectories in the component directory
-    const subdirs = fs
-      .readdirSync(componentDir)
-      .map(name => path.join(componentDir, name))
-      .filter(dir => fs.statSync(dir).isDirectory());
-
-    // Process each component directory
-    for (const dir of subdirs) {
-      const componentDocs = extractComponentDocumentation(dir, options);
-      if (componentDocs) {
-        allComponents.push(componentDocs);
-      }
-    }
-  }
-
-  return allComponents;
-}
-
-export default {
-  extractAllComponentsDocumentation,
-  extractComponentDocumentation,
-  extractJSDocComments,
-};

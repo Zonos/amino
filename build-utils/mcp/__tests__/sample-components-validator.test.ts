@@ -36,7 +36,6 @@ type IndexData = {
     name: string;
     path: string;
   }>;
-  generatedAt: string;
   totalComponents: number;
 };
 
@@ -149,7 +148,6 @@ describe('Sample Components Documentation Validation', () => {
     ) as IndexData;
 
     expect(indexData).toHaveProperty('components');
-    expect(indexData).toHaveProperty('generatedAt');
     expect(indexData).toHaveProperty('totalComponents');
     expect(indexData.totalComponents).toBe(3);
     expect(indexData.components.length).toBe(3);
@@ -157,7 +155,6 @@ describe('Sample Components Documentation Validation', () => {
     // Validate component files
     type ComponentData = {
       description: string;
-      generatedAt: string;
       id: string;
       name: string;
       path: string;
@@ -257,7 +254,6 @@ describe('Sample Components Documentation Validation', () => {
 
     expect(noCommentData).toEqual({
       description: '',
-      generatedAt: expect.any(String),
       id: 'no-comment-1',
       name: 'NoComment1',
       path: 'src/components/no-comment-1',

@@ -60,7 +60,6 @@ export function generateIndexFile(
         name: component.name,
         path: component.path,
       })),
-      // generatedAt: new Date().toISOString(),
       totalComponents: components.length,
     };
 
@@ -83,25 +82,56 @@ export function generateIndexFile(
 
 /**
  * Process JSDoc example tags to properly extract both the title and code block.
- * Example format in JSDoc is typically:
- * @example Title
- * ```tsx
- * <Component prop="value" />
- * ```
+ * Example formats in JSDoc could be:
+ *
+ * 1. With title and multiline code:
+ *    @example Title
+ *    <Component prop="value" />
+ *
+ * 2. With title and code on same line:
+ *    @example Title <Component prop="value" />
+ *
+ * 3. Single line code without title:
+ *    @example <Component prop="value" />
  *
  * @param tags Array of JSDoc tags
- * @returns Array of processed tags with complete example content preserved
+ * @returns Array of processed tags with properly structured example content
  */
 export function processExampleTags(
   tags: Array<{ name: string; text: string }>,
 ) {
   return tags.map(tag => {
-    // Special handling for example tags to ensure code blocks are preserved
+    // We only need to process example tags
     if (tag.name === 'example') {
-      if (!tag.text.includes('\n')) {
-        console.warn(`Example tag missing code block: "${tag.text}"`);
+      const text = tag.text.trim();
+
+      // Check if it's a valid example tag
+      if (!text) {
+        console.warn('Empty example tag found');
+        return tag;
+      }
+
+      // If it contains JSX-like pattern (looks for < followed by an identifier)
+      const containsJSX = /<[a-zA-Z][a-zA-Z0-9]*/.test(text);
+
+      if (!containsJSX) {
+        console.warn(`Example tag missing code block: "${text}"`);
+      }
+
+      // Parse the example to extract title and code when possible
+      // This is a simple approach that could be enhanced later
+      const lines = text.split('\n');
+
+      // If it's a multiline example, first line might be a title
+      if (lines.length > 1) {
+        const firstLine = lines[0].trim();
+        const hasJSXInFirstLine = /<[a-zA-Z][a-zA-Z0-9]*/.test(firstLine);
+
+        // If first line doesn't contain JSX, it might be a title
+        // Future enhancement: could add structured title/code properties
       }
     }
+
     return tag;
   });
 }

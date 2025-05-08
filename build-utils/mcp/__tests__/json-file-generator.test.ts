@@ -138,7 +138,6 @@ describe('JSON File Generator', () => {
             path: 'src/components/text',
           }),
         ]),
-        generatedAt: expect.any(String),
         totalComponents: 2,
       });
     });
@@ -240,7 +239,6 @@ describe('JSON File Generator', () => {
       );
       expect(firstComponentData).toEqual({
         description: 'A button component',
-        generatedAt: expect.any(String),
         id: 'button',
         name: 'Button',
         path: 'src/components/button',
@@ -273,7 +271,6 @@ describe('JSON File Generator', () => {
       );
       expect(componentData).toEqual({
         description: '',
-        generatedAt: expect.any(String),
         id: 'no-comment',
         name: 'NoComment',
         path: 'src/components/no-comment',
@@ -345,7 +342,6 @@ describe('JSON File Generator', () => {
       const content = call[1] as string;
       const written = JSON.parse(content) as {
         description: string;
-        generatedAt: string;
         id: string;
         name: string;
         path: string;
@@ -377,7 +373,6 @@ describe('JSON File Generator', () => {
       const content = call[1] as string;
       const written = JSON.parse(content) as {
         description: string;
-        generatedAt: string;
         id: string;
         name: string;
         path: string;
@@ -491,7 +486,6 @@ describe('JSON File Generator', () => {
             name: 'Button',
           }),
         ]),
-        generatedAt: expect.any(String),
         totalComponents: 1,
       });
 
@@ -504,7 +498,6 @@ describe('JSON File Generator', () => {
 
       expect(buttonFileContent).toEqual({
         description: '',
-        generatedAt: expect.any(String),
         id: 'button',
         name: 'Button',
         path: 'src/components/button',
