@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 import type { MCPClient as MCPClientType } from 'src/tools/mcp/client';
 import { MCPClient } from 'src/tools/mcp/client';

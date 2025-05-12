@@ -4,7 +4,7 @@
  */
 
 import * as configModule from 'build-utils/mcp/config';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock the necessary modules
 vi.mock('../extractors/jsdoc-extractor', () => ({
@@ -56,6 +56,39 @@ vi.mock('../utils/logger', () => ({
   },
 }));
 
+// Interface for the mocked environment client
+type MockedEnvironmentClient = {
+  mcpBuildEnv: {
+    MCP_COMPONENT_DIRS?: string;
+    MCP_INCLUDE_PRIVATE?: boolean;
+    MCP_LOG_CONSOLE?: boolean;
+    MCP_LOG_FILE?: string;
+    MCP_LOG_LEVEL?: string;
+    MCP_OUTPUT_DIR?: string;
+    MCP_VERBOSE?: boolean;
+  };
+};
+
+// Mock the environment.client module
+vi.mock('../../../pages/environment.client', () => {
+  const originalModule = vi.importActual('../../../pages/environment.client');
+  return {
+    ...(originalModule as object),
+    mcpBuildEnv: {
+      MCP_COMPONENT_DIRS: undefined,
+      MCP_INCLUDE_PRIVATE: undefined,
+      MCP_LOG_CONSOLE: undefined,
+      MCP_LOG_FILE: undefined,
+      MCP_LOG_LEVEL: undefined,
+      MCP_OUTPUT_DIR: undefined,
+      MCP_VERBOSE: undefined,
+    },
+  };
+});
+
+// Import the mocked module
+import * as envClientModule from 'pages/environment.client';
+
 // Store original environment variables
 const originalEnv = { ...process.env };
 
@@ -63,6 +96,19 @@ describe('MCP Build Integration', () => {
   beforeEach(() => {
     vi.resetModules();
     process.env = { ...originalEnv };
+
+    // Reset the mocked environment.client module for each test
+    const mockedEnvClient =
+      envClientModule as unknown as MockedEnvironmentClient;
+    mockedEnvClient.mcpBuildEnv = {
+      MCP_COMPONENT_DIRS: undefined,
+      MCP_INCLUDE_PRIVATE: undefined,
+      MCP_LOG_CONSOLE: undefined,
+      MCP_LOG_FILE: undefined,
+      MCP_LOG_LEVEL: undefined,
+      MCP_OUTPUT_DIR: undefined,
+      MCP_VERBOSE: undefined,
+    };
   });
 
   afterEach(() => {
@@ -306,6 +352,15 @@ describe('MCP Build Integration', () => {
     process.env.MCP_COMPONENT_DIRS = 'src/env-components,lib/env-components';
     process.env.MCP_OUTPUT_DIR = 'env-output';
     process.env.MCP_VERBOSE = 'true';
+
+    // Update the mocked environment client values
+    const mockedEnvClient =
+      envClientModule as unknown as MockedEnvironmentClient;
+    mockedEnvClient.mcpBuildEnv.MCP_COMPONENT_DIRS =
+      process.env.MCP_COMPONENT_DIRS;
+    mockedEnvClient.mcpBuildEnv.MCP_OUTPUT_DIR = process.env.MCP_OUTPUT_DIR;
+    mockedEnvClient.mcpBuildEnv.MCP_VERBOSE =
+      process.env.MCP_VERBOSE === 'true';
 
     // Mock config module to use env variables
     vi.mocked(configModule.loadConfiguration).mockImplementationOnce(() => ({

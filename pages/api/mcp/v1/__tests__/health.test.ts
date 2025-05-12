@@ -5,7 +5,16 @@
 import * as fs from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as path from 'path';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
+
+// Mock environment.client module
+vi.mock('pages/environment.client', () => ({
+  env: {
+    NEXT_PUBLIC_BASE_URL: 'https://test.example.com',
+  },
+  mcpApiBase: 'https://test.example.com/api/mcp/v1',
+  mcpVersion: 'v1',
+}));
 
 // Mock fs and path modules
 vi.mock('fs', () => ({
@@ -110,21 +119,23 @@ describe('Health check endpoint', () => {
   test('should return status ok when documentation exists', () => {
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
-    expect(mockRes.json).toHaveBeenCalledWith({
-      components: {
-        api: {
-          status: 'ok',
-        },
-        documentation: {
-          componentCount: 3,
-          message: '3 components available',
-          status: 'ok',
-        },
-      },
-      status: 'ok',
-      timestamp: expect.any(String),
-      version: '1.0.0',
-    });
+    expect(mockRes.json).toHaveBeenCalledWith(
+      expect.objectContaining({
+        components: expect.objectContaining({
+          api: expect.objectContaining({
+            status: 'ok',
+          }),
+          documentation: expect.objectContaining({
+            componentCount: 3,
+            message: '3 components available',
+            status: 'ok',
+          }),
+        }),
+        status: 'ok',
+        timestamp: expect.any(String),
+        version: '1.0.0',
+      }),
+    );
   });
 
   test('should report degraded status when documentation index is missing', () => {

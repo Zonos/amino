@@ -5,7 +5,7 @@
 import * as fs from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import * as path from 'path';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock fs and path modules
 vi.mock('fs', () => ({

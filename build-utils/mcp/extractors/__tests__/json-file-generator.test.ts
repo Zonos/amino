@@ -1,6 +1,6 @@
 // Import the exported processExampleTags function directly
 import { processExampleTags } from 'build-utils/mcp/extractors/json-file-generator';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, vi } from 'vitest';
 
 describe('json-file-generator', () => {
   describe('processExampleTags', () => {

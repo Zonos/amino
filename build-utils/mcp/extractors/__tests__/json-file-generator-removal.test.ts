@@ -2,7 +2,7 @@
 import { generateComponentFiles } from 'build-utils/mcp/extractors/json-file-generator';
 import type { ComponentDocumentation } from 'build-utils/mcp/types';
 import * as fs from 'fs';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, vi } from 'vitest';
 
 describe('json-file-generator component file generation', () => {
   // Mock fs.writeFileSync to capture the written content

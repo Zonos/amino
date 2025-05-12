@@ -7,7 +7,7 @@ import { extractAllComponentsDocumentation } from 'build-utils/mcp/extractors/js
 import { generateDocumentationFiles } from 'build-utils/mcp/extractors/json-file-generator';
 import type { ComponentDocumentation } from 'build-utils/mcp/types';
 import * as fs from 'fs';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock dependencies
 vi.mock('fs', () => ({

@@ -10,6 +10,7 @@ export default defineConfig({
       'build-utils': path.resolve(__dirname, './build-utils'),
       // to test the bundled version in stories
       dist: path.resolve(__dirname, './dist'),
+      pages: path.resolve(__dirname, './pages'),
       src: path.resolve(__dirname, './src'),
       'story-utils': path.resolve(__dirname, './.storybook/utils'),
       svgReact: path.resolve(__dirname, './svgReact'),

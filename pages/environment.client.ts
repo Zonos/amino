@@ -104,6 +104,44 @@ export const storybookEnv = createEnv({
   skipValidation: !inStorybook,
 });
 
+// MCP build configuration environment validation
+export const mcpBuildEnv = createEnv({
+  client: {
+    MCP_COMPONENT_DIRS: z.string().optional(),
+    MCP_INCLUDE_PRIVATE: z.boolean().optional(),
+    MCP_LOG_CONSOLE: z.boolean().optional(),
+    MCP_LOG_FILE: z.string().optional(),
+    MCP_LOG_LEVEL: z.enum(['ERROR', 'WARN', 'INFO', 'DEBUG']).optional(),
+    MCP_OUTPUT_DIR: z.string().optional(),
+    MCP_VERBOSE: z.boolean().optional(),
+  },
+  clientPrefix: '',
+  onInvalidAccess: variable => {
+    throw new Error(
+      `❌ Attempted to access a server-side environment variable on the client: ${variable}`,
+    );
+  },
+  onValidationError: error => {
+    console.error('❌ Invalid environment variables:', error);
+    throw new Error('Invalid environment variables');
+  },
+  runtimeEnvStrict: {
+    MCP_COMPONENT_DIRS: process.env.MCP_COMPONENT_DIRS,
+    MCP_INCLUDE_PRIVATE: parseBooleanEnv(process.env.MCP_INCLUDE_PRIVATE),
+    MCP_LOG_CONSOLE: parseBooleanEnv(process.env.MCP_LOG_CONSOLE),
+    MCP_LOG_FILE: process.env.MCP_LOG_FILE,
+    MCP_LOG_LEVEL: process.env.MCP_LOG_LEVEL as
+      | 'ERROR'
+      | 'WARN'
+      | 'INFO'
+      | 'DEBUG'
+      | undefined,
+    MCP_OUTPUT_DIR: process.env.MCP_OUTPUT_DIR,
+    MCP_VERBOSE: parseBooleanEnv(process.env.MCP_VERBOSE),
+  },
+  skipValidation: true,
+});
+
 // Helper exports for common conditions
 export const mcpEnabled = env.NEXT_PUBLIC_MCP_ENABLED !== false;
 export const apiCachingEnabled = env.NEXT_PUBLIC_ENABLE_API_CACHING === true;

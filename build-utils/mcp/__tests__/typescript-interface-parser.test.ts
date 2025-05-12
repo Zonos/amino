@@ -5,7 +5,7 @@
 import * as tsParser from 'build-utils/mcp/extractors/typescript-interface-parser';
 import type { InterfaceDefinition } from 'build-utils/mcp/types';
 import * as fs from 'fs';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, vi } from 'vitest';
 
 // Mock fs module
 vi.mock('fs', () => ({

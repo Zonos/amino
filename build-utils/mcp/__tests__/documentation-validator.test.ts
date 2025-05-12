@@ -9,7 +9,7 @@ import type {
   JSDocComment,
   JSDocTag,
 } from 'build-utils/mcp/types';
-import { describe, expect, it } from 'vitest';
+import { describe, expect } from 'vitest';
 
 /**
  * Type definitions for file validation

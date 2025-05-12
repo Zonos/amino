@@ -10,7 +10,7 @@ import type {
 import type { PathLike } from 'fs';
 import * as fs from 'fs';
 // Path module is used in mocks, so import is needed
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock fs module
 vi.mock('fs', () => ({

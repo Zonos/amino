@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { describe, expect, it } from 'vitest';
+import { describe, expect } from 'vitest';
 
 /**
  * Interface representing the structure of a component JSON file

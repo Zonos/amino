@@ -4,7 +4,7 @@
  */
 
 import type { JSDocComment } from 'build-utils/mcp/types';
-import { describe, expect, it } from 'vitest';
+import { describe, expect } from 'vitest';
 
 // Create simplified versions of the comment merging functions for testing
 function findMainComponentComment(

@@ -6,7 +6,7 @@
 import type { PathLike } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Create a simplified version of the component name formatting function for testing
 function formatComponentName(componentName: string): string {

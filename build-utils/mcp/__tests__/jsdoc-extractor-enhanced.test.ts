@@ -8,7 +8,7 @@ import type { JSDocExtractorOptions } from 'build-utils/mcp/types';
 import type { PathLike } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock modules
 vi.mock('fs');

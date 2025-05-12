@@ -6,7 +6,7 @@ import * as discoveryModule from 'build-utils/mcp/extractors/component-discovery
 import type { PathLike } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Properly mock the fs module
 vi.mock('fs', () => ({

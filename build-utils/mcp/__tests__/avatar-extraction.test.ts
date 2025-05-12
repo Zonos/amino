@@ -9,7 +9,7 @@ import type {
   JSDocComment,
   JSDocExtractorOptions,
 } from 'build-utils/mcp/types';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, vi } from 'vitest';
 
 describe('Avatar Component Extraction', () => {
   // Sample JSDoc comment for the Avatar component

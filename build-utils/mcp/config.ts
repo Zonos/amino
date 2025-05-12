@@ -4,6 +4,7 @@
  */
 
 import fs from 'fs';
+import { mcpBuildEnv } from 'pages/environment.client';
 import path from 'path';
 
 import type { JSDocExtractorOptions } from './types';
@@ -66,21 +67,21 @@ export function loadConfiguration(): JSDocExtractorOptions {
   }
 
   // Override with environment variables if present
-  if (process.env[ENV_CONFIG.VERBOSE] !== undefined) {
-    config.verbose = process.env[ENV_CONFIG.VERBOSE] === 'true';
+  if (mcpBuildEnv.MCP_VERBOSE !== undefined) {
+    config.verbose = mcpBuildEnv.MCP_VERBOSE;
   }
 
-  if (process.env[ENV_CONFIG.INCLUDE_PRIVATE] !== undefined) {
-    config.includePrivate = process.env[ENV_CONFIG.INCLUDE_PRIVATE] === 'true';
+  if (mcpBuildEnv.MCP_INCLUDE_PRIVATE !== undefined) {
+    config.includePrivate = mcpBuildEnv.MCP_INCLUDE_PRIVATE;
   }
 
-  if (process.env[ENV_CONFIG.OUTPUT_DIR]) {
-    config.outputDir = process.env[ENV_CONFIG.OUTPUT_DIR] || config.outputDir;
+  if (mcpBuildEnv.MCP_OUTPUT_DIR) {
+    config.outputDir = mcpBuildEnv.MCP_OUTPUT_DIR || config.outputDir;
   }
 
-  if (process.env[ENV_CONFIG.COMPONENT_DIRS]) {
+  if (mcpBuildEnv.MCP_COMPONENT_DIRS) {
     try {
-      const componentDirsValue = process.env[ENV_CONFIG.COMPONENT_DIRS];
+      const componentDirsValue = mcpBuildEnv.MCP_COMPONENT_DIRS;
       if (componentDirsValue) {
         const parsedDirs = JSON.parse(componentDirsValue) as string[];
         config.componentDirs = Array.isArray(parsedDirs)
@@ -89,7 +90,7 @@ export function loadConfiguration(): JSDocExtractorOptions {
       }
     } catch {
       // If not valid JSON, treat as a single directory
-      const componentDirsValue = process.env[ENV_CONFIG.COMPONENT_DIRS];
+      const componentDirsValue = mcpBuildEnv.MCP_COMPONENT_DIRS;
       if (componentDirsValue) {
         config.componentDirs = [componentDirsValue];
       }
