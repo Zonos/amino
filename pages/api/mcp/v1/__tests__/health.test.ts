@@ -94,7 +94,7 @@ describe('Health check endpoint', () => {
     vi.clearAllMocks();
   });
 
-  it('should return 405 for non-GET requests', () => {
+  test('should return 405 for non-GET requests', () => {
     mockReq.method = 'POST';
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(405);
@@ -107,7 +107,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  it('should return status ok when documentation exists', () => {
+  test('should return status ok when documentation exists', () => {
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
     expect(mockRes.json).toHaveBeenCalledWith({
@@ -127,7 +127,7 @@ describe('Health check endpoint', () => {
     });
   });
 
-  it('should report degraded status when documentation index is missing', () => {
+  test('should report degraded status when documentation index is missing', () => {
     // Mock index file not existing
     vi.mocked(fs.existsSync).mockImplementation(
       (_path: fs.PathLike): boolean => {
@@ -153,7 +153,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  it('should report unknown version when package.json is missing', () => {
+  test('should report unknown version when package.json is missing', () => {
     // Mock package.json file not existing
     vi.mocked(fs.existsSync).mockImplementation(
       (_path: fs.PathLike): boolean => {
@@ -173,7 +173,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  it('should handle errors in reading index file', () => {
+  test('should handle errors in reading index file', () => {
     // Mock error reading index file
     vi.mocked(fs.readFileSync).mockImplementation(
       (_path: fs.PathOrFileDescriptor): string => {
@@ -199,7 +199,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  it('should handle unexpected errors gracefully', () => {
+  test('should handle unexpected errors gracefully', () => {
     // Mock an unexpected error
     vi.mocked(fs.existsSync).mockImplementation(
       (_path: fs.PathLike): boolean => {

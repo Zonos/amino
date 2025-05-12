@@ -37,7 +37,7 @@ describe('JSON File Generator', () => {
   });
 
   describe('createDirectoryStructure', () => {
-    it('should create output directory if it does not exist', () => {
+    test('should create output directory if it does not exist', () => {
       // Mock directory does not exist
       vi.mocked(fs.existsSync).mockReturnValueOnce(false);
 
@@ -46,7 +46,7 @@ describe('JSON File Generator', () => {
       expect(fs.mkdirSync).toHaveBeenCalledWith('/output', { recursive: true });
     });
 
-    it('should not create output directory if it already exists', () => {
+    test('should not create output directory if it already exists', () => {
       // Mock directory exists
       vi.mocked(fs.existsSync).mockReturnValueOnce(true);
 
@@ -57,7 +57,7 @@ describe('JSON File Generator', () => {
       });
     });
 
-    it('should create components subdirectory if it does not exist', () => {
+    test('should create components subdirectory if it does not exist', () => {
       // Mock main directory exists but components subdirectory doesn't
       vi.mocked(fs.existsSync)
         .mockReturnValueOnce(true) // Main directory exists
@@ -70,7 +70,7 @@ describe('JSON File Generator', () => {
       });
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       // Mock error being thrown
       vi.mocked(fs.existsSync).mockImplementation(() => {
         throw new Error('Test error');
@@ -94,7 +94,7 @@ describe('JSON File Generator', () => {
   });
 
   describe('generateIndexFile', () => {
-    it('should generate an index file with component metadata', () => {
+    test('should generate an index file with component metadata', () => {
       const mockComponents: ComponentMetadata[] = [
         {
           filePath: 'src/components/button/index.tsx',
@@ -142,7 +142,7 @@ describe('JSON File Generator', () => {
       });
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       const mockComponents: ComponentMetadata[] = [
         {
           filePath: 'src/components/button/index.tsx',
@@ -175,7 +175,7 @@ describe('JSON File Generator', () => {
   });
 
   describe('generateComponentFiles', () => {
-    it('should generate individual component files', () => {
+    test('should generate individual component files', () => {
       // Mock component documentation
       const mockComponentDocs: ComponentDocumentation[] = [
         {
@@ -246,7 +246,7 @@ describe('JSON File Generator', () => {
       });
     });
 
-    it('should handle components without comments', () => {
+    test('should handle components without comments', () => {
       // Mock component without a comment
       const mockComponentDocs: ComponentDocumentation[] = [
         {
@@ -278,7 +278,7 @@ describe('JSON File Generator', () => {
       });
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       const mockComponentDocs: ComponentDocumentation[] = [
         {
           id: 'button',
@@ -312,7 +312,7 @@ describe('JSON File Generator', () => {
       );
     });
 
-    it('should output description and tags from JSDoc comment if present', () => {
+    test('should output description and tags from JSDoc comment if present', () => {
       const docs: ComponentDocumentation[] = [
         {
           comment: {
@@ -356,7 +356,7 @@ describe('JSON File Generator', () => {
       ]);
     });
 
-    it('should output empty description and tags if no comment', () => {
+    test('should output empty description and tags if no comment', () => {
       const docs: ComponentDocumentation[] = [
         {
           id: 'divider',
@@ -382,7 +382,7 @@ describe('JSON File Generator', () => {
       expect(written.tags).toEqual([]);
     });
 
-    it('should always output tags as array of objects with name and text', () => {
+    test('should always output tags as array of objects with name and text', () => {
       const docs: ComponentDocumentation[] = [
         {
           comment: {
@@ -420,7 +420,7 @@ describe('JSON File Generator', () => {
   });
 
   describe('generateDocumentationFiles', () => {
-    it('should orchestrate the entire documentation generation process', () => {
+    test('should orchestrate the entire documentation generation process', () => {
       // Set up mocks for fs operations to track what happens
       const mockExistsSync = vi.mocked(fs.existsSync);
       const mockMkdirSync = vi.mocked(fs.mkdirSync);
@@ -505,7 +505,7 @@ describe('JSON File Generator', () => {
       });
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       // Make fs.existsSync throw an error
       vi.mocked(fs.existsSync).mockImplementation(() => {
         throw new Error('Directory error');
@@ -557,7 +557,7 @@ describe('JSON File Generator', () => {
       consoleWarnSpy.mockRestore();
     });
 
-    it('should handle empty text in example tags', () => {
+    test('should handle empty text in example tags', () => {
       const tags = [{ name: 'example', text: '' }];
 
       const result = jsonFileGenerator.processExampleTags(tags);
@@ -566,7 +566,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith('Empty example tag found');
     });
 
-    it('should preserve example tags with code blocks', () => {
+    test('should preserve example tags with code blocks', () => {
       // Simulate tags with example code blocks (title and code)
       const tags = [
         {
@@ -597,7 +597,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should warn about example tags without code blocks', () => {
+    test('should warn about example tags without code blocks', () => {
       // Simulate a tag with only a title but no code block
       const tags = [
         {
@@ -620,7 +620,7 @@ describe('JSON File Generator', () => {
       );
     });
 
-    it('should handle JSX without a title', () => {
+    test('should handle JSX without a title', () => {
       const tags = [{ name: 'example', text: '<Component />' }];
 
       const result = jsonFileGenerator.processExampleTags(tags);
@@ -629,7 +629,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should handle JSX in the first line of a multiline example', () => {
+    test('should handle JSX in the first line of a multiline example', () => {
       const tags = [
         {
           name: 'example',
@@ -643,7 +643,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should handle title and JSX on the same line', () => {
+    test('should handle title and JSX on the same line', () => {
       const tags = [{ name: 'example', text: 'Basic usage <Component />' }];
 
       const result = jsonFileGenerator.processExampleTags(tags);
@@ -652,7 +652,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should handle markdown code blocks without language specifier', () => {
+    test('should handle markdown code blocks without language specifier', () => {
       const tags = [
         { name: 'example', text: 'Basic usage\n```\n<Component />\n```' },
       ];
@@ -663,7 +663,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should warn about markdown code blocks with missing JSX content', () => {
+    test('should warn about markdown code blocks with missing JSX content', () => {
       const tags = [
         {
           name: 'example',
@@ -679,7 +679,7 @@ describe('JSON File Generator', () => {
       );
     });
 
-    it('should handle incomplete markdown code blocks', () => {
+    test('should handle incomplete markdown code blocks', () => {
       const tags = [
         {
           name: 'example',
@@ -694,7 +694,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should preserve multiple example tags with code blocks', () => {
+    test('should preserve multiple example tags with code blocks', () => {
       // Simulate multiple example tags with code blocks
       const tags = [
         {
@@ -716,7 +716,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should not modify non-example tags', () => {
+    test('should not modify non-example tags', () => {
       // Simulate various non-example tags
       const tags = [
         {
@@ -738,7 +738,7 @@ describe('JSON File Generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should handle an empty array of tags', () => {
+    test('should handle an empty array of tags', () => {
       const tags: Array<{ name: string; text: string }> = [];
 
       const result = jsonFileGenerator.processExampleTags(tags);
@@ -753,7 +753,7 @@ describe('JSON File Generator', () => {
 
   // Test integration between processExampleTags and generateComponentFiles
   describe('Integration Tests', () => {
-    it('should correctly process example tags through the complete pipeline', () => {
+    test('should correctly process example tags through the complete pipeline', () => {
       const mockComponentDocs: ComponentDocumentation[] = [
         {
           comment: {

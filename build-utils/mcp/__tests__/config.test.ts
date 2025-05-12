@@ -37,12 +37,12 @@ describe('config', () => {
   });
 
   describe('loadConfiguration', () => {
-    it('should return default configuration when no overrides exist', () => {
+    test('should return default configuration when no overrides exist', () => {
       const config = loadConfiguration();
       expect(config).toEqual(DEFAULT_CONFIG);
     });
 
-    it('should load configuration from file when available', () => {
+    test('should load configuration from file when available', () => {
       const mockConfig = {
         componentDirs: ['src/custom-components'],
         outputDir: 'custom-output',
@@ -58,7 +58,7 @@ describe('config', () => {
       expect(config.verbose).toEqual(DEFAULT_CONFIG.verbose); // Should retain default
     });
 
-    it('should load configuration from environment variables', () => {
+    test('should load configuration from environment variables', () => {
       process.env[ENV_CONFIG.VERBOSE] = 'true';
       process.env[ENV_CONFIG.OUTPUT_DIR] = 'env-output';
       process.env[ENV_CONFIG.COMPONENT_DIRS] = '["src/env-components"]';
@@ -70,7 +70,7 @@ describe('config', () => {
       expect(config.componentDirs).toEqual(['src/env-components']);
     });
 
-    it('should handle non-JSON array in COMPONENT_DIRS env var', () => {
+    test('should handle non-JSON array in COMPONENT_DIRS env var', () => {
       process.env[ENV_CONFIG.COMPONENT_DIRS] = 'src/single-dir';
 
       const config = loadConfiguration();
@@ -78,7 +78,7 @@ describe('config', () => {
       expect(config.componentDirs).toEqual(['src/single-dir']);
     });
 
-    it('should override file config with env vars when both exist', () => {
+    test('should override file config with env vars when both exist', () => {
       // Setup file config
       const fileConfig = {
         componentDirs: ['src/file-components'],
@@ -102,7 +102,7 @@ describe('config', () => {
       expect(config.verbose).toBe(fileConfig.verbose);
     });
 
-    it('should handle errors when reading config file', () => {
+    test('should handle errors when reading config file', () => {
       vi.mocked(fs.existsSync).mockReturnValue(true);
       vi.mocked(fs.readFileSync).mockImplementation(() => {
         throw new Error('File read error');
@@ -120,12 +120,12 @@ describe('config', () => {
   });
 
   describe('validateConfiguration', () => {
-    it('should return default config for empty input', () => {
+    test('should return default config for empty input', () => {
       const config = validateConfiguration({});
       expect(config).toEqual(DEFAULT_CONFIG);
     });
 
-    it('should validate componentDirs properly', () => {
+    test('should validate componentDirs properly', () => {
       // Valid case
       expect(
         validateConfiguration({ componentDirs: ['src/valid'] }).componentDirs,
@@ -142,7 +142,7 @@ describe('config', () => {
       ).toEqual(DEFAULT_CONFIG.componentDirs);
     });
 
-    it('should validate outputDir properly', () => {
+    test('should validate outputDir properly', () => {
       // Valid case
       expect(validateConfiguration({ outputDir: 'valid' }).outputDir).toBe(
         'valid',
@@ -162,7 +162,7 @@ describe('config', () => {
       ).toBe(DEFAULT_CONFIG.outputDir);
     });
 
-    it('should validate boolean options properly', () => {
+    test('should validate boolean options properly', () => {
       expect(validateConfiguration({ verbose: true }).verbose).toBe(true);
       expect(
         validateConfiguration({ includePrivate: true }).includePrivate,
@@ -180,7 +180,7 @@ describe('config', () => {
       ).toBe(DEFAULT_CONFIG.includePrivate);
     });
 
-    it('should validate array options properly', () => {
+    test('should validate array options properly', () => {
       // Valid cases
       const testExcludeDirs = ['test1', 'test2'];
       expect(

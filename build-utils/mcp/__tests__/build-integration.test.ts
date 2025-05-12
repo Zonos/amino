@@ -70,7 +70,7 @@ describe('MCP Build Integration', () => {
     vi.clearAllMocks();
   });
 
-  it('should run extraction with default configuration', async () => {
+  test('should run extraction with default configuration', async () => {
     // Import here to ensure mocks are applied
     const { runMcpExtraction } = await import('../build-integration');
     const { extractAllComponentsDocumentation } = await import(
@@ -130,7 +130,7 @@ describe('MCP Build Integration', () => {
     expect(logger.flush).toHaveBeenCalled();
   });
 
-  it('should respect custom configuration', async () => {
+  test('should respect custom configuration', async () => {
     // Mock custom configuration
     vi.mocked(configModule.loadConfiguration).mockReturnValueOnce({
       componentDirs: ['src/custom-components', 'lib/shared-components'],
@@ -173,7 +173,7 @@ describe('MCP Build Integration', () => {
     );
   });
 
-  it('should handle errors gracefully without failing the build', async () => {
+  test('should handle errors gracefully without failing the build', async () => {
     // Make extraction throw an error
     const { extractAllComponentsDocumentation } = await import(
       '../extractors/jsdoc-extractor'
@@ -200,7 +200,7 @@ describe('MCP Build Integration', () => {
     expect(logger.flush).toHaveBeenCalled();
   });
 
-  it('should handle file generation errors gracefully', async () => {
+  test('should handle file generation errors gracefully', async () => {
     // Make file generation throw an error
     const { generateDocumentationFiles } = await import(
       '../extractors/json-file-generator'
@@ -227,7 +227,7 @@ describe('MCP Build Integration', () => {
     expect(logger.flush).toHaveBeenCalled();
   });
 
-  it('should calculate the correct component statistics', async () => {
+  test('should calculate the correct component statistics', async () => {
     // Mock a custom output for extractAllComponentsDocumentation
     const { extractAllComponentsDocumentation } = await import(
       '../extractors/jsdoc-extractor'
@@ -301,7 +301,7 @@ describe('MCP Build Integration', () => {
     );
   });
 
-  it('should use environment variables to override configuration', async () => {
+  test('should use environment variables to override configuration', async () => {
     // Set environment variables to override configuration
     process.env.MCP_COMPONENT_DIRS = 'src/env-components,lib/env-components';
     process.env.MCP_OUTPUT_DIR = 'env-output';

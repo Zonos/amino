@@ -254,7 +254,7 @@ function expectValidComponentFile(componentData: ComponentFileData): void {
 
 describe('Documentation Structure Validation', () => {
   describe('Component Metadata Schema', () => {
-    it('should validate component metadata with required fields', () => {
+    test('should validate component metadata with required fields', () => {
       const validMetadata: ComponentMetadata = {
         filePath: 'src/components/button/index.tsx',
         id: 'button',
@@ -265,7 +265,7 @@ describe('Documentation Structure Validation', () => {
       expectValidComponentMetadata(validMetadata);
     });
 
-    it('should detect missing required fields in component metadata', () => {
+    test('should detect missing required fields in component metadata', () => {
       const invalidMetadata = {
         id: 'button',
         name: 'Button',
@@ -277,7 +277,7 @@ describe('Documentation Structure Validation', () => {
       ).toThrow(/missing required properties/);
     });
 
-    it('should detect incorrect field types in component metadata', () => {
+    test('should detect incorrect field types in component metadata', () => {
       const invalidMetadata = {
         filePath: 123, // Should be string
         id: 'button',
@@ -294,7 +294,7 @@ describe('Documentation Structure Validation', () => {
   });
 
   describe('JSDoc Comment Schema', () => {
-    it('should validate JSDoc comments with required fields', () => {
+    test('should validate JSDoc comments with required fields', () => {
       const validComment: JSDocComment = {
         description: 'A button component',
         location: {
@@ -312,7 +312,7 @@ describe('Documentation Structure Validation', () => {
       expectValidJSDocComment(validComment);
     });
 
-    it('should validate JSDoc comments with empty tags', () => {
+    test('should validate JSDoc comments with empty tags', () => {
       const commentWithEmptyTags: JSDocComment = {
         description: 'A button component',
         location: {
@@ -327,7 +327,7 @@ describe('Documentation Structure Validation', () => {
       expectValidJSDocComment(commentWithEmptyTags);
     });
 
-    it('should detect missing required fields in JSDoc comments', () => {
+    test('should detect missing required fields in JSDoc comments', () => {
       const invalidComment = {
         description: 'A button component',
         tags: [],
@@ -339,7 +339,7 @@ describe('Documentation Structure Validation', () => {
       ).toThrow(/missing required properties/);
     });
 
-    it('should detect invalid JSDoc tags structure', () => {
+    test('should detect invalid JSDoc tags structure', () => {
       const invalidComment: JSDocComment = {
         description: 'A button component',
         location: {
@@ -360,7 +360,7 @@ describe('Documentation Structure Validation', () => {
   });
 
   describe('Component Documentation Schema', () => {
-    it('should validate full component documentation', () => {
+    test('should validate full component documentation', () => {
       const validDocumentation: ComponentDocumentation = {
         comment: {
           description: 'A button component',
@@ -380,7 +380,7 @@ describe('Documentation Structure Validation', () => {
       expectValidComponentDocumentation(validDocumentation);
     });
 
-    it('should validate component documentation without comment', () => {
+    test('should validate component documentation without comment', () => {
       const docWithoutComment: ComponentDocumentation = {
         id: 'button',
         name: 'Button',
@@ -390,7 +390,7 @@ describe('Documentation Structure Validation', () => {
       expectValidComponentDocumentation(docWithoutComment);
     });
 
-    it('should detect missing required fields in component documentation', () => {
+    test('should detect missing required fields in component documentation', () => {
       const invalidDoc = {
         id: 'button',
         // Missing name and path
@@ -403,7 +403,7 @@ describe('Documentation Structure Validation', () => {
   });
 
   describe('Index File Schema', () => {
-    it('should validate the index file structure', () => {
+    test('should validate the index file structure', () => {
       const indexFileData: IndexFileData = {
         components: [
           { id: 'button', name: 'Button', path: 'src/components/button' },
@@ -416,7 +416,7 @@ describe('Documentation Structure Validation', () => {
       expectValidIndexFile(indexFileData);
     });
 
-    it('should detect invalid index file structure', () => {
+    test('should detect invalid index file structure', () => {
       const invalidIndexData = {
         components: 'not an array', // Should be an array
         generatedAt: '2025-04-28T12:00:00Z',
@@ -428,7 +428,7 @@ describe('Documentation Structure Validation', () => {
       ).toThrow(/expected array/);
     });
 
-    it('should detect missing components in index file', () => {
+    test('should detect missing components in index file', () => {
       const invalidIndexData = {
         // Missing components array
         generatedAt: '2025-04-28T12:00:00Z',
@@ -440,7 +440,7 @@ describe('Documentation Structure Validation', () => {
       ).toThrow(/missing required properties/);
     });
 
-    it('should check components count matches totalComponents', () => {
+    test('should check components count matches totalComponents', () => {
       const inconsistentIndexData: IndexFileData = {
         components: [
           { id: 'button', name: 'Button', path: 'src/components/button' },
@@ -457,7 +457,7 @@ describe('Documentation Structure Validation', () => {
   });
 
   describe('Component File Schema', () => {
-    it('should validate a component file structure', () => {
+    test('should validate a component file structure', () => {
       const componentFileData: ComponentFileData = {
         description: 'A button component',
         generatedAt: '2025-04-28T12:00:00Z',
@@ -470,7 +470,7 @@ describe('Documentation Structure Validation', () => {
       expectValidComponentFile(componentFileData);
     });
 
-    it('should validate component file with empty tags', () => {
+    test('should validate component file with empty tags', () => {
       const componentFileData: ComponentFileData = {
         description: 'A button component',
         generatedAt: '2025-04-28T12:00:00Z',
@@ -483,7 +483,7 @@ describe('Documentation Structure Validation', () => {
       expectValidComponentFile(componentFileData);
     });
 
-    it('should detect missing fields in component file', () => {
+    test('should detect missing fields in component file', () => {
       const invalidComponentFile = {
         description: 'A button component',
         generatedAt: '2025-04-28T12:00:00Z',

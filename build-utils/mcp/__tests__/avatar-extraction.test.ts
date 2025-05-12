@@ -73,7 +73,7 @@ describe('Avatar Component Extraction', () => {
     );
   });
 
-  it('should extract documentation for the Avatar component', () => {
+  test('should extract documentation for the Avatar component', () => {
     const options: JSDocExtractorOptions = {
       componentDirs: ['/src/components'],
       outputDir: '/output',
@@ -107,7 +107,7 @@ describe('Avatar Component Extraction', () => {
     }
   });
 
-  it('should extract JSDoc comments from AvatarBase.tsx', () => {
+  test('should extract JSDoc comments from AvatarBase.tsx', () => {
     const comments = jsdocExtractor.extractJSDocComments(
       '/src/components/avatar/AvatarBase.tsx',
       true,
@@ -127,7 +127,7 @@ describe('Avatar Component Extraction', () => {
     expect(exampleTags?.length).toBe(3);
   });
 
-  it('should generate correct JSON output for Avatar component', () => {
+  test('should generate correct JSON output for Avatar component', () => {
     const mockComponentDocs = jsdocExtractor.extractComponentDocumentation(
       '/src/components/avatar',
       {

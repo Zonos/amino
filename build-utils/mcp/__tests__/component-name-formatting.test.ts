@@ -52,35 +52,35 @@ describe('Component Name Formatting', () => {
 
   describe('formatComponentName', () => {
     // Test case for simple component name capitalization
-    it('should properly capitalize simple component names', () => {
+    test('should properly capitalize simple component names', () => {
       expect(formatComponentName('button')).toBe('Button');
       expect(formatComponentName('text')).toBe('Text');
       expect(formatComponentName('card')).toBe('Card');
     });
 
     // Test case for kebab-case component names
-    it('should convert kebab-case component names to PascalCase', () => {
+    test('should convert kebab-case component names to PascalCase', () => {
       expect(formatComponentName('connection-map')).toBe('ConnectionMap');
       expect(formatComponentName('drop-zone')).toBe('DropZone');
       expect(formatComponentName('cover-sheet')).toBe('CoverSheet');
     });
 
     // Test case for snake_case component names
-    it('should convert snake_case component names to PascalCase', () => {
+    test('should convert snake_case component names to PascalCase', () => {
       expect(formatComponentName('multi_select')).toBe('MultiSelect');
       expect(formatComponentName('file_upload')).toBe('FileUpload');
       expect(formatComponentName('danger_zone')).toBe('DangerZone');
     });
 
     // Test that camelCase component names are properly formatted
-    it('should properly format camelCase component names', () => {
+    test('should properly format camelCase component names', () => {
       expect(formatComponentName('inputField')).toBe('InputField');
       expect(formatComponentName('dropZone')).toBe('DropZone');
       expect(formatComponentName('fileUpload')).toBe('FileUpload');
     });
 
     // Test edge cases
-    it('should handle edge cases of component names', () => {
+    test('should handle edge cases of component names', () => {
       // Single letter
       expect(formatComponentName('a')).toBe('A');
 

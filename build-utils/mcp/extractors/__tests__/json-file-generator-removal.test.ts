@@ -14,7 +14,7 @@ describe('json-file-generator component file generation', () => {
     writeFileSyncMock.mockClear();
   });
 
-  it('should not include generatedAt field in component JSON files', () => {
+  test('should not include generatedAt field in component JSON files', () => {
     // Mock component documentation with properly typed JSDocComment
     const componentDocs: ComponentDocumentation[] = [
       {

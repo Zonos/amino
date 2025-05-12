@@ -6,6 +6,7 @@
 
 import * as fs from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { inProdEnvironment } from 'pages/environment.client';
 import * as path from 'path';
 
 import type {
@@ -121,7 +122,7 @@ export default function handler(
       error: {
         code: 'internal_server_error',
         message: 'Internal server error while retrieving components list',
-        ...(process.env.NODE_ENV !== 'production' && {
+        ...(inProdEnvironment === false && {
           details: { error: String(error) },
         }),
       },

@@ -13,7 +13,7 @@ describe('json-file-generator', () => {
       consoleWarnSpy.mockClear();
     });
 
-    it('should preserve example tags with code blocks', () => {
+    test('should preserve example tags with code blocks', () => {
       // Simulate tags with example code blocks (title and code)
       const tags = [
         {
@@ -44,7 +44,7 @@ describe('json-file-generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should warn about example tags without code blocks', () => {
+    test('should warn about example tags without code blocks', () => {
       // Simulate a tag with only a title but no code block
       const tags = [
         {
@@ -67,7 +67,7 @@ describe('json-file-generator', () => {
       );
     });
 
-    it('should not modify non-example tags', () => {
+    test('should not modify non-example tags', () => {
       // Simulate various non-example tags
       const tags = [
         {
@@ -89,7 +89,7 @@ describe('json-file-generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should handle an empty array of tags', () => {
+    test('should handle an empty array of tags', () => {
       const tags: Array<{ name: string; text: string }> = [];
 
       const result = processExampleTags(tags);
@@ -101,7 +101,7 @@ describe('json-file-generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should preserve multiple example tags with code blocks', () => {
+    test('should preserve multiple example tags with code blocks', () => {
       // Simulate multiple example tags with code blocks
       const tags = [
         {
@@ -123,7 +123,7 @@ describe('json-file-generator', () => {
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
 
-    it('should handle empty text in example tags', () => {
+    test('should handle empty text in example tags', () => {
       const tags = [{ name: 'example', text: '' }];
 
       const result = processExampleTags(tags);
@@ -132,7 +132,7 @@ describe('json-file-generator', () => {
       expect(consoleWarnSpy).toHaveBeenCalledWith('Empty example tag found');
     });
 
-    it('should handle JSX without a title', () => {
+    test('should handle JSX without a title', () => {
       const tags = [{ name: 'example', text: '<Component />' }];
 
       const result = processExampleTags(tags);
@@ -140,7 +140,7 @@ describe('json-file-generator', () => {
       expect(result).toEqual(tags);
     });
 
-    it('should handle JSX in the first line of a multiline example', () => {
+    test('should handle JSX in the first line of a multiline example', () => {
       const tags = [
         {
           name: 'example',
@@ -153,7 +153,7 @@ describe('json-file-generator', () => {
       expect(result).toEqual(tags);
     });
 
-    it('should handle title and JSX on the same line', () => {
+    test('should handle title and JSX on the same line', () => {
       const tags = [{ name: 'example', text: 'Basic usage <Component />' }];
 
       const result = processExampleTags(tags);
@@ -161,7 +161,7 @@ describe('json-file-generator', () => {
       expect(result).toEqual(tags);
     });
 
-    it('should handle markdown code blocks without language specifier', () => {
+    test('should handle markdown code blocks without language specifier', () => {
       const tags = [
         {
           name: 'example',
@@ -174,7 +174,7 @@ describe('json-file-generator', () => {
       expect(result).toEqual(tags);
     });
 
-    it('should handle incomplete markdown code blocks', () => {
+    test('should handle incomplete markdown code blocks', () => {
       const tags = [
         {
           name: 'example',
@@ -187,7 +187,7 @@ describe('json-file-generator', () => {
       expect(result).toEqual(tags);
     });
 
-    it('should handle malformed markdown code blocks', () => {
+    test('should handle malformed markdown code blocks', () => {
       const tags = [
         {
           name: 'example',

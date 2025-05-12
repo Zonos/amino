@@ -277,7 +277,7 @@ describe('Component Discovery Module', () => {
   });
 
   describe('detectComponentFiles', () => {
-    it('should scan directories and find component files', () => {
+    test('should scan directories and find component files', () => {
       // Create a custom mock function that returns string[] to match the expected return type
       const readdirMock = (dirPath: PathLike): string[] => {
         const dirPathStr = dirPath.toString();
@@ -393,7 +393,7 @@ describe('Component Discovery Module', () => {
       expect(result).toEqual(expectedFiles);
     });
 
-    it('should handle non-existent directories', () => {
+    test('should handle non-existent directories', () => {
       vi.mocked(fs.existsSync).mockReturnValueOnce(false);
 
       const result = discoveryModule.detectComponentFiles({
@@ -403,7 +403,7 @@ describe('Component Discovery Module', () => {
       expect(result).toEqual([]);
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       vi.mocked(fs.existsSync).mockReturnValueOnce(true);
       // Using a properly typed mock implementation
       vi.mocked(fs.readdirSync).mockImplementationOnce(() => {
@@ -419,7 +419,7 @@ describe('Component Discovery Module', () => {
   });
 
   describe('extractComponentMetadata', () => {
-    it('should extract metadata from component file paths', () => {
+    test('should extract metadata from component file paths', () => {
       const componentFiles = [
         'src/components/button/index.tsx',
         'src/components/text/index.ts',
@@ -456,7 +456,7 @@ describe('Component Discovery Module', () => {
       expect(result[1]?.name).toBe('text');
     });
 
-    it('should skip private components', () => {
+    test('should skip private components', () => {
       const componentFiles = [
         'src/components/_private/index.tsx',
         'src/components/public/index.ts',
@@ -495,7 +495,7 @@ describe('Component Discovery Module', () => {
   });
 
   describe('discoverComponents', () => {
-    it('should combine detection and metadata extraction', () => {
+    test('should combine detection and metadata extraction', () => {
       // Mock the fs functions needed for actual execution
       vi.mocked(fs.existsSync).mockReturnValue(true);
       vi.mocked(fs.readdirSync).mockImplementation(((

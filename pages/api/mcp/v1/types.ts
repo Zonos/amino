@@ -79,8 +79,13 @@ export type HealthResponse = {
       status: 'ok' | 'error';
     };
   };
+  discovery: {
+    apiRoot: string;
+    documentation: string;
+  };
   status: 'ok' | 'degraded' | 'error';
   timestamp: string;
+  uptime: number;
   version: string;
 };
 

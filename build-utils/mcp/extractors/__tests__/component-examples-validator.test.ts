@@ -104,7 +104,7 @@ describe('Component JSON files', () => {
   const componentsDir = path.join(process.cwd(), 'public/mcp-data/components');
 
   // Read all JSON files in the components directory
-  it('should have example tags with JSX code blocks in all component files', () => {
+  test('should have example tags with JSX code blocks in all component files', () => {
     // Make sure the directory exists
     expect(fs.existsSync(componentsDir)).toBe(true);
 

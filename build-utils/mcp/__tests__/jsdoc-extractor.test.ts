@@ -153,7 +153,7 @@ export const Button = ({
 
   // Tests for extractJSDocComments function
   describe('extractJSDocComments', () => {
-    it('should extract JSDoc comments from a file', () => {
+    test('should extract JSDoc comments from a file', () => {
       const comments = extractJSDocComments('/components/button/index.tsx');
 
       expect(comments).toHaveLength(1);
@@ -163,7 +163,7 @@ export const Button = ({
       );
     });
 
-    it('should extract JSDoc tags correctly', () => {
+    test('should extract JSDoc tags correctly', () => {
       const comments = extractJSDocComments('/components/button/index.tsx');
 
       expect(comments[0]).toHaveProperty('tags');
@@ -172,7 +172,7 @@ export const Button = ({
       expect(comments[0]?.tags?.[0]?.text).toContain('Basic button');
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       // Mock readFileSync to throw an error for this test
       vi.mocked(extractJSDocComments).mockReturnValue([]);
 
@@ -184,7 +184,7 @@ export const Button = ({
 
   // Tests for extractComponentDocumentation function
   describe('extractComponentDocumentation', () => {
-    it('should extract component documentation', () => {
+    test('should extract component documentation', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/components'],
         outputDir: '/output',
@@ -202,7 +202,7 @@ export const Button = ({
       expect(componentDocs?.comment).toBeDefined();
     });
 
-    it('should return null when no main file is found', () => {
+    test('should return null when no main file is found', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/components'],
         outputDir: '/output',
@@ -218,7 +218,7 @@ export const Button = ({
       expect(componentDocs).toBeNull();
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/components'],
         outputDir: '/output',

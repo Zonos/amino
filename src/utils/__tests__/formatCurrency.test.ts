@@ -40,7 +40,7 @@ describe('formatCurrency', () => {
   ];
 
   tests.forEach(({ expected, input }) => {
-    it(`should format ${input.value} to ${expected}`, () => {
+    test(`should format ${input.value} to ${expected}`, () => {
       expect(formatCurrency(input)).toBe(expected);
     });
   });
@@ -100,7 +100,7 @@ describe('formatCurrency (language code: it)', () => {
   ];
 
   tests.forEach(({ expected, input }) => {
-    it(`should format ${input.value} to ${expected}`, () => {
+    test(`should format ${input.value} to ${expected}`, () => {
       expect(formatCurrency(input)).toBe(expected);
     });
   });
@@ -196,7 +196,7 @@ describe('getDualCurrency', () => {
   ];
 
   tests.forEach(({ expected, input }) => {
-    it(`should format ${input.value}`, () => {
+    test(`should format ${input.value}`, () => {
       expect(getDualCurrency(input)).toEqual(expected);
     });
   });

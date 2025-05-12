@@ -69,6 +69,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.0",
     "@mui/material": "^5.14.0",
+    "@t3-oss/env-core": "^0.13.4",
     "clsx": "^2.0.0",
     "d3-geo": "^2.0.2",
     "fuse.js": "^6.6.2",

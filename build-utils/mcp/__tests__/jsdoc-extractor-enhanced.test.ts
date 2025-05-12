@@ -283,7 +283,7 @@ describe('Enhanced JSDoc Extractor', () => {
   });
 
   describe('Component Name Formatting', () => {
-    it('should properly capitalize simple component names', () => {
+    test('should properly capitalize simple component names', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/src/components'],
         outputDir: '/output',
@@ -297,7 +297,7 @@ describe('Enhanced JSDoc Extractor', () => {
       expect(result?.name).toBe('Button');
     });
 
-    it('should convert kebab-case component names to PascalCase', () => {
+    test('should convert kebab-case component names to PascalCase', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/src/components'],
         outputDir: '/output',
@@ -313,7 +313,7 @@ describe('Enhanced JSDoc Extractor', () => {
   });
 
   describe('JSDoc Comment Extraction', () => {
-    it('should extract comprehensive component JSDoc comments', () => {
+    test('should extract comprehensive component JSDoc comments', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/src/components'],
         outputDir: '/output',
@@ -339,7 +339,7 @@ describe('Enhanced JSDoc Extractor', () => {
       expect(examples[2]?.text).toContain('With icon');
     });
 
-    it('should merge example tags from multiple comments', () => {
+    test('should merge example tags from multiple comments', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/src/components'],
         outputDir: '/output',
@@ -372,7 +372,7 @@ describe('Enhanced JSDoc Extractor', () => {
       expect(paramTags.length).toBeGreaterThanOrEqual(1);
     });
 
-    it('should prioritize component comments with examples', () => {
+    test('should prioritize component comments with examples', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/src/components'],
         outputDir: '/output',
@@ -395,7 +395,7 @@ describe('Enhanced JSDoc Extractor', () => {
   });
 
   describe('File Pattern Detection', () => {
-    it('should find component file with ComponentName.tsx pattern', () => {
+    test('should find component file with ComponentName.tsx pattern', () => {
       const options: JSDocExtractorOptions = {
         componentDirs: ['/src/components'],
         outputDir: '/output',

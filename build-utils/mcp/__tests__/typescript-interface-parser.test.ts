@@ -14,7 +14,7 @@ vi.mock('fs', () => ({
 
 describe('TypeScript Interface Parser', () => {
   describe('parseInterface', () => {
-    it('should parse an interface and extract property information', () => {
+    test('should parse an interface and extract property information', () => {
       const code = `
         /**
          * Test interface
@@ -80,7 +80,7 @@ describe('TypeScript Interface Parser', () => {
       expect(unionProp!.type).toBe("'a' | 'b' | 'c'");
     });
 
-    it('should handle generic interfaces', () => {
+    test('should handle generic interfaces', () => {
       const code = `
         /**
          * Generic interface
@@ -118,7 +118,7 @@ describe('TypeScript Interface Parser', () => {
       expect(valueProp!.type).toBe('T');
     });
 
-    it('should handle interfaces without JSDoc comments', () => {
+    test('should handle interfaces without JSDoc comments', () => {
       const code = `
         export interface NoComments {
           prop1: string;
@@ -141,7 +141,7 @@ describe('TypeScript Interface Parser', () => {
       expect(prop1!.description).toBe('');
     });
 
-    it('should handle multiple interfaces in a file', () => {
+    test('should handle multiple interfaces in a file', () => {
       const code = `
         export interface FirstInterface {
           prop1: string;
@@ -163,7 +163,7 @@ describe('TypeScript Interface Parser', () => {
       expect(result!.properties[0]?.name).toBe('prop2');
     });
 
-    it('should return null if interface is not found', () => {
+    test('should return null if interface is not found', () => {
       const code = `
         export interface ExistingInterface {
           prop: string;
@@ -180,7 +180,7 @@ describe('TypeScript Interface Parser', () => {
       expect(result).toBeNull();
     });
 
-    it('should handle file read errors gracefully', () => {
+    test('should handle file read errors gracefully', () => {
       // Mock readFileSync to throw an error
       vi.mocked(fs.readFileSync).mockImplementation(() => {
         throw new Error('File read error');
@@ -207,7 +207,7 @@ describe('TypeScript Interface Parser', () => {
   });
 
   describe('extractInterfaces', () => {
-    it('should extract interfaces from component files', () => {
+    test('should extract interfaces from component files', () => {
       const mockComponentMetadata = [
         {
           filePath: 'src/components/button/index.tsx',
@@ -335,7 +335,7 @@ describe('TypeScript Interface Parser', () => {
       parseInterfaceSpy.mockRestore();
     });
 
-    it('should handle components without interfaces', () => {
+    test('should handle components without interfaces', () => {
       // Component without a proper interface
       const mockComponentMetadata = [
         {
@@ -370,7 +370,7 @@ describe('TypeScript Interface Parser', () => {
       parseInterfaceSpy.mockRestore();
     });
 
-    it('should handle errors gracefully', () => {
+    test('should handle errors gracefully', () => {
       const mockComponentMetadata = [
         {
           filePath: 'src/components/error/index.tsx',

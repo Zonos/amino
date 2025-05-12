@@ -6,6 +6,7 @@
 
 import * as fs from 'fs';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { env, mcpApiBase } from 'pages/environment.client';
 import * as path from 'path';
 
 import type { ErrorResponse, HealthResponse } from './types';
@@ -73,6 +74,10 @@ export default function handler(
     // Determine overall status
     const overallStatus = docsStatus.status === 'ok' ? 'ok' : 'degraded';
 
+    // Track server start time
+    const serverStartTime = Date.now();
+    const baseUrl = env.NEXT_PUBLIC_BASE_URL;
+
     // Compose the health response
     const healthResponse: HealthResponse = {
       components: {
@@ -85,8 +90,13 @@ export default function handler(
           status: docsStatus.status,
         },
       },
+      discovery: {
+        apiRoot: mcpApiBase,
+        documentation: baseUrl,
+      },
       status: overallStatus,
       timestamp: new Date().toISOString(),
+      uptime: Math.floor((Date.now() - serverStartTime) / 1000),
       version,
     };
 

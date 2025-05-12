@@ -33,7 +33,7 @@ describe('MCP Tools', () => {
   });
 
   describe('listComponents', () => {
-    it('should return a list of components', async () => {
+    test('should return a list of components', async () => {
       const mockResponse = {
         data: {
           components: [
@@ -52,7 +52,7 @@ describe('MCP Tools', () => {
       expect(result.data?.components).toHaveLength(2);
     });
 
-    it('should handle errors', async () => {
+    test('should handle errors', async () => {
       const mockError = {
         error: {
           code: '500',
@@ -71,7 +71,7 @@ describe('MCP Tools', () => {
   });
 
   describe('findComponentByName', () => {
-    it('should find components by exact name', async () => {
+    test('should find components by exact name', async () => {
       const mockResponse = {
         data: {
           components: [
@@ -91,7 +91,7 @@ describe('MCP Tools', () => {
       expect(result.data?.components).toHaveLength(1);
     });
 
-    it('should find components by partial name', async () => {
+    test('should find components by partial name', async () => {
       const mockResponse = {
         data: {
           components: [
@@ -118,7 +118,7 @@ describe('MCP Tools', () => {
   });
 
   describe('getComponentDetails', () => {
-    it('should return component details', async () => {
+    test('should return component details', async () => {
       const mockResponse = {
         data: {
           description: 'A clickable button component',

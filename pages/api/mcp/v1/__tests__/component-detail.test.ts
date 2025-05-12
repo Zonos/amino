@@ -107,7 +107,7 @@ describe('Component detail endpoint', () => {
     vi.clearAllMocks();
   });
 
-  it('should return 405 for non-GET requests', () => {
+  test('should return 405 for non-GET requests', () => {
     mockReq.method = 'POST';
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(405);
@@ -120,7 +120,7 @@ describe('Component detail endpoint', () => {
     );
   });
 
-  it('should return 400 if component ID is missing or invalid', () => {
+  test('should return 400 if component ID is missing or invalid', () => {
     mockReq.query = {}; // Missing ID
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(400);
@@ -138,7 +138,7 @@ describe('Component detail endpoint', () => {
     expect(mockRes.status).toHaveBeenCalledWith(400);
   });
 
-  it('should return 404 if component file does not exist', () => {
+  test('should return 404 if component file does not exist', () => {
     vi.mocked(fs.existsSync).mockReturnValue(false);
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(404);
@@ -151,13 +151,13 @@ describe('Component detail endpoint', () => {
     );
   });
 
-  it('should return component documentation when found', () => {
+  test('should return component documentation when found', () => {
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
     expect(mockRes.json).toHaveBeenCalledWith(mockComponentData);
   });
 
-  it('should handle errors gracefully', () => {
+  test('should handle errors gracefully', () => {
     vi.mocked(fs.readFileSync).mockImplementation(() => {
       throw new Error('Test error');
     });

@@ -57,7 +57,7 @@ function mergeExampleTags(
 
 describe('JSDoc Comment Merging', () => {
   describe('findMainComponentComment', () => {
-    it('should find comments that contain the word "component"', () => {
+    test('should find comments that contain the word "component"', () => {
       const comments: JSDocComment[] = [
         {
           description: 'This is a type definition',
@@ -77,7 +77,7 @@ describe('JSDoc Comment Merging', () => {
       expect(result).toBe(comments[1]);
     });
 
-    it('should find comments that have example tags', () => {
+    test('should find comments that have example tags', () => {
       const comments: JSDocComment[] = [
         {
           description: 'This is a type definition',
@@ -97,7 +97,7 @@ describe('JSDoc Comment Merging', () => {
       expect(result).toBe(comments[1]);
     });
 
-    it('should return undefined if no component comments found', () => {
+    test('should return undefined if no component comments found', () => {
       const comments: JSDocComment[] = [
         {
           description: 'This is a type definition',
@@ -119,7 +119,7 @@ describe('JSDoc Comment Merging', () => {
   });
 
   describe('findMostDetailedComment', () => {
-    it('should find the comment with the longest description', () => {
+    test('should find the comment with the longest description', () => {
       const comments: JSDocComment[] = [
         {
           description:
@@ -142,7 +142,7 @@ describe('JSDoc Comment Merging', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should find the comment with the most tags if descriptions are equal', () => {
+    test('should find the comment with the most tags if descriptions are equal', () => {
       const comments: JSDocComment[] = [
         {
           description: 'Same length description',
@@ -164,14 +164,14 @@ describe('JSDoc Comment Merging', () => {
       expect(result).toEqual(expected);
     });
 
-    it('should return undefined for empty array', () => {
+    test('should return undefined for empty array', () => {
       const result = findMostDetailedComment([]);
       expect(result).toBeUndefined();
     });
   });
 
   describe('mergeExampleTags', () => {
-    it('should combine example tags from multiple comments', () => {
+    test('should combine example tags from multiple comments', () => {
       const mainComment: JSDocComment = {
         description: 'This is a component',
         location: { endLine: 5, filePath: 'test.ts', startLine: 1 },
@@ -225,7 +225,7 @@ describe('JSDoc Comment Merging', () => {
       expect(exampleTexts).toContain('Example 3');
     });
 
-    it('should handle comments with no example tags', () => {
+    test('should handle comments with no example tags', () => {
       const mainComment: JSDocComment = {
         description: 'This is a component',
         location: { endLine: 5, filePath: 'test.ts', startLine: 1 },
@@ -255,7 +255,7 @@ describe('JSDoc Comment Merging', () => {
   });
 
   describe('Comment Selection and Merging Integration', () => {
-    it('should select the best comment and merge example tags', () => {
+    test('should select the best comment and merge example tags', () => {
       const comments: JSDocComment[] = [
         {
           description: 'Type definition',

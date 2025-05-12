@@ -192,7 +192,7 @@ export { Button } from './Button';
     });
   });
 
-  it('should merge JSDoc comments from all files in the component directory', () => {
+  test('should merge JSDoc comments from all files in the component directory', () => {
     const options: JSDocExtractorOptions = {
       componentDirs: ['/components'],
       outputDir: '/output',
@@ -272,7 +272,7 @@ export { Button } from './Button';
     ).toBeTruthy();
   });
 
-  it('should prefer component comments over index comments when both exist', () => {
+  test('should prefer component comments over index comments when both exist', () => {
     const options: JSDocExtractorOptions = {
       componentDirs: ['/components'],
       outputDir: '/output',

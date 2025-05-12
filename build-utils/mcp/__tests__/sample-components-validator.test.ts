@@ -105,7 +105,7 @@ describe('Sample Components Documentation Validation', () => {
     );
   });
 
-  it('should generate valid documentation files from sample components', () => {
+  test('should generate valid documentation files from sample components', () => {
     // Mock file writes to capture data
     const writtenFiles: Record<string, string> = {};
     vi.mocked(fs.writeFileSync).mockImplementation((path, data) => {
@@ -186,7 +186,7 @@ describe('Sample Components Documentation Validation', () => {
     expect(dividerData.tags).toHaveLength(0);
   });
 
-  it('should validate that generated files maintain data integrity', () => {
+  test('should validate that generated files maintain data integrity', () => {
     // Mock file writes to capture data
     const writtenFiles: Record<string, string> = {};
     vi.mocked(fs.writeFileSync).mockImplementation((path, data) => {
@@ -210,7 +210,7 @@ describe('Sample Components Documentation Validation', () => {
     expect(componentIds).toContain('divider');
   });
 
-  it('should correctly handle components without JSDoc comments', () => {
+  test('should correctly handle components without JSDoc comments', () => {
     // Test with a mixture of documented and undocumented components
     const mixedComponents: ComponentDocumentation[] = [
       sampleComponents[0] as ComponentDocumentation, // Button with comment

@@ -10,6 +10,7 @@ import type {
   JSDocTag,
 } from 'build-utils/mcp/types';
 import * as fs from 'fs';
+import { inTestEnvironment } from 'pages/environment.client';
 import * as path from 'path';
 import * as ts from 'typescript';
 
@@ -174,7 +175,7 @@ export function extractJSDocComments(
 
     // This handles test environments where mocks might not properly simulate the AST
     // but we still need to extract comments from the test mock content
-    if (process.env.NODE_ENV === 'test' || comments.length === 0) {
+    if (inTestEnvironment || comments.length === 0) {
       // Look for JSDoc comment patterns
       const jsDocPattern = /\/\*\*([\s\S]*?)\*\//g;
       let match;

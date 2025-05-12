@@ -99,7 +99,7 @@ describe('Components listing endpoint', () => {
     vi.clearAllMocks();
   });
 
-  it('should return 405 for non-GET requests', () => {
+  test('should return 405 for non-GET requests', () => {
     mockReq.method = 'POST';
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(405);
@@ -112,7 +112,7 @@ describe('Components listing endpoint', () => {
     );
   });
 
-  it('should return 404 if components index file does not exist', () => {
+  test('should return 404 if components index file does not exist', () => {
     vi.mocked(fs.existsSync).mockReturnValue(false);
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(404);
@@ -125,7 +125,7 @@ describe('Components listing endpoint', () => {
     );
   });
 
-  it('should return all components when no filters are applied', () => {
+  test('should return all components when no filters are applied', () => {
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
     expect(mockRes.json).toHaveBeenCalledWith({
@@ -138,7 +138,7 @@ describe('Components listing endpoint', () => {
     });
   });
 
-  it('should filter components by category', () => {
+  test('should filter components by category', () => {
     mockReq.query = { category: 'inputs' };
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
@@ -155,7 +155,7 @@ describe('Components listing endpoint', () => {
     });
   });
 
-  it('should filter components by tag', () => {
+  test('should filter components by tag', () => {
     mockReq.query = { tag: 'container' };
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
@@ -169,7 +169,7 @@ describe('Components listing endpoint', () => {
     });
   });
 
-  it('should apply pagination correctly', () => {
+  test('should apply pagination correctly', () => {
     mockReq.query = { limit: '1', offset: '1' };
     handler(mockReq, mockRes as unknown as NextApiResponse);
     expect(mockRes.status).toHaveBeenCalledWith(200);
@@ -184,7 +184,7 @@ describe('Components listing endpoint', () => {
     });
   });
 
-  it('should handle errors gracefully', () => {
+  test('should handle errors gracefully', () => {
     vi.mocked(fs.readFileSync).mockImplementation(() => {
       throw new Error('Test error');
     });
