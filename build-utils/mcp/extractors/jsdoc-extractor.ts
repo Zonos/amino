@@ -269,7 +269,8 @@ function enhanceComponentExamples(
 
       allFiles = Array.from(dirEntries)
         .map(entry => {
-          const fileName = typeof entry === 'string' ? entry : entry.name;
+          const fileName =
+            typeof entry === 'string' ? entry : (entry as fs.Dirent).name;
 
           // Check if the file is a relevant TypeScript file
           if (
@@ -406,7 +407,8 @@ export function extractComponentDocumentation(
       // Process the entries which could be either strings or Dirent objects
       allFiles = Array.from(files)
         .filter(file => {
-          const fileName = typeof file === 'string' ? file : file.name;
+          const fileName =
+            typeof file === 'string' ? file : (file as fs.Dirent).name;
           return (
             (fileName.endsWith('.tsx') || fileName.endsWith('.ts')) &&
             !fileName.endsWith('.d.ts') &&
@@ -417,7 +419,8 @@ export function extractComponentDocumentation(
           );
         })
         .map(file => {
-          const fileName = typeof file === 'string' ? file : file.name;
+          const fileName =
+            typeof file === 'string' ? file : (file as fs.Dirent).name;
           return path.join(componentDir, fileName);
         });
     }
@@ -472,7 +475,12 @@ export function extractComponentDocumentation(
       // Check all existing tags to avoid duplicates
       for (const comment of comments) {
         for (const tag of comment.tags) {
-          if (tag.name === 'example') {
+          if (
+            tag &&
+            typeof tag === 'object' &&
+            'name' in tag &&
+            tag.name === 'example'
+          ) {
             if (tag.text.includes('Index Button')) hasIndexExample = true;
             if (tag.text.includes('Implementation Button'))
               hasImplExample1 = true;
@@ -533,13 +541,21 @@ export function extractComponentDocumentation(
         // Find comments with @component tag or component mention
         const componentComments = fileComments.filter(comment => {
           const hasComponentTag = comment.tags.some(
-            tag => tag.name === 'component',
+            tag =>
+              tag &&
+              typeof tag === 'object' &&
+              'name' in tag &&
+              tag.name === 'component',
           );
           const mentionsComponent = comment.description
             .toLowerCase()
             .includes('component');
           const hasExampleTags = comment.tags.some(
-            tag => tag.name === 'example',
+            tag =>
+              tag &&
+              typeof tag === 'object' &&
+              'name' in tag &&
+              tag.name === 'example',
           );
           return hasComponentTag || mentionsComponent || hasExampleTags;
         });
@@ -656,4 +672,77 @@ export function extractComponentDocumentation(
     );
     return null;
   }
+}
+
+/**
+ * Extracts documentation for all components in the specified directories
+ * @param options Extraction options including component directories to scan
+ * @returns Array of component documentation objects
+ */
+export function extractAllComponentsDocumentation(
+  options: JSDocExtractorOptions,
+): ComponentDocumentation[] {
+  const { componentDirs, verbose = false } = options;
+  const result: ComponentDocumentation[] = [];
+
+  // Process each component directory
+  for (const baseDir of componentDirs) {
+    if (!fs.existsSync(baseDir)) {
+      if (verbose) {
+        console.warn(`Component directory not found: ${baseDir}`);
+      }
+      continue;
+    }
+
+    try {
+      // Read all subdirectories in the component directory
+      const entries = fs.readdirSync(baseDir, { withFileTypes: true });
+      const componentSubDirs = entries
+        .filter(entry => entry.isDirectory())
+        .filter(entry => {
+          const dirName = entry.name;
+          // Skip directories that start with . or _ or are test/stories directories
+          return (
+            !dirName.startsWith('.') &&
+            !dirName.startsWith('_') &&
+            dirName !== '__tests__' &&
+            dirName !== '__stories__' &&
+            dirName !== 'node_modules'
+          );
+        })
+        .map(entry => path.join(baseDir, entry.name));
+
+      if (verbose) {
+        console.log(
+          `Found ${componentSubDirs.length} potential component directories in ${baseDir}`,
+        );
+      }
+
+      // Extract documentation for each component directory
+      for (const componentDir of componentSubDirs) {
+        const componentDoc = extractComponentDocumentation(
+          componentDir,
+          options,
+        );
+        if (componentDoc) {
+          result.push(componentDoc);
+          if (verbose) {
+            console.log(
+              `Extracted documentation for component: ${componentDoc.name}`,
+            );
+          }
+        }
+      }
+    } catch (error) {
+      console.error(`Error processing component directory ${baseDir}:`, error);
+    }
+  }
+
+  if (verbose) {
+    console.log(
+      `Extracted documentation for ${result.length} components total`,
+    );
+  }
+
+  return result;
 }

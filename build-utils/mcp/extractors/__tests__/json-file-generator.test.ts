@@ -122,5 +122,82 @@ describe('json-file-generator', () => {
       // Verify no warning was logged
       expect(consoleWarnSpy).not.toHaveBeenCalled();
     });
+
+    it('should handle empty text in example tags', () => {
+      const tags = [{ name: 'example', text: '' }];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).toHaveBeenCalledWith('Empty example tag found');
+    });
+
+    it('should handle JSX without a title', () => {
+      const tags = [{ name: 'example', text: '<Component />' }];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+    });
+
+    it('should handle JSX in the first line of a multiline example', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: '<Component>\n  <ChildComponent />\n</Component>',
+        },
+      ];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+    });
+
+    it('should handle title and JSX on the same line', () => {
+      const tags = [{ name: 'example', text: 'Basic usage <Component />' }];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+    });
+
+    it('should handle markdown code blocks without language specifier', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```\n<Component />\n```',
+        },
+      ];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+    });
+
+    it('should handle incomplete markdown code blocks', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```tsx\n<Component />\n',
+        },
+      ];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+    });
+
+    it('should handle malformed markdown code blocks', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```tsx\n<Component \n```',
+        },
+      ];
+
+      const result = processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+    });
   });
 });

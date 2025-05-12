@@ -542,4 +542,266 @@ describe('JSON File Generator', () => {
       consoleErrorSpy.mockRestore();
     });
   });
+
+  describe('processExampleTags', () => {
+    // Spy on console.warn for the warning test
+    let consoleWarnSpy: ReturnType<typeof vi.spyOn>;
+
+    beforeEach(() => {
+      // Create a fresh spy for each test to ensure it works properly
+      consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      // Clean up the spy after each test
+      consoleWarnSpy.mockRestore();
+    });
+
+    it('should handle empty text in example tags', () => {
+      const tags = [{ name: 'example', text: '' }];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).toHaveBeenCalledWith('Empty example tag found');
+    });
+
+    it('should preserve example tags with code blocks', () => {
+      // Simulate tags with example code blocks (title and code)
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```tsx\n<CountryMultiSelect\n  countryOptions={countryOptions}\n  onChange={setSelectedCountries}\n  unavailableCountries={[]}\n  value={selectedCountries}\n/>\n```',
+        },
+        {
+          name: 'param',
+          text: 'countryOptions Array of country options to display',
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      // Verify the example tag is preserved with its full content
+      expect(result[0]).toEqual({
+        name: 'example',
+        text: 'Basic usage\n```tsx\n<CountryMultiSelect\n  countryOptions={countryOptions}\n  onChange={setSelectedCountries}\n  unavailableCountries={[]}\n  value={selectedCountries}\n/>\n```',
+      });
+
+      // Verify non-example tags are unchanged
+      expect(result[1]).toEqual({
+        name: 'param',
+        text: 'countryOptions Array of country options to display',
+      });
+
+      // Verify no warning was logged
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should warn about example tags without code blocks', () => {
+      // Simulate a tag with only a title but no code block
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage',
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      // Verify the tag is returned as is
+      expect(result[0]).toEqual({
+        name: 'example',
+        text: 'Basic usage',
+      });
+
+      // Verify a warning was logged
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        'Example tag missing code block: "Basic usage"',
+      );
+    });
+
+    it('should handle JSX without a title', () => {
+      const tags = [{ name: 'example', text: '<Component />' }];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should handle JSX in the first line of a multiline example', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: '<Component>\n  <ChildComponent />\n</Component>',
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should handle title and JSX on the same line', () => {
+      const tags = [{ name: 'example', text: 'Basic usage <Component />' }];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should handle markdown code blocks without language specifier', () => {
+      const tags = [
+        { name: 'example', text: 'Basic usage\n```\n<Component />\n```' },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should warn about markdown code blocks with missing JSX content', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```tsx\nThis is just text with no JSX\n```',
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      expect(consoleWarnSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Markdown code block missing JSX content'),
+      );
+    });
+
+    it('should handle incomplete markdown code blocks', () => {
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```tsx\n<Component />', // missing closing ```
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      expect(result).toEqual(tags);
+      // Should warn about missing code block since markdownMatch will be null
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should preserve multiple example tags with code blocks', () => {
+      // Simulate multiple example tags with code blocks
+      const tags = [
+        {
+          name: 'example',
+          text: 'Basic usage\n```tsx\n<Component />\n```',
+        },
+        {
+          name: 'example',
+          text: 'Advanced usage\n```tsx\n<Component prop="value" />\n```',
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      // Verify all example tags are preserved with their full content
+      expect(result).toEqual(tags);
+
+      // Verify no warning was logged
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should not modify non-example tags', () => {
+      // Simulate various non-example tags
+      const tags = [
+        {
+          name: 'param',
+          text: 'options The select options',
+        },
+        {
+          name: 'returns',
+          text: 'The selected value',
+        },
+      ];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      // Verify all tags are unchanged
+      expect(result).toEqual(tags);
+
+      // Verify no warning was logged
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+
+    it('should handle an empty array of tags', () => {
+      const tags: Array<{ name: string; text: string }> = [];
+
+      const result = jsonFileGenerator.processExampleTags(tags);
+
+      // Verify an empty array is returned
+      expect(result).toEqual([]);
+
+      // Verify no warning was logged
+      expect(consoleWarnSpy).not.toHaveBeenCalled();
+    });
+  });
+
+  // Test integration between processExampleTags and generateComponentFiles
+  describe('Integration Tests', () => {
+    it('should correctly process example tags through the complete pipeline', () => {
+      const mockComponentDocs: ComponentDocumentation[] = [
+        {
+          comment: {
+            description: 'Test component',
+            location: { endLine: 10, filePath: 'test.ts', startLine: 1 },
+            tags: [
+              {
+                name: 'example',
+                text: 'Basic usage\n```tsx\n<Component />\n```',
+              },
+              { name: 'example', text: 'No title <Component prop="value" />' },
+              { name: 'example', text: '<JustJSX />' },
+            ],
+            text: '/** Test component */',
+          },
+          id: 'test-component',
+          name: 'TestComponent',
+          path: 'src/components/test-component',
+        },
+      ];
+
+      // Mock fs functions
+      vi.mocked(fs.existsSync).mockReturnValue(true);
+
+      jsonFileGenerator.generateComponentFiles(
+        mockComponentDocs,
+        '/output',
+        true,
+      );
+
+      // Get the written data
+      const call = vi.mocked(fs.writeFileSync).mock.calls[0];
+      if (!call) {
+        throw new Error('Expected fs.writeFileSync to be called');
+      }
+
+      // Explicitly cast to string to fix type issues
+      const content = call[1] as string;
+      const written = JSON.parse(content) as {
+        description: string;
+        id: string;
+        name: string;
+        path: string;
+        tags: Array<{ name: string; text: string }>;
+      };
+
+      // Verify all example tags were preserved exactly as provided
+      expect(written.tags).toEqual(mockComponentDocs[0]?.comment?.tags);
+    });
+  });
 });

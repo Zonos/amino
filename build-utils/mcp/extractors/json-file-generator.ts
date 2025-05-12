@@ -103,7 +103,7 @@ export function processExampleTags(
   return tags.map(tag => {
     // We only need to process example tags
     if (tag.name === 'example') {
-      const text = tag.text.trim();
+      const text = tag.text?.trim() || '';
 
       // Check if it's a valid example tag
       if (!text) {
@@ -111,25 +111,60 @@ export function processExampleTags(
         return tag;
       }
 
-      // If it contains JSX-like pattern (looks for < followed by an identifier)
+      // Handle markdown code blocks
+      const markdownCodeBlockRegex = /```(tsx|jsx|js|ts)?\s*([\s\S]*?)```/;
+      const markdownMatch = text.match(markdownCodeBlockRegex);
+
+      if (markdownMatch) {
+        // Extract content from markdown code block for validation only
+        const codeContent = markdownMatch[2]?.trim() || '';
+
+        // Check if the extracted code actually contains JSX
+        const containsJSX = /<[a-zA-Z][a-zA-Z0-9]*/.test(codeContent);
+
+        if (!containsJSX) {
+          console.warn(
+            `Markdown code block missing JSX content: "${codeContent}"`,
+          );
+        }
+
+        // Return original tag to preserve markdown formatting
+        return tag;
+      }
+
+      // Check if it contains JSX-like pattern
       const containsJSX = /<[a-zA-Z][a-zA-Z0-9]*/.test(text);
 
       if (!containsJSX) {
         console.warn(`Example tag missing code block: "${text}"`);
+        return tag;
       }
 
-      // Parse the example to extract title and code when possible
-      // This is a simple approach that could be enhanced later
+      // Parse the example to extract title and code - for validation only
       const lines = text.split('\n');
 
-      // If it's a multiline example, first line might be a title
+      // If it's a multiline example
       if (lines.length > 1) {
-        const firstLine = lines[0].trim();
+        const firstLine = lines[0]?.trim() || '';
         const hasJSXInFirstLine = /<[a-zA-Z][a-zA-Z0-9]*/.test(firstLine);
 
-        // If first line doesn't contain JSX, it might be a title
-        // Future enhancement: could add structured title/code properties
+        // If first line doesn't contain JSX, we consider it properly formatted
+        // with a title in the first line and code in subsequent lines
+        if (!hasJSXInFirstLine) {
+          // Validation passed - return original tag
+          return tag;
+        }
       }
+
+      // Single line example - check if it has a title prefix before JSX
+      const jsxStartIndex = text.indexOf('<');
+      if (jsxStartIndex > 0) {
+        // Has title before JSX code - validation passed
+        return tag;
+      }
+
+      // If we get here, the example is just JSX with no title, which is valid too
+      return tag;
     }
 
     return tag;
