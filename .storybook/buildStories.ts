@@ -26,7 +26,14 @@ type StoryEntry = StorySpecifier & {
 // We don't want to show these folders in the sidebar
 const removedPrefixes = /(components|icons|styles)\//;
 
-// Refactored to avoid named capture groups
+// Regex to match story file paths and extract relevant components.
+// Structure:
+// 1. Matches the base folder path (`../src`) and optionally captures subfolders (e.g., `../src/components`).
+// 2. Captures the `__stories__` folder.
+// 3. Captures the full file name (e.g., `Button.stories.tsx` or `Button.mdx`).
+// 4. Extracts the file name without the extension (e.g., `Button`).
+// 5. Matches the file extension (e.g., `.mdx` or `.stories.tsx`).
+// Named capture groups were avoided for compatibility reasons.
 const pathRegex =
   /(\.\.\/src(?:\/(.*))?\/(?:__stories__))\/((.*)\.(mdx|stories\.tsx))/i;
 
