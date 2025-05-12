@@ -36,4 +36,5 @@ export const Subtle = Template.bind({});
 Subtle.args = {
   align: 'center',
   subtle: true,
+  variant: 'primary',
 };

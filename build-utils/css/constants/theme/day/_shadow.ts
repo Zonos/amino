@@ -23,6 +23,14 @@ export const shadow = {
     '0px 0px 0px 1px var(--amino-orange-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(123, 41, 5, 0.24), 0px 4px 4px -2px rgba(123, 41, 5, 0.12)',
   'shadow-button-warning-focus':
     '0px 0px 0px 1px var(--amino-orange-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(123, 41, 5, 0.24), 0px 4px 4px -2px rgba(123, 41, 5, 0.12)',
+  'shadow-button-purple':
+    '0px 0px 0px 1px var(--amino-purple-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(97, 20, 148, 0.24), 0px 4px 4px -2px rgba(97, 20, 148, 0.12)',
+  'shadow-button-purple-focus':
+    '0px 0px 0px 1px var(--amino-purple-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(97, 20, 148, 0.24), 0px 4px 4px -2px rgba(97, 20, 148, 0.12)',
+  'shadow-button-cyan':
+    '0px 0px 0px 1px var(--amino-cyan-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.00), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(20, 86, 91, 0.24), 0px 4px 4px -2px rgba(20, 86, 91, 0.12)',
+  'shadow-button-cyan-focus':
+    '0px 0px 0px 1px var(--amino-cyan-500), 0px 1px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px 0px 0px 4px rgba(0, 0, 0, 0.12), 0px -1px 0px 0px rgba(255, 255, 255, 0.06) inset, 0px 2px 2px -1px rgba(20, 86, 91, 0.24), 0px 4px 4px -2px rgba(20, 86, 91, 0.12)',
   'button-focus-ring': '0 0 0 2px var(--amino-blue-500)',
   'shadow-raised-standard':
     '0px 1px 1px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 2px -1px rgba(0, 0, 0, 0.08), 0px 4px 4px -2px rgba(0, 0, 0, 0.08), 0px 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px 4px rgba(0, 0, 0, 0.00)',

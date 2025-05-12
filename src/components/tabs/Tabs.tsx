@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
+import type { Variant } from 'src/types/Variant';
 
 import styles from './Tabs.module.scss';
 
@@ -21,6 +23,11 @@ export type TabsProps = BaseProps & {
    * @default false
    */
   subtle?: boolean;
+  /**
+   * Variant style for the tabs
+   * @default 'standard'
+   */
+  variant?: Variant;
 };
 
 export const Tabs = ({
@@ -31,12 +38,36 @@ export const Tabs = ({
   selected,
   style,
   subtle = false,
+  variant = 'standard',
 }: TabsProps) => {
+  const getTabColor = () => {
+    switch (variant) {
+      case 'primary':
+        return theme.blue600;
+      case 'success':
+        return theme.green600;
+      case 'warning':
+        return theme.orange600;
+      case 'danger':
+        return theme.red600;
+      case 'cyan':
+        return theme.cyan600;
+      case 'purple':
+        return theme.purple600;
+      default:
+        return theme.blue600;
+    }
+  };
+
   if (subtle) {
     return (
       <div
         className={clsx(className, styles.baseTabs, styles.subtleTabs)}
-        style={{ ...style, '--amino-tabs-align': align }}
+        style={{
+          ...style,
+          '--amino-tabs-align': align,
+          '--amino-tabs-color': getTabColor(),
+        }}
       >
         {items.map(item => (
           <button
@@ -63,7 +94,10 @@ export const Tabs = ({
   return (
     <div
       className={clsx(className, styles.baseTabs, styles.aminoTabs)}
-      style={style}
+      style={{
+        ...style,
+        '--amino-tabs-color': getTabColor(),
+      }}
     >
       {items.map(item => (
         <button

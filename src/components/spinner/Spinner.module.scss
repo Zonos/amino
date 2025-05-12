@@ -73,6 +73,18 @@ $width: var(--amino-spinner-width);
       stroke: theme.$amino-orange-100;
     }
   }
+  &.purple {
+    stroke: theme.$amino-purple-600;
+    circle.track {
+      stroke: theme.$amino-purple-100;
+    }
+  }
+  &.cyan {
+    stroke: theme.$amino-cyan-600;
+    circle.track {
+      stroke: theme.$amino-cyan-100;
+    }
+  }
 
   @keyframes rotate {
     100% {
