@@ -9,4 +9,8 @@ export const hover = {
     'linear-gradient(180deg, var(--amino-orange-500) 0%, var(--amino-orange-600) 100%)',
   'button-standard-hover':
     'linear-gradient(180deg, var(--amino-gray-0) 0%, var(--amino-gray-50) 100%)',
+  'button-cyan-hover':
+    'linear-gradient(180deg, var(--amino-cyan-500) 0%, var(--amino-cyan-600) 100%)',
+  'button-purple-hover':
+    'linear-gradient(180deg, var(--amino-purple-500) 0%, var(--amino-purple-600) 100%)',
 } as const;

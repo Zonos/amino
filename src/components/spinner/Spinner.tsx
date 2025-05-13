@@ -12,7 +12,9 @@ export type SpinnerColor =
   | 'warning'
   | 'inverted'
   | 'black'
-  | 'white';
+  | 'white'
+  | 'purple'
+  | 'cyan';
 
 export type SpinnerProps = BaseProps & {
   /**

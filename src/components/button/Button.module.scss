@@ -413,6 +413,119 @@ $text-button-disabled-color: var(--amino-button-text-button-disabled-color);
     }
   }
 
+  &.purpleButton {
+    box-shadow: theme.$amino-shadow-button-purple;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+
+    svg path:not([data-is-secondary-color]) {
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
+    }
+
+    [data-theme='night'] & {
+      color: theme.$amino-text-color;
+    }
+
+    &:not([disabled]) {
+      &:active {
+        background: theme.$amino-purple-600;
+      }
+      &:focus {
+        box-shadow: theme.$amino-shadow-button-purple-focus;
+      }
+    }
+    &[disabled] {
+      background: theme.$amino-gray-500;
+      box-shadow: theme.$amino-shadow-button-disabled;
+    }
+    & .spinnerWrapper {
+      background: theme.$amino-purple;
+    }
+
+    &.outline {
+      color: theme.$amino-purple-600;
+      box-shadow: 0px 0px 0px 1px theme.$amino-purple-600;
+      background: transparent;
+      text-shadow: none;
+
+      svg path:not([data-is-secondary-color]) {
+        filter: none;
+      }
+
+      &:not([disabled]) {
+        &:hover {
+          background-color: theme.$amino-purple-50;
+          background-image: unset;
+        }
+        &:active {
+          background: theme.$amino-purple-100;
+        }
+      }
+      &[disabled] {
+        background: transparent;
+        box-shadow: 0px 0px 0px 1px theme.$amino-orange-600 inset;
+      }
+      & .spinnerWrapper {
+        background: transparent;
+      }
+    }
+  }
+
+  &.cyanButton {
+    box-shadow: theme.$amino-shadow-button-cyan;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+
+    svg path:not([data-is-secondary-color]) {
+      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
+    }
+
+    [data-theme='night'] & {
+      color: theme.$amino-text-color;
+    }
+
+    &:not([disabled]) {
+      &:active {
+        background: theme.$amino-cyan-600;
+      }
+      &:focus {
+        box-shadow: theme.$amino-shadow-button-cyan-focus;
+      }
+    }
+    &[disabled] {
+      background: theme.$amino-gray-500;
+      box-shadow: theme.$amino-shadow-button-disabled;
+    }
+    & .spinnerWrapper {
+      background: theme.$amino-cyan;
+    }
+
+    &.outline {
+      color: theme.$amino-cyan-600;
+      box-shadow: 0px 0px 0px 1px theme.$amino-cyan-600;
+      background: transparent;
+      text-shadow: none;
+
+      svg path:not([data-is-secondary-color]) {
+        filter: none;
+      }
+      &:not([disabled]) {
+        &:hover {
+          background-color: theme.$amino-cyan-50;
+          background-image: unset;
+        }
+        &:active {
+          background: theme.$amino-cyan-100;
+        }
+      }
+      &[disabled] {
+        background: transparent;
+        box-shadow: 0px 0px 0px 1px theme.$amino-cyan-600 inset;
+      }
+      & .spinnerWrapper {
+        background: transparent;
+      }
+    }
+  }
+
   &.subtleButton {
     &:not([disabled]) {
       &:hover {

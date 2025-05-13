@@ -71,21 +71,24 @@ export const getProductDetails = ({
     case 'checkout':
       return {
         color: 'orange',
-        gradient: 'linear-gradient(90deg, #E7910A 42.48%, #DF2B76 109.98%)',
+        gradient:
+          'linear-gradient(90deg, oklch(78.04% 0.185585 53.79) 42.48%, oklch(61.9% 0.259032 22.56) 109.98%)',
         icon: <CheckoutColorIcon size={iconSize} />,
         name: 'Checkout',
       };
     case 'classify':
       return {
         color: 'purple',
-        gradient: 'linear-gradient(301.28deg, #AA2DC9 23.74%, #7278F2 95.06%)',
+        gradient:
+          'linear-gradient(301.28deg, oklch(62% 0.294753 308.42) 23.74%, oklch(65.79% 0.196783 273.36) 95.06%)',
         icon: <ClassifyColorIcon size={iconSize} />,
         name: 'Classify',
       };
     case 'clear':
       return {
         color: 'cyan',
-        gradient: 'linear-gradient(223.42deg, #00B9B7 50.32%, #3122F6 135.88%)',
+        gradient:
+          'linear-gradient(223.42deg, oklch(72.09% 0.152819 193.32) 50.32%, oklch(61.99% 0.225762 249.87) 135.88%)',
         icon: <ClearColorIcon size={iconSize} />,
         name: 'Clear',
       };
@@ -100,70 +103,80 @@ export const getProductDetails = ({
     case 'hello':
       return {
         color: 'green',
-        gradient: 'linear-gradient(314.52deg, #80B917 36.5%, #0CC4E2 86.53%)',
+        gradient:
+          'linear-gradient(314.52deg, oklch(63.9% 0.207847 152.94) 36.5%, oklch(78.02% 0.141797 235.32) 86.53%)',
         icon: <HelloColorIcon size={iconSize} />,
         name: 'Hello',
       };
     case 'inclusive-pricing':
       return {
         color: 'purple',
-        gradient: 'linear-gradient(180deg, #C8286B 43.87%, #AA2EC9 77.46%)',
+        gradient:
+          'linear-gradient(180deg, oklch(61.9% 0.259032 22.56) 43.87%, oklch(62.09% 0.294574 308.55) 77.46%)',
         icon: <InclusivePricingColorIcon size={iconSize} />,
         name: 'Inclusive Pricing',
       };
     case 'landed-cost':
       return {
         color: 'red',
-        gradient: 'linear-gradient(41.91deg, #DF2B76 31.62%, #FFB90D 83.63%)',
+        gradient:
+          'linear-gradient(41.91deg, oklch(61.9% 0.259032 22.56) 31.62%, oklch(78.04% 0.185585 53.79) 42.48% 83.63%)',
         icon: <LandedCostColorIcon size={iconSize} />,
         name: 'Landed Cost',
       };
     case 'rate':
       return {
         color: 'blue',
-        gradient: 'linear-gradient(269.86deg, #2740F3 -11.3%, #AA2DC9 168.06%)',
+        gradient:
+          'linear-gradient(269.86deg, oklch(55% 0.265803 266) -11.3%, oklch(62.09% 0.294574 308.55) 168.06%)',
         icon: <RateColorIcon size={iconSize} />,
         name: 'Rate',
       };
     case 'restrict':
       return {
         color: 'blue',
-        gradient: 'linear-gradient(49.93deg, #9297FA 41.5%, #3122F9 113.97%)',
+        gradient:
+          'linear-gradient(49.93deg, oklch(62.09% 0.294574 308.55) 41.5%, oklch(46.92% 0.206293 258.12) 113.97%)',
         icon: <RestrictColorIcon size={iconSize} />,
         name: 'Restrict',
       };
     case 'screen':
       return {
         color: 'green',
-        gradient: 'linear-gradient(180deg, #80BC17 -16.78%, #FFD900 80.83%)',
+        gradient:
+          'linear-gradient(180deg, oklch(74.91% 0.235738 134.99) -16.78%, oklch(89.16% 0.211835 95.47) 80.83%)',
         icon: <ScreenColorIcon size={iconSize} />,
         name: 'Screen',
       };
     case 'prepay':
       return {
         color: 'blue',
-        gradient: 'linear-gradient(270deg, #4560EE 32.33%, #65E4EF 126.81%)',
+        gradient:
+          'linear-gradient(270deg, oklch(61.99% 0.225762 249.87) 32.33%, oklch(78.97% 0.14171 192.42) 126.81%)',
         icon: <PrepayColorIcon size={iconSize} />,
         name: 'Prepay',
       };
     case 'collect':
       return {
         color: 'red',
-        gradient: 'linear-gradient(135deg, #DC2A54 46.38%, #D078FC 78.57%)',
+        gradient:
+          'linear-gradient(135deg, oklch(61.9% 0.259032 22.56) 46.38%, oklch(62.09% 0.294574 308.55) 78.57%)',
         icon: <CollectColorIcon size={iconSize} />,
         name: 'Collect',
       };
     case 'tax':
       return {
         color: 'green',
-        gradient: 'linear-gradient(126.15deg, #10A74C 42.95%, #93F317 76.49%)',
+        gradient:
+          'linear-gradient(126.15deg, oklch(63.9% 0.207847 152.94) 42.95%, oklch(75% 0.236934 135.13) 76.49%)',
         icon: <TaxColorIcon size={iconSize} />,
         name: 'Tax',
       };
     case 'counter-companion':
       return {
         color: 'purple',
-        gradient: 'linear-gradient(180deg, #880DC2 36.69%, #F229F7 76.94%)',
+        gradient:
+          'linear-gradient(180deg, oklch(54% 0.26576 307.14) 36.69%, oklch(70.86% 0.33372 330.47) 76.94%)',
         icon: <CounterCompanionColorIcon size={iconSize} />,
         name: 'Counter Companion',
       };
