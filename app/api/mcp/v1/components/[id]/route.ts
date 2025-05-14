@@ -10,17 +10,18 @@ import type {
 } from 'app/api/mcp/v1/types';
 import { inProdEnvironment } from 'app/environment';
 import * as fs from 'fs';
+import type { NextRequest } from 'next/server';
 import * as path from 'path';
 
 /**
  * Handler for the component detail endpoint
  */
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } },
+  request: NextRequest,
+  context: { params: { id: string } },
 ): Promise<Response> {
   try {
-    const { id } = params;
+    const { id } = context.params;
 
     if (!id) {
       return Response.json(
