@@ -7,7 +7,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "lib": ["es2015", "es2016", "es2017", "dom"],
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -25,12 +25,17 @@
       "story-utils/*": ["./.storybook/utils/*"]
     },
     "plugins": [
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
     ],
     "esModuleInterop": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "incremental": true
   },
   "ts-node": {
     "transpileOnly": true,
@@ -69,5 +74,6 @@
     "postcss.config.mts",
     "eslint.config.mjs",
     "babel.config.js"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
