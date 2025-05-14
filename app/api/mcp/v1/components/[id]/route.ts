@@ -18,11 +18,10 @@ import * as path from 'path';
  */
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ): Promise<Response> {
   try {
-    const { id } = context.params;
-
+    const { id } = await params;
     if (!id) {
       return Response.json(
         {
