@@ -1,6 +1,7 @@
 @use 'theme';
 
 $align: var(--amino-tabs-align);
+$amino-tab-color: var(--amino-tabs-color);
 
 .baseTabs {
   display: flex;
@@ -41,10 +42,10 @@ $align: var(--amino-tabs-align);
 
   &.isSelected,
   &.isSelected > span {
-    color: theme.$amino-blue-600;
+    color: $amino-tab-color;
 
     &::after {
-      background-color: theme.$amino-blue-600;
+      background-color: $amino-tab-color;
       transform: scaleX(1);
     }
   }

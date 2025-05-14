@@ -26,6 +26,8 @@ export const variablesUsingColors = {
   'success-dark': 'var(--amino-green-700)',
   warning: 'var(--amino-orange-500)',
   'warning-dark': 'var(--amino-orange-600)',
+  purple: 'var(--amino-purple-500)',
+  cyan: 'var(--amino-cyan-500)',
 
   /* GLOW COLOR */
   'glow-error': '0 0 0 1px var(--amino-red-500)',

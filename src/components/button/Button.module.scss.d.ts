@@ -1,6 +1,7 @@
 export declare const aminoButton: string;
 export declare const aminoSpinner: string;
 export declare const content: string;
+export declare const cyanButton: string;
 export declare const dangerButton: string;
 export declare const hasIcon: string;
 export declare const iconRight: string;
@@ -11,6 +12,7 @@ export declare const loading: string;
 export declare const onlyIcon: string;
 export declare const outline: string;
 export declare const primaryButton: string;
+export declare const purpleButton: string;
 export declare const spinnerWrapper: string;
 export declare const standardButton: string;
 export declare const subtleButton: string;

@@ -225,6 +225,18 @@ WarningOutline.args = {
   variant: 'warning',
 };
 
+export const Purple = Template.bind({});
+Purple.args = {
+  children: 'Example button',
+  variant: 'purple',
+};
+
+export const Cyan = Template.bind({});
+Cyan.args = {
+  children: 'Example button',
+  variant: 'cyan',
+};
+
 export const LinkButton = Template.bind({});
 LinkButton.args = {
   children: 'Link button',
@@ -274,6 +286,28 @@ export const InlineLinkButtonStory: StoryFn<ButtonProps> = () => (
       Look at
       <Button href="#" iconRight tag="a" variant="inlineLink">
         this link
+      </Button>
+      in a sentence
+    </Text>
+
+    <Text>
+      Look at this colored inline link:
+      <Button
+        color="purple600"
+        href="#"
+        icon={<ArrowRightIcon />}
+        iconRight
+        tag="a"
+        variant="inlineLink"
+      >
+        Learn more
+      </Button>
+    </Text>
+
+    <Text>
+      Look at
+      <Button color="purple600" href="#" iconRight tag="a" variant="inlineLink">
+        this colored link
       </Button>
       in a sentence
     </Text>

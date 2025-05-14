@@ -9,4 +9,6 @@ export type Variant =
   | 'subtle'
   | 'success'
   | 'text'
-  | 'warning';
+  | 'warning'
+  | 'purple'
+  | 'cyan';

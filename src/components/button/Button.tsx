@@ -1,3 +1,4 @@
+import type React from 'react';
 import {
   type ComponentPropsWithoutRef,
   type HTMLAttributes,
@@ -35,6 +36,7 @@ type ButtonBase = BaseProps & {
   disabled?: boolean;
   fitContentWidth?: boolean;
   hoverBackground?: Color | 'inherit';
+  hoverColor?: Color | 'inherit';
   icon?: ReactNode;
   iconRight?: boolean;
   /** @default false */
@@ -142,6 +144,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   /** Makes the button width fit its content */
   fitContentWidth,
   hoverBackground,
+  hoverColor,
   /** Icon to display in the button */
   icon,
   /** Whether to show the icon on the right side */
@@ -318,6 +321,16 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           return 'danger';
         }
         return 'white';
+      case 'purple':
+        if (outline) {
+          return 'purple';
+        }
+        return 'white';
+      case 'cyan':
+        if (outline) {
+          return 'cyan';
+        }
+        return 'white';
       case 'inverted':
         return 'white';
       case 'link':
@@ -341,6 +354,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'success':
       case 'warning':
       case 'danger':
+      case 'cyan':
+      case 'purple':
       case 'inverted':
         return theme.gray0;
       case 'link':
@@ -370,6 +385,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.buttonWarningHover;
       case 'danger':
         return theme.buttonDangerHover;
+      case 'cyan':
+        return theme.buttonCyanHover;
+      case 'purple':
+        return theme.buttonPurpleHover;
       case 'standard':
         return theme.buttonStandardHover;
       case 'subtle':
@@ -398,6 +417,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.warning;
       case 'danger':
         return theme.danger;
+      case 'cyan':
+        return theme.cyan;
+      case 'purple':
+        return theme.purple;
       case 'inverted':
         return theme.gray0;
       case 'standard':
@@ -408,6 +431,14 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       default:
         return '';
     }
+  };
+
+  // For inlineLink variant with custom color, we need to handle hover color specially
+  const getInlineLinkHoverColor = () => {
+    if (variant === 'inlineLink' && color) {
+      return getAminoColor(color) || theme.blue500;
+    }
+    return props.href ? theme.blue500 : theme.gray500;
   };
 
   return (
@@ -430,9 +461,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         '--amino-button-text-button-disabled-color': props.href
           ? theme.blue300
           : theme.gray300,
-        '--amino-button-text-button-hover-color': props.href
-          ? theme.blue500
-          : theme.gray500,
+        '--amino-button-text-button-hover-color': getInlineLinkHoverColor(),
         '--amino-button-width': fitContentWidth ? 'fit-content' : 'auto',
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
