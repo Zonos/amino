@@ -28,9 +28,9 @@ describe('Component detail endpoint', () => {
   let mockJsonResponse: ReturnType<typeof vi.fn>;
   let handler: (
     request: NextRequest,
-    context: { params: { id: string } },
+    { params }: { params: Promise<{ id: string }> },
   ) => Promise<Response>;
-  let mockParams: { params: { id: string } };
+  let mockParams: { params: Promise<{ id: string }> };
 
   // Mock component data
   const mockComponentData = {
@@ -79,7 +79,7 @@ describe('Component detail endpoint', () => {
     );
 
     // Create params with component ID
-    mockParams = { params: { id: 'button' } };
+    mockParams = { params: Promise.resolve({ id: 'button' }) };
 
     // Mock Response.json
     mockJsonResponse = vi.fn();
@@ -101,7 +101,7 @@ describe('Component detail endpoint', () => {
 
   test('should return 400 if component ID is missing or invalid', async () => {
     // Test with empty ID
-    mockParams = { params: { id: '' } };
+    mockParams = { params: Promise.resolve({ id: '' }) };
     await handler(mockRequest, mockParams);
 
     expect(mockJsonResponse).toHaveBeenCalledWith(
