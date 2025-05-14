@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 import { createEnv } from '@t3-oss/env-core';
+import { parseBooleanEnv } from 'app/parseBooleanEnv';
 import { z } from 'zod';
-
-import { parseBooleanEnv } from './parseBooleanEnv';
 
 // Environment condition checks
 export const inProdEnvironment = process.env.NODE_ENV === 'production';

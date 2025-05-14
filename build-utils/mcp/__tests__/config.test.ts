@@ -2,44 +2,29 @@
  * MCP Configuration Tests
  */
 
-import type { Mock } from 'vitest';
+import type * as fs from 'fs';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
-// Mock fs module first - before any imports
-vi.mock('fs', () => ({
-  default: {
-    existsSync: vi.fn(),
-    readFileSync: vi.fn(),
-  },
-}));
+// Mock fs module
+const mockFs = {
+  existsSync: vi.fn(),
+  readFileSync: vi.fn(),
+};
 
-// Create a writable mock of the mcpBuildEnv
-const mockMcpBuildEnv = {
+// Mock the environment variables
+const mockEnv = {
   MCP_COMPONENT_DIRS: undefined as string | undefined,
   MCP_INCLUDE_PRIVATE: undefined as boolean | undefined,
-  MCP_LOG_CONSOLE: undefined as boolean | undefined,
-  MCP_LOG_FILE: undefined as string | undefined,
-  MCP_LOG_LEVEL: undefined as 'ERROR' | 'WARN' | 'INFO' | 'DEBUG' | undefined,
   MCP_OUTPUT_DIR: undefined as string | undefined,
   MCP_VERBOSE: undefined as boolean | undefined,
 };
 
-// Mock the environment.client module before it's imported
-vi.mock('../../../pages/environment.client', () => ({
-  // Return a getter-based implementation that proxies to our mutable mock object
-  get mcpBuildEnv() {
-    return mockMcpBuildEnv;
-  },
-}));
-
-// Now import the mocked modules
-// Import the modules under test after all mocks are set up
+// Import the modules under test
 import {
   DEFAULT_CONFIG,
   loadConfiguration,
   validateConfiguration,
 } from 'build-utils/mcp/config';
-import fs from 'fs';
 
 // Store the original console.warn
 const originalConsoleWarn = console.warn;
@@ -58,8 +43,8 @@ describe('MCP Configuration', () => {
     process.env = { ...originalEnv };
 
     // Reset the mocked environment values
-    Object.keys(mockMcpBuildEnv).forEach(key => {
-      mockMcpBuildEnv[key as keyof typeof mockMcpBuildEnv] = undefined;
+    Object.keys(mockEnv).forEach(key => {
+      mockEnv[key as keyof typeof mockEnv] = undefined;
     });
   });
 
@@ -72,9 +57,9 @@ describe('MCP Configuration', () => {
   describe('loadConfiguration', () => {
     test('should return default config when no config file or env vars exist', () => {
       // Mock file does not exist
-      (fs.existsSync as Mock).mockReturnValue(false);
+      mockFs.existsSync.mockReturnValue(false);
 
-      const config = loadConfiguration();
+      const config = loadConfiguration(mockFs as unknown as typeof fs, mockEnv);
       expect(config).toEqual(DEFAULT_CONFIG);
     });
 
@@ -87,17 +72,15 @@ describe('MCP Configuration', () => {
       };
 
       // Mock file existence and content
-      (fs.existsSync as Mock).mockReturnValue(true);
-      (fs.readFileSync as Mock).mockReturnValue(
-        JSON.stringify(customFileConfig),
-      );
+      mockFs.existsSync.mockReturnValue(true);
+      mockFs.readFileSync.mockReturnValue(JSON.stringify(customFileConfig));
 
       // Execute the function
-      const config = loadConfiguration();
+      const config = loadConfiguration(mockFs as unknown as typeof fs, mockEnv);
 
       // Verify that the fs functions were called correctly
-      expect(fs.existsSync).toHaveBeenCalled();
-      expect(fs.readFileSync).toHaveBeenCalled();
+      expect(mockFs.existsSync).toHaveBeenCalled();
+      expect(mockFs.readFileSync).toHaveBeenCalled();
 
       // Expected config should merge the custom properties with defaults
       expect(config).toMatchObject({
@@ -107,14 +90,14 @@ describe('MCP Configuration', () => {
 
     test('should load configuration from environment variables', () => {
       // Mock file does not exist
-      (fs.existsSync as Mock).mockReturnValue(false);
+      mockFs.existsSync.mockReturnValue(false);
 
       // Setup environment variables in the mock
-      mockMcpBuildEnv.MCP_VERBOSE = true;
-      mockMcpBuildEnv.MCP_OUTPUT_DIR = 'env-output';
-      mockMcpBuildEnv.MCP_COMPONENT_DIRS = '["src/env-components"]';
+      mockEnv.MCP_VERBOSE = true;
+      mockEnv.MCP_OUTPUT_DIR = 'env-output';
+      mockEnv.MCP_COMPONENT_DIRS = '["src/env-components"]';
 
-      const config = loadConfiguration();
+      const config = loadConfiguration(mockFs as unknown as typeof fs, mockEnv);
       expect(config).toMatchObject({
         componentDirs: ['src/env-components'],
         outputDir: 'env-output',
@@ -124,12 +107,12 @@ describe('MCP Configuration', () => {
 
     test('should handle non-JSON array in COMPONENT_DIRS env var', () => {
       // Mock file does not exist
-      (fs.existsSync as Mock).mockReturnValue(false);
+      mockFs.existsSync.mockReturnValue(false);
 
       // Setup environment with a non-JSON string
-      mockMcpBuildEnv.MCP_COMPONENT_DIRS = 'src/single-dir';
+      mockEnv.MCP_COMPONENT_DIRS = 'src/single-dir';
 
-      const config = loadConfiguration();
+      const config = loadConfiguration(mockFs as unknown as typeof fs, mockEnv);
       expect(config).toMatchObject({
         componentDirs: ['src/single-dir'],
       });
@@ -137,16 +120,18 @@ describe('MCP Configuration', () => {
 
     test('should handle invalid config file', () => {
       // Setup mocks to trigger the catch block
-      (fs.existsSync as Mock).mockReturnValue(true);
-      (fs.readFileSync as Mock).mockImplementation(() => {
+      mockFs.existsSync.mockReturnValue(true);
+      mockFs.readFileSync.mockImplementation(() => {
         throw new Error('File read error');
       });
 
       // Should not throw
-      expect(() => loadConfiguration()).not.toThrow();
+      expect(() =>
+        loadConfiguration(mockFs as unknown as typeof fs, mockEnv),
+      ).not.toThrow();
 
       // Should return default config
-      const config = loadConfiguration();
+      const config = loadConfiguration(mockFs as unknown as typeof fs, mockEnv);
       expect(config).toEqual(DEFAULT_CONFIG);
 
       // Should log warning
@@ -164,13 +149,13 @@ describe('MCP Configuration', () => {
       };
 
       // Mock file existence and content
-      (fs.existsSync as Mock).mockReturnValue(true);
-      (fs.readFileSync as Mock).mockReturnValue(JSON.stringify(fileConfig));
+      mockFs.existsSync.mockReturnValue(true);
+      mockFs.readFileSync.mockReturnValue(JSON.stringify(fileConfig));
 
       // Setup env vars in the mock
-      mockMcpBuildEnv.MCP_OUTPUT_DIR = 'env-output';
+      mockEnv.MCP_OUTPUT_DIR = 'env-output';
 
-      const config = loadConfiguration();
+      const config = loadConfiguration(mockFs as unknown as typeof fs, mockEnv);
 
       // Check that env value overrides file value for outputDir
       expect(config.outputDir).toBe('env-output');

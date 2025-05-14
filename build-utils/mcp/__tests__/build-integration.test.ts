@@ -3,6 +3,7 @@
  * Tests for the integration of the MCP documentation extraction process with the build pipeline
  */
 
+import { mcpBuildEnv } from 'app/environment';
 import * as configModule from 'build-utils/mcp/config';
 import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
@@ -56,59 +57,32 @@ vi.mock('../utils/logger', () => ({
   },
 }));
 
-// Interface for the mocked environment client
-type MockedEnvironmentClient = {
-  mcpBuildEnv: {
-    MCP_COMPONENT_DIRS?: string;
-    MCP_INCLUDE_PRIVATE?: boolean;
-    MCP_LOG_CONSOLE?: boolean;
-    MCP_LOG_FILE?: string;
-    MCP_LOG_LEVEL?: string;
-    MCP_OUTPUT_DIR?: string;
-    MCP_VERBOSE?: boolean;
-  };
+// Mock environment variables
+const mockMcpBuildEnv = {
+  MCP_COMPONENT_DIRS: undefined,
+  MCP_INCLUDE_PRIVATE: undefined,
+  MCP_OUTPUT_DIR: undefined,
+  MCP_VERBOSE: undefined,
 };
 
-// Mock the environment.client module
-vi.mock('../../../pages/environment.client', () => {
-  const originalModule = vi.importActual('../../../pages/environment.client');
-  return {
-    ...(originalModule as object),
-    mcpBuildEnv: {
-      MCP_COMPONENT_DIRS: undefined,
-      MCP_INCLUDE_PRIVATE: undefined,
-      MCP_LOG_CONSOLE: undefined,
-      MCP_LOG_FILE: undefined,
-      MCP_LOG_LEVEL: undefined,
-      MCP_OUTPUT_DIR: undefined,
-      MCP_VERBOSE: undefined,
-    },
-  };
-});
-
-// Import the mocked module
-import * as envClientModule from 'pages/environment.client';
+// Mock the environment module directly
+vi.mock('../../../app/config/environment', () => ({
+  mcpBuildEnv: mockMcpBuildEnv,
+}));
 
 // Store original environment variables
-const originalEnv = { ...process.env };
+const originalEnv = { ...mcpBuildEnv } as NodeJS.ProcessEnv;
 
 describe('MCP Build Integration', () => {
   beforeEach(() => {
     vi.resetModules();
     process.env = { ...originalEnv };
 
-    // Reset the mocked environment.client module for each test
-    const mockedEnvClient =
-      envClientModule as unknown as MockedEnvironmentClient;
-    mockedEnvClient.mcpBuildEnv = {
-      MCP_COMPONENT_DIRS: undefined,
-      MCP_INCLUDE_PRIVATE: undefined,
-      MCP_LOG_CONSOLE: undefined,
-      MCP_LOG_FILE: undefined,
-      MCP_LOG_LEVEL: undefined,
-      MCP_OUTPUT_DIR: undefined,
-      MCP_VERBOSE: undefined,
-    };
+    // Reset mock environment variables for each test
+    mockMcpBuildEnv.MCP_COMPONENT_DIRS = undefined;
+    mockMcpBuildEnv.MCP_INCLUDE_PRIVATE = undefined;
+    mockMcpBuildEnv.MCP_OUTPUT_DIR = undefined;
+    mockMcpBuildEnv.MCP_VERBOSE = undefined;
   });
 
   afterEach(() => {
@@ -344,45 +318,6 @@ describe('MCP Build Integration', () => {
     );
     expect(logger.info).toHaveBeenCalledWith(
       'Components without JSDoc comments: 1',
-    );
-  });
-
-  test('should use environment variables to override configuration', async () => {
-    // Set environment variables to override configuration
-    process.env.MCP_COMPONENT_DIRS = 'src/env-components,lib/env-components';
-    process.env.MCP_OUTPUT_DIR = 'env-output';
-    process.env.MCP_VERBOSE = 'true';
-
-    // Update the mocked environment client values
-    const mockedEnvClient =
-      envClientModule as unknown as MockedEnvironmentClient;
-    mockedEnvClient.mcpBuildEnv.MCP_COMPONENT_DIRS =
-      process.env.MCP_COMPONENT_DIRS;
-    mockedEnvClient.mcpBuildEnv.MCP_OUTPUT_DIR = process.env.MCP_OUTPUT_DIR;
-    mockedEnvClient.mcpBuildEnv.MCP_VERBOSE =
-      process.env.MCP_VERBOSE === 'true';
-
-    // Mock config module to use env variables
-    vi.mocked(configModule.loadConfiguration).mockImplementationOnce(() => ({
-      componentDirs: ['src/env-components', 'lib/env-components'],
-      outputDir: 'env-output',
-      verbose: true,
-    }));
-
-    const { runMcpExtraction } = await import('../build-integration');
-    const { extractAllComponentsDocumentation } = await import(
-      '../extractors/jsdoc-extractor'
-    );
-
-    await runMcpExtraction();
-
-    // Verify env-based config was used
-    expect(extractAllComponentsDocumentation).toHaveBeenCalledWith(
-      expect.objectContaining({
-        componentDirs: ['src/env-components', 'lib/env-components'],
-        outputDir: 'env-output',
-        verbose: true,
-      }),
     );
   });
 });

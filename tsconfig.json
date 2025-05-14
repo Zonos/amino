@@ -8,7 +8,12 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
-    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "dom"
+    ],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "outDir": "dist",
@@ -17,17 +22,28 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "es5",
-    "types": ["vitest/globals"],
+    "types": [
+      "vitest/globals"
+    ],
     "verbatimModuleSyntax": true,
     "paths": {
-      "src/*": ["./src/*"],
-      "svgReact/*": ["./svgReact/*"],
-      "story-utils/*": ["./.storybook/utils/*"]
+      "src/*": [
+        "./src/*"
+      ],
+      "svgReact/*": [
+        "./svgReact/*"
+      ],
+      "story-utils/*": [
+        "./.storybook/utils/*"
+      ]
     },
     "plugins": [
       {
         "transform": "typescript-transform-paths",
         "afterDeclarations": true
+      },
+      {
+        "name": "next"
       }
     ],
     "esModuleInterop": true,
@@ -42,7 +58,13 @@
     "compilerOptions": {
       "resolveJsonModule": true,
       "allowSyntheticDefaultImports": true,
-      "lib": ["es2015", "es2016", "es2017", "es2020", "dom"],
+      "lib": [
+        "es2015",
+        "es2016",
+        "es2017",
+        "es2020",
+        "dom"
+      ],
       "declaration": false,
       "outDir": "dist",
       "baseUrl": ".",
@@ -53,27 +75,35 @@
       "sourceMap": true,
       "strict": true,
       "target": "ES2020",
-      "typeRoots": ["node_modules/@types", "build-utils/types"],
+      "typeRoots": [
+        "node_modules/@types",
+        "build-utils/types"
+      ],
       "plugins": [
         {
           "transform": "typescript-transform-paths"
         }
       ]
     },
-    "require": ["tsconfig-paths/register"]
+    "require": [
+      "tsconfig-paths/register"
+    ]
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".storybook/**/*",
-    "eslint.config.prod.mjs",
-    "prettier.config.mjs",
-    "tsconfig.json",
-    "test-utils",
-    "vitest.config.ts",
-    "postcss.config.mts",
+    "babel.config.js",
     "eslint.config.mjs",
-    "babel.config.js"
+    "eslint.config.prod.mjs",
+    "postcss.config.mts",
+    "prettier.config.mjs",
+    "test-utils",
+    "tsconfig.json",
+    "vitest.config.ts",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

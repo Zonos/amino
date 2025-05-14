@@ -3,17 +3,17 @@
  */
 
 import * as fs from 'fs';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextRequest } from 'next/server';
 import * as path from 'path';
+import type { Mock } from 'vitest';
 import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
-// Mock environment.client module
-vi.mock('pages/environment.client', () => ({
+// Mock environment module
+vi.mock('../../../../config/environment', () => ({
   env: {
-    NEXT_PUBLIC_BASE_URL: 'https://test.example.com',
+    NEXT_PUBLIC_SITE_NAME: 'Test MCP Server',
   },
-  mcpApiBase: 'https://test.example.com/api/mcp/v1',
-  mcpVersion: 'v1',
+  mcpApiBase: '/api/mcp/v1',
 }));
 
 // Mock fs and path modules
@@ -27,19 +27,6 @@ vi.mock('path', () => ({
 }));
 
 describe('Health check endpoint', () => {
-  // Create proper request and response mocks
-  let mockReq: NextApiRequest;
-  // Use a more complete mock for the response that properly replaces methods
-  let mockRes: {
-    end: ReturnType<typeof vi.fn>;
-    json: ReturnType<typeof vi.fn>;
-    send: ReturnType<typeof vi.fn>;
-    setHeader: ReturnType<typeof vi.fn>;
-    status: ReturnType<typeof vi.fn>;
-  };
-
-  let handler: (req: NextApiRequest, res: NextApiResponse) => void;
-
   // Mock package.json data
   const mockPackageJson = {
     name: '@zonos/amino',
@@ -55,28 +42,27 @@ describe('Health check endpoint', () => {
     ],
   };
 
+  // Use Next.js App Router request/response
+  let mockRequest: NextRequest;
+  let mockJsonResponse: Mock;
+  let handler: (request: NextRequest) => Promise<Response>;
+
   beforeEach(async () => {
     // Reset mocks
     vi.resetAllMocks();
 
     // Dynamically import the handler to handle Next.js module resolution
-    const module = await import('../health');
-    handler = module.default;
+    const module = await import('../health/route');
+    handler = module.GET;
 
-    // Create fresh request and response mocks for each test
-    mockReq = {
+    // Create request mock
+    mockRequest = new Request('https://test.example.com/api/mcp/v1/health', {
       method: 'GET',
-      query: {},
-    } as NextApiRequest;
+    }) as unknown as NextRequest;
 
-    // Create a proper response mock with chainable methods
-    mockRes = {
-      end: vi.fn().mockReturnThis(),
-      json: vi.fn().mockReturnThis(),
-      send: vi.fn().mockReturnThis(),
-      setHeader: vi.fn().mockReturnThis(),
-      status: vi.fn().mockReturnThis(),
-    };
+    // Mock Response.json
+    mockJsonResponse = vi.fn();
+    vi.spyOn(Response, 'json').mockImplementation(mockJsonResponse);
 
     // Default mock implementation
     vi.mocked(fs.existsSync).mockImplementation(
@@ -103,23 +89,9 @@ describe('Health check endpoint', () => {
     vi.clearAllMocks();
   });
 
-  test('should return 405 for non-GET requests', () => {
-    mockReq.method = 'POST';
-    handler(mockReq, mockRes as unknown as NextApiResponse);
-    expect(mockRes.status).toHaveBeenCalledWith(405);
-    expect(mockRes.json).toHaveBeenCalledWith(
-      expect.objectContaining({
-        error: expect.objectContaining({
-          code: 'method_not_allowed',
-        }),
-      }),
-    );
-  });
-
-  test('should return status ok when documentation exists', () => {
-    handler(mockReq, mockRes as unknown as NextApiResponse);
-    expect(mockRes.status).toHaveBeenCalledWith(200);
-    expect(mockRes.json).toHaveBeenCalledWith(
+  test('should return status ok when documentation exists', async () => {
+    await handler(mockRequest);
+    expect(mockJsonResponse).toHaveBeenCalledWith(
       expect.objectContaining({
         components: expect.objectContaining({
           api: expect.objectContaining({
@@ -138,7 +110,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  test('should report degraded status when documentation index is missing', () => {
+  test('should report degraded status when documentation index is missing', async () => {
     // Mock index file not existing
     vi.mocked(fs.existsSync).mockImplementation(
       (_path: fs.PathLike): boolean => {
@@ -149,9 +121,8 @@ describe('Health check endpoint', () => {
       },
     );
 
-    handler(mockReq, mockRes as unknown as NextApiResponse);
-    expect(mockRes.status).toHaveBeenCalledWith(200);
-    expect(mockRes.json).toHaveBeenCalledWith(
+    await handler(mockRequest);
+    expect(mockJsonResponse).toHaveBeenCalledWith(
       expect.objectContaining({
         components: expect.objectContaining({
           documentation: expect.objectContaining({
@@ -164,7 +135,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  test('should report unknown version when package.json is missing', () => {
+  test('should report unknown version when package.json is missing', async () => {
     // Mock package.json file not existing
     vi.mocked(fs.existsSync).mockImplementation(
       (_path: fs.PathLike): boolean => {
@@ -175,16 +146,15 @@ describe('Health check endpoint', () => {
       },
     );
 
-    handler(mockReq, mockRes as unknown as NextApiResponse);
-    expect(mockRes.status).toHaveBeenCalledWith(200);
-    expect(mockRes.json).toHaveBeenCalledWith(
+    await handler(mockRequest);
+    expect(mockJsonResponse).toHaveBeenCalledWith(
       expect.objectContaining({
         version: 'unknown',
       }),
     );
   });
 
-  test('should handle errors in reading index file', () => {
+  test('should handle errors in reading index file', async () => {
     // Mock error reading index file
     vi.mocked(fs.readFileSync).mockImplementation(
       (_path: fs.PathOrFileDescriptor): string => {
@@ -195,9 +165,8 @@ describe('Health check endpoint', () => {
       },
     );
 
-    handler(mockReq, mockRes as unknown as NextApiResponse);
-    expect(mockRes.status).toHaveBeenCalledWith(200);
-    expect(mockRes.json).toHaveBeenCalledWith(
+    await handler(mockRequest);
+    expect(mockJsonResponse).toHaveBeenCalledWith(
       expect.objectContaining({
         components: expect.objectContaining({
           documentation: expect.objectContaining({
@@ -210,7 +179,7 @@ describe('Health check endpoint', () => {
     );
   });
 
-  test('should handle unexpected errors gracefully', () => {
+  test('should handle unexpected errors gracefully', async () => {
     // Mock an unexpected error
     vi.mocked(fs.existsSync).mockImplementation(
       (_path: fs.PathLike): boolean => {
@@ -218,14 +187,14 @@ describe('Health check endpoint', () => {
       },
     );
 
-    handler(mockReq, mockRes as unknown as NextApiResponse);
-    expect(mockRes.status).toHaveBeenCalledWith(500);
-    expect(mockRes.json).toHaveBeenCalledWith(
+    await handler(mockRequest);
+    expect(mockJsonResponse).toHaveBeenCalledWith(
       expect.objectContaining({
         error: expect.objectContaining({
           code: 'internal_server_error',
         }),
       }),
+      expect.objectContaining({ status: 500 }),
     );
   });
 });

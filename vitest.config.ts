@@ -7,6 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '.storybook': path.resolve(__dirname, './.storybook'),
+      // Add app directory alias for Next.js App Router compatibility
+      app: path.resolve(__dirname, './app'),
       'build-utils': path.resolve(__dirname, './build-utils'),
       // to test the bundled version in stories
       dist: path.resolve(__dirname, './dist'),

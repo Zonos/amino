@@ -4,7 +4,6 @@
  */
 
 import fs from 'fs';
-import { mcpBuildEnv } from 'pages/environment.client';
 import path from 'path';
 
 /**
@@ -267,19 +266,19 @@ export const logger = (() => {
   const options: Partial<LoggerOptions> = {};
 
   // Configure log level from environment
-  const envLogLevel = mcpBuildEnv.MCP_LOG_LEVEL?.toUpperCase();
+  const envLogLevel = process.env.MCP_LOG_LEVEL?.toUpperCase();
   if (envLogLevel && envLogLevel in LogLevel) {
     options.level = LogLevel[envLogLevel as keyof typeof LogLevel];
   }
 
   // Configure file logging from environment
-  if (mcpBuildEnv.MCP_LOG_FILE) {
-    options.filePath = mcpBuildEnv.MCP_LOG_FILE;
+  if (process.env.MCP_LOG_FILE) {
+    options.filePath = process.env.MCP_LOG_FILE;
   }
 
   // Configure console logging from environment
-  if (mcpBuildEnv.MCP_LOG_CONSOLE !== undefined) {
-    options.console = mcpBuildEnv.MCP_LOG_CONSOLE;
+  if (process.env.MCP_LOG_CONSOLE !== undefined) {
+    options.console = process.env.MCP_LOG_CONSOLE === 'true';
   }
 
   return createLogger(options);

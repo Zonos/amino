@@ -3,11 +3,22 @@
  * Provides configuration options for the MCP documentation extraction process.
  */
 
+import { mcpBuildEnv } from 'app/environment';
 import fs from 'fs';
-import { mcpBuildEnv } from 'pages/environment.client';
 import path from 'path';
 
 import type { JSDocExtractorOptions } from './types';
+
+// For easier mocking in tests, use a function to get environment variables
+export function getEnvironmentVariables() {
+  // This approach makes it easier to mock in tests
+  return {
+    MCP_COMPONENT_DIRS: mcpBuildEnv.MCP_COMPONENT_DIRS,
+    MCP_INCLUDE_PRIVATE: mcpBuildEnv.MCP_INCLUDE_PRIVATE,
+    MCP_OUTPUT_DIR: mcpBuildEnv.MCP_OUTPUT_DIR,
+    MCP_VERBOSE: mcpBuildEnv.MCP_VERBOSE,
+  };
+}
 
 /**
  * Default configuration for the MCP documentation extractor
@@ -47,17 +58,24 @@ export const CONFIG_FILE_NAME = 'mcp.config.json';
  * 2. Configuration file (mcp.config.json)
  * 3. Default configuration
  *
+ * @param customFs Optional fs module for testing
+ * @param env Optional environment variables for testing
  * @returns The merged configuration options
  */
-export function loadConfiguration(): JSDocExtractorOptions {
+export function loadConfiguration(
+  customFs: typeof fs = fs,
+  env = getEnvironmentVariables(),
+): JSDocExtractorOptions {
   // Start with default configuration
   const config: JSDocExtractorOptions = { ...DEFAULT_CONFIG };
 
   // Try to load config from file
   try {
     const configFilePath = path.resolve(process.cwd(), CONFIG_FILE_NAME);
-    if (fs.existsSync(configFilePath)) {
-      const fileConfig = JSON.parse(fs.readFileSync(configFilePath, 'utf-8'));
+    if (customFs.existsSync(configFilePath)) {
+      const fileConfig = JSON.parse(
+        customFs.readFileSync(configFilePath, 'utf-8'),
+      );
       Object.assign(config, fileConfig);
     }
   } catch (error) {
@@ -67,33 +85,28 @@ export function loadConfiguration(): JSDocExtractorOptions {
   }
 
   // Override with environment variables if present
-  if (mcpBuildEnv.MCP_VERBOSE !== undefined) {
-    config.verbose = mcpBuildEnv.MCP_VERBOSE;
+  if (env.MCP_VERBOSE !== undefined) {
+    config.verbose = env.MCP_VERBOSE;
   }
 
-  if (mcpBuildEnv.MCP_INCLUDE_PRIVATE !== undefined) {
-    config.includePrivate = mcpBuildEnv.MCP_INCLUDE_PRIVATE;
+  if (env.MCP_INCLUDE_PRIVATE !== undefined) {
+    config.includePrivate = env.MCP_INCLUDE_PRIVATE;
   }
 
-  if (mcpBuildEnv.MCP_OUTPUT_DIR) {
-    config.outputDir = mcpBuildEnv.MCP_OUTPUT_DIR || config.outputDir;
+  if (env.MCP_OUTPUT_DIR) {
+    config.outputDir = env.MCP_OUTPUT_DIR;
   }
 
-  if (mcpBuildEnv.MCP_COMPONENT_DIRS) {
+  if (env.MCP_COMPONENT_DIRS) {
     try {
-      const componentDirsValue = mcpBuildEnv.MCP_COMPONENT_DIRS;
-      if (componentDirsValue) {
-        const parsedDirs = JSON.parse(componentDirsValue) as string[];
-        config.componentDirs = Array.isArray(parsedDirs)
-          ? parsedDirs
-          : [componentDirsValue];
-      }
+      // Try to parse as JSON array
+      const parsedDirs = JSON.parse(env.MCP_COMPONENT_DIRS) as string[];
+      config.componentDirs = Array.isArray(parsedDirs)
+        ? parsedDirs
+        : [env.MCP_COMPONENT_DIRS];
     } catch {
       // If not valid JSON, treat as a single directory
-      const componentDirsValue = mcpBuildEnv.MCP_COMPONENT_DIRS;
-      if (componentDirsValue) {
-        config.componentDirs = [componentDirsValue];
-      }
+      config.componentDirs = [env.MCP_COMPONENT_DIRS];
     }
   }
 

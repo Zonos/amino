@@ -9,6 +9,16 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
+// Mock app/environment module
+vi.mock('app/environment', () => ({
+  mcpBuildEnv: {
+    MCP_COMPONENT_DIRS: undefined,
+    MCP_INCLUDE_PRIVATE: undefined,
+    MCP_OUTPUT_DIR: undefined,
+    MCP_VERBOSE: undefined,
+  },
+}));
+
 // Mock fs and path modules
 vi.mock('fs');
 vi.mock('path');
@@ -66,7 +76,8 @@ vi.mock('typescript', () => {
     },
   };
 
-  return {
+  // Create mock TypeScript module with both named and default exports
+  const typescript = {
     ScriptTarget: { Latest: 1 },
     SyntaxKind: {
       VariableStatement: 235,
@@ -82,6 +93,9 @@ vi.mock('typescript', () => {
     isFunctionDeclaration: vi.fn().mockReturnValue(false),
     isVariableStatement: vi.fn().mockImplementation(() => true),
   };
+
+  // Add default export
+  return Object.assign(typescript, { default: typescript });
 });
 
 // Import the real extractor module after mocking dependencies

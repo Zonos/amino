@@ -4,40 +4,31 @@
  * Serves the component index with optional filtering by category and tags
  */
 
-import * as fs from 'fs';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { inProdEnvironment } from 'pages/environment.client';
-import * as path from 'path';
-
 import type {
   ComponentMetadata,
   ComponentsResponse,
   ErrorResponse,
-} from './types';
+} from 'app/api/mcp/v1/types';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Use environment variable directly instead of importing from environment module
+const inProdEnvironment = process.env.NODE_ENV === 'production';
 
 /**
  * Handler for the components listing endpoint
  */
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ComponentsResponse | ErrorResponse>,
-): void {
+export async function GET(request: Request): Promise<Response> {
   try {
-    // Only allow GET requests
-    if (req.method !== 'GET') {
-      res.status(405).json({
-        error: {
-          code: 'method_not_allowed',
-          message: `Method ${req.method || 'unknown'} is not allowed, use GET instead`,
-        },
-      });
-      return;
-    }
+    // Parse query parameters from URL
+    const url = new URL(request.url);
+    const category = url.searchParams.get('category');
+    const tag = url.searchParams.get('tag');
+    const limitParam = url.searchParams.get('limit') || '20';
+    const offsetParam = url.searchParams.get('offset') || '0';
 
-    // Parse query parameters
-    const { category, limit = 20, offset = 0, tag } = req.query;
-    const parsedLimit = Math.min(parseInt(limit as string, 10) || 20, 100);
-    const parsedOffset = parseInt(offset as string, 10) || 0;
+    const parsedLimit = Math.min(parseInt(limitParam, 10) || 20, 100);
+    const parsedOffset = parseInt(offsetParam, 10) || 0;
 
     // Path to the index.json file
     const indexPath = path.join(
@@ -49,14 +40,16 @@ export default function handler(
 
     // Check if the index file exists
     if (!fs.existsSync(indexPath)) {
-      res.status(404).json({
-        error: {
-          code: 'not_found',
-          details: { path: indexPath },
-          message: 'Components index file not found',
-        },
-      });
-      return;
+      return Response.json(
+        {
+          error: {
+            code: 'not_found',
+            details: { path: indexPath },
+            message: 'Components index file not found',
+          },
+        } as ErrorResponse,
+        { status: 404 },
+      );
     }
 
     // Read and parse the index file
@@ -78,7 +71,7 @@ export default function handler(
     // Filter by tag if specified
     if (tag) {
       components = components.filter((comp: ComponentMetadata) =>
-        comp.tags?.includes(tag as string),
+        comp.tags?.includes(tag),
       );
     }
 
@@ -107,7 +100,7 @@ export default function handler(
     }
 
     // Return the response
-    res.status(200).json({
+    return Response.json({
       components: paginatedComponents,
       pagination: {
         limit: parsedLimit,
@@ -115,17 +108,20 @@ export default function handler(
         offset: parsedOffset,
         total,
       },
-    });
+    } as ComponentsResponse);
   } catch (error) {
-    // Log the error but avoid console statements that trigger linting warnings
-    res.status(500).json({
-      error: {
-        code: 'internal_server_error',
-        message: 'Internal server error while retrieving components list',
-        ...(inProdEnvironment === false && {
-          details: { error: String(error) },
-        }),
-      },
-    });
+    // Handle errors
+    return Response.json(
+      {
+        error: {
+          code: 'internal_server_error',
+          message: 'Internal server error while retrieving components list',
+          ...(inProdEnvironment === false && {
+            details: { error: String(error) },
+          }),
+        },
+      } as ErrorResponse,
+      { status: 500 },
+    );
   }
 }

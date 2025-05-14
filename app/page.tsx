@@ -1,6 +1,12 @@
 import React from 'react';
 
-import Head from 'next/head';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  description:
+    'Model Context Protocol server for Amino component documentation',
+  title: 'Amino MCP Server',
+};
 
 export default function Home(): React.ReactElement {
   return (
@@ -12,14 +18,6 @@ export default function Home(): React.ReactElement {
         padding: '20px',
       }}
     >
-      <Head>
-        <title>Amino MCP Server</title>
-        <meta
-          content="Model Context Protocol server for Amino component documentation"
-          name="description"
-        />
-      </Head>
-
       <main>
         <h1>Amino MCP Server</h1>
         <p>

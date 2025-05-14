@@ -4,32 +4,24 @@
  * Basic endpoint returning server status information for monitoring
  */
 
+import type { ErrorResponse, HealthResponse } from 'app/api/mcp/v1/types';
 import * as fs from 'fs';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { env, mcpApiBase } from 'pages/environment.client';
 import * as path from 'path';
 
-import type { ErrorResponse, HealthResponse } from './types';
+// Create direct environment variables instead of importing from environment module
+const env = {
+  NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || '',
+};
+const mcpApiBase = '/api/mcp/v1';
+
+// Track server start time
+const serverStartTime = Date.now();
 
 /**
  * Handler for the health check endpoint
  */
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<HealthResponse | ErrorResponse>,
-): void {
+export async function GET(): Promise<Response> {
   try {
-    // Only allow GET requests
-    if (req.method !== 'GET') {
-      res.status(405).json({
-        error: {
-          code: 'method_not_allowed',
-          message: `Method ${req.method || 'unknown'} is not allowed, use GET instead`,
-        },
-      });
-      return;
-    }
-
     // Read package.json to get current version
     const packagePath = path.join(process.cwd(), 'package.json');
     let version = 'unknown';
@@ -73,9 +65,6 @@ export default function handler(
 
     // Determine overall status
     const overallStatus = docsStatus.status === 'ok' ? 'ok' : 'degraded';
-
-    // Track server start time
-    const serverStartTime = Date.now();
     const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
     // Compose the health response
@@ -101,17 +90,20 @@ export default function handler(
     };
 
     // Return the health status
-    res.status(200).json(healthResponse);
+    return Response.json(healthResponse);
   } catch (error) {
-    // Handle errors without console statements to comply with linting rules
-    res.status(500).json({
-      error: {
-        code: 'internal_server_error',
-        message: 'Internal server error while checking health status',
-        ...(process.env.NODE_ENV !== 'production' && {
-          details: { error: String(error) },
-        }),
-      },
-    });
+    // Handle errors
+    return Response.json(
+      {
+        error: {
+          code: 'internal_server_error',
+          message: 'Internal server error while checking health status',
+          ...(process.env.NODE_ENV !== 'production' && {
+            details: { error: String(error) },
+          }),
+        },
+      } as ErrorResponse,
+      { status: 500 },
+    );
   }
 }

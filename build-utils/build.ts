@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import alias from '@rollup/plugin-alias';
 import { babel } from '@rollup/plugin-babel';
 import image from '@rollup/plugin-image';

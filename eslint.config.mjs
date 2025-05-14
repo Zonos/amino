@@ -230,4 +230,44 @@ export default tseslint.config(
       'no-console': 'off',
     },
   },
+  // Add specific override for next.config.mjs to fix TypeScript parsing issues
+  {
+    files: ['next.config.mjs'],
+    languageOptions: {
+      parserOptions: {
+        project: null, // Disable TypeScript linting for this file
+      },
+    },
+    rules: {
+      '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/consistent-type-imports': 'off',
+      // Disable all TypeScript-specific rules for this file
+      '@typescript-eslint/no-deprecated': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-import-type-side-effects': 'off',
+      '@typescript-eslint/no-shadow': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-use-before-define': 'off',
+    },
+  },
+  // Add override for test-app-router.js to fix TypeScript parsing error
+  {
+    files: ['test-app-router.js'],
+    languageOptions: {
+      parserOptions: {
+        project: null, // Disable TypeScript linting for this file
+      },
+    },
+    rules: {
+      '@typescript-eslint/consistent-type-definitions': 'off',
+      '@typescript-eslint/consistent-type-imports': 'off',
+      // Disable all TypeScript-specific rules for this file
+      '@typescript-eslint/no-deprecated': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-import-type-side-effects': 'off',
+      '@typescript-eslint/no-shadow': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-use-before-define': 'off',
+    },
+  },
 );

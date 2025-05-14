@@ -8,7 +8,7 @@ import {
   LogLevel,
 } from 'build-utils/mcp/utils/logger';
 import fs from 'fs';
-import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock file system operations
 vi.mock('fs', () => ({
@@ -22,38 +22,16 @@ vi.mock('fs', () => ({
   mkdirSync: vi.fn(),
 }));
 
-// Mock path module
-vi.mock('path', () => ({
-  default: {
-    dirname: vi.fn().mockReturnValue('/tmp/logs'),
-  },
-  dirname: vi.fn().mockReturnValue('/tmp/logs'),
-}));
-
-// Interface for the mocked environment client
-type MockedEnvironmentClient = {
-  mcpBuildEnv: {
-    MCP_COMPONENT_DIRS?: string;
-    MCP_INCLUDE_PRIVATE?: boolean;
-    MCP_LOG_CONSOLE?: boolean;
-    MCP_LOG_FILE?: string;
-    MCP_LOG_LEVEL?: string;
-    MCP_OUTPUT_DIR?: string;
-    MCP_VERBOSE?: boolean;
-  };
+// Mock environment variables directly
+const mockMcpBuildEnv = {
+  MCP_LOG_CONSOLE: undefined,
+  MCP_LOG_FILE: undefined,
+  MCP_LOG_LEVEL: undefined,
 };
 
-// Mock environment.client module
-vi.mock('../../../pages/environment.client', () => ({
-  mcpBuildEnv: {
-    MCP_LOG_CONSOLE: undefined,
-    MCP_LOG_FILE: undefined,
-    MCP_LOG_LEVEL: undefined,
-  },
+vi.mock('../../../app/config/environment', () => ({
+  mcpBuildEnv: mockMcpBuildEnv,
 }));
-
-// Import the mocked module
-import * as envClientModule from 'pages/environment.client';
 
 // Mock console methods
 vi.spyOn(console, 'log').mockImplementation(() => {});
@@ -69,14 +47,10 @@ describe('MCP Logger', () => {
     vi.clearAllTimers();
     process.env = { ...originalEnv };
 
-    // Reset mocked environment client - using proper type casting
-    const mockedEnvClient =
-      envClientModule as unknown as MockedEnvironmentClient;
-    mockedEnvClient.mcpBuildEnv = {
-      MCP_LOG_CONSOLE: undefined,
-      MCP_LOG_FILE: undefined,
-      MCP_LOG_LEVEL: undefined,
-    };
+    // Reset mocked environment values
+    mockMcpBuildEnv.MCP_LOG_CONSOLE = undefined;
+    mockMcpBuildEnv.MCP_LOG_FILE = undefined;
+    mockMcpBuildEnv.MCP_LOG_LEVEL = undefined;
   });
 
   afterEach(() => {

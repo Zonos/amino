@@ -1,5 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { env } from 'pages/environment.client';
+import { env } from 'app/environment';
 
 type ToolDescription = {
   description: string;
@@ -29,14 +28,14 @@ type RootResponse = {
   version: string;
 };
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<RootResponse>,
-): void {
+/**
+ * Handler for the root MCP API endpoint
+ */
+export async function GET(): Promise<Response> {
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   // Return API information with available tools and endpoints
-  res.status(200).json({
+  return Response.json({
     description:
       'Model Context Protocol server for Amino component documentation',
     endpoints: {
@@ -105,5 +104,5 @@ export default function handler(
       },
     ],
     version: '1.0.0',
-  });
+  } as RootResponse);
 }

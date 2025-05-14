@@ -9,10 +9,12 @@ import type {
   JSDocExtractorOptions,
   JSDocTag,
 } from 'build-utils/mcp/types';
-import * as fs from 'fs';
-import { inTestEnvironment } from 'pages/environment.client';
-import * as path from 'path';
-import * as ts from 'typescript';
+import fs from 'fs';
+import path from 'path';
+import ts from 'typescript';
+
+// Default test environment detection
+const inTestEnvironment = process.env.NODE_ENV === 'test';
 
 /**
  * Parses a JSDoc comment string into description and tags
