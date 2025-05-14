@@ -10,9 +10,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.51.0
       options: --user 1001
     if: |
-      github.event.deployment_status.state == 'success' && 
-      contains(github.event.deployment_status.target_url, 'amino-') && 
-      contains(github.event.deployment_status.target_url, '-zonos.vercel.app') && 
+      github.event.deployment_status.state == 'success' &&
       !contains(github.event.deployment_status.target_url, 'amino-mcp-')
     steps:
       - uses: actions/checkout@v4
