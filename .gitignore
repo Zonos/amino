@@ -102,3 +102,4 @@ _private_*
 .cursorignore
 *storybook.log
 .next/**
+tsconfig.next.tsbuildinfo

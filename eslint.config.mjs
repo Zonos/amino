@@ -16,20 +16,25 @@ import pluginTypescriptSortKeys from 'eslint-plugin-typescript-sort-keys';
 import globals from 'globals';
 import tseslint, { parser } from 'typescript-eslint';
 
+// Create ignore config first to ensure it takes precedence
+const ignoreConfig = {
+  ignores: [
+    '**/generated/**',
+    '**/dist/**',
+    'svgReact/flags/svgs/**',
+    'svgReact/icons/svgs/**',
+    '!svgReact/*/dist/**',
+    'storybook-static',
+    'src/all.ts',
+    '!.storybook',
+    '.github',
+    '.next',
+    '.next/**/*',
+  ],
+};
+
 export default tseslint.config(
-  {
-    ignores: [
-      '**/generated/**',
-      '**/dist/**',
-      'svgReact/flags/svgs/**',
-      'svgReact/icons/svgs/**',
-      '!svgReact/*/dist/**',
-      'storybook-static',
-      'src/all.ts',
-      '!.storybook',
-      '.github',
-    ],
-  },
+  ignoreConfig,
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   eslintPluginPrettierRecommended,
