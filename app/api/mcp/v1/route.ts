@@ -1,6 +1,7 @@
 import { env } from 'app/environment';
+import type { NextRequest } from 'next/server';
 
-import { createResponse } from './utils/sse';
+import { withSSESupport } from './utils/middleware';
 
 type ToolDescription = {
   description: string;
@@ -31,9 +32,9 @@ type RootResponse = {
 };
 
 /**
- * Handler for the root MCP API endpoint
+ * Base handler for the root MCP API endpoint
  */
-export async function GET(request: Request): Promise<Response> {
+async function rootHandler(request: NextRequest): Promise<Response> {
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   // Prepare response data
@@ -108,6 +109,11 @@ export async function GET(request: Request): Promise<Response> {
     version: '1.0.0',
   };
 
-  // Return response in appropriate format based on client request
-  return createResponse(request, responseData);
+  // Return standard JSON response
+  return Response.json(responseData);
 }
+
+/**
+ * Export handler with SSE support
+ */
+export const GET = withSSESupport(rootHandler);

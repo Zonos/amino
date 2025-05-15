@@ -5,8 +5,9 @@
  */
 
 import type { ErrorResponse, HealthResponse } from 'app/api/mcp/v1/types';
-import { createResponse } from 'app/api/mcp/v1/utils/sse';
+import { withSSESupport } from 'app/api/mcp/v1/utils/middleware';
 import * as fs from 'fs';
+import type { NextRequest } from 'next/server';
 import * as path from 'path';
 
 // Create direct environment variables instead of importing from environment module
@@ -19,9 +20,9 @@ const mcpApiBase = '/api/mcp/v1';
 const serverStartTime = Date.now();
 
 /**
- * Handler for the health check endpoint
+ * Base handler for the health check endpoint
  */
-export async function GET(request: Request): Promise<Response> {
+async function healthHandler(_request: NextRequest): Promise<Response> {
   try {
     // Read package.json to get current version
     const packagePath = path.join(process.cwd(), 'package.json');
@@ -90,20 +91,26 @@ export async function GET(request: Request): Promise<Response> {
       version,
     };
 
-    // Return the health status in appropriate format
-    return createResponse(request, healthResponse);
+    // Return the health status
+    return Response.json(healthResponse);
   } catch (error) {
     // Handle errors
-    const errorResponse = {
-      error: {
-        code: 'internal_server_error',
-        message: 'Internal server error while checking health status',
-        ...(process.env.NODE_ENV !== 'production' && {
-          details: { error: String(error) },
-        }),
-      },
-    } as ErrorResponse;
-
-    return createResponse(request, errorResponse, { status: 500 });
+    return Response.json(
+      {
+        error: {
+          code: 'internal_server_error',
+          message: 'Internal server error while checking health status',
+          ...(process.env.NODE_ENV !== 'production' && {
+            details: { error: String(error) },
+          }),
+        },
+      } as ErrorResponse,
+      { status: 500 },
+    );
   }
 }
+
+/**
+ * Export handler with SSE support
+ */
+export const GET = withSSESupport(healthHandler);

@@ -9,17 +9,18 @@ import type {
   ComponentsResponse,
   ErrorResponse,
 } from 'app/api/mcp/v1/types';
-import { createResponse } from 'app/api/mcp/v1/utils/sse';
+import { withSSESupport } from 'app/api/mcp/v1/utils/middleware';
 import * as fs from 'fs';
+import type { NextRequest } from 'next/server';
 import * as path from 'path';
 
 // Use environment variable directly instead of importing from environment module
 const inProdEnvironment = process.env.NODE_ENV === 'production';
 
 /**
- * Handler for the components listing endpoint
+ * Base handler for the components listing endpoint
  */
-export async function GET(request: Request): Promise<Response> {
+async function componentsHandler(request: NextRequest): Promise<Response> {
   try {
     // Parse query parameters from URL
     const url = new URL(request.url);
@@ -41,15 +42,16 @@ export async function GET(request: Request): Promise<Response> {
 
     // Check if the index file exists
     if (!fs.existsSync(indexPath)) {
-      const errorResponse = {
-        error: {
-          code: 'not_found',
-          details: { path: indexPath },
-          message: 'Components index file not found',
-        },
-      } as ErrorResponse;
-
-      return createResponse(request, errorResponse, { status: 404 });
+      return Response.json(
+        {
+          error: {
+            code: 'not_found',
+            details: { path: indexPath },
+            message: 'Components index file not found',
+          },
+        } as ErrorResponse,
+        { status: 404 },
+      );
     }
 
     // Read and parse the index file
@@ -110,20 +112,25 @@ export async function GET(request: Request): Promise<Response> {
       },
     };
 
-    // Return response in appropriate format based on client request
-    return createResponse(request, responseData);
+    return Response.json(responseData);
   } catch (error) {
     // Handle errors
-    const errorResponse = {
-      error: {
-        code: 'internal_server_error',
-        message: 'Internal server error while retrieving components list',
-        ...(inProdEnvironment === false && {
-          details: { error: String(error) },
-        }),
-      },
-    } as ErrorResponse;
-
-    return createResponse(request, errorResponse, { status: 500 });
+    return Response.json(
+      {
+        error: {
+          code: 'internal_server_error',
+          message: 'Internal server error while retrieving components list',
+          ...(inProdEnvironment === false && {
+            details: { error: String(error) },
+          }),
+        },
+      } as ErrorResponse,
+      { status: 500 },
+    );
   }
 }
+
+/**
+ * Export handler with SSE support
+ */
+export const GET = withSSESupport(componentsHandler);
