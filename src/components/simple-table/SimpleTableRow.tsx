@@ -44,6 +44,22 @@ type SimpleTableRowProps<T extends object> = {
   selectable: SimpleTableProps<T>['selectable'];
 };
 
+/**
+ * SimpleTableRow is an internal component used by SimpleTable to render each table row.
+ * It supports selectable rows, collapsible content, custom cell rendering, and row click/hover handlers.
+ *
+ * @remarks
+ * This component is not intended for direct use. Use `SimpleTable` for all table needs.
+ *
+ * @example Used internally by SimpleTable
+ * ```tsx
+ * <SimpleTable
+ *   headers={headers}
+ *   items={items}
+ *   keyExtractor={item => String(item.id)}
+ * />
+ * ```
+ */
 export const SimpleTableRow = <T extends object>({
   bordered,
   collapsible,

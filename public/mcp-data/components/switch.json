@@ -1,0 +1,72 @@
+{
+  "description": "Switch component provides a toggle control for binary options.\nIt allows users to turn options on or off with a single action.",
+  "id": "switch",
+  "name": "Switch",
+  "path": "src/components/switch",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [enabled, setEnabled] = useState(false);\n\n<Switch\nchecked={enabled}\nonChange={setEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label\n<Switch\nlabel=\"Notifications\"\nchecked={notificationsEnabled}\nonChange={setNotificationsEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label description\n<Switch\nlabel=\"Dark mode\"\nlabelDescription=\"(Applies to all users)\"\nchecked={darkMode}\nonChange={setDarkMode}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Switch\nlabel=\"Auto-save\"\nsubtitle=\"Automatically save changes as you type\"\nchecked={autoSave}\nonChange={setAutoSave}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Switch\nlabel=\"Premium feature\"\nchecked={true}\nonChange={() => {}}\ndisabled\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label icon\n<Switch\nlabel=\"Wi-Fi\"\nlabelIcon={<WifiIcon size={16} />}\nchecked={wifiEnabled}\nonChange={setWifiEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With switch icons\n<Switch\nlabel=\"Sound\"\nswitchIconLeft={<SoundOffIcon size={12} />}\nswitchIconRight={<SoundOnIcon size={12} />}\nchecked={soundEnabled}\nonChange={setSoundEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Complete example with all properties\n<Switch\nlabel=\"Location services\"\nlabelDescription=\"(Optional)\"\nlabelIcon={<LocationIcon size={16} />}\nsubtitle=\"Allow the app to access your current location\"\nswitchIconLeft={<CloseIcon size={12} />}\nswitchIconRight={<CheckmarkIcon size={12} />}\nchecked={locationEnabled}\nonChange={setLocationEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [enabled, setEnabled] = useState(false);\n\n<Switch\nchecked={enabled}\nonChange={setEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label\n<Switch\nlabel=\"Notifications\"\nchecked={notificationsEnabled}\nonChange={setNotificationsEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label description\n<Switch\nlabel=\"Dark mode\"\nlabelDescription=\"(Applies to all users)\"\nchecked={darkMode}\nonChange={setDarkMode}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<Switch\nlabel=\"Auto-save\"\nsubtitle=\"Automatically save changes as you type\"\nchecked={autoSave}\nonChange={setAutoSave}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Switch\nlabel=\"Premium feature\"\nchecked={true}\nonChange={() => {}}\ndisabled\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With label icon\n<Switch\nlabel=\"Wi-Fi\"\nlabelIcon={<WifiIcon size={16} />}\nchecked={wifiEnabled}\nonChange={setWifiEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With switch icons\n<Switch\nlabel=\"Sound\"\nswitchIconLeft={<SoundOffIcon size={12} />}\nswitchIconRight={<SoundOnIcon size={12} />}\nchecked={soundEnabled}\nonChange={setSoundEnabled}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Complete example with all properties\n<Switch\nlabel=\"Location services\"\nlabelDescription=\"(Optional)\"\nlabelIcon={<LocationIcon size={16} />}\nsubtitle=\"Allow the app to access your current location\"\nswitchIconLeft={<CloseIcon size={12} />}\nswitchIconRight={<CheckmarkIcon size={12} />}\nchecked={locationEnabled}\nonChange={setLocationEnabled}\n/>"
+    }
+  ]
+}

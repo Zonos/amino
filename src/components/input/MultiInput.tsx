@@ -32,6 +32,88 @@ export type MultiInputProps = {
   tags: string[];
 };
 
+/**
+ * MultiInput component allows users to input multiple values (tags) in a single field.
+ * It supports keyboard navigation, tag validation, and clipboard paste operations.
+ *
+ * @example Basic usage
+ * const [tags, setTags] = useState<string[]>([]);
+ * const [inputValue, setInputValue] = useState('');
+ *
+ * <MultiInput
+ *   inputValue={inputValue}
+ *   setInputValue={setInputValue}
+ *   tags={tags}
+ *   setTags={setTags}
+ *   placeholder="Add tags..."
+ * />
+ *
+ * @example With tag validation
+ * const [tags, setTags] = useState<string[]>([]);
+ * const [inputValue, setInputValue] = useState('');
+ * const [hasError, setHasError] = useState(false);
+ *
+ * const validateTag = (tag: string) => {
+ *   return tag.length >= 3 && tag.length <= 20;
+ * };
+ *
+ * <MultiInput
+ *   inputValue={inputValue}
+ *   setInputValue={setInputValue}
+ *   tags={tags}
+ *   setTags={setTags}
+ *   tagValidation={validateTag}
+ *   setHasValidationError={setHasError}
+ *   placeholder="Enter tags (3-20 characters)"
+ * />
+ * {hasError && <Text color="danger">One or more tags are invalid</Text>}
+ *
+ * @example With initial tags
+ * const [tags, setTags] = useState<string[]>(["react", "typescript", "amino"]);
+ * const [inputValue, setInputValue] = useState('');
+ *
+ * <MultiInput
+ *   inputValue={inputValue}
+ *   setInputValue={setInputValue}
+ *   tags={tags}
+ *   setTags={setTags}
+ *   placeholder="Add more tags..."
+ * />
+ *
+ * @example With email validation
+ * const [emails, setEmails] = useState<string[]>([]);
+ * const [inputValue, setInputValue] = useState('');
+ * const [hasError, setHasError] = useState(false);
+ *
+ * const validateEmail = (email: string) => {
+ *   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ *   return regex.test(email);
+ * };
+ *
+ * <MultiInput
+ *   inputValue={inputValue}
+ *   setInputValue={setInputValue}
+ *   tags={emails}
+ *   setTags={setEmails}
+ *   tagValidation={validateEmail}
+ *   setHasValidationError={setHasError}
+ *   placeholder="Add email addresses..."
+ * />
+ *
+ * @example With custom styling
+ * const [tags, setTags] = useState<string[]>([]);
+ * const [inputValue, setInputValue] = useState('');
+ *
+ * <MultiInput
+ *   inputValue={inputValue}
+ *   setInputValue={setInputValue}
+ *   tags={tags}
+ *   setTags={setTags}
+ *   className="custom-multi-input"
+ *   style={{ maxWidth: '500px' }}
+ *   placeholder="Add tags..."
+ * />
+ */
 export const MultiInput = ({
   className,
   inputValue,

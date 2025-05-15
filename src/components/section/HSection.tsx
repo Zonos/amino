@@ -14,21 +14,90 @@ import type { BaseProps } from 'src/types/BaseProps';
 import styles from './HSection.module.scss';
 
 export type HSectionProps = BaseProps & {
+  /**
+   * Content to display within the section
+   */
   children: ReactNode;
   /**
-   * @info Initial collapse state. **Note**: only have effect when `collapsible` is specified
+   * Initial collapse state. Only has effect when `collapsible` is set to true
    * @default false
-   * */
+   */
   collapseByDefault?: boolean;
   /**
-   * @info Make the section content collapsible or not
+   * Whether the section content can be collapsed
    * @default false
    */
   collapsible?: boolean;
+  /**
+   * Title text or element to display at the top of the section
+   */
   label?: ReactNode;
+  /**
+   * Secondary text or element to display below the label
+   */
   sublabel?: ReactNode;
 };
 
+/**
+ * HSection component provides a horizontal section layout with optional
+ * collapsible content, label, and sublabel.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <HSection label="Section Title">
+ *   <p>Content goes here...</p>
+ * </HSection>
+ * ```
+ *
+ * @example With sublabel
+ * ```tsx
+ * <HSection
+ *   label="Account Information"
+ *   sublabel="Personal details and settings"
+ * >
+ *   <FormContent />
+ * </HSection>
+ * ```
+ *
+ * @example Collapsible section
+ * ```tsx
+ * <HSection
+ *   label="Advanced Settings"
+ *   sublabel="Configuration options for advanced users"
+ *   collapsible
+ * >
+ *   <AdvancedSettings />
+ * </HSection>
+ * ```
+ *
+ * @example Collapsed by default
+ * ```tsx
+ * <HSection
+ *   label="Optional Information"
+ *   collapsible
+ *   collapseByDefault
+ * >
+ *   <OptionalFields />
+ * </HSection>
+ * ```
+ *
+ * @example Multiple sections
+ * ```tsx
+ * <VStack>
+ *   <HSection label="Basic Information">
+ *     <BasicInfoForm />
+ *   </HSection>
+ *
+ *   <HSection
+ *     label="Advanced Settings"
+ *     collapsible
+ *     collapseByDefault
+ *   >
+ *     <AdvancedSettings />
+ *   </HSection>
+ * </VStack>
+ * ```
+ */
 export const HSection = ({
   children,
   className,

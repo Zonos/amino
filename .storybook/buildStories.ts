@@ -1,5 +1,5 @@
-import { capitalize } from 'build-utils/css/utils/capitalize';
 import { glob } from 'glob';
+import capitalize from 'lodash/capitalize';
 
 // https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
 type StorySpecifier = {
@@ -26,8 +26,16 @@ type StoryEntry = StorySpecifier & {
 // We don't want to show these folders in the sidebar
 const removedPrefixes = /(components|icons|styles)\//;
 
+// Regex to match story file paths and extract relevant components.
+// Structure:
+// 1. Matches the base folder path (`../src`) and optionally captures subfolders (e.g., `../src/components`).
+// 2. Captures the `__stories__` folder.
+// 3. Captures the full file name (e.g., `Button.stories.tsx` or `Button.mdx`).
+// 4. Extracts the file name without the extension (e.g., `Button`).
+// 5. Matches the file extension (e.g., `.mdx` or `.stories.tsx`).
+// Named capture groups were avoided for compatibility reasons.
 const pathRegex =
-  /(?<fullFolder>..\/src(\/(?<folder>.*))?\/__stories__)\/(?<fullFileName>(?<fileName>.*)\.(mdx|stories\.tsx))/i;
+  /(\.\.\/src(?:\/(.*))?\/(?:__stories__))\/((.*)\.(mdx|stories\.tsx))/i;
 
 // The titlePrefix defines the folder structure in the sidebar
 const getTitlePrefix = ({
@@ -61,14 +69,27 @@ const getTitlePrefix = ({
 const getStoryEntry = (storyPath: string): StoryEntry => {
   const matched = storyPath.match(pathRegex);
 
-  const { fileName, folder, fullFileName, fullFolder } = matched?.groups || {};
+  if (!matched) {
+    return {
+      directory: '',
+      fileName: '',
+      files: '',
+      titlePrefix: '',
+    };
+  }
 
-  const titlePrefix = getTitlePrefix({ fileName: fileName || '', folder });
+  // Extracting from indexed capture groups instead of named groups
+  const fullFolder = matched[1] || '';
+  const folder = matched[2];
+  const fullFileName = matched[3] || '';
+  const fileName = matched[4] || '';
+
+  const titlePrefix = getTitlePrefix({ fileName, folder });
 
   return {
-    directory: fullFolder || '',
-    fileName: fileName || '',
-    files: fullFileName || '',
+    directory: fullFolder,
+    fileName,
+    files: fullFileName,
     titlePrefix,
   };
 };

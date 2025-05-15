@@ -11,13 +11,79 @@ import type { BaseProps } from 'src/types/BaseProps';
 import styles from './Radio.module.scss';
 
 export type RadioProps = BaseProps & {
+  /**
+   * Determines if the radio button is selected
+   */
   checked: boolean;
+  /**
+   * Sets the radio button to a disabled state
+   * @default false
+   */
   disabled?: boolean;
+  /**
+   * Label text or element to display next to the radio button
+   */
   label?: ReactNode;
+  /**
+   * Function called when the radio button state changes
+   */
   onChange: (checked: boolean) => void;
+  /**
+   * Value associated with this radio button, used for form submission
+   */
   value: string;
 };
 
+/**
+ * Radio component provides a single radio button for use in forms or as part of a RadioGroup.
+ * It includes an animated selection indicator and optional label.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const [checked, setChecked] = useState(false);
+ *
+ * <Radio
+ *   checked={checked}
+ *   onChange={setChecked}
+ *   value="option1"
+ *   label="Select this option"
+ * />
+ * ```
+ *
+ * @example With disabled state
+ * ```tsx
+ * <Radio
+ *   checked={true}
+ *   disabled={true}
+ *   onChange={() => {}}
+ *   value="disabled-option"
+ *   label="This option cannot be changed"
+ * />
+ * ```
+ *
+ * @example With ReactNode label
+ * ```tsx
+ * <Radio
+ *   checked={checked}
+ *   onChange={setChecked}
+ *   value="option-with-jsx"
+ *   label={<>Custom <strong>formatted</strong> label</>}
+ * />
+ * ```
+ *
+ * @example In a form
+ * ```tsx
+ * <form onSubmit={handleSubmit}>
+ *   <Radio
+ *     checked={formData.agreeToTerms}
+ *     onChange={(checked) => setFormData({...formData, agreeToTerms: checked})}
+ *     value="agree"
+ *     label="I agree to the terms and conditions"
+ *   />
+ *   <Button type="submit">Submit</Button>
+ * </form>
+ * ```
+ */
 export const Radio = ({
   checked,
   className,

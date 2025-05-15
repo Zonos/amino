@@ -35,6 +35,81 @@ export type ToastProps = BaseProps & {
   toastKey: string;
 };
 
+/**
+ * Toast component displays brief notifications or feedback messages to users.
+ * It supports different intents (success, warning, error, info) with appropriate styling and icons,
+ * and can be configured with actions, animations, and persistence options.
+ *
+ * @example Basic info toast
+ * <Toast toastKey="info-toast">
+ *   Information message for the user
+ * </Toast>
+ *
+ * @example Success toast
+ * <Toast
+ *   intent="success"
+ *   toastKey="success-toast"
+ * >
+ *   Operation completed successfully
+ * </Toast>
+ *
+ * @example Warning toast
+ * <Toast
+ *   intent="warning"
+ *   toastKey="warning-toast"
+ * >
+ *   Please review your inputs before continuing
+ * </Toast>
+ *
+ * @example Error toast
+ * <Toast
+ *   intent="error"
+ *   toastKey="error-toast"
+ * >
+ *   An error occurred. Please try again.
+ * </Toast>
+ *
+ * @example With actions
+ * <Toast
+ *   intent="info"
+ *   toastKey="actions-toast"
+ *   actions={
+ *     <Button variant="plain">Undo</Button>
+ *   }
+ * >
+ *   Changes saved
+ * </Toast>
+ *
+ * @example Persistent toast with dismiss
+ * <Toast
+ *   intent="warning"
+ *   isPersistent={true}
+ *   onDismiss={() => setVisible(false)}
+ *   toastKey="persistent-toast"
+ * >
+ *   Your session will expire in 5 minutes
+ * </Toast>
+ *
+ * @example With custom direction
+ * <Toast
+ *   direction="bottom"
+ *   intent="info"
+ *   toastKey="direction-toast"
+ * >
+ *   Toast coming from the bottom
+ * </Toast>
+ *
+ * @example Using the Toast system
+ * // Typically used with the Toast system rather than directly:
+ * import { useToast } from 'src/components/toast/useToast';
+ *
+ * const { addToast } = useToast();
+ *
+ * addToast({
+ *   intent: 'success',
+ *   message: 'Item created successfully'
+ * });
+ */
 export const Toast = ({
   actions,
   children,

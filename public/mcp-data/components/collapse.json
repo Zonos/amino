@@ -1,0 +1,48 @@
+{
+  "description": "Collapse component animates the expansion and collapse of its content.\nIt's useful for creating accordions, expandable panels, and other interactive UI elements.",
+  "id": "collapse",
+  "name": "Collapse",
+  "path": "src/components/collapse",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(!open)}>\n{open ? 'Hide' : 'Show'} Content\n</Button>\n<Collapse collapsed={!open}>\n<Card>\n<Text>This content can be hidden or shown.</Text>\n</Card>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "With partial collapse\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(!open)}>\n{open ? 'Show Less' : 'Show More'}\n</Button>\n<Collapse collapsed={!open} collapseSize={50}>\n<Text>\nThis text is partially visible even when collapsed,\nshowing the first 50px and hiding the rest.\nClick the button to see the full content.\n</Text>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "Horizontal orientation\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(!open)}>\n{open ? 'Hide' : 'Show'} Details\n</Button>\n<Collapse collapsed={!open} orientation=\"horizontal\">\n<Card>\n<Text>Additional details that expand horizontally.</Text>\n</Card>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "In an accordion\nconst [expandedSection, setExpandedSection] = useState<string | null>(null);\n\nconst toggleSection = (section: string) => {\nsetExpandedSection(expandedSection === section ? null : section);\n};\n\n<VStack>\n<Button onClick={() => toggleSection('section1')}>Section 1</Button>\n<Collapse collapsed={expandedSection !== 'section1'}>\n<Text>Content for Section 1</Text>\n</Collapse>\n\n<Button onClick={() => toggleSection('section2')}>Section 2</Button>\n<Collapse collapsed={expandedSection !== 'section2'}>\n<Text>Content for Section 2</Text>\n</Collapse>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<Collapse\ncollapsed={!isOpen}\nclassName=\"custom-collapse\"\nstyle={{ backgroundColor: '#f5f5f5' }}\n>\n<Text>Content with custom styling</Text>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(!open)}>\n{open ? 'Hide' : 'Show'} Content\n</Button>\n<Collapse collapsed={!open}>\n<Card>\n<Text>This content can be hidden or shown.</Text>\n</Card>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "With partial collapse\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(!open)}>\n{open ? 'Show Less' : 'Show More'}\n</Button>\n<Collapse collapsed={!open} collapseSize={50}>\n<Text>\nThis text is partially visible even when collapsed,\nshowing the first 50px and hiding the rest.\nClick the button to see the full content.\n</Text>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "Horizontal orientation\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(!open)}>\n{open ? 'Hide' : 'Show'} Details\n</Button>\n<Collapse collapsed={!open} orientation=\"horizontal\">\n<Card>\n<Text>Additional details that expand horizontally.</Text>\n</Card>\n</Collapse>"
+    },
+    {
+      "name": "example",
+      "text": "In an accordion\nconst [expandedSection, setExpandedSection] = useState<string | null>(null);\n\nconst toggleSection = (section: string) => {\nsetExpandedSection(expandedSection === section ? null : section);\n};\n\n<VStack>\n<Button onClick={() => toggleSection('section1')}>Section 1</Button>\n<Collapse collapsed={expandedSection !== 'section1'}>\n<Text>Content for Section 1</Text>\n</Collapse>\n\n<Button onClick={() => toggleSection('section2')}>Section 2</Button>\n<Collapse collapsed={expandedSection !== 'section2'}>\n<Text>Content for Section 2</Text>\n</Collapse>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<Collapse\ncollapsed={!isOpen}\nclassName=\"custom-collapse\"\nstyle={{ backgroundColor: '#f5f5f5' }}\n>\n<Text>Content with custom styling</Text>\n</Collapse>"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "description": "Currency component displays monetary values with properly formatted numbers and currency codes.\nIt automatically handles formatting based on the currency code and applies special styling for negative values.",
+  "id": "currency",
+  "name": "Currency",
+  "path": "src/components/currency",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Currency amount={1250} code=\"usd\" />"
+    },
+    {
+      "name": "example",
+      "text": "Different currencies\n<Currency amount={1250} code=\"usd\" /> // Displays as $12.50 USD\n<Currency amount={1250} code=\"eur\" /> // Displays as €12.50 EUR\n<Currency amount={1250} code=\"gbp\" /> // Displays as £12.50 GBP\n<Currency amount={1250} code=\"jpy\" /> // Displays as ¥1,250 JPY"
+    },
+    {
+      "name": "example",
+      "text": "Negative amount (shows in red)\n<Currency amount={-1250} code=\"usd\" /> // Displays as -$12.50 USD in red"
+    },
+    {
+      "name": "example",
+      "text": "Custom styling\n<Currency\namount={1250}\ncode=\"usd\"\nclassName=\"large-currency\"\nstyle={{ fontSize: '20px' }}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Zero amount\n<Currency amount={0} code=\"usd\" /> // Displays as $0.00 USD"
+    },
+    {
+      "name": "example",
+      "text": "With fractional units\n<Currency amount={125.45} code=\"usd\" /> // Displays as $125.45 USD"
+    },
+    {
+      "name": "example",
+      "text": "Large amounts\n<Currency amount={1250000} code=\"usd\" /> // Displays as $12,500.00 USD"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Currency amount={1250} code=\"usd\" />"
+    },
+    {
+      "name": "example",
+      "text": "Different currencies\n<Currency amount={1250} code=\"usd\" /> // Displays as $12.50 USD\n<Currency amount={1250} code=\"eur\" /> // Displays as €12.50 EUR\n<Currency amount={1250} code=\"gbp\" /> // Displays as £12.50 GBP\n<Currency amount={1250} code=\"jpy\" /> // Displays as ¥1,250 JPY"
+    },
+    {
+      "name": "example",
+      "text": "Negative amount (shows in red)\n<Currency amount={-1250} code=\"usd\" /> // Displays as -$12.50 USD in red"
+    },
+    {
+      "name": "example",
+      "text": "Custom styling\n<Currency\namount={1250}\ncode=\"usd\"\nclassName=\"large-currency\"\nstyle={{ fontSize: '20px' }}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Zero amount\n<Currency amount={0} code=\"usd\" /> // Displays as $0.00 USD"
+    },
+    {
+      "name": "example",
+      "text": "With fractional units\n<Currency amount={125.45} code=\"usd\" /> // Displays as $125.45 USD"
+    },
+    {
+      "name": "example",
+      "text": "Large amounts\n<Currency amount={1250000} code=\"usd\" /> // Displays as $12,500.00 USD"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "description": "Flex component is a layout utility that provides flexible box layouts with\nconfigurable alignment, direction, spacing, and other flexbox properties.",
+  "id": "flex",
+  "name": "Flex",
+  "path": "src/components/flex",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage - row layout (default)\n<Flex>\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Column layout\n<Flex flexDirection=\"column\">\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Custom gap between items\n<Flex gap={16}>\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Centered items (horizontally and vertically)\n<Flex justifyContent=\"center\" alignItems=\"center\">\n<div>Centered Content</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Space between items\n<Flex justifyContent=\"space-between\">\n<div>Left</div>\n<div>Middle</div>\n<div>Right</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Full width container\n<Flex fullWidth>\n<div>Takes full width of parent</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Full height container\n<Flex fullHeight>\n<div>Takes full height of parent</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "With wrap for responsive layouts\n<Flex flexWrap=\"wrap\">\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n<div>Item 4</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Setting flex properties for children\n<Flex childrenFlex=\"1 0\">\n<div>Equal width</div>\n<div>Equal width</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "With padding\n<Flex padding={16}>\n<div>Content with padding</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage - row layout (default)\n<Flex>\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Column layout\n<Flex flexDirection=\"column\">\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Custom gap between items\n<Flex gap={16}>\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Centered items (horizontally and vertically)\n<Flex justifyContent=\"center\" alignItems=\"center\">\n<div>Centered Content</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Space between items\n<Flex justifyContent=\"space-between\">\n<div>Left</div>\n<div>Middle</div>\n<div>Right</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Full width container\n<Flex fullWidth>\n<div>Takes full width of parent</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Full height container\n<Flex fullHeight>\n<div>Takes full height of parent</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "With wrap for responsive layouts\n<Flex flexWrap=\"wrap\">\n<div>Item 1</div>\n<div>Item 2</div>\n<div>Item 3</div>\n<div>Item 4</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "Setting flex properties for children\n<Flex childrenFlex=\"1 0\">\n<div>Equal width</div>\n<div>Equal width</div>\n</Flex>"
+    },
+    {
+      "name": "example",
+      "text": "With padding\n<Flex padding={16}>\n<div>Content with padding</div>\n</Flex>"
+    }
+  ]
+}

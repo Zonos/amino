@@ -37,6 +37,117 @@ type InputType = {
 export type InputProps = InputType &
   Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputType>;
 
+/**
+ * InputSimple is a streamlined version of the Input component without floating labels.
+ * It supports various input types and states, with a simpler design compared to the standard Input.
+ *
+ * @example Basic text input
+ * <InputSimple
+ *   label="Username"
+ *   placeholder="Enter username"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Password input
+ * <InputSimple
+ *   type="password"
+ *   label="Password"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Number input
+ * <InputSimple
+ *   type="number"
+ *   label="Quantity"
+ *   onChange={e => setValue(e.target.valueAsNumber)}
+ *   value={value}
+ * />
+ *
+ * @example Date input
+ * <InputSimple
+ *   type="date"
+ *   label="Event Date"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With help text
+ * <InputSimple
+ *   label="Email"
+ *   helpText="We'll never share your email"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With error state
+ * <InputSimple
+ *   label="Username"
+ *   error={true}
+ *   helpText="Username is required"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With prefix icon
+ * <InputSimple
+ *   label="Search"
+ *   prefix={<SearchIcon />}
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With suffix
+ * <InputSimple
+ *   label="Weight"
+ *   suffix="kg"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With different sizes
+ * <InputSimple
+ *   size="sm"
+ *   label="Small Input"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ * <InputSimple
+ *   size="md"
+ *   label="Medium Input"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ * <InputSimple
+ *   size="lg"
+ *   label="Large Input"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ * <InputSimple
+ *   size="xl"
+ *   label="Extra Large Input"
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example Disabled state
+ * <InputSimple
+ *   label="Username"
+ *   disabled
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ *
+ * @example With custom width
+ * <InputSimple
+ *   label="Username"
+ *   width={300}
+ *   onChange={e => setValue(e.target.value)}
+ *   value={value}
+ * />
+ */
 export const InputSimple = ({
   autoFocus,
   className,

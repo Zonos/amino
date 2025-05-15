@@ -35,13 +35,76 @@ const getScale = (xDistance: number, yDistance: number) => {
 };
 
 type Props = BaseProps & {
+  /**
+   * Array of country options to be used for mapping country names to ISO codes
+   */
   countries: CountryOption[];
+  /**
+   * ISO country code for the origin country
+   */
   from: string;
+  /**
+   * Height of the map in pixels
+   * @default 400
+   */
   height?: number;
+  /**
+   * ISO country code for the destination country
+   */
   to: string;
+  /**
+   * GeoJSON data containing world map information
+   */
   worldData: GeoJsonWorld | null;
 };
 
+/**
+ * A geographic map component that visualizes connections between two countries.
+ * Displays a world map with highlighted countries and a connecting line between them,
+ * automatically centering and scaling the view for optimal visualization.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const { countryOptions } = useCountryOptions();
+ * const [worldData, setWorldData] = useState<GeoJsonWorld | null>(null);
+ *
+ * useEffect(() => {
+ *   fetch('/zonos-countries-geojson.json')
+ *     .then(response => response.json())
+ *     .then(data => setWorldData(data));
+ * }, []);
+ *
+ * <ConnectionMap
+ *   countries={countryOptions}
+ *   from="US"
+ *   to="JP"
+ *   worldData={worldData}
+ * />
+ * ```
+ *
+ * @example With custom height
+ * ```tsx
+ * <ConnectionMap
+ *   countries={countryOptions}
+ *   from="GB"
+ *   to="AU"
+ *   height={600}
+ *   worldData={worldData}
+ * />
+ * ```
+ *
+ * @example With custom styling
+ * ```tsx
+ * <ConnectionMap
+ *   className="custom-map-container"
+ *   countries={countryOptions}
+ *   from="CA"
+ *   to="BR"
+ *   style={{ border: '1px solid var(--amino-gray-200)' }}
+ *   worldData={worldData}
+ * />
+ * ```
+ */
 export const ConnectionMap = ({
   className,
   countries,

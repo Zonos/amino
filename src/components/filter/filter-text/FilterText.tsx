@@ -12,6 +12,48 @@ export type FilterTextProps = BaseFilterProps & {
   value: string | null;
 };
 
+/**
+ * FilterText provides a text input filter for searching or filtering by text.
+ * It allows users to type text input and integrates with the filter wrapper system
+ * for consistent behavior across filters.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const [searchText, setSearchText] = useState<string | null>(null);
+ *
+ * <FilterText
+ *   dropdownTitle="Search"
+ *   label="Name"
+ *   onChange={setSearchText}
+ *   value={searchText}
+ * />
+ * ```
+ *
+ * @example With initial value
+ * ```tsx
+ * const [searchText, setSearchText] = useState<string | null>("initial search");
+ *
+ * <FilterText
+ *   dropdownTitle="Search Products"
+ *   label="Product Name"
+ *   onChange={setSearchText}
+ *   value={searchText}
+ * />
+ * ```
+ *
+ * @example As part of a filter group
+ * ```tsx
+ * <FilterWrapper>
+ *   <FilterText
+ *     dropdownTitle="Search"
+ *     label="Search"
+ *     onChange={setSearchText}
+ *     value={searchText}
+ *   />
+ *   <OtherFilters... />
+ * </FilterWrapper>
+ * ```
+ */
 export const FilterText = ({
   dropdownTitle,
   label,

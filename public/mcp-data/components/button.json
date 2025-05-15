@@ -1,0 +1,104 @@
+{
+  "description": "Button component provides a clickable element that can be customized with different variants,\nsizes, and states. It supports various HTML tags (button, a, div) and includes features like\nloading states, icons, and different visual styles.",
+  "id": "button",
+  "name": "Button",
+  "path": "src/components/button",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic button\n<Button>Click me</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Primary variant\n<Button variant=\"primary\">Primary Button</Button>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Button icon={<CubeIcon size={24} />}>Button with Icon</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Icon on the right\n<Button icon={<ArrowRightIcon />} iconRight>Next</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Loading state\n<Button loading loadingText=\"Loading...\">Submit</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Button disabled>Disabled Button</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Different sizes\n<Button size=\"sm\">Small</Button>\n<Button size=\"md\">Medium</Button>\n<Button size=\"lg\">Large</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Variants\n<Button variant=\"primary\">Primary</Button>\n<Button variant=\"success\">Success</Button>\n<Button variant=\"danger\">Danger</Button>\n<Button variant=\"warning\">Warning</Button>\n<Button variant=\"link\">Link</Button>\n<Button variant=\"subtle\">Subtle</Button>\n<Button variant=\"text\">Text</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Outlined style\n<Button variant=\"primary\" outline>Outlined Primary</Button>"
+    },
+    {
+      "name": "example",
+      "text": "As anchor tag\n<Button tag=\"a\" href=\"https://example.com\">Visit Website</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Inline link\n<Text>Read the <Button tag=\"a\" href=\"#\" variant=\"inlineLink\">documentation</Button> for more info.</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Custom colors\n<Button color=\"blue600\" background=\"gray100\">Custom Button</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Basic button\n<Button>Click me</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Primary variant\n<Button variant=\"primary\">Primary Button</Button>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Button icon={<CubeIcon size={24} />}>Button with Icon</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Icon on the right\n<Button icon={<ArrowRightIcon />} iconRight>Next</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Loading state\n<Button loading loadingText=\"Loading...\">Submit</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Button disabled>Disabled Button</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Different sizes\n<Button size=\"sm\">Small</Button>\n<Button size=\"md\">Medium</Button>\n<Button size=\"lg\">Large</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Variants\n<Button variant=\"primary\">Primary</Button>\n<Button variant=\"success\">Success</Button>\n<Button variant=\"danger\">Danger</Button>\n<Button variant=\"warning\">Warning</Button>\n<Button variant=\"link\">Link</Button>\n<Button variant=\"subtle\">Subtle</Button>\n<Button variant=\"text\">Text</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Outlined style\n<Button variant=\"primary\" outline>Outlined Primary</Button>"
+    },
+    {
+      "name": "example",
+      "text": "As anchor tag\n<Button tag=\"a\" href=\"https://example.com\">Visit Website</Button>"
+    },
+    {
+      "name": "example",
+      "text": "Inline link\n<Text>Read the <Button tag=\"a\" href=\"#\" variant=\"inlineLink\">documentation</Button> for more info.</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Custom colors\n<Button color=\"blue600\" background=\"gray100\">Custom Button</Button>"
+    }
+  ]
+}

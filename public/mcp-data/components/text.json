@@ -1,0 +1,128 @@
+{
+  "description": "Text component that provides consistent typography styles across the application.\nIt offers various presets for different text styles, sizes, weights, and colors.",
+  "id": "text",
+  "name": "Text",
+  "path": "src/components/text",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage with default (body) type\n<Text>This is body text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Page Header\n<Text type=\"page-header\">Main Page Title</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Header\n<Text type=\"header\">Section Title</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Subheader\n<Text type=\"subheader\">Subsection Title</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Body text\n<Text type=\"body\">This is the main content text of your application.</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Label\n<Text type=\"label\">Field label</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Caption\n<Text type=\"caption\">Small caption text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom color\n<Text color=\"blue600\">Blue text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom weight\n<Text fontWeight={700}>Bold text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With uppercase\n<Text isUppercase>This will be uppercase</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Custom HTML tag\n<Text tag=\"h2\" type=\"title\">Custom heading level</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Code style\n<Text type=\"code\">const example = \"code snippet\";</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Input label\n<Text type=\"input-label\">Input field label</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom font size\n<Text fontSize=\"xl\">Larger text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom line height\n<Text lineHeight=\"l\">Text with increased line height</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage with default (body) type\n<Text>This is body text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Page Header\n<Text type=\"page-header\">Main Page Title</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Header\n<Text type=\"header\">Section Title</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Subheader\n<Text type=\"subheader\">Subsection Title</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Body text\n<Text type=\"body\">This is the main content text of your application.</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Label\n<Text type=\"label\">Field label</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Caption\n<Text type=\"caption\">Small caption text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom color\n<Text color=\"blue600\">Blue text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom weight\n<Text fontWeight={700}>Bold text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With uppercase\n<Text isUppercase>This will be uppercase</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Custom HTML tag\n<Text tag=\"h2\" type=\"title\">Custom heading level</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Code style\n<Text type=\"code\">const example = \"code snippet\";</Text>"
+    },
+    {
+      "name": "example",
+      "text": "Input label\n<Text type=\"input-label\">Input field label</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom font size\n<Text fontSize=\"xl\">Larger text</Text>"
+    },
+    {
+      "name": "example",
+      "text": "With custom line height\n<Text lineHeight=\"l\">Text with increased line height</Text>"
+    }
+  ]
+}

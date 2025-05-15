@@ -1,0 +1,40 @@
+{
+  "description": "RichCheckbox component provides enhanced checkboxes with support for icons, labels, and subtitles.\nUse it for selection interfaces that need visual richness beyond standard checkboxes.",
+  "id": "rich-checkbox",
+  "name": "RichCheckbox",
+  "path": "src/components/rich-checkbox",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedOption, setSelectedOption] = useState('option1');\n\n<RichCheckbox\nitems={[\n{\nchecked: selectedOption === 'option1',\nlabel: \"Option 1\",\nvalue: \"option1\"\n},\n{\nchecked: selectedOption === 'option2',\nlabel: \"Option 2\",\nvalue: \"option2\"\n}\n]}\nonClick={(value) => setSelectedOption(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitles\n<RichCheckbox\nitems={[\n{\nchecked: selected === 'standard',\nlabel: \"Standard Shipping\",\nsubtitle: \"3-5 business days\",\nvalue: \"standard\"\n},\n{\nchecked: selected === 'express',\nlabel: \"Express Shipping\",\nsubtitle: \"1-2 business days\",\nvalue: \"express\"\n}\n]}\nonClick={(value) => setSelected(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icons\n<RichCheckbox\nitems={[\n{\nchecked: selected === 'visa',\nicon: <CreditCardIcon />,\nlabel: \"Credit Card\",\nvalue: \"visa\"\n},\n{\nchecked: selected === 'paypal',\nicon: <PaypalIcon />,\nlabel: \"PayPal\",\nvalue: \"paypal\"\n}\n]}\nonClick={(value) => setSelected(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Complete example with icons and subtitles\n<RichCheckbox\nitems={[\n{\nchecked: selected === 'basic',\nicon: <BasicPlanIcon />,\nlabel: \"Basic Plan\",\nsubtitle: \"$9.99/month - For individuals\",\nvalue: \"basic\"\n},\n{\nchecked: selected === 'pro',\nicon: <ProPlanIcon />,\nlabel: \"Pro Plan\",\nsubtitle: \"$19.99/month - For professionals\",\nvalue: \"pro\"\n},\n{\nchecked: selected === 'enterprise',\nicon: <EnterprisePlanIcon />,\nlabel: \"Enterprise Plan\",\nsubtitle: \"$49.99/month - For teams\",\nvalue: \"enterprise\"\n}\n]}\nonClick={(value) => setSelected(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedOption, setSelectedOption] = useState('option1');\n\n<RichCheckbox\nitems={[\n{\nchecked: selectedOption === 'option1',\nlabel: \"Option 1\",\nvalue: \"option1\"\n},\n{\nchecked: selectedOption === 'option2',\nlabel: \"Option 2\",\nvalue: \"option2\"\n}\n]}\nonClick={(value) => setSelectedOption(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitles\n<RichCheckbox\nitems={[\n{\nchecked: selected === 'standard',\nlabel: \"Standard Shipping\",\nsubtitle: \"3-5 business days\",\nvalue: \"standard\"\n},\n{\nchecked: selected === 'express',\nlabel: \"Express Shipping\",\nsubtitle: \"1-2 business days\",\nvalue: \"express\"\n}\n]}\nonClick={(value) => setSelected(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icons\n<RichCheckbox\nitems={[\n{\nchecked: selected === 'visa',\nicon: <CreditCardIcon />,\nlabel: \"Credit Card\",\nvalue: \"visa\"\n},\n{\nchecked: selected === 'paypal',\nicon: <PaypalIcon />,\nlabel: \"PayPal\",\nvalue: \"paypal\"\n}\n]}\nonClick={(value) => setSelected(value)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Complete example with icons and subtitles\n<RichCheckbox\nitems={[\n{\nchecked: selected === 'basic',\nicon: <BasicPlanIcon />,\nlabel: \"Basic Plan\",\nsubtitle: \"$9.99/month - For individuals\",\nvalue: \"basic\"\n},\n{\nchecked: selected === 'pro',\nicon: <ProPlanIcon />,\nlabel: \"Pro Plan\",\nsubtitle: \"$19.99/month - For professionals\",\nvalue: \"pro\"\n},\n{\nchecked: selected === 'enterprise',\nicon: <EnterprisePlanIcon />,\nlabel: \"Enterprise Plan\",\nsubtitle: \"$49.99/month - For teams\",\nvalue: \"enterprise\"\n}\n]}\nonClick={(value) => setSelected(value)}\n/>"
+    }
+  ]
+}

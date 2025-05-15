@@ -46,6 +46,90 @@ export type TooltipProps = BaseProps & {
   title?: ReactNode;
 } & Partial<Omit<MuiTooltipProps, 'children'>>;
 
+/**
+ * Tooltip component displays informative text when users hover over, focus on, or tap an element.
+ * It supports titles, subtitles, and customization of placement and theme.
+ *
+ * @example Basic tooltip
+ * <Tooltip title="More information">
+ *   <Button>Hover me</Button>
+ * </Tooltip>
+ *
+ * @example With subtitle
+ * <Tooltip
+ *   title="User profile"
+ *   subtitle="View and edit your personal information"
+ * >
+ *   <Avatar>JD</Avatar>
+ * </Tooltip>
+ *
+ * @example With placement
+ * <Tooltip title="Top placement" placement="top">
+ *   <span>Hover me</span>
+ * </Tooltip>
+ *
+ * <Tooltip title="Bottom placement" placement="bottom">
+ *   <span>Hover me</span>
+ * </Tooltip>
+ *
+ * <Tooltip title="Left placement" placement="left">
+ *   <span>Hover me</span>
+ * </Tooltip>
+ *
+ * <Tooltip title="Right placement" placement="right">
+ *   <span>Hover me</span>
+ * </Tooltip>
+ *
+ * @example Controlled tooltip
+ * const [isOpen, setIsOpen] = useState(false);
+ *
+ * <Button onClick={() => setIsOpen(!isOpen)}>
+ *   Toggle tooltip
+ * </Button>
+ *
+ * <Tooltip
+ *   title="This tooltip is controlled programmatically"
+ *   open={isOpen}
+ * >
+ *   <span>Hover won't affect this tooltip</span>
+ * </Tooltip>
+ *
+ * @example Disabled tooltip
+ * <Tooltip
+ *   title="This won't show"
+ *   disabled={true}
+ * >
+ *   <Button>Hover me (no tooltip)</Button>
+ * </Tooltip>
+ *
+ * @example With custom theme
+ * <Tooltip
+ *   title="Custom theme"
+ *   themeOverride="day"
+ * >
+ *   <Button>Hover me</Button>
+ * </Tooltip>
+ *
+ * @example With arrow
+ * <Tooltip
+ *   title="Tooltip with arrow"
+ *   arrow
+ * >
+ *   <Button>Hover me</Button>
+ * </Tooltip>
+ *
+ * @example With JSX content
+ * <Tooltip
+ *   title={
+ *     <div>
+ *       <Text type="bold-label">Custom content</Text>
+ *       <div>With formatting</div>
+ *     </div>
+ *   }
+ * >
+ *   <Button>Hover for rich content</Button>
+ * </Tooltip>
+ */
 const StyledTooltip = muiStyled(
   ({
     className,

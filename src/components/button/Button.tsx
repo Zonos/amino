@@ -85,28 +85,102 @@ export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
     tag?: T | GroupTag;
   } & Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'>;
 
+/**
+ * Button component provides a clickable element that can be customized with different variants,
+ * sizes, and states. It supports various HTML tags (button, a, div) and includes features like
+ * loading states, icons, and different visual styles.
+ *
+ * @example Basic button
+ * <Button>Click me</Button>
+ *
+ * @example Primary variant
+ * <Button variant="primary">Primary Button</Button>
+ *
+ * @example With icon
+ * <Button icon={<CubeIcon size={24} />}>Button with Icon</Button>
+ *
+ * @example Icon on the right
+ * <Button icon={<ArrowRightIcon />} iconRight>Next</Button>
+ *
+ * @example Loading state
+ * <Button loading loadingText="Loading...">Submit</Button>
+ *
+ * @example Disabled state
+ * <Button disabled>Disabled Button</Button>
+ *
+ * @example Different sizes
+ * <Button size="sm">Small</Button>
+ * <Button size="md">Medium</Button>
+ * <Button size="lg">Large</Button>
+ *
+ * @example Variants
+ * <Button variant="primary">Primary</Button>
+ * <Button variant="success">Success</Button>
+ * <Button variant="danger">Danger</Button>
+ * <Button variant="warning">Warning</Button>
+ * <Button variant="link">Link</Button>
+ * <Button variant="subtle">Subtle</Button>
+ * <Button variant="text">Text</Button>
+ *
+ * @example Outlined style
+ * <Button variant="primary" outline>Outlined Primary</Button>
+ *
+ * @example As anchor tag
+ * <Button tag="a" href="https://example.com">Visit Website</Button>
+ *
+ * @example Inline link
+ * <Text>Read the <Button tag="a" href="#" variant="inlineLink">documentation</Button> for more info.</Text>
+ *
+ * @example Custom colors
+ * <Button color="blue600" background="gray100">Custom Button</Button>
+ */
 export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   background,
   children,
   className,
   color,
+  /** Whether the button is disabled */
   disabled = false,
+  /** Makes the button width fit its content */
   fitContentWidth,
   hoverBackground,
   hoverColor,
+  /** Icon to display in the button */
   icon,
+  /** Whether to show the icon on the right side */
   iconRight,
+  /** Shows a loading spinner */
   loading = false,
+  /** Text to show when loading */
   loadingText,
+  /** Disables ripple effect on click */
   noRipple = false,
+  /** Shows an outlined version of the button */
   outline = false,
+  /**
+   * Size of the button
+   * @default 'sm'
+   */
   size = 'sm',
+  /** Color of the spinner when loading */
   spinnerColor,
   style,
+  /**
+   * HTML element tag to use
+   * @default 'button'
+   */
   tag = DEFAULT_TAG,
   testId,
   themeOverride,
+  /**
+   * HTML button type attribute
+   * @default 'button'
+   */
   type = 'button',
+  /**
+   * Visual style variant of the button
+   * @default 'standard'
+   */
   variant = 'standard',
   ...props
 }: ButtonProps<T>) {

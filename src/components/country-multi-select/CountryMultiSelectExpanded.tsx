@@ -29,8 +29,17 @@ import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 
+/**
+ * Represents a group of countries within a geographical region.
+ */
 type CountryMultiSelectExpandedRegion<CountryCode extends string = string> = {
+  /**
+   * List of countries that belong to this region
+   */
   countries: CountryMultiSelectExpandedOption<CountryCode>[];
+  /**
+   * Display name of the region
+   */
   label: string;
 };
 
@@ -38,32 +47,126 @@ export type CountryMultiSelectExpandedProps<
   CountryCode extends string = string,
 > = BaseProps &
   HelpTextProps & {
+    /**
+     * Optional actions to display in the component header
+     */
     actions?: ReactNode;
+    /**
+     * Array of country options to display in the select
+     */
     countries: CountryMultiSelectExpandedOption<CountryCode>[];
     /**
+     * Whether the component is in a disabled state
      * @default false
      */
     disabled?: boolean;
     /**
+     * Maximum height of the country selection area in pixels
      * @default 380
      */
     maxHeight?: number;
     /**
-     * Remove the top header part
+     * Whether to hide the component header
      * @default false
      */
     noHeader?: boolean;
+    /**
+     * Handler called when selection changes
+     * @param countries Array of country options that are selected
+     */
     onChange: (
       countries: CountryMultiSelectExpandedOption<CountryCode>[],
     ) => void;
+    /**
+     * Array of country options that are currently selected
+     */
     selectedCountries: CountryMultiSelectExpandedOption<CountryCode>[];
     /**
-     * No search bar
+     * Whether to hide the search functionality
      * @default false
      */
     withoutSearch?: boolean;
   };
 
+/**
+ * An expanded view component for selecting multiple countries, organized by regions.
+ * Features include search functionality, group selection, and individual country selection.
+ *
+ * @example Basic usage
+ * ```tsx
+ * const [selectedCountries, setSelectedCountries] = useState<CountryMultiSelectExpandedOption[]>([]);
+ * const countries = [
+ *   {
+ *     code: 'US',
+ *     group: 'North America',
+ *     icon: <FlagIcon code="US" />,
+ *     label: 'United States'
+ *   },
+ *   {
+ *     code: 'CA',
+ *     group: 'North America',
+ *     icon: <FlagIcon code="CA" />,
+ *     label: 'Canada'
+ *   }
+ * ];
+ *
+ * <CountryMultiSelectExpanded
+ *   countries={countries}
+ *   onChange={setSelectedCountries}
+ *   selectedCountries={selectedCountries}
+ * />
+ * ```
+ *
+ * @example With disabled countries
+ * ```tsx
+ * const countries = [
+ *   {
+ *     code: 'US',
+ *     group: 'North America',
+ *     icon: <FlagIcon code="US" />,
+ *     label: 'United States'
+ *   },
+ *   {
+ *     code: 'CA',
+ *     disabled: true,
+ *     group: 'North America',
+ *     icon: <FlagIcon code="CA" />,
+ *     label: 'Canada'
+ *   }
+ * ];
+ *
+ * <CountryMultiSelectExpanded
+ *   countries={countries}
+ *   onChange={setSelectedCountries}
+ *   selectedCountries={selectedCountries}
+ * />
+ * ```
+ *
+ * @example With custom actions
+ * ```tsx
+ * <CountryMultiSelectExpanded
+ *   actions={
+ *     <Button onClick={() => console.log('Custom action')} size="small">
+ *       Custom Action
+ *     </Button>
+ *   }
+ *   countries={countries}
+ *   onChange={setSelectedCountries}
+ *   selectedCountries={selectedCountries}
+ * />
+ * ```
+ *
+ * @example With error state
+ * ```tsx
+ * <CountryMultiSelectExpanded
+ *   countries={countries}
+ *   error={!selectedCountries.length}
+ *   helpText={!selectedCountries.length ? 'At least one country is required' : undefined}
+ *   onChange={setSelectedCountries}
+ *   selectedCountries={selectedCountries}
+ * />
+ * ```
+ */
 export const CountryMultiSelectExpanded = <
   CountryCode extends string = string,
 >({

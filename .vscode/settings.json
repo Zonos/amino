@@ -1,14 +1,15 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "javascript.preferences.importModuleSpecifier": "non-relative",
-  // Exclude compiled output
-  "search.exclude": {
-    "**/node_modules": true,
-    ".github/**/*.js": true
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
   },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.suggest.showIssues": true
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+  "editor.formatOnSaveMode": "file",
+  "prettier.requireConfig": true
 }

@@ -1,0 +1,40 @@
+{
+  "description": "Thumbnail displays an icon with customizable styling, color schemes, and shapes.\nUsed for visual representation of items or actions in a compact format.\nSupports different intents, shapes, colors, and sizes to match various design requirements.",
+  "id": "thumbnail",
+  "name": "Thumbnail",
+  "path": "src/components/thumbnail",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Thumbnail icon={<UserIcon />} />"
+    },
+    {
+      "name": "example",
+      "text": "Custom shape and color\n<Thumbnail\ncolor=\"blue\"\nicon={<DocumentIcon />}\nshape=\"square\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With outline intent and custom size\n<Thumbnail\nicon={<StarIcon />}\nintent=\"outline\"\nsize={48}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom color override\n<Thumbnail\nicon={<GlobeIcon />}\nmainColorOverride=\"purple800\"\nsecondaryColorOverride=\"purple400\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Thumbnail icon={<UserIcon />} />"
+    },
+    {
+      "name": "example",
+      "text": "Custom shape and color\n<Thumbnail\ncolor=\"blue\"\nicon={<DocumentIcon />}\nshape=\"square\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With outline intent and custom size\n<Thumbnail\nicon={<StarIcon />}\nintent=\"outline\"\nsize={48}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom color override\n<Thumbnail\nicon={<GlobeIcon />}\nmainColorOverride=\"purple800\"\nsecondaryColorOverride=\"purple400\"\n/>"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "description": "A progress bar component that displays a horizontal bar to visualize completion or loading progress.\nSupports different color styles and percentage-based progress values.",
+  "id": "progress-bar",
+  "name": "ProgressBar",
+  "path": "src/components/progress-bar",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<ProgressBar progress={75} />"
+    },
+    {
+      "name": "example",
+      "text": "With different color styles\n<VStack spacing={16}>\n<ProgressBar colorStyle=\"blue600\" progress={60} />\n<ProgressBar colorStyle=\"green600\" progress={60} />\n<ProgressBar colorStyle=\"red600\" progress={60} />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With dynamic coloring based on progress\n<VStack spacing={16}>\n<Text>Green to Red (higher is worse)</Text>\n<ProgressBar colorStyle=\"greenToRed\" progress={80} />\n\n<Text>Red to Green (higher is better)</Text>\n<ProgressBar colorStyle=\"redToGreen\" progress={80} />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<ProgressBar\nclassName=\"custom-progress\"\ncolorStyle=\"orange600\"\nprogress={45}\nstyle={{ height: '8px', borderRadius: '4px' }}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<ProgressBar progress={75} />"
+    },
+    {
+      "name": "example",
+      "text": "With different color styles\n<VStack spacing={16}>\n<ProgressBar colorStyle=\"blue600\" progress={60} />\n<ProgressBar colorStyle=\"green600\" progress={60} />\n<ProgressBar colorStyle=\"red600\" progress={60} />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With dynamic coloring based on progress\n<VStack spacing={16}>\n<Text>Green to Red (higher is worse)</Text>\n<ProgressBar colorStyle=\"greenToRed\" progress={80} />\n\n<Text>Red to Green (higher is better)</Text>\n<ProgressBar colorStyle=\"redToGreen\" progress={80} />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<ProgressBar\nclassName=\"custom-progress\"\ncolorStyle=\"orange600\"\nprogress={45}\nstyle={{ height: '8px', borderRadius: '4px' }}\n/>"
+    }
+  ]
+}

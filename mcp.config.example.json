@@ -1,0 +1,8 @@
+{
+  "componentDirs": ["src/components"],
+  "outputDir": "public/mcp-data",
+  "verbose": false,
+  "includePrivate": false,
+  "excludeDirs": ["__tests__", "__stories__"],
+  "filePatterns": ["**/*.{ts,tsx}", "!**/*.d.ts", "!**/*.test.{ts,tsx}", "!**/*.stories.{ts,tsx}"]
+}

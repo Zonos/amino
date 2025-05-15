@@ -1,0 +1,40 @@
+{
+  "description": "DangerZone component visually highlights areas containing destructive or irreversible actions.\nIt's a specialized Card component with warning styling to make users cautious about the actions within.",
+  "id": "danger-zone",
+  "name": "DangerZone",
+  "path": "src/components/danger-zone",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<DangerZone>\n<Text type=\"bold\">Delete Account</Text>\n<Text>This action cannot be undone. All data will be permanently deleted.</Text>\n<Button variant=\"danger\">Delete Account</Button>\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "With multiple actions\n<DangerZone>\n<VStack spacing={16}>\n<div>\n<Text type=\"bold\">Reset Settings</Text>\n<Text>Restore all settings to their default values.</Text>\n<Button variant=\"danger\">Reset</Button>\n</div>\n<Divider />\n<div>\n<Text type=\"bold\">Delete Account</Text>\n<Text>This action cannot be undone.</Text>\n<Button variant=\"danger\">Delete</Button>\n</div>\n</VStack>\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "With confirmation UI\nconst [showConfirmation, setShowConfirmation] = useState(false);\n\n<DangerZone>\n<Text type=\"bold\">Delete Project</Text>\n<Text>This will permanently delete the project and all associated resources.</Text>\n\n{!showConfirmation ? (\n<Button\nvariant=\"danger\"\nonClick={() => setShowConfirmation(true)}\n>\nDelete Project\n</Button>\n) : (\n<VStack>\n<Text fontWeight=\"bold\">Are you sure?</Text>\n<HStack>\n<Button variant=\"standard\" onClick={() => setShowConfirmation(false)}>\nCancel\n</Button>\n<Button variant=\"danger\" onClick={handleDeleteProject}>\nYes, Delete\n</Button>\n</HStack>\n</VStack>\n)}\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<DangerZone\nstyle={{ maxWidth: '500px' }}\nclassName=\"custom-danger-zone\"\n>\n<Text type=\"bold\">Danger Zone Content</Text>\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<DangerZone>\n<Text type=\"bold\">Delete Account</Text>\n<Text>This action cannot be undone. All data will be permanently deleted.</Text>\n<Button variant=\"danger\">Delete Account</Button>\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "With multiple actions\n<DangerZone>\n<VStack spacing={16}>\n<div>\n<Text type=\"bold\">Reset Settings</Text>\n<Text>Restore all settings to their default values.</Text>\n<Button variant=\"danger\">Reset</Button>\n</div>\n<Divider />\n<div>\n<Text type=\"bold\">Delete Account</Text>\n<Text>This action cannot be undone.</Text>\n<Button variant=\"danger\">Delete</Button>\n</div>\n</VStack>\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "With confirmation UI\nconst [showConfirmation, setShowConfirmation] = useState(false);\n\n<DangerZone>\n<Text type=\"bold\">Delete Project</Text>\n<Text>This will permanently delete the project and all associated resources.</Text>\n\n{!showConfirmation ? (\n<Button\nvariant=\"danger\"\nonClick={() => setShowConfirmation(true)}\n>\nDelete Project\n</Button>\n) : (\n<VStack>\n<Text fontWeight=\"bold\">Are you sure?</Text>\n<HStack>\n<Button variant=\"standard\" onClick={() => setShowConfirmation(false)}>\nCancel\n</Button>\n<Button variant=\"danger\" onClick={handleDeleteProject}>\nYes, Delete\n</Button>\n</HStack>\n</VStack>\n)}\n</DangerZone>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<DangerZone\nstyle={{ maxWidth: '500px' }}\nclassName=\"custom-danger-zone\"\n>\n<Text type=\"bold\">Danger Zone Content</Text>\n</DangerZone>"
+    }
+  ]
+}

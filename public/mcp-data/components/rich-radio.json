@@ -1,0 +1,64 @@
+{
+  "description": "RichRadio provides a styled radio button group with rich content options.\nEach option can have a label, subtitle, tooltip, and custom styling.\nOnly one option can be selected at a time.",
+  "id": "rich-radio",
+  "name": "RichRadio",
+  "path": "src/components/rich-radio",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage with label and subtitle\nconst [selected, setSelected] = useState<string | null>('option1');\n\n<RichRadio\nitems={[\n{ label: 'Option One', subtitle: 'Description for option one', value: 'option1' },\n{ label: 'Option Two', subtitle: 'Description for option two', value: 'option2' },\n{ label: 'Option Three', value: 'option3' }\n]}\nonChange={setSelected}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With tooltips\n<RichRadio\nitems={[\n{\nlabel: 'Option with tooltip',\nsubtitle: 'Hover to see more information',\ntooltip: 'This is additional information about this option',\ntooltipSetting: { delayShow: 400 },\nvalue: 'option1'\n},\n{\nlabel: 'Another option',\nvalue: 'option2'\n}\n]}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom icons\n<RichRadio\nactiveIcon={<CheckmarkIcon />}\nicon={<ChevronRightIcon />}\nitems={radioOptions}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom rendering\n<RichRadio\nitems={optionsWithMetadata}\nonChange={handleChange}\nrenderCustomText={(option) => (\n<div className=\"custom-option\">\n<strong>{option.label}</strong>\n{option.subtitle && <div className=\"subtitle\">{option.subtitle}</div>}\n{option.metadata && <div className=\"metadata\">{option.metadata}</div>}\n</div>\n)}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With compact size\n<RichRadio\nitemHeight={40}\nitems={radioOptions}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled options\n<RichRadio\nitems={[\n{ label: 'Available option', value: 'option1' },\n{\nlabel: 'Disabled option',\nsubtitle: 'This option cannot be selected',\nvalue: 'option2',\ndisabled: true\n}\n]}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With type safety using generics\ntype PaymentMethod = 'credit' | 'debit' | 'paypal';\n\nconst [paymentType, setPaymentType] = useState<PaymentMethod | null>('credit');\n\nconst paymentOptions: RichRadioItemType<PaymentMethod>[] = [\n{ label: 'Credit Card', value: 'credit' },\n{ label: 'Debit Card', value: 'debit' },\n{ label: 'PayPal', value: 'paypal' }\n];\n\n<RichRadio<PaymentMethod>\nitems={paymentOptions}\nonChange={setPaymentType}\nvalue={paymentType}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage with label and subtitle\nconst [selected, setSelected] = useState<string | null>('option1');\n\n<RichRadio\nitems={[\n{ label: 'Option One', subtitle: 'Description for option one', value: 'option1' },\n{ label: 'Option Two', subtitle: 'Description for option two', value: 'option2' },\n{ label: 'Option Three', value: 'option3' }\n]}\nonChange={setSelected}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With tooltips\n<RichRadio\nitems={[\n{\nlabel: 'Option with tooltip',\nsubtitle: 'Hover to see more information',\ntooltip: 'This is additional information about this option',\ntooltipSetting: { delayShow: 400 },\nvalue: 'option1'\n},\n{\nlabel: 'Another option',\nvalue: 'option2'\n}\n]}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom icons\n<RichRadio\nactiveIcon={<CheckmarkIcon />}\nicon={<ChevronRightIcon />}\nitems={radioOptions}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom rendering\n<RichRadio\nitems={optionsWithMetadata}\nonChange={handleChange}\nrenderCustomText={(option) => (\n<div className=\"custom-option\">\n<strong>{option.label}</strong>\n{option.subtitle && <div className=\"subtitle\">{option.subtitle}</div>}\n{option.metadata && <div className=\"metadata\">{option.metadata}</div>}\n</div>\n)}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With compact size\n<RichRadio\nitemHeight={40}\nitems={radioOptions}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With disabled options\n<RichRadio\nitems={[\n{ label: 'Available option', value: 'option1' },\n{\nlabel: 'Disabled option',\nsubtitle: 'This option cannot be selected',\nvalue: 'option2',\ndisabled: true\n}\n]}\nonChange={handleChange}\nvalue={selected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With type safety using generics\ntype PaymentMethod = 'credit' | 'debit' | 'paypal';\n\nconst [paymentType, setPaymentType] = useState<PaymentMethod | null>('credit');\n\nconst paymentOptions: RichRadioItemType<PaymentMethod>[] = [\n{ label: 'Credit Card', value: 'credit' },\n{ label: 'Debit Card', value: 'debit' },\n{ label: 'PayPal', value: 'paypal' }\n];\n\n<RichRadio<PaymentMethod>\nitems={paymentOptions}\nonChange={setPaymentType}\nvalue={paymentType}\n/>"
+    }
+  ]
+}

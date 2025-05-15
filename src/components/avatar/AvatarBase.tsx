@@ -47,6 +47,43 @@ type AvatarBaseProps = BaseProps & {
 } & Required<AvatarProps> &
   AvatarStyleProps;
 
+/**
+ * AvatarBase is the foundation component for all avatar variations in the Amino design system.
+ * It provides consistent styling and layout for avatars with customizable appearance.
+ *
+ * This component is not typically used directly. Instead, use one of the specialized
+ * avatar components like ImageAvatar or UserAvatar that build upon this base.
+ *
+ * @component Avatar
+ *
+ * @example Custom avatar implementation
+ * <AvatarBase
+ *   backgroundColor={theme.blue100}
+ *   bordered={true}
+ *   shape="rounded"
+ *   size={48}
+ * >
+ *   <Text fontWeight={700} textAlign="center">AB</Text>
+ * </AvatarBase>
+ *
+ * @example Background image with custom styling
+ * <AvatarBase
+ *   backgroundUrl="https://example.com/image.jpg"
+ *   backgroundSize="cover"
+ *   backgroundPosition="center"
+ *   shape="square"
+ *   size={64}
+ * />
+ *
+ * @example Avatar with child content
+ * <AvatarBase
+ *   size={40}
+ *   shape="round"
+ *   backgroundColor={theme.gray200}
+ * >
+ *   <IconUser size={24} color="gray600" />
+ * </AvatarBase>
+ */
 export const AvatarBase = ({
   backgroundColor,
   backgroundPosition,

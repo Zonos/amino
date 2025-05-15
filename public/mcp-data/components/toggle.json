@@ -1,0 +1,48 @@
+{
+  "description": "Toggle component provides a segmented control for switching between multiple options.\nIt features an animated highlight that moves to indicate the selected option.",
+  "id": "toggle",
+  "name": "Toggle",
+  "path": "src/components/toggle",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage with two options\nconst [selected, setSelected] = useState('option1');\n\n<Toggle\noptions={[\n{ label: 'Option 1', value: 'option1' },\n{ label: 'Option 2', value: 'option2' }\n]}\nvalue={selected}\nonChange={setSelected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple options\nconst [view, setView] = useState('day');\n\n<Toggle\noptions={[\n{ label: 'Day', value: 'day' },\n{ label: 'Week', value: 'week' },\n{ label: 'Month', value: 'month' },\n{ label: 'Year', value: 'year' }\n]}\nvalue={view}\nonChange={setView}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Full width\n<Toggle\nfullWidth\noptions={[\n{ label: 'Left', value: 'left' },\n{ label: 'Center', value: 'center' },\n{ label: 'Right', value: 'right' }\n]}\nvalue={alignment}\nonChange={setAlignment}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Different sizes\n<VStack spacing={16}>\n<Toggle\nsize=\"xs\"\noptions={options}\nvalue={selected}\nonChange={setSelected}\n/>\n<Toggle\nsize=\"sm\"\noptions={options}\nvalue={selected}\nonChange={setSelected}\n/>\n<Toggle\nsize=\"md\"\noptions={options}\nvalue={selected}\nonChange={setSelected}\n/>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With type safety using generics\ntype ViewMode = 'list' | 'grid' | 'table';\n\nconst [viewMode, setViewMode] = useState<ViewMode>('list');\nconst options: SelectOption<ViewMode>[] = [\n{ label: 'List', value: 'list' },\n{ label: 'Grid', value: 'grid' },\n{ label: 'Table', value: 'table' }\n];\n\n<Toggle<ViewMode>\noptions={options}\nvalue={viewMode}\nonChange={setViewMode}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage with two options\nconst [selected, setSelected] = useState('option1');\n\n<Toggle\noptions={[\n{ label: 'Option 1', value: 'option1' },\n{ label: 'Option 2', value: 'option2' }\n]}\nvalue={selected}\nonChange={setSelected}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple options\nconst [view, setView] = useState('day');\n\n<Toggle\noptions={[\n{ label: 'Day', value: 'day' },\n{ label: 'Week', value: 'week' },\n{ label: 'Month', value: 'month' },\n{ label: 'Year', value: 'year' }\n]}\nvalue={view}\nonChange={setView}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Full width\n<Toggle\nfullWidth\noptions={[\n{ label: 'Left', value: 'left' },\n{ label: 'Center', value: 'center' },\n{ label: 'Right', value: 'right' }\n]}\nvalue={alignment}\nonChange={setAlignment}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Different sizes\n<VStack spacing={16}>\n<Toggle\nsize=\"xs\"\noptions={options}\nvalue={selected}\nonChange={setSelected}\n/>\n<Toggle\nsize=\"sm\"\noptions={options}\nvalue={selected}\nonChange={setSelected}\n/>\n<Toggle\nsize=\"md\"\noptions={options}\nvalue={selected}\nonChange={setSelected}\n/>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "With type safety using generics\ntype ViewMode = 'list' | 'grid' | 'table';\n\nconst [viewMode, setViewMode] = useState<ViewMode>('list');\nconst options: SelectOption<ViewMode>[] = [\n{ label: 'List', value: 'list' },\n{ label: 'Grid', value: 'grid' },\n{ label: 'Table', value: 'table' }\n];\n\n<Toggle<ViewMode>\noptions={options}\nvalue={viewMode}\nonChange={setViewMode}\n/>"
+    }
+  ]
+}

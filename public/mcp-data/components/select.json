@@ -1,0 +1,100 @@
+{
+  "description": "A multi-select component specialized for selecting multiple countries.\nDisplays country flags alongside names, organizes countries by region, and includes a \"Select all\" option.",
+  "id": "select",
+  "name": "Select",
+  "path": "src/components/select",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Select\nlabel=\"Currency\"\noptions={[\n{ label: 'US Dollar (USD)', value: 'USD' },\n{ label: 'Euro (EUR)', value: 'EUR' },\n{ label: 'British Pound (GBP)', value: 'GBP' }\n]}\nvalue={{ label: 'US Dollar (USD)', value: 'USD' }}\nonChange={(option) => setValue(option)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With search functionality\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\nisSearchable={true}\nplaceholder=\"Search for a currency...\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Select\nlabel=\"Currency\"\nicon={<MoneyIcon size={24} />}\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\nerror={true}\nhelpText=\"Please select a currency\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With option icons\n<Select\nlabel=\"Country\"\noptions={[\n{ label: 'United States', value: 'US', icon: <FlagIcon code=\"US\" iconScale=\"small\" /> },\n{ label: 'Canada', value: 'CA', icon: <FlagIcon code=\"CA\" iconScale=\"small\" /> },\n{ label: 'Mexico', value: 'MX', icon: <FlagIcon code=\"MX\" iconScale=\"small\" /> }\n]}\nvalue={selectedCountry}\nonChange={(option) => setSelectedCountry(option)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom option rendering\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\ncustomOption={(value) => (\n<div style={{ display: 'flex', justifyContent: 'space-between' }}>\n<span>{value}</span>\n<span style={{ color: 'gray' }}>Rate: 1.0</span>\n</div>\n)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styles\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\nstyles={{\nmenu: (base) => ({\n...base,\nbackground: theme.blue100,\n}),\n}}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "In a dialog with scrolling\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\ncloseOnOutsideScroll={true}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedCountries, setSelectedCountries] = useState<string[]>([]);\nconst { countryOptions } = useCountryOptions();\n\n<CountryMultiSelect\ncountryOptions={countryOptions}\nonChange={setSelectedCountries}\nunavailableCountries={[]}\nvalue={selectedCountries}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With unavailable countries\nconst [selectedCountries, setSelectedCountries] = useState<string[]>(['US', 'CA']);\nconst { countryOptions } = useCountryOptions();\nconst unavailableCountries = [\n{ code: 'GB', message: 'Coming soon' },\n{ code: 'AU', message: 'Not supported' }\n];\n\n<CountryMultiSelect\ncountryOptions={countryOptions}\nlabel=\"Shipping Countries\"\nonChange={setSelectedCountries}\nunavailableCountries={unavailableCountries}\nvalue={selectedCountries}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<CountryMultiSelect\ncountryOptions={countryOptions}\nerror={!selectedCountries.length}\nhelpText={!selectedCountries.length ? 'At least one country is required' : undefined}\nonChange={setSelectedCountries}\nunavailableCountries={[]}\nvalue={selectedCountries}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [selectedCountry, setSelectedCountry] = useState<string | null>(null);\nconst { countryOptions } = useCountryOptions();\n\n<CountrySelect\ncountryOptions={countryOptions}\nlabel=\"Country\"\nonChange={(value) => setSelectedCountry(value)}\nplaceholder=\"Select a country\"\nvalue={selectedCountry}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With pre-selected value\nconst [selectedCountry, setSelectedCountry] = useState<string | null>('US');\nconst { countryOptions } = useCountryOptions();\n\n<CountrySelect\ncountryOptions={countryOptions}\nlabel=\"Country\"\nonChange={(value) => setSelectedCountry(value)}\nvalue={selectedCountry}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With country filtering\nconst [selectedCountry, setSelectedCountry] = useState<string | null>(null);\nconst { countryOptions } = useCountryOptions();\n\n// Only show EU countries\nconst euCountries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU',\n'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'];\n\n<CountrySelect\ncountryOptions={countryOptions}\nfilter={(country) => euCountries.includes(country.code)}\nlabel=\"EU Country\"\nonChange={(value) => setSelectedCountry(value)}\nvalue={selectedCountry}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<CountrySelect\ncountryOptions={countryOptions}\nerror={!selectedCountry}\nhelpText={!selectedCountry ? 'Country selection is required' : undefined}\nlabel=\"Country\"\nonChange={(value) => setSelectedCountry(value)}\nvalue={selectedCountry}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Select\nlabel=\"Currency\"\noptions={[\n{ label: 'US Dollar (USD)', value: 'USD' },\n{ label: 'Euro (EUR)', value: 'EUR' },\n{ label: 'British Pound (GBP)', value: 'GBP' }\n]}\nvalue={{ label: 'US Dollar (USD)', value: 'USD' }}\nonChange={(option) => setValue(option)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With search functionality\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\nisSearchable={true}\nplaceholder=\"Search for a currency...\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Select\nlabel=\"Currency\"\nicon={<MoneyIcon size={24} />}\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\nerror={true}\nhelpText=\"Please select a currency\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With option icons\n<Select\nlabel=\"Country\"\noptions={[\n{ label: 'United States', value: 'US', icon: <FlagIcon code=\"US\" iconScale=\"small\" /> },\n{ label: 'Canada', value: 'CA', icon: <FlagIcon code=\"CA\" iconScale=\"small\" /> },\n{ label: 'Mexico', value: 'MX', icon: <FlagIcon code=\"MX\" iconScale=\"small\" /> }\n]}\nvalue={selectedCountry}\nonChange={(option) => setSelectedCountry(option)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom option rendering\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\ncustomOption={(value) => (\n<div style={{ display: 'flex', justifyContent: 'space-between' }}>\n<span>{value}</span>\n<span style={{ color: 'gray' }}>Rate: 1.0</span>\n</div>\n)}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styles\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\nstyles={{\nmenu: (base) => ({\n...base,\nbackground: theme.blue100,\n}),\n}}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "In a dialog with scrolling\n<Select\nlabel=\"Currency\"\noptions={currencyOptions}\nvalue={selectedCurrency}\nonChange={(option) => setSelectedCurrency(option)}\ncloseOnOutsideScroll={true}\n/>"
+    }
+  ]
+}

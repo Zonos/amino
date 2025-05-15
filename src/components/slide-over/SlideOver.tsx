@@ -20,6 +20,108 @@ export type SlideOverProps = BaseDialogProps & {
   subtitle?: ReactNode;
 };
 
+/**
+ * SlideOver component displays content in a panel that slides in from the edge of the screen.
+ * It's useful for secondary content or actions that don't require leaving the current page.
+ *
+ * @example Basic usage
+ * <SlideOver
+ *   label="Panel Title"
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <Text>Panel content goes here.</Text>
+ * </SlideOver>
+ *
+ * @example With subtitle
+ * <SlideOver
+ *   label="Edit Profile"
+ *   subtitle={<Text type="caption">Update your personal information</Text>}
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <VStack spacing={16}>
+ *     <Input label="Name" value={name} onChange={(e) => setName(e.target.value)} />
+ *     <Input label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+ *   </VStack>
+ * </SlideOver>
+ *
+ * @example With header actions
+ * <SlideOver
+ *   label="Document Details"
+ *   actions={<Button variant="primary" size="small">Edit</Button>}
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <Text>Document content preview</Text>
+ * </SlideOver>
+ *
+ * @example With bottom actions
+ * <SlideOver
+ *   label="Create Item"
+ *   bottomActions={
+ *     <>
+ *       <Button variant="standard" onClick={() => setIsOpen(false)}>
+ *         Cancel
+ *       </Button>
+ *       <Button variant="primary" onClick={handleSave}>
+ *         Save
+ *       </Button>
+ *     </>
+ *   }
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <Text>Form content</Text>
+ * </SlideOver>
+ *
+ * @example Custom width
+ * <SlideOver
+ *   label="Wide Panel"
+ *   width={600}
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <Text>This panel is wider than the default.</Text>
+ * </SlideOver>
+ *
+ * @example Full window width
+ * <SlideOver
+ *   label="Detailed View"
+ *   fullWindowWidth
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <Text>This panel takes the full window width.</Text>
+ * </SlideOver>
+ *
+ * @example With complex content
+ * <SlideOver
+ *   label="Shopping Cart"
+ *   subtitle={<Text type="caption">3 items</Text>}
+ *   bottomActions={
+ *     <>
+ *       <Button variant="standard" onClick={() => setIsOpen(false)}>
+ *         Continue Shopping
+ *       </Button>
+ *       <Button variant="primary" onClick={handleCheckout}>
+ *         Checkout
+ *       </Button>
+ *     </>
+ *   }
+ *   open={isOpen}
+ *   onClose={() => setIsOpen(false)}
+ * >
+ *   <VStack spacing={16}>
+ *     {items.map(item => (
+ *       <Card key={item.id}>
+ *         <Text>{item.name}</Text>
+ *         <Text>${item.price}</Text>
+ *       </Card>
+ *     ))}
+ *   </VStack>
+ * </SlideOver>
+ */
 export const SlideOver = ({
   actions,
   bottomActions,

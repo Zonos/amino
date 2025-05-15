@@ -1,0 +1,48 @@
+{
+  "description": "HSection component provides a horizontal section layout with optional\ncollapsible content, label, and sublabel.",
+  "id": "section",
+  "name": "Section",
+  "path": "src/components/section",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<HSection label=\"Section Title\">\n<p>Content goes here...</p>\n</HSection>"
+    },
+    {
+      "name": "example",
+      "text": "With sublabel\n<HSection\nlabel=\"Account Information\"\nsublabel=\"Personal details and settings\"\n>\n<FormContent />\n</HSection>"
+    },
+    {
+      "name": "example",
+      "text": "Collapsible section\n<HSection\nlabel=\"Advanced Settings\"\nsublabel=\"Configuration options for advanced users\"\ncollapsible\n>\n<AdvancedSettings />\n</HSection>"
+    },
+    {
+      "name": "example",
+      "text": "Collapsed by default\n<HSection\nlabel=\"Optional Information\"\ncollapsible\ncollapseByDefault\n>\n<OptionalFields />\n</HSection>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple sections\n<VStack>\n<HSection label=\"Basic Information\">\n<BasicInfoForm />\n</HSection>\n\n<HSection\nlabel=\"Advanced Settings\"\ncollapsible\ncollapseByDefault\n>\n<AdvancedSettings />\n</HSection>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<VSection label=\"Section Title\">\n<p>Content goes here...</p>\n</VSection>"
+    },
+    {
+      "name": "example",
+      "text": "With sublabel\n<VSection\nlabel=\"Payment Information\"\nsublabel=\"Add your payment details\"\n>\n<PaymentForm />\n</VSection>"
+    },
+    {
+      "name": "example",
+      "text": "With actions\n<VSection\nlabel=\"Order Details\"\nactions={\n<>\n<Button>Print</Button>\n<Button variant=\"primary\">Edit</Button>\n</>\n}\n>\n<OrderDetails />\n</VSection>"
+    },
+    {
+      "name": "example",
+      "text": "Custom label type\n<VSection\nlabel=\"Order Summary\"\nlabelType=\"subheader\"\nsublabel=\"Order #12345\"\n>\n<OrderSummary />\n</VSection>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple sections\n<VStack spacing={32}>\n<VSection\nlabel=\"Shipping Information\"\nactions={<Button>Edit</Button>}\n>\n<ShippingDetails />\n</VSection>\n\n<VSection\nlabel=\"Payment Method\"\nsublabel=\"Select your payment method\"\nactions={<Button>Add Payment</Button>}\n>\n<PaymentOptions />\n</VSection>\n</VStack>"
+    }
+  ]
+}

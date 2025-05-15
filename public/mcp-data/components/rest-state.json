@@ -1,0 +1,48 @@
+{
+  "description": "RestState component provides a placeholder view for empty states, loading states,\nerrors, or success messages with optional icon and action.",
+  "id": "rest-state",
+  "name": "RestState",
+  "path": "src/components/rest-state",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<RestState\nlabel=\"No results found\"\nsubtitle=\"Try adjusting your search criteria\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With action button\n<RestState\nlabel=\"No items yet\"\nsubtitle=\"Create your first item to get started\"\naction={<Button onClick={handleAddItem} variant=\"primary\">Add Item</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<RestState\nicon=\"/path/to/empty-state-illustration.svg\"\nlabel=\"Your cart is empty\"\nsubtitle=\"Browse our products to add items to your cart\"\naction={<Button onClick={handleBrowseProducts}>Browse Products</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Error state\n<RestState\nicon=\"/path/to/error-illustration.svg\"\nlabel=\"Something went wrong\"\nsubtitle=\"We couldn't load your data. Please try again later.\"\naction={<Button onClick={handleRetry}>Retry</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Success state\n<RestState\nicon=\"/path/to/success-illustration.svg\"\nlabel=\"Payment successful!\"\nsubtitle=\"Your order has been processed and will be shipped soon.\"\naction={<Button onClick={handleViewOrder}>View Order</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<RestState\nlabel=\"No results found\"\nsubtitle=\"Try adjusting your search criteria\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With action button\n<RestState\nlabel=\"No items yet\"\nsubtitle=\"Create your first item to get started\"\naction={<Button onClick={handleAddItem} variant=\"primary\">Add Item</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<RestState\nicon=\"/path/to/empty-state-illustration.svg\"\nlabel=\"Your cart is empty\"\nsubtitle=\"Browse our products to add items to your cart\"\naction={<Button onClick={handleBrowseProducts}>Browse Products</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Error state\n<RestState\nicon=\"/path/to/error-illustration.svg\"\nlabel=\"Something went wrong\"\nsubtitle=\"We couldn't load your data. Please try again later.\"\naction={<Button onClick={handleRetry}>Retry</Button>}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Success state\n<RestState\nicon=\"/path/to/success-illustration.svg\"\nlabel=\"Payment successful!\"\nsubtitle=\"Your order has been processed and will be shipped soon.\"\naction={<Button onClick={handleViewOrder}>View Order</Button>}\n/>"
+    }
+  ]
+}

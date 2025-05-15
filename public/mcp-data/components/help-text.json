@@ -1,0 +1,40 @@
+{
+  "description": "HelpText component provides contextual assistance text, typically used\nbelow form inputs to show validation messages or helpful information.",
+  "id": "help-text",
+  "name": "HelpText",
+  "path": "src/components/help-text",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Input\nlabel=\"Email\"\nvalue={email}\nonChange={handleEmailChange}\n/>\n<HelpText helpText=\"We'll never share your email with anyone else.\" />"
+    },
+    {
+      "name": "example",
+      "text": "Error state\n<Input\nlabel=\"Password\"\ntype=\"password\"\nvalue={password}\nonChange={handlePasswordChange}\nerror={!!passwordError}\n/>\n<HelpText\nerror={!!passwordError}\nhelpText={passwordError || \"Password must be at least 8 characters\"}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Without margin\n<Textarea\nlabel=\"Description\"\nvalue={description}\nonChange={handleDescriptionChange}\n/>\n<HelpText\nhelpText=\"Maximum 200 characters\"\nwithoutMargin\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Custom ReactNode content\n<Input\nlabel=\"API Key\"\nvalue={apiKey}\nonChange={handleApiKeyChange}\n/>\n<HelpText\nhelpText={\n<div className=\"custom-help-text\">\n<InfoIcon size={12} />\n<span>Find your API key in your account settings</span>\n</div>\n}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Input\nlabel=\"Email\"\nvalue={email}\nonChange={handleEmailChange}\n/>\n<HelpText helpText=\"We'll never share your email with anyone else.\" />"
+    },
+    {
+      "name": "example",
+      "text": "Error state\n<Input\nlabel=\"Password\"\ntype=\"password\"\nvalue={password}\nonChange={handlePasswordChange}\nerror={!!passwordError}\n/>\n<HelpText\nerror={!!passwordError}\nhelpText={passwordError || \"Password must be at least 8 characters\"}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Without margin\n<Textarea\nlabel=\"Description\"\nvalue={description}\nonChange={handleDescriptionChange}\n/>\n<HelpText\nhelpText=\"Maximum 200 characters\"\nwithoutMargin\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Custom ReactNode content\n<Input\nlabel=\"API Key\"\nvalue={apiKey}\nonChange={handleApiKeyChange}\n/>\n<HelpText\nhelpText={\n<div className=\"custom-help-text\">\n<InfoIcon size={12} />\n<span>Find your API key in your account settings</span>\n</div>\n}\n/>"
+    }
+  ]
+}

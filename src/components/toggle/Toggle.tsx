@@ -41,15 +41,115 @@ export type ToggleProps<TValue extends SelectValue = SelectValue> =
      * @default false
      */
     fullWidth?: boolean;
+    /**
+     * Function called when a toggle option is selected
+     */
     onChange: (value: TValue) => void;
+    /**
+     * Array of options to display in the toggle
+     */
     options: SelectOption<TValue>[];
     /**
+     * Size of the toggle component
      * @default 'sm'
      */
     size?: Size;
+    /**
+     * Currently selected value
+     */
     value: TValue;
   };
 
+/**
+ * Toggle component provides a segmented control for switching between multiple options.
+ * It features an animated highlight that moves to indicate the selected option.
+ *
+ * @example Basic usage with two options
+ * ```tsx
+ * const [selected, setSelected] = useState('option1');
+ *
+ * <Toggle
+ *   options={[
+ *     { label: 'Option 1', value: 'option1' },
+ *     { label: 'Option 2', value: 'option2' }
+ *   ]}
+ *   value={selected}
+ *   onChange={setSelected}
+ * />
+ * ```
+ *
+ * @example Multiple options
+ * ```tsx
+ * const [view, setView] = useState('day');
+ *
+ * <Toggle
+ *   options={[
+ *     { label: 'Day', value: 'day' },
+ *     { label: 'Week', value: 'week' },
+ *     { label: 'Month', value: 'month' },
+ *     { label: 'Year', value: 'year' }
+ *   ]}
+ *   value={view}
+ *   onChange={setView}
+ * />
+ * ```
+ *
+ * @example Full width
+ * ```tsx
+ * <Toggle
+ *   fullWidth
+ *   options={[
+ *     { label: 'Left', value: 'left' },
+ *     { label: 'Center', value: 'center' },
+ *     { label: 'Right', value: 'right' }
+ *   ]}
+ *   value={alignment}
+ *   onChange={setAlignment}
+ * />
+ * ```
+ *
+ * @example Different sizes
+ * ```tsx
+ * <VStack spacing={16}>
+ *   <Toggle
+ *     size="xs"
+ *     options={options}
+ *     value={selected}
+ *     onChange={setSelected}
+ *   />
+ *   <Toggle
+ *     size="sm"
+ *     options={options}
+ *     value={selected}
+ *     onChange={setSelected}
+ *   />
+ *   <Toggle
+ *     size="md"
+ *     options={options}
+ *     value={selected}
+ *     onChange={setSelected}
+ *   />
+ * </VStack>
+ * ```
+ *
+ * @example With type safety using generics
+ * ```tsx
+ * type ViewMode = 'list' | 'grid' | 'table';
+ *
+ * const [viewMode, setViewMode] = useState<ViewMode>('list');
+ * const options: SelectOption<ViewMode>[] = [
+ *   { label: 'List', value: 'list' },
+ *   { label: 'Grid', value: 'grid' },
+ *   { label: 'Table', value: 'table' }
+ * ];
+ *
+ * <Toggle<ViewMode>
+ *   options={options}
+ *   value={viewMode}
+ *   onChange={setViewMode}
+ * />
+ * ```
+ */
 export const Toggle = <TValue extends SelectValue>({
   className,
   fullWidth = false,

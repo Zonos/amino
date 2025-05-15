@@ -101,3 +101,5 @@ _private_*
 !.vscode
 .cursorignore
 *storybook.log
+.next/**
+tsconfig.next.tsbuildinfo

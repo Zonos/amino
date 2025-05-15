@@ -10,17 +10,22 @@ import { getProductDetails, type Product } from 'src/utils/getProductDetails';
 import styles from './GlowWrapper.module.scss';
 
 type Props = BaseProps & {
+  /**
+   * Content to be wrapped with the glowing effect
+   */
   children?: ReactNode;
   /**
+   * Custom color for the glow effect
    * @default 'gray600'
    */
   glowColor?: Color;
   /**
-   * Use product colors.
+   * Product name to use for product-specific colors
+   * When specified, overrides glowColor with the product's gradient
    */
   product?: Product;
   /**
-   * Border radius
+   * Border radius of the glowing wrapper in pixels
    * @default 6
    */
   radius?: number;
@@ -31,6 +36,58 @@ type Props = BaseProps & {
   size?: number;
 };
 
+/**
+ * GlowWrapper component adds an interactive glowing border effect to its children.
+ * The glow follows the user's mouse movement, creating a dynamic highlight effect.
+ * It can use either a custom color or product-specific gradients.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <GlowWrapper>
+ *   <Card label="Content">Card with glow effect</Card>
+ * </GlowWrapper>
+ * ```
+ *
+ * @example With custom color
+ * ```tsx
+ * <GlowWrapper glowColor="blue500" size={2}>
+ *   <Card label="Blue Glow">Card with blue glow</Card>
+ * </GlowWrapper>
+ * ```
+ *
+ * @example With product-specific colors
+ * ```tsx
+ * <GlowWrapper product="checkout">
+ *   <Card label="Checkout">Checkout product card</Card>
+ * </GlowWrapper>
+ * ```
+ *
+ * @example Custom radius
+ * ```tsx
+ * <GlowWrapper radius={12} size={2}>
+ *   <div className="custom-content">
+ *     Content with larger radius glow
+ *   </div>
+ * </GlowWrapper>
+ * ```
+ *
+ * @example Multiple items with product-specific glows
+ * ```tsx
+ * <div className="products-grid">
+ *   <GlowWrapper product="classify">
+ *     <ProductCard product="classify" />
+ *   </GlowWrapper>
+ *
+ *   <GlowWrapper product="clear">
+ *     <ProductCard product="clear" />
+ *   </GlowWrapper>
+ *
+ *   <GlowWrapper product="dashboard">
+ *     <ProductCard product="dashboard" />
+ *   </GlowWrapper>
+ * </div>
+ * ```
+ */
 export const GlowWrapper = ({
   children,
   className,

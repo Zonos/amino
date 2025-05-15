@@ -36,6 +36,25 @@ export type Props = {
   type?: 'cards' | 'select' | 'toggle';
 };
 
+/**
+ * ThemeSelect allows users to switch between light and dark themes using cards, a select dropdown, or a toggle switch.
+ * Integrates with the Amino theme system and updates the application theme accordingly. Supports disabling and multiple UI types.
+ *
+ * @example Basic usage (select)
+ * ```tsx
+ * <ThemeSelect />
+ * ```
+ *
+ * @example Card style
+ * ```tsx
+ * <ThemeSelect type="cards" />
+ * ```
+ *
+ * @example Toggle style, disabled
+ * ```tsx
+ * <ThemeSelect type="toggle" disabled />
+ * ```
+ */
 export const ThemeSelect = ({
   className,
   disabled = false,

@@ -1,0 +1,64 @@
+{
+  "description": "Divider component creates a visual separation between content sections.\nIt can be displayed horizontally or vertically and supports custom styling.",
+  "id": "divider",
+  "name": "Divider",
+  "path": "src/components/divider",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic horizontal divider\n<Divider />"
+    },
+    {
+      "name": "example",
+      "text": "Vertical divider\n<div style={{ height: '50px', display: 'flex' }}>\n<span>Left content</span>\n<Divider vertical />\n<span>Right content</span>\n</div>"
+    },
+    {
+      "name": "example",
+      "text": "Without margin\n<Divider noMargin />"
+    },
+    {
+      "name": "example",
+      "text": "Custom styling\n<Divider className=\"custom-divider\" style={{ borderColor: '#ff0000' }} />"
+    },
+    {
+      "name": "example",
+      "text": "In a card layout\n<Card>\n<CardHeader>Section 1</CardHeader>\n<CardContent>Content for section 1</CardContent>\n<Divider />\n<CardHeader>Section 2</CardHeader>\n<CardContent>Content for section 2</CardContent>\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Between form fields\n<VStack>\n<Input label=\"First Name\" />\n<Divider />\n<Input label=\"Last Name\" />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "In sidebar navigation\n<VStack>\n<NavItem>Home</NavItem>\n<NavItem>Dashboard</NavItem>\n<Divider />\n<NavItem>Settings</NavItem>\n<NavItem>Profile</NavItem>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic horizontal divider\n<Divider />"
+    },
+    {
+      "name": "example",
+      "text": "Vertical divider\n<div style={{ height: '50px', display: 'flex' }}>\n<span>Left content</span>\n<Divider vertical />\n<span>Right content</span>\n</div>"
+    },
+    {
+      "name": "example",
+      "text": "Without margin\n<Divider noMargin />"
+    },
+    {
+      "name": "example",
+      "text": "Custom styling\n<Divider className=\"custom-divider\" style={{ borderColor: '#ff0000' }} />"
+    },
+    {
+      "name": "example",
+      "text": "In a card layout\n<Card>\n<CardHeader>Section 1</CardHeader>\n<CardContent>Content for section 1</CardContent>\n<Divider />\n<CardHeader>Section 2</CardHeader>\n<CardContent>Content for section 2</CardContent>\n</Card>"
+    },
+    {
+      "name": "example",
+      "text": "Between form fields\n<VStack>\n<Input label=\"First Name\" />\n<Divider />\n<Input label=\"Last Name\" />\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "In sidebar navigation\n<VStack>\n<NavItem>Home</NavItem>\n<NavItem>Dashboard</NavItem>\n<Divider />\n<NavItem>Settings</NavItem>\n<NavItem>Profile</NavItem>\n</VStack>"
+    }
+  ]
+}

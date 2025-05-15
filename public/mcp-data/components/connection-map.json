@@ -1,0 +1,32 @@
+{
+  "description": "A geographic map component that visualizes connections between two countries.\nDisplays a world map with highlighted countries and a connecting line between them,\nautomatically centering and scaling the view for optimal visualization.",
+  "id": "connection-map",
+  "name": "ConnectionMap",
+  "path": "src/components/connection-map",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst { countryOptions } = useCountryOptions();\nconst [worldData, setWorldData] = useState<GeoJsonWorld | null>(null);\n\nuseEffect(() => {\nfetch('/zonos-countries-geojson.json')\n.then(response => response.json())\n.then(data => setWorldData(data));\n}, []);\n\n<ConnectionMap\ncountries={countryOptions}\nfrom=\"US\"\nto=\"JP\"\nworldData={worldData}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom height\n<ConnectionMap\ncountries={countryOptions}\nfrom=\"GB\"\nto=\"AU\"\nheight={600}\nworldData={worldData}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<ConnectionMap\nclassName=\"custom-map-container\"\ncountries={countryOptions}\nfrom=\"CA\"\nto=\"BR\"\nstyle={{ border: '1px solid var(--amino-gray-200)' }}\nworldData={worldData}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst { countryOptions } = useCountryOptions();\nconst [worldData, setWorldData] = useState<GeoJsonWorld | null>(null);\n\nuseEffect(() => {\nfetch('/zonos-countries-geojson.json')\n.then(response => response.json())\n.then(data => setWorldData(data));\n}, []);\n\n<ConnectionMap\ncountries={countryOptions}\nfrom=\"US\"\nto=\"JP\"\nworldData={worldData}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom height\n<ConnectionMap\ncountries={countryOptions}\nfrom=\"GB\"\nto=\"AU\"\nheight={600}\nworldData={worldData}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\n<ConnectionMap\nclassName=\"custom-map-container\"\ncountries={countryOptions}\nfrom=\"CA\"\nto=\"BR\"\nstyle={{ border: '1px solid var(--amino-gray-200)' }}\nworldData={worldData}\n/>"
+    }
+  ]
+}

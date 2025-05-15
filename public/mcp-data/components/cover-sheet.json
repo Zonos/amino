@@ -1,0 +1,64 @@
+{
+  "description": "CoverSheet component provides a sliding panel that covers the current view\nfrom the bottom of the screen. It's commonly used for displaying additional\ncontent or actions without navigating away from the current page.",
+  "id": "cover-sheet",
+  "name": "CoverSheet",
+  "path": "src/components/cover-sheet",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(true)}>Open Cover Sheet</Button>\n\n<CoverSheet\nlabel=\"Details\"\nopen={open}\nonClose={() => setOpen(false)}\n>\n<p>Content goes here...</p>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With action buttons\n<CoverSheet\nlabel=\"Edit Profile\"\nopen={isOpen}\nonClose={handleClose}\nactions={\n<>\n<Button onClick={handleCancel}>Cancel</Button>\n<Button variant=\"primary\" onClick={handleSave}>Save</Button>\n</>\n}\n>\n<form>\n<fields>\n</form>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With custom header component\n<CoverSheet\nlabel=\"Advanced Settings\"\nopen={isOpen}\nonClose={handleClose}\nheaderComponent={\n<MenuButton action={<Button variant=\"primary\">Actions</Button>}>\n<Menu>\n<MenuItem onClick={handleExport}>Export</MenuItem>\n<MenuItem onClick={handleImport}>Import</MenuItem>\n</Menu>\n</MenuButton>\n}\n>\n<p>Content goes here...</p>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "Without close button\n<CoverSheet\nlabel=\"Terms of Service\"\nopen={isOpen}\nonClose={handleClose}\nhideCloseButton={true}\nactions={<Button onClick={handleClose}>I Understand</Button>}\n>\n<p>Terms and conditions content...</p>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With dynamic actions using CoverSheetActions\nconst [open, setOpen] = useState(false);\n\n<CoverSheet\nlabel=\"Document Actions\"\nopen={open}\nonClose={() => setOpen(false)}\nactionWrapperId=\"document-actions\"\n>\n<p>Select documents to perform actions on them.</p>\n\n{selectedDocuments.length > 0 && (\n<CoverSheetActions coverSheetActionId=\"document-actions\">\n<Button onClick={handleDelete}>Delete Selected</Button>\n<Button variant=\"primary\" onClick={handleDownload}>Download</Button>\n</CoverSheetActions>\n)}\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [open, setOpen] = useState(false);\n\n<Button onClick={() => setOpen(true)}>Open Cover Sheet</Button>\n\n<CoverSheet\nlabel=\"Details\"\nopen={open}\nonClose={() => setOpen(false)}\n>\n<p>Content goes here...</p>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With action buttons\n<CoverSheet\nlabel=\"Edit Profile\"\nopen={isOpen}\nonClose={handleClose}\nactions={\n<>\n<Button onClick={handleCancel}>Cancel</Button>\n<Button variant=\"primary\" onClick={handleSave}>Save</Button>\n</>\n}\n>\n<form>\n<fields>\n</form>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With custom header component\n<CoverSheet\nlabel=\"Advanced Settings\"\nopen={isOpen}\nonClose={handleClose}\nheaderComponent={\n<MenuButton action={<Button variant=\"primary\">Actions</Button>}>\n<Menu>\n<MenuItem onClick={handleExport}>Export</MenuItem>\n<MenuItem onClick={handleImport}>Import</MenuItem>\n</Menu>\n</MenuButton>\n}\n>\n<p>Content goes here...</p>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "Without close button\n<CoverSheet\nlabel=\"Terms of Service\"\nopen={isOpen}\nonClose={handleClose}\nhideCloseButton={true}\nactions={<Button onClick={handleClose}>I Understand</Button>}\n>\n<p>Terms and conditions content...</p>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With dynamic actions using CoverSheetActions\nconst [open, setOpen] = useState(false);\n\n<CoverSheet\nlabel=\"Document Actions\"\nopen={open}\nonClose={() => setOpen(false)}\nactionWrapperId=\"document-actions\"\n>\n<p>Select documents to perform actions on them.</p>\n\n{selectedDocuments.length > 0 && (\n<CoverSheetActions coverSheetActionId=\"document-actions\">\n<Button onClick={handleDelete}>Delete Selected</Button>\n<Button variant=\"primary\" onClick={handleDownload}>Download</Button>\n</CoverSheetActions>\n)}\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<CoverSheet\nlabel=\"Document Actions\"\nopen={open}\nonClose={() => setOpen(false)}\nactionWrapperId=\"document-sheet\"\n>\n<div>Cover sheet content here</div>\n\n<CoverSheetActions coverSheetActionId=\"document-sheet\">\n<Button onClick={handleCancel}>Cancel</Button>\n<Button variant=\"primary\" onClick={handleSave}>Save</Button>\n</CoverSheetActions>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "Conditional actions\n<CoverSheet\nlabel=\"Edit Item\"\nopen={isOpen}\nonClose={handleClose}\nactionWrapperId=\"edit-item-actions\"\n>\n<form>\n<TextField label=\"Item Name\" value={itemName} onChange={setItemName} />\n</form>\n\n{isFormValid && (\n<CoverSheetActions coverSheetActionId=\"edit-item-actions\">\n<Button variant=\"primary\" onClick={handleSubmit}>Submit</Button>\n</CoverSheetActions>\n)}\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "Dynamic actions based on state\nconst [selectedItems, setSelectedItems] = useState([]);\n\n<CoverSheet\nlabel=\"Manage Items\"\nopen={isOpen}\nonClose={handleClose}\nactionWrapperId=\"manage-items-actions\"\n>\n<ItemSelectionUI />\n\n<CoverSheetActions coverSheetActionId=\"manage-items-actions\">\n{selectedItems.length === 0 ? (\n<Button disabled>Delete</Button>\n) : (\n<Button onClick={() => handleDelete(selectedItems)}>\nDelete ({selectedItems.length})\n</Button>\n)}\n</CoverSheetActions>\n</CoverSheet>"
+    },
+    {
+      "name": "example",
+      "text": "With multiple CoverSheets\n<CoverSheet\nlabel=\"Primary Sheet\"\nopen={primaryOpen}\nonClose={() => setPrimaryOpen(false)}\nactionWrapperId=\"primary-sheet-actions\"\n>\n<Button onClick={() => setSecondaryOpen(true)}>\nOpen Secondary Sheet\n</Button>\n\n<CoverSheetActions coverSheetActionId=\"primary-sheet-actions\">\n<Button onClick={primaryAction}>Primary Action</Button>\n</CoverSheetActions>\n\n<CoverSheet\nlabel=\"Secondary Sheet\"\nopen={secondaryOpen}\nonClose={() => setSecondaryOpen(false)}\nactionWrapperId=\"secondary-sheet-actions\"\n>\n<div>Secondary content</div>\n\n<CoverSheetActions coverSheetActionId=\"secondary-sheet-actions\">\n<Button onClick={secondaryAction}>Secondary Action</Button>\n</CoverSheetActions>\n</CoverSheet>\n</CoverSheet>"
+    }
+  ]
+}

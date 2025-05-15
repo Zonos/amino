@@ -1,0 +1,68 @@
+{
+  "description": "CollapsibleList component provides a list with a collapsible section that can be expanded\nor collapsed by clicking on the header. It's an extension of the List component with added\nfunctionality for expandable content.",
+  "id": "list",
+  "name": "List",
+  "path": "src/components/list",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<List>\n<ListItem label=\"Item 1\" />\n<ListItem label=\"Item 2\" />\n<ListItem label=\"Item 3\" />\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With border\n<List withBorder>\n<ListItem label=\"Item 1\" subtitle=\"Description for item 1\" />\n<ListItem label=\"Item 2\" subtitle=\"Description for item 2\" />\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With selection\nconst [selectedItem, setSelectedItem] = useState<number | null>(null);\n\n<List>\n<ListItem\nlabel=\"Item 1\"\nselected={selectedItem === 1}\nonClick={() => setSelectedItem(selectedItem === 1 ? null : 1)}\n/>\n<ListItem\nlabel=\"Item 2\"\nselected={selectedItem === 2}\nonClick={() => setSelectedItem(selectedItem === 2 ? null : 2)}\n/>\n<ListItem\nlabel=\"Disabled Item\"\ndisabled\nonClick={() => {}}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With negative margin\n<div style={{ padding: '20px', border: '1px solid #ccc' }}>\n<List withNegativeMargin>\n<ListItem label=\"This list is flush with container\" />\n<ListItem label=\"No padding around the list\" />\n</List>\n</div>"
+    },
+    {
+      "name": "example",
+      "text": "With decorators\n<List>\n<ListItem\nlabel=\"With icon\"\ndecorator={<Thumbnail icon={<UserIcon />} shape=\"round\" />}\n/>\n<ListItem\nlabel=\"With right decorator\"\nrightDecorator={<Badge>New</Badge>}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<CollapsibleList title=\"Settings\">\n<ListItem label=\"Profile\" />\n<ListItem label=\"Account\" />\n<ListItem label=\"Security\" />\n</CollapsibleList>"
+    },
+    {
+      "name": "example",
+      "text": "With icon and starting expanded\n<CollapsibleList\nicon={<SettingsIcon size={24} />}\ntitle=\"Advanced Settings\"\nstartExpanded\n>\n<ListItem label=\"Developer Options\" />\n<ListItem label=\"Experimental Features\" />\n</CollapsibleList>"
+    },
+    {
+      "name": "example",
+      "text": "With border and selectable items\nconst [selected, setSelected] = useState<string | null>(null);\n\n<CollapsibleList\ntitle=\"Categories\"\nwithBorder\n>\n<ListItem\nlabel=\"Electronics\"\nselected={selected === 'electronics'}\nonClick={() => setSelected(selected === 'electronics' ? null : 'electronics')}\n/>\n<ListItem\nlabel=\"Clothing\"\nselected={selected === 'clothing'}\nonClick={() => setSelected(selected === 'clothing' ? null : 'clothing')}\n/>\n<ListItem\nlabel=\"Books\"\nselected={selected === 'books'}\nonClick={() => setSelected(selected === 'books' ? null : 'books')}\n/>\n</CollapsibleList>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple collapsible lists\n<div>\n<CollapsibleList title=\"First Section\" startExpanded>\n<ListItem label=\"Item 1\" />\n<ListItem label=\"Item 2\" />\n</CollapsibleList>\n\n<CollapsibleList title=\"Second Section\">\n<ListItem label=\"Item A\" />\n<ListItem label=\"Item B\" />\n</CollapsibleList>\n</div>"
+    },
+    {
+      "name": "example",
+      "text": "With decorators in list items\n<CollapsibleList title=\"Files\">\n<ListItem\nlabel=\"Document.pdf\"\ndecorator={<Thumbnail icon={<DocumentIcon />} shape=\"square\" />}\nrightDecorator={<Badge>3 MB</Badge>}\n/>\n<ListItem\nlabel=\"Image.png\"\ndecorator={<Thumbnail icon={<ImageIcon />} shape=\"square\" />}\nrightDecorator={<Badge>1.2 MB</Badge>}\n/>\n</CollapsibleList>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<List>\n<ListItem label=\"Item 1\" />\n<ListItem label=\"Item 2\" />\n<ListItem label=\"Item 3\" />\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With border\n<List withBorder>\n<ListItem label=\"Item 1\" subtitle=\"Description for item 1\" />\n<ListItem label=\"Item 2\" subtitle=\"Description for item 2\" />\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With selection\nconst [selectedItem, setSelectedItem] = useState<number | null>(null);\n\n<List>\n<ListItem\nlabel=\"Item 1\"\nselected={selectedItem === 1}\nonClick={() => setSelectedItem(selectedItem === 1 ? null : 1)}\n/>\n<ListItem\nlabel=\"Item 2\"\nselected={selectedItem === 2}\nonClick={() => setSelectedItem(selectedItem === 2 ? null : 2)}\n/>\n<ListItem\nlabel=\"Disabled Item\"\ndisabled\nonClick={() => {}}\n/>\n</List>"
+    },
+    {
+      "name": "example",
+      "text": "With negative margin\n<div style={{ padding: '20px', border: '1px solid #ccc' }}>\n<List withNegativeMargin>\n<ListItem label=\"This list is flush with container\" />\n<ListItem label=\"No padding around the list\" />\n</List>\n</div>"
+    },
+    {
+      "name": "example",
+      "text": "With decorators\n<List>\n<ListItem\nlabel=\"With icon\"\ndecorator={<Thumbnail icon={<UserIcon />} shape=\"round\" />}\n/>\n<ListItem\nlabel=\"With right decorator\"\nrightDecorator={<Badge>New</Badge>}\n/>\n</List>"
+    }
+  ]
+}

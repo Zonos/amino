@@ -1,0 +1,20 @@
+{
+  "description": "A component that displays US states organized by region in a card-based interface.\nEach state is represented as a clickable card, grouped by geographic region.",
+  "id": "rich-card-select",
+  "name": "RichCardSelect",
+  "path": "src/components/rich-card-select",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\nimport type { UnitedState } from 'src/types/UnitedStates';\n\nconst [selectedState, setSelectedState] = useState<UnitedState | null>(null);\n\nconst states: UnitedState[] = [\n{ code: 'CA', name: 'California', region: 'West' },\n{ code: 'NY', name: 'New York', region: 'Northeast' },\n{ code: 'TX', name: 'Texas', region: 'South' },\n{ code: 'IL', name: 'Illinois', region: 'Midwest' }\n];\n\n<RichCardStateSelect\nonClick={setSelectedState}\nstates={states}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With highlighted state\nconst states = [\n{ code: 'CA', name: 'California', region: 'West', highlighted: true },\n{ code: 'NY', name: 'New York', region: 'Northeast' },\n{ code: 'TX', name: 'Texas', region: 'South' }\n];\n\n<RichCardStateSelect\nonClick={handleStateSelect}\nstates={states}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With icons\nconst states = [\n{\ncode: 'CA',\nname: 'California',\nregion: 'West',\nicon: <FlagIcon code=\"US-CA\" />\n},\n{\ncode: 'NY',\nname: 'New York',\nregion: 'Northeast',\nicon: <FlagIcon code=\"US-NY\" />\n}\n];\n\n<RichCardStateSelect\nonClick={handleStateSelect}\nstates={states}\n/>"
+    }
+  ]
+}

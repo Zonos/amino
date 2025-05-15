@@ -1,0 +1,40 @@
+{
+  "description": "Surface component provides an elevated container with customizable depth\nfor creating visual hierarchy in layouts.",
+  "id": "surface",
+  "name": "Surface",
+  "path": "src/components/surface",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Surface>\n<Card>\n<Text>Content with default elevation</Text>\n</Card>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "With custom depth\n<Surface depth=\"depth8\">\n<Card>\n<Text>Content with increased elevation</Text>\n</Card>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "Dense surface for compact layouts\n<Surface dense>\n<Card>\n<Text>Content with reduced padding</Text>\n</Card>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple nested surfaces for hierarchy\n<Surface depth=\"depth1\">\n<Text>Base layer</Text>\n<Surface depth=\"depth4\">\n<Text>Middle layer</Text>\n<Surface depth=\"depth8\">\n<Text>Top layer</Text>\n</Surface>\n</Surface>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Surface>\n<Card>\n<Text>Content with default elevation</Text>\n</Card>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "With custom depth\n<Surface depth=\"depth8\">\n<Card>\n<Text>Content with increased elevation</Text>\n</Card>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "Dense surface for compact layouts\n<Surface dense>\n<Card>\n<Text>Content with reduced padding</Text>\n</Card>\n</Surface>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple nested surfaces for hierarchy\n<Surface depth=\"depth1\">\n<Text>Base layer</Text>\n<Surface depth=\"depth4\">\n<Text>Middle layer</Text>\n<Surface depth=\"depth8\">\n<Text>Top layer</Text>\n</Surface>\n</Surface>\n</Surface>"
+    }
+  ]
+}

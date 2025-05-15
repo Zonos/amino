@@ -1,0 +1,64 @@
+{
+  "description": "SlideOver component displays content in a panel that slides in from the edge of the screen.\nIt's useful for secondary content or actions that don't require leaving the current page.",
+  "id": "slide-over",
+  "name": "SlideOver",
+  "path": "src/components/slide-over",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<SlideOver\nlabel=\"Panel Title\"\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>Panel content goes here.</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<SlideOver\nlabel=\"Edit Profile\"\nsubtitle={<Text type=\"caption\">Update your personal information</Text>}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<VStack spacing={16}>\n<Input label=\"Name\" value={name} onChange={(e) => setName(e.target.value)} />\n<Input label=\"Email\" value={email} onChange={(e) => setEmail(e.target.value)} />\n</VStack>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With header actions\n<SlideOver\nlabel=\"Document Details\"\nactions={<Button variant=\"primary\" size=\"small\">Edit</Button>}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>Document content preview</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With bottom actions\n<SlideOver\nlabel=\"Create Item\"\nbottomActions={\n<>\n<Button variant=\"standard\" onClick={() => setIsOpen(false)}>\nCancel\n</Button>\n<Button variant=\"primary\" onClick={handleSave}>\nSave\n</Button>\n</>\n}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>Form content</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "Custom width\n<SlideOver\nlabel=\"Wide Panel\"\nwidth={600}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>This panel is wider than the default.</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "Full window width\n<SlideOver\nlabel=\"Detailed View\"\nfullWindowWidth\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>This panel takes the full window width.</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With complex content\n<SlideOver\nlabel=\"Shopping Cart\"\nsubtitle={<Text type=\"caption\">3 items</Text>}\nbottomActions={\n<>\n<Button variant=\"standard\" onClick={() => setIsOpen(false)}>\nContinue Shopping\n</Button>\n<Button variant=\"primary\" onClick={handleCheckout}>\nCheckout\n</Button>\n</>\n}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<VStack spacing={16}>\n{items.map(item => (\n<Card key={item.id}>\n<Text>{item.name}</Text>\n<Text>${item.price}</Text>\n</Card>\n))}\n</VStack>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<SlideOver\nlabel=\"Panel Title\"\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>Panel content goes here.</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With subtitle\n<SlideOver\nlabel=\"Edit Profile\"\nsubtitle={<Text type=\"caption\">Update your personal information</Text>}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<VStack spacing={16}>\n<Input label=\"Name\" value={name} onChange={(e) => setName(e.target.value)} />\n<Input label=\"Email\" value={email} onChange={(e) => setEmail(e.target.value)} />\n</VStack>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With header actions\n<SlideOver\nlabel=\"Document Details\"\nactions={<Button variant=\"primary\" size=\"small\">Edit</Button>}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>Document content preview</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With bottom actions\n<SlideOver\nlabel=\"Create Item\"\nbottomActions={\n<>\n<Button variant=\"standard\" onClick={() => setIsOpen(false)}>\nCancel\n</Button>\n<Button variant=\"primary\" onClick={handleSave}>\nSave\n</Button>\n</>\n}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>Form content</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "Custom width\n<SlideOver\nlabel=\"Wide Panel\"\nwidth={600}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>This panel is wider than the default.</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "Full window width\n<SlideOver\nlabel=\"Detailed View\"\nfullWindowWidth\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<Text>This panel takes the full window width.</Text>\n</SlideOver>"
+    },
+    {
+      "name": "example",
+      "text": "With complex content\n<SlideOver\nlabel=\"Shopping Cart\"\nsubtitle={<Text type=\"caption\">3 items</Text>}\nbottomActions={\n<>\n<Button variant=\"standard\" onClick={() => setIsOpen(false)}>\nContinue Shopping\n</Button>\n<Button variant=\"primary\" onClick={handleCheckout}>\nCheckout\n</Button>\n</>\n}\nopen={isOpen}\nonClose={() => setIsOpen(false)}\n>\n<VStack spacing={16}>\n{items.map(item => (\n<Card key={item.id}>\n<Text>{item.name}</Text>\n<Text>${item.price}</Text>\n</Card>\n))}\n</VStack>\n</SlideOver>"
+    }
+  ]
+}

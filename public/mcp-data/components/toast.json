@@ -1,0 +1,64 @@
+{
+  "description": "Toast component displays brief notifications or feedback messages to users.\nIt supports different intents (success, warning, error, info) with appropriate styling and icons,\nand can be configured with actions, animations, and persistence options.",
+  "id": "toast",
+  "name": "Toast",
+  "path": "src/components/toast",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic info toast\n<Toast toastKey=\"info-toast\">\nInformation message for the user\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Success toast\n<Toast\nintent=\"success\"\ntoastKey=\"success-toast\"\n>\nOperation completed successfully\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Warning toast\n<Toast\nintent=\"warning\"\ntoastKey=\"warning-toast\"\n>\nPlease review your inputs before continuing\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Error toast\n<Toast\nintent=\"error\"\ntoastKey=\"error-toast\"\n>\nAn error occurred. Please try again.\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "With actions\n<Toast\nintent=\"info\"\ntoastKey=\"actions-toast\"\nactions={\n<Button variant=\"plain\">Undo</Button>\n}\n>\nChanges saved\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Persistent toast with dismiss\n<Toast\nintent=\"warning\"\nisPersistent={true}\nonDismiss={() => setVisible(false)}\ntoastKey=\"persistent-toast\"\n>\nYour session will expire in 5 minutes\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "With custom direction\n<Toast\ndirection=\"bottom\"\nintent=\"info\"\ntoastKey=\"direction-toast\"\n>\nToast coming from the bottom\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Basic info toast\n<Toast toastKey=\"info-toast\">\nInformation message for the user\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Success toast\n<Toast\nintent=\"success\"\ntoastKey=\"success-toast\"\n>\nOperation completed successfully\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Warning toast\n<Toast\nintent=\"warning\"\ntoastKey=\"warning-toast\"\n>\nPlease review your inputs before continuing\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Error toast\n<Toast\nintent=\"error\"\ntoastKey=\"error-toast\"\n>\nAn error occurred. Please try again.\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "With actions\n<Toast\nintent=\"info\"\ntoastKey=\"actions-toast\"\nactions={\n<Button variant=\"plain\">Undo</Button>\n}\n>\nChanges saved\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "Persistent toast with dismiss\n<Toast\nintent=\"warning\"\nisPersistent={true}\nonDismiss={() => setVisible(false)}\ntoastKey=\"persistent-toast\"\n>\nYour session will expire in 5 minutes\n</Toast>"
+    },
+    {
+      "name": "example",
+      "text": "With custom direction\n<Toast\ndirection=\"bottom\"\nintent=\"info\"\ntoastKey=\"direction-toast\"\n>\nToast coming from the bottom\n</Toast>"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "description": "Table component that provides styled tabular data presentation.\nUsed in combination with TableHead, TableBody, TableRow, TableCell, and TableFooter\nto create structured tables with consistent styling.",
+  "id": "table",
+  "name": "Table",
+  "path": "src/components/table",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic table\n<Table>\n<TableHead>\n<TableRow>\n<TableCell>Name</TableCell>\n<TableCell>Email</TableCell>\n<TableCell>Role</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n<TableCell>John Doe</TableCell>\n<TableCell>john@example.com</TableCell>\n<TableCell>Admin</TableCell>\n</TableRow>\n<TableRow>\n<TableCell>Jane Smith</TableCell>\n<TableCell>jane@example.com</TableCell>\n<TableCell>User</TableCell>\n</TableRow>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "With column groups\n<Table>\n<colgroup>\n<col />\n<col width=\"40%\" />\n<col width=\"20%\" />\n</colgroup>\n<TableHead>\n<TableRow>\n<TableCell>Product</TableCell>\n<TableCell>Description</TableCell>\n<TableCell>Price</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "With footer\n<Table>\n<TableHead>\n<TableRow>\n<TableCell>Item</TableCell>\n<TableCell>Quantity</TableCell>\n<TableCell>Price</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n<TableCell>Widget</TableCell>\n<TableCell>2</TableCell>\n<TableCell>$10.00</TableCell>\n</TableRow>\n<TableRow>\n<TableCell>Gadget</TableCell>\n<TableCell>1</TableCell>\n<TableCell>$15.00</TableCell>\n</TableRow>\n</TableBody>\n<TableFooter>\n<TableRow>\n<TableCell colSpan={2} align=\"right\">Total:</TableCell>\n<TableCell>$35.00</TableCell>\n</TableRow>\n</TableFooter>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "Small size table\n<Table size=\"small\">\n<TableHead>\n<TableRow>\n<TableCell>Name</TableCell>\n<TableCell>Value</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "With expandable rows\n<Table>\n<TableHead>\n<TableRow>\n<TableCell>Category</TableCell>\n<TableCell>Amount</TableCell>\n<TableCell></TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRowCollapse\ncollapsed={isCollapsed}\nonToggleCollapse={toggleCollapse}\nrowContent={\n<>\n<TableCell>Shipping</TableCell>\n<TableCell>$15.99</TableCell>\n</>\n}\n>\n<div>Additional shipping details here...</div>\n</TableRowCollapse>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "Basic table\n<Table>\n<TableHead>\n<TableRow>\n<TableCell>Name</TableCell>\n<TableCell>Email</TableCell>\n<TableCell>Role</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n<TableCell>John Doe</TableCell>\n<TableCell>john@example.com</TableCell>\n<TableCell>Admin</TableCell>\n</TableRow>\n<TableRow>\n<TableCell>Jane Smith</TableCell>\n<TableCell>jane@example.com</TableCell>\n<TableCell>User</TableCell>\n</TableRow>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "With column groups\n<Table>\n<colgroup>\n<col />\n<col width=\"40%\" />\n<col width=\"20%\" />\n</colgroup>\n<TableHead>\n<TableRow>\n<TableCell>Product</TableCell>\n<TableCell>Description</TableCell>\n<TableCell>Price</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "With footer\n<Table>\n<TableHead>\n<TableRow>\n<TableCell>Item</TableCell>\n<TableCell>Quantity</TableCell>\n<TableCell>Price</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n<TableCell>Widget</TableCell>\n<TableCell>2</TableCell>\n<TableCell>$10.00</TableCell>\n</TableRow>\n<TableRow>\n<TableCell>Gadget</TableCell>\n<TableCell>1</TableCell>\n<TableCell>$15.00</TableCell>\n</TableRow>\n</TableBody>\n<TableFooter>\n<TableRow>\n<TableCell colSpan={2} align=\"right\">Total:</TableCell>\n<TableCell>$35.00</TableCell>\n</TableRow>\n</TableFooter>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "Small size table\n<Table size=\"small\">\n<TableHead>\n<TableRow>\n<TableCell>Name</TableCell>\n<TableCell>Value</TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRow>\n</TableBody>\n</Table>"
+    },
+    {
+      "name": "example",
+      "text": "With expandable rows\n<Table>\n<TableHead>\n<TableRow>\n<TableCell>Category</TableCell>\n<TableCell>Amount</TableCell>\n<TableCell></TableCell>\n</TableRow>\n</TableHead>\n<TableBody>\n<TableRowCollapse\ncollapsed={isCollapsed}\nonToggleCollapse={toggleCollapse}\nrowContent={\n<>\n<TableCell>Shipping</TableCell>\n<TableCell>$15.99</TableCell>\n</>\n}\n>\n<div>Additional shipping details here...</div>\n</TableRowCollapse>\n</TableBody>\n</Table>"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "description": "ImageAvatar displays an image in a standardized avatar format with consistent sizing and styling.\nUse this component when you need to show profile pictures, product images, or any custom image\nin an avatar format.",
+  "id": "avatar",
+  "name": "Avatar",
+  "path": "src/components/avatar",
+  "tags": [
+    {
+      "name": "component",
+      "text": "Avatar"
+    },
+    {
+      "name": "example",
+      "text": "Custom avatar implementation\n<AvatarBase\nbackgroundColor={theme.blue100}\nbordered={true}\nshape=\"rounded\"\nsize={48}\n>\n<Text fontWeight={700} textAlign=\"center\">AB</Text>\n</AvatarBase>"
+    },
+    {
+      "name": "example",
+      "text": "Background image with custom styling\n<AvatarBase\nbackgroundUrl=\"https://example.com/image.jpg\"\nbackgroundSize=\"cover\"\nbackgroundPosition=\"center\"\nshape=\"square\"\nsize={64}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Avatar with child content\n<AvatarBase\nsize={40}\nshape=\"round\"\nbackgroundColor={theme.gray200}\n>\n<IconUser size={24} color=\"gray600\" />\n</AvatarBase>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<ImageAvatar\nimageUrl=\"https://example.com/profile.jpg\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom size and shape\n<ImageAvatar\nimageUrl=\"https://example.com/profile.jpg\"\nsize={48}\nshape=\"square\"\nbordered\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Multiple sizes in a user profile\n<VStack gap={16} alignItems=\"center\">\n<ImageAvatar\nimageUrl=\"https://example.com/profile.jpg\"\nsize={64}\nbordered\n/>\n<Text type=\"heading\">Jane Smith</Text>\n<Text type=\"subheader\" color={theme.gray600}>Product Manager</Text>\n</VStack>"
+    },
+    {
+      "name": "example",
+      "text": "Image avatars in a horizontal list\n<HStack gap={8}>\n{users.map(user => (\n<ImageAvatar\nkey={user.id}\nimageUrl={user.profileImage}\nsize={32}\nshape=\"rounded\"\n/>\n))}\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<UserAvatar />"
+    },
+    {
+      "name": "example",
+      "text": "Custom size with border\n<UserAvatar\nsize={48}\nbordered\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Different shapes\n<HStack gap={16}>\n<UserAvatar shape=\"round\" />\n<UserAvatar shape=\"rounded\" />\n<UserAvatar shape=\"square\" />\n</HStack>"
+    },
+    {
+      "name": "example",
+      "text": "In a user card\n<Card>\n<VStack gap={8} alignItems=\"center\" padding={16}>\n<UserAvatar size={64} bordered />\n<Text type=\"heading\">Guest User</Text>\n<Text type=\"subheader\" color={theme.gray600}>Unregistered</Text>\n</VStack>\n</Card>"
+    }
+  ]
+}

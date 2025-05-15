@@ -23,6 +23,36 @@ export type TagProps = BaseProps &
     size?: TagSize;
   };
 
+/**
+ * Tag displays a small label with optional icon and close button, commonly used for categorization, filters, or metadata.
+ * Supports different intents, sizes, icons, and can be highlighted. The close button triggers the `onClose` callback.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <Tag onClose={() => {}}>Brazil</Tag>
+ * ```
+ *
+ * @example With icon
+ * ```tsx
+ * <Tag icon={<CubeIcon size={16} />} onClose={() => {}}>
+ *   HS code for Brazil
+ * </Tag>
+ * ```
+ *
+ * @example Highlighted tag
+ * ```tsx
+ * <Tag highlighted onClose={() => {}}>
+ *   Highlighted Tag
+ * </Tag>
+ * ```
+ *
+ * @example Large size and error intent
+ * ```tsx
+ * <Tag size="lg" intent="error" onClose={() => {}}>
+ *   Error Tag
+ * </Tag>
+ * ```
+ */
 export const Tag = ({
   children,
   className,

@@ -1,0 +1,40 @@
+{
+  "description": "Tag displays a small label with optional icon and close button, commonly used for categorization, filters, or metadata.\nSupports different intents, sizes, icons, and can be highlighted. The close button triggers the `onClose` callback.",
+  "id": "tag",
+  "name": "Tag",
+  "path": "src/components/tag",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<Tag onClose={() => {}}>Brazil</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Tag icon={<CubeIcon size={16} />} onClose={() => {}}>\nHS code for Brazil\n</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "Highlighted tag\n<Tag highlighted onClose={() => {}}>\nHighlighted Tag\n</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "Large size and error intent\n<Tag size=\"lg\" intent=\"error\" onClose={() => {}}>\nError Tag\n</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<Tag onClose={() => {}}>Brazil</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "With icon\n<Tag icon={<CubeIcon size={16} />} onClose={() => {}}>\nHS code for Brazil\n</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "Highlighted tag\n<Tag highlighted onClose={() => {}}>\nHighlighted Tag\n</Tag>"
+    },
+    {
+      "name": "example",
+      "text": "Large size and error intent\n<Tag size=\"lg\" intent=\"error\" onClose={() => {}}>\nError Tag\n</Tag>"
+    }
+  ]
+}

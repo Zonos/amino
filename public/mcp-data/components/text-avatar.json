@@ -1,0 +1,32 @@
+{
+  "description": "TextAvatar displays a colored avatar with a single character, typically the first letter of a label, using a unique gradient background based on the label string.\nUseful for representing users, entities, or items when no image is available. The color is algorithmically generated for visual distinction.",
+  "id": "text-avatar",
+  "name": "TextAvatar",
+  "path": "src/components/text-avatar",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic usage\n<TextAvatar label=\"A\" />"
+    },
+    {
+      "name": "example",
+      "text": "With custom label\n<TextAvatar label=\"Brazil\" />"
+    },
+    {
+      "name": "example",
+      "text": "With custom style\n<TextAvatar label=\"Zonos\" style={{ width: 48, height: 48 }} />"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\n<TextAvatar label=\"A\" />"
+    },
+    {
+      "name": "example",
+      "text": "With custom label\n<TextAvatar label=\"Brazil\" />"
+    },
+    {
+      "name": "example",
+      "text": "With custom style\n<TextAvatar label=\"Zonos\" style={{ width: 48, height: 48 }} />"
+    }
+  ]
+}

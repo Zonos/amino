@@ -22,6 +22,95 @@ export type RichCheckboxProps = BaseProps & {
   onClick: (newVal: string) => void;
 };
 
+/**
+ * RichCheckbox component provides enhanced checkboxes with support for icons, labels, and subtitles.
+ * Use it for selection interfaces that need visual richness beyond standard checkboxes.
+ *
+ * @example Basic usage
+ * const [selectedOption, setSelectedOption] = useState('option1');
+ *
+ * <RichCheckbox
+ *   items={[
+ *     {
+ *       checked: selectedOption === 'option1',
+ *       label: "Option 1",
+ *       value: "option1"
+ *     },
+ *     {
+ *       checked: selectedOption === 'option2',
+ *       label: "Option 2",
+ *       value: "option2"
+ *     }
+ *   ]}
+ *   onClick={(value) => setSelectedOption(value)}
+ * />
+ *
+ * @example With subtitles
+ * <RichCheckbox
+ *   items={[
+ *     {
+ *       checked: selected === 'standard',
+ *       label: "Standard Shipping",
+ *       subtitle: "3-5 business days",
+ *       value: "standard"
+ *     },
+ *     {
+ *       checked: selected === 'express',
+ *       label: "Express Shipping",
+ *       subtitle: "1-2 business days",
+ *       value: "express"
+ *     }
+ *   ]}
+ *   onClick={(value) => setSelected(value)}
+ * />
+ *
+ * @example With icons
+ * <RichCheckbox
+ *   items={[
+ *     {
+ *       checked: selected === 'visa',
+ *       icon: <CreditCardIcon />,
+ *       label: "Credit Card",
+ *       value: "visa"
+ *     },
+ *     {
+ *       checked: selected === 'paypal',
+ *       icon: <PaypalIcon />,
+ *       label: "PayPal",
+ *       value: "paypal"
+ *     }
+ *   ]}
+ *   onClick={(value) => setSelected(value)}
+ * />
+ *
+ * @example Complete example with icons and subtitles
+ * <RichCheckbox
+ *   items={[
+ *     {
+ *       checked: selected === 'basic',
+ *       icon: <BasicPlanIcon />,
+ *       label: "Basic Plan",
+ *       subtitle: "$9.99/month - For individuals",
+ *       value: "basic"
+ *     },
+ *     {
+ *       checked: selected === 'pro',
+ *       icon: <ProPlanIcon />,
+ *       label: "Pro Plan",
+ *       subtitle: "$19.99/month - For professionals",
+ *       value: "pro"
+ *     },
+ *     {
+ *       checked: selected === 'enterprise',
+ *       icon: <EnterprisePlanIcon />,
+ *       label: "Enterprise Plan",
+ *       subtitle: "$49.99/month - For teams",
+ *       value: "enterprise"
+ *     }
+ *   ]}
+ *   onClick={(value) => setSelected(value)}
+ * />
+ */
 export const RichCheckbox = ({
   className,
   items,

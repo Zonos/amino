@@ -1,0 +1,116 @@
+{
+  "description": "Input component that supports various input types with features like floating labels,\nprefixes, suffixes, and different states (error, disabled, etc.).",
+  "id": "input",
+  "name": "Input",
+  "path": "src/components/input",
+  "tags": [
+    {
+      "name": "example",
+      "text": "Basic text input\n<Input\nlabel=\"Username\"\nplaceholder=\"Enter your username\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Password input\n<Input\ntype=\"password\"\nlabel=\"Password\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Number input\n<Input\ntype=\"number\"\nlabel=\"Age\"\nonChange={e => setValue(e.target.valueAsNumber)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Date input\n<Input\ntype=\"date\"\nlabel=\"Birth Date\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With help text\n<Input\nlabel=\"Email\"\nhelpText=\"We'll never share your email\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<Input\nlabel=\"Username\"\nerror={true}\nhelpText=\"Username is required\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With prefix icon\n<Input\nlabel=\"Search\"\nprefix={<SearchIcon />}\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With suffix\n<Input\nlabel=\"Weight\"\nsuffix=\"kg\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Value prefix (for partial content)\n<Input\nlabel=\"Phone\"\nvaluePrefix=\"+1\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Input\nlabel=\"Username\"\ndisabled\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Required field\n<Input\nlabel=\"Email\"\nrequired\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic text input\n<Input\nlabel=\"Username\"\nplaceholder=\"Enter your username\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Password input\n<Input\ntype=\"password\"\nlabel=\"Password\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Number input\n<Input\ntype=\"number\"\nlabel=\"Age\"\nonChange={e => setValue(e.target.valueAsNumber)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Date input\n<Input\ntype=\"date\"\nlabel=\"Birth Date\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With help text\n<Input\nlabel=\"Email\"\nhelpText=\"We'll never share your email\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With error state\n<Input\nlabel=\"Username\"\nerror={true}\nhelpText=\"Username is required\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With prefix icon\n<Input\nlabel=\"Search\"\nprefix={<SearchIcon />}\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With suffix\n<Input\nlabel=\"Weight\"\nsuffix=\"kg\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Value prefix (for partial content)\n<Input\nlabel=\"Phone\"\nvaluePrefix=\"+1\"\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Disabled state\n<Input\nlabel=\"Username\"\ndisabled\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Required field\n<Input\nlabel=\"Email\"\nrequired\nonChange={e => setValue(e.target.value)}\nvalue={value}\n/>"
+    },
+    {
+      "name": "example",
+      "text": "Basic usage\nconst [tags, setTags] = useState<string[]>([]);\nconst [inputValue, setInputValue] = useState('');\n\n<MultiInput\ninputValue={inputValue}\nsetInputValue={setInputValue}\ntags={tags}\nsetTags={setTags}\nplaceholder=\"Add tags...\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With tag validation\nconst [tags, setTags] = useState<string[]>([]);\nconst [inputValue, setInputValue] = useState('');\nconst [hasError, setHasError] = useState(false);\n\nconst validateTag = (tag: string) => {\nreturn tag.length >= 3 && tag.length <= 20;\n};\n\n<MultiInput\ninputValue={inputValue}\nsetInputValue={setInputValue}\ntags={tags}\nsetTags={setTags}\ntagValidation={validateTag}\nsetHasValidationError={setHasError}\nplaceholder=\"Enter tags (3-20 characters)\"\n/>\n{hasError && <Text color=\"danger\">One or more tags are invalid</Text>}"
+    },
+    {
+      "name": "example",
+      "text": "With initial tags\nconst [tags, setTags] = useState<string[]>([\"react\", \"typescript\", \"amino\"]);\nconst [inputValue, setInputValue] = useState('');\n\n<MultiInput\ninputValue={inputValue}\nsetInputValue={setInputValue}\ntags={tags}\nsetTags={setTags}\nplaceholder=\"Add more tags...\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With email validation\nconst [emails, setEmails] = useState<string[]>([]);\nconst [inputValue, setInputValue] = useState('');\nconst [hasError, setHasError] = useState(false);\n\nconst validateEmail = (email: string) => {\nconst regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nreturn regex.test(email);\n};\n\n<MultiInput\ninputValue={inputValue}\nsetInputValue={setInputValue}\ntags={emails}\nsetTags={setEmails}\ntagValidation={validateEmail}\nsetHasValidationError={setHasError}\nplaceholder=\"Add email addresses...\"\n/>"
+    },
+    {
+      "name": "example",
+      "text": "With custom styling\nconst [tags, setTags] = useState<string[]>([]);\nconst [inputValue, setInputValue] = useState('');\n\n<MultiInput\ninputValue={inputValue}\nsetInputValue={setInputValue}\ntags={tags}\nsetTags={setTags}\nclassName=\"custom-multi-input\"\nstyle={{ maxWidth: '500px' }}\nplaceholder=\"Add tags...\"\n/>"
+    }
+  ]
+}

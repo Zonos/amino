@@ -32,6 +32,43 @@ export type ThumbnailProps = BaseProps & {
   size?: ImageSize;
 };
 
+/**
+ * Thumbnail displays an icon with customizable styling, color schemes, and shapes.
+ * Used for visual representation of items or actions in a compact format.
+ * Supports different intents, shapes, colors, and sizes to match various design requirements.
+ *
+ * @example Basic usage
+ * ```tsx
+ * <Thumbnail icon={<UserIcon />} />
+ * ```
+ *
+ * @example Custom shape and color
+ * ```tsx
+ * <Thumbnail
+ *   color="blue"
+ *   icon={<DocumentIcon />}
+ *   shape="square"
+ * />
+ * ```
+ *
+ * @example With outline intent and custom size
+ * ```tsx
+ * <Thumbnail
+ *   icon={<StarIcon />}
+ *   intent="outline"
+ *   size={48}
+ * />
+ * ```
+ *
+ * @example With custom color override
+ * ```tsx
+ * <Thumbnail
+ *   icon={<GlobeIcon />}
+ *   mainColorOverride="purple800"
+ *   secondaryColorOverride="purple400"
+ * />
+ * ```
+ */
 export const Thumbnail = ({
   className,
   color = 'gray',

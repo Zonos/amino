@@ -50,6 +50,151 @@ export type DropZoneProps = BaseProps &
     uploadedFiles: UploadedFile[];
   };
 
+/**
+ * DropZone component provides a drag-and-drop interface for file uploads.
+ * It supports single or multiple file uploads, image previews, and various states
+ * including loading, error, and success.
+ *
+ * @example Basic usage
+ * const [files, setFiles] = useState<UploadedFile[]>([]);
+ *
+ * const handleDrop = useCallback((acceptedFiles: File[]) => {
+ *   const newFiles = acceptedFiles.map(file => ({
+ *     name: file.name,
+ *     size: `${(file.size / 1024).toFixed(2)} KB`,
+ *     file
+ *   }));
+ *
+ *   setFiles(prevFiles => [...prevFiles, ...newFiles]);
+ * }, []);
+ *
+ * const handleRemoveFile = (index: number) => {
+ *   setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+ * };
+ *
+ * <DropZone
+ *   dropzoneOptions={{
+ *     onDrop: handleDrop,
+ *     accept: {'image/*': []}
+ *   }}
+ *   onRemoveFile={handleRemoveFile}
+ *   uploadedFiles={files}
+ * />
+ *
+ * @example With validation and error state
+ * const [files, setFiles] = useState<UploadedFile[]>([]);
+ * const [error, setError] = useState(false);
+ * const [errorText, setErrorText] = useState('');
+ *
+ * const handleDrop = useCallback((acceptedFiles: File[]) => {
+ *   if (acceptedFiles.some(file => file.size > 1024 * 1024)) {
+ *     setError(true);
+ *     setErrorText('File size must be less than 1MB');
+ *     return;
+ *   }
+ *
+ *   setError(false);
+ *   setErrorText('');
+ *   // Process files...
+ * }, []);
+ *
+ * <DropZone
+ *   dropzoneOptions={{
+ *     onDrop: handleDrop,
+ *     maxSize: 1024 * 1024
+ *   }}
+ *   error={error}
+ *   helpText={errorText}
+ *   onRemoveFile={handleRemoveFile}
+ *   uploadedFiles={files}
+ * />
+ *
+ * @example With image previews
+ * const [files, setFiles] = useState<UploadedFile[]>([]);
+ *
+ * const handleDrop = useCallback((acceptedFiles: File[]) => {
+ *   const newFiles = acceptedFiles.map(file => {
+ *     const imageUrl = URL.createObjectURL(file);
+ *
+ *     return {
+ *       name: file.name,
+ *       size: `${(file.size / 1024).toFixed(2)} KB`,
+ *       file,
+ *       imageUrl
+ *     };
+ *   });
+ *
+ *   setFiles(prevFiles => [...prevFiles, ...newFiles]);
+ * }, []);
+ *
+ * <DropZone
+ *   dropzoneOptions={{
+ *     onDrop: handleDrop,
+ *     accept: {'image/*': []}
+ *   }}
+ *   onRemoveFile={handleRemoveFile}
+ *   uploadedFiles={files}
+ * />
+ *
+ * @example With loading state
+ * const [files, setFiles] = useState<UploadedFile[]>([]);
+ * const [loading, setLoading] = useState(false);
+ *
+ * const handleDrop = useCallback(async (acceptedFiles: File[]) => {
+ *   setLoading(true);
+ *
+ *   try {
+ *     // Simulate upload
+ *     await new Promise(resolve => setTimeout(resolve, 2000));
+ *
+ *     const newFiles = acceptedFiles.map(file => ({
+ *       name: file.name,
+ *       size: `${(file.size / 1024).toFixed(2)} KB`,
+ *       file
+ *     }));
+ *
+ *     setFiles(prevFiles => [...prevFiles, ...newFiles]);
+ *   } finally {
+ *     setLoading(false);
+ *   }
+ * }, []);
+ *
+ * <DropZone
+ *   dropzoneOptions={{
+ *     onDrop: handleDrop
+ *   }}
+ *   loading={loading}
+ *   loadingText="Uploading your files..."
+ *   onRemoveFile={handleRemoveFile}
+ *   uploadedFiles={files}
+ * />
+ *
+ * @example With file type restrictions
+ * <DropZone
+ *   dropzoneOptions={{
+ *     onDrop: handleDrop,
+ *     accept: {
+ *       'application/pdf': ['.pdf'],
+ *       'application/msword': ['.doc', '.docx']
+ *     },
+ *     maxFiles: 5
+ *   }}
+ *   instructionText="Drop PDF or Word documents here"
+ *   onRemoveFile={handleRemoveFile}
+ *   uploadedFiles={files}
+ * />
+ *
+ * @example With disabled state
+ * <DropZone
+ *   disabled={true}
+ *   dropzoneOptions={{
+ *     onDrop: handleDrop
+ *   }}
+ *   instructionText="File uploads are currently disabled"
+ *   onRemoveFile={handleRemoveFile}
+ *   uploadedFiles={files}
+ * />
+ */
 export const DropZone = ({
   className,
   disabled = false,

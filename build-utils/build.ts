@@ -1,5 +1,5 @@
 import alias from '@rollup/plugin-alias';
-import buble from '@rollup/plugin-buble';
+import { babel } from '@rollup/plugin-babel';
 import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -101,14 +101,16 @@ const bundlePackage = async (
           stylus: null,
         },
       }),
-      buble({
+      babel({
+        babelHelpers: 'bundled',
         exclude: 'node_modules/**',
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs'],
         include: '**/*.{js,mjs,jsx,ts,tsx,vue}',
-        transforms: {
-          dangerousForOf: true,
-          dangerousTaggedTemplateString: true,
-          modules: true,
-        },
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-react',
+          '@babel/preset-typescript',
+        ],
       }),
       terser(),
       progress({ clearLine: true }),
