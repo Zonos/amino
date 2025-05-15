@@ -6,9 +6,7 @@ import type { NextRequest } from 'next/server';
 
 import { createResponse } from './sse';
 
-export type ApiHandler<T = unknown> = (
-  request: NextRequest,
-) => Promise<Response> | Response;
+export type ApiHandler = (request: NextRequest) => Promise<Response>;
 
 export type ApiResponse<T = unknown> = {
   data?: T;
@@ -20,47 +18,269 @@ export type ApiResponse<T = unknown> = {
 };
 
 /**
+ * Convert Headers object to a plain object for serialization
+ * Safely handles cases where headers might be undefined or null
+ */
+function headersToObject(headers?: Headers | null): Record<string, string> {
+  const result: Record<string, string> = {};
+
+  if (!headers) {
+    return result;
+  }
+
+  try {
+    // Check if headers has forEach method before calling it
+    if (typeof headers.forEach === 'function') {
+      headers.forEach((value, key) => {
+        result[key] = value;
+      });
+    } else {
+      // Fallback if headers object doesn't implement forEach correctly
+      console.warn('Headers object does not implement forEach method properly');
+    }
+  } catch (error) {
+    // Silently handle any errors during iteration
+    console.error('Error processing headers:', error);
+  }
+
+  return result;
+}
+
+/**
+ * Log detailed information about request and errors
+ */
+function logRequestDetails(request: NextRequest, error?: unknown): void {
+  // Only log in development environments
+  if (process.env.NODE_ENV === 'production') {
+    return;
+  }
+  try {
+    // Defensively handle potential undefined request
+    if (!request) {
+      console.log('Request details: undefined request object');
+      return;
+    }
+
+    // Safe URL parsing with fallback
+    let host = 'unknown';
+    let url = 'unknown';
+    try {
+      if (request.url) {
+        const parsedUrl = new URL(request.url);
+        host = parsedUrl.hostname || 'unknown';
+        url = request.url;
+      }
+    } catch (urlError) {
+      console.warn('Error parsing URL:', urlError);
+    }
+
+    // Safely get headers object with robust error handling
+    let headersObj = {};
+    try {
+      if (request.headers && typeof request.headers.get === 'function') {
+        headersObj = headersToObject(request.headers);
+      }
+    } catch (headerError) {
+      console.warn('Error accessing headers:', headerError);
+    }
+
+    // Safe access to origin header
+    let origin = null;
+    try {
+      if (request.headers && typeof request.headers.get === 'function') {
+        origin = request.headers.get('origin');
+      }
+    } catch (originError) {
+      console.warn('Error accessing origin header:', originError);
+    }
+
+    const requestDetails = {
+      headers: headersObj,
+      host,
+      method: request.method || 'unknown',
+      origin,
+      url,
+    };
+
+    if (error) {
+      const errorDetails = {
+        message: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+      };
+
+      console.error('Error details:', errorDetails, requestDetails);
+    } else {
+      console.log('Request details:', requestDetails);
+    }
+  } catch (loggingError) {
+    // Ensure logging itself doesn't cause crashes
+    console.error('Error during request logging:', loggingError);
+  }
+}
+
+/**
+ * Create health check response with connectivity info
+ */
+function createHealthResponse(request: NextRequest): Response {
+  try {
+    // Defense against null/undefined request
+    if (!request) {
+      return new Response(
+        JSON.stringify({
+          error: 'Invalid request object',
+          timestamp: new Date().toISOString(),
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+    }
+
+    // Safe URL parsing with robust error handling
+    let host = 'unknown';
+    let protocol = 'unknown';
+    const url = request?.url || 'unknown';
+
+    try {
+      if (request.url) {
+        const parsedUrl = new URL(request.url);
+        host = parsedUrl.hostname || 'unknown';
+        protocol = parsedUrl.protocol || 'unknown';
+      }
+    } catch (urlError) {
+      console.warn('Error parsing URL in health response:', urlError);
+    }
+
+    const connectivity = {
+      host,
+      origin: request.headers?.get?.('origin') || null,
+      protocol,
+      timestamp: new Date().toISOString(),
+      url,
+    };
+
+    return new Response(JSON.stringify(connectivity), {
+      headers: {
+        'Cache-Control': 'no-cache',
+        Connection: 'keep-alive',
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    // Fallback response in case of any parsing errors
+    console.error('Error generating health response:', error);
+    return new Response(
+      JSON.stringify({
+        error: 'Could not generate health response',
+        timestamp: new Date().toISOString(),
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+  }
+}
+
+/**
+ * Safely check if request URL has a query parameter
+ * Works with both standard Request and NextRequest objects
+ */
+function hasQueryParam(request: NextRequest, param: string): boolean {
+  try {
+    // Check nextUrl first (NextRequest specific)
+    if (request.nextUrl?.searchParams?.has(param)) {
+      return true;
+    }
+
+    // Fall back to parsing URL manually (works with standard Request)
+    const url = new URL(request.url);
+    return url.searchParams.has(param);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Handle network errors with appropriate responses
+ */
+function handleNetworkError(request: NextRequest, error: unknown): Response {
+  // Log detailed information for debugging
+  logRequestDetails(request, error);
+
+  const errorResponse: ApiResponse = {
+    error: {
+      code: 'network_error',
+      details: {
+        errorMessage: error instanceof Error ? error.message : String(error),
+        url: request?.url || 'unknown',
+      },
+      message: 'Network connectivity issue detected',
+    },
+  };
+
+  return createResponse(request, errorResponse, { status: 503 });
+}
+
+/**
  * Middleware that wraps an API handler to standardize response format and add SSE support
  *
  * @param handler - The original API handler function
  * @returns A new handler function with SSE support
  */
-export function withSSESupport<T>(handler: ApiHandler<T>): ApiHandler<T> {
+export function withSSESupport(handler: ApiHandler): ApiHandler {
   return async (request: NextRequest): Promise<Response> => {
+    // Special case for connectivity debugging
+    if (hasQueryParam(request, '__debug_connectivity')) {
+      return createHealthResponse(request);
+    }
+
     try {
+      // Log request for debugging persistent issues
+      if (process.env.NODE_ENV !== 'production') {
+        logRequestDetails(request);
+      }
+
       // Get response from original handler
       const response = await handler(request);
 
-      // If the response is not JSON, return it as-is (e.g., for custom responses)
-      const contentType = response.headers.get('Content-Type');
-      if (!contentType?.includes('application/json')) {
+      // Handle edge case where response or headers might be undefined
+      if (
+        !response ||
+        !response.headers ||
+        typeof response.headers.get !== 'function'
+      ) {
+        console.warn(
+          'Response or headers invalid, falling back to direct return',
+        );
         return response;
       }
 
-      // Clone the response to read its body
-      const clonedResponse = response.clone();
-      // Parse the JSON data
-      const data = await clonedResponse.json();
+      // If the response is not JSON, return it as-is (e.g., for custom responses)
+      try {
+        const contentType = response.headers.get('Content-Type');
+        if (!contentType?.includes('application/json')) {
+          return response;
+        }
 
-      // Create a new response with the same data but with SSE support if needed
-      return createResponse(request, data, {
-        status: response.status,
-      });
+        // Clone the response to read its body
+        const clonedResponse = response.clone();
+        // Parse the JSON data
+        const data = await clonedResponse.json();
+
+        // Create a new response with the same data but with SSE support if needed
+        return createResponse(request, data, {
+          status: response.status,
+        });
+      } catch (headerError) {
+        console.warn('Error accessing response headers:', headerError);
+        return response;
+      }
     } catch (error) {
-      console.error('Error in API handler:', error);
-
-      // Return a standardized error response
-      const errorResponse: ApiResponse = {
-        error: {
-          code: 'internal_server_error',
-          message: 'An unexpected error occurred',
-          ...(process.env.NODE_ENV !== 'production' && {
-            details: { error: String(error) },
-          }),
-        },
-      };
-
-      return createResponse(request, errorResponse, { status: 500 });
+      return handleNetworkError(request, error);
     }
   };
 }

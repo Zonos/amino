@@ -209,6 +209,7 @@ export default tseslint.config(
     },
     rules: {
       ...pluginVitest.configs.recommended.rules, // you can also use vitest.configs.all.rules to enable all rules
+      'no-console': 'off', // Allow console in test files
       'vitest/max-nested-describe': ['error', { max: 3 }], // you can also modify rules' behavior using option like this
     },
   },
@@ -226,6 +227,13 @@ export default tseslint.config(
   },
   {
     files: ['svgReact/**', 'build-utils/**'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  // Add specific override for API routes to allow console statements
+  {
+    files: ['app/api/**/*.ts', 'app/api/**/*.tsx'],
     rules: {
       'no-console': 'off',
     },

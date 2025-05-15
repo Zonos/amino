@@ -34,7 +34,7 @@ type RootResponse = {
 /**
  * Base handler for the root MCP API endpoint
  */
-async function rootHandler(request: NextRequest): Promise<Response> {
+async function rootHandler(_request: NextRequest): Promise<Response> {
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
   // Prepare response data

@@ -22,6 +22,87 @@ vi.mock('path', () => ({
   join: vi.fn((...args: string[]) => args.join('/')),
 }));
 
+// Mock the NextRequest implementation
+vi.mock('next/server', async () => {
+  const actual = await vi.importActual('next/server');
+
+  return {
+    ...(actual as object),
+    NextRequest: vi.fn().mockImplementation((url, init) => {
+      // Make sure we have a valid URL string for testing
+      const urlString = url || 'https://test.example.com';
+      const request = new Request(urlString, init);
+
+      // Safely parse URL with error handling
+      let parsedUrl: URL;
+      try {
+        parsedUrl = new URL(urlString);
+      } catch (err) {
+        // Default URL if parsing fails
+        parsedUrl = new URL('https://test.example.com');
+        console.warn('Error parsing URL in NextRequest mock:', err);
+      }
+
+      // Copy original headers to a plain object for easier manipulation
+      const headersObj: Record<string, string> = {};
+      try {
+        request.headers.forEach((value, key) => {
+          headersObj[key] = value;
+        });
+      } catch (err) {
+        console.warn('Error processing headers in NextRequest mock:', err);
+      }
+
+      // Create a robust headers implementation
+      const mockedHeaders = {
+        // Add other Headers methods as needed
+        append: (name: string, value: string) => {
+          headersObj[name.toLowerCase()] = value;
+        },
+        delete: (name: string) => {
+          delete headersObj[name.toLowerCase()];
+        },
+        forEach: (callback: (value: string, key: string) => void) => {
+          Object.entries(headersObj).forEach(([key, value]) => {
+            callback(value, key);
+          });
+        },
+        // Implement standard Headers methods
+        get: (name: string) => headersObj[name.toLowerCase()] || null,
+        has: (name: string) => name.toLowerCase() in headersObj,
+        set: (name: string, value: string) => {
+          headersObj[name.toLowerCase()] = value;
+        },
+      };
+
+      // Return a properly mocked NextRequest with all required properties
+      return {
+        bodyUsed: request.bodyUsed,
+        clone: () => request.clone(),
+        headers: mockedHeaders,
+        // Add any other properties needed for tests
+        json: () => request.json(),
+        method: request.method || 'GET',
+        nextUrl: {
+          hash: parsedUrl.hash,
+          hostname: parsedUrl.hostname,
+          href: parsedUrl.href,
+          origin: parsedUrl.origin,
+          password: parsedUrl.password,
+          pathname: parsedUrl.pathname,
+          port: parsedUrl.port,
+          protocol: parsedUrl.protocol,
+          search: parsedUrl.search,
+          searchParams: parsedUrl.searchParams,
+          username: parsedUrl.username,
+        },
+        text: () => request.text(),
+        url: urlString,
+      };
+    }),
+  };
+});
+
 describe('Component detail endpoint', () => {
   // Use Next.js App Router request/response
   let mockRequest: NextRequest;

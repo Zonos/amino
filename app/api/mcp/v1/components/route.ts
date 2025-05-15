@@ -22,15 +22,36 @@ const inProdEnvironment = process.env.NODE_ENV === 'production';
  */
 async function componentsHandler(request: NextRequest): Promise<Response> {
   try {
-    // Parse query parameters from URL
-    const url = new URL(request.url);
-    const category = url.searchParams.get('category');
-    const tag = url.searchParams.get('tag');
-    const limitParam = url.searchParams.get('limit') || '20';
-    const offsetParam = url.searchParams.get('offset') || '0';
+    // Parse query parameters from URL - handle case where request.url is undefined
+    let category: string | null = null;
+    let tag: string | null = null;
+    let parsedLimit = 20;
+    let parsedOffset = 0;
 
-    const parsedLimit = Math.min(parseInt(limitParam, 10) || 20, 100);
-    const parsedOffset = parseInt(offsetParam, 10) || 0;
+    try {
+      if (request.url) {
+        const url = new URL(request.url);
+        category = url.searchParams.get('category');
+        tag = url.searchParams.get('tag');
+        const limitParam = url.searchParams.get('limit') || '20';
+        const offsetParam = url.searchParams.get('offset') || '0';
+        parsedLimit = Math.min(parseInt(limitParam, 10) || 20, 100);
+        parsedOffset = parseInt(offsetParam, 10) || 0;
+      } else if (request.nextUrl?.searchParams) {
+        // Alternative access through nextUrl if available
+        category = request.nextUrl.searchParams.get('category');
+        tag = request.nextUrl.searchParams.get('tag');
+        const limitParam = request.nextUrl.searchParams.get('limit') || '20';
+        const offsetParam = request.nextUrl.searchParams.get('offset') || '0';
+        parsedLimit = Math.min(parseInt(limitParam, 10) || 20, 100);
+        parsedOffset = parseInt(offsetParam, 10) || 0;
+      } else {
+        console.warn('No URL available in request, using default parameters');
+      }
+    } catch (urlError) {
+      console.warn('Error parsing URL:', urlError);
+      // Continue with defaults
+    }
 
     // Path to the index.json file
     const indexPath = path.join(
