@@ -1,5 +1,7 @@
 import { env } from 'app/environment';
 
+import { createResponse } from './utils/sse';
+
 type ToolDescription = {
   description: string;
   name: string;
@@ -31,11 +33,11 @@ type RootResponse = {
 /**
  * Handler for the root MCP API endpoint
  */
-export async function GET(): Promise<Response> {
+export async function GET(request: Request): Promise<Response> {
   const baseUrl = env.NEXT_PUBLIC_BASE_URL;
 
-  // Return API information with available tools and endpoints
-  return Response.json({
+  // Prepare response data
+  const responseData: RootResponse = {
     description:
       'Model Context Protocol server for Amino component documentation',
     endpoints: {
@@ -104,5 +106,8 @@ export async function GET(): Promise<Response> {
       },
     ],
     version: '1.0.0',
-  } as RootResponse);
+  };
+
+  // Return response in appropriate format based on client request
+  return createResponse(request, responseData);
 }

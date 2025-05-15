@@ -9,6 +9,7 @@ import type {
   ComponentsResponse,
   ErrorResponse,
 } from 'app/api/mcp/v1/types';
+import { createResponse } from 'app/api/mcp/v1/utils/sse';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -40,16 +41,15 @@ export async function GET(request: Request): Promise<Response> {
 
     // Check if the index file exists
     if (!fs.existsSync(indexPath)) {
-      return Response.json(
-        {
-          error: {
-            code: 'not_found',
-            details: { path: indexPath },
-            message: 'Components index file not found',
-          },
-        } as ErrorResponse,
-        { status: 404 },
-      );
+      const errorResponse = {
+        error: {
+          code: 'not_found',
+          details: { path: indexPath },
+          message: 'Components index file not found',
+        },
+      } as ErrorResponse;
+
+      return createResponse(request, errorResponse, { status: 404 });
     }
 
     // Read and parse the index file
@@ -99,8 +99,8 @@ export async function GET(request: Request): Promise<Response> {
       }
     }
 
-    // Return the response
-    return Response.json({
+    // Prepare response data
+    const responseData: ComponentsResponse = {
       components: paginatedComponents,
       pagination: {
         limit: parsedLimit,
@@ -108,20 +108,22 @@ export async function GET(request: Request): Promise<Response> {
         offset: parsedOffset,
         total,
       },
-    } as ComponentsResponse);
+    };
+
+    // Return response in appropriate format based on client request
+    return createResponse(request, responseData);
   } catch (error) {
     // Handle errors
-    return Response.json(
-      {
-        error: {
-          code: 'internal_server_error',
-          message: 'Internal server error while retrieving components list',
-          ...(inProdEnvironment === false && {
-            details: { error: String(error) },
-          }),
-        },
-      } as ErrorResponse,
-      { status: 500 },
-    );
+    const errorResponse = {
+      error: {
+        code: 'internal_server_error',
+        message: 'Internal server error while retrieving components list',
+        ...(inProdEnvironment === false && {
+          details: { error: String(error) },
+        }),
+      },
+    } as ErrorResponse;
+
+    return createResponse(request, errorResponse, { status: 500 });
   }
 }

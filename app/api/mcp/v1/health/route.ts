@@ -5,6 +5,7 @@
  */
 
 import type { ErrorResponse, HealthResponse } from 'app/api/mcp/v1/types';
+import { createResponse } from 'app/api/mcp/v1/utils/sse';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -20,7 +21,7 @@ const serverStartTime = Date.now();
 /**
  * Handler for the health check endpoint
  */
-export async function GET(): Promise<Response> {
+export async function GET(request: Request): Promise<Response> {
   try {
     // Read package.json to get current version
     const packagePath = path.join(process.cwd(), 'package.json');
@@ -89,21 +90,20 @@ export async function GET(): Promise<Response> {
       version,
     };
 
-    // Return the health status
-    return Response.json(healthResponse);
+    // Return the health status in appropriate format
+    return createResponse(request, healthResponse);
   } catch (error) {
     // Handle errors
-    return Response.json(
-      {
-        error: {
-          code: 'internal_server_error',
-          message: 'Internal server error while checking health status',
-          ...(process.env.NODE_ENV !== 'production' && {
-            details: { error: String(error) },
-          }),
-        },
-      } as ErrorResponse,
-      { status: 500 },
-    );
+    const errorResponse = {
+      error: {
+        code: 'internal_server_error',
+        message: 'Internal server error while checking health status',
+        ...(process.env.NODE_ENV !== 'production' && {
+          details: { error: String(error) },
+        }),
+      },
+    } as ErrorResponse;
+
+    return createResponse(request, errorResponse, { status: 500 });
   }
 }
