@@ -5,7 +5,7 @@
  */
 
 import type { ErrorResponse, HealthResponse } from 'app/api/mcp/v1/types';
-import { withSSESupport } from 'app/api/mcp/v1/utils/middleware';
+import { withSSESupport } from 'app/api/mcp/v1/utils/apiSSEMiddleware';
 import * as fs from 'fs';
 import type { NextRequest } from 'next/server';
 import * as path from 'path';

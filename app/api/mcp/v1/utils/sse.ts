@@ -14,18 +14,29 @@ export function createSSEResponse<T>(data: T): Response {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     start(controller) {
-      // Format as an SSE event
-      const eventData = `data: ${JSON.stringify(data)}\n\n`;
-      controller.enqueue(encoder.encode(eventData));
-      controller.close();
+      try {
+        // Send initial comment to keep connection alive
+        controller.enqueue(encoder.encode(': ping\n\n'));
+
+        // Format as an SSE event
+        const eventData = `data: ${JSON.stringify(data)}\n\n`;
+        controller.enqueue(encoder.encode(eventData));
+
+        // Close the stream after sending data
+        controller.close();
+      } catch (error) {
+        console.error('Error writing to SSE stream:', error);
+        controller.error(error);
+      }
     },
   });
 
   return new Response(stream, {
     headers: {
-      'Cache-Control': 'no-cache',
+      'Cache-Control': 'no-cache, no-transform',
       Connection: 'keep-alive',
       'Content-Type': 'text/event-stream',
+      'X-Accel-Buffering': 'no', // Prevent proxy buffering
     },
   });
 }
@@ -48,8 +59,9 @@ function hasQueryParam(request: Request | NextRequest, param: string): boolean {
     // Fall back to parsing URL manually (works with standard Request)
     const url = new URL(request.url);
     return url.searchParams.has(param);
-  } catch {
+  } catch (error) {
     // If there's any error parsing the URL, default to false
+    console.warn('Error checking URL parameters:', error);
     return false;
   }
 }
@@ -75,6 +87,13 @@ export function clientWantsSSE(request: Request | NextRequest): boolean {
     // Check if headers.get is a function before using it
     const hasGetMethod = typeof request.headers.get === 'function';
     const acceptHeader = hasGetMethod ? request.headers.get('Accept') : null;
+
+    // Explicitly check for user-agent in case it's a VS Code extension
+    const userAgent = hasGetMethod ? request.headers.get('User-Agent') : null;
+    if (userAgent && userAgent.includes('vscode')) {
+      // VS Code extensions often use SSE
+      return true;
+    }
 
     // Primarily check the Accept header for text/event-stream
     if (acceptHeader && acceptHeader.includes('text/event-stream')) {
@@ -114,6 +133,16 @@ export function createResponse<T>(
       console.warn('createResponse called with undefined request');
       return Response.json(data, options);
     }
+
+    // Log request details for debugging
+    const requestDetails = {
+      headers: {},
+      host: 'url' in request ? new URL(request.url).hostname : 'unknown',
+      method: 'method' in request ? request.method : 'unknown',
+      origin: request.headers?.get('origin') || null,
+      url: request.url || 'unknown',
+    };
+    console.log('Request details:', requestDetails);
 
     // Catch any errors that might occur when checking if client wants SSE
     let wantsStream = false;

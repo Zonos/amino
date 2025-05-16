@@ -61,9 +61,9 @@
     "test:sb": "test-storybook",
     "test:all": "pnpm test:prod && pnpm test:pw && pnpm test:sb",
     "test": "vitest --run",
-    "test:copy": "vitest run 2>&1 | tee /dev/tty | pbcopy",
-    "tsc": "tsc --noEmit",
-    "tsc:copy": "tsc --noEmit 2>&1 | tee /dev/tty | pbcopy",
+    "test:copy": "tsx build-utils/run-test-copy.ts",
+    "tsc:copy": "tsx build-utils/run-tsc-copy.ts",
+    "vite:build": "vite build",
     "version:major": "pnpm build && pnpm version major -m 'Bump version %s' && pnpm push:tags",
     "version:minor": "pnpm build && pnpm version minor -m 'Bump version %s' && pnpm push:tags",
     "version:patch": "pnpm build && pnpm version patch -m 'Bump version %s' && pnpm push:tags"

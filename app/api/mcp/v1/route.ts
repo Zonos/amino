@@ -1,7 +1,7 @@
 import { env } from 'app/environment';
 import type { NextRequest } from 'next/server';
 
-import { withSSESupport } from './utils/middleware';
+import { withSSESupport } from './utils/apiSSEMiddleware';
 
 type ToolDescription = {
   description: string;

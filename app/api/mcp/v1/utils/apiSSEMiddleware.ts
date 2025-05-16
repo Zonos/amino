@@ -1,5 +1,7 @@
 /**
  * MCP API middleware for common request/response handling
+ *
+ * Provides SSE (Server-Sent Events) support for API endpoints
  */
 
 import { NextRequest } from 'next/server';

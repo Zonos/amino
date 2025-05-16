@@ -15,6 +15,12 @@ export function middleware(request: NextRequest): NextResponse {
     return NextResponse.next();
   }
 
+  // Check if this is an SSE request
+  const acceptHeader = request.headers.get('Accept') || '';
+  const isSSERequest =
+    acceptHeader.includes('text/event-stream') ||
+    request.nextUrl.searchParams.has('stream');
+
   // Create a response object
   const response = NextResponse.next({
     request: {
@@ -33,6 +39,15 @@ export function middleware(request: NextRequest): NextResponse {
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
   );
+
+  // For SSE requests, add specific headers needed for long-lived connections
+  if (isSSERequest) {
+    // Add cache control and keep-alive directives to support SSE
+    response.headers.set('Cache-Control', 'no-cache, no-transform');
+    response.headers.set('Connection', 'keep-alive');
+    // Allow browser to expose SSE headers to client JavaScript
+    response.headers.set('Access-Control-Expose-Headers', 'Content-Type');
+  }
 
   // Handle OPTIONS requests for CORS preflight
   if (request.method === 'OPTIONS') {
