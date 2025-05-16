@@ -15,7 +15,14 @@ export default [
     },
   },
   {
-    files: ['svgReact/**', 'build-utils/**/*', '__stories__/**'],
+    files: [
+      'svgReact/**',
+      'build-utils/**/*',
+      '__stories__/**',
+      'app/api/**/*.ts',
+      'app/api/**/*.tsx',
+      '__tests__/**',
+    ],
     rules: {
       'no-console': 'off',
     },
