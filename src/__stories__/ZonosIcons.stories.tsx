@@ -4,9 +4,9 @@ import { Card } from 'src/components/card/Card';
 import { Flex } from 'src/components/flex/Flex';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
-import { ZonosIcon } from 'src/icons/custom/ZonosIcon';
-import { ZonosLogoIcon } from 'src/icons/custom/ZonosLogoIcon';
-import { ZonosWordmark } from 'src/icons/custom/ZonosWordmark';
+import { ZonosIcon } from 'src/icons/custom/logo/ZonosIcon';
+import { ZonosLogoIcon } from 'src/icons/custom/logo/ZonosLogoIcon';
+import { ZonosWordmark } from 'src/icons/custom/logo/ZonosWordmark';
 
 const meta: Meta = {
   component: ZonosIcon,

@@ -1,5 +1,5 @@
 import { Text } from 'src/components/text/Text';
-import { ZonosLogoIcon } from 'src/icons/custom/ZonosLogoIcon';
+import { ZonosLogoIcon } from 'src/icons/custom/logo/ZonosLogoIcon';
 
 import styles from './_LoadingIcon.module.scss';
 
