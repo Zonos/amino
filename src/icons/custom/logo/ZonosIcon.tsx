@@ -50,6 +50,7 @@ export const ZonosIcon = forwardRef<SVGSVGElement, IconProps>(
         );
       }
 
+      // Original logo
       return (
         <>
           <path
