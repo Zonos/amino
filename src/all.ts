@@ -277,6 +277,7 @@ import './icons/custom/us-states/WisconsinIcon';
 import './icons/custom/us-states/WyomingIcon';
 import './icons/custom/ZonosIcon';
 import './icons/custom/ZonosLogoIcon';
+import './icons/custom/ZonosWordmark';
 import './icons/DashboardDuotoneIcon';
 import './icons/DashboardIcon';
 import './icons/DiamondDuotoneIcon';
