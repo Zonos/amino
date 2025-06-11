@@ -108,7 +108,12 @@ const bundlePackage = async (
         include: '**/*.{js,mjs,jsx,ts,tsx,vue}',
         presets: [
           '@babel/preset-env',
-          '@babel/preset-react',
+          [
+            '@babel/preset-react',
+            {
+              runtime: 'automatic',
+            },
+          ],
           '@babel/preset-typescript',
         ],
       }),
