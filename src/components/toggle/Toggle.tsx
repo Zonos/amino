@@ -217,7 +217,8 @@ export const Toggle = <TValue extends SelectValue>({
               onClick={() => onChange(option.value)}
               type="button"
             >
-              {option.label}
+              {option.icon && <div className={styles.icon}>{option.icon}</div>}
+              <div>{option.label}</div>
             </button>
           );
         })}
