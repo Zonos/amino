@@ -86,6 +86,16 @@ export type CountryMultiSelectExpandedProps<
      * @default false
      */
     withoutSearch?: boolean;
+    /**
+     * Whether to hide the "Select all" checkbox
+     * @default false
+     */
+    hideSelectAll?: boolean;
+    /**
+     * Expand all groups by default
+     * @default false
+     */
+    expandAllGroups?: boolean;
   };
 
 /**
@@ -182,6 +192,8 @@ export const CountryMultiSelectExpanded = <
   selectedCountries,
   style,
   withoutSearch = false,
+  hideSelectAll = false,
+  expandAllGroups = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
   const id = useId();
 
@@ -244,6 +256,12 @@ export const CountryMultiSelectExpanded = <
     }
   }, [groups, searchText]);
 
+  useEffect(() => {
+    if (expandAllGroups) {
+      setExpandedGroups(groups.map(group => group.label));
+    }
+  }, [groups, expandAllGroups]);
+
   if (!sortedCountries.length) {
     return (
       <div className={clsx(className)}>
@@ -272,7 +290,7 @@ export const CountryMultiSelectExpanded = <
           maxHeight: `${maxHeight}px`,
         }}
       >
-        {!searchText && (
+        {!searchText && !hideSelectAll && (
           <div className={styles.checkboxWrapper}>
             <Checkbox
               checked={allSelected}
