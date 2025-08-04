@@ -121,3 +121,37 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
     />
   );
 };
+
+export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
+  const dashboardUrl = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
+
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
+
+  const countries = useMemo(
+    () =>
+      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
+        code: x.code,
+        group: 'Select all',
+        icon: x.icon,
+        label: x.displayName,
+      })),
+    [countryOptions],
+  );
+
+  return (
+    <CountryMultiSelectExpanded
+      style={{
+        overflow: 'auto',
+        resize: 'both',
+        width: '632px',
+      }}
+      {...props}
+      countries={countries}
+      expandAllGroupsOnInitialRender
+      hideSelectAll
+      onChange={setValue}
+      selectedCountries={value}
+    />
+  );
+};

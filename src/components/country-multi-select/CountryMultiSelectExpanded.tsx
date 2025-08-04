@@ -61,6 +61,16 @@ export type CountryMultiSelectExpandedProps<
      */
     disabled?: boolean;
     /**
+     * Expand all groups by default
+     * @default false
+     */
+    expandAllGroupsOnInitialRender?: boolean;
+    /**
+     * Whether to hide the "Select all" checkbox
+     * @default false
+     */
+    hideSelectAll?: boolean;
+    /**
      * Maximum height of the country selection area in pixels
      * @default 380
      */
@@ -175,7 +185,9 @@ export const CountryMultiSelectExpanded = <
   countries,
   disabled = false,
   error = false,
+  expandAllGroupsOnInitialRender = false,
   helpText,
+  hideSelectAll = false,
   maxHeight = 380,
   noHeader = false,
   onChange,
@@ -187,6 +199,8 @@ export const CountryMultiSelectExpanded = <
 
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+  const [isExpandedOnInitialRender, setIsExpandedOnInitialRender] =
+    useState(false);
 
   const sortedCountries = useMemo(
     () => countries.sort((a, b) => a.label.localeCompare(b.label)),
@@ -244,6 +258,13 @@ export const CountryMultiSelectExpanded = <
     }
   }, [groups, searchText]);
 
+  useEffect(() => {
+    if (expandAllGroupsOnInitialRender && !isExpandedOnInitialRender) {
+      setExpandedGroups(groups.map(group => group.label));
+      setIsExpandedOnInitialRender(true);
+    }
+  }, [groups, expandAllGroupsOnInitialRender, isExpandedOnInitialRender]);
+
   if (!sortedCountries.length) {
     return (
       <div className={clsx(className)}>
@@ -272,7 +293,7 @@ export const CountryMultiSelectExpanded = <
           maxHeight: `${maxHeight}px`,
         }}
       >
-        {!searchText && (
+        {!searchText && !hideSelectAll && (
           <div className={styles.checkboxWrapper}>
             <Checkbox
               checked={allSelected}
