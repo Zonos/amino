@@ -128,14 +128,16 @@ export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
-  const countries = useMemo(() => {
-    return countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
-      code: x.code,
-      group: 'Select all',
-      icon: x.icon,
-      label: x.displayName,
-    }));
-  }, [countryOptions]);
+  const countries = useMemo(
+    () =>
+      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
+        code: x.code,
+        group: 'Select all',
+        icon: x.icon,
+        label: x.displayName,
+      })),
+    [countryOptions],
+  );
 
   return (
     <CountryMultiSelectExpanded
@@ -145,9 +147,9 @@ export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
         width: '632px',
       }}
       {...props}
+      countries={countries}
       expandAllGroups
       hideSelectAll
-      countries={countries}
       onChange={setValue}
       selectedCountries={value}
     />

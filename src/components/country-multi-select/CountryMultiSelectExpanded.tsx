@@ -61,6 +61,16 @@ export type CountryMultiSelectExpandedProps<
      */
     disabled?: boolean;
     /**
+     * Expand all groups by default
+     * @default false
+     */
+    expandAllGroups?: boolean;
+    /**
+     * Whether to hide the "Select all" checkbox
+     * @default false
+     */
+    hideSelectAll?: boolean;
+    /**
      * Maximum height of the country selection area in pixels
      * @default 380
      */
@@ -86,16 +96,6 @@ export type CountryMultiSelectExpandedProps<
      * @default false
      */
     withoutSearch?: boolean;
-    /**
-     * Whether to hide the "Select all" checkbox
-     * @default false
-     */
-    hideSelectAll?: boolean;
-    /**
-     * Expand all groups by default
-     * @default false
-     */
-    expandAllGroups?: boolean;
   };
 
 /**
@@ -185,15 +185,15 @@ export const CountryMultiSelectExpanded = <
   countries,
   disabled = false,
   error = false,
+  expandAllGroups = false,
   helpText,
+  hideSelectAll = false,
   maxHeight = 380,
   noHeader = false,
   onChange,
   selectedCountries,
   style,
   withoutSearch = false,
-  hideSelectAll = false,
-  expandAllGroups = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
   const id = useId();
 
