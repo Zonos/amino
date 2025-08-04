@@ -64,7 +64,7 @@ export type CountryMultiSelectExpandedProps<
      * Expand all groups by default
      * @default false
      */
-    expandAllGroups?: boolean;
+    expandAllGroupsOnInitialRender?: boolean;
     /**
      * Whether to hide the "Select all" checkbox
      * @default false
@@ -185,7 +185,7 @@ export const CountryMultiSelectExpanded = <
   countries,
   disabled = false,
   error = false,
-  expandAllGroups = false,
+  expandAllGroupsOnInitialRender = false,
   helpText,
   hideSelectAll = false,
   maxHeight = 380,
@@ -257,10 +257,10 @@ export const CountryMultiSelectExpanded = <
   }, [groups, searchText]);
 
   useEffect(() => {
-    if (expandAllGroups) {
+    if (expandAllGroupsOnInitialRender) {
       setExpandedGroups(groups.map(group => group.label));
     }
-  }, [groups, expandAllGroups]);
+  }, [groups, expandAllGroupsOnInitialRender]);
 
   if (!sortedCountries.length) {
     return (
