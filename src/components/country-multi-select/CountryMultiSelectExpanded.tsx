@@ -199,8 +199,6 @@ export const CountryMultiSelectExpanded = <
 
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
-  const [isExpandedOnInitialRender, setIsExpandedOnInitialRender] =
-    useState(false);
 
   const sortedCountries = useMemo(
     () => countries.sort((a, b) => a.label.localeCompare(b.label)),
@@ -259,11 +257,10 @@ export const CountryMultiSelectExpanded = <
   }, [groups, searchText]);
 
   useEffect(() => {
-    if (alwaysExpand && !isExpandedOnInitialRender) {
+    if (alwaysExpand) {
       setExpandedGroups(groups.map(group => group.label));
-      setIsExpandedOnInitialRender(true);
     }
-  }, [groups, alwaysExpand, isExpandedOnInitialRender]);
+  }, [groups, alwaysExpand]);
 
   if (!sortedCountries.length) {
     return (
