@@ -147,8 +147,8 @@ export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
         width: '632px',
       }}
       {...props}
+      alwaysExpand
       countries={countries}
-      expandAllGroupsOnInitialRender
       hideSelectAll
       onChange={setValue}
       selectedCountries={value}
