@@ -52,7 +52,7 @@ export type CountryMultiSelectExpandedProps<
      */
     actions?: ReactNode;
     /**
-     * Expand all groups
+     * Keep all groups permanently expanded and hide collapse/expand controls
      * @default false
      */
     alwaysExpand?: boolean;
