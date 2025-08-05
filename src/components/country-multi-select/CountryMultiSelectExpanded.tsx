@@ -52,6 +52,11 @@ export type CountryMultiSelectExpandedProps<
      */
     actions?: ReactNode;
     /**
+     * Keep all groups permanently expanded and hide collapse/expand controls
+     * @default false
+     */
+    alwaysExpand?: boolean;
+    /**
      * Array of country options to display in the select
      */
     countries: CountryMultiSelectExpandedOption<CountryCode>[];
@@ -60,11 +65,6 @@ export type CountryMultiSelectExpandedProps<
      * @default false
      */
     disabled?: boolean;
-    /**
-     * Expand all groups by default
-     * @default false
-     */
-    expandAllGroupsOnInitialRender?: boolean;
     /**
      * Whether to hide the "Select all" checkbox
      * @default false
@@ -181,11 +181,11 @@ export const CountryMultiSelectExpanded = <
   CountryCode extends string = string,
 >({
   actions,
+  alwaysExpand = false,
   className,
   countries,
   disabled = false,
   error = false,
-  expandAllGroupsOnInitialRender = false,
   helpText,
   hideSelectAll = false,
   maxHeight = 380,
@@ -199,8 +199,6 @@ export const CountryMultiSelectExpanded = <
 
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
-  const [isExpandedOnInitialRender, setIsExpandedOnInitialRender] =
-    useState(false);
 
   const sortedCountries = useMemo(
     () => countries.sort((a, b) => a.label.localeCompare(b.label)),
@@ -259,11 +257,10 @@ export const CountryMultiSelectExpanded = <
   }, [groups, searchText]);
 
   useEffect(() => {
-    if (expandAllGroupsOnInitialRender && !isExpandedOnInitialRender) {
+    if (alwaysExpand) {
       setExpandedGroups(groups.map(group => group.label));
-      setIsExpandedOnInitialRender(true);
     }
-  }, [groups, expandAllGroupsOnInitialRender, isExpandedOnInitialRender]);
+  }, [groups, alwaysExpand]);
 
   if (!sortedCountries.length) {
     return (
@@ -356,30 +353,32 @@ export const CountryMultiSelectExpanded = <
                   }}
                 />
 
-                <button
-                  className={styles.collapseButton}
-                  onClick={() => {
-                    if (expandedGroups.includes(group.label)) {
-                      setExpandedGroups(
-                        expandedGroups.filter(x => x !== group.label),
-                      );
-                    } else {
-                      setExpandedGroups([...expandedGroups, group.label]);
-                    }
-                  }}
-                  type="button"
-                >
-                  <Text color="textColorSecondary">
-                    {numSelectedInGroup}/{numSelectableInGroup}
-                  </Text>
-                  <ChevronUpIcon
-                    className={clsx(
-                      styles.collapseIcon,
-                      groupCollapsed && styles.collapsed,
-                    )}
-                    size={24}
-                  />
-                </button>
+                {!alwaysExpand && (
+                  <button
+                    className={styles.collapseButton}
+                    onClick={() => {
+                      if (expandedGroups.includes(group.label)) {
+                        setExpandedGroups(
+                          expandedGroups.filter(x => x !== group.label),
+                        );
+                      } else {
+                        setExpandedGroups([...expandedGroups, group.label]);
+                      }
+                    }}
+                    type="button"
+                  >
+                    <Text color="textColorSecondary">
+                      {numSelectedInGroup}/{numSelectableInGroup}
+                    </Text>
+                    <ChevronUpIcon
+                      className={clsx(
+                        styles.collapseIcon,
+                        groupCollapsed && styles.collapsed,
+                      )}
+                      size={24}
+                    />
+                  </button>
+                )}
               </div>
 
               <Collapse collapsed={groupCollapsed}>
