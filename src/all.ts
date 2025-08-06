@@ -763,6 +763,7 @@ import './utils/prepCountryOptions';
 import './utils/prepRegionCountryOptions';
 import './utils/setupNestedData';
 import './utils/storage';
+import './utils/style';
 import './utils/truncateText';
 import './utils/unitedStates';
 import './utils/useCopyText';
