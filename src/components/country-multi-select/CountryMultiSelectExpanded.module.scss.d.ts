@@ -13,6 +13,7 @@ export declare const header: string;
 export declare const headerActions: string;
 export declare const hoverWrapper: string;
 export declare const noCountriesWrapper: string;
+export declare const searchClearButton: string;
 export declare const searchInput: string;
 export declare const selectionWrapper: string;
 export declare const wrapper: string;
