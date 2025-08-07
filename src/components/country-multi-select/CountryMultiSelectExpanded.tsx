@@ -26,6 +26,7 @@ import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
+import { style } from 'src/utils/style';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 
@@ -61,10 +62,20 @@ export type CountryMultiSelectExpandedProps<
      */
     countries: CountryMultiSelectExpandedOption<CountryCode>[];
     /**
+     * Class name to apply to the country component. (where checkbox, flag icon and label are )
+     * @default undefined
+     */
+    countryComponentClassName?: string;
+    /**
      * Whether the component is in a disabled state
      * @default false
      */
     disabled?: boolean;
+    /**
+     * Height of the component in pixels. If provided, height will be fixed.
+     * @default undefined
+     */
+    height?: number;
     /**
      * Whether to hide the "Select all" checkbox
      * @default false
@@ -184,15 +195,17 @@ export const CountryMultiSelectExpanded = <
   alwaysExpand = false,
   className,
   countries,
+  countryComponentClassName,
   disabled = false,
   error = false,
+  height,
   helpText,
   hideSelectAll = false,
   maxHeight = 380,
   noHeader = false,
   onChange,
   selectedCountries,
-  style,
+  style: styleProps,
   withoutSearch = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
   const id = useId();
@@ -264,7 +277,13 @@ export const CountryMultiSelectExpanded = <
 
   if (!sortedCountries.length) {
     return (
-      <div className={clsx(className)}>
+      <div
+        className={clsx(className)}
+        style={style({
+          height: height ? `${height}px` : undefined,
+          maxHeight: `${maxHeight}px`,
+        })}
+      >
         <Text color="textColorSecondary">No countries</Text>
       </div>
     );
@@ -277,7 +296,13 @@ export const CountryMultiSelectExpanded = <
   const renderSelector = () => {
     if (!shownCountries.length) {
       return (
-        <div className={styles.noCountriesWrapper}>
+        <div
+          className={styles.noCountriesWrapper}
+          style={style({
+            height: height ? `${height}px` : undefined,
+            maxHeight: `${maxHeight}px`,
+          })}
+        >
           <Text color="textColorSecondary">No countries</Text>
         </div>
       );
@@ -286,9 +311,10 @@ export const CountryMultiSelectExpanded = <
     return (
       <div
         className={styles.selectionWrapper}
-        style={{
+        style={style({
+          height: height ? `${height}px` : undefined,
           maxHeight: `${maxHeight}px`,
-        }}
+        })}
       >
         {!searchText && !hideSelectAll && (
           <div className={styles.checkboxWrapper}>
@@ -404,6 +430,7 @@ export const CountryMultiSelectExpanded = <
                     return (
                       <_CountryMultiSelectExpandedOptionComponent
                         key={country.code}
+                        className={countryComponentClassName}
                         country={country}
                         isChecked={isChecked}
                         onChange={onChangeCountry}
@@ -422,7 +449,7 @@ export const CountryMultiSelectExpanded = <
   return (
     <div
       className={clsx(styles.wrapper, className, disabled && styles.disabled)}
-      style={style}
+      style={styleProps}
     >
       {!noHeader && (
         <div className={styles.header}>

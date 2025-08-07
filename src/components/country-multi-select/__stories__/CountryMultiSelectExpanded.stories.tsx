@@ -155,3 +155,82 @@ export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
     />
   );
 };
+
+export const NoGroupsFixedHeight = (props: CountryMultiSelectExpandedProps) => {
+  const dashboardUrl = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
+
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
+
+  const countries = useMemo(
+    () =>
+      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
+        code: x.code,
+        group: 'Select all',
+        icon: x.icon,
+        label: x.displayName,
+      })),
+    [countryOptions],
+  );
+
+  return (
+    <CountryMultiSelectExpanded
+      style={{
+        overflow: 'auto',
+        resize: 'both',
+        width: '632px',
+      }}
+      {...props}
+      alwaysExpand
+      countries={countries}
+      height={380}
+      hideSelectAll
+      onChange={setValue}
+      selectedCountries={value}
+    />
+  );
+};
+
+export const NoGroupsWithDisabledTooltip = (
+  props: CountryMultiSelectExpandedProps,
+) => {
+  const dashboardUrl = getCountryUrls();
+  const countryOptions = useCountryOptions(dashboardUrl);
+
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
+
+  const countries = useMemo(
+    () =>
+      countryOptions.map<CountryMultiSelectExpandedOption>(x => ({
+        code: x.code,
+        disabled: x.displayName.startsWith('A'),
+        group: 'Select all',
+        icon: x.icon,
+        label: x.displayName,
+        tooltipOptions: {
+          placement: 'bottom-start',
+          title: x.displayName.startsWith('A')
+            ? 'This country is disabled'
+            : undefined,
+        },
+      })),
+    [countryOptions],
+  );
+
+  return (
+    <CountryMultiSelectExpanded
+      style={{
+        overflow: 'auto',
+        resize: 'both',
+        width: '632px',
+      }}
+      {...props}
+      alwaysExpand
+      countries={countries}
+      height={380}
+      hideSelectAll
+      onChange={setValue}
+      selectedCountries={value}
+    />
+  );
+};
