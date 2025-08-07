@@ -6,9 +6,9 @@ import type { CSSProperties } from 'react';
 export const style = (
   props: CSSProperties & { [key: string]: string | undefined },
 ) =>
-  // loop through the object and filter out all of the underfined values
+  // loop through the object and filter out all of the undefined values
   Object.entries(props).reduce((acc: Record<string, string>, [key, value]) => {
-    if (value) {
+    if (value !== undefined) {
       acc[key] = value;
     }
     return acc;
