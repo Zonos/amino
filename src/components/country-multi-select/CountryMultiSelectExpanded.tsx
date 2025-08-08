@@ -477,8 +477,10 @@ export const CountryMultiSelectExpanded = <
               />
               {searchText && (
                 <Button
+                  className={styles.searchClearButton}
                   icon={<RemoveCircleIcon size={24} />}
                   onClick={() => setSearchText('')}
+                  size="sm"
                   variant="text"
                 />
               )}
