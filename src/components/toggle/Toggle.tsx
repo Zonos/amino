@@ -221,10 +221,9 @@ export const Toggle = <TValue extends SelectValue>({
                 styles.optionWrapper,
                 isSelected && styles.selected,
               ])}
+              disabled={isDisabled}
               onClick={() => {
-                if (!isDisabled) {
-                  onChange(option.value);
-                }
+                onChange(option.value);
               }}
               type="button"
             >

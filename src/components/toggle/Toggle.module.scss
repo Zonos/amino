@@ -96,7 +96,7 @@
   }
   &.disabled {
     opacity: 0.6;
-    * {
+    .optionWrapper {
       cursor: not-allowed;
     }
   }
