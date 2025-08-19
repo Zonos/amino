@@ -82,7 +82,7 @@ export const ToastContextProvider = ({ children }: Props) => {
       if (props?.isPersistent) {
         setPersistentToasts(t => {
           // Skip if an ID is provided that already exists in either toast list
-          if (t[0]?.uuid === newToast.uuid) {
+          if (t.some(existingToast => existingToast.uuid === newToast.uuid)) {
             // Return to the same reference to prevent re-rendering
             return t;
           }
@@ -91,7 +91,7 @@ export const ToastContextProvider = ({ children }: Props) => {
       } else {
         setToasts(t => {
           // Skip if an ID is provided that already exists in either toast list
-          if (t[0]?.uuid === newToast.uuid) {
+          if (t.some(existingToast => existingToast.uuid === newToast.uuid)) {
             // Return to the same reference to prevent re-rendering
             return t;
           }
