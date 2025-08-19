@@ -40,7 +40,8 @@
     font-weight: 500;
     color: theme.$amino-text-color-secondary;
 
-    .icon, .icon svg {
+    .icon,
+    .icon svg {
       max-height: 100%;
       width: auto;
     }
@@ -91,6 +92,12 @@
   &:global(.xl) {
     .optionWrapper {
       padding: 18px 16px;
+    }
+  }
+  &.disabled {
+    opacity: 0.6;
+    * {
+      cursor: not-allowed;
     }
   }
 }

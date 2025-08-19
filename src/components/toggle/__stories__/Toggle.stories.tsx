@@ -95,3 +95,10 @@ export const WithIcon: StoryObj<ToggleProps> = {
     })),
   },
 };
+
+export const Disabled: StoryObj<ToggleProps> = {
+  args: {
+    isDisabled: true,
+    options,
+  },
+};

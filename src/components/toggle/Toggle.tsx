@@ -42,6 +42,11 @@ export type ToggleProps<TValue extends SelectValue = SelectValue> =
      */
     fullWidth?: boolean;
     /**
+     * If true, the toggle will be disabled
+     * @default false
+     */
+    isDisabled?: boolean;
+    /**
      * Function called when a toggle option is selected
      */
     onChange: (value: TValue) => void;
@@ -153,6 +158,7 @@ export type ToggleProps<TValue extends SelectValue = SelectValue> =
 export const Toggle = <TValue extends SelectValue>({
   className,
   fullWidth = false,
+  isDisabled = false,
   onChange,
   options,
   size = 'sm',
@@ -184,6 +190,7 @@ export const Toggle = <TValue extends SelectValue>({
         className,
         styles.shrinkWrapper,
         fullWidth && styles.fullWidth,
+        isDisabled && styles.disabled,
         size,
       )}
       style={style}
@@ -214,7 +221,11 @@ export const Toggle = <TValue extends SelectValue>({
                 styles.optionWrapper,
                 isSelected && styles.selected,
               ])}
-              onClick={() => onChange(option.value)}
+              onClick={() => {
+                if (!isDisabled) {
+                  onChange(option.value);
+                }
+              }}
               type="button"
             >
               {option.icon && <div className={styles.icon}>{option.icon}</div>}
