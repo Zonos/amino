@@ -72,14 +72,6 @@ export const ToastContextProvider = ({ children }: Props) => {
 
   const addToast = useCallback<ToastContextFunctionType>(
     (toast, props) => {
-      // Skip if an ID is provided that already exists in either toast list
-      if (
-        props?.id &&
-        [...toasts, ...persistentToasts].some(t => t.uuid === props.id)
-      ) {
-        return;
-      }
-
       const newToast = {
         isPersistent: props?.isPersistent,
         props,
@@ -88,14 +80,28 @@ export const ToastContextProvider = ({ children }: Props) => {
       };
 
       if (props?.isPersistent) {
-        setPersistentToasts(t => [newToast, ...t]);
+        setPersistentToasts(t => {
+          // Skip if an ID is provided that already exists in either toast list
+          if (t[0]?.uuid === newToast.uuid) {
+            // Return to the same reference to prevent re-rendering
+            return t;
+          }
+          return [newToast, ...t];
+        });
       } else {
-        setToasts(t => [...t, newToast]);
+        setToasts(t => {
+          // Skip if an ID is provided that already exists in either toast list
+          if (t[0]?.uuid === newToast.uuid) {
+            // Return to the same reference to prevent re-rendering
+            return t;
+          }
+          return [...t, newToast];
+        });
         // Only set timeout for non-persistent toasts
         setTimeout(() => setToasts(t => t.slice(1)), props?.duration || 6000);
       }
     },
-    [setToasts, setPersistentToasts, toasts, persistentToasts],
+    [setToasts, setPersistentToasts],
   );
 
   const setupToasts = useCallback<ToastContextFunctionType>(
