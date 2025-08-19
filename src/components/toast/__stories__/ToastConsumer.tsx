@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -25,6 +25,10 @@ export const ToastConsumer = () => {
   });
   const [horizontalOffset, setHorizontalOffset] = useState('');
   const [verticalOffset, setVerticalOffset] = useState('');
+
+  useEffect(() => {
+    notify('This toast suppose to only show once', { intent: 'success' });
+  }, [notify]);
 
   return (
     <div className={styles.wrapper}>
