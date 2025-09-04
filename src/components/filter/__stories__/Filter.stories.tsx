@@ -108,7 +108,7 @@ export const Select = () => {
 
 export const CountrySelect = () => {
   const dashboardUrl = getCountryUrls();
-  const countries = useCountryOptions(dashboardUrl);
+  const countries = useCountryOptions({ dashboardUrl });
   const [country, setCountry] = useStateUrl<string | null>({
     initialValue: null,
     name: 'filterCountry',
@@ -337,7 +337,7 @@ const reducerSelect = (
  */
 export const SelectWithReducer = () => {
   const dashboardUrl = getCountryUrls();
-  const countries = useCountryOptions(dashboardUrl);
+  const countries = useCountryOptions({ dashboardUrl });
 
   const [value, dispatch] = useReducer(reducerSelect, {
     state: null,
