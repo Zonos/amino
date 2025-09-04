@@ -27,7 +27,7 @@ const renderBadge = (label: string) => {
 
 const Template = (props: CountryMultiSelectExpandedProps) => {
   const dashboardUrl = getCountryUrls();
-  const countryOptions = useCountryOptions(dashboardUrl);
+  const countryOptions = useCountryOptions({ dashboardUrl });
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
@@ -75,7 +75,7 @@ export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
 
 export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
   const dashboardUrl = getCountryUrls();
-  const countryOptions = useCountryOptions(dashboardUrl);
+  const countryOptions = useCountryOptions({ dashboardUrl });
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
   const [toggle, setToggle] = useState<string>('1');
@@ -124,7 +124,7 @@ export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
 
 export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
   const dashboardUrl = getCountryUrls();
-  const countryOptions = useCountryOptions(dashboardUrl);
+  const countryOptions = useCountryOptions({ dashboardUrl });
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
@@ -158,7 +158,7 @@ export const NoGroups = (props: CountryMultiSelectExpandedProps) => {
 
 export const NoGroupsFixedHeight = (props: CountryMultiSelectExpandedProps) => {
   const dashboardUrl = getCountryUrls();
-  const countryOptions = useCountryOptions(dashboardUrl);
+  const countryOptions = useCountryOptions({ dashboardUrl });
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 
@@ -195,7 +195,7 @@ export const NoGroupsWithDisabledTooltip = (
   props: CountryMultiSelectExpandedProps,
 ) => {
   const dashboardUrl = getCountryUrls();
-  const countryOptions = useCountryOptions(dashboardUrl);
+  const countryOptions = useCountryOptions({ dashboardUrl });
 
   const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
 

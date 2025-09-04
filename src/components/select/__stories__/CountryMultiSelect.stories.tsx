@@ -40,7 +40,7 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
 ) => {
   const [value, setValue] = useState<string[]>([]);
   const dashboardUrl = getCountryUrls();
-  const countryOptions = useCountryOptions(dashboardUrl);
+  const countryOptions = useCountryOptions({ dashboardUrl });
   const [typedValue, setTypedValue] = useState<RandomCountryCode[]>([]);
   const stronglyTypedCountries =
     countryOptions as CountryOption<RandomCountryCode>[];
