@@ -64,9 +64,13 @@ export type GetCountriesResponse<CountryCode extends string = string> = {
   [key: string]: Country<CountryCode>;
 };
 
-export const useCountryOptions = <TCountryCode extends string>(
-  dashboardUrl: string,
-) => {
+export const useCountryOptions = <TCountryCode extends string>({
+  dashboardUrl,
+  languageCode,
+}: {
+  dashboardUrl: string;
+  languageCode?: string;
+}) => {
   const { setValue: setCountryOptionsStorage, value: storedCountryOptions } =
     useStorageWithLifetime({
       defaultValue: [],
@@ -77,7 +81,7 @@ export const useCountryOptions = <TCountryCode extends string>(
     });
 
   const { data } = useSwrt<CountryOption<TCountryCode>[]>(
-    `${dashboardUrl}/api/address/getCountries`,
+    `${dashboardUrl}/api/address/getCountries${languageCode ? `?languageCode=${languageCode}` : ''}`,
     {
       fetcher: async (args: TCountryCode) => {
         if (!storedCountryOptions.length) {
