@@ -1,4 +1,4 @@
-type ISupportedLanguage = {
+type SupportedLanguage = {
   code: string;
   label: string;
   translatedLabel: string;
@@ -23,7 +23,6 @@ export const supportedLanguages = [
   { code: 'TR', label: 'Turkish', translatedLabel: 'Türk' },
   { code: 'VI', label: 'Vietnamese', translatedLabel: 'Tiếng Việt' },
   { code: 'ZH_CN', label: 'Chinese', translatedLabel: '中文' },
-] as const satisfies readonly ISupportedLanguage[];
+] as const satisfies readonly SupportedLanguage[];
 
-export type ISupportedLanguageCode =
-  (typeof supportedLanguages)[number]['code'];
+export type SupportedLanguageCode = (typeof supportedLanguages)[number]['code'];

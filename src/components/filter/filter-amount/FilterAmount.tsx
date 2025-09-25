@@ -22,7 +22,7 @@ import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { SelectOption } from 'src/types/SelectOption';
 import { translate } from 'src/utils/internal/translateAminoText';
-import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
+import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './FilterAmount.module.scss';
 

@@ -52,13 +52,13 @@ import { WyomingIcon } from 'src/icons/custom/us-states/WyomingIcon';
 import type { UnitedState } from 'src/types/UnitedStates';
 
 import { translate } from './internal/translateAminoText';
-import type { ISupportedLanguageCode } from './translations/supportedLanguages';
+import type { SupportedLanguageCode } from './translations';
 
 const getTranslatedRegionName = ({
   languageCode,
   region,
 }: {
-  languageCode: ISupportedLanguageCode;
+  languageCode: SupportedLanguageCode;
   region: UnitedState['region'];
 }) => {
   switch (region) {
@@ -88,7 +88,7 @@ const getTranslatedRegionName = ({
 };
 
 export const getUnitedStates = (
-  languageCode: ISupportedLanguageCode,
+  languageCode: SupportedLanguageCode,
 ): UnitedState[] => [
   {
     code: 'AL',

@@ -19,7 +19,7 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
 import { translate } from 'src/utils/internal/translateAminoText';
-import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
+import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './DropZone.module.scss';
 

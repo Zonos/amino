@@ -1,8 +1,9 @@
 import {
-  type ExtractVariables,
   handleTranslationVariables,
-} from 'src/utils/translations/handleTranslationVariables';
-import type { ISupportedLanguageCode } from 'src/utils/translations/supportedLanguages';
+  type SupportedLanguageCode,
+  type TranslatedTextWithoutContext,
+  type TranslateParams,
+} from 'src/utils/translations';
 
 import chinese from './strings/chinese.json';
 import danish from './strings/danish.json';
@@ -26,7 +27,7 @@ export type ITranslateText = keyof typeof spanish;
 
 export const getTranslationString = (
   text: ITranslateText,
-  languageCode?: ISupportedLanguageCode,
+  languageCode?: SupportedLanguageCode,
 ): string => {
   let translatedText: string;
 
@@ -110,28 +111,14 @@ export const getTranslationString = (
   return translatedText || text;
 };
 
-type StripContext<T extends string> =
-  T extends `${infer Base} --context: ${string}` ? Base : T;
-
-/**
- * Require variables argument to be an object with keys that match the variables in the string.
- * If no variables are present, variables argument is optional.
- */
-export type ITranslateParams<T extends ITranslateText> = {
-  languageCode?: ISupportedLanguageCode;
-  text: T;
-} & (ExtractVariables<T> extends never
-  ? { variables?: never }
-  : { variables: Record<ExtractVariables<T>, string | number> });
-
 export const translate = <T extends ITranslateText>(
-  params: ITranslateParams<T>,
-): StripContext<T> => {
+  params: TranslateParams<T>,
+): TranslatedTextWithoutContext<T> => {
   const { languageCode, text, variables } = params;
   const translatedText = getTranslationString(text, languageCode);
 
   return handleTranslationVariables({
     text: translatedText as T,
     variables,
-  }) as StripContext<T>;
+  }) as TranslatedTextWithoutContext<T>;
 };

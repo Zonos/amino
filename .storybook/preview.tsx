@@ -10,9 +10,9 @@ import { AminoProvider } from 'src/utils/AminoProvider';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
 import {
-  type ISupportedLanguageCode,
+  type SupportedLanguageCode,
   supportedLanguages,
-} from 'src/utils/translations/supportedLanguages';
+} from 'src/utils/translations';
 
 import './storybook.css';
 import styles from './preview.module.scss';
@@ -21,7 +21,7 @@ type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
 const withAminoProvider: Decorator = (Story, context) => {
   const [globals] = useGlobals();
-  const languageCode: ISupportedLanguageCode = globals.language || 'EN';
+  const languageCode: SupportedLanguageCode = globals.language || 'EN';
 
   return (
     <AminoProvider languageCode={languageCode}>
@@ -164,7 +164,7 @@ const preview: Preview = {
           title: `${lang.label} (${lang.translatedLabel})`,
           value: lang.code,
         })),
-        onChange: (value: ISupportedLanguageCode) => value,
+        onChange: (value: SupportedLanguageCode) => value,
       },
     },
     theme: {

@@ -10,7 +10,7 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { translate } from 'src/utils/internal/translateAminoText';
-import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
+import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './FileUpload.module.scss';
 

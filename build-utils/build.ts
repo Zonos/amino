@@ -176,6 +176,7 @@ const allModules = animationsModules
     item =>
       !item.includes('__tests__') &&
       !item.includes('__stories__') &&
+      !item.includes('__internal__') &&
       // no IconIndex, must import from individual file as we have no tree shaking
       !item.includes('IconIndex') &&
       !item.includes('FlagIndex') &&

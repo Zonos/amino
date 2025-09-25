@@ -29,7 +29,7 @@ import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 import { translate } from 'src/utils/internal/translateAminoText';
 import { style } from 'src/utils/style';
-import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
+import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 

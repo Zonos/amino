@@ -3,8 +3,10 @@ import type { ReactNode } from 'react';
 import { AlertContextProvider } from 'src/components/dialog/alert/AlertContext';
 import { ConfirmContextProvider } from 'src/components/dialog/confirm/ConfirmContext';
 import { ToastContextProvider } from 'src/components/toast/ToastContext';
-import { AminoLanguageProvider } from 'src/utils/translations/AminoLanguageProvider';
-import type { ISupportedLanguageCode } from 'src/utils/translations/supportedLanguages';
+import {
+  AminoLanguageProvider,
+  type SupportedLanguageCode,
+} from 'src/utils/translations';
 
 export type AminoProviderProps = {
   children: ReactNode;
@@ -12,7 +14,7 @@ export type AminoProviderProps = {
    * Current language code for amino components
    * If not provided, amino will fall back to its internal detection
    */
-  languageCode?: ISupportedLanguageCode;
+  languageCode?: SupportedLanguageCode;
 };
 
 /**

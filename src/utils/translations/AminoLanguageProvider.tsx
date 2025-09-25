@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 
-import type { ISupportedLanguageCode } from './supportedLanguages';
+import type { SupportedLanguageCode } from './supportedLanguages';
 
 /**
  * Context for amino components to access the current language
  * This allows consuming projects to set the language for all amino components
  */
-const AminoLanguageContext = createContext<ISupportedLanguageCode | undefined>(
+const AminoLanguageContext = createContext<SupportedLanguageCode | undefined>(
   undefined,
 );
 
@@ -17,7 +17,7 @@ type AminoLanguageProviderProps = {
    * Current language code (e.g., 'en', 'es', 'fr')
    * If not provided, amino will fall back to its internal detection
    */
-  languageCode?: ISupportedLanguageCode;
+  languageCode?: SupportedLanguageCode;
 };
 
 /**
@@ -68,5 +68,5 @@ export const AminoLanguageProvider = ({
  * };
  * ```
  */
-export const useAminoLanguage = (): ISupportedLanguageCode | undefined =>
+export const useAminoLanguage = (): SupportedLanguageCode | undefined =>
   useContext(AminoLanguageContext);

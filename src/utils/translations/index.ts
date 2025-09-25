@@ -6,8 +6,17 @@ export {
   AminoLanguageProvider,
   useAminoLanguage,
 } from './AminoLanguageProvider';
-export { type ExtractTextKeys } from './extractTextKeys';
+export {
+  handleTranslateComponentText,
+  type TranslateProps,
+} from './handleTranslateComponentText';
 export {
   type ExtractVariables,
   handleTranslationVariables,
+  type TranslatedTextWithoutContext,
+  type TranslateParams,
 } from './handleTranslationVariables';
+export {
+  type SupportedLanguageCode,
+  supportedLanguages,
+} from './supportedLanguages';

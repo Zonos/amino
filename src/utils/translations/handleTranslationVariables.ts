@@ -1,6 +1,18 @@
-import { Fragment, type ReactNode } from 'react';
+import type { SupportedLanguageCode } from './supportedLanguages';
 
-import { v4 as uuidv4 } from 'uuid';
+export type TranslatedTextWithoutContext<T extends string> =
+  T extends `${infer Base} --context: ${string}` ? Base : T;
+
+/**
+ * Require variables argument to be an object with keys that match the variables in the string.
+ * If no variables are present, variables argument is optional.
+ */
+export type TranslateParams<T extends string> = {
+  languageCode?: SupportedLanguageCode;
+  text: T;
+} & (ExtractVariables<T> extends never
+  ? { variables?: never }
+  : { variables: Record<ExtractVariables<T>, string | number> });
 
 /**
  * Extracts variables pattern "[pattern]" from a string
@@ -14,11 +26,10 @@ export type ExtractVariables<TString extends string> =
     : never;
 
 /**
- * AMINO UTILITY: Handles variable interpolation in translated text
- *
- * This utility processes curly braces and square bracket variables in text:
+ * This utility processes context, curly braces, and square bracket variables in text:
  * - Removes curly braces but keeps content: "{John}" becomes "John"
  * - Replaces square bracket variables: "[count]" becomes the actual value
+ * - Removes context: "Hello --context: World" becomes "Hello"
  *
  * @param text - The text to process
  * @param variables - Object with variable names as keys and their values
@@ -27,7 +38,7 @@ export type ExtractVariables<TString extends string> =
  * @example
  * ```ts
  * handleTranslationVariables({
- *   text: '{John} has [count] apples',
+ *   text: '{John} has [count] apples --context: in reference to counting apples',
  *   variables: { count: 5 }
  * })
  * // Returns: "John has 5 apples"
@@ -60,52 +71,4 @@ export const handleTranslationVariables = <T extends string>({
   }
 
   return processedText as T;
-};
-
-export const handleTranslateComponentText = ({
-  translatedTextNoJsx,
-  variables,
-}: {
-  translatedTextNoJsx: string;
-  variables: Record<string, ReactNode>;
-}) => {
-  // Collect all ReactNode variables
-  const reactNodeVariables = Object.entries(variables || {}).filter(
-    ([, value]) => typeof value === 'object' && value,
-  );
-
-  if (reactNodeVariables.length === 0) {
-    return translatedTextNoJsx;
-  }
-
-  // Process all ReactNode variables at once
-  let result: ReactNode[] = [translatedTextNoJsx];
-
-  reactNodeVariables.forEach(([key, value]) => {
-    const newResult: ReactNode[] = [];
-    result.forEach(segment => {
-      if (typeof segment === 'string') {
-        const parts = segment.split(`[${key}]`);
-        parts.forEach((part, index) => {
-          if (index > 0) {
-            newResult.push(value as ReactNode);
-          }
-          if (part) {
-            newResult.push(part);
-          }
-        });
-      } else {
-        newResult.push(segment);
-      }
-    });
-    result = newResult;
-  });
-
-  return (
-    <>
-      {result.map(segment => (
-        <Fragment key={uuidv4()}>{segment}</Fragment>
-      ))}
-    </>
-  );
 };

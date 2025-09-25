@@ -20,7 +20,7 @@ import type {
 } from 'src/utils/hooks/useCountryOptions';
 import { translate } from 'src/utils/internal/translateAminoText';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
-import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
+import { useAminoLanguage } from 'src/utils/translations';
 
 type AdditionalProps = {
   allSelected: boolean;
