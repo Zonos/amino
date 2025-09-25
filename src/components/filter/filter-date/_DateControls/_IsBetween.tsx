@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 
 import dayjs from 'dayjs';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import {
   type _DateControlProps,
   DateControlsWrapper,
@@ -9,7 +10,6 @@ import {
   formatDate,
 } from 'src/components/filter/filter-date/DateControlsWrapper';
 import { Input } from 'src/components/input/Input';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 
 /** Inclusive */

@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
-import { Translate } from 'src/components/internal/TranslateAminoText';
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { FilterIcon } from 'src/icons/FilterIcon';
+import { translate } from 'src/utils/__internal__/translateAminoText';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
-import { translate } from 'src/utils/internal/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './_Filter.module.scss';

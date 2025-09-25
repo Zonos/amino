@@ -1,15 +1,15 @@
 import { type ReactNode, useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
+import { translate } from 'src/utils/__internal__/translateAminoText';
 import type { flattenRow } from 'src/utils/flattenRow';
-import { translate } from 'src/utils/internal/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './NestedDataTable.module.scss';

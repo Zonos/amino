@@ -2,13 +2,13 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import clsx from 'clsx';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -18,7 +18,7 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
-import { translate } from 'src/utils/internal/translateAminoText';
+import { translate } from 'src/utils/__internal__/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './DropZone.module.scss';

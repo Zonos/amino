@@ -51,7 +51,7 @@ import { WisconsinIcon } from 'src/icons/custom/us-states/WisconsinIcon';
 import { WyomingIcon } from 'src/icons/custom/us-states/WyomingIcon';
 import type { UnitedState } from 'src/types/UnitedStates';
 
-import { translate } from './internal/translateAminoText';
+import { translate } from './__internal__/translateAminoText';
 import type { SupportedLanguageCode } from './translations';
 
 const getTranslatedRegionName = ({

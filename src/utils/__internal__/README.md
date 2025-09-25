@@ -27,7 +27,7 @@ import './utils/internal/translateAminoText'; // Don't do this in all.ts
 
 ```
 src/utils/
-├── internal/          # 🔒 Not exported - amino-specific utilities
+├── __internal__/          # 🔒 Not exported - amino-specific utilities
 │   ├── translateAminoText.ts
 │   └── strings/
 └── translations/      # ✅ Exported - public utilities for consuming projects

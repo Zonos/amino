@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import {
   type FilterAmountAction,
   type FilterAmountState,
@@ -17,11 +18,10 @@ import {
   useFilterWrapper,
 } from 'src/components/filter/useFilterWrapper';
 import { Input } from 'src/components/input/Input';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { SelectOption } from 'src/types/SelectOption';
-import { translate } from 'src/utils/internal/translateAminoText';
+import { translate } from 'src/utils/__internal__/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
 
 import styles from './FilterAmount.module.scss';

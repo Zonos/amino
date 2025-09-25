@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import {
   type ITranslateText,
   translate,
-} from 'src/utils/internal/translateAminoText';
+} from 'src/utils/__internal__/translateAminoText';
 import {
   handleTranslateComponentText,
   type TranslateParams,

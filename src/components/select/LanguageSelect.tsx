@@ -4,9 +4,9 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 import clsx from 'clsx';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { GlobeIcon } from 'src/icons/GlobeIcon';

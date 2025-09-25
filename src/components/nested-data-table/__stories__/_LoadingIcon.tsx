@@ -1,4 +1,4 @@
-import { Translate } from 'src/components/internal/TranslateAminoText';
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 import { ZonosLogoIcon } from 'src/icons/custom/logo/ZonosLogoIcon';
 

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { Card } from 'src/components/card/Card';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
 import { Switch } from 'src/components/switch/Switch';

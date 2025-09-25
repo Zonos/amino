@@ -10,6 +10,7 @@ import {
 import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
 
+import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
@@ -20,14 +21,13 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
+import { translate } from 'src/utils/__internal__/translateAminoText';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
-import { translate } from 'src/utils/internal/translateAminoText';
 import { style } from 'src/utils/style';
 import { useAminoLanguage } from 'src/utils/translations';
 

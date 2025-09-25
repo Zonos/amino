@@ -14,11 +14,11 @@ import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { SelectOption } from 'src/types/SelectOption';
+import { translate } from 'src/utils/__internal__/translateAminoText';
 import type {
   CountryOption,
   UnavailableCountry,
 } from 'src/utils/hooks/useCountryOptions';
-import { translate } from 'src/utils/internal/translateAminoText';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
 import { useAminoLanguage } from 'src/utils/translations';
 
