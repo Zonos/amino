@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import clsx from 'clsx';
 
+import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
@@ -27,9 +28,14 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
       >
         <div className={styles.avatar} />
         <VStack className={styles.styledVStack} spacing={0}>
-          <strong>Hello</strong>
+          <strong>
+            <Translate text="Hello" />
+          </strong>
           <span className={styles.styledSubtitle} title="Store 2458">
-            Store #1234
+            <Translate
+              text="Store #[storeNumber]"
+              variables={{ storeNumber: '1234' }}
+            />
           </span>
         </VStack>
       </button>
@@ -44,23 +50,33 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
             >
               <TextAvatar label="Default" />
               <VStack spacing={0}>
-                <strong>Test Store</strong>
-                <Text type="subtitle">Click to switch...</Text>
+                <strong>
+                  <Translate text="Test Store" />
+                </strong>
+                <Text type="subtitle">
+                  <Translate text="Click to switch..." />
+                </Text>
               </VStack>
             </button>
 
             <div className={styles.storeItem}>
               <TextAvatar label="Zonos" />
               <VStack spacing={0}>
-                <strong>Switch to Zonos</strong>
-                <Text type="subtitle">Click to switch...</Text>
+                <strong>
+                  <Translate text="Switch to Zonos" />
+                </strong>
+                <Text type="subtitle">
+                  <Translate text="Click to switch..." />
+                </Text>
               </VStack>
             </div>
 
             <hr />
 
             <MenuItem>
-              <span>Your profile</span>
+              <span>
+                <Translate text="Your profile" />
+              </span>
             </MenuItem>
             <MenuItem>
               <a
@@ -68,7 +84,7 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Support
+                <Translate text="Support" />
               </a>
             </MenuItem>
             <MenuItem>
@@ -77,10 +93,12 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Documentation
+                <Translate text="Documentation" />
               </a>
             </MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem>
+              <Translate text="Logout" />
+            </MenuItem>
           </Menu>
         </Surface>
       )}

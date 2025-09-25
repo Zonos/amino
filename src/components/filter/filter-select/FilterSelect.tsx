@@ -7,6 +7,8 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import { Select, type SelectProps } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
+import { translate } from 'src/utils/internal/translateAminoText';
+import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
 import { truncateText } from 'src/utils/truncateText';
 
 type CustomSelectProps<
@@ -116,10 +118,14 @@ export const FilterSelect = <
 }: FilterSelectProps<T, O>) => {
   const [editingValue, setEditingValue] = useState<T | null>(value);
   const [menuOpen, setMenuOpen] = useState(false);
+  const languageCode = useAminoLanguage();
 
   const getFilterText = useMemo(
-    () => _getFilterText || ((v: O) => `is ${v.label}`),
-    [_getFilterText],
+    () =>
+      _getFilterText ||
+      ((v: O) =>
+        `${translate({ languageCode, text: 'is [label]', variables: { label: v.label } })}`),
+    [_getFilterText, languageCode],
   );
 
   const selectedOption = useMemo(
@@ -164,7 +170,9 @@ export const FilterSelect = <
 
   const { renderWrapper } = useFilterWrapper({
     ...props,
-    initialFilterText: value ? `is ${value}` : undefined,
+    initialFilterText: value
+      ? `${translate({ languageCode, text: 'is [value]', variables: { value } })}`
+      : undefined,
     isActive: !!value,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,

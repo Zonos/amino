@@ -1,3 +1,32 @@
-#storybook-root {
-  height: 100%;
+/* Ensure full height for all storybook containers */
+html, body, #storybook-root, #root {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Story canvas container */
+.docs-story, 
+.sb-story, 
+[data-story-block="true"],
+.sb-main-centered,
+.sb-main-fullscreen,
+.sb-main-padded {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Remove default padding */
+.sb-main-padded {
+  padding: 0 !important;
+}
+
+/* Ensure story content fills available space */
+.sb-story > div,
+.docs-story > div {
+  height: 100% !important;
+  min-height: 100vh !important;
 }

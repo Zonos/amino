@@ -8,6 +8,7 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
+import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Spinner } from 'src/components/spinner/Spinner';
 import { Text } from 'src/components/text/Text';
 import { Thumbnail } from 'src/components/thumbnail/Thumbnail';
@@ -17,6 +18,8 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
+import { translate } from 'src/utils/internal/translateAminoText';
+import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
 
 import styles from './DropZone.module.scss';
 
@@ -201,14 +204,29 @@ export const DropZone = ({
   dropzoneOptions,
   error = false,
   helpText,
-  instructionText = 'Drop your file(s) here',
+  instructionText,
   loading,
-  loadingText = 'Uploading file(s)...',
+  loadingText,
   noIcon = false,
   onRemoveFile,
   style,
   uploadedFiles,
 }: DropZoneProps) => {
+  const languageCode = useAminoLanguage();
+
+  const instructionTextToUse =
+    instructionText ??
+    translate({
+      languageCode,
+      text: 'Drop your file(s) here',
+    });
+
+  const loadingTextToUse =
+    loadingText ??
+    translate({
+      languageCode,
+      text: 'Uploading file(s)...',
+    });
   const maxFiles = dropzoneOptions.maxFiles || 0;
 
   const { getInputProps, getRootProps, open } = useDropzone({
@@ -225,17 +243,24 @@ export const DropZone = ({
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
       <div className={styles.instructionTextWrapper}>
         <Text type="label">
-          {instructionText} or{' '}
-          <button
-            className={styles.browseButton}
-            disabled={disabled}
-            onClick={open}
-            type="button"
-          >
-            <Text color="blue600" type="label">
-              browse
-            </Text>
-          </button>
+          <Translate
+            text="[instructionText] or [browseText]"
+            variables={{
+              browseText: (
+                <button
+                  className={styles.browseButton}
+                  disabled={disabled}
+                  onClick={open}
+                  type="button"
+                >
+                  <Text color="blue600" type="label">
+                    <Translate text="browse --context: button text referencing browsing more files" />
+                  </Text>
+                </button>
+              ),
+              instructionText: instructionTextToUse,
+            }}
+          />
         </Text>
         <HelpText error={error} helpText={helpText} />
       </div>
@@ -280,7 +305,7 @@ export const DropZone = ({
           <div className={styles.contentWrapper}>
             <Spinner />
             <Text color="gray800" type="label">
-              {loadingText}
+              {loadingTextToUse}
             </Text>
           </div>
         </div>

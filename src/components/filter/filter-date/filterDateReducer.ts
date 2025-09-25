@@ -16,10 +16,17 @@ export const filterDateRanges = [
   'is on or after',
   'is before or on',
 ] as const;
+
 export type FilterDateRangeType = (typeof filterDateRanges)[number];
 
 export const dateUnits = ['days', 'months'] as const;
 export type FilterDateLastRangeUnit = (typeof dateUnits)[number];
+
+// Translation keys for date units
+export const dateUnitsTranslationKeys = [
+  'days --context: date unit',
+  'months --context: date unit',
+] as const;
 
 export type FilterDateData = {
   dateBegin: string | null;

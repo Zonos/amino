@@ -18,7 +18,9 @@ import type {
   CountryOption,
   UnavailableCountry,
 } from 'src/utils/hooks/useCountryOptions';
+import { translate } from 'src/utils/internal/translateAminoText';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
+import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
 
 type AdditionalProps = {
   allSelected: boolean;
@@ -36,6 +38,8 @@ const MenuList = <
   const { getStyles, selectProps } = props;
   const { allSelected, toggleSelectAll } =
     selectProps as (typeof props)['selectProps'] & AdditionalProps;
+  const languageCode = useAminoLanguage();
+
   return (
     <RScomponents.MenuList {...props}>
       <div
@@ -48,7 +52,7 @@ const MenuList = <
       >
         <Checkbox
           checked={allSelected}
-          label="Select all"
+          label={translate({ languageCode, text: 'Select all' })}
           onChange={toggleSelectAll}
         />
       </div>

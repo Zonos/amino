@@ -1,18 +1,34 @@
 import { useEffect } from 'react';
 
+import 'src/styles/amino.css';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
-import 'src/styles/amino.css';
 import { useGlobals } from '@storybook/preview-api';
 import type { Decorator, Preview } from '@storybook/react';
 
+import { AminoProvider } from 'src/utils/AminoProvider';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
+import {
+  type ISupportedLanguageCode,
+  supportedLanguages,
+} from 'src/utils/translations/supportedLanguages';
 
 import './storybook.css';
 import styles from './preview.module.scss';
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
+
+const withAminoProvider: Decorator = (Story, context) => {
+  const [globals] = useGlobals();
+  const languageCode: ISupportedLanguageCode = globals.language || 'EN';
+
+  return (
+    <AminoProvider languageCode={languageCode}>
+      <Story {...context} />
+    </AminoProvider>
+  );
+};
 
 const withTheme: Decorator = (Story, context) => {
   // Inside side-by-side iframe
@@ -134,9 +150,23 @@ const preview: Preview = {
     },
   },
 
-  decorators: [withTheme],
+  decorators: [withAminoProvider, withTheme],
 
   globalTypes: {
+    language: {
+      defaultValue: 'EN',
+      description: 'Language for amino components',
+      toolbar: {
+        defaultValue: 'EN',
+        dynamicTitle: true,
+        icon: 'globe',
+        items: supportedLanguages.map(lang => ({
+          title: `${lang.label} (${lang.translatedLabel})`,
+          value: lang.code,
+        })),
+        onChange: (value: ISupportedLanguageCode) => value,
+      },
+    },
     theme: {
       defaultValue: 'day',
       description: 'Global theme for components',

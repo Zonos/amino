@@ -62,6 +62,7 @@
     "test:all": "pnpm test:prod && pnpm test:pw && pnpm test:sb",
     "test": "vitest --run",
     "test:copy": "vitest run 2>&1 | tee /dev/tty | pbcopy",
+    "translate": "cd ../zonos.com && pnpm gen:translate:inline:amino",
     "tsc": "tsc --noEmit",
     "tsc:copy": "tsc --noEmit 2>&1 | tee /dev/tty | pbcopy",
     "version:major": "pnpm build && pnpm version major -m 'Bump version %s' && pnpm push:tags",

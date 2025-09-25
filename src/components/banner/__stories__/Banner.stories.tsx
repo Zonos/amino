@@ -297,6 +297,6 @@ export const Basic: StoryFn<typeof Banner> = props => (
     }
     intent="warning"
     onClose={() => null}
-    title="Lots of words about how Cade is a great engineer. He works diligently and tirelessly through day and night, rain or shine, to make sure that the code he writes is the best it can be. He is a great asset to the team and we are lucky to have him."
+    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum massa nisi, quis fringilla ante facilisis et. Maecenas risus est, mollis pulvinar metus vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum massa nisi, quis fringilla ante facilisis et. Maecenas risus est, mollis pulvinar metus vitae."
   />
 );

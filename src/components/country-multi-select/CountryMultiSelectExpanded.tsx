@@ -20,13 +20,16 @@ import {
   HelpText,
   type HelpTextProps,
 } from 'src/components/help-text/HelpText';
+import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
+import { translate } from 'src/utils/internal/translateAminoText';
 import { style } from 'src/utils/style';
+import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 
@@ -209,6 +212,7 @@ export const CountryMultiSelectExpanded = <
   withoutSearch = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
   const id = useId();
+  const languageCode = useAminoLanguage();
 
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
@@ -284,7 +288,9 @@ export const CountryMultiSelectExpanded = <
           maxHeight: `${maxHeight}px`,
         })}
       >
-        <Text color="textColorSecondary">No countries</Text>
+        <Text color="textColorSecondary">
+          <Translate text="No countries" />
+        </Text>
       </div>
     );
   }
@@ -303,7 +309,9 @@ export const CountryMultiSelectExpanded = <
             maxHeight: `${maxHeight}px`,
           })}
         >
-          <Text color="textColorSecondary">No countries</Text>
+          <Text color="textColorSecondary">
+            <Translate text="No countries" />
+          </Text>
         </div>
       );
     }
@@ -320,7 +328,7 @@ export const CountryMultiSelectExpanded = <
           <div className={styles.checkboxWrapper}>
             <Checkbox
               checked={allSelected}
-              label="Select all"
+              label={translate({ languageCode, text: 'Select all' })}
               onChange={checked => {
                 if (checked) {
                   onChange(
@@ -453,9 +461,17 @@ export const CountryMultiSelectExpanded = <
     >
       {!noHeader && (
         <div className={styles.header}>
-          <Text type="bold-label">Countries and Regions</Text>
+          <Text type="bold-label">
+            <Translate text="Countries and Regions" />
+          </Text>
           <Text color="textColorSecondary" type="label">
-            {selectedCountries.length} of {numSelectableCountries} selected
+            <Translate
+              text="[selectedCountries] of [numSelectableCountries] selected"
+              variables={{
+                numSelectableCountries: numSelectableCountries,
+                selectedCountries: selectedCountries.length,
+              }}
+            />
           </Text>
         </div>
       )}
@@ -471,7 +487,7 @@ export const CountryMultiSelectExpanded = <
                 autoComplete="off"
                 id={id}
                 onChange={e => setSearchText(e.target.value)}
-                placeholder="Search..."
+                placeholder={translate({ languageCode, text: 'Search...' })}
                 type="text"
                 value={searchText}
               />

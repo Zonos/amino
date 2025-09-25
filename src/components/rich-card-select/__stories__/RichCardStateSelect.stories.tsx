@@ -9,7 +9,7 @@ import {
   type RichCardStateSelectProps,
 } from 'src/components/rich-card-select/RichCardStateSelect';
 import type { UnitedState } from 'src/types/UnitedStates';
-import { unitedStates } from 'src/utils/unitedStates';
+import { getUnitedStates } from 'src/utils/unitedStates';
 
 const RichCardStateSelectMeta: Meta = {
   component: RichCardStateSelect,
@@ -68,11 +68,11 @@ const Template: StoryFn<RichCardStateSelectProps> = ({
   );
 };
 
-const modifiedState = unitedStates.find(state => state.code === 'CA');
+const modifiedState = getUnitedStates('EN').find(state => state.code === 'CA');
 if (modifiedState) {
   modifiedState.highlighted = true;
 }
 
 export const BasicRichCardStateSelect = Template.bind({});
-BasicRichCardStateSelect.args = { states: unitedStates };
+BasicRichCardStateSelect.args = { states: getUnitedStates('EN') };
 BasicRichCardStateSelect.parameters = {};

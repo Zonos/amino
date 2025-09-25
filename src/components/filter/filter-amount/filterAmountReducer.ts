@@ -13,14 +13,6 @@ export const filterAmountTypes = [
 ] as const;
 export type FilterAmountType = (typeof filterAmountTypes)[number];
 
-export const filterAmountOptions: { label: string; value: FilterAmountType }[] =
-  [
-    { label: 'is equal to', value: 'equal' },
-    { label: 'is between', value: 'between' },
-    { label: 'is greater than', value: 'greater' },
-    { label: 'is less than', value: 'less' },
-  ];
-
 export type FilterAmountState = {
   amountFilterType: FilterAmountType;
   amountTotalMax: number | null;

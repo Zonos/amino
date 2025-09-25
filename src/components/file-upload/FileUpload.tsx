@@ -4,10 +4,13 @@ import clsx from 'clsx';
 
 import { Button } from 'src/components/button/Button';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
+import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
+import { translate } from 'src/utils/internal/translateAminoText';
+import { useAminoLanguage } from 'src/utils/translations/AminoLanguageProvider';
 
 import styles from './FileUpload.module.scss';
 
@@ -127,13 +130,29 @@ export const FileUpload = ({
   disabled = false,
   dropzoneOptions,
   error = false,
-  instructionText = 'or drag your file here',
+  instructionText,
   loading,
-  loadingText = 'Uploading...',
+  loadingText,
   onRemoveFile,
   style,
   uploadedFile,
 }: FileUploadProps) => {
+  const languageCode = useAminoLanguage();
+
+  // Use translated defaults if not provided
+  const instructionTextToUse =
+    instructionText ??
+    translate({
+      languageCode,
+      text: 'or drag your file here',
+    });
+
+  const loadingTextToUse =
+    loadingText ??
+    translate({
+      languageCode,
+      text: 'Uploading...',
+    });
   const { getInputProps, getRootProps, open } = useDropzone({
     ...dropzoneOptions,
     disabled,
@@ -165,13 +184,13 @@ export const FileUpload = ({
 
   const renderText = () => {
     if (loading) {
-      return <Text>{loadingText}</Text>;
+      return <Text>{loadingTextToUse}</Text>;
     }
 
     return uploadedFile ? (
       renderFile()
     ) : (
-      <Text color="gray600">{instructionText}</Text>
+      <Text color="gray600">{instructionTextToUse}</Text>
     );
   };
 
@@ -180,7 +199,7 @@ export const FileUpload = ({
       <input {...getInputProps()} />
       <div className={styles.contentWrapper}>
         <Button loading={loading} onClick={open} spinnerColor="black">
-          Browse
+          <Translate text="browse" />
         </Button>
         {renderText()}
       </div>

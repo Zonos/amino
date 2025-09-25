@@ -9,6 +9,7 @@ import {
   formatDate,
 } from 'src/components/filter/filter-date/DateControlsWrapper';
 import { Input } from 'src/components/input/Input';
+import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 
 /** Inclusive */
@@ -69,7 +70,9 @@ export const IsBetween = ({
         type="date"
         value={displayDateBegin}
       />
-      <Text type="label">and</Text>
+      <Text type="label">
+        <Translate text="and --context: 'and' text falls between two dates" />
+      </Text>
       <Input
         onChange={ev => handleChangeDateEnd(ev.target.value)}
         size="sm"
