@@ -8,9 +8,9 @@ import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
-import { translate } from 'src/utils/__internal__/translateAminoText';
 import type { flattenRow } from 'src/utils/flattenRow';
 import { useAminoLanguage } from 'src/utils/translations';
+import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './NestedDataTable.module.scss';
 

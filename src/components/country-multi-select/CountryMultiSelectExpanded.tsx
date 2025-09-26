@@ -26,10 +26,10 @@ import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-import { translate } from 'src/utils/__internal__/translateAminoText';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 import { style } from 'src/utils/style';
 import { useAminoLanguage } from 'src/utils/translations';
+import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 

@@ -4,8 +4,8 @@ import { Card } from 'src/components/card/Card';
 import { VStack } from 'src/components/stack/VStack';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UnitedState } from 'src/types/UnitedStates';
-import { translate } from 'src/utils/__internal__/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
+import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './RichCardStateSelect.module.scss';
 

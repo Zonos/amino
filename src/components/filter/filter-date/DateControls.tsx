@@ -16,8 +16,8 @@ import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
-import { translate } from 'src/utils/__internal__/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
+import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './DateControls.module.scss';
 

@@ -9,8 +9,8 @@ import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import { translate } from 'src/utils/__internal__/translateAminoText';
 import { useAminoLanguage } from 'src/utils/translations';
+import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './FileUpload.module.scss';
 

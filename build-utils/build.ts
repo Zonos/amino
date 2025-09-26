@@ -1,6 +1,7 @@
 import alias from '@rollup/plugin-alias';
 import { babel } from '@rollup/plugin-babel';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
@@ -79,6 +80,7 @@ const bundlePackage = async (
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],
       }),
+      json(),
       image(),
       typescript(),
       // preprocess the scss
@@ -146,29 +148,13 @@ const bundlePackage = async (
   }
 };
 
-const generateAllModulesContent = async (
-  bundles: OutputChunk[],
-): Promise<string[]> =>
-  bundles.flatMap(bundle => {
-    const [, subFolderPath, fileName] =
-      bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
-    // exclude all bundles that are not entry or just private components
-    if (
-      !bundle.isEntry ||
-      /^_+/.test(fileName!) ||
-      /__tests__/.test(subFolderPath!)
-    ) {
-      return [];
-    }
-    return [`import './${subFolderPath || ''}${fileName}';`];
-  });
-
 const animationsModules = glob.sync('src/animations/**/*.ts*');
 const iconsModules = glob.sync('src/icons/**/*.ts*');
 const utilsModules = glob.sync('src/utils/**/*.ts*');
 const componentsModules = glob.sync('src/components/**/*.ts*');
 const styleModules = glob.sync('src/styles/**/*.ts');
 
+// Get all modules including internal ones for bundling
 const allModules = animationsModules
   .concat(iconsModules, utilsModules, componentsModules, styleModules)
   /** Exclude dev folders */
@@ -176,13 +162,17 @@ const allModules = animationsModules
     item =>
       !item.includes('__tests__') &&
       !item.includes('__stories__') &&
-      !item.includes('__internal__') &&
       // no IconIndex, must import from individual file as we have no tree shaking
       !item.includes('IconIndex') &&
       !item.includes('FlagIndex') &&
       // no declaration files
       !item.includes('.d.ts'),
   );
+
+// Get public modules (excluding internal) for export in all.ts
+const allModulesWithoutInternal = allModules.filter(
+  item => !item.includes('__internal__'),
+);
 
 const configs: ConfigOptions[] = [
   {
@@ -203,17 +193,20 @@ process.stdout.setMaxListeners(configs.length * 4 + 1);
 process.stderr.setMaxListeners(configs.length * 4 + 1);
 
 const build = async () => {
-  const bundledPackages = await Promise.all(configs.map(bundlePackage));
-  const moduleContents = await Promise.all(
-    // generate module contents
-    bundledPackages.map(generateAllModulesContent),
-  );
+  await Promise.all(configs.map(bundlePackage));
+
+  // Generate public module imports for all.ts (excluding __internal__)
+  const publicModuleContents = allModulesWithoutInternal.map(modulePath => {
+    const [, subFolderPath, fileName] =
+      modulePath.replace('src/', '').split(/(.*\/)*(.*)\.tsx?$/g) || [];
+    return `import './${subFolderPath || ''}${fileName}';`;
+  });
 
   fs.writeFileSync(
-    // generate all modules ts file
+    // generate all modules ts file - only public modules
     `./src/all.ts`,
-    `${moduleContents
-      .flat()
+    `${publicModuleContents
+      .filter(Boolean)
       .sort((a, b) => a.localeCompare(b))
       .join('\n')}\n`,
   );
