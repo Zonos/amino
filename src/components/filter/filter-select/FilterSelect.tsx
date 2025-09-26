@@ -7,7 +7,7 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import { Select, type SelectProps } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 import { truncateText } from 'src/utils/truncateText';
 
@@ -118,7 +118,7 @@ export const FilterSelect = <
 }: FilterSelectProps<T, O>) => {
   const [editingValue, setEditingValue] = useState<T | null>(value);
   const [menuOpen, setMenuOpen] = useState(false);
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
 
   const getFilterText = useMemo(
     () =>

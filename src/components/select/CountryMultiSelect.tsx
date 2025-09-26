@@ -19,7 +19,7 @@ import type {
   UnavailableCountry,
 } from 'src/utils/hooks/useCountryOptions';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 type AdditionalProps = {
@@ -38,7 +38,7 @@ const MenuList = <
   const { getStyles, selectProps } = props;
   const { allSelected, toggleSelectAll } =
     selectProps as (typeof props)['selectProps'] & AdditionalProps;
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
 
   return (
     <RScomponents.MenuList {...props}>

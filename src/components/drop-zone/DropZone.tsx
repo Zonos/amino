@@ -18,7 +18,7 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './DropZone.module.scss';
@@ -212,7 +212,7 @@ export const DropZone = ({
   style,
   uploadedFiles,
 }: DropZoneProps) => {
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
 
   const instructionTextToUse =
     instructionText ??

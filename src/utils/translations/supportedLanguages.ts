@@ -1,3 +1,5 @@
+import type { SelectOption } from 'src/types/SelectOption';
+
 type SupportedLanguage = {
   code: string;
   label: string;
@@ -26,3 +28,10 @@ export const supportedLanguages = [
 ] as const satisfies readonly SupportedLanguage[];
 
 export type SupportedLanguageCode = (typeof supportedLanguages)[number]['code'];
+
+export const supportedLanguageOptions: SelectOption<SupportedLanguageCode>[] =
+  supportedLanguages.map(lang => ({
+    label: lang.translatedLabel,
+    labelDescription: lang.label,
+    value: lang.code,
+  }));

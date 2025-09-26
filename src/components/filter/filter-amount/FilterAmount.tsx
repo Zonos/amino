@@ -21,7 +21,7 @@ import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { SelectOption } from 'src/types/SelectOption';
-import { useAminoLanguage } from 'src/utils/translations';
+import { getCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './FilterAmount.module.scss';
@@ -85,7 +85,7 @@ export const FilterAmount = ({
   filter,
   label,
 }: FilterAmountProps) => {
-  const languageCode = useAminoLanguage();
+  const languageCode = getCurrentLanguage();
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
   );

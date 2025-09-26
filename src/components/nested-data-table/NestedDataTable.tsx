@@ -9,7 +9,7 @@ import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { flattenRow } from 'src/utils/flattenRow';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './NestedDataTable.module.scss';
@@ -149,7 +149,7 @@ export const NestedDataTable = <
   tableData,
   title,
 }: Props<TRow>) => {
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
   const tableDataArr = useMemo(
     () => (Array.isArray(tableData) ? tableData : [tableData]),
     [tableData],

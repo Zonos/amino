@@ -3,54 +3,46 @@ import type { ReactNode } from 'react';
 import { AlertContextProvider } from 'src/components/dialog/alert/AlertContext';
 import { ConfirmContextProvider } from 'src/components/dialog/confirm/ConfirmContext';
 import { ToastContextProvider } from 'src/components/toast/ToastContext';
-import {
-  AminoLanguageProvider,
-  type SupportedLanguageCode,
-} from 'src/utils/translations';
 
 export type AminoProviderProps = {
   children: ReactNode;
-  /**
-   * Current language code for amino components
-   * If not provided, amino will fall back to its internal detection
-   */
-  languageCode?: SupportedLanguageCode;
 };
 
 /**
  * AMINO PROVIDER: Complete provider setup for amino components
  *
  * This provider combines all necessary amino contexts:
- * - Language/Translation support
  * - Toast notifications
  * - Alert dialogs
  * - Confirm dialogs
  *
+ * Language/Translation is now handled by Zustand store.
+ * Use `configureTranslations()` and `setLanguage()` functions instead.
+ *
  * @example
  * ```tsx
  * // In consuming project:
- * import { AminoProvider } from '@zonos/amino';
+ * import { AminoProvider, configureTranslations, setLanguage } from '@zonos/amino';
  *
  * function App() {
- *   const [language, setLanguage] = useState('EN');
+ *   // Configure translations once
+ *   configureTranslations(myLoadTranslationsFunction);
+ *
+ *   // Set language anywhere
+ *   const handleLanguageChange = (lang) => setLanguage(lang);
  *
  *   return (
- *     <AminoProvider languageCode={language}>
+ *     <AminoProvider>
  *       <MyApp />
  *     </AminoProvider>
  *   );
  * }
  * ```
  */
-export const AminoProvider = ({
-  children,
-  languageCode,
-}: AminoProviderProps) => (
-  <AminoLanguageProvider languageCode={languageCode}>
-    <ToastContextProvider>
-      <ConfirmContextProvider>
-        <AlertContextProvider>{children}</AlertContextProvider>
-      </ConfirmContextProvider>
-    </ToastContextProvider>
-  </AminoLanguageProvider>
+export const AminoProvider = ({ children }: AminoProviderProps) => (
+  <ToastContextProvider>
+    <ConfirmContextProvider>
+      <AlertContextProvider>{children}</AlertContextProvider>
+    </ConfirmContextProvider>
+  </ToastContextProvider>
 );

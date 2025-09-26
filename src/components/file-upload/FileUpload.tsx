@@ -9,7 +9,7 @@ import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './FileUpload.module.scss';
@@ -137,7 +137,7 @@ export const FileUpload = ({
   style,
   uploadedFile,
 }: FileUploadProps) => {
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
 
   // Use translated defaults if not provided
   const instructionTextToUse =

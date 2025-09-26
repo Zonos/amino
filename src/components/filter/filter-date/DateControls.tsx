@@ -16,7 +16,7 @@ import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './DateControls.module.scss';
@@ -38,7 +38,7 @@ export const DateControls = ({
 }: DateControlProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
   const optionsDate: SelectOption<FilterDateRangeType>[] = useMemo(
     () => [
       {

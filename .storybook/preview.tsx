@@ -5,11 +5,15 @@ import 'src/styles/reset.css';
 import 'src/styles/theme.css';
 import { useGlobals } from '@storybook/preview-api';
 import type { Decorator, Preview } from '@storybook/react';
+import clsx from 'clsx';
 
 import { AminoProvider } from 'src/utils/AminoProvider';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
 import {
+  configureTranslations,
+  type LoadTranslationsFunction,
+  setLanguage,
   type SupportedLanguageCode,
   supportedLanguages,
 } from 'src/utils/translations';
@@ -19,12 +23,136 @@ import styles from './preview.module.scss';
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
+// Configure amino translations for Storybook
+const loadTranslations: LoadTranslationsFunction = async (
+  languageCode: SupportedLanguageCode,
+): Promise<Record<string, string>> => {
+  if (languageCode === 'EN') return {};
+
+  try {
+    switch (languageCode) {
+      case 'ZH_CN':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/chinese.json'
+          )
+        ).default;
+      case 'ES':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/spanish.json'
+          )
+        ).default;
+      case 'FR':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/french.json'
+          )
+        ).default;
+      case 'DE':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/german.json'
+          )
+        ).default;
+      case 'DA':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/danish.json'
+          )
+        ).default;
+      case 'NL':
+        return (
+          await import('src/utils/translations/__internal__/strings/dutch.json')
+        ).default;
+      case 'ID':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/indonesian.json'
+          )
+        ).default;
+      case 'IT':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/italian.json'
+          )
+        ).default;
+      case 'JA':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/japanese.json'
+          )
+        ).default;
+      case 'KO':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/korean.json'
+          )
+        ).default;
+      case 'NO':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/norwegian.json'
+          )
+        ).default;
+      case 'PL':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/polish.json'
+          )
+        ).default;
+      case 'PT':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/portuguese.json'
+          )
+        ).default;
+      case 'RU':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/russian.json'
+          )
+        ).default;
+      case 'SV':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/swedish.json'
+          )
+        ).default;
+      case 'TR':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/turkish.json'
+          )
+        ).default;
+      case 'VI':
+        return (
+          await import(
+            'src/utils/translations/__internal__/strings/vietnamese.json'
+          )
+        ).default;
+      default:
+        return {};
+    }
+  } catch {
+    return {};
+  }
+};
+
+// Configure translations once
+configureTranslations(loadTranslations);
+
 const withAminoProvider: Decorator = (Story, context) => {
   const [globals] = useGlobals();
   const languageCode: SupportedLanguageCode = globals.language || 'EN';
 
+  // Update language when Storybook globals change
+  useEffect(() => {
+    setLanguage(languageCode);
+  }, [languageCode]);
+
   return (
-    <AminoProvider languageCode={languageCode}>
+    <AminoProvider>
       <Story {...context} />
     </AminoProvider>
   );
@@ -128,7 +256,10 @@ const withTheme: Decorator = (Story, context) => {
 
   return (
     <div
-      className={styles.themeBlock}
+      className={clsx(
+        styles.themeBlock,
+        context.viewMode === 'docs' && styles.docsMode,
+      )}
       data-theme={inSideBySide ? storybookTheme : aminoTheme}
     >
       <Story {...context} />

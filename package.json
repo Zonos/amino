@@ -86,7 +86,8 @@
     "react-split-it": "^2.0.0",
     "topojson-client": "^3.1.0",
     "uuid": "^9.0.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
@@ -196,6 +197,7 @@
     "@emotion/react": "^11.x",
     "@emotion/styled": "^11.x",
     "dayjs": "*",
+    "zustand": "^5.0.0",
     "framer-motion": "^10.x",
     "graphql": "^16.x",
     "graphql-request": "~5.1.0",

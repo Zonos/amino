@@ -1,7 +1,7 @@
 /* Ensure full height for all storybook containers */
 html, body, #storybook-root, #root {
-  height: 100vh !important;
-  min-height: 100vh !important;
+  height: 100% !important;
+  min-height: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -13,8 +13,8 @@ html, body, #storybook-root, #root {
 .sb-main-centered,
 .sb-main-fullscreen,
 .sb-main-padded {
-  height: 100vh !important;
-  min-height: 100vh !important;
+  height: 100% !important;
+  min-height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
 }
@@ -28,5 +28,5 @@ html, body, #storybook-root, #root {
 .sb-story > div,
 .docs-story > div {
   height: 100% !important;
-  min-height: 100vh !important;
+  min-height: 100% !important;
 }

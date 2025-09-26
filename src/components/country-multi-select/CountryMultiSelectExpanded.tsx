@@ -28,7 +28,7 @@ import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 import { style } from 'src/utils/style';
-import { useAminoLanguage } from 'src/utils/translations';
+import { useCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
@@ -212,7 +212,7 @@ export const CountryMultiSelectExpanded = <
   withoutSearch = false,
 }: CountryMultiSelectExpandedProps<CountryCode>) => {
   const id = useId();
-  const languageCode = useAminoLanguage();
+  const languageCode = useCurrentLanguage();
 
   const [searchText, setSearchText] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
