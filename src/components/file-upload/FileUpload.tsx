@@ -17,6 +17,7 @@ type UploadFileNoImage = {
 };
 
 export type FileUploadProps = BaseProps & {
+  buttonActionText?: string;
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
@@ -123,6 +124,7 @@ export type FileUploadProps = BaseProps & {
  * ```
  */
 export const FileUpload = ({
+  buttonActionText = 'Browse',
   className,
   disabled = false,
   dropzoneOptions,
@@ -180,7 +182,7 @@ export const FileUpload = ({
       <input {...getInputProps()} />
       <div className={styles.contentWrapper}>
         <Button loading={loading} onClick={open} spinnerColor="black">
-          Browse
+          {buttonActionText}
         </Button>
         {renderText()}
       </div>
