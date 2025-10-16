@@ -21,8 +21,8 @@ import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { SelectOption } from 'src/types/SelectOption';
-import { getCurrentLanguage } from 'src/utils/translations';
 import { translate } from 'src/utils/translations/__internal__/translateAminoText';
+import { getCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 import styles from './FilterAmount.module.scss';
 

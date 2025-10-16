@@ -8,10 +8,12 @@ import { LanguageSelector } from 'src/components/select/LanguageSelect';
 import { Text } from 'src/components/text/Text';
 import {
   setLanguage,
-  supportedLanguages,
   useCurrentLanguage,
-} from 'src/utils/translations';
-import { supportedLanguageOptions } from 'src/utils/translations/supportedLanguages';
+} from 'src/utils/translations/AminoTranslationStore';
+import {
+  supportedLanguageOptions,
+  supportedLanguages,
+} from 'src/utils/translations/supportedLanguages';
 
 const LanguageSelectMeta: Meta = {
   component: LanguageSelector,

@@ -1,17 +1,15 @@
 import type { ReactNode } from 'react';
 
 import {
-  handleTranslateComponentText,
-  type TranslateProps,
-} from 'src/utils/translations';
-import {
-  type ITranslateText,
+  type AminoTranslationStrings,
   useTranslate,
 } from 'src/utils/translations/AminoTranslationStore';
+import type { TranslateProps } from 'src/utils/translations/handleTranslateComponentText';
+import { handleTranslateComponentText } from 'src/utils/translations/handleTranslateComponentText';
 
 // This component provides a convenient way to translate text while automatically getting the current locale context,
 // and will re-render when translations are loaded or language changes.
-export const Translate = <T extends ITranslateText>(
+export const Translate = <T extends AminoTranslationStrings>(
   props: TranslateProps<T>,
 ): ReactNode => {
   const translate = useTranslate();

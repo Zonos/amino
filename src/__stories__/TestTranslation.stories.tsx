@@ -7,7 +7,7 @@ import {
   useCurrentLanguage,
   useIsTranslationsLoading,
   useTranslate,
-} from 'src/utils/translations';
+} from 'src/utils/translations/AminoTranslationStore';
 
 const TestTranslationComponent = () => {
   const currentLanguage = useCurrentLanguage();
