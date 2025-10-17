@@ -25,6 +25,7 @@ type FilterWrapperProps = BaseProps & {
   handleOpenDropdown: (e: MouseEvent) => void;
   handleToggle: () => void;
   hasFilter: boolean;
+  isDisabled?: boolean;
   label: string;
 };
 
@@ -138,11 +139,16 @@ export const FilterWrapper = ({
   handleOpenDropdown,
   handleToggle,
   hasFilter,
+  isDisabled,
   label,
   style,
 }: FilterWrapperProps) => (
   <div
-    className={clsx(className, styles.filterWrapper)}
+    className={clsx(
+      className,
+      styles.filterWrapper,
+      isDisabled && styles.disabled,
+    )}
     style={{
       ...style,
       '--amino-filter-wrapper-border-bottom-right-radius': hasFilter

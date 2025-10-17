@@ -108,6 +108,7 @@ export const FilterSelect = <
 >({
   filterTextCharacterLimit = 20,
   getFilterText: _getFilterText,
+  isDisabled,
   onChange,
   options,
   selectProps,
@@ -166,6 +167,7 @@ export const FilterSelect = <
     ...props,
     initialFilterText: value ? `is ${value}` : undefined,
     isActive: !!value,
+    isDisabled,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,
     onClose: handleClose,
