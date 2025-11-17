@@ -25,6 +25,9 @@ export type TooltipProps = BaseProps & {
    * @default undefined
    */
   disabled?: boolean;
+
+  maxWidth?: number | string;
+
   /**
    * Override to stay open.
    * @default false
@@ -169,6 +172,7 @@ export const Tooltip = ({
   children,
   className,
   disabled = false,
+  maxWidth,
   open,
   subtitle,
   themeOverride = 'night',
@@ -176,7 +180,11 @@ export const Tooltip = ({
   ...rest
 }: TooltipProps) => {
   const renderTooltip = () => (
-    <Flex flexDirection="column" gap={8}>
+    <Flex
+      flexDirection="column"
+      gap={8}
+      style={{ maxWidth, overflowWrap: 'break-word' }}
+    >
       {typeof title === 'string' ? (
         <Text type="small-header">{title}</Text>
       ) : (
