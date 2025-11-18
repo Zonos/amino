@@ -28,6 +28,9 @@ export type TooltipProps = BaseProps & {
    */
   disabled?: boolean;
 
+  /**
+   * Max width of the tooltip in px
+   */
   maxWidth?: number;
 
   /**
