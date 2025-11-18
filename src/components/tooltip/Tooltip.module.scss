@@ -1,0 +1,8 @@
+@use 'theme';
+
+$max-width: var(--amino-tooltip-max-width, none);
+
+.tooltipContent {
+  max-width: $max-width;
+  overflow-wrap: break-word;
+}
