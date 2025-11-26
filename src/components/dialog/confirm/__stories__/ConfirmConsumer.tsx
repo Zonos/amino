@@ -21,7 +21,8 @@ export const ConfirmConsumer = () => {
             dismissText: "Don't do action",
             intent: 'info',
             label: 'Are you sure?',
-            onConfirm: setDefaultConfirmOk,
+            onConfirm: () => setDefaultConfirmOk(true),
+            onDismiss: () => setDefaultConfirmOk(false),
             subtitle:
               'This is the descriptive text about what the user is about to do',
             width: 500,
@@ -44,7 +45,8 @@ export const ConfirmConsumer = () => {
             dismissText: "Don't do action",
             intent: 'danger',
             label: 'Are you sure?',
-            onConfirm: setDangerConfirmOk,
+            onConfirm: () => setDangerConfirmOk(true),
+            onDismiss: () => setDangerConfirmOk(false),
             subtitle: 'This is the descriptive text about what just happened',
             width: 800,
           })
@@ -66,7 +68,8 @@ export const ConfirmConsumer = () => {
             dismissText: "Don't do action",
             intent: 'warning',
             label: 'Are you sure?',
-            onConfirm: setWarningConfirmOk,
+            onConfirm: () => setWarningConfirmOk(true),
+            onDismiss: () => setWarningConfirmOk(false),
             subtitle: 'This is the descriptive text about what just happened',
           })
         }

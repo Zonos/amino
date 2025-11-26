@@ -6,7 +6,8 @@ import type { DismissableDialogBaseArgs } from 'src/components/dialog/Dismissabl
 export type ConfirmDialogArgs = DismissableDialogBaseArgs & {
   confirmText: string;
   dismissText: string;
-  onConfirm: (ok: boolean) => void;
+  onConfirm: () => void;
+  onDismiss?: () => void;
 };
 
 export const ConfirmContext = createContext((opts: ConfirmDialogArgs) => {
@@ -35,11 +36,11 @@ export const ConfirmContextProvider = ({ children }: Props) => {
           {...dialog}
           confirmAction={() => {
             setIsOpen(false);
-            dialog.onConfirm(true);
+            dialog.onConfirm();
           }}
           dismissAction={() => {
             setIsOpen(false);
-            dialog.onConfirm(false);
+            dialog.onDismiss?.();
           }}
           open={isOpen}
         />
