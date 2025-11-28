@@ -3,23 +3,52 @@ import { createContext, type ReactNode, useCallback, useState } from 'react';
 import { ConfirmDialog } from 'src/components/dialog/confirm/ConfirmDialog';
 import type { DismissableDialogBaseArgs } from 'src/components/dialog/DismissableDialog';
 
-export type ConfirmDialogArgs = DismissableDialogBaseArgs & {
+type ConfirmDialogArgsBase = DismissableDialogBaseArgs & {
   confirmText: string;
   dismissText: string;
-  onConfirm: (ok: boolean) => void;
 };
 
-export const ConfirmContext = createContext((opts: ConfirmDialogArgs) => {
-  const defaultFunction = (options: ConfirmDialogArgs) => options;
-  defaultFunction(opts);
-});
+/**
+ * @deprecated Use ConfirmDialogArgsNewApi instead.
+ * Legacy API with single callback that receives a boolean parameter.
+ */
+type ConfirmDialogArgsLegacy = ConfirmDialogArgsBase & {
+  /**
+   * @deprecated Use separate onConfirm and onDismiss callbacks instead.
+   * Legacy callback that receives a boolean parameter (true for confirm, false for dismiss).
+   */
+  onConfirm: (confirmed: boolean) => void;
+};
 
-type Props = {
+/** New API with separate callbacks for confirm and dismiss actions */
+type ConfirmDialogArgsNewApi = ConfirmDialogArgsBase & {
+  /** Callback when dialog is confirmed */
+  onConfirm: () => void;
+  /** Callback when dialog is dismissed/cancelled */
+  onDismiss: () => void;
+};
+
+export type ConfirmDialogArgs =
+  | ConfirmDialogArgsLegacy
+  | ConfirmDialogArgsNewApi;
+
+const isNewApi = (args: ConfirmDialogArgs): args is ConfirmDialogArgsNewApi =>
+  'onDismiss' in args && typeof args.onDismiss === 'function';
+
+export const ConfirmContext = createContext<(opts: ConfirmDialogArgs) => void>(
+  () => {
+    // Default no-op function for context
+  },
+);
+
+type ConfirmContextProviderProps = {
   children: ReactNode;
 };
 
-export const ConfirmContextProvider = ({ children }: Props) => {
-  const [dialog, setDialog] = useState<ConfirmDialogArgs | null>();
+export const ConfirmContextProvider = ({
+  children,
+}: ConfirmContextProviderProps) => {
+  const [dialog, setDialog] = useState<ConfirmDialogArgs | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const confirm = useCallback((opts: ConfirmDialogArgs) => {
@@ -35,11 +64,15 @@ export const ConfirmContextProvider = ({ children }: Props) => {
           {...dialog}
           confirmAction={() => {
             setIsOpen(false);
-            dialog.onConfirm(true);
+            void (isNewApi(dialog)
+              ? dialog.onConfirm()
+              : dialog.onConfirm(true));
           }}
           dismissAction={() => {
             setIsOpen(false);
-            dialog.onConfirm(false);
+            void (isNewApi(dialog)
+              ? dialog.onDismiss()
+              : dialog.onConfirm(false));
           }}
           open={isOpen}
         />
