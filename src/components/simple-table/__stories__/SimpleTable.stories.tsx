@@ -42,11 +42,17 @@ type DummyData = {
   vegan: boolean;
 };
 
+type DummyDataExtended = DummyData & {
+  empty: null;
+  interactions: null;
+  multiLineContent: null;
+};
+
 const truncateText = 'This is a long string that should be truncated. '.repeat(
   5,
 );
 
-const items: DummyData[] = [
+const items: DummyDataExtended[] = [
   {
     age: 24,
     disabledText: 'Disabled link',
@@ -98,9 +104,14 @@ const items: DummyData[] = [
     truncateText,
     vegan: false,
   },
-];
+].map(item => ({
+  ...item,
+  empty: null,
+  interactions: null,
+  multiLineContent: null,
+}));
 
-const tableHeaders: SimpleTableHeader<DummyData>[] = [
+const tableHeaders: SimpleTableHeader<DummyDataExtended>[] = [
   {
     key: 'name',
     name: 'Name',
@@ -122,6 +133,47 @@ const tableHeaders: SimpleTableHeader<DummyData>[] = [
         ) : (
           <RemoveIcon color="red600" />
         )}
+      </div>
+    ),
+  },
+  {
+    key: 'multiLineContent',
+    name: 'Multi-line Content',
+    renderCustom: () => (
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Text>Line 1</Text>
+        <Text color="gray600" fontSize="s">
+          Line 2
+        </Text>
+        <Text color="gray600" fontSize="xs">
+          Line 3
+        </Text>
+      </div>
+    ),
+  },
+  {
+    key: 'empty',
+    name: 'Empty',
+    renderCustom: () => null,
+  },
+  {
+    key: 'interactions',
+    name: 'Interactions',
+    renderCustom: () => (
+      <div style={{ alignItems: 'center', display: 'flex', gap: '1rem' }}>
+        <Button variant="link">
+          <a href="https://picsum.photos/100/100" target="_blank">
+            Link
+          </a>
+        </Button>
+        <Button
+          onClick={e => {
+            e.preventDefault();
+            alert('Button Clicked');
+          }}
+        >
+          Button
+        </Button>
       </div>
     ),
   },
@@ -311,7 +363,7 @@ export const Selectable: StoryObj<SimpleTableProps<object>> = {
 
     const handleCheckboxRowChange = (
       value: boolean,
-      item: DummyData,
+      _item: DummyData,
       index: number,
     ) => {
       if (value) {
@@ -371,7 +423,7 @@ export const WithLink: StoryObj = {
 
     const handleCheckboxRowChange = (
       value: boolean,
-      item: DummyData,
+      _item: DummyData,
       index: number,
     ) => {
       if (value) {
@@ -427,7 +479,7 @@ export const Loading: StoryObj = {
 
     const handleCheckboxRowChange = (
       value: boolean,
-      item: DummyData,
+      _item: DummyData,
       index: number,
     ) => {
       if (value) {
@@ -513,9 +565,8 @@ export const Bordered: StoryObj = {
     expect(header2).not.toBeVisible();
   },
   render: () => {
-    const augmentedHeaders: SimpleTableHeader<DummyData>[] = tableHeaders
-      .filter(Boolean)
-      .map(header => ({
+    const augmentedHeaders: SimpleTableHeader<DummyDataExtended>[] =
+      tableHeaders.filter(Boolean).map(header => ({
         ...header,
         minWidth: header.minWidth || 50,
         name: null,
@@ -629,7 +680,7 @@ export const Collapsible: StoryObj = {
 
     const handleCheckboxRowChange = (
       value: boolean,
-      item: DummyData,
+      _item: DummyData,
       index: number,
     ) => {
       if (value) {
@@ -740,7 +791,7 @@ export const Custom: StoryObj = {
     const [shouldTruncate, setShouldTruncate] = useState(true);
     const [viewOneRow, setViewOneRow] = useState(false);
 
-    type AugmentedDummyData = DummyData & {
+    type AugmentedDummyData = DummyDataExtended & {
       countryCode: Flag;
       hoverField: null;
       truncateText?: string;
