@@ -2,8 +2,8 @@ name: Publish Package
 # https://docs.npmjs.com/trusted-publishers
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
 
 permissions:
   id-token: write # Required for OIDC
