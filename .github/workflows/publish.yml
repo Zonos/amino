@@ -20,10 +20,6 @@ jobs:
           node-version: 22.11.0
           registry-url: "https://registry.npmjs.org"
           cache: pnpm
-
-      # Ensure npm 11.5.1 or later is installed
-      - name: Update npm
-        run: npm install -g npm@latest
       - run: pnpm install
       - run: pnpm build:ci
       - run: cd dist && npm publish --access public
