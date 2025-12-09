@@ -60,6 +60,7 @@ export const FilterText = ({
   label,
   onChange,
   value,
+  ...props
 }: FilterTextProps) => {
   const [editingValue, setEditingValue] = useState<string>(value || '');
 
@@ -88,6 +89,7 @@ export const FilterText = ({
   };
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: !!value,
     isDisabled,

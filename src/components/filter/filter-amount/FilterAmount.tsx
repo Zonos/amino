@@ -83,6 +83,7 @@ export const FilterAmount = ({
   filter,
   isDisabled,
   label,
+  ...props
 }: FilterAmountProps) => {
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
@@ -256,6 +257,7 @@ export const FilterAmount = ({
   }, [editingAmountMax, editingAmountMin, filterType]);
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: filter.isActive,
     isDisabled,
