@@ -86,6 +86,7 @@ export const FilterDate = ({
   filter,
   isDisabled,
   label,
+  ...props
 }: FilterDateProps) => {
   const [editingValue, setEditingValue] = useState<FilterDateData>(
     filter.dateData,
@@ -241,6 +242,7 @@ export const FilterDate = ({
   };
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: filter.isActive,
     isDisabled,
