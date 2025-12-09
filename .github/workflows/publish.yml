@@ -1,9 +1,13 @@
-name: Publish
-
+name: Publish Package
+# https://docs.npmjs.com/trusted-publishers
 on:
   push:
     branches:
       - main
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   publish:
@@ -14,10 +18,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.11.0
-          registry-url: https://registry.npmjs.org
+          registry-url: "https://registry.npmjs.org"
           cache: pnpm
       - run: pnpm install
       - run: pnpm build:ci
       - run: cd dist && npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
