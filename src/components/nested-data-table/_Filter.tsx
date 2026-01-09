@@ -6,8 +6,8 @@ import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { FilterIcon } from 'src/icons/FilterIcon';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
-import { translate } from 'src/utils/translations/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './_Filter.module.scss';
 
