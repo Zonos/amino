@@ -8,8 +8,8 @@ import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './FileUpload.module.scss';
 
@@ -141,7 +141,7 @@ export const FileUpload = ({
   const languageCode = useCurrentLanguage();
   const buttonActionTextToUse =
     buttonActionText ??
-    translate({
+    translateAminoText({
       languageCode,
       text: 'Browse --context: button text referencing browsing more files',
     });
@@ -149,14 +149,14 @@ export const FileUpload = ({
   // Use translated defaults if not provided
   const instructionTextToUse =
     instructionText ??
-    translate({
+    translateAminoText({
       languageCode,
       text: 'or drag your file here',
     });
 
   const loadingTextToUse =
     loadingText ??
-    translate({
+    translateAminoText({
       languageCode,
       text: 'Uploading...',
     });

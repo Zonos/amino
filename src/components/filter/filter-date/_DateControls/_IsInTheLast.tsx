@@ -11,8 +11,8 @@ import type { FilterDateLastRangeUnit } from 'src/components/filter/filter-date/
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
 
 export const IsInTheLast = ({
   onChange,
@@ -35,14 +35,14 @@ export const IsInTheLast = ({
   const dateUnitOptions: SelectOption<FilterDateLastRangeUnit>[] = useMemo(
     () => [
       {
-        label: translate({
+        label: translateAminoText({
           languageCode,
           text: 'days --context: date unit',
         }),
         value: 'days',
       },
       {
-        label: translate({
+        label: translateAminoText({
           languageCode,
           text: 'months --context: date unit',
         }),

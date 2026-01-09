@@ -1,7 +1,7 @@
 import { type ReactNode, useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
-import { Translate } from 'src/components/__internal__/TranslateAminoText';
+import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
@@ -9,8 +9,8 @@ import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { flattenRow } from 'src/utils/flattenRow';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './NestedDataTable.module.scss';
 
@@ -163,7 +163,9 @@ export const NestedDataTable = <
       return loadingComponent ? (
         <>{loadingComponent}</>
       ) : (
-        <RestState label={translate({ languageCode, text: 'Loading...' })} />
+        <RestState
+          label={translateAminoText({ languageCode, text: 'Loading...' })}
+        />
       );
     }
 
@@ -172,7 +174,10 @@ export const NestedDataTable = <
         <>{restState}</>
       ) : (
         <RestState
-          label={translate({ languageCode, text: 'No data available.' })}
+          label={translateAminoText({
+            languageCode,
+            text: 'No data available.',
+          })}
         />
       );
     }
@@ -202,7 +207,7 @@ export const NestedDataTable = <
               }}
               outline
             >
-              <Translate text="Previous page" />
+              <TranslateAminoText text="Previous page" />
             </Button>
             {currentPage}
             <Button
@@ -214,7 +219,7 @@ export const NestedDataTable = <
               }}
               outline
             >
-              <Translate text="Next page" />
+              <TranslateAminoText text="Next page" />
             </Button>
           </div>
         )}

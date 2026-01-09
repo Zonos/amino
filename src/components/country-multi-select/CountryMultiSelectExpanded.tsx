@@ -10,7 +10,7 @@ import {
 import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
 
-import { Translate } from 'src/components/__internal__/TranslateAminoText';
+import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Collapse } from 'src/components/collapse/Collapse';
@@ -28,8 +28,8 @@ import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 import { style } from 'src/utils/style';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 
@@ -289,7 +289,7 @@ export const CountryMultiSelectExpanded = <
         })}
       >
         <Text color="textColorSecondary">
-          <Translate text="No countries" />
+          <TranslateAminoText text="No countries" />
         </Text>
       </div>
     );
@@ -310,7 +310,7 @@ export const CountryMultiSelectExpanded = <
           })}
         >
           <Text color="textColorSecondary">
-            <Translate text="No countries" />
+            <TranslateAminoText text="No countries" />
           </Text>
         </div>
       );
@@ -328,7 +328,7 @@ export const CountryMultiSelectExpanded = <
           <div className={styles.checkboxWrapper}>
             <Checkbox
               checked={allSelected}
-              label={translate({ languageCode, text: 'Select all' })}
+              label={translateAminoText({ languageCode, text: 'Select all' })}
               onChange={checked => {
                 if (checked) {
                   onChange(
@@ -462,10 +462,10 @@ export const CountryMultiSelectExpanded = <
       {!noHeader && (
         <div className={styles.header}>
           <Text type="bold-label">
-            <Translate text="Countries and Regions" />
+            <TranslateAminoText text="Countries and Regions" />
           </Text>
           <Text color="textColorSecondary" type="label">
-            <Translate
+            <TranslateAminoText
               text="[selectedCountries] of [numSelectableCountries] selected"
               variables={{
                 numSelectableCountries: numSelectableCountries,
@@ -487,7 +487,10 @@ export const CountryMultiSelectExpanded = <
                 autoComplete="off"
                 id={id}
                 onChange={e => setSearchText(e.target.value)}
-                placeholder={translate({ languageCode, text: 'Search...' })}
+                placeholder={translateAminoText({
+                  languageCode,
+                  text: 'Search...',
+                })}
                 type="text"
                 value={searchText}
               />

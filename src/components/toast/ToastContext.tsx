@@ -12,9 +12,9 @@ import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
+import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
-import { Translate } from 'src/components/internal/TranslateAminoText';
 import { Toast, type ToastProps } from 'src/components/toast/Toast';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 
@@ -216,7 +216,7 @@ export const ToastContextProvider = ({ children }: Props) => {
               onClick={dismissAllToasts}
               variant="text"
             >
-              <Translate text="Clear all --context: button text referencing clearing all toasts" />
+              <TranslateAminoText text="Clear all --context: button text referencing clearing all toasts" />
             </Button>
           )}
           <AnimatePresence>

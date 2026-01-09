@@ -16,8 +16,8 @@ import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './DateControls.module.scss';
 
@@ -42,31 +42,31 @@ export const DateControls = ({
   const optionsDate: SelectOption<FilterDateRangeType>[] = useMemo(
     () => [
       {
-        label: translate({ languageCode, text: 'is in the last' }),
+        label: translateAminoText({ languageCode, text: 'is in the last' }),
         value: 'is in the last',
       },
       {
-        label: translate({ languageCode, text: 'is equal to' }),
+        label: translateAminoText({ languageCode, text: 'is equal to' }),
         value: 'is equal to',
       },
       {
-        label: translate({ languageCode, text: 'is after' }),
+        label: translateAminoText({ languageCode, text: 'is after' }),
         value: 'is after',
       },
       {
-        label: translate({ languageCode, text: 'is before' }),
+        label: translateAminoText({ languageCode, text: 'is before' }),
         value: 'is before',
       },
       {
-        label: translate({ languageCode, text: 'is between' }),
+        label: translateAminoText({ languageCode, text: 'is between' }),
         value: 'is between',
       },
       {
-        label: translate({ languageCode, text: 'is on or after' }),
+        label: translateAminoText({ languageCode, text: 'is on or after' }),
         value: 'is on or after',
       },
       {
-        label: translate({ languageCode, text: 'is before or on' }),
+        label: translateAminoText({ languageCode, text: 'is before or on' }),
         value: 'is before or on',
       },
     ],

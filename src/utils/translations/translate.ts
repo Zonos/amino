@@ -1,13 +1,10 @@
-import {
-  type AminoTranslationStrings,
-  translate as aminoStoreTranslate,
-} from 'src/utils/translations/AminoTranslationStore';
+import { translate as aminoStoreTranslate } from 'src/utils/translations/AminoTranslationStore';
 import {
   type ExtractVariables,
   handleTranslationVariables,
 } from 'src/utils/translations/handleTranslationVariables';
 
-import type { TranslateProps } from './handleTranslateComponentText';
+import type { SupportedLanguageCode } from './supportedLanguages';
 
 export type { AminoTranslationStrings } from 'src/utils/translations/AminoTranslationStore';
 
@@ -17,14 +14,24 @@ export type { AminoTranslationStrings } from 'src/utils/translations/AminoTransl
 type StripContext<T extends string> =
   T extends `${infer Base} --context: ${string}` ? Base : T;
 
-export const translate = <T extends AminoTranslationStrings>(
-  params: TranslateProps<T>,
+/**
+ * Parameters for the translate function that handles string/number variables
+ */
+export type TranslateParams<T extends string> = {
+  languageCode?: SupportedLanguageCode;
+  text: T;
+} & (ExtractVariables<T> extends never
+  ? { variables?: never }
+  : { variables: Record<ExtractVariables<T>, string | number> });
+
+export const translate = <T extends string>(
+  params: TranslateParams<T>,
 ): StripContext<T> => {
   const { text, variables } = params;
   const translatedText = aminoStoreTranslate(text);
 
   return handleTranslationVariables<T>({
     text: translatedText as T,
-    variables: variables as Record<ExtractVariables<T>, string | number>,
+    variables,
   }) as StripContext<T>;
 };

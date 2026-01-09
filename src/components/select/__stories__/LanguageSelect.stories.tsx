@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { Translate } from 'src/components/__internal__/TranslateAminoText';
+import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
 import { Flex } from 'src/components/flex/Flex';
 import { LanguageSelector } from 'src/components/select/LanguageSelect';
 import { Text } from 'src/components/text/Text';
@@ -44,13 +44,13 @@ const LanguageSelectTemplate: StoryFn = ({ ...props }) => {
       <Flex flexDirection="column" gap={8}>
         <Text fontWeight={600}>Translation Test:</Text>
         <Text>
-          <Translate text="Loading" />
+          <TranslateAminoText text="Loading" />
         </Text>
         <Text>
-          <Translate text="Select a language" />
+          <TranslateAminoText text="Select a language" />
         </Text>
         <Text>
-          <Translate text="Hello" />
+          <TranslateAminoText text="Hello" />
         </Text>
       </Flex>
     </Flex>
@@ -85,7 +85,7 @@ const AllLanguagesTemplate: StoryFn = ({ ...props }) => {
       <Flex flexDirection="column" gap={8}>
         <Text fontWeight={600}>Current Language: {currentLanguage}</Text>
         <Text>
-          Sample translation: <Translate text="Loading" />
+          Sample translation: <TranslateAminoText text="Loading" />
         </Text>
       </Flex>
     </Flex>

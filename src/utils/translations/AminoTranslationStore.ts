@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { getStorageItem, setStorageItem } from 'src/utils/storage';
 
 // Import Spanish JSON to get the type definition
-import type spanish from './__internal__/strings/spanish.json';
+import type spanish from './__amino__/strings/spanish.json';
 import {
   type SupportedLanguageCode,
   supportedLanguages,
@@ -48,11 +48,11 @@ export type LoadTranslationsFunction = (
   languageCode: SupportedLanguageCode,
 ) => Promise<Record<string, string>>;
 
-export type TranslateFunction = (text: AminoTranslationStrings) => string;
+export type TranslateFunction = <T extends string>(text: T) => string;
 
 // Shared translation logic that can be used by both the store and hooks
 const getTextTranslation = (
-  text: AminoTranslationStrings,
+  text: string,
   currentLanguage: SupportedLanguageCode,
   translations: TranslationCache,
 ): string => {
@@ -76,7 +76,7 @@ type AminoTranslationState = {
 type AminoTranslationActions = {
   setLanguage: (languageCode: SupportedLanguageCode) => Promise<void>;
   setLoadTranslations: (loadFn: LoadTranslationsFunction) => void;
-  translate: (text: AminoTranslationStrings) => string;
+  translate: (text: string) => string;
 };
 
 type AminoTranslationStore = AminoTranslationState & AminoTranslationActions;
@@ -129,9 +129,31 @@ export const useAminoTranslationStore = create<AminoTranslationStore>(
     },
     setLoadTranslations: (loadFn: LoadTranslationsFunction) => {
       set({ loadTranslations: loadFn });
+      // Auto-load translations for the stored language if not English and not already loaded
+      const { currentLanguage, translations } = get();
+      if (currentLanguage !== 'EN' && !translations.has(currentLanguage)) {
+        // Load translations asynchronously without blocking
+        void (async () => {
+          try {
+            const newTranslations = await loadFn(currentLanguage);
+            set(state => ({
+              translations: new Map(state.translations).set(
+                currentLanguage,
+                newTranslations,
+              ),
+            }));
+          } catch (error) {
+            // eslint-disable-next-line no-console
+            console.warn(
+              `Failed to auto-load translations for ${currentLanguage}:`,
+              error,
+            );
+          }
+        })();
+      }
     },
 
-    translate: (text: AminoTranslationStrings) => {
+    translate: (text: string) => {
       const { currentLanguage, translations } = get();
       return getTextTranslation(text, currentLanguage, translations);
     },
@@ -141,7 +163,8 @@ export const useAminoTranslationStore = create<AminoTranslationStore>(
 );
 
 // Direct exports for non-React usage (works anywhere!)
-export const translate = (text: AminoTranslationStrings): string =>
+// Note: This is a convenience export. For type-safe usage, use the translate function from translateAminoText.ts
+export const translate = (text: string): string =>
   useAminoTranslationStore.getState().translate(text);
 
 export const setLanguage = (
@@ -178,7 +201,7 @@ export const useTranslate = (): TranslateFunction => {
   );
   const translations = useAminoTranslationStore(state => state.translations);
 
-  return (text: AminoTranslationStrings) =>
+  return <T extends string>(text: T): string =>
     getTextTranslation(text, currentLanguage, translations);
 };
 
@@ -197,39 +220,39 @@ const loadInternalAminoTranslations = async (
   try {
     switch (languageCode) {
       case 'ZH_CN':
-        return (await import('./__internal__/strings/chinese.json')).default;
+        return (await import('./__amino__/strings/chinese.json')).default;
       case 'ES':
-        return (await import('./__internal__/strings/spanish.json')).default;
+        return (await import('./__amino__/strings/spanish.json')).default;
       case 'FR':
-        return (await import('./__internal__/strings/french.json')).default;
+        return (await import('./__amino__/strings/french.json')).default;
       case 'DE':
-        return (await import('./__internal__/strings/german.json')).default;
+        return (await import('./__amino__/strings/german.json')).default;
       case 'DA':
-        return (await import('./__internal__/strings/danish.json')).default;
+        return (await import('./__amino__/strings/danish.json')).default;
       case 'NL':
-        return (await import('./__internal__/strings/dutch.json')).default;
+        return (await import('./__amino__/strings/dutch.json')).default;
       case 'ID':
-        return (await import('./__internal__/strings/indonesian.json')).default;
+        return (await import('./__amino__/strings/indonesian.json')).default;
       case 'IT':
-        return (await import('./__internal__/strings/italian.json')).default;
+        return (await import('./__amino__/strings/italian.json')).default;
       case 'JA':
-        return (await import('./__internal__/strings/japanese.json')).default;
+        return (await import('./__amino__/strings/japanese.json')).default;
       case 'KO':
-        return (await import('./__internal__/strings/korean.json')).default;
+        return (await import('./__amino__/strings/korean.json')).default;
       case 'NO':
-        return (await import('./__internal__/strings/norwegian.json')).default;
+        return (await import('./__amino__/strings/norwegian.json')).default;
       case 'PL':
-        return (await import('./__internal__/strings/polish.json')).default;
+        return (await import('./__amino__/strings/polish.json')).default;
       case 'PT':
-        return (await import('./__internal__/strings/portuguese.json')).default;
+        return (await import('./__amino__/strings/portuguese.json')).default;
       case 'RU':
-        return (await import('./__internal__/strings/russian.json')).default;
+        return (await import('./__amino__/strings/russian.json')).default;
       case 'SV':
-        return (await import('./__internal__/strings/swedish.json')).default;
+        return (await import('./__amino__/strings/swedish.json')).default;
       case 'TR':
-        return (await import('./__internal__/strings/turkish.json')).default;
+        return (await import('./__amino__/strings/turkish.json')).default;
       case 'VI':
-        return (await import('./__internal__/strings/vietnamese.json')).default;
+        return (await import('./__amino__/strings/vietnamese.json')).default;
       default:
         return {};
     }

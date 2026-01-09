@@ -23,17 +23,45 @@ export const handleTranslateComponentText = ({
   translatedTextNoJsx: string;
   variables: Record<string, ReactNode>;
 }) => {
-  // Collect all ReactNode variables
-  const reactNodeVariables = Object.entries(variables || {}).filter(
-    ([, value]) => typeof value === 'object' && value,
-  );
-
-  if (reactNodeVariables.length === 0) {
-    return translatedTextNoJsx;
+  // Always strip --context: suffix first, regardless of variables
+  let processedText = translatedTextNoJsx;
+  // Remove --context: suffix if present
+  if (translatedTextNoJsx.includes(' --context:')) {
+    processedText = processedText.split(' --context:')[0] || processedText;
   }
 
-  // Process all ReactNode variables at once
-  let result: ReactNode[] = [translatedTextNoJsx];
+  // If no variables, return the processed text (with context already stripped)
+  if (!variables || Object.keys(variables).length === 0) {
+    return processedText;
+  }
+
+  // Separate string/number variables from ReactNode variables
+  const stringVariables: Record<string, string | number> = {};
+  const reactNodeVariables: Array<[string, ReactNode]> = [];
+
+  Object.entries(variables).forEach(([key, value]) => {
+    if (typeof value === 'string' || typeof value === 'number') {
+      stringVariables[key] = value;
+    } else {
+      reactNodeVariables.push([key, value]);
+    }
+  });
+
+  // Replace string/number variables
+  Object.entries(stringVariables).forEach(([key, value]) => {
+    processedText = processedText.replace(
+      new RegExp(`\\[${key}\\]`, 'g'),
+      String(value),
+    );
+  });
+
+  // If no ReactNode variables, return the processed string
+  if (reactNodeVariables.length === 0) {
+    return processedText;
+  }
+
+  // Process ReactNode variables (replaces [key] with JSX components)
+  let result: ReactNode[] = [processedText];
 
   reactNodeVariables.forEach(([key, value]) => {
     const newResult: ReactNode[] = [];
@@ -42,7 +70,7 @@ export const handleTranslateComponentText = ({
         const parts = segment.split(`[${key}]`);
         parts.forEach((part, index) => {
           if (index > 0) {
-            newResult.push(value as ReactNode);
+            newResult.push(value);
           }
           if (part) {
             newResult.push(part);

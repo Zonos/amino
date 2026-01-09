@@ -2,7 +2,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import clsx from 'clsx';
 
-import { Translate } from 'src/components/__internal__/TranslateAminoText';
+import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
@@ -18,10 +18,19 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
-import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 
 import styles from './DropZone.module.scss';
+
+const getInstructionTextDefault = () =>
+  translateAminoText({
+    text: 'Drop your file(s) here',
+  });
+
+const getLoadingTextDefault = () =>
+  translateAminoText({
+    text: 'Uploading file(s)...',
+  });
 
 export type DropZoneProps = BaseProps &
   HelpTextProps & {
@@ -212,21 +221,6 @@ export const DropZone = ({
   style,
   uploadedFiles,
 }: DropZoneProps) => {
-  const languageCode = useCurrentLanguage();
-
-  const instructionTextToUse =
-    instructionText ??
-    translate({
-      languageCode,
-      text: 'Drop your file(s) here',
-    });
-
-  const loadingTextToUse =
-    loadingText ??
-    translate({
-      languageCode,
-      text: 'Uploading file(s)...',
-    });
   const maxFiles = dropzoneOptions.maxFiles || 0;
 
   const { getInputProps, getRootProps, open } = useDropzone({
@@ -243,7 +237,7 @@ export const DropZone = ({
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
       <div className={styles.instructionTextWrapper}>
         <Text type="label">
-          <Translate
+          <TranslateAminoText
             text="[instructionText] or [browseText]"
             variables={{
               browseText: (
@@ -254,11 +248,11 @@ export const DropZone = ({
                   type="button"
                 >
                   <Text color="blue600" type="label">
-                    <Translate text="browse --context: button text referencing browsing more files" />
+                    <TranslateAminoText text="browse --context: button text referencing browsing more files" />
                   </Text>
                 </button>
               ),
-              instructionText: instructionTextToUse,
+              instructionText: instructionText || getInstructionTextDefault(),
             }}
           />
         </Text>
@@ -305,7 +299,7 @@ export const DropZone = ({
           <div className={styles.contentWrapper}>
             <Spinner />
             <Text color="gray800" type="label">
-              {loadingTextToUse}
+              {loadingText || getLoadingTextDefault()}
             </Text>
           </div>
         </div>

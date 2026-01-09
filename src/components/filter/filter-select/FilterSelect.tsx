@@ -7,8 +7,8 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import { Select, type SelectProps } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
+import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-import { translate } from 'src/utils/translations/translateAminoText';
 import { truncateText } from 'src/utils/truncateText';
 
 type CustomSelectProps<
@@ -125,7 +125,7 @@ export const FilterSelect = <
     () =>
       _getFilterText ||
       ((v: O) =>
-        `${translate({ languageCode, text: 'is [label]', variables: { label: v.label } })}`),
+        `${translateAminoText({ languageCode, text: 'is [label]', variables: { label: v.label } })}`),
     [_getFilterText, languageCode],
   );
 
@@ -172,7 +172,7 @@ export const FilterSelect = <
   const { renderWrapper } = useFilterWrapper({
     ...props,
     initialFilterText: value
-      ? `${translate({ languageCode, text: 'is [value]', variables: { value } })}`
+      ? `${translateAminoText({ languageCode, text: 'is [value]', variables: { value } })}`
       : undefined,
     isActive: !!value,
     isDisabled,
