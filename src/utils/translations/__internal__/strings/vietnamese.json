@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "Giữa [amountMinString] và [amountMaxString]",
+  "Browse --context: button text referencing browsing more files": "Duyệt",
   "Clear all --context: button text referencing clearing all toasts": "Xóa tất cả",
   "Click to switch...": "Nhấp để chuyển đổi...",
   "Countries and Regions": "Các quốc gia và vùng lãnh thổ",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] trong số [numSelectableCountries] đã chọn",
   "and --context: 'and' text falls between two dates": "và",
   "and --context: 'and' text falls between two numbers": "và",
-  "browse": "duyệt",
   "browse --context: button text referencing browsing more files": "duyệt",
+  "days --context: date unit": "ngày",
   "is [label]": "là [label]",
   "is [value]": "là [value]",
   "is after": "là sau",
@@ -52,5 +53,6 @@
   "is in the last": "ở cái cuối cùng",
   "is less than": "ít hơn",
   "is on or after": "là vào hoặc sau",
+  "months --context: date unit": "tháng",
   "or drag your file here": "hoặc kéo tệp của bạn vào đây"
 }

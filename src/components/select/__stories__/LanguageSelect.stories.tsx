@@ -10,10 +10,7 @@ import {
   setLanguage,
   useCurrentLanguage,
 } from 'src/utils/translations/AminoTranslationStore';
-import {
-  supportedLanguageOptions,
-  supportedLanguages,
-} from 'src/utils/translations/supportedLanguages';
+import { supportedLanguageOptions } from 'src/utils/translations/supportedLanguages';
 
 const LanguageSelectMeta: Meta = {
   component: LanguageSelector,
@@ -81,10 +78,7 @@ const AllLanguagesTemplate: StoryFn = ({ ...props }) => {
       <LanguageSelector
         {...props}
         languageCode={currentLanguage}
-        languageOptions={supportedLanguages.map(lang => ({
-          label: `${lang.label} (${lang.translatedLabel})`,
-          value: lang.code,
-        }))}
+        languageOptions={supportedLanguageOptions}
         setLanguageCode={setLanguage}
       />
 

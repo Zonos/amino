@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "[amountMinString]와 [amountMaxString] 사이",
+  "Browse --context: button text referencing browsing more files": "찾아보기",
   "Clear all --context: button text referencing clearing all toasts": "모두 지우기",
   "Click to switch...": "전환하려면 클릭...",
   "Countries and Regions": "국가 및 지역",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] 중 [numSelectableCountries] 선택됨",
   "and --context: 'and' text falls between two dates": "그리고",
   "and --context: 'and' text falls between two numbers": "그리고",
-  "browse": "탐색하다",
   "browse --context: button text referencing browsing more files": "탐색",
+  "days --context: date unit": "일",
   "is [label]": "[label]입니다",
   "is [value]": "[value]입니다",
   "is after": "는 이후입니다",
@@ -52,5 +53,6 @@
   "is in the last": "마지막에 있습니다",
   "is less than": "보다 작다",
   "is on or after": "는 또는 이후입니다",
+  "months --context: date unit": "개월",
   "or drag your file here": "또는 파일을 여기에 드래그하세요"
 }

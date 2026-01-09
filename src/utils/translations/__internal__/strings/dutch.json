@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "Tussen [amountMinString] en [amountMaxString]",
+  "Browse --context: button text referencing browsing more files": "Bladeren",
   "Clear all --context: button text referencing clearing all toasts": "Alles wissen",
   "Click to switch...": "Klik om te schakelen...",
   "Countries and Regions": "Landen en regio's",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] van [numSelectableCountries] geselecteerd",
   "and --context: 'and' text falls between two dates": "en",
   "and --context: 'and' text falls between two numbers": "en",
-  "browse": "bladeren",
   "browse --context: button text referencing browsing more files": "bladeren",
+  "days --context: date unit": "dagen",
   "is [label]": "is [label]",
   "is [value]": "is [value]",
   "is after": "is na",
@@ -52,5 +53,6 @@
   "is in the last": "is in de laatste",
   "is less than": "is minder dan",
   "is on or after": "is op of na",
+  "months --context: date unit": "maanden",
   "or drag your file here": "of sleep je bestand hierheen"
 }

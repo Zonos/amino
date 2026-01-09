@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "[amountMinString] ile [amountMaxString] arasında",
+  "Browse --context: button text referencing browsing more files": "Gözat",
   "Clear all --context: button text referencing clearing all toasts": "Hepsini temizle",
   "Click to switch...": "Değiştirmek için tıklayın...",
   "Countries and Regions": "Ülkeler ve bölgeler",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] [numSelectableCountries] seçildi",
   "and --context: 'and' text falls between two dates": "ve",
   "and --context: 'and' text falls between two numbers": "ve",
-  "browse": "göz atmak",
   "browse --context: button text referencing browsing more files": "göz at",
+  "days --context: date unit": "günler",
   "is [label]": "[label]dır",
   "is [value]": "[value]dir",
   "is after": "sonradır",
@@ -52,5 +53,6 @@
   "is in the last": "sonuncuda",
   "is less than": "daha azdır",
   "is on or after": "şu tarihte veya sonrasında",
+  "months --context: date unit": "aylar",
   "or drag your file here": "veya dosyanızı buraya sürükleyin"
 }

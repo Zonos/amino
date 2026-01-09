@@ -7,26 +7,20 @@ import {
   DateControlsWrapper,
   defaultDateFormat,
 } from 'src/components/filter/filter-date/DateControlsWrapper';
-import {
-  dateUnits,
-  type FilterDateLastRangeUnit,
-} from 'src/components/filter/filter-date/filterDateReducer';
+import type { FilterDateLastRangeUnit } from 'src/components/filter/filter-date/filterDateReducer';
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
-
-const dateUnitOptions: SelectOption<FilterDateLastRangeUnit>[] = dateUnits.map(
-  x => ({
-    label: x,
-    value: x,
-  }),
-);
+import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { translate } from 'src/utils/translations/translateAminoText';
 
 export const IsInTheLast = ({
   onChange,
   onChangeFilterText,
   value,
 }: _DateControlProps) => {
+  const languageCode = useCurrentLanguage();
+
   const { count, unit } = useMemo<{
     count: number;
     unit: FilterDateLastRangeUnit;
@@ -36,6 +30,26 @@ export const IsInTheLast = ({
       unit: value.lastUnit,
     }),
     [value],
+  );
+
+  const dateUnitOptions: SelectOption<FilterDateLastRangeUnit>[] = useMemo(
+    () => [
+      {
+        label: translate({
+          languageCode,
+          text: 'days --context: date unit',
+        }),
+        value: 'days',
+      },
+      {
+        label: translate({
+          languageCode,
+          text: 'months --context: date unit',
+        }),
+        value: 'months',
+      },
+    ],
+    [languageCode],
   );
 
   const handleChangeUnit = useCallback(

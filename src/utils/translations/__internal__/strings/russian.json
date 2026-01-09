@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "Между [amountMinString] и [amountMaxString]",
+  "Browse --context: button text referencing browsing more files": "Обзор",
   "Clear all --context: button text referencing clearing all toasts": "Очистить все",
   "Click to switch...": "Нажмите, чтобы переключить...",
   "Countries and Regions": "Страны и регионы",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] из [numSelectableCountries] выбрано",
   "and --context: 'and' text falls between two dates": "и",
   "and --context: 'and' text falls between two numbers": "и",
-  "browse": "просматривать",
   "browse --context: button text referencing browsing more files": "просматривать",
+  "days --context: date unit": "дни",
   "is [label]": "это [label]",
   "is [value]": "это [value]",
   "is after": "после",
@@ -52,5 +53,6 @@
   "is in the last": "находится в последнем",
   "is less than": "меньше чем",
   "is on or after": "на или после",
+  "months --context: date unit": "месяцев",
   "or drag your file here": "или перетащите файл сюда"
 }

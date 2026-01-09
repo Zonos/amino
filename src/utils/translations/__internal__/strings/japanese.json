@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "[amountMinString] と [amountMaxString] の間",
+  "Browse --context: button text referencing browsing more files": "参照",
   "Clear all --context: button text referencing clearing all toasts": "すべてクリア",
   "Click to switch...": "切り替えるにはクリック...",
   "Countries and Regions": "国と地域",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] の [numSelectableCountries] が選択されました",
   "and --context: 'and' text falls between two dates": "と",
   "and --context: 'and' text falls between two numbers": "と",
-  "browse": "ブラウズする",
   "browse --context: button text referencing browsing more files": "ブラウズ",
+  "days --context: date unit": "日",
   "is [label]": "[label]です",
   "is [value]": "[value]です",
   "is after": "は後です",
@@ -52,5 +53,6 @@
   "is in the last": "最後にいます",
   "is less than": "は未満です",
   "is on or after": "はまたは以降です",
+  "months --context: date unit": "ヶ月",
   "or drag your file here": "またはファイルをここにドラッグします"
 }

@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "[amountMinString] 和 [amountMaxString] 之间",
+  "Browse --context: button text referencing browsing more files": "浏览",
   "Clear all --context: button text referencing clearing all toasts": "清除所有",
   "Click to switch...": "点击切换...",
   "Countries and Regions": "国家和地区",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] 中的 [numSelectableCountries] 已选择",
   "and --context: 'and' text falls between two dates": "和",
   "and --context: 'and' text falls between two numbers": "和",
-  "browse": "浏览",
   "browse --context: button text referencing browsing more files": "浏览",
+  "days --context: date unit": "天",
   "is [label]": "是[label]",
   "is [value]": "是[value]",
   "is after": "在之后",
@@ -52,5 +53,6 @@
   "is in the last": "在最后",
   "is less than": "小于",
   "is on or after": "是在或之后",
+  "months --context: date unit": "月",
   "or drag your file here": "或将您的文件拖到这里"
 }

@@ -1,19 +1,3 @@
-import type { SupportedLanguageCode } from './supportedLanguages';
-
-export type TranslatedTextWithoutContext<T extends string> =
-  T extends `${infer Base} --context: ${string}` ? Base : T;
-
-/**
- * Require variables argument to be an object with keys that match the variables in the string.
- * If no variables are present, variables argument is optional.
- */
-export type TranslateParams<T extends string> = {
-  languageCode?: SupportedLanguageCode;
-  text: T;
-} & (ExtractVariables<T> extends never
-  ? { variables?: never }
-  : { variables: Record<ExtractVariables<T>, string | number> });
-
 /**
  * Extracts variables pattern "[pattern]" from a string
  * @example
@@ -26,10 +10,11 @@ export type ExtractVariables<TString extends string> =
     : never;
 
 /**
- * This utility processes context, curly braces, and square bracket variables in text:
+ * AMINO UTILITY: Handles variable interpolation in translated text
+ *
+ * This utility processes curly braces and square bracket variables in text:
  * - Removes curly braces but keeps content: "{John}" becomes "John"
  * - Replaces square bracket variables: "[count]" becomes the actual value
- * - Removes context: "Hello --context: World" becomes "Hello"
  *
  * @param text - The text to process
  * @param variables - Object with variable names as keys and their values
@@ -38,7 +23,7 @@ export type ExtractVariables<TString extends string> =
  * @example
  * ```ts
  * handleTranslationVariables({
- *   text: '{John} has [count] apples --context: in reference to counting apples',
+ *   text: '{John} has [count] apples',
  *   variables: { count: 5 }
  * })
  * // Returns: "John has 5 apples"
@@ -50,7 +35,7 @@ export const handleTranslationVariables = <T extends string>({
 }: {
   text: T;
   variables?: Record<ExtractVariables<T>, string | number>;
-}): string => {
+}): T => {
   // Handle curly braces first - remove them but keep the content
   let processedText = text.replace(/\{([^}]+)\}/g, '$1');
 

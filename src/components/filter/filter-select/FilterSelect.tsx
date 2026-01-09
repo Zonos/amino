@@ -7,8 +7,8 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import { Select, type SelectProps } from 'src/components/select/Select';
 import type { SelectOption } from 'src/types/SelectOption';
-import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { translate } from 'src/utils/translations/translateAminoText';
 import { truncateText } from 'src/utils/truncateText';
 
 type CustomSelectProps<

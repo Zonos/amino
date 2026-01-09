@@ -10,7 +10,6 @@ import clsx from 'clsx';
 import { AminoProvider } from 'src/utils/AminoProvider';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
-import { setLanguage } from 'src/utils/translations/AminoTranslationStore';
 import {
   type SupportedLanguageCode,
   supportedLanguages,
@@ -25,13 +24,8 @@ const withAminoProvider: Decorator = (Story, context) => {
   const [globals] = useGlobals();
   const languageCode: SupportedLanguageCode = globals.language || 'EN';
 
-  // Update language when Storybook globals change
-  useEffect(() => {
-    setLanguage(languageCode);
-  }, [languageCode]);
-
   return (
-    <AminoProvider>
+    <AminoProvider languageCode={languageCode}>
       <Story {...context} />
     </AminoProvider>
   );

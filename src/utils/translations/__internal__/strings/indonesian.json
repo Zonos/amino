@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "Antara [amountMinString] dan [amountMaxString]",
+  "Browse --context: button text referencing browsing more files": "Telusuri",
   "Clear all --context: button text referencing clearing all toasts": "Hapus semua",
   "Click to switch...": "Klik untuk beralih...",
   "Countries and Regions": "Negara dan wilayah",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] dari [numSelectableCountries] yang dipilih",
   "and --context: 'and' text falls between two dates": "dan",
   "and --context: 'and' text falls between two numbers": "dan",
-  "browse": "menjelajahi",
   "browse --context: button text referencing browsing more files": "jelajahi",
+  "days --context: date unit": "hari",
   "is [label]": "adalah [label]",
   "is [value]": "adalah [value]",
   "is after": "adalah setelah",
@@ -52,5 +53,6 @@
   "is in the last": "ada di yang terakhir",
   "is less than": "kurang dari",
   "is on or after": "adalah pada atau setelah",
+  "months --context: date unit": "bulan",
   "or drag your file here": "atau seret file Anda ke sini"
 }

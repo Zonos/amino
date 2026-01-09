@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "Mellom [amountMinString] og [amountMaxString]",
+  "Browse --context: button text referencing browsing more files": "Bla gjennom",
   "Clear all --context: button text referencing clearing all toasts": "Fjern alt",
   "Click to switch...": "Klikk for å bytte...",
   "Countries and Regions": "Land og regioner",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] av [numSelectableCountries] valgt",
   "and --context: 'and' text falls between two dates": "og",
   "and --context: 'and' text falls between two numbers": "og",
-  "browse": "bla gjennom",
   "browse --context: button text referencing browsing more files": "bla gjennom",
+  "days --context: date unit": "dager",
   "is [label]": "er [label]",
   "is [value]": "er [value]",
   "is after": "er etter",
@@ -52,5 +53,6 @@
   "is in the last": "er i den siste",
   "is less than": "er mindre enn",
   "is on or after": "er på eller etter",
+  "months --context: date unit": "måneder",
   "or drag your file here": "eller dra filen din hit"
 }

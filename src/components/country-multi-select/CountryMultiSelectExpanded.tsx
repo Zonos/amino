@@ -28,8 +28,8 @@ import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
 import { style } from 'src/utils/style';
-import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './CountryMultiSelectExpanded.module.scss';
 

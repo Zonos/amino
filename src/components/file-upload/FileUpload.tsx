@@ -2,15 +2,14 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import clsx from 'clsx';
 
-import { Translate } from 'src/components/__internal__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { translate } from 'src/utils/translations/translateAminoText';
 
 import styles from './FileUpload.module.scss';
 
@@ -20,6 +19,7 @@ type UploadFileNoImage = {
 };
 
 export type FileUploadProps = BaseProps & {
+  buttonActionText?: string;
   /**
    * This `disabled` state only applies when no file is selected
    * @default false
@@ -126,6 +126,7 @@ export type FileUploadProps = BaseProps & {
  * ```
  */
 export const FileUpload = ({
+  buttonActionText,
   className,
   disabled = false,
   dropzoneOptions,
@@ -138,6 +139,12 @@ export const FileUpload = ({
   uploadedFile,
 }: FileUploadProps) => {
   const languageCode = useCurrentLanguage();
+  const buttonActionTextToUse =
+    buttonActionText ??
+    translate({
+      languageCode,
+      text: 'Browse --context: button text referencing browsing more files',
+    });
 
   // Use translated defaults if not provided
   const instructionTextToUse =
@@ -199,7 +206,7 @@ export const FileUpload = ({
       <input {...getInputProps()} />
       <div className={styles.contentWrapper}>
         <Button loading={loading} onClick={open} spinnerColor="black">
-          <Translate text="browse" />
+          {buttonActionTextToUse}
         </Button>
         {renderText()}
       </div>

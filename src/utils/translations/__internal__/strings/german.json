@@ -1,5 +1,6 @@
 {
   "Between [amountMinString] and [amountMaxString]": "Zwischen [amountMinString] und [amountMaxString]",
+  "Browse --context: button text referencing browsing more files": "Durchsuchen",
   "Clear all --context: button text referencing clearing all toasts": "Alle löschen",
   "Click to switch...": "Klicken Sie, um zu wechseln...",
   "Countries and Regions": "Länder und Regionen",
@@ -39,8 +40,8 @@
   "[selectedCountries] of [numSelectableCountries] selected": "[selectedCountries] von [numSelectableCountries] ausgewählt",
   "and --context: 'and' text falls between two dates": "und",
   "and --context: 'and' text falls between two numbers": "und",
-  "browse": "durchsuchen",
   "browse --context: button text referencing browsing more files": "durchsuchen",
+  "days --context: date unit": "Tage",
   "is [label]": "ist [label]",
   "is [value]": "ist [value]",
   "is after": "ist nach",
@@ -52,5 +53,6 @@
   "is in the last": "ist in der letzten",
   "is less than": "ist kleiner als",
   "is on or after": "ist am oder nach",
+  "months --context: date unit": "Monate",
   "or drag your file here": "oder ziehe deine Datei hierher"
 }

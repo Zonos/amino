@@ -19,8 +19,8 @@ import type {
   UnavailableCountry,
 } from 'src/utils/hooks/useCountryOptions';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
-import { translate } from 'src/utils/translations/__internal__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { translate } from 'src/utils/translations/translateAminoText';
 
 type AdditionalProps = {
   allSelected: boolean;
