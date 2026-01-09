@@ -76,10 +76,12 @@ export type FilterMultiSelectProps<T extends SelectValue = SelectValue> =
  */
 export const FilterMultiSelect = <T extends SelectValue = SelectValue>({
   dropdownTitle,
+  isDisabled,
   label,
   onChange,
   options,
   value,
+  ...props
 }: FilterMultiSelectProps<T>) => {
   const [editingSelectedValues, setEditingSelectedValues] =
     useState<T[]>(value);
@@ -116,8 +118,10 @@ export const FilterMultiSelect = <T extends SelectValue = SelectValue>({
   };
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: !!value.length,
+    isDisabled,
     label,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,

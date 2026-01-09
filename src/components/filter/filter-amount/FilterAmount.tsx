@@ -31,6 +31,7 @@ export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 export type FilterAmountProps = BaseFilterProps & {
   dispatch: Dispatch<FilterAmountAction>;
   filter: FilterAmountState;
+  isDisabled?: boolean;
 };
 
 /**
@@ -83,7 +84,9 @@ export const FilterAmount = ({
   dispatch,
   dropdownTitle,
   filter,
+  isDisabled,
   label,
+  ...props
 }: FilterAmountProps) => {
   const languageCode = useCurrentLanguage();
   const [filterType, setFilterType] = useState<FilterAmountType>(
@@ -304,8 +307,10 @@ export const FilterAmount = ({
   }, [editingAmountMax, editingAmountMin, filterType]);
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: filter.isActive,
+    isDisabled,
     label,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,

@@ -13,6 +13,8 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 
+import styles from './Tooltip.module.scss';
+
 export type TooltipProps = BaseProps & {
   /**
    * The component that will trigger the tooltip.
@@ -25,6 +27,12 @@ export type TooltipProps = BaseProps & {
    * @default undefined
    */
   disabled?: boolean;
+
+  /**
+   * Max width of the tooltip in px
+   */
+  maxWidth?: number;
+
   /**
    * Override to stay open.
    * @default false
@@ -169,6 +177,7 @@ export const Tooltip = ({
   children,
   className,
   disabled = false,
+  maxWidth,
   open,
   subtitle,
   themeOverride = 'night',
@@ -176,7 +185,14 @@ export const Tooltip = ({
   ...rest
 }: TooltipProps) => {
   const renderTooltip = () => (
-    <Flex flexDirection="column" gap={8}>
+    <Flex
+      className={styles.tooltipContent}
+      flexDirection="column"
+      gap={8}
+      style={{
+        '--amino-tooltip-max-width': maxWidth ? `${maxWidth}px` : 'unset',
+      }}
+    >
       {typeof title === 'string' ? (
         <Text type="small-header">{title}</Text>
       ) : (

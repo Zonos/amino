@@ -5,19 +5,34 @@ import cloneDeep from 'lodash/cloneDeep';
 import { z } from 'zod';
 
 import { Button } from 'src/components/button/Button';
-import { FilterAmount } from 'src/components/filter/filter-amount/FilterAmount';
+import {
+  FilterAmount,
+  type FilterAmountProps,
+} from 'src/components/filter/filter-amount/FilterAmount';
 import {
   filterAmountReducerUrl,
   getInitialFilterAmountStateUrl,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
-import { FilterDate } from 'src/components/filter/filter-date/FilterDate';
+import {
+  FilterDate,
+  type FilterDateProps,
+} from 'src/components/filter/filter-date/FilterDate';
 import {
   filterDateReducerUrl,
   getInitialFilterDateStateUrl,
 } from 'src/components/filter/filter-date/filterDateReducer';
-import { FilterMultiSelect } from 'src/components/filter/filter-multi-select/FilterMultiSelect';
-import { FilterSelect } from 'src/components/filter/filter-select/FilterSelect';
-import { FilterText } from 'src/components/filter/filter-text/FilterText';
+import {
+  FilterMultiSelect,
+  type FilterMultiSelectProps,
+} from 'src/components/filter/filter-multi-select/FilterMultiSelect';
+import {
+  FilterSelect,
+  type FilterSelectProps,
+} from 'src/components/filter/filter-select/FilterSelect';
+import {
+  FilterText,
+  type FilterTextProps,
+} from 'src/components/filter/filter-text/FilterText';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import type { SelectOption } from 'src/types/SelectOption';
@@ -33,7 +48,11 @@ const meta: Meta = {
 
 export default meta;
 
-export const Text = () => {
+export const Text = ({
+  dropdownTitle = 'Filter by text',
+  isDisabled = false,
+  label = 'Text filter',
+}: FilterTextProps) => {
   const [value, setValue] = useStateUrl<string | null>({
     initialValue: null,
     name: 'filterText',
@@ -45,8 +64,9 @@ export const Text = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ value }, null, 2)}</pre>
       <FilterText
-        dropdownTitle="Filter by text"
-        label="Text filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={setValue}
         value={value}
       />
@@ -54,7 +74,29 @@ export const Text = () => {
   );
 };
 
-export const Amount = () => {
+Text.args = {
+  dropdownTitle: 'Filter by text',
+  isDisabled: false,
+  label: 'Text filter',
+};
+
+Text.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
+};
+
+export const Amount = ({
+  dropdownTitle = 'Filter by amount',
+  isDisabled = false,
+  label = 'Amount filter',
+}: FilterAmountProps) => {
   const [filter, dispatch] = useReducer(
     filterAmountReducerUrl(),
     getInitialFilterAmountStateUrl(),
@@ -66,12 +108,31 @@ export const Amount = () => {
       <pre>{JSON.stringify({ filter }, null, 2)}</pre>
       <FilterAmount
         dispatch={dispatch}
-        dropdownTitle="Filter by amount"
+        dropdownTitle={dropdownTitle}
         filter={filter}
-        label="Amount filter"
+        isDisabled={isDisabled}
+        label={label}
       />
     </>
   );
+};
+
+Amount.args = {
+  dropdownTitle: 'Filter by amount',
+  isDisabled: false,
+  label: 'Amount filter',
+};
+
+Amount.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
 };
 
 const fruitOptions = ['ORANGE', 'APPLE', 'BANANA'] as const;
@@ -82,7 +143,11 @@ const options: SelectOption<FruitOption>[] = fruitOptions.map(o => ({
   value: o,
 }));
 
-export const Select = () => {
+export const Select = ({
+  dropdownTitle = 'Filter by option',
+  isDisabled = false,
+  label = 'Select filter',
+}: FilterSelectProps<FruitOption>) => {
   const [value, setValue] = useStateUrl<FruitOption | null>({
     initialValue: null,
     name: 'filterSelect',
@@ -96,8 +161,9 @@ export const Select = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ selectedOption }, null, 2)}</pre>
       <FilterSelect
-        dropdownTitle="Filter by option"
-        label="Select filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={setValue}
         options={options}
         value={value}
@@ -106,7 +172,29 @@ export const Select = () => {
   );
 };
 
-export const CountrySelect = () => {
+Select.args = {
+  dropdownTitle: 'Filter by option',
+  isDisabled: false,
+  label: 'Select filter',
+};
+
+Select.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
+};
+
+export const CountrySelect = ({
+  dropdownTitle = 'Filter by country',
+  isDisabled = false,
+  label = 'Country Select filter',
+}: FilterSelectProps<string>) => {
   const dashboardUrl = getCountryUrls();
   const countries = useCountryOptions({ dashboardUrl });
   const [country, setCountry] = useStateUrl<string | null>({
@@ -125,8 +213,9 @@ export const CountrySelect = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ value: country }, null, 2)}</pre>
       <FilterSelect
-        dropdownTitle="Filter by country"
-        label="Country Select filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={setCountry}
         options={countriesWithFlags}
         selectProps={option => ({
@@ -143,7 +232,29 @@ export const CountrySelect = () => {
   );
 };
 
-export const MultiSelect = () => {
+CountrySelect.args = {
+  dropdownTitle: 'Filter by country',
+  isDisabled: false,
+  label: 'Country Select filter',
+};
+
+CountrySelect.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
+};
+
+export const MultiSelect = ({
+  dropdownTitle = 'Filter by option',
+  isDisabled = false,
+  label = 'MultiSelect filter',
+}: FilterMultiSelectProps<FruitOption>) => {
   const [value, setValue] = useStateUrl<FruitOption[]>({
     initialValue: [],
     name: 'filterSelect',
@@ -158,14 +269,33 @@ export const MultiSelect = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ selectedOptions }, null, 2)}</pre>
       <FilterMultiSelect
-        dropdownTitle="Filter by option"
-        label="MultiSelect filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={setValue}
         options={options}
         value={value || []}
       />
     </>
   );
+};
+
+MultiSelect.args = {
+  dropdownTitle: 'Filter by option',
+  isDisabled: false,
+  label: 'MultiSelect filter',
+};
+
+MultiSelect.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
 };
 
 const optionsNumbers: SelectOption<number>[] = Array.from(
@@ -176,7 +306,11 @@ const optionsNumbers: SelectOption<number>[] = Array.from(
   }),
 );
 
-export const MultiSelectWithManyOptions = () => {
+export const MultiSelectWithManyOptions = ({
+  dropdownTitle = 'Filter by option',
+  isDisabled = false,
+  label = 'MultiSelect filter',
+}: FilterMultiSelectProps<number>) => {
   const [value, setValue] = useStateUrl<number[]>({
     initialValue: [],
     name: 'filterSelect',
@@ -191,8 +325,9 @@ export const MultiSelectWithManyOptions = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ selectedOptions }, null, 2)}</pre>
       <FilterMultiSelect
-        dropdownTitle="Filter by option"
-        label="MultiSelect filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={setValue}
         options={optionsNumbers}
         value={value || []}
@@ -201,7 +336,29 @@ export const MultiSelectWithManyOptions = () => {
   );
 };
 
-export const Date = () => {
+MultiSelectWithManyOptions.args = {
+  dropdownTitle: 'Filter by option',
+  isDisabled: false,
+  label: 'MultiSelect filter',
+};
+
+MultiSelectWithManyOptions.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
+};
+
+export const Date = ({
+  dropdownTitle = 'Filter by date',
+  isDisabled = false,
+  label = 'Date filter',
+}: FilterDateProps) => {
   const [filter, dispatch] = useReducer(
     filterDateReducerUrl(),
     getInitialFilterDateStateUrl(),
@@ -213,12 +370,31 @@ export const Date = () => {
       <pre>{JSON.stringify({ filter }, null, 2)}</pre>
       <FilterDate
         dispatch={dispatch}
-        dropdownTitle="Filter by date"
+        dropdownTitle={dropdownTitle}
         filter={filter}
-        label="Date filter"
+        isDisabled={isDisabled}
+        label={label}
       />
     </>
   );
+};
+
+Date.args = {
+  dropdownTitle: 'Filter by date',
+  isDisabled: false,
+  label: 'Date filter',
+};
+
+Date.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
 };
 
 const optionsLong: SelectOption<FruitOption>[] = [
@@ -239,7 +415,9 @@ const optionsLong: SelectOption<FruitOption>[] = [
   },
 ];
 
-export const TextTruncation = () => {
+export const TextTruncation = ({
+  isDisabled = false,
+}: FilterSelectProps<FruitOption>) => {
   const [value1, setValue1] = useStateUrl<FruitOption | null>({
     initialValue: null,
     name: 'filterSelect1',
@@ -264,6 +442,7 @@ export const TextTruncation = () => {
         <div className={styles.filterBarFilters}>
           <FilterSelect
             dropdownTitle="Filter by option"
+            isDisabled={isDisabled}
             label="Select&nbsp;filter"
             onChange={v => setValue1(v)}
             options={optionsLong}
@@ -271,6 +450,7 @@ export const TextTruncation = () => {
           />
           <FilterSelect
             dropdownTitle="Filter by option"
+            isDisabled={isDisabled}
             label="Select&nbsp;filter"
             onChange={v => setValue2(v)}
             options={optionsLong}
@@ -278,6 +458,7 @@ export const TextTruncation = () => {
           />
           <FilterSelect
             dropdownTitle="Filter by option"
+            isDisabled={isDisabled}
             label="Select&nbsp;filter"
             onChange={v => setValue3(v)}
             options={optionsLong}
@@ -298,6 +479,16 @@ export const TextTruncation = () => {
       </div>
     </>
   );
+};
+
+TextTruncation.args = {
+  isDisabled: false,
+};
+
+TextTruncation.argTypes = {
+  isDisabled: {
+    control: 'boolean',
+  },
 };
 
 const reducerSelect = (
@@ -335,7 +526,11 @@ const reducerSelect = (
 /**
  * There was a problem where the reducer was causing infinite re-renders. This is due to the object value nature of reducers.
  */
-export const SelectWithReducer = () => {
+export const SelectWithReducer = ({
+  dropdownTitle = 'Filter by country',
+  isDisabled = false,
+  label = 'Country Select filter',
+}: FilterSelectProps<string>) => {
   const dashboardUrl = getCountryUrls();
   const countries = useCountryOptions({ dashboardUrl });
 
@@ -353,8 +548,9 @@ export const SelectWithReducer = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ value }, null, 2)}</pre>
       <FilterSelect
-        dropdownTitle="Filter by country"
-        label="Country Select filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={x =>
           dispatch({
             type: 'change',
@@ -376,11 +572,33 @@ export const SelectWithReducer = () => {
   );
 };
 
+SelectWithReducer.args = {
+  dropdownTitle: 'Filter by country',
+  isDisabled: false,
+  label: 'Country Select filter',
+};
+
+SelectWithReducer.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
+};
+
 /**
  * initialize the Filter with a value
  * Properly display the initial value
  */
-export const SelectWithInitialValue = () => {
+export const SelectWithInitialValue = ({
+  dropdownTitle = 'Filter by option',
+  isDisabled = false,
+  label = 'Select filter',
+}: FilterSelectProps<FruitOption>) => {
   const [value, setValue] = useStateUrl<FruitOption | null>({
     initialValue: 'ORANGE',
     name: 'filterSelect',
@@ -394,12 +612,31 @@ export const SelectWithInitialValue = () => {
       <pre>{window.location.search}</pre>
       <pre>{JSON.stringify({ selectedOption }, null, 2)}</pre>
       <FilterSelect
-        dropdownTitle="Filter by option"
-        label="Select filter"
+        dropdownTitle={dropdownTitle}
+        isDisabled={isDisabled}
+        label={label}
         onChange={setValue}
         options={options}
         value={value}
       />
     </>
   );
+};
+
+SelectWithInitialValue.args = {
+  dropdownTitle: 'Filter by option',
+  isDisabled: false,
+  label: 'Select filter',
+};
+
+SelectWithInitialValue.argTypes = {
+  dropdownTitle: {
+    control: 'text',
+  },
+  isDisabled: {
+    control: 'boolean',
+  },
+  label: {
+    control: 'text',
+  },
 };

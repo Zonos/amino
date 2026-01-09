@@ -56,9 +56,11 @@ export type FilterTextProps = BaseFilterProps & {
  */
 export const FilterText = ({
   dropdownTitle,
+  isDisabled,
   label,
   onChange,
   value,
+  ...props
 }: FilterTextProps) => {
   const [editingValue, setEditingValue] = useState<string>(value || '');
 
@@ -87,8 +89,10 @@ export const FilterText = ({
   };
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: !!value,
+    isDisabled,
     label,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,

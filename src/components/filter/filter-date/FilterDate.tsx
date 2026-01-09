@@ -21,6 +21,7 @@ import { defaultDateFormat } from './DateControlsWrapper';
 export type FilterDateProps = BaseFilterProps & {
   dispatch: Dispatch<FilterDateAction>;
   filter: FilterDateState;
+  isDisabled?: boolean;
 };
 
 /**
@@ -83,7 +84,9 @@ export const FilterDate = ({
   dispatch,
   dropdownTitle,
   filter,
+  isDisabled,
   label,
+  ...props
 }: FilterDateProps) => {
   const [editingValue, setEditingValue] = useState<FilterDateData>(
     filter.dateData,
@@ -239,8 +242,10 @@ export const FilterDate = ({
   };
 
   const { renderWrapper } = useFilterWrapper({
+    ...props,
     dropdownTitle,
     isActive: filter.isActive,
+    isDisabled,
     label,
     onApply: handleApply,
     onApplyFilterText: handleApplyFilterText,

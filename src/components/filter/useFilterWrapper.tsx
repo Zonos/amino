@@ -14,6 +14,7 @@ import { FilterWrapper } from './FilterWrapper';
 
 export type BaseFilterProps = BaseProps & {
   dropdownTitle: string;
+  isDisabled?: boolean;
   label: string;
 };
 
@@ -169,6 +170,7 @@ export const useFilterWrapper = ({
   dropdownTitle,
   initialFilterText = 'Filter',
   isActive,
+  isDisabled,
   label,
   onApply,
   onApplyFilterText,
@@ -235,11 +237,17 @@ export const useFilterWrapper = ({
   }, [dropDownOpen]);
 
   const handleOpenDropdown = (e: ReactMouseEvent) => {
+    if (isDisabled) {
+      return;
+    }
     e.stopPropagation();
     setDropDownOpen(true);
   };
 
   const handleToggle = () => {
+    if (isDisabled) {
+      return;
+    }
     if (isActive) {
       setActive?.(false);
       onRemove();
@@ -268,6 +276,7 @@ export const useFilterWrapper = ({
       handleOpenDropdown={handleOpenDropdown}
       handleToggle={handleToggle}
       hasFilter={isActive}
+      isDisabled={isDisabled}
       label={label}
       style={style}
     >

@@ -1,5 +1,6 @@
 export declare const badgeWrapper: string;
 export declare const controlsWrapper: string;
+export declare const disabled: string;
 export declare const dropdownWrapper: string;
 export declare const filterText: string;
 export declare const filterTitle: string;
