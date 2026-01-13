@@ -33,11 +33,13 @@ type ExtractLanguageCodes<T extends readonly SelectOption<string>[]> =
 export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
   languageCode,
   languageOptions,
+  onLanguageSelect,
   setLanguageCode,
   trigger,
 }: {
   languageCode: ExtractLanguageCodes<T>;
   languageOptions: T;
+  onLanguageSelect?: (code: ExtractLanguageCodes<T>) => void;
   setLanguageCode: (code: ExtractLanguageCodes<T>) => void;
   trigger?: ReactNode;
 }) => {
@@ -69,9 +71,10 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
   const handleSelect = useCallback(
     (code: ExtractLanguageCodes<T>) => {
       setLanguageCode(code);
+      onLanguageSelect?.(code);
       handleClose();
     },
-    [setLanguageCode],
+    [onLanguageSelect, setLanguageCode],
   );
 
   const defaultTrigger = (
