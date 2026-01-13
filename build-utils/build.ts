@@ -148,6 +148,24 @@ const bundlePackage = async (
   }
 };
 
+const generateAllModulesContent = async (
+  bundles: OutputChunk[],
+): Promise<string[]> =>
+  bundles.flatMap(bundle => {
+    const [, subFolderPath, fileName] =
+      bundle.fileName.split(/(.*\/)*(.*)\.js/g) || [];
+    // exclude all bundles that are not entry or just private components
+    if (
+      !bundle.isEntry ||
+      /^_+/.test(fileName!) ||
+      /__tests__/.test(subFolderPath!) ||
+      /__amino__/.test(subFolderPath!)
+    ) {
+      return [];
+    }
+    return [`import './${subFolderPath || ''}${fileName}';`];
+  });
+
 const animationsModules = glob.sync('src/animations/**/*.ts*');
 const iconsModules = glob.sync('src/icons/**/*.ts*');
 const utilsModules = glob.sync('src/utils/**/*.ts*');
@@ -169,11 +187,6 @@ const allModules = animationsModules
       !item.includes('.d.ts'),
   );
 
-// Get public modules (excluding internal) for export in all.ts
-const allModulesWithoutAminoOnly = allModules.filter(
-  item => !item.includes('__amino__'),
-);
-
 const configs: ConfigOptions[] = [
   {
     input: prepareEntries(allModules),
@@ -193,20 +206,17 @@ process.stdout.setMaxListeners(configs.length * 4 + 1);
 process.stderr.setMaxListeners(configs.length * 4 + 1);
 
 const build = async () => {
-  await Promise.all(configs.map(bundlePackage));
-
-  // Generate public module imports for all.ts (excluding __internal__)
-  const publicModuleContents = allModulesWithoutAminoOnly.map(modulePath => {
-    const [, subFolderPath, fileName] =
-      modulePath.replace('src/', '').split(/(.*\/)*(.*)\.tsx?$/g) || [];
-    return `import './${subFolderPath || ''}${fileName}';`;
-  });
+  const bundledPackages = await Promise.all(configs.map(bundlePackage));
+  const moduleContents = await Promise.all(
+    // generate module contents
+    bundledPackages.map(generateAllModulesContent),
+  );
 
   fs.writeFileSync(
-    // generate all modules ts file - only public modules
+    // generate all modules ts file
     `./src/all.ts`,
-    `${publicModuleContents
-      .filter(Boolean)
+    `${moduleContents
+      .flat()
       .sort((a, b) => a.localeCompare(b))
       .join('\n')}\n`,
   );
