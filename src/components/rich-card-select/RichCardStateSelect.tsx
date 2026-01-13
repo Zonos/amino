@@ -4,7 +4,7 @@ import { Card } from 'src/components/card/Card';
 import { VStack } from 'src/components/stack/VStack';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UnitedState } from 'src/types/UnitedStates';
-import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 import styles from './RichCardStateSelect.module.scss';
@@ -91,23 +91,23 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
 }: RichCardStateSelectProps<T>) => {
   const languageCode = useCurrentLanguage();
   const regionOrder = [
-    translateAminoText({
+    translate({
       languageCode,
       text: 'West --context: region name for the United States',
     }),
-    translateAminoText({
+    translate({
       languageCode,
       text: 'Midwest --context: region name for the United States',
     }),
-    translateAminoText({
+    translate({
       languageCode,
       text: 'South --context: region name for the United States',
     }),
-    translateAminoText({
+    translate({
       languageCode,
       text: 'Northeast --context: region name for the United States',
     }),
-    translateAminoText({
+    translate({
       languageCode,
       text: 'Territories --context: region name for the United States',
     }),

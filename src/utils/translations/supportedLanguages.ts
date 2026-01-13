@@ -20,6 +20,7 @@ export const supportedLanguages = [
   { code: 'PT', label: 'Portuguese', translatedLabel: 'Português' },
   { code: 'RU', label: 'Russian', translatedLabel: 'русский' },
   { code: 'SV', label: 'Swedish', translatedLabel: 'svenska' },
+  { code: 'TH', label: 'Thai', translatedLabel: 'ไทย' },
   { code: 'TR', label: 'Turkish', translatedLabel: 'Türk' },
   { code: 'VI', label: 'Vietnamese', translatedLabel: 'Tiếng Việt' },
   { code: 'ZH_CN', label: 'Chinese', translatedLabel: '中文' },

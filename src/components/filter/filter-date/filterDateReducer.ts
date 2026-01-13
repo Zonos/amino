@@ -7,7 +7,8 @@ import { getCurrentStateUrl, setStateUrl } from 'src/utils/hooks/useStateUrl';
 
 export type FilterDateType = 'equal' | 'between' | 'greater' | 'less';
 
-const filterDateRanges = [
+// Exported for use in other components
+export const filterDateRanges = [
   'is in the last',
   'is equal to',
   'is after',
@@ -19,7 +20,8 @@ const filterDateRanges = [
 
 export type FilterDateRangeType = (typeof filterDateRanges)[number];
 
-const dateUnits = ['days', 'months'] as const;
+// Exported for use in other components
+export const dateUnits = ['days', 'months'] as const;
 export type FilterDateLastRangeUnit = (typeof dateUnits)[number];
 
 export type FilterDateData = {

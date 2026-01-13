@@ -7,9 +7,9 @@ import { useGlobals } from '@storybook/preview-api';
 import type { Decorator, Preview } from '@storybook/react';
 import clsx from 'clsx';
 
-import { AminoProvider } from 'src/utils/AminoProvider';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
+import { setLanguage } from 'src/utils/translations/AminoTranslationStore';
 import {
   type SupportedLanguageCode,
   supportedLanguages,
@@ -24,11 +24,11 @@ const withAminoProvider: Decorator = (Story, context) => {
   const [globals] = useGlobals();
   const languageCode: SupportedLanguageCode = globals.language || 'EN';
 
-  return (
-    <AminoProvider languageCode={languageCode}>
-      <Story {...context} />
-    </AminoProvider>
-  );
+  useEffect(() => {
+    void setLanguage(languageCode);
+  }, [languageCode]);
+
+  return <Story {...context} />;
 };
 
 const withTheme: Decorator = (Story, context) => {

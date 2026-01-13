@@ -2,7 +2,7 @@ import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
 import clsx from 'clsx';
 
-import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
@@ -18,17 +18,17 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
-import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 
 import styles from './DropZone.module.scss';
 
 const getInstructionTextDefault = () =>
-  translateAminoText({
+  translate({
     text: 'Drop your file(s) here',
   });
 
 const getLoadingTextDefault = () =>
-  translateAminoText({
+  translate({
     text: 'Uploading file(s)...',
   });
 
@@ -237,7 +237,7 @@ export const DropZone = ({
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
       <div className={styles.instructionTextWrapper}>
         <Text type="label">
-          <TranslateAminoText
+          <Translate
             text="[instructionText] or [browseText]"
             variables={{
               browseText: (
@@ -248,7 +248,7 @@ export const DropZone = ({
                   type="button"
                 >
                   <Text color="blue600" type="label">
-                    <TranslateAminoText text="browse --context: button text referencing browsing more files" />
+                    <Translate text="browse --context: button text referencing browsing more files" />
                   </Text>
                 </button>
               ),

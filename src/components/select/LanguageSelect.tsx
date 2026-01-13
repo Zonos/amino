@@ -4,7 +4,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 import clsx from 'clsx';
 
-import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
@@ -73,7 +73,7 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
       >
         <Flex alignItems="center" justifyContent="space-between">
           <Text fontWeight={600}>
-            <TranslateAminoText text="Select a language" />
+            <Translate text="Select a language" />
           </Text>
           <Button
             icon={<RemoveCircleDuotoneIcon />}

@@ -162,25 +162,111 @@ export const useAminoTranslationStore = create<AminoTranslationStore>(
   }),
 );
 
-// Direct exports for non-React usage (works anywhere!)
-// Note: This is a convenience export. For type-safe usage, use the translate function from translateAminoText.ts
+/**
+ * Translate text (non-reactive). Use in utilities, event handlers, or outside React components.
+ * For React components, use `useTranslate` hook instead.
+ *
+ * @param text - The text to translate (English key)
+ * @returns The translated text, or the original text if translation not found
+ *
+ * @example
+ * ```typescript
+ * // ✅ In utility functions
+ * const validateEmail = (email: string) => {
+ *   if (!email) return translate('Email is required');
+ * };
+ *
+ * // ✅ In event handlers
+ * const handleSubmit = async () => {
+ *   showToast(translate('Saving...'));
+ * };
+ * ```
+ */
 export const translate = (text: string): string =>
   useAminoTranslationStore.getState().translate(text);
 
+/**
+ * Change the current language and load translations if needed.
+ * Automatically saves to localStorage. Components using `useTranslate` will re-render when complete.
+ *
+ * @param languageCode - The language code to switch to
+ * @returns Promise that resolves when language is set (and translations loaded if needed)
+ *
+ * @example
+ * ```typescript
+ * const handleLanguageChange = (code: SupportedLanguageCode) => {
+ *   void setLanguage(code);
+ * };
+ *
+ * <Button onClick={() => setLanguage('ES')}>Spanish</Button>
+ * ```
+ */
 export const setLanguage = (
   languageCode: SupportedLanguageCode,
 ): Promise<void> =>
   useAminoTranslationStore.getState().setLanguage(languageCode);
 
+/**
+ * Configure the translation loader function. Usually called once at app startup.
+ * Use `configureProjectTranslations` instead if you want to merge with Amino translations.
+ * Note: Amino automatically configures with internal translations.
+ *
+ * @param loadFn - Function that loads translations for a given language code
+ *
+ * @example
+ * ```typescript
+ * configureTranslations(async (languageCode) => {
+ *   return (await import(`./translations/${languageCode}.json`)).default;
+ * });
+ * ```
+ */
 export const configureTranslations = (loadFn: LoadTranslationsFunction): void =>
   useAminoTranslationStore.getState().setLoadTranslations(loadFn);
 
+/**
+ * Get the current language code (non-reactive). Use outside React components.
+ * For React components, use `useCurrentLanguage` hook instead.
+ *
+ * @returns The current language code
+ *
+ * @example
+ * ```typescript
+ * const getLocalizedDateFormat = () => {
+ *   const lang = getCurrentLanguage();
+ *   return lang === 'EN' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
+ * };
+ * ```
+ */
 export const getCurrentLanguage = (): SupportedLanguageCode =>
   useAminoTranslationStore.getState().currentLanguage;
 
+/**
+ * Check if translations are loading (non-reactive). Use outside React components.
+ * For React components, use `useIsTranslationsLoading` hook instead.
+ *
+ * @returns `true` if translations are currently being loaded, `false` otherwise
+ *
+ * @example
+ * ```typescript
+ * const showLoadingMessage = () => {
+ *   return isTranslationsLoading() ? 'Loading translations...' : '';
+ * };
+ * ```
+ */
 export const isTranslationsLoading = (): boolean =>
   useAminoTranslationStore.getState().isLoading;
 
+/**
+ * Clear the stored language preference from localStorage.
+ * Note: Current language in memory remains unchanged until next page load or `setLanguage` call.
+ *
+ * @example
+ * ```typescript
+ * const handleLogout = () => {
+ *   clearStoredLanguage();
+ * };
+ * ```
+ */
 export const clearStoredLanguage = (): void => {
   try {
     setStorageItem({
@@ -193,7 +279,25 @@ export const clearStoredLanguage = (): void => {
   }
 };
 
-// Hook exports for React components (reactive)
+/**
+ * React hook to translate text with automatic re-renders when language changes.
+ * Use in React component render functions. For event handlers/utilities, use `translate` instead.
+ *
+ * @returns A translate function that will cause re-renders when language changes
+ *
+ * @example
+ * ```typescript
+ * const MyComponent = () => {
+ *   const translate = useTranslate();
+ *   return (
+ *     <div>
+ *       <p>{translate('Welcome message')}</p>
+ *       <button>{translate('Click me')}</button>
+ *     </div>
+ *   );
+ * };
+ * ```
+ */
 export const useTranslate = (): TranslateFunction => {
   // Subscribe to both currentLanguage and translations to ensure re-renders
   const currentLanguage = useAminoTranslationStore(
@@ -205,9 +309,43 @@ export const useTranslate = (): TranslateFunction => {
     getTextTranslation(text, currentLanguage, translations);
 };
 
+/**
+ * React hook to get the current language code with automatic re-renders.
+ * Use in React component render functions. For utilities/event handlers, use `getCurrentLanguage` instead.
+ *
+ * @returns The current language code (component will re-render when it changes)
+ *
+ * @example
+ * ```typescript
+ * const MyComponent = () => {
+ *   const currentLang = useCurrentLanguage();
+ *   return (
+ *     <div>
+ *       {currentLang === 'ES' && <SpanishContent />}
+ *       {currentLang === 'FR' && <FrenchContent />}
+ *     </div>
+ *   );
+ * };
+ * ```
+ */
 export const useCurrentLanguage = (): SupportedLanguageCode =>
   useAminoTranslationStore(state => state.currentLanguage);
 
+/**
+ * React hook to check if translations are loading.
+ * Use in React component render functions. For utilities/event handlers, use `isTranslationsLoading` instead.
+ *
+ * @returns `true` if translations are currently being loaded, `false` otherwise
+ *
+ * @example
+ * ```typescript
+ * const MyComponent = () => {
+ *   const isLoading = useIsTranslationsLoading();
+ *   if (isLoading) return <Spinner />;
+ *   return <TranslatedContent />;
+ * };
+ * ```
+ */
 export const useIsTranslationsLoading = (): boolean =>
   useAminoTranslationStore(state => state.isLoading);
 
@@ -249,6 +387,8 @@ const loadInternalAminoTranslations = async (
         return (await import('./__amino__/strings/russian.json')).default;
       case 'SV':
         return (await import('./__amino__/strings/swedish.json')).default;
+      case 'TH':
+        return (await import('./__amino__/strings/thai.json')).default;
       case 'TR':
         return (await import('./__amino__/strings/turkish.json')).default;
       case 'VI':

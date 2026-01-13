@@ -1,4 +1,4 @@
-import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Text } from 'src/components/text/Text';
 import { ZonosLogoIcon } from 'src/icons/custom/logo/ZonosLogoIcon';
 
@@ -8,7 +8,7 @@ export const Loading = () => (
   <div className={styles.wrapper}>
     <ZonosLogoIcon className={styles.styledIcon} size={64} />
     <Text className={styles.styledText} type="bold-subheader">
-      <TranslateAminoText text="Loading" />
+      <Translate text="Loading" />
     </Text>
   </div>
 );

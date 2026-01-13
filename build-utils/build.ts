@@ -170,8 +170,8 @@ const allModules = animationsModules
   );
 
 // Get public modules (excluding internal) for export in all.ts
-const allModulesWithoutInternal = allModules.filter(
-  item => !item.includes('__internal__'),
+const allModulesWithoutAminoOnly = allModules.filter(
+  item => !item.includes('__amino__'),
 );
 
 const configs: ConfigOptions[] = [
@@ -196,7 +196,7 @@ const build = async () => {
   await Promise.all(configs.map(bundlePackage));
 
   // Generate public module imports for all.ts (excluding __internal__)
-  const publicModuleContents = allModulesWithoutInternal.map(modulePath => {
+  const publicModuleContents = allModulesWithoutAminoOnly.map(modulePath => {
     const [, subFolderPath, fileName] =
       modulePath.replace('src/', '').split(/(.*\/)*(.*)\.tsx?$/g) || [];
     return `import './${subFolderPath || ''}${fileName}';`;

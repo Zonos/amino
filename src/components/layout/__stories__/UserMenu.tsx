@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import clsx from 'clsx';
 
-import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
@@ -29,10 +29,10 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
         <div className={styles.avatar} />
         <VStack className={styles.styledVStack} spacing={0}>
           <strong>
-            <TranslateAminoText text="Hello" />
+            <Translate text="Hello" />
           </strong>
           <span className={styles.styledSubtitle} title="Store 2458">
-            <TranslateAminoText
+            <Translate
               text="Store #[storeNumber]"
               variables={{ storeNumber: '1234' }}
             />
@@ -51,10 +51,10 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
               <TextAvatar label="Default" />
               <VStack spacing={0}>
                 <strong>
-                  <TranslateAminoText text="Test Store" />
+                  <Translate text="Test Store" />
                 </strong>
                 <Text type="subtitle">
-                  <TranslateAminoText text="Click to switch..." />
+                  <Translate text="Click to switch..." />
                 </Text>
               </VStack>
             </button>
@@ -63,10 +63,10 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
               <TextAvatar label="Zonos" />
               <VStack spacing={0}>
                 <strong>
-                  <TranslateAminoText text="Switch to Zonos" />
+                  <Translate text="Switch to Zonos" />
                 </strong>
                 <Text type="subtitle">
-                  <TranslateAminoText text="Click to switch..." />
+                  <Translate text="Click to switch..." />
                 </Text>
               </VStack>
             </div>
@@ -75,7 +75,7 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
 
             <MenuItem>
               <span>
-                <TranslateAminoText text="Your profile" />
+                <Translate text="Your profile" />
               </span>
             </MenuItem>
             <MenuItem>
@@ -84,7 +84,7 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <TranslateAminoText text="Support" />
+                <Translate text="Support" />
               </a>
             </MenuItem>
             <MenuItem>
@@ -93,11 +93,11 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <TranslateAminoText text="Documentation" />
+                <Translate text="Documentation" />
               </a>
             </MenuItem>
             <MenuItem>
-              <TranslateAminoText text="Logout" />
+              <Translate text="Logout" />
             </MenuItem>
           </Menu>
         </Surface>

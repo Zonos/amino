@@ -51,7 +51,7 @@ import { WisconsinIcon } from 'src/icons/custom/us-states/WisconsinIcon';
 import { WyomingIcon } from 'src/icons/custom/us-states/WyomingIcon';
 import type { UnitedState } from 'src/types/UnitedStates';
 
-import { translateAminoText } from './translations/__amino__/translateAminoText';
+import { translateAminoText as translate } from './translations/__amino__/translateAminoText';
 import type { SupportedLanguageCode } from './translations/supportedLanguages';
 
 const getTranslatedRegionName = ({
@@ -63,22 +63,22 @@ const getTranslatedRegionName = ({
 }) => {
   switch (region) {
     case 'South':
-      return translateAminoText({
+      return translate({
         languageCode,
         text: 'South --context: region name for the United States',
       });
     case 'West':
-      return translateAminoText({
+      return translate({
         languageCode,
         text: 'West --context: region name for the United States',
       });
     case 'Midwest':
-      return translateAminoText({
+      return translate({
         languageCode,
         text: 'Midwest --context: region name for the United States',
       });
     case 'Northeast':
-      return translateAminoText({
+      return translate({
         languageCode,
         text: 'Northeast --context: region name for the United States',
       });

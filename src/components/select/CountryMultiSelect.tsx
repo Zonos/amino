@@ -19,7 +19,7 @@ import type {
   UnavailableCountry,
 } from 'src/utils/hooks/useCountryOptions';
 import { prepRegionCountryOptions } from 'src/utils/prepRegionCountryOptions';
-import { translateAminoText } from 'src/utils/translations/__amino__/translateAminoText';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 type AdditionalProps = {
@@ -52,7 +52,7 @@ const MenuList = <
       >
         <Checkbox
           checked={allSelected}
-          label={translateAminoText({ languageCode, text: 'Select all' })}
+          label={translate({ languageCode, text: 'Select all' })}
           onChange={toggleSelectAll}
         />
       </div>

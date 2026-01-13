@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 
-import { TranslateAminoText } from 'src/components/__amino__/TranslateAminoText';
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
 import { HStack } from 'src/components/stack/HStack';
@@ -97,7 +97,7 @@ export const ThemeSelect = ({
             <Card className={styles.themeCard}>
               <ThemeLightIcon />
               <Text type="bold-label">
-                <TranslateAminoText text="Light" />
+                <Translate text="Light" />
               </Text>
             </Card>
           </button>
@@ -114,7 +114,7 @@ export const ThemeSelect = ({
             <Card className={styles.themeCard}>
               <ThemeDarkIcon />
               <Text type="bold-label">
-                <TranslateAminoText text="Dark" />
+                <Translate text="Dark" />
               </Text>
             </Card>
           </button>
