@@ -20,7 +20,7 @@ import styles from './preview.module.scss';
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
-const withAminoProvider: Decorator = (Story, context) => {
+const withLanguage: Decorator = (Story, context) => {
   const [globals] = useGlobals();
   const languageCode: SupportedLanguageCode = globals.language || 'EN';
 
@@ -154,7 +154,7 @@ const preview: Preview = {
     },
   },
 
-  decorators: [withAminoProvider, withTheme],
+  decorators: [withLanguage, withTheme],
 
   globalTypes: {
     language: {
