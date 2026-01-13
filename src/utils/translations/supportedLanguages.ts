@@ -29,6 +29,6 @@ export const supportedLanguages = [
 export type SupportedLanguageCode = (typeof supportedLanguages)[number]['code'];
 
 export const supportedLanguageOptions = supportedLanguages.map(lang => ({
-  label: `${lang.label} (${lang.translatedLabel})`,
+  label: lang.translatedLabel,
   value: lang.code,
 }));

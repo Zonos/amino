@@ -5,42 +5,35 @@
 }
 
 .popover.popover {
-  position: absolute;
-  bottom: 44px;
-  right: 0;
-  left: auto;
   background: theme.$amino-gray-0;
   border-radius: 12px;
   box-shadow: 0 20px 48px rgba(16, 24, 40, 0.18);
   border: theme.$amino-border-subtle;
   width: 600px;
   max-width: calc(100vw - 32px);
-  padding: 12px 24px;
-  transform-origin: bottom right;
-  opacity: 0;
-  transform: scale(0.96);
-  pointer-events: none;
-  transition: opacity 160ms ease, transform 160ms ease;
-  z-index: 20;
+  padding: 8px 16px;
+  margin-top: 8px;
+}
 
-  &.open {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-  }
+.languageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
 }
 
 .rowButton.rowButton {
   appearance: none;
   border: none;
   background: transparent;
-  padding: 8px;
+  padding: 6px 10px;
   text-align: left;
   cursor: pointer;
-  color: theme.$amino-gray-900;
+  color: theme.$amino-gray-800;
   font-weight: 500;
-  flex: 0 1 160px;
-  border-radius: 8px;
+  min-width: max-content;
+  white-space: nowrap;
+  border-radius: 6px;
+  padding-right: 30px;
 
   &:hover {
     background: theme.$amino-gray-50;
@@ -61,6 +54,10 @@
   .popover.popover {
     width: 92vw;
   }
+
+  .languageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
@@ -73,6 +70,10 @@
     max-width: 100vw;
     transform-origin: bottom center;
     z-index: 50;
+  }
+
+  .languageGrid {
+    grid-template-columns: 1fr;
   }
 }
 

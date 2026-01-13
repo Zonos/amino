@@ -1,7 +1,16 @@
 'use client';
 
-import { useCallback, useMemo, useRef, useState } from 'react';
+import {
+  cloneElement,
+  type HTMLAttributes,
+  isValidElement,
+  type ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 
+import { Popover } from '@mui/material';
 import clsx from 'clsx';
 
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
@@ -12,7 +21,6 @@ import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { GlobeIcon } from 'src/icons/GlobeIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import type { SelectOption } from 'src/types/SelectOption';
-import { useHandleOutsideClick } from 'src/utils/hooks/useHandleOutsideClick';
 
 import styles from './LanguageSelect.module.scss';
 
@@ -26,12 +34,15 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
   languageCode,
   languageOptions,
   setLanguageCode,
+  trigger,
 }: {
   languageCode: ExtractLanguageCodes<T>;
   languageOptions: T;
   setLanguageCode: (code: ExtractLanguageCodes<T>) => void;
+  trigger?: ReactNode;
 }) => {
-  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
 
   const languageMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -39,82 +50,121 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
     return map;
   }, [languageOptions]);
 
-  const currentLabel = languageMap.get(languageCode) ?? 'English';
+  const sortedLanguageOptions = useMemo(
+    () => [...languageOptions].sort((a, b) => a.label.localeCompare(b.label)),
+    [languageOptions],
+  );
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  useHandleOutsideClick({
-    onClick: () => setOpen(false),
-    ref: containerRef,
-  });
+  const currentLabel =
+    languageMap.get(languageCode) ?? languageOptions[0]?.label ?? 'English';
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleSelect = useCallback(
     (code: ExtractLanguageCodes<T>) => {
       setLanguageCode(code);
-      setOpen(false);
+      handleClose();
     },
     [setLanguageCode],
   );
 
-  return (
-    <div ref={containerRef}>
-      <Button color="gray600" onClick={() => setOpen(o => !o)} variant="text">
-        <Flex alignItems="center" gap={2}>
-          <GlobeIcon color="gray600" size={16} />
-          <Text className={styles.triggerButtonText} color="gray600">
-            {currentLabel}
-          </Text>
-        </Flex>
-      </Button>
-
-      <Flex
-        className={clsx([styles.popover, open && styles.open])}
-        flexDirection="column"
-        gap={8}
-      >
-        <Flex alignItems="center" justifyContent="space-between">
-          <Text fontWeight={600}>
-            <Translate text="Select a language" />
-          </Text>
-          <Button
-            icon={<RemoveCircleDuotoneIcon />}
-            onClick={() => setOpen(false)}
-            variant="text"
-          />
-        </Flex>
-
-        <Flex
-          alignItems="center"
-          flexWrap="wrap"
-          gap={8}
-          justifyContent="space-between"
-        >
-          {languageOptions.map(lang => {
-            const isSelected = lang.value === languageCode;
-            return (
-              <button
-                key={lang.value}
-                className={clsx([
-                  styles.rowButton,
-                  isSelected && styles.selected,
-                ])}
-                onClick={() => handleSelect(lang.value)}
-                type="button"
-              >
-                <Flex alignItems="center" gap={8}>
-                  <Text>{lang.label}</Text>
-                  {isSelected ? (
-                    <CheckCircleDuotoneIcon
-                      color="green600"
-                      secondaryColor="green200"
-                      size={14}
-                    />
-                  ) : null}
-                </Flex>
-              </button>
-            );
-          })}
-        </Flex>
+  const defaultTrigger = (
+    <Button
+      color="gray600"
+      fitContentWidth
+      onClick={handleClick}
+      variant="text"
+    >
+      <Flex alignItems="center" gap={2}>
+        <GlobeIcon color="gray600" size={16} />
+        <Text className={styles.triggerButtonText} color="gray600">
+          {currentLabel}
+        </Text>
       </Flex>
-    </div>
+    </Button>
+  );
+
+  const renderTrigger = () => {
+    if (trigger) {
+      if (isValidElement(trigger)) {
+        return cloneElement(trigger, {
+          onClick: handleClick,
+        } as HTMLAttributes<HTMLElement>);
+      }
+      return trigger;
+    }
+    return defaultTrigger;
+  };
+
+  return (
+    <>
+      {renderTrigger()}
+
+      <Popover
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          horizontal: 'right',
+          vertical: 'bottom',
+        }}
+        onClose={handleClose}
+        open={open}
+        slotProps={{
+          paper: {
+            className: styles.popover,
+          },
+        }}
+        transformOrigin={{
+          horizontal: 'right',
+          vertical: 'top',
+        }}
+      >
+        <Flex flexDirection="column" gap={8}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text fontWeight={600}>
+              <Translate text="Select a language" />
+            </Text>
+            <Button
+              icon={<RemoveCircleDuotoneIcon />}
+              onClick={handleClose}
+              variant="text"
+            />
+          </Flex>
+
+          <div className={styles.languageGrid}>
+            {sortedLanguageOptions.map(lang => {
+              const isSelected = lang.value === languageCode;
+              return (
+                <button
+                  key={lang.value}
+                  className={clsx([
+                    styles.rowButton,
+                    isSelected && styles.selected,
+                  ])}
+                  onClick={() => handleSelect(lang.value)}
+                  type="button"
+                >
+                  <Flex alignItems="center" gap={6}>
+                    <Text>{lang.label}</Text>
+                    {isSelected ? (
+                      <CheckCircleDuotoneIcon
+                        color="green600"
+                        secondaryColor="green200"
+                        size={14}
+                      />
+                    ) : null}
+                  </Flex>
+                </button>
+              );
+            })}
+          </div>
+        </Flex>
+      </Popover>
+    </>
   );
 };
