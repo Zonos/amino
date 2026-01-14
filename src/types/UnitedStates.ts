@@ -119,4 +119,5 @@ export type UnitedState = {
   icon: ReactNode;
   name: UnitedStatesName;
   region: UnitedStatesRegions;
+  regionLabel: string;
 };

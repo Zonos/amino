@@ -3,12 +3,4 @@
 
 export type { AminoTranslationStrings } from './AminoTranslationStore';
 export { type ExtractTextKeys } from './extractTextKeys';
-export {
-  handleTranslateComponentText,
-  type TranslateProps,
-} from './handleTranslateComponentText';
-export {
-  type ExtractVariables,
-  handleTranslationVariables,
-} from './handleTranslationVariables';
 export { translate, type TranslateParams } from './translate';

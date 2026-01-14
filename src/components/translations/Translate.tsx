@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
+import type { TranslateProps } from 'src/utils/translations/_handleTranslateComponentText';
+import { handleTranslateComponentText } from 'src/utils/translations/_handleTranslateComponentText';
 import { useTranslate } from 'src/utils/translations/AminoTranslationStore';
-import type { TranslateProps } from 'src/utils/translations/handleTranslateComponentText';
-import { handleTranslateComponentText } from 'src/utils/translations/handleTranslateComponentText';
 
 // This component provides a convenient way to translate text while automatically getting the current locale context,
 // and will re-render when translations are loaded or language changes.

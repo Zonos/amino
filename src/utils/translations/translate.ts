@@ -1,8 +1,8 @@
-import { translate as aminoStoreTranslate } from 'src/utils/translations/AminoTranslationStore';
 import {
   type ExtractVariables,
   handleTranslationVariables,
-} from 'src/utils/translations/handleTranslationVariables';
+} from 'src/utils/translations/_handleTranslationVariables';
+import { translate as aminoStoreTranslate } from 'src/utils/translations/AminoTranslationStore';
 
 import type { SupportedLanguageCode } from './supportedLanguages';
 
@@ -28,6 +28,8 @@ export const translate = <T extends string>(
   params: TranslateParams<T>,
 ): StripContext<T> => {
   const { text, variables } = params;
+
+  // This will go get the translated text from the amino store
   const translatedText = aminoStoreTranslate(text);
 
   return handleTranslationVariables<T>({

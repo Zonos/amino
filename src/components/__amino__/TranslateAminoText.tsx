@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
 import { Translate as GenericTranslate } from 'src/components/translations/Translate';
+import type { TranslateProps } from 'src/utils/translations/_handleTranslateComponentText';
 import type { AminoTranslationStrings } from 'src/utils/translations/AminoTranslationStore';
-import type { TranslateProps } from 'src/utils/translations/handleTranslateComponentText';
 
 /**
  * Amino-only Translate component with type safety.
