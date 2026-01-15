@@ -1,19 +1,5 @@
 import { Fragment, type ReactNode } from 'react';
 
-import type { ExtractVariables } from './_handleTranslationVariables';
-import type { SupportedLanguageCode } from './supportedLanguages';
-
-/**
- * Require variables argument to be an object with keys that match the variables in the string.
- * If no variables are present, variables argument is optional.
- */
-export type TranslateProps<T extends string> = {
-  languageCode?: SupportedLanguageCode;
-  text: T;
-} & (ExtractVariables<T> extends never
-  ? { variables?: never }
-  : { variables: Record<ExtractVariables<T>, ReactNode> });
-
 export const handleTranslateComponentText = ({
   translatedTextNoJsx,
   variables,

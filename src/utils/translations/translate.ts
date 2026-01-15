@@ -1,7 +1,4 @@
-import {
-  type ExtractVariables,
-  handleTranslationVariables,
-} from 'src/utils/translations/_handleTranslationVariables';
+import { handleTranslationVariables } from 'src/utils/translations/_handleTranslationVariables';
 import {
   getCurrentLanguage,
   useAminoTranslationStore,
@@ -10,6 +7,17 @@ import {
 import type { SupportedLanguageCode } from './supportedLanguages';
 
 export type { AminoTranslationStrings } from 'src/utils/translations/AminoTranslationStore';
+
+/**
+ * Extracts variables pattern "[pattern]" from a string
+ * @example
+ * type Variables = ExtractVariables<'[percentage] GST due on any order above [threshold].'>
+ * // Variables = 'percentage' | 'threshold'
+ */
+export type ExtractVariables<TString extends string> =
+  TString extends `${string}[${infer Var}]${infer End}`
+    ? Var | ExtractVariables<End>
+    : never;
 
 /**
  * Strips the --context: suffix from a translation string type
