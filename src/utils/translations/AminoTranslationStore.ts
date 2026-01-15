@@ -128,28 +128,45 @@ export const useAminoTranslationStore = create<AminoTranslationStore>(
       }
     },
     setLoadTranslations: (loadFn: LoadTranslationsFunction) => {
+      const previousLoader = get().loadTranslations;
       set({ loadTranslations: loadFn });
-      // Auto-load translations for the stored language if not English and not already loaded
+
+      // CRITICAL: Always reload translations when loader is configured/changed
+      // This ensures translations are loaded even if:
+      // 1. Store initialized before loader was configured
+      // 2. Loader was changed/reconfigured
+      // 3. Translations were loaded with a previous loader that wasn't properly configured
       const { currentLanguage, translations } = get();
-      if (currentLanguage !== 'EN' && !translations.has(currentLanguage)) {
-        // Load translations asynchronously without blocking
-        void (async () => {
-          try {
-            const newTranslations = await loadFn(currentLanguage);
-            set(state => ({
-              translations: new Map(state.translations).set(
-                currentLanguage,
-                newTranslations,
-              ),
-            }));
-          } catch (error) {
-            // eslint-disable-next-line no-console
-            console.warn(
-              `Failed to auto-load translations for ${currentLanguage}:`,
-              error,
-            );
-          }
-        })();
+      if (currentLanguage !== 'EN') {
+        // Check if we need to reload:
+        // - Translations not loaded yet, OR
+        // - Loader was just set (was null before), OR
+        // - Loader changed (different function reference)
+        const needsReload =
+          !translations.has(currentLanguage) ||
+          previousLoader === null ||
+          previousLoader !== loadFn;
+
+        if (needsReload) {
+          // Load translations asynchronously without blocking
+          void (async () => {
+            try {
+              const newTranslations = await loadFn(currentLanguage);
+              set(state => ({
+                translations: new Map(state.translations).set(
+                  currentLanguage,
+                  newTranslations,
+                ),
+              }));
+            } catch (error) {
+              // eslint-disable-next-line no-console
+              console.warn(
+                `Failed to auto-load translations for ${currentLanguage}:`,
+                error,
+              );
+            }
+          })();
+        }
       }
     },
 
