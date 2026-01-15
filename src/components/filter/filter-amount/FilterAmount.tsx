@@ -6,9 +6,9 @@ import {
   useState,
 } from 'react';
 
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import {
   type FilterAmountAction,
-  filterAmountOptions,
   type FilterAmountState,
   initialFilterAmountState,
 } from 'src/components/filter/filter-amount/filterAmountReducer';
@@ -20,6 +20,9 @@ import {
 import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
+import type { SelectOption } from 'src/types/SelectOption';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
+import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 import styles from './FilterAmount.module.scss';
 
@@ -85,6 +88,7 @@ export const FilterAmount = ({
   label,
   ...props
 }: FilterAmountProps) => {
+  const languageCode = useCurrentLanguage();
   const [filterType, setFilterType] = useState<FilterAmountType>(
     filter.amountFilterType,
   );
@@ -95,6 +99,28 @@ export const FilterAmount = ({
     filter.amountTotalMax ? String(filter.amountTotalMax.toFixed(2)) : null,
   );
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const filterAmountOptions: SelectOption<FilterAmountType>[] = useMemo(
+    () => [
+      {
+        label: translate({ languageCode, text: 'is equal to' }),
+        value: 'equal',
+      },
+      {
+        label: translate({ languageCode, text: 'is between' }),
+        value: 'between',
+      },
+      {
+        label: translate({ languageCode, text: 'is greater than' }),
+        value: 'greater',
+      },
+      {
+        label: translate({ languageCode, text: 'is less than' }),
+        value: 'less',
+      },
+    ],
+    [languageCode],
+  );
 
   const dispatchAmounts = useCallback(
     (values: { amountMax: number | null; amountMin: number | null }) => {
@@ -122,18 +148,42 @@ export const FilterAmount = ({
         : '0';
 
       switch (filterType) {
-        case 'between':
-          setFilterText(`Between ${amountMinString} and ${amountMaxString}`);
+        case 'between': {
+          const betweenFilterText = translate({
+            languageCode,
+            text: 'Between [amountMinString] and [amountMaxString]',
+            variables: { amountMaxString, amountMinString },
+          });
+          setFilterText(betweenFilterText);
           break;
-        case 'equal':
-          setFilterText(`Equal to ${amountMinString}`);
+        }
+        case 'equal': {
+          const equalFilterText = translate({
+            languageCode,
+            text: 'Equal to [amountMinString]',
+            variables: { amountMinString },
+          });
+          setFilterText(equalFilterText);
           break;
-        case 'greater':
-          setFilterText(`Greater than ${amountMinString}`);
+        }
+        case 'greater': {
+          const greaterFilterText = translate({
+            languageCode,
+            text: 'Greater than [amountMinString]',
+            variables: { amountMinString },
+          });
+          setFilterText(greaterFilterText);
           break;
-        case 'less':
-          setFilterText(`Less than ${amountMaxString}`);
+        }
+        case 'less': {
+          const lessFilterText = translate({
+            languageCode,
+            text: 'Less than [amountMaxString]',
+            variables: { amountMaxString },
+          });
+          setFilterText(lessFilterText);
           break;
+        }
         default:
           break;
       }
@@ -299,7 +349,7 @@ export const FilterAmount = ({
         />
         {filterType === 'between' && (
           <>
-            and
+            <Translate text="and --context: 'and' text falls between two numbers" />
             <Input
               onChange={e => setEditingAmountMax(e.target.value)}
               size="md"

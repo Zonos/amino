@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
@@ -9,7 +9,8 @@ import {
   type RichCardStateSelectProps,
 } from 'src/components/rich-card-select/RichCardStateSelect';
 import type { UnitedState } from 'src/types/UnitedStates';
-import { unitedStates } from 'src/utils/unitedStates';
+import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
+import { getUnitedStates } from 'src/utils/unitedStates';
 
 const RichCardStateSelectMeta: Meta = {
   component: RichCardStateSelect,
@@ -17,9 +18,17 @@ const RichCardStateSelectMeta: Meta = {
 
 export default RichCardStateSelectMeta;
 
-const Template: StoryFn<RichCardStateSelectProps> = ({
-  states,
-}: RichCardStateSelectProps) => {
+const Template: StoryFn<RichCardStateSelectProps> = () => {
+  const languageCode = useCurrentLanguage();
+  const states = useMemo(() => {
+    const statesList = getUnitedStates(languageCode);
+    const modifiedState = statesList.find(state => state.code === 'CA');
+    if (modifiedState) {
+      modifiedState.highlighted = true;
+    }
+    return statesList;
+  }, [languageCode]);
+
   const [open, setOpen] = useState(false);
   const [selectedState, setSelectedState] = useState<UnitedState | null>(null);
 
@@ -68,11 +77,6 @@ const Template: StoryFn<RichCardStateSelectProps> = ({
   );
 };
 
-const modifiedState = unitedStates.find(state => state.code === 'CA');
-if (modifiedState) {
-  modifiedState.highlighted = true;
-}
-
 export const BasicRichCardStateSelect = Template.bind({});
-BasicRichCardStateSelect.args = { states: unitedStates };
+BasicRichCardStateSelect.args = {};
 BasicRichCardStateSelect.parameters = {};

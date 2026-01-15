@@ -1,6 +1,7 @@
 # Code Review Guidelines
 
 ## Core Principles
+
 - Use functional components, not classes
 - Export named exports, not default exports
 - Extend BaseProps for component props
@@ -9,6 +10,7 @@
 - Ensure accessibility standards are maintained
 
 ## Component Structure
+
 ```
 ComponentName/
 ├── ComponentName.tsx            # Component implementation
@@ -19,23 +21,24 @@ ComponentName/
 ```
 
 ## Props Pattern
+
 ```typescript
 export type ButtonProps = BaseProps & {
-  /** 
+  /**
    * Button variant that changes appearance
    * @default 'standard'
    */
   variant?: 'primary' | 'standard' | 'danger';
-  
-  /** 
-   * Size of the button 
+
+  /**
+   * Size of the button
    * @default 'md'
    */
   size?: 'sm' | 'md' | 'lg';
-  
+
   /** Whether the button is disabled */
   disabled?: boolean;
-  
+
   /** Click handler */
   onClick?: () => void;
 };
@@ -54,12 +57,14 @@ export const Button = ({
 ```
 
 ## TypeScript Patterns
+
 - Use specific types (not generic string/number)
 - Add explicit return types for components
 - Use null/undefined checks properly
 - Use utility types appropriately (Partial<T>, Omit<T, K>)
 
 ## CSS & Styling
+
 ```typescript
 // In TSX file
 <div
@@ -84,6 +89,7 @@ export const Button = ({
 ```
 
 ## Import Order
+
 ```typescript
 // React imports
 import { useState, useEffect } from 'react';
@@ -103,6 +109,7 @@ import styles from './Component.module.scss';
 ```
 
 ## Accessibility
+
 - Use semantic HTML elements
 - Add ARIA attributes appropriately
 - Ensure keyboard navigation
@@ -110,12 +117,14 @@ import styles from './Component.module.scss';
 - Test with screen readers
 
 ## Performance Review
+
 - Check for unnecessary renders
 - Verify proper dependency arrays in hooks
 - Look for expensive computations that should be memoized
 - Review prop drilling and consider context when appropriate
 
 ## Review Checklist
+
 - TypeScript types are correct and specific
 - Component follows functional pattern
 - Props have JSDoc comments with @default values
@@ -125,3 +134,4 @@ import styles from './Component.module.scss';
 - Error states are handled
 - Tests cover main functionality
 - Storybook stories demonstrate component variations
+- Translations are added for any user-facing text (default labels, error messages, etc.)

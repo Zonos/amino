@@ -4,6 +4,8 @@ import { Card } from 'src/components/card/Card';
 import { VStack } from 'src/components/stack/VStack';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UnitedState } from 'src/types/UnitedStates';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
+import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 import styles from './RichCardStateSelect.module.scss';
 
@@ -87,20 +89,60 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
   states,
   style,
 }: RichCardStateSelectProps<T>) => {
-  const regionOrder = ['West', 'Midwest', 'South', 'Northeast', 'Territories'];
+  const languageCode = useCurrentLanguage();
+  const regionOrder: Array<{
+    key: UnitedState['region'];
+    label: string;
+  }> = [
+    {
+      key: 'West',
+      label: translate({
+        languageCode,
+        text: 'West --context: region name for the United States',
+      }),
+    },
+    {
+      key: 'Midwest',
+      label: translate({
+        languageCode,
+        text: 'Midwest --context: region name for the United States',
+      }),
+    },
+    {
+      key: 'South',
+      label: translate({
+        languageCode,
+        text: 'South --context: region name for the United States',
+      }),
+    },
+    {
+      key: 'Northeast',
+      label: translate({
+        languageCode,
+        text: 'Northeast --context: region name for the United States',
+      }),
+    },
+    {
+      key: 'Territories',
+      label: translate({
+        languageCode,
+        text: 'Territories --context: region name for the United States',
+      }),
+    },
+  ];
   const regions = regionOrder.filter(region =>
-    states.some(state => state.region === region),
+    states.some(state => state.region === region.key),
   );
 
   return (
     <VStack className={className} spacing={24} style={style}>
       {regions.map(region => (
-        <div key={region}>
+        <div key={region.key}>
           <VStack spacing={16}>
-            <div className={styles.regionLabel}>{region}</div>
+            <div className={styles.regionLabel}>{region.label}</div>
             <div className={styles.regionWrapper}>
               {states
-                .filter(state => state.region === region)
+                .filter(state => state.region === region.key)
                 .map(state => (
                   <button
                     key={state.code}

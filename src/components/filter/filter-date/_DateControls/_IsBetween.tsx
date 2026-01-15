@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 
 import dayjs from 'dayjs';
 
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import {
   type _DateControlProps,
   DateControlsWrapper,
@@ -69,7 +70,9 @@ export const IsBetween = ({
         type="date"
         value={displayDateBegin}
       />
-      <Text type="label">and</Text>
+      <Text type="label">
+        <Translate text="and --context: 'and' text falls between two dates" />
+      </Text>
       <Input
         onChange={ev => handleChangeDateEnd(ev.target.value)}
         size="sm"

@@ -63,7 +63,6 @@ export const DropZone: StoryFn<typeof DropZoneComponent> = props => {
       }}
       error={error}
       helpText="Max file size: 2 KB"
-      instructionText="Drop your files here"
       onRemoveFile={index => handleRemoveFile(index)}
       uploadedFiles={files.map(f => ({
         // get preview image from localfile or remote url

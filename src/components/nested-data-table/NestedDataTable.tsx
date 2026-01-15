@@ -1,6 +1,7 @@
 import { type ReactNode, useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
@@ -8,6 +9,8 @@ import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { flattenRow } from 'src/utils/flattenRow';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
+import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 import styles from './NestedDataTable.module.scss';
 
@@ -146,6 +149,7 @@ export const NestedDataTable = <
   tableData,
   title,
 }: Props<TRow>) => {
+  const languageCode = useCurrentLanguage();
   const tableDataArr = useMemo(
     () => (Array.isArray(tableData) ? tableData : [tableData]),
     [tableData],
@@ -159,7 +163,7 @@ export const NestedDataTable = <
       return loadingComponent ? (
         <>{loadingComponent}</>
       ) : (
-        <RestState label="Loading..." />
+        <RestState label={translate({ languageCode, text: 'Loading...' })} />
       );
     }
 
@@ -167,7 +171,12 @@ export const NestedDataTable = <
       return restState ? (
         <>{restState}</>
       ) : (
-        <RestState label="No data available." />
+        <RestState
+          label={translate({
+            languageCode,
+            text: 'No data available.',
+          })}
+        />
       );
     }
 
@@ -196,7 +205,7 @@ export const NestedDataTable = <
               }}
               outline
             >
-              Previous page
+              <Translate text="Previous page" />
             </Button>
             {currentPage}
             <Button
@@ -208,7 +217,7 @@ export const NestedDataTable = <
               }}
               outline
             >
-              Next page
+              <Translate text="Next page" />
             </Button>
           </div>
         )}

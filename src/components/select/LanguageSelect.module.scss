@@ -1,0 +1,80 @@
+@use 'theme';
+
+.triggerButtonText.triggerButtonText {
+  font-weight: 300;
+}
+
+.popover.popover {
+  background: theme.$amino-gray-0;
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(16, 24, 40, 0.18);
+  border: theme.$amino-border-subtle;
+  width: 600px;
+  max-width: calc(100vw - 32px);
+  padding: 8px 16px;
+  margin-top: 8px;
+}
+
+.languageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.rowButton.rowButton {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 6px 10px;
+  text-align: left;
+  cursor: pointer;
+  color: theme.$amino-gray-800;
+  font-weight: 500;
+  min-width: max-content;
+  white-space: nowrap;
+  border-radius: 6px;
+  padding-right: 30px;
+
+  &:hover {
+    background: theme.$amino-gray-50;
+  }
+}
+
+.selected {
+  color: theme.$amino-blue-600;
+}
+
+.footerBar {
+  position: absolute;
+  bottom: -12px;
+  left: -12px;
+}
+
+@media (max-width: 720px) {
+  .popover.popover {
+    width: 92vw;
+  }
+
+  .languageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .popover.popover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    width: 100vw;
+    max-width: 100vw;
+    transform-origin: bottom center;
+    z-index: 50;
+  }
+
+  .languageGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

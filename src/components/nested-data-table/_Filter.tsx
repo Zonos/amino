@@ -1,10 +1,13 @@
 import { useMemo } from 'react';
 import type { Column } from 'react-data-grid';
 
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { FilterIcon } from 'src/icons/FilterIcon';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
+import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
+import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
 
 import styles from './_Filter.module.scss';
 
@@ -19,6 +22,7 @@ export const Filter = ({
 }) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
     useDropdown();
+  const languageCode = useCurrentLanguage();
 
   const hideColumnOptions = useMemo(
     () =>
@@ -37,7 +41,8 @@ export const Filter = ({
         onClick={() => setVisible(!visible)}
         type="button"
       >
-        <FilterIcon size={16} /> Filter
+        <FilterIcon size={16} />{' '}
+        <Translate text="Filter --context: button text referencing filtering data" />
       </button>
       <div
         ref={refs.setFloating}
@@ -50,7 +55,7 @@ export const Filter = ({
       >
         <MultiSelect
           hideSelectedOptions={false}
-          label="Hide column"
+          label={translate({ languageCode, text: 'Hide column' })}
           onChange={_hiddenColumns => {
             setHiddenColumns(_hiddenColumns.flatMap(column => [column.value]));
           }}

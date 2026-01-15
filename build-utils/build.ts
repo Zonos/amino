@@ -1,6 +1,7 @@
 import alias from '@rollup/plugin-alias';
 import { babel } from '@rollup/plugin-babel';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
@@ -79,6 +80,7 @@ const bundlePackage = async (
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],
       }),
+      json(),
       image(),
       typescript(),
       // preprocess the scss
@@ -156,7 +158,8 @@ const generateAllModulesContent = async (
     if (
       !bundle.isEntry ||
       /^_+/.test(fileName!) ||
-      /__tests__/.test(subFolderPath!)
+      /__tests__/.test(subFolderPath!) ||
+      /__amino__/.test(subFolderPath!)
     ) {
       return [];
     }
@@ -169,6 +172,7 @@ const utilsModules = glob.sync('src/utils/**/*.ts*');
 const componentsModules = glob.sync('src/components/**/*.ts*');
 const styleModules = glob.sync('src/styles/**/*.ts');
 
+// Get all modules including internal ones for bundling
 const allModules = animationsModules
   .concat(iconsModules, utilsModules, componentsModules, styleModules)
   /** Exclude dev folders */

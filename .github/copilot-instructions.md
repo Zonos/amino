@@ -1,8 +1,9 @@
-# GitHub Copilot Instructions for fe-2-amino
+# GitHub Copilot Instructions for amino
 
 ## Code Generation
 
 ### General Guidelines
+
 - Use TypeScript for all code.
 - All React components should be functional components, not class components.
 - Export named exports rather than default exports.
@@ -19,6 +20,7 @@
 Based on experience fixing common linting issues, please follow these guidelines when generating code:
 
 ### TypeScript
+
 - Use `import type` for imports that are only used as types (especially when `verbatimModuleSyntax` is enabled)
 - Avoid using the `any` type - use more specific types or `unknown`
 - Use appropriate parameter types for Node.js APIs:
@@ -30,6 +32,7 @@ Based on experience fixing common linting issues, please follow these guidelines
 - Use non-null assertions (`!`) only when you're certain a value cannot be null
 
 ### Code Style
+
 - Follow object key ordering rules (typically alphabetical)
 - Always add trailing commas to object properties and in array literals
 - Use concise arrow functions without block statements when returning a simple expression:
@@ -43,6 +46,7 @@ Based on experience fixing common linting issues, please follow these guidelines
 - Always add a newline at the end of files
 
 ### Import Organization
+
 - Use absolute imports instead of relative imports when configured
 - Group and sort imports according to project conventions:
   1. External libraries/modules first
@@ -51,6 +55,7 @@ Based on experience fixing common linting issues, please follow these guidelines
   4. Style imports at the end
 
 ### Testing & Mocking
+
 - Use proper typing for mock implementations with vi.mocked()
 - Mock implementations should respect the original function's type signature
 - Use explicit return types for mock functions

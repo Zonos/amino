@@ -51,13 +51,57 @@ import { WisconsinIcon } from 'src/icons/custom/us-states/WisconsinIcon';
 import { WyomingIcon } from 'src/icons/custom/us-states/WyomingIcon';
 import type { UnitedState } from 'src/types/UnitedStates';
 
-export const unitedStates: UnitedState[] = [
+import { translateAminoText as translate } from './translations/__amino__/translateAminoText';
+import type { SupportedLanguageCode } from './translations/supportedLanguages';
+
+const getTranslatedRegionName = ({
+  languageCode,
+  region,
+}: {
+  languageCode: SupportedLanguageCode;
+  region: UnitedState['region'];
+}) => {
+  switch (region) {
+    case 'South':
+      return translate({
+        languageCode,
+        text: 'South --context: region name for the United States',
+      });
+    case 'West':
+      return translate({
+        languageCode,
+        text: 'West --context: region name for the United States',
+      });
+    case 'Midwest':
+      return translate({
+        languageCode,
+        text: 'Midwest --context: region name for the United States',
+      });
+    case 'Northeast':
+      return translate({
+        languageCode,
+        text: 'Northeast --context: region name for the United States',
+      });
+    case 'Territories':
+      return translate({
+        languageCode,
+        text: 'Territories --context: region name for the United States',
+      });
+    default:
+      return region;
+  }
+};
+
+export const getUnitedStates = (
+  languageCode: SupportedLanguageCode,
+): UnitedState[] => [
   {
     code: 'AL',
     highlighted: false,
     icon: <AlabamaIcon />,
     name: 'Alabama',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'AK',
@@ -65,6 +109,7 @@ export const unitedStates: UnitedState[] = [
     icon: <AlaskaIcon />,
     name: 'Alaska',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'AZ',
@@ -72,6 +117,7 @@ export const unitedStates: UnitedState[] = [
     icon: <ArizonaIcon />,
     name: 'Arizona',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'AR',
@@ -79,14 +125,15 @@ export const unitedStates: UnitedState[] = [
     icon: <ArkansasIcon />,
     name: 'Arkansas',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'CA',
     highlighted: false,
     icon: <CaliforniaIcon />,
     name: 'California',
-
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'CO',
@@ -94,6 +141,7 @@ export const unitedStates: UnitedState[] = [
     icon: <ColoradoIcon />,
     name: 'Colorado',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'CT',
@@ -101,6 +149,7 @@ export const unitedStates: UnitedState[] = [
     icon: <ConnecticutIcon />,
     name: 'Connecticut',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'DE',
@@ -108,6 +157,7 @@ export const unitedStates: UnitedState[] = [
     icon: <DelawareIcon />,
     name: 'Delaware',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'FL',
@@ -115,6 +165,7 @@ export const unitedStates: UnitedState[] = [
     icon: <FloridaIcon />,
     name: 'Florida',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'GA',
@@ -122,6 +173,7 @@ export const unitedStates: UnitedState[] = [
     icon: <GeorgiaIcon />,
     name: 'Georgia',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'HI',
@@ -129,6 +181,7 @@ export const unitedStates: UnitedState[] = [
     icon: <HawaiiIcon />,
     name: 'Hawaii',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'ID',
@@ -136,6 +189,7 @@ export const unitedStates: UnitedState[] = [
     icon: <IdahoIcon />,
     name: 'Idaho',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'IL',
@@ -143,6 +197,7 @@ export const unitedStates: UnitedState[] = [
     icon: <IllinoisIcon />,
     name: 'Illinois',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'IN',
@@ -150,6 +205,7 @@ export const unitedStates: UnitedState[] = [
     icon: <IndianaIcon />,
     name: 'Indiana',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'IA',
@@ -157,6 +213,7 @@ export const unitedStates: UnitedState[] = [
     icon: <IowaIcon />,
     name: 'Iowa',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'KS',
@@ -164,6 +221,7 @@ export const unitedStates: UnitedState[] = [
     icon: <KansasIcon />,
     name: 'Kansas',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'KY',
@@ -171,6 +229,7 @@ export const unitedStates: UnitedState[] = [
     icon: <KentuckyIcon />,
     name: 'Kentucky',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'LA',
@@ -178,6 +237,7 @@ export const unitedStates: UnitedState[] = [
     icon: <LouisianaIcon />,
     name: 'Louisiana',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'ME',
@@ -185,6 +245,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MaineIcon />,
     name: 'Maine',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'MD',
@@ -192,6 +253,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MarylandIcon />,
     name: 'Maryland',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'MA',
@@ -199,6 +261,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MassachusettsIcon />,
     name: 'Massachusetts',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'MI',
@@ -206,6 +269,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MichiganIcon />,
     name: 'Michigan',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'MN',
@@ -213,6 +277,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MinnesotaIcon />,
     name: 'Minnesota',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'MS',
@@ -220,6 +285,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MississippiIcon />,
     name: 'Mississippi',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'MO',
@@ -227,6 +293,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MissouriIcon />,
     name: 'Missouri',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'MT',
@@ -234,6 +301,7 @@ export const unitedStates: UnitedState[] = [
     icon: <MontanaIcon />,
     name: 'Montana',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'NE',
@@ -241,6 +309,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NebraskaIcon />,
     name: 'Nebraska',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'NV',
@@ -248,6 +317,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NevadaIcon />,
     name: 'Nevada',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'NH',
@@ -255,6 +325,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NewHampshireIcon />,
     name: 'New Hampshire',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'NJ',
@@ -262,6 +333,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NewJerseyIcon />,
     name: 'New Jersey',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'NM',
@@ -269,6 +341,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NewMexicoIcon />,
     name: 'New Mexico',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'NY',
@@ -276,6 +349,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NewYorkIcon />,
     name: 'New York',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'NC',
@@ -283,6 +357,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NorthCarolinaIcon />,
     name: 'North Carolina',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'ND',
@@ -290,6 +365,7 @@ export const unitedStates: UnitedState[] = [
     icon: <NorthDakotaIcon />,
     name: 'North Dakota',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'OH',
@@ -297,6 +373,7 @@ export const unitedStates: UnitedState[] = [
     icon: <OhioIcon />,
     name: 'Ohio',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'OK',
@@ -304,6 +381,7 @@ export const unitedStates: UnitedState[] = [
     icon: <OklahomaIcon />,
     name: 'Oklahoma',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'OR',
@@ -311,6 +389,7 @@ export const unitedStates: UnitedState[] = [
     icon: <OregonIcon />,
     name: 'Oregon',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'PA',
@@ -318,6 +397,7 @@ export const unitedStates: UnitedState[] = [
     icon: <PennsylvaniaIcon />,
     name: 'Pennsylvania',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'PR',
@@ -325,6 +405,10 @@ export const unitedStates: UnitedState[] = [
     icon: <PuertoRicoIcon />,
     name: 'Puerto Rico',
     region: 'Territories',
+    regionLabel: getTranslatedRegionName({
+      languageCode,
+      region: 'Territories',
+    }),
   },
   {
     code: 'RI',
@@ -332,6 +416,7 @@ export const unitedStates: UnitedState[] = [
     icon: <RhodeIslandIcon />,
     name: 'Rhode Island',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'SC',
@@ -339,6 +424,7 @@ export const unitedStates: UnitedState[] = [
     icon: <SouthCarolinaIcon />,
     name: 'South Carolina',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'SD',
@@ -346,6 +432,7 @@ export const unitedStates: UnitedState[] = [
     icon: <SouthDakotaIcon />,
     name: 'South Dakota',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'TN',
@@ -353,6 +440,7 @@ export const unitedStates: UnitedState[] = [
     icon: <TennesseeIcon />,
     name: 'Tennessee',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'TX',
@@ -360,6 +448,7 @@ export const unitedStates: UnitedState[] = [
     icon: <TexasIcon />,
     name: 'Texas',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'UT',
@@ -367,6 +456,7 @@ export const unitedStates: UnitedState[] = [
     icon: <UtahIcon />,
     name: 'Utah',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'VT',
@@ -374,6 +464,7 @@ export const unitedStates: UnitedState[] = [
     icon: <VermontIcon />,
     name: 'Vermont',
     region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
   {
     code: 'VA',
@@ -381,6 +472,7 @@ export const unitedStates: UnitedState[] = [
     icon: <VirginiaIcon />,
     name: 'Virginia',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'WA',
@@ -388,6 +480,7 @@ export const unitedStates: UnitedState[] = [
     icon: <WashingtonIcon />,
     name: 'Washington',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
   {
     code: 'WV',
@@ -395,6 +488,7 @@ export const unitedStates: UnitedState[] = [
     icon: <WestVirginiaIcon />,
     name: 'West Virginia',
     region: 'South',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'South' }),
   },
   {
     code: 'WI',
@@ -402,6 +496,7 @@ export const unitedStates: UnitedState[] = [
     icon: <WisconsinIcon />,
     name: 'Wisconsin',
     region: 'Midwest',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Midwest' }),
   },
   {
     code: 'WY',
@@ -409,5 +504,6 @@ export const unitedStates: UnitedState[] = [
     icon: <WyomingIcon />,
     name: 'Wyoming',
     region: 'West',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'West' }),
   },
 ];
