@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
+import type { TranslateProps } from 'src/components/translations/Translate';
 import { Translate as GenericTranslate } from 'src/components/translations/Translate';
-import type { TranslateProps } from 'src/utils/translations/_handleTranslateComponentText';
 import type { AminoTranslationStrings } from 'src/utils/translations/AminoTranslationStore';
 
 /**

@@ -1,13 +1,4 @@
-/**
- * Extracts variables pattern "[pattern]" from a string
- * @example
- * type Variables = ExtractVariables<'[percentage] GST due on any order above [threshold].'>
- * // Variables = 'percentage' | 'threshold'
- */
-export type ExtractVariables<TString extends string> =
-  TString extends `${string}[${infer Var}]${infer End}`
-    ? Var | ExtractVariables<End>
-    : never;
+import type { ExtractVariables } from './translate';
 
 /**
  * AMINO UTILITY: Handles variable interpolation in translated text
