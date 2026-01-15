@@ -769,7 +769,6 @@ import './utils/storage';
 import './utils/style';
 import './utils/translations/AminoTranslationStore';
 import './utils/translations/extractTextKeys';
-import './utils/translations/index';
 import './utils/translations/supportedLanguages';
 import './utils/translations/translate';
 import './utils/truncateText';
