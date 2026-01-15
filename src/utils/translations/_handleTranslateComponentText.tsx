@@ -1,7 +1,5 @@
 import { Fragment, type ReactNode } from 'react';
 
-import { v4 as uuidv4 } from 'uuid';
-
 import type { ExtractVariables } from './_handleTranslationVariables';
 import type { SupportedLanguageCode } from './supportedLanguages';
 
@@ -85,8 +83,8 @@ export const handleTranslateComponentText = ({
 
   return (
     <>
-      {result.map(segment => (
-        <Fragment key={uuidv4()}>{segment}</Fragment>
+      {result.map((segment, index) => (
+        <Fragment key={index}>{segment}</Fragment>
       ))}
     </>
   );
