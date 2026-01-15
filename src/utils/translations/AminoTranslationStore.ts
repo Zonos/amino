@@ -163,29 +163,6 @@ export const useAminoTranslationStore = create<AminoTranslationStore>(
 );
 
 /**
- * Translate text (non-reactive). Use in utilities, event handlers, or outside React components.
- * For React components, use `useTranslate` hook instead.
- *
- * @param text - The text to translate (English key)
- * @returns The translated text, or the original text if translation not found
- *
- * @example
- * ```typescript
- * // ✅ In utility functions
- * const validateEmail = (email: string) => {
- *   if (!email) return translate('Email is required');
- * };
- *
- * // ✅ In event handlers
- * const handleSubmit = async () => {
- *   showToast(translate('Saving...'));
- * };
- * ```
- */
-export const translate = (text: string): string =>
-  useAminoTranslationStore.getState().translate(text);
-
-/**
  * Change the current language and load translations if needed.
  * Automatically saves to localStorage. Components using `useTranslate` will re-render when complete.
  *
