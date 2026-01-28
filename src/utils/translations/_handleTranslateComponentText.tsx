@@ -14,6 +14,9 @@ export const handleTranslateComponentText = ({
     processedText = processedText.split(' --context:')[0] || processedText;
   }
 
+  // Strip curly braces (brand name protection) - remove braces but keep content
+  processedText = processedText.replace(/\{([^}]+)\}/g, '$1');
+
   // If no variables, return the processed text (with context already stripped)
   if (!variables || Object.keys(variables).length === 0) {
     return processedText;
