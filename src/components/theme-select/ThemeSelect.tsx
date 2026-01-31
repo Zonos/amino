@@ -135,6 +135,7 @@ export const ThemeSelect = ({
 
       {type === 'toggle' && (
         <Switch
+          aria-label="Light mode"
           checked={checked}
           className={className}
           disabled={disabled}
