@@ -467,7 +467,8 @@ const TreeNode = ({
   const isExpanded = expandedPaths.has(path);
   const [isHovered, setIsHovered] = useState(false);
   // Convert path string to array for comparison (skip 'root' prefix)
-  const pathArray = path.split('.').slice(1);
+  // Use '::' as separator to support keys containing dots
+  const pathArray = path.split('::').slice(1);
   const isSelected =
     selectedPath !== null &&
     pathArray.length === selectedPath.length &&
@@ -609,7 +610,7 @@ const TreeNode = ({
               onCopy={onCopy}
               onSelect={onSelect}
               onToggle={onToggle}
-              path={`${path}.${entry.key}`}
+              path={`${path}::${entry.key}`}
               selectedPath={selectedPath}
               value={entry.value}
             />
@@ -928,6 +929,25 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
   const [copiedValue, setCopiedValue] = useState(false);
   const isPrimitive = type !== 'object' && type !== 'array';
 
+  // Track timeout IDs for cleanup
+  const copyJsonTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const copyValueTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+
+  // Cleanup timeouts on unmount
+  useEffect(
+    () => () => {
+      if (copyJsonTimeoutRef.current) {
+        clearTimeout(copyJsonTimeoutRef.current);
+      }
+      if (copyValueTimeoutRef.current) {
+        clearTimeout(copyValueTimeoutRef.current);
+      }
+    },
+    [],
+  );
+
   const handleCopyJson = async () => {
     try {
       const text =
@@ -936,7 +956,10 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
           : String(value);
       await navigator.clipboard.writeText(text);
       setCopiedJson(true);
-      setTimeout(() => setCopiedJson(false), 2000);
+      if (copyJsonTimeoutRef.current) {
+        clearTimeout(copyJsonTimeoutRef.current);
+      }
+      copyJsonTimeoutRef.current = setTimeout(() => setCopiedJson(false), 2000);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('Failed to copy:', err);
@@ -949,7 +972,13 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
       const text = value === null ? 'null' : String(value);
       await navigator.clipboard.writeText(text);
       setCopiedValue(true);
-      setTimeout(() => setCopiedValue(false), 2000);
+      if (copyValueTimeoutRef.current) {
+        clearTimeout(copyValueTimeoutRef.current);
+      }
+      copyValueTimeoutRef.current = setTimeout(
+        () => setCopiedValue(false),
+        2000,
+      );
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('Failed to copy:', err);
@@ -1473,7 +1502,7 @@ export const JsonVisionViewer = ({
           } else if (e.key === 'ArrowRight' && selectedRow) {
             // Expand if collapsed, or move to first child
             const path =
-              selectedPath.length > 0 ? `root.${selectedPath.join('.')}` : '';
+              selectedPath.length > 0 ? `root::${selectedPath.join('::')}` : '';
             if (path && !expandedPaths.has(path)) {
               handleTreeToggle(path);
             } else if (
@@ -1486,7 +1515,7 @@ export const JsonVisionViewer = ({
           } else if (e.key === 'ArrowLeft' && selectedRow) {
             // Collapse if expanded, or move to parent
             const path =
-              selectedPath.length > 0 ? `root.${selectedPath.join('.')}` : '';
+              selectedPath.length > 0 ? `root::${selectedPath.join('::')}` : '';
             if (path && expandedPaths.has(path)) {
               handleTreeToggle(path);
             } else if (selectedPath.length > 1) {
@@ -1936,7 +1965,7 @@ export const JsonVisionViewer = ({
                   onCopy={handleCopy}
                   onSelect={handleTreeSelect}
                   onToggle={handleTreeToggle}
-                  path={`root.${key}`}
+                  path={`root::${key}`}
                   selectedPath={selectedPath}
                   value={value as JsonValue}
                 />
