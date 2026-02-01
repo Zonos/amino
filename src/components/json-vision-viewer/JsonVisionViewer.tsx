@@ -35,17 +35,17 @@ type SortMode = 'original' | 'keys-asc' | 'keys-desc';
 export type JsonVisionViewerProps = {
   /** The JSON data to display */
   data: object | null;
-  /** Optional title displayed in the header */
-  title?: string;
-  /** Callback when close button is clicked */
-  onClose?: () => void;
-  /** Called when user clicks Share. Should return the shareable URL. */
-  onShare?: () => Promise<string>;
   /**
    * Default view mode
    * @default 'tree'
    */
   defaultViewMode?: ViewMode;
+  /** Callback when close button is clicked */
+  onClose?: () => void;
+  /** Called when user clicks Share. Should return the shareable URL. */
+  onShare?: () => Promise<string>;
+  /** Optional title displayed in the header */
+  title?: string;
 };
 
 // Utility functions
@@ -179,10 +179,7 @@ const formatPreview = (value: JsonValue, type: string): string => {
 /**
  * Get tooltip text for a value (full value for primitives, summary for complex types)
  */
-const getTooltipText = (
-  value: JsonValue,
-  type: string,
-): string | undefined => {
+const getTooltipText = (value: JsonValue, type: string): string | undefined => {
   switch (type) {
     case 'string': {
       const str = String(value);
@@ -285,8 +282,8 @@ type ColumnEntry = {
 
 type ColumnProps = {
   data: JsonValue;
-  selectedKey: string | null;
   onSelect: (key: string) => void;
+  selectedKey: string | null;
 };
 
 // Value Detail Column - shows when a primitive value is selected
@@ -446,12 +443,12 @@ type TreeNodeProps = {
   depth: number;
   expandedPaths: Set<string>;
   nodeKey: string;
-  path: string;
-  selectedPath: string[] | null;
-  value: JsonValue;
   onCopy: (value: JsonValue) => void;
   onSelect: (path: string[], value: JsonValue) => void;
   onToggle: (path: string) => void;
+  path: string;
+  selectedPath: string[] | null;
+  value: JsonValue;
 };
 
 const TreeNode = ({
@@ -483,9 +480,10 @@ const TreeNode = ({
     if (Array.isArray(value)) {
       return value.map((v, i) => ({ key: i.toString(), value: v }));
     }
-    return Object.entries(value as Record<string, JsonValue>).map(
-      ([k, v]) => ({ key: k, value: v }),
-    );
+    return Object.entries(value as Record<string, JsonValue>).map(([k, v]) => ({
+      key: k,
+      value: v,
+    }));
   }, [value, isExpandable, isExpanded]);
 
   const renderValue = () => {
@@ -743,7 +741,6 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
         <div className={styles.lineNumbers}>
           {/* Line numbers are static, index as key is appropriate */}
           {lines.map((_, i) => (
-            // eslint-disable-next-line react/no-array-index-key
             <div key={i} className={styles.lineNumber}>
               {i + 1}
             </div>
@@ -876,7 +873,6 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
         <span className={styles.jsonBracket}>[</span>
         {'\n'}
         {data.map((item, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <span key={`array-${indent}-${i}`}>
             {nextIndent}
             <JsonSyntax data={item} indent={indent + 1} />
@@ -1075,7 +1071,7 @@ export const JsonVisionViewer = ({
       return false;
     }
     // Use userAgentData if available (modern browsers), fallback to userAgent
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const platform = (navigator as any).userAgentData?.platform as
       | string
       | undefined;
@@ -1298,12 +1294,9 @@ export const JsonVisionViewer = ({
     });
   }, []);
 
-  const handleTreeSelect = useCallback(
-    (path: string[], _value?: JsonValue) => {
-      setSelectedPath(path);
-    },
-    [],
-  );
+  const handleTreeSelect = useCallback((path: string[], _value?: JsonValue) => {
+    setSelectedPath(path);
+  }, []);
 
   const handleCopy = useCallback(async (value: JsonValue) => {
     try {
@@ -1741,7 +1734,7 @@ export const JsonVisionViewer = ({
                   {searchResults.map((result, idx) => (
                     <button
                       // Path + matchType + index ensures uniqueness for duplicate paths
-                      // eslint-disable-next-line react/no-array-index-key
+
                       key={`${result.path.join('.')}-${result.matchType}-${idx}`}
                       className={clsx(
                         styles.searchResultItem,
@@ -1880,7 +1873,6 @@ export const JsonVisionViewer = ({
             root
           </button>
           {selectedPath.map((segment, i) => (
-            // eslint-disable-next-line react/no-array-index-key
             <span key={`breadcrumb-${i}-${segment}`}>
               <span className={styles.breadcrumbSeparator}>/</span>
               <button
@@ -1902,7 +1894,6 @@ export const JsonVisionViewer = ({
             <div className={styles.columnsContainer}>
               {columns.map((col, index) => (
                 <Column
-                  // eslint-disable-next-line react/no-array-index-key
                   key={`column-${index}`}
                   columnIndex={index}
                   data={col.data}

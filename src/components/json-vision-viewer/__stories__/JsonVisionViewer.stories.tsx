@@ -10,77 +10,77 @@ import {
 import { VStack } from 'src/components/stack/VStack';
 
 const sampleData = {
-  user: {
-    id: 'user_abc123',
-    name: 'John Doe',
-    email: 'john@example.com',
-    preferences: {
-      theme: 'dark',
-      notifications: true,
-      language: 'en-US',
-    },
-    tags: ['premium', 'early-adopter', 'beta-tester'],
+  metadata: {
+    apiVersion: '2.0',
+    deprecations: [],
+    requestId: 'req_xyz789',
+    timestamp: '2024-01-15T10:30:00Z',
   },
   orders: [
     {
-      id: 'order_001',
-      total: 99.99,
       currency: 'USD',
+      id: 'order_001',
       items: [
-        { sku: 'ITEM-A', name: 'Widget', quantity: 2, price: 29.99 },
-        { sku: 'ITEM-B', name: 'Gadget', quantity: 1, price: 40.01 },
+        { name: 'Widget', price: 29.99, quantity: 2, sku: 'ITEM-A' },
+        { name: 'Gadget', price: 40.01, quantity: 1, sku: 'ITEM-B' },
       ],
       shipping: {
         address: {
-          line1: '123 Main St',
           city: 'Anytown',
+          country: 'US',
+          line1: '123 Main St',
           state: 'CA',
           zip: '12345',
-          country: 'US',
         },
         method: 'express',
         trackingNumber: '1Z999AA10123456784',
       },
+      total: 99.99,
     },
     {
-      id: 'order_002',
-      total: 149.99,
       currency: 'USD',
-      items: [{ sku: 'ITEM-C', name: 'Gizmo Pro', quantity: 1, price: 149.99 }],
+      id: 'order_002',
+      items: [{ name: 'Gizmo Pro', price: 149.99, quantity: 1, sku: 'ITEM-C' }],
       shipping: {
         address: {
-          line1: '456 Oak Ave',
           city: 'Somewhere',
+          country: 'US',
+          line1: '456 Oak Ave',
           state: 'NY',
           zip: '67890',
-          country: 'US',
         },
         method: 'standard',
         trackingNumber: null,
       },
+      total: 149.99,
     },
   ],
-  metadata: {
-    apiVersion: '2.0',
-    requestId: 'req_xyz789',
-    timestamp: '2024-01-15T10:30:00Z',
-    deprecations: [],
+  user: {
+    email: 'john@example.com',
+    id: 'user_abc123',
+    name: 'John Doe',
+    preferences: {
+      language: 'en-US',
+      notifications: true,
+      theme: 'dark',
+    },
+    tags: ['premium', 'early-adopter', 'beta-tester'],
   },
 };
 
 const largeData = {
   ...sampleData,
   products: Array.from({ length: 100 }, (_, i) => ({
-    id: `prod_${i + 1}`,
-    name: `Product ${i + 1}`,
-    price: Math.round(Math.random() * 10000) / 100,
-    inStock: Math.random() > 0.3,
     category: ['electronics', 'clothing', 'home', 'sports'][
       Math.floor(Math.random() * 4)
     ],
+    id: `prod_${i + 1}`,
+    inStock: Math.random() > 0.3,
+    name: `Product ${i + 1}`,
+    price: Math.round(Math.random() * 10000) / 100,
     tags: Array.from(
       { length: Math.floor(Math.random() * 5) },
-      (_, j) => `tag-${j + 1}`,
+      (_el, j) => `tag-${j + 1}`,
     ),
   })),
 };
@@ -138,7 +138,7 @@ export const WithShareButton: StoryFn<JsonVisionViewerProps> = args => {
         }}
       />
       {lastUrl && (
-        <div style={{ padding: '8px 16px', fontSize: 12, color: '#666' }}>
+        <div style={{ color: '#666', fontSize: 12, padding: '8px 16px' }}>
           Last shared URL: {lastUrl}
         </div>
       )}
@@ -188,9 +188,9 @@ EmptyData.args = {
 export const SimpleData = Template.bind({});
 SimpleData.args = {
   data: {
-    message: 'Hello, World!',
-    count: 42,
     active: true,
+    count: 42,
+    message: 'Hello, World!',
     nothing: null,
   },
   title: 'Simple Data',
@@ -205,8 +205,8 @@ DeeplyNested.args = {
           level4: {
             level5: {
               level6: {
-                value: 'Deep value',
                 array: [1, 2, 3],
+                value: 'Deep value',
               },
             },
           },
