@@ -46,7 +46,7 @@
 
 .searchInput {
   input {
-    width: 560px;
+    // Width controlled by inline style on Input component
     padding-left: 32px !important;
   }
 }
