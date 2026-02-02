@@ -1517,13 +1517,21 @@ export const JsonVisionViewer = ({
             // Expand if collapsed, or move to first child
             const path =
               selectedPath.length > 0 ? `root::${selectedPath.join('::')}` : '';
-            if (path && !expandedPaths.has(path)) {
+            // Check if the current node is expandable (object or array)
+            const currentValue = getValueAtPath(
+              sortedData as JsonValue,
+              selectedPath,
+            );
+            const isExpandable =
+              typeof currentValue === 'object' && currentValue !== null;
+
+            if (path && isExpandable && !expandedPaths.has(path)) {
               handleTreeToggle(path);
             } else if (
               currentIndex >= 0 &&
               currentIndex < rowArray.length - 1
             ) {
-              // Already expanded, move to first child (next row)
+              // Already expanded or primitive, move to next row
               selectRowByIndex(currentIndex + 1);
             }
           } else if (e.key === 'ArrowLeft' && selectedRow) {
