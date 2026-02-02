@@ -1183,7 +1183,7 @@ export const JsonVisionViewer = ({
             const pathsToExpand = new Set(expandedPaths);
             let currentPath = 'root';
             for (const segment of result.path) {
-              currentPath = `${currentPath}.${segment}`;
+              currentPath = `${currentPath}::${segment}`;
               pathsToExpand.add(currentPath);
             }
             setExpandedPaths(pathsToExpand);
@@ -1215,7 +1215,7 @@ export const JsonVisionViewer = ({
         const pathsToExpand = new Set(expandedPaths);
         let currentPath = 'root';
         for (const segment of result.path) {
-          currentPath = `${currentPath}.${segment}`;
+          currentPath = `${currentPath}::${segment}`;
           pathsToExpand.add(currentPath);
         }
         setExpandedPaths(pathsToExpand);
@@ -1362,13 +1362,13 @@ export const JsonVisionViewer = ({
       if (Array.isArray(obj)) {
         obj.forEach((item, index) => {
           if (typeof item === 'object' && item !== null) {
-            addPaths(item, `${path}.${index}`);
+            addPaths(item, `${path}::${index}`);
           }
         });
       } else if (typeof obj === 'object' && obj !== null) {
         Object.entries(obj).forEach(([key, val]) => {
           if (typeof val === 'object' && val !== null) {
-            addPaths(val as JsonValue, `${path}.${key}`);
+            addPaths(val as JsonValue, `${path}::${key}`);
           }
         });
       }
