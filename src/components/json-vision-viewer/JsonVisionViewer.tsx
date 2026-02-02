@@ -1093,7 +1093,18 @@ export const JsonVisionViewer = ({
     new Set(['root']),
   );
   const [shareState, setShareState] = useState<'idle' | 'copied'>('idle');
+  const shareTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showHelp, setShowHelp] = useState(false);
+
+  // Cleanup share timeout on unmount
+  useEffect(
+    () => () => {
+      if (shareTimeoutRef.current) {
+        clearTimeout(shareTimeoutRef.current);
+      }
+    },
+    [],
+  );
   // Detect Mac vs Windows/Linux for keyboard shortcut display
   const isMac = useMemo(() => {
     if (typeof navigator === 'undefined') {
@@ -1231,7 +1242,10 @@ export const JsonVisionViewer = ({
     try {
       await onShare();
       setShareState('copied');
-      setTimeout(() => setShareState('idle'), 2000);
+      if (shareTimeoutRef.current) {
+        clearTimeout(shareTimeoutRef.current);
+      }
+      shareTimeoutRef.current = setTimeout(() => setShareState('idle'), 2000);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('Failed to share:', err);
