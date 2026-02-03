@@ -83,7 +83,8 @@ describe('Component detail endpoint', () => {
 
     // Mock Response.json
     mockJsonResponse = vi.fn();
-    vi.spyOn(Response, 'json').mockImplementation(mockJsonResponse);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (vi.spyOn(Response, 'json') as any).mockImplementation(mockJsonResponse);
 
     // Default mock implementation
     vi.mocked(fs.existsSync).mockReturnValue(true);

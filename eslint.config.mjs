@@ -30,6 +30,7 @@ const ignoreConfig = {
     '.github',
     '.next',
     '.next/**/*',
+    'postcss.config.cjs',
   ],
 };
 
@@ -192,6 +193,7 @@ export default tseslint.config(
        * @ref https://github.com/namnm/eslint-plugin-sort-keys
        */
       'sort-keys/sort-keys-fix': ['warn', 'asc'],
+      'storybook/no-renderer-packages': 'off',
       'storybook/use-storybook-expect': 'off',
       'typescript-sort-keys/interface': 'error',
       'typescript-sort-keys/string-enum': 'error',

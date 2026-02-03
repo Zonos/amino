@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import 'src/styles/amino.css';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
-import { useGlobals } from '@storybook/preview-api';
 import type { Decorator, Preview } from '@storybook/react';
 import clsx from 'clsx';
+import { useGlobals } from 'storybook/preview-api';
 
+import styles from 'src/styles/storybook-preview.module.scss';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
 import { setLanguage } from 'src/utils/translations/AminoTranslationStore';
@@ -16,7 +17,6 @@ import {
 } from 'src/utils/translations/supportedLanguages';
 
 import './storybook.css';
-import styles from './preview.module.scss';
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
@@ -158,24 +158,20 @@ const preview: Preview = {
 
   globalTypes: {
     language: {
-      defaultValue: 'EN',
       description: 'Language for amino components',
       toolbar: {
-        defaultValue: 'EN',
         dynamicTitle: true,
         icon: 'globe',
         items: supportedLanguages.map(lang => ({
           title: `${lang.label} (${lang.translatedLabel})`,
           value: lang.code,
         })),
-        onChange: (value: SupportedLanguageCode) => value,
+        title: 'Language',
       },
     },
     theme: {
-      defaultValue: 'day',
       description: 'Global theme for components',
       toolbar: {
-        defaultValue: 'day',
         dynamicTitle: true,
         icon: 'circlehollow',
         items: [
@@ -183,9 +179,13 @@ const preview: Preview = {
           { icon: 'circle', title: 'Night', value: 'night' },
           { icon: 'sidebar', title: 'Side by side', value: 'side-by-side' },
         ],
-        onChange: (value: StorybookTheme) => value,
+        title: 'Theme',
       },
     },
+  },
+  initialGlobals: {
+    language: 'EN',
+    theme: 'day',
   },
 
   parameters: {

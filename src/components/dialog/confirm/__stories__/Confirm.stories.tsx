@@ -1,5 +1,5 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { expect, screen, userEvent, within } from '@storybook/test';
+import { expect, screen, userEvent, within } from 'storybook/test';
 
 import { ConfirmConsumer } from 'src/components/dialog/confirm/__stories__/ConfirmConsumer';
 import { ConfirmContextProvider } from 'src/components/dialog/confirm/ConfirmContext';

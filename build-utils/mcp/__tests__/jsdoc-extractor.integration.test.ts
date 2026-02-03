@@ -158,22 +158,36 @@ export { Button } from './Button';
     );
 
     // Fix the Dirent[] type issue by providing a mock implementation that returns proper Dirent objects
-    vi.mocked(fs.readdirSync).mockImplementation((dirPath: PathLike) => {
+    const mockReaddirSync = (
+      dirPath: PathLike,
+      options?: { encoding?: BufferEncoding | null; withFileTypes?: boolean },
+    ) => {
       if (dirPath === '/components/button') {
-        // Create mock Dirent objects
-        return ['index.tsx', 'Button.tsx'].map(name => ({
-          isBlockDevice: () => false,
-          isCharacterDevice: () => false,
-          isDirectory: () => false,
-          isFIFO: () => false,
-          isFile: () => true,
-          isSocket: () => false,
-          isSymbolicLink: () => false,
-          name,
-        })) as unknown as fs.Dirent[];
+        // If withFileTypes is true, return Dirent objects
+        if (options?.withFileTypes) {
+          return ['index.tsx', 'Button.tsx'].map(name => ({
+            isBlockDevice: () => false,
+            isCharacterDevice: () => false,
+            isDirectory: () => false,
+            isFIFO: () => false,
+            isFile: () => true,
+            isSocket: () => false,
+            isSymbolicLink: () => false,
+            name,
+          })) as unknown as fs.Dirent[];
+        }
+        // Otherwise return string array
+        return ['index.tsx', 'Button.tsx'] as unknown as string[];
       }
-      return [] as unknown as fs.Dirent[];
-    });
+      if (options?.withFileTypes) {
+        return [] as unknown as fs.Dirent[];
+      }
+      return [] as unknown as string[];
+    };
+
+    vi.mocked(fs.readdirSync).mockImplementation(
+      mockReaddirSync as unknown as typeof fs.readdirSync,
+    );
 
     vi.mocked(fs.statSync).mockReturnValue({
       isDirectory: () => true,

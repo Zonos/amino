@@ -1,3 +1,5 @@
+import type { ComponentType } from 'react';
+
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { Card } from 'src/components/card/Card';
@@ -59,11 +61,9 @@ const LayoutMeta: Meta = {
     docs: { source: { type: 'code' } },
   },
   subcomponents: {
-    // @ts-expect-error subcomponents don't seem to be working
     NavigationGroup,
-    // @ts-expect-error subcomponents don't seem to be working
     NavigationItem,
-  },
+  } as Record<string, ComponentType<unknown>>,
 };
 
 export default LayoutMeta;

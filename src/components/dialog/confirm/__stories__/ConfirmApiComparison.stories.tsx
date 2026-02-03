@@ -1,5 +1,5 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { expect, screen, userEvent, within } from '@storybook/test';
+import { expect, screen, userEvent, within } from 'storybook/test';
 
 import { ConfirmLegacyApi } from 'src/components/dialog/confirm/__stories__/ConfirmLegacyApi';
 import { ConfirmNewApi } from 'src/components/dialog/confirm/__stories__/ConfirmNewApi';

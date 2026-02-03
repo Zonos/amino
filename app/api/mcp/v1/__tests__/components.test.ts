@@ -69,7 +69,11 @@ describe('Components listing endpoint', () => {
 
     // Mock Response.json
     mockJsonResponse = vi.fn();
-    vi.spyOn(Response, 'json').mockImplementation(mockJsonResponse);
+    (
+      vi.spyOn(Response, 'json') as unknown as {
+        mockImplementation: (fn: typeof mockJsonResponse) => void;
+      }
+    ).mockImplementation(mockJsonResponse);
 
     // Default mock implementation
     vi.mocked(fs.existsSync).mockReturnValue(true);
