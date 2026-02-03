@@ -1518,12 +1518,12 @@ export const JsonVisionViewer = ({
             const path =
               selectedPath.length > 0 ? `root::${selectedPath.join('::')}` : '';
             // Check if the current node is expandable (object or array)
-            const currentValue = getValueAtPath(
+            const selectedValue = getValueAtPath(
               sortedData as JsonValue,
               selectedPath,
             );
             const isExpandable =
-              typeof currentValue === 'object' && currentValue !== null;
+              typeof selectedValue === 'object' && selectedValue !== null;
 
             if (path && isExpandable && !expandedPaths.has(path)) {
               handleTreeToggle(path);
