@@ -1,0 +1,1475 @@
+@use 'theme';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: theme.$amino-surface-color;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+}
+
+// Header
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid theme.$amino-border-color;
+  background: theme.$amino-surface-color;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+// Search
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  z-index: 1;
+  color: theme.$amino-gray-500;
+  pointer-events: none;
+}
+
+.searchInput {
+  input {
+    // Width controlled by inline style on Input component
+    padding-left: 32px !important;
+  }
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: theme.$amino-surface-color;
+  border: 1px solid theme.$amino-border-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+  min-width: 280px;
+}
+
+.searchResultItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  gap: 2px;
+  transition: background 0.1s ease;
+
+  &:hover {
+    background: theme.$amino-blue-50;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid theme.$amino-gray-100;
+  }
+}
+
+.searchResultSelected {
+  background: theme.$amino-blue-50;
+}
+
+.searchResultPath {
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
+  color: theme.$amino-blue-600;
+  word-break: break-all;
+}
+
+.searchResultPreview {
+  font-size: 11px;
+  color: theme.$amino-gray-500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.searchResultsMore {
+  padding: 8px 12px;
+  font-size: 11px;
+  color: theme.$amino-gray-500;
+  text-align: center;
+  border-top: 1px solid theme.$amino-gray-100;
+}
+
+.searchNoResults {
+  padding: 16px 12px;
+  font-size: 13px;
+  color: theme.$amino-gray-500;
+  text-align: center;
+}
+
+// Help button and dropdown
+.helpContainer {
+  position: relative;
+}
+
+.helpButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: theme.$amino-gray-500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: theme.$amino-gray-100;
+    color: theme.$amino-gray-700;
+  }
+}
+
+.helpDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  width: 260px;
+  background: white;
+  border: 1px solid theme.$amino-gray-200;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.helpTitle {
+  padding: 12px 16px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: theme.$amino-gray-500;
+}
+
+.helpSection {
+  padding: 0 16px 12px;
+}
+
+.helpRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  color: theme.$amino-gray-700;
+}
+
+.helpKeys {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'SF Mono', monospace;
+
+  kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-family: inherit;
+    background: theme.$amino-gray-100;
+    border: 1px solid theme.$amino-gray-200;
+    border-radius: 4px;
+    color: theme.$amino-gray-600;
+  }
+}
+
+.helpTip {
+  padding: 4px 0;
+  font-size: 12px;
+  color: theme.$amino-gray-600;
+  line-height: 1.4;
+}
+
+.viewTabs {
+  display: flex;
+  align-items: center;
+  background: theme.$amino-gray-100;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.viewTab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: theme.$amino-gray-600;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: theme.$amino-gray-800;
+    background: theme.$amino-gray-200;
+  }
+
+  &.active {
+    background: theme.$amino-surface-color;
+    color: theme.$amino-blue-600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    svg {
+      color: theme.$amino-blue-600;
+    }
+  }
+}
+
+.sortTabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding-left: 12px;
+  border-left: 1px solid theme.$amino-gray-200;
+}
+
+.sortLabel {
+  font-size: 12px;
+  color: theme.$amino-gray-500;
+  margin-right: 4px;
+}
+
+.sortTab {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: theme.$amino-gray-500;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: theme.$amino-gray-700;
+    background: theme.$amino-gray-100;
+  }
+
+  &.active {
+    background: theme.$amino-blue-100;
+    color: theme.$amino-blue-700;
+  }
+}
+
+// Breadcrumb
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: theme.$amino-gray-50;
+  border-bottom: 1px solid theme.$amino-border-color;
+  font-size: 13px;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+}
+
+.breadcrumbItem {
+  border: none;
+  background: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: theme.$amino-blue-600;
+  font-size: 13px;
+  white-space: nowrap;
+
+  &:hover {
+    background: theme.$amino-blue-50;
+  }
+}
+
+.breadcrumbSeparator {
+  color: theme.$amino-gray-400;
+  margin: 0 2px;
+}
+
+// Main Content
+.mainContent {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// ==================
+// COLUMN VIEW
+// ==================
+.columnView {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.columnsContainer {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  background: theme.$amino-page-background;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: theme.$amino-gray-100;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: theme.$amino-gray-300;
+    border-radius: 4px;
+  }
+}
+
+.column {
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+  flex: 0 0 280px; // Fixed width, no grow, no shrink
+  border-right: 1px solid theme.$amino-border-color;
+  overflow-y: auto;
+  background: theme.$amino-surface-color;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: theme.$amino-gray-300;
+    border-radius: 3px;
+  }
+}
+
+.emptyColumn {
+  padding: 24px;
+  text-align: center;
+  color: theme.$amino-gray-500;
+  font-style: italic;
+}
+
+.columnItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  gap: 8px;
+  transition: background 0.1s ease;
+
+  &:hover {
+    background: theme.$amino-gray-50;
+  }
+
+  &.selected {
+    background: theme.$amino-blue-600;
+
+    .typeIcon {
+      background: theme.$amino-blue-500;
+      color: white;
+    }
+
+    .itemKey {
+      color: white;
+    }
+
+    .itemPreview {
+      color: theme.$amino-blue-200;
+    }
+
+    .chevronWrapper {
+      &:hover {
+        background: theme.$amino-blue-500;
+      }
+    }
+
+    .chevron {
+      color: theme.$amino-blue-200;
+    }
+  }
+
+  &.expanded {
+    background: theme.$amino-blue-100;
+
+    .typeIcon {
+      background: theme.$amino-blue-200;
+      color: theme.$amino-blue-700;
+    }
+
+    .itemKey {
+      color: theme.$amino-blue-800;
+    }
+
+    .itemPreview {
+      color: theme.$amino-blue-500;
+    }
+
+    .chevron {
+      color: theme.$amino-blue-500;
+    }
+  }
+
+  // When both selected AND expanded
+  &.selected.expanded {
+    background: theme.$amino-blue-600;
+
+    .typeIcon {
+      background: theme.$amino-blue-500;
+      color: white;
+    }
+
+    .itemKey {
+      color: white;
+    }
+
+    .itemPreview {
+      color: theme.$amino-blue-200;
+    }
+
+    .chevron {
+      color: theme.$amino-blue-200;
+    }
+  }
+}
+
+.typeIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: theme.$amino-gray-500;
+  background: theme.$amino-gray-100;
+  border-radius: 4px;
+}
+
+.itemKey {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: theme.$amino-gray-800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemPreview {
+  flex-shrink: 0;
+  max-width: 100px;
+  font-size: 12px;
+  color: theme.$amino-gray-500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevronWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+
+  &:hover {
+    background: theme.$amino-gray-200;
+  }
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: theme.$amino-gray-400;
+}
+
+// Value Column (middle column for primitive values - single row display)
+.valueColumn {
+  min-width: 260px;
+  max-width: 320px;
+  flex-shrink: 0;
+  border-right: 1px solid theme.$amino-border-color;
+  background: theme.$amino-surface-color;
+  overflow-y: auto;
+}
+
+.valueColumnRow {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  gap: 8px;
+  background: theme.$amino-blue-600;
+
+  .typeIcon {
+    background: theme.$amino-blue-500;
+    color: white;
+  }
+}
+
+.valueColumnName {
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+}
+
+.valueColumnValue {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  margin-left: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.valueColumnString {
+  color: theme.$amino-orange-200;
+}
+
+.valueColumnNumber {
+  color: theme.$amino-blue-200;
+}
+
+.valueColumnBoolean {
+  color: theme.$amino-purple-200;
+}
+
+.valueColumnNull {
+  color: theme.$amino-blue-200;
+  font-style: italic;
+}
+
+// Preview Panel
+.previewPanel {
+  flex: 0 0 400px; // Fixed width preview panel
+  width: 400px;
+  border-left: 1px solid theme.$amino-border-color;
+  background: theme.$amino-surface-color;
+  overflow-y: auto;
+}
+
+.valuePreview {
+  padding: 0;
+}
+
+.previewHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(to bottom, theme.$amino-gray-50, transparent);
+  border-bottom: 1px solid theme.$amino-gray-100;
+  margin-bottom: 16px;
+}
+
+.previewHeaderTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.previewPath {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: theme.$amino-blue-600;
+  word-break: break-all;
+}
+
+.pathRoot {
+  color: theme.$amino-gray-500;
+  font-weight: 500;
+}
+
+.previewFullPath {
+  font-family: 'SF Mono', monospace;
+  font-size: 11px;
+  color: theme.$amino-gray-500;
+  word-break: break-all;
+}
+
+.typeBadge {
+  display: inline-flex;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: theme.$amino-gray-100;
+  color: theme.$amino-gray-600;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.copyButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.previewSection {
+  padding: 0 16px 16px;
+}
+
+.sectionLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: theme.$amino-gray-500;
+  margin-bottom: 8px;
+}
+
+.stringValue {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  color: theme.$amino-orange-600;
+  word-break: break-all;
+  background: theme.$amino-orange-50;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.numberValue {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  color: theme.$amino-blue-600;
+  background: theme.$amino-blue-50;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.booleanValue {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  color: theme.$amino-purple-600;
+  background: theme.$amino-purple-50;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.nullValue {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  color: theme.$amino-gray-500;
+  font-style: italic;
+  background: theme.$amino-gray-50;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+// Syntax-highlighted JSON preview
+.jsonPreview {
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  background: theme.$amino-gray-50;
+  padding: 12px;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.jsonKey {
+  color: theme.$amino-blue-600;
+}
+
+.jsonString {
+  color: theme.$amino-orange-600;
+}
+
+.jsonNumber {
+  color: theme.$amino-purple-600;
+}
+
+.jsonBoolean {
+  color: theme.$amino-cyan-600;
+}
+
+.jsonNull {
+  color: theme.$amino-gray-500;
+  font-style: italic;
+}
+
+.jsonBracket,
+.jsonBrace {
+  color: theme.$amino-gray-600;
+}
+
+.jsonColon,
+.jsonComma {
+  color: theme.$amino-gray-500;
+}
+
+// ==================
+// TREE VIEW
+// ==================
+.treeView {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.treeContainer {
+  flex: 1;
+  overflow: auto;
+  padding: 8px 0;
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.treeNode {
+  display: block;
+}
+
+.treeRow {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin: 0 8px;
+  gap: 4px;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    background: theme.$amino-gray-50;
+  }
+
+  &.expandable {
+    cursor: pointer;
+  }
+}
+
+.treeRowSelected {
+  background: theme.$amino-blue-50;
+
+  &:hover {
+    background: theme.$amino-blue-100;
+  }
+}
+
+.treeExpander {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: theme.$amino-gray-500;
+}
+
+.treeExpanderSpacer {
+  width: 18px;
+}
+
+.treeTypeIcon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 600;
+  color: theme.$amino-gray-500;
+  background: theme.$amino-gray-100;
+  border-radius: 3px;
+  margin-right: 4px;
+}
+
+.treeKey {
+  color: theme.$amino-gray-800;
+  font-weight: 500;
+}
+
+.treeColon {
+  color: theme.$amino-gray-500;
+  margin: 0 4px;
+}
+
+.treeValue {
+  &.typestring {
+    color: theme.$amino-orange-600;
+  }
+
+  &.typenumber {
+    color: theme.$amino-blue-600;
+  }
+
+  &.typeboolean {
+    color: theme.$amino-purple-600;
+  }
+
+  &.typenull {
+    color: theme.$amino-gray-500;
+    font-style: italic;
+  }
+}
+
+.treePreview {
+  color: theme.$amino-gray-400;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.treeChildren {
+  display: block;
+}
+
+.treeCopyBtn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: theme.$amino-gray-100;
+  border-radius: 4px;
+  cursor: pointer;
+  color: theme.$amino-gray-600;
+
+  &:hover {
+    background: theme.$amino-gray-200;
+    color: theme.$amino-gray-800;
+  }
+}
+
+// ==================
+// EDITOR VIEW
+// ==================
+.editorView {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.editorToolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  border-bottom: 1px solid theme.$amino-border-color;
+  background: theme.$amino-surface-color;
+}
+
+.lineInfo {
+  font-size: 12px;
+  color: theme.$amino-gray-500;
+}
+
+.editorContent {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  background: theme.$amino-gray-900;
+  scroll-behavior: smooth;
+
+  // Custom scrollbar for the editor
+  &::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      background-clip: content-box;
+    }
+  }
+}
+
+// Scroll navigation panel (positioned over the dark editor background)
+.editorScrollNav {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 10;
+}
+
+.scrollPosition {
+  font-family: 'SF Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(30, 30, 46, 0.95);
+  padding: 4px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.scrollProgress {
+  width: 4px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scrollProgressBar {
+  width: 100%;
+  background: theme.$amino-blue-500;
+  border-radius: 2px;
+  transition: height 0.1s ease;
+}
+
+.scrollButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(30, 30, 46, 0.95);
+  padding: 6px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  &:active:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.lineNumbers {
+  flex-shrink: 0;
+  padding: 16px 0;
+  background: rgba(0, 0, 0, 0.2);
+  user-select: none;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.lineNumber {
+  padding: 0 16px;
+  text-align: right;
+  color: theme.$amino-gray-600;
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.editorCode {
+  flex: 1;
+  margin: 0;
+  padding: 16px;
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: theme.$amino-gray-200;
+  min-width: 0;
+
+  code {
+    white-space: pre;
+    display: block;
+  }
+}
+
+// ==================
+// DARK MODE
+// ==================
+:global([data-amino-theme='night']) {
+  .container {
+    background: theme.$amino-gray-900;
+  }
+
+  .header {
+    background: theme.$amino-gray-900;
+    border-bottom-color: theme.$amino-gray-700;
+  }
+
+  .searchResults {
+    background: theme.$amino-gray-800;
+    border-color: theme.$amino-gray-700;
+  }
+
+  .searchResultItem {
+    &:hover {
+      background: theme.$amino-gray-700;
+    }
+
+    &:not(:last-child) {
+      border-bottom-color: theme.$amino-gray-700;
+    }
+  }
+
+  .searchResultSelected {
+    background: theme.$amino-gray-700;
+  }
+
+  .searchResultPath {
+    color: theme.$amino-blue-400;
+  }
+
+  .searchResultPreview {
+    color: theme.$amino-gray-500;
+  }
+
+  .searchResultsMore {
+    border-top-color: theme.$amino-gray-700;
+  }
+
+  .helpButton {
+    color: theme.$amino-gray-400;
+
+    &:hover {
+      background: theme.$amino-gray-700;
+      color: theme.$amino-gray-200;
+    }
+  }
+
+  .helpDropdown {
+    background: theme.$amino-gray-800;
+    border-color: theme.$amino-gray-700;
+  }
+
+  .helpTitle {
+    color: theme.$amino-gray-400;
+  }
+
+  .helpRow {
+    color: theme.$amino-gray-300;
+  }
+
+  .helpKeys kbd {
+    background: theme.$amino-gray-700;
+    border-color: theme.$amino-gray-600;
+    color: theme.$amino-gray-300;
+  }
+
+  .helpTip {
+    color: theme.$amino-gray-400;
+  }
+
+  .viewTabs {
+    background: theme.$amino-gray-800;
+  }
+
+  .viewTab {
+    color: theme.$amino-gray-400;
+
+    &:hover {
+      color: theme.$amino-gray-200;
+      background: theme.$amino-gray-700;
+    }
+
+    &.active {
+      background: theme.$amino-gray-700;
+      color: theme.$amino-blue-400;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+      svg {
+        color: theme.$amino-blue-400;
+      }
+    }
+  }
+
+  .sortTabs {
+    border-left-color: theme.$amino-gray-700;
+  }
+
+  .sortLabel {
+    color: theme.$amino-gray-500;
+  }
+
+  .sortTab {
+    color: theme.$amino-gray-500;
+
+    &:hover {
+      color: theme.$amino-gray-300;
+      background: theme.$amino-gray-700;
+    }
+
+    &.active {
+      background: theme.$amino-blue-900;
+      color: theme.$amino-blue-300;
+    }
+  }
+
+  .breadcrumb {
+    background: theme.$amino-gray-800;
+    border-bottom-color: theme.$amino-gray-700;
+  }
+
+  .breadcrumbItem {
+    color: theme.$amino-blue-400;
+
+    &:hover {
+      background: theme.$amino-gray-700;
+    }
+  }
+
+  .breadcrumbSeparator {
+    color: theme.$amino-gray-600;
+  }
+
+  .columnsContainer {
+    background: theme.$amino-gray-900;
+  }
+
+  .column {
+    background: theme.$amino-gray-800;
+    border-right-color: theme.$amino-gray-700;
+  }
+
+  .columnItem {
+    &:hover {
+      background: theme.$amino-gray-700;
+    }
+
+    &.selected {
+      background: theme.$amino-blue-600;
+
+      .typeIcon {
+        background: theme.$amino-blue-500;
+        color: white;
+      }
+
+      .itemKey {
+        color: white;
+      }
+
+      .itemPreview {
+        color: theme.$amino-blue-200;
+      }
+
+      .chevronWrapper {
+        &:hover {
+          background: theme.$amino-blue-500;
+        }
+      }
+
+      .chevron {
+        color: theme.$amino-blue-200;
+      }
+    }
+
+    &.expanded {
+      background: theme.$amino-blue-900;
+
+      .typeIcon {
+        background: theme.$amino-blue-800;
+        color: theme.$amino-blue-300;
+      }
+
+      .itemKey {
+        color: theme.$amino-blue-200;
+      }
+
+      .itemPreview {
+        color: theme.$amino-blue-400;
+      }
+
+      .chevron {
+        color: theme.$amino-blue-400;
+      }
+    }
+
+    &.selected.expanded {
+      background: theme.$amino-blue-600;
+
+      .typeIcon {
+        background: theme.$amino-blue-500;
+        color: white;
+      }
+
+      .itemKey {
+        color: white;
+      }
+
+      .itemPreview {
+        color: theme.$amino-blue-200;
+      }
+
+      .chevron {
+        color: theme.$amino-blue-200;
+      }
+    }
+  }
+
+  .chevronWrapper {
+    &:hover {
+      background: theme.$amino-gray-700;
+    }
+  }
+
+  .typeIcon {
+    color: theme.$amino-gray-400;
+    background: theme.$amino-gray-700;
+  }
+
+  .itemKey {
+    color: theme.$amino-gray-200;
+  }
+
+  .itemPreview {
+    color: theme.$amino-gray-500;
+  }
+
+  .previewPanel {
+    background: theme.$amino-gray-800;
+    border-left-color: theme.$amino-gray-700;
+  }
+
+  .valueColumn {
+    background: theme.$amino-gray-800;
+    border-right-color: theme.$amino-gray-700;
+  }
+
+  .valueColumnRow {
+    background: theme.$amino-blue-600;
+
+    .typeIcon {
+      background: theme.$amino-blue-500;
+      color: white;
+    }
+  }
+
+  .valueColumnName {
+    color: white;
+  }
+
+  .valueColumnString {
+    color: theme.$amino-orange-200;
+  }
+
+  .valueColumnNumber {
+    color: theme.$amino-blue-200;
+  }
+
+  .valueColumnBoolean {
+    color: theme.$amino-purple-200;
+  }
+
+  .valueColumnNull {
+    color: theme.$amino-blue-200;
+  }
+
+  .pathRoot {
+    color: theme.$amino-gray-500;
+  }
+
+  .previewHeader {
+    background: linear-gradient(to bottom, theme.$amino-gray-800, transparent);
+    border-bottom-color: theme.$amino-gray-700;
+  }
+
+  .previewPath {
+    color: theme.$amino-blue-400;
+  }
+
+  .previewFullPath {
+    color: theme.$amino-gray-500;
+  }
+
+  .typeBadge {
+    background: theme.$amino-gray-700;
+    color: theme.$amino-gray-300;
+  }
+
+  .stringValue {
+    color: theme.$amino-orange-400;
+    background: rgba(theme.$amino-orange-600, 0.15);
+  }
+
+  .numberValue {
+    color: theme.$amino-blue-400;
+    background: rgba(theme.$amino-blue-600, 0.15);
+  }
+
+  .booleanValue {
+    color: theme.$amino-purple-400;
+    background: rgba(theme.$amino-purple-600, 0.15);
+  }
+
+  .nullValue {
+    color: theme.$amino-gray-500;
+    background: theme.$amino-gray-800;
+  }
+
+  .jsonPreview {
+    background: theme.$amino-gray-800;
+  }
+
+  .jsonKey {
+    color: theme.$amino-blue-400;
+  }
+
+  .jsonString {
+    color: theme.$amino-orange-400;
+  }
+
+  .jsonNumber {
+    color: theme.$amino-purple-400;
+  }
+
+  .jsonBoolean {
+    color: theme.$amino-cyan-400;
+  }
+
+  .jsonNull {
+    color: theme.$amino-gray-500;
+  }
+
+  .jsonBracket,
+  .jsonBrace {
+    color: theme.$amino-gray-500;
+  }
+
+  .jsonColon,
+  .jsonComma {
+    color: theme.$amino-gray-600;
+  }
+
+  .treeRow {
+    &:hover {
+      background: theme.$amino-gray-800;
+    }
+  }
+
+  .treeRowSelected {
+    background: theme.$amino-gray-700;
+
+    &:hover {
+      background: theme.$amino-gray-600;
+    }
+  }
+
+  .treeTypeIcon {
+    color: theme.$amino-gray-400;
+    background: theme.$amino-gray-700;
+  }
+
+  .treeKey {
+    color: theme.$amino-gray-200;
+  }
+
+  .treeColon {
+    color: theme.$amino-gray-600;
+  }
+
+  .treePreview {
+    color: theme.$amino-gray-600;
+  }
+
+  .treeCopyBtn {
+    background: theme.$amino-gray-700;
+    color: theme.$amino-gray-400;
+
+    &:hover {
+      background: theme.$amino-gray-600;
+      color: theme.$amino-gray-200;
+    }
+  }
+
+  .editorToolbar {
+    background: theme.$amino-gray-900;
+    border-bottom-color: theme.$amino-gray-700;
+  }
+
+  .editorContent {
+    background: #1a1a2e;
+  }
+
+  .lineNumbers {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .editorCode {
+    color: theme.$amino-gray-100;
+  }
+}
