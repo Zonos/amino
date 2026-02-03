@@ -50,6 +50,7 @@ import './components/help-text/HelpText';
 import './components/input/input-simple/InputSimple';
 import './components/input/Input';
 import './components/input/MultiInput';
+import './components/json-vision-viewer/JsonVisionViewer';
 import './components/layout/Layout';
 import './components/layout/NavigationGroup';
 import './components/lightbox/LightBox';
