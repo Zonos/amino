@@ -9,6 +9,11 @@ import type { BaseProps } from 'src/types/BaseProps';
 import styles from './Switch.module.scss';
 
 export type SwitchProps = BaseProps & {
+  /**
+   * Accessible label for screen readers when no visible label is provided.
+   * Use this when the switch has icons but no text label.
+   */
+  'aria-label'?: string;
   checked: boolean;
   disabled?: boolean;
   label?: string;
@@ -93,6 +98,7 @@ export type SwitchProps = BaseProps & {
  * />
  */
 export const Switch = ({
+  'aria-label': ariaLabel,
   checked,
   className,
   disabled,
@@ -122,6 +128,7 @@ export const Switch = ({
       style={style}
     >
       <input
+        aria-label={!hasLabel && ariaLabel ? ariaLabel : undefined}
         checked={checked}
         id={id}
         onChange={() => !disabled && onChange(!checked)}
