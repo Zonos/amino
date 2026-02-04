@@ -7,7 +7,7 @@ import {
   statSync,
   writeFileSync,
 } from 'node:fs';
-import { type Mocked, vi } from 'vitest';
+import { vi } from 'vitest';
 
 const filesContent: Record<string, string> = {};
 

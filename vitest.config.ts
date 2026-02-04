@@ -1,9 +1,12 @@
 import path from 'path';
 import { defineConfig } from 'vitest/config';
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
 
 process.env.TZ = 'America/Denver';
 
-export default defineConfig({
+// @ts-expect-error - Vitest config is async (the only way it will work with storybookTest)
+export default defineConfig(async () => ({
   resolve: {
     alias: {
       '.storybook': path.resolve(__dirname, './.storybook'),
@@ -20,18 +23,45 @@ export default defineConfig({
     },
   },
   test: {
-    environment: 'jsdom',
-    exclude: [
-      '**/node_modules/**',
-      '**/__stories__/storyshots',
-      '**/storyshots.test.ts',
-      '**/dist',
+    // Test projects for Vitest 4.0+
+    projects: [
+      {
+        // Default project for regular unit tests
+        test: {
+          name: 'unit',
+          environment: 'jsdom',
+          exclude: [
+            '**/node_modules/**',
+            '**/__stories__/storyshots',
+            '**/storyshots.test.ts',
+            '**/dist',
+          ],
+          globals: true,
+          include: ['**/*.test.ts'],
+          setupFiles: ['dotenv/config', 'test-utils/setup.ts'],
+          snapshotFormat: {
+            escapeString: false,
+          },
+        },
+      },
+      {
+        // Storybook project for component tests
+        plugins: [
+          await storybookTest({
+            configDir: path.join(__dirname, '.storybook'),
+          }),
+        ],
+        test: {
+          name: 'storybook',
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({ launchOptions: { headless: true } }),
+            instances: [{ browser: 'chromium' }],
+          },
+          setupFiles: ['./.storybook/vitest.setup.ts'],
+        },
+      },
     ],
-    globals: true,
-    include: ['**/*.test.ts'],
-    setupFiles: ['dotenv/config', 'test-utils/setup.ts'],
-    snapshotFormat: {
-      escapeString: false,
-    },
   },
-});
+}));
