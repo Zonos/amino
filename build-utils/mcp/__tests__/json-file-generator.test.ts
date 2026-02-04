@@ -16,7 +16,7 @@ import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 vi.mock('fs', () => ({
   existsSync: vi.fn(),
   mkdirSync: vi.fn(),
-  writeFileSync: vi.fn(),
+  writeFileSync: vi.fn(() => {}),
 }));
 
 // Mock path module to return predictable paths
@@ -30,6 +30,8 @@ vi.mock('path', () => ({
 describe('JSON File Generator', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Reset writeFileSync to default no-op implementation
+    vi.mocked(fs.writeFileSync).mockImplementation(() => {});
   });
 
   afterEach(() => {

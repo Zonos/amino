@@ -73,9 +73,17 @@ export const setStateUrl = <Value>({
   } finally {
     if (urlParams.toString() === '') {
       // Just remove the ? if there are no params
-      window.history.replaceState(null, '', window.location.pathname);
+      const path = window.location.pathname || '/';
+      const hash = window.location.hash || '';
+      window.history.replaceState(null, '', path + hash);
     } else {
-      window.history.replaceState(null, '', `?${urlParams.toString()}`);
+      const path = window.location.pathname || '/';
+      const hash = window.location.hash || '';
+      window.history.replaceState(
+        null,
+        '',
+        `${path}?${urlParams.toString()}${hash}`,
+      );
     }
   }
 };

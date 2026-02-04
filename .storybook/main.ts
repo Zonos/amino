@@ -97,6 +97,6 @@ const storybookConfig: StorybookConfig = {
     );
 
     return config;
-  },  
+  },
 };
 export default storybookConfig;

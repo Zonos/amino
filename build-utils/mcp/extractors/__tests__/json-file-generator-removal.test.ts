@@ -2,16 +2,16 @@
 import { generateComponentFiles } from 'build-utils/mcp/extractors/json-file-generator';
 import type { ComponentDocumentation } from 'build-utils/mcp/types';
 import * as fs from 'fs';
-import { describe, expect, vi } from 'vitest';
+import { beforeEach, describe, expect, vi } from 'vitest';
+
+// Mock fs module
+vi.mock('fs', () => ({
+  writeFileSync: vi.fn(),
+}));
 
 describe('json-file-generator component file generation', () => {
-  // Mock fs.writeFileSync to capture the written content
-  const writeFileSyncMock = vi
-    .spyOn(fs, 'writeFileSync')
-    .mockImplementation(() => {});
-
   beforeEach(() => {
-    writeFileSyncMock.mockClear();
+    vi.clearAllMocks();
   });
 
   test('should not include generatedAt field in component JSON files', () => {
@@ -40,11 +40,11 @@ describe('json-file-generator component file generation', () => {
     generateComponentFiles(componentDocs, outputDir, true);
 
     // Check that writeFileSync was called
-    expect(writeFileSyncMock).toHaveBeenCalled();
+    expect(fs.writeFileSync).toHaveBeenCalled();
 
     // Get the content that was written
     const fileContent = JSON.parse(
-      writeFileSyncMock.mock.calls[0]?.[1] as string,
+      vi.mocked(fs.writeFileSync).mock.calls[0]?.[1] as string,
     );
 
     // Verify that generatedAt is not in the output
