@@ -196,6 +196,11 @@ const preview: Preview = {
     },
     controls: { exclude: /^on.*/, expanded: true, sort: 'alpha' },
     layout: 'fullscreen',
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
   },
 
   tags: ['autodocs'],
