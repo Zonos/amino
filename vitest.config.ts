@@ -1,7 +1,7 @@
-import path from 'path';
-import { defineConfig } from 'vitest/config';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
+import path from 'path';
+import { defineConfig } from 'vitest/config';
 
 process.env.TZ = 'America/Denver';
 
@@ -28,7 +28,6 @@ export default defineConfig(async () => ({
       {
         // Default project for regular unit tests
         test: {
-          name: 'unit',
           environment: 'jsdom',
           exclude: [
             '**/node_modules/**',
@@ -38,6 +37,7 @@ export default defineConfig(async () => ({
           ],
           globals: true,
           include: ['**/*.test.ts'],
+          name: 'unit',
           setupFiles: ['dotenv/config', 'test-utils/setup.ts'],
           snapshotFormat: {
             escapeString: false,
@@ -52,13 +52,13 @@ export default defineConfig(async () => ({
           }),
         ],
         test: {
-          name: 'storybook',
           browser: {
             enabled: true,
             headless: true,
-            provider: playwright({ launchOptions: { headless: true } }),
             instances: [{ browser: 'chromium' }],
+            provider: playwright({ launchOptions: { headless: true } }),
           },
+          name: 'storybook',
           setupFiles: ['./.storybook/vitest.setup.ts'],
         },
       },

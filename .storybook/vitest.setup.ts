@@ -1,4 +1,5 @@
 import { setProjectAnnotations } from '@storybook/react';
+
 import * as previewAnnotations from './preview';
 
 // Apply the project annotations from your Storybook preview

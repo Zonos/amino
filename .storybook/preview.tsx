@@ -195,12 +195,12 @@ const preview: Preview = {
       disable: true,
     },
     controls: { exclude: /^on.*/, expanded: true, sort: 'alpha' },
-    layout: 'fullscreen',
     docs: {
       source: {
         type: 'code',
       },
     },
+    layout: 'fullscreen',
   },
 
   tags: ['autodocs'],

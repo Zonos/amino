@@ -1,6 +1,6 @@
 module.exports = {
   plugins: {
-    autoprefixer: {},
-    'postcss-preset-env': {},
+    autoprefixer: require('autoprefixer'),
+    'postcss-preset-env': require('postcss-preset-env'),
   },
 };
