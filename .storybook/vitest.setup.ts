@@ -6,6 +6,9 @@ import * as previewAnnotations from './preview';
 const annotations = setProjectAnnotations([previewAnnotations]);
 
 // Run any necessary initialization from Storybook's preview
-if (annotations.beforeAll) {
-  await annotations.beforeAll();
-}
+// Wrap in async IIFE to support await without top-level await
+(async () => {
+  if (annotations.beforeAll) {
+    await annotations.beforeAll();
+  }
+})();
