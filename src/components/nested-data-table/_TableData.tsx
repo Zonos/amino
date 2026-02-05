@@ -122,7 +122,9 @@ export const TableData = <TRow extends Record<string, unknown>>({
     () =>
       Object.entries(rows.find(Boolean) || {})
         // filter all of the columns that are not needed
-        .filter(([key]: [string, unknown]) => key !== 'key' && !key.startsWith('_'))
+        .filter(
+          ([key]: [string, unknown]) => key !== 'key' && !key.startsWith('_'),
+        )
         .flatMap(([key]: [string, unknown]): ColumnType[] => [
           {
             key,
@@ -148,7 +150,9 @@ export const TableData = <TRow extends Record<string, unknown>>({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       colSpan: (args: any) =>
         args.type === 'ROW' && args.row._expandedData.length > 0
-          ? filteredColumns.filter(({ key }: { key: string }) => !key.startsWith('_')).length
+          ? filteredColumns.filter(
+              ({ key }: { key: string }) => !key.startsWith('_'),
+            ).length
           : undefined,
     }));
   }, [columns, hiddenColumns]);

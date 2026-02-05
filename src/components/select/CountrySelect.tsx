@@ -118,13 +118,14 @@ export const CountrySelect = <T extends string>({
   value,
   ...props
 }: CountrySelectProps<T>) => {
-  const filteredOptions: CountryOption<T>[] = countryOptions.flatMap((option: CountryOption<T>) =>
-    filter(option)
-      ? {
-          ...option,
-          icon: <FlagIcon code={option.code as Flag} iconScale="small" />,
-        }
-      : [],
+  const filteredOptions: CountryOption<T>[] = countryOptions.flatMap(
+    (option: CountryOption<T>) =>
+      filter(option)
+        ? {
+            ...option,
+            icon: <FlagIcon code={option.code as Flag} iconScale="small" />,
+          }
+        : [],
   );
 
   const selected = filteredOptions.filter(x => x.value === value);
