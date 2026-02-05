@@ -7,5 +7,5 @@ const annotations = setProjectAnnotations([previewAnnotations]);
 
 // Run any necessary initialization from Storybook's preview
 if (annotations.beforeAll) {
-  annotations.beforeAll();
+  await annotations.beforeAll();
 }

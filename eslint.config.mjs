@@ -30,7 +30,7 @@ const ignoreConfig = {
     '.github',
     '.next',
     '.next/**/*',
-    'postcss.config.cjs',
+    'postcss.config.mjs',
   ],
 };
 
