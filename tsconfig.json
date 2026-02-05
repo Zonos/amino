@@ -12,6 +12,8 @@
       "es2015",
       "es2016",
       "es2017",
+      "es2018",
+      "es2019",
       "dom"
     ],
     "module": "ESNext",
@@ -23,7 +25,8 @@
     "strictNullChecks": true,
     "target": "es5",
     "types": [
-      "vitest/globals"
+      "vitest/globals",
+      "node"
     ],
     "verbatimModuleSyntax": true,
     "paths": {
@@ -97,7 +100,7 @@
     "eslint.config.mjs",
     "eslint.config.prod.mjs",
     "prettier.config.mjs",
-    "postcss.config.cjs",
+    "postcss.config.mjs",
     "test-utils",
     "tsconfig.json",
     "vitest.config.ts",

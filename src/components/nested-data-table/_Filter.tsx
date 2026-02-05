@@ -57,7 +57,9 @@ export const Filter = ({
           hideSelectedOptions={false}
           label={translate({ languageCode, text: 'Hide column' })}
           onChange={_hiddenColumns => {
-            setHiddenColumns(_hiddenColumns.flatMap(column => [column.value]));
+            setHiddenColumns(
+              Array.from(_hiddenColumns).flatMap((column: { label: string; value: string }) => [column.value]),
+            );
           }}
           options={hideColumnOptions}
           value={hideColumnOptions.filter(col =>

@@ -118,7 +118,7 @@ export const CountrySelect = <T extends string>({
   value,
   ...props
 }: CountrySelectProps<T>) => {
-  const filteredOptions: CountryOption<T>[] = countryOptions.flatMap(option =>
+  const filteredOptions: CountryOption<T>[] = countryOptions.flatMap((option: CountryOption<T>) =>
     filter(option)
       ? {
           ...option,
