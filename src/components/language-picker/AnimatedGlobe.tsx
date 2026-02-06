@@ -568,7 +568,9 @@ export const AnimatedGlobe = ({ size = 160 }: AnimatedGlobeProps) => {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
+      height={size}
       style={{ height: size, width: size }}
+      width={size}
     />
   );
 };

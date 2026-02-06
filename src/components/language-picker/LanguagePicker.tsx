@@ -47,17 +47,29 @@ export type Language = {
 export type LanguagePickerProps = BaseProps & {
   /** Currently selected language code */
   currentLanguage: string;
-  /** Custom header description text */
+  /**
+   * Custom header description text
+   * @default 'Select your preferred language for the best experience. Content will be displayed in your chosen language across the platform.'
+   */
   description?: string;
   /** List of available languages */
   languages: Language[];
   /** Called when user confirms language selection */
   onLanguageSelect: (code: string) => void;
-  /** Optional: Custom regions for filtering tabs */
+  /**
+   * Optional: Custom regions for filtering tabs
+   * @default ['Americas', 'Europe', 'Asia Pacific', 'Middle East & Africa']
+   */
   regions?: readonly string[];
-  /** Optional: Enable region filtering tabs */
+  /**
+   * Optional: Enable region filtering tabs
+   * @default true
+   */
   showRegionTabs?: boolean;
-  /** Custom header title */
+  /**
+   * Custom header title
+   * @default 'Choose your language'
+   */
   title?: string;
   /** Custom button to open the picker. If not provided, a default trigger button is rendered. */
   trigger?: ReactNode;
@@ -114,12 +126,14 @@ export const LanguagePicker = ({
   );
 
   useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -157,6 +171,7 @@ export const LanguagePicker = ({
     <>
       {trigger ? (
         <div
+          aria-label="Open language picker"
           className={className}
           onClick={() => setIsOpen(true)}
           onKeyDown={e => {
@@ -187,15 +202,9 @@ export const LanguagePicker = ({
 
       {isOpen && (
         <div
+          aria-hidden="true"
           className={styles.overlay}
           onClick={handleClose}
-          onKeyDown={e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              handleClose();
-            }
-          }}
-          role="button"
-          tabIndex={-1}
         >
           <div
             aria-label="Select language"
@@ -250,6 +259,7 @@ export const LanguagePicker = ({
               <div className={styles.searchContainer}>
                 <SearchIcon className={styles.searchIcon} size={16} />
                 <input
+                  aria-label="Search languages"
                   className={styles.searchInput}
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder="Search languages..."
@@ -260,13 +270,16 @@ export const LanguagePicker = ({
 
               {/* Region tabs */}
               {showRegionTabs && (
-                <div className={styles.regionTabs}>
+                <div className={styles.regionTabs} role="tablist">
                   <button
+                    aria-pressed={!activeRegion}
+                    aria-selected={!activeRegion}
                     className={clsx(
                       styles.regionTab,
                       !activeRegion && styles.regionTabActive,
                     )}
                     onClick={() => setActiveRegion(null)}
+                    role="tab"
                     type="button"
                   >
                     All regions
@@ -274,13 +287,14 @@ export const LanguagePicker = ({
                   {regions.map(region => (
                     <button
                       key={region}
+                      aria-pressed={activeRegion === region}
+                      aria-selected={activeRegion === region}
                       className={clsx(
                         styles.regionTab,
                         activeRegion === region && styles.regionTabActive,
                       )}
-                      onClick={() =>
-                        setActiveRegion(region === activeRegion ? null : region)
-                      }
+                      onClick={() => setActiveRegion(region)}
+                      role="tab"
                       type="button"
                     >
                       {region}
