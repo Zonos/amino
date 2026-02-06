@@ -1,4 +1,4 @@
-import { type MouseEvent, useState } from 'react';
+import { type ComponentType, type MouseEvent, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
 
@@ -15,8 +15,9 @@ const NavigationGroupMeta: Meta = {
   parameters: {
     docs: { source: { type: 'code' } },
   },
-  // @ts-expect-error subcomponents don't seem to be working
-  subcomponents: { NavigationItem },
+  subcomponents: {
+    NavigationItem,
+  } as Record<string, ComponentType<unknown>>,
 };
 
 export default NavigationGroupMeta;

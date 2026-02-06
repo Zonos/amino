@@ -156,7 +156,7 @@ describe('setStateUrl', () => {
 
 describe('useStateUrl', () => {
   beforeEach(() => {
-    window.history.replaceState({}, '', '?');
+    window.history.replaceState({}, '', '/');
   });
 
   test('simple string', () => {

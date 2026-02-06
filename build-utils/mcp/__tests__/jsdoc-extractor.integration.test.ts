@@ -20,8 +20,53 @@ vi.mock('app/environment', () => ({
 }));
 
 // Mock fs and path modules
-vi.mock('fs');
-vi.mock('path');
+vi.mock('fs', async importOriginal => {
+  const actual = await importOriginal();
+  const mockExistsSync = vi.fn();
+  const mockReadFileSync = vi.fn();
+  const mockReaddirSync = vi.fn();
+  const mockStatSync = vi.fn();
+
+  const mockFs = {
+    ...(actual as Record<string, unknown>),
+    existsSync: mockExistsSync,
+    readFileSync: mockReadFileSync,
+    readdirSync: mockReaddirSync,
+    statSync: mockStatSync,
+  };
+
+  return {
+    ...mockFs,
+    default: mockFs,
+    existsSync: mockExistsSync,
+    readFileSync: mockReadFileSync,
+    readdirSync: mockReaddirSync,
+    statSync: mockStatSync,
+  };
+});
+
+vi.mock('path', async importOriginal => {
+  const actual = await importOriginal();
+  const mockBasename = vi.fn();
+  const mockJoin = vi.fn();
+  const mockRelative = vi.fn();
+
+  // Create a mock default export that matches the structure
+  const mockPath = {
+    ...(actual as Record<string, unknown>),
+    basename: mockBasename,
+    join: mockJoin,
+    relative: mockRelative,
+  };
+
+  return {
+    ...mockPath,
+    basename: mockBasename,
+    default: mockPath,
+    join: mockJoin,
+    relative: mockRelative,
+  };
+});
 
 // Create mock JSDoc comments
 const buttonImplJSDoc = `/**
@@ -158,40 +203,54 @@ export { Button } from './Button';
     );
 
     // Fix the Dirent[] type issue by providing a mock implementation that returns proper Dirent objects
-    vi.mocked(fs.readdirSync).mockImplementation((dirPath: PathLike) => {
+    const mockReaddirSync = (
+      dirPath: PathLike,
+      options?: { encoding?: BufferEncoding | null; withFileTypes?: boolean },
+    ) => {
       if (dirPath === '/components/button') {
-        // Create mock Dirent objects
-        return ['index.tsx', 'Button.tsx'].map(name => ({
-          isBlockDevice: () => false,
-          isCharacterDevice: () => false,
-          isDirectory: () => false,
-          isFIFO: () => false,
-          isFile: () => true,
-          isSocket: () => false,
-          isSymbolicLink: () => false,
-          name,
-        })) as unknown as fs.Dirent[];
+        // If withFileTypes is true, return Dirent objects
+        if (options?.withFileTypes) {
+          return ['index.tsx', 'Button.tsx'].map(name => ({
+            isBlockDevice: () => false,
+            isCharacterDevice: () => false,
+            isDirectory: () => false,
+            isFIFO: () => false,
+            isFile: () => true,
+            isSocket: () => false,
+            isSymbolicLink: () => false,
+            name,
+          })) as unknown as fs.Dirent[];
+        }
+        // Otherwise return string array
+        return ['index.tsx', 'Button.tsx'] as unknown as string[];
       }
-      return [] as unknown as fs.Dirent[];
-    });
+      if (options?.withFileTypes) {
+        return [] as unknown as fs.Dirent[];
+      }
+      return [] as unknown as string[];
+    };
+
+    vi.mocked(fs.readdirSync).mockImplementation(
+      mockReaddirSync as unknown as typeof fs.readdirSync,
+    );
 
     vi.mocked(fs.statSync).mockReturnValue({
       isDirectory: () => true,
     } as fs.Stats);
 
     // Mock path module implementations
-    vi.mocked(path.join).mockImplementation((...paths: string[]): string =>
-      paths.join('/'),
-    );
-
-    vi.mocked(path.basename).mockImplementation((filePath: string): string => {
+    // Note: path is imported as default, so we need to mock both named and default exports
+    const mockJoin = (...paths: string[]): string => paths.join('/');
+    const mockBasename = (filePath: string): string => {
+      if (!filePath) return '';
       const parts = filePath.split('/');
       return parts[parts.length - 1] || '';
-    });
+    };
+    const mockRelative = (_from: string, to: string): string => to;
 
-    vi.mocked(path.relative).mockImplementation(
-      (_from: string, to: string): string => to,
-    );
+    vi.mocked(path.join).mockImplementation(mockJoin);
+    vi.mocked(path.basename).mockImplementation(mockBasename);
+    vi.mocked(path.relative).mockImplementation(mockRelative);
 
     // Set up mock file system with our test files
     mockFileSystem['/components/button/Button.tsx'] =

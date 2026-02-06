@@ -1,5 +1,10 @@
 import { glob } from 'glob';
-import capitalize from 'lodash/capitalize';
+import capitalize from 'lodash/capitalize.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
 type StorySpecifier = {

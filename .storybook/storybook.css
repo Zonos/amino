@@ -24,9 +24,112 @@ html, body, #storybook-root, #root {
   padding: 0 !important;
 }
 
-/* Ensure story content fills available space */
-.sb-story > div,
-.docs-story > div {
-  height: 100% !important;
+/* Style the "Show code" button in docs view */
+/* Ensure the preview container is a flex container and full width */
+.docs-story .sbdocs-preview {
+  display: flex !important;
+  flex-direction: column !important;
   min-height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure parent containers are full width */
+.docs-story,
+.docs-story > div,
+.sbdocs-preview {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Make sure the code block container doesn't overflow */
+.docs-story .os-host,
+.docs-story .sbdocs-preview > div:first-child:not(button) {
+  flex: 1 !important;
+  overflow: auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+}
+
+/* Target the button container to ensure it's full width */
+.docs-story .sbdocs-preview > *:last-child:is(button),
+.docs-story .sbdocs-preview > div:has(button),
+.docs-story .sbdocs-preview > div:last-child {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Target the code toggle button - ensure it's visible, full width, and at the bottom */
+.docs-story button[aria-label*="code" i],
+.docs-story button[aria-label*="Show code" i],
+.docs-story button[aria-label*="Hide code" i],
+.docs-story [data-testid="show-code-button"],
+.docs-story .sbdocs-code-toggle,
+.docs-story button:has([class*="code"]),
+.docs-story [class*="code-toggle"],
+.docs-story [class*="show-code"],
+.docs-story [class*="CodeToggle"],
+.docs-story [class*="sbdocs"] button,
+.docs-story .sbdocs-preview button,
+.docs-story .sbdocs-preview > button {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 32px !important;
+  max-height: 48px !important;
+  margin: 0 !important;
+  margin-top: auto !important;
+  padding: 8px 16px !important;
+  border-radius: 0 !important;
+  border-top: 1px solid var(--amino-border-color, #eaeaec) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Target code button inside iframes (for side-by-side view) */
+iframe .docs-story button[aria-label*="code" i],
+iframe .docs-story button[aria-label*="Show code" i],
+iframe .docs-story button[aria-label*="Hide code" i],
+iframe .docs-story [class*="code-toggle"],
+iframe .docs-story [class*="show-code"],
+iframe .docs-story [class*="sbdocs"] button,
+iframe .docs-story .sbdocs-preview button,
+iframe .docs-story .sbdocs-preview > button {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 32px !important;
+  max-height: 48px !important;
+  margin: 0 !important;
+  margin-top: auto !important;
+  padding: 8px 16px !important;
+  border-radius: 0 !important;
+  border-top: 1px solid var(--amino-border-color, #eaeaec) !important;
+  background: var(--amino-surface-color, white) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure iframe containers are full width */
+iframe .docs-story,
+iframe .docs-story > div,
+iframe .sbdocs-preview {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }

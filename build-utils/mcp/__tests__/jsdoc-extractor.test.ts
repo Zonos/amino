@@ -14,8 +14,16 @@ import * as path from 'path';
 import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock fs and path modules
-vi.mock('fs');
-vi.mock('path');
+vi.mock('fs', () => ({
+  existsSync: vi.fn(),
+  readFileSync: vi.fn(),
+}));
+
+vi.mock('path', () => ({
+  basename: vi.fn(),
+  join: vi.fn(),
+  relative: vi.fn(),
+}));
 
 // Mock TypeScript module - we'll use a different approach
 vi.mock('typescript', () => ({

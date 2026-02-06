@@ -122,8 +122,10 @@ export const TableData = <TRow extends Record<string, unknown>>({
     () =>
       Object.entries(rows.find(Boolean) || {})
         // filter all of the columns that are not needed
-        .filter(([key]) => key !== 'key' && !key.startsWith('_'))
-        .flatMap(([key]): ColumnType[] => [
+        .filter(
+          ([key]: [string, unknown]) => key !== 'key' && !key.startsWith('_'),
+        )
+        .flatMap(([key]: [string, unknown]): ColumnType[] => [
           {
             key,
             name: key,
@@ -135,18 +137,22 @@ export const TableData = <TRow extends Record<string, unknown>>({
 
   const filteredHiddenColumns: ColumnType[] = useMemo(() => {
     const filteredColumns = columns.filter(
-      column => !hiddenColumns.includes(column.key),
+      (column: ColumnType) => !hiddenColumns.includes(column.key),
     );
-    return filteredColumns.map(column => ({
+    return filteredColumns.map((column: ColumnType) => ({
       ...column,
-      cellClass: args =>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      cellClass: (args: any) =>
         args._expandedKey === column.key || args._expandedData.length > 0
           ? 'expanding'
           : '',
       // if the column is a nested column, expand the colSpan to the full width
-      colSpan: args =>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      colSpan: (args: any) =>
         args.type === 'ROW' && args.row._expandedData.length > 0
-          ? filteredColumns.filter(({ key }) => !key.startsWith('_')).length
+          ? filteredColumns.filter(
+              ({ key }: { key: string }) => !key.startsWith('_'),
+            ).length
           : undefined,
     }));
   }, [columns, hiddenColumns]);

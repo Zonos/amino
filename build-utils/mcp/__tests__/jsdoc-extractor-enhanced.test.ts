@@ -11,8 +11,19 @@ import * as path from 'path';
 import { afterEach, beforeEach, describe, expect, vi } from 'vitest';
 
 // Mock modules
-vi.mock('fs');
-vi.mock('path');
+vi.mock('fs', () => ({
+  existsSync: vi.fn(),
+  readFileSync: vi.fn(),
+  readdirSync: vi.fn(),
+  statSync: vi.fn(),
+}));
+
+vi.mock('path', () => ({
+  basename: vi.fn(),
+  dirname: vi.fn(),
+  join: vi.fn(),
+  relative: vi.fn(),
+}));
 vi.mock('../extractors/jsdoc-extractor', () => ({
   extractComponentDocumentation: vi.fn((componentDir: string) => {
     const componentName = path.basename(componentDir);

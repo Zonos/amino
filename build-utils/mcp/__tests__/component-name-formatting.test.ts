@@ -17,8 +17,13 @@ function formatComponentName(componentName: string): string {
 }
 
 // Mock fs and path modules
-vi.mock('fs');
-vi.mock('path');
+vi.mock('fs', () => ({
+  existsSync: vi.fn(),
+}));
+
+vi.mock('path', () => ({
+  basename: vi.fn(),
+}));
 
 describe('Component Name Formatting', () => {
   // Set up mock filesystem

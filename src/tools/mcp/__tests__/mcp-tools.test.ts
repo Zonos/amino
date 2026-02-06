@@ -11,11 +11,11 @@ import {
 
 // Mock the MCPClient class
 vi.mock('../client', () => {
-  const MockMCPClient = vi.fn(() => ({
-    findComponentByName: vi.fn(),
-    getComponentDetails: vi.fn(),
-    listComponents: vi.fn(),
-  }));
+  class MockMCPClient {
+    findComponentByName = vi.fn();
+    getComponentDetails = vi.fn();
+    listComponents = vi.fn();
+  }
   return { MCPClient: MockMCPClient };
 });
 

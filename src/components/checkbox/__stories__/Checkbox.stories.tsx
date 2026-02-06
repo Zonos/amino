@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { Checkbox, type CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Flex } from 'src/components/flex/Flex';
