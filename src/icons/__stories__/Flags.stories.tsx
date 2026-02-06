@@ -9,7 +9,6 @@ import { flagIconsList } from 'src/icons/__stories__/FlagsList';
 import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 
-
 const meta: Meta = {
   component: FlagIcon,
 };
@@ -86,7 +85,12 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
             );
 
             return (
-              <div key={iconName} className={clsx('flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4')}>
+              <div
+                key={iconName}
+                className={clsx(
+                  'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
+                )}
+              >
                 <Suspense key={iconName} fallback={<div>Loading...</div>}>
                   <IconComponent
                     borderRadius={getBorderRadius(iconScale)}

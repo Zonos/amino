@@ -168,7 +168,11 @@ export const Checkbox = ({
 
   return (
     <label
-      className={cn('cursor-pointer', 'focus-within:outline-none [&:has(input:focus-visible)]:shadow-(--amino-glow-blue)', className)}
+      className={cn(
+        'cursor-pointer',
+        'focus-within:outline-none [&:has(input:focus-visible)]:shadow-(--amino-glow-blue)',
+        className,
+      )}
       htmlFor={id}
       style={{
         ...style,

@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 
 import type { Meta } from '@storybook/react';
 
-
 const meta: Meta = {
   title: 'Box Shadows',
 };

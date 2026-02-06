@@ -5,7 +5,6 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
 
-
 const meta: Meta = {
   parameters: {
     design: {

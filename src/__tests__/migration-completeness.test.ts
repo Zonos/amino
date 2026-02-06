@@ -192,9 +192,7 @@ describe('Migration: Phase 5 — MUI Removal', () => {
   const testFile = 'src/__tests__/migration-completeness.test.ts';
 
   it('no @mui/material imports in src/', () => {
-    const tsxFiles = glob
-      .sync('src/**/*.{ts,tsx}')
-      .filter(f => f !== testFile);
+    const tsxFiles = glob.sync('src/**/*.{ts,tsx}').filter(f => f !== testFile);
     const muiImports = tsxFiles.filter(f => {
       const content = fs.readFileSync(f, 'utf-8');
       return content.includes('@' + 'mui/material');
@@ -203,9 +201,7 @@ describe('Migration: Phase 5 — MUI Removal', () => {
   });
 
   it('no @emotion imports in src/', () => {
-    const tsxFiles = glob
-      .sync('src/**/*.{ts,tsx}')
-      .filter(f => f !== testFile);
+    const tsxFiles = glob.sync('src/**/*.{ts,tsx}').filter(f => f !== testFile);
     const emotionImports = tsxFiles.filter(f => {
       const content = fs.readFileSync(f, 'utf-8');
       return content.includes('@' + 'emotion/');

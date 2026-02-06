@@ -11,7 +11,6 @@ import { SearchIcon } from 'src/icons/SearchIcon';
 import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
 
-
 const IconsMeta: Meta = {
   component: MailDuotoneIcon,
 };
