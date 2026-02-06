@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 
 type IPoint = {
@@ -303,7 +304,7 @@ export type AnimatedGlobeProps = {
   size?: number;
 };
 
-export const AnimatedGlobe = ({ size = 160 }: AnimatedGlobeProps) => {
+export const AnimatedGlobe = ({ size = 160 }: AnimatedGlobeProps): ReactNode => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
   const rotationRef = useRef<number>(0);

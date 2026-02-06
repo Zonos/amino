@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
@@ -37,7 +38,7 @@ export const LanguageItem = ({
   nativeName,
   onSelect,
   showEnglishName,
-}: LanguageItemProps) => {
+}: LanguageItemProps): ReactNode => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

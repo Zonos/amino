@@ -151,6 +151,7 @@ export const LanguagePicker = ({
           onClick={() => setIsOpen(true)}
           onKeyDown={e => {
             if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
               setIsOpen(true);
             }
           }}
@@ -176,17 +177,12 @@ export const LanguagePicker = ({
       )}
 
       {isOpen && (
-        <div
-          aria-hidden="true"
-          className={styles.overlay}
-          onClick={handleClose}
-        >
+        <div className={styles.overlay} onClick={handleClose}>
           <div
             aria-label="Select language"
             aria-modal="true"
             className={styles.modal}
             onClick={e => e.stopPropagation()}
-            onKeyDown={e => e.stopPropagation()}
             role="dialog"
           >
             {/* Header with globe */}
