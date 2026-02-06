@@ -18,19 +18,19 @@ type IFloatingDot = {
 };
 
 const GLOBE_COLORS = {
-  border: 'rgba(14, 116, 144, 0.2)',
-  connectionLines: 'rgba(14, 116, 144, 0.15)',
-  continentFill: 'rgba(14, 116, 144, 0.15)',
+  border: 'rgba(37, 99, 235, 0.2)',
+  connectionLines: 'rgba(37, 99, 235, 0.15)',
+  continentFill: 'rgba(37, 99, 235, 0.15)',
   dots: [
-    'rgba(14, 116, 144, 0.9)',
-    'rgba(6, 182, 212, 0.85)',
-    'rgba(20, 184, 166, 0.85)',
-    'rgba(59, 130, 246, 0.8)',
-    'rgba(249, 115, 22, 0.85)',
+    'rgba(37, 99, 235, 0.9)',
+    'rgba(59, 130, 246, 0.85)',
+    'rgba(96, 165, 250, 0.85)',
+    'rgba(147, 197, 253, 0.8)',
+    'rgba(37, 99, 235, 0.85)',
   ],
-  glowInner: 'rgba(14, 116, 144, 0.08)',
-  gridLines: 'rgba(14, 116, 144, 0.12)',
-  landOutline: 'rgba(14, 116, 144, 0.35)',
+  glowInner: 'rgba(37, 99, 235, 0.08)',
+  gridLines: 'rgba(37, 99, 235, 0.12)',
+  landOutline: 'rgba(37, 99, 235, 0.35)',
 };
 
 // Simplified continent outlines (lat, lng pairs)
@@ -326,7 +326,7 @@ export const AnimatedGlobe = ({ size = 160 }: AnimatedGlobeProps) => {
 
     const floatingDots: IFloatingDot[] = CITIES.map((city, i) => {
       const colorIndex = i % GLOBE_COLORS.dots.length;
-      const color = GLOBE_COLORS.dots[colorIndex] ?? 'rgba(14, 116, 144, 0.9)';
+      const color = GLOBE_COLORS.dots[colorIndex] ?? 'rgba(37, 99, 235, 0.9)';
       return {
         color,
         point: latLngToPoint(city.lat, city.lng, radius),

@@ -119,7 +119,7 @@
   height: var(--particle-size);
   left: var(--particle-left);
   top: var(--particle-top);
-  background-color: rgba(14, 116, 144, var(--particle-opacity));
+  background-color: rgba(37, 99, 235, var(--particle-opacity));
   animation: float var(--particle-duration) ease-in-out var(--particle-delay)
     infinite alternate;
 }
@@ -151,7 +151,7 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(14, 116, 144, 0.15) 0%,
+    rgba(37, 99, 235, 0.15) 0%,
     transparent 70%
   );
   transform: scale(1.5);
@@ -235,8 +235,8 @@
   }
 
   &:focus {
-    border-color: theme.$amino-cyan-500;
-    box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.1);
+    border-color: theme.$amino-blue-500;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 }
 
@@ -279,12 +279,12 @@
 }
 
 .regionTabActive {
-  background-color: theme.$amino-cyan-600;
+  background-color: theme.$amino-blue-600;
   color: white;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: theme.$amino-cyan-700;
+    background-color: theme.$amino-blue-700;
     color: white;
   }
 }
@@ -355,15 +355,15 @@
 }
 
 .languageItemActive {
-  background-color: rgba(14, 116, 144, 0.05);
-  box-shadow: inset 0 0 0 1px rgba(14, 116, 144, 0.2);
+  background-color: rgba(37, 99, 235, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.2);
 
   &:hover {
-    background-color: rgba(14, 116, 144, 0.08);
+    background-color: rgba(37, 99, 235, 0.08);
   }
 
   .nativeName {
-    color: theme.$amino-cyan-700;
+    color: theme.$amino-blue-700;
   }
 }
 
@@ -398,7 +398,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: theme.$amino-cyan-600;
+  background-color: theme.$amino-blue-600;
   flex-shrink: 0;
 
   svg {
@@ -476,7 +476,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: theme.$amino-cyan-500;
+  background-color: theme.$amino-blue-500;
   animation: pulse 2s ease-in-out infinite;
 }
 
@@ -484,7 +484,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: theme.$amino-radius-8;
-  background-color: theme.$amino-cyan-600;
+  background-color: theme.$amino-blue-600;
   color: white;
   font-size: 14px;
   font-weight: 500;
@@ -493,7 +493,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: theme.$amino-cyan-700;
+    background-color: theme.$amino-blue-700;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
 
