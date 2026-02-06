@@ -4,8 +4,6 @@ import { Card as CardComponent } from 'src/components/card/Card';
 import { GlowWrapper } from 'src/components/glow/GlowWrapper';
 import { getProductDetails, type Product } from 'src/utils/getProductDetails';
 
-import styles from './GlowWrapper.stories.module.scss';
-
 const meta: Meta = {
   component: GlowWrapper,
 };
@@ -36,7 +34,7 @@ export const Card: StoryFn<typeof GlowWrapper> = props => (
 );
 
 export const ProductCards: StoryFn<typeof GlowWrapper> = props => (
-  <div className={styles.wrapper}>
+  <div className="grid w-full grid-cols-3 gap-x-amino-24 gap-y-[40px] pb-amino-20">
     {products.map(product => {
       const { icon, name } = getProductDetails({ iconSize: 40, product });
       return (

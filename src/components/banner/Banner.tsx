@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
+import { cva } from 'class-variance-authority';
 
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
@@ -12,8 +12,25 @@ import { WarningIcon } from 'src/icons/WarningIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
 import type { Intent } from 'src/types/Intent';
+import { cn } from 'src/utils/cn';
 
-import styles from './Banner.module.scss';
+const bannerVariants = cva(
+  'rounded-amino12 p-amino-16 [&_.amino-button]:hover:brightness-110 [&_.amino-button]:focus:brightness-110',
+  {
+    defaultVariants: {
+      intent: 'default',
+    },
+    variants: {
+      intent: {
+        default: 'bg-gray-50 text-gray-800 border border-gray-200',
+        error: 'bg-red-50 text-red-800 border border-red-200',
+        info: 'bg-blue-50 text-blue-800 border border-blue-200',
+        success: 'bg-green-50 text-green-800 border border-green-200',
+        warning: 'bg-orange-50 text-orange-800 border border-orange-200',
+      },
+    },
+  },
+);
 
 export type BannerProps = BaseProps & {
   children?: ReactNode;
@@ -145,20 +162,20 @@ export const Banner = ({
 
     const renderTitle = () =>
       title && (
-        <header className={styles.bannerHeader}>
+        <header className="flex items-center justify-between gap-amino-12">
           <Text color={intentProps.removeIconColor} type="label">
             {title}
           </Text>
           {headerActions && (
-            <div className={styles.actionsWrapper}>{headerActions}</div>
+            <div className="flex items-center gap-amino-8">{headerActions}</div>
           )}
         </header>
       );
 
     const renderFooter = () =>
       footerActions && (
-        <footer className={styles.bannerFooter}>
-          <div className={styles.actionsWrapper}>{footerActions}</div>
+        <footer className="flex items-center gap-amino-12 mt-amino-8">
+          <div className="flex items-center gap-amino-8">{footerActions}</div>
         </footer>
       );
 
@@ -171,22 +188,20 @@ export const Banner = ({
 
     return (
       <div
-        className={styles.container}
+        className="grid"
         style={{
-          '--amino-banner-container-align-items': onlyContent
-            ? 'start'
-            : 'center',
-          '--amino-banner-container-grid-template-columns': `32px auto ${
-            !onClose ? '0px' : '32px'
-          }`,
-          '--amino-banner-header-color': intentProps.removeIconColor,
+          alignItems: onlyContent ? 'start' : 'center',
+          gridTemplateAreas: "'icon header close' '. content .'",
+          gridTemplateColumns: `32px auto ${!onClose ? '0px' : '32px'}`,
         }}
       >
-        <div className={styles.icon}>{intentProps.intentIcon}</div>
+        <div className="[grid-area:icon] justify-self-start">
+          {intentProps.intentIcon}
+        </div>
         {onClose && (
-          <div className={styles.close}>
+          <div className="[grid-area:close] justify-self-end">
             <Button
-              className={clsx(styles.closeButton)}
+              className="w-6"
               icon={
                 <RemoveIcon color={intentProps.removeIconColor} size={20} />
               }
@@ -196,10 +211,15 @@ export const Banner = ({
           </div>
         )}
 
-        <div className={styles.header}>{header}</div>
+        <div
+          className="[grid-area:header] text-amino-base"
+          style={{ color: intentProps.removeIconColor }}
+        >
+          {header}
+        </div>
 
         {content && (
-          <div className={styles.content}>
+          <div className="[grid-area:content] mt-2 flex flex-col gap-amino-8 text-amino-base">
             {content}
             {moreContent}
           </div>
@@ -208,10 +228,9 @@ export const Banner = ({
     );
   };
 
-  const bannerClass = intent ? styles[`${intent}Banner`] : styles.defaultBanner;
   return (
     <div
-      className={clsx(styles.styledBanner, bannerClass, className)}
+      className={cn(bannerVariants({ intent: intent || 'default' }), className)}
       style={style}
     >
       {renderContent()}

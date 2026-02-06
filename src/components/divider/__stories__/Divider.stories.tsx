@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Card } from 'src/components/card/Card';
 import { Divider } from 'src/components/divider/Divider';
@@ -10,8 +9,6 @@ import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { ArrowUpIcon } from 'src/icons/ArrowUpIcon';
 import { CircleIcon } from 'src/icons/CircleIcon';
 
-import styles from './Divider.stories.module.scss';
-
 const DividerMeta: Meta = {
   component: Divider,
 };
@@ -19,52 +16,52 @@ const DividerMeta: Meta = {
 export default DividerMeta;
 
 export const Basic = () => (
-  <div className={styles.wrapper}>
-    <div className={styles.wrapper}>
+  <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5">
       <Text type="title">Vertical</Text>
-      <div className={clsx(styles.rowInset, styles.row)}>
+      <div className="flex justify-evenly border border-amino rounded-amino6">
         <ArrowLeftIcon />
         <Divider vertical />
         <CircleIcon />
         <Divider vertical />
         <ArrowRightIcon />
       </div>
-      <div className={styles.rowInset}>
+      <div className="flex justify-evenly border border-amino rounded-amino6 p-2">
         <ArrowLeftIcon />
         <Divider vertical />
         <CircleIcon />
         <Divider vertical />
         <ArrowRightIcon />
       </div>
-      <div className={styles.rowInset}>
+      <div className="flex justify-evenly border border-amino rounded-amino6 p-2">
         <ArrowLeftIcon />
-        <Divider className={styles.styledDividerVertical} vertical />
+        <Divider className="-m-2" vertical />
         <CircleIcon />
-        <Divider className={styles.styledDividerVertical} vertical />
+        <Divider className="-m-2" vertical />
         <ArrowRightIcon />
       </div>
     </div>
     <Text type="title">Horizontal</Text>
-    <div className={styles.columnWrapper}>
-      <div className={clsx(styles.columnInset, styles.column)}>
+    <div className="flex gap-5">
+      <div className="flex flex-col justify-evenly border border-amino rounded-amino6">
         <ArrowUpIcon />
         <Divider />
         <CircleIcon />
         <Divider />
         <ArrowDownIcon />
       </div>
-      <div className={styles.columnInset}>
+      <div className="flex flex-col justify-evenly border border-amino rounded-amino6 p-2">
         <ArrowUpIcon />
         <Divider />
         <CircleIcon />
         <Divider />
         <ArrowDownIcon />
       </div>
-      <div className={styles.columnInset}>
+      <div className="flex flex-col justify-evenly border border-amino rounded-amino6 p-2">
         <ArrowUpIcon />
-        <Divider className={styles.styledDividerHorizontal} />
+        <Divider className="-mx-2" />
         <CircleIcon />
-        <Divider className={styles.styledDividerHorizontal} />
+        <Divider className="-mx-2" />
         <ArrowDownIcon />
       </div>
     </div>

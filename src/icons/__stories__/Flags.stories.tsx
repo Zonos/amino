@@ -9,7 +9,6 @@ import { flagIconsList } from 'src/icons/__stories__/FlagsList';
 import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 
-import styles from './Flags.stories.module.scss';
 
 const meta: Meta = {
   component: FlagIcon,
@@ -72,7 +71,7 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
         value={filter}
         valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
-      <div className={styles.styledWrapper}>
+      <div className="grid w-full grid-cols-3 gap-x-6 gap-y-10 pb-5">
         {iconsToLoad
           .filter(iconName =>
             filter
@@ -87,7 +86,7 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
             );
 
             return (
-              <div key={iconName} className={clsx(styles.styledIcon)}>
+              <div key={iconName} className={clsx('flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4')}>
                 <Suspense key={iconName} fallback={<div>Loading...</div>}>
                   <IconComponent
                     borderRadius={getBorderRadius(iconScale)}

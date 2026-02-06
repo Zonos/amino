@@ -1,17 +1,14 @@
 import type { KeyboardEvent, MouseEvent, ReactNode, RefObject } from 'react';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { MinusCircleDuotoneIcon } from 'src/icons/MinusCircleDuotoneIcon';
 import { PlusCircleDuotoneIcon } from 'src/icons/PlusCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
-import type { BaseProps } from 'src/types/BaseProps';
 
-import styles from './FilterWrapper.module.scss';
+import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 
 type FilterWrapperProps = BaseProps & {
   active: boolean;
@@ -144,10 +141,10 @@ export const FilterWrapper = ({
   style,
 }: FilterWrapperProps) => (
   <div
-    className={clsx(
+    className={cn(
       className,
-      styles.filterWrapper,
-      isDisabled && styles.disabled,
+      'relative',
+      isDisabled && 'pointer-events-none opacity-50',
     )}
     style={{
       ...style,
@@ -162,13 +159,34 @@ export const FilterWrapper = ({
         : '100px',
     }}
   >
-    <div className={clsx(active && 'active', styles.badgeWrapper)}>
+    <div
+      className={cn(
+        'inline-flex items-center rounded-full border border-dashed border-amino-gray-200 bg-transparent text-amino-gray-700',
+        active && 'border-solid border-amino',
+      )}
+    >
       <button
-        className={globalStyles.focusable}
+        className="focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]"
         onClick={handleToggle}
         type="button"
       >
-        <div className={clsx(active && 'active', styles.toggleWrapper)}>
+        <div
+          className={cn(
+            'flex cursor-pointer items-center gap-0 rounded-full px-4 py-4',
+            active && 'border-r border-solid',
+            'hover:bg-amino-hover',
+            hasFilter &&
+              '[border-top-right-radius:var(--amino-filter-wrapper-border-top-right-radius)] [border-bottom-right-radius:var(--amino-filter-wrapper-border-bottom-right-radius)]',
+          )}
+          style={
+            active
+              ? {
+                  borderRightColor:
+                    'var(--amino-filter-wrapper-border-right-color)',
+                }
+              : undefined
+          }
+        >
           {active ? (
             <MinusCircleDuotoneIcon
               color="gray0"
@@ -182,25 +200,32 @@ export const FilterWrapper = ({
               size={24}
             />
           )}
-          <Text className={styles.filterTitle} fontWeight={600}>
+          <Text className="pl-4 pr-4" fontWeight={600}>
             {label}
           </Text>
         </div>
       </button>
       {hasFilter && (
         <button
-          className={clsx(styles.styledDropdownTrigger, globalStyles.focusable)}
+          className={cn(
+            'flex cursor-pointer items-center gap-0 rounded-full border-none px-4 py-4 hover:bg-amino-hover',
+            'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
+          )}
           onClick={handleOpenDropdown}
           type="button"
         >
-          <Text className={styles.filterText}>{filterText}</Text>
+          <Text className="pl-4 pr-4 font-semibold text-blue-600">
+            {filterText}
+          </Text>
           <ChevronDownIcon size={24} />
         </button>
       )}
     </div>
     <div
       ref={dropdownRef}
-      className={styles.dropdownWrapper}
+      className={cn(
+        'absolute z-5 flex min-w-[400px] flex-col gap-6 rounded-[12px] bg-amino-page p-6 shadow-xl outline-none',
+      )}
       onKeyDown={handleKeyDown}
       role="menu"
       style={{
@@ -209,7 +234,7 @@ export const FilterWrapper = ({
       tabIndex={-1}
     >
       <Text type="bold-subheader">{dropdownTitle}</Text>
-      <div className={styles.controlsWrapper}>{children}</div>
+      <div className="flex flex-col gap-2 max-h-[400px]">{children}</div>
       <Button onClick={handleApply} size="md" variant="primary">
         Apply
       </Button>

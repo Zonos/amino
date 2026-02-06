@@ -6,13 +6,10 @@ import {
   useRef,
 } from 'react';
 
-import clsx from 'clsx';
-
 import { Flex } from 'src/components/flex/Flex';
 import { HelpText } from 'src/components/help-text/HelpText';
+import { cn } from 'src/utils/cn';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
-
-import styles from './Textarea.module.scss';
 
 type TextareaAdjustableHeightType = {
   /**
@@ -166,22 +163,27 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <Flex
-        className={styles.textareaWrapper}
+        className="w-[var(--amino-textarea-width)]"
         flexDirection="column"
         gap={4}
         justifyContent="space-between"
         style={{ ...style, '--amino-textarea-width': width || '100%' }}
       >
         <div
-          className={clsx(
+          className={cn(
+            'amino-input-wrapper relative p-0 overflow-hidden w-full border border-amino-border rounded-[12px]',
+            disabled && [
+              '*:cursor-not-allowed',
+              '[&_.fields]:opacity-disabled',
+              '[&_.styledTextarea]:select-none',
+            ],
             className,
-            styles.aminoInputWrapper,
-            'amino-input-wrapper',
-            disabled && styles.disabled,
           )}
         >
           <button
-            className={styles.fields}
+            className={cn(
+              'flex flex-col w-full relative hover:border-gray-300',
+            )}
             onClick={() => textareaRef?.current?.focus()}
             type="button"
           >
@@ -194,32 +196,56 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 }
                 textareaRef.current = node;
               }}
-              className={clsx(
-                styles.styledTextarea,
-                error && styles.hasError,
-                label && styles.hasLabel,
-                hasValue && styles.hasContent,
-                !!actions && styles.hasActions,
+              className={cn(
+                'flex-grow box-border py-2 px-4 outline-none w-full border-0 text-base font-medium resize-none min-h-[50px] bg-amino-input',
+                'placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out placeholder:text-gray-400 placeholder:font-normal placeholder:opacity-60',
+                'focus:outline-none',
+                label && [
+                  'mt-6 pt-0',
+                  'placeholder:opacity-0',
+                  hasValue && 'placeholder:opacity-60',
+                  'focus:placeholder:opacity-60',
+                ],
+                !!actions && !rows && 'min-h-[5em]',
               )}
               disabled={disabled}
               id={id}
               rows={rows}
+              style={{
+                ...(error && {
+                  '--amino-textarea-shadow': 'var(--amino-glow-error)',
+                }),
+              }}
               value={value}
               {...props}
             />
             {label && (
               <label
-                className={styles.styledLabelInput}
+                className={cn(
+                  'text-gray-800 text-base leading-[16px] absolute top-[calc(16px+6px)] left-4 origin-left-top transition-all duration-300 ease-in-out',
+                  (hasValue ||
+                    textareaRef.current === document.activeElement) &&
+                    'top-[11px] scale-[0.8]',
+                )}
                 data-label={label}
                 htmlFor={props.id || id}
               >
                 {label}
               </label>
             )}
+            <div
+              className={cn(
+                "after:content-[''] after:absolute after:inset-0 after:rounded-[12px]",
+                error && 'after:shadow-[var(--amino-glow-error)]',
+              )}
+            />
           </button>
 
           {actions && (
-            <div ref={actionsRef} className={styles.actions}>
+            <div
+              ref={actionsRef}
+              className="bg-amino-page py-4 px-4 flex items-center justify-end"
+            >
               <Flex alignItems="center" fullHeight justifyContent="flex-end">
                 {actions}
               </Flex>

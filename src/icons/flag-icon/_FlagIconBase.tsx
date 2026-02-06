@@ -1,7 +1,5 @@
 import { forwardRef, type ReactNode } from 'react';
 
-import styles from './_FlagIconBase.module.scss';
-
 type FlagIconBaseProps = {
   borderRadius?: number;
   children: ReactNode;
@@ -14,7 +12,7 @@ export const FlagIconBase = forwardRef<SVGSVGElement, FlagIconBaseProps>(
   ({ borderRadius, children, height, viewBox, width }, ref) => (
     <svg
       ref={ref}
-      className={styles.flag}
+      className="rounded-[var(--border-radius,7px)]"
       height={height}
       style={
         borderRadius

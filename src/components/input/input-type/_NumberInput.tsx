@@ -1,7 +1,6 @@
 import { forwardRef, useRef } from 'react';
 
 import { useMergeRefs } from '@floating-ui/react';
-import clsx from 'clsx';
 
 import {
   FloatLabelInput,
@@ -10,8 +9,7 @@ import {
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';
 import type { Size } from 'src/types/Size';
-
-import styles from './_NumberInput.module.scss';
+import { cn } from 'src/utils/cn';
 
 const getIconSize = (size: Size) => {
   switch (size) {
@@ -34,7 +32,7 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
 
     return (
       <div
-        className={clsx(styles.styledWrapper, className)}
+        className={cn('relative w-full', className)}
         style={{
           '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
         }}
@@ -43,16 +41,16 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           {...props}
           ref={mergedRef}
           aria-label={label}
-          className={styles.aminoInput}
+          className="[&_input]:pr-10 [&_input]:appearance-none [&_input::-webkit-inner-spin-button]:hidden [&_input::-webkit-calendar-picker-indicator]:hidden"
           label={label}
           size={size}
           suffix={
             suffix === null
               ? null
               : suffix || (
-                  <div className={styles.styledActionWrapper}>
+                  <div className="flex flex-col justify-center h-[var(--amino-number-input-height)]">
                     <button
-                      className={styles.styledButtonAction}
+                      className="p-0 px-1 rounded transition-all duration-300 ease-in-out hover:bg-black/[0.04] active:bg-black/10 focus:outline-none"
                       onClick={() => {
                         inputRef.current?.stepUp();
                         inputRef.current?.dispatchEvent(
@@ -64,7 +62,7 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
                       <CaretUpIcon size={getIconSize(size)} />
                     </button>
                     <button
-                      className={styles.styledButtonAction}
+                      className="p-0 px-1 rounded transition-all duration-300 ease-in-out hover:bg-black/[0.04] active:bg-black/10 focus:outline-none"
                       onClick={() => {
                         inputRef.current?.stepDown();
                         inputRef.current?.dispatchEvent(

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Badge } from 'src/components/badge/Badge';
 import { DualCurrency } from 'src/components/currency/DualCurrency';
@@ -22,8 +21,6 @@ import { ImportDuotoneIcon } from 'src/icons/ImportDuotoneIcon';
 import { ShoppingListDuotoneIcon } from 'src/icons/ShoppingListDuotoneIcon';
 import { TruckDuotoneIcon } from 'src/icons/TruckDuotoneIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
-
-import styles from './Table.stories.module.scss';
 
 const ExpandedListItem = ({
   conversionRate,
@@ -87,7 +84,7 @@ const Template: StoryFn<
         : collapsedRows.concat(index),
     );
   return (
-    <Table className={styles.styledTable}>
+    <Table className="max-w-[1080px] mx-auto">
       <colgroup>
         <col />
         <col width="20%" />
@@ -116,7 +113,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <div className={styles.leftIconLabel}>
+                <div className="flex items-center [&_span]:ml-3">
                   <RoundedIcon>
                     <ImageDuotoneIcon />
                   </RoundedIcon>
@@ -126,7 +123,7 @@ const Template: StoryFn<
                 </div>
               </TableCell>
               <TableCell align="right">
-                <div className={styles.rightIconLabel}>
+                <div className="flex items-center [&_span]:mr-3">
                   <Text fontWeight={500}>6404.11.0000</Text>
                   <ClassifyIcon color="purple600" size={14} />
                 </div>
@@ -144,7 +141,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div className={styles.expandedItemCard}>
+          <div className="p-6 pl-11 border border-amino rounded-amino-6">
             <VStack spacing={8}>
               <Text type="bold-label">
                 Huka One Running Shoe - Women&apos;s
@@ -159,7 +156,7 @@ const Template: StoryFn<
                 />
               </Text>
             </VStack>
-            <div className={styles.attributesWrapper}>
+            <div className="mt-8 flex flex-wrap gap-6">
               {[
                 { label: 'sku', value: '123SFS12' },
                 { label: 'Country of Origin', value: 'United States' },
@@ -170,11 +167,7 @@ const Template: StoryFn<
                 { label: 'Width', value: '45 in' },
                 { label: 'Height', value: '11 in' },
               ].map(option => (
-                <VStack
-                  key={option.label}
-                  className={styles.attributeLabel}
-                  spacing={8}
-                >
+                <VStack key={option.label} className="w-[177px]" spacing={8}>
                   <Text
                     color="gray700"
                     fontWeight={600}
@@ -195,7 +188,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <div className={styles.leftIconLabel}>
+                <div className="flex items-center [&_span]:ml-3">
                   <RoundedIcon>
                     <TruckDuotoneIcon />
                   </RoundedIcon>
@@ -215,9 +208,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div
-            className={clsx(styles.expandedTableCard, styles.expandedItemCard)}
-          >
+          <div className="p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -246,7 +237,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <div className={styles.leftIconLabel}>
+                <div className="flex items-center [&_span]:ml-3">
                   <RoundedIcon background="blue100">
                     <ImportDuotoneIcon
                       color="blue900"
@@ -262,9 +253,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div
-            className={clsx(styles.expandedItemCard, styles.expandedTableCard)}
-          >
+          <div className="p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -293,7 +282,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <div className={styles.leftIconLabel}>
+                <div className="flex items-center [&_span]:ml-3">
                   <RoundedIcon background="red100">
                     <ShoppingListDuotoneIcon
                       color="red900"
@@ -309,9 +298,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div
-            className={clsx(styles.expandedItemCard, styles.expandedTableCard)}
-          >
+          <div className="p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -344,7 +331,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell>
-                <div className={styles.leftIconLabel}>
+                <div className="flex items-center [&_span]:ml-3">
                   <RoundedIcon background="green100">
                     <CoinsDuotoneIcon
                       color="green900"
@@ -365,9 +352,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div
-            className={clsx(styles.expandedItemCard, styles.expandedTableCard)}
-          >
+          <div className="p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -400,7 +385,7 @@ const Template: StoryFn<
           rowContent={
             <>
               <TableCell colSpan={2}>
-                <div className={styles.leftIconLabel}>
+                <div className="flex items-center [&_span]:ml-3">
                   <RoundedIcon background="orange100">
                     <WarningIcon color="orange900" />
                   </RoundedIcon>

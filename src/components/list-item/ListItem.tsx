@@ -1,11 +1,8 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './ListItem.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type Props = BaseProps & {
   /**
@@ -117,7 +114,7 @@ const ListIcon = ({
   label: string;
 }) => {
   if (icon) {
-    return <img alt={label} className={styles.icon} src={icon} />;
+    return <img alt={label} className="mr-4 w-8 h-8 rounded-md" src={icon} />;
   }
   if (iconComponent) {
     return <>{iconComponent}</>;
@@ -137,23 +134,35 @@ export const ListItem = ({
   subtitle,
 }: Props) => (
   <button
-    className={clsx(
+    className={cn(
+      'p-2 px-4 flex flex-row gap-4 items-center min-h-[var(--amino-size-xl)] rounded-lg leading-4',
+      !disabled && selected && 'bg-blue-50 [&_*]:text-blue-800',
+      'active:outline-none active:bg-amino-hover-color',
+      'focus:outline-none focus:bg-amino-hover-color',
+      'hover:outline-none hover:bg-amino-hover-color',
+      disabled && 'text-gray-600 cursor-not-allowed',
+      !disabled &&
+        !selected &&
+        onClick &&
+        'hover:bg-amino-hover-color cursor-pointer',
       className,
-      styles.aminoListItem,
-      disabled && styles.disabled,
-      selected && styles.selected,
-      !!onClick && styles.withClick,
     )}
     onClick={e => !disabled && onClick?.(e)}
     style={style}
     type="button"
   >
-    <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>
+    <div
+      className={cn(
+        '__icon-wrapper',
+        !decorator && 'hidden',
+        decorator && 'inline-block',
+      )}
+    >
       {decorator}
       <ListIcon label={typeof label === 'string' ? label : ''} />
     </div>
 
-    <div className={styles.textContainer}>
+    <div className="flex flex-col items-start gap-[2px] flex-grow">
       <Text type="label">{label}</Text>
       {subtitle && <Text type="caption">{subtitle}</Text>}
     </div>

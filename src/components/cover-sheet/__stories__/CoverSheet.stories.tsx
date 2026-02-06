@@ -13,8 +13,6 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
 
-import styles from './CoverSheet.stories.module.scss';
-
 const Story: StoryFn<CoverSheetProps> = ({
   children,
   label = 'Cover sheet',
@@ -24,7 +22,7 @@ const Story: StoryFn<CoverSheetProps> = ({
 }: CoverSheetProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={styles.centeredDiv}>
+    <div className="h-full flex justify-center items-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <CoverSheet
         actions={<Button variant="primary">Click me</Button>}
@@ -89,7 +87,7 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
     useState(false);
 
   return (
-    <div className={styles.centeredDiv}>
+    <div className="h-full flex justify-center items-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
 
       <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>
@@ -173,9 +171,7 @@ CoverSheetNoCloseButton.args = {
 export const Scrollable: StoryObj<CoverSheetProps> = {
   args: {
     children: (
-      <div className={styles.longDiv}>
-        Nothing to see here, keep scrolling!!
-      </div>
+      <div className="h-screen">Nothing to see here, keep scrolling!!</div>
     ),
   },
 };

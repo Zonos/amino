@@ -5,7 +5,6 @@ import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import { type Color, colorContrasts, colorPrefixes } from 'src/types/Color';
 
-import styles from './Colors.stories.module.scss';
 
 const meta: Meta = {
   parameters: {
@@ -20,9 +19,9 @@ const meta: Meta = {
 export default meta;
 
 export const ColorPalette = () => (
-  <div className={styles.wrapper}>
+  <div className="grid grid-cols-[repeat(auto-fit,calc(33%-24px))] gap-6 items-center">
     {colorPrefixes.map(color => (
-      <div key={color} className={styles.colorWrapper}>
+      <div key={color} className="flex flex-col mb-6 text-center">
         <Text type="title">{color.toUpperCase()}</Text>
         <VStack spacing={0}>
           {(color !== 'gray' && color !== 'glass'
@@ -39,7 +38,7 @@ export const ColorPalette = () => (
                     Number(value) <= 500 ? theme.gray1000 : theme.gray0,
                 }}
               >
-                <div className={styles.styledColorIntensity}>
+                <div className="text-[length:var(--amino-font-size-s)] p-6 bg-[var(--amino-colors-stories-background)] [&_span]:text-[var(--amino-colors-stories-color)]">
                   <Text>{value}</Text>
                 </div>
               </div>

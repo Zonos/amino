@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.ts';
+
+/* Map the Tailwind `dark:` variant to amino's night theme selector */
+@custom-variant dark (&:is([data-theme='night'] *));

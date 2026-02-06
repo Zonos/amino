@@ -1,11 +1,8 @@
 import type { ReactElement, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Collapse } from 'src/components/collapse/Collapse';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './NavigationGroup.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type NavigationItemProps = BaseProps & {
   /**
@@ -82,14 +79,18 @@ export const NavigationItem = ({
   style,
 }: NavigationItemProps) => (
   <div
-    className={clsx(
+    className={cn(
+      'flex items-center gap-amino-8 h-[28px] px-amino-8 py-amino-4 text-gray-800 dark:text-gray-200 text-amino-base font-medium rounded-amino-6 mb-[2px]',
+      'hover:bg-amino-hover-color hover:text-gray-1000 dark:hover:text-gray-1000',
+      '[&_svg]:text-gray-600 dark:[&_svg]:text-gray-400 [&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-negative-4',
+      'hover:[&_svg]:text-gray-800 dark:hover:[&_svg]:text-gray-800',
+      isActive &&
+        'bg-gray-100 dark:bg-gray-900 text-gray-1000 [&_svg]:text-gray-1000',
       className,
-      styles.styledNavigationItem,
-      isActive && styles.active,
     )}
     style={style}
   >
-    {icon && <div className={styles.styledNavigationItemIcon}>{icon}</div>}
+    {icon && <div className="flex-shrink-0 flex-grow-0">{icon}</div>}
     {content}
   </div>
 );
@@ -192,13 +193,19 @@ export const NavigationGroup = ({
   content,
   style,
 }: NavigationGroupProps) => (
-  <div className={clsx(className, styles.wrapper)} style={style}>
+  <div className={cn('flex flex-col', className)} style={style}>
     <div
-      className={clsx(styles.styledItemWrapper, !collapsed && styles.collapsed)}
+      className={cn(
+        !collapsed &&
+          '[&_.navigation-item]:text-amino-text-color [&_.navigation-item]:hover:bg-transparent [&_.navigation-item_svg]:text-gray-1000 dark:[&_.navigation-item_svg]:text-gray-100',
+      )}
     >
-      {content}
+      <div className="navigation-item">{content}</div>
     </div>
-    <Collapse className={styles.styledGroupItemWrapper} collapsed={collapsed}>
+    <Collapse
+      className="pl-amino-12 ml-[15px] border-l border-amino-border-color"
+      collapsed={collapsed}
+    >
       {children}
     </Collapse>
   </div>

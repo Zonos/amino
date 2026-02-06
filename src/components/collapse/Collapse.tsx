@@ -1,11 +1,7 @@
 import type { ReactNode } from 'react';
 
-import type { CollapseProps as MuiCollapseProps } from '@mui/material/Collapse';
-import MuiCollapse from '@mui/material/Collapse';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-// https://mui.com/material-ui/api/collapse
+import { cn } from 'src/utils/cn';
 
 export type CollapseProps = BaseProps & {
   children: ReactNode;
@@ -19,7 +15,11 @@ export type CollapseProps = BaseProps & {
    * @default false
    */
   collapsed?: boolean;
-} & Pick<MuiCollapseProps, 'orientation'>;
+  /**
+   * Whether the collapse should expand horizontally or vertically
+   */
+  orientation?: 'horizontal' | 'vertical';
+};
 
 /**
  * Collapse component animates the expansion and collapse of its content.
@@ -98,14 +98,28 @@ export const Collapse = ({
   collapseSize = 0,
   orientation,
   style,
-}: CollapseProps) => (
-  <MuiCollapse
-    className={className}
-    collapsedSize={collapseSize}
-    in={!collapsed}
-    orientation={orientation}
-    style={style}
-  >
-    {children}
-  </MuiCollapse>
-);
+}: CollapseProps) => {
+  const isHorizontal = orientation === 'horizontal';
+  const gridTemplate = collapsed
+    ? collapseSize > 0
+      ? `${collapseSize}px`
+      : '0fr'
+    : '1fr';
+
+  return (
+    <div
+      className={cn(
+        'grid transition-[grid-template-rows,grid-template-columns] duration-300 ease-in-out',
+        className,
+      )}
+      style={{
+        ...style,
+        ...(isHorizontal
+          ? { gridTemplateColumns: gridTemplate }
+          : { gridTemplateRows: gridTemplate }),
+      }}
+    >
+      <div className="overflow-hidden">{children}</div>
+    </div>
+  );
+};

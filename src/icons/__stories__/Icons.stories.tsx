@@ -11,7 +11,6 @@ import { SearchIcon } from 'src/icons/SearchIcon';
 import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
 
-import styles from './Icons.stories.module.scss';
 
 const IconsMeta: Meta = {
   component: MailDuotoneIcon,
@@ -55,7 +54,7 @@ export const Icons = ({
         value={filter}
         valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
-      <div className={styles.styledWrapper}>
+      <div className="grid w-full grid-cols-3 gap-x-6 gap-y-10 pb-5">
         {iconsToLoad
           .filter(iconName =>
             filter
@@ -73,7 +72,7 @@ export const Icons = ({
               <div
                 key={iconName}
                 className={clsx(
-                  styles.styledIcon,
+                  'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
                   /Solid/.test(iconName) && 'solid',
                   /Duotone/.test(iconName) && 'duotone',
                 )}
@@ -103,9 +102,9 @@ export const Icons = ({
 //   }));
 
 // export const Products = () => (
-//   <div className={styles.styledWrapper}>
+//   <div className="grid w-full grid-cols-3 gap-x-6 gap-y-10 pb-5">
 //     {productIcons.map(({ icon: IconComponent, iconName }) => (
-//       <div key={iconName} className={styles.styledIcon}>
+//       <div key={iconName} className="flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4">
 //         <IconComponent size={50} />
 //         <div>{iconName}</div>
 //       </div>

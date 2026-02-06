@@ -1,10 +1,7 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Skeleton.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type SkeletonProps = BaseProps & {
   animation?: boolean;
@@ -63,15 +60,18 @@ export const Skeleton = ({
   width,
 }: SkeletonProps) => (
   <div
-    className={clsx(
+    className={cn(
+      'relative overflow-hidden rounded-[20px] bg-gray-100',
+      animation && [
+        "after:absolute after:inset-0 after:-translate-x-full after:animate-shimmer after:content-['']",
+        'after:bg-linear-to-r after:from-transparent after:via-black/8 after:to-transparent',
+      ],
       className,
-      styles.skeletonWrapper,
-      animation && styles.animation,
     )}
     style={{
       ...style,
-      '--amino-skeleton-height': height ? `${height}px` : '1em',
-      '--amino-skeleton-width': width ? `${width}px` : '100%',
+      height: height ? `${height}px` : '1em',
+      width: width ? `${width}px` : '100%',
     }}
   >
     {children}

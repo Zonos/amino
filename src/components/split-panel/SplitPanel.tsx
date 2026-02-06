@@ -7,11 +7,8 @@ import {
 } from 'react';
 import Split from 'react-split-it';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './SplitPanel.module.scss';
+import { cn } from 'src/utils/cn';
 
 const normalizeSizes = ({
   childrenCount,
@@ -176,7 +173,7 @@ export const SplitPanel = ({
   }, [childrenCount, collapseAll, defaultSizes, onSetSizes]);
 
   return (
-    <div className={clsx(className, styles.styledWrapper)} style={style}>
+    <div className={cn('block size-full', className)} style={style}>
       <Split
         direction={direction}
         gutterSize={!collapseAll ? gutterSize : 0}

@@ -6,6 +6,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
@@ -94,7 +95,7 @@ const bundlePackage = async (
           // add prefix before hashing so the class will be unique
           hashPrefix: 'zonos-amino',
         },
-        plugins: [autoprefixer()],
+        plugins: [tailwindcss(), autoprefixer()],
         use: {
           less: null,
           sass: {

@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 
 import type { Meta } from '@storybook/react';
 
-import styles from './BoxShadow.stories.module.scss';
 
 const meta: Meta = {
   title: 'Box Shadows',
@@ -23,14 +22,14 @@ type ShadowIntensity = (typeof shadows)[number]['value'];
 type AminoShadow = `--amino-shadow-${ShadowIntensity}`;
 
 export const BoxShadows = () => (
-  <div className={styles.styledWrapper}>
+  <div className="bg-gray-0 p-[8px_24px]">
     {shadows.map(({ label, value }) => {
       const aminoShadow: AminoShadow = `--amino-shadow-${value}`;
       return (
         <Fragment key={aminoShadow}>
           <p>Shadow intensity: {label}</p>
           <div
-            className={styles.styledBoxShadowWrapper}
+            className="mb-10 shadow-[var(--amino-box-shadow-stories-box-shadow)] bg-gray-100 p-[16px_24px]"
             style={{ '--amino-box-shadow-stories-box-shadow': aminoShadow }}
           >
             <p>var({aminoShadow})</p>

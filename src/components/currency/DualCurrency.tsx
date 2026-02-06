@@ -1,11 +1,8 @@
-import clsx from 'clsx';
-
 import { Currency } from 'src/components/currency/Currency';
 import { ArrowSwapIcon } from 'src/icons/ArrowSwapIcon';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import { getDualCurrency } from 'src/utils/formatCurrency';
-
-import styles from './DualCurrency.module.scss';
 
 type Props = BaseProps & {
   conversionRate?: number;
@@ -85,16 +82,15 @@ export const DualCurrency = ({
   if (local && foreign && !hideLocal && !hideForeign) {
     return (
       <div
-        className={clsx(styles.dualCurrencyWrapper, className)}
+        className={cn(
+          'items-center justify-items-right gap-amino-8',
+          className,
+        )}
         style={{
           ...style,
-          '--amino-dual-currency-display': isTabular ? 'grid' : 'flex',
-          '--amino-dual-currency-font-variant-numberic': isTabular
-            ? 'tabular-nums'
-            : '',
-          '--amino-dual-currency-grid-template-columns': isTabular
-            ? '1.25fr 0fr 1.25fr'
-            : '',
+          display: isTabular ? 'grid' : 'flex',
+          fontVariantNumeric: isTabular ? 'tabular-nums' : undefined,
+          gridTemplateColumns: isTabular ? '1.25fr 0fr 1.25fr' : undefined,
         }}
       >
         {renderLocalCurrency()}

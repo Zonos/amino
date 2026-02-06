@@ -1,16 +1,13 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './_SectionInnerWrapper.module.scss';
+import { cn } from 'src/utils/cn';
 
 type Props = BaseProps & { children: ReactNode };
 
 export const SectionInnerWrapper = ({ children, className, style }: Props) => (
   <header
-    className={clsx(className, styles.styledSectionInnerWrapper)}
+    className={cn('flex justify-between mb-6 items-start', className)}
     style={style}
   >
     {children}

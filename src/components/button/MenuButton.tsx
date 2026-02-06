@@ -1,14 +1,11 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import {
   useDropdown,
   type UseDropdownParams,
 } from 'src/utils/hooks/useDropdown';
-
-import styles from './MenuButton.module.scss';
 
 export type MenuButtonProps = BaseProps & {
   action: ReactNode;
@@ -62,7 +59,7 @@ export const MenuButton = ({
   return (
     <div
       ref={wrapperRef}
-      className={clsx(styles.wrapper, className)}
+      className={cn('relative inline-flex', className)}
       onMouseLeave={handleMouseLeave}
       style={style}
     >
@@ -85,7 +82,7 @@ export const MenuButton = ({
       </div>
       <div
         ref={refs.setFloating}
-        className={styles.dropdownWrapper}
+        className="z-10 min-w-full"
         style={{
           ...floatingStyles,
           visibility,
@@ -93,7 +90,7 @@ export const MenuButton = ({
       >
         {visible && (
           <div
-            className={styles.animatedSurface}
+            className="bg-amino-surface rounded-amino12 shadow-amino-large animate-dropdown p-amino-8 mt-amino-4 right-0 min-w-full w-max"
             onClick={handleClickChildren}
             onKeyDown={e => {
               if (e.key === 'Enter') {

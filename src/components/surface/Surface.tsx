@@ -1,11 +1,10 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
+import { cva } from 'class-variance-authority';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Depth } from 'src/types/Depth';
-
-import styles from './Surface.module.scss';
+import { cn } from 'src/utils/cn';
 
 type Props = BaseProps & {
   /**
@@ -23,6 +22,32 @@ type Props = BaseProps & {
    */
   depth?: Depth;
 };
+
+const surfaceVariants = cva(
+  'elevated rounded-amino8 bg-amino-surface-color p-amino-24 text-amino-text-color',
+  {
+    defaultVariants: {
+      dense: false,
+      depth: 'depth4',
+    },
+    variants: {
+      dense: {
+        false: '',
+        true: 'rounded-amino6',
+      },
+      depth: {
+        depth1: '',
+        depth16:
+          'shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]',
+        depth4: 'border-amino shadow-[0_1px_2px_0_rgba(0,0,0,0.05)]',
+        depth64:
+          'shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)]',
+        depth8:
+          'shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]',
+      },
+    },
+  },
+);
 
 /**
  * Surface component provides an elevated container with customizable depth
@@ -74,18 +99,11 @@ export const Surface = ({
   dense = false,
   depth = 'depth4',
   style,
-}: Props) => {
-  const classes = clsx(
-    className,
-    styles.surfaceBase,
-    'elevated',
-    dense && styles.dense,
-    depth && styles[depth],
-  );
-
-  return (
-    <div className={classes} style={style}>
-      {children}
-    </div>
-  );
-};
+}: Props) => (
+  <div
+    className={cn(surfaceVariants({ dense, depth }), className)}
+    style={style}
+  >
+    {children}
+  </div>
+);

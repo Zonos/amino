@@ -1,7 +1,5 @@
 import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
-import clsx from 'clsx';
-
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { ImageAvatar } from 'src/components/avatar/ImageAvatar';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
@@ -18,9 +16,8 @@ import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UploadedFile } from 'src/types/UploadedFile';
+import { cn } from 'src/utils/cn';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
-
-import styles from './DropZone.module.scss';
 
 const getInstructionTextDefault = () =>
   translate({
@@ -232,17 +229,21 @@ export const DropZone = ({
 
   const renderUpload = () => (
     // The role gets set to button despite setting `noClick`, so override it as `undefined`
-    <div className={styles.contentWrapper} {...getRootProps()} role={undefined}>
+    <div
+      className="p-4 outline-none flex flex-col justify-center items-center gap-3 w-full h-full"
+      {...getRootProps()}
+      role={undefined}
+    >
       <input {...getInputProps()} />
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
-      <div className={styles.instructionTextWrapper}>
+      <div className="flex flex-col items-center gap-1">
         <Text type="label">
           <Translate
             text="[instructionText] or [browseText]"
             variables={{
               browseText: (
                 <button
-                  className={styles.browseButton}
+                  className="inline"
                   disabled={disabled}
                   onClick={open}
                   type="button"
@@ -263,13 +264,16 @@ export const DropZone = ({
 
   const renderFiles = () =>
     uploadedFiles.map((file, index) => (
-      <div key={file.name} className={styles.uploadedFileRow}>
+      <div
+        key={file.name}
+        className="border border-amino rounded-xl p-4 flex justify-start gap-3"
+      >
         {file.imageUrl ? (
           <ImageAvatar imageUrl={file.imageUrl} shape="rounded" />
         ) : (
           <FileDuotoneIcon />
         )}
-        <div className={styles.uploadedFileInfoWrapper}>
+        <div className="flex flex-col">
           <Text color="gray1000" type="label">
             {file.name}
           </Text>
@@ -281,7 +285,7 @@ export const DropZone = ({
         </div>
         {onRemoveFile && (
           <ButtonIcon
-            className={styles.removeFileButton}
+            className="ml-auto"
             icon={<RemoveCircleDuotoneIcon size={20} />}
             onClick={() => onRemoveFile(index)}
             variant="text"
@@ -295,8 +299,11 @@ export const DropZone = ({
   const renderContent = () => {
     if (loading) {
       return (
-        <div className={styles.uploadWrapper}>
-          <div className={styles.contentWrapper}>
+        <div
+          className="border-2 border-dashed rounded-xl flex flex-col items-center"
+          style={{ borderColor: 'var(--amino-drop-zone-border-color)' }}
+        >
+          <div className="p-4 outline-none flex flex-col justify-center items-center gap-3 w-full h-full">
             <Spinner />
             <Text color="gray800" type="label">
               {loadingText || getLoadingTextDefault()}
@@ -309,10 +316,15 @@ export const DropZone = ({
     return (
       <>
         {!uploadedMaxFiles && (
-          <div className={styles.uploadWrapper}>{renderUpload()}</div>
+          <div
+            className="border-2 border-dashed rounded-xl flex flex-col items-center"
+            style={{ borderColor: 'var(--amino-drop-zone-border-color)' }}
+          >
+            {renderUpload()}
+          </div>
         )}
         {!!uploadedFiles.length && (
-          <div className={styles.uploadedFilesWrapper}>{renderFiles()}</div>
+          <div className="flex flex-col gap-1">{renderFiles()}</div>
         )}
       </>
     );
@@ -320,14 +332,16 @@ export const DropZone = ({
 
   return (
     <div
-      className={clsx(styles.wrapper, className)}
+      className={cn('flex flex-col gap-4', className)}
       style={{
         ...style,
         '--amino-drop-zone-border-color': error
           ? theme.danger
           : theme.borderColor,
         '--amino-drop-zone-cursor': disabled ? 'not-allowed' : 'auto',
-        '--amino-drop-zone-opacity': disabled ? theme.opacityDisabled : 1,
+        '--amino-drop-zone-opacity': disabled ? theme.opacityDisabled : '1',
+        cursor: 'var(--amino-drop-zone-cursor)',
+        opacity: 'var(--amino-drop-zone-opacity)',
       }}
     >
       {renderContent()}

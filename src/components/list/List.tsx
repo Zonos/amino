@@ -1,10 +1,7 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './List.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type ListProps = BaseProps & {
   /**
@@ -100,11 +97,12 @@ export const List = ({
   withNegativeMargin,
 }: ListProps) => (
   <section
-    className={clsx(
+    className={cn(
+      'flex flex-col gap-[2px]',
+      withBorder &&
+        'p-amino-8 border border-gray-200 dark:border-gray-800 rounded-amino-12',
+      withNegativeMargin && 'm-amino-negative-24',
       className,
-      styles.styledList,
-      withBorder && styles.withBorder,
-      withNegativeMargin && styles.withNegativeMargin,
     )}
     style={style}
   >

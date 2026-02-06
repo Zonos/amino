@@ -1,8 +1,5 @@
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Divider.module.scss';
+import { cn } from 'src/utils/cn';
 
 type Props = BaseProps & {
   /**
@@ -68,20 +65,16 @@ export const Divider = ({
 }: Props) =>
   vertical ? (
     <hr
-      className={clsx(
-        styles.dividerVertical,
-        noMargin && styles.noMargin,
+      className={cn(
+        'mx-amino-24 h-auto self-stretch border-0 border-r border-solid border-amino',
+        noMargin && 'm-0',
         className,
       )}
       style={style}
     />
   ) : (
     <hr
-      className={clsx(
-        styles.dividerHorizontal,
-        noMargin && styles.noMargin,
-        className,
-      )}
+      className={cn('my-amino-24 border-amino', noMargin && 'm-0', className)}
       style={style}
     />
   );
