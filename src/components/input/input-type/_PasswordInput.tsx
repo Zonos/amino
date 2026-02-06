@@ -1,7 +1,5 @@
 import { forwardRef, useState } from 'react';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import {
   FloatLabelInput,
@@ -9,8 +7,7 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
-
-import styles from './_PasswordInput.module.scss';
+import { cn } from 'src/utils/cn';
 
 export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
   (
@@ -37,12 +34,12 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
   ) => {
     const [inputType, setInputType] = useState('password');
     return (
-      <div className={clsx(styles.styledWrapper, className)}>
+      <div className={cn('relative w-full', className)}>
         <FloatLabelInput
           ref={ref}
           aria-label={label}
           autoFocus={autoFocus}
-          className={styles.aminoInput}
+          className="[&_input]:pr-10"
           disabled={disabled}
           error={error}
           inputMode={inputMode}
@@ -57,7 +54,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           suffix={
             suffix || (
               <Button
-                className={styles.styledButtonAction}
+                className="p-1.5 rounded-full transition-all duration-300 ease-in-out hover:bg-amino-hover"
                 icon={
                   inputType === 'password' ? (
                     <EyeIcon size={24} />

@@ -1,10 +1,7 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './MenuItem.module.scss';
+import { cn } from 'src/utils/cn';
 
 type MenuItemProps = BaseProps & {
   /**
@@ -85,9 +82,16 @@ export const MenuItem = ({
   onClick,
   style,
 }: MenuItemProps) => (
-  <li className={clsx(className, disabled && styles.disabled)} style={style}>
+  <li
+    className={cn(
+      disabled &&
+        '[&_.menu-button]:cursor-not-allowed [&_.menu-button]:opacity-amino-disabled',
+      className,
+    )}
+    style={style}
+  >
     <button
-      className={styles.styledListItem}
+      className="menu-button w-full flex items-center p-amino-8 leading-6 select-none cursor-pointer rounded-amino-6 text-amino-base hover:bg-amino-hover dark:hover:bg-gray-100 active:outline-none [&_a]:w-full [&_a]:block [&_svg]:mr-amino-8"
       onClick={e => !disabled && onClick?.(e)}
       type="button"
     >

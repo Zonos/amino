@@ -1,12 +1,10 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
 import dayjs from 'dayjs';
 
 import type { FilterDateData } from 'src/components/filter/filter-date/filterDateReducer';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './DateControls.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type _DateControlProps = {
   onChange: (value: FilterDateData) => void;
@@ -23,7 +21,13 @@ export const DateControlsWrapper = ({
   className,
   style,
 }: BaseProps & { children: ReactNode }) => (
-  <div className={clsx(styles.dateControlsWrapper, className)} style={style}>
+  <div
+    className={cn(
+      'w-full grid auto-cols-max gap-2 grid-flow-col items-center',
+      className,
+    )}
+    style={style}
+  >
     {children}
   </div>
 );

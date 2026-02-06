@@ -16,25 +16,26 @@ const storybookConfig: StorybookConfig = {
 
       options: {
         rules: [
+          // CSS files processed through PostCSS (includes Tailwind)
           {
             sideEffects: true,
-            test: /\.css|scss$/,
+            test: /\.css$/,
             use: [
               'style-loader',
               {
                 loader: 'css-loader',
                 options: {
-                  modules: {
-                    localIdentName: 'Amino_[name]__[local]--[hash:base64:5]',
-                  },
+                  importLoaders: 1,
                 },
               },
               {
-                loader: 'sass-loader',
+                loader: 'postcss-loader',
                 options: {
-                  sassOptions: {
-                    // includes paths for scss imports so we just need to import the file name. Ex: @use 'theme';
-                    loadPaths: [`${process.cwd()}/src/styles`],
+                  postcssOptions: {
+                    plugins: [
+                      require('@tailwindcss/postcss'),
+                      require('autoprefixer'),
+                    ],
                   },
                 },
               },

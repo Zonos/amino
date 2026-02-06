@@ -1,14 +1,11 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
-import clsx from 'clsx';
-
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './RichRadio.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type RichRadioItemType<T extends string> = {
   /**
@@ -209,16 +206,26 @@ export const RichRadio = <T extends string>({
 
   return (
     <VStack
-      className={clsx(className, styles.styledRadioGroup)}
+      className={cn(
+        '[&_button[data-state="checked"]]:shadow-amino-select-active [&_button[data-state="checked"]]:text-blue-600',
+        '[&_button[data-state="checked"]_.subtitle]:text-blue-600',
+        '[&_svg]:text-gray-0 [&_svg]:w-4 [&_svg]:h-4',
+        className,
+      )}
       spacing={8}
       style={style}
     >
       {items.map(item => (
         <button
           key={item.value}
-          className={clsx(
-            styles.styledItem,
-            itemHeight === 40 && styles.smallItem,
+          className={cn(
+            'relative appearance-none bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)] border border-amino rounded-amino-8',
+            'text-left transition-all duration-150 ease-in-out flex flex-row items-center h-16',
+            'hover:bg-amino-hover hover:border-gray-200',
+            'hover:[&_.icon-wrapper]:bg-gray-600',
+            'focus:outline-none focus:border-blue-400 focus:shadow-[0_0_0_1px] focus:shadow-blue-400',
+            '[&>div]:flex [&>div]:flex-col [&>div]:flex-1',
+            itemHeight === 40 && 'h-10',
           )}
           data-disabled={item.disabled}
           data-state={item.value === selectedValue ? 'checked' : ''}
@@ -231,7 +238,7 @@ export const RichRadio = <T extends string>({
           {item.tooltip && (
             <ReactTooltip
               arrowColor="transparent"
-              className={styles.styledTooltip}
+              className="max-w-[350px] rounded-amino-10"
               effect="solid"
               {...item.tooltipSetting}
             />
@@ -240,21 +247,29 @@ export const RichRadio = <T extends string>({
             renderCustomText(item)
           ) : (
             <div>
-              <Text className={styles.label} type="label">
+              <Text
+                className={cn(
+                  'text-amino leading-6',
+                  '[data-state="checked"]_&:text-blue-600',
+                )}
+                type="label"
+              >
                 {item.label}
               </Text>
               {item.subtitle && (
-                <Text className={styles.subtitle} color="gray900" type="body">
+                <Text className="subtitle" color="gray900" type="body">
                   {item.subtitle}
                 </Text>
               )}
             </div>
           )}
           {!!icon && (
-            <div className={styles.styledIcon}>{icon || <CheckmarkIcon />}</div>
+            <div className="icon-wrapper absolute right-4 bg-gray-400 rounded-full p-[5px] [&_svg]:text-gray-0">
+              {icon || <CheckmarkIcon />}
+            </div>
           )}
           {item.value === selectedValue && (
-            <div className={styles.styledActiveIcon}>
+            <div className="absolute right-4 bg-blue-600 rounded-full p-0.5 flex items-center justify-center">
               {activeIcon || <CheckmarkIcon />}
             </div>
           )}

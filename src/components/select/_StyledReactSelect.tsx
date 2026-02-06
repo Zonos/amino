@@ -14,7 +14,6 @@ import type {
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
 
-import clsx from 'clsx';
 import type Select from 'node_modules/react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
@@ -30,9 +29,8 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
+import { cn } from 'src/utils/cn';
 import { getTestId } from 'src/utils/getTestId';
-
-import styles from './_StyledReactSelect.module.scss';
 
 const getRadius = ($size?: Size) => {
   switch ($size) {
@@ -106,24 +104,28 @@ const Control = <
   return (
     <div
       ref={innerRef}
-      className={clsx([
+      className={cn(
         className,
-        hasValue && styles.hasValue,
-        icon && styles.hasIcon,
-        isFocused && styles.isFocused,
-        isDisabled && styles.isDisabled,
-        menuIsOpen && styles.menuIsOpen,
-        label || (Array.isArray(value) && value.length > 1)
-          ? styles.hasLabel
-          : '',
-        size && styles[size],
-        styles.reactSelectControl,
         'react-select-control',
-      ])}
+        hasValue && 'flex items-center',
+        icon && 'flex items-center has-icon',
+        isFocused && 'is-focused',
+        isDisabled && 'opacity-disabled',
+        menuIsOpen && 'menu-is-open',
+        label || (Array.isArray(value) && value.length > 1) ? 'has-label' : '',
+        size === 'sm' && 'h-8',
+        size === 'md' && 'h-10',
+        size === 'lg' && 'h-12',
+        size === 'xl' && 'h-14',
+      )}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
-      {icon && <div className={styles.iconWrapper}>{icon}</div>}
+      {icon && (
+        <div className="flex justify-evenly items-center text-gray-700 ml-amino-8 -mr-[2px] h-6 w-6">
+          {icon}
+        </div>
+      )}
       {children}
     </div>
   );
@@ -139,10 +141,14 @@ const IconLabel = ({
   icon?: ReactNode;
 }) => (
   <div
-    className={styles.checkboxOptionIconWrapper}
+    className="flex items-center"
     style={{ '--amino-styled-react-select-color': color || 'inherit' }}
   >
-    {icon}
+    {icon && (
+      <svg className="mr-1 text-gray-1000" style={{ color: 'inherit' }}>
+        {icon}
+      </svg>
+    )}
     {children}
   </div>
 );
@@ -213,7 +219,7 @@ export const CheckboxOptionComponent = <
     }
 
     return (
-      <div ref={ref} className={styles.selectedSingleOptionWrapper}>
+      <div ref={ref} className="flex items-center justify-between">
         {inView && (
           <IconLabel color={color} icon={data.icon}>
             {children}
@@ -227,12 +233,14 @@ export const CheckboxOptionComponent = <
   return (
     <div ref={innerRef} {...innerProps}>
       <div
-        className={[
+        className={cn(
           className,
-          styles.styledSelectOptionWrapper,
-          isFocused && styles.isFocused,
-          isDisabled && styles.isDisabled,
-        ].join(' ')}
+          'rounded-lg',
+          isFocused &&
+            !isDisabled &&
+            'bg-gray-50 dark:bg-gray-100 [background-color:var(--amino-gray-50)!important] dark:[background-color:var(--amino-gray-100)!important]',
+          isDisabled && 'opacity-disabled',
+        )}
         style={style}
       >
         {selectProps.isMulti ? (
@@ -454,10 +462,22 @@ export const StyledReactSelect = <
   const mergedStyles = getMergedStyles(stylesProp);
   return (
     <div
-      className={clsx(styles.styledSelectWrapper, error && styles.hasError)}
+      className={cn(
+        'relative',
+        '[&_.react-select-control+div]:z-20',
+        '[&_.react-select-control.is-focused]:shadow-[var(--amino-shadow-raised-standard)]',
+        '[&_.react-select-control.is-focused:not(.menu-is-open)]:shadow-[var(--amino-shadow-raised-focus)]',
+        error && [
+          '[&_.has-label]:text-red-600',
+          '[&_.react-select-control]:shadow-[var(--amino-shadow-raised-error)]',
+          '[&_.react-select-control.is-focused:not(.menu-is-open)]:shadow-[var(--amino-shadow-raised-error-focus)]',
+        ],
+      )}
       data-testid={testId}
     >
-      {label && <label className={styles.inputLabel}>{label}</label>}
+      {label && (
+        <label className="text-amino-secondary block mb-2">{label}</label>
+      )}
       <ReactSelect<Option, IsMulti, Group>
         ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}
@@ -466,28 +486,9 @@ export const StyledReactSelect = <
             ClearIndicator,
             Control,
             DropdownIndicator,
-            // DownChevron,
-            // CrossIcon,
-            // Group,
-            // GroupHeading,
-            // IndicatorsContainer,
-            // IndicatorSeparator,
-            // Input,
-            // LoadingIndicator,
-            // Menu,
-            // MenuList,
-            // MenuPortal,
-            // LoadingMessage,
-            // NoOptionsMessage,
-            // MultiValue,
-            // MultiValueContainer,
             MultiValueLabel,
             MultiValueRemove,
             Option: CheckboxOptionComponent,
-            // Placeholder,
-            // SelectContainer,
-            // SingleValue,
-            // ValueContainer,
             ...components,
           } as SelectComponentsConfig<Option, IsMulti, Group>
         }

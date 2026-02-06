@@ -1,14 +1,12 @@
 import { type ReactNode, useId } from 'react';
 
-import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
-import type { BaseProps } from 'src/types/BaseProps';
 
-import styles from './Radio.module.scss';
+import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 
 export type RadioProps = BaseProps & {
   /**
@@ -97,11 +95,11 @@ export const Radio = ({
 
   return (
     <label
-      className={clsx(
-        className,
-        styles.radioContainer,
-        globalStyles.focusableLabel,
+      className={cn(
+        'flex flex-row items-center cursor-pointer select-none',
+        'focus-within:outline-none [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]',
         disabled && 'disabled',
+        className,
       )}
       htmlFor={id}
       style={{
@@ -128,12 +126,20 @@ export const Radio = ({
         type="radio"
         value={value}
       />
-      <div className={styles.styledRadio}>
+      <div
+        className={cn(
+          'w-4 h-4 rounded-full cursor-pointer flex items-center justify-center select-none mr-2 transition-all',
+          'bg-[var(--amino-radio-background)] border-[var(--amino-radio-border)] shadow-[var(--amino-radio-box-shadow)]',
+          disabled &&
+            'bg-[var(--amino-radio-container-background)] cursor-not-allowed',
+        )}
+      >
         <AnimatePresence>
           {checked && (
             <motion.svg
               key="radio"
               animate={{ opacity: 1, scale: 1 }}
+              className="w-2 h-2 text-gray-0"
               exit={{ opacity: 0, scale: 1.5 }}
               fill="currentColor"
               initial={{ opacity: 0, scale: 1.5 }}
@@ -146,7 +152,7 @@ export const Radio = ({
         </AnimatePresence>
       </div>
       {label && (
-        <Text className={styles.styledText} type="input-label">
+        <Text className="mb-0" type="input-label">
           {label}
         </Text>
       )}

@@ -1,10 +1,7 @@
 import type { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Flex.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type FlexProps = BaseProps &
   HTMLAttributes<HTMLDivElement> & {
@@ -136,21 +133,21 @@ export const Flex = ({
 }: FlexProps) => (
   <div
     {...rest}
-    className={clsx(
+    className={cn(
+      'flex [&>*]:flex-[var(--amino-flex-wrapper-flex-children)]',
+      fullWidth && 'w-full',
+      fullHeight && 'h-full',
       className,
-      styles.flexWrapper,
-      fullWidth && styles.fullWidth,
-      fullHeight && styles.fullHeight,
     )}
     style={{
       ...style,
-      '--amino-flex-wrapper-align-items': alignItems,
       '--amino-flex-wrapper-flex-children': childrenFlex,
-      '--amino-flex-wrapper-flex-direction': flexDirection,
-      '--amino-flex-wrapper-flex-wrap': flexWrap,
-      '--amino-flex-wrapper-gap': `${gap}px`,
-      '--amino-flex-wrapper-justify-content': justifyContent,
-      '--amino-flex-wrapper-padding': `${padding}px`,
+      alignItems,
+      flexDirection,
+      flexWrap,
+      gap: `${gap}px`,
+      justifyContent,
+      padding: `${padding}px`,
     }}
   >
     {children}

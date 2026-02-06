@@ -1,11 +1,8 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
 import type { GridAlignment, GridSpacing } from 'src/types/GridSpacing';
-
-import styles from './Stack.module.scss';
+import { cn } from 'src/utils/cn';
 
 type DivProps = Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -85,7 +82,10 @@ export const Stack = ({
   ...otherProps
 }: StackProps) => (
   <div
-    className={clsx(className, styles.styledStack)}
+    className={cn(
+      'grid auto-cols-[minmax(0,1fr)] [&>*]:justify-self-[var(--amino-stack-alignment)]',
+      className,
+    )}
     style={{ ...style, '--amino-stack-alignment': alignment || 'unset' }}
     {...otherProps}
   >

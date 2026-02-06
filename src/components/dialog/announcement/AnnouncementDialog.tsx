@@ -10,8 +10,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { useStorage } from 'src/utils/hooks/useStorage';
 
-import styles from './AnnouncementDialog.module.scss';
-
 export type AnnouncementDialogProps = BaseDialogProps & {
   announcementId: string;
   image?: ReactNode;
@@ -69,8 +67,20 @@ export const AnnouncementDialog = forwardRef<
             : '100%',
         }}
       >
-        <div className={styles.styledImage}>{image}</div>
-        <VStack className={styles.content} spacing={8}>
+        <div
+          className="h-auto mb-amino-16"
+          style={{
+            margin: 'var(--amino-announcement-dialog-image-margin)',
+            marginBottom: 'var(--amino-space-16)',
+            width: 'var(--amino-announcement-dialog-image-width)',
+          }}
+        >
+          {image}
+        </div>
+        <VStack
+          className="p-[var(--amino-space-16)_var(--amino-space-24)] overflow-y-auto flex-grow"
+          spacing={8}
+        >
           <Text color="blue600" type="label">
             {label}
           </Text>

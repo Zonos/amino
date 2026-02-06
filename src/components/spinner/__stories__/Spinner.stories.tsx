@@ -6,8 +6,6 @@ import {
 } from 'src/components/spinner/Spinner';
 import { theme } from 'src/styles/constants/theme';
 
-import styles from './Spinner.stories.module.scss';
-
 const SpinnerMeta: Meta = {
   component: SpinnerComponent,
 };
@@ -19,7 +17,7 @@ const Template: StoryFn<SpinnerProps> = ({
   size,
   ...props
 }: SpinnerProps) => (
-  <div className={styles.wrapper}>
+  <div className="flex w-min items-center gap-5 rounded-[5px] p-2.5">
     <SpinnerComponent color={color} size={size && size - 10} {...props} />
     <SpinnerComponent color={color} size={size} {...props} />
     <SpinnerComponent color={color} size={size && size + 10} {...props} />
@@ -36,7 +34,7 @@ export const InsideContainer: StoryFn<SpinnerProps> = ({
   size,
   ...props
 }: SpinnerProps) => (
-  <div className={styles.scrollableWrapper}>
+  <div className="m-25 flex overflow-scroll border border-amino">
     <SpinnerComponent color={color} size={60} {...props} />
   </div>
 );

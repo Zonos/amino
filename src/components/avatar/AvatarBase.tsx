@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './AvatarBase.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type ImageSize = 16 | 24 | 32 | 40 | 48 | 56 | 64;
 
@@ -95,25 +92,35 @@ export const AvatarBase = ({
   shape,
   size,
   style,
-}: AvatarBaseProps) => (
-  <div
-    className={clsx(styles.wrapper, className)}
-    style={{
-      ...style,
-      '--amino-avatar-base-background-color':
-        backgroundColor || `${theme.gray100}`,
-      '--amino-avatar-base-background-image': `url(${backgroundUrl})`,
-      '--amino-avatar-base-background-position': backgroundPosition || 'center',
-      '--amino-avatar-base-background-size': backgroundSize || '',
-      '--amino-avatar-base-border': bordered
-        ? `${size / 16}px solid ${theme.gray0}`
-        : '',
-      '--amino-avatar-base-border-radius':
-        shape === 'rounded' ? `${(size / 8 - 1) * 2}px` : avatarShapes[shape],
-      '--amino-avatar-base-height': `${size}px`,
-      '--amino-avatar-base-width': `${size}px`,
-    }}
-  >
-    {children || <div className={styles.styledAvatarBase} />}
-  </div>
-);
+}: AvatarBaseProps) => {
+  const borderRadius =
+    shape === 'rounded' ? `${(size / 8 - 1) * 2}px` : avatarShapes[shape];
+
+  return (
+    <div
+      className={cn('flex justify-center items-center', className)}
+      style={{
+        ...style,
+        border: bordered ? `${size / 16}px solid ${theme.gray0}` : undefined,
+        borderRadius,
+        height: `${size}px`,
+        width: `${size}px`,
+      }}
+    >
+      {children || (
+        <div
+          className="h-full w-full bg-no-repeat"
+          style={{
+            backgroundColor: backgroundColor || theme.gray100,
+            backgroundImage: backgroundUrl
+              ? `url(${backgroundUrl})`
+              : undefined,
+            backgroundPosition: backgroundPosition || 'center',
+            backgroundSize: backgroundSize || undefined,
+            borderRadius,
+          }}
+        />
+      )}
+    </div>
+  );
+};

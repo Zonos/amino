@@ -21,10 +21,9 @@ import { Input } from 'src/components/input/Input';
 import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { SelectOption } from 'src/types/SelectOption';
+import { cn } from 'src/utils/cn';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './FilterAmount.module.scss';
 
 export type FilterAmountType = 'equal' | 'between' | 'greater' | 'less';
 
@@ -339,8 +338,12 @@ export const FilterAmount = ({
         value={filterAmountOptions.filter(item => item.value === filterType)}
       />
 
-      <div className={styles.inputWrapper}>
-        <ArrowRightIcon className="arrow-right" color="blue600" size={24} />
+      <div className={cn('flex items-center gap-2')}>
+        <ArrowRightIcon
+          className="arrow-right [&.arrow-right]:mr-4"
+          color="blue600"
+          size={24}
+        />
         <Input
           onChange={e => handleSetFirstValue(e.target.value)}
           size="md"

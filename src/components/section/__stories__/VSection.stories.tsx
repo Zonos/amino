@@ -8,8 +8,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { textOptions } from 'src/components/text/Text';
 import { CartIcon } from 'src/icons/CartIcon';
 
-import styles from './VSection.stories.module.scss';
-
 const VSectionMeta: Meta = {
   argTypes: {
     labelType: {
@@ -29,7 +27,7 @@ const Template: StoryFn<VSectionProps> = (props: VSectionProps) => (
 export const BasicVSection = Template.bind({});
 BasicVSection.args = {
   children: (
-    <div className={styles.styledDiv}>
+    <div className="">
       <h2>VSection Contents</h2>
       <p>
         Bacon ipsum dolor amet salami bresaola flank burgdoggen strip steak.

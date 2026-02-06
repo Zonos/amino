@@ -1,19 +1,30 @@
 import type { ReactNode } from 'react';
 
-import type { PopperProps } from '@mui/material';
-import { styled as muiStyled } from '@mui/material/styles';
-import MuiTooltip, {
-  tooltipClasses,
-  type TooltipProps as MuiTooltipProps,
-} from '@mui/material/Tooltip';
-
+import {
+  Tooltip as RadixTooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from 'src/components/ui/tooltip';
 import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
-import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
+import { cn } from 'src/utils/cn';
 
-import styles from './Tooltip.module.scss';
+type Placement =
+  | 'bottom'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left'
+  | 'left-end'
+  | 'left-start'
+  | 'right'
+  | 'right-end'
+  | 'right-start'
+  | 'top'
+  | 'top-end'
+  | 'top-start';
 
 export type TooltipProps = BaseProps & {
   /**
@@ -29,6 +40,18 @@ export type TooltipProps = BaseProps & {
   disabled?: boolean;
 
   /**
+   * Delay in ms before the tooltip appears.
+   * @default 0
+   */
+  enterDelay?: number;
+
+  /**
+   * Delay in ms before the tooltip appears on subsequent hovers.
+   * @default 0
+   */
+  enterNextDelay?: number;
+
+  /**
    * Max width of the tooltip in px
    */
   maxWidth?: number;
@@ -38,6 +61,13 @@ export type TooltipProps = BaseProps & {
    * @default false
    */
   open?: boolean;
+
+  /**
+   * Placement of the tooltip.
+   * @default 'bottom'
+   */
+  placement?: Placement;
+
   /**
    *
    */
@@ -52,7 +82,29 @@ export type TooltipProps = BaseProps & {
    * The content of the tooltip.
    */
   title?: ReactNode;
-} & Partial<Omit<MuiTooltipProps, 'children'>>;
+};
+
+/**
+ * Parse a MUI-style placement string into Radix side and align values.
+ */
+const parsePlacement = (
+  placement?: Placement,
+): {
+  align: 'center' | 'end' | 'start';
+  side: 'bottom' | 'left' | 'right' | 'top';
+} => {
+  if (!placement) {
+    return { align: 'center', side: 'bottom' };
+  }
+  const parts = placement.split('-') as [
+    'bottom' | 'left' | 'right' | 'top',
+    ('end' | 'start')?,
+  ];
+  return {
+    align: parts[1] ?? 'center',
+    side: parts[0],
+  };
+};
 
 /**
  * Tooltip component displays informative text when users hover over, focus on, or tap an element.
@@ -76,24 +128,8 @@ export type TooltipProps = BaseProps & {
  *   <span>Hover me</span>
  * </Tooltip>
  *
- * <Tooltip title="Bottom placement" placement="bottom">
- *   <span>Hover me</span>
- * </Tooltip>
- *
- * <Tooltip title="Left placement" placement="left">
- *   <span>Hover me</span>
- * </Tooltip>
- *
- * <Tooltip title="Right placement" placement="right">
- *   <span>Hover me</span>
- * </Tooltip>
- *
  * @example Controlled tooltip
  * const [isOpen, setIsOpen] = useState(false);
- *
- * <Button onClick={() => setIsOpen(!isOpen)}>
- *   Toggle tooltip
- * </Button>
  *
  * <Tooltip
  *   title="This tooltip is controlled programmatically"
@@ -109,88 +145,30 @@ export type TooltipProps = BaseProps & {
  * >
  *   <Button>Hover me (no tooltip)</Button>
  * </Tooltip>
- *
- * @example With custom theme
- * <Tooltip
- *   title="Custom theme"
- *   themeOverride="day"
- * >
- *   <Button>Hover me</Button>
- * </Tooltip>
- *
- * @example With arrow
- * <Tooltip
- *   title="Tooltip with arrow"
- *   arrow
- * >
- *   <Button>Hover me</Button>
- * </Tooltip>
- *
- * @example With JSX content
- * <Tooltip
- *   title={
- *     <div>
- *       <Text type="bold-label">Custom content</Text>
- *       <div>With formatting</div>
- *     </div>
- *   }
- * >
- *   <Button>Hover for rich content</Button>
- * </Tooltip>
  */
-const StyledTooltip = muiStyled(
-  ({
-    className,
-    dataTheme,
-    ...props
-  }: MuiTooltipProps & { dataTheme: Theme }) => (
-    <MuiTooltip
-      {...props}
-      PopperProps={
-        {
-          ...props.PopperProps,
-          'data-theme': dataTheme,
-          // PopperProps by default, would not allow the data-theme attribute to be passed
-        } as PopperProps
-      }
-      classes={{ popper: className }}
-    />
-  ),
-)(() => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    // Reset MUI styles
-    all: 'revert',
-    backgroundColor: theme.gray0,
-    borderRadius: theme.radius10,
-    boxShadow: theme.v3ShadowLarge,
-    color: theme.textColor,
-    padding: theme.space12,
-  },
-  [`&[data-theme='night']`]: {
-    [`.${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.gray50,
-    },
-  },
-}));
-
 export const Tooltip = ({
   children,
   className,
   disabled = false,
+  enterDelay,
+  enterNextDelay,
   maxWidth,
   open,
+  placement,
   subtitle,
   themeOverride = 'night',
   title,
-  ...rest
 }: TooltipProps) => {
+  const { align, side } = parsePlacement(placement);
+  const delayDuration = enterDelay ?? enterNextDelay ?? 0;
+
   const renderTooltip = () => (
     <Flex
-      className={styles.tooltipContent}
+      className={cn('wrap-break-word')}
       flexDirection="column"
       gap={8}
       style={{
-        '--amino-tooltip-max-width': maxWidth ? `${maxWidth}px` : 'unset',
+        maxWidth: maxWidth ? `${maxWidth}px` : undefined,
       }}
     >
       {typeof title === 'string' ? (
@@ -198,27 +176,36 @@ export const Tooltip = ({
       ) : (
         <>{title}</>
       )}
-      {typeof subtitle === 'string' ? (
-        <Text type="caption">{subtitle}</Text>
-      ) : (
-        <>{subtitle}</>
-      )}
+      {subtitle !== undefined &&
+        (typeof subtitle === 'string' ? (
+          <Text type="caption">{subtitle}</Text>
+        ) : (
+          <>{subtitle}</>
+        ))}
     </Flex>
   );
 
-  if (!disabled) {
-    return (
-      <StyledTooltip
-        {...rest}
-        className={className}
-        dataTheme={themeOverride}
-        open={open}
-        title={renderTooltip()}
-      >
-        <div className="tooltip-wrapper">{children}</div>
-      </StyledTooltip>
-    );
+  if (disabled) {
+    return children;
   }
 
-  return children;
+  return (
+    <TooltipProvider delayDuration={delayDuration}>
+      <RadixTooltip open={open}>
+        <TooltipTrigger asChild>
+          <div className={cn('tooltip-wrapper', className)}>{children}</div>
+        </TooltipTrigger>
+        <TooltipContent
+          align={align}
+          className={cn(
+            'rounded-(--amino-radius-10) bg-(--amino-gray-0) p-(--amino-space-12) text-(--amino-text-color) shadow-(--amino-v3-shadow-large)',
+          )}
+          data-theme={themeOverride}
+          side={side}
+        >
+          {renderTooltip()}
+        </TooltipContent>
+      </RadixTooltip>
+    </TooltipProvider>
+  );
 };

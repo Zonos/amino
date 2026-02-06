@@ -7,13 +7,10 @@ import {
   type ReactNode,
 } from 'react';
 
-import { clsx } from 'clsx';
-
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
-
-import styles from './_InputBase.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type InputMode =
   | 'decimal'
@@ -121,40 +118,75 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
       noBorder,
       placeholder,
       prefix,
-      size,
+      size = 'md',
       suffix,
       value,
       valuePrefix,
       ...props
     },
     ref,
-  ) => (
-    <div className={styles.textInputWrapper}>
-      {label && (
-        <label className={clsx(styles.label, error && 'has-error')}>
-          {label}
-        </label>
-      )}
-      <div
-        className={clsx(
-          styles.inputWrapper,
-          size && styles[`${size}`],
-          error && 'has-error',
-          className,
+  ) => {
+    const sizeClasses = {
+      lg: 'h-12',
+      md: 'h-10',
+      sm: 'h-8',
+      xl: 'h-14',
+    };
+
+    return (
+      <div className="flex flex-col w-full">
+        {label && (
+          <label
+            className={cn(
+              'block mb-2 text-amino-text-secondary flex-none',
+              error && 'text-red-600',
+            )}
+          >
+            {label}
+          </label>
         )}
-      >
-        {prefix && <div className={styles.prefix}>{prefix}</div>}
-        {valuePrefix && <div className={styles.valuePrefix}>{valuePrefix}</div>}
-        <input
-          ref={ref}
-          className={styles.input}
-          disabled={disabled}
-          placeholder={placeholder}
-          value={value || ''}
-          {...props}
-        />
-        {suffix && <div className={styles.suffix}>{suffix}</div>}
+        <div
+          className={cn(
+            'flex items-center w-full rounded-[var(--amino-input-border-radius)] bg-transparent flex-none',
+            'shadow-[var(--amino-input-shadow)]',
+            'focus-within:shadow-[var(--amino-input-focus-shadow)]',
+            error &&
+              'shadow-[var(--amino-input-error-shadow)] focus-within:shadow-[var(--amino-input-error-focus-shadow)]',
+            sizeClasses[size],
+            className,
+          )}
+          style={{
+            '--amino-input-error-focus-shadow':
+              'inset 0 0 0 2px var(--amino-red-500)',
+            '--amino-input-error-shadow':
+              'inset 0 0 0 1px var(--amino-red-500)',
+            '--amino-input-focus-shadow': `inset 0 0 0 2px ${error ? 'var(--amino-red-500)' : 'var(--amino-blue-500)'}`,
+            '--amino-input-shadow': 'inset 0 0 0 1px var(--amino-border-color)',
+          }}
+        >
+          {prefix && (
+            <div className="font-medium px-2 pr-0 -mr-2 flex items-center">
+              {prefix}
+            </div>
+          )}
+          {valuePrefix && (
+            <div className="pl-3 text-gray-800 whitespace-nowrap">
+              {valuePrefix}
+            </div>
+          )}
+          <input
+            ref={ref}
+            className="bg-amino-input h-full px-4 outline-none w-full border-0 rounded-[inherit] bg-transparent font-medium placeholder:text-gray-500 placeholder:font-normal"
+            disabled={disabled}
+            placeholder={placeholder}
+            value={value || ''}
+            {...props}
+          />
+          {suffix && (
+            <div className="font-medium px-2 flex items-center">{suffix}</div>
+          )}
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 );

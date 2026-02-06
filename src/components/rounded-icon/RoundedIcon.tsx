@@ -1,13 +1,12 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
+import { cva } from 'class-variance-authority';
 
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
 import type { Intent } from 'src/types/Intent';
-
-import styles from './RoundedIcon.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type RoundedIconProps = BaseProps & {
   background?: Color;
@@ -15,6 +14,23 @@ export type RoundedIconProps = BaseProps & {
   color?: Color;
   intent?: Intent;
 };
+
+const roundedIconVariants = cva(
+  'flex size-amino-32 items-center justify-center rounded-[32px] [&_svg]:size-amino-20',
+  {
+    defaultVariants: {
+      intent: undefined,
+    },
+    variants: {
+      intent: {
+        danger: 'bg-red-100 text-red-600',
+        primary: 'bg-blue-100 text-blue-600',
+        success: 'bg-green-100 text-green-600',
+        warning: 'bg-orange-100 text-orange-600',
+      },
+    },
+  },
+);
 
 /**
  * RoundedIcon component displays an icon or element inside a circular or rounded background,
@@ -69,27 +85,31 @@ export const RoundedIcon = ({
   intent,
   style,
 }: RoundedIconProps) => {
-  const getIntentClass = () => {
-    switch (intent) {
-      case 'danger':
-      case 'primary':
-      case 'warning':
-      case 'success':
-        return styles[intent];
-      default:
-        return '';
-    }
-  };
+  const intentValue =
+    intent === 'danger' ||
+    intent === 'primary' ||
+    intent === 'warning' ||
+    intent === 'success'
+      ? intent
+      : undefined;
 
   return (
     <div
-      className={clsx(className, styles.iconWrapper, getIntentClass())}
+      className={cn(roundedIconVariants({ intent: intentValue }), className)}
       style={{
         ...style,
-        '--amino-rounded-icon-background': background
-          ? theme[background]
-          : theme.gray200,
-        '--amino-rounded-icon-color': color ? theme[color] : theme.gray600,
+        ...(background || color
+          ? {
+              '--amino-rounded-icon-background': background
+                ? theme[background]
+                : undefined,
+              '--amino-rounded-icon-color': color ? theme[color] : undefined,
+              backgroundColor: background
+                ? 'var(--amino-rounded-icon-background)'
+                : undefined,
+              color: color ? 'var(--amino-rounded-icon-color)' : undefined,
+            }
+          : {}),
       }}
     >
       {children}

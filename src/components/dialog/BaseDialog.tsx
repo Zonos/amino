@@ -1,13 +1,11 @@
 import React, { type ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import clsx from 'clsx';
 import { AnimatePresence, motion, type MotionProps } from 'framer-motion';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
-
-import styles from './BaseDialog.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type BaseDialogProps = BaseProps & {
   children: ReactNode;
@@ -118,7 +116,7 @@ export const BaseDialog = ({
         <AnimatePresence>
           {open && (
             <motion.div
-              className={styles.backdrop}
+              className="w-screen h-screen left-0 top-0 z-[1000] fixed flex justify-center items-center text-amino"
               {...backdropMotionProps}
               key="dialog-backdrop"
               ref={backdropRef}
@@ -150,12 +148,18 @@ export const BaseDialog = ({
               <motion.div
                 {...combinedPopupMotionProps}
                 key="dialog"
-                className={clsx(className, styles.popup, 'elevated')}
+                className={cn(
+                  className,
+                  'elevated z-[1001] bg-amino-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
+                )}
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog
                   e.stopPropagation();
                 }}
-                style={style}
+                style={{
+                  ...style,
+                  width: 'var(--amino-base-dialog-width)',
+                }}
               >
                 {children}
               </motion.div>

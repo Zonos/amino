@@ -1,8 +1,5 @@
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Spinner.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type SpinnerColor =
   | 'primary'
@@ -25,6 +22,31 @@ export type SpinnerProps = BaseProps & {
    * @default 32
    */
   size?: number;
+};
+
+const spinnerColorClasses: Record<
+  SpinnerColor,
+  { svg: string; track: string }
+> = {
+  black: {
+    svg: 'stroke-spinner-stroke-black',
+    track: 'stroke-spinner-track-black',
+  },
+  cyan: { svg: 'stroke-cyan-600', track: 'stroke-cyan-100' },
+  danger: { svg: 'stroke-red-600', track: 'stroke-red-100' },
+  info: { svg: 'stroke-blue-600', track: 'stroke-blue-100' },
+  inverted: {
+    svg: 'stroke-spinner-stroke-white dark:stroke-spinner-stroke-black',
+    track: 'stroke-spinner-track-white dark:stroke-spinner-track-black',
+  },
+  primary: { svg: 'stroke-blue-600', track: 'stroke-gray-200' },
+  purple: { svg: 'stroke-purple-600', track: 'stroke-purple-100' },
+  success: { svg: 'stroke-green-600', track: 'stroke-green-100' },
+  warning: { svg: 'stroke-orange-600', track: 'stroke-orange-100' },
+  white: {
+    svg: 'stroke-spinner-stroke-white',
+    track: 'stroke-spinner-track-white',
+  },
 };
 
 /**
@@ -74,41 +96,49 @@ export const Spinner = ({
   color = 'primary',
   size = 32,
   style,
-}: SpinnerProps) => (
-  <div
-    className={styles.wrapper}
-    style={{
-      ...style,
-      '--amino-spinner-height': `${size}px`,
-      '--amino-spinner-width': `${size}px`,
-    }}
-  >
-    <svg
-      className={clsx(
-        className,
-        styles.styledSvg,
-        color !== 'primary' && styles[color],
-        'amino-spinner',
-      )}
-      viewBox="0 0 50 50"
+}: SpinnerProps) => {
+  const colors = spinnerColorClasses[color];
+  return (
+    <div
+      className="relative overflow-hidden"
+      style={{
+        ...style,
+        height: `${size}px`,
+        width: `${size}px`,
+      }}
     >
-      <circle
-        className={clsx(styles.track, 'track')}
-        cx="25"
-        cy="25"
-        fill="none"
-        id="loading-spinner-circle"
-        r="20"
-        strokeWidth="5"
-      />
-      <circle
-        cx="25"
-        cy="25"
-        fill="none"
-        id="loading-spinner-circle"
-        r="20"
-        strokeWidth="5"
-      />
-    </svg>
-  </div>
-);
+      <svg
+        className={cn(
+          'absolute animate-spinner-rotate',
+          colors.svg,
+          className,
+          'amino-spinner',
+        )}
+        style={{
+          height: `${size}px`,
+          width: `${size}px`,
+        }}
+        viewBox="0 0 50 50"
+      >
+        <circle
+          className={cn('track', colors.track)}
+          cx="25"
+          cy="25"
+          fill="none"
+          id="loading-spinner-circle"
+          r="20"
+          strokeWidth="5"
+        />
+        <circle
+          className="animate-spinner-dash [stroke-linecap:round]"
+          cx="25"
+          cy="25"
+          fill="none"
+          id="loading-spinner-circle"
+          r="20"
+          strokeWidth="5"
+        />
+      </svg>
+    </div>
+  );
+};

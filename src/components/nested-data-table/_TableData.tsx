@@ -15,11 +15,10 @@ import {
 } from 'src/components/pivot-table/PivotTable';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { ChevronRightCircleIcon } from 'src/icons/ChevronRightCircleIcon';
+import { cn } from 'src/utils/cn';
 import { flattenRow } from 'src/utils/flattenRow';
 import { setupNestedData } from 'src/utils/setupNestedData';
 import { truncateText } from 'src/utils/truncateText';
-
-import styles from './_TableData.module.scss';
 
 type ColumnType = Column<RowWithIndex, Record<string, unknown>>;
 
@@ -75,10 +74,13 @@ export const TableData = <TRow extends Record<string, unknown>>({
         const noItems = currentValue.length === 0;
         const isExpanding = row._expandedKey === column.key;
         return (
-          <div className={styles.styledExpandWrapper}>
+          <div className={cn('flex items-center h-full')}>
             <Tooltip disabled={!noItems} title="This list has no items.">
               <Button
-                className={isExpanding ? 'expanding-button' : ''}
+                className={cn(
+                  isExpanding && '[&_svg]:rotate-90',
+                  '[&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[ease]',
+                )}
                 disabled={noItems}
                 icon={<ChevronRightCircleIcon />}
                 onClick={() =>
@@ -152,8 +154,13 @@ export const TableData = <TRow extends Record<string, unknown>>({
   }, [columns, hiddenColumns]);
 
   return (
-    <div className={styles.styledTableWrapper}>
-      <div className={styles.styledFilterWrapper}>
+    <div
+      className={cn(
+        '[&_.expanding]:bg-gray-50',
+        '[&_&]:pt-amino-4 [&_&]:px-amino-12 [&_&]:pb-amino-24',
+      )}
+    >
+      <div className={cn('flex justify-end mb-amino-12 items-center')}>
         {!noFilter && (
           <Filter
             columns={columns}

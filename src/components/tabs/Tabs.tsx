@@ -1,12 +1,9 @@
-import clsx from 'clsx';
-
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
+
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Variant } from 'src/types/Variant';
-
-import styles from './Tabs.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type TabsProps = BaseProps & {
   /**
@@ -114,23 +111,36 @@ export const Tabs = ({
   if (subtle) {
     return (
       <div
-        className={clsx(className, styles.baseTabs, styles.subtleTabs)}
+        className={cn(
+          'flex items-center gap-6 border-b border-gray-100',
+          align === 'center' && 'justify-center',
+          align === 'end' && 'justify-end',
+          className,
+        )}
         style={{
           ...style,
-          '--amino-tabs-align': align,
           '--amino-tabs-color': getTabColor(),
         }}
       >
         {items.map(item => (
           <button
             key={item}
-            className={clsx(
-              styles.baseTab,
-              globalStyles.focusable,
+            className={cn(
+              'relative cursor-pointer select-none text-center py-3 transition-all',
+              'text-gray-800',
+              "after:absolute after:bottom-0 after:left-0 after:content-[''] after:bg-gray-200 after:transition-all after:h-[2px] after:w-full after:scale-x-0",
+              'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
               selected === items.indexOf(item) && [
-                styles.isSelected,
+                'text-[var(--amino-tabs-color)]',
+                '[&>span]:text-[var(--amino-tabs-color)]',
+                'after:bg-[var(--amino-tabs-color)] after:scale-x-100',
                 // Used for external styling
                 'is-selected',
+              ],
+              selected !== items.indexOf(item) && [
+                'hover:text-gray-1000 hover:after:scale-x-100',
+                'focus:text-gray-1000 focus:after:scale-x-100',
+                'active:text-gray-1000 active:after:bg-gray-300 active:after:scale-x-100',
               ],
             )}
             onClick={() => onChange(items.indexOf(item))}
@@ -145,7 +155,10 @@ export const Tabs = ({
 
   return (
     <div
-      className={clsx(className, styles.baseTabs, styles.aminoTabs)}
+      className={cn(
+        'flex items-center border border-amino rounded-lg',
+        className,
+      )}
       style={{
         ...style,
         '--amino-tabs-color': getTabColor(),
@@ -154,14 +167,25 @@ export const Tabs = ({
       {items.map(item => (
         <button
           key={item}
-          className={clsx(
-            styles.baseTab,
-            globalStyles.focusable,
-            styles.tab,
+          className={cn(
+            'relative cursor-pointer select-none text-center py-3 transition-all flex-1 font-medium',
+            'text-gray-800',
+            "after:absolute after:bottom-0 after:left-0 after:content-[''] after:bg-gray-200 after:transition-all after:h-1 after:w-full after:scale-x-0",
+            'first:after:rounded-bl-lg last:after:rounded-br-lg',
+            '[&+button]:border-l [&+button]:border-amino',
+            'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
             selected === items.indexOf(item) && [
-              styles.isSelected,
+              'text-[var(--amino-tabs-color)]',
+              'after:bg-[var(--amino-tabs-color)] after:scale-x-100',
               // Used for external styling
               'is-selected',
+            ],
+            selected !== items.indexOf(item) && [
+              'hover:bg-[rgba(0,0,0,0.03)]',
+              'hover:text-gray-1000 hover:after:scale-x-100',
+              'focus:text-gray-1000 focus:after:scale-x-100',
+              'active:bg-[rgba(0,0,0,0.08)]',
+              'active:text-gray-1000 active:after:bg-gray-300 active:after:scale-x-100',
             ],
           )}
           onClick={() => onChange(items.indexOf(item))}
