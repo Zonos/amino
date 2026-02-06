@@ -33,8 +33,6 @@ export type Language = {
   flag: string;
   /** Native name of the language */
   nativeName: string;
-  /** Optional region for filtering (e.g., 'Americas', 'Europe') */
-  region?: string;
 };
 
 export type LanguagePickerProps = BaseProps & {

@@ -353,7 +353,7 @@ export const AnimatedGlobe = ({ size = 160 }: AnimatedGlobeProps) => {
         radius * 1.4,
       );
       glowGradient.addColorStop(0, GLOBE_COLORS.glowInner);
-      glowGradient.addColorStop(1, 'rgba(14, 116, 144, 0)');
+      glowGradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
       ctx.fillStyle = glowGradient;
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius * 1.4, 0, Math.PI * 2);
