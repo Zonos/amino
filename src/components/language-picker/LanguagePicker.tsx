@@ -24,13 +24,6 @@ const PARTICLES = Array.from({ length: 20 }).map((_, i) => ({
   top: Math.random() * 100,
 }));
 
-const DEFAULT_REGIONS = [
-  'Americas',
-  'Europe',
-  'Asia Pacific',
-  'Middle East & Africa',
-] as const;
-
 export type Language = {
   /** Language code (e.g., 'en', 'es', 'fr') */
   code: string;
@@ -57,16 +50,6 @@ export type LanguagePickerProps = BaseProps & {
   /** Called when user confirms language selection */
   onLanguageSelect: (code: string) => void;
   /**
-   * Optional: Custom regions for filtering tabs
-   * @default ['Americas', 'Europe', 'Asia Pacific', 'Middle East & Africa']
-   */
-  regions?: readonly string[];
-  /**
-   * Optional: Enable region filtering tabs
-   * @default true
-   */
-  showRegionTabs?: boolean;
-  /**
    * Custom header title
    * @default 'Choose your language'
    */
@@ -81,8 +64,6 @@ export const LanguagePicker = ({
   description = 'Select your preferred language for the best experience. Content will be displayed in your chosen language across the platform.',
   languages,
   onLanguageSelect,
-  regions = DEFAULT_REGIONS,
-  showRegionTabs = true,
   style,
   title = 'Choose your language',
   trigger,
@@ -91,7 +72,6 @@ export const LanguagePicker = ({
   const [selectedLanguage, setSelectedLanguage] =
     useState<string>(currentLanguage);
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeRegion, setActiveRegion] = useState<string | null>(null);
 
   const currentLanguageData = useMemo(
     () => languages.find(lang => lang.code === currentLanguage),
@@ -148,7 +128,6 @@ export const LanguagePicker = ({
   useEffect(() => {
     if (!isOpen) {
       setSearchQuery('');
-      setActiveRegion(null);
       setSelectedLanguage(currentLanguage);
     }
   }, [isOpen, currentLanguage]);
@@ -156,15 +135,13 @@ export const LanguagePicker = ({
   const filteredLanguages = useMemo(
     () =>
       languages.filter(lang => {
-        const matchesSearch =
-          !searchQuery ||
+        if (!searchQuery) return true;
+        return (
           lang.englishName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          lang.nativeName.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesRegion =
-          !activeRegion || !showRegionTabs || lang.region === activeRegion;
-        return matchesSearch && matchesRegion;
+          lang.nativeName.toLowerCase().includes(searchQuery.toLowerCase())
+        );
       }),
-    [searchQuery, activeRegion, languages, showRegionTabs],
+    [searchQuery, languages],
   );
 
   return (
@@ -267,41 +244,6 @@ export const LanguagePicker = ({
                   value={searchQuery}
                 />
               </div>
-
-              {/* Region tabs */}
-              {showRegionTabs && (
-                <div className={styles.regionTabs} role="tablist">
-                  <button
-                    aria-pressed={!activeRegion}
-                    aria-selected={!activeRegion}
-                    className={clsx(
-                      styles.regionTab,
-                      !activeRegion && styles.regionTabActive,
-                    )}
-                    onClick={() => setActiveRegion(null)}
-                    role="tab"
-                    type="button"
-                  >
-                    All regions
-                  </button>
-                  {regions.map(region => (
-                    <button
-                      key={region}
-                      aria-pressed={activeRegion === region}
-                      aria-selected={activeRegion === region}
-                      className={clsx(
-                        styles.regionTab,
-                        activeRegion === region && styles.regionTabActive,
-                      )}
-                      onClick={() => setActiveRegion(region)}
-                      role="tab"
-                      type="button"
-                    >
-                      {region}
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* Separator */}

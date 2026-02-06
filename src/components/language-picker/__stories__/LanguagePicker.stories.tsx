@@ -11,139 +11,40 @@ import { VStack } from 'src/components/stack/VStack';
 
 // Sample language data (matching zonos.com's supported languages)
 const sampleLanguages = [
-  {
-    code: 'da',
-    englishName: 'Danish',
-    flag: '🇩🇰',
-    nativeName: 'Dansk',
-    region: 'Europe',
-  },
-  {
-    code: 'de',
-    englishName: 'German',
-    flag: '🇩🇪',
-    nativeName: 'Deutsch',
-    region: 'Europe',
-  },
-  {
-    code: 'el',
-    englishName: 'Greek',
-    flag: '🇬🇷',
-    nativeName: 'Ελληνικά',
-    region: 'Europe',
-  },
-  {
-    code: 'en',
-    englishName: 'English',
-    flag: '🇺🇸',
-    nativeName: 'English',
-    region: 'Americas',
-  },
-  {
-    code: 'es',
-    englishName: 'Spanish',
-    flag: '🇪🇸',
-    nativeName: 'Español',
-    region: 'Americas',
-  },
-  {
-    code: 'fr',
-    englishName: 'French',
-    flag: '🇫🇷',
-    nativeName: 'Français',
-    region: 'Europe',
-  },
+  { code: 'da', englishName: 'Danish', flag: '🇩🇰', nativeName: 'Dansk' },
+  { code: 'de', englishName: 'German', flag: '🇩🇪', nativeName: 'Deutsch' },
+  { code: 'el', englishName: 'Greek', flag: '🇬🇷', nativeName: 'Ελληνικά' },
+  { code: 'en', englishName: 'English', flag: '🇺🇸', nativeName: 'English' },
+  { code: 'es', englishName: 'Spanish', flag: '🇪🇸', nativeName: 'Español' },
+  { code: 'fr', englishName: 'French', flag: '🇫🇷', nativeName: 'Français' },
   {
     code: 'id',
     englishName: 'Indonesian',
     flag: '🇮🇩',
     nativeName: 'Bahasa Indonesia',
-    region: 'Asia Pacific',
   },
-  {
-    code: 'it',
-    englishName: 'Italian',
-    flag: '🇮🇹',
-    nativeName: 'Italiano',
-    region: 'Europe',
-  },
-  {
-    code: 'ja',
-    englishName: 'Japanese',
-    flag: '🇯🇵',
-    nativeName: '日本語',
-    region: 'Asia Pacific',
-  },
-  {
-    code: 'ko',
-    englishName: 'Korean',
-    flag: '🇰🇷',
-    nativeName: '한국어',
-    region: 'Asia Pacific',
-  },
-  {
-    code: 'nl',
-    englishName: 'Dutch',
-    flag: '🇳🇱',
-    nativeName: 'Nederlands',
-    region: 'Europe',
-  },
-  {
-    code: 'no',
-    englishName: 'Norwegian',
-    flag: '🇳🇴',
-    nativeName: 'Norsk',
-    region: 'Europe',
-  },
-  {
-    code: 'pl',
-    englishName: 'Polish',
-    flag: '🇵🇱',
-    nativeName: 'Polski',
-    region: 'Europe',
-  },
+  { code: 'it', englishName: 'Italian', flag: '🇮🇹', nativeName: 'Italiano' },
+  { code: 'ja', englishName: 'Japanese', flag: '🇯🇵', nativeName: '日本語' },
+  { code: 'ko', englishName: 'Korean', flag: '🇰🇷', nativeName: '한국어' },
+  { code: 'nl', englishName: 'Dutch', flag: '🇳🇱', nativeName: 'Nederlands' },
+  { code: 'no', englishName: 'Norwegian', flag: '🇳🇴', nativeName: 'Norsk' },
+  { code: 'pl', englishName: 'Polish', flag: '🇵🇱', nativeName: 'Polski' },
   {
     code: 'pt',
     englishName: 'Portuguese',
     flag: '🇵🇹',
     nativeName: 'Português',
-    region: 'Americas',
   },
-  {
-    code: 'ru',
-    englishName: 'Russian',
-    flag: '🇷🇺',
-    nativeName: 'Русский',
-    region: 'Europe',
-  },
-  {
-    code: 'sv',
-    englishName: 'Swedish',
-    flag: '🇸🇪',
-    nativeName: 'Svenska',
-    region: 'Europe',
-  },
-  {
-    code: 'tr',
-    englishName: 'Turkish',
-    flag: '🇹🇷',
-    nativeName: 'Türkçe',
-    region: 'Middle East & Africa',
-  },
+  { code: 'ru', englishName: 'Russian', flag: '🇷🇺', nativeName: 'Русский' },
+  { code: 'sv', englishName: 'Swedish', flag: '🇸🇪', nativeName: 'Svenska' },
+  { code: 'tr', englishName: 'Turkish', flag: '🇹🇷', nativeName: 'Türkçe' },
   {
     code: 'vi',
     englishName: 'Vietnamese',
     flag: '🇻🇳',
     nativeName: 'Tiếng Việt',
-    region: 'Asia Pacific',
   },
-  {
-    code: 'zh',
-    englishName: 'Chinese',
-    flag: '🇨🇳',
-    nativeName: '中文',
-    region: 'Asia Pacific',
-  },
+  { code: 'zh', englishName: 'Chinese', flag: '🇨🇳', nativeName: '中文' },
 ];
 
 const LanguagePickerMeta: Meta = {
@@ -180,20 +81,6 @@ export const Default = Template.bind({});
 Default.args = {
   currentLanguage: 'en',
   languages: sampleLanguages,
-};
-
-export const WithRegionTabs = Template.bind({});
-WithRegionTabs.args = {
-  currentLanguage: 'en',
-  languages: sampleLanguages,
-  showRegionTabs: true,
-};
-
-export const WithoutRegionTabs = Template.bind({});
-WithoutRegionTabs.args = {
-  currentLanguage: 'en',
-  languages: sampleLanguages,
-  showRegionTabs: false,
 };
 
 export const CustomTitle: StoryFn<LanguagePickerProps> = args => {
@@ -253,7 +140,6 @@ export const FewLanguages: StoryFn<LanguagePickerProps> = args => {
         onLanguageSelect={code => {
           setSelectedLanguage(code);
         }}
-        showRegionTabs={false}
       />
     </div>
   );
@@ -275,29 +161,6 @@ export const NonEnglishDefault: StoryFn<LanguagePickerProps> = args => {
           }}
         />
       </VStack>
-    </div>
-  );
-};
-
-export const CustomRegions: StoryFn<LanguagePickerProps> = args => {
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
-  const customRegions = ['West', 'East'] as const;
-  const languagesWithCustomRegions = sampleLanguages.map((lang, i) => ({
-    ...lang,
-    region: i % 2 === 0 ? 'West' : 'East',
-  }));
-
-  return (
-    <div style={{ padding: 24 }}>
-      <LanguagePicker
-        {...args}
-        currentLanguage={selectedLanguage}
-        languages={languagesWithCustomRegions}
-        onLanguageSelect={code => {
-          setSelectedLanguage(code);
-        }}
-        regions={customRegions}
-      />
     </div>
   );
 };
