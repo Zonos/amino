@@ -149,7 +149,7 @@ const sampleLanguages = [
 const LanguagePickerMeta: Meta = {
   component: LanguagePicker,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   title: 'Components/LanguagePicker',
 };
@@ -162,15 +162,17 @@ const Template: StoryFn<LanguagePickerProps> = args => {
   );
 
   return (
-    <LanguagePicker
-      {...args}
-      currentLanguage={selectedLanguage}
-      onLanguageSelect={code => {
-        setSelectedLanguage(code);
-        // eslint-disable-next-line no-console
-        console.log('Language selected:', code);
-      }}
-    />
+    <div style={{ padding: 24 }}>
+      <LanguagePicker
+        {...args}
+        currentLanguage={selectedLanguage}
+        onLanguageSelect={code => {
+          setSelectedLanguage(code);
+          // eslint-disable-next-line no-console
+          console.log('Language selected:', code);
+        }}
+      />
+    </div>
   );
 };
 
@@ -198,16 +200,18 @@ export const CustomTitle: StoryFn<LanguagePickerProps> = args => {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
 
   return (
-    <LanguagePicker
-      {...args}
-      currentLanguage={selectedLanguage}
-      description="Switch to your preferred language to see all content translated."
-      languages={sampleLanguages}
-      onLanguageSelect={code => {
-        setSelectedLanguage(code);
-      }}
-      title="Select Language"
-    />
+    <div style={{ padding: 24 }}>
+      <LanguagePicker
+        {...args}
+        currentLanguage={selectedLanguage}
+        description="Switch to your preferred language to see all content translated."
+        languages={sampleLanguages}
+        onLanguageSelect={code => {
+          setSelectedLanguage(code);
+        }}
+        title="Select Language"
+      />
+    </div>
   );
 };
 
@@ -218,19 +222,21 @@ export const CustomTrigger: StoryFn<LanguagePickerProps> = args => {
   );
 
   return (
-    <LanguagePicker
-      {...args}
-      currentLanguage={selectedLanguage}
-      languages={sampleLanguages}
-      onLanguageSelect={code => {
-        setSelectedLanguage(code);
-      }}
-      trigger={
-        <Button>
-          {currentLang?.flag} {currentLang?.nativeName}
-        </Button>
-      }
-    />
+    <div style={{ padding: 24 }}>
+      <LanguagePicker
+        {...args}
+        currentLanguage={selectedLanguage}
+        languages={sampleLanguages}
+        onLanguageSelect={code => {
+          setSelectedLanguage(code);
+        }}
+        trigger={
+          <Button>
+            {currentLang?.flag} {currentLang?.nativeName}
+          </Button>
+        }
+      />
+    </div>
   );
 };
 
@@ -239,15 +245,17 @@ export const FewLanguages: StoryFn<LanguagePickerProps> = args => {
   const fewLanguages = sampleLanguages.slice(0, 4);
 
   return (
-    <LanguagePicker
-      {...args}
-      currentLanguage={selectedLanguage}
-      languages={fewLanguages}
-      onLanguageSelect={code => {
-        setSelectedLanguage(code);
-      }}
-      showRegionTabs={false}
-    />
+    <div style={{ padding: 24 }}>
+      <LanguagePicker
+        {...args}
+        currentLanguage={selectedLanguage}
+        languages={fewLanguages}
+        onLanguageSelect={code => {
+          setSelectedLanguage(code);
+        }}
+        showRegionTabs={false}
+      />
+    </div>
   );
 };
 
@@ -255,17 +263,19 @@ export const NonEnglishDefault: StoryFn<LanguagePickerProps> = args => {
   const [selectedLanguage, setSelectedLanguage] = useState('ja');
 
   return (
-    <VStack>
-      <p>Current language: {selectedLanguage}</p>
-      <LanguagePicker
-        {...args}
-        currentLanguage={selectedLanguage}
-        languages={sampleLanguages}
-        onLanguageSelect={code => {
-          setSelectedLanguage(code);
-        }}
-      />
-    </VStack>
+    <div style={{ padding: 24 }}>
+      <VStack>
+        <p>Current language: {selectedLanguage}</p>
+        <LanguagePicker
+          {...args}
+          currentLanguage={selectedLanguage}
+          languages={sampleLanguages}
+          onLanguageSelect={code => {
+            setSelectedLanguage(code);
+          }}
+        />
+      </VStack>
+    </div>
   );
 };
 
@@ -278,14 +288,16 @@ export const CustomRegions: StoryFn<LanguagePickerProps> = args => {
   }));
 
   return (
-    <LanguagePicker
-      {...args}
-      currentLanguage={selectedLanguage}
-      languages={languagesWithCustomRegions}
-      onLanguageSelect={code => {
-        setSelectedLanguage(code);
-      }}
-      regions={customRegions}
-    />
+    <div style={{ padding: 24 }}>
+      <LanguagePicker
+        {...args}
+        currentLanguage={selectedLanguage}
+        languages={languagesWithCustomRegions}
+        onLanguageSelect={code => {
+          setSelectedLanguage(code);
+        }}
+        regions={customRegions}
+      />
+    </div>
   );
 };
