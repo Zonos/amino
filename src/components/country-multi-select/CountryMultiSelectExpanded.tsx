@@ -359,7 +359,7 @@ export const CountryMultiSelectExpanded = <
 
           return (
             <div key={group.label}>
-              <div className="p-amino-8 w-full flex justify-between items-center gap-amino-8 rounded-amino6 hover:bg-amino-hover-color">
+              <div className="p-amino-8 w-full flex justify-between items-center gap-amino-8 rounded-amino-6 hover:bg-amino-hover-color">
                 <Checkbox
                   checked={groupSelected}
                   disabled={!numSelectableInGroup}
@@ -482,7 +482,7 @@ export const CountryMultiSelectExpanded = <
 
       <div
         className={cn(
-          'border border-amino rounded-amino12 p-amino-8 flex flex-col gap-amino-4',
+          'border border-amino rounded-amino-12 p-amino-8 flex flex-col gap-amino-4',
           error && 'border-amino-danger',
         )}
       >

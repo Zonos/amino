@@ -316,7 +316,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       <div className="content px-amino-4">{children}</div>
       {iconRight && <span className="content">{icon}</span>}
       {variant !== 'plain' && variant !== 'text' && loading && (
-        <span className="spinner-wrapper absolute inset-0 flex items-center justify-center rounded-amino6 gap-amino-8">
+        <span className="spinner-wrapper absolute inset-0 flex items-center justify-center rounded-amino-6 gap-amino-8">
           <Spinner color={_spinnerColor} size={getSpinnerSize()} />
           {loadingText}
         </span>

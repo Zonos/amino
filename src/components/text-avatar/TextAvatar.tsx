@@ -49,7 +49,7 @@ export const TextAvatar = ({ className, label, style }: TextAvatarProps) => {
   return (
     <div
       className={cn(
-        'flex size-[32px] items-center justify-center rounded-amino6 font-medium text-gray-0',
+        'flex size-[32px] items-center justify-center rounded-amino-6 font-medium text-gray-0',
         'bg-linear-to-[137deg] from-[var(--amino-text-avatar-gradient-start)] to-[var(--amino-text-avatar-gradient-end)]',
         'dark:text-gray-1000',
         className,

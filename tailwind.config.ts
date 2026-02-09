@@ -63,11 +63,11 @@ const config: Config = {
 
       /* ─── Border Radius ─── */
       borderRadius: {
-        amino10: theme.radius10,
-        amino12: theme.radius12,
-        amino4: theme.radius4,
-        amino6: theme.radius6,
-        amino8: theme.radius8,
+        'amino-10': theme.radius10,
+        'amino-12': theme.radius12,
+        'amino-4': theme.radius4,
+        'amino-6': theme.radius6,
+        'amino-8': theme.radius8,
       },
 
       /* ─── Box Shadow ─── */

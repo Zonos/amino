@@ -13,7 +13,7 @@ type ButtonGroupProps = {
 export const ButtonGroup = ({ children }: ButtonGroupProps) => (
   <Flex
     className={cn(
-      'rounded-amino6 shadow-amino-base w-fit',
+      'rounded-amino-6 shadow-amino-base w-fit',
       // Remove box shadows from all buttons
       '[&>*]:shadow-none [&>*]:focus:shadow-none',
       '[&>:global(.menu-button-action)_*]:shadow-none [&>:global(.menu-button-action)_*]:focus:shadow-none',

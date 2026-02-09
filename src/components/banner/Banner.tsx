@@ -15,7 +15,7 @@ import type { Intent } from 'src/types/Intent';
 import { cn } from 'src/utils/cn';
 
 const bannerVariants = cva(
-  'rounded-amino12 p-amino-16 [&_.amino-button]:hover:brightness-110 [&_.amino-button]:focus:brightness-110',
+  'rounded-amino-12 p-amino-16 [&_.amino-button]:hover:brightness-110 [&_.amino-button]:focus:brightness-110',
   {
     defaultVariants: {
       intent: 'default',

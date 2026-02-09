@@ -24,7 +24,7 @@ type Props = BaseProps & {
 };
 
 const surfaceVariants = cva(
-  'elevated rounded-amino8 bg-amino-surface-color p-amino-24 text-amino-text-color',
+  'elevated rounded-amino-8 bg-amino-surface-color p-amino-24 text-amino-text-color',
   {
     defaultVariants: {
       dense: false,
@@ -33,7 +33,7 @@ const surfaceVariants = cva(
     variants: {
       dense: {
         false: '',
-        true: 'rounded-amino6',
+        true: 'rounded-amino-6',
       },
       depth: {
         depth1: '',

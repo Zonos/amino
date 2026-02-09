@@ -22,7 +22,7 @@ export type TagProps = BaseProps &
     size?: TagSize;
   };
 
-const tagVariants = cva('inline-flex rounded-amino6 border text-text-color', {
+const tagVariants = cva('inline-flex rounded-amino-6 border text-text-color', {
   compoundVariants: [
     {
       className: 'border-red-600',
@@ -122,8 +122,8 @@ export const Tag = ({
       className={cn(
         'inline-flex items-center gap-1 text-amino-base font-medium text-center focus:outline-none',
         size === 'base'
-          ? 'rounded-amino6 rounded-r-none py-0.5 px-1'
-          : 'rounded-amino6 rounded-r-none py-1 pl-2 pr-1',
+          ? 'rounded-amino-6 rounded-r-none py-0.5 px-1'
+          : 'rounded-amino-6 rounded-r-none py-1 pl-2 pr-1',
         iconRight && '[&_svg]:order-2',
         tagHoverVariants({ highlighted, intent }),
       )}
@@ -135,7 +135,7 @@ export const Tag = ({
     </button>
     <button
       className={cn(
-        'inline-flex items-center rounded-amino6',
+        'inline-flex items-center rounded-amino-6',
         size === 'base' ? 'py-0.5 px-0.75' : 'py-1 px-1.25',
         tagHoverVariants({ highlighted, intent }),
       )}

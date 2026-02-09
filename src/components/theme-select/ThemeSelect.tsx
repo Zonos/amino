@@ -84,7 +84,7 @@ export const ThemeSelect = ({
         <HStack className={className}>
           <button
             className={cn(
-              'rounded-amino8 border-2 border-solid border-transparent text-amino-text-color focus:outline-none active:outline-none',
+              'rounded-amino-8 border-2 border-solid border-transparent text-amino-text-color focus:outline-none active:outline-none',
               aminoTheme === 'day' && 'border-blue-400 text-amino-primary',
             )}
             data-theme="day"
@@ -101,7 +101,7 @@ export const ThemeSelect = ({
 
           <button
             className={cn(
-              'rounded-amino8 border-2 border-solid border-transparent text-amino-text-color focus:outline-none active:outline-none',
+              'rounded-amino-8 border-2 border-solid border-transparent text-amino-text-color focus:outline-none active:outline-none',
               aminoTheme === 'night' && 'border-blue-400 text-amino-primary',
             )}
             data-theme="night"

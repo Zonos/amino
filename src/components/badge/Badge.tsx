@@ -106,7 +106,7 @@ const badgeVariants = cva(
       },
       size: {
         default: 'py-[3px] px-[4px] gap-amino-0',
-        small: 'py-px px-amino-4 rounded-amino4 gap-0 [&_p]:px-amino-4',
+        small: 'py-px px-amino-4 rounded-amino-4 gap-0 [&_p]:px-amino-4',
       },
     },
   },

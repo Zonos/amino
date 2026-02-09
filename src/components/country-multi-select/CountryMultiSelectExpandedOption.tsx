@@ -83,7 +83,7 @@ export const _CountryMultiSelectExpandedOptionComponent = <T extends string>({
         checked={isChecked}
         className={cn(
           'w-full p-amino-8 flex flex-col [&>div]:items-center',
-          !country.disabled && 'rounded-amino6 hover:bg-amino-hover-color',
+          !country.disabled && 'rounded-amino-6 hover:bg-amino-hover-color',
         )}
         disabled={country.disabled}
         label={country.label}

@@ -163,7 +163,7 @@ export const LanguagePicker = ({
         <button
           aria-label="Select language"
           className={cn(
-            'flex h-8 items-center gap-[6px] rounded-amino6 border border-gray-200 bg-transparent px-amino-12 py-[6px] text-sm font-medium text-gray-800 transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-gray-300 hover:bg-gray-100',
+            'flex h-8 items-center gap-[6px] rounded-amino-6 border border-gray-200 bg-transparent px-amino-12 py-[6px] text-sm font-medium text-gray-800 transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-gray-300 hover:bg-gray-100',
             className,
           )}
           onClick={() => setIsOpen(true)}
@@ -185,7 +185,7 @@ export const LanguagePicker = ({
           <div
             aria-label="Select language"
             aria-modal="true"
-            className="flex max-h-[calc(100vh-64px)] w-[calc(100%-32px)] max-w-[680px] flex-col overflow-hidden rounded-amino12 bg-surface shadow-amino-medium animate-slide-up"
+            className="flex max-h-[calc(100vh-64px)] w-[calc(100%-32px)] max-w-[680px] flex-col overflow-hidden rounded-amino-12 bg-surface shadow-amino-medium animate-slide-up"
             onClick={e => e.stopPropagation()}
             role="dialog"
           >
@@ -252,7 +252,7 @@ export const LanguagePicker = ({
                 />
                 <input
                   aria-label="Search languages"
-                  className="w-full rounded-amino8 border border-gray-200 bg-surface px-amino-12 py-[10px] pl-10 text-sm text-text-color outline-none transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] placeholder:text-gray-400 focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]"
+                  className="w-full rounded-amino-8 border border-gray-200 bg-surface px-amino-12 py-[10px] pl-10 text-sm text-text-color outline-none transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] placeholder:text-gray-400 focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]"
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder="Search languages..."
                   type="text"
@@ -310,7 +310,7 @@ export const LanguagePicker = ({
                 <span>{languages.length} languages available</span>
               </div>
               <button
-                className="rounded-amino8 border-none bg-blue-600 px-5 py-[10px] text-sm font-medium text-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-blue-700 hover:shadow-[0_2px_4px_rgba(0,0,0,0.15)] active:scale-[0.98] max-[525px]:w-full"
+                className="rounded-amino-8 border-none bg-blue-600 px-5 py-[10px] text-sm font-medium text-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-blue-700 hover:shadow-[0_2px_4px_rgba(0,0,0,0.15)] active:scale-[0.98] max-[525px]:w-full"
                 onClick={handleConfirm}
                 type="button"
               >
