@@ -6,7 +6,6 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { MinusCircleDuotoneIcon } from 'src/icons/MinusCircleDuotoneIcon';
 import { PlusCircleDuotoneIcon } from 'src/icons/PlusCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
 

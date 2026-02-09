@@ -1,24 +1,16 @@
 'use client';
 
-import {
-  cloneElement,
-  type HTMLAttributes,
-  isValidElement,
-  type ReactNode,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
+import { type ReactNode, useCallback, useMemo, useState } from 'react';
 
+import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
+import { Button } from 'src/components/button/Button';
+import { Flex } from 'src/components/flex/Flex';
+import { Text } from 'src/components/text/Text';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from 'src/components/ui/popover';
-import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
-import { Button } from 'src/components/button/Button';
-import { Flex } from 'src/components/flex/Flex';
-import { Text } from 'src/components/text/Text';
 import { CheckCircleDuotoneIcon } from 'src/icons/CheckCircleDuotoneIcon';
 import { GlobeIcon } from 'src/icons/GlobeIcon';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
@@ -80,15 +72,7 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
     </Button>
   );
 
-  const renderTrigger = () => {
-    if (trigger) {
-      if (isValidElement(trigger)) {
-        return cloneElement(trigger, {} as HTMLAttributes<HTMLElement>);
-      }
-      return trigger;
-    }
-    return defaultTrigger;
-  };
+  const renderTrigger = () => trigger ?? defaultTrigger;
 
   return (
     <Popover onOpenChange={setOpen} open={open}>

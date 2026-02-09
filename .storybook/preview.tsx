@@ -100,11 +100,17 @@ const withTheme: Decorator = (Story, context) => {
     // Don't iframe this one because it reads local storage
     if (context.title === 'Amino/ThemeSelect') {
       return (
-        <div className="flex w-full h-full justify-around">
-          <div className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)" data-theme="day">
+        <div className="flex w-full h-full justify-around *:flex-1">
+          <div
+            className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)"
+            data-theme="day"
+          >
             <Story {...context} />
           </div>
-          <div className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)" data-theme="night">
+          <div
+            className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)"
+            data-theme="night"
+          >
             <Story {...context} />
           </div>
         </div>

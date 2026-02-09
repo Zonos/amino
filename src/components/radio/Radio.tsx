@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
 

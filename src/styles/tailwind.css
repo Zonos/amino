@@ -3,3 +3,14 @@
 
 /* Map the Tailwind `dark:` variant to amino's night theme selector */
 @custom-variant dark (&:is([data-theme='night'] *));
+
+/* GlowWrapper ::after positioning and background (shared rule, not per-instance) */
+@layer components {
+  [style*='--amino-glow-wrapper-x']::after {
+    width: min(100%, 400px);
+    height: min(100%, 400px);
+    top: calc(var(--amino-glow-wrapper-y) * 1px - min(50%, calc(400px / 2)));
+    left: calc(var(--amino-glow-wrapper-x) * 1px - min(50%, calc(400px / 2)));
+    background: var(--amino-glow-wrapper-background);
+  }
+}

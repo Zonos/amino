@@ -39,7 +39,7 @@ export type BadgeProps = BaseProps & {
 };
 
 const badgeVariants = cva(
-  'inline-flex items-center text-amino-s text-center [&_p]:m-0 [&_p]:leading-4 [&_p]:px-amino-4 [&_svg]:h-5 [&_svg]:w-5',
+  'flex items-center border text-amino-s text-center [&_p]:m-0 [&_p]:leading-4 [&_p]:px-amino-4 [&_svg]:h-5 [&_svg]:w-5',
   {
     compoundVariants: [
       {
@@ -96,16 +96,16 @@ const badgeVariants = cva(
         true: '',
       },
       color: {
-        blue: 'bg-blue-50 border border-blue-200 text-blue-800',
-        cyan: 'bg-cyan-50 border border-cyan-200 text-cyan-800',
-        gray: 'bg-gray-50 border border-gray-200 text-gray-800',
-        green: 'bg-green-50 border border-green-200 text-green-800',
-        orange: 'bg-orange-50 border border-orange-200 text-orange-800',
-        purple: 'bg-purple-50 border border-purple-200 text-purple-800',
-        red: 'bg-red-50 border border-red-200 text-red-800',
+        blue: 'bg-blue-50 border-blue-200 text-blue-800',
+        cyan: 'bg-cyan-50 border-cyan-200 text-cyan-800',
+        gray: 'bg-gray-50 border-gray-200 text-gray-800',
+        green: 'bg-green-50 border-green-200 text-green-800',
+        orange: 'bg-orange-50 border-orange-200 text-orange-800',
+        purple: 'bg-purple-50 border-purple-200 text-purple-800',
+        red: 'bg-red-50 border-red-200 text-red-800',
       },
       size: {
-        default: 'py-[3px] px-1 gap-amino-0',
+        default: 'py-[3px] px-[4px] gap-amino-0',
         small: 'py-px px-amino-4 rounded-amino4 gap-0 [&_p]:px-amino-4',
       },
     },
@@ -176,15 +176,16 @@ export const Badge = ({
       ...style,
       '--amino-badge-border-radius': rounded ? '20px' : theme.radius6,
       '--amino-badge-font-weight': fontWeight,
-      '--amino-badge-order': iconRight ? '2' : '',
     }}
   >
     <div
-      className={badgeVariants({ bold, color, size })}
+      className={cn(
+        badgeVariants({ bold, color, size }),
+        iconRight && 'flex-row-reverse',
+      )}
       style={{
         borderRadius: 'var(--amino-badge-border-radius)',
         fontWeight: 'var(--amino-badge-font-weight)' as unknown as number,
-        order: 'var(--amino-badge-order)' as unknown as number,
       }}
     >
       {icon}

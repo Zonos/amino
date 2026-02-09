@@ -16,7 +16,6 @@ import {
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
-
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
 import { getTestId } from 'src/utils/getTestId';
@@ -169,7 +168,7 @@ export const Checkbox = ({
   return (
     <label
       className={cn(
-        'cursor-pointer',
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         'focus-within:outline-none [&:has(input:focus-visible)]:shadow-(--amino-glow-blue)',
         className,
       )}

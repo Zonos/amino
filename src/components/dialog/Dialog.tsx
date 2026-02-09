@@ -7,7 +7,6 @@ import {
 } from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
-import { cn } from 'src/utils/cn';
 
 export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;

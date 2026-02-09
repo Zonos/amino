@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
@@ -10,6 +9,7 @@ import { MailDuotoneIcon } from 'src/icons/MailDuotoneIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
+import { cn } from 'src/utils/cn';
 
 const IconsMeta: Meta = {
   component: MailDuotoneIcon,
@@ -70,7 +70,7 @@ export const Icons = ({
             return (
               <div
                 key={iconName}
-                className={clsx(
+                className={cn(
                   'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
                   /Solid/.test(iconName) && 'solid',
                   /Duotone/.test(iconName) && 'duotone',

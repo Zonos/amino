@@ -1,13 +1,13 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { flagIconsList } from 'src/icons/__stories__/FlagsList';
 import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
+import { cn } from 'src/utils/cn';
 
 const meta: Meta = {
   component: FlagIcon,
@@ -87,7 +87,7 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
             return (
               <div
                 key={iconName}
-                className={clsx(
+                className={cn(
                   'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
                 )}
               >

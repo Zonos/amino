@@ -1,6 +1,5 @@
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Variant } from 'src/types/Variant';
 import { cn } from 'src/utils/cn';

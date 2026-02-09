@@ -146,15 +146,6 @@ export const GlowWrapper = ({
         padding: `${size}px`,
       }}
     >
-      <style>{`
-        [style*="--amino-glow-wrapper-x"]::after {
-          width: min(100%, 400px);
-          height: min(100%, 400px);
-          top: calc(var(--amino-glow-wrapper-y) * 1px - min(50%, calc(400px / 2)));
-          left: calc(var(--amino-glow-wrapper-x) * 1px - min(50%, calc(400px / 2)));
-          background: var(--amino-glow-wrapper-background);
-        }
-      `}</style>
       {children}
     </div>
   );

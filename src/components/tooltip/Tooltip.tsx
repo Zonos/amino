@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 
+import { Flex } from 'src/components/flex/Flex';
+import { Text } from 'src/components/text/Text';
 import {
   Tooltip as RadixTooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from 'src/components/ui/tooltip';
-import { Flex } from 'src/components/flex/Flex';
-import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 import { cn } from 'src/utils/cn';

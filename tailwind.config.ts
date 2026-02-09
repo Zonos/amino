@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 import { theme } from './src/styles/constants/theme';
 
@@ -16,7 +17,7 @@ const config: Config = {
     './app/**/*.{ts,tsx}',
     './.storybook/**/*.{ts,tsx}',
   ],
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
   theme: {
     extend: {
       /* ─── Animation ─── */
