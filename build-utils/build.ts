@@ -96,13 +96,6 @@ const bundlePackage = async (
           hashPrefix: 'zonos-amino',
         },
         plugins: [tailwindcss(), autoprefixer()],
-        use: {
-          less: null,
-          sass: {
-            includePaths: [path.resolve(__dirname, '../src/styles')],
-          },
-          stylus: null,
-        },
       }),
       babel({
         babelHelpers: 'bundled',
