@@ -696,7 +696,7 @@ export const Collapsible: StoryObj = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className="mt-amino-12 w-full [className={styles.collapseTable}_th]:p-0 [className={styles.collapseTable}_th]:px-amino-16 [className={styles.collapseTable}_td]:!border-0 [className={styles.collapseTable}_td]:p-0 [className={styles.collapseTable}_td]:px-amino-16">
+        <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
           <thead>
             <tr>
               <th>Name</th>
