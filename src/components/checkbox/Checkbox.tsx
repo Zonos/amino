@@ -211,9 +211,9 @@ export const Checkbox = ({
         <div
           className={cn(
             'w-4 h-4 min-w-4 min-h-4 leading-4 rounded flex items-center justify-center select-none transition-all duration-150 ease-in-out',
-            'bg-[var(--amino-checkbox-background)] border-[var(--amino-checkbox-border)] shadow-[var(--amino-checkbox-box-shadow)]',
+            'bg-[var(--amino-checkbox-background)] [border:var(--amino-checkbox-border)] shadow-[var(--amino-checkbox-box-shadow)]',
             disabled &&
-              'bg-[var(--amino-checkbox-disabled-background)] border-[var(--amino-checkbox-disabled-border)] shadow-none',
+              'bg-[var(--amino-checkbox-disabled-background)] [border:var(--amino-checkbox-disabled-border)] shadow-none',
           )}
         >
           <AnimatePresence>

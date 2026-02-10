@@ -236,7 +236,7 @@ export const MultiInput = ({
       })}
       <input
         ref={inputRef}
-        className="border-0 outline-none p-1.5 min-w-[100px] flex-auto min-w-[50px] flex-grow text-base font-medium bg-transparent"
+        className="border-0 outline-none p-1.5 min-w-[100px] flex-auto min-w-[50px] flex-grow text-amino-base font-medium bg-transparent"
         onChange={handleInputChange}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}

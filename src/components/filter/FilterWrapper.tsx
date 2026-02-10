@@ -160,7 +160,7 @@ export const FilterWrapper = ({
   >
     <div
       className={cn(
-        'inline-flex items-center rounded-full border border-dashed border-amino-gray-200 bg-transparent text-amino-gray-700',
+        'inline-flex items-center rounded-full border border-dashed border-gray-200 bg-transparent text-gray-700',
         active && 'border-solid border-amino',
       )}
     >
@@ -171,7 +171,7 @@ export const FilterWrapper = ({
       >
         <div
           className={cn(
-            'flex cursor-pointer items-center gap-0 rounded-full px-4 py-4',
+            'flex cursor-pointer items-center gap-0 rounded-full px-1 py-1',
             active && 'border-r border-solid',
             'hover:bg-amino-hover',
             hasFilter &&
@@ -199,7 +199,7 @@ export const FilterWrapper = ({
               size={24}
             />
           )}
-          <Text className="pl-4 pr-4" fontWeight={600}>
+          <Text className="pl-1 pr-1" fontWeight={600}>
             {label}
           </Text>
         </div>
@@ -207,13 +207,13 @@ export const FilterWrapper = ({
       {hasFilter && (
         <button
           className={cn(
-            'flex cursor-pointer items-center gap-0 rounded-full border-none px-4 py-4 hover:bg-amino-hover',
+            'flex cursor-pointer items-center gap-0 rounded-full border-none px-1 py-1 hover:bg-amino-hover',
             'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
           )}
           onClick={handleOpenDropdown}
           type="button"
         >
-          <Text className="pl-4 pr-4 font-semibold text-blue-600">
+          <Text className="pl-1 pr-1 font-semibold text-blue-600">
             {filterText}
           </Text>
           <ChevronDownIcon size={24} />

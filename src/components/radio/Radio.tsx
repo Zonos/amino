@@ -95,8 +95,9 @@ export const Radio = ({
   return (
     <label
       className={cn(
-        'flex flex-row items-center cursor-pointer select-none',
+        'flex flex-row items-center select-none',
         'focus-within:outline-none [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]',
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         disabled && 'disabled',
         className,
       )}
@@ -128,7 +129,7 @@ export const Radio = ({
       <div
         className={cn(
           'w-4 h-4 rounded-full cursor-pointer flex items-center justify-center select-none mr-2 transition-all',
-          'bg-[var(--amino-radio-background)] border-[var(--amino-radio-border)] shadow-[var(--amino-radio-box-shadow)]',
+          'bg-[var(--amino-radio-background)] [border:var(--amino-radio-border)] shadow-[var(--amino-radio-box-shadow)]',
           disabled &&
             'bg-[var(--amino-radio-container-background)] cursor-not-allowed',
         )}

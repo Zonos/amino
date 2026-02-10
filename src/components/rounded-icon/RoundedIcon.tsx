@@ -16,7 +16,7 @@ export type RoundedIconProps = BaseProps & {
 };
 
 const roundedIconVariants = cva(
-  'flex size-amino-32 items-center justify-center rounded-[32px] [&_svg]:size-amino-20',
+  'flex size-amino-32 items-center justify-center rounded-[32px] bg-gray-300 text-gray-600 [&_svg]:size-amino-20',
   {
     defaultVariants: {
       intent: undefined,

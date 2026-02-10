@@ -226,16 +226,17 @@ export const FloatLabelInput = forwardRef<
         }}
       >
         {prefix && (
-          <div className="text-sm leading-[14px] font-bold bg-transparent px-1.5 basis-[50px] flex justify-center items-center rounded-l-[6px]">
+          <div className="text-amino-s leading-(--amino-font-size-s) font-bold bg-transparent px-1.5 basis-[50px] flex justify-center items-center rounded-l-[6px]">
             {prefix}
           </div>
         )}
         {valuePrefix && (
           <div
             className={cn(
-              'flex order-2 items-center pl-2 text-gray-800 whitespace-nowrap',
+              'flex order-2 items-center pl-2 whitespace-nowrap',
               label && ['items-end', currentSize.valuePrefixPadding],
             )}
+            style={{ color: 'var(--amino-gray-800)' }}
           >
             {valuePrefix}
           </div>
@@ -275,13 +276,14 @@ export const FloatLabelInput = forwardRef<
         <div className="block max-h-0 pointer-events-none order-1 [.disabled_&]:pointer-events-auto">
           <span
             className={cn(
-              'text-gray-800 text-base leading-[16px] inline-block blur-0 origin-left-top transition-all duration-300 ease-in-out z-[1]',
+              'text-amino-base leading-none inline-block blur-0 origin-left-top transition-all duration-300 ease-in-out z-1',
               'absolute left-4 top-[calc(50%-8px)]',
               hasValue && ['scale-[0.8]', currentSize.labelTop],
               'group-focus-within:scale-[0.8]',
               `group-focus-within:${currentSize.labelTop}`,
               prefix && label && 'ml-0 !left-0',
             )}
+            style={{ color: 'var(--amino-gray-800)' }}
           >
             {label}
           </span>
@@ -293,7 +295,7 @@ export const FloatLabelInput = forwardRef<
           />
         </div>
         {suffix && (
-          <div className="text-sm leading-[14px] font-bold bg-transparent px-1.5 basis-[50px] flex justify-center items-center order-3 rounded-r-[6px]">
+          <div className="text-amino-s leading-(--amino-font-size-s) font-bold bg-transparent px-1.5 basis-[50px] flex justify-center items-center order-3 rounded-r-[6px]">
             {suffix}
           </div>
         )}

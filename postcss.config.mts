@@ -3,7 +3,11 @@ const config = {
   plugins: [
     require('@tailwindcss/postcss'),
     require('autoprefixer'),
-    require('postcss-preset-env'),
+    require('postcss-preset-env')({
+      features: {
+        'oklab-function': false,
+      },
+    }),
   ],
 };
 

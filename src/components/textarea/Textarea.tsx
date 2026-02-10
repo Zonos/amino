@@ -197,7 +197,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 textareaRef.current = node;
               }}
               className={cn(
-                'flex-grow box-border py-2 px-4 outline-none w-full border-0 text-base font-medium resize-none min-h-[50px] bg-amino-input',
+                'flex-grow box-border py-2 px-4 outline-none w-full border-0 text-amino-base font-medium resize-none min-h-[50px] bg-amino-input',
                 'placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out placeholder:text-gray-400 placeholder:font-normal placeholder:opacity-60',
                 'focus:outline-none',
                 label && [
@@ -222,13 +222,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {label && (
               <label
                 className={cn(
-                  'text-gray-800 text-base leading-[16px] absolute top-[calc(16px+6px)] left-4 origin-left-top transition-all duration-300 ease-in-out',
+                  'text-amino-base leading-none absolute top-5.5 left-4 origin-left-top transition-all duration-300 ease-in-out',
                   (hasValue ||
                     textareaRef.current === document.activeElement) &&
                     'top-[11px] scale-[0.8]',
                 )}
                 data-label={label}
                 htmlFor={props.id || id}
+                style={{ color: 'var(--amino-gray-800)' }}
               >
                 {label}
               </label>

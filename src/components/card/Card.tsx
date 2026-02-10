@@ -85,11 +85,13 @@ export const Card = ({
 }: CardProps) => (
   <div
     className={cn(
-      'border border-amino rounded-amino-6 p-amino-24 bg-gray-0 dark:bg-gray-50',
+      'border border-amino rounded-amino-6 bg-gray-0 dark:bg-gray-50',
+      !spacing && 'p-amino-24',
       className,
     )}
     style={{
       ...style,
+      ...(spacing ? { padding: spacing } : {}),
       '--amino-card-footer-height': footerHeight ? `${footerHeight}px` : 'auto',
       '--amino-card-margin': spacing
         ? `calc(${spacing} * -1)`
