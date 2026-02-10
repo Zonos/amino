@@ -169,7 +169,7 @@ export const RichCheckbox = ({
             </VStack>
           </div>
           {checked && (
-            <div className="absolute right-4 bg-blue-600 rounded-full p-[5px] flex items-center justify-center">
+            <div className="absolute right-4 bg-blue-600 rounded-full p-1.25 flex items-center justify-center">
               <CheckmarkIcon />
             </div>
           )}

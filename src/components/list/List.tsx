@@ -98,7 +98,7 @@ export const List = ({
 }: ListProps) => (
   <section
     className={cn(
-      'flex flex-col gap-[2px]',
+      'flex flex-col gap-0.5',
       withBorder &&
         'p-amino-8 border border-gray-200 dark:border-gray-800 rounded-amino-12',
       withNegativeMargin && 'm-amino-negative-24',

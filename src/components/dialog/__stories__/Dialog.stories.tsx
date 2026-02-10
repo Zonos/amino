@@ -118,9 +118,7 @@ WithHover.args = {
       </Button>
     </>
   ),
-  children: (
-    <div className="w-full h-[100px] p-[10px] hover:bg-hover">Hover me</div>
-  ),
+  children: <div className="w-full h-25 p-2.5 hover:bg-hover">Hover me</div>,
   label: 'With subtitle',
   subtitle:
     'Choose your preferred units to be shown across the Zonos Dashboard.',
@@ -151,7 +149,7 @@ WithLink.args = {
     </div>
   ),
   label: (
-    <div className="flex items-center gap-[10px]">
+    <div className="flex items-center gap-2.5">
       <span>StyledDialog title</span>
       <Badge color="blue">With a link</Badge>
     </div>

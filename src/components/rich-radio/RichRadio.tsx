@@ -238,7 +238,7 @@ export const RichRadio = <T extends string>({
           {item.tooltip && (
             <ReactTooltip
               arrowColor="transparent"
-              className="max-w-[350px] rounded-amino-10"
+              className="max-w-87.5 rounded-amino-10"
               effect="solid"
               {...item.tooltipSetting}
             />
@@ -264,7 +264,7 @@ export const RichRadio = <T extends string>({
             </div>
           )}
           {!!icon && (
-            <div className="icon-wrapper absolute right-4 bg-gray-400 rounded-full p-[5px] [&_svg]:text-gray-0">
+            <div className="icon-wrapper absolute right-4 bg-gray-400 rounded-full p-1.25 [&_svg]:text-gray-0">
               {icon || <CheckmarkIcon />}
             </div>
           )}

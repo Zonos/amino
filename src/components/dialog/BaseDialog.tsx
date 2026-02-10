@@ -116,7 +116,7 @@ export const BaseDialog = ({
         <AnimatePresence>
           {open && (
             <motion.div
-              className="w-screen h-screen left-0 top-0 z-[1000] fixed flex justify-center items-center text-amino"
+              className="w-screen h-screen left-0 top-0 z-1000 fixed flex justify-center items-center text-amino"
               {...backdropMotionProps}
               key="dialog-backdrop"
               ref={backdropRef}
@@ -150,7 +150,7 @@ export const BaseDialog = ({
                 key="dialog"
                 className={cn(
                   className,
-                  'elevated z-[1001] bg-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
+                  'elevated z-1001 bg-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
                 )}
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog

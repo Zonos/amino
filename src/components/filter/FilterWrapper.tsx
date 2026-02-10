@@ -165,7 +165,7 @@ export const FilterWrapper = ({
       )}
     >
       <button
-        className="focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]"
+        className="focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-glow-blue"
         onClick={handleToggle}
         type="button"
       >
@@ -175,7 +175,7 @@ export const FilterWrapper = ({
             active && 'border-r border-solid',
             'hover:bg-hover',
             hasFilter &&
-              '[border-top-right-radius:var(--amino-filter-wrapper-border-top-right-radius)] [border-bottom-right-radius:var(--amino-filter-wrapper-border-bottom-right-radius)]',
+              'rounded-tr-(--amino-filter-wrapper-border-top-right-radius) border-bottom-right-radius: var(--amino-filter-wrapper-border-bottom-right-radius)',
           )}
           style={
             active
@@ -208,7 +208,7 @@ export const FilterWrapper = ({
         <button
           className={cn(
             'flex cursor-pointer items-center gap-0 rounded-full border-none px-1 py-1 hover:bg-hover',
-            'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
+            'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-glow-blue',
           )}
           onClick={handleOpenDropdown}
           type="button"
@@ -223,7 +223,7 @@ export const FilterWrapper = ({
     <div
       ref={dropdownRef}
       className={cn(
-        'absolute z-5 flex min-w-[400px] flex-col gap-6 rounded-[12px] bg-page p-6 shadow-xl outline-none',
+        'absolute z-5 flex min-w-100 flex-col gap-6 rounded-xl bg-page p-6 shadow-xl outline-none',
       )}
       onKeyDown={handleKeyDown}
       role="menu"
@@ -233,7 +233,7 @@ export const FilterWrapper = ({
       tabIndex={-1}
     >
       <Text type="bold-subheader">{dropdownTitle}</Text>
-      <div className="flex flex-col gap-2 max-h-[400px]">{children}</div>
+      <div className="flex flex-col gap-2 max-h-100">{children}</div>
       <Button onClick={handleApply} size="md" variant="primary">
         Apply
       </Button>
