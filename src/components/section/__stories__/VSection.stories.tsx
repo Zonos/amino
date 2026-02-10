@@ -27,7 +27,7 @@ const Template: StoryFn<VSectionProps> = (props: VSectionProps) => (
 export const BasicVSection = Template.bind({});
 BasicVSection.args = {
   children: (
-    <div className="">
+    <div>
       <h2>VSection Contents</h2>
       <p>
         Bacon ipsum dolor amet salami bresaola flank burgdoggen strip steak.

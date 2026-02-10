@@ -106,6 +106,8 @@ export const Collapse = ({
       : '0fr'
     : '1fr';
 
+  const fullyCollapsed = collapsed && collapseSize === 0;
+
   return (
     <div
       className={cn(
@@ -119,7 +121,13 @@ export const Collapse = ({
           : { gridTemplateRows: gridTemplate }),
       }}
     >
-      <div className="overflow-hidden">{children}</div>
+      <div
+        aria-hidden={fullyCollapsed || undefined}
+        className="overflow-hidden"
+        {...(fullyCollapsed ? { inert: '' } : {})}
+      >
+        {children}
+      </div>
     </div>
   );
 };

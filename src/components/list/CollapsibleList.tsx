@@ -120,19 +120,12 @@ export const CollapsibleList = ({
 
   return (
     <List
-      className={cn(
-        'flex flex-col gap-[2px]',
-        withBorder &&
-          'p-amino-8 border border-gray-200 dark:border-gray-800 rounded-amino-12',
-        withNegativeMargin && 'm-amino-negative-24',
-        className,
-      )}
+      className={className}
       style={style}
       withBorder={withBorder}
       withNegativeMargin={withNegativeMargin}
     >
       <ListItem
-        className="[&_.__icon-wrapper]:hidden"
         decorator={icon}
         label={title}
         onClick={() => setCollapsed(!collapsed)}

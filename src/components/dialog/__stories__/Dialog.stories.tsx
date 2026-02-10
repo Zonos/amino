@@ -45,7 +45,7 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
   return (
     <div
       className="h-full flex justify-center items-center"
-      style={{ '--amino-dialog-stories-height': height }}
+      style={{ '--amino-dialog-stories-height': `${height}px` }}
     >
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
@@ -254,7 +254,7 @@ export const WithInput = ({ height }: { height: number }) => {
   return (
     <div
       className="h-full flex justify-center items-center"
-      style={{ '--amino-dialog-stories-height': height }}
+      style={{ '--amino-dialog-stories-height': `${height}px` }}
     >
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog

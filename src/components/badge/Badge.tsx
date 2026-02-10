@@ -185,7 +185,7 @@ export const Badge = ({
       )}
       style={{
         borderRadius: 'var(--amino-badge-border-radius)',
-        fontWeight: 'var(--amino-badge-font-weight)' as unknown as number,
+        fontWeight: 'var(--amino-badge-font-weight)',
       }}
     >
       {icon}
