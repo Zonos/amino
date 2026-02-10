@@ -135,16 +135,13 @@ export const ListItem = ({
 }: Props) => (
   <button
     className={cn(
-      'p-2 px-4 flex flex-row gap-4 items-center min-h-[var(--amino-size-xl)] rounded-lg leading-4',
-      !disabled && selected && 'bg-blue-50 [&_*]:text-blue-800',
+      'p-2 px-4 flex flex-row gap-4 items-center min-h-(--amino-size-xl) rounded-lg leading-4',
+      !disabled && selected && 'bg-blue-50 **:text-blue-800',
       'active:outline-none active:bg-hover',
       'focus:outline-none focus:bg-hover',
       'hover:outline-none hover:bg-hover',
       disabled && 'text-gray-600 cursor-not-allowed',
-      !disabled &&
-        !selected &&
-        onClick &&
-        'hover:bg-hover cursor-pointer',
+      !disabled && !selected && onClick && 'hover:bg-hover cursor-pointer',
       className,
     )}
     onClick={e => !disabled && onClick?.(e)}
@@ -162,7 +159,7 @@ export const ListItem = ({
       <ListIcon label={typeof label === 'string' ? label : ''} />
     </div>
 
-    <div className="flex flex-col items-start gap-[2px] flex-grow">
+    <div className="flex flex-col items-start gap-0.5 grow">
       <Text type="label">{label}</Text>
       {subtitle && <Text type="caption">{subtitle}</Text>}
     </div>

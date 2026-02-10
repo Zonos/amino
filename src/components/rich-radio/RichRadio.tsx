@@ -219,7 +219,7 @@ export const RichRadio = <T extends string>({
         <button
           key={item.value}
           className={cn(
-            'relative appearance-none bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)] border border-amino rounded-amino-8',
+            'group relative appearance-none bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)] border border-amino rounded-amino-8',
             'text-left transition-all duration-150 ease-in-out flex flex-row items-center h-16',
             'hover:bg-hover hover:border-gray-200',
             'hover:[&_.icon-wrapper]:bg-gray-600',
@@ -250,7 +250,7 @@ export const RichRadio = <T extends string>({
               <Text
                 className={cn(
                   'text-amino leading-6',
-                  '[data-state="checked"]_&:text-blue-600',
+                  'group-data-[state=checked]:text-blue-600',
                 )}
                 type="label"
               >
