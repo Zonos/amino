@@ -49,10 +49,7 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className="flex items-center justify-center"
-      style={{ '--amino-announcement-dialog-stories-height': `${height}px` }}
-    >
+    <div className="flex items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <AnnouncementDialog
         {...rest}

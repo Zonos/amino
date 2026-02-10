@@ -47,33 +47,37 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
           depth="depth16"
         >
           <Menu>
-            <button
-              className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16"
-              onClick={() => {}}
-              type="button"
-            >
-              <TextAvatar label="Default" />
-              <VStack spacing={0}>
-                <strong>
-                  <Translate text="Test Store" />
-                </strong>
-                <Text type="subtitle">
-                  <Translate text="Click to switch..." />
-                </Text>
-              </VStack>
-            </button>
+            <li>
+              <button
+                className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16"
+                onClick={() => {}}
+                type="button"
+              >
+                <TextAvatar label="Default" />
+                <VStack spacing={0}>
+                  <strong>
+                    <Translate text="Test Store" />
+                  </strong>
+                  <Text type="subtitle">
+                    <Translate text="Click to switch..." />
+                  </Text>
+                </VStack>
+              </button>
+            </li>
 
-            <div className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16">
-              <TextAvatar label="Zonos" />
-              <VStack spacing={0}>
-                <strong>
-                  <Translate text="Switch to Zonos" />
-                </strong>
-                <Text type="subtitle">
-                  <Translate text="Click to switch..." />
-                </Text>
-              </VStack>
-            </div>
+            <li>
+              <div className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16">
+                <TextAvatar label="Zonos" />
+                <VStack spacing={0}>
+                  <strong>
+                    <Translate text="Switch to Zonos" />
+                  </strong>
+                  <Text type="subtitle">
+                    <Translate text="Click to switch..." />
+                  </Text>
+                </VStack>
+              </div>
+            </li>
 
             <hr />
 

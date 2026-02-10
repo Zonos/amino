@@ -131,7 +131,7 @@ export const GlowWrapper = ({
       ref={ref}
       className={cn(
         'relative z-[1] overflow-hidden shadow-[inset_0_0_1px_1px_rgb(var(--amino-gray-200))]',
-        'after:absolute after:opacity-0 after:transition-opacity after:duration-500 after:content-[""] after:-z-[1] after:blur-[20px] after:w-[min(100%,400px)] after:h-[min(100%,400px)] after:top-[calc(var(--amino-glow-wrapper-y)*1px-min(50%,200px))] after:left-[calc(var(--amino-glow-wrapper-x)*1px-min(50%,200px))] after:bg-(image:--amino-glow-wrapper-background)',
+        'after:absolute after:opacity-0 after:transition-opacity after:duration-500 after:content-[""] after:-z-[1] after:blur-[20px] after:w-[min(100%,400px)] after:h-[min(100%,400px)] after:top-[calc(var(--amino-glow-wrapper-y)_*_1px_-_min(50%,200px))] after:left-[calc(var(--amino-glow-wrapper-x)_*_1px_-_min(50%,200px))] after:bg-(image:--amino-glow-wrapper-background)',
         'hover:after:opacity-100',
         className,
       )}

@@ -119,9 +119,7 @@ WithHover.args = {
     </>
   ),
   children: (
-    <div className="w-full h-[100px] p-[10px] hover:bg-hover">
-      Hover me
-    </div>
+    <div className="w-full h-[100px] p-[10px] hover:bg-hover">Hover me</div>
   ),
   label: 'With subtitle',
   subtitle:
