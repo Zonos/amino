@@ -171,7 +171,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       >
         <div
           className={cn(
-            'amino-input-wrapper relative p-0 overflow-hidden w-full border border-amino-border rounded-[12px]',
+            'amino-input-wrapper relative p-0 overflow-hidden w-full border border-amino rounded-[12px]',
             disabled && [
               '*:cursor-not-allowed',
               '[&_.fields]:opacity-disabled',
@@ -245,7 +245,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {actions && (
             <div
               ref={actionsRef}
-              className="bg-amino-page py-4 px-4 flex items-center justify-end"
+              className="bg-page py-4 px-4 flex items-center justify-end"
             >
               <Flex alignItems="center" fullHeight justifyContent="flex-end">
                 {actions}

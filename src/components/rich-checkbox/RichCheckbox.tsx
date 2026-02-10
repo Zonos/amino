@@ -130,9 +130,9 @@ export const RichCheckbox = ({
         <button
           key={value}
           className={cn(
-            'relative appearance-none bg-amino-raised-surface p-4 pr-10 border border-amino rounded-amino-6',
+            'relative appearance-none bg-raised p-4 pr-10 border border-amino rounded-amino-6',
             'text-left transition-all duration-150 ease-in-out flex flex-row items-center',
-            'hover:bg-amino-hover hover:border-gray-200',
+            'hover:bg-hover hover:border-gray-200',
             'focus:outline-none focus:border-blue-300',
           )}
           data-state={checked ? 'checked' : ''}

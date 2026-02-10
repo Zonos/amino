@@ -205,7 +205,7 @@ export const Toggle = <TValue extends SelectValue>({
             x: animationRect.left,
           }}
           className={cn(
-            'z-[1] absolute bg-amino-raised-surface-color h-full mt-[1px] h-[30px] rounded-md',
+            'z-[1] absolute bg-raised h-full mt-[1px] h-[30px] rounded-md',
             'shadow-[var(--amino-shadow-raised-standard)]',
           )}
           initial={false}
@@ -225,10 +225,10 @@ export const Toggle = <TValue extends SelectValue>({
               ref={isSelected ? selectedRef : null}
               className={cn(
                 'z-[2] gap-[6px] flex text-center justify-center cursor-pointer rounded-md',
-                'text-amino-base font-medium text-amino-text-color-secondary',
+                'text-amino-base font-medium text-text-color-secondary',
                 'focus:outline-none',
-                !isSelected && 'hover:text-amino-text-color',
-                isSelected && 'text-amino-text-color',
+                !isSelected && 'hover:text-text-color',
+                isSelected && 'text-text-color',
                 size === 'sm' && 'py-[6px] px-3',
                 size === 'md' && 'py-[10px] px-3',
                 size === 'lg' && 'py-[14px] px-[14px]',

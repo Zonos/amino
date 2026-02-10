@@ -150,7 +150,7 @@ export const BaseDialog = ({
                 key="dialog"
                 className={cn(
                   className,
-                  'elevated z-[1001] bg-amino-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
+                  'elevated z-[1001] bg-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
                 )}
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog

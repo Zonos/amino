@@ -205,7 +205,7 @@ export const MultiInput = ({
     <Flex
       alignItems="center"
       className={cn(
-        'border border-amino-border p-1.5 rounded-[10px] overflow-x-auto',
+        'border border-amino p-1.5 rounded-[10px] overflow-x-auto',
         className,
       )}
       flexWrap="wrap"

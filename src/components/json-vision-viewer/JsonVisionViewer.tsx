@@ -317,7 +317,7 @@ const ValueColumn = ({ name, value }: ValueColumnProps) => {
   const displayValue = getDisplayValue();
 
   return (
-    <div className="min-w-[260px] max-w-[320px] shrink-0 overflow-y-auto border-r border-amino-border-color bg-amino-surface-color dark:bg-gray-800 dark:border-gray-700">
+    <div className="min-w-[260px] max-w-[320px] shrink-0 overflow-y-auto border-r border-border-color bg-surface dark:bg-gray-800 dark:border-gray-700">
       <div className="flex items-center gap-2 bg-blue-600 px-3 py-2.5">
         <span className="flex size-5 shrink-0 items-center justify-center rounded bg-blue-500 text-[10px] font-semibold text-white">
           {getTypeIcon(type)}
@@ -401,7 +401,7 @@ const Column = ({
 
   if (entries.length === 0) {
     return (
-      <div className="w-[280px] min-w-[280px] max-w-[280px] shrink-0 grow-0 overflow-y-auto border-r border-amino-border-color bg-amino-surface-color dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar]:w-1.5">
+      <div className="w-[280px] min-w-[280px] max-w-[280px] shrink-0 grow-0 overflow-y-auto border-r border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar]:w-1.5">
         <div className="p-6 text-center italic text-gray-500">Empty</div>
       </div>
     );
@@ -410,7 +410,7 @@ const Column = ({
   return (
     <div
       ref={columnRef}
-      className="w-[280px] min-w-[280px] max-w-[280px] shrink-0 grow-0 overflow-y-auto border-r border-amino-border-color bg-amino-surface-color dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar]:w-1.5"
+      className="w-[280px] min-w-[280px] max-w-[280px] shrink-0 grow-0 overflow-y-auto border-r border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar]:w-1.5"
     >
       {entries.map(entry => {
         const isExpandable = entry.type === 'object' || entry.type === 'array';
@@ -767,7 +767,7 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
 
   return (
     <div className="relative flex h-full flex-col">
-      <div className="flex items-center gap-4 border-b border-amino-border-color bg-amino-surface-color px-4 py-2 dark:border-gray-700 dark:bg-gray-900">
+      <div className="flex items-center gap-4 border-b border-border-color bg-surface px-4 py-2 dark:border-gray-700 dark:bg-gray-900">
         <Button
           icon={<CopyIcon size={16} />}
           onClick={onCopy}
@@ -1713,7 +1713,7 @@ export const JsonVisionViewer = ({
 
   if (!data) {
     return (
-      <div className="flex h-full flex-col overflow-hidden rounded-lg bg-amino-surface-color dark:bg-gray-900">
+      <div className="flex h-full flex-col overflow-hidden rounded-lg bg-surface dark:bg-gray-900">
         <div className="flex h-full items-center justify-center p-10">
           <Text color="gray600">No data available</Text>
         </div>
@@ -1724,10 +1724,10 @@ export const JsonVisionViewer = ({
   return (
     <div
       ref={containerRef}
-      className="flex h-full flex-col overflow-hidden rounded-lg bg-amino-surface-color dark:bg-gray-900"
+      className="flex h-full flex-col overflow-hidden rounded-lg bg-surface dark:bg-gray-900"
     >
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-amino-border-color bg-amino-surface-color px-4 py-3 dark:border-gray-700 dark:bg-gray-900">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-color bg-surface px-4 py-3 dark:border-gray-700 dark:bg-gray-900">
         <Flex alignItems="center" gap={16}>
           {title && <Text fontWeight={600}>{title}</Text>}
 
@@ -1737,7 +1737,7 @@ export const JsonVisionViewer = ({
               className={clsx(
                 'flex items-center gap-1.5 whitespace-nowrap rounded-md border-none px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-all duration-150 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 [&>svg]:shrink-0',
                 viewMode === 'tree' &&
-                  'bg-amino-surface-color text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-amino-surface-color hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
+                  'bg-surface text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-surface hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
               )}
               onClick={() => setViewMode('tree')}
               type="button"
@@ -1756,7 +1756,7 @@ export const JsonVisionViewer = ({
               className={clsx(
                 'flex items-center gap-1.5 whitespace-nowrap rounded-md border-none px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-all duration-150 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 [&>svg]:shrink-0',
                 viewMode === 'column' &&
-                  'bg-amino-surface-color text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-amino-surface-color hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
+                  'bg-surface text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-surface hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
               )}
               onClick={() => setViewMode('column')}
               type="button"
@@ -1777,7 +1777,7 @@ export const JsonVisionViewer = ({
               className={clsx(
                 'flex items-center gap-1.5 whitespace-nowrap rounded-md border-none px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-all duration-150 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 [&>svg]:shrink-0',
                 viewMode === 'editor' &&
-                  'bg-amino-surface-color text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-amino-surface-color hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
+                  'bg-surface text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-surface hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
               )}
               onClick={() => setViewMode('editor')}
               type="button"
@@ -1864,7 +1864,7 @@ export const JsonVisionViewer = ({
                 value={searchTerm}
               />
               {showSearchResults && searchResults.length > 0 && (
-                <div className="absolute left-0 right-0 top-full z-[100] mt-1 min-w-[280px] max-h-[300px] overflow-y-auto rounded-lg border border-amino-border-color bg-amino-surface-color shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700 dark:bg-gray-800">
+                <div className="absolute left-0 right-0 top-full z-[100] mt-1 min-w-[280px] max-h-[300px] overflow-y-auto rounded-lg border border-border-color bg-surface shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700 dark:bg-gray-800">
                   {searchResults.map((result, idx) => (
                     <button
                       // Path + matchType + index ensures uniqueness for duplicate paths
@@ -1896,7 +1896,7 @@ export const JsonVisionViewer = ({
               {showSearchResults &&
                 searchTerm.length >= 2 &&
                 searchResults.length === 0 && (
-                  <div className="absolute left-0 right-0 top-full z-[100] mt-1 min-w-[280px] max-h-[300px] overflow-y-auto rounded-lg border border-amino-border-color bg-amino-surface-color shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700 dark:bg-gray-800">
+                  <div className="absolute left-0 right-0 top-full z-[100] mt-1 min-w-[280px] max-h-[300px] overflow-y-auto rounded-lg border border-border-color bg-surface shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700 dark:bg-gray-800">
                     <div className="px-3 py-4 text-center text-[13px] text-gray-500">
                       No matches found
                     </div>
@@ -2002,7 +2002,7 @@ export const JsonVisionViewer = ({
 
       {/* Path Breadcrumb (for column/tree view) */}
       {viewMode !== 'editor' && (
-        <div className="flex items-center overflow-x-auto border-b border-amino-border-color bg-gray-50 px-4 py-2 text-[13px] dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:h-1">
+        <div className="flex items-center overflow-x-auto border-b border-border-color bg-gray-50 px-4 py-2 text-[13px] dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:h-1">
           <button
             className="cursor-pointer whitespace-nowrap rounded border-none bg-none px-2 py-1 text-[13px] text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-gray-700"
             onClick={() => setSelectedPath([])}
@@ -2029,7 +2029,7 @@ export const JsonVisionViewer = ({
       <div className="flex flex-1 flex-col overflow-hidden">
         {viewMode === 'column' && (
           <div className="flex h-full overflow-hidden">
-            <div className="flex flex-1 overflow-x-auto bg-amino-page-background dark:bg-gray-900 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:h-2">
+            <div className="flex flex-1 overflow-x-auto bg-page dark:bg-gray-900 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:h-2">
               {columns.map((col, index) => (
                 <Column
                   key={`column-${index}`}
@@ -2052,7 +2052,7 @@ export const JsonVisionViewer = ({
                 )}
             </div>
             {currentValue !== undefined && (
-              <div className="w-[400px] shrink-0 grow-0 overflow-y-auto border-l border-amino-border-color bg-amino-surface-color dark:border-gray-700 dark:bg-gray-800">
+              <div className="w-[400px] shrink-0 grow-0 overflow-y-auto border-l border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800">
                 <ValuePreview
                   path={selectedPath}
                   value={currentValue as JsonValue}
@@ -2084,7 +2084,7 @@ export const JsonVisionViewer = ({
               ))}
             </div>
             {currentValue !== undefined && selectedPath.length > 0 && (
-              <div className="w-[400px] shrink-0 grow-0 overflow-y-auto border-l border-amino-border-color bg-amino-surface-color dark:border-gray-700 dark:bg-gray-800">
+              <div className="w-[400px] shrink-0 grow-0 overflow-y-auto border-l border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800">
                 <ValuePreview
                   path={selectedPath}
                   value={currentValue as JsonValue}

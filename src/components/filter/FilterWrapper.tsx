@@ -173,7 +173,7 @@ export const FilterWrapper = ({
           className={cn(
             'flex cursor-pointer items-center gap-0 rounded-full px-1 py-1',
             active && 'border-r border-solid',
-            'hover:bg-amino-hover',
+            'hover:bg-hover',
             hasFilter &&
               '[border-top-right-radius:var(--amino-filter-wrapper-border-top-right-radius)] [border-bottom-right-radius:var(--amino-filter-wrapper-border-bottom-right-radius)]',
           )}
@@ -207,7 +207,7 @@ export const FilterWrapper = ({
       {hasFilter && (
         <button
           className={cn(
-            'flex cursor-pointer items-center gap-0 rounded-full border-none px-1 py-1 hover:bg-amino-hover',
+            'flex cursor-pointer items-center gap-0 rounded-full border-none px-1 py-1 hover:bg-hover',
             'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
           )}
           onClick={handleOpenDropdown}
@@ -223,7 +223,7 @@ export const FilterWrapper = ({
     <div
       ref={dropdownRef}
       className={cn(
-        'absolute z-5 flex min-w-[400px] flex-col gap-6 rounded-[12px] bg-amino-page p-6 shadow-xl outline-none',
+        'absolute z-5 flex min-w-[400px] flex-col gap-6 rounded-[12px] bg-page p-6 shadow-xl outline-none',
       )}
       onKeyDown={handleKeyDown}
       role="menu"

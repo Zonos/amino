@@ -120,7 +120,7 @@ export const Layout = ({
     }}
   >
     {!!headerContent && (
-      <header className="sticky top-0 z-[var(--amino-appbar-elevation)] flex h-[var(--amino-appbar-height)] box-border border-b border-amino bg-amino-header-color shadow-[var(--amino-v3-shadow-base)]">
+      <header className="sticky top-0 z-[var(--amino-appbar-elevation)] flex h-[var(--amino-appbar-height)] box-border border-b border-amino bg-header shadow-[var(--amino-v3-shadow-base)]">
         {headerContent}
       </header>
     )}
@@ -130,7 +130,7 @@ export const Layout = ({
         gridTemplateColumns: `var(--amino-sidebar-width) 1fr`,
       }}
     >
-      <nav className="grid h-full w-[var(--amino-sidebar-width)] box-border grid-rows-[1fr_auto] border-r border-amino-subtle bg-amino-sidebar-color">
+      <nav className="grid h-full w-[var(--amino-sidebar-width)] box-border grid-rows-[1fr_auto] border-r border-amino-subtle bg-sidebar">
         <div className="h-full w-full box-border overflow-y-auto p-amino-16">
           {!!logoSidebar && <div className="mb-amino-24">{logoSidebar}</div>}
           {sidebar}

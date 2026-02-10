@@ -149,7 +149,7 @@ export const SlideOver = ({
     {...props}
   >
     <div
-      className="m-2 rounded-xl bg-amino-page flex flex-col shadow-amino-v3-large"
+      className="m-2 rounded-xl bg-page flex flex-col shadow-amino-v3-large"
       style={{ height: 'calc(100% - 16px)' }}
     >
       <header className="p-4 border-b border-amino-subtle flex gap-4 items-center justify-between [&>div]:flex [&>div]:gap-4 [&>div]:items-center">
@@ -170,7 +170,7 @@ export const SlideOver = ({
         {children}
       </div>
       {bottomActions && (
-        <div className="p-6 rounded-b-xl flex items-center justify-end bg-amino-page [&>div+div]:ml-2">
+        <div className="p-6 rounded-b-xl flex items-center justify-end bg-page [&>div+div]:ml-2">
           <HStack spacing={8}>{bottomActions}</HStack>
         </div>
       )}

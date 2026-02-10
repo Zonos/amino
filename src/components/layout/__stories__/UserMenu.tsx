@@ -17,10 +17,10 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative flex h-full items-center overflow-x-visible border-t border-amino-border-color [&_li]:cursor-pointer [&_strong]:font-medium">
+    <div className="relative flex h-full items-center overflow-x-visible border-t border-amino [&_li]:cursor-pointer [&_strong]:font-medium">
       <button
         className={cn(
-          'box-border flex w-full flex-row items-center rounded-amino-6 bg-transparent transition-amino [&>*]:mb-0 [&_span]:text-amino-s hover:bg-amino-hover-color',
+          'box-border flex w-full flex-row items-center rounded-amino-6 bg-transparent transition-amino [&>*]:mb-0 [&_span]:text-amino-s hover:bg-hover',
           addSpacing && 'p-amino-24',
         )}
         onClick={() => setOpen(!open)}
@@ -42,13 +42,13 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
 
       {open && (
         <Surface
-          className="absolute bottom-amino-16 left-amino-16 z-[100] min-w-full w-max animate-amino-dropdown-inverse border border-amino-border-color py-amino-6"
+          className="absolute bottom-amino-16 left-amino-16 z-[100] min-w-full w-max animate-amino-dropdown-inverse border border-amino py-amino-6"
           dense
           depth="depth16"
         >
           <Menu>
             <button
-              className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-amino-hover-color [&>div]:mr-amino-16"
+              className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16"
               onClick={() => {}}
               type="button"
             >
@@ -63,7 +63,7 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
               </VStack>
             </button>
 
-            <div className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-amino-hover-color [&>div]:mr-amino-16">
+            <div className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16">
               <TextAvatar label="Zonos" />
               <VStack spacing={0}>
                 <strong>

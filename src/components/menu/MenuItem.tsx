@@ -91,7 +91,7 @@ export const MenuItem = ({
     style={style}
   >
     <button
-      className="menu-button w-full flex items-center p-amino-8 leading-6 select-none cursor-pointer rounded-amino-6 text-amino-base hover:bg-amino-hover dark:hover:bg-gray-100 active:outline-none [&_a]:w-full [&_a]:block [&_svg]:mr-amino-8"
+      className="menu-button w-full flex items-center p-amino-8 leading-6 select-none cursor-pointer rounded-amino-6 text-amino-base hover:bg-hover dark:hover:bg-gray-100 active:outline-none [&_a]:w-full [&_a]:block [&_svg]:mr-amino-8"
       onClick={e => !disabled && onClick?.(e)}
       type="button"
     >

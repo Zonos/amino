@@ -138,7 +138,7 @@ export const Switch = ({
           className={cn(
             'w-[62px] h-8 min-w-6 leading-4 rounded-[20px] block select-none relative',
             'bg-gray-50',
-            checked && 'bg-amino-primary',
+            checked && 'bg-primary',
             disabled && 'opacity-40',
           )}
         >
@@ -164,7 +164,7 @@ export const Switch = ({
           className={cn(
             'w-8 h-4 min-w-8 min-h-4 leading-4 rounded-[20px] block select-none relative',
             'bg-gray-100 shadow-[var(--amino-v3-shadow-inset)]',
-            checked && 'bg-amino-primary',
+            checked && 'bg-primary',
             disabled && 'opacity-40',
           )}
         >

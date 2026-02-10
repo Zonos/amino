@@ -38,7 +38,7 @@ export const Filter = ({
         ref={refs.setReference}
         className={cn(
           'flex items-center justify-center h-amino-size-sm px-amino-12',
-          'border border-amino-border-color rounded-amino-6',
+          'border border-amino rounded-amino-6',
         )}
         onClick={() => setVisible(!visible)}
         type="button"

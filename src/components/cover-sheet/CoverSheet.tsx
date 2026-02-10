@@ -162,7 +162,7 @@ export const CoverSheet = ({
     <BaseDialog
       className={cn(
         'rounded-none max-h-screen outline-none box-border overscroll-contain',
-        'bg-amino-page fixed left-0 top-0 w-screen h-screen',
+        'bg-page fixed left-0 top-0 w-screen h-screen',
         'text-amino border border-amino-subtle',
         'print:h-auto print:min-h-screen print:absolute',
         className,
@@ -180,7 +180,7 @@ export const CoverSheet = ({
       <header
         className={cn(
           'border-b border-amino-subtle px-amino-32 flex justify-between items-center',
-          'h-16 sticky top-0 z-[99] bg-amino-page',
+          'h-16 sticky top-0 z-[99] bg-page',
           'print:hidden',
         )}
         style={{ padding: 'var(--amino-space-16) var(--amino-space-32)' }}

@@ -81,7 +81,7 @@ export const NavigationItem = ({
   <div
     className={cn(
       'flex items-center gap-amino-8 h-[28px] px-amino-8 py-amino-4 text-gray-800 dark:text-gray-200 text-amino-base font-medium rounded-amino-6 mb-[2px]',
-      'hover:bg-amino-hover-color hover:text-gray-1000 dark:hover:text-gray-1000',
+      'hover:bg-hover hover:text-gray-1000 dark:hover:text-gray-1000',
       '[&_svg]:text-gray-600 dark:[&_svg]:text-gray-400 [&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-negative-4',
       'hover:[&_svg]:text-gray-800 dark:hover:[&_svg]:text-gray-800',
       isActive &&
@@ -197,13 +197,13 @@ export const NavigationGroup = ({
     <div
       className={cn(
         !collapsed &&
-          '[&_.navigation-item]:text-amino-text-color [&_.navigation-item]:hover:bg-transparent [&_.navigation-item_svg]:text-gray-1000 dark:[&_.navigation-item_svg]:text-gray-100',
+          '[&_.navigation-item]:text-text-color [&_.navigation-item]:hover:bg-transparent [&_.navigation-item_svg]:text-gray-1000 dark:[&_.navigation-item_svg]:text-gray-100',
       )}
     >
       <div className="navigation-item">{content}</div>
     </div>
     <Collapse
-      className="pl-amino-12 ml-[15px] border-l border-amino-border-color"
+      className="pl-amino-12 ml-[15px] border-l border-border-color"
       collapsed={collapsed}
     >
       {children}

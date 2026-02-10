@@ -110,7 +110,7 @@ export const Card = ({
     )}
     {children}
     {(footerActions || footerContent) && (
-      <div className="flex items-center justify-between m-[var(--amino-card-margin)] p-[var(--amino-card-padding-spacing)] border-t border-amino bg-amino-surface-secondary dark:bg-gray-100 mt-[var(--amino-card-margin-top)] rounded-b-amino-8 h-[var(--amino-card-footer-height)]">
+      <div className="flex items-center justify-between m-[var(--amino-card-margin)] p-[var(--amino-card-padding-spacing)] border-t border-amino bg-surface-secondary dark:bg-gray-100 mt-[var(--amino-card-margin-top)] rounded-b-amino-8 h-[var(--amino-card-footer-height)]">
         <div>{footerContent}</div>
         <HStack spacing={8}>{footerActions}</HStack>
       </div>

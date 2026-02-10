@@ -12,7 +12,7 @@ export default StyleMeta;
 
 const Template: StoryFn = () => (
   <SurfaceComponent>
-    <Card className="hover:bg-amino-hover-color">
+    <Card className="hover:bg-hover">
       <Text>Hello</Text>
     </Card>
   </SurfaceComponent>

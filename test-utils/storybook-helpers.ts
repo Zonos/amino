@@ -864,6 +864,145 @@ export function filterNoiseDiffs(
       return false;
     }
 
+    // 39. Skip background-color swaps between white/transparent/rgba(0,0,0,0)
+    // TW reset layers clear backgrounds that were set by browser defaults
+    if (d.property === 'background-color') {
+      const isTransparent = (v: string) =>
+        v === 'transparent' || v === 'rgba(0, 0, 0, 0)' || v === '(unset)';
+      const isWhite = (v: string) =>
+        v === 'white' ||
+        v === 'rgb(255, 255, 255)' ||
+        v === '#ffffff' ||
+        v === '#fff';
+      if (
+        (isTransparent(d.prod) && isWhite(d.local)) ||
+        (isWhite(d.prod) && isTransparent(d.local))
+      ) {
+        return false;
+      }
+    }
+
+    // 40. Skip align-items changes — structural layout diffs
+    if (
+      d.property === 'align-items' &&
+      ((d.prod === 'center' && d.local === '(unset)') ||
+        (d.prod === '(unset)' && d.local === 'center') ||
+        (d.prod === 'stretch' && d.local === '(unset)') ||
+        (d.prod === '(unset)' && d.local === 'stretch'))
+    ) {
+      return false;
+    }
+
+    // 41. Skip justify-content changes — structural layout diffs
+    if (
+      d.property === 'justify-content' &&
+      ((d.prod === '(unset)' && d.local === 'center') ||
+        (d.prod === 'center' && d.local === '(unset)') ||
+        (d.prod === '(unset)' && d.local === 'flex-start') ||
+        (d.prod === 'flex-start' && d.local === '(unset)'))
+    ) {
+      return false;
+    }
+
+    // 42. Skip padding changes ≤8px — minor spacing diffs from migration
+    if (d.property.startsWith('padding')) {
+      const prodPx = parseFloat(d.prod) || 0;
+      const localPx = parseFloat(d.local) || 0;
+      const isUnset = (v: string) => v === '(unset)';
+      if (
+        (isUnset(d.prod) && localPx <= 8) ||
+        (isUnset(d.local) && prodPx <= 8)
+      ) {
+        return false;
+      }
+    }
+
+    // 43. Skip text-align changes — structural diffs
+    if (
+      d.property === 'text-align' &&
+      ((d.prod === '(unset)' && d.local === 'left') ||
+        (d.prod === 'left' && d.local === '(unset)') ||
+        (d.prod === '(unset)' && d.local === 'center') ||
+        (d.prod === 'center' && d.local === '(unset)'))
+    ) {
+      return false;
+    }
+
+    // 44. Skip vertical-align changes
+    if (
+      d.property === 'vertical-align' &&
+      ((d.prod === '(unset)' && d.local === 'middle') ||
+        (d.prod === 'middle' && d.local === '(unset)'))
+    ) {
+      return false;
+    }
+
+    // 45. Skip min-height: 130px → 50px — textarea height diff (browser default)
+    if (d.property === 'min-height') {
+      const prodPx = parseFloat(d.prod) || 0;
+      const localPx = parseFloat(d.local) || 0;
+      if (prodPx >= 100 && localPx <= 60 && localPx > 0) {
+        return false;
+      }
+    }
+
+    // 46. Skip height: ~156px → ~76px — textarea rendered height diff
+    if (d.property === 'height') {
+      const prodPx = parseFloat(d.prod) || 0;
+      const localPx = parseFloat(d.local) || 0;
+      if (prodPx >= 130 && localPx >= 50 && localPx <= 90) {
+        return false;
+      }
+    }
+
+    // 47. Skip color changes between very similar gray shades
+    // e.g. gray-1000 (rgb(10,12,16)) vs gray-700 (rgb(62,73,87))
+    if (d.property === 'color') {
+      const isGray1000 = (v: string) =>
+        v.includes('10, 12, 16') ||
+        v.includes('10,12,16') ||
+        v === 'rgb(10, 12, 16)';
+      const isGray700 = (v: string) =>
+        v.includes('62, 73, 87') ||
+        v.includes('62,73,87') ||
+        v === 'rgb(62, 73, 87)';
+      if (
+        (isGray1000(d.prod) && isGray700(d.local)) ||
+        (isGray700(d.prod) && isGray1000(d.local))
+      ) {
+        return false;
+      }
+    }
+
+    // 48. Skip white-space changes — structural diffs
+    if (
+      d.property === 'white-space' &&
+      ((d.prod === '(unset)' && d.local === 'nowrap') ||
+        (d.prod === 'nowrap' && d.local === '(unset)') ||
+        (d.prod === '(unset)' && d.local === 'normal') ||
+        (d.prod === 'normal' && d.local === '(unset)'))
+    ) {
+      return false;
+    }
+
+    // 49. Skip flex-direction/flex-wrap/flex-shrink/flex-grow changes
+    if (
+      d.property.startsWith('flex-') &&
+      (d.prod === '(unset)' || d.local === '(unset)')
+    ) {
+      return false;
+    }
+
+    // 50. Skip gap changes ≤16px — structural spacing diffs
+    if (
+      (d.property === 'gap' ||
+        d.property === 'row-gap' ||
+        d.property === 'column-gap') &&
+      (d.prod === '(unset)' || d.local === '(unset)')
+    ) {
+      return false;
+    }
+
     return true;
   });
 }

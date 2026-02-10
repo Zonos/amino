@@ -221,7 +221,7 @@ export const RichRadio = <T extends string>({
           className={cn(
             'relative appearance-none bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)] border border-amino rounded-amino-8',
             'text-left transition-all duration-150 ease-in-out flex flex-row items-center h-16',
-            'hover:bg-amino-hover hover:border-gray-200',
+            'hover:bg-hover hover:border-gray-200',
             'hover:[&_.icon-wrapper]:bg-gray-600',
             'focus:outline-none focus:border-blue-400 focus:shadow-[0_0_0_1px] focus:shadow-blue-400',
             '[&>div]:flex [&>div]:flex-col [&>div]:flex-1',

@@ -63,7 +63,7 @@ export const TimeInput = forwardRef<HTMLInputElement, InputBaseProps>(
             suffix || (
               <div className="flex flex-col justify-center">
                 <button
-                  className="p-1.5 rounded-full transition-all duration-300 ease-in-out hover:bg-amino-hover active:bg-gray-100 focus:outline-none"
+                  className="p-1.5 rounded-full transition-all duration-300 ease-in-out hover:bg-hover active:bg-gray-100 focus:outline-none"
                   onClick={() => {
                     inputRef.current?.showPicker();
                     inputRef.current?.dispatchEvent(
