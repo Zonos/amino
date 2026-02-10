@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "5.8.0",
+  "version": "6.0.0-alpha.0",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -71,7 +71,9 @@
     "tsc:copy": "tsc --noEmit 2>&1 | tee /dev/tty | pbcopy",
     "version:major": "pnpm build && pnpm version major -m 'Bump version %s' && pnpm push:tags",
     "version:minor": "pnpm build && pnpm version minor -m 'Bump version %s' && pnpm push:tags",
-    "version:patch": "pnpm build && pnpm version patch -m 'Bump version %s' && pnpm push:tags"
+    "version:patch": "pnpm build && pnpm version patch -m 'Bump version %s' && pnpm push:tags",
+    "version:prealpha": "pnpm build && pnpm version prerelease --preid alpha -m 'Bump version %s' && pnpm push:tags",
+    "version:premajor:alpha": "pnpm build && pnpm version premajor --preid alpha -m 'Bump version %s' && pnpm push:tags"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.0",
