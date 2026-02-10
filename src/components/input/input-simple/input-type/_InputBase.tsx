@@ -137,11 +137,10 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
       <div className="flex flex-col w-full">
         {label && (
           <label
-            className={cn(
-              'block mb-2 flex-none',
-              error && 'text-red-600',
-            )}
-            style={error ? undefined : { color: 'var(--amino-text-color-secondary)' }}
+            className={cn('block mb-2 flex-none', error && 'text-red-600')}
+            style={
+              error ? undefined : { color: 'var(--amino-text-color-secondary)' }
+            }
           >
             {label}
           </label>

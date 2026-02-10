@@ -546,9 +546,7 @@ const TreeNode = ({
         );
       case 'null':
         return (
-          <span className="italic text-gray-500 dark:text-gray-500">
-            null
-          </span>
+          <span className="italic text-gray-500 dark:text-gray-500">null</span>
         );
       default:
         return null;
@@ -615,9 +613,7 @@ const TreeNode = ({
 
         {!isExpandable && (
           <>
-            <span className="mx-1 text-gray-500 dark:text-gray-600">
-              :
-            </span>
+            <span className="mx-1 text-gray-500 dark:text-gray-600">:</span>
             {renderValue()}
           </>
         )}
@@ -901,9 +897,7 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
 
   if (data === null) {
     return (
-      <span className="italic text-gray-500 dark:text-gray-500">
-        null
-      </span>
+      <span className="italic text-gray-500 dark:text-gray-500">null</span>
     );
   }
 
@@ -916,11 +910,7 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
   }
 
   if (typeof data === 'number') {
-    return (
-      <span className="text-purple-600 dark:text-purple-400">
-        {data}
-      </span>
-    );
+    return <span className="text-purple-600 dark:text-purple-400">{data}</span>;
   }
 
   if (typeof data === 'string') {
@@ -933,9 +923,7 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
 
   if (Array.isArray(data)) {
     if (data.length === 0) {
-      return (
-        <span className="text-gray-600 dark:text-gray-500">[]</span>
-      );
+      return <span className="text-gray-600 dark:text-gray-500">[]</span>;
     }
     return (
       <>
@@ -946,9 +934,7 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
             {nextIndent}
             <JsonSyntax data={item} indent={indent + 1} />
             {i < data.length - 1 && (
-              <span className="text-gray-500 dark:text-gray-600">
-                ,
-              </span>
+              <span className="text-gray-500 dark:text-gray-600">,</span>
             )}
             {'\n'}
           </span>
@@ -962,17 +948,11 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
   if (typeof data === 'object') {
     const entries = Object.entries(data);
     if (entries.length === 0) {
-      return (
-        <span className="text-gray-600 dark:text-gray-500">
-          {'{}'}
-        </span>
-      );
+      return <span className="text-gray-600 dark:text-gray-500">{'{}'}</span>;
     }
     return (
       <>
-        <span className="text-gray-600 dark:text-gray-500">
-          {'{'}
-        </span>
+        <span className="text-gray-600 dark:text-gray-500">{'{'}</span>
         {'\n'}
         {entries.map(([key, val], i) => (
           <span key={key}>
@@ -980,22 +960,16 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
             <span className="text-blue-600 dark:text-blue-400">
               &quot;{key}&quot;
             </span>
-            <span className="text-gray-500 dark:text-gray-600">
-              :{' '}
-            </span>
+            <span className="text-gray-500 dark:text-gray-600">: </span>
             <JsonSyntax data={val} indent={indent + 1} />
             {i < entries.length - 1 && (
-              <span className="text-gray-500 dark:text-gray-600">
-                ,
-              </span>
+              <span className="text-gray-500 dark:text-gray-600">,</span>
             )}
             {'\n'}
           </span>
         ))}
         {indentStr}
-        <span className="text-gray-600 dark:text-gray-500">
-          {'}'}
-        </span>
+        <span className="text-gray-600 dark:text-gray-500">{'}'}</span>
       </>
     );
   }
@@ -2038,9 +2012,7 @@ export const JsonVisionViewer = ({
           </button>
           {selectedPath.map((segment, i) => (
             <span key={`breadcrumb-${i}-${segment}`}>
-              <span className="mx-0.5 text-gray-400 dark:text-gray-600">
-                /
-              </span>
+              <span className="mx-0.5 text-gray-400 dark:text-gray-600">/</span>
               <button
                 className="cursor-pointer whitespace-nowrap rounded border-none bg-none px-2 py-1 text-[13px] text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-gray-700"
                 onClick={() => setSelectedPath(selectedPath.slice(0, i + 1))}
