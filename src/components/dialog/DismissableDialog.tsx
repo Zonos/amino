@@ -105,7 +105,9 @@ export const DismissableDialog = ({
             </Text>
           )}
         </VStack>
-        <div className="grid grid-cols-2 gap-2">{actions}</div>
+        <div className="grid grid-cols-2 gap-2 [&_.amino-button]:w-full">
+          {actions}
+        </div>
       </VStack>
     </div>
   </BaseDialog>

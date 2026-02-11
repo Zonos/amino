@@ -85,7 +85,7 @@ export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
   } & Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'>;
 
 const buttonVariants = cva(
-  'amino-button relative outline-none box-border flex flex-row items-center justify-center transition-all duration-200 select-none font-sans tracking-normal cursor-pointer disabled:cursor-not-allowed disabled:opacity-disabled whitespace-nowrap text-amino-base [&_svg_path:not([data-is-secondary-color])]:fill-current',
+  'amino-button relative outline-none box-border flex flex-row items-center justify-center transition-all duration-200 select-none font-sans tracking-normal cursor-pointer disabled:cursor-not-allowed disabled:opacity-disabled whitespace-nowrap text-amino-base w-fit [&_svg_path:not([data-is-secondary-color])]:fill-current',
   {
     compoundVariants: [
       // Primary outline
