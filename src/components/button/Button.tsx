@@ -133,7 +133,7 @@ const buttonVariants = cva(
       // Standard outline
       {
         className:
-          'bg-transparent shadow-none border border-gray-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.08] hover:bg-none active:bg-gray-100 focus:shadow-[rgba(0,0,0,0.08)_0px_0px_0px_4px] dark:focus:shadow-[rgba(220,225,255,0.24)_0px_0px_0px_4px]',
+          'text-text-color bg-transparent shadow-none border border-gray-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.08] hover:bg-none active:bg-gray-100 focus:shadow-[rgba(0,0,0,0.08)_0px_0px_0px_4px] dark:focus:shadow-[rgba(220,225,255,0.24)_0px_0px_0px_4px]',
         outline: true,
         variant: 'standard',
       },
@@ -553,9 +553,9 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     ) {
       return 'transparent';
     }
-    // For intent variants, disabled state should show gray-500
+    // For intent variants, disabled/loading state should show gray-500
     if (
-      disabled &&
+      (disabled || loading) &&
       ['primary', 'success', 'warning', 'danger', 'cyan', 'purple'].includes(
         variant,
       )
