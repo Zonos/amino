@@ -66,7 +66,7 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
         if (container.current) {
           const rippleProps: RippleProps = {
             className:
-              'overflow-hidden absolute rounded-[50%] opacity-[var(--amino-ripple-group-opacity)] scale-[4] animate-ripple bg-[var(--amino-ripple-group-color)]',
+              'overflow-hidden absolute rounded-[50%] animate-ripple bg-[var(--amino-ripple-group-color)]',
             destroy: removeRipple,
             duration,
             rippleStyle: getRippleStyle(event, container.current),

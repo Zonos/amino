@@ -28,7 +28,7 @@ const config: Config = {
         'fade-in': 'fade-in 0.2s ease',
         float:
           'float var(--particle-duration) ease-in-out var(--particle-delay) infinite alternate',
-        ripple: 'ripple var(--amino-ripple-group-duration) ease-out',
+        ripple: 'ripple var(--amino-ripple-group-duration) ease-out forwards',
         shimmer: 'shimmer 1.4s linear 0.5s infinite',
         'slide-up': 'slide-up 0.25s ease',
         'spinner-dash': 'spinner-dash 1.5s ease-in-out infinite',
