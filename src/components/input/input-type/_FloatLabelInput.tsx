@@ -181,25 +181,25 @@ export const FloatLabelInput = forwardRef<
         input: label ? 'pt-5 pb-2 pr-1 pl-4' : 'px-4',
         labelTop: 'top-[6px]',
         valuePrefixPadding: 'pb-2.5',
-        wrapper: 'h-[calc(var(--amino-size-lg)-2px)]',
+        wrapper: 'h-[calc(var(--amino-size-lg)_-_2px)]',
       },
       md: {
         input: label ? 'pt-5 pb-2 pr-1 pl-4' : 'px-4',
         labelTop: 'top-[6px]',
         valuePrefixPadding: 'pb-1',
-        wrapper: 'h-[calc(var(--amino-size-md)-2px)]',
+        wrapper: 'h-[calc(var(--amino-size-md)_-_2px)]',
       },
       sm: {
         input: label ? 'pt-[13px] pb-0 px-4' : 'px-4',
         labelTop: 'top-[2px]',
         valuePrefixPadding: 'pb-0 mb-[-1px]',
-        wrapper: 'h-[calc(var(--amino-size-sm)-2px)]',
+        wrapper: 'h-[calc(var(--amino-size-sm)_-_2px)]',
       },
       xl: {
         input: label ? 'pt-4 pb-[2px] pr-1 pl-4' : 'px-4',
         labelTop: 'top-[11px]',
         valuePrefixPadding: 'pb-[11px]',
-        wrapper: 'h-[calc(var(--amino-size-xl)-2px)]',
+        wrapper: 'h-[calc(var(--amino-size-xl)_-_2px)]',
       },
     };
 
@@ -278,10 +278,13 @@ export const FloatLabelInput = forwardRef<
             className={cn(
               'text-amino-base leading-none inline-block blur-0 origin-left-top transition-all duration-300 ease-in-out z-1',
               'absolute left-4 top-[calc(50%-8px)]',
-              hasValue && ['scale-[0.8]', currentSize.labelTop],
-              'group-focus-within:scale-[0.8]',
-              `group-focus-within:${currentSize.labelTop}`,
-              prefix && label && 'ml-0 !left-0',
+              hasValue && [
+                'scale-[0.8]',
+                '-translate-x-2',
+                currentSize.labelTop,
+              ],
+              'group-focus-within:scale-[0.8] group-focus-within:-translate-x-2',
+              prefix && label && 'left-0',
             )}
             style={{ color: 'var(--amino-gray-800)' }}
           >
