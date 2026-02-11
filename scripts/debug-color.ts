@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { chromium } from 'playwright';
+import { chromium } from '@playwright/test';
 
 (async () => {
   const browser = await chromium.launch();

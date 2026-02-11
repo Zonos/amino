@@ -541,9 +541,15 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     // Outline variants use transparent bg (handled by CVA compound variants)
     if (
       outline &&
-      ['primary', 'success', 'warning', 'danger', 'cyan', 'purple'].includes(
-        variant,
-      )
+      [
+        'primary',
+        'success',
+        'warning',
+        'danger',
+        'cyan',
+        'purple',
+        'standard',
+      ].includes(variant)
     ) {
       return 'transparent';
     }
@@ -620,9 +626,12 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         background: 'var(--amino-button-background-color)',
         borderRadius: 'var(--amino-button-radius)',
         // Don't set inline color for text/inlineLink variants — their TW classes
-        // handle base/hover/disabled colors and inline styles would override them
+        // handle base/hover/disabled colors and inline styles would override them.
+        // Also skip for standard+outline — the CVA compound variant handles it,
+        // and inline color would break themeOverride on a light page.
         ...(variant !== 'text' &&
-          variant !== 'inlineLink' && {
+          variant !== 'inlineLink' &&
+          !(outline && variant === 'standard') && {
             color: 'var(--amino-button-color)',
           }),
         fontWeight: 'var(--amino-button-font-weight)' as unknown as number,

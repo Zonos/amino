@@ -14,7 +14,10 @@
  * This test is diagnostic — it always passes. Use the output files to
  * decide which components need attention.
  *
- * Usage:  pnpm test:css-compare
+ * Usage:
+ *   pnpm test:css-compare
+ *   STORY_ID=amino-button--default-outline pnpm test:css-compare
+ *   STORY_ID=amino-button--* pnpm test:css-compare
  */
 import { chromium, test } from '@playwright/test';
 import fs from 'node:fs';
@@ -40,6 +43,17 @@ import {
 const LOCAL_URL =
   process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:6006';
 const OUTPUT_DIR = 'playwright-test-results/html-css-diffs';
+
+/** Optional story filter — exact id or glob with trailing `*`. */
+const STORY_FILTER = process.env.STORY_ID;
+
+function matchesFilter(storyId: string): boolean {
+  if (!STORY_FILTER) return true;
+  if (STORY_FILTER.endsWith('*')) {
+    return storyId.startsWith(STORY_FILTER.slice(0, -1));
+  }
+  return storyId === STORY_FILTER;
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -76,6 +90,15 @@ test('css comparison — capture style diffs between prod and local', async () =
   let storyIds = getFailingStories();
   if (storyIds.length === 0) {
     storyIds = await fetchStoryIds(PROD_URL);
+  }
+
+  // Apply optional STORY_ID filter.
+  if (STORY_FILTER) {
+    storyIds = storyIds.filter(matchesFilter);
+    // eslint-disable-next-line no-console
+    console.log(
+      `STORY_ID filter: comparing ${storyIds.length} matching stories`,
+    );
   }
 
   // eslint-disable-next-line no-console
