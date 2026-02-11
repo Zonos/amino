@@ -90,7 +90,7 @@ export const DismissableDialog = ({
     style={style}
     width={width}
   >
-    <div className="p-amino-24">
+    <div className="p-amino-24 [&>div]:text-center [&>div]:flex [&>div]:flex-col [&>div]:items-center">
       <VStack spacing={24}>
         <Thumbnail
           color={getColorForIntent(intent)}

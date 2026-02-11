@@ -617,11 +617,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           ? theme.blue300
           : theme.gray300,
         '--amino-button-text-button-hover-color': getInlineLinkHoverColor(),
-        '--amino-button-width': isIconOnly
-          ? `var(--amino-size-${size})`
-          : fitContentWidth
-            ? 'fit-content'
-            : 'auto',
         background: 'var(--amino-button-background-color)',
         borderRadius: 'var(--amino-button-radius)',
         // Don't set inline color for text/inlineLink variants — their TW classes
@@ -636,7 +631,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           lineHeight: 'var(--amino-button-size)',
           padding: 'var(--amino-button-padding)',
         }),
-        width: 'var(--amino-button-width)',
+        ...(fitContentWidth && { width: 'fit-content' }),
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
       {...buttonProps}
