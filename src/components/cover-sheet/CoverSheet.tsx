@@ -167,6 +167,7 @@ export const CoverSheet = ({
         'print:h-auto print:min-h-screen print:absolute',
         className,
       )}
+      fullWindowWidth
       onClose={onClose}
       open={open}
       popupMotionProps={{

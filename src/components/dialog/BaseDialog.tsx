@@ -149,8 +149,8 @@ export const BaseDialog = ({
                 {...combinedPopupMotionProps}
                 key="dialog"
                 className={cn(
-                  className,
                   'elevated z-1001 bg-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
+                  className,
                 )}
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog
