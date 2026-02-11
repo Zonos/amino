@@ -18,7 +18,7 @@ import path from 'node:path';
 import { extractComponentName } from 'test-utils/storybook-helpers';
 
 const RESULTS_DIR = 'playwright-test-results';
-const CSS_DIFF_DIR = path.join(RESULTS_DIR, 'html-css-diffs');
+const CSS_DIFF_DIR = 'css-compare-results';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -279,7 +279,7 @@ async function main() {
 // ---------------------------------------------------------------------------
 
 function triage() {
-  const diffDir = path.join(RESULTS_DIR, 'html-css-diffs');
+  const diffDir = CSS_DIFF_DIR;
   if (!fs.existsSync(diffDir)) {
     // eslint-disable-next-line no-console
     console.error(

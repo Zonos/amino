@@ -59,7 +59,7 @@
     "test:pw": "playwright test",
     "test:visual:baseline": "PLAYWRIGHT_TEST_BASE_URL=https://amino.zonos.com playwright test visual-regression --update-snapshots --project=chromium",
     "test:visual": "playwright test visual-regression --project=chromium",
-    "test:css-compare": "playwright test css-comparison --project=chromium",
+    "test:css-compare": "playwright test css-comparison --project=chromium --config playwright.css-compare.config.ts",
     "test:analyze": "tsx scripts/analyze-visual-diffs.ts",
     "test:analyze:triage": "tsx scripts/analyze-visual-diffs.ts --triage",
     "test:sb": "test-storybook",

@@ -4,7 +4,7 @@
  * Opens **two** browser contexts (production + local), navigates each to
  * every story, captures the DOM-tree with computed styles, then diffs them.
  *
- * Output is written to playwright-test-results/html-css-diffs/:
+ * Output is written to css-compare-results/:
  *   - {storyId}.diff.txt        — human-readable diff
  *   - {storyId}.prod.json       — prod snapshot
  *   - {storyId}.local.json      — local snapshot
@@ -42,7 +42,7 @@ import {
 
 const LOCAL_URL =
   process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:6006';
-const OUTPUT_DIR = 'playwright-test-results/html-css-diffs';
+const OUTPUT_DIR = 'css-compare-results';
 
 /** Optional story filter — exact id or glob with trailing `*`. */
 const STORY_FILTER = process.env.STORY_ID;
@@ -71,7 +71,12 @@ function getFailingStories(): string[] {
 
   return files
     .map(f => (typeof f === 'string' ? f : f.toString()))
-    .filter(f => f.endsWith('-diff.png'))
+    .filter(
+      f =>
+        f.endsWith('-diff.png') &&
+        // Only look in visual-regression subdirectories, not css-compare artifacts.
+        !f.startsWith('css-compare'),
+    )
     .map(f => path.basename(f, '-diff.png'))
     .filter(id => !SKIP_STORIES.has(id))
     .sort();

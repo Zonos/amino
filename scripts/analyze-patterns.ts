@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const diffDir = 'playwright-test-results/html-css-diffs';
+const diffDir = 'css-compare-results';
 const files = fs
   .readdirSync(diffDir)
   .filter(f => f.endsWith('.diff.txt'))
