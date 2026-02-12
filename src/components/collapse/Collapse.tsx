@@ -124,7 +124,7 @@ export const Collapse = ({
       <div
         aria-hidden={fullyCollapsed || undefined}
         className="overflow-hidden"
-        {...(fullyCollapsed ? { inert: '' } : {})}
+        {...(fullyCollapsed ? { inert: true } : {})}
       >
         {children}
       </div>

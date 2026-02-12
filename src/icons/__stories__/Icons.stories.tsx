@@ -61,7 +61,8 @@ export const Icons = ({
               : true,
           )
           .map(iconName => {
-            const IconComponent = lazy(() =>
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const IconComponent = lazy<React.ComponentType<any>>(() =>
               import(`src/icons/${iconName}.tsx`).then(module => ({
                 default: module[iconName],
               })),
