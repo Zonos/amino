@@ -11,8 +11,6 @@ import { HSection, type HSectionProps } from 'src/components/section/HSection';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 
-import styles from './HSection.stories.module.scss';
-
 const HSectionMeta: Meta = {
   component: HSection,
 };
@@ -120,7 +118,7 @@ export const VariableList = () => {
   };
 
   return (
-    <VStack className={styles.styledVStack}>
+    <VStack className="">
       <Checkbox
         checked={collapsible}
         label="collapsible"

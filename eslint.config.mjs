@@ -1,7 +1,6 @@
 import eslint from '@eslint/js';
 import pluginVitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import * as pluginCssModules from 'eslint-plugin-css-modules';
 import pluginImport from 'eslint-plugin-import';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginNoRelativeImports from 'eslint-plugin-no-relative-import-paths';
@@ -53,7 +52,6 @@ export default tseslint.config(
       },
     },
     plugins: {
-      'css-modules': pluginCssModules,
       'jsx-a11y': pluginJsxA11y,
       'no-relative-import-paths': pluginNoRelativeImports,
       react: pluginReact,
@@ -88,8 +86,6 @@ export default tseslint.config(
       camelcase: 'off',
       // disable since sometime `this` doesn't need to be used in some util function in class
       'class-methods-use-this': 'off',
-      'css-modules/no-undef-class': [2, { camelCase: true }],
-      'css-modules/no-unused-class': [2, { camelCase: true }],
       'import/extensions': 'off',
       // False positives
       'import/named': 'off',
@@ -114,7 +110,7 @@ export default tseslint.config(
       'no-console': 'warn',
       'no-relative-import-paths/no-relative-import-paths': [
         'warn',
-        // Allow to import from same folder for importing scss modules
+        // Allow to import from same folder for relative imports
         { allowSameFolder: true },
       ],
       'no-restricted-syntax': [

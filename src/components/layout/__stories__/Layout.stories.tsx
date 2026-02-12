@@ -11,8 +11,6 @@ import {
 import { HStack } from 'src/components/stack/HStack';
 import { ZonosIcon } from 'src/icons/custom/logo/ZonosIcon';
 
-import styles from './Layout.stories.module.scss';
-
 const LayoutMeta: Meta = {
   argTypes: {
     content: {
@@ -90,7 +88,7 @@ BasicLayout.args = {
     </HStack>
   ),
   headerContent: (
-    <div className={styles.styledHeader}>
+    <div className="flex flex-row items-center gap-amino-24 px-amino-24">
       <ZonosIcon size={110} />
     </div>
   ),

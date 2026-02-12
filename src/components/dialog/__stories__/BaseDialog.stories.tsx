@@ -8,8 +8,6 @@ import { BaseDialog } from 'src/components/dialog/BaseDialog';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 
-import styles from './BaseDialog.stories.module.scss';
-
 const DialogMeta: Meta = {
   argTypes: {
     children: {
@@ -26,7 +24,7 @@ export default DialogMeta;
 const Template: StoryFn<typeof BaseDialog> = ({ children, width, ...rest }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={styles.centeredDiv}>
+    <div className="h-full flex justify-center items-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Card label="I am a card">
         <Text type="subheader">Here is some other content</Text>

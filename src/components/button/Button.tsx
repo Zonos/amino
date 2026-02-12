@@ -10,7 +10,7 @@ import {
   useState,
 } from 'react';
 
-import clsx from 'clsx';
+import { cva } from 'class-variance-authority';
 
 import {
   type RippleActions,
@@ -24,10 +24,9 @@ import type { Color } from 'src/types/Color';
 import type { Size } from 'src/types/Size';
 import type { Theme } from 'src/types/Theme';
 import type { Variant } from 'src/types/Variant';
+import { cn } from 'src/utils/cn';
 import { getAminoColor } from 'src/utils/getAminoColor';
 import { getTestId } from 'src/utils/getTestId';
-
-import styles from './Button.module.scss';
 
 type ButtonBase = BaseProps & {
   background?: Color | 'inherit';
@@ -84,6 +83,103 @@ export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
     onClick?: MouseEventHandler<MyHtmlElement<T>>;
     tag?: T | GroupTag;
   } & Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'>;
+
+const buttonVariants = cva(
+  'amino-button relative outline-none box-border flex flex-row items-center justify-center transition-all duration-200 select-none font-sans tracking-normal cursor-pointer disabled:cursor-not-allowed disabled:opacity-disabled whitespace-nowrap text-amino-base w-fit [&_svg_path:not([data-is-secondary-color])]:fill-current',
+  {
+    compoundVariants: [
+      // Primary outline
+      {
+        className:
+          'text-blue-600 shadow-[0px_0px_0px_1px] shadow-blue-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-blue-50 hover:bg-none active:bg-blue-100 disabled:bg-transparent disabled:shadow-blue-600 [&_.spinner-wrapper]:bg-transparent',
+        outline: true,
+        variant: 'primary',
+      },
+      // Success outline
+      {
+        className:
+          'text-green-600 shadow-[0px_0px_0px_1px] shadow-green-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-green-50 hover:bg-none active:bg-green-100 disabled:bg-transparent disabled:shadow-green-600 [&_.spinner-wrapper]:bg-transparent',
+        outline: true,
+        variant: 'success',
+      },
+      // Danger outline
+      {
+        className:
+          'text-red-600 shadow-[0px_0px_0px_1px] shadow-red-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-red-50 hover:bg-none active:bg-red-100 disabled:bg-transparent disabled:shadow-red-600 [&_.spinner-wrapper]:bg-transparent',
+        outline: true,
+        variant: 'danger',
+      },
+      // Warning outline
+      {
+        className:
+          'text-orange-600 shadow-[0px_0px_0px_1px] shadow-orange-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-orange-50 hover:bg-none active:bg-orange-100 disabled:bg-transparent disabled:shadow-[0px_0px_0px_1px_inset] disabled:shadow-orange-600 [&_.spinner-wrapper]:bg-transparent',
+        outline: true,
+        variant: 'warning',
+      },
+      // Purple outline
+      {
+        className:
+          'text-purple-600 shadow-[0px_0px_0px_1px] shadow-purple-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-purple-50 hover:bg-none active:bg-purple-100 disabled:bg-transparent disabled:shadow-[0px_0px_0px_1px_inset] disabled:shadow-orange-600 [&_.spinner-wrapper]:bg-transparent',
+        outline: true,
+        variant: 'purple',
+      },
+      // Cyan outline
+      {
+        className:
+          'text-cyan-600 shadow-[0px_0px_0px_1px] shadow-cyan-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-cyan-50 hover:bg-none active:bg-cyan-100 disabled:bg-transparent disabled:shadow-[0px_0px_0px_1px_inset] disabled:shadow-cyan-600 [&_.spinner-wrapper]:bg-transparent',
+        outline: true,
+        variant: 'cyan',
+      },
+      // Standard outline
+      {
+        className:
+          'text-text-color bg-transparent shadow-none border border-gray-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.08] hover:bg-none active:bg-gray-100 focus:shadow-[rgba(0,0,0,0.08)_0px_0px_0px_4px] dark:focus:shadow-[rgba(220,225,255,0.24)_0px_0px_0px_4px]',
+        outline: true,
+        variant: 'standard',
+      },
+    ],
+    defaultVariants: {
+      outline: false,
+      size: 'sm',
+      variant: 'standard',
+    },
+    variants: {
+      outline: {
+        false: '',
+        true: '',
+      },
+      size: {
+        lg: 'h-amino-lg',
+        md: 'h-amino-md',
+        sm: 'h-amino-sm',
+        xl: 'h-amino-xl',
+      },
+      variant: {
+        cyan: 'shadow-btn-cyan [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-cyan-600 focus:shadow-btn-cyan-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-amino-cyan',
+        danger:
+          'shadow-btn-danger [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-red-600 focus:shadow-btn-danger-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-danger',
+        inlineLink:
+          'p-0 inline-flex leading-[inherit] text-[var(--amino-button-color)] hover:text-[var(--amino-button-text-button-hover-color)] active:text-[var(--amino-button-text-button-hover-color)]',
+        inverted:
+          'bg-gray-1000 text-gray-0 shadow-raised-standard hover:bg-gray-900 active:bg-gray-600 focus:shadow-raised-standard disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-gray-1000',
+        link: 'active:bg-blue-100 hover:bg-blue-50 focus:shadow-btn-focus-ring',
+        plain: '',
+        primary:
+          'shadow-btn-primary [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-blue-600 focus:shadow-btn-primary-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-primary',
+        purple:
+          'shadow-btn-purple [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-purple-600 focus:shadow-btn-purple-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-amino-purple',
+        standard:
+          'shadow-raised-standard active:bg-gray-100 focus:shadow-raised-standard',
+        subtle: 'hover:bg-gray-50 active:bg-gray-100 focus:shadow-focus-btn',
+        success:
+          'shadow-btn-success [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-green-600 focus:shadow-btn-success-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-success',
+        text: 'text-[var(--amino-button-text-button-color)] hover:text-[var(--amino-button-text-button-hover-color)] disabled:text-[var(--amino-button-text-button-disabled-color)] [&.loading]:text-transparent',
+        warning:
+          'shadow-btn-warning [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-orange-600 focus:shadow-btn-warning-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-warning',
+      },
+    },
+  },
+);
 
 /**
  * Button component provides a clickable element that can be customized with different variants,
@@ -215,11 +311,11 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
 
   const renderContent = (_spinnerColor?: SpinnerProps['color']) => (
     <>
-      {!iconRight && <span className={styles.content}>{icon}</span>}
-      <div className={clsx(styles.content, styles.text)}>{children}</div>
-      {iconRight && <span className={styles.content}>{icon}</span>}
+      {!iconRight && <span className="content">{icon}</span>}
+      <div className={cn('content', children && 'px-amino-4')}>{children}</div>
+      {iconRight && <span className="content">{icon}</span>}
       {variant !== 'plain' && variant !== 'text' && loading && (
-        <span className={styles.spinnerWrapper}>
+        <span className="spinner-wrapper absolute inset-0 flex items-center justify-center rounded-amino-6 gap-amino-8">
           <Spinner color={_spinnerColor} size={getSpinnerSize()} />
           {loadingText}
         </span>
@@ -227,16 +323,26 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     </>
   );
 
-  const buttonClassName = clsx(
-    'amino-button',
-    styles.aminoButton,
-    variant === 'plain' ? '' : styles[`${variant}Button`],
-    outline && styles.outline,
-    className || '',
-    icon && !children ? styles.onlyIcon : '',
-    iconRight ? styles.iconRight : '',
-    icon ? styles.hasIcon : '',
-    loading ? styles.loading : '',
+  const buttonClassName = cn(
+    buttonVariants({ outline, size, variant }),
+    icon && !children && 'p-0',
+    icon && !children && 'w-[var(--amino-button-size)]',
+    iconRight && 'icon-right',
+    icon && 'has-icon',
+    loading && 'loading [&_.content]:invisible',
+    !disabled &&
+      !loading &&
+      'active:scale-[0.99] hover:bg-[image:var(--amino-button-hover-background-color)]',
+    disabled && 'cursor-not-allowed',
+    icon &&
+      children &&
+      !iconRight &&
+      '[&_svg:not(.amino-spinner)]:mr-[2px] [&_svg:not(.amino-spinner)]:ml-0 [&_svg:not(.amino-spinner)]:opacity-80',
+    icon &&
+      children &&
+      iconRight &&
+      '[&_svg:not(.amino-spinner)]:ml-[2px] [&_svg:not(.amino-spinner)]:mr-0 [&_svg:not(.amino-spinner)]:opacity-80',
+    className,
   );
 
   const rippleRef = useRef<RippleActions>(null);
@@ -277,13 +383,13 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   const getRadius = () => {
     switch (size) {
       case 'sm':
-        return `${theme.radius6}`;
+        return theme.radius6;
       case 'lg':
       case 'xl':
-        return `${theme.radius10}`;
+        return theme.radius10;
       case 'md':
       default:
-        return `${theme.radius8}`;
+        return theme.radius8;
     }
   };
 
@@ -349,6 +455,26 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     if (color) {
       return getAminoColor(color) || '';
     }
+    // Outline intent variants use their intent text color
+    // Must return actual color value because inline style overrides Tailwind classes
+    if (outline) {
+      switch (variant) {
+        case 'primary':
+          return theme.blue600;
+        case 'success':
+          return theme.green600;
+        case 'warning':
+          return theme.orange600;
+        case 'danger':
+          return theme.red600;
+        case 'cyan':
+          return theme.cyan600;
+        case 'purple':
+          return theme.purple600;
+        default:
+          break;
+      }
+    }
     switch (variant) {
       case 'primary':
       case 'success':
@@ -363,8 +489,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.blue600;
       case 'subtle':
         return theme.textColorSecondary;
-      case 'plain':
       case 'text':
+      case 'plain':
       case 'standard':
       default:
         return theme.textColor;
@@ -375,6 +501,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     if (hoverBackground && hoverBackground !== 'inherit') {
       const aminoColor = getAminoColor(hoverBackground);
       return `linear-gradient(${aminoColor}, ${aminoColor})`;
+    }
+    // Outline variants use CVA compound variant hover styles (hover:bg-blue-50, etc.)
+    if (outline) {
+      return '';
     }
     switch (variant) {
       case 'primary':
@@ -408,6 +538,30 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     if (background) {
       return getAminoColor(background) || '';
     }
+    // Outline variants use transparent bg (handled by CVA compound variants)
+    if (
+      outline &&
+      [
+        'primary',
+        'success',
+        'warning',
+        'danger',
+        'cyan',
+        'purple',
+        'standard',
+      ].includes(variant)
+    ) {
+      return 'transparent';
+    }
+    // For intent variants, disabled/loading state should show gray-500
+    if (
+      (disabled || loading) &&
+      ['primary', 'success', 'warning', 'danger', 'cyan', 'purple'].includes(
+        variant,
+      )
+    ) {
+      return theme.gray500;
+    }
     switch (variant) {
       case 'primary':
         return theme.primary;
@@ -422,7 +576,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       case 'purple':
         return theme.purple;
       case 'inverted':
-        return theme.gray0;
+        return theme.gray1000;
       case 'standard':
         return theme.raisedSurfaceColor;
       case 'subtle':
@@ -441,6 +595,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     return props.href ? theme.blue500 : theme.gray500;
   };
 
+  const isIconOnly = !!icon && !children;
+
   return (
     <Tag
       ref={handleButtonText}
@@ -452,17 +608,39 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         '--amino-button-color': getColor(),
         '--amino-button-font-weight': getFontWeight(),
         '--amino-button-hover-background-color': getHoverBackground(),
-        '--amino-button-padding': getPadding(),
+        '--amino-button-padding': isIconOnly ? '0' : getPadding(),
         '--amino-button-radius': getRadius(),
         '--amino-button-size': `var(--amino-size-${size})`,
-        '--amino-button-text-button-color': props.href
-          ? theme.primary
-          : theme.textColorSecondary,
+        '--amino-button-text-button-color':
+          disabled || loading
+            ? props.href
+              ? theme.blue300
+              : theme.gray300
+            : props.href
+              ? theme.primary
+              : theme.textColorSecondary,
         '--amino-button-text-button-disabled-color': props.href
           ? theme.blue300
           : theme.gray300,
         '--amino-button-text-button-hover-color': getInlineLinkHoverColor(),
-        '--amino-button-width': fitContentWidth ? 'fit-content' : 'auto',
+        background: 'var(--amino-button-background-color)',
+        borderRadius: 'var(--amino-button-radius)',
+        // Don't set inline color for text/inlineLink variants — their TW classes
+        // handle base/hover/disabled colors and inline styles would override them.
+        // Also skip for standard+outline — the CVA compound variant handles it,
+        // and inline color would break themeOverride on a light page.
+        ...(variant !== 'text' &&
+          variant !== 'inlineLink' &&
+          !(outline && variant === 'standard') && {
+            color: 'var(--amino-button-color)',
+          }),
+        fontWeight: 'var(--amino-button-font-weight)' as unknown as number,
+        // inlineLink uses leading-[inherit] and p-0 from CVA; inline would override
+        ...(variant !== 'inlineLink' && {
+          lineHeight: 'var(--amino-button-size)',
+          padding: 'var(--amino-button-padding)',
+        }),
+        ...(fitContentWidth && { width: 'fit-content' }),
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
       {...buttonProps}

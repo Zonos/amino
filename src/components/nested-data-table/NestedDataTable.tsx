@@ -8,11 +8,10 @@ import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import type { flattenRow } from 'src/utils/flattenRow';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './NestedDataTable.module.scss';
 
 type ColumnType<TRow> = Column<TRow, Record<string, unknown>>;
 export type ColumnCell<TRow extends Record<string, unknown>> = NonNullable<
@@ -190,12 +189,14 @@ export const NestedDataTable = <
   };
 
   return (
-    <div className={styles.styledPivotTableContentWrapper} style={style}>
-      <div className={styles.styledTableHeader}>
+    <div className={cn('h-full')} style={style}>
+      <div className={cn('flex items-center p-amino-8')}>
         {!!title && <Text type="header">{title}</Text>}
         {/* Only show pagination if handlePagination and currentPage is provided */}
         {!!showPagination && (
-          <div className={styles.styledTableActionWrapper}>
+          <div
+            className={cn('flex flex-1 justify-end items-center gap-amino-8')}
+          >
             <Button
               disabled={currentPage === 1 || !hasPreviousPage}
               onClick={() => {

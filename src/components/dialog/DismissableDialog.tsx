@@ -10,8 +10,6 @@ import { WarningDuotoneIcon } from 'src/icons/WarningDuotoneIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
 
-import styles from './DismissableDialog.module.scss';
-
 export type DismissableDialogIntent = 'danger' | 'warning' | 'info';
 
 export type DismissableDialogBaseArgs = {
@@ -92,7 +90,7 @@ export const DismissableDialog = ({
     style={style}
     width={width}
   >
-    <div className={styles.content}>
+    <div className="p-amino-24 [&>div]:text-center [&>div]:flex [&>div]:flex-col [&>div]:items-center">
       <VStack spacing={24}>
         <Thumbnail
           color={getColorForIntent(intent)}
@@ -107,7 +105,9 @@ export const DismissableDialog = ({
             </Text>
           )}
         </VStack>
-        <div className={styles.footer}>{actions}</div>
+        <div className="grid grid-cols-2 gap-2 [&_.amino-button]:w-full">
+          {actions}
+        </div>
       </VStack>
     </div>
   </BaseDialog>

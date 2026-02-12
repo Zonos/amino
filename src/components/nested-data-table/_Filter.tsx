@@ -5,11 +5,10 @@ import { TranslateAminoText as Translate } from 'src/components/__amino__/Transl
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { FilterIcon } from 'src/icons/FilterIcon';
+import { cn } from 'src/utils/cn';
 import { useDropdown } from 'src/utils/hooks/useDropdown';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './_Filter.module.scss';
 
 export const Filter = ({
   columns,
@@ -34,10 +33,13 @@ export const Filter = ({
   );
 
   return (
-    <div ref={wrapperRef} className={styles.styledFilterWrapper}>
+    <div ref={wrapperRef} className={cn('relative')}>
       <button
         ref={refs.setReference}
-        className={styles.styledTriggerButton}
+        className={cn(
+          'flex items-center justify-center h-amino-size-sm px-amino-12',
+          'border border-amino rounded-amino-6',
+        )}
         onClick={() => setVisible(!visible)}
         type="button"
       >
@@ -46,7 +48,14 @@ export const Filter = ({
       </button>
       <div
         ref={refs.setFloating}
-        className={styles.styledFilter}
+        className={cn(
+          'flex p-amino-16 bg-gray-0 border border-gray-200 rounded-amino-8 w-[300px]',
+          'shadow-[0_0_1px_var(--amino-gray-400)]',
+          '[&>div]:w-full',
+          '[&_.value-container]:overflow-x-auto',
+          '[&_.multi-value]:flex [&_.multi-value]:h-[22px] [&_.multi-value]:items-center',
+          '[&_.multi-value_[role=button]]:flex [&_.multi-value_[role=button]]:items-center [&_.multi-value_[role=button]]:justify-center',
+        )}
         style={{
           ...floatingStyles,
           opacity: visibility === 'visible' ? 1 : 0,

@@ -1,13 +1,10 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './RichCheckbox.module.scss';
+import { cn } from 'src/utils/cn';
 
 type RichCheckboxItemType = {
   checked: boolean;
@@ -118,7 +115,12 @@ export const RichCheckbox = ({
   style,
 }: RichCheckboxProps) => (
   <VStack
-    className={clsx(className, styles.styledVStack)}
+    className={cn(
+      '[&_button[data-state="checked"]]:bg-blue-100 [&_button[data-state="checked"]]:border-blue-300',
+      '[&_button[data-state="checked"]]:text-blue-600',
+      '[&_svg]:text-gray-0 [&_svg]:w-3 [&_svg]:h-3',
+      className,
+    )}
     spacing={16}
     style={style}
   >
@@ -127,32 +129,47 @@ export const RichCheckbox = ({
       return (
         <button
           key={value}
-          className={styles.styledRichCheckbox}
+          className={cn(
+            'relative appearance-none bg-raised p-4 pr-10 border border-amino rounded-amino-6',
+            'text-left transition-all duration-150 ease-in-out flex flex-row items-center',
+            'hover:bg-hover hover:border-gray-200',
+            'focus:outline-none focus:border-blue-300',
+          )}
           data-state={checked ? 'checked' : ''}
           onClick={e => onClick(e.currentTarget.value)}
           type="button"
           value={value}
         >
           <div
-            className={clsx(
-              styles.styledItemContentDiv,
-              !!icon && styles.hasIcon,
+            className={cn(
+              'items-center grid',
+              icon && 'grid-cols-[30px_1fr] gap-6',
             )}
           >
             {icon && icon}
             <VStack spacing={0}>
-              <Text className={styles.label} color="gray1000" type="label">
+              <Text
+                className={cn(
+                  'leading-6',
+                  '[data-state="checked"]_&:text-blue-600',
+                )}
+                color="gray1000"
+                type="label"
+              >
                 {label}
               </Text>
               {subtitle && (
-                <Text className={styles.subtitle} color="gray700">
+                <Text
+                  className={cn('[data-state="checked"]_&:text-blue-600')}
+                  color="gray700"
+                >
                   {subtitle}
                 </Text>
               )}
             </VStack>
           </div>
           {checked && (
-            <div className={styles.styledIcon}>
+            <div className="absolute right-4 bg-blue-600 rounded-full p-1.25 flex items-center justify-center">
               <CheckmarkIcon />
             </div>
           )}

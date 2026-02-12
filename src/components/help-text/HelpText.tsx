@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './HelpText.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type HelpTextProps = BaseProps & {
   /**
@@ -94,10 +91,7 @@ export const HelpText = ({
   if (helpText) {
     if (error && typeof helpText === 'string') {
       return (
-        <div
-          className={clsx(className, !withoutMargin && styles.styledHelpText)}
-          style={style}
-        >
+        <div className={cn(!withoutMargin && 'mt-2', className)} style={style}>
           <Text color="red600" type="caption">
             {helpText}
           </Text>
@@ -107,20 +101,14 @@ export const HelpText = ({
 
     if (typeof helpText === 'string') {
       return (
-        <div
-          className={clsx(className, !withoutMargin && styles.styledHelpText)}
-          style={style}
-        >
+        <div className={cn(!withoutMargin && 'mt-2', className)} style={style}>
           <Text type="caption">{helpText}</Text>
         </div>
       );
     }
 
     return (
-      <div
-        className={clsx(className, !withoutMargin && styles.styledHelpText)}
-        style={style}
-      >
+      <div className={cn(!withoutMargin && 'mt-2', className)} style={style}>
         {helpText}
       </div>
     );

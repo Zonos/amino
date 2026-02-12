@@ -1,11 +1,8 @@
 import { type ReactNode, useEffect, useState } from 'react';
 
-import clsx from 'clsx';
-
 import { Radio } from 'src/components/radio/Radio';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './RadioGroup.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type RadioGroupItem<T extends string = string> = {
   /**
@@ -148,7 +145,7 @@ export const RadioGroup = <T extends string = string>({
   ));
 
   return (
-    <div className={clsx(className, styles.radioContainer)} style={style}>
+    <div className={cn('flex gap-5', className)} style={style}>
       {radios}
     </div>
   );

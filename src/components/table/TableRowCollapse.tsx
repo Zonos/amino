@@ -1,15 +1,12 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import { Collapse } from 'src/components/collapse/Collapse';
 import { TableCell } from 'src/components/table/TableCell';
 import { TableRow } from 'src/components/table/TableRow';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './TableRowCollapse.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type TableRowCollapseProps = BaseProps & {
   children?: ReactNode;
@@ -41,11 +38,10 @@ export const TableRowCollapse = ({
   return (
     <>
       <TableRow
-        className={clsx(
+        className={cn(
+          !collapsed && '[&_td]:border-b-0',
+          collapsible && 'cursor-pointer',
           className,
-          styles.styledTableRow,
-          collapsed && styles.collapsed,
-          collapsible && styles.collapsible,
         )}
         onClick={e => collapsible && onToggleCollapse(e)}
         rowTestId={`amino--row-${rowKey}`}
@@ -55,7 +51,10 @@ export const TableRowCollapse = ({
         <TableCell align="right">
           {collapsible && (
             <Button
-              className={styles.collapseButton}
+              className={cn(
+                '[&_svg]:transition-amino',
+                collapsed && '[&_svg]:rotate-180',
+              )}
               icon={<ChevronUpIcon />}
               variant="plain"
             />
@@ -64,9 +63,16 @@ export const TableRowCollapse = ({
       </TableRow>
       {collapsible && (
         <TableRow rowTestId={`amino--collapse-${rowKey}`}>
-          <TableCell className={styles.collapsibleCell} colSpan={100}>
+          <TableCell
+            className={cn(
+              '!border-b-[inherit] !h-[inherit]',
+              collapsed && '!h-0 !border-b-0',
+              '[&>div]:w-full',
+            )}
+            colSpan={100}
+          >
             <Collapse
-              className={styles.styledCollapse}
+              className="[&>div]:pb-4"
               collapsed={collapsed}
               style={style}
             >

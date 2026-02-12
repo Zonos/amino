@@ -7,7 +7,6 @@ import {
   useMemo,
 } from 'react';
 
-import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import {
@@ -17,11 +16,9 @@ import {
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import { getTestId } from 'src/utils/getTestId';
-
-import styles from './Checkbox.module.scss';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
 
@@ -170,7 +167,11 @@ export const Checkbox = ({
 
   return (
     <label
-      className={clsx(globalStyles.focusableLabel, styles.wrapper, className)}
+      className={cn(
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+        'focus-within:outline-none [&:has(input:focus-visible)]:shadow-glow-blue',
+        className,
+      )}
       htmlFor={id}
       style={{
         ...style,
@@ -188,7 +189,7 @@ export const Checkbox = ({
     >
       <input
         checked={checked}
-        className={clsx(globalStyles.inputHidden, disabled && 'disabled')}
+        className={cn('absolute w-0 h-0 opacity-0', disabled && 'disabled')}
         data-testid={testId}
         id={id}
         onChange={handleChange}
@@ -201,19 +202,29 @@ export const Checkbox = ({
         type="checkbox"
       />
       <div
-        className={clsx(
-          styles.checkboxContainer,
+        className={cn(
+          'flex flex-row select-none [&,*]:select-none [&,*]:pointer-events-none',
           'amino-input-wrapper',
-          disabled && styles.disabled,
-          disabled && 'disabled',
+          disabled && ['cursor-not-allowed', 'disabled'],
         )}
       >
-        <div className={styles.aminoCheckbox}>
+        <div
+          className={cn(
+            'w-4 h-4 min-w-4 min-h-4 leading-4 rounded flex items-center justify-center select-none transition-all duration-150 ease-in-out',
+            'bg-(--amino-checkbox-background) [border:var(--amino-checkbox-border)] shadow-(--amino-checkbox-box-shadow)',
+            disabled &&
+              'bg-(--amino-checkbox-disabled-background) [border:var(--amino-checkbox-disabled-border)] shadow-none',
+          )}
+        >
           <AnimatePresence>
             {checked && (
               <AnimatedCheckIcon
                 key="checkbox"
                 animate={{ opacity: 1, scale: 1 }}
+                className={cn(
+                  'w-4 h-4 text-gray-0 dark:text-gray-1000',
+                  'shadow-[0px_2px_4px_rgba(0,0,0,0.06),0px_1px_2px_rgba(0,0,0,0.04)]',
+                )}
                 exit={{ opacity: 0, scale: 1 }}
                 initial={{ opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -224,13 +235,20 @@ export const Checkbox = ({
 
         {labelComponent ||
           (label && (
-            <div className={styles.infoWrapper}>
-              <div className={styles.labelWrapper}>
-                {icon}
-                <Text className={styles.styledLabel} type="input-label">
+            <div className="ml-2">
+              <div className="flex items-center leading-4">
+                {icon && (
+                  <div className={cn('mr-1', disabled && 'opacity-40')}>
+                    {icon}
+                  </div>
+                )}
+                <Text
+                  className={cn('mb-0', disabled && 'text-gray-600')}
+                  type="input-label"
+                >
                   {label}
                   {labelDescription && (
-                    <span className={styles.styledLabelDescription}>
+                    <span className="ml-1 text-gray-600">
                       {labelDescription}
                     </span>
                   )}
@@ -241,7 +259,7 @@ export const Checkbox = ({
       </div>
 
       {subtitle && (
-        <div className={styles.styledSubtitle}>
+        <div className={cn('ml-6 mt-1', disabled && 'text-gray-400')}>
           <Text type="subtitle">{subtitle}</Text>
         </div>
       )}

@@ -93,6 +93,7 @@ __diff_output__
 /playwright-test-results/
 /playwright-report/
 /playwright/.cache/
+/css-compare-results/
 snapshots
 
 # Ignore _private_* folders (for some scratchpad scripts)

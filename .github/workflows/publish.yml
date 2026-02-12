@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feat/migrate-to-shadcn
 
 permissions:
   id-token: write # Required for OIDC
@@ -17,11 +18,12 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.11.0
+          node-version: 22
           registry-url: "https://registry.npmjs.org"
           cache: pnpm
       # Ensure npm 11.5.1 or later for trusted publishing
       - run: npm install -g npm@latest
       - run: pnpm install
       - run: pnpm build:ci
-      - run: cd dist && npm publish --access public
+      # Publish with "alpha" dist-tag for non-main branches, "latest" for main
+      - run: cd dist && npm publish --access public --tag ${{ github.ref_name == 'main' && 'latest' || 'alpha' }}

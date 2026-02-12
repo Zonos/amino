@@ -40,8 +40,6 @@ import { getCountryUrls } from 'src/utils/getCountryUrls';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
 import { useStateUrl } from 'src/utils/hooks/useStateUrl';
 
-import styles from './Filter.stories.module.scss';
-
 const meta: Meta = {
   title: 'Filters',
 };
@@ -438,8 +436,8 @@ export const TextTruncation = ({
     <>
       <pre>{window.location.search}</pre>
 
-      <div className={styles.filterBar}>
-        <div className={styles.filterBarFilters}>
+      <div className="py-2 border-b border-amino-subtle flex justify-between items-center">
+        <div className="flex gap-2 [&>div>div>div:last-child]:overflow-x-hidden [&>div>div>div:last-child]:whitespace-nowrap [&>div>div>div:last-child]:text-ellipsis">
           <FilterSelect
             dropdownTitle="Filter by option"
             isDisabled={isDisabled}

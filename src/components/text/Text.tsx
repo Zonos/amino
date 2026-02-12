@@ -1,12 +1,9 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
-
-import styles from './Text.module.scss';
+import { cn } from 'src/utils/cn';
 
 export const textOthers = [
   'code',
@@ -229,16 +226,16 @@ export const Text = ({
     size: Size;
   }) => {
     const typographyProps = {
-      className: clsx(className, styles.typography),
+      className: cn('m-0 [&_svg]:inline-block [&_svg]:align-middle', className),
       style: {
         ...style,
-        '--amino-text-color': color ? theme[color] : 'inherit',
-        '--amino-text-font-size': `var(--amino-font-size-${fontSize || size})`,
-        '--amino-text-font-weight': _fontWeight || '',
-        '--amino-text-line-height': `var(--amino-line-height-${
-          lineHeight || size
-        })`,
-        '--amino-text-transform': _isUppercase ? 'uppercase' : 'inherit',
+        color: color ? theme[color] : 'inherit',
+        fontSize: `var(--amino-font-size-${fontSize || size})`,
+        fontWeight: _fontWeight || undefined,
+        lineHeight: `var(--amino-line-height-${lineHeight || size})`,
+        textTransform: (_isUppercase ? 'uppercase' : 'inherit') as
+          | 'inherit'
+          | 'uppercase',
       },
       title,
     };
@@ -355,13 +352,22 @@ export const Text = ({
       });
     case 'subtitle':
       return (
-        <span className={clsx(className, styles.subTitle)} title={title}>
+        <span
+          className={cn('text-amino-s leading-4 text-gray-800', className)}
+          title={title}
+        >
           {children}
         </span>
       );
     case 'input-label':
       return (
-        <span className={clsx(className, styles.inputLabel)} title={title}>
+        <span
+          className={cn(
+            'block font-sans text-[14px] font-normal leading-4 text-gray-1000 mb-2',
+            className,
+          )}
+          title={title}
+        >
           {children}
         </span>
       );

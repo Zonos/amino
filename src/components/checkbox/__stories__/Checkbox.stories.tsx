@@ -8,8 +8,6 @@ import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
 import { Default } from 'src/icons/flags/Default';
 
-import styles from './Checkbox.stories.module.scss';
-
 const Template: StoryFn<CheckboxProps> = ({
   checked,
   ...props
@@ -82,7 +80,7 @@ export const CheckboxWithComplexSubtitle: StoryObj<CheckboxProps> = {
     label:
       'I have read and agree to the Zonos terms of service and UPS agreement',
     subtitle: (
-      <div className={styles.labelComponent}>
+      <div className="w-[422px] [&_a]:text-[color:-webkit-link] [&_a]:underline">
         See{' '}
         <a
           href="https://docs.zonos.com/legal"

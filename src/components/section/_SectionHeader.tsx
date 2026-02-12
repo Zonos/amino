@@ -1,17 +1,14 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { type FontType, Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './_SectionHeader.module.scss';
+import { cn } from 'src/utils/cn';
 
 type Props = BaseProps & { children: ReactNode; type: FontType };
 
 export const SectionHeader = ({ children, className, style, type }: Props) => (
   <Text
-    className={clsx(className, styles.styledSectionHeader)}
+    className={cn('flex-auto flex-col flex', className)}
     style={style}
     type={type}
   >

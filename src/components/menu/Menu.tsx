@@ -1,10 +1,7 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Menu.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type MenuProps = BaseProps & {
   /**
@@ -56,7 +53,13 @@ export type MenuProps = BaseProps & {
  * ```
  */
 export const Menu = ({ children, className, style }: MenuProps) => (
-  <div className={clsx(className, styles.menu)} style={style}>
+  <ul
+    className={cn(
+      'list-none m-0 p-0 [&_hr]:border-0 [&_hr]:border-b [&_hr]:border-b-amino-subtle [&_hr]:mt-amino-6 [&_hr]:mb-amino-6',
+      className,
+    )}
+    style={style}
+  >
     {children}
-  </div>
+  </ul>
 );

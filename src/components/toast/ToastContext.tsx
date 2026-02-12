@@ -8,7 +8,6 @@ import {
   useState,
 } from 'react';
 
-import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,8 +16,7 @@ import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
 import { Toast, type ToastProps } from 'src/components/toast/Toast';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-
-import styles from './ToastContext.module.scss';
+import { cn } from 'src/utils/cn';
 
 type BaseProps = Omit<ToastProps, 'children' | 'toastKey'>;
 export type ToastContextFunctionType = (
@@ -166,7 +164,7 @@ export const ToastContextProvider = ({ children }: Props) => {
     <ToastContext.Provider value={contextValue}>
       {children}
       <div
-        className={styles.toastContainer}
+        className="fixed z-[9999999] pointer-events-none w-full flex justify-end flex-col"
         style={{
           '--amino-toast-context-bottom': toastLocation.bottom || '40px',
           '--amino-toast-context-left': toastLocation.left || 'auto',
@@ -174,13 +172,15 @@ export const ToastContextProvider = ({ children }: Props) => {
             hasPersistentToasts && !expandedToasts
               ? `${firstToastHeight + 40}px`
               : 'unset',
+          bottom: 'var(--amino-toast-context-bottom)',
+          left: 'var(--amino-toast-context-left)',
         }}
       >
         {/* Non-persistent toasts */}
         <div
-          className={clsx(
-            styles.toastsWrapper,
-            hasPersistentToasts && styles.toastWrapperAdjust,
+          className={cn(
+            'pointer-events-auto flex flex-col items-center gap-4',
+            hasPersistentToasts && 'mb-4',
           )}
         >
           <AnimatePresence>
@@ -203,15 +203,40 @@ export const ToastContextProvider = ({ children }: Props) => {
 
         {/* Persistent toasts */}
         <div
-          className={clsx(
-            styles.toastsWrapper,
-            styles.persistentToastsWrapper,
-            expandedToasts && styles.expanded,
+          className={cn(
+            'pointer-events-auto flex flex-col items-center gap-4',
+            'z-[1000] max-w-[600px] w-full mx-auto relative max-h-[60vh]',
+            'hover:cursor-pointer',
+            '[&_.persistentToast]:w-full [&_.persistentToast]:z-[8]',
+            '[&_.persistentToast:nth-of-type(1)]:z-[10]',
+            '[&_.persistentToast:nth-of-type(2)]:z-[9]',
+            !expandedToasts &&
+              cn(
+                '[&_.persistentToast]:absolute [&_.persistentToast]:scale-50 [&_.persistentToast]:opacity-0',
+                '[&_.persistentToast]:brightness-200 [&_.persistentToast]:transition-all [&_.persistentToast]:duration-300',
+                '[&_.persistentToast]:ease-[cubic-bezier(0.4,0,0.2,1)] [&_.persistentToast]:origin-bottom',
+                '[&_.persistentToast:nth-of-type(1)]:bottom-0 [&_.persistentToast:nth-of-type(1)]:scale-100',
+                '[&_.persistentToast:nth-of-type(1)]:opacity-100 [&_.persistentToast:nth-of-type(1)]:brightness-100',
+                '[&_.persistentToast:nth-of-type(2)]:-bottom-2 [&_.persistentToast:nth-of-type(2)]:scale-90',
+                '[&_.persistentToast:nth-of-type(2)]:opacity-100 [&_.persistentToast:nth-of-type(2)]:brightness-150',
+                '[&_.persistentToast:nth-of-type(3)]:scale-80 [&_.persistentToast:nth-of-type(3)]:opacity-80',
+                '[&_.persistentToast:nth-of-type(3)]:-bottom-4 [&_.persistentToast:nth-of-type(3)]:brightness-200',
+              ),
+            expandedToasts && 'relative w-full',
           )}
+          style={{
+            minHeight:
+              hasPersistentToasts && !expandedToasts
+                ? `var(--amino-toast-persistent-height)`
+                : 'unset',
+          }}
         >
           {!!persistentToasts.length && (
             <Button
-              className={styles.clearAllButton}
+              className={cn(
+                'ml-auto bg-[rgba(0,0,0,0.06)] rounded backdrop-blur-[5px]',
+                expandedToasts && '-mb-2',
+              )}
               icon={<RemoveIcon />}
               onClick={dismissAllToasts}
               variant="text"
@@ -227,7 +252,7 @@ export const ToastContextProvider = ({ children }: Props) => {
                 <div
                   key={key}
                   ref={index === 0 ? firstToastRef : null} // Only ref the first toast
-                  className={styles.persistentToast}
+                  className="persistentToast"
                   onClick={toggleExpanded}
                   onKeyDown={e => {
                     if (e.key === 'Enter' || e.key === ' ') {

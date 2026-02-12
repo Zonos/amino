@@ -1,13 +1,10 @@
-import clsx from 'clsx';
-
 import { Card } from 'src/components/card/Card';
 import { VStack } from 'src/components/stack/VStack';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { UnitedState } from 'src/types/UnitedStates';
+import { cn } from 'src/utils/cn';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './RichCardStateSelect.module.scss';
 
 export type RichCardStateSelectProps<T extends UnitedState = UnitedState> =
   BaseProps & {
@@ -139,8 +136,8 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
       {regions.map(region => (
         <div key={region.key}>
           <VStack spacing={16}>
-            <div className={styles.regionLabel}>{region.label}</div>
-            <div className={styles.regionWrapper}>
+            <div className="font-bold">{region.label}</div>
+            <div className="flex flex-wrap gap-2">
               {states
                 .filter(state => state.region === region.key)
                 .map(state => (
@@ -150,9 +147,15 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
                     type="button"
                   >
                     <Card
-                      className={clsx(
-                        styles.stateCard,
-                        state.highlighted && styles.highlighted,
+                      className={cn(
+                        'cursor-pointer w-[180px] flex gap-6 h-fit items-center font-medium',
+                        'flex-[0_0_180px] text-amino-s',
+                        'hover:bg-gray-50',
+                        state.highlighted &&
+                          cn(
+                            'text-blue-600 bg-blue-50 border-2 border-blue-400',
+                            '[&_svg>path]:stroke-blue-600 [&_svg>path]:fill-blue-200',
+                          ),
                       )}
                       spacing="10px"
                     >

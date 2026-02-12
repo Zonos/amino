@@ -1,15 +1,13 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
 import { flagIconsList } from 'src/icons/__stories__/FlagsList';
 import { FlagIcon, type FlagIconProps } from 'src/icons/flag-icon/FlagIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
-
-import styles from './Flags.stories.module.scss';
+import { cn } from 'src/utils/cn';
 
 const meta: Meta = {
   component: FlagIcon,
@@ -72,7 +70,7 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
         value={filter}
         valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
-      <div className={styles.styledWrapper}>
+      <div className="grid w-full grid-cols-3 gap-x-6 gap-y-10 pb-5">
         {iconsToLoad
           .filter(iconName =>
             filter
@@ -80,14 +78,20 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
               : true,
           )
           .map(iconName => {
-            const IconComponent = lazy(() =>
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const IconComponent = lazy<React.ComponentType<any>>(() =>
               import(`src/icons/flags/${iconName}.tsx`).then(module => ({
                 default: module[iconName],
               })),
             );
 
             return (
-              <div key={iconName} className={clsx(styles.styledIcon)}>
+              <div
+                key={iconName}
+                className={cn(
+                  'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
+                )}
+              >
                 <Suspense key={iconName} fallback={<div>Loading...</div>}>
                   <IconComponent
                     borderRadius={getBorderRadius(iconScale)}

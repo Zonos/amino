@@ -1,14 +1,12 @@
 import React, { type ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Skeleton } from 'src/components/skeleton/Skeleton';
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { ReactComponent } from 'src/types/ReactComponent';
+import { cn } from 'src/utils/cn';
 
-import styles from './SimpleTable.module.scss';
 import { SimpleTableRow } from './SimpleTableRow';
 
 const getFlexAlignment = (alignment: SimpleTableHeaderBaseProps['align']) => {
@@ -296,7 +294,7 @@ export const SimpleTable = <T extends object>({
       return [...Array(loadingItems).keys()].map(n => (
         <tr key={n}>
           {selectable.enabled && (
-            <td className={styles.loading}>
+            <td className="h-12 p-amino-12">
               <div>
                 <Skeleton key={n} height={loadingSkeletonHeight} />
               </div>
@@ -305,13 +303,10 @@ export const SimpleTable = <T extends object>({
           {headers.map(header => (
             <td
               key={header.key}
-              className={clsx(
-                styles.loading,
-                header.noPadding && styles.noPadding,
-              )}
+              className={cn('h-12 p-amino-12', header.noPadding && 'p-0')}
             >
               <div
-                className={styles.skeletonCellWrapper}
+                className="flex"
                 style={{
                   justifyContent: getFlexAlignment(header.align),
                 }}
@@ -356,18 +351,25 @@ export const SimpleTable = <T extends object>({
 
   return (
     <div
-      className={clsx(styles.tableContainer, className)}
+      className={cn('w-full overflow-auto', className)}
       style={{
         maxHeight,
         ...style,
       }}
     >
       <table
-        className={clsx(
-          collapsible.enabled && styles.collapsible,
-          styles.tableStyled,
-          bordered && styles.bordered,
-          headers.every(header => !header.name) && styles.noHeaders,
+        className={cn(
+          'h-fit w-full border-separate border-spacing-0 text-amino-base',
+          '[&>tbody>tr]:h-12',
+          '[&>thead]:no-underline [&>thead>tr]:border-b [&>thead>tr]:border-b-amino-subtle [&>thead>tr]:h-12',
+          '[&>thead>tr>th]:sticky [&>thead>tr>th]:top-0 [&>thead>tr>th]:bg-gray-0 [&>thead>tr>th]:dark:bg-gray-50 [&>thead>tr>th]:p-amino-12 [&>thead>tr>th]:whitespace-nowrap [&>thead>tr>th]:border-b [&>thead>tr>th]:border-b-amino-subtle [&>thead>tr>th]:z-[1]',
+          '[&>thead>tr>th.p-0]:p-0',
+          collapsible.enabled &&
+            '[&_tr>td:last-child]:w-10 [&_tr>td:last-child>div]:p-0 [&>tbody_*]:transition-all [&>tbody>tr:not(:has(.h-12))]:h-auto',
+          bordered &&
+            '[&_th]:border-0 [&_tr:first-child_td]:border-t [&_tr:first-child_td]:border-t-amino-subtle [&_tr:first-child_td:first-child]:rounded-tl-amino-12 [&_tr:first-child_td:last-child]:rounded-tr-amino-12 [&_tr:last-child_td:first-child]:rounded-bl-amino-12 [&_tr:last-child_td:last-child]:rounded-br-amino-12 [&_td:first-child]:border-l [&_td:first-child]:border-l-amino-subtle [&_td:last-child]:border-r [&_td:last-child]:border-r-amino-subtle',
+          headers.every(header => !header.name) &&
+            '[&_thead]:hidden [&_thead]:max-h-0',
         )}
       >
         <colgroup>
@@ -391,13 +393,13 @@ export const SimpleTable = <T extends object>({
         <thead>
           <tr>
             {!!selectable.onHeaderCheckboxChange && (
-              <th className={styles.noPadding}>
+              <th className="p-0">
                 {selectable.renderCustomHeaderCheckbox || (
                   <Checkbox
                     checked={
                       (!loading && selectable.headerCheckboxValue) || false
                     }
-                    className={styles.styledCheckbox}
+                    className="p-amino-12 inline-flex"
                     data-testid="amino--header-checkbox"
                     disabled={loading}
                     onChange={selectable.onHeaderCheckboxChange}
@@ -408,7 +410,7 @@ export const SimpleTable = <T extends object>({
             {headers.map(header => (
               <th
                 key={header.key}
-                className={clsx(header.noPadding && styles.noPadding)}
+                className={cn(header.noPadding && 'p-0')}
                 style={{
                   textAlign: header.align || 'start',
                 }}

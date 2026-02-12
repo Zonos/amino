@@ -7,8 +7,6 @@ import { SplitPanel as SplitPanelComponent } from 'src/components/split-panel/Sp
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 
-import styles from './SplitPanel.stories.module.scss';
-
 const SplitPanelMeta: Meta = {
   component: SplitPanelComponent,
 };
@@ -24,14 +22,17 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   const [sizes, setSizes] = useState<number[]>([0.2, 0.8]);
 
   const renderSplitItem = ({ id }: { id: number }) => (
-    <div key={id} className={styles.styledItem}>
+    <div
+      key={id}
+      className="flex h-[100px] items-center justify-center border border-gray-300"
+    >
       <Text type="header">{id}</Text>
     </div>
   );
 
   return (
     <VStack>
-      <div className={styles.styledWrapper}>
+      <div className="flex gap-amino-12">
         <Button onClick={() => setIsCollapse(!isCollapse)}>
           {isCollapse ? `Collapse all (Except the first one)` : `Expand all`}
         </Button>
@@ -54,7 +55,7 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
         </Button>
       </div>
       <SplitPanelComponent
-        className={styles.styledSplitPanel}
+        className="[&_.pane:first-child]:rounded-l-amino8 [&_.pane:first-child>div]:rounded-l-amino8 [&_.pane:last-child]:rounded-r-amino8 [&_.pane:last-child>div]:rounded-r-amino8"
         collapseAll={isCollapse}
         {...props}
         onSetSizes={setSizes}

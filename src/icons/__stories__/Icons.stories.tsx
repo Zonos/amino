@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { Meta } from '@storybook/react';
-import clsx from 'clsx';
 
 import { Input } from 'src/components/input/Input';
 import { VStack } from 'src/components/stack/VStack';
@@ -10,8 +9,7 @@ import { MailDuotoneIcon } from 'src/icons/MailDuotoneIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { Color } from 'src/types/Color';
 import type { IconProps } from 'src/types/IconProps';
-
-import styles from './Icons.stories.module.scss';
+import { cn } from 'src/utils/cn';
 
 const IconsMeta: Meta = {
   component: MailDuotoneIcon,
@@ -55,7 +53,7 @@ export const Icons = ({
         value={filter}
         valuePrefix={<SearchIcon color="gray600" size={24} />}
       />
-      <div className={styles.styledWrapper}>
+      <div className="grid w-full grid-cols-3 gap-x-6 gap-y-10 pb-5">
         {iconsToLoad
           .filter(iconName =>
             filter
@@ -63,7 +61,8 @@ export const Icons = ({
               : true,
           )
           .map(iconName => {
-            const IconComponent = lazy(() =>
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const IconComponent = lazy<React.ComponentType<any>>(() =>
               import(`src/icons/${iconName}.tsx`).then(module => ({
                 default: module[iconName],
               })),
@@ -72,8 +71,8 @@ export const Icons = ({
             return (
               <div
                 key={iconName}
-                className={clsx(
-                  styles.styledIcon,
+                className={cn(
+                  'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
                   /Solid/.test(iconName) && 'solid',
                   /Duotone/.test(iconName) && 'duotone',
                 )}
@@ -103,9 +102,9 @@ export const Icons = ({
 //   }));
 
 // export const Products = () => (
-//   <div className={styles.styledWrapper}>
+//   <div className="grid w-full grid-cols-3 gap-x-6 gap-y-10 pb-5">
 //     {productIcons.map(({ icon: IconComponent, iconName }) => (
-//       <div key={iconName} className={styles.styledIcon}>
+//       <div key={iconName} className="flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4">
 //         <IconComponent size={50} />
 //         <div>{iconName}</div>
 //       </div>

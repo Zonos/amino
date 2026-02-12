@@ -4,8 +4,6 @@ import type {
   MutableRefObject,
 } from 'react';
 
-import clsx from 'clsx';
-
 import {
   HelpText,
   type HelpTextProps,
@@ -15,9 +13,9 @@ import { NumberInput } from 'src/components/input/input-simple/input-type/_Numbe
 import { PasswordInput } from 'src/components/input/input-simple/input-type/_PasswordInput';
 import { TimeInput } from 'src/components/input/input-simple/input-type/_TimeInput';
 import { theme } from 'src/styles/constants/theme';
+import { cn } from 'src/utils/cn';
 
 import { InputBase, type InputBaseProps } from './input-type/_InputBase';
-import styles from './InputSimple.module.scss';
 
 type InputType = {
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
@@ -326,11 +324,10 @@ export const InputSimple = ({
 
   return (
     <div
-      className={clsx(
+      className={cn(
+        'amino-input-wrapper relative',
+        disabled && ['disabled', 'opacity-disabled'],
         className,
-        'amino-input-wrapper',
-        disabled && 'disabled',
-        styles.aminoInputWrapper,
       )}
       style={{
         '--amino-input-border-radius': getRadius(),

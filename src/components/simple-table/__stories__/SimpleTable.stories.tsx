@@ -22,8 +22,6 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { ThreeDotIcon } from 'src/icons/ThreeDotIcon';
 import { TrashCanDuotoneIcon } from 'src/icons/TrashCanDuotoneIcon';
 
-import styles from './SimpleTable.stories.module.scss';
-
 const meta: Meta = {
   component: SimpleTable,
   tags: ['tested'],
@@ -519,7 +517,7 @@ export const Loading: StoryObj = {
           collapsible={{
             collapseContent: items.map(item => ({
               content: (
-                <table className={styles.collapseTable}>
+                <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -698,7 +696,7 @@ export const Collapsible: StoryObj = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className={styles.collapseTable}>
+        <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
           <thead>
             <tr>
               <th>Name</th>
@@ -988,7 +986,7 @@ export const OnRowClick: StoryObj<typeof SimpleTable> = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className={styles.collapseTable}>
+        <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
           <thead>
             <tr>
               <th>Name</th>

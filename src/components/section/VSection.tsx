@@ -1,15 +1,13 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { SectionInnerWrapper } from 'src/components/section/_SectionInnerWrapper';
 import { SectionSubheader } from 'src/components/section/_SectionSubheader';
 import { HStack } from 'src/components/stack/HStack';
 import type { FontType } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 
 import { SectionHeader } from './_SectionHeader';
-import styles from './VSection.module.scss';
 
 export type VSectionProps = BaseProps & {
   /**
@@ -111,7 +109,7 @@ export const VSection = ({
   style,
   sublabel = '',
 }: VSectionProps) => (
-  <div className={clsx(className, styles.styledSectionWrapper)} style={style}>
+  <div className={cn('mb-10', className)} style={style}>
     {label && (
       <SectionInnerWrapper>
         <div>
@@ -130,6 +128,14 @@ export const VSection = ({
         <HStack spacing={8}>{actions}</HStack>
       </SectionInnerWrapper>
     )}
-    {children && <div>{children}</div>}
+    {children && (
+      <div
+        className={cn(
+          'border border-amino rounded-amino-6 bg-gray-0 dark:bg-gray-50',
+        )}
+      >
+        {children}
+      </div>
+    )}
   </div>
 );

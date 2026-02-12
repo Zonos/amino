@@ -1,13 +1,10 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { HStack } from 'src/components/stack/HStack';
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Card.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type CardProps = BaseProps & {
   actions?: ReactNode;
@@ -87,9 +84,14 @@ export const Card = ({
   style,
 }: CardProps) => (
   <div
-    className={clsx(className, styles.card)}
+    className={cn(
+      'border border-amino rounded-amino-6 bg-gray-0 dark:bg-gray-50',
+      !spacing && 'p-amino-24',
+      className,
+    )}
     style={{
       ...style,
+      ...(spacing ? { padding: spacing } : {}),
       '--amino-card-footer-height': footerHeight ? `${footerHeight}px` : 'auto',
       '--amino-card-margin': spacing
         ? `calc(${spacing} * -1)`
@@ -100,7 +102,7 @@ export const Card = ({
     }}
   >
     {label && (
-      <div className={styles.cardHeader}>
+      <div className="flex items-center border-b border-amino h-[65px] leading-[65px] select-none m-[var(--amino-card-margin)] mb-[var(--amino-card-margin-bottom)] p-[var(--amino-card-padding-spacing)] [&_h5]:mb-0 [&_h5]:flex-1">
         <Text type="subheader">{label}</Text>
 
         <HStack spacing={8}>{actions}</HStack>
@@ -108,7 +110,7 @@ export const Card = ({
     )}
     {children}
     {(footerActions || footerContent) && (
-      <div className={styles.cardFooter}>
+      <div className="flex items-center justify-between m-[var(--amino-card-margin)] p-[var(--amino-card-padding-spacing)] border-t border-amino bg-surface-secondary dark:bg-gray-100 mt-[var(--amino-card-margin-top)] rounded-b-amino-8 h-[var(--amino-card-footer-height)]">
         <div>{footerContent}</div>
         <HStack spacing={8}>{footerActions}</HStack>
       </div>

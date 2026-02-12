@@ -16,10 +16,9 @@ import { Select } from 'src/components/select/Select';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption } from 'src/types/SelectOption';
+import { cn } from 'src/utils/cn';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './DateControls.module.scss';
 
 type DateControlProps = BaseProps & {
   onChange: (value: FilterDateData) => void;
@@ -164,7 +163,7 @@ export const DateControls = ({
         size="sm"
         value={optionsDate.filter(item => item.value === rangeType)}
       />
-      <div className={styles.controlsValueWrapper}>
+      <div className={cn('flex items-center gap-4')}>
         <ArrowRightIcon color="blue600" />
         {renderRangeControl()}
       </div>
