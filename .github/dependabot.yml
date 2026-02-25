@@ -1,0 +1,64 @@
+version: 2
+
+registries:
+  github-packages:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    username: ${{ secrets.CLOUD_AUTOMATION_USER }}
+    password: ${{secrets.CLOUD_AUTOMATION_ACCESS_TOKEN_READONLY}}
+
+updates:
+  # Enable version updates for npm/yarn dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    registries:
+      - github-packages
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    # Open pull requests for version updates
+    open-pull-requests-limit: 10
+    # Commit message preferences
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    # Group minor and patch updates together
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Enable version updates for Docker dependencies
+  - package-ecosystem: "docker"
+    directory: "/.github"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    # Open pull requests for version updates
+    open-pull-requests-limit: 5
+    # Commit message preferences
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    # Open pull requests for version updates
+    open-pull-requests-limit: 5
+    # Commit message preferences
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    # Ignore reusable workflows from private repository that Dependabot can't access
+    ignore:
+      - dependency-name: "Zonos/github-actions"
