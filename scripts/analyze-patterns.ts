@@ -3,6 +3,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const diffDir = 'css-compare-results';
+
+if (!fs.existsSync(diffDir)) {
+  console.error(
+    `Error: directory "${diffDir}" not found.\nRun "pnpm test:css-compare" first to generate diff files.`,
+  );
+  process.exit(1);
+}
+
 const files = fs
   .readdirSync(diffDir)
   .filter(f => f.endsWith('.diff.txt'))
