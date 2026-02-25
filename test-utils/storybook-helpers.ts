@@ -255,8 +255,20 @@ const TYPO_PROPS = new Set([
 // ---------------------------------------------------------------------------
 
 /**
+ * Validate that a story ID is safe to use in file paths.
+ * Storybook IDs follow the pattern: `component-name--story-name`
+ * with only lowercase alphanumeric chars, hyphens, and `--` separators.
+ */
+const VALID_STORY_ID = /^[a-z0-9]+(-[a-z0-9]+)*(--[a-z0-9]+(-[a-z0-9]+)*)?$/;
+
+function isSafeStoryId(id: string): boolean {
+  return VALID_STORY_ID.test(id) && !id.includes('..');
+}
+
+/**
  * Fetch all story IDs from a Storybook instance's index.json endpoint.
  * Filters to type=story only, excludes SKIP_STORIES, returns sorted.
+ * Validates that all IDs conform to safe patterns to prevent path traversal.
  */
 export async function fetchStoryIds(baseURL: string): Promise<string[]> {
   const response = await fetch(`${baseURL}/index.json`);
@@ -264,7 +276,14 @@ export async function fetchStoryIds(baseURL: string): Promise<string[]> {
   return Object.values(data.entries)
     .filter(entry => entry.type === 'story')
     .map(entry => entry.id)
-    .filter(id => !SKIP_STORIES.has(id))
+    .filter(id => {
+      if (!isSafeStoryId(id)) {
+        // eslint-disable-next-line no-console
+        console.warn(`Skipping invalid story ID: ${id}`);
+        return false;
+      }
+      return !SKIP_STORIES.has(id);
+    })
     .sort();
 }
 
