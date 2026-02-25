@@ -168,6 +168,8 @@ export const CSS_PROPERTIES = [
   'text-align',
   'text-decoration',
   'text-transform',
+  'vertical-align',
+  'white-space',
   // Other
   'overflow',
   'overflow-x',
@@ -248,6 +250,8 @@ const TYPO_PROPS = new Set([
   'text-align',
   'text-decoration',
   'text-transform',
+  'vertical-align',
+  'white-space',
 ]);
 
 // ---------------------------------------------------------------------------
