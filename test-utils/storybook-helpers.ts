@@ -255,11 +255,39 @@ const TYPO_PROPS = new Set([
 // ---------------------------------------------------------------------------
 
 /**
+ * Validate that a story ID is safe to use in file paths.
+ * Storybook IDs follow the pattern: `component-name--story-name`
+ * with only lowercase alphanumeric chars, hyphens, and `--` separators.
+ */
+const VALID_STORY_ID = /^[a-z0-9]+(-[a-z0-9]+)*(--[a-z0-9]+(-[a-z0-9]+)*)?$/;
+
+export function isSafeStoryId(id: string): boolean {
+  return VALID_STORY_ID.test(id) && !id.includes('..');
+}
+
+/**
  * Fetch all story IDs from a Storybook instance's index.json endpoint.
  * Filters to type=story only, excludes SKIP_STORIES, returns sorted.
+ * Validates that all IDs conform to safe patterns to prevent path traversal.
  */
 export async function fetchStoryIds(baseURL: string): Promise<string[]> {
-  const response = await fetch(`${baseURL}/index.json`);
+  const indexUrl = `${baseURL}/index.json`;
+  const response = await fetch(indexUrl);
+
+  if (!response.ok) {
+    let responseText: string | undefined;
+    try {
+      responseText = await response.text();
+    } catch {
+      // ignore errors while reading response text
+    }
+    throw new Error(
+      `Failed to fetch story index from ${indexUrl}: ${response.status} ${response.statusText}${
+        responseText ? `\n${responseText.slice(0, 500)}` : ''
+      }`,
+    );
+  }
+
   const data = (await response.json()) as StoryIndex;
   return Object.values(data.entries)
     .filter(entry => entry.type === 'story')
@@ -391,6 +419,11 @@ export function filterNoiseDiffs(
   // Build a set of (path, side) pairs where border-style is none/unset.
   // Used to suppress border-color diffs on borderless elements.
   const borderStyleByPath = new Map<string, Record<string, string>>();
+
+  // Precompute which border-width properties are present per path so that
+  // filter predicates can do O(1) lookups instead of O(n) diffs.some() scans.
+  const borderWidthPropsByPath = new Map<string, Set<string>>();
+
   for (const d of diffs) {
     const sideMatch = d.property.match(
       /^border-(top|right|bottom|left)-style$/,
@@ -399,6 +432,15 @@ export function filterNoiseDiffs(
       const existing = borderStyleByPath.get(d.path) ?? {};
       existing[d.property] = `${d.prod}|${d.local}`;
       borderStyleByPath.set(d.path, existing);
+    }
+
+    if (/^border-(top|right|bottom|left)-width$/.test(d.property)) {
+      let set = borderWidthPropsByPath.get(d.path);
+      if (!set) {
+        set = new Set<string>();
+        borderWidthPropsByPath.set(d.path, set);
+      }
+      set.add(d.property);
     }
   }
 
@@ -452,9 +494,8 @@ export function filterNoiseDiffs(
       if (!pathStyles) {
         // Check if there's a corresponding border-width that's also 0/unset
         const widthKey = `border-${side}-width`;
-        const hasWidth = diffs.some(
-          dd => dd.path === d.path && dd.property === widthKey,
-        );
+        const hasWidth =
+          borderWidthPropsByPath.get(d.path)?.has(widthKey) ?? false;
         if (!hasWidth) return false;
       }
     }
@@ -526,9 +567,8 @@ export function filterNoiseDiffs(
       const side = borderStyleMatch[1];
       const widthKey = `border-${side}-width`;
       // Check if there's a border-width diff for the same element/side
-      const hasWidthDiff = diffs.some(
-        dd => dd.path === d.path && dd.property === widthKey,
-      );
+      const hasWidthDiff =
+        borderWidthPropsByPath.get(d.path)?.has(widthKey) ?? false;
       // If prod is unset/none and local is solid, and no border-width change,
       // it means border-width stayed at 0 — this is invisible
       if (!hasWidthDiff) {

@@ -36,6 +36,7 @@ import {
   fetchStoryIds,
   filterNoiseDiffs,
   formatDiffReport,
+  isSafeStoryId,
   PROD_URL,
   SKIP_STORIES,
 } from 'test-utils/storybook-helpers';
@@ -78,7 +79,7 @@ function getFailingStories(): string[] {
         !f.startsWith('css-compare'),
     )
     .map(f => path.basename(f, '-diff.png'))
-    .filter(id => !SKIP_STORIES.has(id))
+    .filter(id => isSafeStoryId(id) && !SKIP_STORIES.has(id))
     .sort();
 }
 
