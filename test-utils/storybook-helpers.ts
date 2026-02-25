@@ -444,6 +444,33 @@ export function filterNoiseDiffs(
     }
   }
 
+  // Helpers for box-shadow normalization (filter #5 / #14).
+  // Defined here — outside the filter predicate — so they are allocated once
+  // per filterNoiseDiffs() call rather than once per diff element.
+  const splitShadowLayers = (val: string): string[] => {
+    const layers: string[] = [];
+    let depth = 0;
+    let start = 0;
+    for (let i = 0; i < val.length; i++) {
+      if (val[i] === '(') depth++;
+      else if (val[i] === ')') depth--;
+      else if (val[i] === ',' && depth === 0) {
+        layers.push(val.slice(start, i).trim());
+        start = i + 1;
+      }
+    }
+    layers.push(val.slice(start).trim());
+    return layers;
+  };
+
+  const normalizeBoxShadow = (val: string): string => {
+    const layers = splitShadowLayers(val).filter(
+      layer =>
+        !layer.match(/^rgba?\(0,\s*0,\s*0,\s*0\)\s+0px\s+0px\s+0px\s+0px$/),
+    );
+    return layers.join(', ') || 'none';
+  };
+
   return diffs.filter(d => {
     // 1. Skip root-level __classes__ (Storybook decorator wrapper change)
     if (d.path === 'root' && d.property === '__classes__') return false;
@@ -512,30 +539,6 @@ export function filterNoiseDiffs(
     // 5. Skip box-shadow diffs caused only by Tailwind v4 prepending
     //    transparent zero-size shadow layers (e.g. "rgba(0, 0, 0, 0) 0px 0px 0px 0px, ...")
     if (d.property === 'box-shadow') {
-      // Split box-shadow into layers, respecting parentheses
-      const splitShadowLayers = (val: string): string[] => {
-        const layers: string[] = [];
-        let depth = 0;
-        let start = 0;
-        for (let i = 0; i < val.length; i++) {
-          if (val[i] === '(') depth++;
-          else if (val[i] === ')') depth--;
-          else if (val[i] === ',' && depth === 0) {
-            layers.push(val.slice(start, i).trim());
-            start = i + 1;
-          }
-        }
-        layers.push(val.slice(start).trim());
-        return layers;
-      };
-
-      const normalizeBoxShadow = (val: string): string => {
-        const layers = splitShadowLayers(val).filter(
-          layer =>
-            !layer.match(/^rgba?\(0,\s*0,\s*0,\s*0\)\s+0px\s+0px\s+0px\s+0px$/),
-        );
-        return layers.join(', ') || 'none';
-      };
       const normProd = normalizeBoxShadow(d.prod);
       const normLocal = normalizeBoxShadow(d.local);
       if (normProd === normLocal) return false;
