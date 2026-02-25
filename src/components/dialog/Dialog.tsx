@@ -1,7 +1,5 @@
 import { forwardRef, type ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import {
   BaseDialog,
@@ -9,8 +7,6 @@ import {
 } from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
-
-import styles from './Dialog.module.scss';
 
 export type DialogProps = BaseDialogProps & {
   actions?: ReactNode;
@@ -112,9 +108,11 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     ref,
   ) => (
     <BaseDialog {...props} onClose={onClose} style={style}>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <Text type="title">{label}</Text>
+      <div className="p-amino-24 pb-amino-16 rounded-t-xl flex flex-col gap-amino-12">
+        <div className="w-full flex items-center">
+          <Text className="m-0 flex-grow" type="title">
+            {label}
+          </Text>
           <ButtonIcon
             icon={<RemoveCircleDuotoneIcon size={24} />}
             noRipple
@@ -124,28 +122,21 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </div>
         {subtitle && <Text type="subtitle">{subtitle}</Text>}
       </div>
-      <div ref={ref} className={styles.content}>
+      <div
+        ref={ref}
+        className="p-[var(--amino-space-8)_var(--amino-space-24)] overflow-y-auto flex-grow"
+      >
         {children}
       </div>
       {(actions || leftActions) && (
-        <div className={styles.footer}>
+        <div className="p-amino-24 flex items-center rounded-b-xl [&>div+div]:ml-amino-8">
           {leftActions && (
-            <div
-              className={clsx(
-                styles.styledActionBaseWrapper,
-                styles.styledLeftActionWrapper,
-              )}
-            >
+            <div className="flex-grow flex justify-start gap-amino-8">
               {leftActions}
             </div>
           )}
           {actions && (
-            <div
-              className={clsx(
-                styles.styledActionBaseWrapper,
-                styles.styledRightActionWrapper,
-              )}
-            >
+            <div className="flex-grow flex justify-end gap-amino-8">
               {actions}
             </div>
           )}

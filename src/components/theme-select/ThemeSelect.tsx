@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import clsx from 'clsx';
-
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Card } from 'src/components/card/Card';
 import { Select } from 'src/components/select/Select';
@@ -12,10 +10,10 @@ import { ThemeDarkIcon } from 'src/icons/custom/theme/ThemeDarkIcon';
 import { ThemeLightIcon } from 'src/icons/custom/theme/ThemeLightIcon';
 import { NightIcon } from 'src/icons/NightIcon';
 import { SunnyIcon } from 'src/icons/SunnyIcon';
+import { theme } from 'src/styles/constants/theme';
 import type { Theme } from 'src/types/Theme';
+import { cn } from 'src/utils/cn';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
-
-import styles from './ThemeSelect.module.scss';
 
 const themes: { label: string; value: Theme }[] = [
   {
@@ -86,15 +84,18 @@ export const ThemeSelect = ({
       {type === 'cards' && (
         <HStack className={className}>
           <button
-            className={clsx(
-              styles.buttonStyled,
-              aminoTheme === 'day' && styles.isActive,
+            className={cn(
+              'rounded-amino-8 border-2 border-solid border-transparent text-text-color focus:outline-none active:outline-none',
+              aminoTheme === 'day' && 'border-blue-400 text-primary',
             )}
             data-theme="day"
             onClick={() => setAminoTheme('day')}
             type="button"
           >
-            <Card className={styles.themeCard}>
+            <Card
+              className="flex flex-col items-center bg-gray-0 [&_svg]:mb-amino-16 [&_svg]:h-16 [&_svg]:w-[110px] [&_svg]:shadow-v3-large"
+              spacing={theme.space16}
+            >
               <ThemeLightIcon />
               <Text type="bold-label">
                 <Translate text="Light" />
@@ -103,15 +104,18 @@ export const ThemeSelect = ({
           </button>
 
           <button
-            className={clsx(
-              styles.buttonStyled,
-              aminoTheme === 'night' && styles.isActive,
+            className={cn(
+              'rounded-amino-8 border-2 border-solid border-transparent text-text-color focus:outline-none active:outline-none',
+              aminoTheme === 'night' && 'border-blue-400 text-primary',
             )}
             data-theme="night"
             onClick={() => setAminoTheme('night')}
             type="button"
           >
-            <Card className={styles.themeCard}>
+            <Card
+              className="flex flex-col items-center bg-gray-0 [&_svg]:mb-amino-16 [&_svg]:h-16 [&_svg]:w-[110px] [&_svg]:shadow-v3-large"
+              spacing={theme.space16}
+            >
               <ThemeDarkIcon />
               <Text type="bold-label">
                 <Translate text="Dark" />

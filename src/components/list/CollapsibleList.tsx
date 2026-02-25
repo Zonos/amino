@@ -1,13 +1,10 @@
 import { type ReactNode, useState } from 'react';
 
-import clsx from 'clsx';
-
 import { Collapse } from 'src/components/collapse/Collapse';
 import { List, type ListProps } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
-
-import styles from './CollapsibleList.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type CollapsibleListProps = ListProps & {
   /**
@@ -123,32 +120,28 @@ export const CollapsibleList = ({
 
   return (
     <List
-      className={clsx(
-        className,
-        styles.styledList,
-        withBorder && styles.withBorder,
-        withNegativeMargin && styles.withNegativeMargin,
-      )}
-      style={{
-        ...style,
-        '--amino-collapsible-list-collapse-icon-display': icon
-          ? 'inline-block'
-          : '',
-        '--amino-collapsible-list-primary-icon-display': icon ? '' : 'none',
-      }}
+      className={className}
+      style={style}
       withBorder={withBorder}
       withNegativeMargin={withNegativeMargin}
     >
       <ListItem
-        className={clsx(styles.styledPrimaryListItem)}
         decorator={icon}
         label={title}
         onClick={() => setCollapsed(!collapsed)}
         rightDecorator={
-          <ChevronUpIcon className={collapsed ? styles.collapsed : ''} />
+          <ChevronUpIcon
+            className={cn(
+              'transition-all',
+              collapsed && 'opacity-100 rotate-180',
+            )}
+          />
         }
       />
-      <Collapse className={styles.styledCollapse} collapsed={collapsed}>
+      <Collapse
+        className="[&_.__icon-wrapper]:w-amino-32 [&_.__icon-wrapper]:inline-block"
+        collapsed={collapsed}
+      >
         {children}
       </Collapse>
     </List>

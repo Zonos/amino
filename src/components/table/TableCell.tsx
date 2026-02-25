@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './TableCell.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type TableCellProps = BaseProps & {
   align?: 'center' | 'justify' | 'left' | 'right';
@@ -28,22 +25,24 @@ export const TableCell = ({
 }: TableCellProps) => {
   const tableProps = {
     align,
-    className: clsx(
+    className: cn(
+      'text-0 tabular-nums',
+      '[&>*]:text-amino-base',
+      '[.Amino-table-size-medium_&]:h-14',
+      '[.Amino-table-size-small_&]:h-12',
+      !padding && 'p-0 first:pl-4 last:pr-4',
       className,
-      styles.styledTableCell,
-      !padding && styles.defaultPadding,
     ),
     colSpan,
     style: {
       ...style,
-      '--amino-table-cell-align': align,
-      '--amino-table-cell-border-bottom':
-        borderBottom || `${theme.borderSubtle}`,
-      '--amino-table-cell-padding': padding || '',
+      borderBottom: borderBottom || theme.borderSubtle,
+      padding: padding || undefined,
+      textAlign: align,
     },
   };
 
-  const innerWrapper = <div className={styles.inlineWrapper}>{children}</div>;
+  const innerWrapper = <div className="inline-block">{children}</div>;
 
   return tag === 'th' ? (
     <th {...tableProps}>{innerWrapper}</th>

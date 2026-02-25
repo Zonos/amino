@@ -1,17 +1,14 @@
 import { type DropzoneOptions, useDropzone } from 'react-dropzone';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import { ButtonIcon } from 'src/components/button/ButtonIcon';
 import { Text } from 'src/components/text/Text';
 import { RemoveCircleDuotoneIcon } from 'src/icons/RemoveCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './FileUpload.module.scss';
 
 type UploadFileNoImage = {
   name: string;
@@ -173,7 +170,7 @@ export const FileUpload = ({
       const { name, size } = uploadedFile;
 
       return (
-        <div className={styles.uploadedFileInfoWrapper}>
+        <div className="flex gap-1 items-center">
           <Text color="gray1000" type="label">
             {name}
           </Text>
@@ -202,9 +199,12 @@ export const FileUpload = ({
   };
 
   const renderContent = () => (
-    <div className={styles.styledFileInput} {...getRootProps()}>
+    <div
+      className="outline-none text-center flex justify-center items-center flex-col"
+      {...getRootProps()}
+    >
       <input {...getInputProps()} />
-      <div className={styles.contentWrapper}>
+      <div className="flex justify-start items-center gap-3">
         <Button loading={loading} onClick={open} spinnerColor="black">
           {buttonActionTextToUse}
         </Button>
@@ -215,20 +215,27 @@ export const FileUpload = ({
 
   return (
     <div
-      className={clsx(styles.wrapper, className)}
+      className={cn(
+        'flex justify-start rounded-amino-10 border border-amino',
+        className,
+      )}
       style={{
         ...style,
         '--amino-file-upload-border-color': error
           ? theme.danger
           : theme.borderColor,
         '--amino-file-upload-cursor': disabled ? 'not-allowed' : 'auto',
-        '--amino-file-upload-opacity': disabled ? theme.opacityDisabled : 1,
+        '--amino-file-upload-opacity': disabled ? theme.opacityDisabled : '1',
+        borderColor: 'var(--amino-file-upload-border-color)',
+        cursor: 'var(--amino-file-upload-cursor)',
+        opacity: 'var(--amino-file-upload-opacity)',
+        padding: 'var(--amino-space-8) var(--amino-space-12)',
       }}
     >
       {renderContent()}
       {onRemoveFile && uploadedFile && (
         <ButtonIcon
-          className={styles.removeFileButton}
+          className="ml-auto"
           icon={<RemoveCircleDuotoneIcon size={20} />}
           onClick={() => onRemoveFile()}
           variant="text"

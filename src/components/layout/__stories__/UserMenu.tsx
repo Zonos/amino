@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import clsx from 'clsx';
-
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
@@ -9,8 +7,7 @@ import { VStack } from 'src/components/stack/VStack';
 import { Surface } from 'src/components/surface/Surface';
 import { Text } from 'src/components/text/Text';
 import { TextAvatar } from 'src/components/text-avatar/TextAvatar';
-
-import styles from './UserMenu.stories.module.scss';
+import { cn } from 'src/utils/cn';
 
 type UserMenuProps = {
   addSpacing?: boolean;
@@ -20,18 +17,21 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.menuWrapper}>
+    <div className="relative flex h-full items-center overflow-x-visible border-t border-amino [&_li]:cursor-pointer [&_strong]:font-medium">
       <button
-        className={clsx(styles.userInfo, addSpacing && styles.addSpacing)}
+        className={cn(
+          'box-border flex w-full flex-row items-center rounded-amino-6 bg-transparent transition-amino [&>*]:mb-0 [&_span]:text-amino-s hover:bg-hover',
+          addSpacing && 'p-amino-24',
+        )}
         onClick={() => setOpen(!open)}
         type="button"
       >
-        <div className={styles.avatar} />
-        <VStack className={styles.styledVStack} spacing={0}>
+        <div className="mr-amino-16 h-7 w-7 cursor-pointer rounded-full" />
+        <VStack className="min-w-[145.17px] text-left" spacing={0}>
           <strong>
             <Translate text="Hello" />
           </strong>
-          <span className={styles.styledSubtitle} title="Store 2458">
+          <span className="italic opacity-70" title="Store 2458">
             <Translate
               text="Store #[storeNumber]"
               variables={{ storeNumber: '1234' }}
@@ -41,35 +41,43 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
       </button>
 
       {open && (
-        <Surface className={styles.animatedSurface} dense depth="depth16">
+        <Surface
+          className="absolute bottom-amino-16 left-amino-16 z-[100] min-w-full w-max animate-amino-dropdown-inverse border border-amino py-amino-6"
+          dense
+          depth="depth16"
+        >
           <Menu>
-            <button
-              className={styles.storeItem}
-              onClick={() => {}}
-              type="button"
-            >
-              <TextAvatar label="Default" />
-              <VStack spacing={0}>
-                <strong>
-                  <Translate text="Test Store" />
-                </strong>
-                <Text type="subtitle">
-                  <Translate text="Click to switch..." />
-                </Text>
-              </VStack>
-            </button>
+            <li>
+              <button
+                className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16"
+                onClick={() => {}}
+                type="button"
+              >
+                <TextAvatar label="Default" />
+                <VStack spacing={0}>
+                  <strong>
+                    <Translate text="Test Store" />
+                  </strong>
+                  <Text type="subtitle">
+                    <Translate text="Click to switch..." />
+                  </Text>
+                </VStack>
+              </button>
+            </li>
 
-            <div className={styles.storeItem}>
-              <TextAvatar label="Zonos" />
-              <VStack spacing={0}>
-                <strong>
-                  <Translate text="Switch to Zonos" />
-                </strong>
-                <Text type="subtitle">
-                  <Translate text="Click to switch..." />
-                </Text>
-              </VStack>
-            </div>
+            <li>
+              <div className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16">
+                <TextAvatar label="Zonos" />
+                <VStack spacing={0}>
+                  <strong>
+                    <Translate text="Switch to Zonos" />
+                  </strong>
+                  <Text type="subtitle">
+                    <Translate text="Click to switch..." />
+                  </Text>
+                </VStack>
+              </div>
+            </li>
 
             <hr />
 

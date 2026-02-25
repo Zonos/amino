@@ -14,12 +14,10 @@ import { MoneyIcon } from 'src/icons/MoneyIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { SelectOption } from 'src/types/SelectOption';
 
-import styles from './Select.stories.module.scss';
-
 const Template = ({ value: _value, ...props }: SelectProps) => {
   const [value, setValue] = useState(_value);
   return (
-    <div className={styles.styledWrapper}>
+    <div className="w-[412px]">
       <Select {...props} onChange={setValue} value={value} />
     </div>
   );
@@ -180,7 +178,7 @@ export const Disabled = ({
   const [disabled, setDisabled] = useState(false);
 
   return (
-    <VStack className={styles.styledWrapper}>
+    <VStack className="w-[412px]">
       <Checkbox checked={disabled} label="Disabled" onChange={setDisabled} />
       <Select
         {...props}
@@ -202,10 +200,10 @@ export const ScrollableDialogSelect = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.centeredDiv}>
+    <div className="h-full flex justify-center items-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog label="Selects" onClose={() => setOpen(false)} open={open}>
-        <VStack className={styles.styledVStack}>
+        <VStack className="my-[10px]">
           <span>
             Bacon ipsum dolor amet tongue ham hock pork chop, burgdoggen shank
             beef ribs beef buffalo cupim pork loin pastrami drumstick boudin.

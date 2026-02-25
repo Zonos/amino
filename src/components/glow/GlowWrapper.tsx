@@ -1,13 +1,10 @@
 import { type ReactNode, useEffect, useMemo, useRef } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
+import { cn } from 'src/utils/cn';
 import { getAminoColor } from 'src/utils/getAminoColor';
 import { getProductDetails, type Product } from 'src/utils/getProductDetails';
-
-import styles from './GlowWrapper.module.scss';
 
 type Props = BaseProps & {
   /**
@@ -132,14 +129,21 @@ export const GlowWrapper = ({
   return (
     <div
       ref={ref}
-      className={clsx(styles.wrapper, className)}
+      className={cn(
+        'relative z-1 overflow-hidden shadow-[inset_0_0_1px_1px_rgb(var(--amino-gray-200))]',
+        'after:absolute after:opacity-0 after:transition-opacity after:duration-500 after:content-[""] after:-z-1 after:blur-[20px] after:w-[min(100%,400px)] after:h-[min(100%,400px)] after:top-[calc(var(--amino-glow-wrapper-y)*1px-min(50%,200px))] after:left-[calc(var(--amino-glow-wrapper-x)*1px-min(50%,200px))] after:bg-(image:--amino-glow-wrapper-background)',
+        'hover:after:opacity-100',
+        className,
+      )}
       style={{
         ...style,
         '--amino-glow-wrapper-background':
           gradient ||
           `radial-gradient(circle, ${getAminoColor(glowColor)} 0%, white 70%)`,
-        '--amino-glow-wrapper-border-radius': `${radius}px`,
-        '--amino-glow-wrapper-padding': `${size}px`,
+        '--amino-glow-wrapper-x': '0',
+        '--amino-glow-wrapper-y': '0',
+        borderRadius: `${radius}px`,
+        padding: `${size}px`,
       }}
     >
       {children}

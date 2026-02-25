@@ -4,8 +4,6 @@ import type {
   MutableRefObject,
 } from 'react';
 
-import clsx from 'clsx';
-
 import {
   HelpText,
   type HelpTextProps,
@@ -19,8 +17,7 @@ import { NumberInput } from 'src/components/input/input-type/_NumberInput';
 import { PasswordInput } from 'src/components/input/input-type/_PasswordInput';
 import { TimeInput } from 'src/components/input/input-type/_TimeInput';
 import { theme } from 'src/styles/constants/theme';
-
-import styles from './Input.module.scss';
+import { cn } from 'src/utils/cn';
 
 type InputType = {
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
@@ -311,11 +308,10 @@ export const Input = ({
 
   return (
     <div
-      className={clsx(
+      className={cn(
+        'amino-input-wrapper relative',
+        disabled && ['disabled', 'opacity-disabled'],
         className,
-        'amino-input-wrapper',
-        disabled && 'disabled',
-        styles.aminoInputWrapper,
       )}
       style={{
         '--amino-input-border-radius': getRadius(),
@@ -323,7 +319,15 @@ export const Input = ({
         ...style,
       }}
     >
-      <div className={clsx(!noBorder && styles.fields)}>{renderInput()}</div>
+      <div
+        className={cn(
+          'flex flex-row items-center',
+          !noBorder &&
+            'rounded-[var(--amino-input-border-radius)] border border-amino hover:border-gray-300',
+        )}
+      >
+        {renderInput()}
+      </div>
 
       <HelpText error={error} helpText={helpText} />
     </div>

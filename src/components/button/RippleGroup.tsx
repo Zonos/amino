@@ -7,8 +7,6 @@ import { Ripple, type RippleProps } from 'src/components/button/_Ripple';
 import type { Color } from 'src/types/Color';
 import { getAminoColor } from 'src/utils/getAminoColor';
 
-import styles from './RippleGroup.module.scss';
-
 export type RippleActions = {
   start: (event: React.SyntheticEvent) => void;
 };
@@ -67,7 +65,8 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
       event => {
         if (container.current) {
           const rippleProps: RippleProps = {
-            className: styles.ripple,
+            className:
+              'overflow-hidden absolute rounded-[50%] animate-ripple bg-[var(--amino-ripple-group-color)]',
             destroy: removeRipple,
             duration,
             rippleStyle: getRippleStyle(event, container.current),
@@ -96,7 +95,7 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
     return (
       <span
         ref={container}
-        className={styles.rippleRoot}
+        className="overflow-hidden pointer-events-none absolute z-0 inset-0 rounded-[inherit]"
         style={{
           ...style,
           '--amino-ripple-group-color': getAminoColor(color) || 'currentColor',

@@ -1,13 +1,10 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { ImageSize } from 'src/components/avatar/AvatarBase';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color, ColorPrefix } from 'src/types/Color';
-
-import styles from './Thumbnail.module.scss';
+import { cn } from 'src/utils/cn';
 
 const thumbnailShapes = {
   round: '50%',
@@ -81,21 +78,26 @@ export const Thumbnail = ({
   style,
 }: ThumbnailProps) => (
   <div
-    className={clsx(
+    className={cn(
+      'inline-flex justify-center items-center box-content [&_svg]:w-[60%] [&_svg]:h-[60%]',
+      intent === 'bordered' && 'border-gray-0 dark:border-gray-1000',
+      intent === 'outline' &&
+        'border border-gray-200 dark:border-gray-800 bg-transparent',
+      intent === 'full' && 'bg-[var(--amino-thumbnail-background-color)]',
       className,
-      styles.wrapper,
-      intent === 'bordered' && styles.bordered,
-      intent === 'outline' && styles.outline,
     )}
     style={{
       ...style,
       '--amino-thumbnail-background-color': theme[`${color}100`],
-      '--amino-thumbnail-border-radius': thumbnailShapes[shape],
-      '--amino-thumbnail-size': `${size}px`,
       '--amino-thumbnail-svg-main-color':
         theme[mainColorOverride || `${color}800`],
       '--amino-thumbnail-svg-secondary-color':
         theme[secondaryColorOverride || `${color}400`],
+      borderRadius: thumbnailShapes[shape],
+      borderWidth: intent === 'bordered' ? `calc(${size}px / 16)` : undefined,
+      color: `var(--amino-thumbnail-svg-main-color)`,
+      height: `${size}px`,
+      width: `${size}px`,
     }}
   >
     {icon}

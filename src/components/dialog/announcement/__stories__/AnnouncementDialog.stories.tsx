@@ -10,8 +10,6 @@ import {
 import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 
-import styles from './AnnouncementDialog.stories.module.scss';
-
 const AnnouncementDialogMeta: Meta = {
   argTypes: {
     actions: {
@@ -51,13 +49,9 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className={styles.centeredDiv}
-      style={{ '--amino-announcement-dialog-stories-height': `${height}px` }}
-    >
+    <div className="flex items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <AnnouncementDialog
-        className={styles.styledAnnouncementDialog}
         {...rest}
         announcementId={announcementId}
         label={label}

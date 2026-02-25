@@ -1,11 +1,8 @@
-import clsx from 'clsx';
-
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
+import { cn } from 'src/utils/cn';
 import { getAminoColor } from 'src/utils/getAminoColor';
-
-import styles from './ProgressBar.module.scss';
 
 export type ProgressBarProps = BaseProps & {
   /**
@@ -105,14 +102,16 @@ export const ProgressBar = ({
   };
   return (
     <div
-      className={clsx(className, styles.base)}
-      style={{
-        ...style,
-        '--amino-progress-bar-background-color': getBarColor() || '',
-        '--amino-progress-bar-width': `${validatedProgress}%`,
-      }}
+      className={cn('w-56 h-2 bg-gray-100 rounded-lg', className)}
+      style={style}
     >
-      <div className={styles.bar} />
+      <div
+        className="h-2 rounded-lg"
+        style={{
+          backgroundColor: getBarColor() || '',
+          width: `${validatedProgress}%`,
+        }}
+      />
     </div>
   );
 };

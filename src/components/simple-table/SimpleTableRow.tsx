@@ -1,17 +1,15 @@
 import React, { Fragment, type ReactNode, useRef } from 'react';
 
-import clsx from 'clsx';
-
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { TableRowCollapse } from 'src/components/table/TableRowCollapse';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
+import { cn } from 'src/utils/cn';
 
 import type {
   SimpleTableHeader,
   SimpleTableHeaderBaseProps,
   SimpleTableProps,
 } from './SimpleTable';
-import styles from './SimpleTableRow.module.scss';
 
 const getTooltipPlacement = (
   alignment: SimpleTableHeaderBaseProps['align'],
@@ -90,19 +88,19 @@ export const SimpleTableRow = <T extends object>({
       );
 
       // If the cell has a child that should only show on hover, don't allow truncating
-      const tdClassNames = clsx(
+      const tdClassNames = cn(
         header.textWrapMethod === 'truncate' &&
           !hasRowHoverShowChild &&
-          styles.shouldTruncate,
+          'max-w-[var(--amino-cell-min-width)] min-w-[var(--amino-cell-min-width)] [&>:first-child]:overflow-hidden [&>:first-child]:text-ellipsis',
       );
 
       const containerStyle = {
         '--amino-cell-min-width': `${header.minWidth || 0}px`,
       };
 
-      const cellClassNames = clsx(
-        header.noPadding && styles.noPadding,
-        header.textWrapMethod === 'normal' && styles.allowTextWrap,
+      const cellClassNames = cn(
+        header.noPadding && 'p-0',
+        header.textWrapMethod === 'normal' && 'whitespace-normal',
       );
 
       const cellStyle = {
@@ -124,7 +122,10 @@ export const SimpleTableRow = <T extends object>({
               subtitle={content}
             >
               <LinkComponent
-                className={cellClassNames}
+                className={cn(
+                  'block content-center h-full w-full p-amino-12 whitespace-nowrap',
+                  cellClassNames,
+                )}
                 href={getRowLink(item)}
                 style={cellStyle}
               >
@@ -145,7 +146,13 @@ export const SimpleTableRow = <T extends object>({
             subtitle={content}
           >
             {/* Child div required for proper truncating */}
-            <span className={cellClassNames} style={cellStyle}>
+            <span
+              className={cn(
+                'block content-center h-full w-full p-amino-12 whitespace-nowrap',
+                cellClassNames,
+              )}
+              style={cellStyle}
+            >
               {content}
             </span>
           </Tooltip>
@@ -194,12 +201,17 @@ export const SimpleTableRow = <T extends object>({
     return (
       <TableRowCollapse
         key={rowKey}
-        className={clsx(
-          styles.styledTr,
-          !noHoverBackground && styles.withHover,
-          collapsed && styles.collapsed,
-          rowCollapseContent && styles.hasContent,
-          bordered && styles.bordered,
+        className={cn(
+          'h-12 [&:not(:hover)_.row-hover-show]:invisible [&>td]:border-b [&>td]:border-b-amino-subtle [&>td]:p-0 [&>td>:first-child]:block [&>td>:first-child]:content-center [&>td>:first-child]:h-full [&>td>:first-child]:w-full [&>td>:first-child]:p-amino-12 [&>td>:first-child]:whitespace-nowrap [&>td>:first-child.tooltip-wrapper]:p-0 [&>td>:first-child.tooltip-wrapper>a]:content-center [&>td>:first-child.tooltip-wrapper>a]:p-amino-12 [&>td>:first-child.tooltip-wrapper>a]:w-full [&>td>:first-child.tooltip-wrapper>a]:h-full [&>td>:first-child.tooltip-wrapper>a]:block [&>td>:first-child.tooltip-wrapper>a]:overflow-hidden [&>td>:first-child.tooltip-wrapper>a]:text-ellipsis [&>td>:first-child.tooltip-wrapper>span]:content-center [&>td>:first-child.tooltip-wrapper>span]:p-amino-12 [&>td>:first-child.tooltip-wrapper>span]:w-full [&>td>:first-child.tooltip-wrapper>span]:h-full [&>td>:first-child.tooltip-wrapper>span]:block [&>td>:first-child.tooltip-wrapper>span]:overflow-hidden [&>td>:first-child.tooltip-wrapper>span]:text-ellipsis [&>td>:first-child:not(:hover)_.cell-hover-show]:invisible',
+          !noHoverBackground && 'hover:bg-hover',
+          collapsed && '[&>td]:border-b [&>td]:border-b-amino-subtle',
+          !collapsed && '[&_td]:border-b [&_td]:border-b-amino-subtle',
+          rowCollapseContent &&
+            collapsed &&
+            '[&+tr>td]:border-0 [&+tr>td>:first-child]:p-0',
+          bordered &&
+            collapsed &&
+            'nth-[nth-last-child(2)]:rounded-bl-amino-12 [&:nth-last-child(2)_td:first-child]:rounded-bl-amino-12 [&:nth-last-child(2)_td:last-child]:rounded-br-amino-12',
         )}
         collapsed={collapsed}
         onToggleCollapse={() => {
@@ -221,11 +233,10 @@ export const SimpleTableRow = <T extends object>({
   return (
     <tr
       key={rowKey}
-      className={clsx(
-        styles.styledTr,
-        clickable && styles.clickable,
-        !noHoverBackground && styles.withHover,
-        bordered && styles.bordered,
+      className={cn(
+        'h-12 [&:not(:hover)_.row-hover-show]:invisible [&>td]:border-b [&>td]:border-b-amino-subtle [&>td]:p-0 [&>td>:first-child]:block [&>td>:first-child]:content-center [&>td>:first-child]:h-full [&>td>:first-child]:w-full [&>td>:first-child]:p-amino-12 [&>td>:first-child]:whitespace-nowrap [&>td>:first-child.tooltip-wrapper]:p-0 [&>td>:first-child.tooltip-wrapper>a]:content-center [&>td>:first-child.tooltip-wrapper>a]:p-amino-12 [&>td>:first-child.tooltip-wrapper>a]:w-full [&>td>:first-child.tooltip-wrapper>a]:h-full [&>td>:first-child.tooltip-wrapper>a]:block [&>td>:first-child.tooltip-wrapper>a]:overflow-hidden [&>td>:first-child.tooltip-wrapper>a]:text-ellipsis [&>td>:first-child.tooltip-wrapper>span]:content-center [&>td>:first-child.tooltip-wrapper>span]:p-amino-12 [&>td>:first-child.tooltip-wrapper>span]:w-full [&>td>:first-child.tooltip-wrapper>span]:h-full [&>td>:first-child.tooltip-wrapper>span]:block [&>td>:first-child.tooltip-wrapper>span]:overflow-hidden [&>td>:first-child.tooltip-wrapper>span]:text-ellipsis [&>td>:first-child:not(:hover)_.cell-hover-show]:invisible',
+        clickable && 'cursor-pointer',
+        !noHoverBackground && 'hover:bg-hover',
       )}
       data-testid={`amino--row-${rowKey}`}
       onClick={e => {

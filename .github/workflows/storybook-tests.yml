@@ -7,7 +7,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.57.0
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
       options: --user 1001
     if: |
       github.event.deployment_status.state == 'success' &&
@@ -24,4 +24,4 @@ jobs:
       - name: Run Storybook tests
         run: pnpm test:sb
         env:
-          TARGET_URL: '${{ github.event.deployment_status.target_url }}'
+          TARGET_URL: "${{ github.event.deployment_status.target_url }}"

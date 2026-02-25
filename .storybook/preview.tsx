@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import 'src/styles/amino.css';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
+import 'src/styles/tailwind.css';
 import { useGlobals } from '@storybook/preview-api';
 import type { Decorator, Preview } from '@storybook/react';
-import clsx from 'clsx';
 
+import { cn } from 'src/utils/cn';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 import { usePrevious } from 'src/utils/hooks/usePrevious';
 import { setLanguage } from 'src/utils/translations/AminoTranslationStore';
@@ -16,7 +17,6 @@ import {
 } from 'src/utils/translations/supportedLanguages';
 
 import './storybook.css';
-import styles from './preview.module.scss';
 
 type StorybookTheme = 'day' | 'night' | 'side-by-side';
 
@@ -100,11 +100,17 @@ const withTheme: Decorator = (Story, context) => {
     // Don't iframe this one because it reads local storage
     if (context.title === 'Amino/ThemeSelect') {
       return (
-        <div className={styles.sideBySideContainer}>
-          <div className={styles.themeBlock} data-theme="day">
+        <div className="flex w-full h-full justify-around *:flex-1">
+          <div
+            className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)"
+            data-theme="day"
+          >
             <Story {...context} />
           </div>
-          <div className={styles.themeBlock} data-theme="night">
+          <div
+            className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)"
+            data-theme="night"
+          >
             <Story {...context} />
           </div>
         </div>
@@ -112,7 +118,7 @@ const withTheme: Decorator = (Story, context) => {
     }
 
     return (
-      <div className={styles.sideBySideContainer}>
+      <div className="flex w-full h-full justify-around *:flex-1">
         <iframe
           height="100%"
           src={`/iframe.html?globals=theme:day&id=${context.id}&viewMode=story&innerFrame=true`}
@@ -129,9 +135,9 @@ const withTheme: Decorator = (Story, context) => {
 
   return (
     <div
-      className={clsx(
-        styles.themeBlock,
-        context.viewMode === 'docs' && styles.docsMode,
+      className={cn(
+        'w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)',
+        context.viewMode === 'docs' && 'h-full min-h-[30vh]',
       )}
       data-theme={inSideBySide ? storybookTheme : aminoTheme}
     >
