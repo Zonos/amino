@@ -188,7 +188,15 @@ test('css comparison — capture style diffs between prod and local', async () =
     comparisons.push(comparison);
 
     // Write per-story output files.
-    const base = path.join(OUTPUT_DIR, storyId);
+    // Sanitize storyId before using it in a path — isSafeStoryId() is
+    // already applied when building storyIds, but defend at point-of-use
+    // in case a crafted filename (e.g. ".." from the filesystem path) could
+    // otherwise escape OUTPUT_DIR via path.join().
+    const safeStoryIdBase =
+      storyId.replace(/[^a-zA-Z0-9_-]/g, '_') || 'unknown-story';
+    const safeStoryId =
+      safeStoryIdBase === '..' ? 'parent-dir' : safeStoryIdBase;
+    const base = path.join(OUTPUT_DIR, safeStoryId);
     if (diffs.length > 0) {
       fs.writeFileSync(`${base}.diff.txt`, formatDiffReport(storyId, diffs));
       fs.writeFileSync(
