@@ -95,7 +95,7 @@ const bundlePackage = async (
           // add prefix before hashing so the class will be unique
           hashPrefix: 'zonos-amino',
         },
-        plugins: [tailwindcss, autoprefixer],
+        plugins: [tailwindcss, autoprefixer()],
       }),
       babel({
         babelHelpers: 'bundled',

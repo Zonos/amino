@@ -82,7 +82,7 @@ export const NavigationItem = ({
     className={cn(
       'flex items-center gap-amino-8 h-[28px] px-amino-8 py-amino-4 text-gray-800 dark:text-gray-200 text-amino-base font-medium rounded-amino-6 mb-[2px]',
       'hover:bg-hover hover:text-gray-1000 dark:hover:text-gray-1000',
-      '[&_svg]:text-gray-600 dark:[&_svg]:text-gray-400 [&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-negative-4',
+      '[&_svg]:text-gray-600 dark:[&_svg]:text-gray-400 [&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-n4',
       'hover:[&_svg]:text-gray-800 dark:hover:[&_svg]:text-gray-800',
       isActive &&
         'bg-gray-100 dark:bg-gray-900 text-gray-1000 [&_svg]:text-gray-1000',

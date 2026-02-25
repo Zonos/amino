@@ -191,14 +191,15 @@ export const Checkbox = ({
         checked={checked}
         className={cn('absolute w-0 h-0 opacity-0', disabled && 'disabled')}
         data-testid={testId}
+        disabled={disabled}
         id={id}
         onChange={handleChange}
         onKeyDown={e => {
-          if (e.key === 'Enter' || e.key === 'Space') {
+          if (e.key === 'Enter' || e.key === ' ') {
             handleChange(e);
           }
         }}
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
         type="checkbox"
       />
       <div

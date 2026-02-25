@@ -119,7 +119,7 @@ const buttonVariants = cva(
       // Purple outline
       {
         className:
-          'text-purple-600 shadow-[0px_0px_0px_1px] shadow-purple-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-purple-50 hover:bg-none active:bg-purple-100 disabled:bg-transparent disabled:shadow-[0px_0px_0px_1px_inset] disabled:shadow-orange-600 [&_.spinner-wrapper]:bg-transparent',
+          'text-purple-600 shadow-[0px_0px_0px_1px] shadow-purple-600 bg-transparent [text-shadow:none] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-none hover:bg-purple-50 hover:bg-none active:bg-purple-100 disabled:bg-transparent disabled:shadow-[0px_0px_0px_1px_inset] disabled:shadow-purple-600 [&_.spinner-wrapper]:bg-transparent',
         outline: true,
         variant: 'purple',
       },
@@ -634,7 +634,8 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           !(outline && variant === 'standard') && {
             color: 'var(--amino-button-color)',
           }),
-        fontWeight: 'var(--amino-button-font-weight)' as unknown as number,
+        fontWeight:
+          'var(--amino-button-font-weight)' as React.CSSProperties['fontWeight'],
         // inlineLink uses leading-[inherit] and p-0 from CVA; inline would override
         ...(variant !== 'inlineLink' && {
           lineHeight: 'var(--amino-button-size)',

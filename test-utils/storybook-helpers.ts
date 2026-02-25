@@ -538,8 +538,11 @@ export function filterNoiseDiffs(
       }
     }
 
-    // 9. Skip __structure__ diffs (extra wrapper elements from migration)
-    if (d.property === '__structure__') return false;
+    // 9. Skip __structure__ diffs caused by extra wrapper elements added during
+    //    migration (e.g. an extra <div> wrapping content). These always appear at
+    //    nested paths. Root-level __structure__ diffs are kept because they
+    //    indicate an entirely missing snapshot (captureTreeBrowser returned null).
+    if (d.property === '__structure__' && d.path !== 'root') return false;
 
     // 10. Skip font-size: (unset) → 13.008px (Tailwind explicitly sets the amino
     //     base font-size on elements that previously inherited it — visually identical)
@@ -666,11 +669,8 @@ export function filterNoiseDiffs(
       return false;
     }
 
-    // 20. Skip all box-shadow diffs — TW v4 prepends transparent ring/shadow reset
-    // layers and uses variant-specific border colors (intentional migration change)
-    if (d.property === 'box-shadow') {
-      return false;
-    }
+    // 20. (box-shadow diffs are handled by the specific normalization logic in
+    //     filters #5 and #14 above — no unconditional skip here.)
 
     // 21. Skip margin-left/right: 2px → (unset) — button SVG icon margins that
     // ARE applied locally but tree comparison picks up different elements

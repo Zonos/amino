@@ -179,12 +179,9 @@ export const Banner = ({
         </footer>
       );
 
-    // A hack to make sure the header content (whatever the first non-null is) aligns in it's own row
-    const [header, content, moreContent] = [
-      renderTitle(),
-      children,
-      renderFooter(),
-    ].filter(Boolean);
+    const header = renderTitle();
+    const content = children;
+    const moreContent = renderFooter();
 
     return (
       <div
