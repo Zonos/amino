@@ -93,12 +93,10 @@ describe('MCP Build Integration', () => {
   test('should run extraction with default configuration', async () => {
     // Import here to ensure mocks are applied
     const { runMcpExtraction } = await import('../build-integration');
-    const { extractAllComponentsDocumentation } = await import(
-      '../extractors/jsdoc-extractor'
-    );
-    const { generateDocumentationFiles } = await import(
-      '../extractors/json-file-generator'
-    );
+    const { extractAllComponentsDocumentation } =
+      await import('../extractors/jsdoc-extractor');
+    const { generateDocumentationFiles } =
+      await import('../extractors/json-file-generator');
     const { logger } = await import('../utils/logger');
 
     await runMcpExtraction();
@@ -159,12 +157,10 @@ describe('MCP Build Integration', () => {
     });
 
     const { runMcpExtraction } = await import('../build-integration');
-    const { extractAllComponentsDocumentation } = await import(
-      '../extractors/jsdoc-extractor'
-    );
-    const { generateDocumentationFiles } = await import(
-      '../extractors/json-file-generator'
-    );
+    const { extractAllComponentsDocumentation } =
+      await import('../extractors/jsdoc-extractor');
+    const { generateDocumentationFiles } =
+      await import('../extractors/json-file-generator');
     const { logger } = await import('../utils/logger');
 
     await runMcpExtraction();
@@ -195,9 +191,8 @@ describe('MCP Build Integration', () => {
 
   test('should handle errors gracefully without failing the build', async () => {
     // Make extraction throw an error
-    const { extractAllComponentsDocumentation } = await import(
-      '../extractors/jsdoc-extractor'
-    );
+    const { extractAllComponentsDocumentation } =
+      await import('../extractors/jsdoc-extractor');
     vi.mocked(extractAllComponentsDocumentation).mockImplementationOnce(() => {
       throw new Error('Test extraction error');
     });
@@ -222,9 +217,8 @@ describe('MCP Build Integration', () => {
 
   test('should handle file generation errors gracefully', async () => {
     // Make file generation throw an error
-    const { generateDocumentationFiles } = await import(
-      '../extractors/json-file-generator'
-    );
+    const { generateDocumentationFiles } =
+      await import('../extractors/json-file-generator');
     vi.mocked(generateDocumentationFiles).mockImplementationOnce(() => {
       throw new Error('File generation error');
     });
@@ -249,9 +243,8 @@ describe('MCP Build Integration', () => {
 
   test('should calculate the correct component statistics', async () => {
     // Mock a custom output for extractAllComponentsDocumentation
-    const { extractAllComponentsDocumentation } = await import(
-      '../extractors/jsdoc-extractor'
-    );
+    const { extractAllComponentsDocumentation } =
+      await import('../extractors/jsdoc-extractor');
     vi.mocked(extractAllComponentsDocumentation).mockReturnValueOnce([
       {
         comment: {
