@@ -158,7 +158,9 @@ export { Button } from './Button';
     );
 
     // Fix the Dirent[] type issue by providing a mock implementation that returns proper Dirent objects
-    vi.mocked(fs.readdirSync).mockImplementation((dirPath: PathLike) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (vi.mocked(fs.readdirSync) as any).mockImplementation(
+      (dirPath: PathLike) => {
       if (dirPath === '/components/button') {
         // Create mock Dirent objects
         return ['index.tsx', 'Button.tsx'].map(name => ({
