@@ -29,6 +29,7 @@ const ignoreConfig = {
     '.github',
     '.next',
     '.next/**/*',
+    'next-env.d.ts',
   ],
 };
 

@@ -161,21 +161,22 @@ export { Button } from './Button';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (vi.mocked(fs.readdirSync) as any).mockImplementation(
       (dirPath: PathLike) => {
-      if (dirPath === '/components/button') {
-        // Create mock Dirent objects
-        return ['index.tsx', 'Button.tsx'].map(name => ({
-          isBlockDevice: () => false,
-          isCharacterDevice: () => false,
-          isDirectory: () => false,
-          isFIFO: () => false,
-          isFile: () => true,
-          isSocket: () => false,
-          isSymbolicLink: () => false,
-          name,
-        })) as unknown as fs.Dirent[];
-      }
-      return [] as unknown as fs.Dirent[];
-    });
+        if (dirPath === '/components/button') {
+          // Create mock Dirent objects
+          return ['index.tsx', 'Button.tsx'].map(name => ({
+            isBlockDevice: () => false,
+            isCharacterDevice: () => false,
+            isDirectory: () => false,
+            isFIFO: () => false,
+            isFile: () => true,
+            isSocket: () => false,
+            isSymbolicLink: () => false,
+            name,
+          })) as unknown as fs.Dirent[];
+        }
+        return [] as unknown as fs.Dirent[];
+      },
+    );
 
     vi.mocked(fs.statSync).mockReturnValue({
       isDirectory: () => true,
