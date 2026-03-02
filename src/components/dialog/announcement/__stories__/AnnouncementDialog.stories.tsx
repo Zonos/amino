@@ -78,7 +78,8 @@ BasicDialog.args = {
     <>
       This cool feature has moved locations.{' '}
       <Text fontWeight={600}>
-        Go to settings <ArrowRightIcon inlineBlock size={16} /> Cool Feature{' '}
+        Go to settings <ArrowRightIcon inlineBlock size={16} /> Cool
+        Feature{' '}
       </Text>
       to use the updated feature.
     </>
