@@ -5,7 +5,7 @@ registries:
     type: npm-registry
     url: https://npm.pkg.github.com
     username: ${{ secrets.CLOUD_AUTOMATION_USER }}
-    password: ${{secrets.CLOUD_AUTOMATION_ACCESS_TOKEN_READONLY}}
+    password: ${{ secrets.CLOUD_AUTOMATION_ACCESS_TOKEN_READONLY }}
 
 updates:
   # Enable version updates for npm/yarn dependencies
@@ -31,20 +31,6 @@ updates:
         update-types:
           - "minor"
           - "patch"
-
-  # Enable version updates for Docker dependencies
-  - package-ecosystem: "docker"
-    directory: "/.github"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    # Open pull requests for version updates
-    open-pull-requests-limit: 5
-    # Commit message preferences
-    commit-message:
-      prefix: "docker"
-      include: "scope"
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
