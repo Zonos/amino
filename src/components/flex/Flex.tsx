@@ -134,14 +134,18 @@ export const Flex = ({
   <div
     {...rest}
     className={cn(
-      'flex [&>*]:flex-[var(--amino-flex-wrapper-flex-children)]',
+      'flex',
+      childrenFlex !== 'initial' &&
+        '*:flex-(--amino-flex-wrapper-flex-children)',
       fullWidth && 'w-full',
       fullHeight && 'h-full',
       className,
     )}
     style={{
       ...style,
-      '--amino-flex-wrapper-flex-children': childrenFlex,
+      ...(childrenFlex !== 'initial' && {
+        '--amino-flex-wrapper-flex-children': childrenFlex,
+      }),
       alignItems,
       flexDirection,
       flexWrap,
