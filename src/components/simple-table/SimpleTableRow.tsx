@@ -211,7 +211,7 @@ export const SimpleTableRow = <T extends object>({
             '[&+tr>td]:border-0 [&+tr>td>:first-child]:p-0',
           bordered &&
             collapsed &&
-            'nth-[nth-last-child(2)]:rounded-bl-amino-12 [&:nth-last-child(2)_td:first-child]:rounded-bl-amino-12 [&:nth-last-child(2)_td:last-child]:rounded-br-amino-12',
+            'nth-last-2:rounded-bl-amino-12 [&:nth-last-child(2)_td:first-child]:rounded-bl-amino-12 [&:nth-last-child(2)_td:last-child]:rounded-br-amino-12',
         )}
         collapsed={collapsed}
         onToggleCollapse={() => {

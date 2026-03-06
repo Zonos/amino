@@ -139,7 +139,7 @@ export const CollapsibleList = ({
         }
       />
       <Collapse
-        className="[&_.__icon-wrapper]:w-amino-32 [&_.__icon-wrapper]:inline-block"
+        className="[&_.list-item-icon-wrap]:w-amino-32 [&_.list-item-icon-wrap]:inline-block"
         collapsed={collapsed}
       >
         {children}

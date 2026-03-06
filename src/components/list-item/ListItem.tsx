@@ -150,7 +150,7 @@ export const ListItem = ({
   >
     <div
       className={cn(
-        '__icon-wrapper',
+        'list-item-icon-wrap',
         !decorator && 'hidden',
         decorator && 'inline-block',
       )}
