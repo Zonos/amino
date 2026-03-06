@@ -603,7 +603,6 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       data-testid={testId || defaultTestId}
       data-theme={themeOverride}
       style={{
-        ...style,
         '--amino-button-background-color': getBackgroundColor(),
         '--amino-button-color': getColor(),
         '--amino-button-font-weight': getFontWeight(),
@@ -642,6 +641,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           padding: 'var(--amino-button-padding)',
         }),
         ...(fitContentWidth && { width: 'fit-content' }),
+        ...style,
       }}
       tabIndex={tag === 'div' ? 0 : undefined}
       {...buttonProps}
