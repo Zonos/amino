@@ -166,6 +166,45 @@ After the fix, your compiled CSS should contain an `@layer utilities` block with
 
 ---
 
+## Gotcha 5: Unlayered CSS in amino/reset.css Overrides All Border Utilities
+
+### Symptom
+Tailwind border-width utilities (`border-r`, `border-t`, `border-l`, `border-b`, `border`, `border-2`, etc.) have **no visual effect** — elements with these classes show `borderRightWidth: "0px"` in DevTools computed styles even though the CSS rule exists in the generated stylesheet. Non-border utilities (flex, grid, padding, text-*) work fine.
+
+### Root Cause
+`@zonos/amino/reset.css` contained this block as **unlayered CSS**:
+
+```css
+*, *::before, *::after {
+    border-width: 0;
+    border-style: solid;
+    border-color: #e2e8f0;
+}
+```
+
+In the CSS cascade, **unlayered rules always beat `@layer` rules** — regardless of source order. Tailwind v4 puts all utilities in `@layer utilities`, so this unlayered reset silently wins over every border utility class.
+
+This was a Tailwind v3 preflight that worked correctly before because v3 also emitted the preflight as unlayered CSS (so specificity was equal and source order determined the winner). In v4, the preflight moved into `@layer base`, which has lower cascade priority than unlayered rules — exposing the bug.
+
+### How to Detect
+1. Open DevTools → find an element with `.border-r` class
+2. Check computed `border-right-width` — if it shows `0px`, this is the cause
+3. Fetch the compiled CSS bundle and search for `border: 0 solid` outside any `@layer` block:
+   ```js
+   // In browser console:
+   const text = await (await fetch('/_next/static/chunks/[bundle].css')).text();
+   const idx = text.indexOf('*, :before, :after');
+   console.log(text.slice(idx - 100, idx + 200)); // should show @layer wrapper if healthy
+   ```
+
+### Fix (applied in amino 6.0.0-alpha.7)
+Remove the unlayered border reset from `amino/src/styles/reset.css`. Tailwind v4 already emits this correctly inside `@layer base` via `@import 'tailwindcss'`. The `hr { border-top-width: 1px }` and `img { border-style: solid }` rules that followed it can also be removed — both are covered by Tailwind v4's own preflight.
+
+### Important Note
+This bug only affected border utilities because the reset only reset `border-*` properties. Other Tailwind utilities were completely unaffected. If `border-r` doesn't work but `flex-1` does, suspect this issue before investigating Tailwind config or source scanning.
+
+---
+
 
 
 When these bugs are found in amino source and the change is needed in `fe-6-account-web`:
