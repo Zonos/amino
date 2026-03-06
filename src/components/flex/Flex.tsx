@@ -151,7 +151,7 @@ export const Flex = ({
       flexWrap,
       gap: `${gap}px`,
       justifyContent,
-      padding: `${padding}px`,
+      ...(padding !== 0 && { padding: `${padding}px` }),
     }}
   >
     {children}

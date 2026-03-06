@@ -1,6 +1,6 @@
 ---
 name: tailwind-v4-migration
-description: "Fix Tailwind v4 CSS parsing errors and migration issues in @zonos/amino components. USE FOR: Tailwind v4 migration, TW4 class errors, arbitrary selector bugs, nth-child errors, [&>*] specificity conflicts, CSS build errors after upgrading to Tailwind v4, double underscore class names, child selector overrides, border utilities not working, border-r border-t border-l border-b no effect. DO NOT USE FOR: general Tailwind usage, non-migration CSS questions, Tailwind v3 issues."
+description: 'Fix Tailwind v4 CSS parsing errors and migration issues in @zonos/amino components. USE FOR: Tailwind v4 migration, TW4 class errors, arbitrary selector bugs, nth-child errors, [&>*] specificity conflicts, CSS build errors after upgrading to Tailwind v4, double underscore class names, child selector overrides, border utilities not working, border-r border-t border-l border-b no effect. DO NOT USE FOR: general Tailwind usage, non-migration CSS questions, Tailwind v3 issues.'
 ---
 
 # Tailwind v4 Migration: Known Gotchas & Fixes
@@ -30,12 +30,12 @@ description: "Fix Tailwind v4 CSS parsing errors and migration issues in @zonos/
 
 **Fix:** Use TW v4's built-in shorthands:
 
-| Old (broken) | New |
-|---|---|
+| Old (broken)              | New          |
+| ------------------------- | ------------ |
 | `nth-[nth-last-child(2)]` | `nth-last-2` |
 | `nth-[nth-last-child(3)]` | `nth-last-3` |
-| `nth-[last-child]` | `last:` |
-| `nth-[first-child]` | `first:` |
+| `nth-[last-child]`        | `last:`      |
+| `nth-[first-child]`       | `first:`     |
 
 ---
 
@@ -49,13 +49,17 @@ description: "Fix Tailwind v4 CSS parsing errors and migration issues in @zonos/
 
 ```tsx
 // ❌ Always applies, silently overrides all children
-"flex [&>*]:flex-[var(--amino-flex-wrapper-flex-children)]"
+'flex [&>*]:flex-[var(--amino-flex-wrapper-flex-children)]';
 
 // ✅ Only applies when a non-default value is set
-cn("flex", childrenFlex !== 'initial' && "*:flex-(--amino-flex-wrapper-flex-children)")
+cn(
+  'flex',
+  childrenFlex !== 'initial' && '*:flex-(--amino-flex-wrapper-flex-children)',
+);
 ```
 
 Also gate the corresponding CSS custom property in `style`:
+
 ```tsx
 style={{ ...(childrenFlex !== 'initial' && { "--amino-flex-wrapper-flex-children": childrenFlex }) }}
 ```
@@ -91,6 +95,7 @@ style={{ ...(childrenFlex !== 'initial' && { "--amino-flex-wrapper-flex-children
 **Fix:** Remove the unlayered border reset from `amino/src/styles/reset.css`. TW v4 emits the correct version inside `@layer base` via `@import 'tailwindcss'`.
 
 **To confirm the root cause** — fetch the compiled bundle and check if `*, :before, :after { border... }` appears outside any `@layer` block:
+
 ```js
 const text = await (await fetch('/_next/static/chunks/[bundle].css')).text();
 const idx = text.indexOf('*, :before, :after');
