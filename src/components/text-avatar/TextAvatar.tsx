@@ -35,26 +35,23 @@ const colorForString = (stringInput: string, brightness: number) => {
  * ```
  */
 export const TextAvatar = ({ className, label, style }: TextAvatarProps) => {
-  const gradientStyles = {
-    '--amino-text-avatar-gradient-end': colorForString(
-      (label && label.split('').reverse().join('')) || 'default label',
-      40,
-    ),
-    '--amino-text-avatar-gradient-start': colorForString(
-      label || 'default label',
-      45,
-    ),
-  };
+  const gradientStart = colorForString(label || 'default label', 45);
+  const gradientEnd = colorForString(
+    (label && label.split('').reverse().join('')) || 'default label',
+    40,
+  );
 
   return (
     <div
       className={cn(
-        'flex size-[32px] items-center justify-center rounded-amino-6 font-medium text-gray-0',
-        'bg-linear-to-[137deg] from-[var(--amino-text-avatar-gradient-start)] to-[var(--amino-text-avatar-gradient-end)]',
+        'flex size-8 items-center justify-center rounded-amino-6 font-medium text-gray-0',
         'dark:text-gray-1000',
         className,
       )}
-      style={{ ...gradientStyles, ...style }}
+      style={{
+        backgroundImage: `linear-gradient(137deg, ${gradientStart}, ${gradientEnd})`,
+        ...style,
+      }}
     >
       {(label && label[0]?.toUpperCase()) || 'D'}
     </div>
