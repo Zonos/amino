@@ -141,14 +141,10 @@ const IconLabel = ({
   icon?: ReactNode;
 }) => (
   <div
-    className="flex items-center"
-    style={{ '--amino-styled-react-select-color': color || 'inherit' }}
+    className="flex items-center [&_svg]:mr-1 [&_svg]:text-gray-1000"
+    style={{ color: color || 'inherit' }}
   >
-    {icon && (
-      <svg className="mr-1 text-gray-1000" style={{ color: 'inherit' }}>
-        {icon}
-      </svg>
-    )}
+    {icon}
     {children}
   </div>
 );
@@ -271,8 +267,8 @@ const getMergedStyles = <
   clearIndicator: (provided, state) => ({
     ...provided,
     color: theme.gray700,
-    paddingLeft: 14,
-    paddingRight: 4,
+    paddingLeft: '14px !important',
+    paddingRight: '4px !important',
     ...stylesProp?.clearIndicator?.(provided, state),
   }),
   // container
@@ -299,14 +295,14 @@ const getMergedStyles = <
   dropdownIndicator: (provided, state) => ({
     ...provided,
     color: theme.gray900,
-    paddingLeft: 4,
-    paddingRight: 10,
+    paddingLeft: '4px !important',
+    paddingRight: '10px !important',
     ...stylesProp?.dropdownIndicator?.(provided, state),
   }),
   group: (provided, state) => ({
     ...provided,
-    paddingBottom: 0,
-    paddingTop: 0,
+    paddingBottom: '0px !important',
+    paddingTop: '0px !important',
     ...stylesProp?.group?.(provided, state),
   }),
   // groupHeading
@@ -329,12 +325,12 @@ const getMergedStyles = <
     background: theme.surfaceColor,
     borderRadius: 12,
     boxShadow: theme.v3ShadowLarge,
-    marginTop: 4,
+    marginTop: '8px !important',
     ...stylesProp?.menu?.(provided, state),
   }),
   menuList: (provided, state) => ({
     ...provided,
-    padding: 8,
+    padding: '8px !important',
     ...stylesProp?.menuList?.(provided, state),
   }),
   // menuPortal
@@ -346,7 +342,7 @@ const getMergedStyles = <
     fontWeight: 600,
     maxHeight: 20,
     minWidth: 'inherit',
-    paddingRight: 2,
+    paddingRight: '2px !important',
     ...stylesProp?.multiValue?.(provided, state),
   }),
   multiValueLabel: (provided, state) => ({
@@ -363,10 +359,10 @@ const getMergedStyles = <
     color: state.isSelected ? theme.blue600 : theme.textColor,
     cursor: 'pointer',
     fontWeight: state.isSelected ? 500 : 400,
-    paddingBottom: 7,
-    paddingLeft: 8,
-    paddingRight: 12,
-    paddingTop: 7,
+    paddingBottom: '7px !important',
+    paddingLeft: '8px !important',
+    paddingRight: '12px !important',
+    paddingTop: '7px !important',
     ...stylesProp?.option?.(provided, state),
   }),
   placeholder: (provided, state) => ({
@@ -390,7 +386,7 @@ const getMergedStyles = <
     ...provided,
     flexWrap: 'nowrap',
     padding: 'unset',
-    paddingLeft: 12,
+    paddingLeft: '12px !important',
     ...stylesProp?.valueContainer?.(provided, state),
   }),
 });
