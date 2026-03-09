@@ -388,7 +388,6 @@ const getMergedStyles = <
   }),
   valueContainer: (provided, state) => ({
     ...provided,
-    '.has-icon &': { paddingLeft: 0 },
     flexWrap: 'nowrap',
     padding: 'unset',
     paddingLeft: 12,
