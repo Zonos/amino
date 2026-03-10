@@ -234,7 +234,7 @@ export const CheckboxOptionComponent = <
           'rounded-lg',
           isFocused &&
             !isDisabled &&
-            'bg-gray-50 dark:bg-gray-100 [background-color:var(--amino-gray-50)!important] dark:[background-color:var(--amino-gray-100)!important]',
+            'bg-gray-50! dark:bg-gray-100!',
           isDisabled && 'opacity-disabled',
         )}
         style={style}
