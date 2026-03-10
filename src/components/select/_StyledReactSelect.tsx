@@ -326,6 +326,7 @@ const getMergedStyles = <
     borderRadius: 12,
     boxShadow: theme.v3ShadowLarge,
     marginTop: '8px !important',
+    zIndex: 20,
     ...stylesProp?.menu?.(provided, state),
   }),
   menuList: (provided, state) => ({
