@@ -66,15 +66,19 @@ export const Divider = ({
   vertical ? (
     <hr
       className={cn(
-        'mx-amino-24 h-auto self-stretch border-0 border-r border-solid border-amino',
-        noMargin && 'm-0',
+        'h-auto self-stretch border-0 border-r border-solid border-amino',
+        noMargin ? 'm-0' : 'mx-amino-24',
         className,
       )}
       style={style}
     />
   ) : (
     <hr
-      className={cn('my-amino-24 border-amino', noMargin && 'm-0', className)}
+      className={cn(
+        'border-amino',
+        noMargin ? 'm-0' : 'my-amino-24',
+        className,
+      )}
       style={style}
     />
   );
