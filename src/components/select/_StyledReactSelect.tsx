@@ -232,9 +232,7 @@ export const CheckboxOptionComponent = <
         className={cn(
           className,
           'rounded-lg',
-          isFocused &&
-            !isDisabled &&
-            'bg-gray-50! dark:bg-gray-100!',
+          isFocused && !isDisabled && 'bg-gray-50! dark:bg-gray-100!',
           isDisabled && 'opacity-disabled',
         )}
         style={style}
