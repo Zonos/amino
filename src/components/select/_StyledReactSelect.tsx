@@ -334,7 +334,11 @@ const getMergedStyles = <
     padding: '8px !important',
     ...stylesProp?.menuList?.(provided, state),
   }),
-  // menuPortal
+  menuPortal: (provided, state) => ({
+    ...provided,
+    zIndex: 20,
+    ...stylesProp?.menuPortal?.(provided, state),
+  }),
   multiValue: (provided, state) => ({
     ...provided,
     alignItems: 'center',
