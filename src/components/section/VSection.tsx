@@ -128,14 +128,6 @@ export const VSection = ({
         <HStack spacing={8}>{actions}</HStack>
       </SectionInnerWrapper>
     )}
-    {children && (
-      <div
-        className={cn(
-          'border border-amino rounded-amino-6 bg-gray-0 dark:bg-gray-50',
-        )}
-      >
-        {children}
-      </div>
-    )}
+    {children && <div>{children}</div>}
   </div>
 );
