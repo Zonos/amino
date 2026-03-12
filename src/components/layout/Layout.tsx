@@ -142,8 +142,8 @@ export const Layout = ({
       </nav>
       <div
         className={cn(
-          'h-full box-border overflow-y-auto p-amino-32',
-          noPaddingContent && 'p-0',
+          'h-full box-border overflow-y-auto',
+          noPaddingContent ? 'p-0' : 'p-amino-32',
         )}
       >
         {content}
