@@ -1,12 +1,29 @@
 import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
+
+const isAmino = (value: string) => value.includes('amino-');
+
+const customTwMerge = extendTailwindMerge({
+  extend: {
+    theme: {
+      spacing: [isAmino],
+      colors: [isAmino],
+      borderRadius: [isAmino],
+      borderWidth: [isAmino],
+      dropShadow: [isAmino],
+    },
+    classGroups: {
+      'font-size': [{ text: [isAmino] }],
+      'font-weight': [{ font: [isAmino] }],
+      'line-height': [{ leading: [isAmino] }],
+      'flex-basis': [{ basis: [isAmino] }],
+      'shadow': [{ shadow: [isAmino] }],
+    }
+  },
+});
 
 /**
- * Merges class names using clsx and tailwind-merge.
- * Use this instead of raw `clsx()` when composing Tailwind utility classes
- * to ensure conflicting utilities resolve correctly (last-wins).
- *
- * @example
- * cn('px-4 py-2', isLarge && 'px-8', className)
+ * Merges class names using clsx and a custom configured tailwind-merge.
+ * Understands custom Zonos Amino design tokens properly.
  */
-export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
+export const cn = (...inputs: ClassValue[]): string => customTwMerge(clsx(inputs));
