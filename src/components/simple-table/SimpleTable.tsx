@@ -367,7 +367,7 @@ export const SimpleTable = <T extends object>({
           collapsible.enabled &&
             '[&_tr>td:last-child]:w-10 [&_tr>td:last-child>div]:p-0 [&>tbody_*]:transition-all [&>tbody>tr:not(:has(.h-12))]:h-auto',
           bordered &&
-            '[&_th]:border-0 [&_tr:first-child_td]:border-t [&_tr:first-child_td]:border-t-amino-subtle [&_tr:first-child_td:first-child]:rounded-tl-amino-12 [&_tr:first-child_td:last-child]:rounded-tr-amino-12 [&_tr:last-child_td:first-child]:rounded-bl-amino-12 [&_tr:last-child_td:last-child]:rounded-br-amino-12 [&_td:first-child]:border-l [&_td:first-child]:border-l-amino-subtle [&_td:last-child]:border-r [&_td:last-child]:border-r-amino-subtle',
+            '[&_th]:border-0 [&>thead>tr]:border-b-0 [&>thead>tr>th]:border-b-0 [&_tr:first-child_td]:border-t [&_tr:first-child_td]:border-t-amino-subtle [&_tr:first-child_td:first-child]:rounded-tl-amino-12 [&_tr:first-child_td:last-child]:rounded-tr-amino-12 [&_tr:last-child_td:first-child]:rounded-bl-amino-12 [&_tr:last-child_td:last-child]:rounded-br-amino-12 [&_td:first-child]:border-l [&_td:first-child]:border-l-amino-subtle [&_td:last-child]:border-r [&_td:last-child]:border-r-amino-subtle',
           headers.every(header => !header.name) &&
             '[&_thead]:hidden [&_thead]:max-h-0',
         )}
