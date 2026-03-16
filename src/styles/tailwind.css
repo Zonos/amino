@@ -2,8 +2,32 @@
 @config '../../tailwind.config.ts';
 
 /* Map the Tailwind `dark:` variant to amino's night theme selector */
-@custom-variant dark (&:is([data-theme='night'] *));
+@custom-variant dark (&:where([data-theme="night"], [data-theme="night"] *));
 
+/* Ripple animation for RippleGroup button effect */
+@keyframes ripple {
+  from {
+    opacity: var(--amino-ripple-group-opacity, 0.12);
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@utility animate-ripple {
+  animation: ripple var(--amino-ripple-group-duration, 600ms) ease-out
+    forwards;
+}
+
+/* Fix Collapse grid animation in Tailwind v4 —
+   transition-[grid-template-rows,grid-template-columns] doesn't apply
+   duration/easing correctly. Override with transition-property: all. */
+.grid.transition-\[grid-template-rows\,grid-template-columns\] {
+  transition-property: all;
+}
 /* GlowWrapper ::after positioning and background (shared rule, not per-instance) */
 @layer components {
   [style*='--amino-glow-wrapper-x']::after {
