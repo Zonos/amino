@@ -202,7 +202,7 @@ export const FilterWrapper = ({
               size={24}
             />
           )}
-          <Text className="pr-1 pl-1" fontWeight={600}>
+          <Text className="pr-1 pl-1" color="textColor" fontWeight={600}>
             {label}
           </Text>
         </div>
@@ -219,7 +219,7 @@ export const FilterWrapper = ({
           onClick={handleOpenDropdown}
           type="button"
         >
-          <Text className="pr-1 pl-1 font-semibold text-blue-600">
+          <Text className="pr-1 pl-1" color="blue600" fontWeight={600}>
             {filterText}
           </Text>
           <ChevronDownIcon size={24} />

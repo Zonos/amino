@@ -117,6 +117,7 @@ export const Collapse = ({
       )}
       style={{
         ...style,
+        transitionProperty: 'all',
         ...(isHorizontal
           ? { gridTemplateColumns: gridTemplate }
           : { gridTemplateRows: gridTemplate }),

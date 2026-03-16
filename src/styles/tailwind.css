@@ -22,12 +22,6 @@
     forwards;
 }
 
-/* Fix Collapse grid animation in Tailwind v4 —
-   transition-[grid-template-rows,grid-template-columns] doesn't apply
-   duration/easing correctly. Override with transition-property: all. */
-.grid.transition-\[grid-template-rows\,grid-template-columns\] {
-  transition-property: all;
-}
 /* GlowWrapper ::after positioning and background (shared rule, not per-instance) */
 @layer components {
   [style*='--amino-glow-wrapper-x']::after {

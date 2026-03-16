@@ -178,3 +178,21 @@ h6 {
 .no-scroll {
   overflow: hidden;
 }
+
+/* Ripple animation for RippleGroup button effect */
+@keyframes ripple {
+  from {
+    opacity: var(--amino-ripple-group-opacity, 0.12);
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.animate-ripple {
+  animation: ripple var(--amino-ripple-group-duration, 600ms) ease-out
+    forwards;
+}
