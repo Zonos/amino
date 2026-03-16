@@ -2,6 +2,8 @@
 
 /* Pivot table */
 @import url('pivot-table.css');
+/* Table night-theme overrides (avoids Tailwind dark: + arbitrary variant :is() warnings) */
+@import url('table-theme-overrides.css');
 /* Split react */
 @import url('split-react.css');
 

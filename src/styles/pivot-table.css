@@ -468,3 +468,16 @@
     opacity: 1;
   }
 }
+
+[data-theme='night'] .amino-pivot-table .rdg-row {
+  background-color: var(--amino-gray-50);
+}
+[data-theme='night'] .amino-pivot-table .rdg-header-row {
+  background-color: var(--amino-gray-100);
+}
+[data-theme='night'] .amino-pivot-table .rdg-summary-row {
+  background-color: var(--amino-gray-100);
+}
+[data-theme='night'] .amino-pivot-table .rdg-cell {
+  border-color: var(--amino-gray-400);
+}

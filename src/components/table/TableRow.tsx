@@ -30,7 +30,7 @@ export function TableRow({
       className={cn(
         withHover && 'hover:bg-gray-50 dark:hover:bg-gray-100',
         '[&_th_*]:text-amino-s [&_th]:text-gray-800 dark:[&_th]:text-gray-600',
-        active && '[tbody_&]:bg-gray-50 dark:[tbody_&]:bg-gray-100',
+        active && 'amino-table-row-active in-[tbody]:bg-gray-50',
         className,
       )}
       data-testid={rowTestId}

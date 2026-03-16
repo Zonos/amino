@@ -359,14 +359,14 @@ export const SimpleTable = <T extends object>({
     >
       <table
         className={cn(
-          'text-amino-base h-fit w-full border-separate border-spacing-0',
+          'amino-simple-table text-amino-base h-fit w-full border-separate border-spacing-0',
           '[&>tbody>tr]:h-12',
           `[&>thead>tr]:border-b-amino-subtle [&>thead]:no-underline
           [&>thead>tr]:h-12 [&>thead>tr]:border-b`,
           `[&>thead>tr>th]:bg-gray-0 [&>thead>tr>th]:p-amino-12
           [&>thead>tr>th]:border-b-amino-subtle [&>thead>tr>th]:sticky
           [&>thead>tr>th]:top-0 [&>thead>tr>th]:z-1 [&>thead>tr>th]:border-b
-          [&>thead>tr>th]:whitespace-nowrap [&>thead>tr>th]:dark:bg-gray-50`,
+          [&>thead>tr>th]:whitespace-nowrap`,
           '[&>thead>tr>th.p-0]:p-0',
           collapsible.enabled &&
             `[&_tr>td:last-child]:w-10 [&_tr>td:last-child>div]:p-0
