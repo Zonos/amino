@@ -24,7 +24,8 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
   const renderSplitItem = ({ id }: { id: number }) => (
     <div
       key={id}
-      className="flex h-[100px] items-center justify-center border border-gray-300"
+      className="flex h-[100px] items-center justify-center border
+        border-gray-300"
     >
       <Text type="header">{id}</Text>
     </div>
@@ -32,7 +33,7 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
 
   return (
     <VStack>
-      <div className="flex gap-amino-12">
+      <div className="gap-amino-12 flex">
         <Button onClick={() => setIsCollapse(!isCollapse)}>
           {isCollapse ? `Collapse all (Except the first one)` : `Expand all`}
         </Button>
@@ -55,7 +56,10 @@ const Template: StoryFn<SplitPanelProps> = ({ ...props }: SplitPanelProps) => {
         </Button>
       </div>
       <SplitPanelComponent
-        className="[&_.pane:first-child]:rounded-l-amino8 [&_.pane:first-child>div]:rounded-l-amino8 [&_.pane:last-child]:rounded-r-amino8 [&_.pane:last-child>div]:rounded-r-amino8"
+        className="[&_.pane:first-child]:rounded-l-amino8
+          [&_.pane:first-child>div]:rounded-l-amino8
+          [&_.pane:last-child]:rounded-r-amino8
+          [&_.pane:last-child>div]:rounded-r-amino8"
         collapseAll={isCollapse}
         {...props}
         onSetSizes={setSizes}

@@ -28,7 +28,7 @@ This file lists all available components with basic metadata to support efficien
       "category": "inputs",
       "tags": ["interactive", "form", "action"],
       "path": "/components/button"
-    },
+    }
     // Additional components
   ],
   "categories": [
@@ -36,7 +36,7 @@ This file lists all available components with basic metadata to support efficien
       "id": "inputs",
       "name": "Input Components",
       "components": ["button", "input", "select", "checkbox"]
-    },
+    }
     // Additional categories
   ]
 }
@@ -62,7 +62,7 @@ Each component has its own JSON file with comprehensive documentation:
         "default": "primary",
         "required": false,
         "values": ["primary", "secondary", "tertiary", "ghost"]
-      },
+      }
       // Additional props
     ],
     "interfaces": [
@@ -73,10 +73,10 @@ Each component has its own JSON file with comprehensive documentation:
             "name": "variant",
             "type": "ButtonVariant",
             "description": "The visual style variant of the button"
-          },
+          }
           // Additional properties
         ]
-      },
+      }
       // Additional interfaces
     ],
     "types": [
@@ -84,7 +84,7 @@ Each component has its own JSON file with comprehensive documentation:
         "name": "ButtonVariant",
         "type": "string",
         "values": ["primary", "secondary", "tertiary", "ghost"]
-      },
+      }
       // Additional types
     ]
   },
@@ -94,7 +94,7 @@ Each component has its own JSON file with comprehensive documentation:
       "name": "Primary Button",
       "description": "Default primary button style",
       "code": "<Button variant=\"primary\">Click Me</Button>"
-    },
+    }
     // Additional examples
   ],
   "usage": {

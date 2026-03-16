@@ -23,7 +23,7 @@ export const DateControlsWrapper = ({
 }: BaseProps & { children: ReactNode }) => (
   <div
     className={cn(
-      'w-full grid auto-cols-max gap-2 grid-flow-col items-center',
+      'grid w-full auto-cols-max grid-flow-col items-center gap-2',
       className,
     )}
     style={style}

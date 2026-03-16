@@ -317,17 +317,24 @@ const ValueColumn = ({ name, value }: ValueColumnProps) => {
   const displayValue = getDisplayValue();
 
   return (
-    <div className="min-w-[260px] max-w-[320px] shrink-0 overflow-y-auto border-r border-border-color bg-surface dark:bg-gray-800 dark:border-gray-700">
+    <div
+      className="border-border-color bg-surface max-w-[320px] min-w-[260px]
+        shrink-0 overflow-y-auto border-r dark:border-gray-700 dark:bg-gray-800"
+    >
       <div className="flex items-center gap-2 bg-blue-600 px-3 py-2.5">
-        <span className="flex size-5 shrink-0 items-center justify-center rounded bg-blue-500 text-[10px] font-semibold text-white">
+        <span
+          className="flex size-5 shrink-0 items-center justify-center rounded
+            bg-blue-500 text-[10px] font-semibold text-white"
+        >
           {getTypeIcon(type)}
         </span>
-        <span className="whitespace-nowrap text-[13px] font-medium text-white">
+        <span className="text-[13px] font-medium whitespace-nowrap text-white">
           {name}
         </span>
         <span
           className={clsx(
-            'ml-auto max-w-[180px] overflow-hidden text-ellipsis whitespace-nowrap font-mono text-[13px]',
+            `ml-auto max-w-[180px] overflow-hidden font-mono text-[13px]
+            text-ellipsis whitespace-nowrap`,
             getValueClass(),
           )}
         >
@@ -401,8 +408,14 @@ const Column = ({
 
   if (entries.length === 0) {
     return (
-      <div className="w-[280px] min-w-[280px] max-w-[280px] shrink-0 grow-0 overflow-y-auto border-r border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar]:w-1.5">
-        <div className="p-6 text-center italic text-gray-500">Empty</div>
+      <div
+        className="border-border-color bg-surface w-[280px] max-w-[280px]
+          min-w-[280px] shrink-0 grow-0 overflow-y-auto border-r
+          dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:w-1.5
+          [&::-webkit-scrollbar-thumb]:rounded
+          [&::-webkit-scrollbar-thumb]:bg-gray-300"
+      >
+        <div className="p-6 text-center text-gray-500 italic">Empty</div>
       </div>
     );
   }
@@ -410,7 +423,11 @@ const Column = ({
   return (
     <div
       ref={columnRef}
-      className="w-[280px] min-w-[280px] max-w-[280px] shrink-0 grow-0 overflow-y-auto border-r border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar]:w-1.5"
+      className="border-border-color bg-surface w-[280px] max-w-[280px]
+        min-w-[280px] shrink-0 grow-0 overflow-y-auto border-r
+        dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:w-1.5
+        [&::-webkit-scrollbar-thumb]:rounded
+        [&::-webkit-scrollbar-thumb]:bg-gray-300"
     >
       {entries.map(entry => {
         const isExpandable = entry.type === 'object' || entry.type === 'array';
@@ -420,9 +437,12 @@ const Column = ({
           <button
             key={entry.key}
             className={clsx(
-              'flex w-full cursor-pointer items-center gap-2 border-none bg-transparent px-3 py-2.5 text-left transition-colors duration-100 hover:bg-gray-50 dark:hover:bg-gray-700',
+              `flex w-full cursor-pointer items-center gap-2 border-none
+              bg-transparent px-3 py-2.5 text-left transition-colors
+              duration-100 hover:bg-gray-50 dark:hover:bg-gray-700`,
               isSelected &&
-                'bg-blue-600 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-600',
+                `bg-blue-600 hover:bg-blue-600 dark:bg-blue-600
+                dark:hover:bg-blue-600`,
             )}
             data-key={entry.key}
             onClick={() => {
@@ -434,7 +454,9 @@ const Column = ({
           >
             <span
               className={clsx(
-                'flex size-5 shrink-0 items-center justify-center rounded bg-gray-100 text-[10px] font-semibold text-gray-500 dark:bg-gray-700 dark:text-gray-400',
+                `flex size-5 shrink-0 items-center justify-center rounded
+                bg-gray-100 text-[10px] font-semibold text-gray-500
+                dark:bg-gray-700 dark:text-gray-400`,
                 isSelected &&
                   'bg-blue-500 text-white dark:bg-blue-500 dark:text-white',
               )}
@@ -443,7 +465,8 @@ const Column = ({
             </span>
             <span
               className={clsx(
-                'flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-medium text-gray-800 dark:text-gray-200',
+                `flex-1 overflow-hidden text-[13px] font-medium text-ellipsis
+                whitespace-nowrap text-gray-800 dark:text-gray-200`,
                 isSelected && 'text-white dark:text-white',
               )}
               title={entry.key}
@@ -452,7 +475,8 @@ const Column = ({
             </span>
             <span
               className={clsx(
-                'max-w-[100px] shrink-0 overflow-hidden text-ellipsis whitespace-nowrap text-xs text-gray-500 dark:text-gray-500',
+                `max-w-[100px] shrink-0 overflow-hidden text-xs text-ellipsis
+                whitespace-nowrap text-gray-500 dark:text-gray-500`,
                 isSelected && 'text-blue-200 dark:text-blue-200',
               )}
               title={getTooltipText(entry.value, entry.type)}
@@ -546,7 +570,7 @@ const TreeNode = ({
         );
       case 'null':
         return (
-          <span className="italic text-gray-500 dark:text-gray-500">null</span>
+          <span className="text-gray-500 italic dark:text-gray-500">null</span>
         );
       default:
         return null;
@@ -577,9 +601,11 @@ const TreeNode = ({
     <div className="block">
       <div
         className={clsx(
-          'relative mx-2 flex cursor-pointer items-center gap-1 rounded px-2 py-1 hover:bg-gray-50 dark:hover:bg-gray-800',
+          `relative mx-2 flex cursor-pointer items-center gap-1 rounded px-2
+          py-1 hover:bg-gray-50 dark:hover:bg-gray-800`,
           isSelected &&
-            'bg-blue-50 hover:bg-blue-100 dark:bg-gray-700 dark:hover:bg-gray-600',
+            `bg-blue-50 hover:bg-blue-100 dark:bg-gray-700
+            dark:hover:bg-gray-600`,
         )}
         data-path={JSON.stringify(pathArray)}
         onClick={handleRowClick}
@@ -591,7 +617,10 @@ const TreeNode = ({
         tabIndex={0}
       >
         {isExpandable && (
-          <span className="flex size-[18px] items-center justify-center text-gray-500">
+          <span
+            className="flex size-[18px] items-center justify-center
+              text-gray-500"
+          >
             {isExpanded ? (
               <ChevronDownIcon size={14} />
             ) : (
@@ -601,7 +630,11 @@ const TreeNode = ({
         )}
         {!isExpandable && <span className="w-[18px]" />}
 
-        <span className="mr-1 flex size-[18px] shrink-0 items-center justify-center rounded-[3px] bg-gray-100 text-[9px] font-semibold text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+        <span
+          className="mr-1 flex size-[18px] shrink-0 items-center justify-center
+            rounded-[3px] bg-gray-100 text-[9px] font-semibold text-gray-500
+            dark:bg-gray-700 dark:text-gray-400"
+        >
           {getTypeIcon(type)}
         </span>
         <span
@@ -629,7 +662,11 @@ const TreeNode = ({
 
         {isHovered && (
           <button
-            className="absolute right-2 top-1/2 flex size-[22px] -translate-y-1/2 cursor-pointer items-center justify-center rounded border-none bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-gray-200"
+            className="absolute top-1/2 right-2 flex size-[22px]
+              -translate-y-1/2 cursor-pointer items-center justify-center
+              rounded border-none bg-gray-100 text-gray-600 hover:bg-gray-200
+              hover:text-gray-800 dark:bg-gray-700 dark:text-gray-400
+              dark:hover:bg-gray-600 dark:hover:text-gray-200"
             onClick={e => {
               e.stopPropagation();
               onCopy(value);
@@ -767,7 +804,10 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
 
   return (
     <div className="relative flex h-full flex-col">
-      <div className="flex items-center gap-4 border-b border-border-color bg-surface px-4 py-2 dark:border-gray-700 dark:bg-gray-900">
+      <div
+        className="border-border-color bg-surface flex items-center gap-4
+          border-b px-4 py-2 dark:border-gray-700 dark:bg-gray-900"
+      >
         <Button
           icon={<CopyIcon size={16} />}
           onClick={onCopy}
@@ -782,40 +822,70 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
       </div>
       <div
         ref={contentRef}
-        className="flex flex-1 overflow-auto scroll-smooth bg-gray-900 dark:bg-[#1a1a2e] [&::-webkit-scrollbar-thumb]:rounded-[7px] [&::-webkit-scrollbar-thumb]:border-[3px] [&::-webkit-scrollbar-thumb]:border-transparent [&::-webkit-scrollbar-thumb]:bg-clip-content [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-thumb:hover]:bg-white/30 [&::-webkit-scrollbar-thumb:hover]:bg-clip-content [&::-webkit-scrollbar-track]:bg-black/20 [&::-webkit-scrollbar]:size-3.5"
+        className="flex flex-1 overflow-auto scroll-smooth bg-gray-900
+          dark:bg-[#1a1a2e] [&::-webkit-scrollbar]:size-3.5
+          [&::-webkit-scrollbar-thumb]:rounded-[7px]
+          [&::-webkit-scrollbar-thumb]:border-[3px]
+          [&::-webkit-scrollbar-thumb]:border-transparent
+          [&::-webkit-scrollbar-thumb]:bg-white/20
+          [&::-webkit-scrollbar-thumb]:bg-clip-content
+          [&::-webkit-scrollbar-thumb:hover]:bg-white/30
+          [&::-webkit-scrollbar-thumb:hover]:bg-clip-content
+          [&::-webkit-scrollbar-track]:bg-black/20"
       >
-        <div className="sticky left-0 z-[1] shrink-0 select-none bg-black/20 py-4 dark:bg-black/30">
+        <div
+          className="sticky left-0 z-[1] shrink-0 bg-black/20 py-4 select-none
+            dark:bg-black/30"
+        >
           {/* Line numbers are static, index as key is appropriate */}
           {lines.map((_, i) => (
             <div
               key={i}
-              className="px-4 text-right font-mono text-[13px] leading-[1.5] text-gray-600"
+              className="px-4 text-right font-mono text-[13px] leading-[1.5]
+                text-gray-600"
             >
               {i + 1}
             </div>
           ))}
         </div>
-        <pre className="m-0 min-w-0 flex-1 p-4 font-mono text-[13px] leading-[1.5] text-gray-200 dark:text-gray-100">
+        <pre
+          className="m-0 min-w-0 flex-1 p-4 font-mono text-[13px] leading-[1.5]
+            text-gray-200 dark:text-gray-100"
+        >
           <code className="block whitespace-pre">{jsonString}</code>
         </pre>
       </div>
 
       {/* Scroll navigation */}
       {showScrollButtons && (
-        <div className="absolute bottom-4 right-4 z-10 flex flex-col items-end gap-2">
-          <div className="rounded bg-[rgba(30,30,46,0.95)] px-2 py-1 font-mono text-[11px] text-white/70 backdrop-blur">
+        <div
+          className="absolute right-4 bottom-4 z-10 flex flex-col items-end
+            gap-2"
+        >
+          <div
+            className="rounded bg-[rgba(30,30,46,0.95)] px-2 py-1 font-mono
+              text-[11px] text-white/70 backdrop-blur"
+          >
             Line {currentLine.toLocaleString()} /{' '}
             {lines.length.toLocaleString()}
           </div>
           <div className="h-[60px] w-1 overflow-hidden rounded-sm bg-white/10">
             <div
-              className="w-full rounded-sm bg-blue-500 transition-[height] duration-100"
+              className="w-full rounded-sm bg-blue-500 transition-[height]
+                duration-100"
               style={{ height: `${scrollProgress * 100}%` }}
             />
           </div>
-          <div className="flex flex-col gap-1 rounded-lg border border-white/10 bg-[rgba(30,30,46,0.95)] p-1.5 backdrop-blur">
+          <div
+            className="flex flex-col gap-1 rounded-lg border border-white/10
+              bg-[rgba(30,30,46,0.95)] p-1.5 backdrop-blur"
+          >
             <button
-              className="flex size-7 items-center justify-center rounded border-none bg-transparent text-white/60 transition-all duration-150 hover:bg-white/10 hover:text-white active:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex size-7 items-center justify-center rounded
+                border-none bg-transparent text-white/60 transition-all
+                duration-150 hover:bg-white/10 hover:text-white
+                active:bg-white/15 disabled:cursor-not-allowed
+                disabled:opacity-30"
               disabled={scrollProgress < 0.01}
               onClick={scrollToTop}
               title="Scroll to top (Cmd/Ctrl+Home)"
@@ -831,7 +901,11 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
               </svg>
             </button>
             <button
-              className="flex size-7 items-center justify-center rounded border-none bg-transparent text-white/60 transition-all duration-150 hover:bg-white/10 hover:text-white active:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex size-7 items-center justify-center rounded
+                border-none bg-transparent text-white/60 transition-all
+                duration-150 hover:bg-white/10 hover:text-white
+                active:bg-white/15 disabled:cursor-not-allowed
+                disabled:opacity-30"
               disabled={scrollProgress < 0.01}
               onClick={scrollPageUp}
               title="Page up (PageUp)"
@@ -847,7 +921,11 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
               </svg>
             </button>
             <button
-              className="flex size-7 items-center justify-center rounded border-none bg-transparent text-white/60 transition-all duration-150 hover:bg-white/10 hover:text-white active:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex size-7 items-center justify-center rounded
+                border-none bg-transparent text-white/60 transition-all
+                duration-150 hover:bg-white/10 hover:text-white
+                active:bg-white/15 disabled:cursor-not-allowed
+                disabled:opacity-30"
               disabled={scrollProgress > 0.99}
               onClick={scrollPageDown}
               title="Page down (PageDown)"
@@ -863,7 +941,11 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
               </svg>
             </button>
             <button
-              className="flex size-7 items-center justify-center rounded border-none bg-transparent text-white/60 transition-all duration-150 hover:bg-white/10 hover:text-white active:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30"
+              className="flex size-7 items-center justify-center rounded
+                border-none bg-transparent text-white/60 transition-all
+                duration-150 hover:bg-white/10 hover:text-white
+                active:bg-white/15 disabled:cursor-not-allowed
+                disabled:opacity-30"
               disabled={scrollProgress > 0.99}
               onClick={scrollToBottom}
               title="Scroll to bottom (Cmd/Ctrl+End)"
@@ -897,7 +979,7 @@ const JsonSyntax = ({ data, indent = 0 }: JsonSyntaxProps) => {
 
   if (data === null) {
     return (
-      <span className="italic text-gray-500 dark:text-gray-500">null</span>
+      <span className="text-gray-500 italic dark:text-gray-500">null</span>
     );
   }
 
@@ -1047,9 +1129,16 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
 
   return (
     <div className="p-0">
-      <div className="mb-4 flex flex-col gap-3 border-b border-gray-100 bg-gradient-to-b from-gray-50 to-transparent px-4 pb-4 pt-4 dark:border-gray-700 dark:from-gray-800">
+      <div
+        className="mb-4 flex flex-col gap-3 border-b border-gray-100
+          bg-gradient-to-b from-gray-50 to-transparent px-4 pt-4 pb-4
+          dark:border-gray-700 dark:from-gray-800"
+      >
         <div className="flex items-center gap-2.5">
-          <div className="break-all font-mono text-base font-semibold text-blue-600 dark:text-blue-400">
+          <div
+            className="font-mono text-base font-semibold break-all text-blue-600
+              dark:text-blue-400"
+          >
             {path.length === 0 ? (
               <span className="font-medium text-gray-500 dark:text-gray-500">
                 root
@@ -1058,12 +1147,19 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
               path[path.length - 1]
             )}
           </div>
-          <span className="inline-flex shrink-0 rounded px-2.5 py-[3px] text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300">
+          <span
+            className="inline-flex shrink-0 rounded bg-gray-100 px-2.5 py-[3px]
+              text-[10px] font-bold tracking-wide text-gray-600 uppercase
+              dark:bg-gray-700 dark:text-gray-300"
+          >
             {type.toUpperCase()}
           </span>
         </div>
         {path.length > 1 && (
-          <div className="break-all font-mono text-[11px] text-gray-500 dark:text-gray-500">
+          <div
+            className="font-mono text-[11px] break-all text-gray-500
+              dark:text-gray-500"
+          >
             {path.join('.')}
           </div>
         )}
@@ -1103,10 +1199,16 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
       </div>
 
       <div className="px-4 pb-4">
-        <span className="mb-2 block text-[11px] font-semibold uppercase tracking-wide text-gray-500">
+        <span
+          className="mb-2 block text-[11px] font-semibold tracking-wide
+            text-gray-500 uppercase"
+        >
           {isPrimitive ? 'Value' : 'Preview'}
         </span>
-        <pre className="m-0 break-words whitespace-pre-wrap rounded-md bg-gray-50 px-3 py-2 font-mono text-[13px] leading-relaxed dark:bg-gray-800">
+        <pre
+          className="m-0 rounded-md bg-gray-50 px-3 py-2 font-mono text-[13px]
+            leading-relaxed break-words whitespace-pre-wrap dark:bg-gray-800"
+        >
           <JsonSyntax data={value} />
         </pre>
       </div>
@@ -1713,7 +1815,10 @@ export const JsonVisionViewer = ({
 
   if (!data) {
     return (
-      <div className="flex h-full flex-col overflow-hidden rounded-lg bg-surface dark:bg-gray-900">
+      <div
+        className="bg-surface flex h-full flex-col overflow-hidden rounded-lg
+          dark:bg-gray-900"
+      >
         <div className="flex h-full items-center justify-center p-10">
           <Text color="gray600">No data available</Text>
         </div>
@@ -1724,20 +1829,37 @@ export const JsonVisionViewer = ({
   return (
     <div
       ref={containerRef}
-      className="flex h-full flex-col overflow-hidden rounded-lg bg-surface dark:bg-gray-900"
+      className="bg-surface flex h-full flex-col overflow-hidden rounded-lg
+        dark:bg-gray-900"
     >
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-color bg-surface px-4 py-3 dark:border-gray-700 dark:bg-gray-900">
+      <div
+        className="border-border-color bg-surface flex flex-wrap items-center
+          justify-between gap-4 border-b px-4 py-3 dark:border-gray-700
+          dark:bg-gray-900"
+      >
         <Flex alignItems="center" gap={16}>
           {title && <Text fontWeight={600}>{title}</Text>}
 
           {/* View Mode Tabs */}
-          <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1 dark:bg-gray-800">
+          <div
+            className="flex items-center gap-1 rounded-lg bg-gray-100 p-1
+              dark:bg-gray-800"
+          >
             <button
               className={clsx(
-                'flex items-center gap-1.5 whitespace-nowrap rounded-md border-none px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-all duration-150 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 [&>svg]:shrink-0',
+                `flex items-center gap-1.5 rounded-md border-none px-3 py-1.5
+                text-[13px] font-medium whitespace-nowrap text-gray-600
+                transition-all duration-150 hover:bg-gray-200
+                hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
+                dark:hover:text-gray-200 [&>svg]:shrink-0`,
                 viewMode === 'tree' &&
-                  'bg-surface text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-surface hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
+                  `bg-surface hover:bg-surface text-blue-600
+                  shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:text-blue-600
+                  dark:bg-gray-700 dark:text-blue-400
+                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700
+                  dark:hover:text-blue-400 [&>svg]:text-blue-600
+                  dark:[&>svg]:text-blue-400`,
               )}
               onClick={() => setViewMode('tree')}
               type="button"
@@ -1754,9 +1876,18 @@ export const JsonVisionViewer = ({
             </button>
             <button
               className={clsx(
-                'flex items-center gap-1.5 whitespace-nowrap rounded-md border-none px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-all duration-150 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 [&>svg]:shrink-0',
+                `flex items-center gap-1.5 rounded-md border-none px-3 py-1.5
+                text-[13px] font-medium whitespace-nowrap text-gray-600
+                transition-all duration-150 hover:bg-gray-200
+                hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
+                dark:hover:text-gray-200 [&>svg]:shrink-0`,
                 viewMode === 'column' &&
-                  'bg-surface text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-surface hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
+                  `bg-surface hover:bg-surface text-blue-600
+                  shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:text-blue-600
+                  dark:bg-gray-700 dark:text-blue-400
+                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700
+                  dark:hover:text-blue-400 [&>svg]:text-blue-600
+                  dark:[&>svg]:text-blue-400`,
               )}
               onClick={() => setViewMode('column')}
               type="button"
@@ -1775,9 +1906,18 @@ export const JsonVisionViewer = ({
             </button>
             <button
               className={clsx(
-                'flex items-center gap-1.5 whitespace-nowrap rounded-md border-none px-3 py-1.5 text-[13px] font-medium text-gray-600 transition-all duration-150 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 [&>svg]:shrink-0',
+                `flex items-center gap-1.5 rounded-md border-none px-3 py-1.5
+                text-[13px] font-medium whitespace-nowrap text-gray-600
+                transition-all duration-150 hover:bg-gray-200
+                hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
+                dark:hover:text-gray-200 [&>svg]:shrink-0`,
                 viewMode === 'editor' &&
-                  'bg-surface text-blue-600 shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:bg-surface hover:text-blue-600 dark:bg-gray-700 dark:text-blue-400 dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700 dark:hover:text-blue-400 [&>svg]:text-blue-600 dark:[&>svg]:text-blue-400',
+                  `bg-surface hover:bg-surface text-blue-600
+                  shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:text-blue-600
+                  dark:bg-gray-700 dark:text-blue-400
+                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700
+                  dark:hover:text-blue-400 [&>svg]:text-blue-600
+                  dark:[&>svg]:text-blue-400`,
               )}
               onClick={() => setViewMode('editor')}
               type="button"
@@ -1795,15 +1935,23 @@ export const JsonVisionViewer = ({
           </div>
 
           {/* Sort Mode Tabs */}
-          <div className="ml-2 flex items-center gap-1 border-l border-gray-200 pl-3 dark:border-gray-700">
+          <div
+            className="ml-2 flex items-center gap-1 border-l border-gray-200
+              pl-3 dark:border-gray-700"
+          >
             <span className="mr-1 text-xs text-gray-500 dark:text-gray-500">
               Sort:
             </span>
             <button
               className={clsx(
-                'rounded border-none bg-transparent px-2 py-1 text-xs font-medium text-gray-500 transition-all duration-150 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-gray-300',
+                `rounded border-none bg-transparent px-2 py-1 text-xs
+                font-medium text-gray-500 transition-all duration-150
+                hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500
+                dark:hover:bg-gray-700 dark:hover:text-gray-300`,
                 sortMode === 'original' &&
-                  'bg-blue-100 text-blue-700 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-900 dark:hover:text-blue-300',
+                  `bg-blue-100 text-blue-700 hover:bg-blue-100
+                  hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300
+                  dark:hover:bg-blue-900 dark:hover:text-blue-300`,
               )}
               onClick={() => setSortMode('original')}
               title="Original order from API"
@@ -1813,9 +1961,14 @@ export const JsonVisionViewer = ({
             </button>
             <button
               className={clsx(
-                'rounded border-none bg-transparent px-2 py-1 text-xs font-medium text-gray-500 transition-all duration-150 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-gray-300',
+                `rounded border-none bg-transparent px-2 py-1 text-xs
+                font-medium text-gray-500 transition-all duration-150
+                hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500
+                dark:hover:bg-gray-700 dark:hover:text-gray-300`,
                 sortMode === 'keys-asc' &&
-                  'bg-blue-100 text-blue-700 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-900 dark:hover:text-blue-300',
+                  `bg-blue-100 text-blue-700 hover:bg-blue-100
+                  hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300
+                  dark:hover:bg-blue-900 dark:hover:text-blue-300`,
               )}
               onClick={() => setSortMode('keys-asc')}
               title="Sort keys A to Z"
@@ -1825,9 +1978,14 @@ export const JsonVisionViewer = ({
             </button>
             <button
               className={clsx(
-                'rounded border-none bg-transparent px-2 py-1 text-xs font-medium text-gray-500 transition-all duration-150 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-gray-300',
+                `rounded border-none bg-transparent px-2 py-1 text-xs
+                font-medium text-gray-500 transition-all duration-150
+                hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500
+                dark:hover:bg-gray-700 dark:hover:text-gray-300`,
                 sortMode === 'keys-desc' &&
-                  'bg-blue-100 text-blue-700 hover:bg-blue-100 hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-900 dark:hover:text-blue-300',
+                  `bg-blue-100 text-blue-700 hover:bg-blue-100
+                  hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300
+                  dark:hover:bg-blue-900 dark:hover:text-blue-300`,
               )}
               onClick={() => setSortMode('keys-desc')}
               title="Sort keys Z to A"
@@ -1846,7 +2004,8 @@ export const JsonVisionViewer = ({
               className="relative flex items-center"
             >
               <SearchIcon
-                className="pointer-events-none absolute left-2.5 z-[1] text-gray-500"
+                className="pointer-events-none absolute left-2.5 z-[1]
+                  text-gray-500"
                 size={16}
               />
               <Input
@@ -1864,30 +2023,50 @@ export const JsonVisionViewer = ({
                 value={searchTerm}
               />
               {showSearchResults && searchResults.length > 0 && (
-                <div className="absolute left-0 right-0 top-full z-[100] mt-1 min-w-[280px] max-h-[300px] overflow-y-auto rounded-lg border border-border-color bg-surface shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700 dark:bg-gray-800">
+                <div
+                  className="border-border-color bg-surface absolute top-full
+                    right-0 left-0 z-[100] mt-1 max-h-[300px] min-w-[280px]
+                    overflow-y-auto rounded-lg border
+                    shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700
+                    dark:bg-gray-800"
+                >
                   {searchResults.map((result, idx) => (
                     <button
                       // Path + matchType + index ensures uniqueness for duplicate paths
 
                       key={`${result.path.join('.')}-${result.matchType}-${idx}`}
                       className={clsx(
-                        'flex w-full flex-col items-start gap-0.5 border-b border-gray-100 bg-transparent px-3 py-2 text-left transition-colors duration-100 last:border-b-0 hover:bg-blue-50 dark:border-gray-700 dark:hover:bg-gray-700',
+                        `flex w-full flex-col items-start gap-0.5 border-b
+                        border-gray-100 bg-transparent px-3 py-2 text-left
+                        transition-colors duration-100 last:border-b-0
+                        hover:bg-blue-50 dark:border-gray-700
+                        dark:hover:bg-gray-700`,
                         idx === selectedSearchIndex &&
                           'bg-blue-50 dark:bg-gray-700',
                       )}
                       onClick={() => handleSearchResultClick(result)}
                       type="button"
                     >
-                      <span className="break-all font-mono text-xs text-blue-600 dark:text-blue-400">
+                      <span
+                        className="font-mono text-xs break-all text-blue-600
+                          dark:text-blue-400"
+                      >
                         {result.path.join('.')}
                       </span>
-                      <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-[11px] text-gray-500 dark:text-gray-500">
+                      <span
+                        className="max-w-full overflow-hidden text-[11px]
+                          text-ellipsis whitespace-nowrap text-gray-500
+                          dark:text-gray-500"
+                      >
                         {result.matchType === 'key' ? '(key)' : result.preview}
                       </span>
                     </button>
                   ))}
                   {searchResults.length === 50 && (
-                    <div className="border-t border-gray-100 px-3 py-2 text-center text-[11px] text-gray-500 dark:border-gray-700">
+                    <div
+                      className="border-t border-gray-100 px-3 py-2 text-center
+                        text-[11px] text-gray-500 dark:border-gray-700"
+                    >
                       Showing first 50 results...
                     </div>
                   )}
@@ -1896,8 +2075,17 @@ export const JsonVisionViewer = ({
               {showSearchResults &&
                 searchTerm.length >= 2 &&
                 searchResults.length === 0 && (
-                  <div className="absolute left-0 right-0 top-full z-[100] mt-1 min-w-[280px] max-h-[300px] overflow-y-auto rounded-lg border border-border-color bg-surface shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700 dark:bg-gray-800">
-                    <div className="px-3 py-4 text-center text-[13px] text-gray-500">
+                  <div
+                    className="border-border-color bg-surface absolute top-full
+                      right-0 left-0 z-[100] mt-1 max-h-[300px] min-w-[280px]
+                      overflow-y-auto rounded-lg border
+                      shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700
+                      dark:bg-gray-800"
+                  >
+                    <div
+                      className="px-3 py-4 text-center text-[13px]
+                        text-gray-500"
+                    >
                       No matches found
                     </div>
                   </div>
@@ -1919,7 +2107,11 @@ export const JsonVisionViewer = ({
           <div className="relative">
             <button
               ref={helpButtonRef}
-              className="flex size-8 items-center justify-center rounded-md border-none bg-transparent text-gray-500 transition-all duration-150 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+              className="flex size-8 items-center justify-center rounded-md
+                border-none bg-transparent text-gray-500 transition-all
+                duration-150 hover:bg-gray-100 hover:text-gray-700
+                dark:text-gray-400 dark:hover:bg-gray-700
+                dark:hover:text-gray-200"
               onClick={() => setShowHelp(!showHelp)}
               title="Tips & shortcuts"
               type="button"
@@ -1927,47 +2119,115 @@ export const JsonVisionViewer = ({
               <HelpIcon size={16} />
             </button>
             {showHelp && (
-              <div className="absolute right-0 top-full z-[100] mt-2 w-[260px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:border-gray-700 dark:bg-gray-800">
-                <div className="px-4 pb-2 pt-3 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+              <div
+                className="absolute top-full right-0 z-[100] mt-2 w-[260px]
+                  overflow-hidden rounded-lg border border-gray-200 bg-white
+                  shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:border-gray-700
+                  dark:bg-gray-800"
+              >
+                <div
+                  className="px-4 pt-3 pb-2 text-[11px] font-semibold
+                    tracking-wide text-gray-500 uppercase dark:text-gray-400"
+                >
                   Keyboard shortcuts
                 </div>
                 <div className="px-4 pb-3">
-                  <div className="flex items-center justify-between py-1.5 text-[13px] text-gray-700 dark:text-gray-300">
-                    <span className="flex items-center gap-1 font-mono [&>kbd]:inline-flex [&>kbd]:min-w-[22px] [&>kbd]:h-[22px] [&>kbd]:items-center [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100 [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600 dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700 dark:[&>kbd]:text-gray-300">
+                  <div
+                    className="flex items-center justify-between py-1.5
+                      text-[13px] text-gray-700 dark:text-gray-300"
+                  >
+                    <span
+                      className="flex items-center gap-1 font-mono
+                        [&>kbd]:inline-flex [&>kbd]:h-[22px]
+                        [&>kbd]:min-w-[22px] [&>kbd]:items-center
+                        [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border
+                        [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100
+                        [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600
+                        dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700
+                        dark:[&>kbd]:text-gray-300"
+                    >
                       <kbd>↑</kbd> <kbd>↓</kbd>
                     </span>
                     <span>Navigate items</span>
                   </div>
-                  <div className="flex items-center justify-between py-1.5 text-[13px] text-gray-700 dark:text-gray-300">
-                    <span className="flex items-center gap-1 font-mono [&>kbd]:inline-flex [&>kbd]:min-w-[22px] [&>kbd]:h-[22px] [&>kbd]:items-center [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100 [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600 dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700 dark:[&>kbd]:text-gray-300">
+                  <div
+                    className="flex items-center justify-between py-1.5
+                      text-[13px] text-gray-700 dark:text-gray-300"
+                  >
+                    <span
+                      className="flex items-center gap-1 font-mono
+                        [&>kbd]:inline-flex [&>kbd]:h-[22px]
+                        [&>kbd]:min-w-[22px] [&>kbd]:items-center
+                        [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border
+                        [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100
+                        [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600
+                        dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700
+                        dark:[&>kbd]:text-gray-300"
+                    >
                       <kbd>←</kbd> <kbd>→</kbd>
                     </span>
                     <span>Collapse/expand</span>
                   </div>
-                  <div className="flex items-center justify-between py-1.5 text-[13px] text-gray-700 dark:text-gray-300">
-                    <span className="flex items-center gap-1 font-mono [&>kbd]:inline-flex [&>kbd]:min-w-[22px] [&>kbd]:h-[22px] [&>kbd]:items-center [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100 [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600 dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700 dark:[&>kbd]:text-gray-300">
+                  <div
+                    className="flex items-center justify-between py-1.5
+                      text-[13px] text-gray-700 dark:text-gray-300"
+                  >
+                    <span
+                      className="flex items-center gap-1 font-mono
+                        [&>kbd]:inline-flex [&>kbd]:h-[22px]
+                        [&>kbd]:min-w-[22px] [&>kbd]:items-center
+                        [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border
+                        [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100
+                        [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600
+                        dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700
+                        dark:[&>kbd]:text-gray-300"
+                    >
                       <kbd>{modKey}</kbd>+<kbd>C</kbd>
                     </span>
                     <span>Copy selection</span>
                   </div>
-                  <div className="flex items-center justify-between py-1.5 text-[13px] text-gray-700 dark:text-gray-300">
-                    <span className="flex items-center gap-1 font-mono [&>kbd]:inline-flex [&>kbd]:min-w-[22px] [&>kbd]:h-[22px] [&>kbd]:items-center [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100 [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600 dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700 dark:[&>kbd]:text-gray-300">
+                  <div
+                    className="flex items-center justify-between py-1.5
+                      text-[13px] text-gray-700 dark:text-gray-300"
+                  >
+                    <span
+                      className="flex items-center gap-1 font-mono
+                        [&>kbd]:inline-flex [&>kbd]:h-[22px]
+                        [&>kbd]:min-w-[22px] [&>kbd]:items-center
+                        [&>kbd]:justify-center [&>kbd]:rounded [&>kbd]:border
+                        [&>kbd]:border-gray-200 [&>kbd]:bg-gray-100
+                        [&>kbd]:px-1.5 [&>kbd]:text-[11px] [&>kbd]:text-gray-600
+                        dark:[&>kbd]:border-gray-600 dark:[&>kbd]:bg-gray-700
+                        dark:[&>kbd]:text-gray-300"
+                    >
                       <kbd>{modKey}</kbd>+<kbd>F</kbd>
                     </span>
                     <span>Search</span>
                   </div>
                 </div>
-                <div className="px-4 pb-2 pt-3 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                <div
+                  className="px-4 pt-3 pb-2 text-[11px] font-semibold
+                    tracking-wide text-gray-500 uppercase dark:text-gray-400"
+                >
                   Tips
                 </div>
                 <div className="px-4 pb-3">
-                  <div className="py-1 text-xs leading-snug text-gray-600 dark:text-gray-400">
+                  <div
+                    className="py-1 text-xs leading-snug text-gray-600
+                      dark:text-gray-400"
+                  >
                     Click any item to see details and copy options
                   </div>
-                  <div className="py-1 text-xs leading-snug text-gray-600 dark:text-gray-400">
+                  <div
+                    className="py-1 text-xs leading-snug text-gray-600
+                      dark:text-gray-400"
+                  >
                     Use Share to copy a link to your current view
                   </div>
-                  <div className="py-1 text-xs leading-snug text-gray-600 dark:text-gray-400">
+                  <div
+                    className="py-1 text-xs leading-snug text-gray-600
+                      dark:text-gray-400"
+                  >
                     Search finds both keys and values
                   </div>
                 </div>
@@ -2002,9 +2262,15 @@ export const JsonVisionViewer = ({
 
       {/* Path Breadcrumb (for column/tree view) */}
       {viewMode !== 'editor' && (
-        <div className="flex items-center overflow-x-auto border-b border-border-color bg-gray-50 px-4 py-2 text-[13px] dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:h-1">
+        <div
+          className="border-border-color flex items-center overflow-x-auto
+            border-b bg-gray-50 px-4 py-2 text-[13px] dark:border-gray-700
+            dark:bg-gray-800 [&::-webkit-scrollbar]:h-1"
+        >
           <button
-            className="cursor-pointer whitespace-nowrap rounded border-none bg-none px-2 py-1 text-[13px] text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-gray-700"
+            className="cursor-pointer rounded border-none bg-none px-2 py-1
+              text-[13px] whitespace-nowrap text-blue-600 hover:bg-blue-50
+              dark:text-blue-400 dark:hover:bg-gray-700"
             onClick={() => setSelectedPath([])}
             type="button"
           >
@@ -2014,7 +2280,9 @@ export const JsonVisionViewer = ({
             <span key={`breadcrumb-${i}-${segment}`}>
               <span className="mx-0.5 text-gray-400 dark:text-gray-600">/</span>
               <button
-                className="cursor-pointer whitespace-nowrap rounded border-none bg-none px-2 py-1 text-[13px] text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-gray-700"
+                className="cursor-pointer rounded border-none bg-none px-2 py-1
+                  text-[13px] whitespace-nowrap text-blue-600 hover:bg-blue-50
+                  dark:text-blue-400 dark:hover:bg-gray-700"
                 onClick={() => setSelectedPath(selectedPath.slice(0, i + 1))}
                 type="button"
               >
@@ -2029,7 +2297,12 @@ export const JsonVisionViewer = ({
       <div className="flex flex-1 flex-col overflow-hidden">
         {viewMode === 'column' && (
           <div className="flex h-full overflow-hidden">
-            <div className="flex flex-1 overflow-x-auto bg-page dark:bg-gray-900 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:h-2">
+            <div
+              className="bg-page flex flex-1 overflow-x-auto dark:bg-gray-900
+                [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded
+                [&::-webkit-scrollbar-thumb]:bg-gray-300
+                [&::-webkit-scrollbar-track]:bg-gray-100"
+            >
               {columns.map((col, index) => (
                 <Column
                   key={`column-${index}`}
@@ -2052,7 +2325,11 @@ export const JsonVisionViewer = ({
                 )}
             </div>
             {currentValue !== undefined && (
-              <div className="w-[400px] shrink-0 grow-0 overflow-y-auto border-l border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800">
+              <div
+                className="border-border-color bg-surface w-[400px] shrink-0
+                  grow-0 overflow-y-auto border-l dark:border-gray-700
+                  dark:bg-gray-800"
+              >
                 <ValuePreview
                   path={selectedPath}
                   value={currentValue as JsonValue}
@@ -2066,7 +2343,8 @@ export const JsonVisionViewer = ({
           <div className="flex h-full flex-1 overflow-hidden">
             <div
               ref={treeContainerRef}
-              className="flex-1 overflow-auto py-2 font-mono text-[13px] leading-normal"
+              className="flex-1 overflow-auto py-2 font-mono text-[13px]
+                leading-normal"
             >
               {Object.entries(sortedData).map(([key, value]) => (
                 <TreeNode
@@ -2084,7 +2362,11 @@ export const JsonVisionViewer = ({
               ))}
             </div>
             {currentValue !== undefined && selectedPath.length > 0 && (
-              <div className="w-[400px] shrink-0 grow-0 overflow-y-auto border-l border-border-color bg-surface dark:border-gray-700 dark:bg-gray-800">
+              <div
+                className="border-border-color bg-surface w-[400px] shrink-0
+                  grow-0 overflow-y-auto border-l dark:border-gray-700
+                  dark:bg-gray-800"
+              >
                 <ValuePreview
                   path={selectedPath}
                   value={currentValue as JsonValue}

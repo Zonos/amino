@@ -74,12 +74,13 @@ export const TableData = <TRow extends Record<string, unknown>>({
         const noItems = currentValue.length === 0;
         const isExpanding = row._expandedKey === column.key;
         return (
-          <div className={cn('flex items-center h-full')}>
+          <div className={cn('flex h-full items-center')}>
             <Tooltip disabled={!noItems} title="This list has no items.">
               <Button
                 className={cn(
                   isExpanding && '[&_svg]:rotate-90',
-                  '[&_svg]:transition-all [&_svg]:duration-300 [&_svg]:ease-[ease]',
+                  `[&_svg]:transition-all [&_svg]:duration-300
+                  [&_svg]:ease-[ease]`,
                 )}
                 disabled={noItems}
                 icon={<ChevronRightCircleIcon />}
@@ -160,7 +161,7 @@ export const TableData = <TRow extends Record<string, unknown>>({
         '[&_&]:pt-amino-4 [&_&]:px-amino-12 [&_&]:pb-amino-24',
       )}
     >
-      <div className={cn('flex justify-end mb-amino-12 items-center')}>
+      <div className={cn('mb-amino-12 flex items-center justify-end')}>
         {!noFilter && (
           <Filter
             columns={columns}

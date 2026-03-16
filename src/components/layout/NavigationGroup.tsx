@@ -80,12 +80,15 @@ export const NavigationItem = ({
 }: NavigationItemProps) => (
   <div
     className={cn(
-      'flex items-center gap-amino-8 h-[28px] px-amino-8 py-amino-4 text-gray-800 dark:text-gray-200 text-amino-base font-medium rounded-amino-6 mb-[2px]',
+      `gap-amino-8 px-amino-8 py-amino-4 text-amino-base rounded-amino-6
+      mb-[2px] flex h-[28px] items-center font-medium text-gray-800
+      dark:text-gray-200`,
       'hover:bg-hover hover:text-gray-1000 dark:hover:text-gray-1000',
-      '[&_svg]:text-gray-600 dark:[&_svg]:text-gray-400 [&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-n4',
+      `[&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-n4
+      [&_svg]:text-gray-600 dark:[&_svg]:text-gray-400`,
       'hover:[&_svg]:text-gray-800 dark:hover:[&_svg]:text-gray-800',
       isActive &&
-        'bg-gray-100 dark:bg-gray-900 text-gray-1000 [&_svg]:text-gray-1000',
+        'text-gray-1000 [&_svg]:text-gray-1000 bg-gray-100 dark:bg-gray-900',
       className,
     )}
     style={style}
@@ -197,13 +200,16 @@ export const NavigationGroup = ({
     <div
       className={cn(
         !collapsed &&
-          '[&_.navigation-item]:text-text-color [&_.navigation-item]:hover:bg-transparent [&_.navigation-item_svg]:text-gray-1000 dark:[&_.navigation-item_svg]:text-gray-100',
+          `[&_.navigation-item]:text-text-color
+          [&_.navigation-item_svg]:text-gray-1000
+          [&_.navigation-item]:hover:bg-transparent
+          dark:[&_.navigation-item_svg]:text-gray-100`,
       )}
     >
       <div className="navigation-item">{content}</div>
     </div>
     <Collapse
-      className="pl-amino-12 ml-[15px] border-l border-border-color"
+      className="pl-amino-12 border-border-color ml-[15px] border-l"
       collapsed={collapsed}
     >
       {children}

@@ -24,7 +24,7 @@ export default DialogMeta;
 const Template: StoryFn<typeof BaseDialog> = ({ children, width, ...rest }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Card label="I am a card">
         <Text type="subheader">Here is some other content</Text>

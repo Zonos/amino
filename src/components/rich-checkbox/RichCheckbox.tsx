@@ -116,9 +116,10 @@ export const RichCheckbox = ({
 }: RichCheckboxProps) => (
   <VStack
     className={cn(
-      '[&_button[data-state="checked"]]:bg-blue-100 [&_button[data-state="checked"]]:border-blue-300',
+      `[&_button[data-state="checked"]]:border-blue-300
+      [&_button[data-state="checked"]]:bg-blue-100`,
       '[&_button[data-state="checked"]]:text-blue-600',
-      '[&_svg]:text-gray-0 [&_svg]:w-3 [&_svg]:h-3',
+      '[&_svg]:text-gray-0 [&_svg]:h-3 [&_svg]:w-3',
       className,
     )}
     spacing={16}
@@ -130,10 +131,12 @@ export const RichCheckbox = ({
         <button
           key={value}
           className={cn(
-            'relative appearance-none bg-raised p-4 pr-10 border border-amino rounded-amino-6',
-            'text-left transition-all duration-150 ease-in-out flex flex-row items-center',
+            `bg-raised border-amino rounded-amino-6 relative appearance-none
+            border p-4 pr-10`,
+            `flex flex-row items-center text-left transition-all duration-150
+            ease-in-out`,
             'hover:bg-hover hover:border-gray-200',
-            'focus:outline-none focus:border-blue-300',
+            'focus:border-blue-300 focus:outline-none',
           )}
           data-state={checked ? 'checked' : ''}
           onClick={e => onClick(e.currentTarget.value)}
@@ -142,7 +145,7 @@ export const RichCheckbox = ({
         >
           <div
             className={cn(
-              'items-center grid',
+              'grid items-center',
               icon && 'grid-cols-[30px_1fr] gap-6',
             )}
           >
@@ -169,7 +172,10 @@ export const RichCheckbox = ({
             </VStack>
           </div>
           {checked && (
-            <div className="absolute right-4 bg-blue-600 rounded-full p-1.25 flex items-center justify-center">
+            <div
+              className="absolute right-4 flex items-center justify-center
+                rounded-full bg-blue-600 p-1.25"
+            >
               <CheckmarkIcon />
             </div>
           )}

@@ -91,7 +91,9 @@ export const SimpleTableRow = <T extends object>({
       const tdClassNames = cn(
         header.textWrapMethod === 'truncate' &&
           !hasRowHoverShowChild &&
-          'max-w-[var(--amino-cell-min-width)] min-w-[var(--amino-cell-min-width)] [&>:first-child]:overflow-hidden [&>:first-child]:text-ellipsis',
+          `max-w-[var(--amino-cell-min-width)]
+          min-w-[var(--amino-cell-min-width)] [&>:first-child]:overflow-hidden
+          [&>:first-child]:text-ellipsis`,
       );
 
       const containerStyle = {
@@ -123,7 +125,8 @@ export const SimpleTableRow = <T extends object>({
             >
               <LinkComponent
                 className={cn(
-                  'block content-center h-full w-full p-amino-12 whitespace-nowrap',
+                  `p-amino-12 block h-full w-full content-center
+                  whitespace-nowrap`,
                   cellClassNames,
                 )}
                 href={getRowLink(item)}
@@ -148,7 +151,8 @@ export const SimpleTableRow = <T extends object>({
             {/* Child div required for proper truncating */}
             <span
               className={cn(
-                'block content-center h-full w-full p-amino-12 whitespace-nowrap',
+                `p-amino-12 block h-full w-full content-center
+                whitespace-nowrap`,
                 cellClassNames,
               )}
               style={cellStyle}
@@ -202,16 +206,38 @@ export const SimpleTableRow = <T extends object>({
       <TableRowCollapse
         key={rowKey}
         className={cn(
-          'h-12 [&:not(:hover)_.row-hover-show]:invisible [&>td]:border-b [&>td]:border-b-amino-subtle [&>td]:p-0 [&>td>:first-child]:block [&>td>:first-child]:content-center [&>td>:first-child]:h-full [&>td>:first-child]:w-full [&>td>:first-child]:p-amino-12 [&>td>:first-child]:whitespace-nowrap [&>td>:first-child.tooltip-wrapper]:p-0 [&>td>:first-child.tooltip-wrapper>a]:content-center [&>td>:first-child.tooltip-wrapper>a]:p-amino-12 [&>td>:first-child.tooltip-wrapper>a]:w-full [&>td>:first-child.tooltip-wrapper>a]:h-full [&>td>:first-child.tooltip-wrapper>a]:block [&>td>:first-child.tooltip-wrapper>a]:overflow-hidden [&>td>:first-child.tooltip-wrapper>a]:text-ellipsis [&>td>:first-child.tooltip-wrapper>span]:content-center [&>td>:first-child.tooltip-wrapper>span]:p-amino-12 [&>td>:first-child.tooltip-wrapper>span]:w-full [&>td>:first-child.tooltip-wrapper>span]:h-full [&>td>:first-child.tooltip-wrapper>span]:block [&>td>:first-child.tooltip-wrapper>span]:overflow-hidden [&>td>:first-child.tooltip-wrapper>span]:text-ellipsis [&>td>:first-child:not(:hover)_.cell-hover-show]:invisible',
+          `[&>td]:border-b-amino-subtle [&>td>:first-child]:p-amino-12
+          [&>td>:first-child.tooltip-wrapper>a]:p-amino-12
+          [&>td>:first-child.tooltip-wrapper>span]:p-amino-12 h-12
+          [&:not(:hover)_.row-hover-show]:invisible [&>td]:border-b [&>td]:p-0
+          [&>td>:first-child]:block [&>td>:first-child]:h-full
+          [&>td>:first-child]:w-full [&>td>:first-child]:content-center
+          [&>td>:first-child]:whitespace-nowrap
+          [&>td>:first-child.tooltip-wrapper]:p-0
+          [&>td>:first-child.tooltip-wrapper>a]:block
+          [&>td>:first-child.tooltip-wrapper>a]:h-full
+          [&>td>:first-child.tooltip-wrapper>a]:w-full
+          [&>td>:first-child.tooltip-wrapper>a]:content-center
+          [&>td>:first-child.tooltip-wrapper>a]:overflow-hidden
+          [&>td>:first-child.tooltip-wrapper>a]:text-ellipsis
+          [&>td>:first-child.tooltip-wrapper>span]:block
+          [&>td>:first-child.tooltip-wrapper>span]:h-full
+          [&>td>:first-child.tooltip-wrapper>span]:w-full
+          [&>td>:first-child.tooltip-wrapper>span]:content-center
+          [&>td>:first-child.tooltip-wrapper>span]:overflow-hidden
+          [&>td>:first-child.tooltip-wrapper>span]:text-ellipsis
+          [&>td>:first-child:not(:hover)_.cell-hover-show]:invisible`,
           !noHoverBackground && 'hover:bg-hover',
-          collapsed && '[&>td]:border-b [&>td]:border-b-amino-subtle',
-          !collapsed && '[&_td]:border-b [&_td]:border-b-amino-subtle',
+          collapsed && '[&>td]:border-b-amino-subtle [&>td]:border-b',
+          !collapsed && '[&_td]:border-b-amino-subtle [&_td]:border-b',
           rowCollapseContent &&
             collapsed &&
             '[&+tr>td]:border-0 [&+tr>td>:first-child]:p-0',
           bordered &&
             collapsed &&
-            'nth-last-2:rounded-bl-amino-12 [&:nth-last-child(2)_td:first-child]:rounded-bl-amino-12 [&:nth-last-child(2)_td:last-child]:rounded-br-amino-12',
+            `nth-last-2:rounded-bl-amino-12
+            [&:nth-last-child(2)_td:first-child]:rounded-bl-amino-12
+            [&:nth-last-child(2)_td:last-child]:rounded-br-amino-12`,
         )}
         collapsed={collapsed}
         onToggleCollapse={() => {
@@ -234,7 +260,27 @@ export const SimpleTableRow = <T extends object>({
     <tr
       key={rowKey}
       className={cn(
-        'h-12 [&:not(:hover)_.row-hover-show]:invisible [&>td]:border-b [&>td]:border-b-amino-subtle [&>td]:p-0 [&>td>:first-child]:block [&>td>:first-child]:content-center [&>td>:first-child]:h-full [&>td>:first-child]:w-full [&>td>:first-child]:p-amino-12 [&>td>:first-child]:whitespace-nowrap [&>td>:first-child.tooltip-wrapper]:p-0 [&>td>:first-child.tooltip-wrapper>a]:content-center [&>td>:first-child.tooltip-wrapper>a]:p-amino-12 [&>td>:first-child.tooltip-wrapper>a]:w-full [&>td>:first-child.tooltip-wrapper>a]:h-full [&>td>:first-child.tooltip-wrapper>a]:block [&>td>:first-child.tooltip-wrapper>a]:overflow-hidden [&>td>:first-child.tooltip-wrapper>a]:text-ellipsis [&>td>:first-child.tooltip-wrapper>span]:content-center [&>td>:first-child.tooltip-wrapper>span]:p-amino-12 [&>td>:first-child.tooltip-wrapper>span]:w-full [&>td>:first-child.tooltip-wrapper>span]:h-full [&>td>:first-child.tooltip-wrapper>span]:block [&>td>:first-child.tooltip-wrapper>span]:overflow-hidden [&>td>:first-child.tooltip-wrapper>span]:text-ellipsis [&>td>:first-child:not(:hover)_.cell-hover-show]:invisible',
+        `[&>td]:border-b-amino-subtle [&>td>:first-child]:p-amino-12
+        [&>td>:first-child.tooltip-wrapper>a]:p-amino-12
+        [&>td>:first-child.tooltip-wrapper>span]:p-amino-12 h-12
+        [&:not(:hover)_.row-hover-show]:invisible [&>td]:border-b [&>td]:p-0
+        [&>td>:first-child]:block [&>td>:first-child]:h-full
+        [&>td>:first-child]:w-full [&>td>:first-child]:content-center
+        [&>td>:first-child]:whitespace-nowrap
+        [&>td>:first-child.tooltip-wrapper]:p-0
+        [&>td>:first-child.tooltip-wrapper>a]:block
+        [&>td>:first-child.tooltip-wrapper>a]:h-full
+        [&>td>:first-child.tooltip-wrapper>a]:w-full
+        [&>td>:first-child.tooltip-wrapper>a]:content-center
+        [&>td>:first-child.tooltip-wrapper>a]:overflow-hidden
+        [&>td>:first-child.tooltip-wrapper>a]:text-ellipsis
+        [&>td>:first-child.tooltip-wrapper>span]:block
+        [&>td>:first-child.tooltip-wrapper>span]:h-full
+        [&>td>:first-child.tooltip-wrapper>span]:w-full
+        [&>td>:first-child.tooltip-wrapper>span]:content-center
+        [&>td>:first-child.tooltip-wrapper>span]:overflow-hidden
+        [&>td>:first-child.tooltip-wrapper>span]:text-ellipsis
+        [&>td>:first-child:not(:hover)_.cell-hover-show]:invisible`,
         clickable && 'cursor-pointer',
         !noHoverBackground && 'hover:bg-hover',
       )}

@@ -195,7 +195,7 @@ export const Toggle = <TValue extends SelectValue>({
       <div
         ref={wrapperRef}
         className={cn(
-          'relative rounded-md h-8 flex',
+          'relative flex h-8 rounded-md',
           'bg-[rgba(5,10,40,0.06)] dark:bg-[rgba(220,225,255,0.1)]',
         )}
       >
@@ -205,7 +205,7 @@ export const Toggle = <TValue extends SelectValue>({
             x: animationRect.left,
           }}
           className={cn(
-            'z-[1] absolute bg-raised h-full mt-[1px] h-[30px] rounded-md',
+            'bg-raised absolute z-[1] mt-[1px] h-[30px] h-full rounded-md',
             'shadow-[var(--amino-shadow-raised-standard)]',
           )}
           initial={false}
@@ -224,15 +224,16 @@ export const Toggle = <TValue extends SelectValue>({
               key={option.value}
               ref={isSelected ? selectedRef : null}
               className={cn(
-                'z-[2] gap-[6px] flex text-center justify-center cursor-pointer rounded-md',
-                'text-amino-base font-medium text-text-color-secondary',
+                `z-[2] flex cursor-pointer justify-center gap-[6px] rounded-md
+                text-center`,
+                'text-amino-base text-text-color-secondary font-medium',
                 'focus:outline-none',
                 !isSelected && 'hover:text-text-color',
                 isSelected && 'text-text-color',
-                size === 'sm' && 'py-[6px] px-3',
-                size === 'md' && 'py-[10px] px-3',
-                size === 'lg' && 'py-[14px] px-[14px]',
-                size === 'xl' && 'py-[18px] px-4',
+                size === 'sm' && 'px-3 py-[6px]',
+                size === 'md' && 'px-3 py-[10px]',
+                size === 'lg' && 'px-[14px] py-[14px]',
+                size === 'xl' && 'px-4 py-[18px]',
                 fullWidth && 'flex-grow',
                 isDisabled && 'cursor-not-allowed',
               )}

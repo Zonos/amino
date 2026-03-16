@@ -134,10 +134,10 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
     };
 
     return (
-      <div className="flex flex-col w-full">
+      <div className="flex w-full flex-col">
         {label && (
           <label
-            className={cn('block mb-2 flex-none', error && 'text-red-600')}
+            className={cn('mb-2 block flex-none', error && 'text-red-600')}
             style={
               error ? undefined : { color: 'var(--amino-text-color-secondary)' }
             }
@@ -147,11 +147,13 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
         )}
         <div
           className={cn(
-            'flex items-center w-full rounded-[var(--amino-input-border-radius)] bg-transparent flex-none',
+            `flex w-full flex-none items-center
+            rounded-[var(--amino-input-border-radius)] bg-transparent`,
             'shadow-[var(--amino-input-shadow)]',
             'focus-within:shadow-[var(--amino-input-focus-shadow)]',
             error &&
-              'shadow-[var(--amino-input-error-shadow)] focus-within:shadow-[var(--amino-input-error-focus-shadow)]',
+              `shadow-[var(--amino-input-error-shadow)]
+              focus-within:shadow-[var(--amino-input-error-focus-shadow)]`,
             sizeClasses[size],
             className,
           )}
@@ -165,25 +167,27 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
           }}
         >
           {prefix && (
-            <div className="font-medium px-2 pr-0 -mr-2 flex items-center">
+            <div className="-mr-2 flex items-center px-2 pr-0 font-medium">
               {prefix}
             </div>
           )}
           {valuePrefix && (
-            <div className="pl-3 text-gray-800 whitespace-nowrap">
+            <div className="pl-3 whitespace-nowrap text-gray-800">
               {valuePrefix}
             </div>
           )}
           <input
             ref={ref}
-            className="bg-amino-input h-full px-4 outline-none w-full border-0 rounded-[inherit] bg-transparent font-medium placeholder:text-gray-500 placeholder:font-normal"
+            className="bg-amino-input h-full w-full rounded-[inherit] border-0
+              bg-transparent px-4 font-medium outline-none
+              placeholder:font-normal placeholder:text-gray-500"
             disabled={disabled}
             placeholder={placeholder}
             value={value || ''}
             {...props}
           />
           {suffix && (
-            <div className="font-medium px-2 flex items-center">{suffix}</div>
+            <div className="flex items-center px-2 font-medium">{suffix}</div>
           )}
         </div>
       </div>

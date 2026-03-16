@@ -90,6 +90,7 @@ At runtime, the MCP server will integrate with Storybook as follows:
 Based on the project structure, we will integrate the MCP documentation extractor with the existing build-utils system by creating a new directory structure:
 
 **Directory Structure:**
+
 - `build-utils/mcp/` - Main directory for MCP-related build utilities
   - Main documentation extraction script
   - JSON file generator
@@ -101,6 +102,7 @@ Based on the project structure, we will integrate the MCP documentation extracto
 The documentation extractor will be implemented as a module within the build-utils directory, following the existing patterns used in other build utilities.
 
 **Key responsibilities:**
+
 - Parse TypeScript files to extract interfaces and types
 - Extract JSDoc comments from component files
 - Process Storybook stories to capture examples
@@ -108,6 +110,7 @@ The documentation extractor will be implemented as a module within the build-uti
 - Output structured JSON files in the format expected by the MCP server
 
 **Integration points:**
+
 - Uses TypeScript compiler API for parsing interfaces and types
 - Reads component and story files from the src/components directory
 - Produces JSON output in the public/mcp-data directory
@@ -117,12 +120,14 @@ The documentation extractor will be implemented as a module within the build-uti
 The documentation extractor will be integrated with the existing build process in `build-utils/build.ts`.
 
 **Integration approach:**
+
 - Add a new build phase for MCP documentation extraction
 - Run the extractor before the Storybook build phase
 - Configure component directories based on the project structure
 - Set output paths to match the expected static file locations
 
 **Configuration options:**
+
 - Component source directories: ['src/components']
 - Output path: 'public/mcp-data'
 - Optional filters for including/excluding specific components
@@ -132,6 +137,7 @@ The documentation extractor will be integrated with the existing build process i
 The API routes will be implemented using TypeScript and will leverage the m-yoshiro/storybook-mcp package as a dependency. The routes will be organized in a structured hierarchy:
 
 **API Route Structure:**
+
 - API routes organized under the `/api/mcp/v1/` path
 - Component listing endpoint at the root level
 - Component detail endpoints under a components directory

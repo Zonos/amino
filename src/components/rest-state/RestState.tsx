@@ -84,15 +84,16 @@ export const RestState = ({
 }: RestStateProps) => (
   <div
     className={cn(
-      'flex flex-col items-center justify-center [&>*]:text-center [&>*]:max-w-[500px]',
+      `flex flex-col items-center justify-center [&>*]:max-w-[500px]
+      [&>*]:text-center`,
       className,
     )}
     style={style}
   >
     {icon ? (
-      <img alt={label} className="w-[100px] h-auto mb-amino-16" src={icon} />
+      <img alt={label} className="mb-amino-16 h-auto w-[100px]" src={icon} />
     ) : null}
-    <div className="flex flex-col items-center gap-amino-8">
+    <div className="gap-amino-8 flex flex-col items-center">
       <Text type="title">{label}</Text>
       {subtitle && <Text type="subtitle">{subtitle}</Text>}
       {action ? <div className="mt-amino-24 mb-amino-8">{action}</div> : null}

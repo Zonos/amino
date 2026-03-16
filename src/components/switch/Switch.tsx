@@ -115,8 +115,9 @@ export const Switch = ({
   return (
     <label
       className={cn(
-        'flex flex-row cursor-pointer',
-        'focus-within:outline-none [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]',
+        'flex cursor-pointer flex-row',
+        `focus-within:outline-none
+        [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]`,
         disabled && 'cursor-not-allowed',
         className,
       )}
@@ -136,7 +137,8 @@ export const Switch = ({
       {hasIcons ? (
         <div
           className={cn(
-            'w-[62px] h-8 min-w-6 leading-4 rounded-[20px] block select-none relative',
+            `relative block h-8 w-[62px] min-w-6 rounded-[20px] leading-4
+              select-none`,
             'bg-gray-50',
             checked && 'bg-primary',
             disabled && 'opacity-40',
@@ -146,23 +148,25 @@ export const Switch = ({
             className={cn(
               'bg-gray-200 dark:bg-gray-200',
               'shadow-[0px_-1px_1px_0px_rgba(0,0,0,0.2)_inset,0px_1px_3px_0px_rgba(0,0,0,0.4)]',
-              'h-7 w-7 rounded-full transition-all absolute top-[2px] left-[2px]',
+              `absolute top-[2px] left-[2px] h-7 w-7 rounded-full
+                transition-all`,
               checked && 'left-[calc(100%-30px)]',
               disabled && 'opacity-95',
             )}
             id={id}
           />
-          <div className="absolute top-1 left-auto right-1">
+          <div className="absolute top-1 right-1 left-auto">
             {switchIconLeft}
           </div>
-          <div className="absolute top-1 left-1 right-auto">
+          <div className="absolute top-1 right-auto left-1">
             {switchIconRight}
           </div>
         </div>
       ) : (
         <div
           className={cn(
-            'w-8 h-4 min-w-8 min-h-4 leading-4 rounded-[20px] block select-none relative',
+            `relative block h-4 min-h-4 w-8 min-w-8 rounded-[20px] leading-4
+              select-none`,
             'bg-gray-100 shadow-[var(--amino-v3-shadow-inset)]',
             checked && 'bg-primary',
             disabled && 'opacity-40',
@@ -172,7 +176,8 @@ export const Switch = ({
             className={cn(
               'bg-gray-0 dark:bg-gray-1000',
               'shadow-[0px_-1px_1px_0px_rgba(0,0,0,0.08)_inset,0px_1px_3px_0px_rgba(0,0,0,0.2)]',
-              'h-[14px] w-[14px] rounded-full transition-all absolute top-[1px] left-[1px]',
+              `absolute top-[1px] left-[1px] h-[14px] w-[14px] rounded-full
+                transition-all`,
               checked && [
                 'left-[calc(100%-15px)]',
                 'shadow-[0px_-1px_1px_0px_rgba(68,94,238,0.08)_inset,0px_1px_3px_0px_rgba(0,0,0,0.2)]',

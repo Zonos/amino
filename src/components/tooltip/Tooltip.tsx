@@ -198,7 +198,9 @@ export const Tooltip = ({
         <TooltipContent
           align={align}
           className={cn(
-            'rounded-(--amino-radius-10) bg-(--amino-gray-0) p-(--amino-space-12) text-(--amino-text-color) shadow-(--amino-v3-shadow-large)',
+            `rounded-(--amino-radius-10) bg-(--amino-gray-0)
+            p-(--amino-space-12) text-(--amino-text-color)
+            shadow-(--amino-v3-shadow-large)`,
           )}
           data-theme={themeOverride}
           side={side}

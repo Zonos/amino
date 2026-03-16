@@ -230,7 +230,8 @@ export const DropZone = ({
   const renderUpload = () => (
     // The role gets set to button despite setting `noClick`, so override it as `undefined`
     <div
-      className="p-4 outline-none flex flex-col justify-center items-center gap-3 w-full h-full"
+      className="flex h-full w-full flex-col items-center justify-center gap-3
+        p-4 outline-none"
       {...getRootProps()}
       role={undefined}
     >
@@ -266,7 +267,7 @@ export const DropZone = ({
     uploadedFiles.map((file, index) => (
       <div
         key={file.name}
-        className="border border-amino rounded-xl p-4 flex justify-start gap-3"
+        className="border-amino flex justify-start gap-3 rounded-xl border p-4"
       >
         {file.imageUrl ? (
           <ImageAvatar imageUrl={file.imageUrl} shape="rounded" />
@@ -300,10 +301,14 @@ export const DropZone = ({
     if (loading) {
       return (
         <div
-          className="border-2 border-dashed rounded-xl flex flex-col items-center"
+          className="flex flex-col items-center rounded-xl border-2
+            border-dashed"
           style={{ borderColor: 'var(--amino-drop-zone-border-color)' }}
         >
-          <div className="p-4 outline-none flex flex-col justify-center items-center gap-3 w-full h-full">
+          <div
+            className="flex h-full w-full flex-col items-center justify-center
+              gap-3 p-4 outline-none"
+          >
             <Spinner />
             <Text color="gray800" type="label">
               {loadingText || getLoadingTextDefault()}
@@ -317,7 +322,8 @@ export const DropZone = ({
       <>
         {!uploadedMaxFiles && (
           <div
-            className="border-2 border-dashed rounded-xl flex flex-col items-center"
+            className="flex flex-col items-center rounded-xl border-2
+              border-dashed"
             style={{ borderColor: 'var(--amino-drop-zone-border-color)' }}
           >
             {renderUpload()}

@@ -66,7 +66,7 @@ export const Divider = ({
   vertical ? (
     <hr
       className={cn(
-        'h-auto self-stretch border-0 border-r border-solid border-amino',
+        'border-amino h-auto self-stretch border-0 border-r border-solid',
         noMargin ? 'm-0' : 'mx-amino-24',
         className,
       )}

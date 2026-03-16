@@ -111,7 +111,8 @@ export const Collapse = ({
   return (
     <div
       className={cn(
-        'grid transition-[grid-template-rows,grid-template-columns] duration-300 ease-in-out',
+        `grid transition-[grid-template-rows,grid-template-columns] duration-300
+        ease-in-out`,
         className,
       )}
       style={{

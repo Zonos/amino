@@ -113,7 +113,7 @@ export const HSection = ({
     );
   return (
     <HStack
-      className={cn('p-2 mb-10 grid-cols-[1fr_2fr]', className)}
+      className={cn('mb-10 grid-cols-[1fr_2fr] p-2', className)}
       style={style}
     >
       {label && (
@@ -121,7 +121,7 @@ export const HSection = ({
           <div className="flex flex-col">
             {collapsible ? (
               <div
-                className="flex justify-between items-center"
+                className="flex items-center justify-between"
                 onClick={() => setCollapsed(!collapsed)}
                 onKeyDown={() => null}
                 role="button"
@@ -130,7 +130,7 @@ export const HSection = ({
                 <Text type="title">{label}</Text>
                 <Button
                   className={cn(
-                    'relative ml-1 transition-all duration-200 bg-transparent',
+                    'relative ml-1 bg-transparent transition-all duration-200',
                     'hover:bg-transparent hover:text-gray-800',
                     'hover:[&_path[data-is-secondary-color]]:fill-gray-300',
                     'active:bg-transparent active:text-gray-800',

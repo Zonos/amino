@@ -82,20 +82,20 @@ export const _CountryMultiSelectExpandedOptionComponent = <T extends string>({
         key={country.code}
         checked={isChecked}
         className={cn(
-          'w-full p-amino-8 flex flex-col [&>div]:items-center',
+          'p-amino-8 flex w-full flex-col [&>div]:items-center',
           !country.disabled && 'rounded-amino-6 hover:bg-hover',
         )}
         disabled={country.disabled}
         label={country.label}
         labelComponent={
           <div
-            className={cn('w-full flex items-center gap-amino-16', className)}
+            className={cn('gap-amino-16 flex w-full items-center', className)}
             style={{
               marginLeft: 8,
               opacity: country.disabled ? theme.opacityDisabled : 1,
             }}
           >
-            <div ref={ref} className="flex items-center gap-amino-6">
+            <div ref={ref} className="gap-amino-6 flex items-center">
               {inView && renderIcon()}
               {country.label}
             </div>

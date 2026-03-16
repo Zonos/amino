@@ -108,7 +108,7 @@ const Control = <
         className,
         'react-select-control',
         hasValue && 'flex items-center',
-        icon && 'flex items-center has-icon',
+        icon && 'has-icon flex items-center',
         isFocused && 'is-focused',
         isDisabled && 'opacity-disabled',
         menuIsOpen && 'menu-is-open',
@@ -122,7 +122,10 @@ const Control = <
       {...innerProps}
     >
       {icon && (
-        <div className="flex justify-evenly items-center text-gray-700 ml-amino-8 -mr-[2px] h-6 w-6">
+        <div
+          className="ml-amino-8 -mr-[2px] flex h-6 w-6 items-center
+            justify-evenly text-gray-700"
+        >
           {icon}
         </div>
       )}
@@ -141,7 +144,7 @@ const IconLabel = ({
   icon?: ReactNode;
 }) => (
   <div
-    className="flex items-center [&_svg]:mr-1 [&_svg]:text-gray-1000"
+    className="[&_svg]:text-gray-1000 flex items-center [&_svg]:mr-1"
     style={{ color: color || 'inherit' }}
   >
     {icon}
@@ -474,7 +477,7 @@ export const StyledReactSelect = <
       data-testid={testId}
     >
       {label && (
-        <label className="text-amino-secondary block mb-2">{label}</label>
+        <label className="text-amino-secondary mb-2 block">{label}</label>
       )}
       <ReactSelect<Option, IsMulti, Group>
         ref={selectElement}

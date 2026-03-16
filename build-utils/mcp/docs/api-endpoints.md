@@ -17,9 +17,11 @@ All API endpoints are organized under the `/api/mcp/v1/` path prefix for version
 Lists all available components in the library with basic metadata.
 
 **Query Parameters**:
+
 - `filter` (optional): Filter components by name (substring match)
 
 **Response Format**:
+
 ```json
 {
   "components": [
@@ -39,6 +41,7 @@ Lists all available components in the library with basic metadata.
 ```
 
 **Status Codes**:
+
 - `200 OK`: Success
 - `500 Internal Server Error`: Server error
 
@@ -49,9 +52,11 @@ Lists all available components in the library with basic metadata.
 Retrieves detailed documentation for a specific component.
 
 **URL Parameters**:
+
 - `id`: Component ID (required)
 
 **Response Format**:
+
 ```json
 {
   "id": "button",
@@ -59,19 +64,20 @@ Retrieves detailed documentation for a specific component.
   "path": "src/components/button",
   "description": "A customizable button component with various styles.",
   "tags": [
-    { 
-      "name": "example", 
-      "text": "<Button variant=\"primary\">Click Me</Button>" 
+    {
+      "name": "example",
+      "text": "<Button variant=\"primary\">Click Me</Button>"
     },
-    { 
-      "name": "param", 
-      "text": "variant - Button variant (primary, secondary, etc.)" 
+    {
+      "name": "param",
+      "text": "variant - Button variant (primary, secondary, etc.)"
     }
   ]
 }
 ```
 
 **Status Codes**:
+
 - `200 OK`: Success
 - `404 Not Found`: Component not found
 - `500 Internal Server Error`: Server error
@@ -83,10 +89,12 @@ Retrieves detailed documentation for a specific component.
 Searches for components by name or description.
 
 **Query Parameters**:
+
 - `query` (required): Search query string
 - `limit` (optional): Maximum number of results to return
 
 **Response Format**:
+
 ```json
 {
   "results": [
@@ -102,6 +110,7 @@ Searches for components by name or description.
 ```
 
 **Status Codes**:
+
 - `200 OK`: Success
 - `400 Bad Request`: Missing required parameters
 - `500 Internal Server Error`: Server error
@@ -113,6 +122,7 @@ Searches for components by name or description.
 Provides server health status.
 
 **Response Format**:
+
 ```json
 {
   "status": "ok",
@@ -122,6 +132,7 @@ Provides server health status.
 ```
 
 **Status Codes**:
+
 - `200 OK`: Server is healthy
 - `500 Internal Server Error`: Server is unhealthy
 
@@ -147,6 +158,7 @@ All endpoints return consistent error responses in the following format:
 ```
 
 Common error codes include:
+
 - `not_found`: Requested resource not found
 - `invalid_request`: Invalid request parameters
 - `server_error`: Unexpected server error

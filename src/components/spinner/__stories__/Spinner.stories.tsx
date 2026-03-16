@@ -34,7 +34,7 @@ export const InsideContainer: StoryFn<SpinnerProps> = ({
   size,
   ...props
 }: SpinnerProps) => (
-  <div className="m-25 flex overflow-scroll border border-amino">
+  <div className="border-amino m-25 flex overflow-scroll border">
     <SpinnerComponent color={color} size={60} {...props} />
   </div>
 );

@@ -17,6 +17,7 @@ Lists all available components in the library.
 **Parameters**: None
 
 **Response Format**:
+
 ```json
 {
   "components": [
@@ -36,6 +37,7 @@ Lists all available components in the library.
 ```
 
 **Usage Example**:
+
 ```typescript
 // AI assistant request format
 {
@@ -50,9 +52,11 @@ Lists all available components in the library.
 Finds components by name with substring matching.
 
 **Parameters**:
+
 - `name` (required): Component name to search for
 
 **Response Format**:
+
 ```json
 {
   "results": [
@@ -68,6 +72,7 @@ Finds components by name with substring matching.
 ```
 
 **Usage Example**:
+
 ```typescript
 // AI assistant request format
 {
@@ -84,9 +89,11 @@ Finds components by name with substring matching.
 Gets detailed documentation for a specific component.
 
 **Parameters**:
+
 - `id` (required): Component ID
 
 **Response Format**:
+
 ```json
 {
   "id": "button",
@@ -94,19 +101,20 @@ Gets detailed documentation for a specific component.
   "path": "src/components/button",
   "description": "A customizable button component with various styles.",
   "tags": [
-    { 
-      "name": "example", 
-      "text": "<Button variant=\"primary\">Click Me</Button>" 
+    {
+      "name": "example",
+      "text": "<Button variant=\"primary\">Click Me</Button>"
     },
-    { 
-      "name": "param", 
-      "text": "variant - Button variant (primary, secondary, etc.)" 
+    {
+      "name": "param",
+      "text": "variant - Button variant (primary, secondary, etc.)"
     }
   ]
 }
 ```
 
 **Usage Example**:
+
 ```typescript
 // AI assistant request format
 {
@@ -157,6 +165,7 @@ MCP tools return consistent error responses in the following format:
 ```
 
 Common error scenarios:
+
 - Component not found
 - Invalid parameter values
 - Server errors
@@ -176,29 +185,31 @@ Here's an example of how an AI assistant might use these tools:
 ```typescript
 // 1. First, list available components
 const componentsResponse = await mcpRequest({
-  type: "mcp-tool-use",
-  tool: "list-components",
-  parameters: {}
+  type: 'mcp-tool-use',
+  tool: 'list-components',
+  parameters: {},
 });
 
 // 2. Find components matching a keyword
 const searchResponse = await mcpRequest({
-  type: "mcp-tool-use",
-  tool: "find-component-by-name",
+  type: 'mcp-tool-use',
+  tool: 'find-component-by-name',
   parameters: {
-    name: "button"
-  }
+    name: 'button',
+  },
 });
 
 // 3. Get details for a specific component
 const detailsResponse = await mcpRequest({
-  type: "mcp-tool-use",
-  tool: "get-component-details",
+  type: 'mcp-tool-use',
+  tool: 'get-component-details',
   parameters: {
-    id: searchResponse.results[0].id
-  }
+    id: searchResponse.results[0].id,
+  },
 });
 
 // 4. Use the component details in AI response
-console.log(`The ${detailsResponse.name} component is described as: ${detailsResponse.description}`);
+console.log(
+  `The ${detailsResponse.name} component is described as: ${detailsResponse.description}`,
+);
 ```

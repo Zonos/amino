@@ -7,6 +7,7 @@ The Model Context Protocol (MCP) defines a set of standardized tools that AI ass
 ## MCP Protocol
 
 The MCP protocol follows a standard format where each tool:
+
 1. Has a unique name that identifies its purpose
 2. Accepts specific parameters
 3. Returns structured data in a consistent format
@@ -20,11 +21,13 @@ Our implementation follows this protocol while extending it to provide richer co
 **Purpose**: Lists all available components with basic metadata.
 
 **Parameters**:
+
 - `path` (optional): Path to the index.json file (defaults to the main index)
 
 **Returns**: Array of components with basic metadata
 
 **Example Usage**:
+
 ```json
 {
   "name": "list-components",
@@ -33,6 +36,7 @@ Our implementation follows this protocol while extending it to provide richer co
 ```
 
 **Example Response**:
+
 ```json
 {
   "components": [
@@ -60,12 +64,14 @@ Our implementation follows this protocol while extending it to provide richer co
 **Purpose**: Finds a specific component by name or partial name match.
 
 **Parameters**:
+
 - `name` (required): Component name to search for
 - `path` (optional): Path to the index.json file
 
 **Returns**: Matching component metadata or null if not found
 
 **Example Usage**:
+
 ```json
 {
   "name": "find-component-by-name",
@@ -76,6 +82,7 @@ Our implementation follows this protocol while extending it to provide richer co
 ```
 
 **Example Response**:
+
 ```json
 {
   "component": {
@@ -92,12 +99,14 @@ Our implementation follows this protocol while extending it to provide richer co
 **Purpose**: Retrieves detailed documentation for a specific component.
 
 **Parameters**:
+
 - `id` (required): Component identifier
 - `path` (optional): Path to the components directory
 
 **Returns**: Complete component documentation including props, examples, and usage
 
 **Example Usage**:
+
 ```json
 {
   "name": "get-component-details",
@@ -108,6 +117,7 @@ Our implementation follows this protocol while extending it to provide richer co
 ```
 
 **Example Response**:
+
 ```json
 {
   "id": "button",
@@ -204,16 +214,19 @@ In future phases, the MCP server will implement additional tools:
 Here's a complete example of using MCP tools in sequence:
 
 1. List all components:
+
 ```json
 { "name": "list-components", "parameters": {} }
 ```
 
 2. Find a specific component by name:
+
 ```json
 { "name": "find-component-by-name", "parameters": { "name": "button" } }
 ```
 
 3. Get detailed documentation for the component:
+
 ```json
 { "name": "get-component-details", "parameters": { "id": "button" } }
 ```

@@ -23,12 +23,14 @@ https://amino.example.com/api/mcp/v1
 **Description:** Get a list of all available components with basic metadata.
 
 **Parameters:**
+
 - `category` (optional): Filter components by category
 - `tag` (optional): Filter components by tag
 - `limit` (optional): Maximum number of components to return
 - `offset` (optional): Pagination offset
 
 **Response:**
+
 ```json
 {
   "components": [
@@ -38,7 +40,7 @@ https://amino.example.com/api/mcp/v1
       "description": "A versatile button component with various styles and states",
       "category": "inputs",
       "tags": ["interactive", "form", "action"]
-    },
+    }
     // Additional components
   ],
   "pagination": {
@@ -57,6 +59,7 @@ https://amino.example.com/api/mcp/v1
 **Description:** Get detailed documentation for a specific component.
 
 **Parameters:**
+
 - `id`: Component identifier
 
 **Response:** Full component documentation as specified in the documentation format.
@@ -68,12 +71,14 @@ https://amino.example.com/api/mcp/v1
 **Description:** Search for components by keyword.
 
 **Parameters:**
+
 - `query`: Search query string
 - `fields` (optional): Fields to search (name, description, props, etc.)
 - `limit` (optional): Maximum number of results
 - `offset` (optional): Pagination offset
 
 **Response:**
+
 ```json
 {
   "results": [
@@ -94,7 +99,7 @@ https://amino.example.com/api/mcp/v1
           "text": "interactive"
         }
       ]
-    },
+    }
     // Additional results
   ],
   "pagination": {
@@ -112,6 +117,7 @@ https://amino.example.com/api/mcp/v1
 **Description:** Get a list of all component categories.
 
 **Response:**
+
 ```json
 {
   "categories": [
@@ -119,7 +125,7 @@ https://amino.example.com/api/mcp/v1
       "id": "inputs",
       "name": "Input Components",
       "componentCount": 12
-    },
+    }
     // Additional categories
   ]
 }
@@ -132,9 +138,11 @@ https://amino.example.com/api/mcp/v1
 **Description:** Get all components within a category.
 
 **Parameters:**
+
 - `id`: Category identifier
 
 **Response:**
+
 ```json
 {
   "category": {
@@ -146,7 +154,7 @@ https://amino.example.com/api/mcp/v1
       "id": "button",
       "name": "Button",
       "description": "A versatile button component with various styles and states"
-    },
+    }
     // Additional components
   ]
 }
@@ -161,11 +169,13 @@ These endpoints use and extend the tools provided by m-yoshiro/storybook-mcp, wh
 **MCP Tool Name:** `list-components`
 
 **Implementation:**
+
 - Uses m-yoshiro/storybook-mcp's existing tool functionality
 - Adapts to our custom JSON structure
 - Returns enhanced component metadata
 
 **Parameters:**
+
 - `path` (optional): Path to the index.json file
 
 **Response:** List of components with metadata
@@ -175,11 +185,13 @@ These endpoints use and extend the tools provided by m-yoshiro/storybook-mcp, wh
 **MCP Tool Name:** `find-components-by-name`
 
 **Implementation:**
+
 - Extends m-yoshiro/storybook-mcp's search functionality
 - Enhanced to support partial matching and fuzzy search
 - Includes TypeScript interface information
 
 **Parameters:**
+
 - `name`: Component name or keyword to search for
 - `path` (optional): Path to the index.json file
 
@@ -190,10 +202,12 @@ These endpoints use and extend the tools provided by m-yoshiro/storybook-mcp, wh
 **MCP Tool Name:** `get-component-props`
 
 **Implementation:**
+
 - Custom extension to m-yoshiro/storybook-mcp
 - Implemented as a TypeScript-based API route
 
 **Parameters:**
+
 - `id`: Component identifier
 
 **Response:** List of props for the specified component with types and descriptions
@@ -203,10 +217,12 @@ These endpoints use and extend the tools provided by m-yoshiro/storybook-mcp, wh
 **MCP Tool Name:** `get-component-examples`
 
 **Implementation:**
+
 - Custom extension to m-yoshiro/storybook-mcp
 - Implemented as a TypeScript-based API route
 
 **Parameters:**
+
 - `id`: Component identifier
 
 **Response:** List of examples for the specified component

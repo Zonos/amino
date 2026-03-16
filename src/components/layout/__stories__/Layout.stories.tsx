@@ -86,7 +86,7 @@ BasicLayout.args = {
     </HStack>
   ),
   headerContent: (
-    <div className="flex flex-row items-center gap-amino-24 px-amino-24">
+    <div className="gap-amino-24 px-amino-24 flex flex-row items-center">
       <ZonosIcon size={110} />
     </div>
   ),

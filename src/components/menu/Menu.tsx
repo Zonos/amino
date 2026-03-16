@@ -55,7 +55,8 @@ export type MenuProps = BaseProps & {
 export const Menu = ({ children, className, style }: MenuProps) => (
   <ul
     className={cn(
-      'list-none m-0 p-0 [&_hr]:border-0 [&_hr]:border-b [&_hr]:border-b-amino-subtle [&_hr]:mt-amino-6 [&_hr]:mb-amino-6',
+      `[&_hr]:border-b-amino-subtle [&_hr]:mt-amino-6 [&_hr]:mb-amino-6 m-0
+      list-none p-0 [&_hr]:border-0 [&_hr]:border-b`,
       className,
     )}
     style={style}

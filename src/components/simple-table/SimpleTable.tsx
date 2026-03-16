@@ -294,7 +294,7 @@ export const SimpleTable = <T extends object>({
       return [...Array(loadingItems).keys()].map(n => (
         <tr key={n}>
           {selectable.enabled && (
-            <td className="h-12 p-amino-12">
+            <td className="p-amino-12 h-12">
               <div>
                 <Skeleton key={n} height={loadingSkeletonHeight} />
               </div>
@@ -303,7 +303,7 @@ export const SimpleTable = <T extends object>({
           {headers.map(header => (
             <td
               key={header.key}
-              className={cn('h-12 p-amino-12', header.noPadding && 'p-0')}
+              className={cn('p-amino-12 h-12', header.noPadding && 'p-0')}
             >
               <div
                 className="flex"
@@ -359,15 +359,29 @@ export const SimpleTable = <T extends object>({
     >
       <table
         className={cn(
-          'h-fit w-full border-separate border-spacing-0 text-amino-base',
+          'text-amino-base h-fit w-full border-separate border-spacing-0',
           '[&>tbody>tr]:h-12',
-          '[&>thead]:no-underline [&>thead>tr]:border-b [&>thead>tr]:border-b-amino-subtle [&>thead>tr]:h-12',
-          '[&>thead>tr>th]:sticky [&>thead>tr>th]:top-0 [&>thead>tr>th]:bg-gray-0 [&>thead>tr>th]:dark:bg-gray-50 [&>thead>tr>th]:p-amino-12 [&>thead>tr>th]:whitespace-nowrap [&>thead>tr>th]:border-b [&>thead>tr>th]:border-b-amino-subtle [&>thead>tr>th]:z-[1]',
+          `[&>thead>tr]:border-b-amino-subtle [&>thead]:no-underline
+          [&>thead>tr]:h-12 [&>thead>tr]:border-b`,
+          `[&>thead>tr>th]:bg-gray-0 [&>thead>tr>th]:p-amino-12
+          [&>thead>tr>th]:border-b-amino-subtle [&>thead>tr>th]:sticky
+          [&>thead>tr>th]:top-0 [&>thead>tr>th]:z-1 [&>thead>tr>th]:border-b
+          [&>thead>tr>th]:whitespace-nowrap [&>thead>tr>th]:dark:bg-gray-50`,
           '[&>thead>tr>th.p-0]:p-0',
           collapsible.enabled &&
-            '[&_tr>td:last-child]:w-10 [&_tr>td:last-child>div]:p-0 [&>tbody_*]:transition-all [&>tbody>tr:not(:has(.h-12))]:h-auto',
+            `[&_tr>td:last-child]:w-10 [&_tr>td:last-child>div]:p-0
+            [&>tbody_*]:transition-all [&>tbody>tr:not(:has(.h-12))]:h-auto`,
           bordered &&
-            '[&_th]:border-0 [&>thead>tr]:border-b-0 [&>thead>tr>th]:border-b-0 [&_tr:first-child_td]:border-t [&_tr:first-child_td]:border-t-amino-subtle [&_tr:first-child_td:first-child]:rounded-tl-amino-12 [&_tr:first-child_td:last-child]:rounded-tr-amino-12 [&_tr:last-child_td:first-child]:rounded-bl-amino-12 [&_tr:last-child_td:last-child]:rounded-br-amino-12 [&_td:first-child]:border-l [&_td:first-child]:border-l-amino-subtle [&_td:last-child]:border-r [&_td:last-child]:border-r-amino-subtle',
+            `[&_tr:first-child_td]:border-t-amino-subtle
+            [&_tr:first-child_td:first-child]:rounded-tl-amino-12
+            [&_tr:first-child_td:last-child]:rounded-tr-amino-12
+            [&_tr:last-child_td:first-child]:rounded-bl-amino-12
+            [&_tr:last-child_td:last-child]:rounded-br-amino-12
+            [&_td:first-child]:border-l-amino-subtle
+            [&_td:last-child]:border-r-amino-subtle [&_td:first-child]:border-l
+            [&_td:last-child]:border-r [&_th]:border-0
+            [&_tr:first-child_td]:border-t [&>thead>tr]:border-b-0
+            [&>thead>tr>th]:border-b-0`,
           headers.every(header => !header.name) &&
             '[&_thead]:hidden [&_thead]:max-h-0',
         )}

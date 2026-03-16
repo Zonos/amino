@@ -54,7 +54,8 @@ export const PasswordInput = forwardRef<HTMLInputElement, InputBaseProps>(
           suffix={
             suffix || (
               <Button
-                className="p-1.5 rounded-full transition-all duration-300 ease-in-out hover:bg-hover"
+                className="hover:bg-hover rounded-full p-1.5 transition-all
+                  duration-300 ease-in-out"
                 icon={
                   inputType === 'password' ? (
                     <EyeIcon size={24} />

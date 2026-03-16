@@ -80,7 +80,12 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
 
       <PopoverContent
         align="end"
-        className="bg-gray-0 rounded-xl shadow-[0_20px_48px_rgba(16,24,40,0.18)] border-amino-subtle w-150 max-w-[calc(100vw-32px)] px-4 py-2 mt-2 max-[720px]:w-[92vw] max-[600px]:fixed max-[600px]:left-0 max-[600px]:right-0 max-[600px]:bottom-25 max-[600px]:w-screen max-[600px]:max-w-screen max-[600px]:origin-bottom max-[600px]:z-50"
+        className="bg-gray-0 border-amino-subtle mt-2 w-150
+          max-w-[calc(100vw-32px)] rounded-xl px-4 py-2
+          shadow-[0_20px_48px_rgba(16,24,40,0.18)] max-[720px]:w-[92vw]
+          max-[600px]:fixed max-[600px]:right-0 max-[600px]:bottom-25
+          max-[600px]:left-0 max-[600px]:z-50 max-[600px]:w-screen
+          max-[600px]:max-w-screen max-[600px]:origin-bottom"
         sideOffset={8}
       >
         <Flex flexDirection="column" gap={8}>
@@ -95,14 +100,20 @@ export const LanguageSelector = <T extends readonly SelectOption<string>[]>({
             />
           </Flex>
 
-          <div className="grid grid-cols-3 gap-1.5 max-[720px]:grid-cols-2 max-[600px]:grid-cols-1">
+          <div
+            className="grid grid-cols-3 gap-1.5 max-[720px]:grid-cols-2
+              max-[600px]:grid-cols-1"
+          >
             {sortedLanguageOptions.map(lang => {
               const isSelected = lang.value === languageCode;
               return (
                 <button
                   key={lang.value}
                   className={cn(
-                    'appearance-none border-none bg-transparent p-[6px_10px] text-left cursor-pointer text-gray-800 font-medium min-w-max whitespace-nowrap rounded-md pr-7.5 hover:bg-gray-50',
+                    `min-w-max cursor-pointer appearance-none rounded-md
+                    border-none bg-transparent p-[6px_10px] pr-7.5 text-left
+                    font-medium whitespace-nowrap text-gray-800
+                    hover:bg-gray-50`,
                     isSelected && 'text-blue-600',
                   )}
                   onClick={() => handleSelect(lang.value)}

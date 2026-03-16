@@ -107,7 +107,10 @@ WithHover.args = {
     </>
   ),
   children: (
-    <div className="flex justify-center items-center h-full hover:scale-150 transition-transform duration-200">
+    <div
+      className="flex h-full items-center justify-center transition-transform
+        duration-200 hover:scale-150"
+    >
       Hover me
     </div>
   ),

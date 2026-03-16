@@ -27,10 +27,10 @@ const ButtonRow = ({
   ...props
 }: ButtonProps & { label: string }) => (
   <div>
-    <Text className="border-b border-b-gray-1000 mb-2" type="bold-subheader">
+    <Text className="border-b-gray-1000 mb-2 border-b" type="bold-subheader">
       {label}
     </Text>
-    <div className="flex flex-row flex-wrap gap-6 my-4 items-center">
+    <div className="my-4 flex flex-row flex-wrap items-center gap-6">
       <Button<'button'>
         {...props}
         disabled={disabled}
@@ -104,7 +104,7 @@ const ButtonRow = ({
         Night override
       </Button>
     </div>
-    <div className="flex flex-row flex-wrap gap-6 my-4 items-center">
+    <div className="my-4 flex flex-row flex-wrap items-center gap-6">
       <Button
         {...props}
         disabled={disabled}
@@ -151,7 +151,7 @@ const ButtonRow = ({
 );
 
 const Template: StoryFn<ButtonProps> = props => (
-  <div className="flex gap-10 flex-col">
+  <div className="flex flex-col gap-10">
     <ButtonRow {...props} label="Default" />
     <ButtonRow {...props} disabled label="Disabled" />
     <ButtonRow {...props} label="Loading" loading />

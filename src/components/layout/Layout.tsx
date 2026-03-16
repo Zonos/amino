@@ -120,7 +120,12 @@ export const Layout = ({
     }}
   >
     {!!headerContent && (
-      <header className="sticky top-0 z-[var(--amino-appbar-elevation)] flex h-[var(--amino-appbar-height)] box-border border-b border-amino bg-header shadow-[var(--amino-v3-shadow-base)]">
+      <header
+        className="border-amino bg-header sticky top-0
+          z-[var(--amino-appbar-elevation)] box-border flex
+          h-[var(--amino-appbar-height)] border-b
+          shadow-[var(--amino-v3-shadow-base)]"
+      >
         {headerContent}
       </header>
     )}
@@ -130,19 +135,22 @@ export const Layout = ({
         gridTemplateColumns: `var(--amino-sidebar-width) 1fr`,
       }}
     >
-      <nav className="grid h-full w-[var(--amino-sidebar-width)] box-border grid-rows-[1fr_auto] border-r border-amino-subtle bg-sidebar">
-        <div className="h-full w-full box-border overflow-y-auto p-amino-16">
+      <nav
+        className="border-amino-subtle bg-sidebar box-border grid h-full
+          w-[var(--amino-sidebar-width)] grid-rows-[1fr_auto] border-r"
+      >
+        <div className="p-amino-16 box-border h-full w-full overflow-y-auto">
           {!!logoSidebar && <div className="mb-amino-24">{logoSidebar}</div>}
           {sidebar}
         </div>
 
-        <div className="w-[var(--amino-sidebar-width)] box-border">
+        <div className="box-border w-[var(--amino-sidebar-width)]">
           {footer}
         </div>
       </nav>
       <div
         className={cn(
-          'h-full box-border overflow-y-auto',
+          'box-border h-full overflow-y-auto',
           noPaddingContent ? 'p-0' : 'p-amino-32',
         )}
       >

@@ -44,7 +44,8 @@ export const TextAvatar = ({ className, label, style }: TextAvatarProps) => {
   return (
     <div
       className={cn(
-        'flex size-8 items-center justify-center rounded-amino-6 font-medium text-gray-0',
+        `rounded-amino-6 text-gray-0 flex size-8 items-center justify-center
+        font-medium`,
         'dark:text-gray-1000',
         className,
       )}

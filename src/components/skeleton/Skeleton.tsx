@@ -63,8 +63,10 @@ export const Skeleton = ({
     className={cn(
       'relative overflow-hidden rounded-[20px] bg-gray-100',
       animation && [
-        "after:absolute after:inset-0 after:-translate-x-full after:animate-shimmer after:content-['']",
-        'after:bg-linear-to-r after:from-transparent after:via-black/8 after:to-transparent',
+        `after:animate-shimmer after:absolute after:inset-0
+        after:-translate-x-full after:content-['']`,
+        `after:bg-linear-to-r after:from-transparent after:via-black/8
+        after:to-transparent`,
       ],
       className,
     )}

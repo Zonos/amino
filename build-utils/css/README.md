@@ -27,13 +27,13 @@ This script is primarily created for generating accessible style constants and c
 ## **Generating dynamic constant process**
 
 ### Overview
+
 (**Included script to generate template for generating a content**)
 **REASON**: Typescript will not read and provide jsdocs info on the spread operators (Ex: `...sthing`), so we can't benefit from jsdocs tag when using typescript key suggestion.
 
 ### When you run the script, it will:
 
 1. Read through all the files in `build-utils/css/constants/logic`, class `LogicConstant` in `build-utils/css/class` will:
-
    - Parse the given file.
 
 2. All theme files in `build-utils/css/constants/*.ts` now can import the styled files in `build-utils/css/constants/theme/*.ts` by using spread variables (Ex: `...space`). Then when you command `pnpm build:theme`, the process will use static function `transformImportedConstant` in class `LogicConstant` to convert/transform the file `theme.ts` into typescript jsdocs friendly (it basically will find all import lines in `theme.ts` and import them, then replace the spread value with content in each imported file).
@@ -47,23 +47,23 @@ Let's say we have an exported constant `testNumber` in `build-utils/css/constant
 
 1. Go to `theme.ts`.
 2. Type `testNumber` to trigger VScode import suggestion and continue to import the file. At the beginning of `theme.ts` now have:
-    ```
-    import { testNumber } from './generated/_testNumber';
-    ```
+   ```
+   import { testNumber } from './generated/_testNumber';
+   ```
 3. Inside constant content, put a spread operator for the `testNumber` on where you want it to be. For example you want to spread it in between `'gray-l60'` and `'gray-l40'`. Now it will look like this:
 
-    ```
-    export const theme = {
-        /* GRAY PALETTE */
-        'gray-l80': '#f5f5f6',
-        'gray-l60': '#eaeaec',
+   ```
+   export const theme = {
+       /* GRAY PALETTE */
+       'gray-l80': '#f5f5f6',
+       'gray-l60': '#eaeaec',
 
-        ...testNumber,
+       ...testNumber,
 
-        'gray-l40': '#d6d6d9',
+       'gray-l40': '#d6d6d9',
 
-    } as const;
-    ```
+   } as const;
+   ```
 
 4. Now when you run `'pnpm build:theme'`, it will replace `...testNumber` with primitive content in the constant when it's generating the theme constant in `src/styles/constants/theme.ts`.
 </details>
@@ -71,13 +71,14 @@ Let's say we have an exported constant `testNumber` in `build-utils/css/constant
 ## **Building process**
 
 ### Overview
+
 Main command for this is just `pnpm build`. This would trigger the tests for the whole build application, typescript check and eslint check, also run `pnpm build:theme` to generate css files that are based on the theme constant `theme.ts` or `_night.ts` in `build-utils/css/constants`.
+
 > **NOTE**: Because of running `'pnpm build:theme'` will overwrite last capture with latest content, before you run a script, run `pnpm test` first to make sure the current constant `theme.ts` and `_night.ts` in `build-utils/css/constants` doesn't have conflict with last theme capture. If there is conflict of last theme capture with current constant, resolve it either manually when you are not running `test` in `Watch mode`, or interactively by pressing `i` when you are running `test` in `Watch mode`.
 
 ### When you run the script, it will:
 
 1. Generate css variable style constant
-
    - Extract content in `build-utils/css/constants/theme.ts`, and convert all existing key-value pairs to css variables with jsdocs `@info` / `@deprecated` comment.
      **Ex**:
      - With new variable (script will only add `@info` comment if it doesn't have jsdocs comment):
@@ -92,14 +93,13 @@ Main command for this is just `pnpm build`. This would trigger the tests for the
    - Generate new constant file `theme.ts` with generated content above, format them and put into `src/styles/constants` folder
 
 2. Generate css file (theme.css)
-
    - Get contents from `build-utils/css/constants` (theme.ts and \_night.ts), format and generate `theme.css` and put in `src/styles` folder
 
 3. Generate theme css capture (These captures will be used for unit testing when running `pnpm test`. This is the reason you need to run unit tests before run this script to make sure the changes in css file is what you want)
    - Generate light theme css capture get from `build-utils/css/constants/theme.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/theme.css`
    - Generate night theme css capture get from `build-utils/css/constants/_night.ts`. New file will be located at `build-utils/css/utils/__tests__/__previous-test-files__/night-theme.css`
 
-3. Generate scss file (theme.scss)
+4. Generate scss file (theme.scss)
    - Get contents from `build-utils/css/constants/theme.ts`, get key, format and generate scss variables and put in `src/styles` folder
 
 ### How to
@@ -117,16 +117,17 @@ Add `@deprecated` to variable, create new variable and apply the new one to the 
 To add new `new-variable` to replace for `legacy-variable`.
 
 - Create value for `new-variable`, add `@deprecated use ${NEW} instead` (replace `${NEW}` with `newVariable`) and apply `var(--amino-new-variable)` to `legacy-variable`.
-**NOTE**: Since the generated constants' keys would be transformed to camelCase (new-variable => newVariable). When you adding `@jsdocs`, use camel case when you referring to a variable.
-Ex:
+  **NOTE**: Since the generated constants' keys would be transformed to camelCase (new-variable => newVariable). When you adding `@jsdocs`, use camel case when you referring to a variable.
+  Ex:
 
-    ```
-    'new-variable': #123abc;
+      ```
+      'new-variable': #123abc;
 
-    /** @deprecated use newVariable instead */
-    'legacy-variable': var(--amino-new-variable);
-    ```
-</details>
+      /** @deprecated use newVariable instead */
+      'legacy-variable': var(--amino-new-variable);
+      ```
+
+  </details>
 
 ---
 
@@ -155,4 +156,5 @@ export const night = constraintDefinedAminoVar(theme, {
 ...
 }
 ```
+
 </details>

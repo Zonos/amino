@@ -79,10 +79,11 @@ export const Thumbnail = ({
 }: ThumbnailProps) => (
   <div
     className={cn(
-      'inline-flex justify-center items-center box-content [&_svg]:w-[60%] [&_svg]:h-[60%]',
+      `box-content inline-flex items-center justify-center [&_svg]:h-[60%]
+      [&_svg]:w-[60%]`,
       intent === 'bordered' && 'border-gray-0 dark:border-gray-1000',
       intent === 'outline' &&
-        'border border-gray-200 dark:border-gray-800 bg-transparent',
+        'border border-gray-200 bg-transparent dark:border-gray-800',
       intent === 'full' && 'bg-[var(--amino-thumbnail-background-color)]',
       className,
     )}

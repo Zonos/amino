@@ -85,13 +85,17 @@ export const MenuItem = ({
   <li
     className={cn(
       disabled &&
-        '[&_.menu-button]:cursor-not-allowed [&_.menu-button]:opacity-amino-disabled',
+        `[&_.menu-button]:opacity-amino-disabled
+        [&_.menu-button]:cursor-not-allowed`,
       className,
     )}
     style={style}
   >
     <button
-      className="menu-button w-full flex items-center p-amino-8 leading-6 select-none cursor-pointer rounded-amino-6 text-amino-base hover:bg-hover dark:hover:bg-gray-100 active:outline-none [&_a]:w-full [&_a]:block [&_svg]:mr-amino-8"
+      className="menu-button p-amino-8 rounded-amino-6 text-amino-base
+        hover:bg-hover [&_svg]:mr-amino-8 flex w-full cursor-pointer
+        items-center leading-6 select-none active:outline-none
+        dark:hover:bg-gray-100 [&_a]:block [&_a]:w-full"
       onClick={e => !disabled && onClick?.(e)}
       type="button"
     >

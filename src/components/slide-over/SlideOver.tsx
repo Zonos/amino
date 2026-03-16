@@ -134,8 +134,9 @@ export const SlideOver = ({
 }: SlideOverProps) => (
   <BaseDialog
     className={cn(
-      'rounded-none max-h-none overflow-visible border-none bg-transparent shadow-none',
-      'absolute h-screen right-0 top-0',
+      `max-h-none overflow-visible rounded-none border-none bg-transparent
+      shadow-none`,
+      'absolute top-0 right-0 h-screen',
     )}
     fullWindowWidth={fullWindowWidth}
     onClose={onClose}
@@ -149,10 +150,13 @@ export const SlideOver = ({
     {...props}
   >
     <div
-      className="m-2 rounded-xl bg-page flex flex-col shadow-amino-v3-large"
+      className="bg-page shadow-amino-v3-large m-2 flex flex-col rounded-xl"
       style={{ height: 'calc(100% - 16px)' }}
     >
-      <header className="p-4 border-b border-amino-subtle flex gap-4 items-center justify-between [&>div]:flex [&>div]:gap-4 [&>div]:items-center">
+      <header
+        className="border-amino-subtle flex items-center justify-between gap-4
+          border-b p-4 [&>div]:flex [&>div]:items-center [&>div]:gap-4"
+      >
         <div>
           <Button icon={<RemoveIcon />} onClick={onClose} />
           {subtitle ? (
@@ -166,11 +170,17 @@ export const SlideOver = ({
         </div>
         {actions && <div>{actions}</div>}
       </header>
-      <div className="p-6 overflow-y-auto overflow-x-hidden overscroll-contain flex-1">
+      <div
+        className="flex-1 overflow-x-hidden overflow-y-auto overscroll-contain
+          p-6"
+      >
         {children}
       </div>
       {bottomActions && (
-        <div className="p-6 rounded-b-xl flex items-center justify-end bg-page [&>div+div]:ml-2">
+        <div
+          className="bg-page flex items-center justify-end rounded-b-xl p-6
+            [&>div+div]:ml-2"
+        >
           <HStack spacing={8}>{bottomActions}</HStack>
         </div>
       )}

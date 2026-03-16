@@ -19,21 +19,25 @@ export const Basic = () => (
   <div className="flex flex-col gap-5">
     <div className="flex flex-col gap-5">
       <Text type="title">Vertical</Text>
-      <div className="flex justify-evenly border border-amino rounded-amino-6">
+      <div className="border-amino rounded-amino-6 flex justify-evenly border">
         <ArrowLeftIcon />
         <Divider vertical />
         <CircleIcon />
         <Divider vertical />
         <ArrowRightIcon />
       </div>
-      <div className="flex justify-evenly border border-amino rounded-amino-6 p-2">
+      <div
+        className="border-amino rounded-amino-6 flex justify-evenly border p-2"
+      >
         <ArrowLeftIcon />
         <Divider vertical />
         <CircleIcon />
         <Divider vertical />
         <ArrowRightIcon />
       </div>
-      <div className="flex justify-evenly border border-amino rounded-amino-6 p-2">
+      <div
+        className="border-amino rounded-amino-6 flex justify-evenly border p-2"
+      >
         <ArrowLeftIcon />
         <Divider className="-m-2" vertical />
         <CircleIcon />
@@ -43,21 +47,30 @@ export const Basic = () => (
     </div>
     <Text type="title">Horizontal</Text>
     <div className="flex gap-5">
-      <div className="flex flex-col justify-evenly border border-amino rounded-amino-6">
+      <div
+        className="border-amino rounded-amino-6 flex flex-col justify-evenly
+          border"
+      >
         <ArrowUpIcon />
         <Divider />
         <CircleIcon />
         <Divider />
         <ArrowDownIcon />
       </div>
-      <div className="flex flex-col justify-evenly border border-amino rounded-amino-6 p-2">
+      <div
+        className="border-amino rounded-amino-6 flex flex-col justify-evenly
+          border p-2"
+      >
         <ArrowUpIcon />
         <Divider />
         <CircleIcon />
         <Divider />
         <ArrowDownIcon />
       </div>
-      <div className="flex flex-col justify-evenly border border-amino rounded-amino-6 p-2">
+      <div
+        className="border-amino rounded-amino-6 flex flex-col justify-evenly
+          border p-2"
+      >
         <ArrowUpIcon />
         <Divider className="-mx-2" />
         <CircleIcon />

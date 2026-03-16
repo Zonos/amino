@@ -133,13 +133,14 @@ export const CollapsibleList = ({
           <ChevronUpIcon
             className={cn(
               'transition-all',
-              collapsed && 'opacity-100 rotate-180',
+              collapsed && 'rotate-180 opacity-100',
             )}
           />
         }
       />
       <Collapse
-        className="[&_.list-item-icon-wrap]:w-amino-32 [&_.list-item-icon-wrap]:inline-block"
+        className="[&_.list-item-icon-wrap]:w-amino-32
+          [&_.list-item-icon-wrap]:inline-block"
         collapsed={collapsed}
       >
         {children}

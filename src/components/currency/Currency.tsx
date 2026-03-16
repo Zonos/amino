@@ -52,7 +52,7 @@ export const Currency = ({ amount, className, code, style }: Props) => {
   return (
     <span
       className={cn(
-        'flex gap-amino-4 whitespace-nowrap [font-feature-settings:"tnum"_1]',
+        'gap-amino-4 flex [font-feature-settings:"tnum"_1] whitespace-nowrap',
         className,
       )}
       style={style}

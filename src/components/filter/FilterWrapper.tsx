@@ -160,12 +160,14 @@ export const FilterWrapper = ({
   >
     <div
       className={cn(
-        'inline-flex items-center rounded-full border border-dashed border-gray-200 bg-transparent text-gray-700',
-        active && 'border-solid border-amino',
+        `inline-flex items-center rounded-full border border-dashed
+        border-gray-200 bg-transparent text-gray-700`,
+        active && 'border-amino border-solid',
       )}
     >
       <button
-        className="focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-glow-blue"
+        className="focus-visible:shadow-glow-blue focus:outline-none
+          focus-visible:outline-none active:outline-none"
         onClick={handleToggle}
         type="button"
       >
@@ -175,7 +177,8 @@ export const FilterWrapper = ({
             active && 'border-r border-solid',
             'hover:bg-hover',
             hasFilter &&
-              'rounded-tr-(--amino-filter-wrapper-border-top-right-radius) border-bottom-right-radius: var(--amino-filter-wrapper-border-bottom-right-radius)',
+              `rounded-tr-(--amino-filter-wrapper-border-top-right-radius)
+              rounded-br-(--amino-filter-wrapper-border-bottom-right-radius)`,
           )}
           style={
             active
@@ -199,7 +202,7 @@ export const FilterWrapper = ({
               size={24}
             />
           )}
-          <Text className="pl-1 pr-1" fontWeight={600}>
+          <Text className="pr-1 pl-1" fontWeight={600}>
             {label}
           </Text>
         </div>
@@ -207,13 +210,16 @@ export const FilterWrapper = ({
       {hasFilter && (
         <button
           className={cn(
-            'flex cursor-pointer items-center gap-0 rounded-full border-none px-1 py-1 hover:bg-hover',
-            'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-glow-blue',
+            `hover:bg-hover flex cursor-pointer items-center gap-0 border-none
+            px-1 py-1`,
+            `focus-visible:shadow-glow-blue focus:outline-none
+            focus-visible:outline-none active:outline-none`,
+            'rounded-l-none rounded-r-full',
           )}
           onClick={handleOpenDropdown}
           type="button"
         >
-          <Text className="pl-1 pr-1 font-semibold text-blue-600">
+          <Text className="pr-1 pl-1 font-semibold text-blue-600">
             {filterText}
           </Text>
           <ChevronDownIcon size={24} />
@@ -223,7 +229,8 @@ export const FilterWrapper = ({
     <div
       ref={dropdownRef}
       className={cn(
-        'absolute z-5 flex min-w-100 flex-col gap-6 rounded-xl bg-page p-6 shadow-xl outline-none',
+        `bg-page shadow-amino-xl absolute z-5 flex min-w-100 flex-col gap-6
+        rounded-xl p-6 outline-none`,
       )}
       onKeyDown={handleKeyDown}
       role="menu"
@@ -233,7 +240,7 @@ export const FilterWrapper = ({
       tabIndex={-1}
     >
       <Text type="bold-subheader">{dropdownTitle}</Text>
-      <div className="flex flex-col gap-2 max-h-100">{children}</div>
+      <div className="flex max-h-100 flex-col gap-2">{children}</div>
       <Button onClick={handleApply} size="md" variant="primary">
         Apply
       </Button>

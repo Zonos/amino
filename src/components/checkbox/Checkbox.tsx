@@ -169,7 +169,8 @@ export const Checkbox = ({
     <label
       className={cn(
         disabled ? 'cursor-not-allowed' : 'cursor-pointer',
-        'focus-within:outline-none [&:has(input:focus-visible)]:shadow-glow-blue',
+        `[&:has(input:focus-visible)]:shadow-glow-blue
+        focus-within:outline-none`,
         className,
       )}
       htmlFor={id}
@@ -189,7 +190,7 @@ export const Checkbox = ({
     >
       <input
         checked={checked}
-        className={cn('absolute w-0 h-0 opacity-0', disabled && 'disabled')}
+        className={cn('absolute h-0 w-0 opacity-0', disabled && 'disabled')}
         data-testid={testId}
         disabled={disabled}
         id={id}
@@ -204,17 +205,22 @@ export const Checkbox = ({
       />
       <div
         className={cn(
-          'flex flex-row select-none [&,*]:select-none [&,*]:pointer-events-none',
+          `flex flex-row select-none [&,*]:pointer-events-none
+          [&,*]:select-none`,
           'amino-input-wrapper',
           disabled && ['cursor-not-allowed', 'disabled'],
         )}
       >
         <div
           className={cn(
-            'w-4 h-4 min-w-4 min-h-4 leading-4 rounded flex items-center justify-center select-none transition-all duration-150 ease-in-out',
-            'bg-(--amino-checkbox-background) [border:var(--amino-checkbox-border)] shadow-(--amino-checkbox-box-shadow)',
+            `flex h-4 min-h-4 w-4 min-w-4 items-center justify-center rounded
+            leading-4 transition-all duration-150 ease-in-out select-none`,
+            `bg-(--amino-checkbox-background)
+            shadow-(--amino-checkbox-box-shadow)
+            [border:var(--amino-checkbox-border)]`,
             disabled &&
-              'bg-(--amino-checkbox-disabled-background) [border:var(--amino-checkbox-disabled-border)] shadow-none',
+              `bg-(--amino-checkbox-disabled-background) shadow-none
+              [border:var(--amino-checkbox-disabled-border)]`,
           )}
         >
           <AnimatePresence>
@@ -223,7 +229,7 @@ export const Checkbox = ({
                 key="checkbox"
                 animate={{ opacity: 1, scale: 1 }}
                 className={cn(
-                  'w-4 h-4 text-gray-0 dark:text-gray-1000',
+                  'text-gray-0 dark:text-gray-1000 h-4 w-4',
                   'shadow-[0px_2px_4px_rgba(0,0,0,0.06),0px_1px_2px_rgba(0,0,0,0.04)]',
                 )}
                 exit={{ opacity: 0, scale: 1 }}
@@ -260,7 +266,7 @@ export const Checkbox = ({
       </div>
 
       {subtitle && (
-        <div className={cn('ml-6 mt-1', disabled && 'text-gray-400')}>
+        <div className={cn('mt-1 ml-6', disabled && 'text-gray-400')}>
           <Text type="subtitle">{subtitle}</Text>
         </div>
       )}

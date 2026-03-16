@@ -17,11 +17,13 @@ We've selected a deployment strategy that builds upon the static file approach o
 ### 1. Documentation Generation
 
 **Process:**
+
 - Documentation is extracted during the Storybook build process
 - Static JSON files are generated and included in the build output
 - Files are organized according to our documentation format specification
 
 **Integration with m-yoshiro/storybook-mcp:**
+
 - We extend the base m-yoshiro/storybook-mcp implementation to support our enhanced documentation format
 - Custom extractors run as pre-build steps to generate the documentation
 - The output matches the expected format for the MCP server
@@ -29,16 +31,19 @@ We've selected a deployment strategy that builds upon the static file approach o
 ### 2. Vercel Deployment
 
 **Configuration:**
+
 - Vercel project configured to deploy both static files and API routes
 - Custom build script to run documentation extraction
 - Environment variables for configuration settings
 
 **API Routes:**
+
 - Implemented as serverless functions
 - Map directly to the MCP protocol endpoints
 - Access static JSON files to serve documentation
 
 **Static Files:**
+
 - JSON documentation files served via Vercel's CDN
 - Optimized for fast global access
 

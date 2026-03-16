@@ -208,11 +208,13 @@ export const FloatLabelInput = forwardRef<
     return (
       <label
         className={cn(
-          'group relative flex flex-row items-center w-full bg-amino-input rounded-[var(--amino-float-label-input-border-radius)]',
+          `group bg-amino-input relative flex w-full flex-row items-center
+          rounded-[var(--amino-float-label-input-border-radius)]`,
           !noBorder && [
             'focus-within:shadow-[var(--amino-focus-shadow)]',
             error &&
-              'shadow-[var(--amino-glow-error)] focus-within:shadow-[var(--amino-glow-error)]',
+              `shadow-[var(--amino-glow-error)]
+              focus-within:shadow-[var(--amino-glow-error)]`,
           ],
           hasValue && 'has-content',
           label && 'has-label',
@@ -226,14 +228,18 @@ export const FloatLabelInput = forwardRef<
         }}
       >
         {prefix && (
-          <div className="text-amino-s leading-(--amino-font-size-s) font-bold bg-transparent px-1.5 basis-[50px] flex justify-center items-center rounded-l-[6px]">
+          <div
+            className="text-amino-s flex basis-[50px] items-center
+              justify-center rounded-l-[6px] bg-transparent px-1.5
+              leading-(--amino-font-size-s) font-bold"
+          >
             {prefix}
           </div>
         )}
         {valuePrefix && (
           <div
             className={cn(
-              'flex order-2 items-center pl-2 whitespace-nowrap',
+              'order-2 flex items-center pl-2 whitespace-nowrap',
               label && ['items-end', currentSize.valuePrefixPadding],
             )}
             style={{ color: 'var(--amino-gray-800)' }}
@@ -246,17 +252,23 @@ export const FloatLabelInput = forwardRef<
           aria-label={label}
           autoFocus={autoFocus}
           className={cn(
-            'box-border relative outline-none transition-all duration-300 ease-in-out w-full rounded-[var(--amino-float-label-input-border-radius)] bg-amino-input border-0 order-2 font-medium',
+            `bg-amino-input relative order-2 box-border w-full
+            rounded-[var(--amino-float-label-input-border-radius)] border-0
+            font-medium transition-all duration-300 ease-in-out outline-none`,
             currentSize.wrapper,
             label ? currentSize.input : 'px-4',
             prefix && label && 'pl-0',
             valuePrefix && label && 'pl-2',
             !label && 'placeholder:opacity-disabled',
-            '[&:-internal-autofill-selected]:rounded-l-[6px] [&:-internal-autofill-selected+label+div]:bg-[#e8f0fe]',
-            '[&:-webkit-autofill]:bg-amino-input [&:-webkit-autofill]:text-[var(--amino-text-color)]',
-            '[&:-moz-autofill]:bg-amino-input [&:-moz-autofill]:text-[var(--amino-text-color)]',
+            `[&:-internal-autofill-selected]:rounded-l-[6px]
+            [&:-internal-autofill-selected+label+div]:bg-[#e8f0fe]`,
+            `[&:-webkit-autofill]:bg-amino-input
+            [&:-webkit-autofill]:text-[var(--amino-text-color)]`,
+            `[&:-moz-autofill]:bg-amino-input
+            [&:-moz-autofill]:text-[var(--amino-text-color)]`,
             label &&
-              'placeholder:opacity-0 group-[:has(input:focus)]:placeholder:opacity-disabled',
+              `group-[:has(input:focus)]:placeholder:opacity-disabled
+              placeholder:opacity-0`,
           )}
           data-testid={testId}
           disabled={disabled}
@@ -273,17 +285,21 @@ export const FloatLabelInput = forwardRef<
           value={value || ''}
           {...props}
         />
-        <div className="block max-h-0 pointer-events-none order-1 [.disabled_&]:pointer-events-auto">
+        <div
+          className="pointer-events-none order-1 block max-h-0
+            [.disabled_&]:pointer-events-auto"
+        >
           <span
             className={cn(
-              'text-amino-base leading-none inline-block blur-0 origin-left-top transition-all duration-300 ease-in-out z-1',
-              'absolute left-4 top-[calc(50%-8px)]',
+              `text-amino-base blur-0 origin-left-top z-1 inline-block
+              leading-none transition-all duration-300 ease-in-out`,
+              'absolute top-[calc(50%-8px)] left-4',
               hasValue && [
                 'scale-[0.8]',
                 '-translate-x-2',
                 currentSize.labelTop,
               ],
-              'group-focus-within:scale-[0.8] group-focus-within:-translate-x-2',
+              'group-focus-within:-translate-x-2 group-focus-within:scale-[0.8]',
               prefix && label && 'left-0',
             )}
             style={{ color: 'var(--amino-gray-800)' }}
@@ -292,13 +308,19 @@ export const FloatLabelInput = forwardRef<
           </span>
           <div
             className={cn(
-              "after:content-[''] after:absolute after:inset-0 after:rounded-[var(--amino-float-label-input-border-radius)]",
+              `after:absolute after:inset-0
+              after:rounded-[var(--amino-float-label-input-border-radius)]
+              after:content-['']`,
               '.disabled_&:after:cursor-not-allowed .disabled_&:after:z-[1]',
             )}
           />
         </div>
         {suffix && (
-          <div className="text-amino-s leading-(--amino-font-size-s) font-bold bg-transparent px-1.5 basis-[50px] flex justify-center items-center order-3 rounded-r-[6px]">
+          <div
+            className="text-amino-s order-3 flex basis-[50px] items-center
+              justify-center rounded-r-[6px] bg-transparent px-1.5
+              leading-(--amino-font-size-s) font-bold"
+          >
             {suffix}
           </div>
         )}

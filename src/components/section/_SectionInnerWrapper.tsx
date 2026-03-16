@@ -7,7 +7,7 @@ type Props = BaseProps & { children: ReactNode };
 
 export const SectionInnerWrapper = ({ children, className, style }: Props) => (
   <header
-    className={cn('flex justify-between mb-6 items-start', className)}
+    className={cn('mb-6 flex items-start justify-between', className)}
     style={style}
   >
     {children}

@@ -162,20 +162,20 @@ export const Banner = ({
 
     const renderTitle = () =>
       title && (
-        <header className="flex items-center justify-between gap-amino-12">
+        <header className="gap-amino-12 flex items-center justify-between">
           <Text color={intentProps.removeIconColor} type="label">
             {title}
           </Text>
           {headerActions && (
-            <div className="flex items-center gap-amino-8">{headerActions}</div>
+            <div className="gap-amino-8 flex items-center">{headerActions}</div>
           )}
         </header>
       );
 
     const renderFooter = () =>
       footerActions && (
-        <footer className="flex items-center gap-amino-12 mt-amino-8">
-          <div className="flex items-center gap-amino-8">{footerActions}</div>
+        <footer className="gap-amino-12 mt-amino-8 flex items-center">
+          <div className="gap-amino-8 flex items-center">{footerActions}</div>
         </footer>
       );
 
@@ -192,11 +192,11 @@ export const Banner = ({
           gridTemplateColumns: `32px auto ${!onClose ? '0px' : '32px'}`,
         }}
       >
-        <div className="[grid-area:icon] justify-self-start">
+        <div className="justify-self-start [grid-area:icon]">
           {intentProps.intentIcon}
         </div>
         {onClose && (
-          <div className="[grid-area:close] justify-self-end">
+          <div className="justify-self-end [grid-area:close]">
             <Button
               className="w-6"
               icon={
@@ -209,14 +209,17 @@ export const Banner = ({
         )}
 
         <div
-          className="[grid-area:header] text-amino-base"
+          className="text-amino-base [grid-area:header]"
           style={{ color: intentProps.removeIconColor }}
         >
           {header}
         </div>
 
         {content && (
-          <div className="[grid-area:content] mt-2 flex flex-col gap-amino-8 text-amino-base">
+          <div
+            className="gap-amino-8 text-amino-base mt-2 flex flex-col
+              [grid-area:content]"
+          >
             {content}
             {moreContent}
           </div>

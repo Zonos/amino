@@ -161,10 +161,10 @@ export const CoverSheet = ({
   return (
     <BaseDialog
       className={cn(
-        'rounded-none max-h-screen outline-none box-border overscroll-contain',
-        'bg-page fixed left-0 top-0 w-screen h-screen',
-        'text-amino border border-amino-subtle',
-        'print:h-auto print:min-h-screen print:absolute',
+        'box-border max-h-screen overscroll-contain rounded-none outline-none',
+        'bg-page fixed top-0 left-0 h-screen w-screen',
+        'text-amino border-amino-subtle border',
+        'print:absolute print:h-auto print:min-h-screen',
         className,
       )}
       fullWindowWidth
@@ -180,19 +180,23 @@ export const CoverSheet = ({
     >
       <header
         className={cn(
-          'border-b border-amino-subtle px-amino-32 flex justify-between items-center',
-          'h-16 sticky top-0 z-[99] bg-page',
+          `border-amino-subtle px-amino-32 flex items-center justify-between
+          border-b`,
+          'bg-page sticky top-0 z-[99] h-16',
           'print:hidden',
         )}
         style={{ padding: 'var(--amino-space-16) var(--amino-space-32)' }}
       >
-        <div className="flex items-center gap-amino-16">
+        <div className="gap-amino-16 flex items-center">
           {!hideCloseButton && (
             <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
           )}
           <Text type="subheader">{label}</Text>
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2
+            -translate-y-1/2"
+        >
           {headerComponent}
         </div>
         <div id={actionWrapperId}>

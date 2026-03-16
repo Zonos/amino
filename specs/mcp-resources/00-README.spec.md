@@ -26,7 +26,7 @@ We will implement the MCP server directly within our existing Storybook deployme
 To understand the MCP server implementation, we recommend reviewing the specifications in the following order:
 
 1. 01-architecture.spec.md
-2. 02-storybook-integration.spec.md 
+2. 02-storybook-integration.spec.md
 3. 03-documentation-format.spec.md
 4. 04-api-endpoints.spec.md
 5. 05-authentication.spec.md

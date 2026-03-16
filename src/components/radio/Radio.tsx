@@ -96,7 +96,8 @@ export const Radio = ({
     <label
       className={cn(
         'flex flex-row items-center select-none',
-        'focus-within:outline-none [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]',
+        `focus-within:outline-none
+        [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]`,
         disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         disabled && 'disabled',
         className,
@@ -128,10 +129,13 @@ export const Radio = ({
       />
       <div
         className={cn(
-          'w-4 h-4 rounded-full cursor-pointer flex items-center justify-center select-none mr-2 transition-all',
-          'bg-[var(--amino-radio-background)] [border:var(--amino-radio-border)] shadow-[var(--amino-radio-box-shadow)]',
+          `mr-2 flex h-4 w-4 cursor-pointer items-center justify-center
+          rounded-full transition-all select-none`,
+          `bg-[var(--amino-radio-background)]
+          shadow-[var(--amino-radio-box-shadow)]
+          [border:var(--amino-radio-border)]`,
           disabled &&
-            'bg-[var(--amino-radio-container-background)] cursor-not-allowed',
+            'cursor-not-allowed bg-[var(--amino-radio-container-background)]',
         )}
       >
         <AnimatePresence>
@@ -139,7 +143,7 @@ export const Radio = ({
             <motion.svg
               key="radio"
               animate={{ opacity: 1, scale: 1 }}
-              className="w-2 h-2 text-gray-0"
+              className="text-gray-0 h-2 w-2"
               exit={{ opacity: 0, scale: 1.5 }}
               fill="currentColor"
               initial={{ opacity: 0, scale: 1.5 }}

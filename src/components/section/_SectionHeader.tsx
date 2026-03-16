@@ -8,7 +8,7 @@ type Props = BaseProps & { children: ReactNode; type: FontType };
 
 export const SectionHeader = ({ children, className, style, type }: Props) => (
   <Text
-    className={cn('flex-auto flex-col flex', className)}
+    className={cn('flex flex-auto flex-col', className)}
     style={style}
     type={type}
   >

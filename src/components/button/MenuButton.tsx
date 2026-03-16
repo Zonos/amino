@@ -90,7 +90,8 @@ export const MenuButton = ({
       >
         {visible && (
           <div
-            className="bg-surface rounded-amino-12 shadow-amino-large animate-dropdown p-amino-8 mt-amino-4 right-0 min-w-full w-max"
+            className="bg-surface rounded-amino-12 shadow-amino-large
+              animate-dropdown p-amino-8 mt-amino-4 right-0 w-max min-w-full"
             onClick={handleClickChildren}
             onKeyDown={e => {
               if (e.key === 'Enter') {

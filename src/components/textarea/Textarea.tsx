@@ -171,7 +171,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       >
         <div
           className={cn(
-            'amino-input-wrapper relative p-0 overflow-hidden w-full border border-amino rounded-[12px]',
+            `amino-input-wrapper border-amino relative w-full overflow-hidden
+            rounded-[12px] border p-0`,
             disabled && [
               '*:cursor-not-allowed',
               '[&_.fields]:opacity-disabled',
@@ -182,7 +183,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         >
           <button
             className={cn(
-              'flex flex-col w-full relative hover:border-gray-300',
+              'relative flex w-full flex-col hover:border-gray-300',
             )}
             onClick={() => textareaRef?.current?.focus()}
             type="button"
@@ -197,8 +198,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 textareaRef.current = node;
               }}
               className={cn(
-                'flex-grow box-border py-2 px-4 outline-none w-full border-0 text-amino-base font-medium resize-none min-h-[50px] bg-amino-input',
-                'placeholder:transition-all placeholder:duration-300 placeholder:ease-in-out placeholder:text-gray-400 placeholder:font-normal placeholder:opacity-60',
+                `text-amino-base bg-amino-input box-border min-h-[50px] w-full
+                flex-grow resize-none border-0 px-4 py-2 font-medium
+                outline-none`,
+                `placeholder:font-normal placeholder:text-gray-400
+                placeholder:opacity-60 placeholder:transition-all
+                placeholder:duration-300 placeholder:ease-in-out`,
                 'focus:outline-none',
                 label && [
                   'mt-6 pt-0',
@@ -222,7 +227,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {label && (
               <label
                 className={cn(
-                  'text-amino-base leading-none absolute top-5.5 left-4 origin-left-top transition-all duration-300 ease-in-out',
+                  `text-amino-base origin-left-top absolute top-5.5 left-4
+                  leading-none transition-all duration-300 ease-in-out`,
                   (hasValue ||
                     textareaRef.current === document.activeElement) &&
                     'top-[11px] scale-[0.8]',
@@ -236,7 +242,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             )}
             <div
               className={cn(
-                "after:content-[''] after:absolute after:inset-0 after:rounded-[12px]",
+                `after:absolute after:inset-0 after:rounded-[12px]
+                after:content-['']`,
                 error && 'after:shadow-[var(--amino-glow-error)]',
               )}
             />
@@ -245,7 +252,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {actions && (
             <div
               ref={actionsRef}
-              className="bg-page py-4 px-4 flex items-center justify-end"
+              className="bg-page flex items-center justify-end px-4 py-4"
             >
               <Flex alignItems="center" fullHeight justifyContent="flex-end">
                 {actions}

@@ -207,9 +207,10 @@ export const RichRadio = <T extends string>({
   return (
     <VStack
       className={cn(
-        '[&_button[data-state="checked"]]:shadow-amino-select-active [&_button[data-state="checked"]]:text-blue-600',
+        `[&_button[data-state="checked"]]:shadow-amino-select-active
+        [&_button[data-state="checked"]]:text-blue-600`,
         '[&_button[data-state="checked"]_.subtitle]:text-blue-600',
-        '[&_svg]:text-gray-0 [&_svg]:w-4 [&_svg]:h-4',
+        '[&_svg]:text-gray-0 [&_svg]:h-4 [&_svg]:w-4',
         className,
       )}
       spacing={8}
@@ -219,12 +220,15 @@ export const RichRadio = <T extends string>({
         <button
           key={item.value}
           className={cn(
-            'group relative appearance-none bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)] border border-amino rounded-amino-8',
-            'text-left transition-all duration-150 ease-in-out flex flex-row items-center h-16',
+            `group border-amino rounded-amino-8 relative appearance-none border
+            bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)]`,
+            `flex h-16 flex-row items-center text-left transition-all
+            duration-150 ease-in-out`,
             'hover:bg-hover hover:border-gray-200',
             'hover:[&_.icon-wrapper]:bg-gray-600',
-            'focus:outline-none focus:border-blue-400 focus:shadow-[0_0_0_1px] focus:shadow-blue-400',
-            '[&>div]:flex [&>div]:flex-col [&>div]:flex-1',
+            `focus:border-blue-400 focus:shadow-[0_0_0_1px]
+            focus:shadow-blue-400 focus:outline-none`,
+            '[&>div]:flex [&>div]:flex-1 [&>div]:flex-col',
             itemHeight === 40 && 'h-10',
           )}
           data-disabled={item.disabled}
@@ -238,7 +242,7 @@ export const RichRadio = <T extends string>({
           {item.tooltip && (
             <ReactTooltip
               arrowColor="transparent"
-              className="max-w-87.5 rounded-amino-10"
+              className="rounded-amino-10 max-w-87.5"
               effect="solid"
               {...item.tooltipSetting}
             />
@@ -264,12 +268,18 @@ export const RichRadio = <T extends string>({
             </div>
           )}
           {!!icon && (
-            <div className="icon-wrapper absolute right-4 bg-gray-400 rounded-full p-1.25 [&_svg]:text-gray-0">
+            <div
+              className="icon-wrapper [&_svg]:text-gray-0 absolute right-4
+                rounded-full bg-gray-400 p-1.25"
+            >
               {icon || <CheckmarkIcon />}
             </div>
           )}
           {item.value === selectedValue && (
-            <div className="absolute right-4 bg-blue-600 rounded-full p-0.5 flex items-center justify-center">
+            <div
+              className="absolute right-4 flex items-center justify-center
+                rounded-full bg-blue-600 p-0.5"
+            >
               {activeIcon || <CheckmarkIcon />}
             </div>
           )}

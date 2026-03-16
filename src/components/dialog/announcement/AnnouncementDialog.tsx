@@ -68,7 +68,7 @@ export const AnnouncementDialog = forwardRef<
         }}
       >
         <div
-          className="h-auto mb-amino-16"
+          className="mb-amino-16 h-auto"
           style={{
             margin: 'var(--amino-announcement-dialog-image-margin)',
             marginBottom: 'var(--amino-space-16)',
@@ -78,7 +78,8 @@ export const AnnouncementDialog = forwardRef<
           {image}
         </div>
         <VStack
-          className="p-[var(--amino-space-16)_var(--amino-space-24)] overflow-y-auto flex-grow"
+          className="flex-grow overflow-y-auto
+            p-[var(--amino-space-16)_var(--amino-space-24)]"
           spacing={8}
         >
           <Text color="blue600" type="label">

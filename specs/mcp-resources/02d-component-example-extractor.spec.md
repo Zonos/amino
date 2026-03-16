@@ -79,19 +79,24 @@ To maintain consistency in documentation, we'll standardize on the following JSD
 ```typescript
 /**
  * Button component for user interactions.
- * 
+ *
  * @example Basic button
  * <Button>Click me</Button>
- * 
+ *
  * @example Primary button with icon
  * <Button variant="primary" leftIcon={<Icon name="check" />}>
  *   Submit
  * </Button>
- * 
+ *
  * @example Disabled button
  * <Button disabled>Cannot click</Button>
  */
-export const Button = ({ variant, size, children, ...rest }: ButtonProps): React.ReactElement => {
+export const Button = ({
+  variant,
+  size,
+  children,
+  ...rest
+}: ButtonProps): React.ReactElement => {
   // Component implementation
 };
 ```

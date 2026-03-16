@@ -18,9 +18,12 @@ const meta: Meta = {
 export default meta;
 
 export const ColorPalette = () => (
-  <div className="grid grid-cols-[repeat(auto-fit,calc(33%-24px))] gap-6 items-center">
+  <div
+    className="grid grid-cols-[repeat(auto-fit,calc(33%-24px))] items-center
+      gap-6"
+  >
     {colorPrefixes.map(color => (
-      <div key={color} className="flex flex-col mb-6 text-center">
+      <div key={color} className="mb-6 flex flex-col text-center">
         <Text type="title">{color.toUpperCase()}</Text>
         <VStack spacing={0}>
           {(color !== 'gray' && color !== 'glass'
@@ -37,7 +40,11 @@ export const ColorPalette = () => (
                     Number(value) <= 500 ? theme.gray1000 : theme.gray0,
                 }}
               >
-                <div className="text-[length:var(--amino-font-size-s)] p-6 bg-[var(--amino-colors-stories-background)] [&_span]:text-[var(--amino-colors-stories-color)]">
+                <div
+                  className="bg-[var(--amino-colors-stories-background)] p-6
+                    text-[length:var(--amino-font-size-s)]
+                    [&_span]:text-[var(--amino-colors-stories-color)]"
+                >
                   <Text>{value}</Text>
                 </div>
               </div>

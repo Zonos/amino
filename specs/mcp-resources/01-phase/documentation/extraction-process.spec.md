@@ -45,6 +45,7 @@ The extraction process can be configured through:
    - `MCP_INCLUDE_PRIVATE`: Include private components in documentation (true/false)
 
 2. **Configuration File** (`mcp.config.json`):
+
    ```json
    {
      "componentDirs": ["src/components"],
@@ -89,10 +90,10 @@ For optimal documentation extraction, components should have JSDoc comments in t
 /**
  * Component description goes here.
  * Multiple paragraphs are supported.
- * 
+ *
  * @example Basic usage
  * <ComponentName>Example content</ComponentName>
- * 
+ *
  * @example With props
  * <ComponentName prop="value">
  *   Example with props

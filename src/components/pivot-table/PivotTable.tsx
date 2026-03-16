@@ -187,7 +187,7 @@ export const PivotTable = <
         return null;
       }
       return (
-        <span className={cn('flex h-full justify-center items-center')}>
+        <span className={cn('flex h-full items-center justify-center')}>
           {sortDirection === 'ASC' ? (
             <ChevronUpIcon color="gray900" />
           ) : (
@@ -263,12 +263,15 @@ export const PivotTable = <
     <div
       className={cn(
         'relative',
-        '[&_.data-grid]:h-full [&_.data-grid]:rounded-amino-8 [&_.data-grid]:bg-inherit',
+        `[&_.data-grid]:rounded-amino-8 [&_.data-grid]:h-full
+        [&_.data-grid]:bg-inherit`,
         '[&_.rdg-row]:bg-gray-0 [&_.rdg-row]:text-text-color',
         '[&_.rdg-row]:dark:bg-gray-50',
-        '[&_.rdg-header-row]:bg-gray-100 [&_.rdg-header-row]:text-text-color [&_.rdg-header-row]:font-bold',
+        `[&_.rdg-header-row]:text-text-color [&_.rdg-header-row]:bg-gray-100
+        [&_.rdg-header-row]:font-bold`,
         '[&_.rdg-header-row]:dark:bg-gray-100',
-        '[&_.rdg-summary-row]:bg-gray-100 [&_.rdg-summary-row]:text-text-color [&_.rdg-summary-row]:font-bold',
+        `[&_.rdg-summary-row]:text-text-color [&_.rdg-summary-row]:bg-gray-100
+        [&_.rdg-summary-row]:font-bold`,
         '[&_.rdg-summary-row]:dark:bg-gray-100',
         '[&_.rdg-cell]:border [&_.rdg-cell]:border-gray-200',
         '[&_.rdg-cell]:dark:border-gray-400',

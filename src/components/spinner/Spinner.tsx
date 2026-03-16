@@ -109,7 +109,7 @@ export const Spinner = ({
     >
       <svg
         className={cn(
-          'absolute animate-spinner-rotate',
+          'animate-spinner-rotate absolute',
           colors.svg,
           className,
           'amino-spinner',

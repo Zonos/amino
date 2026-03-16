@@ -323,7 +323,8 @@ export const Input = ({
         className={cn(
           'flex flex-row items-center',
           !noBorder &&
-            'rounded-[var(--amino-input-border-radius)] border border-amino hover:border-gray-300',
+            `border-amino rounded-[var(--amino-input-border-radius)] border
+            hover:border-gray-300`,
         )}
       >
         {renderInput()}

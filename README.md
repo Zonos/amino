@@ -57,6 +57,7 @@ pnpm extract:mcp-data
 ```
 
 This command:
+
 - Scans component directories to locate documentation files
 - Extracts TypeScript interfaces and JSDoc comments
 - Generates structured documentation as JSON files in `public/mcp-data/`
@@ -74,6 +75,7 @@ pnpm mcp:server
 ```
 
 After starting the server, you can verify it's working by accessing:
+
 ```
 http://localhost:3000/api/mcp/v1/health
 ```
@@ -81,11 +83,13 @@ http://localhost:3000/api/mcp/v1/health
 #### Deploying to Vercel
 
 When deploying the MCP server to Vercel, set the build command to:
+
 ```
 pnpm extract:mcp-data && pnpm build:mcp-server
 ```
 
 This ensures that:
+
 1. Documentation is extracted from component files
 2. The NextJS API server is built for production
 
@@ -111,6 +115,10 @@ For configuration details, see the [MCP architecture specification](./specs/mcp-
    Rewrite this code to use css module instead of styled component. Make sure all the theme variables that are used in styled component, use scss variable with prefix $amino instead (ex: $amino-v3-shadow-base)
    ```
 5. Copilot will give you the scss file content and the new code suggestion, you now just need to filter and adjust it a bit
+
+### - Styling (design system)
+
+When adding or changing styles, **use Amino theme variables first** (Tailwind theme classes like `shadow-amino-xl`, `border-amino`, `bg-page`, or CSS vars like `var(--amino-v3-shadow-xl)`). Use custom values only when the design system does not provide a suitable token.
 
 ### - Configuration
 

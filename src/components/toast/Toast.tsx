@@ -218,10 +218,13 @@ export const Toast = ({
   return (
     <motion.div
       className={cn(
-        'z-[999999] rounded-xl shadow-amino-v3-large p-4 font-medium select-none flex-1 leading-6',
-        'bg-linear-to-r from-[rgba(148,150,158,0.4)_0%] to-[rgba(148,150,158,0)_50%] bg-gray-1000 text-gray-0',
+        `shadow-amino-v3-large z-[999999] flex-1 rounded-xl p-4 leading-6
+        font-medium select-none`,
+        `bg-gray-1000 text-gray-0 bg-linear-to-r from-[rgba(148,150,158,0.4)_0%]
+        to-[rgba(148,150,158,0)_50%]`,
         '[&_svg]:text-gray-500',
-        'dark:bg-linear-to-r dark:from-[rgba(148,150,158,0.24)_0%] dark:to-[rgba(148,150,158,0)_50%] dark:bg-gray-50 dark:text-gray-1000',
+        `dark:text-gray-1000 dark:bg-gray-50 dark:bg-linear-to-r
+        dark:from-[rgba(148,150,158,0.24)_0%] dark:to-[rgba(148,150,158,0)_50%]`,
         'dark:[&_svg]:text-gray-600',
         intentValues.class,
         isPersistent && 'cursor-pointer select-auto hover:scale-95',

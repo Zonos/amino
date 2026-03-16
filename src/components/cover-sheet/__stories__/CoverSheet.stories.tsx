@@ -22,7 +22,7 @@ const Story: StoryFn<CoverSheetProps> = ({
 }: CoverSheetProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <CoverSheet
         actions={<Button variant="primary">Click me</Button>}
@@ -87,7 +87,7 @@ const Template: StoryFn<CoverSheetProps & { actionPortalOpen?: boolean }> = ({
     useState(false);
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
 
       <CoverSheet {...props} onClose={() => setOpen(false)} open={open}>

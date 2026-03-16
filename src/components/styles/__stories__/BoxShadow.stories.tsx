@@ -28,7 +28,8 @@ export const BoxShadows = () => (
         <Fragment key={aminoShadow}>
           <p>Shadow intensity: {label}</p>
           <div
-            className="mb-10 shadow-[var(--amino-box-shadow-stories-box-shadow)] bg-gray-100 p-[16px_24px]"
+            className="mb-10 bg-gray-100 p-[16px_24px]
+              shadow-[var(--amino-box-shadow-stories-box-shadow)]"
             style={{ '--amino-box-shadow-stories-box-shadow': aminoShadow }}
           >
             <p>var({aminoShadow})</p>

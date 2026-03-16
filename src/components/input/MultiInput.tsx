@@ -205,7 +205,7 @@ export const MultiInput = ({
     <Flex
       alignItems="center"
       className={cn(
-        'border border-amino p-1.5 rounded-[10px] overflow-x-auto',
+        'border-amino overflow-x-auto rounded-[10px] border p-1.5',
         className,
       )}
       flexWrap="wrap"
@@ -236,7 +236,8 @@ export const MultiInput = ({
       })}
       <input
         ref={inputRef}
-        className="border-0 outline-none p-1.5 min-w-[100px] flex-auto min-w-[50px] flex-grow text-amino-base font-medium bg-transparent"
+        className="text-amino-base min-w-[50px] min-w-[100px] flex-auto
+          flex-grow border-0 bg-transparent p-1.5 font-medium outline-none"
         onChange={handleInputChange}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}

@@ -38,7 +38,10 @@ export const Basic: StoryFn<CollapseProps> = props => {
     <>
       <Button onClick={() => setCollapsed(!collapsed)}>Toggle</Button>
       <Collapse collapsed={collapsed} {...props}>
-        <div className="m-5 flex border border-gray-200 bg-gray-100 p-5 dark:border-gray-700 dark:bg-gray-800">
+        <div
+          className="m-5 flex border border-gray-200 bg-gray-100 p-5
+            dark:border-gray-700 dark:bg-gray-800"
+        >
           <Text>Some text</Text>
         </div>
       </Collapse>
@@ -120,7 +123,10 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         <div>
           Open by default
           <Collapse collapseSize={collapseSize} collapsed={!open1}>
-            <div className="rounded-amino-6 border border-gray-400 dark:border-gray-600">
+            <div
+              className="rounded-amino-6 border border-gray-400
+                dark:border-gray-600"
+            >
               {children}
               {moreItems && (
                 <>
@@ -138,7 +144,10 @@ export const Random: StoryFn<CollapseProps> = ({ collapseSize }) => {
         <div>
           Closed by default
           <Collapse collapseSize={collapseSize} collapsed={!open2}>
-            <div className="rounded-amino-6 border border-gray-400 dark:border-gray-600">
+            <div
+              className="rounded-amino-6 border border-gray-400
+                dark:border-gray-600"
+            >
               {children}
               {moreItems && (
                 <>
@@ -183,7 +192,8 @@ const DropdownNavItem = ({ items }: { items: Item[] | null }) => {
           >
             <ChevronRightIcon
               className={cn(
-                'text-gray-600 transition-transform duration-amino-normal dark:text-gray-400',
+                `duration-amino-normal text-gray-600 transition-transform
+                dark:text-gray-400`,
                 collapsed[index] ? 'rotate-0' : '-rotate-90',
               )}
             />
@@ -213,7 +223,10 @@ const items: Item[] = [
 ];
 
 export const DropdownNav: StoryFn<CollapseProps> = () => (
-  <div className="h-[300px] w-[500px] overflow-y-auto overscroll-contain border border-gray-200 dark:border-gray-700">
+  <div
+    className="h-[300px] w-[500px] overflow-y-auto overscroll-contain border
+      border-gray-200 dark:border-gray-700"
+  >
     <DropdownNavItem items={items} />
   </div>
 );

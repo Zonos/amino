@@ -95,7 +95,8 @@ export const RippleGroup = React.forwardRef<RippleActions, RippleGroupProps>(
     return (
       <span
         ref={container}
-        className="overflow-hidden pointer-events-none absolute z-0 inset-0 rounded-[inherit]"
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden
+          rounded-[inherit]"
         style={{
           ...style,
           '--amino-ripple-group-color': getAminoColor(color) || 'currentColor',

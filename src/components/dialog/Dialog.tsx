@@ -108,8 +108,11 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     ref,
   ) => (
     <BaseDialog {...props} onClose={onClose} style={style}>
-      <div className="p-amino-24 pb-amino-16 rounded-t-xl flex flex-col gap-amino-12">
-        <div className="w-full flex items-center">
+      <div
+        className="p-amino-24 pb-amino-16 gap-amino-12 flex flex-col
+          rounded-t-xl"
+      >
+        <div className="flex w-full items-center">
           <Text className="m-0 flex-grow" type="title">
             {label}
           </Text>
@@ -124,19 +127,23 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       </div>
       <div
         ref={ref}
-        className="p-[var(--amino-space-8)_var(--amino-space-24)] overflow-y-auto flex-grow"
+        className="flex-grow overflow-y-auto
+          p-[var(--amino-space-8)_var(--amino-space-24)]"
       >
         {children}
       </div>
       {(actions || leftActions) && (
-        <div className="p-amino-24 flex items-center rounded-b-xl [&>div+div]:ml-amino-8">
+        <div
+          className="p-amino-24 [&>div+div]:ml-amino-8 flex items-center
+            rounded-b-xl"
+        >
           {leftActions && (
-            <div className="flex-grow flex justify-start gap-amino-8">
+            <div className="gap-amino-8 flex flex-grow justify-start">
               {leftActions}
             </div>
           )}
           {actions && (
-            <div className="flex-grow flex justify-end gap-amino-8">
+            <div className="gap-amino-8 flex flex-grow justify-end">
               {actions}
             </div>
           )}

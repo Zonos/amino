@@ -52,25 +52,25 @@ cp mcp.config.example.json mcp.config.json
 
 Configuration options include:
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `componentDirs` | Directories to scan for components | `['src/components']` |
-| `excludeDirs` | Directories to exclude from scanning | `['__tests__', '__stories__']` |
-| `filePatterns` | File patterns to include | `['**/*.{ts,tsx}', '!**/*.d.ts', '!**/*.test.{ts,tsx}', '!**/*.stories.{ts,tsx}']` |
-| `includePrivate` | Whether to include private components | `false` |
-| `outputDir` | Directory for generated documentation | `'public/mcp-data'` |
-| `verbose` | Enable verbose logging | `false` |
+| Option           | Description                           | Default                                                                            |
+| ---------------- | ------------------------------------- | ---------------------------------------------------------------------------------- |
+| `componentDirs`  | Directories to scan for components    | `['src/components']`                                                               |
+| `excludeDirs`    | Directories to exclude from scanning  | `['__tests__', '__stories__']`                                                     |
+| `filePatterns`   | File patterns to include              | `['**/*.{ts,tsx}', '!**/*.d.ts', '!**/*.test.{ts,tsx}', '!**/*.stories.{ts,tsx}']` |
+| `includePrivate` | Whether to include private components | `false`                                                                            |
+| `outputDir`      | Directory for generated documentation | `'public/mcp-data'`                                                                |
+| `verbose`        | Enable verbose logging                | `false`                                                                            |
 
 ### Environment Variables
 
 You can also configure the MCP server using environment variables:
 
-| Variable | Description |
-|----------|-------------|
-| `MCP_COMPONENT_DIRS` | Comma-separated list of component directories |
+| Variable              | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| `MCP_COMPONENT_DIRS`  | Comma-separated list of component directories          |
 | `MCP_INCLUDE_PRIVATE` | Whether to include private components (`true`/`false`) |
-| `MCP_OUTPUT_DIR` | Directory for generated documentation |
-| `MCP_VERBOSE` | Enable verbose logging (`true`/`false`) |
+| `MCP_OUTPUT_DIR`      | Directory for generated documentation                  |
+| `MCP_VERBOSE`         | Enable verbose logging (`true`/`false`)                |
 
 ## Usage
 
@@ -83,6 +83,7 @@ pnpm extract:mcp-data
 ```
 
 This command:
+
 1. Scans your component directories based on configuration
 2. Extracts JSDoc comments and TypeScript type information
 3. Generates JSON documentation files in the configured output directory
@@ -100,6 +101,7 @@ pnpm mcp:server
 ```
 
 The server will start on port 3000, and you can access the API endpoints at:
+
 - Health check: http://localhost:3000/api/mcp/v1/health
 - Component listing: http://localhost:3000/api/mcp/v1/components
 - Component details: http://localhost:3000/api/mcp/v1/components/[component-id]
@@ -114,6 +116,7 @@ pnpm build:mcp
 ```
 
 This runs:
+
 1. `pnpm extract:mcp-data` - Extract component documentation
 2. `pnpm build:mcp-server` - Build the NextJS application
 
@@ -129,12 +132,12 @@ Do not include MCP documentation extraction in the Storybook project's build pro
 
 ## API Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/mcp/v1/health` | GET | Health check endpoint |
-| `/api/mcp/v1/components` | GET | List all components |
-| `/api/mcp/v1/components/[id]` | GET | Get specific component details |
-| `/api/mcp/v1/types` | GET | Get type definitions |
+| Endpoint                      | Method | Description                    |
+| ----------------------------- | ------ | ------------------------------ |
+| `/api/mcp/v1/health`          | GET    | Health check endpoint          |
+| `/api/mcp/v1/components`      | GET    | List all components            |
+| `/api/mcp/v1/components/[id]` | GET    | Get specific component details |
+| `/api/mcp/v1/types`           | GET    | Get type definitions           |
 
 ## File Structure
 

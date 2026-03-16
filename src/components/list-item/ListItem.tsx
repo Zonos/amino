@@ -114,7 +114,7 @@ const ListIcon = ({
   label: string;
 }) => {
   if (icon) {
-    return <img alt={label} className="mr-4 w-8 h-8 rounded-md" src={icon} />;
+    return <img alt={label} className="mr-4 h-8 w-8 rounded-md" src={icon} />;
   }
   if (iconComponent) {
     return <>{iconComponent}</>;
@@ -135,12 +135,13 @@ export const ListItem = ({
 }: Props) => (
   <button
     className={cn(
-      'p-2 px-4 flex flex-row gap-4 items-center min-h-(--amino-size-xl) rounded-lg leading-4',
+      `flex min-h-(--amino-size-xl) flex-row items-center gap-4 rounded-lg p-2
+      px-4 leading-4`,
       !disabled && selected && 'bg-blue-50 **:text-blue-800',
-      'active:outline-none active:bg-hover',
-      'focus:outline-none focus:bg-hover',
-      'hover:outline-none hover:bg-hover',
-      disabled && 'text-gray-600 cursor-not-allowed',
+      'active:bg-hover active:outline-none',
+      'focus:bg-hover focus:outline-none',
+      'hover:bg-hover hover:outline-none',
+      disabled && 'cursor-not-allowed text-gray-600',
       !disabled && !selected && onClick && 'hover:bg-hover cursor-pointer',
       className,
     )}
@@ -159,7 +160,7 @@ export const ListItem = ({
       <ListIcon label={typeof label === 'string' ? label : ''} />
     </div>
 
-    <div className="flex flex-col items-start gap-0.5 grow">
+    <div className="flex grow flex-col items-start gap-0.5">
       <Text type="label">{label}</Text>
       {subtitle && <Text type="caption">{subtitle}</Text>}
     </div>

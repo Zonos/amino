@@ -363,7 +363,7 @@ export const Text = ({
       return (
         <span
           className={cn(
-            'block font-sans text-[14px] font-normal leading-4 text-gray-1000 mb-2',
+            'text-gray-1000 mb-2 block font-sans text-[14px] leading-4 font-normal',
             className,
           )}
           title={title}

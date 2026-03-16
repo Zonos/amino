@@ -85,7 +85,7 @@ export const Card = ({
 }: CardProps) => (
   <div
     className={cn(
-      'border border-amino rounded-amino-6 bg-gray-0 dark:bg-gray-50',
+      'border-amino rounded-amino-6 bg-gray-0 border dark:bg-gray-50',
       !spacing && 'p-amino-24',
       className,
     )}
@@ -102,7 +102,12 @@ export const Card = ({
     }}
   >
     {label && (
-      <div className="flex items-center border-b border-amino h-[65px] leading-[65px] select-none m-[var(--amino-card-margin)] mb-[var(--amino-card-margin-bottom)] p-[var(--amino-card-padding-spacing)] [&_h5]:mb-0 [&_h5]:flex-1">
+      <div
+        className="border-amino m-[var(--amino-card-margin)]
+          mb-[var(--amino-card-margin-bottom)] flex h-[65px] items-center
+          border-b p-[var(--amino-card-padding-spacing)] leading-[65px]
+          select-none [&_h5]:mb-0 [&_h5]:flex-1"
+      >
         <Text type="subheader">{label}</Text>
 
         <HStack spacing={8}>{actions}</HStack>
@@ -110,7 +115,12 @@ export const Card = ({
     )}
     {children}
     {(footerActions || footerContent) && (
-      <div className="flex items-center justify-between m-[var(--amino-card-margin)] p-[var(--amino-card-padding-spacing)] border-t border-amino bg-surface-secondary dark:bg-gray-100 mt-[var(--amino-card-margin-top)] rounded-b-amino-8 h-[var(--amino-card-footer-height)]">
+      <div
+        className="border-amino bg-surface-secondary rounded-b-amino-8
+          m-[var(--amino-card-margin)] mt-[var(--amino-card-margin-top)] flex
+          h-[var(--amino-card-footer-height)] items-center justify-between
+          border-t p-[var(--amino-card-padding-spacing)] dark:bg-gray-100"
+      >
         <div>{footerContent}</div>
         <HStack spacing={8}>{footerActions}</HStack>
       </div>

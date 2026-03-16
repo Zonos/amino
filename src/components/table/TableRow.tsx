@@ -29,7 +29,7 @@ export function TableRow({
     <tr
       className={cn(
         withHover && 'hover:bg-gray-50 dark:hover:bg-gray-100',
-        '[&_th]:text-gray-800 [&_th_*]:text-amino-s dark:[&_th]:text-gray-600',
+        '[&_th_*]:text-amino-s [&_th]:text-gray-800 dark:[&_th]:text-gray-600',
         active && '[tbody_&]:bg-gray-50 dark:[tbody_&]:bg-gray-100',
         className,
       )}

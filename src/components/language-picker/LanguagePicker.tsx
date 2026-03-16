@@ -163,7 +163,11 @@ export const LanguagePicker = ({
         <button
           aria-label="Select language"
           className={cn(
-            'flex h-8 items-center gap-[6px] rounded-amino-6 border border-gray-200 bg-transparent px-amino-12 py-[6px] text-sm font-medium text-gray-800 transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-gray-300 hover:bg-gray-100',
+            `rounded-amino-6 px-amino-12 flex h-8 items-center gap-[6px] border
+              border-gray-200 bg-transparent py-[6px] text-sm font-medium
+              text-gray-800 transition-all duration-150
+              ease-[cubic-bezier(0.4,0,0.2,1)] hover:border-gray-300
+              hover:bg-gray-100`,
             className,
           )}
           onClick={() => setIsOpen(true)}
@@ -179,24 +183,32 @@ export const LanguagePicker = ({
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-[4px] animate-fade-in"
+          className="animate-fade-in fixed inset-0 z-[1000] flex items-center
+            justify-center bg-black/50 backdrop-blur-[4px]"
           onClick={handleClose}
         >
           <div
             aria-label="Select language"
             aria-modal="true"
-            className="flex max-h-[calc(100vh-64px)] w-[calc(100%-32px)] max-w-[680px] flex-col overflow-hidden rounded-amino-12 bg-surface shadow-amino-medium animate-slide-up"
+            className="rounded-amino-12 bg-surface shadow-amino-medium
+              animate-slide-up flex max-h-[calc(100vh-64px)] w-[calc(100%-32px)]
+              max-w-[680px] flex-col overflow-hidden"
             onClick={e => e.stopPropagation()}
             role="dialog"
           >
             {/* Header with globe */}
-            <div className="relative overflow-hidden bg-gradient-to-b from-gray-100 to-surface">
+            <div
+              className="to-surface relative overflow-hidden bg-gradient-to-b
+                from-gray-100"
+            >
               {/* Animated background particles */}
-              <div className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div
+                className="pointer-events-none absolute inset-0 overflow-hidden"
+              >
                 {PARTICLES.map(particle => (
                   <div
                     key={particle.id}
-                    className="absolute rounded-full animate-float"
+                    className="animate-float absolute rounded-full"
                     style={{
                       '--particle-delay': `${particle.delay}s`,
                       '--particle-duration': `${particle.duration}s`,
@@ -214,7 +226,11 @@ export const LanguagePicker = ({
                 ))}
               </div>
 
-              <div className="relative flex items-center gap-amino-24 px-8 pb-amino-24 pt-8 max-[525px]:flex-col max-[525px]:px-5 max-[525px]:pb-5 max-[525px]:pt-amino-24 max-[525px]:text-center">
+              <div
+                className="gap-amino-24 pb-amino-24 max-[525px]:pt-amino-24
+                  relative flex items-center px-8 pt-8 max-[525px]:flex-col
+                  max-[525px]:px-5 max-[525px]:pb-5 max-[525px]:text-center"
+              >
                 <div className="relative flex-shrink-0">
                   <div
                     className="absolute inset-0 rounded-full"
@@ -227,7 +243,10 @@ export const LanguagePicker = ({
                   <AnimatedGlobe size={140} />
                 </div>
                 <div className="relative flex-1">
-                  <h2 className="mb-amino-8 mt-0 text-[20px] font-semibold leading-tight tracking-[-0.01em] text-text-color">
+                  <h2
+                    className="mb-amino-8 text-text-color mt-0 text-[20px]
+                      leading-tight font-semibold tracking-[-0.01em]"
+                  >
                     {title}
                   </h2>
                   <p className="m-0 text-sm leading-[1.5] text-gray-600">
@@ -235,7 +254,11 @@ export const LanguagePicker = ({
                   </p>
                   <button
                     aria-label="Close"
-                    className="absolute -right-amino-8 -top-amino-8 flex h-[28px] w-[28px] items-center justify-center rounded-full border-none bg-transparent text-gray-400 transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-black/5 hover:text-gray-600"
+                    className="-right-amino-8 -top-amino-8 absolute flex
+                      h-[28px] w-[28px] items-center justify-center rounded-full
+                      border-none bg-transparent text-gray-400 transition-all
+                      duration-150 ease-[cubic-bezier(0.4,0,0.2,1)]
+                      hover:bg-black/5 hover:text-gray-600"
                     onClick={handleClose}
                     type="button"
                   >
@@ -245,14 +268,23 @@ export const LanguagePicker = ({
               </div>
 
               {/* Search bar */}
-              <div className="relative mx-8 mb-amino-16 max-[525px]:mx-5 max-[525px]:mb-amino-12">
+              <div
+                className="mb-amino-16 max-[525px]:mb-amino-12 relative mx-8
+                  max-[525px]:mx-5"
+              >
                 <SearchIcon
-                  className="pointer-events-none absolute left-amino-12 top-1/2 -translate-y-1/2 text-gray-500"
+                  className="left-amino-12 pointer-events-none absolute top-1/2
+                    -translate-y-1/2 text-gray-500"
                   size={16}
                 />
                 <input
                   aria-label="Search languages"
-                  className="w-full rounded-amino-8 border border-gray-200 bg-surface px-amino-12 py-[10px] pl-10 text-sm text-text-color outline-none transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] placeholder:text-gray-400 focus:border-blue-500 focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]"
+                  className="rounded-amino-8 bg-surface px-amino-12
+                    text-text-color w-full border border-gray-200 py-[10px]
+                    pl-10 text-sm transition-all duration-150
+                    ease-[cubic-bezier(0.4,0,0.2,1)] outline-none
+                    placeholder:text-gray-400 focus:border-blue-500
+                    focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]"
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder="Search languages..."
                   type="text"
@@ -271,21 +303,33 @@ export const LanguagePicker = ({
             />
 
             {/* Language list */}
-            <div className="max-h-80 flex-1 overflow-y-auto px-5 py-amino-12 max-[525px]:max-h-[280px] max-[525px]:px-amino-16">
+            <div
+              className="py-amino-12 max-[525px]:px-amino-16 max-h-80 flex-1
+                overflow-y-auto px-5 max-[525px]:max-h-[280px]"
+            >
               {filteredLanguages.length === 0 ? (
-                <div className="flex flex-col items-center justify-center px-amino-24 py-amino-48 text-center">
-                  <div className="mb-amino-12 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                <div
+                  className="px-amino-24 py-amino-48 flex flex-col items-center
+                    justify-center text-center"
+                >
+                  <div
+                    className="mb-amino-12 flex h-12 w-12 items-center
+                      justify-center rounded-full bg-gray-100 text-gray-500"
+                  >
                     <SearchIcon size={20} />
                   </div>
-                  <p className="m-0 text-sm font-medium text-text-color">
+                  <p className="text-text-color m-0 text-sm font-medium">
                     No languages found
                   </p>
-                  <p className="mb-0 mt-amino-4 text-[13px] text-gray-500">
+                  <p className="mt-amino-4 mb-0 text-[13px] text-gray-500">
                     Try a different search term
                   </p>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 gap-amino-4 max-[525px]:grid-cols-1">
+                <div
+                  className="gap-amino-4 grid grid-cols-2
+                    max-[525px]:grid-cols-1"
+                >
                   {filteredLanguages.map((lang, i) => (
                     <LanguageItem
                       key={lang.code}
@@ -304,13 +348,27 @@ export const LanguagePicker = ({
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-8 py-amino-16 max-[525px]:flex-col max-[525px]:gap-amino-12 max-[525px]:px-5">
-              <div className="flex items-center gap-amino-8 text-xs text-gray-600">
-                <div className="h-amino-8 w-amino-8 rounded-full bg-blue-500 animate-amino-pulse" />
+            <div
+              className="py-amino-16 max-[525px]:gap-amino-12 flex items-center
+                justify-between border-t border-gray-200 bg-gray-50 px-8
+                max-[525px]:flex-col max-[525px]:px-5"
+            >
+              <div
+                className="gap-amino-8 flex items-center text-xs text-gray-600"
+              >
+                <div
+                  className="h-amino-8 w-amino-8 animate-amino-pulse
+                    rounded-full bg-blue-500"
+                />
                 <span>{languages.length} languages available</span>
               </div>
               <button
-                className="rounded-amino-8 border-none bg-blue-600 px-5 py-[10px] text-sm font-medium text-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-blue-700 hover:shadow-[0_2px_4px_rgba(0,0,0,0.15)] active:scale-[0.98] max-[525px]:w-full"
+                className="rounded-amino-8 border-none bg-blue-600 px-5
+                  py-[10px] text-sm font-medium text-white
+                  shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-150
+                  ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-blue-700
+                  hover:shadow-[0_2px_4px_rgba(0,0,0,0.15)] active:scale-[0.98]
+                  max-[525px]:w-full"
                 onClick={handleConfirm}
                 type="button"
               >

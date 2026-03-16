@@ -436,8 +436,15 @@ export const TextTruncation = ({
     <>
       <pre>{window.location.search}</pre>
 
-      <div className="py-2 border-b border-amino-subtle flex justify-between items-center">
-        <div className="flex gap-2 [&>div>div>div:last-child]:overflow-x-hidden [&>div>div>div:last-child]:whitespace-nowrap [&>div>div>div:last-child]:text-ellipsis">
+      <div
+        className="border-amino-subtle flex items-center justify-between
+          border-b py-2"
+      >
+        <div
+          className="flex gap-2 [&>div>div>div:last-child]:overflow-x-hidden
+            [&>div>div>div:last-child]:text-ellipsis
+            [&>div>div>div:last-child]:whitespace-nowrap"
+        >
           <FilterSelect
             dropdownTitle="Filter by option"
             isDisabled={isDisabled}

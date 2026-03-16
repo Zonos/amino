@@ -1,5 +1,8 @@
 /* Ensure full height for all storybook containers */
-html, body, #storybook-root, #root {
+html,
+body,
+#storybook-root,
+#root {
   height: 100% !important;
   min-height: 100% !important;
   margin: 0 !important;
@@ -7,9 +10,9 @@ html, body, #storybook-root, #root {
 }
 
 /* Story canvas container */
-.docs-story, 
-.sb-story, 
-[data-story-block="true"],
+.docs-story,
+.sb-story,
+[data-story-block='true'],
 .sb-main-centered,
 .sb-main-fullscreen,
 .sb-main-padded {

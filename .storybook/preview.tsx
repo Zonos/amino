@@ -100,15 +100,17 @@ const withTheme: Decorator = (Story, context) => {
     // Don't iframe this one because it reads local storage
     if (context.title === 'Amino/ThemeSelect') {
       return (
-        <div className="flex w-full h-full justify-around *:flex-1">
+        <div className="flex h-full w-full justify-around *:flex-1">
           <div
-            className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)"
+            className="h-screen w-full overflow-auto bg-(--amino-gray-0) p-4
+              text-(--amino-text-color)"
             data-theme="day"
           >
             <Story {...context} />
           </div>
           <div
-            className="w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)"
+            className="h-screen w-full overflow-auto bg-(--amino-gray-0) p-4
+              text-(--amino-text-color)"
             data-theme="night"
           >
             <Story {...context} />
@@ -118,7 +120,7 @@ const withTheme: Decorator = (Story, context) => {
     }
 
     return (
-      <div className="flex w-full h-full justify-around *:flex-1">
+      <div className="flex h-full w-full justify-around *:flex-1">
         <iframe
           height="100%"
           src={`/iframe.html?globals=theme:day&id=${context.id}&viewMode=story&innerFrame=true`}
@@ -136,7 +138,8 @@ const withTheme: Decorator = (Story, context) => {
   return (
     <div
       className={cn(
-        'w-full h-screen overflow-auto p-4 bg-(--amino-gray-0) text-(--amino-text-color)',
+        `h-screen w-full overflow-auto bg-(--amino-gray-0) p-4
+        text-(--amino-text-color)`,
         context.viewMode === 'docs' && 'h-full min-h-[30vh]',
       )}
       data-theme={inSideBySide ? storybookTheme : aminoTheme}

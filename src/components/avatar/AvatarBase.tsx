@@ -98,7 +98,7 @@ export const AvatarBase = ({
 
   return (
     <div
-      className={cn('flex justify-center items-center', className)}
+      className={cn('flex items-center justify-center', className)}
       style={{
         ...style,
         border: bordered ? `${size / 16}px solid ${theme.gray0}` : undefined,

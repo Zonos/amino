@@ -66,7 +66,9 @@ export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
             suffix || (
               <div className="flex flex-col justify-center">
                 <button
-                  className="p-1.5 rounded-full transition-all duration-300 ease-in-out hover:bg-black/[0.04] active:bg-black/10 focus:outline-none"
+                  className="rounded-full p-1.5 transition-all duration-300
+                    ease-in-out hover:bg-black/[0.04] focus:outline-none
+                    active:bg-black/10"
                   onClick={() => {
                     inputRef.current?.showPicker();
                     inputRef.current?.dispatchEvent(

@@ -65,7 +65,7 @@ export const TableRowCollapse = ({
         <TableRow rowTestId={`amino--collapse-${rowKey}`}>
           <TableCell
             className={cn(
-              '!border-b-[inherit] !h-[inherit]',
+              '!h-[inherit] !border-b-[inherit]',
               collapsed && '!h-0 !border-b-0',
               '[&>div]:w-full',
             )}

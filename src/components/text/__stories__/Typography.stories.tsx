@@ -16,12 +16,12 @@ const Template: StoryFn<TextProps> = props => (
     {textOptions.map(option => (
       <VStack
         key={option.type}
-        className="w-160 rounded-2xl border border-gray-200 p-4 mb-6"
+        className="mb-6 w-160 rounded-2xl border border-gray-200 p-4"
       >
         <Text type={option.type} {...props}>
           {content}
         </Text>
-        <div className="flex justify-center rounded bg-gray-300 p-2 w-50">
+        <div className="flex w-50 justify-center rounded bg-gray-300 p-2">
           {option.label}
         </div>
         <div>{`<Text type="${option.type}">${content}</Text>`}</div>

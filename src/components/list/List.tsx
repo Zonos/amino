@@ -100,7 +100,7 @@ export const List = ({
     className={cn(
       'flex flex-col gap-0.5',
       withBorder &&
-        'p-amino-8 border border-gray-200 dark:border-gray-800 rounded-amino-12',
+        'p-amino-8 rounded-amino-12 border border-gray-200 dark:border-gray-800',
       withNegativeMargin && 'm-amino-n24',
       className,
     )}

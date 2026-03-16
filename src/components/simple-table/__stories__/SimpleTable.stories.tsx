@@ -517,7 +517,10 @@ export const Loading: StoryObj = {
           collapsible={{
             collapseContent: items.map(item => ({
               content: (
-                <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
+                <table
+                  className="mt-amino-12 [&_th]:px-amino-16 [&_td]:px-amino-16
+                    w-full [&_td]:!border-0 [&_td]:p-0 [&_th]:p-0"
+                >
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -696,7 +699,10 @@ export const Collapsible: StoryObj = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
+        <table
+          className="mt-amino-12 [&_th]:px-amino-16 [&_td]:px-amino-16 w-full
+            [&_td]:!border-0 [&_td]:p-0 [&_th]:p-0"
+        >
           <thead>
             <tr>
               <th>Name</th>
@@ -986,7 +992,10 @@ export const OnRowClick: StoryObj<typeof SimpleTable> = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className="mt-amino-12 w-full [&_th]:p-0 [&_th]:px-amino-16 [&_td]:!border-0 [&_td]:p-0 [&_td]:px-amino-16">
+        <table
+          className="mt-amino-12 [&_th]:px-amino-16 [&_td]:px-amino-16 w-full
+            [&_td]:!border-0 [&_td]:p-0 [&_th]:p-0"
+        >
           <thead>
             <tr>
               <th>Name</th>

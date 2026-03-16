@@ -6,8 +6,8 @@ import { cn } from 'src/utils/cn';
 export const Loading = () => (
   <div
     className={cn(
-      'fixed top-0 bottom-0 left-0 right-0',
-      'flex flex-col justify-center items-center gap-amino-12',
+      'fixed top-0 right-0 bottom-0 left-0',
+      'gap-amino-12 flex flex-col items-center justify-center',
     )}
   >
     <ZonosLogoIcon
@@ -17,7 +17,8 @@ export const Loading = () => (
     <Text
       className={cn(
         'relative',
-        'after:absolute after:animate-[dots_1200ms_linear_infinite] after:content-[""]',
+        `after:absolute after:animate-[dots_1200ms_linear_infinite]
+        after:content-[""]`,
       )}
       type="bold-subheader"
     >

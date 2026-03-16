@@ -17,10 +17,16 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative flex h-full items-center overflow-x-visible border-t border-amino [&_li]:cursor-pointer [&_strong]:font-medium">
+    <div
+      className="border-amino relative flex h-full items-center
+        overflow-x-visible border-t [&_li]:cursor-pointer
+        [&_strong]:font-medium"
+    >
       <button
         className={cn(
-          'box-border flex w-full flex-row items-center rounded-amino-6 bg-transparent transition-amino [&>*]:mb-0 [&_span]:text-amino-s hover:bg-hover',
+          `rounded-amino-6 transition-amino [&_span]:text-amino-s hover:bg-hover
+          box-border flex w-full flex-row items-center bg-transparent
+          [&>*]:mb-0`,
           addSpacing && 'p-amino-24',
         )}
         onClick={() => setOpen(!open)}
@@ -42,14 +48,19 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
 
       {open && (
         <Surface
-          className="absolute bottom-amino-16 left-amino-16 z-[100] min-w-full w-max animate-amino-dropdown-inverse border border-amino py-amino-6"
+          className="bottom-amino-16 left-amino-16
+            animate-amino-dropdown-inverse border-amino py-amino-6 absolute
+            z-[100] w-max min-w-full border"
           dense
           depth="depth16"
         >
           <Menu>
             <li>
               <button
-                className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16"
+                className="p-amino-16 transition-amino [&+&]:-mt-amino-16
+                  hover:bg-hover [&>div]:mr-amino-16 flex cursor-pointer
+                  flex-row items-center select-none [&>*]:mb-0
+                  [&>*]:cursor-pointer [&>*]:select-none"
                 onClick={() => {}}
                 type="button"
               >
@@ -66,7 +77,12 @@ export const UserMenu = ({ addSpacing = true }: UserMenuProps) => {
             </li>
 
             <li>
-              <div className="flex cursor-pointer select-none flex-row items-center p-amino-16 transition-amino [&+&]:-mt-amino-16 [&>*]:mb-0 [&>*]:cursor-pointer [&>*]:select-none hover:bg-hover [&>div]:mr-amino-16">
+              <div
+                className="p-amino-16 transition-amino [&+&]:-mt-amino-16
+                  hover:bg-hover [&>div]:mr-amino-16 flex cursor-pointer
+                  flex-row items-center select-none [&>*]:mb-0
+                  [&>*]:cursor-pointer [&>*]:select-none"
+              >
                 <TextAvatar label="Zonos" />
                 <VStack spacing={0}>
                   <strong>

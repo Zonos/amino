@@ -9,11 +9,13 @@ This document outlines the architecture for the Amino MCP (Model Context Protoco
 After evaluating available MCP tools for Storybook integration, we've decided to use **m-yoshiro/storybook-mcp** as our foundation with custom extensions to meet our specific requirements. This decision was made based on the following factors:
 
 **Key advantages of m-yoshiro/storybook-mcp:**
+
 1. Focused tools for component listing and discovery that align with our architecture
 2. Simple setup compatible with our Vercel deployment strategy
 3. Extensible implementation that can be customized for our documentation format
 
 **Areas requiring extension:**
+
 1. Documentation extraction for TypeScript interfaces and JSDoc comments
 2. Custom static JSON structure to match our specified file format
 3. Enhanced search functionality for component discovery
@@ -46,6 +48,7 @@ m-yoshiro/storybook-mcp provides essential tools like `list-components` and `fin
 **Purpose**: Extract structured documentation from component files during Storybook build.
 
 **Responsibilities**:
+
 - Run during build process before Storybook compilation
 - Parse component directories to locate documentation files
 - Extract TypeScript interfaces and JSDoc comments
@@ -57,6 +60,7 @@ m-yoshiro/storybook-mcp provides essential tools like `list-components` and `fin
 **Purpose**: Store structured component documentation in static files.
 
 **Responsibilities**:
+
 - Maintain organized file structure for efficient access
 - Store component metadata, props, and examples
 - Enable efficient lookup by component ID, category, and tag
@@ -67,6 +71,7 @@ m-yoshiro/storybook-mcp provides essential tools like `list-components` and `fin
 **Purpose**: Expose component documentation via serverless API endpoints.
 
 **Responsibilities**:
+
 - Read documentation from static JSON files
 - Provide component listing endpoints
 - Serve individual component documentation
@@ -79,6 +84,7 @@ m-yoshiro/storybook-mcp provides essential tools like `list-components` and `fin
 **Purpose**: Connect the MCP server with the Storybook deployment.
 
 **Responsibilities**:
+
 - Trigger documentation extraction during build process
 - Include static JSON files in the Vercel deployment
 - Provide access to API routes from Storybook UI (optional)

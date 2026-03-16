@@ -116,7 +116,8 @@ export const BaseDialog = ({
         <AnimatePresence>
           {open && (
             <motion.div
-              className="w-screen h-screen left-0 top-0 z-1000 fixed flex justify-center items-center text-amino"
+              className="text-amino fixed top-0 left-0 z-1000 flex h-screen
+                w-screen items-center justify-center"
               {...backdropMotionProps}
               key="dialog-backdrop"
               ref={backdropRef}
@@ -149,7 +150,8 @@ export const BaseDialog = ({
                 {...combinedPopupMotionProps}
                 key="dialog"
                 className={cn(
-                  'elevated z-1001 bg-page max-h-[90vh] rounded-xl outline-none shadow-amino-xxl overflow-hidden flex flex-col',
+                  `elevated bg-page shadow-amino-xxl z-1001 flex max-h-[90vh]
+                  flex-col overflow-hidden rounded-xl outline-none`,
                   className,
                 )}
                 onClick={e => {

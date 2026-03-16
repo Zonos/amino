@@ -37,8 +37,8 @@ export const Filter = ({
       <button
         ref={refs.setReference}
         className={cn(
-          'flex items-center justify-center h-amino-size-sm px-amino-12',
-          'border border-amino rounded-amino-6',
+          'h-amino-size-sm px-amino-12 flex items-center justify-center',
+          'border-amino rounded-amino-6 border',
         )}
         onClick={() => setVisible(!visible)}
         type="button"
@@ -49,12 +49,16 @@ export const Filter = ({
       <div
         ref={refs.setFloating}
         className={cn(
-          'flex p-amino-16 bg-gray-0 border border-gray-200 rounded-amino-8 w-[300px]',
+          `p-amino-16 bg-gray-0 rounded-amino-8 flex w-[300px] border
+          border-gray-200`,
           'shadow-[0_0_1px_var(--amino-gray-400)]',
           '[&>div]:w-full',
           '[&_.value-container]:overflow-x-auto',
-          '[&_.multi-value]:flex [&_.multi-value]:h-[22px] [&_.multi-value]:items-center',
-          '[&_.multi-value_[role=button]]:flex [&_.multi-value_[role=button]]:items-center [&_.multi-value_[role=button]]:justify-center',
+          `[&_.multi-value]:flex [&_.multi-value]:h-[22px]
+          [&_.multi-value]:items-center`,
+          `[&_.multi-value_[role=button]]:flex
+          [&_.multi-value_[role=button]]:items-center
+          [&_.multi-value_[role=button]]:justify-center`,
         )}
         style={{
           ...floatingStyles,

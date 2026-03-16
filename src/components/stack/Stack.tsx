@@ -83,7 +83,8 @@ export const Stack = ({
 }: StackProps) => (
   <div
     className={cn(
-      'grid auto-cols-[minmax(0,1fr)] [&>*]:justify-self-[var(--amino-stack-alignment)]',
+      `[&>*]:justify-self-[var(--amino-stack-alignment)] grid
+      auto-cols-[minmax(0,1fr)]`,
       className,
     )}
     style={{ ...style, '--amino-stack-alignment': alignment || 'unset' }}

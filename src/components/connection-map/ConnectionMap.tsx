@@ -189,7 +189,7 @@ export const ConnectionMap = ({
   if (loading) {
     return (
       <Skeleton
-        className="box-border m-0 w-full rounded-amino-12"
+        className="rounded-amino-12 m-0 box-border w-full"
         height={height}
         style={{ padding: '16.5%' }}
       />
@@ -199,7 +199,7 @@ export const ConnectionMap = ({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-amino-12 bg-gray-50 dark:bg-night-gray-50',
+        'rounded-amino-12 dark:bg-night-gray-50 overflow-hidden bg-gray-50',
         '[&_*]:outline-none',
         className,
       )}

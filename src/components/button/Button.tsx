@@ -315,7 +315,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       <div className={cn('content', children && 'px-amino-4')}>{children}</div>
       {iconRight && <span className="content">{icon}</span>}
       {variant !== 'plain' && variant !== 'text' && loading && (
-        <span className="spinner-wrapper absolute inset-0 flex items-center justify-center rounded-amino-6 gap-amino-8">
+        <span
+          className="spinner-wrapper rounded-amino-6 gap-amino-8 absolute
+            inset-0 flex items-center justify-center"
+        >
           <Spinner color={_spinnerColor} size={getSpinnerSize()} />
           {loadingText}
         </span>
@@ -332,16 +335,19 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     loading && 'loading [&_.content]:invisible',
     !disabled &&
       !loading &&
-      'active:scale-[0.99] hover:bg-[image:var(--amino-button-hover-background-color)]',
+      `active:scale-[0.99]
+      hover:bg-[image:var(--amino-button-hover-background-color)]`,
     disabled && 'cursor-not-allowed',
     icon &&
       children &&
       !iconRight &&
-      '[&_svg:not(.amino-spinner)]:mr-[2px] [&_svg:not(.amino-spinner)]:ml-0 [&_svg:not(.amino-spinner)]:opacity-80',
+      `[&_svg:not(.amino-spinner)]:mr-[2px] [&_svg:not(.amino-spinner)]:ml-0
+      [&_svg:not(.amino-spinner)]:opacity-80`,
     icon &&
       children &&
       iconRight &&
-      '[&_svg:not(.amino-spinner)]:ml-[2px] [&_svg:not(.amino-spinner)]:mr-0 [&_svg:not(.amino-spinner)]:opacity-80',
+      `[&_svg:not(.amino-spinner)]:ml-[2px] [&_svg:not(.amino-spinner)]:mr-0
+      [&_svg:not(.amino-spinner)]:opacity-80`,
     className,
   );
 

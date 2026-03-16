@@ -3,6 +3,7 @@
  */
 const config = {
   arrowParens: 'avoid',
+  customFunctions: ['cn', 'clsx'],
   overrides: [
     {
       files:
@@ -11,6 +12,11 @@ const config = {
         tabWidth: 2,
       },
     },
+  ],
+  plugins: [
+    'prettier-plugin-tailwindcss',
+    'prettier-plugin-classnames',
+    'prettier-plugin-merge',
   ],
   printWidth: 80,
   proseWrap: 'preserve',

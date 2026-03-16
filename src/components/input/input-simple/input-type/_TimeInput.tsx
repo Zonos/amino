@@ -40,7 +40,8 @@ export const TimeInput = forwardRef<HTMLInputElement, InputBaseProps>(
     return (
       <div
         className={cn(
-          'relative w-full [&_input[type=time]::-webkit-calendar-picker-indicator]:hidden',
+          `relative w-full
+          [&_input[type=time]::-webkit-calendar-picker-indicator]:hidden`,
           className,
         )}
       >
@@ -63,7 +64,9 @@ export const TimeInput = forwardRef<HTMLInputElement, InputBaseProps>(
             suffix || (
               <div className="flex flex-col justify-center">
                 <button
-                  className="p-1.5 rounded-full transition-all duration-300 ease-in-out hover:bg-hover active:bg-gray-100 focus:outline-none"
+                  className="hover:bg-hover rounded-full p-1.5 transition-all
+                    duration-300 ease-in-out focus:outline-none
+                    active:bg-gray-100"
                   onClick={() => {
                     inputRef.current?.showPicker();
                     inputRef.current?.dispatchEvent(

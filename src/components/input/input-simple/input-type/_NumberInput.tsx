@@ -41,16 +41,23 @@ export const NumberInput = forwardRef<HTMLInputElement, InputBaseProps>(
           {...props}
           ref={mergedRef}
           aria-label={label}
-          className="[&_input]:pr-10 [&_input]:appearance-none [&_input::-webkit-inner-spin-button]:hidden [&_input::-webkit-calendar-picker-indicator]:hidden"
+          className="[&_input]:appearance-none [&_input]:pr-10
+            [&_input::-webkit-calendar-picker-indicator]:hidden
+            [&_input::-webkit-inner-spin-button]:hidden"
           label={label}
           size={size}
           suffix={
             suffix === null
               ? null
               : suffix || (
-                  <div className="flex flex-col justify-center h-[var(--amino-number-input-height)]">
+                  <div
+                    className="flex h-[var(--amino-number-input-height)]
+                      flex-col justify-center"
+                  >
                     <button
-                      className="p-0 px-1 rounded transition-all duration-300 ease-in-out hover:bg-black/[0.04] active:bg-black/10 focus:outline-none"
+                      className="rounded p-0 px-1 transition-all duration-300
+                        ease-in-out hover:bg-black/[0.04] focus:outline-none
+                        active:bg-black/10"
                       onClick={() => {
                         inputRef.current?.stepUp();
                         inputRef.current?.dispatchEvent(
@@ -62,7 +69,9 @@ export const NumberInput = forwardRef<HTMLInputElement, InputBaseProps>(
                       <CaretUpIcon size={getIconSize(size)} />
                     </button>
                     <button
-                      className="p-0 px-1 rounded transition-all duration-300 ease-in-out hover:bg-black/[0.04] active:bg-black/10 focus:outline-none"
+                      className="rounded p-0 px-1 transition-all duration-300
+                        ease-in-out hover:bg-black/[0.04] focus:outline-none
+                        active:bg-black/10"
                       onClick={() => {
                         inputRef.current?.stepDown();
                         inputRef.current?.dispatchEvent(

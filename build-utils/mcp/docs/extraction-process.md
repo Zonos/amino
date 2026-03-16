@@ -45,6 +45,7 @@ The extraction process can be configured through:
    - `MCP_INCLUDE_PRIVATE`: Include private components in documentation (true/false)
 
 2. **Configuration File** (`mcp.config.json`):
+
    ```json
    {
      "componentDirs": ["src/components"],

@@ -30,10 +30,12 @@ export const Ripple: StoryFn<typeof RippleGroup> = props => {
   return (
     <VStack>
       <div
-        className="relative cursor-crosshair border border-amino rounded-md w-[400px] h-[400px] flex flex-col justify-center items-center"
+        className="border-amino relative flex h-[400px] w-[400px]
+          cursor-crosshair flex-col items-center justify-center rounded-md
+          border"
         {...getRippleHandlers({})}
       >
-        <div className="absolute w-full h-full opacity-30 bg-[length:400%_400%]" />
+        <div className="absolute h-full w-full bg-[length:400%_400%] opacity-30" />
         <div>Click me!</div>
         {rippleEnabled && <RippleGroup ref={rippleRef} {...props} />}
       </div>

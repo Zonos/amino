@@ -25,17 +25,20 @@ All API endpoints are publicly accessible and do not require authentication. Thi
 **Description:** Get a list of all available components with basic metadata.
 
 **Parameters:**
+
 - `category` (optional): Filter components by category
 - `tag` (optional): Filter components by tag
 - `limit` (optional): Maximum number of components to return (default: 20)
 - `offset` (optional): Pagination offset (default: 0)
 
 **Example Request:**
+
 ```
 GET /api/mcp/v1/components?limit=10&offset=0
 ```
 
 **Example Response:**
+
 ```json
 {
   "components": [
@@ -70,14 +73,17 @@ GET /api/mcp/v1/components?limit=10&offset=0
 **Description:** Get detailed documentation for a specific component.
 
 **Parameters:**
+
 - `id` (path parameter): Component identifier
 
 **Example Request:**
+
 ```
 GET /api/mcp/v1/components/button
 ```
 
 **Example Response:**
+
 ```json
 {
   "id": "button",
@@ -140,11 +146,13 @@ GET /api/mcp/v1/components/button
 **Description:** Check if the MCP server is operational.
 
 **Example Request:**
+
 ```
 GET /api/mcp/v1/health
 ```
 
 **Example Response:**
+
 ```json
 {
   "status": "ok",
@@ -164,6 +172,7 @@ All endpoints follow standard HTTP status codes and include detailed error messa
 - `500 Internal Server Error`: Server error
 
 **Example Error Response:**
+
 ```json
 {
   "error": {

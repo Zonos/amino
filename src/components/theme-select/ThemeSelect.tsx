@@ -85,15 +85,17 @@ export const ThemeSelect = ({
         <HStack className={className}>
           <button
             className={cn(
-              'rounded-amino-8 border-2 border-solid border-transparent text-text-color focus:outline-none active:outline-none',
-              aminoTheme === 'day' && 'border-blue-400 text-primary',
+              `rounded-amino-8 text-text-color border-2 border-solid
+              border-transparent focus:outline-none active:outline-none`,
+              aminoTheme === 'day' && 'text-primary border-blue-400',
             )}
             data-theme="day"
             onClick={() => setAminoTheme('day')}
             type="button"
           >
             <Card
-              className="flex flex-col items-center bg-gray-0 [&_svg]:mb-amino-16 [&_svg]:h-16 [&_svg]:w-[110px] [&_svg]:shadow-v3-large"
+              className="bg-gray-0 [&_svg]:mb-amino-16 [&_svg]:shadow-v3-large
+                flex flex-col items-center [&_svg]:h-16 [&_svg]:w-[110px]"
               spacing={theme.space16}
             >
               <ThemeLightIcon />
@@ -105,15 +107,17 @@ export const ThemeSelect = ({
 
           <button
             className={cn(
-              'rounded-amino-8 border-2 border-solid border-transparent text-text-color focus:outline-none active:outline-none',
-              aminoTheme === 'night' && 'border-blue-400 text-primary',
+              `rounded-amino-8 text-text-color border-2 border-solid
+              border-transparent focus:outline-none active:outline-none`,
+              aminoTheme === 'night' && 'text-primary border-blue-400',
             )}
             data-theme="night"
             onClick={() => setAminoTheme('night')}
             type="button"
           >
             <Card
-              className="flex flex-col items-center bg-gray-0 [&_svg]:mb-amino-16 [&_svg]:h-16 [&_svg]:w-[110px] [&_svg]:shadow-v3-large"
+              className="bg-gray-0 [&_svg]:mb-amino-16 [&_svg]:shadow-v3-large
+                flex flex-col items-center [&_svg]:h-16 [&_svg]:w-[110px]"
               spacing={theme.space16}
             >
               <ThemeDarkIcon />

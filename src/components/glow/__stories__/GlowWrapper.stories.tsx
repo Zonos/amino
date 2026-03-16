@@ -34,7 +34,9 @@ export const Card: StoryFn<typeof GlowWrapper> = props => (
 );
 
 export const ProductCards: StoryFn<typeof GlowWrapper> = props => (
-  <div className="grid w-full grid-cols-3 gap-x-amino-24 gap-y-[40px] pb-amino-20">
+  <div
+    className="gap-x-amino-24 pb-amino-20 grid w-full grid-cols-3 gap-y-[40px]"
+  >
     {products.map(product => {
       const { icon, name } = getProductDetails({ iconSize: 40, product });
       return (

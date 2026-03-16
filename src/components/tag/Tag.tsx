@@ -120,10 +120,11 @@ export const Tag = ({
   >
     <button
       className={cn(
-        'inline-flex items-center gap-1 text-amino-base font-medium text-center focus:outline-none',
+        `text-amino-base inline-flex items-center gap-1 text-center font-medium
+        focus:outline-none`,
         size === 'base'
-          ? 'rounded-amino-6 rounded-r-none py-0.5 px-1'
-          : 'rounded-amino-6 rounded-r-none py-1 pl-2 pr-1',
+          ? 'rounded-amino-6 rounded-r-none px-1 py-0.5'
+          : 'rounded-amino-6 rounded-r-none py-1 pr-1 pl-2',
         iconRight && '[&_svg]:order-2',
         tagHoverVariants({ highlighted, intent }),
       )}
@@ -135,8 +136,8 @@ export const Tag = ({
     </button>
     <button
       className={cn(
-        'inline-flex items-center rounded-amino-6',
-        size === 'base' ? 'py-0.5 px-0.75' : 'py-1 px-1.25',
+        'rounded-amino-6 inline-flex items-center',
+        size === 'base' ? 'px-0.75 py-0.5' : 'px-1.25 py-1',
         tagHoverVariants({ highlighted, intent }),
       )}
       onClick={onClose}

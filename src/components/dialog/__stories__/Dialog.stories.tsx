@@ -44,7 +44,7 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
   const [open, setOpen] = useState(false);
   return (
     <div
-      className="h-full flex justify-center items-center"
+      className="flex h-full items-center justify-center"
       style={{ '--amino-dialog-stories-height': `${height}px` }}
     >
       <Button onClick={() => setOpen(true)}>Open</Button>
@@ -118,7 +118,7 @@ WithHover.args = {
       </Button>
     </>
   ),
-  children: <div className="w-full h-25 p-2.5 hover:bg-hover">Hover me</div>,
+  children: <div className="hover:bg-hover h-25 w-full p-2.5">Hover me</div>,
   label: 'With subtitle',
   subtitle:
     'Choose your preferred units to be shown across the Zonos Dashboard.',
@@ -251,7 +251,7 @@ export const WithInput = ({ height }: { height: number }) => {
 
   return (
     <div
-      className="h-full flex justify-center items-center"
+      className="flex h-full items-center justify-center"
       style={{ '--amino-dialog-stories-height': `${height}px` }}
     >
       <Button onClick={() => setOpen(true)}>Open</Button>
@@ -288,7 +288,7 @@ export const Nested = () => {
   const [thirdOpen, setThirdOpen] = useState(false);
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setFirstOpen(true)}>Open</Button>
       <Dialog
         actions={

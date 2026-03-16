@@ -84,7 +84,7 @@ const Template: StoryFn<
         : collapsedRows.concat(index),
     );
   return (
-    <Table className="max-w-[1080px] mx-auto">
+    <Table className="mx-auto max-w-[1080px]">
       <colgroup>
         <col />
         <col width="20%" />
@@ -141,7 +141,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div className="p-6 pl-11 border border-amino rounded-amino-6">
+          <div className="border-amino rounded-amino-6 border p-6 pl-11">
             <VStack spacing={8}>
               <Text type="bold-label">
                 Huka One Running Shoe - Women&apos;s

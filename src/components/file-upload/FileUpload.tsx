@@ -170,7 +170,7 @@ export const FileUpload = ({
       const { name, size } = uploadedFile;
 
       return (
-        <div className="flex gap-1 items-center">
+        <div className="flex items-center gap-1">
           <Text color="gray1000" type="label">
             {name}
           </Text>
@@ -200,11 +200,12 @@ export const FileUpload = ({
 
   const renderContent = () => (
     <div
-      className="outline-none text-center flex justify-center items-center flex-col"
+      className="flex flex-col items-center justify-center text-center
+        outline-none"
       {...getRootProps()}
     >
       <input {...getInputProps()} />
-      <div className="flex justify-start items-center gap-3">
+      <div className="flex items-center justify-start gap-3">
         <Button loading={loading} onClick={open} spinnerColor="black">
           {buttonActionTextToUse}
         </Button>
@@ -216,7 +217,7 @@ export const FileUpload = ({
   return (
     <div
       className={cn(
-        'flex justify-start rounded-amino-10 border border-amino',
+        'rounded-amino-10 border-amino flex justify-start border',
         className,
       )}
       style={{

@@ -89,7 +89,8 @@ export const Flags = ({ iconScale }: FlagIconProps) => {
               <div
                 key={iconName}
                 className={cn(
-                  'flex flex-col justify-center items-center shadow-(--amino-v3-shadow-base) p-4',
+                  `flex flex-col items-center justify-center p-4
+                  shadow-(--amino-v3-shadow-base)`,
                 )}
               >
                 <Suspense key={iconName} fallback={<div>Loading...</div>}>

@@ -164,7 +164,8 @@ export const ToastContextProvider = ({ children }: Props) => {
     <ToastContext.Provider value={contextValue}>
       {children}
       <div
-        className="fixed z-[9999999] pointer-events-none w-full flex justify-end flex-col"
+        className="pointer-events-none fixed z-[9999999] flex w-full flex-col
+          justify-end"
         style={{
           '--amino-toast-context-bottom': toastLocation.bottom || '40px',
           '--amino-toast-context-left': toastLocation.left || 'auto',
@@ -205,22 +206,32 @@ export const ToastContextProvider = ({ children }: Props) => {
         <div
           className={cn(
             'pointer-events-auto flex flex-col items-center gap-4',
-            'z-[1000] max-w-[600px] w-full mx-auto relative max-h-[60vh]',
+            'relative z-[1000] mx-auto max-h-[60vh] w-full max-w-[600px]',
             'hover:cursor-pointer',
-            '[&_.persistentToast]:w-full [&_.persistentToast]:z-[8]',
+            '[&_.persistentToast]:z-[8] [&_.persistentToast]:w-full',
             '[&_.persistentToast:nth-of-type(1)]:z-[10]',
             '[&_.persistentToast:nth-of-type(2)]:z-[9]',
             !expandedToasts &&
               cn(
-                '[&_.persistentToast]:absolute [&_.persistentToast]:scale-50 [&_.persistentToast]:opacity-0',
-                '[&_.persistentToast]:brightness-200 [&_.persistentToast]:transition-all [&_.persistentToast]:duration-300',
-                '[&_.persistentToast]:ease-[cubic-bezier(0.4,0,0.2,1)] [&_.persistentToast]:origin-bottom',
-                '[&_.persistentToast:nth-of-type(1)]:bottom-0 [&_.persistentToast:nth-of-type(1)]:scale-100',
-                '[&_.persistentToast:nth-of-type(1)]:opacity-100 [&_.persistentToast:nth-of-type(1)]:brightness-100',
-                '[&_.persistentToast:nth-of-type(2)]:-bottom-2 [&_.persistentToast:nth-of-type(2)]:scale-90',
-                '[&_.persistentToast:nth-of-type(2)]:opacity-100 [&_.persistentToast:nth-of-type(2)]:brightness-150',
-                '[&_.persistentToast:nth-of-type(3)]:scale-80 [&_.persistentToast:nth-of-type(3)]:opacity-80',
-                '[&_.persistentToast:nth-of-type(3)]:-bottom-4 [&_.persistentToast:nth-of-type(3)]:brightness-200',
+                `[&_.persistentToast]:absolute [&_.persistentToast]:scale-50
+                [&_.persistentToast]:opacity-0`,
+                `[&_.persistentToast]:brightness-200
+                [&_.persistentToast]:transition-all
+                [&_.persistentToast]:duration-300`,
+                `[&_.persistentToast]:origin-bottom
+                [&_.persistentToast]:ease-[cubic-bezier(0.4,0,0.2,1)]`,
+                `[&_.persistentToast:nth-of-type(1)]:bottom-0
+                [&_.persistentToast:nth-of-type(1)]:scale-100`,
+                `[&_.persistentToast:nth-of-type(1)]:opacity-100
+                [&_.persistentToast:nth-of-type(1)]:brightness-100`,
+                `[&_.persistentToast:nth-of-type(2)]:-bottom-2
+                [&_.persistentToast:nth-of-type(2)]:scale-90`,
+                `[&_.persistentToast:nth-of-type(2)]:opacity-100
+                [&_.persistentToast:nth-of-type(2)]:brightness-150`,
+                `[&_.persistentToast:nth-of-type(3)]:scale-80
+                [&_.persistentToast:nth-of-type(3)]:opacity-80`,
+                `[&_.persistentToast:nth-of-type(3)]:-bottom-4
+                [&_.persistentToast:nth-of-type(3)]:brightness-200`,
               ),
             expandedToasts && 'relative w-full',
           )}
@@ -234,7 +245,7 @@ export const ToastContextProvider = ({ children }: Props) => {
           {!!persistentToasts.length && (
             <Button
               className={cn(
-                'ml-auto bg-[rgba(0,0,0,0.06)] rounded backdrop-blur-[5px]',
+                'ml-auto rounded bg-[rgba(0,0,0,0.06)] backdrop-blur-[5px]',
                 expandedToasts && '-mb-2',
               )}
               icon={<RemoveIcon />}

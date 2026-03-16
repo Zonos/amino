@@ -125,21 +125,26 @@ export const Tabs = ({
           <button
             key={item}
             className={cn(
-              'relative cursor-pointer select-none text-center py-3 transition-all',
+              `relative cursor-pointer py-3 text-center transition-all
+              select-none`,
               'text-gray-800',
-              "after:absolute after:bottom-0 after:left-0 after:content-[''] after:bg-gray-200 after:transition-all after:h-[2px] after:w-full after:scale-x-0",
-              'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
+              `after:absolute after:bottom-0 after:left-0 after:h-[2px]
+              after:w-full after:scale-x-0 after:bg-gray-200
+              after:transition-all after:content-['']`,
+              `focus:outline-none focus-visible:shadow-[var(--amino-glow-blue)]
+              focus-visible:outline-none active:outline-none`,
               selected === items.indexOf(item) && [
                 'text-[var(--amino-tabs-color)]',
                 '[&>span]:text-[var(--amino-tabs-color)]',
-                'after:bg-[var(--amino-tabs-color)] after:scale-x-100',
+                'after:scale-x-100 after:bg-[var(--amino-tabs-color)]',
                 // Used for external styling
                 'is-selected',
               ],
               selected !== items.indexOf(item) && [
                 'hover:text-gray-1000 hover:after:scale-x-100',
                 'focus:text-gray-1000 focus:after:scale-x-100',
-                'active:text-gray-1000 active:after:bg-gray-300 active:after:scale-x-100',
+                `active:text-gray-1000 active:after:scale-x-100
+                active:after:bg-gray-300`,
               ],
             )}
             onClick={() => onChange(items.indexOf(item))}
@@ -155,7 +160,7 @@ export const Tabs = ({
   return (
     <div
       className={cn(
-        'flex items-center border border-amino rounded-lg',
+        'border-amino flex items-center rounded-lg border',
         className,
       )}
       style={{
@@ -167,15 +172,19 @@ export const Tabs = ({
         <button
           key={item}
           className={cn(
-            'relative cursor-pointer select-none text-center py-3 transition-all flex-1 font-medium',
+            `relative flex-1 cursor-pointer py-3 text-center font-medium
+            transition-all select-none`,
             'text-gray-800',
-            "after:absolute after:bottom-0 after:left-0 after:content-[''] after:bg-gray-200 after:transition-all after:h-1 after:w-full after:scale-x-0",
+            `after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full
+            after:scale-x-0 after:bg-gray-200 after:transition-all
+            after:content-['']`,
             'first:after:rounded-bl-lg last:after:rounded-br-lg',
-            '[&+button]:border-l [&+button]:border-amino',
-            'focus:outline-none active:outline-none focus-visible:outline-none focus-visible:shadow-[var(--amino-glow-blue)]',
+            '[&+button]:border-amino [&+button]:border-l',
+            `focus:outline-none focus-visible:shadow-[var(--amino-glow-blue)]
+            focus-visible:outline-none active:outline-none`,
             selected === items.indexOf(item) && [
               'text-[var(--amino-tabs-color)]',
-              'after:bg-[var(--amino-tabs-color)] after:scale-x-100',
+              'after:scale-x-100 after:bg-[var(--amino-tabs-color)]',
               // Used for external styling
               'is-selected',
             ],
@@ -184,7 +193,8 @@ export const Tabs = ({
               'hover:text-gray-1000 hover:after:scale-x-100',
               'focus:text-gray-1000 focus:after:scale-x-100',
               'active:bg-[rgba(0,0,0,0.08)]',
-              'active:text-gray-1000 active:after:bg-gray-300 active:after:scale-x-100',
+              `active:text-gray-1000 active:after:scale-x-100
+              active:after:bg-gray-300`,
             ],
           )}
           onClick={() => onChange(items.indexOf(item))}

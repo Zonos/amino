@@ -200,7 +200,7 @@ export const ScrollableDialogSelect = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog label="Selects" onClose={() => setOpen(false)} open={open}>
         <VStack className="my-[10px]">

@@ -190,12 +190,12 @@ export const NestedDataTable = <
 
   return (
     <div className={cn('h-full')} style={style}>
-      <div className={cn('flex items-center p-amino-8')}>
+      <div className={cn('p-amino-8 flex items-center')}>
         {!!title && <Text type="header">{title}</Text>}
         {/* Only show pagination if handlePagination and currentPage is provided */}
         {!!showPagination && (
           <div
-            className={cn('flex flex-1 justify-end items-center gap-amino-8')}
+            className={cn('gap-amino-8 flex flex-1 items-center justify-end')}
           >
             <Button
               disabled={currentPage === 1 || !hasPreviousPage}

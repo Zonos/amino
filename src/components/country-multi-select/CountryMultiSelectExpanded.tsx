@@ -315,14 +315,14 @@ export const CountryMultiSelectExpanded = <
 
     return (
       <div
-        className="flex flex-col gap-amino-2 overflow-y-auto"
+        className="gap-amino-2 flex flex-col overflow-y-auto"
         style={{
           height: height ? `${height}px` : undefined,
           maxHeight: `${maxHeight}px`,
         }}
       >
         {!searchText && !hideSelectAll && (
-          <div className="w-full p-amino-8 flex flex-col">
+          <div className="p-amino-8 flex w-full flex-col">
             <Checkbox
               checked={allSelected}
               label={translate({ languageCode, text: 'Select all' })}
@@ -359,7 +359,10 @@ export const CountryMultiSelectExpanded = <
 
           return (
             <div key={group.label}>
-              <div className="p-amino-8 w-full flex justify-between items-center gap-amino-8 rounded-amino-6 hover:bg-hover">
+              <div
+                className="p-amino-8 gap-amino-8 rounded-amino-6 hover:bg-hover
+                  flex w-full items-center justify-between"
+              >
                 <Checkbox
                   checked={groupSelected}
                   disabled={!numSelectableInGroup}
@@ -386,7 +389,8 @@ export const CountryMultiSelectExpanded = <
 
                 {!alwaysExpand && (
                   <button
-                    className="flex-grow cursor-pointer flex justify-end items-center gap-amino-8 focus:outline-none"
+                    className="gap-amino-8 flex flex-grow cursor-pointer
+                      items-center justify-end focus:outline-none"
                     onClick={() => {
                       if (expandedGroups.includes(group.label)) {
                         setExpandedGroups(
@@ -413,7 +417,10 @@ export const CountryMultiSelectExpanded = <
               </div>
 
               <Collapse collapsed={groupCollapsed}>
-                <div className="pl-amino-24 grid gap-amino-8 [grid-template-columns:repeat(auto-fit,minmax(min(50%,max(300px,33.333%)),1fr))]">
+                <div
+                  className="pl-amino-24 gap-amino-8 grid
+                    [grid-template-columns:repeat(auto-fit,minmax(min(50%,max(300px,33.333%)),1fr))]"
+                >
                   {group.countries.map(country => {
                     const isChecked = selectedCountries.some(
                       x => x.code === country.code,
@@ -454,7 +461,7 @@ export const CountryMultiSelectExpanded = <
   return (
     <div
       className={cn(
-        'flex flex-col gap-amino-12',
+        'gap-amino-12 flex flex-col',
         disabled &&
           'opacity-amino-disabled cursor-not-allowed [&>*]:pointer-events-none',
         className,
@@ -482,20 +489,23 @@ export const CountryMultiSelectExpanded = <
 
       <div
         className={cn(
-          'border border-amino rounded-amino-12 p-amino-8 flex flex-col gap-amino-4',
+          `border-amino rounded-amino-12 p-amino-8 gap-amino-4 flex flex-col
+          border`,
           error && 'border-danger',
         )}
       >
-        <div className="flex justify-between items-center gap-amino-8">
+        <div className="gap-amino-8 flex items-center justify-between">
           {!withoutSearch && (
             <label
-              className="p-amino-8 py-amino-4 flex items-center gap-amino-8 flex-grow"
+              className="p-amino-8 py-amino-4 gap-amino-8 flex flex-grow
+                items-center"
               htmlFor={id}
             >
               <SearchIcon size={24} />
               <input
                 autoComplete="off"
-                className="flex-grow px-amino-4 bg-amino-input-background focus:outline-none"
+                className="px-amino-4 bg-amino-input-background flex-grow
+                  focus:outline-none"
                 id={id}
                 onChange={e => setSearchText(e.target.value)}
                 placeholder={translate({
