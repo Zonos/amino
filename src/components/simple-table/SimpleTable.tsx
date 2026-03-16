@@ -359,7 +359,8 @@ export const SimpleTable = <T extends object>({
     >
       <table
         className={cn(
-          'amino-simple-table text-amino-base h-fit w-full border-separate border-spacing-0',
+          `amino-simple-table text-amino-base h-fit w-full border-separate
+          border-spacing-0`,
           '[&>tbody>tr]:h-12',
           `[&>thead>tr]:border-b-amino-subtle [&>thead]:no-underline
           [&>thead>tr]:h-12 [&>thead>tr]:border-b`,
