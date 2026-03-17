@@ -138,11 +138,11 @@ export const ListItem = ({
       `flex min-h-(--amino-size-xl) flex-row items-center gap-4 rounded-lg p-2
       px-4 leading-4`,
       !disabled && selected && 'bg-blue-50 **:text-blue-800',
-      'active:bg-hover active:outline-none',
-      'focus:bg-hover focus:outline-none',
-      'hover:bg-hover hover:outline-none',
+      'focus:outline-none active:outline-none',
+      !selected &&
+        'active:bg-hover focus:bg-hover hover:bg-hover hover:outline-none',
       disabled && 'cursor-not-allowed text-gray-600',
-      !disabled && !selected && onClick && 'hover:bg-hover cursor-pointer',
+      !disabled && !selected && onClick && 'cursor-pointer',
       className,
     )}
     onClick={e => !disabled && onClick?.(e)}

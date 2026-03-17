@@ -3,18 +3,26 @@ import { extendTailwindMerge } from 'tailwind-merge';
 
 const isAmino = (value: string) => value.includes('amino-');
 
+// Amino extends Tailwind's color scale with 0 and 1000 (e.g. gray-0, gray-1000).
+// tailwind-merge doesn't know these exist, so without this it won't recognize
+// bg-gray-0 / bg-gray-1000 as bg-color classes and won't deduplicate them
+// against bg-blue-50 etc., causing the wrong color to win via CSS order.
+const isAminoExtendedScale = (value: string) => /-(0|1000)$/.test(value);
+
 const customTwMerge = extendTailwindMerge({
   extend: {
     classGroups: {
       basis: [{ basis: [isAmino] }],
-      'border-color': [{ border: [isAmino] }],
+      'bg-color': [{ bg: [isAminoExtendedScale] }],
+      'border-color': [{ border: [isAmino, isAminoExtendedScale] }],
       'font-size': [{ text: [isAmino] }],
       'font-weight': [{ font: [isAmino] }],
       leading: [{ leading: [isAmino] }],
       shadow: [{ shadow: [isAmino] }],
+      'text-color': [{ text: [isAminoExtendedScale] }],
     },
     theme: {
-      color: [isAmino],
+      color: [isAmino, isAminoExtendedScale],
       'drop-shadow': [isAmino],
       radius: [isAmino],
       spacing: [isAmino],

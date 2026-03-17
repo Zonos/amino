@@ -29,7 +29,7 @@ export const ToastConsumer = () => {
   }, [notify]);
 
   return (
-    <div className="">
+    <div className="flex items-center justify-center">
       <VStack>
         <Button onClick={() => notify('Default toast', { duration })}>
           Notify
@@ -116,7 +116,10 @@ export const ToastConsumer = () => {
         >
           Long persisting
         </Button>
-        <div className="mb-4">
+        <div
+          className="rounded-amino-6 flex flex-col gap-[10px] border
+            border-blue-500 p-4"
+        >
           <textarea
             cols={30}
             onChange={v => setMessage(v.target.value)}

@@ -319,7 +319,7 @@ const ValueColumn = ({ name, value }: ValueColumnProps) => {
   return (
     <div
       className="border-border-color bg-surface max-w-[320px] min-w-[260px]
-        shrink-0 overflow-y-auto border-r dark:border-gray-700 dark:bg-gray-800"
+        shrink-0 overflow-y-auto border-r dark:border-gray-300"
     >
       <div className="flex items-center gap-2 bg-blue-600 px-3 py-2.5">
         <span
@@ -411,7 +411,7 @@ const Column = ({
       <div
         className="border-border-color bg-surface w-[280px] max-w-[280px]
           min-w-[280px] shrink-0 grow-0 overflow-y-auto border-r
-          dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:w-1.5
+          dark:border-gray-300 [&::-webkit-scrollbar]:w-1.5
           [&::-webkit-scrollbar-thumb]:rounded
           [&::-webkit-scrollbar-thumb]:bg-gray-300"
       >
@@ -425,7 +425,7 @@ const Column = ({
       ref={columnRef}
       className="border-border-color bg-surface w-[280px] max-w-[280px]
         min-w-[280px] shrink-0 grow-0 overflow-y-auto border-r
-        dark:border-gray-700 dark:bg-gray-800 [&::-webkit-scrollbar]:w-1.5
+        dark:border-gray-300 [&::-webkit-scrollbar]:w-1.5
         [&::-webkit-scrollbar-thumb]:rounded
         [&::-webkit-scrollbar-thumb]:bg-gray-300"
     >
@@ -439,7 +439,7 @@ const Column = ({
             className={clsx(
               `flex w-full cursor-pointer items-center gap-2 border-none
               bg-transparent px-3 py-2.5 text-left transition-colors
-              duration-100 hover:bg-gray-50 dark:hover:bg-gray-700`,
+              duration-100 hover:bg-gray-50 dark:hover:bg-gray-300`,
               isSelected &&
                 `bg-blue-600 hover:bg-blue-600 dark:bg-blue-600
                 dark:hover:bg-blue-600`,
@@ -456,7 +456,7 @@ const Column = ({
               className={clsx(
                 `flex size-5 shrink-0 items-center justify-center rounded
                 bg-gray-100 text-[10px] font-semibold text-gray-500
-                dark:bg-gray-700 dark:text-gray-400`,
+                dark:bg-gray-300 dark:text-gray-600`,
                 isSelected &&
                   'bg-blue-500 text-white dark:bg-blue-500 dark:text-white',
               )}
@@ -466,7 +466,7 @@ const Column = ({
             <span
               className={clsx(
                 `flex-1 overflow-hidden text-[13px] font-medium text-ellipsis
-                whitespace-nowrap text-gray-800 dark:text-gray-200`,
+                whitespace-nowrap text-gray-800 dark:text-gray-800`,
                 isSelected && 'text-white dark:text-white',
               )}
               title={entry.key}
@@ -602,10 +602,10 @@ const TreeNode = ({
       <div
         className={clsx(
           `relative mx-2 flex cursor-pointer items-center gap-1 rounded px-2
-          py-1 hover:bg-gray-50 dark:hover:bg-gray-800`,
+          py-1 hover:bg-gray-50 dark:hover:bg-gray-200`,
           isSelected &&
-            `bg-blue-50 hover:bg-blue-100 dark:bg-gray-700
-            dark:hover:bg-gray-600`,
+            `bg-blue-50 hover:bg-blue-100 dark:bg-gray-300
+            dark:hover:bg-gray-400`,
         )}
         data-path={JSON.stringify(pathArray)}
         onClick={handleRowClick}
@@ -633,12 +633,12 @@ const TreeNode = ({
         <span
           className="mr-1 flex size-[18px] shrink-0 items-center justify-center
             rounded-[3px] bg-gray-100 text-[9px] font-semibold text-gray-500
-            dark:bg-gray-700 dark:text-gray-400"
+            dark:bg-gray-300 dark:text-gray-600"
         >
           {getTypeIcon(type)}
         </span>
         <span
-          className="font-medium text-gray-800 dark:text-gray-200"
+          className="font-medium text-gray-800 dark:text-gray-800"
           title={nodeKey}
         >
           {nodeKey}
@@ -665,8 +665,8 @@ const TreeNode = ({
             className="absolute top-1/2 right-2 flex size-[22px]
               -translate-y-1/2 cursor-pointer items-center justify-center
               rounded border-none bg-gray-100 text-gray-600 hover:bg-gray-200
-              hover:text-gray-800 dark:bg-gray-700 dark:text-gray-400
-              dark:hover:bg-gray-600 dark:hover:text-gray-200"
+              hover:text-gray-800 dark:bg-gray-300 dark:text-gray-600
+              dark:hover:bg-gray-400 dark:hover:text-gray-200"
             onClick={e => {
               e.stopPropagation();
               onCopy(value);
@@ -806,7 +806,7 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
     <div className="relative flex h-full flex-col">
       <div
         className="border-border-color bg-surface flex items-center gap-4
-          border-b px-4 py-2 dark:border-gray-700 dark:bg-gray-900"
+          border-b px-4 py-2 dark:border-gray-300"
       >
         <Button
           icon={<CopyIcon size={16} />}
@@ -834,14 +834,14 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
           [&::-webkit-scrollbar-track]:bg-black/20"
       >
         <div
-          className="sticky left-0 z-[1] shrink-0 bg-black/20 py-4 select-none
+          className="sticky left-0 z-1 shrink-0 bg-black/20 py-4 select-none
             dark:bg-black/30"
         >
           {/* Line numbers are static, index as key is appropriate */}
           {lines.map((_, i) => (
             <div
               key={i}
-              className="px-4 text-right font-mono text-[13px] leading-[1.5]
+              className="px-4 text-right font-mono text-[13px] leading-normal
                 text-gray-600"
             >
               {i + 1}
@@ -849,7 +849,7 @@ const EditorView = ({ data, onCopy }: EditorViewProps) => {
           ))}
         </div>
         <pre
-          className="m-0 min-w-0 flex-1 p-4 font-mono text-[13px] leading-[1.5]
+          className="m-0 min-w-0 flex-1 p-4 font-mono text-[13px] leading-normal
             text-gray-200 dark:text-gray-100"
         >
           <code className="block whitespace-pre">{jsonString}</code>
@@ -1131,8 +1131,8 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
     <div className="p-0">
       <div
         className="mb-4 flex flex-col gap-3 border-b border-gray-100
-          bg-gradient-to-b from-gray-50 to-transparent px-4 pt-4 pb-4
-          dark:border-gray-700 dark:from-gray-800"
+          bg-linear-to-b from-gray-50 to-transparent px-4 pt-4 pb-4
+          dark:border-gray-300 dark:from-gray-200"
       >
         <div className="flex items-center gap-2.5">
           <div
@@ -1150,7 +1150,7 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
           <span
             className="inline-flex shrink-0 rounded bg-gray-100 px-2.5 py-[3px]
               text-[10px] font-bold tracking-wide text-gray-600 uppercase
-              dark:bg-gray-700 dark:text-gray-300"
+              dark:bg-gray-300 dark:text-gray-300"
           >
             {type.toUpperCase()}
           </span>
@@ -1207,7 +1207,8 @@ const ValuePreview = ({ path, value }: ValuePreviewProps) => {
         </span>
         <pre
           className="m-0 rounded-md bg-gray-50 px-3 py-2 font-mono text-[13px]
-            leading-relaxed break-words whitespace-pre-wrap dark:bg-gray-800"
+            leading-relaxed wrap-break-word whitespace-pre-wrap
+            dark:bg-gray-100"
         >
           <JsonSyntax data={value} />
         </pre>
@@ -1816,8 +1817,7 @@ export const JsonVisionViewer = ({
   if (!data) {
     return (
       <div
-        className="bg-surface flex h-full flex-col overflow-hidden rounded-lg
-          dark:bg-gray-900"
+        className="bg-surface flex h-full flex-col overflow-hidden rounded-lg"
       >
         <div className="flex h-full items-center justify-center p-10">
           <Text color="gray600">No data available</Text>
@@ -1829,14 +1829,12 @@ export const JsonVisionViewer = ({
   return (
     <div
       ref={containerRef}
-      className="bg-surface flex h-full flex-col overflow-hidden rounded-lg
-        dark:bg-gray-900"
+      className="bg-surface flex h-full flex-col overflow-hidden rounded-lg"
     >
       {/* Header */}
       <div
         className="border-border-color bg-surface flex flex-wrap items-center
-          justify-between gap-4 border-b px-4 py-3 dark:border-gray-700
-          dark:bg-gray-900"
+          justify-between gap-4 border-b px-4 py-3 dark:border-gray-300"
       >
         <Flex alignItems="center" gap={16}>
           {title && <Text fontWeight={600}>{title}</Text>}
@@ -1844,20 +1842,22 @@ export const JsonVisionViewer = ({
           {/* View Mode Tabs */}
           <div
             className="flex items-center gap-1 rounded-lg bg-gray-100 p-1
-              dark:bg-gray-800"
+              dark:bg-gray-100"
           >
             <button
               className={clsx(
                 `flex items-center gap-1.5 rounded-md border-none px-3 py-1.5
-                text-[13px] font-medium whitespace-nowrap text-gray-600
-                transition-all duration-150 hover:bg-gray-200
-                hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
-                dark:hover:text-gray-200 [&>svg]:shrink-0`,
+                text-[13px] font-medium whitespace-nowrap transition-all
+                duration-150 [&>svg]:shrink-0`,
+                viewMode !== 'tree' &&
+                  `text-gray-600 hover:bg-gray-200 hover:text-gray-800
+                  dark:text-gray-600 dark:hover:bg-gray-300
+                  dark:hover:text-gray-200`,
                 viewMode === 'tree' &&
                   `bg-surface hover:bg-surface text-blue-600
                   shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:text-blue-600
-                  dark:bg-gray-700 dark:text-blue-400
-                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700
+                  dark:bg-gray-50 dark:text-blue-400
+                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-50
                   dark:hover:text-blue-400 [&>svg]:text-blue-600
                   dark:[&>svg]:text-blue-400`,
               )}
@@ -1877,15 +1877,17 @@ export const JsonVisionViewer = ({
             <button
               className={clsx(
                 `flex items-center gap-1.5 rounded-md border-none px-3 py-1.5
-                text-[13px] font-medium whitespace-nowrap text-gray-600
-                transition-all duration-150 hover:bg-gray-200
-                hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
-                dark:hover:text-gray-200 [&>svg]:shrink-0`,
+                text-[13px] font-medium whitespace-nowrap transition-all
+                duration-150 [&>svg]:shrink-0`,
+                viewMode !== 'column' &&
+                  `text-gray-600 hover:bg-gray-200 hover:text-gray-800
+                  dark:text-gray-600 dark:hover:bg-gray-300
+                  dark:hover:text-gray-200`,
                 viewMode === 'column' &&
                   `bg-surface hover:bg-surface text-blue-600
                   shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:text-blue-600
-                  dark:bg-gray-700 dark:text-blue-400
-                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700
+                  dark:bg-gray-50 dark:text-blue-400
+                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-50
                   dark:hover:text-blue-400 [&>svg]:text-blue-600
                   dark:[&>svg]:text-blue-400`,
               )}
@@ -1907,15 +1909,17 @@ export const JsonVisionViewer = ({
             <button
               className={clsx(
                 `flex items-center gap-1.5 rounded-md border-none px-3 py-1.5
-                text-[13px] font-medium whitespace-nowrap text-gray-600
-                transition-all duration-150 hover:bg-gray-200
-                hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-700
-                dark:hover:text-gray-200 [&>svg]:shrink-0`,
+                text-[13px] font-medium whitespace-nowrap transition-all
+                duration-150 [&>svg]:shrink-0`,
+                viewMode !== 'editor' &&
+                  `text-gray-600 hover:bg-gray-200 hover:text-gray-800
+                  dark:text-gray-600 dark:hover:bg-gray-300
+                  dark:hover:text-gray-200`,
                 viewMode === 'editor' &&
                   `bg-surface hover:bg-surface text-blue-600
                   shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:text-blue-600
-                  dark:bg-gray-700 dark:text-blue-400
-                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-700
+                  dark:bg-gray-50 dark:text-blue-400
+                  dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)] dark:hover:bg-gray-50
                   dark:hover:text-blue-400 [&>svg]:text-blue-600
                   dark:[&>svg]:text-blue-400`,
               )}
@@ -1937,17 +1941,17 @@ export const JsonVisionViewer = ({
           {/* Sort Mode Tabs */}
           <div
             className="ml-2 flex items-center gap-1 border-l border-gray-200
-              pl-3 dark:border-gray-700"
+              pl-3 dark:border-gray-300"
           >
             <span className="mr-1 text-xs text-gray-500 dark:text-gray-500">
               Sort:
             </span>
             <button
               className={clsx(
-                `rounded border-none bg-transparent px-2 py-1 text-xs
-                font-medium text-gray-500 transition-all duration-150
-                hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500
-                dark:hover:bg-gray-700 dark:hover:text-gray-300`,
+                `rounded border-none px-2 py-1 text-xs font-medium text-gray-500
+                transition-all duration-150 hover:bg-gray-100
+                hover:text-gray-700 dark:text-gray-500 dark:hover:bg-gray-300
+                dark:hover:text-gray-300`,
                 sortMode === 'original' &&
                   `bg-blue-100 text-blue-700 hover:bg-blue-100
                   hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300
@@ -1961,10 +1965,10 @@ export const JsonVisionViewer = ({
             </button>
             <button
               className={clsx(
-                `rounded border-none bg-transparent px-2 py-1 text-xs
-                font-medium text-gray-500 transition-all duration-150
-                hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500
-                dark:hover:bg-gray-700 dark:hover:text-gray-300`,
+                `rounded border-none px-2 py-1 text-xs font-medium text-gray-500
+                transition-all duration-150 hover:bg-gray-100
+                hover:text-gray-700 dark:text-gray-500 dark:hover:bg-gray-300
+                dark:hover:text-gray-300`,
                 sortMode === 'keys-asc' &&
                   `bg-blue-100 text-blue-700 hover:bg-blue-100
                   hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300
@@ -1978,10 +1982,10 @@ export const JsonVisionViewer = ({
             </button>
             <button
               className={clsx(
-                `rounded border-none bg-transparent px-2 py-1 text-xs
-                font-medium text-gray-500 transition-all duration-150
-                hover:bg-gray-100 hover:text-gray-700 dark:text-gray-500
-                dark:hover:bg-gray-700 dark:hover:text-gray-300`,
+                `rounded border-none px-2 py-1 text-xs font-medium text-gray-500
+                transition-all duration-150 hover:bg-gray-100
+                hover:text-gray-700 dark:text-gray-500 dark:hover:bg-gray-300
+                dark:hover:text-gray-300`,
                 sortMode === 'keys-desc' &&
                   `bg-blue-100 text-blue-700 hover:bg-blue-100
                   hover:text-blue-700 dark:bg-blue-900 dark:text-blue-300
@@ -2025,10 +2029,9 @@ export const JsonVisionViewer = ({
               {showSearchResults && searchResults.length > 0 && (
                 <div
                   className="border-border-color bg-surface absolute top-full
-                    right-0 left-0 z-[100] mt-1 max-h-[300px] min-w-[280px]
+                    right-0 left-0 z-100 mt-1 max-h-[300px] min-w-[280px]
                     overflow-y-auto rounded-lg border
-                    shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700
-                    dark:bg-gray-800"
+                    shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-300"
                 >
                   {searchResults.map((result, idx) => (
                     <button
@@ -2039,10 +2042,10 @@ export const JsonVisionViewer = ({
                         `flex w-full flex-col items-start gap-0.5 border-b
                         border-gray-100 bg-transparent px-3 py-2 text-left
                         transition-colors duration-100 last:border-b-0
-                        hover:bg-blue-50 dark:border-gray-700
-                        dark:hover:bg-gray-700`,
+                        hover:bg-blue-50 dark:border-gray-300
+                        dark:hover:bg-gray-300`,
                         idx === selectedSearchIndex &&
-                          'bg-blue-50 dark:bg-gray-700',
+                          'bg-blue-50 dark:bg-gray-300',
                       )}
                       onClick={() => handleSearchResultClick(result)}
                       type="button"
@@ -2065,7 +2068,7 @@ export const JsonVisionViewer = ({
                   {searchResults.length === 50 && (
                     <div
                       className="border-t border-gray-100 px-3 py-2 text-center
-                        text-[11px] text-gray-500 dark:border-gray-700"
+                        text-[11px] text-gray-500 dark:border-gray-300"
                     >
                       Showing first 50 results...
                     </div>
@@ -2079,8 +2082,7 @@ export const JsonVisionViewer = ({
                     className="border-border-color bg-surface absolute top-full
                       right-0 left-0 z-[100] mt-1 max-h-[300px] min-w-[280px]
                       overflow-y-auto rounded-lg border
-                      shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-700
-                      dark:bg-gray-800"
+                      shadow-[0_4px_12px_rgba(0,0,0,0.15)] dark:border-gray-300"
                   >
                     <div
                       className="px-3 py-4 text-center text-[13px]
@@ -2110,7 +2112,7 @@ export const JsonVisionViewer = ({
               className="flex size-8 items-center justify-center rounded-md
                 border-none bg-transparent text-gray-500 transition-all
                 duration-150 hover:bg-gray-100 hover:text-gray-700
-                dark:text-gray-400 dark:hover:bg-gray-700
+                dark:text-gray-600 dark:hover:bg-gray-300
                 dark:hover:text-gray-200"
               onClick={() => setShowHelp(!showHelp)}
               title="Tips & shortcuts"
@@ -2120,14 +2122,13 @@ export const JsonVisionViewer = ({
             </button>
             {showHelp && (
               <div
-                className="absolute top-full right-0 z-[100] mt-2 w-[260px]
-                  overflow-hidden rounded-lg border border-gray-200 bg-white
-                  shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:border-gray-700
-                  dark:bg-gray-800"
+                className="bg-surface absolute top-full right-0 z-[100] mt-2
+                  w-[260px] overflow-hidden rounded-lg border border-gray-200
+                  shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:border-gray-300"
               >
                 <div
                   className="px-4 pt-3 pb-2 text-[11px] font-semibold
-                    tracking-wide text-gray-500 uppercase dark:text-gray-400"
+                    tracking-wide text-gray-500 uppercase dark:text-gray-600"
                 >
                   Keyboard shortcuts
                 </div>
@@ -2207,26 +2208,26 @@ export const JsonVisionViewer = ({
                 </div>
                 <div
                   className="px-4 pt-3 pb-2 text-[11px] font-semibold
-                    tracking-wide text-gray-500 uppercase dark:text-gray-400"
+                    tracking-wide text-gray-500 uppercase dark:text-gray-600"
                 >
                   Tips
                 </div>
                 <div className="px-4 pb-3">
                   <div
                     className="py-1 text-xs leading-snug text-gray-600
-                      dark:text-gray-400"
+                      dark:text-gray-600"
                   >
                     Click any item to see details and copy options
                   </div>
                   <div
                     className="py-1 text-xs leading-snug text-gray-600
-                      dark:text-gray-400"
+                      dark:text-gray-600"
                   >
                     Use Share to copy a link to your current view
                   </div>
                   <div
                     className="py-1 text-xs leading-snug text-gray-600
-                      dark:text-gray-400"
+                      dark:text-gray-600"
                   >
                     Search finds both keys and values
                   </div>
@@ -2264,13 +2265,13 @@ export const JsonVisionViewer = ({
       {viewMode !== 'editor' && (
         <div
           className="border-border-color flex items-center overflow-x-auto
-            border-b bg-gray-50 px-4 py-2 text-[13px] dark:border-gray-700
-            dark:bg-gray-800 [&::-webkit-scrollbar]:h-1"
+            border-b bg-gray-50 px-4 py-2 text-[13px] dark:border-gray-300
+            dark:bg-gray-100 [&::-webkit-scrollbar]:h-1"
         >
           <button
             className="cursor-pointer rounded border-none bg-none px-2 py-1
               text-[13px] whitespace-nowrap text-blue-600 hover:bg-blue-50
-              dark:text-blue-400 dark:hover:bg-gray-700"
+              dark:text-blue-400 dark:hover:bg-gray-300"
             onClick={() => setSelectedPath([])}
             type="button"
           >
@@ -2282,7 +2283,7 @@ export const JsonVisionViewer = ({
               <button
                 className="cursor-pointer rounded border-none bg-none px-2 py-1
                   text-[13px] whitespace-nowrap text-blue-600 hover:bg-blue-50
-                  dark:text-blue-400 dark:hover:bg-gray-700"
+                  dark:text-blue-400 dark:hover:bg-gray-300"
                 onClick={() => setSelectedPath(selectedPath.slice(0, i + 1))}
                 type="button"
               >
@@ -2298,7 +2299,7 @@ export const JsonVisionViewer = ({
         {viewMode === 'column' && (
           <div className="flex h-full overflow-hidden">
             <div
-              className="bg-page flex flex-1 overflow-x-auto dark:bg-gray-900
+              className="bg-surface flex flex-1 overflow-x-auto
                 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded
                 [&::-webkit-scrollbar-thumb]:bg-gray-300
                 [&::-webkit-scrollbar-track]:bg-gray-100"
@@ -2327,8 +2328,7 @@ export const JsonVisionViewer = ({
             {currentValue !== undefined && (
               <div
                 className="border-border-color bg-surface w-[400px] shrink-0
-                  grow-0 overflow-y-auto border-l dark:border-gray-700
-                  dark:bg-gray-800"
+                  grow-0 overflow-y-auto border-l dark:border-gray-300"
               >
                 <ValuePreview
                   path={selectedPath}
@@ -2364,8 +2364,7 @@ export const JsonVisionViewer = ({
             {currentValue !== undefined && selectedPath.length > 0 && (
               <div
                 className="border-border-color bg-surface w-[400px] shrink-0
-                  grow-0 overflow-y-auto border-l dark:border-gray-700
-                  dark:bg-gray-800"
+                  grow-0 overflow-y-auto border-l dark:border-gray-300"
               >
                 <ValuePreview
                   path={selectedPath}

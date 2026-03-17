@@ -326,6 +326,15 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
     </>
   );
 
+  const isSolidColoredVariant =
+    !outline &&
+    (variant === 'primary' ||
+      variant === 'success' ||
+      variant === 'warning' ||
+      variant === 'danger' ||
+      variant === 'cyan' ||
+      variant === 'purple');
+
   const buttonClassName = cn(
     buttonVariants({ outline, size, variant }),
     icon && !children && 'p-0',
@@ -337,7 +346,10 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       !loading &&
       `active:scale-[0.99]
       hover:bg-[image:var(--amino-button-hover-background-color)]`,
-    disabled && 'cursor-not-allowed',
+    // Use prop-based classes instead of disabled: pseudo-class
+    // because :disabled only works on form elements, not div/a tags
+    (disabled || loading) && 'cursor-not-allowed opacity-disabled',
+    (disabled || loading) && isSolidColoredVariant && 'shadow-btn-disabled',
     icon &&
       children &&
       !iconRight &&
@@ -417,32 +429,32 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         if (outline) {
           return 'info';
         }
-        return 'white';
+        return 'inverted';
       case 'success':
         if (outline) {
           return 'success';
         }
-        return 'white';
+        return 'inverted';
       case 'warning':
         if (outline) {
           return 'warning';
         }
-        return 'white';
+        return 'inverted';
       case 'danger':
         if (outline) {
           return 'danger';
         }
-        return 'white';
+        return 'inverted';
       case 'purple':
         if (outline) {
           return 'purple';
         }
-        return 'white';
+        return 'inverted';
       case 'cyan':
         if (outline) {
           return 'cyan';
         }
-        return 'white';
+        return 'inverted';
       case 'inverted':
         return 'white';
       case 'link':
@@ -634,10 +646,21 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         // handle base/hover/disabled colors and inline styles would override them.
         // Also skip for standard+outline — the CVA compound variant handles it,
         // and inline color would break themeOverride on a light page.
+        // Solid colored variants use hardcoded white so the color is correct in
+        // both light and dark mode regardless of the HTML tag (div, a, button).
         ...(variant !== 'text' &&
           variant !== 'inlineLink' &&
           !(outline && variant === 'standard') && {
-            color: 'var(--amino-button-color)',
+            color:
+              !outline &&
+              (variant === 'primary' ||
+                variant === 'success' ||
+                variant === 'warning' ||
+                variant === 'danger' ||
+                variant === 'cyan' ||
+                variant === 'purple')
+                ? 'white'
+                : 'var(--amino-button-color)',
           }),
         fontWeight:
           'var(--amino-button-font-weight)' as React.CSSProperties['fontWeight'],

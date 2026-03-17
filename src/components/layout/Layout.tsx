@@ -121,7 +121,7 @@ export const Layout = ({
   >
     {!!headerContent && (
       <header
-        className="border-amino bg-header shadow-amino-base sticky top-0
+        className="border-amino shadow-amino-base sticky top-0
           z-(--amino-appbar-elevation) box-border flex h-(--amino-appbar-height)
           border-b"
       >

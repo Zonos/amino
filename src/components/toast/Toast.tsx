@@ -163,9 +163,9 @@ export const Toast = ({
       case 'success':
         return {
           class: cn(
-            'bg-linear-to-r from-[rgba(86,199,111,0.4)_0%] to-[rgba(86,199,111,0)_50%] bg-gray-1000',
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(86,199,111,0.4)_0%,rgba(86,199,111,0)_50%)]',
             '[&_svg]:text-green-500',
-            'dark:bg-linear-to-r dark:from-[rgba(86,199,111,0.24)_0%] dark:to-[rgba(86,199,111,0)_50%] dark:bg-gray-50',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(86,199,111,0.24)_0%,rgba(86,199,111,0)_50%)]',
             'dark:[&_svg]:text-green-600',
           ),
           icon: <CheckCircleIcon />,
@@ -173,9 +173,9 @@ export const Toast = ({
       case 'error':
         return {
           class: cn(
-            'bg-linear-to-r from-[rgba(249,92,103,0.4)_0%] to-[rgba(249,92,103,0)_50%] bg-gray-1000',
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(249,92,103,0.4)_0%,rgba(249,92,103,0)_50%)]',
             '[&_svg]:text-red-500',
-            'dark:bg-linear-to-r dark:from-[rgba(249,92,103,0.24)_0%] dark:to-[rgba(249,92,103,0)_50%] dark:bg-gray-50',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(249,92,103,0.24)_0%,rgba(249,92,103,0)_50%)]',
             'dark:[&_svg]:text-red-600',
           ),
           icon: <RemoveCircleIcon />,
@@ -183,9 +183,9 @@ export const Toast = ({
       case 'warning':
         return {
           class: cn(
-            'bg-linear-to-r from-[rgba(248,140,83,0.4)_0%] to-[rgba(248,140,83,0)_50%] bg-gray-1000',
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(248,140,83,0.4)_0%,rgba(248,140,83,0)_50%)]',
             '[&_svg]:text-orange-500',
-            'dark:bg-linear-to-r dark:from-[rgba(248,140,83,0.24)_0%] dark:to-[rgba(248,140,83,0)_50%] dark:bg-gray-50',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(248,140,83,0.24)_0%,rgba(248,140,83,0)_50%)]',
             'dark:[&_svg]:text-orange-600',
           ),
           icon: <WarningIcon />,
@@ -193,9 +193,9 @@ export const Toast = ({
       case 'info':
         return {
           class: cn(
-            'bg-linear-to-r from-[rgba(95,146,246,0.4)_0%] to-[rgba(95,146,246,0)_50%] bg-gray-1000',
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(95,146,246,0.4)_0%,rgba(95,146,246,0)_50%)]',
             '[&_svg]:text-blue-500',
-            'dark:bg-linear-to-r dark:from-[rgba(95,146,246,0.24)_0%] dark:to-[rgba(95,146,246,0)_50%] dark:bg-gray-50',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(95,146,246,0.24)_0%,rgba(95,146,246,0)_50%)]',
             'dark:[&_svg]:text-blue-600',
           ),
           icon: <InfoIcon />,
@@ -203,9 +203,9 @@ export const Toast = ({
       default:
         return {
           class: cn(
-            'bg-linear-to-r from-[rgba(148,150,158,0.4)_0%] to-[rgba(148,150,158,0)_50%] bg-gray-1000',
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(148,150,158,0.4)_0%,rgba(148,150,158,0)_50%)]',
             '[&_svg]:text-gray-500',
-            'dark:bg-linear-to-r dark:from-[rgba(148,150,158,0.24)_0%] dark:to-[rgba(148,150,158,0)_50%] dark:bg-gray-50',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(148,150,158,0.24)_0%,rgba(148,150,158,0)_50%)]',
             'dark:[&_svg]:text-gray-600',
           ),
           icon: <InfoIcon />,
@@ -218,16 +218,16 @@ export const Toast = ({
   return (
     <motion.div
       className={cn(
-        `shadow-amino-v3-large z-[999999] flex-1 rounded-xl p-4 leading-6
+        `shadow-amino-v3-large z-999999 flex-1 rounded-xl p-4 leading-6
         font-medium select-none`,
-        `bg-gray-1000 text-gray-0 bg-linear-to-r from-[rgba(148,150,158,0.4)_0%]
-        to-[rgba(148,150,158,0)_50%]`,
+        `bg-gray-1000 text-gray-0
+        bg-[linear-gradient(90deg,rgba(148,150,158,0.4)_0%,rgba(148,150,158,0)_50%)]`,
         '[&_svg]:text-gray-500',
-        `dark:text-gray-1000 dark:bg-gray-50 dark:bg-linear-to-r
-        dark:from-[rgba(148,150,158,0.24)_0%] dark:to-[rgba(148,150,158,0)_50%]`,
+        `dark:text-gray-1000 dark:bg-gray-50
+        dark:bg-[linear-gradient(90deg,rgba(148,150,158,0.24)_0%,rgba(148,150,158,0)_50%)]`,
         'dark:[&_svg]:text-gray-600',
         intentValues.class,
-        isPersistent && 'cursor-pointer select-auto hover:scale-95',
+        isPersistent && 'cursor-pointer select-auto',
       )}
       layout
       style={{

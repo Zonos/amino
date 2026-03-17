@@ -81,19 +81,17 @@ export const NavigationItem = ({
   <div
     className={cn(
       `gap-amino-8 px-amino-8 py-amino-4 text-amino-base rounded-amino-6
-      mb-[2px] flex h-[28px] items-center font-medium text-gray-800
-      dark:text-gray-200`,
-      'hover:bg-hover hover:text-gray-1000 dark:hover:text-gray-1000',
+      mb-[2px] flex h-[28px] items-center font-medium text-gray-800`,
+      'hover:bg-hover hover:text-gray-1000',
       `[&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-n4
-      [&_svg]:text-gray-600 dark:[&_svg]:text-gray-400`,
-      'hover:[&_svg]:text-gray-800 dark:hover:[&_svg]:text-gray-800',
-      isActive &&
-        'text-gray-1000 [&_svg]:text-gray-1000 bg-gray-100 dark:bg-gray-900',
+      [&_svg]:text-gray-600`,
+      'hover:[&_svg]:text-gray-800',
+      isActive && 'text-gray-1000 [&_svg]:text-gray-1000 bg-gray-100',
       className,
     )}
     style={style}
   >
-    {icon && <div className="flex-shrink-0 flex-grow-0">{icon}</div>}
+    {icon && <div className="shrink-0 grow-0">{icon}</div>}
     {content}
   </div>
 );
