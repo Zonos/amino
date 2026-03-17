@@ -241,7 +241,12 @@ export const FilterWrapper = ({
     >
       <Text type="bold-subheader">{dropdownTitle}</Text>
       <div className="flex max-h-100 flex-col gap-2">{children}</div>
-      <Button onClick={handleApply} size="md" variant="primary">
+      <Button
+        className="w-full"
+        onClick={handleApply}
+        size="md"
+        variant="primary"
+      >
         Apply
       </Button>
     </div>
