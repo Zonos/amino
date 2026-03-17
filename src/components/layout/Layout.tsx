@@ -121,32 +121,29 @@ export const Layout = ({
   >
     {!!headerContent && (
       <header
-        className="border-amino bg-header sticky top-0
-          z-[var(--amino-appbar-elevation)] box-border flex
-          h-[var(--amino-appbar-height)] border-b
-          shadow-[var(--amino-v3-shadow-base)]"
+        className="border-amino bg-header shadow-amino-base sticky top-0
+          z-(--amino-appbar-elevation) box-border flex h-(--amino-appbar-height)
+          border-b"
       >
         {headerContent}
       </header>
     )}
     <div
-      className="grid h-[var(--amino-layout-height)]"
+      className="grid h-(--amino-layout-height)"
       style={{
         gridTemplateColumns: `var(--amino-sidebar-width) 1fr`,
       }}
     >
       <nav
-        className="border-amino-subtle bg-sidebar box-border grid h-full
-          w-[var(--amino-sidebar-width)] grid-rows-[1fr_auto] border-r"
+        className="border-amino-subtle bg-sidebar box-border grid h-screen
+          w-(--amino-sidebar-width) grid-rows-[1fr_auto] border-r"
       >
         <div className="p-amino-16 box-border h-full w-full overflow-y-auto">
           {!!logoSidebar && <div className="mb-amino-24">{logoSidebar}</div>}
           {sidebar}
         </div>
 
-        <div className="box-border w-[var(--amino-sidebar-width)]">
-          {footer}
-        </div>
+        <div className="box-border w-(--amino-sidebar-width)">{footer}</div>
       </nav>
       <div
         className={cn(

@@ -7,7 +7,7 @@ const customTwMerge = extendTailwindMerge({
   extend: {
     classGroups: {
       basis: [{ basis: [isAmino] }],
-      'border-w': [{ border: [isAmino] }],
+      'border-color': [{ border: [isAmino] }],
       'font-size': [{ text: [isAmino] }],
       'font-weight': [{ font: [isAmino] }],
       leading: [{ leading: [isAmino] }],
