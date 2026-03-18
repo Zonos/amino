@@ -1,7 +1,3 @@
-[data-theme='night'] .amino-simple-table thead tr th {
-  background-color: var(--amino-gray-50);
-}
-
 [data-theme='night'] tbody tr.amino-table-row-active {
   background-color: var(--amino-gray-100);
 }
