@@ -190,7 +190,8 @@ export const Banner = ({
           {iconEl}
           {closeButton}
           <div
-            className="text-amino-base flex flex-col gap-amino-8 [grid-area:header]"
+            className="text-amino-base gap-amino-8 flex flex-col
+              [grid-area:header]"
             style={{ color: intentProps.removeIconColor }}
           >
             {headerActions && (

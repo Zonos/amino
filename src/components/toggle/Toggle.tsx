@@ -205,7 +205,7 @@ export const Toggle = <TValue extends SelectValue>({
             x: animationRect.left,
           }}
           className={cn(
-            'bg-raised absolute z-[1] mt-[1px] h-[30px] h-full rounded-md',
+            'bg-raised absolute top-[1px] bottom-[1px] z-[1] rounded-md',
             'shadow-[var(--amino-shadow-raised-standard)]',
           )}
           initial={false}

@@ -155,9 +155,9 @@ const buttonVariants = cva(
         xl: 'h-amino-xl',
       },
       variant: {
-        cyan: 'shadow-btn-cyan [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-cyan-600 focus:shadow-btn-cyan-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-amino-cyan',
+        cyan: 'text-white shadow-btn-cyan [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-cyan-600 focus:shadow-btn-cyan-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-amino-cyan',
         danger:
-          'shadow-btn-danger [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-red-600 focus:shadow-btn-danger-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-danger',
+          'text-white shadow-btn-danger [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-red-600 focus:shadow-btn-danger-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-danger',
         inlineLink:
           'p-0 inline-flex leading-[inherit] text-[var(--amino-button-color)] hover:text-[var(--amino-button-text-button-hover-color)] active:text-[var(--amino-button-text-button-hover-color)]',
         inverted:
@@ -165,17 +165,17 @@ const buttonVariants = cva(
         link: 'active:bg-blue-100 hover:bg-blue-50 focus:shadow-btn-focus-ring',
         plain: '',
         primary:
-          'shadow-btn-primary [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-blue-600 focus:shadow-btn-primary-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-primary',
+          'text-white shadow-btn-primary [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-blue-600 focus:shadow-btn-primary-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-primary',
         purple:
-          'shadow-btn-purple [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-purple-600 focus:shadow-btn-purple-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-amino-purple',
+          'text-white shadow-btn-purple [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-purple-600 focus:shadow-btn-purple-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-amino-purple',
         standard:
           'shadow-raised-standard active:bg-gray-100 focus:shadow-raised-standard',
         subtle: 'hover:bg-gray-50 active:bg-gray-100 focus:shadow-focus-btn',
         success:
-          'shadow-btn-success [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-green-600 focus:shadow-btn-success-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-success',
+          'text-white shadow-btn-success [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-green-600 focus:shadow-btn-success-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-success',
         text: 'text-[var(--amino-button-text-button-color)] hover:text-[var(--amino-button-text-button-hover-color)] disabled:text-[var(--amino-button-text-button-disabled-color)] [&.loading]:text-transparent',
         warning:
-          'shadow-btn-warning [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-orange-600 focus:shadow-btn-warning-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-warning',
+          'text-white shadow-btn-warning [text-shadow:0px_1px_1px_rgba(0,0,0,0.2)] [&_svg_path:not([data-is-secondary-color])]:drop-shadow-[0px_1px_1px_rgba(0,0,0,0.2)] dark:text-gray-1000 active:bg-orange-600 focus:shadow-btn-warning-focus disabled:bg-gray-500 disabled:shadow-btn-disabled [&_.spinner-wrapper]:bg-warning',
       },
     },
   },
@@ -599,7 +599,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         return theme.raisedSurfaceColor;
       case 'subtle':
       case 'inlineLink':
-        return 'none';
+        return 'transparent';
       default:
         return '';
     }
@@ -640,27 +640,19 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           ? theme.blue300
           : theme.gray300,
         '--amino-button-text-button-hover-color': getInlineLinkHoverColor(),
-        background: 'var(--amino-button-background-color)',
+        backgroundColor: 'var(--amino-button-background-color)',
         borderRadius: 'var(--amino-button-radius)',
         // Don't set inline color for text/inlineLink variants — their TW classes
         // handle base/hover/disabled colors and inline styles would override them.
         // Also skip for standard+outline — the CVA compound variant handles it,
         // and inline color would break themeOverride on a light page.
-        // Solid colored variants use hardcoded white so the color is correct in
-        // both light and dark mode regardless of the HTML tag (div, a, button).
+        // Solid colored variants get text-white from CVA + dark:text-gray-1000
+        // for night theme support — no inline color needed.
         ...(variant !== 'text' &&
           variant !== 'inlineLink' &&
-          !(outline && variant === 'standard') && {
-            color:
-              !outline &&
-              (variant === 'primary' ||
-                variant === 'success' ||
-                variant === 'warning' ||
-                variant === 'danger' ||
-                variant === 'cyan' ||
-                variant === 'purple')
-                ? 'white'
-                : 'var(--amino-button-color)',
+          !(outline && variant === 'standard') &&
+          !isSolidColoredVariant && {
+            color: 'var(--amino-button-color)',
           }),
         fontWeight:
           'var(--amino-button-font-weight)' as React.CSSProperties['fontWeight'],

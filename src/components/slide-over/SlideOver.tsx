@@ -150,7 +150,7 @@ export const SlideOver = ({
     {...props}
   >
     <div
-      className="bg-page shadow-amino-v3-large m-2 flex flex-col rounded-xl"
+      className="bg-page shadow-amino-large m-2 flex flex-col rounded-xl"
       style={{ height: 'calc(100% - 16px)' }}
     >
       <header

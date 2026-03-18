@@ -218,8 +218,8 @@ export const Toast = ({
   return (
     <motion.div
       className={cn(
-        `shadow-amino-v3-large z-999999 flex-1 rounded-xl p-4 leading-6
-        font-medium select-none`,
+        `shadow-amino-large z-999999 flex-1 rounded-xl p-4 leading-6 font-medium
+        select-none`,
         `bg-gray-1000 text-gray-0
         bg-[linear-gradient(90deg,rgba(148,150,158,0.4)_0%,rgba(148,150,158,0)_50%)]`,
         '[&_svg]:text-gray-500',
