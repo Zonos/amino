@@ -16,22 +16,23 @@ export const ButtonGroup = ({ children }: ButtonGroupProps) => (
       'rounded-amino-6 shadow-amino-base w-fit',
       // Remove box shadows from all buttons
       '[&>*]:shadow-none [&>*]:focus:shadow-none',
-      `[&>.menu-button-action_*]:shadow-none
-      [&>.menu-button-action_*]:focus:shadow-none`,
+      // MenuButton: outer wrapper is the direct child; button lives inside .menu-button-action
+      `[&>*>.menu-button-action>*]:shadow-none
+      [&>*>.menu-button-action>*]:focus:shadow-none`,
       `[&>.tooltip-wrapper>*]:shadow-none
       [&>.tooltip-wrapper>*]:focus:shadow-none`,
       // Remove left border radius from non-first children
       `[&>*:not(:first-child)]:ml-0 [&>*:not(:first-child)]:rounded-tl-none
       [&>*:not(:first-child)]:rounded-bl-none`,
-      `[&>.menu-button-action:not(:first-child)_*]:rounded-tl-none
-      [&>.menu-button-action:not(:first-child)_*]:rounded-bl-none`,
+      `[&>*:not(:first-child)>.menu-button-action>*]:rounded-tl-none
+      [&>*:not(:first-child)>.menu-button-action>*]:rounded-bl-none`,
       `[&>.tooltip-wrapper:not(:first-child)>*]:rounded-tl-none
       [&>.tooltip-wrapper:not(:first-child)>*]:rounded-bl-none`,
       // Remove right border radius from non-last children and add divider
       `[&>*:not(:last-child)]:relative [&>*:not(:last-child)]:rounded-tr-none
       [&>*:not(:last-child)]:rounded-br-none`,
-      `[&>.menu-button-action:not(:last-child)_*]:rounded-tr-none
-      [&>.menu-button-action:not(:last-child)_*]:rounded-br-none`,
+      `[&>*:not(:last-child)>.menu-button-action>*]:rounded-tr-none
+      [&>*:not(:last-child)>.menu-button-action>*]:rounded-br-none`,
       `[&>.tooltip-wrapper:not(:last-child)>*]:rounded-tr-none
       [&>.tooltip-wrapper:not(:last-child)>*]:rounded-br-none`,
       // Divider using ::after pseudo-element
