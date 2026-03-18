@@ -41,7 +41,8 @@ export const NumberInput = forwardRef<HTMLInputElement, InputBaseProps>(
           {...props}
           ref={mergedRef}
           aria-label={label}
-          className="[&_input]:appearance-none [&_input]:pr-10
+          className="[&_input]:appearance-none [&_input]:[-moz-appearance:textfield]
+            [&_input]:pr-10
             [&_input::-webkit-calendar-picker-indicator]:hidden
             [&_input::-webkit-inner-spin-button]:appearance-none
             [&_input::-webkit-outer-spin-button]:appearance-none"

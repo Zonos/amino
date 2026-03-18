@@ -3,6 +3,12 @@ import { extendTailwindMerge } from 'tailwind-merge';
 
 const isAmino = (value: string) => value.includes('amino-');
 
+// Custom shadow tokens that tailwind-merge doesn't know about by default.
+// Without this, `shadow-none` won't override `shadow-raised-standard` etc.
+// because tailwind-merge won't know they're in the same conflict group.
+const isCustomShadow = (value: string) =>
+  /^(raised|btn|input|select|focus|glow)-/.test(value);
+
 // Amino extends Tailwind's color scale with 0 and 1000 (e.g. gray-0, gray-1000).
 // tailwind-merge doesn't know these exist, so without this it won't recognize
 // bg-gray-0 / bg-gray-1000 as bg-color classes and won't deduplicate them
@@ -18,7 +24,7 @@ const customTwMerge = extendTailwindMerge({
       'font-size': [{ text: [isAmino] }],
       'font-weight': [{ font: [isAmino] }],
       leading: [{ leading: [isAmino] }],
-      shadow: [{ shadow: [isAmino] }],
+      shadow: [{ shadow: [isAmino, isCustomShadow] }],
       'text-color': [{ text: [isAminoExtendedScale] }],
     },
     theme: {
