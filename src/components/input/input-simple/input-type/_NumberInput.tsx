@@ -43,7 +43,8 @@ export const NumberInput = forwardRef<HTMLInputElement, InputBaseProps>(
           aria-label={label}
           className="[&_input]:appearance-none [&_input]:pr-10
             [&_input::-webkit-calendar-picker-indicator]:hidden
-            [&_input::-webkit-inner-spin-button]:hidden"
+            [&_input::-webkit-inner-spin-button]:appearance-none
+            [&_input::-webkit-outer-spin-button]:appearance-none"
           label={label}
           size={size}
           suffix={
