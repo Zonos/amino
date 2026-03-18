@@ -4,10 +4,12 @@ import {
   type TextareaHTMLAttributes,
   useId,
   useRef,
+  useState,
 } from 'react';
 
 import { Flex } from 'src/components/flex/Flex';
 import { HelpText } from 'src/components/help-text/HelpText';
+import { theme } from 'src/styles/constants/theme';
 import { cn } from 'src/utils/cn';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
 
@@ -151,6 +153,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const id = useId();
     const hasValue = !!value;
+    const [isFocused, setIsFocused] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const actionsRef = useRef<HTMLDivElement | null>(null);
 
@@ -171,8 +174,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       >
         <div
           className={cn(
-            `amino-input-wrapper border-amino relative w-full overflow-hidden
-            rounded-[12px] border p-0`,
+            `amino-input-wrapper relative w-full overflow-hidden rounded-[12px]
+            border p-0`,
+            error
+              ? 'border-transparent shadow-[var(--amino-glow-error)]'
+              : 'border-amino',
+            !error && isFocused && 'shadow-[var(--amino-focus-shadow)]',
             disabled && [
               '*:cursor-not-allowed',
               '[&_.fields]:opacity-disabled',
@@ -180,13 +187,28 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             ],
             className,
           )}
+          style={{
+            '--amino-focus-shadow': theme.glowBlue,
+          }}
         >
-          <button
-            className={cn(
-              'relative flex w-full flex-col hover:border-gray-300',
-            )}
-            onClick={() => textareaRef?.current?.focus()}
-            type="button"
+          <label
+            className="relative flex w-full flex-col"
+            htmlFor={props.id || id}
+            onClick={e => {
+              if (e.target === textareaRef.current) {
+                // Clicking the textarea itself — prevent label re-focus so cursor stays at click position
+                e.preventDefault();
+              } else {
+                // Clicking the floating label — move cursor to end after focus
+                setTimeout(() => {
+                  const textarea = textareaRef.current;
+                  if (textarea) {
+                    const length = textarea.value.length;
+                    textarea.setSelectionRange(length, length);
+                  }
+                }, 0);
+              }
+            }}
           >
             <textarea
               ref={node => {
@@ -198,8 +220,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 textareaRef.current = node;
               }}
               className={cn(
-                `text-amino-base bg-amino-input box-border min-h-[50px] w-full
-                flex-grow resize-none border-0 px-4 py-2 font-medium
+                `text-amino-base bg-amino-input box-border min-h-[100px] w-full
+                flex-grow resize-none border-0 px-4 py-3 font-medium
                 outline-none`,
                 `placeholder:font-normal placeholder:text-gray-400
                 placeholder:opacity-60 placeholder:transition-all
@@ -213,41 +235,38 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 ],
                 !!actions && !rows && 'min-h-[5em]',
               )}
+              {...props}
               disabled={disabled}
               id={id}
-              rows={rows}
-              style={{
-                ...(error && {
-                  '--amino-textarea-shadow': 'var(--amino-glow-error)',
-                }),
+              onBlur={e => {
+                setIsFocused(false);
+                props.onBlur?.(e);
               }}
+              onFocus={e => {
+                setIsFocused(true);
+                props.onFocus?.(e);
+              }}
+              rows={rows}
               value={value}
-              {...props}
             />
             {label && (
-              <label
+              <span
                 className={cn(
-                  `text-amino-base origin-left-top absolute top-5.5 left-4
-                  leading-none transition-all duration-300 ease-in-out`,
-                  (hasValue ||
-                    textareaRef.current === document.activeElement) &&
-                    'top-[11px] scale-[0.8]',
+                  `text-amino-base pointer-events-none absolute top-6 left-4
+                  origin-top-left leading-none transition-all duration-300
+                  ease-in-out`,
+                  (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
                 )}
-                data-label={label}
-                htmlFor={props.id || id}
                 style={{ color: 'var(--amino-gray-800)' }}
               >
                 {label}
-              </label>
+              </span>
             )}
             <div
-              className={cn(
-                `after:absolute after:inset-0 after:rounded-[12px]
-                after:content-['']`,
-                error && 'after:shadow-[var(--amino-glow-error)]',
-              )}
+              className="after:absolute after:inset-0 after:rounded-[12px]
+                after:content-['']"
             />
-          </button>
+          </label>
 
           {actions && (
             <div

@@ -198,10 +198,9 @@ export const NavigationGroup = ({
     <div
       className={cn(
         !collapsed &&
-          `[&_.navigation-item]:text-text-color
+          `[&_.navigation-item_*]:text-gray-1000
           [&_.navigation-item_svg]:text-gray-1000
-          [&_.navigation-item]:hover:bg-transparent
-          dark:[&_.navigation-item_svg]:text-gray-100`,
+          [&_.navigation-item]:hover:bg-transparent`,
       )}
     >
       <div className="navigation-item">{content}</div>
