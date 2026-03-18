@@ -151,10 +151,12 @@ export const RichCardStateSelect = <T extends UnitedState = UnitedState>({
                         `flex h-fit w-[180px] cursor-pointer items-center gap-6
                         font-medium`,
                         'text-amino-s flex-[0_0_180px]',
+                        'dark:bg-page',
                         'hover:bg-gray-50',
                         state.highlighted &&
                           cn(
-                            'border-2 border-blue-400 bg-blue-50 text-blue-600',
+                            `border-2 border-blue-400 bg-blue-50 text-blue-600
+                            dark:bg-blue-500/10`,
                             `[&_svg>path]:fill-blue-200
                             [&_svg>path]:stroke-blue-600`,
                           ),

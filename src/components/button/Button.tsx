@@ -614,6 +614,9 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
   };
 
   const isIconOnly = !!icon && !children;
+  const backgroundColorValue = getBackgroundColor();
+  const hasInlineBackground =
+    backgroundColorValue !== 'transparent' && backgroundColorValue !== '';
 
   return (
     <Tag
@@ -621,7 +624,7 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       data-testid={testId || defaultTestId}
       data-theme={themeOverride}
       style={{
-        '--amino-button-background-color': getBackgroundColor(),
+        '--amino-button-background-color': backgroundColorValue,
         '--amino-button-color': getColor(),
         '--amino-button-font-weight': getFontWeight(),
         '--amino-button-hover-background-color': getHoverBackground(),
@@ -640,7 +643,12 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
           ? theme.blue300
           : theme.gray300,
         '--amino-button-text-button-hover-color': getInlineLinkHoverColor(),
-        backgroundColor: 'var(--amino-button-background-color)',
+        // Only set backgroundColor inline when there's an actual color;
+        // 'transparent' and '' are handled by CVA classes, and setting them
+        // inline would block hover/active state changes from CSS.
+        ...(hasInlineBackground && {
+          backgroundColor: 'var(--amino-button-background-color)',
+        }),
         borderRadius: 'var(--amino-button-radius)',
         // Don't set inline color for text/inlineLink variants — their TW classes
         // handle base/hover/disabled colors and inline styles would override them.
