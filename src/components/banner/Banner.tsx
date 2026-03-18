@@ -156,72 +156,99 @@ export const Banner = ({
     }
   };
   const renderContent = () => {
-    // Some banners are used with just a wall of text, which causes the icons to be centered vertically in said wall and look a little off. This should handle that edge case and move the icons to align at the top.
-    const onlyContent = !!children && !title && !footerActions;
     const intentProps = getIntentProps();
 
-    const renderTitle = () =>
-      title && (
-        <header className="gap-amino-12 flex items-center justify-between">
-          <Text color={intentProps.removeIconColor} type="label">
-            {title}
-          </Text>
-          {headerActions && (
-            <div className="gap-amino-8 flex items-center">{headerActions}</div>
-          )}
-        </header>
+    const closeButton = onClose && (
+      <div className="justify-self-end [grid-area:close]">
+        <Button
+          className="w-6"
+          icon={<RemoveIcon color={intentProps.removeIconColor} size={20} />}
+          onClick={onClose}
+          variant="text"
+        />
+      </div>
+    );
+
+    const iconEl = (
+      <div className="justify-self-start [grid-area:icon]">
+        {intentProps.intentIcon}
+      </div>
+    );
+
+    // When there is no title, render everything inline with the icon in one row
+    if (!title) {
+      const hasContent = !!children || !!footerActions || !!headerActions;
+      return (
+        <div
+          className="grid"
+          style={{
+            alignItems: hasContent && !!children ? 'start' : 'center',
+            gridTemplateAreas: "'icon header close'",
+            gridTemplateColumns: `32px auto ${!onClose ? '0px' : '32px'}`,
+          }}
+        >
+          {iconEl}
+          {closeButton}
+          <div
+            className="text-amino-base flex flex-col gap-amino-8 [grid-area:header]"
+            style={{ color: intentProps.removeIconColor }}
+          >
+            {headerActions && (
+              <div className="gap-amino-8 flex items-center">
+                {headerActions}
+              </div>
+            )}
+            {children}
+            {footerActions && (
+              <footer className="gap-amino-8 mt-amino-4 flex items-center">
+                {footerActions}
+              </footer>
+            )}
+          </div>
+        </div>
       );
+    }
 
-    const renderFooter = () =>
-      footerActions && (
-        <footer className="gap-amino-12 mt-amino-8 flex items-center">
-          <div className="gap-amino-8 flex items-center">{footerActions}</div>
-        </footer>
-      );
-
-    const header = renderTitle();
-    const content = children;
-    const moreContent = renderFooter();
-
+    // When there is a title, use two-row grid layout
     return (
       <div
         className="grid"
         style={{
-          alignItems: onlyContent ? 'start' : 'center',
+          alignItems: 'center',
           gridTemplateAreas: "'icon header close' '. content .'",
           gridTemplateColumns: `32px auto ${!onClose ? '0px' : '32px'}`,
         }}
       >
-        <div className="justify-self-start [grid-area:icon]">
-          {intentProps.intentIcon}
-        </div>
-        {onClose && (
-          <div className="justify-self-end [grid-area:close]">
-            <Button
-              className="w-6"
-              icon={
-                <RemoveIcon color={intentProps.removeIconColor} size={20} />
-              }
-              onClick={onClose}
-              variant="text"
-            />
-          </div>
-        )}
-
+        {iconEl}
+        {closeButton}
         <div
           className="text-amino-base [grid-area:header]"
           style={{ color: intentProps.removeIconColor }}
         >
-          {header}
+          <header className="gap-amino-12 flex items-center justify-between">
+            <Text color={intentProps.removeIconColor} type="label">
+              {title}
+            </Text>
+            {headerActions && (
+              <div className="gap-amino-8 flex items-center">
+                {headerActions}
+              </div>
+            )}
+          </header>
         </div>
-
-        {content && (
+        {(children || footerActions) && (
           <div
             className="gap-amino-8 text-amino-base mt-2 flex flex-col
               [grid-area:content]"
           >
-            {content}
-            {moreContent}
+            {children}
+            {footerActions && (
+              <footer className="gap-amino-12 mt-amino-8 flex items-center">
+                <div className="gap-amino-8 flex items-center">
+                  {footerActions}
+                </div>
+              </footer>
+            )}
           </div>
         )}
       </div>
