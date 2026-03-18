@@ -180,24 +180,28 @@ export const FloatLabelInput = forwardRef<
       lg: {
         input: label ? 'pt-5 pb-2 pr-1 pl-4' : 'px-4',
         labelTop: 'top-[6px]',
+        labelTopFocus: 'group-focus-within:top-[6px]',
         valuePrefixPadding: 'pb-2.5',
         wrapper: 'h-[calc(var(--amino-size-lg)_-_2px)]',
       },
       md: {
         input: label ? 'pt-5 pb-2 pr-1 pl-4' : 'px-4',
         labelTop: 'top-[6px]',
+        labelTopFocus: 'group-focus-within:top-[6px]',
         valuePrefixPadding: 'pb-1',
         wrapper: 'h-[calc(var(--amino-size-md)_-_2px)]',
       },
       sm: {
         input: label ? 'pt-[13px] pb-0 px-4' : 'px-4',
         labelTop: 'top-[2px]',
+        labelTopFocus: 'group-focus-within:top-[2px]',
         valuePrefixPadding: 'pb-0 mb-[-1px]',
         wrapper: 'h-[calc(var(--amino-size-sm)_-_2px)]',
       },
       xl: {
         input: label ? 'pt-4 pb-[2px] pr-1 pl-4' : 'px-4',
         labelTop: 'top-[11px]',
+        labelTopFocus: 'group-focus-within:top-[11px]',
         valuePrefixPadding: 'pb-[11px]',
         wrapper: 'h-[calc(var(--amino-size-xl)_-_2px)]',
       },
@@ -300,6 +304,7 @@ export const FloatLabelInput = forwardRef<
                 currentSize.labelTop,
               ],
               'group-focus-within:-translate-x-2 group-focus-within:scale-[0.8]',
+              currentSize.labelTopFocus,
               prefix && label && 'left-0',
             )}
             style={{ color: 'var(--amino-gray-800)' }}
