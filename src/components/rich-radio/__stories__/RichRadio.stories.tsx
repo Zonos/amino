@@ -77,7 +77,7 @@ BasicRichRadio.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 400,
+        enterDelay: 400,
       },
       value: 'item1',
     },
@@ -87,7 +87,7 @@ BasicRichRadio.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 200,
+        enterDelay: 200,
       },
       value: 'item2',
     },
@@ -114,7 +114,7 @@ CustomRichRadioOption.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 400,
+        enterDelay: 400,
       },
       value: 'item1',
     },
@@ -124,7 +124,7 @@ CustomRichRadioOption.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 400,
+        enterDelay: 400,
       },
       value: 'item2',
     },
@@ -150,6 +150,36 @@ CustomRichRadioOption.args = {
   ),
 };
 
+export const WithDisabledItems = Template.bind({});
+WithDisabledItems.args = {
+  items: [
+    {
+      label: 'Available option',
+      subtitle: 'This option can be selected',
+      value: 'item1',
+    },
+    {
+      disabled: true,
+      label: 'Disabled option',
+      subtitle: 'This option cannot be selected',
+      value: 'item2',
+    },
+    {
+      label: 'Another available option',
+      subtitle: 'This option can also be selected',
+      value: 'item3',
+    },
+    {
+      disabled: true,
+      label: 'Another disabled option',
+      subtitle: 'Also not selectable',
+      tooltip: 'Contact support to enable this option',
+      value: 'item4',
+    },
+  ],
+  value: 'item1',
+};
+
 export const SmallRichRadio = Template.bind({});
 SmallRichRadio.args = {
   items: [
@@ -157,7 +187,7 @@ SmallRichRadio.args = {
       label: 'Handbags, whether or not with shoulder strap',
       tooltip: 'Handbags, whether or not with shoulder strap',
       tooltipSetting: {
-        delayShow: 400,
+        enterDelay: 400,
       },
       value: 'item1',
     },
@@ -166,7 +196,7 @@ SmallRichRadio.args = {
       tooltip:
         'Handbags, whether or not with shoulder strap, including those without handle: With outer surface of sheeting of plastics or of textile materials',
       tooltipSetting: {
-        delayShow: 400,
+        enterDelay: 400,
       },
       value: 'item2',
     },

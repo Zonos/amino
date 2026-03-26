@@ -1,8 +1,8 @@
 import { type ReactNode, useEffect, useState } from 'react';
-import ReactTooltip, { type TooltipProps } from 'react-tooltip';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { Tooltip, type TooltipProps } from 'src/components/tooltip/Tooltip';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
@@ -18,9 +18,9 @@ export type RichRadioItemType<T extends string> = {
    */
   label: ReactNode;
   /**
-   * Optional secondary text to display below the label
+   * Optional secondary text or React node to display below the label
    */
-  subtitle?: string;
+  subtitle?: ReactNode;
   /**
    * Text to display when hovering over the option
    */
@@ -28,7 +28,7 @@ export type RichRadioItemType<T extends string> = {
   /**
    * Custom settings for the tooltip component
    */
-  tooltipSetting?: Omit<TooltipProps, 'title' | 'children'>;
+  tooltipSetting?: Omit<TooltipProps, 'children' | 'title'>;
   /**
    * Unique identifier for this option
    */
@@ -96,7 +96,7 @@ export type RichRadioProps<T extends string = string> = BaseProps & {
  *       label: 'Option with tooltip',
  *       subtitle: 'Hover to see more information',
  *       tooltip: 'This is additional information about this option',
- *       tooltipSetting: { delayShow: 400 },
+ *       tooltipSetting: { enterDelay: 400 },
  *       value: 'option1'
  *     },
  *     {
@@ -206,84 +206,90 @@ export const RichRadio = <T extends string>({
 
   return (
     <VStack
-      className={cn(
-        `[&_button[data-state="checked"]]:shadow-amino-select-active
-        [&_button[data-state="checked"]]:text-blue-600`,
-        '[&_button[data-state="checked"]_.subtitle]:text-blue-600',
-        '[&_svg]:text-gray-0 [&_svg]:h-4 [&_svg]:w-4',
-        className,
-      )}
+      className={cn('[&_svg]:text-gray-0 [&_svg]:h-4 [&_svg]:w-4', className)}
       spacing={8}
       style={style}
     >
       {items.map(item => (
-        <button
+        <Tooltip
           key={item.value}
-          className={cn(
-            `group border-amino rounded-amino-8 relative appearance-none border
-            bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)]`,
-            `flex h-16 flex-row items-center text-left transition-all
-            duration-150 ease-in-out`,
-            'hover:bg-hover hover:border-gray-200',
-            'hover:[&_.icon-wrapper]:bg-gray-600',
-            `focus:border-blue-400 focus:shadow-[0_0_0_1px]
-            focus:shadow-blue-400 focus:outline-none`,
-            '[&>div]:flex [&>div]:flex-1 [&>div]:flex-col',
-            itemHeight === 40 && 'h-10',
-          )}
-          data-disabled={item.disabled}
-          data-state={item.value === selectedValue ? 'checked' : ''}
-          data-tip={item.tooltip}
-          onClick={() => {
-            handleChange(item.value);
-          }}
-          type="button"
+          className="w-full"
+          disabled={!item.tooltip}
+          title={item.tooltip}
+          {...item.tooltipSetting}
         >
-          {item.tooltip && (
-            <ReactTooltip
-              arrowColor="transparent"
-              className="rounded-amino-10 max-w-87.5"
-              effect="solid"
-              {...item.tooltipSetting}
-            />
-          )}
-          {renderCustomText ? (
-            renderCustomText(item)
-          ) : (
-            <div>
-              <Text
-                className={cn(
-                  'text-amino leading-6',
-                  'group-data-[state=checked]:text-blue-600',
-                )}
-                type="label"
-              >
-                {item.label}
-              </Text>
-              {item.subtitle && (
-                <Text className="subtitle" color="gray900" type="body">
-                  {item.subtitle}
+          <button
+            className={cn(
+              `group border-amino rounded-amino-8 relative appearance-none
+              border bg-transparent p-4 pr-[calc(var(--amino-space-40)+10px)]`,
+              `flex h-16 flex-row items-center text-left transition-all
+              duration-150 ease-in-out`,
+              'hover:bg-hover hover:border-gray-200',
+              'hover:[&_.icon-wrapper]:bg-gray-600',
+              `focus:border-blue-400 focus:shadow-[0_0_0_1px]
+              focus:shadow-blue-400 focus:outline-none`,
+              `data-[state=checked]:shadow-amino-select-active
+              data-[state=checked]:text-blue-600`,
+              'data-[state=checked]:border-blue-400',
+              'data-[state=checked]:[&_.subtitle]:text-blue-600',
+              `disabled:cursor-not-allowed disabled:bg-gray-50
+              disabled:text-gray-500`,
+              'disabled:hover:border-amino disabled:hover:bg-gray-50',
+              'disabled:hover:[&_.icon-wrapper]:bg-gray-400',
+              'disabled:focus:border-amino disabled:focus:shadow-none',
+              '[&>div]:flex [&>div]:flex-1 [&>div]:flex-col',
+              'w-full',
+              itemHeight === 40 && 'h-10',
+            )}
+            data-disabled={item.disabled}
+            data-state={item.value === selectedValue ? 'checked' : ''}
+            disabled={!!item.disabled}
+            onClick={() => {
+              if (item.disabled) {
+                return;
+              }
+              handleChange(item.value);
+            }}
+            type="button"
+          >
+            {renderCustomText ? (
+              renderCustomText(item)
+            ) : (
+              <div>
+                <Text
+                  className={cn(
+                    'text-amino leading-6',
+                    'group-data-[state=checked]:text-blue-600',
+                  )}
+                  type="label"
+                >
+                  {item.label}
                 </Text>
-              )}
-            </div>
-          )}
-          {!!icon && (
-            <div
-              className="icon-wrapper [&_svg]:text-gray-0 absolute right-4
-                rounded-full bg-gray-400 p-1.25"
-            >
-              {icon || <CheckmarkIcon />}
-            </div>
-          )}
-          {item.value === selectedValue && (
-            <div
-              className="absolute right-4 flex items-center justify-center
-                rounded-full bg-blue-600 p-0.5"
-            >
-              {activeIcon || <CheckmarkIcon />}
-            </div>
-          )}
-        </button>
+                {item.subtitle && (
+                  <Text className="subtitle" color="gray900" type="body">
+                    {item.subtitle}
+                  </Text>
+                )}
+              </div>
+            )}
+            {!!icon && (
+              <div
+                className="icon-wrapper [&_svg]:text-gray-0 absolute right-4
+                  rounded-full bg-gray-400 p-1.25"
+              >
+                {icon || <CheckmarkIcon />}
+              </div>
+            )}
+            {item.value === selectedValue && (
+              <div
+                className="absolute right-4 flex items-center justify-center
+                  rounded-full bg-blue-600 p-0.5"
+              >
+                {activeIcon || <CheckmarkIcon />}
+              </div>
+            )}
+          </button>
+        </Tooltip>
       ))}
     </VStack>
   );
