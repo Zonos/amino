@@ -12,11 +12,11 @@ export type SwitchProps = BaseProps & {
   'aria-label'?: string;
   checked: boolean;
   disabled?: boolean;
-  label?: string;
-  labelDescription?: string;
+  label?: ReactNode;
+  labelDescription?: ReactNode;
   labelIcon?: ReactNode;
   onChange: (checked: boolean) => void;
-  subtitle?: string;
+  subtitle?: ReactNode;
   switchIconLeft?: ReactNode;
   switchIconRight?: ReactNode;
 };
