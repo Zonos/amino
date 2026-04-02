@@ -66,13 +66,13 @@ export const TableRowCollapse = ({
           <TableCell
             className={cn(
               '!h-[inherit] !border-b-[inherit]',
-              collapsed && '!h-0 !border-b-0',
+              collapsed && '!h-0 !border-b-0 !leading-0',
               '[&>div]:w-full',
             )}
             colSpan={100}
           >
             <Collapse
-              className="[&>div]:pb-4"
+              className="[&>div:not([aria-hidden])]:pb-4"
               collapsed={collapsed}
               style={style}
             >
