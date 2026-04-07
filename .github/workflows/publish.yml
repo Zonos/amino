@@ -18,7 +18,8 @@ jobs:
       - uses: pnpm/action-setup@v5
       - uses: actions/setup-node@v6
         with:
-          node-version: 22.22.2
+          # 22.22.2 ships with a broken bundled npm (missing promise-retry)
+          node-version: 22.22.1
           registry-url: "https://registry.npmjs.org"
           cache: pnpm
       # Ensure npm 11.5.1 or later for trusted publishing
