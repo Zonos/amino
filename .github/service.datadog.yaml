@@ -1,0 +1,33 @@
+apiVersion: v3
+kind: service
+metadata:
+  name: amino
+  owner: team-16
+  additionalOwners:
+    - name: devops
+      type: infra
+  tags:
+    - language:typescript
+    - cloud_provider:aws
+  contacts:
+    - name: team-16-hello
+      type: slack
+      contact: https://zonos.slack.com/archives/C0APYQ68LH4
+  links:
+    - name: Source Code
+      type: repo
+      url: https://github.com/Zonos/amino
+      provider: github
+spec:
+  lifecycle: production
+  tier: "bronze"
+  type: web
+  languages:
+    - typescript
+datadog:
+  codeLocations:
+    - repositoryURL: https://github.com/Zonos/amino
+extensions:
+  datadoghq.com/ci-pipelines:
+    - name: amino
+      provider: github
