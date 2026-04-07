@@ -62,7 +62,10 @@ export const TableRowCollapse = ({
         </TableCell>
       </TableRow>
       {collapsible && (
-        <TableRow rowTestId={`amino--collapse-${rowKey}`}>
+        <TableRow
+          className={cn(collapsible && 'h-auto!')}
+          rowTestId={`amino--collapse-${rowKey}`}
+        >
           <TableCell
             className={cn(
               '!h-[inherit] !border-b-[inherit]',
