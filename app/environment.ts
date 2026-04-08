@@ -78,6 +78,7 @@ export const env = createEnv({
     NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
   },
   skipValidation: skipEnvValidation,
+  emptyStringAsUndefined: true,
 });
 
 // Storybook environment validation
@@ -101,6 +102,7 @@ export const storybookEnv = createEnv({
     STORYBOOK_MCP_ENDPOINT: process.env.STORYBOOK_MCP_ENDPOINT,
   },
   skipValidation: !inStorybook,
+  emptyStringAsUndefined: true,
 });
 
 // MCP build configuration environment validation
@@ -139,6 +141,7 @@ export const mcpBuildEnv = createEnv({
     MCP_VERBOSE: parseBooleanEnv(process.env.MCP_VERBOSE),
   },
   skipValidation: true,
+  emptyStringAsUndefined: true,
 });
 
 // Helper exports for common conditions
