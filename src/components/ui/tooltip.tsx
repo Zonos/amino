@@ -27,6 +27,7 @@ const TooltipContent = React.forwardRef<
         origin-[--radix-tooltip-content-transform-origin] overflow-hidden`,
         className,
       )}
+      data-radix-tooltip-content
       sideOffset={sideOffset}
       {...props}
     />
