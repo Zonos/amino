@@ -213,9 +213,9 @@ export const Basic: StoryObj = {
       throw new Error('Row not found');
     }
     await userEvent.hover(row1);
-    expect(row1).toHaveClass(/withHover.+/);
+    expect(row1).toHaveClass('hover:bg-hover');
     await userEvent.hover(row2);
-    expect(row2).not.toHaveClass(/withHover.+/);
+    expect(row2).not.toHaveClass('hover:bg-hover');
   },
   render: () => (
     <>
