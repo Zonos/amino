@@ -154,7 +154,6 @@ describe('Migration: Phase 3 — Wave 3 Rich Components', () => {
 
 describe('Migration: Phase 4 — Complex/Composite Components', () => {
   const complexComponents = [
-    'connection-map',
     'country-multi-select',
     'cover-sheet',
     'dialog',
