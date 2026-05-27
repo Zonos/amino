@@ -80,19 +80,6 @@ export const PROD_URL = 'https://amino.zonos.com';
  * These have non-deterministic rendering (animations, canvas, random data).
  */
 export const SKIP_STORIES = new Set([
-  // ConnectionMap uses canvas-based geographic rendering — varies per run
-  'amino-connectionmap--iceland-to-greenland',
-  'amino-connectionmap--loading',
-  'amino-connectionmap--russia-to-argentina',
-  'amino-connectionmap--russia-to-australia',
-  'amino-connectionmap--russia-to-canada',
-  'amino-connectionmap--russia-to-ecuador',
-  'amino-connectionmap--russia-to-greenland',
-  'amino-connectionmap--us-to-australia',
-  'amino-connectionmap--us-to-japan',
-  'amino-connectionmap--us-to-madagascar',
-  'amino-connectionmap--us-to-mexico',
-  'amino-connectionmap--us-to-saudi-arabia',
   // Spinner has CSS animation mid-frame
   'amino-spinner--inside-container',
   'amino-spinner--spinner',

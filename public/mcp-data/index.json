@@ -36,11 +36,6 @@
       "path": "src/components/collapse"
     },
     {
-      "id": "connection-map",
-      "name": "ConnectionMap",
-      "path": "src/components/connection-map"
-    },
-    {
       "id": "country-multi-select",
       "name": "CountryMultiSelect",
       "path": "src/components/country-multi-select"
