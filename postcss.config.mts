@@ -5,6 +5,8 @@ const config = {
     require('autoprefixer'),
     require('postcss-preset-env')({
       features: {
+        // Disabled to prevent postcss-preset-env from converting colors to oklab(),
+        // which has limited browser support and can produce unexpected output.
         'oklab-function': false,
       },
     }),

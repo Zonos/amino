@@ -83,7 +83,7 @@ export const DualCurrency = ({
     return (
       <div
         className={cn(
-          'justify-items-right gap-amino-8 items-center',
+          'justify-items-end gap-amino-8 items-center',
           className,
         )}
         style={{

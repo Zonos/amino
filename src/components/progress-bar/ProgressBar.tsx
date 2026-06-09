@@ -102,7 +102,7 @@ export const ProgressBar = ({
   };
   return (
     <div
-      className={cn('h-2 w-56 rounded-lg bg-gray-100', className)}
+      className={cn('h-2 w-amino-56 rounded-lg bg-gray-100', className)}
       style={style}
     >
       <div

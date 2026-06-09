@@ -154,7 +154,7 @@ export const RichCheckbox = ({
               <Text
                 className={cn(
                   'leading-6',
-                  '[data-state="checked"]_&:text-blue-600',
+                  '[[data-state=checked]_&]:text-blue-600',
                 )}
                 color="gray1000"
                 type="label"
@@ -163,7 +163,7 @@ export const RichCheckbox = ({
               </Text>
               {subtitle && (
                 <Text
-                  className={cn('[data-state="checked"]_&:text-blue-600')}
+                  className={cn('[[data-state=checked]_&]:text-blue-600')}
                   color="gray700"
                 >
                   {subtitle}

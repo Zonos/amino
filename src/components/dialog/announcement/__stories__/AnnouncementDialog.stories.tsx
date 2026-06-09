@@ -57,6 +57,7 @@ const Template: StoryFn<AnnouncementDialogProps & { height: number }> = ({
         label={label}
         onClose={() => setOpen(false)}
         open={open}
+        style={height ? { height: `${height}px` } : undefined}
         width={width}
       >
         {children}

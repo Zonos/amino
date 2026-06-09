@@ -340,7 +340,7 @@ export const FilterAmount = ({
 
       <div className={cn('flex items-center gap-2')}>
         <ArrowRightIcon
-          className="arrow-right [&.arrow-right]:mr-4"
+          className="arrow-right mr-4"
           color="blue600"
           size={24}
         />
