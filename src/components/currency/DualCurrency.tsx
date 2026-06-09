@@ -82,10 +82,7 @@ export const DualCurrency = ({
   if (local && foreign && !hideLocal && !hideForeign) {
     return (
       <div
-        className={cn(
-          'justify-items-end gap-amino-8 items-center',
-          className,
-        )}
+        className={cn('gap-amino-8 items-center justify-items-end', className)}
         style={{
           ...style,
           display: isTabular ? 'grid' : 'flex',

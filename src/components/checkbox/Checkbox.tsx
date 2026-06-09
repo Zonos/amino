@@ -205,8 +205,8 @@ export const Checkbox = ({
       />
       <div
         className={cn(
-          `flex flex-row select-none pointer-events-none [&_*]:pointer-events-none
-          [&_*]:select-none`,
+          `pointer-events-none flex flex-row select-none
+          [&_*]:pointer-events-none [&_*]:select-none`,
           'amino-input-wrapper',
           disabled && ['cursor-not-allowed', 'disabled'],
         )}

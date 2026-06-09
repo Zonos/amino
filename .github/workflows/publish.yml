@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feat/migrate-to-shadcn
 
 permissions:
   id-token: write # Required for OIDC
