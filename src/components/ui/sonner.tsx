@@ -1,17 +1,18 @@
 'use client';
 
-import { useTheme } from 'next-themes';
 import { Toaster as Sonner } from 'sonner';
+
+import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = 'system' } = useTheme();
+  const { aminoTheme } = useAminoTheme();
 
   return (
     <Sonner
       className="toaster group"
-      theme={theme as ToasterProps['theme']}
+      theme={aminoTheme === 'night' ? 'dark' : 'light'}
       toastOptions={{
         classNames: {
           actionButton:

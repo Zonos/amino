@@ -1,0 +1,14 @@
+# Single-package repo — include the root as the only workspace entry.
+packages:
+  - '.'
+
+# pnpm settings (camelCase keys; pnpm reads these from pnpm-workspace.yaml, not .npmrc).
+# Refuse to install package versions published less than 24 hours ago (1440 minutes).
+# Protects against supply chain attacks (malicious versions are typically removed within hours).
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - react-dom
+  - react
+  - next
+  - '@next/*'
+  - '@zonos/amino'
