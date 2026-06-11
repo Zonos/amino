@@ -27,9 +27,12 @@ body,
   padding: 0 !important;
 }
 
-/* Ensure story content fills available space */
-.sb-story > div,
-.docs-story > div {
+/* Ensure story content fills available space.
+   :first-child scoping excludes the absolutely-positioned "Show code"
+   toggle wrapper (the second .docs-story child), which would otherwise
+   stretch into a full-height strip. */
+.sb-story > div:first-child,
+.docs-story > div:first-child {
   height: 100% !important;
   min-height: 100% !important;
 }

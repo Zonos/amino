@@ -34,6 +34,11 @@ const storybookConfig: StorybookConfig = {
                 loader: 'postcss-loader',
                 options: {
                   postcssOptions: {
+                    // Don't merge postcss.config.mts: its postcss-preset-env
+                    // flattens @layer into high-specificity :not(#\#) selectors
+                    // (cascade-layers polyfill), which overrides Storybook's
+                    // emotion-based docs styling.
+                    config: false,
                     plugins: [tailwindCssPostcss(), autoprefixer()],
                   },
                 },
