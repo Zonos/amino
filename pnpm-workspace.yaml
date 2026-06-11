@@ -9,6 +9,4 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - react-dom
   - react
-  - next
-  - '@next/*'
   - '@zonos/amino'

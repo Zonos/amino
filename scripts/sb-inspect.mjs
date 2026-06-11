@@ -27,7 +27,9 @@
  *   node scripts/sb-inspect.mjs amino-button--basic --canvas
  *   SB_PORT=6007 node scripts/sb-inspect.mjs
  */
+/* eslint-disable no-console */
 import { chromium } from '@playwright/test';
+import process from 'node:process';
 
 const args = process.argv.slice(2);
 const canvas = args.includes('--canvas');
@@ -39,7 +41,7 @@ const storyId = positional[0] ?? 'amino-avatar-useravatar--docs';
 const selector = positional[1] ?? (canvas ? '#storybook-root' : '.docs-story');
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+const page = await browser.newPage({ viewport: { height: 900, width: 1400 } });
 await page.goto(
   `http://localhost:${port}/iframe.html?viewMode=${viewMode}&id=${storyId}`,
   { waitUntil: 'domcontentloaded' },
@@ -57,17 +59,17 @@ const info = await page.evaluate(sel => {
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
     return {
-      tag: el.tagName,
       cls: el.className,
-      rect: { x: r.x, y: r.y, w: r.width, h: r.height },
-      position: cs.position,
       height: cs.height,
+      position: cs.position,
+      rect: { h: r.height, w: r.width, x: r.x, y: r.y },
+      tag: el.tagName,
       text: el.textContent.slice(0, 60),
     };
   };
   return {
-    target: describe(target),
     children: [...target.children].map(describe),
+    target: describe(target),
   };
 }, selector);
 console.log(JSON.stringify(info, null, 2));

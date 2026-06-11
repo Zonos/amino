@@ -28,9 +28,6 @@
       {
         "transform": "typescript-transform-paths",
         "afterDeclarations": true
-      },
-      {
-        "name": "next"
       }
     ],
     "esModuleInterop": true,
@@ -74,10 +71,10 @@
     "eslint.config.prod.mjs",
     "postcss.config.mts",
     "prettier.config.mjs",
+    "scripts/**/*.mjs",
     "test-utils",
     "tsconfig.json",
-    "vitest.config.ts",
-    ".next/types/**/*.ts"
+    "vitest.config.ts"
   ],
   "exclude": ["node_modules"]
 }
