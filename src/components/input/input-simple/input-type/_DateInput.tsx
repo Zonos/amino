@@ -43,7 +43,8 @@ export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
           'relative w-full',
           '[&_input[type=datetime-local]::-webkit-calendar-picker-indicator]:hidden',
           '[&_input[type=date]::-webkit-calendar-picker-indicator]:hidden',
-          '[&:not(:focus-within):not(.has-content)_input::-webkit-datetime-edit-fields-wrapper]:opacity-0',
+          !value &&
+            '[&:not(:focus-within)_input::-webkit-datetime-edit-fields-wrapper]:opacity-0',
           className,
         )}
       >
