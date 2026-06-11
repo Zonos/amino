@@ -43,6 +43,8 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           'relative w-full',
           '[&_input[type=datetime-local]::-webkit-calendar-picker-indicator]:hidden',
           '[&_input[type=date]::-webkit-calendar-picker-indicator]:hidden',
+          !value &&
+            '[&:not(:focus-within)_input::-webkit-datetime-edit-fields-wrapper]:opacity-0',
           className,
         )}
       >
