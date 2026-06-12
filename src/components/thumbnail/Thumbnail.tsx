@@ -79,24 +79,23 @@ export const Thumbnail = ({
 }: ThumbnailProps) => (
   <div
     className={cn(
-      `box-content inline-flex items-center justify-center [&_svg]:h-[60%]
-      [&_svg]:w-[60%]`,
+      `box-content inline-flex items-center justify-center
+      bg-[var(--amino-thumbnail-background-color)] [&_svg]:h-[60%]
+      [&_svg]:w-[60%]
+      [&_svg_path[data-is-secondary-color]]:fill-[var(--amino-thumbnail-svg-secondary-color)]`,
       intent === 'bordered' && 'border-gray-0 dark:border-gray-1000',
       intent === 'outline' &&
         'border border-gray-200 bg-transparent dark:border-gray-800',
-      intent === 'full' && 'bg-[var(--amino-thumbnail-background-color)]',
       className,
     )}
     style={{
       ...style,
       '--amino-thumbnail-background-color': theme[`${color}100`],
-      '--amino-thumbnail-svg-main-color':
-        theme[mainColorOverride || `${color}800`],
       '--amino-thumbnail-svg-secondary-color':
         theme[secondaryColorOverride || `${color}400`],
       borderRadius: thumbnailShapes[shape],
       borderWidth: intent === 'bordered' ? `calc(${size}px / 16)` : undefined,
-      color: `var(--amino-thumbnail-svg-main-color)`,
+      color: theme[mainColorOverride || `${color}800`],
       height: `${size}px`,
       width: `${size}px`,
     }}
