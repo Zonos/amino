@@ -85,8 +85,7 @@ export const MenuItem = ({
   <li
     className={cn(
       disabled &&
-        `[&_.menu-button]:opacity-amino-disabled
-        [&_.menu-button]:cursor-not-allowed`,
+        '[&_.menu-button]:opacity-disabled [&_.menu-button]:cursor-not-allowed',
       className,
     )}
     style={style}

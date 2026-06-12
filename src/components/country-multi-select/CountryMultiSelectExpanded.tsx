@@ -463,7 +463,7 @@ export const CountryMultiSelectExpanded = <
       className={cn(
         'gap-amino-12 flex flex-col',
         disabled &&
-          'opacity-amino-disabled cursor-not-allowed [&>*]:pointer-events-none',
+          'opacity-disabled cursor-not-allowed [&>*]:pointer-events-none',
         className,
       )}
       style={styleProps}
