@@ -25,5 +25,4 @@ jobs:
       - run: npm install -g npm@latest
       - run: pnpm install
       - run: pnpm build:ci
-      # Publish with "alpha" dist-tag for non-main branches, "latest" for main
-      - run: cd dist && npm publish --access public --tag ${{ github.ref_name == 'main' && 'latest' || 'alpha' }}
+      - run: cd dist && npm publish --access public
