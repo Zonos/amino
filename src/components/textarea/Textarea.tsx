@@ -166,20 +166,16 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <Flex
-        className="w-[var(--amino-textarea-width)]"
         flexDirection="column"
         gap={4}
         justifyContent="space-between"
-        style={{ ...style, '--amino-textarea-width': width || '100%' }}
+        style={{ width: width || '100%', ...style }}
       >
         <div
           className={cn(
             `amino-input-wrapper relative w-full overflow-hidden rounded-[12px]
             border p-0`,
-            error
-              ? 'border-transparent shadow-[var(--amino-glow-error)]'
-              : 'border-amino',
-            !error && isFocused && 'shadow-[var(--amino-focus-shadow)]',
+            error ? 'shadow-glow-error border-transparent' : 'border-amino',
             disabled && [
               '*:cursor-not-allowed',
               '[&_.fields]:opacity-disabled',
@@ -187,9 +183,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             ],
             className,
           )}
-          style={{
-            '--amino-focus-shadow': theme.glowBlue,
-          }}
         >
           <label
             className="relative flex w-full flex-col"
@@ -220,9 +213,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 textareaRef.current = node;
               }}
               className={cn(
-                `text-amino-base bg-amino-input box-border min-h-[100px] w-full
-                flex-grow resize-none border-0 px-4 py-3 font-medium
+                `text-amino-base bg-amino-input box-border w-full flex-grow
+                resize-none border-0 px-4 py-2 leading-normal font-medium
                 outline-none`,
+                // Min-heights replicate the pre-Tailwind cascade: the global
+                // reset's `textarea:not([rows]) { min-height: 10em }` beat the
+                // module's 50px, except with actions where 5em won.
+                rows
+                  ? 'min-h-[50px]'
+                  : actions
+                    ? 'min-h-[5em]'
+                    : 'min-h-[10em]',
                 `placeholder:font-normal placeholder:text-gray-400
                 placeholder:opacity-60 placeholder:transition-all
                 placeholder:duration-300 placeholder:ease-in-out`,
@@ -233,7 +234,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   hasValue && 'placeholder:opacity-60',
                   'focus:placeholder:opacity-60',
                 ],
-                !!actions && !rows && 'min-h-[5em]',
               )}
               {...props}
               disabled={disabled}
@@ -252,12 +252,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {label && (
               <span
                 className={cn(
-                  `text-amino-base pointer-events-none absolute top-6 left-4
+                  `text-amino-base pointer-events-none absolute
+                  top-[calc(var(--amino-font-size-base)+6px)] left-4
                   origin-top-left leading-none transition-all duration-300
                   ease-in-out`,
                   (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
                 )}
-                style={{ color: 'var(--amino-gray-800)' }}
+                style={{ color: theme.gray800 }}
               >
                 {label}
               </span>

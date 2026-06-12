@@ -1,4 +1,3 @@
-import type React from 'react';
 import {
   type ComponentPropsWithoutRef,
   type HTMLAttributes,
@@ -27,6 +26,13 @@ import type { Variant } from 'src/types/Variant';
 import { cn } from 'src/utils/cn';
 import { getAminoColor } from 'src/utils/getAminoColor';
 import { getTestId } from 'src/utils/getTestId';
+
+const sizeVar: Record<Size, string> = {
+  lg: theme.sizeLg,
+  md: theme.sizeMd,
+  sm: theme.sizeSm,
+  xl: theme.sizeXl,
+};
 
 type ButtonBase = BaseProps & {
   background?: Color | 'inherit';
@@ -85,7 +91,7 @@ export type ButtonProps<T extends GroupTag = typeof DEFAULT_TAG> =
   } & Omit<ComponentPropsWithoutRef<T>, keyof ButtonBase | 'onClick'>;
 
 const buttonVariants = cva(
-  'amino-button relative outline-none box-border flex flex-row items-center justify-center transition-all duration-200 select-none font-sans tracking-normal cursor-pointer disabled:cursor-not-allowed disabled:opacity-disabled whitespace-nowrap text-amino-base w-fit [&_svg_path:not([data-is-secondary-color])]:fill-current',
+  'amino-button relative outline-none box-border flex flex-row items-center justify-center transition-all duration-200 select-none font-sans tracking-normal cursor-pointer disabled:cursor-not-allowed disabled:opacity-disabled whitespace-nowrap text-amino-base [&_svg_path:not([data-is-secondary-color])]:fill-current',
   {
     compoundVariants: [
       // Primary outline
@@ -624,13 +630,9 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
       data-testid={testId || defaultTestId}
       data-theme={themeOverride}
       style={{
-        '--amino-button-background-color': backgroundColorValue,
         '--amino-button-color': getColor(),
-        '--amino-button-font-weight': getFontWeight(),
         '--amino-button-hover-background-color': getHoverBackground(),
-        '--amino-button-padding': isIconOnly ? '0' : getPadding(),
-        '--amino-button-radius': getRadius(),
-        '--amino-button-size': `var(--amino-size-${size})`,
+        '--amino-button-size': sizeVar[size],
         '--amino-button-text-button-color':
           disabled || loading
             ? props.href
@@ -647,27 +649,28 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         // 'transparent' and '' are handled by CVA classes, and setting them
         // inline would block hover/active state changes from CSS.
         ...(hasInlineBackground && {
-          backgroundColor: 'var(--amino-button-background-color)',
+          backgroundColor: backgroundColorValue,
         }),
-        borderRadius: 'var(--amino-button-radius)',
+        borderRadius: getRadius(),
         // Don't set inline color for text/inlineLink variants — their TW classes
         // handle base/hover/disabled colors and inline styles would override them.
         // Also skip for standard+outline — the CVA compound variant handles it,
         // and inline color would break themeOverride on a light page.
         // Solid colored variants get text-white from CVA + dark:text-gray-1000
         // for night theme support — no inline color needed.
+        // An explicit color prop always wins (matches the old SCSS, where the
+        // base rule consumed the var for every variant).
         ...(variant !== 'text' &&
           variant !== 'inlineLink' &&
-          !(outline && variant === 'standard') &&
-          !isSolidColoredVariant && {
+          (color ||
+            (!(outline && variant === 'standard') && !isSolidColoredVariant)) && {
             color: 'var(--amino-button-color)',
           }),
-        fontWeight:
-          'var(--amino-button-font-weight)' as React.CSSProperties['fontWeight'],
+        fontWeight: getFontWeight(),
         // inlineLink uses leading-[inherit] and p-0 from CVA; inline would override
         ...(variant !== 'inlineLink' && {
           lineHeight: 'var(--amino-button-size)',
-          padding: 'var(--amino-button-padding)',
+          padding: isIconOnly ? '0' : getPadding(),
         }),
         ...(fitContentWidth && { width: 'fit-content' }),
         ...style,

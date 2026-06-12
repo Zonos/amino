@@ -309,7 +309,7 @@ export const Input = ({
   return (
     <div
       className={cn(
-        'amino-input-wrapper relative',
+        'amino-input-wrapper relative w-(--amino-input-width)',
         disabled && ['disabled', 'opacity-disabled'],
         className,
       )}

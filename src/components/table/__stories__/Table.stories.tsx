@@ -208,7 +208,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div className="p-2 pl-11">
+          <div className="border-amino rounded-amino-6 border p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -253,7 +253,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div className="p-2 pl-11">
+          <div className="border-amino rounded-amino-6 border p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -298,7 +298,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div className="p-2 pl-11">
+          <div className="border-amino rounded-amino-6 border p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>
@@ -352,7 +352,7 @@ const Template: StoryFn<
             </>
           }
         >
-          <div className="p-2 pl-11">
+          <div className="border-amino rounded-amino-6 border p-2 pl-11">
             <Table>
               <ItemizedColgroup />
               <TableBody>

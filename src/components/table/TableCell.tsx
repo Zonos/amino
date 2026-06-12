@@ -26,7 +26,8 @@ export const TableCell = ({
   const tableProps = {
     align,
     className: cn(
-      'text-0 tabular-nums',
+      // font-size 0 resets whitespace for the inline-block wrapper
+      'text-[0px] tabular-nums',
       '[&>*]:text-amino-base',
       '[.Amino-table-size-medium_&]:h-14',
       '[.Amino-table-size-small_&]:h-12',

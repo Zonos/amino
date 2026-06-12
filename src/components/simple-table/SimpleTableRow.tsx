@@ -100,9 +100,12 @@ export const SimpleTableRow = <T extends object>({
         '--amino-cell-min-width': `${header.minWidth || 0}px`,
       };
 
+      // The important modifier is required to beat the row-level
+      // [&>td>:first-child] selectors, matching the old SCSS where the
+      // compound .allowTextWrap/.noPadding selectors out-specified the base.
       const cellClassNames = cn(
-        header.noPadding && 'p-0',
-        header.textWrapMethod === 'normal' && 'whitespace-normal',
+        header.noPadding && 'p-0!',
+        header.textWrapMethod === 'normal' && 'whitespace-normal!',
       );
 
       const cellStyle = {
