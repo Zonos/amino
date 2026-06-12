@@ -663,13 +663,14 @@ export function Button<T extends GroupTag = typeof DEFAULT_TAG>({
         ...(variant !== 'text' &&
           variant !== 'inlineLink' &&
           (color ||
-            (!(outline && variant === 'standard') && !isSolidColoredVariant)) && {
+            (!(outline && variant === 'standard') &&
+              !isSolidColoredVariant)) && {
             color: 'var(--amino-button-color)',
           }),
         fontWeight: getFontWeight(),
         // inlineLink uses leading-[inherit] and p-0 from CVA; inline would override
         ...(variant !== 'inlineLink' && {
-          lineHeight: 'var(--amino-button-size)',
+          lineHeight: sizeVar[size],
           padding: isIconOnly ? '0' : getPadding(),
         }),
         ...(fitContentWidth && { width: 'fit-content' }),
