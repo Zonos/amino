@@ -131,7 +131,7 @@ export const Layout = ({
     <div
       className="grid h-(--amino-layout-height)"
       style={{
-        gridTemplateColumns: `var(--amino-sidebar-width) 1fr`,
+        gridTemplateColumns: `${theme.sidebarWidth} 1fr`,
       }}
     >
       <nav

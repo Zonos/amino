@@ -132,6 +132,26 @@ const [
 ] = textOptions;
 
 type Size = (typeof textOptions)[number]['size'];
+
+const fontSizeVar: Record<Size, string> = {
+  '2xl': theme.fontSize2xl,
+  '3xl': theme.fontSize3xl,
+  base: theme.fontSizeBase,
+  l: theme.fontSizeL,
+  s: theme.fontSizeS,
+  xl: theme.fontSizeXl,
+  xs: theme.fontSizeXs,
+};
+
+const lineHeightVar: Record<Size, string> = {
+  '2xl': theme.lineHeight2xl,
+  '3xl': theme.lineHeight3xl,
+  base: theme.lineHeightBase,
+  l: theme.lineHeightL,
+  s: theme.lineHeightS,
+  xl: theme.lineHeightXl,
+  xs: theme.lineHeightXs,
+};
 export type FontType = (typeof textOptions)[number]['type'];
 export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
 type Tag = (typeof textOptions)[number]['tag'];
@@ -230,9 +250,9 @@ export const Text = ({
       style: {
         ...style,
         color: color ? theme[color] : 'inherit',
-        fontSize: `var(--amino-font-size-${fontSize || size})`,
+        fontSize: fontSizeVar[fontSize || size],
         fontWeight: _fontWeight || undefined,
-        lineHeight: `var(--amino-line-height-${lineHeight || size})`,
+        lineHeight: lineHeightVar[lineHeight || size],
         textTransform: (_isUppercase ? 'uppercase' : 'inherit') as
           | 'inherit'
           | 'uppercase',

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
+import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
 
@@ -297,8 +298,7 @@ export const LanguagePicker = ({
             <div
               className="h-px"
               style={{
-                background:
-                  'linear-gradient(to right, transparent, var(--amino-gray-200), transparent)',
+                background: `linear-gradient(to right, transparent, ${theme.gray200}, transparent)`,
               }}
             />
 
