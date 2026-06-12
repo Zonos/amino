@@ -82,7 +82,7 @@
     "clsx": "^2.1.1",
     "d3-geo": "^2.0.2",
     "fuse.js": "^6.6.2",
-    "next": "^15.5.12",
+    "next": "^15.5.18",
     "react-data-grid": "7.0.0-beta.34",
     "react-dropzone": "^12.1.0",
     "react-intersection-observer": "^9.16.0",
@@ -195,8 +195,8 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "typescript-transform-paths": "^3.5.6",
-    "vite": "^6.4.1",
-    "vitest": "^2.1.9"
+    "vite": "^6.4.2",
+    "vitest": "^3.2.6"
   },
   "peerDependencies": {
     "@emotion/react": "^11.x",
@@ -215,7 +215,22 @@
   "pnpm": {
     "overrides": {
       "form-data@^3": "3.0.4",
-      "form-data@^4": "4.0.5"
+      "form-data@^4": "4.0.5",
+      "axios": "^1.16.0",
+      "shell-quote": "^1.8.4",
+      "@babel/plugin-transform-modules-systemjs": "^7.29.4",
+      "d3-color": "^3.1.0",
+      "fast-uri": "^3.1.2",
+      "flatted": "^3.4.2",
+      "immutable": "^5.1.5",
+      "lodash": "^4.18.0",
+      "minimatch@>=9.0.0 <9.0.7": "^9.0.7",
+      "minimatch@>=10.0.0 <10.2.3": "^10.2.3",
+      "picomatch@<2.3.2": "^2.3.2",
+      "picomatch@>=4.0.0 <4.0.4": "^4.0.4",
+      "serialize-javascript": "^7.0.5",
+      "svgo@>=2.0.0 <3.0.0": "^2.8.1",
+      "svgo@>=3.0.0 <3.3.3": "^3.3.3"
     }
   }
 }
