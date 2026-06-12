@@ -28,6 +28,7 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       suffix,
       tabIndex,
       value,
+      valuePrefix,
       ...props
     },
     ref,
@@ -43,7 +44,10 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           'relative w-full',
           '[&_input[type=datetime-local]::-webkit-calendar-picker-indicator]:hidden',
           '[&_input[type=date]::-webkit-calendar-picker-indicator]:hidden',
+          // Mirrors the old :not(.has-content) gate — a valuePrefix floats
+          // the label just like a value, so the segments must stay visible.
           !value &&
+            !valuePrefix &&
             '[&:not(:focus-within)_input::-webkit-datetime-edit-fields-wrapper]:opacity-0',
           className,
         )}
@@ -86,6 +90,7 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           tabIndex={tabIndex}
           type="date"
           value={value}
+          valuePrefix={valuePrefix}
           {...props}
         />
       </div>
