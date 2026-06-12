@@ -138,11 +138,6 @@ export const BaseDialog = ({
                 // reset the mouse down target
                 mouseDownTarget.current = null;
               }}
-              style={{
-                '--amino-base-dialog-width': fullWindowWidth
-                  ? '100%'
-                  : `${width}px`,
-              }}
               tabIndex={-1}
               transition={{ duration: 0.3 }}
             >
@@ -160,7 +155,7 @@ export const BaseDialog = ({
                 }}
                 style={{
                   ...style,
-                  width: 'var(--amino-base-dialog-width)',
+                  width: fullWindowWidth ? '100%' : `${width}px`,
                 }}
               >
                 {children}

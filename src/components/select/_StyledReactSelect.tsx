@@ -32,6 +32,13 @@ import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
 import { getTestId } from 'src/utils/getTestId';
 
+const sizeHeight: Record<Size, string> = {
+  lg: theme.sizeLg,
+  md: theme.sizeMd,
+  sm: theme.sizeSm,
+  xl: theme.sizeXl,
+};
+
 const getRadius = ($size?: Size) => {
   switch ($size) {
     case 'sm':
@@ -288,8 +295,8 @@ const getMergedStyles = <
       color: theme.gray800,
       cursor: 'pointer',
       flexWrap: 'inherit',
-      height: `var(--amino-size-${size})`,
-      minHeight: `var(--amino-size-${size})`,
+      height: size ? sizeHeight[size] : undefined,
+      minHeight: size ? sizeHeight[size] : undefined,
       ...stylesProp?.control?.(provided, state),
     };
   },
@@ -376,8 +383,8 @@ const getMergedStyles = <
     '.has-label.is-focused &': {
       opacity: 1,
     },
-    color: 'var(--amino-gray-500)',
-    fontSize: 'var(--amino-font-size-base)',
+    color: theme.gray500,
+    fontSize: theme.fontSizeBase,
     fontWeight: 400,
     opacity: 1,
     ...stylesProp?.placeholder?.(provided, state),

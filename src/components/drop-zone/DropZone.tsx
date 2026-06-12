@@ -297,13 +297,15 @@ export const DropZone = ({
 
   const uploadedMaxFiles = maxFiles !== 0 && uploadedFiles.length >= maxFiles;
 
+  const dropZoneBorderColor = error ? theme.danger : theme.borderColor;
+
   const renderContent = () => {
     if (loading) {
       return (
         <div
           className="flex flex-col items-center rounded-xl border-2
             border-dashed"
-          style={{ borderColor: 'var(--amino-drop-zone-border-color)' }}
+          style={{ borderColor: dropZoneBorderColor }}
         >
           <div
             className="flex h-full w-full flex-col items-center justify-center
@@ -324,7 +326,7 @@ export const DropZone = ({
           <div
             className="flex flex-col items-center rounded-xl border-2
               border-dashed"
-            style={{ borderColor: 'var(--amino-drop-zone-border-color)' }}
+            style={{ borderColor: dropZoneBorderColor }}
           >
             {renderUpload()}
           </div>
@@ -341,13 +343,8 @@ export const DropZone = ({
       className={cn('flex flex-col gap-4', className)}
       style={{
         ...style,
-        '--amino-drop-zone-border-color': error
-          ? theme.danger
-          : theme.borderColor,
-        '--amino-drop-zone-cursor': disabled ? 'not-allowed' : 'auto',
-        '--amino-drop-zone-opacity': disabled ? theme.opacityDisabled : '1',
-        cursor: 'var(--amino-drop-zone-cursor)',
-        opacity: 'var(--amino-drop-zone-opacity)',
+        cursor: disabled ? 'not-allowed' : 'auto',
+        opacity: disabled ? theme.opacityDisabled : '1',
       }}
     >
       {renderContent()}

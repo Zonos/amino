@@ -170,22 +170,15 @@ export const Badge = ({
   size = 'default',
   style,
 }: BadgeProps) => (
-  <div
-    className={cn('inline-block', className)}
-    style={{
-      ...style,
-      '--amino-badge-border-radius': rounded ? '20px' : theme.radius6,
-      '--amino-badge-font-weight': fontWeight,
-    }}
-  >
+  <div className={cn('inline-block', className)} style={style}>
     <div
       className={cn(
         badgeVariants({ bold, color, size }),
         iconRight && 'flex-row-reverse',
       )}
       style={{
-        borderRadius: 'var(--amino-badge-border-radius)',
-        fontWeight: 'var(--amino-badge-font-weight)',
+        borderRadius: rounded ? '20px' : theme.radius6,
+        fontWeight,
       }}
     >
       {icon}

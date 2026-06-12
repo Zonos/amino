@@ -273,10 +273,8 @@ export const PivotTable = <
         '[&_.rdg-cell]:border [&_.rdg-cell]:border-gray-200',
       )}
       style={{
-        '--amino-pivot-table-height': tableHeight || 'calc(100vh - 145px)',
-        '--amino-pivot-table-min-height': tableHeight || '',
-        height: 'var(--amino-pivot-table-height)',
-        minHeight: 'var(--amino-pivot-table-min-height)',
+        height: tableHeight || 'calc(100vh - 145px)',
+        minHeight: tableHeight || undefined,
         ...style,
       }}
     >

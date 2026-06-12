@@ -214,12 +214,10 @@ export const FloatLabelInput = forwardRef<
         className={cn(
           `group bg-amino-input relative flex w-full flex-row items-center
           rounded-[var(--amino-float-label-input-border-radius)]`,
-          !noBorder && [
-            'focus-within:shadow-[var(--amino-focus-shadow)]',
-            error &&
-              `shadow-[var(--amino-glow-error)]
-              focus-within:shadow-[var(--amino-glow-error)]`,
-          ],
+          !noBorder &&
+            (error
+              ? 'shadow-glow-error focus-within:shadow-glow-error'
+              : 'focus-within:shadow-glow-blue'),
           hasValue && 'has-content',
           label && 'has-label',
           className,
@@ -227,8 +225,6 @@ export const FloatLabelInput = forwardRef<
         htmlFor={id}
         style={{
           '--amino-float-label-input-border-radius': getFloatLabelRadius(size),
-          '--amino-float-label-input-height': `calc(var(--amino-size-${size}) - 2px)`,
-          '--amino-focus-shadow': error ? theme.glowError : theme.glowBlue,
         }}
       >
         {prefix && (
@@ -246,7 +242,7 @@ export const FloatLabelInput = forwardRef<
               'order-2 flex items-center pl-2 whitespace-nowrap',
               label && ['items-end', currentSize.valuePrefixPadding],
             )}
-            style={{ color: 'var(--amino-gray-800)' }}
+            style={{ color: theme.gray800 }}
           >
             {valuePrefix}
           </div>
@@ -307,7 +303,7 @@ export const FloatLabelInput = forwardRef<
               currentSize.labelTopFocus,
               prefix && label && 'left-0',
             )}
-            style={{ color: 'var(--amino-gray-800)' }}
+            style={{ color: theme.gray800 }}
           >
             {label}
           </span>

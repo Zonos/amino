@@ -222,15 +222,10 @@ export const FileUpload = ({
       )}
       style={{
         ...style,
-        '--amino-file-upload-border-color': error
-          ? theme.danger
-          : theme.borderColor,
-        '--amino-file-upload-cursor': disabled ? 'not-allowed' : 'auto',
-        '--amino-file-upload-opacity': disabled ? theme.opacityDisabled : '1',
-        borderColor: 'var(--amino-file-upload-border-color)',
-        cursor: 'var(--amino-file-upload-cursor)',
-        opacity: 'var(--amino-file-upload-opacity)',
-        padding: 'var(--amino-space-8) var(--amino-space-12)',
+        borderColor: error ? theme.danger : theme.borderColor,
+        cursor: disabled ? 'not-allowed' : 'auto',
+        opacity: disabled ? theme.opacityDisabled : '1',
+        padding: `${theme.space8} ${theme.space12}`,
       }}
     >
       {renderContent()}

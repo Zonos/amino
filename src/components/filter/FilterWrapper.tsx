@@ -145,18 +145,7 @@ export const FilterWrapper = ({
       'relative',
       isDisabled && 'pointer-events-none opacity-50',
     )}
-    style={{
-      ...style,
-      '--amino-filter-wrapper-border-bottom-right-radius': hasFilter
-        ? '0px'
-        : '100px',
-      '--amino-filter-wrapper-border-right-color': active
-        ? theme.borderColor
-        : theme.gray200,
-      '--amino-filter-wrapper-border-top-right-radius': hasFilter
-        ? '0px'
-        : '100px',
-    }}
+    style={style}
   >
     <div
       className={cn(
@@ -176,18 +165,9 @@ export const FilterWrapper = ({
             'flex cursor-pointer items-center gap-0 rounded-full px-1 py-1',
             active && 'border-r border-solid',
             'hover:bg-hover',
-            hasFilter &&
-              `rounded-tr-(--amino-filter-wrapper-border-top-right-radius)
-              rounded-br-(--amino-filter-wrapper-border-bottom-right-radius)`,
+            hasFilter && 'rounded-tr-none rounded-br-none',
           )}
-          style={
-            active
-              ? {
-                  borderRightColor:
-                    'var(--amino-filter-wrapper-border-right-color)',
-                }
-              : undefined
-          }
+          style={active ? { borderRightColor: theme.borderColor } : undefined}
         >
           {active ? (
             <MinusCircleDuotoneIcon

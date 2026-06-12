@@ -167,14 +167,8 @@ export const ToastContextProvider = ({ children }: Props) => {
         className="pointer-events-none fixed z-[9999999] flex w-full flex-col
           justify-end"
         style={{
-          '--amino-toast-context-bottom': toastLocation.bottom || '40px',
-          '--amino-toast-context-left': toastLocation.left || 'auto',
-          '--amino-toast-persistent-height':
-            hasPersistentToasts && !expandedToasts
-              ? `${firstToastHeight + 40}px`
-              : 'unset',
-          bottom: 'var(--amino-toast-context-bottom)',
-          left: 'var(--amino-toast-context-left)',
+          bottom: toastLocation.bottom || '40px',
+          left: toastLocation.left || 'auto',
         }}
       >
         {/* Non-persistent toasts */}
@@ -238,7 +232,7 @@ export const ToastContextProvider = ({ children }: Props) => {
           style={{
             minHeight:
               hasPersistentToasts && !expandedToasts
-                ? `var(--amino-toast-persistent-height)`
+                ? `${firstToastHeight + 40}px`
                 : 'unset',
           }}
         >

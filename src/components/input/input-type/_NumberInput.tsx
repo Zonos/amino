@@ -8,8 +8,16 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';
+import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
+
+const sizeVar: Record<Size, string> = {
+  lg: theme.sizeLg,
+  md: theme.sizeMd,
+  sm: theme.sizeSm,
+  xl: theme.sizeXl,
+};
 
 const getIconSize = (size: Size) => {
   switch (size) {
@@ -34,7 +42,7 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       <div
         className={cn('relative w-full', className)}
         style={{
-          '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
+          '--amino-number-input-height': `calc(${sizeVar[size]} - 2px)`,
         }}
       >
         <FloatLabelInput

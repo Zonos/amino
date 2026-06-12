@@ -180,12 +180,11 @@ export const CoverSheet = ({
     >
       <header
         className={cn(
-          `border-amino-subtle px-amino-32 flex items-center justify-between
-          border-b`,
+          `border-amino-subtle py-amino-16 px-amino-32 flex items-center
+          justify-between border-b`,
           'bg-page sticky top-0 z-[99] h-16',
           'print:hidden',
         )}
-        style={{ padding: 'var(--amino-space-16) var(--amino-space-32)' }}
       >
         <div className="gap-amino-16 flex items-center">
           {!hideCloseButton && (
@@ -207,12 +206,7 @@ export const CoverSheet = ({
           )}
         </div>
       </header>
-      <div
-        className="flex-grow overflow-auto"
-        style={{ padding: 'var(--amino-space-56)' }}
-      >
-        {children}
-      </div>
+      <div className="p-amino-56 flex-grow overflow-auto">{children}</div>
     </BaseDialog>
   );
 };

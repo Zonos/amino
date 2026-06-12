@@ -8,6 +8,7 @@ import {
 } from 'src/components/dialog/BaseDialog';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { theme } from 'src/styles/constants/theme';
 import { useStorage } from 'src/utils/hooks/useStorage';
 
 export type AnnouncementDialogProps = BaseDialogProps & {
@@ -57,29 +58,20 @@ export const AnnouncementDialog = forwardRef<
           setAnnouncementSeen('seen');
         }}
         open={open || !announcementSeen}
-        style={{
-          ...style,
-          '--amino-announcement-dialog-image-margin': imageWidth
-            ? '0 auto'
-            : 'unset',
-          '--amino-announcement-dialog-image-width': imageWidth
-            ? `${imageWidth}px`
-            : '100%',
-        }}
+        style={style}
       >
         <div
-          className="mb-amino-16 h-auto"
+          className="h-auto"
           style={{
-            margin: 'var(--amino-announcement-dialog-image-margin)',
-            marginBottom: 'var(--amino-space-16)',
-            width: 'var(--amino-announcement-dialog-image-width)',
+            margin: imageWidth ? '0 auto' : 'unset',
+            marginBottom: theme.space16,
+            width: imageWidth ? `${imageWidth}px` : '100%',
           }}
         >
           {image}
         </div>
         <VStack
-          className="flex-grow overflow-y-auto
-            p-[var(--amino-space-16)_var(--amino-space-24)]"
+          className="py-amino-16 px-amino-24 flex-grow overflow-y-auto"
           spacing={8}
         >
           <Text color="blue600" type="label">

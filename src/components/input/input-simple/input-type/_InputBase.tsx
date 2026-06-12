@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
+import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
@@ -138,9 +139,7 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
         {label && (
           <label
             className={cn('mb-2 block flex-none', error && 'text-red-600')}
-            style={
-              error ? undefined : { color: 'var(--amino-text-color-secondary)' }
-            }
+            style={error ? undefined : { color: theme.textColorSecondary }}
           >
             {label}
           </label>
@@ -158,12 +157,10 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
             className,
           )}
           style={{
-            '--amino-input-error-focus-shadow':
-              'inset 0 0 0 2px var(--amino-red-500)',
-            '--amino-input-error-shadow':
-              'inset 0 0 0 1px var(--amino-red-500)',
-            '--amino-input-focus-shadow': `inset 0 0 0 2px ${error ? 'var(--amino-red-500)' : 'var(--amino-blue-500)'}`,
-            '--amino-input-shadow': 'inset 0 0 0 1px var(--amino-border-color)',
+            '--amino-input-error-focus-shadow': `inset 0 0 0 2px ${theme.red500}`,
+            '--amino-input-error-shadow': `inset 0 0 0 1px ${theme.red500}`,
+            '--amino-input-focus-shadow': `inset 0 0 0 2px ${error ? theme.red500 : theme.blue500}`,
+            '--amino-input-shadow': `inset 0 0 0 1px ${theme.borderColor}`,
           }}
         >
           {prefix && (

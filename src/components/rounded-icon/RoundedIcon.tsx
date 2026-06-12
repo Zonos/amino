@@ -98,18 +98,8 @@ export const RoundedIcon = ({
       className={cn(roundedIconVariants({ intent: intentValue }), className)}
       style={{
         ...style,
-        ...(background || color
-          ? {
-              '--amino-rounded-icon-background': background
-                ? theme[background]
-                : undefined,
-              '--amino-rounded-icon-color': color ? theme[color] : undefined,
-              backgroundColor: background
-                ? 'var(--amino-rounded-icon-background)'
-                : undefined,
-              color: color ? 'var(--amino-rounded-icon-color)' : undefined,
-            }
-          : {}),
+        ...(background && { backgroundColor: theme[background] }),
+        ...(color && { color: theme[color] }),
       }}
     >
       {children}

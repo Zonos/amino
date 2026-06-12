@@ -43,13 +43,10 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className="flex h-full items-center justify-center"
-      style={{ '--amino-dialog-stories-height': `${height}px` }}
-    >
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
-        style={{ height: 'var(--amino-dialog-stories-height)' }}
+        style={{ height: `${height}px` }}
         {...rest}
         actions={actions}
         label={label}
@@ -250,10 +247,7 @@ export const WithInput = ({ height }: { height: number }) => {
   const [value, setValue] = useState('');
 
   return (
-    <div
-      className="flex h-full items-center justify-center"
-      style={{ '--amino-dialog-stories-height': `${height}px` }}
-    >
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
         actions={
@@ -269,7 +263,7 @@ export const WithInput = ({ height }: { height: number }) => {
         label="With an input"
         onClose={() => setOpen(false)}
         open={open}
-        style={{ height: 'var(--amino-dialog-stories-height)' }}
+        style={{ height: `${height}px` }}
         width={460}
       >
         <Input
