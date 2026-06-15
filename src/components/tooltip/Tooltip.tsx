@@ -200,7 +200,7 @@ export const Tooltip = ({
           className={cn(
             `rounded-(--amino-radius-10) bg-(--amino-gray-0)
             p-(--amino-space-12) text-(--amino-text-color)
-            shadow-(--amino-v3-shadow-large)`,
+            shadow-(--amino-v3-shadow-large) dark:bg-(--amino-gray-50)`,
           )}
           data-theme={themeOverride}
           side={side}
