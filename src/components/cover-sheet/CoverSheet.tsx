@@ -163,7 +163,7 @@ export const CoverSheet = ({
       className={cn(
         'box-border max-h-screen overscroll-contain rounded-none outline-none',
         'bg-page fixed top-0 left-0 h-screen w-screen',
-        'text-amino border-amino-subtle border',
+        'text-text-color border-amino-subtle border',
         'print:absolute print:h-auto print:min-h-screen',
         className,
       )}

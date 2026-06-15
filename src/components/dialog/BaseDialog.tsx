@@ -116,7 +116,7 @@ export const BaseDialog = ({
         <AnimatePresence>
           {open && (
             <motion.div
-              className="text-amino fixed top-0 left-0 z-1000 flex h-screen
+              className="text-text-color fixed top-0 left-0 z-1000 flex h-screen
                 w-screen items-center justify-center"
               {...backdropMotionProps}
               key="dialog-backdrop"

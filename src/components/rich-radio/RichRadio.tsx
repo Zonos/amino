@@ -258,7 +258,7 @@ export const RichRadio = <T extends string>({
               <div>
                 <Text
                   className={cn(
-                    'text-amino leading-6',
+                    'text-text-color leading-6',
                     'group-data-[state=checked]:text-blue-600',
                   )}
                   type="label"
