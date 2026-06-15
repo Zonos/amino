@@ -26,7 +26,11 @@ test('renders with default props', () => {
 });
 
 test('renders with variants and sizes', () => {
-  render(<Button variant="primary" size="lg">Large Button</Button>);
+  render(
+    <Button variant="primary" size="lg">
+      Large Button
+    </Button>,
+  );
   const button = screen.getByText('Large Button');
   expect(button).toHaveClass(styles.primaryButton);
   expect(button).toHaveClass(styles.lgButton);
@@ -77,20 +81,20 @@ vi.mock('./Component.module.scss', () => ({
   default: {
     wrapper: 'wrapper-class',
     button: 'button-class',
-  }
+  },
 }));
 
 // Mock theme
 vi.mock('src/styles/constants/theme', () => ({
   theme: {
     primary: 'var(--amino-primary)',
-    space16: '16px'
-  }
+    space16: '16px',
+  },
 }));
 
 // Mock component
 vi.mock('src/icons/CheckmarkIcon', () => ({
-  CheckmarkIcon: () => <div data-testid="checkmark-icon" />
+  CheckmarkIcon: () => <div data-testid="checkmark-icon" />,
 }));
 ```
 
@@ -109,8 +113,12 @@ test('loads data asynchronously', async () => {
 });
 
 // With timers
-beforeEach(() => { vi.useFakeTimers(); });
-afterEach(() => { vi.useRealTimers(); });
+beforeEach(() => {
+  vi.useFakeTimers();
+});
+afterEach(() => {
+  vi.useRealTimers();
+});
 
 test('hides toast after timeout', async () => {
   render(<Toast duration={3000}>Message</Toast>);
@@ -145,7 +153,7 @@ const createButtonProps = (overrides = {}) => ({
   variant: 'primary',
   size: 'md',
   children: 'Button Text',
-  ...overrides
+  ...overrides,
 });
 
 test('renders correctly', () => {

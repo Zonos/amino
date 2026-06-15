@@ -1,6 +1,4 @@
-import clsx from 'clsx';
-
-import styles from './TextAvatar.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type TextAvatarProps = {
   className?: string;
@@ -37,21 +35,24 @@ const colorForString = (stringInput: string, brightness: number) => {
  * ```
  */
 export const TextAvatar = ({ className, label, style }: TextAvatarProps) => {
-  const gradientStyles = {
-    '--amino-text-avatar-gradient-end': colorForString(
-      (label && label.split('').reverse().join('')) || 'default label',
-      40,
-    ),
-    '--amino-text-avatar-gradient-start': colorForString(
-      label || 'default label',
-      45,
-    ),
-  };
+  const gradientStart = colorForString(label || 'default label', 45);
+  const gradientEnd = colorForString(
+    (label && label.split('').reverse().join('')) || 'default label',
+    40,
+  );
 
   return (
     <div
-      className={clsx([styles.gradientSquare, className])}
-      style={{ ...gradientStyles, ...style }}
+      className={cn(
+        `rounded-amino-6 text-gray-0 flex size-8 items-center justify-center
+        font-medium`,
+        'dark:text-gray-1000',
+        className,
+      )}
+      style={{
+        backgroundImage: `linear-gradient(137deg, ${gradientStart}, ${gradientEnd})`,
+        ...style,
+      }}
     >
       {(label && label[0]?.toUpperCase()) || 'D'}
     </div>

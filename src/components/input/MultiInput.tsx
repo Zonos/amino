@@ -7,16 +7,13 @@ import {
   useState,
 } from 'react';
 
-import clsx from 'clsx';
-
 import { Flex } from 'src/components/flex/Flex';
 import { Tag } from 'src/components/tag/Tag';
+import { cn } from 'src/utils/cn';
 import {
   parseStringIntoTags,
   symbolDelimiters,
 } from 'src/utils/multiinput/parseStringIntoTags';
-
-import styles from './MultiInput.module.scss';
 
 const inputKeyPressDelimiters = [...symbolDelimiters, ' ', 'Enter'];
 
@@ -207,7 +204,10 @@ export const MultiInput = ({
   return (
     <Flex
       alignItems="center"
-      className={clsx([className, styles.tagInputWrapper])}
+      className={cn(
+        'border-amino overflow-x-auto rounded-[10px] border p-1.5',
+        className,
+      )}
       flexWrap="wrap"
       gap={4}
       style={style}
@@ -236,7 +236,8 @@ export const MultiInput = ({
       })}
       <input
         ref={inputRef}
-        className={styles.tagInput}
+        className="text-amino-base min-w-[100px] flex-auto flex-grow border-0
+          bg-transparent p-1.5 font-medium outline-none"
         onChange={handleInputChange}
         onFocus={handleFocus}
         onKeyDown={handleKeyDown}

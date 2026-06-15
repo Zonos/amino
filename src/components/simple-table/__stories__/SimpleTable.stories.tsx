@@ -22,8 +22,6 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { ThreeDotIcon } from 'src/icons/ThreeDotIcon';
 import { TrashCanDuotoneIcon } from 'src/icons/TrashCanDuotoneIcon';
 
-import styles from './SimpleTable.stories.module.scss';
-
 const meta: Meta = {
   component: SimpleTable,
   tags: ['tested'],
@@ -215,9 +213,9 @@ export const Basic: StoryObj = {
       throw new Error('Row not found');
     }
     await userEvent.hover(row1);
-    expect(row1).toHaveClass(/withHover.+/);
+    expect(row1).toHaveClass('hover:bg-hover');
     await userEvent.hover(row2);
-    expect(row2).not.toHaveClass(/withHover.+/);
+    expect(row2).not.toHaveClass('hover:bg-hover');
   },
   render: () => (
     <>
@@ -519,7 +517,10 @@ export const Loading: StoryObj = {
           collapsible={{
             collapseContent: items.map(item => ({
               content: (
-                <table className={styles.collapseTable}>
+                <table
+                  className="mt-amino-12 [&_th]:px-amino-16 [&_td]:px-amino-16
+                    w-full [&_td]:!border-0 [&_td]:p-0 [&_th]:p-0"
+                >
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -698,7 +699,10 @@ export const Collapsible: StoryObj = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className={styles.collapseTable}>
+        <table
+          className="mt-amino-12 [&_th]:px-amino-16 [&_td]:px-amino-16 w-full
+            [&_td]:!border-0 [&_td]:p-0 [&_th]:p-0"
+        >
           <thead>
             <tr>
               <th>Name</th>
@@ -988,7 +992,10 @@ export const OnRowClick: StoryObj<typeof SimpleTable> = {
 
     const collapseContent = items.map(item => ({
       content: (
-        <table className={styles.collapseTable}>
+        <table
+          className="mt-amino-12 [&_th]:px-amino-16 [&_td]:px-amino-16 w-full
+            [&_td]:!border-0 [&_td]:p-0 [&_th]:p-0"
+        >
           <thead>
             <tr>
               <th>Name</th>

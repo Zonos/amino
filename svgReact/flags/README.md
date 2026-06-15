@@ -9,7 +9,7 @@ We have two sources for the flags AWS & Figma:
 ## AWS
 
 1. Set the `ZONOS_FLAG_URL=` in .env
-3. Run `pnpm svgs:react:flags` will download svgs from AWS under the hood
+2. Run `pnpm svgs:react:flags` will download svgs from AWS under the hood
 
 ## Figma
 

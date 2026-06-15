@@ -7,7 +7,6 @@ import {
   useState,
 } from 'react';
 
-import clsx from 'clsx';
 import groupBy from 'lodash/groupBy';
 
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
@@ -26,12 +25,10 @@ import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import { RemoveCircleIcon } from 'src/icons/RemoveCircleIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import { getFuzzySearch } from 'src/utils/getFuzzySearch';
-import { style } from 'src/utils/style';
 import { translateAminoText as translate } from 'src/utils/translations/__amino__/translateAminoText';
 import { useCurrentLanguage } from 'src/utils/translations/AminoTranslationStore';
-
-import styles from './CountryMultiSelectExpanded.module.scss';
 
 /**
  * Represents a group of countries within a geographical region.
@@ -282,11 +279,11 @@ export const CountryMultiSelectExpanded = <
   if (!sortedCountries.length) {
     return (
       <div
-        className={clsx(className)}
-        style={style({
+        className={cn(className)}
+        style={{
           height: height ? `${height}px` : undefined,
           maxHeight: `${maxHeight}px`,
-        })}
+        }}
       >
         <Text color="textColorSecondary">
           <Translate text="No countries" />
@@ -303,11 +300,11 @@ export const CountryMultiSelectExpanded = <
     if (!shownCountries.length) {
       return (
         <div
-          className={styles.noCountriesWrapper}
-          style={style({
+          className="p-amino-8"
+          style={{
             height: height ? `${height}px` : undefined,
             maxHeight: `${maxHeight}px`,
-          })}
+          }}
         >
           <Text color="textColorSecondary">
             <Translate text="No countries" />
@@ -318,14 +315,14 @@ export const CountryMultiSelectExpanded = <
 
     return (
       <div
-        className={styles.selectionWrapper}
-        style={style({
+        className="gap-amino-2 flex flex-col overflow-y-auto"
+        style={{
           height: height ? `${height}px` : undefined,
           maxHeight: `${maxHeight}px`,
-        })}
+        }}
       >
         {!searchText && !hideSelectAll && (
-          <div className={styles.checkboxWrapper}>
+          <div className="p-amino-8 flex w-full flex-col">
             <Checkbox
               checked={allSelected}
               label={translate({ languageCode, text: 'Select all' })}
@@ -362,7 +359,10 @@ export const CountryMultiSelectExpanded = <
 
           return (
             <div key={group.label}>
-              <div className={clsx(styles.groupWrapper, styles.hoverWrapper)}>
+              <div
+                className="p-amino-8 gap-amino-8 rounded-amino-6 hover:bg-hover
+                  flex w-full items-center justify-between"
+              >
                 <Checkbox
                   checked={groupSelected}
                   disabled={!numSelectableInGroup}
@@ -389,7 +389,8 @@ export const CountryMultiSelectExpanded = <
 
                 {!alwaysExpand && (
                   <button
-                    className={styles.collapseButton}
+                    className="gap-amino-8 flex flex-grow cursor-pointer
+                      items-center justify-end focus:outline-none"
                     onClick={() => {
                       if (expandedGroups.includes(group.label)) {
                         setExpandedGroups(
@@ -405,9 +406,9 @@ export const CountryMultiSelectExpanded = <
                       {numSelectedInGroup}/{numSelectableInGroup}
                     </Text>
                     <ChevronUpIcon
-                      className={clsx(
-                        styles.collapseIcon,
-                        groupCollapsed && styles.collapsed,
+                      className={cn(
+                        'transition-amino',
+                        groupCollapsed && 'rotate-180',
                       )}
                       size={24}
                     />
@@ -416,7 +417,10 @@ export const CountryMultiSelectExpanded = <
               </div>
 
               <Collapse collapsed={groupCollapsed}>
-                <div className={styles.countriesWrapper}>
+                <div
+                  className="pl-amino-24 gap-amino-8 grid
+                    [grid-template-columns:repeat(auto-fit,minmax(min(50%,max(300px,33.333%)),1fr))]"
+                >
                   {group.countries.map(country => {
                     const isChecked = selectedCountries.some(
                       x => x.code === country.code,
@@ -456,11 +460,16 @@ export const CountryMultiSelectExpanded = <
 
   return (
     <div
-      className={clsx(styles.wrapper, className, disabled && styles.disabled)}
+      className={cn(
+        'gap-amino-12 flex flex-col',
+        disabled &&
+          'opacity-disabled cursor-not-allowed [&>*]:pointer-events-none',
+        className,
+      )}
       style={styleProps}
     >
       {!noHeader && (
-        <div className={styles.header}>
+        <div className="flex justify-between">
           <Text type="bold-label">
             <Translate text="Countries and Regions" />
           </Text>
@@ -478,13 +487,25 @@ export const CountryMultiSelectExpanded = <
 
       <HelpText error={error} helpText={helpText} withoutMargin />
 
-      <div className={clsx(styles.componentWrapper, error && 'error')}>
-        <div className={styles.componentHeaderWrapper}>
+      <div
+        className={cn(
+          `border-amino rounded-amino-12 p-amino-8 gap-amino-4 flex flex-col
+          border`,
+          error && 'border-danger',
+        )}
+      >
+        <div className="gap-amino-8 flex items-center justify-between">
           {!withoutSearch && (
-            <label className={styles.searchInput} htmlFor={id}>
+            <label
+              className="p-amino-8 py-amino-4 gap-amino-8 flex flex-grow
+                items-center"
+              htmlFor={id}
+            >
               <SearchIcon size={24} />
               <input
                 autoComplete="off"
+                className="px-amino-4 bg-amino-input-background flex-grow
+                  focus:outline-none"
                 id={id}
                 onChange={e => setSearchText(e.target.value)}
                 placeholder={translate({
@@ -496,7 +517,7 @@ export const CountryMultiSelectExpanded = <
               />
               {searchText && (
                 <Button
-                  className={styles.searchClearButton}
+                  className="w-amino-24 h-amino-24"
                   icon={<RemoveCircleIcon size={24} />}
                   onClick={() => setSearchText('')}
                   size="sm"
@@ -506,7 +527,7 @@ export const CountryMultiSelectExpanded = <
             </label>
           )}
 
-          {actions && <div className={styles.headerActions}>{actions}</div>}
+          {actions && <div className="py-amino-4">{actions}</div>}
         </div>
 
         {(!!actions || !withoutSearch) && <Divider noMargin />}

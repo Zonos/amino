@@ -1,12 +1,9 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
-
-import styles from './Text.module.scss';
+import { cn } from 'src/utils/cn';
 
 export const textOthers = [
   'code',
@@ -135,6 +132,26 @@ const [
 ] = textOptions;
 
 type Size = (typeof textOptions)[number]['size'];
+
+const fontSizeVar: Record<Size, string> = {
+  '2xl': theme.fontSize2xl,
+  '3xl': theme.fontSize3xl,
+  base: theme.fontSizeBase,
+  l: theme.fontSizeL,
+  s: theme.fontSizeS,
+  xl: theme.fontSizeXl,
+  xs: theme.fontSizeXs,
+};
+
+const lineHeightVar: Record<Size, string> = {
+  '2xl': theme.lineHeight2xl,
+  '3xl': theme.lineHeight3xl,
+  base: theme.lineHeightBase,
+  l: theme.lineHeightL,
+  s: theme.lineHeightS,
+  xl: theme.lineHeightXl,
+  xs: theme.lineHeightXs,
+};
 export type FontType = (typeof textOptions)[number]['type'];
 export type FontWeight = (typeof textOptions)[number]['weight'] | 800;
 type Tag = (typeof textOptions)[number]['tag'];
@@ -229,16 +246,16 @@ export const Text = ({
     size: Size;
   }) => {
     const typographyProps = {
-      className: clsx(className, styles.typography),
+      className: cn('m-0 [&_svg]:inline-block [&_svg]:align-middle', className),
       style: {
         ...style,
-        '--amino-text-color': color ? theme[color] : 'inherit',
-        '--amino-text-font-size': `var(--amino-font-size-${fontSize || size})`,
-        '--amino-text-font-weight': _fontWeight || '',
-        '--amino-text-line-height': `var(--amino-line-height-${
-          lineHeight || size
-        })`,
-        '--amino-text-transform': _isUppercase ? 'uppercase' : 'inherit',
+        color: color ? theme[color] : 'inherit',
+        fontSize: fontSizeVar[fontSize || size],
+        fontWeight: _fontWeight || undefined,
+        lineHeight: lineHeightVar[lineHeight || size],
+        textTransform: (_isUppercase ? 'uppercase' : 'inherit') as
+          | 'inherit'
+          | 'uppercase',
       },
       title,
     };
@@ -355,13 +372,22 @@ export const Text = ({
       });
     case 'subtitle':
       return (
-        <span className={clsx(className, styles.subTitle)} title={title}>
+        <span
+          className={cn('text-amino-s leading-4 text-gray-800', className)}
+          title={title}
+        >
           {children}
         </span>
       );
     case 'input-label':
       return (
-        <span className={clsx(className, styles.inputLabel)} title={title}>
+        <span
+          className={cn(
+            'text-gray-1000 mb-2 block font-sans text-[14px] leading-4 font-normal',
+            className,
+          )}
+          title={title}
+        >
           {children}
         </span>
       );

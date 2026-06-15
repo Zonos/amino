@@ -1,14 +1,11 @@
 import { type ReactNode, useId } from 'react';
 
-import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Radio.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type RadioProps = BaseProps & {
   /**
@@ -97,11 +94,13 @@ export const Radio = ({
 
   return (
     <label
-      className={clsx(
-        className,
-        styles.radioContainer,
-        globalStyles.focusableLabel,
+      className={cn(
+        'flex flex-row items-center select-none',
+        `focus-within:outline-none
+        [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]`,
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         disabled && 'disabled',
+        className,
       )}
       htmlFor={id}
       style={{
@@ -128,12 +127,23 @@ export const Radio = ({
         type="radio"
         value={value}
       />
-      <div className={styles.styledRadio}>
+      <div
+        className={cn(
+          `mr-2 flex h-4 w-4 cursor-pointer items-center justify-center
+          rounded-full transition-all select-none`,
+          `bg-[var(--amino-radio-background)]
+          shadow-[var(--amino-radio-box-shadow)]
+          [border:var(--amino-radio-border)]`,
+          disabled &&
+            'cursor-not-allowed bg-[var(--amino-radio-container-background)]',
+        )}
+      >
         <AnimatePresence>
           {checked && (
             <motion.svg
               key="radio"
               animate={{ opacity: 1, scale: 1 }}
+              className="text-gray-0 h-2 w-2"
               exit={{ opacity: 0, scale: 1.5 }}
               fill="currentColor"
               initial={{ opacity: 0, scale: 1.5 }}
@@ -146,7 +156,7 @@ export const Radio = ({
         </AnimatePresence>
       </div>
       {label && (
-        <Text className={styles.styledText} type="input-label">
+        <Text className="mb-0" type="input-label">
           {label}
         </Text>
       )}

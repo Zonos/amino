@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './RestState.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type RestStateProps = BaseProps & {
   /**
@@ -85,12 +82,21 @@ export const RestState = ({
   style,
   subtitle,
 }: RestStateProps) => (
-  <div className={clsx(className, styles.styledRestState)} style={style}>
-    {icon ? <img alt={label} className={styles.icon} src={icon} /> : null}
-    <div className={styles.textWrapper}>
+  <div
+    className={cn(
+      `flex flex-col items-center justify-center [&>*]:max-w-[500px]
+      [&>*]:text-center`,
+      className,
+    )}
+    style={style}
+  >
+    {icon ? (
+      <img alt={label} className="mb-amino-16 h-auto w-[100px]" src={icon} />
+    ) : null}
+    <div className="gap-amino-8 flex flex-col items-center">
       <Text type="title">{label}</Text>
       {subtitle && <Text type="subtitle">{subtitle}</Text>}
-      {action ? <div className={styles.action}>{action}</div> : null}
+      {action ? <div className="mt-amino-24 mb-amino-8">{action}</div> : null}
     </div>
   </div>
 );

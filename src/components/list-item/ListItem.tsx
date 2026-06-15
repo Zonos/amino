@@ -1,11 +1,8 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Text } from 'src/components/text/Text';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './ListItem.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type Props = BaseProps & {
   /**
@@ -117,7 +114,7 @@ const ListIcon = ({
   label: string;
 }) => {
   if (icon) {
-    return <img alt={label} className={styles.icon} src={icon} />;
+    return <img alt={label} className="mr-4 h-8 w-8 rounded-md" src={icon} />;
   }
   if (iconComponent) {
     return <>{iconComponent}</>;
@@ -137,23 +134,33 @@ export const ListItem = ({
   subtitle,
 }: Props) => (
   <button
-    className={clsx(
+    className={cn(
+      `flex min-h-(--amino-size-xl) flex-row items-center gap-4 rounded-lg p-2
+      px-4 leading-4`,
+      !disabled && selected && 'bg-blue-50 **:text-blue-800',
+      'focus:outline-none active:outline-none',
+      !selected &&
+        'active:bg-hover focus:bg-hover hover:bg-hover hover:outline-none',
+      disabled && 'cursor-not-allowed text-gray-600',
+      !disabled && !selected && onClick && 'cursor-pointer',
       className,
-      styles.aminoListItem,
-      disabled && styles.disabled,
-      selected && styles.selected,
-      !!onClick && styles.withClick,
     )}
     onClick={e => !disabled && onClick?.(e)}
     style={style}
     type="button"
   >
-    <div className={clsx('__icon-wrapper', decorator && styles.hasIcon)}>
+    <div
+      className={cn(
+        'list-item-icon-wrap',
+        !decorator && 'hidden',
+        decorator && 'inline-block',
+      )}
+    >
       {decorator}
       <ListIcon label={typeof label === 'string' ? label : ''} />
     </div>
 
-    <div className={styles.textContainer}>
+    <div className="flex grow flex-col items-start gap-0.5">
       <Text type="label">{label}</Text>
       {subtitle && <Text type="caption">{subtitle}</Text>}
     </div>

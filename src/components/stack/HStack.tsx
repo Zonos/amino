@@ -1,8 +1,5 @@
-import clsx from 'clsx';
-
 import { Stack, type StackProps } from 'src/components/stack/Stack';
-
-import styles from './HStack.module.scss';
+import { cn } from 'src/utils/cn';
 
 /**
  * HStack component arranges children horizontally with consistent spacing.
@@ -54,8 +51,8 @@ export const HStack = ({
   ...props
 }: StackProps) => (
   <Stack
-    className={clsx(className, styles.styledHStack)}
-    style={{ ...style, '--amino-h-stack-gap': `${spacing}px` }}
+    className={cn('grid-flow-col', className)}
+    style={{ ...style, columnGap: `${spacing}px` }}
     {...props}
   >
     {children}

@@ -1,6 +1,7 @@
 # Commit Message Guidelines
 
 ## Format
+
 ```
 <type>(<scope>): <short summary>
 <BLANK LINE>
@@ -10,21 +11,25 @@
 ```
 
 ## Header
+
 - Type: build, ci, docs, feat, fix, perf, refactor, test, style, chore
 - Scope: components, styles, icons, utils, hooks, types, build-utils, animations, svgReact, config, test-utils, story, theme, ci, docs, dependencies
 - Summary: Present tense, not capitalized, no period
 
 ## Body
+
 - Explain the motivation for the change
 - Use imperative, present tense
 - Minimum 20 characters (except for docs)
 
 ## Footer
+
 - Breaking changes: Start with "BREAKING CHANGE: "
 - Deprecations: Start with "DEPRECATED: "
 - Reference issues: "Fixes #123" or "Closes #456"
 
 ## Examples
+
 ```
 feat(components): add xl size to button component
 

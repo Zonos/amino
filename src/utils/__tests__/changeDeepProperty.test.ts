@@ -1,4 +1,6 @@
-import type { DistributiveOmit } from '@emotion/react';
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
+  ? Omit<T, K>
+  : never;
 
 import type { DeepRecursiveDepth } from 'src/types/deep/deep';
 import type { DeepReducerWithoutArrayActions } from 'src/types/deep/DeepReducerActions';

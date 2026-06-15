@@ -141,6 +141,23 @@ export const HasDisabledItem: Story = {
   },
 };
 
+/**
+ * Renders the menu statically (no dropdown) so the disabled item styling is
+ * visible in visual regression screenshots.
+ */
+export const StaticDisabledItem: Story = {
+  render: () => (
+    <Menu>
+      <MenuItem disabled icon={<CodeIcon color="gray600" size={24} />}>
+        Disabled item
+      </MenuItem>
+      <MenuItem icon={<CartIcon color="gray600" size={24} />}>
+        Enabled item
+      </MenuItem>
+    </Menu>
+  ),
+};
+
 export const SmallerOptions: Story = {
   args: {
     children: (

@@ -4,15 +4,14 @@ import {
   type TextareaHTMLAttributes,
   useId,
   useRef,
+  useState,
 } from 'react';
-
-import clsx from 'clsx';
 
 import { Flex } from 'src/components/flex/Flex';
 import { HelpText } from 'src/components/help-text/HelpText';
+import { theme } from 'src/styles/constants/theme';
+import { cn } from 'src/utils/cn';
 import { useHeightAdjustTextarea } from 'src/utils/hooks/useHeightAdjustTextarea';
-
-import styles from './Textarea.module.scss';
 
 type TextareaAdjustableHeightType = {
   /**
@@ -154,6 +153,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const id = useId();
     const hasValue = !!value;
+    const [isFocused, setIsFocused] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const actionsRef = useRef<HTMLDivElement | null>(null);
 
@@ -166,24 +166,42 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <Flex
-        className={styles.textareaWrapper}
         flexDirection="column"
         gap={4}
         justifyContent="space-between"
-        style={{ ...style, '--amino-textarea-width': width || '100%' }}
+        style={{ width: width || '100%', ...style }}
       >
         <div
-          className={clsx(
+          className={cn(
+            `amino-input-wrapper relative w-full overflow-hidden rounded-[12px]
+            border p-0`,
+            error ? 'shadow-glow-error border-transparent' : 'border-amino',
+            disabled && [
+              '*:cursor-not-allowed',
+              '[&_.fields]:opacity-disabled',
+              '[&_.styledTextarea]:select-none',
+            ],
             className,
-            styles.aminoInputWrapper,
-            'amino-input-wrapper',
-            disabled && styles.disabled,
           )}
         >
-          <button
-            className={styles.fields}
-            onClick={() => textareaRef?.current?.focus()}
-            type="button"
+          <label
+            className="relative flex w-full flex-col"
+            htmlFor={props.id || id}
+            onClick={e => {
+              if (e.target === textareaRef.current) {
+                // Clicking the textarea itself — prevent label re-focus so cursor stays at click position
+                e.preventDefault();
+              } else {
+                // Clicking the floating label — move cursor to end after focus
+                setTimeout(() => {
+                  const textarea = textareaRef.current;
+                  if (textarea) {
+                    const length = textarea.value.length;
+                    textarea.setSelectionRange(length, length);
+                  }
+                }, 0);
+              }
+            }}
           >
             <textarea
               ref={node => {
@@ -194,32 +212,68 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 }
                 textareaRef.current = node;
               }}
-              className={clsx(
-                styles.styledTextarea,
-                error && styles.hasError,
-                label && styles.hasLabel,
-                hasValue && styles.hasContent,
-                !!actions && styles.hasActions,
+              className={cn(
+                `text-amino-base bg-amino-input box-border w-full flex-grow
+                resize-none border-0 px-4 py-2 leading-normal font-medium
+                outline-none`,
+                // Min-heights replicate the pre-Tailwind cascade: the global
+                // reset's `textarea:not([rows]) { min-height: 10em }` beat the
+                // module's 50px, except with actions where 5em won.
+                rows
+                  ? 'min-h-[50px]'
+                  : actions
+                    ? 'min-h-[5em]'
+                    : 'min-h-[10em]',
+                `placeholder:font-normal placeholder:text-gray-400
+                placeholder:opacity-60 placeholder:transition-all
+                placeholder:duration-300 placeholder:ease-in-out`,
+                'focus:outline-none',
+                label && [
+                  'mt-6 pt-0',
+                  'placeholder:opacity-0',
+                  hasValue && 'placeholder:opacity-60',
+                  'focus:placeholder:opacity-60',
+                ],
               )}
+              {...props}
               disabled={disabled}
               id={id}
+              onBlur={e => {
+                setIsFocused(false);
+                props.onBlur?.(e);
+              }}
+              onFocus={e => {
+                setIsFocused(true);
+                props.onFocus?.(e);
+              }}
               rows={rows}
               value={value}
-              {...props}
             />
             {label && (
-              <label
-                className={styles.styledLabelInput}
-                data-label={label}
-                htmlFor={props.id || id}
+              <span
+                className={cn(
+                  `text-amino-base pointer-events-none absolute
+                  top-[calc(var(--amino-font-size-base)+6px)] left-4
+                  origin-top-left leading-none transition-all duration-300
+                  ease-in-out`,
+                  (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
+                )}
+                style={{ color: theme.gray800 }}
               >
                 {label}
-              </label>
+              </span>
             )}
-          </button>
+            <div
+              className="after:absolute after:inset-0 after:rounded-[12px]
+                after:content-['']"
+            />
+          </label>
 
           {actions && (
-            <div ref={actionsRef} className={styles.actions}>
+            <div
+              ref={actionsRef}
+              className="bg-page flex items-center justify-end px-4 py-4"
+            >
               <Flex alignItems="center" fullHeight justifyContent="flex-end">
                 {actions}
               </Flex>

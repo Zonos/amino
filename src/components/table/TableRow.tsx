@@ -1,10 +1,7 @@
 import type { MouseEventHandler, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './TableRow.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type TableRowProps = BaseProps & {
   active?: boolean;
@@ -30,11 +27,11 @@ export function TableRow({
 }: TableRowProps) {
   return (
     <tr
-      className={clsx(
+      className={cn(
+        withHover && 'hover:bg-gray-50 dark:hover:bg-gray-100',
+        '[&_th_*]:text-amino-s [&_th]:text-gray-800 dark:[&_th]:text-gray-600',
+        active && 'amino-table-row-active in-[tbody]:bg-gray-50',
         className,
-        styles.styledTableRow,
-        active && styles.active,
-        withHover && styles.withHover,
       )}
       data-testid={rowTestId}
       onClick={onClick}

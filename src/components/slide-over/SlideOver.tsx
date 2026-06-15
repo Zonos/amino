@@ -9,8 +9,7 @@ import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-
-import styles from './SlideOver.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type SlideOverProps = BaseDialogProps & {
   actions?: ReactNode;
@@ -134,7 +133,11 @@ export const SlideOver = ({
   ...props
 }: SlideOverProps) => (
   <BaseDialog
-    className={styles.styledBaseDialog}
+    className={cn(
+      `max-h-none overflow-visible rounded-none border-none bg-transparent
+      shadow-none`,
+      'absolute top-0 right-0 h-screen',
+    )}
     fullWindowWidth={fullWindowWidth}
     onClose={onClose}
     popupMotionProps={{
@@ -146,8 +149,14 @@ export const SlideOver = ({
     width={width}
     {...props}
   >
-    <div className={styles.wrapper}>
-      <header className={styles.slideOverHeader}>
+    <div
+      className="bg-page shadow-amino-large m-2 flex flex-col rounded-xl"
+      style={{ height: 'calc(100% - 16px)' }}
+    >
+      <header
+        className="border-amino-subtle flex items-center justify-between gap-4
+          border-b p-4 [&>div]:flex [&>div]:items-center [&>div]:gap-4"
+      >
         <div>
           <Button icon={<RemoveIcon />} onClick={onClose} />
           {subtitle ? (
@@ -161,9 +170,17 @@ export const SlideOver = ({
         </div>
         {actions && <div>{actions}</div>}
       </header>
-      <div className={styles.slideOverContent}>{children}</div>
+      <div
+        className="flex-1 overflow-x-hidden overflow-y-auto overscroll-contain
+          p-6"
+      >
+        {children}
+      </div>
       {bottomActions && (
-        <div className={styles.footer}>
+        <div
+          className="bg-page flex items-center justify-end rounded-b-xl p-6
+            [&>div+div]:ml-2"
+        >
           <HStack spacing={8}>{bottomActions}</HStack>
         </div>
       )}

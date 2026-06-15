@@ -1,13 +1,10 @@
 import type { ReactNode } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import clsx from 'clsx';
-
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { theme } from 'src/styles/constants/theme';
-
-import styles from './CountryMultiSelectExpanded.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type CountryMultiSelectExpandedOption<
   CountryCode extends string = string,
@@ -84,22 +81,21 @@ export const _CountryMultiSelectExpandedOptionComponent = <T extends string>({
       <Checkbox
         key={country.code}
         checked={isChecked}
-        className={clsx(
-          styles.checkboxWrapper,
-          styles.checkboxCountry,
-          !country.disabled && styles.hoverWrapper,
+        className={cn(
+          'p-amino-8 flex w-full flex-col [&>div]:items-center',
+          !country.disabled && 'rounded-amino-6 hover:bg-hover',
         )}
         disabled={country.disabled}
         label={country.label}
         labelComponent={
           <div
-            className={clsx(styles.checkboxLabelWrapper, className)}
+            className={cn('gap-amino-16 flex w-full items-center', className)}
             style={{
               marginLeft: 8,
               opacity: country.disabled ? theme.opacityDisabled : 1,
             }}
           >
-            <div ref={ref}>
+            <div ref={ref} className="gap-amino-6 flex items-center">
               {inView && renderIcon()}
               {country.label}
             </div>

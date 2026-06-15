@@ -1,10 +1,7 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Table.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type TableProps = BaseProps & {
   children: ReactNode;
@@ -132,7 +129,7 @@ export const Table = ({
   style,
 }: TableProps) => (
   <table
-    className={clsx(className, styles.styledTable, `Amino-table-size-${size}`)}
+    className={cn('w-full', `Amino-table-size-${size}`, className)}
     style={style}
   >
     {children}

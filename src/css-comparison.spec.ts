@@ -11,9 +11,8 @@
  *   - {storyId}.categories.json — diffs grouped by category
  *   - summary.json              — aggregate statistics
  *
- * This test is diagnostic/best-effort. Errors loading individual stories are
- * caught and logged, so the test can complete and report partial results.
- * Use the output files to decide which components need attention.
+ * This test is diagnostic — it always passes. Use the output files to
+ * decide which components need attention.
  *
  * Usage:
  *   pnpm test:css-compare
@@ -115,124 +114,108 @@ test('css comparison — capture style diffs between prod and local', async () =
 
   // Two parallel browser contexts — one for prod, one for local.
   const browser = await chromium.launch();
+  const [prodCtx, localCtx] = await Promise.all([
+    browser.newContext(),
+    browser.newContext(),
+  ]);
+  const [prodPage, localPage] = await Promise.all([
+    prodCtx.newPage(),
+    localCtx.newPage(),
+  ]);
+
   const comparisons: StoryComparison[] = [];
+  const evaluateArgs = {
+    defaultValues: CSS_DEFAULT_VALUES,
+    properties: CSS_PROPERTIES,
+    rootSelector: '#storybook-root',
+  };
 
-  try {
-    const [prodCtx, localCtx] = await Promise.all([
-      browser.newContext(),
-      browser.newContext(),
+  for (const storyId of storyIds) {
+    const prodURL = `${PROD_URL}/iframe.html?id=${storyId}&viewMode=story`;
+    const localURL = `${LOCAL_URL}/iframe.html?id=${storyId}&viewMode=story`;
+
+    // Navigate both pages in parallel.
+    await Promise.all([
+      prodPage.goto(prodURL, { waitUntil: 'load' }),
+      localPage.goto(localURL, { waitUntil: 'load' }),
     ]);
-    const [prodPage, localPage] = await Promise.all([
-      prodCtx.newPage(),
-      localCtx.newPage(),
+    await Promise.all([
+      prodPage.waitForSelector('#storybook-root', { timeout: 5_000 }),
+      localPage.waitForSelector('#storybook-root', { timeout: 5_000 }),
+    ]);
+    await Promise.all([
+      prodPage.waitForTimeout(300),
+      localPage.waitForTimeout(300),
     ]);
 
-    const evaluateArgs = {
-      defaultValues: CSS_DEFAULT_VALUES,
-      properties: CSS_PROPERTIES,
-      rootSelector: '#storybook-root',
+    // Capture DOM trees with computed styles.
+    const [prodTree, localTree] = await Promise.all([
+      prodPage.evaluate(
+        captureTreeBrowser,
+        evaluateArgs,
+      ) as Promise<NodeSnapshot | null>,
+      localPage.evaluate(
+        captureTreeBrowser,
+        evaluateArgs,
+      ) as Promise<NodeSnapshot | null>,
+    ]);
+
+    const rawDiffs = diffSnapshots(prodTree, localTree);
+    const diffs = filterNoiseDiffs(rawDiffs, { skipAllClassDiffs: true });
+    const categories = {
+      classes: [] as string[],
+      layout: [] as string[],
+      typography: [] as string[],
+      visual: [] as string[],
     };
 
-    for (const storyId of storyIds) {
-      try {
-        const prodURL = `${PROD_URL}/iframe.html?id=${storyId}&viewMode=story`;
-        const localURL = `${LOCAL_URL}/iframe.html?id=${storyId}&viewMode=story`;
-
-        // Navigate both pages in parallel.
-        await Promise.all([
-          prodPage.goto(prodURL, { waitUntil: 'load' }),
-          localPage.goto(localURL, { waitUntil: 'load' }),
-        ]);
-        await Promise.all([
-          prodPage.waitForSelector('#storybook-root', { timeout: 5_000 }),
-          localPage.waitForSelector('#storybook-root', { timeout: 5_000 }),
-        ]);
-        await Promise.all([
-          prodPage.waitForTimeout(300),
-          localPage.waitForTimeout(300),
-        ]);
-
-        // Capture DOM trees with computed styles.
-        const [prodTree, localTree] = await Promise.all([
-          prodPage.evaluate(
-            captureTreeBrowser,
-            evaluateArgs,
-          ) as Promise<NodeSnapshot | null>,
-          localPage.evaluate(
-            captureTreeBrowser,
-            evaluateArgs,
-          ) as Promise<NodeSnapshot | null>,
-        ]);
-
-        const rawDiffs = diffSnapshots(prodTree, localTree);
-        const diffs = filterNoiseDiffs(rawDiffs, { skipAllClassDiffs: true });
-        const categories = {
-          classes: [] as string[],
-          layout: [] as string[],
-          typography: [] as string[],
-          visual: [] as string[],
-        };
-
-        for (const d of diffs) {
-          if (d.property.startsWith('__')) {
-            categories.classes.push(`${d.path}: ${d.prod} → ${d.local}`);
-          } else {
-            categories[categorizeProperty(d.property)].push(
-              `${d.path} [${d.property}]: ${d.prod} → ${d.local}`,
-            );
-          }
-        }
-
-        const comparison: StoryComparison = {
-          categories,
-          hasDifferences: diffs.length > 0,
-          storyId,
-          styleDiffs: diffs,
-        };
-        comparisons.push(comparison);
-
-        // Write per-story output files.
-        // Sanitize storyId before using it in a path — isSafeStoryId() is
-        // already applied when building storyIds, but defend at point-of-use
-        // in case a crafted filename (e.g. ".." from the filesystem path) could
-        // otherwise escape OUTPUT_DIR via path.join().
-        const safeStoryIdBase =
-          storyId.replace(/[^a-zA-Z0-9_-]/g, '_') || 'unknown-story';
-        const safeStoryId =
-          safeStoryIdBase === '..' ? 'parent-dir' : safeStoryIdBase;
-        const base = path.join(OUTPUT_DIR, safeStoryId);
-        if (diffs.length > 0) {
-          fs.writeFileSync(
-            `${base}.diff.txt`,
-            formatDiffReport(storyId, diffs),
-          );
-          fs.writeFileSync(
-            `${base}.categories.json`,
-            JSON.stringify(categories, null, 2),
-          );
-        }
-        if (prodTree) {
-          fs.writeFileSync(
-            `${base}.prod.json`,
-            JSON.stringify(prodTree, null, 2),
-          );
-        }
-        if (localTree) {
-          fs.writeFileSync(
-            `${base}.local.json`,
-            JSON.stringify(localTree, null, 2),
-          );
-        }
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `[css-compare] Skipping ${storyId}: ${(err as Error).message}`,
+    for (const d of diffs) {
+      if (d.property.startsWith('__')) {
+        categories.classes.push(`${d.path}: ${d.prod} → ${d.local}`);
+      } else {
+        categories[categorizeProperty(d.property)].push(
+          `${d.path} [${d.property}]: ${d.prod} → ${d.local}`,
         );
       }
     }
-  } finally {
-    await browser.close();
+
+    const comparison: StoryComparison = {
+      categories,
+      hasDifferences: diffs.length > 0,
+      storyId,
+      styleDiffs: diffs,
+    };
+    comparisons.push(comparison);
+
+    // Write per-story output files.
+    // Sanitize storyId before using it in a path — isSafeStoryId() is
+    // already applied when building storyIds, but defend at point-of-use
+    // in case a crafted filename (e.g. ".." from the filesystem path) could
+    // otherwise escape OUTPUT_DIR via path.join().
+    const safeStoryIdBase =
+      storyId.replace(/[^a-zA-Z0-9_-]/g, '_') || 'unknown-story';
+    const safeStoryId =
+      safeStoryIdBase === '..' ? 'parent-dir' : safeStoryIdBase;
+    const base = path.join(OUTPUT_DIR, safeStoryId);
+    if (diffs.length > 0) {
+      fs.writeFileSync(`${base}.diff.txt`, formatDiffReport(storyId, diffs));
+      fs.writeFileSync(
+        `${base}.categories.json`,
+        JSON.stringify(categories, null, 2),
+      );
+    }
+    if (prodTree) {
+      fs.writeFileSync(`${base}.prod.json`, JSON.stringify(prodTree, null, 2));
+    }
+    if (localTree) {
+      fs.writeFileSync(
+        `${base}.local.json`,
+        JSON.stringify(localTree, null, 2),
+      );
+    }
   }
+
+  await browser.close();
 
   // -------------------------------------------------------------------------
   // Summary

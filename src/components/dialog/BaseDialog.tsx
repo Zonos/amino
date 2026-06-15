@@ -1,13 +1,11 @@
 import React, { type ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-import clsx from 'clsx';
 import { AnimatePresence, motion, type MotionProps } from 'framer-motion';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Theme } from 'src/types/Theme';
-
-import styles from './BaseDialog.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type BaseDialogProps = BaseProps & {
   children: ReactNode;
@@ -118,7 +116,8 @@ export const BaseDialog = ({
         <AnimatePresence>
           {open && (
             <motion.div
-              className={styles.backdrop}
+              className="text-text-color fixed top-0 left-0 z-1000 flex h-screen
+                w-screen items-center justify-center"
               {...backdropMotionProps}
               key="dialog-backdrop"
               ref={backdropRef}
@@ -139,23 +138,25 @@ export const BaseDialog = ({
                 // reset the mouse down target
                 mouseDownTarget.current = null;
               }}
-              style={{
-                '--amino-base-dialog-width': fullWindowWidth
-                  ? '100%'
-                  : `${width}px`,
-              }}
               tabIndex={-1}
               transition={{ duration: 0.3 }}
             >
               <motion.div
                 {...combinedPopupMotionProps}
                 key="dialog"
-                className={clsx(className, styles.popup, 'elevated')}
+                className={cn(
+                  `elevated bg-page shadow-amino-xxl z-1001 flex max-h-[90vh]
+                  flex-col overflow-hidden rounded-xl outline-none`,
+                  className,
+                )}
                 onClick={e => {
                   // Prevent dialog from closing when clicking in the dialog
                   e.stopPropagation();
                 }}
-                style={style}
+                style={{
+                  ...style,
+                  width: fullWindowWidth ? '100%' : `${width}px`,
+                }}
               >
                 {children}
               </motion.div>

@@ -43,54 +43,6 @@ $ pnpm dev:open
 
 We use [`typed-scss-modules`](https://www.npmjs.com/package/typed-scss-modules) to generate types for our scss modules. It will watch `.scss` files in the background and update them, but any file additions will require you to run `build:scss:types`.
 
-### MCP Documentation Server
-
-The MCP (Model Context Protocol) server provides component documentation to consuming applications and AI assistants via API endpoints. It consists of two main parts:
-
-#### 1. Documentation Extraction
-
-The documentation extractor runs during the build process to extract structured documentation from your component files:
-
-```sh
-# Extract component documentation data
-pnpm extract:mcp-data
-```
-
-This command:
-- Scans component directories to locate documentation files
-- Extracts TypeScript interfaces and JSDoc comments
-- Generates structured documentation as JSON files in `public/mcp-data/`
-
-#### 2. MCP API Server
-
-The MCP API server is implemented as NextJS API routes that serve the generated documentation:
-
-```sh
-# Build the NextJS server for production deployment
-pnpm build:mcp-server
-
-# Run the MCP server locally for development
-pnpm mcp:server
-```
-
-After starting the server, you can verify it's working by accessing:
-```
-http://localhost:3000/api/mcp/v1/health
-```
-
-#### Deploying to Vercel
-
-When deploying the MCP server to Vercel, set the build command to:
-```
-pnpm extract:mcp-data && pnpm build:mcp-server
-```
-
-This ensures that:
-1. Documentation is extracted from component files
-2. The NextJS API server is built for production
-
-For configuration details, see the [MCP architecture specification](./specs/mcp-resources/01-architecture.spec.md).
-
 ### - Available features in Amino:
 
 - [Style generation (generate style constants and css file)](./build-utils/css/README.md)
@@ -111,6 +63,33 @@ For configuration details, see the [MCP architecture specification](./specs/mcp-
    Rewrite this code to use css module instead of styled component. Make sure all the theme variables that are used in styled component, use scss variable with prefix $amino instead (ex: $amino-v3-shadow-base)
    ```
 5. Copilot will give you the scss file content and the new code suggestion, you now just need to filter and adjust it a bit
+
+### - Styling (design system)
+
+When adding or changing styles, **use Amino theme variables first** (Tailwind theme classes like `shadow-amino-xl`, `border-amino`, `bg-page`, or CSS vars like `var(--amino-v3-shadow-xl)`). Use custom values only when the design system does not provide a suitable token.
+
+#### Consuming Amino's styles (Tailwind contract)
+
+Since the move to Tailwind, Amino ships its components as JS that references Tailwind
+utility classes — it does **not** ship a precompiled utility stylesheet. Consuming apps
+must run Tailwind themselves and scan Amino's published JS so those classes get generated.
+In the consumer's `tailwind.config.ts`:
+
+```ts
+import { theme } from '@zonos/amino/styles/constants/theme';
+
+export default {
+  // Scan Amino's compiled components so their utility classes are emitted
+  content: ['./node_modules/@zonos/amino/**/*.js' /* …your own globs */],
+  // Map Amino's design tokens (used by classes like `bg-page`, `shadow-amino-xl`)
+  theme: { extend: { /* …derive from the imported `theme` object */ } },
+};
+```
+
+Also import Amino's global stylesheets once (e.g. in your root layout): `@zonos/amino/theme.css`,
+`@zonos/amino/reset.css`, and `@zonos/amino/amino.css`. An app with **no** Tailwind pipeline will
+render Amino components unstyled — this is by design. (`tailwind.css` is a build-time source file
+and is intentionally not published.)
 
 ### - Configuration
 

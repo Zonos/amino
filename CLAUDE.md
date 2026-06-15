@@ -194,6 +194,26 @@ Files prefixed with `_` are internal and won't appear in VS Code auto-import sug
 - **Storybook tests**: `test-storybook` runner
 - Test files: `**/*.test.ts` in `__tests__/` directories
 
+### Debugging Storybook layout
+
+`scripts/sb-inspect.mjs` renders a story and dumps the geometry (bounding rect, computed position/height) of an element and its direct children. Useful when the global `!important` rules in `.storybook/storybook.css` interact badly with Storybook's internal DOM — e.g. the "Show code" toggle wrapper getting stretched to full height — especially after Storybook upgrades that reshuffle that DOM. Requires Storybook running (`pnpm dev`).
+
+```bash
+node scripts/sb-inspect.mjs [story-id] [selector] [--canvas]
+
+# Docs page, default story (amino-avatar-useravatar--docs) and selector (.docs-story)
+node scripts/sb-inspect.mjs
+
+# Inspect a specific element on another docs page
+node scripts/sb-inspect.mjs amino-button--docs .sbdocs-title
+
+# Canvas view (use a story id, not a --docs id); default selector #storybook-root
+node scripts/sb-inspect.mjs amino-button--basic --canvas
+
+# Non-default Storybook port
+SB_PORT=6007 node scripts/sb-inspect.mjs
+```
+
 ## Commit Messages
 
 Use conventional commits: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`

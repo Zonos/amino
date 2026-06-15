@@ -1,12 +1,8 @@
 import { type ReactNode, useId } from 'react';
 
-import clsx from 'clsx';
-
 import { Text } from 'src/components/text/Text';
-import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './Switch.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type SwitchProps = BaseProps & {
   /**
@@ -16,11 +12,11 @@ export type SwitchProps = BaseProps & {
   'aria-label'?: string;
   checked: boolean;
   disabled?: boolean;
-  label?: string;
-  labelDescription?: string;
+  label?: ReactNode;
+  labelDescription?: ReactNode;
   labelIcon?: ReactNode;
   onChange: (checked: boolean) => void;
-  subtitle?: string;
+  subtitle?: ReactNode;
   switchIconLeft?: ReactNode;
   switchIconRight?: ReactNode;
 };
@@ -118,11 +114,12 @@ export const Switch = ({
 
   return (
     <label
-      className={clsx(
+      className={cn(
+        'flex cursor-pointer flex-row',
+        `focus-within:outline-none
+        [&:has(input:focus-visible)]:shadow-[var(--amino-glow-blue)]`,
+        disabled && 'cursor-not-allowed',
         className,
-        styles.switchContainer,
-        globalStyles.focusableLabel,
-        disabled && styles.disabled,
       )}
       htmlFor={id}
       style={style}
@@ -139,50 +136,78 @@ export const Switch = ({
       />
       {hasIcons ? (
         <div
-          className={clsx(
-            styles.aminoSwitchWrapper,
-            styles.aminoSwitchWrapperWithIcons,
-            checked && styles.checked,
+          className={cn(
+            `relative block h-8 w-[62px] min-w-6 rounded-[20px] leading-4
+              select-none`,
+            'bg-gray-50',
+            checked && 'bg-primary',
+            disabled && 'opacity-40',
           )}
         >
           <div
-            className={clsx(
-              styles.aminoSwitch,
-              styles.aminoSwitchWithIcons,
-              checked && styles.checked,
+            className={cn(
+              'bg-gray-200 dark:bg-gray-200',
+              'shadow-[0px_-1px_1px_0px_rgba(0,0,0,0.2)_inset,0px_1px_3px_0px_rgba(0,0,0,0.4)]',
+              `absolute top-[2px] left-[2px] h-7 w-7 rounded-full
+                transition-all`,
+              checked && 'left-[calc(100%-30px)]',
+              disabled && 'opacity-95',
             )}
             id={id}
           />
-          <div className={clsx(styles.switchIcon, styles.left)}>
+          <div className="absolute top-1 right-1 left-auto">
             {switchIconLeft}
           </div>
-          <div className={styles.switchIcon}>{switchIconRight}</div>
+          <div className="absolute top-1 right-auto left-1">
+            {switchIconRight}
+          </div>
         </div>
       ) : (
         <div
-          className={clsx(styles.aminoSwitchWrapper, checked && styles.checked)}
+          className={cn(
+            `relative block h-4 min-h-4 w-8 min-w-8 rounded-[20px] leading-4
+              select-none`,
+            'bg-gray-100 shadow-[var(--amino-v3-shadow-inset)]',
+            checked && 'bg-primary',
+            disabled && 'opacity-40',
+          )}
         >
           <div
-            className={clsx(styles.aminoSwitch, checked && styles.checked)}
+            className={cn(
+              'bg-gray-0 dark:bg-gray-1000',
+              'shadow-[0px_-1px_1px_0px_rgba(0,0,0,0.08)_inset,0px_1px_3px_0px_rgba(0,0,0,0.2)]',
+              `absolute top-[1px] left-[1px] h-[14px] w-[14px] rounded-full
+                transition-all`,
+              checked && [
+                'left-[calc(100%-15px)]',
+                'shadow-[0px_-1px_1px_0px_rgba(68,94,238,0.08)_inset,0px_1px_3px_0px_rgba(0,0,0,0.2)]',
+              ],
+              disabled && 'opacity-95',
+            )}
             id={id}
           />
         </div>
       )}
       {hasLabel && (
-        <div className={styles.infoWrapper}>
-          <div className={styles.labelWrapper}>
-            {labelIcon}
-            <Text className={styles.styledLabel} type="input-label">
+        <div className="ml-4">
+          <div className="flex items-center leading-4">
+            {labelIcon && (
+              <div className={cn('mr-1', disabled && 'opacity-40')}>
+                {labelIcon}
+              </div>
+            )}
+            <Text
+              className={cn('mb-0', disabled && 'text-gray-600')}
+              type="input-label"
+            >
               {label}
               {labelDescription && (
-                <span className={styles.styledLabelDescription}>
-                  {labelDescription}
-                </span>
+                <span className="ml-1 text-gray-600">{labelDescription}</span>
               )}
             </Text>
           </div>
           {subtitle && (
-            <Text className={styles.styledSubtitle} type="subtitle">
+            <Text className={cn(disabled && 'text-gray-400')} type="subtitle">
               {subtitle}
             </Text>
           )}

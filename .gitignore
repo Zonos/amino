@@ -61,6 +61,8 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
+.env.*.local
 
 
 # End of https://www.gitignore.io/api/node,javascript
@@ -102,5 +104,4 @@ _private_*
 !.vscode
 .cursorignore
 *storybook.log
-.next/**
-tsconfig.next.tsbuildinfo
+*.tsbuildinfo

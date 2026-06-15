@@ -10,8 +10,6 @@ import { VStack } from 'src/components/stack/VStack';
 import type { Direction } from 'src/components/toast/Toast';
 import { ToastContext } from 'src/components/toast/ToastContext';
 
-import styles from './ToastConsumer.stories.module.scss';
-
 const useNotify = () => useContext(ToastContext);
 
 export const ToastConsumer = () => {
@@ -31,7 +29,7 @@ export const ToastConsumer = () => {
   }, [notify]);
 
   return (
-    <div className={styles.wrapper}>
+    <div className="flex items-center justify-center">
       <VStack>
         <Button onClick={() => notify('Default toast', { duration })}>
           Notify
@@ -118,7 +116,10 @@ export const ToastConsumer = () => {
         >
           Long persisting
         </Button>
-        <div className={styles.customWrapper}>
+        <div
+          className="rounded-amino-6 flex flex-col gap-[10px] border
+            border-blue-500 p-4"
+        >
           <textarea
             cols={30}
             onChange={v => setMessage(v.target.value)}

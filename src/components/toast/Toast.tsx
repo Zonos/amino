@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
 import { Button } from 'src/components/button/Button';
@@ -12,8 +11,7 @@ import { RemoveIcon } from 'src/icons/RemoveIcon';
 import { WarningIcon } from 'src/icons/WarningIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Intent } from 'src/types/Intent';
-
-import styles from './Toast.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type Direction = 'top' | 'right' | 'bottom' | 'left';
 
@@ -163,15 +161,55 @@ export const Toast = ({
   const parseIntent = () => {
     switch (intent) {
       case 'success':
-        return { class: styles.aminoSuccessToast, icon: <CheckCircleIcon /> };
+        return {
+          class: cn(
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(86,199,111,0.4)_0%,rgba(86,199,111,0)_50%)]',
+            '[&_svg]:text-green-500',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(86,199,111,0.24)_0%,rgba(86,199,111,0)_50%)]',
+            'dark:[&_svg]:text-green-600',
+          ),
+          icon: <CheckCircleIcon />,
+        };
       case 'error':
-        return { class: styles.aminoErrorToast, icon: <RemoveCircleIcon /> };
+        return {
+          class: cn(
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(249,92,103,0.4)_0%,rgba(249,92,103,0)_50%)]',
+            '[&_svg]:text-red-500',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(249,92,103,0.24)_0%,rgba(249,92,103,0)_50%)]',
+            'dark:[&_svg]:text-red-600',
+          ),
+          icon: <RemoveCircleIcon />,
+        };
       case 'warning':
-        return { class: styles.aminoWarningToast, icon: <WarningIcon /> };
+        return {
+          class: cn(
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(248,140,83,0.4)_0%,rgba(248,140,83,0)_50%)]',
+            '[&_svg]:text-orange-500',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(248,140,83,0.24)_0%,rgba(248,140,83,0)_50%)]',
+            'dark:[&_svg]:text-orange-600',
+          ),
+          icon: <WarningIcon />,
+        };
       case 'info':
-        return { class: styles.aminoInfoToast, icon: <InfoIcon /> };
+        return {
+          class: cn(
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(95,146,246,0.4)_0%,rgba(95,146,246,0)_50%)]',
+            '[&_svg]:text-blue-500',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(95,146,246,0.24)_0%,rgba(95,146,246,0)_50%)]',
+            'dark:[&_svg]:text-blue-600',
+          ),
+          icon: <InfoIcon />,
+        };
       default:
-        return { class: styles.aminoToast, icon: <InfoIcon /> };
+        return {
+          class: cn(
+            'bg-gray-1000 bg-[image:linear-gradient(90deg,rgba(148,150,158,0.4)_0%,rgba(148,150,158,0)_50%)]',
+            '[&_svg]:text-gray-500',
+            'dark:bg-gray-50 dark:bg-[image:linear-gradient(90deg,rgba(148,150,158,0.24)_0%,rgba(148,150,158,0)_50%)]',
+            'dark:[&_svg]:text-gray-600',
+          ),
+          icon: <InfoIcon />,
+        };
     }
   };
 
@@ -179,10 +217,17 @@ export const Toast = ({
 
   return (
     <motion.div
-      className={clsx(
-        styles.aminoToast,
+      className={cn(
+        `shadow-amino-large z-999999 flex-1 rounded-xl p-4 leading-6 font-medium
+        select-none`,
+        `bg-gray-1000 text-gray-0
+        bg-[linear-gradient(90deg,rgba(148,150,158,0.4)_0%,rgba(148,150,158,0)_50%)]`,
+        '[&_svg]:text-gray-500',
+        `dark:text-gray-1000 dark:bg-gray-50
+        dark:bg-[linear-gradient(90deg,rgba(148,150,158,0.24)_0%,rgba(148,150,158,0)_50%)]`,
+        'dark:[&_svg]:text-gray-600',
         intentValues.class,
-        isPersistent && styles.persistentToast,
+        isPersistent && 'cursor-pointer select-auto',
       )}
       layout
       style={{
@@ -192,8 +237,8 @@ export const Toast = ({
       key={toastKey}
     >
       <Flex alignItems="flex-start" gap={12} justifyContent="space-between">
-        <Flex alignItems="center" className={styles.toastContent} gap={12}>
-          <div className={styles.toastIcon}>{intentValues.icon}</div>
+        <Flex alignItems="center" className="self-center" gap={12}>
+          <div className="self-start">{intentValues.icon}</div>
           <div>{children}</div>
         </Flex>
 
@@ -202,7 +247,7 @@ export const Toast = ({
 
           {isPersistent && (
             <Button
-              className={styles.dismissButton}
+              className="h-6"
               icon={<RemoveIcon />}
               onClick={e => onDismiss?.(e)}
               variant="plain"

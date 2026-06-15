@@ -1,0 +1,3 @@
+[data-theme='night'] tbody tr.amino-table-row-active {
+  background-color: var(--amino-gray-100);
+}

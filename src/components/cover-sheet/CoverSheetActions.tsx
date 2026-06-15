@@ -1,12 +1,9 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import clsx from 'clsx';
-
 import { HStack } from 'src/components/stack/HStack';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './CoverSheetActions.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type CoverSheetProps = BaseProps & {
   /**
@@ -139,7 +136,7 @@ export const CoverSheetActions = ({
     const div = document.querySelector(`#${coverSheetActionId}`);
     if (div) {
       return createPortal(
-        <div className={clsx(className, styles.actions)} style={style}>
+        <div className={cn('z-[990]', className)} style={style}>
           <HStack spacing={8}>{children}</HStack>
         </div>,
         div,

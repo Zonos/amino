@@ -13,7 +13,6 @@ const TextAreaMeta: Meta = {
 };
 
 const longContent = `lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique, vero velit distinctio sequi nesciunt odit nobis consequatur nihil sunt.`;
-const shortContent = `lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat id iure amet accusantium ea consequuntur eaque animi fugiat iusto similique`;
 
 export default TextAreaMeta;
 
@@ -49,16 +48,6 @@ const Template: StoryFn<TextareaProps> = ({
   useEffect(() => {
     // focus the first input on mount (ref works)
     textareaRef.current?.focus();
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // toggle between long and short content every 3 seconds
-      setAutoAdjustContent(content =>
-        longContent === content ? shortContent : longContent,
-      );
-    }, 3000);
-    return () => clearInterval(interval);
   }, []);
   return (
     <div

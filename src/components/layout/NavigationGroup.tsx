@@ -1,11 +1,8 @@
 import type { ReactElement, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Collapse } from 'src/components/collapse/Collapse';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './NavigationGroup.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type NavigationItemProps = BaseProps & {
   /**
@@ -82,14 +79,19 @@ export const NavigationItem = ({
   style,
 }: NavigationItemProps) => (
   <div
-    className={clsx(
+    className={cn(
+      `gap-amino-8 px-amino-8 py-amino-4 text-amino-base rounded-amino-6
+      mb-[2px] flex h-[28px] items-center font-medium text-gray-800`,
+      'hover:bg-hover hover:text-gray-1000',
+      `[&_svg]:h-amino-24 [&_svg]:w-amino-24 [&_svg]:ml-amino-n4
+      [&_svg]:text-gray-600`,
+      'hover:[&_svg]:text-gray-800',
+      isActive && 'text-gray-1000 [&_svg]:text-gray-1000 bg-gray-100',
       className,
-      styles.styledNavigationItem,
-      isActive && styles.active,
     )}
     style={style}
   >
-    {icon && <div className={styles.styledNavigationItemIcon}>{icon}</div>}
+    {icon && <div className="shrink-0 grow-0">{icon}</div>}
     {content}
   </div>
 );
@@ -192,13 +194,21 @@ export const NavigationGroup = ({
   content,
   style,
 }: NavigationGroupProps) => (
-  <div className={clsx(className, styles.wrapper)} style={style}>
+  <div className={cn('flex flex-col', className)} style={style}>
     <div
-      className={clsx(styles.styledItemWrapper, !collapsed && styles.collapsed)}
+      className={cn(
+        !collapsed &&
+          `[&_.navigation-item_*]:text-gray-1000
+          [&_.navigation-item_svg]:text-gray-1000
+          [&_.navigation-item]:hover:bg-transparent`,
+      )}
     >
-      {content}
+      <div className="navigation-item">{content}</div>
     </div>
-    <Collapse className={styles.styledGroupItemWrapper} collapsed={collapsed}>
+    <Collapse
+      className="pl-amino-12 border-border-color ml-[15px] border-l"
+      collapsed={collapsed}
+    >
       {children}
     </Collapse>
   </div>

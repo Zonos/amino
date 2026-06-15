@@ -73,6 +73,44 @@ export default CountryMultiSelectMeta;
 
 export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
 
+/**
+ * Static country list (no network fetch) so the disabled styling renders
+ * deterministically in visual regression screenshots — the hook-backed
+ * stories fall into the "No countries" empty state in headless runs.
+ */
+export const Disabled = (props: CountryMultiSelectExpandedProps) => {
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
+
+  const countries = useMemo(
+    () =>
+      (
+        [
+          { code: 'CA', label: 'Canada' },
+          { code: 'MX', label: 'Mexico' },
+          { code: 'US', label: 'United States' },
+        ] as const
+      ).map<CountryMultiSelectExpandedOption>(x => ({
+        code: x.code,
+        group: 'North America',
+        icon: () => <FlagIcon code={x.code} iconScale="small" />,
+        label: x.label,
+      })),
+    [],
+  );
+
+  return (
+    <CountryMultiSelectExpanded
+      style={{ width: '632px' }}
+      {...props}
+      alwaysExpand
+      countries={countries}
+      disabled
+      onChange={setValue}
+      selectedCountries={value}
+    />
+  );
+};
+
 export const WithToggle = (props: CountryMultiSelectExpandedProps) => {
   const dashboardUrl = getCountryUrls();
   const countryOptions = useCountryOptions({ dashboardUrl });

@@ -14,7 +14,6 @@ import type {
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
 
-import clsx from 'clsx';
 import type Select from 'node_modules/react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
@@ -30,9 +29,15 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
+import { cn } from 'src/utils/cn';
 import { getTestId } from 'src/utils/getTestId';
 
-import styles from './_StyledReactSelect.module.scss';
+const sizeHeight: Record<Size, string> = {
+  lg: theme.sizeLg,
+  md: theme.sizeMd,
+  sm: theme.sizeSm,
+  xl: theme.sizeXl,
+};
 
 const getRadius = ($size?: Size) => {
   switch ($size) {
@@ -106,24 +111,31 @@ const Control = <
   return (
     <div
       ref={innerRef}
-      className={clsx([
+      className={cn(
         className,
-        hasValue && styles.hasValue,
-        icon && styles.hasIcon,
-        isFocused && styles.isFocused,
-        isDisabled && styles.isDisabled,
-        menuIsOpen && styles.menuIsOpen,
-        label || (Array.isArray(value) && value.length > 1)
-          ? styles.hasLabel
-          : '',
-        size && styles[size],
-        styles.reactSelectControl,
         'react-select-control',
-      ])}
+        hasValue && 'flex items-center',
+        icon && 'has-icon flex items-center',
+        isFocused && 'is-focused',
+        isDisabled && 'opacity-disabled',
+        menuIsOpen && 'menu-is-open',
+        label || (Array.isArray(value) && value.length > 1) ? 'has-label' : '',
+        size === 'sm' && 'h-8',
+        size === 'md' && 'h-10',
+        size === 'lg' && 'h-12',
+        size === 'xl' && 'h-14',
+      )}
       style={getStyles('control', props) as CSSProperties}
       {...innerProps}
     >
-      {icon && <div className={styles.iconWrapper}>{icon}</div>}
+      {icon && (
+        <div
+          className="ml-amino-8 -mr-[2px] flex h-6 w-6 items-center
+            justify-evenly text-gray-700"
+        >
+          {icon}
+        </div>
+      )}
       {children}
     </div>
   );
@@ -139,8 +151,8 @@ const IconLabel = ({
   icon?: ReactNode;
 }) => (
   <div
-    className={styles.checkboxOptionIconWrapper}
-    style={{ '--amino-styled-react-select-color': color || 'inherit' }}
+    className="[&_svg]:text-gray-1000 flex items-center [&_svg]:mr-1"
+    style={{ color: color || 'inherit' }}
   >
     {icon}
     {children}
@@ -213,7 +225,7 @@ export const CheckboxOptionComponent = <
     }
 
     return (
-      <div ref={ref} className={styles.selectedSingleOptionWrapper}>
+      <div ref={ref} className="flex items-center justify-between">
         {inView && (
           <IconLabel color={color} icon={data.icon}>
             {children}
@@ -227,12 +239,12 @@ export const CheckboxOptionComponent = <
   return (
     <div ref={innerRef} {...innerProps}>
       <div
-        className={[
+        className={cn(
           className,
-          styles.styledSelectOptionWrapper,
-          isFocused && styles.isFocused,
-          isDisabled && styles.isDisabled,
-        ].join(' ')}
+          'rounded-lg',
+          isFocused && !isDisabled && 'bg-gray-50! dark:bg-gray-100!',
+          isDisabled && 'opacity-disabled',
+        )}
         style={style}
       >
         {selectProps.isMulti ? (
@@ -263,8 +275,8 @@ const getMergedStyles = <
   clearIndicator: (provided, state) => ({
     ...provided,
     color: theme.gray700,
-    paddingLeft: 14,
-    paddingRight: 4,
+    paddingLeft: '14px !important',
+    paddingRight: '4px !important',
     ...stylesProp?.clearIndicator?.(provided, state),
   }),
   // container
@@ -283,22 +295,22 @@ const getMergedStyles = <
       color: theme.gray800,
       cursor: 'pointer',
       flexWrap: 'inherit',
-      height: `var(--amino-size-${size})`,
-      minHeight: `var(--amino-size-${size})`,
+      height: size ? sizeHeight[size] : undefined,
+      minHeight: size ? sizeHeight[size] : undefined,
       ...stylesProp?.control?.(provided, state),
     };
   },
   dropdownIndicator: (provided, state) => ({
     ...provided,
     color: theme.gray900,
-    paddingLeft: 4,
-    paddingRight: 10,
+    paddingLeft: '4px !important',
+    paddingRight: '10px !important',
     ...stylesProp?.dropdownIndicator?.(provided, state),
   }),
   group: (provided, state) => ({
     ...provided,
-    paddingBottom: 0,
-    paddingTop: 0,
+    paddingBottom: '0px !important',
+    paddingTop: '0px !important',
     ...stylesProp?.group?.(provided, state),
   }),
   // groupHeading
@@ -321,15 +333,20 @@ const getMergedStyles = <
     background: theme.surfaceColor,
     borderRadius: 12,
     boxShadow: theme.v3ShadowLarge,
-    marginTop: 4,
+    marginTop: '8px !important',
+    zIndex: 20,
     ...stylesProp?.menu?.(provided, state),
   }),
   menuList: (provided, state) => ({
     ...provided,
-    padding: 8,
+    padding: '8px !important',
     ...stylesProp?.menuList?.(provided, state),
   }),
-  // menuPortal
+  menuPortal: (provided, state) => ({
+    ...provided,
+    zIndex: 20,
+    ...stylesProp?.menuPortal?.(provided, state),
+  }),
   multiValue: (provided, state) => ({
     ...provided,
     alignItems: 'center',
@@ -338,7 +355,7 @@ const getMergedStyles = <
     fontWeight: 600,
     maxHeight: 20,
     minWidth: 'inherit',
-    paddingRight: 2,
+    paddingRight: '2px !important',
     ...stylesProp?.multiValue?.(provided, state),
   }),
   multiValueLabel: (provided, state) => ({
@@ -355,10 +372,10 @@ const getMergedStyles = <
     color: state.isSelected ? theme.blue600 : theme.textColor,
     cursor: 'pointer',
     fontWeight: state.isSelected ? 500 : 400,
-    paddingBottom: 7,
-    paddingLeft: 8,
-    paddingRight: 12,
-    paddingTop: 7,
+    paddingBottom: '7px !important',
+    paddingLeft: '8px !important',
+    paddingRight: '12px !important',
+    paddingTop: '7px !important',
     ...stylesProp?.option?.(provided, state),
   }),
   placeholder: (provided, state) => ({
@@ -366,8 +383,8 @@ const getMergedStyles = <
     '.has-label.is-focused &': {
       opacity: 1,
     },
-    color: 'var(--amino-gray-500)',
-    fontSize: 'var(--amino-font-size-base)',
+    color: theme.gray500,
+    fontSize: theme.fontSizeBase,
     fontWeight: 400,
     opacity: 1,
     ...stylesProp?.placeholder?.(provided, state),
@@ -380,10 +397,9 @@ const getMergedStyles = <
   }),
   valueContainer: (provided, state) => ({
     ...provided,
-    '.has-icon &': { paddingLeft: 0 },
     flexWrap: 'nowrap',
     padding: 'unset',
-    paddingLeft: 12,
+    paddingLeft: '12px !important',
     ...stylesProp?.valueContainer?.(provided, state),
   }),
 });
@@ -454,10 +470,22 @@ export const StyledReactSelect = <
   const mergedStyles = getMergedStyles(stylesProp);
   return (
     <div
-      className={clsx(styles.styledSelectWrapper, error && styles.hasError)}
+      className={cn(
+        'relative',
+        '[&_.react-select-control+div]:z-20',
+        '[&_.react-select-control.is-focused]:shadow-[var(--amino-shadow-raised-standard)]',
+        '[&_.react-select-control.is-focused:not(.menu-is-open)]:shadow-[var(--amino-shadow-raised-focus)]',
+        error && [
+          '[&_.has-label]:text-red-600',
+          '[&_.react-select-control]:shadow-[var(--amino-shadow-raised-error)]',
+          '[&_.react-select-control.is-focused:not(.menu-is-open)]:shadow-[var(--amino-shadow-raised-error-focus)]',
+        ],
+      )}
       data-testid={testId}
     >
-      {label && <label className={styles.inputLabel}>{label}</label>}
+      {label && (
+        <label className="text-amino-secondary mb-2 block">{label}</label>
+      )}
       <ReactSelect<Option, IsMulti, Group>
         ref={selectElement}
         closeMenuOnScroll={closeMenuOnScroll}
@@ -466,28 +494,9 @@ export const StyledReactSelect = <
             ClearIndicator,
             Control,
             DropdownIndicator,
-            // DownChevron,
-            // CrossIcon,
-            // Group,
-            // GroupHeading,
-            // IndicatorsContainer,
-            // IndicatorSeparator,
-            // Input,
-            // LoadingIndicator,
-            // Menu,
-            // MenuList,
-            // MenuPortal,
-            // LoadingMessage,
-            // NoOptionsMessage,
-            // MultiValue,
-            // MultiValueContainer,
             MultiValueLabel,
             MultiValueRemove,
             Option: CheckboxOptionComponent,
-            // Placeholder,
-            // SelectContainer,
-            // SingleValue,
-            // ValueContainer,
             ...components,
           } as SelectComponentsConfig<Option, IsMulti, Group>
         }

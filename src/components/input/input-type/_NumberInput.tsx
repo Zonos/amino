@@ -1,7 +1,6 @@
 import { forwardRef, useRef } from 'react';
 
 import { useMergeRefs } from '@floating-ui/react';
-import clsx from 'clsx';
 
 import {
   FloatLabelInput,
@@ -9,9 +8,16 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CaretDownIcon } from 'src/icons/CaretDownIcon';
 import { CaretUpIcon } from 'src/icons/CaretUpIcon';
+import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
+import { cn } from 'src/utils/cn';
 
-import styles from './_NumberInput.module.scss';
+const sizeVar: Record<Size, string> = {
+  lg: theme.sizeLg,
+  md: theme.sizeMd,
+  sm: theme.sizeSm,
+  xl: theme.sizeXl,
+};
 
 const getIconSize = (size: Size) => {
   switch (size) {
@@ -34,25 +40,32 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
 
     return (
       <div
-        className={clsx(styles.styledWrapper, className)}
+        className={cn('relative w-full', className)}
         style={{
-          '--amino-number-input-height': `calc(var(--amino-size-${size}) - 2px)`,
+          '--amino-number-input-height': `calc(${sizeVar[size]} - 2px)`,
         }}
       >
         <FloatLabelInput
           {...props}
           ref={mergedRef}
           aria-label={label}
-          className={styles.aminoInput}
+          className="[&_input]:appearance-none [&_input]:pr-10
+            [&_input::-webkit-calendar-picker-indicator]:hidden
+            [&_input::-webkit-inner-spin-button]:hidden"
           label={label}
           size={size}
           suffix={
             suffix === null
               ? null
               : suffix || (
-                  <div className={styles.styledActionWrapper}>
+                  <div
+                    className="flex h-[var(--amino-number-input-height)]
+                      flex-col justify-center"
+                  >
                     <button
-                      className={styles.styledButtonAction}
+                      className="rounded p-0 px-1 transition-all duration-300
+                        ease-in-out hover:bg-black/[0.04] focus:outline-none
+                        active:bg-black/10"
                       onClick={() => {
                         inputRef.current?.stepUp();
                         inputRef.current?.dispatchEvent(
@@ -64,7 +77,9 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
                       <CaretUpIcon size={getIconSize(size)} />
                     </button>
                     <button
-                      className={styles.styledButtonAction}
+                      className="rounded p-0 px-1 transition-all duration-300
+                        ease-in-out hover:bg-black/[0.04] focus:outline-none
+                        active:bg-black/10"
                       onClick={() => {
                         inputRef.current?.stepDown();
                         inputRef.current?.dispatchEvent(

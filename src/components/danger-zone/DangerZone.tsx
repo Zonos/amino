@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import { Card, type CardProps } from 'src/components/card/Card';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './DangerZone.module.scss';
+import { cn } from 'src/utils/cn';
 
 /**
  * DangerZone component visually highlights areas containing destructive or irreversible actions.
@@ -78,7 +75,14 @@ export const DangerZone = ({
   style,
   ...props
 }: BaseProps & CardProps & { children: ReactNode }) => (
-  <Card className={clsx(styles.dangerZone, className)} style={style} {...props}>
+  <Card
+    className={cn(
+      'shadow-[0_1px_5px_rgba(255,0,0,0.19)] [&_h4]:text-red-600',
+      className,
+    )}
+    style={style}
+    {...props}
+  >
     {children}
   </Card>
 );

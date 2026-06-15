@@ -8,8 +8,7 @@ import {
 } from 'src/components/filter/useFilterWrapper';
 import { VStack } from 'src/components/stack/VStack';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
-
-import styles from './FilterMultiSelect.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type FilterMultiSelectProps<T extends SelectValue = SelectValue> =
   BaseFilterProps & {
@@ -130,7 +129,7 @@ export const FilterMultiSelect = <T extends SelectValue = SelectValue>({
   });
 
   return renderWrapper(
-    <VStack className={styles.vStackStyled} spacing={8}>
+    <VStack className={cn('max-h-[400px] overflow-y-auto')} spacing={8}>
       {options.map(option => (
         <Checkbox
           key={option.value}

@@ -1,8 +1,5 @@
-import clsx from 'clsx';
-
 import { Stack, type StackProps } from 'src/components/stack/Stack';
-
-import styles from './VStack.module.scss';
+import { cn } from 'src/utils/cn';
 
 /**
  * VStack component arranges children vertically with consistent spacing.
@@ -63,8 +60,8 @@ export const VStack = ({
   ...props
 }: StackProps) => (
   <Stack
-    className={clsx(className, styles.styledVStack)}
-    style={{ ...style, '--amino-v-stack-gap': `${spacing}px` }}
+    className={cn('grid-flow-row', className)}
+    style={{ ...style, rowGap: `${spacing}px` }}
     {...props}
   >
     {children}

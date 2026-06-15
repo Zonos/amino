@@ -7,7 +7,6 @@ import {
   useMemo,
 } from 'react';
 
-import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import {
@@ -17,11 +16,9 @@ import {
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
+import { cn } from 'src/utils/cn';
 import { getTestId } from 'src/utils/getTestId';
-
-import styles from './Checkbox.module.scss';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
 
@@ -170,7 +167,12 @@ export const Checkbox = ({
 
   return (
     <label
-      className={clsx(globalStyles.focusableLabel, styles.wrapper, className)}
+      className={cn(
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+        `[&:has(input:focus-visible)]:shadow-glow-blue
+        focus-within:outline-none`,
+        className,
+      )}
       htmlFor={id}
       style={{
         ...style,
@@ -188,32 +190,48 @@ export const Checkbox = ({
     >
       <input
         checked={checked}
-        className={clsx(globalStyles.inputHidden, disabled && 'disabled')}
+        className={cn('absolute h-0 w-0 opacity-0', disabled && 'disabled')}
         data-testid={testId}
+        disabled={disabled}
         id={id}
         onChange={handleChange}
         onKeyDown={e => {
-          if (e.key === 'Enter' || e.key === 'Space') {
+          if (e.key === 'Enter' || e.key === ' ') {
             handleChange(e);
           }
         }}
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
         type="checkbox"
       />
       <div
-        className={clsx(
-          styles.checkboxContainer,
+        className={cn(
+          `pointer-events-none flex flex-row select-none
+          [&_*]:pointer-events-none [&_*]:select-none`,
           'amino-input-wrapper',
-          disabled && styles.disabled,
-          disabled && 'disabled',
+          disabled && ['cursor-not-allowed', 'disabled'],
         )}
       >
-        <div className={styles.aminoCheckbox}>
+        <div
+          className={cn(
+            `flex h-4 min-h-4 w-4 min-w-4 items-center justify-center rounded
+            leading-4 transition-all duration-150 ease-in-out select-none`,
+            `bg-(--amino-checkbox-background)
+            shadow-(--amino-checkbox-box-shadow)
+            [border:var(--amino-checkbox-border)]`,
+            disabled &&
+              `bg-(--amino-checkbox-disabled-background) shadow-none
+              [border:var(--amino-checkbox-disabled-border)]`,
+          )}
+        >
           <AnimatePresence>
             {checked && (
               <AnimatedCheckIcon
                 key="checkbox"
                 animate={{ opacity: 1, scale: 1 }}
+                className={cn(
+                  'text-gray-0 dark:text-gray-1000 h-4 w-4',
+                  'shadow-[0px_2px_4px_rgba(0,0,0,0.06),0px_1px_2px_rgba(0,0,0,0.04)]',
+                )}
                 exit={{ opacity: 0, scale: 1 }}
                 initial={{ opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -224,13 +242,20 @@ export const Checkbox = ({
 
         {labelComponent ||
           (label && (
-            <div className={styles.infoWrapper}>
-              <div className={styles.labelWrapper}>
-                {icon}
-                <Text className={styles.styledLabel} type="input-label">
+            <div className="ml-2">
+              <div className="flex items-center leading-4">
+                {icon && (
+                  <div className={cn('mr-1', disabled && 'opacity-40')}>
+                    {icon}
+                  </div>
+                )}
+                <Text
+                  className={cn('mb-0', disabled && 'text-gray-600')}
+                  type="input-label"
+                >
                   {label}
                   {labelDescription && (
-                    <span className={styles.styledLabelDescription}>
+                    <span className="ml-1 text-gray-600">
                       {labelDescription}
                     </span>
                   )}
@@ -241,7 +266,7 @@ export const Checkbox = ({
       </div>
 
       {subtitle && (
-        <div className={styles.styledSubtitle}>
+        <div className={cn('mt-1 ml-6', disabled && 'text-gray-400')}>
           <Text type="subtitle">{subtitle}</Text>
         </div>
       )}

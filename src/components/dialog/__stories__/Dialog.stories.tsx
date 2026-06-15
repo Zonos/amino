@@ -8,8 +8,6 @@ import { CoverSheet } from 'src/components/cover-sheet/CoverSheet';
 import { Dialog, type DialogProps } from 'src/components/dialog/Dialog';
 import { Input } from 'src/components/input/Input';
 
-import styles from './Dialog.stories.module.scss';
-
 const DialogMeta: Meta = {
   argTypes: {
     actions: {
@@ -45,13 +43,10 @@ const Template: StoryFn<DialogProps & { height: number }> = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      className={styles.centeredDiv}
-      style={{ '--amino-dialog-stories-height': height }}
-    >
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
-        className={styles.styledDialog}
+        style={{ height: `${height}px` }}
         {...rest}
         actions={actions}
         label={label}
@@ -120,7 +115,7 @@ WithHover.args = {
       </Button>
     </>
   ),
-  children: <div className={styles.hoverDiv}>Hover me</div>,
+  children: <div className="hover:bg-hover h-25 w-full p-2.5">Hover me</div>,
   label: 'With subtitle',
   subtitle:
     'Choose your preferred units to be shown across the Zonos Dashboard.',
@@ -151,7 +146,7 @@ WithLink.args = {
     </div>
   ),
   label: (
-    <div className={styles.styledTitle}>
+    <div className="flex items-center gap-2.5">
       <span>StyledDialog title</span>
       <Badge color="blue">With a link</Badge>
     </div>
@@ -252,10 +247,7 @@ export const WithInput = ({ height }: { height: number }) => {
   const [value, setValue] = useState('');
 
   return (
-    <div
-      className={styles.centeredDiv}
-      style={{ '--amino-dialog-stories-height': height }}
-    >
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Dialog
         actions={
@@ -268,10 +260,10 @@ export const WithInput = ({ height }: { height: number }) => {
             </Button>
           </>
         }
-        className={styles.styledDialog}
         label="With an input"
         onClose={() => setOpen(false)}
         open={open}
+        style={{ height: `${height}px` }}
         width={460}
       >
         <Input
@@ -290,7 +282,7 @@ export const Nested = () => {
   const [thirdOpen, setThirdOpen] = useState(false);
 
   return (
-    <div className={styles.centeredDiv}>
+    <div className="flex h-full items-center justify-center">
       <Button onClick={() => setFirstOpen(true)}>Open</Button>
       <Dialog
         actions={

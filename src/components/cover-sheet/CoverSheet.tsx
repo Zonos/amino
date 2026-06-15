@@ -1,7 +1,5 @@
 import { type ReactNode, useEffect } from 'react';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions';
 import {
@@ -10,8 +8,7 @@ import {
 } from 'src/components/dialog/BaseDialog';
 import { Text } from 'src/components/text/Text';
 import { RemoveIcon } from 'src/icons/RemoveIcon';
-
-import styles from './CoverSheet.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type CoverSheetProps = BaseDialogProps & {
   /**
@@ -163,7 +160,14 @@ export const CoverSheet = ({
 
   return (
     <BaseDialog
-      className={clsx(styles.coverSheet, className)}
+      className={cn(
+        'box-border max-h-screen overscroll-contain rounded-none outline-none',
+        'bg-page fixed top-0 left-0 h-screen w-screen',
+        'text-text-color border-amino-subtle border',
+        'print:absolute print:h-auto print:min-h-screen',
+        className,
+      )}
+      fullWindowWidth
       onClose={onClose}
       open={open}
       popupMotionProps={{
@@ -174,14 +178,26 @@ export const CoverSheet = ({
       }}
       {...props}
     >
-      <header className={styles.headerContainer}>
-        <div className={styles.header}>
+      <header
+        className={cn(
+          `border-amino-subtle py-amino-16 px-amino-32 flex items-center
+          justify-between border-b`,
+          'bg-page sticky top-0 z-[99] h-16',
+          'print:hidden',
+        )}
+      >
+        <div className="gap-amino-16 flex items-center">
           {!hideCloseButton && (
             <Button icon={<RemoveIcon size={20} />} onClick={onClose} />
           )}
           <Text type="subheader">{label}</Text>
         </div>
-        <div className={styles.headerComponent}>{headerComponent}</div>
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2
+            -translate-y-1/2"
+        >
+          {headerComponent}
+        </div>
         <div id={actionWrapperId}>
           {actions && (
             <CoverSheetActions coverSheetActionId={actionWrapperId}>
@@ -190,7 +206,7 @@ export const CoverSheet = ({
           )}
         </div>
       </header>
-      <div className={styles.content}>{children}</div>
+      <div className="p-amino-56 flex-grow overflow-auto">{children}</div>
     </BaseDialog>
   );
 };

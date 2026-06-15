@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.ts';
+
+/* Map the Tailwind `dark:` variant to amino's night theme selector */
+@custom-variant dark (&:where([data-theme="night"], [data-theme="night"] *));
+
+/* Ripple animation for RippleGroup button effect */
+@keyframes ripple {
+  from {
+    opacity: var(--amino-ripple-group-opacity, 0.12);
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+@utility animate-ripple {
+  animation: ripple var(--amino-ripple-group-duration, 600ms) ease-out
+    forwards;
+}
+
+/* GlowWrapper ::after positioning and background (shared rule, not per-instance) */
+@layer components {
+  [style*='--amino-glow-wrapper-x']::after {
+    width: min(100%, 400px);
+    height: min(100%, 400px);
+    top: calc(var(--amino-glow-wrapper-y) * 1px - min(50%, calc(400px / 2)));
+    left: calc(var(--amino-glow-wrapper-x) * 1px - min(50%, calc(400px / 2)));
+    background: var(--amino-glow-wrapper-background);
+  }
+}

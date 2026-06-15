@@ -12,8 +12,7 @@ import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import { addIndex } from 'src/utils/addIndex';
-
-import styles from './PivotTable.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type KeyValue = string | number;
 type RowData = Record<string, unknown>;
@@ -188,7 +187,7 @@ export const PivotTable = <
         return null;
       }
       return (
-        <span className={styles.sortStatus}>
+        <span className={cn('flex h-full items-center justify-center')}>
           {sortDirection === 'ASC' ? (
             <ChevronUpIcon color="gray900" />
           ) : (
@@ -262,11 +261,21 @@ export const PivotTable = <
 
   return (
     <div
-      className={styles.styledWrapper}
+      className={cn(
+        'amino-pivot-table relative',
+        `[&_.data-grid]:rounded-amino-8 [&_.data-grid]:h-full
+        [&_.data-grid]:bg-inherit`,
+        '[&_.rdg-row]:bg-gray-0 [&_.rdg-row]:text-text-color',
+        `[&_.rdg-header-row]:text-text-color [&_.rdg-header-row]:bg-gray-100
+        [&_.rdg-header-row]:font-bold`,
+        `[&_.rdg-summary-row]:text-text-color [&_.rdg-summary-row]:bg-gray-100
+        [&_.rdg-summary-row]:font-bold`,
+        '[&_.rdg-cell]:border [&_.rdg-cell]:border-gray-200',
+      )}
       style={{
+        height: tableHeight || 'calc(100vh - 145px)',
+        minHeight: tableHeight || undefined,
         ...style,
-        '--amino-pivot-table-height': tableHeight || 'calc(100vh - 145px)',
-        '--amino-pivot-table-min-height': tableHeight || '',
       }}
     >
       <DataGrid

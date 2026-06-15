@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
-
-import styles from './Toggle.module.scss';
+import { cn } from 'src/utils/cn';
 
 const getAnimationRect = (
   wrapperRect: DOMRect | null,
@@ -186,22 +184,30 @@ export const Toggle = <TValue extends SelectValue>({
 
   return (
     <div
-      className={clsx(
+      className={cn(
+        'inline-flex',
+        fullWidth && 'w-full',
+        isDisabled && 'opacity-60',
         className,
-        styles.shrinkWrapper,
-        fullWidth && styles.fullWidth,
-        isDisabled && styles.disabled,
-        size,
       )}
       style={style}
     >
-      <div ref={wrapperRef} className={styles.wrapper}>
+      <div
+        ref={wrapperRef}
+        className={cn(
+          'relative flex h-8 rounded-md',
+          'bg-[rgba(5,10,40,0.06)] dark:bg-[rgba(220,225,255,0.1)]',
+        )}
+      >
         <motion.div
           animate={{
             width: animationRect.width,
             x: animationRect.left,
           }}
-          className={styles.selectedSlider}
+          className={cn(
+            'bg-raised absolute top-[1px] bottom-[1px] z-[1] rounded-md',
+            'shadow-[var(--amino-shadow-raised-standard)]',
+          )}
           initial={false}
           onAnimationComplete={() => {
             setFirstAnimationComplete(true);
@@ -217,17 +223,31 @@ export const Toggle = <TValue extends SelectValue>({
             <button
               key={option.value}
               ref={isSelected ? selectedRef : null}
-              className={clsx([
-                styles.optionWrapper,
-                isSelected && styles.selected,
-              ])}
+              className={cn(
+                `z-[2] flex cursor-pointer justify-center gap-[6px] rounded-md
+                text-center`,
+                'text-amino-base text-text-color-secondary font-medium',
+                'focus:outline-none',
+                !isSelected && 'hover:text-text-color',
+                isSelected && 'text-text-color',
+                size === 'sm' && 'px-3 py-[6px]',
+                size === 'md' && 'px-3 py-[10px]',
+                size === 'lg' && 'px-[14px] py-[14px]',
+                size === 'xl' && 'px-4 py-[18px]',
+                fullWidth && 'flex-grow',
+                isDisabled && 'cursor-not-allowed',
+              )}
               disabled={isDisabled}
               onClick={() => {
                 onChange(option.value);
               }}
               type="button"
             >
-              {option.icon && <div className={styles.icon}>{option.icon}</div>}
+              {option.icon && (
+                <div className="[&,&_svg]:max-h-full [&,&_svg]:w-auto">
+                  {option.icon}
+                </div>
+              )}
               <div>{option.label}</div>
             </button>
           );

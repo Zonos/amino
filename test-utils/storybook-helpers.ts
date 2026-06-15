@@ -80,19 +80,6 @@ export const PROD_URL = 'https://amino.zonos.com';
  * These have non-deterministic rendering (animations, canvas, random data).
  */
 export const SKIP_STORIES = new Set([
-  // ConnectionMap uses canvas-based geographic rendering — varies per run
-  'amino-connectionmap--iceland-to-greenland',
-  'amino-connectionmap--loading',
-  'amino-connectionmap--russia-to-argentina',
-  'amino-connectionmap--russia-to-australia',
-  'amino-connectionmap--russia-to-canada',
-  'amino-connectionmap--russia-to-ecuador',
-  'amino-connectionmap--russia-to-greenland',
-  'amino-connectionmap--us-to-australia',
-  'amino-connectionmap--us-to-japan',
-  'amino-connectionmap--us-to-madagascar',
-  'amino-connectionmap--us-to-mexico',
-  'amino-connectionmap--us-to-saudi-arabia',
   // Spinner has CSS animation mid-frame
   'amino-spinner--inside-container',
   'amino-spinner--spinner',
@@ -296,14 +283,7 @@ export async function fetchStoryIds(baseURL: string): Promise<string[]> {
   return Object.values(data.entries)
     .filter(entry => entry.type === 'story')
     .map(entry => entry.id)
-    .filter(id => {
-      if (!isSafeStoryId(id)) {
-        // eslint-disable-next-line no-console
-        console.warn(`Skipping invalid story ID: ${id}`);
-        return false;
-      }
-      return !SKIP_STORIES.has(id);
-    })
+    .filter(id => !SKIP_STORIES.has(id))
     .sort();
 }
 

@@ -9,8 +9,6 @@ import {
   type SlideOverProps,
 } from 'src/components/slide-over/SlideOver';
 
-import styles from './SlideOver.stories.module.scss';
-
 const SlideOverMeta: Meta = {
   component: SlideOver,
   parameters: {
@@ -108,7 +106,14 @@ WithHover.args = {
       <Button>Action 2</Button>
     </>
   ),
-  children: <div className={styles.hoverDiv}>Hover me</div>,
+  children: (
+    <div
+      className="flex h-full items-center justify-center transition-transform
+        duration-200 hover:scale-150"
+    >
+      Hover me
+    </div>
+  ),
   label: 'Slideover title',
   subtitle: 'With a subtitle',
 };
@@ -147,7 +152,7 @@ export const WithCoverSheet: StoryFn<SlideOverProps> = ({
           Open Cover Sheet
         </Button>
         <CoverSheet
-          className={styles.styledCoverSheet}
+          className=""
           label="Cover sheet"
           onClose={() => setCoverSheetOpen(false)}
           open={coverSheetOpen}

@@ -11,8 +11,6 @@ import { useRipple } from 'src/components/button/useRipple';
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { VStack } from 'src/components/stack/VStack';
 
-import styles from './Ripple.stories.module.scss';
-
 const RippleMeta: Meta = {
   component: RippleGroup,
 };
@@ -31,8 +29,13 @@ export const Ripple: StoryFn<typeof RippleGroup> = props => {
 
   return (
     <VStack>
-      <div className={styles.styledDiv} {...getRippleHandlers({})}>
-        <div className={styles.backgroundDiv} />
+      <div
+        className="border-amino relative flex h-[400px] w-[400px]
+          cursor-crosshair flex-col items-center justify-center rounded-md
+          border"
+        {...getRippleHandlers({})}
+      >
+        <div className="absolute h-full w-full bg-[length:400%_400%] opacity-30" />
         <div>Click me!</div>
         {rippleEnabled && <RippleGroup ref={rippleRef} {...props} />}
       </div>

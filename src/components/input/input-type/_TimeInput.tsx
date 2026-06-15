@@ -1,15 +1,13 @@
 import { forwardRef, useRef } from 'react';
 
 import { useMergeRefs } from '@floating-ui/react';
-import clsx from 'clsx';
 
 import {
   FloatLabelInput,
   type FloatLabelInputProps,
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { ClockIcon } from 'src/icons/ClockIcon';
-
-import styles from './_TimeInput.module.scss';
+import { cn } from 'src/utils/cn';
 
 export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
   (
@@ -40,7 +38,13 @@ export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
     const mergedRef = useMergeRefs([ref, inputRef]);
 
     return (
-      <div className={clsx(styles.styledWrapper, className)}>
+      <div
+        className={cn(
+          `relative w-full
+          [&_input[type=time]::-webkit-calendar-picker-indicator]:hidden`,
+          className,
+        )}
+      >
         <FloatLabelInput
           ref={mergedRef}
           aria-label={label}
@@ -58,9 +62,11 @@ export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
           required={required}
           suffix={
             suffix || (
-              <div className={styles.styledActionWrapper}>
+              <div className="flex flex-col justify-center">
                 <button
-                  className={styles.styledButtonAction}
+                  className="hover:bg-hover rounded-full p-1.5 transition-all
+                    duration-300 ease-in-out focus:outline-none
+                    active:bg-gray-100"
                   onClick={() => {
                     inputRef.current?.showPicker();
                     inputRef.current?.dispatchEvent(

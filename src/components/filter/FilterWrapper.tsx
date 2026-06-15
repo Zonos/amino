@@ -1,17 +1,13 @@
 import type { KeyboardEvent, MouseEvent, ReactNode, RefObject } from 'react';
 
-import clsx from 'clsx';
-
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { MinusCircleDuotoneIcon } from 'src/icons/MinusCircleDuotoneIcon';
 import { PlusCircleDuotoneIcon } from 'src/icons/PlusCircleDuotoneIcon';
 import { theme } from 'src/styles/constants/theme';
-import globalStyles from 'src/styles/global.module.scss';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import styles from './FilterWrapper.module.scss';
+import { cn } from 'src/utils/cn';
 
 type FilterWrapperProps = BaseProps & {
   active: boolean;
@@ -144,31 +140,35 @@ export const FilterWrapper = ({
   style,
 }: FilterWrapperProps) => (
   <div
-    className={clsx(
+    className={cn(
       className,
-      styles.filterWrapper,
-      isDisabled && styles.disabled,
+      'relative',
+      isDisabled && 'pointer-events-none opacity-50',
     )}
-    style={{
-      ...style,
-      '--amino-filter-wrapper-border-bottom-right-radius': hasFilter
-        ? '0px'
-        : '100px',
-      '--amino-filter-wrapper-border-right-color': active
-        ? theme.borderColor
-        : theme.gray200,
-      '--amino-filter-wrapper-border-top-right-radius': hasFilter
-        ? '0px'
-        : '100px',
-    }}
+    style={style}
   >
-    <div className={clsx(active && 'active', styles.badgeWrapper)}>
+    <div
+      className={cn(
+        `inline-flex items-center rounded-full border border-dashed
+        border-gray-200 bg-transparent text-gray-700`,
+        active && 'border-amino border-solid',
+      )}
+    >
       <button
-        className={globalStyles.focusable}
+        className="focus-visible:shadow-glow-blue focus:outline-none
+          focus-visible:outline-none active:outline-none"
         onClick={handleToggle}
         type="button"
       >
-        <div className={clsx(active && 'active', styles.toggleWrapper)}>
+        <div
+          className={cn(
+            'flex cursor-pointer items-center gap-0 rounded-full px-1 py-1',
+            active && 'border-r border-solid',
+            'hover:bg-hover',
+            hasFilter && 'rounded-tr-none rounded-br-none',
+          )}
+          style={active ? { borderRightColor: theme.borderColor } : undefined}
+        >
           {active ? (
             <MinusCircleDuotoneIcon
               color="gray0"
@@ -182,25 +182,36 @@ export const FilterWrapper = ({
               size={24}
             />
           )}
-          <Text className={styles.filterTitle} fontWeight={600}>
+          <Text className="pr-1 pl-1" color="textColor" fontWeight={600}>
             {label}
           </Text>
         </div>
       </button>
       {hasFilter && (
         <button
-          className={clsx(styles.styledDropdownTrigger, globalStyles.focusable)}
+          className={cn(
+            `hover:bg-hover flex cursor-pointer items-center gap-0 border-none
+            px-1 py-1`,
+            `focus-visible:shadow-glow-blue focus:outline-none
+            focus-visible:outline-none active:outline-none`,
+            'rounded-l-none rounded-r-full',
+          )}
           onClick={handleOpenDropdown}
           type="button"
         >
-          <Text className={styles.filterText}>{filterText}</Text>
+          <Text className="pr-1 pl-1" color="blue600" fontWeight={600}>
+            {filterText}
+          </Text>
           <ChevronDownIcon size={24} />
         </button>
       )}
     </div>
     <div
       ref={dropdownRef}
-      className={styles.dropdownWrapper}
+      className={cn(
+        `bg-page shadow-amino-xl absolute z-5 flex min-w-100 flex-col gap-6
+        rounded-xl p-6 outline-none`,
+      )}
       onKeyDown={handleKeyDown}
       role="menu"
       style={{
@@ -209,8 +220,13 @@ export const FilterWrapper = ({
       tabIndex={-1}
     >
       <Text type="bold-subheader">{dropdownTitle}</Text>
-      <div className={styles.controlsWrapper}>{children}</div>
-      <Button onClick={handleApply} size="md" variant="primary">
+      <div className="flex max-h-100 flex-col gap-2">{children}</div>
+      <Button
+        className="w-full"
+        onClick={handleApply}
+        size="md"
+        variant="primary"
+      >
         Apply
       </Button>
     </div>

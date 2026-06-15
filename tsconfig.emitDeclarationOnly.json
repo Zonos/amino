@@ -3,8 +3,9 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "rootDir": "./src"
   },
   "include": ["./src"],
-  "exclude": ["**/_*"]
+  "exclude": ["**/_*", "**/*.spec.ts"]
 }

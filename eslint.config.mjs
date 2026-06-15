@@ -1,7 +1,6 @@
 import eslint from '@eslint/js';
 import pluginVitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import * as pluginCssModules from 'eslint-plugin-css-modules';
 import pluginImport from 'eslint-plugin-import';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginNoRelativeImports from 'eslint-plugin-no-relative-import-paths';
@@ -28,8 +27,6 @@ const ignoreConfig = {
     'src/all.ts',
     '!.storybook',
     '.github',
-    '.next',
-    '.next/**/*',
   ],
 };
 
@@ -53,7 +50,6 @@ export default tseslint.config(
       },
     },
     plugins: {
-      'css-modules': pluginCssModules,
       'jsx-a11y': pluginJsxA11y,
       'no-relative-import-paths': pluginNoRelativeImports,
       react: pluginReact,
@@ -88,8 +84,6 @@ export default tseslint.config(
       camelcase: 'off',
       // disable since sometime `this` doesn't need to be used in some util function in class
       'class-methods-use-this': 'off',
-      'css-modules/no-undef-class': [2, { camelCase: true }],
-      'css-modules/no-unused-class': [2, { camelCase: true }],
       'import/extensions': 'off',
       // False positives
       'import/named': 'off',
@@ -114,7 +108,7 @@ export default tseslint.config(
       'no-console': 'warn',
       'no-relative-import-paths/no-relative-import-paths': [
         'warn',
-        // Allow to import from same folder for importing scss modules
+        // Allow to import from same folder for relative imports
         { allowSameFolder: true },
       ],
       'no-restricted-syntax': [
@@ -228,46 +222,6 @@ export default tseslint.config(
     files: ['svgReact/**', 'build-utils/**'],
     rules: {
       'no-console': 'off',
-    },
-  },
-  // Add specific override for next.config.mjs to fix TypeScript parsing issues
-  {
-    files: ['next.config.mjs'],
-    languageOptions: {
-      parserOptions: {
-        project: null, // Disable TypeScript linting for this file
-      },
-    },
-    rules: {
-      '@typescript-eslint/consistent-type-definitions': 'off',
-      '@typescript-eslint/consistent-type-imports': 'off',
-      // Disable all TypeScript-specific rules for this file
-      '@typescript-eslint/no-deprecated': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-import-type-side-effects': 'off',
-      '@typescript-eslint/no-shadow': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/no-use-before-define': 'off',
-    },
-  },
-  // Add override for test-app-router.js to fix TypeScript parsing error
-  {
-    files: ['test-app-router.js'],
-    languageOptions: {
-      parserOptions: {
-        project: null, // Disable TypeScript linting for this file
-      },
-    },
-    rules: {
-      '@typescript-eslint/consistent-type-definitions': 'off',
-      '@typescript-eslint/consistent-type-imports': 'off',
-      // Disable all TypeScript-specific rules for this file
-      '@typescript-eslint/no-deprecated': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-import-type-side-effects': 'off',
-      '@typescript-eslint/no-shadow': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/no-use-before-define': 'off',
     },
   },
 );

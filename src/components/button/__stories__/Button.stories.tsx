@@ -7,8 +7,6 @@ import { Text } from 'src/components/text/Text';
 import { ArrowRightIcon } from 'src/icons/ArrowRightIcon';
 import { CubeIcon } from 'src/icons/CubeIcon';
 
-import styles from './Button.stories.module.scss';
-
 const ButtonMeta: Meta = {
   component: Button,
   parameters: {
@@ -29,10 +27,10 @@ const ButtonRow = ({
   ...props
 }: ButtonProps & { label: string }) => (
   <div>
-    <Text className={styles.buttonRowLabel} type="bold-subheader">
+    <Text className="border-b-gray-1000 mb-2 border-b" type="bold-subheader">
       {label}
     </Text>
-    <div className={styles.hWrapper}>
+    <div className="my-4 flex flex-row flex-wrap items-center gap-6">
       <Button<'button'>
         {...props}
         disabled={disabled}
@@ -106,7 +104,7 @@ const ButtonRow = ({
         Night override
       </Button>
     </div>
-    <div className={styles.hWrapper}>
+    <div className="my-4 flex flex-row flex-wrap items-center gap-6">
       <Button
         {...props}
         disabled={disabled}
@@ -153,7 +151,7 @@ const ButtonRow = ({
 );
 
 const Template: StoryFn<ButtonProps> = props => (
-  <div className={styles.vWrapper}>
+  <div className="flex flex-col gap-10">
     <ButtonRow {...props} label="Default" />
     <ButtonRow {...props} disabled label="Disabled" />
     <ButtonRow {...props} label="Loading" loading />

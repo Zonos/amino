@@ -1,15 +1,13 @@
 import { forwardRef, useRef } from 'react';
 
 import { useMergeRefs } from '@floating-ui/react';
-import clsx from 'clsx';
 
 import {
   InputBase,
   type InputBaseProps,
 } from 'src/components/input/input-simple/input-type/_InputBase';
 import { CalendarIcon } from 'src/icons/CalendarIcon';
-
-import styles from './_DateInput.module.scss';
+import { cn } from 'src/utils/cn';
 
 export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
   (
@@ -40,7 +38,16 @@ export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
     const mergedRef = useMergeRefs([ref, inputRef]);
 
     return (
-      <div className={clsx(styles.styledWrapper, className)}>
+      <div
+        className={cn(
+          'relative w-full',
+          '[&_input[type=datetime-local]::-webkit-calendar-picker-indicator]:hidden',
+          '[&_input[type=date]::-webkit-calendar-picker-indicator]:hidden',
+          !value &&
+            '[&:not(:focus-within)_input::-webkit-datetime-edit-fields-wrapper]:opacity-0',
+          className,
+        )}
+      >
         <InputBase
           ref={mergedRef}
           aria-label={label}
@@ -58,9 +65,11 @@ export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
           required={required}
           suffix={
             suffix || (
-              <div className={styles.styledActionWrapper}>
+              <div className="flex flex-col justify-center">
                 <button
-                  className={styles.styledButtonAction}
+                  className="rounded-full p-1.5 transition-all duration-300
+                    ease-in-out hover:bg-black/[0.04] focus:outline-none
+                    active:bg-black/10"
                   onClick={() => {
                     inputRef.current?.showPicker();
                     inputRef.current?.dispatchEvent(

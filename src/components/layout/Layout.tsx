@@ -1,12 +1,9 @@
 import type { ReactElement, ReactNode } from 'react';
 
-import clsx from 'clsx';
-
 import type { NavigationGroupProps } from 'src/components/layout/NavigationGroup';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
-
-import layoutStyles from './Layout.module.scss';
+import { cn } from 'src/utils/cn';
 
 export type LayoutProps = BaseProps & {
   /**
@@ -114,7 +111,7 @@ export const Layout = ({
   style,
 }: LayoutProps) => (
   <main
-    className={clsx(className, layoutStyles.aminoLayout)}
+    className={cn('h-screen overflow-hidden', className)}
     style={{
       ...style,
       '--amino-layout-height': headerContent
@@ -123,23 +120,35 @@ export const Layout = ({
     }}
   >
     {!!headerContent && (
-      <header className={layoutStyles.header}>{headerContent}</header>
+      <header
+        className="border-amino shadow-amino-base sticky top-0
+          z-(--amino-appbar-elevation) box-border flex h-(--amino-appbar-height)
+          border-b"
+      >
+        {headerContent}
+      </header>
     )}
-    <div className={layoutStyles.contentGrid}>
-      <nav className={layoutStyles.styledSidebar}>
-        <div className={layoutStyles.sidebarContent}>
-          {!!logoSidebar && (
-            <div className={layoutStyles.styledLogoSidebar}>{logoSidebar}</div>
-          )}
+    <div
+      className="grid h-(--amino-layout-height)"
+      style={{
+        gridTemplateColumns: `${theme.sidebarWidth} 1fr`,
+      }}
+    >
+      <nav
+        className="border-amino-subtle bg-sidebar box-border grid h-screen
+          w-(--amino-sidebar-width) grid-rows-[1fr_auto] border-r"
+      >
+        <div className="p-amino-16 box-border h-full w-full overflow-y-auto">
+          {!!logoSidebar && <div className="mb-amino-24">{logoSidebar}</div>}
           {sidebar}
         </div>
 
-        <div className={layoutStyles.footer}>{footer}</div>
+        <div className="box-border w-(--amino-sidebar-width)">{footer}</div>
       </nav>
       <div
-        className={clsx(
-          layoutStyles.content,
-          noPaddingContent && layoutStyles.noPadding,
+        className={cn(
+          'box-border h-full overflow-y-auto',
+          noPaddingContent ? 'p-0' : 'p-amino-32',
         )}
       >
         {content}

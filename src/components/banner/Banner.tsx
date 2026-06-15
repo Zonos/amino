@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import clsx from 'clsx';
+import { cva } from 'class-variance-authority';
 
 import { Button } from 'src/components/button/Button';
 import { Text } from 'src/components/text/Text';
@@ -12,8 +12,25 @@ import { WarningIcon } from 'src/icons/WarningIcon';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Color } from 'src/types/Color';
 import type { Intent } from 'src/types/Intent';
+import { cn } from 'src/utils/cn';
 
-import styles from './Banner.module.scss';
+const bannerVariants = cva(
+  'rounded-amino-12 p-amino-16 [&_.amino-button]:hover:brightness-110 [&_.amino-button]:focus:brightness-110',
+  {
+    defaultVariants: {
+      intent: 'default',
+    },
+    variants: {
+      intent: {
+        default: 'bg-gray-50 text-gray-800 border border-gray-200',
+        error: 'bg-red-50 text-red-800 border border-red-200',
+        info: 'bg-blue-50 text-blue-800 border border-blue-200',
+        success: 'bg-green-50 text-green-800 border border-green-200',
+        warning: 'bg-orange-50 text-orange-800 border border-orange-200',
+      },
+    },
+  },
+);
 
 export type BannerProps = BaseProps & {
   children?: ReactNode;
@@ -139,79 +156,109 @@ export const Banner = ({
     }
   };
   const renderContent = () => {
-    // Some banners are used with just a wall of text, which causes the icons to be centered vertically in said wall and look a little off. This should handle that edge case and move the icons to align at the top.
-    const onlyContent = !!children && !title && !footerActions;
     const intentProps = getIntentProps();
 
-    const renderTitle = () =>
-      title && (
-        <header className={styles.bannerHeader}>
-          <Text color={intentProps.removeIconColor} type="label">
-            {title}
-          </Text>
-          {headerActions && (
-            <div className={styles.actionsWrapper}>{headerActions}</div>
-          )}
-        </header>
+    const closeButton = onClose && (
+      <div className="justify-self-end [grid-area:close]">
+        <Button
+          className="w-6"
+          icon={<RemoveIcon color={intentProps.removeIconColor} size={20} />}
+          onClick={onClose}
+          variant="text"
+        />
+      </div>
+    );
+
+    const iconEl = (
+      <div className="justify-self-start [grid-area:icon]">
+        {intentProps.intentIcon}
+      </div>
+    );
+
+    // When there is no title, render everything inline with the icon in one row
+    if (!title) {
+      const hasContent = !!children || !!footerActions || !!headerActions;
+      return (
+        <div
+          className="grid"
+          style={{
+            alignItems: hasContent && !!children ? 'start' : 'center',
+            gridTemplateAreas: "'icon header close'",
+            gridTemplateColumns: `32px auto ${!onClose ? '0px' : '32px'}`,
+          }}
+        >
+          {iconEl}
+          {closeButton}
+          <div
+            className="text-amino-base gap-amino-8 flex flex-col
+              [grid-area:header]"
+            style={{ color: intentProps.removeIconColor }}
+          >
+            {headerActions && (
+              <div className="gap-amino-8 flex items-center">
+                {headerActions}
+              </div>
+            )}
+            {children}
+            {footerActions && (
+              <footer className="gap-amino-8 mt-amino-4 flex items-center">
+                {footerActions}
+              </footer>
+            )}
+          </div>
+        </div>
       );
+    }
 
-    const renderFooter = () =>
-      footerActions && (
-        <footer className={styles.bannerFooter}>
-          <div className={styles.actionsWrapper}>{footerActions}</div>
-        </footer>
-      );
-
-    // A hack to make sure the header content (whatever the first non-null is) aligns in it's own row
-    const [header, content, moreContent] = [
-      renderTitle(),
-      children,
-      renderFooter(),
-    ].filter(Boolean);
-
+    // When there is a title, use two-row grid layout
     return (
       <div
-        className={styles.container}
+        className="grid"
         style={{
-          '--amino-banner-container-align-items': onlyContent
-            ? 'start'
-            : 'center',
-          '--amino-banner-container-grid-template-columns': `32px auto ${
-            !onClose ? '0px' : '32px'
-          }`,
-          '--amino-banner-header-color': intentProps.removeIconColor,
+          alignItems: 'center',
+          gridTemplateAreas: "'icon header close' '. content .'",
+          gridTemplateColumns: `32px auto ${!onClose ? '0px' : '32px'}`,
         }}
       >
-        <div className={styles.icon}>{intentProps.intentIcon}</div>
-        {onClose && (
-          <div className={styles.close}>
-            <Button
-              className={clsx(styles.closeButton)}
-              icon={
-                <RemoveIcon color={intentProps.removeIconColor} size={20} />
-              }
-              onClick={onClose}
-              variant="text"
-            />
-          </div>
-        )}
-
-        <div className={styles.header}>{header}</div>
-
-        {content && (
-          <div className={styles.content}>
-            {content}
-            {moreContent}
+        {iconEl}
+        {closeButton}
+        <div
+          className="text-amino-base [grid-area:header]"
+          style={{ color: intentProps.removeIconColor }}
+        >
+          <header className="gap-amino-12 flex items-center justify-between">
+            <Text color={intentProps.removeIconColor} type="label">
+              {title}
+            </Text>
+            {headerActions && (
+              <div className="gap-amino-8 flex items-center">
+                {headerActions}
+              </div>
+            )}
+          </header>
+        </div>
+        {(children || footerActions) && (
+          <div
+            className="gap-amino-8 text-amino-base mt-2 flex flex-col
+              [grid-area:content]"
+          >
+            {children}
+            {footerActions && (
+              <footer className="gap-amino-12 mt-amino-8 flex items-center">
+                <div className="gap-amino-8 flex items-center">
+                  {footerActions}
+                </div>
+              </footer>
+            )}
           </div>
         )}
       </div>
     );
   };
 
-  const bannerClass = intent ? styles[`${intent}Banner`] : styles.defaultBanner;
   return (
     <div
-      className={clsx(styles.styledBanner, bannerClass, className)}
+      className={cn(bannerVariants({ intent: intent || 'default' }), className)}
       style={style}
     >
       {renderContent()}

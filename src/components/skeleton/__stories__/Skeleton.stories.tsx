@@ -8,8 +8,6 @@ import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
 import type { GridSpacing } from 'src/types/GridSpacing';
 
-import styles from './Skeleton.stories.module.scss';
-
 const SkeletonMeta: Meta = {
   args: {
     numberOfChildren: 4,
@@ -44,7 +42,7 @@ export const Card: StoryFn<
   StoryProps & { renderChild: (key: number) => ReactNode }
 > = ({ height, numberOfChildren, spacing, width }) => (
   <CardComponent
-    className={styles.styledCard}
+    className="max-w-150"
     footerActions={<Skeleton height={30} width={60} />}
     label="A Card"
   >
@@ -62,7 +60,7 @@ Card.args = {
 
 export const WithChildren: StoryFn = () => (
   <Skeleton
-    className={styles.styledSkeletonWithChildren}
+    className="flex items-center justify-center"
     height={100}
     width={400}
   >
