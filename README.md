@@ -68,6 +68,29 @@ We use [`typed-scss-modules`](https://www.npmjs.com/package/typed-scss-modules) 
 
 When adding or changing styles, **use Amino theme variables first** (Tailwind theme classes like `shadow-amino-xl`, `border-amino`, `bg-page`, or CSS vars like `var(--amino-v3-shadow-xl)`). Use custom values only when the design system does not provide a suitable token.
 
+#### Consuming Amino's styles (Tailwind contract)
+
+Since the move to Tailwind, Amino ships its components as JS that references Tailwind
+utility classes — it does **not** ship a precompiled utility stylesheet. Consuming apps
+must run Tailwind themselves and scan Amino's published JS so those classes get generated.
+In the consumer's `tailwind.config.ts`:
+
+```ts
+import { theme } from '@zonos/amino/styles/constants/theme';
+
+export default {
+  // Scan Amino's compiled components so their utility classes are emitted
+  content: ['./node_modules/@zonos/amino/**/*.js' /* …your own globs */],
+  // Map Amino's design tokens (used by classes like `bg-page`, `shadow-amino-xl`)
+  theme: { extend: { /* …derive from the imported `theme` object */ } },
+};
+```
+
+Also import Amino's global stylesheets once (e.g. in your root layout): `@zonos/amino/theme.css`,
+`@zonos/amino/reset.css`, and `@zonos/amino/amino.css`. An app with **no** Tailwind pipeline will
+render Amino components unstyled — this is by design. (`tailwind.css` is a build-time source file
+and is intentionally not published.)
+
 ### - Configuration
 
 - Install and setup library dependencies
