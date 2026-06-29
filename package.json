@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -206,6 +206,7 @@
       "esbuild": ">=0.28.1",
       "joi": ">=17.13.4",
       "form-data@>=4.0.0 <4.0.6": "4.0.6",
+      "undici@>=7.0.0 <7.28.0": "7.28.0",
       "js-yaml@<4.2.0": "4.2.0"
     }
   },
