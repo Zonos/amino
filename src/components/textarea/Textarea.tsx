@@ -256,6 +256,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   top-[calc(var(--amino-font-size-base)+6px)] left-4
                   origin-top-left leading-none transition-all duration-300
                   ease-in-out`,
+                  // pointer-events-none lets clicks on the label text pass
+                  // through to the textarea beneath (so the cursor lands where
+                  // the user clicked). Interactive descendants — links,
+                  // buttons, and our Tooltip trigger — opt back in so a
+                  // ReactNode label like `<>Label <Tooltip>?</Tooltip></>`
+                  // still works.
+                  `[&_.tooltip-wrapper]:pointer-events-auto
+                  [&_a]:pointer-events-auto [&_button]:pointer-events-auto
+                  **:[[role=button]]:pointer-events-auto`,
                   (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
                 )}
                 style={{ color: theme.gray800 }}

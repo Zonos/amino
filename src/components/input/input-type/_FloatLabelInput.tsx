@@ -287,7 +287,15 @@ export const FloatLabelInput = forwardRef<
           {...props}
         />
         <div
+          // pointer-events-none lets clicks on the label text pass through
+          // to the input beneath (so the cursor lands where the user clicked
+          // instead of the label capturing the click). Interactive descendants
+          // — links, buttons, and our Tooltip trigger — opt back in so a
+          // ReactNode label like `<>Label <Tooltip>?</Tooltip></>` still works.
           className="pointer-events-none order-1 block max-h-0
+            [&_.tooltip-wrapper]:pointer-events-auto [&_a]:pointer-events-auto
+            [&_button]:pointer-events-auto
+            **:[[role=button]]:pointer-events-auto
             [.disabled_&]:pointer-events-auto"
         >
           <span
