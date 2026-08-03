@@ -14,6 +14,7 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 import { getTestId } from 'src/utils/getTestId';
 
 export type InputMode =
@@ -48,7 +49,7 @@ type FloatLabelInputType = BaseProps & {
   inputMode?: InputMode;
 
   /** A label that will be displayed above the input */
-  label?: string;
+  label?: ReactNode;
 
   /**
    * @default false
@@ -169,7 +170,7 @@ export const FloatLabelInput = forwardRef<
   ) => {
     const inputId = useId();
     const testId = useMemo(
-      () => getTestId({ componentName: 'input', name: label }),
+      () => getTestId({ componentName: 'input', name: getNodeText(label) }),
       [label],
     );
     const hasValue = !!value || !!valuePrefix;
@@ -249,7 +250,7 @@ export const FloatLabelInput = forwardRef<
         )}
         <input
           ref={ref}
-          aria-label={label}
+          aria-label={getNodeText(label)}
           autoFocus={autoFocus}
           className={cn(
             `bg-amino-input relative order-2 box-border w-full

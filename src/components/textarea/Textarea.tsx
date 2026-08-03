@@ -43,7 +43,7 @@ type TextareaType = {
   /**
    * Label text to be displayed above the textarea
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * A value (in px) that will determine how wide the input is
    * @default 100%

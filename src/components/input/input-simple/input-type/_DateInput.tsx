@@ -8,6 +8,7 @@ import {
 } from 'src/components/input/input-simple/input-type/_InputBase';
 import { CalendarIcon } from 'src/icons/CalendarIcon';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 
 export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
   (
@@ -50,7 +51,7 @@ export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
       >
         <InputBase
           ref={mergedRef}
-          aria-label={label}
+          aria-label={getNodeText(label)}
           autoFocus={autoFocus}
           disabled={disabled}
           error={error}

@@ -12,6 +12,7 @@ import { StyledReactSelect } from 'src/components/select/_StyledReactSelect';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
+import { getNodeText } from 'src/utils/getNodeText';
 
 type RequiredProps = 'options' | 'value';
 
@@ -30,7 +31,7 @@ export type SelectProps<
   customOption?: (value: V) => ReactNode;
   hasGroups?: boolean;
   icon?: ReactNode;
-  label?: string;
+  label?: ReactNode;
   /**
    * @example
    * onChange={changed => setExampleValue(changed?.value || null)}
@@ -154,7 +155,9 @@ export const Select = <
 }: SelectProps<V, Option, false, Group>) => {
   if (Array.isArray(value) && value.length > 1) {
     throw Error(
-      `Only one selection allowed for '${label}' select (${value.length}) selected.`,
+      // A markup label would stringify to '[object Object]' here, so read its
+      // text — the whole point of this message is naming which select threw.
+      `Only one selection allowed for '${getNodeText(label) ?? ''}' select (${value.length}) selected.`,
     );
   }
   return (

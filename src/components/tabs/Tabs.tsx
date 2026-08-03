@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { Text } from 'src/components/text/Text';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
@@ -11,7 +13,7 @@ export type TabsProps = BaseProps & {
    * @default 'start'
    */
   align?: 'start' | 'center' | 'end';
-  items: string[];
+  items: ReactNode[];
   onChange: (selectedTab: number) => void;
   selected: number;
   /**
@@ -121,9 +123,11 @@ export const Tabs = ({
           '--amino-tabs-color': getTabColor(),
         }}
       >
-        {items.map(item => (
+        {items.map((item, index) => (
           <button
-            key={item}
+            // Tabs are a positional list — `onChange` reports an index and
+            // `selected` is an index — so position *is* the identity here.
+            key={index}
             className={cn(
               `relative cursor-pointer py-3 text-center transition-all
               select-none`,
@@ -133,21 +137,21 @@ export const Tabs = ({
               after:transition-all after:content-['']`,
               `focus:outline-none focus-visible:shadow-[var(--amino-glow-blue)]
               focus-visible:outline-none active:outline-none`,
-              selected === items.indexOf(item) && [
+              selected === index && [
                 'text-[var(--amino-tabs-color)]',
                 '[&>span]:text-[var(--amino-tabs-color)]',
                 'after:scale-x-100 after:bg-[var(--amino-tabs-color)]',
                 // Used for external styling
                 'is-selected',
               ],
-              selected !== items.indexOf(item) && [
+              selected !== index && [
                 'hover:text-gray-1000 hover:after:scale-x-100',
                 'focus:text-gray-1000 focus:after:scale-x-100',
                 `active:text-gray-1000 active:after:scale-x-100
                 active:after:bg-gray-300`,
               ],
             )}
-            onClick={() => onChange(items.indexOf(item))}
+            onClick={() => onChange(index)}
             type="button"
           >
             <Text type="label">{item}</Text>
@@ -168,9 +172,10 @@ export const Tabs = ({
         '--amino-tabs-color': getTabColor(),
       }}
     >
-      {items.map(item => (
+      {items.map((item, index) => (
         <button
-          key={item}
+          // Positional identity — see the subtle branch above.
+          key={index}
           className={cn(
             `relative flex-1 cursor-pointer py-3 text-center font-medium
             transition-all select-none`,
@@ -182,13 +187,13 @@ export const Tabs = ({
             '[&+button]:border-amino [&+button]:border-l',
             `focus:outline-none focus-visible:shadow-[var(--amino-glow-blue)]
             focus-visible:outline-none active:outline-none`,
-            selected === items.indexOf(item) && [
+            selected === index && [
               'text-[var(--amino-tabs-color)]',
               'after:scale-x-100 after:bg-[var(--amino-tabs-color)]',
               // Used for external styling
               'is-selected',
             ],
-            selected !== items.indexOf(item) && [
+            selected !== index && [
               'hover:bg-[rgba(0,0,0,0.03)]',
               'hover:text-gray-1000 hover:after:scale-x-100',
               'focus:text-gray-1000 focus:after:scale-x-100',
@@ -197,7 +202,7 @@ export const Tabs = ({
               active:after:bg-gray-300`,
             ],
           )}
-          onClick={() => onChange(items.indexOf(item))}
+          onClick={() => onChange(index)}
           type="button"
         >
           {item}

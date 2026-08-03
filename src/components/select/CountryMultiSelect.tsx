@@ -82,7 +82,7 @@ export type CountryMultiSelectProps<
    * Label for the select field
    * @default 'Select countries'
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Handler called when selection changes
    * @param countryCodes Array of country codes that are selected

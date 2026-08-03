@@ -8,6 +8,7 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { ClockIcon } from 'src/icons/ClockIcon';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 
 export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
   (
@@ -47,7 +48,7 @@ export const TimeInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       >
         <FloatLabelInput
           ref={mergedRef}
-          aria-label={label}
+          aria-label={getNodeText(label)}
           autoFocus={autoFocus}
           disabled={disabled}
           error={error}

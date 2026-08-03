@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { Select, type SelectProps } from 'src/components/select/Select';
 import { type Flag, FlagIcon } from 'src/icons/flag-icon/FlagIcon';
 import type { BaseProps } from 'src/types/BaseProps';
@@ -22,7 +24,7 @@ type CountrySelectType<T extends string> = {
   /**
    * Label displayed above the select input
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * Handler called when selection changes
    * @param value The selected country value or null if cleared

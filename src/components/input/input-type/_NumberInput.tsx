@@ -11,6 +11,7 @@ import { CaretUpIcon } from 'src/icons/CaretUpIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 
 const sizeVar: Record<Size, string> = {
   lg: theme.sizeLg,
@@ -48,7 +49,7 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
         <FloatLabelInput
           {...props}
           ref={mergedRef}
-          aria-label={label}
+          aria-label={getNodeText(label)}
           className="[&_input]:appearance-none [&_input]:pr-10
             [&_input::-webkit-calendar-picker-indicator]:hidden
             [&_input::-webkit-inner-spin-button]:hidden"

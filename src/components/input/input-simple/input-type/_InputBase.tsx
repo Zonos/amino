@@ -28,7 +28,7 @@ type InputBaseType = BaseProps & {
   disabled?: boolean;
   inputMode?: InputMode;
   /** A label that will be displayed above the input */
-  label?: string;
+  label?: ReactNode;
   /**
    * @default false
    */

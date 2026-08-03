@@ -18,6 +18,7 @@ import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 import { getTestId } from 'src/utils/getTestId';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
@@ -53,7 +54,7 @@ export type CheckboxProps = Omit<
     checked: boolean;
     disabled?: boolean;
     icon?: ReactNode;
-    label?: string;
+    label?: ReactNode;
     labelComponent?: ReactNode;
     labelDescription?: string;
     onChange: (
@@ -153,7 +154,7 @@ export const Checkbox = ({
   const id = useId();
 
   const testId = useMemo(
-    () => getTestId({ componentName: 'checkbox', name: label }),
+    () => getTestId({ componentName: 'checkbox', name: getNodeText(label) }),
     [label],
   );
 
