@@ -6,6 +6,8 @@ import {
   CountryMultiSelect,
   type CountryMultiSelectProps,
 } from 'src/components/select/CountryMultiSelect';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import { getCountryUrls } from 'src/utils/getCountryUrls';
 import type { CountryOption } from 'src/utils/hooks/useCountryOptions';
 import { useCountryOptions } from 'src/utils/hooks/useCountryOptions';
@@ -66,3 +68,25 @@ const CountryMultiSelectTemplate: StoryFn<CountryMultiSelectProps> = (
 };
 
 export const BasicCountryMultiSelect = CountryMultiSelectTemplate.bind({});
+
+export const LabelWithTooltip: StoryFn<CountryMultiSelectProps> = () => {
+  const [value, setValue] = useState<string[]>([]);
+  const dashboardUrl = getCountryUrls();
+  const countryOptions = useCountryOptions({ dashboardUrl });
+  return (
+    <CountryMultiSelect
+      countryOptions={countryOptions}
+      label={
+        <span className="inline-flex items-center gap-1 align-middle">
+          Ship-to countries
+          <Tooltip title="Choose every destination country you want to enable at checkout.">
+            <InfoIcon color="gray600" inlineBlock size={14} />
+          </Tooltip>
+        </span>
+      }
+      onChange={setValue}
+      unavailableCountries={[{ code: 'DZ', message: '(restricted)' }]}
+      value={value}
+    />
+  );
+};

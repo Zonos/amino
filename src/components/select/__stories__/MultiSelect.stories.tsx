@@ -6,6 +6,8 @@ import {
   MultiSelect,
   type MultiSelectProps,
 } from 'src/components/select/MultiSelect';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import { PlayCircleIcon } from 'src/icons/PlayCircleIcon';
 
 const SelectMeta: Meta = {
@@ -138,6 +140,25 @@ ActiveMultiSelectWithCutoff.args = {
       value: 'NZD',
     },
   ],
+};
+
+export const LabelWithTooltip = MultiSelectTemplate.bind({});
+LabelWithTooltip.args = {
+  label: (
+    <span className="inline-flex items-center gap-1 align-middle">
+      Currencies
+      <Tooltip title="Select every currency you want to display prices in.">
+        <InfoIcon color="gray600" inlineBlock size={14} />
+      </Tooltip>
+    </span>
+  ),
+  options: [
+    { label: 'US Dollar (USD)', value: 'USD' },
+    { label: 'European Euro (EUR)', value: 'EUR' },
+    { label: 'Japanese Yen (JPY)', value: 'JPY' },
+    { label: 'British Pound (GBP)', value: 'GBP' },
+  ],
+  value: [{ label: 'US Dollar (USD)', value: 'USD' }],
 };
 
 export const ActiveMultiSelectWithCutoffWithIcon = MultiSelectTemplate.bind({});

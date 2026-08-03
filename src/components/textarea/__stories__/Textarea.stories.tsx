@@ -7,6 +7,8 @@ import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import { Textarea, type TextareaProps } from 'src/components/textarea/Textarea';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
+import { InfoIcon } from 'src/icons/InfoIcon';
 
 const TextAreaMeta: Meta = {
   component: Textarea,
@@ -306,4 +308,24 @@ ErrorState.args = {
   label: 'Description',
   placeholder: 'Please fill out the description',
   value: 'HS code for Brazil',
+};
+
+export const LabelWithTooltip: StoryFn<TextareaProps> = props => {
+  const [value, setValue] = useState('');
+  return (
+    <Textarea
+      {...props}
+      label={
+        <span className="inline-flex items-center gap-1 align-middle">
+          Description
+          <Tooltip title="Explain the item's purpose and any special handling.">
+            <InfoIcon color="gray600" inlineBlock size={14} />
+          </Tooltip>
+        </span>
+      }
+      onChange={e => setValue(e.target.value)}
+      placeholder="Please fill out the description"
+      value={value}
+    />
+  );
 };
