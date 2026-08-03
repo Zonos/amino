@@ -289,13 +289,12 @@ export const FloatLabelInput = forwardRef<
         <div
           // pointer-events-none lets clicks on the label text pass through
           // to the input beneath (so the cursor lands where the user clicked
-          // instead of the label capturing the click). Interactive descendants
-          // — links, buttons, and our Tooltip trigger — opt back in so a
-          // ReactNode label like `<>Label <Tooltip>?</Tooltip></>` still works.
+          // instead of the label capturing the click). Our Tooltip trigger
+          // opts back in so a ReactNode label like
+          // `<>Label <Tooltip>?</Tooltip></>` can still be hovered — Tooltip
+          // is the only interactive content we put in labels.
           className="pointer-events-none order-1 block max-h-0
-            [&_.tooltip-wrapper]:pointer-events-auto [&_a]:pointer-events-auto
-            [&_button]:pointer-events-auto
-            **:[[role=button]]:pointer-events-auto
+            [&_.tooltip-wrapper]:pointer-events-auto
             [.disabled_&]:pointer-events-auto"
         >
           <span
@@ -318,10 +317,17 @@ export const FloatLabelInput = forwardRef<
           </span>
           <div
             className={cn(
-              `after:absolute after:inset-0
+              // The ::after overlay only exists to draw the disabled cursor
+              // and z-index veil, so make it click-through by default —
+              // otherwise it sits above the label span (which lives inside
+              // the same block) and swallows hover on interactive descendants
+              // like a Tooltip trigger in the label. In the disabled state we
+              // re-enable pointer events so the not-allowed cursor shows.
+              `after:pointer-events-none after:absolute after:inset-0
               after:rounded-[var(--amino-float-label-input-border-radius)]
               after:content-['']`,
-              '.disabled_&:after:cursor-not-allowed .disabled_&:after:z-[1]',
+              `.disabled_&:after:pointer-events-auto
+              .disabled_&:after:cursor-not-allowed .disabled_&:after:z-[1]`,
             )}
           />
         </div>

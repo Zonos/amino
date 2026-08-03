@@ -206,8 +206,14 @@ export const Checkbox = ({
       />
       <div
         className={cn(
-          `pointer-events-none flex flex-row select-none
-          [&_*]:pointer-events-none [&_*]:select-none`,
+          // pointer-events-none on the wrapper + all descendants lets clicks
+          // pass through to the real <input type="checkbox"> underneath, so
+          // clicking anywhere in the visual row toggles the box. Our Tooltip
+          // trigger is excluded so a ReactNode label like
+          // `<>Terms <Tooltip>?</Tooltip></>` can still be hovered — Tooltip
+          // is the only interactive content we put in labels.
+          `pointer-events-none flex flex-row select-none **:select-none
+          [&_*:not(.tooltip-wrapper)]:pointer-events-none`,
           'amino-input-wrapper',
           disabled && ['cursor-not-allowed', 'disabled'],
         )}

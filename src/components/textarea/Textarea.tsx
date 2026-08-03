@@ -258,13 +258,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   ease-in-out`,
                   // pointer-events-none lets clicks on the label text pass
                   // through to the textarea beneath (so the cursor lands where
-                  // the user clicked). Interactive descendants — links,
-                  // buttons, and our Tooltip trigger — opt back in so a
+                  // the user clicked). Our Tooltip trigger opts back in so a
                   // ReactNode label like `<>Label <Tooltip>?</Tooltip></>`
-                  // still works.
-                  `[&_.tooltip-wrapper]:pointer-events-auto
-                  [&_a]:pointer-events-auto [&_button]:pointer-events-auto
-                  **:[[role=button]]:pointer-events-auto`,
+                  // can still be hovered — Tooltip is the only interactive
+                  // content we put in labels.
+                  '[&_.tooltip-wrapper]:pointer-events-auto',
                   (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
                 )}
                 style={{ color: theme.gray800 }}
@@ -273,8 +271,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               </span>
             )}
             <div
-              className="after:absolute after:inset-0 after:rounded-[12px]
-                after:content-['']"
+              // The ::after overlay is a full-cover decorative box; make it
+              // click-through so it doesn't sit above the label span and
+              // swallow hover/click on a Tooltip trigger inside a ReactNode
+              // label.
+              className="after:pointer-events-none after:absolute after:inset-0
+                after:rounded-[12px] after:content-['']"
             />
           </label>
 
