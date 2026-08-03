@@ -1,9 +1,9 @@
-import { createElement } from 'react';
+import { createElement, type ReactNode } from 'react';
 
 import { getNodeText } from 'src/utils/getNodeText';
 
 /** JSX is unavailable here — the suite only picks up `.test.ts` files. */
-const element = (type: string, ...children: unknown[]) =>
+const element = ({ type, children }: { type: string; children: ReactNode[] }) =>
   createElement(type, null, ...children);
 
 describe('getNodeText', () => {
@@ -19,12 +19,22 @@ describe('getNodeText', () => {
     expect(getNodeText(null)).toBeUndefined();
     expect(getNodeText(undefined)).toBeUndefined();
     expect(getNodeText(false)).toBeUndefined();
-    expect(getNodeText(element('span'))).toBeUndefined();
+    expect(
+      getNodeText(element({ type: 'span', children: [] })),
+    ).toBeUndefined();
   });
 
   it('recurses into element children so wrapped labels keep their text', () => {
     expect(
-      getNodeText(element('span', 'Genus ', element('em', '(required)'))),
+      getNodeText(
+        element({
+          type: 'span',
+          children: [
+            'Genus ',
+            element({ type: 'em', children: ['(required)'] }),
+          ],
+        }),
+      ),
     ).toBe('Genus (required)');
   });
 
@@ -39,16 +49,20 @@ describe('getNodeText', () => {
   it('distinguishes sibling controls whose labels differ deep in the tree', () => {
     // The property test ids depend on: two richly-labeled selects must not
     // collapse onto the same extracted string.
-    const industry = element(
-      'div',
-      element('strong', 'Industry'),
-      element('button', '?'),
-    );
-    const productGroup = element(
-      'div',
-      element('strong', 'Product group'),
-      element('button', '?'),
-    );
+    const industry = element({
+      type: 'div',
+      children: [
+        element({ type: 'strong', children: ['Industry'] }),
+        element({ type: 'button', children: ['?'] }),
+      ],
+    });
+    const productGroup = element({
+      type: 'div',
+      children: [
+        element({ type: 'strong', children: ['Product group'] }),
+        element({ type: 'button', children: ['?'] }),
+      ],
+    });
     expect(getNodeText(industry)).toBe('Industry ?');
     expect(getNodeText(productGroup)).toBe('Product group ?');
     expect(getNodeText(industry)).not.toBe(getNodeText(productGroup));
