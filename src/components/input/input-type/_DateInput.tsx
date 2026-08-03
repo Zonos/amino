@@ -8,7 +8,6 @@ import {
 } from 'src/components/input/input-type/_FloatLabelInput';
 import { CalendarIcon } from 'src/icons/CalendarIcon';
 import { cn } from 'src/utils/cn';
-import { getNodeText } from 'src/utils/getNodeText';
 
 export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
   (
@@ -55,7 +54,6 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       >
         <FloatLabelInput
           ref={mergedRef}
-          aria-label={getNodeText(label)}
           autoFocus={autoFocus}
           disabled={disabled}
           error={error}

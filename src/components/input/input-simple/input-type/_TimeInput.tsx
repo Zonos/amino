@@ -8,7 +8,6 @@ import {
 } from 'src/components/input/input-simple/input-type/_InputBase';
 import { ClockIcon } from 'src/icons/ClockIcon';
 import { cn } from 'src/utils/cn';
-import { getNodeText } from 'src/utils/getNodeText';
 
 export const TimeInput = forwardRef<HTMLInputElement, InputBaseProps>(
   (
@@ -48,7 +47,6 @@ export const TimeInput = forwardRef<HTMLInputElement, InputBaseProps>(
       >
         <InputBase
           ref={mergedRef}
-          aria-label={getNodeText(label)}
           autoFocus={autoFocus}
           disabled={disabled}
           error={error}

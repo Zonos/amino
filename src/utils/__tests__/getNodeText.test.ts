@@ -22,6 +22,44 @@ describe('getNodeText', () => {
     expect(
       getNodeText(element({ children: [], type: 'span' })),
     ).toBeUndefined();
+    // Whitespace-only strings read as no text, not as '   '.
+    expect(getNodeText('   ')).toBeUndefined();
+  });
+
+  it('normalizes whitespace regardless of nesting', () => {
+    expect(getNodeText('  HS  code  ')).toBe('HS code');
+    expect(
+      getNodeText(element({ children: ['  HS  code  '], type: 'span' })),
+    ).toBe('HS code');
+  });
+
+  it('reads non-array iterables the same way React renders them', () => {
+    expect(getNodeText(new Set(['Genus', 'species']))).toBe('Genus species');
+  });
+
+  it('cannot read text a component renders from props', () => {
+    // `<Translate text="HS code" />` keeps its text in a prop, which is
+    // unreachable without rendering. Callers must not rely on extraction for
+    // component labels: test ids fall back to the component name, and
+    // accessible names come from the <label> association rather than an
+    // extracted aria-label.
+    const TranslateLike = ({ text }: { text: string }) => text;
+    expect(
+      getNodeText(createElement(TranslateLike, { text: 'HS code' })),
+    ).toBeUndefined();
+    // A component nested in markup contributes nothing — only the host text
+    // around it survives.
+    expect(
+      getNodeText(
+        element({
+          children: [
+            'HS code ',
+            createElement(TranslateLike, { text: '(optional)' }),
+          ],
+          type: 'span',
+        }),
+      ),
+    ).toBe('HS code');
   });
 
   it('recurses into element children so wrapped labels keep their text', () => {

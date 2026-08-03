@@ -54,6 +54,12 @@ export type CheckboxProps = Omit<
     checked: boolean;
     disabled?: boolean;
     icon?: ReactNode;
+    /**
+     * The whole visual row is a `<label>` for the checkbox, so clicking
+     * anywhere in it — including non-interactive markup in a ReactNode label,
+     * like a Tooltip trigger icon — toggles the box. Tooltips in labels open
+     * on hover only.
+     */
     label?: ReactNode;
     labelComponent?: ReactNode;
     labelDescription?: string;
@@ -218,6 +224,7 @@ export const Checkbox = ({
           // so the opt-in wins.
           `pointer-events-none flex flex-row select-none **:pointer-events-none
           **:select-none [&_.tooltip-wrapper]:pointer-events-auto
+          [&_.tooltip-wrapper]:cursor-help
           [&_.tooltip-wrapper_*]:pointer-events-auto`,
           'amino-input-wrapper',
           disabled && ['cursor-not-allowed', 'disabled'],

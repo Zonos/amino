@@ -262,7 +262,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   // ReactNode label like `<>Label <Tooltip>?</Tooltip></>`
                   // can still be hovered — Tooltip is the only interactive
                   // content we put in labels.
-                  '[&_.tooltip-wrapper]:pointer-events-auto',
+                  `[&_.tooltip-wrapper]:pointer-events-auto
+                  [&_.tooltip-wrapper]:cursor-help`,
                   (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
                 )}
                 style={{ color: theme.gray800 }}

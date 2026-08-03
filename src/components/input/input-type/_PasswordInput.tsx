@@ -8,7 +8,6 @@ import {
 import { EyeIcon } from 'src/icons/EyeIcon';
 import { EyeOffIcon } from 'src/icons/EyeOffIcon';
 import { cn } from 'src/utils/cn';
-import { getNodeText } from 'src/utils/getNodeText';
 
 export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
   (
@@ -38,7 +37,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       <div className={cn('relative w-full', className)}>
         <FloatLabelInput
           ref={ref}
-          aria-label={getNodeText(label)}
           autoFocus={autoFocus}
           className="[&_input]:pr-10"
           disabled={disabled}
