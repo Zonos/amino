@@ -208,12 +208,17 @@ export const Checkbox = ({
         className={cn(
           // pointer-events-none on the wrapper + all descendants lets clicks
           // pass through to the real <input type="checkbox"> underneath, so
-          // clicking anywhere in the visual row toggles the box. Our Tooltip
-          // trigger is excluded so a ReactNode label like
-          // `<>Terms <Tooltip>?</Tooltip></>` can still be hovered — Tooltip
-          // is the only interactive content we put in labels.
-          `pointer-events-none flex flex-row select-none **:select-none
-          [&_*:not(.tooltip-wrapper)]:pointer-events-none`,
+          // clicking anywhere in the visual row toggles the box (that's the
+          // intended label behavior — a click on a decorative icon in the
+          // label still selects the box). Explicitly re-enable pointer events
+          // on our Tooltip trigger *and its subtree* so a ReactNode label
+          // like `<>Terms <Tooltip>?</Tooltip></>` receives hover — otherwise
+          // the SVG inside `.tooltip-wrapper` swallows the pointer with
+          // `none` and nothing fires. Higher specificity than the wildcard,
+          // so the opt-in wins.
+          `pointer-events-none flex flex-row select-none **:pointer-events-none
+          **:select-none [&_.tooltip-wrapper]:pointer-events-auto
+          [&_.tooltip-wrapper_*]:pointer-events-auto`,
           'amino-input-wrapper',
           disabled && ['cursor-not-allowed', 'disabled'],
         )}
