@@ -18,6 +18,7 @@ import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 import { getTestId } from 'src/utils/getTestId';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
@@ -53,7 +54,13 @@ export type CheckboxProps = Omit<
     checked: boolean;
     disabled?: boolean;
     icon?: ReactNode;
-    label?: string;
+    /**
+     * The whole visual row is a `<label>` for the checkbox, so clicking
+     * anywhere in it — including non-interactive markup in a ReactNode label,
+     * like a Tooltip trigger icon — toggles the box. Tooltips in labels open
+     * on hover only.
+     */
+    label?: ReactNode;
     labelComponent?: ReactNode;
     labelDescription?: string;
     onChange: (
@@ -153,7 +160,7 @@ export const Checkbox = ({
   const id = useId();
 
   const testId = useMemo(
-    () => getTestId({ componentName: 'checkbox', name: label }),
+    () => getTestId({ componentName: 'checkbox', name: getNodeText(label) }),
     [label],
   );
 
@@ -205,8 +212,20 @@ export const Checkbox = ({
       />
       <div
         className={cn(
-          `pointer-events-none flex flex-row select-none
-          [&_*]:pointer-events-none [&_*]:select-none`,
+          // pointer-events-none on the wrapper + all descendants lets clicks
+          // pass through to the real <input type="checkbox"> underneath, so
+          // clicking anywhere in the visual row toggles the box (that's the
+          // intended label behavior — a click on a decorative icon in the
+          // label still selects the box). Explicitly re-enable pointer events
+          // on our Tooltip trigger *and its subtree* so a ReactNode label
+          // like `<>Terms <Tooltip>?</Tooltip></>` receives hover — otherwise
+          // the SVG inside `.tooltip-wrapper` swallows the pointer with
+          // `none` and nothing fires. Higher specificity than the wildcard,
+          // so the opt-in wins.
+          `pointer-events-none flex flex-row select-none **:pointer-events-none
+          **:select-none [&_.tooltip-wrapper]:pointer-events-auto
+          [&_.tooltip-wrapper]:cursor-help
+          [&_.tooltip-wrapper_*]:pointer-events-auto`,
           'amino-input-wrapper',
           disabled && ['cursor-not-allowed', 'disabled'],
         )}

@@ -50,7 +50,6 @@ export const DateInput = forwardRef<HTMLInputElement, InputBaseProps>(
       >
         <InputBase
           ref={mergedRef}
-          aria-label={label}
           autoFocus={autoFocus}
           disabled={disabled}
           error={error}

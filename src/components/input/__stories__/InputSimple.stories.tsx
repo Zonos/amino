@@ -9,9 +9,11 @@ import {
 import { HStack } from 'src/components/stack/HStack';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { BagIcon } from 'src/icons/BagIcon';
 import { CubeIcon } from 'src/icons/CubeIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import { SearchIcon } from 'src/icons/SearchIcon';
 
 const InputMeta: Meta = {
@@ -248,4 +250,40 @@ export const Search: StoryFn<InputProps> = ({ value: _value, ...props }) => {
       </Text>
     </VStack>
   );
+};
+
+export const LabelWithTooltip: StoryFn<InputProps> = ({
+  value: _value,
+  ...props
+}) => {
+  const [value, setValue] = useState(_value);
+  const labelNode = (
+    <span className="inline-flex items-center gap-1 align-middle">
+      HS code
+      <Tooltip title="Harmonized System code used by customs to classify goods.">
+        <InfoIcon color="gray600" inlineBlock size={14} />
+      </Tooltip>
+    </span>
+  );
+  return (
+    <VStack>
+      <InputSimple
+        {...props}
+        label={labelNode}
+        onChange={e => setValue(e.target.value)}
+        placeholder="Enter HS code"
+        value={value}
+      />
+      <InputSimple
+        {...props}
+        disabled
+        label={labelNode}
+        onChange={() => {}}
+        value="9503.00"
+      />
+    </VStack>
+  );
+};
+LabelWithTooltip.args = {
+  value: '9503.00',
 };

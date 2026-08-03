@@ -37,7 +37,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, InputBaseProps>(
       <div className={cn('relative w-full', className)}>
         <InputBase
           ref={ref}
-          aria-label={label}
           autoFocus={autoFocus}
           className="[&_input]:pr-10"
           disabled={disabled}

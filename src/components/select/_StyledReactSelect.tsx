@@ -30,6 +30,7 @@ import type { BaseProps } from 'src/types/BaseProps';
 import type { SelectOption, SelectValue } from 'src/types/SelectOption';
 import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 import { getTestId } from 'src/utils/getTestId';
 
 const sizeHeight: Record<Size, string> = {
@@ -57,7 +58,7 @@ type AdditionalProps<Value> = {
   customOption?: (value: Value) => ReactNode;
   hasGroups?: boolean;
   icon?: ReactNode;
-  label?: string;
+  label?: ReactNode;
   size?: Size;
 };
 
@@ -447,7 +448,7 @@ export const StyledReactSelect = <
     size,
   };
   const testId = useMemo(
-    () => getTestId({ componentName: 'select', name: label }),
+    () => getTestId({ componentName: 'select', name: getNodeText(label) }),
     [label],
   );
 

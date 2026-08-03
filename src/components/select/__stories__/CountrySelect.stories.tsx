@@ -6,6 +6,8 @@ import {
   CountrySelect,
   type CountrySelectProps,
 } from 'src/components/select/CountrySelect';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import { getCountryUrls } from 'src/utils/getCountryUrls';
 import {
   type CountryOption,
@@ -68,4 +70,27 @@ BasicCountrySelect.parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/dKbMcUDxYQ8INw5cUdvXLI/amino-tokens-2021?node-id=79%3A135',
   },
+};
+
+export const LabelWithTooltip: StoryFn<CountrySelectProps> = props => {
+  const [value, setValue] = useState<string | null>(null);
+  const dashboardUrl = getCountryUrls();
+  const countryOptions = useCountryOptions({ dashboardUrl });
+  return (
+    <CountrySelect
+      {...props}
+      countryOptions={countryOptions}
+      label={
+        <span className="inline-flex items-center gap-1 align-middle">
+          Country of origin
+          <Tooltip title="Where the item was manufactured or produced.">
+            <InfoIcon color="gray600" inlineBlock size={14} />
+          </Tooltip>
+        </span>
+      }
+      onChange={option => setValue(option?.value || null)}
+      placeholder="Select a country"
+      value={value}
+    />
+  );
 };

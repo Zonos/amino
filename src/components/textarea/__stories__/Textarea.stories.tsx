@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';
 import { Input } from 'src/components/input/Input';
 import { Text } from 'src/components/text/Text';
 import { Textarea, type TextareaProps } from 'src/components/textarea/Textarea';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
+import { InfoIcon } from 'src/icons/InfoIcon';
 
 const TextAreaMeta: Meta = {
   component: Textarea,
@@ -306,4 +309,63 @@ ErrorState.args = {
   label: 'Description',
   placeholder: 'Please fill out the description',
   value: 'HS code for Brazil',
+};
+
+export const ClickPlacesCaret: StoryFn<TextareaProps> = props => {
+  const [value, setValue] = useState('HS code for Brazil');
+  return (
+    <Textarea
+      {...props}
+      label="Description"
+      onChange={e => setValue(e.target.value)}
+      value={value}
+    />
+  );
+};
+ClickPlacesCaret.tags = ['tested'];
+ClickPlacesCaret.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const textarea = canvas.getByRole<HTMLTextAreaElement>('textbox');
+
+  // The decorative ::after overlay must be click-through: if it covers the
+  // field it becomes the click target, and the label's click handler then
+  // yanks the caret to the end of the value instead of leaving it where the
+  // user clicked.
+  const rect = textarea.getBoundingClientRect();
+  const hit = document.elementFromPoint(
+    rect.left + rect.width / 2,
+    rect.top + rect.height / 2,
+  );
+  expect(hit).toBe(textarea);
+
+  // Click what a real pointer would hit, then place the caret mid-text. If
+  // the overlay had captured the click, the label handler's deferred
+  // "move caret to end" would override this position on the next tick.
+  await userEvent.click(hit as HTMLElement);
+  textarea.setSelectionRange(7, 7);
+  await new Promise(resolve => {
+    setTimeout(resolve, 50);
+  });
+  expect(textarea.selectionStart).toBe(7);
+  expect(textarea.selectionStart).not.toBe(textarea.value.length);
+};
+
+export const LabelWithTooltip: StoryFn<TextareaProps> = props => {
+  const [value, setValue] = useState('');
+  return (
+    <Textarea
+      {...props}
+      label={
+        <span className="inline-flex items-center gap-1 align-middle">
+          Description
+          <Tooltip title="Explain the item's purpose and any special handling.">
+            <InfoIcon color="gray600" inlineBlock size={14} />
+          </Tooltip>
+        </span>
+      }
+      onChange={e => setValue(e.target.value)}
+      placeholder="Please fill out the description"
+      value={value}
+    />
+  );
 };

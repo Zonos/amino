@@ -28,7 +28,7 @@ export type MultiSelectProps<
   components?: SelectComponentsConfig<Option, IsMulti, Group>;
   hasGroups?: boolean;
   icon?: ReactNode;
-  label?: string;
+  label?: ReactNode;
   styles?: StylesConfig<Option, IsMulti, Group>;
   /**
    * @example

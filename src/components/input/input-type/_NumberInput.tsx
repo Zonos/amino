@@ -48,7 +48,6 @@ export const NumberInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
         <FloatLabelInput
           {...props}
           ref={mergedRef}
-          aria-label={label}
           className="[&_input]:appearance-none [&_input]:pr-10
             [&_input::-webkit-calendar-picker-indicator]:hidden
             [&_input::-webkit-inner-spin-button]:hidden"

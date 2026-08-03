@@ -6,7 +6,9 @@ import { expect, userEvent, within } from '@storybook/test';
 import { Checkbox, type CheckboxProps } from 'src/components/checkbox/Checkbox';
 import { Flex } from 'src/components/flex/Flex';
 import { Text } from 'src/components/text/Text';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { Default } from 'src/icons/flags/Default';
+import { InfoIcon } from 'src/icons/InfoIcon';
 
 const Template: StoryFn<CheckboxProps> = ({
   checked,
@@ -108,6 +110,20 @@ export const CheckboxWithComplexSubtitle: StoryObj<CheckboxProps> = {
         .
       </div>
     ),
+  },
+};
+
+export const CheckboxWithTooltipLabel: StoryObj<CheckboxProps> = {
+  args: {
+    label: (
+      <span className="inline-flex items-center gap-1 align-middle">
+        I agree to the terms
+        <Tooltip title="You can review the full agreement in your account settings at any time.">
+          <InfoIcon color="gray600" inlineBlock size={14} />
+        </Tooltip>
+      </span>
+    ),
+    subtitle: 'Subtitle here',
   },
 };
 

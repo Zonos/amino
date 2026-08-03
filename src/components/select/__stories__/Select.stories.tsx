@@ -8,8 +8,10 @@ import { Dialog } from 'src/components/dialog/Dialog';
 import { Select, type SelectProps } from 'src/components/select/Select';
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';
+import { Tooltip } from 'src/components/tooltip/Tooltip';
 import { FileIcon } from 'src/icons/FileIcon';
 import { FlagIcon } from 'src/icons/flag-icon/FlagIcon';
+import { InfoIcon } from 'src/icons/InfoIcon';
 import { MoneyIcon } from 'src/icons/MoneyIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { SelectOption } from 'src/types/SelectOption';
@@ -255,6 +257,25 @@ export const ScrollableDialogSelect = () => {
       </Dialog>
     </div>
   );
+};
+
+export const LabelWithTooltip: StoryObj<SelectProps> = {
+  args: {
+    label: (
+      <span className="inline-flex items-center gap-1 align-middle">
+        Currency
+        <Tooltip title="Prices, taxes, and duties will be displayed in this currency.">
+          <InfoIcon color="gray600" inlineBlock size={14} />
+        </Tooltip>
+      </span>
+    ),
+    options: currencyOptions,
+    placeholder: 'Select a currency',
+    value: {
+      label: 'US Dollar (USD)',
+      value: 'USD',
+    },
+  },
 };
 
 export const SelectWithNumberOptions = () => {

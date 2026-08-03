@@ -43,7 +43,7 @@ type TextareaType = {
   /**
    * Label text to be displayed above the textarea
    */
-  label?: string;
+  label?: ReactNode;
   /**
    * A value (in px) that will determine how wide the input is
    * @default 100%
@@ -256,6 +256,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   top-[calc(var(--amino-font-size-base)+6px)] left-4
                   origin-top-left leading-none transition-all duration-300
                   ease-in-out`,
+                  // pointer-events-none lets clicks on the label text pass
+                  // through to the textarea beneath (so the cursor lands where
+                  // the user clicked). Our Tooltip trigger opts back in so a
+                  // ReactNode label like `<>Label <Tooltip>?</Tooltip></>`
+                  // can still be hovered — Tooltip is the only interactive
+                  // content we put in labels.
+                  `[&_.tooltip-wrapper]:pointer-events-auto
+                  [&_.tooltip-wrapper]:cursor-help`,
                   (hasValue || isFocused) && 'top-[11px] scale-[0.8]',
                 )}
                 style={{ color: theme.gray800 }}
@@ -264,8 +272,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               </span>
             )}
             <div
-              className="after:absolute after:inset-0 after:rounded-[12px]
-                after:content-['']"
+              // The ::after overlay is a full-cover decorative box; make it
+              // click-through so it doesn't sit above the label span and
+              // swallow hover/click on a Tooltip trigger inside a ReactNode
+              // label.
+              className="after:pointer-events-none after:absolute after:inset-0
+                after:rounded-[12px] after:content-['']"
             />
           </label>
 

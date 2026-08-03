@@ -773,6 +773,7 @@ import './utils/getCountryUrls';
 import './utils/getFuzzySearch';
 import './utils/getHashId';
 import './utils/getIsInternalLink';
+import './utils/getNodeText';
 import './utils/getProductDetails';
 import './utils/getTestId';
 import './utils/handleFetch';

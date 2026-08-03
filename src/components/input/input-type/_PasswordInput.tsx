@@ -37,7 +37,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       <div className={cn('relative w-full', className)}>
         <FloatLabelInput
           ref={ref}
-          aria-label={label}
           autoFocus={autoFocus}
           className="[&_input]:pr-10"
           disabled={disabled}

@@ -5,6 +5,7 @@ import {
   type InputHTMLAttributes,
   type KeyboardEventHandler,
   type ReactNode,
+  useId,
 } from 'react';
 
 import type { HelpTextProps } from 'src/components/help-text/HelpText';
@@ -28,7 +29,7 @@ type InputBaseType = BaseProps & {
   disabled?: boolean;
   inputMode?: InputMode;
   /** A label that will be displayed above the input */
-  label?: string;
+  label?: ReactNode;
   /**
    * @default false
    */
@@ -115,6 +116,7 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
       className,
       disabled,
       error,
+      id: idProp,
       label,
       noBorder,
       placeholder,
@@ -127,6 +129,9 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
     },
     ref,
   ) => {
+    const generatedId = useId();
+    const id = idProp || generatedId;
+
     const sizeClasses = {
       lg: 'h-12',
       md: 'h-10',
@@ -139,6 +144,10 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
         {label && (
           <label
             className={cn('mb-2 block flex-none', error && 'text-red-600')}
+            // The label doesn't wrap the input, so htmlFor is the only thing
+            // giving the input an accessible name — including when the label
+            // is markup or a component whose text can't be extracted.
+            htmlFor={id}
             style={error ? undefined : { color: theme.textColorSecondary }}
           >
             {label}
@@ -179,6 +188,7 @@ export const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
               bg-transparent px-4 font-medium outline-none
               placeholder:font-normal placeholder:text-gray-500"
             disabled={disabled}
+            id={id}
             placeholder={placeholder}
             value={value || ''}
             {...props}

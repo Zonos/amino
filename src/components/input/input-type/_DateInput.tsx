@@ -54,7 +54,6 @@ export const DateInput = forwardRef<HTMLInputElement, FloatLabelInputProps>(
       >
         <FloatLabelInput
           ref={mergedRef}
-          aria-label={label}
           autoFocus={autoFocus}
           disabled={disabled}
           error={error}

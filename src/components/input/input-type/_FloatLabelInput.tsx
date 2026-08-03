@@ -14,6 +14,7 @@ import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import type { Size } from 'src/types/Size';
 import { cn } from 'src/utils/cn';
+import { getNodeText } from 'src/utils/getNodeText';
 import { getTestId } from 'src/utils/getTestId';
 
 export type InputMode =
@@ -48,7 +49,7 @@ type FloatLabelInputType = BaseProps & {
   inputMode?: InputMode;
 
   /** A label that will be displayed above the input */
-  label?: string;
+  label?: ReactNode;
 
   /**
    * @default false
@@ -169,7 +170,7 @@ export const FloatLabelInput = forwardRef<
   ) => {
     const inputId = useId();
     const testId = useMemo(
-      () => getTestId({ componentName: 'input', name: label }),
+      () => getTestId({ componentName: 'input', name: getNodeText(label) }),
       [label],
     );
     const hasValue = !!value || !!valuePrefix;
@@ -249,7 +250,11 @@ export const FloatLabelInput = forwardRef<
         )}
         <input
           ref={ref}
-          aria-label={label}
+          // Only string labels become an aria-label. For markup labels the
+          // wrapping <label> supplies the accessible name from rendered text —
+          // extracting here could truncate it (aria-label overrides the
+          // association) or drop it entirely for component labels.
+          aria-label={typeof label === 'string' ? label : undefined}
           autoFocus={autoFocus}
           className={cn(
             `bg-amino-input relative order-2 box-border w-full
@@ -286,8 +291,19 @@ export const FloatLabelInput = forwardRef<
           {...props}
         />
         <div
+          // pointer-events-none lets clicks on the label text pass through
+          // to the input beneath (so the cursor lands where the user clicked
+          // instead of the label capturing the click). Our Tooltip trigger
+          // opts back in so a ReactNode label like
+          // `<>Label <Tooltip>?</Tooltip></>` can still be hovered — Tooltip
+          // is the only interactive content we put in labels. When disabled,
+          // the label text hit-tests again and shows the not-allowed cursor
+          // (the ::after overlay below is always click-through, so the cursor
+          // has to live on an element that gets hit).
           className="pointer-events-none order-1 block max-h-0
-            [.disabled_&]:pointer-events-auto"
+            [&_.tooltip-wrapper]:pointer-events-auto
+            [&_.tooltip-wrapper]:cursor-help [.disabled_&]:pointer-events-auto
+            [.disabled_&]:cursor-not-allowed"
         >
           <span
             className={cn(
@@ -309,10 +325,15 @@ export const FloatLabelInput = forwardRef<
           </span>
           <div
             className={cn(
-              `after:absolute after:inset-0
+              // The ::after overlay is decorative; keep it click-through so
+              // it never sits above the label span (which lives inside the
+              // same block) and swallows hover on interactive descendants
+              // like a Tooltip trigger in the label. The disabled cursor is
+              // drawn by the label wrapper above — a click-through pseudo is
+              // never hit-tested, so a cursor here would never show.
+              `after:pointer-events-none after:absolute after:inset-0
               after:rounded-[var(--amino-float-label-input-border-radius)]
               after:content-['']`,
-              '.disabled_&:after:cursor-not-allowed .disabled_&:after:z-[1]',
             )}
           />
         </div>
