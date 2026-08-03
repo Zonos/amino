@@ -3,7 +3,7 @@ import { createElement, type ReactNode } from 'react';
 import { getNodeText } from 'src/utils/getNodeText';
 
 /** JSX is unavailable here — the suite only picks up `.test.ts` files. */
-const element = ({ type, children }: { type: string; children: ReactNode[] }) =>
+const element = ({ children, type }: { children: ReactNode[]; type: string }) =>
   createElement(type, null, ...children);
 
 describe('getNodeText', () => {
@@ -20,7 +20,7 @@ describe('getNodeText', () => {
     expect(getNodeText(undefined)).toBeUndefined();
     expect(getNodeText(false)).toBeUndefined();
     expect(
-      getNodeText(element({ type: 'span', children: [] })),
+      getNodeText(element({ children: [], type: 'span' })),
     ).toBeUndefined();
   });
 
@@ -28,11 +28,11 @@ describe('getNodeText', () => {
     expect(
       getNodeText(
         element({
-          type: 'span',
           children: [
             'Genus ',
-            element({ type: 'em', children: ['(required)'] }),
+            element({ children: ['(required)'], type: 'em' }),
           ],
+          type: 'span',
         }),
       ),
     ).toBe('Genus (required)');
@@ -50,18 +50,18 @@ describe('getNodeText', () => {
     // The property test ids depend on: two richly-labeled selects must not
     // collapse onto the same extracted string.
     const industry = element({
-      type: 'div',
       children: [
-        element({ type: 'strong', children: ['Industry'] }),
-        element({ type: 'button', children: ['?'] }),
+        element({ children: ['Industry'], type: 'strong' }),
+        element({ children: ['?'], type: 'button' }),
       ],
+      type: 'div',
     });
     const productGroup = element({
-      type: 'div',
       children: [
-        element({ type: 'strong', children: ['Product group'] }),
-        element({ type: 'button', children: ['?'] }),
+        element({ children: ['Product group'], type: 'strong' }),
+        element({ children: ['?'], type: 'button' }),
       ],
+      type: 'div',
     });
     expect(getNodeText(industry)).toBe('Industry ?');
     expect(getNodeText(productGroup)).toBe('Product group ?');
