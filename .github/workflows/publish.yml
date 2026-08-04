@@ -21,8 +21,10 @@ jobs:
           node-version: 22.22.1
           registry-url: "https://registry.npmjs.org"
           cache: pnpm
-      # Ensure npm 11.5.1 or later for trusted publishing
-      - run: npm install -g npm@latest
+      # Trusted publishing needs npm >= 11.5.1, but stay on the npm 11 line:
+      # npm 12 requires node >= 22.22.2, whose bundled npm is broken (see the
+      # node-version pin above), so `npm@latest` can no longer install here.
+      - run: npm install -g npm@11
       - run: pnpm install
       - run: pnpm build:ci
       - run: cd dist && npm publish --access public
