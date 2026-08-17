@@ -251,6 +251,15 @@ export const CheckboxOptionComponent = <
         {selectProps.isMulti ? (
           <Checkbox
             checked={isSelected}
+            /**
+             * The checkbox is presentational — react-select's own `innerProps`
+             * on the option wrapper drive selection. Without
+             * `pointer-events-none` the click lands on the checkbox's `<label>`
+             * instead, and native label activation moves focus to the hidden
+             * input. That blurs react-select's search input, and the blur
+             * closes the menu even when `closeMenuOnSelect` is false.
+             */
+            className="pointer-events-none"
             disabled={isDisabled}
             icon={data.icon}
             label={data.label}
