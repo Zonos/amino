@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 
 import {
   MultiSelect,
@@ -217,4 +218,108 @@ ActiveMultiSelectWithCutoffWithIcon.args = {
       value: 'NZD',
     },
   ],
+};
+
+const OpenableMenuTemplate: StoryFn<MultiSelectProps> = ({
+  value: _value,
+  ...props
+}: MultiSelectProps) => {
+  const [value, setValue] = useState(_value);
+  return <MultiSelect {...props} onChange={setValue} value={value} />;
+};
+
+/**
+ * `userEvent.click(option)` dispatches straight at the element it is handed, so
+ * it would never reproduce what a real pointer does: hit-test the topmost
+ * element at those coordinates. Options render a `<label>` on top of the option
+ * row, and that is the difference that matters here — clicking the label runs
+ * native label activation, which steals focus from react-select's search input.
+ */
+const clickAtCenterOf = async (element: Element) => {
+  const { height, left, top, width } = element.getBoundingClientRect();
+  const topmost = document.elementFromPoint(left + width / 2, top + height / 2);
+  await userEvent.click(topmost || element);
+};
+
+/**
+ * `closeMenuOnSelect={false}` has to survive the option checkboxes: each option
+ * renders a `<label>`, and native label activation moves focus to the hidden
+ * checkbox input, blurring react-select's search input — and a blur closes the
+ * menu no matter what `closeMenuOnSelect` says. This story picks two options in
+ * a row and asserts that the menu stays open and focus stays in the input.
+ */
+export const KeepsMenuOpenOnSelect: StoryObj<MultiSelectProps> = {
+  args: {
+    closeMenuOnSelect: false,
+    hideSelectedOptions: false,
+    label: 'Currencies',
+    options: [
+      { label: 'US Dollar (USD)', value: 'USD' },
+      { label: 'European Euro (EUR)', value: 'EUR' },
+      { label: 'Japanese Yen (JPY)', value: 'JPY' },
+    ],
+    value: [],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('combobox'));
+
+    await clickAtCenterOf(
+      await canvas.findByRole('option', { name: 'US Dollar (USD)' }),
+    );
+    expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    expect(canvas.getByRole('combobox')).toHaveFocus();
+
+    await clickAtCenterOf(
+      canvas.getByRole('option', { name: 'Japanese Yen (JPY)' }),
+    );
+    expect(canvas.getByRole('listbox')).toBeInTheDocument();
+    expect(canvas.getByRole('combobox')).toHaveFocus();
+
+    expect(
+      canvas.getByRole('checkbox', { name: 'US Dollar (USD)' }),
+    ).toBeChecked();
+    expect(
+      canvas.getByRole('checkbox', { name: 'Japanese Yen (JPY)' }),
+    ).toBeChecked();
+  },
+  render: OpenableMenuTemplate,
+};
+
+/**
+ * The other half of the contract: making the option checkbox click-through must
+ * not swallow the close. With `closeMenuOnSelect` the click has to reach
+ * react-select's own option handler, which selects the option *and* closes the
+ * menu.
+ */
+export const ClosesMenuOnSelect: StoryObj<MultiSelectProps> = {
+  args: {
+    closeMenuOnSelect: true,
+    hideSelectedOptions: false,
+    label: 'Currencies',
+    options: [
+      { label: 'US Dollar (USD)', value: 'USD' },
+      { label: 'European Euro (EUR)', value: 'EUR' },
+      { label: 'Japanese Yen (JPY)', value: 'JPY' },
+    ],
+    value: [],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.click(canvas.getByRole('combobox'));
+
+    await clickAtCenterOf(
+      await canvas.findByRole('option', { name: 'US Dollar (USD)' }),
+    );
+
+    expect(canvas.queryByRole('listbox')).not.toBeInTheDocument();
+
+    await userEvent.click(canvas.getByRole('combobox'));
+    expect(
+      await canvas.findByRole('checkbox', { name: 'US Dollar (USD)' }),
+    ).toBeChecked();
+  },
+  render: OpenableMenuTemplate,
 };
