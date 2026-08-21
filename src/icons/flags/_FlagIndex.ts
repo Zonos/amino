@@ -244,6 +244,7 @@ export { VN } from './VN';
 export { VU } from './VU';
 export { WF } from './WF';
 export { WS } from './WS';
+export { XK } from './XK';
 export { YE } from './YE';
 export { YT } from './YT';
 export { ZA } from './ZA';

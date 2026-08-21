@@ -247,6 +247,7 @@ const internalCountryCodes = {
   Vu: 'VU',
   Wf: 'WF',
   Ws: 'WS',
+  Xk: 'XK',
   Ye: 'YE',
   Yt: 'YT',
   Za: 'ZA',

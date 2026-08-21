@@ -245,6 +245,7 @@ export const flagIconsList = [
   'VU',
   'WF',
   'WS',
+  'XK',
   'YE',
   'YT',
   'ZA',
