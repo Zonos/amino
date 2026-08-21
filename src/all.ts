@@ -587,6 +587,7 @@ import './icons/flags/VN';
 import './icons/flags/VU';
 import './icons/flags/WF';
 import './icons/flags/WS';
+import './icons/flags/XK';
 import './icons/flags/YE';
 import './icons/flags/YT';
 import './icons/flags/ZA';
