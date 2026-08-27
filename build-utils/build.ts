@@ -83,7 +83,9 @@ const bundlePackage = async (
       }),
       json(),
       image(),
-      typescript(),
+      // Not incremental: prebuild wipes dist, so the cache would only ever
+      // go stale — and it landed in dist, shipping to consumers.
+      typescript({ incremental: false }),
       // process CSS with PostCSS/Tailwind
       postcss({
         autoModules: true,

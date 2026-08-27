@@ -5,8 +5,8 @@ import {
   useEffect,
   useState,
 } from 'react';
-import Split from 'react-split-it';
 
+import { Split } from 'src/components/split-panel/_Split';
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
 

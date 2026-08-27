@@ -29,14 +29,14 @@ const MultiInputMeta: Meta = {
 
 export default MultiInputMeta;
 
-const Template: StoryFn<MultiInputProps> = ({
+const Template = ({
   inputValue,
   setInputValue,
   setTags,
   tags,
   tagValidation,
   ...props
-}) => {
+}: MultiInputProps) => {
   const [hasValidationError, setHasValidationError] = useState(false);
 
   return (

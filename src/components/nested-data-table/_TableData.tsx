@@ -5,9 +5,9 @@ import {
   useMemo,
   useState,
 } from 'react';
-import type { Column } from 'react-data-grid';
 
 import { Button } from 'src/components/button/Button';
+import type { Column } from 'src/components/data-grid/DataGrid';
 import { Filter } from 'src/components/nested-data-table/_Filter';
 import {
   PivotTable,
@@ -215,10 +215,6 @@ export const TableData = <TRow extends Record<string, unknown>>({
             setRows(newRows);
           }
         }}
-        rowHeight={args =>
-          // expand the row height if the row is expanded
-          args.type === 'ROW' && args.row?._expandedData?.length > 0 ? 300 : 45
-        }
         rows={rows}
         tableHeight="100%"
       />

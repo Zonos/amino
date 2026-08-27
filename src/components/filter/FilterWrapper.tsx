@@ -13,7 +13,7 @@ type FilterWrapperProps = BaseProps & {
   active: boolean;
   children: ReactNode;
   dropDownOpen: boolean;
-  dropdownRef: RefObject<HTMLDivElement>;
+  dropdownRef: RefObject<HTMLDivElement | null>;
   dropdownTitle: string;
   filterText: string;
   handleApply: () => void;

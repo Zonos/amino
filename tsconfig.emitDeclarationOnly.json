@@ -1,6 +1,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    /*
+      `incremental` is inherited from tsconfig.json, where it speeds up
+      `tsc --noEmit`. Here it is actively harmful: prebuild deletes dist on
+      every run, so a surviving cache reports the emit as up to date and tspc
+      writes no declarations at all, exiting 0.
+    */
+    "incremental": false,
     "noEmit": false,
     "declaration": true,
     "emitDeclarationOnly": true,

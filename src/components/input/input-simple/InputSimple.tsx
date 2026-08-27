@@ -1,8 +1,4 @@
-import type {
-  ChangeEventHandler,
-  InputHTMLAttributes,
-  MutableRefObject,
-} from 'react';
+import type { ChangeEventHandler, InputHTMLAttributes, RefObject } from 'react';
 
 import {
   HelpText,
@@ -21,7 +17,7 @@ type InputType = {
   /** Need to pass the ref here to preserve generics, as forwardRef doesn't allow it
    * @link https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
    */
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
+  inputRef?: RefObject<HTMLInputElement | null>;
   /**
    * @default false
    */

@@ -42,7 +42,7 @@ type Return<
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   visibility: 'visible' | 'hidden';
   visible: boolean;
-  wrapperRef: React.RefObject<WrapperRef>;
+  wrapperRef: React.RefObject<WrapperRef | null>;
 };
 
 export const useDropdown = <

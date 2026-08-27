@@ -1,6 +1,6 @@
 import { type MouseEvent, useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import {
   NavigationGroup as NavigationGroupComponent,
@@ -20,7 +20,7 @@ const NavigationGroupMeta: Meta = {
 
 export default NavigationGroupMeta;
 
-const Template: StoryFn = ({ className }) => {
+const Template = ({ className }: { className?: string }) => {
   const [pathname, setPathname] = useState('/quoter/create');
   const mockUrlChange = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

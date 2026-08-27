@@ -81,7 +81,9 @@ export const SimpleTableRow = <T extends object>({
       const hasRowHoverShowChild = React.Children.toArray(content).some(
         child => {
           if (React.isValidElement(child)) {
-            return /row-hover-show|cell-hover-show/.test(child.props.className);
+            return /row-hover-show|cell-hover-show/.test(
+              (child.props as { className?: string }).className ?? '',
+            );
           }
           return false;
         },
