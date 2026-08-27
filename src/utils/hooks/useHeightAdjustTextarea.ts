@@ -1,4 +1,4 @@
-import { type MutableRefObject, useEffect, useState } from 'react';
+import { type RefObject, useEffect, useState } from 'react';
 
 /** @desc Get the computed style of a component */
 const getComputedStyle = (
@@ -11,7 +11,7 @@ type TextareaParams = {
   initialRows?: number;
   // when expanding textarea, it will expand up to maxRows
   maxRows?: number;
-  ref: MutableRefObject<HTMLTextAreaElement | null>;
+  ref: RefObject<HTMLTextAreaElement | null>;
   shouldExpand: boolean;
   textareaValue: string;
 };

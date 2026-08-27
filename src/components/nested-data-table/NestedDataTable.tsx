@@ -1,8 +1,8 @@
 import { type ReactNode, useMemo } from 'react';
-import type { Column } from 'react-data-grid';
 
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Button } from 'src/components/button/Button';
+import type { Column } from 'src/components/data-grid/DataGrid';
 import { TableData } from 'src/components/nested-data-table/_TableData';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { RestState } from 'src/components/rest-state/RestState';

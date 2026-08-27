@@ -9,7 +9,7 @@ type RippleEventHandlers = {
 type Props = {
   disabled: boolean;
   rippleEnabled: boolean;
-  rippleRef: React.RefObject<RippleActions>;
+  rippleRef: React.RefObject<RippleActions | null>;
 };
 
 type Return = {

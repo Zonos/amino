@@ -19,6 +19,7 @@ import './components/cover-sheet/CoverSheetActions';
 import './components/currency/Currency';
 import './components/currency/DualCurrency';
 import './components/danger-zone/DangerZone';
+import './components/data-grid/DataGrid';
 import './components/dialog/alert/AlertContext';
 import './components/dialog/alert/AlertDialog';
 import './components/dialog/alert/useAlert';

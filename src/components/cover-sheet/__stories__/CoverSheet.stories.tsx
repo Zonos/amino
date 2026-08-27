@@ -13,7 +13,7 @@ import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
 
-const Story: StoryFn<CoverSheetProps> = ({
+const Story = ({
   children,
   label = 'Cover sheet',
   onClose,

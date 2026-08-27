@@ -1,13 +1,14 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import DataGrid, {
+
+import {
   type Column,
+  DataGrid,
   type DataGridHandle,
   type DataGridProps,
   type Renderers,
   type RenderSortStatusProps,
   type SortColumn,
-} from 'react-data-grid';
-
+} from 'src/components/data-grid/DataGrid';
 import { ChevronDownIcon } from 'src/icons/ChevronDownIcon';
 import { ChevronUpIcon } from 'src/icons/ChevronUpIcon';
 import type { BaseProps } from 'src/types/BaseProps';
@@ -49,10 +50,15 @@ export type RowWithIndex<Row extends RowData = RowData> = Row & {
 type Props<
   TRow extends RowWithIndex,
   TSummaryRow,
-  TRowKey extends KeyValue,
+  /**
+   * Retained for source compatibility with the react-data-grid-backed version
+   * of this component; the grid no longer keys rows by a caller-supplied type.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  TRowKey extends KeyValue = KeyValue,
 > = BaseProps &
   Omit<
-    DataGridProps<TRow, TSummaryRow, TRowKey>,
+    DataGridProps<TRow, TSummaryRow>,
     keyof OverrideProps<TRow, TSummaryRow>
   > &
   OverrideProps<TRow, TSummaryRow>;
@@ -61,7 +67,7 @@ type Comparator<TRow> = (a: TRow, b: TRow) => number;
 
 /**
  * PivotTable component renders tabular data with advanced features like sorting, indexing, and custom renderers.
- * Built on top of react-data-grid with added functionality and styling consistent with Amino design.
+ * Built on top of amino's DataGrid with added functionality and styling consistent with Amino design.
  *
  * @example Basic usage
  * const columns = [
@@ -177,9 +183,16 @@ export const PivotTable = <
   ...rest
 }: Props<TRow, TSummaryRow, TRowKey>) => {
   const dataGridRef = useRef<DataGridHandle>(null);
-  const [sortColumns, setSortColumns] = useState<readonly SortColumn[]>(
-    _sortColumns || [],
-  );
+  /**
+   * Sorting is controlled when the caller supplies `onSortColumnsChange`, and
+   * owned by the table otherwise. Previously the table always sorted by its own
+   * state while routing changes to the caller, so a controlled `sortColumns`
+   * never took effect.
+   */
+  const isSortControlled = !!onSortColumnsChange;
+  const [ownSortColumns, setOwnSortColumns] =
+    useState<readonly SortColumn[]>(_sortColumns);
+  const sortColumns = isSortControlled ? _sortColumns : ownSortColumns;
 
   const renderSortStatus = useCallback(
     ({ priority, sortDirection }: RenderSortStatusProps) => {
@@ -265,12 +278,6 @@ export const PivotTable = <
         'amino-pivot-table relative',
         `[&_.data-grid]:rounded-amino-8 [&_.data-grid]:h-full
         [&_.data-grid]:bg-inherit`,
-        '[&_.rdg-row]:bg-gray-0 [&_.rdg-row]:text-text-color',
-        `[&_.rdg-header-row]:text-text-color [&_.rdg-header-row]:bg-gray-100
-        [&_.rdg-header-row]:font-bold`,
-        `[&_.rdg-summary-row]:text-text-color [&_.rdg-summary-row]:bg-gray-100
-        [&_.rdg-summary-row]:font-bold`,
-        '[&_.rdg-cell]:border [&_.rdg-cell]:border-gray-200',
       )}
       style={{
         height: tableHeight || 'calc(100vh - 145px)',
@@ -282,7 +289,7 @@ export const PivotTable = <
         ref={dataGridRef}
         className="data-grid"
         columns={modifiedColumns}
-        onSortColumnsChange={onSortColumnsChange || setSortColumns}
+        onSortColumnsChange={onSortColumnsChange || setOwnSortColumns}
         renderers={defaultRenderers}
         rows={sortedRows}
         sortColumns={sortColumns}

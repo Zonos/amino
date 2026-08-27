@@ -1,3 +1,10 @@
+/*
+  Night-theme table overrides.
+
+  These live in plain CSS rather than Tailwind arbitrary variants, which
+  generate `:is()` selectors that fight the `dark:` variant.
+*/
+
 [data-theme='night'] tbody tr.amino-table-row-active {
   background-color: var(--amino-gray-100);
 }

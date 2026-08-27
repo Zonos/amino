@@ -83,7 +83,11 @@ const bundlePackage = async (
       }),
       json(),
       image(),
-      typescript(),
+      // `incremental` is inherited from tsconfig.json, where it speeds up
+      // `tsc --noEmit`. Here it only wrote a ~600kB cache into dist, which
+      // npm pack then shipped to consumers. The build emits everything from
+      // scratch anyway, since prebuild wipes dist first.
+      typescript({ incremental: false }),
       // process CSS with PostCSS/Tailwind
       postcss({
         autoModules: true,

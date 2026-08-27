@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import type { Column } from 'react-data-grid';
 
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
+import type { Column } from 'src/components/data-grid/DataGrid';
 import type { RowWithIndex } from 'src/components/pivot-table/PivotTable';
 import { MultiSelect } from 'src/components/select/MultiSelect';
 import { FilterIcon } from 'src/icons/FilterIcon';
@@ -20,7 +20,16 @@ export const Filter = ({
   setHiddenColumns: (hiddenColumns: string[]) => void;
 }) => {
   const { floatingStyles, refs, setVisible, visibility, visible, wrapperRef } =
-    useDropdown();
+    useDropdown({
+      /*
+        The panel holds a MultiSelect, whose menu is `position: fixed`. A fixed
+        descendant anchors to the nearest transformed ancestor rather than the
+        viewport, so floating-ui's default transform positioning made the menu
+        land roughly a panel-width off-screen. Positioning with left/top instead
+        keeps the menu where react-select computed it.
+      */
+      floatingOptions: { transform: false },
+    });
   const languageCode = useCurrentLanguage();
 
   const hideColumnOptions = useMemo(
@@ -73,6 +82,7 @@ export const Filter = ({
             setHiddenColumns(_hiddenColumns.flatMap(column => [column.value]));
           }}
           options={hideColumnOptions}
+          placeholder={translate({ languageCode, text: 'Search...' })}
           value={hideColumnOptions.filter(col =>
             hiddenColumns.includes(col.value),
           )}
