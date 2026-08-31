@@ -155,7 +155,6 @@ export const Switch = ({
               checked && 'left-[calc(100%-30px)]',
               disabled && 'opacity-95',
             )}
-            id={id}
           />
           <div className="absolute top-1 right-auto left-1">
             {switchIconLeft}
@@ -186,7 +185,6 @@ export const Switch = ({
               ],
               disabled && 'opacity-95',
             )}
-            id={id}
           />
         </div>
       )}
