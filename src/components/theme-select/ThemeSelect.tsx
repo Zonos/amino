@@ -60,6 +60,10 @@ export const ThemeSelect = ({
   type = 'select',
 }: Props) => {
   const { aminoTheme, setAminoTheme } = useAminoTheme();
+  /**
+   * `false` is the correct first paint: the server always renders `day`, and the
+   * toggle is unchecked in `day`.
+   */
   const [checked, setChecked] = useState<boolean>(false);
 
   const getIcon = () => {
@@ -73,10 +77,12 @@ export const ThemeSelect = ({
     }
   };
 
-  // This logic is necessary because on the server the theme is always 'day', which casuses SSR hydration mismatch issues
+  // The stored theme is not readable during SSR -- the server always renders
+  // 'day' -- so `checked` is committed after mount rather than during render, to
+  // avoid a hydration mismatch for visitors who have chosen dark.
   useEffect(() => {
     // This code will only run on the client side
-    setChecked(aminoTheme === 'day');
+    setChecked(aminoTheme === 'night');
   }, [aminoTheme]);
 
   return (
@@ -143,15 +149,15 @@ export const ThemeSelect = ({
 
       {type === 'toggle' && (
         <Switch
-          aria-label="Light mode"
+          aria-label="Dark mode"
           checked={checked}
           className={className}
           disabled={disabled}
           onChange={() =>
-            !disabled && setAminoTheme(aminoTheme === 'day' ? 'night' : 'day')
+            !disabled && setAminoTheme(aminoTheme === 'night' ? 'day' : 'night')
           }
-          switchIconLeft={<NightIcon />}
-          switchIconRight={<SunnyIcon />}
+          switchIconLeft={<SunnyIcon />}
+          switchIconRight={<NightIcon />}
         />
       )}
     </>

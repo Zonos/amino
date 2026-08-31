@@ -17,7 +17,9 @@ export type SwitchProps = BaseProps & {
   labelIcon?: ReactNode;
   onChange: (checked: boolean) => void;
   subtitle?: ReactNode;
+  /** Icon rendered at the left end of the track. */
   switchIconLeft?: ReactNode;
+  /** Icon rendered at the right end of the track. */
   switchIconRight?: ReactNode;
 };
 
@@ -153,12 +155,11 @@ export const Switch = ({
               checked && 'left-[calc(100%-30px)]',
               disabled && 'opacity-95',
             )}
-            id={id}
           />
-          <div className="absolute top-1 right-1 left-auto">
+          <div className="absolute top-1 right-auto left-1">
             {switchIconLeft}
           </div>
-          <div className="absolute top-1 right-auto left-1">
+          <div className="absolute top-1 right-1 left-auto">
             {switchIconRight}
           </div>
         </div>
@@ -184,7 +185,6 @@ export const Switch = ({
               ],
               disabled && 'opacity-95',
             )}
-            id={id}
           />
         </div>
       )}
