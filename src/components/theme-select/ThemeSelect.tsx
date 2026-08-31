@@ -150,8 +150,8 @@ export const ThemeSelect = ({
           onChange={() =>
             !disabled && setAminoTheme(aminoTheme === 'day' ? 'night' : 'day')
           }
-          switchIconLeft={<NightIcon />}
-          switchIconRight={<SunnyIcon />}
+          switchIconLeft={<SunnyIcon />}
+          switchIconRight={<NightIcon />}
         />
       )}
     </>
