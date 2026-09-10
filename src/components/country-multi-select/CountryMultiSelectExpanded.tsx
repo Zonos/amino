@@ -325,9 +325,7 @@ export const CountryMultiSelectExpanded = <
           <div className="p-amino-8 flex w-full flex-col">
             <Checkbox
               checked={allSelected}
-              indeterminate={
-                !allSelected && selectedCountries.length > 0
-              }
+              indeterminate={!allSelected && selectedCountries.length > 0}
               label={translate({ languageCode, text: 'Select all' })}
               onChange={checked => {
                 if (checked) {
