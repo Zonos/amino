@@ -48,6 +48,15 @@ export const BasicCheckbox: StoryObj<CheckboxProps> = {
   },
 };
 
+export const IndeterminateCheckbox: StoryObj<CheckboxProps> = {
+  args: {
+    checked: false,
+    indeterminate: true,
+    label: 'Indeterminate state',
+    subtitle: 'Some but not all items are selected',
+  },
+};
+
 export const NoLabel: StoryObj<CheckboxProps> = {
   args: {},
 };

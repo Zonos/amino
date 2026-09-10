@@ -71,7 +71,51 @@ const CountryMultiSelectMeta: Meta<typeof Template> = {
 
 export default CountryMultiSelectMeta;
 
-export const Basic: StoryObj<CountryMultiSelectExpandedProps> = {};
+/**
+ * Static country list so the story renders without a network fetch.
+ */
+export const Basic = (props: CountryMultiSelectExpandedProps) => {
+  const [value, setValue] = useState<CountryMultiSelectExpandedOption[]>([]);
+
+  const countries = useMemo(
+    () =>
+      ([
+        { code: 'US', group: 'North America', label: 'United States' },
+        { code: 'CA', group: 'North America', label: 'Canada' },
+        { code: 'MX', group: 'North America', label: 'Mexico' },
+        { code: 'BR', group: 'South America', label: 'Brazil' },
+        { code: 'AR', group: 'South America', label: 'Argentina' },
+        { code: 'CL', group: 'South America', label: 'Chile' },
+        { code: 'CO', group: 'South America', label: 'Colombia' },
+        { code: 'GB', group: 'Europe', label: 'United Kingdom' },
+        { code: 'FR', group: 'Europe', label: 'France' },
+        { code: 'DE', group: 'Europe', label: 'Germany' },
+        { code: 'IT', group: 'Europe', label: 'Italy' },
+        { code: 'ES', group: 'Europe', label: 'Spain' },
+        { code: 'JP', group: 'Asia', label: 'Japan' },
+        { code: 'KR', group: 'Asia', label: 'South Korea' },
+        { code: 'CN', group: 'Asia', label: 'China' },
+        { code: 'AU', group: 'Oceania', label: 'Australia' },
+        { code: 'NZ', group: 'Oceania', label: 'New Zealand' },
+      ] as const).map<CountryMultiSelectExpandedOption>(x => ({
+        code: x.code,
+        group: x.group,
+        icon: () => <FlagIcon code={x.code as Flag} iconScale="small" />,
+        label: x.label,
+      })),
+    [],
+  );
+
+  return (
+    <CountryMultiSelectExpanded
+      style={{ width: '632px' }}
+      {...props}
+      countries={countries}
+      onChange={setValue}
+      selectedCountries={value}
+    />
+  );
+};
 
 /**
  * Static country list (no network fetch) so the disabled styling renders
