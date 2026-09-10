@@ -15,6 +15,7 @@ import {
 } from 'src/components/help-text/HelpText';
 import { Text } from 'src/components/text/Text';
 import { CheckmarkIcon } from 'src/icons/CheckmarkIcon';
+import { MinusIcon } from 'src/icons/MinusIcon';
 import { theme } from 'src/styles/constants/theme';
 import type { BaseProps } from 'src/types/BaseProps';
 import { cn } from 'src/utils/cn';
@@ -22,8 +23,16 @@ import { getNodeText } from 'src/utils/getNodeText';
 import { getTestId } from 'src/utils/getTestId';
 
 const AnimatedCheckIcon = motion(CheckmarkIcon);
+const AnimatedMinusIcon = motion(MinusIcon);
 
-const getBackgroundColor = (checked: boolean, error: boolean) => {
+const getBackgroundColor = (
+  checked: boolean,
+  error: boolean,
+  indeterminate: boolean,
+) => {
+  if (indeterminate) {
+    return theme.gray500;
+  }
   if (checked) {
     if (error) {
       return theme.danger;
@@ -34,8 +43,12 @@ const getBackgroundColor = (checked: boolean, error: boolean) => {
   return theme.inputBackground;
 };
 
-const getBorder = (checked: boolean, error: boolean) => {
-  if (checked) {
+const getBorder = (
+  checked: boolean,
+  error: boolean,
+  indeterminate: boolean,
+) => {
+  if (checked || indeterminate) {
     return 'none';
   }
 
@@ -54,6 +67,12 @@ export type CheckboxProps = Omit<
     checked: boolean;
     disabled?: boolean;
     icon?: ReactNode;
+    /**
+     * When true, displays a dash (−) instead of a checkmark to indicate
+     * a partially-selected state (e.g. some children in a group are checked).
+     * @default false
+     */
+    indeterminate?: boolean;
     /**
      * The whole visual row is a `<label>` for the checkbox, so clicking
      * anywhere in it — including non-interactive markup in a ReactNode label,
@@ -149,6 +168,7 @@ export const Checkbox = ({
   error = false,
   helpText,
   icon,
+  indeterminate = false,
   label,
   labelComponent,
   labelDescription,
@@ -183,11 +203,14 @@ export const Checkbox = ({
       htmlFor={id}
       style={{
         ...style,
-        '--amino-checkbox-background': getBackgroundColor(checked, error),
-        '--amino-checkbox-border': getBorder(checked, error),
-        '--amino-checkbox-box-shadow': checked
-          ? theme.shadowButtonPrimary
-          : 'none',
+        '--amino-checkbox-background': getBackgroundColor(
+          checked,
+          error,
+          indeterminate,
+        ),
+        '--amino-checkbox-border': getBorder(checked, error, indeterminate),
+        '--amino-checkbox-box-shadow':
+          checked || indeterminate ? theme.shadowButtonPrimary : 'none',
         '--amino-checkbox-disabled-background': checked ? theme.blue200 : '',
         '--amino-checkbox-disabled-border': checked
           ? `none`
@@ -243,7 +266,20 @@ export const Checkbox = ({
           )}
         >
           <AnimatePresence>
-            {checked && (
+            {indeterminate && (
+              <AnimatedMinusIcon
+                key="indeterminate"
+                animate={{ opacity: 1, scale: 1 }}
+                className={cn(
+                  'text-gray-0 dark:text-gray-1000 h-4 w-4',
+                  'shadow-[0px_2px_4px_rgba(0,0,0,0.06),0px_1px_2px_rgba(0,0,0,0.04)]',
+                )}
+                exit={{ opacity: 0, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+              />
+            )}
+            {checked && !indeterminate && (
               <AnimatedCheckIcon
                 key="checkbox"
                 animate={{ opacity: 1, scale: 1 }}
