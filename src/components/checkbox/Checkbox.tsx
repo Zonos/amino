@@ -3,8 +3,10 @@ import {
   type ComponentPropsWithoutRef,
   type KeyboardEvent,
   type ReactNode,
+  useEffect,
   useId,
   useMemo,
+  useRef,
 } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -178,6 +180,13 @@ export const Checkbox = ({
   ...props
 }: CheckboxProps) => {
   const id = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.indeterminate = indeterminate;
+    }
+  }, [indeterminate]);
 
   const testId = useMemo(
     () => getTestId({ componentName: 'checkbox', name: getNodeText(label) }),
@@ -219,6 +228,7 @@ export const Checkbox = ({
       {...props}
     >
       <input
+        ref={inputRef}
         checked={checked}
         className={cn('absolute h-0 w-0 opacity-0', disabled && 'disabled')}
         data-testid={testId}
