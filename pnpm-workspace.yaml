@@ -5,3 +5,7 @@ packages:
 # pnpm settings (camelCase keys; pnpm reads these from pnpm-workspace.yaml, not .npmrc).
 # Refuse to install package versions published less than 3 days ago (4320 minutes).
 minimumReleaseAge: 4320
+minimumReleaseAgeExclude:
+  - react-dom
+  - react
+  - '@zonos/amino'
