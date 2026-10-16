@@ -146,7 +146,7 @@
     "@types/react-dom": "19.2.3",
     "@vitest/eslint-plugin": "^1.6.9",
     "autoprefixer": "10.4.14",
-    "concurrently": "^10.0.0",
+    "concurrently": "^10.0.6",
     "css-loader": "^6.11.0",
     "dayjs": "^1.11.19",
     "dotenv": "^16.6.1",
@@ -168,9 +168,9 @@
     "globals": "^15.15.0",
     "jsdom": "^29.0.0",
     "lodash": "^4.18.1",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.30",
     "postcss-loader": "^8.2.0",
-    "postcss-preset-env": "9.0.0",
+    "postcss-preset-env": "10.6.1",
     "prettier": "^3.8.1",
     "prettier-plugin-classnames": "^0.9.0",
     "prettier-plugin-merge": "^0.9.0",
@@ -184,7 +184,7 @@
     "storybook": "^8.6.17",
     "storybook-addon-tag-badges": "^1.4.0",
     "style-loader": "^3.3.4",
-    "svgo": "^3.3.3",
+    "svgo": "^3.3.5",
     "swr": "^2.4.0",
     "tailwindcss": "^4.1.18",
     "tailwindcss-animate": "^1.0.7",
@@ -196,7 +196,7 @@
     "typescript-eslint": "^8.61.0",
     "typescript-transform-paths": "^3.5.6",
     "vite": "^6.4.2",
-    "vitest": "^3.2.6"
+    "vitest": "^4.1.11"
   },
   "pnpm": {
     "overrides": {
@@ -204,8 +204,14 @@
       "esbuild": ">=0.28.1",
       "joi": ">=17.13.4",
       "form-data@>=4.0.0 <4.0.6": "4.0.6",
-      "undici@>=7.0.0 <7.28.0": "7.28.0",
-      "js-yaml@<4.2.0": "4.2.0"
+      "undici@>=7.0.0 <7.29.1": "7.29.1",
+      "js-yaml@<4.3.2": "4.3.2",
+      "@storybook/builder-webpack5>webpack-dev-middleware": "^7.4.6",
+      "postcss-calc>postcss-selector-parser": ">=7.1.6",
+      "postcss-merge-rules>postcss-selector-parser": ">=7.1.6",
+      "postcss-minify-selectors>postcss-selector-parser": ">=7.1.6",
+      "postcss-unique-selectors>postcss-selector-parser": ">=7.1.6",
+      "stylehacks>postcss-selector-parser": ">=7.1.6"
     }
   },
   "peerDependencies": {
