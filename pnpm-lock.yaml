@@ -7,7 +7,7 @@ settings:
 overrides:
   uuid: '>=11.1.1'
   esbuild: '>=0.28.1'
-  joi: '>=17.13.4'
+  joi: '>=18.2.6'
   form-data@>=4.0.0 <4.0.6: 4.0.6
   undici@>=7.0.0 <7.29.1: 7.29.1
   js-yaml@<4.3.2: 4.3.2
@@ -17,6 +17,15 @@ overrides:
   postcss-minify-selectors>postcss-selector-parser: '>=7.1.6'
   postcss-unique-selectors>postcss-selector-parser: '>=7.1.6'
   stylehacks>postcss-selector-parser: '>=7.1.6'
+  brace-expansion@<1.1.21: 1.1.21
+  brace-expansion@>=2.0.0 <2.1.7: 2.1.7
+  brace-expansion@>=5.0.0 <5.0.12: 5.0.12
+  shell-quote@<=1.8.4: 1.9.0
+  fast-uri@>=3.0.0 <3.1.8: 3.1.8
+  svgo@>=1.0.0 <2.8.4: 2.8.4
+  svgo@>=3.0.0 <3.3.5: 3.3.5
+  browserslist@<=4.28.6: 4.28.7
+  axios@>=1.13.0 <1.20.0: 1.20.0
 
 importers:
 
@@ -3851,6 +3860,11 @@ packages:
   browser-assert@1.2.1:
     resolution: {integrity: sha512-nfulgvOR6S4gt9UKCeGJOuSGBPGiFT6oQ/2UBnvTY/5aQ1PnksW72fhZkM30DzoRRv2WpwZf1vHHEr3mtuXIWQ==}
 
+  browserslist@4.28.7:
+    resolution: {integrity: sha512-JxV13hNrFxqjOc8alRbq9dK1MM79NEXYpma2B2J4wAtpWS5zIEIKqWPGCl7N4o7Uc7B7itylh7SuDujATRyyTw==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
   browserslist@4.29.3:
     resolution: {integrity: sha512-1R4kiYKXGViqEN0CnoDrXc1StD9niAwu+j2dukWzrD4bJgsD4lDmEp0CRbc6E/vYJIfTHwPmwyaKtVSudICdPA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -4624,6 +4638,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -7501,7 +7516,7 @@ packages:
     resolution: {integrity: sha512-t8wonIOdQyOjtPd2VktlBu6QjTVTks6v8bSi7kd0r2Vll8TK1JYDZtRRdbmCHOAMphkZgrzK+L+vXK4pyZ8t4A==}
     hasBin: true
     peerDependencies:
-      browserslist: '>= 4.21.0'
+      browserslist: 4.28.7
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -7930,7 +7945,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.29.7
       '@babel/helper-validator-option': 7.29.7
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -11586,7 +11601,7 @@ snapshots:
 
   autoprefixer@10.4.14(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       caniuse-lite: 1.0.30001797
       fraction.js: 4.3.7
       normalize-range: 0.1.2
@@ -11743,6 +11758,14 @@ snapshots:
 
   browser-assert@1.2.1: {}
 
+  browserslist@4.28.7:
+    dependencies:
+      baseline-browser-mapping: 2.11.28
+      caniuse-lite: 1.0.30001816
+      electron-to-chromium: 1.5.453
+      node-releases: 2.0.58
+      update-browserslist-db: 1.3.4(browserslist@4.28.7)
+
   browserslist@4.29.3:
     dependencies:
       baseline-browser-mapping: 2.11.28
@@ -11794,7 +11817,7 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       caniuse-lite: 1.0.30001816
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
@@ -11948,7 +11971,7 @@ snapshots:
 
   core-js-compat@3.49.0:
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
 
   cosmiconfig@7.1.0:
     dependencies:
@@ -14441,7 +14464,7 @@ snapshots:
 
   postcss-colormin@5.3.1(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       caniuse-api: 3.0.0
       colord: 2.10.0
       postcss: 8.5.30
@@ -14449,7 +14472,7 @@ snapshots:
 
   postcss-convert-values@5.1.3(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       postcss: 8.5.30
       postcss-value-parser: 4.2.0
 
@@ -14570,7 +14593,7 @@ snapshots:
 
   postcss-merge-rules@5.1.4(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       caniuse-api: 3.0.0
       cssnano-utils: 3.1.0(postcss@8.5.30)
       postcss: 8.5.30
@@ -14590,7 +14613,7 @@ snapshots:
 
   postcss-minify-params@5.1.4(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       cssnano-utils: 3.1.0(postcss@8.5.30)
       postcss: 8.5.30
       postcss-value-parser: 4.2.0
@@ -14671,7 +14694,7 @@ snapshots:
 
   postcss-normalize-unicode@5.1.1(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       postcss: 8.5.30
       postcss-value-parser: 4.2.0
 
@@ -14753,7 +14776,7 @@ snapshots:
       '@csstools/postcss-trigonometric-functions': 4.0.9(postcss@8.5.30)
       '@csstools/postcss-unset-value': 4.0.0(postcss@8.5.30)
       autoprefixer: 10.6.1(postcss@8.5.30)
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       css-blank-pseudo: 7.0.1(postcss@8.5.30)
       css-has-pseudo: 7.0.3(postcss@8.5.30)
       css-prefers-color-scheme: 10.0.0(postcss@8.5.30)
@@ -14792,7 +14815,7 @@ snapshots:
 
   postcss-reduce-initial@5.1.2(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       caniuse-api: 3.0.0
       postcss: 8.5.30
 
@@ -15520,7 +15543,7 @@ snapshots:
 
   stylehacks@5.1.1(postcss@8.5.30):
     dependencies:
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       postcss: 8.5.30
       postcss-selector-parser: 7.1.6
 
@@ -15808,6 +15831,12 @@ snapshots:
       acorn: 8.16.0
       webpack-virtual-modules: 0.6.2
 
+  update-browserslist-db@1.3.4(browserslist@4.28.7):
+    dependencies:
+      browserslist: 4.28.7
+      escalade: 3.2.0
+      picocolors: 1.1.1
+
   update-browserslist-db@1.3.4(browserslist@4.29.3):
     dependencies:
       browserslist: 4.29.3
@@ -15976,7 +16005,7 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.14.1
       acorn: 8.16.0
       acorn-import-phases: 1.0.4(acorn@8.16.0)
-      browserslist: 4.29.3
+      browserslist: 4.28.7
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.23.0
       es-module-lexer: 2.1.0
