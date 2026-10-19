@@ -1,8 +1,8 @@
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 import {
   defaultConfig,
   type TagBadgeParameters,
-} from 'storybook-addon-tag-badges';
+} from 'storybook-addon-tag-badges/manager-helpers';
 
 import storybookTheme from './storybookTheme';
 
@@ -11,13 +11,14 @@ addons.setConfig({
     // Add an entry that matches 'frog' and displays a cool badge in the sidebar only
     {
       badge: {
-        bgColor: '#afa',
-        fgColor: '#000',
+        style: { backgroundColor: '#afa', color: '#000' },
         text: 'Tested',
         tooltip: 'This component has tests',
       },
       display: {
-        sidebar: ['component', 'story', 'docs', 'group'],
+        sidebar: (['component', 'story', 'docs', 'group'] as const).map(
+          type => ({ skipInherited: false, type }),
+        ),
       },
       tags: 'tested',
     },

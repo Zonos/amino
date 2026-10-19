@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 
 import { Button } from 'src/components/button/Button';
 import { Flex, type FlexProps } from 'src/components/flex/Flex';

@@ -3,16 +3,14 @@ import tailwindCssPostcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
 
-import { getStories } from './buildStories';
+import { getStories } from './buildStories.ts';
 
 const storybookConfig: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-designs',
     'storybook-addon-tag-badges',
-    '@storybook/addon-interactions',
     {
       name: '@storybook/addon-styling-webpack',
 
@@ -49,6 +47,7 @@ const storybookConfig: StorybookConfig = {
       },
     },
     '@storybook/addon-webpack5-compiler-swc',
+    '@storybook/addon-docs',
   ],
   framework: {
     name: '@storybook/react-webpack5',
@@ -86,12 +85,12 @@ const storybookConfig: StorybookConfig = {
       ...config.resolve,
       alias: {
         ...config.resolve?.alias,
-        '.storybook': path.resolve(__dirname, '.'),
+        '.storybook': path.resolve(import.meta.dirname, '.'),
         // to test the bundled version in stories
-        dist: path.resolve(__dirname, '../dist'),
-        src: path.resolve(__dirname, '../src'),
-        'story-utils': path.resolve(__dirname, './utils'),
-        svgReact: path.resolve(__dirname, '../svgReact'),
+        dist: path.resolve(import.meta.dirname, '../dist'),
+        src: path.resolve(import.meta.dirname, '../src'),
+        'story-utils': path.resolve(import.meta.dirname, './utils'),
+        svgReact: path.resolve(import.meta.dirname, '../svgReact'),
       },
     },
   }),

@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import cloneDeep from 'lodash/cloneDeep';
 import { z } from 'zod';
 
