@@ -6,7 +6,7 @@
   "recommendations": [
     "mrmlnc.vscode-scss",
     "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
+    "oxc.oxc-vscode",
     "github.vscode-pull-request-github"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.

@@ -407,10 +407,10 @@ const config: Config = {
         },
         'spinner-dash': {
           '0%': { strokeDasharray: '1, 150', strokeDashoffset: '0' },
-          /* eslint-disable sort-keys/sort-keys-fix */
+          /* eslint-disable sort-keys */
           '50%': { strokeDasharray: '90, 150', strokeDashoffset: '-35' },
           '100%': { strokeDasharray: '90, 150', strokeDashoffset: '-124' },
-          /* eslint-enable sort-keys/sort-keys-fix */
+          /* eslint-enable sort-keys */
         },
         'spinner-rotate': {
           '100%': { transform: 'rotate(360deg)' },

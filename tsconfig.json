@@ -69,8 +69,6 @@
     "**/*.tsx",
     ".storybook/**/*",
     "babel.config.js",
-    "eslint.config.mjs",
-    "eslint.config.prod.mjs",
     "postcss.config.mts",
     "prettier.config.mjs",
     "scripts/**/*.mjs",
