@@ -319,7 +319,7 @@ importers:
         specifier: ^9.6.0
         version: 9.6.0
       tsc-alias:
-        specifier: ^1.8.17
+        specifier: ~1.8.17
         version: 1.8.17
       tslib:
         specifier: ^2.8.1
