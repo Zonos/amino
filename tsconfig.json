@@ -3,7 +3,6 @@
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,13 +16,16 @@
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "es5",
+    "target": "es2015",
     "types": ["node", "vitest/globals"],
     "verbatimModuleSyntax": true,
     "paths": {
       "src/*": ["./src/*"],
       "svgReact/*": ["./svgReact/*"],
-      "story-utils/*": ["./.storybook/utils/*"]
+      "story-utils/*": ["./.storybook/utils/*"],
+      "build-utils/*": ["./build-utils/*"],
+      "test-utils/*": ["./test-utils/*"],
+      "package.json": ["./package.json"]
     },
     "plugins": [
       {
@@ -32,7 +34,6 @@
       }
     ],
     "esModuleInterop": true,
-    "downlevelIteration": true,
     "skipLibCheck": true,
     "noUncheckedIndexedAccess": true,
     "noEmit": true,
