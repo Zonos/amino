@@ -202,7 +202,9 @@
       "postcss-merge-rules>postcss-selector-parser": ">=7.1.6",
       "postcss-minify-selectors>postcss-selector-parser": ">=7.1.6",
       "postcss-unique-selectors>postcss-selector-parser": ">=7.1.6",
-      "stylehacks>postcss-selector-parser": ">=7.1.6"
+      "stylehacks>postcss-selector-parser": ">=7.1.6",
+      "@storybook/test-runner>playwright": "1.58.2",
+      "@storybook/test-runner>playwright-core": "1.58.2"
     }
   },
   "peerDependencies": {
