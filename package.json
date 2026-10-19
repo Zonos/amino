@@ -154,7 +154,7 @@
     "eslint-plugin-sort-keys": "2.3.5",
     "eslint-plugin-storybook": "^10.6.2",
     "eslint-plugin-typescript-sort-keys": "^3.3.0",
-    "framer-motion": "^13.1.1",
+    "framer-motion": "^14.3.0",
     "glob": "^13.0.6",
     "globals": "^17.13.0",
     "jsdom": "^30.1.3",
@@ -207,7 +207,7 @@
   },
   "peerDependencies": {
     "dayjs": "*",
-    "framer-motion": "^12.x || ^13.x",
+    "framer-motion": "^12.x || ^13.x || ^14.x",
     "lodash": "^4.17.23",
     "react": "^19.x",
     "react-dom": "^19.x",
