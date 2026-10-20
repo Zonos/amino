@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import {
   RichRadio,

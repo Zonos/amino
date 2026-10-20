@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { AlertConsumer } from 'src/components/dialog/alert/__stories__/AlertConsumer';
 import { AlertContextProvider } from 'src/components/dialog/alert/AlertContext';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import { Currency } from 'src/components/currency/Currency';

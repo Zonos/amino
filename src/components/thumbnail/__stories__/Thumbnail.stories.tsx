@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Flex } from 'src/components/flex/Flex';
 import {

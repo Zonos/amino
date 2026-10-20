@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import { Card } from 'src/components/card/Card';
 import { Divider } from 'src/components/divider/Divider';

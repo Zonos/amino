@@ -1,5 +1,5 @@
 import { glob } from 'glob';
-import capitalize from 'lodash/capitalize';
+import capitalize from 'lodash/capitalize.js';
 
 // https://storybook.js.org/docs/react/configure/overview#with-a-configuration-object
 type StorySpecifier = {
@@ -110,7 +110,7 @@ export const buildStories = (stories: string[]) =>
 
 export const getStories = () => {
   const stories = glob.sync('../src/**/__stories__/*.{stories.tsx,mdx}', {
-    cwd: __dirname,
+    cwd: import.meta.dirname,
   });
   const storyPaths = buildStories(stories);
   return storyPaths;

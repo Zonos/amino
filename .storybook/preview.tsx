@@ -4,8 +4,8 @@ import 'src/styles/amino.css';
 import 'src/styles/reset.css';
 import 'src/styles/theme.css';
 import 'src/styles/tailwind.css';
-import { useGlobals } from '@storybook/preview-api';
-import type { Decorator, Preview } from '@storybook/react';
+import type { Decorator, Preview } from '@storybook/react-webpack5';
+import { useGlobals } from 'storybook/preview-api';
 
 import { cn } from 'src/utils/cn';
 import { useAminoTheme } from 'src/utils/hooks/useAminoTheme';
@@ -167,24 +167,19 @@ const preview: Preview = {
 
   globalTypes: {
     language: {
-      defaultValue: 'EN',
       description: 'Language for amino components',
       toolbar: {
-        defaultValue: 'EN',
         dynamicTitle: true,
         icon: 'globe',
         items: supportedLanguages.map(lang => ({
           title: `${lang.label} (${lang.translatedLabel})`,
           value: lang.code,
         })),
-        onChange: (value: SupportedLanguageCode) => value,
       },
     },
     theme: {
-      defaultValue: 'day',
       description: 'Global theme for components',
       toolbar: {
-        defaultValue: 'day',
         dynamicTitle: true,
         icon: 'circlehollow',
         items: [
@@ -192,16 +187,20 @@ const preview: Preview = {
           { icon: 'circle', title: 'Night', value: 'night' },
           { icon: 'sidebar', title: 'Side by side', value: 'side-by-side' },
         ],
-        onChange: (value: StorybookTheme) => value,
       },
     },
+  },
+
+  initialGlobals: {
+    language: 'EN',
+    theme: 'day',
   },
 
   parameters: {
     // Display events in Actions panel
     actions: { argTypesRegex: /^on.*/ },
     backgrounds: {
-      disable: true,
+      disabled: true,
     },
     controls: { exclude: /^on.*/, expanded: true, sort: 'alpha' },
     layout: 'fullscreen',

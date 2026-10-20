@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { FileUpload as FileUploadComponent } from 'src/components/file-upload/FileUpload';
 import {

@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
 
-import type { Schema } from 'zod';
+import type { SafeParseSchema } from 'src/types/SafeParseSchema';
 
 type Params<Value> = {
   initialValue: Value;
   name: string;
-  schema: Schema<Value>;
+  schema: SafeParseSchema<Value>;
 };
 
 export const getCurrentStateUrl = <Value>({
@@ -13,7 +13,7 @@ export const getCurrentStateUrl = <Value>({
   schema,
 }: {
   name: string;
-  schema: Schema<Value>;
+  schema: SafeParseSchema<Value>;
 }): Value | null => {
   const urlParams = new URLSearchParams(window.location.search);
   const rawValue = urlParams.get(name);

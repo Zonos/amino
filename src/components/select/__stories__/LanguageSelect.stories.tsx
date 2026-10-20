@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { TranslateAminoText as Translate } from 'src/components/__amino__/TranslateAminoText';
 import { Flex } from 'src/components/flex/Flex';

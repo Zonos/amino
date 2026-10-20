@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { List, type ListProps } from 'src/components/list/List';
 import { ListItem } from 'src/components/list-item/ListItem';

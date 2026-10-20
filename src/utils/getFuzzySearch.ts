@@ -1,4 +1,4 @@
-import Fuse from 'fuse.js';
+import Fuse, { type FuseIndex, type IFuseOptions } from 'fuse.js';
 
 export const getFuzzySearch = <T>({
   array,
@@ -6,8 +6,8 @@ export const getFuzzySearch = <T>({
   options,
 }: {
   array: T[];
-  index?: Fuse.FuseIndex<T>;
-  options?: Fuse.IFuseOptions<T>;
+  index?: FuseIndex<T>;
+  options?: IFuseOptions<T>;
 }) => {
   const fuzzySearch = new Fuse(array, options, index);
   return { fuzzySearch };

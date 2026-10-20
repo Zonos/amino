@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import bigSvg from 'src/components/avatar/__stories__/resources/big.svg';
 import magentoSvg from 'src/components/avatar/__stories__/resources/magento.svg';
