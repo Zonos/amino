@@ -24,7 +24,6 @@ overrides:
   brace-expansion@>=5.0.0 <5.0.12: 5.0.12
   fast-uri@>=3.0.0 <3.1.8: 3.1.8
   svgo@>=1.0.0 <2.8.4: 2.8.4
-  browserslist@<=4.28.6: 4.28.7
   axios@>=1.13.0 <1.20.0: 1.20.0
 
 pnpmfileChecksum: sha256-5F4qCDq1MVpn4ZFdHsZiE7pYroH0AhB3lL/ZAwTwzGQ=
@@ -8060,7 +8059,7 @@ packages:
     resolution: {integrity: sha512-t8wonIOdQyOjtPd2VktlBu6QjTVTks6v8bSi7kd0r2Vll8TK1JYDZtRRdbmCHOAMphkZgrzK+L+vXK4pyZ8t4A==}
     hasBin: true
     peerDependencies:
-      browserslist: 4.28.7
+      browserslist: '>= 4.21.0'
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
