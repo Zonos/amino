@@ -83,7 +83,7 @@ export const setStateUrl = <Value>({
 /**
  * Uses the URL params to store the state.
  *
- * Uses zod for validation.
+ * Validates with any schema that has zod's `safeParse` (zod 3 or 4).
  */
 export const useStateUrl = <Value>({
   initialValue,

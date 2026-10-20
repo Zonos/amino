@@ -110,4 +110,34 @@ describe('storage tests', () => {
 
     expect(result).toBe('day');
   });
+
+  test(`Accepts a zod 3 shaped schema`, () => {
+    // zod 3's `safeParse` result shape, so consumers still on zod 3 type-check.
+    const zod3Schema: {
+      safeParse: (
+        data: unknown,
+        params?: { path?: (string | number)[] },
+      ) =>
+        | { data: Person; error?: never; success: true }
+        | { data?: never; error: Error; success: false };
+    } = {
+      safeParse: data => {
+        const parsed = schema.safeParse(data);
+        return parsed.success
+          ? { data: parsed.data, success: true }
+          : { error: new Error('invalid'), success: false };
+      },
+    };
+
+    const p: Person = { age: 12, name: 'test' };
+    localStorage.setItem('person', JSON.stringify(p));
+
+    const result: Person | null = getStorageItem({
+      key: 'person',
+      schema: zod3Schema,
+      type: 'local',
+    });
+
+    expect(result).toStrictEqual(p);
+  });
 });
