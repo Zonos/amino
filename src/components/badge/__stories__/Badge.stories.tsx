@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 import { omitControls } from 'story-utils/omitControls';
 
 import { Badge, type BadgeProps } from 'src/components/badge/Badge';

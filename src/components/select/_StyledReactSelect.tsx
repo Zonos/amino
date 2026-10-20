@@ -10,11 +10,10 @@ import type {
   OptionProps,
   Props,
   SelectComponentsConfig,
+  SelectInstance,
   StylesConfig,
 } from 'react-select';
 import ReactSelect, { components as RScomponents } from 'react-select';
-
-import type Select from 'node_modules/react-select/dist/declarations/src/Select';
 
 import { Checkbox } from 'src/components/checkbox/Checkbox';
 import {
@@ -461,7 +460,7 @@ export const StyledReactSelect = <
     [label],
   );
 
-  const selectElement = useRef<Select<Option, IsMulti, Group>>(null);
+  const selectElement = useRef<SelectInstance<Option, IsMulti, Group>>(null);
 
   const closeMenuOnScroll = useMemo(() => {
     if (closeOnOutsideScroll) {

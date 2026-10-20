@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Card as CardComponent } from 'src/components/card/Card';
 import { GlowWrapper } from 'src/components/glow/GlowWrapper';

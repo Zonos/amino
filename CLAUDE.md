@@ -27,8 +27,8 @@ pnpm test:pw                        # Playwright visual tests (requires Storyboo
 pnpm test:sb                        # Storybook test runner
 
 # Linting & Type Checking
-pnpm lint                           # ESLint
-pnpm lint:fix                       # ESLint with auto-fix
+pnpm lint                           # oxlint
+pnpm lint:fix                       # oxlint + Prettier with auto-fix
 pnpm tsc                            # TypeScript check (no emit)
 
 # Icon/Flag Generation

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Case 'Real CSS contents' 1`] = `
+exports[`Case Real CSS contents 1`] = `
 [
   {
     "key": "--amino-transition",

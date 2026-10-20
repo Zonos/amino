@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text } from 'src/components/text/Text';

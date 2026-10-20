@@ -1,6 +1,6 @@
 import { type MouseEvent, useState } from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import {
   NavigationGroup as NavigationGroupComponent,

@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": [
+    "./.oxlintrc.json"
+  ],
+  "rules": {
+    "no-console": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "svgReact/**",
+        "build-utils/**/*",
+        "__stories__/**"
+      ],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

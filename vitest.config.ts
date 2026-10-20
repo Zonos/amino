@@ -4,10 +4,10 @@ import { defineConfig } from 'vitest/config';
 process.env.TZ = 'America/Denver';
 
 export default defineConfig({
-  // tsconfig sets `jsx: 'preserve'` for the rollup build, which leaves esbuild
+  // tsconfig sets `jsx: 'preserve'` for the rollup build, which leaves oxc
   // emitting classic `React.createElement` calls with no React in scope. Without
   // this, any test that renders a component dies on `React is not defined`.
-  esbuild: { jsx: 'automatic' },
+  oxc: { jsx: { runtime: 'automatic' } },
   resolve: {
     alias: {
       '.storybook': path.resolve(__dirname, './.storybook'),

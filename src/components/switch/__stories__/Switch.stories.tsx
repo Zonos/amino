@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 
 import { Flex } from 'src/components/flex/Flex';
 import { Switch, type SwitchProps } from 'src/components/switch/Switch';

@@ -150,12 +150,12 @@ export const getInitialFilterDateStateUrl = (
       dateBegin:
         getCurrentStateUrl({
           name: `${prefix}DateBegin`,
-          schema: z.string().date(),
+          schema: z.iso.date(),
         }) || null,
       dateEnd:
         getCurrentStateUrl({
           name: `${prefix}DateEnd`,
-          schema: z.string().date(),
+          schema: z.iso.date(),
         }) || null,
       lastCount:
         getCurrentStateUrl({

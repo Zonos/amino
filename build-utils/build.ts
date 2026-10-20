@@ -5,7 +5,6 @@ import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
-import typescript from '@rollup/plugin-typescript';
 import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
@@ -78,16 +77,12 @@ const bundlePackage = async (
         ],
       }),
       nodeResolve({
+        extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
         // Seems to evaluate falsiness, so put something
         resolveOnly: [''],
       }),
       json(),
       image(),
-      // `incremental` is inherited from tsconfig.json, where it speeds up
-      // `tsc --noEmit`. Here it only wrote a ~600kB cache into dist, which
-      // npm pack then shipped to consumers. The build emits everything from
-      // scratch anyway, since prebuild wipes dist first.
-      typescript({ incremental: false }),
       // process CSS with PostCSS/Tailwind
       postcss({
         autoModules: true,

@@ -1,5 +1,7 @@
 import dayjs, { type Dayjs } from 'dayjs';
-import { type Schema, z } from 'zod';
+import { z } from 'zod';
+
+import type { SafeParseSchema } from 'src/types/SafeParseSchema';
 
 export type StorageType = 'session' | 'local';
 
@@ -8,7 +10,7 @@ export type StorageParams<Value, Key extends string = string> = {
   /**
    * Set the schema for runtime validation of values.
    */
-  schema: Schema<Value>;
+  schema: SafeParseSchema<Value>;
   type: StorageType;
 };
 

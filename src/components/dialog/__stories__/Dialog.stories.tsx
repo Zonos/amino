@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Badge } from 'src/components/badge/Badge';
 import { Button } from 'src/components/button/Button';

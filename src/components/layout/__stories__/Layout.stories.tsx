@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Card } from 'src/components/card/Card';
 import { NavigationGroup as NavigationGroupStory } from 'src/components/layout/__stories__/NavigationGroup.stories';

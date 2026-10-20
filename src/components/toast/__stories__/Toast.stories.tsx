@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { ToastConsumer } from 'src/components/toast/__stories__/ToastConsumer';
 import type { ToastProps } from 'src/components/toast/Toast';

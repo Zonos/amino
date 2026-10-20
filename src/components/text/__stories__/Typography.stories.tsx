@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { VStack } from 'src/components/stack/VStack';
 import { Text, textOptions, type TextProps } from 'src/components/text/Text';

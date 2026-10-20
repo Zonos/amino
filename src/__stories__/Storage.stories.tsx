@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { z } from 'zod';
 
 import { Button } from 'src/components/button/Button';

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 import { Badge } from 'src/components/badge/Badge';
 import {

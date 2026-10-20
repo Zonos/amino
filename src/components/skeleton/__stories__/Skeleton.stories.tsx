@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Card as CardComponent } from 'src/components/card/Card';
 import { Skeleton, type SkeletonProps } from 'src/components/skeleton/Skeleton';

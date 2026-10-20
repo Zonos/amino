@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-import type { Meta, StoryFn } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import type { Meta, StoryFn } from '@storybook/react-webpack5';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { Button } from 'src/components/button/Button';
 import { Flex } from 'src/components/flex/Flex';

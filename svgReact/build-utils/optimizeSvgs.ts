@@ -13,16 +13,7 @@ export const optimizeSvgs = ({
       multipass: true,
       path: item,
 
-      plugins: [
-        {
-          name: 'preset-default',
-          params: {
-            overrides: {
-              removeViewBox: false,
-            },
-          },
-        },
-      ],
+      plugins: ['preset-default'],
     });
     if (optimizedSvg.data) {
       writeFileSync(item, optimizedSvg.data, { encoding: 'utf-8' });
