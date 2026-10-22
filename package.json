@@ -183,7 +183,7 @@
     "overrides": {
       "uuid": ">=11.1.1",
       "esbuild": ">=0.28.1",
-      "joi": ">=17.13.4",
+      "joi": ">=18.2.6",
       "form-data@>=4.0.0 <4.0.6": "4.0.6",
       "undici@>=7.0.0 <7.29.1": "7.29.1",
       "js-yaml@<4.3.2": "4.3.2",
@@ -194,7 +194,13 @@
       "postcss-unique-selectors>postcss-selector-parser": ">=7.1.6",
       "stylehacks>postcss-selector-parser": ">=7.1.6",
       "@storybook/test-runner>playwright": "1.58.2",
-      "@storybook/test-runner>playwright-core": "1.58.2"
+      "@storybook/test-runner>playwright-core": "1.58.2",
+      "brace-expansion@<1.1.21": "1.1.21",
+      "brace-expansion@>=2.0.0 <2.1.7": "2.1.7",
+      "brace-expansion@>=5.0.0 <5.0.12": "5.0.12",
+      "fast-uri@>=3.0.0 <3.1.8": "3.1.8",
+      "svgo@>=1.0.0 <2.8.4": "2.8.4",
+      "axios@>=1.13.0 <1.20.0": "1.20.0"
     }
   },
   "peerDependencies": {
