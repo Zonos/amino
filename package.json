@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -181,18 +181,10 @@
   },
   "pnpm": {
     "overrides": {
-      "uuid": ">=11.1.1",
-      "esbuild": ">=0.28.1",
-      "joi": ">=17.13.4",
-      "form-data@>=4.0.0 <4.0.6": "4.0.6",
-      "undici@>=7.0.0 <7.29.1": "7.29.1",
-      "js-yaml@<4.3.2": "4.3.2",
+      "uuid@<11.1.1": "^11.1.1",
+      "postcss-selector-parser@<7.1.6": "^7.1.6",
+      "@istanbuljs/load-nyc-config>js-yaml": "^4.1.1",
       "@storybook/builder-webpack5>webpack-dev-middleware": "^7.4.6",
-      "postcss-calc>postcss-selector-parser": ">=7.1.6",
-      "postcss-merge-rules>postcss-selector-parser": ">=7.1.6",
-      "postcss-minify-selectors>postcss-selector-parser": ">=7.1.6",
-      "postcss-unique-selectors>postcss-selector-parser": ">=7.1.6",
-      "stylehacks>postcss-selector-parser": ">=7.1.6",
       "@storybook/test-runner>playwright": "1.58.2",
       "@storybook/test-runner>playwright-core": "1.58.2"
     }
