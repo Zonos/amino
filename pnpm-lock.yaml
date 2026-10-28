@@ -7,7 +7,7 @@ settings:
 overrides:
   uuid@<11.1.1: ^11.1.1
   postcss-selector-parser@<7.1.6: ^7.1.6
-  '@istanbuljs/load-nyc-config>js-yaml': ^4.1.1
+  '@istanbuljs/load-nyc-config>js-yaml': ^4.3.2
   '@storybook/builder-webpack5>webpack-dev-middleware': ^7.4.6
   '@storybook/test-runner>playwright': 1.58.2
   '@storybook/test-runner>playwright-core': 1.58.2
