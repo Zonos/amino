@@ -1,3 +1,4 @@
+import { getBundledDependencies } from 'build-utils/bundledDependencies';
 import fs from 'fs';
 import path from 'path';
 // DO NOT DELETE THIS FILE
@@ -12,6 +13,12 @@ function main() {
   sourceObj.scripts = {};
 
   sourceObj.devDependencies = {};
+
+  // bundled into dist, so consumers would install a copy that never runs
+  const dependencies = sourceObj.dependencies as Record<string, string>;
+  getBundledDependencies(dependencies).forEach(name => {
+    delete dependencies[name];
+  });
 
   sourceObj.types = 'all.d.ts';
   fs.writeFileSync(

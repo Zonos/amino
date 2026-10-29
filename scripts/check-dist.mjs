@@ -38,11 +38,33 @@ const failures = files.flatMap(file => {
   }
 });
 
+// A lazy `import()` compiles to a deferred require() that loading the file
+// never runs, so also require every package a dist file names
+const bareRequire = /require\(['"]([^'"./][^'"]*)['"]\)/g;
+const packages = new Set(
+  files.flatMap(file =>
+    [...fs.readFileSync(file, 'utf-8').matchAll(bareRequire)].map(
+      ([, specifier]) => specifier,
+    ),
+  ),
+);
+packages.forEach(specifier => {
+  try {
+    require(specifier);
+  } catch (error) {
+    failures.push(
+      `require("${specifier}"): ${error.code ?? ''} ${error.message}`,
+    );
+  }
+});
+
 if (failures.length) {
   console.error(
-    `${failures.length} of ${files.length} dist files failed to require:`,
+    `${failures.length} of ${files.length} dist files and ${packages.size} packages failed to require:`,
   );
   failures.forEach(failure => console.error(`  ${failure}`));
   process.exit(1);
 }
-console.log(`All ${files.length} dist files load with require()`);
+console.log(
+  `All ${files.length} dist files and ${packages.size} packages they name load with require()`,
+);

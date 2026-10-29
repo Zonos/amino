@@ -7,10 +7,10 @@ import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
+import { getBundledDependencies } from 'build-utils/bundledDependencies';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
 import { glob } from 'glob';
-import { createRequire } from 'module';
 import { dependencies, peerDependencies } from 'package.json';
 import path from 'path';
 import {
@@ -22,52 +22,10 @@ import {
 import postcss from 'rollup-plugin-postcss';
 import progress from 'rollup-plugin-progress';
 
-const requireFromRoot = createRequire(
-  path.resolve(__dirname, '../package.json'),
+const bundledDependencies = getBundledDependencies(dependencies);
+console.log(
+  `Bundling ESM-only dependencies: ${bundledDependencies.join(', ') || 'none'}`,
 );
-
-/**
- * Check whether a CJS `require(dependency)` lands on an ES module, i.e. the
- * package ships no CommonJS build (uuid 12+ for example)
- * @param dependency package name
- * @returns boolean
- */
-const isEsmOnly = (dependency: string): boolean => {
-  let entry: string;
-  try {
-    entry = requireFromRoot.resolve(dependency);
-  } catch {
-    // no `require` entry at all
-    return true;
-  }
-  if (entry.endsWith('.mjs')) {
-    return true;
-  }
-  if (entry.endsWith('.cjs')) {
-    return false;
-  }
-  // `.js` follows the `type` of the nearest package.json
-  for (let dir = path.dirname(entry); ; dir = path.dirname(dir)) {
-    const packageJsonPath = path.join(dir, 'package.json');
-    if (fs.existsSync(packageJsonPath)) {
-      const { type } = JSON.parse(
-        fs.readFileSync(packageJsonPath, 'utf-8'),
-      ) as {
-        type?: string;
-      };
-      return type === 'module';
-    }
-    if (dir === path.dirname(dir)) {
-      return false;
-    }
-  }
-};
-
-/**
- * Dependencies that ship only ESM get bundled into dist, because dist is CJS
- * and `require()` of an ES module only works on Node 22.12+ and not in CJS Jest
- */
-const bundledDependencies = Object.keys(dependencies).filter(isEsmOnly);
 
 type RollupOptions = InputOptions & { output?: OutputOptions };
 type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
@@ -243,8 +201,9 @@ const configs: ConfigOptions[] = [
       // keep each bundled dependency in its own chunk instead of letting
       // rollup hoist the first component that imports it into a shared chunk
       manualChunks: id => {
+        const normalizedId = id.split(path.sep).join('/');
         const dependency = bundledDependencies.find(name =>
-          id.includes(`/node_modules/${name}/`),
+          normalizedId.includes(`/node_modules/${name}/`),
         );
         return dependency && `_bundled/${dependency}`;
       },
