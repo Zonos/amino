@@ -1,12 +1,6 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 test('toasts get unique ids and dismiss by id', async ({ page }) => {
-  const errors: string[] = [];
-  page.on('console', msg => {
-    if (msg.type() === 'error') errors.push(msg.text());
-  });
-  page.on('pageerror', err => errors.push(err.message));
-
   await page.goto('/iframe.html?id=amino-toast--toast&viewMode=story');
 
   await expect(
@@ -23,6 +17,4 @@ test('toasts get unique ids and dismiss by id', async ({ page }) => {
   await expect(longToast).toBeVisible();
   await page.getByTestId('amino--external-dismiss').click();
   await expect(longToast).toHaveCount(0);
-
-  expect(errors).toEqual([]);
 });
