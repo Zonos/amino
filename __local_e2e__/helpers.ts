@@ -1,5 +1,8 @@
 import { expect, type Page } from '@playwright/test';
 
+// the getRootProps() element wraps the hidden file input
+export const dropTarget = 'input[type=file] >> xpath=..';
+
 export const openStory = async (page: Page, id: string) => {
   const errors: string[] = [];
   page.on('console', msg => {

@@ -228,7 +228,7 @@ export const DropZone = ({
   });
 
   const renderUpload = () => (
-    // The role gets set to button despite setting `noClick`, so override it as `undefined`
+    // `getRootProps` sets role="presentation"; the root isn't interactive, so drop the role
     <div
       className="flex h-full w-full flex-col items-center justify-center gap-3
         p-4 outline-none"
