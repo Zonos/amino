@@ -27,6 +27,7 @@ export default defineConfig({
       '**/__stories__/storyshots',
       '**/storyshots.test.ts',
       '**/dist',
+      '__local_e2e__/**',
     ],
     globals: true,
     include: ['**/*.test.ts'],
