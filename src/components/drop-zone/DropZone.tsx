@@ -221,6 +221,7 @@ export const DropZone = ({
   const maxFiles = dropzoneOptions.maxFiles || 0;
 
   const { getInputProps, getRootProps, open } = useDropzone({
+    noPaste: true,
     ...dropzoneOptions,
     disabled,
     noClick: true,

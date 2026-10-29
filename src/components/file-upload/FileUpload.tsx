@@ -158,6 +158,7 @@ export const FileUpload = ({
       text: 'Uploading...',
     });
   const { getInputProps, getRootProps, open } = useDropzone({
+    noPaste: true,
     ...dropzoneOptions,
     disabled,
     multiple: false,
