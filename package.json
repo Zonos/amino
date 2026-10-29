@@ -57,6 +57,7 @@
     "test:visual": "playwright test visual-regression --project=chromium",
     "test:visual:review": "pnpm test:visual; pnpm test:analyze",
     "test:css-compare": "playwright test css-comparison --project=chromium --config playwright.css-compare.config.ts",
+    "test:e2e:local": "playwright test --config playwright.local.config.ts",
     "test:analyze": "tsx scripts/analyze-visual-diffs.ts",
     "test:analyze:triage": "tsx scripts/analyze-visual-diffs.ts --triage",
     "test:sb": "test-storybook",

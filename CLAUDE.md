@@ -25,6 +25,7 @@ pnpm test                           # Run Vitest tests
 pnpm test:prod                      # Run tests in CI mode (no watch)
 pnpm test:pw                        # Playwright visual tests (requires Storybook running)
 pnpm test:sb                        # Storybook test runner
+pnpm test:e2e:local                 # Local DropZone/FileUpload behaviour specs (requires Storybook running; not in CI)
 
 # Linting & Type Checking
 pnpm lint                           # oxlint
