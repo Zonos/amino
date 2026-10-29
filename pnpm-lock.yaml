@@ -88,8 +88,8 @@ importers:
         specifier: ^7.5.0
         version: 7.5.0
       react-dropzone:
-        specifier: ^12.1.0
-        version: 12.1.0(react@19.2.8)
+        specifier: ^20.1.4
+        version: 20.1.4(@types/react@19.2.7)(react@19.2.8)
       react-intersection-observer:
         specifier: ^11.0.1
         version: 11.0.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -4325,9 +4325,9 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  attr-accept@2.2.5:
-    resolution: {integrity: sha512-0bDNnY/u6pPwHDMoF0FieU354oBi0a8rD9FcsLwzcGWbc8KS8KPIi7y+s13OlVY+gMWc/9xEMUgNE6Qm8ZllYQ==}
-    engines: {node: '>=4'}
+  attr-accept@4.0.1:
+    resolution: {integrity: sha512-rOKAGOwbnTUvwTL8rNA0hWnU3uX9tOI20di4KjR5I1ez/RJmnA37W3zz4EMxGC2YnI289yPjRy63CdAZeQFZ4Q==}
+    engines: {node: '>= 22'}
 
   autoprefixer@10.4.14:
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
@@ -5270,9 +5270,9 @@ packages:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
 
-  file-selector@0.5.0:
-    resolution: {integrity: sha512-s8KNnmIDTBoD0p9uJ9uD0XY38SCeBOtj0UMXyQSLg1Ypfrfj8+dAvwsLjYQkQ2GjhVtp2HrnF5cJzMhBjfD8HA==}
-    engines: {node: '>= 10'}
+  file-selector@5.0.1:
+    resolution: {integrity: sha512-v0g/PTeuQgvKCBrVRsfVudvwXlRHSWHEQkVgKawgCGHkEpKA1clp3Om5jvEVhz8G9W/mOYjJH9FhkH4C888PgQ==}
+    engines: {node: '>= 22'}
 
   filesize@9.0.11:
     resolution: {integrity: sha512-gTAiTtI0STpKa5xesyTA9hA3LX4ga8sm2nWRcffEa1L/5vQwb4mj2MdzMkoHoGv4QzfDshQZuYscQSf8c4TKOA==}
@@ -7234,11 +7234,15 @@ packages:
     peerDependencies:
       react: ^19.2.8
 
-  react-dropzone@12.1.0:
-    resolution: {integrity: sha512-iBYHA1rbopIvtzokEX4QubO6qk5IF/x3BtKGu74rF2JkQDXnwC4uO/lHKpaw4PJIV6iIAYOlwLv2FpiGyqHNog==}
-    engines: {node: '>= 10.13'}
+  react-dropzone@20.1.4:
+    resolution: {integrity: sha512-LyjT9iQySNkJGC6yL+XTlmfTRxHhPx0eSoTh+WlR0Ge+W35rLcRH/oH7w5bzijfPHeCFcLnO9G7i+hX+LINAAA==}
+    engines: {node: '>= 22'}
     peerDependencies:
-      react: '>= 16.8'
+      '@types/react': '*'
+      react: '>= 18'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   react-intersection-observer@11.0.1:
     resolution: {integrity: sha512-BIZ1M40GPSKDIT1MJbXK7SB0BwBaTKr84QfZCs5asKer7YMOYLzMi+RI1F4VStbZLGHoosJmd+aOQDDipUV1gA==}
@@ -12355,7 +12359,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  attr-accept@2.2.5: {}
+  attr-accept@4.0.1: {}
 
   autoprefixer@10.4.14(postcss@8.5.30):
     dependencies:
@@ -13464,9 +13468,7 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  file-selector@0.5.0:
-    dependencies:
-      tslib: 2.8.1
+  file-selector@5.0.1: {}
 
   filesize@9.0.11: {}
 
@@ -15670,12 +15672,13 @@ snapshots:
       react: 19.2.8
       scheduler: 0.27.0
 
-  react-dropzone@12.1.0(react@19.2.8):
+  react-dropzone@20.1.4(@types/react@19.2.7)(react@19.2.8):
     dependencies:
-      attr-accept: 2.2.5
-      file-selector: 0.5.0
-      prop-types: 15.8.1
+      attr-accept: 4.0.1
+      file-selector: 5.0.1
       react: 19.2.8
+    optionalDependencies:
+      '@types/react': 19.2.7
 
   react-intersection-observer@11.0.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
