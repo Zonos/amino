@@ -221,6 +221,8 @@ export const DropZone = ({
   const maxFiles = dropzoneOptions.maxFiles || 0;
 
   const { getInputProps, getRootProps, open } = useDropzone({
+    // react-dropzone 19.2+ turns paste-to-upload on; keep it opt-in via dropzoneOptions
+    noPaste: true,
     ...dropzoneOptions,
     disabled,
     noClick: true,
@@ -228,7 +230,7 @@ export const DropZone = ({
   });
 
   const renderUpload = () => (
-    // The role gets set to button despite setting `noClick`, so override it as `undefined`
+    // `getRootProps` sets role="presentation"; the root isn't interactive, so drop the role
     <div
       className="flex h-full w-full flex-col items-center justify-center gap-3
         p-4 outline-none"
