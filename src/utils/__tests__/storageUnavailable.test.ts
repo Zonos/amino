@@ -170,7 +170,12 @@ describe('storage when unavailable', () => {
     expect(setItem).toHaveBeenCalled();
   });
 
-  test('a lifetime write that fails partway still notifies subscribers', () => {
+  test('a lifetime write that fails partway rolls back and notifies subscribers', () => {
+    localStorage.setItem('amino:test', 'old');
+    localStorage.setItem(
+      'amino:test_update_after',
+      dayjs().add(1, 'day').format(),
+    );
     const realSetItem = Storage.prototype.setItem;
     vi.spyOn(Storage.prototype, 'setItem').mockImplementation(function (
       this: Storage,
@@ -194,6 +199,8 @@ describe('storage when unavailable', () => {
       }),
     ).not.toThrow();
     expect(listener).toHaveBeenCalledTimes(1);
+    expect(localStorage.getItem('amino:test')).toBeNull();
+    expect(localStorage.getItem('amino:test_update_after')).toBeNull();
 
     window.removeEventListener('amino:storage-local', listener);
   });

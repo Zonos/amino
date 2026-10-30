@@ -129,8 +129,14 @@ export const setStorageItemWithLifetime = <Value>({
       storage.removeItem(`${key}_update_after`);
     }
   } catch {
-    // Blocked storage or exceeded quota. The first write may have landed, so
-    // still notify subscribers to re-read.
+    // Blocked storage or exceeded quota. Drop both keys so a value never sits
+    // next to a missing or stale `_update_after`, then notify subscribers.
+    try {
+      storage.removeItem(key);
+      storage.removeItem(`${key}_update_after`);
+    } catch {
+      // Storage is blocked entirely
+    }
   }
 
   // Dispatch our internal event
