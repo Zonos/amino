@@ -7,6 +7,7 @@ import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import tailwindcss from '@tailwindcss/postcss';
 import autoprefixer from 'autoprefixer';
+import { getBundledDependencies } from 'build-utils/bundledDependencies';
 import sizes from 'build-utils/plugins/customized-rollup-plugin-sizes';
 import fs from 'fs';
 import { glob } from 'glob';
@@ -20,6 +21,11 @@ import {
 } from 'rollup';
 import postcss from 'rollup-plugin-postcss';
 import progress from 'rollup-plugin-progress';
+
+const bundledDependencies = getBundledDependencies(dependencies);
+console.log(
+  `Bundling ESM-only dependencies: ${bundledDependencies.join(', ') || 'none'}`,
+);
 
 type RollupOptions = InputOptions & { output?: OutputOptions };
 type ConfigOptions = Omit<RollupOptions, 'input' | 'output'> &
@@ -54,7 +60,9 @@ const bundlePackage = async (
   const defaultOptions: RollupOptions = {
     cache: false,
     external: (Object.keys(peerDependencies) as string[]).concat(
-      Object.keys(dependencies) as string[],
+      Object.keys(dependencies).filter(
+        dependency => !bundledDependencies.includes(dependency),
+      ),
     ),
     maxParallelFileOps: 50,
     output: {},
@@ -78,8 +86,9 @@ const bundlePackage = async (
       }),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts', '.tsx'],
-        // Seems to evaluate falsiness, so put something
-        resolveOnly: [''],
+        // An empty list resolves everything, so '' keeps every bare import
+        // external except the bundled dependencies
+        resolveOnly: ['', ...bundledDependencies],
       }),
       json(),
       image(),
@@ -189,6 +198,15 @@ const configs: ConfigOptions[] = [
       exports: 'auto',
       format: 'cjs',
       interop: 'auto',
+      // keep each bundled dependency in its own chunk instead of letting
+      // rollup hoist the first component that imports it into a shared chunk
+      manualChunks: id => {
+        const normalizedId = id.split(path.sep).join('/');
+        const dependency = bundledDependencies.find(name =>
+          normalizedId.includes(`/node_modules/${name}/`),
+        );
+        return dependency && `_bundled/${dependency}`;
+      },
       sourcemap: false,
     },
   },

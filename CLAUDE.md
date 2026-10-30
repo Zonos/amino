@@ -24,6 +24,7 @@ pnpm build:scss:types               # Generate TypeScript types for SCSS modules
 pnpm test                           # Run Vitest tests
 pnpm test:prod                      # Run tests in CI mode (no watch)
 pnpm test:pw                        # Playwright visual tests (requires Storybook running)
+pnpm test:pw:local                  # __local_e2e__ specs, not run in CI (PLAYWRIGHT_TEST_BASE_URL=<storybook url>)
 pnpm test:sb                        # Storybook test runner
 
 # Linting & Type Checking
@@ -191,6 +192,7 @@ Files prefixed with `_` are internal and won't appear in VS Code auto-import sug
 
 - **Unit tests**: Vitest with jsdom environment
 - **Visual tests**: Playwright (requires Storybook running on port 6006)
+- **Local specs**: `__local_e2e__/*.spec.ts` record dependency-upgrade checks against Storybook stories; CI doesn't run them, so run `pnpm test:pw:local` before relying on one and fix or delete it when it breaks
 - **Storybook tests**: `test-storybook` runner
 - Test files: `**/*.test.ts` in `__tests__/` directories
 
