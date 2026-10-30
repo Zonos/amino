@@ -1,4 +1,7 @@
-import { getBundledDependencies } from 'build-utils/bundledDependencies';
+import {
+  getBundledDependencies,
+  readDependencyPackageJson,
+} from 'build-utils/bundledDependencies';
 import fs from 'fs';
 import path from 'path';
 // DO NOT DELETE THIS FILE
@@ -14,11 +17,17 @@ function main() {
 
   sourceObj.devDependencies = {};
 
-  // bundled into dist, so consumers would install a copy that never runs
+  // bundled into dist, so consumers would install a copy that never runs;
+  // `bundledPackages` records the shipped versions for auditing
   const dependencies = sourceObj.dependencies as Record<string, string>;
+  const bundledPackages: Record<string, string> = {};
   getBundledDependencies(dependencies).forEach(name => {
+    bundledPackages[name] = readDependencyPackageJson(name).version;
     delete dependencies[name];
   });
+  if (Object.keys(bundledPackages).length) {
+    sourceObj.bundledPackages = bundledPackages;
+  }
 
   sourceObj.types = 'all.d.ts';
   fs.writeFileSync(

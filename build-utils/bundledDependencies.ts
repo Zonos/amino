@@ -10,15 +10,34 @@ import path from 'path';
  */
 const ALLOWED_BUNDLED = ['uuid'];
 
-/** Resolution errors that mean the package has no `require` entry */
-const NO_REQUIRE_ENTRY = new Set([
-  'ERR_PACKAGE_PATH_NOT_EXPORTED',
-  'ERR_REQUIRE_ESM',
-]);
+const rootDir = path.resolve(__dirname, '..');
+const requireFromRoot = createRequire(path.join(rootDir, 'package.json'));
 
-const requireFromRoot = createRequire(
-  path.resolve(__dirname, '../package.json'),
-);
+type PackageJson = {
+  dependencies?: Record<string, string>;
+  exports?: unknown;
+  version: string;
+};
+
+export const readDependencyPackageJson = (dependency: string): PackageJson =>
+  JSON.parse(
+    fs.readFileSync(
+      path.join(rootDir, 'node_modules', dependency, 'package.json'),
+      'utf-8',
+    ),
+  ) as PackageJson;
+
+/** Whether `exports` maps the package root, so `require(dependency)` is meant to work */
+const exportsRoot = (exports: unknown): boolean => {
+  if (typeof exports === 'string' || Array.isArray(exports)) {
+    return true;
+  }
+  if (!exports || typeof exports !== 'object') {
+    return false;
+  }
+  const keys = Object.keys(exports);
+  return keys.includes('.') || !keys.some(key => key.startsWith('.'));
+};
 
 /**
  * Check whether a CJS `require(dependency)` lands on an ES module, i.e. the
@@ -31,10 +50,15 @@ export const isEsmOnly = (dependency: string): boolean => {
   try {
     entry = requireFromRoot.resolve(dependency);
   } catch (error) {
-    if (NO_REQUIRE_ENTRY.has((error as NodeJS.ErrnoException).code ?? '')) {
-      return true;
+    const { code } = error as NodeJS.ErrnoException;
+    if (code === 'ERR_PACKAGE_PATH_NOT_EXPORTED') {
+      // a root export with no `require` condition is ESM-only; a package that
+      // exports only subpaths is not
+      return exportsRoot(readDependencyPackageJson(dependency).exports);
     }
-    throw error;
+    throw new Error(
+      `Could not resolve dependency "${dependency}" while checking for ESM-only packages: ${(error as Error).message}`,
+    );
   }
   if (entry.endsWith('.mjs')) {
     return true;
@@ -75,6 +99,15 @@ export const getBundledDependencies = (
   if (unexpected.length) {
     throw new Error(
       `ESM-only dependencies not in ALLOWED_BUNDLED (build-utils/bundledDependencies.ts): ${unexpected.join(', ')}`,
+    );
+  }
+  const withDependencies = bundled.filter(
+    name =>
+      Object.keys(readDependencyPackageJson(name).dependencies ?? {}).length,
+  );
+  if (withDependencies.length) {
+    throw new Error(
+      `Bundled dependencies must have no runtime dependencies of their own: ${withDependencies.join(', ')}`,
     );
   }
   return bundled;
