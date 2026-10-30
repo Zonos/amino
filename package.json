@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "6.2.1",
+  "version": "6.2.3",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -103,7 +103,7 @@
     "tailwind-merge": "^3.4.0",
     "uuid": "^11.1.1",
     "zod": "^4.6.7",
-    "zustand": "^5.0.11"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
