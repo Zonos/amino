@@ -49,6 +49,7 @@ const stubStorage = (type: StorageType, descriptor: PropertyDescriptor) =>
 
 describe('storage when unavailable', () => {
   afterEach(() => {
+    vi.restoreAllMocks();
     for (const name of ['localStorage', 'sessionStorage'] as const) {
       const original = originals[name];
       if (original) {
@@ -166,8 +167,35 @@ describe('storage when unavailable', () => {
     expect(() =>
       setStorageItem({ key: 'amino:test', type: 'local', value: 'value' }),
     ).not.toThrow();
+    expect(setItem).toHaveBeenCalled();
+  });
 
-    setItem.mockRestore();
+  test('a lifetime write that fails partway still notifies subscribers', () => {
+    const realSetItem = Storage.prototype.setItem;
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(function (
+      this: Storage,
+      key: string,
+      value: string,
+    ) {
+      if (key.endsWith('_update_after')) {
+        throw new DOMException('Quota exceeded', 'QuotaExceededError');
+      }
+      realSetItem.call(this, key, value);
+    });
+    const listener = vi.fn();
+    window.addEventListener('amino:storage-local', listener);
+
+    expect(() =>
+      setStorageItemWithLifetime({
+        key: 'amino:test',
+        lifetime: dayjs().add(1, 'day'),
+        type: 'local',
+        value: 'value',
+      }),
+    ).not.toThrow();
+    expect(listener).toHaveBeenCalledTimes(1);
+
+    window.removeEventListener('amino:storage-local', listener);
   });
 
   test('available storage still reads and writes', () => {
