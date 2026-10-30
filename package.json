@@ -1,6 +1,6 @@
 {
   "name": "@zonos/amino",
-  "version": "6.2.1",
+  "version": "6.2.2",
   "description": "Core UI components for Amino",
   "repository": "git@github.com:Zonos/amino.git",
   "license": "MIT",
@@ -155,7 +155,7 @@
     "postcss-loader": "^8.2.0",
     "postcss-preset-env": "11.6.1",
     "prettier": "^3.8.1",
-    "prettier-plugin-classnames": "^0.10.4",
+    "prettier-plugin-classnames": "^0.10.5",
     "prettier-plugin-merge": "^0.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "react": "^19.2.0",
