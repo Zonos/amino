@@ -119,9 +119,11 @@ export const setStorageItemWithLifetime = <Value>({
 
   const valueIsTruthy = !!value;
 
+  let valueWritten = false;
   try {
     if (valueIsTruthy) {
       storage.setItem(key, valueToSet);
+      valueWritten = true;
       storage.setItem(`${key}_update_after`, lifetime.format());
     } else {
       // Remove the item
@@ -129,13 +131,16 @@ export const setStorageItemWithLifetime = <Value>({
       storage.removeItem(`${key}_update_after`);
     }
   } catch {
-    // Blocked storage or exceeded quota. Drop both keys so a value never sits
-    // next to a missing or stale `_update_after`, then notify subscribers.
-    try {
-      storage.removeItem(key);
-      storage.removeItem(`${key}_update_after`);
-    } catch {
-      // Storage is blocked entirely
+    // Blocked storage or exceeded quota. A failed first write leaves the
+    // previous pair intact; after a failed second write, drop both keys so the
+    // new value never sits next to a missing or stale `_update_after`.
+    if (valueWritten) {
+      try {
+        storage.removeItem(key);
+        storage.removeItem(`${key}_update_after`);
+      } catch {
+        // Storage is blocked entirely
+      }
     }
   }
 

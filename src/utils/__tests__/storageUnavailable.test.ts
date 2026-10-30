@@ -170,6 +170,25 @@ describe('storage when unavailable', () => {
     expect(setItem).toHaveBeenCalled();
   });
 
+  test('a lifetime write whose first setItem throws keeps the previous pair', () => {
+    const updateAfter = dayjs().add(1, 'day').format();
+    localStorage.setItem('amino:test', 'old');
+    localStorage.setItem('amino:test_update_after', updateAfter);
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new DOMException('Quota exceeded', 'QuotaExceededError');
+    });
+
+    setStorageItemWithLifetime({
+      key: 'amino:test',
+      lifetime: dayjs().add(2, 'day'),
+      type: 'local',
+      value: 'value',
+    });
+
+    expect(localStorage.getItem('amino:test')).toBe('old');
+    expect(localStorage.getItem('amino:test_update_after')).toBe(updateAfter);
+  });
+
   test('a lifetime write that fails partway rolls back and notifies subscribers', () => {
     localStorage.setItem('amino:test', 'old');
     localStorage.setItem(
