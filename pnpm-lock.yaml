@@ -5,18 +5,14 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  uuid: '>=11.1.1'
+  uuid@<11.1.1: ^11.1.1
   esbuild: '>=0.28.1'
   joi: '>=18.2.6'
   form-data@>=4.0.0 <4.0.6: 4.0.6
   undici@>=7.0.0 <7.29.1: 7.29.1
   js-yaml@<4.3.2: 4.3.2
+  postcss-selector-parser@<7.1.6: ^7.1.6
   '@storybook/builder-webpack5>webpack-dev-middleware': ^7.4.6
-  postcss-calc>postcss-selector-parser: '>=7.1.6'
-  postcss-merge-rules>postcss-selector-parser: '>=7.1.6'
-  postcss-minify-selectors>postcss-selector-parser: '>=7.1.6'
-  postcss-unique-selectors>postcss-selector-parser: '>=7.1.6'
-  stylehacks>postcss-selector-parser: '>=7.1.6'
   '@storybook/test-runner>playwright': 1.58.2
   '@storybook/test-runner>playwright-core': 1.58.2
   brace-expansion@<1.1.21: 1.1.21
@@ -117,7 +113,7 @@ importers:
         specifier: ^3.4.0
         version: 3.6.0
       uuid:
-        specifier: '>=11.1.1'
+        specifier: ^11.1.1
         version: 11.1.1
       zod:
         specifier: ^4.6.7
@@ -274,8 +270,8 @@ importers:
         specifier: ^3.8.1
         version: 3.8.4
       prettier-plugin-classnames:
-        specifier: ^0.10.4
-        version: 0.10.4(prettier@3.8.4)
+        specifier: ^0.10.5
+        version: 0.10.5(prettier@3.8.4)
       prettier-plugin-merge:
         specifier: ^0.10.1
         version: 0.10.1(prettier@3.8.4)
@@ -1354,13 +1350,13 @@ packages:
     resolution: {integrity: sha512-JpjNBJFA+4OnAHKRK4AMp8xrYyLhI9XapOeBlP2PhRU/IylSw+1ep3BFNTksBJnrTS3KT6kqKNVfpzLLwZUW5Q==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
-      postcss-selector-parser: ^7.1.1
+      postcss-selector-parser: ^7.1.6
 
   '@csstools/selector-specificity@6.0.1':
     resolution: {integrity: sha512-MBuqFIIvqk4S593MGAskTkPpEUUzZNvGzh8mMxEwl3oHwjQlXmqHEDxNbN3Y0Tsh+xjmem4GZjeg7I0qkwBivg==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
-      postcss-selector-parser: ^7.1.1
+      postcss-selector-parser: ^7.1.6
 
   '@csstools/utilities@3.0.0':
     resolution: {integrity: sha512-etDqA/4jYvOGBM6yfKCOsEXfH96BKztZdgGmGqKi2xHnDe0ILIBraRspwgYatJH9JsCZ5HCGoCst8w18EKOAdg==}
@@ -4456,11 +4452,6 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  browserslist@4.28.7:
-    resolution: {integrity: sha512-JxV13hNrFxqjOc8alRbq9dK1MM79NEXYpma2B2J4wAtpWS5zIEIKqWPGCl7N4o7Uc7B7itylh7SuDujATRyyTw==}
-    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
-    hasBin: true
-
   browserslist@4.29.3:
     resolution: {integrity: sha512-1R4kiYKXGViqEN0CnoDrXc1StD9niAwu+j2dukWzrD4bJgsD4lDmEp0CRbc6E/vYJIfTHwPmwyaKtVSudICdPA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -5347,8 +5338,8 @@ packages:
   flatted@3.4.2:
     resolution: {integrity: sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==}
 
-  follow-redirects@1.16.0:
-    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
+  follow-redirects@1.16.2:
+    resolution: {integrity: sha512-/kVP2U8z596Ia0gwFrwyIeo74ta5aVmSeU1FfAUMAmcEP5EP7zydmag3SLiN64NaRKef3lxsq7i/g7ltJQDGow==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -6030,8 +6021,8 @@ packages:
     resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
     hasBin: true
 
-  joi@18.2.9:
-    resolution: {integrity: sha512-2mD929bUVKUhOLQQEVhlf6EZ0Mlo0DeRb5MO7cViR9AXLtBauuccEtB1py9Ocxpo/P7ucnh442iY/iOwrh3IQw==}
+  joi@18.3.0:
+    resolution: {integrity: sha512-/RwAK4BAfzcdbdFg073tzq4/xhY6Q7lMd5AmjqTL6pu0QFJdEmtswgm8BvgwXvOKuPNYQ8XrdQrrW/gF65LiNw==}
     engines: {node: '>= 20'}
 
   js-tokens@4.0.0:
@@ -7120,8 +7111,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-classnames@0.10.4:
-    resolution: {integrity: sha512-JIheUGkLGEqBwv/OWpizy+C6lY9z1fE9KpQpq8q+3j2xyzon7zBiv8Udn8tNkKwoQObrIg2e++DEVnMZiTOeJw==}
+  prettier-plugin-classnames@0.10.5:
+    resolution: {integrity: sha512-+KbnIXWA6hcDmywQrHb+uxeiGjMFPveYzY3EekDVUbYYT6LzPqxB3lmuQ/vFv6Zy8n7x6fdVceEe/IFXpSvrlg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@prettier/plugin-oxc': '*'
@@ -8389,9 +8380,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-
   zod@4.6.7:
     resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
 
@@ -8478,7 +8466,7 @@ snapshots:
     dependencies:
       '@babel/compat-data': 7.29.7
       '@babel/helper-validator-option': 7.29.7
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       lru-cache: 5.1.1
       semver: 6.3.1
 
@@ -12391,7 +12379,7 @@ snapshots:
 
   autoprefixer@10.4.14(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       caniuse-lite: 1.0.30001797
       fraction.js: 4.3.7
       normalize-range: 0.1.2
@@ -12416,7 +12404,7 @@ snapshots:
 
   axios@1.20.0:
     dependencies:
-      follow-redirects: 1.16.0
+      follow-redirects: 1.16.2
       form-data: 4.0.6
       https-proxy-agent: 5.0.1
       proxy-from-env: 2.1.0
@@ -12537,14 +12525,6 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  browserslist@4.28.7:
-    dependencies:
-      baseline-browser-mapping: 2.11.28
-      caniuse-lite: 1.0.30001816
-      electron-to-chromium: 1.5.453
-      node-releases: 2.0.58
-      update-browserslist-db: 1.3.4(browserslist@4.28.7)
-
   browserslist@4.29.3:
     dependencies:
       baseline-browser-mapping: 2.11.28
@@ -12600,7 +12580,7 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       caniuse-lite: 1.0.30001816
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
@@ -12757,7 +12737,7 @@ snapshots:
 
   core-js-compat@3.49.0:
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
 
   cosmiconfig@7.1.0:
     dependencies:
@@ -13560,7 +13540,7 @@ snapshots:
 
   flatted@3.4.2: {}
 
-  follow-redirects@1.16.0: {}
+  follow-redirects@1.16.2: {}
 
   for-each@0.3.5:
     dependencies:
@@ -14483,7 +14463,7 @@ snapshots:
 
   jiti@2.7.0: {}
 
-  joi@18.2.9:
+  joi@18.3.0:
     dependencies:
       '@hapi/address': 5.1.1
       '@hapi/formula': 3.0.2
@@ -15223,7 +15203,7 @@ snapshots:
 
   postcss-colormin@5.3.1(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       colord: 2.10.0
       postcss: 8.5.30
@@ -15231,7 +15211,7 @@ snapshots:
 
   postcss-convert-values@5.1.3(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       postcss: 8.5.30
       postcss-value-parser: 4.2.0
 
@@ -15352,7 +15332,7 @@ snapshots:
 
   postcss-merge-rules@5.1.4(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       cssnano-utils: 3.1.0(postcss@8.5.30)
       postcss: 8.5.30
@@ -15372,7 +15352,7 @@ snapshots:
 
   postcss-minify-params@5.1.4(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       cssnano-utils: 3.1.0(postcss@8.5.30)
       postcss: 8.5.30
       postcss-value-parser: 4.2.0
@@ -15453,7 +15433,7 @@ snapshots:
 
   postcss-normalize-unicode@5.1.1(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       postcss: 8.5.30
       postcss-value-parser: 4.2.0
 
@@ -15581,7 +15561,7 @@ snapshots:
 
   postcss-reduce-initial@5.1.2(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       postcss: 8.5.30
 
@@ -15625,10 +15605,10 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-classnames@0.10.4(prettier@3.8.4):
+  prettier-plugin-classnames@0.10.5(prettier@3.8.4):
     dependencies:
       prettier: 3.8.4
-      zod: 3.22.4
+      zod: 4.6.7
 
   prettier-plugin-merge@0.10.1(prettier@3.8.4):
     dependencies:
@@ -16318,7 +16298,7 @@ snapshots:
 
   stylehacks@5.1.1(postcss@8.5.30):
     dependencies:
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       postcss: 8.5.30
       postcss-selector-parser: 7.1.6
 
@@ -16631,12 +16611,6 @@ snapshots:
       '@unrs/resolver-binding-win32-ia32-msvc': 1.12.2
       '@unrs/resolver-binding-win32-x64-msvc': 1.12.2
 
-  update-browserslist-db@1.3.4(browserslist@4.28.7):
-    dependencies:
-      browserslist: 4.28.7
-      escalade: 3.2.0
-      picocolors: 1.1.1
-
   update-browserslist-db@1.3.4(browserslist@4.29.3):
     dependencies:
       browserslist: 4.29.3
@@ -16728,7 +16702,7 @@ snapshots:
   wait-on@7.2.0:
     dependencies:
       axios: 1.20.0
-      joi: 18.2.9
+      joi: 18.3.0
       lodash: 4.18.1
       minimist: 1.2.8
       rxjs: 7.8.2
@@ -16781,7 +16755,7 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.14.1
       acorn: 8.16.0
       acorn-import-phases: 1.0.4(acorn@8.16.0)
-      browserslist: 4.28.7
+      browserslist: 4.29.3
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.23.0
       es-module-lexer: 2.3.2
@@ -16979,8 +16953,6 @@ snapshots:
       yargs-parser: 22.0.0
 
   yocto-queue@0.1.0: {}
-
-  zod@3.22.4: {}
 
   zod@4.6.7: {}
 

@@ -9,3 +9,7 @@ minimumReleaseAgeExclude:
   - react-dom
   - react
   - '@zonos/amino'
+  # Vetted by hand on 2026-10-29, a day before it ages in: the 0.10.4 -> 0.10.5 diff is a zod 3 -> 4 bump plus a
+  # schema refactor, built by the repo's release workflow, no install scripts, no new network/exec/fs code. It
+  # fixes GHSA-mrhx-c7xc-m3w5 (zod). Exact version only; drop this line once 0.10.5 is past the release age.
+  - prettier-plugin-classnames@0.10.5
