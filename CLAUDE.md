@@ -79,6 +79,10 @@ story-utils/* → ./.storybook/utils/*
 
 All public exports go through `src/all.ts` which is auto-generated during build.
 
+### Bundled Dependencies
+
+ESM-only packages in `ALLOWED_BUNDLED` (`build-utils/bundledDependencies.ts`, currently `uuid`) are bundled into `dist/_bundled/` and dropped from the published `dependencies`; `dist/package.json` lists their shipped versions under `bundledPackages`. Consumers' `npm audit`, Dependabot and `overrides` can't patch them, so an advisory in one needs a dependency bump and a new amino release.
+
 ### Translations
 
 All user-facing text in amino components must be translated. The system supports 18 languages.
