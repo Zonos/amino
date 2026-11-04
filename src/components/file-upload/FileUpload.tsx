@@ -158,9 +158,9 @@ export const FileUpload = ({
       text: 'Uploading...',
     });
   const { getInputProps, getRootProps, open } = useDropzone({
-    // react-dropzone 19.2+ turns paste-to-upload on; keep it opt-in via dropzoneOptions
-    noPaste: true,
     ...dropzoneOptions,
+    // react-dropzone 19.2+ turns paste-to-upload on; only an explicit `noPaste: false` opts in
+    noPaste: dropzoneOptions.noPaste ?? true,
     disabled,
     multiple: false,
     noClick: true,
