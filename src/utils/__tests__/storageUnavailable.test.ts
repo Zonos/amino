@@ -72,6 +72,8 @@ describe('storage when unavailable', () => {
 
   test.each(cases)('%s storage %s: writes do not throw', (type, _, stub) => {
     stubStorage(type, stub);
+    const listener = vi.fn();
+    window.addEventListener(`amino:storage-${type}`, listener);
 
     expect(() =>
       setStorageItem({ key: 'amino:test', type, value: 'value' }),
@@ -92,6 +94,9 @@ describe('storage when unavailable', () => {
         value: null,
       }),
     ).not.toThrow();
+    expect(listener).not.toHaveBeenCalled();
+
+    window.removeEventListener(`amino:storage-${type}`, listener);
   });
 
   test.each(cases)(
@@ -163,11 +168,16 @@ describe('storage when unavailable', () => {
       .mockImplementation(() => {
         throw new DOMException('Quota exceeded', 'QuotaExceededError');
       });
+    const listener = vi.fn();
+    window.addEventListener('amino:storage-local', listener);
 
     expect(() =>
       setStorageItem({ key: 'amino:test', type: 'local', value: 'value' }),
     ).not.toThrow();
     expect(setItem).toHaveBeenCalled();
+    expect(listener).not.toHaveBeenCalled();
+
+    window.removeEventListener('amino:storage-local', listener);
   });
 
   test('a lifetime write whose first setItem throws keeps the previous pair', () => {
@@ -177,6 +187,8 @@ describe('storage when unavailable', () => {
     vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
       throw new DOMException('Quota exceeded', 'QuotaExceededError');
     });
+    const listener = vi.fn();
+    window.addEventListener('amino:storage-local', listener);
 
     setStorageItemWithLifetime({
       key: 'amino:test',
@@ -187,6 +199,9 @@ describe('storage when unavailable', () => {
 
     expect(localStorage.getItem('amino:test')).toBe('old');
     expect(localStorage.getItem('amino:test_update_after')).toBe(updateAfter);
+    expect(listener).not.toHaveBeenCalled();
+
+    window.removeEventListener('amino:storage-local', listener);
   });
 
   test('a lifetime write that fails partway rolls back and notifies subscribers', () => {

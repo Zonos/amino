@@ -77,6 +77,11 @@ export const getStorageItem = <Value>({
   }
 };
 
+/**
+ * Write a value and notify `useStorage` subscribers. When storage is
+ * unavailable or the write throws (e.g. `QuotaExceededError`), the write is
+ * skipped silently and no event fires; throws only on the server.
+ */
 export const setStorageItem = <Value>({
   key,
   type,
@@ -102,6 +107,11 @@ export const setStorageItem = <Value>({
   window.dispatchEvent(new Event(`amino:storage-${type}`));
 };
 
+/**
+ * Write a value with an `_update_after` expiry (a falsy value removes both).
+ * Failures are skipped silently like `setStorageItem`; a write that fails
+ * partway drops both keys.
+ */
 export const setStorageItemWithLifetime = <Value>({
   key,
   lifetime,
@@ -119,28 +129,29 @@ export const setStorageItemWithLifetime = <Value>({
 
   const valueIsTruthy = !!value;
 
-  let valueWritten = false;
+  let keyChanged = false;
   try {
     if (valueIsTruthy) {
       storage.setItem(key, valueToSet);
-      valueWritten = true;
+      keyChanged = true;
       storage.setItem(`${key}_update_after`, lifetime.format());
     } else {
       // Remove the item
       storage.removeItem(key);
+      keyChanged = true;
       storage.removeItem(`${key}_update_after`);
     }
   } catch {
     // Blocked storage or exceeded quota. A failed first write leaves the
-    // previous pair intact; after a failed second write, drop both keys so the
-    // new value never sits next to a missing or stale `_update_after`.
-    if (valueWritten) {
-      try {
-        storage.removeItem(key);
-        storage.removeItem(`${key}_update_after`);
-      } catch {
-        // Storage is blocked entirely
-      }
+    // previous pair intact and nothing to announce; after a failed second
+    // write, drop both keys so the new value never sits next to a missing or
+    // stale `_update_after`.
+    if (!keyChanged) return;
+    try {
+      storage.removeItem(key);
+      storage.removeItem(`${key}_update_after`);
+    } catch {
+      // Storage is blocked entirely
     }
   }
 
