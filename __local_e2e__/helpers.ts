@@ -1,27 +1,9 @@
-import { expect, type Page, test as base } from '@playwright/test';
+import type { Page } from '@playwright/test';
+
+import { expect } from './fixtures';
 
 // the getRootProps() element wraps the hidden file input
 export const dropTarget = 'input[type=file] >> xpath=..';
-
-// fails the test on any console error or page error while it runs
-export const test = base.extend<{ storyErrors: string[] }>({
-  storyErrors: [
-    async ({ page }, use) => {
-      const errors: string[] = [];
-      page.on('console', msg => {
-        if (msg.type() === 'error' && !msg.text().includes('favicon')) {
-          errors.push(msg.text());
-        }
-      });
-      page.on('pageerror', err => errors.push(err.message));
-      await use(errors);
-      expect(errors).toEqual([]);
-    },
-    { auto: true },
-  ],
-});
-
-export { expect };
 
 export const openStory = async (page: Page, id: string) => {
   await page.goto(`/iframe.html?id=${id}&viewMode=story`);

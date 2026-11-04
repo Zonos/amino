@@ -6,7 +6,9 @@ export const test = base.extend<{ pageErrors: string[] }>({
     async ({ page }, use) => {
       const errors: string[] = [];
       page.on('console', msg => {
-        if (msg.type() === 'error') errors.push(msg.text());
+        if (msg.type() === 'error' && !msg.text().includes('favicon')) {
+          errors.push(msg.text());
+        }
       });
       page.on('pageerror', err => errors.push(err.message));
       await use(errors);

@@ -26,7 +26,6 @@ pnpm test:prod                      # Run tests in CI mode (no watch)
 pnpm test:pw                        # Playwright visual tests (requires Storybook running)
 pnpm test:pw:local                  # __local_e2e__ specs, not run in CI (PLAYWRIGHT_TEST_BASE_URL=<storybook url>)
 pnpm test:sb                        # Storybook test runner
-pnpm test:e2e:local                 # Local DropZone/FileUpload behaviour specs (requires Storybook running; not in CI)
 
 # Linting & Type Checking
 pnpm lint                           # oxlint

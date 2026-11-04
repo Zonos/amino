@@ -1,11 +1,5 @@
-import {
-  dropFiles,
-  dropTarget,
-  expect,
-  openStory,
-  smallFile,
-  test,
-} from './helpers';
+import { expect, test } from './fixtures';
+import { dropFiles, dropTarget, openStory, smallFile } from './helpers';
 
 test.describe('FileUpload story', () => {
   test('browse picks a file and shows its name', async ({ page }) => {
