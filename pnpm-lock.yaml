@@ -103,8 +103,8 @@ importers:
         specifier: ^3.4.0
         version: 3.6.0
       uuid:
-        specifier: ^11.1.1
-        version: 11.1.1
+        specifier: ^14.0.3
+        version: 14.0.3
       zod:
         specifier: ^4.6.7
         version: 4.6.7
@@ -8078,6 +8078,10 @@ packages:
 
   uuid@11.1.1:
     resolution: {integrity: sha512-vIYxrBCC/N/K+Js3qSN88go7kIfNPssr/hHCesKCQNAjmgvYS2oqr69kIufEG+O4+PfezOH4EbIeHCfFov8ZgQ==}
+    hasBin: true
+
+  uuid@14.0.3:
+    resolution: {integrity: sha512-Sc5u1VVln93y1Xnz4R+CunOZc7R9LUcTmhj7Rc7Eg3HVcf7rVn2FOoa812fe0W8p3jD7xeoGSYbfqCGGH2B6xw==}
     hasBin: true
 
   v8-to-istanbul@9.3.0:
@@ -16626,6 +16630,8 @@ snapshots:
   utila@0.4.0: {}
 
   uuid@11.1.1: {}
+
+  uuid@14.0.3: {}
 
   v8-to-istanbul@9.3.0:
     dependencies:
