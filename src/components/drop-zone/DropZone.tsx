@@ -222,20 +222,22 @@ export const DropZone = ({
 
   const { getInputProps, getRootProps, open } = useDropzone({
     ...dropzoneOptions,
+    // react-dropzone 19.2+ turns paste-to-upload on; only an explicit `noPaste: false` opts in
+    noPaste: dropzoneOptions.noPaste ?? true,
     disabled,
     noClick: true,
     noKeyboard: true,
   });
 
   const renderUpload = () => (
-    // The role gets set to button despite setting `noClick`, so override it as `undefined`
+    // `getRootProps` sets role="presentation"; the root isn't interactive, so drop the role
     <div
       className="flex h-full w-full flex-col items-center justify-center gap-3
         p-4 outline-none"
       {...getRootProps()}
       role={undefined}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} className="absolute" />
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
       <div className="flex flex-col items-center gap-1">
         <Text type="label">
