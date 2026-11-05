@@ -237,7 +237,7 @@ export const DropZone = ({
       {...getRootProps()}
       role={undefined}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} className="absolute" />
       {!noIcon && <Thumbnail icon={<FileUploadDuotoneIcon />} size={40} />}
       <div className="flex flex-col items-center gap-1">
         <Text type="label">

@@ -206,7 +206,7 @@ export const FileUpload = ({
         outline-none"
       {...getRootProps()}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} className="absolute" />
       <div className="flex items-center justify-start gap-3">
         <Button loading={loading} onClick={open} spinnerColor="black">
           {buttonActionTextToUse}
