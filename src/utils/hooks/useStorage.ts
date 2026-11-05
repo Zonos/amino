@@ -3,6 +3,7 @@ import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import type { Dayjs } from 'dayjs';
 
 import {
+  getRawStorageItem,
   getShouldUpdateStorageItem,
   getStorageItem,
   setStorageItem,
@@ -64,10 +65,7 @@ export const useStorage = <
   // The snapshot function is only used to trigger re-renders, so we need simple string equality comparison
   useSyncExternalStore(
     subscribe,
-    () =>
-      type === 'local'
-        ? localStorage.getItem(key)
-        : sessionStorage.getItem(key),
+    () => getRawStorageItem({ key, type }),
     () => JSON.stringify(defaultValue),
   );
 
@@ -98,10 +96,7 @@ export const useStorageWithLifetime = <
   // The snapshot function is only used to trigger re-renders, so we need simple string equality comparison
   useSyncExternalStore(
     subscribe,
-    () =>
-      type === 'local'
-        ? localStorage.getItem(key)
-        : sessionStorage.getItem(key),
+    () => getRawStorageItem({ key, type }),
     () => JSON.stringify(defaultValue),
   );
 

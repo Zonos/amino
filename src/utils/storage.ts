@@ -19,16 +19,39 @@ type SetParams<Value> = Omit<StorageParams<Value>, 'schema'> & {
 };
 const isClientSide = typeof window !== 'undefined';
 
+/**
+ * Storage can be unavailable even on the client: `window.localStorage` is
+ * `null` in Android WebViews with DOM storage disabled, and browsers that
+ * block storage throw a `SecurityError` on access.
+ */
+const getStorage = (type: StorageType): Storage | null => {
+  if (!isClientSide) return null;
+
+  try {
+    return type === 'local' ? window.localStorage : window.sessionStorage;
+  } catch {
+    return null;
+  }
+};
+
+/** Read the raw string for a key, or `null` when storage is unavailable. */
+export const getRawStorageItem = ({
+  key,
+  type,
+}: Pick<StorageParams<unknown>, 'key' | 'type'>): string | null => {
+  try {
+    return getStorage(type)?.getItem(key) ?? null;
+  } catch {
+    return null;
+  }
+};
+
 export const getStorageItem = <Value>({
   key,
   schema,
   type,
 }: StorageParams<Value>): Value | null => {
-  if (!isClientSide) return null;
-
-  const storage =
-    type === 'local' ? window.localStorage : window.sessionStorage;
-  const rawValue = storage.getItem(key);
+  const rawValue = getRawStorageItem({ key, type });
 
   if (!rawValue) return null;
 
@@ -54,6 +77,11 @@ export const getStorageItem = <Value>({
   }
 };
 
+/**
+ * Write a value and notify `useStorage` subscribers. When storage is
+ * unavailable or the write throws (e.g. `QuotaExceededError`), the write is
+ * skipped silently and no event fires; throws only on the server.
+ */
 export const setStorageItem = <Value>({
   key,
   type,
@@ -63,17 +91,27 @@ export const setStorageItem = <Value>({
     throw new Error('Cannot set storage outside client');
   }
 
-  const storage =
-    type === 'session' ? window.sessionStorage : window.localStorage;
+  const storage = getStorage(type);
+  if (!storage) return;
 
   const valueToSet = typeof value === 'string' ? value : JSON.stringify(value);
 
-  storage.setItem(key, valueToSet);
+  try {
+    storage.setItem(key, valueToSet);
+  } catch {
+    // Blocked storage or exceeded quota
+    return;
+  }
 
   // Dispatch our internal event
   window.dispatchEvent(new Event(`amino:storage-${type}`));
 };
 
+/**
+ * Write a value with an `_update_after` expiry (a falsy value removes both).
+ * Failures are skipped silently like `setStorageItem`; a write that fails
+ * partway drops both keys.
+ */
 export const setStorageItemWithLifetime = <Value>({
   key,
   lifetime,
@@ -84,20 +122,37 @@ export const setStorageItemWithLifetime = <Value>({
     throw new Error('Cannot set storage outside client');
   }
 
-  const storage =
-    type === 'session' ? window.sessionStorage : window.localStorage;
+  const storage = getStorage(type);
+  if (!storage) return;
 
   const valueToSet = typeof value === 'string' ? value : JSON.stringify(value);
 
   const valueIsTruthy = !!value;
 
-  if (valueIsTruthy) {
-    storage.setItem(key, valueToSet);
-    storage.setItem(`${key}_update_after`, lifetime.format());
-  } else {
-    // Remove the item
-    storage.removeItem(key);
-    storage.removeItem(`${key}_update_after`);
+  let keyChanged = false;
+  try {
+    if (valueIsTruthy) {
+      storage.setItem(key, valueToSet);
+      keyChanged = true;
+      storage.setItem(`${key}_update_after`, lifetime.format());
+    } else {
+      // Remove the item
+      storage.removeItem(key);
+      keyChanged = true;
+      storage.removeItem(`${key}_update_after`);
+    }
+  } catch {
+    // Blocked storage or exceeded quota. A failed first write leaves the
+    // previous pair intact and nothing to announce; after a failed second
+    // write, drop both keys so the new value never sits next to a missing or
+    // stale `_update_after`.
+    if (!keyChanged) return;
+    try {
+      storage.removeItem(key);
+      storage.removeItem(`${key}_update_after`);
+    } catch {
+      // Storage is blocked entirely
+    }
   }
 
   // Dispatch our internal event
