@@ -1,18 +1,9 @@
 version: 2
 
-registries:
-  github-packages:
-    type: npm-registry
-    url: https://npm.pkg.github.com
-    username: ${{ secrets.CLOUD_AUTOMATION_USER }}
-    password: ${{ secrets.CLOUD_AUTOMATION_ACCESS_TOKEN_READONLY }}
-
 updates:
   # Enable version updates for npm/yarn dependencies
   - package-ecosystem: "npm"
     directory: "/"
-    registries:
-      - github-packages
     schedule:
       interval: "weekly"
       day: "monday"
