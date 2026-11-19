@@ -6,6 +6,7 @@ import { CaliforniaIcon } from 'src/icons/custom/us-states/CaliforniaIcon';
 import { ColoradoIcon } from 'src/icons/custom/us-states/ColoradoIcon';
 import { ConnecticutIcon } from 'src/icons/custom/us-states/ConnecticutIcon';
 import { DelawareIcon } from 'src/icons/custom/us-states/DelawareIcon';
+import { DistrictOfColumbiaIcon } from 'src/icons/custom/us-states/DistrictOfColumbiaIcon';
 import { FloridaIcon } from 'src/icons/custom/us-states/FloridaIcon';
 import { GeorgiaIcon } from 'src/icons/custom/us-states/GeorgiaIcon';
 import { HawaiiIcon } from 'src/icons/custom/us-states/HawaiiIcon';
@@ -156,6 +157,14 @@ export const getUnitedStates = (
     highlighted: false,
     icon: <DelawareIcon />,
     name: 'Delaware',
+    region: 'Northeast',
+    regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
+  },
+  {
+    code: 'DC',
+    highlighted: false,
+    icon: <DistrictOfColumbiaIcon />,
+    name: 'District of Columbia',
     region: 'Northeast',
     regionLabel: getTranslatedRegionName({ languageCode, region: 'Northeast' }),
   },
