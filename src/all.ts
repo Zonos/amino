@@ -266,6 +266,7 @@ import './icons/custom/us-states/CaliforniaIcon';
 import './icons/custom/us-states/ColoradoIcon';
 import './icons/custom/us-states/ConnecticutIcon';
 import './icons/custom/us-states/DelawareIcon';
+import './icons/custom/us-states/DistrictOfColumbiaIcon';
 import './icons/custom/us-states/FloridaIcon';
 import './icons/custom/us-states/GeorgiaIcon';
 import './icons/custom/us-states/HawaiiIcon';
