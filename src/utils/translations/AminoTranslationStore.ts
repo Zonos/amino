@@ -371,6 +371,8 @@ const loadInternalAminoTranslations = async (
         return (await import('./__amino__/strings/japanese.json')).default;
       case 'KO':
         return (await import('./__amino__/strings/korean.json')).default;
+      case 'MS':
+        return (await import('./__amino__/strings/malay.json')).default;
       case 'NO':
         return (await import('./__amino__/strings/norwegian.json')).default;
       case 'PL':
