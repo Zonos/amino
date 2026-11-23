@@ -14,6 +14,7 @@ export const supportedLanguages = [
   { code: 'IT', label: 'Italian', translatedLabel: 'Italiano' },
   { code: 'JA', label: 'Japanese', translatedLabel: '日本語' },
   { code: 'KO', label: 'Korean', translatedLabel: '한국어' },
+  { code: 'MS', label: 'Malay', translatedLabel: 'Bahasa Melayu' },
   { code: 'NL', label: 'Dutch', translatedLabel: 'Nederlands' },
   { code: 'NO', label: 'Norwegian', translatedLabel: 'norsk' },
   { code: 'PL', label: 'Polish', translatedLabel: 'Polskie' },
