@@ -12,6 +12,7 @@ import { CoverSheetActions } from 'src/components/cover-sheet/CoverSheetActions'
 import { Menu } from 'src/components/menu/Menu';
 import { MenuItem } from 'src/components/menu/MenuItem';
 import { VStack } from 'src/components/stack/VStack';
+import { HelpIcon } from 'src/icons/HelpIcon';
 
 const Story = ({
   children,
@@ -72,6 +73,13 @@ export const CustomHeader: StoryObj<CoverSheetProps> = {
       </MenuButton>
     ),
     label: 'Custom header',
+  },
+};
+
+export const HeaderEnd: StoryObj<CoverSheetProps> = {
+  args: {
+    headerEnd: <Button icon={<HelpIcon size={20} />} />,
+    label: 'Header end',
   },
 };
 

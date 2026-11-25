@@ -25,6 +25,13 @@ export type CoverSheetProps = BaseDialogProps & {
    */
   headerComponent?: ReactNode;
   /**
+   * Content rendered at the header's right end, after the actions (including
+   * any portaled in with `CoverSheetActions`). Use it for persistent controls
+   * that belong to the page chrome rather than to the sheet, such as a help or
+   * chat toggle.
+   */
+  headerEnd?: ReactNode;
+  /**
    * Whether to hide the close button in the header
    * @default false
    */
@@ -93,6 +100,19 @@ export type CoverSheetProps = BaseDialogProps & {
  * </CoverSheet>
  * ```
  *
+ * @example With trailing header content
+ * ```tsx
+ * <CoverSheet
+ *   label="Order details"
+ *   open={isOpen}
+ *   onClose={handleClose}
+ *   actions={<Button variant="primary">Save</Button>}
+ *   headerEnd={<Button icon={<HelpIcon />} onClick={openHelp} />}
+ * >
+ *   <p>Content goes here...</p>
+ * </CoverSheet>
+ * ```
+ *
  * @example Without close button
  * ```tsx
  * <CoverSheet
@@ -133,6 +153,7 @@ export const CoverSheet = ({
   children,
   className,
   headerComponent,
+  headerEnd,
   hideCloseButton = false,
   label,
   onClose,
@@ -198,12 +219,15 @@ export const CoverSheet = ({
         >
           {headerComponent}
         </div>
-        <div id={actionWrapperId}>
-          {actions && (
-            <CoverSheetActions coverSheetActionId={actionWrapperId}>
-              {actions}
-            </CoverSheetActions>
-          )}
+        <div className="gap-amino-8 flex items-center">
+          <div id={actionWrapperId}>
+            {actions && (
+              <CoverSheetActions coverSheetActionId={actionWrapperId}>
+                {actions}
+              </CoverSheetActions>
+            )}
+          </div>
+          {headerEnd}
         </div>
       </header>
       <div className="p-amino-56 flex-grow overflow-auto">{children}</div>
